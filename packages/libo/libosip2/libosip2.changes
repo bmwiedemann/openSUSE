@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 22 22:22:15 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.3.0:
+  * STRUCTURE change: struct osip_transaction
+  * CHANGE: if out_socket contains -999 and timer_b or timer_f
+    fires, the transaction will report a transport-error
+  * improve TIMER_E to avoid high interval after DNS or socket
+    events
+  * when port number starts with 0, just put 0 and discard other
+    char [no op in practice]
+
+-------------------------------------------------------------------
 Wed May 26 11:56:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.2.1:

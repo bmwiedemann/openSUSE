@@ -1,0 +1,18 @@
+---
+ configure.ac |    3 ---
+ 1 file changed, 3 deletions(-)
+
+Index: hfst-3.16.0/configure.ac
+===================================================================
+--- hfst-3.16.0.orig/configure.ac
++++ hfst-3.16.0/configure.ac
+@@ -661,9 +661,6 @@ AC_LANG_PUSH([C++])
+ AM_COND_IF([WANT_OPENFST_UPSTREAM], [CXXFLAGS="$CXXFLAGS -std=c++17"], [CXXFLAGS="$CXXFLAGS -std=c++14"])
+ 
+ # On 32bit x86, we need to use SSE for precise floating point arithmetics in OpenFST
+-AX_CHECK_COMPILE_FLAG([-msse], [CXXFLAGS="$CXXFLAGS -msse"], [])
+-AX_CHECK_COMPILE_FLAG([-msse2], [CXXFLAGS="$CXXFLAGS -msse2"], [])
+-AX_CHECK_COMPILE_FLAG([-mfpmath=sse], [CXXFLAGS="$CXXFLAGS -mfpmath=sse"], [])
+ 
+ AC_CHECK_HEADERS([ext/slist])
+ 

@@ -119,4 +119,18 @@ Fixes compilation on kernel 5.12
 </comment>
     <requestid>924548</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7e001b38f5fa6f86abda952a16db974</srcmd5>
+    <version>1.89.3</version>
+    <time>1644778242</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.89.3
+
+For the minimalist changes file entry, I followed this rule from documentation:
+
+&quot;If you cannot find anything in the aforementioned set of places, that is ok. Say so, and consider it done. (For example, “* No changelog was made available.”) It is not necessary to inspect commit logs or to analyze source code.&quot;  
+
+There are 4 months worth of complicated commit, and I cannot go through them all.</comment>
+    <requestid>953974</requestid>
+  </revision>
 </revisionlist>

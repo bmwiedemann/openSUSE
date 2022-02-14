@@ -66,7 +66,6 @@ Requires:       python-contextvars
 # Requires despite optional: see description
 # doh
 Requires:       python-requests
-Requires:       python-h2
 Requires:       python-httpx
 Requires:       python-requests-toolbelt
 # idna
@@ -78,6 +77,8 @@ Suggests:       python-trio >= 0.14.0
 # curio
 Suggests:       python-sniffio >= 1.1
 Suggests:       python-curio >= 1.2
+# HTTP/2 support in httpx
+Recommends:     python-h2
 BuildArch:      noarch
 
 %python_subpackages

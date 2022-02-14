@@ -1,0 +1,52 @@
+IBM Z: Remove lpswey parameter
+
+opcodes/
+	* s390-opc.c (INSTR_SIY_RD): New instruction format.
+	(MASK_SIY_RD): New instruction mask.
+	* s390-opc.txt: Change instruction format of lpswey to SIY_RD.
+
+gas/
+	* testsuite/gas/s390/zarch-arch14.d: Remove last operand of
+	lpswey.
+	* testsuite/gas/s390/zarch-arch14.s: Likewise.
+
+---
+ gas/testsuite/gas/s390/zarch-arch14.d | 2 +-
+ gas/testsuite/gas/s390/zarch-arch14.s | 2 +-
+ opcodes/s390-opc.c                    | 2 ++
+ opcodes/s390-opc.txt                  | 2 +-
+ 4 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/opcodes/s390-opc.c b/opcodes/s390-opc.c
+index 5545dacffff..64453d945f8 100644
+--- a/opcodes/s390-opc.c
++++ b/opcodes/s390-opc.c
+@@ -442,6 +442,7 @@ const struct s390_operand s390_operands[] =
+ #define INSTR_RX_URRD      4, { U4_8,D_20,X_12,B_16,0,0 }        /* e.g. bc    */
+ #define INSTR_SI_RD        4, { D_20,B_16,0,0,0,0 }              /* e.g. lpsw  */
+ #define INSTR_SI_URD       4, { D_20,B_16,U8_8,0,0,0 }           /* e.g. cli   */
++#define INSTR_SIY_RD       6, { D20_20,B_16,0,0,0,0 }            /* e.g. lpswey*/
+ #define INSTR_SIY_URD      6, { D20_20,B_16,U8_8,0,0,0 }         /* e.g. tmy   */
+ #define INSTR_SIY_IRD      6, { D20_20,B_16,I8_8,0,0,0 }         /* e.g. asi   */
+ #define INSTR_SIL_RDI      6, { D_20,B_16,I16_32,0,0,0 }         /* e.g. chhsi */
+@@ -664,6 +665,7 @@ const struct s390_operand s390_operands[] =
+ #define MASK_RX_URRD      { 0xff, 0x00, 0x00, 0x00, 0x00, 0x00 }
+ #define MASK_SI_RD        { 0xff, 0x00, 0x00, 0x00, 0x00, 0x00 }
+ #define MASK_SI_URD       { 0xff, 0x00, 0x00, 0x00, 0x00, 0x00 }
++#define MASK_SIY_RD       { 0xff, 0xff, 0x00, 0x00, 0x00, 0xff }
+ #define MASK_SIY_URD      { 0xff, 0x00, 0x00, 0x00, 0x00, 0xff }
+ #define MASK_SIY_IRD      { 0xff, 0x00, 0x00, 0x00, 0x00, 0xff }
+ #define MASK_SIL_RDI      { 0xff, 0xff, 0x00, 0x00, 0x00, 0x00 }
+diff --git a/opcodes/s390-opc.txt b/opcodes/s390-opc.txt
+index dfd5617f0ae..ad4b6aebc2b 100644
+--- a/opcodes/s390-opc.txt
++++ b/opcodes/s390-opc.txt
+@@ -2041,7 +2041,7 @@ e60000000055 vcnf VRR_VV0UU2 " " arch14 zarch
+ 
+ b98B rdp RRF_RURR2 " " arch14 zarch optparm
+ 
+-eb0000000071 lpswey SIY_URD " " arch14 zarch
++eb0000000071 lpswey SIY_RD " " arch14 zarch
+ b200 lbear S_RD " " arch14 zarch
+ b201 stbear S_RD " " arch14 zarch
+ 

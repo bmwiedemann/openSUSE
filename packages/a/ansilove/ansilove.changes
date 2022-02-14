@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 11 16:14:05 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.6
+  * Add a test case for retina output
+  * Add a test case for SAUCE output
+  * Use CMAKE_C_STANDARD instead of hardcoding compiler flags
+  * Stop linking against libm, it's not necessary anymore
+
+-------------------------------------------------------------------
 Sat Mar  6 12:10:57 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.5

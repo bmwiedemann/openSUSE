@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 11 22:27:07 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.11.8:
+  * Added initial (and limited) integration of RED audio (#2685)
+  * Added support for Two-Byte header RTP extensions (RFC8285) and, partially,
+    for the new Depencency Descriptor RTP extension (needed for AV1-SVC) (#2741)
+  * Fixed rare race conditions between sending a packet and closing a connection (#2869)
+  * Fix last stats before closing PeerConnection not being sent to handlers (#2874)
+  * Changed automatic allocation on static loops from round robin to least used (#2878)
+  * Added new API to bulk start/stop MJR-based recordings in AudioBridge (#2862)
+  * Fixed broken duration in spatial AudioBridge recordings
+  * Fixed broken G.711 RTP forwarding in AudioBridge (#2875)
+  * Fixed broken recordings in NoSIP plugin
+  * Fixed warnings when postprocessing Opus recordings with DTX packets
+  * Other smaller fixes and improvements
+
+-------------------------------------------------------------------
 Mon Jan 24 14:36:20 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.11.7:

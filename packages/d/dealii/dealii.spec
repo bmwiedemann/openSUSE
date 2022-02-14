@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.3.2
+%define sover 9.3.3
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -73,7 +73,7 @@
 %define shlib_debug libdeal_II_g%{shlibver}%{?my_suffix}
 # /SECTION
 
-%define memlim 2000
+%define memlim 2500
 # LTO CAUSES aarch64 BUILDS TO TIME OUT; IT ALSO REQUIRES ~4GB PER THREAD
 %ifarch aarch64
 %define _lto_cflags %{nil}
@@ -84,14 +84,12 @@
 %endif
 
 Name:           %{pname}
-Version:        9.3.2
+Version:        9.3.3
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
 URL:            https://www.dealii.org/
 Source0:        https://github.com/dealii/dealii/releases/download/v%{version}/%{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM dealii-boost-1_78_compat.patch gh#dealii/dealii#13037 badshah400@gmail.com -- Fix includes to avoid build failures against boost 1.77+; patch taken from upstream git master commit and backported for version 9.3.2
-Patch0:         dealii-boost-1_78_compat.patch
 # NOTE: serial arpack-ng even if parpack is available (see gh#dealii/dealii#10197)
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel

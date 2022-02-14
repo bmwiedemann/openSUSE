@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  2 15:21:58 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.44:
+  * Fix dependency to gpg-error-config-test.sh.
+  * Run the posix locking test only on supported platforms.
+  * Detect Linux systems using musl.
+  * Fix gpg-error-config-test for PKG_CONFIG_LIBDIR.
+  * Fix returning of option attributes for options with args.
+  * Add Turkish translations.
+
+-------------------------------------------------------------------
 Fri Nov  5 10:58:23 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.43:

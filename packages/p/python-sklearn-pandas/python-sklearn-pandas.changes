@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 12 23:37:31 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.2.0:
+  * Added an ability to provide callable functions instead of static
+    column list.
+
+- changes from version 2.1.0:
+  * Removed test for Python 3.6 and added Python 3.9
+  * Added deprecation warning for NumericalTransformer
+  * Fixed pickling issue causing integration issues with Baikal.
+  * Started publishing package to conda repo
+
+-------------------------------------------------------------------
 Thu Jan 28 19:44:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to version 2.0.4

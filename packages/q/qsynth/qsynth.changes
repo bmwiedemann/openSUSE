@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 12 11:40:34 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.6
+  * Migrated command line parsing to QCommandLineParser/Option
+    (Qt >= 5.2)
+  * New option to change the UI language translation.
+  * Added DLS file type to the soundfonts selection dialog.
+  * Fixed translations path to be relative to application
+    runtime.
+- Refresh qsynth-fix_desktop_file.patch
+
+-------------------------------------------------------------------
 Sun Jan  9 20:26:06 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.5

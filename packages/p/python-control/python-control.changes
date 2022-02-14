@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 12 18:42:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- skip segfaulting test on i586
+
+-------------------------------------------------------------------
 Thu Feb 10 10:27:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport patch to fix build on aarch64:

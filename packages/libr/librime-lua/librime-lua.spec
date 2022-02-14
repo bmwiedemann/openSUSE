@@ -48,7 +48,7 @@ Lua plugin for librime.
 
 %install
 c++ -fPIC %{optflags} -DNDEBUG -std=c++14 -flto=auto -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now -shared -Wl,-soname,librime-lua.so -o librime-lua.so \
-  $(find build/CMakeFiles/rime-lua-objs.dir/src -type f -name "*.o") \
+  $(find build/CMakeFiles/rime-lua-objs.dir/src -type f -name "*.o" | sort) \
   -llua5.4 -lm -lrime \
   -lglog -lopencc \
   -lpthread -lmarisa

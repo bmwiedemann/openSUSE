@@ -145,8 +145,9 @@ Substitute: netcfg netcfg libnss_usrfiles2
   buildflags: useccache:tensorflow:hpc-openmpi2
   buildflags: useccache:tensorflow:lite
   buildflags: useccache:tensorflow:standard
-# ccache 4.x breaks webkit2gtk3
-#BuildFlags: useccache:webkit2gtk3
+  BuildFlags: useccache:webkit2gtk3:gtk3
+  BuildFlags: useccache:webkit2gtk3:gtk3-soup2
+  BuildFlags: useccache:webkit2gtk3:gtk4
 %endif
 
 # switch to kiwi v8

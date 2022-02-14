@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwdatafind
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
-# PYTHON2 NOT SUPPORTED - TESTS FAIL
+
 %define skip_python2 1
 
 Name:           python-gwdatafind
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
-License:        GPL-3.0
+License:        GPL-3.0-only
 Summary:        Client library for the LIGO Data Replicator (LDR) service
-Url:            https://gwdatafind.readthedocs.io/
+URL:            https://gwdatafind.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/g/gwdatafind/gwdatafind-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyOpenSSL}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module pytest >= 2.8.0}
+BuildRequires:  %{python_module six}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-ligo-segments
@@ -40,7 +41,7 @@ Requires:       python-pyOpenSSL
 Requires:       python-six
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %python_subpackages
 

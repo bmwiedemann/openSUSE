@@ -16,10 +16,14 @@
 #
 
 
-%define sover  3_8_5
+%define sover  3_9_5
+%ifarch %{arm}
+# boo#1182440
+%define _lto_cflags %{nil}
+%endif
 %bcond_without docs
 Name:           gnuradio
-Version:        3.8.5.0
+Version:        3.9.5.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -30,10 +34,8 @@ Source0:        https://github.com/gnuradio/gnuradio/archive/refs/tags/v%{versio
 Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
-Patch1:         revert-23cece0d0.patch
-Patch2:         0001-gr-digital-glfsr.h-drop-boost-cstdint.hpp-and-use-cs.patch
 BuildRequires:  alsa-devel
-BuildRequires:  cmake >= 3.8
+BuildRequires:  cmake >= 3.10.2
 BuildRequires:  cppunit-devel
 BuildRequires:  cppzmq-devel
 BuildRequires:  fdupes
@@ -42,13 +44,15 @@ BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  gsl-devel
 BuildRequires:  libSDL-devel
-BuildRequires:  libboost_atomic-devel >= 1.53
-BuildRequires:  libboost_filesystem-devel >= 1.53
+BuildRequires:  libboost_atomic-devel >= 1.65
+BuildRequires:  libboost_filesystem-devel >= 1.65
 BuildRequires:  libboost_system-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libmpir-devel
+BuildRequires:  libsndfile-devel
 BuildRequires:  log4cpp-devel
+BuildRequires:  mathjax
 BuildRequires:  ninja
 BuildRequires:  orc
 BuildRequires:  pkgconfig
@@ -59,14 +63,15 @@ BuildRequires:  python3-click
 BuildRequires:  python3-click-plugins
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-cairo
-BuildRequires:  python3-mako >= 0.9.1
-BuildRequires:  python3-numpy
+BuildRequires:  python3-mako >= 1.0.7
+BuildRequires:  python3-numpy-devel >= 1.13.3
 BuildRequires:  python3-pyaml >= 3.11
+BuildRequires:  python3-pybind11-devel >= 2.4.3
 BuildRequires:  python3-pycairo
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-six
 BuildRequires:  qwt6-qt5-devel
-BuildRequires:  swig >= 3.0.8
+BuildRequires:  soapy-sdr-devel
 BuildRequires:  typelib(Gtk) = 3.0
 BuildRequires:  typelib(PangoCairo) = 1.0
 BuildRequires:  typelib(cairo) = 1.0
@@ -76,7 +81,7 @@ BuildRequires:  pkgconfig(codec2)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(py3cairo)
-BuildRequires:  pkgconfig(volk) >= 2.0
+BuildRequires:  volk-devel >= 2.4.1
 # gr_modtool dependencies
 Requires:       python3-click
 Requires:       python3-click-plugins
@@ -161,13 +166,6 @@ This package contains some examples of using GNU Radio.
 %prep
 %autosetup -p1
 
-# remove buildtime from documentation
-sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxygen/Doxyfile.in
-sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxygen/Doxyfile.swig_doc.in
-
-# protect the template files from %%cmake macro magic / mangling
-find  gr-utils/python/modtool/templates/gr-newmod -name CMakeLists.txt -exec mv '{}' '{}.tmpl' \;
-
 %build
 %define __builder ninja
 %cmake \
@@ -180,9 +178,6 @@ find  gr-utils/python/modtool/templates/gr-newmod -name CMakeLists.txt -exec mv 
 %cmake_build
 
 %install
-# move the template files back
-find  gr-utils/python/modtool/templates/gr-newmod -name CMakeLists.txt.tmpl -execdir mv '{}' 'CMakeLists.txt' \;
-
 %cmake_install
 
 install -d %{buildroot}%{_docdir}/%{name}
@@ -215,21 +210,23 @@ rm -rf %{buildroot}%{_datadir}/icons/gnome
 %{_datadir}/gnuradio/modtool/
 %{_datadir}/gnuradio/themes/
 %{_datadir}/gnuradio/fec/
+%{_datadir}/gnuradio/clang-format.conf
 %{_datadir}/icons/hicolor/*/apps/gnuradio-grc.png
 %{_datadir}/applications/gnuradio-grc.desktop
 %{_datadir}/mime/packages/gnuradio-grc.xml
+%{_datadir}/metainfo/org.gnuradio.grc.metainfo.xml
 %{python3_sitearch}/*
 %dir %{_sysconfdir}/gnuradio
 %dir %{_sysconfdir}/gnuradio/conf.d
 %config(noreplace) %{_sysconfdir}/gnuradio/conf.d/*.conf
+%{_mandir}/man1/*.1%{?ext_man}
 %dir %{_docdir}/%{name}/
 %{_docdir}/%{name}/README*
 %{_docdir}/%{name}/CHANGELOG*
+%{_docdir}/%{name}/CONTRIBUTING.md
 # doc package
 %exclude %{_docdir}/%{name}/html/
 %exclude %{_docdir}/%{name}/xml/
-%exclude %{_docdir}/%{name}/*.py
-%exclude %{_docdir}/%{name}/*.grc
 
 %files -n libgnuradio-%{sover}
 %{_libdir}/libgnuradio*.so.*
@@ -245,8 +242,6 @@ rm -rf %{buildroot}%{_datadir}/icons/gnome
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/html/
 %{_docdir}/%{name}/xml/
-%{_docdir}/%{name}/*.py
-%{_docdir}/%{name}/*.grc
 
 %files examples
 %dir %{_libdir}/gnuradio

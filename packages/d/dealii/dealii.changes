@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb  5 23:59:57 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.3.3:
+  * Fixes an update flag issue in VectorTools::point_values().
+  * Uses portable "cmake -E remove" in quick_tests.
+  * Fixes compatibility issues with Boost 1.78.
+  * Adds support for the new OneAPI api interface for the Intel
+    Threading Building Blocks Library (libtbb).
+  * Fixes a compilation issue with sundials.
+- Drop dealii-boost-1_78_compat.patch: incorporated upstream.
+- Update memory requirement in _constraints to 10 GB and per
+  thread memory in %limit_memory to 2500 MB to avoid OOM errors.
+
+-------------------------------------------------------------------
 Wed Jan  5 02:00:09 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add dealii-boost-1_78_compat.patch -- Fix includes to avoid

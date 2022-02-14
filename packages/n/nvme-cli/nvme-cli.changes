@@ -1,5 +1,25 @@
 -------------------------------------------------------------------
-Tue Feb 01 11:39:02 UTC 2022 - daniel.wagner@suse.com
+Fri Feb 11 13:38:15 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v2.0-rc3:
+  * nvme-print: Fix json output for list-subsys
+  * nvme: Allow --verbose flag to increase log level
+  * Added telemetry log fetch support for SN810, SN530 and SN740 series NVMe SSDs through wdc vs-internal-log command
+  * nvmf: Remove --matching from systemd service file (bsc#1195665)
+  * nvme: Fix --force flag inversion (bsc#1195637)
+  * nvme: Add support for data area 4 to get-telemetry-log
+  * nvme: Add Supported Capacity Configuration List log page(LID: 0x11)
+  * nvme: Add Enhanced Controller Meta Data(FID: 0x7D)
+  * nvme-print: Add NVME_FEAT_FID_ENH_CTRL_METADATA to nvme_feature_to_string
+  * nvme-print: remove unused nvme_show_id_ctrl function
+  * nvme: Add nvm-id-ns-lba-format(CNS 0Ah) command from TP4095
+  * nvme: Add NVM Command Set specific identify namespace command
+  * nvme: Add id-ns-lba-format(CNS 09h) command from TP4095
+  * nvme: Add nulbaf(Number of Unique Capability LBA Formats) field on nvmd_id_ns
+- Include precompiled documentation
+
+-------------------------------------------------------------------
+Tue Feb 01 11:39:02 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.0~2:
   * Adapt to logging API changes in libnvme

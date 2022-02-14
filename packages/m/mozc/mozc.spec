@@ -1,7 +1,7 @@
 #
 # spec file for package mozc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%flavor" == "fcitx5"
+%define with_fcitx4 0
+%define with_fcitx5 1
+%define install_mozc 0
+%else
 %define with_fcitx4 1
 %define with_fcitx5 0
 %define install_mozc 1
+%endif
 
 %if %{with_fcitx4}
 %define fcitx_icon_dir %{_datadir}/fcitx/mozc/icon/
@@ -463,7 +471,6 @@ chmod 644 src/data/installer/credits_*.html
 %{fcitx5_addon_dir}/mozc.conf
 %dir %{fcitx5_inputmethod_dir}
 %{fcitx5_inputmethod_dir}/mozc.conf
-%dir %{fcitx5_icon_dir}
 %{fcitx5_icon_dir}/mozc.png
 %{fcitx5_icon_dir}/mozc-alpha_full.png
 %{fcitx5_icon_dir}/mozc-alpha_half.png

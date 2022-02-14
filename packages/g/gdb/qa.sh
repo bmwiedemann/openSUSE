@@ -186,6 +186,9 @@ kfail_factory=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28510
     "FAIL: gdb.debuginfod/fetch_src_and_symbols.exp: local_url: br main"
     "FAIL: gdb.debuginfod/fetch_src_and_symbols.exp: local_url: l"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=28667
+    "FAIL: gdb.reverse/watch-precsave.exp: watchpoint hit, fourth time \\(GDB internal error\\)"
 )
 
 case $n in
@@ -233,6 +236,9 @@ case $n in
 	    "linux-nat.c:[0-9]*: internal-error: wait returned unexpected"
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=28604
 	    "x86-linux-dregs.c:[0-9]*: internal-error: void x86_linux_update_debug_registers\(lwp_info\*\): Assertion \`lwp_is_stopped \(lwp\)' failed."
+
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=28667
+	    "record-full.c:[0-9]*: internal-error: ptid_t record_full_wait_1\(target_ops\*, ptid_t, target_waitstatus\*, target_wait_flags\): Assertion \`\(options & TARGET_WNOHANG\) != 0' failed."
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")

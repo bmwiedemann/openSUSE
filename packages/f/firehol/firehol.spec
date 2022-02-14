@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Security
 URL:            https://firehol.org/
 Source:         https://github.com/firehol/firehol/releases/download/v%{version}/firehol-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
+Patch0:	harden_firehol.service.patch
+Patch1:	harden_fireqos.service.patch
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  git-core
@@ -90,6 +92,8 @@ Contains documentation and configuration examples for FireHOL.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 %configure --docdir=%{_docdir}/%{name}

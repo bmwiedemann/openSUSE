@@ -1,5 +1,23 @@
 -------------------------------------------------------------------
-Tue Feb 01 11:26:39 UTC 2022 - daniel.wagner@suse.com
+Fri Feb 11 13:29:54 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v1.0-rc3:
+  * Properly create manuals/documentation
+  * Fix memleaks in __nvme_free_ns() and nvme_scan_subsystem()
+  * nvme: get log domain id included in Log Specific Identifier
+  * nvme: Add nulbaf(Number of Unique Capability LBA Formats) field on nvmd_id_ns
+  * ioctl: Add identify ioctl for CNS 09h, 0Ah
+  * nvme: Add Enhanced Controller Meta Data(FID: 0x7D)
+  * nvme: Add Supported Capacity Configuration List log page(LID: 0x11)
+  * tree: do not set dhchap_key to 'none'
+  * tree: restart controller lookup
+  * tree: fixup memory leak in nvme_scan_ctrl()
+  * Rename nvme_path_get_subsystem()
+  * Remove nvme_reset_topology()
+- Use precompiled documentation instead regenerating it
+
+-------------------------------------------------------------------
+Tue Feb 01 11:26:39 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.0~2:
   * Add fabrics config option 'tls'

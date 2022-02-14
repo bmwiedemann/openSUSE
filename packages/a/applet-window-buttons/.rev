@@ -159,4 +159,17 @@ _ Remove fix-build-plasma-5.21.patch (part of release now)</comment>
     <comment></comment>
     <requestid>944057</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b5c4bc1b4001e134cef67dfe886437ab</srcmd5>
+    <version>0.11.1</version>
+    <time>1644707726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.1:
+  * Add missing version
+
+- Uupdate to 0.11.0: 
+  * support Plasma 5.24 way of discovering themes from theme engines
+  * hide when preserveemptyspace is selected</comment>
+    <requestid>953931</requestid>
+  </revision>
 </revisionlist>

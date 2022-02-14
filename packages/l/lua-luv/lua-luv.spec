@@ -20,7 +20,7 @@
 %define lua_default 1
 %endif
 %define mod_name luv
-%define upver 1.42.0-1
+%define upver 1.43.0-0
 %define fixver %(echo %{upver}|sed 's|-|~|g')
 %define libluv_sover 1
 %define flavor @BUILD_FLAVOR@%{nil}

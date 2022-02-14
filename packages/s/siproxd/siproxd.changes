@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 17 08:26:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * siproxd.service
+
+-------------------------------------------------------------------
 Wed May 19 18:13:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.8.3

@@ -28,7 +28,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -37,8 +37,11 @@ URL:            https://www.wireshark.org/
 Source:         https://www.wireshark.org/download/src/%{name}-%{version}.tar.xz
 Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.asc
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
+# PATCH-FIX-UPSTREAM wireshark-0000-wsutil-implicit_declaration_memcpy.patch
 Patch0:         wireshark-0000-wsutil-implicit_declaration_memcpy.patch
+# PATCH-FIX-UPSTREAM wireshark-0001-pkgconfig.patch bsc#1194780
 Patch1:         wireshark-0001-pkgconfig.patch
+# PATCH-FEATURE-SLE wireshark-0010-dumpcap-permission-denied.patch bsc#1180102
 Patch10:        wireshark-0010-dumpcap-permission-denied.patch
 BuildRequires:  %{rb_default_ruby_suffix}-rubygem-asciidoctor
 BuildRequires:  bison

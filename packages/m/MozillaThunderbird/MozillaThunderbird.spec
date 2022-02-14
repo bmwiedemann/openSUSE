@@ -2,7 +2,7 @@
 # spec file
 #
 # Copyright (c) 2022 SUSE LLC
-#               2006-2021 Wolfgang Rosenauer <wr@rosenauer.org>
+#               2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          91
-%define mainver        %major.5.1
-%define orig_version   91.5.1
+%define mainver        %major.6.0
+%define orig_version   91.6.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -38,9 +38,6 @@
 # upstream default is clang (to use gcc for large parts set to 0)
 %define clang_build    0
 
-# PIE, full relro
-%define build_hardened 1
-
 %bcond_with only_print_mozconfig
 
 %bcond_without mozilla_tb_kde4
@@ -48,7 +45,7 @@
 %bcond_without mozilla_tb_optimize_for_size
 
 # define if ccache should be used or not
-%define useccache     1
+%define useccache     0
 
 # Firefox only supports i686
 %ifarch %ix86
@@ -207,7 +204,6 @@ Patch28:        mozilla-libavcodec58_91.patch
 Patch29:        mozilla-silence-no-return-type.patch
 Patch30:        mozilla-bmo531915.patch
 Patch31:        mozilla-bmo1724679.patch
-Patch32:        mozilla-bmo1745560.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -310,7 +306,6 @@ fi
 %patch29 -p1
 %patch30 -p1
 %patch31 -p1
-%patch32 -p1
 %endif
 
 %build
@@ -366,9 +361,7 @@ export CFLAGS="$CFLAGS -fimplicit-constexpr"
 # Limit RAM usage during link
 export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %endif
-%if 0%{?build_hardened}
 export LDFLAGS="${LDFLAGS} -fPIC -Wl,-z,relro,-z,now"
-%endif
 %ifarch ppc64 ppc64le
 %if 0%{?clang_build} == 0
 export CFLAGS="$CFLAGS -mminimal-toc"
@@ -530,8 +523,9 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
           >> %{_tmppath}/translations.$_l10ntarget
 ' -- {}
 %endif
-
+%if 0%{useccache} != 0
 ccache -s
+%endif
 %endif
 
 %install

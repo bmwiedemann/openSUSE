@@ -16,9 +16,9 @@
 #
 
 
-%define soname libosip2-12
+%define sover 15
 Name:           libosip2
-Version:        5.2.1
+Version:        5.3.0
 Release:        0
 Summary:        Implementation of SIP (RFC 3261)
 License:        LGPL-2.1-or-later
@@ -37,11 +37,11 @@ Internet community with a simple way to support the Session Initiation
 Protocol. SIP is described in the RFC 3261, which is available at
 http://www.ietf.org/rfc/rfc3261.txt.
 
-%package -n %{soname}
+%package -n %{name}-%{sover}
 Summary:        Implementation of SIP (RFC 3261)
 Group:          System/Libraries
 
-%description -n %{soname}
+%description -n %{name}-%{sover}
 This is the GNU oSIP library. It has been designed to provide the
 Internet community with a simple way to support the Session Initiation
 Protocol. SIP is described in the RFC 3261, which is available at
@@ -50,7 +50,7 @@ http://www.ietf.org/rfc/rfc3261.txt.
 %package devel
 Summary:        Header files for the GNU SIP implementation
 Group:          Development/Libraries/C and C++
-Requires:       %{soname} = %{version}
+Requires:       %{name}-%{sover} = %{version}
 Requires:       glibc-devel
 Provides:       libosip2:%{_includedir}/osip2/osip.h
 
@@ -78,12 +78,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 %make_build check
 
-%post -n %{soname} -p /sbin/ldconfig
-%postun -n %{soname} -p /sbin/ldconfig
+%post -n %{name}-%{sover} -p /sbin/ldconfig
+%postun -n %{name}-%{sover} -p /sbin/ldconfig
 
-%files -n %{soname}
+%files -n %{name}-%{sover}
 %license COPYING
-%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so.%{sover}{,.*}
 
 %files devel
 %license COPYING

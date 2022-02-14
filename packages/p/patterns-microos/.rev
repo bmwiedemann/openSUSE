@@ -413,4 +413,11 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>953737</requestid>
   </revision>
+  <revision rev="44" vrev="44">
+    <srcmd5>ed5704f09b4814a13d1afdd41fc8e6d9</srcmd5>
+    <version>5.0</version>
+    <time>1644741248</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1195878</comment>
+  </revision>
 </revisionlist>

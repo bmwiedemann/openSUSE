@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb 10 23:46:55 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.14 (released 2022-02-10) includes security fixes to the
+  crypto/elliptic, math/big packages and to the go command, as well
+  as bug fixes to the compiler, linker, runtime, the go command,
+  and the debug/macho, debug/pe, net/http/httptest, and testing
+  packages.
+  Refs boo#1182345 go1.16 release tracking
+  CVE-2022-23806 CVE-2022-23772 CVE-2022-23773
+  * boo#1195838 go#50974 CVE-2022-23806
+  * go#50977 crypto/elliptic: IsOnCurve returns true for invalid field elements
+  * boo#1195835 go#50699 CVE-2022-23772
+  * go#50700 math/big: Rat.SetString may consume large amount of RAM and crash
+  * boo#1195834 go#35671 CVE-2022-23773
+  * go#50686 cmd/go: do not treat branches with semantic-version names as releases
+  * go#50866 cmd/compile: incorrect use of CMN on arm64
+  * go#50832 runtime/race: NoRaceMutexPureHappensBefore failures
+  * go#50811 cmd/go: remove bitbucket VCS probing
+  * go#50780 runtime: incorrect frame information in traceback traversal may hang the process.
+  * go#50721 debug/pe: reading debug_info section of PE files that use the DWARF5 form DW_FORM_line_strp causes error
+  * go#50682 cmd/compile: MOVWreg missing sign-extension following a Copy from a floating-point LoadReg
+  * go#50645 testing: surprising interaction of subtests with TempDir
+  * go#50585 net/http/httptest: add fipsonly compliant certificate in for NewTLSServer(), for dev.boringcrypto branch
+  * go#50245 runtime: intermittent os/exec.Command.Start() Hang on Darwin in Presence of "plugin" Package
+
+-------------------------------------------------------------------
 Thu Jan  6 20:38:08 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.16.13 (released 2022-01-06) includes fixes to the compiler,

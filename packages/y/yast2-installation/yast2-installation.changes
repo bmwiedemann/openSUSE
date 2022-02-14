@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  9 15:05:32 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Set the Xft.dpi resource after running the X server,
+  before running yast to fix hidpi issues with Qt 5.15
+  (boo#1173451)
+- 4.4.40
+
+-------------------------------------------------------------------
 Wed Feb  2 11:46:42 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed crash in Ruby 3.1 after pressing the hamburger menu icon

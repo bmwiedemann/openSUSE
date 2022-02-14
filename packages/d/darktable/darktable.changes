@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 11 09:01:03 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.8.1
+  https://www.darktable.org/2022/02/darktable-3.8.1-released/
+- Removed 10678.patch
+
+-------------------------------------------------------------------
 Tue Jan 25 08:46:58 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Switch from %fedora_version to %fedora

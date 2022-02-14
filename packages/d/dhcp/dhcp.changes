@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 19 09:53:39 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
+
+- modify source if-up.d.dhcpd-restart-hook:
+  * fix option parsing
+  * do not call /usr/libexec/dhcp/dhcpd directly, use systemd for it 
+
+-------------------------------------------------------------------
 Mon Jan 17 08:52:07 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop PrivateDevices and ProtectClock hardenings. They clash with

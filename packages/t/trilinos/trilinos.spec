@@ -1,7 +1,7 @@
 #
 # spec file for package trilinos
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,14 @@
 
 # Base package name
 %define pname trilinos
-%define ver 13.0.1
-%define ver_exp 13-0-1
+%define ver 13.2.0
+%define ver_exp 13-2-0
 %define so_ver 13
 %define PNAME %(echo %{pname} | tr [a-z] [A-Z])
 %define _ver %(echo %{ver} | tr . _)
-%define openblas_vers 0.3.6
+%define min_openblas_vers 0.3.6
+# We don't compile .py files, so major version is sufficient
+%define use_python_version 3
 
 # Don't even try this package on 32bit
 # - some modules require pointers of bigger size
@@ -369,16 +371,23 @@ ExclusiveArch:  do_not_build
 %if %{without hpc}
  %if %{with mpi}
 %define p_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}
-%define p_includedir %{p_prefix}/include
 %define mpi_suffix -%{mpi_family}%{?mpi_ext}
  %else
 %define p_prefix %{_prefix}
-%define p_includedir %{p_prefix}/include/%{pname}
  %endif
+%define p_includedir %{p_prefix}/include/%{pname}
 %define p_libdir %{p_prefix}/%{_lib}
 %define p_bindir %{p_prefix}/bin
 %define package_name %{pname}%{?mpi_suffix}
 %define libname lib%{pname}%{?so_ver}%{?mpi_suffix}
+ %if %{without mpi}
+ %define p_python_sitelib %{expand:%python%{use_python_version}_sitelib}
+ %else
+ %define p_python_sitelib %{expand:%(source %{p_bindir}/mpivars.sh; \\\
+	var=${PATH%%%%:*};var=${var%%/bin}; \\\
+        python%{use_python_version} -c "import sysconfig as s; \\\
+  print(s.get_paths(vars={'base': \\"$var\\"}).get('purelib'));")}
+ %endif
 %else
 %{hpc_init %{?compiler_family:-c %compiler_family %{?c_f_ver:-v %{c_f_ver}}} %{?with_mpi:-m {%mpi_family}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
 %define package_name %{hpc_package_name %_ver}
@@ -387,9 +396,8 @@ ExclusiveArch:  do_not_build
 %define p_libdir %hpc_libdir
 %define p_bindir %hpc_bindir
 %define libname lib%{name}
-# This will avoid rpmint errors when non-python3 scripts are detected.
-# It needs to be addressed at some point. This needs to come after hpc_init.
 %undefine _hpc_python3
+%define p_python_sitelib %hpc_python_sitelib
 %endif
 
 Name:           %package_name
@@ -400,11 +408,15 @@ License:        LGPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            http://trilinos.sandia.gov/index.html
 Source0:        https://github.com/trilinos/Trilinos/archive/trilinos-release-%{ver_exp}.tar.gz
-Patch0:         Make-kokkos-build-reproducible.patch
-Patch1:         Add-missing-ENV-DESTDIR.patch
+Patch0:         Fix-control-reaches-end-of-non-void-function-error.patch
+Patch1:         Convert-python2-isms-to-python3.patch
+Patch2:         Not-a-shell-script.patch
+Patch3:         Make-include-and-library-path-configurable-using-Cmake-variables.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
+BuildRequires:  python%{use_python_version}-base
+BuildRequires:  python-rpm-macros
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
 BuildRequires:  ninja
 %endif
@@ -415,7 +427,7 @@ BuildRequires:  memory-constraints
 BuildRequires:  swig > 2.0.0
 BuildRequires:  xz
 BuildRequires:  zlib-devel
-%{?with_hpc:BuildRequires:  suse-hpc >= 0.5}
+%{?with_hpc:BuildRequires:  suse-hpc >= 0.5.20220206}
 
 %if %{with doc}
 BuildRequires:  doxygen
@@ -432,7 +444,7 @@ BuildRequires:  %{mpi_family}%{?mpi_ext}-%{compiler_family}%{?c_f_ver}-hpc-macro
 BuildRequires:  boost-devel
 #BuildRequires:  boost-%%{compiler_family}-hpc-devel
 BuildRequires:  hdf5-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc-devel
-BuildRequires:  libopenblas-%{compiler_family}-hpc >=  %{openblas_vers}
+BuildRequires:  libopenblas-%{compiler_family}-hpc >=  %{min_openblas_vers}
 BuildRequires:  libopenblas-%{compiler_family}-hpc-devel
 BuildRequires:  netcdf-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc-devel
 # hpc
@@ -469,8 +481,6 @@ Requires:       %libname = %version
 
 # doc
 %endif
-
-%{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
 #!BuildIgnore: post-build-checks
 
@@ -512,10 +522,13 @@ This subpackage contains the shared libraries.
 %package devel
 Summary:        Headers and development files for %{package_name}
 Group:          Development/Libraries/C and C++
+Requires:       %libname = %version
 %if %{without hpc}
 Requires:       glpk-devel
 Requires:       swig
+Recommends:     %{pname}-python%{use_python_version}-devel = %version
 Recommends:     %{name}-doc
+Conflicts:      exodusii-devel
  %if %{without mpi}
 Requires:       hdf5-devel
 Requires:       lapack-devel
@@ -542,7 +555,6 @@ Requires:       %{compiler_family}%{?c_f_ver}-compilers-hpc
 Requires:       %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc
 # Fix this once boost is available as a HPC version
 #Requires:       boost-%%{compiler_family}-hpc
-Requires:       %libname = %version
 %{requires_eq hdf5%{hpc_package_name_tail}-devel}
 %{requires_eq libopenblas-%{compiler_family}-hpc-devel}
 %{requires_eq netcdf%{hpc_package_name_tail}-devel}
@@ -560,7 +572,6 @@ Trilinos top layer providing a common look-and-feel and infrastructure.
 This package contains the headers and libraries files for %{package_name}
 needed for development.
 
-
 %if %{with hpc}
 %{hpc_master_package -l -L}
 %{hpc_master_package -L -O %{pname}%{hpc_package_name_tail} devel}
@@ -568,18 +579,17 @@ needed for development.
 
 %prep
 %setup -q -n  Trilinos-trilinos-release-%{ver_exp}
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 
 %build
 # https://en.opensuse.org/openSUSE:Build_system_recipes#cmake
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
 %define __builder ninja
 %endif
-# Do *not* replace by memoryperjob constraint!!! The latter
-# attempts to find a work whose memory matches the number of
-# jobs available * memoryperjob. Such workers may not exist!
-%limit_build -m 4000
+# This fixes up the memoryperjob _constraint. On some architectures
+# there are no workers where totalmemory >= jobs * memoryperjob
+# Use memoryperjob to let the OBS choose reasonable workers
+%limit_build -m 1500
 # Fix this once boost is available as a HPC version
 # move this to the non-hpc section
 BOOST_INC=%{_incdir}/boost
@@ -606,6 +616,9 @@ HDF5_LIB=%{p_libdir}
  %endif
 %cmake \
 %else
+        # CAVE: Logic in TribitsWriteClientExportFiles.cmake:
+        # "H) Create the cmake Config.cmake file for the install tree."
+        # Trilinos_INSTALL_{LIB,INCLUDE}_DIR must both be relative paths
 %hpc_cmake \
 %endif
         -DCMAKE_INSTALL_PREFIX=%{p_prefix}                              \
@@ -615,15 +628,14 @@ HDF5_LIB=%{p_libdir}
         -DBUILD_SHARED_LIBS:BOOL=ON                                     \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON                              \
         -DCMAKE_SKIP_RPATH:BOOL=ON                                      \
-        -DTrilinos_INSTALL_LIB_DIR:PATH=%{p_libdir}                     \
-%if %{without hpc} && %{without mpi}
-        -DTrilinos_INSTALL_INCLUDE_DIR:PATH=include/%{pname}            \
-        -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{p_includedir}/%{pname}        \
+        -DTrilinos_INSTALL_LIB_DIR:STRING=%{_lib}                       \
+%if %{without hpc}
+        -DTrilinos_INSTALL_INCLUDE_DIR:STRING=include/%{pname}          \
 %endif
         -DTrilinos_VERBOSE_CONFIGURE:BOOL=ON                            \
         -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=OFF                         \
         -DTrilinos_EXTRA_LINK_FLAGS:STRING="-lgfortran"                 \
-        -DTrilinos_ENABLE_Epetra:BOOL=OFF                               \
+        -DTrilinos_ENABLE_Epetra:BOOL=ON                                \
         -DTrilinos_ENABLE_Gtest:BOOL=OFF                                \
         -DTrilinos_ENABLE_MueLu:BOOL=ON                                 \
         -DTrilinos_ENABLE_Phalanx:BOOL=ON                               \
@@ -701,15 +713,23 @@ HDF5_LIB=%{p_libdir}
 #       -DBLACS_INCLUDE_DIRS:PATH="$MKLROOT/include"                    \
 #       -DBLACS_LIBRARY_NAMES:STRING="mkl_rt"                           \
 
-%make_jobs 
+%make_jobs
 cd ..
 
 %install
 %{?with_hpc:%hpc_setup}
 %{?with_hpc:%hpc_setup_mpi}
 %cmake_install
+mkdir -p %{buildroot}%p_python_sitelib/%pname
+# Python2 is history
+rm -f %{buildroot}%{p_prefix}/lib/*2.py
+mv %{buildroot}%{p_prefix}/lib/*.py %{buildroot}%{p_python_sitelib}/%pname
+chmod a-x %{buildroot}%{p_python_sitelib}/%pname/*.py
 
 %if %{with hpc}
+%hpc_shebang_sanitize_scripts %{buildroot}%{p_libdir}/cmake
+%hpc_shebang_sanitize_scripts %{buildroot}%{p_python_sitelib}/%pname
+
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
 
@@ -735,6 +755,7 @@ if {[file isdirectory  %{hpc_includedir}]} {
 prepend-path    INCLUDE             %{hpc_includedir}
 }
 prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
+prepend-path    PYTHONPATH          %{p_python_sitelib}
 
 setenv          %{PNAME}_DIR        %{hpc_prefix}
 setenv          %{PNAME}_BIN        %{hpc_bindir}
@@ -760,7 +781,7 @@ find %{buildroot}%{p_prefix} -name .gitignore -delete
 %{?with_hpc:%{hpc_shebang_sanitize_scripts %{buildroot}/%{p_libdir}/cmake}}
 %{?with_hpc:%{hpc_shebang_sanitize_scripts %{buildroot}/%{p_bindir}}}
 %{?with_hpc:%{hpc_shebang_sanitize_scripts doc/}}
-for i in $(find %{buildroot}/%{p_libdir}/cmake -name "*.sh" -o -name "*.py"); do 
+for i in $(find %{buildroot}/%{p_libdir}/cmake -name "*.sh" -o -name "*.py"); do
     head -1 $i | grep -qE "#! */" && chmod 0755 $i
 done
 
@@ -791,11 +812,14 @@ done
 %{p_libdir}/cmake
 %{p_libdir}/*.so
 %{p_bindir}%{!?hpc:/*}
+%{?with_hpc:%dir %{p_python_sitelib}}
+%{p_python_sitelib}/%{pname}
+
 # doc
 %endif
 
 #############################################################################
-# Build documentation only               
+# Build documentation only
 #############################################################################
 %if %{with doc}
 %package doc
@@ -839,6 +863,7 @@ sed -i s/href=\"\.\./href=\"\./ doc/index.html
 find doc/ -name .gitignore -delete
 find doc/ -name *do-configure -exec chmod 644 {}  \;
 find doc/ -name *copy_xml_to_src_html.py -exec chmod 644 {}  \;
+find doc/ \( -name "*.gif" -o -name "*.jpg" \) -exec chmod a-x {}  \;
 
 %files doc
 %doc doc/*

@@ -1,7 +1,7 @@
 #
 # spec file for package xerces-j2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%global cvs_version 2_12_1
+%global cvs_version 2_12_2
 %define __requires_exclude system.bundle
 Name:           xerces-j2
-Version:        2.12.1
+Version:        2.12.2
 Release:        0
 Summary:        Java XML parser
 License:        Apache-2.0 AND W3C

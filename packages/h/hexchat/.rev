@@ -311,4 +311,20 @@
     <comment></comment>
     <requestid>949983</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9bba3da12425573884a691fb165b8564</srcmd5>
+    <version>2.16.1</version>
+    <time>1644778266</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.16.1
+  * add -NOOVERRIDE flag to the GUI COLOR command
+  * add -q (quiet) flag to EXECWRITE command
+  * rename installed icon on Linux to match app-id (Fixes notification icon)
+  * fix escaping already escaped URLs when opening them
+  * fix Python scripts not being opened as UTF-8
+  * fix TIMER command supporting decimals regardless of locale
+  * fishlim: fix building with OpenSSL 3
+</comment>
+    <requestid>954079</requestid>
+  </revision>
 </revisionlist>

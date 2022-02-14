@@ -108,4 +108,12 @@
   * Fixed: in_avail() can always be zero, by @pg83</comment>
     <requestid>947724</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>463bed1c6a1030049a929bdac288bcb0</srcmd5>
+    <version>1.2.1</version>
+    <time>1644707720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953810</requestid>
+  </revision>
 </revisionlist>

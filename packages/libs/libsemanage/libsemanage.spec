@@ -1,7 +1,7 @@
 #
 # spec file for package libsemanage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ BuildRequires:  flex
 BuildRequires:  libbz2-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
-BuildRequires:  libustr-devel
 BuildRequires:  pkgconfig
 
 %description
@@ -79,7 +78,6 @@ parallel installation
 Summary:        Header files and libraries for SELinux's policy management libary
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-Requires:       libustr-devel
 
 %description devel
 The libsemanage-devel package contains the libraries and header files

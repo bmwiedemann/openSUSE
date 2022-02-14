@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Feb  7 07:07:18 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Make use of the newly introduced %%hpc_pyton_sitelib macro.
+
+-------------------------------------------------------------------
+Wed Feb  2 16:19:43 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix python modules to use the right include and lib dir:
+  Make-include-and-library-path-configurable-using-Cmake-variables.patch
+  See also: https://github.com/gsjaardema/seacas/pull/279
+- Make sure python modules for serial and MPI variants don't
+  overlap.
+  NOTE: mpi-selector is not setting PYTHONPATH!
+- Free package of all python2 traces.
+
+-------------------------------------------------------------------
+Sun Jan 30 10:54:03 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Lower disk and memory constraints to match actual requirements,
+  dito %limit_build (now 16 GByte disk and 5 GByte memory).
+- Add memoryperjob constraint for a worker preselection, so
+  limit_build only lowers the number of jobs slightly.
+- Fix cmake files for non-HPC MPI build.
+- Add openmpi4 non-HPC flavor
+
+-------------------------------------------------------------------
+Fri Jan 14 09:43:20 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Update to version 13.2.0
+  For information on changes consult the release notes of
+  its sub-packages.
+  * Remove: Make-kokkos-build-reproducible.patch
+            Add-missing-ENV-DESTDIR.patch
+  * Add: Fix-control-reaches-end-of-non-void-function-error.patch
+         Convert-python2-isms-to-python3.patch
+	 Not-a-shell-script.patch
+- Add dependency for library package to devel package.
+- Fix cmake include path (boo#1194648):
+  cmake/tribits/core/package_arch/TribitsWriteClientExportFiles.cmake
+  uses a logic to calculate the relative path elements between
+  the cmake directory and the installation directory. This works
+  only if Trilinos_INSTALL_LIB_DIR is relative, while other parts
+  of the code allow it to be absolute.
+  See also: https://github.com/trilinos/Trilinos/issues/10100
+- Fix doc building.
+
+-------------------------------------------------------------------
 Tue Mar 23 23:15:05 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Update to version 13.0.1

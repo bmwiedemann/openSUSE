@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 11 15:15:58 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add KFAILs for PR28667.
+
+-------------------------------------------------------------------
+Mon Feb  7 15:15:58 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (jsc#SLE-22287):
+  * ibm-z-add-another-arch14-instruction.patch
+  * ibm-z-remove-lpswey-parameter.patch
+- Fedora fixup patch added:
+  * fixup-gdb-6.5-bz243845-stale-testing-zombie-test.patch
+
+-------------------------------------------------------------------
 Thu Feb  3 12:22:35 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - gdb-r_version-check.patch: gdb: Don't assume r_ldsomap when r_version >

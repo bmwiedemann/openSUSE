@@ -426,4 +426,12 @@
     <comment>- Update to release 11.11</comment>
     <requestid>948226</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>35b749f93a3c0f0df5e1cb53d5bf9bc0</srcmd5>
+    <version>11.12</version>
+    <time>1644778258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.12</comment>
+    <requestid>954059</requestid>
+  </revision>
 </revisionlist>

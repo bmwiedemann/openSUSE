@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 13 03:14:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Pass prefix also to the build as the path to the assets is
+  compiled into the binary
+
+-------------------------------------------------------------------
 Sun May  3 15:20:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.4.2

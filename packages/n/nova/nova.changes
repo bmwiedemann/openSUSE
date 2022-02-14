@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  9 10:28:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.17, as stated in the go.mod file
+
+-------------------------------------------------------------------
+Wed Feb 09 08:17:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 3.0.0:
+  * Add User-Agent header for Artifacthub requests (#68)
+  * [RD-24] Utilize ArtifactHub instead of helm-hub (#61)
+
+-------------------------------------------------------------------
 Wed Jan 26 20:01:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - add Conflicts for python3-novaclient

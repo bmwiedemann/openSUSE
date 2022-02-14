@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 10 19:21:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add c44d8e323affd7f1043f300f3325b358cd5b5f0b.patch:
+  folks-generics: Add missing generic type argument.
+- Update our Supplements to current standard.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Tue Jan 18 09:57:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.15.4:
