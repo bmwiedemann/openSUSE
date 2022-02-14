@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
-Fri Dec 10 01:12:16 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 1.17.3
+Mon Feb 14 13:33:42 UTC 2022 - ecsos <ecsos@opensuse.org>
 
-- enable desktop notifications
+- Update to 1.17.4
+  This release only updates dependency versions including
+  toktok/c-toxcore to v0.2.13 to address CVE-2021-44847.
+  No code changes.
+
+-------------------------------------------------------------------
+Fri Dec 10 01:12:16 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Enable desktop notifications.
 
 -------------------------------------------------------------------
 Sun Nov 29 10:47:09 UTC 2020 - ecsos <ecsos@opensuse.org>

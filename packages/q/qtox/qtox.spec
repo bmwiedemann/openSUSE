@@ -1,7 +1,7 @@
 #
 # spec file for package qtox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define realname qTox
 
 Name:           qtox
-Version:        1.17.3
+Version:        1.17.4
 Release:        0
 Summary:        Tox client
 License:        GPL-3.0-only
@@ -79,7 +79,7 @@ BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openal) >= 1.16.0
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sqlcipher) >= 3.2.0
-BuildRequires:  pkgconfig(toxcore) >= 0.2.10
+BuildRequires:  pkgconfig(toxcore) >= 0.2.13
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(xscrnsaver) >= 1.2
 
