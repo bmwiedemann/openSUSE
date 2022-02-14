@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb 13 22:34:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.23
+  * Decompression time has been reduced by 5-12% depending on the
+    file.
+  * In case of error in a numerical argument to a command line
+    option, lziprecover now shows the name of the option and the
+    range of valid values.
+  * Options "--dump" and "--strip" now refuse to write compressed
+    data to a terminal except when dumping trailing data with
+    "--dump=tdata".
+  * The option "-U, --unzcrash" now requires an argument: "1"
+    to test 1-bit errors, or "B<size>" to test zeroed blocks.
+  * The memory tester now allocates the dictionary once per
+    member instead of doing it for each test. This makes "-U,
+    --unzcrash" about two times faster on my machine on files
+    with an uncompressed size larger than about 30 MB.
+  * "-W, --debug-decompress" now continues decompressing the
+    members following the damaged member if it has been fully
+    decompressed (just failed with a CRC mismatch).
+  * The tool unzcrash now prints byte or block position in messages. 
+
+-------------------------------------------------------------------
 Fri Mar 12 21:55:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.22

@@ -1,7 +1,7 @@
 #
 # spec file for package lziprecover
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lziprecover
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        Utility to repair broken lzip files
 License:        GPL-2.0-or-later
@@ -28,8 +28,8 @@ Source:         http://download.savannah.gnu.org/releases/lzip/lziprecover/%name
 Source2:        http://download.savannah.gnu.org/releases/lzip/lziprecover/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 BuildRequires:  gcc-c++
-Requires(post):     info
-Requires(preun):    info
+Requires(post): info
+Requires(preun):info
 
 %description
 Lziprecover is a data recovery tool and decompressor for files in the
@@ -80,7 +80,8 @@ popd
 %install_info_delete --info-dir="%_infodir" "%_infodir/%name".info*
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc ChangeLog README
+%license COPYING
 %_bindir/lziprecover
 %_mandir/man1/lziprecover.1*
 %_infodir/lziprecover.info*
