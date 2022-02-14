@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-plotly
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -155,6 +155,6 @@ donttest+=" or test_matplotlylib"
 
 %files -n jupyter-plotly
 %license LICENSE.txt
-%_jupyter_config %{_jupyter_nb_notebook_confdir}/jupyterlab-plotly.json
+%{_jupyter_config} %{_jupyter_nb_notebook_confdir}/jupyterlab-plotly.json
 
 %changelog
