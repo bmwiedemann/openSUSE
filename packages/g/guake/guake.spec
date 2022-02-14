@@ -1,7 +1,7 @@
 #
 # spec file for package guake
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,30 @@
 
 
 Name:           guake
-Version:        3.8.1
+Version:        3.8.5
 Release:        0
 Summary:        Drop-down terminal for GNOME
 License:        GPL-2.0-only
 Group:          System/X11/Terminals
 URL:            http://guake-project.org/
-Source:         https://github.com/Guake/guake/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Use PyPI source, not GitHub tag-ref tarballs, see https://guake.readthedocs.io/en/latest/user/installing.html#install-from-source
+Source0:        https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
+# PyPI tarball missed this file
+Source1:        https://raw.githubusercontent.com/Guake/guake/%{version}/guake/paths.py.in
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-tools
 BuildRequires:  gobject-introspection
-BuildRequires:  python3-pbr
 BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools >= 57.5.0
+BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libwnck-3.0)
 Requires:       python3-cairo
 Requires:       python3-dbus-python
 Requires:       python3-gobject-Gdk
-Requires:       python3-pbr
 Recommends:     libutempter0
 Suggests:       gtk3-metatheme-numix
 BuildArch:      noarch
@@ -54,16 +57,21 @@ Guake is a dropdown terminal made for the GNOME desktop environment.
 
 %prep
 %autosetup -p1
+cp %{SOURCE1} ./guake/
+# Remove a useless placeholder dir from docs
+rm -fr ./docs/source/_static
+
+sed -i 's/\r$//' ./docs/make.bat
 
 %build
-make %{?_smp_mflags}
+%make_build
+# docs cannot be built as they require a local git repository
 
 %install
-PBR_VERSION=%{version} make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
+%make_install PREFIX=%{_prefix}
 
 rm -fr %{buildroot}%{_datadir}/%{name}/po
 
-rm -r %{buildroot}%{python3_sitelib}/guake/tests/
 # conflicts with libgio-2_0-0
 rm %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
 %fdupes %{buildroot}
@@ -72,9 +80,10 @@ rm %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%doc README.rst NEWS.rst
+%doc README.rst NEWS.rst docs/
 %license COPYING
-%{python3_sitelib}/*
+%{python3_sitelib}/guake/
+%{python3_sitelib}/guake-%{version}-py%{python3_version}.egg-info/
 %{_bindir}/guake
 %{_bindir}/guake-toggle
 %{_datadir}/applications/guake-prefs.desktop
