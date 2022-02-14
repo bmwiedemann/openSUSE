@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 14 07:50:57 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.1.1:
+  * Change the edge panning behavior when an element is selected,
+    fixing the absurdly fast edge pan speed bug.
+  * Fixed several crashing/freezing issues.
+  * Fixed several bugs involving stroke input and rendering.
+  * Fixed several bugs involving PDF rendering (in application) and export.
+  * lots of bug fixes; for the full list, see
+    https://github.com/xournalpp/xournalpp/blob/v1.1.1/CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Aug  4 09:13:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.1.0:
