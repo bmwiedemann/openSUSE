@@ -1,7 +1,7 @@
 #
 # spec file for package weechat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        weechat.desktop
 Source2:        %{name}.keyring
 Source3:        https://weechat.org/files/src/%{name}-%{version}.tar.xz.asc
 Source4:        %{name}.changes
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-ruby-add-detection-of-Ruby-3.1.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake
 BuildRequires:  curl-devel
@@ -124,7 +126,7 @@ Provides:       %{name}-aspell = %{version}
 Spell-checking support for %{name}, using the aspell and enchant libraries.
 
 %prep
-%setup -q
+%autosetup -p1
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE4}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
