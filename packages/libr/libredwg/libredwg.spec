@@ -1,7 +1,7 @@
 #
 # spec file for package libredwg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libredwg0
 Name:           libredwg
-Version:        0.11.1
+Version:        0.12.5
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ OpenDWG libraries. DWG is the native file format of AutoCAD.
 Summary:        Command line utilities for handling DWG file
 Group:          Productivity/File utilities
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 # Both packages ship a %%_bindir/dwg2dxf
 Conflicts:      libdxfrw-tools
 
@@ -76,17 +76,14 @@ OpenDWG libraries. DWG is the native file format of AutoCAD.
 # Force-add some symvers so RPM can produce meaningful deps.
 echo 'V_%version { global: *; };' >src/sv.sym
 %configure --disable-static
-make %{?_smp_mflags} libredwg_la_LDFLAGS=-Wl,-version-script,sv.sym libredwg_la_LIBADD=-lm
+%make_build libredwg_la_LDFLAGS=-Wl,-version-script,sv.sym libredwg_la_LIBADD=-lm
 
 %install
 %make_install
-find "%buildroot" -type f -name "*.la" -delete -print
-
-%post tools
-%install_info --info-dir="%_infodir" "%_infodir/LibreDWG.info*.gz"
-
-%preun tools
-%install_info_delete --info-dir="%_infodir" "%_infodir/LibreDWG.info*.gz"
+b="%buildroot"
+find "$b" -type f -name "*.la" -delete -print
+# Just examples (and also in the wrong directory)
+rm -fv "$b/usr/share/dwgadd.example" "$b/usr/share/load_dwg.py" "$b/usr/share/man/man5/dwgadd.5"*
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
