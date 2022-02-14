@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.32.0
+Version:        2.33.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -48,6 +48,7 @@ BuildRequires:  azure-cli-command-modules-nspkg >= 2.0
 BuildRequires:  azure-cli-core = %{version}
 BuildRequires:  azure-cli-nspkg >= 3.0.3
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       azure-cli-command-modules-nspkg >= 2.0
 Requires:       azure-cli-core = %{version}
 Requires:       azure-cli-nspkg >= 3.0.3
@@ -81,7 +82,7 @@ Requires:       python3-azure-mgmt-compute >= 23.1.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 9.1.0
 Requires:       python3-azure-mgmt-containerregistry >= 8.2.0
-Requires:       python3-azure-mgmt-containerservice >= 16.1.0
+Requires:       python3-azure-mgmt-containerservice >= 16.4.0
 Requires:       python3-azure-mgmt-cosmosdb >= 7.0.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
@@ -108,7 +109,7 @@ Requires:       python3-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       python3-azure-mgmt-media >= 7.0.0
 Requires:       python3-azure-mgmt-monitor >= 3.0.0
 Requires:       python3-azure-mgmt-msi >= 0.2
-Requires:       python3-azure-mgmt-netapp >= 4.0.0
+Requires:       python3-azure-mgmt-netapp >= 6.0.1
 Requires:       python3-azure-mgmt-network >= 19.3.0
 Requires:       python3-azure-mgmt-policyinsights >= 1.0.0
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
@@ -131,7 +132,7 @@ Requires:       python3-azure-mgmt-sql >= 3.0.1
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b1
 Requires:       python3-azure-mgmt-storage >= 19.0.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0
-Requires:       python3-azure-mgmt-trafficmanager >= 0.51.0
+Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       python3-azure-mgmt-web >= 4.0.0
 Requires:       python3-azure-multiapi-storage >= 0.7.0
 Requires:       python3-azure-storage-common >= 1.4
