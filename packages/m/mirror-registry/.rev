@@ -16,4 +16,15 @@
   -  Add --newest-only option to only mirror the newest (highest) tags</comment>
     <requestid>749201</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>70f0692795c47bc5624f9c5c4410dbcc</srcmd5>
+    <version>1.2</version>
+    <time>1644874572</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2
+  - Refresh dependencies
+
+  - Add --newest-only option to only mirror the newest (highest) tags</comment>
+    <requestid>954176</requestid>
+  </revision>
 </revisionlist>
