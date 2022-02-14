@@ -1,0 +1,6 @@
+<package name="cmctl" project="openSUSE:Factory">
+  <title>cmctl</title>
+  <description>cmctl is a CLI tool that can help you to manage cert-manager resources inside your cluster.</description>
+  <devel project="devel:kubic" package="cmctl"/>
+  <url>https://github.com/cert-manager/cert-manager</url>
+</package>
