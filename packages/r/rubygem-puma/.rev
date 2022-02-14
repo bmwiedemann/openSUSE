@@ -382,4 +382,17 @@
     <comment></comment>
     <requestid>942023</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5af946d9b53a5a5c2ae447b1ffb9cd8c</srcmd5>
+    <version>5.6.2</version>
+    <time>1644874569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.6.2
+  https://github.com/advisories/GHSA-rmj8-8hhh-gv5h
+  https://rubysec.com/advisories/CVE-2022-23634/
+  other changes:
+  https://github.com/puma/puma/releases/tag/v5.6.1
+  https://github.com/puma/puma/releases/tag/v5.6.0 (forwarded request 953929 from darix)</comment>
+    <requestid>954164</requestid>
+  </revision>
 </revisionlist>

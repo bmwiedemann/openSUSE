@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 12 16:18:43 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 5.6.2
+  https://github.com/advisories/GHSA-rmj8-8hhh-gv5h
+  https://rubysec.com/advisories/CVE-2022-23634/
+
+  other changes:
+  https://github.com/puma/puma/releases/tag/v5.6.1
+  https://github.com/puma/puma/releases/tag/v5.6.0
+
+-------------------------------------------------------------------
 Tue Dec 21 00:24:34 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 5.5.2
