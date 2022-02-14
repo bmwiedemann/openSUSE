@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 13 22:26:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.0
+  * Modified functions putpixel(), setbkcolor(), setcolor(),
+    setfillpattern(), setfillstyle(), setpalette(), and
+    setalpha() to handle colours given as out of range numbers.
+  * Simplified floodfill() function (implemented recursive version)
+  * Improved setpalette() to change currently drawn pixels.
+  * Added getrgbpalette(), setallrgbpalette(), and RGBPALETTE().
+  * Implemented getwindowwidth() and getwindowheight() as macros
+    for WinBGIm compatibility.
+
+-------------------------------------------------------------------
 Tue May  4 13:32:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.4
