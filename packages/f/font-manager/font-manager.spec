@@ -1,7 +1,7 @@
 #
 # spec file for package font-manager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %global DBusName org.gnome.FontManager
 %global DBusName2 org.gnome.FontViewer
 Name:           font-manager
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
 Summary:        A simple font management application for Gtk+ Desktop Environments
 License:        GPL-3.0-or-later
-URL:            https://fontmanager.github.io/
-Source0:        https://github.com/FontManager/%{name}/archive/refs/tags/%{version}.tar.gz
-Patch0:         font-manager-fix-gcc11-compilation.patch
+URL:            https://fontmanager.github.io
+Source0:        https://github.com/FontManager/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
 BuildRequires:  meson
@@ -101,8 +100,8 @@ Requires:       font-viewer >= %{version}
 %description -n thunar-%{name}
 This package provides integration with the Thunar file manager.
 
-%prep -n %{version}.tar.gz
-%autosetup -n %{name}-%{version} -p1
+%prep
+%autosetup
 
 %build
 %meson --buildtype=release -Dnautilus=True -Dnemo=True -Dthunar=true -Dreproducible=true

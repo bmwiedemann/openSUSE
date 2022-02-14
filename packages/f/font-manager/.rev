@@ -35,4 +35,23 @@
 </comment>
     <requestid>925422</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>afc6ce427af62e8447a83cd72cb35c1e</srcmd5>
+    <version>0.8.8</version>
+    <time>1644874576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.8
+  * Fixes build failure with GCC 11 - Issue #240
+  * Bumps Fontconfig minimum version to 2.12
+  * Adds options for Waterfall display and sizing - Issue #230
+  * Enables basic support for Emoji flag sequences - Issue #109
+  * Fixes warnings generated when double clicking an item in the fontlist - Issue #248
+  * Fixes warnings generated when an unknown language is encountered - Google Fonts Catalog - Issue #249
+  * Allows toggling the state of multiple families in the fontlist - Issue #261
+  * Updates vendor list
+  * Includes latest translation updates
+- Remove upstreamed font-manager-fix-gcc11-compilation.patch
+</comment>
+    <requestid>954186</requestid>
+  </revision>
 </revisionlist>
