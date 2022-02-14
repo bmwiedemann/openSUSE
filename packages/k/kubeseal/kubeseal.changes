@@ -1,0 +1,4 @@
+-------------------------------------------------------------------
+Fri Feb 11 14:09:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubeseal: CLI part for using Bitnami's SealedSecrets in Kubernetes

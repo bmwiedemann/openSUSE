@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/bitnami-labs/sealed-secrets</param>
+              <param name="changesrevision">a509b7054df8410d0581f8086fc02098a442c154</param></service></servicedata>
