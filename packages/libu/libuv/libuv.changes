@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 12 11:48:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.43.0:
+  * protect fork in uv_spawn from signals
+  * drop only successfully sent packets post sendmmsg
+  * adjust stalebot deadline 
+  * work around CIFS EPERM bug
+  * documentation fixes
+  * developer visible code fixes
+
+-------------------------------------------------------------------
 Sun Sep 12 19:31:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.42.0:
