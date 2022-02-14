@@ -1,7 +1,7 @@
 #
 # spec file for package a2ps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        4.14
 Release:        0
 Summary:        Tool to convert ASCII/Latin Text into PostScript
 License:        GPL-3.0-or-later
-Url:            http://www.gnu.org/software/a2ps/a2ps.html
+URL:            http://www.gnu.org/software/a2ps/a2ps.html
 Source0:        http://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/a2ps/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
@@ -56,6 +56,7 @@ BuildRequires:  bison
 BuildRequires:  emacs-nox
 BuildRequires:  flex
 BuildRequires:  ghostscript-fonts-std
+BuildRequires:  glibc-locale
 BuildRequires:  gv
 BuildRequires:  psutils
 BuildRequires:  texlive-latex
@@ -63,11 +64,12 @@ BuildRequires:  timezone
 Requires:       file
 Requires:       ghostscript-fonts-std
 Requires:       glibc
+Requires:       glibc-locale
 Requires:       sed
 Requires:       w3m
 Requires:       wdiff
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Suggests:       ImageMagick
 Suggests:       acroread
 Suggests:       gv

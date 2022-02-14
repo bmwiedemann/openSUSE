@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 10:22:43 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- For iconv glibc-locale should be installed 
+
+-------------------------------------------------------------------
 Wed May 13 07:21:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Discard rm of nonexistent %{_infodir}/dir to fix build
