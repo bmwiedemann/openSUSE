@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 10:22:43 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- For iconv glibc-locale should be installed 
+
+-------------------------------------------------------------------
 Fri Dec  4 13:37:59 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch paps-header_features.patch which combines three

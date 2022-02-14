@@ -1,7 +1,7 @@
 #
 # spec file for package paps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           paps
 Version:        0.7.1
 Release:        0
-Summary:        A text to postscript converter through pango 
+Summary:        A text to postscript converter through pango
 License:        LGPL-2.0-only
 Group:          System/Base
 URL:            https://github.com/dov/%{name}
@@ -38,7 +38,7 @@ BuildRequires:  intltool
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pangoft2)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       glibc-locale
 
 %define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
 %global optflags %{optflags} %{**}
