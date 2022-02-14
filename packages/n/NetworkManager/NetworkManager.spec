@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,58 @@
 #
 
 
+# TODO for the 1.36 release:
+# Drop support for TEAMDCTL as it should have been deprecated by then.
+# And don't forget about its BuildRequire and meson option.
+
 # Toggle this whenever enabling/disabling the nm-probe-radius-server-cert.patch patch (as we export additional symbols)
 # Like this, g-c-c and NM-applet, which consume this symbol, will block updating NM if we have to disable the patch until
 # they are touched too
 %define with_cacert_patch 0
-%define _udevdir %(pkg-config --variable udevdir udev)
+%global _udevdir %(pkg-config --variable udevdir udev)
+%global _pppddir %(ls -d %{_libdir}/pppd/2.?.?)
+%global _dbusconfdir %{_datadir}/dbus-1/system.d
+
+### Handy switches for easy testing of experimental features:
+# (Remember that _with = OFF and _without = ON)
+
+# FIXME: We should find out how to run specific tests and avoid
+# tests that are doomed to fail in OBS.
+# From "test-client.py --help":
+#   test-client.py MyTestCase.testSomething  - run MyTestCase.testSomething
+# Summary of Failures:
+#07/74 check-local-exports-libnm    FAIL  0.11s  exit status 1
+#08/74 platform/test-address-linux  FAIL  0.03s  killed by signal 6 SIGABRT
+#10/74 platform/test-cleanup-linux  FAIL  0.03s  killed by signal 6 SIGABRT
+#12/74 platform/test-link-linux     FAIL  0.03s  killed by signal 6 SIGABRT
+#16/74 platform/test-route-linux    FAIL  0.03s  killed by signal 6 SIGABRT
+#17/74 platform/test-tc-linux       FAIL  0.03s  killed by signal 6 SIGABRT
+#24/74 test-l3cfg                   FAIL  0.10s  killed by signal 6 SIGABRT
+#38/74 devices/test-acd             FAIL  0.04s  killed by signal 6 SIGABRT
+%bcond_with TESTS
+%if %{with TESTS}
+%define tests_meson_opt yes
+%else
+%define tests_meson_opt no
+%endif
+
+# Libaudit: yes-disabled-by-default enables support, but disables
+# it unless explicitly configured via NetworkManager.conf
+%bcond_without LIBAUDIT
+%if %{with LIBAUDIT}
+%define libaudit_meson_opt yes-disabled-by-default
+%else
+%define libaudit_meson_opt no
+%endif
+
 Name:           NetworkManager
-Version:        1.32.12
+Version:        1.34.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.34/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -50,24 +89,18 @@ Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 # PATCH-FIX-UPSTREAM nm-dhcp-use-valid-lease-on-timeout.patch glfd#NetworkManager/NetworkManager!811, bsc#1183202 sckang@suse.com Support valid lease file on dhcp timeout
 Patch8:         nm-dhcp-use-valid-lease-on-timeout.patch
 
+BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  iptables
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
-# Required for tests
 BuildRequires:  python3-dbus-python
-BuildRequires:  python3-gobject
 BuildRequires:  readline-devel
 BuildRequires:  rp-pppoe
-# Do not use suse-release, it's very late in build chain and not needed
-# all it does is netconfig and ifconfig enablement
-#BuildRequires:  suse-release
-# for /sbin/netconfig: integration with netconfig is required
-BuildRequires:  sysconfig-netconfig
 BuildRequires:  wireless-tools
 BuildRequires:  perl(YAML)
 BuildRequires:  pkgconfig(bluez) >= 5
@@ -84,14 +117,28 @@ BuildRequires:  pkgconfig(libnl-3.0) >= 3.2.8
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libnl-route-3.0)
 BuildRequires:  pkgconfig(libpsl) >= 0.1
+BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd) >= 209
+## TODO: teamdctl says: Retire me when I'm ready please!
 BuildRequires:  pkgconfig(libteam)
+##
 BuildRequires:  pkgconfig(libudev) >= 175
 BuildRequires:  pkgconfig(mm-glib) >= 0.7.991
+BuildRequires:  pkgconfig(mobile-broadband-provider-info)
 BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
+### Conditional BRs
+%if %{with LIBAUDIT}
+BuildRequires:  pkgconfig(audit)
+%endif
+## Required for tests
+%if %{with TESTS}
+#BuildRequires:  python3-gobject
+%endif
+##
 Requires:       NetworkManager-branding
 Requires:       dhcp-client
 Requires:       iproute2
@@ -99,20 +146,17 @@ Requires:       iputils
 Requires:       mozilla-nss
 Requires:       sysconfig-netconfig >= 0.80.5
 Requires:       wpa_supplicant >= 0.6.4
-%requires_eq    ppp
 Recommends:     dnsmasq
 Recommends:     iptables
 Recommends:     org.freedesktop.ModemManager
-# Recommend the rp-pppoe binary for PPP over Ethernet (common for ADSL) connections.
-Recommends:     rp-pppoe
 # Provides required by sysconfig. The latter is used by older versions.
 Provides:       dhcdbd = 1.14
 Provides:       service(network)
 Provides:       sysvinit(network)
 Obsoletes:      dhcdbd < 1.14
-Obsoletes:      libnm-glib-vpn1
-Obsoletes:      libnm-glib4
-Obsoletes:      libnm-util2
+Obsoletes:      libnm-glib-vpn1 < 1.32
+Obsoletes:      libnm-glib4 < 1.32
+Obsoletes:      libnm-util2 < 1.32
 %{?systemd_ordering}
 
 %description
@@ -130,7 +174,7 @@ Requires:       %{name} = %{version}
 Requires:       libnm0 = %{version}
 Requires:       typelib-1_0-NM-1_0 = %{version}
 Provides:       %{name}-doc = %{version}
-Obsoletes:      %{name}-doc < %{version}
+Obsoletes:      %{name}-doc < 0.9.1
 
 %description devel
 This package contains various headers accessing some NetworkManager
@@ -159,7 +203,7 @@ NetworkManager library.
 Summary:        Default upstream configuration for %{_sysconfdir}/NetworkManager/NetworkManager.conf
 Group:          Productivity/Networking/System
 Requires:       NetworkManager = %{version}
-Supplements:    packageand(NetworkManager:branding-upstream)
+Supplements:    (NetworkManager and branding-upstream)
 Conflicts:      NetworkManager-branding
 Provides:       NetworkManager-branding = %{version}
 BuildArch:      noarch
@@ -170,6 +214,19 @@ This package provides the default upstream configuration for
 it is not configured for connection checking against
 http://conncheck.opensuse.org. For, the version with connection
 checking, install %{name}-branding-openSUSE.
+
+%package pppoe
+Summary:        NetworkManager plugin for ADSL connections
+Requires:       %{name} = %{version}
+Enhances:       %{name}
+Supplements:    (%{name} and rp-pppoe)
+Requires:       rp-pppoe
+%requires_eq    ppp
+
+%description pppoe
+NetworkManager plugin for ADSL connections.
+
+This package is needed to configure PPPoE interfaces
 
 %lang_package
 
@@ -185,48 +242,49 @@ checking, install %{name}-branding-openSUSE.
 %patch7 -p1
 %patch8 -p1
 
+# Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
+# rather then %%{_datadir}/doc/%%{name}/examples:
+sed -i -r "/install_dir: join_paths/s/(nm_datadir, 'doc)\
+(', nm_name), 'examples'/\1\/packages\2/" data/meson.build
+
 %build
-NOCONFIGURE=1 ./autogen.sh
-pppddir=`ls -1d %{_libdir}/pppd/2*`
-test -n "$pppddir" || exit 1
 export CFLAGS="%{optflags} -fno-strict-aliasing -fcommon"
 export PYTHON=%{_bindir}/python3
-%configure \
-    --disable-silent-rules \
-    --with-hostname-persist=suse \
-    --enable-ld-gc \
-    --enable-lto \
-    --disable-static \
-    --with-crypto=nss \
-    --enable-gtk-doc \
-    --with-tests=yes \
-    --with-netconfig=yes \
-    --with-config-dns-rc-manager-default=netconfig \
-    --enable-more-warnings=no \
-    --with-pppd-plugin-dir=$pppddir \
-    --with-dhclient=/sbin/dhclient \
-    --with-dhcpcd=no \
-    --with-udev-dir=%{_udevdir} \
-    --with-modem-manager-1 \
-    --enable-concheck \
-    --enable-wifi=yes \
-    --with-nmtui \
-    --with-session-tracking=systemd \
-    --with-suspend-resume=systemd \
-    --with-iwd=yes
-# Fail if netconfig was not detected. Avoids future occurences of bnc#817592
-if grep "with_netconfig='no'" config.log; then
-  print netconfig support was not found -- BUILD ABORTED
-  false
-fi
-make %{?_smp_mflags} nmrundir="/run/%{name}"
+# TODO: teamdctl says: Retire me when I'm ready please!
+%meson \
+    -Dsystemdsystemunitdir=%{_unitdir} \
+    -Dudev_dir=%{_udevdir} \
+    -Ddbus_conf_dir=%{_dbusconfdir} \
+    -Diptables=%{_sbindir}/iptables \
+    -Ddnsmasq=%{_sbindir}/dnsmasq \
+    -Ddnssec_trigger=%{_libexecdir}/dnssec-trigger-script \
+    -Ddist_version=%{version} \
+    -Dpolkit_agent_helper_1=%{_libexecdir}/polkit-1/polkit-agent-helper-1 \
+    -Dhostname_persist=suse \
+    -Dlibaudit=%{libaudit_meson_opt} \
+    -Diwd=true \
+    -Dpppd=%{_sbindir}/pppd \
+    -Dpppd_plugin_dir=%{_pppddir} \
+    -Dnm_cloud_setup=true \
+    -Dbluez5_dun=true \
+    -Dnetconfig=%{_sbindir}/netconfig \
+    -Ddhclient=%{_sbindir}/dhclient \
+    -Ddocs=true \
+    -Dtests=%{tests_meson_opt} \
+    -Dmore_asserts=0 \
+    -Dmore_logging=false \
+    -Dqt=false \
+    -Dteamdctl=true \
+    %{nil}
+%meson_build
 
-#check
-#make %{?_smp_mflags} check
+%if %{with TESTS}
+%check
+%meson_test
+%endif
 
 %install
-%make_install nmrundir="/run/%{name}"
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/gtk-doc/
 mkdir -p %{buildroot}%{_bindir}
@@ -242,30 +300,27 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/NetworkManager/
 mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m 0644 %{SOURCE98} %{buildroot}%{_rpmmacrodir}/
 
-# We package this one as %%doc in the default location.
-rm %{buildroot}%{_datadir}/doc/NetworkManager/examples/server.conf
-
 # drop on demand activation, it is handled as a system service
 rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkManager.service
 
 %pre
-%service_add_pre NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service
+%service_add_pre NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service nm-priv-helper.service
 
 %post
-%service_add_post NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service
+%service_add_post NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service nm-priv-helper.service
 
 %preun
-%service_del_preun NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service
+%service_del_preun NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service nm-priv-helper.service
 
 %postun
-%service_del_postun NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service
+%service_del_postun NetworkManager.service NetworkManager-dispatcher.service nm-cloud-setup.service nm-priv-helper.service
 
 %post -n libnm0 -p /sbin/ldconfig
 %postun -n libnm0 -p /sbin/ldconfig
 
 %files
 %license COPYING
-%doc ChangeLog NEWS AUTHORS README TODO data/server.conf
+%doc ChangeLog NEWS AUTHORS README TODO
 %{_bindir}/nm-online
 %{_bindir}/nmcli
 %{_bindir}/nmtui*
@@ -291,26 +346,23 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_mandir}/man7/nmcli-examples.7%{?ext_man}
 %{_mandir}/man8/NetworkManager.8%{?ext_man}
 %{_mandir}/man8/nm-cloud-setup.8%{?ext_man}
-%{_mandir}/man8/nm-initrd-generator.8%{ext_man}
-%{_mandir}/man8/NetworkManager-dispatcher.8%{ext_man}
+%{_mandir}/man8/nm-initrd-generator.8%{?ext_man}
+%{_mandir}/man8/NetworkManager-dispatcher.8%{?ext_man}
 %dir %{_libdir}/NetworkManager
 %dir %{_libdir}/NetworkManager/%{version}
-%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-adsl.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-bluetooth.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-ovs.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-team.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wifi.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wwan.so
-%{_libdir}/NetworkManager/%{version}/libnm-ppp-plugin.so
 %{_libdir}/NetworkManager/%{version}/libnm-wwan.so
-%dir %{_libdir}/pppd/2.*
-%{_libdir}/pppd/2.*/nm-pppd-plugin.*
 %{_libexecdir}/nm-cloud-setup
 %{_libexecdir}/nm-daemon-helper
 %{_libexecdir}/nm-dhcp-helper
 %{_libexecdir}/nm-dispatcher
 %{_libexecdir}/nm-iface-helper
 %{_libexecdir}/nm-initrd-generator
+%{_libexecdir}/nm-priv-helper
 %dir %{_sysconfdir}/NetworkManager
 %dir %{_sysconfdir}/NetworkManager/VPN
 %dir %{_sysconfdir}/NetworkManager/dispatcher.d
@@ -326,6 +378,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_udevdir}/rules.d/90-nm-thunderbolt.rules
 %{_unitdir}/nm-cloud-setup.service
 %{_unitdir}/nm-cloud-setup.timer
+%{_unitdir}/nm-priv-helper.service
 %ghost %config(noreplace) %{_localstatedir}/log/NetworkManager
 %dir %{_prefix}/lib/NetworkManager
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d
@@ -338,8 +391,11 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/zones
 %{_prefix}/lib/firewalld/zones/nm-shared.xml
-%{_datadir}/dbus-1/system.d/nm-dispatcher.conf
-%{_datadir}/dbus-1/system.d/org.freedesktop.NetworkManager.conf
+%{_dbusconfdir}/nm-dispatcher.conf
+%{_dbusconfdir}/org.freedesktop.NetworkManager.conf
+%{_datadir}/dbus-1/system-services/org.freedesktop.nm-priv-helper.service
+%{_dbusconfdir}/nm-priv-helper.conf
+%{_defaultdocdir}/NetworkManager/server.conf
 
 %files devel
 %{_includedir}/libnm/
@@ -363,5 +419,11 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 
 %files branding-upstream
 %config(noreplace) %{_sysconfdir}/NetworkManager/NetworkManager.conf
+
+%files pppoe
+%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-adsl.so
+%{_libdir}/NetworkManager/%{version}/libnm-ppp-plugin.so
+%dir %{_libdir}/pppd/2.*
+%{_libdir}/pppd/2.*/nm-pppd-plugin.*
 
 %changelog
