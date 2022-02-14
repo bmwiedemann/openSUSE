@@ -94,4 +94,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>886731</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0461de6150508d0a21e8c589b9217822</srcmd5>
+    <version>8.0.0</version>
+    <time>1644874560</time>
+    <user>dimstar_suse</user>
+    <comment>- Relieve python dependencies (replace ^ with &gt;=).
+- remove need for two source tarballs, use only the github one with pyproject macros
+- update to version 8.0.0:
+ * Add support for backwards compatible CONNECT in 1.1 and 1.2 protocols (https://github.com/jasonrbriggs/stomp.py/pull/348)
+ * Flip DEFAULT_SSL_VERSION to use ssl.PROTOCOL_TLS rather than ssl.PROTOCOL_TLSv1
+ * Check SSL certificate for expiry if PyOpenSSL is installed
+ * Remove deprecated constructor params (use_ssl, and other ssl params)
+ * Minor cleanup (remove debian packaging config, since it didn't work any more)
+ * Add log_to_stdout method to force command line logging to stdout (useful for testing)
+ * Various updates for docker testing
+ * Add mac keepalive functionality
+ * Minor update to daemon attribute (https://github.com/jasonrbriggs/stomp.py/pull/361)
+ * Fix issue with heartbeat listener disconnecting the socket (https://github.com/jasonrbriggs/stomp.py/issues/219 - https://github.com/jasonrbriggs/stomp.py/pull/369)
+</comment>
+    <requestid>954212</requestid>
+  </revision>
 </revisionlist>

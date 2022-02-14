@@ -1,7 +1,7 @@
 #
 # spec file for package python-stomp.py
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %define skip_python2 1
 Name:           python-stomp.py
-Version:        7.0.0
+Version:        8.0.0
 Release:        0
 Summary:        Python STOMP client
 License:        Apache-2.0
 URL:            https://github.com/jasonrbriggs/stomp.py
-Source0:        https://files.pythonhosted.org/packages/source/s/stomp.py/stomp.py-%{version}.tar.gz
 # using github archive for docs
-Source1:        https://github.com/jasonrbriggs/stomp.py/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source0:        https://github.com/jasonrbriggs/stomp.py/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-Requires:       python-docopt >= 0.6.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%{?python_enable_dependency_generator}
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,13 +41,13 @@ A Python client library for accessing messaging servers (such as ActiveMQ, Apoll
 
 %prep
 %setup -q -n stomp.py-%{version}
-%setup -q -n stomp.py-%{version} -D -b 1
+sed -i 's/\^/>=/' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/stomp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
