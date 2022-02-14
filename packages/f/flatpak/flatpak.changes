@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 11 20:20:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.12.5:
+  + Detect and remove left-over data from
+    /var/lib/flatpak/appstream
+  + Fix display bugs in flatpak history
+  + Don't set up an unnecessary polkit agent for flatpak history
+  + Don't propagate GStreamer-related environment variables into
+    sandbox
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jan 18 20:52:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.12.4:
