@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb 14 17:53:40 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 28.3
+  * web UI improvements, e.g.:
+    * composer views
+    * partial scan (e.g. only update RSS feeds)
+    * fix http stream button not clickable in mobile view
+    * fix Spotify playlists not showing
+    * handling of not playable Spotify tracks
+    * handling of podcast play counts
+  * support for Spotify podcasts
+  * updates for ffmpeg 5
+  * better Spotify logout
+  * user "usermark" field for user flagging of various track states
+  * fix for 0-byte files crashing ffmpeg
+  * fix metadata pipe deadlock and artwork memleak-on-error
+  * better handling of Spotify disconnects
+  * fix rare Airplay pairing error
+  * many minor error handling fixes
+
+-------------------------------------------------------------------
+Wed Oct 13 14:40:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_owntone.service.patch
+
+-------------------------------------------------------------------
 Wed Sep  8 08:02:01 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - upstream renamed from forked-daapd to owntone(-server)
