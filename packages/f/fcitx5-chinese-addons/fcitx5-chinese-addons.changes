@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 13 15:44:59 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- split subpackage fcitx5-pinyindictmanager
+  * GNOME users complain that there is too much usage on Qt, the
+    Qt depends will be reduced a lot with this split
+
+-------------------------------------------------------------------
 Sat Jan 29 15:08:16 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - resolve file conflicts with fcitx

@@ -86,10 +86,19 @@ BuildRequires:  appstream-glib-devel
 %description
 This provides pinyin and table input method support for fcitx5.
 
+%package -n fcitx5-pinyindictmanager
+Summary:        Fcitx5 Pinyin dictionary manager library
+Group:          System/Libraries
+Supplements:    (fcitx5 and plasma5-workspace)
+
+%description -n fcitx5-pinyindictmanager
+Fcitx5 Pinyin dictionary manager library.
+
 %package devel
 Summary:        Development files for fcitx5-chinese-addons
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       fcitx5-pinyindictmanager = %{version}
 
 %description devel
 This package provides development files for fcitx5-chinese-addons.
@@ -109,6 +118,9 @@ cp -r %{SOURCE2} modules/pinyinhelper
 %find_lang %{name}
 %fdupes %{buildroot}
 
+%files -n fcitx5-pinyindictmanager
+%{_fcitx5_qt5dir}/libpinyindictmanager.so
+
 %files -f %{name}.lang
 %doc README.md
 %license LICENSES
@@ -126,7 +138,6 @@ cp -r %{SOURCE2} modules/pinyinhelper
 %{_fcitx5_libdir}/libpinyin.so
 %{_fcitx5_libdir}/libpinyinhelper.so
 %{_fcitx5_libdir}/libpunctuation.so
-%{_fcitx5_qt5dir}/libpinyindictmanager.so
 %{_fcitx5_libdir}/libtable.so
 %{_fcitx5_addondir}/chttrans.conf
 %{_fcitx5_addondir}/cloudpinyin.conf
