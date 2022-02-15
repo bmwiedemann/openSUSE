@@ -213,4 +213,12 @@ Use SUSE- proprietary extension until license accepted upstream. autoconf-archiv
   handled by file triggers.</comment>
     <requestid>874166</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d9624daddc4ac7b65b959ca66a6bc582</srcmd5>
+    <version>2022.02.11</version>
+    <time>1644965815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954039</requestid>
+  </revision>
 </revisionlist>

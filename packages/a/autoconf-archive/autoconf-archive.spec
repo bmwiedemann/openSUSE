@@ -1,7 +1,7 @@
 #
 # spec file for package autoconf-archive
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           autoconf-archive
-Version:        2021.02.19
+Version:        2022.02.11
 Release:        0
 Summary:        A Collection of macros for GNU autoconf
-License:        GPL-3.0+ WITH Autoconf-exception-3.0
+License:        GPL-3.0-or-later WITH Autoconf-exception-3.0
 URL:            https://savannah.gnu.org/projects/autoconf-archive
 Source0:        https://ftp.gnu.org/pub/gnu/autoconf-archive/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/autoconf-archive/%{name}-%{version}.tar.xz.sig
@@ -50,7 +50,7 @@ some authors may choose to use it, too, for proprietary software.
 %build
 %configure \
 	--docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

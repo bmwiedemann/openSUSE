@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 11 18:38:03 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2022.02.11:
+  * AX_CC_FOR_BUILD was deprecated in favor of AX_PROG_CC_FOR_BUILD
+
+-------------------------------------------------------------------
 Sun Feb 21 17:56:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.02.19:
