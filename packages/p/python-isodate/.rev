@@ -144,4 +144,15 @@
   * Support Python 3.10.</comment>
     <requestid>940121</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e04da3d9b85e4a5249f780f40946bb08</srcmd5>
+    <version>0.6.1</version>
+    <time>1644965828</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * support python 3.10 ()
+  * last version to support py 2.7
+- drop coerce-decimal-to-int-python-310.patch (upstream)</comment>
+    <requestid>954393</requestid>
+  </revision>
 </revisionlist>

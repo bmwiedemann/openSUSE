@@ -1,7 +1,7 @@
 #
 # spec file for package python-isodate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-isodate
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        An ISO 8601 Date/Time/Duration Parser and Formatter
 License:        BSD-3-Clause
 URL:            https://pypi.org/project/isodate/
 Source:         https://files.pythonhosted.org/packages/source/i/isodate/isodate-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#gweis/isodate#68
-Patch0:         coerce-decimal-to-int-python-310.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes

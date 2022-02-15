@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 14 21:40:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * support python 3.10 ()
+  * last version to support py 2.7
+- drop coerce-decimal-to-int-python-310.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Dec 13 01:44:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch coerce-decimal-to-int-python-310.patch:
