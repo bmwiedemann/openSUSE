@@ -1,7 +1,7 @@
 #
 # spec file for package php-xdebug
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,12 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0
 Group:          Productivity/Networking/Web/Servers
-URL:            https://xdebug.org/
+URL:            https://xdebug.org
 Source0:        https://xdebug.org/files/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
 BuildRequires:  %{php_name}-devel >= 7.2
