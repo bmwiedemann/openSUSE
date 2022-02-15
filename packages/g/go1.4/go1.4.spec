@@ -289,7 +289,7 @@ sed -i "s/lib/lib64/" %{buildroot}%{_sysconfdir}/gdbinit.d/go1.4.gdb
 %endif
 
 # install RPM macros ($GOARCH prepared in %%prep section)
-install -Dm644 go.macros %{buildroot}%{_sysconfdir}/rpm/macros.%{name}
+install -Dm644 go.macros %{buildroot}%{_rpmmacrodir}/macros.%{name}
 
 %if 0%{?suse_version} >= 1100
 %fdupes -s %{buildroot}%{_prefix}
@@ -323,7 +323,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/go
 %ghost %{_sysconfdir}/alternatives/gofmt
 %config %{_sysconfdir}/gdbinit.d/%{name}.gdb
-%config %{_sysconfdir}/rpm/macros.%{name}
+%{_rpmmacrodir}/macros.%{name}
 %dir %{_docdir}/%{name}/
 %doc %{_docdir}/%{name}/AUTHORS
 %doc %{_docdir}/%{name}/CONTRIBUTORS

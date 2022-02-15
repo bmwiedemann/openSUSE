@@ -120,4 +120,13 @@
   * Disable LDFLAGS -no-pie flag for SUSE releases having gcc &lt;= 6 (forwarded request 953331 from jfkw)</comment>
     <requestid>953332</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>cebe46f4a46e5d940793e86e58079294</srcmd5>
+    <version>1.4.3</version>
+    <time>1644965870</time>
+    <user>dimstar_suse</user>
+    <comment>- Use rpm macros from /etc/rpm to /usr/lib/rpm/macros.d
+  (boo#1191382). (forwarded request 954730 from dimstar)</comment>
+    <requestid>955105</requestid>
+  </revision>
 </revisionlist>

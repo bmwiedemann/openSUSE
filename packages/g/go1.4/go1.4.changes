@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 15 12:21:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use rpm macros from /etc/rpm to /usr/lib/rpm/macros.d
+  (boo#1191382).
+
+-------------------------------------------------------------------
 Thu Feb 10 13:38:57 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
 
 - Add version check to only use compiler-rt-fix-tsan-build.patch
