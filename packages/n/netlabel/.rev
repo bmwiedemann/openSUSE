@@ -76,4 +76,12 @@
 - Fixed to call service script macros in the correct package.</comment>
     <requestid>443185</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>9e2cfd831e05373c30059b6f2eb1c6f9</srcmd5>
+    <version>0.21</version>
+    <time>1644965858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954720</requestid>
+  </revision>
 </revisionlist>

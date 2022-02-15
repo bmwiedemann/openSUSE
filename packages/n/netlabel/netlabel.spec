@@ -1,7 +1,7 @@
 #
 # spec file for package netlabel
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           netlabel
 Version:        0.21
 Release:        0
 Summary:        Explicit labeled networking for Linux
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            https://github.com/netlabel/netlabel_tools/wiki
+URL:            https://github.com/netlabel/netlabel_tools/wiki
 Source0:        https://github.com/netlabel/netlabel_tools/releases/download/v%{version}/netlabel_tools-%{version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  pkg-config
@@ -31,6 +31,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libnl-3.0)
 # PATCH-FIX-OPENSUSE netlabel_tools-0.20-service.diff mt@suse.de
 Patch1:         netlabel_tools-0.20-service.diff
+Patch2:         harden_netlabel.service.patch
 
 %description
 Explicit labeled networking for Linux
@@ -59,6 +60,7 @@ different types of NetLabel commands supported by the kernel.
 %prep
 %setup -q -n netlabel_tools-%{version}
 %patch1 -p0
+%patch2 -p1
 
 %build
 %configure --with-systemdsystemunitdir=%_unitdir
