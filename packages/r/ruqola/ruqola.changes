@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb  9 19:14:52 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 1.6.2
+  * Fix emoji popup menu position
+  * Fix build with GCC 12
+  * Fix icon name
+  * Use SingleMainWindow=true
+  * Fix layout
+  * Remove debug
+  * Fix place holder
+  * Fix open direct message (we need to use username)
+  * Fix i18n
+  * Update list of emoji
+  * Fix following icon
+  * Fix warning
+  * Fix leaks reported by Asan
+  * Add missing QIcon
+  * Fix show icon when message is following
+- Add signature file and keyring
+
+-------------------------------------------------------------------
 Thu Dec 30 18:18:19 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.6.1

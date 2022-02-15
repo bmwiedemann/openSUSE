@@ -1,7 +1,7 @@
 #
 # spec file for package ruqola
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,19 @@
 #
 
 
+%bcond_without released
 Name:           ruqola
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://invent.kde.org/network/ruqola
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
+Source2:        %{name}.keyring
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
@@ -70,7 +75,9 @@ It's a native alternative to the official embedded browser type of desktop app a
 %install
 %kf5_makeinstall -C build
 
+%if %{with released}
 %find_lang %{name}
+%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -96,6 +103,8 @@ It's a native alternative to the official embedded browser type of desktop app a
 %{_kf5_appstreamdir}/org.kde.ruqola.appdata.xml
 %{_kf5_debugdir}/ruqola.categories
 
+%if %{with released}
 %files lang -f %{name}.lang
+%endif
 
 %changelog
