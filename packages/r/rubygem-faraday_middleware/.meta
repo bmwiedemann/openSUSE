@@ -1,6 +1,0 @@
-<package name="rubygem-faraday_middleware" project="openSUSE:Factory">
-  <title>rubygem-faraday_middleware</title>
-  <description>Various Faraday middlewares for my Faraday-based API wrappers</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-faraday_middleware"/>
-  <url>https://github.com/pengwynn/faraday_middleware</url>
-</package>
