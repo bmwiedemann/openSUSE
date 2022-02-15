@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 10 16:20:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Set grub2-check-default shebang to "#!/bin/bash", as the the code
+  uses many instructions which are undefined for a POSIX sh.
+  (boo#1195794).
+
+-------------------------------------------------------------------
 Fri Jan 14 08:39:36 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Power guest secure boot with static keys: GRUB2 signing portion
