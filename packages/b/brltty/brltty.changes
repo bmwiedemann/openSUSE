@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 10 12:10:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass --with-tables-directory=%{_datadir}/%{name} to configure: do
+  not install the tables to /etc, as they are not supposed to be
+  modified by local admins.
+
+-------------------------------------------------------------------
 Tue Dec 14 14:14:14 UTC 2021 - ohering@suse.de
 
 - Add python-rpm-macros (bsc#1180125)

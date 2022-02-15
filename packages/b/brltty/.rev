@@ -538,4 +538,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>942946</requestid>
   </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>6be09860c164938a4f4e8ca4d17951b4</srcmd5>
+    <version>6.4</version>
+    <time>1644965829</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass --with-tables-directory=%{_datadir}/%{name} to configure: do
+  not install the tables to /etc, as they are not supposed to be
+  modified by local admins. (forwarded request 953158 from dimstar)</comment>
+    <requestid>953980</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package brltty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -340,6 +340,7 @@ done
 export PYTHON=/usr/bin/python3
 %configure CPPFLAGS="$java_inc" \
         --with-install-root="%{buildroot}" \
+        --with-tables-directory=%{_datadir}/%{name} \
         --libexecdir=%_libexecdir \
         --disable-stripping
 make -j1 # not parallel build safe
@@ -449,7 +450,7 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %doc README README.SUSE Documents/ChangeLog Documents/CONTRIBUTORS Documents/HISTORY Documents/README.Bluetooth Documents/TODO
 %doc Documents/Manual-BRLTTY/English
 %config(noreplace) %{_sysconfdir}/brltty.conf
-%{_sysconfdir}/brltty/
+%{_datadir}/brltty/
 %{_bindir}/brltty
 %{_bindir}/brltty-clip
 %{_bindir}/brltty-atb
