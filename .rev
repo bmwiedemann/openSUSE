@@ -870,4 +870,35 @@
 </comment>
     <requestid>949193</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e56bf781a74eb40ba4dfd4da9a210423</srcmd5>
+    <version>4.10.0</version>
+    <time>1644965868</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 4.10.0:
+  - adapter_fanfiktionde: Update where description comes from.
+  - ReadOnlyMindAdapter: Add series_tags feature to populate
+    series metadata (#803) - Thanks Nothorse
+  - Add use_flaresolverr_proxy:withimages option for FlareSolverr
+    v1 users.
+  - Correct use_flaresolverr_proxy error checking.
+  - adapter_royalroadcom: Add status 'Dropped'
+  - New Site: readonlymind.com, thanks Nothorse Issue #767 PR
+    #801
+  - Force include_images:false when use_flaresolverr_proxy:true
+    -- FlareSolverr v2.2.0 crashes on image request.
+  - Remove defunct site: hpfanficarchive.com
+  - base_efiction: Add 'Igen' as equiv to 'Yes, Completed' in
+    Hungarian
+  - adapter_royalroadcom: Add status 'Stub' Closes #800
+  - New site: merengo.hu (Hungarian), thanks estherflails
+  - Remove site: fanfic.hu (moved to merengo.hu, storyIds don't
+    appear to be the same)
+  - Fix for py2 for base_xenforoforum tagsfromtitle. Thanks hseg
+    for the help. See #791
+  - Extend base_xenforoforum tagsfromtitle for ')(' ']['
+  - Changes for upcoming Qt6 Calibre
+</comment>
+    <requestid>955094</requestid>
+  </revision>
 </revisionlist>
