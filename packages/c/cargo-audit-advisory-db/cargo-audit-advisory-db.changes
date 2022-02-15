@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 15 00:57:25 UTC 2022 - wbrown@suse.de
+
+- Update to version 20220215:
+  * Suggest maintained alternatives for Rental advisory (#1187)
+  * Update RUSTSEC-2022-0009.md (#1186)
+  * Assigned RUSTSEC-2020-0162 to tokio-proto (#1185)
+  * Mark tokio-proto as deprecated (#1184)
+  * Assigned RUSTSEC-2022-0009 to libp2p-core (#1183)
+  * Add entry for libp2p-core vulnerability (#1182)
+  * Add patched version to DashMap advisory (#1181)
+  * Assigned RUSTSEC-2022-0008 to windows (#1178)
+  * Add advisory for windows (#1177)
+  * Assigned RUSTSEC-2022-0007 to qcell (#1172)
+
+-------------------------------------------------------------------
 Wed Jan 05 02:13:49 UTC 2022 - wbrown@suse.de
 
 - Update to version 20220105:
