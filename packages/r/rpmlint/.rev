@@ -3569,4 +3569,14 @@ oddjob-gpupdate isn't blocked)</comment>
   * FileMetadataCheck: support additional `packages = [&quot;pkg1&quot;, &quot;pkg2&quot;]` syntax</comment>
     <requestid>952892</requestid>
   </revision>
+  <revision rev="384" vrev="1">
+    <srcmd5>f419739c83f6d59d2960bce4a757dc9f</srcmd5>
+    <version>2.2.0+git20220211.709d2fa</version>
+    <time>1644965816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220211.709d2fa:
+  * Require at least Python 3.8.
+  * FileDigestCheck: implement support for file digest filtering</comment>
+    <requestid>954056</requestid>
+  </revision>
 </revisionlist>

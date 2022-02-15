@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 13 10:14:32 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220211.709d2fa:
+  * Require at least Python 3.8.
+  * FileDigestCheck: implement support for file digest filtering
+
+-------------------------------------------------------------------
 Sun Feb 06 08:42:06 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220204.4166915:
