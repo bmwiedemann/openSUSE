@@ -118,6 +118,9 @@ Patch69:        openssl-1_1-Optimize-ppc64.patch
 Patch70:        openssl-1_1-Optimize-RSA-armv8.patch
 Patch71:        openssl-1_1-Optimize-AES-XTS-aarch64.patch
 Patch72:        openssl-1_1-Optimize-AES-GCM-uarchs.patch
+#PATCH-FIX-SUSE bsc#1182959 FIPS: Fix function and reason error codes
+Patch73:        openssl-1_1-FIPS-fix-error-reason-codes.patch
+Requires:       libopenssl1_1 = %{version}-%{release}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
@@ -149,6 +152,7 @@ Recommends:     ca-certificates-mozilla
 Suggests:       libopenssl1_1-hmac = %{version}-%{release}
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl1_1_0
+Conflicts:      %{name} < %{version}-%{release}
 
 %description -n libopenssl1_1
 OpenSSL is a software library to be used in applications that need to

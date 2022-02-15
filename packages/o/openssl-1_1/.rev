@@ -246,4 +246,16 @@
     <comment></comment>
     <requestid>951364</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>f7ebccfe6950894aceb0504380453d16</srcmd5>
+    <version>1.1.1m</version>
+    <time>1644965817</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull libopenssl-1_1 when updating openssl-1_1 with the same
+  version. [bsc#1195792]
+
+- FIPS: Fix function and reason error codes [bsc#1182959]
+  * Add openssl-1_1-FIPS-fix-error-reason-codes.patch</comment>
+    <requestid>954341</requestid>
+  </revision>
 </revisionlist>
