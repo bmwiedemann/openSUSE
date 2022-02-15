@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 15 12:58:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly install pam module to %_pam_moduledir instead of
+  /lib64/security (boo#1191035).
+
+-------------------------------------------------------------------
 Thu Dec 09 22:34:52 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 1.09:

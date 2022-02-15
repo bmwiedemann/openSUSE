@@ -1,7 +1,7 @@
 #
 # spec file for package google-authenticator-libpam
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,6 @@ Integrate GOOGLE Authenticator into your login process for full 2FA.
 %build
 ./bootstrap.sh
 %configure \
-    --libdir=/%{_lib} \
     --docdir=%{_docdir}/%{name}
 make %{?_smp_mflags}
 
@@ -60,7 +59,7 @@ make test
 %defattr(-,root,root)
 %doc CONTRIBUTING.md README.md totp.html FILEFORMAT
 %license LICENSE
-/%{_lib}/security/pam_google_authenticator.so
+%{_pam_moduledir}/pam_google_authenticator.so
 %{_bindir}/google-authenticator
 %{_mandir}/man1/google-authenticator.1%{?ext_man}
 %{_mandir}/man8/pam_google_authenticator.8%{?ext_man}
