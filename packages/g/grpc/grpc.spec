@@ -16,11 +16,11 @@
 #
 
 
-%define lver 21
-%define lverp 1_43
+%define lver 22
+%define lverp 1_44
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.43.2
+Version:        1.44.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -69,11 +69,11 @@ The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
 
-%package -n libgrpc_plugin_support1_43
+%package -n libgrpc_plugin_support1_44
 Summary:        HTTP/2-based Remote Procedure Call implementation - plugin support
 Group:          System/Libraries
 
-%description -n libgrpc_plugin_support1_43
+%description -n libgrpc_plugin_support1_44
 The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
@@ -96,7 +96,7 @@ Summary:        Development files for grpc, a HTTP/2 Remote Procedure Call imple
 Group:          Development/Tools/Building
 Requires:       libgrpc%lver = %version
 Requires:       libgrpc++%lverp = %version
-Requires:       libgrpc_plugin_support1_43 = %version
+Requires:       libgrpc_plugin_support1_44 = %version
 Requires:       libupb%lver = %version
 Requires:       pkgconfig(libcares)
 Requires:       pkgconfig(re2)
@@ -180,8 +180,8 @@ cp -r * "%buildroot/%src_install_dir"
 %postun -n libgrpc%lver -p /sbin/ldconfig
 %post   -n libgrpc++%lverp -p /sbin/ldconfig
 %postun -n libgrpc++%lverp -p /sbin/ldconfig
-%post   -n libgrpc_plugin_support1_43 -p /sbin/ldconfig
-%postun -n libgrpc_plugin_support1_43 -p /sbin/ldconfig
+%post   -n libgrpc_plugin_support1_44 -p /sbin/ldconfig
+%postun -n libgrpc_plugin_support1_44 -p /sbin/ldconfig
 %post   -n libupb%lver -p /sbin/ldconfig
 %postun -n libupb%lver -p /sbin/ldconfig
 
@@ -194,8 +194,8 @@ cp -r * "%buildroot/%src_install_dir"
 %_libdir/libgrpc++*.so.*
 %_libdir/libgrpcpp_channelz.so.*
 
-%files -n libgrpc_plugin_support1_43
-%_libdir/libgrpc_plugin_support.so.1.43*
+%files -n libgrpc_plugin_support1_44
+%_libdir/libgrpc_plugin_support.so.1.44*
 
 %files -n libupb%lver
 %_libdir/libupb*.so.%{lver}*
