@@ -1,7 +1,7 @@
 #
 # spec file for package rmt-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define ruby_version          %{rb_default_ruby_suffix}
 
 Name:           rmt-server
-Version:        2.7.0
+Version:        2.7.2
 Release:        0
 Summary:        Repository mirroring tool and registration proxy for SCC
 License:        GPL-2.0-or-later
@@ -62,8 +62,8 @@ Requires(pre):  shadow
 Requires(post): timezone
 Requires(post): util-linux
 Conflicts:      yast2-rmt < 1.0.3
-Recommends:     yast2-rmt >= 1.3.0
 Recommends:     rmt-server-config
+Recommends:     yast2-rmt >= 1.3.0
 # Does not build for i586 and s390 and is not supported on those architectures
 ExcludeArch:    %{ix86} s390
 %{systemd_ordering}
@@ -208,7 +208,7 @@ sed -i '/BUNDLED WITH/{N;d;}' %{buildroot}%{app_dir}/Gemfile.lock
 find %{buildroot}%{lib_dir} "(" -name "*.c" -o -name "*.h" -o -name .keep ")" -delete
 find %{buildroot}%{app_dir} -name .keep -delete
 find %{buildroot}%{data_dir} -name .keep -delete
-rm -r  %{buildroot}%{lib_dir}/vendor/bundle/ruby/2.*.0/cache
+rm -r  %{buildroot}%{lib_dir}/vendor/bundle/ruby/[23].*.0/cache
 rm -rf %{buildroot}%{lib_dir}/vendor/cache
 rm -rf %{buildroot}%{lib_dir}/vendor/bundle/ruby/*/gems/*/doc
 rm -rf %{buildroot}%{lib_dir}/vendor/bundle/ruby/*/gems/*/examples
@@ -338,7 +338,8 @@ fi
 %service_del_postun rmt-server.target rmt-server.service rmt-server-migration.service rmt-server-mirror.service rmt-server-sync.service rmt-server-systems-scc-sync.service
 
 %posttrans config
-/usr/bin/systemctl reload nginx.service
+# Don't fail if either systemd or nginx are not running
+/usr/bin/systemctl try-reload-or-restart nginx.service || true
 
 %pre pubcloud
 %service_add_pre rmt-server-regsharing.service rmt-server-trim-cache.service
