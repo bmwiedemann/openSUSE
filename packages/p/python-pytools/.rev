@@ -125,4 +125,15 @@
 - Remove decorator from {Build,}Requires</comment>
     <requestid>886512</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>75ba91e17b451e954fe5751afc9d2059</srcmd5>
+    <version>2022.1</version>
+    <time>1644965842</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.1:
+  * use platformdirs
+  * add typing to memoize_in
+  * type annotations</comment>
+    <requestid>954661</requestid>
+  </revision>
 </revisionlist>

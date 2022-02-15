@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,23 +20,23 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-pytools
-Version:        2021.2.3
+Version:        2022.1
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT
 URL:            https://pypi.python.org/pypi/pytools
 Source0:        https://files.pythonhosted.org/packages/source/p/pytools/pytools-%{version}.tar.gz
-BuildRequires:  %{python_module appdirs >= 1.4.0}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module numpy >= 1.6.0}
+BuildRequires:  %{python_module platformdirs >= 2.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  ( python3-dataclasses >= 0.7 if python3-base <= 3.6 )
 BuildRequires:  ( python36-dataclasses >= 0.7 if python36-base )
-Requires:       python-appdirs >= 1.4.0
 Requires:       python-numpy >= 1.6.0
+Requires:       python-platformdirs
 %if %{python_version_nodots} <= 36
 Requires:       python-dataclasses >= 0.7
 %endif

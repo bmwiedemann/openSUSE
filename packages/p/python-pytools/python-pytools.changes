@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 15 09:04:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.1:
+  * use platformdirs
+  * add typing to memoize_in
+  * type annotations 
+
+-------------------------------------------------------------------
 Mon Apr 19 02:01:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2021.2.3:
