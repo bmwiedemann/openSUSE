@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 14 23:14:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10:
+  * Added an additional check to the decompressor to make it quickly detect
+    certain bad inputs and not try to generate an unbounded amount of output.
+  * Cleaned up a few things in the compression code. 
+
+-------------------------------------------------------------------
 Mon Jan 24 22:39:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9:
