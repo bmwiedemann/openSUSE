@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 14 20:47:03 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.0.3
+  * The test client's ``as_tuple`` parameter is deprecated and will be
+    removed in Werkzeug 2.1. It is now also deprecated in Flask, to be
+    removed in Flask 2.1, while remaining compatible with both in
+    2.0.x. Use ``response.request.environ`` instead. PR#4341
+  * Fix type annotation for ``errorhandler`` decorator. #4295
+  * Revert a change to the CLI that caused it to hide ``ImportError``
+    tracebacks when importing the application. #4307
+  * ``app.json_encoder`` and ``json_decoder`` are only passed to
+    ``dumps`` and ``loads`` if they have custom behavior. This improves
+    performance, mainly on PyPy. #4349
+  * Clearer error message when ``after_this_request`` is used outside a
+    request context. #4333
+
+-------------------------------------------------------------------
 Tue Oct  5 14:19:00 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added BuildRequires:  alts
