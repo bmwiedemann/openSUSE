@@ -7,4 +7,12 @@
     <comment>Update to a newer version and fix the libfdt issue that caused the crash before.</comment>
     <requestid>919023</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5845ec40c77bcbac917f4756dbf96cc2</srcmd5>
+    <version>1.0.0</version>
+    <time>1644965865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955070</requestid>
+  </revision>
 </revisionlist>

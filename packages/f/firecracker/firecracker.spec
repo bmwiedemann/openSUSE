@@ -1,7 +1,7 @@
 #
 # spec file for package firecracker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define cargo_home cargo-home
 
 Name:           firecracker
-Version:        0.25.0
+Version:        1.0.0
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
@@ -32,9 +32,6 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 
 ## Patches
-Patch000: 0001-dependencies-Included-vm-fdt-crate.patch
-Patch001: 0002-vm-fdt-Replace-libfdt-with-vm-fdt.patch
-Patch002: 0003-libfdt-bindings-Deleted-libfdt-bindings-crate.patch
 
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.35.0
@@ -46,10 +43,6 @@ multi-tenant container and function-based services.
 
 %prep
 %setup -q -a1
-%patch000 -p1
-%patch001 -p1
-%patch002 -p1
-
 
 cp %{SOURCE2} .cargo/config
 # Remove exec bits to prevent an issue in fedora shebang checking

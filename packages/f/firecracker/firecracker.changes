@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 14 01:02:21 UTC 2022 - Liang Yan <ly@xryan.net>
+
+- Update firecracker to version 1.0.0
+  Detail could be found below:
+  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.0.0 
+  
+* Patches dropped:
+  0001-dependencies-Included-vm-fdt-crate.patch
+  0002-vm-fdt-Replace-libfdt-with-vm-fdt.patch
+  0003-libfdt-bindings-Deleted-libfdt-bindings-crate.patch
+  
+-------------------------------------------------------------------
 Tue Sep 14 23:45:26 UTC 2021 - Liang Yan <lyan@suse.com>
 
 - Replace libfdt with vm-fdt.
