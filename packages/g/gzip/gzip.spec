@@ -1,7 +1,7 @@
 #
 # spec file for package gzip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Release:        0
 Summary:        GNU Zip Compression Utilities
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
-URL:            http://www.gnu.org/software/gzip/
-Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
-Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
+URL:            https://www.gnu.org/software/gzip/
+Source:         https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
+Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
 Patch0:         zgrep.diff
 Patch2:         zmore.diff
@@ -40,6 +40,8 @@ BuildRequires:  makeinfo
 BuildRequires:  xz
 Requires(post): %{install_info_prereq}
 Requires(preun):%{install_info_prereq}
+Conflicts:      alternative(gzip)
+Provides:       alternative(gzip)
 
 %description
 Gzip reduces the size of the named files using Lempel-Ziv coding LZ77.
@@ -84,12 +86,12 @@ profile_gzip()
   time ./gzip -d < $tmpfile.gz > /dev/null
 }
 %if %{do_profiling}
-make %{?_smp_mflags} CFLAGS="$CFLAGS -fprofile-generate" LDFLAGS="-pie"
+%make_build CFLAGS="$CFLAGS -fprofile-generate" LDFLAGS="-pie"
 profile_gzip
-make clean %{?_smp_mflags}
-make %{?_smp_mflags} CFLAGS="$CFLAGS -fprofile-use" LDFLAGS="-pie"
+%make_build clean
+%make_build CFLAGS="$CFLAGS -fprofile-use" LDFLAGS="-pie"
 %else
-make %{?_smp_mflags} LDFLAGS="-pie"
+%make_build LDFLAGS="-pie"
 %endif
 
 %check

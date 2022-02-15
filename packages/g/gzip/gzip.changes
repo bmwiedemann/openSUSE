@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 30 23:02:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add conflicts/provides for alternative(gzip)
+- modernize spec file
+
+-------------------------------------------------------------------
 Thu Sep  9 08:23:45 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 1.11:
