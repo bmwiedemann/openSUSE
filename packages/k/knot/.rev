@@ -73,4 +73,12 @@ https://www.knot-dns.cz/</comment>
 </comment>
     <requestid>929465</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>44e09846884db0268da99e6a2dc32266</srcmd5>
+    <version>3.1.6</version>
+    <time>1644965869</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>955098</requestid>
+  </revision>
 </revisionlist>

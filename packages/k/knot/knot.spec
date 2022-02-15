@@ -1,7 +1,7 @@
 #
 # spec file for package knot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,35 +20,22 @@
 %define libknot     libknot12
 %define libzscanner libzscanner4
 %define pkg_name knot
-%if 0%{?suse_version} > 1320
 %bcond_without  dnstap
 %bcond_without  lto
-%else
-%bcond_with     dnstap
-%bcond_with     lto
-%endif
-%if 0%{?suse_version} > 1230
 %bcond_without systemd
-%else
-%bcond_with    systemd
-%endif
 %if 0%{?is_opensuse}
 %bcond_without maxminddb
 %else
 %bcond_with    maxminddb
 %endif
-%if 0%{?suse_version} > 1140 && ( 0%{?suse_version} != 1315 || ( 0%{?suse_version} == 1315 && 0%{?is_opensuse} ))
 %bcond_without docs
-%else
-%bcond_with    docs
-%endif
 %if %{with systemd}
 %define has_systemd 1
 BuildRequires:  systemd-devel
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.1.4
+Version:        3.1.6
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
@@ -99,6 +86,9 @@ removal.
 #
 Summary:        Development files for the knot libraries
 Group:          Development/Libraries/C and C++
+Requires:       %{libdnssec} = %{version}
+Requires:       %{libknot} = %{version}
+Requires:       %{libzscanner} = %{version}
 Requires:       knot = %{version}
 
 %description devel
@@ -246,7 +236,7 @@ fi
 
 %files
 %dir %attr(750,knot,knot) %{_sysconfdir}/%{pkg_name}
-%config(noreplace) %{_sysconfdir}/%{pkg_name}/%{pkg_name}.conf
+%config(noreplace) %attr(640,knot,knot) %{_sysconfdir}/%{pkg_name}/%{pkg_name}.conf
 %{_sbindir}/*
 %{_bindir}/*
 %{_mandir}/man?/*
