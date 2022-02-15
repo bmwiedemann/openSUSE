@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 11 11:13:01 MST 2022 - carnold@suse.com
+
+- Update to version 0.40. Features and Issues addressed:
+  * Fix usbid parsing regression introduced in !78 (v0.39)
+  * !91 - Fix crash with division by 0 [rhbz#1941627]
+  * !97 - #157 - Fix detecting pyparsing module
+  * Add API to allocate SpiceUsbDevice (for Android)
+    spice_usb_device_manager_allocate_device_for_file_descriptor()
+  * !93 - #137 - add support for TLS-SNI
+  * !92 - Support USB emulation for MacOS
+  * !96 - Support side mouse buttons
+  * !85 - #75 - add spice_display_keyboard_ungrab()
+  * !81 - GL fix warning fix and improve scanout logic
+  * !84 - Fix leak and warnings in gstaudio and spicy
+  * !86, !87, !90 - Several introspection fixes and improvements
+- Drop patches contained in new tarball
+  support-new-pyparsing.patch
+
+-------------------------------------------------------------------
 Tue Dec 21 17:03:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add explicit pkgconfig(wayland-protocols) BuildRequires, meson

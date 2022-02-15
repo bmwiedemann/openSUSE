@@ -1,7 +1,7 @@
 #
 # spec file for package spice-gtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           spice-gtk
-Version:        0.39
+Version:        0.40
 Release:        0
 Summary:        Gtk client and libraries for SPICE remote desktop servers
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,7 +30,6 @@ Source2:        %{name}.keyring
 Source3:        README.SUSE
 # PATCH-FIX-OPENSUSE spice-gtk-polkit-privs.patch bnc#804184 dimstar@opensuse.org -- Set the polkit defaults to auth_admin
 Patch0:         spice-gtk-polkit-privs.patch
-Patch1:         support-new-pyparsing.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gstreamer-plugins-bad
 BuildRequires:  gstreamer-plugins-good
@@ -63,7 +62,7 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libphodav-2.0)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.49.91
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.23
 BuildRequires:  pkgconfig(libusbredirhost) >= 0.7.1
 BuildRequires:  pkgconfig(libusbredirparser-0.5) >= 0.4
 BuildRequires:  pkgconfig(openssl) >= 1.0.0

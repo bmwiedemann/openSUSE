@@ -529,4 +529,12 @@ a new setuid binary.
     <comment></comment>
     <requestid>941966</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8157a114f73db4802b2614dffdcc5326</srcmd5>
+    <version>0.40</version>
+    <time>1644965825</time>
+    <user>dimstar_suse</user>
+    <comment>Update spice-gtk to version 0.40</comment>
+    <requestid>954380</requestid>
+  </revision>
 </revisionlist>
