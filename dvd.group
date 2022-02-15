@@ -35,6 +35,7 @@
     <package name="NetworkManager-openvpn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-openvpn-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-openvpn-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="NetworkManager-pppoe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="NetworkManager-pptp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-pptp-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-pptp-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3848,7 +3849,7 @@
     <package name="ristretto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ristretto-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="rng-tools" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
-    <package name="rp-pppoe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="rp-pppoe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rpcbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="rpm-config-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->

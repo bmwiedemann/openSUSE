@@ -2092,6 +2092,7 @@ unsorted:
   - cmake-mini 
   - cmark 
   - cmark-devel 
+  - cmctl 
   - cmh 
   - cmh-devel 
   - cmis-client 
@@ -3617,6 +3618,7 @@ unsorted:
   - fcitx5-lua-migration-reminder 
   - fcitx5-m17n 
   - fcitx5-mozc 
+  - fcitx5-pinyindictmanager 
   - fcitx5-qt-devel 
   - fcitx5-qt5 
   - fcitx5-qt6 
@@ -8470,6 +8472,7 @@ unsorted:
   - kubernetes1.23-controller-manager: [x86_64] 
   - kubernetes1.23-proxy: [x86_64] 
   - kubernetes1.23-scheduler: [x86_64] 
+  - kubeseal 
   - kubetap 
   - kubeval 
   - kubevirt-container-disk: [x86_64] 
@@ -9324,7 +9327,7 @@ unsorted:
   - libSDL_Pango1 
   - libSDL_Pango1-32bit: [x86_64] 
   - libSDL_bgi-devel 
-  - libSDL_bgi-suse6 
+  - libSDL_bgi-suse7 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
@@ -21695,7 +21698,6 @@ unsorted:
   - python3-vtk-openmpi2 
   - python3-vtk-openmpi3 
   - python3-vtk-openmpi4 
-  - python3-watchman 
   - python3-xcb-proto-devel 
   - python3-xrootd 
   - python3-yaql 
@@ -33153,6 +33155,9 @@ unsorted:
   - telepathy-rakia 
   - telepathy-rakia-devel 
   - telepathy-sipe 
+  - teleport 
+  - teleport-tctl 
+  - teleport-tsh 
   - tellico 
   - tellico-lang 
   - telnet 
@@ -42384,7 +42389,6 @@ unsorted:
   - warewulf4-overlay: [x86_64] 
   - warzone2100 
   - warzone2100-data 
-  - watchman 
   - watson 
   - watson-bash-completion 
   - watson-fish-completion 
