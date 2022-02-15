@@ -254,4 +254,12 @@
 </comment>
     <requestid>839649</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>42e78590205c1ef05f92d9615350ceeb</srcmd5>
+    <version>0.14.4</version>
+    <time>1644965826</time>
+    <user>dimstar_suse</user>
+    <comment>Update spice-proto to version 0.14.4</comment>
+    <requestid>954382</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 11 11:30:30 MST 2022 - carnold@suse.com
+
+- Update to version 0.14.4
+  * Fix enum deprecation warning for visual studio
+  * Fix documentation typos in stream-device.h
+
+-------------------------------------------------------------------
 Mon Oct  5 17:59:17 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to version 0.14.3
