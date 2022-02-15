@@ -1,7 +1,7 @@
 #
 # spec file for package lzip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2008-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lzip
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        Lossless Data Compressor based on the LZMA Algorithm
 License:        GPL-2.0-or-later
@@ -68,7 +68,7 @@ popd
 %install_info_delete --info-dir="%_infodir" "%_infodir/lzip.info%ext_info"
 
 %files
-%doc AUTHORS ChangeLog NEWS README
+%doc ChangeLog README
 %license COPYING
 %_bindir/lzip
 %_infodir/lzip.info%ext_info

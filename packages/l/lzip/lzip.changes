@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 13 22:32:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.23
+  * Decompression time has been reduced by 5-12% depending on the
+    file.
+  * In case of error in a numerical argument to a command line
+    option, lzip now shows the name of the option and the range
+    of valid values.
+
+-------------------------------------------------------------------
 Tue Jan 19 21:49:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.22:

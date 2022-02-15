@@ -93,4 +93,12 @@
     <comment>- update to 1.22:</comment>
     <requestid>864475</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>30bc1af529c9fcbedb1f3ce5ed540951</srcmd5>
+    <version>1.23</version>
+    <time>1644965819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.23</comment>
+    <requestid>954126</requestid>
+  </revision>
 </revisionlist>
