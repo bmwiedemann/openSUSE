@@ -5601,4 +5601,41 @@ always built-in because vim has direct perl dependencies anyway.
   * All conceal tests are skipped without the screendumps feature.</comment>
     <requestid>951182</requestid>
   </revision>
+  <revision rev="301" vrev="1">
+    <srcmd5>40dfec3403809ab307d016a70c4ef94f</srcmd5>
+    <version>8.2.4375</version>
+    <time>1644965821</time>
+    <user>dimstar_suse</user>
+    <comment>-  Updated to version 8.2.4375, fixes the following problems
+  * Vim9: strict type checking after copy() and deepcopy().
+  * Cannot assign empty list with any list type to variable with specific
+  list type.
+  * Preprocessor indents are inconsistent.
+  * Warnings reported by MSVC.
+  * Error number used twice.
+  * Test fails.
+  * Vim9: when copying a list it gets type list&lt;any&gt; even when the original
+  list did not have a type.
+  * Vim9: concatenating two lists may result in wrong type.
+  * Vim9: not all code covered by tests.
+  * Vim9: not all code covered by tests.
+  * Divide by zero with huge tabstop value.
+  * SafeState autocommand interferes with debugging.
+  * Cannot build tiny version. (Tony Mechelynck)
+  * Vim9: type error for copy of dict.
+  * Vim9: return type of getline() is too strict.
+  * A few messages should not be translated.
+  * Vim9: slice() makes a copy but doesn't change the type.
+  * Tex filetype detection fails.
+  * No test for fixed perl filetype check.
+  * A few more messages should not be translated.
+  * Vim9: cannot list autoload function.
+  * Vim9: crash when using a partial in the wrong context.
+  * Vim9: constant list and dict get a declaration type other than &quot;any&quot;.
+  * Vim9: changing script variable type not caught at compile time.
+  * No error for using :vim9script in a :def function.
+  * Vim9: cannot change type of list after making a slice.
+  * Test fails where lines are skipped.</comment>
+    <requestid>954204</requestid>
+  </revision>
 </revisionlist>

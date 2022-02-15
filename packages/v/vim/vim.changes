@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Feb 14 10:32:53 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+-  Updated to version 8.2.4375, fixes the following problems
+  * Vim9: strict type checking after copy() and deepcopy().
+  * Cannot assign empty list with any list type to variable with specific
+  list type.
+  * Preprocessor indents are inconsistent.
+  * Warnings reported by MSVC.
+  * Error number used twice.
+  * Test fails.
+  * Vim9: when copying a list it gets type list<any> even when the original
+  list did not have a type.
+  * Vim9: concatenating two lists may result in wrong type.
+  * Vim9: not all code covered by tests.
+  * Vim9: not all code covered by tests.
+  * Divide by zero with huge tabstop value.
+  * SafeState autocommand interferes with debugging.
+  * Cannot build tiny version. (Tony Mechelynck)
+  * Vim9: type error for copy of dict.
+  * Vim9: return type of getline() is too strict.
+  * A few messages should not be translated.
+  * Vim9: slice() makes a copy but doesn't change the type.
+  * Tex filetype detection fails.
+  * No test for fixed perl filetype check.
+  * A few more messages should not be translated.
+  * Vim9: cannot list autoload function.
+  * Vim9: crash when using a partial in the wrong context.
+  * Vim9: constant list and dict get a declaration type other than "any".
+  * Vim9: changing script variable type not caught at compile time.
+  * No error for using :vim9script in a :def function.
+  * Vim9: cannot change type of list after making a slice.
+  * Test fails where lines are skipped.
+  * Put in Visual mode not fully tested.
+  * Various comment and indent mistakes, returning wrong zero.
+  * :put does not work properly in compiled function. (John Beckett)
+  * Athena and Motif: when maximized scrollbar position is wrong.
+  * Vim9: crash when using a funcref to a closure.
+  * Vim9: crash when using funcref with closure.
+  * Vim9: nested function name can start with "_".
+  * Vim9: script-local function name can start with "_".
+  * 'wildmenu' only shows few matches.
+  * "o" and "O" copying comment not sufficiently tested.
+  * May end up with no current buffer.
+  * Command line complete matches cleard when typing character. (Dominique
+  Pellé)
+  * No support for end line number and column in 'errorformat'.
+  * Vim9: no error if script imports itself.
+  * Vim9: no test for existing script variable in block.
+  * Vim9: incomplete test for existing script variable in block.
+  * cstack not always passed to where it is needed.
+  * Command line popup menu not positioned correctly.
+  * No autocommand event triggered before changing directory. (Ronnie Magatti)
+  * Using :filter for :scriptnames does not work. (Ben Jackson)
+  * Part of condition is always true.
+  * An error from an expression mapping messes up the display.
+  * CTRL-A does not work properly with the cmdline popup menu.
+  * Command line not redrawn when finishing popup menu and the screen has
+  scrolled up.
+  * CI will soon switch to other windows version.
+  * When reloading not all properties are detected.
+  * <amatch> is expanded like a file name for DirChangedPre.
+  * A custom statusline may cause Esc to work like Enter on the command line
+  when the popup menu is displayed.
+  * In some build setups UNUSED is not defined.
+  * "legacy exe cmd" does not do what one would expect.
+  * FEAT_GUI_ENABLED defined but never used.
+  * No coverage is measured on MS-Windows CI.
+  * ReScript files are not recognized.
+  * CI does not use the latest Lua and Python.
+  * Dynamic loading of libsodium not handled properly.
+  * Unnecessary call to check_colorcolumn().
+  * Command line completion functions are very long.
+  * sticky command modifiers are too sticky.
+  * Vim9: line number of exception is not set.
+  * crash when repeatedly using :retab.
+  * Vim9: allowing use of "s:" leads to inconsistencies.
+  * Vim9: some tests fail.
+  * :retab may allocate too much memory.
+  * sticky command modifiers are too sticky.
+  * Not enough tests for command line completion.
+  * Calling in_vim9script() multiple times.
+  * Amiga: a few compiler warnings.
+  * Redundant #ifdef argument.
+  * MS-Windows: libsodium.dll not included with the installer.
+  * Vim9: can create a script variable from a legacy function.
+  * Filetype detection from file contents is in legacy script.
+  * Expression test fails.
+  * Unreachable code.
+  * ctx_imports is not used.
+
+-------------------------------------------------------------------
 Thu Feb  3 12:18:46 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fixes boo#1195509 CVE-2022-0443
