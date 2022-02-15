@@ -1,7 +1,7 @@
 #
 # spec file for package libdwarf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           libdwarf
-Version:        20210528
+Version:        0.3.3
 Release:        0
 Summary:        Access DWARF debugging information
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://prevanders.net/dwarf.html
-Source:         https://prevanders.net/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/davea42/libdwarf-code/commit/a6d8638c2089c42a6d00e375859b84feea309132.patch
-Patch0:         libdwarf-gcc11.patch
-Patch1:         libdwarf-gcc11-fixup.patch
+Source:         https://github.com/davea42/libdwarf-code/releases/download/libdwarf-%{version}/libdwarf-%{version}.tar.xz
 BuildRequires:  binutils-devel
 BuildRequires:  libelf-devel
 
@@ -73,9 +70,9 @@ debugging records.
 
 %package tools
 Summary:        DWARF-related tools
-# Debian name for the package; provide it for cross-discoverability.
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
+# Debian name for the package; provide it for cross-discoverability.
 Provides:       dwarfutils = %{version}-%{release}
 
 %description tools
@@ -90,9 +87,7 @@ Group:          Documentation/Other
 Documentation for libdwarf.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -102,35 +97,35 @@ CFLAGS="$CFLAGS -fPIC" LDFLAGS="-pie" %configure --enable-shared
 
 %install
 %make_install
-mkdir %{buildroot}%{_includedir}/libdwarf
-mv %{buildroot}%{_includedir}/*.h %{buildroot}%{_includedir}/libdwarf
-rm -r %{buildroot}/%{_datadir}/libdwarf/
+ln -s libdwarf-0 %{buildroot}%{_includedir}/libdwarf
 
 %post -n libdwarf1 -p /sbin/ldconfig
 %postun -n libdwarf1 -p /sbin/ldconfig
 
 %files -n libdwarf1
-%license libdwarf/COPYING libdwarf/LIBDWARFCOPYRIGHT libdwarf/LGPL.txt
-%{_libdir}/libdwarf.so.1*
+%license src/lib/libdwarf/LIBDWARFCOPYRIGHT src/lib/libdwarf/LGPL.txt
+%{_libdir}/libdwarf.so.0*
 
 %files devel
 %{_libdir}/libdwarf.la
 %{_libdir}/libdwarf.so
+%{_libdir}/pkgconfig/libdwarf.pc
 %{_includedir}/libdwarf
+%{_includedir}/libdwarf-0
 
 %files devel-static
 %{_libdir}/libdwarf.a
 
 %files tools
+%license src/bin/dwarfdump/GPL.txt
+%doc src/bin/dwarfdump/README
 %{_bindir}/dwarfdump
 %{_mandir}/man1/dwarfdump*
-%license libdwarf/COPYING
 %dir %{_datadir}/dwarfdump
 %{_datadir}/dwarfdump/dwarfdump.conf
-%doc dwarfdump/README dwarfdump/GPL.txt
 
 %files doc
-%doc libdwarf/*.pdf
-%doc libdwarf/README
+%doc doc/*.pdf
+%doc src/lib/libdwarf/README
 
 %changelog
