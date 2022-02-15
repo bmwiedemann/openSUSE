@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 15 09:21:58 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- disable the tests test_co and test_call_from_outside_venv, they expect the ansible-lint executable in /usr/bin/
+  see https://github.com/ansible-community/ansible-lint/issues/1885
+
+-------------------------------------------------------------------
+Sun Feb 13 08:42:03 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove obsolete fix-discover_lintables.patchs
+- Update to version 5.4.0:
+ - Minor Changes
+  - Neuter min space requirement for inline comments (#1821) @ssbarnea
+  - Allow rules to request original raw task data (#1834) @cognifloyd
+  - Add utils.nested_items_path and Deprecate utils.nested_items (#1824) @cognifloyd
+  - MatchError's should include the filename (#1806) @cognifloyd
+ - Bugfixes
+  - Allow use without activation of virtualenv (#1860) @ssbarnea
+  - Avoid running code on ansiblelint.config import (#1870) @ssbarnea
+  - Avoid false positive with git lfs command (#1859) @ssbarnea
+  - Strip ./ from discover_lintables results (#1837) @sebix
+  - Correcting formatting of sample .ansible-lint config (#1841) @IronTooch
+  - Move ansiblelint.testing.RunFromText import into test code (#1827) @cognifloyd
+  - Allow noqa to be used in more lintable kinds (#1819) @SirUli
+  - Recursively extract tasks from blocks (#1809) @cognifloyd
+
+-------------------------------------------------------------------
 Sat Jan 29 08:57:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - add fix-discover_lintables.patch to fix a test fail.
