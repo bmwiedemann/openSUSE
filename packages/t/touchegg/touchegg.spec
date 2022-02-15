@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Hardware/Other
 URL:            https://github.com/JoseExposito/touchegg
 Source:         https://github.com/JoseExposito/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:	harden_touchegg.service.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -49,6 +50,7 @@ actions in your desktop.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake
