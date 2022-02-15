@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 14 11:58:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.9
+  * This release comes with the new nfct_nlmsg_build_filter()
+    function that allows to add metadata for kernel-side
+    filtering of conntrack entries during conntrack table dump.
+  * The nfct_query() API supports the new NFCT_Q_FLUSH_FILTER
+    argument, it allows to flush only IPv6 or IPv4 entries from
+    the connection tracking table.
+
+-------------------------------------------------------------------
 Wed Oct 14 00:03:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile constructs.
