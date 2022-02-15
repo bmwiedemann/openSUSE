@@ -1,7 +1,7 @@
 #
 # spec file for package spice-vdagent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,15 +21,15 @@
 %bcond_with session_info_test
 
 Name:           spice-vdagent
-Version:        0.21.0
+Version:        0.22.1
 Release:        0
 Summary:        Agent for Spice guests
 License:        GPL-3.0-or-later
 Group:          System/Daemons
 URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
-Source1:        http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
+Patch0:         harden_spice-vdagentd.service.patch
 
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
@@ -65,6 +65,7 @@ Features:
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf
@@ -116,6 +117,7 @@ fi
 %{_udevrulesdir}/70-spice-vdagentd.rules
 %{_unitdir}/spice-vdagentd.service
 %{_unitdir}/spice-vdagentd.socket
+%{_prefix}/lib/systemd/user/spice-vdagent.service
 %{_tmpfilesdir}/spice-vdagentd.conf
 %{_bindir}/spice-vdagent
 %{_sbindir}/spice-vdagentd

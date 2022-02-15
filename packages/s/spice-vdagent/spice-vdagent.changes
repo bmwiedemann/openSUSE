@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 11 11:25:16 MST 2022 - carnold@suse.com
+
+- Update to version 0.22.1. Features and Issues addressed:
+  * !40 - Handle side mouse buttons
+  * !39 - Set retry limit to connect to vdagentd and improve logging error
+  * !35 - Fix deprecation warning
+  * !37 - Provide systemd spice-vdagent.service
+  Do not process X11 events in vdagent_x11_create
+  Drop upstream signature file as having "No public key"
+
+-------------------------------------------------------------------
+Thu Dec 16 16:05:34 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_spice-vdagentd.service.patch
+
+-------------------------------------------------------------------
 Fri Jan 15 16:51:11 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Update to version 0.21.0
