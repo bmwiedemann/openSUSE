@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 10 00:36:26 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- Add autofs-Test-TCP-request-correctly-in-nfs_get_info.patch
+  Fix bug when rpcbind not visible
+  (bsc#1195587 bsc#1195595)
+
+-------------------------------------------------------------------
 Tue Jan  4 22:03:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.8:
