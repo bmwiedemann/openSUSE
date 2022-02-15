@@ -27,8 +27,6 @@ BuildRequires:  fcitx5-lua
 Requires:       fcitx5-configtool
 Requires:       fcitx5-lua
 Requires:       lua54-lgi
-# fcitx5-lua was built with lua54 and requires /usr/lib64/liblua5.4.so
-Requires:       lua54-devel
 Supplements:    fcitx5
 
 %description

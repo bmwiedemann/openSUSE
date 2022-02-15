@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 15 04:08:53 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- don't require lua54-devel now, since the fix is landing in fcitx5-lua
+
+-------------------------------------------------------------------
 Sun Feb 13 04:25:32 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 1.0.1
