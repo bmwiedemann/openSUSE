@@ -59,6 +59,7 @@ Patch104:       autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch
 Patch105:       autofs-5-1-3-fix-unset-tsd-group-name-handling.patch
 # bsc#1175238 - Use /usr/etc/nsswitch.conf if /etc/nsswitch.conf is not available
 Patch106:       autofs-nsswitch-usr-etc.patch
+Patch107:       autofs-Test-TCP-request-correctly-in-nfs_get_info.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
@@ -109,6 +110,7 @@ cp %{SOURCE5} .
 %patch104 -p1
 %patch105 -p1
 %patch106 -p1
+%patch107 -p1
 
 %build
 autoreconf -fiv
