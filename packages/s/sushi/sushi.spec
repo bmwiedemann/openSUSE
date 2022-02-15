@@ -1,7 +1,7 @@
 #
 # spec file for package sushi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%global __requires_exclude typelib\\(LOKDocView\\)
 
 Name:           sushi
 Version:        41.0
@@ -48,6 +50,7 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Supplements:    nautilus
+Requires:       (typelib(LOKDocView) if libreoffice)
 
 %description
 Sushi is a quick previewer for Nautilus, the GNOME desktop file manager.
@@ -58,7 +61,10 @@ Sushi is a quick previewer for Nautilus, the GNOME desktop file manager.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	-D wayland=enabled \
+	-D X11=enabled \
+	%{nil}
 %meson_build
 
 %install
