@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Feb 12 23:30:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be a bit more specific in the %files section
+
+- update to version 3.0.9:
+  * Bugfixes
+    + #1284 Ignore blank ignored in existing Data Validations
+    + #1539 Add support for cell protection for merged cell ranges
+    + #1645 Timezone-aware datetimes raise an Exception
+    + #1666 Improved normalisation of chart series
+    + #1670 Catch OverflowError for out of range datetimes
+    + #1708 Alignment.relativeIndent can be negative
+    + #1736 Incorrect default value groupBy attribute
+
+- changes from version 3.0.8:
+  * Deleted because it contained breaking changes from 3.1
+
+-------------------------------------------------------------------
 Tue Jul 27 06:55:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.7:

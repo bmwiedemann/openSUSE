@@ -193,4 +193,12 @@ https://build.opensuse.org/request/show/308798</comment>
   * Adding tables in write-only mode raises an exception.</comment>
     <requestid>908523</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>41dcac10d9f564c6ca112d0818a5a4a0</srcmd5>
+    <version>3.0.9</version>
+    <time>1644965829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954098</requestid>
+  </revision>
 </revisionlist>

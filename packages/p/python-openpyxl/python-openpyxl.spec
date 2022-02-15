@@ -1,7 +1,7 @@
 #
 # spec file for package python-openpyxl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-openpyxl
-Version:        3.0.7
+Version:        3.0.9
 Release:        0
 Summary:        A Python library to read/write Excel 2010 xlsx/xlsm files
 License:        MIT AND Python-2.0
@@ -53,6 +53,9 @@ mv LICENCE.rst LICENSE.rst
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/openpyxl
+%{python_sitelib}/openpyxl/*
+%dir %{python_sitelib}/openpyxl-%{version}-py*.egg-info
+%{python_sitelib}/openpyxl-%{version}-py*.egg-info/*
 
 %changelog
