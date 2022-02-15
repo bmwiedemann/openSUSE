@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 14 10:44:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update patch after it was merged to dev upstream and fix another
+  place missed in the first version (boo#1195386, CVE-2022-23853):
+  * 0001-QProcess-Unix-ensure-we-don-t-accidentally-execute-s.patch
+
+-------------------------------------------------------------------
 Thu Feb  3 11:28:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to avoid unintentionally using binaries from CWD
