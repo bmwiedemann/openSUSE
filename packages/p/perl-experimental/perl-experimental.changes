@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  9 03:08:32 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.027
+   see /usr/share/doc/packages/perl-experimental/Changes
+
+  0.027     2022-02-08 18:41:07+01:00 Europe/Amsterdam
+            - Update documented list of experiments
+
+  0.026     2022-02-08 14:41:02+01:00 Europe/Amsterdam
+            - Added defer experiment
+            - Added for_list experiment
+            - Added builtin experiment
+            - args_array_with_signatures
+
+-------------------------------------------------------------------
 Sat Jul 31 03:09:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.025

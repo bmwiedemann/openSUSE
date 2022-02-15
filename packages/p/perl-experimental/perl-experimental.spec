@@ -1,7 +1,7 @@
 #
 # spec file for package perl-experimental
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name experimental
 Name:           perl-experimental
-Version:        0.025
+Version:        0.027
 Release:        0
-Summary:        Experimental features made easy
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Experimental features made easy
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -49,90 +49,6 @@ feature, this should enable the feature and silence warnings for the
 enclosing lexical scope:
 
   use experimental 'feature-name';
-
-To disable the feature and, if applicable, re-enable any warnings, use:
-
-  no experimental 'feature-name';
-
-The supported features, documented further below, are:
-
-* * 'array_base' - allow the use of '$[' to change the starting index of
-  '@array'.
-
-This is supported on all versions of perl.
-
-* * 'autoderef' - allow push, each, keys, and other built-ins on
-  references.
-
-This was added in perl 5.14.0 and removed in perl 5.23.1.
-
-* * 'bitwise' - allow the new stringwise bit operators
-
-This was added in perl 5.22.0.
-
-* * 'const_attr' - allow the :const attribute on subs
-
-This was added in perl 5.22.0.
-
-* * 'declared_refs' - enables aliasing via assignment to references
-
-This was added in perl 5.26.0.
-
-* * 'isa' - allow the use of the 'isa' infix operator
-
-This was added in perl 5.32.0.
-
-* * 'lexical_topic' - allow the use of lexical '$_' via 'my $_'.
-
-This was added in perl 5.10.0 and removed in perl 5.23.4.
-
-* * 'lexical_subs' - allow the use of lexical subroutines.
-
-This was added in 5.18.0.
-
-* * 'postderef' - allow the use of postfix dereferencing expressions
-
-This was added in perl 5.20.0, and became non-experimental (and always
-enabled) in 5.24.0.
-
-* * 'postderef_qq' - allow the use of postfix dereferencing expressions
-  inside interpolating strings
-
-This was added in perl 5.20.0, and became non-experimental (and always
-enabled) in 5.24.0.
-
-* * 're_strict' - enables strict mode in regular expressions
-
-This was added in perl 5.22.0.
-
-* * 'refaliasing' - allow aliasing via '\$x = \$y'
-
-This was added in perl 5.22.0.
-
-* * 'regex_sets' - allow extended bracketed character classes in regexps
-
-This was added in perl 5.18.0.
-
-* * 'signatures' - allow subroutine signatures (for named arguments)
-
-This was added in perl 5.20.0.
-
-* * 'smartmatch' - allow the use of '~~'
-
-This was added in perl 5.10.0, but it should be noted there are significant
-incompatibilities between 5.10.0 and 5.10.1.
-
-* * 'switch' - allow the use of '~~', given, and when
-
-This was added in perl 5.10.0.
-
-* * 'try' - allow the use of 'try' and 'catch'
-
-This was added in perl 5.34.0
-
-* * 'win32_perlio' - allows the use of the :win32 IO layer.
-
-This was added on perl 5.22.0.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
