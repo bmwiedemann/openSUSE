@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 15 03:08:15 UTC 2022 - william.brown@suse.com
+
+- Update vendor.tar to resolve:
+  * RUSTSEC-2021-0093: crossbeam-deque, cvss: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, class: ['memory-corruption']
+  * RUSTSEC-2021-0020: hyper, cvss: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H, class: ['format-injection']
+  * RUSTSEC-2021-0078: hyper, cvss: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N, class: []
+  * RUSTSEC-2021-0079: hyper, cvss: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H, class: []
+  * RUSTSEC-2021-0119: nix, cvss: None, class: ['memory-corruption']
+  * RUSTSEC-2021-0003: smallvec, cvss: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, class: ['memory-corruption']
+  * RUSTSEC-2021-0080: tar, cvss: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N, class: []
+  * RUSTSEC-2020-0031: tiny_http, cvss: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N, class: []
+  * RUSTSEC-2021-0124: tokio, cvss: None, class: ['memory-corruption', 'thread-safety']
+  * RUSTSEC-2021-0124: tokio, cvss: None, class: ['memory-corruption', 'thread-safety']
+
+-------------------------------------------------------------------
 Thu Jan 06 07:05:06 UTC 2022 - william.brown@suse.com
 
 - resolve bsc#1194119 (CVE-2021-45710)
