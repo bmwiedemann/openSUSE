@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Feb 12 23:29:24 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.4.1:
+  * Fixed regressions
+    + Regression in Series.mask() with inplace=True and PeriodDtype
+      and an incompatible other coercing to a common dtype instead of
+      raising (GH45546)
+    + Regression in assert_frame_equal() not respecting
+      check_flags=False (GH45554)
+    + Regression in DataFrame.loc() raising ValueError when indexing
+      (getting values) on a MultiIndex with one level (GH45779)
+    + Regression in Series.fillna() with downcast=False incorrectly
+      downcasting object dtype (GH45603)
+    + Regression in api.types.is_bool_dtype() raising an
+      AttributeError when evaluating a categorical Series (GH45615)
+    + Regression in DataFrame.iat() setting values leading to not
+      propagating correctly in subsequent lookups (GH45684)
+    + Regression when setting values with DataFrame.loc() losing Index
+      name if DataFrame was empty before (GH45621)
+    + Regression in join() with overlapping IntervalIndex raising an
+      InvalidIndexError (GH45661)
+    + Regression when setting values with Series.loc() raising with
+      all False indexer and Series on the right hand side (GH45778)
+    + Regression in read_sql() with a DBAPI2 connection that is not an
+      instance of sqlite3.Connection incorrectly requiring SQLAlchemy
+      be installed (GH45660)
+    + Regression in DateOffset when constructing with an integer
+      argument with no keywords (e.g. pd.DateOffset(n)) would behave
+      like datetime.timedelta(days=0) (GH45643, GH45890)
+  * Bug fixes
+    + Fixed segfault in DataFrame.to_json() when dumping tz-aware
+      datetimes in Python 3.10 (GH42130)
+    + Stopped emitting unnecessary FutureWarning in
+      DataFrame.sort_values() with sparse columns (GH45618)
+    + Fixed window aggregations in DataFrame.rolling() and
+      Series.rolling() to skip over unused elements (GH45647)
+    + Fixed builtin highlighters in Styler to be responsive to NA with
+      nullable dtypes (GH45804)
+    + Bug in apply() with axis=1 raising an erroneous ValueError
+      (GH45912)
+  * Other
+    + Reverted performance speedup of DataFrame.corr() for
+      method=pearson to fix precision regression (GH45640, GH42761)
+
+-------------------------------------------------------------------
 Tue Jan 25 19:26:46 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip more tests on non-intel architectures

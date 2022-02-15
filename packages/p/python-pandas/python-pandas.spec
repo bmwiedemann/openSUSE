@@ -39,11 +39,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-pandas%{psuffix}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -128,7 +127,7 @@ block for doing data analysis in Python.
 %if !%{with test}
 %setup -q -n pandas-%{version}
 %else
-%setup -c -n pandas-%{version} -T
+%setup -q -c -n pandas-%{version} -T
 cd ..
 # unpack only the files we need for testing
 tar xf %{SOURCE0} \
@@ -214,7 +213,7 @@ SKIP_TESTS+=" or (test_c_parser_only and test_float_precision_options)"
 # clipboard marker: not set up properly in build service
 # need to specify test path directly instead of --pyargs pandas in order
 # to find all conftest.py files https://github.com/pytest-dev/pytest/issues/1596
-xvfb-run pytest-%{$python_bin_suffix} -v -n %jobs \
+xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} \
                                       -c pyproject.toml \
                                       -o cache_dir=$PWD/.pytest_cache --cache-clear \
                                       --skip-network %{?test_fast} \
