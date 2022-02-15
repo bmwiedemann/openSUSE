@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 14 09:40:00 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Remove duplicate repositories created at the end of installation
+  (repositories which are stored in the *.repo_1 files, bsc#1194546)
+- 4.4.23
+
+-------------------------------------------------------------------
 Tue Feb  8 09:50:41 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix a wrong reference to PackageSystem#EnsureSourceInit
