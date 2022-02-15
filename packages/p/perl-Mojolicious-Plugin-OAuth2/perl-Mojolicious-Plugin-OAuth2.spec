@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious-Plugin-OAuth2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojolicious-Plugin-OAuth2
 Name:           perl-Mojolicious-Plugin-OAuth2
-Version:        2.01
+Version:        2.02
 Release:        0
-License:        Artistic-2.0
 Summary:        Auth against OAuth2 APIs including OpenID Connect
+License:        Artistic-2.0
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
