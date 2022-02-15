@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb 12 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.01
+   see /usr/share/doc/packages/perl-User-Identity/ChangeLog
+
+  version 1.01: Fri 11 Feb 11:25:41 CET 2022
+
+  	Fixes:
+  	- Coercion from Mail::Address to Mail::Message::Full::Address is
+  	  too lazy. Mail::Message issue #4
+
+-------------------------------------------------------------------
 Thu Oct 15 03:12:13 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.00
