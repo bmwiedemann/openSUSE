@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 15 08:52:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.1:
+  * GH#595: Fixed memory leak for GMP integers.
+  * Add support for curve NIST P-192.
+  * Add support for curve NIST P-224.
+  * GH#590: Fixed typing info for ``Crypto.PublicKey.ECC``.
+  * Relaxed ECDSA requirements for FIPS 186 signatures and accept any SHA-2 or
+  * SHA-3 hash.  ``sign()`` and ``verify()`` will be performed even if the hash is stronger
+    than the ECC key.
+   
+-------------------------------------------------------------------
 Sat Dec 11 13:50:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12.0:
