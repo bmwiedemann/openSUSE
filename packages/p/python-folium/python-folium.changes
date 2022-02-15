@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 14 19:52:52 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12.1.post1:
+  * Fix version issue (gh#python-visualization/folium#1536).
+
+-------------------------------------------------------------------
 Sun Feb 21 19:13:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.1

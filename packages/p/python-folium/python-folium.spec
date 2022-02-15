@@ -1,7 +1,7 @@
 #
 # spec file for package python-folium
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python36 1
 %define modname folium
 Name:           python-folium
-Version:        0.12.1
+Version:        0.12.1.post1
 Release:        0
 Summary:        Make beautiful maps with Leafletjs and Python
 License:        MIT
