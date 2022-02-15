@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 15 04:00:23 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.1.7~0:
+  * Improve handling when a lock is requested but not existing
+  * Improve do_scan for querying specific rustsec ids
+  * Improve tool to allow scanning of an individual advisory
+  * Fix do_scan to use nsjail
+  * Improve audit to generate lockfiles and keep working dir clean
+  * Allow running services before scan
+  * Add more docs
+  * Allow cargo audit to auto-unpack sources
+  * Add a default srcdir parameter to cargo_audit, and make do_scan able to unpack and scan sources
+  * Improve output and lockfile handling
+
+-------------------------------------------------------------------
 Wed Jul 21 03:35:56 UTC 2021 - wbrown@suse.de
 
 - Update to version 0.1.6~git0.d8133c2:
