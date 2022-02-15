@@ -720,8 +720,8 @@ install -m644 include/netcdf_par.h %{buildroot}%{p_includedir}/netcdf_par.h
 
 %if %{without mpi} && %{without hpc}
 # rpm macro for version checking
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat > %{buildroot}%{_sysconfdir}/rpm/macros.netcdf <<EOF
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat > %{buildroot}%{_rpmmacrodir}/macros.netcdf <<EOF
 #
 # RPM macros for hdf5 packaging
 #
@@ -866,7 +866,7 @@ module load %{hdf5_module_file}
 
 %if %{without mpi} && %{without hpc}
 %files devel-data
-%config %{_sysconfdir}/rpm/macros.netcdf
+%{_rpmmacrodir}/macros.netcdf
 %endif
 
 %files devel

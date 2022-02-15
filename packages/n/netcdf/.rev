@@ -594,4 +594,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment>- Update patch (forwarded request 927359 from eeich)</comment>
     <requestid>927360</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>41cb929ac91b495978fb1eaa6c079e77</srcmd5>
+    <version>4.8.0</version>
+    <time>1644965859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954731</requestid>
+  </revision>
 </revisionlist>
