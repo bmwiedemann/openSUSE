@@ -92,4 +92,12 @@
     <comment>- Add missing pkg-config dependency to BuildRequires for SLE-12 (forwarded request 941233 from glaubitz)</comment>
     <requestid>941234</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>28a0d5074623d71732379fb86e3efb62</srcmd5>
+    <version>20220211.00</version>
+    <time>1644965843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954678</requestid>
+  </revision>
 </revisionlist>
