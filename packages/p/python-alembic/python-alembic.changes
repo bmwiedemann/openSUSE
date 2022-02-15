@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb 14 21:37:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.6:
+  * Add a new command alembic ensure_version, which will ensure that the Alembic
+    version table is present in the target database, but does not alter its
+    contents.
+  * Fixed regression where usage of a with_variant() datatype in conjunction with
+    the existing_type option of op.alter_column() under batch mode would lead to an
+    internal exception.
+  * Implemented support for recognizing and rendering SQLAlchemy “variant” types
+    going forward into SQLAlchemy 2.0, where the architecture of “variant”
+    datatypes will be changing.
+  * Added a rule to the MySQL impl so that the translation between JSON / LONGTEXT
+    is accommodated by autogenerate, treating LONGTEXT from the server as
+    equivalent to an existing JSON in the model.
+  * Removed a warning raised by SQLAlchemy when dropping constraints on MSSQL
+    regarding statement caching.
+
+-------------------------------------------------------------------
 Mon Dec  6 17:51:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.5:

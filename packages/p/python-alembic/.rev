@@ -1418,4 +1418,26 @@
     in newer SQLAlchemy</comment>
     <requestid>936089</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>684bb799d443f3f43babbef2af165891</srcmd5>
+    <version>1.7.6</version>
+    <time>1644965827</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.6:
+  * Add a new command alembic ensure_version, which will ensure that the Alembic
+    version table is present in the target database, but does not alter its
+    contents.
+  * Fixed regression where usage of a with_variant() datatype in conjunction with
+    the existing_type option of op.alter_column() under batch mode would lead to an
+    internal exception.
+  * Implemented support for recognizing and rendering SQLAlchemy “variant” types
+    going forward into SQLAlchemy 2.0, where the architecture of “variant”
+    datatypes will be changing.
+  * Added a rule to the MySQL impl so that the translation between JSON / LONGTEXT
+    is accommodated by autogenerate, treating LONGTEXT from the server as
+    equivalent to an existing JSON in the model.
+  * Removed a warning raised by SQLAlchemy when dropping constraints on MSSQL
+    regarding statement caching.</comment>
+    <requestid>954392</requestid>
+  </revision>
 </revisionlist>
