@@ -19,7 +19,7 @@
 %global pkg_name http-client-tls
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.6
+Version:        0.3.6.1
 Release:        0
 Summary:        Http-client backend using the connection package and tls library
 License:        MIT

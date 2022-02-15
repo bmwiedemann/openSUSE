@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 11 03:01:27 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update http-client-tls to version 0.3.6.1.
+  ## 0.3.6.1
+
+  * [#482](https://github.com/snoyberg/http-client/issues/482):
+    Raise lower bound on `http-client` to fix build.
+
+-------------------------------------------------------------------
 Fri Feb  4 14:24:47 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update http-client-tls to version 0.3.6.
