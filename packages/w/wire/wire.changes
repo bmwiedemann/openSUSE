@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 15 09:03:23 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Refactor conditional golang BuildRequires for RHEL
+
+-------------------------------------------------------------------
 Mon Feb 14 14:19:56 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Disabled debug package build for RHEL.

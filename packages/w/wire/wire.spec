@@ -14,6 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %if 0%{?rhel} == 8
 %global debug_package %{nil}
 %endif
@@ -33,7 +35,11 @@ URL:            https://github.com/google/wire
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  (golang(API) >= 1.12 or golang >= 1.12)
+%if 0%{?suse_version}
+BuildRequires:  golang(API) >= 1.12
+%else
+BuildRequires:  golang >= 1.12
+%endif
 %{?systemd_ordering}
 
 %description
