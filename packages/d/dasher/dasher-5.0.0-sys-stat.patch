@@ -1,0 +1,11 @@
+diff --git a/Src/Gtk2/FileUtils.cpp b/Src/Gtk2/FileUtils.cpp
+index d0f07dc..f1733b8 100644
+--- a/Src/Gtk2/FileUtils.cpp
++++ b/Src/Gtk2/FileUtils.cpp
+@@ -1,5 +1,6 @@
+ #include <string>
+ #include <stdio.h>
++#include <sys/stat.h>
+ 
+ #include "../Common/Globber.h"
+ #include "../DasherCore/AbstractXMLParser.h"

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Feb 12 15:03:57 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 5.0.0:
+  + Gtk2/FileUtils: Include sys/stat.h
+  + Preparation for 5.0 beta release.
+  + Win32 -- turned on whole program optimization and unused code
+    removal
+  + Removed obsolete targets from Win32 projects.
+  + Generalised pre set notifications for parameters and reworked
+    alphabet history.
+  + Tweaks to control boxes.
+  + Cleanup. No more WinCE code.
+  + Removed obsolate PocketPC projects.
+  + Cleanup in Common project.
+  + Turn draw mouse position on by default.
+  + DasherInterface->Done was not really stopping dasher.
+  + Errors in training file should not stop dasher.
+  + Removed ugly messages about speed changes.
+  + Countless changes and fixes.
+  + Port away from gconf2.
+  + Updated translations
+- Start fresh with gitcheckout from new upstream.
+- Drop patches and source files no longer needed:
+  + pre_checkin.sh
+  + locale-map.txt
+  + dasher.spec.in,
+  + dasher-linkX11.patch
+  + dasher-gcc6.patch
+  + dasher-data-lang.sh
+- Add upstream build/bug fix patches:
+  + dasher-5.0.0-sys-stat.patch
+  + gnome-doc-utils-depr.patch
+  + 0001-Remove-extern-C-warpper-around-atspi-glib-headers-in.patch
+- BuildRequires/Requires/Recommends/Suggests were dropped and
+  replaced with more modern variants.
+- Sub-packages dasher-data-recommended and dasher-data-extra were
+  both dropped and Obsoleted and Provided via main package.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:25:06 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

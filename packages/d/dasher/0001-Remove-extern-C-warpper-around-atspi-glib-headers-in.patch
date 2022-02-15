@@ -1,0 +1,48 @@
+From 5eed251f9bb0bae10e2efe177e1054346c7347d1 Mon Sep 17 00:00:00 2001
+From: Yanko Kaneti <yaneti@declera.com>
+Date: Thu, 25 Mar 2021 16:37:44 +0200
+Subject: [PATCH] Remove extern "C" warpper around atspi/glib headers inclusion
+
+Recently glib headers started using C++ features when compled in C++
+https://gitlab.gnome.org/GNOME/glib/-/merge_requests/1715/commits
+
+This leads to errors like:
+..
+In file included from /usr/include/glib-2.0/glib/gatomic.h:31,
+                 from /usr/include/glib-2.0/glib/gthread.h:32,
+                 from /usr/include/glib-2.0/glib/gasyncqueue.h:32,
+                 from /usr/include/glib-2.0/glib.h:32,
+                 from /usr/include/at-spi-2.0/atspi/atspi.h:27,
+                 from dasher_editor_external_atspi.cpp:5:
+/usr/include/c++/11/type_traits:56:3: error: template with C linkage
+   56 |   template<typename _Tp, _Tp __v>
+      |   ^~~~~~~~
+dasher_editor_external_atspi.cpp:4:1: note: 'extern "C"' linkage started here
+    4 | extern "C" {
+      | ^~~~~~~~~~
+..
+
+Since for a while now glib headers are supposed to be safe to include in
+C++ code without extern "C" just remove it.
+---
+ Src/Gtk2/dasher_editor_external_atspi.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/Src/Gtk2/dasher_editor_external_atspi.cpp b/Src/Gtk2/dasher_editor_external_atspi.cpp
+index 76f637ac..6492c479 100644
+--- a/Src/Gtk2/dasher_editor_external_atspi.cpp
++++ b/Src/Gtk2/dasher_editor_external_atspi.cpp
+@@ -1,9 +1,7 @@
+ #include <X11/keysym.h>
+ #include <string.h>
+ 
+-extern "C" {
+-  #include <atspi/atspi.h>
+-}
++#include <atspi/atspi.h>
+ 
+ #include "dasher_editor_external.h"
+ #include "dasher_editor_private.h"
+-- 
+2.31.0
+
