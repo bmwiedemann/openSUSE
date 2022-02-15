@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 14 11:18:11 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- add fcitx5-lua-5.0.5-soname.patch
+  * dlopen liblua.so.5.4 intead of liblua5.4.so
+    that comes from devel package 
+
+-------------------------------------------------------------------
 Sat Jan 15 05:10:58 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - fix requirements

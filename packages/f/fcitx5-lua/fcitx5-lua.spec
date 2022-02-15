@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-lua
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Lua support for fcitx
 License:        LGPL-2.1-or-later
 URL:            https://github.com/fcitx/fcitx5-lua
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+#PATCH-FIX-UPSTREAM dlopen liblua.so.5.4
+Patch:          %{name}-5.0.5-soname.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -50,6 +52,7 @@ This package provides development files for fcitx5-lua.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %cmake
