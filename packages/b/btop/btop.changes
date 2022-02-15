@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 15 18:31:34 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 1.2.3
+
+- Update to upstream release 1.2.3:
+  * Changed: floating_humanizer() now show fractions when shortened and value
+    is < 10
+  * Fixed: Process tree not redrawing properly
+  * Fixed: string to wstring conversion crash when string is too big
+
+-------------------------------------------------------------------
+Mon Feb 14 20:32:36 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 1.2.2
+
+- Update to upstream release 1.2.2:
+  * Changed: Reverted uncolor() back to using regex to fix delay in opening
+    menu when compiled with musl
+  * Added: Toggle for showing free disk space for privileged or normal users
+  * Added: Clarification on signal screen that number can be manually entered
+
+-------------------------------------------------------------------
 Fri Feb 11 19:13:10 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 1.2.1
 
 - Update to upstream release 1.2.1:
