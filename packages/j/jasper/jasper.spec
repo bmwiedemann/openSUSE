@@ -57,6 +57,8 @@ image compression standard Part 1.
 %package -n libjasper-devel
 Summary:        Development files for libjasper, a JPEG-2000 library
 Group:          Productivity/Graphics/Convertors
+Requires:       libjasper6 = %{version}
+Requires:       libjpeg-devel
 
 %description -n libjasper-devel
 This package contains libjasper, a library implementing the JPEG-2000
