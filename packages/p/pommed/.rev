@@ -212,4 +212,12 @@
   sysfs_backlight (forwarded request 835947 from oertel)</comment>
     <requestid>835948</requestid>
   </revision>
+  <revision rev="32" vrev="16">
+    <srcmd5>20abd538cf51965dfa4ffd26b4fd605c</srcmd5>
+    <version>1.39</version>
+    <time>1644965855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954699</requestid>
+  </revision>
 </revisionlist>
