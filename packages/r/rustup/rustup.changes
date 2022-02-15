@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 14 00:44:44 UTC 2022 - william.brown@suse.com
+
+- Remove patch for symlinking to rustup-init in no self update
+- Provide proxy binaries for users that link to rustup, preventing
+  a need for rustup-init
+
+-------------------------------------------------------------------
 Thu Jan 06 07:02:42 UTC 2022 - william.brown@suse.com
 
 - resolve bsc#1194119 (CVE-2021-45710)

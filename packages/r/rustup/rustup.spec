@@ -29,7 +29,7 @@ Obsoletes:      %{1}1.52%{?2:-%{2}} < %{rust_version} \
 Obsoletes:      %{1}1.51%{?2:-%{2}} < %{rust_version}
 
 Name:           rustup
-Version:        1.24.3~git1.0a74fef5
+Version:        1.24.3~0
 Release:        0
 Summary:        A tool for managing user Rust toolchains
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
@@ -60,6 +60,9 @@ Obsoletes:      rust-doc < %{rust_version}
 Obsoletes:      rust-src < %{rust_version}
 Obsoletes:      rustfmt < %{rust_version}
 
+Conflicts:      rust+cargo
+Conflicts:      rust+rustc
+
 %description
 A tool to manager user Rust toolchains. This is generally used by developers
 managing multiple parallel toolchains in their environment.
@@ -84,11 +87,25 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/rustup-init %{bui
 # modifying .bashrc etc. It's supposed to be called only once.
 # rustup doesn't perform those steps and it only manages toolchains. It
 # can be used the entire time.
-ln -sf rustup %{buildroot}%{_bindir}/rustup-init
+# ln -sf rustup %{buildroot}%{_bindir}/rustup-init
+ln -sf rustup %{buildroot}%{_bindir}/rustc
+ln -sf rustup %{buildroot}%{_bindir}/rustdoc
+ln -sf rustup %{buildroot}%{_bindir}/cargo
+ln -sf rustup %{buildroot}%{_bindir}/rust-lldb
+ln -sf rustup %{buildroot}%{_bindir}/rust-gdb
+ln -sf rustup %{buildroot}%{_bindir}/rust-gdbgui
+ln -sf rustup %{buildroot}%{_bindir}/rls
+ln -sf rustup %{buildroot}%{_bindir}/cargo-clippy
+ln -sf rustup %{buildroot}%{_bindir}/clippy-driver
+ln -sf rustup %{buildroot}%{_bindir}/cargo-miri
+ln -sf rustup %{buildroot}%{_bindir}/rustfmt
+ln -sf rustup %{buildroot}%{_bindir}/cargo-fmt
+
 # shell completions
 install -D -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions
 ls %{buildroot}%{_bindir}
 ls %{buildroot}%{_bindir}/rustup
+
 %{buildroot}%{_bindir}/rustup completions bash > %{buildroot}%{_datadir}/bash-completion/completions/rustup
 %{buildroot}%{_bindir}/rustup completions bash cargo > %{buildroot}%{_datadir}/bash-completion/completions/cargo
 install -D -d -m 0755 %{buildroot}%{_datadir}/zsh/site-functions
@@ -97,7 +114,19 @@ install -D -d -m 0755 %{buildroot}%{_datadir}/zsh/site-functions
 
 %files
 %{_bindir}/rustup
-%{_bindir}/rustup-init
+# %{_bindir}/rustup-init
+%{_bindir}/rustc
+%{_bindir}/rustdoc
+%{_bindir}/cargo
+%{_bindir}/rust-lldb
+%{_bindir}/rust-gdb
+%{_bindir}/rust-gdbgui
+%{_bindir}/rls
+%{_bindir}/cargo-clippy
+%{_bindir}/clippy-driver
+%{_bindir}/cargo-miri
+%{_bindir}/rustfmt
+%{_bindir}/cargo-fmt
 %{_datadir}/bash-completion/completions/cargo
 %{_datadir}/bash-completion/completions/rustup
 %dir %{_datadir}/zsh
