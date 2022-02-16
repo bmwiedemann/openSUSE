@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 15 16:06:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip some tests for older distros (lack of TLSv1.3 support) 
+
+-------------------------------------------------------------------
 Sat Jan 15 16:36:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:

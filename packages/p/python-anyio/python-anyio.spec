@@ -81,6 +81,9 @@ donttest+=" or (TestUDPSocket and (ipv4 or ipv6))"
 # wrong localhost address
 donttest+=" or (TestTCPStream and test_happy_eyeballs)"
 donttest+=" or (TestTCPStream and test_connection_refused)"
+%if 0%{?suse_version} < 1550
+donttest+=" or (test_send_eof_not_implemented)"
+%endif
 %pytest -m "not network" -k "not (${donttest:4})" -ra
 
 %files %{python_files}
