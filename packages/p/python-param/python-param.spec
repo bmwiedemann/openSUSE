@@ -1,7 +1,7 @@
 #
 # spec file for package python-param
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname param
 Name:           python-param
-Version:        1.10.1
+Version:        1.12.0
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
@@ -27,9 +27,6 @@ Group:          Development/Languages/Python
 URL:            http://param.pyviz.org/
 Source0:        https://github.com/holoviz/param/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Source100:      python-param-rpmlintrc
-# PATCH-FEATURE-UPSTREAM denose.patch gh#holoviz/param#423 mcepl@suse.com
-# Remove nose dependency
-Patch0:         denose.patch
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -37,9 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
+Recommends:     python-jsonschema
 Recommends:     python-numpy
 Recommends:     python-pandas
-Recommends:     python-jsonschema
 BuildArch:      noarch
 %python_subpackages
 
@@ -82,9 +79,9 @@ assert v == "%{version}", "wrong version reported: {}".format(v)
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.md
 %{python_sitelib}/param/
 %{python_sitelib}/numbergen/
-%{python_sitelib}/param-%{version}-py*.egg-info
+%{python_sitelib}/param-%{version}-py%{python_version}.egg-info/
 
 %changelog
