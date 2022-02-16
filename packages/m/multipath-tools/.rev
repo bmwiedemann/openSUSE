@@ -1601,4 +1601,16 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
 </comment>
     <requestid>952914</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>52fcc93e00a9f5edd8cc2cb020287e30</srcmd5>
+    <version>0.8.8+64+suse.f265f7e0</version>
+    <time>1645054217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.8+64+suse.f265f7e0:
+  * libmultipath: fix printing native nvme multipath topology
+    (bsc#1196011)
+  * libmultipath: add %L path wildcard for 64-bit hex LUN
+  * libmultipath: support host adapter name lookup for s390x ccw bus (forwarded request 955368 from mwilck)</comment>
+    <requestid>955369</requestid>
+  </revision>
 </revisionlist>
