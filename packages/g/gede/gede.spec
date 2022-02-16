@@ -1,6 +1,7 @@
 #
 # spec file for package gede
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2022 Bruno Pitrus <brunopitrus@hotmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,9 +26,8 @@ Group:          Development/Tools/Debuggers
 URL:            https://gede.dexar.se
 Source0:        https://gede.dexar.se/uploads/source/gede-%{version}.tar.xz
 Source1:        gede.desktop
-BuildRequires:  ctags
-BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libQt5Widgets-devel
+BuildRequires:  libqt5-qtbase-common-devel
 Requires:       ctags
 Recommends:     gdb
 
@@ -39,11 +39,14 @@ Gede supports debugging programs written in Ada, FreeBasic, C++, C, Rust, Fortra
 %setup -q
 
 %build
-%make_build
+cd src
+%qmake5
+%make_jobs
 
 %install
-./build.py --prefix=%{buildroot}%{_prefix} install
+install -pvDm755 %{_builddir}/%{name}-%{version}/src/gede -t %{buildroot}%{_bindir}
 install -pvDm644 %{_sourcedir}/gede.desktop -t %{buildroot}%{_datadir}/applications
+
 %files
 %{_bindir}/gede
 %{_datadir}/applications/gede.desktop
