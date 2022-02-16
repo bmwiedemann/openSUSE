@@ -16,10 +16,9 @@
 #
 
 
-%ifnarch x86_64 %{ix86} aarch64
 # Remove reference to libreofficekit
 %global __requires_exclude typelib\\(LOKDocView\\)
-%endif
+
 Name:           gnome-documents
 Version:        3.34.0+37
 Release:        0
@@ -54,6 +53,7 @@ BuildRequires:  pkgconfig(libsoup-2.4) >= 2.41.3
 BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 0.17.3
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.6.0
 BuildRequires:  pkgconfig(zapojit-0.0) >= 0.0.2
+Requires:       (typelib(LOKDocView) if libreoffice)
 # This is a gjs application
 Requires:       gjs
 # If available, we query the Online Miners via dbus.

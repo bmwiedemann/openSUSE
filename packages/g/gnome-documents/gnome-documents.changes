@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 13 00:27:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Remove conditional for global typelib\\(LOKDocView\\)
+  requires_exclude, exclude the requires for all arches.
+- Following the above, add (typelib(LOKDocView) if libreoffice)
+  Requires: Pull in the needed libreoffice glue if libreoffice is
+  installed.
+
+-------------------------------------------------------------------
 Thu Feb  3 10:22:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.0+37:
