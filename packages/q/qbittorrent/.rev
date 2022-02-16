@@ -1236,4 +1236,14 @@
     <comment></comment>
     <requestid>944700</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>3dbcd2dd901f469f3cab6b429147a4ed</srcmd5>
+    <version>4.4.1</version>
+    <time>1645054272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.1
+- Switch build to Qt6 (fixes boo#1193893)
+</comment>
+    <requestid>955428</requestid>
+  </revision>
 </revisionlist>

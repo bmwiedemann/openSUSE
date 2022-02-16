@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -27,21 +27,25 @@ Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        https://raw.githubusercontent.com/qbittorrent/qBittorrent/release-%{version}/5B7CC9A2.asc#/%{name}.keyring
 Patch0:         harden_qbittorrent-nox@.service.patch
+# PATCH-FIX-OPENSUSE qbittorrent-fix_boost_1.66_detection.patch search for libboost_system.so # aloisio@gmx.com
+Patch1:         qbittorrent-fix_boost_1.66_detection.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_system-devel >= 1.65
+BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+%if 0%{?sle_version} == 150400
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%endif
+BuildRequires:  cmake(Qt6Core) >= 6.2
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 2.0.4
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(systemd)
@@ -69,10 +73,15 @@ version.
 %autosetup -p1
 
 %build
+%if 0%{?sle_version} == 150400
+export CC=gcc-11
+export CXX=g++-11
+%endif
 for ui in nox gui; do
     [ "$ui" = nox ] && ui_opt="-DGUI=OFF" || ui_opt=
     %cmake \
       $ui_opt      \
+      -DQT6=ON \
       -DSYSTEMD=ON \
       -DSystemd_SERVICES_INSTALL_DIR=%{_unitdir}
     # Override as this needs absurd amounts of RAM to build.

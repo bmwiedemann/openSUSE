@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Feb 16 14:30:04 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.4.1
+  New features:
+  * Restore all torrent settings to the torrent's main context
+    menu
+  * Add confirmation for enabling Auto TMM from context menu
+  * Add tooltip to Automatic Torrent Management context menu
+    action
+  * Add Select All/None buttons in new torrent dialog
+  Bug fixes:
+  * Keep "torrent info" alive while generate .torrent file
+  * Correctly handle Auto TMM in Torrent Files Watcher
+  * Correctly track the root folder name change
+  * Various fixes to the moving torrent code
+  * Update the torrent's download path field when changing
+    category
+  * Correctly handle received metadata
+  * Store hybrid torrents using legacy filenames
+  * Open correct directory when clicked on Browse button
+  * Fix crash when shutting down and clicing on system tray icon
+  * Fix "Free space on disk" in new torrent dialog
+  * Optimize completed files handling
+  * Migrate proxy settings
+  * Try to recover missing categories
+  Web UI:
+  * fix wrong key used for categories
+  * Remove hack for outdated IE 6 browser
+  RSS:
+  * Correctly handle XML parsing errors
+- Add qbittorrent-fix_boost_1.66_detection.patch
+
+-------------------------------------------------------------------
+Mon Jan 10 10:10:29 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Switch build to Qt6 (fixes boo#1193893)
+
+-------------------------------------------------------------------
 Fri Jan  7 07:59:00 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.4.0
