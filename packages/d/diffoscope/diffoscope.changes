@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 11 19:14:39 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 204:
+ - Don't run the binwalk comparator tests as root (or fakeroot) as the
+   latest version of binwalk has some security protection against doing
+   precisely this.
+ - If we fail to scan a file using binwalk, return 'False' from
+   BinwalkFile.recognizes rather than raise a traceback.
+ - If we fail to import the Python "binwalk" module, don't accidentally report
+   that we are missing the "rpm" module instead.
+ - Use dependencies to ensure that "diffoscope" and "diffoscope-minimal"
+   packages always have the precise same version.
+- update to version 203:
+ - Improve documentation for --timeout due to a few misconceptions.
+   Add an allowed-to-fail test regarding a regression in directory handling.
+ - Tidy control flow in Difference._reverse_self a little.
+ - Fix diffing CBFS names that contain spaces.
+
+-------------------------------------------------------------------
 Fri Feb  4 16:51:28 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 203:

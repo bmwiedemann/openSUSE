@@ -301,4 +301,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>953798</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>eafcf93cc8b599c1cb14301e2ef0e718</srcmd5>
+    <version>204</version>
+    <time>1645054275</time>
+    <user>dimstar_suse</user>
+    <comment>- - update to version 204:
+ - Don't run the binwalk comparator tests as root (or fakeroot) as the
+   latest version of binwalk has some security protection against doing
+   precisely this.
+ - If we fail to scan a file using binwalk, return 'False' from
+   BinwalkFile.recognizes rather than raise a traceback.
+ - If we fail to import the Python &quot;binwalk&quot; module, don't accidentally report
+   that we are missing the &quot;rpm&quot; module instead.
+ - Use dependencies to ensure that &quot;diffoscope&quot; and &quot;diffoscope-minimal&quot;
+   packages always have the precise same version.
+- update to version 203:
+ - Improve documentation for --timeout due to a few misconceptions.
+   Add an allowed-to-fail test regarding a regression in directory handling.
+ - Tidy control flow in Difference._reverse_self a little.
+ - Fix diffing CBFS names that contain spaces.</comment>
+    <requestid>955466</requestid>
+  </revision>
 </revisionlist>
