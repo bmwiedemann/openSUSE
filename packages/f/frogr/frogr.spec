@@ -17,15 +17,13 @@
 
 
 Name:           frogr
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Tool to Manage Flickr Accounts
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://wiki.gnome.org/Apps/Frogr
 Source:         https://download.gnome.org/sources/frogr/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/frogr/-/merge_requests/5.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/frogr/-/merge_requests/5.patch
 
 BuildRequires:  libgcrypt-devel >= 1.5.0
 BuildRequires:  meson
