@@ -198,4 +198,17 @@ The compiler is NOT used by default.</comment>
   * Fix ICE in is_this_parameter with coroutines.  [boo#1193659]</comment>
     <requestid>943613</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>65941c2d5c66a501e9d19efba49a3b45</srcmd5>
+    <version>11.2.1+git1173</version>
+    <time>1645054219</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc11-PIE, similar to gcc-PIE but affecting gcc11 [bsc#1195628]
+
+- Put libstdc++6-pp Requires on the shared library and drop
+  to Recoomends.
+
+- Remove sys/rseq.h from include-fixed</comment>
+    <requestid>953381</requestid>
+  </revision>
 </revisionlist>

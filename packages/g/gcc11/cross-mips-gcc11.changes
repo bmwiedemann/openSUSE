@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 10 12:31:01 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add gcc11-PIE, similar to gcc-PIE but affecting gcc11 [bsc#1195628]
+
+-------------------------------------------------------------------
+Wed Feb  9 15:11:40 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Put libstdc++6-pp Requires on the shared library and drop
+  to Recoomends.
+
+-------------------------------------------------------------------
+Tue Jan 18 10:30:23 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Remove sys/rseq.h from include-fixed
+
+-------------------------------------------------------------------
 Wed Dec 15 10:39:51 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update to gcc-11 branch head (d4a1d3c4b377f1d4acb), git1173
