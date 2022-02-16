@@ -425,4 +425,14 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
   IMPORTANT cacerts: remove expired DST Root CA X3, add ISRG Root X1, X2</comment>
     <requestid>934678</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>d5bf5b8639b87f81c9f627a7a737b1fa</srcmd5>
+    <version>0.20.4</version>
+    <time>1645054200</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.4:
+  proxy: support proxy urls with ipv6 address
+  Tests compatible with Python3.10 and recent pytest.</comment>
+    <requestid>954680</requestid>
+  </revision>
 </revisionlist>

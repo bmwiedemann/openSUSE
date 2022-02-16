@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 15 09:34:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.4:
+  proxy: support proxy urls with ipv6 address
+  Tests compatible with Python3.10 and recent pytest.
+
+-------------------------------------------------------------------
 Tue Nov 30 08:22:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add pyparsing dependency 
