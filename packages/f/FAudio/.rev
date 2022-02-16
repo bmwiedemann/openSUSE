@@ -270,4 +270,23 @@
   * Continued work on the experimental Wine/Win32 platform backend. (forwarded request 945404 from ukbeast89)</comment>
     <requestid>945517</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>608ba6a36148aa03474cf0d0a4e415f1</srcmd5>
+    <version>22.02</version>
+    <time>1645054230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.02:
+  * The Wine/Win32 backend is now considered stable.
+    All Wine users should upgrade to 7.0 or newer
+    All non-Wine users will (and should) continue to use 
+    the SDL backend.
+  * GStreamer support has been removed.
+    Wine/Win32 will continue to use MediaFoundation.
+    All other users should already be on patent/royalty-free 
+    codecs.
+  * utils: Minor cleanup of uicommon.
+  * csharp: Expose an IntPtr overload for
+    stb_vorbis_get_samples_float_interleaved. (forwarded request 955067 from ukbeast89)</comment>
+    <requestid>955172</requestid>
+  </revision>
 </revisionlist>

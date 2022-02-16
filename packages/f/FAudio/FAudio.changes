@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 15 17:08:34 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 22.02:
+  * The Wine/Win32 backend is now considered stable.
+    All Wine users should upgrade to 7.0 or newer
+    All non-Wine users will (and should) continue to use 
+    the SDL backend.
+  * GStreamer support has been removed.
+    Wine/Win32 will continue to use MediaFoundation.
+    All other users should already be on patent/royalty-free 
+    codecs.
+  * utils: Minor cleanup of uicommon.
+  * csharp: Expose an IntPtr overload for
+    stb_vorbis_get_samples_float_interleaved.
+
+-------------------------------------------------------------------
 Mon Jan 10 19:50:02 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update 22.01:
