@@ -571,4 +571,12 @@
   * hugin-openexr3.patch (forwarded request 949737 from StefanBruens)</comment>
     <requestid>950737</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>9653e7392163f1c8d0bfe91aabb510f5</srcmd5>
+    <version>2021.0.0</version>
+    <time>1645054212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954390</requestid>
+  </revision>
 </revisionlist>
