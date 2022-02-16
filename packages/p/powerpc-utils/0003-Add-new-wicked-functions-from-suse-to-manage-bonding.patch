@@ -1,7 +1,7 @@
 From aeaf71efb4a761892f566f996d70d60e4233958e Mon Sep 17 00:00:00 2001
 From: Mingming Cao <mmc@linux.vnet.ibm.com>
 Date: Thu, 13 Jan 2022 06:22:46 -0800
-Subject: [PATCH 03/15] Add new wicked functions from suse to manage bonding 
+Subject: [PATCH 03/27] Add new wicked functions from suse to manage bonding 
  interfaces
 
 suse specific hcnmgr utilities to manipulate suse ifcfg files

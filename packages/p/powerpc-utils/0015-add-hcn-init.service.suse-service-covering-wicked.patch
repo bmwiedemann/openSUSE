@@ -1,7 +1,7 @@
 From a831053d868f806a61ee06b88a3ee917a42586b4 Mon Sep 17 00:00:00 2001
 From: Marius Tomaschewski <mt@suse.de>
 Date: Wed, 26 Jan 2022 22:10:36 +0100
-Subject: [PATCH 15/15] add hcn-init.service.suse service covering wicked
+Subject: [PATCH 15/27] add hcn-init.service.suse service covering wicked
 
 While hcnmgr -s needs to communicate with NetworkManager and
 thus the hcn-init.service has to start after it, in wicked

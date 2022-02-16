@@ -1,0 +1,37 @@
+From faf460e7849c9deeed0bf19cf9438bf80f90f8a1 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 7 Feb 2022 13:38:31 +0100
+Subject: [PATCH 17/27] functions.suse: don't implicitly set primary to 1st
+ slave
+
+---
+ scripts/functions.suse | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/scripts/functions.suse b/scripts/functions.suse
+index 1bd3435..06696dd 100644
+--- a/scripts/functions.suse
++++ b/scripts/functions.suse
+@@ -115,10 +115,6 @@ suse_ifcfg_bond_master_template()
+ 	if [ X"${options[*]}" = X ] ; then
+ 		# default options as used by the hcnmgr
+ 		options=(mode=active-backup miimon=100 fail_over_mac=follow)
+-		# set 1st slave as primary to inherit the mac from (by default)
+-		if [ X"${slaves[0]}" != X ] ; then
+-			options+=("primary=${slaves[0]}")
+-		fi
+ 	fi
+ 
+ 	echo "STARTMODE='auto'"
+@@ -368,8 +364,6 @@ suse_ifcfg_bond_modify()
+ 		if [ X"$primary" != X ] ; then
+ 			if suse_wlist_find "$primary" "${nslaves[*]}" ; then
+ 				noptions+=("primary=$primary")
+-			elif [ X"${nslaves[0]}" != X ] ; then
+-				noptions+=("primary=${nslaves[0]}")
+ 			fi
+ 		fi
+ 	fi
+-- 
+2.34.1
+

@@ -1,7 +1,7 @@
 From 59b9469dc1496f376dcf659c93db10d38e3fcff9 Mon Sep 17 00:00:00 2001
 From: Marius Tomaschewski <mt@suse.de>
 Date: Wed, 26 Jan 2022 18:30:12 +0100
-Subject: [PATCH 10/15] Fix incorrect parameters to suse_ifcfg_bond_create
+Subject: [PATCH 10/27] Fix incorrect parameters to suse_ifcfg_bond_create
 
 ---
  scripts/hcnmgr | 2 +-

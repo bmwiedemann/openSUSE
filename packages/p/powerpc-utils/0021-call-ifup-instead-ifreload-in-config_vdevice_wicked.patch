@@ -1,0 +1,25 @@
+From dea0d8f2ad4466b518fedf7d474450c398b79fe2 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 7 Feb 2022 14:05:33 +0100
+Subject: [PATCH 21/27] call ifup instead ifreload in config_vdevice_wicked
+
+---
+ scripts/hcnmgr | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index b6def58..cc38a6a 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -401,7 +401,7 @@ do_config_vdevice_wicked() {
+ 	if systemctl is-active -q wicked.service ; then
+ 		# Apply the config changes to wicked
+ 		hcnlog DEBUG "Bring up the $BONDNAME interface"
+-		wicked ifreload "$BONDNAME"
++		wicked ifup "$BONDNAME"
+ 	fi
+ 
+ 	hcnlog DEBUG "do_config_vdevice: exit"
+-- 
+2.34.1
+

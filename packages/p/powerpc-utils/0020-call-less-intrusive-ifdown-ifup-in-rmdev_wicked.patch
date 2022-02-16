@@ -1,0 +1,26 @@
+From 5165e9a04c9f9ce0225f00700733e58f36590c3c Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 7 Feb 2022 14:04:28 +0100
+Subject: [PATCH 20/27] call less intrusive ifdown + ifup in rmdev_wicked
+
+---
+ scripts/hcnmgr | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 4fa6308..b6def58 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -614,7 +614,8 @@ rmdev_nm() {
+ rmdev_wicked() {
+ 	hcnlog DEBUG "rmdev_wicked: enter"
+ 	suse_ifcfg_bond_del_slave "$BONDNAME" "$DEVNAME"
+-	wicked ifreload "$BONDNAME"
++	wicked ifdown "$DEVNAME"
++	wicked ifup "$BONDNAME"
+ 	hcnlog DEBUG "rmdev_wicked: exit"
+ 	return $E_SUCCESS
+ }
+-- 
+2.34.1
+

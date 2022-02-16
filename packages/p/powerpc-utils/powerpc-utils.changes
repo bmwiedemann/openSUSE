@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb  7 11:27:38 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix HNV migration and other HNV issues (bsc#1195404 ltc#196259).
+   + 0016-functions.suse-fix-suse-wlist-utility-functions.patch
+   + 0017-functions.suse-don-t-implicitly-set-primary-to-1st-s.patch
+   + 0018-hcnmgr-add-x-option-to-trace-hcnmgr-script-execution.patch
+   + 0019-check-platform-service-after-getopts-parsing.patch
+   + 0020-call-less-intrusive-ifdown-ifup-in-rmdev_wicked.patch
+   + 0021-call-ifup-instead-ifreload-in-config_vdevice_wicked.patch
+   + 0022-split-scanhcn-function-into-nm-wicked-variants.patch
+   + 0023-hcnmgr-merged-scanhcn_wicked-id-fix-and-comments.patch
+   + 0024-Fix-race-with-udev-renaming-and-hcn-configure.patch
+   + 0025-hcnmgr-remove-ifcfg-file-dump-from-scanhcn_wicked.patch
+   + 0026-hcnmgr-move-sourcing-functions.suse-to-wicked-case.patch
+   + 0027-hcnmgr-extend-suse-os-release-match.patch
+
+-------------------------------------------------------------------
+Wed Feb  2 17:29:51 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Install smt.state as config file (bsc#1195413 ltc#193325).
+
+-------------------------------------------------------------------
 Thu Jan 27 09:07:05 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Add HNV wicked support (bsc#1193543 jsc#SLE-18127).

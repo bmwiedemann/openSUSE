@@ -1,7 +1,7 @@
 From 2a46892673bc081da3a8de57a8ff0466d6ec2c25 Mon Sep 17 00:00:00 2001
 From: Mingming Cao <mmc@linux.vnet.ibm.com>
 Date: Thu, 13 Jan 2022 06:20:28 -0800
-Subject: [PATCH 02/15] factor out NetworkManager nmcli code
+Subject: [PATCH 02/27] factor out NetworkManager nmcli code
 
 Signed-off-by:	Mingming Cao <mmc@linux.vnet.ibm.com>
 ---

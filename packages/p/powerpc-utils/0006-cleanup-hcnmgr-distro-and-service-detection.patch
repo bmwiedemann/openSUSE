@@ -1,7 +1,7 @@
 From 6106b6bbedbe1a90054f8749abc036ce6d299e8e Mon Sep 17 00:00:00 2001
 From: Marius Tomaschewski <mt@suse.de>
 Date: Mon, 24 Jan 2022 20:20:35 +0100
-Subject: [PATCH 06/15] cleanup hcnmgr distro and service detection
+Subject: [PATCH 06/27] cleanup hcnmgr distro and service detection
 
 ---
  scripts/hcnmgr | 153 ++++++++++++++++++++++++++++++-------------------

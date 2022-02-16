@@ -1,7 +1,7 @@
 From 5428ce5a46cf51d17bfb85db03569b251fd5b0a1 Mon Sep 17 00:00:00 2001
 From: Marius Tomaschewski <mt@suse.de>
 Date: Wed, 26 Jan 2022 18:34:13 +0100
-Subject: [PATCH 11/15] Fix comment about setting primary
+Subject: [PATCH 11/27] Fix comment about setting primary
 
 The suse_ifcfg_bond_set_primary adjusts it in the config only
 (the bond may not exist yet), the following wicked ifreload

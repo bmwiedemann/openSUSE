@@ -1,7 +1,7 @@
 From 2822ad29d29f9b6e24f0a386c1fd7d99931e249a Mon Sep 17 00:00:00 2001
 From: Marius Tomaschewski <mt@suse.de>
 Date: Wed, 26 Jan 2022 18:54:35 +0100
-Subject: [PATCH 14/15] Enable the network service checks
+Subject: [PATCH 14/27] Enable the network service checks
 
 ---
  scripts/hcnmgr | 22 +++++++++++++++++++---

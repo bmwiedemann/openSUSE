@@ -1,0 +1,71 @@
+From cf6891504c005859d073c73489b49b9f7696a648 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.de>
+Date: Mon, 7 Feb 2022 15:01:27 +0100
+Subject: [PATCH 23/27] hcnmgr: merged scanhcn_wicked id fix and comments
+
+from https://github.com/mcao-zz/powerpc-utils/commits/next2
+---
+ scripts/hcnmgr | 25 ++++++++++++++++---------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index a31e096..2d6721d 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -675,7 +675,7 @@ scanhcn_cleanup_old_hnv_nm() {
+ 	done
+ }
+ #
+-# function scanhcn
++# function scanhcn_nm
+ #	HMC supports adding migratable sr-iov when LPAR is inactive. This allows LPAR
+ #	can be migrated when inactive with SR_IOV VFS.	It will set the
+ #	migratable sr-iov device and it's backup vdevice vnic or veth with
+@@ -773,6 +773,14 @@ scanhcn_nm() {
+ 
+ 	hcnlog DEBUG "scanhcn: scan for hybrid virtual network finished"
+ }
++
++#
++# function scanhcn_wicked
++#
++#	This function will scan the device-tree to find new SR-IOV vfs and virtual devices
++#	that has configured as migratable sr-iov device or as backup vdevice during LPAR
++#	is inactive (or during manual 'hcnmgr -s' call).
++#
+ scanhcn_wicked() {
+ 	local hcnids=()
+ 	local -A hcn_devs hcn_primary
+@@ -828,22 +836,21 @@ scanhcn_wicked() {
+ 		fi
+ 	done
+ 
+-	# TODO: delete orphan bond$HCNID configs ... test -- can this happen? :
+-	#	when the LPAR has been shut down, the configuration changes then,
++	# TODO: when the LPAR has been shut down and the configuration changes then,
+ 	#	e.g. from: bond$HCNID_old { eth0, eth1 }
+ 	#	     into: bond$HCNID_new { eth0, eth2 }
+ 	#	                            ^^^^
+ 	#     	there is still a config for bond$HCNID_old that we need to remove
+-	#	(at boot) _before_ we can setup bond$HCNID_new as the new bond is
+-	#	(re)using one slave device of the old bond..
++	#	at LPAR boot _before_ we can setup bond$HCNID_new as the new bond
++	#	is (re)using one slave device of the old bond..
+ 	#	This requires to know which bond is managed via HCN and we may need
+ 	#	to mark or remember the hcn managed bonds...
+ 
+ 	# (Re)configure all bonds
+-	for hcnid in "${hcnids[@]}" ; do
+-		local bond="bond$hcnid"
+-		local primary="${hcn_primary[$HCNID]}"
+-		local devices="${hcn_devs[$HCNID]}"
++	for id in "${hcnids[@]}" ; do
++		local bond="bond$id"
++		local primary="${hcn_primary[$id]}"
++		local devices="${hcn_devs[$id]}"
+ 
+ 		hcnlog INFO "scanhcn configure HCN $bond with devices '$devices'"
+ 		if suse_ifcfg_bond_modify "$bond" "$devices" ; then
+-- 
+2.34.1
+

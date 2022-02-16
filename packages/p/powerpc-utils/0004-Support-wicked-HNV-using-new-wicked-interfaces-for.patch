@@ -1,7 +1,7 @@
 From ee5dc5c4aa9da2c1c1d975c2d03e6ea8e73cdbd3 Mon Sep 17 00:00:00 2001
 From: Mingming Cao <mmc@linux.vnet.ibm.com>
 Date: Thu, 13 Jan 2022 06:24:48 -0800
-Subject: [PATCH 04/15] Support wicked HNV using new wicked interfaces for 
+Subject: [PATCH 04/27] Support wicked HNV using new wicked interfaces for 
  bonding
 
 Signed-off-by: Mingming Cao <mmc@linux.vnet.ibm.com>

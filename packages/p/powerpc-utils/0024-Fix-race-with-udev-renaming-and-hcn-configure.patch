@@ -1,0 +1,93 @@
+From 65eaf8f906423bd3d6a7b20af0045f89340521b7 Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Sun, 6 Feb 2022 13:42:06 -0800
+Subject: [PATCH 24/27] Fix race with udev renaming and hcn configure
+
+There is a race window when udev has not finished renaming rules, hcn
+may enslave an temprory  device name into the master bonding configration,
+instead the final device name. We fix this by moving udev settle before
+search for device name, so by the time the cfg is called, it is using the correct
+device name
+
+Signed-off-by: Mingming Cao <mmc@linux.vnet.ibm.com>
+---
+ scripts/hcnmgr | 50 ++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 48 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 2d6721d..705f914 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -418,14 +418,15 @@ do_config_vdevice() {
+ 			;;
+ 	esac
+ }
++
+ #
+-# function cfghcn
++# function cfghcn_nm
+ #	Given device DRC_INDEX, configure or create HCN (active-backup bonding)
+ #	add device as bonding slave
+ #
+ # $1 DRC_INDEX of the hybrid network device
+ #
+-cfghcn() {
++cfghcn_nm() {
+ 	local retry=3
+ 
+ 	hcnlog DEBUG "cfghcn: enter $1"
+@@ -452,6 +453,51 @@ cfghcn() {
+ 	return $E_SUCCESS
+ }
+ 
++#
++# function cfghcn_wicked
++#	Given device DRC_INDEX, configure or create HCN (active-backup bonding)
++#	add device as bonding slave
++#
++# $1 DRC_INDEX of the hybrid network device
++#
++cfghcn_wicked() {
++
++	hcnlog DEBUG "cfghcn wicked: enter $1"
++
++	hcnlog DEBUG "cfg_hcn wicked: wait for udev events complete, udevadm settle"
++	udevadm settle
++	search_dev "$1"
++
++	hcnlog DEBUG "cfg_hcn: calling do_confi_vdevice to enslave $DEVNAME to HNV"
++	do_config_vdevice
++
++	hcnlog DEBUG "cfghcn wicked: exit"
++	return $E_SUCCESS
++}
++
++#
++# function cfghcn
++#	Given device DRC_INDEX, configure or create HCN (active-backup bonding)
++#	add device as bonding slave
++#
++# $1 DRC_INDEX of the hybrid network device
++#
++cfghcn() {
++	hcnlog DEBUG "cfghcn: enter $1"
++
++	case $SERVICE in
++		NetworkManager.service)
++			cfghcn_nm $1
++			;;
++		wicked.service)
++			cfghcn_wicked $1
++			;;
++	esac
++
++	hcnlog DEBUG "cfghcn: exit"
++	return $E_SUCCESS
++}
++
+ rmhcn_nm() {
+ 	for connection in $(nmcli -f NAME con show | grep "$BONDNAME"); do
+ 		hcnlog INFO "Delete bonding connection $connection"
+-- 
+2.34.1
+

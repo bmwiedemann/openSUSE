@@ -1,7 +1,7 @@
 From c6eb3f4b817d641ce84172566cb9ab308cadbb51 Mon Sep 17 00:00:00 2001
 From: Marius Tomaschewski <mt@suse.de>
 Date: Wed, 26 Jan 2022 18:26:40 +0100
-Subject: [PATCH 09/15] Fix to call wicked ifreload directly
+Subject: [PATCH 09/27] Fix to call wicked ifreload directly
 
 The wicked_reload() wrapper function were not working as it
 were using a function from a not included library.

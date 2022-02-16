@@ -1,7 +1,7 @@
 From ea4f6a210d8ef27dbfa02e7706f404e638e20e46 Mon Sep 17 00:00:00 2001
 From: Marius Tomaschewski <mt@suse.de>
 Date: Mon, 24 Jan 2022 20:43:42 +0100
-Subject: [PATCH 08/15] add note about comma in hcnmgr BONDOPTIONS
+Subject: [PATCH 08/27] add note about comma in hcnmgr BONDOPTIONS
 
 ---
  scripts/hcnmgr | 5 ++++-

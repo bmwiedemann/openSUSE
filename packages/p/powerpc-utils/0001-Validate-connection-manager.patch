@@ -1,7 +1,7 @@
 From 8474223e844ecf13606fe9ebab2198838b877947 Mon Sep 17 00:00:00 2001
 From: Mingming Cao <mmc@linux.vnet.ibm.com>
 Date: Thu, 13 Jan 2022 06:18:53 -0800
-Subject: [PATCH 01/15] Validate connection manager
+Subject: [PATCH 01/27] Validate connection manager
 
 Check and validate what OS is on the system and what type
  of connection manager is used: Wicked or NetworkManager

@@ -52,6 +52,18 @@ Patch26:        0012-Description-and-indenting-corrections.patch
 Patch27:        0013-adjust-sourcing-path-of-the-functions.suse-library.patch
 Patch28:        0014-Enable-the-network-service-checks.patch
 Patch29:        0015-add-hcn-init.service.suse-service-covering-wicked.patch
+Patch30:        0016-functions.suse-fix-suse-wlist-utility-functions.patch
+Patch31:        0017-functions.suse-don-t-implicitly-set-primary-to-1st-s.patch
+Patch32:        0018-hcnmgr-add-x-option-to-trace-hcnmgr-script-execution.patch
+Patch33:        0019-check-platform-service-after-getopts-parsing.patch
+Patch34:        0020-call-less-intrusive-ifdown-ifup-in-rmdev_wicked.patch
+Patch35:        0021-call-ifup-instead-ifreload-in-config_vdevice_wicked.patch
+Patch36:        0022-split-scanhcn-function-into-nm-wicked-variants.patch
+Patch37:        0023-hcnmgr-merged-scanhcn_wicked-id-fix-and-comments.patch
+Patch38:        0024-Fix-race-with-udev-renaming-and-hcn-configure.patch
+Patch39:        0025-hcnmgr-remove-ifcfg-file-dump-from-scanhcn_wicked.patch
+Patch40:        0026-hcnmgr-move-sourcing-functions.suse-to-wicked-case.patch
+Patch41:        0027-hcnmgr-extend-suse-os-release-match.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
@@ -137,7 +149,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*
 /sbin/lsprop
 %endif
 %dir %{_localstatedir}/lib/powerpc-utils
-%ghost %{_localstatedir}/lib/powerpc-utils/smt.state
+%config(noreplace) %{_localstatedir}/lib/powerpc-utils/smt.state
 %dir /usr/lib/powerpc-utils
 /usr/lib/powerpc-utils/functions.suse
 %{_unitdir}/hcn-init.service

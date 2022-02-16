@@ -1,7 +1,7 @@
 From 7f4602d7df66aa42c5b269a9cdc5e6c8e1cb30e2 Mon Sep 17 00:00:00 2001
 From: Marius Tomaschewski <mt@suse.de>
 Date: Mon, 24 Jan 2022 17:50:05 +0100
-Subject: [PATCH 05/15] Set modprobe bonding max_bonds=0 option
+Subject: [PATCH 05/27] Set modprobe bonding max_bonds=0 option
 
 Avoid bond0 interface creation while module init in the kernel.
 ---
