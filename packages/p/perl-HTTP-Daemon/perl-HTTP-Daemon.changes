@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 10 03:06:19 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.13
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.13      2022-02-09 20:39:12Z
+    - Bump minimum IO::Socket::IP version to 0.32 (GH#50) (Olaf Alders)
+
+-------------------------------------------------------------------
 Fri Jun  5 03:11:59 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.12

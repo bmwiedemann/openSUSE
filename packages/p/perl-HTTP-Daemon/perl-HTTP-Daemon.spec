@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Daemon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-HTTP-Daemon
-Version:        6.12
-Release:        0
 %define cpan_name HTTP-Daemon
+Name:           perl-HTTP-Daemon
+Version:        6.13
+Release:        0
 Summary:        Simple http server class
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTTP::Date) >= 6
@@ -35,7 +33,7 @@ BuildRequires:  perl(HTTP::Request) >= 6
 BuildRequires:  perl(HTTP::Response) >= 6
 BuildRequires:  perl(HTTP::Status) >= 6
 BuildRequires:  perl(HTTP::Tiny) >= 0.042
-BuildRequires:  perl(IO::Socket::IP) >= 0.25
+BuildRequires:  perl(IO::Socket::IP) >= 0.32
 BuildRequires:  perl(LWP::MediaTypes) >= 6
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Module::Metadata)
@@ -46,7 +44,7 @@ Requires:       perl(HTTP::Date) >= 6
 Requires:       perl(HTTP::Request) >= 6
 Requires:       perl(HTTP::Response) >= 6
 Requires:       perl(HTTP::Status) >= 6
-Requires:       perl(IO::Socket::IP) >= 0.25
+Requires:       perl(IO::Socket::IP) >= 0.32
 Requires:       perl(LWP::MediaTypes) >= 6
 %{perl_requires}
 
@@ -67,7 +65,7 @@ method on this object will read data from the client and return an
 back various responses.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
@@ -82,7 +80,6 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING README
 %license LICENCE
 
