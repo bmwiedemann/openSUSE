@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 16 04:45:42 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.33.1
+Dashboard
+* Add legacy protocol deprecation notification in the header
+  (gh#netdata/netdata#12117)
+* Fix handling of after and before URL params in direct links
+  (gh#netdata/netdata#12052)
+
+Bug fixes
+* Fix compilation errors cased by including "lz4.h" when stream compression is disabled
+  (gh#netdata/netdata#12049)
+* Disable ebpf socket thread causing crashes on some systems
+  (gh#netdata/netdata#12085)
+* Fix ACLK reconnect endless loop
+  (gh#netdata/netdata#12074)
+* Fix compilation errors when openssl is not available and compiling with --disable-https and --disable-cloud
+  (gh#netdata/netdata#12071)
+
+Other notable changes
+* Adds legacy protocol deprecation banner to agent log
+  (gh#netdata/netdata#12065)
+
+-------------------------------------------------------------------
 Mon Jan 31 06:25:27 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.33.0 (go.d.plugin 0.31.2)

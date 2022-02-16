@@ -3459,4 +3459,29 @@ Collectors
     (gh#netdata/netdata#11858)</comment>
     <requestid>950091</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fb06eaa39a8db4de4950c871f751a332</srcmd5>
+    <version>1.33.1</version>
+    <time>1645054225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.33.1
+Dashboard
+* Add legacy protocol deprecation notification in the header
+  (gh#netdata/netdata#12117)
+* Fix handling of after and before URL params in direct links
+  (gh#netdata/netdata#12052)
+Bug fixes
+* Fix compilation errors cased by including &quot;lz4.h&quot; when stream compression is disabled
+  (gh#netdata/netdata#12049)
+* Disable ebpf socket thread causing crashes on some systems
+  (gh#netdata/netdata#12085)
+* Fix ACLK reconnect endless loop
+  (gh#netdata/netdata#12074)
+* Fix compilation errors when openssl is not available and compiling with --disable-https and --disable-cloud
+  (gh#netdata/netdata#12071)
+Other notable changes
+* Adds legacy protocol deprecation banner to agent log
+  (gh#netdata/netdata#12065)</comment>
+    <requestid>955145</requestid>
+  </revision>
 </revisionlist>
