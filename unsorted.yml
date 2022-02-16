@@ -172,9 +172,6 @@ unsorted:
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
   - OpenSceneGraph-plugins 
-  - OpenSceneGraph34 
-  - OpenSceneGraph34-examples 
-  - OpenSceneGraph34-plugins 
   - OpenShadingLanguage: [x86_64] 
   - OpenShadingLanguage-MaterialX-shaders-source: [x86_64] 
   - OpenShadingLanguage-common-headers: [x86_64] 
@@ -2688,8 +2685,6 @@ unsorted:
   - dash 
   - dash-sh 
   - dasher 
-  - dasher-data-extras 
-  - dasher-data-recommended 
   - dasher-lang 
   - data-partition-service 
   - datamash 
@@ -9017,12 +9012,8 @@ unsorted:
   - libOpenImageIO2_2 
   - libOpenImageIO_Util2_2 
   - libOpenSceneGraph-devel 
-  - libOpenSceneGraph131 
-  - libOpenSceneGraph131-devel 
   - libOpenSceneGraph158 
   - libOpenThreads-devel 
-  - libOpenThreads20 
-  - libOpenThreads20-devel 
   - libOpenThreads21 
   - libOyranosSynnefo-devel 
   - libOyranosSynnefo-devel-static 
@@ -11171,9 +11162,9 @@ unsorted:
   - libgrooveloudness4 
   - libgrooveplayer-devel 
   - libgrooveplayer4 
-  - libgrpc++1_43 
-  - libgrpc21 
-  - libgrpc_plugin_support1_43 
+  - libgrpc++1_44 
+  - libgrpc22 
+  - libgrpc_plugin_support1_44 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -14334,7 +14325,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb21 
+  - libupb22 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -14368,9 +14359,6 @@ unsorted:
   - libusrp-devel 
   - libusrp1 
   - libusrsctp2 
-  - libustr-1_0-1 
-  - libustr-1_0-1-32bit: [x86_64] 
-  - libustr-devel 
   - libut1 
   - libutempter0-32bit: [x86_64] 
   - libuuid-devel: [i586] # devel package of dvd:util-linux-lang 
@@ -19397,7 +19385,6 @@ unsorted:
   - perl-Git-Version-Compare 
   - perl-Glib 
   - perl-Glib-Object-Introspection 
-  - perl-Gnome2-VFS 
   - perl-Gnome2-Wnck 
   - perl-GnuPG-Interface 
   - perl-GooCanvas2 
@@ -20014,6 +20001,7 @@ unsorted:
   - perl-Test-File 
   - perl-Test-File-Contents 
   - perl-Test-File-ShareDir 
+  - perl-Test-Fork 
   - perl-Test-HTTP-MockServer 
   - perl-Test-HasVersion 
   - perl-Test-Identity 
@@ -32033,7 +32021,10 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-gettext-setup 
-  - ruby3.1-rubygem-jekyll 
+  - ruby3.1-rubygem-oauth2 
+  - ruby3.1-rubygem-omniauth-github 
+  - ruby3.1-rubygem-omniauth-google-oauth2 
+  - ruby3.1-rubygem-omniauth-oauth2 
   - ruby3.1-rubygem-rspec-rails-3.9 
   - ruby3.1-rubygem-spring-watcher-listen 
   - rubygem-docker-api 
@@ -32334,6 +32325,8 @@ unsorted:
   - seatd-devel 
   - seccheck 
   - secret-tool 
+  - secrets 
+  - secrets-lang 
   - sedutil: [x86_64] 
   - segment 
   - segment-javadoc 
