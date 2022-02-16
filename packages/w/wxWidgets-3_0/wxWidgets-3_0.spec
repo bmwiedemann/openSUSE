@@ -1,7 +1,7 @@
 #
 # spec file for package wxWidgets-3_0
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,6 @@ BuildRequires:  pkgconfig(sdl)
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gnome-vfs2-devel
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  gtk2-devel
@@ -282,7 +281,6 @@ export SDL_CONFIG=%_bindir/sdl2-config
 	--with-opengl \
 	--with-libmspack \
 	--with-sdl \
-	--with-gnomevfs \
 	--enable-ipv6 \
 	--enable-mediactrl \
 	--enable-optimise \

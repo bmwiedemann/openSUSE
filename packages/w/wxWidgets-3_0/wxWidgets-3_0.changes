@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 11 14:51:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-vfs2-devel and no longer pass with-gnomevfs to
+  configure, gnome-vfs2 is deprecated many many years ago, and
+  slated for removal from openSUSE Factory. It is currently only
+  used for associating MIME types (in wxWidgets), and we can live
+  without that.
+
+-------------------------------------------------------------------
 Sun Jan  3 17:02:56 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.0.5.1 (boo#1180492):
