@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 15 08:42:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.12:
+  * ASCII miss-detection on rare cases (PR #170) 
+  * Explicit support for Python 3.11 (PR #164)
+  * The logging behavior have been completely reviewed, now using only TRACE
+    and DEBUG levels
+
+-------------------------------------------------------------------
 Mon Jan 10 23:01:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.10:
