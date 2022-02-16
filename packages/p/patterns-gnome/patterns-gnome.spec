@@ -101,7 +101,7 @@ Provides:       pattern-visible()
 # bsc#1065166
 Requires:       pattern() = gnome_basic
 %if 0%{?is_opensuse}
-Recommends:     pattern() = games
+Recommends:     pattern() = gnome_games
 Recommends:     pattern() = gnome_internet
 Recommends:     pattern() = gnome_utilities
 Recommends:     pattern() = imaging
@@ -134,7 +134,6 @@ Recommends:     gnome-control-center-goa
 Recommends:     gnome-desktop
 # #554954
 Recommends:     gnome-disk-utility
-Recommends:     gnome-documents
 Recommends:     gnome-remote-desktop
 Recommends:     gpgme
 # #399801
@@ -192,7 +191,6 @@ Recommends:     gedit
 Recommends:     gnome-characters
 Recommends:     gnome-contacts
 Recommends:     gnome-dictionary
-Recommends:     gnome-documents
 Recommends:     gnome-logs
 Recommends:     gnome-maps
 Recommends:     gnome-screenshot

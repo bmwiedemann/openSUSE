@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 12 21:10:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-documents Recommends: Package is archived upstream.
+
+-------------------------------------------------------------------
+Wed Jan 26 12:27:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend the gnome_games pattern by gnome_x11 instead of the
+  generic games pattern.
+
+-------------------------------------------------------------------
 Mon Jan 24 16:16:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not require gnome-packagekit by gnome_x11: we have a specific
