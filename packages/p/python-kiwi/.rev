@@ -2029,4 +2029,12 @@
 - Bump version: 9.24.18 → 9.24.19</comment>
     <requestid>951342</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>55b18bf03a9153f9874155b9cf3fa9b1</srcmd5>
+    <version>9.24.23</version>
+    <time>1645054191</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>954398</requestid>
+  </revision>
 </revisionlist>

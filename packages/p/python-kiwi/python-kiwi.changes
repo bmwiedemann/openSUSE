@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Feb 07 22:16:48 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.22 → 9.24.23
+
+-------------------------------------------------------------------
+Mon Feb 07 22:15:25 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed name of secret variable
+
+  The ci-update-build-tests action used a wrong variable
+  name which does not exist in the github secrets. This
+  commit fixes it and uses the correct variable name
+
+-------------------------------------------------------------------
+Mon Feb 07 22:08:48 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.21 → 9.24.22
+
+-------------------------------------------------------------------
+Mon Feb 07 22:06:36 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Revert "Fixed MicroOS build test""
+
+  This reverts commit 8c4464b8ff2af2642439ce92e1e2be497f2b0f4d.
+  snapper default config has moved from /etc to /usr/share
+  now hopefully for the last time
+
+-------------------------------------------------------------------
+Mon Feb 07 17:25:33 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed unit tests
+
+  The pytest interface setup() method call has changed
+  in a way that an additional parameter is passed to
+  the method which leads to a python error at invocation
+  time if the setup method does not define it.
+
+-------------------------------------------------------------------
+Mon Feb 07 15:40:02 CET 2022 - Neal Gompa <ngompa@centosproject.org>
+
+- build-tests: Update CentOS 8 test appliance to CentOS Stream 8
+
+  CentOS Linux 8 is now EOL, so switch over to CentOS Stream 8.
+
+-------------------------------------------------------------------
+Fri Feb 04 09:50:54 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed handling of oem reboot settings
+
+  There are oem settings called oem-reboot, oem-reboot-interactive
+  as well as oem-shutdown and oem-shutdown-interactive. When used
+  the information is passed along to the profile but not evaluated
+  by any initrd code. I don't know where on the way we lost the
+  code that actually works with these settings but this commit
+  makes them effective. This Fixes #2056
+
+-------------------------------------------------------------------
+Thu Feb 03 17:40:07 CET 2022 - Dirk Müller <dirk@dmllr.de>
+
+- treat armv8l as armv7hl
+
+  openSUSE switched from armv7hl buildworkers to aarch64 in 32bit mode
+  which identifies itself as "armv8l" in uname -m.
+
+-------------------------------------------------------------------
 Tue Feb 01 10:15:00 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.20 → 9.24.21
