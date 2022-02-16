@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>824573</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>11efa1c06d1f0e810b498201da25f4a6</srcmd5>
+    <version>4.0</version>
+    <time>1645054279</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.10 build - not yet supported</comment>
+    <requestid>955485</requestid>
+  </revision>
 </revisionlist>

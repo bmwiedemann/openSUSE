@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 16 20:35:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.10 build - not yet supported 
+
+-------------------------------------------------------------------
 Fri Jul 31 22:20:37 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.0
