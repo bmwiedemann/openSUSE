@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb  2 03:06:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.76
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+
+  2.76    * fix broken TIFF and AVIF support, PR #43 by Paul Howarth
+          * re-enable XBM support (always on)
+          * provide xbm magic support (a hack, for GD::Graph)
+  2.75    * add experimental support for TIFF and RAQM (with freetype)
+          * improve GD2 tests (GH #42, RT #140856)
+          * also list the unsupported image formats in the GD::Image pod
+          * fix copyRotated pod (it rotates CCW) PR #36 by LorenzoTo
+          * fix GD::Simple->fontMetrics docs and implementation GH #37 by Ben Crowell.
+            fix lineheight calculation according to the docs. You might need to
+            fix your code!
+          * add image methods tiff, webp, heif, avif, and its documentation.
+          * fix the fix for the poly->transform documentation RT #140043
+  2.74    * add experimental support for WEBP, HEIF and AVIF
+          * document all supported Image formats in the GD::Image lib
+          * added Github actions (for PR's)
+          * fix poly->transform documentation RT #140043
+          * fix GD,GD2 detection and tests RT #139399 (since libgd 2.3.3)
+            fixed tests by Håkon Hægland.
+          * POD: Remove indirect object constructors from example code snippet (PR #39)
+          * patch from Ben Crowell that fixes incorrect behaviour of GD::Simple->fontMetrics
+          * fix cross-compilation if gdlib.pc has no cflags by Fabrice Fontaine
+
+-------------------------------------------------------------------
 Tue Nov 10 15:20:36 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove not needed build requirement libvpx-devel [bsc#1173279]
