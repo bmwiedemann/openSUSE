@@ -1,7 +1,7 @@
 #
-# spec file for package petsc
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -591,7 +591,7 @@ python%{python_ver} ./config/configure.py \
 %if %{without hpc}
 	--PETSC_DIR=$PETSC_DIR \
         --with-suitesparse=1 \
-        --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libsuitesparseconfig.so,%{_libdir}/librt.so] \
+        --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libsuitesparseconfig.so] \
         --with-suitesparse-include=%{_includedir}/suitesparse \
  %if %{without mpi}
 	--with-mpi=0 \
@@ -722,7 +722,7 @@ done
 [ -s $tmp ] && { echo "One or more python script not Python 3 compliant!"; cat $tmp; exit 1; }
 rm -f $tmp
 
-#python_sitearch_path=%%{hpc_python_sitearch_no_singlespec}
+python_sitearch_path=%{hpc_python_sitearch_no_singlespec}
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
 

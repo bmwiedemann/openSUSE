@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 16 15:39:12 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix HPC module settings (bsc#1195782).
+- Remove dependency on librt for libsuitparse to make the non-HPC
+  build on Factory again.
+
+-------------------------------------------------------------------
 Wed Mar 24 09:50:05 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Update to version 3.14.5.
@@ -19,7 +26,7 @@ Wed Mar 24 09:50:05 UTC 2021 - Egbert Eich <eich@suse.com>
   * PCHPDDM: fix for KSPLSQR.
   * DMPlexVTKWriteAll_VTU: numerous bugfixes.
   * MatBAIJ: FIx specialization for size 9.
-  
+
 -------------------------------------------------------------------
 Wed Feb 24 16:27:54 UTC 2021 - Christian Goll <cgoll@suse.com>
 

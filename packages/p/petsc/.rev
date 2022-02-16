@@ -306,4 +306,13 @@
   * MatBAIJ: FIx specialization for size 9. (forwarded request 881044 from eeich)</comment>
     <requestid>881052</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2affb1f41427d0c51c9ac6e76b92cb78</srcmd5>
+    <version>3.14.5</version>
+    <time>1645054260</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on librt for libsuitparse to make the non-HPC
+  build on Factory again. (forwarded request 955472 from eeich)</comment>
+    <requestid>955473</requestid>
+  </revision>
 </revisionlist>
