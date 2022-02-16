@@ -1,7 +1,7 @@
 #
 # spec file for package webcamoid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           webcamoid
-Version:        8.8.0
+Version:        9.0.0
 Release:        0
 Summary:        Webcam applet for Plasma
 License:        GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://webcamoid.github.io/
 Source:         https://github.com/hipersayanX/Webcamoid/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE webcamoid-gcc11.patch add missing include -- aloisio@gmx.com
-Patch0:         webcamoid-gcc11.patch
+# PATCH-FIX-UPSTREAM webcamoid-manpath.patch
+Patch1:         webcamoid-manpath.patch
 BuildRequires:  bison
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
@@ -38,20 +37,24 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-linguist
 BuildRequires:  perl-Text-Markdown
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.9
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.9
-BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.9
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.9
+BuildRequires:  cmake(Qt5Concurrent) >= 5.15
+BuildRequires:  cmake(Qt5Core) >= 5.15
+BuildRequires:  cmake(Qt5DBus) >= 5.15
+BuildRequires:  cmake(Qt5OpenGL) >= 5.15
+BuildRequires:  cmake(Qt5QuickControls2) >= 5.15
+BuildRequires:  cmake(Qt5Svg) >= 5.15
 BuildRequires:  pkgconfig(libavcodec) >= 58.7.100
 BuildRequires:  pkgconfig(libavdevice) >= 57.0.0
 BuildRequires:  pkgconfig(libavformat) >= 58.0.102
 BuildRequires:  pkgconfig(libavutil) >= 56.6.100
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(libspa-0.2)
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
+BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libv4l2)
+BuildRequires:  pkgconfig(libvlc)
+BuildRequires:  pkgconfig(vlc-plugin)
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
 Provides:       plasmoid-webcamoid = %{version}
@@ -76,45 +79,24 @@ Features:
 * Use custom network and local files as capture devices.
 * Capture from desktop.
 
-%package devel
-Summary:        Development headers and libraries for Webcamoid
-Group:          Development/Libraries/C and C++
-Requires:       plasmoid-webcamoid = %{version}
-
-%description devel
-Development headers and libraries for Webcamoid.
-Avkys library provides a wide range of plugins for audio and
-video playing, recording, capture, and processing.
-
 %prep
 %autosetup -p1
 
 %build
-%qmake5 \
-    Webcamoid.pro \
-    LIBDIR=%{_libdir} \
-    USE3DPARTYLIBS=0 \
-    LICENSEDIR=%{_defaultdocdir}/webcamoid \
-    INSTALLDEVHEADERS=1 \
-    QMAKE_LRELEASE=%{_bindir}/lrelease-qt5 \
-    INSTALLQMLDIR=%{_kf5_qmldir}
-
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 # generate help file
-Markdown.pl --html4 README.md > README.html
+Markdown.pl --html4 ../README.md > ../README.html
 
 %install
-%qmake5_install
+%cmake_install
 
 %{kf5_post_install}
 
 %fdupes %{buildroot}%{_datadir}
 
-desktop-file-edit %{buildroot}%{_kf5_applicationsdir}/webcamoid.desktop --remove-category=KDE --add-category=Video --add-category=Player
-
-rm -rf %{buildroot}%{_datadir}/licenses/
-rm -rf %{buildroot}%{_datadir}/doc/
+rm -f %{buildroot}%{_libdir}/libavkys.so
 
 %post
 /sbin/ldconfig
@@ -132,17 +114,9 @@ rm -rf %{buildroot}%{_datadir}/doc/
 %{_bindir}/%{name}
 %{_kf5_applicationsdir}/%{name}.desktop
 %{_libdir}/libavkys.so.*
-%{_libdir}/avkys
+%dir %{_libdir}/avkys
 %{_libdir}/avkys/*.so
-%{_kf5_qmldir}/AkQml
-%{_kf5_qmldir}/AkQml/libAkQml.so
-%{_kf5_qmldir}/AkQml/qmldir
 %{_kf5_mandir}/man1/%{name}.1%{ext_man}
 %{_kf5_iconsdir}/hicolor
-
-%files devel
-%{_libdir}/libavkys.so
-%{_includedir}/avkys
-%{_includedir}/avkys/*.h
 
 %changelog
