@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1172073: '20220107'
   boo#1176553: '20220214'
-  boo#1183454: '20220214'
+  boo#1183454: '20220215'
   boo#1189869: '20211207'
   boo#1190434: '20220214'
   boo#1190670: '20211128'
@@ -43,7 +43,7 @@
   boo#1195318: '20220214'
   boo#1195319: '20220202'
   boo#1195637: '20220213'
-  boo#1195945: '20220214'
+  boo#1195945: '20220215'
   boo#1195952: '20220214'
   bsc#1161276: '20220214'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
@@ -255,8 +255,8 @@ products:
     - x86_64
   - opensuse-registry-image:
     - x86_64
-#  - opensuse-rmt-server-image:
-#    - x86_64
+  - opensuse-rmt-server-image:
+    - x86_64
   - opensuse-rstudio-desktop:
     - x86_64
   - opensuse-rstudio-server:
@@ -468,7 +468,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20220214'
 publishing: '20220214'
-testing: '20220214'
+testing: '20220215'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
