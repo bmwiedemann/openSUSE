@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7116478735898695665c0a185d7195d</srcmd5>
+    <version>0.2.0</version>
+    <time>1645054240</time>
+    <user>dimstar_suse</user>
+    <comment>python lib and tool to manage ArduPilot blackbox recordings.
+
+This submission is based on a git managed source package in the devel
+project. In theory it should be doable to submit such a 
+package to Factory, but I am sure some tooling will fail ... let's see :)</comment>
+    <requestid>955268</requestid>
+  </revision>
+</revisionlist>
