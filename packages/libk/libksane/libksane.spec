@@ -25,7 +25,7 @@ Name:           libksane
 Version:        21.12.2
 Release:        0
 Summary:        KDE scanning library
-License:        GPL-2.0-or-later
+License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz

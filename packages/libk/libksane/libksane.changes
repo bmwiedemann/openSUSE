@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 15 19:14:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop LicenseRef-KDE-Accepted-LGPL, not recognized (yet)
+
+-------------------------------------------------------------------
+Tue Feb 15 10:40:00 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Changed license tag to "LGPL-2.1-only OR LGPL-3.0-only OR
+  LicenseRef-KDE-Accepted-LGPL"
+
+-------------------------------------------------------------------
 Tue Feb  1 13:03:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
