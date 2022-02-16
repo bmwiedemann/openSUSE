@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 15 14:07:30 UTC 2022 - Jean Delvare <jdelvare@suse.com>
+
+- Update to version 0.67:
+  * Call pager with original LANG environment variable
+  * Consistently complain early if no series file is found
+  * Tighten the patch format parsing
+  * Reuse the shell (performance)
+  * Document the series file format further
+  * Document that quilt loads /etc/quilt.quiltrc
+  * series: Minor optimizations
+  * setup: Don't obey the settings of any englobing .pc
+  * setup: Default to fast mode
+  * quilt.el: Fix documentation of quilt-pc-directory
+  * quilt.el: Load /etc/quilt.quiltrc if ~/.quiltrc doesn't exist
+  * quilt.el: Fix quilt-editable when QUILT_PATCHES_PREFIX is set
+  * Obsoletes backup-files-restore-symbolic-links.patch
+  * Obsoletes inspect-handle-link-in-path.patch
+- Refresh quilt-support-vimdiff.patch (offsets only)
+- Refresh suse-workaround-pseudo-release.patch (offsets only)
+
+-------------------------------------------------------------------
 Wed Dec  9 14:15:38 UTC 2020 - Jean Delvare <jdelvare@suse.com>
 
 - backup-files-restore-symbolic-links.patch: Handle git-generated

@@ -13,7 +13,7 @@ non-interactive alternative diff viewers must exist too.
  1 file changed, 10 insertions(+), 1 deletion(-)
 --- a/quilt/diff.in
 +++ b/quilt/diff.in
-@@ -66,7 +66,9 @@ included.
+@@ -53,7 +53,9 @@ included.
  
  --diff=utility
  	Use the specified utility for generating the diff. The utility
@@ -24,7 +24,7 @@ non-interactive alternative diff viewers must exist too.
  
  --color[=always|auto|never]
  	Use syntax coloring (auto activates it only if the output is a tty).
-@@ -219,6 +221,13 @@ done
+@@ -214,6 +216,13 @@ fi
  
  QUILT_DIFF_OPTS="$QUILT_DIFF_OPTS $opt_format"
  

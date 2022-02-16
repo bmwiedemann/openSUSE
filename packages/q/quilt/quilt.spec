@@ -1,7 +1,7 @@
 #
 # spec file for package quilt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           quilt
-Version:        0.66
+Version:        0.67
 Release:        0
 Summary:        A Tool for Working with Many Patches
 License:        GPL-2.0-or-later
@@ -42,15 +42,13 @@ Patch1:         expand.diff
 Patch2:         quilt-support-vimdiff.patch
 Patch3:         test-faildiff-workaround-order-bug.patch
 Patch4:         suse-workaround-pseudo-release.patch
-Patch5:         inspect-handle-link-in-path.patch
-Patch6:         backup-files-restore-symbolic-links.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version}
-Recommends:     procmail
+Recommends:     /usr/bin/rpmbuild
 Recommends:     bzip2
 Recommends:     ed
-Recommends:     /usr/bin/rpmbuild
+Recommends:     procmail
 %endif
 %if 0%{?suse_version} > 1120
 Recommends:     xz
@@ -67,8 +65,6 @@ un-applied, refreshed, and more.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 %build
 # --with-rpmbuild=/usr/lib/rpm/rpmb:

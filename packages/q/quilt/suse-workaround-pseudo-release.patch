@@ -10,7 +10,7 @@ happy again. Packages in openSUSE 11.4 and later no longer need this.
 
 --- a/quilt/setup.in
 +++ b/quilt/setup.in
-@@ -228,6 +228,14 @@ inspect()
+@@ -213,6 +213,14 @@ inspect()
  	ln -s $QUILT_DIR/scripts/inspect-wrapper $tmpdir/bin/unzip
  	ln -s $QUILT_DIR/scripts/inspect-wrapper $tmpdir/bin/7z
  
