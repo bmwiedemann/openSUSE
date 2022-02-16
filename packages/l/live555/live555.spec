@@ -1,7 +1,7 @@
 #
 # spec file for package live555
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Dominique Leuenberger, Ramiswil, Switzerland
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define lmdmaj 102
+%define lmdmaj 106
 
 Name:           live555
-Version:        2021.12.18
+Version:        2022.02.07
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
