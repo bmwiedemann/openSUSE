@@ -1,0 +1,31 @@
+From: Frank Ch. Eigler <fche@redhat.com>
+Date: Mon Dec 6 12:06:06 2021 -0500
+Subject: sys/sdt.h fp constraints cont'd, x86-64 edition
+Git-commit: 1d3653936fc1fd13135a723a27e6c7e959793ad0
+References: https://build.suse.de/request/show/263498
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+    sys/sdt.h fp constraints cont'd, x86-64 edition
+    
+    It appears that various versions of gcc continue to show signs of
+    confusion at our newly offered asm-operand alternatives for floating
+    point sdt.h marker parameters.
+    
+    e.g., https://bugzilla.redhat.com/show_bug.cgi?id=2028798
+    
+    We may need to restore previous constraints broadly, forcing the
+    compiler to plop floating point parameters into integer storage.
+
+diff --git a/includes/sys/sdt.h b/includes/sys/sdt.h
+index 24d5e01c3..3e1f00b6c 100644
+--- a/includes/sys/sdt.h
++++ b/includes/sys/sdt.h
+@@ -101,7 +101,7 @@
+ # if defined __powerpc__
+ # define STAP_SDT_ARG_CONSTRAINT        nZr
+ # elif defined __x86_64__
+-# define STAP_SDT_ARG_CONSTRAINT norfxy
++# define STAP_SDT_ARG_CONSTRAINT norx
+ # elif defined __aarch64__
+ # define STAP_SDT_ARG_CONSTRAINT norw
+ # elif defined __s390__ || defined __s390x__

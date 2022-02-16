@@ -1,0 +1,23 @@
+From: Frank Ch. Eigler <fche@redhat.com>
+Date: Wed Dec 1 10:59:27 2021 -0500
+Subject: RHBZ2026858: on __arm__ (arm32), use STAP_SDT_ARG_CONSTRAINT = G
+Git-commit: 34facf7ee6b43dae66cc109973a4eda42e439163
+References: https://build.suse.de/request/show/263498
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+
+    RHBZ2026858: on __arm__ (arm32), use STAP_SDT_ARG_CONSTRAINT = g
+
+diff --git a/includes/sys/sdt.h b/includes/sys/sdt.h
+index 9ecb1cb6f..28d236d91 100644
+--- a/includes/sys/sdt.h
++++ b/includes/sys/sdt.h
+@@ -106,6 +106,8 @@
+ # define STAP_SDT_ARG_CONSTRAINT norw
+ # elif defined __s390__ || defined __s390x__
+ # define STAP_SDT_ARG_CONSTRAINT        norf
++# elif defined __arm__
++# define STAP_SDT_ARG_CONSTRAINT        g
+ # else
+ # define STAP_SDT_ARG_CONSTRAINT        nor
+ # endif

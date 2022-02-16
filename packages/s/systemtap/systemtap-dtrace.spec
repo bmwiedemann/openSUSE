@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap-dtrace
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap-dtrace
-Version:        4.2
+Version:        4.6
 Release:        0
 Summary:        SystemTap dtrace utility
 License:        GPL-2.0-or-later
@@ -31,6 +31,11 @@ Source1:        http://sourceware.org/systemtap/ftp/releases/systemtap-%{version
 Source2:        systemtap.keyring
 Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
+Patch1:         systemtap-build-source-dir.patch
+Patch2:         sys-sdt.h-fp-constraints-arm32.patch
+Patch3:         sys-sdt.h-fp-constraints-x86_64.patch
+Patch4:         sys-sdt.h-fp-constraints-aarch64-s390.patch
+
 BuildArch:      noarch
 
 %description
@@ -40,6 +45,7 @@ definitions.
 
 %prep
 %setup -q -n systemtap-%{version}
+%autopatch -p1
 
 %build
 # Our binutils always support '?' in the section characters on all

@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap-docs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           systemtap-docs
-Version:        4.2
+Version:        4.6
 Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later
@@ -58,7 +58,7 @@ This package contains the documents and examples for systemtap.
 
 %prep
 %setup -q -n systemtap-%{version}
-%patch1 -p1
+%autopatch -p1
 
 %build
 # fix interpreter

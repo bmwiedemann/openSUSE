@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 14 15:46:00 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Resolve gcc compilation error reported against glib2 and libvirt
+    New patch: sys-sdt.h-fp-constraints-arm32.patch
+    New patch: sys-sdt.h-fp-constraints-x86_64.patch
+    New patch: sys-sdt.h-fp-constraints-aarch64-s390.patch
+
+-------------------------------------------------------------------
+Thu Jan 27 23:21:10 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Update to version 4.6 (bsc#1194395)
+  4.6 release notes: https://sourceware.org/pipermail/systemtap/2021q4/027370.html
+  4.5 release notes: https://sourceware.org/pipermail/systemtap/2021q2/027225.html
+  4.4 release notes: https://sourceware.org/pipermail/systemtap/2020q4/027074.html
+  4.3 release notes: https://sourceware.org/pipermail/systemtap/2020q2/026923.html
+
+  Remove patches (upstream):
+   - systemtap-amend-fallback-comment-to-work-with-newer-gcc.patch
+   - systemtap-fix-strict-prototypes-in-autoconf-stack-trace-save-regs.c.patch 
+
+  Update systemtap.keyring for new signer
+
+-------------------------------------------------------------------
 Wed Apr 28 16:46:32 UTC 2021 - Tony Jones <tonyj@suse.com>
 
 - Adjust stap-server.conf to refer to /run not /var/run (bsc#1185068) 

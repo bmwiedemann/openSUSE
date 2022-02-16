@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap-headers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap-headers
-Version:        4.2
+Version:        4.6
 Release:        0
 Summary:        SystemTap headers
 License:        GPL-2.0-or-later
@@ -37,6 +37,10 @@ Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
+Patch2:         sys-sdt.h-fp-constraints-arm32.patch
+Patch3:         sys-sdt.h-fp-constraints-x86_64.patch
+Patch4:         sys-sdt.h-fp-constraints-aarch64-s390.patch
+
 # sdt-devel provides the same header files as us, so we
 # must conflict
 Conflicts:      systemtap-sdt-devel
@@ -49,7 +53,8 @@ systemtap-sdt-devel, which also contains these headers.
 
 %prep
 %setup -q -n systemtap-%{version}
-%patch1 -p1
+%autopatch -p1
+
 
 %build
 # Our binutils always support '?' in the section characters on all

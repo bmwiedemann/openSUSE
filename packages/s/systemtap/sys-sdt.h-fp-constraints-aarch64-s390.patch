@@ -1,0 +1,26 @@
+From: Stan Cox <scox@redhat.com>
+Date: Tue Dec 7 09:55:01 2021 -0500
+Subject: sys/sdt.h fp constraints: aarch64, s390
+Git-commit: 209b5a19c6ee30c2db3f6c849620544a851013e8
+References: https://build.suse.de/request/show/263498
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+    sys/sdt.h fp constraints: aarch64, s390
+    
+    Remove float constraints as per commit 1d3653936 but for aarch64 and s390.
+
+diff --git a/includes/sys/sdt.h b/includes/sys/sdt.h
+index 3e1f00b6c..48cb7263f 100644
+--- a/includes/sys/sdt.h
++++ b/includes/sys/sdt.h
+@@ -102,10 +102,6 @@
+ # define STAP_SDT_ARG_CONSTRAINT        nZr
+ # elif defined __x86_64__
+ # define STAP_SDT_ARG_CONSTRAINT norx
+-# elif defined __aarch64__
+-# define STAP_SDT_ARG_CONSTRAINT norw
+-# elif defined __s390__ || defined __s390x__
+-# define STAP_SDT_ARG_CONSTRAINT        norf
+ # elif defined __arm__
+ # define STAP_SDT_ARG_CONSTRAINT        g
+ # else

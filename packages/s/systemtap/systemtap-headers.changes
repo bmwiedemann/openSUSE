@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 14 15:46:00 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Resolve gcc compilation error reported against glib2 and libvirt
+    New patch: sys-sdt.h-fp-constraints-arm32.patch
+    New patch: sys-sdt.h-fp-constraints-x86_64.patch
+    New patch: sys-sdt.h-fp-constraints-aarch64-s390.patch
+
+-------------------------------------------------------------------
+Thu Jan 27 23:26:36 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Upgrade to version 4.6. See systemtap.spec for changelog
+
+-------------------------------------------------------------------
 Fri Dec  6 17:32:56 UTC 2019 - Tony Jones <tonyj@suse.com>
 
 - Upgrade to version 4.2. See systemtap.spec for changelog

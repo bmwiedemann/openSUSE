@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        4.2
+Version:        4.6
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -33,8 +33,10 @@ Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Source5:        stap-server.conf
 Patch1:         systemtap-build-source-dir.patch
-Patch2:         systemtap-fix-strict-prototypes-in-autoconf-stack-trace-save-regs.c.patch
-Patch3:         systemtap-amend-fallback-comment-to-work-with-newer-gcc.patch
+Patch2:         sys-sdt.h-fp-constraints-arm32.patch
+Patch3:         sys-sdt.h-fp-constraints-x86_64.patch
+Patch4:         sys-sdt.h-fp-constraints-aarch64-s390.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -96,9 +98,7 @@ This package contains the support tools for static probes.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 
 %build
 autoreconf -fi
