@@ -17,13 +17,13 @@
 
 
 Name:           lcms2
-Version:        2.13
+Version:        2.13.1
 Release:        0
 Summary:        Little CMS Engine - A color managment library and tools
 License:        MIT
 Group:          Productivity/Graphics/Other
-URL:            http://www.littlecms.com/
-Source0:        https://sourceforge.net/projects/lcms/files/lcms/%{version}/%{name}-%{version}.tar.gz
+URL:            https://www.littlecms.com/
+Source0:        https://github.com/mm2/Little-CMS/releases/download/lcms%{version}/lcms2-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         lcms2-ocloexec.patch
 Patch2:         lcms2-visibility.patch
