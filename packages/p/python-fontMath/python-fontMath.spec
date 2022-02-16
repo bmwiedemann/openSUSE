@@ -1,7 +1,7 @@
 #
 # spec file for package python-fontMath
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-fontMath
-Version:        0.8.1
+Version:        0.9.1
 Release:        0
 Summary:        A set of objects for performing math operations on font data
 License:        MIT
@@ -31,10 +31,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-FontTools >= 3.32.0
+Requires:       python-FontTools >= 4.28.5
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module FontTools >= 3.32.0}
+BuildRequires:  %{python_module FontTools >= 4.28.5}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 # /SECTION
 %python_subpackages
