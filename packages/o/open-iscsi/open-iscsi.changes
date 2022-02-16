@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 14 20:21:31 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream 2.1.6 as 2.1.6-suse, which contains
+  bug fixes and cleanups. See the Changelog for more details.
+
+-------------------------------------------------------------------
 Thu Nov 11 18:45:37 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Merged latest upstream. Mostly cleanup, but includes a fix for

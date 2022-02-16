@@ -1,7 +1,7 @@
 #
 # spec file for package open-iscsi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,10 @@
 %endif
 
 %define iscsi_minor_release 1
-%define iscsi_patch_release 5
+%define iscsi_patch_release 6
 %define iscsi_patch_release_suse %{iscsi_patch_release}-suse
 Name:           open-iscsi
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
@@ -205,6 +205,7 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 %{_mandir}/man8/iscsistart.8%{ext_man}
 %{_mandir}/man8/iscsi-iname.8%{ext_man}
 %{_mandir}/man8/iscsi_fw_login.8%{ext_man}
+%{_mandir}/man8/iscsi-gen-initiatorname.8%{ext_man}
 %{_udevrulesdir}/50-iscsi-firmware-login.rules
 
 %files -n libopeniscsiusr0_2_0
