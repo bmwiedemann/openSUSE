@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 15 14:47:15 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220215.c77acf53:
+  * Factory staging: report pkglistgen status
+
+-------------------------------------------------------------------
+Tue Feb 15 14:39:40 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220215.34abdb2b:
+  * Support to move one staging into another
+
+-------------------------------------------------------------------
+Tue Feb 15 12:44:05 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220215.805cd93d:
+  * truncate overlong changelogs to 100 lines + last line
+
+-------------------------------------------------------------------
 Mon Feb 14 16:26:06 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220214.e0da44c3:
