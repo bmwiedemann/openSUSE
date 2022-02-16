@@ -2,6 +2,7 @@
 Mon Jan 31 15:23:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2.12
+  * Fix CVE-2022-24976 [boo#1195989]
   * Track SASL login EID
 
 -------------------------------------------------------------------

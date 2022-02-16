@@ -216,4 +216,12 @@
     <comment>- Update to release 7.2.12</comment>
     <requestid>950255</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>548e0b4c6f112fff443f005a744298d7</srcmd5>
+    <version>7.2.12</version>
+    <time>1645054214</time>
+    <user>dimstar_suse</user>
+    <comment>+bugref</comment>
+    <requestid>955090</requestid>
+  </revision>
 </revisionlist>
