@@ -44,7 +44,6 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  libcap-devel
-BuildRequires:  libdwarf-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libgpgme-devel >= 1.1.8
 BuildRequires:  libtool

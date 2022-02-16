@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 13 21:10:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop apparently unused libdwarf buildrequires
+
+-------------------------------------------------------------------
 Fri Feb 11 20:20:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.12.5:
