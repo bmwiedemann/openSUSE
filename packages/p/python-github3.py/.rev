@@ -28,4 +28,12 @@
   * Add support for webhooks in an organization</comment>
     <requestid>685061</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b733d47cb34b72160b6980f87f5a7867</srcmd5>
+    <version>3.1.0</version>
+    <time>1645054270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955427</requestid>
+  </revision>
 </revisionlist>

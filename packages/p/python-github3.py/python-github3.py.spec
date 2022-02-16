@@ -1,7 +1,7 @@
 #
 # spec file for package python-github3.py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-github3.py
-Version:        1.3.0
+Version:        3.1.0
 Release:        0
 Summary:        Python wrapper for the GitHub API
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ Source20:       https://raw.githubusercontent.com/sigmavirus24/github3.py/%{vers
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyJWT >= 2.3.0
 Requires:       python-jwcrypto >= 0.5.0
 Requires:       python-python-dateutil >= 2.6.0
 Requires:       python-requests >= 2.18
@@ -39,6 +40,7 @@ Recommends:     python-pyasn1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module betamax >= 0.8.0}
+BuildRequires:  %{python_module PyJWT >= 2.3.0}
 BuildRequires:  %{python_module betamax-matchers >= 0.1.0}
 BuildRequires:  %{python_module jwcrypto >= 0.5.0}
 BuildRequires:  %{python_module mock}
@@ -64,7 +66,7 @@ cp %{SOURCE20} tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -c /dev/null
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
