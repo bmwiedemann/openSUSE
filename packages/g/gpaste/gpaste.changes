@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 16 08:55:17 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.42.5:
+  * Fix some race conditions in history handling.
+  * Better fix crash when there is no history yet.
+  * Fix crash when there is no history yet.
+- Remove 1ec2699daa600e34d73b8d200dd7bb22f4eace27.patch.
+
+-------------------------------------------------------------------
 Wed Feb  2 20:11:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 1ec2699daa600e34d73b8d200dd7bb22f4eace27.patch: Fix build
