@@ -18,7 +18,7 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        41.alpha
+Version:        41.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
@@ -29,10 +29,6 @@ Source0:        https://download.gnome.org/sources/gedit/41/%{name}-%{version}.t
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
 Patch1:         gedit-plugins-python-env.patch
-# PATCH-FIX-UPSTREAM gedit-fix-open-crash.patch -- open-selector: Fix crash introduced in GDateTime port
-Patch2:         gedit-fix-open-crash.patch
-# PATCH-FIX-UPSTREAM 124.patch -- Fix build with meson 0.61.0 and newer
-Patch3:         https://gitlab.gnome.org/GNOME/gedit/-/merge_requests/124.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 0.9.3
@@ -141,7 +137,8 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %dir %{_libdir}/gedit/
-%{_libdir}/gedit/libgedit-%{version}.so
+#%%{_libdir}/gedit/libgedit-%%{version}.so
+%{_libdir}/gedit/libgedit-41.so
 %{_libdir}/gedit/girepository-1.0/
 %dir %{_libdir}/gedit/plugins/
 # Explicitly list plugins so we know when we miss one

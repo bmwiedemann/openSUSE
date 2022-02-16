@@ -1086,4 +1086,12 @@
     <comment>- Add 124.patch: Fix build with meson 0.61.0 and newer. (forwarded request 952767 from iznogood)</comment>
     <requestid>952876</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>ab00a1408af6c2937868d3ebbe5d7d5b</srcmd5>
+    <version>41.0</version>
+    <time>1645054205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954716</requestid>
+  </revision>
 </revisionlist>

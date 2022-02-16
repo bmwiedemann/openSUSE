@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 14 15:21:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Note that gnome-text-editor will be GNOME's recommended text
+    editor beginning with the GNOME 42 release next month.
+  + Fix some crashes, one when opening files, another when deleting
+    the open folder with the file browser plugin active.
+  + Fix buttons in the color scheme selector dialog.
+  + Build fixes.
+  + Improve symbolic icon coloring.
+  + Improve Save As behavior when saving error infobar is showing.
+  + Updated translations.
+- Drop 124.patch and gedit-fix-open-crash.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Feb  2 09:49:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 124.patch: Fix build with meson 0.61.0 and newer.
