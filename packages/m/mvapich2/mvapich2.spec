@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -431,7 +431,10 @@ PERL_USE_UNSAFE_INC=1 ./autogen.sh
    --with-device=ch3:psm \
    --with-psm2=/usr \
 %endif
-   --without-mpe
+%if "%{build_flavor}" == "verbs"
+   --disable-ibv-dlopen \
+%endif
+  --without-mpe
 make %{?_smp_mflags} V=1
 
 %if 0%{?testsuite}
