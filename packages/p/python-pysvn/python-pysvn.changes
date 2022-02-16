@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 16 20:15:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.16:
+  * Add support for subversion 1.14.1
+  * Use latest openssl 1.1.1k
+  * Fix issue with Client.mkdir() on Windows python 3.8 and later
+  * No longer able to build python 2.7 kits for Windows.
+    An issue with incompatible C++ DLL
+- enable python39 build
+- disable python310 build (not yet supported)
+
+-------------------------------------------------------------------
 Sun May  2 22:58:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Disable python39 build: Need to update pycxx-devel first

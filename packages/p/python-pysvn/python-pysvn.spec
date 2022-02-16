@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysvn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,9 @@
 
 %define packagename pysvn
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Needs a newer pycxx-devel
-%define skip_python39 1
+%define skip_python310 1
 Name:           python-pysvn
-Version:        1.9.12
+Version:        1.9.16
 Release:        0
 Summary:        Highlevel Subversion Python Bindings
 License:        Apache-1.1
