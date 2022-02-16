@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 15 08:39:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * ``ProxyFix`` supports IPv6 addresses.
+  *  Type annotation for ``Response.make_conditional``,
+    ``HTTPException.get_response``, and ``Map.bind_to_environ`` accepts
+    ``Request`` in addition to ``WSGIEnvironment`` for the first
+     parameter.
+  * Fix type annotation for ``Request.user_agent_class``.
+  * Accessing ``LocalProxy.__class__`` and ``__doc__`` on an unbound
+    proxy returns the fallback value instead of a method object.
+  * Redirects with the test client set ``RAW_URI`` and ``REQUEST_URI``
+    correctly.
+
+-------------------------------------------------------------------
 Sat Oct 16 21:20:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
