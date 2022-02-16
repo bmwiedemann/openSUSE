@@ -1,7 +1,7 @@
 #
 # spec file for package libgsasl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,14 @@ Name:           libgsasl
 Version:        1.10.0
 Release:        0
 Summary:        Implementation of the SASL framework and a few common SASL mechanisms
-License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/gsasl/
 Source0:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz.sig
 Source2:        https://josefsson.org/54265e8c.txt#/%{name}.keyring
+# https://lists.gnu.org/archive/html/help-gsasl/2022-01/msg00002.html
+Patch1:         0001-Fix-build-issues-with-GCC-12-s-Werror-address.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  pkgconfig
@@ -70,7 +72,7 @@ from clients, and in clients to authenticate against servers.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
