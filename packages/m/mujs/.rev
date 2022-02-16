@@ -42,4 +42,14 @@
   * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.2.0</comment>
     <requestid>954325</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>568b80ddc164cd8048830d31504d5160</srcmd5>
+    <version>1.2.0</version>
+    <time>1645054213</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.2.0
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.2.0
+  * Fixed heap buffer overflow (CVE-2021-45005, boo#1195954).</comment>
+    <requestid>954741</requestid>
+  </revision>
 </revisionlist>

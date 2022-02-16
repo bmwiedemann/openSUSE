@@ -1,8 +1,9 @@
 -------------------------------------------------------------------
-Mon Feb 14 13:44:18 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Feb 15 13:12:21 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 1.2.0
   * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.2.0
+  * Fixed heap buffer overflow (CVE-2021-45005, boo#1195954).
 
 -------------------------------------------------------------------
 Sun Jun 27 11:43:00 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
