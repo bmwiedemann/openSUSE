@@ -1,7 +1,7 @@
 #
 # spec file for package python-distro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?license: %global license %doc}
 %bcond_without test
 Name:           python-distro
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Linux Distribution - a Linux OS platform information API
 License:        Apache-2.0
@@ -47,6 +47,8 @@ It is a renewed alternative implementation for Python's original platform.linux_
 
 %prep
 %setup -q -n distro-%{version}
+# remove shebang. Has been added by upstream intentionally: https://github.com/python-distro/distro/commit/8032f16a1082ff72471c13ff665f3ad9c929f3b0
+sed -i '1{/\/usr\/bin\/env python/d;}' src/distro/distro.py
 %patch0 -p1
 
 %build
