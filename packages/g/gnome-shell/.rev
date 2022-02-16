@@ -1930,4 +1930,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   (bsc#1195179 bsc#1195141). (forwarded request 952873 from xiaoguang_wang)</comment>
     <requestid>952883</requestid>
   </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>2beedfbe9daa2dc57f4507f92ed712c8</srcmd5>
+    <version>41.4</version>
+    <time>1645054221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955416</requestid>
+  </revision>
 </revisionlist>

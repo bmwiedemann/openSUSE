@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 15 20:19:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.4:
+  + Start tracking windows when expected by extensions.
+  + Fix timing issue on login screen.
+  + Fix lightbox shader compatibility with older drivers.
+  + Fix activating apps with tracked OR windows.
+  + Fix banding issues with the vignette lightbox shader.
+  + Fix keyboard navigation to windows/apps in overview.
+  + Fix stuck transition when using super-scroll gesture.
+  + Fix calendar events with custom timezone.
+  + Fix out-of-sync location indicator.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb  9 06:23:06 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update gs-fate318433-prevent-same-account-multi-logins.patch:
