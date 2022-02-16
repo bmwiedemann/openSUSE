@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  8 16:14:52 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- Exclude i586 from SLE builds.
+
+-------------------------------------------------------------------
 Tue Feb  1 22:16:36 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - kdump-calibrate.conf-depends-on-kdumptool.patch: calibrate.conf:

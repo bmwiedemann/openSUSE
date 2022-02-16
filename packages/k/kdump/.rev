@@ -1044,4 +1044,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * kdump-calibrate-Ignore-malformed-VMCOREINFO.patch</comment>
     <requestid>950701</requestid>
   </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>297d3b50454c12556562e8aa35fb65e1</srcmd5>
+    <version>1.0.2</version>
+    <time>1645054212</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>955064</requestid>
+  </revision>
 </revisionlist>

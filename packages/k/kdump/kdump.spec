@@ -109,6 +109,9 @@ Recommends:     nfs-client
 # update should detect the split-off from kexec-tools
 Provides:       kexec-tools:%{_initddir}/kdump
 ExcludeArch:    s390 ppc
+%if 0%{?sle_version}
+ExcludeArch:    %ix86
+%endif
 %{?systemd_ordering}
 
 %description
