@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 12 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-Guess/Changes
+
+  0.15 2022-02-11T08:52:23Z
+
+      - fix synopsis (PR#12 @skaji++)
+
+-------------------------------------------------------------------
 Fri Oct 29 03:06:50 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.14
