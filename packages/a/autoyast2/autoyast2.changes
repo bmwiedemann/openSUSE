@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 14 16:30:39 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- The ayast_setup client imports the general settings
+  (bsc#1195631).
+- 4.4.30
+
+-------------------------------------------------------------------
 Mon Feb  7 14:19:37 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the profile update when using an <ask/> element
