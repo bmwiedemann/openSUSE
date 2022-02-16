@@ -1,0 +1,21 @@
+diff -Nur orig-mutter-41.3/meson.build mutter-41.3/meson.build
+--- orig-mutter-41.3/meson.build	2022-02-08 10:46:01.196708089 +0100
++++ mutter-41.3/meson.build	2022-02-08 10:46:22.448982100 +0100
+@@ -305,17 +305,6 @@
+     exe_wrapper: default_test_wrappers,
+   )
+ 
+-  add_test_setup('CI',
+-    env: [
+-      'MUTTER_DEBUG_DUMMY_MODE_SPECS=800x600@10.0',
+-    ],
+-    exe_wrapper: [
+-      default_test_wrappers,
+-      find_program('catchsegv'),
+-      find_program('xvfb-run'), '-a', '-s', '+iglx -noreset',
+-    ],
+-    timeout_multiplier: 10,
+-  )
+ endif
+ 
+ have_profiler = get_option('profiler')

@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        41.3
+Version:        41.4
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -39,6 +39,8 @@ Patch0:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 Patch1:         mutter-disable-cvt-s390x.patch
 # PATCH-FIX-OPENSUSE mutter-window-actor-Special-case-shaped-Java-windows.patch -- window-actor: Special-case shaped Java windows
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
+# PATCH-FIX-OPENSUSE 0002-Drop-CI-test-setup-that-needs-catchsegv.patch -- Fix build with glibc 2.35 and newer
+Patch3:         0002-Drop-CI-test-setup-that-needs-catchsegv.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -146,6 +148,7 @@ applications that want to make use of the mutter library.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}

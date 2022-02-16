@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 15 20:16:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.4:
+  + Fix DND between X11 and wayland clients.
+  + Fix resetting idle time on lid open.
+  + wayland/gtk: Only perform allowed titlebar gestures.
+  + Place popups on the same monitor as the anchor rect.
+  + Fix wrong resizes of some clients on focus changes.
+  + Misc. bug fixes.
+  + Fixed crashes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  8 09:35:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0002-Drop-CI-test-setup-that-needs-catchsegv.patch: Fix build
+  with glibc 2.35 and newer.
+
+-------------------------------------------------------------------
 Tue Jan 11 17:28:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.3:
