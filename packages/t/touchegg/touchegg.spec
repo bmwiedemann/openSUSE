@@ -1,7 +1,7 @@
 #
 # spec file for package touchegg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           touchegg
-Version:        2.0.10
+Version:        2.0.13
 Release:        0
 Summary:        A multitouch gesture recogniser for GNU/Linux
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Hardware/Other
 URL:            https://github.com/JoseExposito/touchegg
 Source:         https://github.com/JoseExposito/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:	harden_touchegg.service.patch
+Patch0:         harden_touchegg.service.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -49,8 +49,7 @@ gestures you make on your touchpad or touchscreen into visible
 actions in your desktop.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake

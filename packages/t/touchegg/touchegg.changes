@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 15 20:01:38 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.0.13 (changes since 2.0.10):
+  * Allow to display any animation on SEND_KEYS/RUN_COMMAND.
+  * Add cyclic option to CHANGE_DESKTOP.
+  * Improve pinch gesture detection on touchscreens.
+  * Honour the XDG basedir specification.
+  * Improve pinch detection when the fingers are placed
+    horizontally or vertically.
+  * Allow to run in multiple X displays.
+  * Allow to configure the number of times a repeated action is
+    executed.
+
+-------------------------------------------------------------------
 Thu Nov 25 08:35:23 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
