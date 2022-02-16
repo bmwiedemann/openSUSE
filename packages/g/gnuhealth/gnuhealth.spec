@@ -2,7 +2,7 @@
 # spec file for package gnuhealth
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2014-2021 Dr. Axel Braun
+# Copyright (c) 2014-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,7 @@ Requires:       python3-hl7apy
 Requires:       python3-ldap3
 Requires:       python3-matplotlib
 Requires:       python3-passlib
+Requires:       python3-Pillow
 Requires:       python3-pyBarcode
 Requires:       python3-qrcode
 Requires:       python3-simpleeval

@@ -438,4 +438,12 @@
     <comment>fix for reporting error</comment>
     <requestid>931723</requestid>
   </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>6406d8428d0b94c446700a68cdcca798</srcmd5>
+    <version>3.8.0</version>
+    <time>1645054274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955451</requestid>
+  </revision>
 </revisionlist>
