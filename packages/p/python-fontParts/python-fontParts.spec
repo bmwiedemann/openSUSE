@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-fontParts%{psuffix}
-Version:        0.9.11
+Version:        0.10.2
 Release:        0
 Summary:        API for interacting with the parts of fonts
 License:        MIT
@@ -40,22 +40,22 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 # install_requires = [FontTools[ufo,lxml,unicode]
-Requires:       python-FontTools >= 3.32.0
+Requires:       python-FontTools >= 4.28.5
 Requires:       python-fs >= 2.2.0
 Requires:       python-lxml >= 4.0
 %if %python_version_nodots < 39
 Requires:       python-unicodedata2
 %endif
-Requires:       python-booleanOperations
-Requires:       python-defcon >= 0.6.0
-Requires:       python-fontMath >= 0.4.8
+Requires:       python-booleanOperations >= 0.9.0
+Requires:       python-defcon >= 0.10.0
+Requires:       python-fontMath >= 0.9.1
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module FontTools >= 3.32.0}
-BuildRequires:  %{python_module booleanOperations}
-BuildRequires:  %{python_module defcon >= 0.6.0}
-BuildRequires:  %{python_module fontMath >= 0.4.8}
+BuildRequires:  %{python_module FontTools >= 4.28.5}
+BuildRequires:  %{python_module booleanOperations >= 0.9.0}
+BuildRequires:  %{python_module defcon >= 0.10.0}
+BuildRequires:  %{python_module fontMath >= 0.9.1}
 BuildRequires:  %{python_module fontPens >= 0.2.4}
 BuildRequires:  %{python_module fs >= 2.2.0}
 BuildRequires:  %{python_module lxml >= 4.0}

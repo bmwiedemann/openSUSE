@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 16 09:50:28 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.10.2
+  0.10.1 (released 2021-12-28)
+  ---------------------------
+  - Update to use Collections.abc.Hashable by @benkiel in #622
+  - Start testing Python 3.10 by @benkiel in #619
+  
+  0.10.0 (released 2021-12-28)
+  ---------------------------
+  - 2021-12-28: Drops support for Python 3.6
+  - 2021-12-14: Adds tempLib, #615 (thanks @typemytype!)
+  - Improved docs with #605 and #607. Thanks @driehuis and @arrowtype!
+
+-------------------------------------------------------------------
 Thu Dec 16 11:01:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.11
