@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 15 19:13:43 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 98.0.4758.102 (boo#1195986)
+  * CVE-2022-0603: Use after free in File Manager
+  * CVE-2022-0604: Heap buffer overflow in Tab Groups
+  * CVE-2022-0605: Use after free in Webstore API
+  * CVE-2022-0606: Use after free in ANGLE
+  * CVE-2022-0607: Use after free in GPU
+  * CVE-2022-0608: Integer overflow in Mojo
+  * CVE-2022-0609: Use after free in Animation
+  * CVE-2022-0610: Inappropriate implementation in Gamepad API
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Thu Feb  3 19:35:46 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 98.0.4758.80 (boo#1195420)
