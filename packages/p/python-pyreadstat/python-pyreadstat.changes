@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 16 10:27:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.4:
+  * Included new pandas datatypes Float32Dtype and Float64Dtype when writing.
+  * Forcing cythonization when installing from source
+  # Updated Readstat source to version 1.1.17
+  * Improved error when reading dates and finding a string
+  * repaired not reading correctly metadata with multiprocessing
+  # correction when reading file paths in python <3.7
+  * Using os.fsencode when reading file paths to support file system 
+    encoding and Path-like objects
+  * Updated Readstat source to version 1.1.6
+  * Accepting dict as the column_label parameter for writing functions
+
+-------------------------------------------------------------------
 Mon Apr 19 08:43:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.1.0:

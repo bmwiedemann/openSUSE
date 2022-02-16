@@ -60,4 +60,22 @@
 - Do not build on Python 3.6, due to no NumPy.</comment>
     <requestid>886612</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3e9c8d27c7f3c161386480e482f7db08</srcmd5>
+    <version>1.1.4</version>
+    <time>1645054246</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.4:
+  * Included new pandas datatypes Float32Dtype and Float64Dtype when writing.
+  * Forcing cythonization when installing from source
+  # Updated Readstat source to version 1.1.17
+  * Improved error when reading dates and finding a string
+  * repaired not reading correctly metadata with multiprocessing
+  # correction when reading file paths in python &lt;3.7
+  * Using os.fsencode when reading file paths to support file system 
+    encoding and Path-like objects
+  * Updated Readstat source to version 1.1.6
+  * Accepting dict as the column_label parameter for writing functions</comment>
+    <requestid>955271</requestid>
+  </revision>
 </revisionlist>
