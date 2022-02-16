@@ -1,7 +1,7 @@
 #
 # spec file for package farstream
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define gst_pluginsdir %(pkg-config --variable pluginsdir gstreamer-1.0)
 Name:           farstream
-Version:        0.2.9+4
+Version:        0.2.9+5
 Release:        0
 # License note: the only GPL-2.0+ files are farstream-0.1.1/common/coverage/*
 # and common/gstdoc-scangobj; those are just used during the build and do not
@@ -34,6 +34,8 @@ Source1:        baselibs.conf
 Patch0:         farstream-plugin-path.patch
 # PATCH-FIX-UPSTREAM farstream-glib-non-volatile.patch boo#1185220 dimstar@opensuse.org -- Fix build against GCC11/glib2 without misusing 'volatile'
 Patch1:         farstream-glib-non-volatile.patch
+# PATCH-FIX-OPENSUSE farstream-drop-examples.patch -- Drop building examples
+Patch2:         farstream-drop-examples.patch
 
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel >= 2.32
@@ -45,6 +47,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.40
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.4
+BuildRequires:  pkgconfig(gupnp-1.2)
 BuildRequires:  pkgconfig(gupnp-igd-1.0) >= 0.2
 BuildRequires:  pkgconfig(nice) >= 0.1.8
 
@@ -126,6 +129,7 @@ NOCONFIGURE=1 ./autogen.sh
 	--disable-static \
 	--enable-gtk-doc \
 	--enable-introspection \
+	--enable-gupnp \
 	%{nil}
 %make_build
 
