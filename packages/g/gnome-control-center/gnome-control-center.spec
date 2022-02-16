@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        41.2
+Version:        41.4
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -38,10 +38,8 @@ Source0:        https://download.gnome.org/sources/gnome-control-center/41/%{nam
 Patch0:         gnome-control-center-disable-error-message-for-NM.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-fix-autologin-shortcut.patch glgo#GNOME/gnome-control-center!1084 bsc#1191887 qkzhu@suse.com -- Make autologin_switch a activatable_widget
 Patch1:         gnome-control-center-fix-autologin-shortcut.patch
-# PATCH-FIX-UPSTREAM 4f64deb5f1bc7b83fcc4381b7dbbaf71ad4a77c8.patch -- Fix build with meson 0.61.0 and newer
-Patch2:         https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/4f64deb5f1bc7b83fcc4381b7dbbaf71ad4a77c8.patch
 # PATCH-FIX-UPSTREAM 496c719d7b1492b54c34ace648feb3802f34f774.patch -- Remove duplicate line from .desktop file
-Patch3:         https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/496c719d7b1492b54c34ace648feb3802f34f774.patch
+Patch2:         https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/496c719d7b1492b54c34ace648feb3802f34f774.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -187,7 +185,6 @@ GNOME control center.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1

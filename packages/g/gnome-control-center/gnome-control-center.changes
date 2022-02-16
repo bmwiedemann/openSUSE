@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 14 09:05:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.4:
+  + Drop unused argument for i18n.merge_file() in Meson rules
+  + Applications: Set the Icon key in desktop file to a icon that
+    exists
+  + Display: Do not invert order when constructing modes
+  + Network: Show configuration button only for active/connecting
+    connections
+  + Printers: Fix error cancelling PPD dialog
+  + Sound: Clear level bar when stream is empty
+  + Updated translations.
+- Drop 4f64deb5f1bc7b83fcc4381b7dbbaf71ad4a77c8.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Feb  1 17:48:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 4f64deb5f1bc7b83fcc4381b7dbbaf71ad4a77c8.patch: Fix build
