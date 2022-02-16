@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Wed Feb 16 07:55:52 UTC 2022 - jenting.hsiao@suse.com
+
+- Update to version 1.8.0:
+  * Undeprecate the volumesnapshot plugin in the doc
+  * Clean up the change log
+  * cherry pick to 1.8 Change 1.8 plugins version to release version
+  * Cherry pick to1.8 - Add 1.8 plugins map in e2e test
+  * E2E SSR test add retry mechanism and logs
+  * Remove reference of restic_restore_action.go from the doc
+  * Pin the base image and golang img for v1.8.0 release
+  * Update changelog for v1.8.0 (#4530)
+  * Update doc for v1.8
+  * E2E test on ssr object with controller namespace mix-ups
+  * Check whether the volume is provisioned by CSI driver or not by the annotation as well
+  * Support running e2e testing on k8s 1.23.0
+  * Check the existence of the expected service when ignoring the NodePort already allocated error
+  * Fix E2E upgrade parameter issue caused by previous PR
+  * Bump up velero version in upgrade test
+  * add links to plugin repos
+  * minor typo fixes
+  * readme changes
+  * Add kubernetes version compatability matrix
+  * Initialize the labels field of `velero backup-location create` option
+  * Update CSI docs with more context
+  * Fix e2e 2500 namespaces scale test timeout problem
+  * Add backup deletion e2e test
+  * Parse resource from backup tarball directly rather than resolving it via discovery service to avoid #4009 (#4398)
+  * Keep the annotation "pv.kubernetes.io/provisioned-by" when restoring PVs
+  * Ignore the provided port is already allocated error when restoring the LoadBalancer service (#4462)
+  * Return the error when getting backup store in backup deletion controller (#4465)
+  * Add changelog.
+  * Revert "Migrate backup sync controller from code-generator to kubebuilder (#4423)"
+  * Update code standards to direct folks to create changelogs on release… (#4443)
+  * Add rbac and annotation test cases
+  * Fix statefulsets volumeClaimTemplates storageClassName after use Changing PV/PVC Storage Classes (#4375)
+  * Upgrade e2e test vsphere plugin
+  * Migrate backup sync controller from code-generator to kubebuilder (#4423)
+  * Remove backups and restic repos associated with deleted BSL(s) (#4377)
+  * Adds <backup-name>-itemsnapshots.gz file to backup (when provided). (#4429)
+  * fix: remove --crds-version in velero install command
+  * Consolidated code for resolving actions and plugins into ActionResolver (#4410)
+  * Add defaultVolumesToRestic to schedule api docs
+  * Fix e2e test failures for the inappropriate optimaze of velero install
+  * Limit backup namespaces on test resource filtering cases
+  * Added UploadProgressFeature flag to enable UploadProgressMonitoring and ItemSnapshotters
+  * feat: improve documentation for reverse selector
+  * Bump up Go to 1.17
+  * Add resoure filtering test cases
+  * Added ItemSnapshotter to the plugin server framework. (#4417)
+  * update documentation (#4378)
+  * Add restoreactionitem plugin to handle admission webhook configurations
+  * Build for darwin_arm64 (#4409)
+  * feat: migrate kubebuilder from v2 to v3
+  * Update issue template to reference velero debug (#4384)
+  * Adjust structure of e2e test codes Put every test moduels into seperate packages and all velero install parameters integrated into one struct
+  * Add the key for GKE zone for AZ collection
+  * Fix snapshot e2e test issue of jsonpath
+  * fix: modify generated from schedule's backup name timestamp to UTC ti… (#4353)
+  * Use logrusr instead of zap.
+  * ItemSnapshotter plugin APIs.  Addresses #3753 (#4077)
+  * Design doc for delete associated backup and restic repos when BSL is deleted (#4297)
+  * Fix: add init log option for velero controller-runtime manager.
+  * Fix: add init log option for velero controller-runtime manager.
+  * Read Availability zone from nodeAffinity requirements
+  * Use factory.Namespace() to replace hardcoded velero namespace (#4346)
+  * Ignore the `provided port is already allocated` error when restoring the `NodePort` service (#4336)
+  * Return the error if velero failed to detect S3 region for restic repo (#4343)
+  * Fix: add init log option for velero controller-runtime manager.
+  * PV remapClaimRefNS was being skipped when there was no snapshot (#3708)
+  * Check the failed phases either when uploading the snapshot in E2E testing (#4162)
+  * Only set BSL credential field if provided (#4322)
+  * add 4306 changelog
+  * - fix buggy pager func fix paging items in to use list options passed by the paging function
+  * Verify group before treating resource as cohabitating (#4126)
+  * Fix CVE-2020-29652 and CVE-2020-26160 (#4274)
+  * Correct the environment variable for azure credential file (#4313)
+  * Validation allows empty string namespace
+  * Don't create a backup immediately after creating a schedule (#4281)
+  * Add daniel to contributor list
+  * Update the design of `velero debug` (#4081)
+  * Add WenkaiYin to contributor list (#4277)
+  * Limit  kubebuilder controllers to work only for objects in own namespaces
+  * Namespace validation now allows asterisks
+  * Update release instruction
+  * Update 1.8 roadmap for Technical health
+  * 1.8 roadmap (#4210)
+  * Updated Tiltfile to pass REGISTRY env variable to build.sh Set default registry to be docker.io/velero in Tiltfile and example
+  * Bump latest doc to v1.7
+  * Initial draft of an object graph manifest (#3466)
+  * #4040 - documentation - adding more troubleshooting information durin… (#4041)
+  * Specify the "--snapshot-volumes=false" option explicitly when running backup with Restic
+  * Refine tag-release.sh
+
+-------------------------------------------------------------------
 Thu Jan 27 22:48:11 UTC 2022 - Robert Munteanu <rombert@apache.org>
 
 - Added completion packages 
