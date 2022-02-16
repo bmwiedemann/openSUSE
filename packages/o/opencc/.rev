@@ -173,4 +173,12 @@
 - drop opencc-1.1.1-missing-builtin-types.patch: upstream (forwarded request 878643 from dirkmueller)</comment>
     <requestid>878721</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e25d1b01d83daa81f8738247498df15a</srcmd5>
+    <version>1.1.3</version>
+    <time>1645054193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954418</requestid>
+  </revision>
 </revisionlist>
