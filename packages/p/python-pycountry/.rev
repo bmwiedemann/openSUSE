@@ -70,4 +70,13 @@
   - Moved to Git/Github; switched from Bitbucket Pipelines to Travis builds.</comment>
     <requestid>838242</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e953d6f9f16b770a9057949698ea4bf5</srcmd5>
+    <version>22.1.10</version>
+    <time>1645054198</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.1.0:
+  * Update to iso-codes 4.8.0</comment>
+    <requestid>954659</requestid>
+  </revision>
 </revisionlist>
