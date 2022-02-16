@@ -3955,7 +3955,6 @@
     <package name="ruby3.1-rubygem-fake_ftp-0_1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-faraday" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-faraday-net_http" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-faraday_middleware" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-fast_gettext" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.1-rubygem-fast_gettext-1.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4001,6 +4000,7 @@
     <package name="ruby3.1-rubygem-inifile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-jaro_winkler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-jekyll" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-jekyll-sass-converter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-jekyll-watch" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-jquery-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4064,11 +4064,7 @@
     <package name="ruby3.1-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.1-rubygem-nori" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-omniauth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-omniauth-github" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-omniauth-google-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.1-rubygem-omniauth-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-openid_connect" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-optimist" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-orm_adapter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4186,6 +4182,7 @@
     <package name="ruby3.1-rubygem-sync" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-temple" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-terminal-table" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-terminal-table-2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-text" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-thor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-thor-0_19" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
