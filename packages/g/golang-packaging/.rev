@@ -262,4 +262,13 @@
 - Fixed if statement in spec file. (forwarded request 950343 from jfkw)</comment>
     <requestid>950344</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>09ba4c3555e48a5ddcad3d07ccc4bb87</srcmd5>
+    <version>15.0.16</version>
+    <time>1645054217</time>
+    <user>dimstar_suse</user>
+    <comment>- Move rpm macros from /etc/rpm to /usr/lib/rpm/macros.d
+  (boo#1191383). (forwarded request 954732 from dimstar)</comment>
+    <requestid>955106</requestid>
+  </revision>
 </revisionlist>
