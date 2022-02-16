@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 14 09:03:06 UTC 2022 - pgajdos@suse.com
+
+- rarpd and rdisc tools are now disabled again [jsc#SLE-23521]
+
+-------------------------------------------------------------------
 Tue Jan 25 13:31:33 UTC 2022 - pgajdos@suse.com
 
 - temporarily reintroduce rarpd and rdisc tools to get them into
