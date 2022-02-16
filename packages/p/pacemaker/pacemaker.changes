@@ -1,4 +1,223 @@
 -------------------------------------------------------------------
+Tue Feb 08 11:57:53 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220126.16c1bab10:
+- controller: correctly match "node down" events
+- controller: improve meta-data warnings
+- scheduler: assert on memory allocation error
+- pacemakerd: improve messages for subdaemon handling
+
+-------------------------------------------------------------------
+Tue Feb 08 11:47:22 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220126.57e783b4b:
+- libstonithd: avoid controld shutdown hanging
+- pacemakerd: have signal-handler take care of lost processes
+- scheduler: avoid memory leak when displaying clones
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+
+-------------------------------------------------------------------
+Tue Feb 08 11:25:36 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220120.3f0398825:
+- scheduler: implement utilization for bundles
+- fencer: reset op result before grabbing new one (rh#1470834)
+- schemas: update fence-event API schema for recent change (rh#1470834)
+- fencing: display exit reasons with failed fencing events (rh#1470834)
+- fencing: return exit reason with fencing history (rh#1470834)
+- fencer: track full result in fencing history (rh#1470834)
+
+-------------------------------------------------------------------
+Tue Feb 08 08:54:11 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220119.2c937a4c0:
+- ipc_client: use libqb async API for connect
+- pacemakerd: keep tracking pacemakerd for liveness
+- pacemakerd: tweak systemd unit respawn settings
+
+-------------------------------------------------------------------
+Tue Feb 08 08:22:23 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220119.eec504705:
+- libcrmservice: improve exit reason for timeouts (rh#1470834)
+- fencing: improve exit reason for fencing timeouts (rh#1470834)
+- controller: improve exit reason for internal timeouts (rh#1470834)
+- controller,libpacemaker: make history XML creation less chatty (rh#1470834)
+- fencing: don't warn if cluster has no watchdog device (rh#1470834)
+- libcrmcommon: don't say "Unknown error" (rh#1470834)
+- libcrmcommon: improve description for "not connected" status (rh#1470834)
+
+-------------------------------------------------------------------
+Fri Feb 04 17:57:25 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220118.de344dc33:
+- tools: Fix the show detail toggle in crm_mon.
+- corosync: Repeat corosync_cfg_trackstart
+- tools: Handle output format arguments before doing daemonize mode.
+- libpacemaker: avoid unnecessary limit on node names
+
+-------------------------------------------------------------------
+Fri Feb 04 17:11:56 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220117.0fb17de37:
+- tools: get stonith_admin -T option working again (rh#1470834)
+- libpacemaker: compare fence action names case-sensitively
+- libpacemaker: return exit reason for fencer connection failures
+- tools: display failure reasons for stonith_admin fencing commands
+- libpacemaker: improve result for high-level fencing API
+- fencing: Don't set stonith action to pending if fork fails
+
+-------------------------------------------------------------------
+Fri Feb 04 16:14:08 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220114.fb2dcedf1:
+- controller: compare case-sensitively where appropriate (rh#1470834)
+- controller,tools: improve description for fencing alerts/traps (rh#1470834)
+- controller: improve messages when handling fencing notifications (rh#1470834)
+- controller: compare fencing targets case-insensitively (rh#1470834)
+- scheduler: Use the old RC code to log maskable probe failures.
+
+-------------------------------------------------------------------
+Fri Feb 04 15:53:57 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220113.7c94f0367:
+- liblrmd: Avoid double-free during notify operation (rh#2039675)
+
+-------------------------------------------------------------------
+Fri Feb 04 14:31:35 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220112.b496b9826:
+- low: Remove "formerly called..." text in metadata output.
+- tools: Free metadata memory in crm_resource.
+- daemons: Use formatted output for metadata in schedulerd.
+
+-------------------------------------------------------------------
+Fri Feb 04 13:53:42 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220112.c894b0aff:
+- fencing: add exit reason for results without a callback (rh#1470834)
+- executor: set exit reason if no fencer connection (rh#1470834)
+- executor: return an error for unsupported fence device actions (rh#1470834)
+- executor: don't require a fencer connection for probes (rh#1470834)
+- executor: improve result for fence device probes (rh#1470834)
+- executor,scheduler: treat "no secrets" fence results as a hard error (rh#1470834)
+- executor: use full result from fencer for fence actions (rh#1470834)
+- controller: improve fencing result messages (rh#1470834)
+
+-------------------------------------------------------------------
+Fri Feb 04 13:27:31 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220112.69a63fb99:
+- scheduler: Handle masked probes in the scheduler. (rh#1506372)
+- include: Bump feature set to 3.12.0.
+- scheduler: Display the reason why a clone rsc probe failed. (rh#1506372)
+- scheduler: Display the reason why a native rsc probe failed. (rh#1506372)
+- scheduler: Don't output failed resource probes... (rh#1506372)
+
+-------------------------------------------------------------------
+Fri Feb 04 12:42:31 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220112.08200a00e:
+- scheduler: use plural correctly for fail count messages
+- libcrmcommon: avoid file resource leak on decompression errors (clbz#5489)
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+
+-------------------------------------------------------------------
+Fri Feb 04 12:21:46 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211223.94ced1fa9:
+- fencer: clarify timeout message (rh#1470834)
+- fencer: free result memory when processing fencing replies (rh#1470834)
+- fencer: restore check for invalid topology level target (rh#1470834)
+- fencer: pass full result when sending notifications (rh#1470834)
+- fencer: add full result to local replies (rh#1470834)
+- fencer: set exit reasons for fencing timeouts (rh#1470834)
+- fencer: set exit reason for timeouts waiting for peer replies (rh#1470834)
+- fencer: grab and log full result when processing peer fencing replies (rh#1470834)
+- fencer: pass full result in replies to requests (rh#1470834)
+- fencer: track and log full result when handling requests (rh#1470834)
+- fencer: handle topology level unregistration errors better (rh#1470834)
+- fencer: handle topology level registration errors better (rh#1470834)
+- fencer: pass full result in async command replies (rh#1470834)
+
+-------------------------------------------------------------------
+Fri Feb 04 11:24:19 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211222.90769ae96:
+- libpacemaker: catch bugs scheduling actions on unclean nodes
+
+-------------------------------------------------------------------
+Fri Feb 04 10:51:30 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211215.5f767500a:
+- fencer: get current time correctly
+- Merge:
+  * 0001-Fix-fencer-get-current-time-correctly.patch
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+
+-------------------------------------------------------------------
+Fri Feb 04 10:38:51 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211208.e3c53cabb:
+- fencer: avoid memory leak when broadcasting history differences
+
+-------------------------------------------------------------------
+Fri Feb 04 10:15:06 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211206.3a6dc7c79:
+- scheduler: handle memory errors explicitly for friendly failure output
+- resources: use correct syntax in Stateful meta-data (rh#2027370)
+- resources: remove DOCTYPE from OCF 1.1-compliant agents
+- libcib: deprecate get_object_path() (clbz#5488)
+- various: perform XPath searches for CIB element names case-sensitively
+- libcib: compare section names case-sensitively for CIB modifications
+- controller,libcib,tools: handle CIB XPath searches better
+
+-------------------------------------------------------------------
+Fri Feb 04 09:50:42 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211201.c93f6a460:
+- fencer: handle malformed topology level removal requests better (rh#1470834)
+- fencer: handle malformed manual confirmation requests better (rh#1470834)
+- fencer: return -ETIME for peer fencing timeouts (rh#1470834)
+- fencer: improve broadcasting replies for fenced originators (rh#1470834)
+- fencer,scheduler: compare fence action names case-sensitively (rh#1470834)
+
+-------------------------------------------------------------------
+Thu Feb 03 17:02:58 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211201.18f4b5d83:
+- OCF: controld: Give warning when no-quorum-policy not set as freeze while using DLM (bsc#1129707)
+- libcrmservice: Handle systemd service templates. (rh#2003151)
+
+-------------------------------------------------------------------
+Thu Feb 03 16:37:12 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20211124.91f4bad83:
+- fencing: improve message for callback errors (rh#1470834)
+- fencing,executor: improve mapping of legacy return code to execution status (rh#1470834)
+- fencing: improve mapping of execution status to legacy return code
+- attrd: Change to determine the processing of attrd depending on the section replacement location of CIB.
+- based controld: Suppresses unnecessary Election execution.
+- based: Makes the replace notification a comparison base for the hash value of the section.
+- daemons: Convert schedulerd to the new IPC API.
+- daemons: Use formatted output for scheduler help, errors, etc.
+- Add a 'name' attribute to acl_target and acl_group elements (rh#1384420)
+- libcrmservice: downgrade failed action messages (rh#1470834)
+- fencer: improve messages for asynchronous results (rh#1470834)
+- fencer: handle dynamic target query failures better (rh#1470834)
+- fencing: set exit reason for internal execution errors (rh#1470834)
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
 Wed Dec 22 13:36:05 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - fencer: get current time correctly
@@ -1750,7 +1969,7 @@ Fri Jul 05 10:14:13 UTC 2019 - Yan Gao <ygao@suse.com>
 Fri Jun 07 10:39:45 UTC 2019 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.2+20190606.73beea82f:
-- stonith-ng's function cannot be blocked with CIB updates forever
+- stonith-ng's function cannot be blocked with CIB updates forever (bsc#1188212)
 - libpe_status: offer compile-time option to change concurrent-fencing default
 - libstonithd: return proper error code for async stonith action
 - various: improve fencer connection messages

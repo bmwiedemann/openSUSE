@@ -106,7 +106,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.2+20211124.ada5c3b36
+Version:        2.1.2+20220126.16c1bab10
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -128,7 +128,6 @@ Patch7:         bug-977201_pacemaker-controld-self-fencing.patch
 Patch8:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
 Patch9:         pacemaker-cts-StartCmd.patch
 Patch10:        bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
-Patch11:        0001-Fix-fencer-get-current-time-correctly.patch
 # Required for core functionality
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -351,7 +350,6 @@ manager.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 
 %build
 
