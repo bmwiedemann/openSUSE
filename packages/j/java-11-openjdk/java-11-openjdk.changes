@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 15 08:33:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-11.0.14.1+1
+  * Changes:
+    + JDK-8280786: Build failure on Solaris after 8262392
+    + JDK-8218546: Unable to connect to https://google.com using
+      java.net.HttpClient
+    + JDK-8281324: Bump update version for OpenJDK: jdk-11.0.14.1
+
+-------------------------------------------------------------------
 Mon Jan 31 08:38:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.14+9 (January 2022 CPU)

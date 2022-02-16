@@ -34,12 +34,12 @@
 %global featurever      11
 %global interimver      0
 %global updatever       14
-%global patchver        0
-%global datever         2022-01-18
-%global buildver        9
+%global patchver        1
+%global datever         2022-02-08
+%global buildver        1
 %global openjdk_repo    jdk11u
-%global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}+%{buildver}
-%global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}-%{buildver}
+%global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
+%global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
 %global java_activation_repository activation
@@ -116,9 +116,9 @@
 %endif
 %global with_system_harfbuzz 1
 %if %{is_release}
-%global package_version %{featurever}.%{interimver}.%{updatever}.%{patchver}
+%global package_version %{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}
 %else
-%global package_version %{featurever}.%{interimver}.%{updatever}.%{patchver}~%{buildver}
+%global package_version %{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}~%{buildver}
 %endif
 %global NSS_LIBDIR %(pkg-config --variable=libdir nss)
 %bcond_with zero

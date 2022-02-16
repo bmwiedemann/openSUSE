@@ -407,4 +407,12 @@
     <comment>January 2022 CPU</comment>
     <requestid>950245</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>50aaf2afc6f163db5294f75fbf799a5a</srcmd5>
+    <version>11.0.14.1</version>
+    <time>1645054208</time>
+    <user>dimstar_suse</user>
+    <comment>patch update post CPU</comment>
+    <requestid>954744</requestid>
+  </revision>
 </revisionlist>
