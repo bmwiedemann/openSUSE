@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,24 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
-%define livepatchable 1
-
-# Set variables for livepatching.
-%define _other %{_topdir}/OTHER
-%define tar_basename glibc-livepatch-%{version}-%{release}
-%define tar_package_name %{tar_basename}.%{_arch}.tar.xz
-%define clones_dest_dir %{tar_basename}/%{_arch}
-%else
-# Unsupported operating system.
-%define livepatchable 0
-%endif
-
-%ifnarch x86_64
-# Unsupported architectures must have livepatch disabled.
-%define livepatchable 0
-%endif
 
 # Run with osc --with=fast_build to have a shorter turnaround
 # It will avoid building some parts of glibc
@@ -67,6 +49,13 @@
 %bcond_with usrmerged
 %endif
 
+# Enable support for livepatching.
+%ifarch x86_64
+%bcond_without livepatching 1
+%else
+%bcond_with livepatching 0
+%endif
+
 %bcond_with build_all
 %define build_main 1
 %define build_utils %{with build_all}
@@ -79,7 +68,6 @@ ExclusiveArch:  do_not_build
 %define build_main 0
 %define build_utils 1
 %define build_testsuite 0
-%define livepatchable 0
 %endif
 %if "%flavor" == "testsuite"
 %if %{with ringdisabled}
@@ -88,7 +76,6 @@ ExclusiveArch:  do_not_build
 %define build_main 0
 %define build_utils 0
 %define build_testsuite 1
-%define livepatchable 0
 %endif
 %if 0%{?cross_arch:1}
 %define build_main 0
@@ -183,10 +170,10 @@ BuildArch:      i686
 %define enablekernel 4.15
 %endif
 
-Version:        2.34
+Version:        2.35
 Release:        0
 %if !%{build_snapshot}
-%define git_id ae37d06c7d
+%define git_id f94f6d8a35
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -284,10 +271,8 @@ Patch100:       add-locales.patch
 Patch102:       glibc-2.4.90-no_NO.diff
 # PATCH-FIX-OPENSUSE -- Renames for China
 Patch103:       glibc-2.4-china.diff
-# PATCH-FIX-OPENSUSE -- Add C.UTF-8 locale
-Patch104:       glibc-c-utf8-locale.patch
 # PATCH-FIX-OPENSUSE -- Disable gettext for C.UTF-8 locale
-Patch105:       glibc-disable-gettext-for-c-utf8.patch
+Patch104:       glibc-disable-gettext-for-c-utf8.patch
 
 ### Network related patches
 # PATCH-FIX-OPENSUSE Warn about usage of mdns in resolv.conv
@@ -298,40 +283,6 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM ldconfig: avoid leak on empty paths in config file
-Patch1000:      ldconfig-leak-empty-paths.patch
-# PATCH-FIX-UPSTREAM gconv_parseconfdir: Fix memory leak
-Patch1001:      gconv-parseconfdir-memory-leak.patch
-# PATCH-FIX-UPSTREAM gaiconf_init: Avoid double-free in label and precedence lists
-Patch1002:      gaiconf-init-double-free.patch
-# PATCH-FIX-UPSTREAM copy_and_spawn_sgid: Avoid double calls to close()
-Patch1003:      copy-and-spawn-sgid-double-close.patch
-# PATCH-FIX-UPSTREAM iconv_charmap: Close output file when done
-Patch1004:      iconv-charmap-close-output.patch
-# PATCH-FIX-UPSTREAM Linux: Fix fcntl, ioctl, prctl redirects for _TIME_BITS=64 (BZ #28182)
-Patch1005:      fcntl-time-bits-64-redirect.patch
-# PATCH-FIX-UPSTREAM librt: fix NULL pointer dereference (BZ #28213)
-Patch1006:      librt-null-pointer.patch
-# PATCH-FIX-UPSTREAM elf: Fix missing colon in LD_SHOW_AUXV output (BZ #282539
-Patch1007:      ld-show-auxv-colon.patch
-# PATCH-FIX-UPSTREAM x86-64: Use testl to check __x86_string_control
-Patch1008:      x86-string-control-test.patch
-# PATCH-FIX-UPSTREAM nptl: pthread_kill, pthread_cancel should not fail after exit (BZ #19193)
-Patch1009:      pthread-kill-fail-after-exit.patch
-# PATCH-FIX-UPSTREAM nptl: Fix race between pthread_kill and thread exit (BZ #12889)
-Patch1010:      pthread-kill-race-thread-exit.patch
-# PATCH-FIX-UPSTREAM posix: Fix attribute access mode on getcwd (BZ #27476)
-Patch1011:      getcwd-attribute-access.patch
-# PATCH-FIX-UPSTREAM nptl: pthread_kill needs to return ESRCH for old programs (BZ #19193)
-Patch1012:      pthread-kill-return-esrch.patch
-# PATCH-FIX-UPSTREAM nptl: Fix type of pthread_mutexattr_getrobust_np, pthread_mutexattr_setrobust_np (BZ #28036)
-Patch1013:      pthread-mutexattr-getrobust-np-type.patch
-# PATCH-FIX-UPSTREAM nptl: Avoid setxid deadlock with blocked signals in thread exit (BZ #28361)
-Patch1014:      setxid-deadlock-blocked-signals.patch
-# PATCH-FIX-UPSTREAM nptl: pthread_kill must send signals to a specific thread (BZ #28407)
-Patch1015:      pthread-kill-send-specific-thread.patch
-# PATCH-FIX-UPSTREAM linux: Revert the use of sched_getaffinity on get_nproc (BZ #28310)
-Patch1016:      sysconf-nprocessors-affinity.patch
 
 ###
 # Patches awaiting upstream approval
@@ -547,7 +498,6 @@ library in a cross compilation setting.
 %patch102 -p1
 %patch103 -p1
 %patch104 -p1
-%patch105 -p1
 
 %patch304 -p1
 %patch306 -p1
@@ -555,25 +505,8 @@ library in a cross compilation setting.
 %patch2000 -p1
 %patch2001 -p1
 
-%patch1000 -p1
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1005 -p1
-%patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-%patch1010 -p1
-%patch1011 -p1
-%patch1012 -p1
-%patch1013 -p1
-%patch1014 -p1
-%patch1015 -p1
-%patch1016 -p1
-
 %patch3000
+rm -f manpages/catchsegv.1
 
 %build
 # Disable LTO due to a usage of top-level assembler that
@@ -678,7 +611,7 @@ BuildCCplus=%{cross_arch}-suse-linux-g++
 
 # Add build flags that cannot be passed to configure.
 ExtraBuildFlags=
-%if %{livepatchable}
+%if %{build_main} && %{with livepatching}
 # Append necessary flags for livepatch support, if enabled. Do it on make, else
 # on configure GCC will report that it can't write the ipa-clones to /dev/ and
 # configure will fail to detect that gcc support several flags.
@@ -695,11 +628,6 @@ profile="--enable-profile"
 %else
 profile="--disable-profile"
 %endif
-
-CONFARGS=
-case " %{ix86} x86_64 aarch64 " in
-  *" %{host_arch} "*) CONFARGS="$CONFARGS --enable-static-pie" ;;
-esac
 
 ../configure \
 	CFLAGS="$BuildFlags" BUILD_CFLAGS="$BuildFlags" \
@@ -733,7 +661,6 @@ esac
 %endif
 	--enable-systemtap \
 %endif
-	$CONFARGS \
 %if %{enable_stackguard_randomization}
 	--enable-stackguard-randomization \
 %endif
@@ -851,32 +778,6 @@ make %{?_smp_mflags} -C cc-base check-abi
 %endif
 
 %install
-%if %{livepatchable}
-
-# Ipa-clones are files generated by gcc which logs changes made across
-# functions, and we need to know such changes to build livepatches
-# correctly. These files are intended to be used by the livepatch
-# developers and may be retrieved by using `osc getbinaries`.
-#
-# Create list of ipa-clones.
-find . -name "*.ipa-clones" ! -empty | sed 's/^\.\///g' |  sort > ipa-clones.list
-
-# Create ipa-clones destination folder and move clones there.
-mkdir -p ipa-clones/%{clones_dest_dir}
-while read f; do
-  _dest=ipa-clones/%{clones_dest_dir}/$f
-  mkdir -p ${_dest%/*}
-  cp $f $_dest
-done < ipa-clones.list
-
-# Create tarball with ipa-clones.
-tar cfJ %{tar_package_name} -C ipa-clones %{tar_basename}
-
-# Copy tarball to the OTHER folder to store it as artefact.
-cp %{tar_package_name} %{_other}
-
-%endif # livepatchable
-
 %if !%{build_testsuite}
 
 %if %{with usrmerged}
@@ -902,6 +803,31 @@ ln -s . %{buildroot}%{slibdir}/lp64d
 %endif
 
 %if %{build_main}
+
+%if %{with livepatching}
+%define tar_basename glibc-livepatch-%{version}-%{release}
+%define tar_package_name %{tar_basename}.%{_arch}.tar.xz
+%define clones_dest_dir %{tar_basename}/%{_arch}
+
+# Ipa-clones are files generated by gcc which logs changes made across
+# functions, and we need to know such changes to build livepatches
+# correctly. These files are intended to be used by the livepatch
+# developers and may be retrieved by using `osc getbinaries`.
+#
+# Create ipa-clones destination folder and move clones there.
+mkdir -p ipa-clones/%{clones_dest_dir}
+find . -name "*.ipa-clones" ! -empty \
+       -exec cp -t ipa-clones/%{clones_dest_dir} --parents {} +
+
+# Create tarball with ipa-clones.
+tar -cJf %{tar_package_name} -C ipa-clones \
+    --owner root --group root --sort name %{tar_basename}
+
+# Copy tarball to the OTHER folder to store it as artifact.
+cp %{tar_package_name} %{_topdir}/OTHER
+
+%endif
+
 # We don't want to strip the .symtab from our libraries in find-debuginfo.sh,
 # certainly not from libc.so.* because it is used by libthread_db to find
 # some non-exported symbols in order to detect if threading support
@@ -1076,7 +1002,7 @@ rm -f %{buildroot}%{_libdir}/lib*
 %else
 rm -f %{buildroot}%{_libdir}/lib*.a
 %endif
-rm -f %{buildroot}%{_bindir}/{catchsegv,ldd*,sprof}
+rm -f %{buildroot}%{_bindir}/{ld.so,ldd*,sprof}
 rm -rf %{buildroot}%{_mandir}/man*
 rm -rf %{buildroot}%{rootsbindir} %{buildroot}%{_includedir}
 %ifarch riscv64
@@ -1096,11 +1022,12 @@ make %{?_smp_mflags} install_root=%{buildroot}/%{sysroot} install -C cc-base
 rm -rf %{buildroot}/%{sysroot}/%{_libdir}/audit
 rm -rf %{buildroot}/%{sysroot}/%{_libdir}/gconv
 rm -rf %{buildroot}/%{sysroot}/%{_infodir}
-rm -rf %{buildroot}/%{sysroot}/%{_prefix}/share/i18n
-rm -rf %{buildroot}/%{sysroot}/%{_datadir}/locale/*/
-rm -f %{buildroot}/%{sysroot}/%{_bindir}/makedb
-rm -rf %{buildroot}/%{sysroot}/var/lib
-rm -f %{buildroot}/%{sysroot}/%{_sbindir}/nscd
+rm -rf %{buildroot}/%{sysroot}/%{_datadir}
+rm -rf %{buildroot}/%{sysroot}/%{_libexecdir}
+rm -rf %{buildroot}/%{sysroot}/%{_bindir}
+rm -rf %{buildroot}/%{sysroot}/%{_sbindir}
+rm -rf %{buildroot}/%{sysroot}/etc
+rm -rf %{buildroot}/%{sysroot}/var
 
 # Some programs look for <prefix>/lib/../$subdir where subdir is
 # for instance "lib64".  For this path lookup to succeed we need the
@@ -1232,6 +1159,7 @@ exit 0
 %doc %{_mandir}/man1/getconf.1.gz
 %doc %{_mandir}/man5/*
 
+%{_bindir}/ld.so
 %{rtlddir}/%{rtld_name}
 %if 0%{?rtld_oldname:1}
 %{rtlddir}/%{rtld_oldname}
@@ -1249,7 +1177,6 @@ exit 0
 %endif
 
 %{slibdir}/libBrokenLocale.so.1
-%{slibdir}/libSegFault.so
 %{slibdir}/libanl.so.1
 %{slibdir}/libc.so.6*
 %{slibdir}/libc_malloc_debug.so.0
@@ -1311,9 +1238,7 @@ exit 0
 %defattr(-,root,root)
 %license COPYING COPYING.LIB
 %doc NEWS README
-%doc %{_mandir}/man1/catchsegv.1.gz
 %doc %{_mandir}/man3/*
-%{_bindir}/catchsegv
 %{_bindir}/sprof
 %{_includedir}/*
 %{_libdir}/*.o

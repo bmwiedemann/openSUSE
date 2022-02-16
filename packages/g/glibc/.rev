@@ -2575,4 +2575,41 @@ packages split over different rings, so it's not necessary anymore
 do special case rings. (forwarded request 934053 from matz2)</comment>
     <requestid>934170</requestid>
   </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>d209180a321f9d66aeb48d4fd321eab6</srcmd5>
+    <version>2.35</version>
+    <time>1645054218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to glibc 2.35
+  Major new features:
+  * Unicode 14.0.0 Support
+  * Bump r_version in the debugger interface to 2
+  * Support for the C.UTF-8 locale has been added to glibc
+  * &lt;math.h&gt; functions that round their results to a narrower type, and
+    corresponding &lt;tgmath.h&gt; macros, are added from TS 18661-1:2014, TS
+    18661-3:2015 and draft ISO C2X
+  * &lt;math.h&gt; functions for floating-point maximum and minimum,
+    corresponding to new operations in IEEE 754-2019, and corresponding
+    &lt;tgmath.h&gt; macros, are added from draft ISO C2X
+  * &lt;math.h&gt; macros for single-precision float constants are added as a
+    GNU extension
+  * The __STDC_IEC_60559_BFP__ and __STDC_IEC_60559_COMPLEX__ macros are
+    predefined as specified in TS 18661-1:2014
+  * The exp10 functions in &lt;math.h&gt; now have a corresponding type-generic
+    macro in &lt;tgmath.h&gt;
+  * The ISO C2X macro _PRINTF_NAN_LEN_MAX has been added to &lt;stdio.h&gt;
+  * printf-family functions now support the %b format for output of
+    integers in binary, as specified in draft ISO C2X, and the %B variant
+    of that format recommended by draft ISO C2X
+  * A new DSO sorting algorithm has been added in the dynamic linker that uses
+    topological sorting by depth-first search (DFS), solving performance issues
+    of the existing sorting algorithm when encountering particular circular
+    object dependency cases
+  * A new tunable, glibc.rtld.dynamic_sort, can be used to select between
+    the two DSO sorting algorithms
+  * ABI support for a new function '__memcmpeq'. '__memcmpeq' is meant
+    to be used by compilers for optimizing usage of 'memcmp' when its
+    return value is only used for its boolean status (forwarded request 951353 from Andreas_Schwab)</comment>
+    <requestid>951354</requestid>
+  </revision>
 </revisionlist>
