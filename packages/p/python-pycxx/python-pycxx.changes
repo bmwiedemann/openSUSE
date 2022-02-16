@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 16 20:21:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.7:
+  * Add support for building against python 3.11 alpha 4.
+  * Replace use of deprecated PyUnicode APIs with the supported version.
+  * Add support for more number methods, like matrix and the inplace versions.
+  * Use IsInstance checking so that derived classes of builtin types can be used.
+  * Add support for python 3.9 beta 1 changes
+  * Fix for memory leak caused by wrong ref count on python3 Py::String objects.
+  * Remove support for supportPrint() etc as the tp_print field is being removed
+    from python either in 3.8 or 3.9.
+  * Fix problem with compiling for Python 2 and the _Py_PackageContext symbol.
+  * Add exception errorType() and errorValue() function to access the type and
+    value of an exception.
+  * Add support for Py_LIMITED_API aka PEP-384
+- drop python-pycxx-7.0.3-python37.patch python-pycxx-7.0.3-setup.py.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Feb 22 14:51:18 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Drop broken %ifpython3 macro

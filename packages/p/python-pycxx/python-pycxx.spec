@@ -1,7 +1,7 @@
 #
-# spec file for package python-pycxx
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-%{modname}
-Version:        7.0.3
+Version:        7.1.7
 Release:        0
 Summary:        Python extensions in C++
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            http://CXX.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/cxx/%{modname}-%{version}.tar.gz
-Patch0:         python-pycxx-7.0.3-python37.patch
 Patch1:         python-pycxx-7.0.3-change-include-paths.patch
-Patch2:         python-pycxx-7.0.3-setup.py.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
