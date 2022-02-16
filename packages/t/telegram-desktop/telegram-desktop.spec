@@ -27,7 +27,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        3.5.0
+Version:        3.5.2
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -43,7 +43,7 @@ Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-tg_owt-fix-name-confliction.patch
 # PATCH-FIX-OPENSUSE
-Patch3:         0003-add-qt5-widgets-include.patch
+Patch3:         0003-revert-webrtc-cmake-target-file.patch
 # PATCH-FIX-OPENSUSE
 Patch4:         0004-use-dynamic-x-libraries.patch
 # PATCH-FIX-OPENSUSE
