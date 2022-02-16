@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  8 09:29:53 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update A3700-utils-marvell version:
+  Fix build SATA bootloader for A3700 boards
+  Drop fix-A3700-gcc11.patch: upstreamed 
+  Enable %fdupes which is particularly useful for a3700 flavour
+
+-------------------------------------------------------------------
 Wed Feb  2 07:09:52 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
 
 - ExclusiveArch got overwritten, using else branches instead as

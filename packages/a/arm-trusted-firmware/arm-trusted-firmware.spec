@@ -66,7 +66,7 @@ Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
 Patch1:         atf-allow-non-git-dir.patch
 Patch150:       A3700_utils-drop-git.patch
-Patch151:       fix-A3700-gcc11.patch
+BuildRequires:  fdupes
 %if "%{platform}" != ""
 #!BuildIgnore: gcc-PIE
 %endif
@@ -137,8 +137,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # Disable some targets on SLE15-SP4 because of missing deps
 %if 0%{suse_version} < 1550
-%if "%{platform}" == "a3700" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "imx8qm" || "%{platform}" == "imx8qx" || "%{platform}" == "rk3399" 
-ExclusiveArch: do_not_build
+%if "%{platform}" == "a3700" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "imx8qm" || "%{platform}" == "imx8qx" || "%{platform}" == "rk3399"
+ExclusiveArch:  do_not_build
 %else
 %if "%{platform}" != ""
 BuildArch:      noarch
@@ -217,13 +217,10 @@ echo "%{mv_ddr_ver}" > mv-ddr-marvell-%{mv_ddr_ver}/branch.txt
 pushd A3700-utils-marvell-%{a3700_utils_ver}
 # git repo or branch.txt file are expected
 echo "%{a3700_utils_ver}" >  branch.txt
-# Remove any pre-built x86 Linux binaries
-rm -f wtptp/linux/*
 %if "%{platform}" != ""
-install -m 0755 %{_bindir}/TBB wtptp/linux/tbb_linux
+install -D -m 0755 %{_bindir}/TBB wtptp/linux/tbb_linux
 %endif
 %patch150 -p1
-%patch151 -p1
 popd
 %endif
 %patch1 -p1
@@ -249,7 +246,7 @@ popd
 %else
 %if "%{platform}" == "a3700"
 export CROSS_CM3=arm-none-eabi-
-%define variants ebin_512M_spinor ebin_v3_1G_spinor ebin_v5_2G_spinor ebin_v7_1G_spinor ebin_v7_2G_spinor
+%define variants ebin_512M_spinor ebin_v3_1G_spinor ebin_v5_2G_spinor ebin_v7_1G_spinor ebin_v7_2G_spinor ebin_512M_sata ebin_v3_1G_sata ebin_v5_2G_sata ebin_v7_1G_sata ebin_v7_2G_sata
 for variant in %{variants}; do
   partnum=0
   case "${variant}" in
@@ -469,6 +466,8 @@ install -D -m 0644 %{outdir}/flash-image.bin %{buildroot}%{_datadir}/%{name}/fla
 %endif
 
 %endif
+
+%fdupes %{buildroot}%{_prefix}
 
 %if "%{platform}" == "rpi3" || "%{platform}" == "rpi4"
 %post

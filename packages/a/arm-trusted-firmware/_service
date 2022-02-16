@@ -28,7 +28,7 @@
     <param name="scm">git</param>
     <param name="filename">A3700-utils-marvell</param>
     <param name="versionformat">master</param>
-    <param name="revision">2efdb10f3524c534d276002adf81fec06e0f1cf2</param>
+    <param name="revision">e733e9f139ff23c1b0346c6e89f5530a4c24db3b</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*A3700-utils-marvell*.tar</param>
