@@ -1,0 +1,3 @@
+Name: python
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
