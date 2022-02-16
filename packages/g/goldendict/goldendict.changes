@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 16 08:10:33 UTC 2022 - <opensuse.lietuviu.kalba@gmail.com>
+
+- Add _service file.
+- Update to 1.5.0~rc2+git.20220215T203220 version:
+  - Fixed navigation in popup window (Qt5WebEngine regression).
+
+-------------------------------------------------------------------
 Sun Feb  6 18:32:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove historic specfile constructs.
