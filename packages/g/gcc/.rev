@@ -585,4 +585,12 @@ from GCC 6).
     <comment>- Move /lib/cpp to /usr/lib/cpp for the usr merge.  [bsc#1191060]</comment>
     <requestid>922193</requestid>
   </revision>
+  <revision rev="71" vrev="5">
+    <srcmd5>33a019b3394ff561a9c988ccb07b1e1c</srcmd5>
+    <version>11</version>
+    <time>1645054220</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage with SR#953381</comment>
+    <requestid>953382</requestid>
+  </revision>
 </revisionlist>

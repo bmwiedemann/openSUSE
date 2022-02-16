@@ -1,7 +1,7 @@
 #
 # spec file for package gcc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -133,6 +133,7 @@ The system GNU Compiler documentation.
 
 
 # install / update the entries
+
 %post -n gcc-info
 %install_info --info-dir=%{_infodir} --name=cpp --description='The GNU C preprocessor.' %{_infodir}/cpp.info.gz
 %install_info --info-dir=%{_infodir} --name=gcc --description='The GNU Compiler Collection.' %{_infodir}/gcc.info.gz
@@ -287,7 +288,7 @@ The system GNU Objective C++ Compiler.
 Summary:        A default configuration to build all binaries in PIE mode
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
-Requires:       gcc
+Requires:       gcc%{gcc_version}-PIE
 
 %description -n gcc-PIE
 This package contains a configuration file (spec) that changes the
@@ -465,14 +466,6 @@ ln -sf gcc-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/cc.1.gz
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/bfd-plugins
 ln -s `gcc-%{gcc_suffix} -print-file-name=liblto_plugin.so` $RPM_BUILD_ROOT%{_libdir}/bfd-plugins/liblto_plugin.so
 
-dir=`gcc-%{gcc_suffix} -print-prog-name=cc1`
-dir=${dir%/cc1}
-mkdir -p $RPM_BUILD_ROOT/$dir
-cat > $RPM_BUILD_ROOT/$dir/defaults.spec <<EOF
-*default_spec:
-%%{pie|fpic|fPIC|fpie|fPIE|no-pie|fno-pic|fno-PIC|fno-pie|fno-PIE|shared|static|nostdlib|nodefaultlibs|nostartfiles:;:-fPIE}%%{fno-pic|fno-PIC|fno-pie|fno-PIE|pie|no-pie|shared|static|nostdlib|nodefaultlibs|nostartfiles:;: -pie}
-EOF
-
 %post -n gcc-go
 # we don't want a BuildRequires on gccN-go but otherwise the install
 # step of the build fails, so simply skip the script when gccN-go isn't there
@@ -544,7 +537,7 @@ fi
 
 %files -n gcc-PIE
 %defattr(-,root,root)
-/usr/lib*/gcc/*-suse-linux*/*/defaults.spec
+# empty - only for the dependency
 
 %files -n gcc-locale
 %defattr(-,root,root)
