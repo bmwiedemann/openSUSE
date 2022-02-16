@@ -38,10 +38,10 @@ Patch0:         libtorrent-rasterbar-boost_178.patch
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_chrono-devel >= 1.67
-BuildRequires:  libboost_python3-devel >= 1.67
-BuildRequires:  libboost_random-devel >= 1.67
-BuildRequires:  libboost_system-devel >= 1.67
+BuildRequires:  libboost_chrono-devel
+BuildRequires:  libboost_python3-devel
+BuildRequires:  libboost_random-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -121,7 +121,7 @@ Documentation for the libtorrent-rasterbar package.
 %endif
    -Dpython-bindings=ON \
    -Dpython-egg-info=ON \
-   -Dboost-python-module-name=python
+   -Dboost-python-module-name=python3
 %cmake_build
 
 %install
