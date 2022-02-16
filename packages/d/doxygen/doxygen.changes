@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Feb 13 14:28:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.3:
+  * Write directory dependency graphs recursively
+  * Added missing symbols needed to enable SANITIZE_UNDEFINED
+  * Add the xml output format to the image command as generic
+    format
+  * Add the HTML and XML commands to the index [view]
+  * Added explanation for directory dependency graphs in graph
+    manual
+  * Avoid tampering with special commands while doing markdown
+    parsing
+  * Adding HTML tag <cite> [view]
+  * Adding engine to xml output for plantuml [view]
+  * Czech localization update, added all missing czech localization
+    strings up to 1.9.3
+  * translate chinese upto version 1.9.2
+  * Updated swedish translation to 1.9.2
+  * Greek translation updated to 1.9.2
+  * Portuguese translators upddated to 1.9.3
+  * UTF-8 characters in email address
+  * Support for char32_t etc. in code coloring
+  * Changed license of doxmlparser from GPLv2 to MIT
+  * Better error message in case of a fatal error in a lexer
+  * Better readable warnings / debug messages incase of warning with
+    token / return value in docparser
+  * value attribute for <li> tag
+  * Copy original dotfile to output directory in case of DOT_CLEANUP
+    is not set
+  * allow using percentual numbers for images dimensions
+  * Make email obfuscation optional
+  * Improvement of WARN_LOGFILE possibilities
+  * No warning in case non existing macro parameter
+  * HTML tag details
+  * Include qualified names in `<memberdef>`s in XML output
+  * CLASS_DIAGRAM has become obsolete. The same functionality can
+    now be achieved using HAVE_DOT and CLASS_GRAPH. Old settings in
+    the Doxyfile will be automatically converted when reading or
+    updating it
+
+-------------------------------------------------------------------
 Sat Oct  2 15:24:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.2

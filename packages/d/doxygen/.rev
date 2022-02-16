@@ -1018,4 +1018,12 @@
     <comment>doxygen 1.9.2 (forwarded request 922839 from AndreasStieger)</comment>
     <requestid>922934</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>0cdd541fbf04f8ea1b4e68472b6bf902</srcmd5>
+    <version>1.9.3</version>
+    <time>1645054194</time>
+    <user>dimstar_suse</user>
+    <comment>doxygen 1.9.3 (forwarded request 954081 from AndreasStieger)</comment>
+    <requestid>954467</requestid>
+  </revision>
 </revisionlist>
