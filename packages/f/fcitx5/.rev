@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>953893</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>25e3e9a9eeff40bb8ccedc67c2aa2442</srcmd5>
+    <version>5.0.14</version>
+    <time>1645054257</time>
+    <user>dimstar_suse</user>
+    <comment>- fix preun scirpt
+</comment>
+    <requestid>955406</requestid>
+  </revision>
 </revisionlist>

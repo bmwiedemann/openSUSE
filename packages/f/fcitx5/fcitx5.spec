@@ -220,8 +220,8 @@ if [ -x /usr/bin/systemctl ]; then
 fi
 
 %preun
-if [ %{name}.service -eq 0 -a -x /usr/bin/systemctl ]; then
-  /usr/bin/systemctl --global disable fcitx5.service || :
+if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then
+  /usr/bin/systemctl --global disable %{name}.service || :
 fi
 %endif
 
