@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 15 19:18:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * Use correct DBus signal for listening for font changes
+  * Avoid needlessly reading font settings
+  * Use raw pointer instead of QPointer to track watchers
+
+-------------------------------------------------------------------
 Sat Feb  5 19:51:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.0
