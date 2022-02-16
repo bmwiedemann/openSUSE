@@ -485,4 +485,12 @@
 - Use sed to fix the shebang in some of the plugins. (forwarded request 952776 from iznogood)</comment>
     <requestid>952878</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>5d202d795e48ef4bb102253c41ebffd5</srcmd5>
+    <version>41.0</version>
+    <time>1645054268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955420</requestid>
+  </revision>
 </revisionlist>
