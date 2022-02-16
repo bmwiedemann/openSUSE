@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 16 20:38:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.24:
+  * SpatiaLite helpers for the ``sqlite-utils`` command-line tool
+  * All commands now include example usage in their ``--help`` - see :ref:`cli_reference`. (:issue:`384`)
+  * Python library documentation has a new :ref:`python_api_getting_started` section. (:issue:`387`)
+  * Documentation now uses `Plausible analytics <https://plausible.io/>`__. (:issue:`389`)
+  * CLI and Python library improvements to help run `ANALYZE
+    inserting rows, to gain better performance from the SQLite query planner
+    when it runs against indexes.
+  * Three new CLI commands: ``create-database``, ``analyze`` and ``bulk``.
+  * More details and examples can be found in `the annotated release notes <https://simonwillison.net/2022/Jan/11/sqlite-utils/>`__.
+  * Fixed bug where ``sqlite-utils upsert ... --detect-types`` ignored the ``--detect-types`` option.
+
+-------------------------------------------------------------------
 Tue Dec 14 07:51:51 UTC 2021 - pgajdos@suse.com
 
 - version update to 3.19
