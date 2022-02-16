@@ -243,4 +243,17 @@
 - Codify version requirement on setuptools for building.</comment>
     <requestid>949686</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d1463e7d12170a1846829671baafd3bb</srcmd5>
+    <version>0.37.1</version>
+    <time>1645054192</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.37.1:
+  * Fixed ``wheel pack`` duplicating the ``WHEEL`` contents when the build
+   number has changed Fixed parsing of file names containing commas in
+   ``RECORD`` (PR by Hood Chatham)
+  * Added official Python 3.10 support
+  * Updated vendored ``packaging`` library to v20.9</comment>
+    <requestid>954400</requestid>
+  </revision>
 </revisionlist>

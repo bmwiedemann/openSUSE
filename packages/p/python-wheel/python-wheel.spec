@@ -32,7 +32,7 @@
 %bcond_with test
 %endif
 Name:           python-wheel%{psuffix}
-Version:        0.36.2
+Version:        0.37.1
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
