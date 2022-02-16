@@ -709,4 +709,18 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   + openexr-CVE-2021-45942.patch</comment>
     <requestid>944051</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4b4b6747580176913f9bf219bdb0cb25</srcmd5>
+    <version>3.1.4</version>
+    <time>1645054195</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.4 (bsc#1194333):
+  * Several bug fixes to properly reject invalid input upon read 
+  * A check to enable SSE2 when building with Visual Studio
+  * A check to fix building with VisualStudio on ARM64
+  * Update the automatically-downloaded version of Imath to v3.1.4
+  * Miscellaneous documentation improvements
+- drop openexr-CVE-2021-45942.patch (upstream) (forwarded request 954404 from dirkmueller)</comment>
+    <requestid>954468</requestid>
+  </revision>
 </revisionlist>

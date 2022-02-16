@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 14 22:22:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.4 (bsc#1194333):
+  * Several bug fixes to properly reject invalid input upon read 
+  * A check to enable SSE2 when building with Visual Studio
+  * A check to fix building with VisualStudio on ARM64
+  * Update the automatically-downloaded version of Imath to v3.1.4
+  * Miscellaneous documentation improvements
+- drop openexr-CVE-2021-45942.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jan  5 12:55:27 UTC 2022 - pgajdos@suse.com
 
 - security update
