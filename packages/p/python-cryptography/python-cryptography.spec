@@ -1,7 +1,7 @@
 #
-# spec file for package python-cryptography
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,15 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-Name:           python-cryptography
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-cryptography%{psuffix}
 Version:        36.0.1
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
@@ -32,7 +40,7 @@ Source1:        https://files.pythonhosted.org/packages/source/c/cryptography/cr
 Source2:        vendor.tar.xz
 # use `osc service disabledrun` to regenerate
 Source3:        cargo_config
-Source4:        %{name}.keyring
+Source4:        python-cryptography.keyring
 Patch2:         skip_openssl_memleak_test.patch
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
@@ -45,10 +53,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  rust >= 1.41.0
 BuildRequires:  pkgconfig(libffi)
-%requires_eq    python-cffi
 # python-base is not enough, we need the _ssl module
 Requires:       python
-# SECTION Test requirements
+%requires_eq    python-cffi
+%if %{with test}
+BuildRequires:  %{python_module cryptography >= %{version}}
 BuildRequires:  %{python_module cryptography-vectors = %{version}}
 BuildRequires:  %{python_module hypothesis >= 1.11.4}
 BuildRequires:  %{python_module iso8601}
@@ -57,7 +66,7 @@ BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytz}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -82,6 +91,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
 
 %install
+%if !%{with test}
 export RUSTFLAGS=%{rustflags}
 # Actually other *.c and *.h are appropriate
 # see https://github.com/pyca/cryptography/issues/1463
@@ -89,14 +99,19 @@ find . -name .keep -print -delete
 
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
+%if %{with test}
 %check
 %pytest_arch -n auto
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE LICENSE.APACHE LICENSE.BSD
 %doc CONTRIBUTING.rst CHANGELOG.rst README.rst
 %{python_sitearch}/cryptography
 %{python_sitearch}/cryptography-%{version}*-info
+%endif
 
 %changelog

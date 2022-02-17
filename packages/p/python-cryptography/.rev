@@ -610,4 +610,12 @@
   * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 1.1.1m.</comment>
     <requestid>941719</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>5bde8dded091c3f5017b3265fed4b09a</srcmd5>
+    <version>36.0.1</version>
+    <time>1645137599</time>
+    <user>dimstar_suse</user>
+    <comment>- split tests in a multibuild variant to optimize rebuild time a bit</comment>
+    <requestid>955476</requestid>
+  </revision>
 </revisionlist>
