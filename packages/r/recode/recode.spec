@@ -18,7 +18,7 @@
 
 %define         libname lib%{name}3
 Name:           recode
-Version:        3.7.11
+Version:        3.7.12
 Release:        0
 Summary:        Character Set Converter
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -28,8 +28,6 @@ Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  flex
 BuildRequires:  python3
 BuildRequires:  python3-Cython
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
 
 %description
 Recode converts files between various character sets.
@@ -39,7 +37,7 @@ It supports conversion to and from HTML entities as well.
 Summary:        Character Set Converter
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       %{libname} = %{version}
 
 %description  devel
 Recode converts files between various character sets.
@@ -59,7 +57,6 @@ other applications.
 %autosetup -p1
 
 %build
-#autoreconf -fiv
 %configure --disable-static
 %make_build
 
@@ -70,12 +67,6 @@ other applications.
 %make_install
 rm -f %{buildroot}%{_libdir}/librecode.la
 %find_lang %{name}
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -88,10 +79,12 @@ rm -f %{buildroot}%{_libdir}/librecode.la
 %{_bindir}/recode
 
 %files devel
+%license COPYING COPYING-LIB
 %{_includedir}/*.h
 %{_libdir}/librecode.so
 
 %files -n %{libname}
+%license COPYING COPYING-LIB
 %{_libdir}/librecode.so.*
 
 %changelog

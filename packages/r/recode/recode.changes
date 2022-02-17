@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 17 21:16:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.7.12:
+  * Simplify support for ignoring invalid input with iconv,
+    integrated with the --strict and --force mechanisms
+- drop obsolete texinfo packaging macros
+- fix devel package dependency warning and package license texts
+
+-------------------------------------------------------------------
 Fri Feb  4 22:21:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 3.7.11:
