@@ -39,4 +39,12 @@
     <comment>- Refactor conditional golang BuildRequires for RHEL (forwarded request 954665 from witekbedyk)</comment>
     <requestid>955083</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d725b2c814d2ff776b13f0d3bebd932b</srcmd5>
+    <version>0.5.0</version>
+    <time>1645137590</time>
+    <user>dimstar_suse</user>
+    <comment>Update Jira tickets reference in the changelog (forwarded request 955324 from witekbedyk)</comment>
+    <requestid>955506</requestid>
+  </revision>
 </revisionlist>
