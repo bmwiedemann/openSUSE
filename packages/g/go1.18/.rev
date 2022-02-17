@@ -21,4 +21,15 @@
   Refs boo#1193742 go1.18 release tracking (forwarded request 950293 from jfkw)</comment>
     <requestid>950295</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a73115baa34249d3c918988d6815904a</srcmd5>
+    <version>1.18rc1</version>
+    <time>1645137633</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.18rc1 (released 2022-02-16) is a release candidate version of
+  go1.18 cut from the master branch at the revision tagged
+  go1.18rc1.
+  Refs boo#1193742 go1.18 release tracking (forwarded request 955696 from jfkw)</comment>
+    <requestid>955697</requestid>
+  </revision>
 </revisionlist>

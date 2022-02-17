@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 17 07:38:54 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18rc1 (released 2022-02-16) is a release candidate version of
+  go1.18 cut from the master branch at the revision tagged
+  go1.18rc1.
+  Refs boo#1193742 go1.18 release tracking
+
+-------------------------------------------------------------------
 Mon Jan 31 19:25:36 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18beta2 (released 2022-01-31) is a beta version of go1.18 cut
-  from the master branch at the revision tagged go1.18beta1.
+  from the master branch at the revision tagged go1.18beta2.
   Refs boo#1193742 go1.18 release tracking
 
 -------------------------------------------------------------------
