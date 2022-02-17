@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 17 04:54:00 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220217.b8f67f4e:
+  * Dev: configure.ac: update version as 4.4.0
+  * Update ChangeLog for release 4.4.0
+
+-------------------------------------------------------------------
+Wed Feb 09 15:43:58 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220209.0eb4fa28:
+  * Dev: remove unused files for origin unit tests way
+  * Dev: setup.py: update install requires
+  * Dev: README: update with unit tests steps
+  * Dev: crmsh-ci.yml: Add python3.6 and 3.10 into unit test list
+  * Dev: tox: Adjust tox.ini, add py36 and py310 in envlist
+
+-------------------------------------------------------------------
 Tue Feb 08 09:01:07 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220208.5e6dca1d:
