@@ -108,4 +108,14 @@
     as it should no longer be needed.</comment>
     <requestid>940129</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cd266704e1aa6d80bc22c26a4758aff0</srcmd5>
+    <version>3.0.0</version>
+    <time>1645137597</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-sybil-fix-ordering.diff fixing issue with tests
+  failing on different filesystem setups.
+</comment>
+    <requestid>955436</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sybil
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,12 @@ Summary:        Automated testing of examples in documentation
 License:        MIT
 URL:            https://github.com/cjw296/sybil
 Source:         https://files.pythonhosted.org/packages/source/s/sybil/sybil-%{version}.tar.gz
+Patch0:         python-sybil-fix-ordering.diff
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-pytest
@@ -42,12 +45,13 @@ of the normal test run. Integration is provided for the main Python test runners
 %prep
 %setup -q -n sybil-%{version}
 sed -i '/pytest-cov/ d'  setup.py
+%autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
