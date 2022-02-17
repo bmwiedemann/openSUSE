@@ -3505,6 +3505,7 @@ unsorted:
   - faenza-icon-theme-radiance 
   - fail2ban 
   - fairymax 
+  - fake-gcs-server 
   - fakechroot 
   - fakeroot 
   - fakeroot-32bit: [x86_64] 
@@ -4091,6 +4092,7 @@ unsorted:
   - gcc10-objc-32bit: [x86_64] 
   - gcc10-testresults 
   - gcc11-32bit: [x86_64] 
+  - gcc11-PIE 
   - gcc11-ada 
   - gcc11-ada-32bit: [x86_64] 
   - gcc11-c++ 
@@ -5868,6 +5870,8 @@ unsorted:
   - gnome-doc-utils 
   - gnome-doc-utils-devel 
   - gnome-doc-utils-lang 
+  - gnome-documents 
+  - gnome-documents-lang 
   - gnome-dvb-daemon 
   - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
@@ -5902,6 +5906,7 @@ unsorted:
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
+  - gnome-online-miners 
   - gnome-packagekit-extras 
   - gnome-passwordsafe 
   - gnome-passwordsafe-lang 
@@ -5928,6 +5933,7 @@ unsorted:
   - gnome-shell-extension-terminus 
   - gnome-shell-extension-user-theme 
   - gnome-shell-search-provider-boxes 
+  - gnome-shell-search-provider-documents 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-epiphany 
   - gnome-shell-search-provider-gnome-calendar 
@@ -12867,7 +12873,6 @@ unsorted:
   - libpetsc-gnu-openmpi3-hpc 
   - libpetsc-gnu-openmpi4-hpc 
   - libpetsc3 
-  - libpetsc3-openmpi1 
   - libpetsc3-openmpi2 
   - libpetsc3-openmpi3 
   - libpetsc3-openmpi4 
@@ -14950,6 +14955,7 @@ unsorted:
   - libyui-rest-api-devel 
   - libyui-rest-api16 
   - libz-ng2 
+  - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -18975,6 +18981,7 @@ unsorted:
   - perl-Algorithm-C3 
   - perl-Algorithm-CheckDigits 
   - perl-Algorithm-Combinatorics 
+  - perl-Algorithm-Diff 
   - perl-Alien-Build 
   - perl-Alien-Libxml2 
   - perl-Alien-SDL 
@@ -19013,10 +19020,12 @@ unsorted:
   - perl-App-perlbrew 
   - perl-App-rsync-retry 
   - perl-AppConfig 
+  - perl-Archive-Any-Lite 
   - perl-Archive-Cpio 
   - perl-Archive-Extract 
   - perl-Archive-Peek 
   - perl-Archive-Tar-Wrapper 
+  - perl-Array-Diff 
   - perl-Array-Unique 
   - perl-Audio-RPLD 
   - perl-Authen-DecHpwd 
@@ -19052,7 +19061,9 @@ unsorted:
   - perl-CLI-Osprey 
   - perl-CPAN-Changes 
   - perl-CPAN-Common-Index 
+  - perl-CPAN-DistnameInfo 
   - perl-CPAN-Meta-Check 
+  - perl-CPAN-Meta-Requirements 
   - perl-CPAN-Mini 
   - perl-CPAN-Perl-Releases 
   - perl-CPAN-Uploader 
@@ -19073,6 +19084,7 @@ unsorted:
   - perl-Carton 
   - perl-Catalyst-Manual 
   - perl-Chart 
+  - perl-Class-Accessor 
   - perl-Class-Accessor-Chained 
   - perl-Class-Accessor-Grouped 
   - perl-Class-Accessor-Lite 
@@ -19109,6 +19121,7 @@ unsorted:
   - perl-Class-Unload 
   - perl-Class-WhiteHole 
   - perl-Class-XPath 
+  - perl-Class-XSAccessor 
   - perl-Clone-Choose 
   - perl-Clone-PP 
   - perl-Code-DRY 
@@ -19188,8 +19201,10 @@ unsorted:
   - perl-Dancer2-Plugin-DBIC 
   - perl-Dancer2-Plugin-REST 
   - perl-Dancer2-Plugin-WebSocket 
+  - perl-Data-Binary 
   - perl-Data-Clone 
   - perl-Data-Compare 
+  - perl-Data-Dump 
   - perl-Data-Dump-Streamer 
   - perl-Data-Dumper-Concise 
   - perl-Data-Entropy 
@@ -19198,11 +19213,13 @@ unsorted:
   - perl-Data-Hierarchy 
   - perl-Data-Integer 
   - perl-Data-ObjectDriver 
+  - perl-Data-OptList 
   - perl-Data-Page 
   - perl-Data-Peek 
   - perl-Data-Perl 
   - perl-Data-Printer 
   - perl-Data-Random 
+  - perl-Data-Section 
   - perl-Data-Section-Simple 
   - perl-Data-ShowTable 
   - perl-Data-Structure-Util 
@@ -19261,6 +19278,7 @@ unsorted:
   - perl-Devel-REPL 
   - perl-Devel-StackTrace 
   - perl-Devel-StackTrace-AsHTML 
+  - perl-Devel-Symdump 
   - perl-Devel-TakeHashArgs 
   - perl-Devel-Trace 
   - perl-Device-SerialPort 
@@ -19286,6 +19304,7 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
+  - perl-Encode 
   - perl-Encode-EUCJPASCII 
   - perl-Encode-HanExtra 
   - perl-Encode-JIS2K 
@@ -19298,6 +19317,7 @@ unsorted:
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
+  - perl-Exporter-Tiny: [i586] 
   - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
@@ -19310,7 +19330,6 @@ unsorted:
   - perl-ExtUtils-MakeMaker 
   - perl-ExtUtils-MakeMaker-CPANfile 
   - perl-ExtUtils-Manifest 
-  - perl-ExtUtils-PkgConfig 
   - perl-ExtUtils-Typemaps-Default 
   - perl-ExtUtils-XSpp 
   - perl-FFI-CheckLib 
@@ -19324,6 +19343,7 @@ unsorted:
   - perl-File-Copy-Recursive-Reduced 
   - perl-File-DesktopEntry 
   - perl-File-FcntlLock 
+  - perl-File-Find-Object 
   - perl-File-Find-Rule 
   - perl-File-Find-Rule-Perl 
   - perl-File-Finder 
@@ -19516,6 +19536,8 @@ unsorted:
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
   - perl-List-Compare 
+  - perl-List-MoreUtils: [i586] 
+  - perl-List-MoreUtils-XS: [i586] 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -19543,6 +19565,7 @@ unsorted:
   - perl-MIME-Types 
   - perl-MLDBM 
   - perl-MLDBM-Sync 
+  - perl-MRO-Compat 
   - perl-Mac-PropertyList 
   - perl-Mail-IMAPClient 
   - perl-Mail-Message 
@@ -19588,7 +19611,10 @@ unsorted:
   - perl-Module-Build-Using-PkgConfig 
   - perl-Module-Build-WithXSpp 
   - perl-Module-Build-XSUtil 
+  - perl-Module-CPANTS-Analyse 
+  - perl-Module-CPANfile 
   - perl-Module-Depends 
+  - perl-Module-Find 
   - perl-Module-Implementation 
   - perl-Module-Info 
   - perl-Module-Install 
@@ -19769,6 +19795,7 @@ unsorted:
   - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
+  - perl-Params-Util: [i586] 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
@@ -19787,10 +19814,12 @@ unsorted:
   - perl-Path-Router 
   - perl-Path-Tiny 
   - perl-Perl-Critic 
+  - perl-Perl-Critic-Community 
   - perl-Perl-Critic-Freenode 
   - perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash 
   - perl-Perl-Critic-Pulp 
   - perl-Perl-PrereqScanner 
+  - perl-Perl-PrereqScanner-NotQuiteLite 
   - perl-Perl-Tidy 
   - perl-Perl-Version 
   - perl-Perl6-Junction 
@@ -19811,6 +19840,7 @@ unsorted:
   - perl-Plack-Middleware-Session 
   - perl-Plack-Test-Agent 
   - perl-Pod-AsciiDoctor 
+  - perl-Pod-Coverage 
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
   - perl-Pod-Elemental 
@@ -19819,6 +19849,7 @@ unsorted:
   - perl-Pod-Markdown 
   - perl-Pod-MinimumVersion 
   - perl-Pod-POM 
+  - perl-Pod-Parser 
   - perl-Pod-Readme 
   - perl-Pod-Spell 
   - perl-Pod-Usage 
@@ -19847,6 +19878,7 @@ unsorted:
   - perl-Regexp-Common 
   - perl-Regexp-IPv6 
   - perl-Regexp-Shellish 
+  - perl-Regexp-Trie 
   - perl-Reply 
   - perl-Return-Value 
   - perl-Role-HasMessage 
@@ -19890,6 +19922,7 @@ unsorted:
   - perl-Snowball-Norwegian 
   - perl-Snowball-Swedish 
   - perl-Socket-MsgHdr 
+  - perl-Software-License 
   - perl-Sort-Key 
   - perl-Sort-Naturally 
   - perl-Sort-Versions 
@@ -19923,12 +19956,14 @@ unsorted:
   - perl-String-Util 
   - perl-Struct-Dumb 
   - perl-Sub-Delete 
+  - perl-Sub-Exporter 
   - perl-Sub-Exporter-ForMethods 
   - perl-Sub-Exporter-GlobExporter 
   - perl-Sub-Exporter-Progressive 
   - perl-Sub-HandlesVia 
   - perl-Sub-Identify 
   - perl-Sub-Info 
+  - perl-Sub-Install 
   - perl-Sub-Name 
   - perl-Sub-Override 
   - perl-Sub-Quote 
@@ -20001,7 +20036,6 @@ unsorted:
   - perl-Test-File 
   - perl-Test-File-Contents 
   - perl-Test-File-ShareDir 
-  - perl-Test-Fork 
   - perl-Test-HTTP-MockServer 
   - perl-Test-HasVersion 
   - perl-Test-Identity 
@@ -20009,6 +20043,7 @@ unsorted:
   - perl-Test-Inter 
   - perl-Test-JSON 
   - perl-Test-Kit 
+  - perl-Test-Kwalitee 
   - perl-Test-LWP-UserAgent 
   - perl-Test-LeakTrace 
   - perl-Test-LectroTest 
@@ -20038,6 +20073,8 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
+  - perl-Test-Pod 
+  - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
   - perl-Test-Requires 
   - perl-Test-Requires-Git 
@@ -20074,6 +20111,7 @@ unsorted:
   - perl-Text-BibTeX-devel 
   - perl-Text-Brew 
   - perl-Text-CSV 
+  - perl-Text-CSV_XS 
   - perl-Text-Capitalize 
   - perl-Text-ChaSen 
   - perl-Text-CharWidth 
@@ -20096,6 +20134,7 @@ unsorted:
   - perl-Text-Sprintf-Named 
   - perl-Text-Table 
   - perl-Text-TabularDisplay 
+  - perl-Text-Template 
   - perl-Text-Unidecode 
   - perl-Text-WrapI18N 
   - perl-Text-Wrapper 
@@ -20139,6 +20178,7 @@ unsorted:
   - perl-URI-Nested 
   - perl-URI-Query 
   - perl-URI-Template 
+  - perl-URI-cpan 
   - perl-URI-db 
   - perl-URI-ws 
   - perl-UUID 
@@ -20270,7 +20310,6 @@ unsorted:
   - petsc-gnu-openmpi2-hpc-devel 
   - petsc-gnu-openmpi3-hpc-devel 
   - petsc-gnu-openmpi4-hpc-devel 
-  - petsc-openmpi1-devel 
   - petsc-openmpi2-devel 
   - petsc-openmpi3-devel 
   - petsc-openmpi4-devel 
@@ -22263,6 +22302,7 @@ unsorted:
   - python310-azure-mgmt-network 
   - python310-azure-mgmt-notificationhubs 
   - python310-azure-mgmt-nspkg 
+  - python310-azure-mgmt-oep 
   - python310-azure-mgmt-orbital 
   - python310-azure-mgmt-peering 
   - python310-azure-mgmt-policyinsights 
@@ -22945,6 +22985,7 @@ unsorted:
   - python310-git-pw 
   - python310-git-url-parse 
   - python310-gitdb 
+  - python310-github3.py 
   - python310-gitlint 
   - python310-glean 
   - python310-glfw 
@@ -23572,6 +23613,7 @@ unsorted:
   - python310-opt-einsum 
   - python310-orange-canvas-core 
   - python310-orange-widget-base 
+  - python310-orangebox 
   - python310-ordered-namespace 
   - python310-ordered-set 
   - python310-orderedmultidict 
@@ -23939,6 +23981,7 @@ unsorted:
   - python310-pyramid-chameleon 
   - python310-pyramid-debugtoolbar 
   - python310-pyramid-mako 
+  - python310-pyreadstat 
   - python310-pyroma 
   - python310-pyroomacoustics 
   - python310-pyroute2 
@@ -24515,6 +24558,7 @@ unsorted:
   - python310-tap.py 
   - python310-targetcli-fb 
   - python310-tasklib 
+  - python310-taskw 
   - python310-tbb 
   - python310-tblib 
   - python310-tcolorpy 
@@ -24858,32 +24902,25 @@ unsorted:
   - python36-djet 
   - python36-doc 
   - python36-doc-devhelp 
-  - python36-github3.py 
   - python36-gmpy2 
   - python36-google-pasta 
   - python36-idle 
   - python36-labelImg 
-  - python36-lzmaffi 
   - python36-mrkd 
   - python36-ntfy 
   - python36-oic 
   - python36-pip-licenses 
   - python36-podman 
   - python36-pony 
-  - python36-pysvn 
   - python36-python-crfsuite 
   - python36-python-prctl 
-  - python36-rarfile 
-  - python36-rarfile-doc 
   - python36-raven-aiohttp 
   - python36-requests-gssapi 
   - python36-sphinx-argparse 
   - python36-starlette 
-  - python36-taskw 
   - python36-testsuite 
   - python36-tk 
   - python36-tools 
-  - python36-twodict 
   - python36-ucsmsdk 
   - python36-uncompyle6 
   - python36-whitenoise 
@@ -25429,6 +25466,7 @@ unsorted:
   - python38-azure-mgmt-network 
   - python38-azure-mgmt-notificationhubs 
   - python38-azure-mgmt-nspkg 
+  - python38-azure-mgmt-oep 
   - python38-azure-mgmt-orbital 
   - python38-azure-mgmt-peering 
   - python38-azure-mgmt-policyinsights 
@@ -26481,7 +26519,6 @@ unsorted:
   - python38-lws 
   - python38-lxml-devel 
   - python38-lz4 
-  - python38-lzmaffi 
   - python38-macholib 
   - python38-magic 
   - python38-magic-wormhole 
@@ -26693,6 +26730,7 @@ unsorted:
   - python38-opt-einsum 
   - python38-orange-canvas-core 
   - python38-orange-widget-base 
+  - python38-orangebox 
   - python38-ordered-namespace 
   - python38-orderedmultidict 
   - python38-osc-tiny 
@@ -27678,7 +27716,6 @@ unsorted:
   - python38-twitter.common.finagle-thrift 
   - python38-twitter.common.lang 
   - python38-twitter.common.rpc 
-  - python38-twodict 
   - python38-twython 
   - python38-txWS 
   - python38-txZMQ 
@@ -28458,6 +28495,7 @@ unsorted:
   - python39-azure-mgmt-network 
   - python39-azure-mgmt-notificationhubs 
   - python39-azure-mgmt-nspkg 
+  - python39-azure-mgmt-oep 
   - python39-azure-mgmt-orbital 
   - python39-azure-mgmt-peering 
   - python39-azure-mgmt-policyinsights 
@@ -29583,7 +29621,6 @@ unsorted:
   - python39-lxml 
   - python39-lxml-devel 
   - python39-lz4 
-  - python39-lzmaffi 
   - python39-macholib 
   - python39-magic 
   - python39-magic-wormhole 
@@ -29809,6 +29846,7 @@ unsorted:
   - python39-opt-einsum 
   - python39-orange-canvas-core 
   - python39-orange-widget-base 
+  - python39-orangebox 
   - python39-ordered-namespace 
   - python39-ordered-set 
   - python39-orderedmultidict 
@@ -30205,6 +30243,7 @@ unsorted:
   - python39-pysrt 
   - python39-pyssim 
   - python39-pystache 
+  - python39-pysvn 
   - python39-pytaglib 
   - python39-pyte 
   - python39-pytesseract 
@@ -30873,7 +30912,6 @@ unsorted:
   - python39-twitter.common.finagle-thrift 
   - python39-twitter.common.lang 
   - python39-twitter.common.rpc 
-  - python39-twodict 
   - python39-twython 
   - python39-txWS 
   - python39-txZMQ 
@@ -32099,6 +32137,7 @@ unsorted:
   - sampler 
   - samplicator 
   - samtools 
+  - samurai 
   - sane-backends-32bit: [x86_64] 
   - sane-backends-devel 
   - sane-backends-devel-32bit: [x86_64] 
@@ -41744,6 +41783,7 @@ unsorted:
   - typelib-1_0-FolksTelepathy-0_7 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
+  - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GFBGraph-0_2 
@@ -41883,6 +41923,7 @@ unsorted:
   - typelib-1_0-XplayerPlParser-1_0 
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
+  - typelib-1_0-Zpj-0_0 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
@@ -42410,7 +42451,6 @@ unsorted:
   - webalizer 
   - webalizer-flags 
   - webcamoid 
-  - webcamoid-devel 
   - webdot 
   - webenginepart 
   - webkit-jsc-4 
