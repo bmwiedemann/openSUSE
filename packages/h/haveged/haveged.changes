@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 15 15:22:09 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to v1.9.17:
+  * Added new verbose mode [Jirka Hladky]
+  * haveged-once.service - use @SBIN_DIR@ instead of hard-coded path [Jirka Hladky]
+
+- Changes for version v1.9.16:
+  * Allow newuname syscall [Jirka Hladky]
+  * Fix: haveged cannot be run as an application if also running as a daemon [Günther Brunthaler]
+  * Add entropy unconditionally at the start and then every 60 seconds [Jirka Hladky]
+  * New parameter --once to refill entropy once and quit immediately [Jirka Hladky]
+  * Added haveged-once.service to provide entropy once (intended for initramfs) [Jirka Hladky]
+
+- Changes for version v1.9.15:
+  * Check for sys/auxv.h before using it. [Peter Seiderer]
+  * fix build on uclibc (origin/pr/58) [Pierre-Jean Texier]
+  * Improved make check tests [Jirka Hladky]
+  * Removed old init.d files. Configs are under contrib directory [Jirka Hladky]
+  * Support for Linux kernel LRNG patch set 
+
+-------------------------------------------------------------------
 Mon Nov 22 08:14:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove ProtectKernelTunables hardening, causes the service to fail
