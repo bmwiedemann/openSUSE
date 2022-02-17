@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 16 22:41:35 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Move kernel{,-devel} requirements to libbcc0 for deduplication.
+- Require additionally kernel-$variant-devel for libbcc0.
+- Declare python3-bcc, bcc-examples and bcc-docs as noarch.
+
+-------------------------------------------------------------------
 Fri Oct  1 02:10:01 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Use shared libbpf library instead of building it along with bcc

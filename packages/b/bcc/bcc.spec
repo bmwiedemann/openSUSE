@@ -66,6 +66,13 @@ added to Linux 3.15. Much of what BCC uses requires Linux 4.1 and above.
 %package -n libbcc0
 Summary:        Shared library from the BPF Compiler Collection
 Group:          System/Libraries
+Requires:       kernel >= 4.1.0
+Requires:       kernel-devel >= 4.1.0
+Requires:       (kernel-debug-devel if kernel-debug)
+Requires:       (kernel-default-devel if (kernel-default or kernel-default-base))
+Requires:       (kernel-kvmsmall-devel if kernel-kvmsmall)
+Requires:       (kernel-pae-devel if kernel-pae)
+Requires:       (kernel-vanilla-devel if kernel-vanilla)
 
 %description -n libbcc0
 Shared Library from the BPF Compiler Collection.
@@ -81,9 +88,8 @@ Headers and pkg-config build descriptions for developing BCC programs.
 %package -n python3-bcc
 Summary:        Python3 bindings for the BPF Compiler Collection
 Group:          Development/Languages/Python
-Requires:       kernel >= 4.1.0
-Requires:       kernel-devel >= 4.1.0
 Requires:       libbcc0 = %{version}
+BuildArch:      noarch
 
 %description -n python3-bcc
 Python 3.x bindings for the BPF Compiler Collection.
@@ -91,8 +97,6 @@ Python 3.x bindings for the BPF Compiler Collection.
 %package lua
 Summary:        Lua interpreter for the BPF Compiler Collection
 Group:          Development/Languages/Other
-Requires:       kernel >= 4.1.0
-Requires:       kernel-devel >= 4.1.0
 Requires:       libbcc0 = %{version}
 
 %description lua
@@ -106,6 +110,7 @@ Requires:       python3-future
 Recommends:     netperf
 Recommends:     python3-netaddr
 Recommends:     python3-pyroute2
+BuildArch:      noarch
 
 %description examples
 Python and C examples from the BPF Compiler Collection.
@@ -124,6 +129,7 @@ Python tracing scripts from the BPF Compiler Collection.
 %package docs
 Summary:        BPF Compiler Collection documentation
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description docs
 Documentation on how to write programs with the BPF Compiler Collection.
