@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 11 14:53:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-vfs2-devel BuildRequires, and no longer pass
+  with-gnomevfs to configure, gnome-vfs2 is deprecated many many
+  years ago, and slated for removal from openSUSE Factory. It is
+  currently only used for associating MIME types (in wxWidgets),
+  and we can live without that.
+
+-------------------------------------------------------------------
 Sat Aug 21 16:20:30 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable building with EGL support: glew is not ready for EGL yet

@@ -1,7 +1,7 @@
 #
 # spec file for package wxWidgets-3_2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,7 +97,6 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  zlib-devel
 %if "%toolkit" == "gtk2"
-BuildRequires:  gnome-vfs2-devel
 BuildRequires:  gtk2-devel
 %endif
 %if "%toolkit" == "gtk3"
@@ -358,7 +357,7 @@ cp %{S:2} .
 
 %build
 autoconf -f -i
-# NOTE: gnome-vfs is deprecated. Disabled for GTK3 build
+# NOTE: gnome-vfs is deprecated. Disabled by default upstream.
 #
 # With 2.9.1:
 # --enable-objc_uniquifying is relevant only for Cocoa
@@ -371,9 +370,6 @@ autoconf -f -i
 	--with-qt \
 %else
 	--with-gtk=%gtk_version \
-%if "%gtk_version" == "2"
-	--with-gnomevfs \
-%endif
 %endif
 	--enable-unicode \
 	--with-opengl \
