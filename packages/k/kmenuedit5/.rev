@@ -1018,4 +1018,12 @@
     <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
     <requestid>951875</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>28cc856c06833bcbbd98899ba0415dd0</srcmd5>
+    <version>5.24.1</version>
+    <time>1645137574</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.1. plasma5-mobile tarball is missing translations, so skipped for now.</comment>
+    <requestid>955229</requestid>
+  </revision>
 </revisionlist>
