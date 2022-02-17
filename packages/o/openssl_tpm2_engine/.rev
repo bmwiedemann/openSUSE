@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>882946</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ad80199cb891a73223211b1cba95f29b</srcmd5>
+    <version>3.1.0</version>
+    <time>1645137629</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release:
+- Update to version 3.1.0
+  * Bandaid openssl-3 support
+  * direct pcr policy creation options
+  * TPM key RFC (forwarded request 955639 from jejb1)</comment>
+    <requestid>955652</requestid>
+  </revision>
 </revisionlist>
