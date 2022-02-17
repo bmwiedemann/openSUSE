@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 17 08:09:45 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1+git.20220208:
+  * mmc-utils: Display STROBE_SUPPORT when printing EXT_CSD
+  * mmc-utils: Remove unused MMC_BLOCK_MAJOR
+  * mmc-utils: manpage: Document -c option for partitioning commands
+  * mmc_cmds: Display BARRIER_CTRL Status when printing EXT_CSD
+  * add README
+
+-------------------------------------------------------------------
 Tue Jan  4 10:12:03 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1+git.20211220:

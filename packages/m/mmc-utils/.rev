@@ -205,4 +205,17 @@
   * mmc-utils: Add note for CMDQ_MODE_EN runtime value</comment>
     <requestid>943731</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>800356cffab650628e0939737539fe32</srcmd5>
+    <version>0.1+git.20220208</version>
+    <time>1645137614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1+git.20220208:
+  * mmc-utils: Display STROBE_SUPPORT when printing EXT_CSD
+  * mmc-utils: Remove unused MMC_BLOCK_MAJOR
+  * mmc-utils: manpage: Document -c option for partitioning commands
+  * mmc_cmds: Display BARRIER_CTRL Status when printing EXT_CSD
+  * add README</comment>
+    <requestid>955580</requestid>
+  </revision>
 </revisionlist>
