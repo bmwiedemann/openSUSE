@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 15 19:18:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * KCM: Workaround unknown Qt issue that causes the revert dialog to be invisible (kde#449560)
+  * [kcm] Only enable revert action when revert sheet is open (kde#449931)
+
+-------------------------------------------------------------------
 Thu Feb 10 14:45:54 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add Requires: xrdb since it's executed when setting
