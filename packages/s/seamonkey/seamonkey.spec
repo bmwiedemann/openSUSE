@@ -46,7 +46,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
 BuildRequires:  yasm
 BuildRequires:  zip
-BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -235,6 +234,7 @@ ac_add_options --disable-tests
 ac_add_options --disable-install-strip
 ac_add_options --enable-release
 ac_add_options --enable-default-toolkit=cairo-gtk3
+ac_add_options --disable-gconf
 
 # Elfhack fails on ix86: https://bugzilla.mozilla.org/show_bug.cgi?id=1706264
 %ifarch ppc %arm %ix86

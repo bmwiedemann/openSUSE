@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 15 23:18:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gconf-2) BuildRequires and pass ac_add_options
+  --disable-gconf to mozconfig. As we already are using cairo-gtk3,
+  gconf support serves no purpose (gio/gsettings takes care).
+
+-------------------------------------------------------------------
 Tue Dec 28 13:01:41 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.10.2
