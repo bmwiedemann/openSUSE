@@ -1,7 +1,7 @@
 #
 # spec file for package python-pony
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() ython3-%{**}}
+%global skip_python2 1
 Name:           python-pony
-Version:        0.7.14
+Version:        0.7.16
 Release:        0
 Summary:        Pony Object-Relational Mapper
 License:        Apache-2.0
@@ -41,7 +42,8 @@ Pony then analyzes the abstract syntax tree of a generator and
 translates it to its SQL equivalent.
 
 %prep
-%setup -q -n pony-%{version}
+%autosetup -p1 -n pony-%{version}
+rm -rf pony/thirdparty/compiler
 dos2unix README.md
 
 %build
