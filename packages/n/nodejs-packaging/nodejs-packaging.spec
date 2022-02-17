@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-packaging
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Node.js Dependency generators for openSUSE
 License:        MIT
 Group:          Development/Languages/NodeJS
-Url:            https://github.com/marguerite/nodejs-packaging
+URL:            https://github.com/marguerite/nodejs-packaging
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       gcc-c++
@@ -56,15 +56,16 @@ for openSUSE.
 %build
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/npkg
 mkdir -p %{buildroot}%{_rpmconfigdir}/{nodejs,fileattrs}
 # 13.2's nodejs-devel package has a /etc/rpm/macros.nodejs
 %if 0%{?suse_version} == 1320
+mkdir -p %{buildroot}%{_sysconfdir}/rpm
 install -m0644 macros.nodejs %{buildroot}%{_sysconfdir}/rpm/macros.%{name}
 %else
-install -m0644 macros.nodejs %{buildroot}%{_sysconfdir}/rpm/macros.nodejs
+mkdir -p %{buildroot}%{_rpmmacrodir}
+install -m0644 macros.nodejs %{buildroot}%{_rpmmacrodir}/macros.nodejs
 %endif
 cp -r nodejs/* %{buildroot}%{_rpmconfigdir}/nodejs
 cp -r tool/* %{buildroot}%{_datadir}/npkg
@@ -87,7 +88,7 @@ install -m0755 nodejs-symlink-deps.rb %{buildroot}%{_rpmconfigdir}/nodejs-symlin
 %if 0%{?suse_version} == 1320
 %config %{_sysconfdir}/rpm/macros.%{name}
 %else
-%config %{_sysconfdir}/rpm/macros.nodejs
+%{_rpmmacrodir}/macros.nodejs
 %endif
 %if 0%{?suse_version} == 1110
 %dir %{_rpmconfigdir}/fileattrs
