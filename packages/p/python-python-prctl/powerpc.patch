@@ -1,7 +1,8 @@
-diff -ur python-prctl-1.7.orig/test_prctl.py python-prctl-1.7/test_prctl.py
---- python-prctl-1.7.orig/test_prctl.py	2020-09-07 11:09:38.544700725 +0200
-+++ python-prctl-1.7/test_prctl.py	2020-09-07 12:28:11.482301401 +0200
-@@ -44,6 +44,8 @@
+Index: python-prctl-1.8.1/test_prctl.py
+===================================================================
+--- python-prctl-1.8.1.orig/test_prctl.py
++++ python-prctl-1.8.1/test_prctl.py
+@@ -45,6 +45,8 @@ def require(attr):
  class PrctlTest(unittest.TestCase):
      # There are architecture specific tests
      arch = os.uname()[4]
@@ -10,7 +11,7 @@ diff -ur python-prctl-1.7.orig/test_prctl.py python-prctl-1.7/test_prctl.py
      # prctl behaviour differs when root, so you should test as root and non-root
      am_root = os.geteuid() == 0
  
-@@ -110,6 +112,7 @@
+@@ -111,6 +113,7 @@ class PrctlTest(unittest.TestCase):
          self.assertEqual(prctl.get_dumpable(), False)
          self.assertRaises(TypeError, prctl.get_dumpable, "42")
  
@@ -18,7 +19,7 @@ diff -ur python-prctl-1.7.orig/test_prctl.py python-prctl-1.7/test_prctl.py
      def test_endian(self):
          """Test manipulation of the endianness setting"""
          if self.arch == 'powerpc':
-@@ -136,13 +139,55 @@
+@@ -137,13 +140,55 @@ class PrctlTest(unittest.TestCase):
              self.assertRaises(OSError, prctl.get_fpemu)
              self.assertRaises(OSError, prctl.set_fpemu, prctl.FPEMU_SIGFPE)
  

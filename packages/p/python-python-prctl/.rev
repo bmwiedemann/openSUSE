@@ -31,4 +31,20 @@
     <comment></comment>
     <requestid>844474</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68a3b794debf0cf2ca527313db4e5ce3</srcmd5>
+    <version>1.8.1</version>
+    <time>1645137610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+  * No changelog.
+- Rebase all patches.
+- Add patch correct-uname-comparsion.patch:
+  * Support Linux &gt;= 5.10 correctly.
+- Add patch check-for-python310-correctly.patch:
+  * Check for Python 3.10 correctly.
+- Add patch skip-speculation.patch:
+  * Skip a test that does not work in the OBS sandbox.</comment>
+    <requestid>955548</requestid>
+  </revision>
 </revisionlist>

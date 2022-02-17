@@ -1,16 +1,16 @@
-Index: python-prctl-1.7/_prctlmodule.c
+Index: python-prctl-1.8.1/_prctlmodule.c
 ===================================================================
---- python-prctl-1.7.orig/_prctlmodule.c
-+++ python-prctl-1.7/_prctlmodule.c
-@@ -50,6 +50,7 @@ prctl_prctl(PyObject *self, PyObject *ar
- {
+--- python-prctl-1.8.1.orig/_prctlmodule.c
++++ python-prctl-1.8.1/_prctlmodule.c
+@@ -51,6 +51,7 @@ prctl_prctl(PyObject *self, PyObject *ar
      long option = 0;
      long arg = 0;
+     long arg2 = 0;
 +    int intarg = 0;
      char *argstr = NULL;
      char name[17] = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
      int result;
-@@ -286,12 +287,12 @@ prctl_prctl(PyObject *self, PyObject *ar
+@@ -378,12 +379,12 @@ prctl_prctl(PyObject *self, PyObject *ar
  #ifdef PR_GET_TID_ADDRESS
          case(PR_GET_TID_ADDRESS):
  #endif

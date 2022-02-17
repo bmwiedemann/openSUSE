@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-prctl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-prctl
-Version:        1.7
+Version:        1.8.1
 Release:        0
 Summary:        Python(ic) interface to the linux prctl syscall
 License:        GPL-3.0-or-later
@@ -30,6 +30,9 @@ Patch1:         memory_failure_early_kill.patch
 Patch2:         bigendian.patch
 Patch3:         powerpc.patch
 Patch4:         disable_no_new_privs.patch
+Patch5:         correct-uname-comparsion.patch
+Patch6:         check-for-python310-correctly.patch
+Patch7:         skip-speculation.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,8 +53,7 @@ Besides prctl, this library also wraps libcap for complete capability handling
 and allows you to set the process name as seen in ps and top.
 
 %prep
-%setup -q -n python-prctl-%{version}
-%autopatch -p1
+%autosetup -p1 -n python-prctl-%{version}
 cp %{SOURCE99} .
 
 %build

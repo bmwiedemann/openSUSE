@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 17 05:33:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.1:
+  * No changelog.
+- Rebase all patches.
+- Add patch correct-uname-comparsion.patch:
+  * Support Linux >= 5.10 correctly.
+- Add patch check-for-python310-correctly.patch:
+  * Check for Python 3.10 correctly.
+- Add patch skip-speculation.patch:
+  * Skip a test that does not work in the OBS sandbox.
+
+-------------------------------------------------------------------
 Tue Oct 27 09:54:52 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Disable test of no_new_privs with disable_no_new_privs.patch
