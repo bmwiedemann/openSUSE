@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 10 11:27:57 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.025:
+  * Allow headquarter be in HA subsidiary handling (#255)
+  * Stat log after render (#256)
+  * Add SMALL_FILE_SIZE to serve small files directly from ROOT_NFS (#254)
+
+-------------------------------------------------------------------
+Thu Feb 03 09:23:28 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.024:
+  * Allow multiple subsidiaries per region (#250)
+  * Add internal timeouts for mirror checks and rendering (#249, #252)
+
+-------------------------------------------------------------------
 Thu Jan 20 07:46:09 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.023:
