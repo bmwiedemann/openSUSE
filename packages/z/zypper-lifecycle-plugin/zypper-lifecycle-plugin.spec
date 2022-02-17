@@ -1,7 +1,7 @@
 #
 # spec file for package zypper-lifecycle-plugin
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
 
 Source:         zypper-lifecycle-%{version}.tar.xz
+Patch0:	harden_lifecycle-report.service.patch
 Summary:        Zypper subcommand for lifecycle information
 License:        GPL-2.0
 Group:          System/Packages
@@ -46,6 +47,7 @@ Zypper subcommand for products and packages lifecycle information.
 
 %prep
 %setup -q -n zypper-lifecycle-%{version}
+%patch0 -p1
 
 %build
 

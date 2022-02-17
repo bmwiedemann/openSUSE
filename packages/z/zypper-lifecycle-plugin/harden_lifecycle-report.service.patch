@@ -1,0 +1,22 @@
+Index: zypper-lifecycle-0.6.1601367426.843fe7a/lifecycle-report.service
+===================================================================
+--- zypper-lifecycle-0.6.1601367426.843fe7a.orig/lifecycle-report.service
++++ zypper-lifecycle-0.6.1601367426.843fe7a/lifecycle-report.service
+@@ -2,5 +2,17 @@
+ Description=Report changes in product/package lifecycle
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ ExecStart=/usr/share/lifecycle/lifecycle-report
