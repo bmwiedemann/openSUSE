@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 16 14:38:50 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 0.7.18+30:
+  * libappstream-builder: Fix file paths in icon tarball
+
+-------------------------------------------------------------------
+Tue Feb 15 16:43:07 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 0.7.18+29:
+  * Updated translations.
+- Improve _service file to handle to drop +0 in versions for when
+  we are exactly on a tag.
+
+-------------------------------------------------------------------
 Tue Feb 08 15:58:58 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.7.18+28:

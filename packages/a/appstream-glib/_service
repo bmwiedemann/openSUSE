@@ -3,10 +3,10 @@
     <param name="url">https://github.com/hughsie/appstream-glib.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">appstream_glib_(\d+)_(\d+)_(\d+)</param>
-    <param name="versionrewrite-replacement">\1.\2.\3</param>
+    <param name="versionrewrite-pattern">appstream_glib_(\d+)_(\d+)_(\d+)(\+0)?(\+[1-9][0-9]*)?</param>
+    <param name="versionrewrite-replacement">\1.\2.\3\5</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">004a4e60e2433c404e7c36b94770c94e592db0fc</param>
+    <param name="revision">349799ba1d026a18012520b9f2e1901a88ac467b</param>
 <!--
     <param name="revision">refs/tags/appstream_glib_0_7_18</param>
 -->
