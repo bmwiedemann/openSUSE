@@ -2,17 +2,7 @@ Index: scintilla/gtk/makefile
 ===================================================================
 --- scintilla.orig/gtk/makefile
 +++ scintilla/gtk/makefile
-@@ -50,7 +50,8 @@ ifndef windir
- BASE_FLAGS += -fPIC
- endif
- 
--LDFLAGS += -dynamiclib
-+# Only macOS needs/supports -dynamiclib
-+# LDFLAGS += -dynamiclib
- LDFLAGS += -shared
- 
- # Take care of changing Unix style '/' directory separator to '\' on Windows
-@@ -66,7 +67,7 @@ DEL = del /q
+@@ -68,7 +68,7 @@ DEL = del /q
  else
  DEL = rm -f
  endif
@@ -21,7 +11,7 @@ Index: scintilla/gtk/makefile
  COMPONENT=$(basedir)/bin/libscintilla.$(SHAREDEXTENSION)
  
  vpath %.h $(srcdir) $(basedir)/src $(basedir)/include
-@@ -82,12 +83,12 @@ DEFINES += -DNO_CXX11_REGEX
+@@ -84,12 +84,12 @@ DEFINES += -DNO_CXX11_REGEX
  endif
  
  DEFINES += -D$(if $(DEBUG),DEBUG,NDEBUG)
@@ -36,12 +26,10 @@ Index: scintilla/gtk/makefile
  CONFIGLIB:=$(shell $(PKG_CONFIG) --libs $(GTK_VERSION) gmodule-no-export-2.0)
  MARSHALLER=scintilla-marshal.o
  
-@@ -161,8 +162,7 @@ GTK_OBJS = \
- 	ScintillaGTKAccessible.o
- 
- $(COMPLIB): $(SRC_OBJS) $(GTK_OBJS) $(MARSHALLER) $(LEX_OBJS)
--	$(AR) $(ARFLAGS) $@ $^
--	$(RANLIB) $@
+@@ -163,6 +163,7 @@ GTK_OBJS = \
+ $(COMPLIB): $(SRC_OBJS) $(GTK_OBJS) $(MARSHALLER)
+ 	$(AR) $(ARFLAGS) $@ $^
+ 	$(RANLIB) $@
 +	libtool --mode=link gcc $(CONFIGFLAGS) -o $@ $^ -rpath $(LIBDIR) $(CONFIGLDFLAGS) -version-info $(VERSION)
  
  $(COMPONENT): $(SRC_OBJS) $(GTK_OBJS) $(MARSHALLER)

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 17 10:41:09 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Revert to defining tar_ver macro literally to allow
+  source_validator and similar services to work with sources.
+
+-------------------------------------------------------------------
+Mon Feb 14 20:52:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.0:
+  * Add multithreaded layout to significantly improve performance
+    for very wide lines. Feature #1427.
+  * Made compatible with Qt 6.
+  * Fix potential issue with length of buffer for string returning
+    APIs in ScintillaEdit on Qt.
+  * Fix inaccurate scroll bar when there are annotations and
+    wrapping of inserted or deleted text changes number of screen
+    lines. Feature #1422.
+  * Allow choice of object file directory with makefile by setting
+    DIR_O. Bug #2306.
+  * On GTK, use fractional positioning to help Chinese characters
+    in monospaced fonts line up better with roman characters. Bug
+    #2310.
+- Rebase scintilla-shared.patch to apply cleanly.
+- Ensure consistent definitions between packager defined macros,
+  with less possibility for mismatch.
+
+-------------------------------------------------------------------
 Fri Dec 24 21:59:51 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.1.5:
