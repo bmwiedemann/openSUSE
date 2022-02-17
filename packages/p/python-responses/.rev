@@ -212,4 +212,25 @@
   * Fixed failing test in python 2.7 when `python-future` is also installed.</comment>
     <requestid>934531</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>730538873ef0dde131f98ca02cf13c5e</srcmd5>
+    <version>0.17.0</version>
+    <time>1645137601</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.0:
+  * This release is the last to support Python 2.7.
+  * Fixed issue when `response.iter_content` when `chunk_size=None` entered infinite loop
+  * Fixed issue when `passthru_prefixes` persisted across tests.
+    Now `add_passthru` is valid only within a context manager or for a single function and
+    cleared on exit
+  * Deprecate `match_querystring` argument in `Response` and `CallbackResponse`.
+    Use `responses.matchers.query_param_matcher` or `responses.matchers.query_string_matcher`
+  * Added support for non-UTF-8 bytes in `responses.matchers.multipart_matcher`
+  * Added `responses.registries`. Now user can create custom registries to
+    manipulate the order of responses in the match algorithm
+    `responses.activate(registry=CustomRegistry)`
+  * Fixed issue with response match when requests were performed between adding responses with
+    same URL. See Issue #212</comment>
+    <requestid>955500</requestid>
+  </revision>
 </revisionlist>
