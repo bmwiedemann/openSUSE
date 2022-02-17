@@ -1,7 +1,7 @@
 #
 # spec file for package rook
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,7 @@ See https://github.com/rook/rook for more information.
 ################################################################################
 # Rook FlexVolume driver metadata
 ################################################################################
+
 %package rookflex
 Summary:        Rook FlexVolume driver
 Group:          System/Filesystems
@@ -82,6 +83,7 @@ operations.
 ################################################################################
 # Rook and Ceph manifests metadata
 ################################################################################
+
 %package k8s-yaml
 Summary:        Kubernetes YAML file manifests for deploying a Ceph cluster
 Group:          System/Management
@@ -95,6 +97,7 @@ Rook-Ceph operator and Ceph clusters in a Kubernetes cluster.
 ################################################################################
 # Rook ceph operator helm charts
 ################################################################################
+
 %package ceph-helm-charts
 Summary:        Rook Ceph operator helm charts
 Group:          System/Management
@@ -112,6 +115,7 @@ This package contains Helm Charts for Rook.
 ################################################################################
 # Rook integration test binary metadata
 ################################################################################
+
 %package integration
 Summary:        Application which runs Rook integration tests
 Group:          System/Benchmark
@@ -328,19 +332,19 @@ echo -n %{ceph_csi_image} > %{rook_integration_dir}/ceph-csi-image-name
 # Specify which files we built belong to each package
 ################################################################################
 %files
-%defattr(-,root,root,-)
 %{_bindir}/rook
 %{_bindir}/toolbox.sh
 %config %{_sysconfdir}/ceph-csi
+
 # Due to upstream's use of /usr/local/bin in their example yamls, create
 # symlinks to avoid a difficult to find configuration problem
 %post
-[[ -e /usr/local/bin/toolbox.sh ]] || ln -s %{_bindir}/toolbox.sh /usr/local/bin/toolbox.sh
-[[ -e /usr/local/bin/rook ]] || ln -s %{_bindir}/rook /usr/local/bin/rook
+[ -e %{_prefix}/local/bin/toolbox.sh ] || ln -s %{_bindir}/toolbox.sh %{_prefix}/local/bin/toolbox.sh
+[ -e %{_prefix}/local/bin/rook ] || ln -s %{_bindir}/rook %{_prefix}/local/bin/rook
 
 %postun
-[[ -e /usr/local/bin/toolbox.sh ]] && rm /usr/local/bin/toolbox.sh
-[[ -e /usr/local/bin/rook ]] && rm /usr/local/bin/rook
+[ -e %{_prefix}/local/bin/toolbox.sh ] && rm %{_prefix}/local/bin/toolbox.sh
+[ -e %{_prefix}/local/bin/rook ] && rm %{_prefix}/local/bin/rook
 
 %files rookflex
 %{_bindir}/rookflex
