@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openjdk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -198,7 +198,6 @@ Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 Patch3000:      tls13extensions.patch
 Patch4000:      riscv64-zero.patch
-Patch5000:      comment-nss-security-provider.patch
 Patch5001:      fips.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -455,7 +454,7 @@ sh autogen.sh
         --with-tzdata-dir=%{_datadir}/javazi \
         --with-pkgversion="build %{javaver}_%{updatever}-b%{buildver} suse-%{release}-%{_arch}" \
         --with-jdk-home="%{_sysconfdir}/alternatives/java_sdk" \
-        --enable-nss \
+        --disable-nss \
         --enable-sysconf-nss \
         --enable-non-nss-curves \
 %if %{with bootstrap}
@@ -542,7 +541,6 @@ patch -p0 -i %{PATCH3000}
 
 patch -p0 -i %{PATCH4000}
 
-patch -p0 -i %{PATCH5000}
 patch -p0 -i %{PATCH5001}
 
 (cd openjdk/common/autoconf

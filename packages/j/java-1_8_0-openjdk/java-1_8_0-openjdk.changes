@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  9 14:51:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * comment-nss-security-provider.patch
+    + there is a configure-time option to do exactly the same thing
+- Modified patch:
+  * fips.patch
+    + allow plain key import, unless disabled with
+      -Dcom.suse.fips.plainKeySupport=false command-line option
+
+-------------------------------------------------------------------
 Sat Dec  4 07:23:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
