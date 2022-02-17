@@ -910,4 +910,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
     <requestid>951864</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>aa27ed1bfcf4ed11a5e61aa396671f72</srcmd5>
+    <version>5.24.1</version>
+    <time>1645137568</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.1. plasma5-mobile tarball is missing translations, so skipped for now.</comment>
+    <requestid>955218</requestid>
+  </revision>
 </revisionlist>
