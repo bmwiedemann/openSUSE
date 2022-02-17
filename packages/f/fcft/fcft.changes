@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 16 09:19:13 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Leap 15.4 uses python3.6 so the python3-dataclasses is
+  BuildRequired. Also, gcc-11 is enforced in Leap since gcc7 which
+  is used by default is too old
+
+-------------------------------------------------------------------
 Sat Feb  5 22:26:44 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 3.0.1:

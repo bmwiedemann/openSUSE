@@ -25,6 +25,10 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://codeberg.org/dnkl/fcft
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+%if 0%{?sle_version} >= 150400
+BuildRequires:  gcc11
+BuildRequires:  python3-dataclasses
+%endif
 BuildRequires:  meson >= 0.54
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -61,6 +65,9 @@ of FontConfig, FreeType2 and pixman.
 %autosetup -n %{name}
 
 %build
+%if 0%{?sle_version} >= 150400
+export CC=gcc-11
+%endif
 %meson
 %meson_build
 
