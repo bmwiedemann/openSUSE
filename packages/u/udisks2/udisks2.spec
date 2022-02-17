@@ -33,7 +33,6 @@ Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar
 BuildRequires:  chrpath
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel >= 0.6.2
-BuildRequires:  gtk-doc
 BuildRequires:  libacl-devel
 BuildRequires:  libblockdev-btrfs-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-crypto-devel >= %{libblockdev_version}
@@ -205,7 +204,7 @@ sed -i udisks/udisks2.conf.in -e "s/encryption=luks1/encryption=%{default_luks_e
 %build
 %configure \
 	--disable-static \
-	--enable-gtk-doc \
+	--disable-gtk-doc \
 	--docdir=%{_docdir}/%{name} \
 	--enable-bcache \
 	--enable-btrfs \

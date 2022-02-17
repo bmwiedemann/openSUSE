@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 31 15:28:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gtk-doc BuildRequires, and pass disable-gtk-doc to
+  configure, the included gtk-docs are fine, we do not need to
+  build them ourselves.
+
+-------------------------------------------------------------------
 Thu Jan 27 08:00:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop packaging libudisks_vdo standalone module, it is deprecated.
