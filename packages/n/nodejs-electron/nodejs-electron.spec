@@ -17,6 +17,8 @@
 #
 
 
+%undefine _package_note_file
+
 %define mod_name electron
 ExcludeArch:    %{ix86} %{arm}
 %ifarch x86_64
@@ -63,13 +65,9 @@ ExcludeArch:    %{ix86} %{arm}
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
 %endif
-%if 0%{?suse_version}
 %bcond_without system_ffmpeg
-%else
-%bcond_with system_ffmpeg
-%endif
 Name:           nodejs-electron
-Version:        16.0.8
+Version:        16.0.9
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -122,6 +120,7 @@ Patch25:        electron-16-system-node-headers.patch
 # Fix collections import with python 3.10
 Patch26:        electron-16-node-fix-python3.10-import.patch
 %endif
+Patch27:        electron-16-freetype-visibility-list.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison

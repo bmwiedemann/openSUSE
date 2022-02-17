@@ -1,0 +1,12 @@
+Index: electron-16.0.9/build/linux/BUILD.gn
+===================================================================
+--- electron-16.0.9.orig/build/linux/BUILD.gn	2022-02-16 17:58:59.257168135 +0100
++++ electron-16.0.9/build/linux/BUILD.gn	2022-02-16 20:08:06.841364040 +0100
+@@ -25,6 +25,7 @@ if (use_system_freetype) {
+     visibility = [
+       "//third_party:freetype_harfbuzz",
+       "//third_party/harfbuzz-ng:harfbuzz_source",
++      "//build/config/freetype:freetype",
+     ]
+     packages = [ "freetype2" ]
+   }

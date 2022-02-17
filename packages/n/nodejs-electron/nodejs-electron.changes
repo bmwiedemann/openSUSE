@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 16 19:09:22 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building with newer gn
+  * Added electron-16-freetype-visibility-list.patch
+
+-------------------------------------------------------------------
+Wed Feb 16 17:39:31 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 16.0.9
+  * https://github.com/electron/electron/releases/tag/v16.0.9
+
+-------------------------------------------------------------------
 Thu Feb  3 06:41:18 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 16.0.8
