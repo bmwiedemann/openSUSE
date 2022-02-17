@@ -28,7 +28,11 @@ URL:            https://github.com/Alexays/Waybar
 #Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
 Source:         %{version}.tar.xz
 BuildRequires:  cmake
+%if 0%{?sle_version} >= 150400
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++ >= 8
+%endif
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -86,6 +90,9 @@ This package provides the upstream look and feel for sway.
 %autosetup -p1 -n Waybar-%{version}
 
 %build
+%if 0%{?sle_version} >= 150400
+export CXX=g++-11
+%endif
 %meson -Dsndio=disabled
 %meson_build
 
