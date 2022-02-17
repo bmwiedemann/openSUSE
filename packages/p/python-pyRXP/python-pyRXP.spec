@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python2 1
 Name:           python-pyRXP
 Version:        3.0.1
 Release:        0

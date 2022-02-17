@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 17 14:12:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable python2 builds: no longer supported by upstream.
+
+-------------------------------------------------------------------
 Thu Jan 20 18:59:54 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.1:
