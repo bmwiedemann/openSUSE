@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 15 19:18:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * Search in /usr/local/sbin:/usr/sbin:/sbin as fallback (kde#449792)
+- Drop patches, now upstream
+  * 0001-Search-in-usr-local-sbin-usr-sbin-sbin-as-fallback.patch
+
+-------------------------------------------------------------------
 Wed Feb  9 16:09:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Change patch to also search in /sbin:

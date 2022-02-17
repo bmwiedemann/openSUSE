@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           kinfocenter5
-Version:        5.24.0
+Version:        5.24.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,13 +33,11 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         kinfocenter-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
 %if %{with released}
-Source1:        kinfocenter-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Search-in-usr-local-sbin-usr-sbin-sbin-as-fallback.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0002-Look-for-binaries-in-Mesa-demos-path-as-well.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
