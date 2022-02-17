@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Feb 16 18:27:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to v1.6.3:
+  * Bug fixes:
+    - fix uninitialized default_vals being passed to gpiod_LineBulk_request()
+      in Python bindings
+    - fix building C++ bindings with clang
+    - fix one of the line request test cases
+- Update to v1.6.2:
+  * Improvements:
+    - allow to build the library with pre linux v5.5 kernel headers
+- Update to v1.6.1:
+  * Bug fixes:
+    - fix incorrect object size of gpiod.LineBulk in Python bindings
+    - fix a crash in Line.request() when it's called without keyword arguments
+- Update to v1.6:
+  * New features:
+    - add a standardized '__version__' module attribute in Python bindings
+    - print the bias flags info (if set) in gpioinfo
+  * Improvements:
+    - remove unnecessary indirection in free_dirs() in iterator code
+    - put all ABI versions next to one another in configure.ac
+    - improve std namespace resolution in C++ bindings
+    - add more checks for non-standard functions in configure.ac
+    - various code size improvements
+    - enforce gnu89 C standard in makefiles
+    - many documentation improvements
+    - unduplicate signalfd() handling in tools
+    - fix a forward declaration for line_event in C++ bindings
+  * Bug fixes:
+    - relax is_gpiochip_cdev() for symbolic links
+    - make gpiod_line_get_value_bulk() work for bulks of lines requested for
+      events, not only those requested for values
+    - fix regex patterns for timestamps in gpiomon test cases
+    - remove leftover asserts from tests
+    - fix unit conversion in event timestamp calculation in C++ bindings
+    - fix reading subset of available events in core library
+- Use %autosetup
+- Mention soversions in %files
+- Fix build with tests disabled
+
+-------------------------------------------------------------------
 Fri Apr 17 13:54:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to v1.5.1:

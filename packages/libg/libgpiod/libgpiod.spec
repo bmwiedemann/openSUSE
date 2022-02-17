@@ -1,7 +1,7 @@
 #
 # spec file for package libgpiod
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define libgpiod_soversion 2
 %define libgpiodcxx_soversion 1
 %define libgpiomockup_soversion 0
-# Tests are only available for kernel 5.5+ (so TW only)
-%if 0%{?suse_version} > 1500
+# Tests are only available for kernel 5.5+ (so TW and 15.4+ only)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without libgpiod_tests
 %else
 %bcond_with libgpiod_tests
 %endif
 Name:           libgpiod
-Version:        1.5.1
+Version:        1.6.3
 Release:        0
 Summary:        C library and tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
@@ -41,14 +41,14 @@ BuildRequires:  gcc-c++
 BuildRequires:  libkmod-devel
 BuildRequires:  libtool
 BuildRequires:  make
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.5
 %if %{with libgpiod_tests}
 BuildRequires:  Catch2-devel
 BuildRequires:  glib2-devel >= 2.50
 BuildRequires:  kernel-devel >= 5.5
 BuildRequires:  pkgconfig(libudev)
 %else
-BuildRequires:  kernel-devel >= 5.5
+BuildRequires:  kernel-devel >= 4.8
 %endif
 
 %description
@@ -136,7 +136,7 @@ GPIO sysfs interface in Linux 4.8.
 Python binding part.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./autogen.sh
@@ -153,10 +153,13 @@ make %{?_smp_mflags}
 %make_install
 rm -rf %{buildroot}%{_libdir}/*.{a,la}
 rm -rf %{buildroot}%{python3_sitearch}/*.{a,la}
+
+%if %{with libgpiod_tests}
 # Fix scripts interpreters
 sed -i 's#%{_bindir}/env bash#/bin/bash#' %{buildroot}/%{_bindir}/gpio-tools-test
 sed -i 's#%{_bindir}/env bats#%{_bindir}/bats#' %{buildroot}/%{_bindir}/gpio-tools-test.bats
 sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' %{buildroot}/%{_bindir}/gpiod_py_test.py
+%endif
 
 %post -n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
 %postun -n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
@@ -172,14 +175,17 @@ sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' %{buildroot}/%{_bindir}/gp
 %{_bindir}/gpio*
 
 %files -n libgpiod%{libgpiod_soversion}
-%{_libdir}/libgpiod.so.*
+%{_libdir}/libgpiod.so.%{libgpiod_soversion}
+%{_libdir}/libgpiod.so.%{libgpiod_soversion}.*
 
 %files -n libgpiodcxx%{libgpiodcxx_soversion}
-%{_libdir}/libgpiodcxx.so.*
+%{_libdir}/libgpiodcxx.so.%{libgpiodcxx_soversion}
+%{_libdir}/libgpiodcxx.so.%{libgpiodcxx_soversion}.*
 
 %if %{with libgpiod_tests}
 %files -n libgpiomockup%{libgpiomockup_soversion}
-%{_libdir}/libgpiomockup.so.*
+%{_libdir}/libgpiomockup.so.%{libgpiomockup_soversion}
+%{_libdir}/libgpiomockup.so.%{libgpiomockup_soversion}.*
 %endif
 
 %files devel
