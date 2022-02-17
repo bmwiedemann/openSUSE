@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 15 19:18:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * fixup! app/SettingsBase: Only load current view on startup
+  * app/SettingsBase: Show the main window before QML component is loaded
+  * app/SettingsBase: Only load current view on startup
+
+-------------------------------------------------------------------
 Sat Feb  5 19:51:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.0
