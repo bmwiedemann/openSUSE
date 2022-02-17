@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Feb 17 05:33:35 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.1.0~6:
+  * Add pool.json
+  * Add inotify watcher
+
+-------------------------------------------------------------------
+Wed Feb 16 08:02:12 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.1.0~4:
+  * Improve journald output messages
+
+-------------------------------------------------------------------
+Wed Feb 16 07:04:47 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Initial package
