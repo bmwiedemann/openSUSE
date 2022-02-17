@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 16 02:08:23 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update package description to help users choose what tooling
+  to install.
+
+-------------------------------------------------------------------
 Mon Jan 17 10:56:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide rust+cargo by cargo: all cargo<n> package provide this
