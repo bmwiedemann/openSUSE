@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 17 19:27:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tree 2.0.2:
+  * stddata option now requires STDDATA_FD to be set
+  * Fix HTML url output issue
+  * Fix an error with * in the patchmatch code where *foo*bar
+    would match *foo alone
+
+-------------------------------------------------------------------
 Tue Jan  4 19:05:56 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tree 2.0.1:
