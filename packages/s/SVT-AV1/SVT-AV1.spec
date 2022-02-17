@@ -77,7 +77,8 @@ This package contains the header files for svt-av1.
 %autosetup -p1 -n %{name}-v%{version}
 
 %build
-%cmake
+# See https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/1714
+%cmake -DDISABLE_REALTIME=ON
 %cmake_build
 
 %install

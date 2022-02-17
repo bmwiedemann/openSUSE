@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 16 10:01:52 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Disable forced realtime scheduler priority
+  By default, the encoder library will attempt to set realtime
+  scheduler priority. Disable this behavior, as it serves no
+  practical purpose (video encoding does not benefit from reduced
+  process latency) and will only make the system unresponsive.
+  (Additionally, it is arguably not a video encoder library’s job
+  to manage scheduler priorities for the calling process.)
+  See https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/1714
+
+-------------------------------------------------------------------
 Wed Jan 26 08:27:06 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to 0.9.0
