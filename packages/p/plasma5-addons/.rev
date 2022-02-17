@@ -1040,4 +1040,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.24 respun tars (again) for URL changes (not built yet) (forwarded request 952125 from Vogtinator)</comment>
     <requestid>952128</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>99d53e119caa58fde17f84bceaaaf303</srcmd5>
+    <version>5.24.1</version>
+    <time>1645137583</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.1. plasma5-mobile tarball is missing translations, so skipped for now.</comment>
+    <requestid>955253</requestid>
+  </revision>
 </revisionlist>
