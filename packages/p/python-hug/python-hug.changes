@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 17 12:13:03 UTC 2022 - pgajdos@suse.com
+
+- fix hug/api.py to work with python 3.10
+
+-------------------------------------------------------------------
 Wed Dec 15 09:04:13 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build

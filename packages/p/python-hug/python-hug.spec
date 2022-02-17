@@ -1,7 +1,7 @@
 #
 # spec file for package python-hug
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,8 @@ The hug library helps to create Python APIs for multiple interfaces.
 %setup -q -n hug-%{revision}
 # https://github.com/hugapi/hug/issues/895
 sed -i 's:pytest-runner:pytest:' setup.py
+# https://github.com/hugapi/hug/issues/902
+sed -i 's:, loop=loop::' hug/api.py
 
 %build
 %python_build
