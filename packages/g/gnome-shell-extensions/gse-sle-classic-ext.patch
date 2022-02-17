@@ -1,7 +1,7 @@
-Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
+Index: gnome-shell-extensions-41.2/extensions/window-list/extension.js
 ===================================================================
---- gnome-shell-extensions-41.0.orig/extensions/window-list/extension.js
-+++ gnome-shell-extensions-41.0/extensions/window-list/extension.js
+--- gnome-shell-extensions-41.2.orig/extensions/window-list/extension.js
++++ gnome-shell-extensions-41.2/extensions/window-list/extension.js
 @@ -177,6 +177,9 @@ class WindowTitle extends St.BoxLayout {
      }
  });
@@ -46,7 +46,7 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
  
          this._appSystem = Shell.AppSystem.get_default();
          this._appStateChangedId = this._appSystem.connect(
-@@ -839,7 +846,8 @@ class WindowList extends St.Widget {
+@@ -842,7 +849,8 @@ class WindowList extends St.Widget {
          let workspacesOnMonitor = this._monitor === Main.layoutManager.primaryMonitor ||
                                    !this._mutterSettings.get_boolean('workspaces-only-on-primary');
  
@@ -56,7 +56,7 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
      }
  
      _updateWindowListVisibility() {
-@@ -875,6 +883,9 @@ class WindowList extends St.Widget {
+@@ -878,6 +886,9 @@ class WindowList extends St.Widget {
      }
  
      _getMaxWindowListWidth() {
@@ -66,7 +66,7 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
          let indicatorsBox = this._workspaceIndicator.get_parent();
          return this.width - indicatorsBox.get_preferred_width(-1)[1];
      }
-@@ -1075,7 +1086,8 @@ class WindowList extends St.Widget {
+@@ -1047,7 +1058,8 @@ class WindowList extends St.Widget {
          this._mutterSettings.disconnect(this._workspacesOnlyOnPrimaryChangedId);
          this._mutterSettings.disconnect(this._dynamicWorkspacesChangedId);
  
@@ -76,7 +76,7 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
  
          Main.ctrlAltTabManager.removeGroup(this);
  
-@@ -1116,6 +1128,7 @@ class Extension {
+@@ -1090,6 +1102,7 @@ class Extension {
  
          this._windowLists = null;
          this._hideOverviewOrig = Main.overview.hide;
@@ -84,7 +84,7 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
      }
  
      enable() {
-@@ -1135,19 +1148,51 @@ class Extension {
+@@ -1109,19 +1122,51 @@ class Extension {
              this._hideOverviewOrig.call(Main.overview);
          };
  
@@ -140,7 +140,7 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
      }
  
      disable() {
-@@ -1161,6 +1206,11 @@ class Extension {
+@@ -1135,6 +1180,11 @@ class Extension {
          this._monitorsChangedId = 0;
  
          this._windowLists.forEach(windowList => {
@@ -152,7 +152,7 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
              windowList.hide();
              windowList.destroy();
          });
-@@ -1169,6 +1219,11 @@ class Extension {
+@@ -1143,6 +1193,11 @@ class Extension {
          Main.windowPicker.destroy();
          delete Main.windowPicker;
  
@@ -164,10 +164,10 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/extension.js
          Main.overview.hide = this._hideOverviewOrig;
      }
  
-Index: gnome-shell-extensions-41.0/extensions/window-list/sle-classic.css
+Index: gnome-shell-extensions-41.2/extensions/window-list/sle-classic.css
 ===================================================================
 --- /dev/null
-+++ gnome-shell-extensions-41.0/extensions/window-list/sle-classic.css
++++ gnome-shell-extensions-41.2/extensions/window-list/sle-classic.css
 @@ -0,0 +1,46 @@
 +@import url("stylesheet.css");
 +
@@ -215,10 +215,10 @@ Index: gnome-shell-extensions-41.0/extensions/window-list/sle-classic.css
 +    color: #888;
 +    box-shadow: inset -1px -1px 1px rgba(0,0,0,0.5);
 +  }
-Index: gnome-shell-extensions-41.0/extensions/places-menu/extension.js
+Index: gnome-shell-extensions-41.2/extensions/places-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-41.0.orig/extensions/places-menu/extension.js
-+++ gnome-shell-extensions-41.0/extensions/places-menu/extension.js
+--- gnome-shell-extensions-41.2.orig/extensions/places-menu/extension.js
++++ gnome-shell-extensions-41.2/extensions/places-menu/extension.js
 @@ -139,6 +139,10 @@ function init() {
  
  let _indicator;
@@ -242,10 +242,10 @@ Index: gnome-shell-extensions-41.0/extensions/places-menu/extension.js
  }
  
  /** */
-Index: gnome-shell-extensions-41.0/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-41.2/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-41.0.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-41.0/extensions/apps-menu/extension.js
+--- gnome-shell-extensions-41.2.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-41.2/extensions/apps-menu/extension.js
 @@ -26,6 +26,10 @@ const NAVIGATION_REGION_OVERSHOOT = 50;
  Gio._promisify(Gio._LocalFilePrototype, 'query_info_async', 'query_info_finish');
  Gio._promisify(Gio._LocalFilePrototype, 'set_attributes_async', 'set_attributes_finish');
@@ -296,11 +296,11 @@ Index: gnome-shell-extensions-41.0/extensions/apps-menu/extension.js
  }
  
  /** */
-Index: gnome-shell-extensions-41.0/data/gnome-classic.css
+Index: gnome-shell-extensions-41.2/data/gnome-classic.css
 ===================================================================
---- gnome-shell-extensions-41.0.orig/data/gnome-classic.css
-+++ gnome-shell-extensions-41.0/data/gnome-classic.css
-@@ -2262,9 +2262,9 @@ StScrollBar {
+--- gnome-shell-extensions-41.2.orig/data/gnome-classic.css
++++ gnome-shell-extensions-41.2/data/gnome-classic.css
+@@ -2619,9 +2619,9 @@ StScrollBar {
    #panel.solid .panel-corner:focus {
      -panel-corner-radius: 0; }
    #panel.lock-screen, #panel.unlock-screen, #panel.login-screen, #panel.solid.lock-screen, #panel.solid.unlock-screen, #panel.solid.login-screen {
@@ -312,18 +312,18 @@ Index: gnome-shell-extensions-41.0/data/gnome-classic.css
 +    background-gradient-end: none;
      border-bottom: none; }
      #panel.lock-screen .panel-button, #panel.unlock-screen .panel-button, #panel.login-screen .panel-button, #panel.solid.lock-screen .panel-button, #panel.solid.unlock-screen .panel-button, #panel.solid.login-screen .panel-button {
-       color: #eeeeec; }
-@@ -2292,3 +2292,6 @@ StScrollBar {
+       color: white; }
+@@ -2649,3 +2649,6 @@ StScrollBar {
  
  .calendar-day-with-events {
    background-image: url("calendar-today.svg"); }
 +
 +.popup-menu.panel-menu {
 +    margin-bottom: 0em; }
-Index: gnome-shell-extensions-41.0/extensions/workspace-indicator/extension.js
+Index: gnome-shell-extensions-41.2/extensions/workspace-indicator/extension.js
 ===================================================================
---- gnome-shell-extensions-41.0.orig/extensions/workspace-indicator/extension.js
-+++ gnome-shell-extensions-41.0/extensions/workspace-indicator/extension.js
+--- gnome-shell-extensions-41.2.orig/extensions/workspace-indicator/extension.js
++++ gnome-shell-extensions-41.2/extensions/workspace-indicator/extension.js
 @@ -321,7 +321,8 @@ class WorkspaceIndicator extends PanelMe
      _updateThumbnailVisibility() {
          const { workspaceManager } = global;
@@ -334,10 +334,10 @@ Index: gnome-shell-extensions-41.0/extensions/workspace-indicator/extension.js
              vertical || workspaceManager.n_workspaces > MAX_THUMBNAILS;
          this.reactive = useMenu;
  
-Index: gnome-shell-extensions-41.0/extensions/workspace-indicator/stylesheet.css
+Index: gnome-shell-extensions-41.2/extensions/workspace-indicator/stylesheet.css
 ===================================================================
---- gnome-shell-extensions-41.0.orig/extensions/workspace-indicator/stylesheet.css
-+++ gnome-shell-extensions-41.0/extensions/workspace-indicator/stylesheet.css
+--- gnome-shell-extensions-41.2.orig/extensions/workspace-indicator/stylesheet.css
++++ gnome-shell-extensions-41.2/extensions/workspace-indicator/stylesheet.css
 @@ -1,5 +1,7 @@
  .panel-workspace-indicator {
    padding: 0 8px;
