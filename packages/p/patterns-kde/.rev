@@ -260,4 +260,12 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
 - Add missing frameworks (forwarded request 950929 from cgiboudeaux)</comment>
     <requestid>950935</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>65846c8bf77de202bddc7fdaadb3f11a</srcmd5>
+    <version>20220215</version>
+    <time>1645137591</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing recommends to the Qt5 devel pattern. (boo#1192133) (forwarded request 955279 from cgiboudeaux)</comment>
+    <requestid>955281</requestid>
+  </revision>
 </revisionlist>

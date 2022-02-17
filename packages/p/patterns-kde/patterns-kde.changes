@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 16 10:45:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add missing recommends to the Qt5 devel pattern. (boo#1192133)
+
+-------------------------------------------------------------------
 Thu Feb  3 11:35:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add a Qt 6 development pattern
