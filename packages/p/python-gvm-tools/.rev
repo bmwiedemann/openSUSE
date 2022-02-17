@@ -31,4 +31,12 @@
     <comment>- Do not build for Python 3.6 or 3.9 due to python-python-gvm.</comment>
     <requestid>914131</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30f4d5139a35afa6970699cba6c2deb7</srcmd5>
+    <version>21.10.0</version>
+    <time>1645137622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955624</requestid>
+  </revision>
 </revisionlist>

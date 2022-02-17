@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 17 10:32:18 UTC 2022 - pgajdos@suse.com
+
+- version update to 21.10.0
+  Using traceback to print the full error traceback, when a script fails ... db5a7c9
+  Fixing and refactoring the update-task-target script. [#544] 8431844
+  Fixing some scripts that use Gmp.types... [#535] d7f7eb5
+  Fixed the GMP authentication for gvm-cli. #472
+  etc. see https://github.com/greenbone/gvm-tools/releases
+
+-------------------------------------------------------------------
 Wed Aug 25 05:36:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6 or 3.9 due to python-python-gvm. 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-gvm-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define skip_python36 1
 %define skip_python39 1
 Name:           python-gvm-tools
-Version:        20.10.1
+Version:        21.10.0
 Release:        0
 Summary:        Tools to control a GSM/GVM over GMP or OSP
 License:        GPL-3.0-or-later
@@ -74,7 +74,11 @@ without programming in Python.
 %python_uninstall_alternative gvm-cli
 
 %check
-%pytest
+%{python_expand find -name '*.snap' | xargs rm
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+export PYTHONDONTWRITEBYTECODE=1
+py.test-%{$python_version} -vv --ignore-glob=_build.*
+}
 
 %files %{python_files}
 %license LICENSE
