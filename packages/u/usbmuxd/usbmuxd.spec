@@ -29,6 +29,7 @@ Source99:       baselibs.conf
 Patch0:         usbmuxd-add-socket-option.patch
 Patch1:         usbmuxd-add-pid-option.patch
 Patch2:         usbmuxd-run-dir.patch
+Patch3:         harden_usbmuxd.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

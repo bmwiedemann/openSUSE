@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 26 12:27:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_usbmuxd.service.patch
+
+-------------------------------------------------------------------
 Fri Apr 23 17:17:18 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Add usbmuxd-add-socket-option.patch: allow socket to be
