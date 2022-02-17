@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Feb 16 17:32:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.25:
+  - Support file 5.41. 
+  - Support os.PathLike types 
+  - Fix compat mode handling with empty mime string 
+  - Cleanup library loading 
+  - add py.typed sentinal per https://www.python.org/dev/peps/pep-0561/#p… 
+  - Check for cookie attribute before trying to delete it
+  - Revert "Fix bug in Magic when destructor called too early" 
+  - Fix yet another import error
+  - add more doc pointers for compat mode, and enable PendingDeprecationW…
+  - restore python 2.7 to setup.py, to preserve back compat
+  - document libmagic compat layer
+  - prefix add_compat with an underscore to avoid namespace pollution
+  - remove from_open_file, since its duplicative with from_descriptor and…
+  - move typing stubs next to implementation
+  - temorarily remove dropped support for python2
+  - Revert "Remove Python2 from the tests"
+  - Merge branch 'master' into redo-compat
+  - Remove Python2 from the tests
+  - Add support for Python 3.9
+  - Added support for magic_descriptor routine
+  - Handle undecodable characters in description
+  - Handle libmagic versions that don't support MAGIC_EXTENSION 
+  - MAGIC_EXTENSION support (file --extension)
+  - support changed mime types in test
+  - Fix tests with file 5.39
+  - add docker tests for archlinux
+  - Fallback to default behavior on setparam failure
+  - Fix bug in Magic when destructor called too early
+  - sheep Create basic stub file for magic.py 
+  - various cleanups proposed by debian folks
+  - Merge in compatability mode with libmagic
+  - add from_open_file to match libmagic binding featureset
+- Remove upstreamed patches:
+  - fix-test-tumbleweed.patch
+  - fix-test.patch
+  - fix-4-file-5.40.patch
+  - fix-support-file-5.41.patch
+
+-------------------------------------------------------------------
 Fri Oct 22 10:09:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Use pyunittest macro instead of the home-grown solution.

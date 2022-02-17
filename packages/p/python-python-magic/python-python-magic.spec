@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-magic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,30 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-python-magic
-Version:        0.4.18
+Version:        0.4.25
 Release:        0
 Summary:        File type identification using libmagic
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ahupp/python-magic
 Source:         https://github.com/ahupp/python-magic/archive/%{version}.tar.gz
-#PATCH-FIX-OPENSUSE fix-test.patch -- adapt file outputs to opensuse
-Patch0:         fix-test.patch
-Patch1:         fix-test-tumbleweed.patch
-Patch2:         fix-4-file-5.40.patch
-Patch3:         fix-support-file-5.41.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  file
 BuildRequires:  python-rpm-macros
 Requires:       file
-# python-python-magic and python-magic use the same namespace (ie. filename)
-# and have a very similar functionality but are incompatible to each other.
-#  https://github.com/ahupp/python-magic/issues/21
-Conflicts:      python-magic
+Provides:       python-magic
 BuildArch:      noarch
 %ifpython2
-Conflicts:      %{oldpython}-magic
+Provides:       %{oldpython}-magic
 %endif
 %python_subpackages
 
@@ -53,19 +46,6 @@ supports both textual and MIME-type output.
 
 %prep
 %setup -q -n python-magic-%{version}
-%if 0%{?suse_version} > 1500
-# Tumbleweed
-%patch1 -p1
-%elif 0%{?sle_version} < 150300 && 0%{?is_opensuse}
-# Leap 15.2 and older
-%patch0 -p1
-%endif
-%if %{?pkg_vcmp:%{pkg_vcmp file >= 5.40}}%{!?pkg_vcmp:0}
-%patch2 -p0
-%endif
-%if %{?pkg_vcmp:%{pkg_vcmp file >= 5.41}}%{!?pkg_vcmp:0}
-%patch3 -p1
-%endif
 
 %build
 %python_build
@@ -81,8 +61,7 @@ export LC_ALL=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/magic.py*
-%pycache_only %{python_sitelib}/__pycache__/magic*.py*
-%{python_sitelib}/python_magic-%{version}-py*.egg-info
+%{python_sitelib}/magic
+%{python_sitelib}/python_magic-%{version}*-info
 
 %changelog
