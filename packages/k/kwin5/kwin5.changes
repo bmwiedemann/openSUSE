@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Feb 15 19:18:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * backends/drm: fix legacy dpms
+  * utils/serviceutils: compare executablePath against canonical path of exec fields in .desktops
+  * x11: Fix shrinking window size after toggling no border multiple times (kde#449988)
+  * wayland: Fix maximize mode propagation to decoration (kde#450053)
+  * effects/overview: Add translation domain
+  * effects: Extract messages from QML files
+  * inputmethod: Also open the inputm method panel with a pen (kde#449888)
+  * Implement services in our QPA (kde#446144)
+  * Don't force QT_QPA_PLATFORM=wayland (kde#450000)
+  * Schedule workspace repaint when window leaves current desktop (kde#444172)
+  * Initialize the KSldApp after we connect
+  * Fix loading of effect if plugin defined X-KDE-Library (kde#449881)
+  * wayland: Fix mispositioned decoration tooltips (kde#432860)
+  * Make openGL context current when recording frame triggered by cursor move (kde#448162)
+  * effects/DesktopGrid: use delta, not absolute time for MotionManager (kde#443971)
+  * Fix window decoration quads in OpenGL scene
+  * wayland: Make the launcher not restart kwin_wayland if it crashes at shutdown
+  * Add missing errno.h include
+  * Avoid mixing current and next state (kde#449541)
+  * effects/overview: Hide selection rect during dnd (kde#448573)
+  * effects/overview: Don't show minimized windows in desktop thumbnails (kde#448850)
+  * Fix mouse pointer disappearing after using zoom effect on X11 (kde#448537)
+  * effects/fallapart: Avoid animating windows while there's a fullscreen effect (kde#449844)
+  * effects/scale: Make it not grab open and close roles (kde#449832)
+  * backends/drm: ignore modifier env var if modifiers are not supported
+  * kcm/screenedge: Fix default value for TabBox.BorderActivate option (kde#449720)
+- Drop patches, now upstream:
+  * 43caf2539357a1f9d5b2668a8eff151517377a7e.patch
+
+-------------------------------------------------------------------
 Sat Feb 12 19:50:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 43caf2539357a1f9d5b2668a8eff151517377a7e.patch: Fix mouse

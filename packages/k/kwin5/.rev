@@ -1348,4 +1348,12 @@
     <comment></comment>
     <requestid>953959</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>e91d3db5a4f70b5c5c363649ef7192e3</srcmd5>
+    <version>5.24.1</version>
+    <time>1645137577</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.1. plasma5-mobile tarball is missing translations, so skipped for now.</comment>
+    <requestid>955239</requestid>
+  </revision>
 </revisionlist>
