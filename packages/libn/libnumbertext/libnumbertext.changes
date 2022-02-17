@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Feb 11 22:44:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.8:
+  * src/Soros.py: fix FutureWarning: Possible nested set at position, reported by Rene Engelhard
+  * fr.sor:
+  - use hyphens instead of spaces, e.g. cent-deux, reported by "4560041" at GitHub
+  - new prefix "informal" for 1100–1900 (onze-cents - dix-neuf-cents)
+  - add prefix "feminine" and "masculine" (1 -> une/un), bug reports by arena94 at GitGub
+  * hu_Hung.sor:
+  - fix transliteration of old Hungarian family names, bug report by Zoltán Óvári
+  - fix 100–199, 1000–1999, 1000000–1999999 and 1000000000–1999999999 (bad ordering)
+  – fix conversion of single letters "í", "Í" and "NY";
+  - fix unnecessary conversion of words ending with "q", e.g. "IQ";
+  - fix unnecessary conversion of words not ending with unknown letters
+  * mr.sor: Marathi spelling corrections by Shantanu Oak
+  * pl.sor: fix ordinal 20-29, reported by Gabryha at GitHub
+  * uk.sor, CalcAddIn.xcu, description.xml.in: fix spell by Olexandr Nesterenko
+  - replace apostrophe symbol to U+02BC, reported by Volodymyr Lisivka
+  - up number to 10^42
+  - add cardinal, update help
+  - add uk locale
+  * zh.sor: add ordinal numbers, use always 二 for 2, reported by Ming-Hua
+
+-------------------------------------------------------------------
 Wed May 19 15:17:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define conditionally make_build to fix build on systems that do
