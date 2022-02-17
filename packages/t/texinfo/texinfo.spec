@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source42:       %{name}-rpmlintrc
 Patch1:         texinfo-zlib.patch
 Patch2:         install-info_exitcode.patch
 BuildRequires:  automake
+BuildRequires:  glibc-locale
 BuildRequires:  help2man
 BuildRequires:  libbz2-devel
 BuildRequires:  libzio-devel
@@ -50,6 +51,7 @@ Requires:       texlive-makeindex
 Requires:       texlive-pdftex
 Requires:       texlive-tex
 Requires:       texlive-texinfo
+Recommends:     %{name}-lang = %{version}
 Recommends:     texi2html
 Recommends:     texi2roff
 
@@ -66,6 +68,7 @@ makeinfo tool.
 Summary:        A Stand-Alone Terminal-Based Info Browser
 Requires:       /usr/bin/gunzip
 Requires:       /usr/bin/gzip
+Recommends:     %{name}-lang = %{version}
 
 %description -n info
 Info is a terminal-based program for reading documentation of computer
@@ -91,11 +94,14 @@ Requires:       perl(Text::Unidecode)
 %requires_eq    perl
 Suggests:       texinfo
 Provides:       texinfo:%{_bindir}/makeinfo
+Recommends:     %{name}-lang = %{version}
 
 %description -n makeinfo
 Makeinfo translates Texinfo source documentation to various other
 formats, by default Info files suitable for reading online with Emacs
 or standalone GNU Info.
+
+%lang_package
 
 %prep
 %setup -q
@@ -188,7 +194,9 @@ while file do
     file = rpm.next_file()
 end
 
-%files -f %{name}_document.lang
+%files lang -f %{name}.lang -f %{name}_document.lang
+
+%files
 %defattr(-,root,root,0755)
 %license COPYING
 %doc ABOUT-NLS AUTHORS NEWS README TODO
@@ -207,7 +215,7 @@ end
 %{_mandir}/man5/texinfo.5%{?ext_man}
 %attr(644,root,root) %{_datadir}/texinfo/texindex.awk
 
-%files -n makeinfo -f %{name}.lang
+%files -n makeinfo
 %defattr(-,root,root,0755)
 %{_bindir}/makeinfo
 %{_bindir}/texi2any

@@ -565,4 +565,18 @@
     <comment>- Move to /usr for UsrMerge (boo#1191099)</comment>
     <requestid>922357</requestid>
   </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>b3a913ea17e37c041b9e7a64c47ccb7e</srcmd5>
+    <version>6.7</version>
+    <time>1645137561</time>
+    <user>dimstar_suse</user>
+    <comment>- The new package texinfo-lang should not include the binaries
+  with its helper files, therefore recreate texinfo package
+- Require glibc-locale at build time as otherwise perl falls
+  always back to C locale
+
+- Split out texinfo-lang package, so info does not refer to
+  traslations from texinfo package.</comment>
+    <requestid>955207</requestid>
+  </revision>
 </revisionlist>
