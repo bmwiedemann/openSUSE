@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 17 10:43:46 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (f9982b5a81a151663c76ba0a3), git2389
+- Add gcc10-PIE, similar to gcc-PIE but affecting gcc10 [bsc#1195628] 
+- Remove sys/rseq.h from include-fixed
+
+-------------------------------------------------------------------
+Fri Feb 11 10:47:35 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Put libstdc++6-pp Requires on the shared library and drop
+  to Recoomends.
+
+-------------------------------------------------------------------
 Wed Jul 21 08:57:33 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Properly adjust GPL-3.0 WITH GCC-exception-3.1 to

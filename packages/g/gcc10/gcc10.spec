@@ -1,7 +1,7 @@
 #
 # spec file for package gcc10
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# nospeccleaner
 
 %if !0%{?usrmerged}
 %define _slibdir  /%{_lib}
@@ -277,7 +275,7 @@ BuildRequires:  cross-amdgcn-newlib10-devel
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.3.1+git1893
+Version:        10.3.1+git2389
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -320,6 +318,7 @@ Suggests:       gcc10-info gcc10-locale
 %if %{suse_version} < 1310
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %endif
+Group:          Development/Languages/C and C++
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
 Source2:        gcc10-rpmlintrc
@@ -343,9 +342,8 @@ Patch52:        gcc10-foffload-default.patch
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
 
-Summary:        The GNU C Compiler and Support Files
 License:        GPL-3.0-or-later
-Group:          Development/Languages/C and C++
+Summary:        The GNU C Compiler and Support Files
 
 %description
 Core package for the GNU Compiler Collection, including the C language
@@ -354,11 +352,8 @@ frontend.
 Language frontends other than C are split to different sub-packages,
 namely gcc-ada, gcc-c++, gcc-fortran, gcc-obj, gcc-obj-c++ and gcc-go.
 
-
-
 %package -n gcc10-32bit
 Summary:        The GNU C Compiler 32bit support
-License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc10 = %{version}-%{release}
 Requires:       libgcc_s%{libgcc_s}-32bit >= %{version}-%{release}
@@ -385,7 +380,6 @@ This package contains 32bit support for the GNU Compiler Collection.
 
 %package -n gcc10-64bit
 Summary:        The GNU C Compiler 64bit support
-License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       gcc10 = %{version}-%{release}
 Requires:       libgcc_s%{libgcc_s}-64bit >= %{version}-%{release}
@@ -416,7 +410,6 @@ Requires:       glibc-devel-64bit
 %description -n gcc10-64bit
 This package contains 64bit support for the GNU Compiler Collection.
 
-
 %package devel
 Summary:        GCC plugins development enviroment
 License:        GPL-3.0-or-later
@@ -428,7 +421,6 @@ Requires:       mpc-devel
 %description devel
 Files required for developing and compiling GCC plugins.
 
-
 %package locale
 Summary:        Locale Data for the GNU Compiler Collection
 License:        GPL-3.0-or-later
@@ -439,6 +431,17 @@ Requires:       gcc10 = %{version}-%{release}
 Locale data for the GNU Compiler Collection (GCC) to give error message
 in the current locale.
 
+%package PIE
+Summary:        A default configuration to build all binaries in PIE mode
+License:        GPL-3.0-or-later
+Group:          Development/Languages/Other
+Requires:       gcc10 = %{version}-%{release}
+
+%description PIE
+This package contains a configuration file (spec) that changes the
+compilers default setting to build all ELF binaries in the Position
+Independend Executable (PIE) variant. This enables better address
+space randomization (ASLR).
 
 %package c++
 Summary:        The GNU C++ Compiler
@@ -450,6 +453,7 @@ Requires:       libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix} = %{version}
 
 %description c++
 This package contains the GNU compiler for C++.
+
 %package c++-32bit
 Summary:        The GNU C++ Compiler
 License:        GPL-3.0-or-later
@@ -460,6 +464,7 @@ Requires:       libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-32bit = %{ve
 
 %description c++-32bit
 This package contains the GNU compiler for C++.
+
 %package c++-64bit
 Summary:        The GNU C++ Compiler
 License:        GPL-3.0-or-later
@@ -471,7 +476,6 @@ Requires:       libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-64bit = %{ve
 %description c++-64bit
 This package contains the GNU compiler for C++.
 
-
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}
 Summary:        Include Files and Libraries mandatory for Development
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -481,14 +485,11 @@ Requires:       libstdc++%{libstdcxx_sover} >= %{version}-%{release}
 %ifarch ia64
 Requires:       libunwind-devel
 %endif
-# Fallback for non-existing Supplements support
-%if %{suse_version} < 1500
-Requires:       libstdc++%{libstdcxx_sover}-pp = %{version}-%{release}
-%endif
 
 %description -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}
 This package contains all the headers and libraries of the standard C++
 library. It is needed for compiling C++ code.
+
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-32bit
 Summary:        Include Files and Libraries mandatory for Development
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -498,14 +499,11 @@ Requires:       libstdc++%{libstdcxx_sover}-32bit >= %{version}-%{release}
 %ifarch ia64
 Requires:       libunwind-devel
 %endif
-# Fallback for non-existing Supplements support
-%if %{suse_version} < 1500
-Requires:       libstdc++%{libstdcxx_sover}-pp-32bit = %{version}-%{release}
-%endif
 
 %description -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-32bit
 This package contains all the headers and libraries of the standard C++
 library. It is needed for compiling C++ code.
+
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-64bit
 Summary:        Include Files and Libraries mandatory for Development
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -514,10 +512,6 @@ Requires:       glibc-devel-64bit
 Requires:       libstdc++%{libstdcxx_sover}-64bit >= %{version}-%{release}
 %ifarch ia64
 Requires:       libunwind-devel
-%endif
-# Fallback for non-existing Supplements support
-%if %{suse_version} < 1500
-Requires:       libstdc++%{libstdcxx_sover}-pp-64bit = %{version}-%{release}
 %endif
 
 %description -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-64bit
@@ -542,6 +536,7 @@ Supplements:    (gdb and libstdc++%{libstdcxx_sover} = %{version}-%{release})
 %description -n libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix}
 This package contains pretty printers for the C++ standard library usable
 from GDB.
+
 %package -n libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix}-32bit
 Summary:        GDB pretty printers for the C++ standard library
 License:        GPL-3.0-or-later
@@ -560,6 +555,7 @@ Supplements:    (gdb and libstdc++%{libstdcxx_sover}-32bit = %{version}-%{releas
 %description -n libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix}-32bit
 This package contains pretty printers for the C++ standard library usable
 from GDB.
+
 %package -n libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix}-64bit
 Summary:        GDB pretty printers for the C++ standard library
 License:        GPL-3.0-or-later
@@ -579,7 +575,6 @@ Supplements:    (gdb and libstdc++%{libstdcxx_sover}-64bit = %{version}-%{releas
 This package contains pretty printers for the C++ standard library usable
 from GDB.
 
-
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}
 Summary:        C compiler runtime library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -595,6 +590,7 @@ Libgcc is needed for dynamically linked C programs.
 %post -n libgcc_s%{libgcc_s}%{libgcc_s_suffix} -p /sbin/ldconfig
 
 %postun -n libgcc_s%{libgcc_s}%{libgcc_s_suffix} -p /sbin/ldconfig
+
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-32bit
 Summary:        C compiler runtime library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -610,6 +606,7 @@ Libgcc is needed for dynamically linked C programs.
 %post -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-64bit
 Summary:        C compiler runtime library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -645,6 +642,7 @@ option.
 %post -n libgomp%{libgomp_sover}%{libgomp_suffix} -p /sbin/ldconfig
 
 %postun -n libgomp%{libgomp_sover}%{libgomp_suffix} -p /sbin/ldconfig
+
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}-32bit
 Summary:        The GNU compiler collection OpenMP runtime library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -664,6 +662,7 @@ option.
 %post -n libgomp%{libgomp_sover}%{libgomp_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libgomp%{libgomp_sover}%{libgomp_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}-64bit
 Summary:        The GNU compiler collection OpenMP runtime library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -693,6 +692,10 @@ Provides:       libstdc++%{libstdcxx_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}
+# Fallback for non-existing Supplements support
+%if %{suse_version} < 1500
+Recommends:     libstdc++%{libstdcxx_sover}-pp = %{version}-%{release}
+%endif
 
 %description -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}
 The standard C++ library, needed for dynamically linked C++ programs.
@@ -701,6 +704,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 %post -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix} -p /sbin/ldconfig
 
 %postun -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix} -p /sbin/ldconfig
+
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit
 Summary:        The standard C++ shared library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -710,6 +714,10 @@ Provides:       libstdc++%{libstdcxx_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-32bit
+# Fallback for non-existing Supplements support
+%if %{suse_version} < 1500
+Recommends:     libstdc++%{libstdcxx_sover}-pp-32bit = %{version}-%{release}
+%endif
 
 %description -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit
 The standard C++ library, needed for dynamically linked C++ programs.
@@ -718,6 +726,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 %post -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-64bit
 Summary:        The standard C++ shared library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -727,6 +736,10 @@ Provides:       libstdc++%{libstdcxx_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-64bit
+# Fallback for non-existing Supplements support
+%if %{suse_version} < 1500
+Recommends:     libstdc++%{libstdcxx_sover}-pp-64bit = %{version}-%{release}
+%endif
 
 %description -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-64bit
 The standard C++ library, needed for dynamically linked C++ programs.
@@ -748,7 +761,6 @@ Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-locale
 %description -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-locale
 The standard C++ library locale data.
 
-
 %package info
 Summary:        Documentation for the GNU compiler collection
 License:        GFDL-1.2-only
@@ -762,7 +774,6 @@ BuildArch:      noarch
 GNU info-pages for the GNU compiler collection covering both user-level
 and internals documentation.
 
-
 %package objc
 Summary:        GNU Objective C Compiler
 License:        GPL-3.0-or-later
@@ -775,6 +786,7 @@ Requires:       libobjc%{libobjc_sover} >= %{version}-%{release}
 This package contains the GNU Objective C compiler. Objective C is an
 object oriented language, created by Next Inc. and used in their
 Nextstep OS. The source code is available in the gcc package.
+
 %package objc-32bit
 Summary:        GNU Objective C Compiler
 License:        GPL-3.0-or-later
@@ -787,6 +799,7 @@ Requires:       libobjc%{libobjc_sover}-32bit >= %{version}-%{release}
 This package contains the GNU Objective C compiler. Objective C is an
 object oriented language, created by Next Inc. and used in their
 Nextstep OS. The source code is available in the gcc package.
+
 %package objc-64bit
 Summary:        GNU Objective C Compiler
 License:        GPL-3.0-or-later
@@ -815,6 +828,7 @@ The library for the GNU Objective C compiler.
 %post -n libobjc%{libobjc_sover}%{libobjc_suffix} -p /sbin/ldconfig
 
 %postun -n libobjc%{libobjc_sover}%{libobjc_suffix} -p /sbin/ldconfig
+
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}-32bit
 Summary:        Library for the GNU Objective C Compiler
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -830,6 +844,7 @@ The library for the GNU Objective C compiler.
 %post -n libobjc%{libobjc_sover}%{libobjc_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libobjc%{libobjc_sover}%{libobjc_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}-64bit
 Summary:        Library for the GNU Objective C Compiler
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -858,6 +873,7 @@ Requires:       gcc10-objc = %{version}-%{release}
 This package contains the GNU Objective C++ compiler. Objective C++ is an
 object oriented language, created by Next Inc. and used in their
 Nextstep OS. The source code is available in the gcc package.
+
 %package obj-c++-32bit
 Summary:        GNU Objective C++ Compiler
 License:        GPL-3.0-or-later
@@ -870,6 +886,7 @@ Requires:       gcc10-objc-32bit = %{version}-%{release}
 This package contains the GNU Objective C++ compiler. Objective C++ is an
 object oriented language, created by Next Inc. and used in their
 Nextstep OS. The source code is available in the gcc package.
+
 %package obj-c++-64bit
 Summary:        GNU Objective C++ Compiler
 License:        GPL-3.0-or-later
@@ -883,7 +900,6 @@ This package contains the GNU Objective C++ compiler. Objective C++ is an
 object oriented language, created by Next Inc. and used in their
 Nextstep OS. The source code is available in the gcc package.
 
-
 %package -n cpp10
 Summary:        The GCC Preprocessor
 License:        GPL-3.0-or-later
@@ -892,7 +908,6 @@ Group:          Development/Languages/C and C++
 %description -n cpp10
 This Package contains just the preprocessor that is used by the X11
 packages.
-
 
 %package ada
 Summary:        GNU Ada Compiler Based on GCC (GNAT)
@@ -905,6 +920,7 @@ Requires:       libada10 = %{version}-%{release}
 %description ada
 This package contains an Ada compiler and associated development
 tools based on the GNU GCC technology.
+
 %package ada-32bit
 Summary:        GNU Ada Compiler Based on GCC (GNAT)
 License:        GPL-3.0-or-later
@@ -916,6 +932,7 @@ Requires:       libada10-32bit = %{version}-%{release}
 %description ada-32bit
 This package contains an Ada compiler and associated development
 tools based on the GNU GCC technology.
+
 %package ada-64bit
 Summary:        GNU Ada Compiler Based on GCC (GNAT)
 License:        GPL-3.0-or-later
@@ -948,6 +965,7 @@ implementation of Distributed Systems Programming (GLADE) and the Posix
 %post -n libada10 -p /sbin/ldconfig
 
 %postun -n libada10 -p /sbin/ldconfig
+
 %package -n libada10-32bit
 Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -968,6 +986,7 @@ implementation of Distributed Systems Programming (GLADE) and the Posix
 %post -n libada10-32bit -p /sbin/ldconfig
 
 %postun -n libada10-32bit -p /sbin/ldconfig
+
 %package -n libada10-64bit
 Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -1002,6 +1021,7 @@ Requires:       libquadmath%{libquadmath_sover} >= %{version}-%{release}
 
 %description fortran
 This is the Fortran compiler of the GNU Compiler Collection (GCC).
+
 %package fortran-32bit
 Summary:        The GNU Fortran Compiler and Support Files
 License:        GPL-3.0-or-later
@@ -1015,6 +1035,7 @@ Requires:       libquadmath%{libquadmath_sover}-32bit >= %{version}-%{release}
 
 %description fortran-32bit
 This is the Fortran compiler of the GNU Compiler Collection (GCC).
+
 %package fortran-64bit
 Summary:        The GNU Fortran Compiler and Support Files
 License:        GPL-3.0-or-later
@@ -1048,6 +1069,7 @@ of the GNU Compiler Collection (GCC).
 %post -n libgfortran%{libgfortran_sover}%{libgfortran_suffix} -p /sbin/ldconfig
 
 %postun -n libgfortran%{libgfortran_sover}%{libgfortran_suffix} -p /sbin/ldconfig
+
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-32bit
 Summary:        The GNU Fortran Compiler Runtime Library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -1067,6 +1089,7 @@ of the GNU Compiler Collection (GCC).
 %post -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-64bit
 Summary:        The GNU Fortran Compiler Runtime Library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -1104,6 +1127,7 @@ operations.
 %post -n libquadmath%{libquadmath_sover}%{libquadmath_suffix} -p /sbin/ldconfig
 
 %postun -n libquadmath%{libquadmath_sover}%{libquadmath_suffix} -p /sbin/ldconfig
+
 %package -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}-32bit
 Summary:        The GNU Fortran Compiler Quadmath Runtime Library
 License:        LGPL-2.1-only
@@ -1121,6 +1145,7 @@ operations.
 %post -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}-64bit
 Summary:        The GNU Fortran Compiler Quadmath Runtime Library
 License:        LGPL-2.1-only
@@ -1155,6 +1180,7 @@ The runtime library needed to run programs compiled with the
 %post -n libitm%{libitm_sover}%{libitm_suffix} -p /sbin/ldconfig
 
 %postun -n libitm%{libitm_sover}%{libitm_suffix} -p /sbin/ldconfig
+
 %package -n libitm%{libitm_sover}%{libitm_suffix}-32bit
 Summary:        The GNU Compiler Transactional Memory Runtime Library
 License:        MIT
@@ -1171,6 +1197,7 @@ The runtime library needed to run programs compiled with the
 %post -n libitm%{libitm_sover}%{libitm_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libitm%{libitm_sover}%{libitm_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libitm%{libitm_sover}%{libitm_suffix}-64bit
 Summary:        The GNU Compiler Transactional Memory Runtime Library
 License:        MIT
@@ -1204,6 +1231,7 @@ The runtime library needed to run programs compiled with the
 %post -n libasan%{libasan_sover}%{libasan_suffix} -p /sbin/ldconfig
 
 %postun -n libasan%{libasan_sover}%{libasan_suffix} -p /sbin/ldconfig
+
 %package -n libasan%{libasan_sover}%{libasan_suffix}-32bit
 Summary:        The GNU Compiler Address Sanitizer Runtime Library
 License:        MIT
@@ -1220,6 +1248,7 @@ The runtime library needed to run programs compiled with the
 %post -n libasan%{libasan_sover}%{libasan_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libasan%{libasan_sover}%{libasan_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libasan%{libasan_sover}%{libasan_suffix}-64bit
 Summary:        The GNU Compiler Address Sanitizer Runtime Library
 License:        MIT
@@ -1253,6 +1282,7 @@ The runtime library needed to run programs compiled with the
 %post -n libtsan%{libtsan_sover}%{libtsan_suffix} -p /sbin/ldconfig
 
 %postun -n libtsan%{libtsan_sover}%{libtsan_suffix} -p /sbin/ldconfig
+
 %package -n libtsan%{libtsan_sover}%{libtsan_suffix}-32bit
 Summary:        The GNU Compiler Thread Sanitizer Runtime Library
 License:        MIT
@@ -1269,6 +1299,7 @@ The runtime library needed to run programs compiled with the
 %post -n libtsan%{libtsan_sover}%{libtsan_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libtsan%{libtsan_sover}%{libtsan_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libtsan%{libtsan_sover}%{libtsan_suffix}-64bit
 Summary:        The GNU Compiler Thread Sanitizer Runtime Library
 License:        MIT
@@ -1301,6 +1332,7 @@ The runtime library for atomic operations of the GNU Compiler Collection (GCC).
 %post -n libatomic%{libatomic_sover}%{libatomic_suffix} -p /sbin/ldconfig
 
 %postun -n libatomic%{libatomic_sover}%{libatomic_suffix} -p /sbin/ldconfig
+
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}-32bit
 Summary:        The GNU Compiler Atomic Operations Runtime Library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -1316,6 +1348,7 @@ The runtime library for atomic operations of the GNU Compiler Collection (GCC).
 %post -n libatomic%{libatomic_sover}%{libatomic_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libatomic%{libatomic_sover}%{libatomic_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}-64bit
 Summary:        The GNU Compiler Atomic Operations Runtime Library
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
@@ -1348,6 +1381,7 @@ The runtime library needed to run programs compiled with the
 %post -n liblsan%{liblsan_sover}%{liblsan_suffix} -p /sbin/ldconfig
 
 %postun -n liblsan%{liblsan_sover}%{liblsan_suffix} -p /sbin/ldconfig
+
 %package -n liblsan%{liblsan_sover}%{liblsan_suffix}-32bit
 Summary:        The GNU Compiler Leak Sanitizer Runtime Library
 License:        MIT
@@ -1364,6 +1398,7 @@ The runtime library needed to run programs compiled with the
 %post -n liblsan%{liblsan_sover}%{liblsan_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n liblsan%{liblsan_sover}%{liblsan_suffix}-32bit -p /sbin/ldconfig
+
 %package -n liblsan%{liblsan_sover}%{liblsan_suffix}-64bit
 Summary:        The GNU Compiler Leak Sanitizer Runtime Library
 License:        MIT
@@ -1397,6 +1432,7 @@ The runtime library needed to run programs compiled with the
 %post -n libubsan%{libubsan_sover}%{libubsan_suffix} -p /sbin/ldconfig
 
 %postun -n libubsan%{libubsan_sover}%{libubsan_suffix} -p /sbin/ldconfig
+
 %package -n libubsan%{libubsan_sover}%{libubsan_suffix}-32bit
 Summary:        The GNU Compiler Undefined Sanitizer Runtime Library
 License:        MIT
@@ -1413,6 +1449,7 @@ The runtime library needed to run programs compiled with the
 %post -n libubsan%{libubsan_sover}%{libubsan_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libubsan%{libubsan_sover}%{libubsan_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libubsan%{libubsan_sover}%{libubsan_suffix}-64bit
 Summary:        The GNU Compiler Undefined Sanitizer Runtime Library
 License:        MIT
@@ -1446,6 +1483,7 @@ The runtime library needed to run programs compiled with the
 %post -n libvtv%{libvtv_sover}%{libvtv_suffix} -p /sbin/ldconfig
 
 %postun -n libvtv%{libvtv_sover}%{libvtv_suffix} -p /sbin/ldconfig
+
 %package -n libvtv%{libvtv_sover}%{libvtv_suffix}-32bit
 Summary:        The GNU Compiler Vtable Verifier Runtime Library
 License:        MIT
@@ -1462,6 +1500,7 @@ The runtime library needed to run programs compiled with the
 %post -n libvtv%{libvtv_sover}%{libvtv_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libvtv%{libvtv_sover}%{libvtv_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libvtv%{libvtv_sover}%{libvtv_suffix}-64bit
 Summary:        The GNU Compiler Vtable Verifier Runtime Library
 License:        MIT
@@ -1501,6 +1540,7 @@ Requires:       libgo%{libgo_sover} >= %{version}-%{release}
 %description go
 This package contains a Go compiler and associated development
 files based on the GNU GCC technology.
+
 %package go-32bit
 Summary:        GNU Go Compiler
 License:        GPL-3.0-or-later
@@ -1512,6 +1552,7 @@ Requires:       libgo%{libgo_sover}-32bit >= %{version}-%{release}
 %description go-32bit
 This package contains a Go compiler and associated development
 files based on the GNU GCC technology.
+
 %package go-64bit
 Summary:        GNU Go Compiler
 License:        GPL-3.0-or-later
@@ -1539,6 +1580,7 @@ Runtime library for the GNU Go language.
 %post -n libgo%{libgo_sover}%{libgo_suffix} -p /sbin/ldconfig
 
 %postun -n libgo%{libgo_sover}%{libgo_suffix} -p /sbin/ldconfig
+
 %package -n libgo%{libgo_sover}%{libgo_suffix}-32bit
 Summary:        GNU Go compiler runtime library
 License:        BSD-3-Clause
@@ -1554,6 +1596,7 @@ Runtime library for the GNU Go language.
 %post -n libgo%{libgo_sover}%{libgo_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libgo%{libgo_sover}%{libgo_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libgo%{libgo_sover}%{libgo_suffix}-64bit
 Summary:        GNU Go compiler runtime library
 License:        BSD-3-Clause
@@ -1582,6 +1625,7 @@ Requires:       libgphobos%{libgphobos_sover} >= %{version}-%{release}
 %description d
 This package contains a D compiler and associated development
 files based on the GNU GCC technology.
+
 %package d-32bit
 Summary:        GNU D Compiler
 License:        GPL-3.0-or-later
@@ -1594,6 +1638,7 @@ Requires:       libgphobos%{libgphobos_sover}-32bit >= %{version}-%{release}
 %description d-32bit
 This package contains a D compiler and associated development
 files based on the GNU GCC technology.
+
 %package d-64bit
 Summary:        GNU D Compiler
 License:        GPL-3.0-or-later
@@ -1622,6 +1667,7 @@ Runtime library for the GNU D language.
 %post -n libgphobos%{libgphobos_sover}%{libgphobos_suffix} -p /sbin/ldconfig
 
 %postun -n libgphobos%{libgphobos_sover}%{libgphobos_suffix} -p /sbin/ldconfig
+
 %package -n libgphobos%{libgphobos_sover}%{libgphobos_suffix}-32bit
 Summary:        GNU D compiler runtime library
 License:        BSL-1.0
@@ -1637,6 +1683,7 @@ Runtime library for the GNU D language.
 %post -n libgphobos%{libgphobos_sover}%{libgphobos_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libgphobos%{libgphobos_sover}%{libgphobos_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libgphobos%{libgphobos_sover}%{libgphobos_suffix}-64bit
 Summary:        GNU D compiler runtime library
 License:        BSL-1.0
@@ -1668,6 +1715,7 @@ Runtime library for the GNU D language.
 %post -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix} -p /sbin/ldconfig
 
 %postun -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix} -p /sbin/ldconfig
+
 %package -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix}-32bit
 Summary:        GNU D compiler runtime library
 License:        BSL-1.0
@@ -1683,6 +1731,7 @@ Runtime library for the GNU D language.
 %post -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix}-32bit -p /sbin/ldconfig
 
 %postun -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix}-32bit -p /sbin/ldconfig
+
 %package -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix}-64bit
 Summary:        GNU D compiler runtime library
 License:        BSL-1.0
@@ -1702,7 +1751,6 @@ Runtime library for the GNU D language.
 %package -n gcc10-testresults
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
-Group:          Development/Languages/C and C++
 
 %description -n gcc10-testresults
 Results from running the gcc and target library testsuites.
@@ -2430,7 +2478,13 @@ for l in `find %{buildroot} -name '*.la'`; do
   mv $l.new $l
 done
 
-%if 0%{?run_tests:1} 
+# The spec for the PIE subpackage
+cat > %{buildroot}/%{libsubdir}/defaults.spec <<EOF
+*default_spec:
+%%{pie|fpic|fPIC|fpie|fPIE|no-pie|fno-pic|fno-PIC|fno-pie|fno-PIE|shared|static|nostdlib|nodefaultlibs|nostartfiles:;:-fPIE}%%{fno-pic|fno-PIC|fno-pie|fno-PIE|pie|no-pie|shared|static|nostdlib|nodefaultlibs|nostartfiles:;: -pie}
+EOF
+
+%if 0%{?run_tests:1}
 cp `find . -name "*.sum"` ../testresults/
 cp `find . -name "*.log"  \! -name "config.log" | grep -v 'acats.\?/tests' | grep -v libbacktrace` ../testresults/
 chmod 644 ../testresults/*
@@ -2447,6 +2501,7 @@ rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/unistd_ext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/ucontext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/statx.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/pthread.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/rseq.h
 %if !%{enable_plugins}
 # no plugins
 rm -rf %{buildroot}/%{libsubdir}/plugin
@@ -2479,7 +2534,7 @@ mv %{buildroot}/%{_infodir}/libgomp.info %{buildroot}/%{_infodir}/libgomp%{binsu
 %ifarch %itm_arch
 mv %{buildroot}/%{_infodir}/libitm.info %{buildroot}/%{_infodir}/libitm%{binsuffix}.info
 %endif
-%if %{build_fortran} 
+%if %{build_fortran}
 %ifarch %quadmath_arch
 mv %{buildroot}/%{_infodir}/libquadmath.info %{buildroot}/%{_infodir}/libquadmath%{binsuffix}.info
 %endif
@@ -2506,7 +2561,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc10-locale.lang
 %ifarch %itm_arch
 %install_info --info-dir=%{_infodir} %{_infodir}/libitm%{binsuffix}.info.gz
 %endif
-%if %{build_fortran} 
+%if %{build_fortran}
 %install_info --info-dir=%{_infodir} %{_infodir}/gfortran%{binsuffix}.info.gz
 %ifarch %quadmath_arch
 %install_info --info-dir=%{_infodir} %{_infodir}/libquadmath%{binsuffix}.info.gz
@@ -2857,6 +2912,11 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc10-locale.lang
 %files locale -f gcc10-locale.lang
 
 %files -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-locale -f libstdc++.lang
+
+%files PIE
+%defattr(-,root,root)
+%dir %{libsubdir}
+%{libsubdir}/defaults.spec
 
 %if %{build_cp}
 %files c++

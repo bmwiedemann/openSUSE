@@ -1,7 +1,7 @@
 #
 # spec file for package gcc10-testresults
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,7 @@
 #
 # spec file for package gcc${version}
 #
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -295,7 +296,7 @@ BuildRequires:  cross-amdgcn-newlib10-devel
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.3.1+git1893
+Version:        10.3.1+git2389
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -338,6 +339,7 @@ Suggests:       gcc10-info gcc10-locale
 %if %{suse_version} < 1310
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %endif
+Group:          Development/Languages/C and C++
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
 Source2:        gcc10-rpmlintrc
@@ -363,9 +365,8 @@ Patch61:        gcc44-rename-info-files.patch
 
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
-Group:          Development/Languages/C and C++
 
-%description 
+%description
 Results from running the gcc and target library testsuites.
 
 
@@ -852,14 +853,14 @@ mkdir ../testresults
 export SUSE_ASNEEDED=0
 export NO_BRP_CHECK_BYTECODE_VERSION=true
 cd obj-%{GCCDIST}
-%if 0%{?run_tests:1} 
+%if 0%{?run_tests:1}
 cp `find . -name "*.sum"` ../testresults/
 cp `find . -name "*.log"  \! -name "config.log" | grep -v 'acats.\?/tests' | grep -v libbacktrace` ../testresults/
 chmod 644 ../testresults/*
 %endif
 
 %if 0%{?run_tests:1}
-%files 
+%files
 %defattr(-,root,root)
 %doc testresults/test_summary.txt
 %doc testresults/*.sum

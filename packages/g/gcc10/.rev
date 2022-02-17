@@ -249,4 +249,17 @@
 - Remove bits/unistd_ext.h from include-fixed</comment>
     <requestid>907449</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d0dbdaf58eed7520cbdbece7c4ec2d18</srcmd5>
+    <version>10.3.1+git2389</version>
+    <time>1645137627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (f9982b5a81a151663c76ba0a3), git2389
+- Add gcc10-PIE, similar to gcc-PIE but affecting gcc10 [bsc#1195628] 
+- Remove sys/rseq.h from include-fixed
+
+- Put libstdc++6-pp Requires on the shared library and drop
+  to Recoomends.</comment>
+    <requestid>955647</requestid>
+  </revision>
 </revisionlist>
