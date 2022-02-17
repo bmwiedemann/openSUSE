@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 16 23:33:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.3.0:
+  - pkg: add initial conda recipe and workflow (plus .gitattributes)
+  - Add some flake8 cleanup and tool cfgs.
+  - Use nose wth coverage and detailed-errors for smoke test.
+  - Replace os.path.isfile in lookup_by_name (fails on windows <py38)
+  - cleanup python/pkg versions, update tox cfg, switch CI
+
+-------------------------------------------------------------------
+Fri Feb 11 13:11:28 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Deduplicate files in python_sitelib.
+
+-------------------------------------------------------------------
+Fri Feb 11 10:30:15 UTC 2022 - pgajdos@suse.com
+
+- require python3-tools instead of python3-2to3 for build
+
+-------------------------------------------------------------------
 Thu Nov  7 15:00:03 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner
