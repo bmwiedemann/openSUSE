@@ -1,7 +1,7 @@
 #
 # spec file for package git-lfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,13 @@
 %endif
 
 Name:           git-lfs
-Version:        3.0.2
+Version:        3.1.2
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://git-lfs.github.com/
 Source0:        https://github.com/git-lfs/git-lfs/releases/download/v%{version}/git-lfs-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        README.packaging
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  git-core >= 1.8.2

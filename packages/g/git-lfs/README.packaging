@@ -1,9 +1,0 @@
-1. unpack upstream tarball
-
-# tar xf git-lfs*.tar.gz
-# cd git-lfs*/
-
-2. Obtain vendor dependencies
-
-go mod vendor && (rm ../vendor.tar.xz ; tar cfvJ ../vendor.tar.xz vendor/ go.mod go.sum )
-

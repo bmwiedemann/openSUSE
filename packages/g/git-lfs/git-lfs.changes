@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 17 00:27:17 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Drop README.packaging as the tarball now comes with all vendored
+  libraries.
+
+-------------------------------------------------------------------
+Thu Feb 17 00:26:18 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 3.1.2
+  https://github.com/git-lfs/git-lfs/releases/tag/v3.1.2
+
+-------------------------------------------------------------------
+Mon Feb 14 22:58:39 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 3.1.1
+  https://github.com/git-lfs/git-lfs/releases/tag/v3.1.1
+
+-------------------------------------------------------------------
 Sun Oct 31 10:22:55 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 3.0.2
