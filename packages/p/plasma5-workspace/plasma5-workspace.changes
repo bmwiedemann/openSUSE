@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 15 19:18:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * Move to runtime check of valid font DPI (kde#449918)
+  * applets/battery: adjust show/hide conditions for charge limits (kde#435931)
+  * applets/systemtray: fix SNI context menu usage without libappindicator (kde#449870)
+  * applets/notifications: Increase implicit size of standalone popup (kde#448383)
+  * applets-digital/clock: Add workaround for QTBUG-83890 (kde#448387)
+  * Clean up "empty" mimeType containg only whitespaces
+  * dataengines/apps: Use KIO::ApplicationLauncherJob for starting KService
+  * [containmentactions/applauncher] Use ApplicationLauncherJob instead of OpenUrlJob (kde#449900)
+  * Desktop: Still show services with nodisplay=true set (kde#449243)
+  * appstream runner: De-duplicate results from multiple sources (kde#448619)
+  * Fix ksplash always using default theme. (kde#446966)
+  * kcms/users: Fix missing template arguments before reply in FingerprintModel
+  * De-duplicate 'Uninstall or manage addons' option in the context menu of Kickoff (kde#448564)
+
+-------------------------------------------------------------------
 Sat Feb  5 19:51:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.0
