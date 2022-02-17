@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 16 08:33:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use _pam_vendordir instead of _distconfdir/pam.d (boo#1195996).
+  AS this means /etc/pam.d on SLE15, we mark those files as
+  %config(noreplace).
+
+-------------------------------------------------------------------
 Wed Jan 12 19:48:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 41.3:

@@ -20,6 +20,14 @@
 # FIXME: need to check what should be done to enable this (at least adapt the pam files). See bnc#699999
 %define enable_split_authentication 0
 
+# special hack for SLE15/Leap 15: it does not yet know /usr/etc, and files in /etc should be %%config
+%if 0%{?suse_version} >= 1550
+  %define _config_norepl %nil
+%else
+  %define _pam_vendordir %{_sysconfdir}/pam.d
+  %define _config_norepl %config(noreplace)
+%endif
+
 Name:           gdm
 Version:        41.3
 Release:        0
@@ -262,26 +270,26 @@ running display manager.
 %install
 %meson_install
 ## Install PAM files.
-mkdir -p %{buildroot}%{_distconfdir}/pam.d
+mkdir -p %{buildroot}%{_pam_vendordir}
 # Generic pam config
-cp %{SOURCE1} %{buildroot}%{_distconfdir}/pam.d/gdm
+cp %{SOURCE1} %{buildroot}%{_pam_vendordir}/gdm
 # Pam config for autologin
-cp %{SOURCE2} %{buildroot}%{_distconfdir}/pam.d/gdm-autologin
+cp %{SOURCE2} %{buildroot}%{_pam_vendordir}/gdm-autologin
 # Pam config for the greeter session
-cp %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/gdm-launch-environment
+cp %{SOURCE3} %{buildroot}%{_pam_vendordir}/gdm-launch-environment
 %if %{enable_split_authentication}
 # Pam config for fingerprint authentication
-cp %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/gdm-fingerprint
+cp %{SOURCE4} %{buildroot}%{_pam_vendordir}/gdm-fingerprint
 # Pam config for smartcard authentication
-cp %{SOURCE5} %{buildroot}%{_distconfdir}/pam.d/gdm-smartcard
+cp %{SOURCE5} %{buildroot}%{_pam_vendordir}/gdm-smartcard
 %endif
 # The default gdm pam configuration is the one to be used as pam-password too
 %if %{enable_split_authentication}
-rm %{buildroot}%{_distconfdir}/pam.d/gdm-password
+rm %{buildroot}%{_pam_vendordir}/gdm-password
 echo "We are not ready for this, we need to know what to put in gdm-fingerprint and gdm-smartcard pam config files."
 false
 %endif
-ln -s gdm %{buildroot}%{_distconfdir}/pam.d/gdm-password
+ln -s gdm %{buildroot}%{_pam_vendordir}/gdm-password
 ## Install other files
 # Install PostLogin script.
 mv %{buildroot}%{_sysconfdir}/gdm/PostLogin/Default.sample %{buildroot}%{_sysconfdir}/gdm/PostLogin/Default
@@ -354,14 +362,14 @@ dconf update
 %ghost %attr(711,root,gdm) %dir %{_localstatedir}/log/gdm
 %ghost %dir %{_localstatedir}/cache/gdm
 %ghost %attr(711,root,gdm) %dir /run/gdm
-%{_distconfdir}/pam.d/gdm
-%{_distconfdir}/pam.d/gdm-autologin
+%_config_norepl %{_pam_vendordir}/gdm
+%_config_norepl %{_pam_vendordir}/gdm-autologin
 %if %{enable_split_authentication}
-%{_distconfdir}/pam.d/gdm-fingerprint
-%{_distconfdir}/pam.d/gdm-smartcard
+%_config_norepl %{_pam_vendordir}/gdm-fingerprint
+%_config_norepl %{_pam_vendordir}/gdm-smartcard
 %endif
-%{_distconfdir}/pam.d/gdm-password
-%{_distconfdir}/pam.d/gdm-launch-environment
+%_config_norepl %{_pam_vendordir}/gdm-password
+%_config_norepl %{_pam_vendordir}/gdm-launch-environment
 %config %{_sysconfdir}/dbus-1/system.d/gdm.conf
 # /etc/xinit.d/xdm integration
 %dir %{_prefix}/lib/X11/displaymanagers
