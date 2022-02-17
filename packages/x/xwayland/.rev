@@ -88,4 +88,13 @@
     <comment></comment>
     <requestid>950846</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1763a149653b993d304bbdd0dc398670</srcmd5>
+    <version>22.1.0</version>
+    <time>1645137595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.1.0
+  * xwayland: Fix cursor color</comment>
+    <requestid>955407</requestid>
+  </revision>
 </revisionlist>
