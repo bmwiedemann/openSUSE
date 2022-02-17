@@ -54,4 +54,19 @@
     <comment></comment>
     <requestid>895343</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>e14a1b2360505ed3237a45d34501791a</srcmd5>
+    <version>2.7.0</version>
+    <time>1645137618</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch test execution to pytest to allow for deselecting tests of
+  optional functionality for which we lack the requiired
+  dependencies.
+- Drop build dependency to the sleekxmpp Python module which got
+  dropped from Factory.
+
+- Stop using %pyunittest as this seems to cause build failures on
+  Leap</comment>
+    <requestid>955593</requestid>
+  </revision>
 </revisionlist>

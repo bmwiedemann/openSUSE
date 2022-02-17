@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 17 08:53:36 UTC 2022 - Matthias Bach <marix@marix.org> - 2.7.0
+
+- Switch test execution to pytest to allow for deselecting tests of
+  optional functionality for which we lack the requiired
+  dependencies.
+- Drop build dependency to the sleekxmpp Python module which got
+  dropped from Factory.
+
+-------------------------------------------------------------------
+Mon Jan 10 19:46:43 UTC 2022 - Matthias Bach <marix@marix.org>
+
+- Stop using %pyunittest as this seems to cause build failures on
+  Leap
+
+-------------------------------------------------------------------
 Tue May 25 10:53:45 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

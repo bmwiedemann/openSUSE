@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntfy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,17 +31,17 @@ BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module emoji}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sleekxmpp}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs
 Requires:       python-requests
 Requires:       python-ruamel.yaml
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-dnspython3
 Suggests:       python-emoji
 Suggests:       python-instapush
@@ -78,7 +78,7 @@ Quickstart
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/ntfy*
 
 %check
-%pyunittest discover -v
+%pytest --ignore 'tests/test_xmpp.py' -k 'not test_xmpp'
 
 %post
 %python_install_alternative ntfy
