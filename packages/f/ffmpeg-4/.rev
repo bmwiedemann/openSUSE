@@ -456,4 +456,15 @@
     <comment></comment>
     <requestid>946828</requestid>
   </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>ebbfce72891dd661676a3817efa91ca9</srcmd5>
+    <version>4.4.1</version>
+    <time>1645137600</time>
+    <user>dimstar_suse</user>
+    <comment>- Disamble libsmbclient usage (can always be built with
+  --with-smbclient): the usecase of ffmpeg directly accessing
+  smb:// shares is quite constructed (most users will have their
+  smb shares mounted).</comment>
+    <requestid>955492</requestid>
+  </revision>
 </revisionlist>

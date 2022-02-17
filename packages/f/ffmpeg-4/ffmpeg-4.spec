@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,7 @@
 %bcond_with    fdk_aac_dlopen
 %bcond_with    librtmp
 %bcond_with    opencore
+%bcond_with    smbclient
 %bcond_with    x264
 %bcond_with    x265
 %bcond_with    xvid
@@ -60,7 +61,6 @@
 %bcond_without libaom
 %bcond_without mysofa
 %bcond_without vidstab
-%bcond_without smbclient
 %bcond_without srt
 %bcond_without codec2
 %bcond_without lv2
@@ -73,7 +73,6 @@
 %bcond_with libaom
 %bcond_with mysofa
 %bcond_with vidstab
-%bcond_with smbclient
 %bcond_with srt
 %bcond_with codec2
 %bcond_with lv2

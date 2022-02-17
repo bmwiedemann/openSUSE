@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 16 18:46:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disamble libsmbclient usage (can always be built with
+  --with-smbclient): the usecase of ffmpeg directly accessing
+  smb:// shares is quite constructed (most users will have their
+  smb shares mounted).
+
+-------------------------------------------------------------------
 Sun Jan 16 18:49:22 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add ffmpeg-chromium.patch: makes packaging Chromium easier and
