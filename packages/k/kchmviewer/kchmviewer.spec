@@ -1,7 +1,7 @@
 #
 # spec file for package kchmviewer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,10 @@ Patch2:         qtwebengine-2-createWindow.patch
 Patch3:         qtwebengine-3-synchronize-url.patch
 # PATCH-FIX-UPSTREAM git a4a3984465cb635822953350c571950ae726b539
 Patch4:         no-webkit.patch
+# PATCH-FIX-OPENSUSE
+Patch5:         InitialPreference-greater-than-okular.patch
 # PATCH-FIX-OPENSUSE https://github.com/gyunaev/kchmviewer/pull/17
-Patch5:         rename-desktop-file.patch
+Patch6:         rename-desktop-file.patch
 BuildRequires:  chmlib-devel
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5DBus-devel
