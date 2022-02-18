@@ -1,7 +1,7 @@
 #
 # spec file for package smartmontools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -173,6 +173,9 @@ fi
 %post
 # First prepare sysconfig.
 %{fillup_only}
+# Up to Leap 42.3 and SLE 15 SP3 Maintenance Update there was a "Command" meta comment in the sysconfig file.
+# It is not needed any more, but fillup does not delete it. Do it explicitly. (bsc#1195785, bsc#1196103)
+sed -i '\@^##[[:space:]]*Command:[[:space:]]*/usr/lib/smartmontools/generate_smartd_opts$@d' /etc/sysconfig/smartmontools
 # Then generate initial %%{_localstatedir}/lib/smartmontools/smartd_opts needed by smartd.service.
 SMARTD_SKIP_INIT=1 %{_prefix}/lib/smartmontools/generate_smartd_opts
 # No start by default here.. belongs to -presets packages

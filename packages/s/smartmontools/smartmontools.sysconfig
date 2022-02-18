@@ -1,6 +1,5 @@
 ## Path:	Hardware/S.M.A.R.T.
 ## Description:	Hard disc health monitoring
-## Command:     /usr/lib/smartmontools/generate_smartd_opts
 
 ## Type:	integer(10:)
 ## Default:	1800

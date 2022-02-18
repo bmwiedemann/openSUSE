@@ -14,6 +14,9 @@
 # Following code should be in sync with sysv init script for older distros!
 
 # source configuration file.
+smartd_opts=
+[ -r @localstatedir@/lib/smartmontools/smartd_opts ] && . @localstatedir@/lib/smartmontools/smartd_opts
+smartd_opts_old="$smartd_opts"
 [ -r /etc/sysconfig/smartmontools ] && . /etc/sysconfig/smartmontools
 smartd_opts=
 if test -n "$SMARTD_CHECK_INTERVAL" -a "$SMARTD_CHECK_INTERVAL" != 1800 ; then
@@ -33,6 +36,10 @@ if test "$SMARTD_ATTRLOG" = "no" ; then
 fi
 if test -n "$SMARTD_EXTRA_OPTS" ; then
 	smartd_opts="$smartd_opts $SMARTD_EXTRA_OPTS"
+fi
+
+if test "$smartd_opts" = "$smartd_opts_old" ; then
+	exit 0
 fi
 
 mkdir -p @localstatedir@/lib/smartmontools
