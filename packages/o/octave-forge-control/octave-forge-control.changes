@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 16 00:52:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.4.0:
+  * Fix lyapunov equ. in dlyap if B is non-symmetric (bug #49801).
+  * Declare tf([1],[1]) as static gain.
+  * Returned num and den of tfdate have same length (bug #43947).
+  * Fixes for Octave 7.1.0: removed deprecated .+ operator and
+    unsupported plot style.
+
+-------------------------------------------------------------------
 Wed Sep 15 11:02:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.3.1:
