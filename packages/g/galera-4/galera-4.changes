@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 17 10:36:09 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix build and systemd service for SLE-15-SP3
+
+-------------------------------------------------------------------
 Wed Jan 26 15:30:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Use cmake by default to fix build with GCC 12, fixes bsc#1194790

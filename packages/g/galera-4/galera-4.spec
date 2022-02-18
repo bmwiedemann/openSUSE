@@ -110,6 +110,7 @@ export CFLAGS="$CFLAGS -Wno-implicit-fallthrough"
 export CXXFLAGS="$CXXFLAGS -Wno-implicit-fallthrough"
 %endif
 %cmake -DGALERA_SYSTEMD_UNITDIR:PATH=%{_unitdir} \
+       -DCMAKE_INSTALL_LIBEXECDIR:PATH=%{_libexecdir} \
        -DCMAKE_INSTALL_DOCDIR:PATH=%{_datarootdir}/doc/packages/%{name}
 %cmake_build
 %sysusers_generate_pre %{SOURCE2} garb garb-user.conf
@@ -131,6 +132,8 @@ cat > %{buildroot}%{_sysconfdir}/my.cnf.d/51-%{name}-wsrep-provider.cnf <<EOF
 [mysqld]
 wsrep_provider=%{_libdir}/libgalera_smm.so
 EOF
+
+sed -e 's;/usr/libexec;%{_libexecdir};' %{buildroot}%{_unitdir}/garb.service
 
 %files
 # common
