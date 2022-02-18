@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>948502</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7b194aca2bf731d532192d848a0d64b5</srcmd5>
+    <version>1.12.2</version>
+    <time>1645221786</time>
+    <user>dimstar_suse</user>
+    <comment>https://software.opensuse.org/package/vkquake maintenance</comment>
+    <requestid>955858</requestid>
+  </revision>
 </revisionlist>
