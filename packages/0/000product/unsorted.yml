@@ -4073,6 +4073,7 @@ unsorted:
   - gcc-objc-32bit: [x86_64] 
   - gcc10 
   - gcc10-32bit: [x86_64] 
+  - gcc10-PIE 
   - gcc10-ada 
   - gcc10-ada-32bit: [x86_64] 
   - gcc10-c++ 
@@ -16295,6 +16296,7 @@ unsorted:
   - mirror 
   - mirror-registry: [x86_64] 
   - mirrormagic 
+  - mirrorsorcerer: [x86_64] 
   - mjpg-streamer 
   - mk-configure 
   - mk-configure-doc 
@@ -17634,6 +17636,7 @@ unsorted:
   - objectweb-pom 
   - objenesis 
   - objenesis-javadoc 
+  - obs-scm-bridge 
   - obs-service-appimage 
   - obs-service-cargo_audit 
   - obs-service-cargo_vendor 
@@ -19815,7 +19818,6 @@ unsorted:
   - perl-Path-Tiny 
   - perl-Perl-Critic 
   - perl-Perl-Critic-Community 
-  - perl-Perl-Critic-Freenode 
   - perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash 
   - perl-Perl-Critic-Pulp 
   - perl-Perl-PrereqScanner 
@@ -21968,7 +21970,6 @@ unsorted:
   - python310-ZConfig 
   - python310-ZConfig-doc 
   - python310-ZODB 
-  - python310-abclient 
   - python310-abimap 
   - python310-abimap-doc 
   - python310-abseil 
@@ -23038,6 +23039,7 @@ unsorted:
   - python310-guessit 
   - python310-gunicorn 
   - python310-guzzle_sphinx_theme 
+  - python310-gvm-tools 
   - python310-gwcs 
   - python310-gwdatafind 
   - python310-gwosc 
@@ -23090,6 +23092,7 @@ unsorted:
   - python310-httpsig_cffi 
   - python310-httptools 
   - python310-httpx 
+  - python310-hug 
   - python310-humanfriendly 
   - python310-humanhash3 
   - python310-humanize 
@@ -23425,6 +23428,7 @@ unsorted:
   - python310-matplotlib-tk 
   - python310-matplotlib-web 
   - python310-matplotlib-wx 
+  - python310-matrix-nio 
   - python310-matrix_common 
   - python310-maturin 
   - python310-mautrix 
@@ -23498,6 +23502,7 @@ unsorted:
   - python310-musicbrainzngs 
   - python310-mutagen 
   - python310-mutatorMath 
+  - python310-mutmut 
   - python310-mutt-ics 
   - python310-mygpoclient 
   - python310-mypy 
@@ -23557,6 +23562,7 @@ unsorted:
   - python310-npTDMS 
   - python310-nss 
   - python310-ntc-templates 
+  - python310-ntfy 
   - python310-ntlm-auth 
   - python310-ntplib 
   - python310-num2words 
@@ -23745,6 +23751,7 @@ unsorted:
   - python310-pomegranate 
   - python310-pomegranate-devel 
   - python310-pontos 
+  - python310-pony 
   - python310-pooch 
   - python310-pook 
   - python310-poppler-qt5 
@@ -24154,6 +24161,7 @@ unsorted:
   - python310-python-pam 
   - python310-python-poppler 
   - python310-python-pptx 
+  - python310-python-prctl 
   - python310-python-pseudorandom 
   - python310-python-ptrace 
   - python310-python-qdatamatrix 
@@ -24881,8 +24889,6 @@ unsorted:
   - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
-  - python36-coverage-config-reload-plugin 
-  - python36-coverage-env-plugin 
   - python36-curses 
   - python36-dbm 
   - python36-devel 
@@ -24907,13 +24913,10 @@ unsorted:
   - python36-idle 
   - python36-labelImg 
   - python36-mrkd 
-  - python36-ntfy 
   - python36-oic 
   - python36-pip-licenses 
   - python36-podman 
-  - python36-pony 
   - python36-python-crfsuite 
-  - python36-python-prctl 
   - python36-raven-aiohttp 
   - python36-requests-gssapi 
   - python36-sphinx-argparse 
@@ -25144,7 +25147,6 @@ unsorted:
   - python38-ZConfig-doc 
   - python38-ZEO 
   - python38-ZODB 
-  - python38-abclient 
   - python38-abimap 
   - python38-abimap-doc 
   - python38-abseil 
@@ -25746,8 +25748,6 @@ unsorted:
   - python38-cov-core 
   - python38-covdefaults 
   - python38-coverage 
-  - python38-coverage-config-reload-plugin 
-  - python38-coverage-env-plugin 
   - python38-coveralls-check 
   - python38-cppclean 
   - python38-cpplint 
@@ -26548,6 +26548,7 @@ unsorted:
   - python38-matplotlib-testdata 
   - python38-matplotlib-web 
   - python38-matplotlib-wx 
+  - python38-matrix-nio 
   - python38-matrix_common 
   - python38-maturin 
   - python38-mautrix 
@@ -28160,7 +28161,6 @@ unsorted:
   - python39-ZConfig-doc 
   - python39-ZEO 
   - python39-ZODB 
-  - python39-abclient 
   - python39-abimap 
   - python39-abimap-doc 
   - python39-abseil 
@@ -28794,8 +28794,6 @@ unsorted:
   - python39-cov-core 
   - python39-covdefaults 
   - python39-coverage 
-  - python39-coverage-config-reload-plugin 
-  - python39-coverage-env-plugin 
   - python39-coveralls-check 
   - python39-cppclean 
   - python39-cpplint 
@@ -29652,6 +29650,7 @@ unsorted:
   - python39-matplotlib-tk 
   - python39-matplotlib-web 
   - python39-matplotlib-wx 
+  - python39-matrix-nio 
   - python39-maturin 
   - python39-mautrix 
   - python39-maxminddb 
@@ -33375,6 +33374,7 @@ unsorted:
   - texi2html-lang 
   - texi2roff 
   - texinfo 
+  - texinfo-lang 
   - texlive 
   - texlive-12many 
   - texlive-12many-doc 
