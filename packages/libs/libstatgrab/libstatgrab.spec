@@ -1,7 +1,7 @@
 #
 # spec file for package libstatgrab
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define soname  10
 Name:           libstatgrab
-Version:        0.92
+Version:        0.92.1
 Release:        0
 Summary:        Interface to System Statistics
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libstatgrab.org/
-Source:         https://github.com/libstatgrab/libstatgrab/releases/download/LIBSTATGRAB_0_92/libstatgrab-%{version}.tar.gz
+Source:         https://github.com/libstatgrab/libstatgrab/releases/download/LIBSTATGRAB_0_92_1/libstatgrab-%{version}.tar.gz
 Source1:        statgrab.desktop
 Source2:        saidar.desktop
 Source3:        baselibs.conf
