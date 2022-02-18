@@ -1,7 +1,7 @@
 #
 # spec file for package liburing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,8 @@ manner, for both buffered and O_DIRECT.
 %package devel
 Summary:        Development files for Linux-native io_uring I/O access library
 Group:          Development/Libraries/C and C++
+# SLE/Leap 15.4+ retain liburing-devel for the inherited 0.6 API. The v2 API is:
+Provides:       %{lname}-devel = %{version}
 Requires:       %{lname} = %{version}
 Requires:       pkgconfig
 
