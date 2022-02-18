@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 18 07:09:11 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.1.3: This is a security release (CVE-2021-21708)
+  which also contains several bug fixes.
+  See https://www.php.net/ChangeLog-8.php#8.1.3
+
+-------------------------------------------------------------------
+Fri Feb 11 20:49:28 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- provide an Apache configuration for PHP-FPM
+  + php8-fpm.conf
+
+-------------------------------------------------------------------
 Fri Jan 28 10:04:27 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update keyring to include PHP 8.1 release managers signing keys

@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.1.2
+Version:        8.1.3
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
@@ -61,6 +61,7 @@ Group:          Development/Libraries/PHP
 URL:            https://secure.php.net
 Source0:        https://secure.php.net/distributions/php-%{version}.tar.xz
 Source1:        mod_%{php_name}.conf
+Source2:        %{php_name}-fpm.conf
 Source5:        README.macros
 Source6:        macros.php
 Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
@@ -329,6 +330,21 @@ If you are completely new to PHP and want to get some idea of how it
 works, have a look at the Introductory tutorial. Once you get beyond
 that have a look at the example archive sites and some of the other
 resources available in the links section.
+
+%package apache
+Summary:        Apache configuration for PHP-FPM
+Group:          Development/Libraries/PHP
+BuildRequires:  apache-rpm-macros-control
+BuildRequires:  apache2
+Requires:       apache2
+Requires:       php-fpm = %{version}
+Requires(post): %{_sbindir}/a2enmod
+Supplements:    php-fpm and apache2
+Conflicts:      mod_php_any
+
+%description apache
+Configuration for Apache to pass all requests for PHP scripts to the
+PHP-FPM server using reverse proxy.
 %endif
 
 %if "%{flavor}" == "embed"
@@ -1233,6 +1249,9 @@ install -m 0644 %{SOURCE12} %{buildroot}%{_tmpfilesdir}/php-fpm.conf
 # bug 1192414
 mv %{buildroot}%{php_sysconf}/fpm/php-fpm.conf{.default,}
 mv %{buildroot}%{php_sysconf}/fpm/php-fpm.d/www.conf{.default,}
+# apache configuration
+mkdir -p %{buildroot}%{apache_sysconfdir}/conf.d
+install -m 644 %{SOURCE2} %{buildroot}%{apache_sysconfdir}/conf.d/%{php_name}-fpm.conf
 %endif
 
 %if "%{flavor}" == ""
@@ -1325,6 +1344,19 @@ fi
 
 %posttrans
 %_restart_on_update php-fpm.service
+
+%post apache
+if [ $1 -eq 1 ]; then
+    # package is just installed, check/enable required Apache modules
+    for m in proxy proxy_fcgi; do
+        a2enmod -q ${m} && continue
+        a2enmod ${m}
+        %apache_request_restart -m ${m}
+    done
+fi
+
+%posttrans apache
+%apache_restart_if_needed
 %endif
 
 %if "%{flavor}" == "embed"
@@ -1401,6 +1433,9 @@ fi
 %{_unitdir}/php-fpm.service
 %{_tmpfilesdir}/php-fpm.conf
 %ghost %dir %attr(711,root,root) /run/php-fpm
+
+%files apache
+%config(noreplace) %{apache_sysconfdir}/conf.d/%{php_name}-fpm.conf
 %endif
 
 %if "%{flavor}" == "apache2"
