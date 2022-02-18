@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 17 11:56:07 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220217.8b1acc1d:
+  * Remove --by-develproject for adi command
+
+-------------------------------------------------------------------
+Thu Feb 17 10:51:46 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220217.3f8763ae:
+  * use set -e to catch more issues with the script
+  * rename JeOS to Minimal and remove Vagrant images
+
+-------------------------------------------------------------------
 Thu Feb 17 08:17:15 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220217.28577584:
