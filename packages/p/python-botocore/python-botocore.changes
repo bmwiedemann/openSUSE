@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Feb  1 10:27:19 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Version to update to 1.23.46
+- Version update to 1.23.46
   * api-change:``appconfigdata``: Documentation updates for AWS AppConfig Data.
   * api-change:``athena``: This release adds a field, AthenaError, to the GetQueryExecution response
     object when a query fails.
