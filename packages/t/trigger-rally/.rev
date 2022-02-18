@@ -59,4 +59,12 @@
     <comment></comment>
     <requestid>731147</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>fd51271f5f031747ab1d791fc11eaa6f</srcmd5>
+    <version>0.6.6.1</version>
+    <time>1645221786</time>
+    <user>dimstar_suse</user>
+    <comment>https://software.opensuse.org/package/trigger-rally maintenance</comment>
+    <requestid>955857</requestid>
+  </revision>
 </revisionlist>
