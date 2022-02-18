@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 16 04:34:33 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Restrict use of sudo -U other -l to people who have permission
+  to run commands as that user (bsc#1181703, jsc#SLE-22569)
+  * feature-upstream-restrict-sudo-U-other-l.patch
+
+-------------------------------------------------------------------
 Tue Feb  1 02:27:04 UTC 2022 - Simon Lees <simonf.lees@suse.com>
 
 - Update to 1.9.9

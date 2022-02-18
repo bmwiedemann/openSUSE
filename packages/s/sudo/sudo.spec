@@ -38,6 +38,7 @@ Source6:        fate_313276_test.sh
 Source7:        README_313276.test
 # PATCH-OPENSUSE: the "SUSE" branding of the default sudo config
 Patch0:         sudo-sudoers.patch
+Patch1:         feature-upstream-restrict-sudo-U-other-l.patch
 BuildRequires:  audit-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  groff

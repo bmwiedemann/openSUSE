@@ -1,0 +1,143 @@
+From 9f695f0fcc749b3cdebc453ba4fdeae84114f3ae Mon Sep 17 00:00:00 2001
+From: "Todd C. Miller" <Todd.Miller@sudo.ws>
+Date: Mon, 14 Feb 2022 13:09:55 -0700
+Subject: [PATCH] Restrict "sudo -U other -l" to users with sudo ALL for root
+ or "other". Having "sudo ALL" permissions in no longer sufficient to be able
+ to list another user's privileges.  The invoking user must now have "sudo
+ ALL" for root or the target user. GitHub issue #134
+
+---
+ docs/sudo.man.in         | 11 ++++++-----
+ docs/sudo.mdoc.in        | 11 ++++++-----
+ plugins/sudoers/parse.c  | 34 ++++++++++++++++++++++++----------
+ plugins/sudoers/policy.c |  5 +++++
+ 4 files changed, 41 insertions(+), 20 deletions(-)
+
+Index: sudo-1.9.9/docs/sudo.man.in
+===================================================================
+--- sudo-1.9.9.orig/docs/sudo.man.in
++++ sudo-1.9.9/docs/sudo.man.in
+@@ -664,11 +664,12 @@ option to list the privileges for
+ \fIuser\fR
+ instead of for the invoking user.
+ The security policy may restrict listing other users' privileges.
+-The
++When using the
+ \fIsudoers\fR
+-policy only allows root or a user with the
+-\fRALL\fR
+-privilege on the current host to use this option.
++policy, only root or a user with the ability to run any command as
++either root or the specified
++\fIuser\fR
++on the current host may use this option.
+ .TP 12n
+ \fB\-T\fR \fItimeout\fR, \fB\--command-timeout\fR=\fItimeout\fR
+ Used to set a timeout for the command.
+Index: sudo-1.9.9/docs/sudo.mdoc.in
+===================================================================
+--- sudo-1.9.9.orig/docs/sudo.mdoc.in
++++ sudo-1.9.9/docs/sudo.mdoc.in
+@@ -620,11 +620,12 @@ option to list the privileges for
+ .Ar user
+ instead of for the invoking user.
+ The security policy may restrict listing other users' privileges.
+-The
++When using the
+ .Em sudoers
+-policy only allows root or a user with the
+-.Li ALL
+-privilege on the current host to use this option.
++policy, only root or a user with the ability to run any command as
++either root or the specified
++.Ar user
++on the current host may use this option.
+ .It Fl T Ar timeout , Fl -command-timeout Ns = Ns Ar timeout
+ Used to set a timeout for the command.
+ If the timeout expires before the command has exited, the
+Index: sudo-1.9.9/plugins/sudoers/parse.c
+===================================================================
+--- sudo-1.9.9.orig/plugins/sudoers/parse.c
++++ sudo-1.9.9/plugins/sudoers/parse.c
+@@ -43,24 +43,26 @@ static int
+ sudoers_lookup_pseudo(struct sudo_nss_list *snl, struct passwd *pw,
+     int validated, int pwflag)
+ {
+-    int match;
++    struct passwd *root_pw = NULL;
+     struct sudo_nss *nss;
+     struct cmndspec *cs;
+     struct privilege *priv;
+     struct userspec *us;
+     struct defaults *def;
+-    int nopass;
++    int nopass, match = DENY;
+     enum def_tuple pwcheck;
+     debug_decl(sudoers_lookup_pseudo, SUDOERS_DEBUG_PARSER);
+ 
+     pwcheck = (pwflag == -1) ? never : sudo_defs_table[pwflag].sd_un.tuple;
+     nopass = (pwcheck == never || pwcheck == all) ? true : false;
+ 
+-    if (list_pw == NULL)
+-	SET(validated, FLAG_NO_CHECK);
+     CLR(validated, FLAG_NO_USER);
+     CLR(validated, FLAG_NO_HOST);
+-    match = DENY;
++    if (list_pw != NULL) {
++	root_pw = sudo_getpwuid(ROOT_UID);
++    } else {
++	SET(validated, FLAG_NO_CHECK);
++    }
+     TAILQ_FOREACH(nss, snl, entries) {
+ 	if (nss->query(nss, pw) == -1) {
+ 	    /* The query function should have printed an error message. */
+@@ -89,16 +91,28 @@ sudoers_lookup_pseudo(struct sudo_nss_li
+ 		    }
+ 		    if (match == ALLOW)
+ 			continue;
+-		    /* Only check the command when listing another user. */
++
++		    /* Only check runas/command when listing another user. */
+ 		    if (user_uid == 0 || list_pw == NULL ||
+-			user_uid == list_pw->pw_uid ||
+-			cmnd_matches(nss->parse_tree, cs->cmnd, cs->runchroot,
+-			NULL) == ALLOW)
+-			    match = ALLOW;
++			    user_uid == list_pw->pw_uid) {
++			match = ALLOW;
++			continue;
++		    }
++		    /* Runas user must match list user or root. */
++		    if (userlist_matches(nss->parse_tree, list_pw,
++			    cs->runasuserlist) == DENY ||
++			    userlist_matches(nss->parse_tree, root_pw,
++			    cs->runasuserlist) != ALLOW)
++			continue;
++		    if (cmnd_matches(nss->parse_tree, cs->cmnd, cs->runchroot,
++			    NULL) == ALLOW)
++			match = ALLOW;
+ 		}
+ 	    }
+ 	}
+     }
++    if (root_pw != NULL)
++	sudo_pw_delref(root_pw);
+     if (match == ALLOW || user_uid == 0) {
+ 	/* User has an entry for this host. */
+ 	SET(validated, VALIDATE_SUCCESS);
+Index: sudo-1.9.9/plugins/sudoers/policy.c
+===================================================================
+--- sudo-1.9.9.orig/plugins/sudoers/policy.c
++++ sudo-1.9.9/plugins/sudoers/policy.c
+@@ -1217,6 +1217,11 @@ sudoers_policy_list(int argc, char * con
+ 	    sudo_warnx(U_("unknown user %s"), list_user);
+ 	    debug_return_int(-1);
+ 	}
++	/* A user may only list another user they have runas access to. */
++	if (runas_pw != NULL)
++	    sudo_pw_delref(runas_pw);
++	runas_pw = list_pw;
++	sudo_pw_addref(list_pw);
+     }
+     ret = sudoers_policy_main(argc, argv, I_LISTPW, NULL, verbose, NULL);
+     if (list_user) {
