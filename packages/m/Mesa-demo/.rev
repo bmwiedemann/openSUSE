@@ -203,4 +203,12 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
   (boo#1195695)</comment>
     <requestid>952997</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>0ed817569e38e4c9867ac73e12ea372f</srcmd5>
+    <version>8.4.0</version>
+    <time>1645221758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955606</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 10 19:14:24 UTC 2022 - Behzad A <behzad.a_ir@hotmail.com>
+
+- added sub-packages as dependencies to the main package to
+  ensure the complete installation of the program
+  * Mesa-demo-x
+  * Mesa-demo-es
+  * Mesa-demo-egl
+
+-------------------------------------------------------------------
 Tue Feb 08 22:39:16 UTC 2022 - Behzad A <behzad.a_ir@hotmail.com>
 
 - added "-egl" subpackage for common EGL-based demos include

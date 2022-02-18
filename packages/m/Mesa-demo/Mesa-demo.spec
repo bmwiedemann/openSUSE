@@ -41,6 +41,9 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
+Requires:       Mesa-demo-egl = %{version}
+Requires:       Mesa-demo-es = %{version}
+Requires:       Mesa-demo-x = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
