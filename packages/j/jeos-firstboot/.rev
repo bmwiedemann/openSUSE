@@ -454,4 +454,15 @@
   * Don't attach jeos-firstboot-snapshot.service to the TTY</comment>
     <requestid>951339</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1c1b2b4b0e812642e3efcfcb635a243f</srcmd5>
+    <version>1.1.1.0</version>
+    <time>1645221761</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1.0:
+  * Drop use of /var/log/jeos
+  * Avoid &quot;Terminated console_subproc&quot; message from wait
+  * Skip broken consoles (bsc#1195975)</comment>
+    <requestid>955654</requestid>
+  </revision>
 </revisionlist>
