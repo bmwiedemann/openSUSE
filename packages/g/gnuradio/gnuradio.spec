@@ -1,7 +1,7 @@
 #
 # spec file for package gnuradio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,6 @@ BuildRequires:  libjack-devel
 BuildRequires:  libmpir-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  log4cpp-devel
-BuildRequires:  mathjax
 BuildRequires:  ninja
 BuildRequires:  orc
 BuildRequires:  pkgconfig
@@ -72,16 +71,16 @@ BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-six
 BuildRequires:  qwt6-qt5-devel
 BuildRequires:  soapy-sdr-devel
-BuildRequires:  typelib(Gtk) = 3.0
-BuildRequires:  typelib(PangoCairo) = 1.0
-BuildRequires:  typelib(cairo) = 1.0
 BuildRequires:  uhd-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  volk-devel >= 2.4.1
 BuildRequires:  pkgconfig(codec2)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(py3cairo)
-BuildRequires:  volk-devel >= 2.4.1
+BuildRequires:  typelib(Gtk) = 3.0
+BuildRequires:  typelib(PangoCairo) = 1.0
+BuildRequires:  typelib(cairo) = 1.0
 # gr_modtool dependencies
 Requires:       python3-click
 Requires:       python3-click-plugins
@@ -89,12 +88,12 @@ Requires:       python3-mako
 Requires:       python3-numpy
 Requires:       python3-pyaml >= 3.11
 Requires:       python3-qt5
+# gr_filter dependencies
+Requires:       python3-scipy
+Requires:       python3-pyqtgraph
 %if %{with docs}
 BuildRequires:  doxygen
-# TeX is required for formula rendering
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-latex
-BuildRequires:  tex(newunicodechar.sty)
+BuildRequires:  mathjax
 %endif
 
 %description
@@ -166,6 +165,9 @@ This package contains some examples of using GNU Radio.
 %prep
 %autosetup -p1
 
+# protect the template files from %%cmake macro magic / mangling
+find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt -ls -exec mv '{}' '{}.tmpl' \;
+
 %build
 %define __builder ninja
 %cmake \
@@ -178,6 +180,9 @@ This package contains some examples of using GNU Radio.
 %cmake_build
 
 %install
+# move the template files back
+find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt.tmpl -execdir mv '{}' 'CMakeLists.txt' \;
+
 %cmake_install
 
 install -d %{buildroot}%{_docdir}/%{name}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 13 05:05:06 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Restore gr_modtool CMakeLists.txt files, protect from %cmake
+  mangling.
+- Remove TeX build dependency, math is rendered with MathJax.
+- Add pyqtgraph and scipy filter design tool runtime dependencies.
+
+-------------------------------------------------------------------
 Wed Feb  9 07:57:53 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Patch revert-23cece0d0.patch removed - not needed now
