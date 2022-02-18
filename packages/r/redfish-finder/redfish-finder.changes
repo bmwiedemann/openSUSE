@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 12:56:45 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_redfish-finder.service.patch
+
+-------------------------------------------------------------------
 Wed Mar  3 08:31:35 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix parsing HostConfig for DHCP (bsc#1182765)

@@ -27,6 +27,7 @@ Source0:        redfish-finder-0.4.tar.gz
 Patch0:         python_path.patch
 # PATCH-FIX_UPSTREAM: https://github.com/nhorman/redfish-finder/pull/3
 Patch1:         fix_parsing_HostConfig_for_dhcp.patch
+Patch2:	harden_redfish-finder.service.patch
 
 BuildRequires:  python3
 Requires:       NetworkManager
@@ -44,6 +45,7 @@ canonically accessible via the hostname redfish-localhost
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 #noop here

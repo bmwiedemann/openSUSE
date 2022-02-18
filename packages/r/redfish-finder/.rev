@@ -26,4 +26,12 @@ This should be in SLES (jsc#10894), but we don't have it in Factory yet.
     <comment></comment>
     <requestid>876416</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>63481b017fd06e880a1107f24a0c5960</srcmd5>
+    <version>0.4</version>
+    <time>1645221788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955868</requestid>
+  </revision>
 </revisionlist>
