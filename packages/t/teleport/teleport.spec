@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           teleport
-Version:        6.2.28
+Version:        8.3.1
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        Apache-2.0
@@ -58,7 +58,7 @@ License:        Apache-2.0
 A tool that lets end users interact with Teleport nodes. This replaces ssh.
 
 %prep
-%setup -q 
+%setup -q
 %setup -q -T -D -a 1
 
 %build
