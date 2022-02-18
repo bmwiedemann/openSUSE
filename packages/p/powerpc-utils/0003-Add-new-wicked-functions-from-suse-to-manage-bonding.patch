@@ -1,28 +1,27 @@
-From aeaf71efb4a761892f566f996d70d60e4233958e Mon Sep 17 00:00:00 2001
+From df3577154f55a542613779596d26369e7a0d74b8 Mon Sep 17 00:00:00 2001
 From: Mingming Cao <mmc@linux.vnet.ibm.com>
-Date: Thu, 13 Jan 2022 06:22:46 -0800
-Subject: [PATCH 03/27] Add new wicked functions from suse to manage bonding 
- interfaces
+Date: Wed, 16 Feb 2022 00:16:52 -0800
+Subject: [PATCH 3/6] Add new wicked functions from suse to manage bonding
 
 suse specific hcnmgr utilities to manipulate suse ifcfg files
 as supported by yast2 network.
 
-Signed-off-by:   Marius Tomaschewski <mt@suse.com>
+Signed-off-by: Marius Tomaschewski <mt@suse.com>
 ---
- scripts/functions.suse | 400 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 400 insertions(+)
+ scripts/functions.suse | 386 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 386 insertions(+)
  create mode 100644 scripts/functions.suse
 
 diff --git a/scripts/functions.suse b/scripts/functions.suse
 new file mode 100644
-index 0000000..4001bb8
+index 0000000..06696dd
 --- /dev/null
 +++ b/scripts/functions.suse
-@@ -0,0 +1,400 @@
+@@ -0,0 +1,386 @@
 +#! /bin/bash
 +#  ^^^^^^^^^
 +#
-+# Copyright (c) 2021 SUSE LLC
++# Copyright (c) 2022 SUSE LLC
 +#
 +# This program is free software; you can redistribute it and/or
 +# modify it under the terms of the GNU General Public License
@@ -40,28 +39,29 @@ index 0000000..4001bb8
 +# Authors:
 +#	Marius Tomaschewski <mt@suse.com>
 +#
-+# suse specific hcnmgr utilities to manipulate suse ifcfg files
-+# as supported by yast2 network.
++# Bash function library for hcnmgr providing utilities to manipulate
++# suse ifcfg config files as supported by yast2 network and wicked.
 +#
++###
 +
 +suse_ifcfg_config_dir="/etc/sysconfig/network"
 +
 +suse_wlist_find()
 +{
-+        local item want="$1" ; shift
-+        for item in $* ; do
-+                [ X"$want" = X"$item" ] && return 0
-+        done
-+        return 1
++	local item want="$1" ; shift
++	for item in "$@" ; do
++		[ X"$want" = X"$item" ] && return 0
++	done
++	return 1
 +}
 +suse_wlist_uniq()
 +{
 +	local item list=()
-+        for item in $* ; do
-+                suse_wlist_find "$item" "$list" && continue
++	for item in "$@" ; do
++		suse_wlist_find "$item" "${list[@]}" && continue
 +		list+=("$item")
-+        done
-+        echo "${list[*]}"
++	done
++	echo "${list[@]}"
 +}
 +suse_ifcfg_unquote()
 +{
@@ -135,10 +135,6 @@ index 0000000..4001bb8
 +	if [ X"${options[*]}" = X ] ; then
 +		# default options as used by the hcnmgr
 +		options=(mode=active-backup miimon=100 fail_over_mac=follow)
-+		# set 1st slave as primary to inherit the mac from (by default)
-+		if [ X"${slaves[0]}" != X ] ; then
-+			options+=("primary=${slaves[0]}")
-+		fi
 +	fi
 +
 +	echo "STARTMODE='auto'"
@@ -347,7 +343,7 @@ index 0000000..4001bb8
 +	[ X"$file" != X ] && rm -f -- "$file"
 +
 +	# TODO: cleanup interfaces on top of the bond
-+	# 		_if_ the hnv setup permit to use them
++	#       _if_ the hnv setup permit to use them
 +	# e.g.: brX { bondX }, brN { bondX.N }
 +}
 +
@@ -388,8 +384,6 @@ index 0000000..4001bb8
 +		if [ X"$primary" != X ] ; then
 +			if suse_wlist_find "$primary" "${nslaves[*]}" ; then
 +				noptions+=("primary=$primary")
-+			elif [ X"${nslaves[0]}" != X ] ; then
-+				noptions+=("primary=${nslaves[0]}")
 +			fi
 +		fi
 +	fi
@@ -408,15 +402,6 @@ index 0000000..4001bb8
 +	fi
 +	rm -f -- "$temp"
 +	return 1
-+}
-+
-+wicked_reload()
-+{
-+	if [ $# -eq 0 ] ; then
-+		rcnetwork reload
-+	elif systemctl_is_active wicked.service ; then
-+		wicked ifreload -- "$@"
-+	fi
 +}
 +
 -- 

@@ -1,15 +1,8 @@
-From a831053d868f806a61ee06b88a3ee917a42586b4 Mon Sep 17 00:00:00 2001
-From: Marius Tomaschewski <mt@suse.de>
-Date: Wed, 26 Jan 2022 22:10:36 +0100
-Subject: [PATCH 15/27] add hcn-init.service.suse service covering wicked
+From 0f2489fd015cce2662bde4a98a6c54b8432ee667 Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Wed, 16 Feb 2022 01:09:05 -0800
+Subject: [PATCH 6/6] Add hcn-init.service.suse
 
-While hcnmgr -s needs to communicate with NetworkManager and
-thus the hcn-init.service has to start after it, in wicked
-case, we can prepare the actually needed configuration and
-let wicked.service starting after apply it.
-This avoids to try to setup a potentially obsolete bonding
-first (and maybe even run into timeouts) and then modify it
-to the current hcn state in device-tree.
 ---
  configure.ac                     |  2 +-
  systemd/hcn-init.service.suse.in | 13 +++++++++++++

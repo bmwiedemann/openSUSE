@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Feb 17 11:35:41 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- lparstat: report LPAR name from lparcfg (bsc#1187716 ltc#193451).
+   + lparstat-report-LPAR-name-from-lparcfg.patch
+
+-------------------------------------------------------------------
+Thu Feb 17 11:32:16 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Update HNV implementation (bsc#1195404 ltc#196259).
+   + 0001-Validate-connection-manager-and-add-option-to-trace-.patch
+   + 0002-Factor-out-NetworkManager-nmcli-code.patch
+   * 0003-Add-new-wicked-functions-from-suse-to-manage-bonding.patch
+   + 0004-Support-wicked-HNV-using-new-wicked-functions-for-bo.patch
+   + 0005-hcnmgr-maintain-hcnid-state-for-later-cleanup.patch
+   + 0006-Add-hcn-init.service.suse.patch
+   - 0001-Validate-connection-manager.patch
+   - 0002-factor-out-NetworkManager-nmcli-code.patch
+   - 0004-Support-wicked-HNV-using-new-wicked-interfaces-for.patch
+   - 0005-Set-modprobe-bonding-max_bonds-0-option.patch
+   - 0006-cleanup-hcnmgr-distro-and-service-detection.patch
+   - 0007-Remove-wicked-ifup-calls-that-just-run-into-timeouts.patch
+   - 0008-add-note-about-comma-in-hcnmgr-BONDOPTIONS.patch
+   - 0009-Fix-to-call-wicked-ifreload-directly.patch
+   - 0010-Fix-incorrect-parameters-to-suse_ifcfg_bond_create.patch
+   - 0011-Fix-comment-about-setting-primary.patch
+   - 0012-Description-and-indenting-corrections.patch
+   - 0013-adjust-sourcing-path-of-the-functions.suse-library.patch
+   - 0014-Enable-the-network-service-checks.patch
+   - 0015-add-hcn-init.service.suse-service-covering-wicked.patch
+   - 0016-functions.suse-fix-suse-wlist-utility-functions.patch
+   - 0017-functions.suse-don-t-implicitly-set-primary-to-1st-s.patch
+   - 0018-hcnmgr-add-x-option-to-trace-hcnmgr-script-execution.patch
+   - 0019-check-platform-service-after-getopts-parsing.patch
+   - 0020-call-less-intrusive-ifdown-ifup-in-rmdev_wicked.patch
+   - 0021-call-ifup-instead-ifreload-in-config_vdevice_wicked.patch
+   - 0022-split-scanhcn-function-into-nm-wicked-variants.patch
+   - 0023-hcnmgr-merged-scanhcn_wicked-id-fix-and-comments.patch
+   - 0024-Fix-race-with-udev-renaming-and-hcn-configure.patch
+   - 0025-hcnmgr-remove-ifcfg-file-dump-from-scanhcn_wicked.patch
+   - 0026-hcnmgr-move-sourcing-functions.suse-to-wicked-case.patch
+   - 0027-hcnmgr-extend-suse-os-release-match.patch
+
+-------------------------------------------------------------------
 Mon Feb  7 11:27:38 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix HNV migration and other HNV issues (bsc#1195404 ltc#196259).
