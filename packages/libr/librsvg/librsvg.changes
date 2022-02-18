@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 17 08:53:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.52.6:
+  + Fix incorrect text rendering when text has different scales in
+    the X/Y axes. This regressed after librsvg 2.52.5, when Pango
+    had to revert its fix for the same bug. Now librsvg renders all
+    text as paths, and does the scaling itself. Please file a bug
+    if you have evidence that this presents a performance problem
+    for you.
+
+-------------------------------------------------------------------
 Fri Dec 17 20:14:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.52.5:
