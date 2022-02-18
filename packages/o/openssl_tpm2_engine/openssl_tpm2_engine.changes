@@ -1,12 +1,4 @@
 -------------------------------------------------------------------
-Thu Feb 17 14:09:11 UTC 2022 - James.Bottomley@HansenPartnership.com
-
-- Update to version 3.1.0
-  * Bandaid openssl-3 support
-  * direct pcr policy creation options
-  * TPM key RFC
-
--------------------------------------------------------------------
 Sun Apr  4 21:35:39 UTC 2021 - James.Bottomley@HansenPartnership.com
 
 - Update to version 3.0.1

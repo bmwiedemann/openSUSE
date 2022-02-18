@@ -35,4 +35,11 @@
   * TPM key RFC (forwarded request 955639 from jejb1)</comment>
     <requestid>955652</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>623aa684a13a4637bcff17163ed630ad</srcmd5>
+    <version>3.0.1</version>
+    <time>1645221269</time>
+    <user>dimstar_suse</user>
+    <comment>https://openqa.opensuse.org/tests/2196907#step/tpm2_engine_rsa_operation/11</comment>
+  </revision>
 </revisionlist>
