@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb 16 00:58:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.3:
+  * New functions: anova1, kruskalwallis, cluster, clusterdata,
+    confusionchart, confusionmat, cophenet, datasample,
+    evalclusters, expfit, explike, gscatter, ismissing,
+    inconsistent, mhsample.m, ncx2pdf, optimalleaforder.m, pca,
+    rmmissing, silhouette, slicesample, wblplot.
+  * Improvements:
+    - anovan.m: use double instead of toascii (bug #60514)
+    - binocdf: new option "upper" (bug #43721)
+    - boxplot: better Matlab compatibility; several
+      Matlab-compatible plot options added (OutlierTags,
+      Sample_IDs, BoxWidth, Widths, BoxStyle, Positions, Labels,
+      Colors) and an Octave-specific one (CapWidhts); demos added;
+      texinfo improved (patch #9930)
+    - auto MPG (carbig) sample dataset added from 
+      https://archive.ics.uci.edu/ml/datasets/Auto+MPG (patch
+      #10045).
+    - crosstab.m: make n-dimensional (patch #10014)
+    - dendrogram.m: many improvements (patch #10036)
+    - fitgmdist.m: fix typo in ComponentProportion (bug #59386)
+    - gevfit: change orientation of results for Matlab
+      compatibility (bug #47369).
+    - hygepdf: avoid overflow for certain inputs (bug #35827)
+    - kmeans: efficiency and compatibility tweaks (patch #10042)
+    - pdist: option for squared Euclidean distance (patch #10051) 
+    - stepwisefit.m: give another option to select predictors
+      (patch #8584) .
+    - tricdf, triinv: fixes (bug #60113)
+
+-------------------------------------------------------------------
 Thu May  7 18:01:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.4.2:
