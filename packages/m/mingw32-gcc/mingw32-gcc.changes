@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 16 13:22:51 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 10.3.0
+- Fix error: we support EITHER _multibuild OR multiple spec files
+
+-------------------------------------------------------------------
 Sat Mar 27 00:31:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc

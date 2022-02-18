@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-gcc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define include_ada 0
-%{_mingw32_package_header_debug}
+%_mingw32_package_header_debug
 Name:           mingw32-gcc
-Version:        9.2.0
+Version:        10.3.0
 Release:        0
 Summary:        MinGW Windows compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -284,6 +284,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %files
 %{_mingw32_bindir}/gcc*.exe
 %{_mingw32_bindir}/gcov*.exe
+%{_mingw32_bindir}/lto-dump*.exe
 %exclude %{_mingw32_bindir}/%{_mingw32_target}-gcc*.exe
 %dir %{_mingw32_libdir}/gcc/%{_mingw32_target}
 %dir %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}
@@ -320,6 +321,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw32_mandir}/man1/gcov.1*
 %{_mingw32_mandir}/man1/gcov-dump.1*
 %{_mingw32_mandir}/man1/gcov-tool.1*
+%{_mingw32_mandir}/man1/lto-dump.1*
 %{_mingw32_mandir}/man7/fsf-funding.7*
 %{_mingw32_mandir}/man7/gfdl.7*
 %{_mingw32_mandir}/man7/gpl.7*
@@ -365,6 +367,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include/c++/
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.dll.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++fs.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libsupc++.a
 %{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/cc1plus.exe
 

@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-cross-gcc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 %define include_ada 0
 Name:           mingw32-cross-gcc
-Version:        9.2.0
+Version:        10.3.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -207,6 +207,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %files
 %{_bindir}/%{_mingw32_target}-gcc*
 %{_bindir}/%{_mingw32_target}-gcov*
+%{_bindir}/%{_mingw32_target}-lto-dump*
 %dir %{_libdir}/gcc/%{_mingw32_target}
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/crtbegin.o
@@ -243,6 +244,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mandir}/man1/%{_mingw32_target}-gcov.1*
 %{_mandir}/man1/%{_mingw32_target}-gcov-dump.1*
 %{_mandir}/man1/%{_mingw32_target}-gcov-tool.1*
+%{_mandir}/man1/%{_mingw32_target}-lto-dump.1*
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/collect2
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/lto-wrapper
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/lto1
@@ -265,6 +267,8 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.dll.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.la
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++fs.a
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++fs.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libsupc++.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libsupc++.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/cc1plus

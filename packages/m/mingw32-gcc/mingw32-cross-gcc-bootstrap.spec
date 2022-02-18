@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-cross-gcc-bootstrap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 Name:           mingw32-cross-gcc-bootstrap
-Version:        9.2.0
+Version:        10.3.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -119,6 +119,7 @@ ln -sf %{_bindir}/%{_mingw32_target}-cpp \
 %files
 %{_bindir}/%{_mingw32_target}-gcc*
 %{_bindir}/%{_mingw32_target}-gcov*
+%{_bindir}/%{_mingw32_target}-lto-dump
 %dir %{_libdir}/gcc/%{_mingw32_target}
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}/include
@@ -134,6 +135,7 @@ ln -sf %{_bindir}/%{_mingw32_target}-cpp \
 %{_mandir}/man1/%{_mingw32_target}-gcov.1*
 %{_mandir}/man1/%{_mingw32_target}-gcov-dump.1*
 %{_mandir}/man1/%{_mingw32_target}-gcov-tool.1*
+%{_mandir}/man1/%{_mingw32_target}-lto-dump.1*
 %{_libexecdir}/gcc/%{_mingw32_target}/%{version}/collect2
 %{_libexecdir}/gcc/%{_mingw32_target}/%{version}/lto-wrapper
 %{_libexecdir}/gcc/%{_mingw32_target}/%{version}/lto1

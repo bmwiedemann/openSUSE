@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 16 13:22:51 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 10.3.0
+- Fix error: we support EITHER _multibuild OR multiple spec files
+
+-------------------------------------------------------------------
 Mon Aug 31 17:09:50 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix invalid location to brp-compress on tumbleweed (boo#1175858)
