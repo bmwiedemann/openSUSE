@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 16 23:08:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Clarify that the Headers class is a Sequence and inherit from the
+    collections Sequence abstract base class to also indicate this (and
+    gain the mixin methods).
+  * Switch event classes to dataclasses for easier typing and slightly
+    improved performance.
+  * Shorten traceback of protocol errors for easier readability
+  * Add typing including a PEP 561 marker for usage by type checkers
+  * Expand the allowed status codes to [0, 999] from [0, 600]
+  * Ensure request method is a valid token
+
+-------------------------------------------------------------------
 Fri Feb  5 17:05:15 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version to 0.12.0

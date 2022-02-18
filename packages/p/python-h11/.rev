@@ -73,4 +73,21 @@
     <comment></comment>
     <requestid>869819</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fa07ec487a57ea6eafe48bff2cf29618</srcmd5>
+    <version>0.13.0</version>
+    <time>1645221755</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  * Clarify that the Headers class is a Sequence and inherit from the
+    collections Sequence abstract base class to also indicate this (and
+    gain the mixin methods).
+  * Switch event classes to dataclasses for easier typing and slightly
+    improved performance.
+  * Shorten traceback of protocol errors for easier readability
+  * Add typing including a PEP 561 marker for usage by type checkers
+  * Expand the allowed status codes to [0, 999] from [0, 600]
+  * Ensure request method is a valid token</comment>
+    <requestid>955498</requestid>
+  </revision>
 </revisionlist>
