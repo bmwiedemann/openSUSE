@@ -9,7 +9,7 @@ Index: common/rdr/FdOutStream.cxx
 ===================================================================
 --- common/rdr/FdOutStream.cxx.orig
 +++ common/rdr/FdOutStream.cxx
-@@ -204,8 +204,12 @@ int FdOutStream::writeWithTimeout(const
+@@ -128,8 +128,12 @@ size_t FdOutStream::writeFd(const void*
  #endif
    } while (n < 0 && (errno == EINTR));
  

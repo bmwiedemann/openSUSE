@@ -1,48 +1,48 @@
-Index: b/unix/xserver/hw/vnc/buildtime.c
+Index: tigervnc-1.12.0/unix/xserver/hw/vnc/buildtime.c
 ===================================================================
---- a/unix/xserver/hw/vnc/buildtime.c
-+++ b/unix/xserver/hw/vnc/buildtime.c
+--- tigervnc-1.12.0.orig/unix/xserver/hw/vnc/buildtime.c
++++ tigervnc-1.12.0/unix/xserver/hw/vnc/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: b/unix/vncconfig/buildtime.c
+Index: tigervnc-1.12.0/unix/vncconfig/buildtime.c
 ===================================================================
---- a/unix/vncconfig/buildtime.c
-+++ b/unix/vncconfig/buildtime.c
+--- tigervnc-1.12.0.orig/unix/vncconfig/buildtime.c
++++ tigervnc-1.12.0/unix/vncconfig/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: b/unix/x0vncserver/buildtime.c
+Index: tigervnc-1.12.0/unix/x0vncserver/buildtime.c
 ===================================================================
---- a/unix/x0vncserver/buildtime.c
-+++ b/unix/x0vncserver/buildtime.c
+--- tigervnc-1.12.0.orig/unix/x0vncserver/buildtime.c
++++ tigervnc-1.12.0/unix/x0vncserver/buildtime.c
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -char buildtime[] = __DATE__ " " __TIME__;
 +char buildtime[] = "??? ?? ???? ??:??:??";
-Index: b/win/winvnc/buildTime.cxx
+Index: tigervnc-1.12.0/win/winvnc/buildTime.cxx
 ===================================================================
---- a/win/winvnc/buildTime.cxx
-+++ b/win/winvnc/buildTime.cxx
+--- tigervnc-1.12.0.orig/win/winvnc/buildTime.cxx
++++ tigervnc-1.12.0/win/winvnc/buildTime.cxx
 @@ -15,4 +15,4 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
   * USA.
   */
 -const char* buildTime = "Built on " __DATE__ " at " __TIME__;
 +const char* buildTime = "Built on ??? ?? ???? at ??:??:??";
-Index: b/CMakeLists.txt
+Index: tigervnc-1.12.0/CMakeLists.txt
 ===================================================================
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -42,10 +42,6 @@ if(MSVC)
+--- tigervnc-1.12.0.orig/CMakeLists.txt
++++ tigervnc-1.12.0/CMakeLists.txt
+@@ -44,10 +44,6 @@ if(MSVC)
    message(FATAL_ERROR "TigerVNC cannot be built with Visual Studio.  Please use MinGW")
  endif()
  
@@ -53,11 +53,11 @@ Index: b/CMakeLists.txt
  # Default to optimised builds instead of debug ones. Our code has no bugs ;)
  # (CMake makes it fairly easy to toggle this back to Debug if needed)
  if(NOT CMAKE_BUILD_TYPE)
-Index: b/vncviewer/vncviewer.cxx
+Index: tigervnc-1.12.0/vncviewer/vncviewer.cxx
 ===================================================================
---- a/vncviewer/vncviewer.cxx
-+++ b/vncviewer/vncviewer.cxx
-@@ -98,11 +98,9 @@ static const char *about_text()
+--- tigervnc-1.12.0.orig/vncviewer/vncviewer.cxx
++++ tigervnc-1.12.0/vncviewer/vncviewer.cxx
+@@ -104,11 +104,9 @@ static const char *about_text()
    // time.
    snprintf(buffer, sizeof(buffer),
             _("TigerVNC Viewer %d-bit v%s\n"
@@ -65,8 +65,8 @@ Index: b/vncviewer/vncviewer.cxx
               "Copyright (C) 1999-%d TigerVNC Team and many others (see README.rst)\n"
               "See https://www.tigervnc.org for information on TigerVNC."),
 -           (int)sizeof(size_t)*8, PACKAGE_VERSION,
--           BUILD_TIMESTAMP, 2019);
-+           (int)sizeof(size_t)*8, PACKAGE_VERSION, 2019);
+-           BUILD_TIMESTAMP, 2021);
++           (int)sizeof(size_t)*8, PACKAGE_VERSION, 2021);
  
    return buffer;
  }

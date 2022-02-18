@@ -4,10 +4,10 @@ Subject: [PATCH] Build libXvnc as separate library.
 
 So it can be used by others, not only vncconfig.
 
-Index: b/unix/vncconfig/CMakeLists.txt
+Index: tigervnc-1.12.0/unix/vncconfig/CMakeLists.txt
 ===================================================================
---- a/unix/vncconfig/CMakeLists.txt
-+++ b/unix/vncconfig/CMakeLists.txt
+--- tigervnc-1.12.0.orig/unix/vncconfig/CMakeLists.txt
++++ tigervnc-1.12.0/unix/vncconfig/CMakeLists.txt
 @@ -3,13 +3,25 @@ include_directories(${X11_INCLUDE_DIR})
  include_directories(${CMAKE_SOURCE_DIR}/common)
  include_directories(${CMAKE_SOURCE_DIR}/unix/tx)
@@ -32,7 +32,7 @@ Index: b/unix/vncconfig/CMakeLists.txt
 -target_link_libraries(vncconfig tx rfb network rdr ${X11_LIBRARIES})
 +target_link_libraries(vncconfig tx rfb network rdr Xvnc ${X11_LIBRARIES})
  
- install(TARGETS vncconfig DESTINATION ${BIN_DIR})
+ install(TARGETS vncconfig DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
 +install(TARGETS Xvnc LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} RENAME libXvnc.so)
- install(FILES vncconfig.man DESTINATION ${MAN_DIR}/man1 RENAME vncconfig.1)
+ install(FILES vncconfig.man DESTINATION ${CMAKE_INSTALL_FULL_MANDIR}/man1 RENAME vncconfig.1)
 +install(FILES vncExt.h DESTINATION ${X11_INCLUDE_DIR}/X11/extensions RENAME Xvnc.h)

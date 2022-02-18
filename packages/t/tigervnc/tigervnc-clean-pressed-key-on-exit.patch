@@ -1,21 +1,21 @@
-Index: b/vncviewer/DesktopWindow.cxx
+Index: tigervnc-1.12.0/vncviewer/DesktopWindow.cxx
 ===================================================================
---- a/vncviewer/DesktopWindow.cxx
-+++ b/vncviewer/DesktopWindow.cxx
-@@ -207,6 +207,8 @@ DesktopWindow::~DesktopWindow()
+--- tigervnc-1.12.0.orig/vncviewer/DesktopWindow.cxx
++++ tigervnc-1.12.0/vncviewer/DesktopWindow.cxx
+@@ -236,6 +236,8 @@ DesktopWindow::~DesktopWindow()
  
    delete statsGraph;
  
 +  delete viewport;
 +
-   // FLTK automatically deletes all child widgets, so we shouldn't touch
-   // them ourselves here
- }
-Index: b/vncviewer/Viewport.cxx
+   instances.erase(this);
+ 
+   if (instances.size() == 0)
+Index: tigervnc-1.12.0/vncviewer/Viewport.cxx
 ===================================================================
---- a/vncviewer/Viewport.cxx
-+++ b/vncviewer/Viewport.cxx
-@@ -189,6 +189,18 @@ Viewport::Viewport(int w, int h, const r
+--- tigervnc-1.12.0.orig/vncviewer/Viewport.cxx
++++ tigervnc-1.12.0/vncviewer/Viewport.cxx
+@@ -192,6 +192,18 @@ Viewport::Viewport(int w, int h, const r
  
  Viewport::~Viewport()
  {
@@ -34,20 +34,28 @@ Index: b/vncviewer/Viewport.cxx
    // Unregister all timeouts in case they get a change tro trigger
    // again later when this object is already gone.
    Fl::remove_timeout(handlePointerTimeout, this);
-Index: b/vncviewer/vncviewer.cxx
+Index: tigervnc-1.12.0/vncviewer/vncviewer.cxx
 ===================================================================
---- a/vncviewer/vncviewer.cxx
-+++ b/vncviewer/vncviewer.cxx
-@@ -107,6 +107,8 @@ static const char *about_text()
+--- tigervnc-1.12.0.orig/vncviewer/vncviewer.cxx
++++ tigervnc-1.12.0/vncviewer/vncviewer.cxx
+@@ -113,6 +113,7 @@ static const char *about_text()
    return buffer;
  }
  
 +static CConn *cc;
-+
- void exit_vncviewer(const char *error)
+ 
+ void abort_vncviewer(const char *error, ...)
  {
-   // Prioritise the first error we get as that is probably the most
-@@ -177,6 +179,16 @@ static void CleanupSignalHandler(int sig
+@@ -176,8 +177,6 @@ void about_vncviewer()
+ static void mainloop(const char* vncserver, network::Socket* sock)
+ {
+   while (true) {
+-    CConn *cc;
+-
+     exitMainloop = false;
+ 
+     cc = new CConn(vncServerName, sock);
+@@ -262,6 +261,16 @@ static void CleanupSignalHandler(int sig
    // CleanupSignalHandler allows C++ object cleanup to happen because it calls
    // exit() rather than the default which is to abort.
    vlog.info(_("Termination signal %d has been received. TigerVNC Viewer will now exit."), sig);
@@ -64,22 +72,13 @@ Index: b/vncviewer/vncviewer.cxx
    exit(1);
  }
  
-@@ -587,6 +599,9 @@ int main(int argc, char** argv)
+@@ -744,6 +753,9 @@ int main(int argc, char** argv)
    XkbSetDetectableAutoRepeat(fl_display, True, NULL);
  #endif
  
 +  fl_open_display();
 +  XSetIOErrorHandler(CleanupXIOErrorHandler);
 +
-   CSecurity::upg = &dlg;
- #ifdef HAVE_GNUTLS
-   CSecurityTLS::msg = &dlg;
-@@ -672,7 +687,7 @@ int main(int argc, char** argv)
- #endif
-   }
+   init_fltk();
+   enable_touch();
  
--  CConn *cc = new CConn(vncServerName, sock);
-+  cc = new CConn(vncServerName, sock);
- 
-   while (!exitMainloop)
-     run_mainloop();

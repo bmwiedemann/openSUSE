@@ -1,0 +1,11 @@
+--- unix/vncserver/vncserver.in.orig	2022-02-17 15:06:23.333514000 +0100
++++ unix/vncserver/vncserver.in	2022-02-17 15:07:43.597755000 +0100
+@@ -437,7 +437,7 @@
+ 	die "$prog: couldn't find \"$cmd\" on your PATH.\n";
+     }
+ 
+-    foreach $cmd ("/etc/X11/xinit/Xsession", "/etc/X11/Xsession") {
++    foreach $cmd ("/usr/etc/X11/xdm/Xsession", "/etc/X11/xdm/Xsession", "/etc/X11/xinit/Xsession", "/etc/X11/Xsession") {
+         if (-x "$cmd") {
+             $Xsession = $cmd;
+             last;

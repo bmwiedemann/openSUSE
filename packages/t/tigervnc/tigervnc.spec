@@ -22,8 +22,6 @@
 %define tlskey  %{_sysconfdir}/vnc/tls.key
 %define tlscert %{_sysconfdir}/vnc/tls.cert
 
-%define _unitdir %{_prefix}/lib/systemd/system
-
 %if 0%{?suse_version} >= 1500
 %define use_firewalld 1
 %else
@@ -35,7 +33,7 @@
 %endif
 
 Name:           tigervnc
-Version:        1.10.1
+Version:        1.12.0
 Release:        0
 URL:            http://tigervnc.org/
 Summary:        An implementation of VNC
@@ -63,24 +61,16 @@ Patch1:         tigervnc-newfbsize.patch
 Patch2:         tigervnc-clean-pressed-key-on-exit.patch
 Patch3:         u_tigervnc-ignore-epipe-on-write.patch
 Patch4:         n_tigervnc-date-time.patch
-Patch5:         u_tigervnc-cve-2014-8240.patch
-Patch6:         u_tigervnc_update_default_vncxstartup.patch
-Patch7:         u_build_libXvnc_as_separate_library.patch
-Patch8:         u_tigervnc-add-autoaccept-parameter.patch
-Patch9:         u_change-button-layout-in-ServerDialog.patch
-Patch10:        n_correct_path_in_desktop_file.patch
-Patch11:        U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
-Patch12:        tigervnc-fix-saving-of-bad-server-certs.patch
-Patch13:        u_xorg-server-1.20.7-ddxInputThreadInit.patch
-Patch21:        U_0001-Properly-store-certificate-exceptions.patch
-Patch22:        U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
-Patch23:        n_utilize-system-crypto-policies.patch
-Patch24:        tigervnc-FIPS-use-RFC7919.patch
-Patch25:        u_tigervnc-211.patch
-Patch26:        u_Fix-non-functional-MaxDisconnectionTime.patch
-Patch27:        xserver211.patch
-Provides:       tightvnc = 1.3.9
-Obsoletes:      tightvnc < 1.3.9
+Patch5:         u_build_libXvnc_as_separate_library.patch
+Patch6:         u_tigervnc-add-autoaccept-parameter.patch
+Patch7:         u_change-button-layout-in-ServerDialog.patch
+Patch8:         n_correct_path_in_desktop_file.patch
+Patch9:         n_utilize-system-crypto-policies.patch
+Patch10:        u_tigervnc-211.patch
+Patch11:        xserver211.patch
+Patch12:        n_vncserver.patch
+Provides:       tightvnc = 1.5.0
+Obsoletes:      tightvnc < 1.5.0
 Provides:       vnc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -185,9 +175,9 @@ Requires:       /bin/hostname
 %ifnarch s390 s390x
 Recommends:     xorg-x11-Xvnc-module
 %endif
-Provides:       tightvnc = 1.3.9
+Provides:       tightvnc = 1.5.0
+Obsoletes:      tightvnc < 1.5.0
 Provides:       xorg-x11-Xvnc:/usr/lib/vnc/with-vnc-key.sh
-Obsoletes:      tightvnc < 1.3.9
 
 %description -n xorg-x11-Xvnc
 This is the TigerVNC implementation of Xvnc.
@@ -262,25 +252,16 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch21 -p1
-%patch22 -p1
 %patch8 -p1
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%patch23 -p1
+%patch9 -p1
 %endif
-%patch24 -p1
-%patch25 -p0
-%patch26 -p1
+%patch10 -p0
+%patch12 -p0
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver
-#patch -p1 < ../xserver120.patch
-%patch27 -p1
+%patch11 -p1
 popd
 
 %build
@@ -290,7 +271,10 @@ export CFLAGS="%optflags"
 sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE13} > xvnc@.service
 sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE21} > xvnc-novnc.service
 # Build all tigervnc
-cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo .
+cmake -DCMAKE_VERBOSE_MAKEFILE=ON \
+  -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+  -DCMAKE_INSTALL_LIBEXECDIR:PATH=%{_libexecdir} \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo .
 %make_build
 
 # Build Xvnc server
@@ -319,7 +303,7 @@ popd
 
 # Build java client
 pushd java
-cmake -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} -DJAVACFLAGS="-encoding utf8 -source 1.6 -target 1.6" .
+cmake -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} .
 %make_build
 popd
 
@@ -351,7 +335,7 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.
 install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
 %endif
 
-# only package as %doc (boo#1173045)
+# only package as %%doc (boo#1173045)
 cp %{SOURCE7} .
 install -D -m 755 %{SOURCE8} %{buildroot}%{_bindir}/vncpasswd.arg
 install -D -m 644 %{SOURCE9} %{buildroot}%{_distconfdir}/pam.d/vnc
@@ -380,7 +364,7 @@ install -D xvnc-novnc.service -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.service
 
 install -Dm0644 %{SOURCE22} %{buildroot}%{_sysusersdir}/vnc.conf
 
-rm -rf %{buildroot}%{_datadir}/doc/tigervnc-*
+rm -rf %{buildroot}%{_datadir}/doc/tigervnc*
 
 %find_lang '%{name}'
 
@@ -475,26 +459,36 @@ fi
 
 %files -n xorg-x11-Xvnc
 %doc LICENCE.TXT README.rst vnc.reg
+%doc unix/vncserver/HOWTO.md
 
 %{_bindir}/Xvnc
 %{_bindir}/vncconfig
 %{_bindir}/vncpasswd
 %{_bindir}/vncpasswd.arg
-%{_bindir}/vncserver
 %{_bindir}/x0vncserver
+%{_sbindir}/vncsession
+
+%{_libexecdir}/vncserver
+%{_libexecdir}/vncsession-start
 
 %exclude %{_mandir}/man1/Xserver.1*
 %{_mandir}/man1/Xvnc.1*
 %{_mandir}/man1/vncconfig.1*
 %{_mandir}/man1/vncpasswd.1*
-%{_mandir}/man1/vncserver.1*
 %{_mandir}/man1/x0vncserver.1*
+%{_mandir}/man8/vncserver.8*
+%{_mandir}/man8/vncsession.8*
 
+%{_unitdir}/vncserver@.service
 %{_unitdir}/xvnc@.service
 %{_unitdir}/xvnc.socket
 %{_unitdir}/xvnc.target
 %{_sysusersdir}/vnc.conf
 %{_sbindir}/rcxvnc
+
+%dir %{_sysconfdir}/tigervnc
+%config(noreplace) %{_sysconfdir}/pam.d/tigervnc
+%config(noreplace) %{_sysconfdir}/tigervnc/vncserver*
 
 %exclude %{_sharedstatedir}/xkb/compiled/README.compiled
 
