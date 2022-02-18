@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 17 13:43:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.1:
+  + Revert "pager: do not change workspace size from size_allocate"
+  + Updated translations.
+- Drop libwnck-rpmlintrc: No longer needed.
+
+-------------------------------------------------------------------
 Thu Sep 16 02:02:01 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

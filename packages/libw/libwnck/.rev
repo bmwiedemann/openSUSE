@@ -646,4 +646,12 @@
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930919</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>3a0762f60855baa63ef09bcac6845672</srcmd5>
+    <version>40.1</version>
+    <time>1645221765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955688</requestid>
+  </revision>
 </revisionlist>
