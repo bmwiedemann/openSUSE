@@ -32,4 +32,22 @@
   Refs boo#1193742 go1.18 release tracking (forwarded request 955696 from jfkw)</comment>
     <requestid>955697</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>412785a8c10601fa92044d5a91eb1306</srcmd5>
+    <version>1.18rc1</version>
+    <time>1645221773</time>
+    <user>dimstar_suse</user>
+    <comment>- Add .bin assembler pattern table file and test data to packaging.
+  * Error manifests building some Go applications as:
+    src/crypto/elliptic/p256_asm.go:24:12:
+    pattern p256_asm_table.bin: no matching files found
+  * A Quick Guide to Go's Assembler https://go.dev/doc/asm
+  * New assembler pattern file added to packaging with mode 644:
+    src/crypto/elliptic/p256_asm_table.bin
+  * Existing test data files added to packaging with mode 644:
+    src/compress/bzip2/testdata/pass-random2.bin
+    src/compress/bzip2/testdata/pass-random1.bin
+    src/debug/dwarf/testdata/line-gcc-win.bin (forwarded request 955775 from jfkw)</comment>
+    <requestid>955776</requestid>
+  </revision>
 </revisionlist>

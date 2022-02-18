@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 18 02:10:17 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add .bin assembler pattern table file and test data to packaging.
+  * Error manifests building some Go applications as:
+    src/crypto/elliptic/p256_asm.go:24:12:
+    pattern p256_asm_table.bin: no matching files found
+  * A Quick Guide to Go's Assembler https://go.dev/doc/asm
+  * New assembler pattern file added to packaging with mode 644:
+    src/crypto/elliptic/p256_asm_table.bin
+  * Existing test data files added to packaging with mode 644:
+    src/compress/bzip2/testdata/pass-random2.bin
+    src/compress/bzip2/testdata/pass-random1.bin
+    src/debug/dwarf/testdata/line-gcc-win.bin
+
+-------------------------------------------------------------------
 Thu Feb 17 07:38:54 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18rc1 (released 2022-02-16) is a release candidate version of

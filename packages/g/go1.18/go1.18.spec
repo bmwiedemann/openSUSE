@@ -313,7 +313,7 @@ ln -s %{_libdir}/go/%{go_api}/contrib/README.SUSE %{buildroot}%{_datadir}/go/%{g
 
 # source files for go install, godoc, etc
 install -d %{buildroot}%{_datadir}/go/%{go_api}
-for ext in *.{go,c,h,s,S,py,syso}; do
+for ext in *.{go,c,h,s,S,py,syso,bin}; do
   find src -name ${ext} -exec install -Dm644 \{\} %{buildroot}%{_datadir}/go/%{go_api}/\{\} \;
 done
 # executable bash scripts called by go tool, etc
