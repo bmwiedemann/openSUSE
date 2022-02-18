@@ -1,8 +1,7 @@
 #
 # spec file for package alure
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2012 openSUSE_user1
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +16,8 @@
 #
 
 
+%define sover 1
+
 Name:           alure
 Version:        1.2
 Release:        0
@@ -26,53 +27,60 @@ License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/kcat/alure
 Source0:        %{name}-%{version}.tar.bz2
-# PATCh-FIX-UPSTREAM alure-gcc47.patch -- patch for build with gcc47
-Patch0:         alure-gcc47.patch
-# PATCH-FIX-UPSTREAM alure-lib-suffix.patch -- Enable installation in suffixed directory
-Patch1:         alure-lib-suffix.patch
+Patch0:         fix-cmake_minimum_required.patch
+Patch1:         fix-missing-include.patch
+Patch2:         fix-lib-suffix.patch
+Patch3:         fix-link-flac.patch
+Patch4:         fix-FLUIDSYNTH_CFLAGS.patch
 BuildRequires:  cmake
-BuildRequires:  flac-devel
-BuildRequires:  fluidsynth-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libmodplug-devel
-BuildRequires:  libsndfile-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  openal-soft-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dumb)
+BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(libmodplug)
+BuildRequires:  pkgconfig(libmpg123)
+BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(vorbis)
 
 %description
 ALURE is a utility library to help manage common tasks with OpenAL
 applications. This includes device enumeration and initialization,
 file loading, and streaming.
 
-%package        devel
-Summary:        Development files for %{name}
-# Devel doc includes some files under GPLv2+ from NaturalDocs
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-
-%description    devel
-The %{name}-devel package contains libraries and header files for
-developing applications that use %{name}.
-
-%package -n libalure1
+%package -n lib%{name}%{sover}
 Summary:        Utility library around OpenAL
 License:        LGPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libalure1
+%description -n lib%{name}%{sover}
 ALURE is a utility library to help manage common tasks with OpenAL
 applications.
 
+%package devel
+Summary:        Development files for %{name}
+# Devel doc includes some files under GPLv2+ from NaturalDocs
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       lib%{name}%{sover} = %{version}
+
+%description devel
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
+
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
+%define __builder ninja
+export CXXFLAGS="%{optflags} -fpermissive"
 %cmake \
-  -DBUILD_STATIC=OFF \
-  -DMPG123=OFF \
-  -DMODPLUG=ON
+	-DBUILD_STATIC=OFF	\
+	-DDYNLOAD=OFF		\
+	-DMPG123=ON		\
+	-DMODPLUG=ON
 %cmake_build
 
 %install
@@ -85,20 +93,20 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}/html
 # fix encoding
 sed -i 's/\r$//' docs/html/javascript/main.js docs/html/styles/1.css
 
-%post   -n libalure1 -p /sbin/ldconfig
-%postun -n libalure1 -p /sbin/ldconfig
+%post -n lib%{name}%{sover} -p /sbin/ldconfig
+%postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files
 %license COPYING
-%{_bindir}/alure*
+%{_bindir}/alure{cdplay,play,stream}
 
-%files -n libalure1
-%{_libdir}/libalure.so.*
+%files -n lib%{name}%{sover}
+%{_libdir}/lib%{name}.so.*
 
 %files devel
 %doc docs/html examples
-%{_includedir}/AL/
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%{_includedir}/AL
+%{_libdir}/lib%{name}.so
+%{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

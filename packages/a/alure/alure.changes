@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 14 14:28:23 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Changes authored by munix9@googlemail.com
+  * Enabled MPG123 support
+  * Restructured the SPEC file
+  * Renamed alure-gcc47.patch to fix-missing-include.patch
+  * Renamed alure-lib-suffix.patch to fix-lib-suffix.patch
+  * Add patches:
+    * fix-cmake_minimum_required.patch
+    * fix-link-flac.patch
+    * fix-FLUIDSYNTH_CFLAGS.patch
+
+-------------------------------------------------------------------
 Sat Apr 17 18:14:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Updated SPEC file
