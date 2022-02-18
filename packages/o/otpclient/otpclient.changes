@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 18 13:33:37 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.8:
+  * Fix show next OTP.
+  * Correctly decode URIs from QR codes.
+
+-------------------------------------------------------------------
 Fri Nov 19 15:43:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.7:

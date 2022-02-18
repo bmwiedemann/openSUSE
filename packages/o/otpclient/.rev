@@ -102,4 +102,15 @@
     <comment></comment>
     <requestid>932559</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6f7291d83c0a0883ed5e8f5f543db35b</srcmd5>
+    <version>2.4.8</version>
+    <time>1645221787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.8:
+  * Fix show next OTP.
+  * Correctly decode URIs from QR codes.
+</comment>
+    <requestid>955875</requestid>
+  </revision>
 </revisionlist>
