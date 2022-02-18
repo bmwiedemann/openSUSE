@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2-module-director
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           icingaweb2-module-director
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Config module for Icinga Web 2
 License:        GPL-2.0-or-later
@@ -32,9 +32,9 @@ BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
 Requires:       icinga2 >= 2.6.0
 Requires:       icingaweb2 >= 2.6.0
-Requires:       icingaweb2-module-incubator >= 0.6.0
-Requires:       icingaweb2-module-ipl >= 0.3.0
-Requires:       icingaweb2-module-reactbundle >= 0.7.0
+Requires:       icingaweb2-module-incubator >= 0.12.0
+Requires:       icingaweb2-module-ipl >= 0.5.0
+Requires:       icingaweb2-module-reactbundle >= 0.9.0
 Requires:       php >= 5.6.3
 Requires:       php-curl
 Requires:       php-pcntl
