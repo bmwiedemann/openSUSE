@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Feb 17 16:54:20 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.4.8:
+  * Bugs fixed
+    + Fix to remove potential memory leak on Jupyter Notebooks
+      ZMQChannelHandler code #6251 (@Vishwajeet0510)
+
+-------------------------------------------------------------------
+Sun Jan 23 18:10:43 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 6.4.7:
+  * Bugs fixed
+    + Fix Chinese punctuation #6268 (@LiHua-Official)
+    + Add date field to kernel message header #6265 (@kevin-bates)
+    + Fix deprecation warning #6253 (@tornaria)
+  * Maintenance and upkeep improvements
+    + Enforce labels on PRs #6235 (@blink1073)
+    + Fix: CI error for python 3.6 & macOS #6215 (@penguinolog)
+  * Other merged PRs
+    + handle KeyError when get session #6245 (@ccw630)
+    + Updated doc for passwd #6209 (@antoinecarme)
+
+-------------------------------------------------------------------
 Sat Nov 27 20:06:28 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.4.6:

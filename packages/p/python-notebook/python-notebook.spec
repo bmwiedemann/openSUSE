@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,6 @@
 #
 
 
-#
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -35,8 +28,14 @@ BuildArch:      noarch
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 %define         plainpython python
+#
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-notebook%{psuffix}
-Version:        6.4.6
+Version:        6.4.8
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -70,14 +69,14 @@ Obsoletes:      python-jupyter_notebook < %{version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-notebook-filesystem
+BuildRequires:  update-desktop-files
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
-BuildRequires:  update-desktop-files
 %endif
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
@@ -119,10 +118,10 @@ This package provides the python interface.
 Summary:        Translations for the Jupyter Notebook
 Group:          System/Localization
 Requires:       python-notebook = %{version}
+Requires:       %{plainpython}(abi) = %{python_version}
 Provides:       python-jupyter_notebook-lang = %{version}
 Provides:       python-notebook-lang-all = %{version}
 Obsoletes:      python-jupyter_notebook-lang < %{version}
-Requires:       %{plainpython}(abi) = %{python_version}
 
 %description    lang
 Provides translations for the Jupyter notebook.
