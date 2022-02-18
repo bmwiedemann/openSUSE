@@ -687,4 +687,28 @@
   * Scripting: Added support for loading JavaScript .mjs modules (#3261)</comment>
     <requestid>953371</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>37ddf97aa839df52078eeb8fbdc303ba</srcmd5>
+    <version>1.8.2</version>
+    <time>1645221789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * Fixed deactivating of tools when no layer is selected (avoids crash)
+  * Fixed ability to reset custom 'color' and 'object' properties (#3270)
+  * Fixed updating of layer positions when changing parallax factor of a group (#3175)
+  * Scripting: Fixed crash when assigning null to the MapObject.tile property
+  * Scripting: Fixed adding of tilesets when adding layers to a loaded map (#3268)
+  * JSON format: Fixed layer locked status not getting saved (#2877)
+
+- Update to 1.8.1
+  * Fixed pasted objects not getting selected if a tile layer was also copied
+  * Fixed possible crash when trying to determine whether OpenGL is used
+  * Fixed possible crash when using the Insert Tile tool
+  * Fixed possible crash in tile stamp preview
+  * AutoMapping: Fixed crash when an input layer does not exist (#3269)
+  * Scripting: Automatically add tilesets to the map where needed (#3268)
+  * snap: Updated from core18 to core20 (now uses Qt 5.12)
+  * AppImage: Updated to Sentry 0.4.15</comment>
+    <requestid>955917</requestid>
+  </revision>
 </revisionlist>
