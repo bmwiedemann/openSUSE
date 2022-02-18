@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 16 18:26:01 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Replace avahi-0.6.31-systemd-order.patch with
+  avahi-add-resolv-conf-to-inotify.patch: re-read configuration
+  when resolv.conf changes, per discussion on the bug
+  (boo#1194561).
+
+-------------------------------------------------------------------
 Fri Jan 21 13:05:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to systemd-sysusers

@@ -76,8 +76,8 @@ Patch0:         avahi-gacdir.patch
 Patch1:         avahi-desktop.patch
 # PATCH-FEATURE-OPENSUSE avahi-daemon-check-dns-suse.patch bnc431704 sbrabec@suse.cz -- Port Debian avahi-daemon-check-dns.sh to SUSE, see also http://avahi.org/wiki/AvahiAndUnicastDotLocal
 Patch4:         avahi-daemon-check-dns-suse.patch
-# PATCH-FIX-OPENSUSE avahi-0.6.31-systemd-order.patch bsc#982317 boo#1194561 mgorse@suse.com -- start after NM/wicked, to ensure resolv.conf present.
-Patch19:        avahi-0.6.31-systemd-order.patch
+# PATCH-FIX-OPENSUSE avahi-add-resolv-conf-to-inotify.patch bsc#982317 boo#1194561 mgorse@suse.com -- reconfigure when resolv.conf changes.
+Patch19:        avahi-add-resolv-conf-to-inotify.patch
 # PATCH-FIX-UPSTREAM add-IT_PROG_INTLTOOL.patch alarrosa@suse.com -- add IT_PROG_INTLTOOL so intltool works
 Patch20:        add-IT_PROG_INTLTOOL.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2021-3468.patch boo#1184521 mgorse@suse.com -- avoid infinite loop by handling HUP event in client_work.
@@ -429,7 +429,9 @@ DNS specifications for Zeroconf Computing.
 
 
 
+
 # This is the avahi-discover command, only provided for the primary python3 flavor
+
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python

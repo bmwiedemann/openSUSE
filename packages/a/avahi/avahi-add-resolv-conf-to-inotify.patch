@@ -1,0 +1,29 @@
+From a2f1db71e6870ad70dd58bb081741946a59dd5cd Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Tue, 15 Feb 2022 15:37:47 -0600
+Subject: [PATCH] Add an inotify watch for /etc/resolv.conf
+
+This will ensure that avahi is reconfigured when resolv.conf changes.
+Related to https://github.com/lathiat/avahi/issues/118, but this
+patch is insufficient to solve the issue upstream, since it doesn't handle
+a chrooted environment. Currently, SUSE isn't building avahi with chroot
+support, so this doesn't matter here.
+---
+ avahi-daemon/main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/avahi-daemon/main.c b/avahi-daemon/main.c
+index 346338f..2edac30 100644
+--- a/avahi-daemon/main.c
++++ b/avahi-daemon/main.c
+@@ -944,6 +944,7 @@ static void add_inotify_watches(void) {
+                       |IN_ONLYDIR
+ #endif
+     );
++    inotify_add_watch(inotify_fd, "/etc/resolv.conf", IN_CLOSE_WRITE|IN_DELETE|IN_DELETE_SELF|IN_MOVED_FROM|IN_MOVED_TO|IN_MOVE_SELF);
+ }
+ 
+ #endif
+-- 
+2.35.1
+
