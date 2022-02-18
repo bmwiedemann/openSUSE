@@ -1,7 +1,7 @@
 #
 # spec file for package speech-dispatcher
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,6 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       python3-speechd
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %{install_info_prereq}
-Recommends:     speech-dispatcher-module-espeak
 Suggests:       festival
 Suggests:       logrotate
 Provides:       speechd = %{version}

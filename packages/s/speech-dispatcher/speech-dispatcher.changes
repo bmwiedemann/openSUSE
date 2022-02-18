@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 24 09:27:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommends speech-dispatcher-module-espeak from the main
+  package: the module-espeak already has a reverse recommends
+  (supplements) based on speech-dispatcher and espeak.
+
+-------------------------------------------------------------------
 Fri Jan 29 09:41:02 UTC 2021 - Radosław Wyrzykowski <r.wyrz@outlook.com>
 
 - Fix requires for the spd-conf tool
