@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 17 23:27:01 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 5.3.7
+  * https://pecl.php.net/package-changelog.php?package=redis&release=5.3.7
+  * Fixed RedisArray::[hsz]scan and tests.
+  * Fixed RedisArray::scan.
+  * Fixed LZF decompression logic.
+
+-------------------------------------------------------------------
 Tue Jan 25 20:31:14 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to 5.3.6
