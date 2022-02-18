@@ -1,7 +1,7 @@
 #
 # spec file for package omniORB
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2017 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Name:           omniORB
 Summary:        A robust high performance CORBA ORB for C++ and Python
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
-Version:        4.2.4
+Version:        4.3.0
 Release:        0
 URL:            http://omniorb.sourceforge.net
 Source0:        https://downloads.sourceforge.net/project/omniorb/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
@@ -41,12 +41,11 @@ omniORB is a robust high performance CORBA ORB for C++ and Python.
 It adheres to version 2.6 of the CORBA specification and is fully
 interoperable with other CORBA ORBs.
 
-
 %package devel
 Group:          Development/Libraries/C and C++
 Summary:        Development libraries, header files and utilities for omniORB
-Requires:       %{name} = %{version}
 Requires:       %{libname} = %{version}
+Requires:       %{name} = %{version}
 
 %description devel
 omniORB-devel contains the omniORB development files. These
@@ -73,7 +72,6 @@ find . -iname \*\.py -exec sed -ie '1 s@env python@python3@' '{}' \;
 %make_install
 mkdir -p %{buildroot}%{_var}/log/omninames
 chmod +x %{buildroot}%{python3_sitelib}/omniidl/main.py
-
 
 %post -n %{libname} -p /sbin/ldconfig
 
