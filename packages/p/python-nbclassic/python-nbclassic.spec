@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbclassic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-nbclassic
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
@@ -41,8 +40,8 @@ Requires:       jupyter-nbclassic = %{version}
 Requires:       python-notebook < 7
 Requires:       (python-jupyter_server >= 1.8 with python-jupyter_server < 2)
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

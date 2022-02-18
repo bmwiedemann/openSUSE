@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 17 16:37:03 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.3.5:
+  * Bugs fixed
+    + ensure extension name is passed to TerminalHandler #79 (@minrk)
+  * Maintenance and upkeep improvements
+    + Clean up downstream tests #82 (@blink1073)
+    + Enforce labels on PRs #80 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Nov 21 09:15:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Accomodate moved config to distconfig
