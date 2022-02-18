@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycups
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-pycups
 Version:        2.0.1
@@ -24,15 +24,14 @@ Release:        0
 Summary:        Python Bindings for CUPS
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
-URL:            http://cyberelk.net/tim/software/pycups/
+URL:            https://github.com/OpenPrinting/pycups
 Source:         https://files.pythonhosted.org/packages/source/p/pycups/pycups-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # need to avoid cycle as cups-devel wants us (boo#1172407)
-#!BuildIgnore: cups-rpm-helper
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+#!BuildIgnore:  cups-rpm-helper
 Obsoletes:      python-cups < %{version}
 Provides:       python-cups = %{version}
 %python_subpackages
@@ -65,7 +64,6 @@ export CFLAGS="%{optflags}"
 make install-rpmhook DESTDIR=%{buildroot}
 
 %files %{python_files}
-%defattr(-,root,root)
 %doc NEWS README TODO
 %license COPYING
 %{python_sitearch}/cups*.so
