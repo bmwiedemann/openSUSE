@@ -1,7 +1,7 @@
 #
 # spec file for package gnuchess
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  help2man
 BuildRequires:  readline-devel
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 Requires(post): info
 Requires(preun):info
+%endif
 Suggests:       xboard
 Provides:       chess_backend
 Provides:       gchess
@@ -61,11 +63,13 @@ sh %{SOURCE3} %{SOURCE2}
 install -m 755 %{SOURCE4} %{buildroot}/%{_bindir}
 %find_lang %{name}
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
+%endif
 
 %files -f %{name}.lang
 %doc AUTHORS ChangeLog NEWS README TODO

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 18 12:34:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only require info and call its macros on suse_version < 1550:
+  in Tumbleweed, info handles its file via file triggers since Sep
+  2019.
+
+-------------------------------------------------------------------
 Sat Jul 31 15:57:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.9:
