@@ -101,6 +101,12 @@
 %define grub2_x64_efi_pkg grub-efi-amd64
 %define grub2_ia32_efi_pkg grub-efi-ia32
 %define system_release_pkg base-files
+
+# Debian 11 moved to the C implementation of createrepo
+%if 0%{?debian} == 11
+%define createrepo_pkg createrepo-c
+%endif
+
 #endif UBUNTU
 %endif
 
@@ -145,7 +151,7 @@
 %endif
 
 Name:           cobbler
-Version:        3.3.0.50+git.c1d81950
+Version:        3.3.1.0+git.f5b0599a
 Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
@@ -228,9 +234,9 @@ Requires:       python%{python3_pkgversion}-distro
 Requires:       python%{python3_pkgversion}-schema
 Requires:       %{py3_module_file}
 %if 0%{?suse_version}
-Recommends:     python%{python3_pkgversion}-ldap3
+Recommends:     python%{python3_pkgversion}-ldap
 %else
-Requires:       python%{python3_pkgversion}-ldap3
+Requires:       python%{python3_pkgversion}-ldap
 %endif
 %endif
 
@@ -354,27 +360,26 @@ fi
 
 %else
 %post
-%if 0%{?suse_version}
-# Create bootloders into /var/lib/cobbler/loaders
-# Other distros might also want to do that
-%{_datadir}/%{name}/bin/mkgrub.sh >/dev/null 2>&1
-%endif
 %systemd_post cobblerd.service
+# Fixup permission for world readable settings files
+chmod 640 %{_sysconfdir}/cobbler/settings.yaml
+chmod 600 %{_sysconfdir}/cobbler/mongodb.conf
+chmod 600 %{_sysconfdir}/cobbler/modules.conf
+chmod 640 %{_sysconfdir}/cobbler/users.conf
+chmod 640 %{_sysconfdir}/cobbler/users.digest
+chmod 750 %{_sysconfdir}/cobbler/settings.d
+chmod 640 %{_sysconfdir}/cobbler/settings.d/*
+chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.yaml
+chgrp %{apache_group} %{_sysconfdir}/cobbler/users.conf
+chgrp %{apache_group} %{_sysconfdir}/cobbler/users.digest
+chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d
+chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.d/*
+
 
 %preun
 %systemd_preun cobblerd.service
 
 %postun
-%if 0%{?suse_version}
-# This is mkgrub.sh cleanup (exeucted above in post):
-# remove linked and installed grub loader executables again
-if [ -e %{_localstatedir}/lib/cobbler/loaders/.cobbler_postun_cleanup ];then
-   for file in $(cat %{_localstatedir}/lib/cobbler/loaders/.cobbler_postun_cleanup);do
-       rm -f %{_localstatedir}/lib/cobbler/loaders/$file
-   done
-   rm -rf %{_localstatedir}/lib/cobbler/loaders/.cobbler_postun_cleanup
-fi
-%endif
 %systemd_postun_with_restart cobblerd.service
 %endif
 
@@ -404,8 +409,8 @@ fi
 %dir %{_sysconfdir}/cobbler/iso
 %config(noreplace) %{_sysconfdir}/cobbler/iso/buildiso.template
 %config(noreplace) %{_sysconfdir}/cobbler/logging_config.conf
-%config(noreplace) %{_sysconfdir}/cobbler/modules.conf
-%config(noreplace) %{_sysconfdir}/cobbler/mongodb.conf
+%attr(600, root, root) %config(noreplace) %{_sysconfdir}/cobbler/modules.conf
+%attr(600, root, root) %config(noreplace) %{_sysconfdir}/cobbler/mongodb.conf
 %config(noreplace) %{_sysconfdir}/cobbler/named.template
 %config(noreplace) %{_sysconfdir}/cobbler/ndjbdns.template
 %dir %{_sysconfdir}/cobbler/reporting
@@ -413,14 +418,14 @@ fi
 %config(noreplace) %{_sysconfdir}/cobbler/rsync.exclude
 %config(noreplace) %{_sysconfdir}/cobbler/rsync.template
 %config(noreplace) %{_sysconfdir}/cobbler/secondary.template
-%config(noreplace) %{_sysconfdir}/cobbler/settings.yaml
-%dir %{_sysconfdir}/cobbler/settings.d
-%config(noreplace) %{_sysconfdir}/cobbler/settings.d/bind_manage_ipmi.settings
-%config(noreplace) %{_sysconfdir}/cobbler/settings.d/manage_genders.settings
-%config(noreplace) %{_sysconfdir}/cobbler/settings.d/nsupdate.settings
-%config(noreplace) %{_sysconfdir}/cobbler/settings.d/windows.settings
-%config(noreplace) %{_sysconfdir}/cobbler/users.conf
-%config(noreplace) %{_sysconfdir}/cobbler/users.digest
+%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.yaml
+%attr(750, root, %{apache_group}) %dir %{_sysconfdir}/cobbler/settings.d
+%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/bind_manage_ipmi.settings
+%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/manage_genders.settings
+%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/nsupdate.settings
+%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/settings.d/windows.settings
+%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/users.conf
+%attr(640, root, %{apache_group}) %config(noreplace) %{_sysconfdir}/cobbler/users.digest
 %config(noreplace) %{_sysconfdir}/cobbler/version
 %config(noreplace) %{_sysconfdir}/cobbler/zone.template
 %dir %{_sysconfdir}/cobbler/zone_templates
@@ -450,7 +455,6 @@ fi
 %{tftpboot_dir}/*
 %{apache_dir}/cobbler
 %{_sharedstatedir}/cobbler
-%exclude %{_sharedstatedir}/cobbler/webui_sessions
 %{_localstatedir}/log/cobbler
 
 %files tests

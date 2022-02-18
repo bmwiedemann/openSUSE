@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 18 14:50:07 UTC 2022 - alexander.graul@suse.com
+
+- This update contains fixes for CVE-2021-45082 and 2021-45083
+- Update to version 3.3.1.0+git.f5b0599a:
+  * Fix spec error introduced with CVE fix
+  * Security: Fix incomplete template sanitization
+  * Security: Restrict config file accessibility
+  * Docker: CentOS to Rocky Linux move for Compose
+  * Remove old Cobbler Web leftovers
+  * Utils: Check if service is running before stopping it
+  * CI: Remove test report parsing and publishing
+  * System-Tests: Remove broken Test report parser
+  * Use distro_build_configs.sh for fixing bind path
+
+-------------------------------------------------------------------
 Thu Oct 14 13:06:42 UTC 2021 - trenn@suse.de
 
 - Update to version 3.3.0.50+git.c1d81950:

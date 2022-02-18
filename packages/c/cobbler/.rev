@@ -1223,4 +1223,12 @@ D fixes-a-template-rendering-error.patch
     <comment></comment>
     <requestid>925349</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>e4d901c2b678148ef39bb6349e0a83fe</srcmd5>
+    <version>3.3.1.0+git.f5b0599a</version>
+    <time>1645221791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955914</requestid>
+  </revision>
 </revisionlist>
