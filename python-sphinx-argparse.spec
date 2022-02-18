@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-argparse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sphinx-argparse
-Version:        0.2.5
+Version:        0.3.1
 Release:        0
 Summary:        Sphinx extension to document argparse commands and options
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/ribozz/sphinx-argparse
+URL:            https://github.com/ashb/sphinx-argparse
 Source0:        https://files.pythonhosted.org/packages/source/s/sphinx-argparse/sphinx-argparse-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/alex-rudakov/sphinx-argparse/%{version}/LICENSE#/LICENSE-sphinx-argparse
-# PATCH-FIX-UPSTREAM prog-in-description.patch gh#alex-rudakov/sphinx-argparse#113 mcepl@suse.com
-# Substitute %(prog)s in description and epilog
-Patch0:         prog-in-description.patch
+# https://github.com/ashb/sphinx-argparse/commit/fdb7e448b2776986415cb724d9bb3eed424e23b2
+Patch0:         python-sphinx-argparse-python310.patch
 BuildRequires:  %{python_module CommonMark}
 BuildRequires:  %{python_module Sphinx >= 1.2.0}
 BuildRequires:  %{python_module pytest}
@@ -43,10 +41,7 @@ BuildArch:      noarch
 Sphinx extension that automatically documents argparse commands and options.
 
 %prep
-%setup -q -n sphinx-argparse-%{version}
-%autopatch -p1
-
-install -m0644 %{SOURCE1} LICENSE
+%autosetup -p1 -n sphinx-argparse-%{version}
 
 %build
 %python_build
@@ -56,14 +51,10 @@ install -m0644 %{SOURCE1} LICENSE
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# can't use %%pytest until gh#alex-rudakov/sphinx-argparse#121 is solved
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib} PYTEST_NAME="py.test-%{$python_bin_suffix}"
-$PYTEST_NAME --ignore=_build.python2 --ignore=_build.python3 --ignore=_build.pypy3 -vv
-}
+%pytest
 
 %files %{python_files}
 %license LICENSE
-%doc README.md
 %{python_sitelib}/*
 
 %changelog
