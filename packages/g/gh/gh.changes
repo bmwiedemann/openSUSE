@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 17 17:02:15 UTC 2022 - <chris@computersalat.de>
+
+- Update to 2.5.1
+  https://github.com/cli/cli/releases
+  * New features
+    - Add display name to codespaces prompts and JSON output by @veverkap in #5044
+    - Add pr checks --watch flag by @endorama in #4519
+  * Fixes
+    - auth login --with-token: fix authenticating git operations by @mislav in #5186
+    - release create: respect discussion category when creating a release with assets by @k-jun in #5019
+    - gist create: handle Windows-style file paths by @joshmgross in #5173
+    - release create: warn about unpushed local git tag by @samcoe in #5104
+    - Ignore EPIPE errors when writing to a closed pager by @mislav in #5143
+    - Rotate our Windows code-signing certificates by @mislav in #5196
+- updated vendor.tar.gz
+
+-------------------------------------------------------------------
 Tue Dec 28 05:29:04 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Update to version 2.4.0
@@ -218,6 +235,12 @@ Wed Jun 23 12:15:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
   * Include number alongside the title in issue/pr view gh#cli/cli#3741
 
 -------------------------------------------------------------------
+Tue Jun 15 12:37:31 UTC 2021 - Christian Wittmer <chris@computersalat.de>
+
+- fix build for SLES12
+  * fix Supplements: packageand(X:Y)
+
+-------------------------------------------------------------------
 Sat May 22 21:38:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.10.3:
@@ -339,6 +362,11 @@ Sun Mar  7 18:06:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * see https://github.com/cli/cli/releases/tag/v1.7.0
   * https://github.com/cli/cli/releases/tag/v1.6.0 
   * https://github.com/cli/cli/releases/tag/v1.5.0
+
+-------------------------------------------------------------------
+Fri Jan 22 19:15:41 UTC 2021 - chris@computersalat.de
+
+- fix build for SLES12
 
 -------------------------------------------------------------------
 Tue Dec 15 19:32:00 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>

@@ -1,7 +1,7 @@
 #
 # spec file for package gh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
+%define sname cli
 Name:           gh
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
 URL:            https://cli.github.com/
-Source0:        https://github.com/cli/cli/archive/v%{version}.tar.gz#/gh-%{version}.tar.gz
+Source0:        https://github.com/cli/cli/archive/v%{version}.tar.gz#/%{sname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # Completions
 BuildRequires:  fish
@@ -40,7 +41,11 @@ Official CLI client for GitHub written in Go
 Summary:        Bash Completion for %{name}
 Requires:       %{name} = %{version}
 Requires:       bash-completion
+%if 0%{?suse_version} == 1315
+Supplements:    packageand(gh:bash-completion)
+%else
 Supplements:    (gh and bash-completion)
+%endif
 BuildArch:      noarch
 
 %description bash-completion
@@ -49,7 +54,11 @@ Bash command line completion support for %{name}.
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
 Requires:       %{name} = %{version}
+%if 0%{?suse_version} == 1315
+Supplements:    packageand(gh:zsh)
+%else
 Supplements:    (gh and zsh)
+%endif
 BuildArch:      noarch
 
 %description zsh-completion
@@ -58,20 +67,29 @@ ZSH command line completion support for %{name}.
 %package fish-completion
 Summary:        Fish completion for %{name}
 Requires:       %{name} = %{version}
+%if 0%{?suse_version} == 1315
+Supplements:    packageand(gh:fish)
+%else
 Supplements:    (gh and fish)
+%endif
 BuildArch:      noarch
 
 %description fish-completion
 Fish command line completion support for %{name}.
 
 %prep
-%autosetup -n cli-%{version} -a 1
+%autosetup -n %{sname}-%{version} -a 1
 # Upstream decided to tweak Makefile for easier cross-compiling. But the tweak
 # overrides variables so we need to remove them to pass GOFLAGS.
 sed -i 's/GOOS= GOARCH= GOARM= GOFLAGS= CGO_ENABLED=//g' Makefile
 
 %build
-GOFLAGS=%{goflags} %make_build GH_VERSION="v%{version}" bin/gh manpages
+export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw -ldflags=-linkmode=external"
+%if 0%{?suse_version} == 1315
+make %{?_smp_mflags} GH_VERSION="v%{version}" bin/gh manpages
+%else
+%make_build GH_VERSION="v%{version}" bin/gh manpages
+%endif
 
 %install
 bin/gh completion -s bash | install -Dm644 /dev/stdin \
