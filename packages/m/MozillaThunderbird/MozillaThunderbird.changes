@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 15 09:13:06 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.6.1
+  * generated views of meeting invitations are now expanded by default
+  * Emails were not downloading at startup under some conditions
+  * Port numbers were not shown in "Confirm Security Exception"
+    dialog for CalDAV connections
+  MFSA 2022-07 (bsc#1196072)
+  * CVE-2022-0566 (bmo#1753094)
+    Crafted email could trigger an out-of-bounds write
+
+-------------------------------------------------------------------
 Sat Feb  5 14:11:31 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.6.0

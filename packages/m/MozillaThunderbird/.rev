@@ -4067,4 +4067,21 @@ I cannot test locally unfortunately.
     Script Execution during invalid object state</comment>
     <requestid>953831</requestid>
   </revision>
+  <revision rev="274" vrev="1">
+    <srcmd5>0acefa256d13b4c3007e4d5d338a5cd0</srcmd5>
+    <version>91.6.1</version>
+    <time>1645221758</time>
+    <user>dimstar_suse</user>
+    <comment>just added the bsc bug security bug reference
+
+- Mozilla Thunderbird 91.6.1
+  * generated views of meeting invitations are now expanded by default
+  * Emails were not downloading at startup under some conditions
+  * Port numbers were not shown in &quot;Confirm Security Exception&quot;
+    dialog for CalDAV connections
+  MFSA 2022-07 (bsc#1196072)
+  * CVE-2022-0566 (bmo#1753094)
+    Crafted email could trigger an out-of-bounds write</comment>
+    <requestid>955596</requestid>
+  </revision>
 </revisionlist>
