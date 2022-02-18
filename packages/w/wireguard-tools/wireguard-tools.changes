@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 17 15:17:15 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Support systemd-resolved split-dns setup
+  * Support-systemd-resolved-split-dns-setup.patch
+
+-------------------------------------------------------------------
 Wed Jan  5 10:43:06 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

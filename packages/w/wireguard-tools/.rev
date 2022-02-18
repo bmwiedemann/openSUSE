@@ -104,4 +104,12 @@
   * harden_wg-quick@.service.patch</comment>
     <requestid>945229</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e2c778d08d2de4b8c7c431d03a05ce33</srcmd5>
+    <version>1.0.20210914</version>
+    <time>1645221784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955853</requestid>
+  </revision>
 </revisionlist>

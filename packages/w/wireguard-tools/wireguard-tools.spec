@@ -1,7 +1,7 @@
 #
 # spec file for package wireguard-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,8 @@ URL:            https://www.wireguard.com/
 Source:         https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-%{version}.tar.xz
 Source1:        https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-%{version}.tar.asc
 Source99:       https://www.zx2c4.com/keys/AB9942E6D4A4CFC3412620A749FC7012A5DE03AE.asc#/WireGuard.keyring
-Patch0:	harden_wg-quick@.service.patch
+Patch0:         harden_wg-quick@.service.patch
+Patch1:         Support-systemd-resolved-split-dns-setup.patch
 BuildRequires:  bash-completion
 BuildRequires:  pkgconfig
 %systemd_requires
@@ -48,9 +49,10 @@ wg: set and retrieve configuration of WireGuard interfaces
 
 %prep
 %setup -q -n wireguard-tools-%{version}
+%patch0 -p1
+%patch1 -p1
 ## HACK: Fixing wg-quick's DNS= directive with a hatchet
 contrib/dns-hatchet/apply.sh
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
