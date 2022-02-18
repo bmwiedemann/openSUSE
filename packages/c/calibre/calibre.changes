@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Feb 18 06:20:05 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.37.0
+  * New Features
+    - Book details: Add actions to trim the cover to the
+      right-click menu
+    - Allow removing multiple email addresses at once in
+      Preferences->Sharing by email
+    - Book details: Use a better mono-spaced font on Windows by
+      default
+    - Add a tweak in Preferences->Tweaks to change the behavior of
+      the Tab key when completing entries
+    - Edit metadata: In "All in one" mode add an adjustable
+      splitter between the cover and formats boxes
+  * Bug Fixes
+    - Textile output: Dont fail if input document has invalid
+      padding or margin specifications
+    - E-book viewer: Fix image display window not remembering its
+      size and settings when run from within calibre
+    - E-book viewer: Fix setting to use roman numerals for series
+      not being respected
+    - Edit book: When saving a copy do not fail if the original
+      file has no write permissions
+    - Embed fonts tool: Create when missing
+    - Tag editor: Improve performance when very large number of
+      tags present
+
+-------------------------------------------------------------------
 Fri Feb  4 07:55:53 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.36.0
