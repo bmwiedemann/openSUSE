@@ -10,7 +10,6 @@
     <param name="extract">dist/debian.control</param>
     <param name="extract">dist/debian.dsc</param>
     <param name="extract">dist/debian.rules</param>
-    <param name="revision">0.12.1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>
