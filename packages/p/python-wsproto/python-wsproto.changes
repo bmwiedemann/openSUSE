@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 17 21:00:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- filter two irrelevant tests for h11 0.13.0 (gh#python-hyper/wsproto#169)
+- fix version dependency on h11 
+
+-------------------------------------------------------------------
 Mon Jan 25 11:33:52 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix Tumbleweed Python 3.6 build
