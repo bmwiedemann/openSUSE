@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 18 12:09:07 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rename the dependency on importlib-resources to
+  importlib_resources to be compatible with the SLE packages
+
+-------------------------------------------------------------------
 Sat Nov 20 11:52:09 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.4.3
