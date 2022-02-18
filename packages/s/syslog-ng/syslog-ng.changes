@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 18 10:27:21 UTC 2022 - peter czanik <peter@czanik.hu>
+
+- disable Java support for ARMv7 (compilation crashes)
+
+-------------------------------------------------------------------
 Mon Dec  6 12:06:30 UTC 2021 - peter czanik <peter@czanik.hu>
 
 - update to 3.35.1 

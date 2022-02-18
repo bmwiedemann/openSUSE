@@ -1,7 +1,7 @@
 #
 # spec file for package syslog-ng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,11 @@
 %bcond_with	geoip
 %else
 %bcond_without  dbi
+%ifarch armv7l armv7hl
+%bcond_with	java
+%else
 %bcond_without	java
+%endif
 %bcond_without	geoip
 %endif
 #Compat macro for new _fillupdir macro introduced in Nov 2017
