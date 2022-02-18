@@ -851,4 +851,12 @@ behaviour fixing bsc#941569</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>945623</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>d29f75d3d6dabf12038cbf29f9c48bbe</srcmd5>
+    <version>2.5.5</version>
+    <time>1645221759</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix license tag in spec file.</comment>
+    <requestid>955637</requestid>
+  </revision>
 </revisionlist>

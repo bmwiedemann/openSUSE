@@ -1,7 +1,7 @@
 #
 # spec file for package openvpn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Name:           openvpn
 Version:        2.5.5
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
-License:        LGPL-2.1-only AND SUSE-GPL-2.0-with-openssl-exception
+License:        GPL-2.0-only WITH openvpn-openssl-exception
 Group:          Productivity/Networking/Security
 URL:            https://openvpn.net/
 Source:         https://swupdate.openvpn.org/community/releases/openvpn-%{version}.tar.xz
