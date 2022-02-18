@@ -2,11 +2,11 @@
 Fri Feb 11 15:18:32 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.2:
-  * RTMPT dissector infinite loop.
-  * Large loops in multiple dissectors.
-  * PVFS dissector crash.
-  * CSN.1 dissector crash.
-  * CMS dissector crash.
+  * CVE-2022-0586: RTMPT dissector infinite loop (boo#1195866)
+  * CVE-2022-0585: Large loops in multiple dissectors (boo#1195867)
+  * CVE-2022-0583: PVFS dissector crash (boo#1195868)
+  * CVE-2022-0582: CSN.1 dissector crash (boo#1195869)
+  * CVE-2022-0581: CMS dissector crash (boo#1195870)
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-3.6.2.html
 
