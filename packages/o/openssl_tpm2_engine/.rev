@@ -42,4 +42,11 @@
     <user>dimstar_suse</user>
     <comment>https://openqa.opensuse.org/tests/2196907#step/tpm2_engine_rsa_operation/11</comment>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>35f54e5c01f6f853751cddfb19aa9df0</srcmd5>
+    <version>3.1.0</version>
+    <time>1645225642</time>
+    <user>dimstar_suse</user>
+    <comment>Re-Update - poo#107107 is not product related</comment>
+  </revision>
 </revisionlist>
