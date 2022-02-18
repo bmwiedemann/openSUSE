@@ -18,13 +18,13 @@
 
 %define _libname libpugixml1
 Name:           pugixml
-Version:        1.12
+Version:        1.12.1
 Release:        0
 Summary:        Light-weight C++ XML Processing Library
 License:        MIT
 Group:          System/Libraries
 URL:            https://pugixml.org/
-Source0:        https://github.com/zeux/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/zeux/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         pugixml-config.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -68,7 +68,7 @@ pugixml is a light-weight C++ XML processing library. It features:
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DPUGIXML_BUILD_TESTS=ON
 %make_build
 
 %install
@@ -76,6 +76,13 @@ pugixml is a light-weight C++ XML processing library. It features:
 
 %post -n %{_libname} -p /sbin/ldconfig
 %postun -n %{_libname} -p /sbin/ldconfig
+
+%check
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
+# Tweak path to find libpugixml.so.1 for Leap 15.3 and older
+export LD_LIBRARY_PATH="$PWD/build"
+%endif
+%ctest
 
 %files devel
 %doc readme.txt docs/*

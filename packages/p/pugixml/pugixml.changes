@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 17 21:28:34 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.12.1:
+  * Update PUGIXML_VERSION macro to 1.12.
+- Run test suite on build.
+
+-------------------------------------------------------------------
 Wed Feb  9 20:55:17 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.12:
