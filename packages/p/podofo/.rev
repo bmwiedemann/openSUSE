@@ -344,4 +344,12 @@ drop patches upstreamed</comment>
   include boost ones. (forwarded request 898198 from cgiboudeaux)</comment>
     <requestid>902763</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>8fdc6b2c7de1ea0b31c51cd207372789</srcmd5>
+    <version>0.9.7</version>
+    <time>1645221757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955585</requestid>
+  </revision>
 </revisionlist>

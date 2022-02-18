@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 16 15:00:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC12 compatibility fix from Fedora (boo#1194962):
+  * podofo-gcc12.patch
+- Add upstream changes:
+  * podofo-CVE-2019-10723.patch (boo#1131544, CVE-2019-10723)
+  * podofo-CVE-2018-12983.patch (boo#1099719, CVE-2018-12983)
+
+-------------------------------------------------------------------
 Mon Jun  7 20:20:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Explicitly require libboost_headers_devel. Some public headers

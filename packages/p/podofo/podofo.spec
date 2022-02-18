@@ -25,6 +25,12 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PDF
 URL:            http://podofo.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/podofo/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://src.fedoraproject.org/rpms/podofo/tree/rawhide
+Patch0:         podofo-gcc12.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         podofo-CVE-2019-10723.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         podofo-CVE-2018-12983.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -63,7 +69,7 @@ Requires:       libpodofo%{libver} = %{version}
 This package contains development files for podofo library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Remove build time references so build-compare can do its work
 echo "HTML_TIMESTAMP = NO" >> Doxyfile
