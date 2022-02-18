@@ -1,5 +1,4 @@
 #!/bin/sh
-
 set -euo pipefail
 
 UNIT_DIR="${1:-/tmp}"
@@ -12,6 +11,11 @@ for mnt in $(findmnt --fstab --options x-growpart.grow --output TARGET --noheadi
 	dev="$(findmnt --fstab --target ${mnt} --evaluate --real --output SOURCE --noheadings)"
 	mnt_esc="$(systemd-escape --path "${mnt}")"
 	dev_esc="$(systemd-escape --path "${dev}")"
+
+	# /dev/sda3 -> /dev/sda, /dev/nvme0n1p3 -> /dev/nvme0n1
+	parent_dev="/dev/$(lsblk --nodeps -rno PKNAME "${dev}")"
+	# Last number in the device name: /dev/nvme0n1p42 -> 42
+	partnum="$(echo "${dev}" | sed 's/^.*[^0-9]\([0-9]\+\)$/\1/')"
 
 	mkdir -p "${UNIT_DIR}/${mnt_esc}.mount.wants"
 	cat > "${UNIT_DIR}/growpart@${dev_esc}.service" <<EOF
@@ -35,8 +39,7 @@ Type=oneshot
 RemainAfterExit=yes
 # Exit code 1 means "NOCHANGE"
 SuccessExitStatus=1
-# Use sed to split /dev/foo42 into /dev/foo 42
-ExecStart=/bin/sh -c "/usr/sbin/growpart $(echo ${dev} | sed 's/\([a-z/]*\)\(\d*\)/\1 \2/')"
+ExecStart=/bin/sh -c "/usr/sbin/growpart ${parent_dev} ${partnum}"
 TimeoutSec=0
 EOF
 	ln -sf "${UNIT_DIR}/growpart@${dev_esc}.service" "${UNIT_DIR}/${mnt_esc}.mount.wants/"

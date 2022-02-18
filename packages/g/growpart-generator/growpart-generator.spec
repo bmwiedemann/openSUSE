@@ -1,7 +1,7 @@
 #
 # spec file for package growpart-generator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           growpart-generator
 Version:        0.8
 Release:        0
-Summary:        Grow a partition automatically 
+Summary:        Grow a partition automatically
 License:        GPL-3.0-only
 Group:          System/Management
-Url:            https://build.opensuse.org/package/show/devel:kubic/growpart-generator
+URL:            https://build.opensuse.org/package/show/devel:kubic/growpart-generator
 Source1:        growpart-generator.sh
 Source2:        gpl-3.0.txt
 BuildRequires:  systemd-rpm-macros

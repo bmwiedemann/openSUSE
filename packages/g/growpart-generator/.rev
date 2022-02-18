@@ -15,4 +15,12 @@
     <comment>- Use %{_systemdgeneratordir} macro</comment>
     <requestid>747316</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>93499fa6acdc187346995a39b06ad956</srcmd5>
+    <version>0.8</version>
+    <time>1645221784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955847</requestid>
+  </revision>
 </revisionlist>
