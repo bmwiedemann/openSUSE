@@ -817,7 +817,7 @@
     <package name="gupnp-dlna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gvfs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gvfs-backend-afc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gvfs-backend-samba" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="gvfs-backend-samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="gvfs-backends" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gvfs-fuse" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gvfs-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2094,7 +2094,7 @@
     <package name="libjack0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjacknet0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libjackserver0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libjansson4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libjansson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjavascriptcoregtk-4_0-18" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjavascriptcoregtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
     <package name="libjbig2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2168,7 +2168,7 @@
     <package name="libldap-2_4-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libldap-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libldapcpp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libldb2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libldb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libldns3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -2176,7 +2176,7 @@
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libliveMedia106" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="liblmdb-0_9_29" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="liblmdb-0_9_29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2279,7 +2279,7 @@
     <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnsl3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnss_nis2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2609,13 +2609,13 @@
     <package name="libtag-extras1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libtag1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtag_c0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtasn1-6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libteamdctl0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-logger3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libthai-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libthai0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4200,7 +4200,7 @@
     <package name="samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-gpupdate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-ldb-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4619,8 +4619,8 @@
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="whois" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
-    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
+    <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_yast -->
+    <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_yast -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
