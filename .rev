@@ -814,4 +814,60 @@
     (bsc#1195661).</comment>
     <requestid>953175</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>903f4872a03c70617acad24d10736c84</srcmd5>
+    <version>1.12.0</version>
+    <time>1645221762</time>
+    <user>dimstar_suse</user>
+    <comment>- n_vncserver.patch
+  * fix location of Xsession script
+- vncserver usage has radically changed; please check this: 
+  https://github.com/TigerVNC/tigervnc/blob/master/unix/vncserver/HOWTO.md 
+
+- Update to tigervnc 1.12.0
+  * The native viewer now supports full screen over a subset of monitors (e.g. 2 out of 3), and reacts properly to monitors being added or removed
+  * Recent server history in the native viewer
+  * The native viewer now has an option to reconnect if the connection is dropped
+  * Translations are now enabled on Windows and macOS for the native viewer
+  * The native viewer now respects the system security policy
+  * Better handling of accented keys in the Java viewer
+  * The Unix servers can now listen to both a Unix socket and a TCP port at the same time
+  * The network code in both the servers and the native viewer has been restructured to give a more responsive experience
+  * The vncserver service now correctly handles settings set to &quot;0&quot;
+  * Fixed the clipboard Unicode handling in both the native viewer and the servers
+  * Support for pointer &quot;warping&quot; in Xvnc and the native viewer, enabling e.g. FPS games
+- Update to tigervnc 1.11.0
+  * A security issue has been fixed in how the viewers handle TLS certificate exceptions
+  * vncserver has gotten a major redesign to be compatible with modern distributions
+  * The native viewer now has touch gestures to handle certain mouse actions (e.g. scroll wheel)
+  * Middle mouse button emulation in the native viewer, for devices with only two mouse buttons
+  * The Java viewer now supports Java 9+, but also now requires Java 8+
+  * Support for alpha cursors in the Java viewer (a feature already supported in the native viewer)
+  * The password and username can now be specified via the environment for the native viewer
+  * Support for building Xvnc/libvnc.so with Xorg 1.20.7+ and deprecate support for Xorg older than 1.16
+  * The official builds have been fixed to work on the upcoming macOS 11
+  * The Windows server (WinVNC) is now packaged separately as it is unmaintained and buggy
+- Removed patches (included in 1.12.0):
+  * U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
+  * tigervnc-fix-saving-of-bad-server-certs.patch
+  * u_xorg-server-1.20.7-ddxInputThreadInit.patch
+  * U_0001-Properly-store-certificate-exceptions.patch
+  * U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
+  * tigervnc-FIPS-use-RFC7919.patch
+  * u_Fix-non-functional-MaxDisconnectionTime.patch
+- Removed patches (no longer needed):
+  * u_tigervnc-cve-2014-8240.patch (https://github.com/TigerVNC/tigervnc/pull/1258)
+  * u_tigervnc_update_default_vncxstartup.patch
+- Refreshed patches:
+  * n_correct_path_in_desktop_file.patch
+  * n_tigervnc-date-time.patch
+  * n_utilize-system-crypto-policies.patch
+  * tigervnc-clean-pressed-key-on-exit.patch
+  * tigervnc-newfbsize.patch
+  * u_build_libXvnc_as_separate_library.patch
+  * u_change-button-layout-in-ServerDialog.patch
+  * u_tigervnc-add-autoaccept-parameter.patch
+  * u_tigervnc-211.patch</comment>
+    <requestid>955672</requestid>
+  </revision>
 </revisionlist>
