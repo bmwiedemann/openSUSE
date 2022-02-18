@@ -1,0 +1,40 @@
+#!/bin/bash -e
+set -x
+pkg=$1
+if [[ -z "$pkg" ]] ; then
+    echo "usage: $0 PKG"
+fi
+first=$(echo $pkg | cut -c1)
+p=$(echo packages/$first*/$pkg)
+b=pkg_$pkg
+if [ -e $p/.git ] ; then
+    echo "$pkg already has a git repo"
+    if ! [ -e ~/openSUSE/$p/.git ] ; then
+        cp -al $p/.git ~/openSUSE/$p
+    fi
+    ( cd $p ; git push -u origin master)
+    exit 0
+fi
+git branch -D $b || :
+git subtree split --prefix=$p -b $b
+loglines=$(git log $b |wc -l)
+if [ $loglines -gt 400000 ] ; then
+  echo bad split... aborting!
+  exit 1
+fi
+pushd $p
+git init
+git remote add merged "../../.."
+git remote add origin https://code.opensuse.org/package/$pkg
+git fetch merged $b
+git reset --hard FETCH_HEAD
+if ! git fetch origin ; then
+    (cd ../../../ && scripts/pagure-new-package $pkg)
+fi
+git push -u origin master
+popd
+scripts/pagure-set-projectoptions $pkg
+git branch -D $b
+cp -al $p/.git ~/openSUSE/$p
+rm -rf .git/subtree-cache
+git pull --rebase prod master

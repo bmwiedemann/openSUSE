@@ -1,0 +1,42 @@
+#!/bin/bash -e
+set -x
+pkg=$1
+if [[ -z "$pkg" ]] ; then
+    echo "usage: $0 PKG"
+fi
+first=$(echo $pkg | cut -c1 | tr A-Z a-z)
+p=$(echo packages/$first*/$pkg)
+b=pkg_$pkg
+if [ -e $p/.git ] ; then
+    echo "$pkg already has a git repo"
+    # FIXME find if bad repo => delete
+    commitlines=$(cd $p && git log|grep ^commit\ | wc -l)
+    if [ "$FORCE" = 1 -o "$commitlines" -gt 5000 ] ; then
+        rm -rf $p/.git
+    else
+        if ! [ -e ~/openSUSE/$p/.git ] ; then
+            rm -rf ~/openSUSE/$p/.git
+            cp -al $p/.git ~/openSUSE/$p
+        fi
+        ( cd $p ; git push -u origin master)
+    exit 0
+    fi
+fi
+pushd $p
+git init
+#git remote add merged "../../.."
+git remote add origin https://code.opensuse.org/package/$pkg
+cp -al ../../../.git/objects/* .git/objects/
+( cd ../../../ ; git fast-export --no-data master -- $p/ ) > /tmp/f
+cat /tmp/f | perl -pe "s! $p"'/([^/]*)$! $1!' | git fast-import
+git reset --hard master
+git gc --prune=now
+if ! git fetch origin ; then
+    (cd ../../../ && scripts/pagure-new-package $pkg)
+fi
+for i in 1 ; do git pushf -u origin master ||: ; done
+popd
+scripts/pagure-set-projectoptions $pkg
+rm -rf ~/openSUSE/$p/.git
+cp -al $p/.git ~/openSUSE/$p
+git pull --rebase prod master
