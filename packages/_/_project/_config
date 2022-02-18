@@ -432,6 +432,9 @@ Prefer: -python36 -python39
 Prefer: -python39-hotdoc
 Prefer: -python39-txt2tags -python310-txt2tags
 
+# have choice for python3-magic: python38-magic python38-python-magic
+Prefer: -python38-magic -python39-magic -python310-magic
+
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
 Prefer: -python39-PyQt6 -python38-PyQt6 -python3-pyside2
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
@@ -439,6 +442,9 @@ Prefer: man
 
 # go exists in mutliple versions by now - we prefer the 'unversioned package'
 Prefer: go -go1.13
+
+# have choice for kernel >= 4.1.0 needed by libbcc0: kernel-debug kernel-default kernel-default-base kernel-kvmsmall kernel-vanilla
+Prefer: kernel-default-base
 
 # have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
 Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common

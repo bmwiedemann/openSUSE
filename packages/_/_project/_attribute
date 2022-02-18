@@ -45,10 +45,11 @@
   boo#1195637: '20220213'
   boo#1195945: '20220216'
   boo#1195952: '20220216'
+  boo#1196116: '20220216'
   bsc#1161276: '20220216'
   bsc#1194208: '20220216'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
-  kde#449273: '20220215'
+  kde#449273: '20220216'
   poo#100991: '20211117'
   poo#101109: '20211102'
   poo#101608: '20211128'
@@ -89,6 +90,7 @@
   poo#105981: '20220204'
   poo#106676: '20220215'
   poo#106963: '20220216'
+  poo#107068: '20220216'
   poo#80628: '20220215'
   poo#91383: '20220111'
   poo#96611: '20211109'
@@ -106,7 +108,7 @@ splitter-whitelist =
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = Kernel:tools, multimedia:libs:cisco-openh264
+devel-whitelist = 
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -467,9 +469,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220216'
-published: '20220215'
-publishing: '20220215'
+    <value>failed: ''
+published: '20220216'
+publishing: '20220216'
 testing: '20220216'
 </value>
   </attribute>
