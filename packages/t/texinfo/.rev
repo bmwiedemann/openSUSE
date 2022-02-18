@@ -579,4 +579,11 @@
   traslations from texinfo package.</comment>
     <requestid>955207</requestid>
   </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>75e3fa90ca9bd63a132a1585e8195131</srcmd5>
+    <version>6.7</version>
+    <time>1645186524</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1196156</comment>
+  </revision>
 </revisionlist>
