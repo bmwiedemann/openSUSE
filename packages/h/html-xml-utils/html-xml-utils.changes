@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 11 15:17:14 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 8.3:
+ * dtd.hash: Make <head> rather than <body> the preferred parent
+   for <script>. Allow text in the <body> element, without requiring a
+   <p> or other element around it.
+ * tests/pipe5.sh, tests/pipe6.sh, tests/pipe7.sh: Added tests for
+   the -H option of hxpipe.
+ * hxpipe.c: Add option -H, which assumes the input is HTML and adds
+   implied tags and parses script and style elements as literal text.
+   hxpipe now outputs attributes in a normalized order
+   (alphabetical). Remove a redundant "if".
+
+-------------------------------------------------------------------
 Tue Dec 21 08:46:21 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 8.1:

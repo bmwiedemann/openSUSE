@@ -1,7 +1,7 @@
 #
 # spec file for package html-xml-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           html-xml-utils
-Version:        8.1
+Version:        8.3
 Release:        0
 Summary:        A number of utilities for manipulating HTML and XML files
 License:        W3C
