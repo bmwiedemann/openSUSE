@@ -81,7 +81,6 @@ unsorted:
   - LibVNCServer-devel 
   - Mesa-32bit: [x86_64] 
   - Mesa-KHR-devel 
-  - Mesa-demo-es 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
   - Mesa-dri-devel: [i586] # devel package of dvd:libgbm1 
@@ -5967,11 +5966,6 @@ unsorted:
   - gnome-usage: [i586] 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
-  - gnome-vfs2 
-  - gnome-vfs2-32bit: [x86_64] 
-  - gnome-vfs2-devel 
-  - gnome-vfs2-doc 
-  - gnome-vfs2-lang 
   - gnome-video-effects-devel 
   - gnonograms 
   - gnonograms-lang 
@@ -20372,6 +20366,7 @@ unsorted:
   - php7-bcmath 
   - php7-bz2 
   - php7-calendar 
+  - php7-cli 
   - php7-curl 
   - php7-dba 
   - php7-devel 
@@ -20382,6 +20377,8 @@ unsorted:
   - php7-fileinfo 
   - php7-fpm 
   - php7-ftp 
+  - php7-gd 
+  - php7-gettext 
   - php7-gmagick 
   - php7-gmp 
   - php7-ice 
@@ -20390,8 +20387,10 @@ unsorted:
   - php7-ldap 
   - php7-lzf 
   - php7-maxminddb 
+  - php7-mbstring 
   - php7-memcache 
   - php7-memcached 
+  - php7-mysql 
   - php7-odbc 
   - php7-opcache 
   - php7-pcntl 
@@ -20422,45 +20421,33 @@ unsorted:
   - php7-xsl 
   - php7-zip 
   - php7-zlib 
-  - php8 
   - php8-APCu 
   - php8-bcmath 
   - php8-bz2 
   - php8-calendar 
-  - php8-cli 
-  - php8-ctype 
   - php8-curl 
   - php8-dba 
   - php8-devel 
-  - php8-dom 
   - php8-embed 
   - php8-enchant 
   - php8-exif 
   - php8-fastcgi 
   - php8-ffi 
   - php8-fileinfo 
-  - php8-fpm 
   - php8-ftp 
-  - php8-gd 
-  - php8-gettext 
   - php8-gmagick 
   - php8-gmp 
   - php8-ice 
-  - php8-iconv 
   - php8-imagick 
   - php8-intl 
   - php8-ldap 
   - php8-lzf 
   - php8-maxminddb 
-  - php8-mbstring 
   - php8-memcache 
   - php8-memcached 
-  - php8-mysql 
   - php8-odbc 
   - php8-opcache 
-  - php8-openssl 
   - php8-pcntl 
-  - php8-pdo 
   - php8-pear 
   - php8-pecl 
   - php8-pgsql 
@@ -20475,17 +20462,13 @@ unsorted:
   - php8-soap 
   - php8-sockets 
   - php8-sodium 
-  - php8-sqlite 
   - php8-sysvmsg 
   - php8-sysvsem 
   - php8-sysvshm 
   - php8-test 
   - php8-tidy 
-  - php8-tokenizer 
   - php8-uuid 
   - php8-xdebug 
-  - php8-xmlreader 
-  - php8-xmlwriter 
   - php8-xsl 
   - php8-zip 
   - php8-zlib 
@@ -24473,6 +24456,7 @@ unsorted:
   - python310-spark_parser 
   - python310-sparse 
   - python310-speaklater 
+  - python310-sphinx-argparse 
   - python310-sphinx-book-theme 
   - python310-sphinx-bootstrap-theme 
   - python310-sphinx-feature-classification 
@@ -24919,12 +24903,10 @@ unsorted:
   - python36-python-crfsuite 
   - python36-raven-aiohttp 
   - python36-requests-gssapi 
-  - python36-sphinx-argparse 
   - python36-starlette 
   - python36-testsuite 
   - python36-tk 
   - python36-tools 
-  - python36-ucsmsdk 
   - python36-uncompyle6 
   - python36-whitenoise 
   - python38-32bit: [x86_64] 
@@ -27733,7 +27715,6 @@ unsorted:
   - python38-u-msgpack-python 
   - python38-ua-parser 
   - python38-uamqp 
-  - python38-ucsmsdk 
   - python38-ufoLib2 
   - python38-ufoProcessor 
   - python38-ufonormalizer 
@@ -30929,7 +30910,6 @@ unsorted:
   - python39-u-msgpack-python 
   - python39-ua-parser 
   - python39-uamqp 
-  - python39-ucsmsdk 
   - python39-ufoLib2 
   - python39-ufoProcessor 
   - python39-ufonormalizer 
@@ -32730,6 +32710,7 @@ unsorted:
   - spectcl 
   - spectre-meltdown-checker 
   - speech-dispatcher-configure 
+  - speech-dispatcher-module-espeak 
   - speedtest-cli 
   - speex 
   - speex-devel 
@@ -42370,7 +42351,6 @@ unsorted:
   - votca-common 
   - votca-devel 
   - votca-tutorials 
-  - voxelands 
   - vpcs 
   - vpx-tools 
   - vsqlite++-devel 
