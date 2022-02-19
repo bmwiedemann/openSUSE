@@ -10,6 +10,7 @@
     <package name="Mesa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa-demo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="Mesa-demo-egl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="Mesa-demo-es" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="Mesa-demo-x" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa-dri" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa-gallium" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -117,7 +118,7 @@
     <package name="apache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-manual" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-mod_dnssd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="apache2-mod_php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="apache2-mod_php7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="apache2-prefork" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apparmor-abstractions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3019,7 +3020,7 @@
     <package name="myspell-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="myspell-ru_RU" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="nagios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="nagios-www" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="nagios-www" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nano" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="nano-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="nautilus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3338,22 +3339,34 @@
     <package name="phonon4qt5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-cli" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-ctype" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-dom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-gd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-gettext" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-iconv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-json" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-mbstring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-mysql" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-pdo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-tokenizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-ctype" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-dom" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-iconv" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-json" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-openssl" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-pdo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-tokenizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-cli" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php8-ctype" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-dom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-fpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-fpm-apache" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-gd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php8-gettext" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php8-iconv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-mbstring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php8-mysql" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php8-openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-pdo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-tokenizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="pia" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pico" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pidgin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4288,7 +4301,6 @@
     <package name="spectacle" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="spectacle-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="speech-dispatcher" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="speech-dispatcher-module-espeak" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="speedcrunch" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="splix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="spu-tools" supportstatus="unsupported"/> <!-- reason: dvd:spu-tools -->
