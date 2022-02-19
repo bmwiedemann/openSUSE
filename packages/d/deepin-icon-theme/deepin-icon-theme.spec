@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-icon-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,29 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define name1 deepin-launcher
 %define deepin_launcher_version %(rpm -q --queryformat '%%{VERSION}' deepin-launcher)
 
 Name:           deepin-icon-theme
-Version:        2021.03.12
+Version:        2021.11.24
 Release:        0
 Summary:        Icons Theme
+License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-License:        GPL-3.0+
-URL:            https://github.com/linuxdeepin/deepin-icon-theme
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM deepin-icon-theme_fix-makefile.patch -- https://github.com/linuxdeepin/deepin-icon-theme/pull/23
-Patch0:         0001-fix-Makefile-s-install-target.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-broken-symlinks.patch -- https://github.com/linuxdeepin/deepin-icon-theme/pull/41
-Patch1:         0001-Fix-broken-symlinks.patch
-# PATCH-FIX-UPSTREAM 0001-fix-fix-litian.patch
-Patch2:         0001-fix-fix-litian.patch
-# PATCH-FIX-UPSTREAM 0002-fix-soft-link-error.patch
-Patch3:         0002-fix-soft-link-error.patch
+URL:            https://github.com/linuxdeepin/deepin-icon-themels
+Source0:        https://github.com/linuxdeepin/deepin-icon-theme/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  deepin-launcher
+BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  xcursorgen
-BuildRequires:  fdupes
 BuildArch:      noarch
 
 %description
@@ -45,13 +38,16 @@ Icons for the Deepin Desktop Environment.
 
 %package vintage
 Summary:        Vintage icon theme for Deepin
+Group:          System/GUI/Other
 
 %description vintage
 Vintage icons for the Deepin Desktop Environment.
 
 %package -n deepin-launcher-branding-upstream
 Summary:        Upstream branding for deepin-launcher
+Group:          System/GUI/Other
 Version:        %{deepin_launcher_version}
+Release:        0
 Requires:       %{name1} = %{version}
 Provides:       %{name1}-branding = %{version}
 Conflicts:      otherproviders(%{name1}-branding)

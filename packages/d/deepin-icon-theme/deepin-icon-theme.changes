@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 19 12:40:57 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2021.11.24
+  * Fix soft link error
+  * Add some new icons
+  * Fix bugs
+  * Update many app icons for themes support
+- Drop 0001-fix-Makefile-s-install-target.patch, 0001-Fix-broken-symlinks.patch
+  0001-fix-fix-litian.patch, 0002-fix-soft-link-error.patch
+
+-------------------------------------------------------------------
 Mon Jun  7 15:25:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2021.03.12
