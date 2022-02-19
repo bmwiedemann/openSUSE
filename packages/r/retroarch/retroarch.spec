@@ -1,7 +1,7 @@
 #
 # spec file for package retroarch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           retroarch
-Version:        1.9.12
+Version:        1.10.0
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
 Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
-Source:         %{name}-%{version}.tar.gz
-Patch0:         retroarch-config.patch
+Source0:        %{name}-%{version}.tar.gz
+Source1:        %{name}_migrate_old_config.py
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -74,101 +74,6 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 %endif
 
-# Shared data
-Recommends:     retroarch-joypad-autoconfig
-Recommends:     libretro-core-info
-Recommends:     libretro-database
-Recommends:     libretro-glsl-shaders
-Recommends:     retroarch-assets
-
-# Emulation cores
-
-# Arcade/MAME
-# MAME 2003 Plus has the best performance, supporting most games before 2000
-Recommends:     libretro-mame2003-plus
-
-# Atari 2600
-Recommends:     libretro-stella
-# Atari 5200
-Recommends:     libretro-atari800
-# Atari 7800
-Recommends:     libretro-prosystem
-# Atari Jaguar
-Recommends:     libretro-virtualjaguar
-# Atari Lynx
-Recommends:     libretro-handy
-
-# Nintendo Entertainment System (NES)
-Recommends:     libretro-nestopia
-# Super Nintendo Entertainment System (SNES)
-Recommends:     libretro-bsnes
-# Nintendo 64 (N64)
-Recommends:     libretro-parallel-n64
-# GameCube (GC) and Wii (not fully working yet)
-Recommends:     libretro-dolphin
-
-# Nintendo Game Boy Color (GBC)
-Recommends:     libretro-gambatte
-# Nintendo Game Boy Advance (GBA)
-Recommends:     libretro-mgba
-# Nintendo DS (NDS)
-Recommends:     libretro-desmume
-# Nintendo 3DS (3DS)
-Recommends:     libretro-citra
-
-# Sega Genesis/Mega Drive (MD)
-Recommends:     libretro-picodrive
-# Sega Saturn (SS)
-Recommends:     libretro-yabause
-# Sega Dreamcast (DC)
-Recommends:     libretro-flycast
-
-# Sony PlayStation (PSX)
-%ifarch armv6l armv6hl armv7l armv7hl aarch64
-Recommends:     libretro-pcsx-rearmed
-%else
-Recommends:     libretro-beetle-psx-hw
-%endif
-# Sony PlayStation 2 (PS2)
-Recommends:     libretro-play
-# Sony PlayStation Portable (PSP)
-Recommends:     libretro-ppsspp
-
-# Amstrad
-Recommends:     libretro-crocods
-# Amstrad CPC
-Recommends:     libretro-cap32
-# Bandai WonderSwan
-Recommends:     libretro-beetle-wswan
-# Fairchild ChannelF
-Recommends:     libretro-freechaf
-# Game & Watch
-Recommends:     libretro-gw
-# Mattel Intellivision
-Recommends:     libretro-freeintv
-# MS DOS
-Recommends:     libretro-dosbox
-# MSX
-Recommends:     libretro-bluemsx
-# Neo Geo Pocket
-Recommends:     libretro-beetle-ngp
-# PC Engine/TurboGrafx-16
-Recommends:     libretro-beetle-pce-fast
-# ZX 81
-Recommends:     libretro-81
-# ZX Spectrum
-Recommends:     libretro-fuse
-
-# Game and game engine cores
-
-Recommends:     libretro-2048
-Recommends:     libretro-3dengine
-Recommends:     libretro-chailove
-Recommends:     libretro-craft
-Recommends:     libretro-easyrpg
-Recommends:     libretro-ffmpeg
-Recommends:     libretro-gme
-
 %description
 RetroArch is a modular multi-system emulator system that is designed to be
 fast, lightweight, and portable. It has features few other emulators frontends
@@ -177,10 +82,6 @@ have, such as real-time rewinding and game-aware shading.
 %prep
 %setup -q
 
-%autopatch -p1
-
-# Change /usr/lib/ to /usr/lib64/ on 64-bit platform
-sed -i s~/usr/lib/~%{_libdir}/~g retroarch.cfg
 # Change /usr/bin/env python to /usr/bin/python
 sed -i s~%{_bindir}/env\ python~%{_bindir}/python~g tools/cg2glsl.py
 
@@ -228,12 +129,17 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+install -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}_migrate_old_config
 
 %fdupes %{buildroot}
+
+%post
+%{_bindir}/%{name}_migrate_old_config
 
 %files
 %config(noreplace) %{_sysconfdir}/%{name}.cfg
 %{_bindir}/%{name}
+%{_bindir}/%{name}_migrate_old_config
 %{_bindir}/%{name}-cg2glsl
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/metainfo/com.libretro.*.xml
