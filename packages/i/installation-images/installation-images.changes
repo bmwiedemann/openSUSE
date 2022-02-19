@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Feb 18 15:14:09 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#577
+- remove obsolete systemd-sysvinit package
+- 17.42
+
+--------------------------------------------------------------------
 Mon Feb 7 10:05:08 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#572
