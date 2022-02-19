@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 17 18:54:40 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Bump to version 16
+
+-------------------------------------------------------------------
+Thu Feb 17 18:46:25 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Drop enablement symlink migration support of SysV init scripts
+
+  This was announced here:
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/3ERUP5ZZJ6PPA36L3HVN46BH6U6JL74O/
+
+-------------------------------------------------------------------
 Wed Jan 19 08:28:16 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Bump to version 15

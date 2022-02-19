@@ -91,8 +91,7 @@ Suggests: systemd \
 %service_add_pre()									\
 if [ -x /usr/bin/systemctl ]; then							\
 	for service in %{?*} ; do							\
-		if [ ! -e "/usr/lib/systemd/system/$service" ] &&			\
-		   [ ! -e "/etc/init.d/${service%.*}" ]; then				\
+		if [ ! -e "/usr/lib/systemd/system/$service" ]; then			\
 			mkdir -p /run/systemd/rpm/needs-preset				\
 			touch "/run/systemd/rpm/needs-preset/$service"			\
 		fi									\
@@ -108,8 +107,6 @@ if [ -x /usr/bin/systemctl ]; then							\
 		if [ -e "/run/systemd/rpm/needs-preset/$service" ]; then		\
 			/usr/bin/systemctl preset "$service" || :			\
 			rm "/run/systemd/rpm/needs-preset/$service" || :		\
-		else	      								\
-			/usr/lib/systemd/systemd-sysv-convert --apply %{?*} || :	\
 		fi									\
 	done										\
 fi											\
