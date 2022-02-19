@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Feb 18 14:54:09 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220218.a7ac9876:
+  * rabbit-openqa: Don't crash on openqa jobs without BUILD
+
+-------------------------------------------------------------------
+Fri Feb 18 14:11:12 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220218.b3d0cc66:
+  * Use the unversioned ruby interpreter
+
+-------------------------------------------------------------------
+Fri Feb 18 14:03:38 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220218.54d2979d:
+  * Fix indent of statements E127
+  * Replace variable name 'l' (x is fine)
+
+-------------------------------------------------------------------
+Fri Feb 18 13:21:16 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220218.5f2e5dc0:
+  * Only have one statement in a line E701
+
+-------------------------------------------------------------------
+Fri Feb 18 11:51:05 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220218.52dbb52b:
+  * Remove bare excepts - https://www.flake8rules.com/rules/E722.html
+  * Harmonize imports on using lxml for XML parsing
+
+-------------------------------------------------------------------
 Thu Feb 17 11:56:07 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220217.8b1acc1d:

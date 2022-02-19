@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20220217.8b1acc1d
+Version:        20220218.a7ac9876
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -376,7 +376,6 @@ exit 0
 %{_bindir}/osrt-deptool
 %{_bindir}/osrt-fcc_submitter
 %{_bindir}/osrt-issue-diff
-%{_bindir}/osrt-k8s-secret
 %{_bindir}/osrt-legal-auto
 %{_bindir}/osrt-openqa-maintenance
 %{_bindir}/osrt-requestfinder
