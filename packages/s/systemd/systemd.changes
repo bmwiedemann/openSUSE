@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Feb 17 18:30:12 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Drop enablement symlink migration support of SysV init scripts
+
+  And let's finish reducing the support of SysV init scripts to its minimum.
+
+-------------------------------------------------------------------
+Mon Feb 14 15:11:04 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: fix dependencies for mini variants
+
+  Make sure that all mini variants won't be installed in real systems and won't
+  be involved when building medias with kiwi. Note that sub-packages that
+  requires systemd (such as udev) don't need any special treatment since the
+  specific deps are inherited from the main (mini) package.
+
+- spec: simplify systemd-mini-doc dependencies by assuming that the doc
+  sub-package can't be a build requirement for other packages.
+
+- spec: libsystemd-mini and libudev-mini need to provide libsystemd and libudev
+  respectively
+
+-------------------------------------------------------------------
+Mon Feb 14 07:39:12 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Rename systemd-sysvinit into systemd-sysvcompat
+
+  systemd-sysvinit was probably provided to allow systems to switch from
+  sysvinit to systemd by overwriting /sbin/init with a link to systemd. But this
+  isn't very useful anymore due to the fact that sysvinit is not supported since
+  several years. Therefore the subpackage contains now the files needed to keep
+  backward compatibility with SysV init scripts (most notably sysv-generator)
+  and has been renamed accordingly. The few files that are not specific to
+  sysvinit (such as /bin/init) have been moved to the main package.
+
+  Normally this new subpackage shouldn't be needed (since all packages use
+  systemd unit files) unless a 3rd party application is installed and still
+  relies on SysV init scripts.
+
+-------------------------------------------------------------------
+Mon Feb 14 07:31:49 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: explicitely turn on/off build options
+
+  Hence a feature can't be accidentally turned on/off because its dep is pulled
+  in or removed due to another feature being turned on/off.
+
+-------------------------------------------------------------------
 Fri Feb  4 15:22:43 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Always create systemd-network system user, even if systemd-networkd is not

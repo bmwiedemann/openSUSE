@@ -16,11 +16,6 @@
 #
 
 
-#
-# The git repository used to track all Suse specific changes can be
-# found at: https://github.com/openSUSE/systemd.
-#
-
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %if "%{flavor}" == "mini"
@@ -34,6 +29,12 @@
 %define min_kernel_version 4.5
 %define suse_version +suse.82.g117bd7f14a
 %define _testsuitedir /usr/lib/systemd/tests
+
+# Similar to %%with but returns true/false. The 'true' value can be redefined
+# when a second parameter is passed.
+%define __when_1() %{expand:%%{?with_%{1}:true}%%{!?with_%{1}:false}}
+%define __when_2() %{expand:%%{?with_%{1}:%{2}}%%{!?with_%{1}:false}}
+%define when()     %{expand:%%__when_%# %{*}}
 
 %if 0%{?bootstrap}
 %bcond_with     coredump
@@ -132,8 +133,15 @@ BuildRequires:  gnu-efi
 
 %if 0%{?bootstrap}
 #!BuildIgnore:  dbus-1
-Requires:       this-is-only-for-build-envs
 Provides:       systemd = %{version}-%{release}
+Conflicts:      systemd
+# Don't consider the mini flavors when building kiwi medias. This conflict is
+# automatically inherited by sub-packages requiring systemd (such as udev).
+Conflicts:      kiwi
+# This dependency is used to ensure that the mini flavors are selected only
+# inside OBS builds (where this dependency is ignored) and don't get installed
+# on real systems.
+Requires:       this-is-only-for-build-envs
 %else
 # the buildignore is important for bootstrapping
 #!BuildIgnore:  udev
@@ -157,16 +165,16 @@ Requires(post): findutils
 Requires(post): systemd-presets-branding
 Requires(post): pam-config >= 0.79-5
 %endif
-
-%if 0%{?bootstrap}
-Conflicts:      kiwi
-Conflicts:      systemd
-%endif
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
+Provides:       sbin_init
+Provides:       sysvinit:/sbin/init
+Conflicts:      sbin_init
 Conflicts:      sysvinit
 Provides:       systemd-logger = %{version}-%{release}
 Obsoletes:      systemd-logger < %{version}-%{release}
+Provides:       systemd-sysvinit = %{version}-%{release}
+Obsoletes:      systemd-sysvinit < %{version}-%{release}
 Provides:       systemd-analyze = %{version}-%{release}
 Obsoletes:      pm-utils <= 1.4.1
 Obsoletes:      suspend <= 1.0
@@ -175,7 +183,6 @@ Source0:        systemd-v%{version}%{suse_version}.tar.xz
 Source1:        systemd-rpmlintrc
 Source2:        systemd-user
 %if %{with sysvcompat}
-Source3:        systemd-sysv-convert
 Source4:        systemd-sysv-install
 %endif
 Source5:        tmpfiles-suse.conf
@@ -192,11 +199,17 @@ Source201:      files.udev
 Source202:      files.container
 Source203:      files.network
 Source204:      files.devel
+Source205:      files.sysvcompat
 
+#
+# All changes backported from upstream are tracked by the git repository, which
+# can be found at:  https://github.com/openSUSE/systemd.
+#
 # Patches listed below are openSUSE specific and should be kept at its
 # minimum. We try hard to push our changes to upstream but sometimes they are
 # only relevant for SUSE distros. Special rewards for those who will manage to
 # get rid of one of them !
+#
 Patch1:         0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
 Patch2:         0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch3:         0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
@@ -228,8 +241,8 @@ drop-in replacement for sysvinit.
 Summary:        HTML documentation for systemd
 License:        LGPL-2.1-or-later
 %if 0%{?bootstrap}
-Provides:       systemd-doc = %{version}-%{release}
 Conflicts:      systemd-doc
+Requires:       this-is-only-for-build-envs
 %else
 Supplements:    (systemd and patterns-base-documentation)
 %endif
@@ -256,23 +269,32 @@ Conflicts:      libudev-devel
 Development headers and files for libsystemd and libudev libraries for
 developing and building applications linking to these libraries.
 
-%package sysvinit
-Summary:        System V init tools
+%if %{with sysvcompat}
+%package sysvcompat
+Summary:        SySV and LSB init script support for systemd (deprecated)
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
-Provides:       sbin_init
-Conflicts:      sbin_init
-Provides:       systemd-sysvinit = %{version}-%{release}
-Provides:       sysvinit:/sbin/init
+Provides:       systemd-sysvinit:%{_sbindir}/runlevel
+Provides:       systemd-sysvinit:%{_sbindir}/telinit
 
-%description sysvinit
-Drop-in replacement of System V init tools.
+%description sysvcompat
+This package ships the necessary files that enable minimal SysV and LSB init
+scripts support in systemd. It also contains the obsolete SysV init tools
+telinit(8) and runlevel(8). You should consider using systemctl(1) instead.
+
+Unless you have a 3rd party application installed on your system that still
+relies on such scripts, this package should not be needed at all.
+
+Please note that the content of this package is considered as deprecated.
+%endif
 
 %package -n libsystemd0%{?mini}
 Summary:        Component library for systemd
 License:        LGPL-2.1-or-later
 %if 0%{?bootstrap}
+Conflicts:      kiwi
 Conflicts:      libsystemd0
+Provides:       libsystemd0 = %{version}-%{release}
 Requires:       this-is-only-for-build-envs
 %endif
 
@@ -310,17 +332,14 @@ Requires:       group(kvm)
 Requires(post): sed
 Requires(post): coreutils
 Requires(postun):coreutils
-
 Conflicts:      ConsoleKit < 0.4.1
 Conflicts:      dracut < 044.1
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
 Conflicts:      util-linux < 2.16
 %if 0%{?bootstrap}
-Provides:       udev = %{version}-%{release}
 Conflicts:      udev
-# avoid kiwi picking it for bootstrap
-Requires:       this-is-only-for-build-envs
+Provides:       udev = %{version}-%{release}
 %endif
 
 %description -n udev%{?mini}
@@ -336,8 +355,7 @@ License:        LGPL-2.1-or-later
 %if 0%{?bootstrap}
 Conflicts:      kiwi
 Conflicts:      libudev1
-Provides:       libudev1
-# avoid kiwi picking it for bootstrap
+Provides:       libudev1 = %{version}-%{release}
 Requires:       this-is-only-for-build-envs
 %endif
 
@@ -369,8 +387,10 @@ Provides:       nss-mymachines = %{version}-%{release}
 Provides:       systemd-container = %{version}-%{release}
 Provides:       systemd:%{_bindir}/systemd-nspawn
 %if 0%{?bootstrap}
+Conflicts:      kiwi
 Conflicts:      systemd-container
 Provides:       systemd-container = %{version}-%{release}
+Requires:       this-is-only-for-build-envs
 %endif
 
 %description container
@@ -625,13 +645,21 @@ Have fun with these services at your own risk.
         -Dsplit-bin=true \
         -Dsystem-uid-max=499 \
         -Dsystem-gid-max=499 \
+        -Dadm-group=false \
+        -Dwheel-group=false \
+        -Dgshadow=false \
+        -Ddefault-hierarchy=unified \
+        -Ddefault-kill-user-processes=false \
+        -Dldconfig=false \
         -Dpamconfdir=no \
         -Dpamlibdir=%{_pam_moduledir} \
         -Dxinitrcdir=%{_distconfdir}/X11/xinit/xinitrc.d \
         -Drpmmacrosdir=no \
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
-        -Ddefault-hierarchy=unified \
-        -Ddefault-kill-user-processes=false \
+%if %{without sysvcompat}
+        -Dsysvinit-path= \
+        -Dsysvrcnd-path= \
+%endif
         -Drc-local=/etc/init.d/boot.local \
         -Dcreate-log-dirs=false \
         -Dbump-proc-sys-fs-nr-open=false \
@@ -643,17 +671,6 @@ Have fun with these services at your own risk.
         -Dima=false \
         -Delfutils=auto \
         -Doomd=false \
-%if %{with experimental}
-        -Dpstore=true \
-        -Drepart=true \
-        -Dhomed=true \
-        -Duserdb=true \
-%else
-        -Dpstore=false \
-        -Drepart=false \
-        -Dhomed=false \
-        -Duserdb=false \
-%endif
 %if 0%{?bootstrap}
         -Dbashcompletiondir=no \
         -Dzshcompletiondir=no \
@@ -665,53 +682,28 @@ Have fun with these services at your own risk.
         -Dman=true \
         -Dhtml=true \
 %endif
-%if %{without coredump}
-        -Dcoredump=false \
-%endif
-%if %{without sd_boot}
-        -Defi=false \
-        -Dgnu-efi=false \
-%else
-        -Defi=true \
-        -Dgnu-efi=true \
-%endif
-%if %{without importd}
-        -Dimportd=false \
-%endif
-%if %{without journal_remote}
-        -Dremote=false \
-%endif
-%if %{without portabled}
-        -Dportabled=false \
-%endif
-%if %{without machined}
-        -Dmachined=false \
-%endif
-%if %{without networkd}
-        -Dnetworkd=false \
-%endif
-%if %{without resolved}
-        -Dresolve=false \
-%else
+        -Dcoredump=%{when coredump} \
+        -Dimportd=%{when importd} \
+        -Dmachined=%{when machined} \
+        -Dnetworkd=%{when networkd} \
+        -Dportabled=%{when portabled} \
+        -Dremote=%{when journal_remote} \
+	\
+        -Defi=%{when sd_boot} \
+        -Dgnu-efi=%{when sd_boot} \
+	\
+        -Dresolve=%{when resolved} \
         -Ddns-servers='' \
         -Ddefault-dnssec=no \
-        -Ddns-over-tls=openssl \
-%endif
-%if %{without sysvcompat}
-        -Dsysvinit-path= \
-        -Dsysvrcnd-path= \
-%endif
-%if %{with testsuite}
-        -Dtests=unsafe \
-        -Dinstall-tests=true \
-%else
-        -Dtests=false \
-        -Dinstall-tests=false \
-%endif
-        -Dadm-group=false \
-        -Dwheel-group=false \
-        -Dgshadow=false \
-        -Dldconfig=false
+        -Ddns-over-tls=%{when resolved openssl} \
+	\
+        -Dpstore=%{when experimental} \
+        -Drepart=%{when experimental} \
+        -Dhomed=%{when  experimental} \
+        -Duserdb=%{when experimental} \
+        \
+        -Dtests=%{when testsuite unsafe} \
+        -Dinstall-tests=%{when testsuite}
 
 %meson_build
 
@@ -727,10 +719,6 @@ rm %{buildroot}%{_mandir}/man1/resolvconf.1*
 %endif
 
 %if %{with sysvcompat}
-mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/sysv-convert
-mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/migrated
-
-install -m0755 -D %{SOURCE3}  %{buildroot}/%{_systemd_util_dir}/systemd-sysv-convert
 install -m0755 -D %{SOURCE4}  %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
 %endif
 
@@ -751,12 +739,13 @@ mkdir -p %{buildroot}/{bin,sbin}
 # Legacy paths
 ln -s ../usr/bin/udevadm %{buildroot}/sbin/
 ln -s ../usr/bin/systemctl %{buildroot}/bin/
-# Legacy sysvinit tools
+
 ln -s ../usr/lib/systemd/systemd %{buildroot}/sbin/init
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/reboot
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/halt
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/shutdown
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/poweroff
+# Legacy sysvinit tools
 %if %{with sysvcompat}
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/telinit
 ln -s ../usr/bin/systemctl %{buildroot}/sbin/runlevel
@@ -1269,36 +1258,10 @@ fi
 %license LICENSE.LGPL2.1
 %include %{SOURCE204}
 
-%files sysvinit
+%if %{with sysvcompat}
+%files sysvcompat
 %defattr(-,root,root,-)
-%if %{with split_usr}
-/sbin/halt
-/sbin/init
-/sbin/poweroff
-/sbin/reboot
-/sbin/shutdown
-%if %{with sysvcompat}
-/sbin/telinit
-/sbin/runlevel
-%endif
-%endif
-%{_sbindir}/halt
-%{_sbindir}/init
-%{_sbindir}/poweroff
-%{_sbindir}/reboot
-%{_sbindir}/shutdown
-%if %{with sysvcompat}
-%{_sbindir}/runlevel
-%{_sbindir}/telinit
-%endif
-%if ! 0%{?bootstrap}
-%{_mandir}/man1/init.1.gz
-%{_mandir}/man8/halt.8.gz
-%{_mandir}/man8/poweroff.8.gz
-%{_mandir}/man8/reboot.8.gz
-%{_mandir}/man8/runlevel.8.gz
-%{_mandir}/man8/shutdown.8.gz
-%{_mandir}/man8/telinit.8.gz
+%include %{SOURCE205}
 %endif
 
 %files -n libsystemd0%{?mini}

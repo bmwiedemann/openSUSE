@@ -30,10 +30,6 @@
 %dir %{_journalcatalogdir}
 %dir %{_localstatedir}/lib/systemd
 %dir %{_localstatedir}/lib/systemd/catalog
-%if %{with sysvcompat}
-%dir %{_localstatedir}/lib/systemd/migrated
-%dir %{_localstatedir}/lib/systemd/sysv-convert
-%endif
 %dir %{_modprobedir}
 %dir %{_modulesloaddir}
 %dir %{_prefix}/lib/kernel
@@ -82,13 +78,6 @@
 %dir %{_unitdir}/reboot.target.wants
 %dir %{_unitdir}/remote-fs.target.wants
 %dir %{_unitdir}/rescue.target.wants
-%if %{with sysvcompat}
-%dir %{_unitdir}/runlevel1.target.wants
-%dir %{_unitdir}/runlevel2.target.wants
-%dir %{_unitdir}/runlevel3.target.wants
-%dir %{_unitdir}/runlevel4.target.wants
-%dir %{_unitdir}/runlevel5.target.wants
-%endif
 %dir %{_unitdir}/shutdown.target.wants
 %dir %{_unitdir}/sockets.target.wants
 %dir %{_unitdir}/sysinit.target.wants
@@ -236,6 +225,7 @@
 %endif
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz
+%{_mandir}/man1/init.1.gz
 %{_mandir}/man1/journalctl.1.gz
 %{_mandir}/man1/localectl.1.gz
 %{_mandir}/man1/loginctl.1.gz
@@ -347,9 +337,13 @@
 %{_mandir}/man7/systemd.syntax.7.gz
 %{_mandir}/man7/systemd.time.7.gz
 %{_mandir}/man8/30-systemd-environment-d-generator.8.gz
+%{_mandir}/man8/halt.8.gz
 %{_mandir}/man8/kernel-install.8.gz
 %{_mandir}/man8/pam_systemd.8.gz
+%{_mandir}/man8/poweroff.8.gz
 %{_mandir}/man8/rc-local.service.8.gz
+%{_mandir}/man8/reboot.8.gz
+%{_mandir}/man8/shutdown.8.gz
 %{_mandir}/man8/systemd-ask-password-console.path.8.gz
 %{_mandir}/man8/systemd-ask-password-console.service.8.gz
 %{_mandir}/man8/systemd-ask-password-wall.path.8.gz
@@ -389,9 +383,6 @@
 %{_mandir}/man8/systemd-hostnamed.8.gz
 %{_mandir}/man8/systemd-hostnamed.service.8.gz
 %{_mandir}/man8/systemd-hybrid-sleep.service.8.gz
-%{_mandir}/man8/systemd-initctl.8.gz
-%{_mandir}/man8/systemd-initctl.service.8.gz
-%{_mandir}/man8/systemd-initctl.socket.8.gz
 %{_mandir}/man8/systemd-journald-audit.socket.8.gz
 %{_mandir}/man8/systemd-journald-dev-log.socket.8.gz
 %{_mandir}/man8/systemd-journald-varlink@.socket.8.gz
@@ -416,7 +407,6 @@
 %{_mandir}/man8/systemd-quotacheck.service.8.gz
 %{_mandir}/man8/systemd-random-seed.8.gz
 %{_mandir}/man8/systemd-random-seed.service.8.gz
-%{_mandir}/man8/systemd-rc-local-generator.8.gz
 %{_mandir}/man8/systemd-reboot.service.8.gz
 %{_mandir}/man8/systemd-remount-fs.8.gz
 %{_mandir}/man8/systemd-remount-fs.service.8.gz
@@ -436,7 +426,6 @@
 %{_mandir}/man8/systemd-system-update-generator.8.gz
 %{_mandir}/man8/systemd-sysusers.8.gz
 %{_mandir}/man8/systemd-sysusers.service.8.gz
-%{_mandir}/man8/systemd-sysv-generator.8.gz
 %{_mandir}/man8/systemd-time-wait-sync.8.gz
 %{_mandir}/man8/systemd-time-wait-sync.service.8.gz
 %{_mandir}/man8/systemd-timedated.8.gz
@@ -450,7 +439,6 @@
 %{_mandir}/man8/systemd-tmpfiles.8.gz
 %{_mandir}/man8/systemd-update-done.8.gz
 %{_mandir}/man8/systemd-update-done.service.8.gz
-%{_mandir}/man8/systemd-update-utmp-runlevel.service.8.gz
 %{_mandir}/man8/systemd-update-utmp.8.gz
 %{_mandir}/man8/systemd-update-utmp.service.8.gz
 %{_mandir}/man8/systemd-user-sessions.8.gz
@@ -470,6 +458,11 @@
 %{_prefix}/lib/kernel/install.d/00-entry-directory.install
 %{_prefix}/lib/kernel/install.d/50-depmod.install
 %{_prefix}/lib/kernel/install.d/90-loaderentry.install
+%{_sbindir}/halt
+%{_sbindir}/init
+%{_sbindir}/poweroff
+%{_sbindir}/reboot
+%{_sbindir}/shutdown
 %{_sysconfdir}/xdg/systemd/user
 %{_sysctldir}/99-sysctl.conf
 %{_systemd_user_env_generator_dir}/30-systemd-environment-d-generator
@@ -500,9 +493,6 @@
 %{_systemd_util_dir}/systemd-growfs
 %{_systemd_util_dir}/systemd-hibernate-resume
 %{_systemd_util_dir}/systemd-hostnamed
-%if %{with sysvcompat}
-%{_systemd_util_dir}/systemd-initctl
-%endif
 %{_systemd_util_dir}/systemd-journald
 %{_systemd_util_dir}/systemd-localed
 %{_systemd_util_dir}/systemd-logind
@@ -518,10 +508,6 @@
 %{_systemd_util_dir}/systemd-socket-proxyd
 %{_systemd_util_dir}/systemd-sulogin-shell
 %{_systemd_util_dir}/systemd-sysctl
-%if %{with sysvcompat}
-%{_systemd_util_dir}/systemd-sysv-convert
-%{_systemd_util_dir}/systemd-sysv-install
-%endif
 %{_systemd_util_dir}/systemd-time-wait-sync
 %{_systemd_util_dir}/systemd-timedated
 %{_systemd_util_dir}/systemd-timesyncd
@@ -570,14 +556,8 @@
 %{_systemdgeneratordir}/systemd-getty-generator
 %{_systemdgeneratordir}/systemd-gpt-auto-generator
 %{_systemdgeneratordir}/systemd-hibernate-resume-generator
-%if %{with sysvcompat}
-%{_systemdgeneratordir}/systemd-rc-local-generator
-%endif
 %{_systemdgeneratordir}/systemd-run-generator
 %{_systemdgeneratordir}/systemd-system-update-generator
-%if %{with sysvcompat}
-%{_systemdgeneratordir}/systemd-sysv-generator
-%endif
 %if ! 0%{?bootstrap}
 %{_systemdgeneratordir}/systemd-veritysetup-generator
 %endif
@@ -628,9 +608,6 @@
 %{_unitdir}/getty.target
 %{_unitdir}/getty@.service
 %{_unitdir}/graphical.target
-%if %{with sysvcompat}
-%{_unitdir}/graphical.target.wants/systemd-update-utmp-runlevel.service
-%endif
 %{_unitdir}/halt.target
 %{_unitdir}/hibernate.target
 %{_unitdir}/hybrid-sleep.target
@@ -651,18 +628,11 @@
 %{_unitdir}/local-fs-pre.target
 %{_unitdir}/local-fs.target
 %{_unitdir}/local-fs.target.wants/tmp.mount
-%if %{with sysvcompat}
-%{_unitdir}/local-fs.target.wants/var-lock.mount
-%{_unitdir}/local-fs.target.wants/var-run.mount
-%endif
 %{_unitdir}/modprobe@.service
 %{_unitdir}/multi-user.target
 %{_unitdir}/multi-user.target.wants/after-local.service
 %{_unitdir}/multi-user.target.wants/getty.target
 %{_unitdir}/multi-user.target.wants/systemd-logind.service
-%if %{with sysvcompat}
-%{_unitdir}/multi-user.target.wants/systemd-update-utmp-runlevel.service
-%endif
 %{_unitdir}/multi-user.target.wants/systemd-user-sessions.service
 %{_unitdir}/network-online.target
 %{_unitdir}/network-pre.target
@@ -675,9 +645,6 @@
 %{_unitdir}/proc-sys-fs-binfmt_misc.automount
 %{_unitdir}/proc-sys-fs-binfmt_misc.mount
 %{_unitdir}/quotaon.service
-%if %{with sysvcompat}
-%{_unitdir}/rc-local.service
-%endif
 %{_unitdir}/reboot.target
 %if ! 0%{?bootstrap}
 %{_unitdir}/remote-cryptsetup.target
@@ -689,19 +656,7 @@
 %endif
 %{_unitdir}/rescue.service
 %{_unitdir}/rescue.target
-%if %{with sysvcompat}
-%{_unitdir}/rescue.target.wants/systemd-update-utmp-runlevel.service
-%endif
 %{_unitdir}/rpcbind.target
-%if %{with sysvcompat}
-%{_unitdir}/runlevel0.target
-%{_unitdir}/runlevel1.target
-%{_unitdir}/runlevel2.target
-%{_unitdir}/runlevel3.target
-%{_unitdir}/runlevel4.target
-%{_unitdir}/runlevel5.target
-%{_unitdir}/runlevel6.target
-%endif
 %{_unitdir}/serial-getty@.service
 %{_unitdir}/shutdown.target
 %{_unitdir}/sigpwr.target
@@ -709,9 +664,6 @@
 %{_unitdir}/slices.target
 %{_unitdir}/smartcard.target
 %{_unitdir}/sockets.target
-%if %{with sysvcompat}
-%{_unitdir}/sockets.target.wants/systemd-initctl.socket
-%endif
 %{_unitdir}/sockets.target.wants/systemd-journald-dev-log.socket
 %{_unitdir}/sockets.target.wants/systemd-journald.socket
 %{_unitdir}/sound.target
@@ -783,10 +735,6 @@
 %{_unitdir}/systemd-hibernate.service
 %{_unitdir}/systemd-hostnamed.service
 %{_unitdir}/systemd-hybrid-sleep.service
-%if %{with sysvcompat}
-%{_unitdir}/systemd-initctl.service
-%{_unitdir}/systemd-initctl.socket
-%endif
 %{_unitdir}/systemd-journal-catalog-update.service
 %{_unitdir}/systemd-journal-flush.service
 %{_unitdir}/systemd-journald-dev-log.socket
@@ -820,9 +768,6 @@
 %{_unitdir}/systemd-tmpfiles-setup-dev.service
 %{_unitdir}/systemd-tmpfiles-setup.service
 %{_unitdir}/systemd-update-done.service
-%if %{with sysvcompat}
-%{_unitdir}/systemd-update-utmp-runlevel.service
-%endif
 %{_unitdir}/systemd-update-utmp.service
 %{_unitdir}/systemd-user-sessions.service
 %{_unitdir}/systemd-vconsole-setup.service
@@ -839,14 +784,15 @@
 %{_unitdir}/user-runtime-dir@.service
 %{_unitdir}/user.slice
 %{_unitdir}/user@.service
-%if %{with sysvcompat}
-%{_unitdir}/var-lock.mount
-%{_unitdir}/var-run.mount
-%endif
 %if ! 0%{?bootstrap}
 %{_unitdir}/veritysetup-pre.target
 %{_unitdir}/veritysetup.target
 %endif
 %if %{with split_usr}
 /bin/systemctl
+/sbin/halt
+/sbin/init
+/sbin/poweroff
+/sbin/reboot
+/sbin/shutdown
 %endif
