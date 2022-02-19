@@ -47,10 +47,13 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+cd %{buildroot}/%{_bindir}/
+ln -s %{name} kubectl-cert_manager
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_bindir}/kubectl-cert_manager
 
 %changelog

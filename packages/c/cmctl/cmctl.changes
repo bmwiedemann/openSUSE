@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 19 09:54:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- make this available as a kubectl plugin by creating a link to /usr/bin/kubectl-cert_manager
+
+-------------------------------------------------------------------
 Fri Feb 11 11:54:35 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package cmctl at version 1.7.1
