@@ -39,6 +39,7 @@ and 4, respectively.
 %autosetup
 
 %build
+make clean
 %make_build CC=cc CFLAGS="%optflags" %{?_smp_mflags}
 
 %install
