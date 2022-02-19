@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 17 04:08:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- help2man 1.49.1:
+  * Use @samp{} around the option in the menu description for
+    "--help recommendations" to avoid rendering the -- as endash
+  * Don't translate @documentencoding
+  * Fall back to forking iconv for encodings which are not
+    supported by Perl's Encode module
+
+-------------------------------------------------------------------
 Fri Sep 17 20:14:54 UTC 2021 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - help2man 1.48.5:
