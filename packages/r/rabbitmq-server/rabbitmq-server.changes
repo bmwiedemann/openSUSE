@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Feb 19 10:44:15 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add zsh BuildRequires to fix "directories not owned by a package"
+  in zsh-completion.
+
+-------------------------------------------------------------------
+Wed Jan 19 09:51:06 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.13
+  * Core Server Bug Fixes and Enhancements
+    - Disk space monitor now correctly parses output on (at least
+      some) systems where non-ASCII characters are used in paths.
+    - Stream leader election is now deterministic when cluster is
+      undergoing a rolling upgrade.
+    - Queue and binding definition import can be delayed until a
+      moment when at least N nodes (e.g. three) have joined the
+      cluster.
+- Allow building with Elixir 1.13.x
+  * Support-Elixir-1.13.patch
+  * Elixir-1.13-OptionParser-no-longer-supports-atom-val.patch
+
+-------------------------------------------------------------------
 Thu Jan  6 14:54:59 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.12
