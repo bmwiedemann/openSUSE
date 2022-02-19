@@ -83,4 +83,12 @@
     <comment></comment>
     <requestid>927206</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>29dc1e4cb24bcc25dd554f913afa0297</srcmd5>
+    <version>3.14.5</version>
+    <time>1645294879</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.14.5</comment>
+    <requestid>956020</requestid>
+  </revision>
 </revisionlist>

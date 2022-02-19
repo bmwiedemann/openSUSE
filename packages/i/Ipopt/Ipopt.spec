@@ -1,7 +1,7 @@
 #
 # spec file for package Ipopt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define shlib libipopt0
+%define shlib libipopt3
 Name:           Ipopt
-Version:        3.14.4
+Version:        3.14.5
 Release:        0
 Summary:        A software package for large-scale nonlinear optimization methods
 License:        EPL-2.0
@@ -51,6 +51,9 @@ package for large-scale nonlinear optimization.
 %package -n %{shlib}
 Summary:        A software package for large-scale nonlinear optimization methods
 Group:          System/Libraries
+# Previously the shlib was incorrectly named, hence the Obsoletes/Provides
+Obsoletes:      libipopt0 < %{version}
+Provides:       libipopt0 = %{version}
 
 %description -n %{shlib}
 Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software

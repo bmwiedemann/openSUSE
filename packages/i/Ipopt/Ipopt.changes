@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 19 16:53:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Obsoletes/Provides: libipopt0 for libipopt3 to take care of
+  shlib versioning error in previously packaged iterations.
+
+-------------------------------------------------------------------
+Mon Feb 14 20:18:32 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.5:
+  * Fixed that only primal variable values where passed to
+    finalize_solution() when a timelimit was reached
+    [gh#coin-or/Ipopt#552].
+- Bump so version in keeping with upstream.
+
+-------------------------------------------------------------------
 Thu Oct 21 09:01:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.4:
