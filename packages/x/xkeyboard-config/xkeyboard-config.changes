@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 18 17:36:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed n_suse-ctrl-alt-bksp-terminate.patch 
+  * no longer needed; made it impossible to disable Ctrl-Alt-BS
+    on Wayland (boo#1195871)
+
+-------------------------------------------------------------------
 Mon Oct  4 12:56:20 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 2.34 

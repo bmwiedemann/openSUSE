@@ -1,7 +1,7 @@
 #
 # spec file for package xkeyboard-config
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        CDDL-1.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/X11/Utilities
 URL:            https://www.freedesktop.org/Software/XKeyboardConfig
 Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.bz2
-Patch100:       n_suse-ctrl-alt-bksp-terminate.patch
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
 BuildRequires:  fdupes
@@ -49,7 +48,6 @@ make keyboards more accessible to people with physical impairments.
 
 %prep
 %setup -q
-%patch100 -p1
 %patch109 -p1
 
 %build
