@@ -137,8 +137,10 @@ BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
 %if %{suse_version} >= 1500
 BuildRequires:  libnsl-devel
-%endif
 BuildRequires:  libopenssl-1_1-devel
+%else
+BuildRequires:  libopenssl-devel
+%endif
 BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel

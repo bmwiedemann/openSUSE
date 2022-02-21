@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 18 11:00:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- BuildRequire rpm-build-python: The provider to inject python(abi)
+  has been moved there. rpm-build pulls rpm-build-python
+  automatically in when building anything against python3-base, but
+  this implies that the initial build of python3-base does not
+  trigger the automatic installation.
+
+-------------------------------------------------------------------
+Fri Feb 18 10:51:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Older SLE versions should use old OpenSSL.
+
+-------------------------------------------------------------------
 Wed Feb  9 16:49:52 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2022-0391-urllib_parse-newline-parsing.patch

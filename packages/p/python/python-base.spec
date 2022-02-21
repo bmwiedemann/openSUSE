@@ -138,8 +138,10 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libnsl-devel
 %endif
 BuildRequires:  pkg-config
+%if 0%{?suse_version} >= 1550
 # The provider for python(abi) is in rpm-build-python
 BuildRequires:  rpm-build-python
+%endif
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 #!BuildIgnore:  python

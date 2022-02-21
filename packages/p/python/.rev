@@ -1565,4 +1565,30 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
   containing ASCII newline and tabs in urlparse.</comment>
     <requestid>953310</requestid>
   </revision>
+  <revision rev="166" vrev="17">
+    <srcmd5>aa01bb673ffcddc399d4629edb865626</srcmd5>
+    <version>2.7.18</version>
+    <time>1645461949</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire rpm-build-python: The provider to inject python(abi)
+  has been moved there. rpm-build pulls rpm-build-python
+  automatically in when building anything against python3-base, but
+  this implies that the initial build of python3-base does not
+  trigger the automatic installation.
+- Older SLE versions should use old OpenSSL.
+- BuildRequire rpm-build-python: The provider to inject python(abi)
+  has been moved there. rpm-build pulls rpm-build-python
+  automatically in when building anything against python3-base, but
+  this implies that the initial build of python3-base does not
+  trigger the automatic installation.
+- Older SLE versions should use old OpenSSL.
+- BuildRequire rpm-build-python: The provider to inject python(abi)
+  has been moved there. rpm-build pulls rpm-build-python
+  automatically in when building anything against python3-base, but
+  this implies that the initial build of python3-base does not
+  trigger the automatic installation.
+- Older SLE versions should use old OpenSSL.
+</comment>
+    <requestid>955867</requestid>
+  </revision>
 </revisionlist>
