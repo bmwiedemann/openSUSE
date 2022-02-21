@@ -18,7 +18,7 @@
 
 %define lname libkeccak1
 Name:           libkeccak
-Version:        1.3.1
+Version:        1.3.1.2
 Release:        0
 Summary:        Keccak family hashing library, including SHA-3
 License:        ISC
