@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 21 11:38:41 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220221.3e14e55f:
+  * Fix output of staging reviews
+  * Target F401 - Unused imports
+  * Target E501 - Line too long
+  * Target E128 - Continuation line under-indented for visual indent
+  * Target E251 - Unexpected spaces around keyword
+  * Remove E201 - Whitespace after '('
+  * Target E202 - Whitespace before ')'
+  * Target E302 - add two comment lines before class
+  * Target E305 - Have two empty lines of a class
+  * Target F841 - Remove unused variables
+  * Target E261 - two spaces before inline comment
+  * Handle E712 - don't compare with == to Booleans
+  * Targetting E126 - Continuation line over-indented for hanging indent
+  * Target E711 - compare against None with 'is' not !=
+  * Target E125 - Continuation line with same indent
+  * Target E124 - Closing bracket does not match visual indentation
+  * Target E129 - Visually indented line with same indent
+  * Targeting E123 - Closing bracket does not match indentation
+
+-------------------------------------------------------------------
 Fri Feb 18 14:54:09 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220218.a7ac9876:
