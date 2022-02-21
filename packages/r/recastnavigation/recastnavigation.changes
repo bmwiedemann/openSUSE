@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Sat Feb 19 14:33:02 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct version (+ instead of ~), as snapshot is post release.
+- Use obs_scm, and add the sources to the package (as OBS archive)
+  to make it suitable for factory submission.
+
+-------------------------------------------------------------------
+Mon Nov 15 18:19:18 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- initial package version
+
