@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 18 14:35:52 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Added fcoe-client schema (bsc#1194895)
+- 4.4.11
+
+-------------------------------------------------------------------
 Wed Jan 26 22:58:53 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Synced version with default schema (related to jsc#SLE-22069).

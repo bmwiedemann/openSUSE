@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema-micro
-Version:        4.4.10
+Version:        4.4.11
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,6 +49,8 @@ BuildRequires:  yast2-configuration-management >= 4.3.0
 BuildRequires:  yast2-country >= 4.3.0
 # add 'iface' element
 BuildRequires:  yast2-iscsi-client >= 4.3.3
+# Added fcoe-client schema
+BuildRequires:  yast2-fcoe-client >= 4.3.1
 BuildRequires:  yast2-kdump
 BuildRequires:  yast2-network >= 4.3.81
 # registration is available only where suse connect is also available
