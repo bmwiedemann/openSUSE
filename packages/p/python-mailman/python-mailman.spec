@@ -72,34 +72,6 @@ Patch2:         support-alembic-1-7.patch
 Patch3:         ARC-message-fail-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires:       logrotate
-Requires:       python-SQLAlchemy >= 1.2.3
-Requires:       python-aiosmtpd >= 1.4.1
-Requires:       python-alembic
-Requires:       python-atpublic
-Requires:       python-authheaders >= 0.9.2
-Requires:       python-authres >= 1.0.1
-Requires:       python-click >= 7.0
-Requires:       python-dnspython >= 1.14.0
-Requires:       python-falcon > 3.0.0
-Requires:       python-flufl.bounce >= 4.0
-Requires:       python-flufl.i18n >= 3.2
-Requires:       python-flufl.lock >= 5.1
-Requires:       python-gunicorn
-Requires:       python-importlib-resources >= 1.1.0
-Requires:       python-lazr.config
-Requires:       python-passlib
-Requires:       python-python-dateutil >= 2.0
-Requires:       python-requests
-Requires:       python-setuptools
-Requires:       python-zope.component
-Requires:       python-zope.configuration
-Requires:       python-zope.event
-Requires:       python-zope.interface >= 5.0
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Provides:       mailman = %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2.3}
@@ -134,13 +106,39 @@ BuildRequires:  %{python_module zope.interface >= 5.0}
 Provides:       python38-mailman = %{version}-%{release}
 Obsoletes:      python38-mailman <= %{version}-%{release}
 %endif
-%python_subpackages
 
 %description
 Mailman is a mailing list manager from the GNU project.
 
 %package -n mailman3
 Summary:        A mailing list manager
+Requires:       logrotate
+Requires:       python3-SQLAlchemy >= 1.2.3
+Requires:       python3-aiosmtpd >= 1.4.1
+Requires:       python3-alembic
+Requires:       python3-atpublic
+Requires:       python3-authheaders >= 0.9.2
+Requires:       python3-authres >= 1.0.1
+Requires:       python3-click >= 7.0
+Requires:       python3-dnspython >= 1.14.0
+Requires:       python3-falcon > 3.0.0
+Requires:       python3-flufl.bounce >= 4.0
+Requires:       python3-flufl.i18n >= 3.2
+Requires:       python3-flufl.lock >= 5.1
+Requires:       python3-gunicorn
+Requires:       python3-importlib-resources >= 1.1.0
+Requires:       python3-lazr.config
+Requires:       python3-passlib
+Requires:       python3-python-dateutil >= 2.0
+Requires:       python3-requests
+Requires:       python3-setuptools
+Requires:       python3-zope.component
+Requires:       python3-zope.configuration
+Requires:       python3-zope.event
+Requires:       python3-zope.interface >= 5.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Provides:       mailman = %{version}
 Provides:       python3-mailman = %{version}
 Obsoletes:      python3-mailman <= %{version}
 

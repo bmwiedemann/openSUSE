@@ -186,4 +186,13 @@
     <comment></comment>
     <requestid>947670</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3fd0b4dc7f6e56f5f2ab65a9e8d0e323</srcmd5>
+    <version>3.3.5</version>
+    <time>1645462000</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up a half-completed migration away from python-rpm-macros.
+  As a consequence, mailman3 now pulls in all dependencies again.</comment>
+    <requestid>956302</requestid>
+  </revision>
 </revisionlist>
