@@ -202,6 +202,7 @@ Summary:        Development files for the GTK+ toolkit library v4
 Group:          Development/Libraries/X11
 Requires:       gettext-its-%{name} >= %{version}
 Requires:       libgtk-4-1 = %{version}
+Requires:       %{name}-tools = %{version}
 Requires:       typelib-1_0-Gtk-4_0 = %{version}
 Requires:       vulkan-devel
 
