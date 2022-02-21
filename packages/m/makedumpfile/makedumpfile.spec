@@ -1,7 +1,7 @@
 #
 # spec file for package makedumpfile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 %if 0%{!?have_zstd:1}
-%if 0%{?sle_version} >= 150200
+%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 %define have_zstd 1
 %else
 %define have_zstd 0

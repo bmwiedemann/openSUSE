@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 11 14:15:33 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- Turn on zstd in Tumbleweed.
+
+-------------------------------------------------------------------
 Mon Dec  6 10:39:13 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - Non-existent patches must be listed twice to appear as added in a

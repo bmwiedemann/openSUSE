@@ -1120,4 +1120,12 @@ See README.static for an explanation why static linking is preferred for some li
   * makedumpfile-arm64-Add-support-for-ARMv8.2-LPA-52-bit-PA-su.patch</comment>
     <requestid>935972</requestid>
   </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>be6935bccd2206aea27dc25f2e4dfd6f</srcmd5>
+    <version>1.7.0</version>
+    <time>1645461952</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>955899</requestid>
+  </revision>
 </revisionlist>
