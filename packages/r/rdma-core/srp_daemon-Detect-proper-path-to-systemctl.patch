@@ -1,0 +1,78 @@
+commit 05a19e050278ed54ce22a560ab62d20a2cf5cb64
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Feb 18 08:41:53 2022 +0100
+
+    srp_daemon: Detect proper path to systemctl
+    
+    While debian uses /bin/systemctl, SUSE only supports /usr/bin/systemctl,
+    causing srp_daemon to fail silently starting on all ports.
+    Detect at built which path is the right one and use it.
+    
+    Fixes: b03beb142e0d ("srp_daemon: Call systemctl properly from udev")
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git CMakeLists.txt CMakeLists.txt
+index e84b0277f362..e5994bd92ace 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -217,6 +217,8 @@ else()
+   set(CYTHON_EXECUTABLE "")
+ endif()
+ 
++find_program(SYSTEMCTL_BIN systemctl HINTS "/usr/bin" "/bin")
++
+ RDMA_CheckSparse()
+ 
+ # Require GNU99 mode
+diff --git srp_daemon/CMakeLists.txt srp_daemon/CMakeLists.txt
+index b253872e69b8..e0647bf1a2b9 100644
+--- srp_daemon/CMakeLists.txt
++++ srp_daemon/CMakeLists.txt
+@@ -27,8 +27,9 @@ rdma_subst_install(FILES "srp_daemon.sh.in"
+   RENAME "srp_daemon.sh"
+   PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ OWNER_EXECUTE GROUP_EXECUTE WORLD_EXECUTE)
+ 
+-install(FILES start_on_all_ports
++rdma_subst_install(FILES start_on_all_ports.in
+   DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}/srp_daemon"
++  RENAME start_on_all_ports
+   PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ OWNER_EXECUTE GROUP_EXECUTE WORLD_EXECUTE)
+ 
+ rdma_subst_install(FILES srp_daemon.service.in
+@@ -43,7 +44,7 @@ rdma_subst_install(FILES srp_daemon_port@.service.in
+ 
+ install(FILES srp_daemon.conf DESTINATION "${CMAKE_INSTALL_SYSCONFDIR}")
+ 
+-install(FILES "srp_daemon.rules"
++rdma_subst_install(FILES "srp_daemon.rules.in"
+   RENAME "60-srp_daemon.rules"
+   DESTINATION "${CMAKE_INSTALL_UDEV_RULESDIR}")
+ 
+diff --git srp_daemon/srp_daemon.rules srp_daemon/srp_daemon.rules
+deleted file mode 100644
+index b6411dcec724..000000000000
+--- srp_daemon/srp_daemon.rules
++++ /dev/null
+@@ -1 +0,0 @@
+-SUBSYSTEM=="infiniband_mad", KERNEL=="*umad*", PROGRAM=="/bin/systemctl show srp_daemon -p ActiveState", RESULT=="ActiveState=active", ENV{SYSTEMD_WANTS}+="srp_daemon_port@$attr{ibdev}:$attr{port}.service"
+diff --git srp_daemon/srp_daemon.rules.in srp_daemon/srp_daemon.rules.in
+new file mode 100644
+index 000000000000..da49d89e3aea
+--- /dev/null
++++ srp_daemon/srp_daemon.rules.in
+@@ -0,0 +1 @@
++SUBSYSTEM=="infiniband_mad", KERNEL=="*umad*", PROGRAM=="@SYSTEMCTL_BIN@ show srp_daemon -p ActiveState", RESULT=="ActiveState=active", ENV{SYSTEMD_WANTS}+="srp_daemon_port@$attr{ibdev}:$attr{port}.service"
+diff --git srp_daemon/start_on_all_ports srp_daemon/start_on_all_ports.in
+similarity index 57%
+rename from srp_daemon/start_on_all_ports
+rename to srp_daemon/start_on_all_ports.in
+index 0a7e72e2631b..209dfc088001 100644
+--- srp_daemon/start_on_all_ports
++++ srp_daemon/start_on_all_ports.in
+@@ -3,5 +3,5 @@
+ for p in /sys/class/infiniband/*/ports/*; do
+     [ -e "$p" ] || continue
+     p=${p#/sys/class/infiniband/}
+-    nohup /bin/systemctl start "srp_daemon_port@${p/\/ports\//:}" </dev/null >&/dev/null &
++    nohup @SYSTEMCTL_BIN@ start "srp_daemon_port@${p/\/ports\//:}" </dev/null >&/dev/null &
+ done

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 18 07:46:41 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add srp_daemon-Detect-proper-path-to-systemctl.patch to fix path to systemctl (bsc#1195874)
+
+-------------------------------------------------------------------
 Fri Jan  7 12:46:46 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v38.1
