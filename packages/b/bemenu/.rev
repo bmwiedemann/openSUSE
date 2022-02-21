@@ -184,4 +184,14 @@
   * mouse and touch support on wayland in #200</comment>
     <requestid>953374</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c4ee7791deb874972dfbff9bc8d834db</srcmd5>
+    <version>0.6.6</version>
+    <time>1645462003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.6:
+  * makefile: Add uninstall target #226
+  * Restore run with key and symbol visibility #246</comment>
+    <requestid>956319</requestid>
+  </revision>
 </revisionlist>

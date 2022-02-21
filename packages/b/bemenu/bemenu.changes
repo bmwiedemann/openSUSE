@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 21 08:25:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.6:
+  * makefile: Add uninstall target #226
+  * Restore run with key and symbol visibility #246
+
+-------------------------------------------------------------------
 Fri Feb 11 07:41:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.5:
