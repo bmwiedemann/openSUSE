@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb 15 23:27:49 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12.6:
+  * Always load imported bokeh extensions (gh#holoviz/panel#2957).
+  * Fix regression rendering HoloViews plotly backend
+    (gh#holoviz/panel#2961).
+  * Do not run Ace import on initialization
+    (gh#holoviz/panel#2959).
+  * Improve handling of ReactiveHTML cleanup
+    (gh#holoviz/panel#2974, gh#holoviz/panel#2993).
+  * Ensure empty Str has same height as non-empty
+    (gh#holoviz/panel#2981).
+  * Ensure Tabulator supports grouping on numeric columns
+    (gh#holoviz/panel#2987).
+  * Fix Tabulator with multi-index and pagination
+    (gh#holoviz/panel#2989).
+  * Allow index as column name in table widgets
+    (gh#holoviz/panel#2990).
+  * Ensure TemplateActions component does not have height
+    (gh#holoviz/panel#2997).
+- Bump python-param requirement, at least version 0.12.0 is
+  required.
+- Drop %config tag from file installed to /usr/etc in keeping with
+  rpmlintrc recommendation.
+- Disable an additional test: test_server; requires network.
+
+-------------------------------------------------------------------
 Sun Sep 19 10:09:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add missing bleach runtime dependency

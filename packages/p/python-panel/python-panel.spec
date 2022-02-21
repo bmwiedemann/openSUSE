@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define skip_python36 1
 %define modname panel
 Name:           python-panel%{psuffix}
-Version:        0.12.3
+Version:        0.12.6
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -40,7 +40,7 @@ Source99:       python-panel-rpmlintrc
 BuildRequires:  %{python_module Markdown}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module bokeh >= 2.4.0}
-BuildRequires:  %{python_module param >= 1.10.0}
+BuildRequires:  %{python_module param >= 1.12.0}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
 BuildRequires:  %{python_module requests}
@@ -132,7 +132,7 @@ sed -i "1{s|#!/usr/bin/env python|#!%{__$python}|}" \
 %if %{with test}
 %check
 # DISABLE TESTS REQUIRING NETWORK ACCESS
-donttest="test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane or test_pdf_embed"
+donttest="test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane or test_pdf_embed or test_server"
 # https://github.com/holoviz/panel/issues/2101
 donttest+=" or test_record_modules_not_stdlib"
 # flaky async test
@@ -159,7 +159,7 @@ donttest+=" or test_server_async_callbacks"
 
 %files -n jupyter-panel
 %license LICENSE.txt
-%config %{_jupyter_servextension_confdir}/panel-client-jupyter.json
+%{_jupyter_servextension_confdir}/panel-client-jupyter.json
 
 %endif
 
