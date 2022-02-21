@@ -1,7 +1,7 @@
 #
 # spec file for package velero-plugin-for-aws
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define goipath github.com/vmware-tanzu/velero-plugin-for-aws
 
 Name:           velero-plugin-for-aws
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Velero plugin for AWS
 License:        Apache-2.0

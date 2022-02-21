@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 16 07:57:37 UTC 2022 - jenting.hsiao@suse.com
+
+- Update to version 1.4.0:
+  * Bump up busybox version
+  * Pin the builder and base image for v1.4.0
+  * Update readme and changelog for v1.4.0
+  * Add note about EKS permission issue (#97)
+  * bump up golang and other dependencies
+  * Adding ability for aws shared config (#92)
+  * Support snapshotting pv provisioned by csi driver on AWS (#93)
+  * Region is not optional if `s3ForcePathStyle` is `true`
+
+-------------------------------------------------------------------
 Thu Sep 30 15:50:09 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version list:
