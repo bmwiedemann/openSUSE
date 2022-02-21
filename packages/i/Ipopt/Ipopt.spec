@@ -16,7 +16,8 @@
 #
 
 
-%define shlib libipopt3
+%define sover 3
+%define shlib libipopt%{sover}
 Name:           Ipopt
 Version:        3.14.5
 Release:        0
@@ -51,9 +52,8 @@ package for large-scale nonlinear optimization.
 %package -n %{shlib}
 Summary:        A software package for large-scale nonlinear optimization methods
 Group:          System/Libraries
-# Previously the shlib was incorrectly named, hence the Obsoletes/Provides
+# Previously the shlib was incorrectly named, hence the Obsoletes
 Obsoletes:      libipopt0 < %{version}
-Provides:       libipopt0 = %{version}
 
 %description -n %{shlib}
 Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software
@@ -109,7 +109,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{shlib} -p /sbin/ldconfig
 
 %files -n %{shlib}
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{sover}*
 
 %files devel
 %doc README.md AUTHORS ChangeLog.md
