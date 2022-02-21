@@ -47,7 +47,7 @@ Thu Sep  2 11:06:43 UTC 2021 - ecsos <ecsos@opensuse.org>
     - Crash on startup with enabled subshell in FreeBSD (workaround) (#4213)
     - Hang on start randomly with zsh as subshell (#4198)
     - If command line is invisible it's partially displayed (#4182)
-    - Broken handling of zip archives (#4180, #4183)
+    - Broken handling of zip archives (#4180, #4183) (bsc#1187583)
     - Broken handling of jar files as zip archives (#4223)
     - Timestamps of symlinks, sockets, fifos, etc are not preserved after copy/move (#3985)
     - %view action in the user menu doesn't work on no-exec filesystem (#4242)
@@ -57,6 +57,7 @@ Thu Sep  2 11:06:43 UTC 2021 - ecsos <ecsos@opensuse.org>
     - vfs: unable to browse compressed tar archives (#4191)
     - sftpfs vfs: CVE-2021-36370: server fingerprint isn't verified 
       (discovered by AUT-milCERT during an audit of open source software) (#4259)
+      (bsc#1190180)
     - ftpfs vfs: month of file is always January (#4260)
     - Tests: log files are written by libcheck and automake simultaneously (#3986) 
 - Rebase mc-ext-audio.patch.
