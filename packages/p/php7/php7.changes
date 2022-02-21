@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 18 07:05:10 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.28: This is a security release (CVE-2021-21708). See
+  https://www.php.net/ChangeLog-7.php#7.4.28
+
+-------------------------------------------------------------------
 Sun Jan  9 10:40:43 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - use /tmp to store session information (boo#1194414)

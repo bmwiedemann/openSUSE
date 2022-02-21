@@ -1200,4 +1200,14 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   % php-ini.patch (forwarded request 945110 from adkorte)</comment>
     <requestid>945331</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>b39281360b78b2419382145f37cec41d</srcmd5>
+    <version>7.4.28</version>
+    <time>1645461947</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.28: This is a security release (CVE-2021-21708). See
+  https://www.php.net/ChangeLog-7.php#7.4.28
+</comment>
+    <requestid>955789</requestid>
+  </revision>
 </revisionlist>
