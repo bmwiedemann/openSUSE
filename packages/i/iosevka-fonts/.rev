@@ -372,4 +372,26 @@
 </comment>
     <requestid>953910</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c998820cd38c9f9dc0a494b71c7cf948</srcmd5>
+    <version>14.0.1</version>
+    <time>1645461982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v14.0.1
+  * Changes of version 14.0.1
+    = Balance weight of $ under heavy weights (#1302).
+    = Balance serif weight of 7's serifed-straight variants (#1303).
+    = Add moon phase symbols (U+1F311 ... U+1F319, #1308).
+- Update to v14.0.0
+  * Changes of version 14.0.0
+    = [Breaking] Reordered variants for @, 0, 1.
+    = [Breaking] Renamed variants selector for following characters:
+      ¶ (paragraph-sign → pilcrow).
+    = Fix cv99's application to U+0149 LATIN SMALL LETTER N
+      PRECEDED BY APOSTROPHE (#1297).
+    = Fix cv45's application to U+1DF0 COMBINING LATIN SMALL
+      LETTER U WITH LIGHT CENTRALIZATION STROKE (#1298).
+</comment>
+    <requestid>956096</requestid>
+  </revision>
 </revisionlist>
