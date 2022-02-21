@@ -15,4 +15,12 @@
     <comment>Relax stdc++17 build requirement, since this is header-only library</comment>
     <requestid>949484</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>44c481a7592919c70bbda2dd63a3cebb</srcmd5>
+    <version>2.0.2</version>
+    <time>1645461999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956272</requestid>
+  </revision>
 </revisionlist>

@@ -22,13 +22,13 @@
 %define _apiver 2.0
 %define _oname mdds
 Name:           %{_oname}-2_0
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        A collection of multi-dimensional data structure and indexing algorithm
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.com/mdds/mdds
-Source:         http://kohei.us/files/%{_oname}/src/%{_oname}-%{version}.tar.bz2
+Source:         https://gitlab.com/mdds/mdds/-/archive/%{version}/mdds-%{version}.tar.gz
 Patch0:         no-stdcxx17.patch
 BuildRequires:  autoconf
 BuildRequires:  automake

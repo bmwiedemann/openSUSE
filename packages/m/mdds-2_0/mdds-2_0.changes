@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 20 21:22:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * addressed various coverity issues.
+  * fixed random compiler warnings.
+  * fixed event handling in copy construction. In aos, the event object was not
+    copied when the parent container was copied. In soa, the
+    element_block_acquired() callback was not called for the cloned element
+    blocks.
+  * added move constructors and move assignment operators to both aos and soa
+    variants.
+  * added optional trace function that gets called on every called public method. 
+
+-------------------------------------------------------------------
 Thu Jan 27 15:20:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
