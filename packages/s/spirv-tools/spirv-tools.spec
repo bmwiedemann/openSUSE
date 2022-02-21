@@ -20,14 +20,15 @@
 %define lname libSPIRV-Tools-suse24
 
 Name:           spirv-tools
-Version:        2022.1
+Version:        2022.2~sdk204
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
 
-Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%version.tar.gz
+#Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%%version.tar.gz
+Source:         SPIRV-Tools-%version.tar.xz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 Patch2:         gcc48.diff
