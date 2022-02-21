@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 21 09:56:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.2
+  * Fix missing include for size_t
+  * introduce compression
+  * Refactoring: add usage of ai_epsilon to FBX-Importer.
+  * CMake: Fix Assimp target install rule fully specifying component
+  * Fix stat for 32-bit Linux
+  * Update the calculation and orthogonalization for bitangent
+  * Update CMakeLists.txt
+  * Added support for "map_Bump -bm"
+
+-------------------------------------------------------------------
 Mon Feb  7 09:51:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.2.1
