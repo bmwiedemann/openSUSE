@@ -142,7 +142,6 @@
     <package name="systemd-presets-branding-MicroOS" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="systemd-presets-common-SUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="systemd-rpm-macros" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="systemd-sysvinit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="sysuser-shadow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
