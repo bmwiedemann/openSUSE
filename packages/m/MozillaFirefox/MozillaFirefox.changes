@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 18 20:38:22 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 97.0.1
+  * Fixed: Fixed an issue where TikTok videos would fail to load
+    when selected from a user's profile page (bmo#1750973)
+  * Fixed: Fixed an issue which led to Picture-in-Picture mode
+    being unable to be toggled on Hulu (bmo#1753401)
+  * Fixed: Works around problems with WebRoot SecureAnywhere
+    antivirus rendering Firefox unusable in some situations
+    (bmo#1752466)
+  * Fixed: Fixed an issue causing users to see the Restore
+    Session screen unexpectedly when starting Firefox
+    (bmo#1749996)
+
+-------------------------------------------------------------------
 Tue Feb  8 08:40:45 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 97.0
