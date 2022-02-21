@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Tidy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20211029
+Version:        20220217
 Release:        0
 #Upstream: GPL-1.0-or-later
-Summary:        Parses and beautifies perl source
 License:        GPL-2.0-or-later
+Summary:        Parses and beautifies perl source
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHANCOCK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
