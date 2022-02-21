@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Feb 17 16:14:42 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.34.6:
+- Update to version 2.34.6 (boo#1196133):
   + Fix accessibility not working when the Bubblewrap sandbox is
     enabled.
   + Fix rendering of scrollbars when overlay scrollbars are
@@ -11,6 +11,7 @@ Thu Feb 17 16:14:42 UTC 2022 - Michael Gorse <mgorse@suse.com>
     library is not called libGL or libgl, as is the case on
     systems that use libglvnd.
   + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2022-22620.
 
 -------------------------------------------------------------------
 Wed Feb  9 18:14:24 UTC 2022 - Michael Gorse <mgorse@suse.com>
