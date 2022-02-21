@@ -169,7 +169,7 @@ chown -R linux /home/linux
 
 chkstat --system --set
 
-ln -s /usr/lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
+ln -s /usr/lib/systemd/system/graphical.target /etc/systemd/system/default.target
 baseUpdateSysConfig /etc/sysconfig/displaymanager DISPLAYMANAGER_AUTOLOGIN linux
 baseUpdateSysConfig /etc/sysconfig/keyboard YAST_KEYBOARD "english-us,pc104"
 baseUpdateSysConfig /etc/sysconfig/keyboard COMPOSETABLE "clear latin1.add"

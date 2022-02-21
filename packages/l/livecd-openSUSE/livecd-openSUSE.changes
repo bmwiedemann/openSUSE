@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 21 09:19:36 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Change default target from runlevel5.target (sysv compat) to
+  graphical.target (actual systemd target). Defacto the same thing,
+  as runlevel5.target is just a symlink to graphical.target, but is
+  no longer part of 'systemd' and moved to 'systemd-sysvcompat'.
+  Instead of pulling legacy compat along, we perform the actual
+  switch.
+
+-------------------------------------------------------------------
 Mon Jan 24 09:45:22 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Avoid samba-libs
