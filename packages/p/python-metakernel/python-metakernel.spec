@@ -1,7 +1,7 @@
 #
 # spec file for package python-metakernel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-metakernel
-Version:        0.24.4
+Version:        0.28.2
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
@@ -30,19 +30,20 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ipykernel
-Requires:       python-ipyparallel
+Requires:       python-jupyter-core
 Requires:       python-pexpect >= 4.2
 Provides:       python-jupyter_metakernel = %{version}
 Obsoletes:      python-jupyter_metakernel < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module ipyparallel}
+BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module pexpect >= 4.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  coreutils-doc
 BuildRequires:  man
 # /SECTION
+Recommends:     python-ipyparallel
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-metakernel = %{version}
 %endif
@@ -70,7 +71,7 @@ touch ~/.bashrc
 %pytest metakernel/tests
 
 %files %{python_files}
-%doc CONTRIBUTORS.rst HISTORY.rst README.rst
+%doc CONTRIBUTORS.rst CHANGELOG.md README.rst RELEASE.md
 %license LICENSE.txt
 %{python_sitelib}/metakernel
 %{python_sitelib}/metakernel-%{version}-py*.egg-info

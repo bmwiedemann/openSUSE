@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Feb 19 03:16:48 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * in %doc update history.rst->CHANGELOG.md, add RELEASE.md
+  * require jupyter-core, moved ipyparalle to recommends
+
+- update to version 0.28.2:
+  * Test with jupyter_kernel_test #238 (@blink1073)
+
+- changes from version 0.28.1:
+  * Fix trove classifier #236 (@blink1073)
+
+- changes from version 0.28.0:
+  * Note This was not uploaded to PyPI because it had an incorrect
+    trove classifer
+  * Add support for jupyter releaser #234 (@blink1073)
+  * Modernize build and test #233 (@blink1073)
+  * Fix Iframe display issue #231 (@cathalmccabe)
+  * Add a blockly magic instead of a jigsaw magic #229 (@ChrisJaunes)
+
+- changes from version 0.27.5:
+  * Escape backslashes in strings #226 (@ellert)
+  * Add missing dollar signs to %latex examples and tests #225
+    (@ellert)
+  * Support older jedi versions #224 (@ellert)
+
+- changes from version 0.27.4:
+  * Add support for SOURCE_DATE_EPOCH #223 (@jnahmias)
+
+- changes from version 0.27.3:
+  * Fix warnings when running tests under python 3.9 #222 (@jnahmias)
+
+- changes from version 0.27.2:
+  * Use TERM=dumb for bash REPLWrapper #221 (@jnahmias)
+  * Use tempfile instead of writing to cwd #220 (@jnahmias)
+
+- changes from version 0.27.0:
+  * More py2 removal #219 (@blink1073)
+  * Remove py2 #218 (@joequant)
+  * Monkey patch display to output to kernel #216 (@joequant)
+  * Fix warnings #215 (@joequant)
+
+- changes from version 0.26.1:
+  * Dev/fix retval in exec #214 (@joequant)
+
+- changes from version 0.26.0:
+  * Combine exec/eval evaluators #213 (@joequant)
+  * Dev/fix voila #212 (@joequant)
+  * Add Error_display method to _metakernel.py #205 (@jld23)
+
+- changes from version 0.25.0:
+  * Fix python evals #208 #210 (@joequant)
+  * Fix ipywidgets display #209 (@joequant)
+
+-------------------------------------------------------------------
 Tue Dec 15 12:52:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Provide the old jupyter package name only for the primary
