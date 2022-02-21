@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 18 20:16:39 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1645215388.05525341:
+  * t: Add test for actual die of deprecated backends
+  * Extract deprecation function to baseclass
+  * Deprecate likely unused backend::ikvm
+  * Use the new fatal dependency handling for backend::pvm
+  * Use the new fatal deprecation handling for backend::amt
+  * README: Include suggestion for deprecation handling
+  * Fix YAML style check on checklist.yml
+  * CI: Add automatic review checklist based on changed file paths
+  * Avoid warning because of missing second argument
+  * Use Mojo::Base consistently
+
+-------------------------------------------------------------------
 Sun Feb 13 02:07:49 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1644598050.d3b51b29:
