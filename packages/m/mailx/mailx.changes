@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 17 21:22:49 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Tue Nov 23 12:41:51 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch mailx-12.5-systemd.patch to add description how to avoid

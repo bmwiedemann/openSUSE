@@ -1,7 +1,7 @@
 #
 # spec file for package mailx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           mailx
 BuildRequires:  groff
 BuildRequires:  krb5-devel
@@ -25,8 +31,13 @@ BuildRequires:  pkg-config
 BuildRequires:  postfix
 BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(openssl)
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 URL:            http://heirloom.sourceforge.net/mailx.html
 Provides:       mail
 Recommends:     smtp_daemon
@@ -102,6 +113,8 @@ minor enhancements like the ability to set a "From:" address.
     %make_install PREFIX=/usr
     rm -rf %{buildroot}/bin
     mkdir  %{buildroot}/bin
+%if ! %{with libalternatives}
+    # create symlinks for update-alternatives    
     mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 %if !0%{?usrmerged}
     ln -sf %{_sysconfdir}/alternatives/binmail %{buildroot}/bin/mail
@@ -118,9 +131,32 @@ minor enhancements like the ability to set a "From:" address.
     ln -sf %{_bindir}/mailx %{buildroot}%{_sysconfdir}/alternatives/mail
     ln -sf %{_mandir}/man1/mailx.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/Mail.1%{?ext_man}
     ln -sf %{_mandir}/man1/mailx.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/mail.1%{?ext_man}
+%else
+    ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/Mail
+%if !0%{?usrmerged}
+    ln -sf %{_bindir}/alts %{buildroot}/bin/Mail
+%endif
+    mkdir -p %{buildroot}%{_datadir}/libalternatives/Mail
+    cat > %{buildroot}%{_datadir}/libalternatives/Mail/20.conf <<EOF
+binary=%{_bindir}/mailx
+man=mailx.1
+group=mail, Mail
+EOF
+    ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mail
+%if !0%{?usrmerged}
+    ln -sf %{_bindir}/alts %{buildroot}/bin/mail
+%endif
+    mkdir -p %{buildroot}%{_datadir}/libalternatives/mail
+    cat > %{buildroot}%{_datadir}/libalternatives/mail/20.conf <<EOF
+binary=%{_bindir}/mailx
+man=mailx.1
+group=mail, Mail
+EOF
+%endif   
     install -m 0644 mail.rc %{buildroot}/etc
     mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
 
+%if ! %{with libalternatives}    
 %post
 %{_sbindir}/update-alternatives --quiet --force \
     --install %{_bindir}/mail mail %{_bindir}/mailx 20 \
@@ -135,6 +171,13 @@ minor enhancements like the ability to set a "From:" address.
 if test ! -e %{_bindir}/mailx; then
   %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mailx
 fi
+%else
+%pre
+# removing old update-alternatives entries
+if [ "$1" > 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+  %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mailx    
+fi
+%endif
 
 %files
 %defattr(-,root,root)
@@ -143,17 +186,28 @@ fi
 %config /etc/mail.rc
 %if !0%{?usrmerged}
 /bin/mail
+%endif
+/usr/bin/Mail
+/usr/bin/mail
+%if ! 0%{with libalternatives}
+%if !0%{?usrmerged}
 %ghost %config %{_sysconfdir}/alternatives/binmail
 %endif
 %ghost %config %{_sysconfdir}/alternatives/Mail
 %ghost %config %{_sysconfdir}/alternatives/mail
 %ghost %config %{_sysconfdir}/alternatives/Mail.1%{?ext_man}
 %ghost %config %{_sysconfdir}/alternatives/mail.1%{?ext_man}
-/usr/bin/Mail
-/usr/bin/mail
-/usr/bin/mailx
 %doc %{_mandir}/man1/Mail.1.gz
 %doc %{_mandir}/man1/mail.1.gz
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/mail
+%dir %{_datadir}/libalternatives/Mail
+%{_datadir}/libalternatives/Mail/20.conf
+%{_datadir}/libalternatives/mail/20.conf
+%endif
+
+/usr/bin/mailx
 %doc %{_mandir}/man1/mailx.1.gz
 
 %changelog
