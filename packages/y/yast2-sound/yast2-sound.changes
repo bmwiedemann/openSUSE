@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  2 09:19:14 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Support uncompressed as well as xz, zstd, and gzip compressed
+  modules. Related to jsc#SLE-21256 - jsc#SLE-18768 entries
+  and sent by Michal Suchanek <msuchanek@suse.de>.
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
