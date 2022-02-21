@@ -1,7 +1,7 @@
 #
 # spec file for package firejail
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           firejail
-Version:        0.9.66
+Version:        0.9.68
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
@@ -102,6 +102,8 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 %config %{_sysconfdir}/apparmor.d/local/firejail-default
 %dir %{_sysconfdir}/apparmor.d
 %dir %{_sysconfdir}/apparmor.d/local
+%dir %{_sysconfdir}/apparmor.d/abstractions
+%dir %{_sysconfdir}/apparmor.d/abstractions/base.d
 %dir %{_datadir}/vim
 %dir %{_datadir}/vim/vimfiles
 %dir %{_datadir}/vim/vimfiles/ftdetect
@@ -120,5 +122,6 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 %dir %{_datarootdir}/zsh
 %dir %{_datarootdir}/zsh/site-functions/
 %{_datadir}/zsh/site-functions/_firejail
+/etc/apparmor.d/abstractions/base.d/firejail-base
 
 %changelog
