@@ -65,4 +65,13 @@
     <comment></comment>
     <requestid>950270</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e9fbc80856185c169dc931e905fc945e</srcmd5>
+    <version>1.1</version>
+    <time>1645462001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1:
+  https://github.com/rui314/mold/releases/tag/v1.1.</comment>
+    <requestid>956314</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.0.3
+Version:        1.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
@@ -25,12 +25,12 @@ URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  mimalloc-devel
 BuildRequires:  openssl-devel
 BuildRequires:  tbb-devel
 BuildRequires:  tbb-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
-BuildRequires:  mimalloc-devel
 PreReq:         update-alternatives
 
 %define build_args SYSTEM_TBB=1 SYSTEM_XXHASH=1 SYSTEM_MIMALLOC=1
