@@ -31,4 +31,12 @@
     <comment>Mesonfix and other tweaks (forwarded request 950542 from iznogood)</comment>
     <requestid>951395</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3b5a1b773ce9da32bab679d9c827082b</srcmd5>
+    <version>2.0.2</version>
+    <time>1645461974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956052</requestid>
+  </revision>
 </revisionlist>
