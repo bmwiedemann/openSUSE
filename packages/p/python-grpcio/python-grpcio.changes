@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 19 17:04:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.44.0:
+  * Add python async example for hellostreamingworld using
+    generator (gh#grpc/grpc#27343).
+  * Disable __wrap_memcpy hack for Python builds
+    (gh#grpc/grpc#28410).
+  * Bump Bazel Python Cython dependency to 0.29.26
+    (gh#grpc/grpc#28398).
+  * Fix libatomic linking on Raspberry Pi OS Bullseye
+    (gh#grpc/grpc#28041).
+  * Allow generated proto sources in remote repositories for
+    py_proto_library (gh#grpc/grpc#28103).
+
+-------------------------------------------------------------------
 Tue Feb  8 23:52:07 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.43.0:
