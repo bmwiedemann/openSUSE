@@ -28,4 +28,14 @@
     <comment></comment>
     <requestid>691311</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d421fe7e67f1993389c11aa52a781958</srcmd5>
+    <version>1.5.0</version>
+    <time>1645462007</time>
+    <user>dimstar_suse</user>
+    <comment>- fix CVE-2022-0699, patch c75b9281a5b9452d92e1682bdfe6019a13ed819f.diff
+
+obs#1196236</comment>
+    <requestid>956385</requestid>
+  </revision>
 </revisionlist>
