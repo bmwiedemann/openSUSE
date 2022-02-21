@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 18 00:36:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.0:
+  * GH#337: Path-like objects are now supported throughout the API instead of
+    just strings.
+  * The ``ElementMaker`` now supports ``QName`` values as tags, which always
+    override the default namespace of the factory.
+  * GH#338: In lxml.objectify, the XSI float annotation "nan" and "inf" were spelled in
+    lower case, whereas XML Schema datatypes define them as "NaN" and "INF" respectively.
+  * Built with Cython 0.29.28. 
+
+-------------------------------------------------------------------
 Mon Jan 10 23:09:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7.1:
