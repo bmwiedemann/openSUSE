@@ -28,6 +28,8 @@ Source:         https://github.com/spheras/desktopfolder/archive/v%{version}.tar
 Patch0:         000-drop-gsettings-schema.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/spheras/desktopfolder/pull/328
 Patch1:         001-dark-mode-support.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/spheras/desktopfolder/pull/335/commits
+Patch2:         002-drop-deprecated-arguments.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
