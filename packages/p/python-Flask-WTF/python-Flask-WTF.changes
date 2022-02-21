@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb 20 17:13:05 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * removed patches: fix-ModuleNotFoundError-wtforms-compat.patch
+                     fix-ModuleNotFoundError-wtforms-widgets-html5.patch
+  * AUTHORS not packaged anymore, LICENSE->LICENSE.rst
+
+- update to version 1.0.0:
+  * Deprecated items removal :pr:`484`
+  * Support for alternatives captcha services :pr:`425` :pr:`342`
+      :pr:`387` :issue:`384`
+
+- changes from version 0.15.1:
+  * Add "python_requires" metadata to avoid installing on unsupported
+      Python versions. :pr:`442`
+
+-------------------------------------------------------------------
 Sat Aug 14 11:30:16 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 0.15.1

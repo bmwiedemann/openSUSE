@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-WTF
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,14 @@
 %define skip_python2 1
 %bcond_without     test
 Name:           python-Flask-WTF
-Version:        0.15.1
+Version:        1.0.0
 Release:        0
 Summary:        WTForms support for Flask
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lepture/flask-wtf
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-WTF/Flask-WTF-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix-ModuleNotFoundError-wtforms-compat.patch https://github.com/wtforms/wtforms/commit/a34eb532d3b96ed216f204ed3d22fc9962241446
-Patch0:         fix-ModuleNotFoundError-wtforms-compat.patch
-# PATCH-FIX-OPENSUSE fix-ModuleNotFoundError-wtforms-widgets-html5.patch https://github.com/wtforms/wtforms/commit/44a1cecc071cfaec4ff60c9e28935d136cc232ca
-Patch1:         fix-ModuleNotFoundError-wtforms-widgets-html5.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,8 +53,6 @@ Adds WTForms support to your Flask application
 
 %prep
 %setup -q -n Flask-WTF-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %python_build
@@ -74,8 +69,8 @@ export LANG=en_US.UTF-8
 %endif
 
 %files %{python_files}
-%license LICENSE
-%doc AUTHORS README.rst
+%license LICENSE.rst
+%doc README.rst
 %{python_sitelib}/flask_wtf
 %{python_sitelib}/Flask_WTF-%{version}-py*.egg-info
 
