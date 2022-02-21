@@ -81,6 +81,12 @@ Source99:       series
 Patch0:         reproducible.patch
 # https://github.com/bartoszek/AUR-blender-2.83-git/blob/master/openexr3.patch
 Patch1:         blender-293-openexr3.patch
+# PATCH-FIX-OPENSUSE https://developer.blender.org/T94661 Fix for CVE-2022-0544
+Patch2:         0001-Fix-T94661-Out-of-bounds-memory-access-due-to-malfor.patch
+# PATCH-FIX-OPENSUSE https://developer.blender.org/T94629 Fix for CVE-2022-0545
+Patch3:         0001-Fix-T94629-The-IMB_flip-API-would-fail-with-large-im.patch
+# PATCH-FIX-OPENSUSE https://developer.blender.org/T94572 Fix for CVE-2022-0546
+Patch4:         0001-Fix-T89542-Crash-when-loading-certain-.hdr-files.patch
 BuildRequires:  OpenColorIO-devel >= 2.0
 BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
