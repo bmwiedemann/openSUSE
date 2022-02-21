@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Feb 19 18:20:15 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+
+- update to version 4.3.1:
+  * Handle new cryptography versioning scheme
+  * Fix lint errors
+  * Fix typos in documentation
+  * Fix reversed docstrings for unset cookie funcs
+  * Update automatic_user_loading.py
+
+- changes from version 4.3.0:
+  * Feat: override cookie domain from cookie utils
+  * Fix typos in view_decorators.py
+  * Correct JWT_REFRESH_COOKIE_NAME option description
+  * Fix/support flask 2 and flask 1
+
+- changes from version 4.2.3:
+  * Ignore coverage for quick fix unitl I can get a better spec in
+    place
+  * Fix this extension when using Flask 1.x.x
+
+- changes from version 4.2.2:
+  * Added async support to jwt_required view decorator
+  * Simplify requirements.txt to fix new pip resolver issue
+  * Change jwt.required to jwt_required
+  * Bump urllib3 from 1.26.4 to 1.26.5
+
+-------------------------------------------------------------------
 Fri May 21 07:14:27 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add python-cryptography as Suggests
