@@ -1,8 +1,8 @@
 #
 # spec file for package manpages-l10n
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Antoine Belvire <antoine.belvire@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2020-2022 Antoine Belvire <antoine.belvire@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 
 Name:           manpages-l10n
-Version:        4.12.1
+Version:        4.13
 Release:        0
 Summary:        Translation of man pages
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 URL:            https://manpages-l10n-team.pages.debian.net/manpages-l10n
 Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Source1:        macros.%{name}
@@ -38,6 +38,7 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package el Greek
 %man_lang_package es Spanish
 %man_lang_package fi Finnish
+%man_lang_package fr French
 %man_lang_package hu Hungarian
 %man_lang_package id Indonesian
 %man_lang_package it Italian
@@ -49,10 +50,7 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package ro Romanian
 %man_lang_package sr Serbian
 %man_lang_package sv Swedish
-
-# French translations used to be splitted into a main and an extra package on openSUSE.
-# Let's obsolete the extra package until openSUSE Leap 15.2 EOL (Dec. 2021).
-%man_lang_package fr French -o %{quote:man-pages-fr-extra <= 20151231}
+%man_lang_package vi Vietnamese
 
 %prep
 %setup -q -n %{name}-v%{version}

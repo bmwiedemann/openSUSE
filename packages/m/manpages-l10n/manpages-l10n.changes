@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 20 21:14:58 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.13:
+  * New language: Vietnamese.
+  * New distribution: Fedora 36.
+  * Fix addendum creation for mdoc based files.
+  * Updated many translations.
+- Drop update path from Leap 15.2 since it has reached EOL.
+- Update license to GPL-3.0-or-later as per Debian packaging.
+
+-------------------------------------------------------------------
 Sun Dec 19 12:47:35 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.12.1:
