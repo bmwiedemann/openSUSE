@@ -1,7 +1,7 @@
 #
 # spec file for package kubie
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,26 @@ split configuration files, meaning it can load Kubernetes contexts from
 multiple files. You can configure the paths where kubie will look for
 contexts, see the settings section.
 
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
 %prep
 %autosetup -a1
 
@@ -50,6 +70,12 @@ RUSTFLAGS=%{rustflags} cargo build --release
 %install
 RUSTFLAGS=%{rustflags} cargo install --root=%{buildroot}%{_prefix} --path .
 
+# copy bash completion file
+install -D -m 644 ./completion/kubie.bash %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# copy fish completion file
+install -D -m 644 ./completion/kubie.fish %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
 # remove residue crate files
 rm %{buildroot}%{_prefix}/.crates.toml
 rm -f %{buildroot}%{_prefix}/.crates2.json
@@ -57,5 +83,14 @@ rm -f %{buildroot}%{_prefix}/.crates2.json
 %files
 %license LICENSE
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%dir %{_datarootdir}/fish
+%dir %{_datarootdir}/fish/vendor_completions.d
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog
