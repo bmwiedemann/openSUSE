@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 15 20:32:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.34
+  * Add '-c, --color' option
+  * Reintroduce long timestamp format
+
+-------------------------------------------------------------------
+Sun Feb 13 17:19:52 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.33
+  * Replace autotools with meson
+  * Show auto connect status in show configuration
+  * Rename option -i to -L
+  * Shorten timestamp description
+  * Add list serial devices feature
+  * Add command to show version
+  * Add '-t' option description for time stamping
+  * Add description for time stamping.
+  * Show error when failing to open a tty
+  * Newline: handle booth NL and CR
+  * Flush every local echo char
+
+-------------------------------------------------------------------
 Tue Jan 11 22:14:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Run spec-cleaner

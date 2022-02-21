@@ -17,13 +17,14 @@
 
 
 Name:           tio
-Version:        1.32
+Version:        1.33
 Release:        0
 Summary:        Simple TTY terminal I/O application
 License:        GPL-2.0-or-later
 Group:          Hardware/Modem
 URL:            https://tio.github.io/
 Source:         https://github.com/tio/tio/releases/download/v%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 
 %description
 Tio is a simple TTY terminal application which features a straightforward
@@ -44,15 +45,15 @@ Bash completion script for %{name}.
 %setup -q
 
 %build
-%configure --disable-silent-rules
-%make_build
+%meson -Dbashcompletiondir=%{_datadir}/bash-completion/completions/
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
