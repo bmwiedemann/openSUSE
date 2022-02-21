@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 21 12:35:35 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 2081.patch: Fix build using Meson 0.61+.
+
+-------------------------------------------------------------------
 Sat Mar  6 22:58:58 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - Fix build for Leap 15.3
