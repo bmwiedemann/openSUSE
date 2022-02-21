@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Feb 18 11:47:54 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+* Patches added:
+  block-backend-Retain-permissions-after-m.patch
+  iotest-065-explicit-compression-type.patch
+  iotest-214-explicit-compression-type.patch
+  iotest-302-use-img_info_log-helper.patch
+  iotest-303-explicit-compression-type.patch
+  iotest-39-use-_qcow2_dump_header.patch
+  iotests-60-more-accurate-set-dirty-bit-i.patch
+  iotests-bash-tests-filter-compression-ty.patch
+  iotests-common.rc-introduce-_qcow2_dump_.patch
+  iotests-declare-lack-of-support-for-comp.patch
+  iotests-drop-qemu_img_verbose-helper.patch
+  iotests-massive-use-_qcow2_dump_header.patch
+  iotests-MRCE-Write-data-to-source.patch
+  iotests.py-filter-out-successful-output-.patch
+  iotests.py-img_info_log-rename-imgopts-a.patch
+  iotests.py-implement-unsupported_imgopts.patch
+  iotests.py-qemu_img-create-support-IMGOP.patch
+  iotests.py-rewrite-default-luks-support-.patch
+  iotests-specify-some-unsupported_imgopts.patch
+  qcow2-simple-case-support-for-downgradin.patch
+  tests-qemu-iotests-Fix-051-for-binaries-.patch
+
+-------------------------------------------------------------------
+Wed Feb 16 10:58:52 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+-Backport patch from upstream, bsc#1194063 CVE-2021-4158
+* Patches added:
+  acpi-validate-hotplug-selector-on-access.patch
+
+-------------------------------------------------------------------
 Sun Jan 23 15:13:19 UTC 2022 - Li Zhang <li.zhang@suse.com>
 
 - Enable modules for testsuite 
