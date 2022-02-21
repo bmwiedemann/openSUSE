@@ -9,6 +9,14 @@
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/gravitational/webassets</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="exclude">.git</param>
+    <param name="filename">webassets</param>
+    <param name="without-version">yes</param>
+  </service>
   <service name="set_version" mode="disabled">
     <param name="basename">teleport</param>
   </service>

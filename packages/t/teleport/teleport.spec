@@ -26,9 +26,12 @@ License:        Apache-2.0
 URL:            https://github.com/gravitational/teleport
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        teleport.service
-Source3:        teleport.yaml
+Source2:        webassets.tar.gz
+Source3:        teleport.service
+Source4:        teleport.yaml
+BuildRequires:  git-core
 BuildRequires:  go >= 1.17
+BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       teleport-tctl
 
@@ -60,31 +63,39 @@ A tool that lets end users interact with Teleport nodes. This replaces ssh.
 %prep
 %setup -q
 %setup -q -T -D -a 1
+%setup -q -T -D -a 2
 
 %build
+
+mkdir -p lib/web/build/webassets
+cp -r webassets/teleport/* lib/web/build/webassets
+
 go build \
+   -tags "pam webassets_embed" \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X main.VERSION=%{version}" \
-   -o bin/tsh ./tool/tsh
+   -ldflags="-w -s -X main.VERSION=%{version}" \
+   -o teleport ./tool/teleport
 go build \
+   -tags "pam" \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X main.VERSION=%{version}" \
-   -o bin/tctl ./tool/tctl
+   -ldflags="-w -s -X main.VERSION=%{version}" \
+   -o tsh ./tool/tsh
 go build \
+   -tags "pam" \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X main.VERSION=%{version}" \
-   -o bin/teleport ./tool/teleport
+   -ldflags="-w -s -X main.VERSION=%{version}" \
+   -o tctl ./tool/tctl
 
 %install
 # Install the binary.
-install -D -m 0755 bin/tsh "%{buildroot}/%{_bindir}/tsh"
-install -D -m 0755 bin/tctl "%{buildroot}/%{_bindir}/tctl"
-install -D -m 0755 bin/teleport "%{buildroot}/%{_sbindir}/teleport"
-install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/teleport.service
-install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/teleport.yaml
+install -D -m 0755 tsh "%{buildroot}/%{_bindir}/tsh"
+install -D -m 0755 tctl "%{buildroot}/%{_bindir}/tctl"
+install -D -m 0755 teleport "%{buildroot}/%{_sbindir}/teleport"
+install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/teleport.service
+install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/teleport.yaml
 
 %pre -n teleport
 %service_add_pre teleport.service
