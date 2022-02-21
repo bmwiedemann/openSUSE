@@ -50,7 +50,9 @@ BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} < 1550
 BuildRequires:  gconf2-devel
+%endif
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libblkid-devel
