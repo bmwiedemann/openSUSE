@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 20 15:35:14 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.2.0:
+  * min_length property for Granite.ValidatedEntry
+  * Granite.HyperTextView for navigatable URLs in text views
+  * Updated translations
+  * Prevent crashing on environments without dark style
+  * Use values from the Settings Portal when possible
+  * Disable horizontal scrolling by default in SettingsPage
+
+-------------------------------------------------------------------
 Thu Sep  9 21:24:34 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 6.1.1:
