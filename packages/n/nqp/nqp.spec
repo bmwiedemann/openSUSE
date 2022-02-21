@@ -1,7 +1,7 @@
 #
 # spec file for package nqp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           nqp
-Version:        2021.08
+Version:        2022.02
 Release:        1.1
 Summary:        Not Quite Perl
 License:        Artistic-2.0
 Group:          Development/Languages/Other
 URL:            http://rakudo.org/
 Source:         nqp-%{version}.tar.gz
-BuildRequires:  moarvm-devel >= 2021.08
-Requires:       moarvm >= 2021.08
+BuildRequires:  moarvm-devel >= 2022.02
+Requires:       moarvm >= 2022.02
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

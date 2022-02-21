@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Feb 21 15:58:49 CET 2022 - nine@detonation.org
+
+- update to version 2022.02
+  * Introduce a new generalized dispatch mechanism.
+    It results in a more uniform architecture for all kinds
+    of dispatch, delivering better performance on a range of
+    langauge features. For more information see
+    https://6guts.wordpress.com/2021/09/29/the-new-moarvm-dispatch-mechanism-is-here/
+  * Native unsigned integers are now first class citizens
+  * Give NQPParametricRoleHOW a role_typecheck_list method
+  * Set NQP HLL on all NQP types
+  * Avoid an implicit array stringification in NQP
+  * Avoid a slurp/flatten in NQP object creation
+  * Avoid lots of string box/unbox in hash key sort
+  * Use natives to reduce some allocation hotspots
+  * Fix miscompilation of sized integers as loop condition
+  * Remove the --rxtrace feature
+  * Access register allocator via compiler instance
+  * Switch most $*MAST_FRAME access away from dynamics
+  * Replace costly $*MAST_FRAME lookup with $frame arg in core op generators
+  * Don't error if no typechecking mode set
+  * move lookups of op generators out of repeated code
+  * Use `my constant` somewhat in QAST compiler
+  * Add mapping for ctxnt op
+  * Avoid duplicate lookups in NFA merging
+  * Fix SpecialArg unintentionally modifying class' MRO
+  * Don't die on non-primitive objects in $!named
+  * More universal fix for dumping QAST nodes with attached data
+  * Implement the -o form of the --output option
+  * Fix race when checking for global uniques (#760)
+
+-------------------------------------------------------------------
 Sun Aug 22 10:19:02 CEST 2021 - nine@detonation.org
 
 - update to version 2021.08
