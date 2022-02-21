@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 18 08:37:49 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Rename 283.patch to the name of final commit id
+  afa7e4bb9c519e2daf500a6079088669500768c0.patch.
+
+-------------------------------------------------------------------
 Tue Feb  1 12:46:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 283.patch: Fix build with meson 0.60.0 and newer.

@@ -42,8 +42,8 @@ Patch1:         gnome-settings-daemon-initial-keyboard.patch
 Patch2:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-bgo793253.patch bgo#793253 dimstar@opensuse.org -- Fix no-return-in-nonvoid-function
 Patch3:         gnome-settings-daemon-bgo793253.patch
-# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/merge_requests/283.patch -- Fix build with meson 0.60.0 and newer
-Patch8:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/merge_requests/283.patch
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gnome-settings-daemon/commit/afa7e4bb9c519e2daf500a6079088669500768c0.patch -- Fix build with meson 0.60.0 and newer
+Patch8:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/commit/afa7e4bb9c519e2daf500a6079088669500768c0.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
