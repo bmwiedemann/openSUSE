@@ -18,7 +18,7 @@
 
 Name:           libphdi
 %define lname	libphdi1
-Version:        20220110
+Version:        20220215
 Release:        0
 Summary:        Library and tools to access the Parallels Hard Disk images
 License:        LGPL-3.0-or-later
@@ -36,21 +36,21 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros %{python_module devel}
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcdirectory) >= 20200702
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200913
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfvalue) >= 20220120
+BuildRequires:  pkgconfig(libuna) >= 20220102
 %python_subpackages
 
 %description

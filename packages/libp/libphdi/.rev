@@ -23,4 +23,12 @@
     <comment>- Enable multipython builds.</comment>
     <requestid>948374</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f7e485e64110323bdcc8e9f21669100</srcmd5>
+    <version>20220215</version>
+    <time>1645461992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220215</comment>
+    <requestid>956182</requestid>
+  </revision>
 </revisionlist>
