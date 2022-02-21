@@ -248,6 +248,7 @@ sed -i -r "/install_dir: join_paths/s/(nm_datadir, 'doc)\
 (', nm_name), 'examples'/\1\/packages\2/" data/meson.build
 
 %build
+%define _lto_cflags %{nil}
 export CFLAGS="%{optflags} -fno-strict-aliasing -fcommon"
 export PYTHON=%{_bindir}/python3
 # TODO: teamdctl says: Retire me when I'm ready please!
@@ -275,6 +276,7 @@ export PYTHON=%{_bindir}/python3
     -Dmore_logging=false \
     -Dqt=false \
     -Dteamdctl=true \
+    -Db_lto=true \
     %{nil}
 %meson_build
 

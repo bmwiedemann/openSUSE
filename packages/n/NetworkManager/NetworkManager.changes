@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 18 14:30:31 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use meson LTO setup as NM makes changes to CFLAGS
+
+-------------------------------------------------------------------
 Wed Jan 26 21:06:29 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Packaging additions with Autotools replacement:
