@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crfsuite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapinghub/python-crfsuite
 Source:         https://files.pythonhosted.org/packages/source/p/python-crfsuite/python-crfsuite-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#scrapinghub/python-crfsuite#c4c8b879fdf0cea493aedcc494321e35746417d1
+Patch0:         rebuild-extension.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -37,7 +39,7 @@ BuildRequires:  python-rpm-macros
 Python-crfsuite is a python binding to CRFsuite_.
 
 %prep
-%setup -q -n python-crfsuite-%{version}
+%autosetup -p1 -n python-crfsuite-%{version}
 
 %build
 export CFLAGS="%{optflags}"

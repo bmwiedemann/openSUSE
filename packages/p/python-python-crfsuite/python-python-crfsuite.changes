@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 21 02:48:48 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch rebuild-extension.patch:
+  * Included sources now regenerated with a new version of Cython to
+    fix the build for Python 3.10. 
+
+-------------------------------------------------------------------
 Fri Mar 20 14:18:38 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.9.7

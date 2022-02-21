@@ -20,4 +20,14 @@
     (thanks @bmwiedemann)</comment>
     <requestid>787371</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f148767e538b12b8c40902e3c86fb164</srcmd5>
+    <version>0.9.7</version>
+    <time>1645461996</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch rebuild-extension.patch:
+  * Included sources now regenerated with a new version of Cython to
+    fix the build for Python 3.10.</comment>
+    <requestid>956261</requestid>
+  </revision>
 </revisionlist>
