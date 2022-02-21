@@ -226,4 +226,29 @@
 - Add check for any version change of shared the libraries</comment>
     <requestid>926481</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>724b0a06dbb70eb47edcd21345037ac0</srcmd5>
+    <version>3.14</version>
+    <time>1645461963</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 3.14:
+  * TLS support rewritten from scratch
+  ** New configuration statement: tls.handshake-timeout
+  * Fix idle timeout handling (imap4d and pop3d daemons)
+  * New function mu_mailbox_append_message_ext
+  * mail utility
+  ** new command: unread (U)
+  ** message state is preserved when copying to another mailbox
+  * Build requires GNU bison and flex
+  * All parsers and scanners are rewritten in reentrant form
+  * Support for mimetypes incorporated to the libmailutils library
+  * Maildir and MH mailboxes
+  ** Change the way of storing the envelope information
+  ** Message scanner completely rewritten
+  * Bugfixes
+  ** Fix timezone calculation (see https://savannah.gnu.org/bugs/?61239)
+  ** Fixed some memory and fd leaks
+  ** Fixed corner case in mu_make_file_name_suf function (forwarded request 956189 from dirkmueller)</comment>
+    <requestid>956339</requestid>
+  </revision>
 </revisionlist>

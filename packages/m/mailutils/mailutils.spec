@@ -1,7 +1,7 @@
 #
 # spec file for package mailutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,28 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define somajor 8
 # See bug boo#1095783
 # Currently disabled suid/sgid program dotlock and maidag
 %bcond_with     set_user_identity
 %bcond_with     guile_22
 Name:           mailutils
-Version:        3.13
+Version:        3.14
 Release:        0
 Summary:        GNU Mailutils
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://mailutils.org/
-Source:         ftp://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz
+Source:         https://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz
 Source1:        %{name}-3.5-guile-2.0.tar.xz
 Source2:        %{name}-rpmlintrc
-Source3:        ftp://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz.sig
+Source3:        https://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz.sig
 Source4:        %{name}.keyring
 Patch0:         lisp-load-silent.patch
 Patch2:         silent-rpmlint-with_initgroups.patch
@@ -63,9 +69,14 @@ BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(kyotocabinet)
 BuildRequires:  pkgconfig(libgsasl)
 BuildRequires:  pkgconfig(python3)
-Requires:       guile = %(rpm -q --queryformat '%%{VERSION}' guile-devel)
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
+Requires:       guile = %(rpm -q --queryformat '%%{VERSION}' guile-devel)
 %if 0
 # Seems not compatible with original radius (missing debug.h)
 BuildRequires:  freeradius-server-devel
@@ -321,6 +332,9 @@ mv %{buildroot}%{_bindir}/mail %{buildroot}%{_bindir}/mu-mail
 mv %{buildroot}%{_mandir}/man1/mail.1 %{buildroot}%{_mandir}/man1/mu-mail.1
 
 mkdir -p %{buildroot}/bin
+
+%if ! %{with libalternatives}
+# update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 %if !0%{?usrmerged}
 ln -sf %{_sysconfdir}/alternatives/binmail %{buildroot}/bin/mail
@@ -337,12 +351,36 @@ ln -sf %{_bindir}/mu-mail %{buildroot}%{_sysconfdir}/alternatives/Mail
 ln -sf %{_bindir}/mu-mail %{buildroot}%{_sysconfdir}/alternatives/mail
 ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/Mail.1%{?ext_man}
 ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/mail.1%{?ext_man}
+%else
+# libalternatives
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/Mail
+%if !0%{?usrmerged}
+ln -sf %{_bindir}/alts %{buildroot}/bin/Mail
+%endif
+mkdir -p %{buildroot}%{_datadir}/libalternatives/Mail
+cat > %{buildroot}%{_datadir}/libalternatives/Mail/10.conf <<EOF
+binary=%{_bindir}/mu-mailx
+man=mu-mail.1
+group=mail, Mail
+EOF
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mail
+%if !0%{?usrmerged}
+ln -sf %{_bindir}/alts %{buildroot}/bin/mail
+%endif
+mkdir -p %{buildroot}%{_datadir}/libalternatives/mail
+cat > %{buildroot}%{_datadir}/libalternatives/mail/10.conf <<EOF
+binary=%{_bindir}/mu-mail
+man=mu-mail.1
+group=mail, Mail
+EOF
+%endif
 
 %fdupes -s %{buildroot}%{python3_sitelib}/mailutils/
 
 %find_lang %{name}
 
 %post
+%if ! %{with libalternatives}
 %{_sbindir}/update-alternatives --quiet --force \
     --install %{_bindir}/mail mail %{_bindir}/mu-mail 10 \
 %if !0%{?usrmerged}
@@ -351,15 +389,25 @@ ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternati
     --slave   %{_bindir}/Mail Mail %{_bindir}/mu-mail \
     --slave   %{_mandir}/man1/mail.1%{?ext_man} mail.1%{?ext_man} %{_mandir}/man1/mu-mail.1%{?ext_man} \
     --slave   %{_mandir}/man1/Mail.1%{?ext_man} Mail.1%{?ext_man} %{_mandir}/man1/mu-mail.1%{?ext_man}
+%endif
 %if %{with set_user_identity}
 %set_permissions %{_bindir}/dotlock
 %set_permissions %{_sbindir}/maidag
 %endif
 
+%if ! %{with libalternatives}
 %postun
 if test ! -e %{_bindir}/mu-mail; then
   %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mu-mail
 fi
+%else
+
+%pre
+# removing old update-alternatives entries
+if [ "$1" > 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+  %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mu-mail
+fi
+%endif
 
 %post -n libmailutils%{somajor} -p /sbin/ldconfig
 %postun -n libmailutils%{somajor} -p /sbin/ldconfig
@@ -378,6 +426,7 @@ fi
 %if %{with set_user_identity}
 %config %{_sysconfdir}/permissions.d/mailutils*
 %endif
+%if ! 0%{with libalternatives}
 %if !0%{?usrmerged}
 %ghost %config %{_sysconfdir}/alternatives/binmail
 /bin/mail
@@ -386,6 +435,13 @@ fi
 %ghost %config %{_sysconfdir}/alternatives/mail
 %ghost %config %{_sysconfdir}/alternatives/Mail.1%{?ext_man}
 %ghost %config %{_sysconfdir}/alternatives/mail.1%{?ext_man}
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/mail
+%dir %{_datadir}/libalternatives/Mail
+%{_datadir}/libalternatives/Mail/10.conf
+%{_datadir}/libalternatives/mail/10.conf
+%endif
 %{_bindir}/decodemail
 %if %{with set_user_identity}
 %attr(02755,root,root) %verify(not mode) %{_bindir}/dotlock
