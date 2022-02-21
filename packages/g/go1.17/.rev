@@ -141,4 +141,16 @@
   * go#50246 runtime: intermittent os/exec.Command.Start() Hang on Darwin in Presence of &quot;plugin&quot; Package (forwarded request 953823 from jfkw)</comment>
     <requestid>953825</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4ffdcb9bcb7b19994e64320ab6b108f8</srcmd5>
+    <version>1.17.7</version>
+    <time>1645461961</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing .bin binary test data to packaging.
+  * Existing test data files added to packaging with mode 644:
+    src/compress/bzip2/testdata/pass-random2.bin
+    src/compress/bzip2/testdata/pass-random1.bin
+    src/debug/dwarf/testdata/line-gcc-win.bin (forwarded request 955952 from jfkw)</comment>
+    <requestid>955955</requestid>
+  </revision>
 </revisionlist>

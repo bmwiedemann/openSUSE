@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 18 02:10:17 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add missing .bin binary test data to packaging.
+  * Existing test data files added to packaging with mode 644:
+    src/compress/bzip2/testdata/pass-random2.bin
+    src/compress/bzip2/testdata/pass-random1.bin
+    src/debug/dwarf/testdata/line-gcc-win.bin
+
+-------------------------------------------------------------------
 Thu Feb 10 23:46:55 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.17.7 (released 2022-02-10) includes security fixes to the
