@@ -198,4 +198,16 @@
     <comment></comment>
     <requestid>942594</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ea6ecb0729efbe3b4f7b68f27b16516d</srcmd5>
+    <version>0.10.0</version>
+    <time>1645461967</time>
+    <user>dimstar_suse</user>
+    <comment>- Split main and python builds into separate _multibuild flavors and build against all supported python versions for the blank flavor.
+- Add glucat-disable-doxygen-html-timestamp.patch to disable timestamps on html footers in doxygen generated docs; this helps make builds reproducible.
+- Update to version 0.10.0
+- New BuildRequires: gcc-fortran, python3-setuptools.
+</comment>
+    <requestid>956026</requestid>
+  </revision>
 </revisionlist>

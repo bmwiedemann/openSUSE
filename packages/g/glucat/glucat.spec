@@ -1,7 +1,7 @@
 #
 # spec file for package glucat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,67 @@
 #
 
 
-Name:           glucat
-Version:        0.9.0
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%define pname glucat
+
+# Note: Blank flavor needs to build python bindings so that auto-generated python package names come out right
+%if "%{flavor}" == "main"
+%bcond_with    python
+%define psuffix -main
+%else
+%bcond_without python
+%define skip_python2 1
+%endif
+
+Name:           %{pname}%{?psuffix}
+Version:        0.10.0
 Release:        0
 Summary:        Library of C++ templates implementing universal Clifford algebras
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://glucat.sourceforge.net/
-Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source:         http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE glucat-disable-doxygen-html-timestamp.patch badshah400@gmail.com -- Disable timestamps from html footer to make build reproducible
+Patch0:         glucat-disable-doxygen-html-timestamp.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  gcc-fortran
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
 BuildRequires:  libboost_headers-devel
-BuildRequires:  python3-Cython
-BuildRequires:  python3-numpy
+%if %{with python}
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
+%else
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-latex-bin
 BuildRequires:  texlive-metafont-bin
-%if 0%{?suse_version} > 1500
+BuildRequires:  tex(adjustbox.sty)
+BuildRequires:  tex(alphalph.sty)
 BuildRequires:  tex(amsfonts.sty)
 BuildRequires:  tex(auxhook.sty)
 BuildRequires:  tex(bigintcalc.sty)
 BuildRequires:  tex(bitset.sty)
+BuildRequires:  tex(caption.sty)
 BuildRequires:  tex(collectbox.sty)
+BuildRequires:  tex(colortbl.sty)
 BuildRequires:  tex(courier.sty)
+BuildRequires:  tex(enumitem.sty)
 BuildRequires:  tex(etexcmds.sty)
+BuildRequires:  tex(etoc.sty)
 BuildRequires:  tex(etoolbox.sty)
+BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(fancyvrb.sty)
+BuildRequires:  tex(float.sty)
 BuildRequires:  tex(geometry.sty)
 BuildRequires:  tex(gettitlestring.sty)
 BuildRequires:  tex(graphics.sty)
+BuildRequires:  tex(hanging.sty)
+BuildRequires:  tex(helvet.sty)
 BuildRequires:  tex(hycolor.sty)
 BuildRequires:  tex(hyperref.sty)
 BuildRequires:  tex(ifoddpage.sty)
@@ -60,36 +89,27 @@ BuildRequires:  tex(kvsetkeys.sty)
 BuildRequires:  tex(letltxmacro.sty)
 BuildRequires:  tex(listofitems.sty)
 BuildRequires:  tex(ltxcmds.sty)
+BuildRequires:  tex(multirow.sty)
+BuildRequires:  tex(natbib.sty)
+BuildRequires:  tex(newunicodechar.sty)
 BuildRequires:  tex(pdfescape.sty)
 BuildRequires:  tex(pdftexcmds.sty)
 BuildRequires:  tex(refcount.sty)
 BuildRequires:  tex(rerunfilecheck.sty)
-BuildRequires:  tex(uniquecounter.sty)
-BuildRequires:  tex(url.sty)
-BuildRequires:  tex(varwidth.sty)
-BuildRequires:  tex(xcolor.sty)
-BuildRequires:  tex(xkeyval.sty)
-%endif
-BuildRequires:  tex(adjustbox.sty)
-BuildRequires:  tex(alphalph.sty)
-BuildRequires:  tex(caption.sty)
-BuildRequires:  tex(colortbl.sty)
-BuildRequires:  tex(enumitem.sty)
-BuildRequires:  tex(etoc.sty)
-BuildRequires:  tex(fancyhdr.sty)
-BuildRequires:  tex(float.sty)
-BuildRequires:  tex(hanging.sty)
-BuildRequires:  tex(helvet.sty)
-BuildRequires:  tex(multirow.sty)
-BuildRequires:  tex(natbib.sty)
-BuildRequires:  tex(newunicodechar.sty)
 BuildRequires:  tex(sectsty.sty)
 BuildRequires:  tex(stackengine.sty)
 BuildRequires:  tex(tabu.sty)
 BuildRequires:  tex(tocloft.sty)
 BuildRequires:  tex(ulem.sty)
+BuildRequires:  tex(uniquecounter.sty)
+BuildRequires:  tex(url.sty)
+BuildRequires:  tex(varwidth.sty)
 BuildRequires:  tex(wasysym.sty)
+BuildRequires:  tex(xcolor.sty)
+BuildRequires:  tex(xkeyval.sty)
 BuildRequires:  tex(xtab.sty)
+%endif
+%python_subpackages
 
 %description
 GluCat is a library of template classes which model the universal
@@ -98,12 +118,12 @@ dimension and arbitrary signature. GluCat implements a model of each
 Clifford algebra corresponding to each non-degenerate quadratic form
 up to a maximum number of dimensions.
 
-%package devel
+%package -n %{pname}-devel
 Summary:        Library of C++ templates implementing universal Clifford algebras
 Group:          Development/Libraries/C and C++
 Recommends:     %{name}-doc = %{version}
 
-%description devel
+%description -n %{pname}-devel
 GluCat is a library of template classes which model the universal
 Clifford algebras over the field of real numbers, with arbitrary
 dimension and arbitrary signature. GluCat implements a model of each
@@ -113,11 +133,11 @@ up to a maximum number of dimensions.
 This package contains the header files required for developing
 applications using the glucat library.
 
-%package doc
+%package -n %{pname}-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
 
-%description doc
+%description -n %{pname}-doc
 GluCat is a library of template classes which model the universal
 Clifford algebras over the field of real numbers, with arbitrary
 dimension and arbitrary signature. GluCat implements a model of each
@@ -126,61 +146,81 @@ up to a maximum number of dimensions.
 
 This package provides the documentation for %{name}.
 
-%package -n python3-glucat
-Summary:        Library of C++ templates implementing universal Clifford algebras
-Group:          Development/Libraries/C and C++
-Requires:       python3-base
-Recommends:     %{name}-doc = %{version}
-Obsoletes:      python-glucat < %{version}
-Provides:       python-glucat = %{version}
-
-%description -n python3-glucat
-GluCat is a library of template classes which model the universal
-Clifford algebras over the field of real numbers, with arbitrary
-dimension and arbitrary signature. GluCat implements a model of each
-Clifford algebra corresponding to each non-degenerate quadratic form
-up to a maximum number of dimensions.
-
-This package contains the python-bindings for the package.
-
 %prep
-%setup -q
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
 sed -i "s|-march=native||g" configure
+%if %{with python}
+%{python_expand # Apply to all supported python flavors
+export PYTHON=$python
+mkdir ../${PYTHON}_build
+cp -pr ./ ../${PYTHON}_build
+pushd ../${PYTHON}_build
 %configure \
-  --docdir=%{_docdir}/%{name} \
+  --docdir=%{_docdir}/%{pname} \
   --enable-pyclical \
-  --with-demo-dir=%{_docdir}/%{name}/demos
+  --with-demo-dir=%{_docdir}/%{pname}-python%{$python_version}/demos
 
 %make_build clean all
-make %{?_smp_mflags} doc
+popd
+}
+%else
+%configure \
+  --docdir=%{_docdir}/%{pname} \
+  --disable-pyclical
+
+%make_build clean all
+# Build doc only for main flavor
+%make_build doc
+%endif
 
 %install
+%if %{with python}
+%{python_expand #  all python flavors as configured above
+export PYTHON=$python
+pushd ../${PYTHON}_build
+%make_install
+# Remove non-python elements to be installed by main flavor
+rm -fr %{buildroot}%{_includedir}/
+popd
+}
+%else
 %make_install
 make DESTDIR=%{buildroot} install-doc
+%endif
 
 # REMOVE FILES PKGED USING %%doc ANYWAY OR OTHERWISE NOT NEEDED
-rm -fr %{buildroot}%{_docdir}/%{name}/{AUTHORS,COPYING,ChangeLog,glucat.lsm,INSTALL,NEWS,README,TODO,DESIGN}
+rm -fr %{buildroot}%{_docdir}/%{pname}/{AUTHORS,COPYING,ChangeLog,glucat.lsm,INSTALL,NEWS,README,TODO,DESIGN}
 
+%fdupes %{buildroot}%{_docdir}/%{pname}/html/
+
+%if %{with python}
 %check
+%{python_expand #  all python flavors as configured above
+export PYTHON=$python
+pushd ../${PYTHON}_build
 make %{?_smp_mflags} check
+popd
+}
+%endif
 
-%fdupes %{buildroot}%{_docdir}/%{name}/html/
-
-%files devel
+%if %{without python}
+%files -n %{pname}-devel
 %license COPYING
 %doc AUTHORS ChangeLog README TODO NEWS DESIGN
-%{_includedir}/%{name}/
+%{_includedir}/%{pname}/
 
-%files doc
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/html/
-%{_docdir}/%{name}/pdf/
+%files -n %{pname}-doc
+%dir %{_docdir}/%{pname}
+%{_docdir}/%{pname}/html/
+%{_docdir}/%{pname}/pdf/
 
-%files -n python3-glucat
-%{python3_sitearch}/*
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/demos/
+%else
+
+%files %{python_files}
+%{python_sitearch}/*
+%{_docdir}/%{pname}-python%{python_version}/
+%endif
 
 %changelog

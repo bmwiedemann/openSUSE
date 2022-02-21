@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 14 23:26:42 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Split main and python builds into separate _multibuild flavors
+  and build against all supported python versions for the blank
+  flavor.
+- Add glucat-disable-doxygen-html-timestamp.patch to disable
+  timestamps on html footers in doxygen generated docs; this helps
+  make builds reproducible.
+
+-------------------------------------------------------------------
+Mon Feb 14 21:32:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.10.0:
+  * GluCat tuning is now done via a template parameter.
+  * GluCat 0.10.0 introduces a change in the way that the headers
+    are to be used.
+  * The ./configure script has been refactored.
+  * Successfully running ./configure --with-eig=bindings now
+    requires a Fortran compiler.
+  * The Python scripts used to build the PyClical extension module
+    now use setuptools rather than distutils.
+- New BuildRequires: gcc-fortran, python3-setuptools.
+
+-------------------------------------------------------------------
 Fri Dec 24 21:39:53 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.9.0:
