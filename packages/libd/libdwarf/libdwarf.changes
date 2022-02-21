@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 21 11:11:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- replace symlink by directory with hardlinks (bsc#1196198) 
+
+-------------------------------------------------------------------
 Sun Feb 13 20:39:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.3:

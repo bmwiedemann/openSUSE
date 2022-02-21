@@ -97,7 +97,8 @@ CFLAGS="$CFLAGS -fPIC" LDFLAGS="-pie" %configure --enable-shared
 
 %install
 %make_install
-ln -s libdwarf-0 %{buildroot}%{_includedir}/libdwarf
+mkdir %{buildroot}%{_includedir}/libdwarf
+cp -l %{buildroot}%{_includedir}/libdwarf-0/*.h %{buildroot}%{_includedir}/libdwarf
 
 %post -n libdwarf1 -p /sbin/ldconfig
 %postun -n libdwarf1 -p /sbin/ldconfig

@@ -243,4 +243,12 @@
     <comment></comment>
     <requestid>954118</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>4283afa49730a1c994c51f660b5c6e46</srcmd5>
+    <version>0.3.3</version>
+    <time>1645462009</time>
+    <user>dimstar_suse</user>
+    <comment>- replace symlink by directory with hardlinks (bsc#1196198)</comment>
+    <requestid>956372</requestid>
+  </revision>
 </revisionlist>
