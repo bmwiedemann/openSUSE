@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 17 16:33:02 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.9.1:
+  * Bugs fixed
+    + Add hostname to the usage reply #865 (@echarles)
+    + Enable standard library debugging via config #863 (@echarles)
+    + process_one only accepts coroutines for dispatch #861 (@minrk)
+
+-------------------------------------------------------------------
 Thu Feb 10 05:16:05 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.9.0:
