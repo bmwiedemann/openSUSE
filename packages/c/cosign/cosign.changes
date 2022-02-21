@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 21 12:28:25 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.5.2:
+  - This release contains fixes for CVE-2022-23649, affecting signature
+    validations with Rekor. Only validation is affected, it is not necessary
+    to re-sign any artifacts. (bsc#1196239)
+- updated to 1.5.1:
+  - Bump sigstore/sigstore to pick up oidc login for vault. (#1377)
+  - Bump google.golang.org/api from 0.65.0 to 0.66.0 (#1371)
+  - expose dafaults fulcio, rekor, oidc issuer urls (#1368)
+  - add check to make sure the go modules are in sync (#1369)
+  - README: fix link to race conditions (#1367)
+  - Bump cloud.google.com/go/storage from 1.18.2 to 1.19.0 (#1365)
+  - docs: verify-attestation cue and rego policy doc (#1362)
+  - Update verify-blob to support DSSEs (#1355)
+  - organize, update select deps (#1358)
+  - Bump go-containerregistry to pick up ACR keychain fix (#1357)
+  - Bump github.com/go-openapi/runtime from 0.21.0 to 0.21.1 (#1352)
+  - sync go modules (#1353)
+
+-------------------------------------------------------------------
 Tue Jan 25 12:39:54 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.5.0

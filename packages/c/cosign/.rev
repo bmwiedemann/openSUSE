@@ -44,4 +44,28 @@
   * Refactor the tuf client code. (https://github.com/sigstore/cosign/pull/1252) (forwarded request 949014 from msmeissn)</comment>
     <requestid>949015</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9c25820d82455eedd485c60a4f1a713c</srcmd5>
+    <version>1.5.2</version>
+    <time>1645462012</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.5.2:
+  - This release contains fixes for CVE-2022-23649, affecting signature
+    validations with Rekor. Only validation is affected, it is not necessary
+    to re-sign any artifacts. (bsc#1196239)
+- updated to 1.5.1:
+  - Bump sigstore/sigstore to pick up oidc login for vault. (#1377)
+  - Bump google.golang.org/api from 0.65.0 to 0.66.0 (#1371)
+  - expose dafaults fulcio, rekor, oidc issuer urls (#1368)
+  - add check to make sure the go modules are in sync (#1369)
+  - README: fix link to race conditions (#1367)
+  - Bump cloud.google.com/go/storage from 1.18.2 to 1.19.0 (#1365)
+  - docs: verify-attestation cue and rego policy doc (#1362)
+  - Update verify-blob to support DSSEs (#1355)
+  - organize, update select deps (#1358)
+  - Bump go-containerregistry to pick up ACR keychain fix (#1357)
+  - Bump github.com/go-openapi/runtime from 0.21.0 to 0.21.1 (#1352)
+  - sync go modules (#1353) (forwarded request 956474 from msmeissn)</comment>
+    <requestid>956475</requestid>
+  </revision>
 </revisionlist>
