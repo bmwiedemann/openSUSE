@@ -1,0 +1,5 @@
+<package name="libcuckoo" project="openSUSE:Factory">
+  <title>libcuckoo</title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="libcuckoo"/>
+</package>
