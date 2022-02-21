@@ -1,7 +1,7 @@
 #
 # spec file for package ceres-solver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@ Name:           ceres-solver
 Version:        2.0.0
 Release:        0
 Summary:        C++ library for modeling and solving optimization problems
-License:        BSD-3-Clause
+License:        Apache-2.0 AND BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            http://ceres-solver.org/
 Source:         http://ceres-solver.org/%{name}-%{version}.tar.gz
+Patch0:         https://github.com/ceres-solver/ceres-solver/commit/941ea13475913ef8322584f7401633de9967ccc8.patch#/fix-tbb-2021.1-detection.patch
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  glog-devel >= 0.3.1
-BuildRequires:  libcxsparse3
 BuildRequires:  suitesparse-devel
 BuildRequires:  pkgconfig(eigen3) >= 3.3.0
 
@@ -42,7 +42,7 @@ This package is built with Eigen only.
 
 %package -n libceres-devel
 Summary:        Ceres Solver header files
-License:        BSD-3-Clause
+License:        Apache-2.0 AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Requires:       glog-devel >= 0.3.1
 Requires:       libceres%{sover} = %{version}
@@ -55,10 +55,9 @@ problems.
 
 This package is built with Eigen only.
 
-
 %package -n libceres%{sover}
 Summary:        Ceres Solver shared library
-License:        LGPL-2.1-only
+License:        Apache-2.0 AND BSD-3-Clause
 Group:          System/Libraries
 
 %description -n libceres%{sover}
@@ -69,12 +68,17 @@ problems.
 
 This package is built with Eigen only.
 
-
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake -DCXSPARSE=ON -DSUITESPARSE=ON -DEIGENSPARSE=ON -DOPENMP=ON -DCXX11=ON -DCMAKE_INSTALL_PREFIX=/usr -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3 -DGFLAGS=OFF -DMINIGLOG=OFF -DBUILD_SHARED_LIBS=ON
+%cmake \
+  -DCXSPARSE=ON \
+  -DSUITESPARSE=ON \
+  -DEIGENSPARSE=ON \
+  -DGFLAGS=OFF \
+  -DMINIGLOG=OFF \
+  %{nil}
 %cmake_build
 
 %install
@@ -85,13 +89,11 @@ This package is built with Eigen only.
 %postun -n libceres%{sover} -p /sbin/ldconfig
 
 %files -n libceres-devel
-%defattr(-,root,root)
 %{_includedir}/ceres/
 %{_libdir}/cmake/Ceres/
 %{_libdir}/libceres.so
 
 %files -n libceres%{sover}
-%defattr(-,root,root)
-%{_libdir}/libceres.so.*
+%{_libdir}/libceres.so.%{sover}*
 
 %changelog

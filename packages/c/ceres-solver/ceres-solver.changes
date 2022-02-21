@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 21 02:16:20 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with TBB >= 2021.1, add
+  fix-tbb-2021.1-detection.patch
+- Correct License tags.
+- Cleanup spec file, remove obsolete CMake options.
+- Add _constraints to avoid occasional build failures.
+
+-------------------------------------------------------------------
 Sat Jan 16 18:24:07 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.0.0.
