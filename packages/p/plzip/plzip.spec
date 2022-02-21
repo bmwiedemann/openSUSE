@@ -1,7 +1,7 @@
 #
 # spec file for package plzip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           plzip
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Parallel LZMA Data Compressor
 License:        GPL-2.0-or-later
@@ -29,8 +29,8 @@ Source2:        https://download.savannah.gnu.org/releases/lzip/plzip/%name-%ver
 Source3:        %name.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  lzlib-devel
-Requires(post):  %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(post): %install_info_prereq
+Requires(preun):%install_info_prereq
 
 %description
 Plzip is a parallel version of the lzip data compressor. The files
@@ -76,7 +76,7 @@ popd
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc ChangeLog README
 %_bindir/plzip
 %_infodir/plzip.info*
 %_mandir/man1/plzip.1*
