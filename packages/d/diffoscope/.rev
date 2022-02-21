@@ -323,4 +323,21 @@
  - Fix diffing CBFS names that contain spaces.</comment>
     <requestid>955466</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1a9faf25a650e258706914a69147be58</srcmd5>
+    <version>205</version>
+    <time>1645462009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 205:
+  * Fix a file(1)-related regression where .changes files that contained
+    non-ASCII text were not identified as being .changes files, resulting in
+    seemingly arbitrary packages on tests.reproducible-builds.org and elswhere
+    not comparing the package at all. The non-ASCII parts could have been in
+    the Maintainer or in the upload changelog, so we were effectively
+    penalising anyone outside of the Anglosphere.
+    (Closes: reproducible-builds/diffoscope#291)
+  * Don't print a warning to the console regarding NT_GNU_BUILD_ID changes in
+    ELF binaries.</comment>
+    <requestid>956421</requestid>
+  </revision>
 </revisionlist>

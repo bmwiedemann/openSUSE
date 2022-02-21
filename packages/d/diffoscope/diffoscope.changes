@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 21 11:21:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 205:
+  * Fix a file(1)-related regression where .changes files that contained
+    non-ASCII text were not identified as being .changes files, resulting in
+    seemingly arbitrary packages on tests.reproducible-builds.org and elswhere
+    not comparing the package at all. The non-ASCII parts could have been in
+    the Maintainer or in the upload changelog, so we were effectively
+    penalising anyone outside of the Anglosphere.
+    (Closes: reproducible-builds/diffoscope#291)
+  * Don't print a warning to the console regarding NT_GNU_BUILD_ID changes in
+    ELF binaries. 
+
+-------------------------------------------------------------------
 Fri Feb 11 19:14:39 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 204:
