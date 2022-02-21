@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 16 19:20:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.10.3:
+  * Recommend 'NoExecute' instead of 'NoSchedule'.
+  * Prevent unmanaged pods in GKE's containerd flavors
+  * connectivity: Remove nodeport checks from policy test
+  * connectivity: Replace allow-all with allow-all-except-world
+  * Update Go to 1.17.7
+  * build(deps): bump actions/setup-go from 2.1.5 to 2.2.0
+  * build(deps): bump github.com/go-openapi/strfmt from 0.21.1 to 0.21.2
+  * build(deps): bump google-github-actions/setup-gcloud from 0.4.0 to 0.5.0
+  * build(deps): bump docker/build-push-action from 2.8.0 to 2.9.0
+  * connectivity: include k8s-app=coredns matchLabels
+
+-------------------------------------------------------------------
 Sat Jan 29 08:09:26 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.10.2:
