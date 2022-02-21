@@ -1,7 +1,7 @@
 #
 # spec file for package moarvm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global mvrel 2021.08
+%global mvrel 2022.02
 Name:           moarvm
 Version:        %mvrel
 Release:        4.1
@@ -27,9 +27,12 @@ URL:            http://moarvm.org
 Source:         http://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
-Patch1:         moarvm-fix-memory-leak.diff
-Patch2:         moarvm-fix-segfaults-in-native-callbacks.diff
 BuildRequires:  perl(ExtUtils::Command)
+%ifarch s390x
+BuildRequires:  libffi-devel
+Requires:       libffi8
+%define         ffiopt --has-libffi
+%endif
 
 %description
 MoarVM (short for Metamodel On A Runtime Virtual Machine) is a runtime built
@@ -48,12 +51,10 @@ MoarVM (Metamodel On A Runtime) development headers.
 %prep
 %setup -q -n MoarVM-%{mvrel}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
-perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3
-make %{?_smp_mflags}
+perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 %{ffiopt}
+make NOISY=1 %{?_smp_mflags}
 
 %install
 %make_install

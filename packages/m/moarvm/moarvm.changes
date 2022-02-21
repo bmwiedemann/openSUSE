@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Feb 21 16:04:54 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- Fix build on s390x by using libffi instead of dyncall on that arch 
+
+-------------------------------------------------------------------
+Sun Feb 20 22:33:44 CET 2022 - nine@detonation.org
+
+- update to version 2022.02
++ Introduce a new generalized dispatch mechanism.
+  It results in a more uniform architecture for all kinds
+  of dispatch, delivering better performance on a range of
+  langauge features. For more information see
+  https://6guts.wordpress.com/2021/09/29/the-new-moarvm-dispatch-mechanism-is-here/
++ Native unsigned integers are now first class citizens
++ Replace home grown allocator with mimalloc for better performance
++ Improvements to the debugger
++ Many newly JITed instructions
++ Fix finalizers of gen2 objects rarely getting run
++ Fix segfaults in nqp::hllboolfor, after capture-replace-literal-arg with different kind, when
+  a frame has more than 8192 locals, due to race condition when initializing native call sites, due
+  to out of bounds read of PHI facts in spesh, due to uninitialized register after PEA and inlining
++ Fix possible access to fromspace after deopt materialization, when autoboxing return values and
+  in NativeCall callbacks
++ Fix a bug in `report_deserialize_callsites_violation`
++ Negative numbers should not be prime
++ Avoid thread safety issues in intern lookups
++ Close socket on async error during an async connection
++ Use callp instead of call in jit of new(mixin)type
++ Fix JITed return from nested runloops
++ Fix invalid pred chain caused by MVM_spesh_manipulate_split_BB_at
++ Stream Decoder: Disallow incomplete code at EOF
++ Respect `--full-cleanup` in `nqp::exit`
++ Many optimizations and performance improvements
+
+- Remove moarvm-fix-memory-leak.diff as fix has been upstreamed
+- Remove moarvm-fix-segfaults-in-native-callbacks.diff as fix has been upstreamed
+
+-------------------------------------------------------------------
 Sat Aug 28 10:25:42 UTC 2021 - Stefan Seifert <nine@detonation.org>
 
 - Backport a fix for segfaults in NativeCall callbacks from moarvm master
