@@ -17,15 +17,13 @@
 
 
 Name:           gnome-mines
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        Minesweeper Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Mines
 Source0:        https://download.gnome.org/sources/gnome-mines/40/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0a10c3a8ae4395c8059875bcea74be5c17ef9a21.patch -- Fix build with meson 0.60 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-mines/-/commit/0a10c3a8ae4395c8059875bcea74be5c17ef9a21.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
