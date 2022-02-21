@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 18 15:09:09 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require Go 1.16+
+- Do not build on s390 architecture.
+
+-------------------------------------------------------------------
 Wed Jan 19 11:36:21 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Updated patches:

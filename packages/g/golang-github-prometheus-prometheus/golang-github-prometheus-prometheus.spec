@@ -52,12 +52,13 @@ BuildRequires:  firewall-macros
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.16
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
 Requires(post): %fillup_prereq
 Provides:       prometheus = %{version}
+ExcludeArch:    s390
 %systemd_ordering
 
 %go_nostrip
