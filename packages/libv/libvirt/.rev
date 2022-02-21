@@ -4045,4 +4045,14 @@ StandardGroups in rpmlint package.
   bsc#1191668</comment>
     <requestid>952832</requestid>
   </revision>
+  <revision rev="349" vrev="4">
+    <srcmd5>bc019389820addcfa63b6fd198c7953a</srcmd5>
+    <version>8.0.0</version>
+    <time>1645461956</time>
+    <user>dimstar_suse</user>
+    <comment>- libxl: Fix libvirtd crash on domain restore
+  454b927d-libxl-fix-dom-restore.patch
+  bsc#1196115</comment>
+    <requestid>955937</requestid>
+  </revision>
 </revisionlist>

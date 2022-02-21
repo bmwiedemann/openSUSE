@@ -309,6 +309,7 @@ Patch4:         105dace2-revert-virProcessGetStatInfo.patch
 Patch5:         e0241f33-libxl-mark-allocated-graphics-ports.patch
 Patch6:         18ec405a-libxl-release-graphics-ports.patch
 Patch7:         76deb656-qemu-fix-snapshot-revert.patch
+Patch8:         454b927d-libxl-fix-dom-restore.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch

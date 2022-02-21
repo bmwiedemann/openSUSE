@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 18 18:25:46 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Fix libvirtd crash on domain restore
+  454b927d-libxl-fix-dom-restore.patch
+  bsc#1196115
+
+-------------------------------------------------------------------
 Tue Feb  8 22:25:03 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - qemu: fix inactive snapshot revert
