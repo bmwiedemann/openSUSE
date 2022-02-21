@@ -1,7 +1,7 @@
 #
 # spec file for package firectl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,17 @@
 # Use hardening ldflags.
 
 Name:           firectl
-Version:        0.1.0
+Version:        0.1.50
 Release:        0
 Summary:        Command-line tool to run Firecracker microVMs
 License:        Apache-2.0
 Group:          System/Emulators/PC
 URL:            https://firecracker-microvm.github.io/
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  git
-BuildRequires:  sed
 BuildRequires:  golang-packaging
+BuildRequires:  sed
 BuildRequires:  golang(API) >= 1.12
 ExclusiveArch:  x86_64 aarch64
 
