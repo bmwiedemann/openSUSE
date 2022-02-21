@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Admin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-Flask-Admin
-Version:        1.5.8
+Version:        1.6.0
 Release:        0
 Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Flask-Admin-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#flask-admin/flask-admin#2047 mcepl@suse.com
-# port from nose to pytest (mostly just pure asserts)
-Patch0:         remove_nose.patch
-Patch1:         support-new-wtforms.patch
 BuildRequires:  %{python_module Flask >= 0.7}
 BuildRequires:  %{python_module Flask-BabelEx}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
@@ -45,13 +41,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.7
 Requires:       python-WTForms
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-enum34
-BuildRequires:  python2-ipaddr
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
@@ -64,7 +53,6 @@ the resulting application.
 
 %prep
 %setup -q -n Flask-Admin-%{version}
-%autopatch -p1
 
 # remove contrib tests that pull in too many dependencies
 rm -rf flask_admin/tests/geoa
