@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Feb 19 03:39:20 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * skip python 3.6
+
+- update to version 2.3.0:
+  * Added the following arguments: --github_username - for prints
+    author github username, --email - for prints author email,
+    --website - for prints author or project website. (#82, via
+    contribution by joschkazj)
+  * Added a --conda option to print the name of the current conda
+    environment. (#79, via contribution by Alexander Krasnikov)
+  * It is now possible to inject globals when used outside IPython
+    (#80, via contribution by Hugo Lapré). For example, version
+    numbers of imported packages can now be obtained as follows:
+        import numpy
+        import watermark.watermark as watermark
+
+        watermark(iversions=True, globals_=globals())
+
+- changes from version 2.2.0:
+  * Refactoring such that a watermark() function now also works
+    outside IPython and Jupyter. Now, the magic %watermark calls
+    watermark(). Calling %watermark via IPython and Juypter still
+    works as usual. However, in addition the watermark() function can
+    be used within regular Python for unit testing purposes etc. (#46,
+    via contribution by Tymoteusz Wołodźko)
+
+- changes from version 2.1.0:
+  * Adopt NEP 29 and require Python version 3.7 or newer. (#63, via
+    contribution by James Myatt)
+  * Add Python 3.8 and 3.9 to Travis CI builds. (#63, via contribution
+    by James Myatt)
+  * Fix: Allow setup.py to run without install_requires already
+    installed (#67, via contribution by James Myatt)
+  * Major refactoring to improve code readability (#64 and 65, via
+    contribution by Bahram Aghaei)
+  * Use importlib and importlib.metadata to determine package version
+    numbers. (#66, via contribution by James Myatt)
+
+-------------------------------------------------------------------
 Tue Dec 15 12:52:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Provide the old jupyter package name only for the primary
