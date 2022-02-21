@@ -65,6 +65,9 @@ License:        BSD-3-Clause
 URL:            https://distributed.readthedocs.io/en/latest/
 Source:         https://github.com/dask/distributed/archive/refs/tags//%{ghversiontag}.tar.gz#/distributed-%{ghversiontag}-gh.tar.gz
 Source99:       python-distributed-rpmlintrc
+# PATCH-FIX-UPSTREAM 5709-avoid-deadlock-ActorFuture.patch gh#dask/distributed#5709 mcepl@suse.com
+# avoid deadlock in ActorFuture
+Patch0:         5709-avoid-deadlock-ActorFuture.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -123,6 +126,7 @@ clusters.
 
 %prep
 %autosetup -p1 -n distributed-%{ghversiontag}
+
 sed -i  '/addopts/ {s/--durations=20//; s/--color=yes//}' setup.cfg
 
 %build
