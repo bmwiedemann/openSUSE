@@ -94,8 +94,8 @@ Summary:        Icons with distribution logos
 
 Requires:       distribution-logos
 Provides:       systemd-icon-branding
-Obsoletes:      systemd-icon-branding-openSUSE < 20200107
-Provides:       systemd-icon-branding-openSUSE = 20200107
+Obsoletes:      systemd-icon-branding-openSUSE < 84.87.20210910
+Provides:       systemd-icon-branding-openSUSE = 84.87.20210910
 Conflicts:      systemd-icon-branding-openSUSE
 
 BuildArch:      noarch

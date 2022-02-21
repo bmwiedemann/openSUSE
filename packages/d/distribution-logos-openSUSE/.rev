@@ -40,4 +40,13 @@
     <comment></comment>
     <requestid>897884</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>a6309880404165e629c84add20b958d4</srcmd5>
+    <version>20201117</version>
+    <time>1645461955</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the obsoleted and provided versions of the old systemd logo branding package
+</comment>
+    <requestid>955935</requestid>
+  </revision>
 </revisionlist>
