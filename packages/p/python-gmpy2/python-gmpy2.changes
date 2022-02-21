@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Feb 21 03:30:39 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.2: 
+  * Allow GIL release for mpz/xmpz/mpq types only.
+  * Improve argument type processing by saving type information to
+    decrease the number of type check calls. Especially helpful for mpfr and mpc types.
+  * Avoid MPFR bug in mfr_fac_ui (gmpy2.factorial) on platforms where
+        long is 32-bits and argument is >= 44787929.
+  * Adjust test suite to reflect changes in output in MPFR 4.1.0.
+  * Added cmp() and cmp_abs().
+  * Improved compatibility with _numbers_ protocol.
+  * Initial support for MPFR4
+    + Add nrandom()
+    + grandom() now calls nrandom twice; may return different values versus MPFR3
+    + Add rootn(); same as root() except different sign when taking even root of -0.0
+  * Thread-safe contexts are now supported. Properly integrating thread-safe contexts required
+    an extensive rewrite of almost all internal functions.
+  * MPFR and MPC are now required. It is no longer possible to build a version of gmpy2 that
+    only supports the GMP library.
+  * The function inverse() now raises an exception if the inverse does not exist.
+  * Context methods have been added for MPFR/MPC related functions.
+  * A new context option (rational_division) has been added that changes the behavior of
+    integer division involving mpz instances to return a rational result instead of a
+    floating point result.
+  * gmpy2 types are now registered in the numeric tower.
+- Remove unzip BuildRequires, as upstream has switched to tarballs.
+
+-------------------------------------------------------------------
 Thu May 24 17:33:34 UTC 2018 - toddrme2178@gmail.com
 
 - spec file cleanups

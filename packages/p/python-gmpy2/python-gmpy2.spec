@@ -1,7 +1,7 @@
 #
 # spec file for package python-gmpy2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gmpy2
-Version:        2.0.8
+Version:        2.1.2
 Release:        0
 Summary:        GMP/MPIR, MPFR, and MPC interface to Python 2.6+ and 3x
-License:        LGPL-3.0
-Group:          Development/Languages/Python
-Url:            https://github.com/aleaxit/gmpy
-Source:         https://files.pythonhosted.org/packages/source/g/gmpy2/gmpy2-%{version}.zip
+License:        LGPL-3.0-only
+URL:            https://github.com/aleaxit/gmpy
+Source:         https://files.pythonhosted.org/packages/source/g/gmpy2/gmpy2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -33,7 +32,6 @@ BuildRequires:  libmpir-devel
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 
 %python_subpackages
 
