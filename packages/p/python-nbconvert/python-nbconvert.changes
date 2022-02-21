@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb 19 03:07:52 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.4.2:
+  * Adding theme support for WebPDF exporter (#1718)
+  * Add option to embed_images in Markdown cells (#1717)
+  * HTMLExporter: Add theme alias and docs (#1716)
+  * Add basic support for federated labextensions themes (#1703)
+  * Always hide the collapser element (#1712)
+  * Raise pyppeteer requirement to >=1,<1.1 (#1711)
+
+- changes from version 6.4.1:
+  * CodeMirror style bleed fix (#1710)
+  * Fix DOM structure of markdown cells in lab template (#1709)
+  * Fix styling regression (#1708)
+  * Handle needs_background cell metadata (#1704)
+
+-------------------------------------------------------------------
 Fri Jan  7 22:23:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Don't build on Python 3.6 (SLE/Leap backports safeguard)

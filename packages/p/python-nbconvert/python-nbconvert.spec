@@ -24,17 +24,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-nbconvert%{psuffix}
-Version:        6.4.0
+Version:        6.4.2
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause
@@ -62,19 +60,19 @@ Requires:       python-nbformat >= 4.4
 Requires:       python-pandocfilters >= 1.4.1
 Requires:       python-testpath
 Requires:       python-traitlets >= 5.0
-%if %{with libalternatives}
-Requires:       alts
-BuildRequires:  alts
-%else
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-%endif
 Recommends:     pandoc
 Recommends:     python-tornado >= 4.0
 Suggests:       %{name}-latex
 Provides:       python-jupyter_nbconvert = %{version}
 Obsoletes:      python-jupyter_nbconvert < %{version}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipywidgets >= 7}

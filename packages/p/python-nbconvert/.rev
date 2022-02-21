@@ -145,4 +145,12 @@
     <comment>- Don't build on Python 3.6 (SLE/Leap backports safeguard) (forwarded request 944833 from bnavigator)</comment>
     <requestid>944834</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>680f042ea44a7fed67cbd90427746386</srcmd5>
+    <version>6.4.2</version>
+    <time>1645461970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956041</requestid>
+  </revision>
 </revisionlist>
