@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>953008</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7b371ecbe549370fac4e803e60c32670</srcmd5>
+    <version>3.0.0</version>
+    <time>1645473091</time>
+    <user>dimstar_suse</user>
+    <comment>- Install libmruby_core library, required by mruby binary
+- Fix missing SONAME in library by adding link-with-soname.patch
+</comment>
+    <requestid>956537</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 21 11:32:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Install libmruby_core library, required by mruby binary
+- Fix missing SONAME in library by adding link-with-soname.patch
+
+-------------------------------------------------------------------
 Wed Feb  9 15:51:52 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Added CVE-2022-0481.patch from upstream
