@@ -557,4 +557,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment></comment>
     <requestid>913545</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>0aa19a4f33cd69a38035809e7c5b6916</srcmd5>
+    <version>2022.02</version>
+    <time>1645469617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956533</requestid>
+  </revision>
 </revisionlist>

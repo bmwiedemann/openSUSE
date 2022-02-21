@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 21 16:35:47 CET 2022 - nine@detonation.org
+
+- update to version 2022.02
+  + Introduce a new generalized dispatch mechanism.
+    It results in a more uniform architecture for all kinds
+    of dispatch, delivering better performance on a range of
+    langauge features. For more information see
+    https://6guts.wordpress.com/2021/09/29/the-new-moarvm-dispatch-mechanism-is-here/
+  + Native unsigned integers are now first class citizens
+  + The $*PERL variable usage will warn starting from `6.e` language release,
+    using $*RAKU is preferred now
+  + Remove RESTRICTED setting (#3965)
+  + Add support for $RAKUDO_OPT environment variable
+  + Introducing RAKUDO_PRECOMPILATION_PROGRESS environment variable
+  + Quite a few smaller additions
+  + Numerous bug fixes and performance improvements. Far too many to even summarize here.
+
+-------------------------------------------------------------------
 Sun Aug 22 11:17:56 CEST 2021 - nine@detonation.org
 
 - update to version 2021.08
