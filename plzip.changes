@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 13 22:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10
+  * In case of error in a numerical argument to a command line
+    option, plzip now shows the name of the option and the range
+    of valid values.
+
+-------------------------------------------------------------------
 Fri Mar 12 20:51:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9:
