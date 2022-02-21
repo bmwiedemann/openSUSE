@@ -1,7 +1,7 @@
 #
 # spec file for package dictd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dictd
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        DICT protocol (RFC 2229) server and command-line client
 License:        GPL-1.0-or-later AND Zlib AND MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/cheusov/dictd
 Source0:        https://github.com/cheusov/dictd/archive/%{version}.tar.gz#/dictd-%{version}.tar.gz
 Source1:        colorit.conf
 Source2:        dictd.service
+Source99:       dictd-rpmlintrc
 Patch0:         dictd-1.12.1-unused-return.patch
 BuildRequires:  autoconf
 BuildRequires:  bison

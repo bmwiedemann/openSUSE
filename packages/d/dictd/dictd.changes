@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 20 23:12:10 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add dictd-rpmlintrc ... potential bashismus is completely
+  innocent (gh#cheusov/dictd#13).
+
+-------------------------------------------------------------------
+Sun Feb 20 01:51:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.13.1:
+  - Remove the last call of gethostbyname(3)
+  - Fixes by Huy-Ngo in dictfmt help message.
+- Remove ProtectHome from the systemd service file, because data
+  files can be stored in $HOME and indexes need to written to.
+
+-------------------------------------------------------------------
 Mon Sep 13 13:57:00 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
