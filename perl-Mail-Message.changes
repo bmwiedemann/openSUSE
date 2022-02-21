@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb 12 03:07:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.012
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.012: Fri 11 Feb 11:34:31 CET 2022
+
+  	Fixes:
+  	- ::Field::Attributes should be stored case intensively
+  	 rt.cpan.org#140894 [Yanyan Yang]
+  	- ::Field::Full phrase with encoding qp parsing failed when
+  	  the qp contains non-atext characters. Github#2 [Andy Beverley]
+  	- ::Field::Full QP encoding must be more strict for use in
+  	  MIME headers.  Github#3 [Andy Beverley]
+  	- Coercion from Mail::Address to Mail::Message::Full::Address
+  	  is too lazy.  Github#4 [Andy Beverley]
+
+  	Improvements:
+  	- extend date in mbox-separator to accept 203X as well.
+
+-------------------------------------------------------------------
 Wed Jul 28 03:08:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.011

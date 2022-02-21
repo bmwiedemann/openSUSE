@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-Message
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Mail-Message
 Name:           perl-Mail-Message
-Version:        3.011
+Version:        3.012
 Release:        0
 Summary:        General message object
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  perl(MIME::Types) >= 1.004
 BuildRequires:  perl(Mail::Address) >= 2.17
 BuildRequires:  perl(Time::Zone)
 BuildRequires:  perl(URI) >= 1.23
-BuildRequires:  perl(User::Identity) >= 1
+BuildRequires:  perl(User::Identity) >= 1.01
 Requires:       perl(Date::Format)
 Requires:       perl(Date::Parse)
 Requires:       perl(Encode) >= 2.26
@@ -45,7 +45,7 @@ Requires:       perl(MIME::Types) >= 1.004
 Requires:       perl(Mail::Address) >= 2.17
 Requires:       perl(Time::Zone)
 Requires:       perl(URI) >= 1.23
-Requires:       perl(User::Identity) >= 1
+Requires:       perl(User::Identity) >= 1.01
 %{perl_requires}
 
 %description
