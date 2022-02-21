@@ -1,0 +1,65 @@
+#
+# spec file for package reprepro
+#
+# Copyright (c) 2021 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           reprepro
+Version:        5.3.0
+Release:        0
+Summary:        Debian repository metadata generator
+License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT
+URL:            https://salsa.debian.org/debian/reprepro
+Source:         https://salsa.debian.org/debian/reprepro/-/archive/reprepro-%version/reprepro-reprepro-%version.tar.bz2
+BuildRequires:  automake
+BuildRequires:  libbz2-devel
+BuildRequires:  gpgme-devel
+BuildRequires:  libarchive-devel
+BuildRequires:  libdb-4_8-devel
+BuildRequires:  xz-devel
+BuildRequires:  zlib-devel
+
+%description
+reprepro is a tool to manage a repository of Debian packages (.deb).  It
+stores files either being injected manually or downloaded from some other
+repository (partially) mirrored into one pool/ hierarchy.  Managed packages
+and files are stored in a Berkeley DB, so no database server is needed.
+Checking signatures of mirrored repositories and creating signatures of the
+generated Package indexes is supported.
+
+%prep
+%autosetup -n %name-%name-%version
+find docs -type f -exec chmod -x {} +
+
+%build
+export CFLAGS="%optflags -g"
+autoreconf -fi
+%configure
+%make_build
+
+%install
+%make_install
+pushd docs
+rm -v Makefile Makefile.am Makefile.in changestool.1 rredtool.1 reprepro.1
+
+%files
+%license COPYING
+%doc docs/ AUTHORS README NEWS
+%_mandir/man1/*.1*
+%_bindir/changestool
+%_bindir/reprepro
+%_bindir/rredtool
+
+%changelog
