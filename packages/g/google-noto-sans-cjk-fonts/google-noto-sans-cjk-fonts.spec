@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-sans-cjk-fonts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,21 @@
 #
 
 
-%define _version 2.002
-%define reponame noto-cjk
-%define tag 20201206-cjk
-
 Name:           google-noto-sans-cjk-fonts
-Version:        20201206
+Version:        2.004
 Release:        0
 Summary:        Noto Sans CJK Font Families
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/googlefonts/noto-cjk
-Source0:        https://github.com/googlefonts/noto-cjk/archive/refs/tags/v%{tag}.tar.gz#/%{reponame}-%{tag}.tar.gz
+Source0:        https://github.com/googlefonts/noto-cjk/releases/download/Sans%{version}/04_NotoSansCJK-OTF.zip
+Source1:        https://github.com/googlefonts/noto-cjk/releases/download/Sans%{version}/11_NotoSansMonoCJKjp.zip
+Source2:        https://github.com/googlefonts/noto-cjk/releases/download/Sans%{version}/12_NotoSansMonoCJKkr.zip
+Source3:        https://github.com/googlefonts/noto-cjk/releases/download/Sans%{version}/13_NotoSansMonoCJKsc.zip
+Source4:        https://github.com/googlefonts/noto-cjk/releases/download/Sans%{version}/14_NotoSansMonoCJKtc.zip
+Source5:        https://github.com/googlefonts/noto-cjk/releases/download/Sans%{version}/15_NotoSansMonoCJKhk.zip
 BuildRequires:  fontpackages-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -614,14 +615,19 @@ and stroke thicknesses) across languages. This package contains Regular and Bold
 weights for Noto Sans fonts for the four CJK languages.
 
 %prep
-%setup -q -n %{reponame}-%{tag}
+unzip -qqn %{SOURCE0}
+unzip -qqn %{SOURCE1}
+unzip -qqn %{SOURCE2}
+unzip -qqn %{SOURCE3}
+unzip -qqn %{SOURCE4}
+unzip -qqn %{SOURCE5}
 
 %build
 
 %install
-rm -rf NotoSansCJK* NotoSerif*
 mkdir -p %{buildroot}%{_ttfontsdir}
-cp NotoSans*.?tf %{buildroot}%{_ttfontsdir}/
+cp *.?tf %{buildroot}%{_ttfontsdir}/
+cp */*/*.?tf %{buildroot}%{_ttfontsdir}/
 
 %reconfigure_fonts_scriptlets -n noto-sans-sc-regular-fonts
 
@@ -706,37 +712,37 @@ cp NotoSans*.?tf %{buildroot}%{_ttfontsdir}/
 %files -n noto-sans-sc-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansSC-Regular.?tf
+%{_ttfontsdir}/NotoSansCJKsc-Regular.?tf
 
 %files -n noto-sans-sc-thin-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansSC-Thin.?tf
+%{_ttfontsdir}/NotoSansCJKsc-Thin.?tf
 
 %files -n noto-sans-sc-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansSC-Medium.?tf
+%{_ttfontsdir}/NotoSansCJKsc-Medium.?tf
 
 %files -n noto-sans-sc-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansSC-Light.?tf
+%{_ttfontsdir}/NotoSansCJKsc-Light.?tf
 
 %files -n noto-sans-sc-demilight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansSC-DemiLight.?tf
+%{_ttfontsdir}/NotoSansCJKsc-DemiLight.?tf
 
 %files -n noto-sans-sc-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansSC-Bold.?tf
+%{_ttfontsdir}/NotoSansCJKsc-Bold.?tf
 
 %files -n noto-sans-sc-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansSC-Black.?tf
+%{_ttfontsdir}/NotoSansCJKsc-Black.?tf
 
 %files -n noto-sans-sc-mono-fonts
 %defattr(0644,root,root,755)
@@ -745,48 +751,46 @@ cp NotoSans*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-sc-fonts
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-sc-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-tc-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansTC-Regular.?tf
+%{_ttfontsdir}/NotoSansCJKtc-Regular.?tf
 
 %files -n noto-sans-tc-thin-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansTC-Thin.?tf
+%{_ttfontsdir}/NotoSansCJKtc-Thin.?tf
 
 %files -n noto-sans-tc-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansTC-Medium.?tf
+%{_ttfontsdir}/NotoSansCJKtc-Medium.?tf
 
 %files -n noto-sans-tc-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansTC-Light.?tf
+%{_ttfontsdir}/NotoSansCJKtc-Light.?tf
 
 %files -n noto-sans-tc-demilight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansTC-DemiLight.?tf
+%{_ttfontsdir}/NotoSansCJKtc-DemiLight.?tf
 
 %files -n noto-sans-tc-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansTC-Bold.?tf
+%{_ttfontsdir}/NotoSansCJKtc-Bold.?tf
 
 %files -n noto-sans-tc-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansTC-Black.?tf
+%{_ttfontsdir}/NotoSansCJKtc-Black.?tf
 
 %files -n noto-sans-tc-mono-fonts
 %defattr(0644,root,root,755)
@@ -795,48 +799,46 @@ cp NotoSans*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-tc-fonts
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-tc-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-hk-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansHK-Regular.?tf
+%{_ttfontsdir}/NotoSansCJKhk-Regular.?tf
 
 %files -n noto-sans-hk-thin-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansHK-Thin.?tf
+%{_ttfontsdir}/NotoSansCJKhk-Thin.?tf
 
 %files -n noto-sans-hk-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansHK-Medium.?tf
+%{_ttfontsdir}/NotoSansCJKhk-Medium.?tf
 
 %files -n noto-sans-hk-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansHK-Light.?tf
+%{_ttfontsdir}/NotoSansCJKhk-Light.?tf
 
 %files -n noto-sans-hk-demilight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansHK-DemiLight.?tf
+%{_ttfontsdir}/NotoSansCJKhk-DemiLight.?tf
 
 %files -n noto-sans-hk-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansHK-Bold.?tf
+%{_ttfontsdir}/NotoSansCJKhk-Bold.?tf
 
 %files -n noto-sans-hk-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansHK-Black.?tf
+%{_ttfontsdir}/NotoSansCJKhk-Black.?tf
 
 %files -n noto-sans-hk-mono-fonts
 %defattr(0644,root,root,755)
@@ -845,48 +847,46 @@ cp NotoSans*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-hk-fonts
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-hk-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-jp-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansJP-Regular.?tf
+%{_ttfontsdir}/NotoSansCJKjp-Regular.?tf
 
 %files -n noto-sans-jp-thin-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansJP-Thin.?tf
+%{_ttfontsdir}/NotoSansCJKjp-Thin.?tf
 
 %files -n noto-sans-jp-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansJP-Medium.?tf
+%{_ttfontsdir}/NotoSansCJKjp-Medium.?tf
 
 %files -n noto-sans-jp-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansJP-Light.?tf
+%{_ttfontsdir}/NotoSansCJKjp-Light.?tf
 
 %files -n noto-sans-jp-demilight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansJP-DemiLight.?tf
+%{_ttfontsdir}/NotoSansCJKjp-DemiLight.?tf
 
 %files -n noto-sans-jp-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansJP-Bold.?tf
+%{_ttfontsdir}/NotoSansCJKjp-Bold.?tf
 
 %files -n noto-sans-jp-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansJP-Black.?tf
+%{_ttfontsdir}/NotoSansCJKjp-Black.?tf
 
 %files -n noto-sans-jp-mono-fonts
 %defattr(0644,root,root,755)
@@ -895,48 +895,46 @@ cp NotoSans*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-jp-fonts
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-jp-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-kr-regular-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansKR-Regular.?tf
+%{_ttfontsdir}/NotoSansCJKkr-Regular.?tf
 
 %files -n noto-sans-kr-thin-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansKR-Thin.?tf
+%{_ttfontsdir}/NotoSansCJKkr-Thin.?tf
 
 %files -n noto-sans-kr-medium-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansKR-Medium.?tf
+%{_ttfontsdir}/NotoSansCJKkr-Medium.?tf
 
 %files -n noto-sans-kr-light-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansKR-Light.?tf
+%{_ttfontsdir}/NotoSansCJKkr-Light.?tf
 
 %files -n noto-sans-kr-demilight-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansKR-DemiLight.?tf
+%{_ttfontsdir}/NotoSansCJKkr-DemiLight.?tf
 
 %files -n noto-sans-kr-bold-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansKR-Bold.?tf
+%{_ttfontsdir}/NotoSansCJKkr-Bold.?tf
 
 %files -n noto-sans-kr-black-fonts
 %defattr(0644,root,root,755)
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/NotoSansKR-Black.?tf
+%{_ttfontsdir}/NotoSansCJKkr-Black.?tf
 
 %files -n noto-sans-kr-mono-fonts
 %defattr(0644,root,root,755)
@@ -945,17 +943,14 @@ cp NotoSans*.?tf %{buildroot}%{_ttfontsdir}/
 
 %files -n noto-sans-kr-fonts
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-kr-fonts-full
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %files -n noto-sans-cjk-fonts
 %defattr(0644,root,root,755)
-%doc NEWS.md HISTORY.md README-formats.md README-third_party.md
 %license LICENSE
 
 %changelog
