@@ -8,11 +8,11 @@
   boo#1176553: '20220219'
   boo#1183454: '20220219'
   boo#1189869: '20211207'
-  boo#1190434: '20220218'
+  boo#1190434: '20220219'
   boo#1190670: '20211128'
   boo#1190823: '20220218'
   boo#1191225: '20211210'
-  boo#1191603: '20220218'
+  boo#1191603: '20220219'
   boo#1192118: '20211117'
   boo#1192420: '20211106'
   boo#1192667: '20211128'
@@ -23,7 +23,7 @@
   boo#1192959: '20211121'
   boo#1193016: '20211127'
   boo#1193038: '20211124'
-  boo#1193133: '20220218'
+  boo#1193133: '20220219'
   boo#1193134: '20220101'
   boo#1193344: '20211202'
   boo#1193345: '20211211'
@@ -47,10 +47,10 @@
   boo#1195952: '20220219'
   boo#1196116: '20220216'
   boo#1196201: '20220219'
-  bsc#1161276: '20220218'
+  bsc#1161276: '20220219'
   bsc#1194208: '20220216'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
-  kde#449273: '20220218'
+  kde#449273: '20220219'
   poo#100991: '20211117'
   poo#101109: '20211102'
   poo#101608: '20211128'
@@ -79,11 +79,11 @@
   poo#104859: '20220111'
   poo#104926: '20220206'
   poo#105256: '20220219'
-  poo#105271: '20220218'
+  poo#105271: '20220219'
   poo#105286: '20220123'
   poo#105289: '20220125'
   poo#105292: '20220126'
-  poo#105295: '20220218'
+  poo#105295: '20220219'
   poo#105298: '20220126'
   poo#105443: '20220124'
   poo#105762: '20220130'
@@ -95,7 +95,7 @@
   poo#107107: '20220219'
   poo#107110: '20220218'
   poo#107113: '20220219'
-  poo#80628: '20220215'
+  poo#80628: '20220219'
   poo#91383: '20220111'
   poo#96611: '20211109'
   poo#99039: '20211110'
@@ -146,7 +146,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220219</value>
+    <value>20220221</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -473,9 +473,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220219'
-published: '20220218'
-publishing: '20220218'
+    <value>failed: ''
+published: '20220219'
+publishing: '20220219'
 testing: '20220219'
 </value>
   </attribute>
