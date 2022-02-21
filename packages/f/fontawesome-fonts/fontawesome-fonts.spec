@@ -1,7 +1,7 @@
 #
 # spec file for package fontawesome-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fontawesome-fonts
-Version:        5.15.4
+Version:        6.0.0
 Release:        0
 Summary:        Iconic font set
 License:        OFL-1.1
@@ -58,19 +58,17 @@ install -m 0755 -d %{buildroot}%{_ttfontsdir}
 install -p -m 0644 */otfs/*.otf %{buildroot}%{_ttfontsdir}
 
 install -m 0755 -d %{buildroot}%{_datadir}/fontawesome-web/webfonts
-install -p -m 0644 */webfonts/*.{ttf,woff,woff2,svg,eot} %{buildroot}%{_datadir}/fontawesome-web/webfonts
-cp -r */css */less */scss %{buildroot}%{_datadir}/fontawesome-web/
+install -p -m 0644 */webfonts/*.{ttf,woff2} %{buildroot}%{_datadir}/fontawesome-web/webfonts
+cp -pr */css */less */scss %{buildroot}%{_datadir}/fontawesome-web/
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root,root)
 %license LICENSE.txt
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*
 
 %files web
-%defattr(-, root,root)
 %{_datadir}/fontawesome-web/
 
 %changelog

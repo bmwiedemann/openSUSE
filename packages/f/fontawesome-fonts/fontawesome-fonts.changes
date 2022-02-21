@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 20 21:09:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * This is a major release that we've been carefully brewing for over a year, and it includes:
+  * Over 7,000 new icons
+  * Font Awesome now has 5 styles - Solid, Regular, Light, Duotone, and now, the all-new Thin style
+  * Removed penny-arcade and acquisitions-incorporated at the request of the
+    copyright holder
+
+-------------------------------------------------------------------
 Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
 - Update to version 5.15.4
   * Changed
