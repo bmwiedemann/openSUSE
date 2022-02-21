@@ -87,4 +87,12 @@
 - Skip two recalcitrant tests.</comment>
     <requestid>910441</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e022fbe57b0846ef21be967daaceceff</srcmd5>
+    <version>1.6.0</version>
+    <time>1645461977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956062</requestid>
+  </revision>
 </revisionlist>
