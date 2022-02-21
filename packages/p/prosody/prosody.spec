@@ -60,10 +60,7 @@ whilst allowing control over who they connect to, and who they share
 data with.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
+%autosetup -p1
 
 sed -i 's|@@INCLUDEDIR@@|%{_includedir}|g;' configure
 sed -i 's|@@INCLUDEDIR@@|%{_includedir}|g;' makefile
@@ -82,7 +79,7 @@ sed -i 's|@@PIDDIR@@|%{_piddir}|g;' prosody.cfg.lua.dist
     --c-compiler=gcc \
     --libdir=%{_libdir}
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -117,7 +114,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf ||:
 %service_del_postun %{name}.service
 
 %files
-%config %attr(-,root,prosody) %{_sysconfdir}/prosody/
+%config(noreplace) %attr(-,root,prosody) %{_sysconfdir}/prosody/
 %{_bindir}/prosody
 %{_bindir}/prosodyctl
 %dir %{_libdir}/prosody

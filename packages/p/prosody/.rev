@@ -469,4 +469,12 @@
   * util.xml: Deduplicate handlers for restricted XML</comment>
     <requestid>949722</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f204ab3a23a35a6cd5c638183c71c4db</srcmd5>
+    <version>0.11.13</version>
+    <time>1645462005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956330</requestid>
+  </revision>
 </revisionlist>
