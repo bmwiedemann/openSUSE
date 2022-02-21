@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 21 15:12:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 3.0.2:
+  * Updating all dependencies (#82)
+  * Add back --url functionality and new --poll-artifacthub in lieu of --poll-helm-hub (#74)
+
+-------------------------------------------------------------------
+Wed Feb 16 15:31:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 3.0.1:
+  * Added certificates in scratch base image: (#70)
+  * Update documentation from template (#73)
+
+-------------------------------------------------------------------
 Wed Feb  9 10:28:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.17, as stated in the go.mod file
