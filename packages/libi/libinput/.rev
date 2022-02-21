@@ -939,4 +939,12 @@ Peter Hutterer (3):
     <comment></comment>
     <requestid>941969</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>8485f6722fe6fd9f24158a35ca3cdc36</srcmd5>
+    <version>1.20.0</version>
+    <time>1645461961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.20.0</comment>
+    <requestid>956022</requestid>
+  </revision>
 </revisionlist>

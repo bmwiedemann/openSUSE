@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 19 17:11:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.20.0
+  * High-resolution scroll is more reliable thanks to the
+    inclusion of new heuristics.
+  * Better handling of BTN_TOOL_PEN on top of BTN_TOOL_RUBBER on
+    graphics tablets that trigger a kernel bug.
+  * libinput does not handle joysticks and gamepads. The
+    detection algorithm has been improved to avoid tagging some
+    of those devices as keyboards.
+  * Improved clickpad detection                                                                                                                     
+  * New quirks and bug fixing                                                                                                                       
+
+-------------------------------------------------------------------
 Tue Dec 21 19:28:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing pkgconfig(wayland-protocols) BuildRequires:
