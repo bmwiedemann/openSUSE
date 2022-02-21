@@ -907,4 +907,39 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>944926</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>11766543d222fd3942535de80ae7cd5e</srcmd5>
+    <version>1.0.2</version>
+    <time>1645461990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.2
+ + Bugfixes:
+ + Fixed showing menu when clicking icon for collection and internet search tool buttons
+ + Fixed ignoring devices with system mounts as defined by GIO (#410).
+ + Fixed updating database when deleting songs from filesystem devices.
+ + Fixed unregistered metatype when listing songs from MTP devices with Qt 6.
+ + Fixed using entered password when testing Subsonic settings before pressing save (#879).
+ + Fixed downloading Subsonic album covers.
+ + Fixed subsonic album covers downloaded several times for each album when MD5 authentication was enabled (#885).
+ + Fixed volume going to 100% when pressing volume down with MRPIS2 and global shortcuts (#884).
+ + Fixed incorrect rounding when setting volume through MPRIS2 (#894).
+ + Fixed delete from disk not showing up in the menu when one or more CUE songs were selected.
+ + Fixed possible crashes when switching songs when fading is enabled (#890).
+ + Fixed X11 global shortcuts not working unless window was in focus with Qt 6.2 and higher (#893).
+ + Fixed scrobbler re-sending scrobbles to fast on error (#898).
+ + Enhancements
+ + Log Qt version on startup.
+ + Added button for deleting existing Subsonic songs (#883).
+ + Make collection watcher ignore files with &quot;qt_temp&quot; filename and tmp extension.
+ + Require Qt 5.9 or higher.
+ + Added scrollbars to edit tag dialog (#888).
+ + Added advanced settings for configuring collection watcher.
+ + Disable open audio CD menu when compiled without audio CD support.
+ + Replaced use of deprecated QMouseEvent constructor as of Qt 6.4.
+ + Replaced use of deprecated QCryptographicHash::addData overload as of Qt 6.4.
+ + Removed features:
+ + Removed broken &quot;nomedia&quot; / &quot;nomusic&quot; file handling.
+</comment>
+    <requestid>956163</requestid>
+  </revision>
 </revisionlist>
