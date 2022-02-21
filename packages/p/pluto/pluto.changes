@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 16 20:04:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.4.0:
+  * Add support for parsing manifests contained into List objects (#263)
+
+-------------------------------------------------------------------
+Tue Feb 15 15:08:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.5:
+  * Remove invalid istio version entry (#259)
+
+-------------------------------------------------------------------
 Wed Jan 26 07:15:15 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.3.4:
