@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 20 21:01:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0:
+  * #443 Implement `yield from` syntax support to patchedast.py
+  * #445, #446 Improve empty tuple and handling of parentheses
+  around tuple
+  * #270, #432 Fix rename import statement with dots and as keyword
+
+-------------------------------------------------------------------
 Tue Oct 26 13:44:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.21.0:
