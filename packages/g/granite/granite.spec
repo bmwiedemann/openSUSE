@@ -21,7 +21,7 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           granite
-Version:        6.1.1
+Version:        6.2.0
 Release:        0
 Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later AND LGPL-3.0-or-later
@@ -31,7 +31,7 @@ Source:         https://github.com/elementary/granite/archive/%{version}.tar.gz#
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.48.2
 BuildRequires:  pkgconfig
-BuildRequires:  vala >= 0.28.0
+BuildRequires:  vala >= 0.48.0
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
