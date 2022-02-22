@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-validationlayers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.2.198.0
+Version:        1.3.204.0
 Release:        0
-%define lname libVkLayer_utils-1_2_198_0
+%define lname libVkLayer_utils-1_3_204_0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
@@ -35,10 +35,10 @@ BuildRequires:  glslang-devel >= 11.4.0
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.5.4.g81
-BuildRequires:  spirv-tools-devel >= 2021.2
+BuildRequires:  spirv-headers >= 1.6.g6
+BuildRequires:  spirv-tools-devel >= 2022.2~sdk204
 BuildRequires:  xxhash-devel
-BuildRequires:  pkgconfig(vulkan) >= 1.2.176
+BuildRequires:  pkgconfig(vulkan) >= 1.3.204
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Conflicts:      vulkan < 1.1

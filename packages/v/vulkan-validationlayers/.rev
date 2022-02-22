@@ -255,4 +255,12 @@
     <comment>- Update to release SDK-1.2.198.0</comment>
     <requestid>934252</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3f0435badada3facd65180a193243854</srcmd5>
+    <version>1.3.204.0</version>
+    <time>1645563278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release SDK-1.3.204.0</comment>
+    <requestid>956539</requestid>
+  </revision>
 </revisionlist>
