@@ -870,4 +870,15 @@
   * u_tigervnc-211.patch</comment>
     <requestid>955672</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>a839db488a51155f3990520e0cecc7e1</srcmd5>
+    <version>1.12.0</version>
+    <time>1645561074</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch: tigervnc-clean-pressed-key-on-exit.patch 
+  * fixed bsc#670448 wich can no longer be reproduced
+  * removing the patch fixes bsc#1196214
+  * related: https://github.com/TigerVNC/tigervnc/pull/14</comment>
+    <requestid>956536</requestid>
+  </revision>
 </revisionlist>
