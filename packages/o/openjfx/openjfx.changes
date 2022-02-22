@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Fri Feb 18 08:45:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.14, including October 2021 and
+  January 2022 CPU security fixes)
+  * Fixes of 11.0.13+2
+    + JDK-8274107: Cherry pick GTK WebKit 2.32.4 changes
+    + JDK-8273732: Clarify review policies for clean backports in
+      JavaFX update releases
+    + JDK-8269374: Menu inoperable after setting stage to second
+      monitor
+    + JDK-8211362: Restrict export of libjpeg symbols from
+      libjavafx_iio.so
+    + JDK-8185447: The special high-contrast mode of JavaFX
+      Controls in Japanese environment do not work.
+    + JDK-8263760: Update gradle to version 7.0.1 8240336: JavaFX
+      build uses deprecated features that will be removed in
+      gradle 7
+    + JDK-8262236: Configure Gradle checksum verification
+    + JDK-8220222: build.gradle does not specify clearly the
+      project dependencies
+    + JDK-8211308: Support HTTP/2 in WebView
+    + JDK-8267892: Add .gitattributes to repo
+    + JDK-8267858: Document that title property in WebEngine gets
+      updated asynchronously
+    + JDK-8267121: Illegal access to private "size" field of
+      ArrayList from build.gradle
+    + JDK-8265400: Update to gcc 10.3 on Linux
+    + JDK-8268718: [macos] Video stops, but audio continues to play
+      when stopTime is reached
+    + JDK-8231558: [macos] Platform.exit causes assertion error on
+      macOS 10.15 or later
+    + JDK-8268219: hlsprogressbuffer should provide PTS after
+      GStreamer update
+    + JDK-8267819: CoInitialize/CoUninitialize should be called on
+      same thread
+    + JDK-8266860: [macos] Incorrect duration reported for HLS live
+      streams
+    + JDK-8264737: JavaFX media stream stops playing after
+      reconnecting via Remote Desktop
+    + JDK-8271230: Remove obsolete test classes and data files from
+      3DViewer sample
+    + JDK-8266462: Update copyright years of javafx.web native
+      sources in jfx11u
+    + JDK-8272329: Cherry pick GTK WebKit 2.32.3 changes
+    + JDK-8270479: WebKit 612.1 build fails with Visual Studio 2017
+    + JDK-8268849: Update to 612.1 version of WebKit
+    + JDK-8269131: Update libxml2 to version 2.9.12
+    + JDK-8269147: Update GStreamer to version 1.18.4
+    + JDK-8268915: WebKit build fails with Xcode 12.5
+    + JDK-8209086: Some javafx.web files are missing
+      GPLv2+Classpath copyright header
+    + JDK-8262396: Update Mesa 3-D Headers to version 21.0.3
+    + JDK-8270992: Change JavaFX release version in jfx11u to
+      11.0.13
+  * Fixes of 11.0.14+3
+    + JDK-8279396: Define version in .jcheck/conf
+    + JDK-8272638: Update copyright header for files modified in
+      2021
+    + JDK-8276490: Incorrect path for duplicate x and y values,
+      when path falls outside axis bound
+    + JDK-8276847: JSException: ReferenceError: Can't find
+      variable: IntersectionObserver
+    + JDK-8277133: Dragboard contents retrieved all over again
+      during a DND process on WebView
+    + JDK-8160597: IllegalArgumentException when we initiate drag
+      on Image
+    + JDK-8274929: Crash while reading specific clipboard content
+    + JDK-8275723: Crash on macOS 12 in GlassRunnable::dealloc
+    + JDK-8275138: WebView: UserAgent string is empty for first
+      request
+    + JDK-8263807: Button types of a DialogPane are set twice,
+      returns a wrong button
+    + JDK-8274413: FX: Update copyright year in docs, readme files
+      to 2022
+    + JDK-8272546: Better TrueType font loading
+    + JDK-8275835: Change JavaFX release version in jfx11u to
+      11.0.14
+- Modified patches:
+  * openjfx-gradle441.patch
+    + revert all recent gradle 7.0.1 changes
+  * 0001-Change-SWT-and-Lucene.patch
+  * openjfx-antlr.patch
+  * openjfx-nowerror.patch
+  * openjfx-rpm-build.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Fri Jul 30 13:57:35 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

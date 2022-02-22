@@ -97,4 +97,12 @@
     <comment>Fix build on 32-bit arm</comment>
     <requestid>909430</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6d24e4306a7b8a9c7e01b4e7c54276b</srcmd5>
+    <version>11.0.14</version>
+    <time>1645561103</time>
+    <user>dimstar_suse</user>
+    <comment>January 2022 CPU release</comment>
+    <requestid>956681</requestid>
+  </revision>
 </revisionlist>

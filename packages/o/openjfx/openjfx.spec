@@ -1,7 +1,7 @@
 #
 # spec file for package openjfx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 %global priority        2105
-%global build_number 4
+%global build_number 3
 %global jfx_repo jfx11u
 Name:           openjfx
-Version:        11.0.12
+Version:        11.0.14
 Release:        0
 Summary:        Rich client application platform for Java
 License:        BSD-3-Clause AND GPL-2.0-only WITH Classpath-exception-2.0
 URL:            https://openjdk.java.net/projects/openjfx/
 Source0:        https://github.com/openjdk/%{jfx_repo}/archive/refs/tags/%{version}+%{build_number}.tar.gz
-Patch0:         0000-Fix-wait-call-in-PosixPlatform.patch
-Patch1:         0001-Change-SWT-and-Lucene.patch
-Patch2:         0002-Allow-build-to-work-on-newer-gradles.patch
+Patch0:         openjfx-gradle441.patch
+Patch1:         0000-Fix-wait-call-in-PosixPlatform.patch
+Patch2:         0001-Change-SWT-and-Lucene.patch
+Patch3:         0002-Allow-build-to-work-on-newer-gradles.patch
 Patch4:         0004-Fix-Compilation-Flags.patch
 Patch5:         0005-fxpackager-extract-jre-accept-symlink.patch
-Patch100:       openjfx-antlr.patch
-Patch101:       openjfx-gradle441.patch
+Patch101:       openjfx-antlr.patch
 Patch102:       openjfx-nowerror.patch
 Patch103:       openjfx-pango.patch
 Patch104:       openjfx-architectures.patch
@@ -57,7 +57,8 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xxf86vm)
 #!BuildRequires: gradle stringtemplate4
-#!BuildIgnore: gradle-bootstrap stringtemplate4-bootstrap
+#!BuildIgnore:  gradle-bootstrap
+#!BuildIgnore:  stringtemplate4-bootstrap
 
 %description
 JavaFX/OpenJFX is a set of graphics and media APIs that enables Java
@@ -95,10 +96,10 @@ This package contains javadoc for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 
-%patch100 -p1
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
@@ -124,20 +125,20 @@ find -name '*.jar' -type f -delete
 rm -rf modules/javafx.media/src/main/native/gstreamer/3rd_party/glib
 rm -rf modules/javafx.media/src/main/native/gstreamer/gstreamer-lite
 
-%mvn_package org.openjfx:::linux:
+%{mvn_package} org.openjfx:::linux:
 
 %build
-export SOURCE_DATE_EPOCH=$(date -r %{SOURCE0} +%s)
+export SOURCE_DATE_EPOCH=$(date -r %{SOURCE0} +%%s)
 env | grep SOURCE_DATE_EPOCH
 gradle-local --no-daemon --offline sdk generatePomFileForMavenPublication generatePomFileForJavafxPublication javadoc jmod
 
 %install
-%mvn_artifact modules/javafx.base/build/publications/javafx/pom-default.xml
+%{mvn_artifact} modules/javafx.base/build/publications/javafx/pom-default.xml
 for i in base controls fxml graphics media swing web; do
   %pom_xpath_remove pom:project/pom:packaging modules/javafx.${i}/build/publications/maven/pom-default.xml
   %pom_xpath_set pom:classifier linux modules/javafx.${i}/build/publications/maven/pom-default.xml
-  %mvn_artifact modules/javafx.${i}/build/publications/maven/pom-default.xml build/publications/javafx.${i}.jar
-  %mvn_artifact org.openjfx:javafx-${i}::linux:%{version} build/publications/javafx.${i}-linux.jar
+  %{mvn_artifact} modules/javafx.${i}/build/publications/maven/pom-default.xml build/publications/javafx.${i}.jar
+  %{mvn_artifact} org.openjfx:javafx-${i}::linux:%{version} build/publications/javafx.${i}-linux.jar
 done
 
 %mvn_install -J build/javadoc
