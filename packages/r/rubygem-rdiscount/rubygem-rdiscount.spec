@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rdiscount
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rdiscount
-Version:        2.2.0.1
+Version:        2.2.0.2
 Release:        0
 %define mod_name rdiscount
 %define mod_full_name %{mod_name}-%{version}
@@ -32,15 +32,16 @@ Release:        0
 Conflicts:      ruby = 1.9.2
 # Please comment the ruby-devel build requirements that have the "<"
 # and ">" operators. Otherwise it won't build.
-# This is a manual hack until the != operator for ruby gets correctly 
+# This is a manual hack until the != operator for ruby gets correctly
 # translated by gem2rpm
+BuildRequires:  ruby-devel > 1.9.2
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{rubydevel > 1.9.2}
+#BuildRequires:  %{rubydevel < 1.9.2}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://dafoster.net/projects/rdiscount/
+URL:            http://dafoster.net/projects/rdiscount/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-rdiscount-rpmlintrc
 Source2:        gem2rpm.yml
