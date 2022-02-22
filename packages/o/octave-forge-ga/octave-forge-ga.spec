@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-ga
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  ga
 Name:           octave-forge-%{octpkg}
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Genetic optimization code for Octave
 License:        GPL-2.0-or-later
