@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 21 14:50:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Enable selinux support
+- Update Supplements to new format
+
+-------------------------------------------------------------------
 Wed Feb  9 13:17:30 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Remove caches only when performing a package downgrade. The sssd

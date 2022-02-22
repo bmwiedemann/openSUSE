@@ -76,6 +76,7 @@ BuildRequires:  pkgconfig(talloc)
 BuildRequires:  pkgconfig(tdb) >= 1.1.3
 BuildRequires:  pkgconfig(tevent)
 BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(libsemanage)
 %{?systemd_ordering}
 Requires:       sssd-ldap = %version-%release
 Requires(postun): pam-config
@@ -253,7 +254,7 @@ requests.
 Summary:        Library to allow communication between libnfsidmap and SSSD
 License:        GPL-3.0-or-later
 Group:          System/Libraries
-Supplements:    packageand(nfsidmap:sssd-client)
+Supplements:    (nfsidmap and sssd-client)
 
 %description -n libnfsidmap-sss
 A utility library to allow communication between libnfsidmap and SSSD.
@@ -316,7 +317,7 @@ responder.
 Summary:        A library to allow communication between sudo and SSSD
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
-Supplements:    packageand(sudo:sssd-client)
+Supplements:    (sudo and sssd-client)
 
 %description -n libsss_sudo
 A utility library to allow communication between sudo and SSSD.
@@ -382,9 +383,8 @@ autoreconf -fiv
     --enable-nsslibdir="/%_lib" \
     --enable-pammoddir="/%_lib/security" \
     --with-ldb-lib-dir="%ldbdir" \
-    --with-selinux=no \
+    --with-selinux=yes \
     --with-os=suse \
-    --with-semanage=no \
     --disable-ldb-version-check \
     --without-secrets \
     --without-python2-bindings
@@ -557,6 +557,7 @@ fi
 %_libexecdir/%name/sss_analyze
 %_libexecdir/%name/sss_signal
 %_libexecdir/%name/sssd_check_socket_activated_responders
+%_libexecdir/%name/selinux_child
 %dir %sssdstatedir
 %attr(700,root,root) %dir %dbpath/
 %attr(755,root,root) %dir %pipepath/
