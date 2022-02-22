@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 15 07:44:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.204.0
+  * Dynamic rendering
+  * Buffer device address support is now required
+  * Finer control over subgroups
+  * Added VK_KHR_shader_integer_dot_product
+
+-------------------------------------------------------------------
 Sat Nov 20 03:06:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.198.0
