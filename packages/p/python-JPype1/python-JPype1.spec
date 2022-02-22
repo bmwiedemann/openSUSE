@@ -1,7 +1,7 @@
 #
 # spec file for package python-JPype1
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,10 @@
 %define skip_python2 1
 %define skip_python36 1
 %bcond_without  test
+# https://build.opensuse.org/package/show/Java:packages/sqlite-jdbc is not in Factory
 %bcond_with     test_jdbc
 Name:           python-JPype1
-Version:        1.1.2
+Version:        1.3.0
 Release:        0
 Summary:        Python to Java bridge
 License:        Apache-2.0
@@ -58,9 +59,8 @@ A Python to Java bridge.
 
 %prep
 %setup -q -n JPype1-%{version}
-rm setup.cfg
-# https://github.com/jpype-project/jpype/issues/892
-rm test/sql/conftest.py examples/stubs/buf_leak_test.py
+# Avoid build dependency on PyInstaller
+rm jpype/_pyinstaller/test_jpype_pyinstaller.py
 
 %build
 ant -f native/build.xml jar
@@ -76,13 +76,8 @@ export CFLAGS="%{optflags}"
 ant -f test/build.xml compile
 
 # JClassTestCase.testAsArray fails on i586
+# https://github.com/jpype-project/jpype/issues/1029
 skip_tests="(JClassTestCase and testAsArray)"
-
-# Failed to extract javadoc for class jpype.doc.Test
-skip_tests+=" or (HtmlTestCase and testClass)"
-
-# https://github.com/jpype-project/jpype/issues/891
-skip_tests+=" or test_memory_leak_fix or test_jarray_slice_copy_fix"
 
 %if %{without test_jbdc}
 skip_tests+=" or test_sql_h2 or test_sql_hsqldb or test_sql_sqlite"
@@ -96,6 +91,9 @@ export CLASSPATH=${PWD}/test/classes:%{_libdir}/java/sqlite-jdbc.jar:%{_localsta
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/jpype/
+%{python_sitearch}/org.jpype.jar
+%{python_sitearch}/_jpype*.so
+%{python_sitearch}/*JPype1*/
 
 %changelog

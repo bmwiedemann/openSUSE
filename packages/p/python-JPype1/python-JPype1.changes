@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Feb 21 12:18:03 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.3.0
+  * Fixes for memory issues found when upgrading to Python 3.10 beta.
+  * Add additional diagnositics for importing of non-public class.
+  * Fixed issue with classes with unsatified dependencies leading to
+    a crash on windows.
+  * Fixed a bug with arrays created using the short cut.
+- from v1.2.1
+  * Missing stub files added.
+  * Python 3.9 issues are resolved on Windows.
+  * JPype scans jar files and rebuilding missing directories to
+    allow imports from stripped and obfuscated jar files.
+- from v1.2.0
+  * Added builds for Python 3.9.
+  * Fixed bug when importing from multi-release jars.
+  * addClassPath can add jar files after the JVM is started.
+    The default loader for JPype class is
+    ``org.jpype.classloader.DynamicClassLoader``.
+  * Build support of z/OS added.
+  * Bug causing ambiguity between primitives and variadic arguments
+    in method resolution was corrected.
+  * Boolean was inadvertently left out of method resolution.
+    ``boolean`` now properly matched with boxed types.
+  * Support for PyInstaller was added.
+
+-------------------------------------------------------------------
 Tue Apr 27 09:47:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - skip python36 because of numpy
