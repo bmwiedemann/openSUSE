@@ -1,7 +1,7 @@
 #
 # spec file for package tuxguitar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2008-2017 Orcan Ogetbil <oget[DOT]fedora[AT]gmail[DOT]com>
 # Copyright (c) 2008-2017 Fedora project
 #
@@ -55,14 +55,14 @@ Patch0:         tuxguitar-default-soundfont.patch
 Patch1:         no-vst.patch
 Patch2:         tuxguitar-additional-arch.patch
 Patch3:         tuxguitar-startscript.patch
-Patch4:         tuxguitar-startscript-itext.patch
+Patch4:         no-fluidsynth.patch
+Patch5:         tuxguitar-startscript-itext.patch
 BuildRequires:  alsa-devel
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  desktop-file-utils
 BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
-BuildRequires:  fluidsynth-devel
 BuildRequires:  jack-audio-connection-kit-devel
 BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-tools
@@ -76,6 +76,9 @@ Requires:       apache-commons-compress
 Requires:       eclipse-swt
 Recommends:     snd_sf2
 Recommends:     timidity
+%if 0%{?suse_version} >= 1500
+BuildRequires:  fluidsynth-devel
+%endif
 %if %{with itext}
 BuildRequires:  mvn(com.itextpdf.tool:xmlworker)
 BuildRequires:  mvn(com.itextpdf:itextpdf)
@@ -106,8 +109,11 @@ find . -name "*.so" -print -delete
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%if %{with itext}
+%if 0%{?suse_version} < 1500
 %patch4 -p1
+%endif
+%if %{with itext}
+%patch5 -p1
 %else
 %pom_remove_dep -r com.itextpdf:itextpdf
 %pom_remove_dep -r com.itextpdf.tool:xmlworker
@@ -190,7 +196,9 @@ cp -a misc/%{name}.1 %{buildroot}/%{_mandir}/man1/
 %fdupes -s %{buildroot}
 
 ln -sf %{_jnidir}/%{name}/%{name}-alsa.jar %{buildroot}%{_javadir}/%{name}/
+%if 0%{?suse_version} >= 1500
 ln -sf %{_jnidir}/%{name}/%{name}-fluidsynth.jar %{buildroot}%{_javadir}/%{name}/
+%endif
 ln -sf %{_jnidir}/%{name}/%{name}-jack.jar %{buildroot}%{_javadir}/%{name}/
 ln -sf %{_jnidir}/%{name}/%{name}-oss.jar %{buildroot}%{_javadir}/%{name}/
 
@@ -207,7 +215,9 @@ ln -sf %{_jnidir}/%{name}/%{name}-oss.jar %{buildroot}%{_javadir}/%{name}/
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %{_javadir}/%{name}/tuxguitar-alsa.jar
+%if 0%{?suse_version} >= 1500
 %{_javadir}/%{name}/tuxguitar-fluidsynth.jar
+%endif
 %{_javadir}/%{name}/tuxguitar-jack.jar
 %{_javadir}/%{name}/tuxguitar-oss.jar
 

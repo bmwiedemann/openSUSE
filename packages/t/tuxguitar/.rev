@@ -49,4 +49,12 @@
     <comment>Fix arm6 build</comment>
     <requestid>909611</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>86bed08f2c505bd0f753938fc4526acf</srcmd5>
+    <version>1.5.4</version>
+    <time>1645561104</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on sle12-sp5</comment>
+    <requestid>956685</requestid>
+  </revision>
 </revisionlist>

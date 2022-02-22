@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  8 09:42:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * no-fluidsynth.patch
+    + disable fluidsynth for building on sle12
+
+-------------------------------------------------------------------
 Sun Aug  1 14:05:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
