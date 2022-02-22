@@ -769,4 +769,16 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>946292</requestid>
   </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>42f902ad24eb7729a6b322a5425c281d</srcmd5>
+    <version>9.0.43</version>
+    <time>1645561104</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed CVEs:
+  * CVE-2022-23181: Make calculation of session storage location more robust (bsc#1195255)
+- Added patches:
+  * tomcat-9.0-CVE-2022-23181.patch
+</comment>
+    <requestid>956682</requestid>
+  </revision>
 </revisionlist>

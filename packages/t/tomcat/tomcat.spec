@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -87,6 +87,7 @@ Patch7:         tomcat-9.0-CVE-2021-41079.patch
 Patch8:         tomcat-9.0-CVE-2021-33037.patch
 Patch9:         tomcat-9.0-CVE-2021-30640.patch
 Patch10:        tomcat-9.0-NPE-JNDIRealm.patch
+Patch11:        tomcat-9.0-CVE-2022-23181.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -265,6 +266,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl

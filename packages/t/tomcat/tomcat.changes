@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 28 14:01:40 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2022-23181: Make calculation of session storage location more robust (bsc#1195255)
+- Added patches:
+  * tomcat-9.0-CVE-2022-23181.patch
+
+-------------------------------------------------------------------
 Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
 
 - remove instance units from post scripts, they can not be reloaded
