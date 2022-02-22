@@ -1,7 +1,7 @@
 #
 # spec file for package memcached
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,13 @@
 %endif
 
 Name:           memcached
-Version:        1.6.12
+Version:        1.6.14
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Other
-URL:            http://memcached.org/
-Source:         http://www.memcached.org/files/%{name}-%{version}.tar.gz
+URL:            https://memcached.org/
+Source:         https://www.memcached.org/files/%{name}-%{version}.tar.gz
 Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        memcached-rpmlintrc
@@ -133,6 +133,7 @@ make %{?_smp_mflags} test
 %if 0%{?suse_version} >= 1500
 %pre -f memcached.pre
 %else
+
 %pre
 getent group %{name} >/dev/null || \
 	%{_sbindir}/groupadd -r %{name}

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Feb 20 22:06:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.14:
+  * tests: workaround for t/watcher.t race
+  * restart: fix typo in error message
+  * Extend extbuf in try_read_command_binary function
+  * tests: repair race in maxconns.t test
+  * Fix integer overflow in hashsize calculation causing hang on huge hash tables
+  * meta: add "proxy tokens" P, L which are ignored
+  * core: fix large pages detection on redhat distros
+  * Fix error message on conflicting ports while using '-l' 
+
+-------------------------------------------------------------------
+Sat Jan 22 12:06:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.13:
+  * core: make object cache LIFO
+  * meta: protocol.txt updates for CAS return
+  * meta: fix meta delete
+  * meta: fix CAS ('c') return values
+  * core: fix use-after-free for text multigets
+  * Replace OPENSSL_VERSION_NUMBER check with defined(TLS1_3_VERSION) check for TLS v1.3 compatibility
+  * Fix full unit test suite under test_tls
+  * Track store errors in thread stats
+  * Fix for failing tests on OS X
+  * extstore: avoid looping IO queues on submission
+  * tests: maxconns test when extstore enabled
+  * core: remove cdefs include from queue.h 
+
+-------------------------------------------------------------------
 Sun Nov 28 17:22:19 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - update to 1.6.12:

@@ -458,4 +458,34 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>935847</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d24a55baee7558f536fd1c58d5b51130</srcmd5>
+    <version>1.6.14</version>
+    <time>1645561066</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.14:
+  * tests: workaround for t/watcher.t race
+  * restart: fix typo in error message
+  * Extend extbuf in try_read_command_binary function
+  * tests: repair race in maxconns.t test
+  * Fix integer overflow in hashsize calculation causing hang on huge hash tables
+  * meta: add &quot;proxy tokens&quot; P, L which are ignored
+  * core: fix large pages detection on redhat distros
+  * Fix error message on conflicting ports while using '-l' 
+
+- update to 1.6.13:
+  * core: make object cache LIFO
+  * meta: protocol.txt updates for CAS return
+  * meta: fix meta delete
+  * meta: fix CAS ('c') return values
+  * core: fix use-after-free for text multigets
+  * Replace OPENSSL_VERSION_NUMBER check with defined(TLS1_3_VERSION) check for TLS v1.3 compatibility
+  * Fix full unit test suite under test_tls
+  * Track store errors in thread stats
+  * Fix for failing tests on OS X
+  * extstore: avoid looping IO queues on submission
+  * tests: maxconns test when extstore enabled
+  * core: remove cdefs include from queue.h</comment>
+    <requestid>956355</requestid>
+  </revision>
 </revisionlist>
