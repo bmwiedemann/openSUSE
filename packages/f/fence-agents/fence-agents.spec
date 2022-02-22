@@ -1,7 +1,7 @@
 #
 # spec file for package fence-agents
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Name:           fence-agents
 Summary:        Fence Agents for High Availability
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Clustering/HA
-Version:        4.10.0+git.1627556580.31443c15
+Version:        4.11.0+git.1644831027.5283cdb5
 Release:        0
 URL:            https://github.com/ClusterLabs/fence-agents
 Source0:        %{name}-%{version}.tar.xz

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Feb 22 13:19:32 UTC 2022 - varkoly@suse.com
+
+- Update to version 4.11.0+git.1644831027.5283cdb5:
+  * fence_cdu: add 8i support (#471)
+  * fence_zvmip: add --disable-ssl
+  * fencing: add ability to set bool parameters to 0 or false
+  * Fix typo in fence_virtd.service
+  * fence_gce: Add timeouts and failure options (#458)
+  * fence_zvm: deprecate agent
+  * fence_openstack: fix issues with new clouds.yaml/openrc parameters - hardcoded clouds.yaml paths to work like the openstack cli client   (used by the resource agents)
+  * fence_openstack: add support for reading config from clouds.yaml and openrc
+  * fencing: add source_env()
+  * fence_kubevirt: take default namespace from context
+  * build: fix parallel build of lib/
+  * fence_openstack: relax ssl cacert default
+  * - spec: dont use commas in license
+  * fence_lpar: Support comanaged LPARs
+  * fence_ibmz: add option --load-on-activate
+  * fence_openstack: add --ssl-insecure
+  * spec: fix python3-suds dependency having changed name on opensuse 16+
+  * fencing: encode instead of failing for chinese or other non-utf8 character sets
+  * fence_aliyun: Optimize log output (#449)
+  * fence_zvmip: use ssl by default
+  * fence_zvmip: add ssl/tls support
+  * configure: fix --with-agents to not match *virt in regex
+  * fence_vmware_soap: Use --login-timeout option (#447)
+  * fence_kubevirt: set default power-timeout to 40s
+  * fence_kubevirt: Fix kubevirt VM status
+  * fence_kdump: fix typo
+  * fence_raritan_px3: new fence agent (#425)
+  * fence_amt_ws: fix --boot-option (choices are uppercased while getting parsed)
+  * fence_gce: add plugzonemap parameter
+  * fence_gce: Adds existing operation checks and multiple plug support (#400)
+  * azure_fence: fix support for sovereign clouds and MSI for new versions of azure libraries (#439)
+  * fence_cyberpower_ssh: new fence agent (#437)
+  * fence_amt_ws: fix "or" causing dead code
+  * fence_kubevirt: make apiversion a parameter
+  * fence_ibm_vpc/fence_ibm_powervs: new fence agents
+  * fence_kdump: properly support -v[X] and -vvv (and combinations)
+  * fence_mpath/fence_scsi: use store path detected by configure
+
+-------------------------------------------------------------------
 Mon Aug 23 09:51:14 UTC 2021 - varkoly@suse.com
 
 - Update to version 4.10.0+git.1627556580.31443c15:
