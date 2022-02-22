@@ -25,7 +25,9 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://honk.sigxcpu.org/piki/projects/network-manager-iodine/
 Source0:        http://download.gnome.org/sources/NetworkManager-iodine/1.2/%{name}-%{version}.tar.xz
+Source1:        system-user-nm-iodine.conf
 BuildRequires:  intltool
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.4
 BuildRequires:  pkgconfig(libnm) >= 1.1.0
@@ -33,7 +35,7 @@ BuildRequires:  pkgconfig(libnma) >= 1.1.0
 BuildRequires:  pkgconfig(libsecret-1)
 Requires:       NetworkManager >= 1.1.0
 Requires:       iodine >= 0.6.0rc1
-Supplements:    packageand(NetworkManager:iodine)
+Supplements:    (NetworkManager and iodine)
 
 %description
 A network manager VPN plugin that allows you to tunnel your connection
@@ -44,7 +46,7 @@ firewalled but DNS traffic is still allowed.
 Summary:        NetworkManager VPN support for iodine
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}-%{release}
-Supplements:    packageand(NetworkManager-gnome:iodine)
+Supplements:    (NetworkManager-gnome and iodine)
 
 %description gnome
 A network manager VPN plugin that allows you to tunnel your connection
@@ -57,6 +59,7 @@ firewalled but DNS traffic is still allowed.
 %setup -q
 
 %build
+%sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
 %configure \
            --disable-static \
            --disable-more-warnings \
@@ -66,12 +69,16 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%pre -f %{name}.pre
 
 %files
 %license COPYING
 %doc AUTHORS NEWS
+%{_sysusersdir}/%{name}.conf
 %{_libdir}/NetworkManager/libnm-vpn-plugin-iodine.so
 %{_vpnservicedir}/nm-iodine-service.name
 %{_libexecdir}/nm-iodine-service

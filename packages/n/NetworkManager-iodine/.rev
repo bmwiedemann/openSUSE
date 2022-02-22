@@ -48,4 +48,12 @@
   %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799452 from dimstar)</comment>
     <requestid>799489</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>4389f427ac9b146d602eb946717dd90e</srcmd5>
+    <version>1.2.0</version>
+    <time>1645561073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956512</requestid>
+  </revision>
 </revisionlist>
