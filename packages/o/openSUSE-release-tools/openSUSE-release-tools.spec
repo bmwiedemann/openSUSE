@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20220221.3e14e55f
+Version:        20220222.d8ef5897
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -238,8 +238,6 @@ Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       osc >= 0.165.1
 Requires:       python3-osc
-# internal API change related to accessing DSN in osclib/sentry.py
-Suggests:       python3-sentry-sdk >= 0.11.0
 BuildArch:      noarch
 
 %description -n osclib
