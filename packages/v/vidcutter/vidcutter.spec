@@ -1,7 +1,7 @@
 #
 # spec file for package vidcutter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        https://github.com/ozmartian/%{name}/archive/%{version}.tar.gz#/
 Source99:       %{name}-rpmlintrc
 # PATCH-FEATURE-OPENSUSE vidcutter-susepaths.patch aloisio@gmx.com -- use default SUSE paths
 Patch0:         vidcutter-susepaths.patch
+# PATCH-FIX-UPSTREAM Fix build with mpv 2.0 gh#ozmartian/vidcutter#345
+Patch1:         Patches-to-pympv-to-workaround-opengl_cb-deprecation.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mpv-devel
@@ -34,7 +36,7 @@ BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       ffmpeg
-Requires:       libmpv1
+Requires:       libmpv2
 Requires:       mediainfo
 Requires:       python3-opengl
 Requires:       python3-qt5
@@ -49,8 +51,7 @@ Vidcutter is a Qt5-based application for video trimming/splitting
 and merging/joining. The backend is driven by FFmpeg.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # remove shebang
 for f in $(find ./vidcutter -name "*.py"); do
    sed '0,/^#!/{//d;}' -i ${f}

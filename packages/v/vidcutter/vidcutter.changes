@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 22 00:39:24 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Fix build with mpv 2.0 (gh#ozmartian/vidcutter#345)
+  * Patches-to-pympv-to-workaround-opengl_cb-deprecation.patch
+- Depend on libmpv2
+
+-------------------------------------------------------------------
 Wed Jun 16 08:41:05 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.0.5.1
