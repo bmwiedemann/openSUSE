@@ -95,4 +95,13 @@
   * Don't fail if the remote path is a PurePath not a Path</comment>
     <requestid>943598</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>807e872e6e68973d98eb34f1c4e931c3</srcmd5>
+    <version>0.14.3</version>
+    <time>1645561093</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.3:
+  * Add type hints</comment>
+    <requestid>956646</requestid>
+  </revision>
 </revisionlist>
