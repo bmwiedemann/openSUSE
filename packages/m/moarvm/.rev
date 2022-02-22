@@ -280,4 +280,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>956531</requestid>
   </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>aa906c617b287cb6ce7841ea48c0e23d</srcmd5>
+    <version>2022.02</version>
+    <time>1645561112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956842</requestid>
+  </revision>
 </revisionlist>

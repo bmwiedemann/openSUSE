@@ -30,7 +30,11 @@ Patch0:         reproducible.patch
 BuildRequires:  perl(ExtUtils::Command)
 %ifarch s390x
 BuildRequires:  libffi-devel
+%if 0%{?suse_version} > 1500
 Requires:       libffi8
+%else
+Requires:       libffi7
+%endif
 %define         ffiopt --has-libffi
 %endif
 
@@ -53,7 +57,7 @@ MoarVM (Metamodel On A Runtime) development headers.
 %patch0 -p1
 
 %build
-perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 %{ffiopt}
+perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 --no-mimalloc %{ffiopt}
 make NOISY=1 %{?_smp_mflags}
 
 %install
