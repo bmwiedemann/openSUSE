@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/wsproto
 Source:         https://files.pythonhosted.org/packages/source/w/wsproto/wsproto-%{version}.tar.gz
+# subset of https://github.com/python-hyper/wsproto/pull/170
+Patch1:         170.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,7 +61,7 @@ RFC6455 and Compression Extensions for WebSocket via RFC7692
 <https://tools.ietf.org/html/rfc7692> are fully supported.
 
 %prep
-%setup -q -n wsproto-%{version}
+%autosetup -p1 -n wsproto-%{version}
 
 %build
 %python_build
@@ -69,8 +71,7 @@ RFC6455 and Compression Extensions for WebSocket via RFC7692
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/python-hyper/wsproto/issues/169
-%pytest -k 'not (test_handshake or test_handshake_extra_headers)'
+%pytest
 
 %files %{python_files}
 %doc README.rst

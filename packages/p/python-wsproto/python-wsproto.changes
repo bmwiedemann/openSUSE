@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 21 12:08:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add 170.patch to improve python 3.10 compatibility
+- reenable tests 
+
+-------------------------------------------------------------------
 Thu Feb 17 21:00:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - filter two irrelevant tests for h11 0.13.0 (gh#python-hyper/wsproto#169)
