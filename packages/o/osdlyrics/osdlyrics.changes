@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 21 13:56:35 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.5.10
+  * Add translated Netease as lyrics source
+  * Addressed gtk deprecation warnings during compile time
+  * Treat obsolete messages
+  * Treat C-compile warnings
+
+-------------------------------------------------------------------
 Mon Nov 22 13:14:40 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 0.5.7

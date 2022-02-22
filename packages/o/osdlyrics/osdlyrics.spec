@@ -1,7 +1,7 @@
 #
 # spec file for package osdlyrics
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           osdlyrics
-Version:        0.5.7
+Version:        0.5.10
 Release:        0
 Summary:        A third-party lyrics display program
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Visualization
 URL:            https://github.com/osdlyrics/osdlyrics
 Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 Source1:        %{name}.appdata.xml
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -90,6 +89,8 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/metainfo
 
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{_libdir}
 
 %files
 %license LICENSE
