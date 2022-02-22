@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 17 00:03:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove avahi-mono* subspecfiles, they are no longer required
+  by anything. this makes the spec file slightly more readable. 
+
+-------------------------------------------------------------------
 Wed Feb 16 18:26:01 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Replace avahi-0.6.31-systemd-order.patch with

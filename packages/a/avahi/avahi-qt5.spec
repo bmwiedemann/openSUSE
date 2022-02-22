@@ -24,7 +24,6 @@
 %define         build_core 0
 # NOTE: build_glib2 also controls build of gobject, gtk3 and pygobject code.
 %define         build_glib2 0
-%define         build_mono 0
 %define         build_qt5 1
 %define avahi_client_sover 3
 %define avahi_common_sover 3
@@ -105,7 +104,7 @@ BuildRequires:  sysuser-tools
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xmltoman
-%if !%{build_glib2} && !%{build_mono} && !%{build_qt5}
+%if !%{build_glib2} && !%{build_qt5}
 # Create split spec files only when building per partes:
 #%(sh %{_sourcedir}/%{_name}_spec-prepare.sh %{_sourcedir} %{name})
 %endif
@@ -134,17 +133,6 @@ BuildRequires:  gtk3-devel
 BuildRequires:  libavahi-devel = %{version}
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(pygobject-3.0)
-%endif
-%if %{build_mono}
-BuildRequires:  gtk-sharp2
-BuildRequires:  libavahi-glib-devel = %{version}
-BuildRequires:  mono-devel
-BuildRequires:  monodoc-core
-# Please copy this line to avahi-mono definition below for build all-in-once:
-Requires:       gtk-sharp2
-Requires:       libavahi-client%{avahi_client_sover} >= %{version}
-Requires:       libavahi-common%{avahi_common_sover} >= %{version}
-Requires:       libavahi-glib%{avahi_glib_sover} >= %{version}
 %endif
 %if %{build_qt5}
 BuildRequires:  dbus-1-devel
@@ -419,17 +407,6 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-
-
-
-
-
-
-
-
-
-
-
 # This is the avahi-discover command, only provided for the primary python3 flavor
 
 %package -n python3-avahi-gtk
@@ -477,28 +454,6 @@ Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
 %if %{build_core}
-%if %{build_mono}
-%package -n avahi-mono
-Summary:        Mono Bindings for avahi, the D-BUS Service for Zeroconf and Bonjour
-Group:          Development/Languages/Mono
-Requires:       gtk-sharp2
-Requires:       libavahi-client%{avahi_client_sover} >= %{version}
-Requires:       libavahi-common%{avahi_common_sover} >= %{version}
-Requires:       libavahi-glib%{avahi_glib_sover} >= %{version}
-
-%description -n avahi-mono
-This package provides Mono bindings for avahi. Avahi is an
-implementation of the DNS Service Discovery and MulticastDNS
-specifications for Zeroconf Computing. It uses D-BUS for communication
-between user applications and a system daemon. The daemon is used to
-coordinate application efforts in caching replies, necessary to
-minimize the traffic imposed on networks. The Avahi mDNS responder is
-now feature complete, implementing all MUSTs and the majority of the
-SHOULDs of the mDNS and DNS-SD RFCs. It passes all tests in the Apple
-Bonjour conformance test suite. In addition, it supports some nifty
-things, like correct mDNS reflection across LAN segments.
-
-%endif
 %lang_package
 %endif
 
@@ -553,14 +508,10 @@ cp -a %{SOURCE12} service-type-database/build-db
 # Replace all .la references from local .la files to installed versions
 # with exception of libavahi-glib.la.
 # It allows to build only the binding subpackage.
-%if %{build_mono}
-sed -i 's:\(\.\.\|\$(top_builddir)\)/[^/]*/\(lib[^ ]*\.la\):%{_libdir}/\2:g' */Makefile.am
-%else
 sed -i 's:libavahi-glib\.la:@@SKIP LIBAVAHI GLIB@@:g
 s:\(\.\.\|\$(top_builddir)\)/[^/]*/\(lib[^ ]*\.la\):%{_libdir}/\2:g
 s:@@SKIP LIBAVAHI GLIB@@:libavahi-glib.la:g
 ' */Makefile.am
-%endif
 %endif
 if ! test -f %{_datadir}/aclocal/glib-gettext.m4 ; then
     cat %{SOURCE4} >>acinclude.m4
@@ -596,19 +547,12 @@ export PYTHON=%{_bindir}/$python
 	--disable-glib\
 	--disable-gobject\
 	--disable-pygobject\
-%if ! %{build_mono}
 	--disable-gtk\
-%endif
 	--disable-gtk3\
 %endif
 	--disable-qt3\
 	--disable-qt4\
-%if %{build_mono}
-	--enable-mono\
-	--disable-gtk\
-%else
 	--disable-mono\
-%endif
 %if %{build_qt5}
 	--enable-qt5\
 %else
@@ -631,11 +575,6 @@ cd $DIR
 cd ..
 done
 %endif
-%if %{build_mono} && !%{build_core}
-cd avahi-sharp
-%make_build
-cd ../avahi-ui-sharp
-%endif
 %if %{build_core}
 %{python_expand # build for every python flavor
 cd avahi-python-%{$python_bin_suffix}
@@ -653,11 +592,6 @@ cd $DIR
 cd ..
 done
 cd -
-%endif
-%if %{build_mono} && !%{build_core}
-cd avahi-sharp
-%make_install
-cd ../avahi-ui-sharp
 %endif
 %if %{build_qt5} && !%{build_core}
 cd avahi-qt
@@ -743,12 +677,6 @@ rm %{buildroot}/%{_mandir}/man8/avahi-dnsconfd.action.8*
 rm %{buildroot}/%{_datadir}/avahi/interfaces/avahi-discover.ui
 rmdir %{buildroot}/%{_datadir}/avahi/interfaces
 rmdir %{buildroot}/%{_datadir}/avahi
-%else
-%if %{build_mono}
-%ifnarch ppc64 ppc64le s390x
-strip-nondeterminism %{buildroot}/%{_prefix}/lib/monodoc/sources/*.zip
-%endif
-%endif
 %endif
 %endif
 %if %{build_glib2}
@@ -1010,23 +938,6 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %{_libdir}/libavahi-gobject*.so
 %{_libdir}/pkgconfig/avahi-gobject.pc
 %{_datadir}/gir-1.0/*.gir
-%endif
-
-%if %{build_mono}
-%if %{build_core}
-%files -n avahi-mono
-%else
-
-%files
-%endif
-%defattr(-,root,root)
-%{_libdir}/pkgconfig/avahi-sharp.pc
-%{_libdir}/pkgconfig/avahi-ui-sharp.pc
-%ifnarch ppc64 ppc64le s390x
-%{_prefix}/lib/monodoc/sources/*.*
-%endif
-%{_prefix}/lib/mono/avahi-sharp
-%{_prefix}/lib/mono/gac/avahi-sharp
 %endif
 
 %if %{build_qt5}
