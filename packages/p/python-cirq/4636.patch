@@ -5,14 +5,12 @@ Subject: [PATCH] Fix operator spaces test which fails due to precision on some
  architectures
 
 ---
- cirq-core/cirq/linalg/operator_spaces_test.py | 4 +++-
+ cirq-core/cirq/linalg/operator_spaces_test.py |    4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/cirq-core/cirq/linalg/operator_spaces_test.py b/cirq-core/cirq/linalg/operator_spaces_test.py
-index fe1f41757eb..fc2a0c719f9 100644
 --- a/cirq-core/cirq/linalg/operator_spaces_test.py
 +++ b/cirq-core/cirq/linalg/operator_spaces_test.py
-@@ -175,7 +175,9 @@ def test_hilbert_schmidt_inner_product_is_linear(a, m1, b, m2):
+@@ -175,7 +175,9 @@ def test_hilbert_schmidt_inner_product_i
  @pytest.mark.parametrize('m', (I, X, Y, Z, H, SQRT_X, SQRT_Y, SQRT_Z))
  def test_hilbert_schmidt_inner_product_is_positive_definite(m):
      v = cirq.hilbert_schmidt_inner_product(m, m)

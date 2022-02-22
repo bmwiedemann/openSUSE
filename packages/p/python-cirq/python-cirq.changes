@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 21 04:26:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.13.1
+  * Big Changelog since v0.9:
+    https://github.com/quantumlib/Cirq/releases
+  * Breaking API and usability changes
+  * New modular structure: main metapackage with standalone
+    subpackages as dependencies
+- cirq-rigetti disabled for now: not all dependencies are available
+- add 4873.patch gh#quantumlib/Cirq#4873 -- pandas compatibility
+
+-------------------------------------------------------------------
 Fri Nov 12 13:25:24 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix test on aarch64:
