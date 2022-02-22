@@ -1,7 +1,7 @@
 #
-# spec file for package apache-logging-parent
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,33 @@
 #
 
 
-Name:           apache-logging-parent
-Version:        2
+%global short_name logging-parent
+Name:           apache-%{short_name}
+Version:        5
 Release:        0
 Summary:        Parent pom for Apache Logging Services projects
 License:        Apache-2.0
 URL:            https://logging.apache.org/
-Source0:        https://repo1.maven.org/maven2/org/apache/logging/logging-parent/%{version}/logging-parent-%{version}-source-release.zip
-BuildRequires:  maven-local
+Source0:        https://repo1.maven.org/maven2/org/apache/logging/%{short_name}/%{version}/%{short_name}-%{version}-source-release.zip
+BuildRequires:  javapackages-local
 BuildRequires:  unzip
 BuildRequires:  mvn(org.apache:apache:pom:)
+Requires:       mvn(org.apache:apache:pom:)
 BuildArch:      noarch
 
 %description
 Parent pom for Apache Logging Services projects.
 
 %prep
-%setup -q -n logging-parent-%{version}
+%setup -q -n %{short_name}-%{version}
 
 %build
-%{mvn_build}
 
 %install
-%mvn_install
+# pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
+install -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{short_name}.pom
+%add_maven_depmap %{name}/%{short_name}.pom
 
 %files -f .mfiles
 %license LICENSE NOTICE
