@@ -1,7 +1,7 @@
 #
 # spec file for package log4j
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -165,13 +165,6 @@ rm log4j-core/src/main/java/org/apache/logging/log4j/core/layout/*{Csv,Jackson,X
 rm log4j-1.2-api/src/main/java/org/apache/log4j/builders/layout/*Xml*.java
 rm log4j-api/src/main/java/org/apache/logging/log4j/util/Activator.java
 rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
-
-%{mvn_alias} :%{name}-1.2-api %{name}:%{name}
-
-# Note that packages using the compatibility layer still need to have log4j-core
-# on the classpath to run. This is there to prevent build-classpath from putting
-# whole dir on the classpath which results in loading incorrect provider
-%{mvn_file} ':{%{name}-1.2-api}' %{name}/@1 %{name}
 
 %{mvn_package} ':%{name}-slf4j-impl' slf4j
 %{mvn_package} ':%{name}-to-slf4j' slf4j

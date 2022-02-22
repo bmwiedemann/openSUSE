@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 08:24:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove alias log4j:log4j from log4j-1.2-api, since it is not a
+  drop-in replacement
+
+-------------------------------------------------------------------
 Wed Dec 29 08:34:08 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Update to 2.17.1 [bsc#1194127, CVE-2021-44832] 
