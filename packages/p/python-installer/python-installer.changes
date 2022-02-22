@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 21 08:58:28 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing BR for importlib_resources
+
+-------------------------------------------------------------------
+Mon Feb 21 08:52:31 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Skip building for python2
+
+-------------------------------------------------------------------
 Thu Jan 20 19:56:19 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for installer 0.3.0. (the highest

@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-installer
 # DO NOT UPGRADE UNTIL PDM WORKS WITH MORE RECENT VERSIONS!!!
 Version:        0.3.0
@@ -28,6 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/i/installer/insta
 # PATCH-FEATURE-UPSTREAM remove-mock.patch mcepl@suse.com
 # Make dependency on mock package optional
 Patch0:         remove-mock.patch
+BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
