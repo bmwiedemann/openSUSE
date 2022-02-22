@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rb-kqueue
-Version:        0.2.7
+Version:        0.2.8
 Release:        0
 %define mod_name rb-kqueue
 %define mod_full_name %{mod_name}-%{version}
