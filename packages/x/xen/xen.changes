@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Feb 14 11:40:00 CET 2022 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  61e0296a-x86-time-calibration-relative-counts.patch
+  61e029c8-x86-time-TSC-freq-calibration-accuracy.patch
+  61e02a1c-libxl-PCI-PV-hotplug-stubdom-coldplug.patch
+  61e98e88-x86-introduce-get-set-reg-infra.patch
+  61e98e89-x86-MSR-split-SPEC_CTRL-handling.patch
+  61e98e8a-x86-spec-ctrl-drop-ENTRY-EXIT-HVM.patch
+  61e98e8b-VT-x-SPEC_CTRL-NMI-race-condition.patch
+  61eaaa23-x86-get-set-reg-infra-build.patch
+  61efec1d-Arm-P2M-always-clear-entry-on-mapping-removal.patch
+  61efec4d-gnttab-only-decrement-refcounter-on-final-unmap.patch
+  61efec96-IOMMU-x86-stop-pirq-iteration-immediately-on-error.patch
+  61f2d886-x86-CPUID-disentangle-new-leaves-logic.patch
+  61f2d887-x86-CPUID-leaf-7-1-EBX-infra.patch
+  61f2dd76-x86-SPEC_CTRL-migration-compatibility.patch
+  61f7b2af-libxl-dont-touch-nr_vcpus_out-if-listing.patch
+  61f933a4-x86-cpuid-advertise-SSB_NO.patch
+  61f933a5-x86-drop-use_spec_ctrl-boolean.patch
+  61f933a6-x86-new-has_spec_ctrl-boolean.patch
+  61f933a7-x86-dont-use-spec_ctrl-enter-exit-for-S3.patch
+  61f933a8-x86-SPEC_CTRL-record-last-write.patch
+  61f933a9-x86-SPEC_CTRL-use-common-logic-for-AMD.patch
+  61f933aa-SVM-SPEC_CTRL-entry-exit-logic.patch
+  61f933ab-x86-AMD-SPEC_CTRL-infra.patch
+  61f933ac-SVM-enable-MSR_SPEC_CTRL-for-guests.patch
+  61f946a2-VMX-drop-SPEC_CTRL-load-on-VMEntry.patch
+  6202afa3-x86-clean-up-MSR_MCU_OPT_CTRL-handling.patch
+  6202afa4-x86-TSX-move-has_rtm_always_abort.patch
+  6202afa5-x86-TSX-cope-with-deprecation-on-WHL-R-CFL-R.patch
+  6202afa7-x86-CPUID-leaf-7-2-EDX-infra.patch
+  6202afa8-x86-Intel-PSFD-for-guests.patch
+- Drop patches replaced by the above:
+  xsa393.patch
+  xsa394.patch
+  xsa395.patch
+  libxl-Fix-PV-hotplug-and-stubdom-coldplug.patch
+  libxl-dont-try-to-free-a-NULL-list-of-vcpus.patch
+  libxl-dont-touch-nr_vcpus_out-if-listing-vcpus-and-returning-NULL.patch
+
+-------------------------------------------------------------------
 Thu Jan 13 10:55:58 MST 2022 - carnold@suse.com
 
 - bsc#1194576 - VUL-0: CVE-2022-23033: xen: arm:

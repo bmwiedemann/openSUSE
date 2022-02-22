@@ -2670,4 +2670,12 @@
     <comment>Security and Maintenance update</comment>
     <requestid>949116</requestid>
   </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>f12e0b852949a7bf0085e1f06bf4aa5d</srcmd5>
+    <version>4.16.0_06</version>
+    <time>1645561075</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956542</requestid>
+  </revision>
 </revisionlist>
