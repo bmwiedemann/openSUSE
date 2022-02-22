@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 22 16:12:16 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 5.1:
+  * Netdata: use host instead name as family label
+  * Netdata: use formatstring macro PRId64
+  * Allow -4 option to be given multiple times
+  * Documentation fix
+  * Retain privileges until after privileged setsockopt
+  * Set bind to source only when option is set
+  * Fix getnameinfo not called properly for IPv4
+  * Documentation updates
+
+-------------------------------------------------------------------
 Wed Oct  7 12:20:48 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - no longer invoke permissions macros for fping. It now uses ICMP_RAW sockets
