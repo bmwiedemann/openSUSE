@@ -1,7 +1,7 @@
 #
 # spec file for package python-svglib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-svglib
 Version:        1.1.0
@@ -28,10 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/s/svglib/svglib-%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-reportlab
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cssselect2 >= 0.2.0}
 BuildRequires:  %{python_module lxml}
@@ -40,6 +36,13 @@ BuildRequires:  %{python_module reportlab}
 BuildRequires:  %{python_module tinycss2 >= 0.6.0}
 BuildRequires:  yudit
 # /SECTION
+Requires:       python-cssselect2 >= 0.2.0
+Requires:       python-lxml
+Requires:       python-reportlab
+Requires:       python-tinycss2 >= 0.6.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description
