@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 21 12:29:04 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.15.1:
+  * xdg-foreign: Fix crash on destroy of degenerate surface
+  * wlr_texture: remove wlr_texture_from_wl_drm() from header
+  * foreign-toplevel: send enter if needed on output bind
+  * tinywl: fix check whether client is focused or not
+  * scene/subsurface_tree: fix handling subsurface destruction
+  * compositor: damage the whole buffer on viewport src change
+  * subsurface: unlock cached state on commit if desynced
+  * backend: error out in autocreate without libinput support
+  * scene: schedule an output frame on wl_surface.frame
+  * scene: try to import buffers as textures before rendering
+  * input_method_v2: improve mapping detection
+  * render/gles2: don't constrain shm formats to ones that support reading
+  * vulkan: Fix imported image layout
+
+-------------------------------------------------------------------
 Tue Jan 25 03:51:29 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 0.15.0:
