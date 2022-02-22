@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-io
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define octpkg  io
 Name:           octave-forge-%{octpkg}
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        Input/Output in external formats from Octave
-License:        GPL-3.0-or-later AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
