@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 22 09:42:26 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version v0.8.0:
+  - fix error if a package filename contained the '#' character.
+  - fix authentication error detection during startup.
+  - enable urlopenwrapper hack again which speeds up consecutive requests
+    drastically.
+  - source code ported to Python3 only, removed all Python2 compatibility.
+    Source code is now conforming largely to PIP and flake8 standards.
+
+-------------------------------------------------------------------
 Wed Mar 03 12:47:41 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version v0.7.2:
