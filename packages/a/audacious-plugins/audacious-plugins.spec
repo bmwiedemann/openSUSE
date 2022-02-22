@@ -124,7 +124,7 @@ Extra plugins for the Audacious audio player.
 %license COPYING
 %{_libdir}/audacious/
 %if %{with faad}
-%exclude %{_libdir}/audacious/Input/libaac-raw.so
+%exclude %{_libdir}/audacious/Input/aac-raw.so
 %endif
 %exclude %{_libdir}/audacious/Output/filewriter.so
 %{_datadir}/audacious/
@@ -133,7 +133,7 @@ Extra plugins for the Audacious audio player.
 
 %files extra
 %if %{with faad}
-%{_libdir}/audacious/Input/libaac-raw.so
+%{_libdir}/audacious/Input/aac-raw.so
 %endif
 %{_libdir}/audacious/Output/filewriter.so
 

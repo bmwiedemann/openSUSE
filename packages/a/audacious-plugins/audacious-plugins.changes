@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 08:57:04 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Fix build with faad again
+
+-------------------------------------------------------------------
 Wed Jan 12 10:22:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable gl-spectrum on %arm and aarch64 to fix build
