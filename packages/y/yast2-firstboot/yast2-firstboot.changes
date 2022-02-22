@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 21 15:44:30 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Registration step is always enabled for SLE, even when running
+  in WSL (bsc#1195776).
+- 4.4.8
+
+-------------------------------------------------------------------
 Mon Jan 17 11:41:43 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Add client to configure settings for WSL images (jsc#SLE-20413).
