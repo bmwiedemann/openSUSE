@@ -185,6 +185,8 @@ Patch39:        ignore_pip_deprec_warn.patch
 Patch40:        sphinx-update-removed-function.patch
 # PATCH-FIX-UPSTREAM remove-sphinx40-warning.patch gh#python/cpython#22198 dmueller@suse.com
 Patch41:        remove-sphinx40-warning.patch
+# PATCH-FIX-UPSTREAM bpo-46811 Based on gh#python/cpython#d4f5bb912e67299b59b814b89a5afd9a8821a14e
+Patch42:        support-expat-245.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -468,6 +470,7 @@ other applications.
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
+%patch42 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

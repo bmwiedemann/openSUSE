@@ -3957,4 +3957,13 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>953799</requestid>
   </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>99c94212b0390d670005b72855210cee</srcmd5>
+    <version>3.6.15</version>
+    <time>1645561087</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-expat-245.patch:
+  * Support Expat &gt;= 2.4.5</comment>
+    <requestid>956581</requestid>
+  </revision>
 </revisionlist>
