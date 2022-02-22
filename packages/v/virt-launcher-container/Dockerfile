@@ -35,6 +35,7 @@ RUN zypper -n install \
               nftables \
               qemu-tools \
               socat \
+              systemd-container \
               tar \
               timezone \
               vim \
