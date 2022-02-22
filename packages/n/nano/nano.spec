@@ -18,7 +18,7 @@
 
 %define _version 6
 Name:           nano
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
@@ -87,5 +87,6 @@ mv %{buildroot}%{_datadir}/nano/extra/{ada,fortran,haskell,spec}.* %{buildroot}%
 %{_mandir}/man5/nanorc.5%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING COPYING.DOC
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 18 05:35:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 6.2
+  * The file browser clears the prompt bar also when using
+    --minibar
+  * Linting now works also with a newer 'pyflakes'
+
+-------------------------------------------------------------------
 Thu Feb 10 06:45:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 6.1:
