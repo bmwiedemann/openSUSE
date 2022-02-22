@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb 20 20:24:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.7:
+  * Remove use of cPickle
+  * Remove unneccessary object inheritance
+  * minor changes to python rendering in shapes.Drawing
+  * remove jython (dead project no python3)
+  * remove unicodeT/bytesT
+  * import directly from string module
+  * eliminate getBytesIO and getStringIO
+  * remove unused and indirect imports
+  * remove uniChr alias of chr
+  * modify pdfdoc template to be eventually compatible with pikepdf
+  * fix bug in table gradient bg
+  * fix bug in validateSetattr (__dict__)
+  * fix handling of ddfStyle in XLabel class
+
+-------------------------------------------------------------------
 Sun Jan  9 19:29:21 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.6.5

@@ -313,4 +313,25 @@
     <comment></comment>
     <requestid>945239</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>25eb9c63d7668119f4559c19b70a2c39</srcmd5>
+    <version>3.6.7</version>
+    <time>1645561063</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.7:
+  * Remove use of cPickle
+  * Remove unneccessary object inheritance
+  * minor changes to python rendering in shapes.Drawing
+  * remove jython (dead project no python3)
+  * remove unicodeT/bytesT
+  * import directly from string module
+  * eliminate getBytesIO and getStringIO
+  * remove unused and indirect imports
+  * remove uniChr alias of chr
+  * modify pdfdoc template to be eventually compatible with pikepdf
+  * fix bug in table gradient bg
+  * fix bug in validateSetattr (__dict__)
+  * fix handling of ddfStyle in XLabel class</comment>
+    <requestid>956179</requestid>
+  </revision>
 </revisionlist>

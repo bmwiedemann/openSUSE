@@ -21,7 +21,7 @@
 %define skip_python2 1
 
 Name:           python-reportlab
-Version:        3.6.5
+Version:        3.6.7
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
