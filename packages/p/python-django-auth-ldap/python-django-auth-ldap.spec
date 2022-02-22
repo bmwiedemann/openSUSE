@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-auth-ldap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-auth-ldap
-Version:        2.2.0
+Version:        4.0.0
 Release:        0
 Summary:        Django LDAP authentication backend
 License:        BSD-2-Clause
@@ -27,8 +27,9 @@ URL:            https://github.com/django-auth-ldap/django-auth-ldap
 Source:         https://files.pythonhosted.org/packages/source/d/django-auth-ldap/django-auth-ldap-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module ldap >= 3.1}
-BuildRequires:  %{python_module mock >= 2.0.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # needed for slapd binary in tests
 BuildRequires:  openldap2
@@ -48,14 +49,16 @@ are many rich configuration options for working with users, groups, and permissi
 %setup -q -n django-auth-ldap-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF8
-%python_exec -m django test --settings tests.settings
+export PATH=/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin 
+%python_exec -m django test --settings tests.settings -v2
 
 %files %{python_files}
 %license LICENSE

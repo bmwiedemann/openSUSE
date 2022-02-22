@@ -142,4 +142,12 @@
  * Added support for the escape argument in LDAPSearchUnion.execute()</comment>
     <requestid>812852</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>464d83f8d83611cc51b7cc1abee112bb</srcmd5>
+    <version>4.0.0</version>
+    <time>1645561086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956492</requestid>
+  </revision>
 </revisionlist>

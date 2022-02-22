@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 21 13:38:55 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Use fdupes
+- Update to v4.0.0
+  * The signal ldap_error now has an additional `request` keyword.
+  * Added support for Python 3.10.
+  * Added support for Django 4.0.
+- from v3.0.0
+  * Dropped support for Django 3.0.
+  * Dropped deprecated setting ``AUTH_LDAP_CACHE_GROUPS``.
+  * Callables passed to ``AUTH_LDAP_SERVER_URI`` must now take a
+    ``request`` positional argument.
+- from v2.4.0
+  * Added support for Django 3.2.
+- from v2.3.0
+  * Removed support for end of life Django 1.11. Django 2.2+ reqd.
+  * Removed support for end of life Python 3.5.
+  * Added support for Django 3.1.
+  * Added support for Python 3.9.
+
+-------------------------------------------------------------------
 Tue Jun  9 10:06:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 2.2.0
