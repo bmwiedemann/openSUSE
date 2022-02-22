@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3f72d43f862dc829c8eff5bdec3af76</srcmd5>
+    <version>1.4.1</version>
+    <time>1645561083</time>
+    <user>dimstar_suse</user>
+    <comment>sfcgal is one of the key component to be able to submit postgis. It's well supported by upstream and is build and use since a (too) long time in application:geo
+Thanks for your review and help to make it first citizen in Factory</comment>
+    <requestid>956508</requestid>
+  </revision>
+</revisionlist>
