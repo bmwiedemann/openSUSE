@@ -33,4 +33,30 @@
     <comment></comment>
     <requestid>895722</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d16dad9048a74b147b338b3f3fc899de</srcmd5>
+    <version>3.2.1</version>
+    <time>1645561090</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Update packaging
+  * Update CI to support testing against released and main podman branches
+  * Cleanup CI configuration
+  * Bug fixes
+  * Bug fixes and updates to make API more complete
+  * Update dependency checking
+  * PodmanClient() now supports service addresses using ssh:// and tcp://
+    schemes. The keyword connection has been added, using its value as a key
+    into the connections that have been defined in
+    XDG_CONFIG_DIR/containers/containers.cfg. The podman system connection is
+    used to curate connections.
+  * docstrings were cleaned up to aid in future sphinx generated documentation.
+  * ssh:// service addresses are supported by the use of an external ssh client.
+  * tcp:// connections are not secure.
+  * PodmanClient() introduces docker-py functionality, while additionally
+    allowing access to Podman unique functionality such as Pods.
+  * Note: APIConnection() and it's support classes will be deprecated.
+- add python310.patch: support python 3.10</comment>
+    <requestid>956620</requestid>
+  </revision>
 </revisionlist>
