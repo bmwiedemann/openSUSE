@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-tools
-Version:        1.2.198.0
+Version:        1.3.204.0
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
@@ -30,7 +30,8 @@ BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel >= 8.13.3743
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  pkgconfig(vulkan) >= 1.2.198
+BuildRequires:  pkgconfig(vulkan) >= 1.3.204
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Obsoletes:      vulkan < %version-%release
