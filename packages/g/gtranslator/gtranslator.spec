@@ -17,16 +17,14 @@
 
 
 Name:           gtranslator
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Gtranslator
-Source0:        https://download.gnome.org/sources/gtranslator/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtranslator/41/%{name}-%{version}.tar.xz
 Source99:       gtranslator-rpmlintrc
-# PATCH-FIX-UPSTREAM libgda-6.patch gmbr3@opensuse.org -- Require and support GDA 6
-Patch0:         libgda-6.patch
 # PATCH-FIX-UPSTREAM 7ac572cc8c8c37ca3826ecf0d395edd3c38e8e22.patch -- Fix build with meson 0.61 and newer
 Patch1:         https://gitlab.gnome.org/GNOME/gtranslator/-/commit/7ac572cc8c8c37ca3826ecf0d395edd3c38e8e22.patch
 

@@ -350,4 +350,12 @@
     <comment>Mesonfix and tiny tweak (forwarded request 950790 from iznogood)</comment>
     <requestid>951403</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1ed30a477076ba79a3a1c985d3232c98</srcmd5>
+    <version>41.0</version>
+    <time>1645561093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956652</requestid>
+  </revision>
 </revisionlist>
