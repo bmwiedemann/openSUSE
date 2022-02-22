@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 15:19:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- bump disk size constraints to 7gb to avoid occasional disk fulls failures.
+
+-------------------------------------------------------------------
 Thu Jan 27 13:43:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.60 (jsc#ECO-3319)
