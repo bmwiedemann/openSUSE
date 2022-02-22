@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 20 12:32:08 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update apparmor.vim to latest version (from AppArmor 3.0.4)
+  * add network mctp keyword
+
+-------------------------------------------------------------------
 Mon Feb 14 10:32:53 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -  Updated to version 8.2.4375, fixes the following problems

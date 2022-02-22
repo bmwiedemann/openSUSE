@@ -5638,4 +5638,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Test fails where lines are skipped.</comment>
     <requestid>954204</requestid>
   </revision>
+  <revision rev="302" vrev="2">
+    <srcmd5>13525c26c6795a58af4aaa002b4682a7</srcmd5>
+    <version>8.2.4375</version>
+    <time>1645561064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956335</requestid>
+  </revision>
 </revisionlist>
