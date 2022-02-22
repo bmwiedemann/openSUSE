@@ -1,7 +1,7 @@
 #
 # spec file for package geany-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://plugins.geany.org/geany-plugins/
 Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM 1165.patch -- GitChangeBar: Support libgit2 1.4.x
+Patch:          https://patch-diff.githubusercontent.com/raw/geany/geany-plugins/pull/1165.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes

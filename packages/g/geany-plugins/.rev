@@ -354,4 +354,12 @@
     <comment>Update to version 1.38 (see also SR#924551 for geany update) (forwarded request 924552 from stroeder)</comment>
     <requestid>924750</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>715bf26fdc1c71ed78e1ae109caac0da</srcmd5>
+    <version>1.38</version>
+    <time>1645561098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956670</requestid>
+  </revision>
 </revisionlist>
