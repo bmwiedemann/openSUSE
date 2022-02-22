@@ -58,7 +58,6 @@ Source19:       xvnc.target
 Source21:       xvnc-novnc.service.in
 Source22:       vnc.sysusers
 Patch1:         tigervnc-newfbsize.patch
-Patch2:         tigervnc-clean-pressed-key-on-exit.patch
 Patch3:         u_tigervnc-ignore-epipe-on-write.patch
 Patch4:         n_tigervnc-date-time.patch
 Patch5:         u_build_libXvnc_as_separate_library.patch
@@ -246,7 +245,6 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %prep
 %setup -T -b1 -q -n tigervnc-%{version}
 %patch1 -p1
-%patch2 -p1
 %patch3 -p0
 %patch4 -p1
 %patch5 -p1

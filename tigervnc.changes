@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 21 16:18:49 UTC 2022 - Joan Torres <joan.torres@suse.com>
+
+- Remove patch: tigervnc-clean-pressed-key-on-exit.patch 
+  * fixed bsc#670448 wich can no longer be reproduced
+  * removing the patch fixes bsc#1196214
+  * related: https://github.com/TigerVNC/tigervnc/pull/14
+
+-------------------------------------------------------------------
 Thu Feb 17 14:14:13 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_vncserver.patch
