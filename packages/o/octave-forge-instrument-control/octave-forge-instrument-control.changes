@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 21 18:27:10 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.1:
+  * General updates to support Octave 7+
+  * Updated common functions:
+    - fread - set correct size of uint16
+    - fprintf - fix else for multiple args
+
+-------------------------------------------------------------------
 Sat Mar 13 14:03:44 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.7.0:
