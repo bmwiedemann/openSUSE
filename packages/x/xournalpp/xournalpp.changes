@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 14:48:13 UTC 2022 - postix@posteo.eu
+
+- Add Recommends tex(scontents.tex) :
+  Required for LaTeX rendering using Xournalpp's default_template.tex
+  
+-------------------------------------------------------------------
 Mon Feb 14 07:50:57 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.1.1:

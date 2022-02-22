@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     tex(standalone.tex)
+Recommends:     tex(scontents.tex)
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc9-c++
 %else
