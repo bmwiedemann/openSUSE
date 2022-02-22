@@ -1,7 +1,7 @@
 #
 # spec file for package avalon-logkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Java logging toolkit
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://avalon.apache.org/%{short_name}/
+URL:            http://avalon.apache.org/%{short_name}/
 #Source0:       http://www.apache.org/dist/excalibur/%{name}/source/%{name}-%{version}-src.zip
 #Source1:       http://repo1.maven.org/maven2/avalon-logkit/avalon-logkit/%{version}/%{name}-%{version}.pom
 Source0:        %{name}-%{version}-src.zip
@@ -72,6 +72,8 @@ cp %{SOURCE1} pom.xml
 
 # remove all binary libs
 find . -name "*.jar" -delete
+
+rm -rf src/java/org/apache/log/output/lf5
 
 %build
 ant clean

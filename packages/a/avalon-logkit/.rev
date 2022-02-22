@@ -143,4 +143,13 @@
     <comment>Build against log4j12</comment>
     <requestid>734286</requestid>
   </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>22e63ad3dd3cac2a6ddf0450e825518d</srcmd5>
+    <version>2.1</version>
+    <time>1645561096</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build the org.apache.log.output.lf5 package
+</comment>
+    <requestid>956672</requestid>
+  </revision>
 </revisionlist>
