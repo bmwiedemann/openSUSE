@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 21 15:05:47 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.5
+  * Fixed "Wide character in print" warnings in log file.
+  * Fixed parsing version from sane-backends v1.1.1.
+    Closes bug #399 (Parsing scanimage version is broken for 
+    sane-backends-1.1.1)
+  * Update to Russian translation
+  * Update to Italian translation
+  * Update to Ukrainian translation
+  * Update to German translation
+  * Update to Slovak translation
+
+-------------------------------------------------------------------
 Sun Nov 21 01:50:04 UTC 2021 - malcolmlewis@opensuse.org
 
 - Updated to version 2.12.4:
