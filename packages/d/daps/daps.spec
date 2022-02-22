@@ -1,7 +1,7 @@
 #
 # spec file for package daps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           daps
-Version:        3.2.0
+Version:        3.3.1
 Release:        0
 
 %define docbuilddir    %{_datadir}/daps
@@ -118,7 +118,9 @@ validator, link checker, spellchecker, editor macros and stylesheets for
 converting DocBook XML.
 
 
+
 #--------------------------------------------------------------------------
+
 %prep
 %setup -q -n %{name}-%{version}
 
@@ -178,7 +180,6 @@ exit 0
 %doc %{_defaultdocdir}/%{name}/*
 
 %{_bindir}/*
-%attr(644, root, root) %{_datadir}/%{name}/libexec/*.xsl
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/emacs/site-lisp/docbook_macros.el
 %{_datadir}/xml/daps/schema/*
