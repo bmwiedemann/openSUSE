@@ -66,4 +66,16 @@
 - Remove temporary version override (forwarded request 905226 from glaubitz)</comment>
     <requestid>905296</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aeeded59bab335df2b293787e57d2607</srcmd5>
+    <version>7.0.0</version>
+    <time>1645561107</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 956657 from glaubitz)</comment>
+    <requestid>956729</requestid>
+  </revision>
 </revisionlist>
