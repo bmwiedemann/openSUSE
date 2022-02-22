@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5JsEmbed5
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kjsembed
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        Method for binding Javascript objects to QObjects
 License:        LGPL-2.1-or-later
@@ -101,13 +101,12 @@ JavaScript objects to QObjects, so applications can be scripted.
 %{_kf5_libdir}/libKF5JsEmbed.so.*
 
 %files devel
-%{_kf5_libdir}/libKF5JsEmbed.so
-%{_kf5_libdir}/cmake/KF5JsEmbed/
 %{_kf5_bindir}/kjscmd5
 %{_kf5_bindir}/kjsconsole
+%{_kf5_includedir}/KJsEmbed/
+%{_kf5_libdir}/cmake/KF5JsEmbed/
+%{_kf5_libdir}/libKF5JsEmbed.so
 %{_kf5_mandir}/man1/kjscmd5.1*
-%dir %{_kf5_includedir}/*/
-%{_kf5_includedir}/*/
 %{_kf5_mkspecsdir}/qt_KJsEmbed.pri
 
 %changelog
