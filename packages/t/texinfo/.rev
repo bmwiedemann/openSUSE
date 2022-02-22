@@ -586,4 +586,26 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1196156</comment>
   </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>d0ef9d249d3dc5fd8c54eadacab01b9b</srcmd5>
+    <version>6.7</version>
+    <time>1645561055</time>
+    <user>dimstar_suse</user>
+    <comment>- Split locale text-domain to take care of package info 
+- The package makeinfo needs both the locale text-domain of info
+  and makeinfo
+
+- Do not recommend texinfo-lang in package info anymore (boo#1196156)
+- Rename texinfo-lang to makeinfo-lang as package makeinfo
+  uses those locale files
+
+- The new package texinfo-lang should not include the binaries
+  with its helper files, therefore recreate texinfo package
+- Require glibc-locale at build time as otherwise perl falls
+  always back to C locale
+
+- Split out texinfo-lang package, so info does not refer to
+  traslations from texinfo package.</comment>
+    <requestid>956313</requestid>
+  </revision>
 </revisionlist>

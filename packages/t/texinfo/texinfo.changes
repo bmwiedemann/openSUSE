@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Feb 21 07:44:17 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Split locale text-domain to take care of package info 
+- The package makeinfo needs both the locale text-domain of info
+  and makeinfo
+
+-------------------------------------------------------------------
+Fri Feb 18 13:12:44 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do not recommend texinfo-lang in package info anymore (boo#1196156)
+- Rename texinfo-lang to makeinfo-lang as package makeinfo
+  uses those locale files
+
+-------------------------------------------------------------------
+Wed Feb 16 09:33:41 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- The new package texinfo-lang should not include the binaries
+  with its helper files, therefore recreate texinfo package
+- Require glibc-locale at build time as otherwise perl falls
+  always back to C locale
+
+-------------------------------------------------------------------
+Thu Feb 10 16:01:09 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Split out texinfo-lang package, so info does not refer to
+  traslations from texinfo package.
+
+-------------------------------------------------------------------
 Thu Sep 30 11:25:48 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Move to /usr for UsrMerge (boo#1191099) 
