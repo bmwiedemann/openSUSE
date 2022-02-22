@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 16 12:14:23 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Use ntfs-3g again, udisks no longer works with the new ntfs3 module
+  (gh#storaged-project/udisks#932)
+
+-------------------------------------------------------------------
 Mon Feb  7 13:14:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend apparmor pattern by enhanced_base:

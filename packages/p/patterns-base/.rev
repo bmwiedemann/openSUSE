@@ -745,4 +745,13 @@
 - Move shadow from required to recommended, it not needed for a</comment>
     <requestid>952124</requestid>
   </revision>
+  <revision rev="86" vrev="32">
+    <srcmd5>46fd04c26fdf1275066b2a545a90c0f1</srcmd5>
+    <version>20200505</version>
+    <time>1645561071</time>
+    <user>dimstar_suse</user>
+    <comment>- Use ntfs-3g again, udisks no longer works with the new ntfs3 module
+  (gh#storaged-project/udisks#932)</comment>
+    <requestid>956504</requestid>
+  </revision>
 </revisionlist>

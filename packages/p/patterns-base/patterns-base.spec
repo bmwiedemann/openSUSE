@@ -68,10 +68,10 @@ Provides:       pattern() = apparmor
 Provides:       pattern-icon() = pattern-apparmor
 Provides:       pattern-order() = 1100
 Provides:       pattern-visible()
-Requires:       pattern() = minimal_base
 Requires:       apparmor-abstractions
 Requires:       apparmor-parser
 Requires:       apparmor-profiles
+Requires:       pattern() = minimal_base
 Recommends:     apparmor-docs
 Recommends:     apparmor-utils
 Recommends:     yast2-apparmor
@@ -117,7 +117,6 @@ Provides:       pattern() = base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 1030
 Provides:       pattern-visible()
-Requires:       pattern() = minimal_base
 Requires:       aaa_base
 Requires:       bash
 Requires:       ca-certificates-mozilla
@@ -126,6 +125,7 @@ Requires:       glibc
 Requires:       libnss_usrfiles2
 Requires:       pam
 Requires:       pam-config
+Requires:       pattern() = minimal_base
 # Support multiversion(kernel) (jsc#SLE-10162)
 Requires:       purge-kernels-service
 Requires:       rpm
@@ -296,8 +296,8 @@ Provides:       pattern() = documentation
 Provides:       pattern-icon() = pattern-documentation
 Provides:       pattern-order() = 1005
 Provides:       pattern-visible()
-Requires:       pattern() = minimal_base
 Requires:       man
+Requires:       pattern() = minimal_base
 Recommends:     man-pages
 # note pam is in every install so no point in using packageand
 Recommends:     pam-manpages
@@ -396,11 +396,13 @@ Recommends:     netcfg
 Recommends:     nfs-client
 Recommends:     nfsidmap
 Recommends:     nscd
-# Kernel 5.15+ has an improved R/W ntfs module
-%if 0%{?suse_version} < 1550
+# Kernel 5.15+ has an improved R/W ntfs module.
+# Use ntfs-3g anyway because udisks has issues with mount option handling:
+# https://github.com/storaged-project/udisks/issues/932
+#if 0%{?suse_version} < 1550
 # mount NTFS rw (bsc#1087242)
 Recommends:     ntfs-3g
-%endif
+#endif
 Recommends:     ntfsprogs
 # TODO: should this be in more places
 Recommends:     pam-config
@@ -673,11 +675,11 @@ Provides:       pattern() = selinux
 Provides:       pattern-icon() = pattern-selinux
 Provides:       pattern-order() = 1110
 Provides:       pattern-visible()
-Requires:       pattern() = minimal_base
 Requires:       policycoreutils
 Requires:       selinux-autorelabel
 Requires:       selinux-policy
 Requires:       selinux-tools
+Requires:       pattern() = minimal_base
 Recommends:     checkpolicy
 Recommends:     container-selinux
 Recommends:     restorecond
@@ -727,12 +729,12 @@ Group:          Metapackages
 Provides:       pattern() = transactional_base
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 1050
-Requires:       pattern() = base
 Requires:       read-only-root-fs
 Requires:       rebootmgr
 Requires:       systemd-presets-branding-transactional-server
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
+Requires:       pattern() = base
 Suggests:       health-checker
 
 %description transactional_base
