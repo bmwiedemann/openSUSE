@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mini_portile2
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 %define mod_name mini_portile2
 %define mod_full_name %{mod_name}-%{version}
