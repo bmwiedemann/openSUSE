@@ -1,0 +1,31 @@
+commit 03f146e955e099c24f7a49eff461645e1c0a0fd7
+Author: Panu Matilainen <pmatilai@redhat.com>
+Date:   Thu Jan 13 11:25:30 2022 +0200
+
+    Fix minimize_writes not minimizing writes since 4.15 regression
+    
+    Commit 13f70e3710b2df49a923cc6450ff4a8f86e65666 caused minimize_writes
+    to actually not minimize anything since fsmVerify() only "verifies"
+    the thing does NOT exist anymore when it exist. Sigh.
+    
+    FA_TOUCH needs different kind of verification, stat the file instead
+    to see if it needs creating afterall. This is all soooo broken...
+    
+    Fixes: #1881
+
+--- lib/fsm.c.orig
++++ lib/fsm.c
+@@ -945,7 +945,12 @@ int rpmPackageFilesInstall(rpmts ts, rpmte te, rpmfiles files,
+ 	    }
+ 	    /* Assume file does't exist when tmp suffix is in use */
+ 	    if (!fp->suffix) {
+-		rc = fsmVerify(fp->fpath, fi);
++		if (fp->action == FA_TOUCH) {
++		    struct stat sb;
++		    rc = fsmStat(fp->fpath, 1, &sb);
++		} else {
++		    rc = fsmVerify(fp->fpath, fi);
++		}
+ 	    } else {
+ 		rc = RPMERR_ENOENT;
+ 	    }

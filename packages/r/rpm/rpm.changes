@@ -4,6 +4,12 @@ Tue Feb  1 12:47:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - invoke find-lang.sh with bash, it is a bash script (bsc#1195391) 
 
 -------------------------------------------------------------------
+Fri Jan 28 17:00:15 CEST 2022 - simon.vogl@gmx.net
+
+- Fix minimize_writes not minimizing writes since 4.15 regression
+  new patch: 0001-fix-minimize_writes.patch
+
+-------------------------------------------------------------------
 Fri Jan 28 14:19:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to glibc-locale-base to reduce system installation size

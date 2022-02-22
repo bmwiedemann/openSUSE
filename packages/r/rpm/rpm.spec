@@ -118,6 +118,7 @@ Patch132:       verbosearg.diff
 Patch133:       zstdpool.diff
 Patch134:       zstdthreaded.diff
 Patch135:       ocaml-cmxs.diff
+Patch136:       0001-fix-minimize_writes.patch
 Patch200:       finddebuginfo.diff
 Patch201:       finddebuginfo-absolute-links.diff
 Patch202:       debugsubpkg.diff
@@ -246,7 +247,7 @@ rm -rf sqlite
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
 %patch -P 122 -P 123               -P 131 -P 132 -P 133 -P 134
-%patch -P 135
+%patch -P 135 -P 136
 
 # debugedit patches
 pushd debugedit-5.0

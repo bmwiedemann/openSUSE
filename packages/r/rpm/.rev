@@ -2310,4 +2310,12 @@ See bugzilla 1167537 for the gory details.</comment>
   new patch: ocaml-cmxs.diff</comment>
     <requestid>950425</requestid>
   </revision>
+  <revision rev="294" vrev="4">
+    <srcmd5>8a86acbf40a3b2c3ab277b45bb3fd12e</srcmd5>
+    <version>4.17.0</version>
+    <time>1645561055</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix minimize_writes not minimizing writes since 4.15 regression</comment>
+    <requestid>955873</requestid>
+  </revision>
 </revisionlist>
