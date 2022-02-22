@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Tue Feb 22 08:50:15 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#579
+- include all of s390-tools in initrd (bsc#1195914)
+- 17.44
+
+--------------------------------------------------------------------
+Tue Feb 22 08:38:47 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#578
+- use signed grub.elf on ppc64 (bsc#1196070)
+- 17.43
+
+--------------------------------------------------------------------
 Fri Feb 18 15:14:09 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#577
