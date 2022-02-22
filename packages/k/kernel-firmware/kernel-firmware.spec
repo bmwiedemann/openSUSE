@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20220119
+%define version_unconverted 20220218
 
 Name:           kernel-firmware
-Version:        20220119
+Version:        20220218
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -1665,6 +1665,12 @@ Supplements:    modalias(pci:v00008086d00009BE6sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00009BF6sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A001sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A011sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A780sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A781sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A782sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A783sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A788sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A789sv*sd*bc03sc*i*)
 
 %description i915
 This package contains compressed kernel firmware files for
@@ -2932,6 +2938,8 @@ Supplements:    modalias(of:N*T*Cmediatek,mt8192-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8192-scpC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-scpC*)
+Supplements:    modalias(pci:v000014C3d00000608sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00000616sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007602sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007610sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007611sv*sd*bc*sc*i*)
@@ -2945,6 +2953,7 @@ Supplements:    modalias(pci:v000014C3d00007922sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007961sv*sd*bc*sc*i*)
 Supplements:    modalias(sdio:c*v037Ad7663*)
 Supplements:    modalias(sdio:c*v037Ad7668*)
+Supplements:    modalias(sdio:c*v037Ad7961*)
 Supplements:    modalias(usb:v045Ep02E6d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v045Ep02FEd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04BBp0951d*dc*dsc*dp*ic*isc*ip*in*)
@@ -3015,6 +3024,7 @@ Conflicts:      filesystem < 84
 Supplements:    modalias(pci:v000015B3d0000CB84sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000015B3d0000CF6Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000015B3d0000CF70sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000015B3d0000CF80sv*sd*bc*sc*i*)
 
 %description mellanox
 This package contains compressed kernel firmware files for
@@ -3365,6 +3375,8 @@ Supplements:    modalias(of:N*T*Cnvidia,tegra186-display)
 Supplements:    modalias(of:N*T*Cnvidia,tegra186-displayC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra186-dpaux)
 Supplements:    modalias(of:N*T*Cnvidia,tegra186-dpauxC*)
+Supplements:    modalias(of:N*T*Cnvidia,tegra186-nvdec)
+Supplements:    modalias(of:N*T*Cnvidia,tegra186-nvdecC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra186-sor)
 Supplements:    modalias(of:N*T*Cnvidia,tegra186-sor1)
 Supplements:    modalias(of:N*T*Cnvidia,tegra186-sor1C*)
@@ -3379,6 +3391,8 @@ Supplements:    modalias(of:N*T*Cnvidia,tegra194-display)
 Supplements:    modalias(of:N*T*Cnvidia,tegra194-displayC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra194-dpaux)
 Supplements:    modalias(of:N*T*Cnvidia,tegra194-dpauxC*)
+Supplements:    modalias(of:N*T*Cnvidia,tegra194-nvdec)
+Supplements:    modalias(of:N*T*Cnvidia,tegra194-nvdecC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra194-sor)
 Supplements:    modalias(of:N*T*Cnvidia,tegra194-sorC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra194-vic)
@@ -3399,6 +3413,8 @@ Supplements:    modalias(of:N*T*Cnvidia,tegra210-dpaux)
 Supplements:    modalias(of:N*T*Cnvidia,tegra210-dpauxC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra210-dsi)
 Supplements:    modalias(of:N*T*Cnvidia,tegra210-dsiC*)
+Supplements:    modalias(of:N*T*Cnvidia,tegra210-nvdec)
+Supplements:    modalias(of:N*T*Cnvidia,tegra210-nvdecC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra210-sor)
 Supplements:    modalias(of:N*T*Cnvidia,tegra210-sor1)
 Supplements:    modalias(of:N*T*Cnvidia,tegra210-sor1C*)
@@ -3481,6 +3497,8 @@ Supplements:    modalias(pci:v000010CDd00002500sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010CDd00002700sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010EEd00009038sv000016AEsd0000C522bc*sc*i*)
 Supplements:    modalias(pci:v0000177Dd00000012sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000177Dd0000A0F2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000177Dd0000A0FDsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001A03d00002000sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00001A03d00002010sv*sd*bc03sc*i*)
 Supplements:    modalias(pcmcia:m0013c0000f*fn*pfn*pa*pb*pc*pd*)
@@ -3999,6 +4017,12 @@ Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,sdx55-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sdx55-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6350-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6350-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6350-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6350-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6350-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6350-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pas)

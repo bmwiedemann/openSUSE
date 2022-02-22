@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Feb 20 09:41:05 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220218 (git commit c53073d4e148):
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xDFB7_6D7A
+  * rtl_bt: Update RTL8822C BT USB firmware to 0x19B7_6D7D
+  * rtl_bt: Update RTL8822C BT UART firmware to 0x15B7_6D7D
+  * amdgpu: Update yellow carp firmware from 21.50
+  * amdgpu: Update vega20 firmware from 21.50
+  * amdgpu: Update vega12 firmware from 21.50
+  * amdgpu: Update vega10 firmware from 21.50
+  * amdgpu: Update vangogh firmware from 21.50
+  * amdgpu: Update renoir firmware from 21.50
+  * amdgpu: Update raven2 firmware from 21.50
+  * amdgpu: Update raven firmware from 21.50
+  * amdgpu: Update picasso firmware from 21.50
+  * amdgpu: Update beige goby firmware from 21.50
+  * amdgpu: Update dimgrey cavefish firmware from 21.50
+  * amdgpu: Update navy flounder firmware from 21.50
+  * amdgpu: Update sienna cichlid firmware from 21.50
+  * amdgpu: Update navi14 firmware from 21.50
+  * amdgpu: Update navi12 firmware from 21.50
+  * amdgpu: Update navi10 firmware from 21.50
+  * amdgpu: Update cyan skillfish2 firmware from 21.50
+  * amdgpu: Update green sardine firmware from 21.50
+  * amdgpu: Update arcturus firmware from 21.50
+  * amdgpu: Add aldebaran firmware from 21.50
+  * LICENSE.amdgpu: update copyright date
+  * linux-firmware: Update AMD cpu microcode
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: Amphion: Add VPU firmwares for NXP i.MX8Q SoCs
+  * i915: Add DMC firmware v2.16 for ADL-P
+  * linux-firmware: mediatek: Update MT8173 VPU firmware to v1.1.7
+- Add entry for amphion
+- Update spec template
+- Update aliases
+
+-------------------------------------------------------------------
 Wed Jan 19 16:54:59 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220119 (git commit 0c6a7b3bf728):

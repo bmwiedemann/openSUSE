@@ -609,6 +609,7 @@ btmrvl_sdio: sdio:c*v02DFd9146*
 btmrvl_sdio: sdio:c*v02DFd914A*
 btmtksdio: sdio:c*v037Ad7663*
 btmtksdio: sdio:c*v037Ad7668*
+btmtksdio: sdio:c*v037Ad7961*
 btmtkuart: of:N*T*Cmediatek,mt7622-bluetooth
 btmtkuart: of:N*T*Cmediatek,mt7622-bluetoothC*
 btmtkuart: of:N*T*Cmediatek,mt7663u-bluetooth
@@ -1644,6 +1645,12 @@ i915: pci:v00008086d00009BE6sv*sd*bc03sc*i*
 i915: pci:v00008086d00009BF6sv*sd*bc03sc*i*
 i915: pci:v00008086d0000A001sv*sd*bc03sc*i*
 i915: pci:v00008086d0000A011sv*sd*bc03sc*i*
+i915: pci:v00008086d0000A780sv*sd*bc03sc*i*
+i915: pci:v00008086d0000A781sv*sd*bc03sc*i*
+i915: pci:v00008086d0000A782sv*sd*bc03sc*i*
+i915: pci:v00008086d0000A783sv*sd*bc03sc*i*
+i915: pci:v00008086d0000A788sv*sd*bc03sc*i*
+i915: pci:v00008086d0000A789sv*sd*bc03sc*i*
 ib_qib: fs-ipathfs
 ib_qib: pci:v00001077d00007220sv*sd*bc*sc*i*
 ib_qib: pci:v00001077d00007322sv*sd*bc*sc*i*
@@ -2772,6 +2779,7 @@ meson_vdec: of:N*T*Camlogic,sm1-vdecC*
 mlxsw_spectrum: pci:v000015B3d0000CB84sv*sd*bc*sc*i*
 mlxsw_spectrum: pci:v000015B3d0000CF6Csv*sd*bc*sc*i*
 mlxsw_spectrum: pci:v000015B3d0000CF70sv*sd*bc*sc*i*
+mlxsw_spectrum: pci:v000015B3d0000CF80sv*sd*bc*sc*i*
 msm: of:N*T*Cqcom,mdp4
 msm: of:N*T*Cqcom,mdp4C*
 msm: of:N*T*Cqcom,mdp5
@@ -2862,6 +2870,8 @@ mt76x2u: usb:v0E8Dp7612d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0E8Dp7632d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v2C4Ep0103d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v7392pB711d*dc*dsc*dp*ic*isc*ip*in*
+mt7921e: pci:v000014C3d00000608sv*sd*bc*sc*i*
+mt7921e: pci:v000014C3d00000616sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007922sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007961sv*sd*bc*sc*i*
 mtk_scp: of:N*T*Cmediatek,mt8183-scp
@@ -3197,6 +3207,12 @@ qcom_q6v5_pas: of:N*T*Cqcom,sdm845-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-cdsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sdx55-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdx55-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm6350-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm6350-adsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm6350-cdsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm6350-cdsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm6350-mpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm6350-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-cdsp-pas
@@ -4766,6 +4782,8 @@ rtl8xxxu: usb:v7392pA611d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:vCDABp8010d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_pci: pci:v000010ECd00008852sv*sd*bc*sc*i*
 rtw89_pci: pci:v000010ECd0000A85Asv*sd*bc*sc*i*
+rvu_cptpf: pci:v0000177Dd0000A0F2sv*sd*bc*sc*i*
+rvu_cptpf: pci:v0000177Dd0000A0FDsv*sd*bc*sc*i*
 s2255drv: usb:v1943p2255d*dc*dsc*dp*ic*isc*ip*in*
 s2255drv: usb:v1943p2257d*dc*dsc*dp*ic*isc*ip*in*
 s5p_mfc: of:N*T*Csamsung,exynos5433-mfc
@@ -5029,6 +5047,8 @@ tegra_drm: of:N*T*Cnvidia,tegra186-display
 tegra_drm: of:N*T*Cnvidia,tegra186-displayC*
 tegra_drm: of:N*T*Cnvidia,tegra186-dpaux
 tegra_drm: of:N*T*Cnvidia,tegra186-dpauxC*
+tegra_drm: of:N*T*Cnvidia,tegra186-nvdec
+tegra_drm: of:N*T*Cnvidia,tegra186-nvdecC*
 tegra_drm: of:N*T*Cnvidia,tegra186-sor
 tegra_drm: of:N*T*Cnvidia,tegra186-sor1
 tegra_drm: of:N*T*Cnvidia,tegra186-sor1C*
@@ -5041,6 +5061,8 @@ tegra_drm: of:N*T*Cnvidia,tegra194-display
 tegra_drm: of:N*T*Cnvidia,tegra194-displayC*
 tegra_drm: of:N*T*Cnvidia,tegra194-dpaux
 tegra_drm: of:N*T*Cnvidia,tegra194-dpauxC*
+tegra_drm: of:N*T*Cnvidia,tegra194-nvdec
+tegra_drm: of:N*T*Cnvidia,tegra194-nvdecC*
 tegra_drm: of:N*T*Cnvidia,tegra194-sor
 tegra_drm: of:N*T*Cnvidia,tegra194-sorC*
 tegra_drm: of:N*T*Cnvidia,tegra194-vic
@@ -5059,6 +5081,8 @@ tegra_drm: of:N*T*Cnvidia,tegra210-dpaux
 tegra_drm: of:N*T*Cnvidia,tegra210-dpauxC*
 tegra_drm: of:N*T*Cnvidia,tegra210-dsi
 tegra_drm: of:N*T*Cnvidia,tegra210-dsiC*
+tegra_drm: of:N*T*Cnvidia,tegra210-nvdec
+tegra_drm: of:N*T*Cnvidia,tegra210-nvdecC*
 tegra_drm: of:N*T*Cnvidia,tegra210-sor
 tegra_drm: of:N*T*Cnvidia,tegra210-sor1
 tegra_drm: of:N*T*Cnvidia,tegra210-sor1C*
