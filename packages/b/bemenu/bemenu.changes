@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 22 06:46:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.7:
+  * Symbol validation #247
+  * wayland: various fixes #249
+
+-------------------------------------------------------------------
 Mon Feb 21 08:25:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.6:

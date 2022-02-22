@@ -194,4 +194,14 @@
   * Restore run with key and symbol visibility #246</comment>
     <requestid>956319</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f9c5025bf6aa248682f157ad1a0839ae</srcmd5>
+    <version>0.6.7</version>
+    <time>1645561088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.7:
+  * Symbol validation #247
+  * wayland: various fixes #249</comment>
+    <requestid>956607</requestid>
+  </revision>
 </revisionlist>
