@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 21 13:07:57 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.47+4.82fb156:
+  * rescan_scsi_bus.sh: restore numeric ordering of hosts (bsc#1196244)
+
+-------------------------------------------------------------------
 Tue Feb 08 20:41:27 UTC 2022 - mwilck@suse.com
 
 - Update to version 1.47+3.adb7276:
