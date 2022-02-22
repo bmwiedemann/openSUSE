@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 21 13:13:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-icon-theme Recommends: Needed for in app icons
+  (alternative icon-themes can of course be used).
+
+-------------------------------------------------------------------
 Mon Jul  5 11:01:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.0.5

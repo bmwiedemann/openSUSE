@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(wv-1.0) >= 1.2.0
 # libots-1 >= 0.5.0
 # mathview-frontend-libxml2 >= 0.7.5
 Conflicts:      abiword-unstable
+Recommends:     gnome-icon-theme
 
 %description
 AbiWord is a multiplatform word processor with a GTK+ interface on the
