@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 22 09:50:03 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1645520979.2ba573f3e:
+  * Dependency cron 2022-02-22
+  * doc: Mention to stop `…-reload-worker-…`-service in auto-restart setup
+  * Fix setup_fullstack_temp_dir argument
+  * Add $! to symlink error message
+  * ci: Retain fullstack temp folder in artifacts
+  * Use more compact coding style in `t/ui/16-tests_dependencies.t`
+  * Adapt dependencies test to 87f9c47b78 and b7ceb7bf4
+  * Improve message for installing asciidoctor via zypper
+
+-------------------------------------------------------------------
 Sat Feb 19 09:59:09 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1645264740.4e997e01d:
