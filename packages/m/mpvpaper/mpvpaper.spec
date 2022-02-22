@@ -1,7 +1,7 @@
 #
 # spec file for package mpvpaper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/GhostNaN/mpvpaper
 Source:         https://github.com/GhostNaN/mpvpaper/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Fix build with removed deprecated APIs in mpv 2.x gh#GhostNaN/mpvpaper#19
+Patch0:         observe-property-instead-of-MPV_EVENT-since-mpv-deprecated.patch
 BuildRequires:  meson
 BuildRequires:  mpv-devel
 BuildRequires:  ninja
@@ -36,7 +38,7 @@ Requires:       mpv
 A video wallpaper program for wlroots based wayland compositors.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 21 08:54:23 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Fix build with removed deprecated APIs in mpv 2.x
+  (gh#mpv-player/mpv#9541, gh#GhostNaN/mpvpaper#19)
+  * observe-property-instead-of-MPV_EVENT-since-mpv-deprecated.patch
+
+-------------------------------------------------------------------
 Wed Nov 17 15:53:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2:
