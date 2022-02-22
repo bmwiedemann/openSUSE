@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 21 18:49:48 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.2:
+  * The following functions are new in mapping 1.4.2: almanac,
+    areaquad, auth2geo, con2geo, geo2auth, geo2con, geo2iso,
+    geo2rect, geodeticarc, geodeticfwd, iso2geo, meridianfwd,
+    rect2geo, referenceSphere, sph_chk, vincenty, vincentyDirect.
+  * Bug fixes:
+    - referenceEllipsoid.m: express semimajor axis of Everest 1830
+      in meters rather than the original 'Indian feet'
+    - kmlread.m: fix typo when reading Point data
+    - shapedraw.m: fix erratic (0, 0) coordinates occurring in
+      plots.
+    - shaperead.m: improve reading attributes (bug #61757)
+  * Code improvements:
+    - referenceEllipsoid: return no output to screen if called
+      with just 0 (zero) and an output is requested.
+      Abbreviations for a few ellipsoids were added.
+    - replace validation of input reference ellipsoids by calls to
+      sph_chk.m in several tens of geodesy functions. This makes
+      for a big code reduction but also adds flexibility for
+      inputting reference ellipsoids and/or reference sphere.
+
+-------------------------------------------------------------------
 Fri Oct 23 16:08:00 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.4.1
