@@ -40,4 +40,14 @@
 </comment>
     <requestid>892413</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>5b57997bdd80ffa0f0f7b16f7682ddaa</srcmd5>
+    <version>1.9.1</version>
+    <time>1645561097</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the version of the log4j that doxia-module-fo needs at
+  runtime
+</comment>
+    <requestid>956673</requestid>
+  </revision>
 </revisionlist>

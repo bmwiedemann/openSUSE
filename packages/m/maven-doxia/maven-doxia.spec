@@ -1,7 +1,7 @@
 #
 # spec file for package maven-doxia
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,8 @@ BuildRequires:  xmlgraphics-fop
 BuildRequires:  xmlunit
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(log4j:log4j:1.2.12)
+# Runtime dependency of doxia-module-fo
+BuildRequires:  mvn(log4j:log4j:1.2.17)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildArch:      noarch
 

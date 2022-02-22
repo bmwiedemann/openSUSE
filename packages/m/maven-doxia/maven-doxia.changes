@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 11:34:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix the version of the log4j that doxia-module-fo needs at
+  runtime
+
+-------------------------------------------------------------------
 Tue May 11 13:06:41 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the legacy guava20 any more
