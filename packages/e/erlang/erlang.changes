@@ -1,4 +1,328 @@
 -------------------------------------------------------------------
+Fri Jan 21 21:11:53 UTC 2022 - matwey.kornilov@gmail.com
+
+- Changes for 24.2:
+  * compiler: When the compiler is invoked by Dialyzer, it will no
+    longer apply an optimization of binary patterns that would turn
+    the pattern <<"bar">> into <<6447474:24>>, which would be very
+    confusing when printed out by Dialyzer.
+  * compiler: The compiler would replace known failing calls (such
+    as atom_to_list(42)) with a call to error(badarg). With the
+    extended error information introduced in OTP 24 (EEP 54), those
+    "optimized" calls would not have extended error information. To
+    ensure that as much extended error information as possible is
+    available, the compiler now keeps the original call even when
+    it is known to fail.
+  * sasl: Make release_handler even more resilient against exiting
+    processes during upgrade. Same kind of bug fix as OTP-16744
+    released in sasl-4.0.1 (OTP 23.1).
+  * ssl: Allow re-connect on DTLS sockets Can happen when a
+    computer reboots and connects from the same client port without
+    the server noticing should be allowed according to RFC.
+  * ssl: Fix tls and non-tls distribution to use
+    erl_epmd:address_please to figure out if IPv4 or IPv6 addresses
+    should be used when connecting to the remote node. Before this
+    fix, a dns lookup of the remote node hostname determined which
+    IP version was to be used which meant that the hostname had to
+    resolve to a valid ip address.
+  * ssl: Use supervisor significant child to manage tls connection
+    process and tls sender process dependency.
+  * ssl: Random generation adjustment for TLS1.3
+  * ssl: Allow any {03,XX} TLS record version in the client hello
+    for maximum interoperability
+  * mnesia: Documentation and minor code cleanup.
+  * common_test: Before this change, group handling grammar was
+    ambiguous and also group paths did not support test specs.
+  * common_test: Before this change, it was not possible to link to
+    a particular header entry in Common Test log. Change adds right
+    aligned anchor icons in HTML test logs.
+  * parsetools: The default parser include file for yecc (yeccpre)
+    will no longer crash when attempting to print tokens when
+    reporting an error.
+  * tools: Erlang-mode fixed for newer versions of xref using CL-
+    Lib structures instead of EIEIO classes.
+  * inets: Correct HTTP server URI handling to fully rely on
+    uri_string. The server could mistreat some URI paths that in
+    turn could result in incorrect responses being generated.
+  * inets: Extend header values to httpc:request/5 to allow
+    binary() as well. Make error detection of invalid arguments to
+    httpc:request/5 be more precise so an error is returned in more
+    cases instead of causing a hang or function_clause. Be more
+    precise in documentation regarding the types of arguments being
+    accepted.
+  * crypto: Fixed the C-warning "implicit declaration of function
+    'OpenSSL_version_num'" if compiling with an early LibreSSL
+    version.
+  * crypto: FIPS availability was not checked correctly for AEAD
+    ciphers.
+  * crypto: Fixed that cipher aliases (like aes_cbc etc) could be
+    present even if the aliased cipher(s) (like aes_128_cbc,
+    aes_256_cbc,... etc) was missing.
+  * crypto: The crypto app in OTP can now be compiled, linked and
+    used with the new OpenSSL 3.0 cryptolib. It has not yet been
+    extensively tested and is in this release *not recommended* for
+    other usages than experiments and alpha testing. There are not
+    yet any guaranties that it works, not even together with other
+    OTP applications like for example SSL and SSH, although there
+    are no known errors. Compiling and linking with OpenSSL 3.0
+    cryptolib in compatibility modes (for example to behave as
+    1.1.1) are not tested. It is not tested with external
+    providers. The support for FIPS mode does not yet work, and is
+    disabled when compiled with OpenSSL 3.0. Deprecated functions
+    in the OpenSSL 3.0 cryptolib must not be disabled as OTP/crypto
+    still uses some of the deprecated API functions. The gcc flag
+    -Wno-deprecated-declarations is set to prevent deprecation
+    warnings to be printed when compiling. The hash algorithms md4
+    and ripemd160 are disabled temporarily when compiled with
+    OpenSSL 3.0. The ciphers blowfish_cbc, blowfish_cfb64,
+    blowfish_ecb, blowfish_ofb64, des_cbc, des_cfb, des_ecb,
+    rc2_cbc and rc4 are disabled temporarily when compiled with
+    OpenSSL 3.0.
+  * crypto: The error handling in crypto is partly refactored using
+    the new error reporting support. Errors earlier propagated like
+    exceptions are still so, but when the failing function is
+    called from the terminal - for example during failure hunting -
+    a more descriptive text is produced.
+  * crypto: A new function crypto:info/0 which presents some data
+    about the compilation and linkage of the crypto nif is added.
+  * crypto: Added the pbkdf2_hmac/5 function to the crypto module.
+    It calls the PKCS5_PBKDF2_HMAC function which implements PBKD2
+    with HMAC in an efficient way.
+  * stdlib: Fix rendering of nbsp on terminals that do not support
+    unicode.
+  * stdlib: Improved the erl_error printout for when re fails to
+    compile a regular expression to also print hints about why the
+    compilation failed.
+  * stdlib: Fixed spec for supervisor_bridge:start_link().
+  * stdlib: Added missing shutdown clauses in supervisor which
+    could cause erroneous error reports.
+  * stdlib: Add the no_auto_import_types to erl_lint to allow a
+    module to define types of the same name as a predefined type.
+  * erts: When matching and constructing utf16 segments in the
+    binary syntax, the native flag would be ignored. That is, the
+    endian would always be big endian even on a little-endian
+    computer (almost all modern computers).
+  * erts: Fix the help printout of +JPperf.
+  * erts: Fix bug that could cause Erlang to deadlock during
+    creation of an Erlang crash dump.
+  * erts: Fixed C++ build errors on some aarch64 platforms.
+  * erts: For macOS, the Info.plist file embedded in the runtime
+    system now only contains the absolute minimum amount of
+    information needed for the web view in wx to work towards
+    localhost. The other fields have been removed, allowing an
+    application packaged in a bundle to specify the application
+    name and other parameter in its own Info.plist file.
+  * erts: Fix bug in internal stacks (WSTACK and ESTACK) used by
+    term_to_binary/2 to encode terms. The bug could cause a
+    segfault if a very very large map was to be encoded with the
+    deterministic option given.
+  * erts: Improve the error printout when open_port/2 fails because
+    of invalid arguments.
+  * erts: Fix bug in crash dumps where the stackframe of a process
+    would be printed using an incorrect format. Crash dump viewer
+    has also been fixed to be able read the broken stack format.
+    The bug has existed since Erlang/OTP 23.0.
+  * erts: An option for enabling dirty scheduler specific allocator
+    instances has been introduced. By default such allocator
+    instances are disabled. For more information see the
+    documentation of the +Mdai erl command line argument.
+  * erts: Minor optimization of receive markers in message queues.
+  * erts: All predefined types have been added to the erlang module
+    together with documentation. Any reference to a predefined type
+    now links to that documentation so that the user can view it.
+  * erts: Suppress a code checker warning caused by debug builds of
+    YCF. YCF tries to get a conservative estimate of the bottom of
+    the stack by reading and returning a call stack allocated
+    variable.
+  * erts: Add file and product properties to erl.exe and werl.exe.
+  * erts: Micro optimization in bitstring append operations.
+  * erts: Responsiveness of processes executing on normal or low
+    priority could suffer due to code purging or literal area
+    removal on systems with a huge amount of processes. This since
+    during these operations all processes on the system were
+    scheduled for execution at once. This problem has been fixed by
+    introducing a limit on outstanding purge and copy literal
+    requests in the system. By default this limit is set to twice
+    the amount of schedulers on the system. This will ensure that
+    schedulers will have enough work scheduled to perform these
+    operations as quickly as possible at the same time as other
+    work will be interleaved to a much higher degree. Performance
+    of these operations will however be somewhat degraded due to
+    the overhead of enforcing this limit compared to when using a
+    very large limit. This limit can be set by passing the +zosrl
+    command line argument to erl, or by calling
+    erlang:system_flag(outstanding_system_requests_limit,
+    NewLimit).
+  * kernel: socket:which_sockets( pid() ) uses wrong keyword when
+    looking up socket owner ('ctrl' instead of 'owner').
+  * kernel: In epmd_ntop, the #if defined(EPMD6) conditional was
+    inverted and it was only including the IPv6-specific code when
+    EPMD6 was undefined. This was causing IPv6 addrs to be
+    interpreted as IPv4 addrs and generating nonsense IPv4
+    addresses as output. Several places were incorrectly using
+    'num_sockets' instead of 'i' to index into the iserv_addr array
+    during error logging. This would result in a read into
+    uninitialized data in the iserv_addr array. Thanks to John
+    Eckersberg for providing this fix.
+  * kernel: Minor fix of the erl_uds_dist distribution module
+    example.
+  * kernel: A bug has been fixed for the legacy TCP socket adaption
+    module gen_tcp_socket where it did bind to a socket address
+    when given a file descriptor, but should not.
+  * kernel: Improve the error printout when open_port/2 fails
+    because of invalid arguments.
+  * kernel: Calling socket:monitor/1 on an already closed socket
+    should succeed and result in an immediate DOWN message. This
+    has now been fixed.
+  * kernel: Fix the configuration option logger_metadata to work.
+  * kernel: Fix tls and non-tls distribution to use
+    erl_epmd:address_please to figure out if IPv4 or IPv6 addresses
+    should be used when connecting to the remote node. Before this
+    fix, a dns lookup of the remote node hostname determined which
+    IP version was to be used which meant that the hostname had to
+    resolve to a valid ip address.
+  * kernel: Add logger:reconfigure/0.
+  * kernel: Add socket function ioctl/2,3,4 for socket device
+    control.
+  * kernel: Add simple support for socknames/1 for gen_tcp_socket
+    and gen_udp_socket.
+  * kernel: The types for callback result types in gen_statem has
+    bee augmented with arity 2 types where it is possible for a
+    callback module to specify the type of the callback data, so
+    the callback module can get type validation of it.
+  * erl_docgen: Fix codeinclude tag to correctly respect the type
+    attribute.
+  * erl_docgen: The HTML documentation has been updated to collapse
+    better on small screens.
+  * erl_docgen: All predefined types have been added to the erlang
+    module together with documentation. Any reference to a
+    predefined type now links to that documentation so that the
+    user can view it.
+  * snmp: Handling of test config flag when starting "empty".
+  * snmp: Add support for new authentication algorithms (SHA-224,
+    SHA-256, SHA-384 and SHA-512), according to RFC 7860.
+  * snmp: Improve debug info for (snmp) manager.
+  * wx: Fix crash in cleanup code when a gui application is
+    exiting. Fix errors in the OpenGL wrapper that could cause
+    crashes and improve the documentation.
+  * edoc: Add option link_predefined_types that is used to create
+    links to erlang predefined types. This is mainly to be used by
+    erl_docgen when creating the Erlang/OTP documentation.
+  * dialyzer: Fixed a crash when opaque types contained certain
+    unicode characters.
+  * dialyzer: When the compiler is invoked by Dialyzer, it will no
+    longer apply an optimization of binary patterns that would turn
+    the pattern <<"bar">> into <<6447474:24>>, which would be very
+    confusing when printed out by Dialyzer.
+  * observer: Fix bug in crash dumps where the stackframe of a
+    process would be printed using an incorrect format. Crash dump
+    viewer has also been fixed to be able read the broken stack
+    format. The bug has existed since Erlang/OTP 23.0.
+  * ssh: The value of the connect_timeout option is now used as
+    default value for the negotiation timeout.
+  * ssh: Add better error handling in connect/2,3,4. Detect
+    incorrect arguments and return an informative error tuple
+    instead of throwing a function_clause or similar.
+  * ssh: Make ssh algorithm selection better handle dynamic changes
+    changes in crypto fips mode.
+  * megaco: [megaco_tcp] When connect fails, include more info in
+    the error reason.
+- Changes for 24.1.7:
+  * ssh: Fixed a race condition in the acceptor loop: if a client
+    disconnected immediately after the tcp connect, the server
+    could cease handling connection on that address:port.
+- Changes for 24.1.6:
+  * ssl: Correct typo of ECC curve name in signature algorithm
+    handling. Will make the signature algorithm
+    ecdsa_secp521r1_sha512 succeed.
+  * ssl: Suppress authenticity warning when option verify_none is
+    explicitly supplied.
+- Changes for 24.1.5:
+  * erts: The runtime system could call select() with a too large
+    timeout value when executing on MacOS. This could in turn cause
+    the runtime system to crash.
+  * erts: The fix for Linux's behaviour when reconnecting an UDP
+    socket in PR-5120 released in OTP-24.1.2 has been refined to
+    only dissolve the socket's connection before a connect if the
+    socket is already connected, that is: only for a reconnect.
+    This allows code to open a socket with an ephemeral port, get
+    the port number and connect; without the port number changing
+    (on Linux). This turned out to have at least one valid use case
+    (besides test cases). Should one reconnect the socket then the
+    port number may change, on Linux; it is a known quirk, which
+    can be worked around by binding to a specific port number when
+    opening the socket. If you can do without an ephemeral port,
+    that is...
+  * erts: Certain distributed signals that for various reasons must
+    to be forced into the distribution buffer even when it is full
+    would instead be lost if the distribution buffer was full when
+    sent. The effected signals:
+  * kernel: The internal, undocumented, but used, module inet_dns
+    has been fixed to handle mDNS high bit usage of the Class
+    field. Code that uses the previously obsolete, undocumented and
+    unused record field #dns_rr.func will need to be updated since
+    that field is now used as a boolean flag for the mDNS high
+    Class bit. Code that uses the also undocumented record
+    #dns_query will need to be recompiled since a boolean field
+    #dns_query.unicast_response has been added for the mDNS high
+    Class bit. *** POTENTIAL INCOMPATIBILITY ***
+  * kernel: The fix for Linux's behaviour when reconnecting an UDP
+    socket in PR-5120 released in OTP-24.1.2 has been refined to
+    only dissolve the socket's connection before a connect if the
+    socket is already connected, that is: only for a reconnect.
+    This allows code to open a socket with an ephemeral port, get
+    the port number and connect; without the port number changing
+    (on Linux). This turned out to have at least one valid use case
+    (besides test cases). Should one reconnect the socket then the
+    port number may change, on Linux; it is a known quirk, which
+    can be worked around by binding to a specific port number when
+    opening the socket. If you can do without an ephemeral port,
+    that is...
+- Changes for 24.1.4:
+  * erts: Fix bug where a gen_tcp write error that happened during
+    a delayed_send would cause a use after free segfault.
+  * erts: Fix x86 JIT bug where a rem instruction could cause a
+    segfault if given values that would cause an badarith
+    exception.
+- Changes for 24.1.3:
+  * ssl: Fix TLS-1.2 RSA-PSS negotiation and also fix broken
+    certificate request message for pre-TLS-1.3 servers.
+  * ssl: Fix CRL issuer verification that under some circumstances
+    could fail with a function_clause error.
+  * erts: Reduction counter was not updated before and after doing
+    apply operations on the runtime system with the jit enabled.
+    This caused reduction counting to get out of sync if a garbage
+    collection was made as part of the apply operation.
+  * erts: This fixes a bug in erts_factory_undo that caused the
+    heap to not be reset correctly. The erts_factory_undo function
+    is, for example, called when a binary_to_term/1 call fails to
+    reset the heap to its state before the binary_to_term/1 call.
+    This can cause the heap to contain invalid terms which
+    potentially can cause issues (e.g., crashes) when the whole
+    heap is scanned.
+  * erts: When attempting to construct a binary with an segment
+    having an illegal type for the size (e.g. an atom), there could
+    be an unnecessary memory allocation (and subsequent
+    deallocation) before the operation failed. Amended to fail
+    before allocating any memory for the binary.
+  * erts: Fix bug in persistent_term when a key-value pair contains
+    a magic reference that is referred more than once. Magic
+    references are NIF resources or returned from BIFs like
+    ets:new, atomics:new. The bug could cause the memory of the
+    referred resource to be prematurely deallocated. The bug also
+    apply to magic references in message passing on a runtime built
+    with configure option --enable-sharing-preserving. Bug exist
+    for 64-bit since OTP-24.0 and for 32-bit since OTP-20.0.
+  * erts: Fixed a crash when inspecting the stack trace of an
+    exception raised at a very high line number. This bug was
+    introduced in OTP 24.
+  * erts: The following two bugs that caused erlang:demonitor() to
+    behave erroneously have been fixed. The bugs were only
+    triggered if the monitor that was removed by demonitor() had
+    previously been created simultaneously as a monitor and as an
+    alias.
+
+-------------------------------------------------------------------
 Wed Oct 20 13:10:47 UTC 2021 - matwey.kornilov@gmail.com
 
 - Changes for 24.1.2:
