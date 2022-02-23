@@ -529,4 +529,41 @@
     <comment></comment>
     <requestid>950090</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>acc8bdc0b82856a8ca1c38d8f08286e8</srcmd5>
+    <version>2.4.6</version>
+    <time>1645629934</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.6 (bsc#1196168, CVE-2022-25313):
+  * Bug fixes:
+    - Fix a regression introduced by the fix for CVE-2022-25313
+      in release 2.4.5 that affects applications that (1)
+      call function XML_SetElementDeclHandler and (2) are
+      parsing XML that contains nested element declarations
+      (e.g. &quot;&lt;!ELEMENT junk ((bar|foo|xyz+), zebra*)&gt;&quot;).
+    - Version info bumped from 9:5:8 to 9:6:8;
+      see https://verbump.de/ for what these numbers do.
+
+- update to 2.4.5 (bsc#1196171, bsc#1196169, bsc#1196168, 
+  bsc#1196026, bsc#1196025):
+    * Security fixes:
+      - CVE-2022-25235 -- Passing malformed 2- and 3-byte UTF-8
+        sequences (e.g. from start tag names) to the XML
+        processing application on top of Expat can cause
+        arbitrary damage (e.g. code execution) depending
+        on how invalid UTF-8 is handled inside the XML
+        processor; validation was not their job but Expat's.
+        Exploits with code execution are known to exist.
+      - CVE-2022-25236 -- Passing (one or more) namespace separator
+        characters in &quot;xmlns[:prefix]&quot; attribute values
+        made Expat send malformed tag names to the XML
+        processor on top of Expat which can cause
+        arbitrary damage (e.g. code execution) depending
+        on such unexpectable cases are handled inside the XML
+        processor; validation was not their job but Expat's.
+        Exploits with code execution are known to exist.
+      - CVE-2022-25313 -- Fix stack exhaustion in doctype parsing
+        that could be triggered by e.g. a 2 megabytes</comment>
+    <requestid>956337</requestid>
+  </revision>
 </revisionlist>
