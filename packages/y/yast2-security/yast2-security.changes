@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 22 08:08:56 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Stop using 'lsm' kernel boot parameter even for the
+  "None" Major Linux Security Module (bsc#1194332, bsc#1196274).
+- 4.4.12
+
+-------------------------------------------------------------------
 Fri Feb  4 09:19:19 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Fixed Export unit test (related to jsc#SLE-22069).
