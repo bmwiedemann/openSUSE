@@ -3531,4 +3531,12 @@
   (bsc#1195391)</comment>
     <requestid>950686</requestid>
   </revision>
+  <revision rev="206" vrev="10">
+    <srcmd5>099ba718ece60f2e4ac4b0cd390204d5</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1645632100</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956328</requestid>
+  </revision>
 </revisionlist>
