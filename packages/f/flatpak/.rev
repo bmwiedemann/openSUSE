@@ -737,4 +737,18 @@
     <comment></comment>
     <requestid>954717</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>96eb2cf20d2a3ce936181b67925afe83</srcmd5>
+    <version>1.12.6</version>
+    <time>1645629953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.6:
+  + Fix a bug that sometimes caused repo corruption in case
+    downloads are interrupted or canceled, necessitating a
+    &quot;flatpak repair&quot; to recover
+  + More reliably detect the GTK theme
+  + Fix history command unit test in some edge cases
+  + Updated translations.</comment>
+    <requestid>956805</requestid>
+  </revision>
 </revisionlist>

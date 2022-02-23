@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 22 06:48:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.12.6:
+  + Fix a bug that sometimes caused repo corruption in case
+    downloads are interrupted or canceled, necessitating a
+    "flatpak repair" to recover
+  + More reliably detect the GTK theme
+  + Fix history command unit test in some edge cases
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Feb 13 21:10:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop apparently unused libdwarf buildrequires
