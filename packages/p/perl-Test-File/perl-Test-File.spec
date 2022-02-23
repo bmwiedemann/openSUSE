@@ -18,10 +18,10 @@
 
 %define cpan_name Test-File
 Name:           perl-Test-File
-Version:        1.991
+Version:        1.992
 Release:        0
-Summary:        Test file attributes
 License:        Artistic-2.0
+Summary:        Test file attributes
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -68,7 +68,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes examples
+%doc Changes CITATION.cff examples
 %license LICENSE
 
 %changelog

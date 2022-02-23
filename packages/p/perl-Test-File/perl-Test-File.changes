@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 16 03:08:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.992
+   see /usr/share/doc/packages/perl-Test-File/Changes
+
+  1.992 2022-02-15T19:40:16Z
+  	* GitHub #29 - race condition in tests for mtime, from Slaven Rezić.
+  	Most people never experienced this timing issue, so if you have this
+  	already you don't need to update.
+
+-------------------------------------------------------------------
 Fri Jan 21 03:09:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.991
