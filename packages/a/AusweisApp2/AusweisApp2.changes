@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 18 06:36:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.22.4
+     * Fixed a random startup crash on Windows.
+     * The reminder to change the transport PIN is no longer
+       displayed for the PIN reset service or on-site readout.
+     * Fixed the "Report a bug" feature on Android 12.
+     * Fixed an issue where the iOS NFC dialog was displayed
+       longer than necessary.
+     * Under certain conditions it was possible that a workflow
+       could not be started because a previous workflow had not
+       been completed.
+     * Minor bug fixes and optimizations.
+     * If AusweisApp2 was started just as an SDK on Windows, the
+       path of the AutoStart entry in the registry was rewritten
+       nevertheless. This has been fixed.
+     * The libraries can now be built with MSVC 2022.
+
+-------------------------------------------------------------------
 Thu Jan 20 08:12:17 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
