@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 22 17:45:16 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220223.4d2a5a2e:
+  * skippkg_finder: fix unconditional matches if the first regex element is space
+
+-------------------------------------------------------------------
+Tue Feb 22 09:04:48 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220222.31e00873:
+  * Remove the origin operator and its user scripts
+
+-------------------------------------------------------------------
+Tue Feb 22 08:13:44 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220222.897039d3:
+  * OBS Workflow: Fix project
+
+-------------------------------------------------------------------
+Tue Feb 22 08:02:14 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220222.bb88862d:
+  * Use official OBS integration and retire osrt-puller
+
+-------------------------------------------------------------------
 Tue Feb 22 07:43:39 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220222.d8ef5897:
