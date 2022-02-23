@@ -1,7 +1,7 @@
 #
 # spec file for package avalon-framework
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  avalon-logkit
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
-BuildRequires:  log4j12
+BuildRequires:  reload4j
 Requires:       mvn(avalon-logkit:avalon-logkit)
 BuildArch:      noarch
 
@@ -67,7 +67,7 @@ pushd %{name}-api-%{version}
 popd
 pushd %{name}-impl-%{version}
   mkdir -p target/lib
-  build-jar-repository -s target/lib avalon-logkit log4j12/log4j-12 commons-logging
+  build-jar-repository -s target/lib avalon-logkit reload4j commons-logging
   cp ../%{name}-api-%{version}/target/*.jar target/lib/
   %ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 dist
 popd

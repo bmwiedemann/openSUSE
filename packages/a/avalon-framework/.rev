@@ -110,4 +110,12 @@
     <comment>Build against log4j12</comment>
     <requestid>734285</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>1bbba5cd8b4825c4ece22a4ad67c2aa1</srcmd5>
+    <version>4.3</version>
+    <time>1645639610</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957045</requestid>
+  </revision>
 </revisionlist>
