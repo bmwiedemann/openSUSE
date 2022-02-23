@@ -1,5 +1,5 @@
 #
-# spec file for package apache-log4j-extras
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -26,7 +26,7 @@ URL:            https://logging.apache.org/log4j/extras
 Source0:        https://github.com/apache/%{short_name}/archive/refs/tags/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(log4j:log4j:1.2.17)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.geronimo.specs:geronimo-jms_1.1_spec)
 BuildRequires:  mvn(org.apache:apache:pom:)
