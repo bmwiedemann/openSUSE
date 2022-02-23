@@ -1,7 +1,7 @@
 #
 # spec file for package apr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Patch9:         apr-proc-mutex-map-anon.patch
 # prevent random failures of the testsuite (sendfile test)
 Patch10:        apr-test-sendfile-timeout.patch
 # CVE-2021-3594 [bsc#1187367], invalid pointer initialization may lead to information disclosure (udp)
-Patch11:        apr-CVE-2021-3594.patch
+Patch11:        apr-CVE-2021-35940.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libtool

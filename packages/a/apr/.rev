@@ -122,4 +122,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>927559</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>6f39b8709766c4208a570e695a4cad79</srcmd5>
+    <version>1.7.0</version>
+    <time>1645629943</time>
+    <user>dimstar_suse</user>
+    <comment>- deleted patches
+  - apr-CVE-2021-3594.patch (renamed)
+- added patches
+  + apr-CVE-2021-35940.patch (correct name)
+
+  fix CVE-2021-35940 [bsc#1190072], Regression of fix in apr 1.7
+  + apr-CVE-2021-35940.patch</comment>
+    <requestid>956627</requestid>
+  </revision>
 </revisionlist>
