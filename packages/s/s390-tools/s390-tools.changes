@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 22 19:37:07 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp4-zdev-modify-the-lsblk-output-parser-in-lszdev.patch
+  for bsc#1196255. Version 2.37+ of util-linux modified the output
+  characters of lsblk,which breaks the parser function. 
+- Added s390-tools-sles15sp4-zdev-Fix-path-resolution-for-multi-mount-point-file-.patch
+  for bsc#1196254. Path resolution fails when a device provides
+  multiple mount points such as, for example, when using btrfs
+  subvolumes, or when mounting the same file system at multiple
+  mount points.
+
+-------------------------------------------------------------------
 Wed Jan 12 21:27:13 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.19.0 (jsc#SLE-18324)

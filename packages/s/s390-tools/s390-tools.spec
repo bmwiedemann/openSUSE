@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2001-2021 SUSE LLC
+# Copyright (c) 2001-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,6 +90,8 @@ Source99:       zfcp_host_configure.8
 # IBM patches
 Patch001:       s390-tools-sles15sp4-chreipl-fcp-mpath-don-t-compress-the-manpage-before-.patch
 Patch002:       s390-tools-sles15sp4-chreipl-fcp-mpath-remove-shebang-from-chreipl-fcp-mp.patch
+Patch003:       s390-tools-sles15sp4-zdev-modify-the-lsblk-output-parser-in-lszdev.patch
+Patch004:       s390-tools-sles15sp4-zdev-Fix-path-resolution-for-multi-mount-point-file-.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
