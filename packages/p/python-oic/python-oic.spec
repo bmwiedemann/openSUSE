@@ -1,7 +1,7 @@
 #
 # spec file for package python-oic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname oic
 Name:           python-oic
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        A complete OpenID Connect implementation in Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/OpenIDC/pyoidc
 Source:         https://github.com/OpenIDC/pyoidc/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Patch0:         fix-scheme-message.patch
 BuildRequires:  %{python_module Beaker}
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module cryptography}
@@ -65,7 +65,7 @@ the OpenID Connect Core specification. As a side effect, this is a complete
 implementation of OAuth2.0 too.
 
 %prep
-%setup -q -n pyoidc-%{version}
+%autosetup -p1 -n pyoidc-%{version}
 find src -type f -exec sed -i '1 {/#!/d}' {} +
 sed -i 's/--color=yes//' tox.ini
 
