@@ -27,8 +27,9 @@
 %endif
 
 %define min_kernel_version 4.5
-%define suse_version +suse.82.g117bd7f14a
+%define suse_version +suse.86.g0bb1977021
 %define _testsuitedir /usr/lib/systemd/tests
+%define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
 
 # Similar to %%with but returns true/false. The 'true' value can be redefined
 # when a second parameter is passed.
@@ -70,7 +71,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        249.9
+Version:        249.10
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -653,7 +654,7 @@ Have fun with these services at your own risk.
         -Dldconfig=false \
         -Dpamconfdir=no \
         -Dpamlibdir=%{_pam_moduledir} \
-        -Dxinitrcdir=%{_distconfdir}/X11/xinit/xinitrc.d \
+        -Dxinitrcdir=%{xinitconfdir}/xinitrc.d \
         -Drpmmacrosdir=no \
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
 %if %{without sysvcompat}

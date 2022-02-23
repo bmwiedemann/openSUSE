@@ -5822,4 +5822,19 @@ handle manual pages that consist only of a .so directive such as
   in or removed due to another feature being turned on/off.</comment>
     <requestid>955799</requestid>
   </revision>
+  <revision rev="349" vrev="1">
+    <srcmd5>775c2c528e6161c469697d3e60fe44f5</srcmd5>
+    <version>249.10</version>
+    <time>1645629954</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 0bb1977021be2fc9ebfae10d766dff0b1a457f88 (merge of v249.10)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/b9b83c5d11e686178ddd545862a00b33c6fdfabb...0bb1977021be2fc9ebfae10d766dff0b1a457f88
+
+- Import commit b9b83c5d11e686178ddd545862a00b33c6fdfabb
+  8973cb2462 systemd-coredump: allow setting external core size to infinity (bsc#1195899 jsc#SLE-23866)
+
+- Fix build if %_distconfdir is not defined (see bsc#1195679)</comment>
+    <requestid>956820</requestid>
+  </revision>
 </revisionlist>

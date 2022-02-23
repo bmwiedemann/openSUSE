@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Feb 22 15:22:16 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 0bb1977021be2fc9ebfae10d766dff0b1a457f88 (merge of v249.10)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/b9b83c5d11e686178ddd545862a00b33c6fdfabb...0bb1977021be2fc9ebfae10d766dff0b1a457f88
+
+-------------------------------------------------------------------
+Tue Feb 22 14:50:50 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit b9b83c5d11e686178ddd545862a00b33c6fdfabb
+
+  8973cb2462 systemd-coredump: allow setting external core size to infinity (bsc#1195899 jsc#SLE-23866)
+
+-------------------------------------------------------------------
+Mon Feb 21 09:56:26 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Fix build if %_distconfdir is not defined (see bsc#1195679)
+
+-------------------------------------------------------------------
 Thu Feb 17 18:30:12 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Drop enablement symlink migration support of SysV init scripts
