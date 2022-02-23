@@ -58,7 +58,7 @@ BuildRequires:  xmlunit
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 # Runtime dependency of doxia-module-fo
-BuildRequires:  mvn(log4j:log4j:1.2.17)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildArch:      noarch
 

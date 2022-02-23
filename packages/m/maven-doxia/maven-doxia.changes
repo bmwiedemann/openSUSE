@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 18:20:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages
+
+-------------------------------------------------------------------
 Tue Feb 22 11:34:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix the version of the log4j that doxia-module-fo needs at

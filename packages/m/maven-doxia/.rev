@@ -50,4 +50,12 @@
 </comment>
     <requestid>956673</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>de08ebc94cbd9e7e59c0bd497f18d71b</srcmd5>
+    <version>1.9.1</version>
+    <time>1645639617</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957076</requestid>
+  </revision>
 </revisionlist>
