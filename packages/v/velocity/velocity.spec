@@ -1,7 +1,7 @@
 #
 # spec file for package velocity
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,9 @@ BuildRequires:  hsqldb
 BuildRequires:  javapackages-local
 BuildRequires:  jdom >= 1.0-1
 BuildRequires:  junit
-BuildRequires:  log4j12 >= 1.1
 BuildRequires:  oro
 BuildRequires:  plexus-classworlds
+BuildRequires:  reload4j
 BuildRequires:  servletapi4
 BuildRequires:  werken-xpath
 Requires:       avalon-logkit
@@ -49,8 +49,8 @@ Requires:       commons-collections
 Requires:       commons-lang
 Requires:       java >= 1.6.0
 Requires:       jdom >= 1.0-1
-Requires:       log4j12 >= 1.1
 Requires:       oro
+Requires:       reload4j
 Requires:       servletapi4
 Requires:       werken-xpath
 BuildArch:      noarch
@@ -185,7 +185,7 @@ ln -sf $(build-classpath commons-collections)
 ln -sf $(build-classpath commons-lang)
 ln -sf $(build-classpath commons-logging)
 ln -sf $(build-classpath jdom)
-ln -sf $(build-classpath log4j12/log4j-12)
+ln -sf $(build-classpath reload4j/reload4j)
 ln -sf $(build-classpath oro)
 # Use servletapi4 instead of servletapi5 in CLASSPATH
 ln -sf $(build-classpath servletapi4)
