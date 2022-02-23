@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 22 09:04:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.1:
+  * Add release note about missing pbr.json fix
+  * Avoid recursive calls into SetupTools entrypoint
+  * remove explicit mock
+  * Don't test with setuptools local distutils
+  * Use context blocks for open() calls in packaging
+- remove remove_mock.patch (upstream)
+   
+-------------------------------------------------------------------
 Mon Dec  6 10:23:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.0:

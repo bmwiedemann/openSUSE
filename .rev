@@ -654,4 +654,18 @@
   * Clarify the need for setup.py with PEP517</comment>
     <requestid>935964</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>9fbbb0380eb7ce139d7bbcf9e61a41b3</srcmd5>
+    <version>5.8.1</version>
+    <time>1645629945</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.8.1:
+  * Add release note about missing pbr.json fix
+  * Avoid recursive calls into SetupTools entrypoint
+  * remove explicit mock
+  * Don't test with setuptools local distutils
+  * Use context blocks for open() calls in packaging
+- remove remove_mock.patch (upstream)</comment>
+    <requestid>956640</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.8.0
+Version:        5.8.1
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pbr/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/pbr/pbr-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove_mock.patch -- https://review.opendev.org/c/openstack/pbr/+/767972 remove explicit mock
-Patch0:         remove_mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
