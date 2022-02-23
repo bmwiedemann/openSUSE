@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 22 11:19:17 UTC 2022 - pgajdos@suse.com
+
+- fix build and introduced doc build flavor
+- modified sources
+  % _multibuild
+- added patches
+  fix https://github.com/sphinx-contrib/autoprogram/pull/25
+  + python-sphinxcontrib-autoprogram-python310.patch
+
+-------------------------------------------------------------------
 Tue Oct 12 13:40:48 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.1.7

@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>924879</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ad5345eee5c198dcdb8cfa6ca9865d1d</srcmd5>
+    <version>0.1.7</version>
+    <time>1645629968</time>
+    <user>dimstar_suse</user>
+    <comment>Add patch to support building with python 3.10</comment>
+    <requestid>956940</requestid>
+  </revision>
 </revisionlist>
