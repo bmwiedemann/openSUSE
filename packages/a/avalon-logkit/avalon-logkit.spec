@@ -43,11 +43,12 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javamail
 BuildRequires:  javapackages-local
 BuildRequires:  jdbc-stdext
-BuildRequires:  log4j12
+BuildRequires:  reload4j
 BuildRequires:  unzip
 Requires:       mvn(javax.jms:jms)
 Requires:       mvn(javax.mail:mail)
 Requires:       mvn(javax.servlet:servlet-api)
+Requires:       mvn(log4j:log4j)
 BuildArch:      noarch
 
 %description
@@ -79,7 +80,7 @@ rm -rf src/java/org/apache/log/output/lf5
 ant clean
 mkdir -p target/lib
 build-jar-repository -s -p target/lib \
-                   log4j12/log4j-12 \
+                   reload4j \
                    javamail/mailapi \
                    geronimo-jms-1.1-api \
                    glassfish-servlet-api

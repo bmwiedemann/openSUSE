@@ -152,4 +152,12 @@
 </comment>
     <requestid>956672</requestid>
   </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>e81fadd7bb7104ba6e15e1d97e073551</srcmd5>
+    <version>2.1</version>
+    <time>1645639611</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957046</requestid>
+  </revision>
 </revisionlist>
