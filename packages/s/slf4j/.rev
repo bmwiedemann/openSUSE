@@ -209,4 +209,12 @@
     <comment></comment>
     <requestid>943057</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>542f0285dbfc28015923520b69fd6fae</srcmd5>
+    <version>1.7.32</version>
+    <time>1645629949</time>
+    <user>dimstar_suse</user>
+    <comment>Fix eventual build against reload4j instead of log4j12</comment>
+    <requestid>956674</requestid>
+  </revision>
 </revisionlist>

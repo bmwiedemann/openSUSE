@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ URL:            https://www.slf4j.org/
 Source0:        https://github.com/qos-ch/%{base_name}/archive/v_%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Patch2:         slf4j-commons-lang3.patch
+Patch3:         slf4j-reload4j.patch
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -38,6 +39,7 @@ SLF4J Source JARs.
 %prep
 %setup -q -n %{base_name}-v_%{version}
 %patch2 -p1
+%patch3 -p1
 find . -name "*.jar" | xargs rm
 cp -p %{SOURCE1} APACHE-LICENSE
 

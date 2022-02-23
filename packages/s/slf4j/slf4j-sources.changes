@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 22 09:50:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * slf4j-reload4j.patch
+    + fix build against reload4j
+
+-------------------------------------------------------------------
 Wed Dec 29 10:53:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to upstream version 1.7.32
