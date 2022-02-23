@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dotenv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-python-dotenv
 Version:        0.15.0
 Release:        0
@@ -34,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-click >= 5.0
 # rubygem-dotenv also provides executable dotenv
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-jupyter_ipython
 # There is a very similar Python package which also used `dotenv` namespace
 Conflicts:      python-dotenv

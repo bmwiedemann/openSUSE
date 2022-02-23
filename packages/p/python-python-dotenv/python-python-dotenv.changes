@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 21 09:09:13 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Skip building for python2
+
+-------------------------------------------------------------------
 Mon Dec  7 00:42:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip testing with optional jupyter_ipython. Jupyter is only
