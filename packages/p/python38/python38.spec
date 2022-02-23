@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -160,6 +160,8 @@ Patch32:        sphinx-update-removed-function.patch
 # Use of 'complex' as a C variable name confuses Sphinx; change it to 'num'
 # The same goes for 'default', which I had to change to 'def_size'
 Patch33:        bpo44426-complex-keyword-sphinx.patch
+# PATCH-FIX-UPSTREAM bpo-46811 gh#python/cpython#d4f5bb912e67299b59b814b89a5afd9a8821a14e
+Patch34:        support-expat-245.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -422,6 +424,7 @@ other applications.
 %patch29 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

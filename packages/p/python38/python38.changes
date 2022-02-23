@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 05:53:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-expat-245.patch:
+  * Support Expat >= 2.4.5 
+
+-------------------------------------------------------------------
 Mon Nov 29 00:17:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove shebangs from from python-base libraries in _libdir
