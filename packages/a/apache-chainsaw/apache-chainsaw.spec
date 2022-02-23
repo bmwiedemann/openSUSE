@@ -1,5 +1,5 @@
 #
-# spec file for package apache-chainsaw
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -33,27 +33,27 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  maven-local
+BuildRequires:  update-desktop-files
 BuildRequires:  mvn(ant-contrib:ant-contrib)
 BuildRequires:  mvn(com.jcraft:jsch)
 BuildRequires:  mvn(com.thoughtworks.xstream:xstream)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(javax.jmdns:jmdns)
 BuildRequires:  mvn(log4j:apache-log4j-extras)
-BuildRequires:  mvn(log4j:log4j:1.2.16)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.commons:commons-vfs2)
 BuildRequires:  mvn(org.apache.geronimo.specs:geronimo-jms_1.1_spec)
 BuildRequires:  mvn(org.apache.logging:logging-parent:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
-BuildRequires:  update-desktop-files
 Requires:       apache-commons-logging
 Requires:       apache-commons-vfs2
 Requires:       apache-log4j-extras
 Requires:       javapackages-tools
 Requires:       jmdns
 Requires:       jsch
-Requires:       log4j12
+Requires:       reload4j
 Requires:       slf4j
 Requires:       xpp3
 Requires:       xpp3-minimal
@@ -103,7 +103,7 @@ perl -pi -e 's#\"docs/api\"#\"%{_javadocdir}/%{name}\"#g' \
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # apache-chainsaw has to be the first in order to avoid name classes in apache-log4j-extras
-%jpackage_script org.apache.log4j.chainsaw.LogUI "" "" apache-chainsaw:apache-log4j-extras:log4j12:jmdns:slf4j/api:xstream:xpp3:xpp3-minimal:commons-vfs2:commons-logging:jsch %{short_name} true
+%jpackage_script org.apache.log4j.chainsaw.LogUI "" "" apache-chainsaw:apache-log4j-extras:reload4j:jmdns:slf4j/api:xstream:xpp3:xpp3-minimal:commons-vfs2:commons-logging:jsch %{short_name} true
 
 # freedesktop.org menu entries and icons
 mkdir -p %{buildroot}%{_datadir}/{applications,pixmaps}
