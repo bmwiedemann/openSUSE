@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-bootstrap-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-bootstrap-theme
-Version:        0.7.1
+Version:        0.8.1
 Release:        0
 Summary:        Sphinx Bootstrap Theme
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Development/Languages/Python
 URL:            http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-bootstrap-theme/sphinx-bootstrap-theme-%{version}.tar.gz
