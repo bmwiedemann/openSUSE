@@ -17,13 +17,13 @@
 
 
 Name:           dpkg
-Version:        1.20.9
+Version:        1.21.1
 Release:        0
 Summary:        Debian package management system
 License:        GPL-2.0-or-later
 Group:          System/Packages
-URL:            http://www.debian.org
-Source0:        http://ftp.de.debian.org/debian/pool/main/d/dpkg/dpkg_%{version}.tar.xz
+URL:            https://tracker.debian.org/pkg/%{name}
+Source0:        https://ftp.debian.org/debian/pool/main/d/dpkg/%{name}_%{version}.tar.xz
 Source3:        sensible-editor
 # PATCH-FIX-OPENSUSE replace debian with opensuse. replace macros. update-alternatives temp directories' path and name from dpkg* to rpm*.
 Patch1:         update-alternatives-suse.patch
@@ -93,7 +93,7 @@ Libraries and header files for dpkg.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fvi
-export CFLAGS="%{optflags}"
+export CFLAGS="%{?build_cflags:%build_cflags}%{?!build_cflags:%optflags}"
 %configure \
     --disable-silent-rules \
     --with-libselinux \
@@ -119,7 +119,7 @@ export CFLAGS="%{optflags}"
 %endif
 sed -i 's/^#define ARCHITECTURE ""/#define ARCHITECTURE "%{debarch}"/' config.h
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -143,7 +143,7 @@ cat dselect.lang dpkg-dev.lang >> %{name}.lang
 install -m 755 %{SOURCE3} %{buildroot}%{_bindir}
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post
 cd %{_localstatedir}/lib/dpkg
@@ -168,6 +168,9 @@ exit 0
 %{_sbindir}/*
 %{_libexecdir}/dpkg
 %{_datadir}/dpkg
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/vendor-completions
+%{_datadir}/zsh/vendor-completions/_dpkg-parsechangelog
 %{_localstatedir}/lib/dpkg
 %{perl_vendorlib}/Dpkg
 %{perl_vendorlib}/Dpkg.pm

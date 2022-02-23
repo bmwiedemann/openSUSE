@@ -1,7 +1,20 @@
-diff -Nru dpkg-1.20.9.orig/man/update-alternatives.pod dpkg-1.20.9/man/update-alternatives.pod
---- dpkg-1.20.9.orig/man/update-alternatives.pod	2021-01-30 07:09:02.000000000 +0100
-+++ dpkg-1.20.9/man/update-alternatives.pod	2021-04-28 11:43:20.093959620 +0200
-@@ -37,7 +37,7 @@
+From 8cad1e2d4d20f76383a424aa85ebd3bc3a51487a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Mon, 3 Jan 2022 13:19:00 +0100
+Subject: [PATCH 3/4] update-alternatives-suse
+
+---
+ man/update-alternatives.pod   |  8 ++++----
+ utils/Makefile.am             | 10 +++++-----
+ utils/t/update_alternatives.t |  4 ++--
+ utils/update-alternatives.c   |  2 +-
+ 4 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/man/update-alternatives.pod b/man/update-alternatives.pod
+index 7f3e0e66f..54e91f26b 100644
+--- a/man/update-alternatives.pod
++++ b/man/update-alternatives.pod
+@@ -37,7 +37,7 @@ B<update-alternatives>
  
  B<update-alternatives>
  creates, removes, maintains and displays information about the symbolic
@@ -10,7 +23,7 @@ diff -Nru dpkg-1.20.9.orig/man/update-alternatives.pod dpkg-1.20.9/man/update-al
  
  It is possible for several programs fulfilling the same or similar
  functions to be installed on a single system at the same time.
-@@ -47,7 +47,7 @@
+@@ -47,7 +47,7 @@ different editor, if desired, but makes it difficult for a program
  to make a good choice for an editor to invoke if the
  user has not specified a particular preference.
  
@@ -19,7 +32,7 @@ diff -Nru dpkg-1.20.9.orig/man/update-alternatives.pod dpkg-1.20.9/man/update-al
  A generic name in the filesystem is
  shared by all files providing interchangeable functionality.
  The alternatives system and the system administrator
-@@ -85,8 +85,8 @@
+@@ -85,8 +85,8 @@ installed, changed or removed,
  B<update-alternatives>
  is called to update information about that file in the alternatives system.
  B<update-alternatives>
@@ -30,10 +43,11 @@ diff -Nru dpkg-1.20.9.orig/man/update-alternatives.pod dpkg-1.20.9/man/update-al
  (configure) to install the alternative and from
  B<prerm> and B<postrm>
  (remove) to remove the alternative.
-diff -Nru dpkg-1.20.9.orig/utils/Makefile.am dpkg-1.20.9/utils/Makefile.am
---- dpkg-1.20.9.orig/utils/Makefile.am	2021-01-30 07:09:02.000000000 +0100
-+++ dpkg-1.20.9/utils/Makefile.am	2021-04-28 11:44:41.674722417 +0200
-@@ -45,8 +45,8 @@
+diff --git a/utils/Makefile.am b/utils/Makefile.am
+index a86cba32b..d19007073 100644
+--- a/utils/Makefile.am
++++ b/utils/Makefile.am
+@@ -45,8 +45,8 @@ update_alternatives_SOURCES = \
  
  update_alternatives_CPPFLAGS = \
  	-DALT_TMP_EXT=\".dpkg-tmp\" \
@@ -44,19 +58,39 @@ diff -Nru dpkg-1.20.9.orig/utils/Makefile.am dpkg-1.20.9/utils/Makefile.am
  	$(AM_CPPFLAGS)
  
  update_alternatives_LDADD = \
-@@ -79,7 +79,7 @@
- uninstall-local:
+@@ -81,9 +81,9 @@ uninstall-local:
  	rm -f $(DESTDIR)$(sysconfdir)/alternatives/README
  
--TEST_ENV_VARS = DPKG_DATADIR=$(top_srcdir)/data
-+TEST_ENV_VARS = RPM_DATADIR=$(top_srcdir)/data
+ TEST_ENV_VARS = \
+-	DPKG_DATADIR=$(top_srcdir)/data \
+-	UA_ROOTDIR_ENVVAR=DPKG_ROOT \
+-	UA_ADMINDIR_ENVVAR=DPKG_ADMINDIR \
++	RPM_DATADIR=$(top_srcdir)/data \
++	UA_ROOTDIR_ENVVAR=RPM_ROOT \
++	UA_ADMINDIR_ENVVAR=RPM_ADMINDIR \
+ 	UA_ADMINDIR_DEFAULT=$(admindir) \
+ 	# EOL
  
- test_tmpdir = t.tmp
- test_scripts = \
-diff -Nru dpkg-1.20.9.orig/utils/update-alternatives.c dpkg-1.20.9/utils/update-alternatives.c
---- dpkg-1.20.9.orig/utils/update-alternatives.c	2021-03-02 03:15:25.000000000 +0100
-+++ dpkg-1.20.9/utils/update-alternatives.c	2021-04-28 11:43:44.998192415 +0200
-@@ -115,7 +115,7 @@
+diff --git a/utils/t/update_alternatives.t b/utils/t/update_alternatives.t
+index a4885dda9..a0959e5d9 100644
+--- a/utils/t/update_alternatives.t
++++ b/utils/t/update_alternatives.t
+@@ -32,8 +32,8 @@ my $bindir = File::Spec->rel2abs("$tmpdir/bin");
+ my @ua = ("$ENV{builddir}/update-alternatives", '--log', '/dev/null',
+           '--quiet', '--admindir', "$admindir", '--altdir', "$altdir");
+ 
+-my $rootdir_envvar = $ENV{UA_ROOTDIR_ENVVAR} // 'DPKG_ROOT';
+-my $admindir_envvar = $ENV{UA_ADMINDIR_ENVVAR} // 'DPKG_ADMINDIR';
++my $rootdir_envvar = $ENV{UA_ROOTDIR_ENVVAR} // 'RPM_ROOT';
++my $admindir_envvar = $ENV{UA_ADMINDIR_ENVVAR} // 'RPM_ADMINDIR';
+ 
+ delete $ENV{$rootdir_envvar};
+ delete $ENV{$admindir_envvar};
+diff --git a/utils/update-alternatives.c b/utils/update-alternatives.c
+index 716035876..eee59d590 100644
+--- a/utils/update-alternatives.c
++++ b/utils/update-alternatives.c
+@@ -115,7 +115,7 @@ static int opt_force = 0;
  static void
  version(void)
  {
@@ -65,3 +99,6 @@ diff -Nru dpkg-1.20.9.orig/utils/update-alternatives.c dpkg-1.20.9/utils/update-
  	printf("\n");
  
  	printf(_(
+-- 
+2.33.1
+

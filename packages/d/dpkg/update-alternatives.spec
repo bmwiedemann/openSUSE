@@ -17,13 +17,13 @@
 
 
 Name:           update-alternatives
-Version:        1.20.9
+Version:        1.21.1
 Release:        0
 Summary:        Maintain symbolic links determining default commands
 License:        GPL-2.0-or-later
 Group:          System/Management
-URL:            http://ftp.de.debian.org/debian/pool/main/d/dpkg/
-Source0:        http://ftp.de.debian.org/debian/pool/main/d/dpkg/dpkg_%{version}.tar.xz
+URL:            https://tracker.debian.org/pkg/dpkg/
+Source0:        https://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_%{version}.tar.xz
 Source3:        sensible-editor
 Patch0:         update-alternatives-suse.patch
 Patch1:         update-alternatives-slavetomaster.patch
