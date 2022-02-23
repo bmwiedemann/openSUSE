@@ -70,3 +70,13 @@ main.upgrade_MDEV-23102-2                        : since 10.5.8 - x86_64
 main.mysql_upgrade_to_100502                     : since 10.5.8 - x86_64
 sys_vars.profiling_history_size_basic            : since 10.5.8 - x86_64
 sys_vars.old_alter_table_basic                   : since 10.5.8 - x86_64
+
+roles.acl_statistics                             : since 10.7.3 - x86_64
+main.stat_tables_innodb                          : since 10.7.3 - x86_64
+main.stat_tables                                 : since 10.7.3 - x86_64
+plugins.feedback_plugin_load                     : since 10.7.3 - x86_64
+main.explain_non_select                          : since 10.7.3 - x86_64
+main.selectivity_no_engine                       : since 10.7.3 - x86_64
+main.mysql_upgrade                               : since 10.7.3 - x86_64
+perfschema.privilege_table_io                    : since 10.7.3 - x86_64
+

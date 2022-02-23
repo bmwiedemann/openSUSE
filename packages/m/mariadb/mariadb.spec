@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.6.5
+Version:        10.7.3
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -75,13 +75,13 @@ Source50:       suse_skipped_tests.list
 Source51:       mariadb-rpmlintrc
 Source52:       series
 Patch1:         mariadb-10.2.4-logrotate.patch
-Patch2:         mariadb-10.1.1-mysqld_multi-features.patch
-Patch3:         mariadb-10.0.15-logrotate-su.patch
 Patch4:         mariadb-10.2.4-fortify-and-O.patch
 Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch9:         func_math_tests_MDEV-26645.diff
 Patch10:        fix-pamdir.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1194828 MDEV-26645
+Patch11:        bsc1194828.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -137,6 +137,7 @@ BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Time::HiRes)
 # Do not ever switch away from BuildRequires: pkgconfig(libsystemd); BuildRequires systemd/systemd-devel causes build cycles
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(fmt)
 #!BuildIgnore:  user(mysql)
 # Required by rcmysql
 Requires:       %{name}-client
@@ -354,8 +355,6 @@ PAM module.
 # Remove JAR files from the tarball (used for testing from the source)
 find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch1
-%patch2
-%patch3
 %patch4
 %patch6 -p1
 %patch7 -p1
@@ -368,6 +367,7 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %if 0%{?suse_version} > 1500
 %patch10 -p1
 %endif
+%patch11 -p1
 
 cp %{_sourcedir}/suse-test-run .
 

@@ -16,8 +16,8 @@ Index: support-files/mysql-log-rotate.sh
 -@localstatedir@/mysqld.log {
 +/var/log/mysql/*.log {
          # create 600 mysql mysql
+         su mysql mysql
          notifempty
-         daily
 @@ -32,6 +32,14 @@
  	then
  	   @bindir@/mysqladmin --local flush-error-log \

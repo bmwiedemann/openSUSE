@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Feb 16 09:59:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.7.3 (bsc#1196016):
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-1073-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1073-changelog
+    https://mariadb.com/kb/en/library/mariadb-1072-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1072-changelog
+    https://mariadb.com/kb/en/library/mariadb-1071-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1071-changelog
+    https://mariadb.com/kb/en/library/mariadb-1070-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1070-changelog
+  * fixes for the following security vulnerabilities:
+    10.7.3: CVE-2021-46665
+            CVE-2021-46664
+            CVE-2021-46661
+            CVE-2021-46668
+            CVE-2021-46663 
+    10.7.2: CVE-2022-24052
+            CVE-2022-24051
+            CVE-2022-24050
+            CVE-2022-24048
+            CVE-2021-46659, bsc#1195339
+    10.7.1: none
+    10.7.0: none
+- Remove upstreamed patches:
+  * mariadb-10.0.15-logrotate-su.patch
+  * mariadb-10.1.1-mysqld_multi-features.patch
+- Refresh mariadb-10.2.4-logrotate.patch
+- Update list of skipped tests
+- Add bsc1194828.patch to fix build with GCC12, fixes bsc#1194828
+- The following issues have already been fixed in this package but weren't
+  previously mentioned in the changes file:
+  CVE-2021-46658, bsc#1195334
+  CVE-2021-46657, bsc#1195325
+
+-------------------------------------------------------------------
 Thu Dec 30 12:01:56 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Build mariadb-galera on SLE
