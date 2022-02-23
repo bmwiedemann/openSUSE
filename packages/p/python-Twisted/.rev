@@ -1388,4 +1388,13 @@
     <comment></comment>
     <requestid>953273</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>9f4e922c4bb458aef784eab19ebf1745</srcmd5>
+    <version>22.1.0</version>
+    <time>1645629939</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch skip-namespacewithwhitespace.patch:
+  * Skip a failing test with Expat 2.4.5.</comment>
+    <requestid>956891</requestid>
+  </revision>
 </revisionlist>

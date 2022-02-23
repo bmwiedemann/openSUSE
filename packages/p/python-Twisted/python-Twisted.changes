@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 23 00:30:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch skip-namespacewithwhitespace.patch:
+  * Skip a failing test with Expat 2.4.5. 
+
+-------------------------------------------------------------------
 Wed Feb  9 23:38:50 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - refreshed patches
