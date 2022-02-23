@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmltodict
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Version:        0.12.0
 Release:        0
 Summary:        Module to make XML working resemble JSON
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/martinblech/xmltodict
 Source:         https://files.pythonhosted.org/packages/source/x/xmltodict/xmltodict-%{version}.tar.gz
+Patch0:         skip-tests-expat-245.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
@@ -40,7 +40,7 @@ working with json, as in this:
 http://www.xml.com/pub/a/2006/05/31/converting-between-xml-and-json.html
 
 %prep
-%setup -q -n xmltodict-%{version}
+%autosetup -p1 -n xmltodict-%{version}
 sed -i '1{\@^#!%{_bindir}/env python@d}' xmltodict.py
 
 %build

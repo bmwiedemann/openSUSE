@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>810186</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>5743b588de2243e041586850d8ebd0be</srcmd5>
+    <version>0.12.0</version>
+    <time>1645629937</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch skip-tests-expat-245.patch:
+  * Do not run tests that make no sense with a current Expat.</comment>
+    <requestid>956659</requestid>
+  </revision>
 </revisionlist>

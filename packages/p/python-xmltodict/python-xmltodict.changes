@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 10:27:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch skip-tests-expat-245.patch:
+  * Do not run tests that make no sense with a current Expat. 
+
+-------------------------------------------------------------------
 Fri May 29 10:34:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Replace nose with pytest
