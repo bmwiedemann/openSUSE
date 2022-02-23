@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 21 09:35:23 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Skip building for python2
+
+-------------------------------------------------------------------
 Tue Sep 17 10:02:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description. Avoid name repetition in summary.
