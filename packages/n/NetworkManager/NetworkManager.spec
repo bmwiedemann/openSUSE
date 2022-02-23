@@ -88,6 +88,16 @@ Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 # PATCH-FIX-UPSTREAM nm-dhcp-use-valid-lease-on-timeout.patch glfd#NetworkManager/NetworkManager!811, bsc#1183202 sckang@suse.com Support valid lease file on dhcp timeout
 Patch8:         nm-dhcp-use-valid-lease-on-timeout.patch
+# PATCH-FIX-UPSTREAM 4685651e7671e064b911a3a05f096908e5ef0580.patch -- glib-aux: fix nm_ref_string_equal_str() Fix comparison with a NULL string
+Patch9:         https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/4685651e7671e064b911a3a05f096908e5ef0580.patch
+# PATCH-FIX-UPSTREAM 6329f1db5ac75ee3b7d2f7ce062e951a598625fe.patch -- libnm/tests: fix maybe-uninitialized warning in "test-setting"
+Patch10:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/6329f1db5ac75ee3b7d2f7ce062e951a598625fe.patch
+# PATCH-FIX-UPSTREAM aadf0fb64f491f94b2771058621dc140c562b62b.patch -- libnm/tests: fix maybe-uninitialized warning in "test-libnmc-setting"
+Patch11:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/aadf0fb64f491f94b2771058621dc140c562b62b.patch
+# PATCH-FIX-UPSTREAM 471e987add98b36520ece72ee493176fc7bc863c.patch -- device: initialize nm_auto variable in _ethtool_features_reset()
+Patch12:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/471e987add98b36520ece72ee493176fc7bc863c.patch
+# PATCH-FIX-UPSTREAM 634e023e72d4729788a022ea1fae665af28d1b0f.patch -- glib-aux: workaround maybe-uninitialized warning with LTO in nm_uuid_generate_from_string_str()
+Patch13:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/634e023e72d4729788a022ea1fae665af28d1b0f.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -241,6 +251,11 @@ This package is needed to configure PPPoE interfaces
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:

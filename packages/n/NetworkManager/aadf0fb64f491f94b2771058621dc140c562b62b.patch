@@ -1,0 +1,27 @@
+From aadf0fb64f491f94b2771058621dc140c562b62b Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Thu, 20 Jan 2022 22:33:59 +0100
+Subject: [PATCH] libnm/tests: fix maybe-uninitialized warning in
+ "test-libnmc-setting"
+
+(cherry picked from commit 87bce61bad6263755ebe0e2b2586023e29639703)
+---
+ src/libnmc-setting/tests/test-libnmc-setting.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libnmc-setting/tests/test-libnmc-setting.c b/src/libnmc-setting/tests/test-libnmc-setting.c
+index fe196ad014..ef9e6e9ded 100644
+--- a/src/libnmc-setting/tests/test-libnmc-setting.c
++++ b/src/libnmc-setting/tests/test-libnmc-setting.c
+@@ -161,7 +161,7 @@ test_client_meta_check(void)
+ static void
+ test_client_import_wireguard_test0(void)
+ {
+-    gs_unref_object NMConnection *connection;
++    gs_unref_object NMConnection *connection = NULL;
+     NMSettingWireGuard *          s_wg;
+     NMSettingIPConfig *           s_ip4;
+     NMSettingIPConfig *           s_ip6;
+-- 
+GitLab
+

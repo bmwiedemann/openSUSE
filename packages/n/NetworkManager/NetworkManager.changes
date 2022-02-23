@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 21 08:47:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bug fix patches:
+  + 4685651e7671e064b911a3a05f096908e5ef0580.patch: glib-aux: fix
+    nm_ref_string_equal_str() Fix comparison with a NULL string
+  + 6329f1db5ac75ee3b7d2f7ce062e951a598625fe.patch: libnm/tests:
+    fix maybe-uninitialized warning in "test-setting"
+  + aadf0fb64f491f94b2771058621dc140c562b62b.patch: libnm/tests:
+    fix maybe-uninitialized warning in "test-libnmc-setting"
+  + 471e987add98b36520ece72ee493176fc7bc863c.patch: device:
+    initialize nm_auto variable in _ethtool_features_reset()
+  + 634e023e72d4729788a022ea1fae665af28d1b0f.patch: glib-aux:
+    workaround maybe-uninitialized warning with LTO in
+    nm_uuid_generate_from_string_str()
+
+-------------------------------------------------------------------
 Fri Feb 18 14:30:31 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use meson LTO setup as NM makes changes to CFLAGS
