@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 22 12:25:41 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.18.2 implemented AgsMetaDataWindow and hamburger
+  menus.
+- new since 3.18.0 implemented support for GtkApplication and open
+  files attach to existing process. Note, there is a command line
+  option to prevent this.
+
+-------------------------------------------------------------------
 Sun Feb 13 10:19:36 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.17.5 updated user's handbook manual and minor
