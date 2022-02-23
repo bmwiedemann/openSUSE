@@ -41,4 +41,41 @@
     <comment></comment>
     <requestid>850756</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a47b5049f91f51089278768f584704f0</srcmd5>
+    <version>6.0.0</version>
+    <time>1645639608</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.0:
+  - Drop support for Python 3.5 and 3.6.
+  - Add support for Python 3.9 and 3.10.
+  - Drop support for Django 1.11, 2.0, and 2.1.
+  - Add support for Django 4.0.
+  - Import new MIME types from Nginx, changes:
+      - .avif files are now served with the image/avif MIME type.
+      - Open Document files with extensions .odg, .odp,
+        .ods, and .odt are now served with their respective
+        application/vnd.oasis.opendocument.* MIME types.
+  - The whitenoise.__version__ attribute has been removed. Use
+    importlib.metadata.version() to check the version of
+    Whitenoise if you need to.
+  - Requests using the Range header can no longer read beyond the
+    end of the requested range.
+  - Treat empty and &quot;*&quot; values for Accept-Encoding as if the
+    client doesn’t support any encoding.
+  - Gracefully handle unparsable If-Modified-Since headers
+    (thanks @danielegozzi).
+  - Add mimetype for Markdown (.md) files
+  - Various documentation improvements
+  - Add support for relative STATIC_URLs in settings, as allowed
+    in Django 3.1.
+  - Add mimetype for .mjs (JavaScript module) files and use
+    recommended text/javascript mimetype for .js files.
+  - Various documentation improvements (thanks @lukeburden).
+  - Add a manifest_strict setting to prevent Django throwing
+    errors when missing files are referenced.
+  - Fix packaging to indicate only Python 3.5+ compatibiity (thanks @mdalp).
+</comment>
+    <requestid>956876</requestid>
+  </revision>
 </revisionlist>

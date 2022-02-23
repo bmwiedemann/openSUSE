@@ -1,7 +1,7 @@
 #
 # spec file for package python-whitenoise
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-whitenoise
-Version:        5.1.0
+Version:        6.0.0
 Release:        0
 Summary:        Static file serving for WSGI applications
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/evansd/whitenoise
-Source:         https://github.com/evansd/whitenoise/archive/v%{version}.tar.gz#/whitenoise-%{version}.tar.gz
+Source:         https://github.com/evansd/whitenoise/archive/%{version}.tar.gz#/whitenoise-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli >= 1.0.0}
 BuildRequires:  %{python_module Django >= 2.0}
 BuildRequires:  %{python_module pytest-django}
