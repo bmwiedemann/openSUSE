@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 05:53:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-expat-245.patch:
+  * Support Expat >= 2.4.5 
+
+-------------------------------------------------------------------
 Wed Jan 19 21:50:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.9.10:

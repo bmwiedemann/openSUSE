@@ -151,6 +151,8 @@ Patch33:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch34:        skip-test_pyobject_freed_is_freed.patch
+# PATCH-FIX-UPSTREAM bpo-46811 gh#python/cpython#336a916f75642dfe2d87e237981686051d5d51f8
+Patch35:        support-expat-245.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -410,6 +412,7 @@ other applications.
 %if %{with mpdecimal}
 %patch05 -p1
 %endif
+%patch35 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
