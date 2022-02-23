@@ -33,6 +33,7 @@ RUN zypper -n install \
               libvirt-daemon-driver-storage-core \
               libvirt-daemon-qemu \
               nftables \
+              qemu-hw-usb-redirect \
               qemu-tools \
               socat \
               systemd-container \

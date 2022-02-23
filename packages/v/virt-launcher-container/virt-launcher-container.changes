@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 23 13:42:52 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Enable USB redirection support for QEMU
+
+-------------------------------------------------------------------
 Tue Feb 22 11:46:38 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Fix 'have choice for systemd-container...' build error
