@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 21 15:05:50 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Modified init-scripts service dependencies fixing a root login
+  systemd timeout when installing with ssh (bsc#1195059)
+- 4.4.31
+
+-------------------------------------------------------------------
 Mon Feb 14 16:30:39 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - The ayast_setup client imports the general settings
