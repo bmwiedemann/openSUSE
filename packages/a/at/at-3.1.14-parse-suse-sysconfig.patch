@@ -87,6 +87,6 @@ Index: at-3.2.0/configure.ac
  
 +PKG_CHECK_MODULES([HX], [libHX])
 +
+ AC_CHECK_FUNCS([__secure_getenv secure_getenv])
  dnl Checks for header files.
  AC_HEADER_DIRENT
- AC_HEADER_STDC

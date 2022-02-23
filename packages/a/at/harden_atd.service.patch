@@ -1,7 +1,7 @@
-Index: at-3.2.2/atd.service.in
+Index: at-3.2.4/atd.service.in
 ===================================================================
---- at-3.2.2.orig/atd.service.in
-+++ at-3.2.2/atd.service.in
+--- at-3.2.4.orig/atd.service.in
++++ at-3.2.4/atd.service.in
 @@ -4,6 +4,17 @@ Documentation=man:atd(8)
  After=remote-fs.target nss-user-lookup.target
  

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 22 16:24:52 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.2.4:
+  * Upstream SUSE patches
+- Update to version 3.2.3:
+  * Fix two typos on documentation
+  * Upstream SUSE patches
+  * Various improvements to the code and the build system
+- Refresh patches:
+  * at-3.1.16-handle_malformed_jobs.patch
+  * at-3.2.2.patch
+  * at-backport-old-privs.patch
+  * harden_atd.service.patch
+- Drop upstreamed patches:
+  * at-3.1.13-leak-fix.patch
+  * at-3.1.13-massive_batch.patch
+  * at-3.1.14-joblist.patch
+  * at-3.1.14-usePOSIXtimers.patch
+  * at-3.1.8-jobdir-mtime.patch
+  * at-atq-timeformat.patch
+  * at-secure_getenv.patch
+
+-------------------------------------------------------------------
 Tue Nov 23 12:32:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectSystem and ProtectHome hardening. Unfortunately they're 

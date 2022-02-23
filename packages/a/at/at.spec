@@ -1,7 +1,7 @@
 #
 # spec file for package at
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           at
-Version:        3.2.2
+Version:        3.2.4
 Release:        0
 Summary:        A Job Manager
 License:        GPL-2.0-or-later
@@ -32,29 +32,18 @@ Source3:        sysconfig.atd
 Source5:        atd.service
 Source6:        system-user-at.conf
 Patch0:         at-3.2.2.patch
-Patch4:         at-3.1.14-joblist.patch
-Patch10:        at-3.1.13-massive_batch.patch
 Patch11:        at-3.1.13-documentation-dir.patch
-# PATCH-FIX-UPSTREAM clean-up opened descriptors (bnc#533454, bnc#523346)
-Patch15:        at-3.1.13-leak-fix.patch
 #PATCH-FIX-OPENSUSE add proper system users to the deny list
 Patch16:        at-3.1.8-denylist.patch
 #PATCH-FIX-UPSTREAM plan jobs with past time to tomorrow (bnc#672586)
 Patch17:        at-3.1.13-tomorrow.patch
-#PATCH-FIX-UPSTREAM wrong mtime handling of jobdir (bnc#680113)
-Patch19:        at-3.1.8-jobdir-mtime.patch
 Patch20:        at-3.1.14-parse-suse-sysconfig.patch
 #PATCH-FIX-UPSTREAM fix makefile dependencies
 Patch21:        at-3.1.14-makefile-deps.patch
 #PATCH-FIX-OPENSUSE Set pid dir to /run not /var/run
 Patch22:        at-piddir.patch
-Patch23:        at-secure_getenv.patch
 #PATCH-FIX-OPENSUSE backport privs from 3.1.8 (bnc#849720)
 Patch24:        at-backport-old-privs.patch
-#PATCH-FEATURE-UPSTREAM introduce -o <timeformat> argument for atq (bnc#879402)
-Patch25:        at-atq-timeformat.patch
-#PATCH-FIX-OPENSUSE use posix timers to avoid the need of suspend/resume hacks.
-Patch27:        at-3.1.14-usePOSIXtimers.patch
 Patch28:        at-adjust_load_to_cpu_count.patch
 # PATCH-FIX-UPSTREAM bnc#945124 kstreitova@suse.com -- don't loop on corrupt files and prevent their creation
 Patch29:        at-3.1.16-handle_malformed_jobs.patch

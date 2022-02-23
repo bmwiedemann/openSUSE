@@ -11,10 +11,10 @@ References: https://bugzilla.novell.com/show_bug.cgi?id=849720
  at.c |   31 ++++++++++---------------------
  1 file changed, 10 insertions(+), 21 deletions(-)
 
-Index: at-3.2.0/at.c
+Index: at-3.2.4/at.c
 ===================================================================
---- at-3.2.0.orig/at.c
-+++ at-3.2.0/at.c
+--- at-3.2.4.orig/at.c
++++ at-3.2.4/at.c
 @@ -155,18 +155,11 @@ sigc(int signo)
  /* If the user presses ^C, remove the spool file and exit 
   */
@@ -40,7 +40,7 @@ Index: at-3.2.0/at.c
  	 */
  	cmask = umask(S_IRUSR | S_IWUSR | S_IXUSR);
 -        seteuid(real_uid);
- 	if ((fd = open(atfile, O_CREAT | O_EXCL | O_TRUNC | O_WRONLY, S_IRUSR)) == -1)
+ 	if ((fd = open(atfile, O_CREAT | O_EXCL | O_TRUNC | O_WRONLY | O_SYNC, S_IRUSR)) == -1)
  	    perr("Cannot create atjob file %.500s", atfile);
 -        seteuid(effective_uid);
  
@@ -54,7 +54,7 @@ Index: at-3.2.0/at.c
  
      PRIV_END
  
-@@ -719,11 +708,7 @@ process_jobs(int argc, char **argv, int
+@@ -729,11 +718,7 @@ process_jobs(int argc, char **argv, int
  		switch (what) {
  		case ATRM:
  
@@ -67,7 +67,7 @@ Index: at-3.2.0/at.c
  
  		    if (queue == '=') {
  			fprintf(stderr, "Warning: deleting running job\n");
-@@ -733,7 +718,7 @@ process_jobs(int argc, char **argv, int
+@@ -743,7 +728,7 @@ process_jobs(int argc, char **argv, int
  			rc = EXIT_FAILURE;
  		    }
  
@@ -76,7 +76,7 @@ Index: at-3.2.0/at.c
  		    done = 1;
  
  		    break;
-@@ -743,21 +728,25 @@ process_jobs(int argc, char **argv, int
+@@ -753,22 +738,26 @@ process_jobs(int argc, char **argv, int
  			FILE *fp;
  			int ch;
  
@@ -96,6 +96,7 @@ Index: at-3.2.0/at.c
 +                            PRIV_START
  			    fclose(fp);
 +                            PRIV_END
+ 			    fp = NULL;
  			}
  			else {
  			    perr("Cannot open %.500s", dirent->d_name);

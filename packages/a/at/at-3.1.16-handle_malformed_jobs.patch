@@ -1,17 +1,3 @@
-Index: at-3.1.13/at.c
-===================================================================
---- at-3.1.13.orig/at.c
-+++ at-3.1.13/at.c
-@@ -319,7 +319,8 @@ writefile(time_t runtimer, char queue)
- 	 * bit.  Yes, this is a kluge.
- 	 */
- 	cmask = umask(S_IRUSR | S_IWUSR | S_IXUSR);
--	if ((fd = open(atfile, O_CREAT | O_EXCL | O_TRUNC | O_WRONLY, S_IRUSR)) == -1)
-+	if ((fd = open(atfile,
-+	               O_CREAT | O_EXCL | O_TRUNC | O_WRONLY | O_SYNC, S_IRUSR)) == -1)
- 	    perr("Cannot create atjob file %.500s", atfile);
- 
- 	if ((fd2 = dup(fd)) < 0)
 Index: at-3.1.13/atd.c
 ===================================================================
 --- at-3.1.13.orig/atd.c
