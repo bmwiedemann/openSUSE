@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 22 13:06:51 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Use the default UI theme in SSH installation, the
+  "installation_slim" theme does not exist anymore (bsc#1196287)
+- memsample-archive-to-csv - handle "ps" errors in the data file
+- 4.4.44
+
+-------------------------------------------------------------------
+Mon Feb 21 14:59:55 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Modified Second Stage service dependencies fixing a root login
+  systemd timeout when installing with ssh (bsc#1195059)
+- 4.4.43
+
+-------------------------------------------------------------------
 Sun Feb 20 09:35:26 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not create a Btrfs snapshot at the end of the installation
