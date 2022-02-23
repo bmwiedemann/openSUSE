@@ -535,4 +535,12 @@ better packaging for distros, and various other quirks.
   * 0001-Update-FetchGlobal-usage.patch (forwarded request 947987 from mnhauke)</comment>
     <requestid>947990</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>df954c365793dfca1e62b051753782cb</srcmd5>
+    <version>2022_01_R2</version>
+    <time>1645629973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957031</requestid>
+  </revision>
 </revisionlist>

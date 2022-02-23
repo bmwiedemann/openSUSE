@@ -37,6 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libsensors4-devel
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
 BuildRequires:  python3
@@ -289,6 +290,7 @@ find . -type f -name "Makefile*" -exec sed -i 's|setup.py install|setup.py insta
 sed -i 's/\r$//' http_data/css/layout.css
 
 %build
+%limit_build -m 2500
 %configure \
     --sysconfdir=%{_sysconfdir}/kismet \
     --disable-optimization
