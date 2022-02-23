@@ -63,4 +63,34 @@
     <comment></comment>
     <requestid>929992</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>30e0dcdfa3c094e4817b1a01e893b49f</srcmd5>
+    <version>0.4.0</version>
+    <time>1645629946</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0:
+  * Add `usage` argument for `tls.default_tls_context` to control whether the
+    context is for a initiator or acceptor
+  * Add type annotations and include `py.typed` in the package for downstream
+    library use
+  * Expose the `ContextProxy` class for type annotation use
+  * Added `get_extra_info` to `ContextProxy` to expose a common way to retrieve
+    context specific information, this is currently used by CredSSP to retrieve
+    * `client_credential`: The delegated client credential for acceptors
+      once the context is complete
+    * `sslcontext`: The SSL context used to create the TLS object
+    * `ssl_object`: The TLS object used during the CredSSP exchange
+  * The `client_credential` property on `CredSSP` has been removed in
+    favour of `context.get_extra_info('client_credential')
+  * Added support for custom credential types
+    * Can be used to for things like NTLM authentication with NT/LM hashes,
+      Kerberos with a keytab or from an explicit CCache, etc
+  * Support calling SSPI through `pyspnego`'s Negotiate proxy context
+    * This allows users on Windows to still use Negotiate auth but with a
+       complex set of credentials
+    * Also opens up the ability to use Negotiate but only with Kerberos auth
+  * The `username` and `password` property on the auth context object are
+    deprecated and will return `None` until it is removed in a future release</comment>
+    <requestid>956648</requestid>
+  </revision>
 </revisionlist>
