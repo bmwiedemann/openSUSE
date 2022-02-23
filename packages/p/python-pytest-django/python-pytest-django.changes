@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 18:40:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add autoclear_mailbox.patch checking for the existence of the
+  mail.outbox before clearing it (gh#pytest-dev/pytest-django#993).
+
+-------------------------------------------------------------------
 Mon Dec 27 15:43:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.5.2

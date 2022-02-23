@@ -153,4 +153,12 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
     <comment></comment>
     <requestid>942815</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c109e651c68cdd1c0cf90fa833f0601e</srcmd5>
+    <version>4.5.2</version>
+    <time>1645629959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956875</requestid>
+  </revision>
 </revisionlist>

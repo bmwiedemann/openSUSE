@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-django
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ Summary:        A Django plugin for py.test
 License:        BSD-3-Clause
 URL:            https://github.com/pytest-dev/pytest-django
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest-django-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM autoclear_mailbox.patch gh#pytest-dev/pytest-django#993 mcepl@suse.com
+# Protect against non-existant mail.outbox folder
+# https://stackoverflow.com/q/5424498/164233
+Patch0:         autoclear_mailbox.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytest > 5.4.0}
 BuildRequires:  %{python_module pytest-xdist}
@@ -56,7 +60,7 @@ that are already present in pytest:
 * Works with both worlds: Existing unittest-style TestCase's still work without any modifications.
 
 %prep
-%setup -q -n pytest-django-%{version}
+%autosetup -p1 -n pytest-django-%{version}
 
 %build
 %python_build
