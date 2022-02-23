@@ -20,15 +20,19 @@
 %{!?_kf5_knsrcfilesdir: %global _kf5_knsrcfilesdir %{_kf5_configdir}}
 %define Kasten_sover 4
 %define Okteta_sover 3
-%bcond_without lang
+%bcond_without released
 Name:           okteta
-Version:        0.26.6
+Version:        0.26.7
 Release:        0
 Summary:        Hex Editor
 License:        GPL-2.0-only AND GFDL-1.2-only
 Group:          Development/Tools/Other
-URL:            https://www.kde.org/applications/utilities/okteta
+URL:            https://apps.kde.org/okteta
 Source0:        https://download.kde.org/stable/okteta/%{version}/src/okteta-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/okteta/%{version}/src/okteta-%{version}.tar.xz.sig
+Source2:        okteta.keyring
+%endif
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= 5.48.0
 BuildRequires:  kf5-filesystem
@@ -130,7 +134,7 @@ Contains the development files for the Okteta Hex Editor.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang okteta
     %find_lang oktetapart
     %find_lang liboktetacore libokteta.lang
@@ -187,7 +191,7 @@ Contains the development files for the Okteta Hex Editor.
 %{_kf5_libdir}/pkgconfig/OktetaGui.pc
 %{_kf5_plugindir}/designer/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %license LICENSES/*
 

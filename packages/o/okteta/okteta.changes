@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Feb 23 11:00:54 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.26.7
+  * Improved: translations
+  * Fixed: crash in string extraction tool with marked strings from
+    closed view (kde#444405)
+  * Fixed: in JIS X 0201 codec properly map ASCII control char
+    subset
+  * Fixed: use own IBM874 codec, given Qt with ICU maps it to
+    TIS-620
+  * Changed: a context menu now available with the view area (incl.
+    tabs)
+  * Changed: tabs of views can now be reordered (inside a single
+    tab area)
+  * Changed: empty documents can be created by LMB double-clicks
+    in empty areas
+  * Changed: remember used settings of tools across app restarts
+  * Changed: remember used settings of data generators across app
+    restarts
+  * Changed: remember used settings of data encoders across app
+    restarts
+- Add signature file and keyring
+
+-------------------------------------------------------------------
+Sat Apr 17 17:14:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update URL.
+
+-------------------------------------------------------------------
 Tue Mar 30 09:52:07 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.26.6
