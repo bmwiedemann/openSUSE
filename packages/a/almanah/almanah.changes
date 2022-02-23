@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 16:58:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Fix-build-meson-060.patch: Fix build with meson 0.60.x and
+  newer.
+
+-------------------------------------------------------------------
 Mon Apr 26 17:37:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.12.3

@@ -24,6 +24,8 @@ License:        GPL-3.0+
 Group:          Productivity/Office/Other
 URL:            https://gitlab.gnome.org/GNOME/almanah
 Source:         https://download.gnome.org/sources/almanah/0.12/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM Fix-build-meson-060.patch bjorn.lie@gmail.com -- Fix build with meson 0.60.x and newer
+Patch:          Fix-build-meson-060.patch
 
 BuildRequires:  gpgme-devel
 BuildRequires:  hicolor-icon-theme
