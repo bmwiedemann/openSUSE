@@ -46,4 +46,12 @@
     <comment>Remove references to parent pom + don't use compatibility versions</comment>
     <requestid>734749</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>72dbacf1a41a7311dd6f681b049f128e</srcmd5>
+    <version>3.3.2</version>
+    <time>1645629950</time>
+    <user>dimstar_suse</user>
+    <comment>Stray rm -rf in spec file</comment>
+    <requestid>956680</requestid>
+  </revision>
 </revisionlist>

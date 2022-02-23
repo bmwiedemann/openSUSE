@@ -1,7 +1,7 @@
 #
 # spec file for package asm3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -112,8 +112,6 @@ ln -s %{name}-%{version} %{buildroot}/%{_javadocdir}/%{name}
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
-
-rm -rf 
 
 %pom_remove_parent output/dist/lib/all/asm-all-%{version}.pom
 %pom_xpath_inject pom:project "
