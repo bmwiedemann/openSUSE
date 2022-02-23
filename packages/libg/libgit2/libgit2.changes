@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 19 07:58:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.1:
+  * improve compatibility with git
+  * some deprecated API, ABI has changed
+  * multiple bug fixes and developer visible changes
+- build with system PCRE2
+- remove http-parser build dependency, bundled lib has fixes
+
+-------------------------------------------------------------------
 Wed Oct 20 08:31:54 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.3.0:

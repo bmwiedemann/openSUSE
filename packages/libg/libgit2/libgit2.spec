@@ -1,7 +1,7 @@
 #
 # spec file for package libgit2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define sover 1_3
+%define sover 1_4
 Name:           libgit2
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0
@@ -28,9 +28,9 @@ URL:            https://libgit2.github.com/
 Source0:        https://github.com/libgit2/libgit2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 2.8
-BuildRequires:  http-parser-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
@@ -67,9 +67,8 @@ find examples -type f -name ".gitignore" -print -delete
 
 %build
 %cmake \
-	-DTHREADSAFE:BOOL=ON \
 	-DUSE_SSH:BOOL=ON \
-	-DUSE_SHA1DC:BOOL=ON \
+	-DREGEX_BACKEND=pcre2 \
 	%{nil}
 %cmake_build
 
@@ -85,6 +84,7 @@ find examples -type f -name ".gitignore" -print -delete
 %{_libdir}/%{name}.so.*
 
 %files devel
+%license COPYING
 %doc examples
 %{_libdir}/%{name}.so
 %{_includedir}/git2*
