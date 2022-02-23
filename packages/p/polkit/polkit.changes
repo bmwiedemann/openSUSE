@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 10:48:15 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Fixed denial of service via file descriptor leak (bsc#1195542 CVE-2021-4115)
+  0001-CVE-2021-4115-GHSL-2021-077-fix.patch
+
+-------------------------------------------------------------------
 Wed Jan 26 11:44:35 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Switch from mozjs to duktape:

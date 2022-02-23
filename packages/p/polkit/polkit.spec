@@ -42,6 +42,8 @@ Patch4:         polkit-adjust-libexec-path.patch
 Patch5:         CVE-2021-4034-pkexec-fix.patch
 # PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/polkit/polkit/-/commit/c7fc4e1b61f0fd82fc697c19c604af7e9fb291a2.patch, without .gitlab-ci.yml (not in the tarball)
 Patch6:         duktape-support.patch
+# PATCH-FIX-UPSTREAM 0001-CVE-2021-4115-GHSL-2021-077-fix.patch meissner@ -- bsc#1195542 VUL-0: CVE-2021-4115: polkit: denial of service via file descriptor leak
+Patch7:         0001-CVE-2021-4115-GHSL-2021-077-fix.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
