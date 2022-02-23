@@ -1,7 +1,7 @@
 #
 # spec file for package jboss-logging
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,11 @@ URL:            https://github.com/jboss-logging/jboss-logging
 Source0:        https://github.com/jboss-logging/jboss-logging/archive/%{namedversion}/%{name}-%{namedversion}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(log4j:log4j:1.2.16)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging.log4j:log4j-api)
-BuildRequires:  mvn(org.jboss:jboss-parent:pom:)
 BuildRequires:  mvn(org.jboss.logmanager:jboss-logmanager)
+BuildRequires:  mvn(org.jboss:jboss-parent:pom:)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
 
