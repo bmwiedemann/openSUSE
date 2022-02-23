@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 18:21:44 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages
+
+-------------------------------------------------------------------
 Tue Oct 13 14:41:39 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Version update to 3.5.6 [bsc#1177568, CVE-2020-26945]

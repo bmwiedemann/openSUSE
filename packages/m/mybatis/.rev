@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>841697</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9d730f8ab266a94eb6f68e9f3c4ecf88</srcmd5>
+    <version>3.5.6</version>
+    <time>1645639618</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957077</requestid>
+  </revision>
 </revisionlist>

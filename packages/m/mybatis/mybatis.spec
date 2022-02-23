@@ -1,7 +1,7 @@
 #
 # spec file for package mybatis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(cglib:cglib)
 BuildRequires:  mvn(commons-logging:commons-logging)
-BuildRequires:  mvn(log4j:log4j:1.2.17)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.commons:commons-ognl)
 BuildRequires:  mvn(org.apache.logging.log4j:log4j-core)
 BuildRequires:  mvn(org.apache.maven.wagon:wagon-ssh)
