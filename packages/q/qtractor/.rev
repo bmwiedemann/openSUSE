@@ -431,4 +431,14 @@ Fixes build against latest qt5 with qtractor-QAction.patch.</comment>
     <comment></comment>
     <requestid>943886</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>6888837d9a1c58184a75c6c2f5c18990</srcmd5>
+    <version>0.9.24</version>
+    <time>1645640098</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed &quot;Requires: jack&quot; as libjack.so.0 is already automatically
+  required and it conflicts with pipewire-libjack
+</comment>
+    <requestid>957113</requestid>
+  </revision>
 </revisionlist>

@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(shared-mime-info)
-Requires:       jack
 
 %description
 Qtractor is an Audio/MIDI multi-track sequencer application
