@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-commons-transaction
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Commons Transaction
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/commons/transaction/
+URL:            http://jakarta.apache.org/commons/transaction/
 Source0:        commons-transaction-1.1-src.tar.bz2
 Source1:        pom-maven2jpp-depcat.xsl
 Source2:        pom-maven2jpp-newdepmap.xsl
@@ -36,12 +36,12 @@ BuildRequires:  jakarta-commons-beanutils
 BuildRequires:  jakarta-commons-codec
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
-BuildRequires:  log4j12
+BuildRequires:  reload4j
 BuildRequires:  xerces-j2
 BuildRequires:  xml-commons-apis
 Requires:       geronimo-jta-1_1-api
 Requires:       jakarta-commons-codec
-Requires:       log4j12
+Requires:       reload4j
 Requires:       xerces-j2
 Requires:       xml-commons-apis
 BuildArch:      noarch
@@ -61,7 +61,7 @@ find . -name "*.jar" | xargs rm
 %patch0 -b .sav
 
 %build
-export CLASSPATH=$(build-classpath commons-codec jta log4j12/log4j-12):`pwd`/build/classes
+export CLASSPATH=$(build-classpath commons-codec jta reload4j):`pwd`/build/classes
 export OPT_JAR_LIST=:
 ant \
     -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
