@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 18:24:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- U_Fix-build-with-gcc-12.patch
+  * render: Fix build with gcc 12 (glfdo#xorg/xserver!853).
+
+-------------------------------------------------------------------
 Sat Feb 12 11:12:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_xephyr-Don-t-check-for-SeatId-anymore.patch

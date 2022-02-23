@@ -244,6 +244,8 @@ Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
 Patch1940:      U_xephyr-Don-t-check-for-SeatId-anymore.patch
 
+Patch1950:      U_Fix-build-with-gcc-12.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -399,6 +401,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1920 -p1
 %patch1930 -p1
 %patch1940 -p1
+%patch1950 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects

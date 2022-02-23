@@ -3731,4 +3731,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     github issue#1289)</comment>
     <requestid>953900</requestid>
   </revision>
+  <revision rev="404" vrev="4">
+    <srcmd5>fe6435c4f4eadf207a13c3e0fab63b4c</srcmd5>
+    <version>21.1.3</version>
+    <time>1645629958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956864</requestid>
+  </revision>
 </revisionlist>
