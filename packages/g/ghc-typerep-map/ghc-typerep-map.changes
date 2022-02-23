@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 15 14:10:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update typerep-map to version 0.5.0.0.
+  ## 0.5.0.0 — Feb 15, 2022
+
+  * [#117](https://github.com/kowainik/typerep-map/issues/117):
+    Support GHC-9.2
+  * [#112](https://github.com/kowainik/typerep-map/issues/112):
+    Change `TypeRepMap` parameter role to `representational`.
+
+-------------------------------------------------------------------
 Wed Aug  4 08:16:38 UTC 2021 - psimons@suse.com
 
 - Update typerep-map to version 0.4.0.0.
