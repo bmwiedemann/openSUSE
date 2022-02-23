@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 12:34:56 UTC 2022 - olaf@aepfle.de
+
+- Force correct pkgconfig_dir location to fix build
+
+-------------------------------------------------------------------
 Wed Jan 19 13:04:19 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest upstream version (1.5.0)

@@ -72,6 +72,7 @@ The package provides header and other needed development files for the library %
 
 %install
 %make_install prefix=%{_prefix} libdir=%{_libdir} \
+	pkgconfig_dir=%{_libdir}/pkgconfig \
 	plugin_dir=%{_libdir}/%{sodname}/plugins \
 	htmldir=%{_docdir}/%{name} pdfdir=%{_docdir}/%{name} doc-install
 rm %{buildroot}/%{_libdir}/%{name}.a
