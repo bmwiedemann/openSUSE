@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-poi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Java API To Access Microsoft Format Files
 License:        Apache-2.0
 Group:          Development/Languages/Java
-Url:            http://jakarta.apache.org/poi/
+URL:            http://jakarta.apache.org/poi/
 Source0:        poi-src-2.5.1-final-20040804.tar.bz2
 #cvs -d :pserver:anoncvs@cvs.apache.org:/home/cvspublic  login
 #cvs -z3 -d :pserver:anoncvs@cvs.apache.org:/home/cvspublic export -r HEAD jakarta-poi/src/scratchpad
@@ -44,7 +44,7 @@ BuildRequires:  javapackages-tools
 BuildRequires:  jaxp_transform_impl
 BuildRequires:  jdepend >= 2.6
 BuildRequires:  junit >= 3.8.1
-BuildRequires:  log4j12 >= 1.2.8
+BuildRequires:  reload4j
 BuildRequires:  xalan-j2 >= 2.5.2
 BuildRequires:  xerces-j2 >= 2.6.0
 BuildRequires:  xml-commons-apis
@@ -52,7 +52,7 @@ Requires:       jakarta-commons-beanutils >= 1.6.1
 Requires:       jakarta-commons-collections >= 2.1
 Requires:       jakarta-commons-lang >= 2.0
 Requires:       jakarta-commons-logging >= 1.0.3
-Requires:       log4j12 >= 1.2.8
+Requires:       reload4j
 Requires:       xalan-j2 >= 2.5.2
 Requires:       xerces-j2 >= 2.6.0
 BuildArch:      noarch
@@ -131,7 +131,7 @@ commons-beanutils \
 commons-collections \
 commons-lang \
 commons-logging \
-log4j12/log4j-12 \
+reload4j \
 xalan-j2 \
 xerces-j2 \
 xml-commons-apis \
