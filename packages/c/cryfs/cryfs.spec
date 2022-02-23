@@ -1,7 +1,7 @@
 #
 # spec file for package cryfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           cryfs
-Version:        0.11.0
+Version:        0.11.2
 Release:        0
 Summary:        Cryptographic filesystem for the cloud
 License:        LGPL-3.0-only

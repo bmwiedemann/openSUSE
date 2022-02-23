@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 22 07:15:07 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v0.11.2:
+  * Time to mount a file system was very long because the build
+    didn't correctly use OpenMP. This is now fixed and file systems
+    should open faster again.
+  * Fix building of the range-v3 dependency. The conan remote URL
+    for this dependency changed and we have to use the new URL.
+  * Update to CryptoPP 8.6. This fixes a rare bug where
+    CryptoPP 8.5 encrypts data wrongly.
+  * cryfs-unmount correctly unmounts paths that contain spaces.
+  * Updated to DokanY 1.2.2.1001.
+
+-------------------------------------------------------------------
 Sun Oct  3 14:09:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove cryptopp build dependency, library is bundled
