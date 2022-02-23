@@ -1,7 +1,7 @@
 #
 # spec file for package libsecret
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define have_lang 1
 Name:           libsecret
-Version:        0.20.4
+Version:        0.20.5
 Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later
@@ -26,8 +26,6 @@ URL:            https://wiki.gnome.org/Projects/Libsecret
 Source0:        https://download.gnome.org/sources/libsecret/0.20/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
-# PATCH-FIX-UPSTREAM libsecret-handle-UnknownObject.patch bsc#1190499, glgo#GNOME/libsecret!94 alynx.zhou@suse.com -- handle UnknownObject which is thrown by some implementations
-Patch0:         libsecret-handle-UnknownObject.patch
 ## SLE-only patches start at 1000
 # PATCH-FIX-SLE libsecret-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1000:      libsecret-bsc932232-use-libgcrypt-allocators.patch
@@ -35,12 +33,12 @@ Patch1000:      libsecret-bsc932232-use-libgcrypt-allocators.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.29
-BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.2.2
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.17.2.12
 BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
@@ -93,14 +91,13 @@ secrets. It communicates with the "Secret Service" using DBus.
 
 %prep
 %setup -q
-%patch0 -p1
 %if 0%{?sle_version}
 %patch1000 -p1
 %endif
 
 %build
 %meson \
-    %{nil}
+	%{nil}
 %meson_build
 
 %install
@@ -127,13 +124,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/secret-tool.1%{?ext_man}
 
 %files devel
-%doc AUTHORS ChangeLog
 %{_libdir}/libsecret-1.so
 %{_libdir}/pkgconfig/libsecret-1.pc
 %{_libdir}/pkgconfig/libsecret-unstable.pc
 %{_includedir}/libsecret-1/
 %{_datadir}/gir-1.0/Secret-1.gir
-%doc %{_datadir}/gtk-doc/html/libsecret-1/
+%doc %{_datadir}/doc/libsecret-1/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libsecret-1.deps
 %{_datadir}/vala/vapi/libsecret-1.vapi
