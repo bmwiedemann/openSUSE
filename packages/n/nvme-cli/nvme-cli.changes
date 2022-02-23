@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 22 17:45:10 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0-rc4:
+  * netapp-nvme: free the nsdescs pointer after use
+  * netapp-nvme: fix ontapdevices segfault in json output
+  * nvme-print: fix 'nvme list -o json' segfault
+  * nvme: get_ns_id command fails on nvme device
+  * wdc: updated products list for telemetry (--type) argument
+  * docs: fix typo in Data Set Management section
+  * Fix ctrlist for attach-ns and detach-ns
+  * netapp-nvme: fix nvme ns desc uuid handling for ontapdevices
+  * wdc: Fix use-after-free access of cbs_data
+  * Fixed regression with 'open namespace exclusive' (bsc#1195945)
+
+-------------------------------------------------------------------
 Fri Feb 11 13:38:15 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version v2.0-rc3:
