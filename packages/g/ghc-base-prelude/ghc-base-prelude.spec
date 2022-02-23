@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-base-prelude
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %global pkg_name base-prelude
 Name:           ghc-%{pkg_name}
-Version:        1.4
+Version:        1.6
 Release:        0
-Summary:        The most complete prelude formed solely from the "base" package
+Summary:        Featureful preludes formed solely from the "base" package
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
@@ -35,6 +35,10 @@ arrows, monoids, foldables, traversables, exceptions, generics, ST, MVars and
 STM.
 
 This package will never have any dependencies other than "base".
+
+Besides a rich prelude it provides limited ones like "BasePrelude.DataTypes",
+which only exports the data-types defined across the "base" package, and
+"BasePrelude.Operators", which only exports the common operators.
 
 /Versioning policy/
 
