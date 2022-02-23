@@ -15,4 +15,18 @@
     <comment>- skip python2 build, it doesn't work anymore</comment>
     <requestid>930234</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34f25cbdfc30e16cb60b24c9983676ce</srcmd5>
+    <version>0.5.0</version>
+    <time>1645640097</time>
+    <user>dimstar_suse</user>
+    <comment>- skip end-to-end test, they hang in OBS 
+
+- update to 0.5.0:
+  * Testing on Python 3.10.
+  * More (optional) strategies for selecting the pager command to use.
+  * Fully-automated integration testing.
+  * Support for type checking by consumers using PEP561.</comment>
+    <requestid>957114</requestid>
+  </revision>
 </revisionlist>

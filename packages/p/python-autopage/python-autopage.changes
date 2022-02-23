@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb 23 15:24:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip end-to-end test, they hang in OBS 
+
+-------------------------------------------------------------------
+Tue Feb 22 10:10:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * Testing on Python 3.10.
+  * More (optional) strategies for selecting the pager command to use.
+  * Fully-automated integration testing.
+  * Support for type checking by consumers using PEP561. 
+
+-------------------------------------------------------------------
 Mon Nov  8 20:01:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python2 build, it doesn't work anymore
