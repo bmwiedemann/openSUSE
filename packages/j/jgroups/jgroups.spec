@@ -1,7 +1,7 @@
 #
 # spec file for package jgroups
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Toolkit for reliable multicast communication
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
-Url:            http://www.jgroups.org/
+URL:            http://www.jgroups.org/
 # get source zip from sf.net
 # unzip -q JGroups-2.6.10.merge.src.zip
 # find JGroups-2.6.10.merge.src/ -iname *.jar | xargs rm -rf
@@ -57,15 +57,15 @@ BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
 BuildRequires:  jaxp_parser_impl
 BuildRequires:  junit
-BuildRequires:  log4j12
 BuildRequires:  mx4j
+BuildRequires:  reload4j
 BuildRequires:  xalan-j2
 # To use JGroups one needs:
 Requires:       apache-commons-logging
 Requires:       bsh2
 Requires:       geronimo-jms-1_1-api
 Requires:       jaxp_parser_impl
-Requires:       log4j12
+Requires:       reload4j
 Provides:       javagroups = %{version}
 Obsoletes:      javagroups < %{version}
 BuildArch:      noarch
@@ -169,7 +169,7 @@ ln -sf $(build-classpath bsh2/bsh) .
 ln -sf $(build-classpath commons-logging) .
 ln -sf $(build-classpath geronimo-jms-1.1-api) .
 ln -sf $(build-classpath junit) .
-ln -sf $(build-classpath log4j12/log4j-12) .
+ln -sf $(build-classpath reload4j/reload4j) .
 ln -sf $(build-classpath mx4j/mx4j-jmx) .
 ln -sf $(build-classpath xalan-j2) .
 ln -sf $(build-classpath xalan-j2-serializer) .
