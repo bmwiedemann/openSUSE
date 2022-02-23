@@ -201,4 +201,16 @@
     <comment></comment>
     <requestid>935145</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>564b6894540431871fee0e6405e75e83</srcmd5>
+    <version>17.0.0</version>
+    <time>1645629977</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 17.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 956543 from glaubitz)</comment>
+    <requestid>957066</requestid>
+  </revision>
 </revisionlist>
