@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 28 12:52:15 UTC 2022 - Quang Tran <quang.tran@suse.com>
+
+- version 2.7
+  * Allow to embed native PDF in AFP
+- Added patch:
+  * update-2.7.patch
+
+-------------------------------------------------------------------
 Sun Jan 24 18:01:22 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - version 2.6

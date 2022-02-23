@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-fop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %define bname fop
 Name:           xmlgraphics-fop
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Formatter for Printing XSLT Processed XML Files
 License:        Apache-2.0
 Group:          Productivity/Publishing/XML
 URL:            https://xmlgraphics.apache.org/fop/
-Source0:        https://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/source/fop-%{version}-src.tar.gz
+Source0:        https://dlcdn.apache.org/xmlgraphics/fop/source/fop-%{version}-src.tar.gz
 Source1:        https://download.sourceforge.net/project/offo/offo-hyphenation/2.2/offo-hyphenation.zip
 #FIX-OPENSUSE: add xmlgraphics-commons to classpath
 Source2:        %{name}.script
@@ -43,8 +43,9 @@ Patch4:         java8-compatibility.patch
 Patch5:         reproducible-build-manifest.patch
 Patch6:         fop-2.5-QDox-2.0.patch
 Patch7:         reproducible.patch
-BuildRequires:  ant >= 1.8.4
-BuildRequires:  apache-pdfbox >= 2.0
+Patch8:         update-2.7.patch
+BuildRequires:  ant >= 1.9.15
+BuildRequires:  apache-pdfbox >= 2.0.23
 BuildRequires:  commons-io >= 2.4
 BuildRequires:  commons-logging
 BuildRequires:  docbook-xsl-stylesheets
@@ -55,8 +56,8 @@ BuildRequires:  libxslt
 BuildRequires:  qdox >= 2.0
 BuildRequires:  unzip
 BuildRequires:  xml-commons-apis
-BuildRequires:  xmlgraphics-batik >= 1.11
-BuildRequires:  xmlgraphics-commons >= 2.1
+BuildRequires:  xmlgraphics-batik >= 1.14
+BuildRequires:  xmlgraphics-commons >= 2.6
 #!BuildIgnore:  saxon
 Requires:       java >= 1.8
 Requires:       xml-commons-apis
@@ -64,13 +65,13 @@ Requires:       mvn(com.thoughtworks.qdox:qdox) >= 2.0
 Requires:       mvn(commons-io:commons-io)
 Requires:       mvn(commons-logging:commons-logging)
 Requires:       mvn(javax.servlet:servlet-api)
-Requires:       mvn(org.apache.pdfbox:fontbox) >= 2.0
-Requires:       mvn(org.apache.xmlgraphics:batik-anim) >= 1.11
-Requires:       mvn(org.apache.xmlgraphics:batik-awt-util) >= 1.11
-Requires:       mvn(org.apache.xmlgraphics:batik-bridge) >= 1.11
-Requires:       mvn(org.apache.xmlgraphics:batik-extension) >= 1.11
-Requires:       mvn(org.apache.xmlgraphics:batik-gvt) >= 1.11
-Requires:       mvn(org.apache.xmlgraphics:batik-transcoder) >= 1.11
+Requires:       mvn(org.apache.pdfbox:fontbox) >= 2.0.0
+Requires:       mvn(org.apache.xmlgraphics:batik-anim) >= 1.14
+Requires:       mvn(org.apache.xmlgraphics:batik-awt-util) >= 1.14
+Requires:       mvn(org.apache.xmlgraphics:batik-bridge) >= 1.14
+Requires:       mvn(org.apache.xmlgraphics:batik-extension) >= 1.14
+Requires:       mvn(org.apache.xmlgraphics:batik-gvt) >= 1.14
+Requires:       mvn(org.apache.xmlgraphics:batik-transcoder) >= 1.14
 Requires:       mvn(org.apache.xmlgraphics:xmlgraphics-commons)
 Provides:       %{bname} = %{version}-%{release}
 Obsoletes:      %{bname} < %{version}-%{release}
@@ -95,6 +96,7 @@ find -name "*.jar" | xargs -t rm
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # Replace keyword "VERSION" in XML files with the real one:
 for x in %{SOURCE10} %{SOURCE11} %{SOURCE12}; do
@@ -118,14 +120,14 @@ done
 %pom_add_dep commons-io:commons-io:1.3.1 fop
 %pom_add_dep commons-logging:commons-logging:1.0.4 fop
 %pom_add_dep javax.servlet:servlet-api:2.2 fop
-%pom_add_dep org.apache.pdfbox:fontbox:2.0.16 fop
-%pom_add_dep org.apache.xmlgraphics:batik-anim:1.13 fop
-%pom_add_dep org.apache.xmlgraphics:batik-awt-util:1.13 fop
-%pom_add_dep org.apache.xmlgraphics:batik-bridge:1.13 fop
-%pom_add_dep org.apache.xmlgraphics:batik-extension:1.13 fop
-%pom_add_dep org.apache.xmlgraphics:batik-gvt:1.13 fop
-%pom_add_dep org.apache.xmlgraphics:batik-transcoder:1.13 fop
-%pom_add_dep org.apache.xmlgraphics:xmlgraphics-commons:2.4 fop
+%pom_add_dep org.apache.pdfbox:fontbox:2.0 fop
+%pom_add_dep org.apache.xmlgraphics:batik-anim:1.14 fop
+%pom_add_dep org.apache.xmlgraphics:batik-awt-util:1.14 fop
+%pom_add_dep org.apache.xmlgraphics:batik-bridge:1.14 fop
+%pom_add_dep org.apache.xmlgraphics:batik-extension:1.14 fop
+%pom_add_dep org.apache.xmlgraphics:batik-gvt:1.14 fop
+%pom_add_dep org.apache.xmlgraphics:batik-transcoder:1.14 fop
+%pom_add_dep org.apache.xmlgraphics:xmlgraphics-commons:2.6 fop
 
 %build
 build-jar-repository -s fop/lib \
