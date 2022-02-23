@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 15 20:04:35 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.6.3
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Remove GSourceFunc casts
+  * Fix missing-prototypes
+  * Bump required GLib version to 2.56
+  * Implement ISO 8601 time format to avoid post-2.56 GLib functions
+  * settings: Drop subtitle
+  * Fix multiple memory issues (gxo#apps/xfce4-notifyd!11)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Sep  1 09:46:17 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 0.6.2

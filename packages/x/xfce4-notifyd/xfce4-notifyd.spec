@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-notifyd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only
@@ -30,8 +30,8 @@ BuildRequires:  exo-tools
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 # BuildRequires:  xfce4-dev-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.42.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.12.0
@@ -39,10 +39,10 @@ BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.10.0
 Requires:       libnotify-tools
-Requires:       xfce4-notifyd-branding = %{version}
-Recommends:     %{name}-lang = %{version}
-Provides:       notification-daemon-xfce = %{version}
-Obsoletes:      notification-daemon-xfce < %{version}
+Requires:       xfce4-notifyd-branding = %{version}-%{release}
+Recommends:     %{name}-lang = %{version}-%{release}
+Provides:       notification-daemon-xfce = %{version}-%{release}
+Obsoletes:      notification-daemon-xfce < %{version}-%{release}
 
 %description
 Xfce4-notifyd is a simple, visually-appealing notification daemon for Xfce that
@@ -53,7 +53,7 @@ Summary:        Upstream Branding of xfce4-notifyd
 # BRAND: xfce4-notifyd.xml: Controls the appearance of notifications.
 Group:          System/GUI/XFCE
 Conflicts:      otherproviders(xfce4-notifyd-branding)
-Provides:       xfce4-notifyd-branding = %{version}
+Provides:       xfce4-notifyd-branding = %{version}-%{release}
 Supplements:    packageand(xfce4-notifyd:branding-upstream)
 BuildArch:      noarch
 
