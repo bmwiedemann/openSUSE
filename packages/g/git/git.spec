@@ -82,9 +82,9 @@ Requires:       git-core = %{version}
 Requires:       perl-Git = %{version}
 Recommends:     git-cvs
 Recommends:     git-email
-Recommends:     git-gui
 Recommends:     git-svn
-Recommends:     gitk
+Suggests:       git-gui
+Suggests:       gitk
 Suggests:       git-daemon
 Suggests:       git-web
 %if 0%{?suse_version} >= 1500
