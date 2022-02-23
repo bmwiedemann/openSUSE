@@ -57,7 +57,6 @@ Source4:        %{name}-%{major_version}.%{minor_version}.wrapper
 Source5:        %{name}-%{major_version}.%{minor_version}.logrotate
 Source6:        %{name}-%{major_version}.%{minor_version}-digest.script
 Source7:        %{name}-%{major_version}.%{minor_version}-tool-wrapper.script
-Source10:       %{name}-%{major_version}.%{minor_version}-log4j.properties
 Source11:       %{name}-%{major_version}.%{minor_version}.service
 Source20:       %{name}-%{major_version}.%{minor_version}-jsvc.service
 Source21:       tomcat-functions
@@ -108,7 +107,6 @@ BuildRequires:  jakarta-taglibs-standard >= 1.1
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
-BuildRequires:  log4j12
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
@@ -122,7 +120,6 @@ Requires:       apache-commons-dbcp
 Requires:       apache-commons-logging
 Requires:       apache-commons-pool2
 Requires:       java >= 1.8
-Requires:       log4j12
 Requires(post): %fillup_prereq
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
@@ -366,7 +363,6 @@ install -d -m 0755 %{buildroot}%{_fillupdir}
 # First copy supporting libs to tomcat lib
 pushd output/build
     cp -a bin/*.{jar,xml} %{buildroot}%{bindir}
-    cp %{SOURCE10} conf/log4j.properties
     cp -a conf/*.{policy,properties,xml} %{buildroot}%{confdir}
     cp -a lib/*.jar %{buildroot}%{libdir}
     cp -a webapps/* %{buildroot}%{tomcatappdir}
@@ -445,7 +441,6 @@ pushd %{buildroot}%{libdir}
     rm -f commons-dbcp.jar
     ln -s $(build-classpath commons-dbcp2) commons-dbcp2.jar
     ln -s $(build-classpath commons-pool2) commons-pool2.jar
-    ln -s $(build-classpath log4j12/log4j-12) log4j.jar
     ln -s $(build-classpath ecj/ecj) jasper-jdt.jar
 
     # Temporary copy the juli jar here from %%{_datadir}/java/tomcat (for maven depmap)

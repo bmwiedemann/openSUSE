@@ -781,4 +781,12 @@ can be accepted after ecj-4.2.1 version upgrade
 </comment>
     <requestid>956682</requestid>
   </revision>
+  <revision rev="82" vrev="6">
+    <srcmd5>bb00da02fc51ee374457a90222943867</srcmd5>
+    <version>9.0.43</version>
+    <time>1645639609</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1196137</comment>
+    <requestid>957023</requestid>
+  </revision>
 </revisionlist>

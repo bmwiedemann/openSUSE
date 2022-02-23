@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 23 11:57:30 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on log4j/reload4j completely (bsc#1196137)
+
+-------------------------------------------------------------------
+Tue Feb 22 19:00:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages, use the new reload4j
+
+-------------------------------------------------------------------
 Fri Jan 28 14:01:40 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Fixed CVEs:
