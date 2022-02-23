@@ -990,7 +990,6 @@ unsorted:
   - avahi-autoipd 
   - avahi-compat-howl-devel 
   - avahi-compat-mDNSResponder-devel 
-  - avahi-mono 
   - avahi-utils 
   - avahi-utils-gtk 
   - avalon-framework 
@@ -3821,6 +3820,7 @@ unsorted:
   - foliate-lang 
   - folks-devel 
   - folks-tools 
+  - folly-devel 
   - foma 
   - foma-devel 
   - fondu 
@@ -9342,6 +9342,7 @@ unsorted:
   - libSDLmm-0_1-8-32bit: [x86_64] 
   - libSDLmm-devel 
   - libSDLmm-devel-32bit: [x86_64] 
+  - libSFCGAL1 
   - libSHERPA-MC0 
   - libSHERPA-MC0-config 
   - libSILLY-devel 
@@ -9374,7 +9375,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVkLayer_utils-1_2_198_0 
+  - libVkLayer_utils-1_3_204_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -10811,6 +10812,7 @@ unsorted:
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
+  - libfolly-v2022_01_24_00 
   - libfoma0 
   - libfont-specimen0 
   - libfontenc-devel: [i586] # devel package of dvd:libfontenc1 
@@ -15611,6 +15613,7 @@ unsorted:
   - makedepend 
   - makedev 
   - makeinfo 
+  - makeinfo-lang 
   - makeself 
   - makewhat 
   - mako 
@@ -21074,6 +21077,7 @@ unsorted:
   - pronsole 
   - pronterface 
   - prosody 
+  - prosody-community-modules 
   - proteus 
   - protobuf-devel 
   - protobuf-java 
@@ -21782,6 +21786,7 @@ unsorted:
   - python310-HeapDict 
   - python310-IMAPClient 
   - python310-IMDbPY 
+  - python310-JPype1 
   - python310-Jinja2 
   - python310-Js2Py 
   - python310-JsonWeb 
@@ -22499,6 +22504,13 @@ unsorted:
   - python310-cheroot 
   - python310-chest 
   - python310-circuitbreaker 
+  - python310-cirq: [x86_64] 
+  - python310-cirq-aqt: [x86_64] 
+  - python310-cirq-core: [x86_64] 
+  - python310-cirq-google: [x86_64] 
+  - python310-cirq-ionq: [x86_64] 
+  - python310-cirq-pasqal: [x86_64] 
+  - python310-cirq-web: [x86_64] 
   - python310-ciscoconfparse 
   - python310-cl 
   - python310-cleo 
@@ -22679,6 +22691,7 @@ unsorted:
   - python310-django-appconf 
   - python310-django-assets 
   - python310-django-attachments 
+  - python310-django-auth-ldap 
   - python310-django-avatar 
   - python310-django-axes 
   - python310-django-bootstrap3 
@@ -23722,6 +23735,7 @@ unsorted:
   - python310-pmw 
   - python310-pname 
   - python310-podcastparser 
+  - python310-podman 
   - python310-poetry 
   - python310-poetry-core 
   - python310-polib 
@@ -24871,7 +24885,6 @@ unsorted:
   - python36-curses 
   - python36-dbm 
   - python36-devel 
-  - python36-django-auth-ldap 
   - python36-django-bootstrap4 
   - python36-django-invitations 
   - python36-django-money 
@@ -24892,7 +24905,6 @@ unsorted:
   - python36-mrkd 
   - python36-oic 
   - python36-pip-licenses 
-  - python36-podman 
   - python36-raven-aiohttp 
   - python36-requests-gssapi 
   - python36-starlette 
@@ -25642,6 +25654,12 @@ unsorted:
   - python38-chest 
   - python38-circuitbreaker 
   - python38-cirq: [x86_64] 
+  - python38-cirq-aqt: [x86_64] 
+  - python38-cirq-core: [x86_64] 
+  - python38-cirq-google: [x86_64] 
+  - python38-cirq-ionq: [x86_64] 
+  - python38-cirq-pasqal: [x86_64] 
+  - python38-cirq-web: [x86_64] 
   - python38-ciscoconfparse 
   - python38-cl 
   - python38-cleo 
@@ -28657,6 +28675,12 @@ unsorted:
   - python39-chest 
   - python39-circuitbreaker 
   - python39-cirq: [x86_64] 
+  - python39-cirq-aqt: [x86_64] 
+  - python39-cirq-core: [x86_64] 
+  - python39-cirq-google: [x86_64] 
+  - python39-cirq-ionq: [x86_64] 
+  - python39-cirq-pasqal: [x86_64] 
+  - python39-cirq-web: [x86_64] 
   - python39-ciscoconfparse 
   - python39-cl 
   - python39-cleo 
@@ -32342,6 +32366,8 @@ unsorted:
   - setroubleshoot-plugins-lang 
   - setroubleshoot-server 
   - sev-tool 
+  - sfcgal 
+  - sfcgal-devel 
   - sfftobmp 
   - sffview 
   - sfml2-devel 
