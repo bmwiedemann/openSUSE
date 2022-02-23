@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 23 05:26:26 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.3.0:
+  * No upstream changelog
+- Switch URL from github to pypi
+- Remove django3.patch
+- Add patch support-public-httpresponse.patch:
+  * Use public HTTPResponse, which is now required. 
+
+-------------------------------------------------------------------
 Tue Apr 28 09:08:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to build with django 3.x:

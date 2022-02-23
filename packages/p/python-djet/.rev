@@ -25,4 +25,17 @@
   * django3.patch</comment>
     <requestid>798600</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>096d7beb8fc0059ce57ad69d22371244</srcmd5>
+    <version>0.3.0</version>
+    <time>1645629965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * No upstream changelog
+- Switch URL from github to pypi
+- Remove django3.patch
+- Add patch support-public-httpresponse.patch:
+  * Use public HTTPResponse, which is now required.</comment>
+    <requestid>956897</requestid>
+  </revision>
 </revisionlist>

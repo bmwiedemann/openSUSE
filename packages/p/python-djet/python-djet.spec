@@ -1,7 +1,7 @@
 #
 # spec file for package python-djet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-djet
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        Set of helpers for easy testing of Django apps
 License:        MIT
 URL:            https://github.com/sunscrapers/djet
-Source:         https://github.com/sunscrapers/djet/archive/%{version}.tar.gz#/djet-%{version}.tar.gz
-Patch0:         django3.patch
+Source:         https://files.pythonhosted.org/packages/source/d/djet/djet-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#sunscrapers/djet#f97c37afeb1b6f17055d2eebadaa42bc316cd15f
+Patch0:         support-public-httpresponse.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module djangorestframework}
@@ -45,8 +46,7 @@ BuildArch:      noarch
 Set of helpers for easy testing of Django apps.
 
 %prep
-%setup -q -n djet-%{version}
-%patch0 -p1
+%autosetup -p1 -n djet-%{version}
 
 %build
 %python_build
@@ -61,7 +61,7 @@ export DJANGO_SETTINGS_MODULE=settings
 # test_make_inmemory_image_should_pass fails on s390x and ppc64
 # PIL/ImageFile.py:496: SystemError: tile cannot extend outside image
 # https://github.com/sunscrapers/djet/issues/31
-%pytest -k 'not test_make_inmemory_image_should_pass'
+%pytest -k 'not (test_make_inmemory_image_should_pass or test_listdir_should_return_proper_paths)'
 
 %files %{python_files}
 %license LICENSE
