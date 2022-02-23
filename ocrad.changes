@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 14 23:07:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28:
+  * Support for PNG images has been implemented using libpng.
+  * The version test macro OCRAD_API_VERSION and the function OCRAD_api_version
+    are now declared in the header file ocradlib.h. They tell to the application
+    the version of the library.
+
+-------------------------------------------------------------------
 Sat Jan 12 20:13:34 UTC 2019 - astieger@suse.com
 
 - update to 0.27:

@@ -1,7 +1,7 @@
 #
 # spec file for package ocrad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           ocrad
-Version:        0.27
+Version:        0.28
 Release:        0
 Summary:        Optical Character Recognition Program
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            http://www.gnu.org/software/ocrad/
-Source0:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.lz
-Source1:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.lz.sig
+URL:            https://www.gnu.org/software/ocrad/
+Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.lz
+Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.lz.sig
 Source2:        %{name}.keyring
 BuildRequires:  gcc-c++
+BuildRequires:  libpng-devel
 BuildRequires:  lzip
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 
 %description
 GNU Ocrad is an OCR (Optical Character Recognition) program based on a feature
@@ -54,7 +55,7 @@ Development files for GNU ocrad - useful for programs implementing OCR.
 
 %build
 %configure
-make CXXFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build CXXFLAGS="%{optflags}"
 
 %install
 %make_install
@@ -67,8 +68,8 @@ rm -f %{buildroot}%{_libdir}/libocrad.a
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
-%doc AUTHORS ChangeLog NEWS README
 %license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/ocrad
 %{_infodir}/ocrad*
 %{_mandir}/man1/ocrad*
