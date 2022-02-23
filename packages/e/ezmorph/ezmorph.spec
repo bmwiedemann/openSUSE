@@ -1,7 +1,7 @@
 #
 # spec file for package ezmorph
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  mvn(commons-beanutils:commons-beanutils)
 BuildRequires:  mvn(commons-lang:commons-lang)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(log4j:log4j:12)
+BuildRequires:  mvn(log4j:log4j)
 BuildArch:      noarch
 
 %description
@@ -51,8 +51,6 @@ API documentation for %{name}.
 %setup -q
 
 cp -p %{SOURCE1} LICENSE.txt
-
-%pom_change_dep :log4j ::12
 
 %pom_xpath_remove "pom:plugins"
 

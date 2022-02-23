@@ -15,4 +15,12 @@
     <comment>fix build with new maven-javadoc-plugin</comment>
     <requestid>750526</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b3ed29d9bb0296b8068a5f7d1697c28e</srcmd5>
+    <version>1.0.6</version>
+    <time>1645639615</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957073</requestid>
+  </revision>
 </revisionlist>
