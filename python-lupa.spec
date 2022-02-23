@@ -1,7 +1,7 @@
 #
 # spec file for package python-lupa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-lupa
 Version:        1.10
 Release:        0
@@ -31,10 +32,13 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(lua)
-Recommends:     luajit
 Suggests:       lua
+%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %ifnarch riscv64
 BuildRequires:  pkgconfig(luajit)
+%endif
+Recommends:     luajit
+# /suse_version
 %endif
 %python_subpackages
 
