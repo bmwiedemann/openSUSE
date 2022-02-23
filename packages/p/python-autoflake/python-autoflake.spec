@@ -1,7 +1,7 @@
 #
 # spec file for package python-autoflake
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyflakes >= 1.1.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 BuildRequires:  %{python_module pyflakes >= 1.1.0}
 %python_subpackages
@@ -63,7 +63,9 @@ autoflake also removes useless pass statements.
 
 %check
 export $LANG=en_US.UTF-8
-%pytest
+# gh#PyCQA/autoflake#104
+python310_skiptests='not test_is_literal_or_name'
+%pytest -k "${$python_skiptests}"
 
 %post
 %python_install_alternative autoflake
