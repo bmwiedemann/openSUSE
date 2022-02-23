@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 22 20:07:14 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.9.5
+  Features:
+  * Disable advanced paste when there is no linebreak like iTerm2
+  * Add environment variable when in quake mode
+  * Add possibility to configure always enabled regex
+  Bugfixes:
+  * More appdata -> metainfo move
+  * Add meson target for man page translations
+  * Update flatpak manifest
+  * meson: drop unused argument for i18n.merge_file()
+  * Stop using deprecated Meson features
+  * Keep quake window open if focus is restored before timeout has been reached
+  * Don't check GtkDragResult (Wayland compatibility)
+  * Don't add application/x-rootwindow-drop to dragSourceSet targets
+- drop patches fixed in release:
+  * 2081.patch
+  * tilix-1.9.4-localized-man.patch
+- rebase patches:
+  * 0001-Don-t-generate-appstream-meta-data-on-older-versions.patch
+- change condition since the patches are just required for Leap 15.3.
+  Leap 15.4 will not need them
+
+-------------------------------------------------------------------
 Mon Feb 21 12:35:35 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 2081.patch: Fix build using Meson 0.61+.

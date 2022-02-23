@@ -19,31 +19,27 @@
 #
 %define _lto_cflags %{nil}
 Name:           tilix
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        A tiling terminal emulator based on GTK+ 3
 License:        LGPL-3.0-only AND MPL-2.0
 URL:            https://github.com/gnunn1/tilix
 Source0:        https://github.com/gnunn1/tilix/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-%if 0%{?suse_version} < 1550
+%if 0%{?sle_version} < 150400 && 0%{?is_opensuse} 
 Source1:        com.gexperts.Tilix.appdata.xml
 %endif
 # PATCH-FIX-OPENSUSE gnome-ssh-agent.patch gh#gnunn1/tilix#870
 Patch0:         gnome-ssh-agent.patch
-# PATCH-FIX-UPSTREAM tilix-1.9.4-localized-man.patch -- https://github.com/gnunn1/tilix/pull/2006
-Patch1:         tilix-1.9.4-localized-man.patch
-%if 0%{?suse_version} < 1550
+%if 0%{?sle_version} < 150400 && 0%{?is_opensuse} 
 # PATCH-FIX-OPENSUSE 0001-Don-t-generate-appstream-meta-data-on-older-versions.patch -- Provide appdata.xml instead of generating one since we have to old version of appstream in Leap releases
-Patch2:         0001-Don-t-generate-appstream-meta-data-on-older-versions.patch
+Patch1:         0001-Don-t-generate-appstream-meta-data-on-older-versions.patch
 %endif
-# PATCH-FIX-UPSTREAM 2081.patch -- Fix build with Meson 0.61+
-Patch3:         https://patch-diff.githubusercontent.com/raw/gnunn1/tilix/pull/2081.patch
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  ldc
 BuildRequires:  ldc-phobos-devel
-%if 0%{?suse_version} < 1550
+%if 0%{?sle_version} < 150400 && 0%{?is_opensuse}
 BuildRequires:  librsvg-devel
 %endif
 BuildRequires:  meson
@@ -99,7 +95,7 @@ cp -a source/x11/LICENSE LICENSE-source-x11
 %install
 %meson_install
 
-%if 0%{?suse_version} < 1550
+%if 0%{?sle_version} < 150400 && 0%{?is_opensuse}
 mkdir -p %{buildroot}%{_datadir}/metainfo/
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/metainfo/com.gexperts.Tilix.appdata.xml
 %endif
