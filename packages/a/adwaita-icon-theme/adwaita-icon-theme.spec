@@ -1,7 +1,7 @@
 #
 # spec file for package adwaita-icon-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,8 @@ BuildRequires:  gtk3-tools >= 3.24.2
 
 BuildRequires:  pkgconfig
 # To make sure the icon theme cache gets generated
-Requires(post): gtk3-tools
+Requires(post): (gtk3-tools if libgtk-3-0)
+Requires(post): (gtk4-tools if libgtk-4-1)
 Provides:       %{name}-devel = %{version}-%{release}
 BuildArch:      noarch
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 21 10:19:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace Requires(post): gtk3-tools with the 2 following:
+  + Requires(post): (gtk3-tools if libgtk-3-0)
+  + Requires(post): (gtk4-tools if libgtk-4-1)
+  Do this as we want gtk3-tools when building and installing a gtk3
+  based package, and gtk4-tools when building and installing a gtk4
+  based package.
+
+-------------------------------------------------------------------
 Mon Sep 13 07:19:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 41.0:
