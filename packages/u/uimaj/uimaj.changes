@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 23 12:56:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages, use the new reload4j
+
+-------------------------------------------------------------------
 Mon Mar  2 11:35:39 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of uimaj 2.8.1

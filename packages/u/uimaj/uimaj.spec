@@ -1,7 +1,7 @@
 #
 # spec file for package uimaj
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  mvn(ant-contrib:ant-contrib)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(log4j:log4j:1.2.17)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.ant:ant-apache-regexp)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)

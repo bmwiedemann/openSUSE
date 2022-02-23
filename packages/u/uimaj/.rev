@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>780924</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da5d039956aa0f11d6a13101881ea753</srcmd5>
+    <version>2.8.1</version>
+    <time>1645639620</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957083</requestid>
+  </revision>
 </revisionlist>
