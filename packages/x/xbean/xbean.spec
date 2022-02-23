@@ -1,7 +1,7 @@
 #
 # spec file for package xbean
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,16 +31,13 @@ BuildRequires:  apache-commons-logging
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  log4j12
 BuildRequires:  objectweb-asm >= 5
+BuildRequires:  reload4j
 BuildRequires:  slf4j
 BuildRequires:  unzip
 # The code uses sun.misc.URLClassloader
 BuildConflicts: java-devel >= 9
 BuildConflicts: java-headless >= 9
-# Avoid build cycles
-BuildConflicts: java-devel-openj9
-BuildConflicts: java-headless-openj9
 Requires:       objectweb-asm >= 5
 Requires:       slf4j
 BuildArch:      noarch
@@ -111,14 +108,14 @@ for i in xbean-asm-util xbean-classpath xbean-finder xbean-naming xbean-reflect;
   pushd $i
     mkdir -p build/classes
     javac -d build/classes  -encoding utf-8 -source 6 -target 6 \
-      -cp $(build-classpath log4j12/log4j-12 commons-logging-api slf4j/api objectweb-asm/asm objectweb-asm/asm-commons):../xbean-asm-util/xbean-asm-util.jar \
+      -cp $(build-classpath reload4j commons-logging-api slf4j/api objectweb-asm/asm objectweb-asm/asm-commons):../xbean-asm-util/xbean-asm-util.jar \
       $(find src/main/java -name *.java)
     jar cf $i.jar -C build/classes .
   popd
 done
 mkdir -p build/apidoc
 javadoc -d build/apidoc -source 6 -encoding utf-8 \
-  -classpath $(build-classpath log4j12/log4j-12 commons-logging-api slf4j/api objectweb-asm/asm objectweb-asm/asm-commons) \
+  -classpath $(build-classpath reload4j commons-logging-api slf4j/api objectweb-asm/asm objectweb-asm/asm-commons) \
   $(for i in xbean-asm-util xbean-classpath xbean-finder xbean-naming xbean-reflect; do find $i/src/main/java -name *.java; done | xargs)
 
 %install
