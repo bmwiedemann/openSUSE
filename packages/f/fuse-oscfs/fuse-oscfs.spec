@@ -17,7 +17,7 @@
 
 
 Name:           fuse-oscfs
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A FUSE file system for accessing Open Build Service instances
 License:        GPL-2.0-or-later

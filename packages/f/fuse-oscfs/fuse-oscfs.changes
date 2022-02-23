@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 23 10:25:23 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version v0.8.1:
+  * urlopenwrapper: make data an optional argument, fixing a start error on
+    some Python versions.
+
+-------------------------------------------------------------------
 Tue Feb 22 09:42:26 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version v0.8.0:

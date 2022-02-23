@@ -47,4 +47,14 @@
     Source code is now conforming largely to PIP and flake8 standards.</comment>
     <requestid>956655</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>399433f0e20a73a2ac47d608848f4201</srcmd5>
+    <version>0.8.1</version>
+    <time>1645629970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v0.8.1:
+  * urlopenwrapper: make data an optional argument, fixing a start error on
+    some Python versions.</comment>
+    <requestid>957001</requestid>
+  </revision>
 </revisionlist>
