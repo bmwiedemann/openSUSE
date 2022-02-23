@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 11:34:20 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Fixed active configuration detection (bsc#1196276, bsc#1194911)
+- 4.4.40
+
+-------------------------------------------------------------------
 Thu Feb 10 18:01:05 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Related to (bsc#1194911)
