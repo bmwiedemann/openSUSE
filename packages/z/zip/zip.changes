@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 13 08:37:38 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add 0002-unix-reproducible-directory-order-scandir.patch
+  to make zip file creation reproducible
+- Add build time %check
+
+-------------------------------------------------------------------
 Fri May  3 10:41:10 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to allow to override mtime values

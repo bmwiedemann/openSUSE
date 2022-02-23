@@ -36,6 +36,7 @@ Patch8:         zip-3.0-nomutilation.patch
 Patch9:         zip-3.0-fix-memory_leaks.patch
 Patch10:        reproducible.patch
 Patch11:        zip-3.0-fix-doc.patch
+Patch12:        0002-unix-reproducible-directory-order-scandir.patch
 Provides:       crzip = %{version}
 Obsoletes:      crzip < %{version}
 BuildRequires:  libbz2-devel
@@ -57,6 +58,7 @@ PKZIP(tm) 2.04g (Phil Katz ZIP) for MS-DOS systems.
 %patch9
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 make %{?_smp_mflags} -f unix/Makefile prefix=/usr CC="gcc %{optflags} -DLARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64" generic_gcc
@@ -65,6 +67,9 @@ make %{?_smp_mflags} -f unix/Makefile prefix=/usr CC="gcc %{optflags} -DLARGEFIL
 mkdir -p %{buildroot}%{_prefix}/bin
 mkdir -p %{buildroot}%{_mandir}/man1
 make install -f unix/Makefile BINDIR=%{buildroot}%{_bindir} MANDIR=%{buildroot}%{_mandir}/man1
+
+%check
+sh -e ./test.sh
 
 %files
 %defattr(-,root,root)
