@@ -1,7 +1,7 @@
 #
 # spec file for package netty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ BuildRequires:  mvn(com.jcraft:jzlib)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(io.netty:netty-jni-util::sources:)
 BuildRequires:  mvn(kr.motd.maven:os-maven-plugin)
-BuildRequires:  mvn(log4j:log4j:1.2.17)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)

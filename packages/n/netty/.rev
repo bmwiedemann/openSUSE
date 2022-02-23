@@ -47,4 +47,12 @@
     <comment>bsc#1193672</comment>
     <requestid>946202</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>17a252ebbebc18199ed0b8bf82e912ba</srcmd5>
+    <version>4.1.72</version>
+    <time>1645639618</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957078</requestid>
+  </revision>
 </revisionlist>
