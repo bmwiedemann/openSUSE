@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define somajor 0
 %define libdirname tree_sitter
 Name:           tree-sitter
-Version:        0.20.0
+Version:        0.20.4
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        MIT

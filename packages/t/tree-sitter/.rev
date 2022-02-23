@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>929677</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cb186816cdd188677398cb3fb03f32a3</srcmd5>
+    <version>0.20.4</version>
+    <time>1645629977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.4:
+  - Always generate parser.h, regardless of chosen ABI version
+  - add test for removals in eager query matches
+  - remove non-local query matches for locals
+  - remove unfinished queries from 'ts_query_cursor_remove_match'
+  - prevent future matches for '#is-not? local' patterns
+  - Represent quantifiers using bytes instead of ints
+  - Prefix globally visible TSquantifier values
+  - Rewrite quantifier oeprations
+  - Add pointer indirection to AnalysisStateSet
+  - Fixed rust build, updated docs
+  - get_column now counts codepoints
+  - Add realloc to wasm exports
+  - Add link to Protocol Buffers grammar
+  - Convert more fixture grammars from JSON to JS
+  - Simplify allocation-recording in test suite using new
+    ts_set_allocator API
+  - Address feedback
+  - Make SubtreeInlineData work on Big-Endian
+  - Replace allocator struct with function pointers
+  - cli: Fix parsing of test files with newlines in test names
+  - Avoid allocator from being switched more than once
+  - Remove ts_allocator from api.h
+  - Add TSAllocator and ts_set_allocator in api.h
+  - Fix declaration of ts_toggle_allocation_recording
+  - Allow to change the allocator dynamically
+  - Support @module as a highlight key.
+  - add link to in-development Elixir parser
+  - Added bindings for Java and Kotlin to `index.md`
+  - Remove unnecessary types from binding.rs</comment>
+    <requestid>957067</requestid>
+  </revision>
 </revisionlist>
