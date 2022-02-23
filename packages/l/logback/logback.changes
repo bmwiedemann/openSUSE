@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 18:16:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages
+
+-------------------------------------------------------------------
 Fri Dec 17 12:11:00 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not execute goals generateTestStubs and compileTests of
