@@ -23,4 +23,12 @@
     <comment>Adapt to groovy18</comment>
     <requestid>757284</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>52212cce4d9737b9f823aada8d815f48</srcmd5>
+    <version>2.4</version>
+    <time>1645639617</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957075</requestid>
+  </revision>
 </revisionlist>

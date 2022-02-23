@@ -1,7 +1,7 @@
 #
 # spec file for package json-lib
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildRequires:  mvn(commons-collections:commons-collections)
 BuildRequires:  mvn(commons-lang:commons-lang)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(log4j:log4j:1.2.14)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(net.sf.ezmorph:ezmorph)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache:apache:pom:)
