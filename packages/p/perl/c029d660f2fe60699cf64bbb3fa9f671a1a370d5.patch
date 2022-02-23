@@ -12,7 +12,7 @@ gdbm commit d3e27957).
  1 file changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/ext/GDBM_File/GDBM_File.xs b/ext/GDBM_File/GDBM_File.xs
-index cd0bb6f26ffa..494c2889ca89 100644
+index cd0bb6f26ff..494c2889ca8 100644
 --- a/ext/GDBM_File/GDBM_File.xs
 +++ b/ext/GDBM_File/GDBM_File.xs
 @@ -145,14 +145,13 @@ output_datum(pTHX_ SV *arg, char *str, int size)

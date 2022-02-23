@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  4 08:08:30 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Add multibuild flavor to split the testsuite out of the main package
+  build time. The testsuite dominates the build time and having perl
+  in the bootstrap cycle, we better seperate it. The testsuite flavor
+  rebuilds the same package the same way, but runs the check section
+
+-------------------------------------------------------------------
 Thu Sep  2 15:22:45 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 5.34.0

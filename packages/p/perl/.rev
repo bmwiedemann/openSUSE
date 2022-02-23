@@ -1032,4 +1032,15 @@ e.g. https://build.opensuse.org/package/show/devel:languages:perl/perl-Pod-Parse
 </comment>
     <requestid>921020</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>2508b17eb9f3446d219e58e27ede2ebb</srcmd5>
+    <version>5.34.0</version>
+    <time>1645629934</time>
+    <user>dimstar_suse</user>
+    <comment>- Add multibuild flavor to split the testsuite out of the main package
+  build time. The testsuite dominates the build time and having perl
+  in the bootstrap cycle, we better seperate it. The testsuite flavor
+  rebuilds the same package the same way, but runs the check section</comment>
+    <requestid>956107</requestid>
+  </revision>
 </revisionlist>

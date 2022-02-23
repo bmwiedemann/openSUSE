@@ -1,7 +1,7 @@
 #
-# spec file for package perl
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,15 @@
 #
 
 
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" != ""
+%define name_suffix -%{flavor}
+%endif
+
 %define pversion 5.34.0
 # set to %nil when equal to pversion
 %global versionlist %nil
-Name:           perl
+Name:           perl%{?name_suffix}
 Version:        5.34.0
 Release:        0
 Summary:        The Perl interpreter
@@ -27,7 +32,7 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Languages/Perl
 URL:            https://www.perl.org/
 Source:         https://www.cpan.org/src/5.0/perl-%{version}.tar.xz
-Source1:        %{name}-rpmlintrc
+Source1:        perl-rpmlintrc
 Source2:        macros.perl
 Source3:        README.macros
 Source4:        baselibs.conf
@@ -225,7 +230,8 @@ mv savelib lib
 make %{?_smp_mflags}
 
 %check
-%if !0%{?qemu_user_space_build}
+%if "%{name}" == "perl-testsuite" && !0%{?qemu_user_space_build}
+%define _unpackaged_files_terminate_build 0
 TEST_JOBS="%{jobs}" make %{?_smp_mflags} test
 %endif
 
@@ -347,6 +353,7 @@ EOF
    done)
 } > perl-base-excludes
 
+%if "%{name}" == "perl"
 %files base -f perl-base-filelist
 %license Copying Artistic
 %dir /usr/lib/perl5
@@ -373,5 +380,6 @@ EOF
 %{_mandir}/man1/*
 %{_mandir}/man3/*
 %doc /usr/lib/perl5/*/pod
+%endif
 
 %changelog
