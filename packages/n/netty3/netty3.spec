@@ -1,7 +1,7 @@
 #
 # spec file for package netty3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  mvn(com.google.protobuf:protobuf-java)
 BuildRequires:  mvn(com.jcraft:jzlib)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
-BuildRequires:  mvn(log4j:log4j:1.2.16)
+BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.ant:ant-launcher)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)

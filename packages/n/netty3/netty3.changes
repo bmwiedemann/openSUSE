@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 18:26:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages
+
+-------------------------------------------------------------------
 Sun Apr  4 05:47:53 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Change dependency on netty-tcnative to tomcat-jni

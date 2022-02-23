@@ -39,4 +39,12 @@
     <comment>fix build in factory</comment>
     <requestid>882852</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>812aa84333acb3b72656b36dcc4577af</srcmd5>
+    <version>3.10.6</version>
+    <time>1645639619</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957079</requestid>
+  </revision>
 </revisionlist>
