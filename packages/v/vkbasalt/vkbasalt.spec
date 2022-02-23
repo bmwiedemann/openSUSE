@@ -1,7 +1,7 @@
 #
 # spec file for package vkbasalt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           vkbasalt
-Version:        0.3.2.4
+Version:        0.3.2.5
 Release:        0
 Summary:        Vulkan post processing layer
 License:        Zlib
