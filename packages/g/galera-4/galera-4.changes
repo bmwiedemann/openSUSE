@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 18 12:31:14 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 26.4.11
+- Remove upstreamed fix-cmake-build.patch
+- Refresh fix-cmake-install.patch
+
+-------------------------------------------------------------------
 Thu Feb 17 10:36:09 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix build and systemd service for SLE-15-SP3
