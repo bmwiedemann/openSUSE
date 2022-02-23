@@ -1,7 +1,7 @@
 #
 # spec file for package nco
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           nco
-Version:        5.0.3
-%define  soname 5_0_3
+Version:        5.0.6
+%define  soname 5_0_6
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(zlib)
 %define ext_info .gz
 BuildRequires:  antlr-C++
 BuildRequires:  antlr-tool
+BuildRequires:  java-headless
 BuildRequires:  texinfo-tex
 %else
 BuildRequires:  antlr-devel
@@ -65,8 +66,8 @@ in the netCDF and HDF formats.
 %package     -n lib%{name}-%{soname}
 Summary:        Libraries for accessing %{name}
 Group:          System/Libraries
-Provides:       libnco = %{version}
-Provides:       libnco-%{major} = %{version}
+Provides:       libnco = %{version}-%{release}
+Provides:       libnco-%{major} = %{version}-%{release}
 
 %description -n lib%{name}-%{soname}
 The netCDF Operators, NCO, are a suite of command line programs to
@@ -79,8 +80,8 @@ files.
 %package     -n lib%{name}_c++-%{soname}
 Summary:        Libraries for accessing %{name}
 Group:          System/Libraries
-Provides:       libnco_c++ = %{version}
-Provides:       libnco_c++-%{major} = %{version}
+Provides:       libnco_c++ = %{version}-%{release}
+Provides:       libnco_c++-%{major} = %{version}-%{release}
 
 %description -n lib%{name}_c++-%{soname}
 The netCDF Operators, NCO, are a suite of command line programs to
@@ -93,12 +94,12 @@ netCDF files.
 %package     -n lib%{name}-devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Provides:       %{name}-devel = %{version}
-Obsoletes:      %{name}-devel < %{version}
-Provides:       lib%{name}_c++-devel = %{version}
-Requires:       lib%{name}-%{soname} = %{version}
-Requires:       lib%{name}_c++-%{soname} = %{version}
-Recommends:     %{name} = %{version}
+Provides:       %{name}-devel = %{version}-%{release}
+Obsoletes:      %{name}-devel < %{version}-%{release}
+Provides:       lib%{name}_c++-devel = %{version}-%{release}
+Requires:       lib%{name}-%{soname} = %{version}-%{release}
+Requires:       lib%{name}_c++-%{soname} = %{version}-%{release}
+Recommends:     %{name} = %{version}-%{release}
 
 %description -n lib%{name}-devel
 The netCDF Operators, NCO, are a suite of command line programs to
@@ -138,20 +139,23 @@ automake --foreign
 %make_build
 pushd doc
     makeinfo --html --no-split nco.texi
-    make %{?_smp_mflags} nco.pdf
+    make nco.pdf
 popd
 
 %install
-mkdir -p %{buildroot}%{_includedir}/nco
+export QA_RPATHS=$((0x0001))  # check-rpaths: ignore standard RPATHs, for Fedora
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_infodir}/dir
-# Fix shbangs
-sed -i "1 s|env bash|bash|" %{buildroot}%{_bindir}/{ncclimo,ncremap}
+# Fix shebangs -- Leap 15.2 does not have /usr/bin/bash
+%if 0%{?is_opensuse} && 0%{?sle_version} <= 150200
+sed -i '1 s|.*env bash|#!/bin/bash|' %{buildroot}%{_bindir}/{ncclimo,ncremap}
+%else
+sed -i '1 s|.*env bash|#!/usr/bin/bash|' %{buildroot}%{_bindir}/{ncclimo,ncremap}
+%endif
 
 %check
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-make %{?_smp_mflags} check VERBOSE=1
+%make_build check
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/nco.info

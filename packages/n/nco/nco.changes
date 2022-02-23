@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Feb 21 13:23:14 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.0.6:
+  * fix: E3SM: unable to find any Conda binaries when invoked within scripts
+  * fix: ncremap 5.0.5 sometimes overwrote user-specified values of sgs_frc
+  * fix: ncclimo sometimes invoked the Bash basename() intrinsic on
+      non-existent arrays
+- Update to version 5.0.5:
+  * Arithmetic operators now support the lossy quantization algorithm
+      known as BitRound
+  * ncclimo now accepts filenames from stdin or positional arguments
+      in monthly climo mode
+  * ncatted has a new edit mode: Prepend
+  * fix: ncclimo 5.0.4 inadvertently broke automatic filename generation
+      for MPAS
+  * fix: fix ncclimo to work correctly with stdin filenames
+  * fix: changing _FillValue attribute did not always work in ncatted
+- Update to version 5.0.4:
+  * ncremap removes the previous assumption that input horizontal
+      dimensions are in lat-lon order
+  * ncremap adds alias "idw" for "dwe" distance-weighted extrapolation
+  * ncremap adds the --split flag to select splitter mode
+  * ncremap changes the API for the --permute option
+  * ncremap adds the --area_dgn flag (diagnose area)
+  * fix: ncwa was failing to set compression parameters since netCDF 4.8.0
+  * fix: issues due to deflation compression changes in netCDF 4.8.0
+
+-------------------------------------------------------------------
+Wed Dec  1 10:27:54 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- adjust shebangs: on Leap 15.2, the following installation error
+    occurs: "nothing provides /usr/bin/bash".
+    Therefore use /bin/bash for Leap 15.2. 
+- minor cleanup of spec file
+
+-------------------------------------------------------------------
 Fri Nov  5 08:47:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.0.3
