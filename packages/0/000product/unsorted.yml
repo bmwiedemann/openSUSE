@@ -5904,8 +5904,6 @@ unsorted:
   - gnome-online-accounts-devel 
   - gnome-online-miners 
   - gnome-packagekit-extras 
-  - gnome-passwordsafe 
-  - gnome-passwordsafe-lang 
   - gnome-patch-translation 
   - gnome-pie 
   - gnome-podcasts 
@@ -6503,7 +6501,6 @@ unsorted:
   - gtk4-metatheme-matcha 
   - gtk4-metatheme-plata 
   - gtk4-metatheme-yaru-mate 
-  - gtk4-tools 
   - gtkam 
   - gtkam-doc 
   - gtkam-lang 
@@ -11031,7 +11028,8 @@ unsorted:
   - libgiomm-2_68-1-32bit: [x86_64] 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
-  - libgit2-1_3-32bit: [x86_64] 
+  - libgit2-1_4 
+  - libgit2-1_4-32bit: [x86_64] 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -12305,9 +12303,9 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnbd0 
-  - libnco-5_0_3 
+  - libnco-5_0_6 
   - libnco-devel 
-  - libnco_c++-5_0_3 
+  - libnco_c++-5_0_6 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -15219,10 +15217,6 @@ unsorted:
   - log4j-jcl 
   - log4j-over-slf4j 
   - log4j-slf4j 
-  - log4j12 
-  - log4j12-javadoc 
-  - log4j12-manual 
-  - log4j12-mini 
   - log4net 
   - logback 
   - logback-access 
@@ -15230,7 +15224,6 @@ unsorted:
   - logback-javadoc 
   - logcli 
   - logdigest 
-  - logfactor5 
   - logstalgia 
   - logtail 
   - logtop 
@@ -18086,7 +18079,6 @@ unsorted:
   - openSUSE-release-tools-maintenance: [x86_64] 
   - openSUSE-release-tools-metrics: [x86_64] 
   - openSUSE-release-tools-metrics-access: [x86_64] 
-  - openSUSE-release-tools-obs-operator: [x86_64] 
   - openSUSE-release-tools-origin-manager: [x86_64] 
   - openSUSE-release-tools-pkglistgen: [x86_64] 
   - openSUSE-release-tools-repo-checker: [x86_64] 
@@ -22081,6 +22073,7 @@ unsorted:
   - python310-autobahn 
   - python310-autodoc 
   - python310-autodocsumm 
+  - python310-autoflake 
   - python310-autopage 
   - python310-autopep8 
   - python310-autoray 
@@ -22767,6 +22760,7 @@ unsorted:
   - python310-djangorestframework 
   - python310-djangorestframework-camel-case 
   - python310-djangorestframework-simplejwt 
+  - python310-djet 
   - python310-djvulibre 
   - python310-dkimpy 
   - python310-dns-lexicon 
@@ -23583,6 +23577,7 @@ unsorted:
   - python310-odfpy 
   - python310-odorik 
   - python310-ogr 
+  - python310-oic 
   - python310-oiffile 
   - python310-oktaloginwrapper 
   - python310-olefile 
@@ -24195,6 +24190,7 @@ unsorted:
   - python310-pytools 
   - python310-pytricia 
   - python310-pytz 
+  - python310-pytz-deprecation-shim 
   - python310-pytzdata 
   - python310-pyu2f 
   - python310-pyuca 
@@ -24520,6 +24516,7 @@ unsorted:
   - python310-sshpubkeys 
   - python310-sshtunnel 
   - python310-stack-data 
+  - python310-starlette 
   - python310-statsd 
   - python310-statsmodels 
   - python310-stem 
@@ -24775,6 +24772,7 @@ unsorted:
   - python310-wheel 
   - python310-wheezy.template 
   - python310-whichcraft 
+  - python310-whitenoise 
   - python310-whois_similarity_distance 
   - python310-widgetsnbextension 
   - python310-wikipedia 
@@ -24879,7 +24877,6 @@ unsorted:
   - python36-32bit: [x86_64] 
   - python36-Flask-Security-Too 
   - python36-ZEO 
-  - python36-autoflake 
   - python36-base 
   - python36-base-32bit: [x86_64] 
   - python36-curses 
@@ -24897,22 +24894,18 @@ unsorted:
   - python36-django-rest-knox 
   - python36-django-tagging 
   - python36-django-tastypie 
-  - python36-djet 
   - python36-doc 
   - python36-doc-devhelp 
   - python36-google-pasta 
   - python36-idle 
   - python36-mrkd 
-  - python36-oic 
   - python36-pip-licenses 
   - python36-raven-aiohttp 
   - python36-requests-gssapi 
-  - python36-starlette 
   - python36-testsuite 
   - python36-tk 
   - python36-tools 
   - python36-uncompyle6 
-  - python36-whitenoise 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -26957,6 +26950,7 @@ unsorted:
   - python38-pygame 
   - python38-pygame-devel 
   - python38-pygerrit2 
+  - python38-pygit2 
   - python38-pyglet 
   - python38-pygments-ansi-color 
   - python38-pygments-pytest 
@@ -27246,6 +27240,7 @@ unsorted:
   - python38-pytoml 
   - python38-pytools 
   - python38-pytricia 
+  - python38-pytz-deprecation-shim 
   - python38-pytzdata 
   - python38-pyu2f 
   - python38-pyuca 
@@ -30399,6 +30394,7 @@ unsorted:
   - python39-pytools 
   - python39-pytricia 
   - python39-pytz 
+  - python39-pytz-deprecation-shim 
   - python39-pytzdata 
   - python39-pyu2f 
   - python39-pyuca 
@@ -31780,6 +31776,8 @@ unsorted:
   - relaxngcc-javadoc 
   - release-compare 
   - release-notes-openSUSE 
+  - reload4j 
+  - reload4j-javadoc 
   - rem-devel 
   - remake 
   - remake-lang 
@@ -32685,6 +32683,7 @@ unsorted:
   - spatialindex-devel 
   - spawn-fcgi 
   - spdlog-devel 
+  - spdx-sbom-generator 
   - spdylay 
   - spdylay-devel 
   - spec-cleaner 
