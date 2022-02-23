@@ -369,6 +369,7 @@ Ignore: postgresql12-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql13-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql14-devel-mini:this-is-only-for-build-envs
 Ignore: systemd-mini:this-is-only-for-build-envs
+Ignore: systemd-mini-container:this-is-only-for-build-envs
 Ignore: udev-mini:this-is-only-for-build-envs
 
 # Ring0 packages should not pull in 'info' - making the base VM smaller
