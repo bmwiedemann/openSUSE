@@ -776,4 +776,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment></comment>
     <requestid>940778</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>82dc0cadfb1b8f30ee1aa95334e3ffce</srcmd5>
+    <version>1.10.12</version>
+    <time>1645723100</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957034</requestid>
+  </revision>
 </revisionlist>

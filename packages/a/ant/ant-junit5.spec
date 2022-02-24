@@ -1,7 +1,7 @@
 #
 # spec file for package ant-junit5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -227,8 +227,8 @@ This package contains optional apache bcel tasks for Apache Ant.
 Summary:        Optional apache log4j tasks for ant
 License:        Apache-2.0
 Group:          Development/Tools/Building
-BuildRequires:  log4j12-mini
-Requires:       log4j12
+BuildRequires:  reload4j
+Requires:       reload4j
 %requires_eq    ant
 Provides:       ant-jakarta-log4j = %{version}
 Obsoletes:      ant-jakarta-log4j < %{version}
@@ -400,7 +400,7 @@ build-jar-repository -s -p lib/optional junit5 opentest4j
 %endif
 %if %{with antlr}
 # we need to build junit in antlr, but we remove it later
-build-jar-repository -s -p lib/optional xerces-j2 xml-commons-apis-bootstrap antlr-bootstrap bcel javamail/mailapi jdepend junit4 log4j12/log4j-12 oro regexp bsf commons-logging commons-net jsch xalan-j2 xalan-j2-serializer xml-resolver xz-java
+build-jar-repository -s -p lib/optional xerces-j2 xml-commons-apis-bootstrap antlr-bootstrap bcel javamail/mailapi jdepend junit4 reload4j/reload4j oro regexp bsf commons-logging commons-net jsch xalan-j2 xalan-j2-serializer xml-resolver xz-java
 %endif
 
 # Fix file-not-utf8 rpmlint warning
@@ -578,7 +578,7 @@ echo "xml-resolver ant/ant-apache-resolver" > %{buildroot}%{_sysconfdir}/ant.d/a
 echo "apache-commons-logging ant/ant-commons-logging" > %{buildroot}%{_sysconfdir}/ant.d/commons-logging
 echo "apache-commons-net ant/ant-commons-net" > %{buildroot}%{_sysconfdir}/ant.d/commons-net
 echo "bcel ant/ant-apache-bcel" > %{buildroot}%{_sysconfdir}/ant.d/apache-bcel
-echo "log4j12/log4j-12 ant/ant-apache-log4j" > %{buildroot}%{_sysconfdir}/ant.d/apache-log4j
+echo "reload4j/reload4j ant/ant-apache-log4j" > %{buildroot}%{_sysconfdir}/ant.d/apache-log4j
 echo "oro ant/ant-apache-oro" > %{buildroot}%{_sysconfdir}/ant.d/apache-oro
 echo "regexp ant/ant-apache-regexp" > %{buildroot}%{_sysconfdir}/ant.d/apache-regexp
 echo "xalan-j2 ant/ant-apache-xalan2" > %{buildroot}%{_sysconfdir}/ant.d/apache-xalan2
