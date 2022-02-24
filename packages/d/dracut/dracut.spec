@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        055+suse.226.g44139dde
+Version:        055+suse.238.gacab0df5
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

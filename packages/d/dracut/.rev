@@ -2013,4 +2013,12 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <comment></comment>
     <requestid>951396</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>010d10b4bdd1b02382c1479a3a1ef9c1</srcmd5>
+    <version>055+suse.238.gacab0df5</version>
+    <time>1645723107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957061</requestid>
+  </revision>
 </revisionlist>

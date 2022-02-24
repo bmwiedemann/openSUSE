@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 18 07:48:46 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.238.gacab0df5:
+  * fix(cpio): correct dev_t -> rmajor/rminor mapping (bsc#1195808)
+  * ci(cpio): add test_archive_dev_maj_min (bsc#1195808)
+  * ci(cpio): add TempWorkDir.create_tmp_mknod helper (bsc#1195808)
+
+-------------------------------------------------------------------
+Thu Feb 17 15:01:56 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.234.gbdaf66ff:
+  * fix(tpm2-tss): install SUSE specific files (bsc#1195984)
+  * fix(systemd-sysusers): override systemd-sysusers.service (bsc#1195983)
+
+-------------------------------------------------------------------
+Mon Feb 14 09:09:18 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.230.g3fdde49a:
+  * fix(dasd_rules): correct udev dasd rules parsing (bsc#1195309)
+  * revert(lvm): remove 69-dm-lvm-metad.rules (bsc#1195604)
+
+-------------------------------------------------------------------
 Fri Jan 28 07:34:14 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 055+suse.226.g44139dde:
