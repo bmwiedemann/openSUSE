@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 18:56:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages, use the new reload4j
+
+-------------------------------------------------------------------
 Tue Oct  1 10:20:26 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against new compatibility package log4j12

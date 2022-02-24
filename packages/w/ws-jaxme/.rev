@@ -151,4 +151,12 @@
     <comment>Build against the new compatibility package log4j12</comment>
     <requestid>734263</requestid>
   </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>8a87757e91888b793bbb6a6da554be37</srcmd5>
+    <version>0.5.2</version>
+    <time>1645723105</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957057</requestid>
+  </revision>
 </revisionlist>
