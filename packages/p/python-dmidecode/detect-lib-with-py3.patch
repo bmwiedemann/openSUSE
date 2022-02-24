@@ -1,0 +1,27 @@
+---
+ python-dmidecode-3.12.2/src/setup_common.py |    7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+--- a/src/setup_common.py
++++ b/src/setup_common.py
+@@ -30,7 +30,7 @@ import subprocess, sys
+ if sys.version_info[0] < 3:
+     import commands as subprocess
+ from os import path as os_path
+-from distutils.sysconfig import get_python_lib
++from distutils.sysconfig import get_python_lib, get_config_var
+ 
+ # libxml2 - C flags
+ def libxml2_include(incdir):
+@@ -69,7 +69,10 @@ def libxml2_lib(libdir, libs):
+             libs.append(l.replace("-l", "", 1))
+ 
+     # this library is not reported and we need it anyway
+-    libs.append('xml2mod')
++    if get_config_var("SOABI"):
++        libs.append('xml2mod.%s' % get_config_var("SOABI"))
++    else:
++        libs.append('xml2mod')
+ 
+ 
+ 

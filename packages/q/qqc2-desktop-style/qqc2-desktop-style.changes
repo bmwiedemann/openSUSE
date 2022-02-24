@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Avoid needlessly reading font settings
+  * StyleItem: emit signal on style changes
+  * Add Linux Qt6 CI
+  * install plugins in kf<version>
+  * take icon width into account
+  * adapt width of combobox to its content (kde#403153)
+  * Theme placeholderTextColor
+  * Make menu items taller in Tablet Mode
+  * Fix find_package
+  * Remove QStyle::State_Horizontal when it's not horizontal
+  * Adapt build system for building against qt6
+  * Slider: handle scrolling (kde#417211)
+  * Use upstream scroll implementations for Combobox and SpinBox
+  * Use metrics from Breeze for menu items (kde#447289)
+
+-------------------------------------------------------------------
 Mon Jan  3 12:48:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

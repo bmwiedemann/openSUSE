@@ -125,4 +125,24 @@
   + Added variants for HighContrast and HighContrastInverse (forwarded request 926321 from susnux)</comment>
     <requestid>926903</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d4252301134c512d6fc3b82eb0cbcde5</srcmd5>
+    <version>1.4.1</version>
+    <time>1645723261</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hard cmake(Qt6Core) and cmake(Qt6Widgets) Requires to
+  libadwaita-qt6-devel sub-package.
+- Nuke the generated .pc file from the same sub-package, it is
+  invalid.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Drop baselibs.conf: Stop supporting 32bit on x86_64, the only
+  known consumer have dropped it also.
+- Update to version 1.4.1
+  * Support for Qt6 build with CMake option -DUSE_QT6=true.
+  * QProgressBar: correctly get information whether we should
+    render horizontal or vertical bar.
+- Convert to _multibuild: enable builds for Qt5 and Qt6.
+</comment>
+    <requestid>957350</requestid>
+  </revision>
 </revisionlist>

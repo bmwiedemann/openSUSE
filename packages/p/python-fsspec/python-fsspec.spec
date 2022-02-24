@@ -26,9 +26,9 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
-%define ghversion 2022.01.0
+%define ghversion 2022.02.0
 Name:           python-fsspec%{psuffix}
-Version:        2022.1.0
+Version:        2022.2.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
@@ -69,6 +69,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pyftpdlib}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}

@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Pty5
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpty
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        Primitives to interface with pseudo terminal devices
 License:        LGPL-2.1-or-later
@@ -101,9 +101,7 @@ communicating with them using a pty.
 %{_kf5_debugdir}/kpty.categories
 
 %files devel
-%dir %{_kf5_includedir}/*/
-%{_kf5_includedir}/*.h
-%{_kf5_includedir}/*/
+%{_kf5_includedir}/KPty/
 %{_kf5_libdir}/cmake/KF5Pty/
 %{_kf5_libdir}/libKF5Pty.so
 %{_kf5_mkspecsdir}/qt_KPty.pri

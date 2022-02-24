@@ -87,4 +87,16 @@
 </comment>
     <requestid>939137</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e650dccd4bf3804b5bea932635cd7d12</srcmd5>
+    <version>8.0.6</version>
+    <time>1645723268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.6 (no changelog)
+- Remove seafile-client_fix-compilation-glib2_68.patch
+- Rebase fix-cmake-name.patch
+- New minimum QT requirement is 5.15.1
+</comment>
+    <requestid>957369</requestid>
+  </revision>
 </revisionlist>

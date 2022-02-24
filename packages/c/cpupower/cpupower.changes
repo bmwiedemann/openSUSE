@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 18 15:56:24 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to building the package from kernel-source based on
+  how the perf package works
+- Removed patches:
+  * turbostat_makefile_fix_asm_header.patch
+  * remove_bits_h.patch
+  * x86_perf_makefile_fix_asm_header.patch
+- Remove all tarballs and git script
+- Use %lang_package
+- Correct ix86 to %ix86
+
+-------------------------------------------------------------------
 Mon Jul 19 12:17:54 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Update (jsc#SLE-18392, jsc#SLE-18906, jsc#SLE-18393, jsc#SLE-18410):

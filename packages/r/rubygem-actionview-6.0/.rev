@@ -95,4 +95,12 @@
     <comment>updated to version 6.0.4.4</comment>
     <requestid>951761</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>97181b1d98483b6c60a1a0f22835371a</srcmd5>
+    <version>6.0.4.6</version>
+    <time>1645723213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956109</requestid>
+  </revision>
 </revisionlist>

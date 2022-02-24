@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Feb 19 18:20:08 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 15.9.1
+  * [Server] Live freeze tiles (cannot move or jump, but can use
+    hook and weapons)
+  * [Server] Add teleport/tp chat command to teleport yourself to
+    another player or spectated location (requires /practice)
+  * [Client] Add new icons and macOS installer graphics
+  * [Client] Add windowed fullscreen mode on Windows
+  * [Client] Support 128 players in server browser
+  * [Client] Adjustable prediction margin (cl_prediction_margin)
+  * [Client] Improve projectile prediction
+  * [Client] Use power button to quit (hopefully more clear)
+  * [Client] Implement "reset" command to reset specific config
+    values to default value
+  * [Client] Add cl_port, cl_dummy_port, cl_contact_port for ISPs
+    that throttle specific ports
+  * [Client] Remove compatible version filter
+  * [Client] Display more relevant version numbers on command line
+  * [Client] Fix bullet rendered through walls
+  * [Client] Fix ARM-specific crash in macOS when moving screen
+  * [Client] Fix console line offsets when resizing
+  * [Client] Fix changing resolution in fullscreen
+  * [Client] Improved double click handling
+  * [Client] Reduce default ambient volume to 30
+  * [Client] Update score HUD immediately when switching dummy
+  * [Client] Allow multiple commands when adding vote in UI
+  * [Client] Allow "zoom" command to take smaller/larger values
+  * [Client] Improve super prediction
+  * [Client] Improve preformance when listing directories
+  * [Client] Lower chance of losing config files
+  * [Editor] Support enter and escape keys in editor when
+    confirming save
+  * [Editor] Don't react to server settings shortcuts when
+    dialog is open
+  * [Server] 255 jump tile acts as no double jump
+  * [Server] Fail database queries faster
+  * [Server] Improve database writes during shutdown and
+    bad network
+  * [Server] Also switch rescue tees when swapping
+  * [Server] Implement sv_min_team_size to prevent too small teams
+    counting as team finishes
+  * [Server] Default players to being AFK when joining
+  * [Server] Fix warnings to only warn every 3 seconds when
+    touching start line
+  * [Server] Reload map when changing sv_sixup
+  * [Client+Server] Handle signals (SIGINT, SIGTERM)
+  * [Client+Server] Fix lots of undefined behavior
+
+-------------------------------------------------------------------
 Sat Jan 15 16:58:41 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 15.8.1

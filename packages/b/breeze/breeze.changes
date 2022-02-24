@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 22 16:20:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * kstyle: make MDI title buttons legible (kde#438964)
+  * Make sure the size of the menu title is big enough (kde#450333)
+
+-------------------------------------------------------------------
 Tue Feb 15 19:18:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.1

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 21 03:08:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.878
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.878 Sun Feb 20 06:45:00 EST 2022
+    * Fix for the fast channel implementations.
+      Thank you, twata for the test report.
+  1.877 Sun Feb 20 02:30:00 EST 2022
+    * Improved suppressing the PDL CLONE warning. Piddles should not be
+      naively copied into new threads.
+    * Added fast channel implementations optimized for non-Unicode strings.
+      The main difference is that these lack freeze-thaw serialization.
+      MCE::Channel::MutexFast, MCE::Channel::SimpleFast, and
+      MCE::Channel::ThreadsFast.
+
+-------------------------------------------------------------------
 Fri Dec  3 03:07:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.876

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Add Linux Qt6 CI
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * reduce boost
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

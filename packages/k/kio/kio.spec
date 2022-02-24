@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -142,9 +142,11 @@ Development files.
 
 %if 0%{?suse_version} == 1500
 export CXX=g++-10
+# gcc-PIE only sets the linker flags for the default compiler (boo#1195628)
+%define extra_opts -- -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CXX_LINK_PIE_SUPPORTED=ON
 %endif
 
-%cmake_kf5 -d build
+%{cmake_kf5 -d build %{?extra_opts}}
 %cmake_build
 
 %install
@@ -239,15 +241,15 @@ export CXX=g++-10
 %{_kf5_sharedir}/dbus-1/services/org.kde.kpasswdserver.service
 
 %files devel
+%dir %{_kf5_sharedir}/kdevfiletemplates
+%dir %{_kf5_sharedir}/kdevfiletemplates/templates/
 %{_kf5_bindir}/protocoltojson
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KCookieServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KDirNotify.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KPasswdServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KSlaveLauncher.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.kio.FileUndoManager.xml
-%dir %{_kf5_sharedir}/kdevappwizard
-%dir %{_kf5_sharedir}/kdevappwizard/templates
-%{_kf5_sharedir}/kdevappwizard/templates/ioslave.tar.bz2
+%{_kf5_sharedir}/kdevfiletemplates/templates/ioslave.tar.bz2
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5KIO/
 %{_kf5_libdir}/libKF5KIOCore.so

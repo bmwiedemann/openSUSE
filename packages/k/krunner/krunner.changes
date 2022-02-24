@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * runnermanagerpublictest: Do not load system provided plugins
+  * search plugins in kf<version>
+  * Put aliased classes in "KRunner"-namespace
+  * Fix flickering in Application Launcher for every character typed (kde#423161)
+  * Port to KDEDeprecationSettings cmake function
+  * KF5RunnerConfig.cmake.in: Explicitly require QtGui and KCoreAddons,
+    exclude Plasma on deprecation free builds
+  * Add compatibility type definitions for classes without 'Plasma' namespace
+  * Fixups for building without including KService/KIO/Plasma-Frameworks (kde#447908)
+  * Silence deprecation warning for KPluginInfo/KServiceTypeTrader in compatibility blocks
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

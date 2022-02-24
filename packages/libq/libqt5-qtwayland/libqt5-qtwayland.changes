@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb 22 15:32:53 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde54:
+  * Use proper dependencies in compile tests
+  * Client: Fix opaque region setter
+  * client: Simplify round trip behavior (boo#1196302)
+  * Update the preedit styling mapping
+  * Cursor position == 0 should still show the cursor
+  * Client: Remove mWaitingForUpdateDelivery
+  * Fix crash if no input method module could be loaded
+  * Use wl_surface.damage_buffer on the client side
+  * Do not create decorations when the shellSurface is not ready
+  * Check pointer for null before use in ASSERT
+- Drop patches, now upstream:
+  * 0001-Client-Remove-mWaitingForUpdateDelivery.patch
+  * 0001-Use-proper-dependencies-in-compile-tests.patch
+
+-------------------------------------------------------------------
 Thu Feb  3 16:51:41 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix applications not updating after some time (kde#449163):

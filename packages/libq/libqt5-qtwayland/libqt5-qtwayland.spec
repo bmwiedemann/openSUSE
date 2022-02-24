@@ -26,7 +26,7 @@
 %define so_version 5.15.2
 %define tar_version qtwayland-everywhere-src-%{version}
 Name:           libqt5-qtwayland
-Version:        5.15.2+kde44
+Version:        5.15.2+kde54
 Release:        0
 Summary:        Qt 5 Wayland Addon
 # The wayland compositor files are GPL-3.0-or-later
@@ -37,14 +37,10 @@ Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Bump-version.patch
-# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/qt/qtwayland/+/393273
-Patch2:         0001-Client-Remove-mWaitingForUpdateDelivery.patch
 # https://codereview.qt-project.org/c/qt/qtwayland/+/393828/1
 Patch3:         0002-Guard-mResizeDirty-by-the-correctMutex.patch
 # https://codereview.qt-project.org/c/qt/qtwayland/+/393826/1
 Patch4:         0003-Fix-up-mutexes-for-frame-callbacks.patch
-# To be sent upstream
-Patch10:        0001-Use-proper-dependencies-in-compile-tests.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{real_version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{real_version}

@@ -938,4 +938,12 @@
     <comment>Plasma 5.24.1. plasma5-mobile tarball is missing translations, so skipped for now.</comment>
     <requestid>955231</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>cd191941613f3514ae71d74b029266d1</srcmd5>
+    <version>5.24.2</version>
+    <time>1645723128</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.2</comment>
+    <requestid>956960</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 24 04:24:59 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Use patch from the upstream (https://github.com/GhostNaN/mpvpaper/commit/50c0c8def6d96bb2f992fad6c77b86fa85e1a596)
+  * Fixed-mpv-events-cleanup-and-more.patch
+- Drop old patch
+  * observe-property-instead-of-MPV_EVENT-since-mpv-deprecated.patch
+
+-------------------------------------------------------------------
 Mon Feb 21 08:54:23 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Fix build with removed deprecated APIs in mpv 2.x

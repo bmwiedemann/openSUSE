@@ -74,4 +74,12 @@
   https://github.com/rui314/mold/releases/tag/v1.1.</comment>
     <requestid>956314</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0e7b08c9817fd2c1586365b42eccc8dd</srcmd5>
+    <version>1.1</version>
+    <time>1645723267</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building for openSUSE Leap 15.3 and 15.4.</comment>
+    <requestid>957354</requestid>
+  </revision>
 </revisionlist>

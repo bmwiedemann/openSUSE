@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * fix unit test refs
+  * Python: fix line continuation starting with a string
+  * CSS: add some values and functions
+  * CSS: fix nested function call (kde#444506)
+  * Zsh: fix line-break and pattern in double bracket condition
+  * Bash: fix line-break in double bracket condition (kde#448126)
+  * Bash: fix parameter expansion replacement with extended glob
+  * update test refs
+  * [R] Add a test for this syntax
+  * [R] Add support for new pipe from R 4.1
+  * update test refs
+  * Bump version number
+  * Repair syntax
+  * Update Stan highlighting
+  * Add CI qt6 support
+
+-------------------------------------------------------------------
 Mon Jan  3 12:48:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

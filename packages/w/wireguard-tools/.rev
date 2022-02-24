@@ -112,4 +112,15 @@
     <comment></comment>
     <requestid>955853</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>97955f070bc04990a0c7a8be12989bb2</srcmd5>
+    <version>1.0.20210914</version>
+    <time>1645723253</time>
+    <user>dimstar_suse</user>
+    <comment>Drop harden_wg-quick@.service.patch. The currrent logic for setting
+  DNS is fiddling massively with the system. This is currently not
+  compatible with these settings (bsc#1196096)
+</comment>
+    <requestid>957145</requestid>
+  </revision>
 </revisionlist>

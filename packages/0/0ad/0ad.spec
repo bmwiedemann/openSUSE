@@ -22,8 +22,8 @@
 %else
 %bcond_with nvtt
 %endif
-#
-%if 0%{?suse_version} >= 1550
+# We can use the system mozjs on Tumbleweed and Leap 15.4.
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without system_mozjs
 %else
 %bcond_with system_mozjs
@@ -44,6 +44,8 @@ Patch0:         avoid_duplicate_global_symbol_from_asm.patch
 Patch1:         no-version-check.patch
 # PATCH-FIX-OPENSUSE -- Use the newer variant of this function (related to mozjs78 upgrade)
 Patch2:         PrepareZoneForGC.patch
+# PATCH-FIX-UPSTREAM -- Don't define M_PIf if glibc already provides it
+Patch3:         glibc-2.35.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXcursor-devel
@@ -93,6 +95,7 @@ flexible game engine.
 %prep
 %setup -q -n %{name}-%{version}-alpha
 %patch0 -p1
+%patch3 -p1
 %if %{with system_mozjs}
 %patch1 -p1
 %patch2 -p1

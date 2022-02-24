@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * start-here-kde: Make icon adaptable to dark themes (kde#416302)
+  * Fix icon colors to be consistent across all sizes
+  * Check executables exist in PATH before passing them to QProcess
+  * Add Linux Qt6 CI
+  * Declare namespace for kongress icon
+  * Fix naming of brightness icons
+  * Fix dupe tests by replacing icons with symlinks
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

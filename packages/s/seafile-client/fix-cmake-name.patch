@@ -1,9 +1,9 @@
---- CMakeLists.txt.orig	2020-10-12 11:46:17.285489025 +0200
-+++ CMakeLists.txt	2020-10-12 11:49:32.338025745 +0200
-@@ -160,7 +160,7 @@
- # have to keep using QtWebKit on windows because QtWebEngine can't be
- # compiled in msys2/mingw (QtWebEnigne is based on chrome, which has to be
- # compiled with MSVC.)
+--- seafile-client-8.0.6/CMakeLists.txt.orig	2022-02-24 14:13:48.182261633 +0100
++++ seafile-client-8.0.6/CMakeLists.txt	2022-02-24 14:14:04.466332241 +0100
+@@ -133,7 +133,7 @@
+ ####################
+ ###### BEGIN: QT configuration
+ ####################
 -FIND_PROGRAM(qmake_executable NAMES qmake qmake.exe)
 +FIND_PROGRAM(qmake_executable NAMES qmake qmake-qt5 qmake.exe)
  EXECUTE_PROCESS(COMMAND

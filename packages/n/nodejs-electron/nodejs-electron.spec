@@ -121,6 +121,8 @@ Patch25:        electron-16-system-node-headers.patch
 Patch26:        electron-16-node-fix-python3.10-import.patch
 %endif
 Patch27:        electron-16-freetype-visibility-list.patch
+Patch28:        electron-16-third_party-symbolize-missing-include.patch
+Patch29:        electron-16-webpack-fix-openssl-3.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -201,7 +203,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(kadm-client)
 BuildRequires:  pkgconfig(kdb)
 BuildRequires:  pkgconfig(krb5)
-%if 0%{?suse_version}
+%if %{with system_ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat) >= 58

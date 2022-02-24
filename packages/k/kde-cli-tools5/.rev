@@ -1090,4 +1090,12 @@
     <comment>Plasma 5.24.1. plasma5-mobile tarball is missing translations, so skipped for now.</comment>
     <requestid>955224</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>03fe58fa66e0edad8fcd2ed656cd4480</srcmd5>
+    <version>5.24.2</version>
+    <time>1645723149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957346</requestid>
+  </revision>
 </revisionlist>

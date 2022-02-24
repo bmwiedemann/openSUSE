@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 22 23:01:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2022.02.0:
+  - reference FS performance
+  - directory/prefix FS
+  - FUSE
+  - iteration in threads
+  - OpenFiles slicing
+  - drop py36
+
+-------------------------------------------------------------------
 Mon Jan 24 17:08:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.1.0

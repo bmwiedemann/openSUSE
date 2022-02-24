@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Don't run KDEInstallDirsTest.vars_in_sync_oldstyle_arg for KF6
+  * Make clang-format Git hook work in worktrees
+  * kde_package_app_templates: drop atime,ctime, consistently set mtime
+  * kde_package_app_templates: use numeric owner/group with tar
+  * kde_package_app_templates: reorder and spli tar args
+  * Fix ECMFindQmlModule unit test with Qt6
+  * Adapt KDEInstallDirs unit test to consider the new version-less variables
+  * Disable building tests for the docs build
+  * Fix ECMPoQmTools when using Qt6
+  * Forward the Qt6 build option to the CMake test runs
+  * Adjust test build system to also support Qt6
+  * Fix ExecuteCoreModules test
+  * ECMQmlModule: Add -Muri automoc option to make static builds work correctly
+  * ECMQmlModule: Correct the prefix of the generated qrc to be what Qt expects
+  * Set the right @since version for ECMQmlModule
+  * Only enable -bsymbolic-functions when Qt is built in a compatible way
+  * we temporarily need docs artifacts on master for testing
+  * Rename ECMQMLModules.cmake to ECMFindQmlModule.cmake
+  * Introduce ECMQmlModule.cmake
+  * build docs as normal artifact instead of pages
+  * Rename KDEDeprecationSettings to ECMDeprecationSettings
+  * Add Linux Qt6 CI
+  * Add ecm_set_deprecation_versions cmake function
+  * create docs only for tags
+  * add docs build to CI
+  * Add compile-command.json to .gitignore
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

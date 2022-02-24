@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 15 07:31:20 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.2
+ see installed CHANGELOG.md
+
+  ## v2.2.2.
+  
+  * Fix custom file path [#295](https://github.com/railsware/js-routes/issues/295)
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:07:17 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.1

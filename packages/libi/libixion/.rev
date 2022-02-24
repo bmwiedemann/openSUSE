@@ -182,4 +182,27 @@
     <comment></comment>
     <requestid>894390</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>07770bcf43cec63228637aba10a0471b</srcmd5>
+    <version>0.17.0</version>
+    <time>1645723209</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch:
+  * libixion-boost-system.patch
+    + fix missing symbols from boost_system library
+
+- update to 0.17.0:
+  * set the baseline C++ version to 17.
+  * mdds has been internalized so that the public header no longer contains
+    references to mdds.  With this change, the users can use different API
+    versions of mdds between the ixion build and run-time use.
+  * cleaned up public API to make use of std::string_view and std::variant
+    where appropriate.
+  * implemented built-in LEFT() function in the formula interpreter.
+  * it is no longer required to set the size of void* at build time to ensure
+    the binaries to be fully functional.
+  * fixed a bug where named expressions with names containing invalid
+    characters were still allowed in.</comment>
+    <requestid>956517</requestid>
+  </revision>
 </revisionlist>

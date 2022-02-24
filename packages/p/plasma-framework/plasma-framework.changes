@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Check executables exist in PATH before passing them to QProcess
+  * ExpandableListItem: Deprecate custom isEnabled property and alias it to enabled (kde#449539)
+  * PC3 ButtonContent: Move property defaultIconSize to the top-level component
+  * Identify containments using X-Plasma-ContainmentType instead of service types
+  * Native interface always available
+  * ModelContextMenu: drop Accessible.role property
+  * Do not use Control for PC3::IconLabel (kde#446303)
+  * Corona::containmentForScreen: Ignore activities when an empty string is used (kde#448590)
+  * Change where add_feature_info(EGL) is called
+  * Fix detection of GLX support in QtGui
+  * PC3 ScrollView: set step sizes based on devicePixelRatio
+  * ConfigModel: Expose Roles enum to QML
+  * Use MATCHES (suggested by Samir)
+  * Apply patch from Samir
+  * Adapt build system for building against qt6 + fix some compile errors
+  * Don't fallback to EGL::EGL, just don't link to EGL when it's not found
+  * Always sync the setPanelBehavior to wayland (kde#448373)
+  * PlasmaQuick::Dialog - Fix flickering issues when resizing (specially in krunner)
+  * Always sync the setPanelBehavior to wayland (kde#426969)
+  * PC3 ScrollView: Avoid importing QtQuick.Controls.2
+  * Doc: Improve descriptions of Plasma::DataSource methods
+  * Don't crash when a screen gets disabled and enabled again (kde#447752)
+  * PC3 RadioIndicator: use radiobutton.svg for breeze-light and breeze-dark
+  * KWayland does not make sense outside of Linux/FreeBSD, so don't try to depend on it there
+  * Add Yakuake panel icon (kde#427485)
+  * Deprecated PlasmaExtras.ScrollArea component
+  * PC3 SwipeView: use longDuration for highlight animation
+
+-------------------------------------------------------------------
 Mon Jan  3 12:48:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

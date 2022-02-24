@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 22 08:02:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.12:
+  * CPU sum in /proc/stat is now preserved on cpuset changes
+  * Expose an empty cgroup tree when host system is on a unified hierarchy
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-12-has-been-released/13287
+
+-------------------------------------------------------------------
+Tue Feb 22 08:00:25 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.11:
+  NOTE: This was originally released as LXCFS 4.0.10 but a bug caused the published release tarball to be missing a file. LXCFS 4.0.11 includes that fix.
+  *  Fixed a potential deadlock in the cpuinfo handler
+  *  Reduced daemon verbosity
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-11-has-been-released/12426
+
+-------------------------------------------------------------------
+Tue Feb 22 07:58:42 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.9:
+  * Improve libfuse2/libfuse3 handling
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-9-lts-has-been-released/11617
+
+-------------------------------------------------------------------
 Mon May 24 06:38:24 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.0.8:

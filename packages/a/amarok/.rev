@@ -1173,4 +1173,14 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment>New snapshot</comment>
     <requestid>944221</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>dd6c4908cbf053af9854c71a4745af3b</srcmd5>
+    <version>2.9.75git.20220224T114455~9300034c57</version>
+    <time>1645723211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.75git.20220224T114455~9300034c57:
+  * Add DBus service file to actually make it activatable
+  * No need to link to KF5::KIONTLM</comment>
+    <requestid>957325</requestid>
+  </revision>
 </revisionlist>

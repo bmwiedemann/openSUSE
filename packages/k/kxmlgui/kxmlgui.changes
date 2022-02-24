@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Check executables exist in PATH before passing them to QProcess
+  * Use uppercase includes
+  * Allow KToolBar to be in other places than MainWindow's ToolBarArea
+  * Fix i18n comment not being properly extracted
+  * Add CI qt6 support
+
+-------------------------------------------------------------------
 Mon Jan  3 12:48:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

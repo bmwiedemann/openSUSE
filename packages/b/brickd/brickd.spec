@@ -1,7 +1,7 @@
 #
 # spec file for package brickd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,38 +23,39 @@ Release:        0
 Summary:        Tinkerforce Brick Daemon
 License:        GPL-2.0-only
 Group:          System/Daemons
-URL:            http://www.tinkerforge.com
+URL:            https://www.tinkerforge.com
 Source0:        https://github.com/Tinkerforge/brickd/archive/v%{version}.tar.gz
 Source1:        https://github.com/Tinkerforge/daemonlib/archive/brickd-%{version}.tar.gz
 Patch0:         harden_brickd-resume.service.patch
 Patch1:         harden_brickd.service.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://github.com/Tinkerforge/brickd/commit/a679ca31b8dbd412e5f379b624200e3a96dda0ce.patch
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(systemd)
 Suggests:       logrotate
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Brick Daemon is a small bridge between the USB port of Bricks and
 the TCP/IP socket connection to the language binding APIs.
 
 %prep
-%setup -q -a 1 -n %{name}-%{version}
+%setup -q -a 1
 mv daemonlib-%{name}-%{version} src/daemonlib
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 
 %build
 pushd src/brickd
-make %{?_smp_mflags} WITH_SYSTEMD=yes
+%make_build WITH_SYSTEMD=yes
 popd
 
 %install
 pushd src/brickd
-make install DESTDIR=%{buildroot}
+%make_install
 popd
 mkdir -p %{buildroot}%{_sbindir}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}-resume
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-resume
 
 %pre
 %service_add_pre brickd-resume.service brickd.service
@@ -69,12 +70,11 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}-resume
 %service_del_postun brickd-resume.service brickd.service
 
 %files -n %{name}
-%defattr(-,root,root)
 %doc src/changelog README.rst
 %{_bindir}/*
 %{_mandir}/man*/%{name}.*
-%config(noreplace) /etc/%{name}.conf
-%config /etc/logrotate.d/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}.conf
+%config %{_sysconfdir}/logrotate.d/%{name}
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-resume.service
 %{_sbindir}/rc%{name}

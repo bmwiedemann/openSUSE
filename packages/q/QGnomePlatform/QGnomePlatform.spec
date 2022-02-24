@@ -1,7 +1,7 @@
 #
 # spec file for package QGnomePlatform
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright © 2016      Yuriy Gorodilin <yurg27@gmail.com>
 # Copyright © 2018–2019 Markus S. <kamikazow@opensuse.org>
 #
@@ -19,16 +19,15 @@
 
 
 Name:           QGnomePlatform
-Version:        0.8.0
+Version:        0.8.4
 Release:        0
 Summary:        A better Qt application inclusion in GNOME
 # Most code is LGPL-2.1-or-later but qgtk3dialoghelpers files forked from
 # Qt 5 result in this licensing scheme for the combined work:
-License:        LGPL-3.0-only OR GPL-2.0-or-later
+License:        GPL-2.0-or-later OR LGPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/QGnomePlatform/
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 # QGnomePlatform relies on glib's pkgconfig file to find gsettings files
@@ -40,11 +39,11 @@ BuildRequires:  libqt5-qtwayland-devel
 BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5ThemeSupport)
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.12
-BuildRequires:  pkgconfig(Qt5WaylandClient) >= 5.12
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.12
-BuildRequires:  pkgconfig(adwaita-qt) >= 1.3.0
+BuildRequires:  pkgconfig(Qt5DBus) >= 5.12.2
+BuildRequires:  pkgconfig(Qt5WaylandClient) >= 5.12.2
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12.2
+BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.12.2
+BuildRequires:  pkgconfig(adwaita-qt) >= 1.4.1
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(x11)

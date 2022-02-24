@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Search in kf<version> plugin
+  * kcoreaddons_target_static_plugins: Use private linking for plugin registration file
+  * Fix kprocesslist in Windows
+  * Fix kformattest on Windows
+  * Fix krandomtest on Windows
+  * klibexec helper to resolve libexec path relative
+  * Set timezone to what the test expects
+  * KPluginMetaDataTest: Fix check for service type querying error essage
+  * Fix KPluginMetaDataTest::testPathIsAbsolute
+  * desktopfileparser: Avoid a run-time string concatenation
+  * KF5CoreAddonsConfig: check desktoptojson version when cross-compiling
+  * KPluginMetaData: Fix a typo in a comment
+  * desktoptojson: Further improvements to cross-compilation mode
+  * Fix kcoreaddons_desktop_to_json when cross-compiling
+  * Fix compiler warnings in posix_fallocate_mac.h
+  * Add KPluginMetaData::fromJsonFile()
+  * KPluginMetadata: store all paths as absolute ones
+  * KPluginMetaData::metaDataFileName: Fix broken check if we have the metaDataFileName value set
+  * Use directly kf${QT_MAJOR_VERSION} (Volker idea)
+  * Use QT_STRINGIFY(QT_VERSION_MAJOR) Instead of the if stuff
+  * Use kf6 for installing licenses
+  * Utilize ECMDeprecationSettings to manage deprecate Qt API
+  * kcoreaddons_add_plugin: Throw error when we have unparsed args
+  * Add CI qt6 support
+  * Port deprecated enum in qt6
+  * Need to build static lib
+  * Improve formatRelativeDateTime
+  * KProcessList: Remove dead Q_OS_FREEBSD branches
+  * Improve error message for KPluginFactory::loadFactory
+  * Add missing copying of error text in KPluginFactory::instantiatePlugin
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

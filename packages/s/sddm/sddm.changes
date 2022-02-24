@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 21 11:28:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Handle the case of %_distconfdir not being /usr/etc (boo#1196228,
+  currently only possible due to a misconfiguration in SLE, bsc#1195679)
+
+-------------------------------------------------------------------
 Sat Jul 17 15:20:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update patch to include security fix from upstream PR:

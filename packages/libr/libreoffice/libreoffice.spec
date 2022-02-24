@@ -46,7 +46,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.2.5.1
+Version:        7.3.1.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -70,9 +70,9 @@ Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_%{nu
 Source450:      %{external_url}/1f467e5bb703f12cbbb09d5cf67ecf4a-converttexttonumber-1-5-0.oxt
 Source452:      %{external_url}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.tar.bz2
 # GPGME bundle list
-Source1000:     %{external_url}/gpgme-1.13.1.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.37.tar.bz2
-Source1002:     %{external_url}/libassuan-2.5.3.tar.bz2
+Source1000:     %{external_url}/gpgme-1.16.0.tar.bz2
+Source1001:     %{external_url}/libgpg-error-1.43.tar.bz2
+Source1002:     %{external_url}/libassuan-2.5.5.tar.bz2
 # Internal bundled stuff we can't remove
 # To build this we would pull cygwin; not worth it
 Source2001:     https://dev-www.libreoffice.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll
@@ -87,13 +87,11 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-4500.tar.bz2
+Source2008:     %{external_url}/pdfium-4699.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m90-45c57e116ee0ce214bdf78405a4762722e4507d9.tar.xz
-# Fix the build with freetype-2.11
-Source2011:     skia-freetype2.11.patch
+Source2010:     %{external_url}/skia-m97-a7230803d64ae9d44f4e1282444801119a3ae967.tar.xz
 Source2012:     %{external_url}/libcmis-0.5.2.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
@@ -104,14 +102,10 @@ Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
-Patch7:         pld-skia-patches.patch
-# PATCH-FIX-UPSTREAM https://bugs.documentfoundation.org/show_bug.cgi?id=137924 Use proper DPI without requiring window handle
-Patch8:         fix-wayland-scaling-in-plasma.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
-# LO-L3: bsc#1183308 Simple, seven page slide deck of 3.7MB takes looong to open, start presentation mode, or move back to slide 1
-Patch11:        bsc1183308.patch
-Patch12:        0001-Missing-includes-for-libstdc-12.patch
+# PATCH-FIX-UPSTREAM boo#1196017 Fix KDE Frameworks 5.91 detection
+Patch11:        0001-configure.ac-Update-kf5-include-lib-check-to-work-wi.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -127,7 +121,7 @@ BuildRequires:  bison
 BuildRequires:  bsh2
 BuildRequires:  commons-logging
 BuildRequires:  cups-devel
-BuildRequires:  curl-devel
+BuildRequires:  curl-devel >= 7.68.0
 # Needed for tests
 BuildRequires:  dejavu-fonts
 BuildRequires:  doxygen >= 1.8.4
@@ -138,12 +132,14 @@ BuildRequires:  fontforge
 BuildRequires:  glm-devel
 # Needed for tests
 BuildRequires:  google-carlito-fonts
+BuildRequires:  abseil-cpp-devel
 BuildRequires:  gperf >= 3.1
 BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
 BuildRequires:  junit4
 BuildRequires:  libbase
 BuildRequires:  libcppunit-devel >= 1.14.0
+BuildRequires:  libcuckoo-devel
 BuildRequires:  liberation-fonts
 BuildRequires:  libexif
 BuildRequires:  libfonts
@@ -205,7 +201,8 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.19
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(liborcus-0.16)
+BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(liborcus-0.17)
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
@@ -220,14 +217,13 @@ BuildRequires:  pkgconfig(libwps-0.4) >= 0.4.11
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libzmf-0.0)
-BuildRequires:  pkgconfig(mdds-1.5) >= 1.5.0
+BuildRequires:  pkgconfig(mdds-2.0)
 BuildRequires:  pkgconfig(mythes)
 BuildRequires:  pkgconfig(nspr) >= 4.8
 BuildRequires:  pkgconfig(nss) >= 3.9.3
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(redland)
 BuildRequires:  pkgconfig(sane-backends)
-BuildRequires:  pkgconfig(serf-1) >= 1.3.9
 BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.28
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xt)
@@ -264,7 +260,7 @@ Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
-Source2020:     %{external_url}/boost_1_75_0.tar.xz
+Source2020:     %{external_url}/boost_1_77_0.tar.xz
 Source2023:     %{external_url}/poppler-21.11.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.10.tar.gz
 %else
@@ -278,8 +274,8 @@ BuildRequires:  pkgconfig(poppler-cpp)
 %endif
 %if 0%{?suse_version} < 1500
 # Too old icu on the system
-Source2021:     %{external_url}/icu4c-69_1-src.tgz
-Source2022:     %{external_url}/icu4c-69_1-data.zip
+Source2021:     %{external_url}/icu4c-70_1-src.tgz
+Source2022:     %{external_url}/icu4c-70_1-data.zip
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
 BuildRequires:  java-devel >= 1.8
@@ -1011,21 +1007,14 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
 %patch9 -p1
+%patch11 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1
-%patch11 -p1
-%endif
-%patch12 -p1
-%if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif
 %patch990 -p1
 %patch991 -p1
-
-cp %{SOURCE2011} external/skia
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1042,6 +1031,8 @@ sed -i -e /CppunitTest_sw_uiwriter/d sw/Module_sw.mk
 sed -i -e /CPPUNIT_TEST\(testODFEncryptedGPG\)/d xmlsecurity/qa/unit/signing/signing.cxx
 # breaks on LTO https://bugs.documentfoundation.org/show_bug.cgi?id=126442
 sed -i -e /CppunitTest_sw_apitests/d sw/Module_sw.mk
+# -flto=thin is not supported by gcc
+sed -i -e s/-flto=thin/-flto/ solenv/gbuild/platform/com_GCC_defs.mk
 # Disable failing tests on ppc64le for now
 %ifarch ppc64le
 sed -i -e /CppunitTest_sc_addin_functions_test/d sc/Module_sc.mk
@@ -1145,7 +1136,7 @@ export NOCONFIGURE=yes
         --without-fonts \
         --without-myspell-dicts \
         --with-jdk-home=$JAVA_HOME \
-        --with-webdav=serf \
+        --with-webdav=curl \
         --with-beanshell-jar=%{_datadir}/java/bsh2/bsh.jar \
         --with-ant-home=%{_datadir}/ant \
         --with-external-dict-dir=%{_datadir}/hunspell \
@@ -1585,11 +1576,17 @@ exit 0
 %files -f file-lists/sdk_doc_list.txt sdk-doc
 
 %files calc-extensions
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/share
+%dir %{_libdir}/%{name}/share/extensions
 %{_libdir}/%{name}/share/extensions/ConvertTextToNumber
 %{_libdir}/%{name}/share/extensions/nlpsolver
 %{_libdir}/%{name}/share/extensions/numbertext
 
 %files writer-extensions
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/share
+%dir %{_libdir}/%{name}/share/extensions
 %{_libdir}/%{name}/share/extensions/wiki-publisher
 
 %files icon-themes

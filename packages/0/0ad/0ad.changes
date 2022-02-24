@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 20 14:52:56 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add glibc-2.35.patch: Fix build with glibc 2.35.
+- Use system mozjs on Leap 15.4 as well.
+
+-------------------------------------------------------------------
 Tue Jan 11 19:34:38 UTC 2022 - Simon Puchert <simonpuchert@alice.de>
 
 - Get rid of Python 2 dependency.

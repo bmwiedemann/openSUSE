@@ -24,16 +24,24 @@ License:        AGPL-3.0-or-later
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
 BuildRequires:  cmake
+%if %{suse_version} < 1550
+BuildRequires:  gcc10-c++
+%else
+# These libraries are not present for openSUSE Leap
 BuildRequires:  gcc-c++
 BuildRequires:  mimalloc-devel
+BuildRequires:  tbb-devel
+%endif
 BuildRequires:  openssl-devel
-BuildRequires:  tbb-devel
-BuildRequires:  tbb-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
 PreReq:         update-alternatives
 
+%if %{suse_version} < 1550
+%define build_args SYSTEM_XXHASH=1
+%else
 %define build_args SYSTEM_TBB=1 SYSTEM_XXHASH=1 SYSTEM_MIMALLOC=1
+%endif
 
 %description
 mold is a faster drop-in replacement for existing Unix linkers.
@@ -46,8 +54,13 @@ build time especially in rapid debug-edit-rebuild cycles.
 %autosetup -p1
 
 %build
+%if %{suse_version} < 1550
+export CC=gcc-10
+export CXX=g++-10
+%else
 export CC=gcc
 export CXX=g++
+%endif
 export CFLAGS="%{optflags} -Wno-sign-compare"
 export CXXFLAGS="${CFLAGS}"
 export MANDIR=%{_mandir}
@@ -78,8 +91,14 @@ fi
 %{_bindir}/ld.mold
 %{_bindir}/ld64.mold
 %dir %{_libdir}/mold
+%{_prefix}/libexec/mold/ld
+%if %{suse_version} < 1550
+%dir %{_prefix}/libexec
+%dir %{_prefix}/libexec/mold
+%else
 %{_libexecdir}/mold/ld
 %dir %{_libexecdir}/mold
+%endif
 %{_libdir}/mold/mold-wrapper.so
 %{_mandir}/man1/mold.1.gz
 

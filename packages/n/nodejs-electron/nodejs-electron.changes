@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 17 08:45:42 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix webpack-4 with OpenSSL 3.0
+  * Added electron-16-webpack-fix-openssl-3.patch
+
+-------------------------------------------------------------------
+Thu Feb 17 08:24:23 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing #include <utility>
+  * Added electron-16-third_party-symbolize-missing-include.patch
+
+-------------------------------------------------------------------
 Wed Feb 16 19:09:22 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix building with newer gn

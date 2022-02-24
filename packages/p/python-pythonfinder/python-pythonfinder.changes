@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 23 20:28:44 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Disable python2 which doesn't build
+
+-------------------------------------------------------------------
 Mon Aug  3 14:20:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.2.4

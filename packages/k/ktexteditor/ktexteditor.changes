@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Too many changes since 5.90.0, only listing bugfixes:
+  * KateModOnHdPrompt::slotDiff: Create diff file in temp folder (kde#448257)
+  * avoid flicker for border on size changes (kde#435361)
+  * When using tabs, use tabs to auto indent (kde#367966, kde#375529)
+  * Don't scroll on select all (kde#435855)
+  * Handle single statement condition blocks better (kde#385472)
+  * Allow disabling focus frame (kde#418657)
+  * Fix comment toggling when all lines in selection aren't commented (kde#426981)
+  * Fix selection scrolling from line border works only downwards (kde#419076)
+  * Fix camel cursor when last word is of one letter only (kde#448692)
+  * Do proper fuzzy matching in completion (kde#401509)
+  * Revert "Do not cancel mouse selection when using the keyboard" (kde#447525)
+  * Restore undo history when document is same (kde#297883)
+  * Fix drag pixmap highlight sometimes does not match original text (kde#438567)
+  * Find: Update working range when replacing (kde#447972)
+  * set QClipboard::Selection for select all (kde#428099)
+  * Fix rash when switching between tabs while search is running (kde#445683)
+  * improve wording for modified on disk warnings (kde#372638)
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

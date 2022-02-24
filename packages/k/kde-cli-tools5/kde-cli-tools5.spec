@@ -19,7 +19,7 @@
 %define kf5_version 5.86.0
 %bcond_without released
 Name:           kde-cli-tools5
-Version:        5.24.1
+Version:        5.24.2
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
@@ -56,6 +56,8 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
+# Unversioned kde-open, kdesu, etc.
+Conflicts:      kdebase4-runtime
 # for kquitapp5
 Requires:       kdbusaddons-tools
 

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Make code more compact (idea from Samir)
+  * Use kf6/ for qt6 or old path for keeping compatibility
+  * Move plugins in kf<version> directory
+  * Add CI qt6 support
+  * Seems my text editor munched the syntax, fix
+  * Correct the dependencies specified for KAuth.
+  * Bump minimum required version of Polkit-Qt-1 to 0.112.0
+  * Remove Polkit-Qt build support, Polkit-Qt-1 replaced it a long time ago
+  * Adjust CMake code to find PolkitQt{5,6}-1
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

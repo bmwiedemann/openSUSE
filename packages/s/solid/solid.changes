@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Convert some connect to new signature style
+  * [UDisks2 Backend] Don't do media check for loop devices
+  * Fix enum predicate comparison with Qt6
+  * [upower] Properly round up battery's capacity (kde#448372)
+  * Add CI qt6 support
+  * [UPower Backend] Check for Bluez for any unknown battery type
+  * [UDisks2] Ignore file systems mounted with x-gdu.hide option
+
+-------------------------------------------------------------------
 Fri Jan 28 09:12:08 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Also use libplist-2.0 in SLE15-SP4/Leap 15.4

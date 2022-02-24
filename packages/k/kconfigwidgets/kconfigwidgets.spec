@@ -1,7 +1,7 @@
 #
 # spec file for package kconfigwidgets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5ConfigWidgets5
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kconfigwidgets
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        Widgets for configuration dialogs
 License:        LGPL-2.1-or-later
@@ -35,8 +35,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Use-BUILD-deprecation-wrapper-for-virtual-method.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -116,11 +114,9 @@ well as a set of widgets which uses KConfig to store their settings. Development
 %files devel
 %{_kf5_libdir}/libKF5ConfigWidgets.so
 %{_kf5_libdir}/cmake/KF5ConfigWidgets/
-%dir %{_kf5_includedir}/*/
 %dir %{_kf5_plugindir}/designer
 %{_kf5_plugindir}/designer/kconfigwidgets5widgets.so
-%{_kf5_includedir}/*/
-%{_kf5_includedir}/*.h
+%{_kf5_includedir}/KConfigWidgets
 %{_kf5_bindir}/preparetips5
 %{_kf5_mandir}/man1/preparetips5.*
 %{_kf5_mkspecsdir}/qt_KConfigWidgets.pri

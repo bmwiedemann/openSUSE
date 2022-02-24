@@ -1,7 +1,7 @@
 #
 # spec file for package sddm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -153,9 +153,8 @@ fi
   install -Dm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
   install -Dm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/sddm.conf
 
-  %if ! %{defined _distconfdir}
-  sed -e 's-/usr/etc-%{_sysconfdir}-g' -i %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
-  %endif
+  # Adjust paths to X session scripts in 00-general.conf
+  sed -e 's-/usr/etc-%{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}-g' -i %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
 
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager

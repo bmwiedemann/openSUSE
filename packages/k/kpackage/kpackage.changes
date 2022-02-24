@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Simplify code using KPluginMetaData::fromJsonFile
+  * Explicitly call KPluginMetaData::fromJsonFile when constructing metadata objects
+  * Fix unintended result in readKPackageTypes (kde#448625)
+  * Use ecm_mark_nongui_executable() for mock:// handler
+  * PackageJob: Use QStandardPaths::findExecutable() to find resolvers
+  * QueryTest: validate the install() result
+  * Add CI qt6 support
+  * Build static libs which are linked into shared libs as PIC
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

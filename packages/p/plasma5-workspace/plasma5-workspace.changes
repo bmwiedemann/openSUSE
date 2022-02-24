@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb 24 09:39:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix log output of some processes (boo#1196206):
+  * 0001-startkde-Forward-stdout-stderr-of-started-processes.patch
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:05 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * applets/clipboard: Focus on the search field for the first time opening the applet
+  * applets/clipboard: Make Up/Down arrow keys work in ClipboardPage (kde#448811,kde#450040)
+  * applets/panelspacer: Fix optimal size calculation (kde#431668)
+  * Fix overdraw on Wayland
+  * PanelView: Do not crash when the state is transitioning (kde#373461)
+  * Fix launch kscreen kcm in font kcm.
+  * Don't install two copies of kcm_fontinst
+  * Lock/login themes: stop adjusting shadows based on color scheme (kde#449985)
+  * Top-align lock/login/logout screen action buttons (kde#450238)
+  * [kcms/user] Set interactive auth flag for more calls (kde#450122)
+
+-------------------------------------------------------------------
 Tue Feb 15 19:18:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.1

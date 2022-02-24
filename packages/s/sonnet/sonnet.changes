@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Missing "/"
+  * Allow to install plugin in kf5 or kf6 directory
+  * Add CI qt6 support
+  * Support building hspelldict backend with Qt6
+
+-------------------------------------------------------------------
 Mon Jan  3 12:48:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

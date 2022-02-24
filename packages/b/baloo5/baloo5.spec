@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           baloo5
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -213,8 +213,7 @@ package contains aditional command line utilities. Development files.
 %{_kf5_qmldir}/
 
 %files devel
-%{_kf5_includedir}/Baloo
-%{_kf5_includedir}/baloo_version.h
+%{_kf5_includedir}/Baloo/
 %{_kf5_libdir}/cmake/KF5Baloo/
 %{_kf5_libdir}/libKF5Baloo.so
 %{_kf5_libdir}/pkgconfig/Baloo.pc

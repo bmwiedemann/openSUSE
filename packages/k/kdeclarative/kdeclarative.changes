@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * proper position for top separator
+  * [KeySequenceItem] Make keySequence «non-null», «non-undefined» and «non-""»
+  * [KeySequenceItem] Fix code style and bump QML imports
+  * Make QML code depend less on the `kcm` context property
+  * Fix QT_NO_OPENGL build after 66c5bb0efa
+  * kquickcontrols: Improve accessibility in ColorButton.qml (kde#449282)
+  * GridDelegate: Focus on the delegate after a menu is closed
+  * GridDelegate: Open menu when Menu key is pressed
+  * Add CI qt6 support
+  * Exclude epoxy in qt6 => exclude plotter class
+  * Fix some compile error against qt6
+  * Deprecate KDeclarative::ConfigPropertyMap in favor of KConfigPropertyMap
+  * Apply fix from Volker
+  * Prepare build system for building against qt6
+  * fix autotests, avoid clash with bin/data on Windows
+  * Don't use KGlobalAccel on Windows
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

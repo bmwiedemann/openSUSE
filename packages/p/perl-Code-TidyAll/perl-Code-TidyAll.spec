@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Code-TidyAll
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Code-TidyAll
 Name:           perl-Code-TidyAll
-Version:        0.80
+Version:        0.81
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Engine for tidyall, your all-in-one code tidier and validator

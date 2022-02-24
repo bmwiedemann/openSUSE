@@ -17,7 +17,7 @@
 
 
 Name:           amarok
-Version:        2.9.75git.20220102T131246~92aa01de32
+Version:        2.9.75git.20220224T114455~9300034c57
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -175,6 +175,7 @@ rm %{buildroot}%{_kf5_libdir}/libamarok{core,lib,shared,-sqlcollection,-transcod
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/amarok*.desktop
 %{_kf5_sharedir}/amarok/
+%{_kf5_sharedir}/dbus-1/services/org.kde.amarok.service
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kpackage/
 %{_kf5_sharedir}/solid/

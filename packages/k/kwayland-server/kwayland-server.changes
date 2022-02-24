@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 22 16:21:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * seat: Do not assert on corner touch cases (kde#450338)
+
+-------------------------------------------------------------------
 Tue Feb 15 19:18:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.1

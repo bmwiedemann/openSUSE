@@ -660,4 +660,13 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
   * 0001-Redesign-Xauth-handling.patch (forwarded request 907087 from Vogtinator)</comment>
     <requestid>907088</requestid>
   </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>6587a1080b815c277eb2057236993b5e</srcmd5>
+    <version>0.19.0</version>
+    <time>1645723209</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle the case of %_distconfdir not being /usr/etc (boo#1196228,
+  currently only possible due to a misconfiguration in SLE, bsc#1195679) (forwarded request 956467 from Vogtinator)</comment>
+    <requestid>956468</requestid>
+  </revision>
 </revisionlist>

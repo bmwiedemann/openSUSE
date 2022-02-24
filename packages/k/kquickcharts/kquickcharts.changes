@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * ModelSource: Don't use QPointer for storing the model
+  * ModelSource: Cache minimum/maximum properties of the model
+  * Adapt build system for building against qt6 + fix some compile error
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

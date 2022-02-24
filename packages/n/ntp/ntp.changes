@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb 24 02:09:55 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Modified ntp.NetworkManager: Update ntp servers on
+  dhcp4-change and dhcp6-change, instead of up condition. This is
+  because ntp options are available during dhcp renewed or rebound,
+  and not available when the interface has been activated
+  (bsc#1171547).
+
+-------------------------------------------------------------------
 Tue Oct 12 06:09:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

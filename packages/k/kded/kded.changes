@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * install plugins in kf<version>
+  * Add Linux Qt6 CI
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * Set order of kded launching with systemd boot
+  * kded supports building on Windows, make sure we have our dependencies available
+  * General code cleanup
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

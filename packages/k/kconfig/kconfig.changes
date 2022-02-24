@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Fix build on Windows
+  * Don't use saveShortcut for setting up tests
+  * Fix build on Windows
+  * Introduce StandardShortcutWatcher to watch for runtime changes
+  * Make singleton teardown work with Qt6 as well
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * Add CI qt6 support
+  * Add Samir variable fix too
+  * Use KDE_INSTALL_FULL_LIBEXECDIR_KF
+  * Extract isNonDeletedKey() helper function
+  * Look for entries with common group prefix in entryMap's subrange
+  * Improve the documentation of KConfigPrivate::allSubGroups()
+  * KConfigPrivate::copyGroup: remove redundant entryMap lookup
+  * groupList: convert each group name from UTF-8 once
+  * Exclude deleted groups from groupList() (kde#384039)
+  * groupList: don't copy unnecessarily; add const
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

@@ -1,7 +1,7 @@
 #
 # spec file for package seafile-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           seafile-client
-Version:        8.0.5
+Version:        8.0.6
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -26,8 +26,6 @@ Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
 Source1:        seafile.appdata.xml
 Patch0:         01-fix-no-return-in-nonvoid.patch
 Patch2:         fix-cmake-name.patch
-#PATCH-FIX-UPSTREAM https://github.com/haiwen/seadrive-gui/pull/292
-Patch3:         seafile-client_fix-compilation-glib2_68.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -47,28 +45,19 @@ BuildRequires:  pkgconfig(libevent_pthreads)
 BuildRequires:  pkgconfig(uuid)
 Requires:       python3-pysearpc
 Requires:       seafile = %{version}
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
-BuildRequires:  jansson-devel
-BuildRequires:  qt5-linguist
-BuildRequires:  qt5-qtbase-devel
-BuildRequires:  qt5-qtconnectivity-devel
-BuildRequires:  qt5-qtwebkit
-BuildRequires:  sqlite-devel
-%else
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Designer)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Help)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiTools)
-BuildRequires:  cmake(Qt5WebEngineCore)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Core) >= 5.15.1
+BuildRequires:  cmake(Qt5DBus) >= 5.15.1
+BuildRequires:  cmake(Qt5Designer) >= 5.15.1
+BuildRequires:  cmake(Qt5Gui) >= 5.15.1
+BuildRequires:  cmake(Qt5Help) >= 5.15.1
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.1
+BuildRequires:  cmake(Qt5Network) >= 5.15.1
+BuildRequires:  cmake(Qt5Test) >= 5.15.1
+BuildRequires:  cmake(Qt5UiTools) >= 5.15.1
+BuildRequires:  cmake(Qt5WebEngineCore) >= 5.15.1
+BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.15.1
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(sqlite3)
-%endif
 
 %description
 Seafile is an open source cloud storage system with features on privacy protection and teamwork. Collections of files are
@@ -78,10 +67,7 @@ Seafile also allows users to create groups and easily sharing files into groups.
 %prep
 %setup -q
 %patch0 -p1
-%patch2 -p0
-%if 0%{?suse_version} > 1500
-%patch3 -p1
-%endif
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -fPIE -pie"

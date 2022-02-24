@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Check executables exist in PATH before passing them to QProcess
+  * Fix install test with Qt6
+  * Don't hardcode "kf5" for the catalog search path
+  * Add CI qt6 support
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

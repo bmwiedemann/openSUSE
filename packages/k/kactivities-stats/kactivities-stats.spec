@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5ActivitiesStats1
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kactivities-stats
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        LGPL-2.0-or-later
@@ -39,7 +39,6 @@ Source2:        frameworks.keyring
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  libboost_headers-devel
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Activities) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
@@ -91,9 +90,7 @@ Development files.
 %files devel
 %{_kf5_libdir}/libKF5ActivitiesStats.so
 %{_kf5_libdir}/cmake/KF5ActivitiesStats/
-%dir %{_kf5_includedir}/*/
-%{_kf5_includedir}/*/
-%{_kf5_includedir}/*.h
+%{_kf5_includedir}/KActivitiesStats/
 %{_kf5_libdir}/pkgconfig/libKActivitiesStats.pc
 %{_kf5_mkspecsdir}/qt_KActivitiesStats.pri
 

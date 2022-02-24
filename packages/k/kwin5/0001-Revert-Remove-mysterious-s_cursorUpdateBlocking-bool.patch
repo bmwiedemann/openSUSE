@@ -1,0 +1,59 @@
+From bac4f4ed62017bb4aeb81078f5ec2cd915af5de4 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Wed, 23 Feb 2022 20:17:28 +0200
+Subject: [PATCH] Revert "Remove mysterious s_cursorUpdateBlocking boolean flag
+ in pointer_input.cpp"
+
+This reverts commit 3d0bdc56a48fe0d5cc0889ab098f6c6c922d20c7.
+
+seat->setFocusedPointerSurface() before notifyPointerMotion() is needed
+to prevent sending a motion event that's outside the previously focused
+surface.
+
+BUG: 449273
+
+
+(cherry picked from commit aaa07f0605d605ae2472b1a8f7f4bd07f2138cb2)
+---
+ src/pointer_input.cpp | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/pointer_input.cpp b/src/pointer_input.cpp
+index 88091e88b..a608b50e6 100644
+--- a/src/pointer_input.cpp
++++ b/src/pointer_input.cpp
+@@ -548,6 +548,8 @@ void PointerInputRedirection::cleanupDecoration(Decoration::DecoratedClientImpl
+     m_decorationDestroyedConnection = connect(now, &QObject::destroyed, this, &PointerInputRedirection::update, Qt::QueuedConnection);
+ }
+ 
++static bool s_cursorUpdateBlocking = false;
++
+ void PointerInputRedirection::focusUpdate(Toplevel *focusOld, Toplevel *focusNow)
+ {
+     if (AbstractClient *ac = qobject_cast<AbstractClient*>(focusOld)) {
+@@ -568,6 +570,11 @@ void PointerInputRedirection::focusUpdate(Toplevel *focusOld, Toplevel *focusNow
+         return;
+     }
+ 
++    // prevent updating cursor and sending motion event outside the previously focused surface
++    s_cursorUpdateBlocking = true;
++    seat->setFocusedPointerSurface(nullptr);
++    s_cursorUpdateBlocking = false;
++
+     seat->notifyPointerMotion(m_pos.toPoint());
+     seat->setFocusedPointerSurface(focusNow->surface(), focusNow->inputTransformation());
+ 
+@@ -1014,6 +1021,10 @@ void CursorImage::handlePointerChanged()
+ 
+ void CursorImage::handleFocusedSurfaceChanged()
+ {
++    if (s_cursorUpdateBlocking) {
++        return;
++    }
++
+     KWaylandServer::PointerInterface *pointer = waylandServer()->seat()->pointer();
+     disconnect(m_serverCursor.connection);
+ 
+-- 
+2.33.1
+

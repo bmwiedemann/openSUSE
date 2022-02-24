@@ -843,4 +843,12 @@
   * 0001-Fix-wrong-porting-of-KNSCore-Engine-configSearchLoca.patch</comment>
     <requestid>945855</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>d88e1bf4b6f08b1be46553abc5cbe64f</srcmd5>
+    <version>5.91.0</version>
+    <time>1645723154</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.91 (forwarded request 954217 from cgiboudeaux)</comment>
+    <requestid>954223</requestid>
+  </revision>
 </revisionlist>

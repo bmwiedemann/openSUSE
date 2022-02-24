@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 23 20:39:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix mouse event issues in openQA (kde#449273):
+  * 0001-Revert-Remove-mysterious-s_cursorUpdateBlocking-bool.patch
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * backends/drm: block input with the placeholder output
+  * effects/blur: Avoid shrinking unrelated opaque regions
+  * effects/contrast: Remove paint area tracking
+  * backends/drm: ignore enabled state of outputs for the lifetime of surfaces (kde#450501)
+  * backends/drm: fix overscan
+  * inputmethod: Fix read setting (kde#450430)
+  * Use the minimum of workspace area size and panel size for input method placement
+  * Check lockscreen status for fullscreen effects (kde#450331)
+  * xwayland: Guard  against offers arriving after leaving surface (kde#449644)
+
+-------------------------------------------------------------------
 Tue Feb 15 19:18:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.1

@@ -1,7 +1,7 @@
 #
 # spec file for package libixion
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,27 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define libname libixion-0_16-0
+%define libname libixion-0_17-0
 Name:           libixion
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        Threaded multi-target formula parser & interpreter
 License:        MIT
 URL:            https://gitlab.com/ixion/ixion
 Source:         http://kohei.us/files/ixion/src/%{name}-%{version}.tar.xz
+Patch0:         libixion-boost-system.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  coreutils
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(mdds-1.5)
+BuildRequires:  pkgconfig(mdds-2.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(spdlog) >= 0.16.0
+BuildRequires:  pkgconfig(vulkan) >= 1.2.0
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
@@ -78,8 +83,11 @@ Python 3 bindings for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+libtoolize --force --copy
+autoreconf -fi
 %configure \
 	--disable-silent-rules \
 	--disable-static \

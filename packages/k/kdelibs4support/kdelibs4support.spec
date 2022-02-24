@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5KDELibs4Support5
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdelibs4support
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        Code and utilities to ease the transition to KDE Frameworks 5
 License:        LGPL-2.1-or-later
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  perl-URI
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5Auth) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KDED) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
@@ -253,9 +254,7 @@ KDEDIRS environment variable correctly. Development files.
 %{_kf5_libdir}/cmake/KF5KDELibs4Support/
 %{_kf5_libdir}/cmake/KF5KDE4Support/
 %{_kf5_libdir}/cmake/KDELibs4/
-%{_kf5_includedir}/kdelibs4support_version.h
 %{_kf5_includedir}/KDELibs4Support/
-%dir %{_kf5_includedir}/KDELibs4Support/
 %{_kf5_sharedir}/dbus-1/interfaces/kf5_org.freedesktop.PowerManagement.Inhibit.xml
 %{_kf5_sharedir}/dbus-1/interfaces/kf5_org.freedesktop.PowerManagement.xml
 %{_kf5_sharedir}/dbus-1/interfaces/kf5_org.kde.Solid.Networking.Client.xml

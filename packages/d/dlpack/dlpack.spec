@@ -1,7 +1,7 @@
 #
 # spec file for package dlpack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           dlpack
-Version:        0.3
+Version:        0.6
 Release:        0
 Summary:        DLPack: Open In Memory Tensor Structure
 License:        Apache-2.0
 URL:            https://github.com/dmlc/dlpack
-Source0:        https://github.com/dmlc/dlpack/archive/v0.3.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/dmlc/dlpack/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -43,7 +43,6 @@ DLPack is an open in-memory tensor structure to for sharing tensor among framewo
  * Quick swapping of backend implementations, like different version of BLAS
  * For final users, this could bring more operators, and possibility of mixing usage between frameworks.
 
-
 %prep
 %setup -q
 
@@ -53,7 +52,6 @@ DLPack is an open in-memory tensor structure to for sharing tensor among framewo
 
 %install
 %cmake_install
-
 
 %files devel
 %defattr(-,root,root)

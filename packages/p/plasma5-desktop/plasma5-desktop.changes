@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 22 16:21:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * applet/pager: Divide window size by devicePixelRatio on X11 when it's >1 (kde#446627)
+  * applet/pager: Properly adjust the icon size
+  * Fix build
+  * Only trust the expiration date if it's less than 24 hours
+  * Fix missing variable name
+  * Add a granular cache preference thing to attica-kde
+  * taskmanager: Hide unneeded scrollbar (kde#450463)
+  * Emoji Selector: Use a more appropriate icon for the Symbols page (kde#450380)
+  * applets/minimizeall: make active indicator line touch panel edges (kde#444810)
+  * applets/showdesktop: Give it an active indicator line (kde#447998)
+  * foldermodel: hide paste action when right-clicking on files (kde#448913)
+  * Folder View: hide additional settings not relevant to list view (kde#450063)
+
+-------------------------------------------------------------------
 Tue Feb 15 19:18:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.1

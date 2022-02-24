@@ -35,8 +35,13 @@ Source1:        vendor.tar.gz
 Source2:        prometheus-blackbox_exporter.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
-BuildRequires:  (libcap-progs or libcap)
-BuildRequires:  (golang(API) >= 1.14 or golang >= 1.14)
+%if 0%{?rhel}
+BuildRequires:  libcap
+BuildRequires:  golang >= 1.14
+%else
+BuildRequires:  libcap-progs
+BuildRequires:  golang(API) >= 1.14
+%endif
 %{?systemd_ordering}
 %if 0%{?suse_version}
 Requires(pre):  user(prometheus)

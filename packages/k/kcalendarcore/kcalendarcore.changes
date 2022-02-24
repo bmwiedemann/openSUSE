@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Don't use the current date for recurring todo completion test
+  * Revert "Honour STATUS:CANCELLED"
+  * Serialize container sizes as 32bit integers
+  * Compare timeSpec() for the due date/time, too
+  * Set the local timezone in testevent
+  * Fix geo coordinate unit test without deprecated API
+  * Fix generate pkg file
+  * Add CI qt6 support
+  * Remove FreeBusyPrivate::q
+  * Remove TodoPrivate::q
+  * T12270: create an inheritance hierarchy of private types
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

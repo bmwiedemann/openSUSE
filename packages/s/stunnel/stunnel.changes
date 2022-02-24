@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 22 16:08:48 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.62:
+  * New features
+    - Added a bash completion script.
+  * Bugfixes
+    - Fixed a transfer() loop bug.
+- Update to 5.61:
+  * New features
+    - Added new "protocol = capwin" and "protocol = capwinctrl"
+      configuration file options.
+    - Rewritten the testing framework in python.
+    - Added support for missing SSL_set_options() values.
+    - Updated stunnel.spec to support RHEL8.
+  * Bugfixes
+    - Fixed OpenSSL 3.0 build.
+    - Fixed reloading configuration with "systemctl reload stunnel.service".
+    - Fixed incorrect messages logged for OpenSSL errors.
+    - Fixed printing IPv6 socket option defaults on FreeBSD.
+- Rebase harden_stunnel.service.patch
+- Remove FIPS-related regression tests
+- Remove obsolete version checks
+
+-------------------------------------------------------------------
 Wed Nov 24 08:51:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

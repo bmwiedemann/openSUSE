@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Check executables exist in PATH before passing them to QProcess
+  * Fix build on glibc < 2.34 (kde#449114)
+  * Port from KToolInvocation::kdeinitExecWait (deprecated) to QProcess
+  * kdesud: close all file descriptors > 3 on exec()
+  * Use includes that also work with Qt6
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

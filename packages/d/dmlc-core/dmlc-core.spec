@@ -1,7 +1,7 @@
 #
 # spec file for package dmlc-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define libname libdmlc
 Name:           dmlc-core
-Version:        0.3+git20200425.ff3db43
+Version:        0.5
 Release:        0
 Summary:        Distributed Machine Learning Common Codebase
 License:        Apache-2.0
 URL:            https://github.com/dmlc/dmlc-core
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/dmlc/dmlc-core/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  azure-storage-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

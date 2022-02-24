@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 17 10:10:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix KDE Frameworks detection (boo#1196017)
+  * 0001-configure.ac-Update-kf5-include-lib-check-to-work-wi.patch
+
+-------------------------------------------------------------------
+Fri Feb 14 10:22:01 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.3.1.1
+- Removed uneeded patches:
+  * 0001-Missing-includes-for-libstdc-12.patch
+  * bsc1183308.patch
+  * fix-wayland-scaling-in-plasma.patch
+  * pld-skia-patches.patch
+  * skia-freetype2.11.patch
+
+-------------------------------------------------------------------
 Sat Feb  5 15:29:22 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add 0001-Missing-includes-for-libstdc-12.patch: fix the build

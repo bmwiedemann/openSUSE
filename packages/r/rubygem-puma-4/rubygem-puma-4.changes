@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 15 07:34:38 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.3.11
+ see installed History.md
+
+  ## 4.3.11 / 2022-02-11
+  
+  * Security
+    * Always close the response body (GHSA-rmj8-8hhh-gv5h)
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:20:39 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.3.10

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 22 23:12:22 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2022.02.0:
+  - callbacks fixes
+  - drop py36
+  - metadata fixes
+
+-------------------------------------------------------------------
 Mon Jan 24 17:27:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.01.1

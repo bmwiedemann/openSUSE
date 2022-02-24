@@ -1,7 +1,7 @@
 #
 # spec file for package docker-distribution
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define registry_group registry
 
 Name:           docker-distribution
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        The Docker toolset to pack, ship, store, and deliver content
 License:        Apache-2.0
@@ -31,14 +31,6 @@ Source0:        distribution-%{version}.tar.xz
 Source1:        registry-configuration.yml
 Source2:        registry.service
 Source4:        README-registry.SUSE
-# PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/2879
-Patch0:         0001-Fix-s3-driver-for-supporting-ceph-radosgw.patch
-# PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/3204
-Patch1:         0002-Relax-filesystem-driver-folder-permissions-to-0777-cont.patch
-# PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/2886
-Patch2:         0003-Support-external-redis-sentinel-cluster.patch
-# PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/3088
-Patch3:         0004-Make-ipfilteredby-not-required.patch
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) = 1.15

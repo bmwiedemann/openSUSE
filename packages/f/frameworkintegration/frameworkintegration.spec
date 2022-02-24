@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Style5
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           frameworkintegration
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
 License:        LGPL-2.1-or-later
@@ -36,8 +36,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-wrong-porting-of-KNSCore-Engine-configSearchLoca.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -130,8 +128,7 @@ Applications do not need to link to this directly. Development files
 %files devel
 %{_kf5_libdir}/libKF5Style.so
 %{_kf5_libdir}/cmake/KF5FrameworkIntegration/
-%dir %{_kf5_includedir}/KStyle/
 %{_kf5_includedir}/KStyle/
-%{_kf5_includedir}/*.h
+%{_kf5_includedir}/FrameworkIntegration/
 
 %changelog

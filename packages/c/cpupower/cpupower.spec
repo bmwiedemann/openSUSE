@@ -16,42 +16,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# Use this as version when things are in mainline kernel
-%define version %(rpm -q --qf '%{VERSION}' kernel-source)
-
-%define tsversion      21.05.04
-%define pbversion      17.05.11
-%define ssversion      1.10
+%define maindir tools/power/cpupower
+%define tsdir tools/power/x86/turbostat
+%define pbdir tools/power/x86/x86_energy_perf_policy
+%define ssdir tools/power/x86/intel-speed-select
 
 Name:           cpupower
 # Use this as version when things are in mainline kernel
-%define version %(rpm -q --qf '%VERSION' kernel-source)
-Version:        5.14
+%define version %(rpm -q --qf '%%{VERSION}' kernel-source)
+Version:        %{version}
 Release:        0
 Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://git.kernel.org/cgit/linux/kernel/git/rafael/linux-pm.git
-Source:         %{name}-%{version}.tar.bz2
-Source1:        turbostat-%{tsversion}.tar.bz2
-Source2:        cpupower_export_tarball_from_git.sh
-Source3:        x86_energy_perf_policy-%{pbversion}.tar.bz2
-Source4:        intel-speed-select-%{ssversion}.tar.bz2
-Source5:        Makefile.intel-speed-select
 Patch1:         cpupower_rapl.patch
 Patch2:         rapl_monitor.patch
 Patch3:         cpupower_exclude_kernel_Makefile.patch
 Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
-
-#turbostat patches
-Patch22:        turbostat_makefile_fix_asm_header.patch
-Patch23:        remove_bits_h.patch
-
-# x86_energy_perf patches
-# Fixes bsc#1048546:
-Patch30:        x86_perf_makefile_fix_asm_header.patch
-
+BuildRequires:  kernel-source
 BuildRequires:  gettext-tools
 BuildRequires:  libcap-devel
 BuildRequires:  pciutils
@@ -89,42 +72,38 @@ governor (e.g. ondemand, userspace, conservative) and the cpufreq HW driver
 For that purpose, it compares the performance governor to a configured
 powersave module.
 
+%lang_package
+
 %prep
-%setup -q -D -b 1 -b 3 -b 4
+# copy necessary files from kernel-source since we need to modify them
+(cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
+chmod +x tools/power/cpupower/utils/version-gen.sh
+cd %maindir
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch6 -p1
 
-cd ../turbostat-%{tsversion}
-%patch22 -p1
-%patch23 -p1
-
-cd ../x86_energy_perf_policy-%{pbversion}
-%patch23 -p1
-%patch30 -p1
-
-cd ../intel-speed-select-%{ssversion}
-cp %{SOURCE5} Makefile
-
 %build
-CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true VERSION=%{version}"
-export CFLAGS="%{optflags} -fcommon -I ."
-make $CONF %{?_smp_mflags}
+CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true"
+export CFLAGS="%{optflags} -fcommon"
+%make_build -C %{maindir} $CONF
 
-%ifarch ix86 x86_64
-cd ../turbostat-%{tsversion}
-export CFLAGS="%{optflags} -fcommon -I ../turbostat-%{tsversion}/include"
-make %{?_smp_mflags}
-cd ../x86_energy_perf_policy-%{pbversion}
-make %{?_smp_mflags}
-cd ../intel-speed-select-%{ssversion}
-make %{?_smp_mflags}
+%ifarch %{ix86} x86_64
+%make_build -C %{tsdir}
+%make_build -C %{pbdir}
+%make_build -C %{ssdir}
 %endif
 
 %install
-CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true DESTDIR=%{buildroot} sbindir=%{_sbindir} docdir=%{_docdir}/%{name} confdir=%{_sysconfdir} VERSION=%{version}"
-%make_install $CONF
+CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true DESTDIR=%{buildroot} sbindir=%{_sbindir} docdir=%{_docdir}/%{name} confdir=%{_sysconfdir}"
+%make_install -C %{maindir} $CONF
+
+%ifarch %{ix86} x86_64
+%make_install -C %{tsdir}
+%make_install -C %{pbdir}
+%make_install -C %{ssdir}
+%endif
 
 # copy to examples doc dir to avoid complains from the build
 # system about an executable in the doc dir.
@@ -133,26 +112,17 @@ mv %{buildroot}//%{_docdir}/%{name}/cpufreq-bench_script.sh %{buildroot}/%{_docd
 
 %find_lang %{name}
 
-%ifarch ix86 x86_64
-cd ../turbostat-%{tsversion}
-%make_install -e
-cd ../x86_energy_perf_policy-%{pbversion}
-%make_install
-cd ../intel-speed-select-%{ssversion}
-%make_install
-%endif
-
 %post -n libcpupower0 -p /sbin/ldconfig
 %postun -n libcpupower0 -p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files
 %{_datadir}/bash-completion/completions/cpupower
-%{_mandir}/man1/cpupower*
+%{_mandir}/man1/cpupower*%{?ext_man}
 %{_bindir}/cpupower
-%ifarch ix86 x86_64
-%{_mandir}/man8/turbostat*
+%ifarch %{ix86} x86_64
+%{_mandir}/man8/turbostat*%{?ext_man}
 %{_bindir}/turbostat
-%{_mandir}/man8/x86_energy_perf_policy*
+%{_mandir}/man8/x86_energy_perf_policy*%{?ext_man}
 %{_bindir}/x86_energy_perf_policy
 %{_bindir}/intel-speed-select
 %endif
@@ -174,5 +144,7 @@ cd ../intel-speed-select-%{ssversion}
 %{_includedir}/cpuidle.h
 %{_includedir}/powercap.h
 %{_libdir}/libcpu*.so
+
+%files lang -f %{name}.lang
 
 %changelog

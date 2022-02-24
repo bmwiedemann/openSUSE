@@ -18,10 +18,10 @@
 
 %define cpan_name CPAN-Perl-Releases
 Name:           perl-CPAN-Perl-Releases
-Version:        5.20220120
+Version:        5.20220220
 Release:        0
-Summary:        Mapping Perl releases on CPAN to the location of the tarballs
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Mapping Perl releases on CPAN to the location of the tarballs
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

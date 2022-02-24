@@ -1,7 +1,7 @@
 #
 # spec file for package stunnel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,33 +18,22 @@
 
 %define VENDORAFFIX openSUSE
 
-%if 0%{?suse_version} >= 1210
-
 %define has_systemd 1
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
-
-%else
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires(pre):  %insserv_prereq
-Requires(pre):  /usr/sbin/useradd
-# macro _sbindir does not work here!
-
-%endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           stunnel
-Version:        5.60
+Version:        5.62
 Release:        0
 Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 Recommends:     stunnel-doc = %version
-URL:            http://www.stunnel.org/
+URL:            https://www.stunnel.org/
 Source:         https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz
 Source1:        https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz.asc
 Source2:        https://www.stunnel.org/pgp.asc#/%{name}.keyring
@@ -55,6 +44,7 @@ Source7:        stunnel.README
 Patch1:         stunnel-5.59_service_always_after_network.patch
 Patch2:         harden_stunnel.service.patch
 BuildRequires:  libopenssl-devel
+BuildRequires:  python3
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel
 # test dependencies
@@ -78,9 +68,7 @@ scalability (including load-balancing), making it suitable for large deployments
 Summary:        Documentation for the universal TLS Tunnel
 Group:          Documentation/Other
 Requires:       stunnel = %{version}
-%if 0%{?suse_version} >= 1210
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains additional documentation for the stunnel program.
@@ -95,25 +83,12 @@ chmod -x %{_builddir}/stunnel-%{version}/tools/importCA.*
 %build
 sed -i 's/-m 1770//g' tools/Makefile.in
 %configure \
-%if 0%{?suse_version} == 1110
-	--disable-fips \
-%endif
 	--disable-static \
 	--bindir=%{_sbindir}
 make %{?_smp_mflags} LDADD="-pie -Wl,-z,defs,-z,relro,-z,now"
 
-%check
-# only works in Tumbleweed as of 2021-04-08
-%if 0%{?suse_version} > 1500
-  make %{?_smp_mflags} check
-%endif
-
 %install
-%if 0%{?suse_version} >= 1210
   %make_install
-%else
-  make install DESTDIR=$RPM_BUILD_ROOT
-%endif
 
 mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/doc/stunnel %{buildroot}%{_docdir}/
@@ -145,6 +120,13 @@ rm -rf %{buildroot}%{_docdir}/stunnel/plugins/
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/stunnel/{bin,etc,dev,%{_lib},sbin,var/run}
 install -d %{buildroot}%{_sysconfdir}/%{name}/conf.d
+
+%check
+# only works in Tumbleweed as of 2021-04-08
+%if 0%{?suse_version} > 1500
+  rm tests/plugins/*fips*.py
+  make %{?_smp_mflags} test
+%endif
 
 %pre
 if ! %{_bindir}/getent passwd stunnel >/dev/null; then
@@ -201,6 +183,7 @@ fi
 %else
 %config %{_initddir}/*
 %endif
+%{_datadir}/bash-completion/completions/%{name}.bash
 
 %files doc
 %defattr(-,root,root)

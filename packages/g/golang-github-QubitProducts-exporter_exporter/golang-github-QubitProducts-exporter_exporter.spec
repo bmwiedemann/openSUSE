@@ -37,9 +37,11 @@ Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        exporter_exporter.yaml
 Source3:        prometheus-exporter_exporter.service
-%if 0%{?suse_version}
+%if 0%{?suse_version} || 0%{?rhel} >= 8
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
+%endif
+%if 0%{?suse_version}
 BuildRequires:  golang(API) = 1.14
 %else
 BuildRequires:  golang >= 1.14
@@ -62,7 +64,7 @@ Reverse proxy designed for Prometheus exporters
 %autosetup -a1 -n %{repo}-%{version}
 
 %build
-%if 0%{?suse_version}
+%if 0%{?suse_version} || 0%{?rhel} >= 8
 %goprep %{import_path}
 %gobuild --mod=vendor "" ...
 %else
@@ -72,7 +74,7 @@ go build -mod=vendor -ldflags "-v -buildmode=pie -compressdwarf=false" -o %{repo
 
 %install
 # Binary
-%if 0%{?suse_version}
+%if 0%{?suse_version} || 0%{?rhel} >= 8
 %goinstall
 %else
 install -m 0755 -vd %{buildroot}%{_bindir}
@@ -86,13 +88,17 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/prometheus-exporter_export
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{repo}.yaml
 install -d -m 0755 %{buildroot}%{_sysconfdir}/%{repo}.d
 
-%if 0%{?suse_version}
+%if 0%{?suse_version} || 0%{?rhel} >= 8
   %fdupes %{buildroot}/%{_prefix}
 %endif
 
 %check
-%if 0%{?suse_version}
+%if 0%{?suse_version} || 0%{?rhel} >= 8
   %gotest --mod=vendor "" ...
+%endif
+%if 0%{?rhel} == 8
+# Fix OBS debug_package execution.
+rm -f %{buildroot}/usr/lib/debug/%{_bindir}/exporter_exporter-%{version}-*.debug
 %endif
 
 %pre

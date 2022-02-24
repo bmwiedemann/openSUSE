@@ -28,15 +28,12 @@ Source:         http://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
 BuildRequires:  perl(ExtUtils::Command)
-%ifarch s390x
-BuildRequires:  libffi-devel
-%if 0%{?suse_version} > 1500
-Requires:       libffi8
-%else
-Requires:       libffi7
+BuildRequires:  pkgconfig(libffi)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libtommath)
+BuildRequires:  pkgconfig(libuv)
 %endif
-%define         ffiopt --has-libffi
-%endif
+BuildRequires:  pkgconfig(libzstd)
 
 %description
 MoarVM (short for Metamodel On A Runtime Virtual Machine) is a runtime built
@@ -48,6 +45,12 @@ the NQP compiler toolchain.
 Summary:        MoarVM development headers and libraries
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
+Requires:       pkgconfig(libffi)
+%if 0%{?suse_version} >= 1550
+Requires:       pkgconfig(libtommath)
+Requires:       pkgconfig(libuv)
+%endif
+Requires:       pkgconfig(libzstd)
 
 %description devel
 MoarVM (Metamodel On A Runtime) development headers.
@@ -57,7 +60,15 @@ MoarVM (Metamodel On A Runtime) development headers.
 %patch0 -p1
 
 %build
-perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 --no-mimalloc %{ffiopt}
+extra_config_args=
+%if 0%{?suse_version} >= 1550
+extra_config_args+=" --has-libtommath --has-libuv"
+%endif
+%ifarch riscv64
+extra_config_args+=" --c11-atomics"
+%endif
+CFLAGS="%{optflags}" \
+perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 --no-mimalloc --has-libffi $extra_config_args
 make NOISY=1 %{?_smp_mflags}
 
 %install

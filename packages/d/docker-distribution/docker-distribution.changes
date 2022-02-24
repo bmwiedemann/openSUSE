@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb 15 09:51:24 UTC 2022 - rbrown@suse.com
+
+- Update to version 2.8.0:
+  * Update README so the release pipeline works properly.
+  * Make this releaes a beta release first.
+  * [2.8] Release artifacts
+  * release workflow
+  * Apply suggestions from code review
+  * Prepare for v2.8.0 release
+  * [release/2.7] vendor: github.com/opencontainers/image-spec v1.0.2
+  * manifest: validate document type before unmarshal
+  * [release/2.7] vendor: github.com/golang-jwt/jwt v3.2.1
+- Drop merged patchs
+  * 0001-Fix-s3-driver-for-supporting-ceph-radosgw.patch
+  * 0002-Relax-filesystem-driver-folder-permissions-to-0777-cont.patch
+  * 0003-Support-external-redis-sentinel-cluster.patch
+  * 0004-Make-ipfilteredby-not-required.patch
+
+-------------------------------------------------------------------
 Thu Jul 15 07:30:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - go back to golang 1.15 to fix the build for now 

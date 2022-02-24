@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 24 13:09:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.0.6 (no changelog)
+- Remove seafile-client_fix-compilation-glib2_68.patch
+- Rebase fix-cmake-name.patch
+- New minimum QT requirement is 5.15.1
+
+-------------------------------------------------------------------
 Fri Dec 10 13:25:11 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.0.5. No changelog.

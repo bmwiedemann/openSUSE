@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Add CI for Qt6
+  * Remove Phonon from Linux CI
+  * Add KStatusNotifierItem::hideAssociatedWidget()
+  * KStatusNotifierItem: use actions instead of Yes/No in Quit confirm dialog
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

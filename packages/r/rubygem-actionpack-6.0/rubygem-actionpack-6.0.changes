@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 21 11:26:04 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.0.4.6
+ see installed CHANGELOG.md
+
+  ## Rails 6.0.4.6 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 6.0.4.5 (February 11, 2022) ##
+  
+  *   Under certain circumstances, the middleware isn't informed that the
+      response body has been fully closed which result in request state not
+      being fully reset before the next request
+  
+      [CVE-2022-23633]
+  
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 06:19:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 6.0.4.4

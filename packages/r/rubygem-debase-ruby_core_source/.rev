@@ -41,4 +41,12 @@
     <comment>Fix ftbfs due to rpmlintrc changes</comment>
     <requestid>918838</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1dad4ecc4be9839b542801ddca0e29a2</srcmd5>
+    <version>0.10.14</version>
+    <time>1645723215</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956114</requestid>
+  </revision>
 </revisionlist>

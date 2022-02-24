@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack-protection
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-protection
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 %define mod_name rack-protection
 %define mod_full_name %{mod_name}-%{version}

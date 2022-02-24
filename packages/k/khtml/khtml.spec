@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5KHtml5
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           khtml
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        HTML rendering engine
 License:        LGPL-2.1-or-later
@@ -150,9 +150,7 @@ Development files.
 %files devel
 %{_kf5_libdir}/libKF5KHtml.so
 %{_kf5_libdir}/cmake/KF5KHtml/
-%{_kf5_includedir}/*.h
-%dir %{_kf5_includedir}/*/
-%{_kf5_includedir}/*/
+%{_kf5_includedir}/KHtml/
 %{_kf5_mkspecsdir}/qt_KHtml.pri
 
 %changelog

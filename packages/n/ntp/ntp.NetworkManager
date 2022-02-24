@@ -6,10 +6,15 @@
 #
 
 case "$2" in
-    up)
+    dhcp4-change)
         # Call netconfig in to reconfigure NTPd with the current time servers
         netconfig modify -s NetworkManager -m ntp <<-EOT
 NTPSERVERS='$DHCP4_NTP_SERVERS'
+EOT
+        ;;
+    dhcp6-change)
+        netconfig modify -s NetworkManager -m ntp <<-EOT
+NTPSERVERS='$DHCP6_NTP_SERVERS'
 EOT
         ;;
     *)

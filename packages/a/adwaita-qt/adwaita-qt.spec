@@ -1,7 +1,7 @@
 #
-# spec file for package adwaita-qt
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,82 +17,160 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+ExclusiveArch:  do_not_build
+%endif
+%if "%{flavor}" == "qt5"
+  %define qt5 1
+  %define qt_min_version 5.15.2
+  %define _plugindir %{_libqt5_plugindir}
+  %define _suffix %{nil}
+%endif
+%if "%{flavor}" == "qt6"
+  %define qt6 1
+  %define qt_min_version 6.2.0
+  %define _plugindir %{_qt6_pluginsdir}
+  %define _suffix 6
+%endif
 %define sover 1
-Name:           adwaita-qt
-Version:        1.4.0
+Name:           adwaita-qt%{?_suffix}%{?_suffix:-src}
+Version:        1.4.1
 Release:        0
 Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/FedoraQt/adwaita-qt
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.18
+Source0:        %{url}/archive/%{version}/adwaita-qt-%{version}.tar.gz
+BuildRequires:  cmake >= 3.17
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qtbase-devel >= 5.12
-BuildRequires:  libqt5-qtx11extras-devel
-BuildRequires:  libxcb-devel
-Requires:       adwaita-qt5
+BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+BuildRequires:  extra-cmake-modules
+%else
+BuildRequires:  gcc-c++
+%endif
+%if 0%{?qt5}
+BuildRequires:  cmake(Qt5Core) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig(xcb) >= 1.10
+Requires:       adwaita-%{flavor}
 Obsoletes:      adwaita-qt4 < 1.2.0
+%endif
+%if 0%{?qt6}
+BuildRequires:  cmake(Qt6Core) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Widgets)
+Requires:       adwaita-%{flavor}
+%endif
 
 %description
 Theme to let Qt applications fit nicely into GNOME desktop.
 
-%package -n adwaita-qt5
+%package -n adwaita-%{flavor}
+Requires:       libadwaita%{flavor}-%{sover} = %{version}-%{release}
+%if 0%{?qt5}
 Summary:        Adwaita Qt5 theme
-Requires:       libadwaitaqt%{sover} = %{version}-%{release}
+%endif
+%if 0%{?qt6}
+Summary:        Adwaita Qt6 theme
+%endif
+%if 0%{?qt5}
 Supplements:    (libQt5Core5 and gnome-session)
+%endif
+%if 0%{?qt6}
+Supplements:    (libQt6Core6 and gnome-session)
+%endif
 
-%description -n adwaita-qt5
+%description -n adwaita-%{flavor}
+%if 0%{?qt5}
 Adwaita theme variant for applications utilizing Qt5
+%endif
+%if 0%{?qt6}
+Adwaita theme variant for applications utilizing Qt6
+%endif
 
-%package -n libadwaitaqt%{sover}
+%package -n libadwaita%{flavor}-%{sover}
+%if 0%{?qt5}
 Summary:        Adwaita Qt5 library
 # The package was wwronlgy called  libadwaitaqt1_2_0 in the past
 # As long as we are at .so.1, we can obsolete this old, wrong
 # package name
 Obsoletes:      libadwaitaqt1_2_0
+Obsoletes:      libadwaitaqt%{sover} <= 1.4.0
+Provides:       libadwaitaqt%{sover} = %{version}
+%endif
+%if 0%{?qt6}
+Summary:        Adwaita Qt6 library
+%endif
 
-%description -n libadwaitaqt%{sover}
+%description -n libadwaita%{flavor}-%{sover}
+%if 0%{?qt5}
 Adwaita theme variant for applications utilizing Qt5
+%endif
+%if 0%{?qt6}
+Adwaita theme variant for applications utilizing Qt6
+%endif
 
-%package -n libadwaitaqt-devel
-Summary:        Development files for libadwaitaqt
-Requires:       libadwaitaqt%{sover} = %{version}-%{release}
+%package -n libadwaita-%{flavor}-devel
+Summary:        Development files for libadwaita-%{flavor}
+Requires:       libadwaita%{flavor}-%{sover} = %{version}
+%if 0%{?qt5}
+Obsoletes:      libadwaitaqt-devel <= 1.4.0
+Provides:       libadwaitaqt-devel = %{version}
+%endif
+%if 0%{?qt6}
+Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Widgets)
+%endif
 
-%description -n libadwaitaqt-devel
-The libadwaitaqt-devel package contains libraries and header files for
-developing applications that use libadwaitaqt%{sover}.
+%description -n libadwaita-%{flavor}-devel
+The libadwaita-%{flavor}-devel package contains libraries and header files for
+developing applications that use libadwaita-%{flavor}-%{sover}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n adwaita-qt-%{version}
 
 %build
-%cmake
+%cmake \
+%if 0%{?qt5}
+  -DUSE_QT6=false \
+%endif
+%if 0%{?qt6}
+  -DUSE_QT6=true \
+%endif
+
 %cmake_build
 
 %install
 %cmake_install
+# qt6 does not have a pc file, so the generated pc we have is invalid, nuke it.
+rm -rf %{buildroot}%{_libdir}/pkgconfig/adwaita-qt6.pc
 
-%post   -n libadwaitaqt%{sover} -p /sbin/ldconfig
-%postun -n libadwaitaqt%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libadwaita%{flavor}-%{sover}
 
-%files -n adwaita-qt5
+%files -n adwaita-%{flavor}
 %license LICENSE.LGPL2
 %doc README.md
-%dir %{_libdir}/qt5/plugins/styles
-%{_libdir}/qt5/plugins/styles/adwaita.so
+%dir %{_plugindir}/styles
+%{_plugindir}/styles/adwaita.so
 
-%files -n libadwaitaqt%{sover}
-%{_libdir}/libadwaitaqt.so.*
-%{_libdir}/libadwaitaqtpriv.so.*
+%files -n libadwaita%{flavor}-%{sover}
+%{_libdir}/libadwaitaqt%{_suffix}.so.*
+%{_libdir}/libadwaitaqt%{_suffix}priv.so.*
 
-%files -n libadwaitaqt-devel
-%dir %{_includedir}/AdwaitaQt
-%{_includedir}/AdwaitaQt/*.h
-%dir %{_libdir}/cmake/AdwaitaQt
-%{_libdir}/cmake/AdwaitaQt/*.cmake
-%{_libdir}/pkgconfig/adwaita-qt.pc
-%{_libdir}/libadwaitaqt.so
-%{_libdir}/libadwaitaqtpriv.so
+%files -n libadwaita-%{flavor}-devel
+%dir %{_includedir}/AdwaitaQt%{_suffix}
+%{_includedir}/AdwaitaQt%{_suffix}/*.h
+%dir %{_libdir}/cmake/AdwaitaQt%{_suffix}
+%{_libdir}/cmake/AdwaitaQt%{_suffix}/*.cmake
+%if 0%{?qt5}
+%{_libdir}/pkgconfig/adwaita-qt%{_suffix}.pc
+%endif
+%{_libdir}/libadwaitaqt%{_suffix}.so
+%{_libdir}/libadwaitaqt%{_suffix}priv.so
 
 %changelog

@@ -35,7 +35,7 @@
 
 %define         shlib_version 1
 Name:           lxc
-Version:        4.0.10
+Version:        4.0.12
 Release:        0
 URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers
@@ -73,7 +73,6 @@ Requires:       rsync
 # Needed to create openSUSE containers using template.
 Recommends:     build
 Recommends:     criu >= 2.0
-Patch3:         0003-templates-lxc-download.in-use-GPG-option-receive-key.patch
 
 %description
 LXC is the well-known and heavily tested low-level Linux container runtime.
@@ -122,7 +121,7 @@ Summary:        Bash Completion for %{name}
 License:        LGPL-2.1-or-later
 Group:          System/Management
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -130,8 +129,6 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup
-
-%patch3 -p1
 
 %build
 ./autogen.sh
@@ -190,7 +187,7 @@ do
 	ln -s "_%{name}" "%{buildroot}%{_datadir}/bash-completion/completions/$bin"
 done
 # lxc installs bash-completion to the wrong location.
-rm -f %{buildroot}%{_sysconfdir}/bash_completion.d/%{name}
+rm -f %{buildroot}%{_sysconfdir}/bash_completion.d/%{name}*
 
 # Clean up.
 find %{buildroot} -type f -name '*.la' -delete
@@ -259,7 +256,7 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1500
 %_pam_moduledir/pam_cgfs.so
 %else
-%{_lib}/security/pam_cgfs.so
+/%{_lib}/security/pam_cgfs.so
 %endif
 
 %files -n liblxc%{shlib_version}

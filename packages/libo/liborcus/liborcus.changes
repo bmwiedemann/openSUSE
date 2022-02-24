@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jan 27 14:34:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * no-std-filesystem.patch
+    + use boost::filesystem instead of std::filesystem, in order to
+      allow building with older compilers
+
+-------------------------------------------------------------------
+Wed Jan 26 14:47:32 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.17.2:
+  * fixed a bug where the state of style:cell-protect="none" was not
+    explicitly pushed, thereby having had the same effect as not having this
+    attribute.  After the fix, style:cell-protect="none" will explicitly push
+    the hidden state to false, locked state to false, and the formula-hidden
+    state to false.
+- Update to 0.17.1:
+  * addressed a number of coverity issues.
+  * removed a variety of compiler warnings.
+  * re-generated sax parser tokens from ODF v1.3.
+  * revised the style import code to only push style attributes that are
+    actually specified in the XML.
+  * revised the XML structure validation strategy to ignore any mis-placed
+    elements and their sub structures rather than aborting the import.
+
+-------------------------------------------------------------------
+Fri Nov 19 10:34:49 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.17.0:
+  * set the baseline C++ version to 17.
+  * cleaned up the public API to replace pstring with std::string_view, union
+    with std::variant, and boost::optional with std::optional.  With this
+    change, the public API no longer has dependency on boost.
+  * switched to using ixion::model_iterator for horizontal iteration of cells
+    instead of using mdds::mtv::collection.
+  * fixed a bug where exporting a spreadsheet document containing adjacent
+    merged cells regions to html incorrectly exported the merged cell areas.
+  * cached cell values are now correctly loaded from the xlsx file.
+  * utf-8 names are now allowed as element and attribute names in the sax parser.
+  * unquoted utf-8 property values are now allowed in the css parser.
+  * added yaml output option in orcus-json.
+  * fixed a bug where mapping of an XML document with namespace aliases
+    sometimes corrupts the alias values.
+  * added orcus.FormulaTokenOp enum type in python which describes type formula token
+    operator types in a more finer grained manner.
+  * added notes to how to use orcus-xml and orcus-json to map XML and JSON
+    documents to spreadsheet documents.
+- Drop GCC11_build_fixes.patch
+
+-------------------------------------------------------------------
 Wed May 19 14:51:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define conditionally make_build to fix build on systems that do

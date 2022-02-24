@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Thu Feb 24 06:32:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix package names.
+
+-------------------------------------------------------------------
+Sat Dec 04 00:01:25 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 3.12.2+git.1625035095.f0a089a:
+  * fix "src/dmidecodemodule.c:828:9 warning[-Wanalyzer-possible-null-argument]: use of possibly-NULL opt where non-null expected"
+  * fix Error: FORWARD_NULL (CWE-476): [#def23]
+  * fix "src/dmierror.c:55:9: warning[-Wanalyzer-possible-null-argument]: use of possibly-NULL buf where non-null expected"
+  * fix Error: MISSING_COMMA: detected by covscan
+  * fix Error: CONSTANT_EXPRESSION_RESULT detected by covscan
+  * fix RESOURCE_LEAK error detected by covscan in src/util.c
+  * fix RESOURCE_LEAK errors detected by covscan in src/xmlpythonizer.c
+  * Update README
+  * fix RESOURCE_LEAK errors detected by covscan in src/dmidecodemodule.c
+
+-------------------------------------------------------------------
+Thu Dec  2 23:52:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Brutal simplification of the SPEC file to the standard single-spec
+  Python one. In the end we need one shared package and multiple
+  python-versioned ones.
+- Removal of support for Python 2 (bsc#1193262)
+
+-------------------------------------------------------------------
+Thu Oct 19 07:53:52 UTC 2017 - mc@suse.com
+
+- build python2-dmidecode and use python-dmidecode for shared files
+
+-------------------------------------------------------------------
+Tue Oct 17 13:05:04 UTC 2017 - mc@suse.com
+
+- set rpath to libxml2mod library
+
+-------------------------------------------------------------------
+Sun Sep 24 14:05:44 UTC 2017 - mc@suse.com
+
+- version 3.12.2
+- Add Python 3 subpackage
+- Removed deprecated statements
+
+-------------------------------------------------------------------
+Wed May  3 15:12:27 CEST 2017 - mantel@suse.de
+
+- use correct data type DWORD for extended memory size (bsc#1036061)
+
+-------------------------------------------------------------------
+Wed Sep  3 01:41:37 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Fri Jan 17 17:12:10 CET 2014 - mc@suse.de
+
+- version 3.12.1
+  obsoleted patches (available in new upstream version):
+  * python-dmidecode_copyright-update.patch
+  * bug-713982_python-dmidecode-nullversion.patch
+  * python-dmidecode-dmixml-error-63fa74b229dd2.patch
+  * bug-823328-fix-set_vendor-segfault.dif
+- Add SIGILL catcher in mem_chunk()
+- Implemented dmixml_AddDMIstring()
+- Harden dmi_string() calls with better NULL checks
+- Do not add explictly 'dmispec' attributes inside switch()
+  in dmi_decode()
+- rebase against upstream dmidecode v2.12 and an update
+  against the SMBIOS reference specification v2.8.0.
+
+-------------------------------------------------------------------
+Tue Jun 11 18:38:23 CEST 2013 - mc@suse.de
+
+- fix segfault in dmi_set_vendor (bnc#823328)
+
+-------------------------------------------------------------------
+Wed Sep 28 13:16:17 CEST 2011 - mc@suse.de
+
+- fix dmi_decode assertion during client registration
+  (bnc#720885)
+
+-------------------------------------------------------------------
+Mon Sep 12 11:05:55 CEST 2011 - mc@suse.de
+
+- fix Segfault when decoding DMI data in dmi_processor_id()
+  (bnc#713982)
+
+-------------------------------------------------------------------
+Thu Dec  9 14:15:15 CET 2010 - mc@suse.de
+
+- initial release
+

@@ -1184,4 +1184,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.24.1. plasma5-mobile tarball is missing translations, so skipped for now.</comment>
     <requestid>955259</requestid>
   </revision>
+  <revision rev="142" vrev="3">
+    <srcmd5>c15ff140325db72729315a9b14feb195</srcmd5>
+    <version>84.87~git20220116T220745~fffd234</version>
+    <time>1645723142</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.2</comment>
+    <requestid>956983</requestid>
+  </revision>
 </revisionlist>

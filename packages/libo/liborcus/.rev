@@ -332,4 +332,41 @@
     <comment></comment>
     <requestid>894389</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ef45e6927b5b5fb91cad8515517291c2</srcmd5>
+    <version>0.17.2</version>
+    <time>1645723210</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch:
+  * no-std-filesystem.patch
+    + use boost::filesystem instead of std::filesystem, in order to
+      allow building with older compilers
+
+- Update to 0.17.2:
+  * fixed a bug where the state of style:cell-protect=&quot;none&quot; was not
+    explicitly pushed, thereby having had the same effect as not having this
+    attribute.  After the fix, style:cell-protect=&quot;none&quot; will explicitly push
+    the hidden state to false, locked state to false, and the formula-hidden
+    state to false.
+- Update to 0.17.1:
+  * addressed a number of coverity issues.
+  * removed a variety of compiler warnings.
+  * re-generated sax parser tokens from ODF v1.3.
+  * revised the style import code to only push style attributes that are
+    actually specified in the XML.
+  * revised the XML structure validation strategy to ignore any mis-placed
+    elements and their sub structures rather than aborting the import.
+
+- Update to 0.17.0:
+  * set the baseline C++ version to 17.
+  * cleaned up the public API to replace pstring with std::string_view, union
+    with std::variant, and boost::optional with std::optional.  With this
+    change, the public API no longer has dependency on boost.
+  * switched to using ixion::model_iterator for horizontal iteration of cells
+    instead of using mdds::mtv::collection.
+  * fixed a bug where exporting a spreadsheet document containing adjacent
+    merged cells regions to html incorrectly exported the merged cell areas.
+  * cached cell values are now correctly loaded from the xlsx file.</comment>
+    <requestid>956518</requestid>
+  </revision>
 </revisionlist>

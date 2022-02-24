@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb  7 16:55:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Force PIE when building with gcc-10 (boo#1195628)
+
+-------------------------------------------------------------------
+Sun Feb  6 10:17:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Too many changes since 5.90.0, only listing bugfixes:
+  * Consider slow files as remote files in previewjob (kde#349161)
+  * [desktopexecparser] Consider associations from mimeapps.list to
+    determine whether an app supports a scheme (kde#440062)
+  * [kopenwithdialog] Fix filtering (kde#449330)
+  * kdirmodel: Allow using full path for Icon in .desktop file (kde#448116)
+  * file_unix: Do not try to preserve ownership when permission is -1 (kde#447779)
+  * KPropertiesDialog: use the KFileItem when checkig if the url is local (kde#444624)
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

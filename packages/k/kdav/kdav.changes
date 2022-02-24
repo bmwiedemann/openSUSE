@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Add CI qt6 support
+  * Fix header installation path to include module prefix
+  * Use uppercase "KDAV" name as qmake identifier, to be match KF standards
+  * Fix pri file to also note KCoreAddons dependency
+  * Fix non-existing include path set in pri file
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

@@ -168,4 +168,12 @@ Required by the latest version of python-gcsfs</comment>
 </comment>
     <requestid>949718</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2f2417819ab0ffd0b48984af9567c745</srcmd5>
+    <version>2022.2.0</version>
+    <time>1645723244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957036</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 21 11:33:12 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.5
+ see installed ChangeLog
+
+  2022-02-15 version 1.4.5:
+  
+  * Fix to create UTF-8 Symbol keys when symbolize_keys: true
+  * Fix to assume Symbols as US-ASCII or UTF-8
+  * Optimize Packer/Unpacker initialization
+  * Optimize extension class lookup
+  * Rename Packer#clear as Packer#reset (#clear is still available as an alias)
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:13:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.4.4

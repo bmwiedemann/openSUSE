@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 22 16:21:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * kded: don't show "connection activated" notifications on launch/login (kde#399973)
+  * Don't use warning icon in notification when the user disconnects a VPN
+  * Use error icon for missing VPN plugin notification
+
+-------------------------------------------------------------------
 Tue Feb 15 19:18:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.1

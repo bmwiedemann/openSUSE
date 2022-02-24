@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-debase-ruby_core_source
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,32 @@
 #
 
 
-%define mod_name debase-ruby_core_source
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-debase-ruby_core_source
-Version:        0.10.12
+Version:        0.10.14
 Release:        0
-Summary:        Provide Ruby core source files
-License:        MIT
-Group:          Development/Languages/Ruby
-URL:            https://github.com/os97673/debase-ruby_core_source
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        rubygem-debase-ruby_core_source-rpmlintrc
-Source2:        gem2rpm.yml
-BuildRequires:  %{ruby >= 1.9.3}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
+%define mod_name debase-ruby_core_source
+%define mod_full_name %{mod_name}-%{version}
 # MANUAL
 BuildRequires:  fdupes
 # /MANUAL
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/ruby-debug/debase-ruby_core_source
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        rubygem-debase-ruby_core_source-rpmlintrc
+Source2:        gem2rpm.yml
+Summary:        Provide Ruby core source files
+License:        MIT
+Group:          Development/Languages/Ruby
 
 %description
 Provide Ruby core source files for C extensions that need them.
@@ -57,7 +59,6 @@ Provide Ruby core source files for C extensions that need them.
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.gitignore' \) | xargs rm
 %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_full_name}/
 # /MANUAL
-
 
 %gem_packages
 

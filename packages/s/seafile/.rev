@@ -90,4 +90,14 @@
 </comment>
     <requestid>939135</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7cb00dd7ebc71a7be5974f6260c5f3b7</srcmd5>
+    <version>8.0.6</version>
+    <time>1645723268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.6 (no changelog)
+- Remove seafile-fix-compilation-glib2_68.patch
+</comment>
+    <requestid>957366</requestid>
+  </revision>
 </revisionlist>

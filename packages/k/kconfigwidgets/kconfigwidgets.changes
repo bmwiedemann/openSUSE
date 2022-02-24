@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * KLanguageButton: Don't insert duplicates
+  * KLanguageButton: Adapt to new .desktop filenames
+  * Change shortcuts of standard actions if standard shortcut changes (kde#426656)
+  * Use BUILD* deprecation wrapper for virtual method (kde#448680)
+  * Improve naming a little bit
+  * Simplify + use reserve
+  * Remove unnecessary QBrush->QColor conversions
+  * Fix iconWidth calculation
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * Simplify KHamburgerMenu menu items
+  * Add CI qt6 support
+  * Only require KAuth on Linux/FreeBSD
+  * Don't use KAuth on Windows
+- Drop 0001-Use-BUILD-deprecation-wrapper-for-virtual-method.patch
+  Merged upstream
+
+-------------------------------------------------------------------
 Thu Jan 20 19:47:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix deprecation-induced ABI mismatch (kde#448680):

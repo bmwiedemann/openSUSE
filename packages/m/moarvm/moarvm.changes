@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 24 11:30:58 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- On Factory use system libraries instead of bundled ones: libtommath,
+  libuv
+- Use libffi instead of bundled dyncall
+- Use C11 atomics on riscv64 instead of bundled outdated libatomic_ops
+- Add libzstd for heap snapshot format version 3
+- Build with %{optflags}
+
+-------------------------------------------------------------------
 Tue Feb 22 18:24:53 UTC 2022 - Stefan Seifert <nine@detonation.org>
 
 - Build with --no-mimalloc to work around bugs revealed post-release.

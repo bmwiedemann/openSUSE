@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Update code snippet for NewStuff.Action
+  * Register KNSCore::Entry under name "Entry" as a Q_GADGET to QML
+  * Consume string views before they become invalid
+  * Focus search field by default unless doing so would show the virtual keyboard (kde#444727)
+  * Add CI qt6 support
+  * Fix the Qt6 build
+  * Deprecate KNS3::Button class in favor of KNSWidgets::Button
+  * Introduce KNSWidgets::Button class for better compatibility with KF6 changes
+  * KNSWidgets::Action add compatibility for unified entry class in KF6
+  * Unify how kpackageType is determined for the addons
+  * Button.qml Fix binding for engine property
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * Button.qml: Use QML loaders for dialog component
+  * Fix broken usage example for NewStuff.Action
+  * Remove QProcess::ExitStatus parameter from signal handler parameter list if we don't need it
+  * Remove unneeded QOverload for QProcess::finished signal
+  * Fix specific code for building qt6
+  * Apply Volker patch (fix install)
+  * Adapt build system for building against qt6
+  * Engine: Ensure we are not using the wrong ProvidersUrl
+  * Add conditional cache preference to http requests
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

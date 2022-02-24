@@ -3141,4 +3141,21 @@ Petr</comment>
     <comment></comment>
     <requestid>952203</requestid>
   </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>d4b93dee8959757925f80da2a9f2bb37</srcmd5>
+    <version>7.3.1.1</version>
+    <time>1645723210</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix KDE Frameworks detection (boo#1196017)
+  * 0001-configure.ac-Update-kf5-include-lib-check-to-work-wi.patch
+
+- Update to 7.3.1.1
+- Removed uneeded patches:
+  * 0001-Missing-includes-for-libstdc-12.patch
+  * bsc1183308.patch
+  * fix-wayland-scaling-in-plasma.patch
+  * pld-skia-patches.patch
+  * skia-freetype2.11.patch</comment>
+    <requestid>956520</requestid>
+  </revision>
 </revisionlist>

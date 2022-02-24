@@ -1,12 +1,13 @@
 #!/bin/bash
-
+# shellcheck disable=2181
+#
 # Copyright (c) 2021 Andreas Schneider <asn@cryptomilk.org>
 # License: GPLv3
 
-ELECTRON_PKGVERSION=$(rpmspec -P *.spec | grep Version | sed -e 's/Version:[ ]*//g')
+ELECTRON_PKGVERSION="$(rpmspec -P ./*.spec | grep Version | sed -e 's/Version:[ ]*//g')"
 ELECTRON_PKGNAME="electron"
 ELECTRON_PKGDIR="$(pwd)"
-ELECTRON_TMPDIR=$(mktemp --tmpdir -d electron-XXXXXXXX)
+ELECTRON_TMPDIR="$(mktemp --tmpdir -d electron-XXXXXXXX)"
 ELECTRON_PATH="${ELECTRON_TMPDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
 
 echo "NAME:    $ELECTRON_PKGNAME"
@@ -14,8 +15,8 @@ echo "VERSION: $ELECTRON_PKGVERSION"
 echo "PATH:    $ELECTRON_PATH"
 
 cleanup_tmpdir() {
-    popd 2>/dev/null
-    rm -rf $ELECTRON_TMPDIR
+    popd 2>/dev/null || true
+    rm -rf "$ELECTRON_TMPDIR"
 }
 trap cleanup_tmpdir SIGINT
 
@@ -24,7 +25,7 @@ cleanup_and_exit() {
     if test "$1" = 0 -o -z "$1" ; then
         exit 0
     else
-        exit $1
+        exit "$1"
     fi
 }
 
@@ -53,7 +54,7 @@ solutions = [
 EOF
 
 echo ">>>>>> Downloading electron-${ELECTRON_PKGVERSION}"
-gclient sync --jobs 4 --nohooks --with_branch_heads --with_tags --revision=v${ELECTRON_PKGVERSION}
+gclient sync --jobs 4 --nohooks --with_branch_heads --with_tags --revision=v"${ELECTRON_PKGVERSION}"
 if [ $? -ne 0 ]; then
     echo "ERROR: gclient sync failed"
     cleanup_and_exit 1
@@ -119,8 +120,9 @@ pushd "${ELECTRON_PATH}" || cleanup_and_exit 1
 
 echo ">>>>>> Create LASTCHANGE(.committime) file"
 echo -n "LASTCHANGE=$(git log -1 --format=format:%H HEAD)" > build/util/LASTCHANGE
+# shellcheck disable=1091
 source build/util/LASTCHANGE
-echo -n "$(git log -1 --date=unix --format=format:%cd $LASTCHANGE)" > build/util/LASTCHANGE.committime
+echo -n "$(git log -1 --date=unix --format=format:%cd "$LASTCHANGE")" > build/util/LASTCHANGE.committime
 
 echo ">>>>>> Remove bundled libs"
 keeplibs=(
@@ -371,7 +373,7 @@ find . -type d -name .git -print0 | xargs -0 rm -rf
 popd || cleanup_and_exit 1
 
 echo ">>>>>> Create tarball"
-XZ_OPT="-T$(nproc)" tar cJf $ELECTRON_PKGDIR/$ELECTRON_PKGNAME-$ELECTRON_PKGVERSION.tar.xz $ELECTRON_PKGNAME-$ELECTRON_PKGVERSION
+XZ_OPT="-T$(nproc)" tar cJf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.xz" "${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
 if [ $? -ne 0 ]; then
     echo "ERROR: tar cJf failed"
     cleanup_and_exit 1

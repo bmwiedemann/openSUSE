@@ -1,7 +1,7 @@
 #
 # spec file for package liborcus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,24 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define libname liborcus-0_16-0
+%define libname liborcus-0_17-0
 Name:           liborcus
-Version:        0.16.1
+Version:        0.17.2
 Release:        0
 Summary:        Spreadsheet file processing library
 License:        MPL-2.0
 URL:            https://gitlab.com/orcus/orcus/
 Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         GCC11_build_fixes.patch
+Patch0:         no-std-filesystem.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  coreutils
 BuildRequires:  libstdc++-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(libixion-0.16)
-BuildRequires:  pkgconfig(mdds-1.5)
+BuildRequires:  pkgconfig(libixion-0.17)
+BuildRequires:  pkgconfig(mdds-2.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
@@ -86,9 +88,12 @@ Provides:       %{name}-python3 = %{version}
 Python 3 bindings for %{name}.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
 
 %build
+libtoolize --force --copy
+autoreconf -fi
 %if 0%{?suse_version} < 1500
 export CC=gcc-8
 export CXX=g++-8

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-devise-i18n
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 %define mod_name devise-i18n
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-URL:            http://github.com/tigrish/devise-i18n
+URL:            https://github.com/tigrish/devise-i18n
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Translations for the devise gem

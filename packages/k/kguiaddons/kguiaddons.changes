@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:17:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Add Google Maps Geo URI handler
+  * Add Qwant Maps to CMakeLists
+  * Add Qwant Maps Geo URI handler
+  * Add a fallback handler for the geo: URI scheme
+  * Install plugins in kf<version>
+  * Add CI qt6 support
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

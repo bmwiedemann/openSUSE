@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 23 14:23:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add a679ca31b8dbd412e5f379b624200e3a96dda0ce.patch for RISCV support 
+- spec-cleaner
+
+-------------------------------------------------------------------
 Wed Aug 25 11:21:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):

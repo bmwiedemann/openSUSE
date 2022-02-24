@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Add KPluginWidget::load()
+  * Remove assertion for KPluginMetaData param in KCModuleLoader::loadModule
+  * KCModuleProxy: Use std::optional to check if we have a KPluginMetaData object
+  * Add CI qt6 support
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * KCModuleProxy: Replace space with underscore when registering DBus service
+  * Switch header style to ToolBar for system settings
+  * kpluginmodel: Also copy plugin Id from KService to json object
+  * KCMUtils can be built on Windows too
+
+-------------------------------------------------------------------
 Mon Jan  3 12:47:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.90.0

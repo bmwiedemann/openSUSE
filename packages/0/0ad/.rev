@@ -7,4 +7,12 @@
     <comment>Has been patched to build with Factory's mozjs78 and the Python 2 dependency was removed.</comment>
     <requestid>946235</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44a4f7b7a61e6fb572aba6efbe038e50</srcmd5>
+    <version>0.0.25b</version>
+    <time>1645723279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957395</requestid>
+  </revision>
 </revisionlist>

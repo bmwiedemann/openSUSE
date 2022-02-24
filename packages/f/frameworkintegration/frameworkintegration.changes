@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  6 10:16:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Add Linux Qt6 CI
+  * Install plugin in kf<version>
+  * Fix wrong porting of KNSCore::Engine::configSearchLocations (kde#448237)
+  * Change build system for building against qt6
+- Drop 0001-Fix-wrong-porting-of-KNSCore-Engine-configSearchLoca.patch
+  Merged upstream
+
+-------------------------------------------------------------------
 Wed Jan 12 14:17:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream change to fix a regression in 5.90.0 (kde#448237)

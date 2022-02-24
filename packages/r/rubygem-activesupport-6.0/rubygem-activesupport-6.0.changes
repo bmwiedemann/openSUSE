@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 24 11:57:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 6.0.4.6:
+  + Fix Reloader method signature to work with the new Executor
+    signature.
+
+-------------------------------------------------------------------
 Tue Jan 25 06:26:39 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 6.0.4.4

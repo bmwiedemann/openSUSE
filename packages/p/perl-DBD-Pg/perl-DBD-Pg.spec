@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-Pg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name DBD-Pg
 Name:           perl-DBD-Pg
-Version:        3.15.0
+Version:        3.15.1
 Release:        0
-Summary:        PostgreSQL database driver for the DBI module
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        PostgreSQL database driver for the DBI module
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TU/TURNSTEP/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

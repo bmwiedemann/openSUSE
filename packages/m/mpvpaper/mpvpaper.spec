@@ -24,8 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/GhostNaN/mpvpaper
 Source:         https://github.com/GhostNaN/mpvpaper/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix build with removed deprecated APIs in mpv 2.x gh#GhostNaN/mpvpaper#19
-Patch0:         observe-property-instead-of-MPV_EVENT-since-mpv-deprecated.patch
+# PATCH-FIX-UPSTREAM Fix build with removed deprecated APIs in mpv 2.x https://github.com/GhostNaN/mpvpaper/commit/50c0c8def6d96bb2f992fad6c77b86fa85e1a596
+Patch0:         Fixed-mpv-events-cleanup-and-more.patch
 BuildRequires:  meson
 BuildRequires:  mpv-devel
 BuildRequires:  ninja

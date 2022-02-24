@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5GuiAddons5
-%define _tar_path 5.90
+%define _tar_path 5.91
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kguiaddons
-Version:        5.90.0
+Version:        5.91.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -49,6 +49,7 @@ BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
+Requires:       %{lname} = %{version}
 
 %description
 The KDE GUI addons provide utilities for graphical user interfaces in the areas
@@ -57,6 +58,7 @@ of colors, fonts, text, images, keyboard input.
 %package -n %{lname}
 Summary:        Utilities for graphical user interfaces
 Group:          System/GUI/KDE
+Recommends:     %{name}
 %requires_ge    libQt5Gui5
 
 %description -n %{lname}
@@ -87,6 +89,14 @@ of colors, fonts, text, images, keyboard input. Development files.
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
+
+%files
+%license LICENSES/*
+%{_kf5_bindir}/kde-geo-uri-handler
+%{_kf5_applicationsdir}/openstreetmap-geo-handler.desktop
+%{_kf5_applicationsdir}/wheelmap-geo-handler.desktop
+%{_kf5_applicationsdir}/google-maps-geo-handler.desktop
+%{_kf5_applicationsdir}/qwant-maps-geo-handler.desktop
 
 %files -n %{lname}
 %license LICENSES/*

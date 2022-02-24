@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 22 07:44:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.12:
+  Bugfixes¶
+  * Fixed CRIU restoration of containers with pre-created veth interfaces
+  * Fixed issue with kernels lacking SMT support
+  * Extended cgroup2 config options in lxc.mount.auto (cgroup2)
+  * lxc-download now relies on HTTPS for validation (avoids GPG issues)
+- drop patch 0003-templates-lxc-download.in-use-GPG-option-receive-key.patch as
+  upstream remove the GPG functionality
+
+-------------------------------------------------------------------
+Tue Feb 22 07:43:08 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.11:
+  Bugfixes
+  * Core scheduling support (lxc.sched.core)
+  * riscv64 support in lxc.arch
+  * Significantly improved bash completion profile
+  * Greater use of the new VFS mount API (when supported by the kernel)
+  * Fix containers with empty network namespaces
+  * Handle kernels that lack TIOCGPTPEER
+  * Improve CPU bitmask/id handling (handle skipped CPU numbers)
+  * Reworked the tests to run offline
+
+-------------------------------------------------------------------
 Tue Oct 12 08:03:52 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
 
 - use --withpamdir and use pam macros to fix UsrMerge problems

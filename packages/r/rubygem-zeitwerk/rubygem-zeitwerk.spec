@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-zeitwerk
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-zeitwerk
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 %define mod_name zeitwerk
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/fxn/zeitwerk
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/fxn/zeitwerk
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Efficient and thread-safe constant autoloader

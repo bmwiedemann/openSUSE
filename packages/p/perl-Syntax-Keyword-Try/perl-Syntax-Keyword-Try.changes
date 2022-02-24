@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 21 03:13:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.27    2022-02-22
+          [CHANGES]
+           * Updates to support Feature::Compat::Try 0.05 with new `finally {}`
+             blocks
+
+-------------------------------------------------------------------
 Wed Oct 13 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.26
