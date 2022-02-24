@@ -5646,4 +5646,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>956335</requestid>
   </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>9e1192d68d65933518e43034f517a84c</srcmd5>
+    <version>8.2.4456</version>
+    <time>1645723110</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.4456, fixes the following problems
+- boo#1196361 - CVE-2022-0696
+- boo#1196358 - CVE-2022-0714
+  * ctx_imports is not used.
+  * Not enough tests for command line completion.
+  * CI steps for Windows are a bit unorganized.
+  * Incsearch highlight broken when calling searchcount() in 'tabLine'
+  function. (Mirko Palmer)
+  * An empty change is reported to a listener.
+  * Small differences between Chinese translation files.
+  * Translation file listed twice.
+  * A custom 'tabline' may cause Esc to work like Enter on the command line
+  when the popup menu is displayed.
+  * Vim9: unused code lines.
+  * Vim9: error message not tested, some code not tested.
+  * Cannot build tiny version.
+  * Still cannot build tiny version.
+  * Command line completion doesn't always work properly.
+  * Dead code in op_insert().
+  * screenpos() does not handle a position in a closed fold.
+  * Vim9: list from declaration with inferred type does not set the type on
+  the value.
+  * Command line executed when typing Esc in the GUI.
+  * MS-Windows with VIMDLL: Escaping CSI is wrong.
+  * Possible number overflow with nested folds.
+  * UTF8 select mode test fails on MS-Windows.
+  * Some code lines not covered by tests.
+  * Python3 test fails.
+  * Crash when using many composing characters in error message.
+  * Some command completion functions are too long.</comment>
+    <requestid>957122</requestid>
+  </revision>
 </revisionlist>

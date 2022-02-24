@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Wed Feb 23 16:05:16 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.4456, fixes the following problems
+- boo#1196361 - CVE-2022-0696
+- boo#1196358 - CVE-2022-0714
+  * ctx_imports is not used.
+  * Not enough tests for command line completion.
+  * CI steps for Windows are a bit unorganized.
+  * Incsearch highlight broken when calling searchcount() in 'tabLine'
+  function. (Mirko Palmer)
+  * An empty change is reported to a listener.
+  * Small differences between Chinese translation files.
+  * Translation file listed twice.
+  * A custom 'tabline' may cause Esc to work like Enter on the command line
+  when the popup menu is displayed.
+  * Vim9: unused code lines.
+  * Vim9: error message not tested, some code not tested.
+  * Cannot build tiny version.
+  * Still cannot build tiny version.
+  * Command line completion doesn't always work properly.
+  * Dead code in op_insert().
+  * screenpos() does not handle a position in a closed fold.
+  * Vim9: list from declaration with inferred type does not set the type on
+  the value.
+  * Command line executed when typing Esc in the GUI.
+  * MS-Windows with VIMDLL: Escaping CSI is wrong.
+  * Possible number overflow with nested folds.
+  * UTF8 select mode test fails on MS-Windows.
+  * Some code lines not covered by tests.
+  * Python3 test fails.
+  * Crash when using many composing characters in error message.
+  * Some command completion functions are too long.
+  * Crash after ml_get error.
+  * MS-Windows: cannot use the mouse in the console with VIMDLL.
+  * Map listing does not clear the rest of the command line.
+  * Missing parenthesis may cause unexpected problems.
+  * ml_get error with nested folds and deleting lines.
+  * Vim9: some code not covered by tests.
+  * Compiler warning for unused variable without the +folding feature. (Tony
+  Mechelynck)
+  * Expand functions use confusing argument names.
+  * Vim9: some code not covered by tests.
+  * Bicep files are not recognized.
+  * Translation cleanup script does not remove empty lines at end.
+  * Vim9: Coverity warns for using NULL pointer.
+  * Solidity files are not recognized.
+  * Function argument name conflicts with C++ keyword.
+  * Vim9: using a script-local function requires using "s:" when setting
+  'completefunc'.
+  * Using NULL pointer.
+  * Crash when using special multi-byte character.
+  * Illegal memory access when using exactly 20 highlights.
+  * Menu translations are inconsistent.
+  * Some installed files and directories have wrong permissions.
+  * Autochdir test fails on MS-Windows.
+  * "make nvcmdidxs" fails.
+  * ".gts" and ".gjs" files are not recognized.
+  * map() function does not check function arguments at compile time.
+  * map() function on string and blob does not check argument types at
+  compile time.
+  * getchar() may return modifiers if no character is available.
+  * Crash when switching tabpage while in the cmdline window.
+  * Using script-local function from the wrong script when using a
+  partial. (Yegappan Lakshmanan)
+  * GTK: crash when using 'guiligatures' and reading from stdin.
+  * Unnecessary condition when assigning to a variable.
+  * Cannot use settabvar() while the cmdline window is open.
+  * CI: cannot see interface versions for MS-Windows.
+  * Duplicate check for cmdline window.
+  * Dead code in checking map() arguments. (Dominique Pellé)
+  * Crash with weird 'vartabstop' value.
+  * Vartabs test fails on MS-Windows.
+  * Crash on exit when using cmdline window.
+  * Accepting "iso8859" 'encoding' as "iso-8859-".
+  * Crash with specific regexp pattern and string.
+  * Vim9: function argument of filter() not checked like map().
+  * Test for error reading input fails on MS-Windows.
+  * Regexp pattern test fails on Mac.
+  * Beep caused by test.  ASAN reports leaks.
+  * Exit test fails on MS-Windows anyway.
+  * Vim9: cannot refer to a global function like a local one.
+  * Vim9: can still use s:var in a compiled function.
+  * Filetype detection is failing.
+  * vim9: function argument of sort() not checked at compile time.
+  * List sort test fails.
+  * sort() fails when ignoring case.
+  * Test for what 8.2.4436 fixes does not check for regression.
+  * :helpgrep may free an option that was not allocated. (Yegappan Lakshmanan)
+  * Resetting cmdwin_type only for one situation.
+  * Accepting one and zero for the second sort() argument is strange.
+
+-------------------------------------------------------------------
 Sun Feb 20 12:32:08 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update apparmor.vim to latest version (from AppArmor 3.0.4)

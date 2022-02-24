@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 4375
+%define patchlevel 4456
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
