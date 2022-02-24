@@ -1,7 +1,7 @@
 #
 # spec file for package pcmciautils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if %{undefined _firmwaredir}
 %define _firmwaredir /lib/firmware
 %endif
@@ -26,13 +27,14 @@ Release:        0
 Summary:        Utilities for PC-Cards
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            https://www.kernel.org/pub/linux/utils/kernel/pcmcia/
+URL:            https://www.kernel.org/pub/linux/utils/kernel/pcmcia/
 Source0:        https://www.kernel.org/pub/linux/utils/kernel/pcmcia/pcmciautils-%{version}.tar.xz
 Source1:        suse-files.tar.bz2
 Source2:        cis-files.tar.bz2
 Patch1:         pcmciautils_config.opts.202500.diff
 Patch3:         pcmciautils_pie.diff
 Patch4:         fix_udev_directory.patch
+Patch5:         instdir.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  pkgconfig
@@ -59,6 +61,7 @@ There are also some tools for debugging and CIS handling.
 %setup -q -n pcmciautils-%{version} -T -D -a 2
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 make %{?_smp_mflags} all DEF_CFLAGS="-fPIE %{optflags}" DEF_LDFLAGS="-pie" STRIPCMD=true
@@ -74,11 +77,11 @@ mkdir -p %{buildroot}%{_docdir}/pcmciautils
 install -m 644 suse-files/README.SUSE %{buildroot}%{_docdir}/pcmciautils
 
 %post
-%set_permissions /sbin/pccardctl
+%set_permissions /usr/sbin/pccardctl
 rm -vf %{_sysconfdir}/sysconfig/pcmcia
 
 %verifyscript
-%verify_permissions -e /sbin/pccardctl
+%verify_permissions -e /usr/sbin/pccardctl
 
 %files
 %defattr(-,root,root)
@@ -86,10 +89,10 @@ rm -vf %{_sysconfdir}/sysconfig/pcmcia
 %config %{_sysconfdir}/pcmcia/config.opts
 %{_sysconfdir}/pcmcia/NOTE
 %{_udevrulesdir}/60-pcmcia.rules
-%verify(not mode) %attr(4750,root,trusted) /sbin/pccardctl
+%verify(not mode) %attr(4750,root,trusted) /usr/sbin/pccardctl
 %{_udevdir}/pcmcia-check-broken-cis
 %{_udevdir}/pcmcia-socket-startup
-/sbin/lspcmcia
+/usr/sbin/lspcmcia
 %{_firmwaredir}/*
 %{_docdir}/pcmciautils
 %{_mandir}/man8/*

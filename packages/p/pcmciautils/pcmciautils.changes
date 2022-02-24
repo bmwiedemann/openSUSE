@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  1 15:05:43 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- instdir.patch: move binaries from /sbin to /usr/sbin, where all binaries
+  belong by now. /sbin is a symlink to /usr/sbin so no compatibility issues
+  should occur.
+
+-------------------------------------------------------------------
 Wed Jun  2 17:03:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %_firmwaredir

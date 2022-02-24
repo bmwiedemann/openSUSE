@@ -1,0 +1,13 @@
+Index: pcmciautils-018/Makefile
+===================================================================
+--- pcmciautils-018.orig/Makefile
++++ pcmciautils-018/Makefile
+@@ -70,7 +70,7 @@ KERNEL_DIR = /lib/modules/${shell uname
+ 
+ # override this to make pcmciautils look in a different location for its files
+ prefix =
+-exec_prefix =	${prefix}
++exec_prefix =	${prefix}/usr
+ etcdir =	${prefix}/etc
+ sbindir =	${exec_prefix}/sbin
+ mandir =	${prefix}/usr/share/man
