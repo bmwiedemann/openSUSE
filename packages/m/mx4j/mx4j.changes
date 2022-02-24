@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 19:09:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages, use the new reload4j
+
+-------------------------------------------------------------------
 Mon Mar 16 14:31:14 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Require for build gnu-jaf instead of a virtual jaf provider in

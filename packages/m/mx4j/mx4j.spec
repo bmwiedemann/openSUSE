@@ -1,7 +1,7 @@
 #
 # spec file for package mx4j
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,8 +53,8 @@ BuildRequires:  javamail
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  libtool
-BuildRequires:  log4j12-mini
 BuildRequires:  perl
+BuildRequires:  reload4j
 BuildRequires:  servletapi5
 BuildRequires:  unzip
 BuildRequires:  update-alternatives
@@ -68,11 +68,11 @@ Requires:       bcel >= 5.0
 Requires:       jaf
 Requires:       javamail >= 1.2-5jpp
 Requires:       jce >= 1.2.2
-Requires:       log4j12 >= 1.2.7
+Requires:       reload4j
 Requires:       xml-apis
 Requires:       xml-resolver
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Obsoletes:      openjmx < %{version}
 Provides:       jmx
 Provides:       jmxri
@@ -111,7 +111,7 @@ pushd lib
    ln -sf $(build-classpath xalan-j2) xalan.jar                           || :
    ln -sf $(build-classpath xalan-j2-serializer)                          || :
    ln -sf $(build-classpath commons-logging)                              || :
-   ln -sf $(build-classpath log4j12/log4j-12)                             || :
+   ln -sf $(build-classpath reload4j/reload4j)                            || :
    ln -sf $(build-classpath bcel)                                         || :
    ln -sf $(build-classpath axis/axis)                                    || :
    ln -sf $(build-classpath axis/jaxrpc)                                  || :
@@ -134,7 +134,7 @@ export ANT_OPTS="-Djava.security.manager \
 export OPT_JAR_LIST="ant/ant-junit junit ant/ant-trax jaxp_transform_impl"
 export CLASSPATH=$(build-classpath glibj-tools activation javamail/mailapi javamail/smtp \
    jetty4 jython jakarta-commons-logging xml-commons-apis bcel jaas jce \
-   log4j12/log4j-12 jaxp_transform_impl axis/axis axis/jaxrpc axis/saaj \
+   reload4j/reload4j jaxp_transform_impl axis/axis axis/jaxrpc axis/saaj \
    xml-resolver xdoclet/xdoclet xdoclet/xdoclet-jmx-module \
    xdoclet/xdoclet-mx4j-module xalan-j2-serializer)
 export CLASSPATH=${CLASSPATH}:%{_builddir}/%{name}-%{version}/classes/core:%{_builddir}/%{name}-%{version}/build
@@ -189,19 +189,12 @@ if [ "$1" = "0" ]; then
 	%{_sbindir}/update-alternatives --remove jmxri %{_javadir}/%{name}/%{name}-jmx.jar
 fi
 
-%files
+%files -f .mfiles
 %dir %{_javadir}/%{name}
 %{_javadir}/%{name}/*.jar
 %dir %{_javadir}/%{name}/boa
 %{_javadir}/%{name}/boa/*.jar
 %{_javadir}/jmxri.jar
 %ghost %{_sysconfdir}/alternatives/jmxri.jar
-%{_mavenpomdir}/JPP.%{name}-%{name}*.pom
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %changelog
