@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 24 11:32:08 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Fix theme switcher background style
+  (related to bsc#1195730 and jsc#SLE-20564)
+- 4.4.6
+
+-------------------------------------------------------------------
+Wed Feb 23 15:11:37 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Add CSS rules for making visible the addons selector items
+  in current themes (related to bsc#1196362 and
+  gh#yast/yast-registration#566).
+- Changes the border color for the unselected checkbox.
+- Add support for styling the RichText in a running system too.
+- 4.4.5
+
+-------------------------------------------------------------------
 Tue Oct 19 15:06:33 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Remove unnecesary rej file (bsc#1191830)

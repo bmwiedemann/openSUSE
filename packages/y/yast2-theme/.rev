@@ -1318,4 +1318,12 @@ Version:	3.1.0</comment>
     <comment>submit new version 4.4.4</comment>
     <requestid>926322</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>12381ee83e31042083bc3c8b42f0c6ec</srcmd5>
+    <version>4.4.6</version>
+    <time>1645723116</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.6</comment>
+    <requestid>957331</requestid>
+  </revision>
 </revisionlist>
