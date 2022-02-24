@@ -577,4 +577,17 @@
     <comment></comment>
     <requestid>947622</requestid>
   </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>0807c4c6444ff0f0d676e6e65088432c</srcmd5>
+    <version>4.2.9.8</version>
+    <time>1645723095</time>
+    <user>dimstar_suse</user>
+    <comment>- long gone Harlequin, don't change default theme (boo#1188416)
+- 32bit is long gone, drop baselibs.conf
+- split libfcitx-4_2_9 according to shlib-policy-name-error
+  rpmlint report(boo#1191753)
+- other rpmlint fixes
+</comment>
+    <requestid>956895</requestid>
+  </revision>
 </revisionlist>

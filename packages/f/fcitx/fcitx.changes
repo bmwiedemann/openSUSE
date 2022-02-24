@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 20 10:55:08 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- long gone Harlequin, don't change default theme (boo#1188416)
+- 32bit is long gone, drop baselibs.conf
+- split libfcitx-4_2_9 according to shlib-policy-name-error
+  rpmlint report(boo#1191753)
+- other rpmlint fixes
+
+-------------------------------------------------------------------
 Thu Jan 20 08:06:20 CET 2022 - tiwai@suse.de
 
 - Fix xim.d script for KDE Plasma (boo#1194916);

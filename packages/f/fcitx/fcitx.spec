@@ -20,7 +20,6 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 
-%define libver -4_2_9
 Name:           fcitx
 Version:        4.2.9.8
 Release:        0
@@ -34,7 +33,6 @@ Source2:        fcitx-README.suse
 Source3:        xim.fcitx.suse.template
 Source8:        openSUSE-themes.tar.gz
 Source9:        macros.%{name}
-Source99:       baselibs.conf
 Source100:      https://download.fcitx-im.org/fcitx/%{name}-%{version}_dict.tar.xz.sig
 # PATCH-FIX-OPENSUSE fcitx-autostart-check-INPUT_METHOD.patch boo#947576
 Patch2:         fcitx-autostart-check-INPUT_METHOD.patch
@@ -71,19 +69,13 @@ BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 BuildRequires:  pkgconfig(xkbfile)
 Requires:       %{name}-branding = %{version}
-Requires:       %{name}-gtk3 = %{version}-%{release}
-Requires:       lib%{name}%{libver} = %{version}-%{release}
-Recommends:     %{name}-gtk2 = %{version}-%{release}
 Recommends:     %{name}-pinyin = %{version}-%{release}
 Recommends:     %{name}-table = %{version}-%{release}
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
-Recommends:     %{name}-qt4 = %{version}-%{release}
-%endif
 # These libraries are dlopen-ed in fcitx at runtime 
 # for spell-checking for keyboard users. ld can't find
 # them, so explicitly recommends.
 Recommends:     libenchant1
-Recommends:     libopencc2
+Recommends:     libopencc1_1
 Recommends:     libpresage1
 Provides:       locale(ko;zh_CN;zh_SG)
 
@@ -91,19 +83,44 @@ Provides:       locale(ko;zh_CN;zh_SG)
 Fcitx is a CJK input method framework. It supports Table,
 Pinyin and QuWei input methods. It's flexible and fast.
 
-%package -n lib%{name}%{libver}
-Summary:        Shared libraries for %{name}
-Group:          System/I18n/Chinese
-Obsoletes:      lib%{name} < %{version}
-Provides:       lib%{name} = %{version}
+%package -n libfcitx-core0
+Summary:        Core library of fcitx
+Group:          System/Libraries
+Provides:       libfcitx-4_2_9 = %{version}
+Obsoletes:      libfcitx-4_2_9 <= %{version}
 
-%description -n lib%{name}%{libver}
-Shared libraries for Fcitx input method framework.
+%description -n libfcitx-core0
+Core library of fcitx.
+
+%package -n libfcitx-gclient1
+Summary:        GClient library of fcitx
+Group:          System/Libraries
+
+%description -n libfcitx-gclient1
+GClient library of fcitx
+
+%package -n libfcitx-utils0
+Summary:        Util library of fcitx
+Group:          System/Libraries
+
+%description -n libfcitx-utils0
+Util library of fcitx
+
+%package -n libfcitx-config4
+Summary:        Config library of fcitx4
+Group:          System/Libraries
+
+%description -n libfcitx-config4
+Config library of fcitx
 
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
+Requires:       libfcitx-config4 = %{version}
+Requires:       libfcitx-core0 = %{version}
+Requires:       libfcitx-utils0 = %{version}
+Requires:       libfcitx-gclient1 = %{version}
 
 %description devel
 Development header files for Fcitx input method framework.
@@ -111,7 +128,7 @@ Development header files for Fcitx input method framework.
 %package gtk2
 Summary:        Gtk2 IM module for %{name}
 Group:          System/I18n/Chinese
-Requires:       %{name} = %{version}-%{release}
+Supplements:    (fcitx and libgtk-2_0-0)
 %{gtk2_immodule_requires}
 
 %description gtk2
@@ -120,7 +137,7 @@ GTK+ version 2 input module for Fcitx input method rfamework.
 %package gtk3
 Summary:        Gtk3 IM module for %{name}
 Group:          System/I18n/Chinese
-Requires:       %{name} = %{version}-%{release}
+Supplements:    (fcitx and libgtk-3-0)
 %{gtk3_immodule_requires}
 
 %description gtk3
@@ -140,7 +157,7 @@ This package provides the GObject Introspection bindings for Fcitx.
 %package qt4
 Summary:        Qt4 IM module for %{name}
 Group:          System/I18n/Chinese
-Requires:       %{name} = %{version}-%{release}
+Supplements:    (fcitx and libqt4)
 
 %description qt4
 QT4 input module for Fcitx input method framework.
@@ -253,7 +270,6 @@ Fcitx Nature (Zi Ran Ma) input tables for Simplified Chinese.
 %package table-tools
 Summary:        Fcitx tools to make tables
 Group:          System/I18n/Chinese
-Requires:       lib%{name}%{libver} = %{version}-%{release}
 
 %description table-tools
 Tools to convert txt word sheets to fcitx tables.
@@ -263,7 +279,6 @@ see manpage for details
 %package pinyin-tools
 Summary:        Fcitx tools to make pinyin match list
 Group:          System/I18n/Chinese
-Requires:       lib%{name}%{libver} = %{version}-%{release}
 
 %description pinyin-tools
 Tools to convert txt or scel(sougou pinyin data format) pinyin sheets to fcitx match lists.
@@ -357,14 +372,9 @@ mv openSUSE-themes/Harlequin %{buildroot}%{_datadir}/%{name}/skin/
 mv openSUSE-themes/Dartmouth %{buildroot}%{_datadir}/%{name}/skin/
 mv openSUSE-themes/NewAir %{buildroot}%{_datadir}/%{name}/skin/
 
-# Change default skin
-pushd %{buildroot}%{_datadir}/%{name}/configdesc
-sed -i 's/DefaultValue=default/DefaultValue=Harlequin/' %{buildroot}%{_datadir}/%{name}/configdesc/fcitx-classic-ui.desc
-popd
-
-%suse_update_desktop_file  fcitx Utility DesktopUtility
-%suse_update_desktop_file  fcitx-skin-installer Utility DesktopUtility
-%suse_update_desktop_file -r fcitx-configtool System X-SuSE-SystemSetup
+%suse_update_desktop_file fcitx Utility DesktopUtility
+%suse_update_desktop_file fcitx-skin-installer Utility DesktopUtility
+%suse_update_desktop_file fcitx-configtool Settings DesktopSettings
 
 # fix doc
 mkdir -p %{buildroot}%{_docdir}/
@@ -395,6 +405,13 @@ install -D -m644 %{SOURCE9} %{buildroot}%{_rpmmacrodir}/macros.%{name}
 
 # remove *.la
 rm -rf %{buildroot}%{_libdir}/lib%{name}-config.la
+
+# fix scripts
+for script in $(ls %{buildroot}%{_datadir}/cmake/fcitx/*.sh) ; do
+  sed -i "s/\/usr\/bin\/env bash/\/usr\/bin\/bash/" $script;
+  chmod +x $script;
+done
+sed -i "s/\/usr\/bin\/env bash/\/usr\/bin\/bash/" %{buildroot}%{_bindir}/fcitx-diagnose
 
 %find_lang %{name}
 
@@ -429,8 +446,14 @@ exit 0
 %icon_theme_cache_postun
 exit 0
 
-%post -n lib%{name}%{libver} -p /sbin/ldconfig
-%postun -n lib%{name}%{libver} -p /sbin/ldconfig
+%post -n libfcitx-core0 -p /sbin/ldconfig
+%post -n libfcitx-gclient1 -p /sbin/ldconfig
+%post -n libfcitx-utils0 -p /sbin/ldconfig
+%post -n libfcitx-config4 -p /sbin/ldconfig
+%postun -n libfcitx-core0 -p /sbin/ldconfig
+%postun -n libfcitx-gclient1 -p /sbin/ldconfig
+%postun -n libfcitx-utils0 -p /sbin/ldconfig
+%postun -n libfcitx-config4 -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %license COPYING
@@ -475,9 +498,21 @@ exit 0
 %exclude %{_datadir}/%{name}/skin/classic
 %exclude %{_datadir}/%{name}/skin/dark
 
-%files -n lib%{name}%{libver}
-%{_libdir}/libfcitx*.so.*
-%{_libdir}/libfcitx*.so
+%files -n libfcitx-core0
+%{_libdir}/libfcitx-core.so.0
+%{_libdir}/libfcitx-core.so.0.3
+
+%files -n libfcitx-gclient1
+%{_libdir}/libfcitx-gclient.so.1
+%{_libdir}/libfcitx-gclient.so.0.2
+
+%files -n libfcitx-utils0
+%{_libdir}/libfcitx-utils.so.0
+%{_libdir}/libfcitx-utils.so.0.1
+
+%files -n libfcitx-config4
+%{_libdir}/libfcitx-config.so.4
+%{_libdir}/libfcitx-config.so.4.1
 
 %files gtk2
 %{_libdir}/gtk-2.0/*
@@ -578,6 +613,10 @@ exit 0
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/cmake/
 %{_datadir}/gir-1.0/Fcitx-1.0.gir
+%{_libdir}/libfcitx-config.so
+%{_libdir}/libfcitx-core.so
+%{_libdir}/libfcitx-utils.so
+%{_libdir}/libfcitx-gclient.so
 
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %files qt4
