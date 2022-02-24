@@ -1148,4 +1148,15 @@ https://github.com/openSUSE/python-rpm-macros/issues/107 (forwarded request 9273
 </comment>
     <requestid>956509</requestid>
   </revision>
+  <revision rev="150" vrev="16">
+    <srcmd5>4be203b711058cd74c6602794a209774</srcmd5>
+    <version>0.8</version>
+    <time>1645723111</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to use _multibuild
+- delete _avahi_spec-prepare.sh, pre_checkin.sh: obsolete
+- use https urls
+</comment>
+    <requestid>957125</requestid>
+  </revision>
 </revisionlist>

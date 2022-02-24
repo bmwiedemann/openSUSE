@@ -1,5 +1,5 @@
 #
-# spec file for package avahi
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,17 +16,28 @@
 #
 
 
-# WARNING: After editing this file please call Re, rpmbuild or
-# bash avahi_spec-prepare.sh "$PWD" avahi
-# to update spec files:
 %define _name avahi
-# In automatic build systems you want to enable just one of following options.
-# For build all at once, set all to 1.
-# If you set build_core to 0, you cannot set more than one other option to 1.
-%define         build_core 1
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "qt5"
+%global psuffix -qt5
+%global build_qt5 1
+%global build_glib2 0
+%global build_core 0
+%else
+%if "%{flavor}" == "glib2"
+%global psuffix -glib2
 # NOTE: build_glib2 also controls build of gobject, gtk3 and pygobject code.
-%define         build_glib2 0
-%define         build_qt5 0
+%global build_qt5 0
+%global build_glib2 1
+%global build_core 0
+%else
+%global psuffix %{nil}
+%global build_qt5 0
+%global build_glib2 0
+%global build_core 1
+%endif
+%endif
 %define avahi_client_sover 3
 %define avahi_common_sover 3
 %define avahi_core_sover 7
@@ -43,14 +54,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define oldpython python
-Name:           avahi
+Name:           avahi%{psuffix}
 Version:        0.8
 Release:        0
 Summary:        D-Bus Service for Zeroconf and Bonjour
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
-URL:            http://www.avahi.org/
-Source:         http://avahi.org/download/%{_name}-%{version}.tar.gz
+URL:            https://www.avahi.org/
+Source:         https://avahi.org/download/%{_name}-%{version}.tar.gz
 # From http://packages.debian.org/sid/avahi-daemon http://ftp.debian.org/debian/pool/main/a/avahi/avahi_0.8-3.debian.tar.xz
 Source1:        avahi-daemon-check-dns.sh
 # Copy of glib-2.0.m4 from glib2-devel to not depend on glib2-devel.
@@ -59,7 +70,6 @@ Source5:        avahi.sysconfig
 Source6:        avahi-autoipd.sysconfig
 # From http://packages.debian.org/sid/avahi-daemon http://ftp.debian.org/debian/pool/main/a/avahi/avahi_0.6.31-1.debian.tar.gz
 Source7:        avahi-daemon.if-up
-Source8:        %{_name}_spec-prepare.sh
 Source9:        avahi-autoipd.README.SUSE
 Source10:       avahi-autoipd.if-up
 Source11:       avahi-autoipd.if-down
@@ -105,12 +115,8 @@ BuildRequires:  sysuser-tools
 # libtool is needed to build all variants: bootstrap is unconditional in the build section
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  xmltoman
-%if !%{build_glib2} && !%{build_qt5}
-# Create split spec files only when building per partes:
-#%(sh %{_sourcedir}/%{_name}_spec-prepare.sh %{_sourcedir} %{name})
-%endif
 BuildRequires:  strip-nondeterminism
+BuildRequires:  xmltoman
 %if %{build_core}
 BuildRequires:  dbus-1-devel
 BuildRequires:  doxygen
@@ -409,8 +415,8 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-# This is the avahi-discover command, only provided for the primary python3 flavor
 
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
