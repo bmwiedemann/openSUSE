@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-connector-java
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,12 +37,12 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javassist >= 3.23.1
 BuildRequires:  junit
-BuildRequires:  log4j12-mini
 BuildRequires:  protobuf-java >= 3.9.2
+BuildRequires:  reload4j
 BuildRequires:  slf4j
 BuildRequires:  xz
 Requires:       jta >= 1.0
-Requires:       log4j12
+Requires:       reload4j
 Requires:       slf4j
 Provides:       mm.mysql = %{version}
 Obsoletes:      mm.mysql < %{version}
@@ -81,7 +81,7 @@ export CLASSPATH=$(build-classpath \
     jdbc-stdext\
     jta \
     junit \
-    log4j12/log4j-12 \
+    reload4j \
     protobuf)
 %{ant} \
     -Dsnapshot.version= \

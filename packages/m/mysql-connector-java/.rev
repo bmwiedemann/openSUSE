@@ -303,4 +303,12 @@
     <comment>Duplicate section removal</comment>
     <requestid>908676</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>03cff9fff2f02b87897d0db15da1747d</srcmd5>
+    <version>8.0.25</version>
+    <time>1645723104</time>
+    <user>dimstar_suse</user>
+    <comment>Build against reload4j</comment>
+    <requestid>957055</requestid>
+  </revision>
 </revisionlist>
