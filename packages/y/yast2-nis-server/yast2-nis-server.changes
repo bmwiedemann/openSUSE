@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 18 12:51:37 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- bnc#1195714
+  - slaves removed from UI and replaced by workers
+- 4.4.2
+
+-------------------------------------------------------------------
 Fri Jul 23 12:15:34 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Set X-SuSE-YaST-AutoInstClient in the desktop file to properly
