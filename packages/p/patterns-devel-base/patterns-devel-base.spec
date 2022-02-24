@@ -137,6 +137,8 @@ Provides:       pattern-visible()
 Requires:       pattern() = devel_basis
 
 Recommends:     kernel-source
+# bsc#1147177
+Recommends:     bc
 # bnc#582415
 Recommends:     ctags
 Recommends:     diffstat
@@ -147,6 +149,9 @@ Recommends:     quilt
 Recommends:     gitk
 Recommends:     git-email
 Recommends:     kernel-syms
+# bsc#1147177
+Recommends:     pkgconfig(libelf)
+Recommends:     pkgconfig(openssl)
 Suggests:       kernel-debug
 Suggests:       gitk
 Suggests:       kernel-docs
