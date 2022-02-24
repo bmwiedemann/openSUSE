@@ -1,7 +1,7 @@
 #
 # spec file for package swtpm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define modulename2 swtpm_svirt
 %define modulename3 swtpmcuse
 Name:           swtpm
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause

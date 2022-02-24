@@ -105,4 +105,12 @@
     - Introduce --enable-sanitizers to configure</comment>
     <requestid>930649</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dbcc6181507c2f00f35cf8e6d872670d</srcmd5>
+    <version>0.7.1</version>
+    <time>1645723098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957026</requestid>
+  </revision>
 </revisionlist>
