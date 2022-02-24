@@ -1,66 +1,66 @@
 - factory:
-   url: http://downloadcontent.opensuse.org/tumbleweed/repo/oss
-   refresh: true
+    refresh: true
+    url: http://downloadcontent.opensuse.org/tumbleweed/repo/oss
 - factory:non-oss:
-   url: http://downloadcontent.opensuse.org/tumbleweed/repo/non-oss
-   refresh: true
+    refresh: true
+    url: http://downloadcontent.opensuse.org/tumbleweed/repo/non-oss
 - 15.0:
-   url: http://downloadcontent.opensuse.org/distribution/leap/15.0/repo/oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.0/repo/oss
 - 15.0:non-oss:
-   url: http://downloadcontent.opensuse.org/distribution/leap/15.0/repo/non-oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.0/repo/non-oss
 - 15.0:update:
-   url: http://downloadcontent.opensuse.org/update/leap/15.0/oss
+    url: http://downloadcontent.opensuse.org/update/leap/15.0/oss
 - 15.0:non-oss:update:
-   url: http://downloadcontent.opensuse.org/update/leap/15.0/non-oss
+    url: http://downloadcontent.opensuse.org/update/leap/15.0/non-oss
 - 15.1:
-   url: http://downloadcontent.opensuse.org/distribution/leap/15.1/repo/oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.1/repo/oss
 - 15.1:non-oss:
-   url: http://downloadcontent.opensuse.org/distribution/leap/15.1/repo/non-oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.1/repo/non-oss
 - 15.1:update:
-   url: http://downloadcontent.opensuse.org/update/leap/15.1/oss
+    url: http://downloadcontent.opensuse.org/update/leap/15.1/oss
 - 15.1:non-oss:update:
-   url: http://downloadcontent.opensuse.org/update/leap/15.1/non-oss
+    url: http://downloadcontent.opensuse.org/update/leap/15.1/non-oss
 - 15.2:
-   url: http://downloadcontent.opensuse.org/distribution/leap/15.2/repo/oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.2/repo/oss
 - 15.2:non-oss:
-   url: http://downloadcontent.opensuse.org/distribution/leap/15.2/repo/non-oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.2/repo/non-oss
 - 15.2:update:
-   url: http://downloadcontent.opensuse.org/update/leap/15.2/oss
-   refresh: true
+    refresh: true
+    url: http://downloadcontent.opensuse.org/update/leap/15.2/oss
 - 15.2:non-oss:update:
-   url: http://downloadcontent.opensuse.org/update/leap/15.2/non-oss
-   refresh: true
+    refresh: true
+    url: http://downloadcontent.opensuse.org/update/leap/15.2/non-oss
 - 15.3:
-   url: http://downloadcontent.opensuse.org/distribution/leap/15.3/repo/oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.3/repo/oss
 - 15.3:non-oss:
-   url: http://downloadcontent.opensuse.org/distribution/leap/15.3/repo/non-oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/15.3/repo/non-oss
 - 15.3:update:
-   url: http://downloadcontent.opensuse.org/update/leap/15.3/oss
-   refresh: true
+    refresh: true
+    url: http://downloadcontent.opensuse.org/update/leap/15.3/oss
 - 15.3:non-oss:update:
-   url: http://downloadcontent.opensuse.org/update/leap/15.3/non-oss
-   refresh: true
+    refresh: true
+    url: http://downloadcontent.opensuse.org/update/leap/15.3/non-oss
 - 42.3:
-   url: http://downloadcontent.opensuse.org/distribution/leap/42.3/repo/oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/42.3/repo/oss
 - 42.3:non-oss:
-   url: http://downloadcontent.opensuse.org/distribution/leap/42.3/repo/non-oss
+    url: http://downloadcontent.opensuse.org/distribution/leap/42.3/repo/non-oss
 - 42.3:update:
-   url: http://downloadcontent.opensuse.org/update/leap/42.3/oss
+    url: http://downloadcontent.opensuse.org/update/leap/42.3/oss
 - 42.3:non-oss:update:
-   url: http://downloadcontent.opensuse.org/update/leap/42.3/non-oss
+    url: http://downloadcontent.opensuse.org/update/leap/42.3/non-oss
 - 42.2:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.2/repo/oss/
+    url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.2/repo/oss/
 - 42.2:non-oss:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.2/repo/non-oss/
+    url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.2/repo/non-oss/
 - 42.2:update:
-   url: http://downloadcontent.opensuse.org/update/leap/42.2/oss
+    url: http://downloadcontent.opensuse.org/update/leap/42.2/oss
 - 42.2:non-oss:update:
-   url: http://downloadcontent.opensuse.org/update/leap/42.2/non-oss
+    url: http://downloadcontent.opensuse.org/update/leap/42.2/non-oss
 - 42.1:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.1/repo/oss/suse
+    url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.1/repo/oss/suse
 - 42.1:non-oss:
-   url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.1/repo/non-oss/
+    url: http://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/leap/42.1/repo/non-oss/
 - 42.1:update:
-   url: http://downloadcontent.opensuse.org/update/leap/42.1/oss
+    url: http://downloadcontent.opensuse.org/update/leap/42.1/oss
 - 42.1:non-oss:update:
-   url: http://downloadcontent.opensuse.org/update/leap/42.1/non-oss
+    url: http://downloadcontent.opensuse.org/update/leap/42.1/non-oss
