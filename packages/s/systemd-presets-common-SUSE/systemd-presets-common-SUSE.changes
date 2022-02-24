@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  1 19:07:53 UTC 2022 - Kirk Allan <kallan@suse.com>
+
+- enable vgauthd service for VMWare by default (bsc#1195251)
+
+-------------------------------------------------------------------
 Fri Nov  5 10:54:01 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace the pipewire-media-session preset with a wireplumber

@@ -52,6 +52,7 @@ enable storage-fixup.service
 enable uuidd.socket
 enable vmblock-fuse.service
 enable vmtoolsd.service
+enable vgauthd.service
 enable xencommons.service
 enable pcscd.socket
 enable mandb.timer
