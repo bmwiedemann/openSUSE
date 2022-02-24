@@ -18,7 +18,7 @@
 
 %define so_version 28
 Name:           qpdf
-Version:        10.5.0
+Version:        10.6.2
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -27,8 +27,6 @@ URL:            https://qpdf.sourceforge.io/
 Source:         https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz
 Source1:        https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
-Patch1:         build-without-pdf.patch
-Patch2:         https://github.com/qpdf/qpdf/pull/605.patch#/fix-signedness-warning.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
 BuildRequires:  libjpeg8-devel

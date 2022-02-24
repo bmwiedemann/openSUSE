@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Feb 23 10:47:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 10.6.2:
+  * Recognize strings encoded as UTF-16LE as Unicode. The PDF spec
+    only allows UTF-16BE, but most readers accept UTF16-LE as well.
+  * Fix a regression in command-line argument parsing to restore a
+    previously undocumented behavior that some people were relying
+    on.
+  * Fix one more problem with mapping Unicode to PDF doc encoding.
+- Drop fix-signedness-warning.patch for real, the patch was still
+  present in obs.
+
+-------------------------------------------------------------------
+Mon Feb 14 22:17:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.6.1:
+  * All functionality previously available only from the qpdf CLI has been
+    exposed to the library using a new QPDFJob API, which includes fluent
+    interfaces as well as a JSON format that's equivalent to qpdf's
+    command-line arguments.
+  * Many new interfaces have been added to QPDFObjectHandle and the C API to
+    allow more convient ways querying types and accessing object values in a
+    more type-safe fashion.
+  * qpdf --help has been revamped so that help is divided into categories, and
+    help is available for each option
+  * The Running qpdf section of the manual has been rewritten. The manual now
+    includes an index of command-line arguments.
+  * see https://qpdf.readthedocs.io/en/stable/release-notes.html
+
+-------------------------------------------------------------------
+Mon Feb 14 22:12:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop build-without-pdf.patch, fix-signedness-warning.patch (upstream)
+ 
+-------------------------------------------------------------------
 Mon Jan 10 21:58:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add fix-signedness-warning.patch (build for aarch64) 
