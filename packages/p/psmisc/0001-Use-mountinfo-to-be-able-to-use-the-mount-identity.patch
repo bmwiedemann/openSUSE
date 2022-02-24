@@ -1,6 +1,6 @@
-From bfa17afa43fc1b98c2bbc9c54416db9ccb505028 Mon Sep 17 00:00:00 2001
+From 1066ab018235e9981d8770f6c94b294f8b16c7fe Mon Sep 17 00:00:00 2001
 From: Werner Fink <werner@suse.de>
-Date: Fri, 7 May 2021 16:25:13 +0200
+Date: Wed, 23 Feb 2022 13:58:32 +0100
 Subject: [PATCH] Use mountinfo to be able to use the mount identity
 
 which allows to distinguish different mounts with the
@@ -22,13 +22,19 @@ such as qcow2 files. Patch from Ali Abdallah <ali.abdallah@suse.com>
 Correct last change by using our own namespace to
 determine the appropriate mount ID for e.g. qcow2 files.
 
+Determine the namespace of a process only once to speed
+up the parsing of fdinfo.
+
+Add a fallback if the system call name_to_handle_at() is
+not supported by the used file system.
+
 Signed-off-by: Werner Fink <werner@suse.de>
 ---
  configure.ac  |  15 +-
- src/fuser.c   | 683 +++++++++++++++++++++++++++++++++++++++-----------
+ src/fuser.c   | 734 +++++++++++++++++++++++++++++++++++++++-----------
  src/fuser.h   |  25 +-
  src/timeout.c |   5 +-
- 4 files changed, 567 insertions(+), 161 deletions(-)
+ 4 files changed, 618 insertions(+), 161 deletions(-)
 
 diff --git configure.ac configure.ac
 index 182a0df..d4dee51 100644
@@ -64,7 +70,7 @@ index 182a0df..d4dee51 100644
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
 diff --git src/fuser.c src/fuser.c
-index 03e6237..dd928d2 100644
+index 03e6237..ee2ba15 100644
 --- src/fuser.c
 +++ src/fuser.c
 @@ -32,6 +32,8 @@
@@ -98,7 +104,7 @@ index 03e6237..dd928d2 100644
  static void atexit_clear_unix_cache();
  static dev_t find_net_dev(void);
  static void scan_procs(struct names *names_head, struct inode_list *ino_head,
-@@ -117,9 +119,15 @@ static void debug_match_lists(struct names *names_head,
+@@ -117,9 +119,16 @@ static void debug_match_lists(struct names *names_head,
  			      struct device_list *dev_head);
  #endif
  
@@ -106,8 +112,9 @@ index 03e6237..dd928d2 100644
 +static list_t mntinfo = { &mntinfo, &mntinfo };
  static void clear_mntinfo(void) __attribute__ ((__destructor__));
  static void init_mntinfo(void) __attribute__ ((__constructor__));
-+static int get_fdinfo(const pid_t pid, const char *fd, struct fdinfo *info);
++static int get_fdinfo(const pid_t pid, const char *fd, struct fdinfo *info, const ino_t ns);
 +#if defined(HAS_NAME_TO_HANDLE_AT)
++static ino_t get_namespace(const pid_t pid);
 +static int get_mountid(const char *path);
 +#endif
 +static int find_mountpoint(const char *path, mntinfo_t **mountinfo);
@@ -115,7 +122,7 @@ index 03e6237..dd928d2 100644
  static int mntstat(const char *path, struct stat *buf);
  #endif
  static stat_t thestat = stat;
-@@ -210,6 +218,7 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
+@@ -210,6 +219,7 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
  		struct stat *cwd_stat = NULL;
  		struct stat *exe_stat = NULL;
  		struct stat *root_stat = NULL;
@@ -123,7 +130,7 @@ index 03e6237..dd928d2 100644
  
  		if (topproc_dent->d_name[0] < '0' || topproc_dent->d_name[0] > '9')	/* Not a process */
  			continue;
-@@ -219,9 +228,9 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
+@@ -219,9 +229,9 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
  			continue;
  		uid = getpiduid(pid);
  
@@ -136,7 +143,7 @@ index 03e6237..dd928d2 100644
  		cwd_dev = cwd_stat ? cwd_stat->st_dev : 0;
  		exe_dev = exe_stat ? exe_stat->st_dev : 0;
  		root_dev = root_stat ? root_stat->st_dev : 0;
-@@ -229,39 +238,51 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
+@@ -229,39 +239,51 @@ scan_procs(struct names *names_head, struct inode_list *ino_head,
  		/* Scan the devices */
  		for (dev_tmp = dev_head; dev_tmp != NULL;
  		     dev_tmp = dev_tmp->next) {
@@ -203,7 +210,7 @@ index 03e6237..dd928d2 100644
  				if (cwd_stat
  				    && cwd_stat->st_dev == ino_tmp->device
  				    && cwd_stat->st_ino == ino_tmp->inode)
-@@ -302,18 +323,42 @@ add_inode(struct inode_list **ino_list, struct names *this_name,
+@@ -302,18 +324,42 @@ add_inode(struct inode_list **ino_list, struct names *this_name,
  	ino_tmp->name = this_name;
  	ino_tmp->device = device;
  	ino_tmp->inode = inode;
@@ -247,7 +254,7 @@ index 03e6237..dd928d2 100644
  
  	if ((dev_tmp =
  	     (struct device_list *)malloc(sizeof(struct device_list))) == NULL)
-@@ -321,6 +366,10 @@ add_device(struct device_list **dev_list, struct names *this_name, dev_t device)
+@@ -321,6 +367,10 @@ add_device(struct device_list **dev_list, struct names *this_name, dev_t device)
  	dev_head = *dev_list;
  	dev_tmp->name = this_name;
  	dev_tmp->device = device;
@@ -258,7 +265,7 @@ index 03e6237..dd928d2 100644
  	dev_tmp->next = dev_head;
  	*dev_list = dev_tmp;
  }
-@@ -462,13 +511,15 @@ add_special_proc(struct names *name_list, const char ptype, const uid_t uid,
+@@ -462,13 +512,15 @@ add_special_proc(struct names *name_list, const char ptype, const uid_t uid,
  int parse_file(struct names *this_name, struct inode_list **ino_list,
  	       const opt_type opts)
  {
@@ -275,7 +282,7 @@ index 03e6237..dd928d2 100644
  		if (errno == ENOENT)
  			fprintf(stderr,
  				_("Specified filename %s does not exist.\n"),
-@@ -478,10 +529,12 @@ int parse_file(struct names *this_name, struct inode_list **ino_list,
+@@ -478,10 +530,12 @@ int parse_file(struct names *this_name, struct inode_list **ino_list,
  				this_name->filename, strerror(errno));
  		return -1;
  	}
@@ -290,7 +297,7 @@ index 03e6237..dd928d2 100644
  #endif				/* DEBUG */
  	add_inode(ino_list, this_name, this_name->st.st_dev,
  		  this_name->st.st_ino);
-@@ -513,12 +566,43 @@ parse_mounts(struct names *this_name, struct device_list **dev_list,
+@@ -513,12 +567,43 @@ parse_mounts(struct names *this_name, struct device_list **dev_list,
  	     const opt_type opts)
  {
  	dev_t match_device;
@@ -335,7 +342,7 @@ index 03e6237..dd928d2 100644
  	return 0;
  }
  
-@@ -695,10 +779,12 @@ int parse_inet(struct names *this_name, struct ip_connections **ip_list)
+@@ -695,10 +780,12 @@ int parse_inet(struct names *this_name, struct ip_connections **ip_list)
  					break;
  #endif
  				}
@@ -351,7 +358,7 @@ index 03e6237..dd928d2 100644
  	}
  	return 1;
  }
-@@ -965,6 +1051,21 @@ free_inodes(struct inode_list **match_inodes)
+@@ -965,6 +1052,21 @@ free_inodes(struct inode_list **match_inodes)
  /*
   * Free up structures allocated in add_device
   */
@@ -373,7 +380,7 @@ index 03e6237..dd928d2 100644
  static void
  free_devices(struct device_list **match_devices)
  {
-@@ -972,6 +1073,8 @@ free_devices(struct device_list **match_devices)
+@@ -972,6 +1074,8 @@ free_devices(struct device_list **match_devices)
  
  	device_tmp = *match_devices;
  	while(device_tmp != NULL) {
@@ -382,7 +389,7 @@ index 03e6237..dd928d2 100644
  		device_next = device_tmp->next;
  		free(device_tmp);
  		device_tmp = device_next;
-@@ -1174,16 +1277,11 @@ int main(int argc, char *argv[])
+@@ -1174,16 +1278,11 @@ int main(int argc, char *argv[])
  					skip_argv = 1;
  					//while(option != '\0') option++;
  					if (strcmp(argv[argc_cnt], "tcp") == 0)
@@ -404,7 +411,7 @@ index 03e6237..dd928d2 100644
  					else
  						usage(_
  						      ("Invalid namespace name"));
-@@ -1223,7 +1321,7 @@ int main(int argc, char *argv[])
+@@ -1223,7 +1322,7 @@ int main(int argc, char *argv[])
  		}
  
  #if defined(WITH_MOUNTINFO_LIST)
@@ -413,7 +420,7 @@ index 03e6237..dd928d2 100644
  			thestat = mntstat;
  #endif
  		/* an option */
-@@ -1537,7 +1635,7 @@ print_matches(struct names *names_head, const opt_type opts,
+@@ -1537,7 +1636,7 @@ print_matches(struct names *names_head, const opt_type opts,
  
  }
  
@@ -422,7 +429,7 @@ index 03e6237..dd928d2 100644
  {
  	char pathname[PATH_MAX];
  	struct stat *st;
-@@ -1549,6 +1647,15 @@ static struct stat *get_pidstat(const pid_t pid, const char *filename)
+@@ -1549,6 +1648,15 @@ static struct stat *get_pidstat(const pid_t pid, const char *filename)
  		free(st);
  		return NULL;
  	}
@@ -438,7 +445,7 @@ index 03e6237..dd928d2 100644
  	return st;
  }
  
-@@ -1563,7 +1670,7 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1563,10 +1671,11 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  	struct inode_list *ino_tmp;
  	struct device_list *dev_tmp;
  	struct unixsocket_list *sock_tmp;
@@ -447,7 +454,24 @@ index 03e6237..dd928d2 100644
  	char *dirpath;
  	char filepath[PATH_MAX];
  	char real_filepath[PATH_MAX];
-@@ -1589,6 +1696,9 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
++	ino_t ns;
+ 
+ 	if (asprintf(&dirpath, "/proc/%d/%s", pid, dirname) < 0)
+         return;
+@@ -1576,6 +1685,12 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+     }
+     free(dirpath);
+ 
++#if defined(HAS_NAME_TO_HANDLE_AT)
++	ns = get_namespace(pid);
++#else
++	ns = -1;
++#endif
++
+ 	while ((direntry = readdir(dirp)) != NULL) {
+ 		if (direntry->d_name[0] < '0' || direntry->d_name[0] > '9')
+ 			continue;
+@@ -1589,6 +1704,9 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  					filepath, strerror(errno));
  			}
  		} else {
@@ -457,13 +481,13 @@ index 03e6237..dd928d2 100644
  			thedev = st.st_dev;
  			if (thedev == netdev) {
  				for (sock_tmp = sockets; sock_tmp != NULL;
-@@ -1601,10 +1711,29 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1601,10 +1719,29 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  					}
  				}
  			}
 +
 +			memset(&fd, 0, sizeof(struct fdinfo));
-+			fdret = get_fdinfo(pid, direntry->d_name, &fd);
++			fdret = get_fdinfo(pid, direntry->d_name, &fd, ns);
 +
  			for (dev_tmp = dev_head; dev_tmp != NULL;
  			     dev_tmp = dev_tmp->next) {
@@ -489,7 +513,7 @@ index 03e6237..dd928d2 100644
  
  				/* check the paths match if it is not a block device */
  				if (! S_ISBLK(dev_tmp->name->st.st_mode)) {
-@@ -1616,9 +1745,14 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1616,9 +1753,14 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  					    continue;
  				    }
  				}
@@ -506,7 +530,7 @@ index 03e6237..dd928d2 100644
  					add_matched_proc(dev_tmp->name,
  							 pid, uid,
  							 ACCESS_FILEWR |
-@@ -1640,9 +1774,10 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
+@@ -1640,9 +1782,10 @@ check_dir(const pid_t pid, const char *dirname, struct device_list *dev_head,
  					continue;
  				}
  				if (st.st_ino == ino_tmp->inode) {
@@ -519,7 +543,7 @@ index 03e6237..dd928d2 100644
  						add_matched_proc(ino_tmp->name,
  								 pid, uid,
  								 ACCESS_FILEWR |
-@@ -1671,31 +1806,54 @@ check_map(const pid_t pid, const char *filename,
+@@ -1671,31 +1814,54 @@ check_map(const pid_t pid, const char *filename,
  	FILE *fp;
  	unsigned long long tmp_inode;
  	unsigned int tmp_maj, tmp_min;
@@ -584,7 +608,7 @@ index 03e6237..dd928d2 100644
  	}
  	fclose(fp);
  }
-@@ -1719,6 +1877,7 @@ static uid_t getpiduid(const pid_t pid)
+@@ -1719,6 +1885,7 @@ static uid_t getpiduid(const pid_t pid)
   * fill_unix_cache : Create a list of Unix sockets
   *   This list is used later for matching purposes
   */
@@ -592,7 +616,7 @@ index 03e6237..dd928d2 100644
  void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  {
  	FILE *fp;
-@@ -1735,6 +1894,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1735,6 +1902,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  	while (fgets(line, BUFSIZ, fp) != NULL) {
  		char *path;
  		char *scanned_path = NULL;
@@ -601,7 +625,7 @@ index 03e6237..dd928d2 100644
  		if (sscanf(line, "%*x: %*x %*x %*x %*x %*d %llu %ms",
  			   &scanned_inode, &scanned_path) != 2) {
  			if (scanned_path)
-@@ -1750,6 +1911,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1750,6 +1919,8 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  			free(path);
  			continue;
  		}
@@ -610,7 +634,7 @@ index 03e6237..dd928d2 100644
  		if ((newsocket = (struct unixsocket_list *)
  		     malloc(sizeof(struct unixsocket_list))) == NULL) {
  			free(path);
-@@ -1758,6 +1921,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1758,6 +1929,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  		newsocket->sun_name = strdup(scanned_path);
  		newsocket->inode = st.st_ino;
  		newsocket->dev = st.st_dev;
@@ -618,7 +642,7 @@ index 03e6237..dd928d2 100644
  		newsocket->net_inode = scanned_inode;
  		newsocket->next = *unixsocket_head;
  		*unixsocket_head = newsocket;
-@@ -1770,6 +1934,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
+@@ -1770,6 +1942,7 @@ void fill_unix_cache(struct unixsocket_list **unixsocket_head)
  /*
   * Free up the list of Unix sockets
   */
@@ -626,7 +650,7 @@ index 03e6237..dd928d2 100644
  void clear_unix_cache(struct unixsocket_list **unixsocket_head)
  {
  	while(*unixsocket_head != NULL) {
-@@ -1941,34 +2106,21 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
+@@ -1941,34 +2114,21 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
  {
  	struct device_list *dev_tmp;
  	struct inode_list *ino_tmp;
@@ -653,11 +677,11 @@ index 03e6237..dd928d2 100644
 -			continue;
 -		find_mountp++;
 -		if ((find_space = strchr(find_mountp, ' ')) == NULL)
--			continue;
--		*find_space = '\0';
--		if (timeout(thestat, find_mountp, &st, 5) != 0) {
 +		if (timeout(thestat, find_mountp, &st, 5) != 0)
  			continue;
+-		*find_space = '\0';
+-		if (timeout(thestat, find_mountp, &st, 5) != 0) {
+-			continue;
 -		}
 +
  		/* Scan the devices */
@@ -669,7 +693,7 @@ index 03e6237..dd928d2 100644
  				add_special_proc(dev_tmp->name, PTYPE_MOUNT, 0,
  						 find_mountp);
  		}
-@@ -1980,7 +2132,6 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
+@@ -1980,7 +2140,6 @@ scan_mounts(struct names *names_head, struct inode_list *ino_head,
  						 find_mountp);
  		}
  	}
@@ -677,7 +701,7 @@ index 03e6237..dd928d2 100644
  }
  
  static void
-@@ -2033,16 +2184,44 @@ scan_swaps(struct names *names_head, struct inode_list *ino_head,
+@@ -2033,16 +2192,44 @@ scan_swaps(struct names *names_head, struct inode_list *ino_head,
  	fclose(fp);
  }
  
@@ -726,7 +750,7 @@ index 03e6237..dd928d2 100644
  {
  	list_t *ptr, *tmp;
  
-@@ -2053,72 +2232,276 @@ static void clear_mntinfo(void)
+@@ -2053,72 +2240,319 @@ static void clear_mntinfo(void)
  	}
  }
  
@@ -780,8 +804,17 @@ index 03e6237..dd928d2 100644
 +				stat(mpoint, &st);
 +				mntinf->dev = st.st_dev;	/* stat(2) on binary does not see subvol dev */
 +			}
-+		}
-+	}
+ 		}
+-		append(mnt, mntinfo);
+-		mnt->mpoint = ((char *)mnt) + alignof(mntinfo_t);
+-		strcpy(mnt->mpoint, mpoint);
+-		mnt->nlen = nlen;
+-		mnt->parid = parid;
+-		mnt->dev = makedev(maj, min);
+-		mnt->id = mid;
+-		if (mid > max)
+-			max = mid;
+ 	}
 +#else
 +	if ((mnt = fopen(PROC_MOUNTS, "r")) == (FILE *) 0)
 +		return;
@@ -801,26 +834,17 @@ index 03e6237..dd928d2 100644
 +		if (mntinf && strncmp(devname, "/dev/", 5) == 0 && stat(devname, &st) == 0) {
 +			if (st.st_rdev != 0 && mntinf->dev != st.st_rdev)
 +				mntinf->vol = st.st_rdev;
- 		}
--		append(mnt, mntinfo);
--		mnt->mpoint = ((char *)mnt) + alignof(mntinfo_t);
--		strcpy(mnt->mpoint, mpoint);
--		mnt->nlen = nlen;
--		mnt->parid = parid;
--		mnt->dev = makedev(maj, min);
--		mnt->id = mid;
--		if (mid > max)
--			max = mid;
- 	}
++		}
++	}
 +#endif
  	fclose(mnt);
 +}
 +
 +static int
-+get_fdinfo(const pid_t pid, const char *fd, struct fdinfo *info)
++get_fdinfo(const pid_t pid, const char *fd, struct fdinfo *info, const ino_t ns)
 +{
 +	int ret = 0;
-+	char pathname[256];
++	char pathname[512];
 +	int mnt_id = 0, flags = 0;
 +#if defined(HAS_FDINFO)					/* Here we get the private namespace as well */
 +	const static char delimiters[] = ": \t\n";
@@ -839,7 +863,7 @@ index 03e6237..dd928d2 100644
 +		mynamespace = st.st_ino;
 +	}
 +# endif
-+	snprintf(pathname, 256, "/proc/%d/fdinfo/%s", pid, fd);
++	snprintf(pathname, sizeof(pathname)-1, "/proc/%d/fdinfo/%s", pid, fd);
 +	if ((fp = fopen(pathname, "r")) == NULL)
 +               goto out;				/* forbidden namesspace, try our own namespace */
 +	while (fgets(line, BUFSIZ, fp) && ret < 2) {
@@ -865,10 +889,9 @@ index 03e6237..dd928d2 100644
 +	fclose(fp);
 +out:
 +# if defined(HAS_NAME_TO_HANDLE_AT)
-+	snprintf(pathname, 256, "/proc/%d/ns/mnt", pid);
-+	if (stat(pathname, &st) == 0 && mynamespace != st.st_ino) {
++	if (mynamespace != ns) {
 +		char *realname;
-+		snprintf(pathname, 256, "/proc/%d/fd/%s", pid, fd);
++		snprintf(pathname, sizeof(pathname)-1, "/proc/%d/fd/%s", pid, fd);
 +		realname = expandpath(pathname);
 +		if (realname) {				/* Use our namespace for mount ID <sigh> */
 +			info->mnt_id = get_mountid(realname);
@@ -880,7 +903,7 @@ index 03e6237..dd928d2 100644
 +	if (!flags || !mnt_id) {
 +		struct stat lst;
 +
-+		snprintf(pathname, 256, "/proc/%d/fd/%s", pid, fd);
++		snprintf(pathname, sizeof(pathname)-1, "/proc/%d/fd/%s", pid, fd);
 +		if (!flags && lstat(pathname, &lst) == 0) {
 +			if (lst.st_mode & S_IWUSR)
 +				info->flags |= O_WRONLY;
@@ -907,6 +930,17 @@ index 03e6237..dd928d2 100644
 -		list_t *ptr, *tmp;
 -		list_for_each_safe(ptr, tmp, &mntinfo) {
 +#if defined(HAS_NAME_TO_HANDLE_AT)
++static ino_t
++get_namespace(const pid_t pid)
++{
++	char pathname[512];
++	struct stat st;
++	snprintf(pathname, sizeof(pathname)-1, "/proc/%d/ns/mnt", pid);
++	if (stat(pathname, &st) == 0)
++		return st.st_ino;
++	return -1;
++}
++
 +static int
 +get_mountid(const char *path)
 +{
@@ -917,8 +951,41 @@ index 03e6237..dd928d2 100644
 +	int mnt_id = -1;
 +
 +	errno = 0;
-+	if (name_to_handle_at(0, path, &fh.handle, &mnt_id, 0) == -1)
-+		mnt_id = -1;
++	if (name_to_handle_at(0, path, &fh.handle, &mnt_id, 0) == -1) {
++		const static char delimiters[] = ": \t\n";
++		char fdinfo[PATH_MAX+1];
++		char line[BUFSIZ];
++		FILE* fp;
++		int fd;
++
++		if (errno != EOPNOTSUPP)
++			return -1;
++		fd = open(path, O_PATH);
++		if (fd < 0)
++			return -1;
++
++		snprintf(fdinfo, PATH_MAX, "/proc/self/fdinfo/%d", fd);
++		if ((fp = fopen(fdinfo, "r")) == NULL) {
++			close(fd);
++			return -1;
++		}
++		while (fgets(line, BUFSIZ, fp)) {
++			char *xp, *vp, *ep;
++			unsigned long ul;
++			xp = strtok(&line[0], delimiters);
++			if (!xp || *xp == 0)
++				continue;
++			vp = strtok(NULL, delimiters);
++			if (!vp || *vp == 0)
++				continue;
++			if (strcmp(xp, "mnt_id") == 0 && (ul = strtoul(vp, &ep, 0)) != ULONG_MAX && ep && *ep == 0) {
++				mnt_id = (int)ul;
++				break;
++			}
++		}
++		fclose(fp);
++		close(fd);
++	}
 +	return mnt_id;
 +}
 +#endif
@@ -1047,7 +1114,7 @@ index 03e6237..dd928d2 100644
  /*
   * Determine device of links below /proc/
   */
-@@ -2126,8 +2509,7 @@ static int mntstat(const char *path, struct stat *buf)
+@@ -2126,8 +2560,7 @@ static int mntstat(const char *path, struct stat *buf)
  {
  	char name[PATH_MAX + 1];
  	const char *use;
@@ -1057,7 +1124,7 @@ index 03e6237..dd928d2 100644
  
  	if ((use = realpath(path, name)) == NULL || *use != '/')
  	{
-@@ -2139,27 +2521,26 @@ static int mntstat(const char *path, struct stat *buf)
+@@ -2139,27 +2572,26 @@ static int mntstat(const char *path, struct stat *buf)
  		errno = 0;
  		return stat(path, buf);
  	}

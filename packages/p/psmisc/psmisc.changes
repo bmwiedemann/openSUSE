@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 23 13:04:06 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch 
+  * Add a fallback if the system call name_to_handle_at() is
+    not supported by the used file system.
+
+-------------------------------------------------------------------
+Tue Feb  1 12:39:16 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch 
+  * Determine the namespace of a process only once to speed
+    up the parsing of fdinfo (bsc#1194172).
+- Adopt patch 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+
+-------------------------------------------------------------------
 Thu Jan 20 13:57:13 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 23.4:

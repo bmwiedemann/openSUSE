@@ -787,4 +787,19 @@
 - Rename psmisc-v23.3.dif which is now psmisc-v23.4.dif with correct offsets</comment>
     <requestid>947699</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>b1e1c4e67eb580c8ac16c7e91f4692b4</srcmd5>
+    <version>23.4</version>
+    <time>1645723109</time>
+    <user>dimstar_suse</user>
+    <comment>- Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch 
+  * Add a fallback if the system call name_to_handle_at() is
+    not supported by the used file system.
+
+- Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch 
+  * Determine the namespace of a process only once to speed
+    up the parsing of fdinfo (bsc#1194172).
+- Adopt patch 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch</comment>
+    <requestid>957096</requestid>
+  </revision>
 </revisionlist>
