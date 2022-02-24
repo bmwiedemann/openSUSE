@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Feb 24 07:08:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use a separate spec file for sources, since now they
+  can be built in the same run as the other artifacts
+
+-------------------------------------------------------------------
+Wed Feb 23 07:17:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * slf4j-reload4j.patch
+    + the incompatibility is now handled in reload4j itself
+
+-------------------------------------------------------------------
+Tue Feb 22 20:45:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source service
+- Depend for build on reload4j
+- Fix dependencies of the module slf4j-log4j12
+
+-------------------------------------------------------------------
 Tue Feb 22 09:50:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

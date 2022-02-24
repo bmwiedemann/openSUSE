@@ -217,4 +217,12 @@
     <comment>Fix eventual build against reload4j instead of log4j12</comment>
     <requestid>956674</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>c1e1ac8438af9251ce811b2c68e0fc82</srcmd5>
+    <version>1.7.32</version>
+    <time>1645723114</time>
+    <user>dimstar_suse</user>
+    <comment>really remove the patch</comment>
+    <requestid>957222</requestid>
+  </revision>
 </revisionlist>

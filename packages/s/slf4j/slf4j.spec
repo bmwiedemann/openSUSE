@@ -25,12 +25,11 @@ Summary:        Simple Logging Facade for Java
 License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://www.slf4j.org/
-Source0:        https://github.com/qos-ch/%{name}/archive/v_%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
-Source2:        build.xml.tar.bz2
+Source2:        build.xml.tar.xz
 Patch1:         build-remove-slf4j_api-binder.patch
 Patch2:         slf4j-commons-lang3.patch
-Patch3:         slf4j-reload4j.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  ant-junit >= 1.6.5
 BuildRequires:  apache-commons-lang3
@@ -41,7 +40,7 @@ BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  javassist >= 3.4
 BuildRequires:  junit >= 3.8.2
-BuildRequires:  log4j12-mini
+BuildRequires:  reload4j
 Requires:       cal10n
 Requires:       java
 # this is ugly hack, which creates package which requires the same,
@@ -86,6 +85,7 @@ SLF4J JDK14 Binding.
 %package log4j12
 Summary:        SLF4J LOG4J-12 Binding
 Group:          Development/Libraries/Java
+Requires:       mvn(log4j:log4j)
 Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 
 %description log4j12
@@ -132,11 +132,17 @@ Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 %description -n jul-to-slf4j
 JUL to SLF4J bridge.
 
+%package sources
+Summary:        SLF4J Source JARs
+Group:          Development/Libraries/Java
+
+%description sources
+SLF4J Source JARs.
+
 %prep
-%setup -q -n %{name}-v_%{version} -a2
+%setup -q -a2
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 find . -name "*.jar" | xargs rm
 cp -p %{SOURCE1} APACHE-LICENSE
 
@@ -166,7 +172,7 @@ sed -i "/Import-Package/s/$/;resolution:=optional/" slf4j-api/src/main/resources
 %pom_change_dep -r -f ::::: :::::
 
 %build
-export CLASSPATH=$(build-classpath log4j12/log4j-12 \
+export CLASSPATH=$(build-classpath reload4j \
                    commons-logging \
                    commons-lang3 \
                    javassist-3.14.0 \
@@ -178,20 +184,46 @@ ant -Dmaven2.jpp.mode=true \
     -Dmaven.repo.local=$MAVEN_REPO_LOCAL \
     package javadoc \
 
+# Sources
+for i in api ext jcl jdk14 log4j12 nop simple; do
+  mkdir -p %{name}-${i}/target
+  jar cf %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/java .
+  jar uf %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/resources .
+done
+
+for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
+  mkdir -p ${i}/target
+  jar cf ${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/java .
+  jar uf ${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/resources .
+done
+
 %install
 # jars
 install -d -m 0755 %{buildroot}%{_javadir}/%{name}
+
 for i in api ext jcl jdk14 log4j12 nop simple; do
   install -m 644 slf4j-${i}/target/slf4j-${i}-%{version}.jar \
     %{buildroot}%{_javadir}/%{name}/${i}.jar
   ln -sf ${i}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
 done
+
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   install -m 644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
 done
 
+for i in api ext jcl jdk14 log4j12 nop simple; do
+  install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar \
+    %{buildroot}%{_javadir}/%{name}/%{name}-${i}-sources.jar
+done
+
+for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
+  install -pm 0644 ${i}/target/${i}-%{version}-sources.jar \
+    %{buildroot}%{_javadir}/%{name}/${i}-sources.jar
+done
+
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
+
 for i in api ext jcl jdk14 log4j12 nop simple; do
   %pom_remove_parent slf4j-${i}
   %pom_xpath_inject "pom:project" "
@@ -199,6 +231,7 @@ for i in api ext jcl jdk14 log4j12 nop simple; do
     <version>%{version}</version>" slf4j-${i}
   install -pm 644 slf4j-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
 done
+
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   %pom_remove_parent ${i}
   %pom_xpath_inject "pom:project" "
@@ -206,11 +239,21 @@ for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
     <version>%{version}</version>" ${i}
   install -pm 644 ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
 done
+
 for i in api nop simple; do
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
+
 for i in ext jcl jdk14 log4j12 jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
+done
+
+for i in api ext jcl jdk14 log4j12 nop simple; do
+  %add_maven_depmap org.slf4j:%{name}-${i}:jar:sources:%{version} %{name}/%{name}-${i}-sources.jar -f sources
+done
+
+for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
+  %add_maven_depmap org.slf4j:${i}:jar:sources:%{version} %{name}/${i}-sources.jar -f sources
 done
 
 # manual
@@ -248,6 +291,8 @@ rm -rf target/site
 %files -n log4j-over-slf4j -f .mfiles-log4j-over-slf4j
 
 %files -n jul-to-slf4j -f .mfiles-jul-to-slf4j
+
+%files sources -f .mfiles-sources
 
 %files javadoc
 %{_javadocdir}/%{name}
