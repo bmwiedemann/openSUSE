@@ -68,7 +68,7 @@
 %{?!icon_theme_cache_create_ghost:%define icon_theme_cache_create_ghost() touch %{buildroot}%{_datadir}/icons/%{1}/icon-theme.cache}
 %{?!icon_theme_cache_post:%define icon_theme_cache_post() gtk-update-icon-cache %{_datadir}/icons/$1 &> /dev/null || :}
 Name:           efl
-Version:        1.25.1
+Version:        1.26.2
 Release:        0
 # TODO: split package to separate packages and specify licenses correctly
 Summary:        Enlightenment Foundation Libraries - set of libraries used (not only) by E17
@@ -104,6 +104,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libinput) >= 0.6.0
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng) >= 1.2.10
 BuildRequires:  pkgconfig(libpulse)
@@ -245,7 +246,6 @@ BuildRequires:  pkgconfig(libxine)
 %if 0%{?enable_wayland}
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libdrm) >= 2.4
-BuildRequires:  pkgconfig(libinput) >= 0.6.0
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-client) >= 1.11.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.11.0
@@ -456,28 +456,29 @@ Provides:       enlightenment-theme-dft
 
 %description  -n enlightenment-theme-upstream
 For use with upstream branding, when using openSUSE themes, when using
-openSUSE themes Use the Dark theme instead.
+openSUSE themes Use the Flat theme instead.
 
-%package -n enlightenment-theme-dark
+%package -n enlightenment-theme-Flat
 Version:        0.21.0
 Release:        0
-Summary:        Default Enlightenment theme(Dark)
+Summary:        Default Enlightenment theme(Flat)
 License:        BSD-2-Clause AND LGPL-2.1-only
 Provides:       enlightenment-theme
+Recommends:     enlightenment-x-Flat-icon-theme
 
-%description  -n enlightenment-theme-dark
+%description  -n enlightenment-theme-Flat
 The default theme for enlightenment install when using openSUSE branding.
 
-%package -n enlightenment-x-dark-icon-theme
+%package -n enlightenment-x-Flat-icon-theme
 Version:        0.21.0
 Release:        0
 Summary:        A freedesktop.org compatible icon theme
 License:        GPL-3.0-only
 
-%description -n enlightenment-x-dark-icon-theme
+%description -n enlightenment-x-Flat-icon-theme
 Setting this icon theme as your application icon theme in enlightenment will
 make all your applications use the same icon set as the enlightenment
-dark (upstream) theme.
+Flat (upstream) theme.
 
 Icon themes to match the openSUSE Enlightenment themes are also available.
 
@@ -582,12 +583,12 @@ find doc/html -name '*.eps' | xargs sed -i 's@\r@\n@g'
 # python gdb pretty printers shouldn't have execute permissions.
 chmod 0644 %{buildroot}%{_datadir}/eo/gdb/eo_gdb.py
 
-# create theme version for dark package
-cp %{buildroot}%{_datadir}/elementary/themes/default.edj %{buildroot}%{_datadir}/elementary/themes/dark.edj
+# create theme version for Flat package
+cp %{buildroot}%{_datadir}/elementary/themes/default.edj %{buildroot}%{_datadir}/elementary/themes/Flat.edj
 
 # move icons as openSUSE also ships
-mv %{buildroot}/%{_datadir}/icons/Enlightenment-X %{buildroot}/%{_datadir}/icons/Enlightenment-X-dark
-touch %{buildroot}%{_datadir}/icons/Enlightenment-X-dark/icon-theme.cache
+mv %{buildroot}/%{_datadir}/icons/Enlightenment-X %{buildroot}/%{_datadir}/icons/Enlightenment-X-Flat
+touch %{buildroot}%{_datadir}/icons/Enlightenment-X-Flat/icon-theme.cache
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -598,7 +599,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
   -N "Elementary Performance" -G "Elementary Performance" -r elementary_perf Enlightenment Development IDE}
 %{suse_update_desktop_file \
   -N "Elementary Test" -G "Elementary Test" -r elementary_test Enlightenment Development IDE}
-%fdupes -s %{buildroot}%{_datadir}/icons/Enlightenment-X-dark
+%fdupes -s %{buildroot}%{_datadir}/icons/Enlightenment-X-Flat
 %fdupes -s %{buildroot}%{_datadir}/%{name}/examples
 %endif
 
@@ -740,11 +741,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if 0%{?enable_wayland}
 %{_includedir}/ecore-drm2-1/
 %{_includedir}/ecore-wl2-1/
-%{_includedir}/elput-1/
 %endif
+%{_includedir}/elput-1/
 %{_datadir}/ecore_x/checkme
-%{_datadir}/evas/checkme
 %{_datadir}/gdb/
+%{_datadir}/mime/packages/evas.xml
 
 %files -n elua
 %{_datadir}/elua
@@ -755,12 +756,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n enlightenment-theme-upstream
 %{_datadir}/elementary/themes/default.edj
 
-%files -n enlightenment-theme-dark
-%{_datadir}/elementary/themes/dark.edj
+%files -n enlightenment-theme-Flat
+%{_datadir}/elementary/themes/Flat.edj
 
-%files -n enlightenment-x-dark-icon-theme
-%{_datadir}/icons/Enlightenment-X-dark
-%ghost %{_datadir}/icons/Enlightenment-X-dark/icon-theme.cache
+%files -n enlightenment-x-Flat-icon-theme
+%{_datadir}/icons/Enlightenment-X-Flat
+%ghost %{_datadir}/icons/Enlightenment-X-Flat/icon-theme.cache
 
 %files -n evas-generic-loaders
 %{_libdir}/evas/utils/

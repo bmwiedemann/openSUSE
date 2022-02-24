@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb 24 09:40:56 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Themes are going to recommend there icon themes as well
+
+-------------------------------------------------------------------
+Thu Feb 17 08:25:40 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Upstream theme is now called Flat rather then dark. Dark will 
+  reappear soon in a new package.
+
+-------------------------------------------------------------------
+Tue Feb  8 09:54:34 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.26.2:
+  * Fix crash when doing wierd combinations of eet_write and eet_read
+  * Fix elementary tests to pass
+  * Fix portability of putenv/setenv for niche OS's
+  * Fix ecore input to build on BSD
+  * Fix svg decoding crashes for vector decode
+  * Fix theme - ibar label overlay
+  * Fix theme - pointer scaling and sizing
+  * Fix ecore x - ensure pointer on screen when setting bounds
+  * elm theme - win - fix mystery off-by-1 resize of content
+  * elm theme - fix mis-named colorclass for inwin bg
+  * edje entry - fix past to use shft+ins for paste and no ctl
+  * edje entry - complete key handling for cut (shft+del)
+  * elm theme - fix placement of procstats and volume so they dont fight
+  * Evas GL dithers by default for better quality (but it's a bit slower)
+  * Evas HEIF format loaded (need to remove from disabled set)
+  * Default theme is now the flat theme
+  * New color palette files and API
+  * Improved speed of Entry appending
+  * Improved performance by not rendering invisible windows
+
+-------------------------------------------------------------------
 Wed Jan  5 11:35:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop unkown meson paramter -Demotion-loaders-disabler. Meson
