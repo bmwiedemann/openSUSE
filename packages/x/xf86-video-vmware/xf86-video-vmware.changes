@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 23 09:26:07 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 13.3.0+12:
+  * vmwgfx:
+    - Change header inclusion order to avoid xorg headers catching
+      stdbool.h
+    - Unify style in scanout_update and present functions
+    - Limit the number of cliprects in a drm present_readback
+      command v3
+    - Limit the number of cliprects in a drm present command v3
+    - Limit the number of cliprects in a drm dirtyfb command v3
+    - Don't exceed the device command size limit v3
+    - Fix invalid memory accesses in CloseScreen
+    - Use libdrm to obtain the drm device node name v2
+    - Fix a memory leak
+    - Fix XVideo memory leaks
+  * saa: Make sure damage destruction happens at the correct
+    location
+  * Remove obsolete B16 & B32 tags in struct definitions
+- Switch to git checkout via source service.
+- Add u_Fix-build-gcc-12.patch: Still needs a patch to build with
+  gcc 12.
+- Modernize spec, add libtool BuildRequires and bootstrap build.
+
+-------------------------------------------------------------------
 Sat May 19 15:15:28 UTC 2018 - sndirsch@suse.com
 
 - Update to version 13.3.0

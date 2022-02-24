@@ -252,4 +252,12 @@
     testing has been run on xserver 1.19.99 series.</comment>
     <requestid>610635</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0cf0f598405173af8cfde6f723159e51</srcmd5>
+    <version>13.3.0+12</version>
+    <time>1645723097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957024</requestid>
+  </revision>
 </revisionlist>
