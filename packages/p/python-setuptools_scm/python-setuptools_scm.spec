@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-setuptools_scm%{psuffix}
-Version:        6.3.2
+Version:        6.4.2
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
@@ -75,6 +75,7 @@ in SCM metadata. It also handles file finders for the supperted SCMs.
 
 %if %{with test}
 %check
+sed -i 's:python\( setup.py\):python3\1:' testing/test_integration.py
 # pip download needs network
 %pytest -k "not test_pip_download"
 %endif

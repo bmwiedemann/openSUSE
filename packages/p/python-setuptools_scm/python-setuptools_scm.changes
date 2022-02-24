@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb 23 11:02:50 UTC 2022 - pgajdos@suse.com
+
+- fix integration tests
+
+-------------------------------------------------------------------
+Sat Feb  5 20:29:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.2:
+  * fix #671 : NoReturn is not avaliable in painfully dead python 3.6
+  * fix regression #669: restore get_version signature
+  * fix #668: harden the selftest for distribution extras
+  * compatibility adjustments for setuptools >58
+  * only put minimal setuptools version into toml extra to warn people with old strict pins
+  * coorectly handle hg-git self-use
+  * better mercurial detection
+  * modernize packaging setup
+  * python 3.10 support
+  * better handling of setuptools install command deprecation
+  * consider ``pyproject.tomls`` when running as command
+  * use list in git describe command to avoid shell expansions while supporting both windows and posix
+  * add ``--strip-dev`` flag to ``python -m setuptools_scm`` to print the next guessed version cleanly
+  * ensure no-guess-dev will fail on bad tags instead of generating invalid versions
+  * ensure we use utc everywhere to avoid confusion
+
+-------------------------------------------------------------------
 Sun Oct  3 21:10:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Drop add-rpmfail-pytest-markers.patch
