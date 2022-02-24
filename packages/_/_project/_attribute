@@ -50,7 +50,7 @@
   bsc#1161276: '20220222'
   bsc#1194208: '20220216'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
-  kde#449273: '20220221'
+  kde#449273: '20220222'
   poo#100991: '20211117'
   poo#101109: '20211102'
   poo#101608: '20211128'
@@ -92,9 +92,11 @@
   poo#106676: '20220215'
   poo#106963: '20220216'
   poo#107068: '20220222'
+  poo#107092: '20220222'
   poo#107107: '20220222'
   poo#107110: '20220221'
   poo#107113: '20220222'
+  poo#107248: '20220222'
   poo#80628: '20220222'
   poo#91383: '20220111'
   poo#96611: '20211109'
@@ -473,9 +475,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220222'
-published: '20220221'
-publishing: '20220221'
+    <value>failed: ''
+published: '20220222'
+publishing: '20220222'
 testing: '20220222'
 </value>
   </attribute>
