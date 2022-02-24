@@ -26,6 +26,7 @@ Group:          Development/Libraries/Java
 URL:            https://reload4j.qos.ch/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
+Patch0:         %{name}-java1.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  geronimo-jms-1_1-api
@@ -62,12 +63,16 @@ make changes to source code.
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
+Obsoletes:      log4j12-javadoc < %{version}
+Obsoletes:      log4j12-manual < %{version}
+Provides:       log4j12-javadoc = %{version}
 
 %description javadoc
 This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 cp %{SOURCE1} build.xml
 mkdir -p lib
 
