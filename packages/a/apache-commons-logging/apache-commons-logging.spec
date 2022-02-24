@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +37,7 @@ BuildRequires:  ant
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  log4j12-mini >= 1.2
+BuildRequires:  reload4j
 Requires:       java >= 1.8
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}
@@ -79,7 +79,7 @@ export CLASSPATH=$(build-classpath \
                   ):target/classes:target/test-classes
 ant \
   -Dmaven.mode.offline=true -lib %{_javadir} \
-  -Dlog4j12.jar=%{_javadir}/log4j12/log4j-12.jar -Dservletapi.jar=%{_javadir}/glassfish-servlet-api.jar \
+  -Dlog4j12.jar=$(find-jar reload4j/reload4j) -Dservletapi.jar=$(find-jar glassfish-servlet-api) \
   dist
 
 %install

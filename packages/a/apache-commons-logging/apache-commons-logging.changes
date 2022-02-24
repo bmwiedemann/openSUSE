@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 19:04:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build against the log4j12 packages, use the new reload4j
+
+-------------------------------------------------------------------
 Wed Jul 28 07:28:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Disable tests everywhere, not only for arm6
