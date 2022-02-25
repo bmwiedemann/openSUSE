@@ -17,7 +17,7 @@
 
 
 Name:           enlightenment-branding-openSUSE
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        Enlightenment openSUSE branding
 License:        GPL-2.0
@@ -33,7 +33,8 @@ Requires:       enlightenment-profiles-openSUSE
 #provides default elementary theme
 Requires:       enlightenment-theme-openSUSE
 Recommends:     enlightenment-theme-dark
-Recommends:     enlightenment-theme-openSUSE-bluegreen
+Recommends:     enlightenment-theme-Flat
+Recommends:     enlightenment-theme-openSUSE-neon
 Recommends:     enlightenment-theme-openSUSE-ice
 Recommends:     enlightenment-theme-openSUSE-oliveleaf
 Requires:       enlightenment-profiles-openSUSE

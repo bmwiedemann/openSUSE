@@ -32,4 +32,12 @@ Recommend new themes</comment>
     <comment>Fix obsoletes for e17 to e19 upgrades but not if e17 was manually selected</comment>
     <requestid>311462</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c91763e5f5cad77aaec39e8477971c5c</srcmd5>
+    <version>0.2</version>
+    <time>1645820693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957251</requestid>
+  </revision>
 </revisionlist>
