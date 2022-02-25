@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 25 13:32:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add django4.patch to allow compatibility with Django 4
+  (gh#Fantomas42/django-tagging#23).
+
+-------------------------------------------------------------------
 Fri Apr  3 10:29:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.0:

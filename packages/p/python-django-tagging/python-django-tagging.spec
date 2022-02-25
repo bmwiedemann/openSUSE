@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-tagging
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/Fantomas42/django-tagging
 Source:         https://files.pythonhosted.org/packages/source/d/django-tagging/django-tagging-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM django4.patch gh#Fantomas42/django-tagging#23 mcepl@suse.com
+# Make the package working with Django 4
+Patch0:         django4.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +43,7 @@ which allows association of a number of tags
 with any Model instance and makes retrieval of tags simple.
 
 %prep
-%setup -q -n django-tagging-%{version}
+%autosetup -p1 -n django-tagging-%{version}
 
 %build
 %python_build
@@ -50,7 +53,7 @@ with any Model instance and makes retrieval of tags simple.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand %{_bindir}/django-admin.py-%{$python_bin_suffix} test --settings=tagging.tests.settings --pythonpath=`pwd`
+%python_expand %{_bindir}/django-admin-%{$python_bin_suffix} test --settings=tagging.tests.settings --pythonpath=`pwd`
 
 %files %{python_files}
 %license LICENSE.txt

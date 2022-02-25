@@ -17,4 +17,14 @@
   * Compatiblity fix for Django 2.2 and Django 3.0.</comment>
     <requestid>791163</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8fda522d61e08ec3d23e2a6621818f68</srcmd5>
+    <version>0.5.0</version>
+    <time>1645820716</time>
+    <user>dimstar_suse</user>
+    <comment>- Add django4.patch to allow compatibility with Django 4
+  (gh#Fantomas42/django-tagging#23).
+</comment>
+    <requestid>957599</requestid>
+  </revision>
 </revisionlist>
