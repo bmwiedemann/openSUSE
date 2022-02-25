@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 25 10:53:56 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Apparently we lost the changelog, this version works with 1.12
+  Its our old default because we are changing default again soon.
+- Use python3-base instead of python3
+
+-------------------------------------------------------------------
 Fri Jul  1 17:06:20 UTC 2016 - toddrme2178@gmail.com
 
 - Make Group tag consistent with other terminal applications.

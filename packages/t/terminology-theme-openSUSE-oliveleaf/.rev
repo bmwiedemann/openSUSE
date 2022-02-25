@@ -23,4 +23,15 @@
     <comment>1</comment>
     <requestid>406226</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6418cee4710b737d208ff0c36431385</srcmd5>
+    <version>20220219.1.26</version>
+    <time>1645820714</time>
+    <user>dimstar_suse</user>
+    <comment>- Apparently we lost the changelog, this version works with 1.12
+  Its our old default because we are changing default again soon.
+- Use python3-base instead of python3
+</comment>
+    <requestid>957579</requestid>
+  </revision>
 </revisionlist>
