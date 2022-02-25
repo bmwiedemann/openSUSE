@@ -1,7 +1,7 @@
 #
-# spec file for package rage
+# spec file for package rage-encryption
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,21 +14,23 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %define _buildshell /bin/bash
 %define vlic_dir  vendored
 
 Name:           rage-encryption
 #               This will be set by osc services, that will run after this.
-Version:        0.7.1
+Version:        0.7.1+0
 Release:        0
 Summary:        Simple, modern, and secure file encryption tool
 #               If you know the license, put it's SPDX string here.
 #               Alternately, you can use cargo lock2rpmprovides to help generate this.
-License:        ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-3-Clause AND CDDL-1.0 AND MIT
+License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND CDDL-1.0 AND MIT
 #               Select a group from this link:
 #               https://en.opensuse.org/openSUSE:Package_group_guidelines
 Group:          Productivity/Security
-Url:            https://github.com/str4d/rage
+URL:            https://github.com/str4d/rage
 Source0:        rage-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
@@ -43,8 +45,8 @@ BuildRequires:  rust+cargo >= 1.51
 BuildRequires:  bash
 # for feature mount
 BuildRequires:  fuse-devel
-Recommends:     pinentry
 Recommends:     %{name}-bash-completion
+Recommends:     pinentry
 Conflicts:      rage
 ExclusiveArch:  %{rust_tier1_arches}
 
