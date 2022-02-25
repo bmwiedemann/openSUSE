@@ -36,4 +36,24 @@
     <comment></comment>
     <requestid>833448</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2c22e9c1d1e537a02e533648404c346a</srcmd5>
+    <version>2.0.8</version>
+    <time>1645820722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.8:
+  - Added Django 4.0 compatibility.
+  - Introduce CODE_OF_CONDUCT.md for the project.
+  - Add precision in the documentation for PipelineCachedStorage.
+  - Drop support for slimit compressor due to package not
+    released an official version for Python 3 and not any new
+    package release from 2013.
+  - Update package.json due to CoffeeScript on NPM has moved to
+    &quot;coffeescript&quot;
+  - Update setup.py with Django 4.0 and Python 3.10
+  - Add support for Terser.
+  - Fix django warnings.
+</comment>
+    <requestid>957640</requestid>
+  </revision>
 </revisionlist>

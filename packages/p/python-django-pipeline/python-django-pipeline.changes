@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 25 16:53:29 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.0.8:
+  - Added Django 4.0 compatibility.
+  - Introduce CODE_OF_CONDUCT.md for the project.
+  - Add precision in the documentation for PipelineCachedStorage.
+  - Drop support for slimit compressor due to package not
+    released an official version for Python 3 and not any new
+    package release from 2013.
+  - Update package.json due to CoffeeScript on NPM has moved to
+    "coffeescript"
+  - Update setup.py with Django 4.0 and Python 3.10
+  - Add support for Terser.
+  - Fix django warnings.
+
+-------------------------------------------------------------------
 Thu Sep 10 08:45:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.0.5
