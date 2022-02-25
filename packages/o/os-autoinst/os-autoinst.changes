@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 24 10:55:08 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1645700100.d410cc0d:
+  * ci: Provide manual dispatch for openQA fullstack test
+  * fullstack: Address die_on_timeout deprecation messages with script_run
+  * Fix flaky poweroff in openQA full stack tests
+  * t: Add video-console testing with generalhw backend
+  * t: Add video_stream console tests
+  * generalhw: Add GENERAL_HW_IMAGE_CMD
+  * generalhw: Wrap GENERAL_HW_ARG_VARIABLES_BY_CMD
+  * Add stall detection to video-stream console
+  * Add support for v4l2 device as an input to video-stream console
+
+-------------------------------------------------------------------
 Fri Feb 18 20:16:39 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1645215388.05525341:
