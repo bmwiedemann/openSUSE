@@ -11792,4 +11792,11 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>coolo</user>
     <comment>Remove refresh from 15.2:non-oss:update</comment>
   </revision>
+  <revision rev="1927" vrev="1927">
+    <srcmd5>269cf1f7a85625ab39f08b154a96b0d4</srcmd5>
+    <version>unknown</version>
+    <time>1645778530</time>
+    <user>coolo</user>
+    <comment>Fix name</comment>
+  </revision>
 </revisionlist>
