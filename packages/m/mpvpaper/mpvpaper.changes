@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 25 18:27:01 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.1:
+  * Deprecated MPV_EVENT_PAUSE, MPV_EVENT_UNPAUSE, MPV_EVENT_IDLE
+    replaced #19
+  * mpv's "idle" option is now always off/no.
+    Too many issues, this should help some that have been crashing
+    lately
+  * More various fixes outlined here: 50c0c8d
+- Remove Fixed-mpv-events-cleanup-and-more.patch: upstreamed
+
+-------------------------------------------------------------------
 Thu Feb 24 04:24:59 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Use patch from the upstream (https://github.com/GhostNaN/mpvpaper/commit/50c0c8def6d96bb2f992fad6c77b86fa85e1a596)

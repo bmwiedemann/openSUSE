@@ -59,4 +59,19 @@
     <comment></comment>
     <requestid>957370</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be24da425e5848dd56f08fa39e558a26</srcmd5>
+    <version>1.2.1</version>
+    <time>1645820723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * Deprecated MPV_EVENT_PAUSE, MPV_EVENT_UNPAUSE, MPV_EVENT_IDLE
+    replaced #19
+  * mpv's &quot;idle&quot; option is now always off/no.
+    Too many issues, this should help some that have been crashing
+    lately
+  * More various fixes outlined here: 50c0c8d
+- Remove Fixed-mpv-events-cleanup-and-more.patch: upstreamed</comment>
+    <requestid>957646</requestid>
+  </revision>
 </revisionlist>
