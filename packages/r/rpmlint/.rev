@@ -3579,4 +3579,28 @@ oddjob-gpupdate isn't blocked)</comment>
   * FileDigestCheck: implement support for file digest filtering</comment>
     <requestid>954056</requestid>
   </revision>
+  <revision rev="385" vrev="1">
+    <srcmd5>39962ffdc67053034e9a77d4f4947a5e</srcmd5>
+    <version>2.2.0+git20220223.8f7d3e1</version>
+    <time>1645820687</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220223.8f7d3e1:
+  * Speed up pkg.grep by utilizating mmap.
+  * Update package dependency name.
+
+- Update to version 2.2.0+git20220222.b4654f9:
+  * Small tweaks to report formatting.
+  * Start with the biggest files first in BashismsCheck.
+  * Add new option --checks.
+
+- Update to version 2.2.0+git20220221.0fec15f:
+  * Speed up BashismsCheck by using md5sum of file.
+
+- Update to version 2.2.0+git20220221.19e374d:
+  * Include rpm2cpio (decompression and extraction) in --time-report.
+  * Print only on decimal digit in time report.
+  * Speed up pkg.grep.
+  * Fix superfluous variable.</comment>
+    <requestid>957124</requestid>
+  </revision>
 </revisionlist>

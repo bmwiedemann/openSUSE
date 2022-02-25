@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Feb 23 16:22:10 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220223.8f7d3e1:
+  * Speed up pkg.grep by utilizating mmap.
+  * Update package dependency name.
+
+-------------------------------------------------------------------
+Tue Feb 22 13:19:51 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220222.b4654f9:
+  * Small tweaks to report formatting.
+  * Start with the biggest files first in BashismsCheck.
+  * Add new option --checks.
+
+-------------------------------------------------------------------
+Mon Feb 21 11:01:55 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220221.0fec15f:
+  * Speed up BashismsCheck by using md5sum of file.
+
+-------------------------------------------------------------------
+Mon Feb 21 10:07:39 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220221.19e374d:
+  * Include rpm2cpio (decompression and extraction) in --time-report.
+  * Print only on decimal digit in time report.
+  * Speed up pkg.grep.
+  * Fix superfluous variable.
+
+-------------------------------------------------------------------
 Sun Feb 13 10:14:32 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220211.709d2fa:
