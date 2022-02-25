@@ -1,7 +1,7 @@
 #
 # spec file for package mate-backgrounds
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,11 @@ License:        GPL-2.0-only
 Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM mesonfix-061.patch bjorn.lie@gamil.com -- Fix build with meson 0.61 and newer
+Patch:          mesonfix-061.patch
+
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  meson
-Recommends:     %{name}-lang
 BuildArch:      noarch
 
 %description
@@ -37,7 +39,7 @@ in mind.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
