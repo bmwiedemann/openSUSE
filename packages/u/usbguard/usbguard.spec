@@ -39,7 +39,11 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bash-completion-devel
 BuildRequires:  dbus-1-glib-devel
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libqb-devel
 BuildRequires:  libseccomp-devel
@@ -94,6 +98,12 @@ software framework.
 %patch0 -p1
 
 %build
+%if 0%{?suse_version} == 1500
+export CXX=g++-10
+# gcc10 has no gcc10-PIE yet, enforce manually (see boo#1195628 for progress)
+export CPPFLAGS='-fPIE'
+export LDFLAGS='-pie'
+%endif
 mkdir -p ./m4
 autoreconf -i -s --no-recursive ./
 

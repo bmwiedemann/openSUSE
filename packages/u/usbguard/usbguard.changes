@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 25 10:43:56 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Fix build for Leap and SLE by using newer gcc version
+
+-------------------------------------------------------------------
 Thu Feb 24 14:49:05 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - update to 1.1.0
