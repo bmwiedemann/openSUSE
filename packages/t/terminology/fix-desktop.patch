@@ -1,8 +1,8 @@
-Index: terminology-1.8.1/data/desktop/terminology.desktop.in
+Index: terminology-1.11.0/data/desktop/terminology.desktop
 ===================================================================
---- terminology-1.8.1.orig/data/desktop/terminology.desktop.in
-+++ terminology-1.8.1/data/desktop/terminology.desktop.in
-@@ -3,11 +3,11 @@
+--- terminology-1.11.0.orig/data/desktop/terminology.desktop
++++ terminology-1.11.0/data/desktop/terminology.desktop
+@@ -3,10 +3,10 @@
  Type=Application
  Name=Terminology
  Name[ko]=터미놀로지
@@ -10,20 +10,10 @@ Index: terminology-1.8.1/data/desktop/terminology.desktop.in
 -#GenericName[eo]=Terminalo
 -#GenericName[it]=Terminale
 -#GenericName[ru]=Терминал
--#GenericName[ko]=터미널
 +GenericName=Terminal
 +GenericName[eo]=Terminalo
 +GenericName[it]=Terminale
 +GenericName[ru]=Терминал
-+GenericName[ko]=터미널
+ #GenericName[ko]=터미널
  Comment=Terminal emulator
  Comment[da]=Terminalemulator
- Comment[eo]=Terminalimitilo
-@@ -20,6 +20,6 @@ Comment[ru]=Эмулятор терми�
- Comment[ko]=터미널 에뮬레이터
- Keywords=shell;prompt;command;commandline;
- Exec=terminology
--Icon=%ICON_PATH%/terminology.png
-+Icon=terminology
- Categories=System;TerminalEmulator;
- StartupWMClass=terminology

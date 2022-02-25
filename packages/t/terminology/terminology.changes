@@ -1,5 +1,26 @@
 -------------------------------------------------------------------
-Tue Nov 17 06:11:34 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+Thu Feb 17 12:30:29 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- The default theme is now Flat, Dark will come back in a new package
+- openSUSE Branding now has a colorscheme so use that as the default
+- Fix colorscheme loading
+  * fix-colorscheme-name-typo.patch
+
+-------------------------------------------------------------------
+Thu Feb 17 00:40:19 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Update to 1.12.1
+  * New Deafult theme (Not the default in openSUSE)
+  * Colorschemes generate their own configuration file, allowing 
+    for easy management of outside contributions
+
+-------------------------------------------------------------------
+Fri Nov 19 17:56:29 UTC 2021 - Tomas Cech <sleep_walker@opensuse.org>
+
+- bump to 1.11.0
+
+-------------------------------------------------------------------
+Tue Nov 17 06:11:34 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Add fix-desktop.patch to fix issues with desktop file
 

@@ -1,7 +1,7 @@
 #
 # spec file for package terminology
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define e_branding_version 0.1
 %endif
 Name:           terminology
-Version:        1.8.1
+Version:        1.12.1
 Release:        0
 Summary:        EFL based terminal emulator
 License:        BSD-2-Clause AND OFL-1.1
@@ -31,6 +31,7 @@ Group:          System/X11/Terminals
 URL:            http://enlightenment.org
 Source:         https://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.xz
 Patch0:         fix-desktop.patch
+Patch1:         fix-colorscheme-name-typo.patch
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.1
@@ -58,6 +59,7 @@ Recommends:     %{name}-lang
 Conflicts:      evas-generic-loaders < 1.8.0
 %if 0%{?suse_version}
 Recommends:     evas-generic-loaders >= 1.8.0
+Recommends:     terminology-theme-Flat
 Recommends:     terminology-theme-dark
 Recommends:     terminology-theme-misc
 Recommends:     terminology-theme-openSUSE
@@ -87,12 +89,12 @@ openSUSE themes.
 
 Use the Dark theme instead.
 
-%package theme-dark
-Summary:        Default terminology theme(Dark)
+%package theme-Flat
+Summary:        Default terminology theme(Flat)
 Group:          System/X11/Terminals
 Provides:       terminology-theme
 
-%description  theme-dark
+%description  theme-Flat
 The default theme for terminology install when using openSUSE branding.
 
 %package theme-misc
@@ -121,7 +123,8 @@ export CFLAGS="%{optflags} %{?mageia:-g}"
 sed -i 's/.png[[:blank:]]*$//' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # make 2 copys of default for branding
-cp %{buildroot}%{_datadir}/%{name}/themes/default.edj %{buildroot}%{_datadir}/%{name}/themes/dark.edj
+cp %{buildroot}%{_datadir}/%{name}/themes/default.edj %{buildroot}%{_datadir}/%{name}/themes/Flat.edj
+cp %{buildroot}%{_datadir}/%{name}/colorschemes/Default.eet %{buildroot}%{_datadir}/%{name}/colorschemes/Flat.eet
 
 %find_lang %{name}
 %if 0%{?suse_version}
@@ -151,16 +154,19 @@ cp %{buildroot}%{_datadir}/%{name}/themes/default.edj %{buildroot}%{_datadir}/%{
 %{_mandir}/man?/terminology*.?z
 %{_mandir}/man?/ty*.?z
 %exclude %{_datadir}/%{name}/themes/*
+%exclude %{_datadir}/%{name}/colorschemes/*
 
 %files theme-upstream
 %{_datadir}/%{name}/themes/default.edj
+%{_datadir}/%{name}/colorschemes/Default.eet
 
-%files theme-dark
-%{_datadir}/%{name}/themes/dark.edj
+%files theme-Flat
+%{_datadir}/%{name}/themes/Flat.edj
+%{_datadir}/%{name}/colorschemes/Flat.eet
 
 %files theme-misc
 %{_datadir}/%{name}/themes/*
-%exclude %{_datadir}/%{name}/themes/dark.edj
+%exclude %{_datadir}/%{name}/themes/Flat.edj
 %exclude %{_datadir}/%{name}/themes/default.edj
 
 %{?suse_version:%files lang -f %{name}.lang}
