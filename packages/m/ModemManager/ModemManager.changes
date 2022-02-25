@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Feb 18 14:32:32 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.18.6:
+  + The ModemManager.service file for systemd integration provided
+    in the sources is updated as follows:
+    ++ 'CAP_NET_ADMIN' is now required in the
+       'CapabilityBoundingSet' field.
+    ++ 'AF_NETLINK' and 'AF_QIPCRTR' are now required in the
+       'RestrictAddressFamilies' field.
+  + The LEGACY and PARANOID filter types that were allowed
+    options in the '--filter-policy' option in the ModemManager
+    daemon were deprecated in version 1.16.0 and have now been
+    completely removed, along with the vid:pid blacklist of
+    devices and the vid:pid greylist of RS232<->USB adapters.
+  + The ModemManager daemon can run now in a 'quick suspend/resume'
+    mode, in which no explicit data disconnection is triggered on
+    suspend, and no explicit device re-probing from scratch is
+    launched on resume. Instead, the daemon will try to refresh
+    the state of all interfaces upon suspend, e.g. to see if the
+    module keeps registered to the same operator, to see if it is
+    still connected, and so on.
+  + core: added support for the new 'WWAN' subsystem in Linux kernel
+    5.13, enabling PCIe-only modules.
+  + core: The charset conversion methods rework, including the
+    avoiding of the iconv()
+  + qmi: the logic managing allowed/preferred modes was fixed for
+    multimode devices like the MC7304, making sure the acquisition
+    order preference always had the same items.
+  + serial: when modem is connected with AT+PPP, ignore forced
+    disconnections, so that we don't take ownership of the PPP
+    port before pppd has released it.
+  + foxconn: added support for the T99W175 (SDX55) module,
+    including built-in FCC unlock procedure.
+  + foxconn: added new MBIM QDU firmware update method.
+- Move the dbus-1 system.d file to /usr (bsc#1196170)
+- Use source verification
+- Update Supplements to new format
+- Add BRs needed for new tests:
+  * python3-gobject-Gdk
+  * python3-dbus-python
+
+-------------------------------------------------------------------
 Sat Aug 14 15:33:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch bash completion subpackage to noarch.

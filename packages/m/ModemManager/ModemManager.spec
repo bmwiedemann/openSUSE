@@ -1,7 +1,7 @@
 #
 # spec file for package ModemManager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,23 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           ModemManager
-Version:        1.14.8
+Version:        1.18.6
 Release:        0
 Summary:        DBus interface for modem handling
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://cgit.freedesktop.org/ModemManager/ModemManager
-Source0:        http://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
+Source0:        https://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
+Source1:        https://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libgudev-1_0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
+BuildRequires:  python3-dbus-python
+BuildRequires:  python3-gobject-Gdk
 BuildRequires:  vala-devel >= 0.18
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libsystemd) >= 209
@@ -84,7 +88,7 @@ CDMA).
 Summary:        Bash completion for mmcli
 Group:          Productivity/Networking/System
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -102,11 +106,11 @@ test -n "$pppddir" || exit 1
 	--disable-static \
 	--with-polkit \
 	--with-systemd-journal \
-	--with-suspend-resume=systemd \
+	--with-systemd-suspend-resume=yes \
 	--with-udev-base-dir=%{_udevdir} \
+	--with-dbus-sys-dir=%{_datadir}/dbus-1/system.d \
 	--with-qmi \
 	--with-mbim \
-	--enable-more-warnings=no \
 	%{nil}
 %make_build
 
@@ -142,14 +146,13 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %{_bindir}/mmcli
 %{_sbindir}/ModemManager
 %{_sbindir}/rcModemManager
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.ModemManager1.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.ModemManager1.conf
 %{_libdir}/ModemManager/
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.ModemManager1.service
 %{_datadir}/icons/hicolor/*/*/ModemManager.png
 %{_datadir}/polkit-1/actions/org.freedesktop.ModemManager1.policy
-%dir %{_datadir}/ModemManager
-%{_datadir}/ModemManager/mm-foxconn-t77w968-carrier-mapping.conf
+%{_datadir}/ModemManager
 %{_udevdir}/rules.d/*-mm-*.rules
 %{_unitdir}/ModemManager.service
 %{_mandir}/man1/mmcli.1%{?ext_man}
