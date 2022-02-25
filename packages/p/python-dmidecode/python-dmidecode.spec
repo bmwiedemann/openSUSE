@@ -36,7 +36,13 @@ Patch2:         detect-lib-with-py3.patch
 # use sys.version_info instead of sys.version
 Patch3:         31-version_info-v-version.patch
 BuildRequires:  %{python_module devel}
+%if 0%{?sle_version} && 0%{?sle_version} < 150400
+BuildRequires:  %{oldpython}-libxml2-python
+BuildRequires:  %{oldpython}3-libxml2-python
+%else
 BuildRequires:  %{python_module libxml2}
+%endif
+BuildRequires:  fdupes
 BuildRequires:  libxml2-devel
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -66,7 +72,9 @@ sed -i 's/python2/python3/g' Makefile unit-tests/Makefile
 }
 
 %install
-%python_expand $python src/setup.py install --root %{buildroot} --prefix=%{_prefix}
+%{python_expand $python src/setup.py install --root %{buildroot} --prefix=%{_prefix}
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %check
 pushd unit-tests
@@ -75,9 +83,12 @@ pushd unit-tests
 }
 popd
 
+%clean
+
 %files
 %license doc/LICENSE
 %doc README doc/README.upstream doc/AUTHORS doc/AUTHORS.upstream
+%dir %{_datadir}/python-dmidecode/
 %{_datadir}/python-dmidecode/
 
 %files %{python_files python-dmidecode}
