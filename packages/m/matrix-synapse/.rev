@@ -441,4 +441,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.52.0</comment>
     <requestid>954351</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4ab5b9c93e00f093751385fad354a4f3</srcmd5>
+    <version>1.53.0</version>
+    <time>1645820718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.53.0</comment>
+    <requestid>957624</requestid>
+  </revision>
 </revisionlist>
