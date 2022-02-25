@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 25 10:19:51 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220225.970e958e:
+  * pkglistgen: Also support zstd for weakremovers.inc
+
+-------------------------------------------------------------------
 Thu Feb 24 14:09:43 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220224.e679863a:
