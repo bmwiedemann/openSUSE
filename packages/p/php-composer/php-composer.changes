@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 25 13:40:36 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.10.25
+  * Fix regression with PHP 8.1.0 and 8.1.1
+- Update to version 1.10.24
+  * Fixed PHP 8.1 compatibility
+- Update to version 1.10.23
+  * Security: Fixed command injection vulnerability CVE-2021-41116
+
+-------------------------------------------------------------------
 Thu Sep 16 06:15:00 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Require php-mbstring as requested in bnc#1187416
