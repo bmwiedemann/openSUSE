@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Feb 25 10:56:58 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Use python3-base instead of python3
+
+-------------------------------------------------------------------
+Sun Feb 20 03:18:35 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Dark theme is no longer default and now a separate package
+  20220216.1.26
