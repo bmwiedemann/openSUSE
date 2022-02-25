@@ -1,7 +1,7 @@
 #
 # spec file for package cfengine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %define libname   libpromises
 %define libsoname %{libname}3
-
 # Yes, its not FHS conformant but in sync with cfengine documentation
 %define   basedir   %{_localstatedir}/%{name}
 %define   workdir   %{basedir}
 # This is the place where workdir should be
 #%%define basedir   %%{_localstatedir}/lib/%%{name}
 #%%define workdir   %%{basedir}/work
-
 %if 0%{?suse_version} < 1500
 # assume SuSEfirewall2
 %define with_sfw2 1
@@ -34,13 +32,13 @@
 %define with_sfw2 0
 %endif
 # Version of libntech needed (see git repo of core)
-%define libntech_hash 4e9efcb84172110fa92742836b8d34688983c2e7
+%define libntech_hash 66274a1752c88922c2acd000e23b11b76b3bfc2a
 # pass --with-bla to enable the build
 %bcond_with mysql
 %bcond_with postgresql
 %bcond_with libvirt
 Name:           cfengine
-Version:        3.17.0
+Version:        3.19.0
 Release:        0
 Summary:        Configuration management framework
 License:        GPL-3.0-only
