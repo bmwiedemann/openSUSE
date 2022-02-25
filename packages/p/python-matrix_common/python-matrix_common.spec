@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python39 1
 Name:           python-matrix_common
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Common utilities for Synapse, Sydent and Sygnal
 License:        MIT
