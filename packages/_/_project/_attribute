@@ -17,7 +17,7 @@
   boo#1192420: '20211106'
   boo#1192667: '20211128'
   boo#1192701: '20211123'
-  boo#1192812: '20220223'
+  boo#1192812: '20220224'
   boo#1192921: '20211122'
   boo#1192940: '20211121'
   boo#1192959: '20211121'
@@ -48,6 +48,7 @@
   boo#1196116: '20220216'
   boo#1196201: '20220224'
   boo#1196404: '20220224'
+  boo#1196492: '20220224'
   bsc#1161276: '20220224'
   bsc#1194208: '20220216'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
@@ -476,9 +477,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220224'
-published: '20220223'
-publishing: '20220223'
+    <value>failed: ''
+published: '20220224'
+publishing: '20220224'
 testing: '20220224'
 </value>
   </attribute>
