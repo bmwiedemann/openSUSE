@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220223" schemaversion="4.1">
+<image name="OBS__openSUSE___20220224" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220223</productvar>
+      <productvar name="VERSION">20220224</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220223,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220224,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220223/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220224/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -59,6 +59,7 @@
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
       <repopackage name="abcde"/>
+      <repopackage name="abseil-cpp"/>
       <repopackage name="accountsservice"/>
       <repopackage name="accountsservice-lang"/>
       <repopackage name="acl"/>
@@ -323,6 +324,7 @@
       <repopackage name="cpp11"/>
       <repopackage name="cppcheck"/>
       <repopackage name="cpupower"/>
+      <repopackage name="cpupower-lang"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
       <repopackage name="crash-kmp-default" arch="x86_64"/>
@@ -1157,6 +1159,7 @@
       <repopackage name="kglobalaccel5"/>
       <repopackage name="kgoldrunner"/>
       <repopackage name="kgoldrunner-lang"/>
+      <repopackage name="kguiaddons"/>
       <repopackage name="khangman"/>
       <repopackage name="khangman-lang"/>
       <repopackage name="khelpcenter5"/>
@@ -1357,7 +1360,7 @@
       <repopackage name="libaccountsservice0"/>
       <repopackage name="libacl1"/>
       <repopackage name="libacl1-32bit" arch="x86_64"/>
-      <repopackage name="libadwaitaqt1"/>
+      <repopackage name="libadwaitaqt5-1"/>
       <repopackage name="libaio1"/>
       <repopackage name="libalternatives1"/>
       <repopackage name="libamd2"/>
@@ -1662,7 +1665,10 @@
       <repopackage name="libfarstream-0_2-5"/>
       <repopackage name="libfastjson4"/>
       <repopackage name="libfaxutil7_0_4"/>
-      <repopackage name="libfcitx-4_2_9"/>
+      <repopackage name="libfcitx-config4"/>
+      <repopackage name="libfcitx-core0"/>
+      <repopackage name="libfcitx-gclient1"/>
+      <repopackage name="libfcitx-utils0"/>
       <repopackage name="libfdisk1"/>
       <repopackage name="libfdk-aac2"/>
       <repopackage name="libfdt1"/>
@@ -1955,7 +1961,7 @@
       <repopackage name="libiterm1"/>
       <repopackage name="libitm1"/>
       <repopackage name="libiw30"/>
-      <repopackage name="libixion-0_16-0"/>
+      <repopackage name="libixion-0_17-0"/>
       <repopackage name="libixml11"/>
       <repopackage name="libjack-devel"/>
       <repopackage name="libjack0"/>
@@ -2377,7 +2383,7 @@
       <repopackage name="libopus0"/>
       <repopackage name="libopusfile0"/>
       <repopackage name="liborc-0_4-0"/>
-      <repopackage name="liborcus-0_16-0"/>
+      <repopackage name="liborcus-0_17-0"/>
       <repopackage name="libosinfo"/>
       <repopackage name="libosinfo-1_0-0"/>
       <repopackage name="libosinfo-lang"/>
@@ -4327,7 +4333,6 @@
       <repopackage name="ruby3.1-rubygem-get_process_mem"/>
       <repopackage name="ruby3.1-rubygem-gettext"/>
       <repopackage name="ruby3.1-rubygem-gettext_i18n_rails"/>
-      <repopackage name="ruby3.1-rubygem-gettext_i18n_rails_js"/>
       <repopackage name="ruby3.1-rubygem-gli"/>
       <repopackage name="ruby3.1-rubygem-globalid"/>
       <repopackage name="ruby3.1-rubygem-gpgme"/>
@@ -4419,7 +4424,11 @@
       <repopackage name="ruby3.1-rubygem-nio4r"/>
       <repopackage name="ruby3.1-rubygem-nokogiri"/>
       <repopackage name="ruby3.1-rubygem-nori"/>
+      <repopackage name="ruby3.1-rubygem-oauth2"/>
       <repopackage name="ruby3.1-rubygem-omniauth"/>
+      <repopackage name="ruby3.1-rubygem-omniauth-github"/>
+      <repopackage name="ruby3.1-rubygem-omniauth-google-oauth2"/>
+      <repopackage name="ruby3.1-rubygem-omniauth-oauth2"/>
       <repopackage name="ruby3.1-rubygem-openid_connect"/>
       <repopackage name="ruby3.1-rubygem-optimist"/>
       <repopackage name="ruby3.1-rubygem-orm_adapter"/>
@@ -4459,7 +4468,6 @@
       <repopackage name="ruby3.1-rubygem-rack-protection"/>
       <repopackage name="ruby3.1-rubygem-rack-proxy"/>
       <repopackage name="ruby3.1-rubygem-rack-test-0_6"/>
-      <repopackage name="ruby3.1-rubygem-rails-6.0"/>
       <repopackage name="ruby3.1-rubygem-rails-dom-testing"/>
       <repopackage name="ruby3.1-rubygem-rails-html-sanitizer"/>
       <repopackage name="ruby3.1-rubygem-rails-i18n"/>
@@ -4521,7 +4529,6 @@
       <repopackage name="ruby3.1-rubygem-simplecov-html"/>
       <repopackage name="ruby3.1-rubygem-simplecov_json_formatter"/>
       <repopackage name="ruby3.1-rubygem-simpleidn"/>
-      <repopackage name="ruby3.1-rubygem-sinatra"/>
       <repopackage name="ruby3.1-rubygem-slim"/>
       <repopackage name="ruby3.1-rubygem-slop"/>
       <repopackage name="ruby3.1-rubygem-spring"/>
@@ -5223,7 +5230,6 @@
       <repopackage name="xz-lang"/>
       <repopackage name="yakuake"/>
       <repopackage name="yakuake-lang"/>
-      <repopackage name="yarn"/>
       <repopackage name="yast2"/>
       <repopackage name="yast2-add-on"/>
       <repopackage name="yast2-alternatives"/>
