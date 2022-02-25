@@ -1,7 +1,7 @@
 #
 # spec file for package seatd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           seatd
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Seat management daemon
 License:        MIT
 Group:          System/Base
 URL:            https://git.sr.ht/~kennylevinsen/seatd
 Source0:        %{name}-%{version}.tar.gz
-BuildRequires:  meson
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc

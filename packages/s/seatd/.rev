@@ -111,4 +111,15 @@
     <comment></comment>
     <requestid>935932</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bb0a98202484d4732fd07839f4369db3</srcmd5>
+    <version>0.6.4</version>
+    <time>1645820720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.4
+  * seatd-launch: Use snprintf for socket path
+  * seatd-launch: Remove socket path command line arg
+- This updates fixes bsc#1196493 (CVE-2022-25643)</comment>
+    <requestid>957630</requestid>
+  </revision>
 </revisionlist>

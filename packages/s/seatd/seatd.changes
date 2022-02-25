@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 25 16:15:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.4
+  * seatd-launch: Use snprintf for socket path
+  * seatd-launch: Remove socket path command line arg
+- This updates fixes bsc#1196493 (CVE-2022-25643) 
+
+-------------------------------------------------------------------
 Sat Dec  4 08:41:18 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Enable logind support for Leap too
