@@ -54,7 +54,6 @@ unsorted:
   - FreeFileSync 
   - GraphicsMagick 
   - GraphicsMagick-devel 
-  - HSAIL-Tools 
   - HepMC-devel 
   - HepMC-doc 
   - HepMC2-devel 
@@ -194,7 +193,6 @@ unsorted:
   - PyCBC-utils: [x86_64] 
   - PythonQt-devel 
   - QCSXCAD-devel 
-  - QGnomePlatform-32bit: [x86_64] 
   - QMPlay2 
   - QMPlay2-devel 
   - QR-Code-generator-devel 
@@ -305,7 +303,6 @@ unsorted:
   - abook 
   - abook-lang 
   - abootimg 
-  - abseil-cpp 
   - abseil-cpp-devel 
   - abxtest 
   - acars-examples 
@@ -404,6 +401,7 @@ unsorted:
   - adriconf 
   - adriconf-lang 
   - ads 
+  - adwaita-qt6 
   - aegisub: [x86_64] 
   - aelfred 
   - aelfred-javadoc 
@@ -1936,7 +1934,6 @@ unsorted:
   - chemical-mime-data 
   - cherrytree 
   - cherrytree-lang 
-  - chessx 
   - chezdav 
   - chmlib-devel 
   - chmlib-devel-32bit: [x86_64] 
@@ -3315,12 +3312,12 @@ unsorted:
   - enlightenment-branding-upstream 
   - enlightenment-devel 
   - enlightenment-profiles-openSUSE 
-  - enlightenment-theme-dark 
+  - enlightenment-theme-Flat 
   - enlightenment-theme-openSUSE 
   - enlightenment-theme-openSUSE-ice 
   - enlightenment-theme-openSUSE-neon 
   - enlightenment-theme-upstream 
-  - enlightenment-x-dark-icon-theme 
+  - enlightenment-x-Flat-icon-theme 
   - enscript 
   - ensmallen-devel 
   - entangle 
@@ -3533,8 +3530,6 @@ unsorted:
   - fcitx-anthy 
   - fcitx-devel 
   - fcitx-fbterm 
-  - fcitx-gtk2-32bit: [x86_64] 
-  - fcitx-gtk3-32bit: [x86_64] 
   - fcitx-hangul 
   - fcitx-kkc 
   - fcitx-m17n 
@@ -9542,8 +9537,9 @@ unsorted:
   - libadwaita-devel 
   - libadwaita-docs 
   - libadwaita-lang 
-  - libadwaitaqt-devel 
-  - libadwaitaqt1-32bit: [x86_64] 
+  - libadwaita-qt5-devel 
+  - libadwaita-qt6-devel 
+  - libadwaitaqt6-1 
   - libaec-devel 
   - libaec0 
   - libaec0-32bit: [x86_64] 
@@ -10700,7 +10696,6 @@ unsorted:
   - libfcache1 
   - libfcft4 
   - libfcgi0 
-  - libfcitx-4_2_9-32bit: [x86_64] 
   - libfcrypto-devel 
   - libfcrypto1 
   - libfdata-devel 
@@ -13787,6 +13782,11 @@ unsorted:
   - libsigsegv2 
   - libsirocco0 
   - libsispmctl0 
+  - libsixel-bash-completion 
+  - libsixel-devel 
+  - libsixel-utils 
+  - libsixel-zsh-completion 
+  - libsixel1 
   - libskk-devel 
   - libskk0 
   - libskk0-32bit: [x86_64] 
@@ -21260,6 +21260,7 @@ unsorted:
   - python-designateclient-doc 
   - python-devel 
   - python-djvulibre-doc 
+  - python-dmidecode 
   - python-doc 
   - python-doc-pdf 
   - python-efl-doc 
@@ -22688,6 +22689,7 @@ unsorted:
   - python310-django-avatar 
   - python310-django-axes 
   - python310-django-bootstrap3 
+  - python310-django-bootstrap4 
   - python310-django-braces 
   - python310-django-cacheops 
   - python310-django-ckeditor 
@@ -23918,6 +23920,7 @@ unsorted:
   - python310-pylibmc 
   - python310-pylineclip 
   - python310-pylint 
+  - python310-pylint-ignore 
   - python310-pylons-sphinx-themes 
   - python310-pylru 
   - python310-pyls-spyder 
@@ -24116,6 +24119,7 @@ unsorted:
   - python310-python-datamatrix 
   - python310-python-dateutil 
   - python310-python-dbusmock 
+  - python310-python-dmidecode 
   - python310-python-docs-theme 
   - python310-python-dotenv 
   - python310-python-editor 
@@ -24882,10 +24886,8 @@ unsorted:
   - python36-curses 
   - python36-dbm 
   - python36-devel 
-  - python36-django-bootstrap4 
   - python36-django-invitations 
   - python36-django-money 
-  - python36-django-multiselectfield 
   - python36-django-oidc-provider 
   - python36-django-oscar 
   - python36-django-pipeline 
@@ -25873,7 +25875,6 @@ unsorted:
   - python38-django-minio-storage 
   - python38-django-model-utils 
   - python38-django-money 
-  - python38-django-multiselectfield 
   - python38-django-nine 
   - python38-django-oauth-toolkit 
   - python38-django-oidc-provider 
@@ -26979,6 +26980,7 @@ unsorted:
   - python38-pyliblo-doc 
   - python38-pylineclip 
   - python38-pylint 
+  - python38-pylint-ignore 
   - python38-pylons-sphinx-themes 
   - python38-pylru 
   - python38-pyls-spyder 
@@ -27170,6 +27172,7 @@ unsorted:
   - python38-python-daemon 
   - python38-python-datamatrix 
   - python38-python-dbusmock 
+  - python38-python-dmidecode 
   - python38-python-docs-theme 
   - python38-python-dotenv 
   - python38-python-editor 
@@ -28912,7 +28915,6 @@ unsorted:
   - python39-django-minio-storage 
   - python39-django-model-utils 
   - python39-django-money 
-  - python39-django-multiselectfield 
   - python39-django-nine 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
@@ -30120,6 +30122,7 @@ unsorted:
   - python39-pylibmc 
   - python39-pylineclip 
   - python39-pylint 
+  - python39-pylint-ignore 
   - python39-pylons-sphinx-themes 
   - python39-pylru 
   - python39-pyls-spyder 
@@ -30321,6 +30324,7 @@ unsorted:
   - python39-python-datamatrix 
   - python39-python-dateutil 
   - python39-python-dbusmock 
+  - python39-python-dmidecode 
   - python39-python-docs-theme 
   - python39-python-dotenv 
   - python39-python-editor 
@@ -32020,11 +32024,10 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-gettext-setup 
-  - ruby3.1-rubygem-oauth2 
-  - ruby3.1-rubygem-omniauth-github 
-  - ruby3.1-rubygem-omniauth-google-oauth2 
-  - ruby3.1-rubygem-omniauth-oauth2 
+  - ruby3.1-rubygem-gettext_i18n_rails_js 
+  - ruby3.1-rubygem-rails-6.0 
   - ruby3.1-rubygem-rspec-rails-3.9 
+  - ruby3.1-rubygem-sinatra 
   - ruby3.1-rubygem-spring-watcher-listen 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
@@ -33037,6 +33040,7 @@ unsorted:
   - systemd-devel: [i586] # devel package of dvd:systemd-lang 
   - systemd-doc 
   - systemd-experimental 
+  - systemd-inputmethod-generator 
   - systemd-journal-remote 
   - systemd-mini 
   - systemd-mini-container 
@@ -43079,6 +43083,7 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
+  - yarn 
   - yaru-icon-theme 
   - yasm 
   - yasm-devel 
