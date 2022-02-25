@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Feb 23 11:29:52 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.3.0
+  3.3.0 (2021-06-14)
+  ------------------
+  * Do not auto-fill ``tests_require`` any more, it is deprecated,
+    see https://setuptools.readthedocs.io/en/latest/userguide/dependency_management.html#optional-dependencies
+  3.2.0 (2021-05-17)
+  ------------------
+  * Do not abstract ``requirements.in`` files any more, use them as-is (since they're intended to
+    be a spec for pip-compile_)
+  * Next minor version of setupmeta will not auto-fill ``tests_require`` any more.
+  3.1.0 (2021-04-15)
+  ------------------
+  * Don't try and modify any git url from ``requirements.txt``, it is too much of a moving target
+    and the whole thing is debated: https://github.com/pypa/pip/issues/5898
+  * Do not auto-fill any ``dependency_links`` at all
+  3.0.0 (2021-03-22)
+  ------------------
+  * Yield PEP-440_ compliant versions
+  * Versions yielded by ``setupmeta`` 3.0 will differ from pre-3.0 versions:
+    * Character ``"+"`` is used exclusively to demarcate the local part of the version
+    * Character ``"."`` is used exclusively to demarcate local segments
+      (this is not configurable yet, and won't be unless by popular request)
+    * The "main" part remains intact, except for ``devcommit``, furthermore only known PEP-440
+      "main version part" bits can ever be in the main part (anything that is mistakenly
+      specified to be in the main part gets automatically shifted to the local part)
+    * "local" part is always shown now, no need to use ``"!"`` character (now deprecated),
+      except for ``{devcommit}`` and ``{dirty}`` markers, which will not lead to a local part
+      being shown when exactly on git tag.
+    * See [pep-440.rst](./docs/pep-440.rst) for more details
+  2.9.0 (2021-03-15)
+  ------------------
+  * Don't auto-complete ``classifiers`` from ``classifiers.txt`` any more,
+    the added value of that is negligible (and potentially confusing)
+  2.8.3 (2021-01-07)
+  ------------------
+  * Don't warn when bumping for the first time (with no git tags yet)
+  * Use the most common ``setuptools.find_packages()`` call (without arguments)
+  * Moved repo to https://github.com/codrsquad
+  2.8.2 (2020-11-19)
+  ------------------
+  * Respect ``requirements.in`` when present
+
+-------------------------------------------------------------------
 Mon Nov  8 10:48:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add six dependency 

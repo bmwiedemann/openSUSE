@@ -1,7 +1,7 @@
 #
 # spec file for package python-setupmeta
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-setupmeta
-Version:        2.8.1
+Version:        3.3.0
 Release:        0
 Summary:        Simplify your setup.py
 License:        MIT
@@ -56,6 +56,8 @@ Simplify your setup.py.
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 git init
+# requires pep440 python module, currently not packaged
+rm tests/test_versioning.py
 export LANG=en_US.UTF-8
 # test_check_dependencies needs to be run in a venv
 %pytest -k 'not test_check_dependencies'
