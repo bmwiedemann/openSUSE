@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-request
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-django-request
-Version:        1.5.6
+Version:        1.6.0
 Release:        0
 Summary:        Django statistics app
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/django-request/django-request
 Source:         https://github.com/django-request/django-request/archive/%{version}.tar.gz#/django-request-%{version}.tar.gz
+# gh#django-request/django-request#241
+Patch0:         set-timezone-for-day-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 Requires:       python-python-dateutil
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -46,7 +45,7 @@ It stores requests in a database for admins to see,
 it can also be used to get statistics on who is online etc.
 
 %prep
-%setup -q -n django-request-%{version}
+%autosetup -p1 -n django-request-%{version}
 
 %build
 %python_build
