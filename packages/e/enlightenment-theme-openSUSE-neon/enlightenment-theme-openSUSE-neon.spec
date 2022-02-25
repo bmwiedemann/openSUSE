@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment-theme-openSUSE-neon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,21 @@
 %define icon_theme_name openSUSE-e-X-Neon
 
 Name:           enlightenment-theme-openSUSE-neon
-Version:        20200529
+Version:        20220219.1.26
 Release:        0
 Summary:        openSUSE theme for Enlightenment
 License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
 Group:          System/GUI/Other
 URL:            https://en.opensuse.org/Portal:Enlightenment
 Source:         enlightenment-theme-openSUSE-Neon-%{version}.tar.xz
-BuildRequires:  edje
+BuildRequires:  efl
+BuildRequires:  fdupes
 # for convert
 BuildRequires:  ImageMagick
-Requires:       elementary
 Provides:       enlightenment-theme
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-# At recomendation of DimStar, add obsoletes but not Provides, this way people being
-#  auto upgraded by the enlightenment pattern will be upgraded without any issues and
-#  people who have manually installed e17 will be able to keep it
-Obsoletes:      e-theme-openSUSE
-Obsoletes:      e17-theme-openSUSE
+Recommends:    openSUSE-e-X-Neon-Icons
 
 %description
 openSUSE, theme for Enlightenment
@@ -49,7 +45,7 @@ Group:          System/GUI/Other
 
 %description -n openSUSE-e-X-Neon-Icons
 An FDO Icon theme that matches the one used by the openSUSE Enlightenment
-theme
+Neon theme
 
 %prep
 %setup -q -n enlightenment-theme-openSUSE-Neon-%{version}
@@ -85,9 +81,11 @@ for d in */ ; do
 done
 popd
 
+%fdupes %{buildroot}%{_datadir}/icons/%{icon_theme_name}
+
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING AUTHORS.elementary AUTHORS.enlightenment COPYING.images COPYING.lgpl
+%license AUTHORS COPYING AUTHORS.elementary AUTHORS.enlightenment COPYING.images COPYING.lgpl
 %{_datadir}/elementary
 
 %files -n openSUSE-e-X-Neon-Icons

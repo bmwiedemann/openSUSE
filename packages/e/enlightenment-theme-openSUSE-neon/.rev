@@ -16,4 +16,15 @@
 </comment>
     <requestid>810215</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b6c6b2c48b8d5f55975e2415dbcfa1e</srcmd5>
+    <version>20220219.1.26</version>
+    <time>1645820695</time>
+    <user>dimstar_suse</user>
+    <comment>- Themes are going to recommend there icon themes as well
+- It also has no need for obsoletes.
+- Update for e25 and efl 1.26
+</comment>
+    <requestid>957263</requestid>
+  </revision>
 </revisionlist>
