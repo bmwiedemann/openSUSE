@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ Security.)
 Summary:        SELinux command-line utilities
 Group:          System/Base
 Provides:       libselinux-utils = %{version}-%{release}
+Requires:       libselinux1 = %{version}
 
 %description -n selinux-tools
 Security-enhanced Linux is a feature of the kernel and some

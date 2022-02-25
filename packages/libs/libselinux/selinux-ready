@@ -51,36 +51,16 @@ check_filesystem()
 
 check_boot()
 {
-	BPARAM1="security=selinux"
-	BPARAM2="selinux=1"
-
 	printf "\tcheck_boot: Assuming GRUB2 as bootloader.\n"
 
-	# look for parameters of the current kernel
-	CURRENT_KERNEL=$(uname -r)
-	OTHERS=""
-	RETVAL="FAIL"
-	while read BLINE
-	do
-		K=$(echo $BLINE | awk -F' ' '{print $2}')
-		KERNEL=$(basename $K)
-		K=$(echo $KERNEL | sed s/vmlinuz-//)
-
-		if [ "$K" == "$CURRENT_KERNEL" ]; then
-			INITRD=initrd-$K
-			RETVAL="OK"
-		else
-			OTHERS="$KERNEL $OTHERS"
-		fi
-	done < <(grep -- $BPARAM1 /boot/grub2/grub.cfg 2>/dev/null | grep -- $BPARAM2)
-
-	if [ "$RETVAL" == OK ]; then
-		printf "\tcheck_boot: OK. Current kernel '$KERNEL' has boot-parameters '$BPARAM1 $BPARAM2'\n"
-		printf "\tcheck_boot: OK. Other kernels with correct parameters: $OTHERS\n"
+	BPARAM1="security=selinux"
+	BPARAM2="selinux=1"
+	if grep $BPARAM1 /proc/cmdline | grep $BPARAM2 >/dev/null; then
+		printf "\tcheck_boot: OK. Current kernel has boot-parameters '$BPARAM1 $BPARAM2'\n"
 		return 0
 	else
 		printf "\tcheck_boot: ERR. Boot-parameter missing for booting the kernel.\n"
-		printf "\t            Please use YaST2 to add 'security=selinux selinux=1' to the kernel boot-parameter list.\n"
+		printf "\t            Please add 'security=selinux selinux=1' to the kernel boot-parameter list.\n"
 		return 1
 	fi
 }
