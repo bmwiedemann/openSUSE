@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 24 17:48:45 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1645711773.760111463:
+  * Extend job templates to cover more error cases
+  * Write parts of job template (test) code in a more compact way
+  * Avoid logging table update errors, only pass them to the user
+  * Avoid logging errors passed to user when creating/deleting job templates
+  * Test that job template routes don't cause unwanted errors in server log
+  * Avoid logging user-input related errors in YAML to server log
+  * Write parts of job templates API test in a more compact way
+  * Avoid unnecessary blank lines in function `validate_yaml`
+  * t: Cleanup fullstack tempdir before using it again
+  * Ensure the dependency graph is sorted consistently
+
+-------------------------------------------------------------------
 Tue Feb 22 09:50:03 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1645520979.2ba573f3e:
