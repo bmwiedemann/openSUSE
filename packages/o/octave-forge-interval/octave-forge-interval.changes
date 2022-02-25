@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb 22 20:33:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.2.1:
+  * The minimum required Octave version has been increased from
+    3.8.0 to 4.2.0.
+  * subsref: Access to interval properties using field syntax, e.
+    g., ‘x.inf’ and ‘x.sup’, has been fixed for Octave 5.1 and
+    later on Windows (bug #59334).
+  * disp: Fix runtime errors in Octave 6 and later, when the
+    function parameter is not a named variable (bug #59334).
+  * numel: Fix runtime warnings in Octave 6 and later, when the
+    function is called with only one parameter.
+  * Syntax errors caused by increment and decrement operators in
+    Octave 7 and later have been fixed (bug #59334).
+  * Interval constants for ‘pi’ and ‘e’ in Octave 7 and later have
+    been fixed.  This also fixes several trigonometric functions,
+    which have produced wrong results in Octave 7.
+  * Compilation errors during package installation with Octave 8
+    and later have been fixed (bug #61568).
+- Update URL to the correct upstream.
+
+-------------------------------------------------------------------
 Wed Jul 18 07:53:30 UTC 2018 - badshah400@gmail.com
 
 - Update to version 3.2.0:
