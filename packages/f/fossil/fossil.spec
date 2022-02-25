@@ -1,7 +1,7 @@
 #
 # spec file for package fossil
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define fossil_uuid 7aedd5675883d4412cf20917d340b6985e3ecb842e88a39f135df034b2d5f4d3
+%define fossil_uuid f48180f2ff3169651a725396d4f7d667c99a92873b9c3df7eee2f144be7a0721
 %if 0%{?suse_version} > 1500
 %bcond_without system_sqlite
 %else
@@ -24,7 +24,7 @@
 %endif
 %bcond_without tests
 Name:           fossil
-Version:        2.16
+Version:        2.17
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 21 19:48:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.17:
+  * Major improvements to the "diff" subsystem:
+    Add new formatting options: --by, -b, --webpage, --json, --tcl.
+    Partial-line matching for unified diffs
+    Better partial-line matching for side-by-side diffs
+    Buttons on web-based diffs to show more context
+    Performance improvements 
+  * Fossil now autosyncs prior to running fossil open
+  * Improvements and bug fixes to the new "fossil ui REMOTE"
+    feature so that it works better on a wider variety of platforms
+  * Update additional commands and options to multiple workflows
+  * UI and Web UI improvements
+
+-------------------------------------------------------------------
 Sun Jul  4 12:19:44 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fossil 2.16:
