@@ -1,0 +1,91 @@
+From 716a1d9e1db6701c0b310dd7e10dc4a10656da0f Mon Sep 17 00:00:00 2001
+From: Chris PeBenito <chpebeni@linux.microsoft.com>
+Date: Tue, 14 Dec 2021 14:24:20 -0500
+Subject: [PATCH 1/1] Make NetworkX optional.
+
+The CLI tools get installed to most distros, but sedta and seinfoflow are
+not typically used or separated into a different package. This will allow
+seinfo, sesearch, and sediff to function if NetworkX is missing, since they
+don't require it.
+
+Signed-off-by: Chris PeBenito <chpebeni@linux.microsoft.com>
+Acked-by: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+---
+ setools/dta.py      | 18 ++++++++++++++----
+ setools/infoflow.py | 17 +++++++++++++----
+ 2 files changed, 27 insertions(+), 8 deletions(-)
+
+diff --git a/setools/dta.py b/setools/dta.py
+index ce5a364..ded88ff 100644
+--- a/setools/dta.py
++++ b/setools/dta.py
+@@ -10,8 +10,11 @@ from collections import defaultdict
+ from contextlib import suppress
+ from typing import DefaultDict, Iterable, List, NamedTuple, Optional, Union
+ 
+-import networkx as nx
+-from networkx.exception import NetworkXError, NetworkXNoPath, NodeNotFound
++try:
++    import networkx as nx
++    from networkx.exception import NetworkXError, NetworkXNoPath, NodeNotFound
++except ImportError:
++    logging.getLogger(__name__).debug("NetworkX failed to import.")
+ 
+ from .descriptors import EdgeAttrDict, EdgeAttrList
+ from .policyrep import AnyTERule, SELinuxPolicy, TERuletype, Type
+@@ -73,8 +76,15 @@ class DomainTransitionAnalysis:
+         self.reverse = reverse
+         self.rebuildgraph = True
+         self.rebuildsubgraph = True
+-        self.G = nx.DiGraph()
+-        self.subG = self.G.copy()
++
++        try:
++            self.G = nx.DiGraph()
++            self.subG = self.G.copy()
++        except NameError:
++            self.log.critical("NetworkX is not available.  This is "
++                              "requried for Domain Transition Analysis.")
++            self.log.critical("This is typically in the python3-networkx package.")
++            raise
+ 
+     @property
+     def reverse(self) -> bool:
+diff --git a/setools/infoflow.py b/setools/infoflow.py
+index 0ef240a..4b94a0c 100644
+--- a/setools/infoflow.py
++++ b/setools/infoflow.py
+@@ -7,8 +7,11 @@ import logging
+ from contextlib import suppress
+ from typing import cast, Iterable, List, Mapping, Optional, Union
+ 
+-import networkx as nx
+-from networkx.exception import NetworkXError, NetworkXNoPath, NodeNotFound
++try:
++    import networkx as nx
++    from networkx.exception import NetworkXError, NetworkXNoPath, NodeNotFound
++except ImportError:
++    logging.getLogger(__name__).debug("NetworkX failed to import.")
+ 
+ from .descriptors import EdgeAttrIntMax, EdgeAttrList
+ from .permmap import PermissionMap
+@@ -54,8 +57,14 @@ class InfoFlowAnalysis:
+         self.rebuildgraph = True
+         self.rebuildsubgraph = True
+ 
+-        self.G = nx.DiGraph()
+-        self.subG = self.G.copy()
++        try:
++            self.G = nx.DiGraph()
++            self.subG = self.G.copy()
++        except NameError:
++            self.log.critical("NetworkX is not available.  This is "
++                              "requried for Information Flow Analysis.")
++            self.log.critical("This is typically in the python3-networkx package.")
++            raise
+ 
+     @property
+     def min_weight(self) -> int:
+-- 
+2.35.1
+

@@ -1,7 +1,7 @@
 #
 # spec file for package setools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Summary:        Policy analysis tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Management
 Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM https://github.com/SELinuxProject/setools/pull/68
+Patch1:         make-networkx-optional.patch
 BuildRequires:  fdupes
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
@@ -73,7 +75,7 @@ Summary:        Python bindings for SELinux policy analysis
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 Requires:       python3 >= 3.4
-Requires:       python3-networkx
+Recommends:     python3-networkx
 Obsoletes:      python-setools < %{version}-%{release}
 Provides:       python-setools = %{version}-%{release}
 %if "%{python3_primary_provider}" != "python3"
@@ -103,6 +105,7 @@ This package includes the following graphical tools:
 
 %prep
 %setup -q -n %{name}
+%autopatch -p1
 
 %build
 %python_build
