@@ -1,8 +1,28 @@
 -------------------------------------------------------------------
+Thu Feb 24 10:05:17 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Reenable libseccomp sandboxing 
+
+-------------------------------------------------------------------
+Thu Feb 24 08:41:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix previous entry: remove stray pkg-config call in CFLAGS (as it
+  was called without parameters, it only made output on stderr,
+  which did not impact CFLAGS; so de facto only a cleanup change).
+
+-------------------------------------------------------------------
+Mon Feb 21 17:09:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(libseccomp) BuildRequires and stop injecting
+  libseccomp cflags into CFLAGS: libseccomp has been disabled for a
+  long time already.
+- Move the special 'check' part from install to %check.
+
+-------------------------------------------------------------------
 Thu Oct 21 06:24:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Remove file-5.38-allow-readlinkat.dif as already doen in latest
-  file 5.41 
+- Remove file-5.38-allow-readlinkat.dif as already done in latest
+  file 5.41
 
 -------------------------------------------------------------------
 Tue Oct 19 09:52:12 UTC 2021 - Dr. Werner Fink <werner@suse.de>

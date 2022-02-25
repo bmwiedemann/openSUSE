@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,10 @@
 Name:           file
 BuildRequires:  bash >= 4.0
 BuildRequires:  libtool
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(zlib)
 URL:            http://www.darwinsys.com/file/
 # bug437293
 %ifarch ppc64
@@ -139,7 +139,6 @@ autoreconf -fiv
 export CFLAGS="%{optflags} -DHOWMANY=69632 -fPIE $(pkg-config libseccomp --cflags)"
 %configure --disable-silent-rules --datadir=%{_miscdir} \
 	--disable-static \
-	--disable-libseccomp \
 	--enable-fsect-man5
 make %{?_smp_mflags} pkgdatadir='$(datadir)' LDFLAGS="-pie"
 
@@ -155,7 +154,9 @@ echo '#     global magic file is %{_miscdir}/magic(.mgc)'	>> %{buildroot}%{_sysc
 %if %{with decore}
 install -s dcore %{buildroot}%{_bindir}
 %endif
+rm -f %{buildroot}%{_libdir}/*.la
 
+%check
 # Check out that the binary does not bail out:
 LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 export LD_LIBRARY_PATH
@@ -166,7 +167,6 @@ for dir in %{_bindir} /%{_lib} %{_libdir} ; do
 	xargs %{buildroot}%{_bindir}/file -m %{buildroot}%{_miscdir}/magic
 done
 unset LD_LIBRARY_PATH
-rm -f %{buildroot}%{_libdir}/*.la
 
 %post -n %libname -p /sbin/ldconfig
 
