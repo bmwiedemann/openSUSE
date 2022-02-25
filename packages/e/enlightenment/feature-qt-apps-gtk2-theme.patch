@@ -1,11 +1,9 @@
-Index: enlightenment-0.24.0/src/bin/e_main.c
-===================================================================
---- enlightenment-0.24.0.orig/src/bin/e_main.c
-+++ enlightenment-0.24.0/src/bin/e_main.c
-@@ -343,6 +343,9 @@ main(int argc, char **argv)
-    e_util_env_set("E_RESTART_OK", NULL);
+--- enlightenment-0.25.2/src/bin/e_main.c.orig	2022-02-08 11:03:40.564640046 +0100
++++ enlightenment-0.25.2/src/bin/e_main.c	2022-02-08 11:03:50.720722775 +0100
+@@ -346,6 +346,9 @@
     e_util_env_set("PANTS", "ON");
     e_util_env_set("DESKTOP", "Enlightenment");
+    e_util_env_set("XDG_CURRENT_DESKTOP", "Enlightenment");
 +   // For now getting Qt themes to use the gtk2 theme engine is the best way
 +   // to have something that works, having nothing set leads to no icons.
 +   e_util_env_set("QT_QPA_PLATFORMTHEME", "gtk2");

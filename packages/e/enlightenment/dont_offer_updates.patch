@@ -1,7 +1,7 @@
-Index: enlightenment-0.23.0/src/modules/wizard/page_170.c
+Index: enlightenment-0.25.2/src/modules/wizard/page_170.c
 ===================================================================
---- enlightenment-0.23.0.orig/src/modules/wizard/page_170.c
-+++ enlightenment-0.23.0/src/modules/wizard/page_170.c
+--- enlightenment-0.25.2.orig/src/modules/wizard/page_170.c
++++ enlightenment-0.25.2/src/modules/wizard/page_170.c
 @@ -2,7 +2,7 @@
  #include "e_wizard.h"
  #include "e_wizard_api.h"

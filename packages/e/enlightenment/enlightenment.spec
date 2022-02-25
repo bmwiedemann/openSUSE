@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define efl_version	1.24.1
-%define systemd_present (0%{?suse_version} >= 1230 || 0%{?fedora} >= 18 || 0%{?mageia})
+%define efl_version	1.26.0
+%define systemd_present 1
 # Wayland is broken with current efl waiting for a new e release
 %define enable_wayland (0%{?suse_version} > 1520)
 %define generate_manpages 0
 # Fix this later
 %define build_doc 0
 Name:           enlightenment
-Version:        0.24.2
+Version:        0.25.3
 Release:        0
 Summary:        The window manager
 License:        BSD-2-Clause
@@ -40,13 +40,11 @@ Source4:        network_manager_wizard.c
 Patch0:         enlightenment-0.16.999.65256-dont_require_suidbit.patch
 # PATCH-FEATURE-OPENSUSE dont_offer_updates.patch -- don't offer updates, that's up to package manager -- sleep_walker@opensuse.org
 Patch1:         dont_offer_updates.patch
-# PATCH-FEATURE-OPENSUSE as we use Network Manager rather then connman offline mode doesn't do anything so Hide the menu option
-Patch2:         feature-suse-disable-offline-menu.patch
 # boo#1003939 don't ask for language if we can use the current system one
 Patch3:         feature-wizard-auto-lang.patch
 Patch4:         feature-wizard-keylayout-from-sys.patch
 Patch5:         feature-qt-apps-gtk2-theme.patch
-Patch6:         libddcutil.patch
+Patch6:         feature-openSUSE-log-to-journal.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -90,10 +88,10 @@ Requires:       enlightenment-branding = 0.1
 Requires:       evas-generic-loaders
 %if 0%{?suse_version} > 1500
 # dlopened at runtime
-Recommends:       libddcutil3
+Recommends:     libddcutil3
 %else
 # dlopened at runtime
-Recommends:       libddcutil2
+Recommends:     libddcutil2
 %endif
 # Require a Icon theme that will be detected by enlghtenment
 Requires:       oxygen-icon-theme
@@ -112,7 +110,7 @@ Obsoletes:      e17
 Provides:       e17 > 0.17.4
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Requires(post): permissions
 %endif
 %{?systemd_requires}
@@ -139,6 +137,7 @@ Recommends:     NetworkManager-appindicator
 Recommends:     alsa-plugins-pulse
 # Recommended to make NetworkManager Intergration work
 Recommends:     gnome-keyring
+Recommends:     pam_mount
 # Recommended to make audio work out of the box boo#972912
 Recommends:     pulseaudio
 Recommends:     pulseaudio-module-bluetooth
@@ -210,16 +209,7 @@ Documentation of Enlightenment in form of man pages.
 %endif
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%if 0%{?suse_version} > 1500
-%patch6 -p1
-%endif
+%autosetup -p1
 
 # Copy In new Network Wizard
 rm src/modules/wizard/page_110.c
@@ -289,7 +279,7 @@ cp %{SOURCE3} %{buildroot}/etc/enlightenment/
 
 %if 0%{?suse_version}
 %suse_update_desktop_file -r -G mixer emixer "AudioVideo;Mixer;"
-%if 0%{?suse_version} >= 1550
+%if %{enable_wayland}
 %suse_update_desktop_file -N "Unstable: Enlightenment (Wayland)" -G "Unstable: Enlightenment (Wayland)"  %{buildroot}%{_datadir}/wayland-sessions/enlightenment-wayland.desktop
 %endif
 # fdupes needs to be called after desktop files have been made unique
@@ -309,6 +299,9 @@ rm %{buildroot}%{_libdir}/enlightenment/modules/wizard/*/page_180.so
 
 # remove files from not wanted place
 rm %{buildroot}%{_datadir}/enlightenment/{COPYING,AUTHORS}
+
+unlink %{buildroot}/%{_datadir}/xsessions/enlightenment.desktop
+mv %{buildroot}/%{_datadir}/wayland-sessions/enlightenment.desktop %{buildroot}/%{_datadir}/xsessions/enlightenment.desktop
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop

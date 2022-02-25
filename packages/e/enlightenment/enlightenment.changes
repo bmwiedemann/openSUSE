@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Feb 24 04:54:23 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- boo#1154733 - Recommend pam_mount
+
+-------------------------------------------------------------------
+Wed Feb 16 08:48:23 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Update to 0.25.3
+  * Fix notification double-shadow on multi-screen notifications
+  * Add option to gesture to turn off entirely to avoid xserver vt bugs
+  * Add option to backlight to disable ddc support in case it's broken
+  * Fix ibar left/right emit for alignment
+- Log to journal with X11 etc rather then logfile
+    feature-openSUSE-log-to-journal.patch
+- Refreshed enlightenment-0.16.999.65256-dont_require_suidbit.patch to be -p1
+- Fix xsession file install
+
+-------------------------------------------------------------------
+Tue Feb  8 09:54:50 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.25.2:
+  * Lots of minor bug fixes (see git log)
+  * Flat look to match new flat theme
+  * New much higher quality default wallpaper set
+  * Optimized XKB keymap change handling
+  * Init splash is now always on (theme can remove it if desired)
+  * Added screen setup menu entry in quick settings menu
+  * Redid a lot of screen dimming/blanking/timeout code to fix cruft
+  * IBox iconify gadget has window previews on mouse-over now
+  * New gesture recognition bindings for touchpads (using Elput)
+  * On loss or re-plug in of screen now restore windows sensibly
+  * Tasks has window preview on mouse-over now
+  * FPS debug (ctl+alt+shift+f to toggle) has a lot more data now
+  * BT devices in the Bluez gadget will show battery level if supported
+  * Battery now has mouse-over popup with detailed battery information
+  * Config saving moved to threads to minimize I/O stutter to core
+  * Shot allows copy of screenshot to copy and paste selection too now
+  * Temperature monitor now uses hwmon devices and multiple instances
+  * New Procstats module can show mem/CPU usage in titlebar
+  * Offline/presentation mode removed - use bindings + actions instead
+  * Remove custom desklock command - built in is more reliable
+  * Winlist (alt+tab) has large mode with window previews now
+  * Pluggable device monitoring and applying of input config on plug
+  * Added workaround broken Spotify cover art URLs
+  * Scale settings will now modify xsettings DPI to make non-efl apps scale
+  * Fonts now made to be consistent with EFL and other apps
+  * Added binding action to switch profiles
+  * EFM - sync more often when doing I/O ops like copy etc.
+  * XDG_CURRENT_DESKTOP is now set too
+  * EFM image preview will show EFIX dates for when image taken
+  * Power plug/unplug now emit signals which theme can make sounds for
+  * Mixer - have simple device to icon database text file to look nicer
+  * Mixer - add VU meters for output and input audio
+  * Mixer - Show icons for apps currently playing sounds and recording
+  * Set _NET_WM_STATE_HIDDEN when windows are hidden to avoid rendering
+  * Reduce power usage when screen is blanked by setting wins to iconic
+  * Added “grow window in direction” actions you can bind
+  * Added palette editor and selector tool to set up custom colors
+  * Fingerprint (libFprint) support in desklock and new tool for settings
+  * EFM - add recent files menu to access recently opened files
+  * Force stdout/error log now to ~/.e-log.log
+  * Added settings for animation multiplier to speed up/down transitions
+  * No more edge bindings by default
+- Rebase dont_offer_updates.patch
+- Rebase feature-qt-apps-gtk2-theme.patch
+- Remove feature-suse-disable-offline-menu.patch
+- Remove libddcutil.patch
+
+-------------------------------------------------------------------
 Thu Apr  1 12:16:40 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Just recommend libddcutil its not strictly needed and the feature
