@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment-theme-openSUSE
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define icon_theme_name openSUSE-e-X
 
 Name:           enlightenment-theme-openSUSE
-Version:        20200528
+Version:        20220219.1.26
 Release:        0
 Summary:        openSUSE theme for Enlightenment
 License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
@@ -40,6 +40,7 @@ Conflicts:      otherproviders(enlightenment-theme-dft)
 #  people who have manually installed e17 will be able to keep it
 Obsoletes:      e-theme-openSUSE
 Obsoletes:      e17-theme-openSUSE
+Recommends:     openSUSE-e-X-Icons
 
 %description
 openSUSE, theme for Enlightenment
@@ -59,7 +60,7 @@ theme
 
 %build
 ./build-darkmod.sh --epkg
-cp enlightenment-elementary/openSUSE.edj ./default.edj
+cp artifacts/bin-e/openSUSE.edj ./default.edj
 cp licenses-authors/* .
 cp build/icons/openSUSE-icons/README README.icons
 
