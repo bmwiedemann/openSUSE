@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 24 21:10:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20220224:
+  * Support for AMD Rembrandt E1
+  * Add hypervisor+4/eax (Xen) expanded destination id bit
+  * Correction for Alder Lake, Rocket Lake decoding
+  * Multiple detection and decodings updated
+
+-------------------------------------------------------------------
 Mon Nov 15 22:04:30 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20211114:
