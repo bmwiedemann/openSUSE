@@ -1,7 +1,7 @@
 #
 # spec file for package pyenv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.2.1
+Version:        2.2.4_1
+# We have to overcome weird version, temporarily.
+%define upver   2.2.4-1
 Release:        0
 Summary:        Python Version Management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pyenv/pyenv
-Source0:        https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/pyenv/pyenv/archive/refs/tags/v%{upver}.tar.gz#/pyenv-%{upver}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  fish
@@ -70,14 +72,15 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-%{upver}
+
 sed -i -e '1s,^#!%{_bindir}/env bash,#!/bin/bash,' libexec/* pyenv.d/exec/pip-rehash/* plugins/python-build/bin/*
 
 %build
 ##
 pushd src
 %configure
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -94,8 +97,8 @@ cp -a pyenv.d %{buildroot}%{_sysconfdir}/
 
 ## Install shell completions:
 install -D -m0644 completions/pyenv.bash %{buildroot}%{_datadir}/bash-completion/completions/pyenv
-install -D -m0644 completions/pyenv.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/pyenv.fish
 install -D -m0644 completions/pyenv.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/pyenv
+install -D -m0644 completions/pyenv.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/pyenv.fish
 
 ## Install manpage
 install -D -m0644 man/man1/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
