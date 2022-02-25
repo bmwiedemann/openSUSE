@@ -1,7 +1,7 @@
 #
-# spec file for package php8
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -339,7 +339,7 @@ BuildRequires:  apache2
 Requires:       apache2
 Requires:       php-fpm = %{version}
 Requires(post): %{_sbindir}/a2enmod
-Supplements:    php-fpm and apache2
+Supplements:    (php-fpm and apache2)
 Conflicts:      mod_php_any
 
 %description apache
