@@ -1,7 +1,7 @@
 #
 # spec file for package e16
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %define enable_composite   1
 %define enable_pango       1
 Name:           e16
-Version:        1.0.23
+Version:        1.0.24
 Release:        0
 Summary:        A Window Manager for the X Window System
 License:        GPL-2.0-or-later AND MIT-advertising
 Group:          System/GUI/Other
 URL:            https://www.enlightenment.org
-Source:         e16-%{version}.tar.gz
+Source:         e16-%{version}.tar.xz
 Patch0:         fix-compile-gtk.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool

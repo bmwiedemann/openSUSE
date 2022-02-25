@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 24 23:57:38 UTC 2022 - Simon Lees <simonf.lees@suse.com>
+
+- Update to 1.0.24
+  * Pagers: Remember zoom setting when changed by pager menu
+  * Systray: Change default icon size to 32
+  * Support _NET_WM_STATE_FOCUSED
+  * Focus: Fix focus on new clients requesting max size
+  * Fix bad memory access during shutdown
+  * FX (waves/ripples): Make it work in compositing mode
+  * Sound: Enable having multiple engines and changing it at runtime
+  * Translation updates: fr, da
+- Refreshed fix-compile-gtk.patch 
+-------------------------------------------------------------------
 Mon Jul  5 08:28:58 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Update to 1.0.23
