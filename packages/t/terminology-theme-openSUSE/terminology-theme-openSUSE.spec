@@ -1,7 +1,7 @@
 #
 # spec file for package terminology-theme-openSUSE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           terminology-theme-openSUSE
-Version:        20191110
+Version:        20220219.1.26
 Release:        0
 Summary:        openSUSE theme for Terminology
 License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
 Group:          System/X11/Terminals
-Url:            https://en.opensuse.org/Portal:Enlightenment
+URL:            https://en.opensuse.org/Portal:Enlightenment
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ImageMagick
 BuildRequires:  edje
+BuildRequires:  python3-base
 Requires:       terminology
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -40,16 +41,19 @@ openSUSE theme for Terminology
 
 %build
 ./build-darkmod.sh --termpkg
-cp terminology/openSUSE.edj ./default.edj
+cp artifacts/bin-term/openSUSE.edj ./default.edj
+cp artifacts/bin-term/openSUSE.eet ./Default.eet
 cp licenses-authors/* .
 
 %install
 install -m 0755 -d %{buildroot}%{_datadir}/terminology/themes
+install -m 0755 -d %{buildroot}%{_datadir}/terminology/colorschemes
 install -m 0644 -t %{buildroot}%{_datadir}/terminology/themes default.edj
+install -m 0644 -t %{buildroot}%{_datadir}/terminology/colorschemes Default.eet
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING
+%license AUTHORS COPYING
 %{_datadir}/terminology
 
 %changelog
