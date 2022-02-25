@@ -36,8 +36,6 @@ Source1:        en_dict-20121020.tar.gz
 Source2:        https://raw.githubusercontent.com/fcitx/fcitx-artwork/master/logo/Fcitx.svg
 Source3:        xim.d-fcitx5
 Source4:        macros.fcitx5
-Source100:      input-method.py3
-Source101:      99-fcitx5.conf
 Source102:      fcitx5.service
 Patch0:         fcitx5-no-download.patch
 Patch1:         fcitx5-gcc7.patch
@@ -109,6 +107,8 @@ Summary:        Configuration library for fcitx5
 Group:          System/Libraries
 Provides:       libFcitx5Config5 = %{version}
 Obsoletes:      libFcitx5Config5 < %{version}
+Provides:       libfcitx-config4 = %{verson}
+Obsoletes:       libfcitx-config4 <= 4.2.9.8
 
 %description -n libFcitx5Config6
 This package provides configuration libraries for fcitx5.
@@ -120,6 +120,8 @@ Provides:       libfcitx-4_2_9 = %{version}
 Obsoletes:      libfcitx-4_2_9 <= 4.2.9.8
 Provides:       libFcitx5Core5 = %{version}
 Obsoletes:      libFcitx5Core5 < %{version}
+Provides:       libfcitx-core0 = %{version}
+Obsoletes:      libfcitx-core0 <= 4.2.9.8
 
 %description -n libFcitx5Core7
 This package provides core libraries for fcitx5.
@@ -129,6 +131,8 @@ Summary:        Utility library for fcitx5
 Group:          System/Libraries
 Provides:       libFcitx5Utils1 = %{version}
 Obsoletes:      libFcitx5Utils1 < %{version}
+Provides:       libfcitx-utils0 = %{version}
+Obsoletes:      libfcitx-utils0 <= 4.2.9.8
 
 %description -n libFcitx5Utils2
 This package provides utility libraries for fcitx5.
@@ -170,9 +174,6 @@ pushd  %{buildroot}%{_distconfdir}/X11/xim.d/
     done
 popd
 
-# install environment generator for wayland
-install -D -m 0755 %{SOURCE100} %{buildroot}%{_systemd_user_env_generator_dir}/99-fcitx5.py3
-install -D -m 0644 %{SOURCE101} %{buildroot}%{_environmentdir}/99-fcitx5.conf
 install -D -m 0644 %{SOURCE102} %{buildroot}%{_userunitdir}/fcitx5.service
 
 # install icons
@@ -235,8 +236,6 @@ fi
 %files -f fcitx5.lang
 %doc README.md
 %license LICENSES
-%dir %{_systemd_user_env_generator_dir}
-%dir %{_environmentdir}
 %{_distconfdir}/X11/xim.d/
 %{_sysconfdir}/xdg/autostart/org.fcitx.Fcitx5.desktop
 %{_bindir}/fcitx5
@@ -245,8 +244,6 @@ fi
 %{_bindir}/fcitx5-diagnose
 %{_libdir}/fcitx5
 %{_libexecdir}/fcitx5-wayland-launcher
-%{_systemd_user_env_generator_dir}/99-fcitx5.py3
-%{_environmentdir}/99-fcitx5.conf
 %{_userunitdir}/fcitx5.service
 %{_datadir}/applications/org.fcitx.Fcitx5.desktop
 %{_datadir}/applications/fcitx5-configtool.desktop
