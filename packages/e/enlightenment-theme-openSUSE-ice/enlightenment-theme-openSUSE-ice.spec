@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment-theme-openSUSE-ice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define icon_theme_name openSUSE-e-X-Ice
 
 Name:           enlightenment-theme-openSUSE-ice
-Version:        20200529
+Version:        20220219.1.26
 Release:        0
 Summary:        A light openSUSE theme modified to suite the openSUSE 13.2 artwork
 License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
@@ -28,11 +28,12 @@ URL:            https://en.opensuse.org/Portal:Enlightenment
 Source:         enlightenment-theme-openSUSE-ice-%{version}.tar.xz
 # for convert
 BuildRequires:  ImageMagick
-BuildRequires:  edje
-Requires:       elementary
+BuildRequires:  efl
+BuildRequires:  fdupes
 Provides:       enlightenment-theme
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+Recommends:     openSUSE-e-X-Ice-Icons
 
 %description
 Ice is a light theme for enlightenment, this version has been modified to suite the artwork for openSUSE 13.2
@@ -44,7 +45,7 @@ Group:          System/GUI/Other
 
 %description -n openSUSE-e-X-Ice-Icons
 An FDO Icon theme that matches the one used by the openSUSE Enlightenment
-theme
+Ice theme
 
 %prep
 %setup -q -n enlightenment-theme-openSUSE-ice-%{version}
@@ -81,9 +82,11 @@ for d in */ ; do
 done
 popd
 
+%fdupes %{buildroot}%{_datadir}/icons/%{icon_theme_name}
+
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING AUTHORS.elementary AUTHORS.enlightenment COPYING.images COPYING.lgpl
+%license AUTHORS COPYING AUTHORS.elementary AUTHORS.enlightenment COPYING.images COPYING.lgpl
 %{_datadir}/elementary
 
 %files -n openSUSE-e-X-Ice-Icons
