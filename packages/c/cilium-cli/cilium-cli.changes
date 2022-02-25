@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 24 17:09:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.10.4:
+  * connectivity: allow to specify base Cilium version
+  * internal, utils: add ParseCiliumVersion
+  * connectivity: use defaults.AgentContainerName
+  * hubble: don't log to stdout/stderr when opening browser
+  * go.mod, vendor: update github.com/pkg/browser to latest version
+  * Update default Cilium version to v1.11.2
+  * go.mod, vendor: update cilium to v1.11.2
+  * defaults: add image digests for Cilium v1.9.13, v1.10.8, v1.11.2
+  * connectivity: Use specific policy depending on Cilium version
+  * connectivity: Run setup & validation before registering tests
+  * azure: add Contributor privileges to new Service Principals
+  * build(deps): bump docker/login-action from 1.12.0 to 1.13.0
+  * build(deps): bump google-github-actions/setup-gcloud from 0.5.0 to 0.5.1
+
+-------------------------------------------------------------------
 Wed Feb 16 19:20:03 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.10.3:
