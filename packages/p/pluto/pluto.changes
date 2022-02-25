@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 25 18:25:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.5.0:
+  * autoscaling/v2beta2 replacement should be autoscaling/v2 (#281)
+  * Add CSV output option (#279)
+
+-------------------------------------------------------------------
+Mon Feb 21 16:14:39 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.4.1:
+  * Update all dependencies (#276)
+  * Update dependencies (#272)
+  * Document cosign, and add to release notes (#264)
+  * Update documentation from template (#262)
+
+-------------------------------------------------------------------
 Wed Feb 16 20:04:02 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.4.0:
