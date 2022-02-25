@@ -1,7 +1,7 @@
 #
 # spec file for package python-efl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            http://enlightenment.org
 Source:         https://download.enlightenment.org/rel/bindings/python/%{name}-%{version}.tar.xz
+Patch0:         memory-allocation-error.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  dbus-1-python3-devel
 BuildRequires:  pkgconfig
@@ -60,6 +61,7 @@ Provides:       python-elementary = %{version}
 %if 0%{?suse_version}
 %python_subpackages
 %else
+
 %package -n python3-efl
 Summary:        Python bindings of evas
 Group:          Development/Languages/Python
@@ -94,6 +96,7 @@ Some examples of usage of python-efl.
 
 %prep
 %setup -q
+%patch0 -p1
 # drop build date from doc to fix build-compare
 sed -i "s/\(html_last_updated_fmt = \).*/\\1None/" ./doc/conf.py
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 10 14:29:25 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- memory-allocation-error.patch: fix a memory allocation error
+
+-------------------------------------------------------------------
 Wed Feb 24 23:02:40 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Fix conflicts and provides for docs packages
