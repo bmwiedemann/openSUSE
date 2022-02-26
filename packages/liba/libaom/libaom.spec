@@ -1,7 +1,7 @@
 #
 # spec file for package libaom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define __builder ninja
 %define __builddir _build
 Name:           libaom
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        AV1 codec library
 License:        BSD-2-Clause
@@ -62,7 +62,6 @@ libaom, a library for the AOMedia Video 1 (AV1) video coding format.
 %package devel-doc
 Summary:        Documentation for the libaom API
 Group:          Documentation/HTML
-Requires:       %{name}-devel = %{version}
 BuildArch:      noarch
 
 %description devel-doc
