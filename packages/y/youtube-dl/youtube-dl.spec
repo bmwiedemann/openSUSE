@@ -1,7 +1,7 @@
 #
 # spec file for package youtube-dl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,7 +81,7 @@ PYTHON="%_bindir/python3" %make_build
 install -Dm 755 youtube-dl %buildroot/%_bindir/%name
 install -Dm 644 youtube-dl.bash-completion %buildroot/%_datadir/bash-completion/completions/%name
 install -Dm 644 youtube-dl.zsh %buildroot/%_datadir/zsh/site-functions/_%name
-install -Dm 644 youtube-dl.fish %buildroot/%_datadir/fish/completions/%name.fish
+install -Dm 644 youtube-dl.fish %buildroot/%_datadir/fish/vendor_completions.d/%name.fish
 install -Dm 644 youtube-dl.1 %buildroot/%_mandir/man1/%name.1
 
 %files
