@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Feb 25 11:18:00 UTC 2022 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20220225.c939427:
+  * Drop 'EULA' for Mesa-dri-nouveau
+  * make: Translate all the subdirs we have translations for
+
+-------------------------------------------------------------------
+Fri Feb 25 11:09:36 UTC 2022 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20220131.e9d0ccd:
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Slovak)
+  * Added translation using Weblate (Slovak)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Chinese (China) (zh_CN))
+  * Added translation using Weblate (Sinhala)
+  * Translated using Weblate (Portuguese (Portugal))
+  * Added translation using Weblate (Portuguese (Portugal))
+  * Translated using Weblate (Italian)
+  * Added translation using Weblate (Italian)
+  * Translated using Weblate (German)
+  * Add updated translations for Mesa-dri-nouveau
+  * Adjust text to "I Agree/I Disagree" standard buttons for licenses (boo#1105654)
+
+-------------------------------------------------------------------
 Thu May 28 13:46:17 UTC 2020 - opensuse-packaging@opensuse.org
 
 - Update to version 84.87.20200511.4de0f73:
