@@ -1,7 +1,7 @@
 #
 # spec file for package python-yq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,28 +19,28 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yq
-Version:        2.12.0
+Version:        2.14.0
 Release:        0
 Summary:        Command-line YAML processor - jq wrapper for YAML documents
 License:        Apache-2.0
 URL:            https://github.com/kislyuk/yq
 Source:         https://files.pythonhosted.org/packages/source/y/yq/yq-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip-broken-test.py -- https://github.com/kislyuk/yq/issues/114
-Patch0:         skip-broken-test.py
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/kislyuk/yq/commit/e37a7981b505aa0fd60d062ca81fd7b23715233e.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jq
-Requires:       python-PyYAML >= 3.11
+Requires:       python-PyYAML >= 5.3.1
 Requires:       python-argcomplete >= 1.8.1
 Requires:       python-setuptools
 Requires:       python-toml >= 0.10.0
 Requires:       python-xmltodict >= 0.11.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML >= 3.11}
+BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module argcomplete >= 1.8.1}
 BuildRequires:  %{python_module toml >= 0.10.0}
 BuildRequires:  %{python_module xmltodict >= 0.11.0}
@@ -53,6 +53,7 @@ yq: Command-line YAML processor - jq wrapper for YAML documents
 
 %prep
 %autosetup -p1 -n yq-%{version}
+sed -i "/setup_requires/d" setup.py
 
 %build
 %python_build

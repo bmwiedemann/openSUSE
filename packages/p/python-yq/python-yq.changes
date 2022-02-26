@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 25 00:59:37 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.14.0
+  * Support binary and set tags.
+- Add e37a7981b505aa0fd60d062ca81fd7b23715233e.patch
+  Fix expected output of a test case
+
+-------------------------------------------------------------------
+Fri Dec 10 12:08:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.13.0
+  * Improve YAML loading performance by using CSafeLoader where available
+  * Fix tests
+- Drop upstream merged skip-broken-test.py
+
+-------------------------------------------------------------------
 Thu May  6 13:08:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.12.0
