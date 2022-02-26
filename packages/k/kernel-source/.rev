@@ -5818,4 +5818,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.16.10 &amp; revert simpledrm &amp; constraints update &amp; CVE + other fixes</comment>
     <requestid>955556</requestid>
   </revision>
+  <revision rev="633" vrev="1">
+    <srcmd5>2bc945cc73fd9ed127e3aca18b84471d</srcmd5>
+    <version>5.16.11</version>
+    <time>1645891311</time>
+    <user>dimstar_suse</user>
+    <comment>5.16.11 &amp; gcc 12 fix &amp; other fixes</comment>
+    <requestid>957177</requestid>
+  </revision>
 </revisionlist>

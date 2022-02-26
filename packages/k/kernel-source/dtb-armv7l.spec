@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.16
-%define patchversion 5.16.10
+%define patchversion 5.16.11
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build,fdupes_relink})
 
 Name:           dtb-armv7l
-Version:        5.16.10
+Version:        5.16.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfc3f7ab
+Release:        <RELEASE>.g90630c5
 %else
 Release:        0
 %endif
