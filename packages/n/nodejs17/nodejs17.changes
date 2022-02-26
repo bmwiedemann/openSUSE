@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 17 13:17:11 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to 17.5.0:
+  * lib: add fetch
+  * stream: add iterator helper find
+  * stream: add toArray
+  * stream: add forEach method
+  * stream: support some and every
+  * node-api: add node_api_symbol_for()
+  * module: unflag esm json modules
+  * deps: upgrade npm to 8.4.1
+
+- changes in 17.4.0:
+  * child_process: add support for URL to cp.fork
+  * crypto: alias webcrypto.subtle and webcrypto.getRandomValues on crypto
+  * events: graduate capturerejections to supported
+  * events: add EventEmitterAsyncResource to core
+  * loader: return package format from defaultResolve if known
+  * perf_hooks: multiple fixes for Histogram
+  * stream: add filter method to readable
+  * stream: add isReadable helper
+  * stream: add map method to Readable
+
+- versioned.patch: refreshed
+
+For complete changelog, see
+https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V17.md#17.5.0
+
+-------------------------------------------------------------------
 Tue Jan 11 18:43:05 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to 17.3.1:
