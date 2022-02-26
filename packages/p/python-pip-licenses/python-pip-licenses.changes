@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Feb 26 00:36:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.5.2:
+  - Ignore spaces around --fail-on and --allow-only parameters
+  - Fix the order in which multiple licenses are output
+  - Handle multiple licenses better with options --fail-on and
+      --allow-only
+  - Small change in output method for multiple licenses, change
+    the separator from comma to semicolon
+        Up to 3.4.0: Python Software Foundation License, MIT License
+        3.5.0 or later: Python Software Foundation License; MIT License
+  - Implement new option --packages
+  - Fix license summary refer to --from option
+  - Improves the readability of the help command
+  - Implement new option --from=all
+  - Change license notation under SPDX license identifier style
+  - Implement new option for use in continuous integration
+      --fail-on
+      --allow-only
+- Skip failing tests gh#raimon49/pip-licenses#120
+- Add no-pip-internal.patch replace missing
+  get_installed_distributions() method in modern pip.
+
+-------------------------------------------------------------------
 Tue Nov 24 00:58:48 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.0.0
