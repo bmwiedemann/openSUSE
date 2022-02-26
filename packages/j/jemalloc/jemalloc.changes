@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 25 09:30:08 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Set lg-page to 2^16 on aarch64 to be compatible with 64k
+  page size kernel - https://github.com/jemalloc/jemalloc/pull/769
+
+-------------------------------------------------------------------
 Mon Nov 23 10:23:39 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO as it works (boo#1133136).

@@ -56,7 +56,11 @@ implementation.
 
 %build
 export EXTRA_CFLAGS="%optflags -std=gnu99"
+# AArch64: Set lg-page to 2^16 to be compatible with 64k kernels - https://github.com/jemalloc/jemalloc/pull/769
 %configure --disable-static --enable-prof \
+%ifarch aarch64
+  --with-lg-page=16 \
+%endif
 %ifarch %arm
   --disable-thp
 %endif

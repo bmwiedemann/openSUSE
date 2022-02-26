@@ -744,4 +744,12 @@ in future runs if it turned out to be implemented incorrectly).</comment>
     <comment>- Enable LTO as it works (boo#1133136).</comment>
     <requestid>850229</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>847747e6ad40c6931008af87400217a1</srcmd5>
+    <version>5.2.1</version>
+    <time>1645891323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957560</requestid>
+  </revision>
 </revisionlist>
