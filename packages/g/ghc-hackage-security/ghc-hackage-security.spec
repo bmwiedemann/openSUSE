@@ -19,12 +19,13 @@
 %global pkg_name hackage-security
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.2.0
+Version:        0.6.2.1
 Release:        0
 Summary:        Hackage security library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-syntax-devel
 BuildRequires:  ghc-base16-bytestring-devel
@@ -90,6 +91,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
