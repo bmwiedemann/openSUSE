@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 25 21:59:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.14.4:
+  - Django 4.0 support
+- Fix testing of the package.
+- Remove upstreamed patch merged_pr_1624_chunk.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 00:20:27 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix a failing test using a chunk of upstream PR 1624

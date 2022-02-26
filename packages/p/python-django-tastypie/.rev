@@ -131,4 +131,16 @@
     <comment></comment>
     <requestid>898569</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1c5aca124e8beaa296201535629ae3f5</srcmd5>
+    <version>0.14.4</version>
+    <time>1645891332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.4:
+  - Django 4.0 support
+- Fix testing of the package.
+- Remove upstreamed patch merged_pr_1624_chunk.patch
+</comment>
+    <requestid>957670</requestid>
+  </revision>
 </revisionlist>

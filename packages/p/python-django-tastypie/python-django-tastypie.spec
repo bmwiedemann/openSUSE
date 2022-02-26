@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-tastypie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-tastypie
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        A webservice API framework layer for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-tastypie/django-tastypie
 Source:         https://github.com/django-tastypie/django-tastypie/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM merged_pr_1624_chunk.patch -- based on PR 1624
-Patch0:         merged_pr_1624_chunk.patch
 BuildRequires:  %{python_module Django >= 1.11.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module biplist}
@@ -53,7 +51,8 @@ customizable abstraction for creating REST-style interfaces.
 
 %prep
 %setup -q -n django-tastypie-%{version}
-%patch0 -p1
+%autopatch -p1
+
 # https://github.com/django-tastypie/django-tastypie/issues/1617
 sed -Ei 's/(test_apikey_and_authentication_enforce_user|test_is_authenticated)/_\1/' tests/core/tests/authentication.py
 
@@ -67,16 +66,16 @@ sed -Ei 's/(test_apikey_and_authentication_enforce_user|test_is_authenticated)/_
 %check
 # The tests are doing what is specified in tox.ini
 %{python_expand export PYTHONPATH=${PWD}:${PWD}/tests/
-django-admin.py-%{$python_bin_suffix} test -p '*' core.tests --settings=settings_core
-django-admin.py-%{$python_bin_suffix} test basic.tests --settings=settings_basic
-django-admin.py-%{$python_bin_suffix} test related_resource.tests --settings=settings_related
-django-admin.py-%{$python_bin_suffix} test alphanumeric.tests --settings=settings_alphanumeric
-django-admin.py-%{$python_bin_suffix} test authorization.tests --settings=settings_authorization
-django-admin.py-%{$python_bin_suffix} test content_gfk.tests --settings=settings_content_gfk
-django-admin.py-%{$python_bin_suffix} test customuser.tests --settings=settings_customuser
-django-admin.py-%{$python_bin_suffix} test namespaced.tests --settings=settings_namespaced
-django-admin.py-%{$python_bin_suffix} test slashless.tests --settings=settings_slashless
-django-admin.py-%{$python_bin_suffix} test validation.tests --settings=settings_validation
+django-admin-%{$python_bin_suffix} test -v 3 -p '*' core.tests --settings=settings_core
+django-admin-%{$python_bin_suffix} test -v 3 basic.tests --settings=settings_basic
+django-admin-%{$python_bin_suffix} test -v 3 related_resource.tests --settings=settings_related
+django-admin-%{$python_bin_suffix} test -v 3 alphanumeric.tests --settings=settings_alphanumeric
+django-admin-%{$python_bin_suffix} test -v 3 authorization.tests --settings=settings_authorization
+django-admin-%{$python_bin_suffix} test -v 3 content_gfk.tests --settings=settings_content_gfk
+django-admin-%{$python_bin_suffix} test -v 3 customuser.tests --settings=settings_customuser
+django-admin-%{$python_bin_suffix} test -v 3 namespaced.tests --settings=settings_namespaced
+django-admin-%{$python_bin_suffix} test -v 3 slashless.tests --settings=settings_slashless
+django-admin-%{$python_bin_suffix} test -v 3 validation.tests --settings=settings_validation
 }
 
 %files %{python_files}
