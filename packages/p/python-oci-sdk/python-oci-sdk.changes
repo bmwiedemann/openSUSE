@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Feb 25 11:05:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.58.0
+  * Support for the Data Connectivity Management service
+  * Support for the AI Speech service
+  * Support for disabling crash recovery in the MySQL Database service
+  * Support for detector recipes of type "threat", new detector rule of
+    type "rogue user", and sightings operations in the Cloud Guard service
+  * Support for more VM shape configurations when listing shapes in the Compute service
+  * Support for customer-managed encryption keys in the Analytics Cloud service
+  * Support for FastConnect device information in the Networking service
+  * Support for retries enabled by default on all operations in the Application
+    Performance Monitoring control plane service
+- from version 2.57.0
+  * Support for the AI Vision service
+  * Support for the Threat Intelligence service
+  * Support for creation of NoSQL database tables with on-demand throughput capacity
+    in the NoSQL Database Cloud service
+  * Support for tagging features in the Oracle Container Engine
+    for Kubernetes (OKE) service
+  * Support for trace snapshots in the Application Performance Monitoring service
+  * Support for auditing and alerts in the Data Safe service
+  * Support for data discovery and data masking in the Data Safe service
+  * Support for customized subscriptions and delivery of announcements
+    by email and SMS in the Announcements service
+  * The API `query_old` was removed from `query_client` in the
+    Application Performance Monitoring service
+- from version 2.56.0
+  * Support for managing tablespaces in the Database Management service
+  * Support for upgrading and managing payment for subscriptions in
+    the Account Management service
+  * Support for listing fast launch job configurations in the Data Science service
+  * Support for retries enabled by default on all operations in the
+    Application Performance Monitoring service
+  * The type for the `bill_to_address` parameter was changed from `Address` to
+    `BillToAddress` in the invoice model of the Account Management service
+  * `payment_method` was made a required property of the `payment_detail` model
+    of the Account Management service
+- from version 2.55.1
+  * Support for calling Oracle Cloud Infrastructure services
+    in the ap-dcc-canberra-1 region
+  * Support for the Console Dashboard service
+  * Support for capacity reservation in the Container Engine for Kubernetes service
+  * Support for tagging in the Container Engine for Kubernetes service
+  * Support for fetching listings by image OCID in the Marketplace service
+  * Support for underscores and hyphens in project resource names in the DevOps service
+  * Support for cross-region cloning in the Database service
+
+-------------------------------------------------------------------
 Wed Jan 26 12:09:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.55.0
