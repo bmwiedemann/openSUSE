@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rest-knox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-rest-knox
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Authentication for Django REST framework
 License:        MIT
 URL:            https://github.com/James1345/django-rest-knox
 Source:         https://github.com/James1345/django-rest-knox/archive/%{version}.tar.gz#/django-rest-knox-%{version}.tar.gz
-Patch0:         django3.patch
-Patch1:         remove-django-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,6 +47,7 @@ Authentication for Django REST framework.
 
 %prep
 %autosetup -p1 -n django-rest-knox-%{version}
+
 # knox does not use pyOpenSSL; it uses cryptography.
 # pyOpenSSL is a proxy for cryptography in 3.6.0,
 # and replaced by cryptography in 4.0.0

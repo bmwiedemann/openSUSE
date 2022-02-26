@@ -57,4 +57,18 @@
   * Use pytest-django to run the tests, rather than django-nose.</comment>
     <requestid>918792</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c0a80871c43925d46dce9ec0859c36ce</srcmd5>
+    <version>4.2.0</version>
+    <time>1645891327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.0:
+  - compatibility with Python up to 3.10 and Django up to 4.0
+  - Migration: &quot;salt&quot; field of model &quot;AuthToken&quot; is removed
+- Remove upstreamed patches:
+  - django3.patch
+  - remove-django-nose.patch
+</comment>
+    <requestid>957655</requestid>
+  </revision>
 </revisionlist>

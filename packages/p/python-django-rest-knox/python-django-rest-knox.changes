@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 25 20:11:43 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.2.0:
+  - compatibility with Python up to 3.10 and Django up to 4.0
+  - Migration: "salt" field of model "AuthToken" is removed
+- Remove upstreamed patches:
+  - django3.patch
+  - remove-django-nose.patch
+
+-------------------------------------------------------------------
 Tue Sep 14 01:26:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-django-nose.patch:
