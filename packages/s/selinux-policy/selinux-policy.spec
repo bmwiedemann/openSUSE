@@ -363,7 +363,7 @@ creating other policies.
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %dir %{_datadir}/selinux
 %dir %{_datadir}/selinux/packages
 %dir %{_sysconfdir}/selinux

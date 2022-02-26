@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 17 12:24:13 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- use %license tag for COPYING file
+
+-------------------------------------------------------------------
 Thu Feb 10 09:04:08 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Updated fix_cron.patch. Adjust labeling for at (bsc#1195683)
