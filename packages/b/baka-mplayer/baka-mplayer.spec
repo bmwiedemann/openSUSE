@@ -1,7 +1,7 @@
 #
 # spec file for package baka-mplayer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,12 @@ Name:           baka-mplayer
 Version:        2.0.4
 Release:        0
 Summary:        A media player with UI using libmpv
-License:        GPL-2.0-or-later AND Apache-2.0
+License:        Apache-2.0 AND GPL-2.0-or-later
 URL:            http://bakamplayer.u8sand.net/
 Source0:        https://github.com/u8sand/Baka-MPlayer/archive/v%{version}.tar.gz#/Baka-MPlayer-%{version}.tar.gz
 Patch0:         ceil.patch
+# PATCH-FIX-UPSTREAM Fix build with mpv 2.0 gh#u8sand/Baka-MPlayer#317
+Patch1:         Port-away-from-deprecated-removed-APIs-in-mpv-2.0.patch
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
@@ -42,7 +44,7 @@ vaapi, vda) and Youtube playback support (and others).
 
 %prep
 %setup -q -n Baka-MPlayer-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %qmake5 src/Baka-MPlayer.pro CONFIG+="release install_translations man.extra" \
