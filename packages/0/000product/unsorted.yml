@@ -9794,8 +9794,6 @@ unsorted:
   - libbd_part-devel 
   - libbd_swap-devel 
   - libbd_utils-devel 
-  - libbd_vdo-devel 
-  - libbd_vdo2 
   - libbde-devel 
   - libbde-tools 
   - libbde1 
@@ -21529,7 +21527,6 @@ unsorted:
   - python3-ironic-inspector-client 
   - python3-ironicclient 
   - python3-itk: [x86_64] 
-  - python3-jenkins-job-builder 
   - python3-kea 
   - python3-keystoneauth1 
   - python3-keystoneclient 
@@ -22746,6 +22743,7 @@ unsorted:
   - python310-django-model-utils 
   - python310-django-nine 
   - python310-django-oauth-toolkit 
+  - python310-django-oidc-provider 
   - python310-django-pandas 
   - python310-django-parler 
   - python310-django-perf-rec 
@@ -22761,6 +22759,7 @@ unsorted:
   - python310-django-request 
   - python310-django-rest-framework-client 
   - python310-django-rest-framework-social-oauth2 
+  - python310-django-rest-knox 
   - python310-django-reversion 
   - python310-django-rosetta 
   - python310-django-seed 
@@ -22771,6 +22770,7 @@ unsorted:
   - python310-django-storages 
   - python310-django-tables2 
   - python310-django-tagging 
+  - python310-django-tastypie 
   - python310-django-timezone-field 
   - python310-django-treebeard 
   - python310-django-user-agents 
@@ -23725,6 +23725,7 @@ unsorted:
   - python310-pingparsing 
   - python310-pip 
   - python310-pip-api 
+  - python310-pip-licenses 
   - python310-pip-shims 
   - python310-pip-test 
   - python310-pip-tools 
@@ -23921,6 +23922,7 @@ unsorted:
   - python310-pyinotify 
   - python310-pyipp 
   - python310-pyjavaproperties 
+  - python310-pyjnius 
   - python310-pyjokes 
   - python310-pyjsparser 
   - python310-pyjwkest 
@@ -24589,6 +24591,7 @@ unsorted:
   - python310-template-remover 
   - python310-tempora 
   - python310-tenacity 
+  - python310-tensorpac 
   - python310-term-background 
   - python310-termcolor 
   - python310-terminado 
@@ -24909,14 +24912,10 @@ unsorted:
   - python36-django-money 
   - python36-django-oscar 
   - python36-django-rest-invitations 
-  - python36-django-rest-knox 
-  - python36-django-tastypie 
   - python36-doc 
   - python36-doc-devhelp 
   - python36-google-pasta 
   - python36-idle 
-  - python36-pip-licenses 
-  - python36-raven-aiohttp 
   - python36-requests-gssapi 
   - python36-testsuite 
   - python36-tk 
@@ -25891,6 +25890,7 @@ unsorted:
   - python38-django-money 
   - python38-django-nine 
   - python38-django-oauth-toolkit 
+  - python38-django-oidc-provider 
   - python38-django-oscar 
   - python38-django-pandas 
   - python38-django-parler 
@@ -27320,7 +27320,6 @@ unsorted:
   - python38-rarfile-doc 
   - python38-ravello-sdk 
   - python38-raven 
-  - python38-raven-aiohttp 
   - python38-rawkit 
   - python38-rcssmin 
   - python38-rdflib 
@@ -28929,6 +28928,7 @@ unsorted:
   - python39-django-money 
   - python39-django-nine 
   - python39-django-oauth-toolkit 
+  - python39-django-oidc-provider 
   - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
@@ -30114,6 +30114,7 @@ unsorted:
   - python39-pyinotify 
   - python39-pyipp 
   - python39-pyjavaproperties 
+  - python39-pyjnius 
   - python39-pyjokes 
   - python39-pyjsparser 
   - python39-pyjwkest 
@@ -30477,7 +30478,6 @@ unsorted:
   - python39-rarfile-doc 
   - python39-ravello-sdk 
   - python39-raven 
-  - python39-raven-aiohttp 
   - python39-rawkit 
   - python39-rcssmin 
   - python39-rdflib 
