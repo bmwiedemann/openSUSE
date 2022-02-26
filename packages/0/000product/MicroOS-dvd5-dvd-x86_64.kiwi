@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220224" schemaversion="4.1">
+<image name="OBS__MicroOS___20220225" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220224</productvar>
+      <productvar name="VERSION">20220225</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220224,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220225,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220224/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220225/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -460,7 +460,6 @@
       <repopackage name="libbd_part2" arch="x86_64"/>
       <repopackage name="libbd_swap2" arch="x86_64"/>
       <repopackage name="libbd_utils2" arch="x86_64"/>
-      <repopackage name="libblas3" arch="x86_64"/>
       <repopackage name="libblkid1"/>
       <repopackage name="libblockdev" arch="x86_64"/>
       <repopackage name="libblockdev2" arch="x86_64"/>
@@ -487,7 +486,6 @@
       <repopackage name="libcap-ng0"/>
       <repopackage name="libcap2"/>
       <repopackage name="libcares2" arch="x86_64"/>
-      <repopackage name="libcblas3" arch="x86_64"/>
       <repopackage name="libcbor0_9"/>
       <repopackage name="libcdda_interface0" arch="x86_64"/>
       <repopackage name="libcdda_paranoia0" arch="x86_64"/>
@@ -607,7 +605,6 @@
       <repopackage name="libgdm1" arch="x86_64"/>
       <repopackage name="libgeocode-glib0" arch="x86_64"/>
       <repopackage name="libgexiv2-2" arch="x86_64"/>
-      <repopackage name="libgfortran5" arch="x86_64"/>
       <repopackage name="libgif7" arch="x86_64"/>
       <repopackage name="libgio-2_0-0" arch="x86_64"/>
       <repopackage name="libgiomm-2_4-1" arch="x86_64"/>
@@ -808,7 +805,6 @@
       <repopackage name="libKUserFeedbackWidgets1" arch="x86_64"/>
       <repopackage name="libkwalletbackend5-5" arch="x86_64"/>
       <repopackage name="libKWaylandServer5" arch="x86_64"/>
-      <repopackage name="liblapack3" arch="x86_64"/>
       <repopackage name="liblcms2-2" arch="x86_64"/>
       <repopackage name="libldac2" arch="x86_64"/>
       <repopackage name="libldap-2_4-2"/>
@@ -879,7 +875,6 @@
       <repopackage name="libofa0" arch="x86_64"/>
       <repopackage name="libogg0" arch="x86_64"/>
       <repopackage name="libopenal1" arch="x86_64"/>
-      <repopackage name="libopenblas_pthreads0" arch="x86_64"/>
       <repopackage name="libOpenEXR-3_1-30" arch="x86_64"/>
       <repopackage name="libopeniscsiusr0_2_0" arch="x86_64"/>
       <repopackage name="libopenjp2-7" arch="x86_64"/>
@@ -974,7 +969,6 @@
       <repopackage name="libQt5X11Extras5" arch="x86_64"/>
       <repopackage name="libQt5Xml5" arch="x86_64"/>
       <repopackage name="libQtQuick5" arch="x86_64"/>
-      <repopackage name="libquadmath0" arch="x86_64"/>
       <repopackage name="libraptor2-0" arch="x86_64"/>
       <repopackage name="librav1e0" arch="x86_64"/>
       <repopackage name="libraw1394-11" arch="x86_64"/>
@@ -1378,11 +1372,8 @@
       <repopackage name="python38-cmdln" arch="x86_64"/>
       <repopackage name="python38-configobj" arch="x86_64"/>
       <repopackage name="python38-cryptography" arch="x86_64"/>
-      <repopackage name="python38-Cycler" arch="x86_64"/>
       <repopackage name="python38-dbus-python" arch="x86_64"/>
       <repopackage name="python38-dragonmapper" arch="x86_64"/>
-      <repopackage name="python38-FontTools" arch="x86_64"/>
-      <repopackage name="python38-fs" arch="x86_64"/>
       <repopackage name="python38-gobject" arch="x86_64"/>
       <repopackage name="python38-gobject-cairo" arch="x86_64"/>
       <repopackage name="python38-gobject-Gdk" arch="x86_64"/>
@@ -1397,26 +1388,18 @@
       <repopackage name="python38-jsonpointer" arch="x86_64"/>
       <repopackage name="python38-jsonschema" arch="x86_64"/>
       <repopackage name="python38-keylime" arch="x86_64"/>
-      <repopackage name="python38-kiwisolver" arch="x86_64"/>
       <repopackage name="python38-loguru" arch="x86_64"/>
       <repopackage name="python38-M2Crypto" arch="x86_64"/>
       <repopackage name="python38-Mako" arch="x86_64"/>
       <repopackage name="python38-MarkupSafe" arch="x86_64"/>
-      <repopackage name="python38-matplotlib" arch="x86_64"/>
       <repopackage name="python38-more-itertools" arch="x86_64"/>
-      <repopackage name="python38-networkx" arch="x86_64"/>
       <repopackage name="python38-notify2" arch="x86_64"/>
-      <repopackage name="python38-numpy" arch="x86_64"/>
       <repopackage name="python38-oauthlib" arch="x86_64"/>
-      <repopackage name="python38-olefile" arch="x86_64"/>
       <repopackage name="python38-ordered-set" arch="x86_64"/>
       <repopackage name="python38-packaging" arch="x86_64"/>
-      <repopackage name="python38-pandas" arch="x86_64"/>
-      <repopackage name="python38-Pillow" arch="x86_64"/>
       <repopackage name="python38-prettytable" arch="x86_64"/>
       <repopackage name="python38-psutil" arch="x86_64"/>
       <repopackage name="python38-py" arch="x86_64"/>
-      <repopackage name="python38-pybind11" arch="x86_64"/>
       <repopackage name="python38-pycairo" arch="x86_64"/>
       <repopackage name="python38-pycparser" arch="x86_64"/>
       <repopackage name="python38-pycups" arch="x86_64"/>
@@ -1429,11 +1412,9 @@
       <repopackage name="python38-pysmbc" arch="x86_64"/>
       <repopackage name="python38-python-dateutil" arch="x86_64"/>
       <repopackage name="python38-python-gnupg" arch="x86_64"/>
-      <repopackage name="python38-pytz" arch="x86_64"/>
       <repopackage name="python38-PyYAML" arch="x86_64"/>
       <repopackage name="python38-pyzmq" arch="x86_64"/>
       <repopackage name="python38-requests" arch="x86_64"/>
-      <repopackage name="python38-scipy" arch="x86_64"/>
       <repopackage name="python38-semanage" arch="x86_64"/>
       <repopackage name="python38-setools" arch="x86_64"/>
       <repopackage name="python38-setuptools" arch="x86_64"/>
