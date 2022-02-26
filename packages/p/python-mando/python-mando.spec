@@ -1,7 +1,7 @@
 #
 # spec file for package python-mando
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mando
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Python wrapper around argparse, a tool to create CLI apps
 License:        MIT
 URL:            https://mando.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mando/mando-%{version}.tar.gz
-Patch0:         python-310-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +42,6 @@ applications.
 
 %prep
 %setup -q -n mando-%{version}
-%autopatch -p1
 sed -i -e '/^#!\//, 1d' mando/tests/*.py
 
 %build

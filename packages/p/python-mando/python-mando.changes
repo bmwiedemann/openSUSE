@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 24 09:37:25 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.1:
+  * - Add support for Python 3.10 (@s-t-e-v-e-n-k): #54
+- Drop patch python-310-support.patch, merged upstream.
+
+-------------------------------------------------------------------
 Mon Dec 13 05:41:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch python-310-support.patch:

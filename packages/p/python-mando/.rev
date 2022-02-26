@@ -48,4 +48,14 @@
   * Support argparse changes introduced in Python 3.10.</comment>
     <requestid>940133</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>115193e26871e58c663427850876e7ec</srcmd5>
+    <version>0.7.1</version>
+    <time>1645891314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * - Add support for Python 3.10 (@s-t-e-v-e-n-k): #54
+- Drop patch python-310-support.patch, merged upstream.</comment>
+    <requestid>957243</requestid>
+  </revision>
 </revisionlist>
