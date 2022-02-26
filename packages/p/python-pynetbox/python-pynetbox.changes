@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 24 20:42:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.6.1
+  * Use devices as variable for example calls to nb.dcim.devices.
+  * Fixes #447: Remove extra self argument in Vlans.str().
+- Update to version 6.6.0
+  * Upgrade Black to the first non-beta release.
+  * Fix VirtualChassis.__str__(), make VirtualChassis.master a
+    Devices object.
+- Update to version 6.5.0
+  * Docstring updates: remove secrets from examples.
+  * Fixes #427: Adds support for available-vlans child endpoint
+    for VLAN groups.
+
+-------------------------------------------------------------------
 Mon Dec 27 10:54:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.4.1
