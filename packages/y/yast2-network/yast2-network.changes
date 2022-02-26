@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 25 11:54:49 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Revert last change going back to skip DHCP setup completely if
+  the network is already configured through iBFT (bsc#1194911)
+- 4.4.42
+
+-------------------------------------------------------------------
+Thu Feb 24 11:56:41 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Related to bsc#1194911:
+  - Skip iBFT interfaces as DHCP candidates but configure DHCP if
+    there is no active and ifcfg file configured interface
+- 4.4.41
+
+-------------------------------------------------------------------
 Tue Feb 22 11:34:20 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Fixed active configuration detection (bsc#1196276, bsc#1194911)
