@@ -98,7 +98,7 @@ communication mechanism to provide location information
 	-Ddbus-srv-user=srvGeoClue \
 	%{nil}
 %meson_build
-%sysusers_generate_pre %{SOURCE1} srvGeoClue
+%sysusers_generate_pre %{SOURCE1} srvGeoClue system-user-srvGeoClue.conf
 
 %install
 %meson_install

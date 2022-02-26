@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 24 16:37:30 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+
+-------------------------------------------------------------------
 Sun Nov 28 13:21:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop geoclue2-revert-2-faulty.patch: Replaced by upstream fix
