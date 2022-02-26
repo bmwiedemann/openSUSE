@@ -4723,4 +4723,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * sixth bugfix release</comment>
     <requestid>953224</requestid>
   </revision>
+  <revision rev="430" vrev="302">
+    <srcmd5>e14210559b0080d3bdc0ff0b5362afb3</srcmd5>
+    <version>unknown</version>
+    <time>1645891314</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.3.7
+  * sixth bugfix release</comment>
+    <requestid>957247</requestid>
+  </revision>
 </revisionlist>
