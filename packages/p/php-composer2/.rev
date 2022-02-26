@@ -47,4 +47,12 @@
     <comment>- PHP Composer 2 requires PHP 7.2.5 at least (forwarded request 952220 from weberho)</comment>
     <requestid>952222</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c2a6517fc8f5ec9706bffe90796592ac</srcmd5>
+    <version>2.2.6</version>
+    <time>1645891335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>957682</requestid>
+  </revision>
 </revisionlist>
