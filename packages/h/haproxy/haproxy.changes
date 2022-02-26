@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Feb 25 16:21:33 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.5.4+git0.e55ab4208:
+  * [RELEASE] Released version 2.5.4
+  * BUG/MEDIUM: stream: Abort processing if response buffer allocation fails
+  * CI: github: enable pool debugging by default
+  * REGTESTS: fix the race conditions in 40be_2srv_odd_health_checks
+  * BUG/MINOR: proxy: preset the error message pointer to NULL in parse_new_proxy()
+  * DOC: Fix usage/examples of deprecated ACLs
+  * BUG/MAJOR: mux-h2: Be sure to always report HTX parsing error to the app layer
+  * BUG/MEDIUM: mux-h1: Don't wake h1s if mux is blocked on lack of output buffer
+  * BUG/MEDIUM: htx: Be sure to have a buffer to perform a raw copy of a message
+
+-------------------------------------------------------------------
+Thu Feb 24 18:16:09 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: profile now needs access to /sys/devices/system/node/
+
+-------------------------------------------------------------------
+Fri Feb 18 21:45:27 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.5.3+git0.abf078b15:
+  * [RELEASE] Released version 2.5.3
+  * DEBUG: buffer: check in __b_put_blk() whether the buffer room is respected
+  * BUG/MEDIUM: httpclient: limit transfers to the maximum available room
+  * BUG/MINOR: tools: url2sa reads ipv4 too far
+  * CLEANUP: httpclient/cli: fix indentation alignment of the help message
+  * BUG/MINOR: ssl: Missing return value check in ssl_ocsp_response_print
+  * BUG/MINOR: ssl: Fix leak in "show ssl ocsp-response" CLI command
+  * BUG/MINOR: ssl: Add missing return value check in ssl_ocsp_response_print
+  * BUG/MINOR: mailers: negotiate SMTP, not ESMTP
+  * BUG/MINOR: httpclient: reinit flags in httpclient_start()
+  * MINOR: httpclient: Don't limit data transfer to 1024 bytes
+  * BUG/MAJOR: compiler: relax alignment constraints on certain structures
+  * BUG/MEDIUM: fd: always align fdtab[] to 64 bytes
+  * BUG/MEDIUM: resolvers: Really ignore trailing dot in domain names
+  * BUG/MINOR: sink: Use the right field in appctx context in release callback
+  * BUG/MINOR: mworker: fix a FD leak of a sockpair upon a failed reload
+  * BUG/MEDIUM: mworker: close unused transferred FDs on load failure
+  * MINOR: sock: move the unused socket cleaning code into its own function
+
+-------------------------------------------------------------------
+Fri Feb 18 21:44:43 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.5.2+git0.042feec44: (CVE-2022-0711 boo#1196408)
+  * [RELEASE] Released version 2.5.2
+  * BUG/MINOR: mux-h2: update the session's idle delay before creating the stream
+  * BUG/MEDIUM: h2/hpack: fix emission of HPACK DTSU after settings change
+  * REGTESTS: peers: leave a bit more time to peers to synchronize
+  * REGTESTS: server: close an occasional race on dynamic_server_ssl.vtc
+  * BUG/MAJOR: spoe: properly detach all agents when releasing the applet
+  * BUG/MAJOR: http/htx: prevent unbounded loop in http_manage_server_side_cookies
+  * BUG/MINOR: httpclient/cli: display junk characters in vsn
+  * BUG/MINOR: jwt: Memory leak if same key is used in multiple jwt_verify calls
+  * BUG/MINOR: jwt: Missing pkey free during cleanup
+  * BUG/MINOR: jwt: Double free in deinit function
+  * BUG/MINOR: ssl: Remove empty lines from "show ssl ocsp-response <id>" output
+  * BUG/MEDIUM: httpclient: Xfer the request when the stream is created
+  * BUG/MINOR: httpclient: Revisit HC request and response buffers allocation
+  * BUG/MEDIUM: listener: read-lock the listener during accept()
+  * MINOR: listener: replace the listener's spinlock with an rwlock
+  * DEBUG: fd: make sure we never try to insert/delete an impossible FD number
+  * BUG/MINOR: mworker: does not erase the pidfile upon reload
+  * BUG/MAJOR: sched: prevent rare concurrent wakeup of multi-threaded tasks
+  * DEBUG: pools: replace the link pointer with the caller's address on pool_free()
+  * DEBUG: pools: let's add reverse mapping from cache heads to thread and pool
+  * DEBUG: pools: add extra sanity checks when picking objects from a local cache
+  * BUG/MINOR: pools: always flush pools about to be destroyed
+  * BUG/MINOR: mworker: does not add the -sf in wait mode
+  * BUG/MEDIUM: mworker: don't lose the stats socket on failed reload
+  * REGTESTS: ssl: Fix ssl_errors regtest with OpenSSL 1.0.2
+  * DEBUG: pools: add new build option DEBUG_POOL_INTEGRITY
+  * BUILD: debug/cli: condition test of O_ASYNC to its existence
+  * DEBUG: cli: add a new "debug dev fd" expert command
+  * BUG/MINOR: stream: make the call_rate only count the no-progress calls
+  * BUG/MEDIUM: mcli: always realign wrapping buffers before parsing them
+  * BUG/MEDIUM: mcli: do not try to parse empty buffers
+  * BUG/MEDIUM: cli: Never wait for more data on client shutdown
+  * MEDIUM: h2/hpack: emit a Dynamic Table Size Update after settings change
+  * BUG/MINOR: cli: avoid O(bufsize) parsing cost on pipelined commands
+  * MINOR: channel: add new function co_getdelim() to support multiple delimiters
+  * MEDIUM: cli: yield between each pipelined command
+  * DOC: management: mark "set server ssl" as deprecated
+  * BUG/MEDIUM: server: avoid changing healthcheck ctx with set server ssl
+  * BUILD/MINOR: fix solaris build with clang.
+  * BUG/MINOR: httpclient/lua: don't pop the lua stack when getting headers
+  * BUG/MINOR: httpclient: set default Accept and User-Agent headers
+  * BUG/MINOR: httpclient: don't send an empty body
+  * BUG/MEDIUM: htx: Adjust length to add DATA block in an empty HTX buffer
+  * BUG/MEDIUM: connection: properly leave stopping list on error
+
+-------------------------------------------------------------------
 Fri Feb  4 10:13:35 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator

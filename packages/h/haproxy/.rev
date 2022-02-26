@@ -1146,4 +1146,12 @@
     <comment></comment>
     <requestid>952090</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>d7044aa04d2f19b9d63f26e66101da1a</srcmd5>
+    <version>2.5.4+git0.e55ab4208</version>
+    <time>1645891324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.4+git0.e55ab4208:</comment>
+    <requestid>957631</requestid>
+  </revision>
 </revisionlist>
