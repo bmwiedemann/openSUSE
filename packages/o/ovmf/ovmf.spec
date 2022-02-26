@@ -287,7 +287,7 @@ collect_x86_64_debug_files()
 	# copy the debug symbols
 	mkdir -p $out_dir
 	pushd Build/OvmfX64/DEBUG_GCC*/X64/
-	find . -mindepth 2 -type f -name "*.debug" -exec cp --parents -a {} $abs_path \;
+	find . -mindepth 2 -type f -name "*.debug" -print0 | sort -z | xargs -i -0 cp --parents -a {} $abs_path
 	cp --parents -a DebugPkg/GdbSyms/GdbSyms/DEBUG/GdbSyms.dll $abs_path
 	build_path=`pwd`
 	popd
@@ -335,8 +335,8 @@ cp Build/OvmfX64/DEBUG_*/X64/EnrollDefaultKeys.efi X64
 # Collect the source
 mkdir -p source/ovmf-x86_64
 #   TODO get the source list from debug files
-src_list=`find Build/OvmfX64/DEBUG_GCC*/X64/ -mindepth 1 -maxdepth 1 -type d -exec basename {} \;`
-find $src_list \( -name "*.c" -o -name "*.h" \) -type f -exec cp --parents -a {} source/ovmf-x86_64 \;
+src_list=`find Build/OvmfX64/DEBUG_GCC*/X64/ -mindepth 1 -maxdepth 1 -type d -print0 | sort -z | xargs -0 -i basename {}`
+find $src_list \( -name "*.c" -o -name "*.h" \) -type f -print0 | sort -z | xargs -0 -i cp --parents -a {} source/ovmf-x86_64
 find source/ovmf-x86_64 -name *.c -type f -exec chmod 0644 {} \;
 %endif
 

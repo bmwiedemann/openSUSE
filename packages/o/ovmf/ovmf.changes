@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 17 02:14:26 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Sort file lists for reproducible build results
+
+-------------------------------------------------------------------
 Mon Jan  3 12:21:37 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Modified gdb_uefi.py.in for python3 (bsc#1192126)
