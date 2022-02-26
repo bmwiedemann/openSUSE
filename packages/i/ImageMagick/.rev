@@ -3276,4 +3276,24 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * https://github.com/ImageMagick/ImageMagick/issues/4790 [bsc#1195321]</comment>
     <requestid>952085</requestid>
   </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>7757315ea6a6825f69c56ccab98de89c</srcmd5>
+    <version>7.1.0.26</version>
+    <time>1645891315</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.26
+  * unrecognized color as the color is used before it is defined (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4843).
+  * optimized performance of thumbnail resizing algorithm (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/4755).
+
+- version update to 7.1.0.25
+  * incontinuity in straight segment of polyline (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4837).
+
+- update to 7.1.0.24:
+  * optimize reading of XPM properties.
+  * the GIF Netscape block must appear immediately after the global color table.</comment>
+    <requestid>957259</requestid>
+  </revision>
 </revisionlist>
