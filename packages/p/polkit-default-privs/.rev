@@ -1935,4 +1935,15 @@ for 12.3</comment>
   * fwupd: tighten the downgrade rules (bsc#1193310)</comment>
     <requestid>940529</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>5380b9169da1dbe072b363d94001e32d</srcmd5>
+    <version>1550+20220225.330e064</version>
+    <time>1645891304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20220225.330e064:
+  * Whitelist Kcron (bsc#1193945)
+  * deepin-api: drop manage-locale action that is not package on openSUSE
+  * udisks2: remove manage-vdo action</comment>
+    <requestid>957545</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 25 09:34:55 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220225.330e064:
+  * Whitelist Kcron (bsc#1193945)
+  * deepin-api: drop manage-locale action that is not package on openSUSE
+  * udisks2: remove manage-vdo action
+
+-------------------------------------------------------------------
 Tue Dec 14 16:46:59 UTC 2021 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20211214.daf2765:
