@@ -31,6 +31,7 @@ URL:            https://github.com/storaged-project/libblockdev
 Source0:        https://github.com/storaged-project/libblockdev/releases/download/%{version}-1/libblockdev-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libblockdev-fix-libkmod-include.patch luc14n0@linuxmail.org -- openSUSE's libkmod.h file location is not under the expected /usr/include directory but /usr/include/kmod.
 Patch0:         libblockdev-fix-libkmod-include.patch
+
 BuildRequires:  dmraid-devel
 BuildRequires:  gobject-introspection-devel >= 1.3.0
 BuildRequires:  gtk-doc
@@ -68,6 +69,8 @@ no information about VGs when creating an LV).
 %package -n     %{libname}
 Summary:        A library for low-level manipulation with block devices
 Group:          System/Libraries
+Obsoletes:      libbd_vdo2 <= 2.26
+Obsoletes:      libblockdev-vdo <= 2.26
 
 %description -n %{libname}
 The LibBlockDev is a C library with GObject introspection support that can be
@@ -91,6 +94,8 @@ Summary:        Development files for the LibBlockDev library
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} >= %{version}
 Requires:       glib2-devel
+Obsoletes:      libbd_vdo-devel  <= 2.26
+Obsoletes:      libblockdev-vdo-devel  <= 2.26
 
 %description    devel
 This package provides header files, pkg-config modules and API documentation needed for
@@ -418,30 +423,6 @@ Requires:       libbd_utils%{somajor} >= %{version}
 This package contains header files and pkg-config files needed for development
 with the libbd_utils library.
 
-%package -n     libbd_vdo%{somajor}
-Summary:        The VDO plugin for the LibBlockDev library
-Group:          System/Libraries
-Requires:       libbd_utils%{somajor} >= %{version}
-Provides:       libblockdev-vdo = %{version}
-
-%description -n libbd_vdo%{somajor}
-The VDO library plugin (and, at the same time, a standalone library)
-provides functionality related to the Virtual Data Optimizer,
-a software for creating compressed and deduplicated pools of
-block storage.
-
-%package -n     libbd_vdo-devel
-Summary:        Development files for the libblockdev-vdo plugin/library
-Group:          Development/Libraries/C and C++
-Requires:       glib2-devel
-Requires:       libbd_utils-devel >= %{version}
-Requires:       libbd_vdo%{somajor} = %{version}
-Provides:       libblockdev-vdo-devel = %{version}
-
-%description -n libbd_vdo-devel
-This package contains header files and pkg-config files needed for development
-with the libbd_vdo plugin/library.
-
 %prep
 %autosetup -p1
 
@@ -465,7 +446,7 @@ export CFLAGS="%{optflags} -Wno-deprecated-declarations"
         --with-mpath \
         --with-part \
         --with-swap \
-        --with-vdo \
+        --without-vdo \
         --without-escrow \
         --without-nvdimm \
         %{nil}
@@ -516,9 +497,6 @@ find %{buildroot} -name "*.la" -print -type f -delete
 
 %post   -n libbd_utils%{somajor} -p /sbin/ldconfig
 %postun -n libbd_utils%{somajor} -p /sbin/ldconfig
-
-%post   -n libbd_vdo%{somajor} -p /sbin/ldconfig
-%postun -n libbd_vdo%{somajor} -p /sbin/ldconfig
 
 %files
 %dir %{_sysconfdir}/libblockdev
@@ -679,13 +657,5 @@ find %{buildroot} -name "*.la" -print -type f -delete
 %{_includedir}/blockdev/module.h
 %{_includedir}/blockdev/sizes.h
 %{_includedir}/blockdev/utils.h
-
-%files -n libbd_vdo%{somajor}
-%{_libdir}/libbd_vdo.so.%{somajor}*
-
-%files -n libbd_vdo-devel
-%{_libdir}/libbd_vdo.so
-%dir %{_includedir}/blockdev
-%{_includedir}/blockdev/vdo.h
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 27 17:26:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop packaging deprecated libbd_vdo2 and libbd_vdo-devel, via
+  passing without-vdo to configure. Also add Obsoletes for both
+  packages aswell as the 2 alternative package names they provided.
+  Standalone vdo modules are deprecated in udisks2 since version
+  2.9.0, and we have stopped building them there, and udisks2 was
+  the only known consumer of libblockdevs vdo support, stop
+  building them here also.
+
+-------------------------------------------------------------------
 Tue Jan 18 13:06:33 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Remove unnecessary dependency of libbd_part2 on multipath-tools
