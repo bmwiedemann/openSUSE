@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 24 14:32:51 UTC 2022 - pgajdos@suse.com
+
+- work with python3
+- added patches
+  fix https://github.com/log0/pydot3/pull/5
+  + python-pydot3-python3.patch
+
+-------------------------------------------------------------------
 Thu Jun 29 15:17:34 UTC 2017 - jmatejek@suse.com
 
 - drop undefine for python2, this works fine for all pythons

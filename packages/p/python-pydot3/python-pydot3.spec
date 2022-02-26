@@ -1,7 +1,7 @@
 #
-# spec file for package python-pydot3
+# spec file
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,10 +26,12 @@ Release:        0
 Summary:        Create (dot) graphs from python
 License:        MIT
 Group:          Development/Libraries/Python
-Url:            https://pypi.python.org/pypi/pydot3
+URL:            https://pypi.python.org/pypi/pydot3
 Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
 Source1:        example-demo.py
 Source2:        example-rank.py
+# https://github.com/log0/pydot3/pull/5
+Patch0:         python-pydot3-python3.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       graphviz
@@ -43,6 +45,7 @@ Currently all attributes implemented in the Dot language are supported (up to Gr
 
 %prep
 %setup -q -n %{modname}-%{version}
+%patch0 -p1
 
 mkdir examples && cp %{SOURCE1} %{SOURCE2} examples
 
