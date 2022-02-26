@@ -1,7 +1,7 @@
 #
 # spec file for package python-tensorpac
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-tensorpac
-Version:        0.6.5
+Version:        1.1
 Release:        0
 Summary:        Tensor-based phase-Amplitude coupling package
 License:        BSD-3-Clause
 URL:            https://etiennecmb.github.io/tensorpac/
-Source:         https://files.pythonhosted.org/packages/source/t/tensorpac/tensorpac-%{version}.tar.gz
+Source:         https://github.com/EtienneCmb/tensorpac/archive/refs/tags/v%{version}.tar.gz#/tensorpac-%{version}.tar.gz
 BuildRequires:  %{python_module joblib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -73,6 +73,7 @@ donttest+=" or (TestPac and test_pac_comodulogram)"
 donttest+=" or (TestErpac and test_fit)"
 donttest+=" or (TestErpac and test_filterfit)"
 donttest+=" or (TestErpac and test_functional_erpac)"
+donttest+=" or (TestUtils and test_psd)"
 %pytest -k "not ($donttest)"
 
 %files %{python_files}

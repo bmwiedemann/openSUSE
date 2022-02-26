@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>888436</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e53a097de2419cd2ea3e20aaad8c368</srcmd5>
+    <version>1.1</version>
+    <time>1645891341</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrading to 1.1 (from GitHub tarball): no changelog was made
+  available.
+</comment>
+    <requestid>957746</requestid>
+  </revision>
 </revisionlist>
