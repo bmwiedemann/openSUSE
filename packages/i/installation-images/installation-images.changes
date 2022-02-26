@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Feb 24 10:51:49 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#580
+- fix user/group creation in initrd (bsc#1196331)
+- 17.45
+
+--------------------------------------------------------------------
 Tue Feb 22 08:50:15 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#579
