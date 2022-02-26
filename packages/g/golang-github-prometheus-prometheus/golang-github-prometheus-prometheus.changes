@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 15:27:25 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix Firewalld configuration file location (bsc#1196300)
+
+-------------------------------------------------------------------
 Fri Feb 18 15:09:09 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Require Go 1.16+

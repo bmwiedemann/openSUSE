@@ -97,8 +97,8 @@ install -m 0755 -d %{buildroot}%{_fillupdir}
 install -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus
 
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
-install -m 0755 -d %{buildroot}%{_libdir}/firewalld/services/
-install -m 0644 %{SOURCE5} %{buildroot}%{_libdir}/firewalld/services/prometheus.xml
+install -m 0755 -d %{buildroot}%{_prefix}/lib/firewalld/services/
+install -m 0644 %{SOURCE5} %{buildroot}%{_prefix}/lib/firewalld/services/prometheus.xml
 %endif
 
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
@@ -144,9 +144,9 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
 %config(noreplace) %{_sysconfdir}/prometheus/prometheus.yml
 
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
-%dir %{_libdir}/firewalld
-%dir %{_libdir}/firewalld/services
-%{_libdir}/firewalld/services/prometheus.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/prometheus.xml
 %endif
 
 %changelog
