@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-oidc-provider
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        OpenID Connect Provider implementation for Django
 License:        MIT
 URL:            https://github.com/juanifioren/django-oidc-provider
 Source:         https://github.com/juanifioren/django-oidc-provider/archive/v%{version}.tar.gz#/django-oidc-provider-%{version}.tar.gz
-Patch0:         django3.patch
+# PATCH-FIX-UPSTREAM django4.patch gh#juanifioren/django-oidc-provider#399 mcepl@suse.com
+# Django 4 doesn't have ugettext_lazy function
+Patch1:         django4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +49,7 @@ OpenID Connect Provider implementation for Django.
 
 %prep
 %setup -q -n django-oidc-provider-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python_build
@@ -57,7 +59,8 @@ OpenID Connect Provider implementation for Django.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#juanifioren/django-oidc-provider#400
+%pytest -k 'not test_makemigrations_output'
 
 %files %{python_files}
 %doc README.md

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 25 18:30:29 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Replace django3.patch with django4.patch from
+  gh#juanifioren/django-oidc-provider#400.
+
+-------------------------------------------------------------------
 Tue Apr 28 09:57:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work with Django 3.x:
