@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 25 15:30:16 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220225.65cf38f7:
+  * freeze: Copy weakremovers.inc from target project to avoid bitrot
+
+-------------------------------------------------------------------
 Fri Feb 25 10:19:51 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220225.970e958e:
