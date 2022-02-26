@@ -196,4 +196,12 @@ For staging:n</comment>
   bundler and other built in gems</comment>
     <requestid>913949</requestid>
   </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>d296793bd375abb44064ff00d3f49a6f</srcmd5>
+    <version>2.6</version>
+    <time>1645891301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957504</requestid>
+  </revision>
 </revisionlist>

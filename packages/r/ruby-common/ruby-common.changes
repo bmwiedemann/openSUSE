@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 23 22:30:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in gem_build_cleanup 
+
+-------------------------------------------------------------------
 Tue Aug 24 06:46:07 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Do not create links in /etc/alternatives at all - they are ghosts
