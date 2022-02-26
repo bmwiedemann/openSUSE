@@ -52,7 +52,7 @@ for devices running Samba, like NAS or file sharing servers on your local networ
 %patch1 -p1
 
 %build
-%sysusers_generate_pre %{SOURCE6} %{name}
+%sysusers_generate_pre %{SOURCE6} %{name} %{name}-user.conf
 
 %install
 install -m 755 -D src/wsdd.py %{buildroot}%{_sbindir}/%{name}
