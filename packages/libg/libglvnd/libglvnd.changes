@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 24 15:23:24 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update libglvnd-add-bti.patch from latest upstream submission
+
+-------------------------------------------------------------------
 Fri Jan 21 09:05:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Re-enable asm on aarch64

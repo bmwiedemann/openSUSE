@@ -294,4 +294,12 @@
   * libglvnd-add-bti.patch - boo#1188928</comment>
     <requestid>947893</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>fd3e0324dcc0f66028a5ad38d79ca60d</srcmd5>
+    <version>1.4.0</version>
+    <time>1645891322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957412</requestid>
+  </revision>
 </revisionlist>

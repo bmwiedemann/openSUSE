@@ -29,7 +29,7 @@ Source:         https://github.com/NVIDIA/libglvnd/archive/v%{version}.tar.gz#/%
 Source1:        baselibs.conf
 Source2:        libglvnd.rpmlintrc
 Patch1:         disable-glx-tests.patch
-# PATCH-FIX-UPSTREAM - https://github.com/NVIDIA/libglvnd/pull/214
+# PATCH-FIX-UPSTREAM - https://gitlab.freedesktop.org/glvnd/libglvnd/-/merge_requests/262
 Patch2:         libglvnd-add-bti.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
