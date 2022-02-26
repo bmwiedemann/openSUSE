@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Feb 24 14:49:33 UTC 2022 - aplanas@suse.com
+
+- Drop patches beacuse merged upstream:
+  * version.diff
+  * cloud_verifier_tornado-use-fork_processes.patch
+- Drop binaries not used anymore:
+  * keylime_provider_platform_init
+  * keylime_provider_registrar
+  * keylime_provider_vtpm_add
+- Update to version v6.3.1:
+  * revocation_notifier: mark webhook threads as daemon and add timeout
+  * Fix Packit CI test plan Summary
+  * Enable Packit CI testing on CentOS Stream 8
+  * Enable Packit CI testing on Fedora Rawhide
+  * Remove last trace of TPM 1.2 (hopefully)
+  * verifier: remove start_tornado() function
+  * verifier: wait for connections to be closed before stopping ioloop
+  * revocation_notifier: kill ZeroMQ broker if it blocks more than 5s
+  * Add more e2e tests to Packit CI
+  * Enable EPEL repo on CentOS Stream in packit.yaml
+  * agent, crypto: add localhost, server and contact ip to agent certificate
+  * Add better default repo path for run_local.sh
+  * Fix incorrect variable name in test_restful
+  * Run existing agent tests against the rust-keylime agent
+  * Fix small wording mistakes caught while reading the code
+  * agent: move key and certificate logging levels from debug to info
+  * agent: allow absolute paths for rsa_keyname and mtls_cert
+  * Add missing backend parameter
+  * cloud_verifier_tornado: use fork_processes
+  * ci: automatically push release to PyPI
+  * setup.{py,cfg}: Move setup configuration to setup.cfg
+  * Add iproute tool to Dockerfile
+  * Pylint does not like single-line functions.
+  * A small beauty fix
+  * This is a small fix to proactively fix Issue #840 by identifying non-escaped double quotes in the tpm2-tools output
+  * setup.py: add version number and new Python versions, drop unsed binaries
+  * setup.py, config: install default configuration into package path
+  * ci: move old keylime.conf to keylime.conf.orig before running tests
+  * retry: fix pylint issue
+  * Adding Infineon Optiga 034 RSA and ECC certificates for Infineon SLB9675 devices.
+  * Ensure columns "mb_refstate" and "allowlist" are of type LONGTEXT in table "verifiermain"
+  * tenant: add exponential backoff option to retry timings
+  * cloud verifier: add exponential backoff option to retry timings
+  * tpm: add exponential backoff option to retry timings
+  * test, retry: add unit test for retry algorithm
+  * common: add algorithm for retry time calculation
+  * registrar, tpm_main: ensure that correct types are commited to DB.
+  * Fix typo for config param listen_notifications
+  * Lint is _really_ unhappy today.
+  * Linty fixes
+  * Adding a unit test file for tpm_main
+  * tpm_main: check if PCRs for the hash algorithm are available
+  * tpm_main: handle if tpm2_checkquote returns no PCRs for a hash algorithm
+  * agent: output supported_version as result not as a status
+  * Add missing subcommands to -c help message
+  * tests: fix mtls_cert generation in test_restful.py
+  * revocation_notifier: fix socket path permission check
+  * Remove unused database_query config param
+  * Move umask calls only on entry points
+  * config: move directory utilities to fs_util
+
+-------------------------------------------------------------------
 Mon Feb  7 16:28:22 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Change back agent_uuid to hostname

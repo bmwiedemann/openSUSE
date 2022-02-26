@@ -25,21 +25,17 @@
 %bcond_with cfssl
 %endif
 Name:           keylime
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
 URL:            https://github.com/keylime/keylime
 Source0:        %{name}-v%{version}.tar.xz
 Source1:        keylime.xml
-# PATCH-FIX-OPENSUSE version.diff
-Patch1:         version.diff
 # PATCH-FIX-OPENSUSE keylime.conf.diff
-Patch2:         keylime.conf.diff
+Patch1:         keylime.conf.diff
 # PATCH-FIX-OPENSUSE config-libefivars.diff
-Patch3:         config-libefivars.diff
-# PATCH-FIX-UPSTREAM cloud_verifier_tornado-use-fork_processes.patch (gh#keylime/keylime!880)
-Patch4:         cloud_verifier_tornado-use-fork_processes.patch
+Patch2:         config-libefivars.diff
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -145,9 +141,6 @@ cp -r %{srcname}/static %{buildroot}%{python_sitelib}/%{srcname}
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_tenant
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ca
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_migrations_apply
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_provider_platform_init
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_provider_registrar
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_provider_vtpm_add
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_userdata_encrypt
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ima_emulator
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_webapp
@@ -155,8 +148,6 @@ cp -r %{srcname}/static %{buildroot}%{python_sitelib}/%{srcname}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if 0%{?suse_version} >= 1550
-# setup.py copy keylime.conf in /etc, but we expect it in /usr/etc
-rm %{buildroot}%{_sysconfdir}/%{srcname}.conf
 install -Dpm 600 %{srcname}.conf %{buildroot}%{_prefix}%{_sysconfdir}/%{srcname}.conf
 %else
 install -Dpm 600 %{srcname}.conf %{buildroot}%{_sysconfdir}/%{srcname}.conf
@@ -181,9 +172,6 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_install_alternative %{srcname}_tenant
 %python_install_alternative %{srcname}_ca
 %python_install_alternative %{srcname}_migrations_apply
-%python_install_alternative %{srcname}_provider_platform_init
-%python_install_alternative %{srcname}_provider_registrar
-%python_install_alternative %{srcname}_provider_vtpm_add
 %python_install_alternative %{srcname}_userdata_encrypt
 %python_install_alternative %{srcname}_ima_emulator
 %python_install_alternative %{srcname}_webapp
@@ -195,9 +183,6 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_uninstall_alternative %{srcname}_tenant
 %python_uninstall_alternative %{srcname}_ca
 %python_uninstall_alternative %{srcname}_migrations_apply
-%python_uninstall_alternative %{srcname}_provider_platform_init
-%python_uninstall_alternative %{srcname}_provider_registrar
-%python_uninstall_alternative %{srcname}_provider_vtpm_add
 %python_uninstall_alternative %{srcname}_userdata_encrypt
 %python_uninstall_alternative %{srcname}_ima_emulator
 %python_uninstall_alternative %{srcname}_webapp
@@ -250,9 +235,6 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_alternative %{_bindir}/%{srcname}_tenant
 %python_alternative %{_bindir}/%{srcname}_ca
 %python_alternative %{_bindir}/%{srcname}_migrations_apply
-%python_alternative %{_bindir}/%{srcname}_provider_platform_init
-%python_alternative %{_bindir}/%{srcname}_provider_registrar
-%python_alternative %{_bindir}/%{srcname}_provider_vtpm_add
 %python_alternative %{_bindir}/%{srcname}_userdata_encrypt
 %python_alternative %{_bindir}/%{srcname}_ima_emulator
 %python_alternative %{_bindir}/%{srcname}_webapp
