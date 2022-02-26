@@ -8,11 +8,11 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v16.13.0/Makefile
+Index: node-v16.14.0/Makefile
 ===================================================================
---- node-v16.13.0.orig/Makefile
-+++ node-v16.13.0/Makefile
-@@ -52,7 +52,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
+--- node-v16.14.0.orig/Makefile
++++ node-v16.14.0/Makefile
+@@ -55,7 +55,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
  
@@ -21,10 +21,10 @@ Index: node-v16.13.0/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v16.13.0/tools/install.py
+Index: node-v16.14.0/tools/install.py
 ===================================================================
---- node-v16.13.0.orig/tools/install.py
-+++ node-v16.13.0/tools/install.py
+--- node-v16.14.0.orig/tools/install.py
++++ node-v16.14.0/tools/install.py
 @@ -86,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -85,7 +85,7 @@ Index: node-v16.13.0/tools/install.py
  
    if 'true' == variables.get('node_install_npm'):
      npm_files(action)
-@@ -201,28 +201,28 @@ def headers(action):
+@@ -203,28 +203,28 @@ def headers(action):
      'src/node_buffer.h',
      'src/node_object_wrap.h',
      'src/node_version.h',
@@ -122,10 +122,10 @@ Index: node-v16.13.0/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-v16.13.0/doc/node.1
+Index: node-v16.14.0/doc/node.1
 ===================================================================
---- node-v16.13.0.orig/doc/node.1
-+++ node-v16.13.0/doc/node.1
+--- node-v16.14.0.orig/doc/node.1
++++ node-v16.14.0/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -155,10 +155,10 @@ Index: node-v16.13.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v16.13.0/src/node.stp
+Index: node-v16.14.0/src/node.stp
 ===================================================================
---- node-v16.13.0.orig/src/node.stp
-+++ node-v16.13.0/src/node.stp
+--- node-v16.14.0.orig/src/node.stp
++++ node-v16.14.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -231,12 +231,12 @@ Index: node-v16.13.0/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v16.13.0/deps/npm/man/man1/npm.1
+Index: node-v16.14.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v16.13.0.orig/deps/npm/man/man1/npm.1
-+++ node-v16.13.0/deps/npm/man/man1/npm.1
+--- node-v16.14.0.orig/deps/npm/man/man1/npm.1
++++ node-v16.14.0/deps/npm/man/man1/npm.1
 @@ -1,6 +1,6 @@
- .TH "NPM" "1" "October 2021" "" ""
+ .TH "NPM" "1" "January 2022" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm16\fR \- javascript package manager
@@ -306,10 +306,10 @@ Index: node-v16.13.0/deps/npm/man/man1/npm.1
 +npm16 help publish
  
  .RE
-Index: node-v16.13.0/src/node_main.cc
+Index: node-v16.14.0/src/node_main.cc
 ===================================================================
---- node-v16.13.0.orig/src/node_main.cc
-+++ node-v16.13.0/src/node_main.cc
+--- node-v16.14.0.orig/src/node_main.cc
++++ node-v16.14.0/src/node_main.cc
 @@ -122,6 +122,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -318,10 +318,10 @@ Index: node-v16.13.0/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v16.13.0/tools/test.py
+Index: node-v16.14.0/tools/test.py
 ===================================================================
---- node-v16.13.0.orig/tools/test.py
-+++ node-v16.13.0/tools/test.py
+--- node-v16.14.0.orig/tools/test.py
++++ node-v16.14.0/tools/test.py
 @@ -935,7 +935,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -331,10 +331,10 @@ Index: node-v16.13.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v16.13.0/node.gyp
+Index: node-v16.14.0/node.gyp
 ===================================================================
---- node-v16.13.0.orig/node.gyp
-+++ node-v16.13.0/node.gyp
+--- node-v16.14.0.orig/node.gyp
++++ node-v16.14.0/node.gyp
 @@ -23,8 +23,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
@@ -346,10 +346,10 @@ Index: node-v16.13.0/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      # We list the deps/ files out instead of globbing them in js2c.py since we
-Index: node-v16.13.0/deps/npm/man/man1/npx.1
+Index: node-v16.14.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v16.13.0.orig/deps/npm/man/man1/npx.1
-+++ node-v16.13.0/deps/npm/man/man1/npx.1
+--- node-v16.14.0.orig/deps/npm/man/man1/npx.1
++++ node-v16.14.0/deps/npm/man/man1/npx.1
 @@ -5,15 +5,15 @@
  .P
  .RS 2

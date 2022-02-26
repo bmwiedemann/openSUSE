@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb 17 12:31:36 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to LTS release 16.14.0:
+  * deps: upgrade npm to 8.1.4
+  * child_process: add support for URL to cp.fork
+  * fs: accept URL as argument for fs.rm and fs.rmSync
+  * lib:
+    + make AbortSignal cloneable/transferable
+    + add AbortSignal.timeout
+    + add reason to AbortSignal
+    + add unsubscribe method to non-active DC channels
+  * process: add getActiveResourcesInfo()
+  * src:
+    + add x509.fingerprint512 to crypto module
+    + add flags for controlling process behavior
+  * stream:
+    + add map and filter methods to readable
+    + deprecate thenable support
+  * timers: add experimental scheduler api
+  * util:
+    + add numericSeparator to util.inspect
+    + always visualize cause property in errors during inspection
+    + pass through the inspect function to custom inspect functions
+
+npm_search_paths.patch, versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Fri Jan 28 16:09:53 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Add buildtime version check to determine if we need patched

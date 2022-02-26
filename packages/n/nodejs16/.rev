@@ -234,4 +234,12 @@
   openssl Requires: or already in upstream. (bsc#1192489)</comment>
     <requestid>949749</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e8184f55eaf860b30801a9267908dffe</srcmd5>
+    <version>16.14.0</version>
+    <time>1645891318</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>957362</requestid>
+  </revision>
 </revisionlist>
