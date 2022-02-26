@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 24 13:23:35 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Fix a regression caused by the split of the sysusers config files shipped by
+  systemd (bsc#1196322)
+
+  Calls to %sysusers_create were not updated accordingly.
+
+-------------------------------------------------------------------
+Wed Feb 23 17:46:12 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: fix dependencies for mini variants (follow-up)
+
+  systemd-mini-container is one of the sub-package that relies systemd-mini to
+  conflict with kiwi and to not be installed on real systems.
+
+-------------------------------------------------------------------
 Tue Feb 22 15:22:16 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit 0bb1977021be2fc9ebfae10d766dff0b1a457f88 (merge of v249.10)

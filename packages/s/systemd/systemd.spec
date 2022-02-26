@@ -388,10 +388,8 @@ Provides:       nss-mymachines = %{version}-%{release}
 Provides:       systemd-container = %{version}-%{release}
 Provides:       systemd:%{_bindir}/systemd-nspawn
 %if 0%{?bootstrap}
-Conflicts:      kiwi
 Conflicts:      systemd-container
 Provides:       systemd-container = %{version}-%{release}
-Requires:       this-is-only-for-build-envs
 %endif
 
 %description container
@@ -951,7 +949,9 @@ pam-config --add --systemd || :
 # systemd-sysusers is not available in %pre so this needs to be done
 # in %%post. However this shouldn't be an issue since all files the
 # main package ships are owned by root.
-%sysusers_create systemd.conf
+%sysusers_create systemd-journal.conf
+%sysusers_create systemd-network.conf
+%sysusers_create systemd-timesync.conf
 
 [ -e %{_localstatedir}/lib/random-seed ] && mv %{_localstatedir}/lib/random-seed %{_localstatedir}/lib/systemd/ || :
 /usr/lib/systemd/systemd-random-seed save || :
@@ -1171,6 +1171,7 @@ fi
 %endif
 %if %{with resolved}
 %ldconfig
+%sysusers_create systemd-resolve.conf
 %service_add_post systemd-resolved.service
 %endif
 

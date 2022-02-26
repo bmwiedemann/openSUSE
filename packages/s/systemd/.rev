@@ -5837,4 +5837,18 @@ handle manual pages that consist only of a .so directive such as
 - Fix build if %_distconfdir is not defined (see bsc#1195679)</comment>
     <requestid>956820</requestid>
   </revision>
+  <revision rev="350" vrev="2">
+    <srcmd5>6dd9d4f7f3dad7eb41131b4ce811b424</srcmd5>
+    <version>249.10</version>
+    <time>1645891319</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a regression caused by the split of the sysusers config files shipped by
+  systemd (bsc#1196322)
+  Calls to %sysusers_create were not updated accordingly.
+
+- spec: fix dependencies for mini variants (follow-up)
+  systemd-mini-container is one of the sub-package that relies systemd-mini to
+  conflict with kiwi and to not be installed on real systems.</comment>
+    <requestid>957371</requestid>
+  </revision>
 </revisionlist>
