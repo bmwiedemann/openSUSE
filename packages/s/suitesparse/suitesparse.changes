@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 24 13:59:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build parallel to reduce build time by ~ 30% 
+
+-------------------------------------------------------------------
 Thu Aug  5 08:13:50 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use asimdrdm CPU flag for aarch64 to select only more powerful

@@ -1,7 +1,7 @@
 #
 # spec file for package suitesparse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -612,12 +612,8 @@ rm SPQR/Doc/spqr.pdf
 %patch775418 -p1
 
 %build
-%ifarch ppc64le aarch64
 %define limitbuild 1500
 %limit_build -m %{limitbuild}
-%define JOBS %{jobs}
-%define _lto_cflags -flto=%{jobs}
-%endif
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %if 0%{?suse_version} < 1500
@@ -631,7 +627,11 @@ blas_lib=-lopenblas
 blas_lib=-lblas
 %endif
 
-make MY_METIS_LIB="-lmetis" LAPACK="-llapack" BLAS="$blas_lib" TBB="-ltbb" CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" go
+# Better performance with -flto
+unset MALLOC_CHECK_
+unset MALLOC_PERTURB_
+
+%make_jobs MY_METIS_LIB="-lmetis" LAPACK="-llapack" BLAS="$blas_lib" TBB="-ltbb" CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" go
 chrpath -d lib/*.so.*.*
 chrpath -d GraphBLAS/build/*.so
 chrpath -d GraphBLAS/build/*.so.*.*
