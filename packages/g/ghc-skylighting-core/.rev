@@ -222,4 +222,12 @@
     <comment>version update</comment>
     <requestid>953532</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8663e71930f79f085f5893f96136bda0</srcmd5>
+    <version>0.12.3</version>
+    <time>1645891334</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>957681</requestid>
+  </revision>
 </revisionlist>

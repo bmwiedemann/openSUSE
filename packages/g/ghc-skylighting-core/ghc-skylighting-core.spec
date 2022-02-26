@@ -19,7 +19,7 @@
 %global pkg_name skylighting-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        Syntax highlighting library
 License:        BSD-3-Clause

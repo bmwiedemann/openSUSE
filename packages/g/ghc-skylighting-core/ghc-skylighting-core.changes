@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 18 19:54:42 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.12.3.
+  ## 0.12.3
+
+    * Add scss, sass, systemverilog, orgmode.
+
+    * Update xml definitions from upstream: bash, css, python, r, zsh.
+
+-------------------------------------------------------------------
 Wed Jan 19 23:13:22 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update skylighting-core to version 0.12.2.
