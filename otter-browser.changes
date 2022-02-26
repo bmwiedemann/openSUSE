@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 25 18:31:18 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.0.03:
+  * updated QtWebEngine to (silently) breaking upstream changes
+  * updated translations
+  * some other backports
+
+-------------------------------------------------------------------
 Sun Jun 27 09:58:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the optional QtWebKit dependency.

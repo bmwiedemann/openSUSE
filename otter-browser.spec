@@ -1,7 +1,7 @@
 #
 # spec file for package otter-browser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           otter-browser
-Version:        1.0.02
+Version:        1.0.03
 Release:        0
 Summary:        Web browser with aspects of Opera
 License:        GPL-3.0-or-later
