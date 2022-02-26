@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -3313,9 +3313,11 @@ unsorted:
   - enlightenment-devel 
   - enlightenment-profiles-openSUSE 
   - enlightenment-theme-Flat 
+  - enlightenment-theme-dark 
   - enlightenment-theme-openSUSE 
   - enlightenment-theme-openSUSE-ice 
   - enlightenment-theme-openSUSE-neon 
+  - enlightenment-theme-openSUSE-oliveleaf 
   - enlightenment-theme-upstream 
   - enlightenment-x-Flat-icon-theme 
   - enscript 
@@ -10115,9 +10117,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -13322,8 +13324,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13346,7 +13348,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13573,7 +13575,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-lua 
@@ -14758,7 +14760,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -18055,9 +18057,11 @@ unsorted:
   - openSUSE-appdata-extra 
   - openSUSE-appstream-process 
   - openSUSE-driverupdate 
+  - openSUSE-e-X-Dark-Icons 
   - openSUSE-e-X-Ice-Icons 
   - openSUSE-e-X-Icons 
   - openSUSE-e-X-Neon-Icons 
+  - openSUSE-e-X-Oliveleaf-Icons 
   - openSUSE-release-appliance 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
@@ -20356,7 +20360,6 @@ unsorted:
   - php7-bcmath 
   - php7-bz2 
   - php7-calendar 
-  - php7-cli 
   - php7-curl 
   - php7-dba 
   - php7-devel 
@@ -20367,8 +20370,6 @@ unsorted:
   - php7-fileinfo 
   - php7-fpm 
   - php7-ftp 
-  - php7-gd 
-  - php7-gettext 
   - php7-gmagick 
   - php7-gmp 
   - php7-ice 
@@ -20377,10 +20378,8 @@ unsorted:
   - php7-ldap 
   - php7-lzf 
   - php7-maxminddb 
-  - php7-mbstring 
   - php7-memcache 
   - php7-memcached 
-  - php7-mysql 
   - php7-odbc 
   - php7-opcache 
   - php7-pcntl 
@@ -20411,33 +20410,46 @@ unsorted:
   - php7-xsl 
   - php7-zip 
   - php7-zlib 
+  - php8 
   - php8-APCu 
   - php8-bcmath 
   - php8-bz2 
   - php8-calendar 
+  - php8-cli 
+  - php8-ctype 
   - php8-curl 
   - php8-dba 
   - php8-devel 
+  - php8-dom 
   - php8-embed 
   - php8-enchant 
   - php8-exif 
   - php8-fastcgi 
   - php8-ffi 
   - php8-fileinfo 
+  - php8-fpm 
+  - php8-fpm-apache 
   - php8-ftp 
+  - php8-gd 
+  - php8-gettext 
   - php8-gmagick 
   - php8-gmp 
   - php8-ice 
+  - php8-iconv 
   - php8-imagick 
   - php8-intl 
   - php8-ldap 
   - php8-lzf 
   - php8-maxminddb 
+  - php8-mbstring 
   - php8-memcache 
   - php8-memcached 
+  - php8-mysql 
   - php8-odbc 
   - php8-opcache 
+  - php8-openssl 
   - php8-pcntl 
+  - php8-pdo 
   - php8-pear 
   - php8-pecl 
   - php8-pgsql 
@@ -20452,13 +20464,17 @@ unsorted:
   - php8-soap 
   - php8-sockets 
   - php8-sodium 
+  - php8-sqlite 
   - php8-sysvmsg 
   - php8-sysvsem 
   - php8-sysvshm 
   - php8-test 
   - php8-tidy 
+  - php8-tokenizer 
   - php8-uuid 
   - php8-xdebug 
+  - php8-xmlreader 
+  - php8-xmlwriter 
   - php8-xsl 
   - php8-zip 
   - php8-zlib 
@@ -22736,11 +22752,13 @@ unsorted:
   - python310-django-pglocks 
   - python310-django-phonenumber-field 
   - python310-django-picklefield 
+  - python310-django-pipeline 
   - python310-django-polymorphic 
   - python310-django-push-notifications 
   - python310-django-qsessions 
   - python310-django-redis 
   - python310-django-registration 
+  - python310-django-request 
   - python310-django-rest-framework-client 
   - python310-django-rest-framework-social-oauth2 
   - python310-django-reversion 
@@ -22752,6 +22770,7 @@ unsorted:
   - python310-django-sortedm2m 
   - python310-django-storages 
   - python310-django-tables2 
+  - python310-django-tagging 
   - python310-django-timezone-field 
   - python310-django-treebeard 
   - python310-django-user-agents 
@@ -24888,19 +24907,14 @@ unsorted:
   - python36-devel 
   - python36-django-invitations 
   - python36-django-money 
-  - python36-django-oidc-provider 
   - python36-django-oscar 
-  - python36-django-pipeline 
-  - python36-django-request 
   - python36-django-rest-invitations 
   - python36-django-rest-knox 
-  - python36-django-tagging 
   - python36-django-tastypie 
   - python36-doc 
   - python36-doc-devhelp 
   - python36-google-pasta 
   - python36-idle 
-  - python36-mrkd 
   - python36-pip-licenses 
   - python36-raven-aiohttp 
   - python36-requests-gssapi 
@@ -25877,7 +25891,6 @@ unsorted:
   - python38-django-money 
   - python38-django-nine 
   - python38-django-oauth-toolkit 
-  - python38-django-oidc-provider 
   - python38-django-oscar 
   - python38-django-pandas 
   - python38-django-parler 
@@ -26570,7 +26583,6 @@ unsorted:
   - python38-mplcursors 
   - python38-mpld3 
   - python38-mrcz 
-  - python38-mrkd 
   - python38-msal 
   - python38-msal-extensions 
   - python38-msgpack-numpy 
@@ -28917,7 +28929,6 @@ unsorted:
   - python39-django-money 
   - python39-django-nine 
   - python39-django-oauth-toolkit 
-  - python39-django-oidc-provider 
   - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
@@ -29664,7 +29675,6 @@ unsorted:
   - python39-mpld3 
   - python39-mpmath 
   - python39-mrcz 
-  - python39-mrkd 
   - python39-msal 
   - python39-msal-extensions 
   - python39-msgpack 
@@ -31668,7 +31678,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
@@ -33191,6 +33201,7 @@ unsorted:
   - terminator-lang 
   - terminology 
   - terminology-lang 
+  - terminology-theme-Flat 
   - terminology-theme-dark 
   - terminology-theme-misc 
   - terminology-theme-openSUSE 
