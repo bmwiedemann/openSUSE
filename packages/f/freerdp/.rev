@@ -507,4 +507,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>948440</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>76015f3a7318d0b8d5486218b5d28c6f</srcmd5>
+    <version>2.6.0</version>
+    <time>1645891306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957571</requestid>
+  </revision>
 </revisionlist>

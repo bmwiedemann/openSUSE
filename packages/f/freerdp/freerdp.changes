@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 23 12:07:48 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgraded to freerdp 2.6.0
+  * Backported android FFMPEG build scripts
+  * Updated android build dependencies
+  * Backported AINPUT channel
+
+  Fixed issues:
+  * Backported #gh:FreeRDP/FreeRDP#7303: Fix PDU length for RDPINPUT_PROTOCOL_V300
+  * Backported #gh:FreeRDP/FreeRDP#7658: Sanitize optional physical monitor size values
+  * Backported #gh:FreeRDP/FreeRDP#7426: Wayland memory corruption
+  * Backported #gh:FreeRDP/FreeRDP#7293: Remove unused codec x264
+  * Backported #gh:FreeRDP/FreeRDP#7541: Allow resolutions larger 2048x2048
+  * Backported #gh:FreeRDP/FreeRDP#7574: FFMPEG 5.0 support
+  * Backported #gh:FreeRDP/FreeRDP#7578: FFMPEG 5.0 support
+  * Backported #gh:FreeRDP/FreeRDP#7580: Fixed device hotplugging
+  * Backported #gh:FreeRDP/FreeRDP#7583: GetUserNameExA: Prefer getpwuid_r over getlogin_r over getlogin
+  * Backported #gh:FreeRDP/FreeRDP#7585: Android Mediacodec support
+
+
+-------------------------------------------------------------------
 Mon Jan 24 15:02:08 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
 
 - Enable FFmpeg support for Leap-15.2+
