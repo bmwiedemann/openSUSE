@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyjnius
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pythons python38
 Name:           python-pyjnius
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Access Java classes from Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kivy/pyjnius
 Source:         https://github.com/kivy/pyjnius/archive/%{version}.tar.gz#/pyjnius-%{version}.tar.gz
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -34,7 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Cython
 Requires:       python-six >= 1.7.0
 # SECTION test requirements
-BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.7.0}
 BuildRequires:  javapackages-local
@@ -46,13 +45,13 @@ Access Java classes from Python.
 
 %prep
 %setup -q -n pyjnius-%{version}
+sed -i 's:python:python3:' tests/test_jvm_options.py
 
 %build
 export CFLAGS="%{optflags}"
 %python_build
-
 ant jar test-compile
-ls build/pyjnius.jar
+mv build/test-classes tests
 
 %install
 %python_install
@@ -61,13 +60,12 @@ ls build/pyjnius.jar
 }
 
 %check
-
-mv jnius /tmp/jnius
-%{python_expand export CLASSPATH=${PWD}/build/pyjnius.jar:${PWD}/build/test-classes:%{buildroot}%{$python_sitearch}/jnius/src:%{buildroot}%{$python_sitearch}/jnius/:
+mv jnius jnius.hide
+%{python_expand export CLASSPATH="${PWD}/tests/test-classes:${PWD}/jnius.hide/src"
 export PYTHONPATH=${PWD}:%{buildroot}%{$python_sitearch}
-$python -m pytest
+# https://github.com/kivy/pyjnius/issues/617
+$python -m pytest -k 'not test_jvm_options'
 }
-mv /tmp/jnius .
 
 %files %{python_files}
 %doc README.md CHANGELOG.md

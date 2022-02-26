@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 25 12:48:53 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.4.1
+  **Implemented enhancements:**
+  - [\#542](https://github.com/kivy/pyjnius/pull/542) Improve performance of byte array parameters
+  - [\#515](https://github.com/kivy/pyjnius/pull/515) Allow passing Python Lambdas as Java lambdas
+  - [\#541](https://github.com/kivy/pyjnius/pull/541) Refactor of env.py
+  **Fixed bugs:**
+  - [\#549](https://github.com/kivy/pyjnius/pull/549) Fixes #548 JVM options are not correctly set by jnius_config.set_options()
+  - [\#546](https://github.com/kivy/pyjnius/pull/546) Add in missing assignable check for int parameters etc.
+  - [\#558](https://github.com/kivy/pyjnius/pull/558) Improve error message on method not found
+  - [\#567](https://github.com/kivy/pyjnius/pull/567) Fix static methods
+  - [\#566](https://github.com/kivy/pyjnius/pull/566) fix bug for constuctors with variable arguments
+  - [\#569](https://github.com/kivy/pyjnius/pull/569) set_resolve_info: replace j_self w/ resolve_static
+  - [\#595](https://github.com/kivy/pyjnius/pull/595) Use Python standard library `which` instead of OS `which`
+  **Documentation**
+  - [\#556](https://github.com/kivy/pyjnius/pull/556) fix link in readme
+  - [\#572](https://github.com/kivy/pyjnius/pull/572) update readme for python3
+  - [\#584](https://github.com/kivy/pyjnius/pull/584) Updated android.rst for python3
+  - [\#565](https://github.com/kivy/pyjnius/pull/565) Update python versions
+
+-------------------------------------------------------------------
 Mon Jan 25 11:06:29 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Python 3.6 builds
