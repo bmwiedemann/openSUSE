@@ -101,4 +101,12 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
     <comment></comment>
     <requestid>956191</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d7d5336db2e99848ebd27b6e5961eac2</srcmd5>
+    <version>4.13+56</version>
+    <time>1645891343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957770</requestid>
+  </revision>
 </revisionlist>
