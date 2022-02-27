@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 26 17:08:25 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.0.0
+  * Changes of version 15.0.0
+    = [Breaking] Metric override name change: xheight → xHeight.
+    = Add variant selector for dot and comma diacritics (#1309).
+    = Fix enclosed glyphs' placement when having glyphs
+      with different Y-shifting (#1310).
+    = Add metric override for archDepth and smallArchDepth (#1313).
+    = Fix feature application on OBJECT REPLACEMENT CHARACTER
+      (U+FFFC) and REPLACEMENT CHARACTER (U+FFFD) (#1314).
+
+-------------------------------------------------------------------
 Sun Feb 20 08:20:02 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v14.0.1
