@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Sat Feb 26 11:01:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.1:
+  * Compatibility with more recent libadwaita versions
+  * Toggle mute with M button alone
+  * Allow handling YouTube with external GStreamer plugins
+  * Fix catching errors when reading clipboard
+  * Fix missing translator-credits
+  * Fix missing gio-unix-2.0 dep
+  * Fix playback pausing when entering fullscreen with touchscreen
+  * Fix GST_PLUGIN_FEATURE_RANK env usage
+  * Fix video/audio decoder change detection
+  * Merge global video tags instead replacing them
+  * Few other misc bug fixes
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  4 11:28:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix typelib name to follow standard in openSUSE.
+
+-------------------------------------------------------------------
+Mon Sep 13 03:11:22 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.4.0:
+  * New and adaptive preferences window.
+  * Improved open URI dialog.
+  * Few small tweaks to fullscreen UI design.
+  * Show current video and audio decoders in popovers
+    (easy way to check if HW accel is used).
+  * Enabled NVDEC hardware acceleration by default
+    (requires Nvidia proprietary drivers).
+  * Added option to use PipeWire for audio output (experimental).
+  * Added option to use playbin3 element (experimental).
+  * Improved performance on devices running OpenGL ES.
+  * Translations support.
+  * New keyboard shortcuts:
+    - Leave fullscreen with Escape key.
+    - Toggle mute with Ctrl+M.
+  * More touchscreen gestures:
+    - Toggle playback with a long press.
+    - Switch playlist items via double tap on screen side.
+  * New translations:
+    - Catalan.
+    - Dutch.
+    - German.
+    - Italian.
+    - Polish.
+
+-------------------------------------------------------------------
+Fri Jun 18 14:16:31 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.3.0:
+  * Added MPRIS support.
+  * Added repeat modes: single video, whole playlist and shuffle.
+  * Support opening folders with media files.
+  * Append playlist items by holding Ctrl while doing Drag and Drop.
+  * Improved handling of keyboard shortcuts.
+  * Added more keyboard shortcuts.
+  * Added window that shows available keyboard shortcuts.
+  * Show black screen by default after playback
+    (make showing last frame optional instead).
+  * Added ability to export playlist to file.
+  * Improve handling of changing displays with different resolutions.
+  * Added support for EGL under x11 with GTK 4.3.1 or later.
+  * Added missing symbolic app icon.
+  * Some misc bug fixes and code cleanups.
+
+-------------------------------------------------------------------
+Mon Apr 19 13:14:14 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.2.1:
+  * Fix missing top left menu buttons on some system configurations
+  * Fix potential video sink deadlock
+  * Do not show mobile controls transition on launch
+  * Show tooltip with full playlist item text on hover
+  * Auto select best matching resolution for used monitor
+  * Added some YouTube related preferences
+  * Added support for live HLS videos
+  * Added support for non-adaptive live HLS streaming 
+
+-------------------------------------------------------------------
+Fri Feb 26 09:02:10 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package. 
