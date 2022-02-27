@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 19 16:19:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop prboom-enable-tessellation.diff, this is enabled
+  automatically when pkgconfig(GLU) is available (which we have).
+
+-------------------------------------------------------------------
 Sun Feb 13 11:30:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.2
