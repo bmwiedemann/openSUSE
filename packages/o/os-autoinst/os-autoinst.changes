@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 27 02:10:24 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1645893162.2162e9e2:
+  * t: Use more 'enter_cmd' where it simplifies things
+  * t: Also prevent git-related problems in 14-isotovideo and 30-make
+  * ci: Provide manual dispatch for openQA fullstack test
+  * fullstack: Address die_on_timeout deprecation messages with script_run
+  * Fix flaky poweroff in openQA full stack tests
+  * t: Add video-console testing with generalhw backend
+  * t: Add video_stream console tests
+  * generalhw: Add GENERAL_HW_IMAGE_CMD
+
+-------------------------------------------------------------------
 Thu Feb 24 10:55:08 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1645700100.d410cc0d:
