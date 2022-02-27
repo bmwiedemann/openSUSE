@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Feb 16 11:18:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.10.8:
+  * Added new option to control the build of High-Level tools
+  * Adds C++ Autotools configuration file for Intel
+  * Adds C++ Autotools configuration file for PGI
+  * Updates PGI C options
+  * CMake will now run the shell script tests in test/ by default
+  * Removed unused HDF5_ENABLE_HSIZET option from CMake
+  * CMake no longer builds the C++ library by default
+  * Removal of pre-VS2015 work-arounds
+  * Add CMake variable HDF5_LIB_INFIX
+  * Added a configure-time option to control certain compiler
+    warnings
+  * CMake option to build the HDF filter plugins project as an
+    external project
+  * Added a configure-time option to consider certain compiler
+    warnings
+  * Autotools and CMake target added to produce doxygen generated
+    documentation
+  * CMake option to build the HDF filter plugins project as an
+    external project
+  * Added CMake option to format source files
+  * Change how the release part of version, in major.minor.release
+    is checked
+  * H5Gcreate1() now rejects size_hint parameters larger than
+    UINT32_MAX
+  * H5Pset_fapl_log() no longer crashes when passed an invalid
+    fapl ID
+  * Fixes a segfault when H5Pset_mdc_log_options() is called
+    multiple times
+  * File locking now works on Windows
+  * H5Epush_ret() now requires a trailing semicolon
+  * Improved performance of H5Sget_select_elem_pointlist
+  * H5Fget_name_f fixed to handle correctly trailing whitespaces
+    and newly allocated buffers.
+  * Added new H5S functions.
+  * Refactored the perform tools and removed dependencies on test
+    library.
+  * h5repack added help text for user-defined filters.
+  * Doxygen documentation is available when configured and
+    generated.
+  * Fixed CVE-2018-17432
+  * Fixed a segmentation fault
+  * Detection of simple data transform function "x"
+  * Fixed CVE-2020-10810 - an invalid read and memory leak when
+    parsing
+  * Fixed CVE-2018-14460
+  * Fixed CVE-2018-11206
+  * Fixed CVE-2018-14033 (same issue as CVE-2020-10811)
+  * Remove underscores on header file guards
+  * H5FArray.java class:
+    - Convert the entire byte array into a 1-d array of the
+      desired type, rather than performing 1 conversion per row;
+    - Use the Java Arrays method copyOfRange to grab the section
+      of the array from (1) that is desired to be inserted into
+      the destination array.
+  * Corrected path searched by CMake find_package command
+  * Corrected pkg-config compile script
+  * Fixed CMake C++ compiler flags
+  * Autotools clang debug optimization level change
+  * Better support for libaec (open-source Szip library) in CMake
+  * Refactor CMake configure for Fortran
+  * Remove arbitrary warning flag groups from CMake builds
+  * Reclassify CMake messages, to allow new modes and --log-level
+    option
+  * Fixes Autotools determination of the stat struct having an
+    st_blocks field
+  * Changed how h5dump and h5ls identify long double.
+  * Fixed tools argument parsing.
+  * Updated doxygen comments with changes for release
+- Minor rebase of patches to apply cleanly.
+
+-------------------------------------------------------------------
 Fri Jan 29 22:05:44 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix update_so_version.sh, write so versions to file being included.

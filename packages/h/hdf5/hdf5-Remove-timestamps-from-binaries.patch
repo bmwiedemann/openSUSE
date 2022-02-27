@@ -10,29 +10,30 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  src/H5detect.c | 15 ---------------
  1 file changed, 15 deletions(-)
-Index: hdf5-1.10.7/src/H5detect.c
+Index: hdf5-1.10.8/src/H5detect.c
 ===================================================================
---- hdf5-1.10.7.orig/src/H5detect.c
-+++ hdf5-1.10.7/src/H5detect.c
-@@ -1234,21 +1234,6 @@ bit.\n";
+--- hdf5-1.10.8.orig/src/H5detect.c
++++ hdf5-1.10.8/src/H5detect.c
+@@ -1190,22 +1190,6 @@ bit.\n";
      fprintf(rawoutstream, "/* Generated automatically by H5detect -- do not edit */\n\n\n");
-     HDfputs(FileHeader, rawoutstream);        /*the copyright notice--see top of this file */
+     HDfputs(FileHeader, rawoutstream); /*the copyright notice--see top of this file */
  
--    fprintf(rawoutstream, " *\n * Created:\t\t%s %2d, %4d\n",
--    month_name[tm->tm_mon], tm->tm_mday, 1900 + tm->tm_year);
--    if(pwd || real_name[0] || host_name[0]) {
+-    fprintf(rawoutstream, " *\n * Created:\t\t%s %2d, %4d\n", month_name[tm->tm_mon], tm->tm_mday,
+-            1900 + tm->tm_year);
+-    if (pwd || real_name[0] || host_name[0]) {
 -        fprintf(rawoutstream, " *\t\t\t");
--        if(real_name[0])
+-        if (real_name[0])
 -            fprintf(rawoutstream, "%s <", real_name);
 -#ifdef H5_HAVE_GETPWUID
--        if(pwd) HDfputs(pwd->pw_name, rawoutstream);
+-        if (pwd)
+-            HDfputs(pwd->pw_name, rawoutstream);
 -#endif
--        if(host_name[0])
+-        if (host_name[0])
 -            fprintf(rawoutstream, "@%s", host_name);
--        if(real_name[0])
+-        if (real_name[0])
 -            fprintf(rawoutstream, ">");
 -        HDfputc('\n', rawoutstream);
 -    }
      fprintf(rawoutstream, " *\n * Purpose:\t\t");
-     for(s = purpose; *s; s++) {
+     for (s = purpose; *s; s++) {
          HDfputc(*s, rawoutstream);

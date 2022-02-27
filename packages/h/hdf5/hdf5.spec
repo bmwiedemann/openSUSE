@@ -1,7 +1,7 @@
 #
 # spec file for package hdf5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,8 @@
 
 %define use_sz2 0
 
-%define vers 1.10.7
-%define _vers 1_10_7
+%define vers 1.10.8
+%define _vers 1_10_8
 %define short_ver 1.10
 %define src_ver %{version}
 %define pname hdf5
@@ -912,8 +912,6 @@ export HDF5_Make_Ignore=yes
 
 %files -n %{name}
 %{?with_hpc:%dir %my_bindir}
-%{my_bindir}/gif2h5
-%{my_bindir}/h52gif
 %{my_bindir}/h5clear
 %{my_bindir}/h5copy
 %{my_bindir}/h5debug
@@ -927,6 +925,7 @@ export HDF5_Make_Ignore=yes
 %if %{with mpi}
 %{my_bindir}/ph5diff
 %{my_bindir}/h5perf
+%{my_bindir}/perf
 %endif
 %{my_bindir}/h5perf_serial
 %{my_bindir}/h5redeploy
@@ -934,13 +933,12 @@ export HDF5_Make_Ignore=yes
 %{my_bindir}/h5repart
 %{my_bindir}/h5stat
 %{my_bindir}/h5unjam
-%{my_bindir}/h5watch
 %{my_bindir}/mirror_server
 %{my_bindir}/mirror_server_stop
 
 %files -n %{libname -s %{sonum}}
 %doc ACKNOWLEDGMENTS README.txt
-%mylicense COPYING 
+%mylicense COPYING
 ##
 %if %{without mpi}
 %doc release_docs/HISTORY-1_8_0-1_10_0.txt
