@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 30 15:23:36 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to version 0.9.9:
+  * Bugfix in f-string
+  * Updated setup.py after tagging previous version
+
+- update in version 0.9.8:
+  * Update TLD list
+  * Fix #118, crash on navigating to non-existant line
+  * Pylint fixes
+  * Move to subprocess run instead of call and Popen
+  * Switch to f-strings
+
+-------------------------------------------------------------------
 Fri Oct  8 14:30:28 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 0.9.7:

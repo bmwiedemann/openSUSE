@@ -123,4 +123,20 @@
     <comment></comment>
     <requestid>928790</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>863df0cdc2c9804d05088cb36eeffef5</srcmd5>
+    <version>0.9.9</version>
+    <time>1645998195</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.9:
+  * Bugfix in f-string
+  * Updated setup.py after tagging previous version
+- update in version 0.9.8:
+  * Update TLD list
+  * Fix #118, crash on navigating to non-existant line
+  * Pylint fixes
+  * Move to subprocess run instead of call and Popen
+  * Switch to f-strings (forwarded request 950004 from akumar)</comment>
+    <requestid>957891</requestid>
+  </revision>
 </revisionlist>

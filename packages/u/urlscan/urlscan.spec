@@ -1,7 +1,7 @@
 #
 # spec file for package urlscan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define python_flavor python3
 Name:           urlscan
-Version:        0.9.7
+Version:        0.9.9
 Release:        0
 Summary:        An other URL extractor/viewer
 License:        GPL-2.0-or-later
