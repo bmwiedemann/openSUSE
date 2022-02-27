@@ -1591,4 +1591,15 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
 </comment>
     <requestid>955867</requestid>
   </revision>
+  <revision rev="167" vrev="18">
+    <srcmd5>7c7445780d42e3cc8479b374fe5af498</srcmd5>
+    <version>2.7.18</version>
+    <time>1645998170</time>
+    <user>dimstar_suse</user>
+    <comment>WOW! I really messed up that changelog. Sorry.
+
+- Update bundled pip wheel to the latest SLE version patched
+  against bsc#1186819 (CVE-2021-3572).</comment>
+    <requestid>957826</requestid>
+  </revision>
 </revisionlist>

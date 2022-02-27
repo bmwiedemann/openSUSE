@@ -36,7 +36,7 @@ Source3:        README.SUSE
 Source5:        local.pth
 # Fixed bundled wheels
 Source10:       setuptools-44.1.1-py2.py3-none-any.whl
-Source11:       pip-20.2.3-py2.py3-none-any.whl
+Source11:       pip-20.0.2-py2.py3-none-any.whl
 # For Patch 66
 Source66:       recursion.tar
 Source99:       python-base-rpmlintrc

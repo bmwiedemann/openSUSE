@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb 26 12:41:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update bundled pip wheel to the latest SLE version patched
+  against bsc#1186819 (CVE-2021-3572).
+
+-------------------------------------------------------------------
 Fri Feb 18 11:00:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - BuildRequire rpm-build-python: The provider to inject python(abi)
