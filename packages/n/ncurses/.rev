@@ -3539,4 +3539,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>956328</requestid>
   </revision>
+  <revision rev="207" vrev="11">
+    <srcmd5>97013cba0843662fa5d22106b0b212de</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1645998158</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid lto-bytecode error on static libraries
+
+- Add ncurses patch 20220219
+  + expanded description in man/resizeterm.3x
+  + additional workaround for ImageMagick in test/picsmap.c</comment>
+    <requestid>957339</requestid>
+  </revision>
 </revisionlist>

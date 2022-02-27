@@ -1,6 +1,6 @@
 ---
  aclocal.m4                  |   40 +++++++++-------
- configure                   |   42 +++++++++--------
+ configure                   |   46 ++++++++++--------
  include/curses.h.in         |    5 +-
  include/termcap.h.in        |    2 
  include/tic.h               |    4 -
@@ -15,10 +15,10 @@
  progs/Makefile.in           |    4 -
  test/test.priv.h            |    4 -
  test/tracemunch             |    2 
- 16 files changed, 204 insertions(+), 65 deletions(-)
+ 16 files changed, 206 insertions(+), 67 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2022-02-07 08:50:48.951793464 +0000
++++ aclocal.m4	2022-02-21 08:55:21.204338965 +0000
 @@ -676,7 +676,7 @@ AC_CHECK_SIZEOF(bool,,[
  AC_CACHE_CHECK(for type of bool, cf_cv_type_of_bool,[
  	rm -f cf_test.out
@@ -147,7 +147,7 @@
  esac
  done
 --- configure
-+++ configure	2022-02-07 08:50:48.951793464 +0000
++++ configure	2022-02-24 11:04:57.464898329 +0000
 @@ -5978,7 +5978,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -157,6 +157,17 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
+@@ -6351,8 +6351,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
+ 	else
+ 		cf_cv_shared_soname='`basename $@`'
+ 	fi
+-
+-		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
++		CC_SHARED_OPTS="${CFLAGS_SHARED} ${CC_SHARED_OPTS}"
++		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} ${CC_SHARED_OPTS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
+ 		;;
+ 	(mingw*msvc*)
+ 		cf_cv_shlib_version=msvcdll
 @@ -7591,7 +7591,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
@@ -285,7 +296,7 @@
  esac
  done
 --- include/curses.h.in
-+++ include/curses.h.in	2022-02-07 08:50:48.951793464 +0000
++++ include/curses.h.in	2022-02-21 08:55:21.208338888 +0000
 @@ -97,7 +97,7 @@
  
  #ifdef __cplusplus
@@ -306,7 +317,7 @@
   * We need FILE, etc.  Include this before checking any feature symbols.
   */
 --- include/termcap.h.in
-+++ include/termcap.h.in	2022-02-07 08:50:48.951793464 +0000
++++ include/termcap.h.in	2022-02-21 08:55:21.208338888 +0000
 @@ -47,6 +47,8 @@ extern "C"
  {
  #endif /* __cplusplus */
@@ -317,7 +328,7 @@
  
  #undef  NCURSES_OSPEED
 --- include/tic.h
-+++ include/tic.h	2022-02-07 08:50:48.951793464 +0000
++++ include/tic.h	2022-02-21 08:55:21.208338888 +0000
 @@ -237,12 +237,12 @@ struct user_table_entry
   */
  
@@ -334,7 +345,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- man/man_db.renames
-+++ man/man_db.renames	2022-02-07 08:50:48.951793464 +0000
++++ man/man_db.renames	2022-02-21 08:55:21.208338888 +0000
 @@ -164,6 +164,7 @@ term.7				term.7
  term_variables.3x		terminfo_variables.3ncurses
  terminfo.5			terminfo.5
@@ -352,7 +363,7 @@
  #
  getty.1				getty.8
 --- man/ncurses.3x
-+++ man/ncurses.3x	2022-02-07 08:50:48.951793464 +0000
++++ man/ncurses.3x	2022-02-21 08:55:21.208338888 +0000
 @@ -139,6 +139,10 @@ after the shell environment variable \fB
  [See \fBterminfo\fP(\*n) for further details.]
  .SS Datatypes
@@ -365,7 +376,7 @@
  called \fIwindows\fP, which can be thought of as two-dimensional
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
-+++ misc/gen-pkgconfig.in	2022-02-07 08:50:48.955793387 +0000
++++ misc/gen-pkgconfig.in	2022-02-21 08:55:21.208338888 +0000
 @@ -83,6 +83,8 @@ if [ "$includedir" != "/usr/include" ];
  fi
  
@@ -436,7 +447,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2022-02-07 08:50:48.959793312 +0000
++++ misc/terminfo.src	2022-02-21 08:55:21.208338888 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -685,7 +696,7 @@
  	s1ds=\E(0, sgr0=\E[0m\E(B, use=ibm5154,
  ibm5081-c|ibmmpel-c|IBM 5081 1024x1024 256/4096 Megapel enhanced color display,
 --- ncurses/Makefile.in
-+++ ncurses/Makefile.in	2022-02-07 08:50:48.959793312 +0000
++++ ncurses/Makefile.in	2022-02-21 08:55:21.208338888 +0000
 @@ -242,7 +242,7 @@ $(DESTDIR)$(libdir) :
  ../lib : ; mkdir $@
  
@@ -696,7 +707,7 @@
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/run_cmd.sh
-+++ ncurses/run_cmd.sh	2022-02-07 08:50:48.959793312 +0000
++++ ncurses/run_cmd.sh	2022-02-21 08:55:21.208338888 +0000
 @@ -0,0 +1,11 @@
 +#!/bin/sh
 +
@@ -710,7 +721,7 @@
 +
 +exec /bin/sh -e ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2022-02-07 08:50:48.959793312 +0000
++++ ncurses/tinfo/MKfallback.sh	2022-02-21 08:55:21.208338888 +0000
 @@ -66,14 +66,22 @@ if test $# != 0 ; then
  	TERMINFO=`pwd`/$tmp_info
  	export TERMINFO
@@ -754,7 +765,7 @@
  	done
  
 --- ncurses/tinfo/lib_setup.c
-+++ ncurses/tinfo/lib_setup.c	2022-02-07 08:50:48.959793312 +0000
++++ ncurses/tinfo/lib_setup.c	2022-02-21 08:55:21.212338812 +0000
 @@ -613,6 +613,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
      } else if ((value = tigetnum("U8")) >= 0) {
  	result = value;		/* use extension feature */
@@ -766,7 +777,7 @@
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != 0
 --- progs/Makefile.in
-+++ progs/Makefile.in	2022-02-07 08:50:48.959793312 +0000
++++ progs/Makefile.in	2022-02-21 08:55:21.212338812 +0000
 @@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
  CFLAGS_NORMAL	= $(CCFLAGS) -DNCURSES_STATIC
  CFLAGS_DEBUG	= $(CCFLAGS) -DNCURSES_STATIC @CC_G_OPT@ -DTRACE
@@ -786,7 +797,7 @@
  LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
  
 --- test/test.priv.h
-+++ test/test.priv.h	2022-02-07 08:50:48.959793312 +0000
++++ test/test.priv.h	2022-02-21 08:55:21.212338812 +0000
 @@ -1037,12 +1037,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
@@ -803,7 +814,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- test/tracemunch
-+++ test/tracemunch	2022-02-07 08:50:48.959793312 +0000
++++ test/tracemunch	2022-02-21 08:55:21.212338812 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl

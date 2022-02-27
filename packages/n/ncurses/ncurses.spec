@@ -355,7 +355,8 @@ mv tack-* tack
 # Do not run auto(re)conf here as this will fail later on ncurses
 # is build with special autoconf based on autoconf-2.13 at upstream
 #
-%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+%global _lto_cflags_shared %{?_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %nil
 #
 # Note that there is a test if the system call poll(2) really works
 # on terminal or files.  To make sure that even in OBS the configure
@@ -364,6 +365,8 @@ mv tack-* tack
 # Remark: A better solution would be that in OBS a real pty/tty pair
 # would be used instead of redirecting stdout/stderr to a log file.
 #
+CFLAGS_SHARED="%{_lto_cflags_shared}"
+export CFLAGS_SHARED
 %global _configure	screen -D -m ./configure
     SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
     SCREENRC=${SCREENDIR}/ncurses

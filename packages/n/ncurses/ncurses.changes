@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 24 11:23:19 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid lto-bytecode error on static libraries
+
+-------------------------------------------------------------------
+Mon Feb 21 08:54:53 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220219
+  + expanded description in man/resizeterm.3x
+  + additional workaround for ImageMagick in test/picsmap.c
+
+-------------------------------------------------------------------
 Mon Feb 14 08:45:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220212
