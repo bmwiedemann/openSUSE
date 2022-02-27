@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 27 01:00:40 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.15.0:
+  * Add prefer_canvas option to the Map class
+  * Use xyzservices for base maps
+  * Add Colab support by default
+  * Support any layer type in MarkerCluster
+  * Add location_found event to the SearchControl
+
+-------------------------------------------------------------------
 Sun Oct 17 19:16:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.0

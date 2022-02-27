@@ -59,4 +59,20 @@
     <comment></comment>
     <requestid>925901</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7989b282426e338152babb49c65b5ccd</srcmd5>
+    <version>0.15.0</version>
+    <time>1645998189</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * update copyright year
+- update to version 0.15.0:
+  * Add prefer_canvas option to the Map class
+  * Use xyzservices for base maps
+  * Add Colab support by default
+  * Support any layer type in MarkerCluster
+  * Add location_found event to the SearchControl
+</comment>
+    <requestid>957878</requestid>
+  </revision>
 </revisionlist>
