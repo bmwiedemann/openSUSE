@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 25 09:35:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to remove unnecessary completions (curl and pyenv
+  in this case), the ones in /usr/share/fish/vendor_completions.d
+  have precedence. Now just to make all other packages put theirs
+  in the right location!
+
+-------------------------------------------------------------------
 Thu Sep 2 20:39:41 UTC 2021 - Victorhck <victorhck@opensuse.org>
 
 - Update to 3.3.1:

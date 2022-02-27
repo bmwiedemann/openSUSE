@@ -1,7 +1,7 @@
 #
 # spec file for package fish
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,9 +67,6 @@ find share/tools -type f -name *.py -exec sed -i -r '1s|^#!%{_bindir}/env |#!%{_
 %cmake_install
 
 %find_lang %{name}
-
-# Drop the curl completions, the curl packages provide a better version
-rm %{buildroot}/%{_datadir}/fish/completions/curl.fish
 
 rm %{buildroot}/%{_datadir}/doc/fish/.buildinfo
 
