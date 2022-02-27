@@ -1,7 +1,7 @@
 #
 # spec file for package mpir
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +67,7 @@ Requires:       %lname = %version
 Requires:       %lnamexx = %version
 Requires:       libstdc++-devel
 Requires(post): %install_info_prereq
-Requires(postun): %install_info_prereq
+Requires(postun):%install_info_prereq
 
 %description -n libmpir-devel
 MPIR is an open source multiprecision integer library derived from version
@@ -87,8 +87,10 @@ applications that want to make use of libmpir.
 # Update configure scripts to modern versions.
 autoreconf -fi
 %global _lto_cflags %nil
-export CFLAGS="%optflags -fexceptions -Wno-error=return-type"
-export CXXFLAGS="%optflags -fexceptions -Wno-error=return-type"
+
+# Use -fwrap due to https://github.com/wbhart/mpir/issues/295
+export CFLAGS="%optflags -fexceptions -Wno-error=return-type -fwrapv"
+export CXXFLAGS="%optflags -fexceptions -Wno-error=return-type -fwrapv"
 # SLES11 %%configure contains --target=, but this is wrong to use.
 # Override with empty value to calm the scripts flagging uses of --target.
 %ifarch ppc64le
