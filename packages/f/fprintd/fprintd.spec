@@ -1,7 +1,7 @@
 #
 # spec file for package fprintd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,11 @@ Group:          Productivity/Security
 URL:            https://fprint.freedesktop.org/
 Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM f4256533d1ffdc203c3f8c6ee42e8dcde470a93f.patch -- Fix build with meson 0.60.x and newer
+Patch0:         https://gitlab.freedesktop.org/libfprint/fprintd/-/commit/f4256533d1ffdc203c3f8c6ee42e8dcde470a93f.patch
+# PATCH-FIX-UPSTREAM 2c34cef5ef2004d8479475db5523c572eb409a6b.patch -- Fix build with meson 0.60.x and newer
+Patch1:         https://gitlab.freedesktop.org/libfprint/fprintd/-/commit/2c34cef5ef2004d8479475db5523c572eb409a6b.patch
+
 BuildRequires:  cmake
 BuildRequires:  gobject-introspection
 BuildRequires:  gtk-doc >= 1.3
@@ -111,10 +116,14 @@ This package contains Development documents for fprintd
 %lang_package
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+%meson -Dgtk_doc=true -Dpam=true -Dpam_modules_dir=/%{_lib}/security
+%else
 %meson -Dgtk_doc=true -Dpam=true -Dpam_modules_dir=%{_pam_moduledir}
+%endif
 %meson_build
 
 %install
@@ -161,7 +170,11 @@ fi
 
 %files pam
 %doc pam/README
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+/%{_lib}/security/pam_fprintd.so
+%else
 %{_pam_moduledir}/pam_fprintd.so
+%endif
 %{_mandir}/man8/pam_fprintd.8%{?ext_man}
 
 %files doc

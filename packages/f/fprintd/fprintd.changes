@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 22 17:10:28 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bug fix patches, fix build with meson 0.60.x and
+  newer:
+  + f4256533d1ffdc203c3f8c6ee42e8dcde470a93f.patch
+  + 2c34cef5ef2004d8479475db5523c572eb409a6b.patch
+
+-------------------------------------------------------------------
+Wed Feb  9 19:30:24 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix for openSUSE Leap 15.3, makro %{_pam_moduledir} is unknown in
+  openSUSE Leap 15.3
+
+-------------------------------------------------------------------
 Tue Nov 16 18:45:04 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 1.94.1
