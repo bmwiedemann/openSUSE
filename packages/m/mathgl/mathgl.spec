@@ -1,7 +1,7 @@
 #
 # spec file for package mathgl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,22 +35,19 @@
 
 # oct_version must be x.y.z
 %define oct_version %{version}
-%define somajor 7.6.0
-%define libversion 7_6_0
-
+%define libversion 8
 %bcond_without octave
 
 %if 0%{?fedora_version}
 %define _defaultdocdir %{_docdir}
 %endif
 Name:           mathgl
-Version:        2.5
+Version:        8.0.1
 Release:        0
 Summary:        Library for making scientific graphics
 License:        GPL-3.0-only
 URL:            http://mathgl.sourceforge.net
 Source0:        http://downloads.sourceforge.net/mathgl/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM mathgl-fix-python-module-path.patch -- Make python modules install arch-depended
 Patch1:         mathgl-fix-python-module-path.patch
 # PATCH-FEATURE-UPSTREAM mathgl-examples-install.patch -- Enable examples install
@@ -79,16 +76,17 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  lua51-devel
 BuildRequires:  openmpi%{omp_ver}-devel
-BuildRequires:  swig
+BuildRequires:  swig >= 4.0
 BuildRequires:  sz2-devel
 BuildRequires:  texinfo
 BuildRequires:  texlive-filesystem
 BuildRequires:  texlive-latex
 BuildRequires:  wxWidgets-devel >= 3
 %if %{with python}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel >= 3.8
-BuildRequires:  python3-numpy-devel
+Requires:       python-numpy
 %endif
 %if %{with octave}
 BuildRequires:  octave-devel
@@ -99,6 +97,8 @@ BuildRequires:  libXmu-devel
 BuildRequires:  texi2html
 BuildRequires:  texinfo-tex
 %endif
+
+%python_subpackages
 
 %description
 MathGL is a library for making scientific graphics. It provides data
@@ -177,6 +177,7 @@ Summary:        Libraries and header files for the MathGL library
 Requires:       %{libname}%{libversion} = %{version}
 Requires:       %{libname}-fltk%{libversion} = %{version}
 Requires:       %{libname}-glut%{libversion} = %{version}
+Requires:       %{libname}-mpi%{libversion} = %{version}
 Requires:       %{libname}-qt5-%{libversion} = %{version}
 Requires:       %{libname}-wnd%{libversion} = %{version}
 Requires:       %{libname}-wx%{libversion} = %{version}
@@ -280,17 +281,6 @@ console modes and for embedding into other programs.
 This package provides Octave interface for MathGL.
 %endif
 
-%package -n     %{python_prefix}-mathgl
-Summary:        Libraries and header files for the MathGL library
-Provides:       python3-mathgl = %{version}
-
-%description -n %{python_prefix}-mathgl
-MathGL is a library for making scientific graphics. It provides data
-plotting and handling of large data arrays, as well as window and
-console modes and for embedding into other programs.
-
-This package provides the python bindings for MathGL.
-
 %package        tex
 Summary:        MathGL scripts for LaTeX documents
 Requires:       mathgl-tools >= %{version}
@@ -361,9 +351,14 @@ if [ -f %{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/mpivars.sh ]; then
   source %{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/mpivars.sh
 fi
 
+%{python_expand # For all supported python flavors
+export PYTHON=$python
+mkdir ../${PYTHON}_build
+cp -pr ./ ../${PYTHON}_build
+pushd ../${PYTHON}_build
 # cmake macros don't work
 cmake \
-      -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}   \
+      -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}  \
       -DMathGL_INSTALL_LIB_DIR:PATH=%{_lib}   \
       -DMathGL_INSTALL_CMAKE_DIR:PATH=%{_libdir}/cmake/mathgl   \
       -DTEXMFDIR:PATH=%{_datadir}/texmf/      \
@@ -382,24 +377,44 @@ cmake \
       -Denable-gif=on                         \
       -Denable-hdf5=on                        \
       -Denable-opengl=on                      \
-      -Denable-glut=on                        \
-      -Denable-fltk=on                        \
-      -Denable-wx=on                          \
-      -Denable-qt5=on                         \
       -Denable-python=%{?with_python:on}%{!?with_python:off} \
-      -Denable-lua=on                         \
-      -Denable-octave=%{?with_octave:on}%{!?with_octave:off} \
-      -Denable-octave-install=%{?with_octave:on}%{!?with_octave:off} \
-      -Denable-mgltex=on                      \
+      -DPY3VERSION_DOTTED=%{$python_version}  \
       -Denable-json-sample=off                \
+%if "%{$python_provides}" == "python3" || "$python_" == "python3_"
       -Denable-doc-html=on                    \
       -Denable-doc-pdf-en=on                  \
+      -Denable-fltk=on                        \
+      -Denable-glut=on                        \
+      -Denable-lua=on                         \
+      -Denable-mgltex=on                      \
+      -Denable-octave=%{?with_octave:on}%{!?with_octave:off} \
+      -Denable-octave-install=%{?with_octave:on}%{!?with_octave:off} \
+      -Denable-qt5=on                         \
+      -Denable-wx=on                          \
+%else
+      -Denable-doc-html=off                   \
+      -Denable-doc-pdf-en=off                 \
+      -Denable-fltk=off                       \
+      -Denable-glut=off                       \
+      -Denable-lua=off                        \
+      -Denable-mgltex=off                     \
+      -Denable-octave=off                     \
+      -Denable-octave-install=off             \
+      -Denable-qt5=off                        \
+      -Denable-wx=off                         \
+%endif
       .
 
 %make_build
+popd
+}
 
 %install
+%{python_expand # For all supported python flavors
+export PYTHON=$python
+pushd ../${PYTHON}_build
 %make_install
+%if "%{$python_provides}" == "python3" || "$python_" == "python3_"
 
 %if %{with octave}
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
@@ -427,7 +442,13 @@ ln -sf %{_datadir}/texmf/texconfig/zypper.py \
 %endif
 
 %find_lang %{name}
+# Copy mathgl.lang file to main dir for use with file list
+cp %{name}.lang %{_builddir}/%{name}-%{version}/
 
+%endif
+
+popd
+}
 # %%post doc
 # %%install_info --info-dir=%%{_infodir} %%{_infodir}/%%{name}_en.info.gz
 # %%install_info --info-dir=%%{_infodir} %%{_infodir}/%%{name}_en.info-1.gz
@@ -482,31 +503,31 @@ VERBOSE=false %{_datadir}/texmf/texconfig/update || :
 rm -f %{_localstatedir}/run/texlive/run-update
 
 %files -n %{libname}%{libversion}
-%{_libdir}/libmgl.so.%{somajor}*
+%{_libdir}/libmgl.so.%{libversion}*
 
 %files -n %{libname}-mpi%{libversion}
-%{_libdir}/libmgl-mpi.so.%{somajor}*
+%{_libdir}/libmgl-mpi.so.%{libversion}*
 
 %files -n %{libname}-fltk%{libversion}
-%{_libdir}/libmgl-fltk.so.%{somajor}*
+%{_libdir}/libmgl-fltk.so.%{libversion}*
 
 %files -n %{libname}-glut%{libversion}
-%{_libdir}/libmgl-glut.so.%{somajor}*
+%{_libdir}/libmgl-glut.so.%{libversion}*
 
 %files -n %{libname}-qt5-%{libversion}
-%{_libdir}/libmgl-qt5.so.%{somajor}*
+%{_libdir}/libmgl-qt5.so.%{libversion}*
 
 %files -n %{libname}-wnd%{libversion}
-%{_libdir}/libmgl-wnd.so.%{somajor}*
+%{_libdir}/libmgl-wnd.so.%{libversion}*
 
 %files -n %{libname}-wx%{libversion}
-%{_libdir}/libmgl-wx.so.%{somajor}*
+%{_libdir}/libmgl-wx.so.%{libversion}*
 
-%files cgi
+%files -n %{name}-cgi
 /srv/www/cgi-bin/mgl.cgi
 %{_mandir}/man1/mgl.cgi.1%{?ext_man}
 
-%files devel
+%files -n %{name}-devel
 %license COPYING
 %doc AUTHORS ChangeLog.txt README
 %{_includedir}/mgl2/
@@ -516,12 +537,12 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %{_libdir}/cmake/mathgl/*.cmake
 %{_libdir}/cmake/mathgl2/*.cmake
 
-%files lang -f %{name}.lang
+%files -n %{name}-lang -f %{name}.lang
 
-%files devel-static
+%files -n %{name}-devel-static
 %{_libdir}/*.a
 
-%files doc
+%files -n %{name}-doc
 %dir %{_docdir}/mathgl
 %doc %{_docdir}/mathgl/png/
 %doc %{_docdir}/mathgl/udav/
@@ -532,21 +553,21 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %exclude %{_docdir}/mathgl/mgl_ru.html
 # %%{_infodir}/%%{name}_en.info*.gz
 
-%files doc-pdf
+%files -n %{name}-doc-pdf
 %doc %{_docdir}/mathgl/*.pdf
 
-%files doc-ru
+%files -n %{name}-doc-ru
 %doc %{_docdir}/mathgl/mathgl_ru.html
 %doc %{_docdir}/mathgl/mgl_ru.html
 
-%files examples
+%files -n %{name}-examples
 %{_bindir}/mgl*example
 
-%files fonts
+%files -n %{name}-fonts
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/fonts/
 
-%files lua
+%files -n %{name}-lua
 %{_libdir}/mgl-lua.so
 
 %if %{with octave}
@@ -556,20 +577,22 @@ rm -f %{_localstatedir}/run/texlive/run-update
 %endif
 
 %if %{with python}
-%files -n %{python_prefix}-mathgl
-%{python3_sitearch}/*
+%files %{python_files}
+%{python_sitearch}/mathgl.py
+%{python_sitearch}/_mathgl.so
+%{python_sitearch}/__pycache__/*.pyc
 %endif
 
-%files tex
+%files -n %{name}-tex
 %{_datadir}/texmf/tex/latex/mgltex/
 %if %{with zypper_posttrans}
 %{_localstatedir}/adm/update-scripts/texlive-mgltex-%{version}-%{release}-zypper
 %endif
 
-%files tex-doc
+%files -n %{name}-tex-doc
 %{_datadir}/texmf/doc/latex/mgltex/
 
-%files tools
+%files -n %{name}-tools
 %{_bindir}/mglconv
 %{_bindir}/mglview
 %{_bindir}/mgltask
