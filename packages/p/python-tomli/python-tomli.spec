@@ -16,18 +16,10 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
-%define psuffix %{nil}
-%bcond_with test
-%endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-Name:           python-tomli%{psuffix}
-Version:        2.0.0
+Name:           python-tomli
+Version:        2.0.1
 Release:        0
 Summary:        A lil' TOML parser
 License:        MIT
@@ -44,11 +36,6 @@ BuildRequires:  %{python_module pip}
 #!BuildIgnore:  python39-tomli
 #!BuildIgnore:  python310-tomli
 #!BuildIgnore:  ca-certificates
-%if %{with test}
-BuildRequires:  %{python_module pytest-randomly}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -61,24 +48,21 @@ Tomli is a Python library for parsing TOML
 %autosetup -p1 -n tomli-%{version}
 
 %build
-export PYTHONPATH=$PWD
+# flit_core requires tomli
+export PYTHONPATH=$PWD/src
 %pyproject_wheel
 
 %install
-%if ! %{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pyunittest
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/tomli
 %{python_sitelib}/tomli-%{version}*-info
-
-%else
-
-%check
-%pytest
-%endif
 
 %changelog
