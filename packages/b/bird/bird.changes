@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Feb 24 20:50:25 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.9
+  * BGP: Flowspec validation procedure
+  * Babel: MAC authentication support
+  * Routing table configuration blocks
+  * Optional prefix trie in routing table for faster LPM/interval
+    queries
+  * CLI: New 'show route in <prefix>' command
+  * Filter: Faster (16-way) prefix sets
+  * Filter: MPLS label route attribute
+  * Filter: Operators to pick community components
+  * Filter: Operators to find minimum and maximum element of lists
+  * BGP: New 'free bind' option
+  * BGP: Log route updates that were changed to withdraws
+  * BGP: Improved 'invalid next hop' error reporting
+  * OSPF: Allow ifaces with host address as unnumbered PtP or PtMP
+    ifaces
+  * OSPF: All packets on PtP networks should be sent to
+    AllSPFRouters address
+  * Support for Blake2s and Blake2b hash functions
+  * Security keys / passwords can be entered in hexadecimal digits
+  * Memory statistics split into Effective and Overhead
+  * New option 'netlink rx buffer' to specify netlink socket buffer
+    size
+  * Many bugfixes
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed
