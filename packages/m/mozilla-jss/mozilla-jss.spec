@@ -21,7 +21,7 @@ Summary:        Java Security Services (JSS)
 License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
 Group:          Development/Libraries/Java
 URL:            http://www.dogtagpki.org/wiki/JSS
-Version:        4.6.3
+Version:        5.0.0
 Release:        0
 Source0:        https://github.com/dogtagpki/jss/archive/v%{version}/jss-%{version}.tar.gz
 
@@ -31,9 +31,8 @@ BuildRequires:  make
 BuildRequires:  unzip
 BuildRequires:  zip
 
-BuildRequires:  apache-commons-lang
+BuildRequires:  apache-commons-lang3
 BuildRequires:  gcc-c++
-BuildRequires:  glassfish-jaxb-api
 BuildRequires:  java-devel
 BuildRequires:  jpackage-utils
 BuildRequires:  libfreebl3-hmac
@@ -48,7 +47,6 @@ BuildRequires:  slf4j-jdk14
 BuildRequires:  junit
 
 Requires:       apache-commons-lang
-Requires:       glassfish-jaxb-api
 Requires:       java-headless
 Requires:       jpackage-utils
 Requires:       mozilla-nss >= 3.44
@@ -79,8 +77,7 @@ This package contains the API documentation for JSS.
 
 %build
 %set_build_flags
-
-[ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java
+export JAVA_HOME=%{java_home}
 
 # Enable compiler optimizations
 export BUILD_OPT=1
@@ -92,37 +89,39 @@ export CFLAGS
 # Check if we're in FIPS mode
 modutil -dbdir /etc/pki/nssdb -chkfips true | grep -q enabled && export FIPS_ENABLED=1
 
-%cmake \
-    -DJAVA_HOME=%{java_home} \
-    -DJAVA_LIB_INSTALL_DIR=%{_jnidir} \
-    ..
 
-%{__make} all
-%{__make} javadoc
-ctest --output-on-failure
+./build.sh \
+    %{?_verbose:-v} \
+    --work-dir=%{_vpath_builddir} \
+    --java-lib-dir=%{_jnidir} \
+    --jss-lib-dir=%{_libdir}/jss \
+    --version=%{version} \
+    %{!?with_javadoc:--without-javadoc} \
+    %{!?with_test:--without-test} \
+    dist
 
 %install
-install -d -m 0755 %{buildroot}%{_jnidir}
-install -m 644 build/jss4.jar %{buildroot}%{_jnidir}/jss4.jar
 
-install -d -m 0755 %{buildroot}%{_libdir}/jss
-install -m 0755 build/libjss4.so %{buildroot}%{_libdir}/jss/
-pushd  %{buildroot}%{_libdir}/jss
-    ln -fs %{_jnidir}/jss4.jar jss4.jar
-popd
-
-install -d -m 0755 %{buildroot}%{_javadocdir}/jss-%{version}
-cp -rp build/docs/* %{buildroot}%{_javadocdir}/jss-%{version}
-cp -p jss.html %{buildroot}%{_javadocdir}/jss-%{version}
-cp -p *.txt %{buildroot}%{_javadocdir}/jss-%{version}
+./build.sh \
+    %{?_verbose:-v} \
+    --work-dir=%{_vpath_builddir} \
+    --install-dir=%{buildroot} \
+    install
 
 %files
-%doc jss.html MPL-1.1.txt gpl.txt lgpl.txt
-%dir %{_libdir}/jss/
-%{_libdir}/jss/*
+
+%defattr(-,root,root,-)
+%doc jss.html
+%license MPL-1.1.txt gpl.txt lgpl.txt
+%{_libdir}/*
 %{_jnidir}/*
 
+%if %{with javadoc}
+
 %files javadoc
-%{_javadocdir}/jss-%{version}/
+
+%defattr(-,root,root,-)
+%{_javadocdir}/%{name}/
+%endif
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  2 02:04:33 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to 5.0.0
+- Drop BuildRequires and Requires on glassfish-jaxb-api
+
+-------------------------------------------------------------------
 Fri Jun  5 12:14:58 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Fix debuginfo detection on i586
