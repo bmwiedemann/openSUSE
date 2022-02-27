@@ -1,7 +1,7 @@
 #
 # spec file for package python-docutils-ast-writer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jimo1001/docutils-ast-writer
 Source:         https://files.pythonhosted.org/packages/source/d/docutils-ast-writer/docutils-ast-writer-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jimo1001/docutils-ast-writer/master/LICENSE
+Patch0:         https://patch-diff.githubusercontent.com/raw/jimo1001/docutils-ast-writer/pull/5.patch#/pr_5.patch
 BuildRequires:  %{python_module docutils >= 0.12}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -42,6 +43,7 @@ Docutils-ast-writer is an AST writer of Docutils.
 %prep
 %setup -q -n docutils-ast-writer-%{version}
 cp %{SOURCE1} .
+%patch0 -p1 
 
 %build
 %python_build

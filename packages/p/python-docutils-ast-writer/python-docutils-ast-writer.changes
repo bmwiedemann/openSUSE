@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 27 07:37:35 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_5.patch to fix Python 3.10
+
+-------------------------------------------------------------------
 Tue May 26 07:22:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
