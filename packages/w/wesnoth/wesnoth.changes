@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb 26 15:43:28 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.16.2:
+  * bugfix release, most important changes:
+    https://wiki.wesnoth.org/Release_Notes_1.16.2
+  * Planned moves that will take multiple turns to complete are no
+    longer visible to enemy players
+  * Replays using custom units from add-ons will no longer fail
+    to play
+  * Players using CJK languages will no longer need to wait
+    10+ minutes 
+  * When in the lobby of a game, having the
+    "Show joins of friends only"
+    preference set will now function correctly 
+  * When storing the password for multiple accounts the password
+    file will no longer become corrupted
+- Add wesnoth-cmake-fix-find-readline.patch, fixes detection of
+  readline on openSUSE Leap 15.2 - 15.4
+- Update minimum versions of cmake and boost
+
+-------------------------------------------------------------------
 Wed Nov 10 00:24:42 UTC 2021 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - Update to 1.16.1:
