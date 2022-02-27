@@ -90,4 +90,17 @@
     <comment></comment>
     <requestid>911813</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9ada4dc49a3d9c2d2089a14b76785157</srcmd5>
+    <version>0.31</version>
+    <time>1645998167</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.31:
+  * XInput: add event methods 
+  * XResource: first implementation (thanks @alebastr).
+  * Randr: add missing parameters to delete_output_mode function
+- use multibuild to avoid expensive pytest-xvfb dependency
+  (should reduce rebuild_time of 1-MinimalX by ~ 12 minutes)</comment>
+    <requestid>957765</requestid>
+  </revision>
 </revisionlist>
