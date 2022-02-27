@@ -1,7 +1,7 @@
 #
 # spec file for package owncloud-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           owncloud-client
 
-Version:        2.9.2
+Version:        2.10.0
 Release:        0
 
 Summary:        The ownCloud synchronization client
@@ -34,8 +34,6 @@ Source4:        ownCloud.conf
 # for all except tumbleweed and ongoing, as the Qt bug is fixed in there.
 Patch0:         fix-systray-menu-pos.patch
 
-# PATCH-FIX-UPSTREAM fix the installation of the libcloudproviders conf file
-Patch1:         fix-cloudproviders-install.patch
 %define cmake_args -DSYSCONF_INSTALL_DIR=%{_sysconfdir}
 
 # Build the dolphin overlays for 42.2 ongoing, SLE and Tumbleweed
@@ -206,7 +204,6 @@ Framework 5 based Dolphin filemanager to display overlay icons.
 %if 0%{?suse_version} <= 1500
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
 

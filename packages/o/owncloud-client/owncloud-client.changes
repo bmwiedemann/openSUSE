@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 27 09:52:08 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
+
+- Remove patch fix-cloudproviders-install from file collection. 
+
+-------------------------------------------------------------------
+Fri Feb 25 08:22:36 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 2.10.0 
+- Removed patch fix-cloudproviders-install.patch   
+
+-------------------------------------------------------------------
 Sat Dec  4 09:57:18 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to version 2.9.2 
