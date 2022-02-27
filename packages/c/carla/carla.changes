@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sat Feb 26 12:55:23 UTC 2022 - edogawa@aon.at
+
+- refactored carla-remove-pkgconf-rpath.patch (changed file paths)
+- Update to version 2.4.2:
+  * FIx old macOS build
+  * Fix build with old macOS
+  * Fix strict build
+  * And another one
+  * Another int/float python fix
+  * Fix Haiku build
+  * Haiku cannot use -pthread
+  * Do not error out when including AppConfig.h
+  * Adjust the rest of the code for CARLA_BACKEND_NAMESPACE macro use
+  * macOS plugin UI fixes
+  * Allow custom carla namespace, useful for static builds
+  * Fix compat with old pyqt
+  * Fix make clean for STATIC_PLUGIN_TARGET
+  * One more XSetInputFocus exception fix
+  * Do not use RT threads for dummy engine / plugin testing
+  * Fix a memory leak in the CarlaString class
+  * Use gcc built-in expect to speed up safe asserts
+  * Move second image to it's own screenshot tag
+  * FreeBSD patch in AppConfig.h
+  * Update external plugins submodule
+  * Reload audio file if sample rate changes
+  * Correct the offset used in the custom data restore fix
+  * Update copyright year for the modified files
+  * Use temporary files for big custom data values in bridges
+  * Ensure custom data restore is exactly how it was saved Fixes #1521
+  * interposer: More debug, remove superfulous check causing crashes
+  * Ignore JACK applications trying to handle MIDI when it is disabled
+  * Add "[carla]" prefix to printed messages directly by carla Closes #1498
+  * Fix crash when LV2 X11 UI has non-mapped child window Closes #1486
+  * Fix strict build
+  * Notify of embed resizes on bridges
+  * Initial implementation for embedding UIs of bridged plugins
+  * lv2: mark port as sidechain if part of a sidechain group
+  * Add audio port hints to backend, starting with lv2 sidechain
+  * Give notice when carla needs to be restarted after lv2 rescan
+  * Revert "See if wine32 CI test passes"
+  * See if wine32 CI test passes
+  * Fix up CI
+  * Prevent an assertion on dummy backend test
+  * Bump version to 2.4.2
+  * Add water::MemoryInputStream
+  * Add PLUGIN_JSFX definition, not yet implemented
+  * clarify carla_patchbay_connect() docs
+  * Fix type error in signal emission
+  * Fix "-n" switch with newer python
+  * Fix bridge build Closes #1558
+  * add CV32 variant with 64 audio ins/outs and 32 cv ins/outs
+  * Implement dry/wet, volume and balance on juce hosted plugins
+  * Add stubs for custom vst3 hosting
+  * Cast QDial value parameter to prevent type error
+  * Fixed unexpected type errors
+  * Place zyn deps in STATIC_CARLA_PLUGIN_LIBS as needed
+  * Update gitignore
+  * Define ulonglong type
+  * Define CUSTOM_DATA_TYPE_PATH and allow it for LV2 as custom data
+  * Use -posix to build under mingw
+  * Remove unused function
+  * fix default sf2/3 path
+  * default to jack backend if pipewire jack replacement is installed
+  * Move pkgconfig files to their own dir, tweak and install appdata
+  * add app metainfo (#1535)
+  * Automable is not a word, sorry!
+  * Skip JACK-applications as plugin in static plugin target builds
+  * Look for directories too when searching non-found vst3 plugins
+  * Add static-plugin target, fix some warnings
+  * Do not use -ffat-lto-objects
+  * Remove <br> from Windows readme.
+  * Expose a 8cv carla patchbay variant
+  * Yet another fix
+  * Fix previous commit
+  * Passing build flags in linker stage is required for LTO to work
+  * Fix LTO build
+  * Do not export DllMain for STATIC_PLUGIN_TARGET builds
+  * Add WITH_LTO build option, disabled by default
+  * Stop using old gnu++0x, switch to gnu++11
+  * Disable GraphicsScene indexing method to prevent crashes
+  * vst3: user common files in the default path
+  * Fix dependency target for jackbridge
+
+-------------------------------------------------------------------
 Sun Oct 17 09:19:27 UTC 2021 - ecsos@opensuse.org
 
 - Update to version 2.4.1:
