@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 25 19:21:59 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.20:
+  * Some improvements to reading command-line options
+  * Support Octopus git/merge
+
+-------------------------------------------------------------------
 Mon Jul 13 08:56:10 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.0.19

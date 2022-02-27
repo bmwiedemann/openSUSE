@@ -160,4 +160,12 @@
     <comment></comment>
     <requestid>820781</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>20b998f8b6557bf3025504ae50d0f2f3</srcmd5>
+    <version>1.0.20</version>
+    <time>1645998194</time>
+    <user>dimstar_suse</user>
+    <comment>colordiff 1.0.20 (forwarded request 957650 from AndreasStieger)</comment>
+    <requestid>957892</requestid>
+  </revision>
 </revisionlist>
