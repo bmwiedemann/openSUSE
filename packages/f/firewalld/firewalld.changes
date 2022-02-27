@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb 26 14:35:35 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 1.1.0:
+  * feat(service): Add jellyfin service
+  * feat(policy): support OUTPUT forward ports
+  * feat: config check improvements
+  * feat(service): add http3
+  * feat(service): add service definition for WS-Discovery Client
+  * feat(service): add service definition for WS-Discovery
+  * feat(service): add service definition for AFP
+  * feat(rich): Support nflog target and add log attribute
+    errors/checks
+  * feat(service): add ZeroTier service
+
+-------------------------------------------------------------------
 Fri Jan 14 12:41:46 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 1.0.3:

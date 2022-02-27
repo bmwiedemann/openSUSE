@@ -25,7 +25,7 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 Name:           firewalld
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
@@ -150,7 +150,7 @@ rm config/services/high-availability.xml
 
 %build
 export PYTHON="%{_bindir}/python3"
-./autogen.sh
+autoreconf -fiv
 %configure \
   --enable-sysconfig \
   --enable-rpmmacros \
@@ -189,7 +189,7 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/zones/docker.x
 # No more /etc
 mkdir -p %{buildroot}%{_modprobedir}
 mv %{buildroot}%{_sysconfdir}/modprobe.d/* %{buildroot}%{_modprobedir}
-%if %{defined _distconfdir}
+%if 0%{?suse_version} >= 1550
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
 mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart
 %endif
