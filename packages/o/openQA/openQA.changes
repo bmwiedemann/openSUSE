@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 27 01:48:49 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1645823006.b4c26e806:
+  * branding: Rely on local override for openqa.suse.de
+  * branding: Remove outdated reference to caasp staging
+  * branding: Use new SUSE internal chat reference
+  * Delete outdated references to novell or microfocus
+  * Simplify t/43-cli-api
+  * Make force results show a label icon
+  * Exclude files smaller than 250 MB from download rate metrics
+  * Expose bandwidth data for worker cache via InfluxDB
+
+-------------------------------------------------------------------
 Thu Feb 24 17:48:45 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1645711773.760111463:
