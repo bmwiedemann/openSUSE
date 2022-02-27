@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 25 18:01:53 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add tracker-miners-allow-rseq.patch and
+  tracker-miners-allow-mbind.patch: allow system calls used by
+  gstreamer (boo#1196205 glgo#GNOME/tracker-miners#210).
+
+-------------------------------------------------------------------
 Thu Dec  2 06:31:42 UTC 2021 - QK ZHU <qkzhu@suse.com>
 
 - Add tracker-miners-drop-syscalls-in-seccomp.patch: 

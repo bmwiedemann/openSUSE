@@ -1,0 +1,32 @@
+From 923494626c8a4f3fc8619b284b7d267dc3458734 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 5 Jan 2022 11:52:27 +0100
+Subject: [PATCH 2/2] libtracker-miners-common: Allow 'mbind' syscall in
+ seccomp
+
+This syscall allows setting the NUMA policy for the pages allocated
+in mmap-ed memory. This seems a fair thing to do, given the scary
+features of this syscall are still under CAP_SYS_ADMIN.
+
+This was seen through GStreamer in Ubuntu 22.04
+
+Fixes: https://gitlab.gnome.org/GNOME/tracker-miners/-/issues/210
+---
+ src/libtracker-miners-common/tracker-seccomp.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libtracker-miners-common/tracker-seccomp.c b/src/libtracker-miners-common/tracker-seccomp.c
+index 5567233e6..1768ef1a1 100644
+--- a/src/libtracker-miners-common/tracker-seccomp.c
++++ b/src/libtracker-miners-common/tracker-seccomp.c
+@@ -108,6 +108,7 @@ tracker_seccomp_init (void)
+ 	ALLOW_RULE (mremap);
+ 	ALLOW_RULE (mprotect);
+ 	ALLOW_RULE (madvise);
++	ALLOW_RULE (mbind);
+ 	ERROR_RULE (mlock, EPERM);
+ 	ERROR_RULE (mlock2, EPERM);
+ 	ERROR_RULE (munlock, EPERM);
+-- 
+2.35.1
+

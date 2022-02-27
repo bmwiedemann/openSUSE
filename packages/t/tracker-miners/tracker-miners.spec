@@ -1,7 +1,7 @@
 #
 # spec file for package tracker-miners
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,10 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/3.2/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM tracker-miners-allow-rseq.patch boo#1196205 mgorse@suse.com -- allow rseq() syscall in seccomp.
+Patch0:         tracker-miners-allow-rseq.patch
+# PATCH-FIX-UPSTREAM tracker-miners-allow-mbind.patch boo#1196205 mgorse@suse.com -- allow mbind() syscall in seccomp.
+Patch1:         tracker-miners-allow-mbind.patch
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE tracker-miners-drop-syscalls-in-seccomp.patch bsc#1192567 qkzhu@suse.com -- Revert some syscalls in seccomp since Leap and SLE do not have them
 Patch1000:      tracker-miners-drop-syscalls-in-seccomp.patch
@@ -95,6 +99,8 @@ This package contains a miner to index files and applications.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
