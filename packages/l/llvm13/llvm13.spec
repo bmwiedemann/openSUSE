@@ -91,7 +91,7 @@ Name:           llvm13
 Version:        %_relver%{?_rc:~rc%_rc}
 Release:        0
 Summary:        Low Level Virtual Machine
-License:        Apache-2.0 WITH LLVM-exception OR NCSA
+License:        Apache-2.0 WITH LLVM-exception AND NCSA
 Group:          Development/Languages/Other
 URL:            https://www.llvm.org/
 # NOTE: please see README.packaging in the llvm package for details on how to update this package
@@ -201,6 +201,11 @@ Requires:       llvm%{_sonum}-polly-devel
 %endif
 Requires:       pkgconfig
 Conflicts:      llvm-devel-provider < %{version}
+%if %{suse_version} <= 1500
+# llvm{5,7} in SLE/Leap 15.x used to have the man page for FileCheck.
+Conflicts:      llvm5
+Conflicts:      llvm7
+%endif
 Conflicts:      cmake(LLVM)
 Provides:       llvm-devel-provider = %{version}
 %if %{with ffi}
@@ -261,6 +266,10 @@ Conflicts:      clang6
 # hmaptool used to be contained in the llvm package.
 Conflicts:      llvm5
 Conflicts:      llvm6
+%if %{suse_version} <= 1500
+# llvm9 in SLE/Leap 15.x is still affected.
+Conflicts:      llvm9
+%endif
 Conflicts:      scan-build < %{version}
 Conflicts:      scan-view < %{version}
 Provides:       scan-build = %{version}
@@ -294,7 +303,7 @@ Summary:        CLANG frontend for LLVM (devel package)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       clang%{_sonum} = %{version}
-Requires:       clang-tools = %{version}
+Requires:       clang-tools >= %{version}
 Conflicts:      cmake(Clang)
 
 %description -n clang%{_sonum}-devel

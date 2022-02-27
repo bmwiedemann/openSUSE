@@ -95,4 +95,12 @@
   (https://code.opensuse.org/leap/features/issue/55)</comment>
     <requestid>952965</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f6193ad758522b51e2b168d7da2b916a</srcmd5>
+    <version>13.0.1</version>
+    <time>1645998169</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>957799</requestid>
+  </revision>
 </revisionlist>
