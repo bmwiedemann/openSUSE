@@ -18,7 +18,7 @@
 
 
 Name:           slf4j
-Version:        1.7.32
+Version:        1.7.36
 Release:        0
 Summary:        Simple Logging Facade for Java
 # the log4j-over-slf4j and jcl-over-slf4j submodules are ASL 2.0, rest is MIT
@@ -30,6 +30,7 @@ Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        build.xml.tar.xz
 Patch1:         build-remove-slf4j_api-binder.patch
 Patch2:         slf4j-commons-lang3.patch
+Patch3:         slf4j-reload4j-bundlename.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  ant-junit >= 1.6.5
 BuildRequires:  apache-commons-lang3
@@ -82,13 +83,15 @@ Requires:       mvn(org.slf4j:slf4j-api) = %{version}
 %description jdk14
 SLF4J JDK14 Binding.
 
-%package log4j12
+%package reload4j
 Summary:        SLF4J LOG4J-12 Binding
 Group:          Development/Libraries/Java
-Requires:       mvn(log4j:log4j)
+Requires:       mvn(ch.qos.reload4j:reload4j)
 Requires:       mvn(org.slf4j:slf4j-api) = %{version}
+Provides:       %{name}-log4j12 = %{version}
+Obsoletes:      %{name}-log4j12 < %{version}
 
-%description log4j12
+%description reload4j
 SLF4J LOG4J-12 Binding.
 
 %package jcl
@@ -143,10 +146,14 @@ SLF4J Source JARs.
 %setup -q -a2
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 find . -name "*.jar" | xargs rm
 cp -p %{SOURCE1} APACHE-LICENSE
 
 sed -i -e "s|ant<|org.apache.ant<|g" integration/pom.xml
+
+sed -i -e "s|\${reload4j.version}|1\.2\.19|g" \
+	log4j-over-slf4j/src/main/resources/META-INF/MANIFEST.MF
 
 %{_bindir}/find -name "*.css" -o -name "*.js" -o -name "*.txt" | \
     %{_bindir}/xargs -t perl -pi -e 's/\r$//g'
@@ -185,7 +192,7 @@ ant -Dmaven2.jpp.mode=true \
     package javadoc \
 
 # Sources
-for i in api ext jcl jdk14 log4j12 nop simple; do
+for i in api ext jcl jdk14 reload4j nop simple; do
   mkdir -p %{name}-${i}/target
   jar cf %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/java .
   jar uf %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/resources .
@@ -201,7 +208,7 @@ done
 # jars
 install -d -m 0755 %{buildroot}%{_javadir}/%{name}
 
-for i in api ext jcl jdk14 log4j12 nop simple; do
+for i in api ext jcl jdk14 reload4j nop simple; do
   install -m 644 slf4j-${i}/target/slf4j-${i}-%{version}.jar \
     %{buildroot}%{_javadir}/%{name}/${i}.jar
   ln -sf ${i}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
@@ -211,7 +218,7 @@ for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   install -m 644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
 done
 
-for i in api ext jcl jdk14 log4j12 nop simple; do
+for i in api ext jcl jdk14 reload4j nop simple; do
   install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar \
     %{buildroot}%{_javadir}/%{name}/%{name}-${i}-sources.jar
 done
@@ -224,7 +231,7 @@ done
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
 
-for i in api ext jcl jdk14 log4j12 nop simple; do
+for i in api ext jcl jdk14 reload4j nop simple; do
   %pom_remove_parent slf4j-${i}
   %pom_xpath_inject "pom:project" "
     <groupId>org.slf4j</groupId>
@@ -244,13 +251,17 @@ for i in api nop simple; do
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
 
-for i in ext jcl jdk14 log4j12 jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
+for i in ext jcl jdk14 jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
 done
 
-for i in api ext jcl jdk14 log4j12 nop simple; do
+%add_maven_depmap %{name}/reload4j.pom %{name}/reload4j.jar -f reload4j  -a org.slf4j:%{name}-log4j12
+
+for i in api ext jcl jdk14 reload4j nop simple; do
   %add_maven_depmap org.slf4j:%{name}-${i}:jar:sources:%{version} %{name}/%{name}-${i}-sources.jar -f sources
 done
+
+%add_maven_depmap org.slf4j:%{name}-log4j12:jar:sources:%{version} %{name}/%{name}-reload4j-sources.jar -f sources
 
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   %add_maven_depmap org.slf4j:${i}:jar:sources:%{version} %{name}/${i}-sources.jar -f sources
@@ -277,8 +288,8 @@ rm -rf target/site
 %files jdk14 -f .mfiles-jdk14
 %{_javadir}/%{name}/%{name}-jdk14.jar
 
-%files log4j12 -f .mfiles-log4j12
-%{_javadir}/%{name}/%{name}-log4j12.jar
+%files reload4j -f .mfiles-reload4j
+%{_javadir}/%{name}/%{name}-reload4j.jar
 
 %files jcl -f .mfiles-jcl
 %{_javadir}/%{name}/%{name}-jcl.jar

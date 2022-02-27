@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Feb 25 17:24:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.7.36
+  * Changes in 1.7.36:
+    + Correct corrupt "Export-Package" declaration in MANIFEST.MF
+      in log4j-over-slf4j module
+    + Starting with version 1.7.36, slf4j releases will be
+      reproducible. By reproducible we mean that anyone checking out
+      the code corresponding to the release version from source code
+      repository and building that local copy, will obtain an
+      identical binary to the published binary.
+  * Changes 1.7.35
+    + In this release, the "slf4j-log4j12" artifact automatically
+      instructs Maven to use the "slf4j-reload4j" artifact instead.
+      As you might have guessed, the "slf4j-reload4j" binding
+      delegates log processing to the reload4j logging framework.
+    + Fix incorrect version number in the relocation element in
+      slf4j-log4j12/pom.ml
+  * Changes in 1.7.34
+    + The relocation element in slf4j-log4j12 had incorrect version
+      number. Version 1.7.34 should not be used.
+  * Changes in 1.7.33
+    + SLF4J now ships with the slf4j-reload4j module delegating to
+      the reload4j backend.
+    + SimpleLogger now prints the thread Id if instructed to do so.
+      This fixes SLF4J-499.
+- Added patch:
+  * slf4j-reload4j-bundlename.patch
+    + fix a typo in source reload4k -> reload4j
+
+-------------------------------------------------------------------
 Thu Feb 24 07:08:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not use a separate spec file for sources, since now they

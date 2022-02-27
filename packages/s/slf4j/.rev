@@ -225,4 +225,12 @@
     <comment>really remove the patch</comment>
     <requestid>957222</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3e9e722a285eb03b77fe27a960312a49</srcmd5>
+    <version>1.7.36</version>
+    <time>1645998164</time>
+    <user>dimstar_suse</user>
+    <comment>1.7.36</comment>
+    <requestid>957713</requestid>
+  </revision>
 </revisionlist>
