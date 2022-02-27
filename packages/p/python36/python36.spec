@@ -118,7 +118,7 @@ Source12:       idle3.desktop
 Source13:       idle3.appdata.xml
 # Fixed bundled wheels
 Source20:       setuptools-44.1.1-py2.py3-none-any.whl
-Source21:       pip-20.2.3-py2.py3-none-any.whl
+Source21:       pip-20.0.2-py2.py3-none-any.whl
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.

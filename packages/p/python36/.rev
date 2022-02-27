@@ -3966,4 +3966,14 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
   * Support Expat &gt;= 2.4.5</comment>
     <requestid>956581</requestid>
   </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>1b173a37423a1339631a460f29a17079</srcmd5>
+    <version>3.6.15</version>
+    <time>1645998181</time>
+    <user>dimstar_suse</user>
+    <comment>- Update bundled pip wheel to the latest SLE version patched
+  against bsc#1186819 (CVE-2021-3572).
+</comment>
+    <requestid>957824</requestid>
+  </revision>
 </revisionlist>
