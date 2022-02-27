@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 27 00:58:44 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.8.8:
+  * Support for the sphinx_codeautolink extension
+  * Basic support for the text builder
+
+- changes from version 0.8.7:
+  * Fix assertion error in LaTeX build with Sphinx 4.1.0+
+
+-------------------------------------------------------------------
 Thu Jul  1 17:26:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to Version 0.8.6
