@@ -1,7 +1,7 @@
 #
 # spec file for package Jamulus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,10 +21,10 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 
-%define tarball_version 3_8_1
+%define tarball_version 3_8_2
 
 Name:           Jamulus
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
