@@ -30,7 +30,7 @@ Group:          System/GUI/Other
 Url:            https://github.com/linuxdeepin/dde-kwin
 Source0:        https://github.com/linuxdeepin/dde-kwin/archive/%{version}/%{_name}-%{version}.tar.gz
 Patch0:         deepin-kwin-tabbox-chameleon-rename.patch
-%if 0%{suse_version} > 1500
+%if 0%{suse_version} > 1500 || 0%{?sle_version} > 150300
 Patch1:         deepin-kwin-crash.patch
 BuildRequires:  cmake(KWaylandServer)
 %endif
@@ -141,7 +141,7 @@ rm -rf \
 %license LICENSE
 %config %{_sysconfdir}/xdg/*
 %{_bindir}/kwin_no_scale
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 %dir %{_datadir}/kwin
 %dir %{_datadir}/kwin/scripts
 %dir %{_datadir}/kwin/tabbox
@@ -157,7 +157,9 @@ rm -rf \
 %{_kf5_plugindir}/kwin/effects/plugins/libmultitasking.so
 %{_kf5_plugindir}/kwin/effects/plugins/libscissor-window.so
 %{_kf5_plugindir}/platforms/libdde-kwin-wayland.so
+%endif
 
+%if "%{kwin_version}" <= "%{kwin_max}"
 %files -n libkwin-xcb%{sover}
 %defattr(-,root,root,-)
 %{_libdir}/libkwin-xcb.so.*
