@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 
 %define _do_check 1
 
-%define ver 4.8.0
-%define _ver 4_8_0
+%define ver 4.8.1
+%define _ver 4_8_1
 %define pname netcdf
 %define sonum   19
 
@@ -35,7 +35,7 @@
  %if 0%{?sle_version} < 150300
   %define DisOMPI4 ExclusiveArch:  do_not_build
  %endif
-%endif 
+%endif
 
 %bcond_with valgrind_checks
 
@@ -477,7 +477,7 @@ Group:          Productivity/Scientific/Other
 Version:        %ver
 Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
-Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-c-%{version}.tar.gz
+Source:         https://downloads.unidata.ucar.edu/netcdf-c/%{version}/%{pname}-c-%{version}.tar.gz
 Source1:        nc-config.1.gz
 Patch1:         swap-4-8-b-Satisfy-strict-aliasing-rules.patch
 Patch2:         Fix-type-punning-in-val_NC_check_voff-by-using-memcpy-instead-of-assignment.patch
@@ -508,6 +508,7 @@ BuildRequires:  gawk
 BuildRequires:  libcurl-devel >= 7.18.0
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  unzip
 BuildRequires:  zlib-devel >= 1.2.5
 %if 0%{?valgrind_checks}
 BuildRequires:  valgrind

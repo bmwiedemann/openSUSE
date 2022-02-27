@@ -602,4 +602,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment></comment>
     <requestid>954731</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>eb16c92ded8b346157ec99bafa9cbeea</srcmd5>
+    <version>4.8.1</version>
+    <time>1645998180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957823</requestid>
+  </revision>
 </revisionlist>

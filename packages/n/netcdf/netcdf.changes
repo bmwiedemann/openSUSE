@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Feb 26 19:18:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct Source: URL
+
+-------------------------------------------------------------------
+Wed Feb 16 12:53:30 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.8.1:
+  * [Bug Fix] Fix multiple bugs in libnczarr. See
+    gh#Unidata/netcdf-c#2066.
+  * [Enhancement] Support windows network paths (e.g. \svc...).
+    See gh#Unidata/netcdf-c#2065.
+  * [Enhancement] Convert to a new representation of the NCZarr
+    meta-data extensions: version 2. Read-only backward
+    compatibility is provided. See gh#Unidata/netcdf-c#2032.
+  * [Bug Fix] Fix dimension_separator bug in libnczarr. See
+    gh#Unidata/netcdf-c#2035.
+  * [Bug Fix] Fix bugs in libdap4. See gh#Unidata/netcdf-c#2005.
+  * [Bug Fix] Store NCZarr fillvalue as a singleton instead of a
+    1-element array. See gh#Unidata/netcdf-c#2017.
+  * [Bug Fixes] The netcdf-c library was incorrectly determining
+    the scope of dimension; similar to the type scope problem. See
+    gh#Unidata/netcdf-c#2012 for more information.
+  * [Bug Fix] Re-enable DAP2 authorization testing. See
+    gh#Unidata/netcdf-c#2011.
+  * [Bug Fix] Fix bug with windows version of mkstemp that causes
+    failure to create more than 26 temp files. See
+    gh#Unidata/netcdf-c#1998.
+  * [Bug Fix] Fix ncdump bug when printing VLENs with basetype
+    char. See gh#Unidata/netcdf-c#1986.
+  * [Bug Fixes] The netcdf-c library was incorrectly determining
+    the scope of types referred to by nc_inq_type_equal. See
+    gh#Unidata/netcdf-c#1959 for more information.
+  * [Bug Fix] Fix bug in use of XGetopt when building under Mingw.
+    See gh#Unidata/netcdf-c#2009.
+  * [Enhancement] Improve the error reporting when attempting to
+    use a filter for which no implementation can be found in
+    HDF5_PLUGIN_PATH. See gh#Unidata/netcdf-c#2000 for more
+    information.
+  * [Bug Fix] Fix make distcheck issue in nczarr_test/ directory.
+    See gh#Unidata/netcdf-c#2007.
+  * [Bug Fix] Fix bug in NCclosedir in dpathmgr.c. See
+    gh#Unidata/netcdf-c#2003.
+  * [Bug Fix] Fix bug in ncdump that assumes that there is a
+    relationship between the total number of dimensions and the
+    max dimension id. See gh#Unidata/netcdf-c#2004.
+  * [Bug Fix] Fix bug in JSON processing of strings with embedded
+    quotes. See gh#Unidata/netcdf-c#1993.
+  * [Enhancement] Add support for the new "dimension_separator"
+    enhancement to Zarr v2. See gh#Unidata/netcdf-c#1990 for more
+    information.
+  * [Bug Fix] Fix hack for handling failure of shell programs to
+    properly handle escape characters. See
+    gh#Unidata/netcdf-c#1989.
+  * [Bug Fix] Allow some primitive type names to be used as
+    identifiers depending on the file format. See
+    gh#Unidata/netcdf-c#1984.
+  * [Enhancement] Add support for reading/writing pure Zarr
+    storage format that supports the XArray _ARRAY_DIMENSIONS
+    attribute. See gh#Unidata/netcdf-c#1952 for more information.
+  * [Update] Updated version of bzip2 used in filter
+    testing/functionality, in support of gh#Unidata/netcdf-c#1969.
+  * [Bug Fix] Corrected HDF5 version detection logic as described
+    in gh#Unidata/netcdf-c#1962.
+- New BuildRequires: unzip needed for one of the tests.
+
+-------------------------------------------------------------------
 Tue Feb 15 12:12:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move rpm macros from /etc/rpm to /usr/lib/rpm/macros.d
