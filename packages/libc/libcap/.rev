@@ -437,4 +437,15 @@
     efficiently</comment>
     <requestid>950291</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>f6e7a90859083d944cab42aa406c5578</srcmd5>
+    <version>2.63</version>
+    <time>1645998160</time>
+    <user>dimstar_suse</user>
+    <comment>Merged some changes and metadata over from the SLE side.
+
+- Use &quot;or&quot; in the license tag to avoid confusion (bsc#1180073)
+- Update to version 2.30 (jsc#SLE-17092, jsc#ECO-3460): (forwarded request 957541 from msmeissn)</comment>
+    <requestid>957551</requestid>
+  </revision>
 </revisionlist>
