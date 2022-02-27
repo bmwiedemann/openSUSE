@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 27 09:27:15 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.1
+  * be aware of user's custom settings, /etc/sysconfig/language
+    and $LANG
+
+-------------------------------------------------------------------
 Wed Feb 23 13:40:20 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - initial commit
