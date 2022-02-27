@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.4.4.orig/requirements.txt oci-cli-3.4.4/requirements.txt
---- oci-cli-3.4.4.orig/requirements.txt	2022-01-25 23:44:54.000000000 +0100
-+++ oci-cli-3.4.4/requirements.txt	2022-01-26 23:22:59.554963706 +0100
+diff -Nru oci-cli-3.5.2.orig/requirements.txt oci-cli-3.5.2/requirements.txt
+--- oci-cli-3.5.2.orig/requirements.txt	2022-02-22 21:05:11.000000000 +0100
++++ oci-cli-3.5.2/requirements.txt	2022-02-25 12:31:26.897667065 +0100
 @@ -2,40 +2,40 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.4.4.orig/requirements.txt oci-cli-3.4.4/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.55.0
+-oci==2.58.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -37,7 +37,7 @@ diff -Nru oci-cli-3.4.4.orig/requirements.txt oci-cli-3.4.4/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.55.0
++oci>=2.58.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -73,15 +73,15 @@ diff -Nru oci-cli-3.4.4.orig/requirements.txt oci-cli-3.4.4/requirements.txt
 +pytest-forked>=1.0.2
 +PyYAML>=5.4
 +docutils>=0.15.2
-diff -Nru oci-cli-3.4.4.orig/setup.py oci-cli-3.4.4/setup.py
---- oci-cli-3.4.4.orig/setup.py	2022-01-25 23:44:54.000000000 +0100
-+++ oci-cli-3.4.4/setup.py	2022-01-26 23:22:32.402743241 +0100
+diff -Nru oci-cli-3.5.2.orig/setup.py oci-cli-3.5.2/setup.py
+--- oci-cli-3.5.2.orig/setup.py	2022-02-22 21:05:11.000000000 +0100
++++ oci-cli-3.5.2/setup.py	2022-02-25 12:32:04.138046108 +0100
 @@ -29,22 +29,22 @@
      readme = f.read()
  
  requires = [
--    'oci==2.55.0',
-+    'oci>=2.55.0',
+-    'oci==2.58.0',
++    'oci>=2.58.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==7.1.2',
