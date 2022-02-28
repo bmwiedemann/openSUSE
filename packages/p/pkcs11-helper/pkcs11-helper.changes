@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 23 08:45:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.28.0:
+  * build and OpenSSL compatibility fixes
+  * certificate: add methods accept full mechanism
+  * core: load provider library as private
+  * add API to support adding properties
+  * core: add PKCS11H_PROVIDER_PROPERTY_PROVIDER_DESTRUCT_HOOK
+  * session: respect login required token flag
+  * certificate: respect always authenticate flag
+
+-------------------------------------------------------------------
 Mon Dec 13 20:11:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.27.0:

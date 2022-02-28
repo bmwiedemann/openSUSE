@@ -1,7 +1,7 @@
 #
 # spec file for package pkcs11-helper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           pkcs11-helper
-Version:        1.27.0
+Version:        1.28.0
 Release:        0
 Summary:        Helper Library for the Use with Smart Cards and the PKCS#11 API
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/OpenSC/OpenSC/wiki
-Source0:        https://github.com/OpenSC/%{name}/releases/download/%{name}-1.27/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/OpenSC/%{name}/releases/download/%{name}-1.28/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -92,14 +92,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libpkcs11-helper1 -p /sbin/ldconfig
 
 %files
+%license COPYING*
 %doc %{_docdir}/%{name}
 %exclude %{_docdir}/%{name}/api
 %{_mandir}/man8/*%{ext_man}
 
 %files -n libpkcs11-helper1
+%license COPYING*
 %{_libdir}/libpkcs11-helper.so.*
 
 %files devel
+%license COPYING*
 %doc %{_docdir}/%{name}/api
 %{_includedir}/pkcs11-helper-1.0
 %{_libdir}/pkgconfig/*.pc
