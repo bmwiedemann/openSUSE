@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 28 07:47:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.3.4
+  * Add read handler for GitHub notebooks PR #622
+  * Add cell description to tqdm PR #565
+  * Update builds for python 3.9 and 3.10
+  * Update file read to not fail early with boto empty file
+    exception PR #614
+  * Support new version of gcsfs PR #624
+  * Fix an issue where the PapermillExecutionError can be pickled 
+    but will not be unpicklable PR #629
+  * Update documentation build and theme
+  * Remove deprecated pyarrow.hdfs.connect call from iorw.py
+  * Remove support for python 3.5
+- Drop papermill-pr624-gcsfs.patch merged upstream
+- Add papermill-fix-test.patch
+
+-------------------------------------------------------------------
 Sun Sep 19 11:25:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add papermill-pr624-gcsfs.patch -- gh#nteract/papermill#624

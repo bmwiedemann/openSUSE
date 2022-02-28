@@ -1,7 +1,7 @@
 #
 # spec file for package python-papermill
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,24 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-papermill
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Tool to parametrize and run Jupyter and nteract Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/nteract/papermill
 Source:         https://files.pythonhosted.org/packages/source/p/papermill/papermill-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM papermill-pr624-gcsfs.patch -- gh#nteract/papermill#624
-Patch1:         https://github.com/nteract/papermill/pull/624.diff#/papermill-pr624-gcsfs.patch
+# PATCH-FIX-UPSTREAM papermill-fix-test.patch -- used missing attribute
+Patch1:         https://github.com/nteract/papermill/commit/35a1b6a8a47a4e0dee2612294d467de2dc4d60c6.patch#/papermill-fix-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-ansiwrap
-Requires:       python-black
 Requires:       python-click
 Requires:       python-entrypoints
-Requires:       python-ipython >= 5.0
 Requires:       python-nbclient >= 0.2.0
-Requires:       python-nbconvert >= 5.5
 Requires:       python-nbformat >= 5.1.2
-Requires:       python-pandas
 Requires:       python-requests >= 2.21.0
 Requires:       python-tenacity
 Requires:       python-tqdm >= 4.32.2
@@ -57,7 +52,6 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module ansiwrap}
 BuildRequires:  %{python_module azure-datalake-store}
 BuildRequires:  %{python_module azure-storage-blob}
-BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module entrypoints}
@@ -67,9 +61,11 @@ BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module nbclient >= 0.2.0}
-BuildRequires:  %{python_module nbconvert >= 5.5}
 BuildRequires:  %{python_module nbformat >= 5.1.2}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-env}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
 BuildRequires:  %{python_module tenacity}
@@ -93,7 +89,8 @@ and analyzing Jupyter Notebooks.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -x
+# TestBrokenNotebook2: different output type expected
+%pytest -k "not TestBrokenNotebook2"
 
 %post
 %python_install_alternative papermill
