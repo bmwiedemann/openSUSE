@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 28 14:35:31 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed the start of the VNC server during installation. Done by
+  Joan Torres López <joan.torres@suse.com> (bsc#1196201).
+- 4.4.45
+
+-------------------------------------------------------------------
 Tue Feb 22 13:06:51 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Use the default UI theme in SSH installation, the
