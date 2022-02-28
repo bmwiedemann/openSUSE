@@ -1418,4 +1418,12 @@
   Instead of pulling legacy compat along, we perform the actual
   switch.</comment>
   </revision>
+  <revision rev="175" vrev="175">
+    <srcmd5>854a1f6a2723b5f8c2df9ebcfa9838c7</srcmd5>
+    <version>unknown</version>
+    <time>1646073829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958033</requestid>
+  </revision>
 </revisionlist>

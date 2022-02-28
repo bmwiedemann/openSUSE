@@ -78,6 +78,8 @@ buildignore 7zip
 # tumbler -> libgepup uses libwebkit2gtk-4_0-37, while epiphany uses libwebkit2gtk-4_1-0.
 # We can't have both, too big.
 buildignore tumbler
+# ristretto is not that useful without tumbler
+buildignore ristretto
 
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
@@ -101,7 +103,6 @@ install leafpad
 install lightdm
 install lightdm-gtk-greeter
 install photorec
-install ristretto
 install thunar
 install thunar-volman
 install xfce4-appfinder
