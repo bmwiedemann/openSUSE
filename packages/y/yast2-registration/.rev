@@ -1984,4 +1984,14 @@
     <comment>submit new version 4.4.16</comment>
     <requestid>957128</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>afc07b2e409d7233f9931a6f69d5a6a3</srcmd5>
+    <version>4.4.17</version>
+    <time>1646073792</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt test code for work with Ruby &gt;= 3 (related to bsc#1193192)
+- 4.4.17
+</comment>
+    <requestid>958074</requestid>
+  </revision>
 </revisionlist>

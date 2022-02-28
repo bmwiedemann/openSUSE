@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 28 08:33:10 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Adapt test code for work with Ruby >= 3 (related to bsc#1193192)
+- 4.4.17
+
+-------------------------------------------------------------------
 Wed Feb 23 11:34:03 UTC 2022 - David Diaz <dgonzalez@suse.com>
 
 - Makes the addon selector more "themeable" (bsc#1196362).
