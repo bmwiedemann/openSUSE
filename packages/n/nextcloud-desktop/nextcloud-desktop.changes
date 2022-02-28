@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 28 07:19:08 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.4.3
+  - desktop#4238 [stable-3.4] Remove Hirsute, add Jammy
+  - desktop#4245 [stable-3.4] Cmake option to disable proxy
+  - desktop#4258 [stable-3.4] ensure we emit a rename command for renamed files
+  - desktop#4262 Makes sure that sync engine terminates when an error happen
+  - desktop#4267 [stable-3.4] ensure that bulk upload network job errors are handled
+  - desktop#4311 [stable-3.4] Rollback local move on server move failure
+  - desktop#4312 [stable-3.4] Do not remove a folder that has files that were not uploaded yet during propagation
+
+-------------------------------------------------------------------
 Fri Feb 11 13:24:54 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.4.2
