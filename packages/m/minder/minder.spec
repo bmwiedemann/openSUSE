@@ -17,16 +17,13 @@
 
 
 Name:           minder
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Mind-mapping app
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/phase1geo/Minder
 Source:         https://github.com/phase1geo/Minder/archive/%{version}.tar.gz#/Minder-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM f5e8da83f958797157423dc23818e6ebd6681d20.patch -- Fixing compile issues and adding strikethru Markdown syntax support in nodes.
-Patch:          https://github.com/phase1geo/Minder/commit/f5e8da83f958797157423dc23818e6ebd6681d20.patch
-
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -53,7 +50,6 @@ A program to create, develop, visualize, organize and manage ideas.
 
 %prep
 %setup -q -n Minder-%{version}
-%autopatch -p1
 
 # Fix: script-without-shebang
 find -name \*.svg -exec chmod 0644 {} \+

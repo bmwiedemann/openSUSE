@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Feb 20 15:58:15 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.14.0:
+  * Added support for shallow (one-level folding)
+  * Added import/export support for XMind version 2021.
+  * Added support for external mind-map node linking.
+  * Added node link tooltips.
+  * Added support for overriding the color of a root node.
+  * Added support for Markdown strikethrough syntax.
+  * Added support for Control-Backspace/Delete to delete the
+    previous/next word when editing node/connection titles.
+  * Added tooltip to node fill switch in style inspector.
+  * Added keyboard shortcuts for adding and removing URL links
+    from node text.
+  * Updates to Italian translation (thanks to @albanobattistella)
+  * Updates to German translation (thanks to Hannes Fritz)
+  * Improved accuracy of the list of translatable files.
+  * Removed ability to use keyboard shortcuts when a mouse button
+    is pressed.
+  * Removed Accounts permissions from Flatpak manifest as it is
+    no longer needed.
+  * Improved adding URL link UI to automatically add URL from
+    clipboard if one exists.
+  * Fixed layout issues when pressing keys while animations are
+    in process.
+  * Fixed location of text size help information in the
+    appearances preferences dialog.
+  * Fixed UX issues when the Hide Connections switch is enabled.
+  * Fixed issue with pasting nodes when a node is not selected in
+    a map.
+- Drop f5e8da83f958797157423dc23818e6ebd6681d20.patch
+
+-------------------------------------------------------------------
 Sat Dec 11 15:50:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add f5e8da83f958797157423dc23818e6ebd6681d20.patch: Fixing
@@ -495,16 +528,16 @@ Mon May 20 18:13:10 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
     setting from desktop value, if set.
   * Finishing and fixing several remaining issues with connections.
   * Checkpointing work on displaying note icon for a connection.
-  * Changing the way connection titles are stored in XML. 
+  * Changing the way connection titles are stored in XML.
   * Adding support for saving connection notes to XML.
   * Fixing keyboard focus when a note textbox needs to be changed.
   * Adding ability to select a connection from the current node.
-  * Adding ability to select the next/previous connection. 
+  * Adding ability to select the next/previous connection.
   * Updating contextual menu items per this feature.
-  * Fixing error when redoing a deleted root node. 
+  * Fixing error when redoing a deleted root node.
   * Updating release information.
   * Adding ability to create a connection using the keyboard.
-  * Fixing issues with displaying the current sidebar. 
+  * Fixing issues with displaying the current sidebar.
   * Adding keyboard support when a connection is selected.
   * Fixing issues with restoring connections after deleting.
   * ...
@@ -518,7 +551,7 @@ Mon Apr 15 19:13:14 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
   * Updating screenshot.
   * Updating appdata for the upcoming release.
   * Fixing node detach undo operation.
-  * Fixing layout issue when pasting a node tree. 
+  * Fixing layout issue when pasting a node tree.
   * Selecting pasted node.
   * Fixing level-based styling issue. * Fixing node font styling.
   * Adding automatic style update when current-type affects are
@@ -533,7 +566,7 @@ Mon Apr 15 19:13:14 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
   * Merge pull request #56 from chiajlingvoj/master
   * fix reference
   * Fixing drawing issues when changing style values. * Fixing
-    style inspector updating when style change are undone/redone. 
+    style inspector updating when style change are undone/redone.
   * Checkpointing work on undo buffer replace feature.
   * Adding connection styling undo/redo support.
   * Checkpointing work on reworking style undo/redo methodology.
