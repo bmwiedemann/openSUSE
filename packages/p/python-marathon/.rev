@@ -54,4 +54,12 @@
   - Bump requests from 2.11.1 to 2.20.0</comment>
     <requestid>834882</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5fc32c996cb2c196486a498860eeaf82</srcmd5>
+    <version>0.13.0</version>
+    <time>1646073834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958056</requestid>
+  </revision>
 </revisionlist>

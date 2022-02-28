@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 28 11:36:47 UTC 2022 - pgajdos@suse.com
+
+- fix build, run tests
+- added patches
+  fix https://github.com/thefactory/marathon-python/issues/284
+  + python-marathon-no-2to3.patch
+  fix https://github.com/thefactory/marathon-python/commit/1850734b5b916d1455416833f0aed239b308dd9f.diff
+  + python-marathon-use-collections.abc.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 11:16:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.13.0:

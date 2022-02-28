@@ -1,0 +1,15 @@
+diff --git a/marathon/util.py b/marathon/util.py
+index d9f5664..af2932e 100644
+--- a/marathon/util.py
++++ b/marathon/util.py
+@@ -1,4 +1,10 @@
+-import collections
++# collections.abc new as of 3.3, and collections is deprecated. collections
++# will be unavailable in 3.9
++try:
++    import collections.abc as collections
++except ImportError:
++    import collections
++
+ import datetime
+ import logging

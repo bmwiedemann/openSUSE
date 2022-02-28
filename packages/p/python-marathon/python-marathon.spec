@@ -1,7 +1,7 @@
 #
 # spec file for package python-marathon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,15 @@ Summary:        Marathon Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/thefactory/marathon-python
-Source:         https://files.pythonhosted.org/packages/source/m/marathon/marathon-%{version}.tar.gz
+Source:         https://github.com/thefactory/marathon-python/archive/refs/tags/%{version}.tar.gz#/marathon-%{version}.tar.gz
+# https://github.com/thefactory/marathon-python/issues/284
+Patch0:         python-marathon-no-2to3.patch
+# https://github.com/thefactory/marathon-python/commit/1850734b5b916d1455416833f0aed239b308dd9f.diff
+Patch1:         python-marathon-use-collections.abc.patch
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.4.0
@@ -37,7 +45,9 @@ BuildArch:      noarch
 Python interface to the Mesos Marathon REST API.
 
 %prep
-%setup -q -n marathon-%{version}
+%setup -q -n marathon-python-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
@@ -46,7 +56,7 @@ Python interface to the Mesos Marathon REST API.
 %python_install
 
 %check
-# requires Docker and Marathon server installed there
+%pytest
 
 %files %{python_files}
 %license LICENSE
