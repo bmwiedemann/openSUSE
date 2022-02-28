@@ -68,6 +68,7 @@
       <repopackage name="adobe-sourcehansans-tw-fonts"/>
       <repopackage name="adobe-sourcehanserif-cn-fonts"/>
       <repopackage name="adobe-sourcehanserif-tw-fonts"/>
+      <repopackage name="adobe-sourcesans3-fonts"/>
       <repopackage name="adobe-sourcesanspro-fonts"/>
       <repopackage name="adobe-sourceserifpro-fonts"/>
       <repopackage name="adwaita-icon-theme"/>
@@ -4474,7 +4475,6 @@
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
-      <repopackage name="systemd-icon-branding-openSUSE" arch="i586,i686"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-branding-openSUSE"/>

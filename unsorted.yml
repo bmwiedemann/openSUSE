@@ -393,7 +393,6 @@ unsorted:
   - adobe-sourcehansans-kr-fonts 
   - adobe-sourcehanserif-jp-fonts 
   - adobe-sourcehanserif-kr-fonts 
-  - adobe-sourcesans3-fonts: [i586] 
   - adobe-sourceserif4-fonts 
   - adolc-devel 
   - adolc-devel-32bit: [x86_64] 
@@ -7909,8 +7908,8 @@ unsorted:
   - kalarm 
   - kalarm-lang 
   - kalarmcal-devel 
-  - kalendar: [x86_64] 
-  - kalendar-lang: [x86_64] 
+  - kalendar 
+  - kalendar-lang 
   - kalgebra-mobile 
   - kalzium 
   - kalzium-devel 
