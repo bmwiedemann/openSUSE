@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 28 16:30:58 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix format of unformatted disks after activation (bsc#1196559).
+- 4.4.5
+
+-------------------------------------------------------------------
 Thu Feb 10 10:18:47 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix DasdSummary requirement (bsc#1195753)
