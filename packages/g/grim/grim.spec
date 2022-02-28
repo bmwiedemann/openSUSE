@@ -24,7 +24,9 @@ License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/emersion/grim
 Source:         https://github.com/emersion/grim/archive/v%{version}.tar.gz
-BuildRequires:  meson
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-write_jpg-fix-printf-format-specifier.patch
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(libjpeg)
@@ -37,7 +39,7 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 This tool can grab images from a Wayland compositor.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

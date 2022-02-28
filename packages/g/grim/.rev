@@ -90,4 +90,12 @@
   * Stop using PATH_MAX</comment>
     <requestid>953373</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>711046fe61d4b29020ed0756fb0f41ea</srcmd5>
+    <version>1.4.0</version>
+    <time>1646073824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958015</requestid>
+  </revision>
 </revisionlist>

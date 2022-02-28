@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 28 10:07:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-write_jpg-fix-printf-format-specifier.patch
+
+-------------------------------------------------------------------
 Fri Feb 11 07:32:39 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.0:
