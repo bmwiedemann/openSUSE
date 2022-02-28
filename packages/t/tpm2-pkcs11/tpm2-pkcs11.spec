@@ -90,7 +90,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_sysconfdir}/tpm2_pkcs11
 cd tools
 %python_install
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %post -n libtpm2_pkcs11-0 -p /sbin/ldconfig
 %postun -n libtpm2_pkcs11-0 -p /sbin/ldconfig

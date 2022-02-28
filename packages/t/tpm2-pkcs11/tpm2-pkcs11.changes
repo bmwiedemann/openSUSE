@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 26 14:12:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use hardlinks in %fdupes for python files
+
+-------------------------------------------------------------------
 Wed Oct 20 10:48:58 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add keyring & use source verification

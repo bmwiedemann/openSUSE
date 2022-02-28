@@ -15,4 +15,12 @@
     <comment>- Add keyring &amp; use source verification (forwarded request 926535 from gmbr3)</comment>
     <requestid>926537</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c2b85c7399509016b7867c09ba60d405</srcmd5>
+    <version>1.7.0</version>
+    <time>1646073814</time>
+    <user>dimstar_suse</user>
+    <comment>- Use hardlinks in %fdupes for python files (forwarded request 957774 from gmbr3)</comment>
+    <requestid>957968</requestid>
+  </revision>
 </revisionlist>
