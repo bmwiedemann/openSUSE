@@ -60,6 +60,7 @@ BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets < 8}
 BuildRequires:  %{python_module nbclient = %{version}}
 BuildRequires:  %{python_module pytest >= 4.1}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module xmltodict}
 %endif
 %python_subpackages
@@ -89,9 +90,9 @@ export IPYKERNEL_CELL_NAME="<IPY-INPUT>"
 # tests on parallel notebooks randomly fail (4 tests) - https://github.com/jupyter/nbclient/pull/74#issuecomment-635929953
 donttest="parallel_notebooks"
 # https://github.com/jupyter/nbclient/issues/189
-donttest+=" or (test_run_all_notebooks and Interrupt.ipynb)"
+donttest+=" or (test_run_all_notebooks and (opts6 or opts8 or opts9))"
 # extra -v for more verbose error diffs
-%pytest -v -k "not ($donttest)"
+%pytest -v -k "not ($donttest)" --asyncio-mode=auto
 %endif
 
 %if ! %{with test}

@@ -180,4 +180,13 @@
     <comment></comment>
     <requestid>955826</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d36df24a22d8db402212ee5583e3f01b</srcmd5>
+    <version>0.5.11</version>
+    <time>1646073826</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip more failing tests due to new Exception message format 
+</comment>
+    <requestid>958022</requestid>
+  </revision>
 </revisionlist>
