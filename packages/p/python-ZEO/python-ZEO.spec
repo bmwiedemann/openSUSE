@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZEO
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,6 @@ Summary:        Client-Server storage implementation for ZODB
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/ZEO
 Source:         https://files.pythonhosted.org/packages/source/Z/ZEO/ZEO-%{version}.tar.gz
-Source99:       %{name}-rpmlintrc
 # https://github.com/zopefoundation/ZEO/issues/184
 Patch0:         python-ZEO-no-mock.patch
 BuildRequires:  %{python_module ZConfig}
@@ -77,7 +76,8 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n ZEO-%{version}
-%patch0 -p1
+%autopatch -p1
+
 # delete backup files
 find . -name "*~" -print -delete
 # remove unwanted shebang
@@ -100,6 +100,7 @@ sed -i -e 's:msgpack < 0.6:msgpack:g' setup.py
 
 %check
 pushd src
+export ZEO4_SERVER=1
 %pyunittest -v ZEO/tests/test*.py
 
 %post

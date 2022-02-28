@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 28 14:09:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Set ZEO4_SERVER env. variable to skip expected failing tests.
+
+-------------------------------------------------------------------
 Fri Sep 24 09:30:12 UTC 2021 - pgajdos@suse.com
 
 - added patches

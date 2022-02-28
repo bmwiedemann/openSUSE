@@ -117,4 +117,13 @@
     <comment></comment>
     <requestid>921374</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8de1de4648b5f0ebd9e925fac416c746</srcmd5>
+    <version>5.2.3</version>
+    <time>1646073836</time>
+    <user>dimstar_suse</user>
+    <comment>- Set ZEO4_SERVER env. variable to skip expected failing tests.
+</comment>
+    <requestid>958061</requestid>
+  </revision>
 </revisionlist>
