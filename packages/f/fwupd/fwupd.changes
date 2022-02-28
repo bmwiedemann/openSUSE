@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Feb 25 17:22:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.6:
+  * This release adds the following features:
+    + Add a flag for UEFI devices that never want a capsule header
+      auto-added
+    + Add a flag to indicate the device has a signed or unsigned
+      payload
+    + Add a plugin to set a GPIO pin for the duration of an update
+    + Add a simple plugin to enumerate (but not update) SCSI
+      hardware
+    + Add two more instance IDs to the MTD devices
+    + Add X-BaseboardManagementController as an update category
+    + Allow assigning issues to devices for known high priority
+      problems
+    + Parse the MTD firmware version using the defined GType
+  * This release fixes the following bugs:
+    + Check the IFD sections have non-zero data length to fix a
+      critical warning
+    + Modify the AT retry behavior to fix getting the firmware
+      branch
+    + Do not run fwupd-refresh automatically in containers
+    + Do not show a warning if the TPM eventlog does not exist
+    + Do not show TSS2 warning messages by default
+    + Fix a critical warning when loading an empty TPM eventlog
+      item
+    + Fix a logic error when adding the community warning in
+      fwupdmgr
+    + Fix loading flashrom devices in coreboot mode
+    + Fix the error handling when updating USB4 retimers
+    + Show the user when devices are not updatable due to inhibits
+    + Skip probing the Dell DA300 device to avoid a warning
+    + Try harder to convert to a version into a correct semver
+    + Use multiple checksums when there are no provided artifacts
+  * This release adds support for the following hardware:
+    + HP M2xfd monitors
+    + Star Lite Mk III
+
+-------------------------------------------------------------------
 Tue Feb  8 16:49:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.7.5:
