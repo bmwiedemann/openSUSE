@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97b0063cf99358f283672a0fb845c569</srcmd5>
+    <version>0.7.0</version>
+    <time>1645891340</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace django3.patch with django4.patch from
+  gh#juanifioren/django-oidc-provider#400.
+</comment>
+    <requestid>957652</requestid>
+  </revision>
+</revisionlist>
