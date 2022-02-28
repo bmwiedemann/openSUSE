@@ -55,4 +55,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957682</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>82cfc4aa90e4ae592bc7f02e8b90ac19</srcmd5>
+    <version>2.2.7</version>
+    <time>1646073819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.7
+  * Fixed support for packages with no licenses in licenses
+    command output
+  * Fixed handling of allow-plugins: false which kept warning
+  * Fixed enum parsing in classmap generation when the enum keyword
+    is not lowercased
+  * Fixed author parsing in init command requiring an email whereas
+    the schema allows a name only
+  * Fixed issues in require command when requiring packages which
+    do not exist (but are provided by something else you require)
+  * Performance improvement in pool optimization step (forwarded request 957604 from susnux)</comment>
+    <requestid>957971</requestid>
+  </revision>
 </revisionlist>

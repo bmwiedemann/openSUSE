@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 25 13:48:06 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.7
+  * Fixed support for packages with no licenses in licenses
+    command output
+  * Fixed handling of allow-plugins: false which kept warning
+  * Fixed enum parsing in classmap generation when the enum keyword
+    is not lowercased
+  * Fixed author parsing in init command requiring an email whereas
+    the schema allows a name only
+  * Fixed issues in require command when requiring packages which
+    do not exist (but are provided by something else you require)
+  * Performance improvement in pool optimization step
+
+-------------------------------------------------------------------
 Sat Feb 19 03:50:13 UTC 2022 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 2.2.6
