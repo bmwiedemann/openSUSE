@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat Feb 26 18:06:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.0.0
+- Add patch to avoid excessive logging:
+  * 0001-Use-categorized-logging-in-the-reminder-daemon.patch
+
+-------------------------------------------------------------------
+Sat Oct 16 14:29:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial packaging
