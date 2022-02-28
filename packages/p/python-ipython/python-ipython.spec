@@ -16,12 +16,6 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -30,11 +24,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-ipython%{psuffix}
-Version:        8.0.1
+Version:        8.1.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -42,20 +40,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
-# PATCH-FIX-UPSTREAM ipython-pr13282-py310-inspect.patch -- gh#ipython/ipython#13282, gh#ipython/ipython#13412
-Patch0:         ipython-pr13282-py310-inspect.patch
-# PATCH-FIX-UPSTREAM ipython-pr13371-py310-oserror.patch -- gh#ipython/ipython#13371
-Patch1:         ipython-pr13371-py310-oserror.patch
-# PATCH-FIX-UPSTREAM ipython-pr13466-display.patch -- gh#ipython/ipython#13466
-Patch2:         https://github.com/ipython/ipython/pull/13466.patch#/ipython-pr13466-display.patch
-# PATCH-FIX-OPENSUSE skip-network-test.patch gh#ipython/ipython#13468 mcepl@suse.com
-# skip doctests requiring network connection
-Patch3:         skip-network-test.patch
-BuildRequires:  %pythons
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 18.5}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
+Requires:       (python-prompt_toolkit >= 2.0 with python-prompt_toolkit < 3.1)
 # requires the full stdlib including sqlite3
 Requires:       python >= 3.7
 Requires:       python-backcall
@@ -69,7 +59,6 @@ Requires:       python-pygments
 Requires:       python-setuptools >= 18.5
 Requires:       python-stack-data
 Requires:       python-traitlets >= 5
-Requires:       (python-prompt_toolkit >= 2.0 with python-prompt_toolkit < 3.1)
 Recommends:     jupyter
 Recommends:     python-ipykernel
 Recommends:     python-ipyparallel

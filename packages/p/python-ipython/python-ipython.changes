@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Feb 26 21:08:02 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed patch: skip-network-test.patch (included upstream)
+  * removed patch: ipython-pr13371-py310-oserror.patch (included upstream)
+  * removed patch: ipython-pr13466-display.patch (included upstream)
+  * removed patch: ipython-pr13282-py310-inspect.patch (fixed upstream)
+
+- update to version 8.1.0:
+  * Misc and multiple fixes around quotation auto-closing. It is now
+    disabled by default. Run with
+    TerminalInteractiveShell.auto_match=True to re-enabled
+  * Require pygments>=2.4.0 :ghpull:`13459`, this was implicit in the
+    code, but is now explicit in setup.cfg/setup.py
+  * Docs improvement of core.magic_arguments examples. :ghpull:`13433`
+  * Multi-line edit executes too early with await. :ghpull:`13424`
+  * black is back as an optional dependency, and autoformatting
+    disabled by default until some fixes are implemented (black
+    improperly reformat magics). :ghpull:`13471` Additionally the
+    ability to use yapf as a code reformatter has been added
+    :ghpull:`13528` . You can use
+    TerminalInteractiveShell.autoformatter="black",
+    TerminalInteractiveShell.autoformatter="yapf" to re-enable auto
+    formating with black, or switch to yapf.
+  * Fix and issue where display was not defined.
+  * Auto suggestions are now configurable. Currently only
+    AutoSuggestFromHistory (default) and None. new provider
+    contribution welcomed. :ghpull:`13475`
+  * multiple packaging/testing improvement to simplify downstream
+    packaging (xfail with reasons, try to not access network...).
+  * Update deprecation. InteractiveShell.magic internal method has
+    been deprecated for many years but did not emit a warning until
+    now.
+  * internal appended_to_syspath context manager has been deprecated.
+  * fix an issue with symlinks in virtualenv :ghpull:`13537`
+  * Fix an issue with vim mode, where cursor would not be reset on
+    exit :ghpull:`13472`
+  * ipython directive now remove only known pseudo-decorators
+    :ghpull:`13532`
+  * IPython/lib/security which used to be used for jupyter notebook
+    has been removed.
+  * Fix an issue where async with would execute on new
+    lines. :ghpull:`13436`
+
+-------------------------------------------------------------------
 Thu Feb  3 20:32:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add ipython-pr13466-display.patch -- gh#ipython/ipython#13466
