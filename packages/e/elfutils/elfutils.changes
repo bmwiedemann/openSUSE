@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 25 19:36:08 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Add support for zstd, needed to inspect kernel modules (bsc#1196510)
+
+-------------------------------------------------------------------
 Thu Nov 11 08:56:25 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.185:

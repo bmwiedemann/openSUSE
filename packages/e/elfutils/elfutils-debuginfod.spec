@@ -1,7 +1,7 @@
 #
 # spec file for package elfutils-debuginfod
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,9 +40,11 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  iproute
 BuildRequires:  libbz2-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+
 # For debuginfod
 BuildRequires:  pkgconfig(libarchive) >= 3.1.2
 BuildRequires:  pkgconfig(libcurl) >= 7.29.0
