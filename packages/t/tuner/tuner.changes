@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 20 16:04:58 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.5.1:
+  * Update taglib 1.11 to 1.12
+  * Change pause button to stop button, fixes #79
+  * Update copyright headers
+  * Update monetization info for AppCenter
+  * Remove debian packaging files
+  * Update Copyright year
+  * Add GitHub CI
+
+-------------------------------------------------------------------
 Sat Nov 20 18:26:34 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Add gstreamer-plugins-libav as recommended dependencies
