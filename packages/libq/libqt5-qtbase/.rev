@@ -2411,4 +2411,14 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * 0001-QProcess-Unix-ensure-we-don-t-accidentally-execute-s.patch</comment>
     <requestid>954216</requestid>
   </revision>
+  <revision rev="128" vrev="4">
+    <srcmd5>62dcbc061061fbda29e39d89c19213cb</srcmd5>
+    <version>5.15.2+kde294</version>
+    <time>1646073815</time>
+    <user>dimstar_suse</user>
+    <comment>  place missed in the first version (boo#1195386, CVE-2022-23853,
+  boo#1196501, CVE-2022-25255):
+  (boo#1195386, CVE-2022-23853, boo#1196501, CVE-2022-25255):</comment>
+    <requestid>958069</requestid>
+  </revision>
 </revisionlist>
