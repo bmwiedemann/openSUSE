@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 28 12:52:16 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.9.1:
+  * Fix a regression brought by the previous update (non-utf8 string
+    was incorrectly parsed). Now URIs are correctly parsed, whether
+    or not they contain utf-8 chars. 
+
+-------------------------------------------------------------------
+Mon Feb 28 09:55:50 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.9:
+ * fix an error when importing a QR code (issue #240)
+ * better error handling when importing a code
+
+-------------------------------------------------------------------
 Fri Feb 18 13:33:37 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.8:

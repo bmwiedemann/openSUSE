@@ -113,4 +113,20 @@
 </comment>
     <requestid>955875</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e45dc9dba13ffbe1ea92dbe8fc97aba0</srcmd5>
+    <version>2.4.9.1</version>
+    <time>1646073827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.9.1:
+  * Fix a regression brought by the previous update (non-utf8 string
+    was incorrectly parsed). Now URIs are correctly parsed, whether
+    or not they contain utf-8 chars. 
+
+- Update to 2.4.9:
+ * fix an error when importing a QR code (issue #240)
+ * better error handling when importing a code
+</comment>
+    <requestid>958045</requestid>
+  </revision>
 </revisionlist>
