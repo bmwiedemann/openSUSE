@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220227" schemaversion="4.1">
+<image name="OBS__openSUSE___20220228" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220227</productvar>
+      <productvar name="VERSION">20220228</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220227,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220228,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220227/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220228/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1653,6 +1653,7 @@
       <repopackage name="libgio-2_0-0"/>
       <repopackage name="libgiomm-2_4-1"/>
       <repopackage name="libgirepository-1_0-1"/>
+      <repopackage name="libgit2-1_4"/>
       <repopackage name="libgjs0"/>
       <repopackage name="libglade-2_0-0"/>
       <repopackage name="libgle3"/>
@@ -3762,6 +3763,7 @@
       <repopackage name="python38-pycurl"/>
       <repopackage name="python38-pydot"/>
       <repopackage name="python38-pyftpdlib"/>
+      <repopackage name="python38-pygit2"/>
       <repopackage name="python38-Pygments"/>
       <repopackage name="python38-pygraphviz"/>
       <repopackage name="python38-PyHamcrest"/>
@@ -4472,7 +4474,7 @@
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
-      <repopackage name="systemd-icon-branding-openSUSE"/>
+      <repopackage name="systemd-icon-branding-openSUSE" arch="i586,i686"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-branding-openSUSE"/>
