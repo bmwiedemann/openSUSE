@@ -84,7 +84,7 @@ Requires:       dbus-1
 Requires:       edje
 Requires:       efl
 Requires:       elementary
-Requires:       enlightenment-branding = 0.1
+Requires:       enlightenment-branding >= 0.1
 Requires:       evas-generic-loaders
 %if 0%{?suse_version} > 1500
 # dlopened at runtime
@@ -239,13 +239,11 @@ export CFLAGS="%{optflags}%{?mageia: -g}"
 %meson_install
 
 %if %{enable_wayland}
-%if 0%{?suse_version} >= 1550
 # gdm doesn't show 2 desktop files with the same name
 #rm %{buildroot}%{_datadir}/wayland-sessions/enlightenment.desktop
 mkdir -p %{buildroot}%{_datadir}/wayland-sessions/
 cp %{buildroot}%{_datadir}/xsessions/enlightenment.desktop \
  %{buildroot}%{_datadir}/wayland-sessions/enlightenment-wayland.desktop
-%endif
 %endif
 
 %if %{build_doc}
@@ -300,8 +298,10 @@ rm %{buildroot}%{_libdir}/enlightenment/modules/wizard/*/page_180.so
 # remove files from not wanted place
 rm %{buildroot}%{_datadir}/enlightenment/{COPYING,AUTHORS}
 
+%if %{enable_wayland}
 unlink %{buildroot}/%{_datadir}/xsessions/enlightenment.desktop
 mv %{buildroot}/%{_datadir}/wayland-sessions/enlightenment.desktop %{buildroot}/%{_datadir}/xsessions/enlightenment.desktop
+%endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
