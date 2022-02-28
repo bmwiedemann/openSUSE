@@ -1,7 +1,7 @@
 #
 # spec file for package python-vatnumber
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://code.google.com/p/vatnumber/
 Source:         https://files.pythonhosted.org/packages/source/v/vatnumber/vatnumber-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM port-2to3.patch bsc#[0-9]+ mcepl@suse.com
+# this patch makes things totally awesome
+Patch0:         port-2to3.patch
 BuildRequires:  %{python_module modernize}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -47,6 +50,8 @@ Python module to validate VAT numbers.
 
 %prep
 %setup -q -n vatnumber-%{version}
+%autopatch -p1
+
 python-modernize -w vatnumber/
 
 %build

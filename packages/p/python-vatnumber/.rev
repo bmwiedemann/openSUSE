@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>906338</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d1b9610260dd7ffbfd2ba220962888b1</srcmd5>
+    <version>1.2</version>
+    <time>1646073840</time>
+    <user>dimstar_suse</user>
+    <comment>- Add port-2to3.patch and don't use use_2to3 parameter of setup()
+  function.
+</comment>
+    <requestid>958073</requestid>
+  </revision>
 </revisionlist>
