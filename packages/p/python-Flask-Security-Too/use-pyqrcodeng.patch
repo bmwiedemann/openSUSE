@@ -1,0 +1,29 @@
+Index: Flask-Security-Too-4.1.2/flask_security/core.py
+===================================================================
+--- Flask-Security-Too-4.1.2.orig/flask_security/core.py
++++ Flask-Security-Too-4.1.2/flask_security/core.py
+@@ -1411,7 +1411,7 @@ class Security:
+                 and "authenticator" in cv("TWO_FACTOR_ENABLED_METHODS", app=app)
+             )
+             if need_qrcode:
+-                self._check_modules("pyqrcode", "TWO_FACTOR or UNIFIED_SIGNIN")
++                self._check_modules("pyqrcodeng", "TWO_FACTOR or UNIFIED_SIGNIN")
+ 
+             need_sms = (
+                 cv("UNIFIED_SIGNIN", app=app)
+Index: Flask-Security-Too-4.1.2/flask_security/totp.py
+===================================================================
+--- Flask-Security-Too-4.1.2.orig/flask_security/totp.py
++++ Flask-Security-Too-4.1.2/flask_security/totp.py
+@@ -139,9 +139,9 @@ class Totp:
+         .. versionadded:: 4.0.0
+         """
+         try:
+-            import pyqrcode
++            import pyqrcodeng
+ 
+-            code = pyqrcode.create(self.get_totp_uri(username, totp))
++            code = pyqrcodeng.create(self.get_totp_uri(username, totp))
+             with io.BytesIO() as virtual_file:
+                 code.svg(file=virtual_file, scale=3)
+                 image_as_str = base64.b64encode(virtual_file.getvalue()).decode("ascii")

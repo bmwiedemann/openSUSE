@@ -59,4 +59,40 @@ This is a maintained fork of python-Flask-Security</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>904704</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ec88849b2f1418cfffd8d3535f03be42</srcmd5>
+    <version>4.1.2</version>
+    <time>1646073809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.2:
+  * default_reauthn_handler doesn't honor SECURITY_URL_PREFIX
+  * Add public API and CLI command to change a user's password.
+  * Add type hints. Please note that many of the packages that flask-security
+  * Add first-class support for using username for signing in.
+  * Possible open redirect vulnerability.
+  * Improve cookie handling and default ``samesite`` to ``Strict``.
+  * Email validation confusion - added documentation.
+  * Add documentation on how to override specific error messages.
+  * Don't install global-scope tests.
+  * Add Blinker as explicit dependency, improve/fix celery usage docs,
+    don't require pyqrcode unless authenticator configured, improve SMS
+    configuration variables documentation.
+  * Your UserModel must contain ``fs_uniquifier``
+  * Removal of python 2.7 and &lt;3.6 support
+  * Remove two-factor `/tf-confirm` endpoint and use generic `freshness`
+    mechanism.
+  * Remove ``SECURITY_BACKWARDS_COMPAT_AUTH_TOKEN_INVALID(ATE)``. In
+    addition to not making sense - the documentation has never been correct.
+  * Add 2FA Validity Window so an application can configure how often the
+    second factor has to be entered.
+  * Add HTML5 Email input types to email fields.
+- Refresh no-mongodb.patch
+- Drop patches:
+  * no-setup-dependencies.patch
+  * fix-dependencies.patch
+  * 0001-Do-not-raise-a-TypeError-exception-if-phone.data-is-.patch
+- Add patch use-pyqrcodeng.patch:
+  * Use pyqrcodeng rather than pyqrcode.</comment>
+    <requestid>957960</requestid>
+  </revision>
 </revisionlist>

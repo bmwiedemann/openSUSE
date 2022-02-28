@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Security-Too
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,17 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Security-Too
-Version:        3.4.5
+Version:        4.1.2
 Release:        0
 Summary:        Security for Flask apps
 License:        MIT
 URL:            https://github.com/jwag956/flask-security
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Security-Too/Flask-Security-Too-%{version}.tar.gz
 Patch0:         no-mongodb.patch
-Patch1:         no-setup-dependencies.patch
-Patch2:         fix-dependencies.patch
-Patch3:         0001-Do-not-raise-a-TypeError-exception-if-phone.data-is-.patch
+Patch1:         use-pyqrcodeng.patch
 BuildRequires:  %{python_module Babel >= 1.3}
 BuildRequires:  %{python_module Flask >= 1.0.2}
-BuildRequires:  %{python_module Flask-BabelEx >= 0.9.3}
+BuildRequires:  %{python_module Flask-Babel}
 BuildRequires:  %{python_module Flask-Login >= 0.4.1}
 BuildRequires:  %{python_module Flask-Mail >= 0.9.1}
 BuildRequires:  %{python_module Flask-Principal >= 0.4.0}
@@ -42,6 +40,8 @@ BuildRequires:  %{python_module SQLAlchemy >= 1.2.6}
 BuildRequires:  %{python_module Werkzeug >= 0.14.1}
 BuildRequires:  %{python_module argon2_cffi >= 19.1.0}
 BuildRequires:  %{python_module bcrypt >= 3.1.4}
+BuildRequires:  %{python_module bleach}
+BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module cachetools >= 3.1.0}
 BuildRequires:  %{python_module cryptography >= 2.1.4}
 BuildRequires:  %{python_module email_validator >= 1.0.5}
@@ -56,13 +56,13 @@ BuildRequires:  %{python_module zxcvbn >= 4.4.28}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0.2
-Requires:       python-Flask-BabelEx >= 0.9.3
+Requires:       python-Flask-Babel
 Requires:       python-Flask-Login >= 0.4.1
-Requires:       python-Flask-Mail >= 0.9.1
 Requires:       python-Flask-Principal >= 0.4.0
 Requires:       python-Flask-WTF >= 0.14.2
 Requires:       python-Werkzeug >= 0.14.1
 Requires:       python-bcrypt >= 3.1.4
+Requires:       python-blinker >= 1.4
 Requires:       python-cryptography >= 2.1.4
 Requires:       python-email_validator >= 1.0.5
 Requires:       python-itsdangerous >= 1.1.0
@@ -84,9 +84,7 @@ application. This is a independently maintained version of Flask-Security
 based on the 3.0.0 version of the original.
 
 %prep
-%setup -q -n Flask-Security-Too-%{version}
-%autopatch -p1
-rm pytest.ini
+%autosetup -p1 -n Flask-Security-Too-%{version}
 
 %if 0%{?suse_version} <= 1500
 # test_trackable.py needs werkzeug.middleware.proxy_fix which is only available
@@ -102,7 +100,7 @@ rm tests/test_trackable.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_wtform_xlation'
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst
