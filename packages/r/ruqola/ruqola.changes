@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb 25 17:52:14 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 1.6.3
+  * Fix double click on user
+  * Fix show roles in groups channel
+  * Disable action when it's not connected
+  * Fix emoji popup pos
+  * Avoid duplicate users when we create channel
+  * Use enum for defining type of createChannel info
+  * Fix delete team
+  * Fix create teams
+  * Use isValid()
+  * Reduce struct
+  * When we create a team member must use userId, but for channels
+    we need userNames
+  * Fix add users when we create new channel
+
+-------------------------------------------------------------------
 Wed Feb  9 19:14:52 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 1.6.2
