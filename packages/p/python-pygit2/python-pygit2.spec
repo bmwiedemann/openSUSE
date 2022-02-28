@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygit2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pygit2
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
