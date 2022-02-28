@@ -3603,4 +3603,18 @@ oddjob-gpupdate isn't blocked)</comment>
   * Fix superfluous variable.</comment>
     <requestid>957124</requestid>
   </revision>
+  <revision rev="386" vrev="1">
+    <srcmd5>2cd8272cd6e5633cea97d7ee7ef4ff7b</srcmd5>
+    <version>2.2.0+git20220225.739a708</version>
+    <time>1646073793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220225.739a708:
+  * a8aa5cb3 pam-modules: whitelist pam-fscrypt (bsc#1195623)
+  * ace7a9af dbus-services: whitelist nvme-stas (bsc#1195236)
+  * b4d67b66 FileDigestCheck: enable XML filtered digests for D-Bus services
+  * 068981ae FileDigestCheck: emit special {group}-file-parse-error if XML is bad
+  * 816017cb dbus-services: whitelist tukitd (bsc#1196149)
+  * 67c21c1e dbus-services: whitelist kcron helper</comment>
+    <requestid>957735</requestid>
+  </revision>
 </revisionlist>

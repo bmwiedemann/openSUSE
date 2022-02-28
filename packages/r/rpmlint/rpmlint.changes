@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 25 21:31:27 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220225.739a708:
+  * a8aa5cb3 pam-modules: whitelist pam-fscrypt (bsc#1195623)
+  * ace7a9af dbus-services: whitelist nvme-stas (bsc#1195236)
+  * b4d67b66 FileDigestCheck: enable XML filtered digests for D-Bus services
+  * 068981ae FileDigestCheck: emit special {group}-file-parse-error if XML is bad
+  * 816017cb dbus-services: whitelist tukitd (bsc#1196149)
+  * 67c21c1e dbus-services: whitelist kcron helper
+
+-------------------------------------------------------------------
 Wed Feb 23 16:22:10 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220223.8f7d3e1:
