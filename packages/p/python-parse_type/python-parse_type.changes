@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 28 10:33:12 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.6.0
+  + issue #17: setup.py: Remove use of "use_2to3"
+  + parse issue #119 (same as: #121): int_convert memory effect with number-base discovery
+  + UPDATE to parse v1.18.0 (needed by: parse issue #119)
+  + parse PR #122: Fixes issue #121 in parse: int_convert memory effect.
+  + parse v1.17.0
+
+-------------------------------------------------------------------
 Wed Sep 23 09:50:41 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -  python-enum34 is mandatory with pyhon2
