@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Feb 27 06:52:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.8
+  * PaddlePaddle frontend
+  * TVMScript: round-trippable python-based syntax for TIR
+  * TorchScript integration
+  * TensorIR scheduling language
+  * TensorRT and CUTLASS integration via BYOC
+  * Int4 TensorCore support in AutoTVM
+  * MicroTVM Project API and Zephyr, Arduino support
+  * AOT executor
+  * Robust Windows support
+  * Affine analysis infra: iter-affine-map
+  * Improved Vulkan backend
+  * CUDA graph support in TVM runtime
+- Hopefully fixes boo#1195952
+- Drop Patches merged upstream:
+  * tvm-fix-catch.patch -- gh#apache/tvm#7319
+  * tvm-fix-llvm12.patch -- gh#apache/tvm#6717, gh#apache/tvm#6738
+- Add patches
+  * tvm-fix-relay-test.patch -- gh#apache/tvm#10402
+  * tvm-disable-vulkan-test-check.patch
+- Skip Python 3.9+ -- gh#apache/tvm#8577
+
+-------------------------------------------------------------------
 Mon Nov  8 19:08:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim future plans/marketing from description.

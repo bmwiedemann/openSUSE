@@ -1,7 +1,7 @@
 #
 # spec file for package tvm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %define _lto_cflags %{nil}
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# https://numpy.org/neps/nep-0029-deprecation_policy.html
-%define skip_python36 1
+# https://github.com/apache/tvm/issues/8577
+%define skip_python39 1
+%define skip_python310 1
 %ifarch aarch64 x86_64 ppc64le
 %bcond_without onednn
 %else
 %bcond_with onednn
 %endif
+%bcond_without pytest
 %ifarch aarch64
 %bcond_without arm_compute_lib
 %else
@@ -35,27 +37,30 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
 URL:            https://tvm.apache.org/
-Source:         https://github.com/apache/tvm/archive/v%{version}.tar.gz
-Patch0:         lib-finder-python-cmake.patch
-# Fix cblas.h path
-Patch1:         tvm-fix-openblas.patch
-# PATCH-FIX-UPSTREAM - https://github.com/apache/tvm/issues/7319
-Patch2:         tvm-fix-catch.patch
-# PATCH-FIX-UPSTREAM - https://github.com/apache/tvm/pull/6717 https://github.com/apache/tvm/pull/6738
-Patch3:         tvm-fix-llvm12.patch
+Source:         https://github.com/apache/tvm/archive/v%{version}.tar.gz#/tvm-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tvm-fix-relay-test.patch --  gh#apache/tvm#10402
+Patch0:         tvm-fix-relay-test.patch
+# PATCH-FIX-OPENSUSE lib-finder-python-cmake.patch -- custom cmake path
+Patch1:         lib-finder-python-cmake.patch
+# PATCH-FIX-OPENSUSE tvm-fix-openblas.patch -- We use openblas headers instead of netlib cblas
+Patch2:         tvm-fix-openblas.patch
+# PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
+Patch3:         tvm-disable-vulkan-test-check.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module synr}
 BuildRequires:  %{python_module tornado}
 %if %{with arm_compute_lib}
 BuildRequires:  ComputeLibrary-devel
@@ -66,7 +71,10 @@ BuildRequires:  dlpack-devel
 BuildRequires:  dmlc-core-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  git
+BuildRequires:  gmock
 BuildRequires:  gtest
+BuildRequires:  llvm-devel
 BuildRequires:  memory-constraints
 BuildRequires:  openblas-devel
 BuildRequires:  opencl-headers
@@ -83,12 +91,7 @@ Requires:       python-attrs
 Requires:       python-decorator
 Requires:       python-numpy
 Requires:       python-psutil
-%if %{suse_version} > 1500
-# Build broken with LLVM 13 on Tumbleweed - https://github.com/apache/tvm/issues/9319
-BuildRequires:  llvm12-devel
-%else
-BuildRequires:  llvm-devel
-%endif
+Requires:       python-synr
 %if %{with onednn}
 BuildRequires:  onednn-devel
 %endif
@@ -123,8 +126,8 @@ This package contains the headers.
 %package -n libtvm
 Summary:        Libraries generated for TVM
 # renamed up to libtvm here
-Provides:       tvm
-Obsoletes:      tvm
+Provides:       tvm = %{version}-%{release}
+Obsoletes:      tvm < %{version}-%{release}
 
 %description -n libtvm
 Libraries generated for TVM without any provided soname.
@@ -168,6 +171,7 @@ ln -s %{_includedir}/endian.h include/endian.h
   -DUSE_SORT=ON \
   -DUSE_THREADS=ON \
   -DUSE_VULKAN=ON \
+  -DUSE_LIBBACKTRACE=OFF \
   -DUSE_ANTLR="/usr/share/java/antlr4/antlr4-runtime.jar" \
   -DINSTALL_DEV=ON
 %cmake_build
@@ -186,42 +190,63 @@ rm -f %{buildroot}%{_includedir}/endian.h
 export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
 pushd python
 %python_install
-%python_expand chmod 0755 %{buildroot}%{$python_sitearch}/tvm/driver/tvmc/main.py
+%python_expand chmod 0755 %{buildroot}%{$python_sitearch}/tvm/driver/tvmc/main.py %{buildroot}%{$python_sitearch}/tvm/contrib/torch/pytorch_tvm.py
 popd
 # Remove /usr/tvm/*.so
 rm -rf %{buildroot}%{_prefix}/tvm
 # Remove .cpp file
 %python_expand rm %{buildroot}/%{$python_sitearch}/tvm/_ffi/_cython/core.cpp
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 pushd %{__builddir}
-%make_build cpptest
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$(pwd)
-for test in *_test; do
-    ./$test
-done
+%cmake_build cpptest
 popd
-# Tests requires pytest with ExitCode defined, only available on Tumbleweed so far
-# Tests fail on TW as it tries to run Vulkan
-%if 0
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$(pwd)
+# to avoid CI thread throttling.
+export TVM_BIND_THREADS=0
+export OMP_NUM_THREADS=1
+%{python_expand #
+export PYTHONPATH=%{buildroot}%{$python_sitearch}
+export PYTHONDONTWRITEBYTECODE=1
+# TextureCopy: no openCL in environment
+ctestflags="-E TextureCopy"
+%ctest $ctestflags
+}
+
+%if %{with pytest}
+mkdir python_gen
+cp python/gen_requirements.py python_gen/
+export PYTHONPATH=$(pwd)/python_gen
 export TVM_INCLUDE_PATH=%{buildroot}%{_prefix}
-# this test needs working vulkan
-rm tests/python/unittest/test_runtime_ndarray.py
-# test_device_module_dump or test_conv2d_scalar_bop or test_broadcast_bop or test_tensor_scalar_bop or test_vulkan or test_add_pipeline or test_cmp_load_store - also need vulkan
-# test_task_tuner_without_measurement or test_fit or test_tuner or test_opencl_ternary_expression or test_opencl_inf_nan or test_gpu or test_simplex_data_transferring or test_duplex_data_transferring - Needs openCL
+export TVM_TEST_TARGETS="llvm"
+export TVM_FFI="cython"
+# No python module for XGBoost
+donttest="test_xgb_model"
+donttest="$donttest or test_sketch_search_policy_xgbmodel"
+donttest="$donttest or test_sketch_search_policy_custom_sketch"
+donttest="$donttest or test_task_tuner_without_measurement"
+donttest="$donttest or test_autotvm_xgboost_mode"
+# No OpenCL device
+donttest="$donttest or test_simplex_data_transferring"
+donttest="$donttest or test_duplex_data_transferring"
+# no minrpc in installed path (test looks in src)
+donttest="$donttest or test_rpc_echo"
+donttest="$donttest or test_rpc_remote_module"
+%ifnarch x86_64
 # test_fp16_to_fp32 fails on non-x86 as it uses skylake as llvm target
-more_not_test=''
+donttest="$donttest or test_fp16_to_fp32"
+%endif
 %ifarch ppc64le
-more_not_test="or test_popcount or test_vmlal_s16 or test_llvm_add_pipeline"
+donttest="$donttest or test_popcount or test_vmlal_s16 or test_llvm_add_pipeline"
 %endif
 %ifarch ppc64
-more_not_test="or test_check_correctness or test_graph_simple or test_llvm_add_pipeline or test_popcount or test_rpc_array or test_rpc_file_exchange or test_rpc_remote_module or test_rpc_return_func or test_rpc_return_ndarray or test_rpc_simple or test_rpc_tracker_register or test_rpc_tracker_request or test_vmlal_s16"
+donttest="$donttest or test_check_correctness or test_graph_simple or test_llvm_add_pipeline or test_popcount or test_rpc_array or test_rpc_file_exchange or test_rpc_remote_module or test_rpc_return_func or test_rpc_return_ndarray or test_rpc_simple or test_rpc_tracker_register or test_rpc_tracker_request or test_vmlal_s16"
 %endif
-%{python_expand # test with both $python sitearch and sitelib
-export PYTHONPATH="%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitelib}"
-$python -m pytest -v tests/python/unittest -k "not (test_device_module_dump or test_conv2d_scalar_bop or test_broadcast_bop or test_tensor_scalar_bop or test_vulkan or test_add_pipeline or test_cmp_load_store or test_task_tuner_without_measurement or test_fit or test_tuner or test_opencl_ternary_expression or test_opencl_inf_nan or test_gpu or test_simplex_data_transferring or test_duplex_data_transferring or test_fp16_to_fp32 $more_not_test)"}
+# probes vulkan on test collection
+ignorefiles="--ignore tests/python/unittest/test_target_codegen_vulkan.py"
+ignorefiles="$ignorefiles --ignore tests/python/unittest/test_tir_intrin.py"
+%pytest_arch -v tests/python/unittest -m "not gpu" -k "not ($donttest)" $ignorefiles
 %endif
 
 %post -n libtvm -p /sbin/ldconfig
@@ -236,13 +261,10 @@ $python -m pytest -v tests/python/unittest -k "not (test_device_module_dump or t
 %{_libdir}/libtvm*.so
 
 %files -n %{name}-devel
-%dir %{_includedir}/tvm
-%{_includedir}/tvm/*
+%{_includedir}/tvm
 
 %files %{python_files}
-%dir %{python_sitearch}/tvm
-%{python_sitearch}/tvm/*
-%dir %{python_sitearch}/tvm*egg-info/
-%{python_sitearch}/tvm*egg-info/*
+%{python_sitearch}/tvm
+%{python_sitearch}/tvm-%{version}*-info
 
 %changelog
