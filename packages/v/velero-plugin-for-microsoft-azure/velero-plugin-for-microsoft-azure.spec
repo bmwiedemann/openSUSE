@@ -1,7 +1,7 @@
 #
 # spec file for package velero-plugin-for-microsoft-azure
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define goipath github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
 
 Name:           velero-plugin-for-microsoft-azure
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Velero plugin for Microsoft Azure
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://velero.io
 Source0:        https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) = 1.15
 
 %description
 Plugins to support Velero on Microsoft Azure
