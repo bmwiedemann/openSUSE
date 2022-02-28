@@ -1034,4 +1034,21 @@ update go git:
     <comment></comment>
     <requestid>894620</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>8c81a46871798710b21f489d322a438f</srcmd5>
+    <version>84.87.20210910</version>
+    <time>1646073794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update branding-tumbleweed.zip from https://github.com/openSUSE/branding.git
+  Drop plymouth-branding-openSUSE's watermark link add a
+  configuration function to plymouth theme configuration to avoid
+  logo lost which cause plymouth to fail.
+- Update branding-openSUSE.spec: resort plymouth-branding-openSUSE
+  install and build dependence to avoid plymouth fall to terminal
+  mode in some scenario(bsc#1189613).
+- Drop systemd icons, since distribution-logos took that over
+- Change the name of the font used in the installer
+</comment>
+    <requestid>955960</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 19 12:04:49 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Update branding-tumbleweed.zip from https://github.com/openSUSE/branding.git
+  Drop plymouth-branding-openSUSE's watermark link add a
+  configuration function to plymouth theme configuration to avoid
+  logo lost which cause plymouth to fail.
+- Update branding-openSUSE.spec: resort plymouth-branding-openSUSE
+  install and build dependence to avoid plymouth fall to terminal
+  mode in some scenario(bsc#1189613).
+
+-------------------------------------------------------------------
+Fri Sep 10 12:10:17 UTC 2021 - Sasi Olin <hel@lcp.world>
+
+- Drop systemd icons, since distribution-logos took that over
+- Change the name of the font used in the installer
+
+-------------------------------------------------------------------
 Thu May 20 12:09:30 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Enable grub2-branding on riscv64

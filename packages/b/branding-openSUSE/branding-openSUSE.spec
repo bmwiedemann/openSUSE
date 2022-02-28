@@ -20,7 +20,7 @@
 %define theme_name openSUSE
 %define theme_version tumbleweed
 %define theme_version_clean Tumbleweed
-%define date 20200106
+%define date 20210910
 
 %ifarch x86_64 %{ix86}
 %define gfxboot 1
@@ -89,7 +89,7 @@ BuildArch:      noarch
 %package -n yast2-qt-branding-%{theme_name}
 Summary:        %{theme_name} %{theme_version_clean} branding for YaST2 Qt
 License:        BSD-3-Clause
-Requires:       adobe-sourcesanspro-fonts
+Requires:       adobe-sourcesans3-fonts
 Requires:       distribution-logos
 Requires:       google-opensans-fonts
 Supplements:    (libyui-qt and branding-%{theme_name})
@@ -110,19 +110,6 @@ BuildArch:      noarch
 %description -n icewm-theme-yast-installation
 This IceWM theme is specifically tailored to the %{theme_name} installation
 process using YaST2
-
-%package -n systemd-icon-branding-%{theme_name}
-Summary:        %{theme_name} %{theme_version_clean} icons for systemd
-License:        CC-BY-SA-3.0
-Requires:       distribution-logos
-Supplements:    (systemd and branding-%{theme_name})
-Provides:       systemd-icon-branding = %{version}
-Conflicts:      systemd-icon-branding
-BuildArch:      noarch
-
-%description -n systemd-icon-branding-%{theme_name}
-%{theme_name} %{theme_version_clean} icons for systemd os-release
-LOGO variable
 
 %if 0%{?grub2} > 0
 %package -n grub2-branding-%{theme_name}
@@ -163,10 +150,8 @@ BuildArch:      noarch
 Summary:        %{theme_name} %{theme_version_clean} branding for Plymouth bootsplash
 License:        GPL-2.0-or-later
 BuildRequires:  plymouth-theme-bgrt
-Requires:       distribution-logos
+Requires:       plymouth-scripts
 Requires:       plymouth-theme-bgrt
-PreReq:         plymouth-scripts
-PreReq:         plymouth-theme-bgrt
 Supplements:    (plymouth and branding-%{theme_name})
 Conflicts:      plymouth-branding
 Provides:       plymouth-branding = %{version}
@@ -303,9 +288,6 @@ gfxboot --update-theme %{theme_name}
 %dir %{_datadir}/libreoffice
 %{_datadir}/libreoffice/program
 
-%files -n systemd-icon-branding-%{theme_name}
-%{_datadir}/icons/hicolor
-
 %if 0%{?grub2} > 0
 %files -n grub2-branding-%{theme_name}
 %{_datadir}/grub2
@@ -326,7 +308,7 @@ gfxboot --update-theme %{theme_name}
 %endif
 
 %files -n plymouth-branding-%{theme_name}
+%dir %{_datadir}/plymouth
 %{_datadir}/plymouth/plymouthd.defaults
-%{_datadir}/plymouth/themes/spinner/watermark.png
 
 %changelog
