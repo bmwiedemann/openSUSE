@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 17 19:24:11 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Removed double source entry 
+
+-------------------------------------------------------------------
+Mon Nov 15 19:46:22 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 0.47.0:
+  * extremely long list of changes, see
+    https://openmw.org/2021/openmw-0-47-0-released/
+- Removed obsolete patches:
+  * openmw-add-missing-include.patch
+  * 0001-add-GCC-11-needed-includes.patch
+  * openmw-cast-float-to-btScalar.patch
+
+-------------------------------------------------------------------
 Fri Oct 22 17:39:23 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - Added patches:

@@ -18,22 +18,16 @@
 
 
 Name:           openmw
-Version:        0.46.0
+Version:        0.47.0
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
 Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
-Source:         https://github.com/OpenMW/openmw/archive/%{name}-%{version}.tar.gz
+Source:         https://gitlab.com/OpenMW/openmw/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
-# PATCH-FIX-UPSTREAM openmw-add-missing-include.patch gh#OpenMW/openmw!2817 malcolmlewis@opensuse.org -- Add missing algorithm include for later boost releases.
-Patch0:         openmw-add-missing-include.patch
-# PATCH-FIX-UPSTREAM 0001-add-GCC-11-needed-includes.patch https://gitlab.com/OpenMW/openmw/-/issues/6357 adam@mizerski.pl -- Fix build on GCC 11 due to new required includes for std::numeric_limit.
-Patch1:         0001-add-GCC-11-needed-includes.patch
 # PATCH-FIX-UPSTREAM openmw-sigaltstack.patch https://gitlab.com/OpenMW/openmw/-/issues/6356 adam@mizerski.pl -- fix error: size of array 'altstack' is not an integral constant-expression
 Patch2:         openmw-sigaltstack.patch
-# PATCH-FIX-UPSTREAM openmw-cast-float-to-btScalar.patch adam@mizerski.pl -- this will be included in 0.47.0 release
-Patch3:         openmw-cast-float-to-btScalar.patch
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -55,11 +49,13 @@ BuildRequires:  pkgconfig(bullet) >= 2.83.0
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libunshield)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openscenegraph) >= 3.2
 BuildRequires:  pkgconfig(openthreads) >= 3.2
+BuildRequires:  pkgconfig(recastnavigation)
 BuildRequires:  pkgconfig(sdl2)
 Requires:       OpenSceneGraph-plugins
 Requires(post): desktop-file-utils
@@ -97,7 +93,7 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
 %prep
 %setup -q -n openmw-openmw-%{version}
 %autopatch -p1
-cp 'files/mygui/DejaVu Font License.txt' ./DejaVuFontLicense.txt
+cp 'files/mygui/DejaVuFontLicense.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
 STATIC_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
@@ -122,7 +118,8 @@ done
        -DDESIRED_QT_VERSION=5 \
        -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden \
-       -DCMAKE_VISIBILITY_INLINES_HIDDEN=1
+       -DCMAKE_VISIBILITY_INLINES_HIDDEN=1 \
+       -DOPENMW_USE_SYSTEM_RECASTNAVIGATION="ON"
 
 %make_build
 
@@ -171,9 +168,9 @@ rm -Rf %{buildroot}/%{_datadir}/metainfo
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/openmw.appdata.xml
 %config(noreplace) %{_sysconfdir}/%{name}/openmw.cfg
-%config(noreplace) %{_sysconfdir}/%{name}/openmw-cs.cfg
-%config(noreplace) %{_sysconfdir}/%{name}/settings-default.cfg
 %config(noreplace) %{_sysconfdir}/%{name}/gamecontrollerdb*.txt
+%config %{_sysconfdir}/%{name}/defaults.bin
+%config %{_sysconfdir}/%{name}/defaults-cs.bin
 %config %{_sysconfdir}/%{name}/version
 %{_bindir}/bsatool
 %{_bindir}/esmtool
