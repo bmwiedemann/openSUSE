@@ -17,7 +17,7 @@
 
 
 Name:           reco
-Version:        3.0.1
+Version:        3.2.1
 Release:        0
 Summary:        Audio Recording App
 License:        GPL-3.0-or-later
