@@ -1,7 +1,7 @@
 From 32b8ea83078edc4a86cbba573142dc95b16ebd40 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 1 Feb 2022 11:31:44 +0100
-Subject: [PATCH 11/11] Bump version of ed25519 to ~> 1.3.0
+Subject: [PATCH 11/13] Bump version of ed25519 to ~> 1.3.0
 
 (cherry picked from commit 2a974101f42dbc525450e240f02db2a3edc62ac1)
 ---
@@ -22,5 +22,5 @@ index ccf76011a..ea38685bf 100644
    s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
    s.add_dependency "i18n", "~> 1.8"
 -- 
-2.34.1
+2.35.1
 

@@ -59,6 +59,8 @@ Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Add-support-for-Ruby-3.1.patch
 Patch11:        0011-Bump-version-of-ed25519-to-1.3.0.patch
+Patch12:        0012-Bump-rspec-dependency-to-3.11.0.patch
+Patch13:        0013-Stop-using-the-last-argument-as-kwargs-in-unit-tests.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # force only one ruby version
@@ -139,8 +141,9 @@ BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.5 }
 # devel dependencies:
 #  s.add_development_dependency "rake", "~> 13.0"
 BuildRequires:  %{rubygem rake:13 }
-#  s.add_development_dependency "rspec", "~> 3.10.0"
-BuildRequires:  %{rubygem rspec:3.10 }
+# PATCHED
+#  s.add_development_dependency "rspec", "~> 3.11.0"
+BuildRequires:  %{rubygem rspec:3.11 }
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
 BuildRequires:  %{rubygem rspec-its:1.3 }
 #  s.add_development_dependency "fake_ftp", "~> 0.1.1"
