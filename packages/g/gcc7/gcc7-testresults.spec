@@ -1,7 +1,7 @@
 #
 # spec file for package gcc7-testresults
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,7 @@
 #
 # spec file for package gcc7
 #
+# Copyright (c) 2009 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -304,6 +305,7 @@ Requires:       libmpxwrappers%{libmpxwrappers_sover} >= %{version}-%{release}
 Suggests:       gcc7-info gcc7-locale
 %endif
 
+Group:          Development/Languages/C and C++
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
@@ -337,6 +339,7 @@ Patch31:        gcc7-testsuite-fixes.patch
 Patch32:        gcc7-pr81942.patch
 Patch33:        gcc7-sanitizer-cyclades.patch
 Patch34:        gcc7-ada-MINSTKSZ.patch
+Patch35:        gcc7-pr55917.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -348,12 +351,34 @@ Patch101:       gcc7-fix-retrieval-of-testnames.patch
 Patch102:       gcc7-aarch64-sls-miti-1.patch
 Patch103:       gcc7-aarch64-sls-miti-2.patch
 Patch104:       gcc7-aarch64-sls-miti-3.patch
+Patch105:       gcc7-pfe-0001-Backport-Add-entry-for-patchable_function_entry.patch
+Patch106:       gcc7-pfe-0002-Backport-Skip-fpatchable-function-entry-tests-for-nv.patch
+Patch107:       gcc7-pfe-0003-Backport-Error-out-on-nvptx-for-fpatchable-function-.patch
+Patch108:       gcc7-pfe-0004-Backport-Adapt-scan-assembler-times-for-alpha.patch
+Patch109:       gcc7-pfe-0005-Backport-patchable_function_entry-decl.c-Use-3-NOPs-.patch
+Patch110:       gcc7-pfe-0006-Backport-IBM-Z-Use-the-dedicated-NOP-instructions-fo.patch
+Patch111:       gcc7-pfe-0007-Backport-Add-regex-to-search-for-uppercase-NOP-instr.patch
+Patch112:       gcc7-pfe-0008-Backport-ICE-segmentation-fault-with-patchable_funct.patch
+Patch113:       gcc7-pfe-0009-Backport-patchable_function_entry-decl.c-Pass-mcpu-g.patch
+Patch114:       gcc7-pfe-0010-Backport-patchable_function_entry-decl.c-Do-not-run-.patch
+Patch115:       gcc7-pfe-0011-Backport-patchable_function_entry-decl.c-Add-fno-pie.patch
+Patch116:       gcc7-pfe-0012-Backport-PR-c-89946-ICE-in-assemble_start_function-a.patch
+Patch117:       gcc7-pfe-0013-Backport-targhooks.c-default_print_patchable_functio.patch
+Patch118:       gcc7-pfe-0014-Backport-Align-__patchable_function_entries-to-POINT.patch
+Patch119:       gcc7-pfe-0015-Backport-Fix-PR-93242-patchable-function-entry-broke.patch
+Patch120:       gcc7-pfe-0016-Backport-Fix-patchable-function-entry-on-arc.patch
+Patch121:       gcc7-pfe-0017-Backport-Add-patch_area_size-and-patch_area_entry-to.patch
+Patch122:       gcc7-pfe-0018-Backport-testsuite-Adjust-patchable_function-tests-f.patch
+Patch123:       gcc7-pfe-0019-Backport-Use-the-section-flag-o-for-__patchable_func.patch
+Patch124:       gcc7-pfe-0020-Backport-varasm-Fix-up-__patchable_function_entries-.patch
+Patch125:       gcc7-pfe-0021-Backport-rs6000-Avoid-fpatchable-function-entry-regr.patch
+Patch126:       gcc7-pfe-0022-Fix-unwinding-issues-when-pfe-is-enabled.patch
 
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 
-%description 
+%description
 Results from running the gcc and target library testsuites.
 
 
@@ -487,6 +512,7 @@ ln -s nvptx-newlib/newlib .
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
+%patch35 -p1
 %patch51
 %patch60
 %patch61
@@ -496,6 +522,28 @@ ln -s nvptx-newlib/newlib .
 %patch102 -p1
 %patch103 -p1
 %patch104 -p1
+%patch105 -p1
+%patch106 -p1
+%patch107 -p1
+%patch108 -p1
+%patch109 -p1
+%patch110 -p1
+%patch111 -p1
+%patch112 -p1
+%patch113 -p1
+%patch114 -p1
+%patch115 -p1
+%patch116 -p1
+%patch117 -p1
+%patch118 -p1
+%patch119 -p1
+%patch120 -p1
+%patch121 -p1
+%patch122 -p1
+%patch123 -p1
+%patch124 -p1
+%patch125 -p1
+%patch126 -p1
 
 #test patching end
 
@@ -824,14 +872,14 @@ mkdir ../testresults
 export SUSE_ASNEEDED=0
 export NO_BRP_CHECK_BYTECODE_VERSION=true
 cd obj-%{GCCDIST}
-%if 0%{?run_tests:1} 
+%if 0%{?run_tests:1}
 cp `find . -name "*.sum"` ../testresults/
 cp `find . -name "*.log"  \! -name "config.log" | grep -v 'acats.\?/tests' ` ../testresults/
 chmod 644 ../testresults/*
 %endif
 
 %if 0%{?run_tests:1}
-%files 
+%files
 %defattr(-,root,root)
 %doc testresults/test_summary.txt
 %doc testresults/*.sum

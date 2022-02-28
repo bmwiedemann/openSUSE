@@ -517,4 +517,41 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
 - Add bits/unistd_ext.h to the list of removed fixed includes.</comment>
     <requestid>921796</requestid>
   </revision>
+  <revision rev="36" vrev="11">
+    <srcmd5>99d2055055cb6d08ca876bc3fccd7e29</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1646073833</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove include-fixed/sys/rseq.h to fix build on openSUSE:Factory.
+- Avoid duplicate license in cross packages.
+
+- Adjust some ambiguous SPDX license specifications to prevent
+  spec-cleaner from messing up.
+
+- Add gcc7-pr55917.patch to do not handle exceptions in std::thread 
+  (jsc#CAR-1182)
+
+- Add gcc7-pfe-0001-Backport-Add-entry-for-patchable_function_entry.patch,
+  gcc7-pfe-0002-Backport-Skip-fpatchable-function-entry-tests-for-nv.patch,
+  gcc7-pfe-0003-Backport-Error-out-on-nvptx-for-fpatchable-function-.patch,
+  gcc7-pfe-0004-Backport-Adapt-scan-assembler-times-for-alpha.patch,
+  gcc7-pfe-0005-Backport-patchable_function_entry-decl.c-Use-3-NOPs-.patch,
+  gcc7-pfe-0006-Backport-IBM-Z-Use-the-dedicated-NOP-instructions-fo.patch,
+  gcc7-pfe-0007-Backport-Add-regex-to-search-for-uppercase-NOP-instr.patch,
+  gcc7-pfe-0008-Backport-ICE-segmentation-fault-with-patchable_funct.patch,
+  gcc7-pfe-0009-Backport-patchable_function_entry-decl.c-Pass-mcpu-g.patch,
+  gcc7-pfe-0010-Backport-patchable_function_entry-decl.c-Do-not-run-.patch,
+  gcc7-pfe-0011-Backport-patchable_function_entry-decl.c-Add-fno-pie.patch,
+  gcc7-pfe-0012-Backport-PR-c-89946-ICE-in-assemble_start_function-a.patch,
+  gcc7-pfe-0013-Backport-targhooks.c-default_print_patchable_functio.patch,
+  gcc7-pfe-0014-Backport-Align-__patchable_function_entries-to-POINT.patch,
+  gcc7-pfe-0015-Backport-Fix-PR-93242-patchable-function-entry-broke.patch,
+  gcc7-pfe-0016-Backport-Fix-patchable-function-entry-on-arc.patch,
+  gcc7-pfe-0017-Backport-Add-patch_area_size-and-patch_area_entry-to.patch,
+  gcc7-pfe-0018-Backport-testsuite-Adjust-patchable_function-tests-f.patch,
+  gcc7-pfe-0019-Backport-Use-the-section-flag-o-for-__patchable_func.patch,
+  gcc7-pfe-0020-Backport-varasm-Fix-up-__patchable_function_entries-.patch,
+  gcc7-pfe-0021-Backport-rs6000-Avoid-fpatchable-function-entry-regr.patch,</comment>
+    <requestid>958058</requestid>
+  </revision>
 </revisionlist>

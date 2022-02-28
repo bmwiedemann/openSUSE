@@ -120,6 +120,6 @@ for f in *.spec; do
   sed -i -e '/^# .*-\(BEGIN\|END\)$/d' $f
 done
 
-osc service localrun format_spec_file
+#osc service localrun format_spec_file
 
-exit 0
+#exit 0
