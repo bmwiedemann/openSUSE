@@ -17,7 +17,7 @@
 
 
 Name:           secrets
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
@@ -26,24 +26,24 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
-BuildRequires:  meson
+BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.7.0
 BuildRequires:  python3-construct
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  python3-pykeepass >= 3.2.1
-BuildRequires:  python3-pyotp
+BuildRequires:  python3-pykeepass >= 4.0.1
+BuildRequires:  python3-pyotp >= 2.4.0
 BuildRequires:  python3-pytest
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.5.0
 BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(pwquality)
+BuildRequires:  pkgconfig(pwquality) >= 1.4.0
 
 Requires:       python3-argon2-cffi
-Requires:       python3-gobject-Gdk
 Requires:       python3-construct
+Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
 Requires:       python3-pwquality
 Requires:       python3-pycryptodome
