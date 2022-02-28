@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Feb 28 09:16:19 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.2
+  * platform support:
+    ** all architectures now share the coverage mark instrumentation
+       implementation, meaning that performance now equals what had been
+       implemented only on x86 architectures.
+    ** fixed a performance regression on x86-64 from changes in AVX2 register
+       handling. (lp#1960081, reported by Michael Kappert)
+    ** fixed a garbage collection bug on ppc64 manifesting in occasional
+       corruption on threaded programs. (lp#1959338, lp#1952973)
+    ** micro-optimizations in type tests for (SIGNED-BYTE 64).
+  * enhancement: improved handling of source locations for some classes
+    of compile time and runtime errors.
+  * enhancement: better source locations for structure accessors.
+  * bug fix: SB-COVER now always instruments top level forms correctly.
+  * bug fix: muffling conditions now works correctly on higher debug settings.
+  * bug fix: local muffling declarations now scope correctly with respect to
+    undefined variable warnings.
+  * optimization: calls to STRING= can now return NIL more quickly on strings
+    of unequal length.
+
+-------------------------------------------------------------------
 Sun Jan 30 22:05:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.2.1
