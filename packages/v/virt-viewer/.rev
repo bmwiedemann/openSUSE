@@ -566,4 +566,12 @@
     <comment>Update to version 11.0</comment>
     <requestid>934767</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>4adff74a41d35ea7842a7ca7fca3ba2a</srcmd5>
+    <version>11.0</version>
+    <time>1646073842</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with meson 0.60 and newer</comment>
+    <requestid>958083</requestid>
+  </revision>
 </revisionlist>

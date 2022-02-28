@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 23 08:47:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix build with meson 0.60 and newer.
+  virtview-fix-build-with-meson-0.61.patch
+
+-------------------------------------------------------------------
 Tue Nov 30 09:36:27 MST 2021 - carnold@suse.com
 
 - Update to 11.0: 

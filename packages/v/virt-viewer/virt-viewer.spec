@@ -1,7 +1,7 @@
 #
 # spec file for package virt-viewer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source1:        https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.t
 Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch
+Patch53:        virtview-fix-build-with-meson-0.61.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  bash-completion-devel
