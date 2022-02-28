@@ -2025,6 +2025,9 @@ unsorted:
   - clanlib-devel 
   - clanlib-doc 
   - clanlib-examples 
+  - clapper: [x86_64] 
+  - clapper-devel: [x86_64] 
+  - clapper-lang: [x86_64] 
   - clash 
   - clatd 
   - claws-mail 
@@ -6708,35 +6711,64 @@ unsorted:
   - hdf5-openmpi4-devel 
   - hdf5-openmpi4-devel-32bit: [x86_64] 
   - hdf5-openmpi4-devel-static 
-  - hdf5_1_10_7-gnu-hpc 
-  - hdf5_1_10_7-gnu-hpc-devel 
-  - hdf5_1_10_7-gnu-hpc-devel-static 
-  - hdf5_1_10_7-gnu-hpc-module 
-  - hdf5_1_10_7-gnu-mpich-hpc 
-  - hdf5_1_10_7-gnu-mpich-hpc-devel 
-  - hdf5_1_10_7-gnu-mpich-hpc-devel-static 
-  - hdf5_1_10_7-gnu-mpich-hpc-module 
-  - hdf5_1_10_7-gnu-mvapich2-hpc 
-  - hdf5_1_10_7-gnu-mvapich2-hpc-devel 
-  - hdf5_1_10_7-gnu-mvapich2-hpc-devel-static 
-  - hdf5_1_10_7-gnu-mvapich2-hpc-module 
-  - hdf5_1_10_7-gnu-openmpi1-hpc 
-  - hdf5_1_10_7-gnu-openmpi1-hpc-devel 
-  - hdf5_1_10_7-gnu-openmpi1-hpc-devel-static 
-  - hdf5_1_10_7-gnu-openmpi1-hpc-module 
-  - hdf5_1_10_7-gnu-openmpi2-hpc 
-  - hdf5_1_10_7-gnu-openmpi2-hpc-devel 
-  - hdf5_1_10_7-gnu-openmpi2-hpc-devel-static 
-  - hdf5_1_10_7-gnu-openmpi2-hpc-module 
-  - hdf5_1_10_7-gnu-openmpi3-hpc 
-  - hdf5_1_10_7-gnu-openmpi3-hpc-devel 
-  - hdf5_1_10_7-gnu-openmpi3-hpc-devel-static 
-  - hdf5_1_10_7-gnu-openmpi3-hpc-module 
-  - hdf5_1_10_7-gnu-openmpi4-hpc 
-  - hdf5_1_10_7-gnu-openmpi4-hpc-devel 
-  - hdf5_1_10_7-gnu-openmpi4-hpc-devel-static 
-  - hdf5_1_10_7-gnu-openmpi4-hpc-module 
-  - hdf5_1_10_7-hpc-examples 
+  - hdf5_1_10_7-gnu-hpc: [i586] 
+  - hdf5_1_10_7-gnu-hpc-devel: [i586] 
+  - hdf5_1_10_7-gnu-hpc-devel-static: [i586] 
+  - hdf5_1_10_7-gnu-hpc-module: [i586] 
+  - hdf5_1_10_7-gnu-mpich-hpc: [i586] 
+  - hdf5_1_10_7-gnu-mpich-hpc-devel: [i586] 
+  - hdf5_1_10_7-gnu-mpich-hpc-devel-static: [i586] 
+  - hdf5_1_10_7-gnu-mpich-hpc-module: [i586] 
+  - hdf5_1_10_7-gnu-mvapich2-hpc: [i586] 
+  - hdf5_1_10_7-gnu-mvapich2-hpc-devel: [i586] 
+  - hdf5_1_10_7-gnu-mvapich2-hpc-devel-static: [i586] 
+  - hdf5_1_10_7-gnu-mvapich2-hpc-module: [i586] 
+  - hdf5_1_10_7-gnu-openmpi1-hpc: [i586] 
+  - hdf5_1_10_7-gnu-openmpi1-hpc-devel: [i586] 
+  - hdf5_1_10_7-gnu-openmpi1-hpc-devel-static: [i586] 
+  - hdf5_1_10_7-gnu-openmpi1-hpc-module: [i586] 
+  - hdf5_1_10_7-gnu-openmpi2-hpc: [i586] 
+  - hdf5_1_10_7-gnu-openmpi2-hpc-devel: [i586] 
+  - hdf5_1_10_7-gnu-openmpi2-hpc-devel-static: [i586] 
+  - hdf5_1_10_7-gnu-openmpi2-hpc-module: [i586] 
+  - hdf5_1_10_7-gnu-openmpi3-hpc: [i586] 
+  - hdf5_1_10_7-gnu-openmpi3-hpc-devel: [i586] 
+  - hdf5_1_10_7-gnu-openmpi3-hpc-devel-static: [i586] 
+  - hdf5_1_10_7-gnu-openmpi3-hpc-module: [i586] 
+  - hdf5_1_10_7-gnu-openmpi4-hpc: [i586] 
+  - hdf5_1_10_7-gnu-openmpi4-hpc-devel: [i586] 
+  - hdf5_1_10_7-gnu-openmpi4-hpc-devel-static: [i586] 
+  - hdf5_1_10_7-gnu-openmpi4-hpc-module: [i586] 
+  - hdf5_1_10_7-hpc-examples: [i586] 
+  - hdf5_1_10_8-gnu-hpc: [x86_64] 
+  - hdf5_1_10_8-gnu-hpc-devel: [x86_64] 
+  - hdf5_1_10_8-gnu-hpc-devel-static: [x86_64] 
+  - hdf5_1_10_8-gnu-hpc-module: [x86_64] 
+  - hdf5_1_10_8-gnu-mpich-hpc: [x86_64] 
+  - hdf5_1_10_8-gnu-mpich-hpc-devel: [x86_64] 
+  - hdf5_1_10_8-gnu-mpich-hpc-devel-static: [x86_64] 
+  - hdf5_1_10_8-gnu-mpich-hpc-module: [x86_64] 
+  - hdf5_1_10_8-gnu-mvapich2-hpc: [x86_64] 
+  - hdf5_1_10_8-gnu-mvapich2-hpc-devel: [x86_64] 
+  - hdf5_1_10_8-gnu-mvapich2-hpc-devel-static: [x86_64] 
+  - hdf5_1_10_8-gnu-mvapich2-hpc-module: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi1-hpc: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi1-hpc-devel: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi1-hpc-devel-static: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi1-hpc-module: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi2-hpc: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi2-hpc-devel: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi2-hpc-devel-static: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi2-hpc-module: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi3-hpc: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi3-hpc-devel: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi3-hpc-devel-static: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi3-hpc-module: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi4-hpc: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi4-hpc-devel: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi4-hpc-devel-static: [x86_64] 
+  - hdf5_1_10_8-gnu-openmpi4-hpc-module: [x86_64] 
+  - hdf5_1_10_8-hpc-examples: [x86_64] 
   - hdhomerun_config 
   - hdhomerun_config_gui 
   - hdjmod-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
@@ -11183,6 +11215,7 @@ unsorted:
   - libgstaudio-1_0-0-32bit: [x86_64] 
   - libgstbadaudio-1_0-0-32bit: [x86_64] 
   - libgstbasecamerabinsrc-1_0-0-32bit: [x86_64] 
+  - libgstclapper-1: [x86_64] 
   - libgstcodecparsers-1_0-0-32bit: [x86_64] 
   - libgstcodecs-1_0-0-32bit: [x86_64] 
   - libgstfft-1_0-0-32bit: [x86_64] 
@@ -11327,13 +11360,20 @@ unsorted:
   - libhdf5-gnu-openmpi2-hpc 
   - libhdf5-gnu-openmpi3-hpc 
   - libhdf5-gnu-openmpi4-hpc 
-  - libhdf5_1_10_7-gnu-hpc 
-  - libhdf5_1_10_7-gnu-mpich-hpc 
-  - libhdf5_1_10_7-gnu-mvapich2-hpc 
-  - libhdf5_1_10_7-gnu-openmpi1-hpc 
-  - libhdf5_1_10_7-gnu-openmpi2-hpc 
-  - libhdf5_1_10_7-gnu-openmpi3-hpc 
-  - libhdf5_1_10_7-gnu-openmpi4-hpc 
+  - libhdf5_1_10_7-gnu-hpc: [i586] 
+  - libhdf5_1_10_7-gnu-mpich-hpc: [i586] 
+  - libhdf5_1_10_7-gnu-mvapich2-hpc: [i586] 
+  - libhdf5_1_10_7-gnu-openmpi1-hpc: [i586] 
+  - libhdf5_1_10_7-gnu-openmpi2-hpc: [i586] 
+  - libhdf5_1_10_7-gnu-openmpi3-hpc: [i586] 
+  - libhdf5_1_10_7-gnu-openmpi4-hpc: [i586] 
+  - libhdf5_1_10_8-gnu-hpc: [x86_64] 
+  - libhdf5_1_10_8-gnu-mpich-hpc: [x86_64] 
+  - libhdf5_1_10_8-gnu-mvapich2-hpc: [x86_64] 
+  - libhdf5_1_10_8-gnu-openmpi1-hpc: [x86_64] 
+  - libhdf5_1_10_8-gnu-openmpi2-hpc: [x86_64] 
+  - libhdf5_1_10_8-gnu-openmpi3-hpc: [x86_64] 
+  - libhdf5_1_10_8-gnu-openmpi4-hpc: [x86_64] 
   - libhdf5_cpp-gnu-hpc 
   - libhdf5_cpp-gnu-mpich-hpc 
   - libhdf5_cpp-gnu-mvapich2-hpc 
@@ -11353,13 +11393,20 @@ unsorted:
   - libhdf5_cpp103-openmpi3-32bit: [x86_64] 
   - libhdf5_cpp103-openmpi4 
   - libhdf5_cpp103-openmpi4-32bit: [x86_64] 
-  - libhdf5_cpp_1_10_7-gnu-hpc 
-  - libhdf5_cpp_1_10_7-gnu-mpich-hpc 
-  - libhdf5_cpp_1_10_7-gnu-mvapich2-hpc 
-  - libhdf5_cpp_1_10_7-gnu-openmpi1-hpc 
-  - libhdf5_cpp_1_10_7-gnu-openmpi2-hpc 
-  - libhdf5_cpp_1_10_7-gnu-openmpi3-hpc 
-  - libhdf5_cpp_1_10_7-gnu-openmpi4-hpc 
+  - libhdf5_cpp_1_10_7-gnu-hpc: [i586] 
+  - libhdf5_cpp_1_10_7-gnu-mpich-hpc: [i586] 
+  - libhdf5_cpp_1_10_7-gnu-mvapich2-hpc: [i586] 
+  - libhdf5_cpp_1_10_7-gnu-openmpi1-hpc: [i586] 
+  - libhdf5_cpp_1_10_7-gnu-openmpi2-hpc: [i586] 
+  - libhdf5_cpp_1_10_7-gnu-openmpi3-hpc: [i586] 
+  - libhdf5_cpp_1_10_7-gnu-openmpi4-hpc: [i586] 
+  - libhdf5_cpp_1_10_8-gnu-hpc: [x86_64] 
+  - libhdf5_cpp_1_10_8-gnu-mpich-hpc: [x86_64] 
+  - libhdf5_cpp_1_10_8-gnu-mvapich2-hpc: [x86_64] 
+  - libhdf5_cpp_1_10_8-gnu-openmpi1-hpc: [x86_64] 
+  - libhdf5_cpp_1_10_8-gnu-openmpi2-hpc: [x86_64] 
+  - libhdf5_cpp_1_10_8-gnu-openmpi3-hpc: [x86_64] 
+  - libhdf5_cpp_1_10_8-gnu-openmpi4-hpc: [x86_64] 
   - libhdf5_fortran-gnu-hpc 
   - libhdf5_fortran-gnu-mpich-hpc 
   - libhdf5_fortran-gnu-mvapich2-hpc 
@@ -11379,13 +11426,20 @@ unsorted:
   - libhdf5_fortran102-openmpi3-32bit: [x86_64] 
   - libhdf5_fortran102-openmpi4 
   - libhdf5_fortran102-openmpi4-32bit: [x86_64] 
-  - libhdf5_fortran_1_10_7-gnu-hpc 
-  - libhdf5_fortran_1_10_7-gnu-mpich-hpc 
-  - libhdf5_fortran_1_10_7-gnu-mvapich2-hpc 
-  - libhdf5_fortran_1_10_7-gnu-openmpi1-hpc 
-  - libhdf5_fortran_1_10_7-gnu-openmpi2-hpc 
-  - libhdf5_fortran_1_10_7-gnu-openmpi3-hpc 
-  - libhdf5_fortran_1_10_7-gnu-openmpi4-hpc 
+  - libhdf5_fortran_1_10_7-gnu-hpc: [i586] 
+  - libhdf5_fortran_1_10_7-gnu-mpich-hpc: [i586] 
+  - libhdf5_fortran_1_10_7-gnu-mvapich2-hpc: [i586] 
+  - libhdf5_fortran_1_10_7-gnu-openmpi1-hpc: [i586] 
+  - libhdf5_fortran_1_10_7-gnu-openmpi2-hpc: [i586] 
+  - libhdf5_fortran_1_10_7-gnu-openmpi3-hpc: [i586] 
+  - libhdf5_fortran_1_10_7-gnu-openmpi4-hpc: [i586] 
+  - libhdf5_fortran_1_10_8-gnu-hpc: [x86_64] 
+  - libhdf5_fortran_1_10_8-gnu-mpich-hpc: [x86_64] 
+  - libhdf5_fortran_1_10_8-gnu-mvapich2-hpc: [x86_64] 
+  - libhdf5_fortran_1_10_8-gnu-openmpi1-hpc: [x86_64] 
+  - libhdf5_fortran_1_10_8-gnu-openmpi2-hpc: [x86_64] 
+  - libhdf5_fortran_1_10_8-gnu-openmpi3-hpc: [x86_64] 
+  - libhdf5_fortran_1_10_8-gnu-openmpi4-hpc: [x86_64] 
   - libhdf5_hl-gnu-hpc 
   - libhdf5_hl-gnu-mpich-hpc 
   - libhdf5_hl-gnu-mvapich2-hpc 
@@ -11405,13 +11459,20 @@ unsorted:
   - libhdf5_hl100-openmpi3-32bit: [x86_64] 
   - libhdf5_hl100-openmpi4 
   - libhdf5_hl100-openmpi4-32bit: [x86_64] 
-  - libhdf5_hl_1_10_7-gnu-hpc 
-  - libhdf5_hl_1_10_7-gnu-mpich-hpc 
-  - libhdf5_hl_1_10_7-gnu-mvapich2-hpc 
-  - libhdf5_hl_1_10_7-gnu-openmpi1-hpc 
-  - libhdf5_hl_1_10_7-gnu-openmpi2-hpc 
-  - libhdf5_hl_1_10_7-gnu-openmpi3-hpc 
-  - libhdf5_hl_1_10_7-gnu-openmpi4-hpc 
+  - libhdf5_hl_1_10_7-gnu-hpc: [i586] 
+  - libhdf5_hl_1_10_7-gnu-mpich-hpc: [i586] 
+  - libhdf5_hl_1_10_7-gnu-mvapich2-hpc: [i586] 
+  - libhdf5_hl_1_10_7-gnu-openmpi1-hpc: [i586] 
+  - libhdf5_hl_1_10_7-gnu-openmpi2-hpc: [i586] 
+  - libhdf5_hl_1_10_7-gnu-openmpi3-hpc: [i586] 
+  - libhdf5_hl_1_10_7-gnu-openmpi4-hpc: [i586] 
+  - libhdf5_hl_1_10_8-gnu-hpc: [x86_64] 
+  - libhdf5_hl_1_10_8-gnu-mpich-hpc: [x86_64] 
+  - libhdf5_hl_1_10_8-gnu-mvapich2-hpc: [x86_64] 
+  - libhdf5_hl_1_10_8-gnu-openmpi1-hpc: [x86_64] 
+  - libhdf5_hl_1_10_8-gnu-openmpi2-hpc: [x86_64] 
+  - libhdf5_hl_1_10_8-gnu-openmpi3-hpc: [x86_64] 
+  - libhdf5_hl_1_10_8-gnu-openmpi4-hpc: [x86_64] 
   - libhdf5_hl_cpp-gnu-hpc 
   - libhdf5_hl_cpp-gnu-mpich-hpc 
   - libhdf5_hl_cpp-gnu-mvapich2-hpc 
@@ -11431,13 +11492,20 @@ unsorted:
   - libhdf5_hl_cpp100-openmpi3-32bit: [x86_64] 
   - libhdf5_hl_cpp100-openmpi4 
   - libhdf5_hl_cpp100-openmpi4-32bit: [x86_64] 
-  - libhdf5_hl_cpp_1_10_7-gnu-hpc 
-  - libhdf5_hl_cpp_1_10_7-gnu-mpich-hpc 
-  - libhdf5_hl_cpp_1_10_7-gnu-mvapich2-hpc 
-  - libhdf5_hl_cpp_1_10_7-gnu-openmpi1-hpc 
-  - libhdf5_hl_cpp_1_10_7-gnu-openmpi2-hpc 
-  - libhdf5_hl_cpp_1_10_7-gnu-openmpi3-hpc 
-  - libhdf5_hl_cpp_1_10_7-gnu-openmpi4-hpc 
+  - libhdf5_hl_cpp_1_10_7-gnu-hpc: [i586] 
+  - libhdf5_hl_cpp_1_10_7-gnu-mpich-hpc: [i586] 
+  - libhdf5_hl_cpp_1_10_7-gnu-mvapich2-hpc: [i586] 
+  - libhdf5_hl_cpp_1_10_7-gnu-openmpi1-hpc: [i586] 
+  - libhdf5_hl_cpp_1_10_7-gnu-openmpi2-hpc: [i586] 
+  - libhdf5_hl_cpp_1_10_7-gnu-openmpi3-hpc: [i586] 
+  - libhdf5_hl_cpp_1_10_7-gnu-openmpi4-hpc: [i586] 
+  - libhdf5_hl_cpp_1_10_8-gnu-hpc: [x86_64] 
+  - libhdf5_hl_cpp_1_10_8-gnu-mpich-hpc: [x86_64] 
+  - libhdf5_hl_cpp_1_10_8-gnu-mvapich2-hpc: [x86_64] 
+  - libhdf5_hl_cpp_1_10_8-gnu-openmpi1-hpc: [x86_64] 
+  - libhdf5_hl_cpp_1_10_8-gnu-openmpi2-hpc: [x86_64] 
+  - libhdf5_hl_cpp_1_10_8-gnu-openmpi3-hpc: [x86_64] 
+  - libhdf5_hl_cpp_1_10_8-gnu-openmpi4-hpc: [x86_64] 
   - libhdf5_hl_fortran-gnu-hpc 
   - libhdf5_hl_fortran-gnu-mpich-hpc 
   - libhdf5_hl_fortran-gnu-mvapich2-hpc 
@@ -11457,13 +11525,20 @@ unsorted:
   - libhdf5hl_fortran100-openmpi3-32bit: [x86_64] 
   - libhdf5hl_fortran100-openmpi4 
   - libhdf5hl_fortran100-openmpi4-32bit: [x86_64] 
-  - libhdf5hl_fortran_1_10_7-gnu-hpc 
-  - libhdf5hl_fortran_1_10_7-gnu-mpich-hpc 
-  - libhdf5hl_fortran_1_10_7-gnu-mvapich2-hpc 
-  - libhdf5hl_fortran_1_10_7-gnu-openmpi1-hpc 
-  - libhdf5hl_fortran_1_10_7-gnu-openmpi2-hpc 
-  - libhdf5hl_fortran_1_10_7-gnu-openmpi3-hpc 
-  - libhdf5hl_fortran_1_10_7-gnu-openmpi4-hpc 
+  - libhdf5hl_fortran_1_10_7-gnu-hpc: [i586] 
+  - libhdf5hl_fortran_1_10_7-gnu-mpich-hpc: [i586] 
+  - libhdf5hl_fortran_1_10_7-gnu-mvapich2-hpc: [i586] 
+  - libhdf5hl_fortran_1_10_7-gnu-openmpi1-hpc: [i586] 
+  - libhdf5hl_fortran_1_10_7-gnu-openmpi2-hpc: [i586] 
+  - libhdf5hl_fortran_1_10_7-gnu-openmpi3-hpc: [i586] 
+  - libhdf5hl_fortran_1_10_7-gnu-openmpi4-hpc: [i586] 
+  - libhdf5hl_fortran_1_10_8-gnu-hpc: [x86_64] 
+  - libhdf5hl_fortran_1_10_8-gnu-mpich-hpc: [x86_64] 
+  - libhdf5hl_fortran_1_10_8-gnu-mvapich2-hpc: [x86_64] 
+  - libhdf5hl_fortran_1_10_8-gnu-openmpi1-hpc: [x86_64] 
+  - libhdf5hl_fortran_1_10_8-gnu-openmpi2-hpc: [x86_64] 
+  - libhdf5hl_fortran_1_10_8-gnu-openmpi3-hpc: [x86_64] 
+  - libhdf5hl_fortran_1_10_8-gnu-openmpi4-hpc: [x86_64] 
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libhealpix_cxx3 
@@ -12103,13 +12178,20 @@ unsorted:
   - libmfx-gen-devel: [x86_64] 
   - libmfx-gen1_2: [x86_64] 
   - libmfx-samples: [x86_64] 
-  - libmgl-fltk7_6_0 
-  - libmgl-glut7_6_0 
-  - libmgl-mpi7_6_0 
-  - libmgl-qt5-7_6_0 
-  - libmgl-wnd7_6_0 
-  - libmgl-wx7_6_0 
-  - libmgl7_6_0 
+  - libmgl-fltk7_6_0: [i586] 
+  - libmgl-fltk8: [x86_64] 
+  - libmgl-glut7_6_0: [i586] 
+  - libmgl-glut8: [x86_64] 
+  - libmgl-mpi7_6_0: [i586] 
+  - libmgl-mpi8: [x86_64] 
+  - libmgl-qt5-7_6_0: [i586] 
+  - libmgl-qt5-8: [x86_64] 
+  - libmgl-wnd7_6_0: [i586] 
+  - libmgl-wnd8: [x86_64] 
+  - libmgl-wx7_6_0: [i586] 
+  - libmgl-wx8: [x86_64] 
+  - libmgl7_6_0: [i586] 
+  - libmgl8: [x86_64] 
   - libmhash2 
   - libmicro 
   - libmicrohttpd-devel 
@@ -12361,13 +12443,20 @@ unsorted:
   - libnetcdf19-openmpi3-32bit: [x86_64] 
   - libnetcdf19-openmpi4 
   - libnetcdf19-openmpi4-32bit: [x86_64] 
-  - libnetcdf_4_8_0-gnu-hpc 
-  - libnetcdf_4_8_0-gnu-mpich-hpc 
-  - libnetcdf_4_8_0-gnu-mvapich2-hpc 
-  - libnetcdf_4_8_0-gnu-openmpi1-hpc 
-  - libnetcdf_4_8_0-gnu-openmpi2-hpc 
-  - libnetcdf_4_8_0-gnu-openmpi3-hpc 
-  - libnetcdf_4_8_0-gnu-openmpi4-hpc 
+  - libnetcdf_4_8_0-gnu-hpc: [i586] 
+  - libnetcdf_4_8_0-gnu-mpich-hpc: [i586] 
+  - libnetcdf_4_8_0-gnu-mvapich2-hpc: [i586] 
+  - libnetcdf_4_8_0-gnu-openmpi1-hpc: [i586] 
+  - libnetcdf_4_8_0-gnu-openmpi2-hpc: [i586] 
+  - libnetcdf_4_8_0-gnu-openmpi3-hpc: [i586] 
+  - libnetcdf_4_8_0-gnu-openmpi4-hpc: [i586] 
+  - libnetcdf_4_8_1-gnu-hpc: [x86_64] 
+  - libnetcdf_4_8_1-gnu-mpich-hpc: [x86_64] 
+  - libnetcdf_4_8_1-gnu-mvapich2-hpc: [x86_64] 
+  - libnetcdf_4_8_1-gnu-openmpi1-hpc: [x86_64] 
+  - libnetcdf_4_8_1-gnu-openmpi2-hpc: [x86_64] 
+  - libnetcdf_4_8_1-gnu-openmpi3-hpc: [x86_64] 
+  - libnetcdf_4_8_1-gnu-openmpi4-hpc: [x86_64] 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
@@ -16434,7 +16523,7 @@ unsorted:
   - movit8-data 
   - mozaddon-devel 
   - mozilla-jss 
-  - mozilla-jss-javadoc 
+  - mozilla-jss-javadoc: [i586] 
   - mozilla-nspr-32bit: [x86_64] 
   - mozilla-nspr-devel 
   - mozilla-nss-32bit: [x86_64] 
@@ -17152,27 +17241,48 @@ unsorted:
   - netcdf-openmpi4 
   - netcdf-openmpi4-devel 
   - netcdf-openmpi4-devel-static 
-  - netcdf_4_8_0-gnu-hpc 
-  - netcdf_4_8_0-gnu-hpc-devel 
-  - netcdf_4_8_0-gnu-hpc-devel-static 
-  - netcdf_4_8_0-gnu-mpich-hpc 
-  - netcdf_4_8_0-gnu-mpich-hpc-devel 
-  - netcdf_4_8_0-gnu-mpich-hpc-devel-static 
-  - netcdf_4_8_0-gnu-mvapich2-hpc 
-  - netcdf_4_8_0-gnu-mvapich2-hpc-devel 
-  - netcdf_4_8_0-gnu-mvapich2-hpc-devel-static 
-  - netcdf_4_8_0-gnu-openmpi1-hpc 
-  - netcdf_4_8_0-gnu-openmpi1-hpc-devel 
-  - netcdf_4_8_0-gnu-openmpi1-hpc-devel-static 
-  - netcdf_4_8_0-gnu-openmpi2-hpc 
-  - netcdf_4_8_0-gnu-openmpi2-hpc-devel 
-  - netcdf_4_8_0-gnu-openmpi2-hpc-devel-static 
-  - netcdf_4_8_0-gnu-openmpi3-hpc 
-  - netcdf_4_8_0-gnu-openmpi3-hpc-devel 
-  - netcdf_4_8_0-gnu-openmpi3-hpc-devel-static 
-  - netcdf_4_8_0-gnu-openmpi4-hpc 
-  - netcdf_4_8_0-gnu-openmpi4-hpc-devel 
-  - netcdf_4_8_0-gnu-openmpi4-hpc-devel-static 
+  - netcdf_4_8_0-gnu-hpc: [i586] 
+  - netcdf_4_8_0-gnu-hpc-devel: [i586] 
+  - netcdf_4_8_0-gnu-hpc-devel-static: [i586] 
+  - netcdf_4_8_0-gnu-mpich-hpc: [i586] 
+  - netcdf_4_8_0-gnu-mpich-hpc-devel: [i586] 
+  - netcdf_4_8_0-gnu-mpich-hpc-devel-static: [i586] 
+  - netcdf_4_8_0-gnu-mvapich2-hpc: [i586] 
+  - netcdf_4_8_0-gnu-mvapich2-hpc-devel: [i586] 
+  - netcdf_4_8_0-gnu-mvapich2-hpc-devel-static: [i586] 
+  - netcdf_4_8_0-gnu-openmpi1-hpc: [i586] 
+  - netcdf_4_8_0-gnu-openmpi1-hpc-devel: [i586] 
+  - netcdf_4_8_0-gnu-openmpi1-hpc-devel-static: [i586] 
+  - netcdf_4_8_0-gnu-openmpi2-hpc: [i586] 
+  - netcdf_4_8_0-gnu-openmpi2-hpc-devel: [i586] 
+  - netcdf_4_8_0-gnu-openmpi2-hpc-devel-static: [i586] 
+  - netcdf_4_8_0-gnu-openmpi3-hpc: [i586] 
+  - netcdf_4_8_0-gnu-openmpi3-hpc-devel: [i586] 
+  - netcdf_4_8_0-gnu-openmpi3-hpc-devel-static: [i586] 
+  - netcdf_4_8_0-gnu-openmpi4-hpc: [i586] 
+  - netcdf_4_8_0-gnu-openmpi4-hpc-devel: [i586] 
+  - netcdf_4_8_0-gnu-openmpi4-hpc-devel-static: [i586] 
+  - netcdf_4_8_1-gnu-hpc: [x86_64] 
+  - netcdf_4_8_1-gnu-hpc-devel: [x86_64] 
+  - netcdf_4_8_1-gnu-hpc-devel-static: [x86_64] 
+  - netcdf_4_8_1-gnu-mpich-hpc: [x86_64] 
+  - netcdf_4_8_1-gnu-mpich-hpc-devel: [x86_64] 
+  - netcdf_4_8_1-gnu-mpich-hpc-devel-static: [x86_64] 
+  - netcdf_4_8_1-gnu-mvapich2-hpc: [x86_64] 
+  - netcdf_4_8_1-gnu-mvapich2-hpc-devel: [x86_64] 
+  - netcdf_4_8_1-gnu-mvapich2-hpc-devel-static: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi1-hpc: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi1-hpc-devel: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi1-hpc-devel-static: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi2-hpc: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi2-hpc-devel-static: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi3-hpc: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi3-hpc-devel: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi3-hpc-devel-static: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi4-hpc: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi4-hpc-devel: [x86_64] 
+  - netcdf_4_8_1-gnu-openmpi4-hpc-devel-static: [x86_64] 
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
@@ -23420,6 +23530,7 @@ unsorted:
   - python310-markdown2 
   - python310-marshmallow 
   - python310-marshmallow-enum 
+  - python310-mathgl: [x86_64] 
   - python310-mathics-pygments 
   - python310-matplotlib 
   - python310-matplotlib-cairo 
@@ -29609,6 +29720,7 @@ unsorted:
   - python39-markdown2 
   - python39-marshmallow 
   - python39-marshmallow-enum 
+  - python39-mathgl: [x86_64] 
   - python39-mathics-pygments 
   - python39-matplotlib 
   - python39-matplotlib-cairo 
@@ -32513,8 +32625,8 @@ unsorted:
   - slf4j-javadoc 
   - slf4j-jcl 
   - slf4j-jdk14 
-  - slf4j-log4j12 
   - slf4j-manual 
+  - slf4j-reload4j 
   - slf4j-sources 
   - slib 
   - slirp4netns: [i586] 
@@ -41813,6 +41925,7 @@ unsorted:
   - typelib-1_0-GstAllocators-1_0 
   - typelib-1_0-GstApp-1_0 
   - typelib-1_0-GstBadAudio-1_0 
+  - typelib-1_0-GstClapper-1: [x86_64] 
   - typelib-1_0-GstCodecs-1_0 
   - typelib-1_0-GstGL-1_0 
   - typelib-1_0-GstGLEGL-1_0 
