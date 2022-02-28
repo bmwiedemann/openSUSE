@@ -17,7 +17,7 @@
 
 
 Name:           notejot
-Version:        3.2.0
+Version:        3.4.9
 Release:        0
 Summary:        A Sticky Note App
 License:        GPL-3.0-only

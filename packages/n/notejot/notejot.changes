@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 20 15:59:24 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.4.9:
+  * Release: The Top 100 (3.3.3)
+  * Changed: UI now looks better layoutted, is an experiment.
+  * Changed: Backend was changed to be more stable than the old
+    one.
+  * Note: Your notes and notebooks are always saved in
+    ~/.var/app/io.github.lainsce.Notejot when using the Flatpak.
+
+-------------------------------------------------------------------
 Fri Nov  5 12:57:22 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.2.0:
