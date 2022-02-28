@@ -100,12 +100,6 @@ chmod +x mapproxy/test/system/fixture/minimal_cgi.py
 %python_clone -a %{buildroot}%{_bindir}/mapproxy-seed
 %python_clone -a %{buildroot}%{_bindir}/mapproxy-util
 
-%post
-%{python_install_alternative mapproxy-seed mapproxy-util}
-
-%postun
-%python_uninstall_alternative mapproxy-seed
-
 %check
 # for local tests outside of obs
 #export MAPPROXY_TEST_COUCHDB=http://127.0.0.1:5984
@@ -113,11 +107,20 @@ chmod +x mapproxy/test/system/fixture/minimal_cgi.py
 export BOTO_CONFIG=/doesnotexist
 # online tests or no local server started
 donttest="TestCouchDBCache"
-donttest+=" or TestRedisCache"
-donttest+=" or test_https_"
+donttest="$donttest or TestRedisCache"
+donttest="$donttest or test_https_"
 # off by one error capturing the execptions
-donttest+=" or test_bad_config_geopackage_"
+donttest="$donttest or test_bad_config_geopackage_"
+# https://github.com/mapproxy/mapproxy/issues/564
+donttest="$donttest or test_output_formats_greyscale_png"
+donttest="$donttest or test_output_formats_png8"
 %pytest mapproxy -ra -k "not ($donttest)"
+
+%post
+%python_install_alternative mapproxy-seed mapproxy-util
+
+%postun
+%python_uninstall_alternative mapproxy-seed
 
 %files %{python_files}
 %doc CHANGES.txt README.rst
