@@ -203,4 +203,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>950650</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>49d881f2dc32bb9acf48dd2cb184cfd9</srcmd5>
+    <version>3.11.0</version>
+    <time>1646073789</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.11.0
+ see installed Changelog.md
+  Enhancements:
+   * Return `true` from `aggregate_failures` when no exception occurs. (Jon Rowe, #1225)
+ Deprecations:
+  * Print a deprecation message when using the implicit block expectation syntax.
+    (Phil Pirozhkov, #1139)</comment>
+    <requestid>957233</requestid>
+  </revision>
 </revisionlist>
