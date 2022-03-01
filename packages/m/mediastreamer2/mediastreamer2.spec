@@ -19,7 +19,7 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        5.0.67
+Version:        5.1.3
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-3.0-only
@@ -127,7 +127,7 @@ export CXXFLAGS="$CFLAGS"
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-5.0.0/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-5.1.0/ \
   %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{sobase}%{sover} -p /sbin/ldconfig
