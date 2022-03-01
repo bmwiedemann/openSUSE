@@ -335,4 +335,12 @@
 - supersedes u_fno-common.patch</comment>
     <requestid>909510</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>86b6aff09ce333706d162252d2cde1c1</srcmd5>
+    <version>22.0.0</version>
+    <time>1646150590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958064</requestid>
+  </revision>
 </revisionlist>
