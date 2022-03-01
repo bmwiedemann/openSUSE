@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Feb 25 17:21:12 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.2
+  - Change default working directory of launched executables
+  - Fix typo (setting->settings)
+  - Random Crashes during longer sessions
+  - File with gamecontroller mappings not found
+  - Empty application path in autoprofile
+  - Enable checking for updates in Debian builds from GitHub
+  - Log improvements and cleanup
+  - Daemon mode support removed
+  - Remove unused "map" and "display" argument options
+  - Remove unused files With icons, resources and pertially
+  - implemented importing utility
+  - Use colourful antimicrox icon in tray by default
+  - Update building docs
+- Rebase fix_xcb_linker.patch and remove_datetime_aboutdialog.patch
+
+-------------------------------------------------------------------
 Mon Jan  3 16:58:23 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.2.1

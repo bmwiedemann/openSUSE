@@ -17,7 +17,7 @@
 
 
 Name:           antimicrox
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Graphical program used to map keyboard keys and mouse controls to a game-pad
 License:        GPL-3.0-or-later

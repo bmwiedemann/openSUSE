@@ -1,6 +1,6 @@
-diff -Nur antimicrox-3.2.0/src/gui/aboutdialog.cpp new/src/gui/aboutdialog.cpp
---- antimicrox-3.2.0/src/gui/aboutdialog.cpp	2021-10-29 16:42:57.000000000 +0200
-+++ new/src/gui/aboutdialog.cpp	2021-11-01 21:32:44.180607449 +0100
+diff -Nur antimicrox-3.2.2.orig/src/gui/aboutdialog.cpp antimicrox-3.2.2/src/gui/aboutdialog.cpp
+--- antimicrox-3.2.2.orig/src/gui/aboutdialog.cpp	2022-02-24 15:01:41.000000000 +0100
++++ antimicrox-3.2.2/src/gui/aboutdialog.cpp	2022-02-25 18:19:05.522760478 +0100
 @@ -49,11 +49,11 @@
      QStringList finalInfoText = QStringList();
  
@@ -16,5 +16,5 @@ diff -Nur antimicrox-3.2.0/src/gui/aboutdialog.cpp new/src/gui/aboutdialog.cpp
 +//     finalInfoText.append(tr("Program Compiled on %1 at %2").arg(__DATE__).arg(__TIME__));
 +// #endif
  
-     QString sdlCompiledVersionNumber("%1.%2.%3");
-     QString sdlLinkedVersionNumber("%1.%2.%3");
+     finalInfoText.append(tr("Built Against SDL %1").arg(PadderCommon::sdlVersionCompiled));
+     finalInfoText.append(tr("Running With SDL %1").arg(PadderCommon::sdlVersionUsed));
