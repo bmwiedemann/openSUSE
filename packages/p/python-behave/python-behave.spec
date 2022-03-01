@@ -1,7 +1,7 @@
 #
 # spec file for package python-behave
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/behave/behave
 Source:         https://files.pythonhosted.org/packages/source/b/behave/behave-%{version}.tar.gz
+Patch1:         no2to3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -73,6 +74,7 @@ code.
 
 %prep
 %setup -q -n behave-%{version}
+%patch1 -p1
 
 %build
 %python_build

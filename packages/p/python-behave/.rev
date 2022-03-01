@@ -23,4 +23,12 @@
     <comment>- Drop unnecessary BuildRequires on nose.</comment>
     <requestid>917449</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ed243512f75217697b53726bfbb215d7</srcmd5>
+    <version>1.2.6</version>
+    <time>1646150626</time>
+    <user>dimstar_suse</user>
+    <comment>- add no2to3.patch for compatibility with newer setuptools</comment>
+    <requestid>958234</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:46:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add no2to3.patch for compatibility with newer setuptools 
+
+-------------------------------------------------------------------
 Wed Sep  8 06:52:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unnecessary BuildRequires on nose. 
