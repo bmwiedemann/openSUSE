@@ -1,7 +1,7 @@
 #
 # spec file for package entangle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://entangle-photo.org
 Source0:        https://www.entangle-photo.org/download/sources/%{name}-%{version}.tar.xz
 Source1:        https://www.entangle-photo.org/download/sources/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# from upstream git
+Patch0:         fix-new-meson.patch
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
@@ -135,6 +137,7 @@ plugins
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %meson -Denable-gtk-doc=true

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 14:48:38 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- fix-new-meson.patch: fix build with new meson
+
+-------------------------------------------------------------------
 Thu Aug 27 14:01:32 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - fixed filelists after update to make it build.

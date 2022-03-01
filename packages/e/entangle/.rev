@@ -247,4 +247,12 @@
  * Display greeting when entering photobox plugin</comment>
     <requestid>830024</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b1b1fd599723193cff8e86096ae5a6de</srcmd5>
+    <version>3.0</version>
+    <time>1646150648</time>
+    <user>dimstar_suse</user>
+    <comment>- fix-new-meson.patch: fix build with new meson (forwarded request 958300 from msmeissn)</comment>
+    <requestid>958301</requestid>
+  </revision>
 </revisionlist>
