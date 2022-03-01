@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb 28 11:05:48 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- Apply fix for a buffer overflow in isisd due to the use of strdup
+  with a non-zero-terminated binary string (bsc#1196506,CVE-2022-26126)
+  [+ 0006-isisd-fix-10505-using-base64-encoding.patch]
+- Apply fix for a buffer overflow in isisd due to wrong checks on
+  the input packet length (bsc#1196505,CVE-2022-26125) with workaround
+  for the GIT binary patch to tests/isisd/test_fuzz_isis_tlv_tests.h.gz
+  [+ 0005-isisd-fix-router-capability-TLV-parsing-issues.patch]
+- Apply fix for a buffer overflow in babeld due to wrong checks on
+  the input packet length in the packet_examin and subtlv parsing
+  (bsc#1196504,bsc#1196507,CVE-2022-26128,CVE-2022-26129)
+  [+ 0004-babeld-fix-10502-10503-by-repairing-the-checks-on-le.patch]
+- Apply fix for a heap buffer overflow in babeld due to missing check
+  on the input packet length (bsc#1196503,CVE-2022-26127)
+  [+ 0003-babeld-fix-10487-by-adding-a-check-on-packet-length.patch]
+
+-------------------------------------------------------------------
 Thu Dec  9 08:40:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Add ReadWritePaths=/etc/frr to harden_frr.service.patch (bsc#1181400).

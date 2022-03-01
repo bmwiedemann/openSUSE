@@ -1,7 +1,7 @@
 #
 # spec file for package frr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,6 +43,10 @@ Source:         https://github.com/FRRouting/frr/archive/%{name}-%{version}.tar.
 Source1:        %{name}-tmpfiles.d
 Patch1:         0001-disable-zmq-test.patch
 Patch2:         harden_frr.service.patch
+Patch3:         0003-babeld-fix-10487-by-adding-a-check-on-packet-length.patch
+Patch4:         0004-babeld-fix-10502-10503-by-repairing-the-checks-on-le.patch
+Patch5:         0005-isisd-fix-router-capability-TLV-parsing-issues.patch
+Patch6:         0006-isisd-fix-10505-using-base64-encoding.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -79,7 +83,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  shadow
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}
@@ -183,6 +187,12 @@ developing OSPF-API and frr applications.
 %setup -q -n %{name}-%{name}-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+gzip -d tests/isisd/test_fuzz_isis_tlv_tests.h.gz
+%patch5 -p1
+gzip -9 tests/isisd/test_fuzz_isis_tlv_tests.h
+%patch6 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors
