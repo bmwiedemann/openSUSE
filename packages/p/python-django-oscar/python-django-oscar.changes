@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 20 10:56:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.1:
+  Oscar 3.1 is compatible with Django 2.2, Django 3.1 and Django
+  3.2 and Python versions 3.6 to 3.9. Support for Django 3.0 has
+  been dropped.
+  - Improvements have been made to the dashboard interface for
+    creating and editing offers, vouchers, and voucher sets.
+  - These better expose the flexible implementation of offer and
+    voucher functionality, allowing:
+    - creation of offers of all types
+    - creation of vouchers with multiple offers
+    - creation of voucher sets of all usages, and with multiple
+      offers
+  Details can be found in the full release notes on
+  https://django-oscar.readthedocs.io/en/stable/releases/v3.1.html
+- Skip plenty of failing tests (gh#django-oscar/django-oscar#3883).
+
+-------------------------------------------------------------------
 Mon Feb 22 10:06:07 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.0.2

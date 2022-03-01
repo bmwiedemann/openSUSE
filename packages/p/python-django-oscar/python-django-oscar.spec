@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-oscar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-django-oscar
-Version:        3.0.2
+Version:        3.1
 Release:        0
 Summary:        Django domain-driven e-commerce framework
 License:        BSD-3-Clause
@@ -84,8 +85,13 @@ sed -i 's/^import factory/import factory, factory.django/;s/factory.DjangoModelF
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/django-oscar/django-oscar/issues/3659
-%pytest --sqlite -k 'not (test_updating_subtree_slugs_when_moving_category_to_new_parent or test_updating_subtree_when_moving_category_to_new_sibling or TestConcurrentOrderPlacement or test_raises_exception_if_app_has_already_been_forked)'
+# gh#django-oscar/django-oscar#3659
+dont_test='test_updating_subtree_slugs_when_moving_category_to_new_parent or test_updating_subtree_when_moving_category_to_new_sibling '
+dont_test+='or TestConcurrentOrderPlacement or test_raises_exception_if_app_has_already_been_forked'
+# gh#django-oscar/django-oscar#3883
+dont_test+=' or test_delete_object or test_delete_popup_object or test_check_verification_hash_valid'
+dont_test+=' or test_redirects_to_parent_list_after_creating_child_category or test_verification_hash_generation or test_voucher_delete_view_for_voucher_in_set'
+%pytest --sqlite -k "not (${dont_test})"
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG.rst README.rst
