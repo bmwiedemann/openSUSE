@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  1 15:31:21 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.1.3:
+  * New forward error correction (FEC) algorithm implemented
+    according to https://datatracker.ietf.org/doc/html/rfc8627
+  * Standalone compilation (out of linphone-sdk).
+  * Bundle mode warnings and few inconsistencies.
+
+-------------------------------------------------------------------
 Tue Feb  1 20:46:15 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.67
 
 - Update to version 5.0.67:
