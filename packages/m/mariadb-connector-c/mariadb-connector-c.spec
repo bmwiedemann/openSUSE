@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb-connector-c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
@@ -141,6 +141,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 rm %{buildroot}%{_libdir}/libmariadbclient.a
 rm %{buildroot}%{_libdir}/libmysqlclient.a
 rm %{buildroot}%{_libdir}/libmysqlclient_r.a
+rm %{buildroot}%{_libdir}/libmariadb.a
 
 # add a compatibility symlinks
 ln -s mariadb_config %{buildroot}%{_bindir}/mysql_config

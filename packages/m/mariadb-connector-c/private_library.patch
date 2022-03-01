@@ -8,11 +8,11 @@ static linking, create a private shared library that simply
 exports all symbols. With the exception of exported symbols, it is
 identical to the regular library.
 
-Index: mariadb-connector-c-3.1.13-src/libmariadb/CMakeLists.txt
+Index: mariadb-connector-c-3.2.6-src/libmariadb/CMakeLists.txt
 ===================================================================
---- mariadb-connector-c-3.1.13-src.orig/libmariadb/CMakeLists.txt
-+++ mariadb-connector-c-3.1.13-src/libmariadb/CMakeLists.txt
-@@ -414,6 +414,12 @@ TARGET_LINK_LIBRARIES(libmariadb LINK_PRIVATE ${SYSTEM_LIBS})
+--- mariadb-connector-c-3.2.6-src.orig/libmariadb/CMakeLists.txt
++++ mariadb-connector-c-3.2.6-src/libmariadb/CMakeLists.txt
+@@ -416,6 +416,12 @@ TARGET_LINK_LIBRARIES(libmariadb LINK_PR
  
  SIGN_TARGET(libmariadb)
  
@@ -25,7 +25,7 @@ Index: mariadb-connector-c-3.1.13-src/libmariadb/CMakeLists.txt
  IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
     CMAKE_SYSTEM_NAME MATCHES "kFreeBSD" OR
     CMAKE_SYSTEM_NAME MATCHES "GNU")
-@@ -421,11 +427,13 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
+@@ -423,11 +429,13 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
      TARGET_LINK_LIBRARIES (libmariadb LINK_PRIVATE "-Wl,--no-undefined")
    ENDIF()
    SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINK_FLAGS "${CC_BINARY_DIR}/libmariadb/mariadbclient.def")
@@ -39,22 +39,21 @@ Index: mariadb-connector-c-3.1.13-src/libmariadb/CMakeLists.txt
  SET_TARGET_PROPERTIES(libmariadb PROPERTIES PREFIX "")
  
  #
-@@ -461,7 +469,9 @@ INSTALL(TARGETS mariadbclient
- INSTALL(TARGETS libmariadb
-           COMPONENT SharedLibraries
-         DESTINATION ${INSTALL_LIBDIR})
--
+@@ -469,6 +477,9 @@ INSTALL(TARGETS libmariadb LIBRARY DESTI
+         COMPONENT SharedLibraries NAMELINK_SKIP)
+ INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
+         COMPONENT Development NAMELINK_ONLY)
 +INSTALL(TARGETS libmariadbprivate
-+          COMPONENT SharedLibraries
-+          DESTINATION ${INSTALL_LIBDIR})
++        COMPONENT SharedLibraries
++        DESTINATION ${INSTALL_LIBDIR})
  
  IF(MSVC)
     # On Windows, install PDB
-Index: mariadb-connector-c-3.1.13-src/mariadb_config/mariadb_config.c.in
+Index: mariadb-connector-c-3.2.6-src/mariadb_config/mariadb_config.c.in
 ===================================================================
---- mariadb-connector-c-3.1.13-src.orig/mariadb_config/mariadb_config.c.in
-+++ mariadb-connector-c-3.1.13-src/mariadb_config/mariadb_config.c.in
-@@ -30,6 +30,7 @@ static char *mariadb_progname;
+--- mariadb-connector-c-3.2.6-src.orig/mariadb_config/mariadb_config.c.in
++++ mariadb-connector-c-3.2.6-src/mariadb_config/mariadb_config.c.in
+@@ -33,6 +33,7 @@ static char *mariadb_progname;
  #define INCLUDE "-I%s/@INSTALL_INCLUDEDIR@ -I%s/@INSTALL_INCLUDEDIR@/mysql"
  #define LIBS    "-L%s/@INSTALL_LIBDIR@/ -lmariadb"
  #define LIBS_SYS "@extra_dynamic_LDFLAGS@"
@@ -62,15 +61,15 @@ Index: mariadb-connector-c-3.1.13-src/mariadb_config/mariadb_config.c.in
  #define CFLAGS  INCLUDE
  #define VERSION "@MARIADB_CLIENT_VERSION@"
  #define CC_VERSION "@CPACK_PACKAGE_VERSION@"
-@@ -65,6 +66,7 @@ static struct option long_options[]=
+@@ -72,6 +73,7 @@ static struct option long_options[]=
    {OPT_STRING_TYPE "plugindir", no_argument, 0, 'j'},
    {OPT_STRING_TYPE "tlsinfo", no_argument, 0, 'k'},
    {OPT_STRING_TYPE "variable", 2, 0, 'm'},
 +  {OPT_STRING_TYPE "privatelibs", no_argument, 0, 'z'},
-   {NULL, 0, 0, 0}
- };
- 
-@@ -92,6 +94,7 @@ static const char *values[]=
+ #ifdef HAVE_EMBEDDED
+   {OPT_STRING_TYPE "libmysqld-libs", no_argument, 0, 'n' },
+   {OPT_STRING_TYPE "embedded-libs", no_argument, 0, 'n' },
+@@ -104,6 +106,7 @@ static const char *values[]=
    CC_VERSION,
    SOCKET,
    PORT,
@@ -78,13 +77,13 @@ Index: mariadb-connector-c-3.1.13-src/mariadb_config/mariadb_config.c.in
    PLUGIN_DIR,
    TLS_LIBRARY_VERSION,
    "VAR  VAR is one of:"
-@@ -288,6 +291,9 @@ int main(int argc, char **argv)
+@@ -303,6 +306,9 @@ int main(int argc, char **argv)
        }
        break;
      }
 +    case 'z':
 +      puts(PRIVATE_LIBS);
 +      break;
-     default:
-       exit((c != -1));
-     }
+ #ifdef HAVE_EMBEDDED
+     case 'n':
+       puts(EMBEDDED_LIBS);

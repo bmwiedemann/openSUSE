@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 24 14:05:48 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 3.2.6:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-connector-c-326-release-notes
+    https://mariadb.com/kb/en/library/mariadb-connector-c-326-changelog
+- Refresh private_library.patch
+
+-------------------------------------------------------------------
 Thu Nov 18 15:55:18 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 3.2.5:
