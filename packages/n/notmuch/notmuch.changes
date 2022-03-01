@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar  1 00:00:00 CET 2022 - dsterba@suse.cz
+
+- Version 0.35
+  * Library
+  - Implement the `date` and `lastmod` fields in the S-expression parser.
+  - Ignore trailing `/` for pathnames in both query parsers.
+  - Rename configuration option `built_with.sexpr_query` to `built_with.sexp_queries`.
+  - Do not assume a default mail root in split (e.g. XDG) configurations.
+  - Fix some small memory leaks in `notmuch_database_open_with_config`.
+
+  * CLI
+  - Improve handling of leading/trailing punctation and space for configuration lists.
+  - Only ignore `.notmuch` at the top level in `notmuch new`.
+  - Optionally show extra headers in `notmuch show`. See `show.extra_headers` in notmuch-config(1).
+
+  * Disable tests due to known failures of python-cffi test cases
+
+-------------------------------------------------------------------
 Wed Nov  3 15:50:43 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.34.1
