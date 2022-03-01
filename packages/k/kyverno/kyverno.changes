@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Feb 18 15:07:52 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- link /usr/bin/kyverno to /usr/bin/kubectl-kyverno to make this usable as a kubectl plugin
+
+-------------------------------------------------------------------
+Fri Feb 18 13:02:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kyverno: CLI and kubectl plugin for the Kyverno Policy engine
