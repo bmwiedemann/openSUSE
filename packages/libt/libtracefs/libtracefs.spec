@@ -56,7 +56,9 @@ This subpackage contains the header files.
 %make_build prefix="%_prefix"
 
 %install
-%make_install prefix="%_prefix"
+%make_install prefix="%_prefix" \
+	pkgconfig_dir=%{_libdir}/pkgconfig \
+        %nil
 # always the same issues
 find "%buildroot/%_includedir" -type f -name "*.h" -exec chmod a-x {} +
 rm -f "%buildroot/%_libdir"/*.a
