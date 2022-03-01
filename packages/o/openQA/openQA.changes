@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 01 09:48:57 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646082175.7a50bad50:
+  * Use simpler SQL for has_modules
+  * Turn `Worker … accepted job … which was never assigned …` into info
+  * branding: Rely on local override for openqa.suse.de
+  * branding: Remove outdated reference to caasp staging
+  * branding: Use new SUSE internal chat reference
+  * Delete outdated references to novell or microfocus
+  * Use signatures in OpenQA::CacheService::Client
+  * Use signatures in OpenQA::CacheService::Command
+  * Simplify t/43-cli-api
+
+-------------------------------------------------------------------
 Sun Feb 27 01:48:49 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1645823006.b4c26e806:
