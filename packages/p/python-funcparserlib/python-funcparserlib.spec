@@ -1,7 +1,7 @@
 #
 # spec file for package python-funcparserlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/vlasovskikh/funcparserlib
 Source:         https://files.pythonhosted.org/packages/source/f/funcparserlib/funcparserlib-%{version}.tar.gz
+Patch1:         no2to3.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -55,6 +56,7 @@ as well as a tiny lexer generator for token position tracking.
 
 %prep
 %setup -q -n funcparserlib-%{version}
+%patch1 -p1
 python-modernize -nw funcparserlib/
 sed -i "s/ur'/r'/" funcparserlib/tests/*.py
 

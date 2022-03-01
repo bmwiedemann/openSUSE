@@ -1,0 +1,13 @@
+--- funcparserlib-0.3.6/setup.py
++++ funcparserlib-0.3.6/setup.py
+@@ -4,10 +4,6 @@
+ import sys
+ 
+ extra = {}
+-if sys.version_info >= (3,):
+-    extra['use_2to3'] = True
+-
+-
+ setup(
+     name='funcparserlib',
+     version='0.3.6',

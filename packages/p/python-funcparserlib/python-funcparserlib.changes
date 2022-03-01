@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:44:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add no2to3.patch for compatibility with newer setuptools 
+
+-------------------------------------------------------------------
 Mon Nov  8 14:50:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add missing six dependency 
