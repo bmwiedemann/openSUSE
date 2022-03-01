@@ -287,4 +287,14 @@
 </comment>
     <requestid>949668</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>95a6431dc9762bd987c7aab82563ef71</srcmd5>
+    <version>2.4.5</version>
+    <time>1646159594</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.5
+- Packman codec changes
+</comment>
+    <requestid>958321</requestid>
+  </revision>
 </revisionlist>
