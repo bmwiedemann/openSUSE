@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 28 09:27:51 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220224 (git commit 9cab94f59b23):
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2010.1406
+  * wfx: update to firmware 3.14
+  * wfx: add antenna configuration files
+  * wfx: rename silabs/ into wfx/
+  * linux-firmware: update firmware for mediatek bluetooth chip(MT7921)
+  * linux-firmware: Update firmware patch for Intel Bluetooth 8260
+  * linux-firmware: Update firmware file for Intel Bluetooth 8265
+  * linux-firmware: Intel BT 7265: Fix Security Issues (bsc#1195786)
+- Update license.txt for wfx
+- Temporary fix for WHENCE for wfx:
+  wfx-WHENCE-fix.diff
+
+-------------------------------------------------------------------
 Sun Feb 20 09:41:05 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220218 (git commit c53073d4e148):

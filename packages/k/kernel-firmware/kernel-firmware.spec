@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20220218
+%define version_unconverted 20220224
 
 Name:           kernel-firmware
-Version:        20220218
+Version:        20220224
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -59,6 +59,8 @@ Source1011:     fwtopics.py
 Source1012:     check-topic.py
 Source1013:     update-aliases.py
 Source1014:     README.build
+# temporary fix
+Patch1:         wfx-WHENCE-fix.diff
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
@@ -6134,6 +6136,7 @@ various USB WiFi / Ethernet drivers.
 
 %prep
 %setup -q
+%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

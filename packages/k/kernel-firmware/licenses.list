@@ -179,7 +179,7 @@ mscc-phy:	platform	LICENCE.microchip
 meson-vdec:	media		LICENSE.amlogic_vdec
 prestera:	prestera	LICENCE.Marvell
 lt9611uxc:	platform	LICENSE.Lontium
-wfx:		platform	silabs/LICENCE.wf200
+wfx:		platform	wfx/LICENCE.wf200
 wave5:		platform	LICENCE.cnm
 rvu_cptpf:	platform	LICENCE.Marvell
 amphion:	platform	LICENSE.amphion_vpu
