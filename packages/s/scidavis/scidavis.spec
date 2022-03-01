@@ -37,7 +37,7 @@ BuildRequires:  liborigin-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  python3-sip4
 BuildRequires:  python3-sip4-devel
 %endif
