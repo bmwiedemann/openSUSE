@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 26 11:08:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Screen 4.9.0:
+  * Hardstatus option for used encoding (escape string '%e')
+  * fix combining char handling that could lead to a segfault
+  * CVE-2021-26937: possible denial of service via a crafted UTF-8 
+    character sequence, upstream fix replacing dropped combchar.diff
+    (boo#1182092) 
+  * make screen exit code be 0 when checking --help
+  * session names limit is 80 symbols
+  * option -X ignores specified user in multiuser env
+- remove deprecated texinfo packaging macros
+
+-------------------------------------------------------------------
 Fri Feb 12 15:37:48 CET 2021 - mls@suse.de
 
 - Fix double width combining char handling that could lead
