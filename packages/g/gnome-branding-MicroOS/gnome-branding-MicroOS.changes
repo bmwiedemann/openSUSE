@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 29 11:43:01 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- fix firstboot script: we should not go over 100% as anything that is
+  after "echo 100", will just be ignored (currently, it was the cleanup)
+
+-------------------------------------------------------------------
 Mon Jan 12 14:00:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
 
 - added an extra flatpak to Manage Extensions so a rpm based chromium or firefox browser is no longer necessary "com.mattjakeman.ExtensionManager"
