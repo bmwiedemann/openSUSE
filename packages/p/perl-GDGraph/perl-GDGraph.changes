@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 28 09:34:18 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix line endings in samples/sample64.pl
+- Update the spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 28 09:24:11 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix logo_xbm_noext test
+  * Upstream PR: https://github.com/mgjv/GDGraph/pull/1
+  * Add perl-GDGraph-XBM-Magic.patch
+
+-------------------------------------------------------------------
 Wed Apr  5 14:17:02 UTC 2017 - mcaj@suse.com
 
 - added perl-ExtUtils-MakeMaker to Build requires

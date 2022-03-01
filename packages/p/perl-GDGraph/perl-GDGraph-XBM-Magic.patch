@@ -1,0 +1,51 @@
+From 96862391296b235c60e0e36140f8ea498f70a74d Mon Sep 17 00:00:00 2001
+From: Reini Urban <rurban@cpan.org>
+Date: Tue, 1 Feb 2022 15:10:53 +0100
+Subject: [PATCH] fix logo_xbm_noext test
+
+causing t/bugfixes.t to fail with latest GD
+provide xbm magic, which has no newFromXbmData method.
+---
+ Graph.pm        | 6 +++++-
+ t/images/main.c | 8 ++++++++
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+ create mode 100644 t/images/main.c
+
+diff --git a/Graph.pm b/Graph.pm
+index 816c99a..f12d588 100644
+--- a/Graph.pm
++++ b/Graph.pm
+@@ -347,7 +347,8 @@ sub _read_logo_file
+             pack("H8",'ffd8ffe0') => "jpeg",
+             'GIF8' => "gif",
+             '.PNG' => "png",
+-            '/* X'=> "xpm", # technically '/* XPM */', but I'm hashing, here
++            '/* X' => "xpm", # technically '/* XPM */', but I'm hashing, here
++            '#def' => "xbm",
+         );
+         if (my $match = $magic{ substr $logodata, 0, 4 }) {
+             push @tried, $match;
+@@ -362,6 +363,9 @@ sub _read_logo_file
+                     $glogo = GD::Image->$gdimport(\*LOGO);
+                 }
+             }
++        } elsif ($logo_path =~ /_xbm_/) { # no magic possible for xbm
++            push @tried, 'xbm';
++            $glogo = GD::Image->newFromXbm($logo_path);
+         # should this actually be "if (!$glogo), rather than an else?            
+         } else { # Hail Mary, full of Grace!  Blessed art thou among women...
+             push @tried, 'libgd best-guess';
+diff --git a/t/images/main.c b/t/images/main.c
+new file mode 100644
+index 0000000..6d64b11
+--- /dev/null
++++ b/t/images/main.c
+@@ -0,0 +1,8 @@
++#include <stdio.h>
++#include "logo_xbm_noext.c"
++
++void main() {
++  FILE *f = fopen ("logo_xbm_noext", "w");
++  fwrite (logo_bits, sizeof(logo_bits), 1, f);
++  fclose (f);
++}

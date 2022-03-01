@@ -4,14 +4,12 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
+patches:
+  perl-GDGraph-XBM-Magic.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
-#post_prep: |-
-# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
-# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+post_prep: |-
+  perl -pi -e 's/\r\n/\n/' samples/sample64.pl
 #post_install: |-
 # sed on %{name}.files
 # Dustismo font is GPL-2.0+ licensed
