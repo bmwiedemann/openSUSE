@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  1 15:29:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.1.0:
+  * new vfs read2/write2 functions without offset parameter,
+    to easy mapping with standard libc functions.
+  * optimized C++ logging macros.
+
+-------------------------------------------------------------------
 Tue Feb  1 20:46:04 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.67
 
 - Update to version 5.0.67:

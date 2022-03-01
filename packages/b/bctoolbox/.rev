@@ -276,4 +276,16 @@
 </comment>
     <requestid>950582</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e138c83148c2187fb9f45d394db941d5</srcmd5>
+    <version>5.1.0</version>
+    <time>1646158023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.0:
+  * new vfs read2/write2 functions without offset parameter,
+    to easy mapping with standard libc functions.
+  * optimized C++ logging macros.
+</comment>
+    <requestid>958306</requestid>
+  </revision>
 </revisionlist>
