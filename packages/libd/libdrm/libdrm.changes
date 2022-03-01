@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 28 19:26:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.110:
+  * build system updates
+  * amdgpu: implement new CTX OP to set/get stable pstates
+  * amdgpu: update_drm for new CTX OP to set/get stable pstates
+  * intel: Add support for ADL-N
+  * intel: Add support for RPLS platform
+  * intel: sync pciids with Linux kernel
+  * update to tests 
+
+-------------------------------------------------------------------
 Fri Nov 26 18:18:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.109:

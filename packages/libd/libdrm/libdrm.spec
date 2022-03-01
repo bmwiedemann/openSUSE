@@ -1,7 +1,7 @@
 #
 # spec file for package libdrm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libdrm
-Version:        2.4.109
+Version:        2.4.110
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
