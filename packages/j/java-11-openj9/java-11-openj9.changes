@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 28 09:56:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.14.1 with OpenJ9 0.30.1 virtual machine
+  * including Oracle January 2022 CPU changes (bsc#1194925,
+    bsc#1194926, bsc#1194927, bsc#1194928, bsc#1194929, bsc#1194930,
+    bsc#1194931, bsc#1194932, bsc#1194933, bsc#1194934, bsc#1194935,
+    bsc#1194937, bsc#1194939, bsc#1194940, bsc#1194941)
+  * OpenJ9 changes see
+    https://www.eclipse.org/openj9/docs/version0.30.1
+- Added patch:
+  * libdwarf-fix.patch
+    + fix build with different versions of libdwarf
+
+-------------------------------------------------------------------
 Tue Nov  2 11:12:58 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
-- Update to OpenJDK 11.0.11 with OpenJ9 0.29.0 virtual machine
+- Update to OpenJDK 11.0.13 with OpenJ9 0.29.0 virtual machine
   * including Oracle July 2021 and October 2021 CPU changes
     (bsc#1188564, bsc#1188565, bsc#1188566, bsc#1191901,
     bsc#1191909, bsc#1191910, bsc#1191911, bsc#1191912,

@@ -71,4 +71,12 @@
     <comment>July and October 2021 CPU</comment>
     <requestid>928750</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd47a970217ade0b2c78a844cb0c3f03</srcmd5>
+    <version>11.0.14.1</version>
+    <time>1646150599</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build + January 2022 CPU</comment>
+    <requestid>957996</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,20 +29,20 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       13
-%global patchver        0
-%global datever         2021-10-19
-%global buildver        8
+%global updatever       14
+%global patchver        1
+%global datever         2022-02-08
+%global buildver        1
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   2d83aa3b76142e7dd319dc7dadea5ce310aeedf3
-%global root_branch     v0.29.0-release
+%global root_revision   5c423dacd0765ed9fdbef0133193e10119f0d240
+%global root_branch     v0.30.1-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    299b6a2d28cf992edf57ca43b67ed6d6917675bf
-%global omr_branch      v0.29.0-release
+%global omr_revision    56c3376ba057f905dc2ccd38fb4056d33f9e1f7c
+%global omr_branch      v0.30.1-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision e1e72c497688c765183573526f7418a6fe891e93
-%global openj9_branch   v0.29.0-release
-%global openj9_tag      openj9-0.29.0
+%global openj9_revision 9dccbe076db9055f4020bae78513f52c02572ba4
+%global openj9_branch   v0.30.1-release
+%global openj9_tag      openj9-0.30.1
 %global freemarker_version 2.3.29
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -143,6 +143,8 @@ Source28:       %{jaxb_ri_repository}-%{jaxb_ri_tag}.tar.gz
 Source100:      openj9-nogit.patch.in
 # Restrict access to java-atk-wrapper classes
 Patch3:         java-atk-wrapper-security.patch
+# Allow building with newer libdwarf
+Patch4:         libdwarf-fix.patch
 # Allow multiple initialization of PKCS11 libraries
 Patch5:         multiple-pkcs11-library-init.patch
 # Fix: implicit-pointer-decl
@@ -429,6 +431,7 @@ rm -rvf src/java.desktop/share/native/liblcms/cms*
 rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch3 -p1
+%patch4 -p1
 %patch5 -p1
 %patch13 -p1
 
@@ -513,6 +516,7 @@ bash configure \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-extra-cflags="$EXTRA_CFLAGS" \
     --disable-javac-server \
+    --enable-demos \
     --with-freemarker-jar=%{SOURCE3}
 
 make \
@@ -936,8 +940,6 @@ update-alternatives \
   %{_mandir}/man1/jdb-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jdeps.1$ext jdeps.1$ext \
   %{_mandir}/man1/jdeps-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jmap.1$ext jmap.1$ext \
-  %{_mandir}/man1/jmap-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jrunscript.1$ext jrunscript.1$ext \
   %{_mandir}/man1/jrunscript-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmic.1$ext rmic.1$ext \
@@ -1111,7 +1113,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/libjsig.so
 %{_jvmdir}/%{sdkdir}/lib/*/libjvm.so
 
-%config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blacklisted.certs
+%config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/nss.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/default.policy
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat
@@ -1176,7 +1178,6 @@ fi
 %{_mandir}/man1/jconsole-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jdb-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jdeps-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jmap-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jrunscript-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmic-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/serialver-%{sdklnk}.1%{?ext_man}
