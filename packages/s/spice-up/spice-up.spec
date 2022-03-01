@@ -1,7 +1,7 @@
 #
 # spec file for package spice-up
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           spice-up
-Version:        1.8.2
+Version:        1.9.1
 Release:        0
 Summary:        Desktop presentation application
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/Philip-Scott/Spice-up
 Source:         https://github.com/Philip-Scott/Spice-up/archive/%{version}.tar.gz#/Spice-up-%{version}.tar.gz
-# PATCH-FIX_UPSTREAM -- Make constructors of abstract classes protected (vala >= 0.46)
-Patch0:         spice-up-1.8.2-vala-0.46.patch
-BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  vala >= 0.40.4
+BuildRequires:  vala > 0.48.0
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(granite) >= 0.5
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
@@ -51,30 +48,37 @@ based upon SpiceOfDesign's presentation concept.
 
 %prep
 %setup -q -n Spice-up-%{version}
-%patch0 -p1
 
 %build
-%cmake \
-    -DGSETTINGS_COMPILE=OFF
-
-# remove smp_mflags to avoid compilation errors
-make -j1 V=1
+%meson
+%meson_build
 
 %install
-%cmake_install
-%find_lang com.github.philip-scott.spice-up %{name}.lang
-%fdupes %{buildroot}%{_datadir}
+%meson_install
+%find_lang com.github.philip_scott.spice-up %{name}.lang
+%fdupes %{buildroot}/%{_datadir}
 
-%files
+# dirlist HiDPI icons (see: hicolor/index.theme)
+_dirlist=$PWD/dir.lst
+pushd %{buildroot}
+find ./ | while read _list; do
+    echo $_list | grep '[0-9]\@[0-9]' || continue
+    _path=$(echo $_list | sed 's/[^/]//')
+    if ! ls ${_path%/*}; then
+        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
+    fi
+done
+popd
+
+%files -f dir.lst
 %license COPYING
 %doc README.md
-%{_bindir}/com.github.philip-scott.spice-up
-%{_datadir}/applications/com.github.philip-scott.spice-up.desktop
-%{_datadir}/com.github.philip-scott.spice-up/
-%{_datadir}/glib-2.0/schemas/com.github.philip-scott.spice-up.gschema.xml
+%{_bindir}/com.github.philip_scott.spice-up
+%{_datadir}/applications/com.github.philip_scott.spice-up.desktop
+%{_datadir}/glib-2.0/schemas/com.github.philip_scott.spice-up.gschema.xml
 %{_datadir}/icons/hicolor/*/*/*.??g
-%{_datadir}/metainfo/com.github.philip-scott.spice-up.appdata.xml
-%{_datadir}/mime/packages/com.github.philip-scott.spice-up.mime.xml
+%{_datadir}/metainfo/com.github.philip_scott.spice-up.appdata.xml
+%{_datadir}/mime/packages/com.github.philip_scott.spice-up.mime.xml
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Feb 20 16:03:21 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.9.1:
+  * AppData: Add info for a hotfix release
+  * Merge branch 'master' of github.com:Philip-Scott/Spice-up
+  * SlideList: Prevent slides from expanding on window resize
+  * AppData: less verbose OARS (#325)
+  * Use show_uri_on_window for editing images
+  * SlideList: Make the "Add a Slide" button full size
+  * elementary 6+ release
+  * Stylesheet: imitate box shadow from system (#324)
+  * SlideList: code and style cleanup (#323)
+  * Granite.App → Gtk.App (#322)
+  * Modernize Icons (#321)
+  * EntryCombo: use button style (#317)
+  * HeaderBar: Use insert-* namespace for icons (#318)
+  * Fix warnings with casts (#319)
+  * CSS: Use raised class instead of custom CSS (#314)
+  * Build with Flatpak (#306)
+  * Window: Remove DnD handling (#313)
+  * GradientEditor: fix oval selectors (#315)
+  * SlideList: Use text/image button in actionbar (#316)
+  * Window: Use Gtk.Application.Inhibit (#309)
+  * FileManager: use file chooser portal (#307)
+  * Build with Meson (#308)
+  * Fix build with vala 0.46 (#296)
+  * Downgrade Node.js to fix builds on Travis CI (#289)
+  * Black background on fullscreen (#286)
+  * Update ISSUE_TEMPLATE.md
+- Drop spice-up-1.8.2-vala-0.46.patch
+- Switch to meson
+
+-------------------------------------------------------------------
 Thu Oct 31 00:56:05 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Add spice-up-1.8.2-vala-0.46.patch
@@ -31,12 +64,12 @@ Mon Jan 21 17:18:23 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
   * Add .pdf extension to exports
   * Prevent screen from turning off during presentations
   * Grab focus when PresenterNotes is revealed
-  * Use new Granite.markup_accel_tooltip & Add actions for clone 
+  * Use new Granite.markup_accel_tooltip & Add actions for clone
     and present
   * Handle unfullscreening while presenting
-  * Fixed: Animation on canvas is played when returning from the 
+  * Fixed: Animation on canvas is played when returning from the
     last slide while presenting
-  * Fix: Property with custom 'get' / 'set' cannot have 'default' 
+  * Fix: Property with custom 'get' / 'set' cannot have 'default'
     value (#251)
   * update travis.yml (#252)
   * Use user cache folder for template cache
@@ -77,11 +110,11 @@ Mon Sep 10 12:10:22 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
 - Update to 1.5.2:
   * Update com.github.philip-scott.spice-up.appdata.xml
   * LibraryItem: Don't show popover on templates
-  * Rename com.github.philip_scott.spice_up.mime.xml to 
+  * Rename com.github.philip_scott.spice_up.mime.xml to
     com.github.philip-scott.spice-up.mime.xml
   * Update CMakeLists.txt
-  * Update and rename 
-    com.github.philip_scott.spice_up.appdata.xml to 
+  * Update and rename
+    com.github.philip_scott.spice_up.appdata.xml to
     com.github.philip-scott.spice-up.appdata.xml
   * PresenterView: Change font-size with +/- keys
   * Be smart about the mutex
@@ -300,7 +333,7 @@ Sat May 27 16:56:38 UTC 2017 - avvissu@yandex.by
 - Update to 0.5.5:
   * Move patterns to gresource
   * Fix: Justification not working correctly on one line
-  * Added file checking for missing patterns, and pointed them to 
+  * Added file checking for missing patterns, and pointed them to
     the right direction
   * Fixed: text on slides flashes when the window is resized
   * Fix delete & re-add icon to CMAKE
