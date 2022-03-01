@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  1 15:20:57 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.9.0:
+  * The client now sets the User-Agent header.
+  * The error handling has been improved.
+  * The goreleaser configuration has been consolidated. There is now
+    one checksum file for all builds.
+
+-------------------------------------------------------------------
 Mon Nov 08 15:51:20 UTC 2021 - info@paolostivanin.com
 
 - Update to version 4.8.0:

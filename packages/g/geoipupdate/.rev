@@ -148,4 +148,17 @@ variables: GEOIPUPDATE_CONF_FILE and GEOIPUPDATE_DB_DIR
 </comment>
     <requestid>930210</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6b650c1abbc268e2ef3ccbb8674f9e6b</srcmd5>
+    <version>4.9.0</version>
+    <time>1646150648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.9.0:
+  * The client now sets the User-Agent header.
+  * The error handling has been improved.
+  * The goreleaser configuration has been consolidated. There is now
+    one checksum file for all builds.
+</comment>
+    <requestid>958302</requestid>
+  </revision>
 </revisionlist>
