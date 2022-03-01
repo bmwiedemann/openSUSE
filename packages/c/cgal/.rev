@@ -240,4 +240,13 @@
   2D Regularized Boolean Set-Operations:</comment>
     <requestid>912920</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5d77fa00c166c75fa19a04db6ae1f168</srcmd5>
+    <version>5.4</version>
+    <time>1646150610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4:
+  See https://github.com/CGAL/cgal/releases/tag/v5.4</comment>
+    <requestid>958120</requestid>
+  </revision>
 </revisionlist>
