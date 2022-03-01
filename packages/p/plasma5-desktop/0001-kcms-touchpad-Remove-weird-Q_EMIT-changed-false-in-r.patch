@@ -1,0 +1,33 @@
+From 5cf2788fdd18cb8604fd172535b044c6cfd370fc Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 24 Feb 2022 21:25:07 +0100
+Subject: [PATCH] kcms/touchpad: Remove weird Q_EMIT changed(false) in
+ resizeEvent
+
+That looks rather out of place there and does actually disable the apply button
+when resizing the window. I don't understand what it's supposed to be doing
+there, but if it has an actual purpose it needs to be addressed differently.
+
+CCBUG: 449843
+
+
+(cherry picked from commit 369eab6457965de99119f9966a009f98a60745bc)
+---
+ kcms/touchpad/kcm/touchpadconfigcontainer.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/kcms/touchpad/kcm/touchpadconfigcontainer.cpp b/kcms/touchpad/kcm/touchpadconfigcontainer.cpp
+index 804e3f4d9..b51bdcf48 100644
+--- a/kcms/touchpad/kcm/touchpadconfigcontainer.cpp
++++ b/kcms/touchpad/kcm/touchpadconfigcontainer.cpp
+@@ -62,7 +62,6 @@ QSize TouchpadConfigContainer::sizeHint() const
+ }
+ void TouchpadConfigContainer::resizeEvent(QResizeEvent * /*event*/)
+ {
+-    Q_EMIT changed(false);
+     m_plugin->resize(this->size());
+ }
+ 
+-- 
+2.33.1
+

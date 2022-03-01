@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 25 16:02:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the apply button in the touchpad KCM (kde#449843):
+  * 0001-kcms-touchpad-Remove-weird-Q_EMIT-changed-false-in-r.patch
+
+-------------------------------------------------------------------
+Thu Feb 24 19:33:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Adjust patch for khelpcenter desktop file rename:
+  * 0001-Apply-branding-to-default-favorites.patch
+
+-------------------------------------------------------------------
 Tue Feb 22 16:21:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.2

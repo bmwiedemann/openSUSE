@@ -43,6 +43,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-kcms-touchpad-Remove-weird-Q_EMIT-changed-false-in-r.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Apply-branding-to-default-favorites.patch
 Patch101:       0002-No-usr-bin-env-in-shebangs.patch
