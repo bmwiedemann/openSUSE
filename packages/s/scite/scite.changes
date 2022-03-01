@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 24 21:41:06 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.1:
+  * No upstream documentation of changes.
+
+-------------------------------------------------------------------
 Thu Feb 17 10:44:41 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Revert to defining tar_ver macro literally to allow source
