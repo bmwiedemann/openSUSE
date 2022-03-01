@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 22 03:07:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.40
+   see /usr/share/doc/packages/perl-Package-Stash/Changes
+
+  0.40      2022-02-21 05:38:38Z
+       - update bundled version of ExtUtils::HasCompiler, for new new Apple
+         include paths
+
+-------------------------------------------------------------------
 Mon Nov 23 03:08:29 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.39
