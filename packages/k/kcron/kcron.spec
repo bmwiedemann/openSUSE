@@ -18,19 +18,25 @@
 
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
-%bcond_without lang
+%bcond_without released
 Name:           kcron
-Version:        21.12.0
+Version:        21.12.2
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-%if %{with lang}
+%if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-KCronHelper-Return-error-when-things-don-t-work-out.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Improve-temporary-file-handling.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Write-into-crontab-instead-of-replacing-the-file.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
@@ -56,7 +62,7 @@ KCron allows you to change your cron jobs setup.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
+  %if %{with released}
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -78,7 +84,7 @@ KCron allows you to change your cron jobs setup.
 %{_kf5_sharedir}/dbus-1/system.d/local.kcron.crontab.conf
 %{_kf5_sharedir}/polkit-1/actions/local.kcron.crontab.policy
 
-%if %{with lang}
+%if %{with released}
 %files lang -f %{name}.lang
 %endif
 

@@ -837,4 +837,13 @@
     <comment>KDE Gear 21.12.0</comment>
     <requestid>937915</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>ce46bddd7348ce77a38e6b1b02e937a5</srcmd5>
+    <version>21.12.2</version>
+    <time>1646150594</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more upstream changes (boo#1195154, boo#1193945):
+  * 0001-Write-into-crontab-instead-of-replacing-the-file.patch (forwarded request 957601 from cgiboudeaux)</comment>
+    <requestid>957602</requestid>
+  </revision>
 </revisionlist>

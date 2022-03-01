@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Feb 25 12:40:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add more upstream changes (boo#1195154, boo#1193945):
+  * 0001-Write-into-crontab-instead-of-replacing-the-file.patch
+
+-------------------------------------------------------------------
+Thu Feb 17 08:40:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Improve-temporary-file-handling.patch (boo#1195154, boo#1195152, CVE-2022-24986)
+
+-------------------------------------------------------------------
+Tue Feb  1 13:02:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- No code change since 21.12.1
+- Add upstream patch:
+  0001-KCronHelper-Return-error-when-things-don-t-work-out.patch
+  (contributes to boo#1195154, boo#1193945)
+
+-------------------------------------------------------------------
+Tue Jan  4 10:25:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- No code change since 21.12.0
+
+-------------------------------------------------------------------
 Fri Dec  3 19:21:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.0
