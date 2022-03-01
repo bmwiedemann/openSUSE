@@ -1,7 +1,7 @@
 #
 # spec file for package scrot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ URL:            https://github.com/resurrecting-open-source-projects/scrot
 Source:         https://github.com/resurrecting-open-source-projects/scrot/releases/download/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(giblib)
 BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(libbsd)
 BuildRequires:  pkgconfig(xcomposite)

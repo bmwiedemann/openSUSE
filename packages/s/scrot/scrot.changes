@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 24 13:15:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop the unneeded nor used pkgconfig(giblib) BuildRequires: it
+  was removed upstream in version 1.6
+
+-------------------------------------------------------------------
 Sat Dec 11 13:13:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - scrot 1.7:
