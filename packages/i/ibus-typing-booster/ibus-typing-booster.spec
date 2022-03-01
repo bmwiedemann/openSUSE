@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.15.16
+Version:        2.15.22
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -41,6 +41,7 @@ BuildRequires:  appstream-glib
 BuildRequires:  glib2
 BuildRequires:  gtk3
 BuildRequires:  xorg-x11-server
+BuildRequires:  glibc-locale
 # Because of “from packing import version”:
 BuildRequires:  python3-packaging
 %if 0%{?sle_version} >= 120200

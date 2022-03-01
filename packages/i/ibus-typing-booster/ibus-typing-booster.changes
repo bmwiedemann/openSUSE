@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb 27 11:41:32 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.15.22
+- Translation update from Weblate
+  (ca, de, es, fr, nl, pl, pt, pt_BR, sv, tr, uk, zh_CN, zh_TW updated)
+- Add a “Restore all defaults” button to the setup tool
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/272)
+- Allow capital letters and accents in user shortcuts
+- Make user shortcuts containing punctuation possible
+  Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/271
+- Do not record stuff to user database when itb_util.InputHints.PRIVATE is set
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
 Sun Jan 30 15:11:12 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.15.16
