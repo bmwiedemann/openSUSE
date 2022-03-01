@@ -99,6 +99,7 @@ rm tests/relationships/test_select_correlated_expression.py
 rm tests/types/test_composite.py
 rm tests/types/test_ltree.py
 rm tests/types/test_tsvector.py
+rm tests/types/test_uuid.py
 %pytest -rs -k 'not (TestDatabasePostgres or TestDatabaseMssql or OnPostgres or OnMysql or TestPostgres or TestMysql or TestSortQueryRelationshipCounts or TestSortQueryWithPolymorphicInheritance or TestMaterializedViews or TestLazyEvaluatedSelectExpressionsForAggregates or TestAggregatesWithManyToManyRelationships or TestAggregateManyToManyAndManyToMany or TestAggregateOneToManyAndOneToMany or TestJSONSQL or TestJSONBSQL or TestSortQueryWithCustomPolymorphic or TestAggregateOneToManyAndManyToMany or test_timezone or test_add_observed_object)'
 
 %files %{python_files}

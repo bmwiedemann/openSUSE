@@ -300,4 +300,12 @@
   - Made ChoicesType only convert lists to tuples internally.</comment>
     <requestid>943585</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>3aeb554508d91862da968b030e942516</srcmd5>
+    <version>0.38.2</version>
+    <time>1646150619</time>
+    <user>dimstar_suse</user>
+    <comment>- skip uuid tests</comment>
+    <requestid>958218</requestid>
+  </revision>
 </revisionlist>
