@@ -191,4 +191,20 @@
     <comment></comment>
     <requestid>894330</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c71e6080a504726acdd82641e7ca57d5</srcmd5>
+    <version>4.0.0</version>
+    <time>1646150605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  * Naming consistency and coherency: API has been completely
+    reviewed to be consistent on naming conventions
+  * Event Automation System: This new experimental feature has been
+    added for future usage, it allows to record input events and
+    re-play them automatically.
+  * Custom game-loop control: As requested by some advance users,
+    the game-loop control can be exposed
+  * For details see: https://github.com/raysan5/raylib/blob/4.0.0/CHANGELOG</comment>
+    <requestid>958098</requestid>
+  </revision>
 </revisionlist>

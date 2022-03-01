@@ -1,7 +1,7 @@
 #
 # spec file for package raylib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           raylib
-Version:        3.7.0
+Version:        4.0.0
 Release:        0
 Summary:        C library for learning video game programming
 License:        Zlib
 Group:          Development/Libraries/C and C++
-URL:            http://www.raylib.com
+URL:            https://www.raylib.com
 Source:         raylib-%{version}.tar.xz
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
@@ -31,6 +31,7 @@ BuildRequires:  libXcursor-devel
 BuildRequires:  libXi-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  libXrandr-devel
+BuildRequires:  libglfw-devel
 
 %description
 A C library for learning video game programming.
@@ -39,17 +40,17 @@ raylib is inspired by the Borland BGI graphics library and by the XNA framework.
 %package -n raylib-devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libraylib351 = %{version}
+Requires:       libraylib400 = %{version}
 Requires:       openal-soft-devel
 
 %description -n raylib-devel
 Development files and headers for %{name}.
 
-%package -n libraylib351
+%package -n libraylib400
 Summary:        C library for learning video game programming
 Group:          System/Libraries
 
-%description -n libraylib351
+%description -n libraylib400
 A C library for learning video game programming.
 
 %prep
@@ -59,15 +60,18 @@ A C library for learning video game programming.
 %cmake \
   -DBUILD_EXAMPLES=OFF \
   -DPLATFORM=Desktop \
-  -DSHARED=ON
+  -DBUILD_SHARED_LIBS=ON \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DOpenGL_GL_PREFERENCE=GLVND \
+  -DUSE_EXTERNAL_GLFW=ON
 
 %install
 %cmake_install
 
-%post -n libraylib351 -p /sbin/ldconfig
-%postun -n libraylib351 -p /sbin/ldconfig
+%post -n libraylib400 -p /sbin/ldconfig
+%postun -n libraylib400 -p /sbin/ldconfig
 
-%files -n libraylib351
+%files -n libraylib400
 %license LICENSE
 %{_libdir}/libraylib.so.*
 
@@ -75,7 +79,6 @@ A C library for learning video game programming.
 %doc CHANGELOG README.md
 %{_includedir}/raylib.h
 %{_includedir}/raudio.h
-%{_includedir}/physac.h
 %{_includedir}/raymath.h
 %{_includedir}/rlgl.h
 %{_libdir}/libraylib.so
