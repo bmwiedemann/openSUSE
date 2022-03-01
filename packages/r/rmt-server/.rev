@@ -1119,4 +1119,12 @@ PubCloud:
 - De-activate a single product from a BYOS proxy system</comment>
     <requestid>955055</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>620452d492978472ef86241d29105951</srcmd5>
+    <version>2.7.1</version>
+    <time>1646158027</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>958319</requestid>
+  </revision>
 </revisionlist>
