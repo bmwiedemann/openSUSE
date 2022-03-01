@@ -36,6 +36,7 @@ BuildRequires:  %{python_module pytimeparse >= 1.1.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
+BuildRequires:  glibc-locale
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cssselect >= 0.9.1}

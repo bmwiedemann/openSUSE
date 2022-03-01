@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>946644</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>014a21f783ab991c41e252d028ab5e53</srcmd5>
+    <version>1.6.3</version>
+    <time>1646150619</time>
+    <user>dimstar_suse</user>
+    <comment>- buildrequire glibc-locale for tests</comment>
+    <requestid>958217</requestid>
+  </revision>
 </revisionlist>
