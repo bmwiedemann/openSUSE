@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openj9
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       312
-%global buildver        b07
+%global updatever       322
+%global buildver        b04
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   8860d39588d2d66201a71dd205443b7fd8182acd
-%global root_branch     v0.29.0-release
+%global root_revision   c1d9a7af7c130f57867717a12ee9dfdbad4ecc10
+%global root_branch     v0.30.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    299b6a2d28cf992edf57ca43b67ed6d6917675bf
-%global omr_branch      v0.29.0-release
+%global omr_revision    dac962a283adbd3508fa1af3ae892e10903f0ef1
+%global omr_branch      v0.30.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision e1e72c497688c765183573526f7418a6fe891e93
-%global openj9_branch   v0.29.0-release
-%global openj9_tag      openj9-0.29.0
+%global openj9_revision 9dccbe076db9055f4020bae78513f52c02572ba4
+%global openj9_branch   v0.30.0-release
+%global openj9_tag      openj9-0.30.0
 %global freemarker_version 2.3.29
 # priority must be 6 digits in total
 %global priority        1801
@@ -114,6 +114,8 @@ Patch1:         java-atk-wrapper-security.patch
 Patch2:         multiple-pkcs11-library-init.patch
 # Disable doclint for compatibility
 Patch3:         disable-doclint-by-default.patch
+# Allow building with newer libdwarf
+Patch4:         libdwarf-fix.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
@@ -357,6 +359,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %patch300 -p1
 
@@ -396,6 +399,7 @@ bash configure \
     CC=gcc-7 \
     NM=gcc-nm-7 \
 %endif
+    --enable-demos \
     --disable-zip-debug-info \
     --with-milestone="fcs" \
     --with-update-version=%{updatever} \
@@ -774,8 +778,6 @@ update-alternatives \
   %{_mandir}/man1/jconsole-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jdb.1$ext jdb.1$ext \
   %{_mandir}/man1/jdb-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jmap.1$ext jmap.1$ext \
-  %{_mandir}/man1/jmap-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jrunscript.1$ext jrunscript.1$ext \
   %{_mandir}/man1/jrunscript-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jsadebugd.1$ext jsadebugd.1$ext \
@@ -933,7 +935,6 @@ fi
 %{_mandir}/man1/jconsole-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jdb-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jdeps-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jmap-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jrunscript-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jsadebugd-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/native2ascii-%{sdklnk}.1%{?ext_man}
