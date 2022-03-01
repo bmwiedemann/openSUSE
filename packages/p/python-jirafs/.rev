@@ -85,4 +85,15 @@
     <comment>- Use python_alternative for the jirafs script.</comment>
     <requestid>867350</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8af577d737f727ee5ea392aa3ca6c3a8</srcmd5>
+    <version>2.3.0</version>
+    <time>1646150631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * updates to the latest version of 'jira' plugin.
+    Should now be directly-installable from pypi.
+  * Reformats repository using 'black'</comment>
+    <requestid>958243</requestid>
+  </revision>
 </revisionlist>

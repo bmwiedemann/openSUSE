@@ -1,7 +1,7 @@
 #
 # spec file for package python-jirafs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jirafs
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Library for editing JIRA issues as local text files
 License:        MIT
@@ -34,7 +34,8 @@ Requires:       python-Jinja2 >= 2.10.3
 Requires:       python-PrettyTable >= 0.7.2
 Requires:       python-blessings >= 1.5.1
 Requires:       python-environmental-override >= 0.1.2
-Requires:       python-jira >= 2.0.0
+Requires:       python-jira >= 3.1.1
+Requires:       python-prettytable >= 0.7.2
 Requires:       python-python-dateutil >= 2.8.1
 Requires:       python-watchdog >= 0.9.0
 Suggests:       python-ipdb
@@ -46,15 +47,16 @@ BuildRequires:  %{python_module behave}
 BuildRequires:  %{python_module blessings >= 1.5.1}
 BuildRequires:  %{python_module environmental-override >= 0.1.2}
 BuildRequires:  %{python_module ipdb}
-BuildRequires:  %{python_module jira >= 2.0.0}
+BuildRequires:  %{python_module jira >= 3.1.1}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module prettytable >= 0.7.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.1}
 BuildRequires:  %{python_module watchdog >= 0.9.0}
 BuildRequires:  git-core
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
