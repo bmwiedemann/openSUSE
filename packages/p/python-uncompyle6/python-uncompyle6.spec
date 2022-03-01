@@ -1,7 +1,7 @@
 #
 # spec file for package python-uncompyle6
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python39 1
+%global skip_python310 1
 Name:           python-uncompyle6
-Version:        3.7.4
+Version:        3.8.0
 Release:        0
 Summary:        Python cross-version byte-code decompiler
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/rocky/python-uncompyle6/
 Source:         https://files.pythonhosted.org/packages/source/u/uncompyle6/uncompyle6-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
