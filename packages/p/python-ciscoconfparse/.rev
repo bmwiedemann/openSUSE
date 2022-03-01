@@ -191,4 +191,12 @@
     <comment></comment>
     <requestid>930751</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2801dfebfe44e80d16f11eb8140b7b93</srcmd5>
+    <version>1.6.0</version>
+    <time>1646150624</time>
+    <user>dimstar_suse</user>
+    <comment>- add no2to3.patch for compatibility with newer setuptools</comment>
+    <requestid>958232</requestid>
+  </revision>
 </revisionlist>

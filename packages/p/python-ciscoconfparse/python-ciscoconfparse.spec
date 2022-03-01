@@ -1,7 +1,7 @@
 #
 # spec file for package python-ciscoconfparse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Library for parsing, querying and modifying Cisco IOS-style conf
 License:        GPL-3.0-or-later
 URL:            https://github.com/mpenning/ciscoconfparse
 Source:         https://files.pythonhosted.org/packages/source/c/ciscoconfparse/ciscoconfparse-%{version}.tar.gz
+Patch1:         no2to3.patch
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module loguru}
 BuildRequires:  %{python_module passlib}

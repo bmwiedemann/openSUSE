@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:39:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add no2to3.patch for compatibility with newer setuptools 
+
+-------------------------------------------------------------------
 Tue Nov  9 19:41:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.60
