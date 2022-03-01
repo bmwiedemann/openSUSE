@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  1 12:20:22 UTC 2022 - pgajdos@suse.com
+
+- version update to 4.2.1
+  * no upstream changelog
+
+-------------------------------------------------------------------
 Thu Feb 18 23:01:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build (no numpy) 

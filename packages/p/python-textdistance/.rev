@@ -24,4 +24,12 @@
     <comment>- skip python 3.6 build (no numpy)</comment>
     <requestid>873578</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ca1bf7587c424dea8d8657da2545b34</srcmd5>
+    <version>4.2.1</version>
+    <time>1646150645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958292</requestid>
+  </revision>
 </revisionlist>
