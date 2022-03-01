@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  1 13:02:06 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.9.1
+  3.9.1
+  -----
+  * Removed a leftover check for pytz ``localize()`` and ``normalize()`` methods
+  3.9.0
+  -----
+  * Added support for PySide6 to the Qt scheduler
+  * No longer enforce pytz time zones (support for others is experimental in the 3.x series)
+  * Fixed compatibility with PyMongo 4
+  * Fixed pytz deprecation warnings
+  * Fixed RuntimeError when shutting down the scheduler from a scheduled job
+
+-------------------------------------------------------------------
 Sat Jan 22 14:33:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Unpin pytest<6
