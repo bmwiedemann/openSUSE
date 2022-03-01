@@ -1,7 +1,7 @@
 #
 # spec file for package python-fudge
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/fudge-py/fudge
 Source:         https://files.pythonhosted.org/packages/source/f/fudge/fudge-%{version}.tar.gz
 Patch0:         remove_nose.patch
+Patch1:         no2to3.patch
 BuildRequires:  %{python_module modernize}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
