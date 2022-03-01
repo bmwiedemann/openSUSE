@@ -1,7 +1,7 @@
 #
 # spec file for package rxvt-unicode
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define with_265color_terminfo_files 1
 %endif
 Name:           rxvt-unicode
-Version:        9.26
+Version:        9.30
 Release:        0
 #
 Summary:        Rxvt X Terminal with Unicode Support
@@ -31,6 +31,7 @@ License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
 URL:            http://software.schmorp.de/#rxvt-unicode
 Source:         http://dist.schmorp.de/%{name}/%{name}-%{version}.tar.bz2
+Source10:       http://dist.schmorp.de/%{name}/%{name}-%{version}.tar.bz2.sig
 Source1:        rxvt-unicode-rpmlintrc
 Source2:        rxvt-unicode.README.SuSE
 Source3:        rxvt-unicode-256color.desktop
@@ -40,7 +41,6 @@ Patch2:         rxvt-unicode-9.21-xsubpp.patch
 Patch3:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
-Patch6:         perl-avoiding-recursive-loading.patch
 Patch7:         handle-new-tic-and-dont-install-terminfo.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
@@ -50,6 +50,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libptytty)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xft)
@@ -150,6 +151,7 @@ rm -f %{buildroot}/%{_terminfo}/r/%{name}
 %{_terminfo}/r/%{name}-256color
 %endif
 %{_mandir}/man1/urxvt*.1%{?ext_man}
+%{_mandir}/man1/urclock*.1%{?ext_man}
 %{_mandir}/man3/urxvt*.3%{?ext_man}
 %{_mandir}/man7/urxvt*.7%{?ext_man}
 %dir %{_libdir}/urxvt/

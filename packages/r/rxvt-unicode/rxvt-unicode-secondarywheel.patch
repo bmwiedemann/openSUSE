@@ -2,11 +2,17 @@ The patch from Arch Linux:
 
 https://aur.archlinux.org/packages/rxvt-unicode-better-wheel-scrolling/
 
-diff --git a/doc/rxvt.1.pod b/doc/rxvt.1.pod
-index 169e104..4bb13b3 100644
+---
+ doc/rxvt.1.pod  |   12 ++++++++++++
+ src/command.C   |   40 ++++++++++++++++++++++++++++++++++++++--
+ src/optinc.h    |    1 +
+ src/rsinc.h     |    1 +
+ src/xdefaults.C |    1 +
+ 5 files changed, 53 insertions(+), 2 deletions(-)
+
 --- a/doc/rxvt.1.pod
 +++ b/doc/rxvt.1.pod
-@@ -427,6 +427,11 @@ B<secondaryScreen>.
+@@ -440,6 +440,11 @@ B<secondaryScreen>.
  Turn on/off secondary screen scroll (default enabled); resource
  B<secondaryScroll>.
  
@@ -15,10 +21,10 @@ index 169e104..4bb13b3 100644
 +Turn on/off secondary screen wheel support (default disabled); resource
 +B<secondaryWheel>.
 +
- =item B<-hold>|B<+hold>
+ =item B<-rm> I<mode>
  
- Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
-@@ -1044,6 +1049,13 @@ option is enabled, scrolls on the secondary screen will change the
+ Compile I<frills>: Sets long line rewrapping behaviour on window resizes
+@@ -1096,6 +1101,13 @@ option is enabled, scrolls on the second
  scrollback buffer and, when secondaryScreen is off, switching
  to/from the secondary screen will instead scroll the screen up.
  
@@ -32,11 +38,9 @@ index 169e104..4bb13b3 100644
  =item B<hold>: I<boolean>
  
  Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
-diff --git a/src/command.C b/src/command.C
-index d212764..3b7e266 100644
 --- a/src/command.C
 +++ b/src/command.C
-@@ -2237,10 +2237,46 @@ rxvt_term::button_release (XButtonEvent &ev)
+@@ -2211,10 +2211,46 @@ rxvt_term::button_release (XButtonEvent
                  }
                else
  # endif
@@ -85,11 +89,9 @@ index d212764..3b7e266 100644
              }
              break;
  #endif
-diff --git a/src/optinc.h b/src/optinc.h
-index 09f9a26..c79a5be 100644
 --- a/src/optinc.h
 +++ b/src/optinc.h
-@@ -27,6 +27,7 @@
+@@ -26,6 +26,7 @@
   def(cursorBlink)
   def(secondaryScreen)
   def(secondaryScroll)
@@ -97,27 +99,23 @@ index 09f9a26..c79a5be 100644
   def(pastableTabs)
   def(cursorUnderline)
  #if ENABLE_FRILLS
-diff --git a/src/rsinc.h b/src/rsinc.h
-index 682322c..6325057 100644
 --- a/src/rsinc.h
 +++ b/src/rsinc.h
-@@ -104,6 +104,7 @@
+@@ -98,6 +98,7 @@
  #ifndef NO_SECONDARY_SCREEN
    def (secondaryScreen)
    def (secondaryScroll)
 +  def (secondaryWheel)
  #endif
- #if OFF_FOCUS_FADING
-   def (fade)
-diff --git a/src/xdefaults.C b/src/xdefaults.C
-index 2308844..0f5d2d0 100644
+ #if ENABLE_FRILLS
+   def (rewrapMode)
 --- a/src/xdefaults.C
 +++ b/src/xdefaults.C
-@@ -264,6 +264,7 @@ optList[] = {
+@@ -257,6 +257,7 @@ optList[] = {
  #ifndef NO_SECONDARY_SCREEN
-               BOOL (Rs_secondaryScreen, "secondaryScreen", "ssc", Opt_secondaryScreen, 0, "enable secondary screen"),
-               BOOL (Rs_secondaryScroll, "secondaryScroll", "ssr", Opt_secondaryScroll, 0, "enable secondary screen scroll"),
+               BOOL (Rs_secondaryScreen, "secondaryScreen", "ssc", Opt_secondaryScreen, 0, "secondary screen"),
+               BOOL (Rs_secondaryScroll, "secondaryScroll", "ssr", Opt_secondaryScroll, 0, "secondary screen scroll"),
 +              BOOL (Rs_secondaryWheel, "secondaryWheel", "ssw", Opt_secondaryWheel, 0, "enable secondary screen wheel"),
  #endif
- #if ENABLE_PERL
-               RSTRG (Rs_perl_lib, "perl-lib", "string"), //, "colon-separated directories with extension scripts"),TODO
+ #if ENABLE_FRILLS
+               STRG (Rs_rewrapMode, "rewrapMode", "rm", "string", "rewrap mode (auto, always, never)"),

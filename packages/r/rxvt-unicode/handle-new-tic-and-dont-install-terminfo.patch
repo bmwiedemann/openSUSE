@@ -1,7 +1,9 @@
-Index: rxvt-unicode-9.26/doc/Makefile.in
-===================================================================
---- rxvt-unicode-9.26.orig/doc/Makefile.in
-+++ rxvt-unicode-9.26/doc/Makefile.in
+---
+ doc/Makefile.in |    8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
 @@ -18,6 +18,7 @@ PERL = @PERL@
  INSTALL = @INSTALL@
  INSTALL_PROGRAM = @INSTALL@ -m 755
@@ -10,7 +12,7 @@ Index: rxvt-unicode-9.26/doc/Makefile.in
  
  srcdir = @srcdir@
  VPATH = @srcdir@
-@@ -68,7 +69,7 @@ all:
+@@ -69,7 +70,7 @@ all:
  	sed $(SEDREPLACE) <$< | podselect -section "RXVT-UNICODE\/URXVT FREQUENTLY ASKED QUESTIONS" | pod2text >$@
  
  $(srcdir)/etc/rxvt-unicode.termcap: $(srcdir)/etc/rxvt-unicode.terminfo
@@ -19,13 +21,15 @@ Index: rxvt-unicode-9.26/doc/Makefile.in
  
  tags allbin:
  
-@@ -98,7 +99,8 @@ install: all
- 	$(INSTALL_DATA) rxvtc.1.man $(DESTDIR)$(man1dir)/$(RXVTNAME)c.$(man1ext)
- 	$(INSTALL_DATA) rxvtd.1.man $(DESTDIR)$(man1dir)/$(RXVTNAME)d.$(man1ext)
- 	$(INSTALL_DATA) rxvt.7.man  $(DESTDIR)$(man7dir)/$(RXVTNAME).$(man7ext)
--	@TIC@ $(srcdir)/etc/rxvt-unicode.terminfo
+@@ -100,8 +101,9 @@ install: all
+ 	$(INSTALL_DATA) rxvtd.1.man   $(DESTDIR)$(man1dir)/$(RXVTNAME)d.$(man1ext)
+ 	$(INSTALL_DATA) rxvt.7.man    $(DESTDIR)$(man7dir)/$(RXVTNAME).$(man7ext)
+ 	$(INSTALL_DATA) rclock.1.man  $(DESTDIR)$(man1dir)/urclock.$(man1ext)
+-	@TIC@ -x $(srcdir)/etc/rxvt-unicode.terminfo || \
+-           @TIC@ $(srcdir)/etc/rxvt-unicode.terminfo
 +	# mkdir -p $(DESTDIR)$(TERMINFO_DIR)
-+	# @TIC@ -o $(DESTDIR)$(TERMINFO_DIR) $(srcdir)/etc/rxvt-unicode.terminfo
++	# @TIC@ -x $(srcdir)/etc/rxvt-unicode.terminfo || \
++	#    @TIC@ -o $(DESTDIR)$(TERMINFO_DIR) $(srcdir)/etc/rxvt-unicode.terminfo
  
  distdepend: alldoc
  
