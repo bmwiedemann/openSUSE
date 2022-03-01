@@ -201,4 +201,16 @@
 </comment>
     <requestid>950585</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>830c9a7429f2477b9821553ce4b974b5</srcmd5>
+    <version>5.1.0</version>
+    <time>1646158022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * Multipart boundaries are random and used-once.
+  * Avoid using V4MAPPED formatted IP addresses in CONNECT http requests,
+    because http proxies may not be always IPv6-capable.
+</comment>
+    <requestid>958305</requestid>
+  </revision>
 </revisionlist>

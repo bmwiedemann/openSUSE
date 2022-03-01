@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  1 15:27:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.0:
+  * Multipart boundaries are random and used-once.
+  * Avoid using V4MAPPED formatted IP addresses in CONNECT http requests,
+    because http proxies may not be always IPv6-capable.
+
+-------------------------------------------------------------------
 Tue Feb  1 20:46:09 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.67
 
 - Update to version 5.0.67:
