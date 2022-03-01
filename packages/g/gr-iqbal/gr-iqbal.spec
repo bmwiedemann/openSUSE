@@ -1,7 +1,7 @@
 #
 # spec file for package gr-iqbal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
-%define libname libgnuradio-iqbalance3_8_0
+%define libname libgnuradio-iqbalance
+%define soname 3_9_0
+
 Name:           gr-iqbal
-Version:        0.38.2
+Version:        0.39.0git20210108
 Release:        0
 Summary:        GNU Radio I/Q balancing
 License:        GPL-2.0-only
@@ -28,7 +30,9 @@ Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
+BuildRequires:  gnuradio-devel >= 3.9.0
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
@@ -38,31 +42,31 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libosmo-dsp-devel
+BuildRequires:  libunwind-devel
 BuildRequires:  orc
-BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-pybind11-devel
+%if 0%{?suse_version} <= 1500
 BuildRequires:  python3-six
-BuildRequires:  swig
-BuildRequires:  pkgconfig(fftw3f)
-BuildRequires:  pkgconfig(gnuradio-runtime) >= 3.8.0
-BuildRequires:  pkgconfig(python3)
+%endif
 
 %description
 I/Q balancing for GNU Radio
 
-%package -n %{libname}
+%package -n %{libname}%{soname}
 Summary:        Libraries for gr-iqbal
 Group:          System/Libraries
 
-%description -n %{libname}
+%description -n %{libname}%{soname}
 I/Q balancing for GNU Radio
 
 %package -n %{name}-grc
 Summary:        GRC blocks for gr-iqbal
 Group:          Productivity/Hamradio/Other
-Requires:       %{libname} = %{version}
-# GRC yaml files where in the library package previously
+Requires:       %{libname}%{soname} = %{version}
+# GRC yaml files were in the library package previously
 Conflicts:      libgnuradio-iqbalance0_37_2git
-Provides:       libgnuradio-iqbalance0_37_2git:%{_datadir}/gnuradio/grc/blocks/iqbalance_fix_cc.block.yml
 BuildArch:      noarch
 
 %description -n %{name}-grc
@@ -72,18 +76,18 @@ gr-iqbal I/Q balancing block.
 %package -n python3-gr-iqbal
 Summary:        Python bindings for gr-iqbal
 Group:          Development/Libraries/Python
-Requires:       %{libname} = %{version}
+Requires:       %{libname}%{soname} = %{version}
 
 %description -n python3-gr-iqbal
 The Python Bindings for gr-iqbal.
 
-%package -n libgnuradio-iqbalance-devel
+%package -n %{libname}-devel
 Summary:        Development files for gr-iqbal
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
+Requires:       %{libname}%{soname} = %{version}
 Conflicts:      libgnuradio-iqbalance <= 0.37.2+git.20151121
 
-%description -n libgnuradio-iqbalance-devel
+%description -n %{libname}-devel
 Library headers for gr-iqbal, I/Q balancing for GNU Radio
 
 %package devel-doc
@@ -91,12 +95,13 @@ Summary:        Documentation for gr-iqbal
 Group:          Documentation/HTML
 Recommends:     libgnuradio-iqbalance-devel = %{version}
 BuildArch:      noarch
+Obsoletes:      %{name}-doc
 
 %description devel-doc
 Documentation for gr-iqbal module for GNU Radio.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %build
 %cmake \
@@ -111,13 +116,13 @@ mv %{buildroot}/%{_datadir}/doc/gr-iqbalance %{buildroot}%{_docdir}/
 
 %fdupes %{buildroot}%{python3_sitearch}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%post -n %{libname}%{soname} -p /sbin/ldconfig
+%postun -n %{libname}%{soname} -p /sbin/ldconfig
 
-%files -n %{libname}
+%files -n %{libname}%{soname}
 %doc AUTHORS
 %license COPYING
-%{_libdir}/libgnuradio-iqbalance.so.*
+%{_libdir}/%{libname}.so.*
 
 %files -n %{name}-grc
 %{_datadir}/gnuradio
@@ -125,10 +130,9 @@ mv %{buildroot}/%{_datadir}/doc/gr-iqbalance %{buildroot}%{_docdir}/
 %files -n python3-gr-iqbal
 %{python3_sitearch}/gnuradio/iqbalance
 
-%files -n libgnuradio-iqbalance-devel
+%files -n %{libname}-devel
 %{_includedir}/gnuradio/iqbalance
-%{_includedir}/gnuradio/swig
-%{_libdir}/libgnuradio-iqbalance.so
+%{_libdir}/%{libname}.so
 %{_libdir}/cmake/gnuradio/gnuradio-iqbalance*
 
 %files devel-doc

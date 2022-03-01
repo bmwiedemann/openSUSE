@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 27 00:06:48 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fix grc subpackage dependency
+
+-------------------------------------------------------------------
+Sun Feb 20 22:27:57 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- restore old name of doc package
+- remove outdated provides
+
+-------------------------------------------------------------------
+Wed Sep 15 10:17:13 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 0.39.0 snapshot 20210108
+- builds with GNU Radio 3.9
+
+-------------------------------------------------------------------
 Tue Jan 12 23:15:29 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - update to release 0.38.2
