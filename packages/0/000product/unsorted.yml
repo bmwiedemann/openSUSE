@@ -1784,7 +1784,6 @@ unsorted:
   - cargo-audit-advisory-db 
   - cargo-c 
   - cargo-packaging 
-  - cargo1.56 
   - cargo1.57 
   - cargo1.58 
   - caribou 
@@ -8327,6 +8326,7 @@ unsorted:
   - krita-devel 
   - krita-lang 
   - krita-plugin-gmic 
+  - krius 
   - kronometer 
   - kross-devel 
   - kross-ruby 
@@ -8461,6 +8461,7 @@ unsorted:
   - kubernetes1.23-controller-manager: [x86_64] 
   - kubernetes1.23-proxy: [x86_64] 
   - kubernetes1.23-scheduler: [x86_64] 
+  - kubescape 
   - kubeseal 
   - kubetap 
   - kubeval 
@@ -8514,6 +8515,7 @@ unsorted:
   - kxmlgui-devel 
   - kxmlrpcclient5-devel 
   - kyotocabinet 
+  - kyverno 
   - labplot-kf5 
   - labplot-kf5-lang 
   - ladish 
@@ -11090,7 +11092,7 @@ unsorted:
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
-  - libgnuradio-iqbalance3_8_0 
+  - libgnuradio-iqbalance3_9_0 
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit: [x86_64] 
@@ -13075,6 +13077,8 @@ unsorted:
   - libptscotch_6_1_0-gnu-openmpi2-hpc 
   - libptscotch_6_1_0-gnu-openmpi3-hpc 
   - libptscotch_6_1_0-gnu-openmpi4-hpc 
+  - libptytty-devel 
+  - libptytty0 
   - libpugixml1 
   - libpulse-devel 
   - libpulse-devel-32bit: [x86_64] 
@@ -13348,7 +13352,7 @@ unsorted:
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
-  - libraylib351 
+  - libraylib400 
   - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
@@ -16437,7 +16441,6 @@ unsorted:
   - movit8-data 
   - mozaddon-devel 
   - mozilla-jss 
-  - mozilla-jss-javadoc: [i586] 
   - mozilla-nspr-32bit: [x86_64] 
   - mozilla-nspr-devel 
   - mozilla-nss-32bit: [x86_64] 
@@ -21595,7 +21598,6 @@ unsorted:
   - python3-neutronclient 
   - python3-newt 
   - python3-nghttp2 
-  - python3-nlopt 
   - python3-notcurses 
   - python3-notmuch 
   - python3-novaclient 
@@ -22749,6 +22751,7 @@ unsorted:
   - python310-django-nine 
   - python310-django-oauth-toolkit 
   - python310-django-oidc-provider 
+  - python310-django-oscar 
   - python310-django-pandas 
   - python310-django-parler 
   - python310-django-perf-rec 
@@ -22809,6 +22812,7 @@ unsorted:
   - python310-dparse 
   - python310-dpcontracts 
   - python310-dpkt 
+  - python310-dqsegdb: [x86_64] 
   - python310-dqsegdb2 
   - python310-dragonmapper 
   - python310-drms 
@@ -23475,7 +23479,6 @@ unsorted:
   - python310-mock-open 
   - python310-mocket 
   - python310-mockito 
-  - python310-mockldap 
   - python310-model-bakery 
   - python310-modernize 
   - python310-mohawk 
@@ -23558,6 +23561,7 @@ unsorted:
   - python310-nibabel 
   - python310-nilearn 
   - python310-nine 
+  - python310-nlopt 
   - python310-nltk 
   - python310-nocasedict 
   - python310-nocaselist 
@@ -24913,7 +24917,6 @@ unsorted:
   - python36-devel 
   - python36-django-invitations 
   - python36-django-money 
-  - python36-django-oscar 
   - python36-django-rest-invitations 
   - python36-doc 
   - python36-doc-devhelp 
@@ -24923,7 +24926,6 @@ unsorted:
   - python36-testsuite 
   - python36-tk 
   - python36-tools 
-  - python36-uncompyle6 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -25955,6 +25957,7 @@ unsorted:
   - python38-dparse 
   - python38-dpcontracts 
   - python38-dpkt 
+  - python38-dqsegdb: [x86_64] 
   - python38-dqsegdb2 
   - python38-drms 
   - python38-dropbox 
@@ -26569,7 +26572,6 @@ unsorted:
   - python38-mock-open 
   - python38-mocket 
   - python38-mockito 
-  - python38-mockldap 
   - python38-model-bakery 
   - python38-modernize 
   - python38-mohawk 
@@ -26644,6 +26646,7 @@ unsorted:
   - python38-nibabel 
   - python38-nilearn 
   - python38-nine 
+  - python38-nlopt 
   - python38-nltk 
   - python38-nocasedict 
   - python38-nocaselist 
@@ -28931,6 +28934,7 @@ unsorted:
   - python39-django-nine 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
+  - python39-django-oscar 
   - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
@@ -28993,6 +28997,7 @@ unsorted:
   - python39-dparse 
   - python39-dpcontracts 
   - python39-dpkt 
+  - python39-dqsegdb: [x86_64] 
   - python39-dqsegdb2 
   - python39-dragonmapper 
   - python39-drms 
@@ -29660,7 +29665,6 @@ unsorted:
   - python39-mock-open 
   - python39-mocket 
   - python39-mockito 
-  - python39-mockldap 
   - python39-model-bakery 
   - python39-modernize 
   - python39-mohawk 
@@ -29743,6 +29747,7 @@ unsorted:
   - python39-nibabel 
   - python39-nilearn 
   - python39-nine 
+  - python39-nlopt 
   - python39-nltk 
   - python39-nocasedict 
   - python39-nocaselist 
@@ -32058,7 +32063,6 @@ unsorted:
   - rust-cbindgen 
   - rust-packaging 
   - rust-srpm-macros 
-  - rust1.56 
   - rust1.57 
   - rust1.58 
   - rustscan 
@@ -43127,7 +43131,6 @@ unsorted:
   - yast2-registration: [x86_64] 
   - yast2-rmt 
   - yast2-samba-provision 
-  - yast2-schema 
   - yast2-schema-collection 
   - yast2-schema-micro 
   - yast2-slide-show 
