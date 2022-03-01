@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 11 23:40:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build for all supported python flavours.
+- Edit flavor names so that auto-generated python packages are
+  called pythonXY-nlopt and not pythonXY-nlopt-bindings; no-name
+  flavor now builds the bindings, while "main" flavor builds the
+  main C/C++ library and devel package.
+
+-------------------------------------------------------------------
 Tue Feb  8 19:48:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Split bindings into separate build, to avoid the octave (and

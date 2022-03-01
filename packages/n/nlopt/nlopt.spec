@@ -19,11 +19,11 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %if "%{flavor}" == ""
-%bcond_with    bindings
-%endif
-%if "%{flavor}" == "bindings"
 %bcond_without bindings
-%define psuffix -bindings
+%endif
+%if "%{flavor}" == "main"
+%bcond_with   bindings
+%define psuffix -main
 %endif
 %define pname nlopt
 
@@ -41,9 +41,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 %if %{with bindings}
-BuildRequires:  python3-numpy-devel
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  swig
 BuildRequires:  pkgconfig(octave)
+Requires:       python-numpy
+%python_subpackages
 %endif
 
 %description
@@ -62,30 +64,14 @@ providing a common interface for a number of different free
 optimization routines available online as well as original
 implementations of various other algorithms.
 
-%package        devel
+%package -n     %{pname}-devel
 Summary:        Development files for %{pname}
 Group:          Development/Libraries/C and C++
 Requires:       lib%{pname}0 = %{version}
 
-%description    devel
+%description -n %{pname}-devel
 The %{pname}-devel package contains libraries and header files for
 developing applications that use NLopt.
-
-%package     -n python3-%{pname}
-Summary:        Python interface to nonlinear optimization libray
-Group:          Development/Libraries/Python
-Requires:       python3-numpy
-Provides:       python-%{pname} = %{version}-%{release}
-Obsoletes:      python-%{pname} < %{version}-%{release}
-
-
-%description -n python3-%{pname}
-NLopt is a free/open-source library for nonlinear optimization,
-providing a common interface for a number of different free
-optimization routines available online as well as original
-implementations of various other algorithms.
-
-This package contains the Python3 interface for NLopt.
 
 %package     -n octave-nlopt_optimize
 Summary:        Octave interface to nonlinear optimization libray
@@ -104,39 +90,76 @@ This package contains the Octave interface for NLopt.
 %autosetup -p1 -n %{pname}-%{version}
 
 %build
+%if %{with bindings}
+%{python_expand # Necessary to run configure with all python flavors
+export PYTHON=$python
+mkdir ../${PYTHON}_build
+cp -pr ./ ../${PYTHON}_build
+pushd ../${PYTHON}_build
 %cmake \
    -DCMAKE_SKIP_RPATH:BOOL=OFF \
    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
    -DNLOPT_MATLAB=OFF \
    -DNLOPT_CXX:BOOL=ON \
    -DNLOPT_TESTS:BOOL=ON \
-   %{!?with_bindings:-DNLOPT_PYTHON:BOOL=OFF} \
-   %{!?with_bindings:-DNLOPT_OCTAVE:BOOL=OFF} \
-   %{!?with_bindings:-DNLOPT_SWIG:BOOL=OFF} \
+   -DNLOPT_PYTHON:BOOL=ON \
+   -DNLOPT_OCTAVE:BOOL=ON \
+   -DNLOPT_SWIG:BOOL=ON \
+   -DPYTHON_EXECUTABLE=%{_bindir}/$python \
    %{nil}
 %cmake_build
+popd
+}
+%else
+%cmake \
+   -DCMAKE_SKIP_RPATH:BOOL=OFF \
+   -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+   -DNLOPT_MATLAB=OFF \
+   -DNLOPT_CXX:BOOL=ON \
+   -DNLOPT_TESTS:BOOL=ON \
+   -DNLOPT_PYTHON:BOOL=OFF \
+   -DNLOPT_OCTAVE:BOOL=OFF \
+   -DNLOPT_SWIG:BOOL=OFF \
+   %{nil}
+%cmake_build
+%endif
 
 %install
-%cmake_install
 %if %{with bindings}
+%{python_expand # Necessary to run configure with all python flavors
+export PYTHON=$python
+pushd ../${PYTHON}_build
+%cmake_install
 # remove files from the main package
 for e in %{_includedir} %{_libdir}/lib\* %{_libdir}/pkgconfig %{_libdir}/cmake %{_mandir} ; do
     rm -R %{buildroot}/${e}
 done
-%fdupes %{buildroot}%{pyton3_sitearch}
+%fdupes %{buildroot}%{$python_sitearch}
+popd
+}
+%else
+%cmake_install
 %endif
 
 %check
+%if %{with bindings}
+%{python_expand # Necessary to run configure with all python flavors
+export PYTHON=$python
+pushd ../${PYTHON}_build
 %ctest
+}
+%else
+%ctest
+%endif
 
 %post -n lib%{pname}0 -p /sbin/ldconfig
 %postun -n lib%{pname}0 -p /sbin/ldconfig
 
-%if "%{flavor}" == ""
+%if "%{flavor}" == "main"
 %files -n lib%{pname}0
 %{_libdir}/*.so.*
 
-%files devel
+%files -n %{pname}-devel
 %license COPYING
 %doc AUTHORS NEWS.md README.md TODO
 %{_includedir}/*
@@ -147,9 +170,9 @@ done
 %endif
 
 %if %{with bindings}
-%files -n python3-%{pname}
+%files %{python_files}
 %license COPYING
-%{python3_sitearch}/*
+%{python_sitearch}/*
 
 %files -n octave-nlopt_optimize
 %license COPYING
