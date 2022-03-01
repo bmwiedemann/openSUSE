@@ -245,4 +245,13 @@
 </comment>
     <requestid>950587</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>00cfb6ed9d3edc790cab278e9c4f67b1</srcmd5>
+    <version>5.1.3</version>
+    <time>1646158024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.3 (no changelog)
+</comment>
+    <requestid>958307</requestid>
+  </revision>
 </revisionlist>
