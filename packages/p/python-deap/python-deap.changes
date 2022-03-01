@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:37:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add no2to3.patch for compatibility with newer setuptools 
+
+-------------------------------------------------------------------
 Wed Apr 21 06:25:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't build for Python 3.6, due to no NumPy. 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-deap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/d/deap/deap-%{ver
 Patch0:         python-deap-remove-nose.patch
 # https://github.com/DEAP/deap/pull/507
 Patch1:         python-deap-python3.patch
+Patch2:         no2to3.patch
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,6 +50,7 @@ part is the Evolutionary Algorithms in Python (EAP) framework.
 %setup -q -n deap-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags}"
