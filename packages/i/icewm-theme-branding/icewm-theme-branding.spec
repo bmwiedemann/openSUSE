@@ -1,7 +1,7 @@
 #
 # spec file for package icewm-theme-branding
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,9 +44,13 @@ Name:           icewm-theme-branding
 Version:        1.2.5
 Release:        0
 Summary:        Icewm theme branding
-License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/openSUSE/icewm-config-openSUSE
 Source:         https://github.com/openSUSE/%{_name}/archive/%{_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pass-env-var-to-systemd-user-session.patch bsc#1179237 yfjiang@suse.com -- Pass environment variables to the 'systemd --user' session
+Patch0:         pass-env-var-to-systemd-user-session.patch
+# PATCH-FIX-UPSTREAM fix-font-configuration.patch boo#1195328 bsc#1196336 yfjiang@suse.com -- Fix font configuration after google-droid-fonts update
+Patch1:         fix-font-configuration.patch
 Requires:       icewm
 Conflicts:      icewm < 1.3.11
 Conflicts:      otherproviders(icewm-configuration-files)
@@ -63,6 +67,8 @@ the system default theme,background etc.
 
 %prep
 %setup -q -n %{_name}-%{_name}-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %if 0%{?build_openSUSE}

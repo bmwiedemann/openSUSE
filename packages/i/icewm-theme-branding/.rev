@@ -122,4 +122,13 @@ icewm-theme-branding icewm-config-upstream</comment>
     <comment></comment>
     <requestid>854466</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>8b3f108c8002c4205a0315a9b09a091b</srcmd5>
+    <version>1.2.5</version>
+    <time>1646150585</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pass-env-var-to-systemd-user-session.patch instead of changing
+  the tar ball to fix the bsc#1179237. (forwarded request 957986 from yfjiang)</comment>
+    <requestid>957988</requestid>
+  </revision>
 </revisionlist>
