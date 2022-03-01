@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 08:40:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add glibc-locale dependency for tests 
+
+-------------------------------------------------------------------
 Fri Mar  5 09:13:58 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Replace broken %ifpython3 macro
