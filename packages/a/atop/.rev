@@ -130,4 +130,14 @@
     <comment></comment>
     <requestid>946992</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dac457035efc7891eb4299672a43888c</srcmd5>
+    <version>2.7.1</version>
+    <time>1646150609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.1:
+  * Correct disk stats in atopsar (#182)
+  * Explicit type definition in atop.service (#180)</comment>
+    <requestid>958119</requestid>
+  </revision>
 </revisionlist>

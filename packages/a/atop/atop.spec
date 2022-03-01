@@ -19,7 +19,7 @@
 
 
 Name:           atop
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Monitor for System Resources and Process Activity
 License:        GPL-2.0-only
@@ -27,7 +27,7 @@ URL:            https://www.atoptool.nl/
 Source0:        https://www.atoptool.nl/download/atop-%{version}.tar.gz
 Source1:        atop.desktop
 Source2:        atop.default
-Source99:       atop-rpmlintrc
+#Source99:       atop-rpmlintrc
 Patch0:         atop-makefile.patch
 Patch1:         harden_atop-rotate.service.patch
 Patch2:         harden_atop.service.patch

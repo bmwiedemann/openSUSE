@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 28 23:24:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.1:
+  * Correct disk stats in atopsar (#182)
+  * Explicit type definition in atop.service (#180)
+
+-------------------------------------------------------------------
 Fri Jan  7 14:16:10 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.7.0:
