@@ -17,17 +17,16 @@
 
 
 Name:           mysql-connector-java
-Version:        8.0.25
+Version:        8.0.28
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
 URL:            https://dev.mysql.com/downloads/connector/j/
-Source0:        %{name}-%{version}-suse.tar.xz
+Source0:        https://github.com/mysql/mysql-connector-j/archive/refs/tags/%{version}.tar.gz#:/%{name}-%{version}.tar.gz
 Group:          Development/Languages/Java
-# Script to repack upstream tarball
-# ./generate-tarball.sh VERSION
-Source99:       generate-tarball.sh
 Patch0:         javac-check.patch
+# TODO: Oracle OCI is not packaged yet
+Patch1:         %{name}-remove-oci-support.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  apache-commons-logging
@@ -35,7 +34,7 @@ BuildRequires:  geronimo-jta-1_1-api
 BuildRequires:  git
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javassist >= 3.23.1
+BuildRequires:  javassist >= 3.28.0
 BuildRequires:  junit
 BuildRequires:  protobuf-java >= 3.9.2
 BuildRequires:  reload4j
@@ -61,8 +60,9 @@ Connector/J is a Type IV JDBC driver and has a complete JDBC feature
 set that supports the capabilities of MySQL.
 
 %prep
-%setup -q
+%setup -q -n mysql-connector-j-%{version}
 %patch0 -p1
+%patch1 -p1
 
 # extra libs
 mkdir -p lib

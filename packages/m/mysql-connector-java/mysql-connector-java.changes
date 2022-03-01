@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Feb 25 20:40:59 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Build now from GitHub official repo:
+  * Updated source package to build from gihub official repository.
+  * Remove utility generate-tarball.sh which is not needed anymore.
+
+- Add patch to temporarily remove OCI IAM support while it's 
+  packaged:
+  * Add mysql-connector-java-remove-oci-support.patch
+
+- Update to 8.0.28 (CVE-2021-2471, bsc#1195557):
+  Changes in 8.0.28:
+    * Fix for Bug#99260 (31189960), statement.setQueryTimeout,creates a database connection and does not close.
+    * Fix for Bug#103324 (32770013), X DevAPI Collection.replaceOne() missing matching _id check.
+    * Fix for Bug#105197 (33461744), Statement.executeQuery() may return non-navigable ResultSet.
+    * Fix for Bug#105323 (33507321), README.md contains broken links.
+    * Fix for Bug#96900 (30355150), STATEMENT.CANCEL()CREATE A DATABASE CONNECTION BUT DOES NOT CLOSE THE CONNECTION.
+    * Fix for Bug#104067 (33054827), No reset autoCommit after unknown issue occurs.
+    * Fix for Bug#85223 (25656020), MYSQLSQLXML SETSTRING CRASH.
+    * Fix for Bug#84365 (33425867), INSERT..VALUE with VALUES function lead to a StringIndexOutOfBoundsException.
+    * Fix for Bug#105211 (33468860), class java.time.LocalDate cannot be cast to class java.sql.Date.
+    * Fix for Bug#101389 (32089018), GETWARNINGS SHOULD CHECK WARNING COUNT BEFORE SENDING SHOW.
+    * Fix for Bug#33488091, Remove all references to xdevapi.useAsyncProtocol from properties and code.
+    * WL#14805, Remove support for TLS 1.0 and 1.1.
+    * WL#14650, Support for MFA (multi factor authentication) authentication.
+  Changesd in 8.0.27
+    * Fix for Bug#103612 (32902019), Incorrectly identified WITH...SELECT as unsafe for read-only connections.
+    * Fix for Bug#71929 (18346501), Prefixing query with double comments cancels query DML validation.
+    * Fix for Bug#23204652, CURSOR POSITIONING API'S DOESNOT CHECK THE VALIDITY OF RESULTSET.
+    * Fix for Bug#28725534, MULTI HOST CONNECTION WOULD BLOCK IN CONNECTION POOLING.
+    * Fix for Bug#95139 (29807572), CACHESERVERCONFIGURATION APPEARS TO THWART CHARSET DETECTION.
+    * Fix for Bug#104641 (33237255), DatabaseMetaData.getImportedKeys can return duplicated foreign keys.
+    * Fix for Bug#33185116, Have method ResultSet.getBoolean() supporting conversion of 'T' and 'F' in a VARCHAR to True/False (boolean).
+    * Fix for Bug#31117686, PROTOCOL ALLOWLIST NOT COMPATIBLE WITH IBM JAVA.
+    * Fix for Bug#104559 (33232419), ResultSet.getObject(i, java.util.Date.class) throws NPE when the value is null.
+    * WL#14707, Support OCI IAM authentication.
+    * WL#14660, Testsuite with support for single MySQL server instance.
+    * Fix for Bug#103878 (32954449), CONNECTOR/J 8 : QUERY WITH 'SHOW XXX' WILL GET EXCEPTION WHEN USE CURSOR.
+    * Fix for Bug#103796 (32922715), CONNECTOR/J 8 STMT SETQUERYTIMEOUT CAN NOT WORK.
+    * Fix for Bug#104170 (33064455), CONTRIBUTION: CLIENTPREPAREDSTMT: LEAVE CALENDAR UNTOUCHED.
+    * Fix for Bug#95564 (29894324), createDatabaseIfNotExist is not working for databases with hyphen in name.
+  Changes in 8.0.26
+    * Fix for Bug#32954396, EXECUTEQUERY HANGS WITH USECURSORFETCH=TRUE & SETFETCHSIZE.
+    * Fix for Bug#102372 (32459408), v8.0.23 unusable in OSGi.
+    * Fix for Bug#25554464, CONNECT FAILS WITH NPE WHEN THE SERVER STARTED WITH CUSTOM COLLATION.
+    * Fix for Bug#100606 (31818423), UNECESARY CALL TO "SET NAMES 'UTF8' COLLATE 'UTF8_GENERAL_CI'".
+    * Fix for Bug#102404 (32435618), CONTRIBUTION: ADD TRACK SESSION STATE CHANGE.
+    * Fix for Bug#95280 (29757140), DATABASEMETADATA.GETIMPORTEDKEYS RETURNS DOUBLE THE ROWS.
+    * Fix for Bug#97269 (30438500), POSSIBLE BUG IN COM.MYSQL.CJ.XDEVAPI.STREAMINGDOCRESULTBUILDER.
+    * Fix for Bug#103303 (32766143), JAVA.LANG.CLASSCASTEXCEPTION WHEN INSERTING BLOB WITH SERVER PREPARED STATEMENT.
+    * WL#14205, Support query attributes.
+    * WL#14411, Support for authentication_kerberos_client authentication plugin.
+    * WL#14559, Deprecate TLS 1.0 and 1.1.
+    * WL#14391, Migrate QA tests to main repo.
+
+-------------------------------------------------------------------
 Tue Feb 22 19:01:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j
