@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 23 03:06:02 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.24 2022-02-21 10:47:08 rurban
+    - Fix for broken <archlibexp>/CORE/keywords.h test on system macOS
+      (PR #5, @nega0)
+    - finally added with 5.35.8 (RT #141406)
+
+-------------------------------------------------------------------
 Sun Oct 31 03:06:47 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.23

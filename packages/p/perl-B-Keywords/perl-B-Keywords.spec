@@ -1,7 +1,7 @@
 #
 # spec file for package perl-B-Keywords
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define cpan_name B-Keywords
 Name:           perl-B-Keywords
-Version:        1.23
+Version:        1.24
 Release:        0
 #Upstream:  2017-2021 Reini Urban, All rights reserved. This program is free software; you can redistribute it and/or modify it under the terms of either: a) the GNU General Public License as published by the Free Software Foundation; version 2, or b) the "Artistic License" which comes with Perl.
+License:        Artistic-1.0 OR GPL-2.0-only
 Summary:        Lists of reserved barewords and symbol names
-License:        GPL-2.0-only OR Artistic-1.0
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
