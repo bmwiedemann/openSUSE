@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-jss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           mozilla-jss
 Summary:        Java Security Services (JSS)
-License:        MPL-1.1 OR GPL-2.0-only OR LGPL-2.1-only
+License:        GPL-2.0-only OR MPL-1.1 OR LGPL-2.1-only
 Group:          Development/Libraries/Java
 URL:            http://www.dogtagpki.org/wiki/JSS
 Version:        5.0.0
@@ -53,10 +53,10 @@ Requires:       mozilla-nss >= 3.44
 Requires:       slf4j
 Requires:       slf4j-jdk14
 
-Conflicts:      ldapjdk < 4.20
 Conflicts:      idm-console-framework < 1.2
-Conflicts:      tomcatjss < 7.3.4
+Conflicts:      ldapjdk < 4.20
 Conflicts:      pki-base < 10.6.5
+Conflicts:      tomcatjss < 7.3.4
 
 %description
 Java Security Services (JSS) is a java native interface which provides a bridge
@@ -89,7 +89,6 @@ export CFLAGS
 # Check if we're in FIPS mode
 modutil -dbdir /etc/pki/nssdb -chkfips true | grep -q enabled && export FIPS_ENABLED=1
 
-
 ./build.sh \
     %{?_verbose:-v} \
     --work-dir=%{_vpath_builddir} \
@@ -113,7 +112,7 @@ modutil -dbdir /etc/pki/nssdb -chkfips true | grep -q enabled && export FIPS_ENA
 %defattr(-,root,root,-)
 %doc jss.html
 %license MPL-1.1.txt gpl.txt lgpl.txt
-%{_libdir}/*
+%{_libdir}/jss
 %{_jnidir}/*
 
 %if %{with javadoc}

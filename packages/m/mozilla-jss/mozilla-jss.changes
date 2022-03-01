@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:53:04 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Don't package /usr/lib/debug
+
+-------------------------------------------------------------------
 Sun Jan  2 02:04:33 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 5.0.0
