@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 28 15:05:32 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix issues found around pre_flight_script_args
+
+- Added:
+  * prevent-shell-injection-via-pre_flight_script_args-4.patch
+
+-------------------------------------------------------------------
+Thu Feb 24 14:06:44 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Add salt-ssh with Salt Bundle support (venv-salt-minion)
+  (bsc#1182851, bsc#1196432)
+
+- Added:
+  * add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+
+-------------------------------------------------------------------
+Thu Feb 17 15:27:00 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Restrict "state.orchestrate_single" to pass a pillar value if it exists (bsc#1194632)
+
+- Added:
+  * state.orchestrate_single-does-not-pass-pillar-none-4.patch
+
+-------------------------------------------------------------------
 Tue Feb  8 13:53:36 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Update generated documentation to 3004
