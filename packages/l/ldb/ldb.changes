@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 24 19:03:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.2
+  + Fix for CVE-2021-3670, ensure that the LDB request has not
+    timed out during filter processing as the LDAP server
+    MaxQueryDuration is otherwise not honoured.
+
+-------------------------------------------------------------------
 Tue Jan 11 10:08:31 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Modify packaging to allow parallel installation with libldb1
