@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  1 10:08:36 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Change container variable for INSTALL label to workaround
+  upstream detection of podman
+  [gh#cockpit-project/cockpit-container#20].
+
+-------------------------------------------------------------------
 Tue Jun 29 13:17:59 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix switched UNINSTALL/RUN label [bsc#1187635]
