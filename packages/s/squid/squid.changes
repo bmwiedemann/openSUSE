@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 26 11:29:47 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 5.4.1:
+  * Bug 5055: FATAL FwdState::noteDestinationsEnd exception: opening
+  * code clean-ups and developer visible changes
+
+-------------------------------------------------------------------
 Tue Feb  8 09:55:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.4:

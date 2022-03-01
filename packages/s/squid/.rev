@@ -1003,4 +1003,12 @@ from the squid 3.x changelog</comment>
     <comment></comment>
     <requestid>952695</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>777f0c2aa41bb28bc65c6b9091239311</srcmd5>
+    <version>5.4.1</version>
+    <time>1646150618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958214</requestid>
+  </revision>
 </revisionlist>

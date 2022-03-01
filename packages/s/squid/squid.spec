@@ -24,7 +24,7 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        5.4
+Version:        5.4.1
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
