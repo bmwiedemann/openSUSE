@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Feb 2 09:47:00 UTC 2022 - Michal Hlavac <miso@hlavki.eu>
 
-- Update to version 3.8.0:
+- Update to version 3.8.0 (jsc#SLE-21196):
   * OCI registry support for charts is now generally available. It has graduated out of being an experiment. Some changes over Helm 3.7 include:
     * When setting a chart in the dependencies as OCI the version can be set to a range, like other dependencies
     * SemVer tags that include build information can be pushed and used. OCI registries don't support + as a tag character. Helm translates the + to _ when stored as a tag

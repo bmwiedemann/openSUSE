@@ -263,4 +263,12 @@ See changelog in:
     <comment></comment>
     <requestid>951347</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>306e34cc298811d1178c08f0d4e6ce11</srcmd5>
+    <version>3.8.0</version>
+    <time>1646150614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.0 (jsc#SLE-21196):</comment>
+    <requestid>958250</requestid>
+  </revision>
 </revisionlist>
