@@ -17,7 +17,7 @@
 
 
 Name:           vido
-Version:        2.1.0
+Version:        2.3.0
 Release:        0
 Summary:        Online Video Downloader
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(granite) >= 5.2.3
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libhandy-1)
 Requires:       youtube-dl
 Recommends:     %{name}-lang
 

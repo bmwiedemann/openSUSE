@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Feb 20 16:05:39 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.3.0:
+  * Update version in data
+  * Update screenshots (#80)
+  * Update version number
+  * App release notes
+  * MainWindow: Correctly set the app title (#79)
+  * Update LINGUAS (#77)
+  * Update LINGUAS (#78)
+  * MainWindow: Add missing Hdy.init() (#76)
+  * Create it.po (#74)
+  * Create it.po (#65)
+  * Update LINGUAS (#64)
+  * l10n: Correctly setup the locales (#73)
+  * Add notification when download done (#72)
+  * Migrate from Travis CI to GitHub Actions (#71)
+  * Less scope in Flatpak, fix folder selection, and fix merging
+    into mkv (#70)
+  * Rounded window corners and flat titlebar (#69)
+
+-------------------------------------------------------------------
 Fri Nov  5 13:02:22 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.1.0:
