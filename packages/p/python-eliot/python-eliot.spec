@@ -86,7 +86,8 @@ export LC_CTYPE=en_US.UTF-8
 %check
 # skip prettyprint as it needs the binary to execute
 # test_parse_stream is too slow in obs
-%pytest eliot/tests -k 'not (prettyprint or test_parse_stream)'
+# test_parse_into_tasks is too slow in obs
+%pytest eliot/tests -k 'not (prettyprint or test_parse_stream or test_parse_into_tasks)'
 
 %files %{python_files}
 %license LICENSE

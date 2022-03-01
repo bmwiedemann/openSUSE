@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 11:54:39 UTC 2022 - pgajdos@suse.com
+
+- disable too slow test_parse_into_tasks
+
+-------------------------------------------------------------------
 Sun Jan 23 20:30:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.0:
