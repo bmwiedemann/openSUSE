@@ -1,7 +1,7 @@
 #
 # spec file for package python-weblib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,9 @@ Weblib provides tools to solve typical tasks in Web scraping.
 %python_build
 
 %check
-%pytest
+# test_it_throwns_warning fails on OBS, not locally, considering flaky
+# https://github.com/lorien/weblib/issues/16
+%pytest -k 'not test_it_throwns_warning'
 
 %install
 %python_install
