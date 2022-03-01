@@ -7,7 +7,7 @@ Index: bluez-5.55/Makefile.in
  @DEPRECATED_TRUE@@READLINE_TRUE@			src/libshared-glib.la $(GLIB_LIBS) -lreadline
  
 -@CUPS_TRUE@cupsdir = $(libdir)/cups/backend
-+@CUPS_TRUE@cupsdir = $(libexecdir)/cups/backend
++@CUPS_TRUE@cupsdir = $(prefix)/lib/cups/backend
  @CUPS_TRUE@profiles_cups_bluetooth_SOURCES = profiles/cups/main.c \
  @CUPS_TRUE@					profiles/cups/cups.h \
  @CUPS_TRUE@					profiles/cups/sdp.c \
@@ -20,7 +20,7 @@ Index: bluez-5.55/Makefile.tools
  
  if CUPS
 -cupsdir = $(libdir)/cups/backend
-+cupsdir = $(libexecdir)/cups/backend
++cupsdir = $(prefix)/lib/cups/backend
  
  cups_PROGRAMS = profiles/cups/bluetooth
  

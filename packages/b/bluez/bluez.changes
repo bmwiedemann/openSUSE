@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb 26 18:20:25 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Tue Nov 23 09:52:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop nuking the obex service, we support user systemd services

@@ -1461,4 +1461,13 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>934690</requestid>
   </revision>
+  <revision rev="184" vrev="3">
+    <srcmd5>4d458b0826d3fbf102e973f325e90803</srcmd5>
+    <version>5.62</version>
+    <time>1646150580</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+</comment>
+    <requestid>957910</requestid>
+  </revision>
 </revisionlist>

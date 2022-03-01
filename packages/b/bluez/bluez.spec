@@ -418,9 +418,9 @@ touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 %license COPYING
 
 %files cups
-%dir %{_libexecdir}/cups
-%dir %{_libexecdir}/cups/backend
-%{_libexecdir}/cups/backend/bluetooth
+%dir %{_prefix}/lib/cups
+%dir %{_prefix}/lib/cups/backend
+%{_prefix}/lib/cups/backend/bluetooth
 
 %files test
 %{_bindir}/avinfo
