@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 28 10:39:35 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
+
+- add yast namespace to merge.xslt to fix CDATA handling (bsc#1195910)
+- 4.4.32
+
+-------------------------------------------------------------------
 Mon Feb 21 15:05:50 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Modified init-scripts service dependencies fixing a root login
