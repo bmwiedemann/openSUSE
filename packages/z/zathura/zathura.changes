@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 24 23:04:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 0.4.9
+  * Add '$f' and '$p' expansions to 'exec' shortcut function
+  * Fix build with meson 0.60
+  * Add :source command
+  * Various fixes and improvements
+  * Updated translations
+- Update tarball url.
+
+-------------------------------------------------------------------
 Wed Aug  4 09:49:35 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 0.4.8

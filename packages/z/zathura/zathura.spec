@@ -1,7 +1,7 @@
 #
 # spec file for package zathura
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           zathura
-Version:        0.4.8
+Version:        0.4.9
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
 URL:            https://pwmt.org/projects/zathura/
-Source:         https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/download/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -34,7 +34,7 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  rsvg-convert
 BuildRequires:  zsh
 BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(girara-gtk3) >= 0.3.6
+BuildRequires:  pkgconfig(girara-gtk3) >= 0.3.7
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(sqlite3)
 Recommends:     %{name}-lang
