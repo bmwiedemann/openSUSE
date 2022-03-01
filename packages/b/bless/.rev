@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>877507</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8d8a23b7aa3454212a79e9b792568a6b</srcmd5>
+    <version>0.6.3</version>
+    <time>1646150600</time>
+    <user>dimstar_suse</user>
+    <comment>fix the build</comment>
+    <requestid>958112</requestid>
+  </revision>
 </revisionlist>

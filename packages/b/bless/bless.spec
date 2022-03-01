@@ -1,7 +1,7 @@
 #
 # spec file for package bless
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         https://github.com/afrantzis/bless/archive/v%{version}/%{name}-%
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  itstool
 BuildRequires:  meson >= 0.46
 BuildRequires:  nunit-devel
 BuildRequires:  pkgconfig
