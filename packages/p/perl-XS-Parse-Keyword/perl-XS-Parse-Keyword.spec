@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XS-Parse-Keyword
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name XS-Parse-Keyword
 Name:           perl-XS-Parse-Keyword
-Version:        0.21
+Version:        0.22
 Release:        0
-Summary:        XS functions to assist in parsing keyword syntax
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        XS functions to assist in parsing keyword syntax
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -29,6 +29,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(ExtUtils::CChecker) >= 0.11
+BuildRequires:  perl(ExtUtils::ParseXS) >= 3.16
 BuildRequires:  perl(Module::Build) >= 0.400400
 BuildRequires:  perl(Test::More) >= 0.88
 %{perl_requires}
