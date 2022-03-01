@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 28 03:08:04 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.2.25.5
+   see /usr/share/doc/packages/perl-Search-Xapian/Changes
+
+  1.2.25.5  Sun Feb 27 23:46:46 UTC 2022
+  	[Changes contributed by Olly Betts]
+  	- The exception fix in 1.2.25.3 unintentionally broke the build with
+  	  xapian-core < 1.4.10.  To fix this we now generate the exception
+  	  handling code at build time, and enable the new exceptions based on
+  	  the version of xapian-core we're building against.
+
+-------------------------------------------------------------------
 Fri Nov 20 11:37:22 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.2.25.4
