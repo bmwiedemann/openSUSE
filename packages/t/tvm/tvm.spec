@@ -88,6 +88,7 @@ BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glfw3)
 Requires:       python-attrs
+Requires:       python-cloudpickle
 Requires:       python-decorator
 Requires:       python-numpy
 Requires:       python-psutil
