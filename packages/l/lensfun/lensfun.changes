@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar  1 07:52:11 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.3.3:
+  + Fixes:
+    - Static lfXX::Create() and lfXX:Destroy() methods of various
+      Lensfun classe are now marked as deprecated.
+      C++ new/delete syntax should be used instead.
+    - CMAKE: glib > 2.26 is now only required when tests are being build.
+    - CMAKE: various fixes (paths, OS compatibility)
+  + New cameras (https://github.com/lensfun/lensfun/releases/tag/v0.3.3)
+  + New lenses (https://github.com/lensfun/lensfun/releases/tag/v0.3.3)
+  + Updated data for lots of lenses
+- Remove lensfun-respect-DESTDIR.patch
+- Remove lensfun-test-database.patch
+- Remove 0060-Various-CMake-patches-from-the-mailing-list.patch
+- Remove lensfun_fix_memory_leak.patch
+
+-------------------------------------------------------------------
+Thu Jan  6 11:26:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require python-rpm-macros for Leap 15.3
+
+-------------------------------------------------------------------
 Thu Apr  2 07:30:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update the license tag. The data files are under CC-BY-SA-3.0.

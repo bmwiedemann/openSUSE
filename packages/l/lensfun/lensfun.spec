@@ -1,7 +1,7 @@
 #
 # spec file for package lensfun
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,22 @@
 
 %define sonum   1
 Name:           lensfun
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        A photographic lens database and a library for accessing it
-License:        LGPL-3.0-only AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://lensfun.github.io/
 Source:         https://github.com/lensfun/lensfun/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # updated lens database, use "osc service dr" to update it.
 Source2:        data-master.tar.xz
-
-# PATCH-FIX-UPSTREAM respect DESTDIR in python call
-Patch0:         lensfun-respect-DESTDIR.patch
-# PATCH-FIX-UPSTREAM use local database when running tests
-Patch1:         lensfun-test-database.patch
-# PATCH-FIX-UPSTREAM 0060-Various-CMake-patches-from-the-mailing-list.patch
-Patch2:         0060-Various-CMake-patches-from-the-mailing-list.patch
-# PATCH-FIX-UPSTREAM lensfun_fix_memory_leak.patch
-Patch3:         lensfun_fix_memory_leak.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-docutils
 BuildRequires:  zlib-devel
@@ -133,11 +125,7 @@ Header and library definition files for developing applications
 that use the %{name} library/database.
 
 %prep
-%setup -q -a 2
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -a 2
 echo 'HTML_TIMESTAMP=NO' >> docs/doxyfile.in.cmake
 # fix python shebangs
 sed -i \
@@ -163,7 +151,7 @@ make %{?_smp_mflags} lensfun doc
 rm -rf %{buildroot}%{_datadir}/lensfun/tests
 # Create udate folder for lensfun data
 mkdir -p %{buildroot}%{_localstatedir}/lib/lensfun-updates
-# Regererate pyc files to not contain %{buildroot}
+# Regererate pyc files to not contain buildroot
 %py3_compile %{buildroot}/%{python3_sitelib}/lensfun/
 
 %fdupes %{buildroot}
