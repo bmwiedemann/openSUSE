@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  2 13:35:32 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add deps on python3-tvm and python3-setuptools for tvmc - boo#1196646
+
+-------------------------------------------------------------------
 Tue Mar  1 15:45:11 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add 'Requires: python-cloudpickle' - boo#1195952#c1

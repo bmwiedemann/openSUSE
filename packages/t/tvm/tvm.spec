@@ -106,7 +106,9 @@ TVM is a deep learning compiler stack for CPUs, GPUs, and specialized accelerato
 %package -n tvmc
 Summary:        TVM command line driver
 Requires:       libtvm = %{version}
+Requires:       python3-tvm = %{version}
 Requires:       python3-scipy
+Requires:       python3-setuptools
 Requires:       python3-typed-ast
 Recommends:     python3-Pillow
 Recommends:     python3-onnx
