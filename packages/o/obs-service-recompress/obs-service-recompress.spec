@@ -18,7 +18,7 @@
 
 %define service recompress
 Name:           obs-service-%{service}
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        An OBS source service: Recompress files
 License:        GPL-2.0-or-later
@@ -34,7 +34,7 @@ Requires:       bzip2
 Requires:       xz
 BuildArch:      noarch
 # Enable zstd on all supported distributions
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150000 || 0%{?fedora_version} > 25 || 0%{?rhel} >= 6
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150000 || 0%{?fedora_version} > 25
 BuildRequires:  zstd
 Requires:       zstd
 %endif

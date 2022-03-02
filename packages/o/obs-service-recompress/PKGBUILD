@@ -1,5 +1,5 @@
 pkgname=obs-service-recompress
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=0
 pkgdesc="An OBS source service: Recompress files"
 arch=('i686' 'x86_64')

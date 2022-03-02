@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  1 14:41:26 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.2:
+  * zstd compression with rsyncable and higher compression
+
+-------------------------------------------------------------------
+Thu Feb 24 01:43:12 UTC 2022 - Luca Boccassi <bluca@debian.org>
+
+- disable zstd on RHEL, the package is not available on OBS
+
+-------------------------------------------------------------------
 Sun Jan 30 23:05:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use filebased requires on gzip so that zstd can supplement it as

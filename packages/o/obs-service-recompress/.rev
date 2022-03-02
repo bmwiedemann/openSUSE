@@ -156,4 +156,15 @@
     <comment></comment>
     <requestid>952916</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>64725b504443411f3dc5484439e30a17</srcmd5>
+    <version>0.5.2</version>
+    <time>1646241625</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.2:
+  * zstd compression with rsyncable and higher compression
+
+- disable zstd on RHEL, the package is not available on OBS</comment>
+    <requestid>958287</requestid>
+  </revision>
 </revisionlist>
