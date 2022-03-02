@@ -5850,7 +5850,6 @@ unsorted:
   - gnome-calendar-lang 
   - gnome-colors-icon-theme 
   - gnome-commander 
-  - gnome-commander-doc 
   - gnome-commander-lang 
   - gnome-common 
   - gnome-connections 
@@ -7299,8 +7298,6 @@ unsorted:
   - itinerary 
   - itinerary-lang 
   - itk 
-  - itpp-devel 
-  - itpp-doc 
   - itstool 
   - iucode-tool 
   - iverilog 
@@ -8888,7 +8885,8 @@ unsorted:
   - libHYPRE_2_20_0-gnu-openmpi2-hpc 
   - libHYPRE_2_20_0-gnu-openmpi3-hpc 
   - libHYPRE_2_20_0-gnu-openmpi4-hpc 
-  - libHepMC3-1 
+  - libHepMC3-3 
+  - libHepMC3search4 
   - libHepMC4 
   - libICE-devel: [i586] # devel package of dvd:libICE6 
   - libICE-devel-32bit: [x86_64] 
@@ -10591,7 +10589,7 @@ unsorted:
   - libeditorconfig0-32bit: [x86_64] 
   - libefa1-32bit: [x86_64] 
   - libei-devel 
-  - libei-suse0 
+  - libei-suse1 
   - libeiskaltdcpp2_4 
   - libelektra-augeas 
   - libelektra-devel 
@@ -11658,7 +11656,6 @@ unsorted:
   - libitm1-gcc10-32bit: [x86_64] 
   - libitm1-gcc7 
   - libitm1-gcc7-32bit: [x86_64] 
-  - libitpp8 
   - libivykis0 
   - libiw-devel 
   - libixion-devel 
@@ -11684,7 +11681,6 @@ unsorted:
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
   - libjcat-devel 
-  - libjemalloc2 
   - libjim0_75 
   - libjitterentropy3 
   - libjitterentropy3-32bit: [x86_64] 
@@ -13096,8 +13092,6 @@ unsorted:
   - libpython2_7-1_0-32bit: [x86_64] 
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit: [x86_64] 
-  - libpython3_6m1_0 
-  - libpython3_6m1_0-32bit: [x86_64] 
   - libpython3_8-1_0-32bit: [x86_64] 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit: [x86_64] 
@@ -14106,6 +14100,7 @@ unsorted:
   - libteam-devel 
   - libteam-tools 
   - libteam5 
+  - libteamdctl0 
   - libtecla_r1 
   - libteec1 
   - libtelepathy-farstream3 
@@ -21413,7 +21408,6 @@ unsorted:
   - python3-GDAL 
   - python3-GitgExt 
   - python3-Hamlib 
-  - python3-HepMC 
   - python3-HyperKitty 
   - python3-Keras: [x86_64] 
   - python3-Keras-Preprocessing: [x86_64] 
@@ -21796,6 +21790,7 @@ unsorted:
   - python310-GridDataFormats 
   - python310-HTTPolice 
   - python310-HeapDict 
+  - python310-HepMC 
   - python310-IMAPClient 
   - python310-IMDbPY 
   - python310-JPype1 
@@ -22738,6 +22733,7 @@ unsorted:
   - python310-django-haystack 
   - python310-django-health-check 
   - python310-django-import-export 
+  - python310-django-invitations 
   - python310-django-ipware 
   - python310-django-jinja 
   - python310-django-js-asset 
@@ -22767,6 +22763,7 @@ unsorted:
   - python310-django-request 
   - python310-django-rest-framework-client 
   - python310-django-rest-framework-social-oauth2 
+  - python310-django-rest-invitations 
   - python310-django-rest-knox 
   - python310-django-reversion 
   - python310-django-rosetta 
@@ -24908,24 +24905,9 @@ unsorted:
   - python310-zstd 
   - python310-zxcvbn 
   - python310-zypp-plugin 
-  - python36 
-  - python36-32bit: [x86_64] 
-  - python36-base 
-  - python36-base-32bit: [x86_64] 
-  - python36-curses 
-  - python36-dbm 
-  - python36-devel 
-  - python36-django-invitations 
   - python36-django-money 
-  - python36-django-rest-invitations 
-  - python36-doc 
-  - python36-doc-devhelp 
   - python36-google-pasta 
-  - python36-idle 
   - python36-requests-gssapi 
-  - python36-testsuite 
-  - python36-tk 
-  - python36-tools 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -24991,6 +24973,7 @@ unsorted:
   - python38-GridDataFormats 
   - python38-HTTPolice 
   - python38-HeapDict 
+  - python38-HepMC 
   - python38-IMAPClient 
   - python38-IMDbPY 
   - python38-JPype1 
@@ -27528,7 +27511,6 @@ unsorted:
   - python38-sphinxcontrib-autoprogram 
   - python38-sphinxcontrib-autoprogram-doc 
   - python38-sphinxcontrib-blockdiag 
-  - python38-sphinxcontrib-copybutton 
   - python38-sphinxcontrib-devhelp 
   - python38-sphinxcontrib-documentedlist 
   - python38-sphinxcontrib-fulltoc 
@@ -27965,6 +27947,7 @@ unsorted:
   - python39-GridDataFormats 
   - python39-HTTPolice 
   - python39-HeapDict 
+  - python39-HepMC 
   - python39-IMAPClient 
   - python39-IMDbPY 
   - python39-JPype1 
@@ -30714,7 +30697,6 @@ unsorted:
   - python39-sphinxcontrib-autoprogram 
   - python39-sphinxcontrib-autoprogram-doc 
   - python39-sphinxcontrib-blockdiag 
-  - python39-sphinxcontrib-copybutton 
   - python39-sphinxcontrib-devhelp 
   - python39-sphinxcontrib-documentedlist 
   - python39-sphinxcontrib-fulltoc 

@@ -2117,6 +2117,7 @@
     <package name="libjbig2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjcat1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libjd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libjemalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjpeg-turbo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libjpeg8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libjq1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
@@ -2630,7 +2631,6 @@
     <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtasn1-6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libteamdctl0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-logger3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
