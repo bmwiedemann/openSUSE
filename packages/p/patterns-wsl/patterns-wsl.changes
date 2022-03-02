@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 22 19:18:54 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 20220222
+
+- Adding lato-fonts as 'Requires' package for wsl_gui.
+
+-------------------------------------------------------------------
 Sat Jan 15 00:44:58 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Removing 'patterns-wsl-rpmlintrc' since it was just a commented entry

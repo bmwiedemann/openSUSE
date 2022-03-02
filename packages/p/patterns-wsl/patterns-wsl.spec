@@ -1,5 +1,5 @@
 #
-# spec file for package patterns
+# spec file for package patterns-wsl
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           patterns-wsl
-Version:        20220112
+Version:        20220222
 Release:        0
 Summary:        Recommended packages for Windows Subsystem for Linux, WSL, WSLg
 License:        MIT
@@ -30,8 +31,9 @@ This is an internal package that is used to create the patterns as part
 of the installation source setup.  Installation of this package does
 not make sense.
 
-# -----
 
+
+# -----
 %package base
 %pattern_development
 Summary:        Base WSL packages
@@ -61,6 +63,7 @@ Provides:       pattern() = wsl_gui
 Provides:       pattern-icon() = wsl
 Provides:       pattern-order() = 3420
 Provides:       pattern-visible()
+Requires:       lato-fonts
 Requires:       xeyes
 Recommends:     adwaita-icon-theme
 Recommends:     gnome-icon-theme
