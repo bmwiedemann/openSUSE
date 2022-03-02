@@ -17,7 +17,7 @@
 
 
 Name:           xscreensaver
-Version:        6.02
+Version:        6.03
 Release:        0
 Summary:        A screen saver and locker for the X Window System
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -44,8 +44,6 @@ Patch42:        xscreensaver-webcollage-dictpath.patch
 Patch43:        xscreensaver-disable-upgrade-nagging-message.patch
 # PATCH-FEATURE-OPENSUSE xscreensaver-bug-reports.patch bnc890595 sbrabec@suse.cz -- Ask reporters to upgrade before reporting bugs.
 Patch45:        xscreensaver-bug-reports.patch
-# PATCH-FIX-UPSTREAM xscreensaver-6.02-marbling-std-c.patch sbrabec@suse.com -- Fix compilation with older gcc and on aarch64.
-Patch46:        xscreensaver-6.02-marbling-std-c.patch
 BuildRequires:  automake
 BuildRequires:  bc
 BuildRequires:  gdmflexiserver
@@ -161,7 +159,6 @@ This packages contains additional graphics demos.
 %patch42
 %patch43 -p1
 %patch45 -p1
-%patch46 -p1
 # KDE, GNOME and MATE have there own screensavers:
 echo 'NotShowIn=KDE;GNOME;MATE;' >> driver/screensaver-properties.desktop.in
 cp -f %{SOURCE4} xscreensaver-desktops-generate
@@ -288,6 +285,7 @@ done
 %{_libexecdir}/xscreensaver/xscreensaver-getimage-file
 %{_libexecdir}/xscreensaver/xscreensaver-getimage-video
 %{_libexecdir}/xscreensaver/xscreensaver-text
+%{_libexecdir}/xscreensaver/mapscroller.pl
 %dir %{_sysconfdir}/xscreensaver/
 %dir %{_datadir}/applications/screensavers/
 # Screensavers using those utilities are in this package.

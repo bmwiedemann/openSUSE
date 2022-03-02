@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 28 22:00:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.03:
+  * New hacks squirtorus, mapscroller
+  * sphereeversion now has corrugation-mode, and can evert the Earth
+  * glplanet is higher resolution, and displays time zones
+  * glslideshow displays relative pathnames again
+  * X11: fixed sonar failing to ping on some Linux systems
+  * X11: Touch-screens work
+  * X11: Hold down Backspace to clear the whole password field
+- drop xscreensaver-6.02-marbling-std-c.patch
+
+-------------------------------------------------------------------
 Sat Jan  1 11:04:15 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Reenable PAM (boo#1194058).
