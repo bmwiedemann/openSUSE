@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Mar 02 05:51:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.6.1:
+  * fix release tag command (#3323)
+  * fetching proper digest for release images (#3319)
+  * update release v1.6.1 manifest (#3318)
+  * changing git command to fetch the tag (#3317)
+  * release v1.6.1-rc2
+  * cherry-pick c4075af3d17c59fe73b50083bb206d85a1cb38ba
+  * Run E2E tests on all supported k8s versions (#3256)
+  * Fix namespace typo (#3298)
+  * feat: support background mode configuration in kyverno-policies chart (#3299)
+  * fix: helm chart broken when use generatecontrollerExtraResources (#3302)
+  * Shallow clone git repositories for kyverno test command
+  * fix: add support for other platforms before executing docker buildx (#3296)
+  * latest pointing to main
+  * added condition
+  * using regex
+  * updated workflows
+  * validate and block policy based on the matched kind cache (#3283) (#3291)
+  * Filter kyverno resources instead of entire kyverno namespace (#3170) (#3171)
+  * update trivy scanning (#3284)
+  * tag v1.6.1-rc1
+  * Fix label mutation while updating the secret (#3273) (#3278)
+  * Modify capabilities for compatibility with Pod Security (#3274) (#3275)
+  * Fix Helm releasing to preserve creation timestamps (#3268)
+  * fix mutate wildcard issue (#3193)
+  * Fix foreach validations precondition issue (#3228)
+  * Fix policy report OwnerReference (#3249) (#3257)
+  * Fix old object validation check (#3248)
+  * Skip updating webhook configs if namespaceSelector is nil (#3237) (#3243)
+  * bump chart versions to v2.3.0
+  * cherry-pick #3209
+  * Fix image parsing for image referenced as digests  (#3196) (#3233)
+  * Fix keyless attest (#3219)
+  * update dependencies (#3221)
+  * release Helm chart v2.2.1
+  * Allow setting validationFailureActionOverrides for policies (#3201)
+
+-------------------------------------------------------------------
 Fri Feb 18 15:07:52 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - link /usr/bin/kyverno to /usr/bin/kubectl-kyverno to make this usable as a kubectl plugin
