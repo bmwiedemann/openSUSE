@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Mar  1 05:26:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.2.6
+  * General:
+    * Fix: Do not make units move unnecessarily when attached to
+      commanders and ordering an attack
+- Changes in 4.2.5
+  * General:
+    * Fix: Do not make units move unnecessarily when attached
+      to commanders and ordering an attack 
+    * Fix: Fix Autorepair not working on units waiting to be
+      built inside a factory when the research is completed 
+    * Fix: Headless spectator performance improvements
+    * Fix: Prevent the drawing of the Command Turret from
+      crashing some systems using flatpak versions
+    * Fix: Various potential crashes 
+  * Graphics:
+    * Add: Allow modding fog color via the palette file and
+      move the fog start/end distance to the config file
+  * Campaign:
+    * Add: Restore a new early finish feature on Beta-end like
+      in old versions for Easy/Normal difficulty
+    * Change: Bump Easy modifier to 1.5 for numeric values and
+      Hard to 0.85 from 0.80
+    * Change: Decrease the base cleanup area on Alpha 12 to
+      remove a lone bunker in the very NorthWest part of the
+      middle base
+    * Change: Give generous experience to all transporter unit
+      loads on Beta/Gamma when starting from the main menu 
+    * Change: Make the southern scavenger base on Alpha 5 also
+      trigger the transporter reinforcements for the player
+    * Change: Upgrade a few campaign maps with better defenses for
+      camBalance, add missing modules on some buildings,
+      and add oil drums to many Beta maps 
+    * Change: Move Whirlwind research later into Beta campaign so
+      Cyclone gets used for a bit longer
+    * Change: The Collective uses Whirlwind tanks like in previous
+      versions again
+    * Change: Clear console when displaying automatic victory
+      reminders
+    * Change: Allow campaign library to handle multiple VTOL spawn
+      systems. Fix array out-of-bounds access for the "alternate"
+      VTOL templates option
+    * Fix: Fix campaign HMG tower structure for Flame map editor
+      and on a few Alpha maps
+    * Fix: Make Beta-end fail if the player finds themselves with
+      no units, factories, and just a empty transporter
+  * Multiplayer:
+    * Add: Add in-game "Mute Player" functionality via right-clicks
+      on chat messages in lobby, and a button in the Intelligence
+      menu in-game
+    * Change: Spectators: Make F9 work and clicking on
+      droids/structures for information purposes.
+    * Fix: Fix the Ultimate Scavenger weapon "Scavenger Mounted MG"
+      not having a short range
+    * Fix: Ultimate Scavengers not building a few vehicles due to
+      components not unlocked for them
+    * Fix: Remove extra propulsion models on scavenger helicopters
+    * Fix: Format the netplay log file better
+  * Modding:
+    * Fix: Modding gamedesc.lev no longer causes a crash anymore
+  * AI:
+    * Change: Small improvements to Cobra AI and allow it to play
+     cyborg only games
+  * MP-Balance:
+    * Change: Balance Mini-Rocket Pod against Light Cannon better
+      by reducing Mini-Rocket Pod cost from 75 to 70
+    * Change: Increase cost of Cannon Fortress to 1000 from 900
+      as it was incredibly cheap compared to other fortresses
+    * Change: Make Bombard unlock Ground Shaker instead of the
+      Howitzer, Remove Ground Shaker requirement for HEAP Howitzer
+      Shells, and make Howitzer Autoloader depend on
+      HE Howitzer Shells Mk3 
+  * Other:
+    * Add: New maxReplaySaved and oldLogsLimit config options
+    * Fix: Prevent truncating time in the Intelligence menu in
+      skirmish/multiplayer
+    * Fix: Discord Rich Presence displaying the wrong host when
+      host is a spectator/autohost
+    * Fix: Add Arabic to the list of available languages
+    * Fix: Check for electronic research rewards already researched
+
+-------------------------------------------------------------------
 Mon Dec 20 20:38:48 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.2.4
@@ -464,8 +547,6 @@ Sun Apr 25 07:44:03 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
       targets and increase splash radii of such weapons
   * Other:
     * Add: Add config option to toggle autosave features
-    * Fix: macOS ARM64 / Apple Silicon builds
-      (SDL2 cross-compiling issue)
     * Fix: Don't crash when closing the game if the music manager
       is open in the main menu
 - Remove redundant files from %{_datadir}/doc/%{name}
