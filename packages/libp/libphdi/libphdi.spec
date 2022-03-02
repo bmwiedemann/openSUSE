@@ -18,7 +18,7 @@
 
 Name:           libphdi
 %define lname	libphdi1
-Version:        20220215
+Version:        20220301
 Release:        0
 Summary:        Library and tools to access the Parallels Hard Disk images
 License:        LGPL-3.0-or-later
