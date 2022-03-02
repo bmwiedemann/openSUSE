@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Version:        4.1.0
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
+URL:            https://github.com/python-social-auth/social-core
 Source:         https://github.com/python-social-auth/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module PyJWT >= 2.0.0}
 BuildRequires:  %{python_module coverage >= 3.6}
