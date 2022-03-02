@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 22 04:39:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.2
+  * New ruleset optimization -o/--optimize option.
+  * Support for IP and TCP options and SCTP chunks in sets.
+  * Support for tcp fastopen, md5sig and mptcp options.
+  * MP-TCP subtype matching support.
+  * JSON support for flowtables.
+- Add 0001-build-add-missing-AM_CPPFLAGS-to-examples.patch
+
+-------------------------------------------------------------------
+Thu Nov 18 22:15:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.1
+  * Reduce memory footprint when loading large sets/maps.
+  * Speed up reload of large sets/maps.
+  * Speed up listing of specific tables in large ruleset, e.g.
+    large ruleset with ~100k lines.
+  * Speed up --terse option when listing a ruleset large sets/maps.
+  * Print raw payload expression in hexadecimal, e.g.
+    "@ll,0,8 & 0x80 == 0x80"
+  * egress hook support (available since 5.16-rc1).
+  * Allow matching and update bytes at inner header/payload
+    offset (available since 5.16-rc1).
+
+-------------------------------------------------------------------
 Thu Aug 19 18:06:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.0

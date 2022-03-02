@@ -1,7 +1,7 @@
 #
 # spec file for package nftables
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nftables
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -25,19 +25,21 @@ Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/nftables/
 
 #Git-Clone:	git://git.netfilter.org/nftables
-Source:         http://ftp.netfilter.org/pub/nftables/nftables-%version.tar.bz2
-Source2:        http://ftp.netfilter.org/pub/nftables/nftables-%version.tar.bz2.sig
+Source:         http://ftp.netfilter.org/pub/%name/%name-%version.tar.bz2
+Source2:        http://ftp.netfilter.org/pub/%name/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
+Patch1:         0001-build-add-missing-AM_CPPFLAGS-to-examples.patch
 BuildRequires:  asciidoc
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gmp-devel
+BuildRequires:  libtool
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  python3-base
-BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
-BuildRequires:  pkgconfig(libnftnl) >= 1.2.0
+BuildRequires:  pkgconfig(libnftnl) >= 1.2.1
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
 
 %description
@@ -81,6 +83,7 @@ A Python module for nftables.
 %autosetup -p1
 
 %build
+autoreconf -fi
 mkdir bin
 ln -s "%_bindir/docbook-to-man" bin/docbook2x-man
 export PATH="$PATH:$PWD/bin"
