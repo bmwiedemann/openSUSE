@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar  1 08:18:11 CET 2022 - tiwai@suse.de
+
+- Fix the regression for audiofile, reverting the problematic change
+  0001-Revert-libFLAC-stream_decoder.c-Use-current-position.patch
+
+-------------------------------------------------------------------
+Tue Feb 22 07:20:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 1.3.4:
+  + General:
+    * Fix 12 decoder bugs found by oss-fuzz, including CVE-2020-0499 
+    * Fix encoder bug CVE-2021-0561
+    * Integrate oss-fuzzers 
+    * Seeking fixes 
+    * Various fixes and improvements
+  + flac:
+    * Various fixes and improvements
+
+-------------------------------------------------------------------
 Sun Sep  1 06:41:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.3

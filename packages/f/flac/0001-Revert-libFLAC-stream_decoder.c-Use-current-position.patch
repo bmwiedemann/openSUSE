@@ -1,0 +1,48 @@
+From 2834dd4eb51a1847a424a3d7ea799b38a62487e9 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 1 Mar 2022 08:16:45 +0100
+Subject: [PATCH] Revert "libFLAC/stream_decoder.c: Use current position as
+ bound when seeking"
+
+This reverts commit 159cd6c41a6ec17b36d74043c45a3aa64de90d5e.
+---
+ src/libFLAC/stream_decoder.c | 17 +++--------------
+ 1 file changed, 3 insertions(+), 14 deletions(-)
+
+diff --git a/src/libFLAC/stream_decoder.c b/src/libFLAC/stream_decoder.c
+index 4380b486fd5f..0e7264809dbf 100644
+--- a/src/libFLAC/stream_decoder.c
++++ b/src/libFLAC/stream_decoder.c
+@@ -3067,26 +3067,15 @@ FLAC__bool seek_to_absolute_sample_(FLAC__StreamDecoder *decoder, FLAC__uint64 s
+ 
+ 	/*
+ 	 * First, we set an upper and lower bound on where in the
+-	 * stream we will search.  For now we take the current position
+-	 * as one bound and, depending on where the target position lies,
+-	 * the beginning of the first frame or the end of the stream as
+-	 * the other bound.
++	 * stream we will search.  For now we assume the worst case
++	 * scenario, which is our best guess at the beginning of
++	 * the first frame and end of the stream.
+ 	 */
+ 	lower_bound = first_frame_offset;
+ 	lower_bound_sample = 0;
+ 	upper_bound = stream_length;
+ 	upper_bound_sample = total_samples > 0 ? total_samples : target_sample /*estimate it*/;
+ 
+-	if(decoder->protected_->state == FLAC__STREAM_DECODER_READ_FRAME) {
+-		if(target_sample < decoder->private_->samples_decoded) {
+-			if(FLAC__stream_decoder_get_decode_position(decoder, &upper_bound))
+-				upper_bound_sample = decoder->private_->samples_decoded;
+-		} else {
+-			if(FLAC__stream_decoder_get_decode_position(decoder, &lower_bound))
+-				lower_bound_sample = decoder->private_->samples_decoded;
+-		}
+-	}
+-
+ 	/*
+ 	 * Now we refine the bounds if we have a seektable with
+ 	 * suitable points.  Note that according to the spec they
+-- 
+2.31.1
+

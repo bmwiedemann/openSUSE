@@ -1,7 +1,7 @@
 #
 # spec file for package flac
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flac
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Free Lossless Audio Codec
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.2-only
@@ -29,6 +29,7 @@ URL:            https://xiph.org/flac/
 Source:         https://downloads.xiph.org/releases/flac/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Patch0:         flac-cflags.patch
+Patch1:         0001-Revert-libFLAC-stream_decoder.c-Use-current-position.patch
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake >= 1.11
 BuildRequires:  gcc-c++
