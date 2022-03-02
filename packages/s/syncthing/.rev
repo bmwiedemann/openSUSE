@@ -1013,4 +1013,28 @@
     <comment></comment>
     <requestid>946545</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>3040ebb5fdcef0da841c390939d43074</srcmd5>
+    <version>1.19.1</version>
+    <time>1646241752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.19.1
+  * Bugfixes (1.19.1):
+    #7850: junctionsAsDirs requires folder pause and resume to trigger
+    #7924: notify: File mode change events not emitted on MacOS/FSEvents watcher
+    #8083: Device ID should be read-only and &quot;nearby devices&quot; should be hidden when adding a new pending device
+    #8143: Behavior of discovery server doesn't match documentation
+    #8145: Folder ID not editable in add folder dialog
+  * Enhancements (1.19.1):
+    #7942: Improve error message about folder marker outside of folder
+    #8130: CLI: add command to print pending folders offered by specific device
+ 
+  * Bugfixes (1.19.0):
+    #8103: API: /rest/system/connections has misleading &quot;total&quot; entries
+  * Enhancements (1.19.0):
+    #7428: Add ignore patterns to folder defaults
+    #8090: Allow specifying ports in --generate
+</comment>
+    <requestid>958463</requestid>
+  </revision>
 </revisionlist>
