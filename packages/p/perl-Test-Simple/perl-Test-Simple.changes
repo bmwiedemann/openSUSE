@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 26 03:10:44 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302189
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302189  2022-02-24 21:23:05-08:00 America/Los_Angeles
+
+      - Fix #890, #891
+
+-------------------------------------------------------------------
 Thu Sep 30 03:11:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302188

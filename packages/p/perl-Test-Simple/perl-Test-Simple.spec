@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Simple
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Simple
 Name:           perl-Test-Simple
-Version:        1.302188
+Version:        1.302189
 Release:        0
-Summary:        Basic utilities for writing tests
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Basic utilities for writing tests
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
