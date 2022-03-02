@@ -1527,4 +1527,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
   * improve logic for conffile mode handling</comment>
     <requestid>935127</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>d8ee88ecba60c76b886a2c4a657cdf93</srcmd5>
+    <version>0.176.0</version>
+    <time>1646241631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958420</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">0.175.0</param>
-    <param name="revision">0.175.0</param>
-    <param name="url">git://github.com/openSUSE/osc.git</param>
+    <param name="version">0.176.0</param>
+    <param name="revision">0.176.0</param>
+    <param name="url">https://github.com/openSUSE/osc.git</param>
     <param name="scm">git</param>
   </service>
   <service name="recompress" mode="disabled">

@@ -1,7 +1,7 @@
 #
 # spec file for package osc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} >= 29 || 0%{?centos_version} >= 800 || 0%{?mageia} >= 8
+%if 0%{?suse_version} >= 1500 || 0%{?fedora} >= 29 || 0%{?rhel} >= 7 || 0%{?mageia} >= 8
 %bcond_without python3
 %else
 %bcond_with    python3
@@ -27,7 +27,7 @@
 %define use_python python
 %endif
 
-%define version_unconverted 0.175.0
+%define version_unconverted 0.176.0
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
 %define macros_file macros.osc
 %if ! %{defined _rpmmacrodir}
@@ -35,7 +35,7 @@
 %endif
 
 Name:           osc
-Version:        0.175.0
+Version:        0.176.0
 Release:        0
 Summary:        Open Build Service Commander
 License:        GPL-2.0-or-later
@@ -53,7 +53,7 @@ BuildRequires:  diffstat
 BuildRequires:  python-rpm
 Requires:       python-rpm
 %else
-%if 0%{?suse_version} >= 1500 || 0%{?fedora_version} >= 32 || 0%{?centos_version} >= 800
+%if 0%{?suse_version} >= 1500 || 0%{?fedora} >= 32 || 0%{?rhel} >= 7
 BuildRequires:  %{use_python}-rpm
 Requires:       %{use_python}-rpm
 %else
@@ -95,18 +95,14 @@ Conflicts:      build < 20200106
 %endif
 %endif
 # needed for storing credentials in kwallet/gnome-keyring
-%if 0%{?suse_version} > 1000 || 0%{?mandriva_version} || 0%{?mdkversion}
+%if 0%{?suse_version} > 1000 || 0%{?mandriva_version} || 0%{?mdkversion} || 0%{?fedora} >= 29 || 0%{?rhel} >= 8
 %if %{with python3}
 Recommends:     python3-keyring
 %else
 Recommends:     python-keyring
 %endif
 %endif
-%if 0%{?rhel_version} && 0%{?rhel_version} < 600
-BuildRequires:  python-elementtree
-Requires:       python-elementtree
-%endif
-%if 0%{?centos_version} && 0%{?centos_version} < 600
+%if 0%{?rhel} && 0%{?rhel} < 6
 BuildRequires:  python-elementtree
 Requires:       python-elementtree
 %endif
@@ -121,7 +117,7 @@ BuildRequires:  python-m2crypto > 0.19
 Requires:       python-m2crypto > 0.19
 %endif
 %else
-%if 0%{?fedora_version} >= 29  || 0%{?centos_version} >= 800
+%if 0%{?fedora} >= 29  || 0%{?rhel} >= 7
 BuildRequires:  python3-m2crypto
 Requires:       python3-m2crypto
 %else
@@ -162,7 +158,7 @@ echo >> %{macros_file}
 
 %install
 %{use_python} setup.py install --prefix=%{_prefix} --root=%{buildroot}
-perl -p -i -e 's{#!.*python}{#!%{_bindir}/%{use_python}}' osc-wrapper.py
+sed -i -E 's|#!.*python|#!%{_bindir}/%{use_python}|' osc-wrapper.py
 ln -s osc-wrapper.py %{buildroot}/%{_bindir}/osc
 mkdir -p %{buildroot}%{osc_plugin_dir}
 mkdir -p %{buildroot}%{_localstatedir}/lib/osc-plugins
