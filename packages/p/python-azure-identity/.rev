@@ -118,4 +118,15 @@
     CHANGELOG.md file provided with this package (forwarded request 930533 from glaubitz)</comment>
     <requestid>930542</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf7d083217dbb7ea2c639481443c4a81</srcmd5>
+    <version>1.8.0</version>
+    <time>1646241753</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 958419 from glaubitz)</comment>
+    <requestid>958475</requestid>
+  </revision>
 </revisionlist>
