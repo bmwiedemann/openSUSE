@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 22 12:21:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Dropped support 3.5
+  * Added support for Python 3.10
+
+-------------------------------------------------------------------
 Mon Jul 19 06:53:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:
-  * drop python 2 support 
+  * drop python 2 support
 
 -------------------------------------------------------------------
 Mon Feb  1 18:17:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
