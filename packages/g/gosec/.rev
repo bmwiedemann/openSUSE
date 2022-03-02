@@ -7,4 +7,12 @@
     <comment>Add gosec package to Tumbleweed</comment>
     <requestid>950920</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfef703d576a88420481b26e897de95c</srcmd5>
+    <version>2.10.0</version>
+    <time>1646241756</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.10.0 (forwarded request 958397 from ph03nix)</comment>
+    <requestid>958490</requestid>
+  </revision>
 </revisionlist>

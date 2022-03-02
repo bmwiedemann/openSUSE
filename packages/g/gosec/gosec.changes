@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar  2 07:35:25 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+* Update to version 2.10.0:
+
+- Extend the release action to sign the docker image and binary files with cosign (#781)
+- feat: add concurrency option to parallelize package loading (#778)
+- chore(deps): update all dependencies
+- Process the code snippet before adding it to the SARIF report
+- Updated sponsor link in README.md
+- chore(deps): update golang.org/x/crypto commit hash to 30dcbda
+- chore(deps): update all dependencies
+- Use the CWE name as a name in the SARIF report
+- chore(deps): update all dependencies (#771)
+- Resolve the TLS min version when is declarted in the same package but in a different file
+- Add a test for tls min version defined in a different file
+- chore(deps): update all dependencies (#765)
+
+-------------------------------------------------------------------
 Fri Jan 21 07:49:30 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 * Update to version 2.9.6:
