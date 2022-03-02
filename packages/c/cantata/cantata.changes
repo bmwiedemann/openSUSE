@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Mar  2 20:19:09 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.5.0:
+  * Update translations.
+  * Limit number of album tracks shown in context view to 500, thanks to
+    ccoors.
+  * Fix Community Radio Browser search.
+  * Remove dirble from radio section, as its no longer active.
+  * Better handling of CUE tracks when MPD is set to list as directory.
+  * Disable CUE parsing in cantata by default, as MPD handles this better now.
+  * Remember, and restore, main window position.
+  * Disable categorized view, as its been reported to crash (#1530)
+  * Remove stream providers, as many broken.
+  * Fix decoding URLs when playing local files via in-built HTTP server.
+  * Remove option to select cover image providers, always use all.
+  * Remove Google and Spotify image search, not working.
+  * Allow smaller images in itemviews.
+  * Fix newlines showing as HTML tags in contextview.
+  * Fix updating now-plying metadata for radio streams that transmit track
+    numbers.
+  * When stopping Cantata controlled MPD instance, wait up to 2 seconds for
+    MPD to gracefully terminate (so config can be saved) before killing
+    process.
+  * Add support for MPD's "Partitions" - implemented by dphoyes. Requires MPD
+    0.22 or above.
+  * Allow queue to be sorted by path.
+  * Fix some deprecation warnings - thanks to John Regan.
+  * Fix crash when trying to copy songs to MTP device but libMTP has failed to
+    get storage list.
+  * Don't save queue if string entered in dave dialog but cancel button
+    pressed.
+  * Handle case where IceCast list is not GZipped.
+  * Remove SoundCloud support, no longer works due to API changes.
+  * Correctly update play queue time when re-order tracks - thanks to Philip
+    Sequeira.
+  * When searching for lyrics, if fail and artist starts with "The " then try
+    again without "The "
+  * Add "Refresh" action to hover actions for podcasts.
+  * Remove superfluous blank space from the top of the cover tooltip.
+  * Fix looking for cover-art with MPD's new cue track file listing.
+  * Add Grouping tag support to playlists and play queue.
+  * Use QCollator to compare strings.
+  * If using table-style play queue, then only sort one column at a time.
+  * Stop user MPD instance from GUI thread when terminating, to ensure state
+    can be saved.
+  * Don't write empty genres to tags.
+- Remove fix-translations-with-qt5.diff
+
+-------------------------------------------------------------------
 Sun Sep 20 12:40:25 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 2.4.2:

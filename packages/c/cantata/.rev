@@ -230,4 +230,41 @@
     <comment>update to 2.4.2</comment>
     <requestid>835685</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>26e0a74d0999f423430e9de31bdc4988</srcmd5>
+    <version>2.5.0</version>
+    <time>1646255018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0:
+  * Update translations.
+  * Limit number of album tracks shown in context view to 500, thanks to
+    ccoors.
+  * Fix Community Radio Browser search.
+  * Remove dirble from radio section, as its no longer active.
+  * Better handling of CUE tracks when MPD is set to list as directory.
+  * Disable CUE parsing in cantata by default, as MPD handles this better now.
+  * Remember, and restore, main window position.
+  * Disable categorized view, as its been reported to crash (#1530)
+  * Remove stream providers, as many broken.
+  * Fix decoding URLs when playing local files via in-built HTTP server.
+  * Remove option to select cover image providers, always use all.
+  * Remove Google and Spotify image search, not working.
+  * Allow smaller images in itemviews.
+  * Fix newlines showing as HTML tags in contextview.
+  * Fix updating now-plying metadata for radio streams that transmit track
+    numbers.
+  * When stopping Cantata controlled MPD instance, wait up to 2 seconds for
+    MPD to gracefully terminate (so config can be saved) before killing
+    process.
+  * Add support for MPD's &quot;Partitions&quot; - implemented by dphoyes. Requires MPD
+    0.22 or above.
+  * Allow queue to be sorted by path.
+  * Fix some deprecation warnings - thanks to John Regan.
+  * Fix crash when trying to copy songs to MTP device but libMTP has failed to
+    get storage list.
+  * Don't save queue if string entered in dave dialog but cancel button
+    pressed.
+  * Handle case where IceCast list is not GZipped.</comment>
+    <requestid>958526</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package cantata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           cantata
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/CDrummond/cantata/
 Source0:        https://github.com/CDrummond/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE  fix-translations-with-qt5.diff  -- Make sure that it finds the right lrelease and lconvert binaries with Qt5 (cantata only find the 64bits lrelease).
-Patch0:         fix-translations-with-qt5.diff
+
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig
@@ -57,8 +56,8 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       media-player-info
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 Recommends:     %{name}-lang = %{version}
 Recommends:     mpd
 %lang_package
@@ -93,7 +92,7 @@ interface) is now very different to that of QtMPC. For more detailed
 information, please refer to the main README.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %cmake -DENABLE_REMOTE_DEVICES=OFF \
