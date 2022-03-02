@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Feb 24 18:07:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.36.0:
+  + The handling of Layer 3 configurations has been substantially
+    reworked. While this is mostly internal change, it results in
+    more robust behavior when addressing information from multiple
+    sources (DHCP, manually configured, VPN) need to be applied
+    simultaneously. Overall performance and memory use have also
+    slightly improved.
+  + Manually configured addresses can no longer expire even if the
+    same addresses are also obtained dynamically.
+  + Code for systemd-based DHCP and DHCPv6 clients has been updated
+    from upstream.
+  + NTP servers obtained via DHCPv6 are now exposed on the DBus
+    API, visible in nmcli and available for use by dispatcher
+    scripts.
+  + 5G NR (New Radio) modems are now supported.
+  + The "rd.znet_ifnames" kernel command line option is now honored
+    on network bootups on an IBM s390 platform.
+  + Wi-Fi P2P support does now work with the IWD backend, in
+    addition to wpa_supplicant backend.
+  + Support for special route types have been added: "prohibit",
+    "blackhole" and "unreachable".
+  + Routes managed by routing daemons are now ignored. This is done
+    to address a performance bottleneck on specialized routers.
+  + Handling of IP addressing and routing information is now
+    slightly more efficient and uses less memory. This is apparent
+    on systems with large amount of IP configuration information.
+  + It is now possible to start NetworkManager without root user
+    privileges. This is experimental doesn't necessarily result in
+    a working daemon. NetworkManager service already drops many of
+    capabilities available to the root user.
+  + WPA3 Wi-FI network security have been improved by enabling new
+    H2E (hash to element) method for generating SAE password
+    element.
+  + It is now possible to select the default Wi-Fi backend
+    (wpa_supplicant or IWD) at build-time.
+  + Replies from broken DHCP servers that send duplicate address or
+    mask options are now handled gracefully.
+  + Bridge support has gained the possibility of turning off MAC
+    ageing.
+  + "configure-and-quit" mode and nm-iface-helper have been
+    removed.
+  + A number of bugs that could cause NetworkManager to crash in
+    rare conditions have been fixed.
+- Drop pkgconfig(libteam) BuildRequires and stop passing
+  teamdctl=true to meson: No longer build teamdctl support.
+- Drop patches fixed upstream:
+  + 4685651e7671e064b911a3a05f096908e5ef0580.patch
+  + 471e987add98b36520ece72ee493176fc7bc863c.patch
+  + 6329f1db5ac75ee3b7d2f7ce062e951a598625fe.patch
+  + 634e023e72d4729788a022ea1fae665af28d1b0f.patch
+  + aadf0fb64f491f94b2771058621dc140c562b62b.patch
+- Drop nm-dhcp-use-valid-lease-on-timeout.patch: Patch was rejected
+  upstream.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Mon Feb 21 08:47:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bug fix patches:

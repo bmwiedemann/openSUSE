@@ -16,10 +16,6 @@
 #
 
 
-# TODO for the 1.36 release:
-# Drop support for TEAMDCTL as it should have been deprecated by then.
-# And don't forget about its BuildRequire and meson option.
-
 # Toggle this whenever enabling/disabling the nm-probe-radius-server-cert.patch patch (as we export additional symbols)
 # Like this, g-c-c and NM-applet, which consume this symbol, will block updating NM if we have to disable the patch until
 # they are touched too
@@ -61,13 +57,13 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.34.0
+Version:        1.36.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.36/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -86,18 +82,6 @@ Patch5:         NetworkManager-1.10.6-netconfig.patch
 Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 # PATCH-FIX-OPENSUSE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
-# PATCH-FIX-UPSTREAM nm-dhcp-use-valid-lease-on-timeout.patch glfd#NetworkManager/NetworkManager!811, bsc#1183202 sckang@suse.com Support valid lease file on dhcp timeout
-Patch8:         nm-dhcp-use-valid-lease-on-timeout.patch
-# PATCH-FIX-UPSTREAM 4685651e7671e064b911a3a05f096908e5ef0580.patch -- glib-aux: fix nm_ref_string_equal_str() Fix comparison with a NULL string
-Patch9:         https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/4685651e7671e064b911a3a05f096908e5ef0580.patch
-# PATCH-FIX-UPSTREAM 6329f1db5ac75ee3b7d2f7ce062e951a598625fe.patch -- libnm/tests: fix maybe-uninitialized warning in "test-setting"
-Patch10:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/6329f1db5ac75ee3b7d2f7ce062e951a598625fe.patch
-# PATCH-FIX-UPSTREAM aadf0fb64f491f94b2771058621dc140c562b62b.patch -- libnm/tests: fix maybe-uninitialized warning in "test-libnmc-setting"
-Patch11:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/aadf0fb64f491f94b2771058621dc140c562b62b.patch
-# PATCH-FIX-UPSTREAM 471e987add98b36520ece72ee493176fc7bc863c.patch -- device: initialize nm_auto variable in _ethtool_features_reset()
-Patch12:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/471e987add98b36520ece72ee493176fc7bc863c.patch
-# PATCH-FIX-UPSTREAM 634e023e72d4729788a022ea1fae665af28d1b0f.patch -- glib-aux: workaround maybe-uninitialized warning with LTO in nm_uuid_generate_from_string_str()
-Patch13:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commit/634e023e72d4729788a022ea1fae665af28d1b0f.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -129,9 +113,6 @@ BuildRequires:  pkgconfig(libnl-route-3.0)
 BuildRequires:  pkgconfig(libpsl) >= 0.1
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd) >= 209
-## TODO: teamdctl says: Retire me when I'm ready please!
-BuildRequires:  pkgconfig(libteam)
-##
 BuildRequires:  pkgconfig(libudev) >= 175
 BuildRequires:  pkgconfig(mm-glib) >= 0.7.991
 BuildRequires:  pkgconfig(mobile-broadband-provider-info)
@@ -250,12 +231,6 @@ This package is needed to configure PPPoE interfaces
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:
@@ -266,7 +241,6 @@ sed -i -r "/install_dir: join_paths/s/(nm_datadir, 'doc)\
 %define _lto_cflags %{nil}
 export CFLAGS="%{optflags} -fno-strict-aliasing -fcommon"
 export PYTHON=%{_bindir}/python3
-# TODO: teamdctl says: Retire me when I'm ready please!
 %meson \
     -Dsystemdsystemunitdir=%{_unitdir} \
     -Dudev_dir=%{_udevdir} \
@@ -290,7 +264,6 @@ export PYTHON=%{_bindir}/python3
     -Dmore_asserts=0 \
     -Dmore_logging=false \
     -Dqt=false \
-    -Dteamdctl=true \
     -Db_lto=true \
     %{nil}
 %meson_build
@@ -369,7 +342,6 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_libdir}/NetworkManager/%{version}
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-bluetooth.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-ovs.so
-%{_libdir}/NetworkManager/%{version}/libnm-device-plugin-team.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wifi.so
 %{_libdir}/NetworkManager/%{version}/libnm-device-plugin-wwan.so
 %{_libdir}/NetworkManager/%{version}/libnm-wwan.so
@@ -377,7 +349,6 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_libexecdir}/nm-daemon-helper
 %{_libexecdir}/nm-dhcp-helper
 %{_libexecdir}/nm-dispatcher
-%{_libexecdir}/nm-iface-helper
 %{_libexecdir}/nm-initrd-generator
 %{_libexecdir}/nm-priv-helper
 %dir %{_sysconfdir}/NetworkManager
@@ -410,7 +381,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_prefix}/lib/firewalld/zones/nm-shared.xml
 %{_dbusconfdir}/nm-dispatcher.conf
 %{_dbusconfdir}/org.freedesktop.NetworkManager.conf
-%{_datadir}/dbus-1/system-services/org.freedesktop.nm-priv-helper.service
+%{_datadir}/dbus-1/system-services/org.freedesktop.nm_priv_helper.service
 %{_dbusconfdir}/nm-priv-helper.conf
 %{_defaultdocdir}/NetworkManager/server.conf
 

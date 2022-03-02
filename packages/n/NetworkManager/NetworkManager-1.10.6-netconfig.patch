@@ -1,9 +1,9 @@
-Index: NetworkManager-1.32.0/src/core/dns/nm-dns-manager.c
+Index: NetworkManager-1.36.0/src/core/dns/nm-dns-manager.c
 ===================================================================
---- NetworkManager-1.32.0.orig/src/core/dns/nm-dns-manager.c
-+++ NetworkManager-1.32.0/src/core/dns/nm-dns-manager.c
-@@ -614,6 +614,14 @@ dispatch_netconfig(NMDnsManager *     se
-     gssize               l;
+--- NetworkManager-1.36.0.orig/src/core/dns/nm-dns-manager.c
++++ NetworkManager-1.36.0/src/core/dns/nm-dns-manager.c
+@@ -609,6 +609,14 @@ dispatch_netconfig(NMDnsManager      *se
+     gssize                        l;
      nm_auto_free_gstring GString *str = NULL;
  
 +    if (!g_file_test (NETCONFIG_PATH, G_FILE_TEST_IS_EXECUTABLE)) {
