@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 24 15:50:53 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add upstream patches:
+  * drop_privileges_of_agent_process_after_startup.patch
+  * config_fix_config_search_order.patch
+  * services_add_keylime_agent_secure_mount_service.patch
+- Configure the agent to run as non-root
+
+-------------------------------------------------------------------
 Thu Feb 24 14:49:33 UTC 2022 - aplanas@suse.com
 
 - Drop patches beacuse merged upstream:

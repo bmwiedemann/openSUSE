@@ -32,14 +32,22 @@ License:        Apache-2.0 AND MIT
 URL:            https://github.com/keylime/keylime
 Source0:        %{name}-v%{version}.tar.xz
 Source1:        keylime.xml
+Source2:        %{name}-user.conf
 # PATCH-FIX-OPENSUSE keylime.conf.diff
 Patch1:         keylime.conf.diff
 # PATCH-FIX-OPENSUSE config-libefivars.diff
 Patch2:         config-libefivars.diff
+# PATCH-FIX-UPSTREAM drop_privileges_of_agent_process_after_startup.patch (gh#keylime/keylime!900)
+Patch3:         drop_privileges_of_agent_process_after_startup.patch
+# PATCH-FIX-UPSTREAM config_fix_config_search_order.patch (gh#keylime/keylime!902)
+Patch4:         config_fix_config_search_order.patch
+# PATCH-FIX-UPSTREAM services_add_keylime_agent_secure_mount_service.patch (gh#keylime/keylime!903)
+Patch5:         services_add_keylime_agent_secure_mount_service.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  python-rpm-macros
+BuildRequires:  sysuser-tools
 Requires:       libtss2-tcti-device0
 Requires:       libtss2-tcti-tabrmd0
 Requires:       procps
@@ -128,6 +136,7 @@ sed -i "s/ca_implementation = cfssl/ca_implementation = openssl/g" keylime.conf
 
 %build
 %python_build
+%sysusers_generate_pre %{SOURCE2} %{name} %{name}-user.conf
 
 %install
 export VERSION=%{version}
@@ -153,6 +162,7 @@ install -Dpm 600 %{srcname}.conf %{buildroot}%{_prefix}%{_sysconfdir}/%{srcname}
 install -Dpm 600 %{srcname}.conf %{buildroot}%{_sysconfdir}/%{srcname}.conf
 %endif
 install -Dpm 644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
+install -Dpm 644 ./services/%{srcname}_agent_secure.mount %{buildroot}%{_unitdir}/var-lib-keylime-secure.mount
 install -Dpm 644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
 install -Dpm 644 ./services/%{srcname}_registrar.service %{buildroot}%{_unitdir}/%{srcname}_registrar.service
 
@@ -161,6 +171,9 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/keyli
 mkdir -p %{buildroot}/%{_sharedstatedir}/%{srcname}
 cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %fdupes %{buildroot}%{_sharedstatedir}/%{srcname}/
+
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
 
 # %%check
 # %%pyunittest -v
@@ -190,6 +203,8 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %post -n %{srcname}-firewalld
 %firewalld_reload
 
+%pre -n %{srcname}-tpm_cert_store -f %{srcname}.pre
+
 %pre -n %{srcname}-verifier
 %service_add_pre %{srcname}_verifier.service
 
@@ -216,15 +231,19 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 
 %pre -n %{srcname}-agent
 %service_add_pre %{srcname}_agent.service
+%service_add_pre var-lib-keylime-secure.mount
 
 %post -n %{srcname}-agent
 %service_add_post %{srcname}_agent.service
+%service_add_post var-lib-keylime-secure.mount
 
 %preun -n %{srcname}-agent
 %service_del_preun %{srcname}_agent.service
+%service_del_preun var-lib-keylime-secure.mount
 
 %postun -n %{srcname}-agent
 %service_del_postun %{srcname}_agent.service
+%service_del_postun var-lib-keylime-secure.mount
 
 %files %{python_files}
 %doc README.md
@@ -253,9 +272,10 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %{_prefix}/lib/firewalld/services/keylime.xml
 
 %files -n %{srcname}-tpm_cert_store
-%dir %attr(0700,root,root) %{_sharedstatedir}/keylime
+%dir %attr(0700,keylime,tss) %{_sharedstatedir}/keylime
 %dir %{_sharedstatedir}/keylime/tpm_cert_store
 %{_sharedstatedir}/keylime/tpm_cert_store/*
+%{_sysusersdir}/%{srcname}-user.conf
 
 %files -n %{srcname}-verifier
 %{_unitdir}/%{srcname}_verifier.service
@@ -265,5 +285,6 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 
 %files -n %{srcname}-agent
 %{_unitdir}/%{srcname}_agent.service
+%{_unitdir}/var-lib-keylime-secure.mount
 
 %changelog
