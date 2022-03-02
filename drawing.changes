@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  2 16:28:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit itstool BuildRequires, as meson.build checks for it:
+  do not expect anything else to pull it in.
+
+-------------------------------------------------------------------
 Mon May  3 10:17:01 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - use BuildRequires: gobject-introspection instead of hardrequiring
