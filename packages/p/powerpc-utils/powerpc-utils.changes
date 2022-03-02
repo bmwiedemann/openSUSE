@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 25 19:10:27 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix lsslot showing "Unknown slot type" for recent PCIe slot types (bsc#1196411 ltc#196505).
+  - lsslot-Add-new-DRC-type-description-strings.patch
+
+-------------------------------------------------------------------
+Fri Feb 25 19:08:29 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix setting HNV primary slave with NM (bsc#1195404 ltc#196259).
+   - 0007-Fix-NM-HNV-setting-primary-slave.patch
+
+-------------------------------------------------------------------
 Thu Feb 17 11:35:41 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - lparstat: report LPAR name from lparcfg (bsc#1187716 ltc#193451).

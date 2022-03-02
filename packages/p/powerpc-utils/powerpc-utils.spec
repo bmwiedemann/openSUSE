@@ -44,6 +44,8 @@ Patch18:        0004-Support-wicked-HNV-using-new-wicked-functions-for-bo.patch
 Patch19:        0005-hcnmgr-maintain-hcnid-state-for-later-cleanup.patch
 Patch20:        0006-Add-hcn-init.service.suse.patch
 Patch21:        lparstat-report-LPAR-name-from-lparcfg.patch
+Patch22:        0007-Fix-NM-HNV-setting-primary-slave.patch
+Patch23:        lsslot-Add-new-DRC-type-description-strings.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
