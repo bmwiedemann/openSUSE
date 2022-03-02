@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  2 12:41:12 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Remove unneeded build dependency.
+- Make dependencies of spack and spack-recipes symetrical.
+
+-------------------------------------------------------------------
 Thu Feb 10 13:58:04 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Add openssl-devel, xz-devel and libzip-devel as recommends

@@ -228,4 +228,13 @@
   bsc#1195789. (forwarded request 953232 from eeich)</comment>
     <requestid>953233</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>c5ccde93ca17f169914c69f4f2861e42</srcmd5>
+    <version>0.17.1</version>
+    <time>1646241758</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded build dependency.
+- Make dependencies of spack and spack-recipes symetrical. (forwarded request 958481 from eeich)</comment>
+    <requestid>958493</requestid>
+  </revision>
 </revisionlist>
