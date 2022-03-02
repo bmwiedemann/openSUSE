@@ -17,7 +17,7 @@
 
 
 Name:           gnome-commander
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
@@ -25,8 +25,13 @@ Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
 Source:         http://download.gnome.org/sources/gnome-commander/1.14/%{name}-%{version}.tar.xz
 
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+%endif
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  itstool
@@ -41,23 +46,12 @@ BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.0
 BuildRequires:  pkgconfig(libgsf-1) >= 1.12.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.18
 BuildRequires:  pkgconfig(taglib) >= 1.4
-Recommends:     %{name}-doc
+Provides:       %{name}-doc = %{version}
+Obsoletes:      %{name}-doc < 1.14.1
 # For xdg-su
 Recommends:     xdg-utils
 
 %description
-GNOME Commander is a "two-pane" graphical file manager for the Linux
-desktop using GNOME libraries. In addition to basic file manager
-functions, the program is also an FTP client and can browse SMB
-networks.
-
-%package doc
-Summary:        A file manager for the GNOME desktop environment -- Documentation files
-Group:          Productivity/File utilities
-Requires:       %{name} = %{version}
-BuildArch:      noarch
-
-%description doc
 GNOME Commander is a "two-pane" graphical file manager for the Linux
 desktop using GNOME libraries. In addition to basic file manager
 functions, the program is also an FTP client and can browse SMB
@@ -69,9 +63,14 @@ networks.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1550
+export CC=%{_bindir}/gcc-11
+export CXX=%{_bindir}/g++-11
+%endif
 %configure\
-	--disable-static\
-	--without-unique
+	--disable-static \
+	--without-unique \
+	%{nil}
 %make_build
 
 %install
@@ -85,6 +84,8 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %files
 %license COPYING
 %doc NEWS README
+%doc AUTHORS ChangeLog TODO
+%{_datadir}/help/C/%{name}
 %{_datadir}/metainfo/org.gnome.%{name}.appdata.xml
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
@@ -94,10 +95,6 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %{_datadir}/pixmaps/%{name}
 %{_libdir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
-
-%files doc
-%doc AUTHORS ChangeLog TODO
-%{_datadir}/help/C/%{name}
 
 %files lang -f %{name}.lang
 
