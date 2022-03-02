@@ -16,4 +16,17 @@
   Fix vagrant with ruby 3.1</comment>
     <requestid>950774</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>702d7d0e282cfa0715dd4112ae26987e</srcmd5>
+    <version>3.1.1</version>
+    <time>1646241602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1 
+  https://www.ruby-lang.org/en/news/2022/02/18/ruby-3-1-1-released/
+- drop 77fe1fca0abb56f7f07725c0a3803d53a315c853.patch:
+  included in update
+
+- Build ruby with jemalloc for sle 15 up</comment>
+    <requestid>956806</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@ Name:           ruby3.1
 ####
 
 %define patch_level p0
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 %define pkg_version %{version}
 # make the exported API version explicit
@@ -68,7 +68,7 @@ Release:        0
 # turn on testsuite by default. we dont hard fail anyway.
 %bcond_without run_tests
 %bcond_without build_docs
-%if 0%{?sle_version} >= 150000
+%if 0%{?suse_version} >= 1500
 %bcond_without jemalloc
 %else
 %bcond_with    jemalloc
@@ -87,7 +87,6 @@ Source4:        %{name}-default.macros
 Source98:       series
 Source99:       %{name}-rpmlintrc
 Patch:          use-pie.patch
-Patch1:         https://github.com/ruby/ipaddr/commit/77fe1fca0abb56f7f07725c0a3803d53a315c853.patch
 #
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
