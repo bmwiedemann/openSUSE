@@ -1,7 +1,7 @@
 #
 # spec file for package perl-B-Hooks-EndOfScope
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name B-Hooks-EndOfScope
 Name:           perl-B-Hooks-EndOfScope
-Version:        0.25
+Version:        0.26
 Release:        0
-Summary:        Execute code after a scope finished compilation
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Execute code after a scope finished compilation
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 22 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-B-Hooks-EndOfScope/Changes
+
+  0.26      2022-02-21 05:35:44Z
+    - update bundled version of ExtUtils::HasCompiler, for new new Apple
+      include paths
+
+-------------------------------------------------------------------
 Mon Oct 11 03:06:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.25
