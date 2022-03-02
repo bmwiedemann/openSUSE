@@ -1,7 +1,7 @@
 #
 # spec file for package python-immutables
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-immutables
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        Immutable collections for Python
 License:        Apache-2.0
 URL:            https://github.com/MagicStack/immutables
 Source:         https://files.pythonhosted.org/packages/source/i/immutables/immutables-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM test_none_collisions-32-bit.patch gh#MagicStack/immutables#69 mcepl@suse.com
-# Fix test_none_collisions on 32-bit systems
-Patch0:         test_none_collisions-32-bit.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module mypy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
