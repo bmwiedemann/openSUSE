@@ -1,7 +1,0 @@
-<package name="itpp" project="openSUSE:Factory">
-  <title>C++ library of math., signal processing and communication routines</title>
-  <description>IT++ is a C++ library of mathematical, signal processing and communication classes and functions. Its main use is in simulation of communication systems and for performing research in the area of communications. The kernel of the library consists of generic vector and matrix classes, and a set of accompanying routines. Such a kernel makes IT++ similar to MATLAB or GNU Octave.
-</description>
-  <devel project="science" package="itpp"/>
-  <url>http://itpp.sourceforge.net</url>
-</package>
