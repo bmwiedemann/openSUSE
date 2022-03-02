@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar  1 10:49:08 MST 2022 - carnold@suse.com
+
+- Update to version 1.10.0
+  Changes in this release include:
+  * Add API for resolving multiple tree matches
+  * Add API for resolving multiple media matches
+  * Add API to match between two OsinfoTree
+  * Add API to match between two OsinfoMedia
+  * Add API to get a complete list of firmwares
+  * Add missing documentation of osinfo_os_add_firmware()
+  * Add release status to osinfo-query
+  * Add --all flag to all tools to report all matches
+  * Fix hiding database entries
+  * Adapt to libsoup3 which is now preferred over libsoup2
+  * Several CI improvements
+  * Several translations improvements
+
+-------------------------------------------------------------------
 Tue Mar  2 10:07:02 MST 2021 - carnold@suse.com
 
 - Update to version 1.9.0

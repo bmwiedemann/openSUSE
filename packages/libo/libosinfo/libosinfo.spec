@@ -1,7 +1,7 @@
 #
 # spec file for package libosinfo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,10 +20,10 @@
 %define with_lang 1
 
 Name:           libosinfo
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Operating system and hypervisor information management library
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://releases.pagure.org/libosinfo/
 Source0:        https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
@@ -85,6 +85,7 @@ as well as Vala bindings for the libosinfo library.
 %if %{with_lang}
 %lang_package
 %endif
+
 %prep
 %setup -q
 
