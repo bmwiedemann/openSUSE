@@ -39,6 +39,7 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
+Patch0:         0001-QProcess-Unix-ensure-we-don-t-accidentally-execute-s.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
@@ -232,6 +233,9 @@ Requires:       qt6-base-common-devel = %{version}
 # Some public classes require C++ 17 features
 Requires:       gcc10-c++
 %endif
+# boo#1195368
+# TODO: move the pri file into qt6-core-devel when 6.2.4 is out
+%requires_eq    qt6-core-private-devel
 
 %description -n qt6-core-devel
 Development files for the Qt 6 Core library.
@@ -786,8 +790,8 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_concurrent_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
 
 # These files are only useful for the Qt continuous integration
-rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
 rm %{buildroot}%{_qt6_libexecdir}/android_*.sh
+rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
 
 # This is only for Apple platforms and has a python2 dep
 rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit

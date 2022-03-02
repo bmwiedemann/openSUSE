@@ -1,0 +1,211 @@
+From a5bf4641b066de4c7ccf1a0e909abe8d9ced3cda Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Mon, 31 Jan 2022 11:00:19 -0800
+Subject: [PATCH] QProcess/Unix: ensure we don't accidentally execute something
+ from CWD
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Unless "." (or the empty string) is in $PATH, we're not supposed to find
+executables in the current directory. This is how the Unix shells behave
+and we match their behavior. It's also the behavior Qt had prior to 5.9
+(commit 28666d167aa8e602c0bea25ebc4d51b55005db13). On Windows, searching
+the current directory is the norm, so we keep that behavior.
+
+This commit does not add an explicit check for an empty return from
+QStandardPaths::findExecutable(). Instead, we allow that empty string to
+go all the way to execve(2), which will fail with ENOENT. We could catch
+it early, before fork(2), but why add code for the error case?
+
+See https://kde.org/info/security/advisory-20220131-1.txt
+
+[ChangeLog][Important Behavior Changes] When passed a simple program
+name with no slashes, QProcess on Unix systems will now only search the
+current directory if "." is one of the entries in the PATH environment
+variable. This bug fix restores the behavior QProcess had before Qt 5.9.
+If launching an executable in the directory set by setWorkingDirectory()
+or inherited from the parent is intended, pass a program name starting
+with "./". For more information and best practices about finding an
+executable, see QProcess' documentation.
+
+Pick-to: 5.15 6.2 6.3
+Change-Id: I54f205f6b7314351b078fffd16cf7013c97ee9fb
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+Reviewed-by: Mårten Nordheim <marten.nordheim@qt.io>
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ src/corelib/io/qprocess_unix.cpp              |  9 +-
+ .../auto/corelib/io/qprocess/tst_qprocess.cpp | 93 ++++++++++++++++++-
+ .../kernel/qapplication/tst_qapplication.cpp  |  4 +-
+ 3 files changed, 99 insertions(+), 7 deletions(-)
+
+diff --git a/src/corelib/io/qprocess_unix.cpp b/src/corelib/io/qprocess_unix.cpp
+index bf19fc2..3a2e5cf 100644
+--- a/src/corelib/io/qprocess_unix.cpp
++++ b/src/corelib/io/qprocess_unix.cpp
+@@ -1,7 +1,7 @@
+ /****************************************************************************
+ **
+ ** Copyright (C) 2020 The Qt Company Ltd.
+-** Copyright (C) 2021 Intel Corporation.
++** Copyright (C) 2022 Intel Corporation.
+ ** Copyright (C) 2021 Alex Trotsenko.
+ ** Contact: https://www.qt.io/licensing/
+ **
+@@ -437,9 +437,10 @@ static QString resolveExecutable(const QString &program)
+ #endif
+ 
+     if (!program.contains(QLatin1Char('/'))) {
+-        QString exeFilePath = QStandardPaths::findExecutable(program);
+-        if (!exeFilePath.isEmpty())
+-            return exeFilePath;
++        // findExecutable() returns its argument if it's an absolute path,
++        // otherwise it searches $PATH; returns empty if not found (we handle
++        // that case much later)
++        return QStandardPaths::findExecutable(program);
+     }
+     return program;
+ }
+diff --git a/tests/auto/corelib/io/qprocess/tst_qprocess.cpp b/tests/auto/corelib/io/qprocess/tst_qprocess.cpp
+index 63f2a81..80005a7 100644
+--- a/tests/auto/corelib/io/qprocess/tst_qprocess.cpp
++++ b/tests/auto/corelib/io/qprocess/tst_qprocess.cpp
+@@ -1,7 +1,7 @@
+ /****************************************************************************
+ **
+ ** Copyright (C) 2021 The Qt Company Ltd.
+-** Copyright (C) 2020 Intel Corporation.
++** Copyright (C) 2022 Intel Corporation.
+ ** Contact: https://www.qt.io/licensing/
+ **
+ ** This file is part of the test suite of the Qt Toolkit.
+@@ -151,6 +151,8 @@ private slots:
+     void startStopStartStopBuffers();
+     void processEventsInAReadyReadSlot_data();
+     void processEventsInAReadyReadSlot();
++    void startFromCurrentWorkingDir_data();
++    void startFromCurrentWorkingDir();
+ 
+     // keep these at the end, since they use lots of processes and sometimes
+     // caused obscure failures to occur in tests that followed them (esp. on the Mac)
+@@ -2524,5 +2526,94 @@ void tst_QProcess::processEventsInAReadyReadSlot()
+         QVERIFY(process.waitForFinished());
+ }
+ 
++enum class ChdirMode {
++    None = 0,
++    InParent,
++    InChild
++};
++Q_DECLARE_METATYPE(ChdirMode)
++
++void tst_QProcess::startFromCurrentWorkingDir_data()
++{
++    qRegisterMetaType<ChdirMode>();
++    QTest::addColumn<QString>("programPrefix");
++    QTest::addColumn<ChdirMode>("chdirMode");
++    QTest::addColumn<bool>("success");
++
++    constexpr bool IsWindows = true
++#ifdef Q_OS_UNIX
++            && false
++#endif
++            ;
++
++    // baseline: trying to execute the directory, this can't possibly succeed!
++    QTest::newRow("plain-same-cwd") << QString() << ChdirMode::None << false;
++
++    // cross-platform behavior: neither OS searches the setWorkingDirectory()
++    // dir without "./"
++    QTest::newRow("plain-child-chdir") << QString() << ChdirMode::InChild << false;
++
++    // cross-platform behavior: both OSes search the parent's CWD with "./"
++    QTest::newRow("prefixed-parent-chdir") << "./" << ChdirMode::InParent << true;
++
++    // opposite behaviors: Windows searches the parent's CWD and Unix searches
++    // the child's with "./"
++    QTest::newRow("prefixed-child-chdir") << "./" << ChdirMode::InChild << !IsWindows;
++
++    // Windows searches the parent's CWD without "./"
++    QTest::newRow("plain-parent-chdir") << QString() << ChdirMode::InParent << IsWindows;
++}
++
++void tst_QProcess::startFromCurrentWorkingDir()
++{
++    QFETCH(QString, programPrefix);
++    QFETCH(ChdirMode, chdirMode);
++    QFETCH(bool, success);
++
++    QProcess process;
++    qRegisterMetaType<QProcess::ProcessError>();
++    QSignalSpy errorSpy(&process, &QProcess::errorOccurred);
++    QVERIFY(errorSpy.isValid());
++
++    // both the dir name and the executable name
++    const QString target = QStringLiteral("testProcessNormal");
++    process.setProgram(programPrefix + target);
++
++#ifdef Q_OS_UNIX
++    // Reset PATH, to be sure it doesn't contain . or the empty path.
++    // We can't do this on Windows because DLLs are searched in PATH
++    // and Windows always searches "." anyway.
++    auto restoreEnv = qScopeGuard([old = qgetenv("PATH")] {
++        qputenv("PATH", old);
++    });
++    qputenv("PATH", "/");
++#endif
++
++    switch (chdirMode) {
++    case ChdirMode::InParent: {
++        auto restoreCwd = qScopeGuard([old = QDir::currentPath()] {
++            QDir::setCurrent(old);
++        });
++        QVERIFY(QDir::setCurrent(target));
++        process.start();
++        break;
++    }
++    case ChdirMode::InChild:
++        process.setWorkingDirectory(target);
++        Q_FALLTHROUGH();
++    case ChdirMode::None:
++        process.start();
++        break;
++    }
++
++    QCOMPARE(process.waitForStarted(), success);
++    QCOMPARE(errorSpy.count(), int(!success));
++    if (success) {
++        QVERIFY(process.waitForFinished());
++    } else {
++        QCOMPARE(process.error(), QProcess::FailedToStart);
++    }
++}
++
+ QTEST_MAIN(tst_QProcess)
+ #include "tst_qprocess.moc"
+diff --git a/tests/auto/widgets/kernel/qapplication/tst_qapplication.cpp b/tests/auto/widgets/kernel/qapplication/tst_qapplication.cpp
+index e5ac69a..b0dd14a 100644
+--- a/tests/auto/widgets/kernel/qapplication/tst_qapplication.cpp
++++ b/tests/auto/widgets/kernel/qapplication/tst_qapplication.cpp
+@@ -1530,7 +1530,7 @@ void tst_QApplication::desktopSettingsAware()
+     environment += QLatin1String("QT_MAC_DISABLE_FOREGROUND_APPLICATION_TRANSFORM=1");
+     testProcess.setEnvironment(environment);
+ #endif
+-    testProcess.start("desktopsettingsaware_helper");
++    testProcess.start("./desktopsettingsaware_helper");
+     QVERIFY2(testProcess.waitForStarted(),
+              qPrintable(QString::fromLatin1("Cannot start 'desktopsettingsaware_helper': %1").arg(testProcess.errorString())));
+     QVERIFY(testProcess.waitForFinished(10000));
+@@ -2470,7 +2470,7 @@ void tst_QApplication::qtbug_12673()
+ #if QT_CONFIG(process)
+     QProcess testProcess;
+     QStringList arguments;
+-    testProcess.start("modal_helper", arguments);
++    testProcess.start("./modal_helper", arguments);
+     QVERIFY2(testProcess.waitForStarted(),
+              qPrintable(QString::fromLatin1("Cannot start 'modal_helper': %1").arg(testProcess.errorString())));
+     QVERIFY(testProcess.waitForFinished(20000));
+-- 
+2.35.1
+
