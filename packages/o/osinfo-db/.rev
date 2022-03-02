@@ -424,4 +424,12 @@
     <comment>Update to database version 20211216</comment>
     <requestid>944513</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>39443c814f8fa9c6aa58bef4253f8565</srcmd5>
+    <version>20220214</version>
+    <time>1646241628</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20220214</comment>
+    <requestid>958324</requestid>
+  </revision>
 </revisionlist>
