@@ -1,6 +1,7 @@
+#
 # spec file for package drawing
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,30 +15,31 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _name com.github.maoschanz.drawing
 Name:           drawing
 Version:        0.8.0
 Release:        0
 Summary:        A simple draw application for Linux
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/maoschanz/drawing
-Source:         https://github.com/maoschanz/drawing/archive/refs/tags/%version.tar.gz
-Source2:	drawing-rpmlintrc
-
-BuildRequires:  meson
+Source:         https://github.com/maoschanz/drawing/archive/refs/tags/%{version}.tar.gz
+Source2:        drawing-rpmlintrc
 BuildRequires:  fdupes
+BuildRequires:  gobject-introspection
+BuildRequires:  itstool
+BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
-BuildRequires:  python3-pycairo
 BuildRequires:  python3-gobject-devel
+BuildRequires:  python3-pycairo
 BuildRequires:  pkgconfig(gtk+-3.0)
-
 Requires:       python3
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
 Requires:       python3-pycairo
-BuildRequires:	gobject-introspection
 Recommends:     yelp
 BuildArch:      noarch
 
