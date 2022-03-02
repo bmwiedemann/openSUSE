@@ -23,7 +23,7 @@
 %global test_hwinfo 0
 
 Name:           suseconnect-ng
-Version:        0.0.6~git0.77933db
+Version:        0.0.6~git9.33e5847
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later

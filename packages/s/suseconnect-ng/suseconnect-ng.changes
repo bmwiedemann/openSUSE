@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 01 14:09:34 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 0.0.6~git9.33e5847:
+  * Delegate free() calls back to Go (bsc#1195729)
+  * Pass "insecure" to zypper addservice
+  * Workaround system cert reloading after import (bsc#1195220)
+  * Extract setupHTTPClient for easier reuse
+  * Exit with code 64 on connection refused like Ruby
+
+-------------------------------------------------------------------
 Wed Jan 26 09:09:30 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 0.0.6~git0.77933db:

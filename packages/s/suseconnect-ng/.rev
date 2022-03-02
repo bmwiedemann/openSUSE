@@ -76,4 +76,17 @@
   * Add flag to import product repo keys (bsc#1174657)</comment>
     <requestid>949216</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>853c85ae5b5499e72212af0d4dbb2530</srcmd5>
+    <version>0.0.6~git9.33e5847</version>
+    <time>1646241603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.6~git9.33e5847:
+  * Delegate free() calls back to Go (bsc#1195729)
+  * Pass &quot;insecure&quot; to zypper addservice
+  * Workaround system cert reloading after import (bsc#1195220)
+  * Extract setupHTTPClient for easier reuse
+  * Exit with code 64 on connection refused like Ruby</comment>
+    <requestid>958283</requestid>
+  </revision>
 </revisionlist>
