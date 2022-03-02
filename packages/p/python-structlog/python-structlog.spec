@@ -1,7 +1,7 @@
 #
 # spec file for package python-structlog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # because of acyncio for tests
 %define skip_python2 1
 Name:           python-structlog
-Version:        21.2.0
+Version:        21.5.0
 Release:        0
 Summary:        Structured Logging for Python
 License:        Apache-2.0 OR MIT
@@ -29,7 +29,9 @@ URL:            http://www.structlog.org/en/stable/
 Source:         https://github.com/hynek/structlog/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module flit >= 2}
 BuildRequires:  %{python_module freezegun >= 0.2.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest >= 3.3.0}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -55,10 +57,10 @@ like the standard library’s logging module.
 %setup -q -n structlog-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

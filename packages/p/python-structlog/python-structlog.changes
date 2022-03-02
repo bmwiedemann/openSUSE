@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Mar  1 10:55:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.5.0:
+  * Added the structlog.processors.LogfmtRenderer processor to render
+    log lines using the logfmt format. #376
+  * Added the structlog.stdlib.ExtraAdder processor that adds extra
+    attributes of logging.LogRecord objects to the event dictionary.
+    This processor can be used for adding data passed in the extra
+    parameter of the logging module's log methods to the event
+    dictionary. #209 #377
+  * Added the structlog.processor.CallsiteParameterAdder processor that
+    adds parameters of the callsite that an event dictionary orginated
+    from to the event dictionary. This processor can be used to enrich
+    events dictionaries with information such as the function name,
+    line number and filename that an event dictionary orignated from. #380
+
+-------------------------------------------------------------------
+Tue Mar  1 10:50:45 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.4.0:
+  * Fixed import when running in optimized mode (PYTHONOPTIMIZE=2
+    or python -OO). #373
+  * Added the structlog.threadlocal.bound_threadlocal and
+    structlog.contextvars.bound_contextvars decorator/context managers
+    to temporarily bind key/value pairs to a thread-local and context-local
+    context. #371
+
+-------------------------------------------------------------------
+Tue Mar  1 10:49:07 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.3.0:
+  * structlog.dev.ConsoleRenderer now has sort_keys boolean parameter
+    that allows to disable the sorting of keys on output. #358
+  * structlog.processors.TimeStamper now works well with FreezeGun
+    even when it gets applied before the loggers are configured. #364
+  * structlog.stdlib.AsyncBoundLogger now determines the running loop
+    when logging, not on instantiation. That has a minor performance
+    impact, but makes it more robust when loops change
+    (e.g. aiohttp.web.run_app()), or you want to use sync_bl before a
+    loop has started.
+  * structlog.stdlib.ProcessorFormatter now has a processors argument
+    that allows to define a processor chain to run over all log entries.
+  * Before running the chain, two additional keys are added to the event
+    dictionary: _record and _from_structlog. With them it's possible to
+    extract information from logging.LogRecords and differentiate between
+    structlog and logging log entries while processing them.
+  * The old processor (singular) parameter is now deprecated, but no
+    plans exist to remove it. #365
+
+-------------------------------------------------------------------
 Wed Oct 13 08:36:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 21.2.0:
