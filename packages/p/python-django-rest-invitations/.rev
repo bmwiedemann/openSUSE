@@ -22,4 +22,13 @@
   * fix-test-middleware-classes.patch</comment>
     <requestid>799969</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9c577893727e6b73ca90f3ac0904272f</srcmd5>
+    <version>0.1.2</version>
+    <time>1646241633</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch django-4.0.patch:
+  * Support Django 4.0</comment>
+    <requestid>958200</requestid>
+  </revision>
 </revisionlist>

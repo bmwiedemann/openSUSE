@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rest-invitations
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        A set of Django REST API endpoints to handle invitations
 License:        GPL-3.0-only
 URL:            https://github.com/fmarco/django-rest-invitations
 Source:         https://github.com/fmarco/django-rest-invitations/archive/%{version}.tar.gz#/django-rest-invitations-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#fmarco/django-rest-invitations#17
+Patch0:         django-4.0.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +44,7 @@ BuildRequires:  %{python_module pytest-django}
 A set of Django REST API endpoints to handle invitations.
 
 %prep
-%setup -q -n django-rest-invitations-%{version}
+%autosetup -p1 -n django-rest-invitations-%{version}
 sed -i -e 's:==:>=:g' setup.py
 
 %build

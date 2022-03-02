@@ -1,0 +1,68 @@
+From 1b89b9e22413097cc7b9002d749e48191286539a Mon Sep 17 00:00:00 2001
+From: "D. Yu" <dyu@fastmail.com>
+Date: Thu, 22 Apr 2021 08:54:14 +0800
+Subject: [PATCH 1/2] Silence deprecation warnings for ugettext_lazy() and
+ url()
+
+---
+ rest_invitations/serializers.py | 2 +-
+ rest_invitations/urls.py        | 7 ++++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+Index: django-rest-invitations-0.1.2/rest_invitations/serializers.py
+===================================================================
+--- django-rest-invitations-0.1.2.orig/rest_invitations/serializers.py
++++ django-rest-invitations-0.1.2/rest_invitations/serializers.py
+@@ -1,5 +1,5 @@
+ from django.contrib.auth import get_user_model
+-from django.utils.translation import ugettext_lazy as _
++from django.utils.translation import gettext_lazy as _
+ from invitations.adapters import get_invitations_adapter
+ from invitations.exceptions import (AlreadyAccepted, AlreadyInvited,
+                                     UserRegisteredEmail)
+Index: django-rest-invitations-0.1.2/rest_invitations/urls.py
+===================================================================
+--- django-rest-invitations-0.1.2.orig/rest_invitations/urls.py
++++ django-rest-invitations-0.1.2/rest_invitations/urls.py
+@@ -1,4 +1,5 @@
+-from django.conf.urls import include, url
++from django.conf.urls import include
++from django.urls import path
+ from rest_framework import routers
+ 
+ from .app_settings import ACCEPT_INVITE_URL, API_BASE_URL
+@@ -9,8 +10,8 @@ router.register(r'{0}'.format(API_BASE_U
+ 
+ invitations_patterns = (
+     [
+-        url(
+-            r'^{0}/{1}/(?P<key>\w+)/?$'.format(
++        path(
++            '{0}/{1}/<key>)/'.format(
+                 API_BASE_URL, ACCEPT_INVITE_URL
+             ),
+             accept_invitation,
+@@ -21,5 +22,5 @@ invitations_patterns = (
+ )
+ 
+ urlpatterns = router.urls + [
+-    url(r'^', include(invitations_patterns)),
++    path('', include(invitations_patterns)),
+ ]
+Index: django-rest-invitations-0.1.2/test_urls.py
+===================================================================
+--- django-rest-invitations-0.1.2.orig/test_urls.py
++++ django-rest-invitations-0.1.2/test_urls.py
+@@ -1,9 +1,9 @@
+ # -*- coding: utf-8 -*-
+-from django.conf.urls import include, url
++from django.urls import include, re_path
+ from django.contrib import admin
+ 
+ 
+ urlpatterns = [
+-    url(r'^admin/', admin.site.urls),
+-    url(r'^', include('rest_invitations.urls'))
++    re_path(r'^admin/', admin.site.urls),
++    re_path(r'^', include('rest_invitations.urls'))
+ ]
