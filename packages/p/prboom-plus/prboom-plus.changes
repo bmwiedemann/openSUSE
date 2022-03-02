@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  2 12:24:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Fix-integer-overflow-during-multiplication-with-real.patch
+  to resolve jaggy motion when gamespeed!=100 and when the
+  program has run for 25+ minutes.
+
+-------------------------------------------------------------------
 Sat Feb 19 16:19:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop prboom-enable-tessellation.diff, this is enabled

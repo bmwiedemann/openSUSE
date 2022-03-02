@@ -136,4 +136,14 @@ Can't really provide infinitely many versions!</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957804</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8c9e0c72443d04eff253d6b944d2a8c0</srcmd5>
+    <version>2.6.2</version>
+    <time>1646251921</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Fix-integer-overflow-during-multiplication-with-real.patch
+  to resolve jaggy motion when gamespeed!=100 and when the
+  program has run for 25+ minutes.</comment>
+    <requestid>958516</requestid>
+  </revision>
 </revisionlist>

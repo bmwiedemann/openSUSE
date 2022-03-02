@@ -27,6 +27,7 @@ URL:            http://prboom-plus.sf.net/
 #Git-Clone:	https://github.com/coelckers/prboom-plus
 Source:         https://github.com/coelckers/prboom-plus/archive/refs/tags/v%version.tar.gz
 Patch1:         prboom-nodatetime.diff
+Patch2:         0001-Fix-integer-overflow-during-multiplication-with-real.patch
 Patch3:         prboom-hbar-all.diff
 Patch4:         prboom-hbar-gradient.diff
 BuildRequires:  Mesa-devel
