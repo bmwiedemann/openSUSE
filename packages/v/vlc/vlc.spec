@@ -1,7 +1,7 @@
 #
 # spec file for package vlc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -93,7 +93,6 @@ BuildRequires:  libraw1394 >= 2.0.1
 BuildRequires:  librsvg-devel >= 2.9.0
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libshout-devel >= 2.1
-BuildRequires:  libsmbclient-devel
 BuildRequires:  libssh2-devel
 BuildRequires:  libtheora-devel >= 1.0
 BuildRequires:  libtool
@@ -109,6 +108,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  posix_cc
 BuildRequires:  schroedinger-devel >= 1.0.10
 BuildRequires:  pkgconfig(libudev) >= 142
+BuildRequires:  pkgconfig(smbclient)
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libplacebo)
 %endif
@@ -298,6 +298,7 @@ Should you decide to install the GUI modules, %{name}-noX will stay
 installed as a dependency.
 
 
+
 # we can't use %%lang_package, as we need a different dependency
 # boo#1012556
 # but the package name has to stay vlc-lang, as otherise the software centers
@@ -455,7 +456,9 @@ autoreconf -fiv
    --enable-libass                      \
    --enable-libcddb                     \
    --enable-libmpeg2                    \
+%if 0%{?is_opensuse}
    --enable-libplacebo                  \
+%endif
    --enable-lirc                        \
    --enable-live555                     \
    --enable-lua                         \
