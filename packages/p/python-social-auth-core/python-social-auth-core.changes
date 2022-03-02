@@ -4,6 +4,28 @@ Wed Mar  2 16:55:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
 - Add URL
 
 -------------------------------------------------------------------
+Wed Mar  2 16:55:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.2.0:
+  - Add fields that populate on create but not update
+    SOCIAL_AUTH_IMMUTABLE_USER_FIELDS
+  - Add Gitea oauth2 backend
+  - Add Twitch OpenId backend
+  - Add CI Logon backend
+  - Add support for Python 3.10
+  - Fixed Slack user identity API call with Bearer headers
+  - Fixed microsoft-graph login error
+  - Fixed Twitch OAuth2 backend
+  - Fixed Facebook API version
+  - Fixed Okta authentication URLs
+  - Fixed Globus JWT signature algorithm
+  - Fixed kid key rotation for OpenID Connect
+  - Fixed e-mail fetching from Azure
+  - Fixed vkontakte API version
+  - Restricted lxml to 4.6.x to avoid problems in SAML
+- Add URL
+
+-------------------------------------------------------------------
 Mon Mar 15 10:30:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.1.0

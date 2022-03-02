@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define modname social-core
 Name:           python-social-auth-core
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
