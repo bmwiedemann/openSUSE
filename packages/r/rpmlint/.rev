@@ -3617,4 +3617,18 @@ oddjob-gpupdate isn't blocked)</comment>
   * 67c21c1e dbus-services: whitelist kcron helper</comment>
     <requestid>957735</requestid>
   </revision>
+  <revision rev="387" vrev="1">
+    <srcmd5>0adb5112ea2dbfd2bd9a79c7ac0e466a</srcmd5>
+    <version>2.2.0+git20220228.7070352</version>
+    <time>1646254982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220228.7070352:
+  * FileDigestCheck: configure digest filter type per whitelisting entry
+  * FileDigestCheck: also assert that a path key is present
+  * dbus-services: adjust nm-priv-helper path (bsc#1194799)
+  * dbus-services: whitelist nvme-stas (bsc#1195236)
+  * FileDigestCheck: enable XML filtered digests for D-Bus services
+  * FileDigestCheck: emit special {group}-file-parse-error if XML is bad</comment>
+    <requestid>958203</requestid>
+  </revision>
 </revisionlist>

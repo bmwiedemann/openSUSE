@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 01 07:44:11 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220228.7070352:
+  * FileDigestCheck: configure digest filter type per whitelisting entry
+  * FileDigestCheck: also assert that a path key is present
+  * dbus-services: adjust nm-priv-helper path (bsc#1194799)
+  * dbus-services: whitelist nvme-stas (bsc#1195236)
+  * FileDigestCheck: enable XML filtered digests for D-Bus services
+  * FileDigestCheck: emit special {group}-file-parse-error if XML is bad
+
+-------------------------------------------------------------------
 Fri Feb 25 21:31:27 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220225.739a708:
