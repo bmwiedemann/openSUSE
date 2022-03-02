@@ -40,6 +40,7 @@ Patch1:         systemtap-build-source-dir.patch
 Patch2:         sys-sdt.h-fp-constraints-arm32.patch
 Patch3:         sys-sdt.h-fp-constraints-x86_64.patch
 Patch4:         sys-sdt.h-fp-constraints-aarch64-s390.patch
+Patch5:         Handle-user-supplied-sdt-probe-argument-template.patch
 
 # sdt-devel provides the same header files as us, so we
 # must conflict
@@ -54,7 +55,6 @@ systemtap-sdt-devel, which also contains these headers.
 %prep
 %setup -q -n systemtap-%{version}
 %autopatch -p1
-
 
 %build
 # Our binutils always support '?' in the section characters on all

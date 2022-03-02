@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 21 10:56:37 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Handle-user-supplied-sdt-probe-argument-template.patch: Fix glibc build
+  failure on s390x
+
+-------------------------------------------------------------------
 Mon Feb 14 15:46:00 UTC 2022 - Tony Jones <tonyj@suse.com>
 
 - Resolve gcc compilation error reported against glib2 and libvirt

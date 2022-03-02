@@ -1,0 +1,126 @@
+From ecab2afea46099b4e7dfd551462689224afdbe3a Mon Sep 17 00:00:00 2001
+From: Stan Cox <scox@redhat.com>
+Date: Wed, 1 Dec 2021 16:19:22 -0500
+Subject: [PATCH] Handle user supplied sdt probe argument template
+
+User supplied templates were erroneously removed by commit eaa15b047,
+which complicated the template expansion. To do the above the
+expansion of STAP_PROBE_ASM(provider, fooprobe,
+STAP_PROBE_ASM_TEMPLATE(3)) adds an unused argument:
+STAP_PROBE_ASM(provider, fooprobe, /*template expansion*/ "%[SDT..]..",
+"use _SDT_ASM_TEMPLATE") A supplied template
+STAP_PROBE_ASM(provider, fooprobe, "4@%rdx 8@%rax") is left alone.  If
+the varargs has 2 args (the fake "use ..") then macro expansion
+inserts the expanded string, otherwise "4@.." becomes an ascii op.
+---
+ includes/sys/sdt.h                    | 14 ++++++++++----
+ testsuite/systemtap.base/sdt_casm.c   |  5 +++++
+ testsuite/systemtap.base/sdt_casm.exp |  3 ++-
+ testsuite/systemtap.base/sdt_casm.stp |  8 ++++++++
+ 4 files changed, 25 insertions(+), 5 deletions(-)
+
+diff --git a/includes/sys/sdt.h b/includes/sys/sdt.h
+index 28d236d91..24d5e01c3 100644
+--- a/includes/sys/sdt.h
++++ b/includes/sys/sdt.h
+@@ -290,7 +290,7 @@ __extension__ extern unsigned long long __sdt_unsp;
+   _SDT_ASM_1(.purgem _SDT_TYPE_)					      \
+   _SDT_ASM_1(.purgem _SDT_TYPE)
+ 
+-#define _SDT_ASM_BODY(provider, name, pack_args, args)			      \
++#define _SDT_ASM_BODY(provider, name, pack_args, args, ...)		      \
+   _SDT_DEF_MACROS							      \
+   _SDT_ASM_1(990:	_SDT_NOP)					      \
+   _SDT_ASM_3(		.pushsection .note.stapsdt,_SDT_ASM_AUTOGROUP,"note") \
+@@ -417,9 +417,9 @@ __extension__ extern unsigned long long __sdt_unsp;
+    counted, so we don't have to worry about the behavior of macros
+    called without any arguments.  */
+ 
+-#ifdef SDT_USE_VARIADIC
+ #define _SDT_NARG(...) __SDT_NARG(__VA_ARGS__, 12,11,10,9,8,7,6,5,4,3,2,1,0)
+ #define __SDT_NARG(_0,_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12, N, ...) N
++#ifdef SDT_USE_VARIADIC
+ #define _SDT_PROBE_N(provider, name, N, ...) \
+   _SDT_PROBE(provider, name, N, (__VA_ARGS__))
+ #define STAP_PROBEV(provider, name, ...) \
+@@ -468,9 +468,15 @@ __extension__ extern unsigned long long __sdt_unsp;
+     Note that these can use operand templates like %0 or %[name],
+     and likewise they must write %%reg for a literal operand of %reg.  */
+ 
++#define _SDT_ASM_BODY_1(p,n,...) _SDT_ASM_BODY(p,n,_SDT_ASM_SUBSTR,(__VA_ARGS__))
++#define _SDT_ASM_BODY_2(p,n,...) _SDT_ASM_BODY(p,n,/*_SDT_ASM_STRING */,__VA_ARGS__)
++#define _SDT_ASM_BODY_N2(p,n,no,...) _SDT_ASM_BODY_ ## no(p,n,__VA_ARGS__)
++#define _SDT_ASM_BODY_N1(p,n,no,...) _SDT_ASM_BODY_N2(p,n,no,__VA_ARGS__)
++#define _SDT_ASM_BODY_N(p,n,...) _SDT_ASM_BODY_N1(p,n,_SDT_NARG(0, __VA_ARGS__),__VA_ARGS__)
++
+ #if __STDC_VERSION__ >= 199901L
+ # define STAP_PROBE_ASM(provider, name, ...)		\
+-  _SDT_ASM_BODY(provider, name, /*_SDT_ASM_STRING */, __VA_ARGS__)	\
++  _SDT_ASM_BODY_N(provider, name, __VA_ARGS__)					\
+   _SDT_ASM_BASE
+ # define STAP_PROBE_ASM_OPERANDS(n, ...) _SDT_ASM_OPERANDS_##n(__VA_ARGS__)
+ #else
+@@ -478,7 +484,7 @@ __extension__ extern unsigned long long __sdt_unsp;
+   _SDT_ASM_BODY(provider, name, /* _SDT_ASM_STRING */, (args))	\
+   _SDT_ASM_BASE
+ #endif
+-#define STAP_PROBE_ASM_TEMPLATE(n)	_SDT_ASM_TEMPLATE_##n
++#define STAP_PROBE_ASM_TEMPLATE(n) _SDT_ASM_TEMPLATE_##n,"use _SDT_ASM_TEMPLATE_"
+ 
+ 
+ /* DTrace compatible macro names.  */
+diff --git a/testsuite/systemtap.base/sdt_casm.c b/testsuite/systemtap.base/sdt_casm.c
+index 1cff23c5f..9b357086c 100644
+--- a/testsuite/systemtap.base/sdt_casm.c
++++ b/testsuite/systemtap.base/sdt_casm.c
+@@ -3,6 +3,7 @@
+ int main()
+ {
+     int x = 42;
++    int y = 43;
+     __asm__ __volatile__ (
+             STAP_PROBE_ASM(testsuite, probe0, STAP_PROBE_ASM_TEMPLATE(0))
+             );
+@@ -10,5 +11,9 @@ int main()
+             STAP_PROBE_ASM(testsuite, probe1, STAP_PROBE_ASM_TEMPLATE(1))
+             :: STAP_PROBE_ASM_OPERANDS(1, x)
+             );
++    // Create a template to test explicit template support
++    __asm__ __volatile__ (
++			  STAP_PROBE_ASM(testsuite, probe2, -4@%[ARG1] -4@%[ARG2])
++			  :: [ARG1] "rm" (x), [ARG2] "rm" (y));
+     return 0;
+ }
+diff --git a/testsuite/systemtap.base/sdt_casm.exp b/testsuite/systemtap.base/sdt_casm.exp
+index 5791cb2b9..0cd1cb517 100644
+--- a/testsuite/systemtap.base/sdt_casm.exp
++++ b/testsuite/systemtap.base/sdt_casm.exp
+@@ -18,7 +18,8 @@ proc cleanup_handler { verbose } {
+ 
+ set script $srcdir/$subdir/$test.stp
+ set ::result_string {PASS: probe0
+-PASS: probe1}
++PASS: probe1
++PASS: probe2}
+ 
+ set asm_flags [sdt_includes]
+ set asm_flags "$asm_flags additional_flags=-std=c99"
+diff --git a/testsuite/systemtap.base/sdt_casm.stp b/testsuite/systemtap.base/sdt_casm.stp
+index 4f2539c93..530a79175 100644
+--- a/testsuite/systemtap.base/sdt_casm.stp
++++ b/testsuite/systemtap.base/sdt_casm.stp
+@@ -10,3 +10,11 @@ probe process.mark("probe1")
+     else
+         printf("FAIL: %s (%d != 42)\n", $$name, $arg1)
+ }
++
++probe process.mark("probe2") 
++{
++    if ($arg1 == 42 && $arg2 == 43)
++        printf("PASS: %s\n", $$name)
++    else
++        printf("FAIL: %s (%d/%d != 42/43)\n", $$name, $arg1, $arg2)
++}
+-- 
+2.35.0
+
