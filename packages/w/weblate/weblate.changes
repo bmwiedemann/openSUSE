@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Mar  2 07:57:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.11 (bsc#1196540):
+  - Fixes stored XSS, see GHSA-6jp6-9rf9-gc66 (CVE-2022-24710)
+    for more details.
+  - Fixed add-on installation using API.
+  - Renamed Strings needing action to Unfinished strings.
+  - Fixed false positives from ICU MessageFormat syntax.
+  - Indicate lock and contributor agreement on other occurrences
+    listing.
+  - Fixed updating PO files with obsolete strings or missing
+    plurals.
+  - Improved squash add-on compatibility with Gerrit.
+  - Automatically initialize user languages based on the
+    Accept-Language header.
+  - Improved error handling on string removal.
+  - Weblate now requires Python 3.7 or newer.
+  - Fixed some write operations with project token authentication.
+  - Fixed string state tracking when the strings changes in the
+    repository.
+  - Track string changes from the repository.
+  - Sticky header on translations listing to improve navigation.
+  - Fixed untranslating strings in Java properties.
+  - Fixed Git operation with non-ascii branch names.
+  - New add-on Prefill translation with source.
+  - Added Merge without fast-forward Merge style.
+  - Fixed Automatic translation add-on trigger on newly added strings.
+  - Improved punctuation checks for Burmese.
+  - Added support for defining custom teams at project level to
+    grant users access, see Managing per-project access control.
+  - Added documentation links to alerts.
+  - Added support for searching for resolved comments.
+  - Added support for borgbackup 1.2.
+  - Fixed applying of Automatically translated label.
+- Update to 4.10.1:
+  - Documented changes introduced by upgrading to Django 4.0.
+  - Fixed displaying of Automatically translated label.
+  - Fixed API display of branch in components with a shared
+    repository.
+  - Improved analysis on the failed push alert.
+  - Fixed manually editing page when browsing changes.
+  - Improved accuracy of check-kashida.
+- Update to 4.10:
+  - Added support for formality and placeholders with DeepL.
+  - Bulk edit and search and replace are now available on project
+    and language level.
+  - Added filtering to search and replace.
+  - Fixed: "Perform automatic translation" privilege is no longer
+    part of the Languages group.
+  - "Perform automatic translation" is in the Administration and
+    the new Automatic translation group.
+  - Fixed generating XLSX files with special chars.
+  - Added ability to the GitHub authentication backend to check
+    if the user belongs to a specific GitHub organization or
+    team.
+  - Improved feedback on invalid parameters passed to API.
+  - Added support for project scoped access tokens for API.
+  - Fixed string removal in some cases.
+  - Fixed translating newly added strings.
+  - Label automatically translated strings to ease their filtering.
+
+-------------------------------------------------------------------
 Mon Jan 10 15:11:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not attempt to build on i586 workers: the resulting package is
