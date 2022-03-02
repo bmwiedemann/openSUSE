@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  2 15:50:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Dynamically add a dependency to the libmpv version that was
+  present during build. Allows to dynamically move between various
+  so versions (e.g. libmpv1 to libmpv2).
+
+-------------------------------------------------------------------
 Sun Jul 26 06:26:13 UTC 2020 - aloisio@gmx.com
 
 - Update to version 0.5.2

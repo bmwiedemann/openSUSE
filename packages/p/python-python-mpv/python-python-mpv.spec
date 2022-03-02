@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mpv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,11 @@ Source0:        https://files.pythonhosted.org/packages/source/p/python-mpv/pyth
 Source99:       %{name}-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-Requires:       libmpv1
+# Needed to be able to set the proper dependency to the library
+BuildRequires:  mpv-devel
+# workaround via define needed as python_ubpackages wants to interpret Requires: lines
+%define libmpv  %(rpm -qf $(readlink -f %{_libdir}/libmpv.so) --qf "%%{name}")
+Requires:       %libmpv
 BuildArch:      noarch
 %python_subpackages
 
