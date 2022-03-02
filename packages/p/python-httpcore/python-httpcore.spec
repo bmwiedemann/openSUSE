@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-httpcore%{psuffix}
-Version:        0.14.5
+Version:        0.14.7
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause

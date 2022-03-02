@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 21 10:54:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 0.14.7:
+  * Requests which raise a PoolTimeout need to be removed from the pool queue.
+  * Fix AttributeError that happened when Socks5Connection were terminated.
+  * Fix SOCKS support for `http://` URLs.
+  * Resolve race condition around exceptions during streaming a response.
+
+-------------------------------------------------------------------
 Fri Feb 11 20:38:24 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Only recommend and not require the installation of python-h2 because it is
