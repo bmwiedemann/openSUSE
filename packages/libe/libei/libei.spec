@@ -1,7 +1,7 @@
 #
 # spec file for package libei
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,49 @@
 
 
 Name:           libei
-%define lname libei-suse0
-Version:        0+git134
+%define lname libei-suse1
+Version:        0.2
 Release:        0
 Summary:        Library for emulated input in Wayland
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/whot/libei/
 
-Source:         %name-%version.tar.xz
+Source:         https://gitlab.freedesktop.org/libinput/libei/-/archive/%version/%name-%version.tar.gz
 Patch1:         system-munit.diff
 Patch2:         ver.diff
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  protobuf-c
+BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libprotobuf-c)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(munit)
 BuildRequires:  pkgconfig(protobuf-lite)
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
-libei is a library for Emulated Input, targeting the Wayland stack.
-It provides separation, distinction and control, which, for
-comparison, are not available with XTEST (X11's emulated input).
+libei is a library to send Emulated Input (EI) to a matching Emulated
+Input Server (EIS) which can receive those events with libeis.
+
+It targets Wayland and provides separation, distinction and control,
+which, for comparison, are not available with XTEST (X11's emulated
+input).
 
 %package -n %lname
-Summary:        OpenGL and OpenGL ES shader front end implementation
+Summary:        Library for emulated input in Wayland
 Group:          System/Libraries
 
 %description -n %lname
-libei is a library for Emulated Input, targeting the Wayland stack.
+libei is a library to send Emulated Input (EI) to a matching Emulated
+Input Server (EIS) which can receive those events with libeis.
+
+It targets Wayland and provides separation, distinction and control,
+which, for comparison, are not available with XTEST (X11's emulated
+input).
 
 %package devel
-Summary:        OpenGL and OpenGL ES shader front end and validator
+Summary:        Header files for libei, a library for emulated input under Wayland
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -69,7 +80,7 @@ libei is a library for Emulated Input, targeting the Wayland stack.
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/lib*.so.suse0
+%_libdir/lib*.so.suse1
 
 %files devel
 %_includedir/%name/
