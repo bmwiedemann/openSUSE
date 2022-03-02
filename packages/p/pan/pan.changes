@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 27 15:19:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.150:
+  * Set maximum number of serveur connections to 20.
+  * Remove support for GMime2.
+  * Enable make distcheck for both GTK builds.
+  * Run distcheck with gtk3.
+  * Fix make distcheck for gtk2.
+  * Gtk3 is now default build, Gtk2 is deprecated.
+  * Fix pkg check msgs in configure.ac and print more library versions.
+  * fix missing articles with dangling reference.
+
+-------------------------------------------------------------------
 Fri Dec 24 19:36:17 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.149:

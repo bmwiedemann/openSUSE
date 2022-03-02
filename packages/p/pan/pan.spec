@@ -1,7 +1,7 @@
 #
 # spec file for package pan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pan
-Version:        0.149
+Version:        0.150
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
@@ -55,13 +55,11 @@ handling, multiple servers, and secure connections.
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
-	--with-gtk3 \
 	--with-gnutls \
 	--with-dbus \
 	--enable-gkr \
 	--enable-manual \
 	--enable-libnotify \
-	--with-gmime30 \
 	%{nil}
 %make_build
 
