@@ -53,7 +53,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.45
+Version:        0.3.47
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -61,7 +61,12 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM 0001-revert-loop-remove-destroy-list.patch
+Patch1:         0001-revert-loop-remove-destroy-list.patch
+# PATCH-FIX-UPSTREAM 0002-pulse-server-free-pending-sample-reply.patch
+Patch2:         0002-pulse-server-free-pending-sample-reply.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -495,11 +500,13 @@ setup-pulseaudio --auto > /dev/null
 %post libjack-%{apiver_str}
 %{_sbindir}/update-alternatives --install %{_bindir}/pw-jack pw-jack %{_bindir}/pw-jack-%{apiver} 20 \
     --slave %{_mandir}/man1/pw-jack.1%{ext_man} pw-jack.1%{ext_man} %{_mandir}/man1/pw-jack-%{apiver}.1%{ext_man}
+/sbin/ldconfig
 
 %postun libjack-%{apiver_str}
 if [ ! -e %{_bindir}/pw-jack-%{apiver} ] ; then
   %{_sbindir}/update-alternatives --remove pw-jack %{_bindir}/pw-jack-%{apiver}
 fi
+/sbin/ldconfig
 
 %files
 %license LICENSE COPYING
@@ -537,6 +544,7 @@ fi
 
 %files spa-plugins-%{spa_ver_str}
 %dir %{_libdir}/spa-%{spa_ver}/
+%{_libdir}/spa-%{spa_ver}/aec/
 %{_libdir}/spa-%{spa_ver}/alsa/
 %{_libdir}/spa-%{spa_ver}/audioconvert/
 %{_libdir}/spa-%{spa_ver}/audiomixer/
