@@ -81,7 +81,6 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(com_err)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(gconf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)

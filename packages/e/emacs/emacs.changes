@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  9 23:28:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gconf-2.0) BuildRequires: is both unneeded and
+  unused.
+
+-------------------------------------------------------------------
 Thu Jan 27 12:59:04 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Remove unneeded pure size adjustments

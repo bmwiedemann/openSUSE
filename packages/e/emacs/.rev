@@ -1651,4 +1651,22 @@
     <comment>- Remove unneeded pure size adjustments (forwarded request 949459 from Andreas_Schwab)</comment>
     <requestid>949460</requestid>
   </revision>
+  <revision rev="164" vrev="11">
+    <srcmd5>462bccd3dffa89f6719dd0f4d81b4f0d</srcmd5>
+    <version>27.2</version>
+    <time>1646241624</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(gconf-2.0) BuildRequires: is both unneeded and
+  unused.
+--
+```
+From buildlog in develrepo:
+[   60s]   Does Emacs use -lgconf?                                 no
+[   60s]   Does Emacs use GSettings?                               no
+
+--
+```
+Now one could consider building emacs with gsettings support (both debian and fedora does), but that is out of scope for this change, and left up to maintainer. (forwarded request 953067 from iznogood)</comment>
+    <requestid>958278</requestid>
+  </revision>
 </revisionlist>
