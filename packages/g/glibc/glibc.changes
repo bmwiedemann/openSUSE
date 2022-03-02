@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 28 10:51:19 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- get-nprocs-sched-uninit-read.patch: linux: __get_nprocs_sched: do not
+  feed CPU_COUNT_S with garbage (BZ #28850)
+- get-nprocs-inaccurate.patch: linux: fix accuracy of get_nprocs and
+  get_nprocs_conf (BZ #28865)
+- strcmp-rtm-fallback.path: x86: Fallback {str|wcs}cmp RTM in the ncmp
+  overflow case (BZ #28896)
+- pt-load-invalid-hole.patch: elf: Check invalid hole in PT_LOAD segments
+  (BZ #28838)
+- localedef-ld-monetary.patch: localedef: Update LC_MONETARY handling (BZ
+  #28845)
+
+-------------------------------------------------------------------
 Thu Feb  3 11:52:01 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Update to glibc 2.35

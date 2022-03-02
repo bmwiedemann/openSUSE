@@ -2612,4 +2612,21 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     return value is only used for its boolean status (forwarded request 951353 from Andreas_Schwab)</comment>
     <requestid>951354</requestid>
   </revision>
+  <revision rev="258" vrev="2">
+    <srcmd5>e6b5da803ab7e3ba0492c4512b701bdf</srcmd5>
+    <version>2.35</version>
+    <time>1646241601</time>
+    <user>dimstar_suse</user>
+    <comment>- get-nprocs-sched-uninit-read.patch: linux: __get_nprocs_sched: do not
+  feed CPU_COUNT_S with garbage (BZ #28850)
+- get-nprocs-inaccurate.patch: linux: fix accuracy of get_nprocs and
+  get_nprocs_conf (BZ #28865)
+- strcmp-rtm-fallback.path: x86: Fallback {str|wcs}cmp RTM in the ncmp
+  overflow case (BZ #28896)
+- pt-load-invalid-hole.patch: elf: Check invalid hole in PT_LOAD segments
+  (BZ #28838)
+- localedef-ld-monetary.patch: localedef: Update LC_MONETARY handling (BZ
+  #28845) (forwarded request 958081 from Andreas_Schwab)</comment>
+    <requestid>958082</requestid>
+  </revision>
 </revisionlist>

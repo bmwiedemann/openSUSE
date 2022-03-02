@@ -283,6 +283,16 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
+# PATCH-FIX-OPENSUSE linux: __get_nprocs_sched: do not feed CPU_COUNT_S with garbage (BZ #28850)
+Patch1000:      get-nprocs-sched-uninit-read.patch
+# PATCH-FIX-OPENSUSE linux: fix accuracy of get_nprocs and get_nprocs_conf (BZ #28865)
+Patch1001:      get-nprocs-inaccurate.patch
+# PATCH-FIX-OPENSUSE x86: Fallback {str|wcs}cmp RTM in the ncmp overflow case (BZ #28896)
+Patch1002:      strcmp-rtm-fallback.path
+# PATCH-FIX-OPENSUSE elf: Check invalid hole in PT_LOAD segments (BZ #28838)
+Patch1003:      pt-load-invalid-hole.patch
+# PATCH-FIX-OPENSUSE localedef: Update LC_MONETARY handling (BZ #28845)
+Patch1004:      localedef-ld-monetary.patch
 
 ###
 # Patches awaiting upstream approval
@@ -501,6 +511,12 @@ library in a cross compilation setting.
 
 %patch304 -p1
 %patch306 -p1
+
+%patch1000 -p1
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
 
 %patch2000 -p1
 %patch2001 -p1
