@@ -40,6 +40,8 @@ Patch7:         %{name}-fallback-icewm.patch
 # For gnome-background-properties.
 # PATCH-FIX-OPENSUSE support_yast_settings.patch shenlebantongying@gmail.com gh#linuxmint/cinnamon#9590 -- Fix cinnamon-settings cannot invoke YaST commands.
 Patch8:         support_yast_settings.patch
+# PATCH-FIX-UPSTREAM cinnamon-meson-0.61.patch -- Fix build using meson 0.61
+Patch9:         cinnamon-meson-0.61.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-data-openSUSE-extra
 BuildRequires:  fdupes
@@ -139,7 +141,9 @@ powerful and flexible.
 Summary:        GNU/Linux Desktop featuring a traditional layout -- GSchemas
 Group:          System/Libraries
 Requires:       %{name}-gschemas-branding = %{version}
+%if 0%{?suse_version} < 1500
 %glib2_gsettings_schema_requires
+%endif
 
 %description gschemas
 This package provides GSettings schemas for
@@ -174,6 +178,7 @@ GSettings and applications used by the MIME system.
 %patch4 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 cp -a %{SOURCE1} .
 
 for file in files%{_datadir}/%{name}/%{name}-settings/bin/*.py files%{_datadir}/%{name}/%{name}-looking-glass/*.py \

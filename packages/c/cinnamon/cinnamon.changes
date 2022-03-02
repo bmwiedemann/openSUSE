@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  2 16:10:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add cinnamon-meson-0.61.patch: Fix build using meson 0.61, which
+  became stricter about the used syntax.
+
+-------------------------------------------------------------------
 Sun Jan  2 21:51:49 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to version 5.2.7.
