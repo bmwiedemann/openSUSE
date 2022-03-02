@@ -10,9 +10,11 @@ SQLite 3.37+ returns some data type names uppercased e.g. TEXT.
  tests/inspectdb/tests.py |   11 +++++------
  1 file changed, 5 insertions(+), 6 deletions(-)
 
---- a/tests/inspectdb/tests.py
-+++ b/tests/inspectdb/tests.py
-@@ -302,18 +302,17 @@ class InspectDBTestCase(TestCase):
+Index: Django-4.0.3/tests/inspectdb/tests.py
+===================================================================
+--- Django-4.0.3.orig/tests/inspectdb/tests.py
++++ Django-4.0.3/tests/inspectdb/tests.py
+@@ -387,18 +387,18 @@ class InspectDBTestCase(TestCase):
          Introspection of columns with a custom field (#21090)
          """
          out = StringIO()
@@ -20,14 +22,15 @@ SQLite 3.37+ returns some data type names uppercased e.g. TEXT.
 -        try:
 -            connection.introspection.data_types_reverse = {
 +        with mock.patch(
-+            'django.db.connection.introspection.data_types_reverse.base_data_types_reverse',
++            "django.db.connection.introspection.data_types_reverse."
++            "base_data_types_reverse",
 +            {
-                 'text': 'myfields.TextField',
-                 'bigint': 'BigIntegerField',
+                 "text": "myfields.TextField",
+                 "bigint": "BigIntegerField",
 -            }
 +            },
 +        ):
-             call_command('inspectdb', 'inspectdb_columntypes', stdout=out)
+             call_command("inspectdb", "inspectdb_columntypes", stdout=out)
              output = out.getvalue()
              self.assertIn("text_field = myfields.TextField()", output)
              self.assertIn("big_int_field = models.BigIntegerField()", output)
