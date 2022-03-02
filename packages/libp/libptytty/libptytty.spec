@@ -24,12 +24,11 @@ Summary:        Library to handle pty/tty and utmp/wtmp/lastlog
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://software.schmorp.de/pkg/libptytty.html
-Source:         http://dist.schmorp.de/libptytty/%{name}-%{version}.tar.gz
-Source1:        http://dist.schmorp.de/libptytty/%{name}-%{version}.tar.gz.sig
+Source:         http://dist.schmorp.de/libptytty/%name-%version.tar.gz
+Source1:        http://dist.schmorp.de/libptytty/%name-%version.tar.gz.sig
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libptytty is an offspring of rxvt-unicode that handles
@@ -55,7 +54,7 @@ pty/tty/utmp/wtmp/lastlog handling in mostly OS-independent ways.
 This package contains the libptytty development files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
@@ -74,6 +73,6 @@ This package contains the libptytty development files.
 %_includedir/libptytty.h
 %_libdir/libptytty.so
 %_libdir/pkgconfig/libptytty.pc
-%{_mandir}/man3//libptytty.*
+%_mandir/man3/libptytty.*
 
 %changelog
