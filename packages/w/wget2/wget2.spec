@@ -1,7 +1,7 @@
 #
 # spec file for package wget2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://www.gnu.org/software/wget/
-
 Source:         https://ftp.gnu.org/gnu/wget/%name-%version.tar.gz
 Source2:        https://ftp.gnu.org/gnu/wget/%name-%version.tar.gz.sig
+Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=87218#/%name.keyring
 BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  gettext-devel >= 0.18.1
