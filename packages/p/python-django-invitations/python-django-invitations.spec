@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-invitations
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Generic invitations app with support for Django-allauth
 License:        GPL-3.0-only
 URL:            https://github.com/bee-keeper/django-invitations
 Source:         https://github.com/bee-keeper/django-invitations/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#bee-keeper/django-invitations#169
+Patch0:         django-4.0.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-allauth}
 BuildRequires:  %{python_module freezegun >= 0.3.5}
@@ -43,7 +45,7 @@ BuildArch:      noarch
 Generic invitations app with support for Django-allauth.
 
 %prep
-%setup -q -n django-invitations-%{version}
+%autosetup -p1 -n django-invitations-%{version}
 rm tox.ini
 
 %build
