@@ -59,4 +59,26 @@
     <comment></comment>
     <requestid>868430</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>174540a41bddcc19ba06a4f51fd6867a</srcmd5>
+    <version>1.7.3</version>
+    <time>1646241614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.3
+  - Fix up sha512sum file generation in the GitHub release asset
+  - Added Python type annotation to classes and functions
+- Update to 1.7.2:
+  - Fix distutil deprecation on Python 3.10 by using setuptools
+    instead
+- Update to 1.7.0:
+  - Add Kerberos specific GSS-API Extensions
+  - Tidy up docs and turn warnings into errors
+- Update to 1.6.14:
+  - Enable specification of krb5-config via environment variable
+  - Support for GSS_C_CHANNEL_BOUND_FLAG
+  - Support for docs build with sphinx 4
+  - Fix undefined variable in get_all_statuses()
+  - Add support for str objects in the cred store dict</comment>
+    <requestid>958123</requestid>
+  </revision>
 </revisionlist>
