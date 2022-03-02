@@ -421,4 +421,12 @@ updates &amp; we will need them on SLE 15 SP3 for building release notes.
 Replaces sr#890404</comment>
     <requestid>890444</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>16859759d9b5ff3c4e9c51afd5860b4a</srcmd5>
+    <version>2.83.0</version>
+    <time>1646241610</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>958115</requestid>
+  </revision>
 </revisionlist>

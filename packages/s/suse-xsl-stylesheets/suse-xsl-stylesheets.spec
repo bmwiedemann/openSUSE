@@ -17,7 +17,7 @@
 
 
 Name:           suse-xsl-stylesheets
-Version:        2.81.0
+Version:        2.83.0
 Release:        0
 
 %define reponame          suse-xsl
@@ -93,6 +93,10 @@ Requires:       ipa-pmincho-fonts
 # Arabic:
 Requires:       arabic-amiri-fonts
 
+# FONTS NOT YET(!) USED IN "suse2022" STYLESHEETS
+# Western
+Recommends:     google-poppins-fonts
+
 
 %description
 These are SUSE-branded XSLT 1.0 stylesheets for DocBook 4 and 5 that are be used
@@ -112,7 +116,7 @@ stylesheets are based on the original DocBook XSLT 1.0 stylesheets.
 make install DESTDIR=%{buildroot} LIBDIR=%{_libdir}
 
 # create symlinks:
-# (intentionally no slash between the variables -- %{_datadir} has a leading slash already.)
+# (intentionally no slash between the variables -- %%{_datadir} has a leading slash already.)
 %fdupes -s %{buildroot}%{_datadir}
 
 
@@ -166,6 +170,7 @@ exit 0
 %dir %{suse_styles_dir}/opensuse2013
 %dir %{suse_styles_dir}/opensuse2013-ns
 %dir %{suse_styles_dir}/suse2021-ns
+%dir %{suse_styles_dir}/suse2022-ns
 
 %dir %{_ttfontsdir}
 
@@ -181,6 +186,7 @@ exit 0
 %{suse_styles_dir}/opensuse2013/*
 %{suse_styles_dir}/opensuse2013-ns/*
 %{suse_styles_dir}/suse2021-ns/*
+%{suse_styles_dir}/suse2022-ns/*
 
 # catalogs
 %config %{_sysconfdir}/xml/catalog.d/%{name}.xml
