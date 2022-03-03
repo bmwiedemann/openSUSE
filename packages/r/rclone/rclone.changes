@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  5 23:28:04 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix warning about packageand() by replacing the package and with
+  (rclone and $other_package_name) syntax
+- add BR for golang-packaging to get the %{go_nostrip} macro
+
+-------------------------------------------------------------------
 Sun Nov  7 03:16:37 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 1.57.0

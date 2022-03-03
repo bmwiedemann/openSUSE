@@ -1,7 +1,7 @@
 #
 # spec file for package rclone
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.16
+BuildRequires:  golang-packaging
+
+%{go_nostrip}
 
 %description
 rsync for cloud storage. rclone is a command line program to sync files and
@@ -38,7 +41,7 @@ various additional features.
 Summary:        Bash Completion for %{name}
 Group:          Productivity/Networking/Web/Utilities
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -48,7 +51,7 @@ Bash command line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          Productivity/Networking/Web/Utilities
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
