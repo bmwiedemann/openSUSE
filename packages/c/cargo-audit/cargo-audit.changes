@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 02 03:46:39 UTC 2022 - wbrown@suse.de
+
+- Update to vendored libraries to resolve security issues
+
+-------------------------------------------------------------------
 Fri Dec  3 01:09:15 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Fix incorrect license string
