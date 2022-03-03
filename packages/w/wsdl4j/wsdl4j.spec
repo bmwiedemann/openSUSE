@@ -1,7 +1,7 @@
 #
 # spec file for package wsdl4j
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Web Services Description Language Toolkit for Java
 License:        IPL-1.0
 Group:          Development/Libraries/Java
-Url:            http://sourceforge.net/projects/wsdl4j
+URL:            http://sourceforge.net/projects/wsdl4j
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.zip
 Source1:        %{name}-MANIFEST.MF
 Source2:        http://repo1.maven.org/maven2/wsdl4j/wsdl4j/%{version}/wsdl4j-%{version}.pom
@@ -77,7 +77,7 @@ install -m 644 build/lib/qname.jar %{buildroot}%{_javadir}/qname.jar
 # POMs
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
 install -p -m 0644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap JPP-%{name}.pom %{name}.jar
+%add_maven_depmap JPP-%{name}.pom %{name}.jar -a axis:axis-%{name}
 
 # javadoc
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
