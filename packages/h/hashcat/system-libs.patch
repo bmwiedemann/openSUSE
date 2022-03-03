@@ -2,10 +2,10 @@
  src/Makefile |   19 ++++++++++---------
  1 file changed, 10 insertions(+), 9 deletions(-)
 
-Index: hashcat-6.2.1/src/Makefile
+Index: hashcat-6.2.5/src/Makefile
 ===================================================================
---- hashcat-6.2.1.orig/src/Makefile
-+++ hashcat-6.2.1/src/Makefile
+--- hashcat-6.2.5.orig/src/Makefile
++++ hashcat-6.2.5/src/Makefile
 @@ -3,17 +3,17 @@
  ## License.....: MIT
  ##
@@ -14,7 +14,7 @@ Index: hashcat-6.2.1/src/Makefile
 +SHARED                  ?= 1
  DEBUG                   := 0
  PRODUCTION              := 1
- PRODUCTION_VERSION      := v6.2.1
+ PRODUCTION_VERSION      := v6.2.5
  ENABLE_CUBIN            ?= 1
  ENABLE_BRAIN            ?= 1
  ENABLE_UNRAR            ?= 1
@@ -63,7 +63,7 @@ Index: hashcat-6.2.1/src/Makefile
  ifeq ($(PRODUCTION),0)
  CFLAGS                  += -W
  CFLAGS                  += -Wall
-@@ -224,7 +225,7 @@ endif
+@@ -230,7 +231,7 @@ endif
  ifeq ($(DEBUG),0)
  CFLAGS                  += -O2
  ifneq ($(UNAME),Darwin)
@@ -72,7 +72,7 @@ Index: hashcat-6.2.1/src/Makefile
  endif
  else
  ifeq ($(DEBUG),1)
-@@ -250,7 +251,7 @@ CFLAGS                  += -pipe -Iinclu
+@@ -256,7 +257,7 @@ CFLAGS                  += -pipe -Iinclu
  # LZMA
  CFLAGS                  += -I$(DEPS_LZMA_PATH)
  ifeq ($(USE_SYSTEM_LZMA),1)

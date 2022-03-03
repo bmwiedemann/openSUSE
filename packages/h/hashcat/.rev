@@ -56,4 +56,12 @@
     <comment>- Update to release 6.2.1</comment>
     <requestid>893318</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>62ef6a11e456baa68342480d0dd58581</srcmd5>
+    <version>6.2.5</version>
+    <time>1646349426</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>958515</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 23 19:01:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.2.5
+  * This release adds improved HIP compatibility, several new
+    hash-modes, and bug fixes.
+
+-------------------------------------------------------------------
 Sat May 15 13:28:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.2.1

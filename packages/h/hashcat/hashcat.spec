@@ -1,7 +1,7 @@
 #
 # spec file for package hashcat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           hashcat
-%define lname	libhashcat6_2_1
-Version:        6.2.1
+%define lname	libhashcat6_2_5
+Version:        6.2.5
 Release:        0
 Summary:        CPU-based password recovery utility
 License:        GPL-2.0-or-later AND MIT
