@@ -165,4 +165,12 @@
     <comment></comment>
     <requestid>918627</requestid>
   </revision>
+  <revision rev="24" vrev="136">
+    <srcmd5>802b3f301703af3fdb575a9e3c5d3a9f</srcmd5>
+    <version>0.4</version>
+    <time>1646349454</time>
+    <user>dimstar_suse</user>
+    <comment>generate maven metadata and distribute as maven artifact</comment>
+    <requestid>958690</requestid>
+  </revision>
 </revisionlist>
