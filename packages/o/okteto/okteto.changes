@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 02 14:06:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.6:
+  * fix: okteto down cause nil pointer exception (#2303)
+  * fix: stop other okteto for the same app (#2299)
+  * Fix: UI not showing unmarshal errors (#2296)
+  * check if there is an error after start (#2302)
+
+-------------------------------------------------------------------
 Fri Feb 18 07:38:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.15.5:
