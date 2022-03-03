@@ -1,0 +1,15 @@
+---
+ MulticoreTSNE/tests/test_base.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/MulticoreTSNE/tests/test_base.py
++++ b/MulticoreTSNE/tests/test_base.py
+@@ -21,7 +21,7 @@ def pdist(X):
+ class TestMulticoreTSNE(unittest.TestCase):
+     @classmethod
+     def setUpClass(cls):
+-        cls.Xy = make_blobs(20, 100, 2, shuffle=False)
++        cls.Xy = make_blobs(20, 100, centers=2, shuffle=False)
+ 
+     def test_tsne(self):
+         X, y = self.Xy

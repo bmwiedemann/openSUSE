@@ -1,7 +1,7 @@
 #
 # spec file for package python-MulticoreTSNE
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/DmitryUlyanov/Multicore-TSNE
 Source:         https://files.pythonhosted.org/packages/source/M/MulticoreTSNE/MulticoreTSNE-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_sklearn.patch gh#DmitryUlyanov/Multicore-TSNE#90 mcepl@suse.com
+# signature of sklearn.datasets.make_blogs changed
+Patch0:         fix_sklearn.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
@@ -51,7 +54,8 @@ Stochastic Neighbor Embedding (t-SNE). It is implemented using Python
 and Torch CFFI-based wrappers.
 
 %prep
-%setup -q -n MulticoreTSNE-%{version}
+%autosetup -p1 -n MulticoreTSNE-%{version}
+
 # fix optflags
 sed -i \
     -e 's:-O3 -fPIC -ffast-math -funroll-loops:%optflags:' \

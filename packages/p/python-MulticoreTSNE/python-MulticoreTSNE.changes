@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  2 23:38:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_sklearn.patch adjusting for changed API of
+  sklearn.datasets.make_blobs.
+
+-------------------------------------------------------------------
 Wed May  5 17:17:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - fix cmake argument generation in setup.py
