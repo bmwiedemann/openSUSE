@@ -1,7 +1,7 @@
 #
 # spec file for package beets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,23 @@
 
 
 Name:           beets
-Version:        1.4.9
+Version:        1.6.0
 Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Players
 URL:            http://beets.io/
 Source:         https://github.com/beetbox/beets/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         0001-Fixed-failing-test-where.patch
-# PATCH-FIX-UPSTREAM fix_test_command_line_option_relative_to_working_dir.diff alarrosa@suse.de - Fixes one of the tests to run successfully
-Patch1:         fix_test_command_line_option_relative_to_working_dir.diff
-# PATCH-FIX-UPSTREAM 0001-Compatibility-with-breaking-changes-to-the-ast-module.patch -- Fix from upstream for boo#1178199
-Patch2:         0001-Compatibility-with-breaking-changes-to-the-ast-module.patch
+BuildRequires:  fdupes
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-Unidecode
+BuildRequires:  python3-confuse >= 1.0.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-jellyfish
+BuildRequires:  python3-mediafile >= 0.2.0
 BuildRequires:  python3-munkres
 BuildRequires:  python3-musicbrainzngs >= 0.4
-BuildRequires:  python3-mutagen >= 1.33
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-six >= 1.9
 # test requirements
 BuildRequires:  python3-Flask
 BuildRequires:  python3-beautifulsoup4
@@ -54,24 +50,24 @@ BuildRequires:  python3-responses
 BuildRequires:  python3-testsuite
 Requires:       python3-PyYAML
 Requires:       python3-Unidecode
+Requires:       python3-confuse >= 1.0.0
 Requires:       python3-jellyfish
+Requires:       python3-mediafile >= 0.2.0
 Requires:       python3-munkres
 Requires:       python3-musicbrainzngs >= 0.4
-Requires:       python3-mutagen >= 1.33
-Requires:       python3-six >= 1.9
-Recommends:     python3-pyacoustid
+Recommends:     ffmpeg
+Recommends:     python3-dbus-python
+Recommends:     python3-discogs-client >= 2.1.0
 Recommends:     python3-flask
 Recommends:     python3-flask-cors
-Recommends:     python3-discogs-client >= 2.1.0
-Recommends:     python3-pyxdg
-Recommends:     python3-requests
-Recommends:     python3-dbus-python
-Recommends:     python3-rarfile
-Recommends:     python3-requests-oauthlib >= 0.6.1
-Recommends:     python3-python-mpd2
+Recommends:     python3-pyacoustid
 Recommends:     python3-pylast
+Recommends:     python3-python-mpd2
+Recommends:     python3-pyxdg
+Recommends:     python3-rarfile
 Recommends:     python3-requests
-Recommends:     ffmpeg
+Recommends:     python3-requests
+Recommends:     python3-requests-oauthlib >= 0.6.1
 Suggests:       flac
 Suggests:       mp3val
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -108,15 +104,13 @@ Writing additional plugins for beets is possible using Python.
 
 %prep
 %setup -q -n beets-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 python3 setup.py build
 
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%fdupes %{buildroot}
 
 %files
 %defattr(-,root,root,-)
