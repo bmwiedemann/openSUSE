@@ -232,7 +232,6 @@ Xvnc extension allows X clients to read and change VNC configuration.
 %package x11vnc
 Summary:        Wrapper that starts x0vncserver
 Group:          System/X11/Servers/XF86_4
-Requires:       python
 Requires:       xorg-x11-Xvnc
 Provides:       x11vnc
 Conflicts:      x11vnc
