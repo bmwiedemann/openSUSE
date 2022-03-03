@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 02 05:05:15 UTC 2022 - william.brown@suse.com
+
+- Update vendored dependencies
+
+-------------------------------------------------------------------
 Mon Feb 14 00:44:44 UTC 2022 - william.brown@suse.com
 
 - Remove patch for symlinking to rustup-init in no self update
