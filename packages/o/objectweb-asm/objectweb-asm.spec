@@ -1,7 +1,7 @@
 #
 # spec file for package objectweb-asm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,9 +101,6 @@ sed 's/@VERSION@/%{version}/g' %{SOURCE9} > asm-all/pom.xml
 for i in asm asm-analysis asm-commons asm-tree asm-util asm-all; do
   %pom_remove_parent ${i}
 done
-
-# We don't want to build modular jars
-find . -name module-info.java -print -delete
 
 %build
 %ant \

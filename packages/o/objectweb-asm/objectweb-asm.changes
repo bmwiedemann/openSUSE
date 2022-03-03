@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  2 17:03:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build asm as modular jar files to be used as such by java >= 9
+- Leave asm-all.jar as a non-modular jar
+
+-------------------------------------------------------------------
 Wed Oct 20 19:54:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.2
@@ -12,29 +18,29 @@ Wed Oct 20 19:54:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
   * Javadoc fixes
   * bug fixes
     + 317942: ClassCheckAdaptor output represents reference arrays
-	  as only their "root" component type
+      as only their "root" component type
     + 317921: Make Analyzer not require correct maxs or calculate
-	  maxs fast
+      maxs fast
     + 317922: InstructionAdapter shall throw consistent exceptions
     + 317923: Incorrect documentation on ClassReader's use of
-	  AnnotationVisitor
+      AnnotationVisitor
     + 317929: ClassRemapper doesn't remap annotation values
     + 317930: Can CheckClassAdapter.checkTypeRef throw a more
-	  specific exception?
+      specific exception?
     + 317931: Shall CheckMethodAdapter.Method.visitLabel throw
-	  IllegalStateException?
+      IllegalStateException?
     + Tests that requires preview features should only run if the
-	  preview features of the right JDK are enabled
+      preview features of the right JDK are enabled
     + 317897: AdviceAdapter incorrectly emits onMethodEnter from a
-	  try-catch block in a constructor
+      try-catch block in a constructor
     + 317900: Javadoc of ClassVisitor does not specify order of
-	  visitRecordComponent
+      visitRecordComponent
     + 317904: Bug with constructors in AdviceAdapter
     + 317910: Iterating over a InsnList with an iterator traverses
-	  the list twice
+      the list twice
     + 317898: ASM 8 does not support writing of empty records
     + 317896: Performance degradation when using dynamic constants
-	  as a static paramet to another InDy/ConDy
+      as a static paramet to another InDy/ConDy
     + 317885: SKIP_DEBUG now skips MethodParameters attributes
 
 -------------------------------------------------------------------
