@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  1 15:46:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Alias relevant artifacts to org.apache.axis
+
+-------------------------------------------------------------------
 Tue Feb 22 19:26:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j

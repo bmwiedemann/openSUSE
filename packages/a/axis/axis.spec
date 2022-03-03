@@ -22,7 +22,7 @@ Release:        0
 Summary:        Apache implementation of the SOAP
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://axis.apache.org/axis/
+URL:            https://axis.apache.org/axis/
 Source0:        axis-src-1_4.tar.bz2
 # svn export http://svn.apache.org/repos/asf/webservices/axis/branches/AXIS_1_4_FINAL/
 # Build only
@@ -35,11 +35,10 @@ Source2:        axis-MANIFEST.MF
 # cvs -d :pserver:anonymous@dev.eclipse.org:/cvsroot/tools export -r v1_3_0 org.eclipse.orbit/javax.xml.soap/META-INF/MANIFEST.MF
 # mv org.eclipse.orbit/javax.xml.soap/META-INF/MANIFEST.MF saaj-MANIFEST.MF
 Source3:        saaj-MANIFEST.MF
-Source4:        http://repo1.maven.org/maven2/axis/axis/1.4/axis-1.4.pom
-Source5:        http://repo1.maven.org/maven2/axis/axis-ant/1.4/axis-ant-1.4.pom
-Source6:        http://repo1.maven.org/maven2/axis/axis-jaxrpc/1.4/axis-jaxrpc-1.4.pom
-Source7:        http://repo1.maven.org/maven2/axis/axis-saaj/1.4/axis-saaj-1.4.pom
-Source8:        axis-schema-1.4.pom
+Source4:        https://repo1.maven.org/maven2/axis/axis/1.4/axis-1.4.pom
+Source5:        https://repo1.maven.org/maven2/axis/axis-ant/1.4/axis-ant-1.4.pom
+Source6:        https://repo1.maven.org/maven2/axis/axis-jaxrpc/1.4/axis-jaxrpc-1.4.pom
+Source7:        https://repo1.maven.org/maven2/axis/axis-saaj/1.4/axis-saaj-1.4.pom
 Patch0:         unimplemented-dom3-methods.patch
 Patch1:         axis-1.4-gcc44_build.patch
 Patch2:         axis-manifest.patch
@@ -94,6 +93,8 @@ Manual for axis
 
 %prep
 %setup -q -n %{name}-1_4
+cp %{SOURCE5} %{SOURCE6} %{SOURCE7} .
+%pom_xpath_remove pom:distributionManagement *.pom
 
 %patch0 -p1
 %patch1 -p1 -b gcc44-build
@@ -115,6 +116,8 @@ rm -f src/org/apache/axis/providers/java/EJBProvider.java
 rm -f src/org/apache/axis/deployment/wsdd/providers/WSDDJavaEJBProvider.java
 
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} .
+
+mkdir -p build/schema
 
 %build
 [ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java
@@ -149,24 +152,18 @@ popd
 
 # POMs
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE4} %{buildroot}%{_mavenpomdir}/JPP.%{name}-axis.pom
-%add_maven_depmap JPP.%{name}-axis.pom %{name}/axis.jar
-install -m 644 %{SOURCE5} %{buildroot}%{_mavenpomdir}/JPP.%{name}-axis-ant.pom
-%add_maven_depmap JPP.%{name}-axis-ant.pom %{name}/axis-ant.jar
-install -m 644 %{SOURCE6} %{buildroot}%{_mavenpomdir}/JPP.%{name}-jaxrpc.pom
-%add_maven_depmap JPP.%{name}-jaxrpc.pom %{name}/jaxrpc.jar
-install -m 644 %{SOURCE7} %{buildroot}%{_mavenpomdir}/JPP.%{name}-saaj.pom
-%add_maven_depmap JPP.%{name}-saaj.pom %{name}/saaj.jar
-#install -m 644 %{S:8} $RPM_BUILD_ROOT%%{_mavenpomdir}/JPP.%%{name}-axis-schema.pom
-# % add_maven_depmap JPP.%%{name}-axis-schema.pom %%{name}/axis-schema.jar
+install -m 644 %{SOURCE4} %{buildroot}%{_mavenpomdir}/JPP.%{name}.pom
+%add_maven_depmap JPP.%{name}.pom %{name}/axis.jar
+install -m 644 axis-ant-1.4.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-ant.pom
+%add_maven_depmap JPP.%{name}-ant.pom %{name}/axis-ant.jar -a org.apache.axis:axis-ant
+install -m 644 %{name}-jaxrpc-1.4.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-jaxrpc.pom
+%add_maven_depmap JPP.%{name}-jaxrpc.pom %{name}/jaxrpc.jar -a org.apache.axis:%{name}-jaxrpc
+install -m 644 %{name}-saaj-1.4.pom %{buildroot}%{_mavenpomdir}/JPP.%{name}-saaj.pom
+%add_maven_depmap JPP.%{name}-saaj.pom %{name}/saaj.jar -a org.apache.axis:%{name}-saaj
 
-%files
+%files -f .mfiles
 %license LICENSE
 %doc README release-notes.html changelog.html
-%dir %{_javadir}/%{name}
-%{_javadir}/%{name}/*.jar
-%{_mavenpomdir}/*.pom
-%{_datadir}/maven-metadata/%{name}.xml
 
 %files manual
 %doc docs/*
