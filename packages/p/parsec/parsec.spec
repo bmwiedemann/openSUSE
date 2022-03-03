@@ -17,24 +17,23 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+%define archive_version 1.0.0-rc1
 
 %{?systemd_ordering}
 Name:           parsec
-Version:        0.8.1
+Version:        1.0.0~rc1
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
 URL:            https://parallaxsecond.github.io/parsec-book
-Source0:        https://github.com/parallaxsecond/parsec/archive/%{version}.tar.gz#/parsec-%{version}.tar.gz
+Source0:        https://github.com/parallaxsecond/parsec/archive/%{archive_version}.tar.gz#/parsec-%{archive_version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source3:        parsec.service
 Source4:        config.toml
 Source5:        parsec.conf
 Source6:        system-user-parsec.conf
-Source10:       https://git.trustedfirmware.org/TS/trusted-services.git/snapshot/trusted-services-c1cf912.tar.gz
-# PATCH-FIX-UPSTREAM - https://github.com/parallaxsecond/parsec/issues/569
-Patch0:         harden_parsec.service.patch
+Source10:       https://git.trustedfirmware.org/TS/trusted-services.git/snapshot/trusted-services-389b506.tar.gz
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake
@@ -65,19 +64,18 @@ This abstraction layer keeps workloads decoupled from physical platform details,
 enabling cloud-native delivery flows within the data center and at the edge.
 
 %prep
-%setup -q -a1 -a10
+%setup -q -a1 -a10 -n parsec-%{archive_version}
 rmdir trusted-services-vendor
-mv trusted-services-c1cf912 trusted-services-vendor
+mv trusted-services-389b506 trusted-services-vendor
 rm -rf .cargo && mkdir .cargo
 cp %{SOURCE2} .cargo/config
 # Enable all providers
 sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
-# Features available in 0.8.0:
+# Features available in 1.0.0:
 # all-providers = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "trusted-service-provider"]
 # all-authenticators = ["direct-authenticator", "unix-peer-credentials-authenticator", "jwt-svid-authenticator"]
 # But disable "trusted-service-provider" until we have a trusted-services package
 echo 'default = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "all-authenticators"]' >> Cargo.toml
-%patch0 -p1
 
 %build
 export PROTOC=%{_bindir}/protoc
