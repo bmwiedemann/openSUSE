@@ -22,7 +22,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-dash
-Version:        1.20.0
+Version:        2.2.0
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -90,15 +90,18 @@ sed -i -e 's:==:>=:g' requires-*txt
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/renderer
 %python_clone -a %{buildroot}%{_bindir}/dash-generate-components
+%python_clone -a %{buildroot}%{_bindir}/dash-update-components
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %python_install_alternative renderer
 %python_install_alternative dash-generate-components
+%python_install_alternative dash-update-components
 
 %postun
 %python_uninstall_alternative renderer
 %python_uninstall_alternative dash-generate-components
+%python_uninstall_alternative dash-update-components
 
 %if %{with test}
 %check
@@ -110,6 +113,7 @@ sed -i -e 's:==:>=:g' requires-*txt
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/dash-generate-components
+%python_alternative %{_bindir}/dash-update-components
 %python_alternative %{_bindir}/renderer
 %{python_sitelib}/dash
 %{python_sitelib}/dash-%{version}-py*.egg-info

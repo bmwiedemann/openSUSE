@@ -87,4 +87,14 @@
     <comment></comment>
     <requestid>884578</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ca69373361ce1d88e19cdfcafe6696fc</srcmd5>
+    <version>2.2.0</version>
+    <time>1646349432</time>
+    <user>dimstar_suse</user>
+    <comment>Restore the link to the development project in d:l:p:numeric.
+
+Also, update to 2.2.0.</comment>
+    <requestid>958538</requestid>
+  </revision>
 </revisionlist>
