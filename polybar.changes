@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar  2 08:17:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.0:
+  Breaking:
+  * We added the backslash escape character (\) for configuration values. This
+    means that the literal backslash character now has special meaning in
+    configuration files, therefore if you want to use it in a value as a literal
+    backslash, you need to escape it with the backslash escape character. The parser
+    logs an error if any unescaped backslashes are found in a value. This affects
+    you only if you are using two consecutive backslashes in a config value, which
+    will now be interpreted as a single literal backslash. (#2354)
+  * We rewrote our formatting tag parser. This shouldn't break anything, if you
+    experience any problems, please let us know. The new parser now gives errors for
+    certain invalid tags where the old parser would just silently ignore them.
+    Adding extra text to the end of a valid tag now produces an error. For example,
+    tags like %{T-a}, %{T2abc}, %{rfoo}, and others will now start producing errors.
+    This does not affect you unless you are producing your own invalid formatting
+    tags (for example in a script).
+  * For security reasons, the named pipe at /tmp/polybar_mqueue.<PID> had its
+    permission bits changed from 666 to 600 to prevent sending ipc messages to
+    polybar processes running under a different user.
+  * For details see: https://github.com/polybar/polybar/releases/tag/3.6.0
+
+-------------------------------------------------------------------
 Wed Sep 22 07:32:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.5.7:
