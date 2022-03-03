@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyBindGen
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           python-PyBindGen
-Version:        0.20.1
+Version:        0.22.0
 Release:        0
 Summary:        Python Bindings Generator
 License:        LGPL-2.1-only
@@ -39,7 +39,8 @@ A tool to generate Python bindings for C/C++ code.
 
 %prep
 %setup -q -n PyBindGen-%{version}
-find . -iname \*.py -exec sed -ie '1s#/usr/bin/env python#/usr/bin/python#' \{\} \;
+# Remove some pointless she-bangs
+find pybindgen/ -iname \*.py -exec sed -ie '1 { \#/usr/bin# d }' '{}' \;
 
 %build
 %python_build

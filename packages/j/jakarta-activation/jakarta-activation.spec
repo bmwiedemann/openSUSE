@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-activation
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global artifact_name jakarta.activation-api
 Name:           jakarta-activation
 Version:        2.1.0
 Release:        0
@@ -23,10 +24,11 @@ Summary:        Jakarta Activation Specification and Implementation
 License:        BSD-3-Clause
 URL:            https://eclipse-ee4j.github.io/jaf/
 Source0:        https://github.com/eclipse-ee4j/jaf/archive/%{version}/jaf-%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
-BuildRequires:  maven-local
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  javapackages-local
 BuildArch:      noarch
 
 %description
@@ -43,28 +45,39 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n jaf-%{version}
+cp %{SOURCE1} api/build.xml
 
 %pom_remove_parent api
-%pom_remove_plugin :maven-enforcer-plugin api
-%pom_remove_plugin :build-helper-maven-plugin api
-%pom_remove_plugin :buildnumber-maven-plugin api
 
 %build
 pushd api
-%{mvn_build} -f
+%{ant} package javadoc
 popd
 
 %install
 pushd api
-%mvn_install
+# jars
+mkdir -p %{buildroot}%{_javadir}/%{name}
+cp -a target/%{artifact_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{artifact_name}.jar
+
+#pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
+install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifact_name}.pom
+%add_maven_depmap %{name}/%{artifact_name}.pom %{name}/%{artifact_name}.jar
+
+# javadoc
+mkdir -p %{buildroot}%{_javadocdir}/%{name}
+cp -a target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 popd
+
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f api/.mfiles
 %doc README.md
 %license LICENSE.md NOTICE.md
 
-%files javadoc -f api/.mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.md NOTICE.md
 
 %changelog

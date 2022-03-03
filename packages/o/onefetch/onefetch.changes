@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Mar  2 21:42:34 UTC 2022 - James Hobson <james.hobson@oriel.ox.ac.uk>
+
+- Update to 2.11.0
+  * [docs] Add Persian README
+  * [docs] Add Chinese README
+  * [misc] add CLI flag to count hidden files and directories
+  * [language] added support for Protocol Buffers
+  * [misc] Better error handling (Replace error-chain with anyhow)
+  * [docs] Add Russian README 
+  * [language] added support for SQL
+  * [cd] Automate "languages supported" badge
+  * [language] added support for WebAssembly
+  * [language] added support for Toml
+  * [misc] removed json dependency
+  * [language] added support for Yaml
+  * [language] added support for Jsonnet
+  * [language] added support for Solidity
+  * [docs] Fix contributing link in cn readme
+  * [language] added support for Json
+  * [language] added support for Sass
+  * [language] added support for LLVM
+  * [language] added support for AutoHotKey
+  * [misc] add LanguageType
+  * [language] added support for Coq
+  * [misc] update license cache
+  * [language] added support for Fortran Legacy
+  * [cd] Add workflow for Minimum Rust Version badge
+  * [misc] Use time crate instead of chrono
+
+-------------------------------------------------------------------
 Fri Nov  5 04:02:48 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues

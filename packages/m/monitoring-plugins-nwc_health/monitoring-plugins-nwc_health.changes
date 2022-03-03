@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 24 20:41:06 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.1.0.1
+  * suppress unknown arista sensors which are not marked as faulty
+  * check filesystems in Arista (full Log/Core stops syslog and
+    accounting)
+  * accept disabled sensors
+  * bugfix in arista power supply
+-------------------------------------------------------------------
 Tue Jan 11 22:02:42 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.0.0.2

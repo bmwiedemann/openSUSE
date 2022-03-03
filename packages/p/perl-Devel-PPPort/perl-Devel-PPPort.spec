@@ -18,10 +18,10 @@
 
 %define cpan_name Devel-PPPort
 Name:           perl-Devel-PPPort
-Version:        3.64
+Version:        3.66
 Release:        0
-Summary:        Perl/Pollution/Portability
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Perl/Pollution/Portability
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

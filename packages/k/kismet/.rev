@@ -543,4 +543,33 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>957031</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cd89a4cf1411fe2204f2d2262bd3e617</srcmd5>
+    <version>2022_02_R1</version>
+    <time>1646349497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022-02-R1
+  This is primarily a maintenance release to fix a number of bugs
+  discovered in the 2022-01 releases, including:
+  * Some datasources not appearing on arm32 (rpi)
+  * Fix segfault due to “smart” pointers and legacy api
+  * Check for zero-sized broken frames
+  * Give IE127 alerts a little more headroom
+  * Fix override config append not appending
+  * Merge patch to trim GPS coordinates in logs
+  * Fix old mutex in datasource serialization
+  * Detect binary in NMEA GPS streams
+
+- Update to version 2022-01-R3a
+  * Install missing kismet_wardrive.conf
+
+- Update to version 2022-01-R3
+  * Minor fixes on top of 2022-01-R1 and 2022-01-R2
+  * Fixing compilation on some old compilers and distributions
+  * Fixing a javascript race condition that caused some of the
+    tabs in the UI to not appear sometimes.
+
+- Update to version 2022-01-R2</comment>
+    <requestid>959254</requestid>
+  </revision>
 </revisionlist>

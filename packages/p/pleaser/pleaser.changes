@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 02 06:12:16 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies
+
+-------------------------------------------------------------------
 Tue Jan 18 00:04:02 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Remove unused BuildRequires from spec file

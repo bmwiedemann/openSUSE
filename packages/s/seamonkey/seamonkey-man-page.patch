@@ -1,11 +1,6 @@
---- comm/suite/installer/Makefile.in	2020-12-22 19:18:42.000000000 +0300
-+++ comm/suite/installer/Makefile.in-OK	2021-01-23 00:34:17.416407249 +0300
-@@ -140,16 +140,20 @@
- 	defaults/profile/panels.rdf \
- 	defaults/profile/mimeTypes.rdf \
- 	defaults/profile/chrome/userChrome-example.css \
- 	defaults/profile/chrome/userContent-example.css \
- 	$(NULL)
+--- comm/suite/installer/Makefile.in	2021-08-08 15:29:32.000000000 +0200
++++ comm/suite/installer/Makefile.in	2022-03-03 13:31:00.586849160 +0100
+@@ -145,6 +145,10 @@
  
  include $(topsrcdir)/toolkit/mozapps/installer/packager.mk
  
@@ -16,19 +11,9 @@
  ifeq (Darwin, $(OS_ARCH))
  BINPATH = $(_BINPATH)
  DEFINES += -DAPPNAME=$(_APPNAME)
- else
- BINPATH = bin
- endif
- DEFINES += -DBINPATH=$(BINPATH)
- 
---- build/moz.configure/old.configure	2020-12-22 14:42:29.000000000 +0300
-+++ build/moz.configure/old.configure-OK	2021-01-23 01:07:28.041893813 +0300
-@@ -233,16 +233,17 @@
-     '--enable-unsigned-overflow-sanitizer',
-     '--enable-updater',
-     '--enable-valgrind',
-     '--enable-verify-mar',
-     '--enable-xul',
+--- build/moz.configure/old.configure	2022-01-24 23:04:14.000000000 +0100
++++ build/moz.configure/old.configure	2022-03-03 13:30:58.166918412 +0100
+@@ -225,6 +225,7 @@
      '--enable-zipwriter',
      '--includedir',
      '--libdir',
@@ -36,8 +21,3 @@
      '--no-create',
      '--prefix',
      '--with-android-distribution-directory',
-     '--with-android-max-sdk',
-     '--with-android-min-sdk',
-     '--with-android-sdk',
-     '--with-app-basename',
-     '--with-app-name',

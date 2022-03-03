@@ -1,7 +1,7 @@
 #
 # spec file for package ldap-sdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Name:           ldap-sdk
 Version:        4.21.0
 Release:        0
 Summary:        LDAP SDK
-License:        MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.0-or-later
+License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.0-or-later
 URL:            https://www.dogtagpki.org/
 Source:         https://github.com/dogtagpki/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ant
@@ -58,7 +58,12 @@ Javadoc for %{name}
 %pom_xpath_set pom:project/pom:version %{version} %{jarname}.pom
 
 %build
+%if %{?pkg_vcmp:%pkg_vcmp mozilla-jss >= 5}%{!?pkg_vcmp:0}
+build-jar-repository -s -p java-sdk/ldapjdk/lib jss
+ln -sf jss.jar java-sdk/ldapjdk/lib/jss4.jar
+%else
 build-jar-repository -s -p java-sdk/ldapjdk/lib jss4
+%endif
 %{ant} -f java-sdk/build.xml dist
 
 %install

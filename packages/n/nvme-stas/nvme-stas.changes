@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Thu Mar  3 14:19:14 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Correct License information. This project is licenced under
+  Apache License 2.0.
+- Mark sys.conf.doc as config file.
+
+-------------------------------------------------------------------
+Thu Mar  3 13:59:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gobject-introspection BuildRequires: enable typelib
+  introspection. This allows RPM to add a bunch of autodetected
+  dependenices by inspecting the python scripts (basedon
+  python-gobject).
+
+-------------------------------------------------------------------
+Wed Feb 23 16:17:42 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc2:
+  * Fis github workflows to pull from upstream libnvme
+  * TP8010 was merged into upstream libnvme. Some APIs have changed.
+    This is to update nvme-stas to the new APIs.
+  * A bunch of mostly cosmetic changes
+  * Cleaning up a few things.
+  * Simplifying mDNS configuration and updating documentation.
+  * Changed DBus rules to only block setting properties
+  * Restrict the Dbus "deny" rules to only the debug interface.
+
+-------------------------------------------------------------------
+Wed Feb 16 17:36:18 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc1:
+  * fix comment
+  * Perform explicit registration from user-space
+  * Add known image to docker-compose
+  * Add docker run/build way to README
+  * Actions: Disable actions/setup-python
+  * Actions: Work on incoming branch
+  * Fixing docker compilation error
+  * Update docker-publish.yml
+  * Fix github workflow
+  * removed unused code
+  * D-Bus config fixes.
+  * github workflow actions - fix PYTHONPATH
+
+-------------------------------------------------------------------
+Thu Jan 27 17:28:48 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Initial nvme-stas packaging

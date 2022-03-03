@@ -68,7 +68,7 @@ The package provides header and other needed development files for the library %
 %autosetup -p1
 
 %build
-%make_build prefix=%{_prefix} libdir=%{_libdir} plugin_dir=%{_libdir}/%{sodname}/plugins all doc
+%make_build -j1 CFLAGS="%{optflags}" prefix=%{_prefix} libdir=%{_libdir} plugin_dir=%{_libdir}/%{sodname}/plugins all doc
 
 %install
 %make_install prefix=%{_prefix} libdir=%{_libdir} \

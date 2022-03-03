@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 03 17:48:51 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646321411.b5d8be1e2:
+  * Dependency cron 2022-03-03
+  * Avoid horizontal scroll bars on dashboard pages
+  * Avoid 500 response and error log when `filename` param not specified
+  * Use simpler SQL for has_modules
+  * Turn `Worker … accepted job … which was never assigned …` into info
+  * t: Consistently use Test::Warnings everwhere
+  * Use signatures in OpenQA::CacheService::Client
+  * Use signatures in OpenQA::CacheService::Command
+  * Use signatures in OpenQA::CacheService::Request
+  * Use signatures in OpenQA::CacheService::Task
+  * Simplify t/43-cli-api
+
+-------------------------------------------------------------------
 Tue Mar 01 09:48:57 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1646082175.7a50bad50:

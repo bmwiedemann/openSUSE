@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2022-01-R2
+%define realver 2022-02-R1
 Name:           kismet
-Version:        2022_01_R2
+Version:        2022_02_R1
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -293,6 +293,7 @@ sed -i 's/\r$//' http_data/css/layout.css
 %limit_build -m 2500
 %configure \
     --sysconfdir=%{_sysconfdir}/kismet \
+    --enable-btgeiger \
     --disable-optimization
 make %{?_smp_mflags} all
 make %{?_smp_mflags} plugins
@@ -337,6 +338,7 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %config %{_sysconfdir}/kismet/kismet_logging.conf
 %config %{_sysconfdir}/kismet/kismet_memory.conf
 %config %{_sysconfdir}/kismet/kismet_uav.conf
+%config %{_sysconfdir}/kismet/kismet_wardrive.conf
 %{_bindir}/kismet
 %{_bindir}/kismet_discovery
 %{_bindir}/kismet_server

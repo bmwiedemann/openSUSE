@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Feb 26 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.4.3
+
+  Added:
+  * TileMap: Expose "autotile_coord"` parameter in "TileMap.set_cellv"
+  * Expose "AnimationNodeOneShot::mix_mode" as a property
+
+  Fixed:
+  * GridMap: "Convert to MeshLibrary" not respecting collision transforms
+  * GridMap: Editing MeshLibrary's Shapes array from the Inspector
+  * Portals: gameplay monitor unloading and ticking
+  * Portals: DYNAMIC particle systems
+  * Potential infinite recursion crash in Variant decoding
+  * Decoding UTF-8 filenames on unzipping
+  * Replicate load-as-placeholder state on node duplication
+  * "ProjectSettings.has_setting()" handle feature overrides
+  * Editor: undo/redo operations in Input Map
+  * Editor: Performance increase for opening the editor on big projects
+  * GDScript: Clear pending function states when reloading script
+  * GDScript: crash when "is" keyword is tested against a String variable
+  * GUI: Release focus of Control node when exiting tree
+  * GUI: LineEdit center and right alignment
+  * GUI: PopupMenu bad item offset with custom vseparation
+  * GUI: RichTextLabel underline appearance when inside fill tag
+  * GUI: RichTextLabel underline prevents strikethrough from rendering
+  * GUI: TabContainer not setting layout immediately
+  * GUI: TextEdit blocking side scrolling in ScrollContainer
+  * GUI: TextureButton focus texture logic
+  * GUI: nine patch of circular TextureProgressBar
+  * Import: glTF scene export crash on null normal texture
+  * Increase joystick max button number
+  * HTTPRequest support for requests with "content-length" above 2.1 GB
+  * Fix tablet tilt values returning bad values
+  * Rendering: blend shapes when octahedral compression is used
+  * Rendering: nvalid read when using LightOccluder2D
+  * GLES3: Fix visible background line in intersections in screen-space reflections
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.4.3/Godot_v3.4.3-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
 Wed Dec 29 12:00:00 UTC 2021 - cunix@mail.de
 
 - Update to 3.4.2

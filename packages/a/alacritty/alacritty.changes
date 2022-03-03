@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb 27 15:00:36 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.10.1
+  * feat: Option font.builtin_box_drawing to disable the built-in
+    font for drawing box characters
+  * refactor: Builtin font thickness is now based on cell width
+    instead of underline thickness
+  * fix: Builtin font lines not contiguous when font.offset is used
+  * fix: font.glyph_offset is no longer applied on builtin font
+  * fix: Built-in font arcs alignment
+  * fix: Colors being slightly off when using
+    colors.transparent_background_colors
+  * fix: OSC 4 not handling
+  * fix: in OSC strings reporting default colors instead of
+    modified ones
+  * fix: OSC 104 not clearing colors when second parameter is empty
+
+-------------------------------------------------------------------
 Thu Feb  3 21:41:13 UTC 2022 - JL K <me@jlk.one>
 
 - Pin rustflags via specfile

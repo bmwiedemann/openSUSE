@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           alacritty
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0

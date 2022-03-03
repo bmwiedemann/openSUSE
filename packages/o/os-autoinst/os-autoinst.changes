@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 03 18:14:19 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646240746.8eee6a61:
+  * Add proper command line parsing for all scripts
+  * Add proper header to os-autoinst-openvswitch
+  * Add dependency for crop.py
+  * Remove obsolete python2 support in crop.py
+  * Remove obsolete autogen.sh
+  * Fix condition in script `check_qemu_oom`
+  * Fix language in check_needles.pl
+  * Simplify common scripts
+  * Use proper perl "signatures" in common script files
+  * t: Also prevent git-related problems in 14-isotovideo and 30-make
+
+-------------------------------------------------------------------
 Tue Mar 01 10:11:42 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1646045612.c69906cf:

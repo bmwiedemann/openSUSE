@@ -1,7 +1,7 @@
 #
 # spec file for package onefetch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           onefetch
-Version:        2.10.2
+Version:        2.11.0
 Release:        0
 Summary:        Git repository summary on your terminal
 License:        GPL-2.0-only AND MIT
@@ -34,7 +34,7 @@ Onefetch is a command line tool that displays information about your Git reposit
 %prep
 %setup -q
 %setup -q -D -T -a 1
-mkdir .cargo
+mkdir -p .cargo
 cat >.cargo/config <<EOF
 [source.crates-io]
 registry = 'https://github.com/rust-lang/crates.io-index'

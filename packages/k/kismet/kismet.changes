@@ -1,12 +1,42 @@
 -------------------------------------------------------------------
+Fri Feb 11 16:41:13 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2022-02-R1
+  This is primarily a maintenance release to fix a number of bugs
+  discovered in the 2022-01 releases, including:
+  * Some datasources not appearing on arm32 (rpi)
+  * Fix segfault due to “smart” pointers and legacy api
+  * Check for zero-sized broken frames
+  * Give IE127 alerts a little more headroom
+  * Fix override config append not appending
+  * Merge patch to trim GPS coordinates in logs
+  * Fix old mutex in datasource serialization
+  * Detect binary in NMEA GPS streams
+
+-------------------------------------------------------------------
 Thu Feb  3 14:25:50 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Limit parallelism to avoid running out of memory
 
 -------------------------------------------------------------------
+Fri Jan 28 21:22:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2022-01-R3a
+  * Install missing kismet_wardrive.conf
+
+-------------------------------------------------------------------
+Fri Jan 28 08:15:24 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2022-01-R3
+  * Minor fixes on top of 2022-01-R1 and 2022-01-R2
+  * Fixing compilation on some old compilers and distributions
+  * Fixing a javascript race condition that caused some of the
+    tabs in the UI to not appear sometimes.
+
+-------------------------------------------------------------------
 Fri Jan 21 10:01:06 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
-- Update to version 2022-01-R1
+- Update to version 2022-01-R2
   * Fix alert-syslog plugin
   * Remove outdated docs
   * Fix webserver stall

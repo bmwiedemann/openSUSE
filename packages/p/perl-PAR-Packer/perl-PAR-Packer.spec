@@ -18,10 +18,10 @@
 
 %define cpan_name PAR-Packer
 Name:           perl-PAR-Packer
-Version:        1.053
+Version:        1.054
 Release:        0
-Summary:        PAR Packager
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        PAR Packager
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -72,6 +72,7 @@ find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/scrip
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 # build system busted - only supporting serial build
 %{__make} -j1
+
 %check
 export PERL_TEST_POD=1
 make test

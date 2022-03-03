@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT

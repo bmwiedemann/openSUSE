@@ -1,7 +1,7 @@
 #
 # spec file for package junit5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,8 @@ Source304:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-p
 Source305:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter/%{jupiter_version}/junit-jupiter-%{jupiter_version}.pom
 # Vintage POM
 Source400:      https://repo1.maven.org/maven2/org/junit/vintage/junit-vintage-engine/%{vintage_version}/junit-vintage-engine-%{vintage_version}.pom
+# Bom
+Source500:      https://repo1.maven.org/maven2/org/junit/junit-bom/%{version}/junit-bom-%{version}.pom
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -65,6 +67,14 @@ Requires:       javapackages-tools
 
 %description
 JUnit is a popular regression testing framework for Java platform.
+
+%package bom
+Summary:        JUnit 5 (Bill of Materials)
+Group:          Development/Libraries/Java
+
+%description bom
+This Bill of Materials POM can be used to ease dependency management
+when referencing multiple JUnit artifacts using Gradle or Maven.
 
 %package javadoc
 Summary:        Javadoc for %{name}
@@ -125,6 +135,9 @@ done
 %endif
 
 %{mvn_package} :aggregator __noinstall
+%{mvn_package} :junit-bom bom
+
+cp -p %{SOURCE500} junit-bom/pom.xml
 
 %build
 %{mvn_build} -f -- -Dencoding=utf-8 -Dsource=8
@@ -147,6 +160,9 @@ ln -s ../../javadoc/junit5 documentation/src/docs/api
 %if %{with console}
 %{_bindir}/%{name}
 %endif
+%license LICENSE.md LICENSE-notice.md
+
+%files bom -f .mfiles-bom
 %license LICENSE.md LICENSE-notice.md
 
 %files javadoc -f .mfiles-javadoc

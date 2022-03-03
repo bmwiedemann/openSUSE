@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 24 10:23:14 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Use %{optflags}
+- Makefile is not parallel-safe
+
+-------------------------------------------------------------------
 Tue Feb 22 12:34:56 UTC 2022 - olaf@aepfle.de
 
 - Force correct pkgconfig_dir location to fix build

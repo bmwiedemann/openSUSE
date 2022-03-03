@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  2 13:42:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.054
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+
+  1.054  2022-01-27
+
+  - Temporarily disable t/90-gh41.t (system("\\\\?\\some-absolute-path") fails)
+
+-------------------------------------------------------------------
 Wed Jan 26 03:07:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.053

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Mar 03 12:10:36 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.11
+  * Remove obsolete MOZ_EXTENSIONS check in suite bug 1749146.
+  * Add connect button to cZ Networks Editor bug 1736443.
+  * Remove freenode remnants from ChatZilla in SeaMonkey bug 1741082.
+  * Prefer secure over insecure protocol in network list in ChatZilla
+    bug 1744440.
+  * Composer - Change tag textbox is not removed after use bug
+    1755369.
+  * Clean up repo links in debugQA bug 1746790.
+  * Fix misspelled references to macOS in suite bug 1749144.
+  * Remove obsolete references to Java and Flash bug 1749141.
+  * Help button not working in delete cert dialog bug 1750386.
+  * Rearrange Message Filter Dialog to make room for new features bug
+    1735053.
+  * Use Insert key as shortcut to create new message filters bug 1735055.
+  * Rename some variables used in SeaMonkey's FilterListDialog to
+    match Thunderbird's bug 1735056.
+  * Implement Copy to New message filter functionality bug 1735057.
+  * Add move to top / bottom buttons to message filters bug 1735059.
+  * Add preference to not prompt for message filter deletion bug
+    1735061.
+  * Clean up folder handling in FilterListDialog bug 1736425.
+  * Add refresh function to Filter list dialog so that it can be
+    updated when already open and new filters are added externally bug
+    1737450.
+  * Use listbox rather than tree in FilterListDialog bug 1746081.
+  * MsgFilterList(args) should take targetFilter and pass it to
+    FilterListDialog bug 1753891.
+  * Mail&News' start.xhtml: "We" link broken bug 1748178.
+  * Add search functionality to filter dialog bug 1749207.
+  * Move the taskbar refresh timer in SeaMonkey to idle dispatch bug
+    1746788.
+  * Prevent subresource loads from showing the progress indicator on
+    the tab in SeaMonkey bug 1746787.
+  * SeaMonkey 2.53.11 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * Additional important security fixes up to Current Firefox 91.6 ESR
+    and a few enhancements have been backported. We will continue to
+    enhance SeaMonkey security in subsequent 2.53.x beta and release
+    versions as fast as we are able to.
+  * SeaMonkey 2.53.11 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.0 release notes for
+    specific changes and security fixes in this release.
+- adapt seamonkey-man-page.patch for SeaMonkey 2.53.11
+- requested inclusion in Leap 15.3:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1196703
+
+-------------------------------------------------------------------
 Tue Feb 15 23:18:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gconf-2) BuildRequires and pass ac_add_options
