@@ -1,7 +1,7 @@
 #
 # spec file for package python-Scrapy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-Scrapy
-Version:        2.5.1
+Version:        2.6.1
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/S/Scrapy/Scrapy-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE remove-h2-version-restriction.patch boo#1190035 -- run scrapy with h2 >= 4.0.0
-Patch0:         remove-h2-version-restriction.patch
-# PATCH-FIX-UPSTREAM add-peak-method-to-queues.patch https://github.com/scrapy/scrapy/commit/68379197986ae3deb81a545b5fd6920ea3347094
-Patch1:         add-peak-method-to-queues.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Protego >= 0.1.15}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
@@ -52,8 +48,9 @@ BuildRequires:  %{python_module service_identity >= 16.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sybil}
 BuildRequires:  %{python_module testfixtures >= 6.0.0}
+BuildRequires:  %{python_module tldextract}
 BuildRequires:  %{python_module uvloop}
-BuildRequires:  %{python_module w3lib >= 1.17.2}
+BuildRequires:  %{python_module w3lib >= 1.17.0}
 BuildRequires:  %{python_module zope.interface >= 4.1.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -94,6 +91,7 @@ Provides documentation for %{name}.
 %prep
 %setup -n Scrapy-%{version}
 %autopatch -p1
+
 sed -i -e 's:= python:= python3:g' docs/Makefile
 
 %build

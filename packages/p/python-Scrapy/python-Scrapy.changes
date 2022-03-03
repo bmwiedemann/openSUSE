@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  2 22:17:28 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to v2.6.1
+  * Security fixes for cookie handling (CVE-2022-0577 aka
+    bsc#1196638, GHSA-mfjm-vh54-3f96)
+  * Python 3.10 support
+  * asyncio support is no longer considered experimental, and works
+    out-of-the-box on Windows regardless of your Python version
+  * Feed exports now support pathlib.Path output paths and per-feed
+    item filtering and post-processing
+- Remove unnecessary patches:
+  - remove-h2-version-restriction.patch
+  - add-peak-method-to-queues.patch
+
+-------------------------------------------------------------------
 Sun Jan 16 21:07:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip a failing test in python310: exception format not recognized

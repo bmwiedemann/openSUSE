@@ -117,4 +117,22 @@
     <comment></comment>
     <requestid>946882</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>341494638a5d95003eb4cca4a5dda195</srcmd5>
+    <version>2.6.1</version>
+    <time>1646349431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.6.1
+  * Security fixes for cookie handling (CVE-2022-0577 aka
+    bsc#1196638, GHSA-mfjm-vh54-3f96)
+  * Python 3.10 support
+  * asyncio support is no longer considered experimental, and works
+    out-of-the-box on Windows regardless of your Python version
+  * Feed exports now support pathlib.Path output paths and per-feed
+    item filtering and post-processing
+- Remove unnecessary patches:
+  - remove-h2-version-restriction.patch
+  - add-peak-method-to-queues.patch</comment>
+    <requestid>958587</requestid>
+  </revision>
 </revisionlist>
