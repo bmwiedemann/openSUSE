@@ -5,8 +5,8 @@
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
   boo#1172073: '20220107'
-  boo#1176553: '20220228'
-  boo#1183454: '20220301'
+  boo#1176553: '20220302'
+  boo#1183454: '20220302'
   boo#1189869: '20211207'
   boo#1190434: '20220301'
   boo#1190670: '20211128'
@@ -44,13 +44,13 @@
   boo#1195319: '20220202'
   boo#1195637: '20220213'
   boo#1195945: '20220222'
-  boo#1195952: '20220301'
+  boo#1195952: '20220302'
   boo#1196116: '20220216'
   boo#1196201: '20220227'
   boo#1196404: '20220301'
   boo#1196492: '20220224'
-  boo#1196609: '20220301'
-  bsc#1161276: '20220301'
+  boo#1196609: '20220302'
+  bsc#1161276: '20220302'
   bsc#1194208: '20220216'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
   kde#449273: '20220223'
@@ -82,7 +82,7 @@
   poo#104859: '20220111'
   poo#104926: '20220206'
   poo#105256: '20220226'
-  poo#105271: '20220301'
+  poo#105271: '20220302'
   poo#105286: '20220123'
   poo#105289: '20220125'
   poo#105292: '20220126'
@@ -96,12 +96,12 @@
   poo#106963: '20220216'
   poo#107068: '20220226'
   poo#107092: '20220222'
-  poo#107107: '20220301'
+  poo#107107: '20220302'
   poo#107110: '20220228'
   poo#107113: '20220224'
-  poo#107248: '20220301'
+  poo#107248: '20220302'
   poo#107728: '20220301'
-  poo#80628: '20220228'
+  poo#80628: '20220302'
   poo#91383: '20220111'
   poo#96611: '20211109'
   poo#99039: '20211110'
@@ -144,7 +144,7 @@ installcheck-ignore-conflicts = lua53-devel lua51-devel gcc-go lua53 lua51 busyb
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
 
 # packages in here are rebuild if their buildinfo changed
-rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini yast2-schema perf bpftool wsl-appx
+rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini perf bpftool wsl-appx yast2-schema-default yast2-schema-micro
 
 bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-module permissions-unauthorized-file permissions-dir-without-slash permissions-file-as-dir permissions-fscaps permissions-file-setuid-bit permissions-directory-setuid-bit permissions-world-writable polkit-changed- polkit-unauthorized- polkit-untracked- </value>
   </attribute>
@@ -167,8 +167,8 @@ products:
     - x86_64
   - ceph-grafana-image:
     - x86_64
-#  - ceph-image:
-#    - x86_64
+  - ceph-image:
+    - x86_64
   - csi-attacher-image:
     - i586
     - x86_64
@@ -479,10 +479,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20220302'
 published: '20220301'
 publishing: '20220301'
-testing: '20220301'
+testing: '20220302'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
