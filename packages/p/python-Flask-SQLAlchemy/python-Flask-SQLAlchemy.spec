@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-SQLAlchemy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mitsuhiko/flask-sqlalchemy
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-SQLAlchemy/Flask-SQLAlchemy-%{version}.tar.gz
+# BR krb5 - the test suite falis with krb5-mini (and users in any case will only ever get krb5, never krb5-mini)
+BuildRequires:  krb5
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

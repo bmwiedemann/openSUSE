@@ -134,4 +134,18 @@
     <comment></comment>
     <requestid>896577</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e49324b3530ad2e9c765118ced041e93</srcmd5>
+    <version>2.5.1</version>
+    <time>1646349474</time>
+    <user>dimstar_suse</user>
+    <comment>- Work around test suite failure inside OBS: BuildRequire krb5.
+  krb5 is a dependency to python (via tirpc), and inside OBS we get
+  a slightly limited version of it as krb5-mini. The test suite of
+  this package fails to pass with the mini flavor though. As -mini
+  is never offered to actual users, we can get away with this
+  workaround.
+</comment>
+    <requestid>958744</requestid>
+  </revision>
 </revisionlist>
