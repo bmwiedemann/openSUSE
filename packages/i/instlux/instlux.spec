@@ -1,7 +1,7 @@
 #
 # spec file for package instlux
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ configuring the BIOS.
 Instlux was based on Marc Herberts web page[1] and was started as a
 sourceforge.net[2] project on October 2005.
 Currently maintained at github[3] and OBS project[4].
-Instlux is included in openSUSE since 10.3. 
+Instlux is included in openSUSE since 10.3.
 [1]: http://marc.herbert.free.fr/linux/win2linstall.html
 [2]: http://instlux.svn.sourceforge.net/
 [3]: https://github.com/belphegor-belbel/instlux/
@@ -70,7 +70,7 @@ echo "icon  = susego.ico" >> %buildroot%{?skelcdpath}/CD1/autorun.inf
 echo "open  = openSUSE_installer.exe" >> %buildroot%{?skelcdpath}/CD1/autorun.inf
 unix2dos %buildroot%{?skelcdpath}/CD1/autorun.inf
 
-%files 
+%files
 %defattr(-, root, root)
 %dir %_defaultdocdir/%name
 %doc %_defaultdocdir/%name/*

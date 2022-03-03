@@ -519,4 +519,14 @@
 </comment>
     <requestid>923645</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>7beef896c9bc4f5ae0f9abfebfafee60</srcmd5>
+    <version>15.3.6</version>
+    <time>1646349442</time>
+    <user>dimstar_suse</user>
+    <comment>- upgraded to 15.4.0.
+  * Added Leap 15.4 (but not default)
+</comment>
+    <requestid>958548</requestid>
+  </revision>
 </revisionlist>
