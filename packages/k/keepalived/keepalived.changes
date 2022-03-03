@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Feb 24 18:36:08 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.2.7
+  * Fix CVE-2021-44225: The D-Bus policy does not sufficiently
+    restrict the message destination, allowing any user to inspect
+    and manipulate any property.
+  * New features:
+    * global: Don’t assume running as user root.
+    * ipvs: Add support to twos scheduler.
+    * vrrp: New features:
+      * Add vrf option for unicast without specifying an interface.
+      * Add option unicast_fault_no_peer.
+      * Allow specification of multicast address to be used.
+      * Add vrf option to static and vrrp routes.
+      * Add option to resend vrrp states on fifos after reload.
+      * Allow duplication of VRIDs on an interface with unicast peers.
+    * systemd: Add keepalived-non-root.service systemd service file.
+  * make BFD work when IPv6 disabled on system.
+  * Fix calculating CLOCK_REALTIME and CLOCK_MONOTONIC offsets.
+  * bfd: Handle interface down/address missing when keepalived starts.
+    This resolves a segfault, and also makes bfd retry once per minute
+    to create send socket if it cannot do so due to no address to bind
+    to on an interface.
+  * vrrp:
+    * Fix configured IPv6 multicast addresses with VMACs.
+    * Don’t segfault if duplicate VMAC name, but ignore second name.
+    * Don’t delete and recreate VMAC on reload if only VRID has changed.
+    * Don’t segfault if don’t have permission for ARP/NDISC socket.
+    * Fix IPv6 with vmac_xmit_base.
+    * Fix disabling vmac-xmit-base with VRRPv3 IPv6 use_vmac.
+    * Fix specifying user/group for vrrp_scripts.
+  * Various other fixes and improvements
+
+-------------------------------------------------------------------
 Thu Dec  9 18:58:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.2.4

@@ -1,7 +1,7 @@
 #
 # spec file for package keepalived
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,13 +38,13 @@
 %bcond_without systemd
 
 Name:           keepalived
-Version:        2.2.4
+Version:        2.2.7
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
-URL:            http://www.keepalived.org/
-Source:         http://www.keepalived.org/software/%{name}-%{version}.tar.gz
+URL:            https://www.keepalived.org/
+Source:         https://www.keepalived.org/software/%{name}-%{version}.tar.gz
 Source2:        keepalive-rpmlintrc
 Patch0:         keepalive-init.patch
 Patch1:         harden_keepalived.service.patch
@@ -208,8 +208,8 @@ getent passwd %{name} >/dev/null || \
 %doc %{_defaultdocdir}/%{name}/
 %dir  %{_sysconfdir}/keepalived
 %dir %attr(-,keepalived,keepalived) %{_var}/lib/%{name}
+%config %{_sysconfdir}/keepalived/keepalived.conf.sample
 %{_fillupdir}/sysconfig.%{name}
-%config(noreplace)  %{_sysconfdir}/keepalived/*conf
 %{_bindir}/genhash
 %{_sbindir}/rckeepalived
 %{_sbindir}/keepalived
