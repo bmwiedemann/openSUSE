@@ -1,7 +1,7 @@
 #
-# spec file for package jakarta-commons-discovery
+# spec file
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define short_name commons-discovery
-Name:           jakarta-commons-discovery
+Name:           jakarta-%{short_name}
 Version:        0.4
 Release:        0
 Summary:        Jakarta Commons Discovery
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/commons/discovery.html
-Source0:        http://www.apache.org/dist/jakarta/commons/discovery/source/commons-discovery-0.4-src.tar.gz
+URL:            http://jakarta.apache.org/commons/discovery.html
+Source0:        https://archive.apache.org/dist/commons/discovery/source/%{short_name}-%{version}-src.tar.gz
+Source1:        https://repo1.maven.org/maven2/%{short_name}/%{short_name}/%{version}/%{short_name}-%{version}.pom
 BuildRequires:  ant
-%if 0%{?rhel}
-BuildRequires:  apache-commons-logging >= 1.0.4
-%else
 BuildRequires:  commons-logging >= 1.0.4
-%endif
 BuildRequires:  java-devel
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local
 BuildRequires:  junit >= 3.7
-%if 0%{?rhel}
-Requires:       apache-commons-logging >= 1.0.4
-%else
 Requires:       commons-logging >= 1.0.4
-%endif
 Provides:       %{short_name} = %{version}
 Obsoletes:      %{short_name} < %{version}
 #XXX: temporary fix to make axis auto dependencies work, need to revork package
@@ -55,23 +48,14 @@ Discovery provides facilities for finding and instantiating classes and
 for lifecycle management of singleton (factory) classes.
 
 %package javadoc
-Summary:        Javadoc for jakarta-commons-discovery
+Summary:        Javadoc for %{name}
 Group:          Development/Libraries/Java
-Requires(pre):  coreutils
 
 %description javadoc
-The Discovery component is about discovering, or finding,
-implementations for pluggable interfaces.  Pluggable interfaces are
-specified with the intent that multiple implementations are, or will
-be, available to provide the service described by the interface.
-Discovery provides facilities for finding and instantiating classes,
-and for lifecycle management of singleton (factory) classes.
-
-This package contains the javadoc documentation for the Jakarta Commons
-Discovery Package.
+This package contains the javadoc documentation for %{name}.
 
 %prep
-%setup -q -n commons-discovery-%{version}-src
+%setup -q -n %{short_name}-%{version}-src
 chmod u+w .
 
 %build
@@ -83,17 +67,21 @@ ant \
 
 %install
 # jar
-mkdir -p %{buildroot}%{_javadir}
-cp -p dist/%{short_name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
+install -d -m 0755 %{buildroot}%{_javadir}
+install -m 644 dist/%{short_name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 (cd %{buildroot}%{_javadir} && ln -s %{short_name}.jar %{name}.jar)
+
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+install -p -m 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%add_maven_depmap %{short_name}.pom %{short_name}.jar
+
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
+install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%defattr(0644,root,root,0755)
+%files -f .mfiles
 %doc LICENSE.txt
-%{_javadir}/*
+%{_javadir}/%{name}.jar
 
 %files javadoc
 %defattr(0644,root,root,0755)
