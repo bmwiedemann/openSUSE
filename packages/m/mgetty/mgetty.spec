@@ -1,7 +1,7 @@
 #
 # spec file for package mgetty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,7 +111,7 @@ chmod +x mkidirs
 
 %build
 ln -s policy.h-dist policy.h
-%make_build -j1 CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie" CC="gcc"
+%make_build -j1 CFLAGS="%{optflags} -fPIE -DAUTO_PPP" LDFLAGS="-pie" CC="gcc"
 %make_build -j1 -C voice CFLAGS="%{optflags} -fPIE -DAUTO_PPP" LDFLAGS="-pie" CC="gcc"
 
 %install

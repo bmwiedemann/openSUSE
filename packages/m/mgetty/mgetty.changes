@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 22 21:11:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Restore AutoPPP functionality by properly passing "-DAUTO_PPP"
+  to CFLAGS.
+
+-------------------------------------------------------------------
 Fri Oct 15 07:28:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
