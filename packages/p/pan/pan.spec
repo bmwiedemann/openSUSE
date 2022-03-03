@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Clients
 URL:            http://pan.rebelbase.com/
 Source0:        https://gitlab.gnome.org/GNOME/pan/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.21
@@ -40,7 +41,6 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 2.0.16
 BuildRequires:  pkgconfig(libnotify) >= 0.4.1
 BuildRequires:  pkgconfig(libsecret-1)
-Recommends:     %{name}-lang
 
 %description
 Pan is a Usenet newsreader that's good at both text and binaries.
