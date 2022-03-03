@@ -348,6 +348,7 @@ Patch2034:      gdb-testsuite-add-missing-wait-in-gdb.base-signals-state-child.e
 Patch2035:      gdb-r_version-check.patch
 Patch2036:      ibm-z-add-another-arch14-instruction.patch
 Patch2037:      ibm-z-remove-lpswey-parameter.patch
+Patch2038:      fix-build-with-current-gcc-el_explicit-location-always-non-null.patch
 
 # Backports from master, not yet available in next release.
 
@@ -805,6 +806,7 @@ find -name "*.info*"|xargs rm -f
 %patch2035 -p1
 %patch2036 -p1
 %patch2037 -p1
+%patch2038 -p1
 
 %patch2100 -p1
 %patch2101 -p1

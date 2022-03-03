@@ -1,0 +1,49 @@
+Fix build with current GCC: EL_EXPLICIT(location) always non-NULL
+
+Compiling GDB with current GCC (1b4a63593b) runs into this:
+
+  src/gdb/location.c: In function 'int event_location_empty_p(const event_location*)':
+  src/gdb/location.c:963:38: error: the address of 'event_location::<unnamed union>::explicit_loc' will never be NULL [-Werror=address]
+    963 |       return (EL_EXPLICIT (location) == NULL
+	|                                      ^
+  src/gdb/location.c:57:30: note: 'event_location::<unnamed union>::explicit_loc' declared here
+     57 |     struct explicit_location explicit_loc;
+	|                              ^~~~~~~~~~~~
+
+GCC is right, EL_EXPLICIT is defined as returning the address of an
+union field:
+
+      /* An explicit location.  */
+      struct explicit_location explicit_loc;
+  #define EL_EXPLICIT(P) (&((P)->u.explicit_loc))
+
+and thus must always be non-NULL.
+
+Change-Id: Ie74fee7834495a93affcefce03c06e4d83ad8191
+
+---
+ gdb/location.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/location.c b/gdb/location.c
+index 827294e106a..1ee20069313 100644
+--- a/gdb/location.c
++++ b/gdb/location.c
+@@ -960,12 +960,11 @@ event_location_empty_p (const struct event_location *location)
+       return 0;
+ 
+     case EXPLICIT_LOCATION:
+-      return (EL_EXPLICIT (location) == NULL
+-	      || (EL_EXPLICIT (location)->source_filename == NULL
+-		  && EL_EXPLICIT (location)->function_name == NULL
+-		  && EL_EXPLICIT (location)->label_name == NULL
+-		  && (EL_EXPLICIT (location)->line_offset.sign
+-		      == LINE_OFFSET_UNKNOWN)));
++      return (EL_EXPLICIT (location)->source_filename == NULL
++	      && EL_EXPLICIT (location)->function_name == NULL
++	      && EL_EXPLICIT (location)->label_name == NULL
++	      && (EL_EXPLICIT (location)->line_offset.sign
++		  == LINE_OFFSET_UNKNOWN));
+ 
+     case PROBE_LOCATION:
+       return EL_PROBE (location) == NULL;
