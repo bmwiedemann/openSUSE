@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 28 17:11:51 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Include the light SLE installation theme
+  (jsc#SLE-20547, jsc#SLE-20564)
+- SLE theme fixes:
+  - Fixed partly hidden push buttons in some popups (bsc#1184778)
+  - Fixed missing logo and "SUSE" label in the header in the
+    non-default installation themes (bsc#1196312)
+  - Fixed CheckBoxFrame indicator size (bsc#1184780)
+- 4.4.7
+
+-------------------------------------------------------------------
 Thu Feb 24 11:32:08 UTC 2022 - David Diaz <dgonzalez@suse.com>
 
 - Fix theme switcher background style
