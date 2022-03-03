@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar  2 07:29:32 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 231daece7c (2022-03-01):
+  * firmware: board_info: Handle misprogrammed 3B rev 1.2s
+  * firmware: mmal: Add mapping for IL OMX_IndexParamBrcmEnableIJGTableScaling param
+  * firmware: Handle overlay parameters embedded in overlay_map.dtb
+    See: raspberrypi/linux#4860
+  * firmware: firmware: Add HDMI_PORTS trait
+  * firmware: arm_dt: Fix rpi-poe overlay parameters
+    See: #1689
+  * firmware: jpeghw: Skip APP0 AVI1 headers, regardless of length
+    See: https://forums.raspberrypi.com/viewtopic.php?p=1975448
+  * firmware: camera_subsystem: Report ignored interfaces due to libcamera
+    See: #1679
+  * firmware: Export os_prefix, overlay_prefix, rsts and boot-mode on all models
+  * firmware: vcfw/hdmi_i2c: Initialise all instances from hdmi_i2c_init
+  * firmware: mmal: Add mapping for IL OMX_IndexParamBrcmEnableIJGTableScaling param
+    See: raspberrypi/linux#4669
+
+-------------------------------------------------------------------
 Tue Jan 25 10:43:25 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 9c04ed2c1a (2022-01-24):
