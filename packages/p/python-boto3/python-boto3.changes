@@ -1,7 +1,100 @@
 -------------------------------------------------------------------
+Wed Feb 16 10:29:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.21.0
+  * api-change:``appflow``: [``botocore``] Launching Amazon AppFlow SAP as a destination connector
+    SDK.
+  * feature:Parser: [``botocore``] Adding support for parsing int/long types in rest-json response
+    headers.
+  * api-change:``rds``: [``botocore``] Adds support for determining which Aurora PostgreSQL versions
+    support Babelfish.
+  * api-change:``athena``: [``botocore``] This release adds a subfield, ErrorType, to the AthenaError
+    response object in the GetQueryExecution API when a query fails.
+- from version 1.20.54
+  * api-change:``ssm``: [``botocore``] Documentation updates for AWS Systems Manager.
+- from version 1.20.53
+  * api-change:``cloudformation``: [``botocore``] This SDK release adds AWS CloudFormation Hooks
+    HandlerErrorCodes
+  * api-change:``lookoutvision``: [``botocore``] This release makes CompilerOptions in Lookout for
+    Vision's StartModelPackagingJob's Configuration object optional.
+  * api-change:``pinpoint``: [``botocore``] This SDK release adds a new paramater creation date for
+    GetApp and GetApps Api call
+  * api-change:``sns``: [``botocore``] Customer requested typo fix in API documentation.
+  * api-change:``wafv2``: [``botocore``] Adds support for AWS WAF Fraud Control account takeover
+    prevention (ATP), with configuration options for the new managed rule group
+    AWSManagedRulesATPRuleSet and support for application integration SDKs for Android and iOS mobile
+    apps.
+- from version 1.20.52
+  * api-change:``cloudformation``: [``botocore``] This SDK release is for the feature launch of AWS
+    CloudFormation Hooks.
+- from version 1.20.51
+  * api-change:``kendra``: [``botocore``] Amazon Kendra now provides a data source connector for
+    Amazon FSx. For more information, see
+    https://docs.aws.amazon.com/kendra/latest/dg/data-source-fsx.html
+  * api-change:``apprunner``: [``botocore``] This release adds support for App Runner to route
+    outbound network traffic of a service through an Amazon VPC. New API: CreateVpcConnector,
+    DescribeVpcConnector, ListVpcConnectors, and DeleteVpcConnector. Updated API: CreateService,
+    DescribeService, and UpdateService.
+  * api-change:``s3control``: [``botocore``] This release adds support for S3 Batch Replication.
+    Batch Replication lets you replicate existing objects, already replicated objects to new
+    destinations, and objects that previously failed to replicate. Customers will receive object-level
+    visibility of progress and a detailed completion report.
+  * api-change:``sagemaker``: [``botocore``] Autopilot now generates an additional report with
+    information on the performance of the best model, such as a Confusion matrix and  Area under the
+    receiver operating characteristic (AUC-ROC). The path to the report can be found in
+    CandidateArtifactLocations.
+- from version 1.20.50
+  * api-change:``auditmanager``: [``botocore``] This release updates 3 API parameters.
+    UpdateAssessmentFrameworkControlSet now requires the controls attribute, and
+    CreateAssessmentFrameworkControl requires the id attribute. Additionally, UpdateAssessmentFramework
+    now has a minimum length constraint for the controlSets attribute.
+  * api-change:``synthetics``: [``botocore``] Adding names parameters to the Describe APIs.
+  * api-change:``ssm-incidents``: [``botocore``] Update RelatedItem enum to support SSM Automation
+  * api-change:``events``: [``botocore``] Update events client to latest version
+  * enhancement:Lambda Request Header: [``botocore``] Adding request header for Lambda recursion
+    detection.
+- from version 1.20.49
+  * api-change:``athena``: [``botocore``] You can now optionally specify the account ID that you
+    expect to be the owner of your query results output location bucket in Athena. If the account ID of
+    the query results bucket owner does not match the specified account ID, attempts to output to the
+    bucket will fail with an S3 permissions error.
+  * api-change:``rds``: [``botocore``] updates for RDS Custom for Oracle 12.1 support
+  * api-change:``lakeformation``: [``botocore``] Add support for calling Update Table Objects without
+    a TransactionId.
+- from version 1.20.48
+  * api-change:``ec2``: [``botocore``] adds support for AMIs in Recycle Bin
+  * api-change:``robomaker``: [``botocore``] The release deprecates the use various APIs of RoboMaker
+    Deployment Service in favor of AWS IoT GreenGrass v2.0.
+  * api-change:``meteringmarketplace``: [``botocore``] Add CustomerAWSAccountId to ResolveCustomer
+    API response and increase UsageAllocation limit to 2500.
+  * api-change:``rbin``: [``botocore``] Add EC2 Image recycle bin support.
+- from version 1.20.47
+  * api-change:``emr``: [``botocore``] Update emr client to latest version
+  * api-change:``personalize``: [``botocore``] Adding minRecommendationRequestsPerSecond attribute to
+    recommender APIs.
+  * enhancement:Request headers: [``botocore``] Adding request headers with retry information.
+  * api-change:``appflow``: [``botocore``] Launching Amazon AppFlow Custom Connector SDK.
+  * api-change:``dynamodb``: [``botocore``] Documentation update for DynamoDB Java SDK.
+  * api-change:``iot``: [``botocore``] This release adds support for configuring AWS IoT logging
+    level per client ID, source IP, or principal ID.
+  * api-change:``comprehend``: [``botocore``] Amazon Comprehend now supports sharing and importing
+    custom trained models from one AWS account to another within the same region.
+  * api-change:``ce``: [``botocore``] Doc-only update for Cost Explorer API that adds
+    INVOICING_ENTITY dimensions
+  * api-change:``fis``: [``botocore``] Added GetTargetResourceType and ListTargetResourceTypesAPI
+    actions. These actions return additional details about resource types and parameters that can be
+    targeted by FIS actions. Added a parameters field for the targets that can be specified in
+    experiment templates.
+  * api-change:``es``: [``botocore``] Allows customers to get progress updates for blue/green
+    deployments
+  * api-change:``glue``: [``botocore``] Launch Protobuf support for AWS Glue Schema Registry
+  * api-change:``elasticache``: [``botocore``] Documentation update for AWS ElastiCache
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Feb  1 10:30:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to version 1.23.46
+- Update to version 1.20.46
   * api-change:``appconfigdata``: [``botocore``] Documentation updates for AWS AppConfig Data.
   * api-change:``athena``: [``botocore``] This release adds a field, AthenaError, to the
     GetQueryExecution response object when a query fails.
@@ -58,7 +151,7 @@ Tue Feb  1 10:30:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Fri Jan 21 13:20:19 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to version 1.23.40
+- Update to version 1.20.40
   * api-change:``guardduty``: [``botocore``] Amazon GuardDuty findings now include
     remoteAccountDetails under AwsApiCallAction section if instance credential is exfiltrated.
   * api-change:``connect``: [``botocore``] This release adds tagging support for UserHierarchyGroups
