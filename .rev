@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>748844</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>72620c0f9f56d8cce9afcc1cfccad48b</srcmd5>
+    <version>5.5.2</version>
+    <time>1646349499</time>
+    <user>dimstar_suse</user>
+    <comment>package junit-bom too</comment>
+    <requestid>959278</requestid>
+  </revision>
 </revisionlist>

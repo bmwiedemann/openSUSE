@@ -19,25 +19,26 @@
     <module>junit-jupiter-params</module>
     <module>junit-jupiter</module>
     <module>junit-vintage-engine</module>
+    <module>junit-bom</module>
   </modules>
   <build>
     <pluginManagement>
       <plugins>
-	<plugin>
-	  <artifactId>maven-compiler-plugin</artifactId>
-	  <configuration>
-	    <source>1.8</source>
-	    <target>1.8</target>
-	  </configuration>
-	</plugin>
-	<plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
+        <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <configuration>
             <archive>
               <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
             </archive>
           </configuration>
-	</plugin>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -54,9 +55,9 @@
             </goals>
             <configuration>
               <instructions>
-		<Bundle-SymbolicName>${osgi.bsn}</Bundle-SymbolicName>
-		<Automatic-Module-Name>${osgi.bsn}</Automatic-Module-Name>
-		<_nouses>true</_nouses>
+                 <Bundle-SymbolicName>${osgi.bsn}</Bundle-SymbolicName>
+                 <Automatic-Module-Name>${osgi.bsn}</Automatic-Module-Name>
+                 <_nouses>true</_nouses>
               </instructions>
             </configuration>
           </execution>
