@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 25 14:53:56 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patch added (backport from master):
+  * fix-build-with-current-gcc-el_explicit-location-always-non-null.patch
+
+-------------------------------------------------------------------
 Fri Feb 11 15:15:58 UTC 2022 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:

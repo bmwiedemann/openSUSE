@@ -2270,4 +2270,14 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>953770</requestid>
   </revision>
+  <revision rev="161" vrev="7">
+    <srcmd5>af8dc938592a46a1d95397e7fdb45adc</srcmd5>
+    <version>11.1</version>
+    <time>1646349419</time>
+    <user>dimstar_suse</user>
+    <comment>- Patch added (backport from master):
+  * fix-build-with-current-gcc-el_explicit-location-always-non-null.patch
+</comment>
+    <requestid>958414</requestid>
+  </revision>
 </revisionlist>
