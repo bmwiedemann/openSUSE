@@ -143,4 +143,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>950634</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e73d7c62a1139b1f4acd5f8de46996eb</srcmd5>
+    <version>6.0.4.6</version>
+    <time>1646349450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0.4.6:
+  + Fix reloader to work with new Executor signature @tenderlove.
+- Changes from version 6.0.4.5:
+  + ActionDispatch::Executor don't fully trust body#close.</comment>
+    <requestid>958678</requestid>
+  </revision>
 </revisionlist>

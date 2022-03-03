@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 25 11:37:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 6.0.4.6:
+  + Fix reloader to work with new Executor signature @tenderlove.
+- Changes from version 6.0.4.5:
+  + ActionDispatch::Executor don't fully trust body#close.
+
+-------------------------------------------------------------------
 Tue Jan 25 07:22:01 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 6.0.4.4
