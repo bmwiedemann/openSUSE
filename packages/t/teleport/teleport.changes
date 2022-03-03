@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Mar 03 08:20:49 UTC 2022 - kastl@b1-systems.de
+
+- skip non-existing release 8.3.2
+- Update to version 8.3.3:
+  * Release 8.3.3 (#10756)
+  * Clear terminal when auth server is in FIPS mode (#10095)
+  * Fix x11 server config issues (#10471) (#10758)
+  * [v8] Fix Mongo topology resource release (#10730)
+  * [v8] Sanitize leaf cluster CA (#10743)
+  * Fix artifacts path for build-darwin-amd64-pkg-tsh drone pipeline (#10601)
+  * Backport fixes to apt publishing logic (#10436)
+  * Add missing read verb to ListResources (#10421)
+  * [auto] Update webassets in branch/v8 (#10490)
+  * Add documentation for static windows hosts
+  * Disable BPF tests in CI (#10654) (#10680)
+  * [Docs update] Mention unsupported scenarios for IAM join method (#10530) (#10651)
+  * backport severity (#10667)
+  * update enterprise getting started (#10606)
+  * helm: Fix indenting on database autodiscovery (#10623)
+  * Update x11 sshserver test to test concurrent sessions and requests. (#10473)
+  * Add a Cloud compatibility warning to Helm guides (#10525)
+  * Restore teleport-private deb/rpm gating (#10537)
+  * Add a prominent warning to the config reference (#10524)
+  * Mention Teleport Cloud in some of our guides (#10526)
+  * [v8] Backport "helm: Revert PodSecurityPolicy change" (#10564)
+  * Ensure docs nav titles use title case consistently (#10353) (#10523)
+  * Address Cloud users in guides (#10527)
+  * docs: fix code block (#10495) (#10556)
+  * add teleport_connected_resources metric (#9603) (#10461)
+  * Add teleport_audit_emit_event prometheus metric (#9134) (#10462)
+  * helm: Add AWS database auto-discovery to teleport-kube-agent (#10344) (#10544)
+  * Expose tunnel public addr to config.js (#10514)
+  * Update config.json
+  * Fix server compare to check expiry last (#10464)
+  * Add PDB to teleport-kube-agent chart
+
+-------------------------------------------------------------------
 Sat Feb 19 21:00:05 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - add webassets, change %build section to build with flags and include webassets
