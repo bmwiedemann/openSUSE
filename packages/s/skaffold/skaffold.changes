@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  3 08:21:17 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.36.1
+  Note: This is a patch release to v1.36.0 with some security fixes. Most users don't need to use this version, rather continue with the latest semantic version available.
+
+-------------------------------------------------------------------
 Thu Feb 10 10:07:57 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.36.0:
