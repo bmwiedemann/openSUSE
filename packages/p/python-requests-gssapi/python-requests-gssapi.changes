@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 22 21:45:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.3:
+  - Drop python2 compat glue
+  - Drop external mock dependency
+  - Use USER_NAME instead of HOSTBASED_SERVICE for user
+    principals
+  - Remove unused imports in example code
+  - Fix typo in explicit mech example
+
+-------------------------------------------------------------------
 Mon Aug  3 10:24:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.2.1

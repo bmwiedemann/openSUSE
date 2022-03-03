@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-gssapi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-gssapi
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        A GSSAPI authentication handler for python-requests
 License:        ISC
@@ -33,7 +33,6 @@ Requires:       python-requests >= 1.1.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module gssapi}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 1.1.0}
 # /SECTION
