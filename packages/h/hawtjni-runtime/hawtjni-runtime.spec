@@ -1,7 +1,7 @@
 #
 # spec file for package hawtjni-runtime
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,13 +84,13 @@ jar cf hawtjni-runtime.jar -C hawtjni-runtime/build/classes .
 mkdir -p  hawtjni-generator/build/classes
 javac -d hawtjni-generator/build/classes \
   -source 6 -target 6 \
-  -cp $(build-classpath commons-cli commons-lang objectweb-asm/asm objectweb-asm/asm-commons xbean/xbean-finder xbean/xbean-asm-util):hawtjni-runtime.jar \
+  -cp $(build-classpath commons-cli commons-lang objectweb-asm/asm-all xbean/xbean-finder xbean/xbean-asm-util):hawtjni-runtime.jar \
   $(find hawtjni-generator/src/main/java/ -name *.java | xargs)
 jar cf hawtjni-generator.jar -C hawtjni-generator/build/classes .
 jar uf hawtjni-generator.jar -C hawtjni-generator/src/main/resources .
 mkdir -p hawtjni-runtime/build/apidoc
 javadoc -d hawtjni-runtime/build/apidoc -source 6 \
-  -classpath $(build-classpath commons-cli commons-lang objectweb-asm/asm objectweb-asm/asm-commons xbean/xbean-finder xbean/xbean-asm-util) \
+  -classpath $(build-classpath commons-cli commons-lang objectweb-asm/asm-all xbean/xbean-finder xbean/xbean-asm-util) \
   $(find hawtjni-runtime/src/main/java/ -name *.java && \
     find hawtjni-generator/src/main/java/ -name *.java| xargs)
 
@@ -113,7 +113,7 @@ install -dm 755 %{buildroot}%{_javadocdir}/hawtjni
 cp -pr  hawtjni-runtime/build/apidoc/* %{buildroot}%{_javadocdir}/hawtjni/
 %fdupes -s %{buildroot}%{_javadocdir}/hawtjni/
 
-%{jpackage_script org.fusesource.hawtjni.generator.HawtJNI "" "" commons-cli:commons-lang:objectweb-asm/asm:objectweb-asm/asm-commons:xbean/xbean-finder:xbean/xbean-asm-util:hawtjni/hawtjni-runtime:hawtjni/hawtjni-generator hawtjni-generator true}
+%{jpackage_script org.fusesource.hawtjni.generator.HawtJNI "" "" commons-cli:commons-lang:objectweb-asm/asm-all:xbean/xbean-finder:xbean/xbean-asm-util:hawtjni/hawtjni-runtime:hawtjni/hawtjni-generator hawtjni-generator true}
 
 %files -f .mfiles
 %license license.txt

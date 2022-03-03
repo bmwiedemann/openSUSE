@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  3 07:40:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Use in the path of hawtjni-generator the asm-all.jar that is not
+  modular. This solves some problems with ASM version mismatch.
+
+-------------------------------------------------------------------
 Mon Nov 25 11:36:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upsteam version 1.17
