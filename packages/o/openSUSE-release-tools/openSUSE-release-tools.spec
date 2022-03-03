@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20220302.3654dc91
+Version:        20220303.39bbc90c
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -211,6 +211,7 @@ Requires:       obs-service-product_converter
 Requires:       osclib = %{version}
 Requires:       python3-requests
 Requires:       python3-solv
+Requires:       zstd
 # we use the same user as repo-checker
 PreReq:         openSUSE-release-tools-repo-checker
 BuildArch:      noarch
