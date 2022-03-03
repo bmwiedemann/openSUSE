@@ -1,7 +1,7 @@
 #
 # spec file for package perf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,6 @@
 #
 
 
-# a bug in dwz leaves temporary trace-*.debug.#dwz#.* on 64 bits in place
-# remove this once fixed, see:
-# https://sourceware.org/bugzilla/show_bug.cgi?id=26645
-%define _find_debuginfo_dwz_opts %{nil}
 # perf does not link with LTO
 %define _lto_cflags %{nil}
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)

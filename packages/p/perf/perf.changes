@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 24 08:29:57 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- enable dwz compression again. This was finally fixed:
+  https://sourceware.org/git/?p=dwz.git;a=commit;h=05d55402d9f6
+
+-------------------------------------------------------------------
 Wed Nov 24 19:43:08 UTC 2021 - Tony Jones <tonyj@suse.com>
 
 - Fix build error due to stale conditional around %files devel
