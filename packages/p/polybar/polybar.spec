@@ -1,7 +1,7 @@
 #
 # spec file for package polybar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           polybar
-Version:        3.5.7
+Version:        3.6.0
 Release:        0
 Summary:        A fast and easy-to-use status bar
 License:        MIT
@@ -25,25 +25,33 @@ Group:          System/GUI/Other
 URL:            https://github.com/polybar/polybar
 Source:         https://github.com/polybar/polybar/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
-BuildRequires:  cmake >= 3.1
+BuildRequires:  cmake >= 3.5
 BuildRequires:  i3
 BuildRequires:  i3-devel
-BuildRequires:  libnl3-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-xml
-BuildRequires:  xcb-util-image-devel
-BuildRequires:  xcb-util-wm-devel
-BuildRequires:  xcb-util-xrm-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libnl-3.0)
+BuildRequires:  pkgconfig(libnl-cli-3.0)
+BuildRequires:  pkgconfig(libnl-genl-3.0)
+BuildRequires:  pkgconfig(libnl-idiag-3.0)
+BuildRequires:  pkgconfig(libnl-nf-3.0)
+BuildRequires:  pkgconfig(libnl-route-3.0)
+BuildRequires:  pkgconfig(libnl-xfrm-3.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libuv) >= 1.3
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  pkgconfig(xcb-icccm)
+BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-proto)
 BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  pkgconfig(xcb-xrm)
 DocDir:         %{_datadir}/doc
 
 %description
@@ -65,6 +73,7 @@ rm -rf %{buildroot}/%{_docdir}/%{name}/.buildinfo
 %dir %{_datadir}/doc/%{name}
 %dir %{_datadir}/zsh/
 %dir %{_datadir}/zsh/site-functions
+%dir %{_sysconfdir}/polybar
 %{_bindir}/%{name}
 %{_bindir}/%{name}-msg
 %{_mandir}/man1/%{name}.1%?ext_man
@@ -73,5 +82,7 @@ rm -rf %{buildroot}/%{_docdir}/%{name}/.buildinfo
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/zsh/site-functions/_%{name}
 %{_datadir}/zsh/site-functions/_%{name}_msg
+%{_sysconfdir}/polybar/config.ini
+%{_mandir}/man1/polybar-msg.1%{?ext_man}
 
 %changelog
