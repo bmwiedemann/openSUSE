@@ -60,4 +60,27 @@
     <comment></comment>
     <requestid>864626</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20066785116ddbd2f467888bb3be1661</srcmd5>
+    <version>3.0.0</version>
+    <time>1646349442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Add support for pyinstaller.
+  * Fix support for python 3.10.
+  * Drop python &lt;3.4 support.
+  * Do not load the C library on import. Allows applications to customise
+    the lookup logic (see usb1.loadLibrary).
+  * Add LIBUSB_SPEED_SUPER_PLUS.
+  * Better control device iterator end of life.
+  * Fix objects escaping control from their parent.
+  * Fix a TypeError exception in USBContext.handleEvents.
+  * Fix an AttributeError exception in USBContext.hotplugRegisterCallback.
+  * Fix segfault in pypy3 when finalizing USBDevice objects.
+  * Source only: convert examples to python3.
+  * Release process: also run some examples scripts.
+  * Update versioneer to be compatible with 3.11.
+  * Drop python &lt;3.6 support.</comment>
+    <requestid>958558</requestid>
+  </revision>
 </revisionlist>

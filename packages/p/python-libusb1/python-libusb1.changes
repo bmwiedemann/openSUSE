@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar  3 04:49:28 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.0:
+  * Add support for pyinstaller.
+  * Fix support for python 3.10.
+  * Drop python <3.4 support.
+  * Do not load the C library on import. Allows applications to customise
+    the lookup logic (see usb1.loadLibrary).
+  * Add LIBUSB_SPEED_SUPER_PLUS.
+  * Better control device iterator end of life.
+  * Fix objects escaping control from their parent.
+  * Fix a TypeError exception in USBContext.handleEvents.
+  * Fix an AttributeError exception in USBContext.hotplugRegisterCallback.
+  * Fix segfault in pypy3 when finalizing USBDevice objects.
+  * Source only: convert examples to python3.
+  * Release process: also run some examples scripts.
+  * Update versioneer to be compatible with 3.11.
+  * Drop python <3.6 support.
+
+-------------------------------------------------------------------
 Wed Jan 20 09:43:06 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.9.1
