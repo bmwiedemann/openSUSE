@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Feb 26 13:36:19 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Upstream update to 2.26.4660.102
+  * Fix the description of half-width tilde
+  * New feature to customize the initial input mode
+  * Qt5 based candidate window (renderer)
+  * Add larger size PNG and SVG icons
+  * Fixed issues on the Emacs client #421, #497
+- Update Fcitx4/5 mozc to the latest
+- Add Fcitx5 mo files
+- Update README.SUSE
+- Switch the build system to Bazel
+- Update bundled protobuf to v3.19.3 lined statically
+- Update abseil-cpp to 20211102.0
+- Add icons from material-design-icons
+- Add fcitx-mozc-bazel-build.patch
+- Use gcc8 for Leap 15 because <filesystem> is now required
+- Drop patches due to build system change
+  * mozc-ninja-verbose-build.patch
+  * mozc-build-gcc.patch
+  * build-with-libstdc++.patch
+- Add add-sha256sum-for-zipcode-archives.patch
+  * to allow offline build
+- Drop ibus-qt5-hide_preedit_text-workaround.patch
+  * fixed in Qt side
+
+-------------------------------------------------------------------
 Sun Feb 13 10:12:09 CET 2022 - tiwai@suse.de
 
 - Remove /usr/share/pixmaps from filelist of fcitx5-mozc as zypper
