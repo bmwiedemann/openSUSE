@@ -1,7 +1,7 @@
 #
 # spec file for package udiskie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           udiskie
-Version:        2.1.1
+Version:        2.4.2
 Release:        0
 Summary:        Removable disk automounter for udisks
 License:        MIT
@@ -86,10 +86,9 @@ done
 %find_lang %{name}
 
 %files
-%doc CHANGES.rst CONTRIBUTORS README.rst
+%doc CHANGES.rst README.rst
 %license COPYING
 %{_bindir}/%{name}*
-%{_datadir}/icons/hicolor/*/actions/%{name}-*.??g
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}-*-py%{py3_ver}.egg-info
 %{_mandir}/man?/%{name}*.?%{ext_man}

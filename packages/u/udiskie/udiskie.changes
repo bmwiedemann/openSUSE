@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar  2 09:39:53 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.2:
+  * add support for AyatanaAppIndicator3
+  * setup loop devices in read-write mode if sufficient permissions are available
+  * add icon name that is specifically designed for tray panel
+  * try to detect installed translation files also in non-system installations
+  * make it possible to override localedir manually using the TEXTDOMAINDIR environment variable
+  * fix: buttons in "device-added" notifications always mounting the last partition instead of the selected one
+  * fix incorrect use of wayland settings (appindicator+workarounds) within X session,
+    if a wayland session is or was active under the same user (even if that was in a different login session)
+  * fix incorrect display of image menu items under X due to caching
+  * don't swallow STDOUT for notify-commands
+  * default to appindicator if tray is requested under wayland
+  * don't auto-disable tray when running in "pure" wayland session
+  * set window role on the password dialog
+  * remove unneeded xdg from optional dependencies
+  * fix a typo in Spanish translation and update russian translation files
+
+-------------------------------------------------------------------
 Tue May  5 13:18:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.1.1 
