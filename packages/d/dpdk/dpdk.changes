@@ -1,4 +1,239 @@
 -------------------------------------------------------------------
+Sat Feb 26 17:45:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to LTS version 21.11.
+  21.11 should be supported for at least two years, the new major
+  ABI version is 22. New Features:
+  * General
+    * hugetlbfs subdirectories
+    * AddressSanitizer (ASan) integration for debug
+    * mempool flag for non-IO usages
+    * device class for DMA accelerators and drivers for
+    * HiSilicon, Intel DSA, Intel IOAT, Marvell CNXK and NXP DPAA
+    * device class for GPU devices and driver for NVIDIA CUDA
+    * Toeplitz hash using Galois Fields New Instructions (GFNI)
+  * Networking
+    * MTU handling rework
+    * get all MAC addresses of a port
+    * RSS based on L3/L4 checksum fields
+    * flow match on L2TPv2 and PPP
+    * flow flex parser for custom header
+    * control delivery of HW Rx metadata
+    * transfer flows API rework
+    * shared Rx queue
+    * driver for NXP ENETFEC
+    * vDPA driver for Xilinx devices
+    * virtio RSS
+    * vhost power monitor wakeup
+    * testpmd multi-process
+    * pcapng library and dumpcap tool
+  * API/ABI
+    * API namespace improvements and cleanups
+    * API internals hidden
+    * flags check for future ABI compatibility
+  * More details in the release notes:
+    https://doc.dpdk.org/guides/rel_notes/release_21_11.html
+- Update to LTS version 20.11.0, new features:
+  * General
+    * mbuf dynamic area increased from 16 to 36 bytes
+    * ring zero cop
+    * SIMD bitwidth limit API
+    * moved igb_uio to dpdk-kmods/linux
+    * removed Python 2 support
+    * removed Make support, meson + pkg-config files are
+      now used to build applications
+  * Networking
+    * FEC AP
+    * Rx buffer split
+    * thread safety in flow API
+    * shared action in flow API
+    * flow sampling and mirroring
+    * tunnel offload API
+    * multi-port hairpin
+    * Solarflare EF100 architecture
+    * Wangxun txgbe driver
+    * vhost-vDPA backend in virtio-user
+    * removed vhost dequeue zero-copy
+    * removed legacy ethdev filtering
+    * SWX pipeline aligned with P4
+  * Baseband
+    * Intel ACC100 driver
+  * Cryptography
+    * raw datapath API
+    * Broadcom BCMFS symmetric crypto driver
+  * RegEx
+    * Marvell OCTEON TX2 regex driver
+  * Others
+    * Intel DLB/DLB2 drivers
+    * Intel DSA support in IOAT driver
+  * Full changes and more details in the release notes:
+    https://doc.dpdk.org/guides/rel_notes/release_20_11.html
+- Rebased 0002-SLE15-SP3-compatibility-patch-for-kni.patch
+- Drop outdated 0001-fix-cpu-compatibility.patch
+- Drop outdated 0003-dpdk-fallthrough-comment-fixes.patch
+- Added 0001-build-try-to-get-kernel-version-from-kernel-source.patch
+  Allow host system to have a different kernel than the target
+  system, fixes kernel module installation path for such case.
+  Submitted upstream 2022-02-26
+- Added fix-buildsystem-python36.patch for Leap as the buildsystem
+  uses python syntax introduced with python37, but Leap still
+  sticks with 3.6, so this backports it for the old python version.
+
+-------------------------------------------------------------------
+Mon Oct 25 13:41:49 UTC 2021 - Stefan Weiberg <sweiberg@suse.com>
+
+- - Update LTS version to maintenance release 19.11.10
+  * app/crypto-perf: fix out-of-place mempool allocation
+  * app/test: fix IPv6 header initialization
+  * app/testpmd: change port link speed without stopping all
+  * app/testpmd: fix help string for port reset
+  * app/testpmd: fix IPv4 checksum
+  * app/testpmd: fix MAC address after port reset
+  * app/testpmd: fix offloads for newly attached port
+  * app/testpmd: fix Tx checksum calculation for tunnel
+  * bitmap: fix buffer overrun in bitmap init
+  * bus: clarify log for non-NUMA-aware devices
+  * bus/dpaa: fix freeing in FMAN interface destructor
+  * common/mlx5: fix compatibility with OFED port query API
+  * common/mlx5: fix Netlink port name padding in probing
+  * common/mlx5: use new port query API if available
+  * cryptodev: fix freeing after device release
+  * crypto/mvsam: fix AES-GCM session parameters
+  * crypto/mvsam: fix capabilities
+  * crypto/mvsam: fix options parsing
+  * crypto/mvsam: fix session data reset
+  * crypto/octeontx: fix freeing after device release
+  * crypto/qat: fix Arm build with special memcpy
+  * devtools: fix file listing in maintainers check
+  * distributor: fix 128-bit write alignment
+  * doc: add limitation for ConnectX-4 with L2 in mlx5 guide
+  * doc: announce common prefix for ethdev
+  * doc: fix default burst size in testpmd
+  * doc: fix spelling
+  * drivers/net: fix memzone allocations for DMA memory
+  * ethdev: fix doc of flow action
+  * eventdev: fix event port setup in tx adapter
+  * flow_classify: fix leaking rules on delete
+  * (github-cpaelzer-stable/19.11) telemetry: fix race in telemetry control thread creation
+  * ipc: stop mp control thread on cleanup
+  * kni: fix crash on userspace VA for segmented packets
+  * kni: fix mbuf allocation for kernel side use
+  * mempool/octeontx2: fix shift calculation
+  * net/bnxt: check access to possible null pointer
+  * net/bnxt: cleanup code
+  * net/bnxt: clear cached statistics
+  * net/bnxt: detect bad opaque in Rx completion
+  * net/bnxt: fix auto-negotiation on Whitney+
+  * net/bnxt: fix check for PTP support in FW
+  * net/bnxt: fix error handling in VNIC prepare
+  * net/bnxt: fix error messages in VNIC prepare
+  * net/bnxt: fix missing barriers in completion handling
+  * net/bnxt: fix nested lock during bonding
+  * net/bnxt: fix ring and context memory allocation
+  * net/bnxt: fix Rx burst size constraint
+  * net/bnxt: fix Rx interrupt setting
+  * net/bnxt: fix scalar Tx completion handling
+  * net/bnxt: fix Tx descriptor status implementation
+  * net/bnxt: fix typo in log message
+  * net/bnxt: improve probing log message
+  * net/bnxt: invoke device removal event on recovery failure
+  * net/bnxt: remove unnecessary code
+  * net/bnxt: remove unnecessary comment
+  * net/bnxt: set flow error after tunnel redirection free
+  * net/bnxt: set flow error when free filter not available
+  * net/bnxt: use common function to free VNIC resource
+  * net/bnxt: workaround spurious zero stats in Thor
+  * net/bonding: check flow setting
+  * net/bonding: fix error message on flow verify
+  * net/ena: enable multi-segment in Tx offload flags
+  * net/ena: trigger reset on Tx prepare failure
+  * net/hinic/base: fix LRO
+  * net/hinic: increase protection of the VLAN
+  * net/hns3: fix delay for waiting to stop Rx/Tx
+  * net/hns3: fix filter parsing comment
+  * net/hns3: fix Tx prepare after stop
+  * net/hns3: fix VLAN strip log
+  * net/hns3: increase VF reset retry maximum
+  * net/i40e: fix descriptor scan on Arm
+  * net/i40e: fix multi-process shared data
+  * net/iavf: fix RSS key access out of bound
+  * net/iavf: fix Tx threshold check
+  * net/ice/base: fix first profile mask
+  * net/ice/base: revert change of first profile mask
+  * net/ice: fix default RSS key generation
+  * net/ice: fix memzone leak when firmware is missing
+  * net/ixgbe: fix flow entry access after freeing
+  * net/mlx5: fix incorrect r/w lock usage in DMA unmap
+  * net/mlx5: fix IPIP multi-tunnel validation
+  * net/mlx5: fix match MPLS over GRE with key
+  * net/mlx5: fix MPLS RSS expansion
+  * net/mlx5: fix overflow in mempool argument
+  * net/mlx5: fix representor interrupt handler
+  * net/mlx5: fix RoCE LAG bond device probing
+  * net/mlx5: fix RSS flow item expansion for GRE key
+  * net/mlx5: fix Rx/Tx queue checks
+  * net/mlx5: fix switchdev mode recognition
+  * net/mlx5: fix typo in vectorized Rx comments
+  * net/mlx5: limit implicit MPLS RSS expansion over GRE
+  * net/mlx5: limit inner RSS expansion for MPLS
+  * net/mlx5: remove redundant operations in NEON Rx
+  * net/mlx5: remove unsupported flow item MPLS over IP
+  * net/mlx5: workaround drop action with old kernel
+  * net/mvpp2: fix configured state dependency
+  * net/mvpp2: fix port speed overflow
+  * net/octeontx2: fix default MCAM allocation size
+  * net/octeontx2: fix flow creation limit on CN98xx
+  * net/octeontx2: use runtime LSO format indices
+  * net/octeontx/base: fix debug build with clang
+  * net/pfe: remove unnecessary null check
+  * net/sfc: fix MAC stats lock in xstats query by ID
+  * net/sfc: fix MAC stats update for stopped device
+  * net/sfc: fix reading adapter state without locking
+  * net/sfc: fix xstats query by ID according to ethdev
+  * net/sfc: fix xstats query by unsorted list of IDs
+  * net/softnic: fix connection memory leak
+  * net/softnic: fix memory leak as profile is freed
+  * net/virtio: fix aarch32 build
+  * net/virtio: fix refill order in packed ring datapath
+  * net/virtio: report maximum MTU in device info
+  * power: fix namespace for internal struct
+  * rib: fix max depth IPv6 lookup
+  * test/crypto: fix mbuf reset after null check
+  * test/crypto: fix mempool size for session-less
+  * test/crypto: fix typo in AES case
+  * test/crypto: fix typo in ESN case
+  * test/mbuf: fix virtual address conversion
+  * tests/eal: fix memory leak
+  * vhost/crypto: check request pointer before dereference
+  * vhost: fix crash on reconnect
+  * vhost: fix missing guest pages table NUMA realloc
+  * vhost: fix missing memory table NUMA realloc
+  * vhost: utilize dynamic memory allocator
+  * Changes from 19.11.9:
+  https://doc.dpdk.org/guides-19.11/rel_notes/release_19_11.html#id25
+- rename
+  0001-SLE15-SP3-compatibility-patch-for-kni.patch
+  to
+  0002-SLE15-SP3-compatibility-patch-for-kni.patch
+- rename 
+  dpdk-fallthrough-comment-fixes.patch
+  to
+  0003-dpdk-fallthrough-comment-fixes.patch
+
+-------------------------------------------------------------------
+Mon Sep 13 16:46:30 CEST 2021 - tiwai@suse.de
+
+- Fix build error with SLE15-SP4 kernel (bsc#1190362):
+  dpdk-fallthrough-comment-fixes.patch
+
+-------------------------------------------------------------------
+Thu Sep  2 15:42:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add BuildRequires kernel-syms and modutils for proper
+  dependencies to be inserted in the resulting binary RPM, as
+  pointed by rpmlint
+
+-------------------------------------------------------------------
 Thu Jul 22 06:00:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize all Python script shebangs to use Python 3.

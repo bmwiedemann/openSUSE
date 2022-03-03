@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,64 +18,76 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%define aarch64_machine2 armv8a
+%define aarch64_machine armv8a
 %define exclusive_arch aarch64 x86_64 ppc64le
+
 %define name_tag %{nil}
 %define summary_tag %{nil}
-%if "%flavor" == "thunderx"
+%if "%{flavor}" == "thunderx"
 %define name_tag -thunderx
 %define summary_tag (thunderx)
-%define aarch64_machine2 thunderx
+%define aarch64_machine thunderx
 %define exclusive_arch aarch64
 %endif
-%define machine native
-%define machine2 default
-%ifarch x86_64
-%define machine native
-%define target x86_64-%{machine}-linuxapp-gcc
-%endif
+
+# http://doc.dpdk.org/guides-21.11/linux_gsg/build_dpdk.html#adjusting-build-options
+%define platform generic
+%define machine  auto
 %ifarch aarch64
-%define machine2 %aarch64_machine2
-%define target arm64-%{machine2}-linuxapp-gcc
-%endif
-%ifarch ppc64le
-%define machine2 power8
-%define target ppc_64-%{machine2}-linuxapp-gcc
+%define machine %{aarch64_machine2}
 %endif
 # This is in sync with <src>/ABI_VERSION
 # TODO: automate this sync
-%define maj 20
+%define maj 22
 %define min 0
-%define lname libdpdk-%{maj}_%{min}
-%bcond_without shared
+#%%define lname libdpdk-%%{maj}_%%{min}
+%define lname libdpdk-%{maj}
 # Add option to build without examples
 %bcond_without examples
 # Add option to build without tools
 %bcond_without tools
+#
 Name:           dpdk%{name_tag}
-Version:        19.11.8
+Version:        21.11
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Libraries
-URL:            http://dpdk.org
-Source:         http://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
+URL:            https://www.dpdk.org/
+Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Source1:        preamble
-Patch1:         0001-fix-cpu-compatibility.patch
-Patch2:         0001-SLE15-SP3-compatibility-patch-for-kni.patch
+# PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
+Patch0:         0001-build-try-to-get-kernel-version-from-kernel-source.patch
+Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
+# PATCH-FIX-OPENSUSE fix-buildsystem-python36.patch -- Fix building with python36
+Patch2:         fix-buildsystem-python36.patch
+BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  libelf-devel
-BuildRequires:  libmnl-devel
-BuildRequires:  libnuma-devel
-BuildRequires:  libpcap-devel
+BuildRequires:  kernel-syms
+BuildRequires:  libfdt-devel
+BuildRequires:  meson >= 0.49.2
+BuildRequires:  modutils
 BuildRequires:  pesign-obs-integration
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python3
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-pyelftools >= 0.22
+BuildRequires:  rdma-core-devel
+BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(libmnl)
+BuildRequires:  pkgconfig(libpcap)
+BuildRequires:  pkgconfig(numa)
+BuildRequires:  pkgconfig(zlib)
 Conflicts:      dpdk-any
 Provides:       dpdk-any = %{version}
-ExclusiveArch:  %exclusive_arch
-%if 0%{?sle_version} >= 120400
-BuildRequires:  rdma-core-devel
+Obsoletes:      dpdk-kmp-trace < %{version}
+ExclusiveArch:  %{exclusive_arch}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1196511
+BuildRequires:  pkgconfig(libbpf)
 %endif
 
 %description
@@ -91,6 +103,15 @@ Provides:       dpdk-any-devel = %{version}
 
 %description devel
 This package contains the headers and other files needed for developing
+applications with the Data Plane Development Kit.
+
+%package devel-static
+Summary:        Data Plane Development Kit static development files %{summary_tag}
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-devel = %{version}
+
+%description devel-static
+This package contains the static library files needed for developing
 applications with the Data Plane Development Kit.
 
 %package -n %{lname}
@@ -157,192 +178,85 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 %define pmddir %{_libdir}/dpdk-pmds-%{maj}.%{min}
 
 %prep
-# can't use %{name} because of dpdk-thunderx
-%setup -q -n dpdk-stable-%{version}
-%patch1 -p1 -z .init
-%patch2 -p1 -z .init
+# can't use %%{name} because of dpdk-thunderx
+%autosetup -p1 -n dpdk-%{version}
 
-# This fixes CROSS compilation (broken) in the mk file for ThunderX
-sed -i '/^CROSS /s/^/#/'  mk/machine/thunderx/rte.vars.mk
+# Skip not supported examples
+sed -i "/performance-thread/d" examples/meson.build
 
 # Verify ABI
 [ "$(cat ABI_VERSION)" = "%{maj}.%{min}" ] || exit 1
 
 %build
+%define _vpath_builddir "build-%{_target_cpu}-$flavor"
 
-cp mk/machine/armv8a/rte.vars.mk mk/machine/thunderx
-
-# set up a method for modifying the resulting .config file
-function setconf() {
-	if grep -q ^$1= $3/.config; then
-		sed -i "s:^$1=.*$:$1=$2:g" $3/.config
-	else
-		echo $1=$2 >> $3/.config
-	fi
-}
-
-function setdefaultconf()
-{
-	# Remove the below once upstream fixes the DPAA for NXP ARM
-	setconf CONFIG_RTE_LIBRTE_DPAA_BUS n $1
-	setconf CONFIG_RTE_LIBRTE_DPAA_MEMPOOL n $1
-	setconf CONFIG_RTE_LIBRTE_DPAA_PMD n $1
-	setconf CONFIG_RTE_LIBRTE_PMD_CAAM_JR n $1
-	setconf CONFIG_RTE_LIBRTE_PMD_DPAA_SEC n $1
-	setconf CONFIG_RTE_LIBRTE_PMD_DPAA_EVENTDEV n $1
-	%ifarch aarch64
-	setconf CONFIG_RTE_LIBRTE_PFE_PMD n $1
-	%endif
-
-	setconf CONFIG_RTE_MACHINE '"%{machine2}"' $1
-	# Disable experimental features
-	setconf CONFIG_RTE_NEXT_ABI n $1
-
-	# Enable automatic driver loading from this path
-	setconf CONFIG_RTE_EAL_PMD_PATH '"%{pmddir}"' $1
-
-	setconf CONFIG_RTE_LIBRTE_BNX2X_PMD y $1
-	setconf CONFIG_RTE_LIBRTE_BNX2X_MF_SUPPORT y $1
-	setconf CONFIG_RTE_LIBRTE_PMD_PCAP y $1
-	setconf CONFIG_RTE_LIBRTE_VHOST_NUMA y $1
-%if 0%{?sle_version} >= 120400
-	setconf CONFIG_RTE_LIBRTE_MLX5_PMD y $1
-	setconf CONFIG_RTE_LIBRTE_MLX4_PMD y $1
+%ifarch x86_64
+export CFLAGS="%{optflags} -msse4"
 %endif
-	setconf CONFIG_RTE_EAL_IGB_UIO n $1
-	setconf CONFIG_RTE_KNI_KMOD n $1
-
-	%if %{with shared}
-	setconf CONFIG_RTE_BUILD_SHARED_LIB y $1
-	%endif
-
-	%ifarch aarch64 ppc64le
-	setconf CONFIG_RTE_LIBRTE_DISTRIBUTOR n $1
-	%endif
-	%ifarch ppc64le
-	setconf CONFIG_RTE_LIBRTE_PMD_RING n $1
-	setconf CONFIG_RTE_LIBRTE_IXGBE_PMD n $1
-	setconf CONFIG_RTE_LIBRTE_POWER n $1
-	%endif
-}
-# In case dpdk-devel is installed, we should ignore its hints about the SDK directories
-unset RTE_SDK RTE_INCLUDE RTE_TARGET
-
-export EXTRA_CFLAGS="%{optflags} -Wformat -fPIC -U_FORTIFY_SOURCE"
-
-# DPDK defaults to using builder-specific compiler flags.  However,
-# the config has been changed by specifying CONFIG_RTE_MACHINE=default
-# in order to build for a more generic host.  NOTE: It is possible that
-# the compiler flags used still won't work for all Fedora-supported
-# machines, but runtime checks in DPDK will catch those situations.
-
-make V=1 O=%{target} T=%{target} %{?_smp_mflags} config
-setdefaultconf %{target}
-
-export EXTRA_CFLAGS='-DVERSION=\"%{version}\"'
+examples="all"
 for flavor in %{flavors_to_build}; do
-	export RTE_KERNELDIR=%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor
-	make V=1 O=%{target}-$flavor T=%{target} %{?_smp_mflags} config
-	setdefaultconf %{target}-$flavor
-	setconf CONFIG_RTE_EAL_IGB_UIO y %{target}-$flavor
-	setconf CONFIG_RTE_KNI_KMOD y %{target}-$flavor
-	cd  %{target}-$flavor
-	make V=1 %{?_smp_mflags}
-	cd -
+  %meson --includedir=%{incdir} \
+    -Ddefault_library=shared \
+    -Denable_docs=true \
+    -Db_lto=true \
+  %if %{with examples}
+    -Dexamples="$examples" \
+  %endif
+    -Dplatform="%{platform}" \
+    -Dcpu_instruction_set=%{machine} \
+    -Denable_kmods=true \
+    -Ddrivers_install_subdir=%{pmddir} \
+    -Dkernel_dir="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor"
+  %meson_build
+  # Make sure examples are only built once
+  examples=""
 done
-
-make V=1 O=%{target} %{?_smp_mflags}
-make V=1 O=%{target} %{?_smp_mflags} doc-api-html
-
-%if %{with examples}
-make V=1 O=%{target}/examples T=%{target} %{?_smp_mflags} examples
-%endif
 
 %install
-# export needed for kmp package
-export EXTRA_CFLAGS='-DVERSION=\"%{version}\"'
-export INSTALL_MOD_PATH=%{buildroot}
-export INSTALL_MOD_DIR=updates
-export BRP_PESIGN_FILES="*.ko"
-
+examples="%{?with_examples:all}"
 for flavor in %{flavors_to_build}; do
-	cd  %{target}-$flavor
-	export RTE_KERNELDIR=%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor
-	dir=%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor
-	krel=$(make -s -C "$dir" kernelrelease)
-	mkdir -p %{buildroot}/lib/modules/$krel/extra/dpdk/
-	#make install expects same kernel for build and target, lets copy it manually
-	install -m644 ../%{target}-$flavor/kmod/*.ko %{buildroot}/lib/modules/$krel/extra/dpdk/
-	cd -
+  %meson_install
+  # Also install the example binaries
+  if [ ! -z "$examples" ]; then
+    for f in %{_vpath_builddir}/examples/dpdk-*; do
+      bn=$(basename "$f")
+      [ -f "$f" ] && install -Dm 0755 ${f} "%{buildroot}%{_bindir}/${bn/dpdk-/dpdk_example_}"
+    done
+  fi
+  examples=""
 done
-# In case dpdk-devel is installed
-unset RTE_SDK RTE_INCLUDE RTE_TARGET
 
-%make_install O=%{target} prefix=%{_usr} libdir=%{_libdir}
+# Fix Kernel modules on Factory (/usr merge)
+%if 0%{?suse_version} > 1550
+mkdir -p %{buildroot}%{_prefix}/lib
+mv %{buildroot}/lib/modules %{buildroot}%{_prefix}/lib
+%endif
+
+# Fix documentation
+mkdir -p %{buildroot}%{docdir}
+mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%{docdir}
 
 %if ! %{with tools}
-rm -rf %{buildroot}%{sdkdir}/usertools/
-rm -rf %{buildroot}%{_sbindir}/dpdk_nic_bind
+# Remove tools if not needed
+for tool in dpdk-devbind.py dpdk-pmdinfo.py dpdk-telemetry.py dpdk-hugepages.py; do
+  rm -rf "%{buildroot}%{_bindir}/$tool"
+done
+%else
+# Add compatibility symlink
+mkdir -p %{buildroot}%{_sbindir}
+ln -s %{_bindir}/dpdk-devbind.py %{buildroot}%{_sbindir}/dpdk_nic_bind
 %endif
-rm -f %{buildroot}%{sdkdir}/usertools/setup.sh
-#TODO pip elftools has issues to fix
-rm -rf %{buildroot}%{_bindir}/dpdk-pmdinfo
-
-%if %{with examples}
-find %{target}/examples/ -name "*.map" | xargs rm -f
-for f in %{target}/examples/*/%{target}/app/*; do
-    bn=`basename ${f}`
-    cp -p ${f} %{buildroot}%{_bindir}/dpdk_example_${bn}
-done
-%endif
-
-# Create a driver directory with symlinks to all pmds
-mkdir -p %{buildroot}/%{pmddir}
-for f in %{buildroot}/%{_libdir}/*_pmd_*.so.*; do
-    bn=$(basename ${f})
-    ln -s ../${bn} %{buildroot}%{pmddir}/${bn}
-done
-#mempool is a driver now from 16.07
-mkdir -p %{buildroot}/%{pmddir}
-for f in %{buildroot}/%{_libdir}/*_mempool_*.so.*; do
-    bn=$(basename ${f})
-    ln -s ../${bn} %{buildroot}%{pmddir}/${bn}
-done
-
-# Setup RTE_SDK environment as expected by apps etc
-mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
-cat << EOF > %{buildroot}/%{_sysconfdir}/profile.d/dpdk-sdk-%{_arch}.sh
-if [ -z "\${RTE_SDK}" ]; then
-    export RTE_SDK="%{sdkdir}"
-    export RTE_TARGET="%{target}"
-    export RTE_INCLUDE="%{incdir}"
-fi
-EOF
-
-cat << EOF > %{buildroot}/%{_sysconfdir}/profile.d/dpdk-sdk-%{_arch}.csh
-if ( ! \${?RTE_SDK} ) then
-    setenv RTE_SDK "%{sdkdir}"
-    setenv RTE_TARGET "%{target}"
-    setenv RTE_INCLUDE "%{incdir}"
-endif
-EOF
-
-# Fixup target machine mismatch
-sed -i -e 's:-%{machine}-:-%{machine2}-:g' %{buildroot}/%{_sysconfdir}/profile.d/dpdk-sdk*
-
-#doc
-mkdir %{buildroot}%{_docdir}/
-mv   %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%{_docdir}/
-
-ln -s %{_bindir}/dpdk-procinfo %{buildroot}%{_bindir}/dpdk_proc_info
-ln -s %{_sbindir}/dpdk-devbind %{buildroot}%{_sbindir}/dpdk_nic_bind
 
 # Fix interpreter
 find %{buildroot} -name "*.py" -exec sed -i 's|python$|python3|' \{\} +
 find %{buildroot} -name "*.py" -exec sed -i 's|env python|python|' \{\} +
 
 # Remove duplicates
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}/%{docdir}
+%fdupes %{buildroot}/%{sdkdir}/examples
+
+# Fix broken symlink (yes with * in its name)
+rm -v "%{buildroot}%{_libdir}/librte_*.so*"
 
 %post devel -p /sbin/ldconfig
 %postun devel -p /sbin/ldconfig
@@ -350,60 +264,44 @@ find %{buildroot} -name "*.py" -exec sed -i 's|env python|python|' \{\} +
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-# BSD
-%{_bindir}/testpmd
-%{_bindir}/testbbdev
-%{_bindir}/testsad
-%{_bindir}/dpdk-procinfo
-%{_bindir}/dpdk_proc_info
+%{_bindir}/dpdk-dumpcap
 %{_bindir}/dpdk-pdump
+%{_bindir}/dpdk-proc-info
+%{_bindir}/dpdk-test*
 
 %files -n %{lname}
-%defattr(-,root,root)
-%if %{with shared}
+%license license/gpl-2.0.txt license/lgpl-2.1.txt license/bsd-3-clause.txt
 %{_libdir}/*.so.*
-%{pmddir}
-%endif
-
-%files doc
-%defattr(-,root,root)
-#BSD
-%docdir
-%doc license/gpl-2.0.txt license/lgpl-2.1.txt
+%dir %{pmddir}
+%{pmddir}/*.so.*
 
 %files devel
-%defattr(-,root,root)
 #BSD
 %{incdir}/
-%{sdkdir}
-%if %{with tools}
-%exclude %{sdkdir}/usertools/
-%endif
+%{sdkdir}/
+%{pmddir}/*.so
+%{_libdir}/*.so
+%{_libdir}/pkgconfig/libdpdk*.pc
 %if %{with examples}
 %exclude %{sdkdir}/examples/
 %endif
-%{_sysconfdir}/profile.d/dpdk-sdk-*.*
-%if ! %{with shared}
+
+%files devel-static
+#BSD
 %{_libdir}/*.a
-%else
-%{_libdir}/*.so
-%endif
+
+%files doc
+#BSD
+%doc %docdir
 
 %if %{with tools}
 %files tools
-%defattr(-,root,root)
-%{sdkdir}/usertools/
-%{_sbindir}/dpdk-devbind
 %{_sbindir}/dpdk_nic_bind
-%{_bindir}/dpdk-test-eventdev
-%{_bindir}/dpdk-test-compress-perf
-%{_bindir}/dpdk-test-crypto-perf
+%{_bindir}/dpdk-*.py
 %endif
 
 %if %{with examples}
 %files examples
-%defattr(-,root,root)
 %{_bindir}/dpdk_example_*
 %doc %{sdkdir}/examples
 %endif

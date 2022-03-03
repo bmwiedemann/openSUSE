@@ -11,8 +11,11 @@
 				<flag>sse</flag>
 				<flag>sse2</flag>
 				<flag>ssse3</flag>
-				<!-- TODO add SSE4.2 before that need to fix obs, patch on the way -->
+				<flag>sse4_2</flag>
 			</cpu>
+			<disk>
+				<size unit="G">6</size>
+			</disk>
 		</hardware>
 	</overwrite>
 </constraints>

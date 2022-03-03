@@ -3,11 +3,11 @@ From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
 Date: Mon, 21 Sep 2020 14:50:13 +0200
 Subject: [PATCH] SLE15 SP3 compatibility patch for kni
 
-Updated 2021-05-14
+Updated 2022-02-25 for version 21.11
 
-diff -Nur dpdk-stable-19.11.8/kernel/linux/kni/compat.h new/kernel/linux/kni/compat.h
---- dpdk-stable-19.11.8/kernel/linux/kni/compat.h	2021-04-16 10:13:47.000000000 +0200
-+++ new/kernel/linux/kni/compat.h	2021-05-14 14:19:13.576601634 +0200
+diff -Nur dpdk-21.11/kernel/linux/kni/compat.h new/kernel/linux/kni/compat.h
+--- dpdk-21.11/kernel/linux/kni/compat.h	2021-11-26 18:58:21.000000000 +0100
++++ new/kernel/linux/kni/compat.h	2022-02-25 18:08:52.638000134 +0100
 @@ -14,7 +14,10 @@
  #define SLE_VERSION(a, b, c) KERNEL_VERSION(a, b, c)
  #endif
@@ -26,5 +26,5 @@ diff -Nur dpdk-stable-19.11.8/kernel/linux/kni/compat.h new/kernel/linux/kni/com
  #if KERNEL_VERSION(5, 6, 0) <= LINUX_VERSION_CODE || \
 +	(SLE_VERSION_CODE && SLE_VERSION_CODE == SLE_VERSION(15, 3, 0)) || \
  	(defined(RHEL_RELEASE_CODE) && \
- 	 RHEL_RELEASE_VERSION(8, 3) <= RHEL_RELEASE_CODE)
- #define HAVE_TX_TIMEOUT_TXQUEUE
+ 	 RHEL_RELEASE_VERSION(8, 3) <= RHEL_RELEASE_CODE) || \
+ 	 (defined(CONFIG_SUSE_KERNEL) && defined(HAVE_ARG_TX_QUEUE))
