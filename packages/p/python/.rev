@@ -1602,4 +1602,13 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
   against bsc#1186819 (CVE-2021-3572).</comment>
     <requestid>957826</requestid>
   </revision>
+  <revision rev="168" vrev="19">
+    <srcmd5>2a33e01142f5aac22ef20543c6eeb583</srcmd5>
+    <version>2.7.18</version>
+    <time>1646349413</time>
+    <user>dimstar_suse</user>
+    <comment>- Recover again proper value of %python2_package_prefix
+  (bsc#1175619).</comment>
+    <requestid>958406</requestid>
+  </revision>
 </revisionlist>

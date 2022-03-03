@@ -284,6 +284,13 @@ sed -i -e "s/^\(\s*_SETUPTOOLS_VERSION\s\+=\s\+\)\"[0-9.]\+\"/\1\"${STVER}\"/" \
        -e "s/^\(\s*_PIP_VERSION\s\+=\s\+\)\"[0-9.]\+\"/\1\"${PIPVER}\"/" \
     Lib/ensurepip/__init__.py
 
+cp -p %{SOURCE1} macros.python2
+%if %{suse_version} < 1500
+# on SLE12 and SLE11 the python2 modules will still be called python-xxxx
+# as this SPEC file is used on SLE12, keep it in here for the time being
+sed -i -e 's/python2_package_prefix python2/python2_package_prefix python/' macros.python2
+%endif
+
 %build
 %define _lto_cflags %{nil}
 export OPT="%{optflags} -DOPENSSL_LOAD_CONF -fwrapv"
@@ -377,12 +384,7 @@ find . -name '*.py' -type f | grep -vE "^./Parser/|^./Python/" \
 %make_install OPT="%{optflags} -fPIC"
 install -m 644 %{SOURCE5} %{buildroot}%{_libdir}/python%{python_version}/site-packages/_local.pth
 install -d -m 755 %{buildroot}%{_rpmconfigdir}/macros.d/
-install -m 644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/macros.d/
-%if %{suse_version} < 1500
-# on SLE12 and SLE11 the python2 modules will still be called python-xxxx
-# as this SPEC file is used on SLE12, keep it in here for the time being
-sed -i -e 's/python2_package_prefix python2/python2_package_prefix python/;' %{buildroot}%{_rpmconfigdir}/macros.d/macros.python2
-%endif
+install -m 644 macros.python2 %{buildroot}%{_rpmconfigdir}/macros.d/
 
 # make sure /usr/lib/python/site-packages exists even on lib64 machines
 mkdir -p %{buildroot}%{_prefix}/lib/python%{python_version}/site-packages
