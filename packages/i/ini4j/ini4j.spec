@@ -1,7 +1,7 @@
 #
 # spec file for package ini4j
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Java API for handling Windows ini file format
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://www.ini4j.org/
+URL:            http://www.ini4j.org/
 # wget http://switch.dl.sourceforge.net/sourceforge/ini4j/%{name}-%{version}-all.zip
 # unzip -q *zip
 # cd ini4j-0.5.1/
@@ -30,14 +30,15 @@ Url:            http://www.ini4j.org/
 # mkdir src; mv META-INF org src/
 # tar -cjf ../ini4j-0.5.1-sources.tar.bz2 src/ LICENSE.txt NOTICE.txt
 Source0:        %{name}-%{version}-sources.tar.bz2
-Source1:        %{name}-%{version}.build.xml
-Source2:        %{name}-%{version}.buildinfo.properties
+Source1:        https://repo1.maven.org/maven2/org/%{name}/%{name}/%{version}/%{name}-%{version}.pom
+Source2:        %{name}-%{version}.build.xml
+Source3:        %{name}-%{version}.buildinfo.properties
 Patch0:         ini4j-java8-compat.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
 BuildRequires:  java-devel
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local
 BuildRequires:  unzip
 Requires:       java
 BuildArch:      noarch
@@ -52,7 +53,7 @@ Summary:        Java API for handling Windows ini file format
 Group:          Development/Libraries/Java
 Requires(post): /bin/ln
 Requires(post): /bin/rm
-Requires(postun): /bin/rm
+Requires(postun):/bin/rm
 
 %description javadoc
 The [ini4j] is a simple Java API for handling configuration files in
@@ -65,9 +66,9 @@ Preferences API implementation based on the .ini file.
 find . -type f \( -iname "*.jar" -o -iname "*.class" -o -iname "*.exe" -o -iname "*.so" \) | \
   xargs -t rm -f
 
-cp %{SOURCE1} build.xml
-mkdir -p src/etc
-cp %{SOURCE2} src%{_sysconfdir}/buildinfo.properties
+cp %{SOURCE2} build.xml
+mkdir -p src%{_sysconfdir}
+cp %{SOURCE3} src%{_sysconfdir}/buildinfo.properties
 
 %patch0 -p1
 
@@ -78,21 +79,23 @@ ant javadoc
 %install
 # jar
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-ln -s %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
-# javadoc
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr build/doc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-(cd %{buildroot}%{_javadocdir} && ln -sf %{name}-%{version} %{name})
-%fdupes -s %{buildroot}/%{_javadocdir}/%{name}-%{version}
+install -m 644 dist/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
-%files
-%doc LICENSE.txt NOTICE.txt
-%{_javadir}/*
+# pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}
+install -m 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
+# javadoc
+install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr build/doc/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}/%{_javadocdir}
+
+%files -f .mfiles
+%license LICENSE.txt
+%doc NOTICE.txt
 
 %files javadoc
-%dir %{_javadocdir}/%{name}-%{version}
-%{_javadocdir}/%{name}-%{version}/*
 %{_javadocdir}/%{name}
 
 %changelog

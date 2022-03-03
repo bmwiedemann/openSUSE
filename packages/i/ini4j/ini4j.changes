@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  2 12:20:19 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Install as maven artifact
+
+-------------------------------------------------------------------
 Mon Sep 18 10:31:06 UTC 2017 - fstrba@suse.com
 
 - Fix build with jdk9
