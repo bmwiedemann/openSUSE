@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar  3 00:16:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upgrade to 0.20.0:
+  * Add support for [`pytest`](https://docs.pytest.org)==7.\* ([`pytest`](https://docs.pytest.org)==6.\* is still supported for now).  (many thanks to [`Craig Blaszczyk`](https://github.com/jakul))
+  * Requires [`httpx`](https://www.python-httpx.org)==0.22.\*
+  * Python 3.6 is no longer supported.
+  * Callback are now executed as expected when there is a matching already sent response.
+  * `httpx_mock.add_response` `data`, `files` and `boundary` parameters have been removed. It was deprecated since `0.17.0`. Refer to this version changelog entry for more details on how to update your code.
+  * An exception can now be raised without creating a callback by using `httpx_mock.add_exception` method.
+  * `httpx_mock.add_response` `data` parameter is only used for multipart content. It was deprecated since `0.14.0`. Refer to this version changelog entry for more details on how to update your code.
+  * `pytest_httpx.to_response` function has been removed. It was deprecated since `0.14.0`. Refer to this version changelog entry for more details on how to update your code.
+  * Callbacks are now expected to have a single parameter, the request. The previously second parameter `extensions`, can still be accessed via `request.extensions`.
+  * Callbacks are now expected to return a `httpx.Response` instance instead of the previous `httpcore.Response` tuple. As a consequence, `pytest_httpx.to_response` now returns a `httpx.Response` instance.
+  * `httpx_mock.add_response` now allows to explicitly provide bytes using `content` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide string using `text` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide HTML string content using `html` parameter.
+  * `httpx_mock.add_response` now allows to explicitly provide streamed content using `stream` parameter and the new `pytest_httpx.IteratorStream` class.
+  * `pytest_httpx.to_response` is now deprecated in favor of `httpx.Response`. This function will be removed in a future release.
+  * `httpx_mock.add_response` `data` parameter should now only be used for multipart content. Instead, use the appropriate parameter amongst `content`, `text`, `html` or `stream`.
+  * Type information is now provided following [PEP 561](https://www.python.org/dev/peps/pep-0561/) (many thanks to [`Caleb Ho`](https://github.com/calebho)).
+
+-------------------------------------------------------------------
 Thu Jun  3 08:53:42 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of python-pytest-httpx 0.12.0

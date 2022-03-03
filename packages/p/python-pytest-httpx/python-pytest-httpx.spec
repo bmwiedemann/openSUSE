@@ -1,7 +1,7 @@
 #
-# spec file for package python-pytest_httpx
+# spec file for package python-pytest-httpx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-httpx
-Version:        0.12.0
+Version:        0.20.0
 Release:        0
 Summary:        Send responses to httpx
 License:        MIT
 URL:            https://colin-b.github.io/pytest_httpx/
 Source:         https://github.com/Colin-b/pytest_httpx/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module httpx >= 0.18.0}
+BuildRequires:  %{python_module httpx >= 0.22.0}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.14.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-httpx >= 0.18.0
+Requires:       python-httpx >= 0.22.0
 Requires:       python-pytest >= 6.0
 BuildArch:      noarch
 %python_subpackages
