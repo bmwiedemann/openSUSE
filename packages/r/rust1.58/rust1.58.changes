@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  2 00:55:10 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Add recommends for GCC for installs to be able to link.
+- Add suggests for lld/clang which are faster than gcc for linking to
+  allow users choice on what they use.
+
+-------------------------------------------------------------------
 Thu Jan 20 04:51:36 UTC 2022 - William Brown <william.brown@suse.com>
 
 - bsc#1194767 - CVE-2022-21658 - Resolve race condition in std::fs::remove_dir_all

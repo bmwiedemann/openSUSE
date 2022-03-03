@@ -232,7 +232,18 @@ BuildRequires:  llvm%{llvm_version}-devel
 # Ninja required to drive the bundled llvm build.
 BuildRequires:  ninja
 %endif
+
+# To allow linking to occur by default. This is a recommends so it can be ignored if desired.
+Recommends:     gcc
+# Rustc doesn't really do much without Cargo, but you know, if you wanna yolo that ...
 Recommends:     cargo
+%if !%with bundled_llvm
+# Clang gives better errors than gcc during a compilation, and it keeps everything
+# within llvm ecosystem.
+Suggests:       clang
+# lld is significantly faster than gold for linking, so users may wish to preference it.
+Suggests:       lld
+%endif
 
 %if %{with test}
 BuildRequires:  cargo%{version_suffix} = %{version}
