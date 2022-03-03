@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar  2 08:01:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 8dd9f663bd7c (2022-02-25):
+  * Add GPIO names
+  * Add overlays:
+    - spi0-0cs
+    - vc4-kms-dpi-hyperpixel2r
+    - vc4-kms-dpi-hyperpixel4
+    - vc4-kms-dpi-hyperpixel4sq
+    - vc4-kms-dpi-panel
+    - waveshare-can-fd-hat-mode-a
+    - waveshare-can-fd-hat-mode-b
+
+-------------------------------------------------------------------
 Fri Jan 21 14:07:41 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Switch to 5.16 branch - boo#1194423
