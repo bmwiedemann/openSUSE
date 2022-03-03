@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  1 00:07:18 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to 2.14.0:
+  * add: Add av1 encode interfaces
+  * add: VA/X11 VAAPI driver mapping for crocus DRI driver
+  * doc: Add description of the fd management for surface importing
+  * ci: fix freebsd build
+  * meson: Copy public headers to build directory to support subproject
+  
+-------------------------------------------------------------------
 Mon Oct  4 15:17:42 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed JIRA number in previous changelog 
