@@ -1,5 +1,5 @@
 #
-# spec file for package kanidm
+# spec file for package nss_synth
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           nss_synth
-Version:        0.1.0~git0.7c23049
+Version:        0.1.0~git2.ed6985d
 Release:        0
 Summary:        A module that synthesises uid/gid's from bare uid's for container compatibility
 License:        MPL-2.0
-Url:            https://github.com/kanidm/nss_synth
+URL:            https://github.com/kanidm/nss_synth
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
