@@ -16,10 +16,10 @@
 #
 
 
-%define ver 8306
+%define ver 8307
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.306
+Version:        8.307
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later

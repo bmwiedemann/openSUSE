@@ -1,7 +1,7 @@
-Index: pythia8306/Makefile
+Index: pythia8307/Makefile
 ===================================================================
---- pythia8306.orig/Makefile
-+++ pythia8306/Makefile
+--- pythia8307.orig/Makefile
++++ pythia8307/Makefile
 @@ -36,7 +36,11 @@ LOCAL_TMP=tmp
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(LOCAL_LIB))
  CXX_COMMON:=-I$(LOCAL_INCLUDE) $(CXX_COMMON)
@@ -31,10 +31,10 @@ Index: pythia8306/Makefile
  
  # MG5 matrix element plugins.
  mg5mes:
-Index: pythia8306/configure
+Index: pythia8307/configure
 ===================================================================
---- pythia8306.orig/configure
-+++ pythia8306/configure
+--- pythia8307.orig/configure
++++ pythia8307/configure
 @@ -30,6 +30,7 @@ Configuration options.
  --help            : Print this help message (also -h, --h, and -help).
  --enable-debug    : Turn on debugging and disable optimization.
@@ -60,7 +60,7 @@ Index: pythia8306/configure
  if [ -z "$ARCH" ]; then ARCH=$(uname | grep -i -o -e Linux -e Darwin); fi
  ARCH=$(echo $ARCH | awk '{print toupper($0)}')
  if [ "$ARCH" != "LINUX" ] && [ "$ARCH" != "DARWIN" ]; then
-@@ -427,6 +429,7 @@ PREFIX_LIB=$PREFIX_LIB
+@@ -428,6 +430,7 @@ PREFIX_LIB=$PREFIX_LIB
  PREFIX_SHARE=$PREFIX_SHARE
  
  # Compilation flags (see ./configure --help for further documentation).
@@ -68,10 +68,10 @@ Index: pythia8306/configure
  CXX=$CXX
  CXX_COMMON=$CXX_COMMON
  CXX_SHARED=$CXX_SHARED
-Index: pythia8306/plugins/mg5mes/Makefile
+Index: pythia8307/plugins/mg5mes/Makefile
 ===================================================================
---- pythia8306.orig/plugins/mg5mes/Makefile
-+++ pythia8306/plugins/mg5mes/Makefile
+--- pythia8307.orig/plugins/mg5mes/Makefile
++++ pythia8307/plugins/mg5mes/Makefile
 @@ -28,7 +28,11 @@ LOCAL_DIRS:=$(subst $(LOCAL_TMP)/,,$(wil
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
  LOCAL_MKDIRS:=$(foreach DIR,$(LOCAL_DIRS),$(shell mkdir -p $(LOCAL_TMP)/$(DIR)))
@@ -85,10 +85,10 @@ Index: pythia8306/plugins/mg5mes/Makefile
  PYTHIA=$(TOP_LIB)/libpythia8$(LIB_SUFFIX)
  
  # Set the wrapper, determine the objects and targets.
-Index: pythia8306/plugins/python/Makefile
+Index: pythia8307/plugins/python/Makefile
 ===================================================================
---- pythia8306.orig/plugins/python/Makefile
-+++ pythia8306/plugins/python/Makefile
+--- pythia8307.orig/plugins/python/Makefile
++++ pythia8307/plugins/python/Makefile
 @@ -27,7 +27,11 @@ LOCAL_TMP=tmp
  LOCAL_INCLUDE=include
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
@@ -118,10 +118,10 @@ Index: pythia8306/plugins/python/Makefile
  
  # Clean.
  clean:
-Index: pythia8306/examples/Makefile
+Index: pythia8307/examples/Makefile
 ===================================================================
---- pythia8306.orig/examples/Makefile
-+++ pythia8306/examples/Makefile
+--- pythia8307.orig/examples/Makefile
++++ pythia8307/examples/Makefile
 @@ -26,14 +26,13 @@ ifneq ("$(wildcard ../lib/libpythia8.*)"
    PREFIX_INCLUDE=../include
  endif
@@ -134,7 +134,7 @@ Index: pythia8306/examples/Makefile
  ifeq ($(RIVET_USE),true)
    COMMA=,
    RIVET_LPATH=$(filter -L%,$(shell $(RIVET_BIN)$(RIVET_CONFIG) --ldflags))
--  RIVET_RPATH=$(subst -L,-Wl$(COMMA)-rpath=,$(RIVET_LPATH))
+-  RIVET_RPATH=$(subst -L,-Wl$(COMMA)-rpath$(COMMA),$(RIVET_LPATH))
  endif
  
  ################################################################################
@@ -153,7 +153,7 @@ Index: pythia8306/examples/Makefile
 -	 $(if $(filter true,$(ROOT_USE)),main93.so -DPY8ROOT\
 +	$(CXX) $@.cc -o $@ -w $(CXX_COMMON:c++11=c++14) -DPY8ROOT\
           $(ROOT_LIB) `$(ROOT_CONFIG) --cflags --glibs`)\
--	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs` $(RIVET_RPATH)
+-	 $(RIVET_RPATH) `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs`
 +	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs`
  else
  	$(error Error: $@ requires RIVET)

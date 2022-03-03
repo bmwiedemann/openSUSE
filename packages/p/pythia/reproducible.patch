@@ -1,10 +1,10 @@
 a variant was sent via mail to phil...@cern.ch
 
-Index: pythia8244/configure
+Index: pythia8307/configure
 ===================================================================
---- pythia8244.orig/configure
-+++ pythia8244/configure
-@@ -267,7 +267,7 @@ done
+--- pythia8307.orig/configure
++++ pythia8307/configure
+@@ -286,7 +286,7 @@ done
  
  # Parse the user arguments and evaluate each as a global variable.
  echo "# PYTHIA configuration file." > $CFG_FILE
