@@ -1,7 +1,7 @@
 #
 # spec file for package python-iniparse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  python-rpm-macros
 # python2-devel contains test module, even for noarch package
-BuildRequires:  python2-devel
+BuildRequires:  %{python_module devel}
 # tests require testsuite modules
 BuildRequires:  %{python_module testsuite}
 Requires:       python-six
@@ -60,7 +60,7 @@ sed -i "/.*test_multiprocessing.*/d" tests/__init__.py # NOTE(saschpe): Doesn't 
 rm -rf %{buildroot}%{_datadir}/doc/iniparse-%{version} # Remove unwanted stuff
 
 %check
-%python_exec runtests.py
+%python_exec runtests.py -v
 
 %files %{python_files}
 %license LICENSE

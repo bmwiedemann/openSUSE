@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  2 14:26:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix BR: it is %{python_module devel} not python2-devel.
+
+-------------------------------------------------------------------
 Thu Oct 29 22:26:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Need python3X-testsuite for all flavors
