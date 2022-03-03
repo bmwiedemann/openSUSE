@@ -131,9 +131,7 @@ Substitute: netcfg netcfg libnss_usrfiles2
   BuildFlags: useccache:bitcoin
   BuildFlags: useccache:ceph
   BuildFlags: useccache:chromium
-  BuildFlags: useccache:glib2
   BuildFlags: useccache:gtk3
-  BuildFlags: useccache:gtk3:doc
   BuildFlags: useccache:llvm9
   BuildFlags: useccache:nodejs-electron
   buildflags: useccache:tensorflow
