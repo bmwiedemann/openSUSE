@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  4 08:55:03 UTC 2022 - pgajdos@suse.com
+
+- disable flaky test_terminate_thread_on_failed_reconnection and
+  test_restart_failed_monitor
+
+-------------------------------------------------------------------
 Sun Jan 23 15:57:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:

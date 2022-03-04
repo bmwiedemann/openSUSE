@@ -63,7 +63,8 @@ export LC_ALL=C.utf-8
 
 # Don't run functional tests that require connections to a physical fritzbox router
 rm fritzconnection/tests/test_functional.py
-%pytest
+# https://github.com/kbr/fritzconnection/issues/154
+%pytest -k 'not (test_terminate_thread_on_failed_reconnection or test_restart_failed_monitor)'
 
 %files %{python_files}
 %license LICENSE.txt
