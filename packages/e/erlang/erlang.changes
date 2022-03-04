@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 21 18:12:08 UTC 2022 - matwey.kornilov@gmail.com
+
+- Changes for 24.2.1:
+  * ssl: Improve SNI (server name indication) handling so that
+    protocol version can be selected with regards to SNI. Also,
+    make sure that ssl:connection_information/1 returns the correct
+    SNI value.
+  * ssl: Fixed cipher suite listing functions so that the listing
+    of all cipher suites will be complete. Another fix for cipher
+    suite handling in OTP-24.1 accidentally excludes a few cipher
+    suites from the listing of all cipher suites.
+  * ssl: Reenable legacy cipher suite TLS_RSA_WITH_3DES_EDE_CBC_SHA
+    for explicit configuration in TLS-1.2, not supported by
+    default.
+  * ssl: Avoid unnecessary logs by better adjusting the tls_sender
+    process to the new supervisor structure in OTP-24.2
+  * erts: Fixed a memory leak in file:read_file_info/2 and
+    file:read_file/1 on Windows.
+  * erts: Fix GC emulator crash when spawn_request was used when
+    message tracing was enabled.
+
+-------------------------------------------------------------------
 Fri Jan 21 21:11:53 UTC 2022 - matwey.kornilov@gmail.com
 
 - Changes for 24.2:
