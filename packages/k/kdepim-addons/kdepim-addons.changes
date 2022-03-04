@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:57:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Fix Bug 434335 Zoom in/out is missing in the context menu (kde#434335)
+
+-------------------------------------------------------------------
 Tue Feb  1 13:02:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
