@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcron
-Version:        21.12.2
+Version:        21.12.3
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later
@@ -32,11 +32,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-UPSTREAM
-Patch0:         0001-KCronHelper-Return-error-when-things-don-t-work-out.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Improve-temporary-file-handling.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Write-into-crontab-instead-of-replacing-the-file.patch
+Patch0:         0001-Write-into-crontab-instead-of-replacing-the-file.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)

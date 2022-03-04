@@ -846,4 +846,12 @@
   * 0001-Write-into-crontab-instead-of-replacing-the-file.patch (forwarded request 957601 from cgiboudeaux)</comment>
     <requestid>957602</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>5cb74fedcbcdb5f1b659015d81417cfd</srcmd5>
+    <version>21.12.3</version>
+    <time>1646421341</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.3</comment>
+    <requestid>958821</requestid>
+  </revision>
 </revisionlist>

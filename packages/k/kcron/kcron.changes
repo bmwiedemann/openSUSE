@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:56:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Improve temporary file handling
+  * KCronHelper: Return error when things don't work out
+- Drop patches, now upstream:
+  * 0001-Improve-temporary-file-handling.patch
+  * 0001-KCronHelper-Return-error-when-things-don-t-work-out.patch
+
+-------------------------------------------------------------------
 Fri Feb 25 12:40:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add more upstream changes (boo#1195154, boo#1193945):
