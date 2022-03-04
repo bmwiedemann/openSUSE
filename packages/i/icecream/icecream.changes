@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar  4 16:39:39 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Update to 1.4
+  - scheduler assigns jobs with larger priority first, so compilations with higher 'nice' value
+    do not interfere with normal compilations
+  - avoid large timeouts if there is a network problem
+  - support for -march/-mcpu/-mtune used with =native (proper specific flags will be substituted)
+  - support for Clang's -fmodules, by removing the -fmodules flag for remote compilation
+  - do not keep host lock when sending preprocessed source (reduces chance of network timeouts)
+  - send more jobs in advance to nodes with many CPU cores
+  - try to use larger network buffers
+  - force local compilations if --coverage is used
+  - correctly clean up caches
+  - handle properly the case when something removes files in the cache directory
+
+-------------------------------------------------------------------
 Wed Sep 22 14:31:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

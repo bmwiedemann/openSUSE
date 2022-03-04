@@ -1,7 +1,7 @@
 #
 # spec file for package icecream
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           icecream
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Distributed Compilation in the Network
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/icecc/icecream
-Source0:        https://github.com/icecc/icecream/releases/download/%{version}/icecc-%{version}.tar.xz
+Source0:        https://github.com/icecc/icecream/releases/download/1.4/icecc-%{version}.tar.xz
 Source1:        iceccd.xml
 Source2:        iceccd.service.in
 Source3:        iceccd-wrapper
@@ -76,7 +76,7 @@ Summary:        Distributed Compile Wrappers for Clang
 Group:          Development/Tools/Building
 Requires:       clang
 Requires:       icecream
-Supplements:    packageand(icecream:clang)
+Supplements:    (icecream and clang)
 
 %description -n icecream-clang-wrappers
 Wrapper symlinks for clang/clang++ for icecream distributed building.
