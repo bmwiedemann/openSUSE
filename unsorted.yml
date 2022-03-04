@@ -22289,6 +22289,7 @@ unsorted:
   - python310-azure-mgmt-marketplaceordering 
   - python310-azure-mgmt-media 
   - python310-azure-mgmt-mixedreality 
+  - python310-azure-mgmt-mobilenetwork 
   - python310-azure-mgmt-monitor 
   - python310-azure-mgmt-msi 
   - python310-azure-mgmt-netapp 
@@ -25438,6 +25439,7 @@ unsorted:
   - python38-azure-mgmt-marketplaceordering 
   - python38-azure-mgmt-media 
   - python38-azure-mgmt-mixedreality 
+  - python38-azure-mgmt-mobilenetwork 
   - python38-azure-mgmt-monitor 
   - python38-azure-mgmt-msi 
   - python38-azure-mgmt-netapp 
@@ -28447,6 +28449,7 @@ unsorted:
   - python39-azure-mgmt-marketplaceordering 
   - python39-azure-mgmt-media 
   - python39-azure-mgmt-mixedreality 
+  - python39-azure-mgmt-mobilenetwork 
   - python39-azure-mgmt-monitor 
   - python39-azure-mgmt-msi 
   - python39-azure-mgmt-netapp 
@@ -32020,9 +32023,6 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
-  - ruby2.7-rubygem-debase 
-  - ruby3.0-rubygem-debase 
-  - ruby3.0-rubygem-xdg 
   - ruby3.1-devel 
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
