@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.37.0
+Version:        5.38.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -60,27 +60,33 @@ BuildRequires:  libQt5Gui-private-headers-devel >= 5.15.2
 BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.15.2
 BuildRequires:  liberation-fonts
 BuildRequires:  libicu-devel >= 4.4.0
-BuildRequires:  libmtp-devel >= 1.1.5
+BuildRequires:  libmtp-devel >= 1.1.17
 BuildRequires:  libopenssl-devel >= 1.1.1g
-BuildRequires:  libpodofo-devel >= 0.8.2
+BuildRequires:  libpodofo-devel >= 0.9.6
 BuildRequires:  libpoppler-devel >= 0.20.2
 BuildRequires:  libstemmer-devel >= 2.1.0
 BuildRequires:  libwmf-devel >= 0.2.8
 BuildRequires:  optipng >= 0.7.7
-BuildRequires:  podofo >= 0.8.2
+BuildRequires:  podofo >= 0.9.6
 BuildRequires:  poppler-tools >= 0.20.2
 #BuildRequires:  python3-dbus-python
 BuildRequires:  xdg-utils >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5Network) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Sensors) = 5.15.2
+BuildRequires:  pkgconfig(Qt5Svg) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.2
 BuildRequires:  pkgconfig(espeak-ng)
 BuildRequires:  pkgconfig(fontconfig) >= 2.13.1
-BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(hunspell) >= 1.7.0
+BuildRequires:  pkgconfig(libopenjp2) >= 2.3.1
 BuildRequires:  pkgconfig(libpng16) >= 1.6.37
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.23
+BuildRequires:  pkgconfig(ncurses) >= 6.2
 BuildRequires:  pkgconfig(python3) >= 3.8
+BuildRequires:  pkgconfig(readline) >= 8.0
 BuildRequires:  pkgconfig(sqlite3)
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
@@ -90,7 +96,7 @@ BuildRequires:  jxrlib-devel >= 0.2.4
 BuildRequires:  libjpeg-turbo >= 2.0.5
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Markdown >= 3.2.2
-BuildRequires:  python3-Pillow >= 7.2.0
+BuildRequires:  python3-Pillow >= 8.3.1
 BuildRequires:  python3-Pygments >= 2.6.1
 BuildRequires:  python3-apsw >= 3.35.4-r1
 BuildRequires:  python3-beautifulsoup4 >= 4.9.1
@@ -100,14 +106,14 @@ BuildRequires:  python3-css-parser >= 1.0.6
 BuildRequires:  python3-dateutil >= 2.8.1
 BuildRequires:  python3-dnspython >= 2.0.0
 BuildRequires:  python3-dukpy-kovidgoyal >= 0.3
-BuildRequires:  python3-feedparser >= 5.2.1
+BuildRequires:  python3-feedparser >= 6.0.8
 BuildRequires:  python3-html2text >= 2020.1.16
-BuildRequires:  python3-html5-parser >= 0.4.9
+BuildRequires:  python3-html5-parser >= 0.4.10
 BuildRequires:  python3-html5lib >= 1.1
 BuildRequires:  python3-ifaddr >= 0.1.7
-BuildRequires:  python3-jeepney
+BuildRequires:  python3-jeepney >= 0.6.0
 BuildRequires:  python3-lxml >= 4.5.2
-BuildRequires:  python3-mechanize >= 0.4.5
+BuildRequires:  python3-mechanize >= 0.4.7
 BuildRequires:  python3-msgpack >= 1.0.0
 BuildRequires:  python3-netifaces >= 0.10.9
 BuildRequires:  python3-odfpy
@@ -120,6 +126,7 @@ BuildRequires:  python3-pyqt-builder >= 1.6.0
 BuildRequires:  python3-qt5-devel >= 5.15.2
 BuildRequires:  python3-regex >= 2020.07.14
 BuildRequires:  python3-setuptools >= 49.6.0
+BuildRequires:  python3-sgmllib3k
 BuildRequires:  python3-sip-devel >= 5.5
 BuildRequires:  python3-texttable >= 1.6.3
 BuildRequires:  python3-toml >= 0.10.1
@@ -131,24 +138,24 @@ BuildRequires:  pkgconfig(libxslt) >= 1.1.34
 BuildRequires:  python3-qtwebengine-qt5 >= 5.15.2
 BuildRequires:  python3-six >= 1.15.0
 BuildRequires:  python3-soupsieve >= 2.0.1
-#BuildRequires:  python-unrardll >= 0.1.3
+#BuildRequires:  python-unrardll >= 0.1.5
 BuildRequires:  python3-py7zr >= 0.11.1
 BuildRequires:  python3-speechd >= 0.10.1
 BuildRequires:  python3-webencodings >= 0.5.1
-BuildRequires:  python3-zeroconf >= 0.28.1
+BuildRequires:  python3-zeroconf >= 0.31.0
 #
 Requires:       chmlib >= 0.40
 #Requires:       dbus-1-python3 >= 1.2.0
 Requires:       liberation-fonts
-Requires:       libmtp9 >= 1.1.5
+Requires:       libmtp9 >= 1.1.17
 Requires:       libpng16-16 >= 1.6.37
 Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.5
-Requires:       podofo >= 0.8.2
+Requires:       podofo >= 0.9.6
 Requires:       poppler-tools >= 0.20.2
 Requires:       python3 >= 3.8
 Requires:       python3-Markdown >= 3.2.2
-Requires:       python3-Pillow >= 5.2.0
+Requires:       python3-Pillow >= 8.3.1
 Requires:       python3-Pygments >= 2.6.1
 Requires:       python3-apsw >= 3.35.4-r1
 Requires:       python3-beautifulsoup4 >= 4.9.1
@@ -159,14 +166,14 @@ Requires:       python3-dateutil >= 2.8.1
 #Requires:       python3-dbus-python
 Requires:       python3-dnspython >= 2.0.0
 Requires:       python3-dukpy-kovidgoyal >= 0.3
-Requires:       python3-feedparser >= 5.2.1
+Requires:       python3-feedparser >= 6.0.8
 Requires:       python3-html2text >= 2020.1.16
-Requires:       python3-html5-parser >= 0.4.9
+Requires:       python3-html5-parser >= 0.4.10
 Requires:       python3-html5lib >= 1.1
 Requires:       python3-ifaddr >= 0.1.7
-Requires:       python3-jeepney
+Requires:       python3-jeepney >= 0.6.0
 Requires:       python3-lxml >= 4.5.2
-Requires:       python3-mechanize >= 0.4.5
+Requires:       python3-mechanize >= 0.4.7
 Requires:       python3-msgpack >= 1.0.0
 Requires:       python3-netifaces >= 0.10.9
 Requires:       python3-odfpy
@@ -177,14 +184,15 @@ Requires:       python3-qt5 >= 5.15.2
 Requires:       python3-qt5-sip >= 12.8.1
 Requires:       python3-qtwebengine-qt5 >= 5.15.2
 Requires:       python3-regex >= 2020.07.14
+Requires:       python3-sgmllib3k
 Requires:       python3-six >= 1.15.0
 Requires:       python3-soupsieve >= 2.0.1
 Requires:       python3-texttable >= 1.6.3
-#Requires:       python3-unrardll >= 0.1.3
+#Requires:       python3-unrardll >= 0.1.5
 Requires:       python3-py7zr >= 0.11.1
 Requires:       python3-speechd >= 0.10.1
 Requires:       python3-webencodings >= 0.5.1
-Requires:       python3-zeroconf >= 0.28.1
+Requires:       python3-zeroconf >= 0.31.0
 #
 Requires:       sqlite3
 Requires:       xdg-utils >= 1.0.2

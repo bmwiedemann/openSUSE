@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar  4 06:06:36 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.38.0
+  * New Features
+    - E-book viewer: When displaying estimated time to completion
+      for reading a book, remember the reading rate the next time
+      the book is opened
+    - Dark theme: Highlight the current cell in the book list with
+      a darker background and different foreground to make it more
+      obvious
+    - An option to disable editing composite columns in the main
+      book list when Tabbing through them (Preferences->Look & 
+      feel->Edit metadata)
+  * Bug Fixes
+    - Tag editor: Fix regression in previous release that caused
+      double clicking on tags to not work on non Linux platforms
+    - Copy to library: Fix annotations not being copied
+    - Edit book: Spell check: Fix words after a comment not being
+      checked
+    - PDF Output: Fix conversion failing if there are ToC entries
+      pointing to removed content
+    - E-book viewer: Fix an error when opening books with MathML
+      for the second time if the last read position was at a MathML
+      element
+    - Edit book: Fix double clicking to select a word also
+      selecting smart quotes surrounding the word
+    - EPUB 3 metadata: Fix non-integer series index being sometimes
+      represented using exponential notation
+- Revision of the dependencies/requires versions.
+
+-------------------------------------------------------------------
 Fri Feb 18 06:20:05 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.37.0
