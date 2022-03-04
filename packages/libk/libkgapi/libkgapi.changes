@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:58:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Make sure utf8 text is displayed as utf8
+
+-------------------------------------------------------------------
 Tue Feb  1 13:03:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
