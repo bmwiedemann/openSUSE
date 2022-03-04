@@ -2403,7 +2403,7 @@
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprotobuf-lite30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf30" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libprotobuf30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libproxy1-config-gnome3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1-config-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3993,6 +3993,7 @@
     <package name="ruby3.1-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-gettext_i18n_rails_js" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-gli" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-globalid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-gpgme" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4128,6 +4129,7 @@
     <package name="ruby3.1-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-rails-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4851,6 +4853,7 @@
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="yakuake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yakuake-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="yarn" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -5029,6 +5032,7 @@
     <package name="bison" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
