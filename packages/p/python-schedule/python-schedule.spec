@@ -1,7 +1,7 @@
 #
 # spec file for package python-schedule
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://github.com/dbader/schedule
 Source:         https://files.pythonhosted.org/packages/source/s/schedule/schedule-%{version}.tar.gz
 # https://github.com/dbader/schedule/issues/484
 Patch0:         python-schedule-no-mock.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +51,8 @@ pattern for configuration. Schedule lets the user run Python functions
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v
+# test_until_time: https://github.com/dbader/schedule/issues/488
+%pytest -k 'not test_until_time'
 
 %files %{python_files}
 %doc README.rst

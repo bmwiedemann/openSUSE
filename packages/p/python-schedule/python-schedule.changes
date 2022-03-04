@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  4 08:04:55 UTC 2022 - pgajdos@suse.com
+
+- disable flaky test_until_time
+
+-------------------------------------------------------------------
 Mon Nov  8 12:18:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 2.7 build 
