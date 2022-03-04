@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:56:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Update copyright
+  * Fix failure to create a missing calendar file after enabling a resource
+
+-------------------------------------------------------------------
 Tue Feb  1 13:02:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
