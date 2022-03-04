@@ -3042,9 +3042,9 @@ unsorted:
   - doxywizard 
   - dpdk: [x86_64] 
   - dpdk-devel: [x86_64] 
+  - dpdk-devel-static: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
-  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -7366,6 +7366,8 @@ unsorted:
   - jakarta-commons-transaction 
   - jakarta-commons-vfs 
   - jakarta-commons-vfs-javadoc 
+  - jakarta-mail 
+  - jakarta-mail-javadoc 
   - jakarta-poi 
   - jakarta-poi-javadoc 
   - jakarta-poi-manual 
@@ -7784,6 +7786,7 @@ unsorted:
   - junit-javadoc 
   - junit-manual 
   - junit5 
+  - junit5-bom 
   - junit5-guide 
   - junit5-javadoc 
   - junitperf 
@@ -10500,7 +10503,7 @@ unsorted:
   - libdns_sd-32bit: [x86_64] 
   - libdnssec8 
   - libdouble-conversion3-32bit: [x86_64] 
-  - libdpdk-20_0: [x86_64] 
+  - libdpdk-22: [x86_64] 
   - libdrm-devel: [i586] # devel package of dvd:libdrm2 
   - libdrm-devel-32bit: [x86_64] 
   - libdrm-tools 
@@ -11311,7 +11314,7 @@ unsorted:
   - libharfbuzz-subset0-32bit: [x86_64] 
   - libharminv3 
   - libharu-devel 
-  - libhashcat6_2_1 
+  - libhashcat6_2_5 
   - libhdf5-103-32bit: [x86_64] 
   - libhdf5-103-mvapich2 
   - libhdf5-103-mvapich2-32bit: [x86_64] 
@@ -17590,6 +17593,7 @@ unsorted:
   - nvdock 
   - nvidia-texture-tools 
   - nvme-cli-regress-script 
+  - nvme-stas 
   - nvmetcli 
   - nvptx-tools: [x86_64] 
   - nwg-launchers 
@@ -24317,6 +24321,7 @@ unsorted:
   - python310-requests-file 
   - python310-requests-ftp 
   - python310-requests-futures 
+  - python310-requests-gssapi 
   - python310-requests-hawk 
   - python310-requests-kerberos 
   - python310-requests-mock 
@@ -24907,7 +24912,6 @@ unsorted:
   - python310-zypp-plugin 
   - python36-django-money 
   - python36-google-pasta 
-  - python36-requests-gssapi 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -31230,6 +31234,7 @@ unsorted:
   - qprint 
   - qps 
   - qps-lang 
+  - qpwgraph 
   - qqc2-breeze-style 
   - qqc2-breeze-style-devel 
   - qqc2-desktop-style-devel 
@@ -32023,8 +32028,6 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-gettext-setup 
-  - ruby3.1-rubygem-gettext_i18n_rails_js 
-  - ruby3.1-rubygem-rails-6.0 
   - ruby3.1-rubygem-rspec-rails-3.9 
   - ruby3.1-rubygem-sinatra 
   - ruby3.1-rubygem-spring-watcher-listen 
@@ -41414,6 +41417,8 @@ unsorted:
   - tini 
   - tini-static 
   - tint 
+  - tint2 
+  - tint2-lang 
   - tintii 
   - tinyb-devel 
   - tinyca2 
@@ -43082,7 +43087,6 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
-  - yarn 
   - yaru-icon-theme 
   - yasm 
   - yasm-devel 
