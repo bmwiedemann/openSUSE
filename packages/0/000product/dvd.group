@@ -4244,6 +4244,7 @@
     <package name="ruby3.1-rubygem-winrm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-winrm-elevated" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-winrm-fs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.1-rubygem-xdg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-xdg-2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-xml-simple" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.1-rubygem-xmlhash" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
