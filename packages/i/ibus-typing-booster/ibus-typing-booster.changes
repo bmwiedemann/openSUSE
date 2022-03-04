@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 03 11:09:12 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.15.25
+- Translation update from Weblate (de, fa, nl, pl, tr, uk updated)
+- Make emoji and unicode symbol trigger key configurable
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/279)
+- Do not commit if a key triggering a commit is swallowed by transliteration
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/281)
+- Elide extremly long comments in the lookup table
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/280)
+
+-------------------------------------------------------------------
 Sun Feb 27 11:41:32 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.15.22
