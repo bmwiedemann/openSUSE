@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:58:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * fix setting list values
+
+-------------------------------------------------------------------
 Tue Feb 15 19:14:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop LicenseRef-KDE-Accepted-LGPL, not recognized (yet)
