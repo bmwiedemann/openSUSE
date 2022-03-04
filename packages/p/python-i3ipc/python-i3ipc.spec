@@ -1,7 +1,7 @@
 #
 # spec file for package python-i3ipc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,9 +72,10 @@ find examples/ -name \*.py -exec chmod -x '{}' \;
 # test_shutdown_event_reconnect always fails
 # test_restart fails on openSUSE/SLE 15
 # test_window_event is intermittent
+# test_detailed_window_event stucks in obs, not with the local build (https://github.com/altdesktop/i3ipc-python/issues/192)
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 xvfb-run --server-args "-screen 0 1920x1080x24" \
-  $python -m pytest -k 'not (test_shutdown_event_reconnect or test_restart or test_window_event)'
+  $python -m pytest -k 'not (test_shutdown_event_reconnect or test_restart or test_window_event or test_detailed_window_event)'
 }
 
 %files %{python_files}
