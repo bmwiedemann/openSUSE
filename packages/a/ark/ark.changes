@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:56:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Fix multivolume archive creation (kde#448065)
+  * zip: Fix setting un-initialized access time (kde#450125)
+  * Fix build when libzip is missing
+  * libzip: Implement proper cancelation, using libzip 1.6
+  * CreateJob: Clean up temp file after cancellation
+  * libzipplugin: Prevent crash when canceling archive creation (kde#446926)
+
+-------------------------------------------------------------------
 Tue Feb  1 13:02:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
