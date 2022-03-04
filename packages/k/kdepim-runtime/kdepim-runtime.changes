@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:57:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Apply patch for disable sync contact as it don't ported yet. (kde#449024)
+- Drop patch, now upstream:
+  * 0001-Apply-patch-for-disable-sync-contact-as-it-don-t-por.patch
+
+-------------------------------------------------------------------
 Wed Feb 16 10:06:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to Work around google calendar events breaking due to
