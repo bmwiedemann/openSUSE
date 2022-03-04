@@ -743,4 +743,12 @@
   * Use the CDN based endpoint rather than the legacy endpoint</comment>
     <requestid>951978</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>f9a0ac82729ad1a0bfbe5b4ee195a9b3</srcmd5>
+    <version>21.12.3</version>
+    <time>1646421319</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.3</comment>
+    <requestid>958992</requestid>
+  </revision>
 </revisionlist>
