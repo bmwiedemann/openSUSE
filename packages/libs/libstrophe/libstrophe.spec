@@ -1,7 +1,7 @@
 #
 # spec file for package libstrophe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,12 +67,15 @@ The libstrophe library is a XMPP library written in C.
 %build
 mkdir m4
 ./bootstrap.sh
-%configure --disable-static --with-libxml2
+%configure --with-libxml2
 make %{?_smp_mflags}
 
 %install
 %make_install
-rm %{buildroot}%{_libdir}/libstrophe.la
+rm %{buildroot}%{_libdir}/libstrophe.{a,la}
+
+%check
+make check
 
 %post -n libstrophe0 -p /sbin/ldconfig
 %postun -n libstrophe0 -p /sbin/ldconfig

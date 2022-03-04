@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  4 10:43:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Run tests:
+  Remove --disable-static because the tests also test internal
+  functions that are not exported in the shared lib.
+  Remove static library manually.
+
+-------------------------------------------------------------------
 Thu Oct 28 17:44:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.0:

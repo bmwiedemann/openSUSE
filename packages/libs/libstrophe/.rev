@@ -151,4 +151,15 @@
     + xmpp_tlscert_free()</comment>
     <requestid>928014</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7b49de8c9c0ec975c60ce1fcae183738</srcmd5>
+    <version>0.11.0</version>
+    <time>1646421426</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests:
+  Remove --disable-static because the tests also test internal
+  functions that are not exported in the shared lib.
+  Remove static library manually.</comment>
+    <requestid>959376</requestid>
+  </revision>
 </revisionlist>
