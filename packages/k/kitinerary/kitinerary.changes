@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:57:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Don't pass PDFDoc arguments that Poppler already has the same defaults for
+  * Ignore more files for cppcheck that hang the latest version on the CI
+  * Add basic Air France PDF ticket extractor
+  * Reduce the lower size threshold for 2D barcodes
+
+-------------------------------------------------------------------
 Tue Feb  1 13:03:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
