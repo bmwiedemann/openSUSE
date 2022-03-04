@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:57:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Fix Manager Crash when clicking New (kde#424252)
+  * Use KIO/ApplicationLauncherJob
+  * Make sure helper apps we start are in path
+
+-------------------------------------------------------------------
 Tue Feb  1 13:03:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
