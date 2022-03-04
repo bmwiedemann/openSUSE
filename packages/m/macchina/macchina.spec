@@ -1,7 +1,7 @@
 #
 # spec file for package macchina
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           macchina
-Version:        6.0.1~git0.1e7fff0
+Version:        6.0.6~git0.c21ce78
 Release:        0
 Summary:        Fast, minimal and customizable system information frontend
 License:        MIT
@@ -47,7 +47,7 @@ strip target/release/%{name}
 %install
 %{cargo_install}
 mkdir -p %{buildroot}%{_datadir}/%{name}
-install -m0644 -t %{buildroot}%{_datadir}/%{name} doc/%{name}.toml
+install -m0644 -t %{buildroot}%{_datadir}/%{name} %{name}.toml
 
 %check
 %ifarch "x86_64"

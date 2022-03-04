@@ -23,4 +23,25 @@
     <comment></comment>
     <requestid>942424</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0e3b78701157cb78a6e224361653c2a</srcmd5>
+    <version>6.0.6~git0.c21ce78</version>
+    <time>1646421429</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix specfile due to upstream file placement change 
+------------------------------------------------------------------
+- Update to version 6.0.6~git0.c21ce78:
+  * build: update lockfile
+  * docs: update the changelog
+  * build: bump to v6.0.6
+  * docs: update CONTRIBUTING.md
+  * legal: bump LICENSE year
+  * docs: tweaks
+  * docs: move from asciidoctor to scdoc
+  * fix: incorrect target_os for a cfg flag
+  * fix: change cfg's target_os
+  * fix: properly read config from fallback
+</comment>
+    <requestid>959494</requestid>
+  </revision>
 </revisionlist>
