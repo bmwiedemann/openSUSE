@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  4 08:49:54 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.9.5
+  * Attempt encoding detection for non-BOM UTF-8
+  * Rewrite EOL detection (kde#448353,kde#450225)
+    + fixes speed regression
+    + Better EOL detection decoding handled by Qt
+- Drop redundant recommendation of the -lang package
+
+-------------------------------------------------------------------
 Tue Nov 23 08:16:03 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.9.4

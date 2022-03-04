@@ -1,7 +1,7 @@
 #
 # spec file for package kdiff3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdiff3
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
@@ -44,7 +44,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang = %{version}
 
 %description
 KDiff3 is a program that:
