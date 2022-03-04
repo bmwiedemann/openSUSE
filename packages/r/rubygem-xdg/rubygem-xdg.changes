@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Mar  2 18:12:19 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Restrict build to Ruby 3.1
+- New upstream release 6.3.1
+
+== 6.3.1 (2022-03-03)
+
+* Fixed Hippocratic License to be 2.1.0 version - Brooke Kuhlmann
+* Fixed Rubocop RSpec issues with boolean and nil identity checks - Brooke Kuhlmann
+* Updated to Caliber 0.2.0 - Brooke Kuhlmann
+* Updated to Ruby 3.1.1 - Brooke Kuhlmann
+
+== 6.3.0 (2022-02-12)
+
+* Added Caliber - Brooke Kuhlmann
+* Updated to Git Lint 3.2.0 - Brooke Kuhlmann
+* Updated to RSpec 3.11.0 - Brooke Kuhlmann
+* Updated to Refinements 9.2.0 - Brooke Kuhlmann
+* Removed README badges - Brooke Kuhlmann
+
+== 6.2.0 (2022-01-30)
+
+* Added combined path splatting for dynamic home path - Brooke Kuhlmann
+* Removed gemspec safe defaults - Brooke Kuhlmann
+* Refactored cache, config, and data specs to splat environment variables - Brooke Kuhlmann
+
+-------------------------------------------------------------------
+Thu Feb 24 08:25:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Regenerate spec file based on empty gem2rpm.yml: allow to build
+  against Ruby 3.1.
+
+-------------------------------------------------------------------
+Tue Jan 25 07:43:06 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.1.0
+  no changelog found
+
+-------------------------------------------------------------------
 Thu Jun 24 18:10:04 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 5.1.1
