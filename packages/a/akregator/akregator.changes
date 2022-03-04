@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:56:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Fix bug 450650: URL encoded chars in feed-entry-link-href become
+    invalid (kde#450650)
+
+-------------------------------------------------------------------
 Tue Feb  1 13:02:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
