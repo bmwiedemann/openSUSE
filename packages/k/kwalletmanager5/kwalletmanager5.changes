@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  1 09:57:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Desktop file: fix to announce taking local files only, not URLs
+  * Fix skipping the first wallet arg name on the commandline
+  * Fix QCommandLineParser setup, wallet names are taken as positional args
+
+-------------------------------------------------------------------
 Tue Feb  1 13:03:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.2
