@@ -359,4 +359,12 @@
     <comment>- Update to version 21.10.0.</comment>
     <requestid>928398</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6077ba96d248cea02422cc506fd035ee</srcmd5>
+    <version>22.2.0</version>
+    <time>1646421433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.2.0.</comment>
+    <requestid>959503</requestid>
+  </revision>
 </revisionlist>

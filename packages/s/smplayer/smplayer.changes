@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  4 16:29:02 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 22.2.0:
+  * Fix the option to send video to another screen.
+  * Fix the option to choose the audio output device.
+  * Fix the playlist being shuffled after adding files if the
+    shuffle button is on.
+  * Add possibility to choose whether to show the media title or
+    the filename in the playlist.
+- Recommend yt-dlp instead of youtube-dl.
+
+-------------------------------------------------------------------
 Sun Oct 31 14:22:55 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 21.10.0 (changes since 21.1.0):
