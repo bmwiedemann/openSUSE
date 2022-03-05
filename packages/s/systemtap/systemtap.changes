@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  2 19:19:36 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Add gcc12 support (bsc#1196583)
+    New patch: PR28778-gcc-warning-tweak-for-sprintf-precision-parameter.patch
+    New patch: gcc12-c-compatibility-tweak-use-lambdas-instead-of-ptr_fun.patch
+    New patch: gcc12-c-compatibility-re-tweak-for-rhel6-use-function-pointer-instead-of-lambdas-instead-of-ptr_fun.patch
+    New patch: buildrun-for-LKM-backend-add-Wno-infinite-recursion.patch
+    New patch: gcc12-warning-suppression.patch
+
+-------------------------------------------------------------------
 Mon Feb 21 10:56:37 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Handle-user-supplied-sdt-probe-argument-template.patch: Fix glibc build

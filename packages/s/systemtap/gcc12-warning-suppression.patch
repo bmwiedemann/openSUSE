@@ -1,0 +1,33 @@
+From: "Frank Ch. Eigler" <fche@redhat.com>
+Date: Thu, 24 Feb 2022 20:05:41 -0500
+Subject: gcc12 warning suppression
+Git-repo: git://sourceware.org/git/systemtap.git
+Git-commit: 1549784e9c71e5bf80860d314e15e6019f899de4
+References: bsc#1196583
+
+The translator emits a pair of type declarations that alternate
+between a char[] and a char*, depending on the size of strings
+involved.  The polymorphic client code includes pointer null-checking,
+which -Waddress code rejects for the char[] case.  The simplest
+workaround is just to disable that particular diagnostic.
+
+Signed-off-by: Tony Jones <tonyj@suse.de>
+---
+ buildrun.cxx | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/buildrun.cxx b/buildrun.cxx
+index 70ccfc30e..492f6bc47 100644
+--- a/buildrun.cxx
++++ b/buildrun.cxx
+@@ -604,6 +604,9 @@ compile_pass (systemtap_session& s)
+ 
+   // Suppress gcc12 diagnostic bug in kernel-devel for 5.16ish
+   o << "EXTRA_CFLAGS += -Wno-infinite-recursion" << endl;
++
++  // Suppress gcc12 diagnostic about STAP_KPROBE_PROBE_STR_* null checks
++  o << "EXTRA_CFLAGS += -Wno-address" << endl;
+   
+   // PR25845: Recent gcc (seen on 9.3.1) warns fairly common 32-bit pointer-conversions:
+   o << "EXTRA_CFLAGS += $(call cc-option,-Wno-pointer-to-int-cast)" << endl;
+

@@ -1,0 +1,30 @@
+From: "Frank Ch. Eigler" <fche@redhat.com>
+Date: Mon, 7 Feb 2022 13:59:54 -0500
+Subject: buildrun: for LKM backend, add -Wno-infinite-recursion
+Git-repo: git://sourceware.org/git/systemtap.git
+Git-commit: 9295f6046518dc15678032ac54abb8a4e2916f33
+References: bsc#1196583
+
+On GCC12 / fedora rawhide, this diagnostic is currently generating
+false positives w.r.t. a few memcpy type functions.
+
+Signed-off-by: Tony Jones <tonyj@suse.de>
+---
+ buildrun.cxx | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/buildrun.cxx b/buildrun.cxx
+index 2a18fe3b7..ecaeedaac 100644
+--- a/buildrun.cxx
++++ b/buildrun.cxx
+@@ -601,6 +601,9 @@ compile_pass (systemtap_session& s)
+   // Accept extra diagnostic-suppression pragmas etc.
+   o << "EXTRA_CFLAGS += -Wno-pragmas" << endl;
+ 
++  // Suppress gcc12 diagnostic bug in kernel-devel for 5.16ish
++  o << "EXTRA_CFLAGS += -Wno-infinite-recursion" << endl;
++  
+   // PR25845: Recent gcc (seen on 9.3.1) warns fairly common 32-bit pointer-conversions:
+   o << "EXTRA_CFLAGS += $(call cc-option,-Wno-pointer-to-int-cast)" << endl;
+   o << "EXTRA_CFLAGS += $(call cc-option,-Wno-int-to-pointer-cast)" << endl;
+
