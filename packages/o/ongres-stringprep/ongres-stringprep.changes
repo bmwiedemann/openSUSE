@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Thu Mar  3 15:53:57 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- ongres-stringprep 1.1 - initial package (bsc#1196693)
+  (jsc#SLE-23993, jsc#SLE-23994)
+  Add: 
+  * fix-dir-create.patch

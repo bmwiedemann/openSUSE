@@ -1,0 +1,8 @@
+<package name="ongres-stringprep" project="openSUSE:Factory">
+  <title>Preparation of internationalized strings</title>
+  <description>StringPrep is the preparation of internationalized strings (stringprep, RFC 3454).
+
+</description>
+  <devel project="Java:packages" package="ongres-stringprep"/>
+  <url>https://github.com/ongres/stringprep</url>
+</package>
