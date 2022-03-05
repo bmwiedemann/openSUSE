@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  3 11:48:36 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Consider user selected packages as optional to not block the
+  installation (bsc#1195747).
+- 4.4.33
+
+-------------------------------------------------------------------
 Mon Feb 28 10:39:35 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
 
 - add yast namespace to merge.xslt to fix CDATA handling (bsc#1195910)
