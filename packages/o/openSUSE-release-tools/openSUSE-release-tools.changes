@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Mar 04 13:19:41 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220304.1479a628:
+  * pkglistgen: Don't exit 1 if we skip weakremovers due to restarted builds
+
+-------------------------------------------------------------------
+Fri Mar 04 11:52:40 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220304.a0d68e4b:
+  * staging-installcheck: Don't exit 1 if there is a problem found
+
+-------------------------------------------------------------------
+Fri Mar 04 11:34:48 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220304.93564783:
+  * pkglistgen: Fix invalid import
+
+-------------------------------------------------------------------
+Fri Mar 04 11:12:11 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220304.57322b23:
+  * pkglistgen: Deprecate scope 'all'
+
+-------------------------------------------------------------------
+Fri Mar 04 11:04:48 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220304.ebe2c528:
+  * tests: Fix api_tests to mock attribute not mtime
+  * tests: Create OSRT:FreezeTime for all tests
+  * osclib: Add an helpful error on failed attribute save
+  * Make frozenage less reliant on changing _frozenlinks
+
+-------------------------------------------------------------------
+Fri Mar 04 10:34:43 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220304.986ad21b:
+  * docs: Add note that the origin manager is unmaintained
+
+-------------------------------------------------------------------
 Thu Mar 03 17:04:55 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220303.003f0105:
