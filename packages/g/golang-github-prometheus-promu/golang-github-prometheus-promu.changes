@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 03 21:07:04 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 0.13.0:
+  * Release 0.13.0
+  * Add deprecation note to pkg directory
+  * Add windows/arm64
+  * Update common Prometheus files
+  * Fix typo
+  * Release 0.12.0
+  * Simplify CGO crossbuilds
+  * Update common Prometheus files
+  * Release 0.11.1
+  * Fix build with "linux" platform
+
+-------------------------------------------------------------------
 Mon Mar  8 11:03:45 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Build requires Go 1.15

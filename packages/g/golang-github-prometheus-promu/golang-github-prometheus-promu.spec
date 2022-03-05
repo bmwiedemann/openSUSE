@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-promu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-promu
-Version:        0.5.0
+Version:        0.13.0
 Release:        0
 Summary:        Prometheus Utility Tool
 License:        Apache-2.0
