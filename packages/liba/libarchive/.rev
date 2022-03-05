@@ -380,4 +380,12 @@ The COPYING file shows that the package is predominantly BSD-2-Clause licensed (
   this fixes also wrong permissions of /var/tmp in factory systems</comment>
     <requestid>934501</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>173cd87987c3776655690730b553c02d</srcmd5>
+    <version>3.6.0</version>
+    <time>1646487828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958752</requestid>
+  </revision>
 </revisionlist>
