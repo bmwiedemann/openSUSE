@@ -86,10 +86,9 @@ if [ -f "${OUTPUTDIR}/libvk_swiftshader.so" ]; then
     buildfile="${OUTPUTDIR}/${file}"
     install -m ${SHLIB_PERMS} "${buildfile}" "${STAGEDIR}/${INSTALLDIR}/${file}"
 fi
-if [ -f "${OUTPUTDIR}/vk_swiftshader_icd.json" ]; then
+sed -e 's|${ICD_LIBRARY_PATH}|./libvk_swiftshader.so|g' third_party/swiftshader/src/Vulkan/vk_swiftshader_icd.json.tmpl > ${OUTPUTDIR}/vk_swiftshader_icd.json
 # Install the ICD json file to point ANGLE to libvk_swiftshader.so
-    install -m 644 "${OUTPUTDIR}/vk_swiftshader_icd.json" "${STAGEDIR}/${INSTALLDIR}/"
-fi
+install -m 644 "${OUTPUTDIR}/vk_swiftshader_icd.json" "${STAGEDIR}/${INSTALLDIR}/"
 
 # default apps
 if [ -d "${OUTPUTDIR}/default_apps" ]; then

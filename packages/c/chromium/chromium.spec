@@ -49,7 +49,7 @@
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_with lto
 Name:           chromium
-Version:        98.0.4758.102
+Version:        99.0.4844.51
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -87,9 +87,7 @@ Patch15:        chromium-98-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
 Patch21:        chromium-gcc11.patch
-Patch31:        chromium-89-missing-cstring-header.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
-Patch44:        chromium-95-libyuv-aarch64.patch
 Patch46:        chromium-91-sql-standard-layout-type.patch
 Patch50:        chromium-clang-nomerge.patch
 Patch51:        chromium-glibc-2.34.patch
@@ -99,11 +97,13 @@ Patch65:        chromium-94-sql-no-assert.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch69:        chromium-93-InkDropHost-crash.patch
 Patch72:        chromium-95-quiche-include.patch
-Patch78:        chromium-96-EnumTable-crash.patch
+Patch78:        chromium-98-EnumTable-crash.patch
 Patch80:        chromium-97-ScrollView-reference.patch
-Patch81:        chromium-95-libyuv-arm.patch
-Patch82:        chromium-98-MiraclePtr-gcc-ice.patch
-Patch83:        chromium-98-WaylandFrameManager-check.patch
+Patch84:        chromium-third_party-symbolize-missing-include.patch
+Patch85:        chromium-v8-missing-utility-include.patch
+Patch86:        chromium-97-arm-tflite-cast.patch
+Patch87:        chromium-98-gtk4-build.patch
+Patch88:        chromium-99-AutofillAssistantModelExecutor-NoDestructor.patch
 Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch102:       chromium-prop-codecs.patch
@@ -387,6 +387,7 @@ keeplibs=(
     third_party/depot_tools/third_party/six
     third_party/devscripts
     third_party/devtools-frontend
+    third_party/devtools-frontend/src/front_end/third_party
     third_party/devtools-frontend/src/front_end/third_party/acorn
     third_party/devtools-frontend/src/front_end/third_party/axe-core
     third_party/devtools-frontend/src/front_end/third_party/chromium
@@ -613,7 +614,7 @@ export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
 # ingore new gcc 8 warnings that aren't yet handled upstream
 export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -D_GNU_SOURCE"
 # for wayland
-export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
+export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon -I/usr/include/opus"
 %if %{with clang}
 export LDFLAGS="${LDFLAGS} -Wl,--build-id=sha1"
 export CXXFLAGS="${CXXFLAGS} -Wno-unused-command-line-argument -Wno-unknown-warning-option"

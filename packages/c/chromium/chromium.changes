@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Mar  4 10:46:36 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 99.0.4844.51 (boo#1196641)
+  * CVE-2022-0789: Heap buffer overflow in ANGLE
+  * CVE-2022-0790: Use after free in Cast UI
+  * CVE-2022-0791: Use after free in Omnibox
+  * CVE-2022-0792: Out of bounds read in ANGLE
+  * CVE-2022-0793: Use after free in Views
+  * CVE-2022-0794: Use after free in WebShare
+  * CVE-2022-0795: Type Confusion in Blink Layout
+  * CVE-2022-0796: Use after free in Media
+  * CVE-2022-0797: Out of bounds memory access in Mojo
+  * CVE-2022-0798: Use after free in MediaStream
+  * CVE-2022-0799: Insufficient policy enforcement in Installer
+  * CVE-2022-0800: Heap buffer overflow in Cast UI
+  * CVE-2022-0801: Inappropriate implementation in HTML parser
+  * CVE-2022-0802: Inappropriate implementation in Full screen mode
+  * CVE-2022-0803: Inappropriate implementation in Permissions
+  * CVE-2022-0804: Inappropriate implementation in Full screen mode
+  * CVE-2022-0805: Use after free in Browser Switcher
+  * CVE-2022-0806: Data leak in Canvas
+  * CVE-2022-0807: Inappropriate implementation in Autofill
+  * CVE-2022-0808: Use after free in Chrome OS Shell
+  * CVE-2022-0809: Out of bounds memory access in WebXR
+- Removed patches:
+  * chromium-96-EnumTable-crash.patch
+  * chromium-89-missing-cstring-header.patch
+  * chromium-95-libyuv-aarch64.patch
+  * chromium-95-libyuv-arm.patch
+  * chromium-98-MiraclePtr-gcc-ice.patch
+  * chromium-98-WaylandFrameManager-check.patch
+- Added patches:
+  * chromium-97-arm-tflite-cast.patch
+  * chromium-98-gtk4-build.patch
+  * chromium-99-AutofillAssistantModelExecutor-NoDestructor.patch
+  * chromium-98-EnumTable-crash.patch
+  * chromium-third_party-symbolize-missing-include.patch
+  * chromium-v8-missing-utility-include.patch
+
+-------------------------------------------------------------------
 Tue Feb 15 19:13:43 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 98.0.4758.102 (boo#1195986)

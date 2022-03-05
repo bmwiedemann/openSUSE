@@ -1,7 +1,7 @@
-Index: chromium-98.0.4758.80/components/cast_channel/enum_table.h
-===================================================================
---- chromium-98.0.4758.80.orig/components/cast_channel/enum_table.h
-+++ chromium-98.0.4758.80/components/cast_channel/enum_table.h
+diff --git a/components/cast_channel/enum_table.h b/components/cast_channel/enum_table.h
+index 842553a..89de703 100644
+--- a/components/cast_channel/enum_table.h
++++ b/components/cast_channel/enum_table.h
 @@ -8,6 +8,7 @@
  #include <cstdint>
  #include <cstring>
