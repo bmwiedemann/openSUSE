@@ -1946,4 +1946,13 @@ for 12.3</comment>
   * udisks2: remove manage-vdo action</comment>
     <requestid>957545</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>fdb50976d63bd74d1b00a443cfd61960</srcmd5>
+    <version>1550+20220303.95a78fb</version>
+    <time>1646487790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20220303.95a78fb:
+  * kpmcore: whitelist block device (re-)partioning helper (bsc#1178848)</comment>
+    <requestid>959235</requestid>
+  </revision>
 </revisionlist>

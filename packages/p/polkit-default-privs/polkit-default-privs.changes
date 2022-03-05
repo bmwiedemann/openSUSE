@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 03 14:12:51 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220303.95a78fb:
+  * kpmcore: whitelist block device (re-)partioning helper (bsc#1178848)
+
+-------------------------------------------------------------------
 Fri Feb 25 09:34:55 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 1550+20220225.330e064:
