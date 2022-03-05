@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  4 07:22:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Switch from obsolete standard output type syslog over to journal (boo#1196467) 
+
+-------------------------------------------------------------------
 Tue Nov 30 13:20:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove PrivateDevices, ProtectClock and ProtectKernelLogs=true

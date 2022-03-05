@@ -1,7 +1,7 @@
 #
 # spec file for package syslogd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -315,7 +315,7 @@ cat >%{_sysconfdir}/sysconfig/boot.update <<EOF
 KLOG_CONSOLE="$KLOG_CONSOLE"
 
 ## Type:		list(,0,emerg,1,alert,2,crit,3,err,4,warning,5,notice,6,info,7,debug)
-## Default:		
+## Default:
 #
 # Loglevel for log console
 #

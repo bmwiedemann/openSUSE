@@ -790,4 +790,12 @@
   (bsc#1193172) (forwarded request 934727 from jsegitz)</comment>
     <requestid>935468</requestid>
   </revision>
+  <revision rev="97" vrev="796">
+    <srcmd5>bba5ba11b2a27869aa232d6a7995c538</srcmd5>
+    <version>unknown</version>
+    <time>1646487782</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from obsolete standard output type syslog over to journal (boo#1196467)</comment>
+    <requestid>959335</requestid>
+  </revision>
 </revisionlist>
