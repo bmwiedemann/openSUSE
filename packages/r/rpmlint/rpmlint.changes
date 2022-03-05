@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 03 14:45:17 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220303.8fe2218:
+  * missing alpha_3 hye added for Armenian
+
+-------------------------------------------------------------------
+Thu Mar 03 14:16:41 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 2.2.0+git20220303.3a948f5:
+  * D-Bus services whitelist: add kpmcore (bsc#1178848)
+  * dbus-services whitelist: add test whitelisting to cover dbus-file-parse-error
+  * tests: add test that verifies security whitelisting syntax
+  * security whitelistings: harmonize bug list syntax
+
+-------------------------------------------------------------------
 Tue Mar 01 07:44:11 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220228.7070352:

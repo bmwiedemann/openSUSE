@@ -3631,4 +3631,19 @@ oddjob-gpupdate isn't blocked)</comment>
   * FileDigestCheck: emit special {group}-file-parse-error if XML is bad</comment>
     <requestid>958203</requestid>
   </revision>
+  <revision rev="388" vrev="1">
+    <srcmd5>6a018d450795872696477a94e6f5a56f</srcmd5>
+    <version>2.2.0+git20220303.8fe2218</version>
+    <time>1646487791</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220303.8fe2218:
+  * missing alpha_3 hye added for Armenian
+
+- Update to version 2.2.0+git20220303.3a948f5:
+  * D-Bus services whitelist: add kpmcore (bsc#1178848)
+  * dbus-services whitelist: add test whitelisting to cover dbus-file-parse-error
+  * tests: add test that verifies security whitelisting syntax
+  * security whitelistings: harmonize bug list syntax</comment>
+    <requestid>959241</requestid>
+  </revision>
 </revisionlist>
