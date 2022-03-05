@@ -387,4 +387,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
   bsc#1192814 CVE-2021-41190</comment>
     <requestid>932376</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b712b1196444318db270da2276e407c9</srcmd5>
+    <version>1.4.13</version>
+    <time>1646487801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958598</requestid>
+  </revision>
 </revisionlist>
