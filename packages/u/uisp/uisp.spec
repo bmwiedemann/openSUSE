@@ -1,7 +1,7 @@
 #
 # spec file for package uisp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
 
 %define prefix /usr/avr
 
@@ -25,7 +30,7 @@ BuildRequires:  gcc-c++
 %define upstream_version	20050207
 Version:        20050207suse
 Release:        0
-Url:            http://savannah.nongnu.org/projects/uisp
+URL:            http://savannah.nongnu.org/projects/uisp
 Summary:        An upload tool for AVR microcontrollers
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
@@ -34,7 +39,8 @@ Source1:        resmgr.uisp_parport.conf
 Source2:        modprobe.uisp_parport
 Provides:       avr-programmer
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-PreReq:         /bin/cat /sbin/modprobe
+PreReq:         /bin/cat
+PreReq:         /sbin/modprobe
 Patch1:         uisp_fastpoll_3712.patch
 Patch2:         uisp-20050207-2313+48.diff
 Patch3:         uisp-20050207-err_msg.diff
@@ -82,15 +88,15 @@ rmdir %{buildroot}/%prefix/share
 mkdir -p       %{buildroot}/etc/resmgr.conf.d
 # no longer works for 10.2 see bugzilla #235059
 # install -m 644 %{SOURCE1} %{buildroot}/etc/resmgr.conf.d/99-uisp_parport.conf
-mkdir -p       %{buildroot}/etc/modprobe.d
-install -m 644 %{SOURCE2} %{buildroot}/etc/modprobe.d/uisp_parport.conf
+mkdir -p       %{buildroot}%{_modprobedir}
+install -m 644 %{SOURCE2} %{buildroot}%{_modprobedir}/uisp_parport.conf
 
 %post
 %if %suse_version >= 1000
 if [ "$1" -eq 1 ]; then
   # $1==0 is binary uninstall.
   # $1==1 is binary install.
-  # $1==2 is during build 
+  # $1==2 is during build
   if [  "$YAST_IS_RUNNING" = "yes" ]; then
     # make life trivial for yast users.
     test -x /usr/sbin/rcresmgr && /usr/sbin/rcresmgr restart
@@ -106,5 +112,7 @@ fi
 %dir %prefix
 %prefix/*
 %config /etc/*
+%dir %{_modprobedir}
+%{_modprobedir}/uisp_parport.conf
 
 %changelog

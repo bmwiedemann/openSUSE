@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  4 20:12:56 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
 Fri Jul 27 13:45:46 UTC 2018 - jengelh@inai.de
 
 - Replace old $RPM_* shell vars by macros.
