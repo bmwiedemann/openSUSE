@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  3 08:03:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Correction for previous change: ensure the packages built in the
+  gui flavor do not change their package name. e.g pinentry-qt5
+  wrongly got renamed to pinentry-gui-qt5.
+
+-------------------------------------------------------------------
+Thu Feb 24 10:50:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix name tag for multibuild: name tag should be conditional on
+  the multibuild flavor.
+
+-------------------------------------------------------------------
 Sat Aug 28 09:33:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - pinentry 1.2.0:
@@ -14,7 +27,7 @@ Sat Aug 28 09:33:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Fri Jan 29 22:35:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add _multibuild to separate out gui client builds 
+- add _multibuild to separate out gui client builds
 
 -------------------------------------------------------------------
 Wed Jan 27 17:20:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>

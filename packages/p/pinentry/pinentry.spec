@@ -1,7 +1,7 @@
 #
-# spec file for package pinentry
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,11 @@
 %define ncurses %(xxx="`readlink -f %{_includedir}/ncurses.h`"; echo $xxx)
 %define nmajor  %(grep NCURSES_VERSION_MAJOR < %{_includedir}/ncurses.h)
 %global flavor @BUILD_FLAVOR@%{nil}
-Name:           pinentry
+%if "%{flavor}" != ""
+%define nsuffix -%{flavor}
+%endif
+
+Name:           pinentry%{?nsuffix}
 Version:        1.2.0
 Release:        0
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
@@ -59,7 +63,7 @@ This is a collection of simple PIN or passphrase entry dialogs which
 utilize the Assuan protocol as described by the Aegypten project.
 
 %if "%{flavor}" == "gui"
-%package emacs
+%package -n pinentry-emacs
 Summary:        Simple PIN or Passphrase Entry Dialog integrated into Emacs
 Group:          Productivity/Other
 Requires:       emacs
@@ -68,11 +72,11 @@ Provides:       pinentry-dialog
 Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-emacs
 
-%description emacs
+%description -n pinentry-emacs
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, integrated into Emacs.
 
-%package efl
+%package -n pinentry-efl
 Summary:        Simple PIN or Passphrase Entry Dialog for EFL
 Group:          Productivity/Other
 Requires:       pinentry
@@ -80,11 +84,11 @@ Provides:       pinentry-dialog
 Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-efl
 
-%description efl
+%description -n pinentry-efl
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using Enlightenment Foundation Libraries.
 
-%package gtk2
+%package -n pinentry-gtk2
 Summary:        Simple PIN or Passphrase Entry Dialog for GTK2
 Group:          Productivity/Other
 Requires:       pinentry
@@ -92,11 +96,11 @@ Provides:       pinentry-dialog
 Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-gtk-2
 
-%description gtk2
+%description -n pinentry-gtk2
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using the GTK2 UI toolkit.
 
-%package gnome3
+%package -n pinentry-gnome3
 Summary:        Simple PIN or Passphrase Entry Dialog for GNOME
 Group:          Productivity/Other
 Requires:       pinentry
@@ -104,11 +108,11 @@ Provides:       pinentry-dialog
 Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-gnome3
 
-%description gnome3
+%description -n pinentry-gnome3
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using GNOME libraries.
 
-%package fltk
+%package -n pinentry-fltk
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 Group:          Productivity/Other
 Requires:       pinentry
@@ -116,11 +120,11 @@ Provides:       pinentry-dialog
 Provides:       pinentry-gui
 Provides:       pinentry:%{_bindir}/pinentry-fltk
 
-%description fltk
+%description -n pinentry-fltk
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using FLTK libraries.
 
-%package qt5
+%package -n pinentry-qt5
 Summary:        Simple PIN or Passphrase Entry Dialog for QT5
 Group:          Productivity/Other
 Requires:       pinentry
@@ -131,14 +135,13 @@ Obsoletes:      pinentry-qt <= 0.8.3
 Provides:       pinentry-qt4 = %{version}-%{release}
 Obsoletes:      pinentry-qt4 <= 0.9.7
 
-%description qt5
+%description -n pinentry-qt5
 A simple PIN or passphrase entry dialog utilize the Assuan protocol
 as described by the Aegypten project, using the QT5 UI toolkit.
 %endif
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1 -n pinentry-%{version}
 
 %build
 nmajor=$(sed -rn 's/^#define\s+NCURSES_VERSION_MAJOR\s+([0-9]+)/\1/p' %{_includedir}/ncurses.h)
@@ -219,28 +222,28 @@ install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 %if "%{flavor}" == "gui"
 
 %ifnarch ppc
-%files efl
+%files -n pinentry-efl
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-efl
 %endif
 
-%files emacs
+%files -n pinentry-emacs
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-emacs
 
-%files gtk2
+%files -n pinentry-gtk2
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-gtk-2
 
-%files gnome3
+%files -n pinentry-gnome3
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-gnome3
 
-%files fltk
+%files -n pinentry-fltk
 %license COPYING
 %attr(755,root,root) %{_bindir}/pinentry-fltk
 
-%files qt5
+%files -n pinentry-qt5
 %license COPYING
 %{_bindir}/pinentry-qt5
 %{_bindir}/pinentry-qt4
