@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Fri Mar  4 10:44:39 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update binutils-2.38-branch.diff.gz in order to include PR28879.
+
+-------------------------------------------------------------------
+Tue Mar  1 12:41:27 UTC 2022 - Michael Matz <matz@suse.com>
+
+- From Stefan Brüns <stefan.bruens@rwth-aachen.de>:
+  * Install symlinks for all target specific tools on
+    arm-eabi-none [bsc#1185712]
+
+-------------------------------------------------------------------
+Thu Feb 24 09:10:44 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Do not re-generate ld/ldlex.c, ld/ldgram.c, ld/ldgram.h and verify
+  that corresponding flex/bison files are not modified by a patch.
+
+-------------------------------------------------------------------
+Thu Feb 24 06:55:14 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use verbose mode for make for cross compilers.
+
+-------------------------------------------------------------------
+Wed Feb 23 17:52:15 UTC 2022 - Michael Matz <matz@suse.com>
+
+- Make it build on SLE-11 again.
+
+-------------------------------------------------------------------
+Tue Feb 22 09:13:15 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use verbose mode for make.
+
+-------------------------------------------------------------------
+Sat Feb 12 19:13:31 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to binutils 2.38:
+  * elfedit: Add --output-abiversion option to update ABIVERSION.
+  * Add support for the LoongArch instruction set.
+  * Tools which display symbols or strings (readelf, strings, nm, objdump)
+    have a new command line option which controls how unicode characters are
+    handled.  By default they are treated as normal for the tool.  Using
+    --unicode=locale will display them according to the current locale.
+    Using --unicode=hex will display them as hex byte values, whilst
+    --unicode=escape will display them as escape sequences.  In addition
+    using --unicode=highlight will display them as unicode escape sequences
+    highlighted in red (if supported by the output device).
+  * readelf -r dumps RELR relative relocations now.
+  * Support for efi-app-aarch64, efi-rtdrv-aarch64 and efi-bsdrv-aarch64 has been
+    added to objcopy in order to enable UEFI development using binutils.
+  * ar: Add --thin for creating thin archives. -T is a deprecated alias without
+    diagnostics. In many ar implementations -T has a different meaning, as
+    specified by X/Open System Interface.
+  * Add support for AArch64 system registers that were missing in previous
+    releases.
+  * Add support for the LoongArch instruction set.
+  * Add a command-line option, -muse-unaligned-vector-move, for x86 target
+    to encode aligned vector move as unaligned vector move.
+  * Add support for Cortex-R52+ for Arm.
+  * Add support for Cortex-A510, Cortex-A710, Cortex-X2 for AArch64.
+  * Add support for Cortex-A710 for Arm.
+  * Add support for Scalable Matrix Extension (SME) for AArch64.
+  * The --multibyte-handling=[allow|warn|warn-sym-only] option tells the
+    assembler what to when it encoutners multibyte characters in the input.  The
+    default is to allow them.  Setting the option to "warn" will generate a
+    warning message whenever any multibyte character is encountered.  Using the
+    option to "warn-sym-only" will make the assembler generate a warning whenever a
+    symbol is defined containing multibyte characters.  (References to undefined
+    symbols will not generate warnings).
+  * Outputs of .ds.x directive and .tfloat directive with hex input from
+    x86 assembler have been reduced from 12 bytes to 10 bytes to match the
+    output of .tfloat directive.
+  * Add support for 'armv8.8-a', 'armv9-a', 'armv9.1-a', 'armv9.2-a' and
+    'armv9.3-a' for -march in AArch64 GAS.
+  * Add support for 'armv8.7-a', 'armv8.8-a', 'armv9-a', 'armv9.1-a',
+    'armv9.2-a' and 'armv9.3-a' for -march in Arm GAS.
+  * Add support for Intel AVX512_FP16 instructions.
+  * Add -z pack-relative-relocs/-z no pack-relative-relocs to x86 ELF
+    linker to pack relative relocations in the DT_RELR section.
+  * Add support for the LoongArch architecture.
+  * Add -z indirect-extern-access/-z noindirect-extern-access to x86 ELF
+    linker to control canonical function pointers and copy relocation.
+  * Add --max-cache-size=SIZE to set the the maximum cache size to SIZE
+    bytes.
+- Add binutils-2.38-branch.diff.gz.
+- Removed deletion of man pages as they should be properly packages
+  in tarball.
+- Rebased patches: aarch64-common-pagesize.patch, add-ulp-section.diff,
+  binutils-bfd_h.patch, binutils-revert-nm-symversion.diff,
+  binutils-revert-plt32-in-branches.diff, binutils-skip-rpaths.patch
+  and binutils-compat-old-behaviour.diff.
+
+-------------------------------------------------------------------
+Fri Feb  4 13:13:20 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable PRU architecture for AM335x CPU (Beagle Bone Black board)
+
+-------------------------------------------------------------------
+Thu Jan 27 20:36:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use fdupes on datadir
+- remove RPM_BUILD_ROOT usage and other cleanups 
+
+-------------------------------------------------------------------
 Fri Nov 12 13:20:09 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Rebase binutils-2.37-branch.diff: fixes PR28494.

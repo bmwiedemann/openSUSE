@@ -1,7 +1,7 @@
 #
 # spec file for package cross-sparc-binutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ ExcludeArch:    sparc
 BuildRequires:  bc
 BuildRequires:  bison
 BuildRequires:  dejagnu
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 # for the testsuite
@@ -37,7 +38,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.37
+Version:        2.38
 Release:        0
 
 # disable libalternatives for now until it's changed to not
@@ -75,7 +76,7 @@ Release:        0
 %else
 %define build_multitarget 0
 %endif
-%define target_list aarch64 alpha armv5l armv6l armv7l armv8l avr epiphany hppa hppa64 i686 ia64 m68k mips powerpc powerpc64 powerpc64le riscv64 rx s390 s390x sh4 sparc sparc64 x86_64 xtensa
+%define target_list aarch64 alpha armv5l armv6l armv7l armv8l avr pru epiphany hppa hppa64 i686 ia64 m68k mips powerpc powerpc64 powerpc64le riscv64 rx s390 s390x sh4 sparc sparc64 x86_64 xtensa
 #
 #
 #
@@ -95,7 +96,7 @@ Source5:        binutils.keyring
 Source1:        pre_checkin.sh
 Source2:        README.First-for.SUSE.packagers
 Source3:        baselibs.conf
-Patch1:         binutils-2.37-branch.diff.gz
+Patch1:         binutils-2.38-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -141,7 +142,7 @@ Requires:       alts
 %else
 PreReq:         update-alternatives
 %endif
-%if 0%{!?cross:1}
+%if 0%{!?cross:1} && 0%{?suse_version} >= 1310
 %define gold_archs %ix86 aarch64 %arm x86_64 ppc ppc64 ppc64le s390x %sparc
 %endif
 
@@ -191,6 +192,11 @@ The Compact C Type Format (CTF) is a way of representing information about a bin
 %prep
 echo "make check will return with %{make_check_handling} in case of testsuite failures."
 %setup -q -n binutils-%{version}
+
+# Backup flex and biscon files for later verification.
+cp ld/ldlex.l ld/ldlex.l.orig
+cp ld/ldgram.y ld/ldgram.y.orig
+
 # Patch is outside test_vanilla because it's supposed to be the
 # patch bringing the tarball to the newest upstream version
 %patch1 -p1
@@ -228,22 +234,11 @@ cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 #
 # test_vanilla
 %endif
-# in parallel builds, when the flex or bison inputs are patched (possibly
-# in the ...-branch.diff) it might happen that the dependency tracking
-# of automake is confused and uses the old .c files from srcdir/ld/ while
-# also generating the new .c files in builddir/ld leading to trouble.
-# I haven't found the right entries to ensure this doesn't happen, so
-# simply remove the intermediates
-rm -f ld/ldlex.c
-rm -f ld/ldgram.c ld/ldgram.h
 
-# The 2.37 released tarball contains wrongly pre-generated (empty) man pages
-# so we remove those here as well.  Consider removing for later releases.
-rm -f binutils/doc/*.1
-rm -f binutils/doc/cxxfilt.man
-rm -f gprof/*.1
-rm -f gas/doc/*.1
-rm -f ld/*.1
+# Due to legacy flex version present in SLE-12 (and older), we cannot
+# re-generate flex and bison files and so we verify that any patch modify these files.
+diff -u ld/ldlex.l ld/ldlex.l.orig
+diff -u ld/ldgram.y ld/ldgram.y.orig
 
 %build
 %define _lto_cflags %{nil}
@@ -330,14 +325,14 @@ cd build-dir
 # we patch headers (bfd-in.h) that are input to other headers
 # which are generated only with --enable-maintainer-mode (which we
 # don't do) or explicitely by make headers, so do this:
-make %{?_smp_mflags} all-bfd TARGET-bfd=headers
+make %{?_smp_mflags} all-bfd TARGET-bfd=headers V=1
 # the above interacts with --enable-pgo-build=lto because all-bfd doesn't
 # have the PGO handling, hence it's config.cache files are wrong
 # remove all of those for reconfigure
 rm */config.cache
 # force reconfiguring
 rm bfd/Makefile
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 
 %else
 # building cross-TARGET-binutils
@@ -369,7 +364,7 @@ EXTRA_TARGETS="$EXTRA_TARGETS,arm-suse-linux-gnueabi"
 %if "%{TARGET}" == "aarch64"
 EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
 %endif
-%if "%{TARGET}" == "avr" || "%{TARGET}" == "spu"
+%if "%{TARGET}" == "avr" || "%{TARGET}" == "spu" || "%{TARGET}" == "pru"
 %define TARGET_OS %{TARGET}
 %else
 %if "%{TARGET}" == "epiphany" || "%{TARGET}" == "riscv32" || "%{TARGET}" == "rx"
@@ -403,11 +398,11 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
   --enable-default-hash-style=both \
 %endif
   ${EXTRA_TARGETS:+--enable-targets="${EXTRA_TARGETS#,}"}
-make %{?_smp_mflags} all-bfd TARGET-bfd=headers
+make %{?_smp_mflags} all-bfd TARGET-bfd=headers V=1
 rm */config.cache
 # force reconfiguring
 rm bfd/Makefile
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 %if "%{TARGET}" == "avr"
 # build an extra nesC version because nesC requires $'s in identifiers
 cp -a gas gas-nesc
@@ -431,26 +426,25 @@ cd build-dir
 %if 0%{!?cross:1}
 # installing native binutils
 %ifarch %gold_archs
-make DESTDIR=$RPM_BUILD_ROOT install-gold
-ln -sf ld.gold $RPM_BUILD_ROOT%{_bindir}/gold
+make DESTDIR=%{buildroot} install-gold
+ln -sf ld.gold %{buildroot}%{_bindir}/gold
 %endif
-make DESTDIR=$RPM_BUILD_ROOT install-info install
-make -C gas/doc DESTDIR=$RPM_BUILD_ROOT install-info-am install-am
-make DESTDIR=$RPM_BUILD_ROOT install-bfd install-opcodes
-if [ ! -f "%buildroot/%_bindir/ld.bfd" ]; then
-  mv "%buildroot/%_bindir"/{ld,ld.bfd};
+make DESTDIR=%{buildroot} install-info install
+make DESTDIR=%{buildroot} install-bfd install-opcodes
+if [ ! -f "%{buildroot}/%_bindir/ld.bfd" ]; then
+  mv "%{buildroot}/%_bindir"/{ld,ld.bfd};
 else
-  rm -f "%buildroot/%_bindir/ld";
+  rm -f "%{buildroot}/%_bindir/ld";
 fi
 %if ! 0%{with libalternatives}
-mkdir -p "%buildroot/%_sysconfdir/alternatives";
+mkdir -p "%{buildroot}/%_sysconfdir/alternatives";
 # Keep older versions of brp-symlink happy
 %if %{suse_version} < 1310
-ln -s "%_bindir/ld" "%buildroot/%_sysconfdir/alternatives/ld"
+ln -s "%_bindir/ld" "%{buildroot}/%_sysconfdir/alternatives/ld"
 %endif
-ln -s "%_sysconfdir/alternatives/ld" "%buildroot/%_bindir/ld";
+ln -s "%_sysconfdir/alternatives/ld" "%{buildroot}/%_bindir/ld";
 %else
-ln -s %{_bindir}/alts "%buildroot/%_bindir/ld";
+ln -s %{_bindir}/alts "%{buildroot}/%_bindir/ld";
 mkdir -p %{buildroot}%{_datadir}/libalternatives/ld;
 cat > %{buildroot}%{_datadir}/libalternatives/ld/1.conf <<EOF
 binary=%{_bindir}/ld.gold
@@ -460,24 +454,24 @@ binary=%{_bindir}/ld.bfd
 EOF
 %endif
 
-rm -rf $RPM_BUILD_ROOT%{_prefix}/%{HOST}/bin
-mkdir -p $RPM_BUILD_ROOT%{_prefix}/%{HOST}/bin
-ln -sf ../../bin/{ar,as,ld,nm,ranlib,strip} $RPM_BUILD_ROOT%{_prefix}/%{HOST}/bin
-mv $RPM_BUILD_ROOT%{_prefix}/%{HOST}/lib/ldscripts $RPM_BUILD_ROOT%{_libdir}
-ln -sf ../../%{_lib}/ldscripts $RPM_BUILD_ROOT%{_prefix}/%{HOST}/lib/ldscripts
+rm -rf %{buildroot}%{_prefix}/%{HOST}/bin
+mkdir -p %{buildroot}%{_prefix}/%{HOST}/bin
+ln -sf ../../bin/{ar,as,ld,nm,ranlib,strip} %{buildroot}%{_prefix}/%{HOST}/bin
+mv %{buildroot}%{_prefix}/%{HOST}/lib/ldscripts $RPM_BUILD_ROOT%{_libdir}
+ln -sf ../../%{_lib}/ldscripts %{buildroot}%{_prefix}/%{HOST}/lib/ldscripts
 # Install header files
-make -C libiberty install_to_libdir target_header_dir=/usr/include DESTDIR=$RPM_BUILD_ROOT
+make -C libiberty install_to_libdir target_header_dir=/usr/include DESTDIR=%{buildroot}
 # We want the PIC libiberty.a
-install -m 644 libiberty/pic/libiberty.a $RPM_BUILD_ROOT%{_libdir}
+install -m 644 libiberty/pic/libiberty.a %{buildroot}%{_libdir}
 #
-chmod a+x $RPM_BUILD_ROOT%{_libdir}/libbfd-*
-chmod a+x $RPM_BUILD_ROOT%{_libdir}/libopcodes-*
+chmod a+x %{buildroot}%{_libdir}/libbfd-*
+chmod a+x %{buildroot}%{_libdir}/libopcodes-*
 # No shared linking outside binutils
-rm $RPM_BUILD_ROOT%{_libdir}/lib{bfd,opcodes}.so
-rm $RPM_BUILD_ROOT%{_libdir}/lib{bfd,opcodes}.la
+rm %{buildroot}%{_libdir}/lib{bfd,opcodes}.so
+rm %{buildroot}%{_libdir}/lib{bfd,opcodes,ctf,ctf-nobfd}.la
 # Remove unwanted files to shut up rpm
-rm -f $RPM_BUILD_ROOT%{_infodir}/configure* $RPM_BUILD_ROOT%{_infodir}/standards.info*
-rm -f $RPM_BUILD_ROOT%{_mandir}/man1/dlltool.1 $RPM_BUILD_ROOT%{_mandir}/man1/windres.1 $RPM_BUILD_ROOT%{_mandir}/man1/windmc.1
+rm -f %{buildroot}%{_infodir}/configure* $RPM_BUILD_ROOT%{_infodir}/standards.info*
+rm -f %{buildroot}%{_mandir}/man1/dlltool.1 $RPM_BUILD_ROOT%{_mandir}/man1/windres.1 $RPM_BUILD_ROOT%{_mandir}/man1/windmc.1
 cd ..
 %find_lang binutils
 %find_lang bfd binutils.lang
@@ -488,45 +482,47 @@ cd ..
 %ifarch %gold_archs
 %find_lang gold binutils-gold.lang
 %endif
-mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}
-install -m 644 binutils/NEWS $RPM_BUILD_ROOT%{_docdir}/%{name}/NEWS-binutils
-install -m 644 gas/NEWS $RPM_BUILD_ROOT%{_docdir}/%{name}/NEWS-gas
-install -m 644 ld/NEWS $RPM_BUILD_ROOT%{_docdir}/%{name}/NEWS-ld
+mkdir -p %{buildroot}%{_docdir}/%{name}
+install -m 644 binutils/NEWS %{buildroot}%{_docdir}/%{name}/NEWS-binutils
+install -m 644 gas/NEWS %{buildroot}%{_docdir}/%{name}/NEWS-gas
+install -m 644 ld/NEWS %{buildroot}%{_docdir}/%{name}/NEWS-ld
 %else
 # installing cross-TARGET-binutils and TARGET-binutils
-make DESTDIR=$RPM_BUILD_ROOT install
+make DESTDIR=%{buildroot} install
 # Replace hard links by symlinks, so that rpmlint doesn't complain
-T=$(basename %buildroot/usr/%{TARGET_OS})
-for f in %buildroot/usr/$T/bin/* ; do
+T=$(basename %{buildroot}/usr/%{TARGET_OS})
+for f in %{buildroot}/usr/$T/bin/* ; do
    ln -sf /usr/bin/$T-$(basename $f) $f
 done
 %if "%{TARGET}" == "arm"
 # Instead of building duplicate binutils, add symlinks
-for f in %buildroot/usr/$T/bin/* ; do
+for f in %{buildroot}%{_bindir}/${T}-* ; do
+  _toolname=${f##$(dirname $f)/${T}-}
   for p in arm-none-eabi; do
-    ln -sf %{_bindir}/$T-$(basename $f) %buildroot%{_bindir}/$p-$(basename $f)
+    ln -sf %{_bindir}/$T-${_toolname} %{buildroot}%{_bindir}/$p-${_toolname}
   done
 done
 %endif
 %if "%{TARGET}" == "riscv64"
 # Instead of building duplicate binutils, add symlinks
-for f in %buildroot/usr/$T/bin/* ; do
+for f in %{buildroot}/usr/$T/bin/* ; do
   for p in riscv64-elf; do
-    ln -sf %{_bindir}/$T-$(basename $f) %buildroot%{_bindir}/$p-$(basename $f)
+    ln -sf %{_bindir}/$T-$(basename $f) %{buildroot}%{_bindir}/$p-$(basename $f)
   done
 done
 %endif
 %if "%{TARGET}" == "avr"
-install -c gas-nesc/as-new $RPM_BUILD_ROOT%{_prefix}/bin/%{TARGET_OS}-nesc-as
-ln -sf ../../bin/%{TARGET_OS}-nesc-as $RPM_BUILD_ROOT%{_prefix}/%{TARGET_OS}/bin/nesc-as
+install -c gas-nesc/as-new %{buildroot}%{_prefix}/bin/%{TARGET_OS}-nesc-as
+ln -sf ../../bin/%{TARGET_OS}-nesc-as %{buildroot}%{_prefix}/%{TARGET_OS}/bin/nesc-as
 %endif
-rm -rf $RPM_BUILD_ROOT%{_mandir}
-rm -rf $RPM_BUILD_ROOT%{_infodir}
-rm -rf $RPM_BUILD_ROOT%{_prefix}/lib*
-rm -rf $RPM_BUILD_ROOT%{_prefix}/include
-rm -f $RPM_BUILD_ROOT%{_prefix}/bin/*-c++filt
+rm -rf %{buildroot}%{_mandir}
+rm -rf %{buildroot}%{_infodir}
+rm -rf %{buildroot}%{_prefix}/lib*
+rm -rf %{buildroot}%{_prefix}/include
+rm -f %{buildroot}%{_prefix}/bin/*-c++filt
 > ../binutils.lang
 %endif
+%fdupes %{buildroot}%{_prefix}
 
 %if 0%{!?cross:1}
 %post
@@ -586,8 +582,7 @@ fi;
 %postun -n libctf0 -p /sbin/ldconfig
 %postun -n libctf-nobfd0 -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
+%postun -p /sbin/ldconfig
 %endif
 
 %files -f binutils.lang
@@ -641,9 +636,11 @@ fi;
 %{_libdir}/libctf-nobfd.so
 
 %files -n libctf0
+%defattr(-,root,root)
 %{_libdir}/libctf.so.*
 
 %files -n libctf-nobfd0
+%defattr(-,root,root)
 %{_libdir}/libctf-nobfd.so.*
 %endif
 

@@ -1,5 +1,5 @@
 #
-# spec file for package cross-xtensa-binutils
+# spec file for package cross-pru-binutils
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,10 +16,10 @@
 #
 
 
-Name:           cross-xtensa-binutils
-ExcludeArch:    xtensa
+Name:           cross-pru-binutils
+ExcludeArch:    pru
 %define cross 1
-%define TARGET xtensa
+%define TARGET pru
 BuildRequires:  bc
 BuildRequires:  bison
 BuildRequires:  dejagnu

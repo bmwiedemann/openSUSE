@@ -2,11 +2,12 @@ Index: gas/config/tc-avr-nesc.h
 ===================================================================
 --- gas/config/tc-avr-nesc.h.orig	2016-02-01 09:58:37.419903606 +0100
 +++ gas/config/tc-avr-nesc.h	2016-02-01 09:58:39.631928732 +0100
-@@ -143,8 +143,12 @@ extern long md_pcrel_from_section (struc
+Index: gas/expr.c
+@@ -143,8 +143,12 @@ extern int avr_force_relocation (struct fix *);
     would print `12 34 56 78'.  The default value is 4.  */
  #define LISTING_WORD_SIZE 2
  
--/* AVR port uses `$' as a logical line separator.  */
+-/* AVR port uses `$' as a logical line separator by default. */
 -#define LEX_DOLLAR 0
 +/* AVR port uses `$' as a logical line separator and doesn't
 +   allow it in symbols. We allow it in the middle of symbols.
@@ -17,7 +18,7 @@ Index: gas/config/tc-avr-nesc.h
  
  /* An `.lcomm' directive with no explicit alignment parameter will
     use this macro to set P2VAR to the alignment that a request for
-Index: gas/expr.c
+
 ===================================================================
 --- gas/expr.c.orig	2016-02-01 09:58:35.743884569 +0100
 +++ gas/expr.c	2016-02-01 09:58:39.631928732 +0100

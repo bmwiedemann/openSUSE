@@ -5,10 +5,10 @@ Index: binutils-2.25.0/bfd/elfnn-aarch64.c
 ===================================================================
 --- binutils-2.25.0.orig/bfd/elfnn-aarch64.c
 +++ binutils-2.25.0/bfd/elfnn-aarch64.c
-@@ -7945,7 +7945,7 @@ const struct elf_size_info elfNN_aarch64
+@@ -9965,7 +9965,7 @@ const struct elf_size_info elfNN_aarch64_size_info =
+ #define ELF_ARCH			bfd_arch_aarch64
  #define ELF_MACHINE_CODE		EM_AARCH64
  #define ELF_MAXPAGESIZE			0x10000
- #define ELF_MINPAGESIZE			0x1000
 -#define ELF_COMMONPAGESIZE		0x1000
 +#define ELF_COMMONPAGESIZE		0x10000
  

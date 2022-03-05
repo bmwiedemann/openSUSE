@@ -173,7 +173,7 @@ diff --git a/bfd/elfxx-x86.h b/bfd/elfxx-x86.h
 index db11327e96f..89f51382216 100644
 --- a/bfd/elfxx-x86.h
 +++ b/bfd/elfxx-x86.h
-@@ -452,6 +452,7 @@ struct elf_x86_link_hash_table
+@@ -456,6 +456,7 @@ struct elf_x86_link_hash_table
    asection *plt_second_eh_frame;
    asection *plt_got;
    asection *plt_got_eh_frame;
@@ -181,7 +181,7 @@ index db11327e96f..89f51382216 100644
  
    /* Parameters describing PLT generation, lazy or non-lazy.  */
    struct elf_x86_plt_layout plt;
-@@ -690,6 +691,12 @@ extern void _bfd_x86_elf_link_report_relative_reloc
+@@ -694,6 +695,12 @@ extern void _bfd_x86_elf_link_report_relative_reloc
    (struct bfd_link_info *, asection *, struct elf_link_hash_entry *,
     Elf_Internal_Sym *, const char *, const void *);
  
@@ -194,11 +194,14 @@ index db11327e96f..89f51382216 100644
  #define bfd_elf64_mkobject \
    _bfd_x86_elf_mkobject
  #define bfd_elf32_mkobject \
-@@ -727,3 +734,7 @@ extern void _bfd_x86_elf_link_report_relative_reloc
-   _bfd_x86_elf_merge_gnu_properties
- #define elf_backend_fixup_gnu_properties \
-   _bfd_x86_elf_link_fixup_gnu_properties
+@@ -907,6 +914,10 @@ extern void _bfd_x86_elf_link_report_relative_reloc
+   _bfd_elf_x86_size_relative_relocs
+ #define elf_backend_finish_relative_relocs \
+   _bfd_elf_x86_finish_relative_relocs
 +#define elf_backend_is_ulp_enabled \
 +  _bfd_x86_elf_is_ulp_enabled
 +#define elf_backend_setup_ulp \
 +  _bfd_x86_elf_setup_ulp
+ 
+ #define ELF_P_ALIGN ELF_MINPAGESIZE
+ 
