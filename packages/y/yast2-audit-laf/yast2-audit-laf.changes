@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  3 08:49:34 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Set the name of the auto client in the desktop file
+  (bsc#1196590).
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
