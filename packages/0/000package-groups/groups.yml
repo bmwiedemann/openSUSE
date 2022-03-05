@@ -9,29 +9,35 @@
 OUTPUT:
   - dvd:
       recommends: true
+      includes:
+        - common_locks
   - opensuse_kubic:
       recommends: false
       require_all: true
       includes:
+        - common_locks
         - opensuse_microos
         - opensuse_kubic
   - opensuse_microos:
       recommends: false
       require_all: true
       includes:
+        - common_locks
         - opensuse_microos
         - opensuse_microos_desktop
 
-dvd:
+common_locks:
+  - dummy-release: [locked]
   - kernel-default: [required]
   - kernel-vanilla-base: [locked]
   - kernel-kvmsmall-base: [locked]
   - kernel-vanilla: [locked]
   - kernel-kvmsmall: [locked]
   - kernel-debug: [locked]
+
+dvd:
   # We add the kernel-firmware-* packages
   - kernel-firmware: [locked]
-  - dummy-release: [locked]
   - MicroOS-release: [locked]
   - patterns-microos-basesystem: [locked]
   - openSUSE-Tumbleweed-Kubic-release: [locked]
@@ -196,7 +202,6 @@ dvd:
   - gnu-free-fonts: [locked]
   - armagetron: [locked]
   - frozen-bubble: [locked]
-  - marble: [locked]
   - digikam: [locked]
   - digikam-doc: [locked]
   - gimp-help: [locked]
@@ -220,7 +225,6 @@ dvd:
   ## highly outdated at the moment
   - MozillaFirefox-translations-other: [locked]
   - MozillaThunderbird-translations-other: [locked]
-  - texlive: [locked]
   - lyx: [locked]
   - gnumeric: [locked]
   - gnome-devel-docs: [locked]
@@ -397,18 +401,10 @@ dvd:
   - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
 
 opensuse_microos:
-  - dummy-release: [locked]
   - openSUSE-release: [locked]
   - openSUSE-MicroOS-release: [locked] # FIXME: remove after dropped
   - patterns-base-basesystem: [locked]
-  # we need a global flag, not there yet
-  - kernel-vanilla-base: [locked]
-  - kernel-kvmsmall-base: [locked]
-  - kernel-vanilla: [locked]
-  - kernel-kvmsmall: [locked]
-  - kernel-debug: [locked]
   - MicroOS-release: [aarch64,ppc64le,s390x,x86_64]
-  - kernel-default
   - patterns-microos-base: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-base-microdnf: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-base-packagekit: [aarch64,ppc64le,s390x,x86_64]

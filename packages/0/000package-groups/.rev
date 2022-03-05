@@ -1333,4 +1333,16 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1644047326</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="187" vrev="185">
+    <srcmd5>5a166f2f092e6022b2dc8c825c7dcf3c</srcmd5>
+    <version>unknown</version>
+    <time>1646487843</time>
+    <user>dimstar_suse</user>
+    <comment>Move the locks shared in a global group
+
+https://github.com/openSUSE/openSUSE-release-tools/issues/1843
+is not needed.
+</comment>
+    <requestid>959439</requestid>
+  </revision>
 </revisionlist>
