@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DNS
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.31
+Version:        1.33
 Release:        0
-Summary:        Perl Interface to the Domain Name System
 License:        MIT
-Group:          Development/Libraries/Perl
+Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NL/NLNETLABS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.1
 BuildRequires:  perl(Digest::HMAC) >= 1.03
 BuildRequires:  perl(Digest::SHA) >= 5.23
 BuildRequires:  perl(Encode) >= 2.26
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.66
 BuildRequires:  perl(Getopt::Long) >= 2.43
 BuildRequires:  perl(IO::Socket::IP) >= 0.38
 BuildRequires:  perl(PerlIO) >= 1.05
@@ -47,7 +48,6 @@ Requires:       perl(Scalar::Util) >= 1.25
 Requires:       perl(Time::Local) >= 1.19
 Recommends:     perl(Digest::BubbleBabble) >= 0.01
 Recommends:     perl(Net::LibIDN2) >= 1
-BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -59,14 +59,14 @@ The programmer should be familiar with the structure of a DNS packet. See
 RFC 1035 or DNS and BIND (Albitz & Liu) for details.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
 %make_build
 
 %check
-%make_build test
+make test
 
 %install
 %perl_make_install
@@ -74,7 +74,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
+%license LICENSE
 
 %changelog
