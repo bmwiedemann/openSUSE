@@ -15,7 +15,7 @@ Index: LVM2.2.02.170/lib/config/config_settings.h
 +cfg(global_display_dm_name_for_lv_name_CFG, "display_dm_name_for_lv_name", global_CFG_SECTION, CFG_DEFAULT_COMMENTED, CFG_TYPE_BOOL, DEFAULT_DISPLAY_DM_NAME_FOR_LV_NAME, vsn(2, 2, 98), NULL, 0, NULL,
 +	"Display dm name for lv name.\n")
 +
- cfg(global_system_id_source_CFG, "system_id_source", global_CFG_SECTION, 0, CFG_TYPE_STRING, DEFAULT_SYSTEM_ID_SOURCE, vsn(2, 2, 117), NULL, 0, NULL,
+ cfg(global_system_id_source_CFG, "system_id_source", global_CFG_SECTION, CFG_DEFAULT_COMMENTED, CFG_TYPE_STRING, DEFAULT_SYSTEM_ID_SOURCE, vsn(2, 2, 117), NULL, 0, NULL,
  	"The method LVM uses to set the local system ID.\n"
  	"Volume Groups can also be given a system ID (by vgcreate, vgchange,\n"
 Index: LVM2.2.02.170/lib/config/defaults.h
@@ -23,7 +23,7 @@ Index: LVM2.2.02.170/lib/config/defaults.h
 --- LVM2.2.02.170.orig/lib/config/defaults.h
 +++ LVM2.2.02.170/lib/config/defaults.h
 @@ -33,6 +33,7 @@
- #define DEFAULT_OBTAIN_DEVICE_LIST_FROM_UDEV 1
+ #define DEFAULT_OBTAIN_DEVICE_LIST_FROM_UDEV 0
  #define DEFAULT_EXTERNAL_DEVICE_INFO_SOURCE "none"
  #define DEFAULT_SYSFS_SCAN 1
 +#define DEFAULT_DISPLAY_DM_NAME_FOR_LV_NAME 0

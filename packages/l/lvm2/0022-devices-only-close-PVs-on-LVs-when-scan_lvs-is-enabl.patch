@@ -1,0 +1,31 @@
+From cc73d99886dfd6e0da3c6ca685669f77fac3c1cd Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Tue, 1 Mar 2022 12:22:46 -0600
+Subject: [PATCH 2/3] devices: only close PVs on LVs when scan_lvs is enabled
+
+This code is only needed when lvm scans PVs that are stacked on LVs.
+---
+ lib/label/label.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/lib/label/label.c b/lib/label/label.c
+index c208638757af..e6bc791a78ff 100644
+--- a/lib/label/label.c
++++ b/lib/label/label.c
+@@ -1661,9 +1661,11 @@ void label_scan_invalidate_lvs(struct cmd_context *cmd, struct dm_list *lvs)
+ 	dev_t devt;
+ 
+ 	/*
+-	 * FIXME: this is all unnecessary unless there are PVs stacked on LVs,
+-	 * so we can skip all of this if scan_lvs=0.
++	 * This is only needed when the command sees PVs stacked on LVs which
++	 * will only happen with scan_lvs=1.
+ 	 */
++	if (!cmd->scan_lvs)
++		return;
+ 	log_debug("invalidating devs for any pvs on lvs");
+ 
+ 	if (get_device_list(NULL, &devs, &devs_features)) {
+-- 
+2.34.1
+

@@ -1,0 +1,26 @@
+From fa7b67eeebfc28bce355991eebe1b5f21f075e9a Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Fri, 11 Feb 2022 23:55:08 +0100
+Subject: dev_manager: do not query for open_count
+
+Oepn count is not used along this code path.
+---
+ lib/activate/dev_manager.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/activate/dev_manager.c b/lib/activate/dev_manager.c
+index 4d18d9838736..feea06a47e53 100644
+--- a/lib/activate/dev_manager.c
++++ b/lib/activate/dev_manager.c
+@@ -2268,7 +2268,7 @@ static int _add_dev_to_dtree(struct dev_manager *dm, struct dm_tree *dtree,
+ 		return 1;
+ 	}
+ 
+-	if (!_info(dm->cmd, name, dlid, 1, 0, 0, &info, NULL, NULL))
++	if (!_info(dm->cmd, name, dlid, 0, 0, 0, &info, NULL, NULL))
+ 		return_0;
+ 
+ 	/*
+-- 
+2.34.1
+

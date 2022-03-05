@@ -1,0 +1,29 @@
+From c2679f76e5c1733451361b593fa45ba9545250b1 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Tue, 15 Feb 2022 21:16:10 +0100
+Subject: dev_manager: failing status is not internal error
+
+Different target type for LV it's not an internal error.
+i.e.  when target type is replaced with 'error' type - it should be
+reported as regular warning and not cause interruption of command with
+internall error.
+---
+ lib/activate/dev_manager.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/activate/dev_manager.c b/lib/activate/dev_manager.c
+index 3fd6aaff76a9..4d18d9838736 100644
+--- a/lib/activate/dev_manager.c
++++ b/lib/activate/dev_manager.c
+@@ -204,7 +204,7 @@ static int _get_segment_status_from_target_params(const char *target_name,
+ 	    /* If kernel's type isn't an exact match is it compatible? */
+ 	    (!segtype->ops->target_status_compatible ||
+ 	     !segtype->ops->target_status_compatible(target_name))) {
+-		log_warn(INTERNAL_ERROR "WARNING: Segment type %s found does not match expected type %s for %s.",
++		log_warn("WARNING: Detected %s segment type does not match expected type %s for %s.",
+ 			 target_name, segtype->name, display_lvname(seg_status->seg->lv));
+ 		return 0;
+ 	}
+-- 
+2.34.1
+

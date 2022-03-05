@@ -1,0 +1,26 @@
+From d2e7a05573f54750d13c1154036ae2c67478539b Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Tue, 8 Feb 2022 19:17:30 +0100
+Subject: clang: add extra check
+
+Make clang happier.
+---
+ lib/metadata/metadata.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/metadata/metadata.c b/lib/metadata/metadata.c
+index db0e511ec8ea..1cda1888f356 100644
+--- a/lib/metadata/metadata.c
++++ b/lib/metadata/metadata.c
+@@ -2197,7 +2197,7 @@ static int _validate_lock_args_chars(const char *lock_args)
+ 
+ static int _validate_vg_lock_args(struct volume_group *vg)
+ {
+-	if (!_validate_lock_args_chars(vg->lock_args)) {
++	if (!vg->lock_args || !_validate_lock_args_chars(vg->lock_args)) {
+ 		log_error(INTERNAL_ERROR "VG %s has invalid lock_args chars", vg->name);
+ 		return 0;
+ 	}
+-- 
+2.34.1
+

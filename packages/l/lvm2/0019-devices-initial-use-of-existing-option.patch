@@ -1,0 +1,70 @@
+From 00c3069872ab488f66f14c8c2727bd080affc05e Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Thu, 24 Feb 2022 16:10:37 -0600
+Subject: devices: initial use of existing option
+
+Use dev_cache_get_existing() in a few common, high level
+locations where it's obvious that only existing dev-cache
+entries are wanted.  This can be expanded and used in more
+locations (or dev_cache_get can stop creating new entries.)
+---
+ lib/device/device_id.c | 4 ++--
+ tools/toollib.c        | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/lib/device/device_id.c b/lib/device/device_id.c
+index 003f10a96641..c8df47345e72 100644
+--- a/lib/device/device_id.c
++++ b/lib/device/device_id.c
+@@ -1577,7 +1577,7 @@ void device_ids_match_device_list(struct cmd_context *cmd)
+ 	dm_list_iterate_items(du, &cmd->use_devices) {
+ 		if (du->dev)
+ 			continue;
+-		if (!(du->dev = dev_cache_get(cmd, du->devname, NULL))) {
++		if (!(du->dev = dev_cache_get_existing(cmd, du->devname, NULL))) {
+ 			log_warn("Device not found for %s.", du->devname);
+ 		} else {
+ 			/* Should we set dev->id?  Which idtype?  Use --deviceidtype? */
+@@ -1625,7 +1625,7 @@ void device_ids_match(struct cmd_context *cmd)
+ 		 * the du/dev pairs in preparation for using the filters.
+ 		 */
+ 		if (du->devname &&
+-		    (dev = dev_cache_get(cmd, du->devname, NULL))) {
++		    (dev = dev_cache_get_existing(cmd, du->devname, NULL))) {
+ 			/* On successful match, du, dev, and id are linked. */
+ 			if (_match_du_to_dev(cmd, du, dev))
+ 				continue;
+diff --git a/tools/toollib.c b/tools/toollib.c
+index b08c044fab7c..897adec347ae 100644
+--- a/tools/toollib.c
++++ b/tools/toollib.c
+@@ -1488,7 +1488,7 @@ int process_each_label(struct cmd_context *cmd, int argc, char **argv,
+ 				goto out;
+ 			}
+ 
+-			if (!(dev = dev_cache_get(cmd, argv[opt], cmd->filter))) {
++			if (!(dev = dev_cache_get_existing(cmd, argv[opt], cmd->filter))) {
+ 				log_error("Failed to find device "
+ 					  "\"%s\".", argv[opt]);
+ 				ret_max = ECMD_FAILED;
+@@ -3925,7 +3925,7 @@ static int _get_arg_devices(struct cmd_context *cmd,
+ 			return ECMD_FAILED;
+ 		}
+ 
+-		if (!(dil->dev = dev_cache_get(cmd, sl->str, cmd->filter))) {
++		if (!(dil->dev = dev_cache_get_existing(cmd, sl->str, cmd->filter))) {
+ 			log_error("Cannot use %s: %s", sl->str, devname_error_reason(sl->str));
+ 			ret_max = EINIT_FAILED;
+ 		} else {
+@@ -5261,7 +5261,7 @@ int pvcreate_each_device(struct cmd_context *cmd,
+ 		struct device *dev;
+ 
+ 		/* No filter used here */
+-		if (!(dev = dev_cache_get(cmd, pd->name, NULL))) {
++		if (!(dev = dev_cache_get_existing(cmd, pd->name, NULL))) {
+ 			log_error("No device found for %s.", pd->name);
+ 			dm_list_del(&pd->list);
+ 			dm_list_add(&pp->arg_fail, &pd->list);
+-- 
+2.34.1
+

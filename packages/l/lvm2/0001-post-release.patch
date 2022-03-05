@@ -1,0 +1,51 @@
+From 8dccc2314e2482370bc6e5cf007eb210994abdef Mon Sep 17 00:00:00 2001
+From: Marian Csontos <mcsontos@redhat.com>
+Date: Mon, 7 Feb 2022 18:02:07 +0100
+Subject: post-release
+
+---
+ VERSION      | 2 +-
+ VERSION_DM   | 2 +-
+ WHATS_NEW    | 3 +++
+ WHATS_NEW_DM | 3 +++
+ 4 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/VERSION b/VERSION
+index 0e6ab70a9c50..fba090956ba1 100644
+--- a/VERSION
++++ b/VERSION
+@@ -1 +1 @@
+-2.03.15(2) (2022-02-07)
++2.03.16(2)-git (2022-02-07)
+diff --git a/VERSION_DM b/VERSION_DM
+index d6704212f283..d122183b2c63 100644
+--- a/VERSION_DM
++++ b/VERSION_DM
+@@ -1 +1 @@
+-1.02.183 (2022-02-07)
++1.02.185-git (2022-02-07)
+diff --git a/WHATS_NEW b/WHATS_NEW
+index dda9954fe52f..006d0acb141c 100644
+--- a/WHATS_NEW
++++ b/WHATS_NEW
+@@ -1,3 +1,6 @@
++Version 2.03.16 - 
++====================================
++
+ Version 2.03.15 - 07th February 2022
+ ====================================
+   Remove service based autoactivation. global/event_activation = 0 is NOOP.
+diff --git a/WHATS_NEW_DM b/WHATS_NEW_DM
+index 77843726211c..c634362217a5 100644
+--- a/WHATS_NEW_DM
++++ b/WHATS_NEW_DM
+@@ -1,3 +1,6 @@
++Version 1.02.185 - 
++=====================================
++
+ Version 1.02.183 - 07th February 2022
+ =====================================
+   Unmangle UUIDs for DM_DEVICE_LIST ioctl.
+-- 
+2.34.1
+

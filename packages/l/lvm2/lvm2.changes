@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Tue Mar  1 15:45:00 UTC 2022 - heming.zhao@suse.com
+
+- Update lvm2 from LVM2.2.03.12 to LVM2.2.03.15
+
+  *** WHATS_NEW from 2.03.13 to 2.03.15 ***
+
+  Version 2.03.15 - 07th February 2022
+  ====================================
+    Remove service based autoactivation. global/event_activation = 0 is NOOP.
+    Improve support for metadata profiles for --type writecache.
+    Use cache or active DM device when available with new kernels.
+    Introduce function to utilize UUIDs from DM_DEVICE_LIST.
+    Increase some hash table size to better support large device sets.
+
+  Version 2.03.14 - 20th October 2021
+  ===================================
+    Device scanning is skipping directories on different filesystems.
+    Print info message with too many or too large archived files.
+    Reduce metadata readings during scanning phase.
+    Optimize computation of crc32 check sum with multiple PVs.
+    Enhance recover path on cache creation failure.
+    Filter out unsupported MQ/SMQ cache policy setting.
+    Fix memleak in mpath filter.
+    Support newer location for VDO statistics.
+    Add support for VDO async-unsafe write policy.
+    Improve lvm_import_vdo script.
+    Support VDO LV with lvcreate -ky.
+    Fix lvconvert for VDO LV bigger then 2T.
+    Create VDO LVs automatically without zeroing.
+    Rename vdoimport to lvm_import_vdo.
+
+  Version 2.03.13 - 11th August 2021
+  ==================================
+    Changes in udev support:
+    - obtain_device_list_from_udev defaults to 0.
+    - see devices/external_device_info_source,
+      devices/obtain_device_list_from_udev, and devices/multipath_wwids_file help
+      in lvm.conf
+    Fix devices file handling of loop with deleted backing file.
+    Fix devices file handling of scsi_debug WWIDs.
+    Fix many static analysis issues.
+    Support --poolmetadataspare with vgsplit and vgmerge.
+    Fix detection of active components of external origin volume.
+    Add vdoimport tool to support conversion of VDO volumes.
+    Support configurable allocation/vdo_pool_header_size.
+    Fix handling of lvconvert --type vdo-pool --virtualsize.
+    Simplified handling of archive() and backup() internal calls.
+    Add 'idm' locking type for IDM lock manager.
+    Fix load of kvdo target when it is not present in memory (2.03.12).
+
+
+  *** WHATS_NEW_DM from 1.02.179 to 1.02.183 ***
+
+  Version 1.02.183 - 07th February 2022
+  =====================================
+    Unmangle UUIDs for DM_DEVICE_LIST ioctl.
+
+  Version 1.02.181 - 20th October 2021
+  ====================================
+    Add IMA support with 'dmsetup measure' command.
+    Add defines DM_NAME_LIST_FLAG_HAS_UUID, DM_NAME_LIST_FLAG_DOESNT_HAVE_UUID.
+    Enhance tracking of activated devices when preloading dm tree.
+    Fix bug in construction of cache table line (regression from 1.02.159).
+
+  Version 1.02.179 - 11th August 2021
+  ===================================
+    (empty)
+
+- Drop patches that have been merged into upstream
+  - 0001-lvmlockd-idm-Introduce-new-locking-scheme.patch
+  - 0002-lvmlockd-idm-Hook-Seagate-IDM-wrapper-APIs.patch
+  - 0003-lib-locking-Add-new-type-idm.patch
+  - 0004-lib-locking-Parse-PV-list-for-IDM-locking.patch
+  - 0005-tools-Add-support-for-idm-lock-type.patch
+  - 0006-configure-Add-macro-LOCKDIDM_SUPPORT.patch
+  - 0007-enable-command-syntax-for-thin-and-writecache.patch
+  - 0008-lvremove-fix-removing-thin-pool-with-writecache-on-d.patch
+  - 0009-vdo-fix-preload-of-kvdo.patch
+  - 0010-writecache-fix-lv_on_pmem.patch
+  - 0011-writecache-don-t-pvmove-device-used-by-writecache.patch
+  - 0012-pvchange-fix-file-locking-deadlock.patch
+  - 0013-tests-Enable-the-testing-for-IDM-locking-scheme.patch
+  - 0014-tests-Support-multiple-backing-devices.patch
+  - 0015-tests-Cleanup-idm-context-when-prepare-devices.patch
+  - 0016-tests-Add-checking-for-lvmlockd-log.patch
+  - 0017-tests-stress-Add-single-thread-stress-testing.patch
+  - 0018-tests-stress-Add-multi-threads-stress-testing-for-VG.patch
+  - 0019-tests-stress-Add-multi-threads-stress-testing-for-PV.patch
+  - 0020-tests-Support-idm-failure-injection.patch
+  - 0021-tests-Add-testing-for-lvmlockd-failure.patch
+  - 0022-tests-idm-Add-testing-for-the-fabric-failure.patch
+  - 0023-tests-idm-Add-testing-for-the-fabric-failure-and-tim.patch
+  - 0024-tests-idm-Add-testing-for-the-fabric-s-half-brain-fa.patch
+  - 0025-tests-idm-Add-testing-for-IDM-lock-manager-failure.patch
+  - 0026-tests-multi-hosts-Add-VG-testing.patch
+  - 0027-tests-multi-hosts-Add-LV-testing.patch
+  - 0028-tests-multi-hosts-Test-lease-timeout-with-LV-exclusi.patch
+  - 0029-tests-multi-hosts-Test-lease-timeout-with-LV-shareab.patch
+  - 0030-fix-empty-mem-pool-leak.patch
+  - 0031-tests-writecache-blocksize-add-dm-cache-tests.patch
+  - 0032-tests-rename-test.patch
+  - 0033-tests-add-writecache-cache-blocksize-2.patch
+  - 0034-lvmlockd-Fix-the-compilation-warning.patch
+  - 0035-devices-don-t-use-deleted-loop-backing-file-for-devi.patch
+  - 0036-man-help-fix-common-option-listing.patch
+  - 0037-archiving-take-archive-automatically.patch
+  - 0038-backup-automatically-store-data-on-vg_unlock.patch
+  - 0039-archive-avoid-abuse-of-internal-flag.patch
+  - 0040-pvck-add-lock_global-before-clean_hint_file.patch
+  - 0041-lvmdevices-add-deviceidtype-option.patch
+  - bug-1188141_toolcontext-fix-double-free-core-dumped-issue.patch
+  - 0043-udev-create-symlinks-and-watch-even-in-suspended-sta.patch
+  - bug-1179691_config-set-external_device_info_source-none.patch
+
+- Add upstream patch
+  - 0001-post-release.patch
+  - 0002-asan-fix-some-reports-from-libasan.patch
+  - 0003-make-generate.patch
+  - 0004-tests-udev-pvscan-vgchange-fix-service-wait.patch
+  - 0005-devices-file-do-not-clear-PVID-of-unread-devices.patch
+  - 0006-tests-skip-vgchange-pvs-online.sh-on-rhel5.patch
+  - 0007-dev_manager-fix-dm_task_get_device_list.patch
+  - 0008-dev_manager-failing-status-is-not-internal-error.patch
+  - 0009-clang-add-extra-check.patch
+  - 0010-clang-possible-better-compilation-with-musl-c.patch
+  - 0011-dev_manager-do-not-query-for-open_count.patch
+  - 0012-dev_manager-use-list-info-for-preset-devs.patch
+  - 0013-man-lvmcache-add-more-writecache-cachesettings-info.patch
+  - 0014-man-update-cachesettings-option-description.patch
+  - 0015-man-lvmcache-mention-writecache-memory-usage.patch
+  - 0016-writecache-display-block-size-from-lvs.patch
+  - 0017-devices-simplify-dev_cache_get_by_devt.patch
+  - 0018-devices-drop-incorrect-paths-from-aliases-list.patch
+  - 0019-devices-initial-use-of-existing-option.patch
+  - 0020-devices-fix-dev_name-assumptions.patch
+  - 0021-devices-use-dev-cache-aliases-handling-from-label-sc.patch
+  - 0022-devices-only-close-PVs-on-LVs-when-scan_lvs-is-enabl.patch
+  - 0023-writecache-check-memory-usage.patch
+
+- Update patch
+  - fate-309425_display-dm-name-for-lv-name.patch
+
+- lvm2.spec
+  - add new binraries: lvmdevices vgimportdevices
+  - add config item "--with-cluster=internal" for cluster test
+  - add config item "--with-integrity=internal"
+  - add new man lvmautoactivation.7
+  - remove lvm2-activation-generator & man page
+  - remove lvm2-pvscan@.service
+  - replace 69-dm-lvm-metad.rules with 69-dm-lvm.rules
+
+-------------------------------------------------------------------
 Tue Feb  1 13:10:31 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - udev: create symlinks and watch even in suspended state (bsc#1195231)

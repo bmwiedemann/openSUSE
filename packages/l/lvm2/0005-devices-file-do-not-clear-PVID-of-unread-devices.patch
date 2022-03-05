@@ -1,0 +1,144 @@
+From d59382c772483d3c09b4fcff90c01d81742feac6 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Thu, 10 Feb 2022 14:00:25 -0600
+Subject: devices file: do not clear PVID of unread devices
+
+In a certain disconnected state, a block device is present on
+the system, can be opened, reports a valid size, reports the
+correct device id (wwid), and matches a devices file entry.
+But, reading the device can still fail.  In this case,
+device_ids_validate() was misinterpreting the read error as
+the device having no data/label on it (and no PVID).
+The validate function would then clear the PVID from the
+devices file entry for the device, thinking that it was
+fixing the devices file (making it consistent with the on disk
+state.)  Fix this by not attempting to check and correct a
+devices file entry that cannot be read.  Also make this case
+explicit in the hints validation code (which was doing the
+right thing but indirectly.)
+---
+ lib/device/device.h    |  1 +
+ lib/device/device_id.c | 14 ++++++++++++++
+ lib/label/hints.c      | 14 ++++++++++++++
+ lib/label/label.c      |  8 ++++++++
+ 4 files changed, 37 insertions(+)
+
+diff --git a/lib/device/device.h b/lib/device/device.h
+index 9e471a9b514a..8c3a8c30e086 100644
+--- a/lib/device/device.h
++++ b/lib/device/device.h
+@@ -40,6 +40,7 @@
+ #define DEV_IS_NVME		0x00040000	/* set if dev is nvme */
+ #define DEV_MATCHED_USE_ID	0x00080000	/* matched an entry from cmd->use_devices */
+ #define DEV_SCAN_FOUND_NOLABEL	0x00100000	/* label_scan read, passed filters, but no lvm label */
++#define DEV_SCAN_NOT_READ	0x00200000	/* label_scan not able to read dev */
+ 
+ /*
+  * Support for external device info.
+diff --git a/lib/device/device_id.c b/lib/device/device_id.c
+index 4618247ba1f2..003f10a96641 100644
+--- a/lib/device/device_id.c
++++ b/lib/device/device_id.c
+@@ -1746,6 +1746,13 @@ void device_ids_validate(struct cmd_context *cmd, struct dm_list *scanned_devs,
+ 		if (scanned_devs && !dev_in_device_list(dev, scanned_devs))
+ 			continue;
+ 
++		/*
++		 * The matched device could not be read so we do not have
++		 * the PVID from disk and cannot verify the devices file entry.
++		 */
++		if (dev->flags & DEV_SCAN_NOT_READ)
++			continue;
++
+ 		/*
+ 		 * du and dev may have been matched, but the dev could still
+ 		 * have been excluded by other filters during label scan.
+@@ -1828,6 +1835,13 @@ void device_ids_validate(struct cmd_context *cmd, struct dm_list *scanned_devs,
+ 		if (scanned_devs && !dev_in_device_list(dev, scanned_devs))
+ 			continue;
+ 
++		/*
++		 * The matched device could not be read so we do not have
++		 * the PVID from disk and cannot verify the devices file entry.
++		 */
++		if (dev->flags & DEV_SCAN_NOT_READ)
++			continue;
++
+ 		if (!cmd->filter->passes_filter(cmd, cmd->filter, dev, "persistent")) {
+ 			log_warn("Devices file %s is excluded by filter: %s.",
+ 				 dev_name(dev), dev_filtered_reason(dev));
+diff --git a/lib/label/hints.c b/lib/label/hints.c
+index 93dfdd5c1d9a..35ae7f5cc8df 100644
+--- a/lib/label/hints.c
++++ b/lib/label/hints.c
+@@ -236,6 +236,7 @@ static int _touch_newhints(void)
+ 		return_0;
+ 	if (fclose(fp))
+ 		stack;
++	log_debug("newhints created");
+ 	return 1;
+ }
+ 
+@@ -506,6 +507,19 @@ int validate_hints(struct cmd_context *cmd, struct dm_list *hints)
+ 		if (!hint->chosen)
+ 			continue;
+ 
++		/* 
++		 * label_scan was unable to read the dev so we don't know its pvid.
++		 * Since we are unable to verify the hint is correct, it's possible
++		 * that the PVID is actually found on a different device, so don't
++		 * depend on hints. (This would also fail the following pvid check.)
++		 */
++		if (dev->flags & DEV_SCAN_NOT_READ) {
++			log_debug("Uncertain hint for unread device %d:%d %s",
++				  major(hint->devt), minor(hint->devt), dev_name(dev));
++			ret = 0;
++			continue;
++		}
++
+ 		if (strcmp(dev->pvid, hint->pvid)) {
+ 			log_debug("Invalid hint device %d:%d %s pvid %s had hint pvid %s",
+ 				  major(hint->devt), minor(hint->devt), dev_name(dev),
+diff --git a/lib/label/label.c b/lib/label/label.c
+index 8676b9e4a642..fe2bc8fec743 100644
+--- a/lib/label/label.c
++++ b/lib/label/label.c
+@@ -687,6 +687,8 @@ static int _scan_list(struct cmd_context *cmd, struct dev_filter *f,
+ 
+ 	dm_list_iterate_items_safe(devl, devl2, devs) {
+ 
++		devl->dev->flags &= ~DEV_SCAN_NOT_READ;
++
+ 		/*
+ 		 * If we prefetch more devs than blocks in the cache, then the
+ 		 * cache will wait for earlier reads to complete, toss the
+@@ -702,6 +704,7 @@ static int _scan_list(struct cmd_context *cmd, struct dev_filter *f,
+ 				log_debug_devs("Scan failed to open %s.", dev_name(devl->dev));
+ 				dm_list_del(&devl->list);
+ 				dm_list_add(&reopen_devs, &devl->list);
++				devl->dev->flags |= DEV_SCAN_NOT_READ;
+ 				continue;
+ 			}
+ 		}
+@@ -725,6 +728,7 @@ static int _scan_list(struct cmd_context *cmd, struct dev_filter *f,
+ 			log_debug_devs("Scan failed to read %s.", dev_name(devl->dev));
+ 			scan_read_errors++;
+ 			scan_failed_count++;
++			devl->dev->flags |= DEV_SCAN_NOT_READ;
+ 			lvmcache_del_dev(devl->dev);
+ 			if (bb)
+ 				bcache_put(bb);
+@@ -1389,6 +1393,10 @@ int label_scan(struct cmd_context *cmd)
+ 	 * filter", and this result needs to be cleared (wiped) so that the
+ 	 * complete set of filters (including those that require data) can be
+ 	 * checked in _process_block, where headers have been read.
++	 *
++	 * FIXME: devs that are filtered with data in _process_block
++	 * are not moved to the filtered_devs list like devs filtered
++	 * here without data.  Does that have any effect?
+ 	 */
+ 	log_debug_devs("Filtering devices to scan (nodata)");
+ 
+-- 
+2.34.1
+

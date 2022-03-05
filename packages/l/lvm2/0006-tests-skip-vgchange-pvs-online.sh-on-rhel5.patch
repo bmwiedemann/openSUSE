@@ -1,0 +1,27 @@
+From 6626adb46789e329a53242822dc6e9d233320adb Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Tue, 15 Feb 2022 15:56:01 -0600
+Subject: tests: skip vgchange-pvs-online.sh on rhel5
+
+the /dev/mapper/ paths to test devices don't seem to work there
+---
+ test/shell/vgchange-pvs-online.sh | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/shell/vgchange-pvs-online.sh b/test/shell/vgchange-pvs-online.sh
+index ced03f4daef7..9bcf70e4b245 100644
+--- a/test/shell/vgchange-pvs-online.sh
++++ b/test/shell/vgchange-pvs-online.sh
+@@ -19,6 +19,9 @@ _clear_online_files() {
+ 
+ aux prepare_devs 4
+ 
++# skip rhel5 which doesn't seem to have /dev/mapper/LVMTESTpv1
++aux driver_at_least 4 15 || skip
++
+ DFDIR="$LVM_SYSTEM_DIR/devices"
+ mkdir -p "$DFDIR" || true
+ DF="$DFDIR/system.devices"
+-- 
+2.34.1
+

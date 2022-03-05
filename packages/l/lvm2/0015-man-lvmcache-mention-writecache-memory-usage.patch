@@ -1,0 +1,35 @@
+From 6144dac897728a4857294d70645df8ed7a5ff11f Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Mon, 21 Feb 2022 11:35:58 -0600
+Subject: man lvmcache: mention writecache memory usage
+
+---
+ man/lvmcache.7_main | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/man/lvmcache.7_main b/man/lvmcache.7_main
+index dddd33cfa02c..ce440bf49983 100644
+--- a/man/lvmcache.7_main
++++ b/man/lvmcache.7_main
+@@ -240,6 +240,18 @@ The writecache block size should be chosen to match the xfs sectsz value.
+ It is also possible to specify a sector size of 4096 to mkfs.xfs when
+ creating the file system.  In this case the writecache block size of 4096
+ can be used.
++.P
++.SS dm-writecache memory usage
++.P
++The amount of main system memory used by dm-writecache can be a factor
++when selecting the writecache cachevol size and the writecache block size.
++.P
++.IP \[bu] 2
++writecache block size 4096: each 100 GiB of writecache cachevol uses
++slighly over 2 GiB of system memory.
++.IP \[bu] 2
++writecache block size 512: each 100 GiB of writecache cachevol uses
++a little over 16 GiB of system memory.
+ .
+ .SS dm-writecache settings
+ .
+-- 
+2.34.1
+

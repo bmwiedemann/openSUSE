@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lvm2
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -21,8 +21,8 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.12
-%define device_mapper_version     1.02.177
+%define lvm2_version              2.03.15
+%define device_mapper_version     1.02.185
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 0
 %define dlm_version     4.0.9
@@ -63,61 +63,39 @@ Source42:       ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
 
 # Upstream patches
-Patch0001:      0001-lvmlockd-idm-Introduce-new-locking-scheme.patch
-Patch0002:      0002-lvmlockd-idm-Hook-Seagate-IDM-wrapper-APIs.patch
-Patch0003:      0003-lib-locking-Add-new-type-idm.patch
-Patch0004:      0004-lib-locking-Parse-PV-list-for-IDM-locking.patch
-Patch0005:      0005-tools-Add-support-for-idm-lock-type.patch
-Patch0006:      0006-configure-Add-macro-LOCKDIDM_SUPPORT.patch
-Patch0007:      0007-enable-command-syntax-for-thin-and-writecache.patch
-Patch0008:      0008-lvremove-fix-removing-thin-pool-with-writecache-on-d.patch
-Patch0009:      0009-vdo-fix-preload-of-kvdo.patch
-Patch0010:      0010-writecache-fix-lv_on_pmem.patch
-Patch0011:      0011-writecache-don-t-pvmove-device-used-by-writecache.patch
-Patch0012:      0012-pvchange-fix-file-locking-deadlock.patch
-Patch0013:      0013-tests-Enable-the-testing-for-IDM-locking-scheme.patch
-Patch0014:      0014-tests-Support-multiple-backing-devices.patch
-Patch0015:      0015-tests-Cleanup-idm-context-when-prepare-devices.patch
-Patch0016:      0016-tests-Add-checking-for-lvmlockd-log.patch
-Patch0017:      0017-tests-stress-Add-single-thread-stress-testing.patch
-Patch0018:      0018-tests-stress-Add-multi-threads-stress-testing-for-VG.patch
-Patch0019:      0019-tests-stress-Add-multi-threads-stress-testing-for-PV.patch
-Patch0020:      0020-tests-Support-idm-failure-injection.patch
-Patch0021:      0021-tests-Add-testing-for-lvmlockd-failure.patch
-Patch0022:      0022-tests-idm-Add-testing-for-the-fabric-failure.patch
-Patch0023:      0023-tests-idm-Add-testing-for-the-fabric-failure-and-tim.patch
-Patch0024:      0024-tests-idm-Add-testing-for-the-fabric-s-half-brain-fa.patch
-Patch0025:      0025-tests-idm-Add-testing-for-IDM-lock-manager-failure.patch
-Patch0026:      0026-tests-multi-hosts-Add-VG-testing.patch
-Patch0027:      0027-tests-multi-hosts-Add-LV-testing.patch
-Patch0028:      0028-tests-multi-hosts-Test-lease-timeout-with-LV-exclusi.patch
-Patch0029:      0029-tests-multi-hosts-Test-lease-timeout-with-LV-shareab.patch
-Patch0030:      0030-fix-empty-mem-pool-leak.patch
-Patch0031:      0031-tests-writecache-blocksize-add-dm-cache-tests.patch
-Patch0032:      0032-tests-rename-test.patch
-Patch0033:      0033-tests-add-writecache-cache-blocksize-2.patch
-Patch0034:      0034-lvmlockd-Fix-the-compilation-warning.patch
-Patch0035:      0035-devices-don-t-use-deleted-loop-backing-file-for-devi.patch
-Patch0036:      0036-man-help-fix-common-option-listing.patch
-Patch0037:      0037-archiving-take-archive-automatically.patch
-Patch0038:      0038-backup-automatically-store-data-on-vg_unlock.patch
-Patch0039:      0039-archive-avoid-abuse-of-internal-flag.patch
-Patch0040:      0040-pvck-add-lock_global-before-clean_hint_file.patch
-Patch0041:      0041-lvmdevices-add-deviceidtype-option.patch
-Patch0042:      bug-1188141_toolcontext-fix-double-free-core-dumped-issue.patch
-Patch0043:      0043-udev-create-symlinks-and-watch-even-in-suspended-sta.patch
-
+Patch0001:      0001-post-release.patch
+Patch0002:      0002-asan-fix-some-reports-from-libasan.patch
+Patch0003:      0003-make-generate.patch
+Patch0004:      0004-tests-udev-pvscan-vgchange-fix-service-wait.patch
+Patch0005:      0005-devices-file-do-not-clear-PVID-of-unread-devices.patch
+Patch0006:      0006-tests-skip-vgchange-pvs-online.sh-on-rhel5.patch
+Patch0007:      0007-dev_manager-fix-dm_task_get_device_list.patch
+Patch0008:      0008-dev_manager-failing-status-is-not-internal-error.patch
+Patch0009:      0009-clang-add-extra-check.patch
+Patch0010:      0010-clang-possible-better-compilation-with-musl-c.patch
+Patch0011:      0011-dev_manager-do-not-query-for-open_count.patch
+Patch0012:      0012-dev_manager-use-list-info-for-preset-devs.patch
+Patch0013:      0013-man-lvmcache-add-more-writecache-cachesettings-info.patch
+Patch0014:      0014-man-update-cachesettings-option-description.patch
+Patch0015:      0015-man-lvmcache-mention-writecache-memory-usage.patch
+Patch0016:      0016-writecache-display-block-size-from-lvs.patch
+Patch0017:      0017-devices-simplify-dev_cache_get_by_devt.patch
+Patch0018:      0018-devices-drop-incorrect-paths-from-aliases-list.patch
+Patch0019:      0019-devices-initial-use-of-existing-option.patch
+Patch0020:      0020-devices-fix-dev_name-assumptions.patch
+Patch0021:      0021-devices-use-dev-cache-aliases-handling-from-label-sc.patch
+Patch0022:      0022-devices-only-close-PVs-on-LVs-when-scan_lvs-is-enabl.patch
+Patch0023:      0023-writecache-check-memory-usage.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
 Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
 Patch1003:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
 Patch1004:      bug-998893_make_pvscan_service_after_multipathd.patch
-Patch1005:      bug-1179691_config-set-external_device_info_source-none.patch
-Patch1006:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
-Patch1007:      fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem.patch
-Patch1008:      fate-31841-02_man-add-support-for-btrfs.patch
-Patch1009:      fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
+Patch1005:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
+Patch1006:      fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem.patch
+Patch1007:      fate-31841-02_man-add-support-for-btrfs.patch
+Patch1008:      fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
 # SUSE patches 3000+ for test code
@@ -190,26 +168,6 @@ Volume Manager.
 %patch0021 -p1
 %patch0022 -p1
 %patch0023 -p1
-%patch0024 -p1
-%patch0025 -p1
-%patch0026 -p1
-%patch0027 -p1
-%patch0028 -p1
-%patch0029 -p1
-%patch0030 -p1
-%patch0031 -p1
-%patch0032 -p1
-%patch0033 -p1
-%patch0034 -p1
-%patch0035 -p1
-%patch0036 -p1
-%patch0037 -p1
-%patch0038 -p1
-%patch0039 -p1
-%patch0040 -p1
-%patch0041 -p1
-%patch0042 -p1
-%patch0043 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
@@ -218,7 +176,6 @@ Volume Manager.
 %patch1006 -p1
 %patch1007 -p1
 %patch1008 -p1
-%patch1009 -p1
 %patch2001 -p1
 %patch3001 -p1
 
@@ -230,7 +187,6 @@ Volume Manager.
 %if !%{with devicemapper} && !%{with lockd}
 extra_opts="
     --enable-blkid_wiping
-    --enable-lvmpolld
     --enable-realtime
     --with-cache=internal
 	--with-writecache=internal
@@ -239,7 +195,6 @@ extra_opts="
     --with-default-run-dir=/run/lvm
     --enable-cmirrord
     --enable-fsadm
-    --disable-silent-rules
     --enable-write_install
     --with-vdo=internal
     --with-vdo-format=%{_bindir}/vdoformat
@@ -248,17 +203,16 @@ extra_opts="
 %if %{with lockd}
 extra_opts="
     --enable-blkid_wiping
-    --enable-lvmpolld
     --enable-realtime
     --with-default-locking-dir=/run/lock/lvm
     --with-default-pid-dir=/run
     --with-default-run-dir=/run/lvm
+    --with-cluster=internal
     --enable-lvmlockd-dlm
     --enable-lvmlockd-dlmcontrol
 %if 0%{_supportsanlock} == 1
     --enable-lvmlockd-sanlock
 %endif
-    --disable-silent-rules
 "
 %endif
 
@@ -268,6 +222,7 @@ export PATH=$PATH:/sbin:%{_sbindir}
 sed -ie "s/%{device_mapper_version}/1.03.01/g" VERSION_DM
 %configure \
     --enable-dmeventd \
+    --enable-lvmpolld \
     --enable-cmdlib \
     --enable-udev_rules \
     --enable-udev_sync \
@@ -286,6 +241,8 @@ sed -ie "s/%{device_mapper_version}/1.03.01/g" VERSION_DM
     --with-thin-check=%{_sbindir}/thin_check \
     --with-thin-dump=%{_sbindir}/thin_dump \
     --with-thin-repair=%{_sbindir}/thin_repair \
+    --with-integrity=internal \
+    --disable-silent-rules \
     $extra_opts
 ### COMMON-CONFIG-END ###
 
@@ -339,11 +296,8 @@ rm %{buildroot}%{_unitdir}/blk-availability.service
 rm %{buildroot}%{_unitdir}/dm-event.service
 rm %{buildroot}%{_unitdir}/dm-event.socket
 rm %{buildroot}%{_unitdir}/lvm2-monitor.service
-rm %{buildroot}%{_mandir}/man8/lvm2-activation-generator.8
-rm %{buildroot}%{_systemdgeneratordir}/lvm2-activation-generator
 rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.service
 rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.socket
-rm %{buildroot}%{_unitdir}/lvm2-pvscan@.service
 %else
 %make_install
 make install_system_dirs DESTDIR=%{buildroot}
@@ -595,8 +549,10 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_sbindir}/fsadm
 %{_sbindir}/lvm
 %{_sbindir}/lvmconfig
+%{_sbindir}/lvmdevices
 %{_sbindir}/lvmdump
 %{_sbindir}/lvmpolld
+%{_sbindir}/lvm_import_vdo
 # Other files
 %{_sbindir}/lvchange
 %{_sbindir}/lvconvert
@@ -632,6 +588,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_sbindir}/vgextend
 %{_sbindir}/vgimport
 %{_sbindir}/vgimportclone
+%{_sbindir}/vgimportdevices
 %{_sbindir}/vgmerge
 %{_sbindir}/vgmknodes
 %{_sbindir}/vgreduce
@@ -646,7 +603,9 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 # compat symlinks in /sbin
 %if !0%{?usrmerged}
 /sbin/lvm
+/sbin/lvm_import_vdo
 /sbin/lvmconfig
+/sbin/lvmdevices
 /sbin/lvmdump
 /sbin/lvmpolld
 /sbin/lvchange
@@ -683,6 +642,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 /sbin/vgextend
 /sbin/vgimport
 /sbin/vgimportclone
+/sbin/vgimportdevices
 /sbin/vgmerge
 /sbin/vgmknodes
 /sbin/vgreduce
@@ -693,6 +653,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 /sbin/vgsplit
 %endif
 %{_mandir}/man5/lvm.conf.5%{?ext_man}
+%{_mandir}/man7/lvmautoactivation.7%{?ext_man}
 %{_mandir}/man7/lvmcache.7%{?ext_man}
 %{_mandir}/man7/lvmraid.7%{?ext_man}
 %{_mandir}/man7/lvmreport.7%{?ext_man}
@@ -706,9 +667,9 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_mandir}/man8/lvdisplay.8%{?ext_man}
 %{_mandir}/man8/lvextend.8%{?ext_man}
 %{_mandir}/man8/lvm.8%{?ext_man}
-%{_mandir}/man8/lvm2-activation-generator.8%{?ext_man}
 %{_mandir}/man8/lvm-config.8%{?ext_man}
 %{_mandir}/man8/lvmconfig.8%{?ext_man}
+%{_mandir}/man8/lvmdevices.8%{?ext_man}
 %{_mandir}/man8/lvm-dumpconfig.8%{?ext_man}
 %{_mandir}/man8/lvmdiskscan.8%{?ext_man}
 %{_mandir}/man8/lvmdump.8%{?ext_man}
@@ -741,6 +702,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_mandir}/man8/vgextend.8%{?ext_man}
 %{_mandir}/man8/vgimport.8%{?ext_man}
 %{_mandir}/man8/vgimportclone.8%{?ext_man}
+%{_mandir}/man8/vgimportdevices.8%{?ext_man}
 %{_mandir}/man8/vgmerge.8%{?ext_man}
 %{_mandir}/man8/vgmknodes.8%{?ext_man}
 %{_mandir}/man8/vgreduce.8%{?ext_man}
@@ -753,7 +715,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_mandir}/man8/lvmpolld.8%{?ext_man}
 %{_mandir}/man8/lvm-lvpoll.8%{?ext_man}
 %{_udevdir}/rules.d/11-dm-lvm.rules
-%{_udevdir}/rules.d/69-dm-lvm-metad.rules
+%{_udevdir}/rules.d/69-dm-lvm.rules
 %dir %{_sysconfdir}/lvm
 %config(noreplace) %{_sysconfdir}/lvm/lvm.conf
 %config(noreplace) %{_sysconfdir}/lvm/lvmlocal.conf
@@ -773,10 +735,8 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/blk-availability.service
 %{_unitdir}/lvm2-monitor.service
-%{_unitdir}/lvm2-pvscan@.service
 %{_unitdir}/lvm2-lvmpolld.socket
 %{_unitdir}/lvm2-lvmpolld.service
-%{_systemdgeneratordir}/lvm2-activation-generator
 %dir %{_libdir}/device-mapper
 %{_libdir}/device-mapper/libdevmapper-event-lvm2*.so
 %{_libdir}/libdevmapper-event-lvm2*.so
