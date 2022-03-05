@@ -278,9 +278,13 @@ install -m 755 fbtest      %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_libexecdir}/%{name}
 install -m 755 numlockbios %{buildroot}%{_libexecdir}/%{name}
 %endif
+%if %{defined _distconfdir}
 rm -rf %{buildroot}%{_sysconfdir}/pam.d
 install -d %{buildroot}%{_distconfdir}/pam.d
 install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/vlock
+%else
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/vlock
+%endif
 install -m 644 %{SOURCE12} %{buildroot}%{_mandir}/man8/
 %if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin
@@ -522,7 +526,11 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %{_mandir}/man8/setvesablank.8%{ext_man}
 %{_mandir}/man8/setvtrgb.8%{ext_man}
 %{_mandir}/man8/vcstime.8%{ext_man}
+%if %{defined _distconfdir}
 %{_distconfdir}/pam.d/vlock
+%else
+%config(noreplace) %{_sysconfdir}/pam.d/vlock
+%endif
 %dir %{_datadir}/systemd
 %{_prefix}/lib/systemd/system/kbdsettings.service
 %{_datadir}/systemd/kbd-model-map.xkb-generated
