@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  3 21:51:40 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.15 (released 2022-03-03) includes a security fix to the
+  regexp/syntax package, as well as bug fixes to the compiler,
+  runtime, the go command, and to the net package
+  Refs boo#1182345 go1.16 release tracking
+  CVE-2022-24921
+  * boo#1196732 go#51112 CVE-2022-24921
+  * go#51117 regexp: stack overflow (process exit) handling deeply nested regexp
+  * go#51331 cmd/go/internal/modfetch: erroneously resolves a v2+incompatible version when a v2/go.mod file exists
+  * go#51198 cmd/compile: "runtime: bad pointer in frame" in riscv64 with complier optimizations
+  * go#51161 net: use EDNS to increase DNS packet size [freeze exception]
+  * go#50733 runtime/metrics: time histogram sub-bucket ranges are off by a factor of two
+
+-------------------------------------------------------------------
 Fri Feb 18 02:10:17 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Add missing .bin binary test data to packaging.
