@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  1 07:47:05 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.4.36:
+  + The primary addition in this release is SIMD dispatch, buffer
+    access functions get built for x86-64 v2 and v3
+    microarchitecture levels as well as ARM neon. The same applies
+    to core operations where we have .so bundles for the variants
+    as well as a generic build.
+  + Operations: The npd operation fixed with multiple threads.
+
+-------------------------------------------------------------------
 Tue Dec 21 19:08:52 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.4.34 (CVE-2021-45463): 

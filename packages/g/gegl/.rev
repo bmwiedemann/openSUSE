@@ -517,4 +517,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>949350</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e8e968b55fcda0128f5413c10caad999</srcmd5>
+    <version>0.4.36</version>
+    <time>1646487793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.36:
+  + The primary addition in this release is SIMD dispatch, buffer
+    access functions get built for x86-64 v2 and v3
+    microarchitecture levels as well as ARM neon. The same applies
+    to core operations where we have .so bundles for the variants
+    as well as a generic build.
+  + Operations: The npd operation fixed with multiple threads.</comment>
+    <requestid>958288</requestid>
+  </revision>
 </revisionlist>
