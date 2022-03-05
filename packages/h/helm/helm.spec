@@ -30,7 +30,7 @@ URL:            https://github.com/helm/helm
 Source0:        https://github.com/helm/helm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) = 1.17
 %{go_provides}
 
 %description

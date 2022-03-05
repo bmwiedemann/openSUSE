@@ -271,4 +271,12 @@ See changelog in:
     <comment>- Update to version 3.8.0 (jsc#SLE-21196):</comment>
     <requestid>958250</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>b0767529148e10f15ef51a77ae6ddeb3</srcmd5>
+    <version>3.8.0</version>
+    <time>1646487829</time>
+    <user>dimstar_suse</user>
+    <comment>- build against go 1.17 similar to how upstream does</comment>
+    <requestid>958917</requestid>
+  </revision>
 </revisionlist>

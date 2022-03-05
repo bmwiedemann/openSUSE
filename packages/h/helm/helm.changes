@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  3 13:23:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build against go 1.17 similar to how upstream does 
+
+-------------------------------------------------------------------
 Wed Feb 2 09:47:00 UTC 2022 - Michal Hlavac <miso@hlavki.eu>
 
 - Update to version 3.8.0 (jsc#SLE-21196):
