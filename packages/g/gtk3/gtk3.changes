@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar  4 09:27:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.32:
+  + GtkCellRendererProgress: Use tabular figures.
+  + GtkFontChooser:
+    - Fix the build with older Pango.
+    - Fix axis name handling.
+  + Theme: Fix border color for tiled windows.
+  + Accessibility: Fix cell accessible leak.
+  + Wayland:
+    - Support new high-contrast setting.
+    - Only update scale when on any outputs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Dec 21 11:36:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.31:

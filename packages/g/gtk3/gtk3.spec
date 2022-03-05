@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,7 @@
 %bcond_without  broadway
 %bcond_with     doc
 Name:           %{pname}
-Version:        3.24.31
+Version:        3.24.32
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
