@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Wed Mar  2 16:19:25 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.1
+  Regularly scheduled feature release.
+
+  This is the last release to support Python 2. Mercurial is Python 3 only 
+  starting with 6.2 
+
+  + New Features
+    * Added a way of specifying required extensions that prevent Mercurial from starting if they are not found. See `hg help config.extensions`.
+    * Merge conflict markers have been made clearer (see backwards compatibility below)
+    * Improve detailed error codes
+    * Added a hint about mangled whitespace on bad patch
+    * Explain which order the commits are presented in `chistedit`
+    * Introduce a `dirstate-tracked-hint` feature to help automation keep 
+      track of changes to tracked files. See 
+      `hg help config.use-dirstate-tracked-hint`.
+    * Shared repositories can be upgraded if the upgrade is specific to 
+      the share. For now, this only applies to `dirstate-v2` and 
+      `dirstate-tracked-hint`.
+    * When using the `narrow` extension, non-conflicting changes to files 
+      outside of the narrow specification can now be merged.
+    * When cloning a repository using stream-clone, the client can now control 
+      the repository format variants to use as long as the stream content does 
+      not restrict that variant.
+  + Default Format Change
+    These changes affect newly created repositories (or new clones) done with 
+    Mercurial 6.1.
+      * The share-safe format variant is now enabled by default. It makes 
+        configuration and requirements more consistent across repository 
+        and their shares. This introduces a behavior change as shares from 
+        a repository using the new format will also use their main 
+        repository's configuration. See `hg help config.format.use-share-safe` 
+        for details about the feature and the available options for 
+        auto-upgrading existing shares. 
+  + New Experimental Features
+    * The pure Rust version of Mercurial called `rhg` added support for most 
+      common invocations of `hg status`. See `hg help rust.rhg` for details on 
+      how to try it out.
+    * `rhg` supports narrow clones and sparse checkouts. 
+
+  + Bug Fixes
+    * **Obsolete revisions are skipped while computing heads. In conjunction 
+      with the evolve extension >= 10.5.0, this leads to massive exchange 
+      (push/pull) speedups in repositories with a lot of heads 
+      and/or obsolete revisions.**
+    * Stream-clones now properly advertise all requirements needed. This can 
+      result in the stream-clone feature being disabled for some clients 
+      using < 6.0.2. A small bugfix patch for these older client is available 
+      if necessary.
+    * The `--no-check` and `--no-merge` flags now properly overwrite the 
+      behavior from `commands.update.check`
+    * `rhg`'s fallback detection is more robust in general in the presence 
+      of more advanced configs
+    * `rhg`'s `blackbox` now supports milliseconds by default and uses 
+      the same ISO 8601 format as the Python implementation
+    * Fix rhg crash on non-generaldelta revlogs
+    * The `lfs`, `largefiles` and `sparse` extensions now correctly take 
+      the appropriate lock before writing requirements
+    * The notify extension does not produce errors anymore if a revision 
+      is not found
+    * Remove unnecessary and overly strict check for divergence in `hg fix`
+    * Windows compatibility improvements
+    * Miscellaneous Python 3 and typing improvements
+    * Many other small or internal fixes 
+
+  + Backwards Compatibility Changes
+    * The use of `share-safe`, means shares (of new repositories) will also 
+      use their main repository's configuration see the `Default Format Change` 
+      section for details.
+    * The fix to stream-clone requirements advertising means some requirements 
+      previously (wronly) omitted are now sent. This can confuse client using 
+      a Mercurial version < 6.0.2. The client would consider these 
+      requirements unsupported even if it actually know them. If you encounter 
+      this, either upgrade your client or apply the necessary patch.
+    * The labels passed to merge tools have changed slightly. Merge tools can 
+      get labels passed to them if you include `$labellocal`, `$labelbase`, 
+      and/or `$labelother` in the `merge-tool.<tool name>.args` configuration. 
+      These labels used to have some space-padding, and truncation to fit 
+      within 72 columns. Both the padding and the truncation has been removed.
+    * Some of the text in labels passed to merge tools has changed. For 
+      example, in conflicts while running `hg histedit`, the labels used to be 
+      "local", "base", and "histedit". They are now "already edited", "parent 
+      of current change", and "current change", respectively.
+    * The computation of namedbranch heads now ignores obsolete revisions. 
+      User of the Changeset Evolution feature may see a change in location and 
+      numbers of heads of each named branches (and topic).
+    * The `remotefilelog` extension now requires an appropriate excludepattern 
+      for subrepositories.
+    * `debugsparse`'s interface has been reworked to be more flexible. Since 
+      it's a debug command it is not actually a breaking change, but it is 
+      worth noting here.
+    * Temporary files for merges are now all inside a `hgmerge` directory 
+      instead of at the root of `TMPDIR`. The corresponding experimental 
+      `mergetempdirprefix` config option has been removed. 
+
+  + Internal API Changes
+    * The dirstate API received minor modifications. 
+  + Miscellaneous
+    * Removed `exchange-v2`. It was a prototype that had never been in 
+      a working state and had been left untouched since 2017. 
+
+-------------------------------------------------------------------
 Sat Dec  4 16:36:26 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.0
