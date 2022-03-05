@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  3 17:58:27 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed crash when starting the expert console (bsc#1196724)
+- 4.4.46
+
+-------------------------------------------------------------------
 Mon Feb 28 14:35:31 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Fixed the start of the VNC server during installation. Done by
