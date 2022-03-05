@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  3 14:42:07 MST 2022 - carnold@suse.com
+
+- bsc#1196545 - GCC 12: xen package fails
+  gcc12-fixes.patch
+
+-------------------------------------------------------------------
 Mon Feb 14 11:40:00 CET 2022 - jbeulich@suse.com
 
 - Upstream bug fixes (bsc#1027519)

@@ -262,6 +262,7 @@ Patch602:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
 # Build patches
 Patch99996:     xen.stubdom.newlib.patch
+Patch99997:     gcc12-fixes.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define pyver %(python3 -c "import sys; print(sys.version[:3])")
