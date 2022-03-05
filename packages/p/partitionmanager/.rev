@@ -65,4 +65,12 @@
     <comment></comment>
     <requestid>642482</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c4bc2415ca4d3aec4906a9ca576228f2</srcmd5>
+    <version>21.12.3</version>
+    <time>1646487844</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 21.12.3</comment>
+    <requestid>959252</requestid>
+  </revision>
 </revisionlist>

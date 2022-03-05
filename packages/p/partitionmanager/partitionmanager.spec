@@ -1,7 +1,7 @@
 #
 # spec file for package partitionmanager
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,41 @@
 #
 
 
-%bcond_without lang
-
+%bcond_without released
 Name:           partitionmanager
-Version:        3.3.1
+Version:        21.12.3
 Release:        0
-Url:            https://www.kde.org/applications/system/kdepartitionmanager/
-Source:         http://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 Summary:        Easily manage disks, partitions and file systems on your KDE Desktop
 License:        GPL-3.0-only
 Group:          Productivity/File utilities
-BuildRequires:  extra-cmake-modules >= 1.0.0
+URL:            https://apps.kde.org/partitionmanager
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+BuildRequires:  extra-cmake-modules >= 5.73
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  kf5-filesystem
-BuildRequires:  libatasmart-devel
-BuildRequires:  libblkid-devel
-BuildRequires:  parted-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config) >= 5.31.0
-BuildRequires:  cmake(KF5ConfigWidgets) >= 5.31.0
-BuildRequires:  cmake(KF5CoreAddons) >= 5.31.0
-BuildRequires:  cmake(KF5Crash) >= 5.31.0
-BuildRequires:  cmake(KF5DocTools) >= 5.31.0
-BuildRequires:  cmake(KF5I18n) >= 5.31.0
-BuildRequires:  cmake(KF5IconThemes) >= 5.31.0
-BuildRequires:  cmake(KF5JobWidgets) >= 5.31.0
-BuildRequires:  cmake(KF5KIO) >= 5.31.0
-BuildRequires:  cmake(KF5Service) >= 5.31.0
-BuildRequires:  cmake(KF5WidgetsAddons) >= 5.31.0
-BuildRequires:  cmake(KF5XmlGui) >= 5.31.0
-BuildRequires:  cmake(KPMcore) >= %(echo %{version} | awk -F. '{print $1"."$2}')
-BuildRequires:  cmake(Qt5Core) >= 5.7.0
-BuildRequires:  cmake(Qt5Gui) >= 5.7.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.7.0
-# A file moved from -lang into the main package
-Conflicts:      %{name}-lang < %{version}-%{release}
-Recommends:     %{name}-lang = %{version}
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+# Update for each minor change
+BuildRequires:  cmake(KPMcore) >= 21.12
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      partitionmanager5 < %{version}
 Provides:       partitionmanager5 = %{version}
 
@@ -67,32 +67,33 @@ systems.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -DKDE_INSTALL_USE_QT_SYS_PATHS=OFF
-  %make_jobs
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %suse_update_desktop_file org.kde.partitionmanager
-  %if %{with lang}
-    %find_lang partitionmanager
-    %kf5_find_htmldocs
-  %endif
+%kf5_makeinstall -C build
+%if %{with released}
+  %find_lang partitionmanager
+  %{kf5_find_htmldocs}
+%endif
+
+%suse_update_desktop_file org.kde.partitionmanager
 
 %files
 %doc README.md
-%license COPYING.GPL3
-%{_kf5_bindir}/partitionmanager
-%{_kf5_appstreamdir}/org.kde.partitionmanager.appdata.xml
+%license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/partitionmanager/
 %{_kf5_applicationsdir}/org.kde.partitionmanager.desktop
-%{_kf5_configkcfgdir}/
+%{_kf5_appstreamdir}/org.kde.partitionmanager.appdata.xml
+%{_kf5_bindir}/partitionmanager
+%{_kf5_configkcfgdir}/partitionmanager.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/partitionmanager.svg
 %{_kf5_kxmlguidir}/partitionmanager/
-%doc %lang(en) %{_kf5_htmldir}/en/partitionmanager/
 
-%if %{with lang}
+%if %{with released}
 %files lang -f partitionmanager.lang
 %endif
 
