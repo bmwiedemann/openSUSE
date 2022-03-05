@@ -657,4 +657,37 @@
     <comment>- Use libplist 2 starting from SLE15SP4 on.</comment>
     <requestid>940927</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>3309d267278145da5a4dc176b5d04d18</srcmd5>
+    <version>0.99.16</version>
+    <time>1646487840</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass --libexecdir=%%{_libexecdir}/upower to meson, keep our
+  previous setup.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Stop removing .la files no longer present.
+- Update to version 0.99.16:
+  + Silence unnecessary udev event warnings
+  + Increase test timeout
+  + Explicitly link with plist
+  + Fix UpClient reference leak
+  + Fix DisplayDevice state on battery hotplug
+  + Fix critical action to work after it was cancelled
+- Changes from version 0.99.15:
+  + Various build fixes
+  + Update bluetooth device alias when it changes
+- Changes from version 0.99.14:
+  + Port build system to meson
+  + New ChargeCycles D-Bus property
+  + New async GLib APIs
+  + lid related functions are now deprecated
+  + Refresh API is now deprecated
+  + Fix leak of inhibitor lock
+  + Recognize USB power supplies
+  + Fix time compression of data points
+  + Fix disk write amplification when battery is low
+- Add meson BuildRequires and macros following upstreams port.
+</comment>
+    <requestid>959380</requestid>
+  </revision>
 </revisionlist>

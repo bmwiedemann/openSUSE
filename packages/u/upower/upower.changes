@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar  4 10:41:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass --libexecdir=%%{_libexecdir}/upower to meson, keep our
+  previous setup.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Stop removing .la files no longer present.
+
+-------------------------------------------------------------------
+Wed Mar  2 09:44:22 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.99.16:
+  + Silence unnecessary udev event warnings
+  + Increase test timeout
+  + Explicitly link with plist
+  + Fix UpClient reference leak
+  + Fix DisplayDevice state on battery hotplug
+  + Fix critical action to work after it was cancelled
+- Changes from version 0.99.15:
+  + Various build fixes
+  + Update bluetooth device alias when it changes
+- Changes from version 0.99.14:
+  + Port build system to meson
+  + New ChargeCycles D-Bus property
+  + New async GLib APIs
+  + lid related functions are now deprecated
+  + Refresh API is now deprecated
+  + Fix leak of inhibitor lock
+  + Recognize USB power supplies
+  + Fix time compression of data points
+  + Fix disk write amplification when battery is low
+- Add meson BuildRequires and macros following upstreams port.
+
+-------------------------------------------------------------------
 Thu Dec 16 15:47:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use libplist 2 starting from SLE15SP4 on.

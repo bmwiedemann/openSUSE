@@ -1,7 +1,7 @@
 #
 # spec file for package upower
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,30 +23,29 @@
 %endif
 
 Name:           upower
-Version:        0.99.13
+Version:        0.99.16
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://upower.freedesktop.org/
-#Source0:        https://gitlab.freedesktop.org/upower/upower/uploads/c438511024b9bc5a904f8775cfc8e4c4/%%{name}-%%{version}.tar.xz
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE upower-hibernate-insteadof-hybridsleep.patch boo#985741 dimstar@opensuse.org -- Set the system per default to hibernate, not hybridsleep
 Patch0:         upower-hibernate-insteadof-hybridsleep.patch
 # PATCH-FEATURE-SLE upower-sle15.patch fcrozat@suse.com -- Disable some hardenings, don't work on SLE15 SP2+
 Patch1:         upower-sle15.patch
-
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.16.1
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gudev-1.0) >= 147
+BuildRequires:  pkgconfig(gudev-1.0) >= 235
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
 %if %libplist2
 BuildRequires:  pkgconfig(libplist-2.0)
@@ -115,18 +114,13 @@ system) are restricted using PolicyKit.
 %endif
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-static \
+%meson \
 	--libexecdir=%{_libexecdir}/upower \
-	--enable-gtk-doc \
-	--with-udevrulesdir=%{_udevrulesdir} \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %find_lang %{name}
@@ -144,8 +138,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %postun
 %service_del_postun upower.service
 
-%post -n libupower-glib3 -p /sbin/ldconfig
-%postun -n libupower-glib3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libupower-glib3
 
 %files
 %license COPYING
