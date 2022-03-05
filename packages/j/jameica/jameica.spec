@@ -1,7 +1,7 @@
 #
 # spec file for package jameica
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%define _build 480
-%define _buildreleases 479
-%define _tag V_2_10_0_BUILD_%{_build}
+%define _build 482
+%define _tag V_2_10_1_BUILD_%{_build}
 Name:           jameica
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        Runtime environment for Java applications like Hibiscus
-License:        GPL-2.0-only AND LGPL-2.0-only AND Apache-2.0 AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
+License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
 URL:            http://www.willuhn.de/products/jameica/
 Source:         https://github.com/willuhn/jameica/archive/%{_tag}.tar.gz
 BuildRequires:  ant
 BuildRequires:  dos2unix
-#BuildRequires:  eclipse-swt
+#BuildRequires:  eclipse-swt >= 4.20
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
@@ -129,7 +128,7 @@ ant -f build/build.xml init compile jar zip src javadoc
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
-cp -r releases/%{version}-%{_buildreleases}/%{name} %{buildroot}%{_prefix}/lib
+cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/rcjameica
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/jameicaserver.sh
 chmod +x %{buildroot}%{_prefix}/lib/%{name}/jameica.sh
@@ -161,9 +160,9 @@ ln -sf %{_prefix}/lib/%{name}/jameicaserver.sh %{buildroot}%{_bindir}/jameicaser
 cp -r src %{buildroot}%{_prefix}/lib/jameica
 
 mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -r releases/%{version}-%{_buildreleases}/javadoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
+cp -r releases/%{version}-%{_build}/javadoc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
 
-%fdupes %{buildroot}%{_prefix}/lib/%{name}
+%fdupes %{buildroot}%{_prefix}
 
 %files
 %doc build/ChangeLog README.md
