@@ -42,6 +42,10 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 Provides:       libglvnd0 = %{version}-%{release}
 Obsoletes:      libglvnd0 <= %{version}-%{release}
+Provides:       Mesa-libGLESv1_CM1
+Obsoletes:      Mesa-libGLESv1_CM1
+Provides:       Mesa-libGLESv2-2
+Obsoletes:      Mesa-libGLESv2-2
 
 %description
 Vendor-neutral dispatch layer for arbitrating OpenGL API calls between

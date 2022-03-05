@@ -302,4 +302,13 @@
     <comment></comment>
     <requestid>957412</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>d07dcc8685548565868355d8676acb27</srcmd5>
+    <version>1.4.0</version>
+    <time>1646487841</time>
+    <user>dimstar_suse</user>
+    <comment>- provide/obsolete Mesa-libGLESv1_CM1 and Mesa-libGLESv2-2 packages
+  (bsc#1196576)</comment>
+    <requestid>959392</requestid>
+  </revision>
 </revisionlist>

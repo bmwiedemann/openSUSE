@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar  3 11:29:34 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- provide/obsolete Mesa-libGLESv1_CM1 and Mesa-libGLESv2-2 packages
+  (bsc#1196576)
+
+-------------------------------------------------------------------
 Thu Feb 24 15:23:24 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update libglvnd-add-bti.patch from latest upstream submission
