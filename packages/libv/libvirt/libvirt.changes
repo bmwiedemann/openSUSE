@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar  3 15:25:50 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Fix segmentation fault in qemuDomainUndefineFlags
+  823a62ec-qemu-fix-undefine-crash.patch
+
+-------------------------------------------------------------------
+Tue Mar  1 16:15:32 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 8.1.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-1-0-2022-03-01
+  - Dropped patches:
+    3be5ba11-libvirt-guests-install.patch,
+    16172741-libvirt-guests-manpage.patch,
+    8eb44616-remove-sysconfig-files.patch,
+    31e937fb-libxl-save-lock-indicator.patch,
+    105dace2-revert-virProcessGetStatInfo.patch,
+    e0241f33-libxl-mark-allocated-graphics-ports.patch,
+    18ec405a-libxl-release-graphics-ports.patch,
+    76deb656-qemu-fix-snapshot-revert.patch,
+    454b927d-libxl-fix-dom-restore.patch
+
+-------------------------------------------------------------------
 Fri Feb 18 18:25:46 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Fix libvirtd crash on domain restore

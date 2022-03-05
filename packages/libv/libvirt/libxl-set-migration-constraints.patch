@@ -16,11 +16,11 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  tools/virsh.pod                  |    8 ++++++++
  6 files changed, 125 insertions(+), 6 deletions(-)
 
-Index: libvirt-8.0.0/docs/manpages/virsh.rst
+Index: libvirt-8.1.0/docs/manpages/virsh.rst
 ===================================================================
---- libvirt-8.0.0.orig/docs/manpages/virsh.rst
-+++ libvirt-8.0.0/docs/manpages/virsh.rst
-@@ -3237,6 +3237,7 @@ migrate
+--- libvirt-8.1.0.orig/docs/manpages/virsh.rst
++++ libvirt-8.1.0/docs/manpages/virsh.rst
+@@ -3246,6 +3246,7 @@ migrate
        [--parallel [--parallel-connections connections]]
        [--bandwidth bandwidth] [--tls-destination hostname]
        [--disks-uri URI] [--copy-storage-synchronous-writes]
@@ -28,7 +28,7 @@ Index: libvirt-8.0.0/docs/manpages/virsh.rst
  
  Migrate domain to another host.  Add *--live* for live migration; <--p2p>
  for peer-2-peer migration; *--direct* for direct migration; or *--tunnelled*
-@@ -3354,6 +3355,12 @@ parallel connections. The number of such
+@@ -3363,6 +3364,12 @@ parallel connections. The number of such
  network link between the source and the target and thus speeding up the
  migration.
  
@@ -41,11 +41,11 @@ Index: libvirt-8.0.0/docs/manpages/virsh.rst
  Running migration can be canceled by interrupting virsh (usually using
  ``Ctrl-C``) or by ``domjobabort`` command sent from another virsh instance.
  
-Index: libvirt-8.0.0/include/libvirt/libvirt-domain.h
+Index: libvirt-8.1.0/include/libvirt/libvirt-domain.h
 ===================================================================
---- libvirt-8.0.0.orig/include/libvirt/libvirt-domain.h
-+++ libvirt-8.0.0/include/libvirt/libvirt-domain.h
-@@ -1089,6 +1089,25 @@ typedef enum {
+--- libvirt-8.1.0.orig/include/libvirt/libvirt-domain.h
++++ libvirt-8.1.0/include/libvirt/libvirt-domain.h
+@@ -1090,6 +1090,25 @@ typedef enum {
   */
  # define VIR_MIGRATE_PARAM_TLS_DESTINATION          "tls.destination"
  
@@ -71,11 +71,11 @@ Index: libvirt-8.0.0/include/libvirt/libvirt-domain.h
  /* Domain migration. */
  virDomainPtr virDomainMigrate (virDomainPtr domain, virConnectPtr dconn,
                                 unsigned long flags, const char *dname,
-Index: libvirt-8.0.0/src/libxl/libxl_driver.c
+Index: libvirt-8.1.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-8.0.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-8.0.0/src/libxl/libxl_driver.c
-@@ -5996,6 +5996,9 @@ libxlDomainMigratePerform3Params(virDoma
+--- libvirt-8.1.0.orig/src/libxl/libxl_driver.c
++++ libvirt-8.1.0/src/libxl/libxl_driver.c
+@@ -6005,6 +6005,9 @@ libxlDomainMigratePerform3Params(virDoma
      const char *dname = NULL;
      const char *uri = NULL;
      int ret = -1;
@@ -85,7 +85,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_driver.c
  
  #ifdef LIBXL_HAVE_NO_SUSPEND_RESUME
      virReportUnsupportedError();
-@@ -6012,6 +6015,15 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6021,6 +6024,15 @@ libxlDomainMigratePerform3Params(virDoma
          virTypedParamsGetString(params, nparams,
                                  VIR_MIGRATE_PARAM_DEST_NAME,
                                  &dname) < 0 ||
@@ -101,7 +101,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_driver.c
          virTypedParamsGetString(params, nparams,
                                  VIR_MIGRATE_PARAM_URI,
                                  &uri) < 0)
-@@ -6026,11 +6038,11 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6035,11 +6047,11 @@ libxlDomainMigratePerform3Params(virDoma
  
      if ((flags & (VIR_MIGRATE_TUNNELLED | VIR_MIGRATE_PEER2PEER))) {
          if (libxlDomainMigrationSrcPerformP2P(driver, vm, dom->conn, dom_xml,
@@ -115,11 +115,11 @@ Index: libvirt-8.0.0/src/libxl/libxl_driver.c
              goto cleanup;
      }
  
-Index: libvirt-8.0.0/src/libxl/libxl_migration.c
+Index: libvirt-8.1.0/src/libxl/libxl_migration.c
 ===================================================================
---- libvirt-8.0.0.orig/src/libxl/libxl_migration.c
-+++ libvirt-8.0.0/src/libxl/libxl_migration.c
-@@ -334,18 +334,38 @@ libxlMigrateDstReceive(virNetSocket *soc
+--- libvirt-8.1.0.orig/src/libxl/libxl_migration.c
++++ libvirt-8.1.0/src/libxl/libxl_migration.c
+@@ -332,18 +332,38 @@ libxlMigrateDstReceive(virNetSocket *soc
  static int
  libxlDoMigrateSrcSend(libxlDriverPrivate *driver,
                        virDomainObj *vm,
@@ -160,7 +160,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
      if (ret != 0) {
          virReportError(VIR_ERR_INTERNAL_ERROR, "%s",
                         _("Failed to send migration data to destination host"));
-@@ -884,7 +904,7 @@ struct libxlTunnelControl {
+@@ -882,7 +902,7 @@ struct libxlTunnelControl {
  static int
  libxlMigrationSrcStartTunnel(libxlDriverPrivate *driver,
                               virDomainObj *vm,
@@ -169,7 +169,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
                               virStreamPtr st,
                               struct libxlTunnelControl **tnl)
  {
-@@ -917,7 +937,7 @@ libxlMigrationSrcStartTunnel(libxlDriver
+@@ -915,7 +935,7 @@ libxlMigrationSrcStartTunnel(libxlDriver
  
      virObjectUnlock(vm);
      /* Send data to pipe */
@@ -178,7 +178,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
      virObjectLock(vm);
  
      /* libxlMigrationSrcStopTunnel will be called in libxlDoMigrateSrcP2P
-@@ -952,7 +972,7 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
+@@ -950,7 +970,7 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
                       const char *dconnuri G_GNUC_UNUSED,
                       const char *dname,
                       const char *uri,
@@ -187,7 +187,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
  {
      virDomainPtr ddomain = NULL;
      virTypedParameterPtr params = NULL;
-@@ -997,11 +1017,11 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
+@@ -995,11 +1015,11 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
      /* We don't require the destination to have P2P support
       * as it looks to be normal migration from the receiver perspective.
       */
@@ -201,7 +201,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
          if (!(st = virStreamNew(dconn, 0)))
              goto confirm;
          ret = dconn->driver->domainMigratePrepareTunnel3Params
-@@ -1015,7 +1035,7 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
+@@ -1013,7 +1033,7 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
      if (ret == -1)
          goto confirm;
  
@@ -210,7 +210,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
          if (uri_out) {
              if (virTypedParamsReplaceString(&params, &nparams,
                                              VIR_MIGRATE_PARAM_URI, uri_out) < 0) {
-@@ -1030,11 +1050,11 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
+@@ -1028,11 +1048,11 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
      }
  
      VIR_DEBUG("Perform3 uri=%s", NULLSTR(uri_out));
@@ -225,7 +225,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
      if (ret < 0) {
          notify_source = false;
          virErrorPreserveLast(&orig_err);
-@@ -1069,7 +1089,7 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
+@@ -1067,7 +1087,7 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
   confirm:
      if (notify_source) {
          VIR_DEBUG("Confirm3 cancelled=%d vm=%p", cancelled, vm);
@@ -234,7 +234,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
  
          if (ret < 0)
              VIR_WARN("Guest %s probably left in 'paused' state on source",
-@@ -1077,7 +1097,7 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
+@@ -1075,7 +1095,7 @@ libxlDoMigrateSrcP2P(libxlDriverPrivate
      }
  
   cleanup:
@@ -243,7 +243,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
          libxlMigrationSrcStopTunnel(tc);
          virObjectUnref(st);
      }
-@@ -1121,7 +1141,7 @@ libxlDomainMigrationSrcPerformP2P(libxlD
+@@ -1119,7 +1139,7 @@ libxlDomainMigrationSrcPerformP2P(libxlD
                                    const char *dconnuri,
                                    const char *uri_str G_GNUC_UNUSED,
                                    const char *dname,
@@ -252,7 +252,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
  {
      int ret = -1;
      int useParams;
-@@ -1155,7 +1175,7 @@ libxlDomainMigrationSrcPerformP2P(libxlD
+@@ -1153,7 +1173,7 @@ libxlDomainMigrationSrcPerformP2P(libxlD
      }
  
      ret = libxlDoMigrateSrcP2P(driver, vm, sconn, xmlin, dconn, dconnuri,
@@ -261,7 +261,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
  
      if (ret < 0) {
          /*
-@@ -1182,7 +1202,7 @@ libxlDomainMigrationSrcPerform(libxlDriv
+@@ -1180,7 +1200,7 @@ libxlDomainMigrationSrcPerform(libxlDriv
                                 const char *dconnuri G_GNUC_UNUSED,
                                 const char *uri_str,
                                 const char *dname G_GNUC_UNUSED,
@@ -270,7 +270,7 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
  {
      libxlDomainObjPrivate *priv = vm->privateData;
      char *hostname = NULL;
-@@ -1218,7 +1238,7 @@ libxlDomainMigrationSrcPerform(libxlDriv
+@@ -1216,7 +1236,7 @@ libxlDomainMigrationSrcPerform(libxlDriv
  
      /* suspend vm and send saved data to dst through socket fd */
      virObjectUnlock(vm);
@@ -279,10 +279,10 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.c
      virObjectLock(vm);
  
      if (ret == 0) {
-Index: libvirt-8.0.0/src/libxl/libxl_migration.h
+Index: libvirt-8.1.0/src/libxl/libxl_migration.h
 ===================================================================
---- libvirt-8.0.0.orig/src/libxl/libxl_migration.h
-+++ libvirt-8.0.0/src/libxl/libxl_migration.h
+--- libvirt-8.1.0.orig/src/libxl/libxl_migration.h
++++ libvirt-8.1.0/src/libxl/libxl_migration.h
 @@ -35,6 +35,9 @@
      VIR_MIGRATE_PARAM_URI,              VIR_TYPED_PARAM_STRING, \
      VIR_MIGRATE_PARAM_DEST_NAME,        VIR_TYPED_PARAM_STRING, \
@@ -325,11 +325,11 @@ Index: libvirt-8.0.0/src/libxl/libxl_migration.h
  
  virDomainPtr
  libxlDomainMigrationDstFinish(virConnectPtr dconn,
-Index: libvirt-8.0.0/tools/virsh-domain.c
+Index: libvirt-8.1.0/tools/virsh-domain.c
 ===================================================================
---- libvirt-8.0.0.orig/tools/virsh-domain.c
-+++ libvirt-8.0.0/tools/virsh-domain.c
-@@ -10841,6 +10841,18 @@ static const vshCmdOptDef opts_migrate[]
+--- libvirt-8.1.0.orig/tools/virsh-domain.c
++++ libvirt-8.1.0/tools/virsh-domain.c
+@@ -10863,6 +10863,18 @@ static const vshCmdOptDef opts_migrate[]
       .completer = virshCompleteEmpty,
       .help = N_("override the destination host name used for TLS verification")
      },
@@ -348,7 +348,7 @@ Index: libvirt-8.0.0/tools/virsh-domain.c
      {.name = NULL}
  };
  
-@@ -10861,6 +10873,7 @@ doMigrate(void *opaque)
+@@ -10883,6 +10895,7 @@ doMigrate(void *opaque)
      unsigned long long ullOpt = 0;
      int rv;
      virConnectPtr dconn = data->dconn;
@@ -356,7 +356,7 @@ Index: libvirt-8.0.0/tools/virsh-domain.c
  #ifndef WIN32
      sigset_t sigmask, oldsigmask;
  
-@@ -10991,6 +11004,22 @@ doMigrate(void *opaque)
+@@ -11013,6 +11026,22 @@ doMigrate(void *opaque)
              goto save_error;
      }
  

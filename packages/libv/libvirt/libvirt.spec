@@ -158,7 +158,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -233,7 +233,6 @@ BuildRequires:  apparmor-rpm-macros
 BuildRequires:  libapparmor-devel
 %endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  dnsmasq >= 2.41
 BuildRequires:  ebtables
 BuildRequires:  iptables
 BuildRequires:  polkit >= 0.112
@@ -301,15 +300,7 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         3be5ba11-libvirt-guests-install.patch
-Patch1:         16172741-libvirt-guests-manpage.patch
-Patch2:         8eb44616-remove-sysconfig-files.patch
-Patch3:         31e937fb-libxl-save-lock-indicator.patch
-Patch4:         105dace2-revert-virProcessGetStatInfo.patch
-Patch5:         e0241f33-libxl-mark-allocated-graphics-ports.patch
-Patch6:         18ec405a-libxl-release-graphics-ports.patch
-Patch7:         76deb656-qemu-fix-snapshot-revert.patch
-Patch8:         454b927d-libxl-fix-dom-restore.patch
+Patch0:         823a62ec-qemu-fix-undefine-crash.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1032,19 +1023,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %install
 %meson_install
-rm -f %{buildroot}/%{_libdir}/*.la
-rm -f %{buildroot}/%{_libdir}/*.a
-rm -f %{buildroot}/%{_libdir}/%{name}/lock-driver/*.la
-rm -f %{buildroot}/%{_libdir}/%{name}/lock-driver/*.a
-rm -f %{buildroot}/%{_libdir}/%{name}/connection-driver/*.la
-rm -f %{buildroot}/%{_libdir}/%{name}/connection-driver/*.a
-rm -f %{buildroot}/%{_libdir}/%{name}/storage-backend/*.la
-rm -f %{buildroot}/%{_libdir}/%{name}/storage-backend/*.a
-rm -f %{buildroot}/%{_libdir}/%{name}/storage-file/*.la
-rm -f %{buildroot}/%{_libdir}/%{name}/storage-file/*.a
-%if %{with_wireshark}
-rm -f %{buildroot}/%{wireshark_plugindir}/libvirt.la
-%endif
 # remove currently unsupported locale(s)
 for dir in %{buildroot}/usr/share/locale/*
 do
@@ -1342,7 +1320,6 @@ fi
 %{_sbindir}/virtlockd
 %dir %{_libdir}/%{name}
 %attr(0755, root, root) %{_libdir}/%{name}/libvirt-guests.sh
-%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
 %{_unitdir}/libvirtd.service
 %{_unitdir}/libvirtd.socket
@@ -1393,6 +1370,7 @@ fi
 %{_datadir}/augeas/lenses/tests/test_libvirt_lockd.aug
 %{_datadir}/bash-completion/completions/virt-admin
 %dir %{_localstatedir}/lib/%{name}/
+%dir %attr(0755, root, root) %{_localstatedir}/lib/%{name}/
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/images/
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/filesystems/
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/boot/
@@ -1525,6 +1503,7 @@ fi
 %{_unitdir}/virtsecretd-admin.socket
 %{_sbindir}/virtsecretd
 %{_sbindir}/rcvirtsecretd
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/secrets/
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_secret.so
 %doc %{_mandir}/man8/virtsecretd.8*
@@ -1542,6 +1521,8 @@ fi
 %{_sbindir}/virtstoraged
 %{_sbindir}/rcvirtstoraged
 %attr(0755, root, root) %{_libdir}/%{name}/libvirt_parthelper
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/autostart/
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_storage.so
 %dir %{_libdir}/%{name}/storage-backend
@@ -1603,6 +1584,7 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/qemu.conf
 %config(noreplace) %{_sysconfdir}/%{name}/qemu-lockd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.qemu
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/autostart/
 %dir %attr(0751, %{qemu_user}, %{qemu_group}) %{_localstatedir}/lib/%{name}/qemu/
 %dir %attr(0750, root, root) %{_localstatedir}/cache/%{name}/qemu/
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/qemu/
@@ -1631,6 +1613,8 @@ fi
 %{_unitdir}/virtlxcd-admin.socket
 %{_sbindir}/virtlxcd
 %{_sbindir}/rcvirtlxcd
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/lxc/
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/lxc/autostart/
 %config(noreplace) %{_sysconfdir}/%{name}/lxc.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.lxc
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/lxc/
@@ -1661,9 +1645,15 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/libxl.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.libxl
 %config(noreplace) %{_sysconfdir}/%{name}/libxl-lockd.conf
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/libxl/
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/libxl/autostart/
 %{_datadir}/augeas/lenses/libvirtd_libxl.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd_libxl.aug
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/
+%dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/channel/
+%dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/channel/target/
+%dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/dump/
+%dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/save/
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/libxl/
 %dir %{_libdir}/%{name}/connection-driver
 %{_libdir}/%{name}/connection-driver/libvirt_driver_libxl.so
@@ -1719,6 +1709,7 @@ fi
 %dir %{_libdir}/%{name}
 
 %files libs -f %{name}.lang
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt.conf
 %config(noreplace) %{_sysconfdir}/%{name}/libvirt-admin.conf
 %{_libdir}/libvirt.so.*
@@ -1728,7 +1719,6 @@ fi
 %dir %{_datadir}/%{name}/
 %dir %{_datadir}/%{name}/schemas/
 %dir %{_datadir}/%{name}/cpu_map/
-%dir %attr(0755, root, root) %{_localstatedir}/lib/%{name}/
 %{_datadir}/systemtap/tapset/libvirt_probes*.stp
 %{_datadir}/systemtap/tapset/libvirt_functions.stp
 %if %{with_qemu}
