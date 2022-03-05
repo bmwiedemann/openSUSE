@@ -82,4 +82,12 @@
 </comment>
     <requestid>672268</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a14c3b447d56593e448fb1f3159c65cc</srcmd5>
+    <version>21.12.3</version>
+    <time>1646487845</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 21.12.3. Depends on SR#959235</comment>
+    <requestid>959253</requestid>
+  </revision>
 </revisionlist>
