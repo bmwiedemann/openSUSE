@@ -153,4 +153,23 @@
     src/debug/dwarf/testdata/line-gcc-win.bin (forwarded request 955952 from jfkw)</comment>
     <requestid>955955</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>03556e181922b7cd23c59a882fb35a29</srcmd5>
+    <version>1.17.8</version>
+    <time>1646487780</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.17.8 (released 2022-03-03) includes a security fix to the
+  regexp/syntax package, as well as bug fixes to the compiler,
+  runtime, the go command, and the crypto/x509, and net packages.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2022-24921
+  * boo#1196732 go#51112 CVE-2022-24921
+  * go#51118 regexp: stack overflow (process exit) handling deeply nested regexp
+  * go#51332 cmd/go/internal/modfetch: erroneously resolves a v2+incompatible version when a v2/go.mod file exists
+  * go#51199 cmd/compile: &quot;runtime: bad pointer in frame&quot; in riscv64 with complier optimizations
+  * go#51162 net: use EDNS to increase DNS packet size [freeze exception]
+  * go#50734 runtime/metrics: time histogram sub-bucket ranges are off by a factor of two
+  * go#51000 crypto/x509: invalid RDNSequence: invalid attribute value: unsupported string type: 18 (forwarded request 959306 from jfkw)</comment>
+    <requestid>959308</requestid>
+  </revision>
 </revisionlist>
