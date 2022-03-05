@@ -30,6 +30,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  git-core
 BuildRequires:  pkgconfig
+ExclusiveArch:  %{ix86} x86_64 aarch64 armv7hl
 
 %description
 DSP specific functions for SDR in general and XTRX in specific.
