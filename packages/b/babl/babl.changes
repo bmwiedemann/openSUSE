@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  1 07:43:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.1.90:
+  * Automatic LUT creation for conversions from &lt;24bpp of colorant
+    componants, SIMD builds for x86_64 micro-architecture levels and
+    ARM neon, pre-defined CIE Lab u8 and CIE Lab u16 formats.
+  * Fix bug of an unlocked non-locked mutex, which started failing
+    on some platforms.
+
+-------------------------------------------------------------------
 Tue Jul 13 14:39:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.1.88:
