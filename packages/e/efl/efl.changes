@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  2 14:27:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop python-devel BuildRequires: not needed.
+
+-------------------------------------------------------------------
 Thu Feb 24 09:40:56 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Themes are going to recommend there icon themes as well
@@ -6,7 +11,7 @@ Thu Feb 24 09:40:56 UTC 2022 - Simon Lees <sflees@suse.de>
 -------------------------------------------------------------------
 Thu Feb 17 08:25:40 UTC 2022 - Simon Lees <sflees@suse.de>
 
-- Upstream theme is now called Flat rather then dark. Dark will 
+- Upstream theme is now called Flat rather then dark. Dark will
   reappear soon in a new package.
 
 -------------------------------------------------------------------

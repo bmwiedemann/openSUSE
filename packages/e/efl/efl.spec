@@ -88,7 +88,6 @@ BuildRequires:  libraw-devel
 BuildRequires:  libspectre-devel
 BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
-BuildRequires:  python >= 2.5
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(dbus-1)
