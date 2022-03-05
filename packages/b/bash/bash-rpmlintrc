@@ -1,3 +1,4 @@
-addFilter(".*hidden-file-or-dir.*/etc/skel/\..*")
+addFilter(".*shared-library-without-dependency-information.*")
+addFilter(".*useless-provides.*")
 addFilter(".*zero-length.*/etc/skel/\..*")
 addFilter(".*call-to-mktemp.*/usr/bin/bash.*")

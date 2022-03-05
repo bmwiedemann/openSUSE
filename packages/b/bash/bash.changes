@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 24 08:17:32 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add signatures files of the upstream patches as well 
+
+-------------------------------------------------------------------
+Wed Feb 23 16:49:10 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Verify upstream release signatures
+
+-------------------------------------------------------------------
 Fri Jan 14 11:57:21 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update bash 5.1 to patch level 16
