@@ -1,7 +1,7 @@
 #
 # spec file for package hibiscus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,23 @@
 #
 
 
-%define _build 365
-%define tag V_2_10_3_BUILD_%{_build}
+%define _build 366
+%define tag V_2_10_4_BUILD_%{_build}
 
 Name:           hibiscus
 Summary:        Java online banking client using the HBCI standard
 License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
-Version:        2.10.3
+Version:        2.10.4
 Release:        0
 URL:            https://www.willuhn.de/products/hibiscus/
-Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{tag}.tar.gz#/%{name}-%{tag}.tar.gz
+Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{tag}.tar.gz
 Source2:        hibiscus-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ant
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  jameica-devel >= 2.10.0
+BuildRequires:  jameica-devel >= 2.10.1
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  xml-commons-apis

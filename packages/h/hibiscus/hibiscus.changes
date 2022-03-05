@@ -1,7 +1,59 @@
 -------------------------------------------------------------------
+Sat Mar  5 10:11:19 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to version 2.10.4
+  * NEW: 0962 CSV-Export von Umsätzen: Name2 mit exportieren, falls vorhanden
+  * NEW: 0961 Neue obantoo-Version mit aktualisierter BLZ-Datei gültig ab 06.12.2021
+  * NEW: 0960 Beim Klick auf „Umsätze abrufen…“ in Umsatzliste die Kontoauswahl überspringen, wenn bereits ein Konto ausgewählt ist
+  * NEW: 0959 Duplizieren von Daueraufträgen per Kontextmenü
+  * NEW: 0958 Strengere Prüfung der IBAN im Zahlungsverkehr - bisher wurden hier unbekannte IBANs toleriert, wenn die Option zur CRC-Prüfung aktiv war
+  * NEW: 0957 Korrektur des Startdatums beim Umsatzabruf, falls es außerhalb einer von der Bank in den BPD festgelegten Zeitspanne liegt
+  * BUG: 0956 Korrektur des Startdatums beim Umsatzabruf, falls es in der Zukunft liegt, erst nachdem ggf. ein Offset hinzugezählt wurde
+  * NEW: 0955 Neue obantoo-Version mit aktualisierter BLZ-Datei gültig ab 06.09.2021
+  * BUG: 0954 BIC nicht mehr basierend auf IBAN vorbefüllen, wenn bereits eine eingetragen wurde
+  * BUG: 0953 Das Vergrößern des Flicker-Codes führte ab einer gewissen Größe zu Darstellungsfehlern
+  * BUG: 0952 Option „Nur aktive Konten“ in „Saldo im Verlauf“ wurde nicht gespeichert
+  * BUG: 0951 Bearbeiten eines Umsatzes: Beim Übernehmen einer Adresse wurde Kto/BLZ statt IBAN/BIC übernommen
+  * NEW: 0950 Neue obantoo-Version mit aktualisierter BLZ-Datei gültig ab 07.06.2021
+  * BUG: 0949 Ungültigen Resize-Wert im PhotoTAN-Dialog ignorieren - siehe https://homebanking-hilfe.de/forum/topic.php?p=159450#real159450
+  * BUG: 0948 Nachtrag zu 0941: Die UnsupportedOperationException kam zwar nicht mehr, dafür stimmte die Berechnung aber bei Sommer-/Winterzeitwechsel nicht mehr. Vor der Verwendung das SQL-Date in Util-Date umwandeln
+  * NEW: 0947 TAN-Dialog: Zeilenumbruch bei Auftrag und Konto
+
+-------------------------------------------------------------------
 Mon May  3 19:13:00 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - update to version 2.10.3
+  * NEW: 0946 Verlustfreies Vergrößern/Verkleinern der PhotoTAN und Zusammenführen von PhotoTAN und QRTAN in einem gemeinsamen Dialog
+  * NEW: 0945 Anzeige der Text-Informationen in TAN-Dialogen erneut überarbeitet
+  * NEW: 0944 In Bezug auf 0919 - Auswahl nicht vorgeben sondern letzte Auswahl speichern
+  * BUG: 0943 NullPointerException durch Logausgabe in Einnahmen/Ausgaben
+  * CHG: 0942 Beim Ausdruck einer Sammellastschrift die Spalten „Gegenkonto“ und „Zweck“ ungefähr gleich gross
+  * BUG: 0941 Bei einem User kam es zu einem Fehler bei Berechnung des Zeitraums in Einnahme/Ausgabe („UnsupportedOperationException at java.sql/java.sql.Date.toInstant“ obwohl da gar kein java.sql.Date verwendet wird)
+  * CHG: 0940 Anzeige des PhotoTAN-Dialogs nochmal überarbeitet
+- from 2.10.2
+  * BUG: 0939 Bei ungültigen Größen-Angaben im PhotoTAN-Dialog das Resizen abbrechen
+  * BUG: 0938 Beim Löschen eines Kontos die fest zugeordneten Kategorien lösen
+- from 2.10.1
+  * NEW: 0937 Update auf HBCI4Java 3.1.55 - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.55
+  * BUG: 0936 Obere und untere Limits für das Vergrößern/Verkleinern der PhotoTAN-Grafik
+  * NEW: 0935 Beim PhotoTAN-Dialog auch die Fenstergröße mit speichern
+  * NEW: 0934 Update auf HBCI4Java 3.1.54 - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.54
+  * BUG: 0933 Wenn man aus der Detailansicht eines Kontos in der Umsatzliste unten „Alle als gelesen markieren“ auswählt, kam es zu einer „Widget is disposed „Exception
+  * BUG: 0932 Bei Umsatzsuche per ID Zeitraum und Konto nicht ignorieren
+  * BUG: 0931 Die Summen bei „Umsätze nach Kategorie“ waren nicht korrekt und wurden nicht sofort aktualisiert
+  * BUG: 0930 IndexOutOfBoundsException in Einnahmen/Ausgaben
+  * NEW: 0929 Mindesthöhe von 300px bei TAN-Dialog definiert. Bei aktiviertem Netbook-Mode ist der sonst zu schmal bei manuellem ChipTAN.
+  * NEW: 0928 IBAN-Rechner: Berechnung der IBAN automatisch starten, sobald Kontonummer und BLZ eingegeben wurden.
+  * NEW: 0927 Neue obantoo-Version mit aktualisierter BLZ-Datei gültig ab 08.03.2021
+  * NEW: 0926 https://github.com/willuhn/hibiscus/pull/70 AccountBalanceProvider in Einnahmen/Ausgaben
+  * NEW: 0925 Beim detaillierten HTML-Export von SEPA-Ueberweisungen Name, IBAN und BIC des Auftraggebers in dedizierten Feldern
+  * NEW: 0924 Beim CSV-Export von Umsätzen beim eigenen Konto IBAN/BIC statt Kontonummer/BLZ anzeigen
+  * NEW: 0923 Update auf HBCI4Java 3.1.51 - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.51 - Degussa sendet in DialogInitRes unaufgefordert HITAB - siehe https://homebanking-hilfe.de/forum/topic.php?t=24405
+  * BUG: 0922 In der Detailansicht eines Kontos wurden im Saldo-Verlauf u.U. alle Konten angezeigt statt nur das aktuelle
+  * NEW: 0921 Markierte Umsatzbuchungen nach Änderungen der Suchkriterien wiederherstellen
+  * NEW: 0920 BIC bei Zahlungen nicht mehr automatisch beim Speichern vervollständigen (nur noch nach Auswahl einer IBAN) - damit ist dann auch IBAN only möglich
+  * NEW: 0919 Option „Auswahl speichern“ in den Dialogen für TAN-Verfahren und TAN-Medium jetzt per Default aktiv
+  * NEW: 0918 Empfänger-Name 2 auch in Umsatzkategorien suchen
 
 -------------------------------------------------------------------
 Mon Apr 26 05:36:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
