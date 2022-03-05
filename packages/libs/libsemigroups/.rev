@@ -95,4 +95,12 @@
     <comment>- Update to release 2.1.3</comment>
     <requestid>940961</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6f43ef6a719e015452586f0a6432a35b</srcmd5>
+    <version>2.1.4</version>
+    <time>1646487873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.1.4</comment>
+    <requestid>959514</requestid>
+  </revision>
 </revisionlist>
