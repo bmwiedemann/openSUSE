@@ -644,7 +644,8 @@ This package contains the Mesa VA-API implementation provided through gallium.
 %package -n libvulkan_intel
 Summary:        Mesa vulkan driver for Intel GPU
 Group:          System/Libraries
-Supplements:    xf86-video-intel
+Supplements:    modalias(pci:v00008086d*sv*sd*bc03sc*i*)
+Requires:       Mesa-vulkan-device-select
 
 %description -n libvulkan_intel
 This package contains the Vulkan parts for Mesa.
@@ -652,8 +653,8 @@ This package contains the Vulkan parts for Mesa.
 %package -n libvulkan_radeon
 Summary:        Mesa vulkan driver for AMD GPU
 Group:          System/Libraries
-Supplements:    xf86-video-amdgpu
-Supplements:    xf86-video-ati
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
+Requires:       Mesa-vulkan-device-select
 
 %description -n libvulkan_radeon
 This package contains the Vulkan parts for Mesa.
@@ -661,6 +662,7 @@ This package contains the Vulkan parts for Mesa.
 %package -n libvulkan_lvp
 Summary:        Mesa vulkan driver for LVP
 Group:          System/Libraries
+Requires:       Mesa-vulkan-device-select
 
 %description -n libvulkan_lvp
 This package contains the Vulkan parts for Mesa.
@@ -684,15 +686,6 @@ This package contains the Vulkan parts for Mesa.
 %package -n Mesa-libVulkan-devel
 Summary:        Mesa's Vulkan development files
 Group:          Development/Libraries/C and C++
-%ifarch %{ix86} x86_64
-Requires:       libvulkan_intel = %{version}
-%endif
-Requires:       libvulkan_lvp = %{version}
-Requires:       libvulkan_radeon = %{version}
-%ifarch %arm} aarch64
-Requires:       libvulkan_broadcom = %{version}
-Requires:       libvulkan_freedreno = %{version}
-%endif
 
 %description -n Mesa-libVulkan-devel
 This package contains the development files for Mesa's Vulkan implementation.
@@ -700,15 +693,6 @@ This package contains the development files for Mesa's Vulkan implementation.
 %package -n Mesa-vulkan-device-select
 Summary:        Vulkan layer to select Vulkan devices provided by Mesa
 Group:          System/Libraries
-%ifarch %{ix86} x86_64
-Requires:       libvulkan_intel = %{version}
-%endif
-Requires:       libvulkan_lvp = %{version}
-Requires:       libvulkan_radeon = %{version}
-%ifarch %arm} aarch64
-Requires:       libvulkan_broadcom = %{version}
-Requires:       libvulkan_freedreno = %{version}
-%endif
 
 %description -n Mesa-vulkan-device-select
 This package contains the VK_MESA_device_select Vulkan layer
@@ -716,15 +700,6 @@ This package contains the VK_MESA_device_select Vulkan layer
 %package -n Mesa-vulkan-overlay
 Summary:        Mesa Vulkan Overlay layer
 Group:          System/Libraries
-%ifarch %{ix86} x86_64
-Requires:       libvulkan_intel = %{version}
-%endif
-Requires:       libvulkan_lvp = %{version}
-Requires:       libvulkan_radeon = %{version}
-%ifarch %arm} aarch64
-Requires:       libvulkan_broadcom = %{version}
-Requires:       libvulkan_freedreno = %{version}
-%endif
 
 %description -n Mesa-vulkan-overlay
 This package contains the VK_MESA_Overlay Vulkan layer
@@ -791,7 +766,7 @@ sed -i -e s/cpp_std=gnu++11/cpp_std=gnu++14/g meson.build
 %build
 # try to avoid OOM on ppc64 (boo#1194739)
 %ifarch ppc64 ppc64le
-%limit_build -m 750
+%limit_build -m 1024
 %endif
 
 egl_platforms=x11,wayland

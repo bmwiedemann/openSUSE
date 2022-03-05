@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar  3 09:14:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- baselibs.conf: readded mistakenly removed packages
+  * Mesa-libVulkan-devel
+  * Mesa-vulkan-device-select
+  * Mesa-vulkan-overlay
+
+-------------------------------------------------------------------
+Wed Mar  2 13:32:42 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- raise memory limit to 1024 in the hope of avoiding OOM on ppc64
+  (boo#1196640)
+
+-------------------------------------------------------------------
+Tue Mar  1 17:20:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- autoselect libvulkan_intel package via hardware supplements on
+  Intel GPUs
+- autoselect libvulkan_radeon package via hardware supplements on
+  AMD GPUs
+- no longer install libvulkan_lvp package (lavapipe=Software 
+  Vulkan driver), libvulkan_broadcom and libvulkan_freedreno packages
+  by default, i.e. no longer have libvulkan_intel/libvulkan_radeon
+  and libvulkan_lvp packages installed at the same time (boo#1180522)
+- libvulkan_intel/libvulkan_radeon/libvulkan_lvp now require
+  Mesa-vulkan-device-select package, not the other way round!
+  (baselibs.conf also adjusted)
+
+-------------------------------------------------------------------
 Thu Feb 24 09:04:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 21.3.7
