@@ -82,7 +82,7 @@ unsorted:
   - Mesa-KHR-devel 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
-  - Mesa-dri-devel: [i586] # devel package of dvd:libgbm1 
+  - Mesa-dri-devel: [i586] # devel package of common_locks:libgbm1 
   - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit: [x86_64] 
   - Mesa-gallium-32bit: [x86_64] 
@@ -252,7 +252,7 @@ unsorted:
   - SHERPA-MC-devel 
   - SUSEConnect: [x86_64] 
   - SVT-AV1: [x86_64] 
-  - SVT-AV1-devel: [x86_64] # devel package of dvd:libSvtAv1Enc0 
+  - SVT-AV1-devel: [x86_64] # devel package of common_locks:libSvtAv1Enc0 
   - SampleICC 
   - SecLists 
   - ServiceReport 
@@ -1786,6 +1786,7 @@ unsorted:
   - cargo-packaging 
   - cargo1.57 
   - cargo1.58 
+  - cargo1.59 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2494,6 +2495,7 @@ unsorted:
   - cross-ppc64le-gcc7: [x86_64] 
   - cross-ppc64le-gcc7-icecream-backend: [x86_64] 
   - cross-ppc64le-linux-glibc-devel 
+  - cross-pru-binutils 
   - cross-riscv64-binutils 
   - cross-riscv64-elf-gcc10 
   - cross-riscv64-elf-gcc10-bootstrap 
@@ -3834,7 +3836,7 @@ unsorted:
   - fontawesome-fonts-web 
   - fontcacheproto-devel 
   - fontconfig-32bit: [x86_64] 
-  - fontconfig-devel: [i586] # devel package of dvd:fontconfig-lang 
+  - fontconfig-devel: [i586] # devel package of common_locks:fontconfig-lang 
   - fontconfig-devel-32bit: [x86_64] 
   - fontconfig-devel-doc 
   - fontconfig-doc 
@@ -3930,7 +3932,7 @@ unsorted:
   - freetype 
   - freetype-devel 
   - freetype-tools 
-  - freetype2-devel: [i586] # devel package of dvd:libfreetype6 
+  - freetype2-devel: [i586] # devel package of common_locks:libfreetype6 
   - freetype2-devel-32bit: [x86_64] 
   - freetype2-profile-tti35 
   - freexl-devel 
@@ -7247,6 +7249,7 @@ unsorted:
   - iprange 
   - iproute2-arpd 
   - iproute2-bash-completion 
+  - ipset: [i586] 
   - ipset-devel 
   - iptables-backend-nft 
   - iptraf-ng 
@@ -8891,7 +8894,7 @@ unsorted:
   - libHepMC3-3 
   - libHepMC3search4 
   - libHepMC4 
-  - libICE-devel: [i586] # devel package of dvd:libICE6 
+  - libICE-devel: [i586] # devel package of common_locks:libICE6 
   - libICE-devel-32bit: [x86_64] 
   - libIDL-2-0 
   - libIDL-2-0-32bit: [x86_64] 
@@ -9347,7 +9350,7 @@ unsorted:
   - libSHERPA-MC0-config 
   - libSILLY-devel 
   - libSILLY1 
-  - libSM-devel: [i586] # devel package of dvd:libSM6 
+  - libSM-devel: [i586] # devel package of common_locks:libSM6 
   - libSM-devel-32bit: [x86_64] 
   - libSPIRV-Tools-suse24-32bit: [x86_64] 
   - libSampleICC-devel 
@@ -9379,11 +9382,11 @@ unsorted:
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
-  - libX11-devel: [i586] # devel package of dvd:libX11-xcb1 
+  - libX11-devel: [i586] # devel package of common_locks:libX11-xcb1 
   - libX11-devel-32bit: [x86_64] 
   - libX11-xcb1-32bit: [x86_64] 
   - libXRes1-32bit: [x86_64] 
-  - libXau-devel: [i586] # devel package of dvd:libXau6 
+  - libXau-devel: [i586] # devel package of common_locks:libXau6 
   - libXau-devel-32bit: [x86_64] 
   - libXaw-devel 
   - libXaw-devel-32bit: [x86_64] 
@@ -9419,9 +9422,9 @@ unsorted:
   - libXevie-devel-32bit: [x86_64] 
   - libXevie1 
   - libXevie1-32bit: [x86_64] 
-  - libXext-devel: [i586] # devel package of dvd:libXext6 
+  - libXext-devel: [i586] # devel package of common_locks:libXext6 
   - libXext-devel-32bit: [x86_64] 
-  - libXfixes-devel: [i586] # devel package of dvd:libXfixes3 
+  - libXfixes-devel: [i586] # devel package of common_locks:libXfixes3 
   - libXfixes-devel-32bit: [x86_64] 
   - libXfont-devel 
   - libXfont-devel-32bit: [x86_64] 
@@ -9450,7 +9453,7 @@ unsorted:
   - libXp-devel-32bit: [x86_64] 
   - libXp6: [i586] 
   - libXp6-32bit: [x86_64] 
-  - libXpm-devel: [i586] # devel package of dvd:libXpm4 
+  - libXpm-devel: [i586] # devel package of common_locks:libXpm4 
   - libXpm-devel-32bit: [x86_64] 
   - libXpm-tools 
   - libXpm4-32bit: [x86_64] 
@@ -9465,19 +9468,19 @@ unsorted:
   - libXprintUtil1-32bit: [x86_64] 
   - libXrandr-devel 
   - libXrandr-devel-32bit: [x86_64] 
-  - libXrender-devel: [i586] # devel package of dvd:libXrender1 
+  - libXrender-devel: [i586] # devel package of common_locks:libXrender1 
   - libXrender-devel-32bit: [x86_64] 
   - libXres-devel 
   - libXres-devel-32bit: [x86_64] 
   - libXss-devel 
   - libXss-devel-32bit: [x86_64] 
-  - libXt-devel: [i586] # devel package of dvd:libXt6 
+  - libXt-devel: [i586] # devel package of common_locks:libXt6 
   - libXt-devel-32bit: [x86_64] 
   - libXt6-32bit: [x86_64] 
   - libXtst-devel 
   - libXtst-devel-32bit: [x86_64] 
   - libXtst6-32bit: [x86_64] 
-  - libXv-devel: [i586] # devel package of dvd:libXv1 
+  - libXv-devel: [i586] # devel package of common_locks:libXv1 
   - libXv-devel-32bit: [x86_64] 
   - libXvMC-devel 
   - libXvMC-devel-32bit: [x86_64] 
@@ -9994,7 +9997,7 @@ unsorted:
   - libbrasero-media3-1 
   - libbrasero-utils3-1 
   - libbrial3 
-  - libbrotli-devel: [i586] # devel package of dvd:libbrotlicommon1 
+  - libbrotli-devel: [i586] # devel package of common_locks:libbrotlicommon1 
   - libbrotlienc1-32bit: [x86_64] 
   - libbs2b-devel 
   - libbs2b0-32bit: [x86_64] 
@@ -10022,7 +10025,7 @@ unsorted:
   - libbuzztrax-ic1 
   - libbuzztrax-ic1-32bit: [x86_64] 
   - libbytesize-devel 
-  - libbz2-devel: [i586] # devel package of dvd:libbz2-1 
+  - libbz2-devel: [i586] # devel package of common_locks:libbz2-1 
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
   - libbzrtp0-32bit: [x86_64] 
@@ -10504,7 +10507,7 @@ unsorted:
   - libdnssec8 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-22: [x86_64] 
-  - libdrm-devel: [i586] # devel package of dvd:libdrm2 
+  - libdrm-devel: [i586] # devel package of common_locks:libdrm2 
   - libdrm-devel-32bit: [x86_64] 
   - libdrm-tools 
   - libdrm2-32bit: [x86_64] 
@@ -10637,7 +10640,7 @@ unsorted:
   - libetrophy0 
   - libev-devel 
   - libev4-32bit: [x86_64] 
-  - libevdev-devel: [i586] # devel package of dvd:libevdev2 
+  - libevdev-devel: [i586] # devel package of common_locks:libevdev2 
   - libevdev2-32bit: [x86_64] 
   - libevemu3 
   - libevent-2_1-7-32bit: [x86_64] 
@@ -10669,7 +10672,7 @@ unsorted:
   - libexiv2-27-32bit: [x86_64] 
   - libexiv2-devel 
   - libexiv2-xmp-static 
-  - libexpat-devel: [i586] # devel package of dvd:libexpat1 
+  - libexpat-devel: [i586] # devel package of common_locks:libexpat1 
   - libexpat-devel-32bit: [x86_64] 
   - libext2fs-devel 
   - libext2fs-devel-32bit: [x86_64] 
@@ -10813,7 +10816,7 @@ unsorted:
   - libfolly-v2022_01_24_00 
   - libfoma0 
   - libfont-specimen0 
-  - libfontenc-devel: [i586] # devel package of dvd:libfontenc1 
+  - libfontenc-devel: [i586] # devel package of common_locks:libfontenc1 
   - libfontenc-devel-32bit: [x86_64] 
   - libfontenc1-32bit: [x86_64] 
   - libfonts-javadoc 
@@ -11630,6 +11633,7 @@ unsorted:
   - libipopt3: [x86_64] 
   - libipq-devel 
   - libipq0 
+  - libipset13: [i586] 
   - libiptc-devel 
   - libiptcdata-devel 
   - libiptcdata-doc 
@@ -11799,7 +11803,8 @@ unsorted:
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
-  - libkpmcore7 
+  - libkpmcore11: [x86_64] 
+  - libkpmcore7: [i586] 
   - libkrun: [x86_64] 
   - libkrunfw: [x86_64] 
   - libksane-devel 
@@ -12102,7 +12107,7 @@ unsorted:
   - libmetrics-devel 
   - libmetrics0 
   - libmfx: [x86_64] 
-  - libmfx-devel: [x86_64] # devel package of dvd:libmfx1 
+  - libmfx-devel: [x86_64] # devel package of common_locks:libmfx1 
   - libmfx-gen: [x86_64] 
   - libmfx-gen-devel: [x86_64] 
   - libmfx-gen1_2: [x86_64] 
@@ -12899,7 +12904,7 @@ unsorted:
   - libpipeline-devel 
   - libpipewire-0_2-1 
   - libpipewire-0_3-0-32bit: [x86_64] 
-  - libpixman-1-0-devel: [i586] # devel package of dvd:libpixman-1-0 
+  - libpixman-1-0-devel: [i586] # devel package of common_locks:libpixman-1-0 
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
@@ -14363,7 +14368,7 @@ unsorted:
   - libusrsctp2 
   - libut1 
   - libutempter0-32bit: [x86_64] 
-  - libuuid-devel: [i586] # devel package of dvd:util-linux-lang 
+  - libuuid-devel: [i586] # devel package of common_locks:util-linux-lang 
   - libuuid-devel-32bit: [x86_64] 
   - libuuid-devel-static 
   - libuv-devel 
@@ -14537,8 +14542,10 @@ unsorted:
   - libvtk1-openmpi3 
   - libvtk1-openmpi4 
   - libvulkan1-32bit: [x86_64] 
+  - libvulkan_intel 
   - libvulkan_intel-32bit: [x86_64] 
   - libvulkan_lvp 
+  - libvulkan_radeon 
   - libvulkan_radeon-32bit: [x86_64] 
   - libwacom-devel 
   - libwacom-tools 
@@ -14763,7 +14770,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-shape0 
+  - libxcb-devel: [i586] # devel package of common_locks:libxcb-shape0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -14831,7 +14838,7 @@ unsorted:
   - libxkbcommon-x11-devel 
   - libxkbcommon-x11-devel-32bit: [x86_64] 
   - libxkbcommon0-32bit: [x86_64] 
-  - libxkbfile-devel: [i586] # devel package of dvd:libxkbfile1 
+  - libxkbfile-devel: [i586] # devel package of common_locks:libxkbfile1 
   - libxkbfile-devel-32bit: [x86_64] 
   - libxkbfile1-32bit: [x86_64] 
   - libxkbregistry-devel 
@@ -16621,7 +16628,7 @@ unsorted:
   - mtail 
   - mtd-utils 
   - mtdev 
-  - mtdev-devel: [i586] # devel package of dvd:libmtdev1 
+  - mtdev-devel: [i586] # devel package of common_locks:libmtdev1 
   - mtools-doc 
   - mtp-tools 
   - mtpaint 
@@ -18011,6 +18018,11 @@ unsorted:
   - ongres-scram-client 
   - ongres-scram-javadoc 
   - ongres-scram-parent 
+  - ongres-stringprep 
+  - ongres-stringprep-codegenerator 
+  - ongres-stringprep-javadoc 
+  - ongres-stringprep-parent 
+  - ongres-stringprep-saslprep 
   - oniguruma-devel 
   - onioncat 
   - onnx-backend-test 
@@ -32050,6 +32062,7 @@ unsorted:
   - rust-srpm-macros 
   - rust1.57 
   - rust1.58 
+  - rust1.59 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -33037,7 +33050,7 @@ unsorted:
   - systemd-coredump 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
-  - systemd-devel: [i586] # devel package of dvd:systemd-lang 
+  - systemd-devel: [i586] # devel package of common_locks:systemd-lang 
   - systemd-doc 
   - systemd-experimental 
   - systemd-inputmethod-generator 
@@ -43243,7 +43256,7 @@ unsorted:
   - zita-convolver-devel 
   - zita-resampler-devel 
   - zita-resampler-tools 
-  - zlib-devel: [i586] # devel package of dvd:libminizip1 
+  - zlib-devel: [i586] # devel package of common_locks:libminizip1 
   - zlib-devel-32bit: [x86_64] 
   - zlib-devel-static 
   - zlib-devel-static-32bit: [x86_64] 
