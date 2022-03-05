@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 03 18:54:35 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc5:
+  * ioctl: Set lsp to action in nvme_get_log_persistent_event (bsc#1196121)
+  * tree: Ignore traddr case in nvme_lookup_ctrl() (bsc#1194025)
+  * fabrics: Do not swap bytes for system uuid (bsc#1196565)
+  * documentation updates
+
+-------------------------------------------------------------------
 Tue Feb 22 17:40:44 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.0-rc4:
