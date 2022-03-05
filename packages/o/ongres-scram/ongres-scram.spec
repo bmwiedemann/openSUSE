@@ -17,7 +17,7 @@
 
 
 %global		upstream_name    scram
-%global		upstream_version 1.0.0-beta.2
+%global		upstream_version 2.1
 Name:           ongres-%{upstream_name}
 Version:        %(echo %{upstream_version} | sed 's/-/~/g')
 Release:        0
@@ -27,6 +27,9 @@ URL:            https://github.com/ongres/%{upstream_name}
 Source0:        https://github.com/ongres/%{upstream_name}/archive/%{upstream_version}/%{upstream_name}-%{upstream_version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(com.google.code.findbugs:annotations)
+BuildRequires:  mvn(com.google.code.findbugs:jsr305)
+BuildRequires:  mvn(com.ongres.stringprep:saslprep)
 BuildArch:      noarch
 
 %description
