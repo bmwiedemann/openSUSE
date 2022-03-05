@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,9 +38,9 @@ BuildRequires:  meson >= 0.48
 %if %{with vala}
 BuildRequires:  vala
 %endif
+BuildRequires:  itstool
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  itstool
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -48,8 +48,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(yaml-0.1)
 BuildRequires:  pkgconfig(xmlb) >= 0.3.6
+BuildRequires:  pkgconfig(yaml-0.1)
 Recommends:     curl
 
 %description
@@ -141,9 +141,6 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 %meson_test
 
 %find_lang appstream %{name}.lang
-
-%post
-appstreamcli refresh --force || true
 
 %post -n libappstream%{libappstream_sover} -p /sbin/ldconfig
 %postun -n libappstream%{libappstream_sover} -p /sbin/ldconfig

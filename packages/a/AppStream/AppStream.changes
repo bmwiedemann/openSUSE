@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  4 09:38:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't refresh the system cache in %post. The user metadata cache
+  works much better, rely on that instead.
+
+-------------------------------------------------------------------
 Wed Dec 22 11:58:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 0.15.1

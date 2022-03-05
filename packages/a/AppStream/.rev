@@ -318,4 +318,13 @@ Features:
     <comment></comment>
     <requestid>943291</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>96b61a4ddfd7c51136de81cd05ae9fcf</srcmd5>
+    <version>0.15.1</version>
+    <time>1646487842</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't refresh the system cache in %post. The user metadata cache
+  works much better, rely on that instead.</comment>
+    <requestid>959403</requestid>
+  </revision>
 </revisionlist>
