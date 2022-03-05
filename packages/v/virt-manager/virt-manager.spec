@@ -21,30 +21,17 @@
 %global default_hvs                "qemu,xen,lxc"
 
 Name:           virt-manager
-Version:        3.2.0
+Version:        4.0.0
 Release:        0
 Summary:        Virtual Machine Manager
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://virt-manager.org/
-Source0:        %{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.gz
 Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
-Patch1:         e7222b50-addstorage-Dont-pass-None-to-widget.set_active.patch
-Patch2:         4d0e3232-virtinst-Fix-TOCTOU-in-domain-enumeration.patch
-Patch3:         d3c627f1-volumeupload-Use-1MiB-read-size.patch
-Patch4:         cf93e2db-console-fix-error-with-old-pygobject.patch
-Patch5:         143c6bef-virtinst-fix-error-message-format-string.patch
-Patch6:         fe8722e7-createnet-Remove-some-unnecessary-max_length-annotations.patch
-Patch7:         d9b5090e-Fix-forgetting-password-from-keyring.patch
-Patch8:         965480e8-virt-install-add-mediated-device.patch
-Patch9:         9363e1e6-virt-xml-add-support-for-mediated-devices.patch
-Patch10:        f87e96d3-hostdev-use-method-get_mdev_uuid.patch
-Patch11:        9d4002ee-tests-verify-MDEV-support.patch
-Patch12:        0e15cd51-virt-manager-enable-MDEV-support.patch
-Patch13:        8bb64ad5-console-Dont-block-console-reconnect-for-non-error.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -57,7 +44,6 @@ Patch76:        virtinst-set-qemu-emulator.patch
 Patch103:       virtman-load-stored-uris.patch
 Patch104:       virtman-add-tooltip-to-firmware.patch
 Patch105:       virtman-modify-gui-defaults.patch
-Patch106:       virtman-add-firmware-preferences.patch
 Patch120:       virtinst-default-xen-to-qcow2-format.patch
 Patch121:       virtinst-detect-oes-distros.patch
 Patch122:       virtinst-vol-default-nocow.patch
@@ -67,7 +53,6 @@ Patch125:       virtinst-add-caasp-support.patch
 Patch126:       virtinst-add-sle15-detection-support.patch
 Patch127:       virtinst-add-pvh-support.patch
 Patch128:       virtinst-media-detection.patch
-Patch129:       virtinst-graphics-add-check-for-qemu-modules-in-spice-graphic.patch
 # Bug Fixes
 Patch151:       virtman-increase-setKeepAlive-count.patch
 Patch152:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
@@ -78,8 +63,7 @@ Patch156:       virtman-dont-specify-gtksource-version.patch
 Patch157:       virtman-fix-restore-vm-menu-selection.patch
 Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch159:       virtman-register-delete-event-for-details-dialog.patch
-Patch160:       virtman-show-no-firmware-for-xenpv.patch
-Patch161:       virtman-legacy-bios-support.patch
+Patch160:       virtman-revert-use-of-AyatanaAppIndicator3.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch
@@ -112,6 +96,7 @@ Recommends:     python3-SpiceClientGtk
 Requires:       virt-install
 Requires:       virt-manager-common = %{verrel}
 Requires:       typelib(GtkSource)
+Recommends:     xorriso
 
 %if %{with_guestfs}
 Requires:       python3-libguestfs
@@ -120,6 +105,7 @@ Requires:       python3-libguestfs
 BuildRequires:  gettext
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
+BuildRequires:  python3-setuptools
 
 %description
 Virtual Machine Manager provides a graphical tool for administering virtual
@@ -127,7 +113,6 @@ machines for KVM, Xen, and QEmu. Start, stop, add or remove virtual devices,
 connect to a graphical or serial console, and see resource usage statistics
 for existing VMs on local or remote machines. Uses libvirt as the backend
 management API.
-
 
 %package common
 Summary:        Common files used by the different Virtual Machine Manager interfaces
@@ -151,7 +136,6 @@ BuildRequires:  gobject-introspection
 Common files used by the different virt-manager interfaces, as well as
 virt-install related tools.
 
-
 %package -n virt-install
 Summary:        Utilities for installing virtual machines
 Group:          System/Monitoring
@@ -169,23 +153,9 @@ Package includes several command line utilities, including virt-install
 (build and install new VMs) and virt-clone (clone an existing virtual
 machine).
 
-
 %prep
 %setup -q
 # Upstream Patches
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1
@@ -198,7 +168,6 @@ machine).
 %patch103 -p1
 %patch104 -p1
 %patch105 -p1
-%patch106 -p1
 %patch120 -p1
 %patch121 -p1
 %patch122 -p1
@@ -208,7 +177,6 @@ machine).
 %patch126 -p1
 %patch127 -p1
 %patch128 -p1
-%patch129 -p1
 # Bug Fixes
 %patch151 -p1
 %patch152 -p1
@@ -220,7 +188,6 @@ machine).
 %patch158 -p1
 %patch159 -p1
 %patch160 -p1
-%patch161 -p1
 %patch170 -p1
 %patch171 -p1
 %patch172 -p1

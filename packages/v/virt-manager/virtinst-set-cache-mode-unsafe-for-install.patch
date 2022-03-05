@@ -1,29 +1,37 @@
 Set cache mode for target installation disk to unsafe for better
 performance.
-Index: virt-manager-3.2.0/virtinst/install/installer.py
+Index: virt-manager-3.3.0/virtinst/install/installer.py
 ===================================================================
---- virt-manager-3.2.0.orig/virtinst/install/installer.py
-+++ virt-manager-3.2.0/virtinst/install/installer.py
-@@ -580,11 +580,22 @@ class Installer(object):
-                 guest.memory) = data
+--- virt-manager-3.3.0.orig/virtinst/install/installer.py
++++ virt-manager-3.3.0/virtinst/install/installer.py
+@@ -567,16 +567,29 @@ class Installer(object):
  
-     def _get_install_xml(self, guest, meter):
+     def _build_postboot_xml(self, final_xml, meter):
+         initial_guest = Guest(self.conn, parsexml=final_xml)
 +        # At install time set the target disk to 'unsafe' for
 +        # better performance if the target is not a block device
 +        saved_cache = "None"
-+        if guest.devices.disk:
-+            target_disk = guest.devices.disk[0]
++        if initial_guest.devices.disk:
++            target_disk = initial_guest.devices.disk[0]
 +            saved_cache = target_disk.driver_cache
 +            if target_disk.type != DeviceDisk.TYPE_BLOCK and target_disk.driver_io != "native":
 +                target_disk.driver_cache = DeviceDisk.CACHE_MODE_UNSAFE
 +
-         data = self._prepare_get_install_xml(guest)
-         try:
-             self._alter_bootconfig(guest)
-             self._alter_install_resources(guest, meter)
-             ret = guest.get_xml()
-+            if saved_cache != "None":
-+                target_disk.driver_cache = saved_cache
-             return ret
-         finally:
-             self._remove_install_cdrom_media(guest)
+         self._alter_bootconfig(initial_guest)
+         self._alter_install_resources(initial_guest, meter)
+         if self.has_cloudinit():
+             initial_guest.set_smbios_serial_cloudinit()
+ 
++        install_xml = initial_guest.get_xml()
++        if saved_cache != "None":
++            target_disk.driver_cache = saved_cache
++
+         final_guest = Guest(self.conn, parsexml=final_xml)
+         self._remove_install_cdrom_media(final_guest)
+         self._remove_unattended_install_cdrom_device(final_guest)
+ 
+-        return initial_guest.get_xml(), final_guest.get_xml()
++        return install_xml, final_guest.get_xml()
+ 
+     def _build_xml(self, guest, meter):
+         initial_xml = None

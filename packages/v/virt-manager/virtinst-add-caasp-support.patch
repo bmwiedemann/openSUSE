@@ -1,10 +1,10 @@
 References: bsc#1010060
 
-Index: virt-manager-3.0.0/virtinst/install/urldetect.py
+Index: virt-manager-3.3.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-3.0.0.orig/virtinst/install/urldetect.py
-+++ virt-manager-3.0.0/virtinst/install/urldetect.py
-@@ -277,6 +277,12 @@ class _SUSEContent(object):
+--- virt-manager-3.3.0.orig/virtinst/install/urldetect.py
++++ virt-manager-3.3.0/virtinst/install/urldetect.py
+@@ -278,6 +278,12 @@ class _SUSEContent(object):
                          self.product_name.strip().rsplit(' ')[5][2])
              distro_version = sle_version
  
@@ -17,7 +17,7 @@ Index: virt-manager-3.0.0/virtinst/install/urldetect.py
          return distro_version
  
  
-@@ -563,6 +569,9 @@ class _SuseDistro(_RHELDistro):
+@@ -564,6 +570,9 @@ class _SuseDistro(_RHELDistro):
  
          version = distro_version.split('.', 1)[0].strip()
  
@@ -27,7 +27,7 @@ Index: virt-manager-3.0.0/virtinst/install/urldetect.py
          if str(self._variant_prefix).startswith(("sles", "sled", "oes")):
              sp_version = ""
              if len(distro_version.split('.', 1)) == 2:
-@@ -632,6 +641,14 @@ class _OpensuseDistro(_SuseDistro):
+@@ -633,6 +642,14 @@ class _OpensuseDistro(_SuseDistro):
      famregex = ".*openSUSE.*"
  
  
@@ -42,7 +42,7 @@ Index: virt-manager-3.0.0/virtinst/install/urldetect.py
  class _OESDistro(_SuseDistro):
      PRETTY_NAME = "OES"
      matching_distros = ["oes"]
-@@ -869,6 +886,7 @@ def _build_distro_list(osobj):
+@@ -870,6 +887,7 @@ def _build_distro_list(osobj):
          _SLESDistro,
          _SLEDDistro,
          _OpensuseDistro,

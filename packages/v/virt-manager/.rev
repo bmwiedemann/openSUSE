@@ -1814,4 +1814,12 @@
     <comment>Fix for bsc#1194323 detecting win2k22 ISO media.</comment>
     <requestid>948012</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>4bc4cd95c77ffef9ba408c4f85b581a1</srcmd5>
+    <version>4.0.0</version>
+    <time>1646487832</time>
+    <user>dimstar_suse</user>
+    <comment>Update to virt-manager 4.0.0 with various fixes and features. Corrected Jira number.</comment>
+    <requestid>959256</requestid>
+  </revision>
 </revisionlist>

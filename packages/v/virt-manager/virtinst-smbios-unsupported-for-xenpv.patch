@@ -1,15 +1,15 @@
 References: bsc#1180069
 
-Index: virt-manager-3.2.0/virtinst/guest.py
+Index: virt-manager-4.0.0/virtinst/guest.py
 ===================================================================
---- virt-manager-3.2.0.orig/virtinst/guest.py
-+++ virt-manager-3.2.0/virtinst/guest.py
-@@ -704,6 +704,8 @@ class Guest(XMLBuilder):
+--- virt-manager-4.0.0.orig/virtinst/guest.py
++++ virt-manager-4.0.0/virtinst/guest.py
+@@ -687,6 +687,8 @@ class Guest(XMLBuilder):
              self.type != "kvm"):
              log.warning(  # pragma: no cover
                      "KVM acceleration not available, using '%s'", self.type)
 +        if self.os.is_xenpv() and self.os.smbios_mode is not None:
 +            raise RuntimeError(_("The --sysinfo flag (smbios) is not supported for Xen PV guests."))
  
-     def sync_vcpus_topology(self):
+     def refresh_machine_type(self):
          """
