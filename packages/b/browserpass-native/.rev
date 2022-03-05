@@ -41,4 +41,14 @@
 - Exclude ppc64, build fails due to pie not being supported (forwarded request 952753 from tux93)</comment>
     <requestid>953914</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>61d1cdd44b4d0e0a25445ba77454a3bf</srcmd5>
+    <version>3.0.9</version>
+    <time>1646494064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.9
+  * No functional changes
+  * Compile without cgo to remove libc dependency (forwarded request 958311 from tux93)</comment>
+    <requestid>959613</requestid>
+  </revision>
 </revisionlist>

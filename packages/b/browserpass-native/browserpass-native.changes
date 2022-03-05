@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  1 15:37:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.0.9
+  * No functional changes
+  * Compile without cgo to remove libc dependency
+
+-------------------------------------------------------------------
 Tue Feb  8 16:04:50 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 3.0.8

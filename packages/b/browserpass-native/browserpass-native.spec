@@ -17,7 +17,7 @@
 
 
 Name:           browserpass-native
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        Native application for the browserpass browser extension
 License:        ISC
