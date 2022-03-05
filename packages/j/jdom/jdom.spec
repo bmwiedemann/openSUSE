@@ -1,7 +1,7 @@
 #
 # spec file for package jdom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -250,7 +250,7 @@ ln -sf %{_javadir}/xom-%{xom_version}.jar %{buildroot}/%{_javadir}/xom.jar
 mkdir -p %{buildroot}/%{_mavenpomdir}
 cp *.pom %{buildroot}/%{_mavenpomdir}/
 %add_maven_depmap jdom-%{jdom_version}.pom jdom-%{jdom_version}.jar -a jdom:jdom
-%add_maven_depmap xom-%{xom_version}.pom xom-%{xom_version}.jar -f xom
+%add_maven_depmap xom-%{xom_version}.pom xom-%{xom_version}.jar -f xom -a com.io7m.xom:xom
 %add_maven_depmap saxpath-%{saxpath_version}.pom saxpath-%{saxpath_version}.jar -f saxpath
 %add_maven_depmap jaxen-%{jaxen_version}.pom jaxen-%{jaxen_version}.jar -f jaxen
 

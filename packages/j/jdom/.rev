@@ -200,4 +200,12 @@
     <comment>Update jaxen to 1.1.6</comment>
     <requestid>893310</requestid>
   </revision>
+  <revision rev="28" vrev="36">
+    <srcmd5>30ac4d62b613fe3bcff1134a0798e3d5</srcmd5>
+    <version>unknown</version>
+    <time>1646487804</time>
+    <user>dimstar_suse</user>
+    <comment>alias for an alternate groupId com.io7m.xom</comment>
+    <requestid>958691</requestid>
+  </revision>
 </revisionlist>

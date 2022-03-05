@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  2 06:26:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Alias the xom artifact to the new com.io7m.xom groupId
+
+-------------------------------------------------------------------
 Fri May 14 15:39:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update jaxen to version 1.1.6
