@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 26 09:49:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.3 development release
+  - More large scale cleanups to support 'long' type.
+  - Proper support for API sets.
+  - Progress on the PE conversion of USER32 and WineALSA.
+  - A number of HID joystick fixes.
+  - Various bug fixes.
+- update staging to 7.3 release
+
+-------------------------------------------------------------------
 Sat Feb 12 08:06:08 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.2 development release

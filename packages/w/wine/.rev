@@ -4339,4 +4339,18 @@
 - update staging to 7.2 release</comment>
     <requestid>954062</requestid>
   </revision>
+  <revision rev="370" vrev="1">
+    <srcmd5>cd97d4b338ae4d7323fc83fe8b7c75a0</srcmd5>
+    <version>7.3</version>
+    <time>1646487879</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.3 development release
+  - More large scale cleanups to support 'long' type.
+  - Proper support for API sets.
+  - Progress on the PE conversion of USER32 and WineALSA.
+  - A number of HID joystick fixes.
+  - Various bug fixes.
+- update staging to 7.3 release</comment>
+    <requestid>959602</requestid>
+  </revision>
 </revisionlist>
