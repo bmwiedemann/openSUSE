@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 03 21:12:06 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 0.23.0:
+  * Release 0.23.0
+  * Release 0.23.0-rc.0
+  * amtool: Detect version drift and warn users (#2672)
+  * Add ability to skip TLS verification for amtool (#2663)
+  * Fix empty isEqual in amtool. (#2668)
+  * Fix main tests (#2670)
+  * cli: add new template render command (#2538)
+  * OpsGenie: refer to alert instead of incident (#2609)
+  * Docs: target_match and source_match are DEPRECATED (#2665)
+  * Fix test not waiting for cluster member to be ready
+- Add go_modules to _service.
+
+-------------------------------------------------------------------
 Mon Sep 20 14:08:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
