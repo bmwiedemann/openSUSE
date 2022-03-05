@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
 
 %define         libname   lib%{name}
 %define         libsoname %{libname}1
@@ -23,7 +27,6 @@ Version:        6.3
 Release:        0
 Summary:        Upload tool for AVR microcontrollers
 License:        GPL-2.0+
-Group:          Development/Tools/Other
 Url:            http://savannah.nongnu.org/projects/avrdude
 Source0:        http://download.savannah.gnu.org/releases/avrdude/%{name}-%{version}.tar.gz
 Source1:        http://download.savannah.gnu.org/releases/avrdude/%{name}-%{version}.tar.gz.sig
@@ -57,14 +60,12 @@ through a USB or parallel port of the computer.
 
 %package -n %{libsoname}
 Summary:        Shared library of %{name}
-Group:          System/Libraries
 
 %description -n %{libsoname}
 This package contains the shared lib%{name} library.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description devel
@@ -89,7 +90,7 @@ make %{?_smp_mflags} -C doc info
 %install
 %make_install DOC_INST_DIR=%{buildroot}%{_docdir}/%{name}
 make -C doc install-info DESTDIR=%{buildroot}
-install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/modprobe.d/50-avrdude_parport.conf
+install -D -m 644 %{SOURCE3} %{buildroot}%{_modprobedir}/50-avrdude_parport.conf
 rm %{buildroot}%{_libdir}/lib%{name}.la
 
 %if 0%{?suse_version} >= 1230
@@ -137,8 +138,8 @@ fi
 %{_mandir}/*/*
 %{_infodir}/%{name}.info%{ext_info}
 %config %{_sysconfdir}/avrdude.conf
-%dir %{_sysconfdir}/modprobe.d
-%config %{_sysconfdir}/modprobe.d/50-avrdude_parport.conf
+%dir %{_modprobedir}
+%{_modprobedir}/50-avrdude_parport.conf
 %{udevdir}
 %{_bindir}/*
 
