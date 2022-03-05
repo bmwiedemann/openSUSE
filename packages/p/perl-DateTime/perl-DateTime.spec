@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime
 Name:           perl-DateTime
-Version:        1.55
+Version:        1.56
 Release:        0
-Summary:        Date and time object for Perl
 License:        Artistic-2.0
+Summary:        Date and time object for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -39,6 +39,7 @@ BuildRequires:  perl(Specio::Exporter)
 BuildRequires:  perl(Specio::Library::Builtins)
 BuildRequires:  perl(Specio::Library::Numeric)
 BuildRequires:  perl(Specio::Library::String)
+BuildRequires:  perl(Specio::Subs)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Warnings) >= 0.005
@@ -55,6 +56,7 @@ Requires:       perl(Specio::Exporter)
 Requires:       perl(Specio::Library::Builtins)
 Requires:       perl(Specio::Library::Numeric)
 Requires:       perl(Specio::Library::String)
+Requires:       perl(Specio::Subs)
 Requires:       perl(Try::Tiny)
 Requires:       perl(namespace::autoclean) >= 0.19
 Requires:       perl(parent)

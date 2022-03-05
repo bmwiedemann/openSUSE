@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar  3 03:06:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.56
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.56   2022-03-02
+
+  - The DateTime->from_epoch constructor now accepts a single, non-hashref
+    argument, and validates it as an epoch value. Requested by Neil Bowers. GH
+    #119.
+
+-------------------------------------------------------------------
 Fri Dec 24 03:06:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.55
