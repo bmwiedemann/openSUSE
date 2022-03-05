@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 07 16:48:24 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220307.7fa0e0de:
+  * leapmicro: add leapmicro to pipeline
+  * installcheck: Report all delete requests
+
+-------------------------------------------------------------------
+Mon Mar 07 13:30:18 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220307.a7a1aa83:
+  * Add some basic instructions on how our tests are written
+  * docs: Remove testing.asciidoc - it's severely outdated
+
+-------------------------------------------------------------------
+Mon Mar 07 10:22:50 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220307.93f8244a:
+  * Rename the pkglistgen config for ring1 as well
+
+-------------------------------------------------------------------
 Sun Mar 06 10:10:56 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220306.b5436de6:
