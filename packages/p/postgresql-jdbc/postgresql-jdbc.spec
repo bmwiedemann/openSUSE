@@ -18,7 +18,7 @@
 
 
 Name:           postgresql-jdbc
-Version:        42.2.16
+Version:        42.2.25
 Release:        0
 Summary:        JDBC driver for PostgreSQL
 License:        BSD-2-Clause
@@ -26,7 +26,7 @@ URL:            https://jdbc.postgresql.org/
 Source0:        https://repo1.maven.org/maven2/org/postgresql/postgresql/%{version}/postgresql-%{version}-jdbc-src.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.ongres.scram:client)
+BuildRequires:  mvn(com.ongres.scram:client) >= 2.0
 BuildArch:      noarch
 
 %description

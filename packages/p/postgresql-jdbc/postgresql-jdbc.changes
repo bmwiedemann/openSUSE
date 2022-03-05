@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  3 16:01:03 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Upgrade to upstream version 42.2.25
+  * uses SASLprep normalization for SCRAM authentication fixing
+    some issues with spaces in passwords. (bsc#1196693)
+    (jsc#SLE-23993, jsc#SLE-23994)
+  * https://jdbc.postgresql.org/documentation/changelog.html
+
+-------------------------------------------------------------------
 Fri Aug 28 15:14:36 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 42.2.16
