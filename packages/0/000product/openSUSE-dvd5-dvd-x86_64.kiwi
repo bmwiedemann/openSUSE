@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220306" schemaversion="4.1">
+<image name="OBS__openSUSE___20220307" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220306</productvar>
+      <productvar name="VERSION">20220307</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220306,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220307,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220306/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220307/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2457,7 +2457,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
-      <repopackage name="libpoppler117"/>
+      <repopackage name="libpoppler119"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
       <repopackage name="libportal0"/>
@@ -4214,17 +4214,17 @@
       <repopackage name="ruby-solv"/>
       <repopackage name="ruby3.1"/>
       <repopackage name="ruby3.1-rubygem-abstract_method"/>
-      <repopackage name="ruby3.1-rubygem-actioncable-6.0"/>
-      <repopackage name="ruby3.1-rubygem-actionmailbox-6.0"/>
-      <repopackage name="ruby3.1-rubygem-actionmailer-6.0"/>
-      <repopackage name="ruby3.1-rubygem-actionpack-6.0"/>
-      <repopackage name="ruby3.1-rubygem-actiontext-6.0"/>
-      <repopackage name="ruby3.1-rubygem-actionview-6.0"/>
-      <repopackage name="ruby3.1-rubygem-activejob-6.0"/>
-      <repopackage name="ruby3.1-rubygem-activemodel-6.0"/>
-      <repopackage name="ruby3.1-rubygem-activerecord-6.0"/>
-      <repopackage name="ruby3.1-rubygem-activestorage-6.0"/>
-      <repopackage name="ruby3.1-rubygem-activesupport-6.0"/>
+      <repopackage name="ruby3.1-rubygem-actioncable-7.0"/>
+      <repopackage name="ruby3.1-rubygem-actionmailbox-7.0"/>
+      <repopackage name="ruby3.1-rubygem-actionmailer-7.0"/>
+      <repopackage name="ruby3.1-rubygem-actionpack-7.0"/>
+      <repopackage name="ruby3.1-rubygem-actiontext-7.0"/>
+      <repopackage name="ruby3.1-rubygem-actionview-7.0"/>
+      <repopackage name="ruby3.1-rubygem-activejob-7.0"/>
+      <repopackage name="ruby3.1-rubygem-activemodel-7.0"/>
+      <repopackage name="ruby3.1-rubygem-activerecord-7.0"/>
+      <repopackage name="ruby3.1-rubygem-activestorage-7.0"/>
+      <repopackage name="ruby3.1-rubygem-activesupport-7.0"/>
       <repopackage name="ruby3.1-rubygem-addressable"/>
       <repopackage name="ruby3.1-rubygem-aes_key_wrap"/>
       <repopackage name="ruby3.1-rubygem-afm"/>
@@ -4346,6 +4346,7 @@
       <repopackage name="ruby3.1-rubygem-httpclient"/>
       <repopackage name="ruby3.1-rubygem-i18n"/>
       <repopackage name="ruby3.1-rubygem-ice_nine"/>
+      <repopackage name="ruby3.1-rubygem-importmap-rails"/>
       <repopackage name="ruby3.1-rubygem-inifile"/>
       <repopackage name="ruby3.1-rubygem-jaro_winkler"/>
       <repopackage name="ruby3.1-rubygem-jbuilder"/>
@@ -4457,11 +4458,11 @@
       <repopackage name="ruby3.1-rubygem-rack-protection"/>
       <repopackage name="ruby3.1-rubygem-rack-proxy"/>
       <repopackage name="ruby3.1-rubygem-rack-test-0_6"/>
-      <repopackage name="ruby3.1-rubygem-rails-6.0"/>
+      <repopackage name="ruby3.1-rubygem-rails-7.0"/>
       <repopackage name="ruby3.1-rubygem-rails-dom-testing"/>
       <repopackage name="ruby3.1-rubygem-rails-html-sanitizer"/>
       <repopackage name="ruby3.1-rubygem-rails-i18n"/>
-      <repopackage name="ruby3.1-rubygem-railties-6.0"/>
+      <repopackage name="ruby3.1-rubygem-railties-7.0"/>
       <repopackage name="ruby3.1-rubygem-rainbow"/>
       <repopackage name="ruby3.1-rubygem-raindrops"/>
       <repopackage name="ruby3.1-rubygem-rake-compiler"/>
@@ -4528,6 +4529,7 @@
       <repopackage name="ruby3.1-rubygem-sprockets-rails"/>
       <repopackage name="ruby3.1-rubygem-sqlite3"/>
       <repopackage name="ruby3.1-rubygem-sshkit"/>
+      <repopackage name="ruby3.1-rubygem-stimulus-rails"/>
       <repopackage name="ruby3.1-rubygem-stomp"/>
       <repopackage name="ruby3.1-rubygem-strptime"/>
       <repopackage name="ruby3.1-rubygem-swd"/>
@@ -4546,6 +4548,7 @@
       <repopackage name="ruby3.1-rubygem-treetop"/>
       <repopackage name="ruby3.1-rubygem-trollop"/>
       <repopackage name="ruby3.1-rubygem-ttfunk"/>
+      <repopackage name="ruby3.1-rubygem-turbo-rails"/>
       <repopackage name="ruby3.1-rubygem-turbolinks"/>
       <repopackage name="ruby3.1-rubygem-turbolinks-source"/>
       <repopackage name="ruby3.1-rubygem-tzinfo"/>
