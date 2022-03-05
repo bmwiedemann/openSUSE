@@ -17,14 +17,16 @@
 
 
 Name:           harfbuzz
-Version:        3.3.2
+Version:        4.0.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.28
 BuildRequires:  pkgconfig(cairo) >= 1.8.0
@@ -102,7 +104,7 @@ This package contains the development files.
 %meson \
 	-Ddocs=disabled \
 	-Dgraphite=enabled \
-        -Dchafa=disabled \
+	-Dchafa=disabled \
 	%{nil}
 %meson_build
 
@@ -112,14 +114,10 @@ This package contains the development files.
 %install
 %meson_install
 
-%post -n libharfbuzz0 -p /sbin/ldconfig
-%postun -n libharfbuzz0 -p /sbin/ldconfig
-%post -n libharfbuzz-icu0 -p /sbin/ldconfig
-%postun -n libharfbuzz-icu0 -p /sbin/ldconfig
-%post -n libharfbuzz-gobject0 -p /sbin/ldconfig
-%postun -n libharfbuzz-gobject0 -p /sbin/ldconfig
-%post -n libharfbuzz-subset0 -p /sbin/ldconfig
-%postun -n libharfbuzz-subset0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libharfbuzz0
+%ldconfig_scriptlets -n libharfbuzz-icu0
+%ldconfig_scriptlets -n libharfbuzz-gobject0
+%ldconfig_scriptlets -n libharfbuzz-subset0
 
 %files -n libharfbuzz0
 %license COPYING

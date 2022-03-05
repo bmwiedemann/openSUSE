@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed Mar  2 19:18:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.0:
+  + New public API to create subset plan and gather information on
+    things like glyph mappings in the final subset. The plan can
+    then be passed on to perform the subsetting operation.
+  + Draw API for extracting glyph shapes have been extended and
+    finalized and is no longer an experimental API. The draw API
+    supports glyf, CFF and CFF2 glyph outlines tables, and applies
+    variation settings set on the font as well as synthetic slant.
+    The new public API is not backward compatible with the
+    previous, non-public, experimental API.
+  + The hb-view tool will use HarfBuzz draw API to render the
+    glyphs instead of cairo-ft when compiled with Cairo 1.17.5 or
+    newer, setting HB_DRAW environment variable to 1 or 0 will
+    force using or not use the draw API, respectively.
+  + The hb-shape and hb-view tools now default to using HarfBuzz’s
+    own font loading functions (ot) instead of FreeType ones (ft).
+    They also have a new option, --font-slant, to apply synthetic
+    slant to the font.
+  + HarfBuzz now supports more than 65535 (the OpenType limit)
+    glyph shapes and metrics. See be-fonts/boring-expansion-spec#6
+    and be-fonts/boring-expansion-spec#7 for details.
+  + New API to get the dominant horizontal baseline tag for a given
+    script.
+  + New API to get the baseline positions from the font, and
+    synthesize missing ones. As well as new API to get font metrics
+    and synthesize missing ones.
+  + Improvements to finding dependencies on Windows when building
+    with Visual Studio.
+  + New buffer flag, HB_BUFFER_FLAG_PRODUCE_UNSAFE_TO_CONCAT, that
+    must be set during shaping for HB_GLYPH_FLAG_UNSAFE_TO_CONCAT
+    flag to be reliably produced. This is to limit the performance
+    hit of producing this flag to when it is actually needed.
+  + Documentation improvements.
+  + New API:
+    - General:
+      . HB_BUFFER_FLAG_PRODUCE_UNSAFE_TO_CONCAT
+      . hb_var_num_t
+    - Draw:
+      . hb_draw_funcs_t
+      . hb_draw_funcs_create()
+      . hb_draw_funcs_reference()
+      . hb_draw_funcs_destroy()
+      . hb_draw_funcs_is_immutable()
+      . hb_draw_funcs_make_immutable()
+      . hb_draw_move_to_func_t
+      . hb_draw_funcs_set_move_to_func()
+      . hb_draw_line_to_func_t
+      . hb_draw_funcs_set_line_to_func()
+      . hb_draw_quadratic_to_func_t
+      . hb_draw_funcs_set_quadratic_to_func()
+      . hb_draw_cubic_to_func_t
+      . hb_draw_funcs_set_cubic_to_func()
+      . hb_draw_close_path_func_t
+      . hb_draw_funcs_set_close_path_func()
+      . hb_draw_state_t
+      . HB_DRAW_STATE_DEFAULT
+      . hb_draw_move_to()
+      . hb_draw_line_to()
+      . hb_draw_quadratic_to()
+      . hb_draw_cubic_to()
+      . hb_draw_close_path()
+      . hb_font_get_glyph_shape_func_t
+      . hb_font_funcs_set_glyph_shape_func()
+      . hb_font_get_glyph_shape()
+    - OpenType layout:
+      . HB_OT_LAYOUT_BASELINE_TAG_IDEO_FACE_CENTRAL
+      . HB_OT_LAYOUT_BASELINE_TAG_IDEO_EMBOX_CENTRAL
+      . hb_ot_layout_get_horizontal_baseline_tag_for_script()
+      . hb_ot_layout_get_baseline_with_fallback()
+    - Metrics: hb_ot_metrics_get_position_with_fallback()
+    - Subset:
+      . hb_subset_plan_t
+      . hb_subset_plan_create_or_fail()
+      . hb_subset_plan_reference()
+      . hb_subset_plan_destroy()
+      . hb_subset_plan_set_user_data()
+      . hb_subset_plan_get_user_data()
+      . hb_subset_plan_execute_or_fail()
+      . hb_subset_plan_unicode_to_old_glyph_mapping()
+      . hb_subset_plan_new_to_old_glyph_mapping()
+      . hb_subset_plan_old_to_new_glyph_mapping()
+
+-------------------------------------------------------------------
+Sun Feb 13 07:57:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4.0:
+  + Perform sanity checks on shaping results is now part of 
+    “harfbuzz” library and can be enabled by setting the buffer
+    flag HB_BUFFER_FLAG_VERIFY
+  + Arabic Mark Transient Reordering Algorithm have been updated
+    to revision 6
+  + ISO 15924 code for mathematical notation, ‘Zmth’, now maps to
+    the OpenType ‘math’ tag
+  + It is now possible to get at once all math kerning values for a
+    given glyph at a given corner
+  + Fix locale_t portability issues on systems the typedef’s it to 
+    a void pointer
+
+-------------------------------------------------------------------
 Mon Feb  7 06:06:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.3.2:
@@ -27,6 +128,12 @@ Mon Feb  7 06:06:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
     further details
   + Improved handling of macrolanguages when mapping BCP 47 codes
     to OpenType tags
+
+-------------------------------------------------------------------
+Fri Dec 17 22:07:57 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Add generic c_compiler BuildRequires for completeness.
 
 -------------------------------------------------------------------
 Fri Dec 17 18:39:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
