@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  1 18:29:13 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- [kbdsettings] try to run numlockbios from /usr/libexec/kbd/ first
+  as Tumbleweed moved to this location a while ago (boo#1179295)
+
+-------------------------------------------------------------------
+Mon Feb 21 10:31:41 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Fix build without %_distconfdir (see bsc#1195679)
+
+-------------------------------------------------------------------
 Tue Feb  1 07:39:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use bash for invoking bash scripts (bsc#1195391)

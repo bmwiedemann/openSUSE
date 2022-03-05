@@ -26,7 +26,11 @@ for i in NUM SCR CAPS; do
 			/usr/bin/setleds -D -$param < /dev/$tty
 			;;
 		bios)
-			bios=$(/usr/lib/kbd/numlockbios 2>/dev/null)
+			if [ -x /usr/libexec/kbd/numlockbios ]; then
+				bios=$(/usr/libexec/kbd/numlockbios 2>/dev/null)
+			else
+				bios=$(/usr/lib/kbd/numlockbios 2>/dev/null)
+			fi
 			if [ $param = "num" ]; then
 				if [ "$bios" = "on" ]; then
 					touch /run/numlock-on
