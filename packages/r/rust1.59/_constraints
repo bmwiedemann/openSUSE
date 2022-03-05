@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <processors>8</processors>
+    <memory>
+      <!-- This is to get a /dev/shm of at least 5G due to OBS builders having poor IOPS -->
+      <size unit="G">10</size>
+    </memory>
+    <disk>
+      <!-- Needed for leap15.3 where we may need to bundle llvm -->
+      <size unit="G">40</size>
+    </disk>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc</arch>
+    </conditions>
+    <hardware>
+      <processors>2</processors>
+      <physicalmemory>
+        <size unit="G">4</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+<!-- aarch64:  X-Gene cpus are the only ones that work as there is a bug in others - select -->
+<!--  12G of ram to force non-broken cpu's to be used. -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">12</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+<!--  armv6/7 have lower requirements -->
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <processors>4</processors>
+      <physicalmemory>
+        <size unit="G">5</size>
+      </physicalmemory>
+      <disk>
+        <size unit="G">30</size>
+      </disk>
+    </hardware>
+  </overwrite>
+</constraints>
