@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  3 14:26:57 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix modprobe.d directory for SLE15 SP3
+- Cleanup dependencies:
+  - ipset, ebtables and iptables are purely optional and deprecated, 
+    so don't require them
+  - sysconfig is not needed at all
+  - Don't hard require systemd, we don't have and need that in containers
+
+-------------------------------------------------------------------
 Sat Feb 26 14:35:35 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 1.1.0:

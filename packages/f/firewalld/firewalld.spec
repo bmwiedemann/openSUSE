@@ -20,8 +20,8 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-# systemd-rpm-macros(or kmod) is wrong in 15.2
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
+# systemd-rpm-macros(or kmod) is wrong in 15.2 and 15.3
 %define _modprobedir /lib/modprobe.d
 %endif
 Name:           firewalld
@@ -39,7 +39,7 @@ BuildRequires:  automake
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 # Adding tools to BuildRequires as well so they can be autodetected
-# even though it is probably unlikely for paths to change in the future
+# Else the configure tool will set them to /bin/false
 BuildRequires:  ebtables
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -50,22 +50,19 @@ BuildRequires:  intltool
 BuildRequires:  ipset
 BuildRequires:  iptables
 BuildRequires:  libxslt-tools
-BuildRequires:  nftables
 BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
-Requires:       ebtables
-Requires:       ipset
-Requires:       iptables
-Requires:       logrotate
+Recommends:     logrotate
+# Workaround: nftables seems to be a python3-nftables requirement,
+# not of firewalld.
 Requires:       nftables
 Requires:       python3-firewall = %{version}
 Requires:       python3-gobject
 Requires:       python3-nftables
-Requires:       sysconfig
 Requires(post): %fillup_prereq
 Suggests:       susefirewall2-to-firewalld
 BuildArch:      noarch
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 firewalld is a firewall service daemon that provides a dynamic customizable
