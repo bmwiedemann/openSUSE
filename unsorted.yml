@@ -1448,7 +1448,6 @@ unsorted:
   - brotli 
   - browserpass-native 
   - brp-check-suse 
-  - brp-extract-appdata 
   - brp-extract-translations 
   - brp-trim-translations 
   - bs 
@@ -1596,7 +1595,7 @@ unsorted:
   - busybox-diffutils 
   - busybox-dos2unix 
   - busybox-ed 
-  - busybox-hostname: [i586] 
+  - busybox-hostname 
   - busybox-iproute2 
   - busybox-iputils 
   - busybox-k8s-yaml: [i586] 
@@ -2144,6 +2143,7 @@ unsorted:
   - collectd-plugin-buddyinfo 
   - collectd-plugin-connectivity 
   - collectd-plugin-dbi 
+  - collectd-plugin-dpdk 
   - collectd-plugin-gps 
   - collectd-plugin-ipmi 
   - collectd-plugin-java 
@@ -2782,6 +2782,7 @@ unsorted:
   - deepin-desktop-schemas-branding-upstream 
   - deepin-dock 
   - deepin-dock-devel 
+  - deepin-dock-lang 
   - deepin-dock-plugin-screen-recorder 
   - deepin-draw 
   - deepin-draw-lang 
@@ -3466,7 +3467,6 @@ unsorted:
   - extra166y 
   - extra166y-javadoc 
   - extrace 
-  - extract-appdata-icons 
   - extractpdfmark 
   - extreme-tuxracer 
   - extreme-tuxracer-data 
@@ -12640,7 +12640,7 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb9_0 
-  - libopenvswitch-2_14-0 
+  - libopenvswitch-2_17-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
   - liboping0 
@@ -12752,7 +12752,6 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit: [x86_64] 
   - libovf-glib-devel 
-  - libovn-20_06-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
   - liboyranos-alpha-devel 
@@ -12971,7 +12970,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler117-32bit: [x86_64] 
+  - libpoppler119-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -18460,13 +18459,6 @@ unsorted:
   - otter-browser 
   - otter-browser-lang 
   - ovmf-tools: [x86_64] 
-  - ovn 
-  - ovn-central 
-  - ovn-devel 
-  - ovn-doc 
-  - ovn-docker 
-  - ovn-host 
-  - ovn-vtep 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-base_rules 
   - owasp-modsecurity-crs-experimental_rules 
@@ -21272,7 +21264,6 @@ unsorted:
   - python-designateclient-doc 
   - python-devel 
   - python-djvulibre-doc 
-  - python-dmidecode 
   - python-doc 
   - python-doc-pdf 
   - python-efl-doc 
@@ -21631,7 +21622,6 @@ unsorted:
   - python3-oslo.vmware 
   - python3-oslotest 
   - python3-osprofiler 
-  - python3-ovs 
   - python3-ovsdbapp 
   - python3-paraview 
   - python3-partio 
@@ -22043,6 +22033,7 @@ unsorted:
   - python310-argparse-manpage 
   - python310-args 
   - python310-arrow 
+  - python310-arviz 
   - python310-asciimatics 
   - python310-asciitree 
   - python310-asdf 
@@ -22786,6 +22777,7 @@ unsorted:
   - python310-djet 
   - python310-djvulibre 
   - python310-dkimpy 
+  - python310-dmidecode 
   - python310-dns-lexicon 
   - python310-dnslib 
   - python310-dnspython 
@@ -23266,7 +23258,6 @@ unsorted:
   - python310-kaitaistruct 
   - python310-kasa 
   - python310-kazoo 
-  - python310-keepalive 
   - python310-kerberos 
   - python310-keyczar 
   - python310-keylime 
@@ -23640,6 +23631,7 @@ unsorted:
   - python310-ospd-openvas 
   - python310-outcome 
   - python310-ovirt-engine-sdk 
+  - python310-ovs 
   - python310-pa-ringbuffer 
   - python310-packaging 
   - python310-padaos 
@@ -24143,7 +24135,6 @@ unsorted:
   - python310-python-datamatrix 
   - python310-python-dateutil 
   - python310-python-dbusmock 
-  - python310-python-dmidecode 
   - python310-python-docs-theme 
   - python310-python-dotenv 
   - python310-python-editor 
@@ -24904,7 +24895,6 @@ unsorted:
   - python310-zxcvbn 
   - python310-zypp-plugin 
   - python36-django-money 
-  - python36-google-pasta 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -25201,6 +25191,7 @@ unsorted:
   - python38-argparse-manpage: [i586] 
   - python38-args 
   - python38-arrow 
+  - python38-arviz 
   - python38-asciimatics 
   - python38-asciitree 
   - python38-asdf 
@@ -25920,6 +25911,7 @@ unsorted:
   - python38-djangorestframework-simplejwt 
   - python38-djet 
   - python38-djvulibre 
+  - python38-dmidecode 
   - python38-dns-lexicon 
   - python38-dnslib 
   - python38-doc 
@@ -26358,7 +26350,6 @@ unsorted:
   - python38-kaitaistruct 
   - python38-kasa 
   - python38-kazoo 
-  - python38-keepalive 
   - python38-kerberos 
   - python38-keyczar 
   - python38-keylime: [i586] 
@@ -26707,6 +26698,7 @@ unsorted:
   - python38-ospd 
   - python38-ospd-openvas 
   - python38-ovirt-engine-sdk 
+  - python38-ovs 
   - python38-pa-ringbuffer 
   - python38-padaos 
   - python38-padatious 
@@ -27168,7 +27160,6 @@ unsorted:
   - python38-python-daemon 
   - python38-python-datamatrix 
   - python38-python-dbusmock 
-  - python38-python-dmidecode 
   - python38-python-docs-theme 
   - python38-python-dotenv 
   - python38-python-editor 
@@ -28202,6 +28193,7 @@ unsorted:
   - python39-argparse-manpage 
   - python39-args 
   - python39-arrow 
+  - python39-arviz 
   - python39-asciimatics 
   - python39-asciitree 
   - python39-asdf 
@@ -28958,6 +28950,7 @@ unsorted:
   - python39-djet 
   - python39-djvulibre 
   - python39-dkimpy 
+  - python39-dmidecode 
   - python39-dns-lexicon 
   - python39-dnslib 
   - python39-dnspython 
@@ -29439,7 +29432,6 @@ unsorted:
   - python39-kaitaistruct 
   - python39-kasa 
   - python39-kazoo 
-  - python39-keepalive 
   - python39-kerberos 
   - python39-keyczar 
   - python39-keylime 
@@ -29816,6 +29808,7 @@ unsorted:
   - python39-ospd-openvas 
   - python39-outcome 
   - python39-ovirt-engine-sdk 
+  - python39-ovs 
   - python39-pa-ringbuffer 
   - python39-packaging 
   - python39-padaos 
@@ -30323,7 +30316,6 @@ unsorted:
   - python39-python-datamatrix 
   - python39-python-dateutil 
   - python39-python-dbusmock 
-  - python39-python-dmidecode 
   - python39-python-docs-theme 
   - python39-python-dotenv 
   - python39-python-editor 
@@ -41595,6 +41587,7 @@ unsorted:
   - trustedgrub2-i386-pc 
   - truth 
   - truth-javadoc 
+  - tryton 
   - trytond 
   - trytond_account 
   - trytond_account_invoice 
