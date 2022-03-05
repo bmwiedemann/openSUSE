@@ -33,6 +33,7 @@ BuildRequires:  cmake
 BuildRequires:  git-core
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
+ExclusiveArch:  %{ix86} x86_64 aarch64 armv7hl s390x
 
 %description
 USB3380 abstraction layer for libusb.
