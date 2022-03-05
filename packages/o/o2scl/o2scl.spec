@@ -29,6 +29,8 @@ Source:         https://github.com/awsteiner/o2scl/releases/download/v%{version}
 Patch0:         o2scl-disable-slow-hdf-test.patch
 # PATCH-FEATURE-OPENSUSE o2scl-disable-test-without-destdir-support.patch badshah400@gmail.com -- Disable tests that use data files installed to datadir but does not support DESTDIR and therefore cannot be run in a buildroot env
 Patch1:         o2scl-disable-test-without-destdir-support.patch
+# PATCH-FIX-UPSTREAM o2scl-eos_quark_cfl6-test-increase-tol.patch gh#awsteiner/o2scl#18 badshah400@gmail.com -- Increase the tolerance of a test that fails due to minor tolerance issues on x86_64
+Patch2:         o2scl-eos_quark_cfl6-test-increase-tol.patch
 BuildRequires:  armadillo-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
