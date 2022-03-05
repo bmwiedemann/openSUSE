@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1-devel-doc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %global _backup %{_sysconfdir}/sysconfig/services.rpmbak.%{name}-%{version}-%{release}
 %bcond_without selinux
 Name:           dbus-1-devel-doc
-Version:        1.12.20
+Version:        1.12.22
 Release:        0
 Summary:        Developer documentation package for D-Bus
 License:        AFL-2.1 OR GPL-2.0-or-later

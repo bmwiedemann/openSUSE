@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar  1 18:29:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.22:
+  + On Linux, when using traditional (non-systemd) service
+    activation, don't log warnings about failing to reset OOM score
+    adjustment if the process is already more susceptible to the
+    OOM killer, as user processes usually are with systemd ≥ 250.
+  + On Linux, when using traditional (non-systemd) system bus
+    activation, reset the OOM score adjustment to 0 as intended.
+    If the system dbus-daemon is protected from the OOM killer,
+    this avoids that protection unintentionally being inherited by
+    every system service.
+  + Avoid malloc() after fork on non-GNU libc.
+  + Fix build with clang 13 by using Standard C offsetof where
+    available.
+  + Fix build of tests on FreeBSD.
+  + Make documentation build more reproducible.
+  + On Unix, make X11 autolaunch cope with slashes in DISPLAY.
+  + Don't try to raise RLIMIT_NOFILE beyond OPEN_MAX on macOS.
+  + Fix compilation if embedded tests are enabled but verbose mode
+    and stats are both disabled.
+  + On Linux, fix a race condition in the integration test for
+    transient services.
+
+-------------------------------------------------------------------
 Thu Jul 16 21:28:10 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.12.20

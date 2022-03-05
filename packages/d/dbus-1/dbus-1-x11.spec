@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1-x11
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %endif
 %bcond_without selinux
 Name:           dbus-1-x11
-Version:        1.12.20
+Version:        1.12.22
 Release:        0
 Summary:        D-Bus Message Bus System
 License:        AFL-2.1 OR GPL-2.0-or-later
