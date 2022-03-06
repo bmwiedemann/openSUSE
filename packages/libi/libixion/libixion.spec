@@ -37,13 +37,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(mdds-2.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(spdlog) >= 0.16.0
-BuildRequires:  pkgconfig(vulkan) >= 1.2.0
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  boost-devel
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
 %endif
 
 %description
@@ -88,9 +89,14 @@ Python 3 bindings for %{name}.
 %build
 libtoolize --force --copy
 autoreconf -fi
+%if 0%{?suse_version} < 1500
+export CC=gcc-11
+export CXX=g++-11
+%endif
 %configure \
 	--disable-silent-rules \
 	--disable-static \
+    --disable-vulkan \
 	--docdir=%{_docdir}/%{name}
 %make_build
 
