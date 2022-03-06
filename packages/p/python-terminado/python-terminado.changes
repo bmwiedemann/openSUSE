@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  5 18:22:18 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.13.2:
+  * Bugs fixed
+    + Increase scrollback to 1000 #143 (@yusufbashi)
+  * Maintenance and upkeep improvements
+    + Add test for terminating the terminals and fix Windows terminal
+      shutdown behavior #142 (@blink1073)
+
+-------------------------------------------------------------------
 Sat Jan 29 18:00:55 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
