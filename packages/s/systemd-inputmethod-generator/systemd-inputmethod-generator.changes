@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  6 04:22:55 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.2
+  * $LANG may not set at early stage of systemd user instance,
+    read /etc/locale.conf first then defaults to en_US.
+  * $HOME may set to /var/lib/sddm, ignore for that case
+
+-------------------------------------------------------------------
 Sun Feb 27 09:27:15 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 1.0.1
