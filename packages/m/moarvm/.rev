@@ -296,4 +296,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>957345</requestid>
   </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>f7235d6f5056257de819d525bad33228</srcmd5>
+    <version>2022.02</version>
+    <time>1646595343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959742</requestid>
+  </revision>
 </revisionlist>

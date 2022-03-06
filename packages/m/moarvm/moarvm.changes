@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar  6 18:02:02 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- Backport fix for issue discovered after release.
+  Add moarvm_wrong_value_after_multi_level_inlining.diff to be removed
+  with the next version.
+
+-------------------------------------------------------------------
 Thu Feb 24 11:30:58 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - On Factory use system libraries instead of bundled ones: libtommath,

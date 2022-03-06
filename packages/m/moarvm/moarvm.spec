@@ -27,6 +27,7 @@ URL:            http://moarvm.org
 Source:         http://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
+Patch1:         moarvm_wrong_value_after_multi_level_inlining.diff
 BuildRequires:  perl(ExtUtils::Command)
 BuildRequires:  pkgconfig(libffi)
 %if 0%{?suse_version} >= 1550
@@ -58,6 +59,7 @@ MoarVM (Metamodel On A Runtime) development headers.
 %prep
 %setup -q -n MoarVM-%{mvrel}
 %patch0 -p1
+%patch1 -p1
 
 %build
 extra_config_args=
