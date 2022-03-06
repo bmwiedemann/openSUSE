@@ -1,0 +1,3135 @@
+--- openjdk/jdk/src/share/classes/com/sun/crypto/provider/PBES2Parameters.java	2022-02-08 18:39:48.000000000 +0300
++++ openjdk/jdk/src/share/classes/com/sun/crypto/provider/PBES2Parameters.java	2022-02-08 18:39:47.000000000 +0300
+@@ -312,41 +312,48 @@
+                 + "not an ASN.1 OCTET STRING tag");
+         }
+         iCount = pBKDF2_params.data.getInteger();
++
++        DerValue prf = null;
+         // keyLength INTEGER (1..MAX) OPTIONAL,
+         if (pBKDF2_params.data.available() > 0) {
+             DerValue keyLength = pBKDF2_params.data.getDerValue();
+             if (keyLength.tag == DerValue.tag_Integer) {
+                 keysize = keyLength.getInteger() * 8; // keysize (in bits)
++            } else {
++                // Should be the prf
++                prf = keyLength;
+             }
+         }
+         // prf AlgorithmIdentifier {{PBKDF2-PRFs}} DEFAULT algid-hmacWithSHA1
+         String kdfAlgo = "HmacSHA1";
+-        if (pBKDF2_params.data.available() > 0) {
+-            if (pBKDF2_params.tag == DerValue.tag_Sequence) {
+-                DerValue prf = pBKDF2_params.data.getDerValue();
+-                kdfAlgo_OID = prf.data.getOID();
+-                if (hmacWithSHA1_OID.equals(kdfAlgo_OID)) {
+-                    kdfAlgo = "HmacSHA1";
+-                } else if (hmacWithSHA224_OID.equals(kdfAlgo_OID)) {
+-                    kdfAlgo = "HmacSHA224";
+-                } else if (hmacWithSHA256_OID.equals(kdfAlgo_OID)) {
+-                    kdfAlgo = "HmacSHA256";
+-                } else if (hmacWithSHA384_OID.equals(kdfAlgo_OID)) {
+-                    kdfAlgo = "HmacSHA384";
+-                } else if (hmacWithSHA512_OID.equals(kdfAlgo_OID)) {
+-                    kdfAlgo = "HmacSHA512";
+-                } else {
++        if (prf == null) {
++            if (pBKDF2_params.data.available() > 0) {
++                prf = pBKDF2_params.data.getDerValue();
++            }
++        }
++        if (prf != null) {
++            kdfAlgo_OID = prf.data.getOID();
++            if (hmacWithSHA1_OID.equals(kdfAlgo_OID)) {
++                kdfAlgo = "HmacSHA1";
++            } else if (hmacWithSHA224_OID.equals(kdfAlgo_OID)) {
++                kdfAlgo = "HmacSHA224";
++            } else if (hmacWithSHA256_OID.equals(kdfAlgo_OID)) {
++                kdfAlgo = "HmacSHA256";
++            } else if (hmacWithSHA384_OID.equals(kdfAlgo_OID)) {
++                kdfAlgo = "HmacSHA384";
++            } else if (hmacWithSHA512_OID.equals(kdfAlgo_OID)) {
++                kdfAlgo = "HmacSHA512";
++            } else {
++                throw new IOException("PBE parameter parsing error: "
++                        + "expecting the object identifier for a HmacSHA key "
++                        + "derivation function");
++            }
++            if (prf.data.available() != 0) {
++                // parameter is 'NULL' for all HmacSHA KDFs
++                DerValue parameter = prf.data.getDerValue();
++                if (parameter.tag != DerValue.tag_Null) {
+                     throw new IOException("PBE parameter parsing error: "
+-                            + "expecting the object identifier for a HmacSHA key "
+-                            + "derivation function");
+-                }
+-                if (prf.data.available() != 0) {
+-                    // parameter is 'NULL' for all HmacSHA KDFs
+-                    DerValue parameter = prf.data.getDerValue();
+-                    if (parameter.tag != DerValue.tag_Null) {
+-                        throw new IOException("PBE parameter parsing error: "
+-                                + "not an ASN.1 NULL tag");
+-                    }
++                            + "not an ASN.1 NULL tag");
+                 }
+             }
+         }
+--- openjdk/jdk/src/share/classes/com/sun/crypto/provider/SunJCE.java	2022-02-08 18:39:48.000000000 +0300
++++ openjdk/jdk/src/share/classes/com/sun/crypto/provider/SunJCE.java	2022-02-08 18:39:48.000000000 +0300
+@@ -707,7 +707,19 @@
+                     put("Alg.Alias.Mac.1.2.840.113549.2.11", "HmacSHA512");
+ 
+                     put("Mac.HmacPBESHA1",
+-                        "com.sun.crypto.provider.HmacPKCS12PBESHA1");
++                        "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA1");
++                    put("Mac.HmacPBESHA224",
++                        "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA224");
++                    put("Mac.HmacPBESHA256",
++                        "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA256");
++                    put("Mac.HmacPBESHA384",
++                        "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA384");
++                    put("Mac.HmacPBESHA512",
++                        "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512");
++                    put("Mac.HmacPBESHA512/224",
++                        "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512_224");
++                    put("Mac.HmacPBESHA512/256",
++                        "com.sun.crypto.provider.HmacPKCS12PBECore$HmacPKCS12PBE_SHA512_256");
+ 
+                     // PBMAC1
+ 
+@@ -734,6 +746,12 @@
+                     put("Mac.HmacSHA384 SupportedKeyFormats", "RAW");
+                     put("Mac.HmacSHA512 SupportedKeyFormats", "RAW");
+                     put("Mac.HmacPBESHA1 SupportedKeyFormats", "RAW");
++                    put("Mac.HmacPBESHA224 SupportedKeyFormats", "RAW");
++                    put("Mac.HmacPBESHA256 SupportedKeyFormats", "RAW");
++                    put("Mac.HmacPBESHA384 SupportedKeyFormats", "RAW");
++                    put("Mac.HmacPBESHA512 SupportedKeyFormats", "RAW");
++                    put("Mac.HmacPBESHA512/224 SupportedKeyFormats", "RAW");
++                    put("Mac.HmacPBESHA512/256 SupportedKeyFormats", "RAW");
+                     put("Mac.PBEWithHmacSHA1 SupportedKeyFormatS", "RAW");
+                     put("Mac.PBEWithHmacSHA224 SupportedKeyFormats", "RAW");
+                     put("Mac.PBEWithHmacSHA256 SupportedKeyFormats", "RAW");
+--- openjdk/jdk/src/share/classes/sun/security/pkcs12/PKCS12KeyStore.java	2022-02-08 18:39:49.000000000 +0300
++++ openjdk/jdk/src/share/classes/sun/security/pkcs12/PKCS12KeyStore.java	2022-02-08 18:39:49.000000000 +0300
+@@ -69,6 +69,7 @@
+ import sun.security.util.DerValue;
+ import sun.security.util.ObjectIdentifier;
+ import sun.security.pkcs.ContentInfo;
++import sun.security.util.SecurityProperties;
+ import sun.security.x509.AlgorithmId;
+ import sun.security.pkcs.EncryptedPrivateKeyInfo;
+ 
+@@ -78,9 +79,11 @@
+  * Implements the PKCS#12 PFX protected using the Password privacy mode.
+  * The contents are protected using Password integrity mode.
+  *
+- * Currently we support following PBE algorithms:
+- *  - pbeWithSHAAnd3KeyTripleDESCBC to encrypt private keys
+- *  - pbeWithSHAAnd40BitRC2CBC to encrypt certificates
++ * Currently these PBE algorithms are used by default:
++ *  - PBEWithSHA1AndDESede to encrypt private keys, iteration count 50000.
++ *  - PBEWithSHA1AndRC2_40 to encrypt certificates, iteration count 50000.
++ *
++ * The default Mac algorithm is  HmacPBESHA1, iteration count 100000.
+  *
+  * Supported encryption of various implementations :
+  *
+@@ -123,24 +126,13 @@
+  * @author Jeff Nisewanger
+  * @author Jan Luehe
+  *
+- * @see KeyProtector
+  * @see java.security.KeyStoreSpi
+- * @see KeyTool
+- *
+- *
+  */
+ public final class PKCS12KeyStore extends KeyStoreSpi {
+ 
+     public static final int VERSION_3 = 3;
+ 
+-    private static final String[] KEY_PROTECTION_ALGORITHM = {
+-        "keystore.pkcs12.keyProtectionAlgorithm",
+-        "keystore.PKCS12.keyProtectionAlgorithm"
+-    };
+-
+     private static final int MAX_ITERATION_COUNT = 5000000;
+-    private static final int PBE_ITERATION_COUNT = 50000; // default
+-    private static final int MAC_ITERATION_COUNT = 100000; // default
+     private static final int SALT_LEN = 20;
+ 
+     // friendlyName, localKeyId, trustedKeyUsage
+@@ -161,10 +153,6 @@
+ 
+     private static final int pkcs9certType[] = {1, 2, 840, 113549, 1, 9, 22, 1};
+ 
+-    private static final int pbeWithSHAAnd40BitRC2CBC[] =
+-                                        {1, 2, 840, 113549, 1, 12, 1, 6};
+-    private static final int pbeWithSHAAnd3KeyTripleDESCBC[] =
+-                                        {1, 2, 840, 113549, 1, 12, 1, 3};
+     private static final int pbes2[] = {1, 2, 840, 113549, 1, 5, 13};
+     // TODO: temporary Oracle OID
+     /*
+@@ -175,17 +163,15 @@
+                                         {2, 16, 840, 1, 113894, 746875, 1, 1};
+     private static final int AnyExtendedKeyUsage[] = {2, 5, 29, 37, 0};
+ 
+-    private static ObjectIdentifier PKCS8ShroudedKeyBag_OID;
+-    private static ObjectIdentifier CertBag_OID;
+-    private static ObjectIdentifier SecretBag_OID;
+-    private static ObjectIdentifier PKCS9FriendlyName_OID;
+-    private static ObjectIdentifier PKCS9LocalKeyId_OID;
+-    private static ObjectIdentifier PKCS9CertType_OID;
+-    private static ObjectIdentifier pbeWithSHAAnd40BitRC2CBC_OID;
+-    private static ObjectIdentifier pbeWithSHAAnd3KeyTripleDESCBC_OID;
+-    private static ObjectIdentifier pbes2_OID;
+-    private static ObjectIdentifier TrustedKeyUsage_OID;
+-    private static ObjectIdentifier[] AnyUsage;
++    private static final ObjectIdentifier PKCS8ShroudedKeyBag_OID;
++    private static final ObjectIdentifier CertBag_OID;
++    private static final ObjectIdentifier SecretBag_OID;
++    private static final ObjectIdentifier PKCS9FriendlyName_OID;
++    private static final ObjectIdentifier PKCS9LocalKeyId_OID;
++    private static final ObjectIdentifier PKCS9CertType_OID;
++    private static final ObjectIdentifier pbes2_OID;
++    private static final ObjectIdentifier TrustedKeyUsage_OID;
++    private static final ObjectIdentifier[] AnyUsage;
+ 
+     private int counter = 0;
+ 
+@@ -200,6 +186,17 @@
+     // certificate count
+     private int certificateCount = 0;
+ 
++    // Alg/params used for *this* keystore. Initialized as -1 for ic and
++    // null for algorithm names. When an existing file is read, they will be
++    // assigned inside engineLoad() so storing an existing keystore uses the
++    // old alg/params. This makes sure if a keystore is created password-less
++    // it will be password-less forever. Otherwise, engineStore() will read
++    // the default values. These fields are always reset when load() is called.
++    private String certProtectionAlgorithm = null;
++    private int certPbeIterationCount = -1;
++    private String macAlgorithm = null;
++    private int macIterationCount = -1;
++
+     // the source of randomness
+     private SecureRandom random;
+ 
+@@ -211,16 +208,12 @@
+             PKCS9FriendlyName_OID = new ObjectIdentifier(pkcs9Name);
+             PKCS9LocalKeyId_OID = new ObjectIdentifier(pkcs9KeyId);
+             PKCS9CertType_OID = new ObjectIdentifier(pkcs9certType);
+-            pbeWithSHAAnd40BitRC2CBC_OID =
+-                        new ObjectIdentifier(pbeWithSHAAnd40BitRC2CBC);
+-            pbeWithSHAAnd3KeyTripleDESCBC_OID =
+-                        new ObjectIdentifier(pbeWithSHAAnd3KeyTripleDESCBC);
+             pbes2_OID = new ObjectIdentifier(pbes2);
+             TrustedKeyUsage_OID = new ObjectIdentifier(TrustedKeyUsage);
+             AnyUsage = new ObjectIdentifier[]{
+                 new ObjectIdentifier(AnyExtendedKeyUsage)};
+         } catch (IOException ioe) {
+-            // should not happen
++            throw new AssertionError("OID not initialized", ioe);
+         }
+     }
+ 
+@@ -381,7 +374,7 @@
+                 ic = pbeSpec.getIterationCount();
+ 
+                 if (ic > MAX_ITERATION_COUNT) {
+-                    throw new IOException("PBE iteration count too large");
++                    throw new IOException("key PBE iteration count too large");
+                 }
+             } else {
+                 ic = 0;
+@@ -417,7 +410,7 @@
+                     if (debug != null) {
+                         debug.println("Retrieved a protected private key at alias" +
+                                 " '" + alias + "' (" +
+-                                new AlgorithmId(algOid).getName() +
++                                mapPBEParamsToAlgorithm(algOid, algParams) +
+                                 " iterations: " + ic + ")");
+                     }
+                     return tmp;
+@@ -442,7 +435,7 @@
+                     if (debug != null) {
+                         debug.println("Retrieved a protected secret key at alias " +
+                                 "'" + alias + "' (" +
+-                                new AlgorithmId(algOid).getName() +
++                                mapPBEParamsToAlgorithm(algOid, algParams) +
+                                 " iterations: " + ic + ")");
+                     }
+                     return tmp;
+@@ -691,7 +684,7 @@
+             entries.put(alias.toLowerCase(Locale.ENGLISH), entry);
+ 
+         } catch (Exception nsae) {
+-            throw new KeyStoreException("Key protection " +
++            throw new KeyStoreException("Key protection" +
+                        " algorithm not found: " + nsae, nsae);
+         }
+     }
+@@ -788,14 +781,13 @@
+     /*
+      * Generate PBE Algorithm Parameters
+      */
+-    private AlgorithmParameters getPBEAlgorithmParameters(String algorithm)
+-        throws IOException
+-    {
++    private AlgorithmParameters getPBEAlgorithmParameters(
++            String algorithm, int iterationCount) throws IOException {
+         AlgorithmParameters algParams = null;
+ 
+         // create PBE parameters from salt and iteration count
+         PBEParameterSpec paramSpec =
+-                new PBEParameterSpec(getSalt(), PBE_ITERATION_COUNT);
++                new PBEParameterSpec(getSalt(), iterationCount);
+         try {
+            algParams = AlgorithmParameters.getInstance(algorithm);
+            algParams.init(paramSpec);
+@@ -858,13 +850,14 @@
+     }
+ 
+     /*
+-     * Encrypt private key using Password-based encryption (PBE)
++     * Encrypt private key or secret key using Password-based encryption (PBE)
+      * as defined in PKCS#5.
+      *
+      * NOTE: By default, pbeWithSHAAnd3-KeyTripleDES-CBC algorithmID is
+      *       used to derive the key and IV.
+      *
+-     * @return encrypted private key encoded as EncryptedPrivateKeyInfo
++     * @return encrypted private key or secret key encoded as
++     *         EncryptedPrivateKeyInfo
+      */
+     private byte[] encryptPrivateKey(byte[] data,
+         KeyStore.PasswordProtection passwordProtection)
+@@ -886,27 +879,14 @@
+                     algParams = AlgorithmParameters.getInstance(algorithm);
+                     algParams.init(algParamSpec);
+                 } else {
+-                    algParams = getPBEAlgorithmParameters(algorithm);
++                    algParams = getPBEAlgorithmParameters(algorithm,
++                            defaultKeyPbeIterationCount());
+                 }
+             } else {
+                 // Check default key protection algorithm for PKCS12 keystores
+-                algorithm = AccessController.doPrivileged(
+-                    new PrivilegedAction<String>() {
+-                        public String run() {
+-                            String prop =
+-                                Security.getProperty(
+-                                    KEY_PROTECTION_ALGORITHM[0]);
+-                            if (prop == null) {
+-                                prop = Security.getProperty(
+-                                    KEY_PROTECTION_ALGORITHM[1]);
+-                            }
+-                            return prop;
+-                        }
+-                    });
+-                if (algorithm == null || algorithm.isEmpty()) {
+-                    algorithm = "PBEWithSHA1AndDESede";
+-                }
+-                algParams = getPBEAlgorithmParameters(algorithm);
++                algorithm = defaultKeyProtectionAlgorithm();
++                algParams = getPBEAlgorithmParameters(algorithm,
++                        defaultKeyPbeIterationCount());
+             }
+ 
+             ObjectIdentifier pbeOID = mapPBEAlgorithmToOID(algorithm);
+@@ -964,7 +944,7 @@
+         if (algorithm.equals((Object)pbes2_OID) && algParams != null) {
+             return algParams.toString();
+         }
+-        return algorithm.toString();
++        return new AlgorithmId(algorithm).getName();
+     }
+ 
+     /**
+@@ -1189,10 +1169,6 @@
+     public synchronized void engineStore(OutputStream stream, char[] password)
+         throws IOException, NoSuchAlgorithmException, CertificateException
+     {
+-        // password is mandatory when storing
+-        if (password == null) {
+-           throw new IllegalArgumentException("password can't be null");
+-        }
+ 
+         // -- Create PFX
+         DerOutputStream pfx = new DerOutputStream();
+@@ -1225,16 +1201,28 @@
+         // -- create EncryptedContentInfo
+         if (certificateCount > 0) {
+ 
++            if (certProtectionAlgorithm == null) {
++                certProtectionAlgorithm = defaultCertProtectionAlgorithm();
++            }
++            if (certPbeIterationCount < 0) {
++                certPbeIterationCount = defaultCertPbeIterationCount();
++            }
++
+             if (debug != null) {
+                 debug.println("Storing " + certificateCount +
+                     " certificate(s) in a PKCS#7 encryptedData");
+             }
+ 
+             byte[] encrData = createEncryptedData(password);
+-            ContentInfo encrContentInfo =
+-                new ContentInfo(ContentInfo.ENCRYPTED_DATA_OID,
++            if (!certProtectionAlgorithm.equalsIgnoreCase("NONE")) {
++                ContentInfo encrContentInfo =
++                        new ContentInfo(ContentInfo.ENCRYPTED_DATA_OID,
+                                 new DerValue(encrData));
+-            encrContentInfo.encode(authSafeContentInfo);
++                encrContentInfo.encode(authSafeContentInfo);
++            } else {
++                ContentInfo dataContentInfo = new ContentInfo(encrData);
++                dataContentInfo.encode(authSafeContentInfo);
++            }
+         }
+ 
+         // wrap as SequenceOf ContentInfos
+@@ -1249,9 +1237,16 @@
+         pfx.write(authSafeData);
+ 
+         // -- MAC
+-        byte[] macData = calculateMac(password, authenticatedSafe);
+-        pfx.write(macData);
+-
++        if (macAlgorithm == null) {
++            macAlgorithm = defaultMacAlgorithm();
++        }
++        if (macIterationCount < 0) {
++            macIterationCount = defaultMacIterationCount();
++        }
++        if (!macAlgorithm.equalsIgnoreCase("NONE")) {
++            byte[] macData = calculateMac(password, authenticatedSafe);
++            pfx.write(macData);
++        }
+         // write PFX to output stream
+         DerOutputStream pfxout = new DerOutputStream();
+         pfxout.write(DerValue.tag_Sequence, pfx);
+@@ -1462,24 +1457,6 @@
+     }
+ 
+     /*
+-     * Generate Hash.
+-     */
+-    private byte[] generateHash(byte[] data) throws IOException
+-    {
+-        byte[] digest = null;
+-
+-        try {
+-            MessageDigest md = MessageDigest.getInstance("SHA1");
+-            md.update(data);
+-            digest = md.digest();
+-        } catch (Exception e) {
+-            throw new IOException("generateHash failed: " + e, e);
+-        }
+-        return digest;
+-    }
+-
+-
+-    /*
+      * Calculate MAC using HMAC algorithm (required for password integrity)
+      *
+      * Hash-based MAC algorithm combines secret key with message digest to
+@@ -1489,16 +1466,16 @@
+         throws IOException
+     {
+         byte[] mData = null;
+-        String algName = "SHA1";
++        String algName = macAlgorithm.substring(7);
+ 
+         try {
+             // Generate a random salt.
+             byte[] salt = getSalt();
+ 
+             // generate MAC (MAC key is generated within JCE)
+-            Mac m = Mac.getInstance("HmacPBESHA1");
++            Mac m = Mac.getInstance(macAlgorithm);
+             PBEParameterSpec params =
+-                        new PBEParameterSpec(salt, MAC_ITERATION_COUNT);
++                        new PBEParameterSpec(salt, macIterationCount);
+             SecretKey key = getPBEKey(passwd);
+             m.init(key, params);
+             m.update(data);
+@@ -1506,7 +1483,7 @@
+ 
+             // encode as MacData
+             MacData macData = new MacData(algName, macResult, salt,
+-                                                MAC_ITERATION_COUNT);
++                    macIterationCount);
+             DerOutputStream bytes = new DerOutputStream();
+             bytes.write(macData.getEncoded());
+             mData = bytes.toByteArray();
+@@ -1764,15 +1741,19 @@
+         byte[] safeBagData = safeBagValue.toByteArray();
+ 
+         // encrypt the content (EncryptedContentInfo)
+-        byte[] encrContentInfo = encryptContent(safeBagData, password);
++        if (!certProtectionAlgorithm.equalsIgnoreCase("NONE")) {
++            byte[] encrContentInfo = encryptContent(safeBagData, password);
+ 
+-        // -- SEQUENCE of EncryptedData
+-        DerOutputStream encrData = new DerOutputStream();
+-        DerOutputStream encrDataContent = new DerOutputStream();
+-        encrData.putInteger(0);
+-        encrData.write(encrContentInfo);
+-        encrDataContent.write(DerValue.tag_Sequence, encrData);
+-        return encrDataContent.toByteArray();
++            // -- SEQUENCE of EncryptedData
++            DerOutputStream encrData = new DerOutputStream();
++            DerOutputStream encrDataContent = new DerOutputStream();
++            encrData.putInteger(0);
++            encrData.write(encrContentInfo);
++            encrDataContent.write(DerValue.tag_Sequence, encrData);
++            return encrDataContent.toByteArray();
++        } else {
++            return safeBagData;
++        }
+     }
+ 
+     /*
+@@ -1881,47 +1862,52 @@
+ 
+         byte[] encryptedData = null;
+ 
+-        // create AlgorithmParameters
+-        AlgorithmParameters algParams =
+-                getPBEAlgorithmParameters("PBEWithSHA1AndRC2_40");
+-        DerOutputStream bytes = new DerOutputStream();
+-        AlgorithmId algId =
+-                new AlgorithmId(pbeWithSHAAnd40BitRC2CBC_OID, algParams);
+-        algId.encode(bytes);
+-        byte[] encodedAlgId = bytes.toByteArray();
+ 
+         try {
++            // create AlgorithmParameters
++            AlgorithmParameters algParams = getPBEAlgorithmParameters(
++                    certProtectionAlgorithm, certPbeIterationCount);
++            DerOutputStream bytes = new DerOutputStream();
++
+             // Use JCE
+             SecretKey skey = getPBEKey(password);
+-            Cipher cipher = Cipher.getInstance("PBEWithSHA1AndRC2_40");
++            Cipher cipher = Cipher.getInstance(certProtectionAlgorithm);
+             cipher.init(Cipher.ENCRYPT_MODE, skey, algParams);
+             encryptedData = cipher.doFinal(data);
+ 
++            AlgorithmId algId = new AlgorithmId(
++                    mapPBEAlgorithmToOID(certProtectionAlgorithm),
++                    cipher.getParameters());
++                    // cipher.getParameters() now has IV
++            algId.encode(bytes);
++            byte[] encodedAlgId = bytes.toByteArray();
++
+             if (debug != null) {
+                 debug.println("  (Cipher algorithm: " + cipher.getAlgorithm() +
+-                    ")");
++                        ")");
+             }
+ 
++            // create EncryptedContentInfo
++            DerOutputStream bytes2 = new DerOutputStream();
++            bytes2.putOID(ContentInfo.DATA_OID);
++            bytes2.write(encodedAlgId);
++
++            // Wrap encrypted data in a context-specific tag.
++            DerOutputStream tmpout2 = new DerOutputStream();
++            tmpout2.putOctetString(encryptedData);
++            bytes2.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
++                    false, (byte) 0), tmpout2);
++
++            // wrap EncryptedContentInfo in a Sequence
++            DerOutputStream out = new DerOutputStream();
++            out.write(DerValue.tag_Sequence, bytes2);
++            return out.toByteArray();
++        } catch (IOException ioe) {
++            throw ioe;
+         } catch (Exception e) {
+             throw new IOException("Failed to encrypt" +
+                     " safe contents entry: " + e, e);
+         }
+-
+-        // create EncryptedContentInfo
+-        DerOutputStream bytes2 = new DerOutputStream();
+-        bytes2.putOID(ContentInfo.DATA_OID);
+-        bytes2.write(encodedAlgId);
+-
+-        // Wrap encrypted data in a context-specific tag.
+-        DerOutputStream tmpout2 = new DerOutputStream();
+-        tmpout2.putOctetString(encryptedData);
+-        bytes2.writeImplicit(DerValue.createTag(DerValue.TAG_CONTEXT,
+-                                        false, (byte)0), tmpout2);
+-
+-        // wrap EncryptedContentInfo in a Sequence
+-        DerOutputStream out = new DerOutputStream();
+-        out.write(DerValue.tag_Sequence, bytes2);
+-        return out.toByteArray();
+     }
+ 
+     /**
+@@ -1944,10 +1930,12 @@
+     public synchronized void engineLoad(InputStream stream, char[] password)
+         throws IOException, NoSuchAlgorithmException, CertificateException
+     {
+-        DataInputStream dis;
+-        CertificateFactory cf = null;
+-        ByteArrayInputStream bais = null;
+-        byte[] encoded = null;
++
++        // Reset config when loading a different keystore.
++        certProtectionAlgorithm = null;
++        certPbeIterationCount = -1;
++        macAlgorithm = null;
++        macIterationCount = -1;
+ 
+         if (stream == null)
+            return;
+@@ -1987,6 +1975,8 @@
+         secretKeyCount = 0;
+         certificateCount = 0;
+ 
++        boolean seeEncBag = false;
++
+         /*
+          * Spin over the ContentInfos.
+          */
+@@ -2012,6 +2002,21 @@
+                         debug.println("Warning: skipping PKCS#7 encryptedData" +
+                             " - no password was supplied");
+                     }
++                    // No password to decrypt ENCRYPTED_DATA_OID. *Skip it*.
++                    // This means user will see a PrivateKeyEntry without
++                    // certificates and a whole TrustedCertificateEntry will
++                    // be lost. This is not a perfect solution but alternative
++                    // solutions are more disruptive:
++                    //
++                    // We cannot just fail, since KeyStore.load(is, null)
++                    // has been known to never fail because of a null password.
++                    //
++                    // We cannot just throw away the whole PrivateKeyEntry,
++                    // this is too silent and no one will notice anything.
++                    //
++                    // We also cannot fail when getCertificate() on such a
++                    // PrivateKeyEntry is called, since the method has not
++                    // specified this behavior.
+                     continue;
+                 }
+ 
+@@ -2055,13 +2060,18 @@
+                     ic = pbeSpec.getIterationCount();
+ 
+                     if (ic > MAX_ITERATION_COUNT) {
+-                        throw new IOException("PBE iteration count too large");
++                        throw new IOException("cert PBE iteration count too large");
+                     }
++
++                    certProtectionAlgorithm
++                            = mapPBEParamsToAlgorithm(algOid, algParams);
++                    certPbeIterationCount = ic;
++                    seeEncBag = true;
+                 }
+ 
+                 if (debug != null) {
+                     debug.println("Loading PKCS#7 encryptedData " +
+-                        "(" + new AlgorithmId(algOid).getName() +
++                        "(" + mapPBEParamsToAlgorithm(algOid, algParams) +
+                         " iterations: " + ic + ")");
+                 }
+ 
+@@ -2086,48 +2096,62 @@
+             }
+         }
+ 
++        // No ENCRYPTED_DATA_OID but see certificate. Must be passwordless.
++        if (!seeEncBag && certificateCount > 0) {
++            certProtectionAlgorithm = "NONE";
++        }
++
+         // The MacData is optional.
+-        if (password != null && s.available() > 0) {
+-            MacData macData = new MacData(s);
+-            int ic = macData.getIterations();
++        if (s.available() > 0) {
++            // If there is no password, we cannot fail. KeyStore.load(is, null)
++            // has been known to never fail because of a null password.
++            if (password != null) {
++                MacData macData = new MacData(s);
++                int ic = macData.getIterations();
+ 
+-            try {
+-                if (ic > MAX_ITERATION_COUNT) {
+-                    throw new InvalidAlgorithmParameterException(
+-                        "MAC iteration count too large: " + ic);
+-                }
++                try {
++                    if (ic > MAX_ITERATION_COUNT) {
++                        throw new InvalidAlgorithmParameterException(
++                                "MAC iteration count too large: " + ic);
++                    }
+ 
+-                String algName =
+-                        macData.getDigestAlgName().toUpperCase(Locale.ENGLISH);
++                    String algName =
++                            macData.getDigestAlgName().toUpperCase(Locale.ENGLISH);
+ 
+-                // Change SHA-1 to SHA1
+-                algName = algName.replace("-", "");
+-
+-                // generate MAC (MAC key is created within JCE)
+-                Mac m = Mac.getInstance("HmacPBE" + algName);
+-                PBEParameterSpec params =
+-                        new PBEParameterSpec(macData.getSalt(), ic);
+-
+-                RetryWithZero.run(pass -> {
+-                    SecretKey key = getPBEKey(pass);
+-                    m.init(key, params);
+-                    m.update(authSafeData);
+-                    byte[] macResult = m.doFinal();
++                    // Change SHA-1 to SHA1
++                    algName = algName.replace("-", "");
+ 
+-                    if (debug != null) {
+-                        debug.println("Checking keystore integrity " +
+-                                "(" + m.getAlgorithm() + " iterations: " + ic + ")");
+-                    }
++                    macAlgorithm = "HmacPBE" + algName;
++                    macIterationCount = ic;
+ 
+-                    if (!MessageDigest.isEqual(macData.getDigest(), macResult)) {
+-                        throw new UnrecoverableKeyException("Failed PKCS12" +
+-                                " integrity checking");
+-                    }
+-                    return (Void)null;
+-                }, password);
+-            } catch (Exception e) {
+-                throw new IOException("Integrity check failed: " + e, e);
++                    // generate MAC (MAC key is created within JCE)
++                    Mac m = Mac.getInstance(macAlgorithm);
++                    PBEParameterSpec params =
++                            new PBEParameterSpec(macData.getSalt(), ic);
++
++                    RetryWithZero.run(pass -> {
++                        SecretKey key = getPBEKey(pass);
++                        m.init(key, params);
++                        m.update(authSafeData);
++                        byte[] macResult = m.doFinal();
++
++                        if (debug != null) {
++                            debug.println("Checking keystore integrity " +
++                                    "(" + m.getAlgorithm() + " iterations: " + ic + ")");
++                        }
++
++                        if (!MessageDigest.isEqual(macData.getDigest(), macResult)) {
++                            throw new UnrecoverableKeyException("Failed PKCS12" +
++                                    " integrity checking");
++                        }
++                        return (Void) null;
++                    }, password);
++                } catch (Exception e) {
++                    throw new IOException("Integrity check failed: " + e, e);
++                }
+             }
++        } else {
++            macAlgorithm = "NONE";
+         }
+ 
+         /*
+@@ -2167,8 +2191,14 @@
+                     cert = certsMap.get(issuerDN);
+                 }
+                 /* Update existing KeyEntry in entries table */
+-                if (chain.size() > 0)
++                if (chain.size() > 0) {
+                     entry.chain = chain.toArray(new Certificate[chain.size()]);
++                } else {
++                    // Remove private key entries where there is no associated
++                    // certs. Most likely the keystore is loaded with a null
++                    // password.
++                    entries.remove(entry);
++                }
+             }
+         }
+ 
+@@ -2184,6 +2214,46 @@
+     }
+ 
+     /**
++     * Returns if a pkcs12 file is password-less. This means no cert is
++     * encrypted and there is no Mac. Please note that the private key
++     * can be encrypted.
++     *
++     * This is a simplified version of {@link #engineLoad} that only looks
++     * at the ContentInfo types.
++     *
++     * @param f the pkcs12 file
++     * @return if it's password-less
++     * @throws IOException
++     */
++    public static boolean isPasswordless(File f) throws IOException {
++
++        try (FileInputStream stream = new FileInputStream(f)) {
++            DerValue val = new DerValue(stream);
++            DerInputStream s = val.toDerInputStream();
++
++            s.getInteger(); // skip version
++
++            ContentInfo authSafe = new ContentInfo(s);
++            DerInputStream as = new DerInputStream(authSafe.getData());
++            for (DerValue seq : as.getSequence(2)) {
++                DerInputStream sci = new DerInputStream(seq.toByteArray());
++                ContentInfo safeContents = new ContentInfo(sci);
++                if (safeContents.getContentType()
++                        .equals(ContentInfo.ENCRYPTED_DATA_OID)) {
++                    // Certificate encrypted
++                    return false;
++                }
++            }
++
++            if (s.available() > 0) {
++                // The MacData exists.
++                return false;
++            }
++        }
++        return true;
++    }
++
++    /**
+      * Locates a matched CertEntry from certEntries, and returns its cert.
+      * @param entry the KeyEntry to match
+      * @return a certificate, null if not found
+@@ -2339,8 +2409,8 @@
+             if (bagItem instanceof KeyEntry) {
+                 KeyEntry entry = (KeyEntry)bagItem;
+ 
+-                if (bagItem instanceof PrivateKeyEntry) {
+-                    if (keyId == null) {
++                if (keyId == null) {
++                    if (bagItem instanceof PrivateKeyEntry) {
+                        // Insert a localKeyID for the privateKey
+                        // Note: This is a workaround to allow null localKeyID
+                        // attribute in pkcs12 with one private key entry and
+@@ -2350,6 +2420,9 @@
+                        } else {
+                             continue;
+                        }
++                    } else {
++                        // keyId in a SecretKeyEntry is not significant
++                        keyId = "00".getBytes("UTF8");
+                     }
+                 }
+                 entry.keyId = keyId;
+@@ -2420,4 +2493,83 @@
+         counter++;
+         return (String.valueOf(counter));
+     }
++
++    // 8076190: Customizing the generation of a PKCS12 keystore
++
++    private static String defaultCertProtectionAlgorithm() {
++        String result = SecurityProperties.privilegedGetOverridable(
++                "keystore.pkcs12.certProtectionAlgorithm");
++        return (result != null && !result.isEmpty())
++                ? result : "PBEWithSHA1AndRC2_40";
++    }
++
++    private static int defaultCertPbeIterationCount() {
++        String result = SecurityProperties.privilegedGetOverridable(
++                "keystore.pkcs12.certPbeIterationCount");
++        return (result != null && !result.isEmpty())
++                ? string2IC("certPbeIterationCount", result) : 50000;
++    }
++
++    // Read both "keystore.pkcs12.keyProtectionAlgorithm" and
++    // "keystore.PKCS12.keyProtectionAlgorithm" for compatibility.
++    private static String defaultKeyProtectionAlgorithm() {
++        String result = AccessController.doPrivileged(new PrivilegedAction<String>() {
++            public String run() {
++                String result;
++                String name1 = "keystore.pkcs12.keyProtectionAlgorithm";
++                String name2 = "keystore.PKCS12.keyProtectionAlgorithm";
++                result = System.getProperty(name1);
++                if (result != null) {
++                    return result;
++                }
++                result = System.getProperty(name2);
++                if (result != null) {
++                    return result;
++                }
++                result = Security.getProperty(name1);
++                if (result != null) {
++                    return result;
++                }
++                return Security.getProperty(name2);
++            }
++        });
++        return (result != null && !result.isEmpty())
++                ? result : "PBEWithSHA1AndDESede";
++    }
++
++    private static int defaultKeyPbeIterationCount() {
++        String result = SecurityProperties.privilegedGetOverridable(
++                "keystore.pkcs12.keyPbeIterationCount");
++        return (result != null && !result.isEmpty())
++                ? string2IC("keyPbeIterationCount", result) : 50000;
++    }
++
++    private static String defaultMacAlgorithm() {
++        String result = SecurityProperties.privilegedGetOverridable(
++                "keystore.pkcs12.macAlgorithm");
++        return (result != null && !result.isEmpty())
++                ? result : "HmacPBESHA1";
++    }
++
++    private static int defaultMacIterationCount() {
++        String result = SecurityProperties.privilegedGetOverridable(
++                "keystore.pkcs12.macIterationCount");
++        return (result != null && !result.isEmpty())
++                ? string2IC("macIterationCount", result) : 100000;
++    }
++
++    private static int string2IC(String type, String value) {
++        int number;
++        try {
++            number = Integer.parseInt(value);
++        } catch (NumberFormatException e) {
++            throw new IllegalArgumentException("keystore.pkcs12." + type
++                    + " is not a number: " + value);
++        }
++        if (number <= 0 || number > MAX_ITERATION_COUNT) {
++            throw new IllegalArgumentException("Invalid keystore.pkcs12."
++                    + type + ": " + value);
++        }
++        return number;
++    }
+ }
+--- openjdk/jdk/src/share/classes/sun/security/tools/keytool/Main.java	2022-02-08 18:39:50.000000000 +0300
++++ openjdk/jdk/src/share/classes/sun/security/tools/keytool/Main.java	2022-02-08 18:39:50.000000000 +0300
+@@ -77,9 +77,11 @@
+ import sun.security.util.ObjectIdentifier;
+ import sun.security.pkcs10.PKCS10;
+ import sun.security.pkcs10.PKCS10Attribute;
++import sun.security.pkcs12.PKCS12KeyStore;
+ import sun.security.provider.X509Factory;
+ import sun.security.provider.certpath.CertStoreHelper;
+ import sun.security.util.Password;
++import sun.security.util.SecurityProperties;
+ import sun.security.util.SecurityProviderConstants;
+ import sun.security.util.SignatureUtil;
+ import javax.crypto.KeyGenerator;
+@@ -190,6 +192,7 @@
+ 
+     private static final Set<CryptoPrimitive> SIG_PRIMITIVE_SET = Collections
+             .unmodifiableSet(EnumSet.of(CryptoPrimitive.SIGNATURE));
++    private boolean isPasswordlessKeyStore = false;
+ 
+     enum Command {
+         CERTREQ("Generates.a.certificate.request",
+@@ -835,6 +838,24 @@
+                 ksStream.close();
+             }
+         }
++        if (keyStore.getProvider().getName().equals("SunJSSE") &&
++                storetype.equalsIgnoreCase(P12KEYSTORE)) {
++            if (ksfile != null && ksStream != null) {
++                try {
++                    isPasswordlessKeyStore = PKCS12KeyStore.isPasswordless(ksfile);
++                } catch(IOException ioe) {
++                    // This must be a JKS keystore that's opened as a PKCS12
++                }
++            } else {
++                // When creating a new pkcs12 file, Do not prompt for storepass
++                // if certProtectionAlgorithm and macAlgorithm are both NONE.
++                isPasswordlessKeyStore =
++                        "NONE".equals(SecurityProperties.privilegedGetOverridable(
++                                "keystore.pkcs12.certProtectionAlgorithm"))
++                                && "NONE".equals(SecurityProperties.privilegedGetOverridable(
++                                "keystore.pkcs12.macAlgorithm"));
++            }
++        }
+ 
+         if (P12KEYSTORE.equalsIgnoreCase(storetype) && command == KEYPASSWD) {
+             throw new UnsupportedOperationException(rb.getString
+@@ -854,11 +875,10 @@
+                         ("Keystore.password.must.be.at.least.6.characters"));
+             }
+         } else if (storePass == null) {
+-
+-            // only prompt if (protectedPath == false)
+-
+-            if (!protectedPath && !KeyStoreUtil.isWindowsKeyStore(storetype) &&
+-                (command == CERTREQ ||
++            if (!protectedPath && !KeyStoreUtil.isWindowsKeyStore(storetype)
++                    && isKeyStoreRelated(command)
++                    && !isPasswordlessKeyStore) {
++                if (command == CERTREQ ||
+                         command == DELETE ||
+                         command == GENKEYPAIR ||
+                         command == GENSECKEY ||
+@@ -870,59 +890,58 @@
+                         command == SELFCERT ||
+                         command == STOREPASSWD ||
+                         command == KEYPASSWD ||
+-                        command == IDENTITYDB)) {
+-                int count = 0;
+-                do {
+-                    if (command == IMPORTKEYSTORE) {
+-                        System.err.print
+-                                (rb.getString("Enter.destination.keystore.password."));
+-                    } else {
+-                        System.err.print
+-                                (rb.getString("Enter.keystore.password."));
+-                    }
+-                    System.err.flush();
+-                    storePass = Password.readPassword(System.in);
+-                    passwords.add(storePass);
+-
+-                    // If we are creating a new non nullStream-based keystore,
+-                    // insist that the password be at least 6 characters
+-                    if (!nullStream && (storePass == null || storePass.length < 6)) {
+-                        System.err.println(rb.getString
+-                                ("Keystore.password.is.too.short.must.be.at.least.6.characters"));
+-                        storePass = null;
+-                    }
+-
+-                    // If the keystore file does not exist and needs to be
+-                    // created, the storepass should be prompted twice.
+-                    if (storePass != null && !nullStream && ksStream == null) {
+-                        System.err.print(rb.getString("Re.enter.new.password."));
+-                        char[] storePassAgain = Password.readPassword(System.in);
+-                        passwords.add(storePassAgain);
+-                        if (!Arrays.equals(storePass, storePassAgain)) {
+-                            System.err.println
+-                                (rb.getString("They.don.t.match.Try.again"));
++                        command == IDENTITYDB) {
++                    int count = 0;
++                    do {
++                        if (command == IMPORTKEYSTORE) {
++                            System.err.print
++                                    (rb.getString("Enter.destination.keystore.password."));
++                        } else {
++                            System.err.print
++                                    (rb.getString("Enter.keystore.password."));
++                        }
++                        System.err.flush();
++                        storePass = Password.readPassword(System.in);
++                        passwords.add(storePass);
++
++                        // If we are creating a new non nullStream-based keystore,
++                        // insist that the password be at least 6 characters
++                        if (!nullStream && (storePass == null || storePass.length < 6)) {
++                            System.err.println(rb.getString
++                                    ("Keystore.password.is.too.short.must.be.at.least.6.characters"));
+                             storePass = null;
+                         }
+-                    }
+ 
+-                    count++;
+-                } while ((storePass == null) && count < 3);
++                        // If the keystore file does not exist and needs to be
++                        // created, the storepass should be prompted twice.
++                        if (storePass != null && !nullStream && ksStream == null) {
++                            System.err.print(rb.getString("Re.enter.new.password."));
++                            char[] storePassAgain = Password.readPassword(System.in);
++                            passwords.add(storePassAgain);
++                            if (!Arrays.equals(storePass, storePassAgain)) {
++                                System.err.println
++                                        (rb.getString("They.don.t.match.Try.again"));
++                                storePass = null;
++                            }
++                        }
+ 
++                        count++;
++                    } while ((storePass == null) && count < 3);
+ 
+-                if (storePass == null) {
+-                    System.err.println
+-                        (rb.getString("Too.many.failures.try.later"));
+-                    return;
+-                }
+-            } else if (!protectedPath
+-                    && !KeyStoreUtil.isWindowsKeyStore(storetype)
+-                    && isKeyStoreRelated(command)) {
+-                // here we have EXPORTCERT and LIST (info valid until STOREPASSWD)
+-                if (command != PRINTCRL) {
+-                    System.err.print(rb.getString("Enter.keystore.password."));
+-                    System.err.flush();
+-                    storePass = Password.readPassword(System.in);
+-                    passwords.add(storePass);
++
++                    if (storePass == null) {
++                        System.err.println
++                                (rb.getString("Too.many.failures.try.later"));
++                        return;
++                    }
++                } else {
++                    // here we have EXPORTCERT and LIST (info valid until STOREPASSWD)
++                    if (command != PRINTCRL) {
++                        System.err.print(rb.getString("Enter.keystore.password."));
++                        System.err.flush();
++                        storePass = Password.readPassword(System.in);
++                        passwords.add(storePass);
++                    }
+                 }
+             }
+ 
+@@ -1115,7 +1134,8 @@
+             kssave = true;
+         } else if (command == LIST) {
+             if (storePass == null
+-                    && !KeyStoreUtil.isWindowsKeyStore(storetype)) {
++                    && !KeyStoreUtil.isWindowsKeyStore(storetype)
++                    && !isPasswordlessKeyStore) {
+                 printNoIntegrityWarning();
+             }
+ 
+@@ -1493,7 +1513,8 @@
+         throws Exception
+     {
+         if (storePass == null
+-                && !KeyStoreUtil.isWindowsKeyStore(storetype)) {
++                && !KeyStoreUtil.isWindowsKeyStore(storetype)
++                && !isPasswordlessKeyStore) {
+             printNoIntegrityWarning();
+         }
+         if (alias == null) {
+@@ -1524,7 +1545,7 @@
+      * @param origPass the password to copy from if user press ENTER
+      */
+     private char[] promptForKeyPass(String alias, String orig, char[] origPass) throws Exception{
+-        if (P12KEYSTORE.equalsIgnoreCase(storetype)) {
++        if (origPass != null && P12KEYSTORE.equalsIgnoreCase(storetype)) {
+             return origPass;
+         } else if (!token && !protectedPath) {
+             // Prompt for key password
+@@ -1533,22 +1554,25 @@
+                 MessageFormat form = new MessageFormat(rb.getString
+                         ("Enter.key.password.for.alias."));
+                 Object[] source = {alias};
+-                System.err.println(form.format(source));
+-                if (orig == null) {
+-                    System.err.print(rb.getString
+-                            (".RETURN.if.same.as.keystore.password."));
+-                } else {
+-                    form = new MessageFormat(rb.getString
+-                            (".RETURN.if.same.as.for.otherAlias."));
+-                    Object[] src = {orig};
+-                    System.err.print(form.format(src));
++                System.err.print(form.format(source));
++                if (origPass != null) {
++                    System.err.println();
++                    if (orig == null) {
++                        System.err.print(rb.getString
++                                (".RETURN.if.same.as.keystore.password."));
++                    } else {
++                        form = new MessageFormat(rb.getString
++                                (".RETURN.if.same.as.for.otherAlias."));
++                        Object[] src = {orig};
++                        System.err.print(form.format(src));
++                    }
+                 }
+                 System.err.flush();
+                 char[] entered = Password.readPassword(System.in);
+                 passwords.add(entered);
+-                if (entered == null) {
++                if (entered == null && origPass != null) {
+                     return origPass;
+-                } else if (entered.length >= 6) {
++                } else if (entered != null && entered.length >= 6) {
+                     System.err.print(rb.getString("Re.enter.new.password."));
+                     char[] passAgain = Password.readPassword(System.in);
+                     passwords.add(passAgain);
+@@ -1941,6 +1965,9 @@
+                         getCertFingerPrint("SHA-256", chain[0]));
+                     checkWeak(label, chain[0]);
+                 }
++            } else {
++                out.println(rb.getString
++                        ("Certificate.chain.length.") + 0);
+             }
+         } else if (keyStore.entryInstanceOf(alias,
+                 KeyStore.TrustedCertificateEntry.class)) {
+@@ -2005,6 +2032,7 @@
+ 
+         InputStream is = null;
+         File srcksfile = null;
++        boolean srcIsPasswordless = false;
+ 
+         if (P11KEYSTORE.equalsIgnoreCase(srcstoretype) ||
+                 KeyStoreUtil.isWindowsKeyStore(srcstoretype)) {
+@@ -2029,10 +2057,20 @@
+             } else {
+                 store = KeyStore.getInstance(srcstoretype, srcProviderName);
+             }
++            if (store.getProvider().getName().equals("SunJSSE") &&
++                    srcstoretype.equalsIgnoreCase(P12KEYSTORE) &&
++                    srcksfile != null && is != null) {
++                try {
++                    srcIsPasswordless = PKCS12KeyStore.isPasswordless(srcksfile);
++                } catch(IOException ioe) {
++                    // This must be a JKS keystore that's opened as a PKCS12
++                }
++            }
+ 
+             if (srcstorePass == null
+                     && !srcprotectedPath
+-                    && !KeyStoreUtil.isWindowsKeyStore(srcstoretype)) {
++                    && !KeyStoreUtil.isWindowsKeyStore(srcstoretype)
++                    && !srcIsPasswordless) {
+                 System.err.print(rb.getString("Enter.source.keystore.password."));
+                 System.err.flush();
+                 srcstorePass = Password.readPassword(System.in);
+@@ -2059,6 +2097,7 @@
+         }
+ 
+         if (srcstorePass == null
++                && !srcIsPasswordless
+                 && !KeyStoreUtil.isWindowsKeyStore(srcstoretype)) {
+             // anti refactoring, copied from printNoIntegrityWarning(),
+             // but change 2 lines
+@@ -3372,25 +3411,25 @@
+ 
+         if (keyPass == null) {
+             // Try to recover the key using the keystore password
+-            try {
+-                key = keyStore.getKey(alias, storePass);
+-
+-                keyPass = storePass;
+-                passwords.add(keyPass);
+-            } catch (UnrecoverableKeyException e) {
+-                // Did not work out, so prompt user for key password
+-                if (!token) {
+-                    keyPass = getKeyPasswd(alias, null, null);
+-                    key = keyStore.getKey(alias, keyPass);
+-                } else {
+-                    throw e;
++            if (storePass != null) {
++                try {
++                    key = keyStore.getKey(alias, storePass);
++                    passwords.add(storePass);
++                    return Pair.of(key, storePass);
++                } catch (UnrecoverableKeyException e) {
++                    if (token) {
++                        throw e;
++                    }
+                 }
+             }
++            // prompt user for key password
++            keyPass = getKeyPasswd(alias, null, null);
++            key = keyStore.getKey(alias, keyPass);
++            return Pair.of(key, keyPass);
+         } else {
+             key = keyStore.getKey(alias, keyPass);
++            return Pair.of(key, keyPass);
+         }
+-
+-        return Pair.of(key, keyPass);
+     }
+ 
+     /**
+@@ -3404,69 +3443,58 @@
+                             String alias,
+                             char[] pstore,
+                             char[] pkey) throws Exception {
+-
+-        if (ks.containsAlias(alias) == false) {
+-            MessageFormat form = new MessageFormat
+-                (rb.getString("Alias.alias.does.not.exist"));
++        if (!ks.containsAlias(alias)) {
++            MessageFormat form = new MessageFormat(
++                    rb.getString("Alias.alias.does.not.exist"));
+             Object[] source = {alias};
+             throw new Exception(form.format(source));
+         }
+ 
+-        PasswordProtection pp = null;
+-        Entry entry;
+-
++        // Step 1: First attempt to access entry without key password
++        // (PKCS11 entry or trusted certificate entry, for example).
++        // If fail, go next.
+         try {
+-            // First attempt to access entry without key password
+-            // (PKCS11 entry or trusted certificate entry, for example)
+-
+-            entry = ks.getEntry(alias, pp);
+-            pkey = null;
++            Entry entry = ks.getEntry(alias, null);
++            return Pair.of(entry, null);
+         } catch (UnrecoverableEntryException une) {
+-
+             if(P11KEYSTORE.equalsIgnoreCase(ks.getType()) ||
+-                KeyStoreUtil.isWindowsKeyStore(ks.getType())) {
++                    KeyStoreUtil.isWindowsKeyStore(ks.getType())) {
+                 // should not happen, but a possibility
+                 throw une;
+             }
++        }
+ 
+-            // entry is protected
+-
+-            if (pkey != null) {
+-
+-                // try provided key password
+-
+-                pp = new PasswordProtection(pkey);
+-                entry = ks.getEntry(alias, pp);
+-
+-            } else {
+-
+-                // try store pass
+-
+-                try {
+-                    pp = new PasswordProtection(pstore);
+-                    entry = ks.getEntry(alias, pp);
+-                    pkey = pstore;
+-                } catch (UnrecoverableEntryException une2) {
+-                    if (P12KEYSTORE.equalsIgnoreCase(ks.getType())) {
+-
+-                        // P12 keystore currently does not support separate
+-                        // store and entry passwords
+-
+-                        throw une2;
+-                    } else {
+-
+-                        // prompt for entry password
++        // entry is protected
++        // Step 2: try pkey if not null. If fail, fail.
++        if (pkey != null) {
++            PasswordProtection pp = new PasswordProtection(pkey);
++            Entry entry = ks.getEntry(alias, pp);
++            return Pair.of(entry, pkey);
++        }
+ 
+-                        pkey = getKeyPasswd(alias, null, null);
+-                        pp = new PasswordProtection(pkey);
+-                        entry = ks.getEntry(alias, pp);
+-                    }
++        // Step 3: try pstore if not null. If fail, go next.
++        if (pstore != null) {
++            try {
++                PasswordProtection pp = new PasswordProtection(pstore);
++                Entry entry = ks.getEntry(alias, pp);
++                return Pair.of(entry, pstore);
++            } catch (UnrecoverableEntryException une) {
++                if (P12KEYSTORE.equalsIgnoreCase(ks.getType())) {
++                    // P12 keystore currently does not support separate
++                    // store and entry passwords. We will not prompt for
++                    // entry password.
++                    throw une;
+                 }
+             }
+         }
+ 
++        // Step 4: prompt for entry password
++        pkey = getKeyPasswd(alias, null, null);
++        PasswordProtection pp = new PasswordProtection(pkey);
++        Entry entry = ks.getEntry(alias, pp);
+         return Pair.of(entry, pkey);
+     }
++
+     /**
+      * Gets the requested finger print of the certificate.
+      */
+--- openjdk/jdk/src/share/classes/sun/security/x509/AlgorithmId.java	2022-02-08 18:39:51.000000000 +0300
++++ openjdk/jdk/src/share/classes/sun/security/x509/AlgorithmId.java	2022-02-08 18:39:51.000000000 +0300
+@@ -821,8 +821,14 @@
+         ObjectIdentifier.newInternal(new int[] {1, 2, 840, 113549, 1, 5, 10});
+     public static final ObjectIdentifier pbeWithSHA1AndRC2_oid =
+         ObjectIdentifier.newInternal(new int[] {1, 2, 840, 113549, 1, 5, 11});
++    public static ObjectIdentifier pbeWithSHA1AndRC4_128_oid =
++        ObjectIdentifier.newInternal(new int[] {1, 2, 840, 113549, 1, 12, 1, 1});
++    public static ObjectIdentifier pbeWithSHA1AndRC4_40_oid =
++        ObjectIdentifier.newInternal(new int[] {1, 2, 840, 113549, 1, 12, 1, 2});
+     public static ObjectIdentifier pbeWithSHA1AndDESede_oid =
+         ObjectIdentifier.newInternal(new int[] {1, 2, 840, 113549, 1, 12, 1, 3});
++    public static ObjectIdentifier pbeWithSHA1AndRC2_128_oid =
++        ObjectIdentifier.newInternal(new int[] {1, 2, 840, 113549, 1, 12, 1, 5});
+     public static ObjectIdentifier pbeWithSHA1AndRC2_40_oid =
+         ObjectIdentifier.newInternal(new int[] {1, 2, 840, 113549, 1, 12, 1, 6});
+ 
+@@ -1011,7 +1017,10 @@
+         nameTable.put(pbeWithMD5AndRC2_oid, "PBEWithMD5AndRC2");
+         nameTable.put(pbeWithSHA1AndDES_oid, "PBEWithSHA1AndDES");
+         nameTable.put(pbeWithSHA1AndRC2_oid, "PBEWithSHA1AndRC2");
++        nameTable.put(pbeWithSHA1AndRC4_128_oid, "PBEWithSHA1AndRC4_128");
++        nameTable.put(pbeWithSHA1AndRC4_40_oid, "PBEWithSHA1AndRC4_40");
+         nameTable.put(pbeWithSHA1AndDESede_oid, "PBEWithSHA1AndDESede");
++        nameTable.put(pbeWithSHA1AndRC2_128_oid, "PBEWithSHA1AndRC2_128");
+         nameTable.put(pbeWithSHA1AndRC2_40_oid, "PBEWithSHA1AndRC2_40");
+     }
+ 
+--- openjdk/jdk/src/share/lib/security/java.security-aix	2022-02-08 18:39:52.000000000 +0300
++++ openjdk/jdk/src/share/lib/security/java.security-aix	2022-02-08 18:39:51.000000000 +0300
+@@ -1092,6 +1092,77 @@
+ jceks.key.serialFilter = java.lang.Enum;java.security.KeyRep;\
+   java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!*
+ 
++#
++# PKCS12 KeyStore properties
++#
++# The following properties, if configured, are used by the PKCS12 KeyStore
++# implementation during the creation of a new keystore. Several of the
++# properties may also be used when modifying an existing keystore. The
++# properties can be overridden by a KeyStore API that specifies its own
++# algorithms and parameters.
++#
++# If an existing PKCS12 keystore is loaded and then stored, the algorithm and
++# parameter used to generate the existing Mac will be reused. If the existing
++# keystore does not have a Mac, no Mac will be created while storing. If there
++# is at least one certificate in the existing keystore, the algorithm and
++# parameters used to encrypt the last certificate in the existing keystore will
++# be reused to encrypt all certificates while storing. If the last certificate
++# in the existing keystore is not encrypted, all certificates will be stored
++# unencrypted. If there is no certificate in the existing keystore, any newly
++# added certificate will be encrypted (or stored unencrypted if algorithm
++# value is "NONE") using the "keystore.pkcs12.certProtectionAlgorithm" and
++# "keystore.pkcs12.certPbeIterationCount" values defined here. Existing private
++# and secret key(s) are not changed. Newly set private and secret key(s) will
++# be encrypted using the "keystore.pkcs12.keyProtectionAlgorithm" and
++# "keystore.pkcs12.keyPbeIterationCount" values defined here.
++#
++# In order to apply new algorithms and parameters to all entries in an
++# existing keystore, one can create a new keystore and add entries in the
++# existing keystore into the new keystore. This can be achieved by calling the
++# "keytool -importkeystore" command.
++#
++# If a system property of the same name is also specified, it supersedes the
++# security property value defined here.
++#
++# If the property is set to an illegal value,
++# an iteration count that is not a positive integer, or an unknown algorithm
++# name, an exception will be thrown when the property is used.
++# If the property is not set or empty, a default value will be used.
++#
++# Note: These properties are currently used by the JDK Reference implementation.
++# They are not guaranteed to be examined and used by other implementations.
++
++# The algorithm used to encrypt a certificate. This can be any non-Hmac PBE
++# algorithm defined in the Cipher section of the Java Security Standard
++# Algorithm Names Specification. When set to "NONE", the certificate
++# is not encrypted. The default value is "PBEWithSHA1AndRC2_40".
++#keystore.pkcs12.certProtectionAlgorithm = PBEWithSHA1AndRC2_40
++
++# The iteration count used by the PBE algorithm when encrypting a certificate.
++# This value must be a positive integer. The default value is 50000.
++#keystore.pkcs12.certPbeIterationCount = 50000
++
++# The algorithm used to encrypt a private key or secret key. This can be
++# any non-Hmac PBE algorithm defined in the Cipher section of the Java
++# Security Standard Algorithm Names Specification. The value must not be "NONE".
++# The default value is "PBEWithSHA1AndDESede".
++#keystore.pkcs12.keyProtectionAlgorithm = PBEWithSHA1AndDESede
++
++# The iteration count used by the PBE algorithm when encrypting a private key
++# or a secret key. This value must be a positive integer. The default value
++# is 50000.
++#keystore.pkcs12.keyPbeIterationCount = 50000
++
++# The algorithm used to calculate the optional MacData at the end of a PKCS12
++# file. This can be any HmacPBE algorithm defined in the Mac section of the
++# Java Security Standard Algorithm Names Specification. When set to "NONE",
++# no Mac is generated. The default value is "HmacPBESHA1".
++#keystore.pkcs12.macAlgorithm = HmacPBESHA1
++
++# The iteration count used by the MacData algorithm. This value must be a
++# positive integer. The default value is 100000.
++#keystore.pkcs12.macIterationCount = 100000
++
+ # The iteration count used for password-based encryption (PBE) in JCEKS
+ # keystores. Values in the range 10000 to 5000000 are considered valid.
+ # If the value is out of this range, or is not a number, or is unspecified;
+--- openjdk/jdk/src/share/lib/security/java.security-linux	2022-02-08 18:39:52.000000000 +0300
++++ openjdk/jdk/src/share/lib/security/java.security-linux	2022-02-08 18:39:52.000000000 +0300
+@@ -1098,6 +1098,77 @@
+ jceks.key.serialFilter = java.lang.Enum;java.security.KeyRep;\
+   java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!*
+ 
++#
++# PKCS12 KeyStore properties
++#
++# The following properties, if configured, are used by the PKCS12 KeyStore
++# implementation during the creation of a new keystore. Several of the
++# properties may also be used when modifying an existing keystore. The
++# properties can be overridden by a KeyStore API that specifies its own
++# algorithms and parameters.
++#
++# If an existing PKCS12 keystore is loaded and then stored, the algorithm and
++# parameter used to generate the existing Mac will be reused. If the existing
++# keystore does not have a Mac, no Mac will be created while storing. If there
++# is at least one certificate in the existing keystore, the algorithm and
++# parameters used to encrypt the last certificate in the existing keystore will
++# be reused to encrypt all certificates while storing. If the last certificate
++# in the existing keystore is not encrypted, all certificates will be stored
++# unencrypted. If there is no certificate in the existing keystore, any newly
++# added certificate will be encrypted (or stored unencrypted if algorithm
++# value is "NONE") using the "keystore.pkcs12.certProtectionAlgorithm" and
++# "keystore.pkcs12.certPbeIterationCount" values defined here. Existing private
++# and secret key(s) are not changed. Newly set private and secret key(s) will
++# be encrypted using the "keystore.pkcs12.keyProtectionAlgorithm" and
++# "keystore.pkcs12.keyPbeIterationCount" values defined here.
++#
++# In order to apply new algorithms and parameters to all entries in an
++# existing keystore, one can create a new keystore and add entries in the
++# existing keystore into the new keystore. This can be achieved by calling the
++# "keytool -importkeystore" command.
++#
++# If a system property of the same name is also specified, it supersedes the
++# security property value defined here.
++#
++# If the property is set to an illegal value,
++# an iteration count that is not a positive integer, or an unknown algorithm
++# name, an exception will be thrown when the property is used.
++# If the property is not set or empty, a default value will be used.
++#
++# Note: These properties are currently used by the JDK Reference implementation.
++# They are not guaranteed to be examined and used by other implementations.
++
++# The algorithm used to encrypt a certificate. This can be any non-Hmac PBE
++# algorithm defined in the Cipher section of the Java Security Standard
++# Algorithm Names Specification. When set to "NONE", the certificate
++# is not encrypted. The default value is "PBEWithSHA1AndRC2_40".
++#keystore.pkcs12.certProtectionAlgorithm = PBEWithSHA1AndRC2_40
++
++# The iteration count used by the PBE algorithm when encrypting a certificate.
++# This value must be a positive integer. The default value is 50000.
++#keystore.pkcs12.certPbeIterationCount = 50000
++
++# The algorithm used to encrypt a private key or secret key. This can be
++# any non-Hmac PBE algorithm defined in the Cipher section of the Java
++# Security Standard Algorithm Names Specification. The value must not be "NONE".
++# The default value is "PBEWithSHA1AndDESede".
++#keystore.pkcs12.keyProtectionAlgorithm = PBEWithSHA1AndDESede
++
++# The iteration count used by the PBE algorithm when encrypting a private key
++# or a secret key. This value must be a positive integer. The default value
++# is 50000.
++#keystore.pkcs12.keyPbeIterationCount = 50000
++
++# The algorithm used to calculate the optional MacData at the end of a PKCS12
++# file. This can be any HmacPBE algorithm defined in the Mac section of the
++# Java Security Standard Algorithm Names Specification. When set to "NONE",
++# no Mac is generated. The default value is "HmacPBESHA1".
++#keystore.pkcs12.macAlgorithm = HmacPBESHA1
++
++# The iteration count used by the MacData algorithm. This value must be a
++# positive integer. The default value is 100000.
++#keystore.pkcs12.macIterationCount = 100000
++
+ # The iteration count used for password-based encryption (PBE) in JCEKS
+ # keystores. Values in the range 10000 to 5000000 are considered valid.
+ # If the value is out of this range, or is not a number, or is unspecified;
+--- openjdk/jdk/src/share/lib/security/java.security-macosx	2022-02-08 18:39:53.000000000 +0300
++++ openjdk/jdk/src/share/lib/security/java.security-macosx	2022-02-08 18:39:53.000000000 +0300
+@@ -1096,6 +1096,77 @@
+ jceks.key.serialFilter = java.lang.Enum;java.security.KeyRep;\
+   java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!*
+ 
++#
++# PKCS12 KeyStore properties
++#
++# The following properties, if configured, are used by the PKCS12 KeyStore
++# implementation during the creation of a new keystore. Several of the
++# properties may also be used when modifying an existing keystore. The
++# properties can be overridden by a KeyStore API that specifies its own
++# algorithms and parameters.
++#
++# If an existing PKCS12 keystore is loaded and then stored, the algorithm and
++# parameter used to generate the existing Mac will be reused. If the existing
++# keystore does not have a Mac, no Mac will be created while storing. If there
++# is at least one certificate in the existing keystore, the algorithm and
++# parameters used to encrypt the last certificate in the existing keystore will
++# be reused to encrypt all certificates while storing. If the last certificate
++# in the existing keystore is not encrypted, all certificates will be stored
++# unencrypted. If there is no certificate in the existing keystore, any newly
++# added certificate will be encrypted (or stored unencrypted if algorithm
++# value is "NONE") using the "keystore.pkcs12.certProtectionAlgorithm" and
++# "keystore.pkcs12.certPbeIterationCount" values defined here. Existing private
++# and secret key(s) are not changed. Newly set private and secret key(s) will
++# be encrypted using the "keystore.pkcs12.keyProtectionAlgorithm" and
++# "keystore.pkcs12.keyPbeIterationCount" values defined here.
++#
++# In order to apply new algorithms and parameters to all entries in an
++# existing keystore, one can create a new keystore and add entries in the
++# existing keystore into the new keystore. This can be achieved by calling the
++# "keytool -importkeystore" command.
++#
++# If a system property of the same name is also specified, it supersedes the
++# security property value defined here.
++#
++# If the property is set to an illegal value,
++# an iteration count that is not a positive integer, or an unknown algorithm
++# name, an exception will be thrown when the property is used.
++# If the property is not set or empty, a default value will be used.
++#
++# Note: These properties are currently used by the JDK Reference implementation.
++# They are not guaranteed to be examined and used by other implementations.
++
++# The algorithm used to encrypt a certificate. This can be any non-Hmac PBE
++# algorithm defined in the Cipher section of the Java Security Standard
++# Algorithm Names Specification. When set to "NONE", the certificate
++# is not encrypted. The default value is "PBEWithSHA1AndRC2_40".
++#keystore.pkcs12.certProtectionAlgorithm = PBEWithSHA1AndRC2_40
++
++# The iteration count used by the PBE algorithm when encrypting a certificate.
++# This value must be a positive integer. The default value is 50000.
++#keystore.pkcs12.certPbeIterationCount = 50000
++
++# The algorithm used to encrypt a private key or secret key. This can be
++# any non-Hmac PBE algorithm defined in the Cipher section of the Java
++# Security Standard Algorithm Names Specification. The value must not be "NONE".
++# The default value is "PBEWithSHA1AndDESede".
++#keystore.pkcs12.keyProtectionAlgorithm = PBEWithSHA1AndDESede
++
++# The iteration count used by the PBE algorithm when encrypting a private key
++# or a secret key. This value must be a positive integer. The default value
++# is 50000.
++#keystore.pkcs12.keyPbeIterationCount = 50000
++
++# The algorithm used to calculate the optional MacData at the end of a PKCS12
++# file. This can be any HmacPBE algorithm defined in the Mac section of the
++# Java Security Standard Algorithm Names Specification. When set to "NONE",
++# no Mac is generated. The default value is "HmacPBESHA1".
++#keystore.pkcs12.macAlgorithm = HmacPBESHA1
++
++# The iteration count used by the MacData algorithm. This value must be a
++# positive integer. The default value is 100000.
++#keystore.pkcs12.macIterationCount = 100000
++
+ # The iteration count used for password-based encryption (PBE) in JCEKS
+ # keystores. Values in the range 10000 to 5000000 are considered valid.
+ # If the value is out of this range, or is not a number, or is unspecified;
+--- openjdk/jdk/src/share/lib/security/java.security-solaris	2022-02-08 18:39:54.000000000 +0300
++++ openjdk/jdk/src/share/lib/security/java.security-solaris	2022-02-08 18:39:54.000000000 +0300
+@@ -1094,6 +1094,77 @@
+ jceks.key.serialFilter = java.lang.Enum;java.security.KeyRep;\
+   java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!*
+ 
++#
++# PKCS12 KeyStore properties
++#
++# The following properties, if configured, are used by the PKCS12 KeyStore
++# implementation during the creation of a new keystore. Several of the
++# properties may also be used when modifying an existing keystore. The
++# properties can be overridden by a KeyStore API that specifies its own
++# algorithms and parameters.
++#
++# If an existing PKCS12 keystore is loaded and then stored, the algorithm and
++# parameter used to generate the existing Mac will be reused. If the existing
++# keystore does not have a Mac, no Mac will be created while storing. If there
++# is at least one certificate in the existing keystore, the algorithm and
++# parameters used to encrypt the last certificate in the existing keystore will
++# be reused to encrypt all certificates while storing. If the last certificate
++# in the existing keystore is not encrypted, all certificates will be stored
++# unencrypted. If there is no certificate in the existing keystore, any newly
++# added certificate will be encrypted (or stored unencrypted if algorithm
++# value is "NONE") using the "keystore.pkcs12.certProtectionAlgorithm" and
++# "keystore.pkcs12.certPbeIterationCount" values defined here. Existing private
++# and secret key(s) are not changed. Newly set private and secret key(s) will
++# be encrypted using the "keystore.pkcs12.keyProtectionAlgorithm" and
++# "keystore.pkcs12.keyPbeIterationCount" values defined here.
++#
++# In order to apply new algorithms and parameters to all entries in an
++# existing keystore, one can create a new keystore and add entries in the
++# existing keystore into the new keystore. This can be achieved by calling the
++# "keytool -importkeystore" command.
++#
++# If a system property of the same name is also specified, it supersedes the
++# security property value defined here.
++#
++# If the property is set to an illegal value,
++# an iteration count that is not a positive integer, or an unknown algorithm
++# name, an exception will be thrown when the property is used.
++# If the property is not set or empty, a default value will be used.
++#
++# Note: These properties are currently used by the JDK Reference implementation.
++# They are not guaranteed to be examined and used by other implementations.
++
++# The algorithm used to encrypt a certificate. This can be any non-Hmac PBE
++# algorithm defined in the Cipher section of the Java Security Standard
++# Algorithm Names Specification. When set to "NONE", the certificate
++# is not encrypted. The default value is "PBEWithSHA1AndRC2_40".
++#keystore.pkcs12.certProtectionAlgorithm = PBEWithSHA1AndRC2_40
++
++# The iteration count used by the PBE algorithm when encrypting a certificate.
++# This value must be a positive integer. The default value is 50000.
++#keystore.pkcs12.certPbeIterationCount = 50000
++
++# The algorithm used to encrypt a private key or secret key. This can be
++# any non-Hmac PBE algorithm defined in the Cipher section of the Java
++# Security Standard Algorithm Names Specification. The value must not be "NONE".
++# The default value is "PBEWithSHA1AndDESede".
++#keystore.pkcs12.keyProtectionAlgorithm = PBEWithSHA1AndDESede
++
++# The iteration count used by the PBE algorithm when encrypting a private key
++# or a secret key. This value must be a positive integer. The default value
++# is 50000.
++#keystore.pkcs12.keyPbeIterationCount = 50000
++
++# The algorithm used to calculate the optional MacData at the end of a PKCS12
++# file. This can be any HmacPBE algorithm defined in the Mac section of the
++# Java Security Standard Algorithm Names Specification. When set to "NONE",
++# no Mac is generated. The default value is "HmacPBESHA1".
++#keystore.pkcs12.macAlgorithm = HmacPBESHA1
++
++# The iteration count used by the MacData algorithm. This value must be a
++# positive integer. The default value is 100000.
++#keystore.pkcs12.macIterationCount = 100000
++
+ # The iteration count used for password-based encryption (PBE) in JCEKS
+ # keystores. Values in the range 10000 to 5000000 are considered valid.
+ # If the value is out of this range, or is not a number, or is unspecified;
+--- openjdk/jdk/src/share/lib/security/java.security-windows	2022-02-08 18:39:55.000000000 +0300
++++ openjdk/jdk/src/share/lib/security/java.security-windows	2022-02-08 18:39:55.000000000 +0300
+@@ -1096,6 +1096,77 @@
+ jceks.key.serialFilter = java.lang.Enum;java.security.KeyRep;\
+   java.security.KeyRep$Type;javax.crypto.spec.SecretKeySpec;!*
+ 
++#
++# PKCS12 KeyStore properties
++#
++# The following properties, if configured, are used by the PKCS12 KeyStore
++# implementation during the creation of a new keystore. Several of the
++# properties may also be used when modifying an existing keystore. The
++# properties can be overridden by a KeyStore API that specifies its own
++# algorithms and parameters.
++#
++# If an existing PKCS12 keystore is loaded and then stored, the algorithm and
++# parameter used to generate the existing Mac will be reused. If the existing
++# keystore does not have a Mac, no Mac will be created while storing. If there
++# is at least one certificate in the existing keystore, the algorithm and
++# parameters used to encrypt the last certificate in the existing keystore will
++# be reused to encrypt all certificates while storing. If the last certificate
++# in the existing keystore is not encrypted, all certificates will be stored
++# unencrypted. If there is no certificate in the existing keystore, any newly
++# added certificate will be encrypted (or stored unencrypted if algorithm
++# value is "NONE") using the "keystore.pkcs12.certProtectionAlgorithm" and
++# "keystore.pkcs12.certPbeIterationCount" values defined here. Existing private
++# and secret key(s) are not changed. Newly set private and secret key(s) will
++# be encrypted using the "keystore.pkcs12.keyProtectionAlgorithm" and
++# "keystore.pkcs12.keyPbeIterationCount" values defined here.
++#
++# In order to apply new algorithms and parameters to all entries in an
++# existing keystore, one can create a new keystore and add entries in the
++# existing keystore into the new keystore. This can be achieved by calling the
++# "keytool -importkeystore" command.
++#
++# If a system property of the same name is also specified, it supersedes the
++# security property value defined here.
++#
++# If the property is set to an illegal value,
++# an iteration count that is not a positive integer, or an unknown algorithm
++# name, an exception will be thrown when the property is used.
++# If the property is not set or empty, a default value will be used.
++#
++# Note: These properties are currently used by the JDK Reference implementation.
++# They are not guaranteed to be examined and used by other implementations.
++
++# The algorithm used to encrypt a certificate. This can be any non-Hmac PBE
++# algorithm defined in the Cipher section of the Java Security Standard
++# Algorithm Names Specification. When set to "NONE", the certificate
++# is not encrypted. The default value is "PBEWithSHA1AndRC2_40".
++#keystore.pkcs12.certProtectionAlgorithm = PBEWithSHA1AndRC2_40
++
++# The iteration count used by the PBE algorithm when encrypting a certificate.
++# This value must be a positive integer. The default value is 50000.
++#keystore.pkcs12.certPbeIterationCount = 50000
++
++# The algorithm used to encrypt a private key or secret key. This can be
++# any non-Hmac PBE algorithm defined in the Cipher section of the Java
++# Security Standard Algorithm Names Specification. The value must not be "NONE".
++# The default value is "PBEWithSHA1AndDESede".
++#keystore.pkcs12.keyProtectionAlgorithm = PBEWithSHA1AndDESede
++
++# The iteration count used by the PBE algorithm when encrypting a private key
++# or a secret key. This value must be a positive integer. The default value
++# is 50000.
++#keystore.pkcs12.keyPbeIterationCount = 50000
++
++# The algorithm used to calculate the optional MacData at the end of a PKCS12
++# file. This can be any HmacPBE algorithm defined in the Mac section of the
++# Java Security Standard Algorithm Names Specification. When set to "NONE",
++# no Mac is generated. The default value is "HmacPBESHA1".
++#keystore.pkcs12.macAlgorithm = HmacPBESHA1
++
++# The iteration count used by the MacData algorithm. This value must be a
++# positive integer. The default value is 100000.
++#keystore.pkcs12.macIterationCount = 100000
++
+ # The iteration count used for password-based encryption (PBE) in JCEKS
+ # keystores. Values in the range 10000 to 5000000 are considered valid.
+ # If the value is out of this range, or is not a number, or is unspecified;
+--- /dev/null	2022-02-08 18:39:56.000000000 +0300
++++ openjdk/jdk/src/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java	2022-02-08 18:39:55.000000000 +0300
+@@ -0,0 +1,188 @@
++/*
++ * Copyright (c) 2003, 2018, Oracle and/or its affiliates. All rights reserved.
++ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
++ *
++ * This code is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 only, as
++ * published by the Free Software Foundation.  Oracle designates this
++ * particular file as subject to the "Classpath" exception as provided
++ * by Oracle in the LICENSE file that accompanied this code.
++ *
++ * This code is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++ * version 2 for more details (a copy is included in the LICENSE file that
++ * accompanied this code).
++ *
++ * You should have received a copy of the GNU General Public License version
++ * 2 along with this work; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
++ * or visit www.oracle.com if you need additional information or have any
++ * questions.
++ */
++
++package com.sun.crypto.provider;
++
++import java.util.Arrays;
++
++import javax.crypto.SecretKey;
++import javax.crypto.spec.SecretKeySpec;
++import javax.crypto.spec.PBEParameterSpec;
++import java.security.*;
++import java.security.spec.*;
++
++/**
++ * This is an implementation of the HMAC algorithms as defined
++ * in PKCS#12 v1.1 standard (see RFC 7292 Appendix B.4).
++ *
++ * @author Valerie Peng
++ */
++abstract class HmacPKCS12PBECore extends HmacCore {
++
++    public static final class HmacPKCS12PBE_SHA1 extends HmacPKCS12PBECore {
++        public HmacPKCS12PBE_SHA1() throws NoSuchAlgorithmException {
++            super("SHA1", 64);
++        }
++    }
++
++    public static final class HmacPKCS12PBE_SHA224 extends HmacPKCS12PBECore {
++        public HmacPKCS12PBE_SHA224() throws NoSuchAlgorithmException {
++            super("SHA-224", 64);
++        }
++    }
++
++    public static final class HmacPKCS12PBE_SHA256 extends HmacPKCS12PBECore {
++        public HmacPKCS12PBE_SHA256() throws NoSuchAlgorithmException {
++            super("SHA-256", 64);
++        }
++    }
++
++    public static final class HmacPKCS12PBE_SHA384 extends HmacPKCS12PBECore {
++        public HmacPKCS12PBE_SHA384() throws NoSuchAlgorithmException {
++            super("SHA-384", 128);
++        }
++    }
++
++    public static final class HmacPKCS12PBE_SHA512 extends HmacPKCS12PBECore {
++        public HmacPKCS12PBE_SHA512() throws NoSuchAlgorithmException {
++            super("SHA-512", 128);
++        }
++    }
++
++    public static final class HmacPKCS12PBE_SHA512_224 extends HmacPKCS12PBECore {
++        public HmacPKCS12PBE_SHA512_224() throws NoSuchAlgorithmException {
++            super("SHA-512/224", 128);
++        }
++    }
++
++    public static final class HmacPKCS12PBE_SHA512_256 extends HmacPKCS12PBECore {
++        public HmacPKCS12PBE_SHA512_256() throws NoSuchAlgorithmException {
++            super("SHA-512/256", 128);
++        }
++    }
++
++    private final String algorithm;
++    private final int bl;
++
++    /**
++     * Standard constructor, creates a new HmacSHA1 instance.
++     */
++    public HmacPKCS12PBECore(String algorithm, int bl) throws NoSuchAlgorithmException {
++        super(algorithm, bl);
++        this.algorithm = algorithm;
++        this.bl = bl;
++    }
++
++    /**
++     * Initializes the HMAC with the given secret key and algorithm parameters.
++     *
++     * @param key the secret key.
++     * @param params the algorithm parameters.
++     *
++     * @exception InvalidKeyException if the given key is inappropriate for
++     * initializing this MAC.
++     * @exception InvalidAlgorithmParameterException if the given algorithm
++     * parameters are inappropriate for this MAC.
++     */
++    protected void engineInit(Key key, AlgorithmParameterSpec params)
++        throws InvalidKeyException, InvalidAlgorithmParameterException {
++        char[] passwdChars;
++        byte[] salt = null;
++        int iCount = 0;
++        if (key instanceof javax.crypto.interfaces.PBEKey) {
++            javax.crypto.interfaces.PBEKey pbeKey =
++                (javax.crypto.interfaces.PBEKey) key;
++            passwdChars = pbeKey.getPassword();
++            salt = pbeKey.getSalt(); // maybe null if unspecified
++            iCount = pbeKey.getIterationCount(); // maybe 0 if unspecified
++        } else if (key instanceof SecretKey) {
++            byte[] passwdBytes;
++            if (!(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3)) ||
++                    (passwdBytes = key.getEncoded()) == null) {
++                throw new InvalidKeyException("Missing password");
++            }
++            passwdChars = new char[passwdBytes.length];
++            for (int i=0; i<passwdChars.length; i++) {
++                passwdChars[i] = (char) (passwdBytes[i] & 0x7f);
++            }
++            Arrays.fill(passwdBytes, (byte)0x00);
++        } else {
++            throw new InvalidKeyException("SecretKey of PBE type required");
++        }
++
++        byte[] derivedKey;
++        try {
++            if (params == null) {
++                // should not auto-generate default values since current
++                // javax.crypto.Mac api does not have any method for caller to
++                // retrieve the generated defaults.
++                if ((salt == null) || (iCount == 0)) {
++                    throw new InvalidAlgorithmParameterException
++                            ("PBEParameterSpec required for salt and iteration count");
++                }
++            } else if (!(params instanceof PBEParameterSpec)) {
++                throw new InvalidAlgorithmParameterException
++                        ("PBEParameterSpec type required");
++            } else {
++                PBEParameterSpec pbeParams = (PBEParameterSpec) params;
++                // make sure the parameter values are consistent
++                if (salt != null) {
++                    if (!Arrays.equals(salt, pbeParams.getSalt())) {
++                        throw new InvalidAlgorithmParameterException
++                                ("Inconsistent value of salt between key and params");
++                    }
++                } else {
++                    salt = pbeParams.getSalt();
++                }
++                if (iCount != 0) {
++                    if (iCount != pbeParams.getIterationCount()) {
++                        throw new InvalidAlgorithmParameterException
++                                ("Different iteration count between key and params");
++                    }
++                } else {
++                    iCount = pbeParams.getIterationCount();
++                }
++            }
++            // For security purpose, we need to enforce a minimum length
++            // for salt; just require the minimum salt length to be 8-byte
++            // which is what PKCS#5 recommends and openssl does.
++            if (salt.length < 8) {
++                throw new InvalidAlgorithmParameterException
++                        ("Salt must be at least 8 bytes long");
++            }
++            if (iCount <= 0) {
++                throw new InvalidAlgorithmParameterException
++                        ("IterationCount must be a positive number");
++            }
++            derivedKey = PKCS12PBECipherCore.derive(passwdChars, salt,
++                    iCount, engineGetMacLength(), PKCS12PBECipherCore.MAC_KEY,
++                    algorithm, bl);
++        } finally {
++            Arrays.fill(passwdChars, '\0');
++        }
++        SecretKey cipherKey = new SecretKeySpec(derivedKey, "HmacSHA1");
++        super.engineInit(cipherKey, null);
++    }
++}
+--- /dev/null	2022-02-08 18:39:56.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/ParamsPreferences.java	2022-02-08 18:39:56.000000000 +0300
+@@ -0,0 +1,235 @@
++/*
++ * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
++ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
++ *
++ * This code is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 only, as
++ * published by the Free Software Foundation.
++ *
++ * This code is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++ * version 2 for more details (a copy is included in the LICENSE file that
++ * accompanied this code).
++ *
++ * You should have received a copy of the GNU General Public License version
++ * 2 along with this work; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
++ * or visit www.oracle.com if you need additional information or have any
++ * questions.
++ */
++
++import jdk.testlibrary.SecurityTools;
++import sun.security.util.ObjectIdentifier;
++
++import java.nio.file.Files;
++import java.nio.file.Path;
++import java.nio.file.Paths;
++import java.util.ArrayList;
++import java.util.List;
++
++import static jdk.testlibrary.security.DerUtils.*;
++import static sun.security.pkcs.ContentInfo.DATA_OID;
++import static sun.security.pkcs.ContentInfo.ENCRYPTED_DATA_OID;
++import static sun.security.x509.AlgorithmId.*;
++
++/*
++ * @test
++ * @bug 8076190
++ * @library /lib/testlibrary /lib
++ * @modules java.base/sun.security.pkcs
++ *          java.base/sun.security.x509
++ *          java.base/sun.security.util
++ * @summary Checks the preferences order of pkcs12 params
++ */
++public class ParamsPreferences {
++
++    public static final void main(String[] args) throws Exception {
++        int c = 0;
++
++        // with storepass
++        test(c++, "-", "-",
++                pbeWithSHA1AndRC2_40_oid, 50000,
++                pbeWithSHA1AndDESede_oid, 50000,
++                SHA_oid, 100000);
++
++        // password-less with system property
++        test(c++, "keystore.pkcs12.certProtectionAlgorithm", "NONE",
++                "keystore.pkcs12.macAlgorithm", "NONE",
++                "-", "-",
++                null, 0,
++                pbeWithSHA1AndDESede_oid, 50000,
++                null, 0);
++
++        // password-less with security property
++        test(c++, "-",
++                "keystore.pkcs12.certProtectionAlgorithm", "NONE",
++                "keystore.pkcs12.macAlgorithm", "NONE",
++                "-",
++                null, 0,
++                pbeWithSHA1AndDESede_oid, 50000,
++                null, 0);
++
++        // back to with storepass by overriding security property with system property
++        test(c++, "keystore.pkcs12.certProtectionAlgorithm", "PBEWithSHA1AndDESede",
++                "keystore.pkcs12.macAlgorithm", "HmacPBESHA256",
++                "-",
++                "keystore.pkcs12.certProtectionAlgorithm", "NONE",
++                "keystore.pkcs12.macAlgorithm", "NONE",
++                "-",
++                pbeWithSHA1AndDESede_oid, 50000,
++                pbeWithSHA1AndDESede_oid, 50000,
++                SHA256_oid, 100000);
++
++        // back to with storepass by using "" to force hardcoded default
++        test(c++, "keystore.pkcs12.certProtectionAlgorithm", "",
++                "keystore.pkcs12.keyProtectionAlgorithm", "",
++                "keystore.pkcs12.macAlgorithm", "",
++                "-",
++                "keystore.pkcs12.certProtectionAlgorithm", "NONE",
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_40",
++                "keystore.pkcs12.macAlgorithm", "NONE",
++                "-",
++                pbeWithSHA1AndRC2_40_oid, 50000,
++                pbeWithSHA1AndDESede_oid, 50000,
++                SHA_oid, 100000);
++
++        // change everything with system property
++        test(c++, "keystore.pkcs12.certProtectionAlgorithm", "PBEWithSHA1AndDESede",
++                "keystore.pkcs12.certPbeIterationCount", 3000,
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_40",
++                "keystore.pkcs12.keyPbeIterationCount", 4000,
++                "keystore.pkcs12.macAlgorithm", "HmacPBESHA256",
++                "keystore.pkcs12.macIterationCount", 2000,
++                "-", "-",
++                pbeWithSHA1AndDESede_oid, 3000,
++                pbeWithSHA1AndRC2_40_oid, 4000,
++                SHA256_oid, 2000);
++
++        // change everything with security property
++        test(c++, "-",
++                "keystore.pkcs12.certProtectionAlgorithm", "PBEWithSHA1AndDESede",
++                "keystore.pkcs12.certPbeIterationCount", 3000,
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_40",
++                "keystore.pkcs12.keyPbeIterationCount", 4000,
++                "keystore.pkcs12.macAlgorithm", "HmacPBESHA256",
++                "keystore.pkcs12.macIterationCount", 2000,
++                "-",
++                pbeWithSHA1AndDESede_oid, 3000,
++                pbeWithSHA1AndRC2_40_oid, 4000,
++                SHA256_oid, 2000);
++
++        // override security property with system property
++        test(c++, "keystore.pkcs12.certProtectionAlgorithm", "PBEWithSHA1AndDESede",
++                "keystore.pkcs12.certPbeIterationCount", 13000,
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_40",
++                "keystore.pkcs12.keyPbeIterationCount", 14000,
++                "keystore.pkcs12.macAlgorithm", "HmacPBESHA256",
++                "keystore.pkcs12.macIterationCount", 12000,
++                "-",
++                "keystore.pkcs12.certProtectionAlgorithm", "PBEWithSHA1AndRC2_40",
++                "keystore.pkcs12.certPbeIterationCount", 3000,
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndDESede",
++                "keystore.pkcs12.keyPbeIterationCount", 4000,
++                "keystore.pkcs12.macAlgorithm", "HmacPBESHA1",
++                "keystore.pkcs12.macIterationCount", 2000,
++                "-",
++                pbeWithSHA1AndDESede_oid, 13000,
++                pbeWithSHA1AndRC2_40_oid, 14000,
++                SHA256_oid, 12000);
++
++        // check keyProtectionAlgorithm old behavior. Preferences of
++        // 4 different settings.
++
++        test(c++, "-",
++                "keystore.PKCS12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_128",
++                "-",
++                pbeWithSHA1AndRC2_40_oid, 50000,
++                pbeWithSHA1AndRC2_128_oid, 50000,
++                SHA_oid, 100000);
++        test(c++, "-",
++                "keystore.PKCS12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_128",
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_40",
++                "-",
++                pbeWithSHA1AndRC2_40_oid, 50000,
++                pbeWithSHA1AndRC2_40_oid, 50000,
++                SHA_oid, 100000);
++        test(c++,
++                "keystore.PKCS12.keyProtectionAlgorithm", "PBEWithSHA1AndRC4_128",
++                "-",
++                "keystore.PKCS12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_128",
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_40",
++                "-",
++                pbeWithSHA1AndRC2_40_oid, 50000,
++                pbeWithSHA1AndRC4_128_oid, 50000,
++                SHA_oid, 100000);
++        test(c++,
++                "keystore.PKCS12.keyProtectionAlgorithm", "PBEWithSHA1AndRC4_128",
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndRC4_40",
++                "-",
++                "keystore.PKCS12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_128",
++                "keystore.pkcs12.keyProtectionAlgorithm", "PBEWithSHA1AndRC2_40",
++                "-",
++                pbeWithSHA1AndRC2_40_oid, 50000,
++                pbeWithSHA1AndRC4_40_oid, 50000,
++                SHA_oid, 100000);
++    }
++
++    /**
++     * Run once.
++     *
++     * @param args an array containing system properties and values, "-",
++     *             security properties and values, "-", expected certPbeAlg,
++     *             certPbeIC, keyPbeAlg, keyPbeIc, macAlg, macIC.
++     */
++    static void test(int n, Object... args) throws Exception {
++        boolean isSysProp = true;
++        String cmd = "-keystore ks" + n + " -storetype PKCS12 -genkeypair -keyalg EC "
++                + "-alias a -dname CN=A -storepass changeit "
++                + "-J-Djava.security.properties=" + n + ".conf";
++        List<String> jsConf = new ArrayList<>();
++        for (int i = 0; i < args.length; i++) {
++            if (isSysProp) {
++                if (args[i].equals("-")) {
++                    isSysProp = false;
++                } else {
++                    cmd += " -J-D" + args[i] + "=" + args[++i];
++                }
++            } else {
++                if (args[i] == "-") {
++                    Files.write(Paths.get(n + ".conf"), jsConf);
++                    System.out.println("--------- test starts ----------");
++                    System.out.println(jsConf);
++                    SecurityTools.keytool(cmd).shouldHaveExitValue(0);
++
++                    byte[] data = Files.readAllBytes(Paths.get("ks" + n));
++
++                    // cert pbe alg + ic
++                    if (args[i+1] == null) {
++                        checkAlg(data, "110c10", DATA_OID);
++                    } else {
++                        checkAlg(data, "110c10", ENCRYPTED_DATA_OID);
++                        checkAlg(data, "110c110110", (ObjectIdentifier)args[i+1]);
++                        checkInt(data, "110c1101111", (int)args[i+2]);
++                    }
++
++                    // key pbe alg + ic
++                    checkAlg(data, "110c010c01000", (ObjectIdentifier)args[i+3]);
++                    checkInt(data, "110c010c010011", (int)args[i+4]);
++
++                    // mac alg + ic
++                    if (args[i+5] == null) {
++                        shouldNotExist(data, "2");
++                    } else {
++                        checkAlg(data, "2000", (ObjectIdentifier)args[i+5]);
++                        checkInt(data, "22", (int)args[i+6]);
++                    }
++                } else {
++                    jsConf.add(args[i] + "=" + args[++i]);
++                }
++            }
++        }
++    }
++}
+--- /dev/null	2022-02-08 18:39:57.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/ParamsTest.java	2022-02-08 18:39:57.000000000 +0300
+@@ -0,0 +1,442 @@
++/*
++ * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
++ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
++ *
++ * This code is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 only, as
++ * published by the Free Software Foundation.
++ *
++ * This code is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++ * version 2 for more details (a copy is included in the LICENSE file that
++ * accompanied this code).
++ *
++ * You should have received a copy of the GNU General Public License version
++ * 2 along with this work; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
++ * or visit www.oracle.com if you need additional information or have any
++ * questions.
++ */
++
++/*
++ * @test
++ * @bug 8076190
++ * @library /lib/testlibrary /lib
++ * @modules java.base/sun.security.pkcs
++ *          java.base/sun.security.x509
++ *          java.base/sun.security.util
++ * @summary Customizing the generation of a PKCS12 keystore
++ */
++
++import jdk.testlibrary.Asserts;
++import jdk.testlibrary.SecurityTools;
++import jdk.testlibrary.OutputAnalyzer;
++
++import java.io.File;
++import java.io.FileInputStream;
++import java.io.FileOutputStream;
++import java.io.IOException;
++import java.io.InputStream;
++import java.io.OutputStream;
++import java.io.UncheckedIOException;
++import java.nio.file.Files;
++import java.nio.file.Paths;
++import java.security.KeyStore;
++import java.util.Base64;
++import java.util.Objects;
++
++import static jdk.testlibrary.security.DerUtils.*;
++import static sun.security.x509.AlgorithmId.*;
++import static sun.security.pkcs.ContentInfo.*;
++
++public class ParamsTest  {
++
++    public static void main(String[] args) throws Throwable {
++
++        // De-BASE64 textual files in ./params to `pwd`
++        Files.newDirectoryStream(Paths.get(System.getProperty("test.src"), "params"))
++                .forEach(p -> {
++                    try (InputStream is = Base64.getMimeDecoder().wrap(Files.newInputStream(p));
++                         OutputStream os = Files.newOutputStream(p.getFileName())){
++                            byte[] buffer = new byte[2048];
++                            int read;
++                            while ((read = is.read(buffer, 0, 2048)) >= 0) {
++                                os.write(buffer, 0, read);
++                            }
++                    } catch (IOException e) {
++                        throw new UncheckedIOException(e);
++                    }
++                });
++
++        byte[] data;
++
++        // openssl -> keytool interop check
++
++        // os2. no cert pbe, no mac.
++        check("os2", "a", null, "changeit", true, true, true);
++        check("os2", "a", "changeit", "changeit", true, true, true);
++        // You can even load it with a wrong storepass, controversial
++        check("os2", "a", "wrongpass", "changeit", true, true, true);
++
++        // os3. no cert pbe, has mac. just like JKS
++        check("os3", "a", null, "changeit", true, true, true);
++        check("os3", "a", "changeit", "changeit", true, true, true);
++        // Cannot load with a wrong storepass, same as JKS
++        check("os3", "a", "wrongpass", "-", IOException.class, "-", "-");
++
++        // os4. non default algs
++        check("os4", "a", "changeit", "changeit", true, true, true);
++        check("os4", "a", "wrongpass", "-", IOException.class, "-", "-");
++        // no storepass no cert
++        check("os4", "a", null, "changeit", true, false, true);
++
++        // os5. strong non default algs
++        check("os5", "a", "changeit", "changeit", true, true, true);
++        check("os5", "a", "wrongpass", "-", IOException.class, "-", "-");
++        // no storepass no cert
++        check("os5", "a", null, "changeit", true, false, true);
++
++        // keytool
++
++        // Current default pkcs12 setting
++        keytool("-importkeystore -srckeystore ks -srcstorepass changeit "
++                + "-deststoretype PKCS12 -destkeystore ksnormal -deststorepass changeit");
++        data = Files.readAllBytes(Paths.get("ksnormal"));
++        checkInt(data, "22", 100000); // Mac ic
++        checkAlg(data, "2000", SHA_oid); // Mac alg
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndDESede_oid); // key alg
++        checkInt(data, "110c010c010011", 50000); // key ic
++        checkAlg(data, "110c10", ENCRYPTED_DATA_OID);
++        checkAlg(data, "110c110110", pbeWithSHA1AndRC2_40_oid); // cert alg
++        checkInt(data, "110c1101111", 50000); // cert ic
++
++        check("ksnormal", "a", "changeit", "changeit", true, true, true);
++        check("ksnormal", "a", null, "changeit", true, false, true);
++        check("ksnormal", "a", "wrongpass", "-", IOException.class, "-", "-");
++
++        // Add a new entry with password-less settings, still has a storepass
++        keytool("-keystore ksnormal -genkeypair -storepass changeit -alias b -dname CN=b "
++                + "-J-Dkeystore.pkcs12.certProtectionAlgorithm=NONE "
++                + "-J-Dkeystore.pkcs12.macAlgorithm=NONE");
++        data = Files.readAllBytes(Paths.get("ksnormal"));
++        checkInt(data, "22", 100000); // Mac ic
++        checkAlg(data, "2000", SHA_oid); // Mac alg
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndDESede_oid); // key alg
++        checkInt(data, "110c010c010011", 50000); // key ic
++        checkAlg(data, "110c010c11000", pbeWithSHA1AndDESede_oid); // new key alg
++        checkInt(data, "110c010c110011", 50000); // new key ic
++        checkAlg(data, "110c10", ENCRYPTED_DATA_OID);
++        checkAlg(data, "110c110110", pbeWithSHA1AndRC2_40_oid); // cert alg
++        checkInt(data, "110c1101111", 50000); // cert ic
++        check("ksnormal", "b", null, "changeit", true, false, true);
++        check("ksnormal", "b", "changeit", "changeit", true, true, true);
++
++        // Different keypbe alg, no cert pbe and no mac
++        keytool("-importkeystore -srckeystore ks -srcstorepass changeit "
++                + "-deststoretype PKCS12 -destkeystore ksnopass -deststorepass changeit "
++                + "-J-Dkeystore.pkcs12.keyProtectionAlgorithm=PBEWithSHA1AndRC4_128 "
++                + "-J-Dkeystore.pkcs12.certProtectionAlgorithm=NONE "
++                + "-J-Dkeystore.pkcs12.macAlgorithm=NONE");
++        data = Files.readAllBytes(Paths.get("ksnopass"));
++        shouldNotExist(data, "2"); // no Mac
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndRC4_128_oid);
++        checkInt(data, "110c010c010011", 50000);
++        checkAlg(data, "110c10", DATA_OID);
++        check("ksnopass", "a", null, "changeit", true, true, true);
++        check("ksnopass", "a", "changeit", "changeit", true, true, true);
++        check("ksnopass", "a", "wrongpass", "changeit", true, true, true);
++
++        // Add a new entry with normal settings, still password-less
++        keytool("-keystore ksnopass -genkeypair -storepass changeit -alias b -dname CN=B");
++        data = Files.readAllBytes(Paths.get("ksnopass"));
++        shouldNotExist(data, "2"); // no Mac
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndRC4_128_oid);
++        checkInt(data, "110c010c010011", 50000);
++        checkAlg(data, "110c010c11000", pbeWithSHA1AndDESede_oid);
++        checkInt(data, "110c010c110011", 50000);
++        checkAlg(data, "110c10", DATA_OID);
++        check("ksnopass", "a", null, "changeit", true, true, true);
++        check("ksnopass", "b", null, "changeit", true, true, true);
++
++        keytool("-importkeystore -srckeystore ks -srcstorepass changeit "
++                + "-deststoretype PKCS12 -destkeystore ksnewic -deststorepass changeit "
++                + "-J-Dkeystore.pkcs12.macIterationCount=5555 "
++                + "-J-Dkeystore.pkcs12.certPbeIterationCount=6666 "
++                + "-J-Dkeystore.pkcs12.keyPbeIterationCount=7777");
++        data = Files.readAllBytes(Paths.get("ksnewic"));
++        checkInt(data, "22", 5555); // Mac ic
++        checkAlg(data, "2000", SHA_oid); // Mac alg
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndDESede_oid); // key alg
++        checkInt(data, "110c010c010011", 7777); // key ic
++        checkAlg(data, "110c110110", pbeWithSHA1AndRC2_40_oid); // cert alg
++        checkInt(data, "110c1101111", 6666); // cert ic
++
++        // keypbe alg cannot be NONE
++        keytool("-keystore ksnewic -genkeypair -storepass changeit -alias b -dname CN=B "
++                + "-J-Dkeystore.pkcs12.keyProtectionAlgorithm=NONE")
++                .shouldContain("NONE AlgorithmParameters not available")
++                .shouldHaveExitValue(1);
++
++        // new entry new keypbe alg (and default ic), else unchanged
++        keytool("-keystore ksnewic -genkeypair -storepass changeit -alias b -dname CN=B "
++                + "-J-Dkeystore.pkcs12.keyProtectionAlgorithm=PBEWithSHA1AndRC4_128");
++        data = Files.readAllBytes(Paths.get("ksnewic"));
++        checkInt(data, "22", 5555); // Mac ic
++        checkAlg(data, "2000", SHA_oid); // Mac alg
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndDESede_oid); // key alg
++        checkInt(data, "110c010c010011", 7777); // key ic
++        checkAlg(data, "110c010c11000", pbeWithSHA1AndRC4_128_oid); // new key alg
++        checkInt(data, "110c010c110011", 50000); // new key ic
++        checkAlg(data, "110c110110", pbeWithSHA1AndRC2_40_oid); // cert alg
++        checkInt(data, "110c1101111", 6666); // cert ic
++
++        // Check KeyStore loading multiple keystores
++        KeyStore ks = KeyStore.getInstance("pkcs12");
++        try (FileInputStream fis = new FileInputStream("ksnormal");
++                FileOutputStream fos = new FileOutputStream("ksnormaldup")) {
++            ks.load(fis, "changeit".toCharArray());
++            ks.store(fos, "changeit".toCharArray());
++        }
++        data = Files.readAllBytes(Paths.get("ksnormaldup"));
++        checkInt(data, "22", 100000); // Mac ic
++        checkAlg(data, "2000", SHA_oid); // Mac alg
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndDESede_oid); // key alg
++        checkInt(data, "110c010c010011", 50000); // key ic
++        checkAlg(data, "110c010c11000", pbeWithSHA1AndDESede_oid); // new key alg
++        checkInt(data, "110c010c110011", 50000); // new key ic
++        checkAlg(data, "110c10", ENCRYPTED_DATA_OID);
++        checkAlg(data, "110c110110", pbeWithSHA1AndRC2_40_oid); // cert alg
++        checkInt(data, "110c1101111", 50000); // cert ic
++
++        try (FileInputStream fis = new FileInputStream("ksnopass");
++             FileOutputStream fos = new FileOutputStream("ksnopassdup")) {
++            ks.load(fis, "changeit".toCharArray());
++            ks.store(fos, "changeit".toCharArray());
++        }
++        data = Files.readAllBytes(Paths.get("ksnopassdup"));
++        shouldNotExist(data, "2"); // no Mac
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndRC4_128_oid);
++        checkInt(data, "110c010c010011", 50000);
++        checkAlg(data, "110c010c11000", pbeWithSHA1AndDESede_oid);
++        checkInt(data, "110c010c110011", 50000);
++        checkAlg(data, "110c10", DATA_OID);
++
++        try (FileInputStream fis = new FileInputStream("ksnewic");
++             FileOutputStream fos = new FileOutputStream("ksnewicdup")) {
++            ks.load(fis, "changeit".toCharArray());
++            ks.store(fos, "changeit".toCharArray());
++        }
++        data = Files.readAllBytes(Paths.get("ksnewicdup"));
++        checkInt(data, "22", 5555); // Mac ic
++        checkAlg(data, "2000", SHA_oid); // Mac alg
++        checkAlg(data, "110c010c01000", pbeWithSHA1AndDESede_oid); // key alg
++        checkInt(data, "110c010c010011", 7777); // key ic
++        checkAlg(data, "110c010c11000", pbeWithSHA1AndRC4_128_oid); // new key alg
++        checkInt(data, "110c010c110011", 50000); // new key ic
++        checkAlg(data, "110c110110", pbeWithSHA1AndRC2_40_oid); // cert alg
++        checkInt(data, "110c1101111", 6666); // cert ic
++
++        // Check keytool behavior
++
++        // ksnormal has password
++
++        keytool("-list -keystore ksnormal")
++                .shouldContain("WARNING WARNING WARNING")
++                .shouldContain("Certificate chain length: 0");
++
++        SecurityTools.setResponse("changeit");
++        keytool("-list -keystore ksnormal")
++                .shouldNotContain("WARNING WARNING WARNING")
++                .shouldContain("Certificate fingerprint");
++
++        // ksnopass is password-less
++
++        keytool("-list -storetype PKCS12 -keystore ksnopass")
++                .shouldNotContain("WARNING WARNING WARNING")
++                .shouldContain("Certificate fingerprint");
++
++        // -certreq prompts for keypass
++        SecurityTools.setResponse("changeit");
++        keytool("-certreq -alias a -storetype PKCS12 -keystore ksnopass")
++                .shouldContain("Enter key password for <a>")
++                .shouldContain("-----BEGIN NEW CERTIFICATE REQUEST-----")
++                .shouldHaveExitValue(0);
++
++        // -certreq -storepass works fine
++        keytool("-certreq -alias a -keystore ksnopass -storepass changeit")
++                .shouldNotContain("Enter key password for <a>")
++                .shouldContain("-----BEGIN NEW CERTIFICATE REQUEST-----")
++                .shouldHaveExitValue(0);
++
++        // -certreq -keypass also works fine
++        keytool("-certreq -alias a -storetype PKCS12 -keystore ksnopass -keypass changeit")
++                .shouldNotContain("Enter key password for <a>")
++                .shouldContain("-----BEGIN NEW CERTIFICATE REQUEST-----")
++                .shouldHaveExitValue(0);
++
++        // -importkeystore prompts for srckeypass
++        SecurityTools.setResponse("changeit", "changeit");
++        keytool("-importkeystore -srcstoretype PKCS12 -srckeystore ksnopass "
++                + "-destkeystore jks3 -deststoretype PKCS12 -deststorepass changeit")
++                .shouldContain("Enter key password for <a>")
++                .shouldContain("Enter key password for <b>")
++                .shouldContain("2 entries successfully imported");
++
++        // ksnopass2 is ksnopass + 2 cert entries
++        ks = KeyStore.getInstance("pkcs12");
++        try (FileInputStream fis = new FileInputStream("ksnopass")) {
++            ks.load(fis, (char[])null);
++        }
++        ks.setCertificateEntry("aa", ks.getCertificate("a"));
++        ks.setCertificateEntry("bb", ks.getCertificate("b"));
++        try (FileOutputStream fos = new FileOutputStream("ksnopass2")) {
++            ks.store(fos, null);
++        }
++
++        // -importkeystore prompts for srckeypass for private keys
++        // and no prompt for certs
++        SecurityTools.setResponse("changeit", "changeit");
++        keytool("-importkeystore -srcstoretype PKCS12 -srckeystore ksnopass2 "
++                + "-destkeystore jks5 -deststorepass changeit")
++                .shouldContain("Enter key password for <a>")
++                .shouldContain("Enter key password for <b>")
++                .shouldNotContain("Enter key password for <aa>")
++                .shouldNotContain("Enter key password for <bb>")
++                .shouldContain("4 entries successfully imported");
++
++        // ksonlycert has only cert entries
++
++        ks.deleteEntry("a");
++        ks.deleteEntry("b");
++        try (FileOutputStream fos = new FileOutputStream("ksonlycert")) {
++            ks.store(fos, null);
++        }
++
++        // -importkeystore does not prompt at all
++        keytool("-importkeystore -srckeystore ksonlycert "
++                + "-destkeystore jks6 -deststorepass changeit")
++                .shouldNotContain("Enter key password for <aa>")
++                .shouldNotContain("Enter key password for <bb>")
++                .shouldContain("2 entries successfully imported");
++
++        // create a new password-less keystore
++        keytool("-keystore ksnopass -exportcert -alias a -file a.cert -rfc");
++
++        // Normally storepass is prompted for
++        keytool("-keystore kscert1 -storetype PKCS12 -importcert -alias a -file a.cert -noprompt")
++                .shouldContain("Enter keystore password:");
++        keytool("-keystore kscert2 -storetype PKCS12 -importcert -alias a -file a.cert -noprompt "
++                + "-J-Dkeystore.pkcs12.certProtectionAlgorithm=NONE")
++                .shouldContain("Enter keystore password:");
++        keytool("-keystore kscert3 -storetype PKCS12 -importcert -alias a -file a.cert -noprompt "
++                + "-J-Dkeystore.pkcs12.macAlgorithm=NONE")
++                .shouldContain("Enter keystore password:");
++        // ... but not if it's password-less
++        keytool("-keystore kscert4 -storetype PKCS12 -importcert -alias a -file a.cert -noprompt "
++                + "-J-Dkeystore.pkcs12.certProtectionAlgorithm=NONE "
++                + "-J-Dkeystore.pkcs12.macAlgorithm=NONE")
++                .shouldNotContain("Enter keystore password:");
++
++        // still prompt for keypass for genkeypair and certreq
++        SecurityTools.setResponse("changeit", "changeit");
++        keytool("-keystore ksnopassnew -storetype PKCS12 -genkeypair -alias a -dname CN=A "
++                + "-J-Dkeystore.pkcs12.certProtectionAlgorithm=NONE "
++                + "-J-Dkeystore.pkcs12.macAlgorithm=NONE")
++                .shouldNotContain("Enter keystore password:")
++                .shouldContain("Enter key password for <a>");
++        keytool("-keystore ksnopassnew -storetype PKCS12 -certreq -alias a")
++                .shouldNotContain("Enter keystore password:")
++                .shouldContain("Enter key password for <a>");
++        keytool("-keystore ksnopassnew -storetype PKCS12 -list -v -alias a")
++                .shouldNotContain("Enter keystore password:")
++                .shouldNotContain("Enter key password for <a>");
++
++        // params only read on demand
++
++        // keyPbeIterationCount is used by -genkeypair
++        keytool("-keystore ksgenbadkeyic -storetype PKCS12 -genkeypair -alias a -dname CN=A "
++                + "-storepass changeit "
++                + "-J-Dkeystore.pkcs12.keyPbeIterationCount=abc")
++                .shouldContain("keyPbeIterationCount is not a number: abc")
++                .shouldHaveExitValue(1);
++
++        keytool("-keystore ksnopassnew -exportcert -alias a -file a.cert");
++
++        // but not used by -importcert
++        keytool("-keystore ksimpbadkeyic -importcert -alias a -file a.cert "
++                + "-noprompt -storepass changeit "
++                + "-J-Dkeystore.pkcs12.keyPbeIterationCount=abc")
++                .shouldHaveExitValue(0);
++
++        // None is used by -list
++        keytool("-keystore ksnormal -storepass changeit -list "
++                + "-J-Dkeystore.pkcs12.keyPbeIterationCount=abc "
++                + "-J-Dkeystore.pkcs12.certPbeIterationCount=abc "
++                + "-J-Dkeystore.pkcs12.macIterationCount=abc")
++                .shouldHaveExitValue(0);
++    }
++
++    /**
++     * Check keystore loading and key/cert reading.
++     *
++     * @param keystore the file name of keystore
++     * @param alias the key/cert to read
++     * @param storePass store pass to try out, can be null
++     * @param keypass key pass to try, can not be null
++     * @param expectedLoad expected result of keystore loading, true if non
++     *                     null, false if null, exception class if exception
++     * @param expectedCert expected result of cert reading
++     * @param expectedKey expected result of key reading
++     */
++    private static void check(
++            String keystore,
++            String alias,
++            String storePass,
++            String keypass,
++            Object expectedLoad,
++            Object expectedCert,
++            Object expectedKey) {
++        KeyStore ks = null;
++        Object actualLoad, actualCert, actualKey;
++        String label = keystore + "-" + alias + "-" + storePass + "-" + keypass;
++        try {
++            ks = KeyStore.getInstance("pkcs12");
++            try (FileInputStream fis = new FileInputStream(keystore)) {
++                ks.load(fis, storePass == null ? null : storePass.toCharArray());
++            }
++            actualLoad = ks != null;
++        } catch (Exception e) {
++            e.printStackTrace(System.out);
++            actualLoad = e.getClass();
++        }
++        Asserts.assertEQ(expectedLoad, actualLoad, label + "-load");
++
++        // If not loaded correctly, skip cert/key reading
++        if (!Objects.equals(actualLoad, true)) {
++            return;
++        }
++
++        try {
++            actualCert = (ks.getCertificate(alias) != null);
++        } catch (Exception e) {
++            e.printStackTrace(System.out);
++            actualCert = e.getClass();
++        }
++        Asserts.assertEQ(expectedCert, actualCert, label + "-cert");
++
++        try {
++            actualKey = (ks.getKey(alias, keypass.toCharArray()) != null);
++        } catch (Exception e) {
++            e.printStackTrace(System.out);
++            actualKey = e.getClass();
++        }
++        Asserts.assertEQ(expectedKey, actualKey, label + "-key");
++    }
++
++    static OutputAnalyzer keytool(String s) throws Throwable {
++        return SecurityTools.keytool(s);
++    }
++}
+--- /dev/null	2022-02-08 18:39:58.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/params/README	2022-02-08 18:39:57.000000000 +0300
+@@ -0,0 +1,54 @@
++1. Preparing data in this directory
++
++mkdir tmp
++cd tmp
++keytool -keystore ks -genkeypair -storepass changeit -alias a -dname CN=A
++openssl pkcs12 -in ks -nodes -out kandc -passin pass:changeit
++openssl pkcs12 -export -in kandc -out os2 -name a -passout pass:changeit \
++        -certpbe NONE -nomac
++openssl pkcs12 -export -in kandc -out os3 -name a -passout pass:changeit \
++        -certpbe NONE
++openssl pkcs12 -export -in kandc -out os4 -name a -passout pass:changeit \
++        -certpbe PBE-SHA1-RC4-128 -keypbe PBE-SHA1-RC4-128 -macalg SHA224
++openssl pkcs12 -export -in kandc -out os5 -name a -passout pass:changeit \
++        -certpbe AES-256-CBC -keypbe AES-256-CBC -macalg SHA512
++for a in *; do
++    openssl base64 -in $a -out ../$a
++done
++cd ..
++rm -rf tmp
++
++2. After running the test, we can go to the scratch directory and run the
++following commands to check keytool -> openssl interoperability.
++OpenSSL 1.1.0i is used here. Earlier versions might generate different info.
++
++(
++openssl pkcs12 -in ks2 -passin pass:changeit -info -nokeys -nocerts 2> t2 || exit 20
++grep "MAC:sha1 Iteration 100000" t2 || exit 21
++grep "Shrouded Keybag: pbeWithSHA1And3-KeyTripleDES-CBC, Iteration 50000" t2 || exit 23
++grep "PKCS7 Encrypted data: pbeWithSHA1And40BitRC2-CBC, Iteration 50000" t2 || exit 24
++
++openssl pkcs12 -in ks22 -passin pass:changeit -info -nokeys -nocerts 2> t22 || exit 25
++diff t2 t22 || exit 26
++
++openssl pkcs12 -in ks3 -passin pass:changeit -info -nokeys -nocerts && exit 30
++
++openssl pkcs12 -in ks3 -passin pass:changeit -info -nokeys -nocerts -nomacver 2> t3 || exit 31
++grep "PKCS7 Encrypted data:" t3 && exit 33
++grep "Shrouded Keybag: pbeWithSHA1And3-KeyTripleDES-CBC, Iteration 50000" t3 || exit 34
++grep "Shrouded Keybag: pbeWithSHA1And128BitRC4, Iteration 50000" t3 || exit 35
++
++openssl pkcs12 -in ks33 -passin pass:changeit -info -nokeys -nocerts -nomacver 2> t33 || exit 36
++diff t3 t33 || exit 37
++
++openssl pkcs12 -in ks4 -passin pass:changeit -info -nokeys -nocerts 2> t4 || exit 40
++grep "MAC:sha1 Iteration 5555" t4 || exit 41
++grep "Shrouded Keybag: pbeWithSHA1And3-KeyTripleDES-CBC, Iteration 7777" t4 || exit 43
++grep "Shrouded Keybag: pbeWithSHA1And128BitRC4, Iteration 50000" t4 || exit 44
++grep "PKCS7 Encrypted data: pbeWithSHA1And40BitRC2-CBC, Iteration 6666" t4 || exit 45
++
++openssl pkcs12 -in ks44 -passin pass:changeit -info -nokeys -nocerts 2> t44 || exit 46
++diff t4 t44 || exit 47
++
++echo Succeed
++)
+--- /dev/null	2022-02-08 18:39:58.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/params/kandc	2022-02-08 18:39:58.000000000 +0300
+@@ -0,0 +1,55 @@
++QmFnIEF0dHJpYnV0ZXMKICAgIGZyaWVuZGx5TmFtZTogYQogICAgbG9jYWxLZXlJ
++RDogNTQgNjkgNkQgNjUgMjAgMzEgMzUgMzMgMzggMzEgMzMgMzQgMzAgMzUgMzkg
++MzQgMzMgMzUgCktleSBBdHRyaWJ1dGVzOiA8Tm8gQXR0cmlidXRlcz4KLS0tLS1C
++RUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUNYUUlCQURDQ0FqVUdCeXFHU000NEJB
++RXdnZ0lvQW9JQkFRQ1BlVFhadWFycHY2dnRpSHJQU1ZHMjh5N0YKbmp1dk54am82
++c1NXSHo3OU5nYm5RMUdweEJnek9iZ0o1OEt1SEZPYnAwZGJoZEFScmJpMGVZZDFT
++WVJwWEt3TwpqeFN6Tmdnb29pLzZKeEVLUFdLcGswVTBDYUQrYVd4R1dQaEwzU0NC
++bkRjSm9CQlhzWld0elFBalBicFVoTFlwCkg1MWtqdmlEUklaM2w1enNCTFEwcHF3
++dWRlbVlYZUk5c0NrdndSR01uL3FkZ1lIbk00MjNrcmN3MTdualNWa3YKYUFtWWNo
++VTVGZW85YTR0R1U4WXpSWStBT3pLa3d1RHljcEFsYms0L2lqc0lPS0hFVU9UaGpC
++b3BvMzNmWHFGRAoza3RtL3dTUVB0WFBGaVBoV05TSHhnanBmeUVjMkIzS0k4dHVP
++QWRsK0NMalFyNUlUQVYyT1RsZ0hOWm5BaDBBCnV2YVdwb1Y0OTkvZTUvcG55WGZI
++aGU4eXNqTzY1WURBdk5WcFhRS0NBUUFXcGx4WUlFaFFjRTUxQXFPWFZ3UU4KTk5v
++Nk5IakJWTlRrcGNBdEpDN2dUNWJtSGt2UWtFcTlySTgzN3JIZ256R0MwanlRUTh0
++a0w0Z0FRV0R0K2NvSgpzeUIycDV3eXBpZnlSejZSaDV1aXhPZEV2U0NCVkV5MVc0
++QXNObzBmcUQ3VWllbE9ENkJvampKQ2lseDR4SGpHCmpRVW50eHlhT3JzTEMrRXNS
++R2lXT2VmVHpuVGJFQnBscWl1SDlreG9KdHMreHk5TFZabURTN1R0c0M5OGtPbWsK
++bHRPbFhWTmI2L3hGMVBZWjlqODk3YnVIT1NYQzhpVGdkekVwYmFpSDdCNUhTUGgr
++KzEvZXQxU0VNV3NpTXQ3bApVOTJ2QWhFckRSOEMyakNYTWlUK0o2N2FpNTFMS1NM
++WnVvdmpudG5oQTZZOFVvRUx4b2kzNHUxREZ1SHZGOXZlCkJCOENIUUMzU0hOSm5u
++cjF0TG00aDdKR1RETU02cUJQc2N3cmdMcGZHOW9tCi0tLS0tRU5EIFBSSVZBVEUg
++S0VZLS0tLS0KQmFnIEF0dHJpYnV0ZXMKICAgIGZyaWVuZGx5TmFtZTogYQogICAg
++bG9jYWxLZXlJRDogNTQgNjkgNkQgNjUgMjAgMzEgMzUgMzMgMzggMzEgMzMgMzQg
++MzAgMzUgMzkgMzQgMzMgMzUgCnN1YmplY3Q9L0NOPUEKaXNzdWVyPS9DTj1BCi0t
++LS0tQkVHSU4gQ0VSVElGSUNBVEUtLS0tLQpNSUlFRXpDQ0E3K2dBd0lCQWdJRWJ1
++OFlOREFOQmdsZ2hrZ0JaUU1FQXdJRkFEQU1NUW93Q0FZRFZRUURFd0ZCCk1CNFhE
++VEU0TURreU9ERXhNamN6T1ZvWERURTRNVEl5TnpFeE1qY3pPVm93RERFS01BZ0dB
++MVVFQXhNQlFUQ0MKQTBJd2dnSTFCZ2NxaGtqT09BUUJNSUlDS0FLQ0FRRUFqM2sx
++MmJtcTZiK3I3WWg2ejBsUnR2TXV4WjQ3cnpjWQo2T3JFbGg4Ky9UWUc1ME5ScWNR
++WU16bTRDZWZDcmh4VG02ZEhXNFhRRWEyNHRIbUhkVW1FYVZ5c0RvOFVzellJCktL
++SXYraWNSQ2oxaXFaTkZOQW1nL21sc1JsajRTOTBnZ1p3M0NhQVFWN0dWcmMwQUl6
++MjZWSVMyS1IrZFpJNzQKZzBTR2Q1ZWM3QVMwTkthc0xuWHBtRjNpUGJBcEw4RVJq
++Si82bllHQjV6T050NUszTU5lNTQwbFpMMmdKbUhJVgpPUlhxUFd1TFJsUEdNMFdQ
++Z0RzeXBNTGc4bktRSlc1T1A0bzdDRGloeEZEazRZd2FLYU45MzE2aFE5NUxadjhF
++CmtEN1Z6eFlqNFZqVWg4WUk2WDhoSE5nZHlpUExiamdIWmZnaTQwSytTRXdGZGpr
++NVlCeldad0lkQUxyMmxxYUYKZVBmZjN1ZjZaOGwzeDRYdk1ySXp1dVdBd0x6VmFW
++MENnZ0VBRnFaY1dDQklVSEJPZFFLamwxY0VEVFRhT2pSNAp3VlRVNUtYQUxTUXU0
++RStXNWg1TDBKQkt2YXlQTis2eDRKOHhndEk4a0VQTFpDK0lBRUZnN2ZuS0NiTWdk
++cWVjCk1xWW44a2Mra1llYm9zVG5STDBnZ1ZSTXRWdUFMRGFOSDZnKzFJbnBUZytn
++YUk0eVFvcGNlTVI0eG8wRko3Y2MKbWpxN0N3dmhMRVJvbGpubjA4NTAyeEFhWmFv
++cmgvWk1hQ2JiUHNjdlMxV1pnMHUwN2JBdmZKRHBwSmJUcFYxVApXK3Y4UmRUMkdm
++WS9QZTI3aHprbHd2SWs0SGN4S1cyb2grd2VSMGo0ZnZ0ZjNyZFVoREZySWpMZTVW
++UGRyd0lSCkt3MGZBdG93bHpJay9pZXUyb3VkU3lraTJicUw0NTdaNFFPbVBGS0JD
++OGFJdCtMdFF4Ymg3eGZiM2dPQ0FRVUEKQW9JQkFEK0syd1RoV3VyRGpZTUNYeGZy
++dXJOK0drZFNFeXk5cCtkdkhJUDFrTWhybTcrRXV6LzExUVlGcGI4Vgpic0NhWWUx
++ME9qWkF1WjRXSmdTbkl5R0swb2JzbjlKWkZubUdDbGlxRkVoWGJwbnhyOGxhS3Iw
++dDRERytPMTF2CjVQRGh4aHd2b1VZb2ZwWTFEYjN0SHlxdytWM3RRWVA3K3RaNDRB
++eW1SdTNtbktZTVZzRHd2M0x1UEdaLzJmQ0MKY2lYVEJIU3VFbzdCUDdBbjdFYkZO
++K0JaQldlTlgvcjNOZm1nL0tmQjQ1OFNZMmhFYlplRW5kZUh4d204VFRORwpQaXdi
++Nkx5ZE5RS0VFS003cmVFTjkwTXVsUVJMZkhVVFBWZXB5dU9QK1ZySEI3WS9lVWhI
++K2RNeHp6d3pLOHJ6CjRYaEwxRFBhT1ZMdmxCSUR5VE5QZU4wV2V4bWpJVEFmTUIw
++R0ExVWREZ1FXQkJUQThWK01SSXRNU3Yyb283YjgKYzVlQ0tybzdxREFOQmdsZ2hr
++Z0JaUU1FQXdJRkFBTS9BREE4QWh3a0dVK2VVR0kvTFFVejMzTUk3cC9BVXd1WAo0
++SnZOVGUrUGhQZFZBaHdvUzdNMFIzbjRnSkkxU2FRdnoyTWhuR3Z1T3Q5UzZMdkRR
++NWRFCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+--- /dev/null	2022-02-08 18:39:59.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/params/ks	2022-02-08 18:39:59.000000000 +0300
+@@ -0,0 +1,45 @@
++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
++AgMBhqA=
+--- /dev/null	2022-02-08 18:39:59.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/params/os2	2022-02-08 18:39:59.000000000 +0300
+@@ -0,0 +1,42 @@
++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
++Cr9m
+--- /dev/null	2022-02-08 18:40:00.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/params/os3	2022-02-08 18:40:00.000000000 +0300
+@@ -0,0 +1,43 @@
++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
++sUUCAggA
+--- /dev/null	2022-02-08 18:40:01.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/params/os4	2022-02-08 18:40:00.000000000 +0300
+@@ -0,0 +1,44 @@
++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
++owQIAiAhw9ZbovsCAggA
+--- /dev/null	2022-02-08 18:40:01.000000000 +0300
++++ openjdk/jdk/test/sun/security/pkcs12/params/os5	2022-02-08 18:40:01.000000000 +0300
+@@ -0,0 +1,48 @@
++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
++YOMCAggA
+--- openjdk/jdk/src/share/classes/com/sun/crypto/provider/HmacPKCS12PBESHA1.java	2022-02-08 18:40:02.000000000 +0300
++++ /dev/null	2022-02-08 18:40:02.000000000 +0300
+@@ -1,142 +0,0 @@
+-/*
+- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
+- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+- *
+- * This code is free software; you can redistribute it and/or modify it
+- * under the terms of the GNU General Public License version 2 only, as
+- * published by the Free Software Foundation.  Oracle designates this
+- * particular file as subject to the "Classpath" exception as provided
+- * by Oracle in the LICENSE file that accompanied this code.
+- *
+- * This code is distributed in the hope that it will be useful, but WITHOUT
+- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+- * version 2 for more details (a copy is included in the LICENSE file that
+- * accompanied this code).
+- *
+- * You should have received a copy of the GNU General Public License version
+- * 2 along with this work; if not, write to the Free Software Foundation,
+- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+- *
+- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+- * or visit www.oracle.com if you need additional information or have any
+- * questions.
+- */
+-
+-package com.sun.crypto.provider;
+-
+-import java.util.Arrays;
+-import java.nio.ByteBuffer;
+-
+-import javax.crypto.MacSpi;
+-import javax.crypto.SecretKey;
+-import javax.crypto.spec.SecretKeySpec;
+-import javax.crypto.spec.PBEParameterSpec;
+-import java.security.*;
+-import java.security.spec.*;
+-
+-/**
+- * This is an implementation of the HMAC-PBESHA1 algorithm as defined
+- * in PKCS#12 v1.0 standard.
+- *
+- * @author Valerie Peng
+- */
+-public final class HmacPKCS12PBESHA1 extends HmacCore {
+-
+-    /**
+-     * Standard constructor, creates a new HmacSHA1 instance.
+-     */
+-    public HmacPKCS12PBESHA1() throws NoSuchAlgorithmException {
+-        super("SHA1", 64);
+-    }
+-
+-    /**
+-     * Initializes the HMAC with the given secret key and algorithm parameters.
+-     *
+-     * @param key the secret key.
+-     * @param params the algorithm parameters.
+-     *
+-     * @exception InvalidKeyException if the given key is inappropriate for
+-     * initializing this MAC.
+-     * @exception InvalidAlgorithmParameterException if the given algorithm
+-     * parameters are inappropriate for this MAC.
+-     */
+-    protected void engineInit(Key key, AlgorithmParameterSpec params)
+-        throws InvalidKeyException, InvalidAlgorithmParameterException {
+-        char[] passwdChars;
+-        byte[] salt = null;
+-        int iCount = 0;
+-        if (key instanceof javax.crypto.interfaces.PBEKey) {
+-            javax.crypto.interfaces.PBEKey pbeKey =
+-                (javax.crypto.interfaces.PBEKey) key;
+-            passwdChars = pbeKey.getPassword();
+-            salt = pbeKey.getSalt(); // maybe null if unspecified
+-            iCount = pbeKey.getIterationCount(); // maybe 0 if unspecified
+-        } else if (key instanceof SecretKey) {
+-            byte[] passwdBytes;
+-            if (!(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3)) ||
+-                    (passwdBytes = key.getEncoded()) == null) {
+-                throw new InvalidKeyException("Missing password");
+-            }
+-            passwdChars = new char[passwdBytes.length];
+-            for (int i=0; i<passwdChars.length; i++) {
+-                passwdChars[i] = (char) (passwdBytes[i] & 0x7f);
+-            }
+-            Arrays.fill(passwdBytes, (byte)0x00);
+-        } else {
+-            throw new InvalidKeyException("SecretKey of PBE type required");
+-        }
+-
+-        byte[] derivedKey;
+-        try {
+-            if (params == null) {
+-                // should not auto-generate default values since current
+-                // javax.crypto.Mac api does not have any method for caller to
+-                // retrieve the generated defaults.
+-                if ((salt == null) || (iCount == 0)) {
+-                    throw new InvalidAlgorithmParameterException
+-                            ("PBEParameterSpec required for salt and iteration count");
+-                }
+-            } else if (!(params instanceof PBEParameterSpec)) {
+-                throw new InvalidAlgorithmParameterException
+-                        ("PBEParameterSpec type required");
+-            } else {
+-                PBEParameterSpec pbeParams = (PBEParameterSpec) params;
+-                // make sure the parameter values are consistent
+-                if (salt != null) {
+-                    if (!Arrays.equals(salt, pbeParams.getSalt())) {
+-                        throw new InvalidAlgorithmParameterException
+-                                ("Inconsistent value of salt between key and params");
+-                    }
+-                } else {
+-                    salt = pbeParams.getSalt();
+-                }
+-                if (iCount != 0) {
+-                    if (iCount != pbeParams.getIterationCount()) {
+-                        throw new InvalidAlgorithmParameterException
+-                                ("Different iteration count between key and params");
+-                    }
+-                } else {
+-                    iCount = pbeParams.getIterationCount();
+-                }
+-            }
+-            // For security purpose, we need to enforce a minimum length
+-            // for salt; just require the minimum salt length to be 8-byte
+-            // which is what PKCS#5 recommends and openssl does.
+-            if (salt.length < 8) {
+-                throw new InvalidAlgorithmParameterException
+-                        ("Salt must be at least 8 bytes long");
+-            }
+-            if (iCount <= 0) {
+-                throw new InvalidAlgorithmParameterException
+-                        ("IterationCount must be a positive number");
+-            }
+-            derivedKey = PKCS12PBECipherCore.derive(passwdChars, salt,
+-                    iCount, engineGetMacLength(), PKCS12PBECipherCore.MAC_KEY);
+-        } finally {
+-            Arrays.fill(passwdChars, '\0');
+-        }
+-        SecretKey cipherKey = new SecretKeySpec(derivedKey, "HmacSHA1");
+-        super.engineInit(cipherKey, null);
+-    }
+-}

@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Sat Mar  5 07:44:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u322 (icedtea-3.22.0)
+  * January 2022 CPU
+  * Security fixes
+    + JDK-8264934, CVE-2022-21248, bsc#1194926: Enhance cross VM
+      serialization
+    + JDK-8268488: More valuable DerValues
+    + JDK-8268494: Better inlining of inlined interfaces
+    + JDK-8268512: More content for ContentInfo
+    + JDK-8268795: Enhance digests of Jar files
+    + JDK-8268801: Improve PKCS attribute handling
+    + JDK-8268813, CVE-2022-21283, bsc#1194937: Better String
+      matching
+    + JDK-8269151: Better construction of EncryptedPrivateKeyInfo
+    + JDK-8269944: Better HTTP transport redux
+    + JDK-8270392, CVE-2022-21293, bsc#1194935: Improve String
+      constructions
+    + JDK-8270416, CVE-2022-21294, bsc#1194934: Enhance
+      construction of Identity maps
+    + JDK-8270492, CVE-2022-21282, bsc#1194933: Better resolution
+      of URIs
+    + JDK-8270498, CVE-2022-21296, bsc#1194932: Improve SAX Parser
+      configuration management
+    + JDK-8270646, CVE-2022-21299, bsc#1194931: Improved scanning
+      of XML entities
+    + JDK-8271962: Better TrueType font loading
+    + JDK-8271968: Better canonical naming
+    + JDK-8271987: Manifest improved manifest entries
+    + JDK-8272014, CVE-2022-21305, bsc#1194939: Better array
+      indexing
+    + JDK-8272026, CVE-2022-21340, bsc#1194940: Verify Jar
+      Verification
+    + JDK-8272236, CVE-2022-21341, bsc#1194941: Improve serial
+      forms for transport
+    + JDK-8272272: Enhance jcmd communication
+    + JDK-8272462: Enhance image handling
+    + JDK-8273290: Enhance sound handling
+    + JDK-8273748, CVE-2022-21349: Improve Solaris font rendering
+    + JDK-8273756, CVE-2022-21360, bsc#1194929: Enhance BMP image
+      support
+    + JDK-8273838, CVE-2022-21365, bsc#1194928: Enhanced BMP
+      processing
+  * Import of OpenJDK 8 u322
+    + JDK-6801613: Cross-platform pageDialog and printDialog top
+      margin entry broken
+    + JDK-8011541: [TEST_BUG] closed/javax/swing/plaf/metal/
+      /MetalUtils/bug6190373.java fails NPE since 7u25b03
+    + JDK-8025430: [TEST_BUG] javax/swing/JEditorPane/5076514/
+      /bug5076514.java failed since jdk8b108
+    + JDK-8041928: MouseEvent.getModifiersEx gives wrong result
+    + JDK-8042199: The build of J2DBench via makefile is broken
+      after the JDK-8005402
+    + JDK-8044365: (dc) MulticastSendReceiveTests.java failing with
+      ENOMEM when joining group (OS X 10.9)
+    + JDK-8048021: Remove @version tag in jaxp repo
+    + JDK-8049348: compiler/intrinsics/bmi/verifycode tests on
+      lzcnt and tzcnt use incorrect assumption about REXB prefix
+      usage
+    + JDK-8060027: Tests java/beans/XMLEncoder/Test4903007.java and
+      java/beans/XMLEncoder/java_awt_GridBagLayout.java
+    + JDK-8066588: javax/management/remote/mandatory/connectio
+      /RMIConnector_NPETest.java fails to compile
+    + JDK-8066652: Default TimeZone is GMT not local if
+      user.timezone is invalid on Mac OS
+    + JDK-8069034:
+      gc/g1/TestEagerReclaimHumongousRegionsClearMarkBits.java
+      nightly failure
+    + JDK-8077590: windows_i586_6.2-product-c2-runThese8_Xcomp_vm
+      failing after win compiler upgrade
+    + JDK-8080287: The image of BufferedImage.TYPE_INT_ARGB and
+      BufferedImage.TYPE_INT_ARGB_PRE is blank
+    + JDK-8140329: [TEST_BUG] test FullScreenAfterSplash.java
+      failed because image was not generated
+    + JDK-8140472: java/net/ipv6tests/TcpTest.java failed
+      intermittently with java.net.BindException: Address already in
+      use: NET_Bind
+    + JDK-8147051: StaxEntityResolverWrapper should create
+      StaxXMLInputSource with a resolver indicator
+    + JDK-8148915: Intermittent failures of bug6400879.java
+    + JDK-8176837: SunPKCS11 provider needs to check more details
+      on PKCS11 Mechanism
+    + JDK-8177393: Result of RescaleOp for 4BYTE_ABGR images may be
+      25% black
+    + JDK-8177536: Avoid Apple Peer-to-Peer interfaces in
+      networking tests
+    + JDK-8182036: Load from initializing arraycopy uses wrong
+      memory state
+    + JDK-8183369: RFC unconformity of HttpURLConnection with proxy
+    + JDK-8183543: Aarch64: C2 compilation often fails with "failed
+      spill-split-recycle sanity check"
+    + JDK-8187450: JNI local refs exceeds capacity warning in
+      NetworkInterface::getAll
+    + JDK-8187649: ArrayIndexOutOfBoundsException in
+      java.util.JapaneseImperialCalendar
+    + JDK-8190482: InnocuousThread creation should not require the
+      caller to possess enableContextClassLoaderOverride
+    + JDK-8190793: Httpserver does not detect truncated request body
+    + JDK-8196572: Tests ColConvCCMTest.java and MTColConvTest.java
+      fail
+    + JDK-8202788: Explicitly reclaim cached thread-local direct
+      buffers at thread exit
+    + JDK-8210058: Algorithmic Italic font leans opposite angle in
+      Printing
+    + JDK-8220150: macos10.14 Mojave returns anti-aliased glyphs
+      instead of aliased B&W glyphs
+    + JDK-8225082: Remove IdenTrust certificate that is expiring in
+      September 2021
+    + JDK-8225083: Remove Google certificate that is expiring in
+      December 2021
+    + JDK-8226806: [macOS 10.14] Methods of Java Robot should be
+      called from appropriate thread
+    + JDK-8231254: (fs) Add test for macOS Catalina changes to
+      protect system software
+    + JDK-8231438: [macOS] Dark mode for the desktop is not
+      supported
+    + JDK-8232178: MacVolumesTest failed after upgrade to MacOS
+      Catalina
+    + JDK-8232226: [macos 10.15] test/jdk/java/awt/color/
+      /EqualityTest/EqualityTest.java may fail
+    + JDK-8235153: [TESTBUG] [macos 10.15] java/awt/Graphics/
+      /DrawImageBG/SystemBgColorTest.java fails
+    + JDK-8236897: Fix the copyright header for pkcs11gcm2.h
+    + JDK-8237499: JFR: Include stack trace in the ThreadStart event
+    + JDK-8239886: Minimal VM build fails after JDK-8237499
+    + JDK-8261397: Try Catch Method Failing to Work When Dividing
+      An Integer By 0
+    + JDK-8262731: [macOS] Exception from "Printable.print" is
+      swallowed during "PrinterJob.print"
+    + JDK-8272342: [TEST_BUG] java/awt/print/PrinterJob/
+      /PageDialogMarginTest.java catches all exceptions
+    + JDK-8273308: PatternMatchTest.java fails on CI
+    + JDK-8273342: Null pointer dereference in
+      classFileParser.cpp:2817
+    + JDK-8273826: Correct Manifest file name and NPE checks
+    + JDK-8273968: JCK javax_xml tests fail in CI
+    + JDK-8274407: (tz) Update Timezone Data to 2021c
+    + JDK-8274467: TestZoneInfo310.java fails with tzdata2021b
+    + JDK-8274468: TimeZoneTest.java fails with tzdata2021b
+    + JDK-8274595: DisableRMIOverHTTPTest failed: connection refused
+    + JDK-8274779: HttpURLConnection: HttpClient and HttpsClient
+      incorrectly check request method when set to POST
+    + JDK-8275766: (tz) Update Timezone Data to 2021e
+    + JDK-8275849: TestZoneInfo310.java fails with tzdata2021e
+    + JDK-8276536: Update TimeZoneNames files to follow the changes
+      made by JDK-8275766
+- Added patch:
+  * JDK-8076190.patch
+    + backport reviewed fix for JDK-8076190 Customizing the
+      generation of a PKCS12 keystore (bsc#1195163)
+
+-------------------------------------------------------------------
 Wed Feb  9 14:51:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:
@@ -16,7 +168,8 @@ Sat Dec  4 07:23:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
   * fips.patch
     + When system crypto policy files are not available, use the
       information from the java.security file that we distribute
-      with OpenJDK as a fallback. (bsc#1193314)
+      with OpenJDK as a fallback. (bsc#1193314, bsc#1193444,
+      bsc#1193491)
 
 -------------------------------------------------------------------
 Fri Nov  5 18:01:42 UTC 2021 - Fridrich Strba <fstrba@suse.com>

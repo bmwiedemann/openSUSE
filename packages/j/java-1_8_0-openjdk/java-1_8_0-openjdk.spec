@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.21.0
+%global icedtea_version 3.22.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,8 +31,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       312
-%global buildver        07
+%global updatever       322
+%global buildver        06
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -166,16 +166,9 @@ License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only 
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 Source0:        https://icedtea.classpath.org/download/source/icedtea-%{icedtea_version}.tar.xz
-Source1:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/openjdk.tar.xz
-Source2:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/corba.tar.xz
-Source3:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jaxp.tar.xz
-Source4:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jaxws.tar.xz
-Source5:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jdk.tar.xz
-Source6:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/langtools.tar.xz
-Source7:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/hotspot.tar.xz
-Source8:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/aarch32.tar.xz
-Source9:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/shenandoah.tar.xz
-Source10:       https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/nashorn.tar.xz
+Source1:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/openjdk-git.tar.xz
+Source2:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/aarch32-git.tar.xz
+Source3:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/shenandoah-git.tar.xz
 # nss fips configuration file
 Source17:       nss.fips.cfg.in
 # RPM/distribution specific patches
@@ -196,6 +189,7 @@ Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
 Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
+Patch2003:      JDK-8076190.patch
 Patch3000:      tls13extensions.patch
 Patch4000:      riscv64-zero.patch
 Patch5001:      fips.patch
@@ -501,23 +495,15 @@ sh autogen.sh
 %else
         --disable-improved-font-rendering \
 %endif
-        --with-openjdk-src-zip=%{SOURCE1} \
-        --with-corba-src-zip=%{SOURCE2} \
-        --with-jaxp-src-zip=%{SOURCE3} \
-        --with-jaxws-src-zip=%{SOURCE4} \
-        --with-jdk-src-zip=%{SOURCE5} \
-        --with-langtools-src-zip=%{SOURCE6} \
 %ifarch %{arm}
-        --with-hotspot-src-zip=%{SOURCE8} \
+        --with-hotspot-src-zip=%{SOURCE2} \
 %else
-%if %{with zero} || %{without shenandoah}
-        --with-hotspot-src-zip=%{SOURCE7} \
-%else
-        --with-hotspot-src-zip=%{SOURCE9} \
+%if %{without zero} && %{with shenandoah}
+        --with-hotspot-src-zip=%{SOURCE3} \
         --with-hotspot-build=shenandoah \
 %endif
 %endif
-        --with-nashorn-src-zip=%{SOURCE10}
+        --with-openjdk-src-zip=%{SOURCE1}
 
 make patch %{?_smp_mflags}
 
@@ -536,6 +522,7 @@ patch -p0 -i %{PATCH103}
 
 patch -p0 -i %{PATCH2001}
 patch -p0 -i %{PATCH2002}
+patch -p0 -i %{PATCH2003}
 
 patch -p0 -i %{PATCH3000}
 
