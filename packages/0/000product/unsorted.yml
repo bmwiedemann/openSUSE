@@ -1673,7 +1673,6 @@ unsorted:
   - cadabra2-doc 
   - cadabra2-examples 
   - cadabra2-gui 
-  - cadaver 
   - caddy 
   - cadsondemak-fonts 
   - caffe 
@@ -1849,8 +1848,6 @@ unsorted:
   - cecilia 
   - cedict 
   - cedilla 
-  - cegui-demos-devel 
-  - cegui-devel 
   - cel-cpp-source 
   - celluloid 
   - celluloid-lang 
@@ -3012,8 +3009,6 @@ unsorted:
   - doh 
   - dolly 
   - dolphin-devel 
-  - dolphin-emu: [x86_64] 
-  - dolphin-emu-lang: [x86_64] 
   - dolphin-plugins 
   - dolphin-plugins-lang 
   - dom2-core-tests 
@@ -5585,7 +5580,6 @@ unsorted:
   - giac-doc 
   - giac-lang 
   - giada 
-  - giblib-devel 
   - giflib-devel 
   - giflib-devel-32bit: [x86_64] 
   - giflib-progs 
@@ -8811,12 +8805,6 @@ unsorted:
   - libBulletInverseDynamicsUtils3_17 
   - libBulletWorldImporter3_17 
   - libBulletXmlWorldImporter3_17 
-  - libCEGUI-0 
-  - libCEGUIIrrlichtRenderer-0-2 
-  - libCEGUINullRenderer-0-2 
-  - libCEGUIOgreRenderer-0-2 
-  - libCEGUIOpenGLESRenderer-0-2 
-  - libCEGUIOpenGLRenderer-0-2 
   - libCSXCAD0 
   - libCoin60 
   - libColPack0 
@@ -11018,7 +11006,6 @@ unsorted:
   - libgfrpc0 
   - libgfxdr0 
   - libgiac0 
-  - libgiblib1 
   - libgif7-32bit: [x86_64] 
   - libgig-devel 
   - libgig-tools 
@@ -11676,7 +11663,6 @@ unsorted:
   - libjasper-devel 
   - libjasper6 
   - libjasper6-32bit: [x86_64] 
-  - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
   - libjavascriptcoregtk-5_0-0 
@@ -12015,7 +12001,6 @@ unsorted:
   - libmanette-devel 
   - libmapidb-devel 
   - libmapidb1 
-  - libmapserver2 
   - libmarblewidget-qt5-28 
   - libmarco-private2 
   - libmariadb-devel 
@@ -15645,8 +15630,6 @@ unsorted:
   - mangohud 
   - mangohud-32bit: [x86_64] 
   - manpageeditor 
-  - mapserver 
-  - mapserver-devel 
   - marble 
   - marble-data 
   - marble-devel 
@@ -20281,7 +20264,6 @@ unsorted:
   - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
-  - perl-mapscript 
   - perl-marisa 
   - perl-multidimensional 
   - perl-namespace-autoclean 
@@ -20360,7 +20342,6 @@ unsorted:
   - php-composer 
   - php-composer2 
   - php-cs-fixer 
-  - php-mapscript 
   - php-pear-Auth_SASL 
   - php-pear-MDB2 
   - php-pear-MDB2_Driver_mysqli 
@@ -21326,7 +21307,6 @@ unsorted:
   - python-lxml-doc 
   - python-magnumclient-doc 
   - python-manilaclient-doc 
-  - python-mapscript 
   - python-marshmallow-docs 
   - python-masakariclient-doc 
   - python-md2workflow-common 
@@ -26577,7 +26557,6 @@ unsorted:
   - python38-modernize 
   - python38-mohawk 
   - python38-mongoengine 
-  - python38-monitoring-plugins-http_json 
   - python38-monotonic 
   - python38-moreorless 
   - python38-moto 
@@ -32415,6 +32394,7 @@ unsorted:
   - shibboleth-sp 
   - shibboleth-sp-devel 
   - shigofumi 
+  - shine 
   - shlomif-cmake-modules 
   - shntool 
   - shorewall 
@@ -32480,8 +32460,6 @@ unsorted:
   - sisu-javadoc 
   - sisu-plexus 
   - sitar 
-  - sitecopy 
-  - sitecopy-lang 
   - skaffold 
   - skelcd-control-Kubic 
   - skelcd-control-MicroOS 
