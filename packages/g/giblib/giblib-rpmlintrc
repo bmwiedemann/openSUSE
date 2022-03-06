@@ -1,7 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("source-or-patch-not-bzipped")
-addFilter("no-manual-page-for-binary")
-addFilter("no-binary")
-
