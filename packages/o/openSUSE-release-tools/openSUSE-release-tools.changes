@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 05 14:21:38 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220305.b51fd11b:
+  * gocd: Fix rare failure to push to notifications repo
+  * pkglistgen: Only solve one project at a time
+  * Installcheck: Ignore requires to packages with delete requests
+
+-------------------------------------------------------------------
 Fri Mar 04 13:19:41 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220304.1479a628:
