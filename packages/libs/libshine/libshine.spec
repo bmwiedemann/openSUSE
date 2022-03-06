@@ -1,7 +1,7 @@
 #
 # spec file for package libshine
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define oname   shine
 %define libver  3
 Name:           libshine
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        MP3 encoding library
-License:        LGPL-2.0
-Group:          Productivity/Multimedia/Sound/Editors and Converters
-Url:            https://github.com/toots/shine
-Source0:        https://github.com/toots/shine/archive/3.1.0.tar.gz#/%{oname}-%{version}.tar.gz
-BuildRequires:  dos2unix
-BuildRequires:  gcc
-BuildRequires:  libtool
-BuildRequires:  pkg-config
+License:        LGPL-2.0-only
+Group:          System/Libraries
+URL:            https://github.com/toots/shine
+Source0:        https://github.com/toots/shine/releases/download/%{version}/%{oname}-%{version}.tar.gz
+BuildRequires:  pkgconfig
 
 %description
 Shine is an MP3 encoding library implemented in fixed-point
@@ -56,31 +53,40 @@ arithmetic. The library can be used to perform MP3 encoding on
 architectures without a FPU, such as armel, etc., but likewise works
 on systems with an FPU.
 
+%package -n %{oname}
+Summary:        MP3 encoding tool
+Group:          Productivity/Multimedia/Sound/Utilities
+Conflicts:      libshine3 <= 3.1.0
+
+%description -n %{oname}
+Shine is an MP3 encoding library implemented in fixed-point
+arithmetic. This package contains the shineenc command line encoder.
+
 %prep
 %setup -q -n %{oname}-%{version}
 
 %build
-./bootstrap
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-dos2unix COPYING
 
 %post -n %{name}%{libver} -p /sbin/ldconfig
-
 %postun -n %{name}%{libver} -p /sbin/ldconfig
 
-%files -n %{name}%{libver}
-%defattr(-,root,root)
+%files -n %{oname}
+%license COPYING
 %{_bindir}/shineenc
+
+%files -n %{name}%{libver}
+%license COPYING
 %{_libdir}/%{name}.so.%{libver}*
 
 %files devel
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md README.old
+%license COPYING
+%doc ChangeLog README.md README.old
 %dir %{_includedir}/%{oname}
 %{_includedir}/%{oname}/layer3.h
 %{_libdir}/%{name}.so

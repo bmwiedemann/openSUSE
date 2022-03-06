@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  5 12:00:00 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.1.1:
+  * Remove invalid MPEG 2.5 bitrates
+- move shineenc utility into it's own package
+- use bootstrapped tarball, package license text correctly
+
+-------------------------------------------------------------------
 Thu Mar  2 10:25:15 UTC 2017 - jengelh@inai.de
 
 - Remove NPOV wording
