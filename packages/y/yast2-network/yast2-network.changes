@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  3 10:01:24 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Added connection config writers for Qeth and Hipersocket
+  devices (bsc#1196582)
+- 4.4.43
+
+-------------------------------------------------------------------
 Fri Feb 25 11:54:49 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Revert last change going back to skip DHCP setup completely if
