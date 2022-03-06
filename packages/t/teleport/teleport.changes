@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 05 13:06:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 8.3.4:
+  * Release 8.3.4 (#10859)
+  * Backport #9556 to branch/v8 (#10825)
+  * Fix DynamoDB getAllRecords logic when 1MB query limit is reached (#10726) (#10847)
+  * Backport #10061 to branch/v8 (#10828)
+  * Open parts files one at a time
+  * Complete empty uploads
+  * Restore docs deply hook (#10839)
+  * Do not block apt publishing if there is a more current pre-release (#10806)
+  * Improve HA behavior of database agents in leaf clusters (#10641) (#10770)
+  * docs: update CA rotation page (#10419)
+  * Backport #10460 to branch/v8 (#10617)
+  * Print proxy server on instructions on nodes add command for cloud (#10749)
+  * Fix broken link
+  * Fix nindent of `service.spec` in teleport-cluster chart
+  * Update upcoming-releases.mdx
+  * TF provider configuration environment variables (#10417) (#10547)
+
+-------------------------------------------------------------------
 Thu Mar 03 08:20:49 UTC 2022 - kastl@b1-systems.de
 
 - skip non-existing release 8.3.2
