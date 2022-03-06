@@ -1552,4 +1552,28 @@
     * Sony Alpha-RX1R II, ILCE-7C, ZV-E10, A6600, DSC HX-80, ILCE-7RM3A, ILCE-7RM4A, DSC-A7S III</comment>
     <requestid>944203</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>a531bc705ea50153e46760a27950fc9b</srcmd5>
+    <version>2.5.29</version>
+    <time>1646586928</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.29 release 
+  general:
+  * fixes build failures of libgphoto2 frontends and builds using the
+    wrong libgphoto2 headers (issue #717)
+  ptp2:
+  * fixed a regression in Fuji preview capture which would lead to crashes
+  * made the wait-event property extractor more robust (it sometimes gets NULL ptrs), hopefully fixing Sony crashes
+  * sony: fixed a crash in sony f-number
+  * panasonic: added more configs adjustgm, adjustab, colortemp, afmode, mfadjust, expmode, recording
+  * fixed some bugs caused by refactoring / memory leak fixes
+  * added:
+    - Kodak m531
+    - HP Photosmart E331
+    - Nikon DSC 6
+  translations:
+  * updated polish, ukrainian, russian, serbian
+  * added romanian</comment>
+    <requestid>959614</requestid>
+  </revision>
 </revisionlist>
