@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  5 13:30:28 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.12:
+  * Put "Scikit-HEP Administrators" as copyright holders and
+    update copyright to 2022 by @eduardo-rodrigues in
+    gh#scikit-hep/scikit-hep-testdata#71.
+  * Added uproot-issue-569.root as a test for a fix for
+    gh#scikit-hep/uproot4#569.
+
+-------------------------------------------------------------------
 Thu Jan 20 17:09:37 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.4.11:
