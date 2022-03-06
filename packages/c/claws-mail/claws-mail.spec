@@ -83,6 +83,7 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(webkit2gtk-4.0)
 #
 Requires:       pinentry-dialog
 Suggests:       pinentry-gtk2
@@ -181,7 +182,7 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
         --enable-bogofilter-plugin \
         --enable-bsfilter-plugin \
         --enable-clamd-plugin \
-        --disable-fancy-plugin \
+        --enable-fancy-plugin \
         --enable-fetchinfo-plugin \
         --enable-mailmbox-plugin \
         --enable-newmail-plugin \
