@@ -1,6 +1,0 @@
-<servicedata>
-    <service name="tar_scm">
-        <param name="url">https://github.com/dolphin-emu/dolphin.git</param>
-        <param name="changesrevision">ccc99ebfe349b2208fc398cf55c12ca0aa134300</param>
-    </service>
-</servicedata>
