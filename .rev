@@ -29,4 +29,12 @@
   * Fix bugs</comment>
     <requestid>950154</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>941808458aecb17cbfe0f1706799b007</srcmd5>
+    <version>5.11.8</version>
+    <time>1646586948</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959722</requestid>
+  </revision>
 </revisionlist>
