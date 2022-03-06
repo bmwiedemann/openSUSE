@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mimemagic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,18 @@
 #
 
 Name:           rubygem-mimemagic
-Version:        0.3.5
+Version:        0.4.3
 Release:        0
 %define mod_name mimemagic
 %define mod_full_name %{mod_name}-%{version}
+# MANUAL
+BuildRequires:  shared-mime-info
+# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/minad/mimemagic
+URL:            https://github.com/mimemagicrb/mimemagic
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Fast mime detection by extension or content
@@ -40,8 +43,8 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-Fast mime detection by extension or content in pure ruby (Uses
-freedesktop.org.xml shared-mime-info database).
+Fast mime detection by extension or content (Uses freedesktop.org.xml
+shared-mime-info database).
 
 %prep
 
@@ -51,6 +54,7 @@ freedesktop.org.xml shared-mime-info database).
 %gem_install \
   --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
+%gem_cleanup
 
 %gem_packages
 
