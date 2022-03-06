@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 06 01:48:54 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646407463.070318351:
+  * Use correct filters in progress bar links
+  * Allow passing colons within keys via `openqa-cli`
+  * Document posting multiple jobs within one API call
+  * Move transaction for creating jobs into a separate function
+  * Allow creating multiple jobs in one API call in an atomic way
+  * Improve error feedback in `t/api/04-jobs.t`
+  * Dependency cron 2022-03-03
+  * Avoid 500 response and error log when `filename` param not specified
+  * t: Consistently use Test::Warnings everwhere
+
+-------------------------------------------------------------------
 Thu Mar 03 17:48:51 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1646321411.b5d8be1e2:
