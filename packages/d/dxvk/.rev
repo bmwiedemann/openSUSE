@@ -72,4 +72,38 @@
   - **The Guild 3**: Fixed artifacts in overview map.</comment>
     <requestid>945886</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88538a81f5c8950d05b49b47d8315186</srcmd5>
+    <version>1.10</version>
+    <time>1646586937</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.10
+  ## Performance improvements
+  - Reduced unnecessary worker thread synchronization around resource readbacks for both D3D11 and D3D9. This can significantly increase CPU-bound performance in games like **Assassin's Creed: Origins** and other titles built on the same engine, with smaller improvements seen in **Elex II**, **God of War**, **GTA IV** and others.
+  - When using [D3D11_MAP_WRITE](https://docs.microsoft.com/en-us/windows/win32/api/d3d11/ne-d3d11-d3d11_map) on a staging resource that's currently being read by the GPU, DXVK will now attempt to create a copy of that resource in order to avoid GPU synchronization. This improves performance in **Quantum Break** and potentially other games. This behaviour can be tweaked using the `d3d11.maxImplicitDiscardSize` option.
+  - Optimized [UpdateSubresource](https://docs.microsoft.com/en-us/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-updatesubresource) for small constant buffer updates. This further improves performance in **God of War** and potentially other games.
+  - Improved the way resource uploads and staging buffers are handled in D3D11. This may reduce memory usage and CPU overhead in some - Added more information to the HUD that can be useful for troubleshooting performance issues: GPU synchronizations per frame, worker thread synchronizations per frame, and pipeline barrier count.
+  - GPU synchronization, when necessary, no longer uses busy-waiting, which may reduce power consumption on portable devices in some games.
+  ## Bug fixes and Improvements
+  - Added a `D3D11On12CreateDevice` stub so applications using this don't immediately crash (PR #2278).
+  **Note** that supporting D3D11on12 is currently not viable.
+  - Version numbers for Intel's Windows driver should now be reported properly.
+  **Note** that using DXVK on this driver is highly discouraged and will likely not work.
+  - **ArmA 2**: Fixed texture-related issues (PR #2477).
+  - **Black Mesa**: Fixed 
+  - **Resident Evil 0**, **5**, **6**, **Resident Evil: Revelations 2**: Improved performance (PR #2466).
+  - **Total War: Warhammer III**: Significantly improved GPU-bound performance on setups with a dedicated GPU.
+  ## Per-game workarounds
+  Replaced the previous `d3d11.apitraceMode` option with  `d3d11.cachedDynamicResources`, which provides a more granular way to specify resource types to allocate in cached system memory. Refer to the example `dxvk.conf` for details. This change was not made for the equivalent D3D9 option yet.
+  Normally, [D3D11_USAGE_DYNAMIC](https://docs.microsoft.com/en-us/windows/win32/api/d3d11/ne-d3d11-d3d11_usage) resources are expected to be write-only from the CPU and read-only from the GPU, but despite this, some games perform CPU-side reads on the mapped memory, which can cause severe performance degradation since those reads would have to go over PCI-E, or at least uncached write-combined memory. This is especially problematic on systems with Resizeable BAR and can cause issues even on Windows D3D11 drivers.
+  Games that will use this option by default include **Age of Empires 2: Definitive Edition** (#2491), **Anno 1800**, **Final Fantasy XIV**, **Nier Replicant**, **The Evil Within** (PR #2522), and all games that previously had `d3d11.apitraceMode` enabled by default.
+- updated to 1.9.4
+  Bug fixes and Improvements:
+  - Fixed an issue that would cause VRAM to not be utilized on RBAR-enabled Nvidia GPUs if the `dxvk.shrinkNvidiaHvvHeap`option is enabled (#2438).
+  - Enabled strict D3D9 float emulation by default on future versions of RADV. This may improve both accuracy and GPU-bound performance (PR #2448)..
+  - Improved memory allocation behaviour. This may reduce memory usage especially in games that create multiple processes or D3D devices.
+  - Removed obsolete options to disable OpenVR support.
+  - **God of War**: Enabled performance optimizations and DLSS support. *Note that these changes are already included in Proton Experimental.* (forwarded request 959619 from msmeissn)</comment>
+    <requestid>959620</requestid>
+  </revision>
 </revisionlist>
