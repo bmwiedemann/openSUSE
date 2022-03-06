@@ -1,7 +1,7 @@
 #
 # spec file for package diskimage-builder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # are only ever run inside the disk image build chroot).
 %global         __requires_exclude_from ^%{python3_sitelib}/diskimage_builder/elements/.*$
 Name:           diskimage-builder
-Version:        2.28.0
+Version:        3.19.1
 Release:        0
 Summary:        Image Building Tools for OpenStack
 License:        Apache-2.0
@@ -30,12 +30,14 @@ Source0:        https://pypi.io/packages/source/d/%{name}/%{name}-%{version}.tar
 Source99:       diskimage-builder-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  findutils
-BuildRequires:  python3-PyYAML >= 3.10.0
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-networkx >= 1.10
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-testtools
@@ -43,7 +45,7 @@ BuildRequires:  sed
 # No stuff in python_sitelib, thus autoreqprov won't work:
 Requires:       kpartx
 Requires:       python3-Babel >= 2.3.4
-Requires:       python3-PyYAML >= 3.10.0
+Requires:       python3-PyYAML >= 3.12
 Requires:       python3-networkx >= 1.10
 Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
@@ -64,13 +66,11 @@ for even further customization.
 
 %prep
 %setup -q
-# Remove <2.6.0 which is incompatible with python-flake8
-# dib-lint uses flake8, but does not appear incompatible with flake8 v3.x
-sed -i 's/^flake8<.*/flake8/' requirements.txt
-
 # Fix env-script-interpreter rpmlint warning
 find diskimage_builder/elements -type f -perm /a+x \
 	-exec sh -c "sed -E -i s@^#\!%{_bindir}/env[[:space:]]+python@#\!%{_bindir}/python@ {}" \;
+# https://bugs.launchpad.net/diskimage-builder/+bug/1963630
+sed -i 's:import mock:import unittest.mock as mock:' $(grep -rl 'import mock')
 
 %build
 %python3_build
@@ -82,16 +82,13 @@ find diskimage_builder/elements -type f -perm /a+x \
 
 %check
 export PYTHON=%{_bindir}/python3
-if [ ! -d ./.testrepository ] ; then testr init ; fi
-testr run %{?_smp_mflags:--parallel %{_smp_flags}} #; RET=$? echo "Slowest Tests" ; testr slowest && exit $RET
+stestr run
 
 %files
 %doc ChangeLog README.rst AUTHORS
 %license LICENSE
-%{_bindir}/dib-block-device
 %{_bindir}/disk-image-create
 %{_bindir}/dib-lint
-%{_bindir}/element-info
 %{_bindir}/ramdisk-image-create
 %{python3_sitelib}/diskimage_builder/
 %{python3_sitelib}/diskimage_builder*.egg-info/
