@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  5 18:00:09 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.11:
+  * When compression is enabled, accept-encoding is always added to
+    the Vary header, fixes #28
+
+-------------------------------------------------------------------
 Tue Sep 14 12:13:08 UTC 2021 - pgajdos@suse.com
 
 - %check: actually test the package
