@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-compressor
-Version:        5.11.7
+Version:        5.11.8
 Release:        0
 License:        GPL-3.0+
 Summary:        Archive Manager for Deepin Desktop
