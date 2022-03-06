@@ -17,7 +17,7 @@
 
 
 Name:           plasma5-pk-updates
-Version:        0.3.2+git67
+Version:        0.3.2+git70
 Release:        0
 Summary:        Software Update Manager for Plasma
 License:        GPL-3.0-or-later
