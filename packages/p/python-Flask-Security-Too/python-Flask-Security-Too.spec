@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Security-Too
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        Security for Flask apps
 License:        MIT
@@ -28,13 +28,13 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Security-
 Patch0:         no-mongodb.patch
 Patch1:         use-pyqrcodeng.patch
 BuildRequires:  %{python_module Babel >= 1.3}
-BuildRequires:  %{python_module Flask >= 1.0.2}
+BuildRequires:  %{python_module Flask >= 1.1.1}
 BuildRequires:  %{python_module Flask-Babel}
 BuildRequires:  %{python_module Flask-Login >= 0.4.1}
 BuildRequires:  %{python_module Flask-Mail >= 0.9.1}
 BuildRequires:  %{python_module Flask-Principal >= 0.4.0}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= 2.3}
-BuildRequires:  %{python_module Flask-WTF >= 0.14.2}
+BuildRequires:  %{python_module Flask-WTF >= 0.14.3}
 BuildRequires:  %{python_module PyQRCode >= 1.2}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2.6}
 BuildRequires:  %{python_module Werkzeug >= 0.14.1}
@@ -44,29 +44,29 @@ BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module cachetools >= 3.1.0}
 BuildRequires:  %{python_module cryptography >= 2.1.4}
-BuildRequires:  %{python_module email_validator >= 1.0.5}
+BuildRequires:  %{python_module email_validator >= 1.1.1}
 BuildRequires:  %{python_module itsdangerous >= 1.1.0}
 BuildRequires:  %{python_module mock >= 1.3.0}
-BuildRequires:  %{python_module passlib >= 1.7.1}
+BuildRequires:  %{python_module passlib >= 1.7.2}
 BuildRequires:  %{python_module peewee >= 3.7.1}
 BuildRequires:  %{python_module phonenumbers >= 8.11.1}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zxcvbn >= 4.4.28}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Flask >= 1.0.2
+Requires:       python-Flask >= 1.1.1
 Requires:       python-Flask-Babel
 Requires:       python-Flask-Login >= 0.4.1
 Requires:       python-Flask-Principal >= 0.4.0
-Requires:       python-Flask-WTF >= 0.14.2
+Requires:       python-Flask-WTF >= 0.14.3
 Requires:       python-Werkzeug >= 0.14.1
 Requires:       python-bcrypt >= 3.1.4
 Requires:       python-blinker >= 1.4
 Requires:       python-cryptography >= 2.1.4
-Requires:       python-email_validator >= 1.0.5
+Requires:       python-email_validator >= 1.1.1
 Requires:       python-itsdangerous >= 1.1.0
-Requires:       python-passlib >= 1.7.1
+Requires:       python-passlib >= 1.7.2
 Recommends:     python-PyQRCode >= 1.2
 Recommends:     python-SQLAlchemy >= 1.2.6
 Recommends:     python-zxcvbn >= 4.4.28
