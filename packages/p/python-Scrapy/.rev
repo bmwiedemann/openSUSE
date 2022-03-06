@@ -135,4 +135,12 @@
   - add-peak-method-to-queues.patch</comment>
     <requestid>958587</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6f2ab61158500fbf8379a986e22a0a69</srcmd5>
+    <version>2.6.1</version>
+    <time>1646588923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959733</requestid>
+  </revision>
 </revisionlist>

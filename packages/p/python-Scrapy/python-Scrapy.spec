@@ -69,6 +69,7 @@ Requires:       python-pyOpenSSL >= 16.2.0
 Requires:       python-queuelib >= 1.4.2
 Requires:       python-service_identity >= 16.0.0
 Requires:       python-setuptools
+Requires:       python-tldextract
 Requires:       python-w3lib >= 1.17.2
 Requires:       python-zope.interface >= 4.1.3
 Requires(post): update-alternatives
@@ -106,20 +107,12 @@ popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# tests/test_proxy_connect.py: requires mitmproxy == 0.10.1
-# tests/test_downloader_handlers_*.py and test_http2_client_protocol.py: no network
-# tests/test_command_check.py: twisted dns resolution of example.com error
 # no color in obs chroot console
 skiplist="test_pformat"
-# correct exception but not recognized due to different format
-python310_skiplist=" or test_callback_kwargs"
+# no online connection to toscrapy.com
+skiplist="$skiplist or CheckCommandTest"
 %{pytest \
-    --ignore tests/test_proxy_connect.py \
-    --ignore tests/test_command_check.py \
-    --ignore tests/test_downloader_handlers.py \
-    --ignore tests/test_downloader_handlers_http2.py \
-    --ignore tests/test_http2_client_protocol.py \
-    -k "not (${skiplist} ${$python_skiplist})" \
+    -k "not (${skiplist})" \
     -W ignore::DeprecationWarning \
     tests}
 
