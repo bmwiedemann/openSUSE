@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 06 05:04:51 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.1.0~9:
+  * Fix oneshot mode to work correctly
+  * Improve options for performance
+
+-------------------------------------------------------------------
 Wed Mar 02 05:16:15 UTC 2022 - william.brown@suse.com
 
 - Update vendored dependencies
