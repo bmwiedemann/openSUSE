@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar  4 17:26:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libart-2.0) BuildRequires: The libart backend got
+  dropped in version 1.2 (2013).
+- Add explicit pkgconfig(cairo) and pkgconfig(pangocairo)
+  BuildRequires: align with what configure checks for.
+
+-------------------------------------------------------------------
 Wed Apr 22 06:42:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Set correct license

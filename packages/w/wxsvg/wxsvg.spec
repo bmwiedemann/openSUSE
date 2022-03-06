@@ -1,7 +1,7 @@
 #
 # spec file for package wxsvg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2019 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Stefan Seyfried <seife+obs@b1-systems.com>
 #
@@ -23,15 +23,16 @@ Name:           wxsvg
 Version:        1.5.22
 Release:        0
 Summary:        Library to create, manipulate and render SVG files
-License:        LGPL-2.1+ WITH WxWindows-exception-3.1
+License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 URL:            http://wxsvg.sourceforge.net/
 Source:         https://prdownloads.sourceforge.net/wxsvg/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(libart-2.0)
-# WARNING: needs to build with the same ffmpeg libraries as DVDStyler.
 BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(pangocairo)
+# WARNING: needs to build with the same ffmpeg libraries as DVDStyler.
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
