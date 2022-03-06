@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-h5py
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@
 %endif
 # /SECTION MPI DEFINITIONS
 Name:           %{pname}%{?my_suffix}
-Version:        3.4.0
+Version:        3.6.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
@@ -86,7 +86,7 @@ BuildRequires:  %{python_module Cython >= 0.29.15 if (%python-base >= 3.9)}
 BuildRequires:  %{python_module cached-property if (%python-base < 3.8)}
 BuildRequires:  %{python_module numpy-devel >= 1.17.5 if (%python-base >= 3.8)}
 BuildRequires:  %{python_module numpy-devel >= 1.19.3 if (%python-base >= 3.9)}
-Requires:       hdf5%{?my_suffix}
+%requires_eq    hdf5%{?my_suffix}
 %requires_eq    libhdf5%{?my_suffix}
 %if 0%{python_version_nodots} >= 39
 Requires:       python-numpy >= 1.19.3
@@ -146,9 +146,9 @@ export PYTHONPATH=%{buildroot}%{my_sitearch_in_expand}
 export PYTHONDONTWRITEBYTECODE=1
 pytest-%{$python_bin_suffix} %{buildroot}%{my_sitearch_in_expand}/h5py/ \
 %ifarch %{ix86}
-        %{?with_mpi:-k 'not test_float_round_tripping'}%{!?with_mpi:-k 'not (TestMPI or test_float_round_tripping)'}
+        %{?with_mpi:-k 'not test_float_round_tripping' -m 'not mpi_skip'}%{!?with_mpi:-k 'not (TestMPI or test_float_round_tripping)'}
 %else
-        %{!?with_mpi:-k 'not TestMPI'}
+        %{?with_mpi:-m 'not mpi_skip'}%{!?with_mpi:-k 'not TestMPI'}
 %endif
 }
 
