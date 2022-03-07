@@ -38,4 +38,12 @@
     <comment></comment>
     <requestid>831507</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95edc80c06fbe8811d25614d29e5f981</srcmd5>
+    <version>3.7.0</version>
+    <time>1646671590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.0.</comment>
+    <requestid>959744</requestid>
+  </revision>
 </revisionlist>

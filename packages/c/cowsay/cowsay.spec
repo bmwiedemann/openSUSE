@@ -1,7 +1,7 @@
 #
 # spec file for package cowsay
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,49 +16,42 @@
 #
 
 
-%if 0%{?suse_version} >= 1140
 %{?!perl_requires:%define perl_requires() Requires: perl = %{perl_version}}
-%endif
 Name:           cowsay
-Version:        3.04
+Version:        3.7.0
 Release:        0
 Summary:        Configurable talking cow (and some other creatures)
 License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
-URL:            https://github.com/tnalpgge/rank-amateur-cowsay
-Source:         https://github.com/tnalpgge/rank-amateur-cowsay/archive/cowsay-%{version}.tar.gz
-Patch0:         one-eye.patch
-Patch1:         chami.patch
-BuildRequires:  bash
+URL:            https://cowsay.diamonds/
+Source:         https://github.com/cowsay-org/cowsay/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         chami.patch
+BuildRequires:  make
 BuildRequires:  perl
 BuildArch:      noarch
 %{perl_requires}
 
 %description
-cowsay is a configurable talking cow, written in Perl.  It operates
+cowsay is a configurable talking cow, written in Perl. It operates
 much as the figlet program does, and it written in the same spirit
 of silliness.
 
 %prep
-%setup -q -n rank-amateur-cowsay-%{name}-%{version}
-sed -i "s|,\$%{nil}PREFIX,|,%{_prefix},|" install.sh
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
+sed -i '1 s/env //' cowsay
 
 %build
 perl -c cowsay
 
 %install
-bash ./install.sh %{buildroot}%{_prefix}
-mv -T %{buildroot}%{_prefix}/man/ %{buildroot}%{_mandir}
-rm -f %{buildroot}%{_datadir}/cows/mech-and-cow
+%make_install prefix=%{_prefix}
 
 %files
-%license LICENSE
-%doc ChangeLog MANIFEST README
+%license LICENSE.txt
+%doc ChangeLog README.md
 %{_bindir}/%{name}
 %{_bindir}/cowthink
-%{_datadir}/cows
+%{_datadir}/cowsay
 %{_mandir}/man1/*
 
 %changelog
