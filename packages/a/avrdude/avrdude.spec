@@ -19,6 +19,7 @@
 # systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
 %endif
+%global modprobe_d_files 50-avrdude_parport.conf
 
 %define         libname   lib%{name}
 %define         libsoname %{libname}1
@@ -112,6 +113,13 @@ chmod 644 $RULESFILE
 install -d -m 755 %{buildroot}%{_docdir}/%{name}
 install -m 644 AUTHORS COPYING NEWS README %{buildroot}%{_docdir}/%{name}
 
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
+
 %post
 %if %{?suse_version:1}0
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
@@ -131,6 +139,13 @@ fi
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %files
 %defattr (-, root, root)
