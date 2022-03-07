@@ -116,6 +116,7 @@ Requires:       libwayland-cursor0 = %_version
 Requires:       libwayland-egl1 = %eglversion
 Requires:       libwayland-server0 = %_version
 %if 0%{?suse_version} >= 1500
+# egl1 was once provided by Mesa 17.x.
 %if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400)
 Provides:       libwayland-egl-devel = 18.1.5
 Obsoletes:      libwayland-egl-devel < 18.1.5 
