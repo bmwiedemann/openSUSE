@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_stock_supply
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define         majorver 5.0
+%define         majorver 6.0
 Name:           trytond_stock_supply
-Version:        %{majorver}.8
+Version:        %{majorver}.1
 Release:        0
 Summary:        The Stock Supply module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -28,16 +28,17 @@ URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
-# List of additional build dependencies
+
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
+
 Requires:       trytond
 Requires:       trytond_account
 Requires:       trytond_party
 Requires:       trytond_product
 Requires:       trytond_purchase
 Requires:       trytond_stock
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
 BuildArch:      noarch
 
 %description

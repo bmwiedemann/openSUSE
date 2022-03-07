@@ -121,4 +121,12 @@
 </comment>
     <requestid>907824</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c6262976657aae621d3784b871e5ab2e</srcmd5>
+    <version>6.0.1</version>
+    <time>1646671687</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959964 from DocB)</comment>
+    <requestid>959983</requestid>
+  </revision>
 </revisionlist>
