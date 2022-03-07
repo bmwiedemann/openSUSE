@@ -89,4 +89,12 @@
   - Fixed code generated for python3 using 2to3, adding a custom fixer (#109)</comment>
     <requestid>784396</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e3e87d7d824ca92a317d936067c73682</srcmd5>
+    <version>1.8.5</version>
+    <time>1646671644</time>
+    <user>dimstar_suse</user>
+    <comment>- add no-2to3.patch for better compatibility with newer setuptools</comment>
+    <requestid>959866</requestid>
+  </revision>
 </revisionlist>

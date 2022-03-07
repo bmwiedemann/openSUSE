@@ -1,7 +1,7 @@
 #
 # spec file for package python-SPARQLWrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,9 @@ Version:        1.8.5
 Release:        0
 Summary:        SPARQL Endpoint interface to Python
 License:        W3C
-URL:            http://sparql-wrapper.sourceforge.net/
+URL:            https://rdflib.dev/sparqlwrapper/
 Source:         https://files.pythonhosted.org/packages/source/S/SPARQLWrapper/SPARQLWrapper-%{version}.tar.gz
+Patch1:         no-2to3.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,6 +39,7 @@ format.
 
 %prep
 %setup -q -n SPARQLWrapper-%{version}
+%patch1 -p1
 
 %build
 %python_build

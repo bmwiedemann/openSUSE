@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:58:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add no-2to3.patch for better compatibility with newer setuptools 
+
+-------------------------------------------------------------------
 Wed Mar 11 17:00:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable tests as they need quite lot of magic to run just on py3
