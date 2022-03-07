@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-system-monitor
-Version:        5.8.20
+Version:        5.8.21
 Release:        0
 Summary:        A user-friendly system monitor
 License:        GPL-3.0-only
