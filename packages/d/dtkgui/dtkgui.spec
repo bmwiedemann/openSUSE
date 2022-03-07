@@ -19,10 +19,10 @@
 
 %define libver  5
 %define apiver  5.5.0
-%define pkg_ver 5.5
+# %define pkg_ver 5.5
 
 Name:           dtkgui
-Version:        5.5.17.1
+Version:        5.5.21
 Release:        0
 Summary:        Deepin Toolkit GUI
 License:        LGPL-3.0
@@ -89,6 +89,7 @@ You should first read the "Deepin Application Specification".
 %dir %{_libdir}/libdtk-%{apiver}/DGui
 %dir %{_libdir}/libdtk-%{apiver}/DGui/bin
 %{_libdir}/libdtk-%{apiver}/DGui/bin/deepin-gui-settings
+%{_libdir}/libdtk-%{apiver}/DGui/bin/dde-kwin-debug
 %{_libdir}/libdtk-%{apiver}/DGui/bin/taskbar
 
 %files -n lib%{name}%{libver}
@@ -101,11 +102,11 @@ You should first read the "Deepin Application Specification".
 %{_libdir}/cmake/DtkGui
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/pkgconfig/%{name}%{pkg_ver}.pc
-%dir %{_libdir}/cmake/DtkGui%{pkg_ver}
-%{_libdir}/cmake/DtkGui%{pkg_ver}/DtkGui%{pkg_ver}Config.cmake
+# %{_libdir}/pkgconfig/%{name}%{pkg_ver}.pc
+# %dir %{_libdir}/cmake/DtkGui%{pkg_ver}
+# %{_libdir}/cmake/DtkGui%{pkg_ver}/DtkGui%{pkg_ver}Config.cmake
 %{_libdir}/qt5/mkspecs/modules/qt_lib_%{name}.pri
-%{_libdir}/qt5/mkspecs/modules/qt_lib_%{name}%{pkg_ver}.pri
+#%{_libdir}/qt5/mkspecs/modules/qt_lib_%{name}%{pkg_ver}.pri
 
 %changelog
 
