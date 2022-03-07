@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth-client
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2015-2021 Dr. Axel Braun
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2015-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 #
 
 
-%define majorver 3.8
+%define majorver 4.0
 Name:           gnuhealth-client
-Version:        %{majorver}.1
+Version:        %{majorver}.0
 Release:        0
 Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
 Source:         https://ftp.gnu.org/pub/gnu/health/%{name}-%{version}.tar.gz
-##urce:         %{name}-%{version}.tar.gz
+##Source:         %{name}-%{version}.tar.gz
 ##urce1:        %{name}-plugins-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_camera-latest.tar.gz
 Source2:        ftp://ftp.gnu.org/gnu/health/plugins/gnuhealth_plugin_crypto-latest.tar.gz
@@ -45,6 +45,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-simplejson
 BuildRequires:  update-desktop-files
 
+Requires:       gnu-free-fonts
 Requires:       gobject-introspection
 Requires:       opencv
 Requires:       python3-GooCalendar >= 0.5
@@ -64,25 +65,25 @@ Requires:       python3-xml
 
 BuildArch:      noarch
 
-Conflicts:      tryton
+## Conflicts:      tryton
 
 %description
 The client of the GNU Health Hospital application
 
 %prep
 %setup -q
-cp %{SOURCE4} .
+### cp %{SOURCE4} .
 
 pwd
-cd tryton/plugins
+cd gnuhealth/plugins
 tar  -xzvf %{SOURCE1}
 tar  -xzvf %{SOURCE2}
 tar  -xzvf %{SOURCE3}
 
 #workaround for tryton bug: directory name with version is not considered
-mv gnuhealth_plugin_camera* camera 
-mv gnuhealth_plugin_crypto* crypto  
-mv gnuhealth_plugin_frl* frl  
+mv gnuhealth_plugin_camera* camera
+mv gnuhealth_plugin_crypto* crypto
+mv gnuhealth_plugin_frl* frl
 
 # Remove pycache
 rm -rf */__pycache__
@@ -99,7 +100,7 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications %{name}.desktop
 
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 
-cp %{buildroot}$(ls -d /usr/lib/python3.* )/site-packages/tryton/data/pixmaps/tryton/gnuhealth-icon.png %{buildroot}%{_datadir}/pixmaps/gnuhealth.png
+cp %{buildroot}$(ls -d /usr/lib/python3.* )/site-packages/gnuhealth/data/pixmaps/gnuhealth/gnuhealth-icon.png %{buildroot}%{_datadir}/pixmaps/gnuhealth.png
 
 %python_expand %fdupes %{buildroot}%{python3_sitelib}
 
