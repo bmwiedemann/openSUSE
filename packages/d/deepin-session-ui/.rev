@@ -69,4 +69,12 @@
   * Add show and hide interfaces</comment>
     <requestid>950161</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62a85f39b0f7ccda9c6cb54b23f8251d</srcmd5>
+    <version>5.5.6</version>
+    <time>1646671579</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959469</requestid>
+  </revision>
 </revisionlist>

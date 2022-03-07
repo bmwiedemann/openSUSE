@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 15 05:59:47 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.6
+  * Add AccessibleName of widget
+  * Add dde-hints-dialog
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
 Mon Jan 31 03:31:40 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix filelist for Leap 15 

@@ -19,13 +19,12 @@
 %define _name dde-session-ui
 
 Name:           deepin-session-ui
-Version:        5.4.53
+Version:        5.5.6
 Release:        0
 Summary:        Deepin desktop-environment - Session UI module
 License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-session-ui
 Source0:        https://github.com/linuxdeepin/dde-session-ui/archive/%{version}/%{_name}-%{version}.tar.gz
-Source1:        logo.svg
 Group:          System/GUI/Other
 BuildRequires:  gtest
 BuildRequires:  update-desktop-files
@@ -72,11 +71,11 @@ sed -i 's|lrelease|lrelease-qt5|g' translate_generation.sh
 sed -i 's|/usr/lib/dde-dock|%{_libdir}/dde-dock|' \
 dde-notification-plugin/notifications/notifications.pro
 sed -i 's|backgrounds/default_background.jpg|wallpapers/openSUSEdefault/contents/images/1920x1080.jpg|g' \
-widgets/fullscreenbackground.cpp
+widgets/fullscreenbackground.cpp tests/dde-welcome/global_util/ut_publicfunc.cpp
 sed -i 's|backgrounds/deepin/desktop.jpg|wallpapers/openSUSEdefault/contents/images/1920x1080.jpg|g' \
-dde-shutdown/view/contentwidget.cpp
+widgets/fullscreenbackground.cpp tests/dde-welcome/global_util/ut_publicfunc.cpp
 #Use Geeko logo instead of deepin
-cp %{SOURCE1} lightdm-deepin-greeter/img/
+# cp %{SOURCE1} lightdm-deepin-greeter/img/
 
 %build
 %qmake5 PREFIX=%{_prefix}
