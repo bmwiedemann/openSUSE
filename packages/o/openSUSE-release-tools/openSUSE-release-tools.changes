@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 06 10:10:56 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220306.b5436de6:
+  * gocd: Create release packages as early as possible
+
+-------------------------------------------------------------------
+Sat Mar 05 15:02:55 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220305.b93adbd9:
+  * pkglistgen: Fix exit values - True is actually bad
+
+-------------------------------------------------------------------
+Sat Mar 05 14:28:55 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220305.040e91a1:
+  * gocd: Fix subprocess.run usage
+
+-------------------------------------------------------------------
 Sat Mar 05 14:21:38 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220305.b51fd11b:
