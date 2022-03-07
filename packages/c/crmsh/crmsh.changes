@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 07 01:18:29 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220307.347f815c:
+  * Dev: testcases: Update expected testcase with pacemaker update
+  * Fix: utils: Only raise exception when return code of systemctl command over ssh larger than 4 (bsc#1196726)
+
+-------------------------------------------------------------------
 Thu Feb 17 04:54:00 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220217.b8f67f4e:
