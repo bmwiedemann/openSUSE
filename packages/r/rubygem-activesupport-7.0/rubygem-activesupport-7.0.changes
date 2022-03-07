@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Feb 15 07:14:08 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   Fix Reloader method signature to work with the new Executor signature
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   Fix `ActiveSupport::EncryptedConfiguration` to be compatible with Psych 4
+  
+      *Stephen Sugden*
+  
+  *   Improve `File.atomic_write` error handling.
+  
+      *Daniel Pepper*
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:27:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   Fix `Class#descendants` and `DescendantsTracker#descendants` compatibility with Ruby 3.1.
+  
+      [The native `Class#descendants` was reverted prior to Ruby 3.1 release](https://bugs.ruby-lang.org/issues/14394#note-33),
+      but `Class#subclasses` was kept, breaking the feature detection.
+  
+      *Jean Boussier*
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:25:33 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:10:04 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 22:02:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
