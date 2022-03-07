@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_currency
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define majorver 5.0
+%define majorver 6.0
 Name:           trytond_currency
-Version:        %{majorver}.6
+Version:        %{majorver}.1
 Release:        0
 Summary:        The "currency" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -32,7 +32,7 @@ Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
 Requires:       trytond
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
 BuildArch:      noarch
 
 %description
@@ -52,5 +52,6 @@ in the Tryton application platform.
 %files
 %defattr(-,root,root)
 %{python3_sitelib}/*
+%attr(755,root,tryton) %{_bindir}/trytond_import_currencies
 
 %changelog
