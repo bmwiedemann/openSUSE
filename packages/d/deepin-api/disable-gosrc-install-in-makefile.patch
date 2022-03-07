@@ -1,15 +1,15 @@
-diff -Nur dde-api-5.3.2/Makefile dde-api-5.3.2-new/Makefile
---- dde-api-5.3.2/Makefile	2020-12-11 13:06:50.000000000 +0800
-+++ dde-api-5.3.2-new/Makefile	2021-02-24 20:11:38.977114007 +0800
+diff -Nur dde-api-5.5.5/Makefile dde-api-5.5.5-new/Makefile
+--- dde-api-5.5.5/Makefile	2021-11-16 15:43:41.000000000 +0800
++++ dde-api-5.5.5-new/Makefile	2022-02-18 21:37:38.361644793 +0800
 @@ -5,7 +5,7 @@
  libdir = /lib
  SYSTEMD_LIB_DIR = ${libdir}
  SYSTEMD_SERVICE_DIR = ${SYSTEMD_LIB_DIR}/systemd/system/
 -GOBUILD = env GOPATH="${CURDIR}/${GOBUILD_DIR}:${GOPATH}" go build
 +# GOBUILD = env GOPATH="${CURDIR}/${GOBUILD_DIR}:${GOPATH}" go build
+ export GO111MODULE=off
  
  LIBRARIES = \
-     thumbnails \
 @@ -98,15 +98,15 @@
  	cp -R misc/icons/* ${DESTDIR}${PREFIX}/share/icons/hicolor
  
@@ -21,7 +21,7 @@ diff -Nur dde-api-5.3.2/Makefile dde-api-5.3.2-new/Makefile
 -	mkdir -pv ${DESTDIR}${GOSITE_DIR}/src/${GOPKG_PREFIX}
 -	cp -R ${CURDIR}/${GOBUILD_DIR}/src/${GOPKG_PREFIX}/${@F} ${DESTDIR}${GOSITE_DIR}/src/${GOPKG_PREFIX}
 +#install/lib/%:
-+# 	mkdir -pv ${DESTDIR}${GOSITE_DIR}/src/${GOPKG_PREFIX}
++#	mkdir -pv ${DESTDIR}${GOSITE_DIR}/src/${GOPKG_PREFIX}
 +#	cp -R ${CURDIR}/${GOBUILD_DIR}/src/${GOPKG_PREFIX}/${@F} ${DESTDIR}${GOSITE_DIR}/src/${GOPKG_PREFIX}
  
  install-dev: ${addprefix install/lib/, ${LIBRARIES}}

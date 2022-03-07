@@ -59,4 +59,12 @@
     <comment> (forwarded request 950203 from hillwood)</comment>
     <requestid>950204</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2d4ea51259647502c3d58494bdc4ec05</srcmd5>
+    <version>5.5.5</version>
+    <time>1646671559</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959455</requestid>
+  </revision>
 </revisionlist>
