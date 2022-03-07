@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 15 02:30:40 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.37
+  * Add some plugin icons
+  * Add DSearchEdit widget in plugin
+  * Fix bugs
+- Drop fix-deepin-reader.patch, merged by upstream
+- Drop fix-return-type.patch, fixed by upstream
+
+-------------------------------------------------------------------
 Tue Sep 14 02:29:47 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-deepin-reader.patch, fix print for deepin-reader 

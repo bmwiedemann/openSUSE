@@ -19,10 +19,10 @@
 
 %define libver 5
 %define apiver 5.5.0
-%define pkg_ver 5.5
+# %define pkg_ver 5.5
 
 Name:           dtkwidget
-Version:        5.5.17.1
+Version:        5.5.37
 Release:        0
 Summary:        Deepin graphical user interface library
 License:        LGPL-3.0-only
@@ -31,12 +31,6 @@ URL:            https://github.com/linuxdeepin/dtkwidget
 Source0:        https://github.com/linuxdeepin/dtkwidget/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM dtkwidget-fix-lost-pkgconfig.patch hillwood@opensuse.org - fix lost pkgconfig
 Patch0:         dtkwidget-fix-lost-pkgconfig.patch
-# PATCH-FIX-UPSTEAM fix-return-type.patch hillwood@opensuse.org - fix a return type error
-Patch1:         fix-return-type.patch
-# PATCH-FIX-UPSTEAM fix-return-type.patch
-# Fix print window for deepin-reader
-# https://github.com/linuxdeepin/dtkwidget/commit/cedbe540bdcfb5672f97763abb8cf1f79439ec4c
-Patch2:         fix-deepin-reader.patch
 BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  dtkcommon
@@ -124,7 +118,7 @@ rm -rf %{buildroot}/usr/tests
 %dir %{_includedir}/libdtk-*
 %{_includedir}/libdtk-*/DWidget
 %{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/pkgconfig/%{name}%{pkg_ver}.pc
+# %{_libdir}/pkgconfig/%{name}%{pkg_ver}.pc
 %{_libdir}/lib%{name}.so
 %dir %{_libdir}/cmake
 %{_libdir}/cmake/*
