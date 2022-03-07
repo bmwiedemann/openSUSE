@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  7 14:18:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.14
+  * Raise a deprecationwarning on qlineedit.getTextMargins
+  * QSignalMapper: Add mappedInt/String when not available
+  * QComboBox: add a textActivated/Highlighted signal if not present
+  * QGroupBox: Add idClicked/Pressed/Released/Toggled when not present 
+
+-------------------------------------------------------------------
 Fri Aug 13 13:34:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.0.13

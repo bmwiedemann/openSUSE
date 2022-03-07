@@ -56,4 +56,16 @@
     <comment></comment>
     <requestid>911998</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef25eec2b2fb535ce5ab60c2112dcd33</srcmd5>
+    <version>0.0.14</version>
+    <time>1646671698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.14
+  * Raise a deprecationwarning on qlineedit.getTextMargins
+  * QSignalMapper: Add mappedInt/String when not available
+  * QComboBox: add a textActivated/Highlighted signal if not present
+  * QGroupBox: Add idClicked/Pressed/Released/Toggled when not present</comment>
+    <requestid>959997</requestid>
+  </revision>
 </revisionlist>
