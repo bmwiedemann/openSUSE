@@ -1,7 +1,7 @@
 #
 # spec file for package libbpf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover_major 0
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        0.5.0
+Version:        0.7.0
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
@@ -43,13 +43,13 @@ libbpf is a C library which provides API for managing eBPF programs and maps.
 %package devel
 Summary:        Development files for libbpf
 Requires:       %{libname} = %{version}
+Requires:       linux-glibc-devel >= 5.16
 
 %description devel
 libbpf is a C library which provides API for managing eBPF programs and maps.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup
 
 %build
 cd src

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Mar  4 10:18:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.0
+  * legacy BPF map definitions (using struct bpf_map_def) are
+    deprecated when LIBBPF_STRICT_MAP_DEFINITIONS is passed to
+    libbpf_set_strict_mode(). Please use BTF-defined map
+    definitions.
+  * ability to control and capture BPF verifier log output on
+    per-object and per-program level
+  * CO-RE support and other improvements for "light skeleton"
+  * improved compilation when system BTF UAPI headers are outdated
+
+-------------------------------------------------------------------
+Sat Dec 11 10:37:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.6.1
+  * Introduce legacy kprobe events support
+  * Add legacy uprobe attaching support
+  * Support uniform BTF-defined key/value specification across
+    all BPF maps
+  * Support kernel module function calls
+  * Support detecting and attaching of writable tracepoint
+    program
+  * Add bloom filter map implementation
+  * Add typeless and weak ksym support to gen_loader
+  * Add RISC-V (RV64) support to bpf_tracing.h
+  * Deprecate AF_XDP support
+  * Support BTF_KIND_TYPE_TAG
+
+-------------------------------------------------------------------
 Mon Sep 27 11:02:49 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.5.0:
