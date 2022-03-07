@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?is_opensuse}
+    %define  distribution  openSUSE-Edition
+%else
+    %define  distribution  SUSE-Edition
+%endif
+
 Name:           deepin-editor
-Version:        5.10.16
+Version:        5.10.18
 Release:        0
 Summary:        A text editor for the Deepin environment
 License:        GPL-3.0-or-later
@@ -72,7 +78,8 @@ sed -i 's/Exec=deepin-editor/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-editor/
 deepin-editor.desktop
 
 %build
-%cmake
+%cmake -DVERSION=%{version}-%{distribution} \
+       -DAPP_VERSION=%{version}-%{distribution}
 %make_build
 
 %install

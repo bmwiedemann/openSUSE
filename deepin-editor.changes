@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 21 07:49:53 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.18
+  * Fix memory leak for asan
+
+-------------------------------------------------------------------
 Mon Jan 31 07:55:18 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.10.16
