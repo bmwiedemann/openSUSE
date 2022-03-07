@@ -29,6 +29,16 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.asc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-16734-Build-break-with-poppler-22.2.0.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Small-update-vs-latest-code-in-poppler.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-16764-Build-break-with-poppler-22.03.0.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Enforce-poppler-version-0.86.0.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         0001-16764-Better-patch-avoid-a-memory-leak.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix

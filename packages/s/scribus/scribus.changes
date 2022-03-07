@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  4 08:40:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-16734-Build-break-with-poppler-22.2.0.patch
+  * 0001-Small-update-vs-latest-code-in-poppler.patch
+  * 0001-16764-Build-break-with-poppler-22.03.0.patch
+  * 0001-Enforce-poppler-version-0.86.0.patch
+  * 0001-16764-Better-patch-avoid-a-memory-leak.patch
+
+-------------------------------------------------------------------
 Mon Jan 24 12:49:07 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.8:

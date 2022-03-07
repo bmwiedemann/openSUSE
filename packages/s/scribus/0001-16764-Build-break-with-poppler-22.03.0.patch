@@ -1,0 +1,55 @@
+From 6512c88e45ad8406949a238962b9523f9c21e0c3 Mon Sep 17 00:00:00 2001
+From: jghali <jghali@11d20701-8431-0410-a711-e3c959e3b870>
+Date: Wed, 2 Mar 2022 22:22:53 +0000
+Subject: [PATCH] #16764: Build break with poppler 22.03.0
+
+git-svn-id: svn://scribus.net/trunk/Scribus@24982 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/importpdf.cpp | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/scribus/plugins/import/pdf/importpdf.cpp b/scribus/plugins/import/pdf/importpdf.cpp
+index 154e58a3f..392dcd9e6 100644
+--- a/scribus/plugins/import/pdf/importpdf.cpp
++++ b/scribus/plugins/import/pdf/importpdf.cpp
+@@ -89,7 +89,11 @@ QImage PdfPlug::readThumbnail(const QString& fName)
+ #endif
+ 	globalParams->setErrQuiet(gTrue);
+ 
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(22, 3, 0)
++	PDFDoc pdfDoc{ std::make_unique<GooString>(fname) };
++#else
+ 	PDFDoc pdfDoc{fname, nullptr, nullptr, nullptr};
++#endif
+ 	if (!pdfDoc.isOk() || pdfDoc.getErrorCode() == errEncrypted)
+ 		return QImage();
+ 
+@@ -342,7 +346,11 @@ bool PdfPlug::convert(const QString& fn)
+ 	globalParams->setErrQuiet(gTrue);
+ //	globalParams->setPrintCommands(gTrue);
+ 	QList<OptionalContentGroup*> ocgGroups;
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(22, 3, 0)
++	auto pdfDoc = std::make_unique<PDFDoc>(std::make_unique<GooString>(fname));
++#else
+ 	auto pdfDoc = std::unique_ptr<PDFDoc>(new PDFDoc(fname, nullptr, nullptr, nullptr));
++#endif
+ 	if (pdfDoc)
+ 	{
+ 		if (pdfDoc->getErrorCode() == errEncrypted)
+@@ -361,8 +369,13 @@ bool PdfPlug::convert(const QString& fn)
+ #else
+ 				auto fname = new GooString(QFile::encodeName(fn).data());
+ #endif
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(22, 3, 0)
++				std::optional<GooString> userPW(std::in_place, text.toLocal8Bit().data());
++				pdfDoc.reset(new PDFDoc(std::make_unique<GooString>(fname), userPW, userPW, nullptr));
++#else
+ 				auto userPW = new GooString(text.toLocal8Bit().data());
+ 				pdfDoc.reset(new PDFDoc(fname, userPW, userPW, nullptr));
++#endif
+ 				qApp->changeOverrideCursor(QCursor(Qt::WaitCursor));
+ 			}
+ 			if ((!pdfDoc) || (pdfDoc->getErrorCode() != errNone))
+-- 
+2.35.1
+
