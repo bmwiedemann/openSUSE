@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  4 17:15:57 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix RUNPATH also for Leap/SLE 15.4, which now uses
+  CMAKE_SKIP_INSTALL_RPATH=ON by default.
+
+-------------------------------------------------------------------
 Mon Feb  7 00:28:16 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix RUNPATH on Leap 15.x
