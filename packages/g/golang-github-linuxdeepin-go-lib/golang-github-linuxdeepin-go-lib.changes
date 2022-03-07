@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 23 06:29:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use last stable version of go to build 
+
+-------------------------------------------------------------------
+Fri Feb 18 07:59:11 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.4
+  * Add SyncWriteFile
+  * Add BindTextdomainCodeset
+  * Fix bugs
+
+-------------------------------------------------------------------
+Fri Jan 28 02:13:06 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Keep golang version on 1.15 on Leap15.4+ 
+
+-------------------------------------------------------------------
 Thu Dec 16 04:14:30 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.7.35
@@ -7,7 +25,7 @@ Thu Dec 16 04:14:30 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 -------------------------------------------------------------------
 Wed Oct 27 13:31:26 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
-- Fix build on Leap 15.4+ 
+- Fix build on Leap 15.4+
 
 -------------------------------------------------------------------
 Sun Oct 24 03:05:29 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>

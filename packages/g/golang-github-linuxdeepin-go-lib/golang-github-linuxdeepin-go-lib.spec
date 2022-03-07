@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-linuxdeepin-go-lib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define   import_path     pkg.deepin.io/lib
 
 Name:           golang-github-linuxdeepin-go-lib
-Version:        5.7.35
+Version:        5.8.4
 Release:        0
 Summary:        Go bindings for Deepin Desktop Environment development
 License:        GPL-3.0-or-later
@@ -39,9 +39,6 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(x11)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-BuildRequires:  golang(API) = 1.15
-%endif
 BuildArch:      noarch
 Requires:       golang(pkg.deepin.io/gir/gio-2.0)
 Requires:       golang(pkg.deepin.io/gir/glib-2.0)
@@ -56,6 +53,7 @@ Containing dbus (forking from guelfey), glib, gdkpixbuf, pulse and more.
 %setup -q -n %{_name}-%{version}
 
 %build
+export GO111MODULE=off
 %goprep %{import_path}
 
 %install
