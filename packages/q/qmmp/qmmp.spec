@@ -16,6 +16,7 @@
 #
 
 
+%global __provides_exclude_from ^%{_libdir}/qmmp-[0-9\.]*/
 %define sover   2
 %define mver    2.0
 %bcond_with faad
@@ -143,7 +144,7 @@ Development files for libqmmp.
 %autosetup -p1
 
 %build
-%cmake \
+%cmake_qt6 \
   -DCMAKE_MODULE_LINKER_FLAGS="" \
   -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
   -DLIB_DIR=%{_lib}              \
@@ -154,10 +155,11 @@ Development files for libqmmp.
   -DUSE_HAL=OFF                  \
   -DUSE_OSS=OFF                  \
   -DUSE_OSS4=OFF
-%cmake_build
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
+
 # Do not install weirdly-sized icons.
 rm -r %{buildroot}/%{_datadir}/icons/hicolor/56x56
 
