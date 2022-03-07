@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Feb 23 12:36:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- No longer need deepin-dock-devel
+
+-------------------------------------------------------------------
+Sat Jan 29 06:14:20 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.109
+  * Add global search for system shortcuts
+  * Add search feature for default application setting tab
+  * optimize ui
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Oct 28 11:33:40 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.77
+  * Add hotspot and bluetooth config buttons
+  * Add AccessibleName
+  * Update translations
+  * Optimize ui
+  * Fix bugs
+- Add fix-return-type.patch
+
+-------------------------------------------------------------------
+Sat Aug 28 14:22:46 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Disable language module.
+
+-------------------------------------------------------------------
 Sun Jul 25 12:45:20 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.47

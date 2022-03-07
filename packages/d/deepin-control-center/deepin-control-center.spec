@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-control-center
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@
 %endif
 
 Name:           deepin-control-center
-Version:        5.4.47
+Version:        5.4.109
 Release:        0
 Summary:        New control center for Linux Deepin
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-control-center
 Source0:        https://github.com/linuxdeepin/dde-control-center/archive/%{version}/%{_name}-%{version}.tar.gz
 # PATCH-FOR-OPENSUSE deepin-control-center-no-user-experience.patch hillwood@opensuse.org
@@ -37,10 +37,11 @@ Patch0:         %{name}-no-user-experience.patch
 Patch1:         systeminfo-deepin-icon.patch
 # PATCH-FOR-UPSTEAM fix-qDBusRegisterMetaType-error.patch hillwood@opensuse.org
 Patch2:         fix-qDBusRegisterMetaType-error.patch
+# PATCH-FOR-UPSTRAM fix-return-type.patch hillwood@opensuse.org
+Patch3:         fix-return-type.patch
 Group:          System/GUI/Other
 BuildRequires:  cmake
 BuildRequires:  deepin-desktop-base
-BuildRequires:  deepin-dock-devel
 BuildRequires:  deepin-pw-check-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  dtkcore
@@ -75,6 +76,7 @@ Requires:       deepin-start
 Requires:       libqt5-qdbus
 Requires:       qt5integration
 Requires:       redshift
+Requires:       libdeepin_pw_check1
 Recommends:     %{name}-data
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -117,6 +119,7 @@ sed -i '/set(VERSION/s|4.0|%{version}-%{distribution}|' abrecovery/CMakeLists.tx
        -DDISABLE_SYS_UPDATE=YES \
        -DCC_DISABLE_FEEDBACK=YES \
        -DDISABLE_ACTIVATOR=YES \
+       -DCC_DISABLE_LANGUAGE=YES \
        -DCVERSION=%{version}-%{distribution}
 
 %make_jobs
