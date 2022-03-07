@@ -34,7 +34,9 @@
 %else
 %bcond_with kdeintegration
 %endif
-%if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
+# Use bundled gpgme on SLE-15-SP3 onwards
+# Use system gpgme on TW and SLE15-SP4 or newer
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without system_gpgme
 %else
 # Hack in the bundled libs to not pop up on requires/provides to avoid
@@ -46,7 +48,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.3.1.1
+Version:        7.3.1.3
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -93,6 +95,7 @@ Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
 Source2010:     %{external_url}/skia-m97-a7230803d64ae9d44f4e1282444801119a3ae967.tar.xz
 Source2012:     %{external_url}/libcmis-0.5.2.tar.xz
+Source2013:     %{external_url}/curl-7.79.1.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -104,14 +107,14 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
-# PATCH-FIX-UPSTREAM boo#1196017 Fix KDE Frameworks 5.91 detection
-Patch11:        0001-configure.ac-Update-kf5-include-lib-check-to-work-wi.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
 Patch991:       libreoffice-no-destdircheck.patch
+# PATCH-FIX-UPSTRAM poppler-22-03-0.patch
+Patch992:       poppler-22-03-0.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -121,7 +124,10 @@ BuildRequires:  bison
 BuildRequires:  bsh2
 BuildRequires:  commons-logging
 BuildRequires:  cups-devel
+# Use bundled curl on SLE-12-SP5
+%if 0%{suse_version} >= 1500
 BuildRequires:  curl-devel >= 7.68.0
+%endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
 BuildRequires:  doxygen >= 1.8.4
@@ -137,6 +143,7 @@ BuildRequires:  gperf >= 3.1
 BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
 BuildRequires:  junit4
+BuildRequires:  libassuan0
 BuildRequires:  libbase
 BuildRequires:  libcppunit-devel >= 1.14.0
 BuildRequires:  libcuckoo-devel
@@ -1008,13 +1015,13 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch6 -p1
 %patch9 -p1
-%patch11 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1
 %patch101 -p1
 %endif
 %patch990 -p1
 %patch991 -p1
+%patch992 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1161,6 +1168,7 @@ export NOCONFIGURE=yes
 %endif
 %if 0%{?suse_version} < 1500
         --without-system-icu \
+        --without-system-curl \
 %endif
         --enable-evolution2 \
         --enable-dbus \
