@@ -378,4 +378,14 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     <comment></comment>
     <requestid>945532</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>2483fed49d68f0e9856d4abc5e187c64</srcmd5>
+    <version>1.20.0</version>
+    <time>1646676275</time>
+    <user>dimstar_suse</user>
+    <comment>- There is a file conflict in current wayland-devel-32bit and
+  prvevious libwayland-egl-devel-32bit package; therefore add
+  a conflicts to baselibs.conf</comment>
+    <requestid>959665</requestid>
+  </revision>
 </revisionlist>

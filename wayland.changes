@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 25 15:37:00 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- There is a file conflict in current wayland-devel-32bit and
+  prvevious libwayland-egl-devel-32bit package; therefore add
+  a conflicts to baselibs.conf
+
+-------------------------------------------------------------------
 Tue Jan 11 08:29:19 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add wayland-shm-Close-file-descriptors-not-needed.patch: For
