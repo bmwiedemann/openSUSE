@@ -1,11 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar  7 10:17:39 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 7.6.0
+  * https://www.digikam.org/news/2022-03-05-7.6.0_release_announcement/
+- New features (from NEWS):
+General: Use Qt5.15 LTS patches collection git repository from KDE
+         to build AppImage Linux bundle (snapshot 2022-01-23).
+General: All bundles use last KF5 framework 5.90.
+General: All bundles generate a manifest text file listing git
+         revisions of all upstream libraries used by application.
+General: AppImage Linux bundle now support ICU to perform search
+         with UTF-8 characters in all text fields.
+General: Update internal Libraw to snapshot 2022-02-10.
+General: New FlowView generic plugin for digiKam and Showfoto
+         (https://github.com/cathaysia/digikamflowplugin).
+- 847 bugs fixed
+
+-------------------------------------------------------------------
 Mon Jan 17 09:49:39 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 7.5.0
   * https://www.digikam.org/news/2022-01-16-7.5.0_release_announcement/
 - New features (from NEWS):
 General : MacOS package, Windows installer, and AppImage bundle use
-            KF5 5.89 and KAPPS 21.12.0 frameworks.
+          KF5 5.89 and KAPPS 21.12.0 frameworks.
 General : AppImage Linux bundle now support Platform Input Context
           FCITX (https://fcitx-im.org/wiki/Fcitx_5).
 General : Improve RTL translations support.
