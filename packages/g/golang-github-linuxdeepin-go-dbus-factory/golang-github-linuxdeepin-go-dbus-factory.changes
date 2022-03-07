@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Feb 23 06:29:17 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use last stable version of go to build
+
+-------------------------------------------------------------------
+Fri Feb 18 08:06:02 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.10.5
+  * Add ukey api
+  * Add dbus of pwatchd
+  * Add ab-recovery property: HasBackedUp
+  * Add GetReminderInfo api
+  * Add WLSimulateKey api
+  * Fix bugs
+
+-------------------------------------------------------------------
+Fri Jan 28 02:14:25 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Keep golang version on 1.15 on Leap15.4+ 
+
+-------------------------------------------------------------------
 Thu Dec 16 04:22:38 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.9.44

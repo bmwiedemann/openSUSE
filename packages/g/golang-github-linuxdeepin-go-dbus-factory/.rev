@@ -47,4 +47,12 @@
   * Add dbus api for ipwatchd</comment>
     <requestid>950178</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>809d81ff71009cf35dc3fc8adfb59ef4</srcmd5>
+    <version>1.10.5</version>
+    <time>1646671588</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959477</requestid>
+  </revision>
 </revisionlist>

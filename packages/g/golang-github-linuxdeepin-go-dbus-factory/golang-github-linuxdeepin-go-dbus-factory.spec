@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-linuxdeepin-go-dbus-factory
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           golang-%{provider}-%{project}-%{repo}
-Version:        1.9.44
+Version:        1.10.5
 Release:        0
 Summary:        Golang DBus factory
 License:        GPL-3.0+
@@ -30,15 +30,11 @@ URL:            https://github.com/linuxdeepin/go-dbus-factory
 Source0:        https://github.com/linuxdeepin/go-dbus-factory/archive/%{version}/%{repo}-%{version}.tar.gz
 Group:          Development/Languages/Golang
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-BuildRequires:  golang(API) = 1.15
-%endif
 BuildRequires:  golang-packaging
 BuildRequires:  golang-github-linuxdeepin-go-lib
 BuildRequires:  golang-github-linuxdeepin-go-gir-generator
 BuildRequires:  jq
 BuildRequires:  libxml2-tools
-Requires:       golang(github.com/linuxdeepin/go-x11-client)
 Requires:       golang-github-linuxdeepin-go-x11-client
 BuildArch:      noarch
 Autoreq:        Off
@@ -52,6 +48,7 @@ Golang DBus factory for Deepin Desktop Environment.
 %setup -q -n %{repo}-%{version}
 
 %build
+export GO111MODULE=of
 %goprep %{import_path}
 
 %install
