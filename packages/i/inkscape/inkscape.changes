@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar  3 19:02:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.2:
+  + Dependencies updated, fixing bitmap exports
+  + Graphic tablet pens erasors switch to the correct tool
+  + Fix lost styling of text converted to path
+  + Fix relative position of clones pasted to a new document
+  + Fix various crashes
+- Drop ebc4de4bfe34d6c5f2e27da47f5d62e4de0394fd.patch: Fixed
+  upstream.
+- Add Fix_build_poppler_22030.patch: Fix build with poppler 22.03.0
+
+-------------------------------------------------------------------
 Mon Jan 17 18:59:38 UTC 2022 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Fixed export to DXF14 (boo#1189514).
