@@ -1,11 +1,90 @@
-diff -Nur dde-dock-5.1.0.1/plugins/onboard/CMakeLists.txt dde-dock-5.1.0.1-new/plugins/onboard/CMakeLists.txt
---- dde-dock-5.1.0.1/plugins/onboard/CMakeLists.txt	2020-04-26 18:42:42.000000000 +0800
-+++ dde-dock-5.1.0.1-new/plugins/onboard/CMakeLists.txt	2020-04-28 12:52:44.776334645 +0800
-@@ -23,6 +23,7 @@
-     ${DtkWidget_LIBRARIES}
+diff -Nur dde-dock-5.5.9/plugins/airplane-mode/CMakeLists.txt dde-dock-5.5.9-new/plugins/airplane-mode/CMakeLists.txt
+--- dde-dock-5.5.9/plugins/airplane-mode/CMakeLists.txt	2021-12-17 13:22:22.000000000 +0800
++++ dde-dock-5.5.9-new/plugins/airplane-mode/CMakeLists.txt	2022-02-23 19:28:54.416273939 +0800
+@@ -12,6 +12,7 @@
+ find_package(Qt5DBus REQUIRED)
+ find_package(DtkWidget REQUIRED)
+ 
++pkg_check_modules(XCB_EWMH REQUIRED xcb-ewmh x11 xcursor)
+ pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
+ pkg_check_modules(QGSettings REQUIRED gsettings-qt)
+ 
+@@ -27,6 +28,7 @@
+   ../../frame/util
+   )
+ target_link_libraries(${PLUGIN_NAME} PRIVATE
++  ${XCB_EWMH_LIBRARIES}
+   ${DtkWidget_LIBRARIES}
+   ${DFrameworkDBus_LIBRARIES}
+   ${QGSettings_LIBRARIES}
+diff -Nur dde-dock-5.5.9/plugins/bluetooth/CMakeLists.txt dde-dock-5.5.9-new/plugins/bluetooth/CMakeLists.txt
+--- dde-dock-5.5.9/plugins/bluetooth/CMakeLists.txt	2021-12-17 13:22:22.000000000 +0800
++++ dde-dock-5.5.9-new/plugins/bluetooth/CMakeLists.txt	2022-02-23 19:26:38.184923248 +0800
+@@ -15,6 +15,7 @@
+ find_package(Qt5DBus REQUIRED)
+ find_package(DtkWidget REQUIRED)
+ 
++pkg_check_modules(XCB_EWMH REQUIRED xcb-ewmh x11 xcursor)
+ pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
+ pkg_check_modules(QGSettings REQUIRED gsettings-qt)
+ 
+@@ -30,6 +31,7 @@
+ 
+ target_link_libraries(${PLUGIN_NAME} PRIVATE
+   ${DtkWidget_LIBRARIES}
++  ${XCB_EWMH_LIBRARIES}
+   ${DFrameworkDBus_LIBRARIES}
+   ${QGSettings_LIBRARIES}
+   ${Qt5DBus_LIBRARIES}
+diff -Nur dde-dock-5.5.9/plugins/onboard/CMakeLists.txt dde-dock-5.5.9-new/plugins/onboard/CMakeLists.txt
+--- dde-dock-5.5.9/plugins/onboard/CMakeLists.txt	2021-12-17 13:22:22.000000000 +0800
++++ dde-dock-5.5.9-new/plugins/onboard/CMakeLists.txt	2022-02-23 19:15:58.315485651 +0800
+@@ -9,6 +9,7 @@
+ find_package(PkgConfig REQUIRED)
+ find_package(Qt5Widgets REQUIRED)
+ find_package(Qt5DBus REQUIRED)
++find_package(DtkGui REQUIRED)
+ find_package(DtkWidget REQUIRED)
+ 
+ add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
+@@ -19,6 +20,9 @@
+                                                  ../../interfaces)
+ target_link_libraries(${PLUGIN_NAME} PRIVATE
      ${Qt5Widgets_LIBRARIES}
-     ${Qt5Svg_LIBRARIES}
 +    ${Qt5DBus_LIBRARIES}
++    ${DtkGui_LIBRARIES}
++    ${DtkWidget_LIBRARIES}
      ${DFrameworkDBus_LIBRARIES}
  )
+ 
+diff -Nur dde-dock-5.5.9/plugins/sound/CMakeLists.txt dde-dock-5.5.9-new/plugins/sound/CMakeLists.txt
+--- dde-dock-5.5.9/plugins/sound/CMakeLists.txt	2021-12-17 13:22:22.000000000 +0800
++++ dde-dock-5.5.9-new/plugins/sound/CMakeLists.txt	2022-02-23 19:23:30.333818618 +0800
+@@ -13,6 +13,7 @@
+ find_package(Qt5DBus REQUIRED)
+ find_package(DtkWidget REQUIRED)
+ 
++pkg_check_modules(XCB_EWMH REQUIRED xcb-ewmh x11 xcursor)
+ pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
+ pkg_check_modules(QGSettings REQUIRED gsettings-qt)
+ 
+@@ -29,6 +30,7 @@
+ 
+ target_link_libraries(${PLUGIN_NAME} PRIVATE
+     ${DtkWidget_LIBRARIES}
++    ${XCB_EWMH_LIBRARIES}
+     ${DFrameworkDBus_LIBRARIES}
+     ${QGSettings_LIBRARIES}
+     ${Qt5DBus_LIBRARIES}
+diff -Nur dde-dock-5.5.9/plugins/tray/CMakeLists.txt dde-dock-5.5.9-new/plugins/tray/CMakeLists.txt
+--- dde-dock-5.5.9/plugins/tray/CMakeLists.txt	2021-12-17 13:22:22.000000000 +0800
++++ dde-dock-5.5.9-new/plugins/tray/CMakeLists.txt	2022-02-23 19:24:33.221518879 +0800
+@@ -26,7 +26,7 @@
+ find_package(DtkWidget REQUIRED)
+ find_package(dbusmenu-qt5 REQUIRED)
+ 
+-pkg_check_modules(XCB_LIBS REQUIRED xcb-ewmh xcb xcb-image xcb-composite xtst x11 xext xcb-icccm dbusmenu-qt5)
++pkg_check_modules(XCB_LIBS REQUIRED xcb-ewmh xcb xcb-image xcb-composite xtst x11 xext xcb-icccm dbusmenu-qt5 xcursor)
+ pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
+ pkg_check_modules(QGSettings REQUIRED gsettings-qt)
  

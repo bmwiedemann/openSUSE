@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-dock
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,17 @@
 %define _name dde-dock
 
 Name:           deepin-dock
-Version:        5.4.69
+Version:        5.5.9
 Release:        0
 Summary:        Deepin dock
 License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-dock
 Source0:        https://github.com/linuxdeepin/dde-dock/archive/%{version}/%{_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM deepin-dock-link-libraries.patch hillwood@opensuse.org - link some libraries to fix build
 Patch0:         %{name}-link-libraries.patch
 BuildRequires:  cmake
+BuildRequires:  dtkcommon >= 5.5.20
 BuildRequires:  dtkcore >= 5.0.0
 BuildRequires:  gmock
 BuildRequires:  gtest
@@ -37,6 +39,7 @@ BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  libqt5-qttools-devel
+BuildRequires:  cmake(DdeControlCenter)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -51,11 +54,13 @@ BuildRequires:  pkgconfig(dde-network-utils)
 BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(gsettings-qt)
+BuildRequires:  pkgconfig(libdeepin_pw_check)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
+BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xtst)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -70,9 +75,10 @@ Group:          Development/Libraries/C and C++
 %description devel
 The deepin-dock-devel package contains the header files for deepin-dock.
 
+%lang_package
+
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_name}-%{version}
 sed -i "s/lrelease/lrelease-qt5/g" translate_generation.sh
 sed -i 's|no</allow_any>|auth_admin</allow_any>|g' plugins/overlay-warning/com.deepin.dde.dock.overlay.policy
 # sed -i 's|lib/|${CMAKE_INSTALL_LIBDIR}/|g' plugins/*/CMakeLists.txt
@@ -93,6 +99,7 @@ sed -i 's|local/lib/dde-dock/plugins|local/%{_lib}/dde-dock/plugins|' plugins/pl
 
 %build
 %cmake
+%cmake_build
 
 %install
 %cmake_install
@@ -100,7 +107,6 @@ sed -i 's|local/lib/dde-dock/plugins|local/%{_lib}/dde-dock/plugins|' plugins/pl
 rm -rf %{buildroot}%{_datadir}/polkit-1
 
 %files
-%defattr(-,root,root)
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{_bindir}/%{_name}
@@ -110,12 +116,21 @@ rm -rf %{buildroot}%{_datadir}/polkit-1
 %dir %{_sysconfdir}/dde-dock
 %dir %{_sysconfdir}/dde-dock/indicator
 %config %{_sysconfdir}/dde-dock/indicator/keybord_layout.json
+%dir %{_datadir}/dsg
+%dir %{_datadir}/dsg/apps
+%{_datadir}/dsg/apps/%{_name}
+%{_datadir}/dsg/apps/dde-control-center
+%dir %{_libdir}/dde-control-center
+%dir %{_libdir}/dde-control-center/modules
+%{_libdir}/dde-control-center/modules/libdcc-dock-plugin.so
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{_name}
 %dir %{_libdir}/cmake/DdeDock
 %{_libdir}/cmake/DdeDock/DdeDockConfig.cmake
 %{_libdir}/pkgconfig/%{_name}.pc
+
+%files lang
+%{_datadir}/dcc-dock-plugin
 
 %changelog
