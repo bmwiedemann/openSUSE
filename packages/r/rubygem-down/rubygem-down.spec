@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-down
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,28 @@
 #
 
 
-%define mod_name down
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-down
-Version:        5.2.3
+Version:        5.3.0
 Release:        0
-Summary:        Robust streaming downloads using Net::HTTP, HTTP.rb or wget
-License:        MIT
-Group:          Development/Languages/Ruby
-URL:            https://github.com/janko/down
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+%define mod_name down
+%define mod_full_name %{mod_name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/janko/down
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+Summary:        Robust streaming downloads using Net::HTTP, HTTP.rb or wget
+License:        MIT
+Group:          Development/Languages/Ruby
 
 %description
 Robust streaming downloads using Net::HTTP, HTTP.rb or wget.
