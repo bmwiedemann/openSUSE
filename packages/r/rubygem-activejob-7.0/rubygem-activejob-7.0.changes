@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Tue Feb 15 07:10:02 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:22:57 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   Allow testing `discard_on/retry_on ActiveJob::DeserializationError`
+  
+      Previously in `perform_enqueued_jobs`, `deserialize_arguments_if_needed`
+      was called before calling `perform_now`. When a record no longer exists
+      and is serialized using GlobalID this led to raising
+      an `ActiveJob::DeserializationError` before reaching `perform_now` call.
+      This behaviour makes difficult testing the job `discard_on/retry_on` logic.
+  
+      Now `deserialize_arguments_if_needed` call is postponed to when `perform_now`
+      is called.
+  
+      Example:
+  
+      ```ruby
+      class UpdateUserJob < ActiveJob::Base
+        discard_on ActiveJob::DeserializationError
+  
+        def perform(user)
+          # ...
+        end
+      end
+  
+      # In the test
+      User.destroy_all
+      assert_nothing_raised do
+        perform_enqueued_jobs only: UpdateUserJob
+      end
+      ```
+  
+      *Jacopo Beschi*
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:23:45 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:08:20 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 21:59:59 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
