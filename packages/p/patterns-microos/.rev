@@ -420,4 +420,14 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1195878</comment>
   </revision>
+  <revision rev="45" vrev="45">
+    <srcmd5>eb4f72ccad4ab0ae2cace7314543cfd5</srcmd5>
+    <version>5.0</version>
+    <time>1646671534</time>
+    <user>dimstar_suse</user>
+    <comment>Submit again. Depends on sr 959826 and 959827
+
+- Do not include wicked in base pattern, NetworkManager instead</comment>
+    <requestid>959828</requestid>
+  </revision>
 </revisionlist>
