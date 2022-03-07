@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Mon Mar  7 12:04:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix python3 requires (bsc#1196758)
+
+-------------------------------------------------------------------
+Sun Feb 27 19:24:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added install-ovsdb-tools.patch to install ovsdb tools required
+  for building OVN
+
+-------------------------------------------------------------------
+Sat Feb 26 22:11:06 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Enable multiple python3 flavor subpackages on Tumbleweed / Factory
+
+-------------------------------------------------------------------
+Sat Feb 26 00:56:03 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update OVS to version 2.17.0
+  * Userspace datapath:
+    * Optimized flow lookups for datapath flows with simple match criteria.
+    * New per-interface configuration knob 'other_config:tx-steering'.
+    * Removed experimental tag for PMD Auto Load Balance.
+    * New configuration knob 'other_config:n-offload-threads' to change the
+      number of HW offloading threads.
+  * DPDK:
+    * EAL argument --socket-mem is no longer configured by default upon
+      start-up.  If dpdk-socket-mem and dpdk-alloc-mem are not specified,
+      DPDK defaults will be used.
+    * EAL argument --socket-limit no longer takes on the value of --socket-mem
+      by default.  'other_config:dpdk-socket-limit' can be set equal to
+      the 'other_config:dpdk-socket-mem' to preserve the legacy memory
+      limiting behavior.
+    * EAL argument --in-memory is applied by default if supported.
+    * Add support for DPDK 21.11.
+    * Forbid use of DPDK multiprocess feature.
+    * Add support for running threads on cores >= RTE_MAX_LCORE.
+  * Python: For SSL support, the use of the pyOpenSSL library has
+      been replaced with the native 'ssl' module.
+  * OVSDB:
+    * Python library for OVSDB clients now also supports faster
+      resynchronization with a clustered database after a brief disconnection,
+      i.e. 'monitor_cond_since' monitoring method.
+    * Major improvement in the performance of the OVSDB server.
+  * OpenFlow:
+    * Default selection method for select groups with up to 256 buckets is
+      now dp_hash.  Previously this was limited to 64 buckets.  This change
+      is mainly for the benefit of OVN load balancing configurations.
+    * Encap & Decap action support for MPLS packet type.
+- Update OVS to version 2.16.0
+  * Fix CVE-2021-36980 (boo#1188524)
+    openvswitch 2.11.0 through 2.15.0 has a use-after-free in
+    decode_NXAST_RAW_ENCAP (called from ofpact_decode and ofpacts_decode)
+    during the decoding of a RAW_ENCAP action
+  * Removed support for 1024-bit Diffie-Hellman key exchange
+  * Rate limiting configuration now supports setting packet-per-second
+    limits in addition to the previously configurable byte rate settings.
+  * OVSDB:
+    * Introduced new database service model - "relay".
+    * New command line options --record/--replay for ovsdb-server and
+      ovsdb-client to record and replay all the incoming transactions,
+      monitors, etc.
+    * The Python Idl class now has a cooperative_yield() method
+  * In ovs-vsctl and vtep-ctl, the "find" command now accept new
+    operators {in} and {not-in}.
+  * Various Userspace datapath improvements
+  * ovs-ctl:
+    * New option '--no-record-hostname' to disable hostname configuration
+      in ovsdb on startup.
+    * New command 'record-hostname-if-not-set' to update hostname in ovsdb.
+  * ovs-appctl: Added ability to add and delete static mac entries using:
+    'ovs-appctl fdb/add <bridge> <port> <vlan> <mac>'
+    'ovs-appctl fdb/del <bridge> <vlan> <mac>'
+  * Linux datapath:
+    * ovs-vswitchd will configure the kernel module using per-cpu dispatch
+      mode (if available). This changes the way upcalls are delivered to
+      user space in order to resolve a number of issues with per-vport dispatch.
+    * New vswitchd unixctl command `dpif-netlink/dispatch-mode` will return
+     the current dispatch mode for each datapath.
+- Update OVS to version 2.15.0
+   * OVSDB:
+     * Changed format in which ovsdb transactions are stored in
+       database files. Now each transaction contains diff of data
+       instead of the whole new value of a column.
+     * New unixctl command 'ovsdb-server/get-db-storage-status'
+     * New unixctl command 'ovsdb-server/memory-trim-on-compaction on|off'.
+     * Maximum backlog on RAFT connections limited to 500 messages or 4GB.
+   * DPDK: Removed support for vhost-user dequeue zero-copy.
+     * Add support for DPDK 20.11.
+   * The environment variable OVS_UNBOUND_CONF, if set, is now used
+     as the DNS resolver's (unbound) configuration file.
+   * Linux datapath: Support for kernel versions up to 5.8.x.
+   * Building the Linux kernel module from the OVS source tree is deprecated
+     * Support for the Linux kernel is capped at version 5.8
+     * Only bug fixes for the Linux OOT kernel module will be accepted.
+     * The Linux kernel module will be fully removed from the OVS source tree
+       in OVS branch 2.18
+- Rebased 0001-Use-strongswan-for-openvswitch-ipsec-service.patch
+- Drop upstream fixed 0001-Replace-deprecated-var-run-with-run.patch
+- Separated OVN
+  * Stand alone package, this enables better maintenance
+    especially updates.
+  * Drop 0001-Run-ovn-as-openvswitch-openvswitch.patch from OVN
+
+-------------------------------------------------------------------
 Mon May 10 10:28:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add openssl(cli) dependency on pki (bsc#1185839) 

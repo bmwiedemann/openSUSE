@@ -660,4 +660,41 @@
     <comment>- add openssl(cli) dependency on pki (bsc#1185839)</comment>
     <requestid>892002</requestid>
   </revision>
+  <revision rev="57" vrev="12">
+    <srcmd5>0aac2fd212a181cb9aa3b03fd2a831a5</srcmd5>
+    <version>2.17.0</version>
+    <time>1646671646</time>
+    <user>dimstar_suse</user>
+    <comment>- fix python3 requires (bsc#1196758)
+
+- Added install-ovsdb-tools.patch to install ovsdb tools required
+  for building OVN
+
+- Enable multiple python3 flavor subpackages on Tumbleweed / Factory
+
+- Update OVS to version 2.17.0
+  * Userspace datapath:
+    * Optimized flow lookups for datapath flows with simple match criteria.
+    * New per-interface configuration knob 'other_config:tx-steering'.
+    * Removed experimental tag for PMD Auto Load Balance.
+    * New configuration knob 'other_config:n-offload-threads' to change the
+      number of HW offloading threads.
+  * DPDK:
+    * EAL argument --socket-mem is no longer configured by default upon
+      start-up.  If dpdk-socket-mem and dpdk-alloc-mem are not specified,
+      DPDK defaults will be used.
+    * EAL argument --socket-limit no longer takes on the value of --socket-mem
+      by default.  'other_config:dpdk-socket-limit' can be set equal to
+      the 'other_config:dpdk-socket-mem' to preserve the legacy memory
+      limiting behavior.
+    * EAL argument --in-memory is applied by default if supported.
+    * Add support for DPDK 21.11.
+    * Forbid use of DPDK multiprocess feature.
+    * Add support for running threads on cores &gt;= RTE_MAX_LCORE.
+  * Python: For SSL support, the use of the pyOpenSSL library has
+      been replaced with the native 'ssl' module.
+  * OVSDB:
+    * Python library for OVSDB clients now also supports faster</comment>
+    <requestid>959873</requestid>
+  </revision>
 </revisionlist>
