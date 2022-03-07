@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_account_invoice_stock
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define majorver 5.0
+%define majorver 6.0
 
 Name:           trytond_account_invoice_stock
-Version:        %{majorver}.4
+Version:        %{majorver}.0
 Release:        0
 Summary:        The "account_invoice_stock" module for the Tryton ERP system
 License:        GPL-3.0-only
