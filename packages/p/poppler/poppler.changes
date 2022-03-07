@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Mar  3 09:32:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 22.03.0:
+  + core:
+    - Signature:
+      . Fix finding Signatures that are in Pages not not in the
+        global the Forms object
+      . Improve getting the path to the firefox certificate
+        database
+    - Splash: Fix rendering of some joints.
+    - Fix get_poppler_localdir for relocatable Windows builds
+    - Minor code improvements
+  + qt: Minor code improvements
+  + utils: pdfimages: Fix the wrong Stream being passed for
+    drawMaskedImage
+  + build system: Small code improvements
+- Changes from version 22.02.0:
+  + core:
+    - Signature:
+      . Add a way to detect unsigned FormFieldSignature
+      . Suport background image when using left and right text
+      . Fix path where to search for Firefox NSS in Windows
+      . Fix NSS code to work correctly in Windows/Android
+    - Count only signature fields in PDFDoc::getNumSignatureFields
+    - Minor code improvements
+  + qt:
+    - Allow signing unsigned signature fields
+    - Allow passing a background image for the signature when
+      signing
+    - Allow passing the document password when signing
+    - Fix leftFontSize being ignored when signing
+  + glib:
+    - Try with utf8 password if latin1 fails
+    - New method for getting all signature fields of a document
+    - Fix compile with MSVC
+  + utils: pdfsig: Fix compile with MSVC
+  + build system: Fix NSS cmake check for MSVC
+- Bump poppler sover following upstream changes.
+
+-------------------------------------------------------------------
 Tue Jan 11 16:35:55 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 22.01.0:

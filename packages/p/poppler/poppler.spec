@@ -24,7 +24,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 117
+%define poppler_sover 119
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,13 +32,13 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        22.01.0
+Version:        22.03.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org
-Source:         https://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
+Source:         %{url}/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} < 1550
