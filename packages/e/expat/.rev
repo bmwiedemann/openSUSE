@@ -566,4 +566,12 @@
         that could be triggered by e.g. a 2 megabytes</comment>
     <requestid>956337</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>5e6d6faca85f0513a93667173c900085</srcmd5>
+    <version>2.4.7</version>
+    <time>1646671532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959581</requestid>
+  </revision>
 </revisionlist>
