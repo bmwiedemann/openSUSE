@@ -95,4 +95,12 @@
     <comment>Fix build + January 2022 CPU</comment>
     <requestid>957994</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>088b6aed191afb90bb0c3c8a0dd138d5</srcmd5>
+    <version>1.8.0.322</version>
+    <time>1646671558</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with SLE</comment>
+    <requestid>959662</requestid>
+  </revision>
 </revisionlist>

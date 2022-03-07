@@ -3,10 +3,14 @@ Mon Feb 28 09:47:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u322 build 04 with OpenJ9 0.30.0 virtual
   machine
-  * including Oracle January 2022 CPU changes (bsc#1194925,
-    bsc#1194926, bsc#1194927, bsc#1194928, bsc#1194929, bsc#1194930,
-    bsc#1194931, bsc#1194932, bsc#1194933, bsc#1194934, bsc#1194935,
-    bsc#1194939, bsc#1194940, bsc#1194941)
+  * including Oracle January 2022 CPU changes
+    CVE-2022-21248 (bsc#1194926), CVE-2022-21277 (bsc#1194930),
+    CVE-2022-21282 (bsc#1194933), CVE-2022-21291 (bsc#1194925),
+    CVE-2022-21293 (bsc#1194935), CVE-2022-21294 (bsc#1194934),
+    CVE-2022-21296 (bsc#1194932), CVE-2022-21299 (bsc#1194931),
+    CVE-2022-21305 (bsc#1194939), CVE-2022-21340 (bsc#1194940),
+    CVE-2022-21341 (bsc#1194941), CVE-2022-21360 (bsc#1194929),
+    CVE-2022-21365 (bsc#1194928), CVE-2022-21366 (bsc#1194927),
   * OpenJ9 changes, see
     https://www.eclipse.org/openj9/docs/version0.30
 - Added patch:
@@ -19,10 +23,13 @@ Tue Nov  2 11:29:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 - Update to OpenJDK 8u312 build 07 with OpenJ9 0.29.0 virtual
   machine
   * including Oracle July 2021 and October 2021 CPU changes
-    (bsc#1188564, bsc#1188565, bsc#1188566, bsc#1191901,
-    bsc#1191909, bsc#1191910, bsc#1191911, bsc#1191912,
-    bsc#1191913, bsc#1191903, bsc#1191904, bsc#1191914,
-    bsc#1191906)
+    CVE-2021-2341 (bsc#1188564), CVE-2021-2369 (bsc#1188565),
+    CVE-2021-2388 (bsc#1188566), CVE-2021-35550 (bsc#1191901),
+    CVE-2021-35565 (bsc#1191909), CVE-2021-35556 (bsc#1191910),
+    CVE-2021-35559 (bsc#1191911), CVE-2021-35561 (bsc#1191912),
+    CVE-2021-35564 (bsc#1191913), CVE-2021-35567 (bsc#1191903),
+    CVE-2021-35578 (bsc#1191904), CVE-2021-35586 (bsc#1191914),
+    CVE-2021-35603 (bsc#1191906)
   * OpenJ9 changes, see
     https://www.eclipse.org/openj9/docs/version0.29
 - Remove the unneeded icedtea-sound provider
