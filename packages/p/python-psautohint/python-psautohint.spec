@@ -1,7 +1,7 @@
 #
 # spec file for package python-psautohint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,29 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module()python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-psautohint
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Python wrapper for Adobe's PostScript autohinter
 License:        Apache-2.0
 URL:            https://github.com/adobe-type-tools/psautohint
-Source:         https://files.pythonhosted.org/packages/source/p/psautohint/psautohint-%{version}.zip
-BuildRequires:  %{python_module devel}
+Source:         https://files.pythonhosted.org/packages/source/p/psautohint/psautohint-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module fs}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-Requires:       python-FontTools >= 4.5.0
+Requires:       python-FontTools >= 4.22.0
 Requires:       python-fs
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # SECTION test requirements
-BuildRequires:  %{python_module FontTools >= 4.5.0}
-BuildRequires:  %{python_module pytest >= 3.0}
+BuildRequires:  %{python_module FontTools >= 4.22.0}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -74,6 +73,7 @@ export CFLAGS="%{optflags}"
 %license COPYING LICENSE
 %python_alternative %{_bindir}/psautohint
 %python_alternative %{_bindir}/psstemhist
-%{python_sitearch}/*
+%{python_sitearch}/psautohint
+%{python_sitearch}/psautohint-%{version}*-info
 
 %changelog
