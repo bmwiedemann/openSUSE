@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar  4 18:16:46 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add some unit test fixes:
+  * 0001-Test-remove-not-needed-u-before-py3-unicode-string.patch
+  * 0001-Test-fix-exception-handling-in-tests-for-units.patch
+  * 0001-Test-Provide-more-useful-information-when-unit-trans.patch
+  * 0002-Base-Fix-wrong-character-encoding-for-micro-siemens.patch
+
+-------------------------------------------------------------------
+Thu Mar  3 17:42:20 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.19.4:
+  * Lots of bugfixes, for details see
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.19.4
+
+-------------------------------------------------------------------
 Sun Feb  6 17:31:23 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Pre-generate parsetab.py for ply.yacc in OpenSCAD and FEM Mods:

@@ -17,12 +17,12 @@
 
 
 Name:           FreeCAD-test
-Version:        0.19.3
+Version:        0.19.4
 Release:        0
 Summary:        Meta source package that runs the FreeCAD testsuite when built
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
-URL:            http://www.freecadweb.org/
+URL:            https://www.freecadweb.org/
 BuildRequires:  FreeCAD = %{version}
 %if 0%{?suse_version} > 1500
 BuildRequires:  gmsh
@@ -40,7 +40,7 @@ export PYTHONPATH=%{_libdir}/FreeCAD/lib
 python3 -c "\
 import FreeCAD
 import unittest
-print(FreeCAD.__unit_test__)
+print(FreeCAD.__unit_test__, file=sys.stderr)
 results = {}
 for name in FreeCAD.__unit_test__:
     suite = unittest.TestSuite()
@@ -53,8 +53,8 @@ for name in FreeCAD.__unit_test__:
 totalerrors = 0
 totalfailures = 0
 for [name,res] in results.items():
-    print(name)
-    print(res)
+    print(name, file=sys.stderr)
+    print(res, file=sys.stderr)
     totalerrors += len(res.errors)
     totalfailures += len(res.failures)
 

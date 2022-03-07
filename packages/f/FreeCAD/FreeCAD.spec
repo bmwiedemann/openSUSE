@@ -27,7 +27,7 @@
 %bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.19.3
+Version:        0.19.4
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -38,6 +38,13 @@ Source0:        https://github.com/FreeCAD/FreeCAD/archive/refs/tags/%{version}.
 Patch1:         fix_unittestgui_tkinter_py3.patch
 # PATCH-FIX-UPSTREAM Rebased https://github.com/wwmayer/FreeCAD/commit/bb9bcbd51df7
 Patch2:         fix-smesh-vtk9.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Test-remove-not-needed-u-before-py3-unicode-string.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Test-fix-exception-handling-in-tests-for-units.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         0001-Test-Provide-more-useful-information-when-unit-trans.patch
+Patch6:         0002-Base-Fix-wrong-character-encoding-for-micro-siemens.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -144,14 +151,6 @@ sed -i '1c#!%{__python3}' \
         src/Mod/TechDraw/TDTest/D*Test.py \
         src/Mod/Test/testmakeWireString.py
 
-# Fix "non-executable-script" rpmlint warning
-chmod 755 src/Mod/AddonManager/AddonManager.py \
-          src/Mod/Robot/KukaExporter.py \
-          src/Mod/Robot/MovieTool.py \
-          src/Mod/Spreadsheet/importXLSX.py \
-          src/Mod/TechDraw/TDTest/D*Test.py \
-          src/Mod/Test/testmakeWireString.py
-
 # Fix "wrong-script-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' src/Mod/Mesh/App/MeshTestsApp.py
 sed -i 's/\r$//' src/Mod/Part/MakeBottle.py
@@ -178,6 +177,7 @@ rm src/3rdparty/Pivy-0.5 -fr
   -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
   -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/%{name} \
   -DCMAKE_SKIP_RPATH:BOOL=OFF \
+  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
   -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
   -DOCC_INCLUDE_DIR=%{_includedir}/opencascade \
   -DRESOURCEDIR=%{_datadir}/%{name} \
@@ -224,6 +224,15 @@ lex.lex(module=tokrules)
 yacc.yacc(module=importCSG,outputdir=\"./\")
 "
 rm parser.out
+
+# Fix "non-executable-script" rpmlint warning
+# Run after install, as CMake "install(FILES...) sets rw- permissions
+chmod 755 %{buildroot}%{_libdir}/FreeCAD/Mod/AddonManager/AddonManager.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Robot/KukaExporter.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Robot/MovieTool.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Spreadsheet/importXLSX.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/TechDraw/TDTest/D*Test.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Test/testmakeWireString.py
 
 %suse_update_desktop_file -r org.freecadweb.FreeCAD Education Engineering
 
