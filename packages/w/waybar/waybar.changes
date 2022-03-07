@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:47:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.10:
+  * avoid use-after-free in lambda
+  * style.css: add fontawesome to beginning of font list
+  * Fix remaining posix compatability issues in keyboard_state
+  * Don't use gnu extensions which are too new for debian and ubuntu
+  * Make error messages portable
+  * Improve keyboard_state error messages
+  * limit cpu load figure to 2 points
+  * Add 1 to songPosition in the MPD module
+  * fix #1431: audio output does not update on unplug
+  * move Glib ustring format helper to utils
+  * remove duplicated string manipulation methods
+  * ltrim and rtrim take argument by const-ref
+  * make functions in header file inline
+  * Update man page clock module - tooltip
+  * Fix disabled tooltip on clock module
+  * Update spotify example to work on copy paste
+  * Properly initialize distance_scrolled members.
+  * Fix Typo in Example for sway/mode
+  * Add config option "reverse-direction"
+  * use pack_end instead of pack_start
+  * sway/language: fix segmentation fault for layouts not found in XKBContext
+  * Show application icon when using sway window module
+  * battery: read status with spaces
+  * Use locale when formatting clock
+  * fix(man): add missing newlines to wlr docs.
+  * created a hotfix for libfmt-8.1.0 and above
+  * removed commented useless runtime errors
+  * changing want_route_dump to default to true, since we say we have gwaddr support
+  * maybe we shouldn't actually runtime error, but still doing a check
+  * explicitly checking for errors to silence unused variable warnings when writing to fd
+  * Add man
+  * Add swap flags
+
+-------------------------------------------------------------------
 Wed Feb 16 16:21:53 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use g++-11 when building in Backports/Leap 15.4 since otherwise
