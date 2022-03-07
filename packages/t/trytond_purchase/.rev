@@ -185,4 +185,12 @@
     <comment>Bugfix Release</comment>
     <requestid>936095</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6b2d1983d930e2d36bacbccb35d9694c</srcmd5>
+    <version>6.0.6</version>
+    <time>1646671684</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959960 from DocB)</comment>
+    <requestid>959979</requestid>
+  </revision>
 </revisionlist>

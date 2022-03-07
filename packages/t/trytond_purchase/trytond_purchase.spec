@@ -15,9 +15,9 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 
-%define majorver 5.0
+%define majorver 6.0
 Name:           trytond_purchase
-Version:        %{majorver}.9
+Version:        %{majorver}.6
 Release:        0
 Summary:        The "purchase" module for the Tryton ERP system
 License:        GPL-3.0
