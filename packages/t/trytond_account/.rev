@@ -302,4 +302,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>952806</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e86208d8bf4dfcd1db75771608012df2</srcmd5>
+    <version>6.0.9</version>
+    <time>1646671678</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959951 from DocB)</comment>
+    <requestid>959970</requestid>
+  </revision>
 </revisionlist>
