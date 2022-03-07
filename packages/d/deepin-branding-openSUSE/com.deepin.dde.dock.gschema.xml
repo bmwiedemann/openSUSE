@@ -18,6 +18,12 @@
         <value value="3" nick="left" />
     </enum>
 
+    <enum id="com.deepin.dde.dock.ForceQuitApp">
+        <value value="0" nick="enabled" />
+        <value value="1" nick="disabled" />
+        <value value="2" nick="deactivated" />
+    </enum>
+
     <schema path="/com/deepin/dde/dock/" id="com.deepin.dde.dock">
         <key name="hide-mode" enum="com.deepin.dde.dock.HideMode">
             <default>'keep-showing'</default>
@@ -25,7 +31,7 @@
             <description>The value will influence when the dock is shown or hidden.</description>
         </key>
         <key type="as" name="docked-apps">
-            <default>['dde-file-manager','firefox','thunderbird','writer','calc','deepin-music','dde-calendar','dde-control-center']</default>
+            <default>['dde-file-manager','firefox','thunderbird','libreoffice-startcenter','deepin-music','dde-calendar','dde-control-center']</default>
             <summary>The default apps on dock.</summary>
             <description>The default apps which is docked when dock is started.</description>
         </key>
@@ -90,11 +96,17 @@
             <summary></summary>
             <description></description>
         </key>
-        
+
        <key type="i" name="wireless-scan-interval">
             <default>5</default>
             <summary></summary>
             <description>wireless scan interval</description>
-       </key>
+        </key>
+
+        <key name="force-quit-app" enum="com.deepin.dde.dock.ForceQuitApp">
+            <default>'enabled'</default>
+            <summary>Force Quit of taskbar app context menu</summary>
+            <description></description>
+        </key>
     </schema>
 </schemalist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 23 13:15:23 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Package base on Leap 15.4
+  * Update com.deepin.dde.dock.gschema.xml
+  * Update com.deepin.xsettings.gschema.xml
+
+-------------------------------------------------------------------
 Thu Jul 29 12:43:24 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update dock setting: Regularly scan wifi on dock 

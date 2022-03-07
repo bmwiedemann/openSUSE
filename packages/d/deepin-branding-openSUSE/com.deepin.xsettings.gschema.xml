@@ -406,5 +406,10 @@
       <default>18</default>
       <summary>The window radius last time</summary>
     </key>
+    <key type="s" name="primary-monitor-name">
+      <default>'eDP-1'</default>
+      <summary></summary>
+      <description></description>
+    </key>
   </schema>
 </schemalist>

@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-branding-openSUSE
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define deepin_launcher_version %(rpm -q --queryformat '%%{VERSION}' deepin-launcher)
 
 Name:           deepin-branding-openSUSE
-Version:        15.0
+Version:        15.4
 Release:        0
 Summary:        openSUSE Branding of the Deepin Desktop Environment
 License:        GPL-2.0-or-later

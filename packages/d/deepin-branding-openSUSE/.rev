@@ -23,4 +23,12 @@
     <comment>- Update dock setting: Regularly scan wifi on dock (forwarded request 910677 from hillwood)</comment>
     <requestid>910891</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a36ef8e84ecd5f416a252d2458b73d66</srcmd5>
+    <version>15.4</version>
+    <time>1646671562</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959456</requestid>
+  </revision>
 </revisionlist>
