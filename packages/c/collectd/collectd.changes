@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 16 20:11:55 UTC 2022 - Thomas Renninger <trenn@suse.de>
+
+- Add (Build)Requirements for these plugins (jsc#SLE-23472):
+    - dpdkevents
+    - dpdkstat
+    - dpdk_telemetry
+  and build a new collected-plugin-dpdk rpm for them
+- Enable and add intel_rdt and capabilities to general plugin rpm
+- Remove an old configure paramter:
+  configure: WARNING: unrecognized options: --without-included-ltdl
+
+-------------------------------------------------------------------
 Thu Sep 16 09:29:07 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Fix version mess introduced in previous changes.

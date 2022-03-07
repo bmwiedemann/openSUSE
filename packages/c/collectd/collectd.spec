@@ -1,7 +1,7 @@
 #
 # spec file for package collectd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2005-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,10 @@
 
 
 %define plugins apache apcups aggregation ascent battery bind  \\\
-  ceph cgroups chrony curl curl_json curl_xml conntrack contextswitch cpu cpufreq cpusleep csv \\\
+  capabilities ceph cgroups chrony curl curl_json curl_xml conntrack contextswitch cpu cpufreq cpusleep csv \\\
   df disk dns drbd \\\
   email entropy ethstat exec fhcount filecount fscache hddtemp hugepages \\\
-  infiniband interface ipc iptables ipvs irq \\\
+  infiniband %{expand:%{rdt_plugin}} interface ipc iptables ipvs irq \\\
   load logfile log_logstash \\\
   madwifi match_empty_counter match_hashed match_regex match_timediff match_value \\\
   mdevents mbmon md memcached memory multimeter \\\
@@ -41,6 +41,22 @@
 %define sensors    0
 %define sensors_plugin %{nil}
 %endif
+
+# dpdk exclusive build arch requirements copied:
+%ifarch aarch64 x86_64 ppc64le
+%define dpdk       1
+%else
+%define dpdk       0
+%endif
+
+%ifarch x86_64 %{ix86}
+%define intel_rdt    1
+%define rdt_plugin intel_rdt
+%else
+%define intel_rdt    0
+%define rdt_plugin %{nil}
+%endif
+
 Name:           collectd
 Version:        5.12.0
 Release:        0
@@ -70,14 +86,23 @@ BuildRequires:  apache2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
+%if %{dpdk}
+BuildRequires:  dpdk-devel >= 19.08
+%endif
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext-devel
 BuildRequires:  intltool
+# intel_rdt -> pqos.h
+# intel-cmt-cat exclusive build arch requirements copied:
+%if %{intel_rdt}
+BuildRequires:  libpqos-devel
+%endif
 BuildRequires:  java-devel
 BuildRequires:  libesmtp-devel
 BuildRequires:  libgcrypt-devel
+BuildRequires:  libjansson-devel
 BuildRequires:  libnetlink-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libpng-devel
@@ -438,7 +463,6 @@ Requires:       %{name} = %{version}-%{release}
 %description plugin-connectivity
 Optional %{name} plugin to collect Event-based interface status.
 
-
 %package plugin-procevent
 Summary:        Procevent plugin for %{name}
 Group:          System/Monitoring
@@ -446,7 +470,6 @@ Requires:       %{name} = %{version}-%{release}
 
 %description plugin-procevent
 Optional %{name} plugin to listen for process starts and exits via netlink.
-
 
 %package plugin-sysevent
 Summary:        Sysevent plugin for %{name}
@@ -556,6 +579,17 @@ Requires:       perl-spamassassin
 Plugin for filling %{name} with statistics from the
 SpamAsssassin anti-spam engine.
 
+%package plugin-dpdk
+Summary:        Collect DPDK interface statistics
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-dpdk
+This plugin has a specific use case: monitoring DPDK applications
+that don't expose stats in any other way than the DPDK xstats API.
+For OVS or OVS-with-DPDK the Open vSwitch plugins (ovs) should be
+used for collecting stats and events.
+
 %package -n libcollectdclient1
 Summary:        Library for %{name} clients
 Group:          System/Monitoring
@@ -612,7 +646,6 @@ export KERNEL_DIR=%{_prefix}/src/linux
     --disable-silent-rules \
     --disable-static \
     --with-java="$JAVA_HOME/" \
-    --without-included-ltdl \
     --disable-turbostat
 
 make %{?_smp_mflags}
@@ -956,6 +989,16 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %dir %{perl_vendorlib}/Mail/SpamAssassin/Plugin
 %{perl_vendorlib}/Mail/SpamAssassin/Plugin/Collectd.pm
 %doc %{perl_man3dir}/Mail::SpamAssassin::Plugin::Collectd.%{perl_man3ext}%{ext_man}
+
+%files plugin-dpdk
+%if %{dpdk}
+%{_libdir}/collectd/dpdkevents.la
+%{_libdir}/collectd/dpdkevents.so
+%{_libdir}/collectd/dpdkstat.la
+%{_libdir}/collectd/dpdkstat.so
+%endif
+%{_libdir}/collectd/dpdk_telemetry.la
+%{_libdir}/collectd/dpdk_telemetry.so
 
 %files plugins-all
 %doc README.plugins-all
