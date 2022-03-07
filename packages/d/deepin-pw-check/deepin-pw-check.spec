@@ -37,9 +37,6 @@ Source0:        https://github.com/linuxdeepin/deepin-pw-check/archive/%{version
 Source1:        vendor.tar.gz
 Patch0:         disable-gobuild-in-makefile.patch
 BuildRequires:  gcc
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-BuildRequires:  golang(API) = 1.15
-%endif
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 BuildRequires:  golang(github.com/stretchr/testify/mock)
 %endif
@@ -47,7 +44,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
-BuildRequires:  golang(pkg.deepin.io/lib)
+BuildRequires:  golang-github-linuxdeepin-go-lib
 BuildRequires:  pam-devel
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  cracklib-devel
@@ -65,7 +62,6 @@ Summary:        Deepin-pw-check source
 Group:          Development/Languages/Golang
 AutoReqProv:    On
 Requires:       golang-github-linuxdeepin-go-dbus-factory
-Requires:       golang(pkg.deepin.io/lib)
 Autoreq:        Off
 BuildArch:      noarch
 
@@ -103,6 +99,7 @@ sed -i 's|<iniparser/|<|g' tool/pwd_conf_update.c lib/deepin_pw_check.c
 sed -i '/<allow_any>/s|no|auth_admin|g' misc/polkit-action/*
 
 %build
+export GO111MODULE=off
 %goprep %{import_path}
 %gobuild ...
 %make_build

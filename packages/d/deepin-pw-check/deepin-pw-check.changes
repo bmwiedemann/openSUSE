@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 23 07:20:23 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use last stable version of go to build 
+
+-------------------------------------------------------------------
 Fri Feb  4 14:05:34 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Leap 15.4 
