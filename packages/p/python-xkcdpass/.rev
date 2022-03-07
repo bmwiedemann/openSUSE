@@ -54,4 +54,13 @@
 - add python-rpm-macros</comment>
     <requestid>945902</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b01349599ad268a53faf686764303b0</srcmd5>
+    <version>1.19.3</version>
+    <time>1646671699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.19.3:
+  * Restore a randomly sampled version of eff_large_de wordlist</comment>
+    <requestid>959998</requestid>
+  </revision>
 </revisionlist>
