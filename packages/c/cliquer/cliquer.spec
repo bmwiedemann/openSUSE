@@ -1,7 +1,7 @@
 #
 # spec file for package cliquer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://users.aalto.fi/~pat/cliquer.html
 Source:         https://github.com/dimpase/autocliquer/releases/download/v%version/%name-%version.tar.gz
 Source9:        %name-rpmlintrc
-Conflicts:      python3-cl
+Conflicts:      python3dist(cl)
 
 %description
 Cliquer is a set of C routines for finding cliques in an arbitrary
