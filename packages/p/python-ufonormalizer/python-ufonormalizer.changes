@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  7 10:41:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Fixes the deletion of images by the normalizer (#88)
+  * Does not write empty keys (#89) in layerinfo.plist (or an empty
+    layerinfo.plist) 
+
+-------------------------------------------------------------------
 Thu Aug 26 09:50:54 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.6.0
