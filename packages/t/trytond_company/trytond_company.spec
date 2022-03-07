@@ -17,9 +17,9 @@
 #
 
 
-%define majorver 5.0
+%define majorver 6.0
 Name:           trytond_company
-Version:        %{majorver}.4
+Version:        %{majorver}.6
 Release:        0
 Summary:        The "company" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -34,7 +34,7 @@ BuildRequires:  python3-setuptools
 Requires:       trytond
 Requires:       trytond_currency
 Requires:       trytond_party
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
 BuildArch:      noarch
 
 %description
@@ -42,7 +42,7 @@ The company module defines the concepts of company and employee and
 extend the user model in the Tryton application platform.
 
 %prep
-%setup -q -n %{name}-%version
+%setup -q
 
 %build
 %python3_build

@@ -88,4 +88,12 @@
     <comment>Bugfix Release</comment>
     <requestid>936097</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3b606b0c965dc63d5d31703c07f4d29a</srcmd5>
+    <version>6.0.6</version>
+    <time>1646671681</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959955 from DocB)</comment>
+    <requestid>959974</requestid>
+  </revision>
 </revisionlist>
