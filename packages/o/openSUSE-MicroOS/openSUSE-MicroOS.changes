@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  2 15:40:51 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Run wicked specific code only if wicked is installed
+- Don't delete the DBus machine-id, it's a symlink
+
+-------------------------------------------------------------------
 Mon Jan 31 14:29:23 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add arm-trusted-firmware-rpi4 (bsc#1173489)

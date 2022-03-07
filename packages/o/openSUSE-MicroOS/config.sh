@@ -39,8 +39,7 @@ echo FONT="eurlatgr.psfu" >> /etc/vconsole.conf
 echo "** reset machine settings"
 rm -f /etc/machine-id \
       /var/lib/zypp/AnonymousUniqueId \
-      /var/lib/systemd/random-seed \
-      /var/lib/dbus/machine-id
+      /var/lib/systemd/random-seed
 
 #======================================
 # Specify default systemd target
@@ -56,14 +55,6 @@ suseImportBuildKey
 # Set hostname by DHCP
 #--------------------------------------
 baseUpdateSysConfig /etc/sysconfig/network/dhcp DHCLIENT_SET_HOSTNAME yes
-
-#======================================
-# Enable DHCP on eth0
-#--------------------------------------
-cat >/etc/sysconfig/network/ifcfg-eth0 <<EOF
-BOOTPROTO='dhcp'
-STARTMODE='auto'
-EOF
 
 # Add repos from /etc/YaST2/control.xml
 if [ -x /usr/sbin/add-yast-repos ]; then
@@ -154,7 +145,8 @@ sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp
 serialconsole='console=ttyS0,115200'
 [[ "$kiwi_profiles" == *"RaspberryPi2" ]] && serialconsole='console=ttyAMA0,115200'
 
-grub_cmdline=('quiet' 'systemd.show_status=yes' "${serialconsole}" 'console=tty0' 'net.ifnames=0')
+grub_cmdline=('quiet' 'systemd.show_status=yes' "${serialconsole}" 'console=tty0')
+rpm -q wicked && grub_cmdline+=('net.ifnames=0')
 
 ignition_platform='metal'
 case "${kiwi_profiles}" in
@@ -194,13 +186,24 @@ if [[ -e /etc/selinux/config ]]; then
 fi
 
 #======================================
-# Workaround: Force network-legacy, network-wicked is not usable (boo#1182227)
+# Wicked specific configuration (in addition to the net.ifnames=0 above)
 #--------------------------------------
-if rpm -q ignition-dracut-grub2; then
-	# Modify module-setup.sh, but undo the modification on the first call
-	mv /usr/lib/dracut/modules.d/40network/module-setup.sh{,.orig}
-	sed 's#echo "kernel-network-modules $network_handler"$#echo kernel-network-modules network-legacy; mv /usr/lib/dracut/modules.d/40network/module-setup.sh{.orig,}#' \
-		/usr/lib/dracut/modules.d/40network/module-setup.sh.orig > /usr/lib/dracut/modules.d/40network/module-setup.sh
+if rpm -q wicked; then
+	# Enable DHCP on eth0
+	cat >/etc/sysconfig/network/ifcfg-eth0 <<EOF
+BOOTPROTO='dhcp'
+STARTMODE='auto'
+EOF
+
+	# Workaround: Force network-legacy, network-wicked is not usable (boo#1182227)
+	if rpm -q ignition-dracut-grub2; then
+		# Modify module-setup.sh, but undo the modification on the first call
+		mv /usr/lib/dracut/modules.d/40network/module-setup.sh{,.orig}
+		sed 's#echo "kernel-network-modules $network_handler"$#echo kernel-network-modules network-legacy; mv /usr/lib/dracut/modules.d/40network/module-setup.sh{.orig,}#' \
+			/usr/lib/dracut/modules.d/40network/module-setup.sh.orig > /usr/lib/dracut/modules.d/40network/module-setup.sh
+	fi
+else
+	systemctl enable NetworkManager
 fi
 
 #======================================
