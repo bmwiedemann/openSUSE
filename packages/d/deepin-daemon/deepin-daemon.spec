@@ -19,7 +19,7 @@
 %define   import_path pkg.deepin.io/dde/daemon
 
 Name:           deepin-daemon
-Version:        5.13.97
+Version:        5.14.11.1
 Release:        0
 Summary:        Daemon handling the DDE session settings
 License:        GPL-3.0+
@@ -43,9 +43,6 @@ Patch2:         disable-gobuild-in-makefile.patch
 Patch3:         fix-login_defs-path.patch
 Patch4:         harden_deepin-accounts-daemon.service.patch
 Group:          System/GUI/Other
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-BuildRequires:  golang(API) = 1.15
-%endif
 BuildRequires:  lightdm
 BuildRequires:  lightdm-gtk-greeter
 BuildRequires:  golang-packaging
@@ -200,6 +197,7 @@ sed -i 's|/etc/modules-load.d|/usr/lib/modules-load.d|g' Makefile
 sed -i 's|qdbus|qdbus-qt5|g' network/examples/set_wired_static_ip.sh misc/etc/acpi/powerbtn.sh
 
 %build
+export GO111MODULE=off
 %goprep %{import_path}
 %gobuild ...
 %make_build
@@ -312,6 +310,8 @@ fi
 %dir %{_sysconfdir}/acpi/events
 %{_sysconfdir}/acpi/actions/deepin_lid.sh
 %config %{_sysconfdir}/acpi/events/deepin_lid
+%dir %{_sysconfdir}/deepin
+%config %{_sysconfdir}/deepin/grub2_edit_auth.conf
 %{_prefix}/lib/systemd/logind.conf.d/10-%{name}.conf
 %{_prefix}/lib/udev/rules.d/80-deepin-fprintd.rules
 %{_datadir}/dbus-1/services/*.service
@@ -320,6 +320,11 @@ fi
 %exclude %{_datadir}/%{_name}/*.tar.gz
 %{_datadir}/dde/
 %{_datadir}/icons/hicolor/*/status/*
+%dir %{_datadir}/dsg
+%dir %{_datadir}/dsg/apps
+%dir %{_datadir}/dsg/apps/dde-session-daemon
+%dir %{_datadir}/dsg/apps/dde-session-daemon/configs
+%{_datadir}/dsg/apps/dde-session-daemon/configs/gesture.json
 %{_unitdir}/deepin-accounts-daemon.service
 %{_sbindir}/rcdeepin-accounts-daemon
 %{_sbindir}/rchwclock_stop
