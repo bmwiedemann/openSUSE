@@ -47,12 +47,19 @@ if [ "${1-}" = "--prepare" ]; then
 	   && grep -qE '^# combustion:(.*)\<network\>' "${config_mount}/combustion/script"; then
 		sh -s <<EOF
 			. /lib/dracut-lib.sh
+			# Set rd.neednet if not already done and reevaluate it (module-specific)
 			getargbool 0 'rd.neednet' && exit 0
 			echo rd.neednet=1  > /etc/cmdline.d/40-combustion-neednet.conf
-			# Re-trigger generation of network rules and apply them
-			. /lib/dracut/hooks/pre-udev/60-net-genrules.sh
-			udevadm control --reload
-			udevadm trigger --subsystem-match net --action add
+			if [ -e /lib/dracut/hooks/pre-udev/60-net-genrules.sh ]; then
+				# Wicked
+				. /lib/dracut/hooks/pre-udev/60-net-genrules.sh
+				# Re-trigger generation of network rules and apply them
+				udevadm control --reload
+				udevadm trigger --subsystem-match net --action add
+			else
+				# NetworkManager
+				. /usr/lib/dracut/hooks/cmdline/99-nm-config.sh
+			fi
 EOF
 	fi
 
@@ -179,5 +186,7 @@ else
 	fi
 	chroot /sysroot snapper --no-dbus create -d "After combustion configuration" || :
 fi
+
+rm -f /sysroot/var/lib/YaST2/reconfig_system
 
 exit 0

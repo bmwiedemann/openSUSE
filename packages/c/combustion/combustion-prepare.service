@@ -16,8 +16,9 @@ After=dev-combustion-config.device
 # device
 After=ignition-setup-user.service
 
-# This reconfigures networking, which runs during the initqueue
-Before=dracut-initqueue.service
+# This reconfigures networking, which runs during the initqueue (wicked)
+# or has its own service (NM)
+Before=dracut-initqueue.service nm-initrd.service
 
 Conflicts=initrd-switch-root.target umount.target
 Conflicts=dracut-emergency.service emergency.service emergency.target

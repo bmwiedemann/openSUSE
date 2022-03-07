@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  3 11:58:07 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Support the dracut network-manager module
+
+-------------------------------------------------------------------
+Mon Jan 24 11:44:57 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Remove /var/lib/YaST2/reconfig_system on successful runs
+
+-------------------------------------------------------------------
 Wed Nov 24 13:10:37 UTC 2021 - Dimitar Zahariev <mitko@tuionui.com>
 
 - Look for filesystems with uppercase labels as well
