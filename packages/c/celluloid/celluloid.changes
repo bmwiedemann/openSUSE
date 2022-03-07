@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:20:17 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.3
+  * Fix autofit triggering regardless of settings.
+  * Fix window size shrinking across sessions.
+  * Fix crash when playing files with names containing invalid
+    encoding.
+  * Fix drag-and-drop not working with some file managers.
+  * Fix playback starting when the last playlist item is removed.
+
+-------------------------------------------------------------------
 Fri Nov  5 21:12:09 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.22
