@@ -22,7 +22,7 @@
 %endif
 
 Name:           deepin-draw
-Version:        5.10.3
+Version:        5.10.6
 Release:        0
 Summary:        A calendar application for Deepin Desktop
 License:        GPL-3.0-or-later
