@@ -38,4 +38,16 @@ The issue mentioned in the superseded request was fixed.  </comment>
   * Allow overflow #67</comment>
     <requestid>912349</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>11dfa859883dc6e6d31b670d4c34ade2</srcmd5>
+    <version>0.13</version>
+    <time>1646671617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13:
+  * Print actual values in --help instead of just WOB_DEFAULT_*
+  * Don't require argument for -h
+  * Allow lseek syscall in seccomp sandbox
+  * Fix segmentation fault when -v (verbose) was used</comment>
+    <requestid>959818</requestid>
+  </revision>
 </revisionlist>

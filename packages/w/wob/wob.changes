@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:57:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13:
+  * Print actual values in --help instead of just WOB_DEFAULT_*
+  * Don't require argument for -h
+  * Allow lseek syscall in seccomp sandbox
+  * Fix segmentation fault when -v (verbose) was used
+
+-------------------------------------------------------------------
 Mon Aug 16 06:58:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12:
