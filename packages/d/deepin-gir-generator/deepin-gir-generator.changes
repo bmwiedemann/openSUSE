@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 23 06:25:57 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use last stable version of go to build
+
+-------------------------------------------------------------------
+Fri Feb 18 08:27:44 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.8
+  * add struct SettingsSchema
+  * fix compatibility with glib 2.63+
+- Drop support-glib2_36-and-higher.patch
+
+-------------------------------------------------------------------
 Fri Jan 28 02:10:49 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Keep golang version on 1.15 on Leap15.4+ 
