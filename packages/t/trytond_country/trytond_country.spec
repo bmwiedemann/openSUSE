@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_country
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define majorver 5.0
+%define majorver 6.0
 Name:           trytond_country
-Version:        %{majorver}.3
+Version:        %{majorver}.2
 Release:        0
 Summary:        The "country" module for the Tryton ERP system
 License:        GPL-3.0-only
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
 Requires:       proteus
 Requires:       trytond
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
 BuildArch:      noarch
 
 %description
@@ -56,7 +56,7 @@ module.
 
 %files
 %defattr(-,root,root)
+%attr(755,root,tryton) %{_bindir}/trytond_import*
 %{python3_sitelib}/*
-%{_bindir}/trytond_import_zip
 
 %changelog
