@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 23 12:59:51 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.2
+  * Add a setting item in control center: sleep mode
+  * Change this url for checking network
+  * Add output auto switch count
+  * Add shotcut for global search
+  * Fix bugs
+
+-------------------------------------------------------------------
 Thu Dec 16 14:25:17 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.9.41

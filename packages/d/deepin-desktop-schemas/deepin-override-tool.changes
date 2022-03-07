@@ -1,18 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 23 07:19:17 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.2. Nothing changes in tool package
+- Use last stable version of go to build 
+
+-------------------------------------------------------------------
 Thu Dec 16 14:27:07 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 5.9.41. Nothing change in tool package 
+- Update version to 5.9.41. Nothing changes in tool package 
 
 -------------------------------------------------------------------
 Wed Oct 27 08:45:01 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 5.9.18. Nothing change in tool package
+- Update version to 5.9.18. Nothing changes in tool package
 - Fix build on Leap 15.4+
 
 -------------------------------------------------------------------
 Thu Jul 29 12:31:37 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 5.9.16, nothing change in tool package. 
+- Update version to 5.9.16, nothing changes in tool package. 
 
 -------------------------------------------------------------------
 Sat May 22 11:58:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
@@ -23,7 +29,7 @@ Sat May 22 11:58:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 -------------------------------------------------------------------
 Thu Mar 11 13:43:51 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 5.9.5, nothing change in tool package. 
+- Update version to 5.9.5, nothing changes in tool package. 
 
 -------------------------------------------------------------------
 Fri Feb 26 03:41:16 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>

@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-override-tool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,15 @@
 %define   repo            deepin-desktop-schemas
 
 Name:           deepin-override-tool
-Version:        5.9.41
+Version:        5.10.2
 Release:        0
 Summary:        Deepin override tool
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-desktop-schemas
 Source0:        https://github.com/linuxdeepin/deepin-desktop-schemas/archive/%{version}/%{repo}-%{version}.tar.gz
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-BuildRequires:  golang(API) = 1.15
-%endif
+BuildRequires:  golang-github-linuxdeepin-go-lib
 BuildRequires:  golang-packaging
-BuildRequires:  golang(pkg.deepin.io/lib/keyfile)
 Requires:       dconf
 AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -45,7 +42,7 @@ This is a tool for Deepin to creat schemas override profiles.
 %package -n golang-%{provider}-%{project}-%{repo}
 Summary:        Deepin override tool codes
 Group:          Development/Languages/Golang
-Requires:       golang(pkg.deepin.io/lib/keyfile)
+Requires:       golang-github-linuxdeepin-go-lib
 BuildArch:      noarch
 AutoReq:        Off
 %{go_provides}
@@ -60,6 +57,7 @@ use import path with github.com/linuxdeepin/deepin-desktop-schemas prefix.
 %setup -q -n %{repo}-%{version}
 
 %build
+export GO111MODULE=off
 %goprep %{import_path}
 %gobuild ...
 
