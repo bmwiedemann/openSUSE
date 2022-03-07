@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-loofah
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-loofah
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 %define mod_name loofah
 %define mod_full_name %{mod_name}-%{version}
@@ -45,6 +45,7 @@ It's built on top of Nokogiri and libxml2, so it's fast and has a nice API.
 
 Loofah excels at HTML sanitization (XSS prevention). It includes some nice HTML sanitizers,
 which are based on HTML5lib's whitelist, so it most likely won't make your codes less secure.
+
 %prep
 
 %build
