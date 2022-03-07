@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Tue Feb 15 07:13:08 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   Revert the ability to pass `service_name` param to `DirectUploadsController` which was introduced
+      in 7.0.0.
+  
+      That change caused a lot of problems to upgrade Rails applications so we decided to remove it
+      while in work in a more backwards compatible implementation.
+  
+      *Gannon McGibbon*
+  
+  *   Allow applications to opt out of precompiling Active Storage JavaScript assets.
+  
+      *jlestavel*
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:26:23 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:25:14 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:09:37 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 22:01:31 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
