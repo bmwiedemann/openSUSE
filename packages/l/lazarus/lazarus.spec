@@ -1,7 +1,7 @@
 #
 # spec file for package lazarus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
+%define dlver   2.2.0-0
 %define sover   1
 Name:           lazarus
-Version:        2.0.12
+Version:        2.2.0
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
 License:        GPL-2.0-only AND LGPL-2.0-only AND MPL-1.1
 Group:          Development/Languages/Other
 URL:            http://www.lazarus.freepascal.org/
-Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{dlver}.tar.gz
 # PATCH-FEATURE-UPSTREAM http://mantis.freepascal.org/view.php?id=31364
 Source1:        https://raw.githubusercontent.com/hughsie/fedora-appstream/developerapps/appdata-extra/desktop/lazarus.appdata.xml
 Source90:       %{name}-rpmlintrc
@@ -33,8 +34,6 @@ Source90:       %{name}-rpmlintrc
 Patch0:         %{name}-Makefile_patch.diff
 # PATCH-FIX-OPENSUSE lazarus.desktop.patch -- Fix desktop file
 Patch1:         lazarus.desktop.patch
-# PATCH-FIX-UPSTREAM lazarus-PascalScript_PPC.patch
-Patch2:         lazarus-PascalScript_PPC.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fpc >= 3.0.0
@@ -99,10 +98,7 @@ Requires:       libQt5Pas%{sover} = %{version}
 Development files for Free Pascal interface to Qt5.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{name}
 
 # remove unneeded files
 rm -rf debian
@@ -201,7 +197,6 @@ mv %{buildroot}%{_libdir}/%{name}/examples %{buildroot}%{_defaultdocdir}/%{name}
 ln -s %{_defaultdocdir}/%{name}/examples %{buildroot}%{_libdir}/%{name}/examples
 mv %{buildroot}%{_libdir}/%{name}/docs %{buildroot}%{_defaultdocdir}/%{name}
 ln -s %{_defaultdocdir}/%{name}/docs %{buildroot}%{_libdir}/%{name}/docs
-mv %{buildroot}%{_libdir}/%{name}/COPYING* %{buildroot}%{_libdir}/%{name}/README* %{buildroot}%{_defaultdocdir}/%{name}
 
 # icons
 for f in 16 32 48 64 128 256; do

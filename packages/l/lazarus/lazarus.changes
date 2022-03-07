@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  5 11:56:21 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.2.0
+  * For a complete list of changes see:
+    https://wiki.freepascal.org/Lazarus_2.2.0_release_notes
+- Drop lazarus-PascalScript_PPC.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sun Oct 10 06:22:11 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add lazarus-PascalScript_PPC.patch (fixes PPC build)
