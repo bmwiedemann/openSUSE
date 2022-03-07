@@ -1,7 +1,7 @@
 #
 # spec file for package python-cl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,20 +25,23 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://github.com/ask/cl/
 Source:         https://files.pythonhosted.org/packages/source/c/cl/cl-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM port-2to3.patch bsc#[0-9]+ mcepl@suse.com
+# Remove use_2to3 in setup.py
+Patch0:         port-2to3.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-kombu
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
 Actor framework for Kombu
 
 %prep
-%setup -q -n cl-%{version}
+%autosetup -p1 -n cl-%{version}
 
 %build
 %python_build

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  2 08:46:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add port-2to3.patch removing use_2to3 bit from setup.py.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:46:41 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
