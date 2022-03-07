@@ -1,7 +1,7 @@
 #
 # spec file for package dex-oidc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,18 @@
 %define go_version 1.16
 
 Name:           dex-oidc
-Version:        2.30.0
+Version:        2.31.0
 Release:        0
 Summary:        OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/dexidp/dex
 Source0:        dex-%{version}.tar.xz
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = %{go_version}
+BuildRequires:  golang(API) >= %{go_version}
 
 Requires(post): %fillup_prereq
 Conflicts:      dex

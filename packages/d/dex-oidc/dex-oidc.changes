@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Mar 05 13:55:15 UTC 2022 - michael@stroeder.com
+
+- Update to version 2.31.0:
+  * Many dependency updates
+  * Bump Dex image to v2.30.0 for Kubernetes deployment example by @rdimitrov in #2232
+  * Update Go to 1.17 by @sagikazarmark in #2247
+  * refactor: move from io/ioutil to io and os package by @Juneezee in #2278
+  * feat: Add MySQL ent-based storage driver by @nabokihms in #2272
+  * chore: fix ioutil lint error after merging MySQL ent storage by @nabokihms in #2282
+  * Add parametrization of grant type supported in discovery endpoint by @ariary in #2265
+  * Resolves #2111 Option to fetch transitive group membership by @snuggie12 in #2268
+  * Return valid JWT access token from password grant by @enj in #2234
+  * fix: do not update offlinesession lastUsed field if refresh token was not updated by @nabokihms in #2300
+  * fix web static file path slash error for win platform by @copperyp in #2305
+  * Update grpc by @sagikazarmark in #2321
+  * ci: fix container image permissions by @sagikazarmark in #2329
+  * feat: print dex version in the logs by @iam-veeramalla in #2337
+  * OAuth connector by @xtremerui in #1630
+  * fix: return invalid_grant error on claiming token of another client by @nabokihms in #2344
+  * chore: warning about deprecated LDAP groupSearch fields by @nabokihms in #2026
+  * Add Nix environment by @sagikazarmark in #2324
+  * Update dependencies in the examples package by @sagikazarmark in #2372
+  * add sigstore to ADOPTERS.md by @bobcallaway in #2374
+  * Add claimMapping enforcement by @Happy2C0de in #2233
+  * ci: run trivy scan on container image by @sagikazarmark in #2387
+  * chore: update gomplate by @sagikazarmark in #2388
+  * chore: update golangci-lint download script by @nabokihms in #2394
+  * [fix] Replace /teams API w/ /workspaces endpoints by @rahulchheda in #2390
+  * ci: add Docker cache to speed builds up by @sagikazarmark in #2400
+  * distroless: Dockerfile works with distroless base image by @ankeesler in #2378
+  * Update dependencies by @sagikazarmark in #2404
+  * Update API package by @sagikazarmark in #2405
+
+-------------------------------------------------------------------
+Mon Jan 17 21:05:06 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Use go 1.16 or newer
+
+-------------------------------------------------------------------
+Mon Dec 27 23:58:03 UTC 2021 - michael@stroeder.com
+
+- Update to version 2.30.2:
+  * ci: fix container image permissions
+  * chore: upgrade alpine
+
+-------------------------------------------------------------------
 Wed Oct 13 18:56:45 UTC 2021 - michael@stroeder.com
 
 - set go_version to 1.16 as required
