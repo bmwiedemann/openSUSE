@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:57:34 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed non-working leap15_2.patch and leap15_3.patch:
+  Leap 15.4 is the minimum supported version
+- Update to version 1.90.1
+  * support for Alder Lake architecture:
+    in particular, specialized monitoring for Pcore and Ecore
+  * more precise DDR5 and DDR4 timings from SKL to ADL:
+    introduction of "Gear mode"
+  * improvement using Power Limiters:
+    zero W on PL1 & PL2; DRAM clampig marked experimental
+  * characteristics for Zen architecture:
+    CPPC; C1E; MEM CLOCK in raw frequency
+  * C-state Core for Ice Lake/X
+  * various characteristics of C-state package for AMD/Zen and Intel (Lake)
+  * various changes in UI
+  * non-regression tests for kernels 5.16.12 and 5.17.rc6
+
+-------------------------------------------------------------------
 Sat Feb 12 22:26:56 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.89.3

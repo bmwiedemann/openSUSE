@@ -133,4 +133,14 @@ For the minimalist changes file entry, I followed this rule from documentation:
 There are 4 months worth of complicated commit, and I cannot go through them all.</comment>
     <requestid>953974</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2dbbccd069d659b4286bb2db3322c97c</srcmd5>
+    <version>1.90.1</version>
+    <time>1646676028</time>
+    <user>dimstar_suse</user>
+    <comment>- removed non-working leap15_2.patch and leap15_3.patch:  Leap 15.4 is the minimum supported version
+- Update to version 1.90.1
+</comment>
+    <requestid>960038</requestid>
+  </revision>
 </revisionlist>

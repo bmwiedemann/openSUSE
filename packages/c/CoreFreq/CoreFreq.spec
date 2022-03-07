@@ -17,16 +17,14 @@
 
 
 Name:           CoreFreq
-Version:        1.89.3
+Version:        1.90.1
 Release:        0
 Summary:        CPU monitoring software designed for 64-bits processors
 License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         leap15_2.patch
-Patch1:         leap15_3.patch
-Patch2:         harden_corefreqd.service.patch
-Patch3:         modprobe_corefreqd.service.patch
+Patch0:         harden_corefreqd.service.patch
+Patch1:         modprobe_corefreqd.service.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -42,14 +40,8 @@ AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
 
 %prep
 %setup -q
-%if 0%{?sle_version} == 150200
 %patch0 -p1
-%endif
-%if 0%{?sle_version} == 150300
-%patch1 -p1
-%endif
-%patch2 -p1
-%patch3 -p0
+%patch1 -p0
 
 %build
 %make_build
