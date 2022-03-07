@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_stock_lot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define majorver 5.0
+%define majorver 6.0
 Name:           trytond_stock_lot
-Version:        %{majorver}.3
+Version:        %{majorver}.0
 Release:        0
 Summary:        The "stock_lot" module of the Tryton ERP system
 License:        GPL-3.0-or-later
@@ -31,17 +31,19 @@ URL:            http://www.tryton.org/
 # List of additional build dependencies
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
+
 Requires:       trytond
 Requires:       trytond_company
 Requires:       trytond_currency
 Requires:       trytond_party
 Requires:       trytond_product
 Requires:       trytond_stock
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
 BuildArch:      noarch
 
 %description
 The stock lot module defines lot of products.
+A lot is by default just a number to tag moves. It is possible to define per product when the lot is required by selecting the type of location involved in the move.
 
 %prep
 %setup -q
@@ -55,7 +57,7 @@ The stock lot module defines lot of products.
 
 %files
 %defattr(-,root,root)
-%doc README
+%doc README.rst
 %{python3_sitelib}/*
 
 %changelog
