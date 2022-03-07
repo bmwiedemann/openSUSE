@@ -20,7 +20,7 @@
 %define import_path pkg.deepin.io/dde/startdde
 
 Name:           deepin-start
-Version:        5.8.55
+Version:        5.9.9.1
 Release:        0
 Summary:        Starter of deepin desktop
 License:        GPL-3.0-only
@@ -33,9 +33,6 @@ Source99:       deepin-start-rpmlintrc
 # Use gobuild macro instead of makefile to build go binaries
 Patch0:         deepin-start-disable-gobuild-in-makefile.patch
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-BuildRequires:  golang(API) = 1.15
-%endif
 BuildRequires:  golang-github-linuxdeepin-dde-api
 BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
 BuildRequires:  golang-packaging
@@ -52,6 +49,7 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsecret-unstable)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
+Requires(post): update-alternatives
 Requires:       deepin-daemon
 # Requires:       libcgroup-tools
 Provides:       startdde
@@ -93,6 +91,7 @@ rm -rf vendor
 sed -i 's|/lib/systemd|/usr/lib/systemd|g' Makefile
 
 %build
+export GO111MODULE=off
 %goprep %{import_path}
 %gobuild ...
 %make_build
@@ -111,17 +110,28 @@ install -m0644 iowait/xcursor_remap.c %{buildroot}%{go_contribsrcdir}/%{import_p
 install -d %{buildroot}%{_sbindir}
 mv %{buildroot}%{_bindir}/fix-xauthority-perm %{buildroot}%{_sbindir}/deepin-fix-xauthority-perm
 install -d %{buildroot}%{_prefix}/lib/deepin-daemon/
-mv %{buildroot}%{_bindir}/greeter-display-daemon %{buildroot}%{_prefix}/lib/deepin-daemon/greeter-display-daemon
+ln -sf %{_bindir}/greeter-display-daemon %{buildroot}%{_prefix}/lib/deepin-daemon/greeter-display-daemon
 rm -rf %{buildroot}%{_datadir}/lightdm/
 
 %fdupes %{buildroot}%{_datadir}
 %find_lang startdde
+
+%post
+%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
+  default-xsession.desktop %{_datadir}/xsessions/deepin.desktop 20
+
+%postun
+if [ ! -f %{_datadir}/xsessions/deepin.desktop ]; then
+    %{_sbindir}/update-alternatives --remove default-xsession.desktop \
+      %{_datadir}/xsessions/deepin.desktop
+fi
 
 %files
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{_bindir}/startdde
 %{_bindir}/wl_display_daemon
+%{_bindir}/greeter-display-daemon
 %{_sbindir}/deepin-fix-xauthority-perm
 %{_datadir}/xsessions/deepin.desktop
 %dir %{_datadir}/startdde

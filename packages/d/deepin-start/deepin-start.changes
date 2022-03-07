@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 23 07:21:15 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use last stable version of go to build 
+
+-------------------------------------------------------------------
+Sat Feb 19 03:16:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.9.1
+  * Add some api for wayland
+  * Add custom-display-mode for wayland
+  * Update translations
+  * Fix bugs
+
+-------------------------------------------------------------------
+Tue Feb  1 03:40:09 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Set deepin.desktop by xsessions default 
+
+-------------------------------------------------------------------
 Wed Oct 27 03:21:06 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.31

@@ -1,7 +1,7 @@
-diff -Nur startdde-5.8.55/Makefile startdde-5.8.55-new/Makefile
---- startdde-5.8.55/Makefile	2021-10-15 16:02:17.000000000 +0800
-+++ startdde-5.8.55-new/Makefile	2021-12-16 20:08:59.186695438 +0800
-@@ -24,13 +24,13 @@
+diff -Nur startdde-5.9.9.1/Makefile startdde-5.9.9.1-new/Makefile
+--- startdde-5.9.9.1/Makefile	2021-12-20 13:23:27.000000000 +0800
++++ startdde-5.9.9.1-new/Makefile	2022-02-19 10:56:21.665007923 +0800
+@@ -22,10 +22,10 @@
  	jq . misc/config/auto_launch.json >/dev/null
  
  startdde:
@@ -12,13 +12,9 @@ diff -Nur startdde-5.8.55/Makefile startdde-5.8.55-new/Makefile
 -	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o fix-xauthority-perm ${GOPKG_PREFIX}/cmd/fix-xauthority-perm
 +#	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o fix-xauthority-perm ${GOPKG_PREFIX}/cmd/fix-xauthority-perm
  
- greeter-display-daemon:
--	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o greeter-display-daemon ${GOPKG_PREFIX}/cmd/greeter-display-daemon
-+#	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o greeter-display-daemon ${GOPKG_PREFIX}/cmd/greeter-display-daemon
- 
  out/locale/%/LC_MESSAGES/startdde.mo: misc/po/%.po
  	mkdir -p $(@D)
-@@ -53,18 +53,18 @@
+@@ -48,19 +48,19 @@
  	GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}"
  
  install:
@@ -27,9 +23,10 @@ diff -Nur startdde-5.8.55/Makefile startdde-5.8.55-new/Makefile
  	mkdir -p ${DESTDIR}${PREFIX}/share/xsessions
  	@for i in $(shell ls misc/xsessions/ | grep -E '*.in$$' );do sed 's|@PREFIX@|$(PREFIX)|g' misc/xsessions/$$i > ${DESTDIR}${PREFIX}/share/xsessions/$${i%.in}; done
 -	install -Dm755 fix-xauthority-perm ${DESTDIR}${PREFIX}/sbin/deepin-fix-xauthority-perm
--	install -Dm755 greeter-display-daemon ${DESTDIR}${PREFIX}/lib/deepin-daemon/greeter-display-daemon
 +#	install -Dm755 fix-xauthority-perm ${DESTDIR}${PREFIX}/sbin/deepin-fix-xauthority-perm
-+#	install -Dm755 greeter-display-daemon ${DESTDIR}${PREFIX}/lib/deepin-daemon/greeter-display-daemon
+ 	install -d -m755 ${DESTDIR}${PREFIX}/lib/deepin-daemon/
+-	ln -sfv ../../bin/startdde ${DESTDIR}${PREFIX}/lib/deepin-daemon/greeter-display-daemon
++#	ln -sfv ../../bin/startdde ${DESTDIR}${PREFIX}/lib/deepin-daemon/greeter-display-daemon
  	install -Dm644 misc/lightdm.conf ${DESTDIR}${PREFIX}/share/lightdm/lightdm.conf.d/60-deepin.conf
  	mkdir -p ${DESTDIR}${PREFIX}/share/startdde/
  	install -v -m0644 misc/config/* ${DESTDIR}${PREFIX}/share/startdde/
@@ -42,10 +39,3 @@ diff -Nur startdde-5.8.55/Makefile startdde-5.8.55-new/Makefile
  	mkdir -p ${DESTDIR}/etc/profile.d/
  	install -v -m0644 misc/profile.d/* ${DESTDIR}/etc/profile.d/
  	mkdir -p $(DESTDIR)$(PREFIX)/share/glib-2.0/schemas
-@@ -85,4 +85,4 @@
- check_code_quality: prepare
- 	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" go vet ./...
- 
--.PHONY: startdde
-\ 文件尾没有换行符
-+.PHONY: startdde
