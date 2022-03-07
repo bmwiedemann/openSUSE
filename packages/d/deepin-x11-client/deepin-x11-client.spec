@@ -46,11 +46,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pam-devel
 BuildRequires:  fdupes
 BuildRequires:  mobile-broadband-provider-info
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-BuildRequires:  golang(API) = 1.15
-%endif
 BuildRequires:  golang-packaging
-BuildRequires:  golang(pkg.deepin.io/lib/strv)
 BuildRequires:  golang-github-linuxdeepin-go-lib
 AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -65,7 +61,6 @@ Summary:        Additional golang-github-linuxdeepin-go-x11-client libraries
 Group:          Development/Languages/Golang
 AutoReqProv:    On
 Autoreq:        Off
-Requires:       golang(pkg.deepin.io/lib/strv)
 Requires:       golang-github-linuxdeepin-go-lib
 BuildArch:      noarch
 
@@ -77,6 +72,7 @@ libraries that are developed by the Go team but outside of the main source tree.
 %setup -q -a1 -n %{repo}-%{version}
 
 %build
+export GO111MODULE=off
 %goprep %{import_path}
 %gobuild ...
 

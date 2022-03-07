@@ -24,4 +24,12 @@
     <comment>- Fix build on Leap 15.4+</comment>
     <requestid>950162</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4eebb9ff06c35fd07273330e8318054b</srcmd5>
+    <version>0.6.3</version>
+    <time>1646671585</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959472</requestid>
+  </revision>
 </revisionlist>
