@@ -90,4 +90,20 @@
     <comment></comment>
     <requestid>924933</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a6b7b28d9d2494d54031086240431714</srcmd5>
+    <version>0.4.3</version>
+    <time>1646671614</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip two broken tests. 
+
+- update to 0.4.3:
+  * fix --viewer-initial-page (broken in last release)
+  * add --rotation
+  * allow palette PNG images with ICC profile
+  * sort globbing result on windows
+  * convert 8-bit PNG alpha channels to /SMasks in PDF
+  * remove pdfrw from tests</comment>
+    <requestid>959843</requestid>
+  </revision>
 </revisionlist>

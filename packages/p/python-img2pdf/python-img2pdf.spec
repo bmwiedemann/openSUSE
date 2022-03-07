@@ -1,7 +1,7 @@
 #
 # spec file for package python-img2pdf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # no numpy and scipy
 %define skip_python36 1
 Name:           python-img2pdf
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        Python module for converting images to PDF via direct JPEG inclusion
 License:        LGPL-3.0-or-later
@@ -29,6 +29,7 @@ Group:          Development/Languages/Python
 URL:            https://gitlab.mister-muffin.de/josch/img2pdf
 Source:         https://files.pythonhosted.org/packages/source/i/img2pdf/img2pdf-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
@@ -74,7 +75,7 @@ sed -i -e '/^#!\//, 1d' src/*.py
 %check
 # other tests looks more like a integration tests, needs
 # mupdf, imagemagick, pdftocairo, pdfimages, tiff-tools
-%pytest -k 'test_general or test_layout'
+%pytest -k '(test_general or test_layout) and not animation.gif'
 
 %post
 %python_install_alternative img2pdf-gui

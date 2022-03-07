@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  7 03:17:23 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip two broken tests. 
+
+-------------------------------------------------------------------
+Mon Jan 24 22:27:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * fix --viewer-initial-page (broken in last release)
+  * add --rotation
+  * allow palette PNG images with ICC profile
+  * sort globbing result on windows
+  * convert 8-bit PNG alpha channels to /SMasks in PDF
+  * remove pdfrw from tests
+
+-------------------------------------------------------------------
 Tue Oct 12 10:06:25 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.4.1
