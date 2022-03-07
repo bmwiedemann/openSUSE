@@ -6,13 +6,13 @@
     <value>last_seen:
   boo#1172073: '20220107'
   boo#1176553: '20220305'
-  boo#1183454: '20220305'
+  boo#1183454: '20220306'
   boo#1189869: '20211207'
-  boo#1190434: '20220305'
+  boo#1190434: '20220306'
   boo#1190670: '20211128'
   boo#1190823: '20220304'
   boo#1191225: '20211210'
-  boo#1191603: '20220305'
+  boo#1191603: '20220306'
   boo#1192118: '20211117'
   boo#1192420: '20211106'
   boo#1192667: '20211128'
@@ -44,16 +44,16 @@
   boo#1195319: '20220202'
   boo#1195637: '20220213'
   boo#1195945: '20220222'
-  boo#1195952: '20220305'
+  boo#1195952: '20220306'
   boo#1196116: '20220216'
   boo#1196201: '20220227'
   boo#1196404: '20220301'
   boo#1196492: '20220224'
-  boo#1196609: '20220305'
-  boo#1196758: '20220305'
-  boo#1196799: '20220305'
-  boo#1196801: '20220305'
-  bsc#1161276: '20220305'
+  boo#1196609: '20220306'
+  boo#1196758: '20220306'
+  boo#1196799: '20220306'
+  boo#1196801: '20220306'
+  bsc#1161276: '20220306'
   bsc#1194208: '20220216'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
   kde#449273: '20220223'
@@ -85,11 +85,11 @@
   poo#104859: '20220111'
   poo#104926: '20220206'
   poo#105256: '20220226'
-  poo#105271: '20220305'
+  poo#105271: '20220306'
   poo#105286: '20220123'
   poo#105289: '20220125'
   poo#105292: '20220126'
-  poo#105295: '20220305'
+  poo#105295: '20220306'
   poo#105298: '20220126'
   poo#105443: '20220124'
   poo#105762: '20220130'
@@ -102,15 +102,15 @@
   poo#107107: '20220303'
   poo#107110: '20220228'
   poo#107113: '20220224'
-  poo#107248: '20220305'
-  poo#107728: '20220305'
-  poo#107893: '20220305'
+  poo#107248: '20220306'
+  poo#107728: '20220306'
+  poo#107893: '20220306'
   poo#80628: '20220305'
   poo#91383: '20220111'
   poo#96611: '20211109'
   poo#99039: '20211110'
   poo#99057: '20220115'
-  poo#99312: '20220304'
+  poo#99312: '20220306'
   poo#99582: '20211101'
   poo#99651: '20211113'
 </value>
@@ -129,9 +129,8 @@ pkglistgen-archs = i586 x86_64
 pkglistgen-ignore-unresolvable = 1
 pkglistgen-delete-kiwis-target = *.kwd
 pkglistgen-delete-kiwis-staging = openSUSE-Addon-NonOss*  openSUSE-cd-mini-* *i586*.kiwi
-pkglistgen-delete-kiwis-rings = openSUSE-Addon-NonOss*  openSUSE-cd-mini-* *i586*.kiwi 
+pkglistgen-delete-kiwis-ring1 = openSUSE-Addon-NonOss*  openSUSE-cd-mini-* *i586*.kiwi 
 nocleanup-packages = 000product 000release-packages bootstrap-copy
-pkglistgen-scopes = target rings
 
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils patterns-kde-devel_qt6
@@ -483,10 +482,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20220306'
 published: '20220305'
 publishing: '20220305'
-testing: '20220305'
+testing: '20220306'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
