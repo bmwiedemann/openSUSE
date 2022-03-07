@@ -1,7 +1,7 @@
 #
 # spec file for package lbreakouthd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lbreakouthd
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Classic Breakout-Style Game
 License:        GPL-2.0-or-later
