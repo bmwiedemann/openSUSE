@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Tue Feb 15 07:37:29 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 07:24:16 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   Prevent duplicate entries in plugin Gemfile.
+  
+      *Jonathan Hefner*
+  
+  *   Fix asset pipeline errors for plugin dummy apps.
+  
+      *Jonathan Hefner*
+  
+  *   Fix generated route revocation.
+  
+      *Jonathan Hefner*
+  
+  *   Addresses an issue in which Sidekiq jobs could not reload certain
+      namespaces.
+  
+      See [fxn/zeitwerk#198](https://github.com/fxn/zeitwerk/issues/198) for
+      details.
+  
+      *Xavier Noria*
+  
+  *   Fix plugin generator to a plugin that pass all the tests.
+  
+      *Rafael Mendonça França*
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:25:56 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:10:26 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 22:02:31 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
