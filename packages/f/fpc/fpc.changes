@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  6 18:25:52 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add fpc-3.2.2-ppc64le-toc-fixes.patch (fixes lazarus 2.2.0
+  build on ppc64le)
+
+-------------------------------------------------------------------
 Wed Sep 29 06:49:04 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.2.2

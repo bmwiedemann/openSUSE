@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,6 +86,8 @@ Patch1:         fpc-si_c-x86_64-plt.patch
 Patch4:         fpc-fix-library-paths-on-ppc64.patch
 # PATCH-FIX-UPSTREAM fpc-3.2.0-glibc-2.34.patch -- aloisio@gmx.com not quite upstream but close enough
 Patch5:         fpc-3.2.0-glibc-2.34.patch
+# PATCH-FIX-UPSTREAM fpc-3.2.2-ppc64le-toc-fixes.patch solves https://gitlab.com/freepascal.org/fpc/source/-/issues/39542
+Patch6:         fpc-3.2.2-ppc64le-toc-fixes.patch
 BuildRequires:  binutils
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -158,6 +160,7 @@ documentation or automatical-code generation purposes.
 %if 0%{?suse_version} > 1500
 %patch5 -p1
 %endif
+%patch6 -p1
 
 %if %{with bootstrap}
 %if "%{flavor}" == ""
