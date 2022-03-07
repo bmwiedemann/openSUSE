@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_account_product
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define majorver 5.0
+%define majorver 6.0
 
 Name:           trytond_account_product
-Version:        %{majorver}.5
+Version:        %{majorver}.3
 Release:        0
 Summary:        The "account_product" module of the Tryton ERP system
 License:        GPL-3.0-only

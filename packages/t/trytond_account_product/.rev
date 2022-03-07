@@ -81,4 +81,12 @@
     <comment>bugfix release</comment>
     <requestid>900904</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0693faf4084448aa04947e98ac042866</srcmd5>
+    <version>6.0.3</version>
+    <time>1646671680</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959954 from DocB)</comment>
+    <requestid>959973</requestid>
+  </revision>
 </revisionlist>
