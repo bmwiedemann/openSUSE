@@ -1,6 +1,12 @@
 GNUHealth for openSUSE
 ======================
 
+Note for GNU Health 4.0 and above: 
+When installing GNU Health 4.0 or higher, note that dependency on postgresql-server is now 'Recommends'.
+This helps keeping the installation lean when running Postgresql on a separate server.
+If you are using --no-recommends for installation, you need to install postgresql-server additionally.
+If you install with recommendations, postgresql-server is installed automatically.
+
 How to get it running (Without reading the instructions)
 ========================================================
 
@@ -31,6 +37,10 @@ FOR LOCAL CONNECTIONS (Database on the same machine) change the line
     local   all             all                                     md5
 to
     local   all             all                                     trust
+
+(you can put an even higher security level by setting     
+    local   $DATABASE          tryton                                  trust
+as explicit access rule for the database $DATABASE - note that only user tryton can access this!)
 
 Save your input. This will make sure that Tryton/GNUHealth server can connect to the database
 
@@ -203,4 +213,4 @@ Have fun and keep the neighborhood well and fit!
 [4] https://github.com/mbehrle/tryton/blob/wiki/InstallationonopenSUSE.md
 
 
- -- Axel Braun <axel.braun@gmx.de>  Wed Oct 30 11:11:20 UTC 2019
+ -- Axel Braun <DocB@openSUSE.org>  Sun Mar 06 10:12:31 UTC 2022

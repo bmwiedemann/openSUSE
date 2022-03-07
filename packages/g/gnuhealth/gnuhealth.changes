@@ -1,23 +1,21 @@
 -------------------------------------------------------------------
-Wed Feb 16 18:26:26 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+Sun Mar  6 10:01:47 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
-- missing dependency python3-Pillow added
-
--------------------------------------------------------------------
-Tue Nov 16 08:37:25 UTC 2021 - Axel Braun <axel.braun@gmx.de>
-
-- harden_gnuhealth.service.patch removed - we are not using the service from GH
-  reporting.diff added to catch change from .odt to .fodt
-
--------------------------------------------------------------------
-Mon Sep 20 14:02:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
-
-- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
-  * harden_gnuhealth.service.patch
-  Modified:
-  * gnuhealth-webdav@.service
-  * gnuhealth.service
-
+- version 4.0.0
+  * based on Tryton 6.0
+  * Improved ergonomics on the GTK client
+  * New HELP command that allows offline and contextualized documentation
+  * WebDAV and CalDAV packages are fully integrated in GH (no links)
+  * Weblate now holds 34 language teams!
+  * Removed obsoleted binary ODT (except for some charts)
+  * Improved integration with OpenStreetMap (OSM)
+  * Improved surgery and patient evaluation flows
+  * New health service Dx imaging package
+  * Update person gender list
+  * Add medical evaluations to health services
+  * Include (optional) expiration date on the person ID
+  * Add context field for Dx Imaging and Lab tests
+  
 -------------------------------------------------------------------
 Fri Apr 16 17:16:20 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 

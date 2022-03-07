@@ -15,10 +15,12 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+%bcond_with tests 0
 
-
+%define         skip_python2 1
 %define         t_version %(rpm -q --qf '%%{VERSION}' trytond)
-%define         majorver 3.8
+%define         majorver 4.0
+
 Name:           gnuhealth
 
 Version:        %{majorver}.0
@@ -29,7 +31,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 
 Source0:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz
-##%Source0:        %{name}-%{version}.tar.gz
+## Source0:        %{name}-%{version}.tar.gz
 Source1:        GNUHealth.README.openSUSE
 Source2:        gnuhealth-control
 Source3:        gnuhealth.service
@@ -40,15 +42,21 @@ Source7:        gnuhealth-rpmlintrc
 Source8:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz.sig
 Source9:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 Patch0:         shebang.diff
-Patch1:         reporting.diff
 
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
-BuildRequires:  python3-rpm-macros
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
-# For the variables:
+BuildRequires:  python3-pytest
+# For the tests:
 BuildRequires:  trytond
+BuildRequires:  trytond_company
+BuildRequires:  trytond_currency
+BuildRequires:  trytond_party
+BuildRequires:  trytond_product
 
+# new fonts for the forms:
+Requires:       gnu-free-fonts
 Requires:       bsdtar
 Requires:       proteus
 Requires:       python3-PyWebDAV3-GNUHealth
@@ -111,23 +119,22 @@ This package provides the interface to Orthanc
 
 %prep
 %setup -q -n %{name}-%{version}
-%autopatch -p1
-
+##%%patch0 -p1
 cp %{S:1} .
 cp %{S:2} .
 
 %build
 for i in h*; do
-  cd $i
+  pushd $i
   %python3_build
-  cd ..
+  popd
 done
 
 %install
 for i in h*; do
-  cd $i
+  pushd $i
   %python3_install --prefix=%_prefix --root=%buildroot
-  cd ..
+  popd
 done
 
 mkdir -p -m 755 %{buildroot}%{_bindir}
@@ -154,6 +161,17 @@ mv backend/fhir* %{buildroot}%{_docdir}/%{name}/examples/.
 rmdir backend
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%if %{with tests}
+%check
+cd %{buildroot}%{python3_sitelib}/trytond/modules
+for i in h*; do
+  pushd $i
+    %pytest -rs tests
+  popd
+done
+%endif
+
 
 %pre
 #Write environment changes to /etc/bash.bashrc.local
