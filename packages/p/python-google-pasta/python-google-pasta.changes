@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:54:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.10 as test data is missing (gh#google/pasta#102) 
+
+-------------------------------------------------------------------
 Thu Sep 23 10:09:24 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip test_golden_prefix_suffix_fstring to avoid

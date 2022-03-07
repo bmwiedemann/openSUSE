@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-pasta
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %define packagename pasta
+# https://github.com/google/pasta/issues/102
+%global skip_python310 1
 Name:           python-google-pasta
 Version:        0.2.0
 Release:        0

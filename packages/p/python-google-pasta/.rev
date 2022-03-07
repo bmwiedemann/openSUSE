@@ -25,4 +25,12 @@
 </comment>
     <requestid>921124</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4f3e9de12a5a8edfb06a218c4aa79b6e</srcmd5>
+    <version>0.2.0</version>
+    <time>1646671643</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.10 as test data is missing (gh#google/pasta#102)</comment>
+    <requestid>959863</requestid>
+  </revision>
 </revisionlist>
