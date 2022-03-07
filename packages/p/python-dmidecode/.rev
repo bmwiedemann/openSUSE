@@ -15,4 +15,29 @@
     <comment>- Cleanup multi-version builds.</comment>
     <requestid>957595</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6a812f618f7a0864615d2ead581bb4d6</srcmd5>
+    <version>3.12.2+git.1625035095.f0a089a</version>
+    <time>1646671559</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Obsoletes
+
+- Harmonize Factory with the SLE version (update-alternatives
+  instead of the subpackages).
+
+- Add proper Provides/Obsoletes
+
+- Introduce update-alternatives for
+  /usr/share/python-dmidecode/pymap.xml.
+
+  * Fixed memory Type Detail map size (bsc#1194351).
+  Python one.
+- Rename huge-memory.diff to huge-memory.patch (i.e., remove
+  huge-memory.diff and add huge-memory.patch).
+- Fix URL of Source0 (their own website is down, use GitHub
+  release).
+- Add 31-version_info-v-version.patch to make tests 3.10
+  compatible.</comment>
+    <requestid>959991</requestid>
+  </revision>
 </revisionlist>

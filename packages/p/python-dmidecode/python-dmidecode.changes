@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar  7 13:44:33 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add missing Obsoletes
+
+-------------------------------------------------------------------
+Fri Mar  4 09:24:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Harmonize Factory with the SLE version (update-alternatives
+  instead of the subpackages).
+
+-------------------------------------------------------------------
+Mon Feb 28 10:41:11 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add proper Provides/Obsoletes
+
+-------------------------------------------------------------------
 Thu Feb 24 22:57:21 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Cleanup multi-version builds.
+
+-------------------------------------------------------------------
+Thu Feb 24 21:15:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Introduce update-alternatives for
+  /usr/share/python-dmidecode/pymap.xml.
 
 -------------------------------------------------------------------
 Thu Feb 24 06:32:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -21,14 +43,20 @@ Sat Dec 04 00:01:25 UTC 2021 - mcepl@cepl.eu
   * fix RESOURCE_LEAK errors detected by covscan in src/xmlpythonizer.c
   * Update README
   * fix RESOURCE_LEAK errors detected by covscan in src/dmidecodemodule.c
+  * Fixed memory Type Detail map size (bsc#1194351).
 
 -------------------------------------------------------------------
 Thu Dec  2 23:52:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Brutal simplification of the SPEC file to the standard single-spec
-  Python one. In the end we need one shared package and multiple
-  python-versioned ones.
+  Python one.
 - Removal of support for Python 2 (bsc#1193262)
+- Rename huge-memory.diff to huge-memory.patch (i.e., remove
+  huge-memory.diff and add huge-memory.patch).
+- Fix URL of Source0 (their own website is down, use GitHub
+  release).
+- Add 31-version_info-v-version.patch to make tests 3.10
+  compatible.
 
 -------------------------------------------------------------------
 Thu Oct 19 07:53:52 UTC 2017 - mc@suse.com

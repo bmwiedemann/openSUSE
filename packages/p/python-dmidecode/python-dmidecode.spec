@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-dmidecode
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -17,10 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define python_subpackage_only 1
 %define oldpython python
-
-Name:           %{oldpython}-dmidecode
+Name:           python-dmidecode
 Version:        3.12.2+git.1625035095.f0a089a
 Release:        0
 Summary:        Python module to access DMI data
@@ -35,30 +33,25 @@ Patch2:         detect-lib-with-py3.patch
 # PATCH-FIX-UPSTREAM 31-version_info-v-version.patch gh#nima/python-dmidecode#31 mcepl@suse.com
 # use sys.version_info instead of sys.version
 Patch3:         31-version_info-v-version.patch
+Obsoletes:      %{oldpython}-dmidecode <= 3.12.2+git.1625035095.f0a089a
+Obsoletes:      python-python-dmidecode <= 3.12.2+git.1625035095.f0a089a
 BuildRequires:  %{python_module devel}
 %if 0%{?sle_version} && 0%{?sle_version} < 150400
-BuildRequires:  %{oldpython}-libxml2-python
-BuildRequires:  %{oldpython}3-libxml2-python
+BuildRequires:  python2-libxml2-python
+BuildRequires:  python3-libxml2-python
 %else
 BuildRequires:  %{python_module libxml2}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  libxml2-devel
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
 python-dmidecode is a python extension module that uses the code-base
 of the 'dmidecode' utility, and presents the data as python data
-structures or as XML data using libxml2.
-
-%package -n python-python-dmidecode
-Summary:        Python module to access DMI data
-Requires:       %{oldpython}-dmidecode = %{version}-%{release}
-
-%description -n python-python-dmidecode
-A Python extension module that uses the code-base of the
-'dmidecode' utility, and presents the data as Python data
 structures or as XML data using libxml2.
 
 %prep
@@ -72,26 +65,40 @@ sed -i 's/python2/python3/g' Makefile unit-tests/Makefile
 }
 
 %install
-%{python_expand $python src/setup.py install --root %{buildroot} --prefix=%{_prefix}
+%{python_expand rm -f %{buildroot}%{_datadir}/python-dmidecode/pymap.xml
+$python src/setup.py install --root %{buildroot} --prefix=%{_prefix}
+ls -l %{buildroot}%{_datadir}/python-dmidecode/
+mv %{buildroot}%{_datadir}/python-dmidecode/pymap{,-%{$python_bin_suffix}}.xml
+touch %{buildroot}%{_datadir}/python-dmidecode/pymap.xml
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
 %check
 pushd unit-tests
-%{python_expand export PYTHON=$python
-%make_build
-}
+%python_expand PYTHON=$python %make_build
 popd
+
+%post
+PRIO=$(echo %{python_version}|tr -d '.')
+/usr/sbin/update-alternatives --install %{_datadir}/python-dmidecode/pymap.xml pymap.xml \
+    %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml ${PRIO}
+
+%postun
+if [ ! -f %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml ] ; then
+   MAJVER=$(ver=%{python_version}; echo ${ver:0:1})
+   /usr/sbin/update-alternatives --remove pymap.xml \
+        %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml
+fi
 
 %clean
 
-%files
+%files %{python_files}
 %license doc/LICENSE
 %doc README doc/README.upstream doc/AUTHORS doc/AUTHORS.upstream
 %dir %{_datadir}/python-dmidecode/
-%{_datadir}/python-dmidecode/
-
-%files %{python_files python-dmidecode}
+%ghost %{_sysconfdir}/alternatives/pymap.xml
+%ghost %{_datadir}/python-dmidecode/pymap.xml
+%{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml
 %{python_sitearch}/dmidecode*
 %{python_sitearch}/*.egg-info
 %pycache_only %{python_sitearch}/__pycache__/*
