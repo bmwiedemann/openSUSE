@@ -17,7 +17,7 @@
 #
 
 Name:           dtkcommon
-Version:        5.5.17
+Version:        5.5.20
 Release:        0
 Summary:        The DTK Tools
 License:        GPL-3.0+
@@ -47,16 +47,13 @@ sed -i 's|lrelease|lrelease-qt5|g' features/dtk_translation.prf
 %install
 %qmake5_install
 
-# workaroud boo#1181642
-# rm %{buildroot}%{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
-
 %files
 %defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
-# %config %{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
 %dir %{_libdir}/cmake/Dtk
 %{_libdir}/cmake/Dtk/DtkConfig.cmake
+%{_libdir}/cmake/Dtk/DtkInstallDConfigConfig.cmake
 %{_libdir}/qt5/mkspecs/features/*.prf
 %{_libdir}/qt5/mkspecs/modules/qt_lib_dtkcommon.pri
 %{_datadir}/glib-2.0/schemas/com.deepin.dtk.gschema.xml
