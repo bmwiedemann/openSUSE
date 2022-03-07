@@ -83,7 +83,6 @@ BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
 
 %if 0%{?suse_version} > 1530
-Requires:       qt6-network-tls
 Requires:       qt6-sql-sqlite
 %else
 Requires:       libQt5Sql5-sqlite

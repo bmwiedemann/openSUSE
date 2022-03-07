@@ -942,4 +942,12 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>956163</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>ff4e9e3e2bd9e91e6bf5456ade358dfb</srcmd5>
+    <version>1.0.2</version>
+    <time>1646671645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959874</requestid>
+  </revision>
 </revisionlist>
