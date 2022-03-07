@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  5 18:25:05 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 8.1.1:
+  * Fix an issue with virtualenv and Python 3.8 introduced in 8.1
+  * Revert :ghpull:`13537` (fix an issue with symlinks in virtualenv)
+    that raises an error in Python 3.8, and fixed in a different way
+    in :ghpull:`13559`.
+
+-------------------------------------------------------------------
 Sat Feb 26 21:08:02 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
