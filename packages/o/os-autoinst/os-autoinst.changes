@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 06 02:06:12 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646420056.628a380c:
+  * Cleanup tpm*.permall before creating sock file
+  * t: Refactor 03-testapi.t
+  * Add proper command line parsing for all scripts
+  * Add proper header to os-autoinst-openvswitch
+  * Add dependency for crop.py
+  * Remove obsolete python2 support in crop.py
+  * Remove obsolete autogen.sh
+  * Fix condition in script `check_qemu_oom`
+  * testapi: Fix validate_script_output() argument parsing
+
+-------------------------------------------------------------------
 Thu Mar 03 18:14:19 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1646240746.8eee6a61:
