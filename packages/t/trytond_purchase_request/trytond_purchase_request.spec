@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_purchase_request
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,16 @@
 #
 
 
-%define majorver 5.0
-
+%define majorver 6.0
 Name:           trytond_purchase_request
-Version:        %{majorver}.5
+Version:        %{majorver}.1
 Release:        0
 
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
-Summary:        Tryton is an OpenSource ERP system
+Summary:        Tryton module for purchase requests
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 
