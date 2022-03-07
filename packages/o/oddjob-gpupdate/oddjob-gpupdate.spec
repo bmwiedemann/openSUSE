@@ -1,7 +1,7 @@
 #
 # spec file for package oddjob-gpupdate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,23 @@
 
 
 Name:           oddjob-gpupdate
-Version:        0.2.0+git.3.85c13a8
+Version:        0.2.0+git.5.ed70836
 Release:        0
 Summary:        An oddjob helper which applies group policy objects
 License:        BSD-3-Clause
-URL:            https://github.com/altlinux/oddjob-gpupdate.git
+URL:            https://github.com/openSUSE/oddjob-gpupdate.git
 Source:         %{name}-%{version}.tar.bz2
 Group:          System/Servers
 Requires:       oddjob
 
-BuildRequires:  oddjob
 BuildRequires:  autoconf
-BuildRequires:  libtool
-BuildRequires:  xmlto
 BuildRequires:  dbus-1-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  pam-devel
 BuildRequires:  libselinux-devel
+BuildRequires:  libtool
+BuildRequires:  libxml2-devel
+BuildRequires:  oddjob
+BuildRequires:  pam-devel
+BuildRequires:  xmlto
 
 %description
 This package contains the oddjob helper which can be used by the
@@ -55,11 +55,6 @@ autoreconf -if
 %install
 %makeinstall
 
-mkdir -p %buildroot/%_lib/security
-mv %buildroot%_libdir/security/pam_oddjob_gpupdate.so \
-%buildroot/%_lib/security/
-rm %buildroot%_libdir/security/pam_oddjob_gpupdate.la
-
 %post
 if test $1 -eq 1 ; then
 	killall -HUP dbus-daemon 2>&1 > /dev/null
@@ -71,7 +66,8 @@ fi
 %files
 %doc COPYING src/gpupdatefor src/gpupdateforme
 %_libexecdir/oddjob/gpupdate
-/%_lib/security/pam_oddjob_gpupdate.so
+%_pam_moduledir/pam_oddjob_gpupdate.so
+%exclude %_pam_moduledir/pam_oddjob_gpupdate.la
 %_mandir/*/pam_oddjob_gpupdate.*
 %_mandir/*/oddjob-gpupdate.*
 %_mandir/*/oddjobd-gpupdate.*

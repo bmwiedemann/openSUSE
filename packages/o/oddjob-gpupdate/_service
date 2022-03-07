@@ -1,6 +1,6 @@
 <services>
         <service name="tar_scm" mode="disabled">
-                <param name="url">https://github.com/dmulder/oddjob-gpupdate.git/</param>
+                <param name="url">https://github.com/openSUSE/oddjob-gpupdate.git/</param>
                 <param name="scm">git</param>
                 <param name="revision">master</param>
                 <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
@@ -8,6 +8,11 @@
                 <param name="versionrewrite-replacement">\1</param>
                 <param name="filename">oddjob-gpupdate</param>
                 <param name="exclude">.git</param>
+        </service>
+
+        <service name="extract_file" mode="disabled">
+                <param name="archive">oddjob-gpupdate*.tar</param>
+                <param name="files">oddjob-gpupdate-*/oddjob-gpupdate.spec</param>
         </service>
 
         <service name="set_version" mode="disabled">
