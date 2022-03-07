@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  7 16:21:05 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 1.2.5
+
+- Update to upstream release 1.2.5:
+  * Fixed: Fallback to less accurate UTF8 char count if conversion to
+    wstring fails
+  * Fixed: Small ui fixes for mem and disks
+  * Added: New theme HotPurpleTrafficLight, by @pallebone
+  * Fixed: title_left symbol between auto and zero in the net box is
+    not displayed, by @mrdotx
+  * Fixed: Mouse mappings for net box
+
+-------------------------------------------------------------------
 Mon Feb 28 16:23:44 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 1.2.4
 
 - Update to upstream release 1.2.4:
