@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  guava
-BuildRequires:  java-1_8_0-openjdk-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  jtidy

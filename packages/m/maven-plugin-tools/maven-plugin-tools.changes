@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:01:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force building with java-1_8_0-openjdk, since the package
+  builds just fine with higher versions.
+
+-------------------------------------------------------------------
 Tue May 11 15:18:26 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the legacy guava20 package any more
