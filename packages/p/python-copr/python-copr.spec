@@ -1,7 +1,7 @@
 #
 # spec file for package python-copr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-copr
-Version:        1.106
+Version:        1.115
 Release:        0
 Summary:        Python client for copr service
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 URL:            https://pagure.io/copr/copr
 Source:         https://files.pythonhosted.org/packages/source/c/copr/copr-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module marshmallow}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module munch}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 # /SECTION
 BuildRequires:  fdupes

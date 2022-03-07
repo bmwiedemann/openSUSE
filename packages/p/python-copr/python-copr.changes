@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  7 13:17:52 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.115
+  * upstream changelog not found, perhaps:
+    https://docs.pagure.org/copr.copr/release_notes.html
+- python-mock s not needed for build
+
+-------------------------------------------------------------------
 Tue Nov 17 07:54:02 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.106
