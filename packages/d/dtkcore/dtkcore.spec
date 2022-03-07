@@ -1,7 +1,7 @@
 #
 # spec file for package dtkcore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define pkg_ver 5.5
 
 Name:           dtkcore
-Version:        5.5.17.1
+Version:        5.5.23
 Release:        0
 Summary:        Deepin Tool Kit Core
 License:        LGPL-3.0-only
@@ -32,7 +32,7 @@ Source0:        https://github.com/linuxdeepin/dtkcore/archive/%{version}/%{name
 # PATCH-FIX-UPSTEAM Fix-library-link.patch hillwood@opensuse.org - Need link to dl
 Patch0:         Fix-library-link.patch
 # PATCH-FIX-UPSTEAM fix-return-type.patch hillwood@opensuse.org - fix return type error
-Patch1:         fix-return-type.patch
+# Patch1:         fix-return-type.patch
 BuildRequires:  dtkcommon
 BuildRequires:  fdupes
 BuildRequires:  gtest

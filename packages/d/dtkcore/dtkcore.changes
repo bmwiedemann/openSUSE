@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 14 14:38:03 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.23
+  * Fix bugs
+  * dtkVersionString return empty string 
+  * update DTK_VERSION
+  * recode DConf Class
+- Drop fix-return-type.patch, fixed by upstream
+
+-------------------------------------------------------------------
 Sun Aug  1 07:31:49 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update pkgconfig profile version to 5.5 
