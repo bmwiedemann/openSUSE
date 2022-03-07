@@ -1,4 +1,5 @@
 /var/log/minidlna/*.log {
+    su minidlna minidlna
     compress
     dateext
     notifempty

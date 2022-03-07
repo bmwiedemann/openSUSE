@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar  7 12:07:23 CET 2022 - ro@suse.de
+
+- update to version 1.3.1 (bsc#1196814)
+  - Fixed a potential crash in SSDP request parsing.
+  - Fixed a configure script failure on some platforms.
+  - Protect against DNS rebinding attacks. (CVE-2022-26505)
+  - Fix an socket leakage issue on some platforms.
+  - Minor bug fixes.
+- added patch minidlna-1.3.0-1.3.1.patch as the new version
+  was not tagged or released upstream
+- added BR for automake to fix build and readd autogen call
+- drop patch minidlna-multiple_definition.patch (upstreamed)
+- add "su minidlna minidlna" to the logrotate config
+
+-------------------------------------------------------------------
 Wed Oct  6 12:16:15 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

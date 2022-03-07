@@ -49,4 +49,22 @@
     <comment></comment>
     <requestid>924520</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>535cb7b968d06e89b8458e05915b938a</srcmd5>
+    <version>1.3.1</version>
+    <time>1646671645</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.3.1 (bsc#1196814)
+  - Fixed a potential crash in SSDP request parsing.
+  - Fixed a configure script failure on some platforms.
+  - Protect against DNS rebinding attacks. (CVE-2022-26505)
+  - Fix an socket leakage issue on some platforms.
+  - Minor bug fixes.
+- added patch minidlna-1.3.0-1.3.1.patch as the new version
+  was not tagged or released upstream
+- added BR for automake to fix build and readd autogen call
+- drop patch minidlna-multiple_definition.patch (upstreamed)
+- add &quot;su minidlna minidlna&quot; to the logrotate config</comment>
+    <requestid>959869</requestid>
+  </revision>
 </revisionlist>

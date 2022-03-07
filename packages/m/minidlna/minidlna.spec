@@ -1,7 +1,7 @@
 #
 # spec file for package minidlna
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 by Lars Vogdt <lars@linux-schulserver.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           minidlna
-Version:        1.3.0
+Version:        1.3.1
+%define oversion 1.3.0
 Release:        0
 Summary:        DLNA compatible server
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://sourceforge.net/projects/minidlna/
-Source0:        http://prdownloads.sourceforge.net/minidlna/%{name}-%{version}.tar.gz
+Source0:        http://prdownloads.sourceforge.net/minidlna/%{name}-%{oversion}.tar.gz
 # Systemd unit file
 Source1:        %{name}.service
 # tmpfiles configuration for the /run directory
@@ -33,9 +34,11 @@ Source2:        %{name}-tmpfiles.conf
 Source3:        minidlna_logrotate
 # systemd-sysusers user configuration
 Source4:        %{name}-user.conf
+# unreleased version 1.3.1 from GIT
+Patch0:         minidlna-1.3.0-1.3.1.patch
 # VDR FIX thanks to Boris from openSuse
-Patch0:         minidlna-vdr.diff
-Patch1:         minidlna-multiple_definition.patch
+Patch1:         minidlna-vdr.diff
+BuildRequires:  automake
 BuildRequires:  flac-devel
 BuildRequires:  libexif-devel
 BuildRequires:  libid3tag-devel
@@ -57,12 +60,11 @@ MiniDLNA (aka ReadyDLNA) is server software with the aim of being fully
 compliant with DLNA/UPnP-AV clients.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
+%setup -q -n %{name}-%{oversion}
+%autopatch -p1
 
 %build
-#./autogen.sh
+./autogen.sh
 
 # Edit the default config file
 sed -i 's/#log_dir=\/var\/log/#log_dir=\/var\/log\/minidlna/' \
