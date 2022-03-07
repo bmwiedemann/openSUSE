@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 23 06:59:42 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use last stable version of go to build 
+
+-------------------------------------------------------------------
+Fri Feb 18 13:39:54 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- update version to 5.5.5
+  * Add polkit api
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Thu Dec 16 04:00:43 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.32
