@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://pypi.org/project/bashate/
 Source:         https://files.pythonhosted.org/packages/source/b/bashate/bashate-%{version}.tar.gz
 BuildRequires:  %{python_module Babel >= 0.9.6}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}

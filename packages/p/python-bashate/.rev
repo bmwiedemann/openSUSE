@@ -104,4 +104,12 @@
 - remove python2 requirement - this is a python 3.x only package</comment>
     <requestid>945674</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5087b2e29c40b06cdf894e4b51b58be1</srcmd5>
+    <version>2.1.0</version>
+    <time>1646671675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959943</requestid>
+  </revision>
 </revisionlist>
