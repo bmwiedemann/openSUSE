@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-PP
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name YAML-PP
 Name:           perl-YAML-PP
-Version:        0.031
+Version:        0.032
 Release:        0
-Summary:        YAML 1.2 processor
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        YAML 1.2 Processor
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
