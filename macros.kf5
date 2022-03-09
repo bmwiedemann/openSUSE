@@ -7,7 +7,7 @@
 %_kf5_datadir    %{_kf5_sharedir}/kf5
 %_kf5_includedir %{_includedir}/KF5
 %_kf5_libdir     %{_kf5_prefix}/%{_lib}
-%_kf5_libexecdir %{_kf5_libdir}/libexec/kf5
+%_kf5_libexecdir %{_libexecdir}/kf5
 %_kf5_mandir     %{_kf5_sharedir}/man
 %_kf5_sbindir    %{_sbindir}
 %_kf5_notifydir  %{_kf5_sharedir}/knotifications5
@@ -67,6 +67,7 @@
       -DCMAKE_INSTALL_PREFIX=%{_kf5_prefix} \\\
       -DCMAKE_PREFIX_PATH=%{_kf5_prefix} \\\
       -DKDE_INSTALL_LIBDIR=%{_lib} \\\
+      -DKDE_INSTALL_LIBEXECDIR=%{_libexecdir} \\\
       -DKDE_INSTALL_SYSCONFDIR=%{_kf5_sysconfdir} \\\
       -DKDE_INSTALL_QTPLUGINDIR=%{_lib}/qt5/plugins \\\
       -DKDE_INSTALL_PLUGINDIR=%{_lib}/qt5/plugins \\\

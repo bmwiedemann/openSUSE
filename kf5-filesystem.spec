@@ -18,7 +18,7 @@
 
 Name:           kf5-filesystem
 URL:            https://www.kde.org
-Version:        20201017
+Version:        20220307
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        KF5 Directory Layout
@@ -41,7 +41,7 @@ This package provides macros which are utilized with extra-cmake-modules' KDEIns
 %define _kf5_datadir    %{_kf5_sharedir}/kf5
 %define _kf5_includedir %{_includedir}/KF5
 %define _kf5_libdir     %{_kf5_prefix}/%{_lib}
-%define _kf5_libexecdir %{_kf5_libdir}/libexec/kf5
+%define _kf5_libexecdir %{_libexecdir}/kf5
 %define _kf5_mandir     %{_mandir}
 %define _kf5_sbindir    %{_sbindir}
 %define _kf5_notifydir  %{_kf5_sharedir}/knotifications5
@@ -83,12 +83,13 @@ install -D -m755 %{SOURCE3} %{buildroot}%{_rpmconfigdir}/fileattrs/localekf5.pro
 %endif
 
 mkdir -p %{buildroot}%{_kf5_datadir}
+mkdir -p %{buildroot}%{_kf5_importdir}
 mkdir -p %{buildroot}%{_kf5_includedir}
 mkdir -p %{buildroot}%{_kf5_libexecdir}
 mkdir -p %{buildroot}%{_kf5_notifydir}
-mkdir -p %{buildroot}%{_kf5_plugindir}
 mkdir -p %{buildroot}%{_kf5_plasmadir}
-mkdir -p %{buildroot}%{_kf5_importdir}
+mkdir -p %{buildroot}%{_kf5_plugindir}
+mkdir -p %{buildroot}%{_kf5_plugindir}/kf5
 mkdir -p %{buildroot}%{_kf5_qmldir}
 mkdir -p %{buildroot}%{_kf5_cmakedir}
 mkdir -p %{buildroot}%{_kf5_mkspecsdir}
@@ -131,14 +132,13 @@ popd
 %endif
 %dir %{_kf5_datadir}
 %dir %{_kf5_includedir}
-%dir %{_kf5_libdir}/libexec
 %dir %{_kf5_libexecdir}
 %dir %{_mandir}/*
 %dir %{_mandir}/*/man1
 %dir %{_kf5_notifydir}
 %dir %{_kf5_libdir}/qt5
-%dir %{_kf5_libdir}/qt5/plugins
 %dir %{_kf5_plugindir}
+%dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plasmadir}
 %dir %{_kf5_importdir}
 %dir %{_kf5_qmldir}
