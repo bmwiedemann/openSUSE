@@ -87,10 +87,10 @@ Application to show KDE Applications' documentation.
 %{_kf5_bindir}/khelpcenter
 %{_kf5_configkcfgdir}/khelpcenter.kcfg
 %{_kf5_debugdir}/khelpcenter.categories
-%{_kf5_libdir}/libexec/khc_*
 %{_kf5_servicesdir}/
 %{_kf5_sharedir}/kde4/
 %{_kf5_sharedir}/khelpcenter/
+%{_libexecdir}/khc_*
 
 %if %{with released}
 %files lang -f %{name}.lang

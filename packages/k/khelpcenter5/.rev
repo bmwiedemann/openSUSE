@@ -687,4 +687,12 @@
     <comment>KDE Gear 21.12.3</comment>
     <requestid>958851</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>192d6f2ff5ea5bd00f69063a54737c67</srcmd5>
+    <version>21.12.3</version>
+    <time>1646848013</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960095</requestid>
+  </revision>
 </revisionlist>
