@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  4 17:25:39 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
 Wed Mar  2 07:29:32 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 231daece7c (2022-03-01):

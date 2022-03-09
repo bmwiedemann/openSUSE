@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files 50-rpi3.conf
+
 Name:           raspberrypi-firmware
 Version:        2022.03.01
 Release:        0
@@ -73,8 +79,8 @@ cat > %{buildroot}%{_prefix}/lib/sysctl.d/50-rpi3.conf <<-'EOF'
 	vm.min_free_kbytes = 2048
 EOF
 
-mkdir -p %{buildroot}%{_prefix}/lib/modprobe.d/
-cat > %{buildroot}%{_prefix}/lib/modprobe.d/50-rpi3.conf <<-'EOF'
+mkdir -p %{buildroot}%{_modprobedir}/
+cat > %{buildroot}%{_modprobedir}/50-rpi3.conf <<-'EOF'
 	# Prevent too many page allocations (bsc#1012449)
 	options smsc95xx turbo_mode=N
 EOF
@@ -85,6 +91,13 @@ cat > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/raspberrypi_modules.conf <
 	add_drivers+=" bcm2835_dma dwc2 " # bsc#1084272
 	add_drivers+=" pcie-brcmstb " # boo#1162669
 EOF
+
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
 
 %post
 if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
@@ -99,6 +112,13 @@ if [ $1 -eq 0 ] && mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
     rm -f /boot/efi/$f
   done
 fi
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %post extra
 if mountpoint -q /boot/efi && [[ ! -L /boot/efi ]]; then
@@ -143,8 +163,8 @@ fi
 %dir %{_prefix}/lib/dracut/
 %dir %{_prefix}/lib/dracut/dracut.conf.d/
 %{_prefix}/lib/dracut/dracut.conf.d/raspberrypi_modules.conf
-%dir %{_prefix}/lib/modprobe.d/
-%{_prefix}/lib/modprobe.d/50-rpi3.conf
+%dir %{_modprobedir}
+%{_modprobedir}/50-rpi3.conf
 %dir %{_prefix}/lib/sysctl.d/
 %{_prefix}/lib/sysctl.d/50-rpi3.conf
 
