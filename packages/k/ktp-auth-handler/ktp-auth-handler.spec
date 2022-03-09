@@ -77,9 +77,9 @@ SSL errors on account connect.
 
 %files
 %license COPYING*
-%{_kf5_libdir}/libexec/
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.Telepathy.Client.KTp.*.service
 %{_kf5_sharedir}/telepathy/
+%{_libexecdir}/ktp-auth-handler
 
 %if %{with released}
 %files lang -f %{name}.lang
