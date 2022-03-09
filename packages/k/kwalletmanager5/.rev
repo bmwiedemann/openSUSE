@@ -657,4 +657,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Gear 21.12.3</comment>
     <requestid>958943</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>260a4bbd51d1278604728e03efda216f</srcmd5>
+    <version>21.12.3</version>
+    <time>1646848010</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960089</requestid>
+  </revision>
 </revisionlist>
