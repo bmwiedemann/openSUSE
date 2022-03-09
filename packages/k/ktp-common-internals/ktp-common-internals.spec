@@ -133,7 +133,6 @@ icons for all the KDE Telepathy packages.
 %{_kf5_libdir}/libKTpModels.so.*
 %{_kf5_libdir}/libKTpOTR.so.*
 %{_kf5_libdir}/libKTpWidgets.so.*
-%{_kf5_libdir}/libexec/
 %{_kf5_notifydir}/
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
@@ -143,6 +142,7 @@ icons for all the KDE Telepathy packages.
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.Telepathy.Client.KTp.Proxy.service
 %{_kf5_sharedir}/katepart5/
 %{_kf5_sharedir}/telepathy/
+%{_libexecdir}/ktp-proxy
 
 %files -n ktp-icons
 %{_kf5_iconsdir}/hicolor/

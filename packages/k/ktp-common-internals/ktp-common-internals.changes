@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  7 10:54:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
 Tue Mar  1 09:57:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
