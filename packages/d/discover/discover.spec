@@ -214,7 +214,6 @@ user to install them using Discover.
 %{_kf5_plugindir}/discover-notifier/DiscoverPackageKitNotifier.so
 %{_kf5_plugindir}/discover-notifier/FlatpakNotifier.so
 %{_kf5_configdir}/autostart/org.kde.discover.notifier.desktop
-%{_libdir}/libexec/DiscoverNotifier
 %{_kf5_applicationsdir}/org.kde.discover.notifier.desktop
 %dir %{_kf5_plugindir}/plasma/
 %dir %{_kf5_plugindir}/plasma/kcms/
@@ -223,5 +222,6 @@ user to install them using Discover.
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms/
 %{_kf5_sharedir}/kpackage/kcms/kcm_updates/
+%{_libexecdir}/DiscoverNotifier
 
 %changelog
