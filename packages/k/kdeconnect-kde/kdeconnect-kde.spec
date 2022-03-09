@@ -171,7 +171,6 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_htmldir}/en/kdeconnect/
 %{_kf5_iconsdir}/hicolor/*/apps/kdeconnect*
 %{_kf5_iconsdir}/hicolor/*/status/*.svg
-%{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkdeconnect*.so.*
 %{_kf5_notifydir}/
 %{_kf5_plugindir}/
@@ -184,6 +183,7 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_sharedir}/kdeconnect/kdeconnect_sendnotifications_config.qml
 %{_kf5_sharedir}/kdeconnect/kdeconnect_share_config.qml
 %{_kf5_sharedir}/plasma/
+%{_libexecdir}/kdeconnectd
 %{_prefix}/lib/firewalld/services/%{name}.xml
 
 %if %{with released}
