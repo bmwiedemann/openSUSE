@@ -1,8 +1,8 @@
 Gemeinsame Unterverzeichnisse: openssh-8.4p1/contrib und openssh-8.4p1-vendor/contrib.
-Index: openssh-8.8p1/dh.c
+Index: openssh-8.9p1/dh.c
 ===================================================================
---- openssh-8.8p1.orig/dh.c
-+++ openssh-8.8p1/dh.c
+--- openssh-8.9p1.orig/dh.c
++++ openssh-8.9p1/dh.c
 @@ -54,7 +54,17 @@ void dh_set_moduli_file(const char *file
  
  static const char * get_moduli_filename(void)
@@ -22,10 +22,10 @@ Index: openssh-8.8p1/dh.c
  }
  
  static int
-Index: openssh-8.8p1/pathnames.h
+Index: openssh-8.9p1/pathnames.h
 ===================================================================
---- openssh-8.8p1.orig/pathnames.h
-+++ openssh-8.8p1/pathnames.h
+--- openssh-8.9p1.orig/pathnames.h
++++ openssh-8.9p1/pathnames.h
 @@ -18,6 +18,8 @@
  #define SSHDIR				ETCDIR "/ssh"
  #endif
@@ -53,10 +53,10 @@ Index: openssh-8.8p1/pathnames.h
  
  #ifndef _PATH_SSH_PROGRAM
  #define _PATH_SSH_PROGRAM		"/usr/bin/ssh"
-Index: openssh-8.8p1/ssh.c
+Index: openssh-8.9p1/ssh.c
 ===================================================================
---- openssh-8.8p1.orig/ssh.c
-+++ openssh-8.8p1/ssh.c
+--- openssh-8.9p1.orig/ssh.c
++++ openssh-8.9p1/ssh.c
 @@ -549,6 +549,7 @@ static void
  process_config_files(const char *host_name, struct passwd *pw, int final_pass,
      int *want_final_pass)
@@ -93,10 +93,10 @@ Index: openssh-8.8p1/ssh.c
  	}
  }
  
-Index: openssh-8.8p1/ssh_config.5
+Index: openssh-8.9p1/ssh_config.5
 ===================================================================
---- openssh-8.8p1.orig/ssh_config.5
-+++ openssh-8.8p1/ssh_config.5
+--- openssh-8.9p1.orig/ssh_config.5
++++ openssh-8.9p1/ssh_config.5
 @@ -54,6 +54,9 @@ user's configuration file
  .It
  system-wide configuration file
@@ -107,7 +107,7 @@ Index: openssh-8.8p1/ssh_config.5
  .El
  .Pp
  For each parameter, the first obtained value
-@@ -2212,6 +2215,11 @@ This file provides defaults for those
+@@ -2220,6 +2223,11 @@ This file provides defaults for those
  values that are not specified in the user's configuration file, and
  for those users who do not have a configuration file.
  This file must be world-readable.
@@ -119,11 +119,11 @@ Index: openssh-8.8p1/ssh_config.5
  .El
  .Sh SEE ALSO
  .Xr ssh 1
-Index: openssh-8.8p1/sshd.c
+Index: openssh-8.9p1/sshd.c
 ===================================================================
---- openssh-8.8p1.orig/sshd.c
-+++ openssh-8.8p1/sshd.c
-@@ -145,7 +145,7 @@ extern char *__progname;
+--- openssh-8.9p1.orig/sshd.c
++++ openssh-8.9p1/sshd.c
+@@ -148,7 +148,7 @@ extern char *__progname;
  ServerOptions options;
  
  /* Name of the server configuration file. */
@@ -132,7 +132,7 @@ Index: openssh-8.8p1/sshd.c
  
  /*
   * Debug mode flag.  This can be set on the command line.  If debug
-@@ -1594,6 +1594,7 @@ prepare_proctitle(int ac, char **av)
+@@ -1591,6 +1591,7 @@ prepare_proctitle(int ac, char **av)
  int
  main(int ac, char **av)
  {
@@ -140,7 +140,7 @@ Index: openssh-8.8p1/sshd.c
  	struct ssh *ssh = NULL;
  	extern char *optarg;
  	extern int optind;
-@@ -1809,7 +1810,21 @@ main(int ac, char **av)
+@@ -1806,7 +1807,21 @@ main(int ac, char **av)
  			 */
  			(void)atomicio(vwrite, startup_pipe, "\0", 1);
  		}
@@ -162,10 +162,10 @@ Index: openssh-8.8p1/sshd.c
  		load_server_config(config_file_name, cfg);
  
  	parse_server_config(&options, rexeced_flag ? "rexec" : config_file_name,
-Index: openssh-8.8p1/sshd_config.5
+Index: openssh-8.9p1/sshd_config.5
 ===================================================================
---- openssh-8.8p1.orig/sshd_config.5
-+++ openssh-8.8p1/sshd_config.5
+--- openssh-8.9p1.orig/sshd_config.5
++++ openssh-8.9p1/sshd_config.5
 @@ -44,7 +44,9 @@
  .Xr sshd 8
  reads configuration data from
@@ -177,19 +177,19 @@ Index: openssh-8.8p1/sshd_config.5
  .Fl f
  on the command line).
  The file contains keyword-argument pairs, one per line.
-Index: openssh-8.8p1/ssh-keysign.c
+Index: openssh-8.9p1/ssh-keysign.c
 ===================================================================
---- openssh-8.8p1.orig/ssh-keysign.c
-+++ openssh-8.8p1/ssh-keysign.c
-@@ -172,6 +172,7 @@ main(int argc, char **argv)
+--- openssh-8.9p1.orig/ssh-keysign.c
++++ openssh-8.9p1/ssh-keysign.c
+@@ -186,6 +186,7 @@ main(int argc, char **argv)
  	u_char *signature, *data, rver;
- 	char *host, *fp;
+ 	char *host, *fp, *pkalg;
  	size_t slen, dlen;
-+        struct stat st;
++	struct stat st;
  
  	if (pledge("stdio rpath getpw dns id", NULL) != 0)
  		fatal("%s: pledge: %s", __progname, strerror(errno));
-@@ -205,8 +206,14 @@ main(int argc, char **argv)
+@@ -219,8 +220,14 @@ main(int argc, char **argv)
  
  	/* verify that ssh-keysign is enabled by the admin */
  	initialize_options(&options);

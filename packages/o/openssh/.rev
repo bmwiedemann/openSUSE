@@ -1562,4 +1562,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     to selectively re-enable RSA/SHA1 to allow connection and/or user</comment>
     <requestid>923951</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>ebbf8aed91cd9fcd9efabf1bdf93da9c</srcmd5>
+    <version>8.9p1</version>
+    <time>1646848020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960152</requestid>
+  </revision>
 </revisionlist>
