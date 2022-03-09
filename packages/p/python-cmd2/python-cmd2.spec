@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmd2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-cmd2
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -42,7 +42,6 @@ Requires:       python-typing
 %endif
 # SECTION Test requirements
 BuildRequires:  %{python_module attrs >= 16.3.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyperclip >= 1.6}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
