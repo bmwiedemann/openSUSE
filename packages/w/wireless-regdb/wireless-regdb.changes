@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  8 07:27:33 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20220218:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory rules for the Netherlands (NL) on 6GHz
+  * wireless-regdb: Update regulatory rules for China (CN)
+  * wireless-regdb: Update regulatory rules for South Korea (KR)
+  * Revert "wireless-regdb: Update regulatory rules for South Korea (KR)"
+  * wireless-regdb: Update regulatory rules for Spain (ES) on 6GHz
+  * wireless-regdb: add 802.11ah bands to world regulatory domain
+  * wireless-regdb: add support for US S1G channels
+  * wireless-regdb: Update regulatory rules for France (FR) on 6 and 60 GHz
+  * wireless-regdb: Update regulatory rules for South Korea (KR)
+
+-------------------------------------------------------------------
 Tue Feb  8 14:28:31 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220108:

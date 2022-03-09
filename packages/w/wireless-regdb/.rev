@@ -453,4 +453,22 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * wireless-regdb: Update regulatory rules for Croatia (HR) on 6GHz</comment>
     <requestid>952714</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>eec4e013f171f4d51f614a3396c1cf6b</srcmd5>
+    <version>20220218</version>
+    <time>1646848017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220218:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory rules for the Netherlands (NL) on 6GHz
+  * wireless-regdb: Update regulatory rules for China (CN)
+  * wireless-regdb: Update regulatory rules for South Korea (KR)
+  * Revert &quot;wireless-regdb: Update regulatory rules for South Korea (KR)&quot;
+  * wireless-regdb: Update regulatory rules for Spain (ES) on 6GHz
+  * wireless-regdb: add 802.11ah bands to world regulatory domain
+  * wireless-regdb: add support for US S1G channels
+  * wireless-regdb: Update regulatory rules for France (FR) on 6 and 60 GHz
+  * wireless-regdb: Update regulatory rules for South Korea (KR)</comment>
+    <requestid>960144</requestid>
+  </revision>
 </revisionlist>
