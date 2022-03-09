@@ -5,5 +5,4 @@
 PCSX ReARMed features ARM NEON GPU by Exophase, that in many cases produces pixel perfect graphics at very high performance. There is also Una-i's GPU plugin from PCSX4ALL project, and traditional P.E.Op.S. one.
 
 This package is for RetroArch/Libretro front-end.</description>
-  <devel project="Emulators" package="libretro-pcsx-rearmed"/>
 </package>

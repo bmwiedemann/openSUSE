@@ -2,5 +2,4 @@
   <title>Mednafen Saturn libretro core for Sega Saturn emulation</title>
   <description>Standalone port of Mednafen Saturn to the libretro API.
 </description>
-  <devel project="Emulators" package="libretro-beetle-saturn"/>
 </package>

@@ -4,5 +4,4 @@
 
 FreeIntv is a libretro emulation core for the Mattel Intellivision designed to be compatible with joypads from the SNES era forward even if they originally required a number pad.
 </description>
-  <devel project="Emulators" package="libretro-freeintv"/>
 </package>

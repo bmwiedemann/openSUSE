@@ -3,5 +3,4 @@
   <description>CrocoDS is the Amstrad emulator that boots fast and doesn't rely on keyboard.
 
 This package is for RetroArch/libretro front-end.</description>
-  <devel project="Emulators" package="libretro-crocods"/>
 </package>

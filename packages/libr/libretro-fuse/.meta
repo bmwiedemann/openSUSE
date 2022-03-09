@@ -5,5 +5,4 @@ a ZX Spectrum emulator for Unix. However, it has now also been ported to Mac OS 
 which may or may not count as a Unix variant depending on your advocacy position.
 It has also been ported to Windows, the Wii, AmigaOS and MorphOS, which are definitely
 not Unix variants. This package is for RetroArch/Libretro front-end.</description>
-  <devel project="Emulators" package="libretro-fuse"/>
 </package>

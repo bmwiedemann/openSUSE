@@ -2,5 +2,4 @@
   <title>Mednafen PSX libretro core for Sony PlayStation emulation</title>
   <description>Standalone port/fork of Mednafen PSX to the Libretro API.
 </description>
-  <devel project="Emulators" package="libretro-beetle-psx"/>
 </package>

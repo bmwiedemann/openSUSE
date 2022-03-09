@@ -18,4 +18,5 @@
     Perspective and orthographic projections
     Volumetric custom items
 </description>
+  <devel project="KDE:Qt:5.15" package="libqt5-qtdatavis3d"/>
 </package>

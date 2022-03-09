@@ -3,5 +3,4 @@
   <description>This package provides joypad autoconfig files for Retroarch. RetroArch is the reference frontend for the libretro API.
 
 Autoconfig files included in this package are used to recognize input devices and automatically setup default mappings between the physical device and Retropad virtual controller.</description>
-  <devel project="Emulators" package="retroarch-joypad-autoconfig"/>
 </package>
