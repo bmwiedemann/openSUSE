@@ -189,19 +189,18 @@ package contains aditional command line utilities. Development files.
 %{_kf5_bindir}/baloo_file
 %{_kf5_bindir}/baloo_file_extractor
 %{_kf5_bindir}/balooctl
-%{_kf5_libdir}/libexec/baloo_file
-%{_kf5_libdir}/libexec/baloo_file_extractor
 %{_kf5_configdir}/autostart/baloo_file.desktop
 %{_kf5_debugdir}/baloo.categories
 %{_kf5_debugdir}/baloo.renamecategories
+%{_libexecdir}/baloo_file
+%{_libexecdir}/baloo_file_extractor
 %{_userunitdir}/kde-baloo.service
 
 %files kioslaves
-%dir %{_kf5_plugindir}/kf5/kio
-%dir %{_kf5_plugindir}/kf5
-%{_kf5_plugindir}/kf5/kio/baloosearch.so
 %dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_plugindir}/kf5/kded/baloosearchmodule.so
+%dir %{_kf5_plugindir}/kf5/kio
+%{_kf5_plugindir}/kf5/kio/baloosearch.so
 %{_kf5_plugindir}/kf5/kio/tags.so
 %{_kf5_plugindir}/kf5/kio/timeline.so
 

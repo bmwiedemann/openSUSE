@@ -828,4 +828,12 @@
     <comment>KDE Frameworks 5.91 (forwarded request 954217 from cgiboudeaux)</comment>
     <requestid>954219</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>974252642982bec7610ce7e6d1975108</srcmd5>
+    <version>5.91.0</version>
+    <time>1646848010</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960088</requestid>
+  </revision>
 </revisionlist>
