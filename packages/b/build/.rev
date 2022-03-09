@@ -1411,4 +1411,41 @@ pbuild:
 - Unify ccache and sccache handling</comment>
     <requestid>933759</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>815de2d9263d1272dddeac52e41ccc6c</srcmd5>
+    <version>20220307</version>
+    <time>1646848015</time>
+    <user>dimstar_suse</user>
+    <comment>Features:
+  * download_assets: add --outdir --clean --show-dir-srcmd5 parameters
+                     support multiple --arch arguments
+  * asset support for golang modules
+  * add support for LXC 4.
+  * new shortcuts for rpm building:
+    --rpm-noprep, --rpm-build-in-place, --rpm-build-in-place-noprep
+    for building directly from upstream git repositories without
+    any tar ball.
+  * mount securityfs if not mounted by kernel-obs-build
+  * collect steal time during VM builds in statistics.
+  * declare armv8 and armv7 compatible
+  * support OBS Debuginfo build flag for Red Hat variants
+  * setup rpmmacros for all build types and earlier
+  * Kiwi builds
+    - Always append the profile name to kiwi container names
+  * Dockerfile build
+    - improve registry handling
+    - initial Dockerfile.dapper support
+    - support 'curl' commands in docker builds
+    - strip known domains from container name
+    - support container alias names
+  * introducing --verbose option, currently only showing kernel
+    messages.
+  * support cpio creation for special files
+  * handle QEMU &gt;= 6.0 on POWER9
+Changes:
+  * Use git+https instead of git-https as url schema
+  * add oops=panic kernel parameter
+  * Updated distribution configurations (esp. Leap 15.4 and Tumbleweed)</comment>
+    <requestid>959816</requestid>
+  </revision>
 </revisionlist>

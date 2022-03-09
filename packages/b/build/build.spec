@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20211125
+Version:        20220307
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -37,6 +37,7 @@ BuildArch:      noarch
 # Keep the following dependencies in sync with obs-worker package
 Requires:       bash
 Requires:       binutils
+Requires:       findutils
 Requires:       perl
 Requires:       tar
 # needed for fuser
@@ -57,6 +58,9 @@ Requires:       perl-TimeDate
 BuildRequires:  perl-TimeDate
 %endif
 Conflicts:      bsdtar < 2.5.5
+%if 0%{?suse_version}
+Conflicts:      qemu < 2.5.0
+%endif
 BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Test::Harness)
 BuildRequires:  perl(Test::More)
