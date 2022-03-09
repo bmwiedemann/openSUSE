@@ -1,7 +1,7 @@
 #
 # spec file for package libpsm2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files libpsm2-compat.conf
 
 %define git_ver %{nil}
 
@@ -94,7 +99,8 @@ make %{?_smp_mflags}
 
 %install
 export DESTDIR=%{buildroot}
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+modprobe_dir=%{_modprobedir}
+make %{?_smp_mflags} DESTDIR=%{buildroot} LIBPSM2_COMPAT_CONF_DIR="${modprobe_dir%/*}" install
 install -m0644 %{buildroot}%{_libdir}/psm2-compat/libpsm_infinipath.so.1 %{buildroot}%{_libdir}/libpsm_infinipath.so.1
 # removing file to get rid of rpm errors
 rm  %{buildroot}%{_libdir}/psm2-compat/libpsm_infinipath.so.1
@@ -102,10 +108,24 @@ rm  %{buildroot}/usr/lib/%name/libpsm2-compat.cmds
 # remove static library
 rm  %{buildroot}%{_libdir}/libpsm2.a
 
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
+
 %post -n %{name}-%{psm_so} -p /sbin/ldconfig
 %postun -n %{name}-%{psm_so} -p /sbin/ldconfig
 %post compat -p /sbin/ldconfig
 %postun compat -p /sbin/ldconfig
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %files -n %{name}-%{psm_so}
 %defattr(-,root,root,-)
@@ -140,10 +160,10 @@ rm  %{buildroot}%{_libdir}/libpsm2.a
 
 %files compat
 %defattr(-,root,root,-)
-%dir %{_sysconfdir}/modprobe.d
+%dir %{_modprobedir}
 
 %{_libdir}/libpsm_infinipath.so.*
 %{_udevrulesdir}/40-psm-compat.rules
-%config %{_sysconfdir}/modprobe.d/libpsm2-compat.conf
+%config %{_modprobedir}/libpsm2-compat.conf
 
 %changelog

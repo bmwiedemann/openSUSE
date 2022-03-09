@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  4 12:41:50 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- move modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639)
+
+-------------------------------------------------------------------
 Tue Aug 24 06:05:38 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 11.2.203 (jsc#SLE-20580)
