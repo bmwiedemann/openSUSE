@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Mar  4 18:00:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 2022.03.0:
+ - This release brings a number of small improvements, as well as a move to `calendar versioning <https://calver.org/>`_ (:issue:`6176`).:
+ - Many thanks to the 16 contributors to the v2022.02.0 release!:
+ - Aaron Spring, Alan D. Snow, Anderson Banihirwe, crusaderky, Illviljan, Joe Hamman, Jonas Gliß,:
+ - Lukas Pilz, Martin Bergemann, Mathias Hauser, Maximilian Roos, Romain Caneill, Stan West, Stijn Van Hoey,:
+ - Tobias Kölling, and Tom Nicholas.:
+ - New Features:
+  - Enabled multiplying tick offsets by floats. Allows ``float`` ``n`` in
+    :py:meth:`CFTimeIndex.shift` if ``shift_freq`` is between ``Day``
+    and ``Microsecond``. (:issue:`6134`, :pull:`6135`).
+    By `Aaron Spring <https://github.com/aaronspring>`_.
+  - Enbable to provide more keyword arguments to `pydap` backend when reading
+    OpenDAP datasets (:issue:`6274`).
+    By `Jonas Gliß <https://github.com/jgliss>`.
+  - Allow :py:meth:`DataArray.drop_duplicates` to drop duplicates along multiple dimensions at once,
+    and add :py:meth:`Dataset.drop_duplicates`. (:pull:`6307`)
+    By `Tom Nicholas <https://github.com/TomNicholas>`_.
+ - Breaking changes:
+  - Renamed the ``interpolation`` keyword of all ``quantile`` methods (e.g. :py:meth:`DataArray.quantile`)
+    to ``method`` for consistency with numpy v1.22.0 (:pull:`6108`).
+    By `Mathias Hauser <https://github.com/mathause>`_.
+ - Deprecations:
+ - Bug fixes:
+  - Variables which are chunked using dask in larger (but aligned) chunks than the target zarr chunk size
+    can now be stored using `to_zarr()` (:pull:`6258`) By `Tobias Kölling <https://github.com/d70-t>`_.
+  - Multi-file datasets containing encoded :py:class:`cftime.datetime` objects can be read in parallel again (:issue:`6226`, :pull:`6249`, :pull:`6305`).  By `Martin Bergemann <https://github.com/antarcticrainforest>`_ and `Stan West <https://github.com/stanwest>`_.
+ - Documentation:
+  - Delete files of datasets saved to disk while building the documentation and enable
+    building on Windows via `sphinx-build` (:pull:`6237`).
+    By `Stan West <https://github.com/stanwest>`_.
+ - Internal Changes:
+- update to version 0.21.1:
+ - This is a bugfix release to resolve (:issue:`6216`, :pull:`6207`).:
+ - Bug fixes:
+  - Add `packaging` as a dependency to Xarray (:issue:`6216`, :pull:`6207`).
+    By `Sebastian Weigand <https://github.com/s-weigand>`_ and `Joe Hamman <https://github.com/jhamman>`_.
+
+-------------------------------------------------------------------
 Wed Feb  2 19:56:06 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 0.21.1:
