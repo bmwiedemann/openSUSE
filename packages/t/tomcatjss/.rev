@@ -7,4 +7,12 @@
     <comment>Now with a working build.</comment>
     <requestid>800716</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>acdceb65b0657bba12e96bf619bb6af6</srcmd5>
+    <version>7.4.1</version>
+    <time>1647031304</time>
+    <user>dimstar_suse</user>
+    <comment>fix build</comment>
+    <requestid>961129</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tomcatjss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,6 @@ Summary:        JSS Connector for Apache Tomcat
 License:        LGPL-2.0-or-later
 URL:            https://www.dogtagpki.org/wiki/TomcatJSS
 Source:         https://github.com/dogtagpki/tomcatjss/archive/v%{version}/tomcatjss-%{version}.tar.gz
-Patch0:         tomcatjss-Use-JSSKeyManager-and-JSSTrustManager-from-JSS.diff
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang
 BuildRequires:  java-devel
@@ -48,15 +47,17 @@ Services (NSS).
 
 %prep
 %setup -q
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-%patch0 -p1
-%endif
 
 %build
 # Skip build
 
 %install
 ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
+%if %{?pkg_vcmp:%pkg_vcmp mozilla-jss >= 5}%{!?pkg_vcmp:0}
+	-Djss.jar=$(find-jar jss) \
+%else
+	-Djss.jar=$(find-jar jss4) \
+%endif
     -Dversion=%{version} \
     -Dsrc.dir=tomcat-8.5 \
     -Djnidir=%{_jnidir} \
