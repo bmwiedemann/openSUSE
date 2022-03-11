@@ -22,7 +22,6 @@ Version:        1.7.0
 Release:        0
 Summary:        More descriptive output for parametrized pytest tests
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-verbose-parametrize/pytest-verbose-parametrize-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Iterable-collections.patch gh#man-group/pytest-plugins#197 mcepl@suse.com
@@ -38,7 +37,6 @@ Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
@@ -49,8 +47,7 @@ BuildRequires:  %{python_module six}
 More descriptive output for parametrized py.test tests.
 
 %prep
-%setup -q -n pytest-verbose-parametrize-%{version}
-%autopatch -p1
+%autosetup -p1 -n pytest-verbose-parametrize-%{version}
 
 # we can't do integration tests as py2 and py3 can be different versions
 # and the script simply calls $bindir/pytest

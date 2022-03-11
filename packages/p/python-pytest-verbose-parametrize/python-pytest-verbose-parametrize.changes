@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 11 03:54:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on mock. 
+
+-------------------------------------------------------------------
 Mon Jan 10 16:09:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add Iterable-collections.patch to avoid Python 3.10
