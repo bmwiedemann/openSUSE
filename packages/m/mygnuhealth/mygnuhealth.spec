@@ -27,7 +27,7 @@ Name:           mygnuhealth
 Version:        %{majorver}.0.5
 Release:        0
 Summary:        The personal health record for the GNU Health system
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
 Source:         https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz
