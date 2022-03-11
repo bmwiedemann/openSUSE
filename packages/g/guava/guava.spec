@@ -1,7 +1,7 @@
 #
 # spec file for package guava
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,7 +97,7 @@ annotations=$(
 find -name '*.java' | xargs sed -ri \
     "s/^import .*\.($annotations);//;s/@($annotations)"'\>\s*(\((("[^"]*")|([^)]*))\))?//g'
 
-for mod in guava guava-testlib; do
+for mod in guava guava-testlib futures/failureaccess; do
   %pom_remove_parent ${mod}
   %pom_xpath_inject pom:project '
     <groupId>com.google.guava</groupId>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 11 12:13:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove parent reference from ALL distributed pom files
+
+-------------------------------------------------------------------
 Mon May 10 14:59:41 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to guava 30.1.1
