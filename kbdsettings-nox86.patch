@@ -1,26 +1,3 @@
---- kbdsettings
-+++ kbdsettings
-@@ -24,20 +24,6 @@
- 			fi
- 			/usr/bin/setleds -D -$param < /dev/$tty
- 			;;
--		bios)
--			bios=$(/usr/lib/kbd/numlockbios 2>/dev/null)
--			if [ $param = "num" ]; then
--				if [ "$bios" = "on" ]; then
--					touch /run/numlock-on
--					/usr/bin/setleds -D +$param < /dev/$tty
--				elif [ "$bios" = "off" -o "$bios" = "unknown" ]; then
--					rm -f /run/numlock-on
--					/usr/bin/setleds -D -$param < /dev/$tty
--				fi
--			else
--				echo "Value $confval invalid for $conf"
--			fi
--			;;
- 		*)
- 			echo "error: unknown value $confval in $conf"
- 			;;
 --- sysconfig.keyboard
 +++ sysconfig.keyboard
 @@ -15,12 +15,12 @@
