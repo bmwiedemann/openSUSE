@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar  7 16:45:58 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Add code for safe modprobe.d migration
+  (https://en.opensuse.org/openSUSE:Packaging_UsrEtc)
+
+-------------------------------------------------------------------
+Fri Mar  4 20:30:02 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Always own %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
 Thu Mar  3 14:26:57 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix modprobe.d directory for SLE15 SP3

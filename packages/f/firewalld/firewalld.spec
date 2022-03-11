@@ -24,6 +24,8 @@
 # systemd-rpm-macros(or kmod) is wrong in 15.2 and 15.3
 %define _modprobedir /lib/modprobe.d
 %endif
+%global modprobe_d_files firewalld-sysctls.conf
+
 Name:           firewalld
 Version:        1.1.0
 Release:        0
@@ -197,6 +199,11 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/au
 
 %pre
 %service_add_pre firewalld.service
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
 
 %post
 %service_add_post firewalld.service
@@ -211,6 +218,13 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/au
 # dangerous. It's safer to not touch the firewall ourselves but
 # Let the user restart it whenever he feels like it.
 %service_del_postun_without_restart firewalld.service
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %post -n firewall-applet
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
@@ -263,9 +277,7 @@ fi
 %{_datadir}/polkit-1
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system.d
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
 %dir %{_modprobedir}
-%endif
 %{_modprobedir}/firewalld-sysctls.conf
 %config(noreplace) %{_sysconfdir}/firewalld/firewalld.conf
 %config(noreplace) %{_sysconfdir}/firewalld/lockdown-whitelist.xml
