@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 11 10:16:32 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints for aarch64 to avoid OOM
+
+-------------------------------------------------------------------
 Fri Jan 28 04:01:25 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Build portable binaries without -march=native (boo#1100677)
