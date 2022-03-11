@@ -1,7 +1,7 @@
 #
 # spec file for package maven-reporting-api
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,22 @@
 
 
 Name:           maven-reporting-api
-Version:        3.0
+Version:        3.1.0
 Release:        0
 Summary:        API to manage report generation
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/shared/maven-reporting-api
-# svn export http://svn.apache.org/repos/asf/maven/shared/tags/maven-reporting-api-3.0 maven-reporting-api-3.0
-# tar caf maven-reporting-api-3.0.tar.xz maven-reporting-api-3.0/
-Source0:        %{name}-%{version}.tar.xz
-# ASL mandates that the licence file be included in redistributed source
+Source0:        https://dlcdn.apache.org/maven/reporting/%{name}-%{version}-source-release.zip
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  maven-doxia-sink-api
+BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
-BuildRequires:  xz
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
 
 %description
@@ -57,6 +53,8 @@ API documentation for %{name}.
 %setup -q
 cp %{SOURCE1} LICENSE.txt
 cp %{SOURCE2} build.xml
+
+%pom_remove_parent
 
 # Previous package provides groupIds org.apache.maven.shared and org.apache.maven.reporting
 %{mvn_alias} : org.apache.maven.shared:maven-reporting-api
