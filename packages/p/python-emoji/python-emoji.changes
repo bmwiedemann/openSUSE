@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 11 10:28:54 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7.0
+
+- Update to 1.7.0
+  * New functions emoji_list() and distinct_emoji_list() added.
+  * Added deprecation warnings for several functions and variables
+    that will be removed in version 2.0.0.
+
+-------------------------------------------------------------------
 Sat Jan 15 15:47:10 UTC 2022 - Matthias Bach <marix@marix.org> - 1.6.3
 
 - Update to 1.6.3
