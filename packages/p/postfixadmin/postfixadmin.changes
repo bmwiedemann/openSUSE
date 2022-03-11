@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 10 22:45:44 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update to PostfixAdmin 3.3.11
+  - Fix PHP 8 compatability for crypt() usage
+  - Support $CONF['database_port'] for MySQL databases
+
+-------------------------------------------------------------------
 Sat Aug 14 11:56:02 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update to PostfixAdmin 3.3.10

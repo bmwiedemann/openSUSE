@@ -435,4 +435,14 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
   - Disable password autocompletion in edit forms (forwarded request 912091 from cboltz)</comment>
     <requestid>912092</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c817fed9d9b422908ed6698eb3f54646</srcmd5>
+    <version>3.3.11</version>
+    <time>1647031270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to PostfixAdmin 3.3.11
+  - Fix PHP 8 compatability for crypt() usage
+  - Support $CONF['database_port'] for MySQL databases (forwarded request 960942 from cboltz)</comment>
+    <requestid>960943</requestid>
+  </revision>
 </revisionlist>

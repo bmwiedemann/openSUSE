@@ -1,8 +1,8 @@
 #
 # spec file for package postfixadmin
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2007-2021 Christian Boltz
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2007-2022 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           postfixadmin
-Version:        3.3.10
+Version:        3.3.11
 Release:        0
 URL:            http://postfixadmin.sourceforge.net/
 Source0:        https://github.com/postfixadmin/postfixadmin/archive/%{name}-%{version}.tar.gz
