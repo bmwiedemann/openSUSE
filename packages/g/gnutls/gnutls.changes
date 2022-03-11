@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 27 07:52:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build with lto
+- build with -Wl,-z,now -Wl,-z,relro
+- build without -fanalyzer, which cuts build time in ~ half 
+
+-------------------------------------------------------------------
 Tue Jan 18 15:59:11 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.7.3: [bsc#1190698, bsc#1190796]

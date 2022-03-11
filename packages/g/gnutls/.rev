@@ -1496,4 +1496,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>947394</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>3393e3a99b8411ba058fa1e092003094</srcmd5>
+    <version>3.7.3</version>
+    <time>1647031258</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>960464</requestid>
+  </revision>
 </revisionlist>

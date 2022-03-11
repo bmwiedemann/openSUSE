@@ -151,14 +151,14 @@ of the IETF's TLS working group.
 Summary:        Development package for the GnuTLS C API
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-Requires:       crypto-policies
-%endif
 Requires:       glibc-devel
 Requires:       gnutls = %{version}
 Requires:       libgnutls%{gnutls_sover} = %{version}
 Requires(pre):  %{install_info_prereq}
 Provides:       gnutls-devel = %{version}-%{release}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+Requires:       crypto-policies
+%endif
 
 %description -n libgnutls-devel
 Files needed for software development using gnutls.
@@ -203,8 +203,7 @@ GnuTLS Wrappers for GNU Guile, a dialect of Scheme.
 echo "SYSTEM=NORMAL" >> tests/system.prio
 
 %build
-%define _lto_cflags %{nil}
-export LDFLAGS="-pie"
+export LDFLAGS="-pie -Wl,-z,now -Wl,-z,relro"
 export CFLAGS="%{optflags} -fPIE"
 export CXXFLAGS="%{optflags} -fPIE"
 #autoreconf -fiv
@@ -213,6 +212,7 @@ export CXXFLAGS="%{optflags} -fPIE"
         gl_cv_func_printf_infinite_long_double=yes \
         --disable-static \
         --disable-rpath \
+        --disable-gcc-warnings \
         --disable-silent-rules \
         %{?with_kcapi:--enable-afalg} \
         --with-default-trust-store-dir=%{_localstatedir}/lib/ca-certificates/pem \
@@ -236,7 +236,6 @@ export CXXFLAGS="%{optflags} -fPIE"
         --with-fips140-module-name="GnuTLS version" \
         --with-fips140-module-version="%{version}-%{release}" \
         %{nil}
-
 make %{?_smp_mflags}
 
 %install
@@ -267,7 +266,7 @@ rm -rf %{buildroot}%{_datadir}/doc/gnutls
 %check
 %if ! 0%{?qemu_user_space_build}
 # export GNUTLS_FORCE_FIPS_MODE=1
-make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
+make %{?_smp_mflags} check GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
     find -name test-suite.log -print -exec cat {} +
     exit 1
 }
