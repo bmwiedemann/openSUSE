@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sprockets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sprockets
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 %define mod_name sprockets
 %define mod_full_name %{mod_name}-%{version}
@@ -52,7 +52,7 @@ JavaScript, CoffeeScript, CSS, Sass, and SCSS.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="CHANGELOG.md README.md" \
+  --doc-files="CHANGELOG.md MIT-LICENSE README.md" \
   -f
 
 %gem_packages
