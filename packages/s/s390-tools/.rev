@@ -546,4 +546,13 @@
     <comment></comment>
     <requestid>956862</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>f86d0ce2619eeb0b07ff6b1282f88e13</srcmd5>
+    <version>2.19.0</version>
+    <time>1647032056</time>
+    <user>dimstar_suse</user>
+    <comment>- install modprobe.conf files into %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+</comment>
+    <requestid>961137</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  4 13:55:43 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- install modprobe.conf files into %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
 Tue Feb 22 19:37:07 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Added s390-tools-sles15sp4-zdev-modify-the-lsblk-output-parser-in-lszdev.patch

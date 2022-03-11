@@ -21,6 +21,11 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files 90-s390-tools.conf
 
 Name:           s390-tools
 Version:        2.19.0
@@ -349,7 +354,7 @@ install -D -m644 %{SOURCE20} %{buildroot}%{_prefix}/lib/udev/rules.d/52-hw_rando
 install -D -m644 %{SOURCE21} %{buildroot}%{_prefix}/lib/udev/rules.d/59-graf.rules
 install -D -m644 %{SOURCE28} %{buildroot}%{_prefix}/lib/udev/rules.d/59-prng.rules
 install -D -m644 %{SOURCE29} %{buildroot}%{_prefix}/lib/udev/rules.d/59-zfcp-compat.rules
-install -D -m644 %{SOURCE30} %{buildroot}%{_sysconfdir}/modprobe.d/90-s390-tools.conf
+install -D -m644 %{SOURCE30} %{buildroot}%{_modprobedir}/90-s390-tools.conf
 install -D -m755 %{SOURCE32} %{buildroot}/sbin/killcdl
 install -D -m755 %{SOURCE33} %{buildroot}/sbin/lgr_check
 install -D -m644 %{SOURCE34} %{buildroot}%{_fillupdir}/sysconfig.virtsetup
@@ -437,6 +442,11 @@ getent group cpacfstats >/dev/null 2>&1 || groupadd -r cpacfstats
 %service_add_pre virtsetup.service
 %service_add_pre vmlogrdr.service
 %service_add_pre xpram.service
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
 
 %post
 read INITPGM < /proc/1/comm
@@ -548,6 +558,11 @@ fi
 %{?regenerate_initrd_post}
 
 %posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 %{?regenerate_initrd_posttrans}
 
 %preun -n osasnmpd
@@ -571,7 +586,8 @@ fi
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/kmip/profiles
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/repository
 %config %{_sysconfdir}/zkey/kmip/profiles/*
-%config %{_sysconfdir}/modprobe.d/90-s390-tools.conf
+%dir %{_modprobedir}
+%{_modprobedir}/90-s390-tools.conf
 %config %{_sysconfdir}/cpuplugd.conf
 %config %{_sysconfdir}/zkey/kms-plugins.conf
 %config(noreplace) /boot/zipl/active_devices.txt
