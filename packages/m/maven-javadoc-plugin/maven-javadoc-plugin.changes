@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 11 07:05:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.3.2
+  * fixing several NPE errors and using new
+    maven-reporting-{api,impl}
+- Removed patches:
+  * 0001-Port-to-current-plexus-utils.patch
+  * reproducible-footer.patch
+    + not needed with the upstream code
+- Modified patch:
+  * maven-javadoc-plugin-bootstrap-resources.patch
+    + regenerate the resources to correspond to the new version
+
+-------------------------------------------------------------------
 Tue May 11 15:25:11 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the legacy guava20 package any more

@@ -14,12 +14,12 @@
             value="The Apache Maven Javadoc Plugin is a plugin that uses the javadoc tool for generating javadocs for the specified project."/>
   <property name="project.groupId" value="org.apache.maven.plugins"/>
   <property name="project.artifactId" value="maven-javadoc-plugin"/>
-  <property name="project.version" value="3.1.1"/>
+  <property name="project.version" value="3.3.2"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
-  <property name="spec.version" value="3.1"/>
+  <property name="spec.version" value="3.3"/>
 
-  <property name="compiler.source" value="1.7"/>
+  <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -83,7 +83,7 @@
     </macrodef>
     <macrodef name="modello">
       <attribute name="file"/>
-      <attribute name="version" default="1.1.0"/>
+      <attribute name="version" default="1.1.1"/>
       <sequential>
         <echo taskname="modello" message="Generating sources for @{file}"/>
         <modello-single-mode file="@{file}" version="@{version}" mode="java"/>

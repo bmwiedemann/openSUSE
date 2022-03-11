@@ -1,7 +1,7 @@
 #
-# spec file for package maven-javadoc-plugin-bootstrap
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-javadoc-plugin
-Version:        3.1.1
+Version:        3.3.2
 Release:        0
 Summary:        Maven plugin for creating javadocs
 License:        Apache-2.0
@@ -32,12 +32,10 @@ URL:            http://maven.apache.org/plugins/maven-javadoc-plugin
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
-Patch1:         0001-Port-to-current-plexus-utils.patch
-# PATCH-FIX-OPENSUSE bmwiedemann -- https://issues.apache.org/jira/browse/MJAVADOC-619
-Patch2:         reproducible-footer.patch
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
+BuildRequires:  apache-commons-text
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
@@ -57,7 +55,7 @@ BuildRequires:  maven-doxia-sitetools
 BuildRequires:  maven-invoker
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
-BuildRequires:  maven-reporting-api
+BuildRequires:  maven-reporting-api >= 3.1.0
 BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  objectweb-asm
@@ -123,9 +121,6 @@ cp %{SOURCE1} build.xml
 %patch0 -p1
 %endif
 
-%patch1 -p1
-%patch2 -p1
-
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 %pom_remove_dep :::test:
 
@@ -134,6 +129,7 @@ cp %{SOURCE1} build.xml
 mkdir -p lib
 build-jar-repository -s lib \
 	apache-commons-lang3 \
+	apache-commons-text \
 	atinject \
 	commons-cli \
 	commons-io \
@@ -181,7 +177,7 @@ build-jar-repository -s lib \
 xmvn --batch-mode --offline \
 	-Dmaven.test.skip=true -DmavenVersion=3.5.0 \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+	-Dmaven.compiler.release=8 \
 %endif
 	package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
