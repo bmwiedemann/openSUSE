@@ -1,0 +1,15 @@
+--- antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2010-11-16 16:59:34.000000000 +0100
++++ antlr-maven-plugin-2.2/src/main/java/org/codehaus/mojo/antlr/AntlrHtmlReport.java	2022-03-10 21:12:43.366027036 +0100
+@@ -128,6 +128,12 @@
+         arguments.add( "-html" );
+     }
+ 
++	public void generate(
++			final org.apache.maven.doxia.sink.Sink sink,
++			final Locale locale) throws MavenReportException {
++		generate( (Sink) sink, locale);
++	}
++
+     /**
+      * @see org.apache.maven.reporting.MavenReport#generate(org.codehaus.doxia.sink.Sink, java.util.Locale)
+      */
