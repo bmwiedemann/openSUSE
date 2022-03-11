@@ -81,6 +81,7 @@ Patch3:         %{name}_fipscheck.patch
 %endif
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
 Patch6:		harden_strongswan.service.patch
+Patch7:		prf-plus-modularization.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  curl-devel
@@ -269,6 +270,7 @@ sed -e 's|@IPSEC_DIR@|%{_libexecdir}/ipsec|g' \
      > _fipscheck
 %endif
 %patch6 -p1
+%patch7 -p1
 
 %build
 CFLAGS="%{optflags} -W -Wall -Wno-pointer-sign -Wno-strict-aliasing -Wno-unused-parameter"
@@ -676,6 +678,7 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/gmp.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/ha.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/hmac.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/kdf.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/kernel-netlink.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/ldap.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/led.conf
@@ -792,6 +795,7 @@ fi
 %{strongswan_plugins}/libstrongswan-gmp.so
 %{strongswan_plugins}/libstrongswan-ha.so
 %{strongswan_plugins}/libstrongswan-hmac.so
+%{strongswan_plugins}/libstrongswan-kdf.so
 %{strongswan_plugins}/libstrongswan-kernel-netlink.so
 %{strongswan_plugins}/libstrongswan-ldap.so
 %{strongswan_plugins}/libstrongswan-led.so
@@ -896,6 +900,7 @@ fi
 %{strongswan_templates}/config/plugins/gmp.conf
 %{strongswan_templates}/config/plugins/ha.conf
 %{strongswan_templates}/config/plugins/hmac.conf
+%{strongswan_templates}/config/plugins/kdf.conf
 %{strongswan_templates}/config/plugins/kernel-netlink.conf
 %{strongswan_templates}/config/plugins/ldap.conf
 %{strongswan_templates}/config/plugins/led.conf
@@ -956,6 +961,7 @@ fi
 %{strongswan_templates}/config/strongswan.d/swanctl.conf
 %{strongswan_templates}/database/imv/data.sql
 %{strongswan_templates}/database/imv/tables.sql
+
 
 %if %{with nm}
 

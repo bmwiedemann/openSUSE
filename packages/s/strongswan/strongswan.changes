@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar  3 14:49:26 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Added prf-plus-modularization.patch that outsources the IKE 
+  key derivation to openssl. (will be merged to 5.9.6)
+- package the kdf config, template and plugin
+
+-------------------------------------------------------------------
 Wed Jan 26 12:25:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9.5
