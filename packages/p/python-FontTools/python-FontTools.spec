@@ -24,11 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-FontTools%{psuffix}
-Version:        4.28.5
+Version:        4.29.1
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -47,7 +46,7 @@ Requires:       python-fs >= 2.2.0
 Recommends:     python-lxml >= 4.0
 Recommends:     python-scipy >= 1.5.1
 Recommends:     python-sympy
-Recommends:     python-unicodedata2 >= 13.0.0
+Recommends:     python-unicodedata2 >= 14.0.0
 Recommends:     python-zopfli >= 0.1.6
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
