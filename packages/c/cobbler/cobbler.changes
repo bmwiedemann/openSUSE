@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 11 13:00:12 UTC 2022 - Enno Gotthold <egotthold@suse.com>
+
+- This update fixes CVE-2022-0860 (bsc#1197027)
+- Version 3.3.0 fixed jsc#SUMA-112
+- Update to version 3.3.2
+  * New:
+    * cobbler sync doesn't have to be executed no more after enable_ipxe was flipped
+    * Auth: Support for Global Secure Catalog via LDAP provider
+  * Changes:
+    * Reposync now deletes old metadata to prevent metadata merge conflicts
+    * The automigration of the settings is now not enabled per default.
+    * We removed ppc from RedHat EL 7 as it is not supported
+  * Bugfixes:
+    * Network interface is not subscriptable errors were fixed
+    * The stacktraces related to the package and file pre & post triggers should no longer appear
+    * You should be able to add multiple initrds if needed again
+    * Debian: Fix regex for SHIM_FILE which now provides a working reasonable default
+
+-------------------------------------------------------------------
 Fri Feb 18 14:50:07 UTC 2022 - alexander.graul@suse.com
 
 - This update contains fixes for CVE-2021-45082 and 2021-45083
