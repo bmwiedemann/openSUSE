@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 10 19:40:00 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.14
+  * Now prints a warning that neither alternative tokens nor
+    digraphs are supported until C95.
+  * Now prints a warning that east-const isn't supported until C89.
+  * Now prints a warning that using isn't supported until C++11.
+
+-------------------------------------------------------------------
 Sat Feb 26 17:06:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.13

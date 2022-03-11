@@ -442,4 +442,12 @@
     <comment>- Update to release 11.13</comment>
     <requestid>957805</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d44c77c6c8f18d713b8712827cb37236</srcmd5>
+    <version>11.14</version>
+    <time>1647031269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.14</comment>
+    <requestid>960939</requestid>
+  </revision>
 </revisionlist>
