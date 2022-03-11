@@ -7,4 +7,12 @@
     <comment>Tryton frontend is now working again, resubmitting</comment>
     <requestid>960005</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ce8d8921ec32e8b9aa7fdb9d8b65b33d</srcmd5>
+    <version>6.0.14</version>
+    <time>1647031298</time>
+    <user>dimstar_suse</user>
+    <comment>license string corrected</comment>
+    <requestid>961069</requestid>
+  </revision>
 </revisionlist>

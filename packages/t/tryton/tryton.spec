@@ -13,17 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define majorver 6.0
 Name:           tryton
 Version:        %{majorver}.14
 Release:        0
 Summary:        The client of the Tryton application platform
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
-Url:            http://www.tryton.org/
+URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Source1:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 
