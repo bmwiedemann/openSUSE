@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  8 10:34:50 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgraded to freerdp 2.6.1 
+  * Decreased logging verbosity, now freerdp is much less verbose by default
+  * Backported freerdp_abort_connect during freerdp_connect fix (#gh:FreeRDP/FreeRDP#7700)
+  * Backported improved version dection see docs/version_detection.md for details
+  * Backported various rdpsnd fixes (#gh:FreeRDP/FreeRDP#7695)
+
+-------------------------------------------------------------------
 Wed Feb 23 12:07:48 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgraded to freerdp 2.6.0
