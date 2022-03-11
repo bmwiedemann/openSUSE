@@ -1,7 +1,7 @@
 #
 # spec file for package obconf-qt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           obconf-qt
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        OpenBox window manager configuration tool
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later

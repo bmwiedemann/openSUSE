@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 11 19:51:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.2:
+  * Fixed the option for centering window on opening.
+  * Prevented elided text in left pane.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue May 18 18:21:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.16.1

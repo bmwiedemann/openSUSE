@@ -177,4 +177,15 @@
     <comment></comment>
     <requestid>894218</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a8f7df196c062c70d7e574ba774e8972</srcmd5>
+    <version>0.16.2</version>
+    <time>1647031305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.2:
+  * Fixed the option for centering window on opening.
+  * Prevented elided text in left pane.
+  * Updated translations.</comment>
+    <requestid>961136</requestid>
+  </revision>
 </revisionlist>
