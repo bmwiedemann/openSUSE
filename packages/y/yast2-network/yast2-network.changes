@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  9 10:10:37 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Write NetworkManager s390 options to the ethernet section instead
+  of the connection one (bsc#1196582)
+- 4.4.44
+
+-------------------------------------------------------------------
 Thu Mar  3 10:01:24 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Added connection config writers for Qeth and Hipersocket
