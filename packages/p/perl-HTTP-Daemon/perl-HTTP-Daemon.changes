@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar  4 03:07:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.14
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.14      2022-03-03 20:47:51Z
+    - Test using loopback rather than internet accessible address (GH#52)
+      (Michal Josef Špaček)
+    - Use GH Perl helpers for build and coverage jobs (GH#53) (Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Feb 10 03:06:19 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.13

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  8 13:32:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add octave-fullscreen-with-multiple-monitors.patch -- fix
+  maximized start on systems with two monitors
+  (https://savannah.gnu.org/bugs/?61172); patch taken from
+  upstream commit and re-based for version 6.4.0.
+
+-------------------------------------------------------------------
 Fri Nov  5 23:23:45 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.0:

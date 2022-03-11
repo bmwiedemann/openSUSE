@@ -1,7 +1,7 @@
 #
 # spec file for package python-cli-helpers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cli-helpers
-Version:        2.0.1
+Version:        2.2.1
 Release:        0
 Summary:        Helpers for building command-line apps
 License:        BSD-3-Clause
@@ -38,7 +38,6 @@ BuildArch:      noarch
 # Package dependencies
 BuildRequires:  %{python_module Pygments >= 2.4}
 BuildRequires:  %{python_module configobj >= 5.0.5}
-BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module tabulate >= 0.8.2}
 BuildRequires:  %{python_module terminaltables >= 3.0.0}

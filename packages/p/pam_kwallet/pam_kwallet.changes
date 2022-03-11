@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:43:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't set LIBEXEC_INSTALL_DIR at build time, the variable is
+  unused since plasma 5.22.
+- Use %_libexecdir
+- Make pam_wallet-common noarch
+
+-------------------------------------------------------------------
 Tue Feb 22 16:21:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.2

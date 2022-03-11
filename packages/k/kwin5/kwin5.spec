@@ -237,7 +237,6 @@ This package provides development files.
 %{_kf5_debugdir}/org_kde_kwin.categories
 %{_kf5_knsrcfilesdir}/*.knsrc
 %{_kf5_libdir}/kconf_update_bin/
-%{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkwin.so.*
 %{_kf5_libdir}/libkwineffects.so.*
 %{_kf5_libdir}/libkwingl*utils.so.*
@@ -327,6 +326,9 @@ This package provides development files.
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwin_effects
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwinrules
 %{_kf5_sharedir}/kpackage/kcms/kcm_virtualkeyboard
+%{_libexecdir}/kwin-applywindowdecoration
+%{_libexecdir}/kwin_killer_helper
+%{_libexecdir}/kwin_rules_dialog
 %{_userunitdir}/plasma-kwin_x11.service
 %{_userunitdir}/plasma-kwin_wayland.service
 

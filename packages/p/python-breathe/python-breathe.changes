@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Mar  7 13:43:13 UTC 2022 - pgajdos@suse.com
+
+- version update to 4.33.1
+  - 2022-02-14 - **Breathe v4.33.1**
+    - Avoid warning about multiple graphviz directives.
+      `#804 <https://github.com/michaeljones/breathe/pull/804>`__
+  - 2022-02-14 - **Breathe v4.33.0**
+    - Fix duplicate ``static`` in variable declarations.
+      `#794 <https://github.com/michaeljones/breathe/pull/794>`__
+    - Update CICD for Sphinx 4.4.0 series.
+      `#795 <https://github.com/michaeljones/breathe/pull/795>`__
+    - Pin version of black in CICD and reformat files.
+      `#792 <https://github.com/michaeljones/breathe/pull/792>`__
+    - Fix code block highlighting.
+      `#760 <https://github.com/michaeljones/breathe/pull/760>`__
+    - Refactoring, cleanup and typing improvements.
+      `#802 <https://github.com/michaeljones/breathe/pull/802>`__
+    - Doxygen dot graphs to Sphinx graphviz.
+      `#757 <https://github.com/michaeljones/breathe/pull/757>`__
+    - Support externally hosted images.
+      `#705 <https://github.com/michaeljones/breathe/pull/705>`__
+    - Address a peculiarity in Doxygen aliases in doc.
+      `#770 <https://github.com/michaeljones/breathe/pull/770>`__
+    - Add flag to doxygengroup, doxygennamespace to display only the description.
+      `#718 <https://github.com/michaeljones/breathe/pull/718>`__
+    - Add support for MD block quotes with attribution(s).
+      `#759 <https://github.com/michaeljones/breathe/pull/759>`__
+  - 2022-01-30 - **Breathe v4.32.0**
+    - Added ``breathe_doxygen_aliases`` config variable.
+      `#729 <https://github.com/michaeljones/breathe/pull/729>`__
+    - Render ``\remark``/``\remarks`` and ``\see``/``\sa`` using Sphinx/Docutils
+      admonition style nodes.
+      `#756 <https://github.com/michaeljones/breathe/pull/756>`__
+    - Render C++ scoped enums differently than unscoped enums, and with their
+      underlying type.
+      `#753 <https://github.com/michaeljones/breathe/pull/753>`__
+    - Render ``\retval`` lists using dedicated field list when Sphinx >= 4.3 is
+      used.
+      `#749 <https://github.com/michaeljones/breathe/pull/749>`__
+   - Make ``.. doxygenfunction`` handle function template specializations.
+      `#750 <https://github.com/michaeljones/breathe/pull/750>`__
+    - Properly handle field-lists and admonitions in the detailed description of
+      classes and functions.
+      `#764 <https://github.com/michaeljones/breathe/pull/764>`__
+    - Add ``:confval:`breathe_show_include``` to control whether ``#include``
+      lines are shown. Defaults to ``True``.
+      `#725 <https://github.com/michaeljones/breathe/pull/725>`__
+    - Fix sys.path adjustment in doc config.
+      `#734 <https://github.com/michaeljones/breathe/pull/734>`__
+    - Fix sphinx renderer variable and function visitors for C#.
+      `#737 <https://github.com/michaeljones/breathe/pull/737>`__
+    - Fix sphinx renderer class visitor for C#.
+      `#738 <https://github.com/michaeljones/breathe/pull/738>`__
+    - Auto-format python code with black.
+      `#743 <https://github.com/michaeljones/breathe/pull/743>`__
+    - Extend flake8 and address some style issues.
+      `#745 <https://github.com/michaeljones/breathe/pull/745>`__
+    - Fix black formatting warning.
+      `#747 <https://github.com/michaeljones/breathe/pull/747>`__
+    - Update Sphinx and Python versions tested against.
+      `#765 <https://github.com/michaeljones/breathe/pull/765>`__
+    - Fix friend functions for older Doxygen versions.
+      `#769 <https://github.com/michaeljones/breathe/pull/769>`__
+    - Doxygen >= 1.9.2 supports C++20 concepts, add support for them.
+      `#779 <https://github.com/michaeljones/breathe/pull/779>`__
+    - Change the way directives are added to adhere to the interface,
+      e.g., avoiding myst-parser to crash.
+      `#780 <https://github.com/michaeljones/breathe/pull/780>`__
+    - Improved list of included files (with cross-references for local includes).
+      `#763 <https://github.com/michaeljones/breathe/pull/763>`__
+    - Update flake8 and mypy related stuff.
+      `#781 <https://github.com/michaeljones/breathe/pull/781>`__
+    - Update readme with logo and sponsorship info.
+      `#784 <https://github.com/michaeljones/breathe/pull/784>`__
+    - Store version number in both setup.py and __init__.py.
+      `#789 <https://github.com/michaeljones/breathe/pull/789>`__
+    - CICD: lint: continue with other jobs if black fails.
+      `#791 <https://github.com/michaeljones/breathe/pull/791>`__
+- actually does not require python-mock
+
+-------------------------------------------------------------------
 Sat Jan 15 15:24:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.31.0:

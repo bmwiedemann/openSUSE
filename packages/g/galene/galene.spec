@@ -25,7 +25,7 @@
 %bcond_without  apparmor
 
 Name:           galene
-Version:        0.4.4
+Version:        0.5
 Release:        0
 Summary:        Galène videoconferencing server
 License:        MIT
@@ -128,13 +128,17 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 %{_sbindir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %attr(0755, root, root) %{_datadir}/%{name}/static
-%dir %attr(0755, root, root) %{_datadir}/%{name}/static/css
-%dir %attr(0755, root, root) %{_datadir}/%{name}/static/scripts
-%dir %attr(0755, root, root) %{_datadir}/%{name}/static/webfonts
+%dir %attr(0755, root, root) %{_datadir}/%{name}/static/external/fontawesome
+%dir %attr(0755, root, root) %{_datadir}/%{name}/static/external/fontawesome/css
+%dir %attr(0755, root, root) %{_datadir}/%{name}/static/external/fontawesome/webfonts
+%dir %attr(0755, root, root) %{_datadir}/%{name}/static/external/toastify
+%dir %attr(0755, root, root) %{_datadir}/%{name}/static/external/contextual
 %{_datadir}/%{name}/static/*
-%{_datadir}/%{name}/static/css/*.css
-%{_datadir}/%{name}/static/scripts/*.js
-%{_datadir}/%{name}/static/webfonts/*
+%{_datadir}/%{name}/static/external/fontawesome
+%{_datadir}/%{name}/static/external/fontawesome/css/*.css
+%{_datadir}/%{name}/static/external/fontawesome/webfonts/*
+%{_datadir}/%{name}/static/external/toastify/*
+%{_datadir}/%{name}/static/external/contextual/*
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
 %dir %attr(0750, root, %{name}) %{_sysconfdir}/%{name}

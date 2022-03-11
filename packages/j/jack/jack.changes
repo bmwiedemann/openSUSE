@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar  1 17:17:07 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable the build of example-tools which are now built in a
+  separate jack-example-tools package.
+- update to 1.9.20:
+  * Add waf autooption --example-tools to allow optional build of
+    executables, libraries and man pages provided by
+    jack-example-tools (the files are built by default). Building
+    and installing the additional files can be disabled by using
+    --example-tools=no or --no-example-tools.
+  * Fix 32-bit support in ALSA driver
+  * Fix incomplete ASIO support on Windows
+  * Fix metadata usage with multiple users
+  * Fix netsource tool missing on Windows
+  * Fix semaphore usage on macOS
+  * Official FreeBSD support
+
+-------------------------------------------------------------------
 Sat Oct 16 17:45:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - drop 0001-Fix-compilation-of-documentation.patch (upstream).

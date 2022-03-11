@@ -90,4 +90,12 @@
     <comment>Update to 21.12.3. Depends on SR#959235</comment>
     <requestid>959253</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c91f35111372c5299ccddcc2d01d1819</srcmd5>
+    <version>21.12.3</version>
+    <time>1646848030</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960094</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  8 11:52:40 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.2.4:
+  * Dropped the PIN database.
+  * Fix that blueman-mechanism accepted arbitrary file paths and
+    returned the errors from trying to open them,
+    see https://github.com/blueman-project/blueman/security/advisories/GHSA-3r9p-m5c8-8mw8
+- Add blueman-2.2.4-ayatana-appindicator.patch: Support
+  Ayatana AppIndicators.
+- Require dbus(org.freedesktop.Notifications) instead of
+  notification-daemon.
+
+-------------------------------------------------------------------
 Sun Nov 28 07:52:13 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Disable agent startup on Pantheon desktop

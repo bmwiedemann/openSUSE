@@ -1,0 +1,13 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/udda/multiload-ng</param>
+    <param name="scm">git</param>
+    <param name="versionformat">git%cd.%h</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="disabled"/>
+  <service name="recompress" mode="disabled">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

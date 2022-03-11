@@ -144,4 +144,21 @@
 </comment>
     <requestid>958411</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8d6180d3ea8139ecab1b27ea52f82cce</srcmd5>
+    <version>4.2.6</version>
+    <time>1646848037</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _constraints to avoid OOM
+</comment>
+    <requestid>960258</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e94e24d72d25e0d201fa2f0b5a7bd11f</srcmd5>
+    <version>4.2.7</version>
+    <time>1646948702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960610</requestid>
+  </revision>
 </revisionlist>

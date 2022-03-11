@@ -82,4 +82,12 @@
     <comment>- Fix building for openSUSE Leap 15.3 and 15.4.</comment>
     <requestid>957354</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>57d103eb56ef4c96e9417f768ac10832</srcmd5>
+    <version>1.1.1</version>
+    <time>1646767931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960207</requestid>
+  </revision>
 </revisionlist>

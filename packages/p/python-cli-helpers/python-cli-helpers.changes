@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  8 08:01:06 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.2.1
+  Version 2.2.1
+  -------------
+  * Fix pygments tokens passed as strings
+  Version 2.2.0
+  -------------
+  * Remove dependency on terminaltables
+  * Add psql_unicode table format
+  * Add minimal table format
+  * Fix pip2 installing py3-only versions
+  * Format unprintable bytes (eg 0x00, 0x01) as hex
+
+-------------------------------------------------------------------
 Wed Jun 24 02:11:31 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.1:

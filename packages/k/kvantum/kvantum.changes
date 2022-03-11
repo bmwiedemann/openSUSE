@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  8 08:29:49 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.0.1
+
+  - The minimum required version of Qt is bumped to 5.15.0 and that
+    of KF5 to 5.82.0, thus openSUSE/SLES 15.3 is not supported anymore.
+
+  - A workaround is added for the wrong style code of 
+    KisDoubleSliderSpinBox in Krita ≥ 5.0.0.
+  - Options are added (to Kvantum Manager) for setting corner radii
+    when blurring translucent menus and tooltips with rounded corners.
+    Usually, a value of 2 is enough for preventing blur artifacts.
+  - 16px is given to the width of vertical spinbox buttons.
+  - Small fixes.
+
+-------------------------------------------------------------------
 Fri Jan  7 09:12:59 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Disable 32-bit builds for x86_64

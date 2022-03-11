@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:43:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix testCrash_RequestChannel_nativeRead_AfterException test on
+  aarch64 and ppc64le, bsc#1195486 bsc#1193778
+  * fix-javahl-test.patch- 
+
+-------------------------------------------------------------------
 Wed Nov 24 09:59:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

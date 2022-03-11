@@ -33,7 +33,7 @@ BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  pugixml-devel >= 1.8
 BuildRequires:  python3-sip-devel < 5
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  python3-qt5-sip
 %else
 BuildRequires:  python3-sip
@@ -46,7 +46,7 @@ libSavitar is a C++ implementation of 3mf loading with SIP python bindings.
 Summary:        3D printer control software
 Group:          System/Libraries
 Provides:       python3-Savitar = %version
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 # The PyQt5.sip module. NOT a requirement on (Py)Qt5
 Requires:       python3-qt5-sip
 %else

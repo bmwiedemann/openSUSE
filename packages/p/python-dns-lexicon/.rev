@@ -172,4 +172,17 @@
     <comment></comment>
     <requestid>906310</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>77ec40c124aaad9b757fedaf86c504e1</srcmd5>
+    <version>3.9.4</version>
+    <time>1646848070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 3.9.4
+  * Add webgo provider
+  * Extend possible record types list for dreamhost provider
+- Exclude test_oci.py due to failures.
+- Remove skip on python36
+- Drop remove-mock.patch, included upstream</comment>
+    <requestid>960376</requestid>
+  </revision>
 </revisionlist>

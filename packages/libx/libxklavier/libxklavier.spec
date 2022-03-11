@@ -1,7 +1,7 @@
 #
 # spec file for package libxklavier
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libxklavier
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        Library with X keyboard related functions
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/X11
-Url:            http://www.freedesktop.org/Software/LibXklavier
-Source:         http://download.gnome.org/sources/libxklavier/5.3/%{name}-%{version}.tar.xz
+URL:            http://www.freedesktop.org/Software/LibXklavier
+#Source:         http://download.gnome.org/sources/libxklavier/5.4/%%{name}-%%{version}.tar.xz
+Source:         http://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
 Source99:       baselibs.conf
+
 BuildRequires:  doxygen
 BuildRequires:  gobject-introspection-devel >= 1.30
 BuildRequires:  gtk-doc
@@ -45,6 +47,7 @@ Summary:        Development files for libxklavier
 Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 Requires:       glibc-devel
+Requires:       libxklavier16 = %{version}
 Requires:       typelib-1_0-Xkl-1_0 = %{version}
 
 %description devel
@@ -80,21 +83,21 @@ Requires:       %{name} = %{version}
 This library allows you to simplify XKB-related development.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
-        --with-xkb-base=%{_datadir}/X11/xkb \
-        --with-xkb-bin-base=%{_bindir} \
-        --disable-static
-make %{?_smp_mflags}
+	--with-xkb-base=%{_datadir}/X11/xkb \
+	--with-xkb-bin-base=%{_bindir} \
+	--disable-static \
+	%{nil}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libxklavier16 -p /sbin/ldconfig
-%postun -n libxklavier16 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxklavier16
 
 %files -n libxklavier16
 %license COPYING.LIB

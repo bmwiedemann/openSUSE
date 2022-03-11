@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  8 12:07:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Respect %{optflags}.
+
+-------------------------------------------------------------------
+Tue Mar  8 09:58:13 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.1.1
+  * Native LTO (Link-Time Optimization) support
+  * RISC-V CPU architecture support
+  * Optimize memory usage by reducing the sizes of
+    frequently-allocated objects; roughly 6% redux in the maximum
+    RSS.
+
+-------------------------------------------------------------------
 Wed Feb 23 23:29:01 UTC 2022 - Christoph G <foss@grueninger.de>
 
 - Fix building for openSUSE Leap 15.3 and 15.4.

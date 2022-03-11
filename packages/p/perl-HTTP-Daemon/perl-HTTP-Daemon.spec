@@ -18,10 +18,10 @@
 
 %define cpan_name HTTP-Daemon
 Name:           perl-HTTP-Daemon
-Version:        6.13
+Version:        6.14
 Release:        0
-Summary:        Simple http server class
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Simple http server class
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

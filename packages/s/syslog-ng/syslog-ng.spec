@@ -67,6 +67,9 @@ Source1:        syslog-ng.sysconfig
 Source2:        syslog-ng.conf.default
 Source3:        syslog-ng.service
 Source4:        syslog-ng-service-prepare
+Patch0:         syslog-ng-nojavah.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -111,7 +114,7 @@ BuildRequires:  hiredis-devel
 BuildRequires:  libdbi-devel
 %endif
 %if %{with java}
-BuildRequires:  java-devel < 1.11
+BuildRequires:  java-devel >= 1.8
 %endif
 %if %{with python}
 BuildRequires:  python3-devel
@@ -241,9 +244,9 @@ Requires:       %{name} = %{version}
 %description mqtt
 This package provides MQTT support for syslog-ng
 
-
 %prep
 %setup -q -n syslog-ng-%{version}
+%patch0 -p1
 # fill out placeholders in the config,
 # systemd service and prepare script.
 for file in \
@@ -266,6 +269,7 @@ done
 # touch -r lib/cfg-grammar.y lib/merge-grammar.py
 
 %build
+autoreconf -fi
 ##
 ## build ####################################################
 ##

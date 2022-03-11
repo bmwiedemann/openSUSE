@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  9 23:52:04 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Allow both rustup and cargo to provide the needed cargo-vendor
+  backend. Defaults to installing cargo if neither is found.
+
+-------------------------------------------------------------------
 Fri Jul 30 02:18:11 UTC 2021 - wbrown@suse.de
 
 - Update to version 0.4.3~git0.afec7bc:

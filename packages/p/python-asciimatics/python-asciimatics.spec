@@ -1,7 +1,7 @@
 #
 # spec file for package python-asciimatics
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asciimatics
-Version:        1.11.0
+Version:        1.13.0
 Release:        0
 Summary:        Package to replace curses and create ASCII animations
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/peterbrittain/asciimatics
 Source:         https://files.pythonhosted.org/packages/source/a/asciimatics/asciimatics-%{version}.tar.gz
-# isatty test skips see https://github.com/peterbrittain/asciimatics/issues/216
-Patch0:         pr_200.patch
+# https://github.com/peterbrittain/asciimatics/issues/347
+Patch0:         python-asciimatics-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +40,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pillow >= 2.7.0}
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyfiglet >= 0.7.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wcwidth}

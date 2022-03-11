@@ -34,7 +34,7 @@ BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
 BuildRequires:  python3-sip-devel < 5
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  python3-qt5-sip
 %else
 BuildRequires:  python3-sip
@@ -67,7 +67,7 @@ tools necessary for compiling and linking programs which use %{name}.
 Summary:        Python bindings for libArcus
 Group:          Development/Languages/Python
 Requires:       libArcus-Ultimaker
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 Requires:       python3-qt5-sip
 %else
 Requires:       python3-sip

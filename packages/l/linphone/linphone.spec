@@ -19,7 +19,7 @@
 %define ldaplibdir %{buildroot}%{_libexecdir}/%{name}
 %define sover   10
 Name:           linphone
-Version:        5.0.67
+Version:        5.0.70
 Release:        0
 Summary:        Web Phone
 License:        GPL-3.0-only
@@ -244,6 +244,8 @@ rm %{ldaplibdir}/*.{la,so}
 find %{ldaplibdir} -type f -exec chrpath -r %{_libexecdir}/%{name} {} \; -exec chmod a+x {} \;
 #fix rpath in liblinphone
 find %{buildroot}%{_libdir} -type f -name "liblinphone*" -exec chrpath -r %{_libexecdir}/%{name} {} \;
+# Remove openldap pkgconfig files.
+rm -r %{ldaplibdir}/pkgconfig
 
 # Install the manual.
 mkdir -p %{buildroot}%{_datadir}/gnome/help/

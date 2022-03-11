@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  7 07:05:42 UTC 2022 - Maciej Borzecki <maciek.borzecki@gmail.com>
+
+- update to 4.0.38:
+  * Make sure case byte is cleared when making the special
+    directory entries "." and ".."
+  * In mattrib man page, replace "attribute flags" with "attribute
+    bits"
+
+-------------------------------------------------------------------
 Sun Jan  9 07:15:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0.37:

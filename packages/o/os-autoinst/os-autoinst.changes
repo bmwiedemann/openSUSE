@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar 10 18:16:21 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646895108.0c834255:
+  * Simplify '$next_test' assignment in autotest
+  * Record info in next test module after loading snapshot
+  * Add error handling for uninitialized isotovideo socket
+  * xt: Ensure all perl files using Mojo::Base as best practice
+  * Use Mojo::Base in autotest as well
+  * t: Ensure to show exception details when python test modules fail
+  * Delete whitespace at end-of-line in all applicable files
+  * Fix off-by-one error in color calculation
+  * Simplify consoles::VNC
+
+-------------------------------------------------------------------
+Tue Mar 08 10:09:53 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646659002.ff0946af:
+  * Fix off-by-one error in color calculation
+  * Simplify consoles::VNC
+  * Cleanup tpm*.permall before creating sock file
+  * Simplify usage check in check_qemu_oom
+  * Align isotovideo 'usage' method to others
+  * t: Refactor 03-testapi.t
+  * Add proper command line parsing for all scripts
+  * Add proper header to os-autoinst-openvswitch
+  * testapi: Fix validate_script_output() argument parsing
+
+-------------------------------------------------------------------
 Sun Mar 06 02:06:12 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1646420056.628a380c:

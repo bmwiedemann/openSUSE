@@ -1,0 +1,22 @@
+From 1f3815c4fb3f282250ff30626979d224e30b4b05 Mon Sep 17 00:00:00 2001
+From: Jaroslav Jindrak <dzejrou@gmail.com>
+Date: Wed, 9 Feb 2022 17:37:26 +0100
+Subject: [PATCH] Do not unset user timeout when no default timeout is set.
+
+---
+ plugins/sudoers/policy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/sudoers/policy.c b/plugins/sudoers/policy.c
+index 26c4be3fe..0482b58dd 100644
+--- a/plugins/sudoers/policy.c
++++ b/plugins/sudoers/policy.c
+@@ -865,7 +865,7 @@ sudoers_policy_store_result(bool accepted, char *argv[], char *envp[],
+ 
+     if (def_command_timeout > 0 || user_timeout > 0) {
+ 	int timeout = user_timeout;
+-	if (timeout == 0 || def_command_timeout < timeout)
++    if (timeout == 0 || (def_command_timeout > 0 && def_command_timeout < timeout))
+ 	    timeout = def_command_timeout;
+ 	if (asprintf(&command_info[info_len++], "timeout=%u", timeout) == -1)
+ 	    goto oom;

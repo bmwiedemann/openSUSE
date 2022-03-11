@@ -86,4 +86,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>856839</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>70f580d79104b46d0d40ec48028a38d3</srcmd5>
+    <version>0.38.0</version>
+    <time>1646767905</time>
+    <user>dimstar_suse</user>
+    <comment>Don't hardcode dependency on java 8</comment>
+    <requestid>960049</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package kawaii-player
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,11 +41,11 @@ Requires:       python3-lxml
 Requires:       python3-mutagen
 Requires:       python3-opengl
 Requires:       python3-pycurl
-Requires:       python3-pympv
 Requires:       python3-pytaglib
 Requires:       python3-qt5
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-youtube-dl
+Suggests:       python3-pympv
 BuildArch:      noarch
 
 %description

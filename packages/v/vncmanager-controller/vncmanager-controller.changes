@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  8 13:12:27 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- replace broken U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.34-as-supported.patch 
+  again with latest upstream commit U_Declare-gnome-shell-versions-3.10-to-3.26-as-support.patch 
+- u_Declare-also-gnome-shell-versions-3.27-to-41-as-supp.patch
+  * Declare also gnome shell versions 3.27 to 41 as supported
+
+-------------------------------------------------------------------
 Fri Aug  6 06:53:54 UTC 2021 - Ali Abdallah <ali.abdallah@suse.com>
 
 - 0001-fix-js-code-incompatibility-with-gnome-3.34.patch: Fix JS code

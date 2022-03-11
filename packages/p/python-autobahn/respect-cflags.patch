@@ -9,16 +9,16 @@ This could cause 'invalid instruction' faults on older user machines.
 
 https://bugzilla.opensuse.org/show_bug.cgi?id=1100677
 
-Index: autobahn-20.7.1/autobahn/nvx/_utf8validator.py
+Index: autobahn-22.2.2/autobahn/nvx/_utf8validator.py
 ===================================================================
---- autobahn-20.7.1.orig/autobahn/nvx/_utf8validator.py
-+++ autobahn-20.7.1/autobahn/nvx/_utf8validator.py
-@@ -50,7 +50,7 @@ with open(os.path.join(os.path.dirname(_
+--- autobahn-22.2.2.orig/autobahn/nvx/_utf8validator.py
++++ autobahn-22.2.2/autobahn/nvx/_utf8validator.py
+@@ -54,7 +54,7 @@ with open(os.path.join(os.path.dirname(_
          "_nvx_utf8validator",
          c_source,
          libraries=[],
--        extra_compile_args=['-std=c99', '-Wall', '-Wno-strict-prototypes', '-O3', '-march=native']
-+        extra_compile_args=['-std=c99', '-Wall', '-Wno-strict-prototypes']
+-        extra_compile_args=['-std=c99', '-Wall', '-Wno-strict-prototypes', '-O3', '-march=native'],
++        extra_compile_args=['-std=c99', '-Wall', '-Wno-strict-prototypes'],
+         optional=optional
      )
- 
  

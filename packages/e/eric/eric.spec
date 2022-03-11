@@ -2,7 +2,7 @@
 # spec file for package eric
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2010-2021 LISA GmbH, Bingen, Germany
+# Copyright (c) 2010-2022 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,25 +30,37 @@ Source:         https://sourceforge.net/projects/eric-ide/files/%{distname}/stab
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-EditorConfig
 BuildRequires:  python3-qscintilla-qt5
 BuildRequires:  python3-qt5
 BuildRequires:  python3-qtcharts-qt5
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
+Requires:       libQt5Sql5-sqlite
+Requires:       python3-EditorConfig
 Requires:       python3-qscintilla-qt5
 Requires:       python3-qt5
 Requires:       python3-qtcharts-qt5
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-xml
 Recommends:     %{name}-api = %{version}
+Recommends:     libQt5Sql5-mysql
+Recommends:     libQt5Sql5-postgresql
 Recommends:     python3-Markdown
+Recommends:     python3-Pygments
+Recommends:     python3-Send2Trash
+Recommends:     python3-asttokens
+Recommends:     python3-chardet
 Recommends:     python3-cx_Freeze
 Recommends:     python3-doc
-Recommends:     python3-enchant >= 1.5.3
+Recommends:     python3-docutils
+Recommends:     python3-pyenchant
 Recommends:     python3-pylint >= 0.18.0
 Recommends:     python3-pysvn >= 1.7.0
+Recommends:     python3-pyyaml
 Recommends:     python3-rope >= 0.9.2
+Recommends:     python3-toml
 Provides:       python-eric5 = %{version}
 Obsoletes:      python-eric5 < %{version}
 Provides:       python-eric6 = %{version}

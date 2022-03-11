@@ -94,8 +94,6 @@ a chat plasmoid, and a chat log viewer application.
 %{_kf5_bindir}/ktp-log-viewer
 %{_kf5_iconsdir}/hicolor/scalable/apps/kde-im-log-viewer.svg
 %{_kf5_kxmlguidir}/ktp-text-ui/
-%{_kf5_libdir}/libexec/ktp-adiumxtra-protocol-handler
-%{_kf5_libdir}/libexec/ktp-text-ui
 %{_kf5_libdir}/libktpchat.so*
 %{_kf5_libdir}/libktpimagesharer.so*
 %{_kf5_plugindir}/
@@ -105,6 +103,8 @@ a chat plasmoid, and a chat log viewer application.
 %{_kf5_sharedir}/ktelepathy/
 %{_kf5_sharedir}/ktp-log-viewer/
 %{_kf5_sharedir}/telepathy/
+%{_libexecdir}/ktp-adiumxtra-protocol-handler
+%{_libexecdir}/ktp-text-ui
 
 %if %{with released}
 %files lang -f %{name}.lang

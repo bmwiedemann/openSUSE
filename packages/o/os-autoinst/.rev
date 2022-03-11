@@ -2419,4 +2419,22 @@
 4.6.1646420056.628a380c</comment>
     <requestid>959671</requestid>
   </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>2fb679c9e73a85300206396f9f33ef86</srcmd5>
+    <version>4.6.1646659002.ff0946af</version>
+    <time>1646767929</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1646659002.ff0946af
+4.6.1646659002.ff0946af</comment>
+    <requestid>960177</requestid>
+  </revision>
+  <revision rev="272" vrev="1">
+    <srcmd5>4ad2f8379014f7da19602122af198b50</srcmd5>
+    <version>4.6.1646895108.0c834255</version>
+    <time>1646948769</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.6.1646895108.0c834255
+4.6.1646895108.0c834255</comment>
+    <requestid>960921</requestid>
+  </revision>
 </revisionlist>

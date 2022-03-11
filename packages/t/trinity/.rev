@@ -700,4 +700,18 @@
   * do not let created timer send SIGINT signal</comment>
     <requestid>942086</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>a058ae5cd74cb799e50523c7a85b3fd1</srcmd5>
+    <version>1.9+git.20220309</version>
+    <time>1646948733</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20220309:
+  * Ignore compiler warning
+  * fix unlikely overflow in stallcounter
+  * remove -Wdeclaration-after-statement
+  * panic when fd number is close to limition
+  * Fix compiler warning
+  * add support for riscv64 platform</comment>
+    <requestid>960754</requestid>
+  </revision>
 </revisionlist>

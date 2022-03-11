@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-Redis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojo-Redis
 Name:           perl-Mojo-Redis
-Version:        3.27
+Version:        3.29
 Release:        0
-Summary:        Redis driver based on Mojo::IOLoop
 License:        Artistic-2.0
+Summary:        Redis driver based on Mojo::IOLoop
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

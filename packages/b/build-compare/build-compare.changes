@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar  4 12:34:56 UTC 2022 - olaf@aepfle.de
+
+- handle -a also in same-build-result.sh
+- Find rpmlint.log in more places
+- fix logic error in appstream comparison
+- rework exit handling in same-build-result.sh
+- Fix result in case no rpmlint.log exist
+- remove count of checks and packages from rpmlint.log
+- remove Check time report from rpmlint.log
+- ELF diffing performance improvements
+- unpack packages in parallel
+- Add zstd handling
+
+-------------------------------------------------------------------
+Wed Feb 23 08:13:27 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- Add extra handling for KMP versions
+
+-------------------------------------------------------------------
 Tue Sep 21 19:19:19 UTC 2021 - Stephan Kulow <coolo@suse.de>
 
 - Fix build-compare for shadow package

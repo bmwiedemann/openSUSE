@@ -1,0 +1,15 @@
+[Unit]
+Description=pgbackrest backup full for %i
+Documentation=https://pgbackrest.org/configuration.html
+Documentation=man:pgbackrest(1) man:pgbackrest.conf(5)
+ConditionACPower=true
+PartOf=pgbackrest.target
+
+[Service]
+Type=oneshot
+User=postgres
+Group=postgres
+ExecStart=/usr/bin/pgbackrest --log-level-console=info --stanza=%i --type=full backup
+# Give a reasonable amount of time for the job to run before timeout
+TimeoutSec=7200
+

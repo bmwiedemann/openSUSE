@@ -55,7 +55,7 @@ filter_disasm()
     s/[0-9a-f]\+ </</
     s/^<\(.*\)>:/\1:/
     s/<\(.*\)+0x[0-9a-f]\+>/<\1 + ofs>/
-  ' 
+  '
 }
 
 filter_xenefi() {
@@ -318,6 +318,13 @@ check_compressed_file()
           xz -d new/$file.xz &
           wait
           ;;
+        zst)
+          mv old/$file{,.zst}
+          mv new/$file{,.zst}
+          zstd -d old/$file.zst &
+          zstd -d new/$file.zst &
+          wait
+          ;;
       esac
       ftype=`/usr/bin/file old/$file | sed 's@^[^:]\+:[[:blank:]]*@@'`
       case $ftype in
@@ -414,7 +421,7 @@ normalize_file()
     *.dvi)
       filter_generic dvi
       ;;
-    *png)
+    *.png)
       # Try to remove timestamps, only if convert from ImageMagick is installed
       if [[ $(type -p convert) ]]; then
         filter_generic png
@@ -599,7 +606,7 @@ normalize_file()
     *.ps)
       filter_generic ps
       ;;
-    *pdf)
+    *.pdf)
       filter_generic pdf
       ;;
     */linuxrc.config)
@@ -858,7 +865,7 @@ check_single_file()
       compare_archive "${file}" 'archive_squashfs'
       return $?
        ;;
-    *.tar|*.tar.bz2|*.tar.gz|*.tgz|*.tbz2)
+    *.tar|*.tar.bz2|*.tar.gz|*.tgz|*.tbz2|*.tar.zst)
       compare_archive "${file}" 'archive_tar'
       return $?
       ;;
@@ -866,30 +873,36 @@ check_single_file()
       compare_archive "${file}" 'archive_zip'
       return $?
       ;;
-     *.bz2)
-        bunzip2 -c old/$file > old/${file/.bz2/}
-        bunzip2 -c new/$file > new/${file/.bz2/}
-        check_single_file ${file/.bz2/}
-        return $?
-        ;;
-     *.gz)
-        gunzip -c old/$file > old/${file/.gz/}
-        gunzip -c new/$file > new/${file/.gz/}
-        check_single_file ${file/.gz/}
-        return $?
-        ;;
-     *.rpm)
-	$self_script -a old/$file new/$file
-        return $?
-        ;;
+    *.bz2)
+      bunzip2 -c old/$file > old/${file/.bz2/}
+      bunzip2 -c new/$file > new/${file/.bz2/}
+      check_single_file ${file/.bz2/}
+      return $?
+      ;;
+    *.gz)
+      gunzip -c old/$file > old/${file/.gz/}
+      gunzip -c new/$file > new/${file/.gz/}
+      check_single_file ${file/.gz/}
+      return $?
+      ;;
+    *.zst)
+      zstd -dc old/$file > old/${file/.zst/}
+      zstd -dc new/$file > new/${file/.zst/}
+      check_single_file ${file/.zst/}
+      return $?
+      ;;
+    *.rpm)
+      $self_script -a old/$file new/$file
+      return $?
+      ;;
   esac
 
   ftype=`/usr/bin/file "old/$file" | sed -e 's@^[^:]\+:[[:blank:]]*@@' -e 's@[[:blank:]]*$@@'`
   case $ftype in
-     PE32\ executable*Mono\/\.Net\ assembly*)
-       wprint "PE32 Mono/.Net assembly: $file"
-       if [ -x /usr/bin/monodis ] ; then
-         monodis "old/$file" 2>/dev/null|sed -e 's/GUID = {.*}/GUID = { 42 }/;'> ${file1}
+    PE32\ executable*Mono\/\.Net\ assembly*)
+      wprint "PE32 Mono/.Net assembly: $file"
+      if [ -x /usr/bin/monodis ] ; then
+        monodis "old/$file" 2>/dev/null|sed -e 's/GUID = {.*}/GUID = { 42 }/;'> ${file1}
          monodis "new/$file" 2>/dev/null|sed -e 's/GUID = {.*}/GUID = { 42 }/;'> ${file2}
          if ! cmp -s "${file1}" "${file2}"; then
            wprint "$file differs ($ftype)"
@@ -909,207 +922,184 @@ check_single_file()
     set?id\ ELF*[LM]SB\ shared\ object*|\
     ELF*[LM]SB\ pie\ executable*|\
     set?id\ ELF*[LM]SB\ pie\ executable*)
-      diff --speed-large-files --unified \
-        --label "old $file (disasm)" \
-        --label "new $file (disasm)" \
-        <( $OBJDUMP -d --no-show-raw-insn old/$file |
-          filter_disasm |
-          sed -e "s,old/,," ;
-          echo "${PIPESTATUS[@]}" > $file1
-          ) \
-        <( $OBJDUMP -d --no-show-raw-insn new/$file |
-          filter_disasm |
-          sed -e "s,new/,," ;
-          echo "${PIPESTATUS[@]}" > $file2
-          ) > $dfile
-      ret=$?
-
-      failed=
-      read i < ${file1}
-      pipestatus=( $i )
-      objdump_failed="${pipestatus[0]}"
-      i=0
-      while test $i -lt ${#pipestatus[@]}
-      do
-        if test "${pipestatus[$i]}" != "0"
-        then
-          wprint "ELF: pipe command #$i failed with ${pipestatus[$i]} for old/$file"
-          failed='failed'
-        fi
-        : $(( i++ ))
-      done
-      read i < ${file2}
-      pipestatus=( $i )
-      objdump_failed="${objdump_failed}${pipestatus[0]}"
-      i=0
-      while test $i -lt ${#pipestatus[@]}
-      do
-        if test "${pipestatus[$i]}" != "0"
-        then
-          wprint "ELF: pipe command #$i failed with ${pipestatus[$i]} for new/$file"
-          failed='failed'
-        fi
-        : $(( i++ ))
-      done
-
-      if test "${objdump_failed}" != "00" || test -n "${failed}"
-      then
-        # objdump had no idea how to handle it
-        if diff_two_files; then
-          return 0
-        fi
-        return 1
-      fi
-
-      elfdiff=
-      if test "$ret" != "0"
-      then
-        wprint "$file differs in assembler output"
-        $buildcompare_head $dfile
-        elfdiff='elfdiff'
-      fi
-
-      sections="$(
-        $OBJDUMP -s new/$file |
+      local sections=($(
+      $OBJDUMP -s new/$file |
         sed -n --regexp-extended -e '
           /Contents of section .*:/ {
-            s,.* (.*):,\1,g
+            s,.* (.*):,-j \1,g
             /\.build-id/d
             /\.gnu_debuglink/d
             /\.gnu_debugdata/d
             p
           }
-        '
-        )"
-      for section in $sections
-      do
-        diff --unified \
+        '))
+      ($OBJDUMP -s ${sections[@]} old/$file |
+        sed -e "s,old/,,"  ; echo "${PIPESTATUS[@]}" > $file1 ) > old/$file.objdump &
+      ($OBJDUMP -s ${sections[@]} new/$file |
+        sed -e "s,new/,,"  ; echo "${PIPESTATUS[@]}" > $file2 ) > new/$file.objdump &
+      wait
+      read i < ${file1}
+      pipestatus=( $i )
+      objdump_failed="${pipestatus[0]}"
+      if [[ ${pipestatus[*]} =~ [1-9] ]]
+      then
+        wprint "ELF section: pipe command failed for old/$file"
+        elfdiff='failed'
+      fi
+      read i < ${file2}
+      pipestatus=( $i )
+      objdump_failed="${objdump_failed}${pipestatus[0]}"
+      if [[ ${pipestatus[*]} =~ [1-9] ]]
+      then
+        wprint "ELF section: pipe command failed for new/$file"
+        elfdiff='failed'
+      fi
+      if test -z "${elfdiff}"
+      then
+        diff --speed-large-files --unified \
           --label "old $file (objdump)" \
           --label "new $file (objdump)" \
-          <( $OBJDUMP -s -j $section old/$file |
-              sed -e "s,^old/,," ;
-              echo "${PIPESTATUS[@]}" > $file1) \
-          <( $OBJDUMP -s -j $section new/$file |
-            sed -e "s,^new/,," ;
-            echo "${PIPESTATUS[@]}" > $file2
-            ) > $dfile
+          old/$file.objdump new/$file.objdump > $dfile
         ret=$?
-        failed=
-        read i < ${file1}
-        pipestatus=( $i )
-        objdump_failed="${pipestatus[0]}"
-        i=0
-        while test $i -lt ${#pipestatus[@]}
-        do
-          if test "${pipestatus[$i]}" != "0"
-          then
-            wprint "ELF section: pipe command #$i failed with ${pipestatus[$i]} for old/$file"
-            failed='failed'
-          fi
-          : $(( i++ ))
-        done
-        read i < ${file2}
-        pipestatus=( $i )
-        objdump_failed="${objdump_failed}${pipestatus[0]}"
-        i=0
-        while test $i -lt ${#pipestatus[@]}
-        do
-          if test "${pipestatus[$i]}" != "0"
-          then
-            wprint "ELF section: pipe command #$i failed with ${pipestatus[$i]} for new/$file"
-            failed='failed'
-          fi
-          : $(( i++ ))
-        done
-        if test -n "${failed}"
-        then
-          elfdiff='elfdiff'
-          break
-        fi
         if test "$ret" != "0"
         then
-          wprint "$file differs in ELF section $section"
+          wprint "$file differs in ELF sections"
           $buildcompare_head $dfile
           elfdiff='elfdiff'
-        else
-          watchdog_touch
         fi
-      done
-      if test -n "$elfdiff"; then
+      fi
+      if test -z "$elfdiff"
+      then
+        rm old/$file.objdump new/$file.objdump &
+        return 0
+      fi
+      watchdog_touch
+      elfdiff=
+      ($OBJDUMP -d --no-show-raw-insn old/$file | filter_disasm |
+        sed -e "s,^old/[^:]\+,,"  ; echo "${PIPESTATUS[@]}" > $file1 ) > old/$file.objdump &
+      ($OBJDUMP -d --no-show-raw-insn new/$file | filter_disasm |
+        sed -e "s,^new/[^:]\+,,"  ; echo "${PIPESTATUS[@]}" > $file2 ) > new/$file.objdump &
+      wait
+      read i < ${file1}
+      pipestatus=( $i )
+      objdump_failed="${objdump_failed}${pipestatus[0]}"
+      if [[ ${pipestatus[*]} =~ [1-9] ]]
+      then
+        wprint "ELF disassembly: pipe command failed for old/$file"
+        elfdiff='failed'
+      fi
+      read i < ${file2}
+      pipestatus=( $i )
+      objdump_failed="${objdump_failed}${pipestatus[0]}"
+      if [[ ${pipestatus[*]} =~ [1-9] ]]
+      then
+        wprint "ELF disassembly: pipe command failed for new/$file"
+        elfdiff='failed'
+      fi
+      if test ${objdump_failed} -gt 0 || test -n "${elfdiff}"
+      then
+        # objdump had no idea how to handle it
+        rm old/$file.objdump new/$file.objdump &
+        if diff_two_files; then
+          return 0
+        fi
         return 1
       fi
+      elfdiff=
+      diff --speed-large-files --unified \
+        --label "old $file (disasm)" \
+        --label "new $file (disasm)" \
+        old/$file.objdump new/$file.objdump > $dfile
+      ret=$?
+      rm old/$file.objdump new/$file.objdump &
+      if test "$ret" != "0"
+      then
+        wprint "$file differs in assembler output"
+        $buildcompare_head $dfile
+        elfdiff='elfdiff'
+      else
+        watchdog_touch
+      fi
+      if test -n "$elfdiff"
+      then
+        return 1
+      fi
+      ;;
+    *ASCII*|*text*)
+      if ! cmp -s "old/$file" "new/$file" ; then
+        wprint "$file differs ($ftype)"
+        diff -u "old/$file" "new/$file" | $buildcompare_head
+        return 1
+      fi
+      ;;
+    directory|setuid\ directory|setuid,\ directory|sticky,\ directory)
+      # tar might package directories - ignore them here
       return 0
       ;;
-     *ASCII*|*text*)
-       if ! cmp -s "old/$file" "new/$file"; then
-         wprint "$file differs ($ftype)"
-         diff -u "old/$file" "new/$file" | $buildcompare_head
-         return 1
-       fi
-       ;;
-     directory|setuid\ directory|setuid,\ directory|sticky,\ directory)
-       # tar might package directories - ignore them here
-       return 0
-       ;;
-     bzip2\ compressed\ data*)
-       if ! check_compressed_file "$file" "bz2"; then
-           return 1
-       fi
-       ;;
-     gzip\ compressed\ data*)
-       if ! check_compressed_file "$file" "gzip"; then
-           return 1
-       fi
-       ;;
-     XZ\ compressed\ data*)
-       if ! check_compressed_file "$file" "xz"; then
-           return 1
-       fi
-       ;;
+    bzip2\ compressed\ data*)
+      if ! check_compressed_file "$file" "bz2" ; then
+        return 1
+      fi
+      ;;
+    gzip\ compressed\ data*)
+      if ! check_compressed_file "$file" "gzip" ; then
+        return 1
+      fi
+      ;;
+    XZ\ compressed\ data*)
+      if ! check_compressed_file "$file" "xz" ; then
+        return 1
+      fi
+      ;;
+    Zstandard\ compressed\ data*)
+      if ! check_compressed_file "$file" "zst" ; then
+        return 1
+      fi
+      ;;
     Zip\ archive\ data,*)
       if ! compare_archive "${file}" 'archive_zip' ; then
         return 1
       fi
       ;;
-     POSIX\ tar\ archive)
-          mv old/$file{,.tar}
-          mv new/$file{,.tar}
-          if ! check_single_file ${file}.tar; then
-            return 1
-          fi
-       ;;
-     cpio\ archive)
-          mv old/$file{,.cpio}
-          mv new/$file{,.cpio}
-          if ! check_single_file ${file}.cpio; then
-            return 1
-          fi
-     ;;
-     Squashfs\ filesystem,*)
-        wprint "$file ($ftype)"
-        mv old/$file{,.squashfs}
-        mv new/$file{,.squashfs}
-        if ! check_single_file ${file}.squashfs; then
-          return 1
-        fi
-     ;;
-     broken\ symbolic\ link\ to\ *|symbolic\ link\ to\ *)
-       readlink "old/$file" > $file1
-       readlink "new/$file" > $file2
-       if ! diff -u $file1 $file2; then
-         wprint "symlink target for $file differs"
-         return 1
-       fi
-       ;;
-     block\ special\ *)
-     ;;
-     character\ special\ *)
-     ;;
-     *)
-       if ! diff_two_files; then
-           return 1
-       fi
-       ;;
+    POSIX\ tar\ archive)
+      mv old/$file{,.tar}
+      mv new/$file{,.tar}
+      if ! check_single_file ${file}.tar; then
+        return 1
+      fi
+      ;;
+    cpio\ archive)
+      mv old/$file{,.cpio}
+      mv new/$file{,.cpio}
+      if ! check_single_file ${file}.cpio; then
+        return 1
+      fi
+      ;;
+    Squashfs\ filesystem,*)
+      wprint "$file ($ftype)"
+      mv old/$file{,.squashfs}
+      mv new/$file{,.squashfs}
+      if ! check_single_file ${file}.squashfs; then
+        return 1
+      fi
+      ;;
+    broken\ symbolic\ link\ to\ *|symbolic\ link\ to\ *)
+      readlink "old/$file" > $file1
+      readlink "new/$file" > $file2
+      if ! diff -u $file1 $file2; then
+        wprint "symlink target for $file differs"
+        return 1
+      fi
+      ;;
+    block\ special\ *)
+      ;;
+    character\ special\ *)
+      ;;
+    *)
+      if ! diff_two_files; then
+        return 1
+      fi
+      ;;
   esac
   return 0
 }
@@ -1211,8 +1201,9 @@ case $oldpkg in
 esac
 
 wprint "Extracting packages"
-unpackage $oldpkg $dir/old
-unpackage $newpkg $dir/new
+unpackage $oldpkg $dir/old &
+unpackage $newpkg $dir/new &
+wait
 
 case $oldpkg in
   *.deb|*.ipk)
@@ -1241,12 +1232,12 @@ fi
 # preserve cmp_rpm_meta result for check_all runs
 ret=$RES
 for file in "${files[@]}"; do
-   if ! check_single_file "$file"; then
-       ret=1
-       if test -z "$check_all"; then
-           break
-       fi
-   fi
+  if ! check_single_file "$file"; then
+    ret=1
+    if test -z "$check_all"; then
+      break
+    fi
+  fi
 done
 
 if [ "$PROC_MOUNTED" -eq "1" ]; then
@@ -1255,7 +1246,7 @@ if [ "$PROC_MOUNTED" -eq "1" ]; then
 fi
 
 if test "$ret" = 0; then
-     echo "Package content is identical"
+  echo "Package content is identical"
 fi
 exit $ret
 # vim: tw=666 ts=2 shiftwidth=2 et

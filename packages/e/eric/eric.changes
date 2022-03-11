@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar  6 13:50:42 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add new EditorConfig dependency
+- Add libQt5Sql5-sqlite dependency and recommends for mysql and
+  postgresql plug-ins
+- Add more recommends, according to install.py
+
+-------------------------------------------------------------------
 Sat Jan 15 18:56:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.11

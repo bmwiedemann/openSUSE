@@ -1,7 +1,7 @@
 #
 # spec file for package imv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           imv
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Image viewer for X11/Wayland
-License:        MIT AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Graphics/Viewers
-URL:            https://github.com/eXeC64/imv
-Source:         https://github.com/eXeC64/imv/archive/v%{version}.tar.gz
+URL:            https://git.sr.ht/~exec64/imv
+Source:         https://git.sr.ht/~exec64/imv/archive/v%{version}.tar.gz
 BuildRequires:  asciidoc
 BuildRequires:  freeimage-devel
 BuildRequires:  libicu-devel
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(xkbcommon-x11)
 imv is a command line image viewer intended for use with tiling window managers.
 
 %prep
-%setup -q
+%autosetup -n %{name}-v%{version}
 
 %build
 %meson -Dlibnsgif=disabled

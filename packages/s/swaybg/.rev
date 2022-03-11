@@ -26,4 +26,15 @@
     memory and load faster.</comment>
     <requestid>907254</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dad0718e56f3ab13c9a2c74880b24617</srcmd5>
+    <version>1.1.1</version>
+    <time>1646948719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Add editorconfig
+  * Only render a new frame when the buffer size changes
+  * Fix memory leak when using image tile mode</comment>
+    <requestid>960698</requestid>
+  </revision>
 </revisionlist>

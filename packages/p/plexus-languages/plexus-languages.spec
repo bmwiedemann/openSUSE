@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-languages
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 Name:           plexus-languages
-Version:        1.0.3
+Version:        1.1.1
 Release:        0
 Summary:        Plexus Languages
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-languages
-# ./generate-tarball.sh
 Source0:        %{name}-%{version}.tar.xz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
-# Sources contain bundled jars that we cannot verify for licensing
-Source2:        generate-tarball.sh
 Source100:      plexus-java-build.xml
 BuildRequires:  ant
 BuildRequires:  atinject
@@ -55,7 +52,7 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q
 
 cp %{SOURCE1} .
 cp %{SOURCE100} plexus-java/build.xml

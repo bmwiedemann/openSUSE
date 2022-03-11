@@ -1,7 +1,7 @@
 #
 # spec file for package python-protonvpn-nm-lib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-protonvpn-nm-lib
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        ProtonVPN NetworkManager library
 License:        GPL-3.0-or-later
@@ -29,6 +29,7 @@ Source:         https://github.com/ProtonVPN/protonvpn-nm-lib/archive/refs/tags/
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyxdg}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,9 +58,6 @@ The ProtonVPN NetworkManager library
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{python_sitelib}/protonvpn_nm_lib
-
-%check
-%pytest tests
 
 %files %{python_files}
 %license LICENSE

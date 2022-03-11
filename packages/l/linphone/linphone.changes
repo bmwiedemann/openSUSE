@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  7 21:46:37 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 5.0.70:
+  * add tests for register with unresponsive server
+  * Add telephone event payload from the core if result is empty aka : the first.
+  * Repair tests failing due to missing root certificate after changing certificate on linphone.or
+
+-------------------------------------------------------------------
 Tue Feb  1 20:45:37 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.67
 
 - Update to version 5.0.67:

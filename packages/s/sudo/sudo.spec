@@ -39,6 +39,7 @@ Source7:        README_313276.test
 # PATCH-OPENSUSE: the "SUSE" branding of the default sudo config
 Patch0:         sudo-sudoers.patch
 Patch1:         feature-upstream-restrict-sudo-U-other-l.patch
+Patch2:         sudo-1.9.9-honor-T_opt.patch
 BuildRequires:  audit-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  groff

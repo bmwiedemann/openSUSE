@@ -60,4 +60,13 @@
     <comment></comment>
     <requestid>845817</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>018aa8f966da0ec39e4b76a5e3ee3008</srcmd5>
+    <version>1.31.3</version>
+    <time>1646848087</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove redundant python3 dependency from Requires
+- Update regular expression to fix python shebang (forwarded request 960475 from glaubitz)</comment>
+    <requestid>960484</requestid>
+  </revision>
 </revisionlist>

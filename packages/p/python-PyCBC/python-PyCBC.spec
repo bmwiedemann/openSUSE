@@ -23,7 +23,7 @@
 
 %define modname PyCBC
 Name:           python-PyCBC
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later

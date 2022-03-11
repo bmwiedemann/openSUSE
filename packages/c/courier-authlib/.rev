@@ -403,4 +403,16 @@ reviewed ok
     <comment></comment>
     <requestid>917793</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1484b48a4c70f8d716e03a7c464ec747</srcmd5>
+    <version>0.71.4</version>
+    <time>1646767949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.71.4:
+  * Fix a theoretical memory corruption during authentication if the
+    process runs out of memory. The server does not do much memory
+    allocation prior to authentication, this is mostly academic.
+</comment>
+    <requestid>960231</requestid>
+  </revision>
 </revisionlist>

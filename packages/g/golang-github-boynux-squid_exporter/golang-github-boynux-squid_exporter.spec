@@ -23,6 +23,15 @@
 %define	targetname    prometheus-squid_exporter
 %define	serviceuser   prometheus
 
+%if 0%{?rhel} == 8
+%global debug_package %{nil}
+%endif
+
+%if 0%{?rhel}
+# Fix ERROR: No build ID note found in
+%undefine _missing_build_ids_terminate_build
+%endif
+
 Name:           golang-github-boynux-squid_exporter
 Version:        1.6
 Release:        0
@@ -35,10 +44,18 @@ Source1:        %{targetname}.service
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+%if 0%{?rhel}
+BuildRequires:  golang >= 1.15
+%else
 BuildRequires:  golang(API) = 1.15
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
+%if 0%{?rhel}
+Requires(pre):  shadow-utils
+%else
 Requires(pre):  shadow
+%endif
 
 %description
 Exports squid metrics in Prometheus format
@@ -48,6 +65,10 @@ Exports squid metrics in Prometheus format
 
 %build
 %goprep %{githubrepo}
+%if 0%{?rhel}
+# Fix automatic versioning
+export GO111MODULE=auto
+%endif
 %gobuild
 
 %install
@@ -57,19 +78,39 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{targetname}
 
+%check
+%if 0%{?rhel}
+# Fix OBS debug_package execution.
+rm -f %{buildroot}/usr/lib/debug/%{_bindir}/%{targetname}-%{version}-*.debug
+%endif
+
 %pre
+%if 0%{?suse_version}
 %service_add_pre %{targetname}.service
+%endif
 getent group %{serviceuser} >/dev/null || %{_sbindir}/groupadd -r %{serviceuser}
 getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceuser} -d %{_localstatedir}/lib/%{serviceuser} -M -s /sbin/nologin %{serviceuser}
 
 %post
+%if 0%{?rhel}
+%systemd_post %{targetname}.service
+%else
 %service_add_post %{targetname}.service
+%endif
 
 %preun
+%if 0%{?rhel}
+%systemd_preun %{targetname}.service
+%else
 %service_del_preun %{targetname}.service
+%endif
 
 %postun
+%if 0%{?rhel}
+%systemd_postun %{targetname}.service
+%else
 %service_del_postun %{targetname}.service
+%endif
 
 %files
 %defattr(-,root,root,-)

@@ -77,13 +77,13 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %license LICENSES/*
 %{_kf5_appstreamdir}/org.kde.kdenetwork-filesharing.metainfo.xml
-%{_kf5_libdir}/libexec/kauth/authhelper
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/propertiesdialog
 %{_kf5_plugindir}/kf5/propertiesdialog/sambausershareplugin.so
+%{_kf5_dbuspolicydir}/org.kde.filesharing.samba.conf
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.filesharing.samba.service
-%{_kf5_sharedir}/dbus-1/system.d/org.kde.filesharing.samba.conf
 %{_kf5_sharedir}/polkit-1/actions/org.kde.filesharing.samba.policy
+%{_libexecdir}/kauth/authhelper
 
 %if %{with released}
 %files lang -f %{name}.lang

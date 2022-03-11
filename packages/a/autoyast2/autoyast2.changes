@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:00:12 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Properly handle the "dopackages" option in the openFile
+  method of the AyastSetup module (bsc#1196566).
+- 4.4.35
+
+-------------------------------------------------------------------
+Tue Mar  4 13:14:15 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Avoid login while running AutoYaST init-scripts (bsc#1196594 and
+  related to bsc#1195059).
+- 4.4.34
+
+-------------------------------------------------------------------
 Thu Mar  3 11:48:36 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Consider user selected packages as optional to not block the

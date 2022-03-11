@@ -7,4 +7,12 @@
     <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/FICMCLQ2YMZ5CXLOQJBZ4ZBZVXVTROZD/</comment>
     <requestid>941261</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6c4877faf8ad13e764b62f5efe5b5a72</srcmd5>
+    <version>2.0.0~git0.5b3eac1</version>
+    <time>1646848083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960432</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  2 09:14:45 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add a list of Obsoletes to libstdc++6-pp-gcc11 so updates from
+  packages provided by older GCC work.  Add a requires from that
+  package to the corresponding libstc++6 package to keep those
+  at the same version.  [bsc#1196107]
+
+-------------------------------------------------------------------
 Thu Feb 10 12:31:01 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Add gcc11-PIE, similar to gcc-PIE but affecting gcc11 [bsc#1195628]

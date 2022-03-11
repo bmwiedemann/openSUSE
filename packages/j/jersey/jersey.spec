@@ -1,7 +1,7 @@
 #
 # spec file for package jersey
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch0:         jersey-2.17-mvc-jsp-servlet31.patch
 # Keep working with old deps in Fedora
 Patch2:         0002-Port-to-glassfish-jsonp-1.0.patch
 Patch3:         0003-Port-to-hibernate-validation-5.x.patch
+Patch4:         jersey-2.28-contended.patch
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
@@ -54,7 +55,6 @@ BuildRequires:  mvn(org.glassfish.hk2:osgi-resource-locator)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.ow2.asm:asm)
 BuildRequires:  mvn(xerces:xercesImpl)
-BuildConflicts: java-devel >= 9
 BuildArch:      noarch
 %if %{without jp_minimal}
 BuildRequires:  mvn(com.github.spullara.mustache.java:compiler)
@@ -117,6 +117,7 @@ This package contains javadoc for %{name}.
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 find . -name "*.jar" -print -delete
 find . -name "*.class" -print -delete
@@ -300,12 +301,13 @@ sed -i -e 's/javax\.activation\.\*;/javax.activation.*;resolution:=optional;/' c
 %build
 %if %{without jp_minimal}
 # Build everything except examples, integration tests and distribution bundles
-%{mvn_build} -- -PsecurityOff -Dasm.version=6.2.1 -Dmaven.test.failure.ignore=true \
-  -Dexamples.excluded -Dtests.excluded -Dbundles.excluded
+%{mvn_build} -f -- -PsecurityOff -Dasm.version=6.2.1 -Dmaven.test.failure.ignore=true \
+  -Dexamples.excluded -Dtests.excluded -Dbundles.excluded -Dsource=8
 %else
 # Additionally omit tests and testing framework for minimal builds
 %{mvn_build} -f -- -PsecurityOff -Dasm.version=6.2.1 -Dmaven.test.failure.ignore=true \
-  -Dexamples.excluded -Dtests.excluded -Dbundles.excluded -Dtest-framework.excluded
+  -Dexamples.excluded -Dtests.excluded -Dbundles.excluded -Dtest-framework.excluded \
+  -Dsource=8
 %endif
 
 %install

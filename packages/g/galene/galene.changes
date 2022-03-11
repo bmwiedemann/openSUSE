@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 08 22:18:36 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.5:
+  * Implement third-party (token-based) authentication.
+  * Implement peer-to-peer file transfer (/sendfile).
+  * Add a contextual menu to the users list.
+  * Removed the "Broadcast file" entry in the side menu, it is now
+    available as a context menu entry and a chat command (/presentfile).
+  * Add side-menu options for high-quality audio (Opus at 128kbps) and
+    disabling audio preprocessing.
+  * Send audio in addition to video when sharing browser tabs.
+
+-------------------------------------------------------------------
 Tue Feb 01 21:10:01 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.4.4:

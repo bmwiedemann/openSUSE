@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  3.4.3
-%define _vers 3_4_3
+%define vers  4.0.1
+%define _vers 4_0_1
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -256,8 +256,6 @@ Source1:        mpivars.sh
 Source2:        mpivars.csh
 Source3:        macros.hpc-mpich
 Source100:      _multibuild
-# PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
-Patch0:         0001-Drop-real128.patch
 Patch1:         autogen-only-deal-with-json-yaksa-if-enabled.patch
 Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -285,8 +283,10 @@ BuildRequires:  libfabric-devel
 %endif
 
 %if "%{build_flavor}" == "ucx"
-BuildRequires:  libucp-devel
-BuildRequires:  libucs-devel
+BuildRequires:  libucm-devel >= 1.7.0
+BuildRequires:  libucp-devel >= 1.7.0
+BuildRequires:  libucs-devel >= 1.7.0
+BuildRequires:  libuct-devel >= 1.7.0
 # UCX is only available for 64b archs
 ExcludeArch:    %ix86 %arm
 %endif
@@ -394,10 +394,6 @@ echo with HPC
 echo without HPC
 %endif
 %setup -q -n mpich-%{version}%{?rc_ver}
-# Only apply this patch on Armv7
-%ifarch armv7hl
-%patch0
-%endif
 %patch1
 %patch2
 # Make sure prebuilt dependencies are used and not mpich submodules
@@ -409,6 +405,7 @@ rm -R modules/{ucx,libfabric,json-c}
 # GCC10 needs an extra flag to allow badly passed parameters
 %if 0%{?suse_version} > 1500 || 0%{?hpc_gnu_dep_version} >= 10
 export FFLAGS="-fallow-argument-mismatch $FFLAGS"
+export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
 %endif
 
 ./autogen.sh --without-ucx --without-ofi --without-json
@@ -431,9 +428,11 @@ export FFLAGS="-fallow-argument-mismatch $FFLAGS"
     --disable-rpath      \
     --disable-wrapper-rpath      \
 %if "%{build_flavor}" == "ofi"
+   --with-ofi \
    --with-device=ch4:ofi \
 %endif
 %if "%{build_flavor}" == "ucx"
+   --with-ucx \
    --with-device=ch4:ucx \
 %endif
 %if "%{build_flavor}" == "verbs"
@@ -622,7 +621,6 @@ fi
 %{p_includedir}
 %{p_libdir}/*.so
 %{p_libdir}/pkgconfig/mpich.pc
-%{p_libdir}/pkgconfig/yaksa.pc
 
 %if 0%{?build_static_devel}
 %files devel-static

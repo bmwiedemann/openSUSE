@@ -1,7 +1,7 @@
 #
 # spec file for package python-ConfigArgParse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-ConfigArgParse
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 Summary:        A drop-in replacement for argparse
 License:        MIT
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bw2/ConfigArgParse
 Source:         https://files.pythonhosted.org/packages/source/C/ConfigArgParse/ConfigArgParse-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -38,9 +37,6 @@ Requires:       python-setuptools
 Provides:       python-configargparse = %{version}-%{release}
 Obsoletes:      python-configargparse < %{version}-%{release}
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-devel
-%endif
 %python_subpackages
 
 %description

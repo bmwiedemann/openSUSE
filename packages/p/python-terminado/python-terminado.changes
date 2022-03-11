@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  9 16:47:14 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.13.3:
+  * Bugs fixed
+    + Test ConPTY backend against pywinpty 2.0.5 #146 (@andfoy)
+
+-------------------------------------------------------------------
 Sat Mar  5 18:22:18 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.13.2:

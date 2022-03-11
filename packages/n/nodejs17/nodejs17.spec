@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs17
-Version:        17.5.0
+Version:        17.6.0
 Release:        0
 
 # Double DWZ memory limits
@@ -135,6 +135,7 @@ Source20:       bash_output_helper.bash
 
 ## Patches not distribution specific
 Patch1:         cares_public_headers.patch
+Patch2:         gcc12-fix.patch
 Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
@@ -351,7 +352,7 @@ ExclusiveArch:  not_buildable
 %endif
 
 Provides:       bundled(brotli) = 1.0.9
-Provides:       bundled(libuv) = 1.42.0
+Provides:       bundled(libuv) = 1.43.0
 Provides:       bundled(uvwasi) = 0.0.12
 Provides:       bundled(v8) = 9.6.180.15
 
@@ -391,7 +392,7 @@ Requires:       nodejs17 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 8.4.1
+Provides:       npm(npm) = 8.5.1
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -411,7 +412,7 @@ Provides:       bundled(node-ansicolors) = 0.3.2
 Provides:       bundled(node-ansistyles) = 0.1.3
 Provides:       bundled(node-aproba) = 2.0.0
 Provides:       bundled(node-archy) = 1.0.0
-Provides:       bundled(node-are-we-there-yet) = 2.0.0
+Provides:       bundled(node-are-we-there-yet) = 3.0.0
 Provides:       bundled(node-asap) = 2.0.6
 Provides:       bundled(node-balanced-match) = 1.0.2
 Provides:       bundled(node-bin-links) = 3.0.0
@@ -450,7 +451,7 @@ Provides:       bundled(node-fastest-levenshtein) = 1.0.12
 Provides:       bundled(node-fs-minipass) = 2.1.0
 Provides:       bundled(node-fs.realpath) = 1.0.0
 Provides:       bundled(node-function-bind) = 1.1.1
-Provides:       bundled(node-gauge) = 4.0.0
+Provides:       bundled(node-gauge) = 4.0.1
 Provides:       bundled(node-glob) = 7.2.0
 Provides:       bundled(node-graceful-fs) = 4.2.9
 Provides:       bundled(node-has) = 1.0.3
@@ -491,13 +492,14 @@ Provides:       bundled(node-libnpmexec) = 3.0.3
 Provides:       bundled(node-libnpmfund) = 2.0.2
 Provides:       bundled(node-libnpmhook) = 7.0.1
 Provides:       bundled(node-libnpmorg) = 3.0.1
-Provides:       bundled(node-libnpmpack) = 3.0.1
+Provides:       bundled(node-libnpmpack) = 3.1.0
 Provides:       bundled(node-libnpmpublish) = 5.0.1
 Provides:       bundled(node-libnpmsearch) = 4.0.1
 Provides:       bundled(node-libnpmteam) = 3.0.1
 Provides:       bundled(node-libnpmversion) = 2.0.2
 Provides:       bundled(node-lru-cache) = 6.0.0
-Provides:       bundled(node-make-fetch-happen) = 10.0.0
+Provides:       bundled(node-lru-cache) = 7.3.1
+Provides:       bundled(node-make-fetch-happen) = 10.0.3
 Provides:       bundled(node-make-fetch-happen) = 9.1.0
 Provides:       bundled(node-minimatch) = 3.0.4
 Provides:       bundled(node-minipass) = 3.1.6
@@ -525,9 +527,9 @@ Provides:       bundled(node-npm-package-arg) = 8.1.5
 Provides:       bundled(node-npm-packlist) = 3.0.0
 Provides:       bundled(node-npm-pick-manifest) = 6.1.1
 Provides:       bundled(node-npm-profile) = 6.0.0
-Provides:       bundled(node-npm-registry-fetch) = 12.0.1
+Provides:       bundled(node-npm-registry-fetch) = 12.0.2
 Provides:       bundled(node-npm-user-validate) = 1.0.1
-Provides:       bundled(node-npmlog) = 6.0.0
+Provides:       bundled(node-npmlog) = 6.0.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-p-map) = 4.0.0
@@ -633,6 +635,7 @@ tar Jxf %{SOURCE11}
 %endif
 
 %patch1 -p1
+%patch2 -p1
 %patch3 -p1
 %patch5 -p1
 %patch7 -p1

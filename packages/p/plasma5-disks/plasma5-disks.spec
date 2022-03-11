@@ -82,7 +82,6 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 %dir %{_kf5_plugindir}/plasma/kcms
 %dir %{_kf5_plugindir}/plasma/kcms/kinfocenter/
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/smart.so
-%dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kded/
 %{_kf5_plugindir}/kf5/kded/smart.so
 %{_kf5_notifydir}/org.kde.kded.smart.notifyrc
@@ -93,7 +92,7 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 %{_datadir}/dbus-1/system-services/org.kde.kded.smart.service
 %{_kf5_dbuspolicydir}/org.kde.kded.smart.conf
 %{_datadir}/polkit-1/actions/org.kde.kded.smart.policy
-%{_kf5_libdir}/libexec/kauth/kded-smart-helper
+%{_libexecdir}/kauth/kded-smart-helper
 
 %if %{with released}
 %files lang -f %{name}.lang

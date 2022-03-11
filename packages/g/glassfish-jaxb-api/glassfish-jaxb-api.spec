@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jaxb-api
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,9 +64,6 @@ This package contains javadoc for %{name}.
     <sourceFileExcludes>
         <exclude>module-info.java</exclude>
     </sourceFileExcludes>" jaxb-api
-
-%{mvn_file} :{*} @1
-%{mvn_alias} javax.xml.bind:jaxb-api jakarta.xml.bind:jakarta.xml.bind-api
 
 %build
 %{mvn_build} -f -- -Dsource=8

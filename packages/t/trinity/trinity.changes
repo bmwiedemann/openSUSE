@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 10 12:37:14 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20220309:
+  * Ignore compiler warning
+  * fix unlikely overflow in stallcounter
+  * remove -Wdeclaration-after-statement
+  * panic when fd number is close to limition
+  * Fix compiler warning
+  * add support for riscv64 platform
+
+-------------------------------------------------------------------
 Wed Dec 22 09:49:04 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9+git.20211129:

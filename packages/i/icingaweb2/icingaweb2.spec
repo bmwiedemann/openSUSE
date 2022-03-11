@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013-2017 Icinga Development Team | GPLv2+
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,10 +20,10 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.9.5
+Version:        2.9.6
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
-License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          System/Monitoring
 URL:            https://icinga.com
 Source0:        https://github.com/Icinga/icingaweb2/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -126,26 +126,24 @@ Icinga Web 2 is the monitoring web interface for icinga2.
 It comes with a completely new design and many user-friendly enhancements to
 find the relevant information even faster.
 
-
 %package common
 Summary:        Common files for Icinga Web 2 and the Icinga CLI
-License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          System/Monitoring
 %{?amzn:Requires(pre):          shadow-utils}
 %{?fedora:Requires(pre):        shadow-utils}
 %{?rhel:Requires(pre):          shadow-utils}
 %{?suse_version:Requires(pre):  pwdutils}
 %if 0%{?suse_version} > 1320
-Requires(pre):                  system-user-wwwrun
+Requires(pre):  system-user-wwwrun
 %endif
 
 %description common
 Common files for Icinga Web 2 and the Icinga CLI.
 
-
 %package -n php-Icinga
 Summary:        Icinga Web 2 PHP library
-License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          Development/Libraries/Other
 Requires:       %{php_common} >= %{php_version}
 Requires:       %{php}-gd %{php}-intl %{php}-mbstring
@@ -158,10 +156,9 @@ Requires:       %{name}-vendor-zf1 = %{version}-%{release}
 %description -n php-Icinga
 Icinga Web 2 PHP library.
 
-
 %package -n icingacli
 Summary:        Icinga CLI
-License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          System/Monitoring
 Requires:       %{name}-common = %{version}-%{release}
 Requires:       %{php_cli} >= %{php_version}
@@ -187,14 +184,14 @@ Icinga CLI.
 
 %package selinux
 Summary:        SELinux policy for Icinga Web 2
-License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          System/Base
 BuildRequires:  checkpolicy
 BuildRequires:  hardlink
 BuildRequires:  selinux-policy-devel
 Requires:       %{name} = %{version}-%{release}
-Requires(post):     policycoreutils
-Requires(postun):   policycoreutils
+Requires(post): policycoreutils
+Requires(postun):policycoreutils
 
 %description selinux
 SELinux policy for Icinga Web 2.
@@ -210,7 +207,6 @@ Requires:       %{php_common} >= %{php_version}
 %description vendor-dompdf
 Icinga Web 2 vendor library dompdf.
 
-
 %package vendor-HTMLPurifier
 Summary:        Icinga Web 2 vendor library HTMLPurifier
 License:        LGPL-2.1-only
@@ -224,7 +220,6 @@ Obsoletes:      %{name}-vendor-HTMLPurifier > %{version}
 %description vendor-HTMLPurifier
 Icinga Web 2 vendor library HTMLPurifier.
 
-
 %package vendor-JShrink
 Summary:        Icinga Web 2 vendor library JShrink
 License:        BSD-3-Clause
@@ -234,7 +229,6 @@ Requires:       %{php_common} >= %{php_version}
 
 %description vendor-JShrink
 Icinga Web 2 vendor library JShrink.
-
 
 %package vendor-lessphp
 Summary:        Icinga Web 2 vendor library lessphp
@@ -246,7 +240,6 @@ Requires:       %{php_common} >= %{php_version}
 %description vendor-lessphp
 Icinga Web 2 vendor library lessphp.
 
-
 %package vendor-Parsedown
 Summary:        Icinga Web 2 vendor library Parsedown
 License:        MIT
@@ -256,7 +249,6 @@ Requires:       %{php_common} >= %{php_version}
 
 %description vendor-Parsedown
 Icinga Web 2 vendor library Parsedown.
-
 
 %package vendor-zf1
 Summary:        Icinga Web 2's fork of Zend Framework 1
@@ -269,7 +261,6 @@ Requires:       %{name}-common = %{version}-%{release}
 
 %description vendor-zf1
 Icinga Web 2's fork of Zend Framework 1.
-
 
 %prep
 %setup -q -n %{name}-%{version}

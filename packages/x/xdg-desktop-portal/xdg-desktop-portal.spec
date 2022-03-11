@@ -76,6 +76,7 @@ autoreconf -fiv
 %configure \
 	--enable-geoclue \
 	--enable-pipewire \
+	--docdir=%{_defaultdocdir}/%{name} \
 	%{nil}
 %make_build
 
@@ -99,16 +100,16 @@ export LANG=C.UTF-8
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.PermissionStore.service
 %{_datadir}/dbus-1/services/org.freedesktop.portal.Desktop.service
 %{_datadir}/dbus-1/services/org.freedesktop.portal.Documents.service
-%{_datadir}/doc/xdg-desktop-portal/
-%{_libexecdir}/xdg-desktop-portal
+%{_libexecdir}/%{name}
 %{_libexecdir}/xdg-document-portal
 %{_libexecdir}/xdg-permission-store
-%{_userunitdir}/xdg-desktop-portal.service
+%{_userunitdir}/%{name}.service
 %{_userunitdir}/xdg-document-portal.service
 %{_userunitdir}/xdg-permission-store.service
 
 %files devel
-%{_datadir}/pkgconfig/xdg-desktop-portal.pc
+%doc %{_defaultdocdir}/%{name}/
+%{_datadir}/pkgconfig/%{name}.pc
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar  3 08:30:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.0:
+  + Restyled headerbar
+  + New app icon
+  + Responds to user's prefers-dark setting
+  + Updated translations.
+- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
+- Add gnonograms-meson-0.61.patch: Fix build with meson 0.61.
+
+-------------------------------------------------------------------
 Wed Sep  9 16:12:37 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.4.5:

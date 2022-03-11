@@ -92,7 +92,6 @@ the GTK3 application style from within the application style KCM
 %dir %{_kf5_libdir}/gtk-3.0/modules/
 %{_kf5_libdir}/gtk-3.0/modules/libcolorreload-gtk-module.so
 %{_kf5_libdir}/gtk-3.0/modules/libwindow-decorations-gtk-module.so
-%dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_plugindir}/kf5/kded/gtkconfig.so
 
@@ -106,7 +105,7 @@ the GTK3 application style from within the application style KCM
 
 %files gtk3
 %license LICENSES/*
-%{_kf5_libdir}/libexec/gtk3_preview
+%{_libexecdir}/gtk3_preview
 %dir %{_kf5_sharedir}/themes/Breeze/
 %{_kf5_sharedir}/themes/Breeze/window_decorations.css
 

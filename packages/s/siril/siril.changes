@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  9 12:01:08 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to 1.0.0:
+  * Added ASTRO-TIFF standard
+  * Fixed memory consumption for all sequence operations
+  * Fixed settings for sequence export as webm film with VP9 codec
+  * Removed use of lo/hi cursors and fixed normalization for export
+  * Fixed load and close commands for scripts in GUI
+  * Fixed Bayer pattern in SER after extraction
+  * Fixed registration crash for small images
+  * Improved main panel separator positioning and keeping it in memory
+  * Improved speed of FITSEQ detection when scanning sequences
+  * Reintroduced compatibility with OpenCV 4.2 with disabled features
+
+-------------------------------------------------------------------
 Wed Dec 15 10:00:24 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.0~rc2:

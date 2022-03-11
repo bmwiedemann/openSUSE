@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Feb 24 18:24:20 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.8
+  * Important changes
+    * Avoid the need for a custom GMP allocator
+      This removes the need for the GUILE_INSTALL_GMP_MEMORY_FUNCTIONS
+      environment variable mentioned introduced with Guile 3.0.6
+      And deprecates the scm_install_gmp_memory_functions variable.
+  * New interfaces and functionality
+    * Typed vector copy functions in srfi srfi-4 gnu
+      See SRFI-4 - Guile extensions" in the manual.
+    * `bytevector-fill!' supports partial fill through optional arguments
+    * `vector-copy!' and `vector-copy' from (rnrs base) included in core
+    * New function bitvector-copy
+  * Other new optimizations
+    * Better optimization of "let" in right-hand-side of "letrec"
+    * Allow constant-folding for calls to "expt"
+    * Add ,optimize-cps REPL meta-command
+    * Improve alias analysis in common subexpression elimination
+    * Avoid argument-count checks for well-typed calls to known procedures
+    * Avoid return-value-count checks for calls to
+      known-return-arity procedures
+  * New deprecations
+    * Vector functions require vector arguments
+    * `scm_from_contiguous_typed_array' is deprecated
+    * Deprecate the "simple vector" concept, `scm_is_simple_vector'
+    * Deprecate internal contiguous array flag
+    * Deprecate symbol properties
+      Symbols used to have a "function slot" and a "property slot"
+  * Bug fixes
+    * Fix compilation of (ash x N), where N is a literal, at -O1 and below
+    * Texinfo and XML parsers are now thread-safe
+    * Fix crash when reading #nil
+    * Limit `ash' to left-shift by 2^32 bits
+    * Various other bug fixes, please refer to the NEWS file
+- Drop upstream fixed
+  0007-Fix-non-revealed-port-is-closed-ports.test.patch
+- Drop upstream fixed (commit b4a80f4239b19fea4d2cc3e9d197f24b809f0624)
+  gnulib-dynarray.patch
+
+-------------------------------------------------------------------
 Tue Sep  7 14:54:29 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - gnulib-dynarray.patch: Update gnulib module dynarray to fix use of

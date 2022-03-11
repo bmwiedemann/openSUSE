@@ -1,7 +1,7 @@
 #
 # spec file for package octave
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,8 @@ Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
 Patch2:         0001-Use-reentrant-libqhull_r.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?60016 - complements patch2 to cope with QHULL_R_* flags
 Patch3:         octave-qhull_r-fixes.patch
+# PATCH-FIX-UPSTREAM octave-fullscreen-with-multiple-monitors.patch badshah400@gmail.com -- fix maximized start on systems with two monitors (https://savannah.gnu.org/bugs/?61172)
+Patch4:         octave-fullscreen-with-multiple-monitors.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
@@ -223,6 +225,7 @@ This package contains documentation for Octave.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 

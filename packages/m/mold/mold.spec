@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.1
+Version:        1.1.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
@@ -61,12 +61,13 @@ export CXX=g++-10
 export CC=gcc
 export CXX=g++
 %endif
-export CFLAGS="%{optflags} -Wno-sign-compare"
-export CXXFLAGS="${CFLAGS}"
 export MANDIR=%{_mandir}
 export LIBDIR=%{_libdir}
 export BINDIR=%{_bindir}
-%make_build %{build_args}
+
+export CXXFLAGS="%{optflags} -Wno-sign-compare"
+export LDFLAGS="${CXXFLAGS}"
+%make_build %{build_args} CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
 
 %install
 %make_install PREFIX=%{_prefix} BINDIR=%{_bindir} MANDIR=%{_mandir} LIBDIR=%{_libdir} %{build_args}

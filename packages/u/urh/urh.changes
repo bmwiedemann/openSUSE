@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  7 10:02:30 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.3
+  * add bias tee check box on device settings.
+  * add category HamRadio to desktop file.
+  * Signal: retain the sample_rate on create_new.
+  * Simulation fix: use sending device dtype for modulation.
+  * Variable type mismatch.
+  * remove HackRF anti-freeze timeouts in places that do not
+    require them.
+  * add b before data string.
+  * get magnitudes in cython for less memory consumption.
+  * join simulation thread when simulation stopped.
+  * add default noise threshold setting.
+  * Fix cython warnings.
+  * set BladeRF min sample rate to 520.834 kHz.
+  * fix #933 improve y-scale in SendRecvDialog.
+
+-------------------------------------------------------------------
 Sat Apr 17 16:23:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.2

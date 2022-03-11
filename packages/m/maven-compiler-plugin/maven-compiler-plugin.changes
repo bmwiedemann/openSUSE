@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 10 11:31:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 00-plexus-languages-1.0.patch -> 0001-plexus-languages-1.0.patch
+    + Sync with patch used by Fedora
+- Added patch:
+  * 0002-MCOMPILER-359-Fix-for-NPE.patch
+    + Fix null pointer exception in tests compilation
+
+-------------------------------------------------------------------
 Fri Nov 29 10:50:57 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove all dependencies with scope test, since we are disabling

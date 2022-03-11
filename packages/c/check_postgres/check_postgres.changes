@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  8 17:14:04 UTC 2022 - Lars Vogdt <lars@linux-schulserver.de>
+
+- added /etc/nrpe.d/check_postgres.cfg, containing some pre-configured
+  nrpe checks for the different check options
+
+-------------------------------------------------------------------
 Tue Feb  4 17:34:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.25.0

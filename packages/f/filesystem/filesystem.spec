@@ -1,7 +1,7 @@
 #
 # spec file for package filesystem
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,7 @@ EOF
 while read MOD OWN GRP NAME ; do
 	[ "$OWN" = root -a "$GRP" = root ]
 	echo "[\"$NAME\"] = $MOD,"
-done < ghost.list >> pretrans.lua 
+done < ghost.list >> pretrans.lua
 cat >> pretrans.lua <<'EOF'
 }
 function mkdir_p(path)
@@ -165,6 +165,9 @@ function create_dir () {
             ;;
 	/var/*)
 	    echo "d $NAME $MODE $OWNR $GRUP -" >> fs-var.conf
+	    ;;
+	/usr/local/*)
+	    echo "d $NAME $MODE $OWNR $GRUP -" >> fs-usr-local.conf
 	    ;;
     esac
 }
@@ -315,14 +318,17 @@ test -n "$NON_EXISTING_DIR" && {
 install -m 0644  fs-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-tmp.conf
 install -m 0644  fs-var.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var.conf
 install -m 0644  fs-var-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var-tmp.conf
+install -m 0644  fs-usr-local.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-usr-local.conf
 
 %pretrans -p <lua> -f pretrans.lua
 %pre -p <lua> -f pre.lua
+
 %posttrans -p <lua> -f posttrans.lua
 
 %files -f filesystem.list
 /usr/lib/tmpfiles.d/fs-tmp.conf
 /usr/lib/tmpfiles.d/fs-var.conf
 /usr/lib/tmpfiles.d/fs-var-tmp.conf
+/usr/lib/tmpfiles.d/fs-usr-local.conf
 
 %changelog

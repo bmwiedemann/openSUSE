@@ -1,7 +1,7 @@
 #
 # spec file for package python-argh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@ License:        LGPL-3.0-or-later
 URL:            https://github.com/neithere/argh/
 Source:         https://files.pythonhosted.org/packages/source/a/argh/argh-%{version}.tar.gz
 Patch0:         support-py39.patch
+# https://github.com/neithere/argh/issues/152
+Patch1:         python-argh-no_mock.patch
 BuildRequires:  %{python_module iocapture}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

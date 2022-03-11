@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  7 15:08:12 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Clean /var/log and /var/cache/zypp more explicitly to keep
+  file ownership intact
+- Remove redundant call to zypper clean
+
+-------------------------------------------------------------------
+Fri Jan 14 12:28:34 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Cleanup /var/log, /var/cache/zypp and clear zypper's caches
+
+-------------------------------------------------------------------
 Fri Jun 18 12:36:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add patterns-base-fips to work also in FIPS environments (bsc#1183154)

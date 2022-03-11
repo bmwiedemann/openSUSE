@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 28 16:36:06 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Add cyrus-imapd-2.4.22-fix-cve-2021-33582.patch: Fix CVE-2021-33582
+- Add cyrus-imapd-2.4.22-recognize-new-backends.patch: Recognize
+  backends of Cyrus versions 3.6 and 3.7 
+
+-------------------------------------------------------------------
 Wed Jan 19 09:52:58 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - Add conflicts entry for mailutils-delivery  

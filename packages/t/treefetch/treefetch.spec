@@ -1,7 +1,7 @@
 #
 # spec file for package treefetch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           treefetch
-Version:        1.2.0~git0.0692c39
+Version:        2.0.0~git0.5b3eac1
 Release:        0
 Summary:        A lightning-fast system fetch tool made with Rust
-License:        MIT
+License:        (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND MIT
 URL:            https://github.com/angelofallars/treefetch
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz

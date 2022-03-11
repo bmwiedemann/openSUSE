@@ -42,7 +42,6 @@ BuildRequires:  %{python_module arrow == %{version}}
 BuildRequires:  %{python_module chai}
 BuildRequires:  %{python_module dateparser}
 BuildRequires:  %{python_module dateutil >= 2.7.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2021.1}

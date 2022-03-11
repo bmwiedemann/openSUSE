@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  9 09:34:57 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.5.3
+  * no upstream changelog found
+- python-mock actually not required for build
+
+-------------------------------------------------------------------
 Tue Jul 20 17:28:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Rename the package according to PyPI

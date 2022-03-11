@@ -87,7 +87,6 @@ sddm.
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmsddm.policy
 %{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmsddm.conf
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmsddm.service
-%{_kf5_libdir}/libexec/kauth/kcmsddm_authhelper
 %{_bindir}/sddmthemeinstaller
 %{_kf5_knsrcfilesdir}/sddmtheme.knsrc
 %{_kf5_applicationsdir}/kcm_sddm.desktop
@@ -98,5 +97,6 @@ sddm.
 %dir %{_kf5_plugindir}/plasma/kcms/
 %dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_sddm.so
+%{_libexecdir}/kauth/kcmsddm_authhelper
 
 %changelog

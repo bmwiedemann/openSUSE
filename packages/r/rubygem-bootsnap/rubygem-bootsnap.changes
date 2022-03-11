@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 10 15:43:33 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.11.1
+
+  * Fix the `can't modify frozen Hash` error on load path cache mutation. See #411.
+
+  # 1.11.0
+
+  * Drop dependency on `fileutils`.
+
+  * Better respect `Kernel#require` duck typing. While it almost never comes up in practice, `Kernel#require`
+    follow a fairly intricate duck-typing protocol on its argument implemented as `rb_get_path(VALUE)` in MRI.
+    So when applicable we bind `rb_get_path` and use it for improved compatibility. See #396 and #406.
+
+  * Get rid of the `Kernel.require_relative` decorator by resolving `$LOAD_PATH` members to their real path.
+    This way we handle symlinks in `$LOAD_PATH` much more efficiently. See #402 for the detailed explanation.
+
+  * Drop support for Ruby 2.3 (to allow getting rid of the `Kernel.require_relative` decorator).
+
+-------------------------------------------------------------------
 Tue Feb 15 07:24:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.10.3

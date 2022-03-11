@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  9 16:47:55 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+* specfile:
+  * update version requirement for traitlets
+
+- update to version 0.5.12:
+  * Merged PRs
+    + Require traitlets>=5.0.0 #204 (@davidbrochart)
+    + Extend the ignored part of IPython outputs #202 (@frenzymadness)
+
+-------------------------------------------------------------------
 Mon Feb 28 10:17:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip more failing tests due to new Exception message format 

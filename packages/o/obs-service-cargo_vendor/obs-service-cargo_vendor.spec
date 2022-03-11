@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,9 @@ Version:        0.4.3~git0.afec7bc
 Release:        0
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  python3
-Requires:       cargo
 Requires:       gzip
 Requires:       tar
+Requires:       (cargo or rustup)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 

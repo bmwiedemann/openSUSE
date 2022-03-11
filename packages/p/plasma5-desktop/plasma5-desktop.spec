@@ -272,7 +272,6 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_bindir}/solid-action-desktop-gen
 %{_kf5_bindir}/tastenbrett
 %{_kf5_configdir}/autostart/kaccess.desktop
-%{_kf5_libdir}/libexec/
 %dir %{_kf5_plugindir}/plasma/
 %dir %{_kf5_plugindir}/plasma/kcms/
 %dir %{_kf5_plugindir}/plasma/kcms/systemsettings/
@@ -304,7 +303,6 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_plugindir}/plasma/kcminit/kcm_touchpad_init.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_mouse.so
 %{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_touchpad.so
-%dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kded/
 %{_kf5_plugindir}/kf5/kded/device_automounter.so
 %{_kf5_plugindir}/kf5/kded/keyboard.so
@@ -348,7 +346,7 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_sharedir}/solid/
 %{_kf5_plasmadir}/
 %{_kf5_appstreamdir}/
-%{_kf5_libdir}/libexec/kimpanel-ibus-panel
+%{_libexecdir}/kimpanel-ibus-panel
 %{_kf5_qmldir}/org/kde/plasma/private/kimpanel/
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.kimpanel/
 %if !%{have_ibus_dict_emoji_pkg}
@@ -364,6 +362,9 @@ Press Meta+. to open an emoji selection window.
 %dir %{_kf5_plugindir}/plasma/dataengine/
 %{_kf5_plugindir}/plasma/dataengine/plasma_engine_touchpad.so
 %endif
+%{_libexecdir}/kauth/kcmdatetimehelper
+%{_libexecdir}/kimpanel-ibus-panel
+%{_libexecdir}/kimpanel-ibus-panel-launcher
 
 %files emojier
 %{_kf5_bindir}/ibus-ui-emojier-plasma

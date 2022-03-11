@@ -111,4 +111,17 @@
 - Update Requires from setup.py (forwarded request 891232 from glaubitz)</comment>
     <requestid>891258</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>376dcd4a1c1b56486799b320eaba30c9</srcmd5>
+    <version>12.2.0</version>
+    <time>1646948748</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 960766 from glaubitz)</comment>
+    <requestid>960817</requestid>
+  </revision>
 </revisionlist>

@@ -834,4 +834,12 @@ depends on sr#237875</comment>
     <comment>KDE Frameworks 5.91 (forwarded request 954217 from cgiboudeaux)</comment>
     <requestid>954228</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>d3240a6e8ed2fb3333ef07c6d5b2fb46</srcmd5>
+    <version>5.91.0</version>
+    <time>1646848006</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960084</requestid>
+  </revision>
 </revisionlist>

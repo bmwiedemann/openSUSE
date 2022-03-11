@@ -1,7 +1,7 @@
 #
 # spec file for package blueman
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global __requires_exclude ^typelib\\(AppIndicator3\\)
 %if 0%{?is_opensuse}
 %bcond_without caja
 %bcond_without nautilus
@@ -26,19 +27,21 @@
 %bcond_with nemo
 %endif
 Name:           blueman
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
-Summary:        GTK+ Bluetooth Manager
+Summary:        GTK Bluetooth Manager
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://github.com/blueman-project/blueman
 Source:         https://github.com/%{name}-project/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE blueman-2.2.4-ayatana-appindicator.patch -- Support Ayatana AppIndicators.
+Patch0:         blueman-2.2.4-ayatana-appindicator.patch
 BuildRequires:  adwaita-icon-theme
 BuildRequires:  automake
 BuildRequires:  dbus-1-python3-devel
 BuildRequires:  fdupes
 # Needed for typelib() - Requires.
-BuildRequires:  gobject-introspection
+BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -55,13 +58,13 @@ BuildRequires:  pkgconfig(python3)
 Requires:       bluez >= 5.48
 Requires:       dbus-1-python3
 Requires:       gdk-pixbuf-loader-rsvg
-Requires:       notification-daemon
 Requires:       obex-data-server
 Requires:       polkit
 Requires:       pulseaudio-utils
 Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
 Requires:       python3-notify2
+Requires:       dbus(org.freedesktop.Notifications)
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
@@ -90,9 +93,10 @@ This package add sendto integration for Thunar.
 %if %{with caja}
 %package -n caja-extension-sendto-%{name}
 Summary:        A sendto integration for Caja
-Group:          System/GUI/MATE
-Requires:       %{name} = %{version}-%{release}
+Group:          System/GUI/Other
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(caja-python)
+Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
 %description -n caja-extension-sendto-%{name}
@@ -106,8 +110,9 @@ This package add sendto integration for Caja.
 %package -n nautilus-extension-sendto-%{name}
 Summary:        A sendto integration for Nautilus
 Group:          System/GUI/GNOME
-Requires:       %{name} = %{version}-%{release}
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(nautilus-python)
+Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
 %description -n nautilus-extension-sendto-%{name}
@@ -120,10 +125,11 @@ This package add sendto integration for Nautilus.
 %if %{with nemo}
 %package -n nemo-extension-sendto-%{name}
 Summary:        A sendto integration for Nemo
-Group:          System/GUI/Cinnamon
+Group:          System/GUI/Other
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(nemo-python)
 Requires:       %{name} = %{version}-%{release}
 Enhances:       nemo
-BuildRequires:  pkgconfig(nemo-python)
 BuildArch:      noarch
 
 %description -n nemo-extension-sendto-%{name}
@@ -136,7 +142,7 @@ This package add sendto integration for Nemo.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i '1s/python.*/python3/' apps/%{name}-*
 echo -e 'NotShowIn=KDE;GNOME;Pantheon;' >> data/%{name}.desktop.in
 
@@ -145,13 +151,14 @@ echo -e 'NotShowIn=KDE;GNOME;Pantheon;' >> data/%{name}.desktop.in
     --disable-static \
     --enable-polkit \
     --disable-schemas-compile
-
 %make_build
 
 %install
-%make_install DESTDIR=%{buildroot}
+%make_install
+
 find %{buildroot} -type f -name "*.la" -delete -print
-rm -rf %{buildroot}%{_datadir}/doc/%{name}
+rm -r %{buildroot}%{_datadir}/doc/%{name}
+
 %fdupes %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{_datadir}/icons/hicolor
 
@@ -204,8 +211,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcblueman-applet
 %{_unitdir}/%{name}-mechanism.service
 %{_userunitdir}/%{name}-applet.service
 %{_userunitdir}/%{name}-manager.service
-%{_prefix}/sbin/rcblueman-mechanism
-%{_prefix}/sbin/rcblueman-applet
+%{_sbindir}/rcblueman-mechanism
+%{_sbindir}/rcblueman-applet
 
 %files -n thunar-sendto-%{name}
 %dir %{_datadir}/Thunar

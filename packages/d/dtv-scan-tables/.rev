@@ -174,4 +174,14 @@
   * dtv-scan-tables: latest UK changes</comment>
     <requestid>942794</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cc1288f8b57c91fb987e24f64726797b</srcmd5>
+    <version>20220307</version>
+    <time>1646948745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220307:
+  * Update Brazilian ISDB-T tables
+  * Update satellite channel lists from Lyngsat</comment>
+    <requestid>960804</requestid>
+  </revision>
 </revisionlist>

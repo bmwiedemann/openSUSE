@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Exporter-Lite
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Exporter-Lite
-Version:        0.08
-Release:        0
 %define cpan_name Exporter-Lite
-Summary:        Lightweight Exporting of Functions and Variables
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Exporter-Lite/
-Source0:        http://www.cpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Exporter-Lite
+Version:        0.09
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Lightweight exporting of functions and variables
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -37,58 +35,38 @@ Exporter::Lite is an alternative to Exporter, intended to provide a
 lightweight subset of the most commonly-used functionality. It supports
 'import()', '@EXPORT' and '@EXPORT_OK' and not a whole lot else.
 
-Unlike Exporter, it is not necessary to inherit from Exporter::Lite; Ie you
-don't need to write:
-
- @ISA = qw(Exporter::Lite);
-
 Exporter::Lite simply exports its import() function into your namespace.
 This might be called a "mix-in" or a "role".
 
-Setting up a module to export its variables and functions is simple:
+When 'Exporter::Lite' was written, if you wanted to use 'Exporter' you had
+to write something like this:
 
-    package My::Module;
-    use Exporter::Lite;
+ use Exporter;
+ our @ISA = qw/ Exporter /;
 
-    our @EXPORT = qw($Foo bar);
+'Exporter::Lite' saved you from writing that second line. But since before
+2010 you've been able to write:
 
-Functions and variables listed in the '@EXPORT' package variable are
-automatically exported if you use the module and don't explicitly list any
-imports. Now, when you 'use My::Module', '$Foo' and 'bar()' will show up.
+ use Exporter qw/ import /;
 
-Optional exports are listed in the '@EXPORT_OK' package variable:
+Which imports the 'import' function into your namespace from 'Exporter'. As
+a result, I would recommend that you use 'Exporter' now, as it's a core
+module (shipped with Perl).
 
-    package My::Module;
-    use Exporter::Lite;
+To make sure you get a version of 'Exporter' that supports the above usage,
+specify a minimum version when you 'use' it:
 
-    our @EXPORT_OK = qw($Foo bar);
-
-When My::Module is used, '$Foo' and 'bar()' will _not_ show up, unless you
-explicitly ask for them:
-
-    use My::Module qw($Foo bar);
-
-Note that when you specify one or more functions or variables to import,
-then you must also explicitly list any of the default symbols you want to
-use. So if you have an exporting module:
-
-    package Games;
-    our @EXPORT    = qw/ pacman defender  /;
-    our @EXPORT_OK = qw/ galaga centipede /;
-
-Then if you want to use both 'pacman' and 'galaga', then you'd write:
-
-    use Games qw/ pacman galaga /;
+ use Exporter 5.57 qw/ import /;
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -96,7 +74,6 @@ Then if you want to use both 'pacman' and 'galaga', then you'd write:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

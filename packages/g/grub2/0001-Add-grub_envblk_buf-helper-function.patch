@@ -1,0 +1,68 @@
+From a326e486bdcf99e6be973ba54c0abfb6d2d95b73 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 17 Jan 2022 17:45:00 +0800
+Subject: [PATCH 1/5] Add grub_envblk_buf helper function
+
+This helps in creation and initialization of memory buffer for
+environment block of given size.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/lib/envblk.c    | 12 ++++++++++++
+ include/grub/lib/envblk.h |  1 +
+ util/grub-editenv.c       |  4 +---
+ 3 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/grub-core/lib/envblk.c b/grub-core/lib/envblk.c
+index 2e4e78b132..24efbe7ffa 100644
+--- a/grub-core/lib/envblk.c
++++ b/grub-core/lib/envblk.c
+@@ -23,6 +23,18 @@
+ #include <grub/mm.h>
+ #include <grub/lib/envblk.h>
+ 
++char *
++grub_envblk_buf (grub_size_t size)
++{
++  char *buf;
++
++  buf = grub_malloc (size);
++  grub_memcpy (buf, GRUB_ENVBLK_SIGNATURE, sizeof (GRUB_ENVBLK_SIGNATURE) - 1);
++  grub_memset (buf + sizeof (GRUB_ENVBLK_SIGNATURE) - 1, '#', size - sizeof (GRUB_ENVBLK_SIGNATURE) + 1);
++
++  return buf;
++}
++
+ grub_envblk_t
+ grub_envblk_open (char *buf, grub_size_t size)
+ {
+diff --git a/include/grub/lib/envblk.h b/include/grub/lib/envblk.h
+index c3e6559217..83f3fcf841 100644
+--- a/include/grub/lib/envblk.h
++++ b/include/grub/lib/envblk.h
+@@ -31,6 +31,7 @@ struct grub_envblk
+ };
+ typedef struct grub_envblk *grub_envblk_t;
+ 
++char *grub_envblk_buf (grub_size_t size);
+ grub_envblk_t grub_envblk_open (char *buf, grub_size_t size);
+ int grub_envblk_set (grub_envblk_t envblk, const char *name, const char *value);
+ void grub_envblk_delete (grub_envblk_t envblk, const char *name);
+diff --git a/util/grub-editenv.c b/util/grub-editenv.c
+index b8219335f7..a02d3f2a63 100644
+--- a/util/grub-editenv.c
++++ b/util/grub-editenv.c
+@@ -210,9 +210,7 @@ create_envblk_fs (void)
+   if (! fp)
+     grub_util_error (_("cannot open `%s': %s"), device, strerror (errno));
+ 
+-  buf = xmalloc (size);
+-  memcpy (buf, GRUB_ENVBLK_SIGNATURE, sizeof (GRUB_ENVBLK_SIGNATURE) - 1);
+-  memset (buf + sizeof (GRUB_ENVBLK_SIGNATURE) - 1, '#', size - sizeof (GRUB_ENVBLK_SIGNATURE) + 1);
++  buf = grub_envblk_buf (size);
+ 
+   if (fseek (fp, offset, SEEK_SET) < 0)
+     grub_util_error (_("cannot seek `%s': %s"), device, strerror (errno));
+-- 
+2.34.1
+

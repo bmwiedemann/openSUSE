@@ -1,7 +1,7 @@
 #
 # spec file for package python-coloredlogs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +33,6 @@ Source:         https://files.pythonhosted.org/packages/source/c/coloredlogs/col
 Patch0:         test_cli_conversion_test.patch
 BuildRequires:  %{python_module capturer >= 2.4}
 BuildRequires:  %{python_module humanfriendly >= 9.1}
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module pytest-cov >= 2.3.1}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +42,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-capturer >= 2.4
 Requires:       python-humanfriendly >= 9.1
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-verboselogs >= 1.7
 BuildArch:      noarch
 %python_subpackages

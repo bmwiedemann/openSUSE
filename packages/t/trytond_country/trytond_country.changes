@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  8 13:35:21 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- added pycountry.diff (https://bugs.tryton.org/issue11128 )
+  build-conditions for TW added
+
+-------------------------------------------------------------------
+Tue Mar  8 08:59:37 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- runtime dependency python-pycountry added
+
+-------------------------------------------------------------------
 Sat Feb 12 17:20:32 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - Version bump to Tryton 6.0 series

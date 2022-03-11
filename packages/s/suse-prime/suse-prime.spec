@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files 09-nvidia-modprobe-bbswitch-G04.conf 09-nvidia-modprobe-pm-G05.conf
+
 Name:           suse-prime
 Version:        0.8.6
 Release:        0
@@ -52,16 +58,13 @@ install -m 0644 xorg-intel-intel.conf  %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-nvidia.conf %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-nvidia-prime-render-offload.conf %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-amd.conf %{buildroot}%{_datadir}/prime/
+mkdir -p %{buildroot}%{_modprobedir}
+install -m 0644 09-nvidia-modprobe-bbswitch-G04.conf %{buildroot}%{_modprobedir}/
+install -m 0644 09-nvidia-modprobe-pm-G05.conf %{buildroot}%{_modprobedir}/
 %if 0%{?suse_version} >= 1550
-mkdir -p %{buildroot}/usr/lib/modprobe.d
-install -m 0644 09-nvidia-modprobe-bbswitch-G04.conf %{buildroot}/usr/lib/modprobe.d/
-install -m 0644 09-nvidia-modprobe-pm-G05.conf %{buildroot}/usr/lib/modprobe.d/
 mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d/
 install -m 0644 90-nvidia-dracut-G05.conf %{buildroot}/usr/lib/dracut/dracut.conf.d/
 %else
-mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d
-install -m 0644 09-nvidia-modprobe-bbswitch-G04.conf %{buildroot}%{_sysconfdir}/modprobe.d
-install -m 0644 09-nvidia-modprobe-pm-G05.conf %{buildroot}%{_sysconfdir}/modprobe.d
 mkdir -p %{buildroot}/etc/dracut.conf.d
 install -m 0644 90-nvidia-dracut-G05.conf %{buildroot}/etc/dracut.conf.d
 %endif
@@ -75,6 +78,11 @@ ln -snf service %{buildroot}/usr/sbin/rcprime-select
 
 %pre
 %service_add_pre prime-select.service
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
 
 %post
 %{?regenerate_initrd_post}
@@ -97,6 +105,11 @@ if [ "$1" -eq 0 ]; then
 fi
 
 %posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 %{?regenerate_initrd_posttrans}
 
 %triggerin -- nvidia-gfxG05-kmp-default
@@ -123,13 +136,12 @@ rm -f /etc/dracut.conf.d/50-nvidia-default.conf
 %ghost %config(noreplace) %{_sysconfdir}/prime/current_type
 %{_sbindir}/prime-select
 %{_sbindir}/rcprime-select
+%dir %{_modprobedir}
+%{_modprobedir}/09-nvidia-modprobe-bbswitch-G04.conf
+%{_modprobedir}/09-nvidia-modprobe-pm-G05.conf
 %if 0%{?suse_version} >= 1550
-/usr/lib/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
-/usr/lib/modprobe.d/09-nvidia-modprobe-pm-G05.conf
 /usr/lib/dracut/dracut.conf.d/90-nvidia-dracut-G05.conf
 %else
-%{_sysconfdir}/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
-%{_sysconfdir}/modprobe.d/09-nvidia-modprobe-pm-G05.conf
 /etc/dracut.conf.d/90-nvidia-dracut-G05.conf
 %endif
 /usr/lib/udev/rules.d/90-nvidia-udev-pm-G05.rules

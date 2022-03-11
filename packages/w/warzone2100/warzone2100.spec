@@ -24,7 +24,7 @@
 %bcond_with vulkan
 %endif
 Name:           warzone2100
-Version:        4.2.6
+Version:        4.2.7
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only
@@ -46,7 +46,6 @@ BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zip
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew) >= 1.5.2
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
@@ -134,7 +133,6 @@ mv %{buildroot}%{_datadir}/metainfo/warzone2100.appdata.xml %{buildroot}%{_datad
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/warzone2100.png
-
 
 # remove redundant files
 rm %{buildroot}%{_datadir}/doc/%{name}/AUTHORS

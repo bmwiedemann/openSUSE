@@ -249,6 +249,10 @@ donttest="$donttest or test_check_correctness or test_graph_simple or test_llvm_
 # probes vulkan on test collection
 ignorefiles="--ignore tests/python/unittest/test_target_codegen_vulkan.py"
 ignorefiles="$ignorefiles --ignore tests/python/unittest/test_tir_intrin.py"
+%if 0%{?suse_version} <= 1500
+# Skip some tests on Leap/SLE (some tests would need python 3.7+)
+donttest="$donttest or test_meta_schedule_local_runner_time_out or test_meta_schedule_local_runner_exception"
+%endif
 %pytest_arch -v tests/python/unittest -m "not gpu" -k "not ($donttest)" $ignorefiles
 %endif
 

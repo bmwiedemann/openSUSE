@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  4 20:16:00 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Fix modprobe.d location for 15.3 and earlier (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
 Tue Feb  9 10:47:03 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Add undefined macros when building on older distributions

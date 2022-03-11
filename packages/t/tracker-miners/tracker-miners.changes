@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:59:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.2:
+  + Backport seccomp rules for rseq and mbind syscalls.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + tracker-miners-allow-mbind.patch
+  + tracker-miners-allow-rseq.patch
+
+-------------------------------------------------------------------
 Fri Feb 25 18:01:53 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add tracker-miners-allow-rseq.patch and
@@ -9,8 +19,8 @@ Fri Feb 25 18:01:53 UTC 2022 - Michael Gorse <mgorse@suse.com>
 Thu Dec  2 06:31:42 UTC 2021 - QK ZHU <qkzhu@suse.com>
 
 - Add tracker-miners-drop-syscalls-in-seccomp.patch: 
-  Revert upstream commit 595560c, 30b24e9 and 550ea1b since Leap 15.4
-  and SLE 15-SP4 do not have them (bsc#1192567).
+  Revert upstream commit 595560c, 30b24e9 and 550ea1b since Leap
+  15.4 and SLE 15-SP4 do not have them (bsc#1192567).
 
 -------------------------------------------------------------------
 Tue Nov  9 08:31:20 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>

@@ -133,4 +133,18 @@
   * fixes build against gcc10, which uses -fno-common by default</comment>
     <requestid>812880</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>969d2f1f29c6487e832904d168e74d0d</srcmd5>
+    <version>0.6.225</version>
+    <time>1646948699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.225
+  * adds fixes from the last 5 years since version 0.6.0
+- supersedes patches 
+  * n_xorg-server-1.20.patch
+  * u_gcc10.patch 
+- possibly fixes boo#1196805
+- specfile: fixed URL and Source lines</comment>
+    <requestid>960581</requestid>
+  </revision>
 </revisionlist>

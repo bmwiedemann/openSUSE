@@ -1,7 +1,7 @@
 #
 # spec file for package hostinfo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           hostinfo
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Gathers basic server information
 License:        GPL-2.0-only
-Group:          System/Monitoring
 URL:            https://github.com/g23guy/hostinfo
+Group:          System/Monitoring
 Source:         %{name}-%{version}.tar.gz
 Requires:       iproute2
 Requires:       issue-generator
@@ -30,9 +30,9 @@ Requires:       sed
 BuildArch:      noarch
 
 %description
-A script that displays current system information to help 
+A script that displays current system information to help
 identify a host and its resources.
- 
+
 %prep
 %setup -q
 

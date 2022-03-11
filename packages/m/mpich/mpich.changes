@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  7 12:50:38 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mpich 4.0.1 (bsc#1194369)
+  - All MPI-4 APIs have been implemented. Major MPI-4 features include MPI
+    sessions, partitioned point-to-point communications, events in the MPI tool
+    information interface, large-count functions, persistent collectives,
+    MPI_Comm_idup_with_info, MPI_Isendrecv and MPI_Isendrecv_replace,
+    MPI_Info_get_string, MPI_Comm_split_type with new split_type --
+    MPI_COMM_TYPE_HW_GUIDED and MPI_COMM_TYPE_HW_UNGUIDED.
+  - Add MPIX_Delete_error_{class,code,string}.
+  - MPI_Info objects can be accessed before MPI_Init{_thread}.
+  - Drop support for UCX version < 1.7.0.
+  - Multi-NIC support in ch4:ofi.
+  - Extend IPC to support non-contig datatypes.
+  - Many bug fixes and code clean-ups.
+- Drop 0001-Drop-real128.patch as it was fixed upstream
+- Refresh autogen-only-deal-with-json-yaksa-if-enabled.patch
+  against latest sources
+
+-------------------------------------------------------------------
 Wed Jan 12 12:30:33 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mpich 3.4.3

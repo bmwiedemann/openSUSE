@@ -1,7 +1,7 @@
 #
 # spec file for package siril
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
-%define rcver_upstream     1.0.0-rc2
-
 Name:           siril
-Version:        1.0.0~rc2
+Version:        1.0.0
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
 License:        BSL-1.0 AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
-Source:         https://gitlab.com/free-astro/siril/-/archive/%{rcver_upstream}/siril-%{rcver_upstream}.tar.bz2#/%{name}-%{version}.tar.bz2
+Source:         https://free-astro.org/download/siril-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.53.0
@@ -59,7 +57,7 @@ processing tool, able to convert, pre-process images, help aligning them
 automatically or manually, stack them and enhance final images.
 
 %prep
-%setup -q -n %{name}-%{rcver_upstream}
+%autosetup -c -n siril-%{version} -p1
 
 %build
 # override build directory, the default "build" is a regular source directory

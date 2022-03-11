@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Feb 18 08:52:49 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Add temporary patch (fix-for-upstream-sources.patch) for the upstram issue
+  gh#tstack/lnav#942
+
+-------------------------------------------------------------------
+Wed Nov  3 08:22:37 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.1:
+  Features:
+  * Added ":show-only-this-file" command that hides all files except the
+    one for the top line in the view.
+  * The ":write-raw-to" command now accepts a --view flag that specifies
+    the source view for the data to write. For example, to write the
+    results of a SQL query, you would pass "--view=db" to the command.
+  * The commands used to access the clipboard are now configured through
+    the "tuning" section of the configuration.
+  * Added an "lnav_version()" SQL function that returns the current
+    version string.
+  * Added basic support for the logfmt file format. Currently, only files
+    whose lines are entirely logfmt-encoded are supported. The lines
+    must also contain either a field named "time" or "ts" that contains
+    the timestamp.
+  * Added the "logfmt2json()" SQL function to convert a string containing
+    a logfmt-encoded message into a JSON object that can be operated on
+    more easily.
+  * Added the "gzip()" and "gunzip()" SQL functions to compress values
+    into a blob and decompress a blob into a string.
+    Interface changes:
+  * The xclip implementation for accessing the system clipboard now writes
+    to the "clipboard" selection instead of the "primary" selection.
+  * The 'query' bookmark type and y/Y hotkeys have been removed due to
+    performance issues and the functionality is probably rarely used.
+  Bug Fixes:
+  * The text "send-input" would show up on some terminals instead of
+    ignoring the escape sequence. This control sequence was only
+    intended to be used in the test suite.
+  * Remote file synchronization has been optimized a bit.
+  * Configuration values loaded from the ~/.lnav/configs directory
+    are now included in the default configuration, so they won't be
+    saved into the ~/.lnav/config.json user configuration file.
+  * Key handling in the visual filter editor will no longer swallow
+    certain key-presses when editing a filter.
+  * Scrolling performance restored in the SQL view.
+  * The ':redirect-to' command now works with '/dev/clipboard'
+  * The field overlay (opened by pressing 'p') now shows 'log_time'
+    for the timestamp field instead of the name defined in the format.
+  * The search term in the bottom status bar will now update properly
+    when switching views.
+  * The "Out-Of-Time-Order Message" overlay will be shown again.
+  * The tab for the "Files" panel will be highlighted in red if there
+    is an issue opening a file.
+  * Overwritten files should be reloaded again.
+  * The "jget()" SQL function now returns numbers with the correct type.
+  * The "json_contains()" SQL function now returns false if the first
+    argument is NULL instead of NULL.
+  * The local copies of remote files are now cleaned up after a couple
+    days of the host not being accessed.
+  * The initial loading and indexing phase has been optimized.
+
+-------------------------------------------------------------------
 Mon Aug 16 13:47:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.0:

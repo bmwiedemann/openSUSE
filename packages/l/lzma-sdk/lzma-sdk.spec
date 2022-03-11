@@ -16,11 +16,11 @@
 #
 
 
-%define _sver   2106
+%define _sver   2107
 %define _maver  21
-%define _miver  06
+%define _miver  07
 Name:           lzma-sdk
-Version:        21.06
+Version:        21.07
 Release:        0
 Summary:        An implementation of LZMA compression
 # Actually the site says "Public Domain". See license file.

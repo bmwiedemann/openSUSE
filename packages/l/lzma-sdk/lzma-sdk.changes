@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 28 12:07:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 21.07
+  * New switches: -spm and -im!{file_path} to exclude
+    directories from processing for specified paths that don't
+    contain path separator character at the end of path.
+  * The sorting order of files in archives was slightly changed
+    to be more consistent for cases where the name of some
+    directory is the same as the prefix part of the name of
+    another directory or file.
+
+-------------------------------------------------------------------
 Sat Dec 11 22:04:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update lzma-sdk-shlib.patch to use Sha256Opt.c for generating

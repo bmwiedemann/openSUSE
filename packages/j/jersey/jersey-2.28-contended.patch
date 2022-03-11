@@ -1,0 +1,21 @@
+--- jersey-2.28/core-common/src/main/java/org/glassfish/jersey/internal/jsr166/SubmissionPublisher.java	2022-03-08 13:13:53.496055135 +0100
++++ jersey-2.28/core-common/src/main/java/org/glassfish/jersey/internal/jsr166/SubmissionPublisher.java	2022-03-08 13:14:13.884176948 +0100
+@@ -999,18 +999,8 @@
+      * waiter field. If the producer and/or consumer are using a
+      * ForkJoinPool, the producer attempts to help run consumer tasks
+      * via ForkJoinPool.helpAsyncBlocker before blocking.
+-     * <p>
+-     * This class uses @Contended and heuristic field declaration
+-     * ordering to reduce false-sharing-based memory contention among
+-     * instances of BufferedSubscription, but it does not currently
+-     * attempt to avoid memory contention among buffers. This field
+-     * and element packing can hurt performance especially when each
+-     * publisher has only one client operating at a high rate.
+-     * Addressing this may require allocating substantially more space
+-     * than users expect.
+      */
+     @SuppressWarnings("serial")
+-    @sun.misc.Contended
+     private static final class BufferedSubscription<T>
+             implements Flow.Subscription, ForkJoinPool.ManagedBlocker {
+         // Order-sensitive field declarations

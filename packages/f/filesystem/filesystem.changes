@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar  3 16:02:28 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create tmpfiles.d which creates /usr/local on the fly
+
+-------------------------------------------------------------------
 Fri Aug 27 07:26:40 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - don't perform UsrMerge if ZYPP_SINGLE_RPMTRANS is set. Rely on

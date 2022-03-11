@@ -1,7 +1,7 @@
 #
 # spec file for package check_postgres
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://bucardo.org/wiki/Check_postgres
 Source:         https://github.com/bucardo/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        nagios-commands-postgres.cfg
 Source2:        create_manpage.pl
+Source3:        check_postgres.cfg
 BuildRequires:  nagios-rpm-macros
 BuildRequires:  perl-macros
 BuildRequires:  perl(Cwd)
@@ -101,6 +102,8 @@ popd
 # create man page
 mkdir -p %{buildroot}/%{_mandir}/man1
 perl %{SOURCE2} "%{version}" "1" check_postgres.pl > %{buildroot}/%{_mandir}/man1/check_postgres.pl.1
+# install nrpe snipplets
+install -D -m0644 %{SOURCE3} %{buildroot}%{nrpe_sysconfdir}/check_postgres.cfg
 
 %files -f %{name}.files
 %doc MANIFEST README* TODO nagios-commands-postgres.cfg check_postgres.pl.html
@@ -115,6 +118,8 @@ perl %{SOURCE2} "%{version}" "1" check_postgres.pl > %{buildroot}/%{_mandir}/man
 # avoid build dependecy of nagios - own the dirs
 %dir %{nagios_libdir}
 %dir %{nagios_plugindir}
+%dir %{nrpe_sysconfdir}
+%config(noreplace) %{nrpe_sysconfdir}/check_postgres.cfg
 %{nagios_plugindir}/*
 
 %changelog

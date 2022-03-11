@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 06 07:18:42 UTC 2022 - matwey.kornilov@gmail.com
+
+- Changes for 24.2.2:
+  * inets: Avoid intermediate ungraceful shutdown of the HTTP
+    server.
+  * ssh: The ssh sever parallel_login option was missing in OTP-24
+
+-------------------------------------------------------------------
 Mon Feb 21 18:12:08 UTC 2022 - matwey.kornilov@gmail.com
 
 - Changes for 24.2.1:

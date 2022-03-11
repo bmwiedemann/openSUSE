@@ -1,0 +1,74 @@
+diff --git a/test/test_package.py b/test/test_package.py
+index 98420c5..1a417b0 100644
+--- a/test/test_package.py
++++ b/test/test_package.py
+@@ -20,7 +20,10 @@
+     Person,
+ )
+ 
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ 
+ sys.stderr = sys.stdout
+ 
+diff --git a/test/test_package_version.py b/test/test_package_version.py
+index 6265347..190802b 100644
+--- a/test/test_package_version.py
++++ b/test/test_package_version.py
+@@ -9,7 +9,10 @@
+ from catkin_pkg.package_version import update_changelog_sections
+ from catkin_pkg.package_version import update_versions
+ 
+-import mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ 
+ from .util import in_temporary_directory
+ 
+@@ -69,7 +72,7 @@ def test_update_changelog_unicode(self, directory=None):
+         temp_file = os.path.join(directory, 'changelog')
+         missing_changelogs_but_forthcoming = {}
+         # Mock the Changelog object from catkin_pkg
+-        mock_changelog = mock.Mock()
++        mock_changelog = Mock()
+         # Create a changelog entry with a unicode char.
+         mock_changelog.rst = ('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n'
+                               'Changelog for package fake_pkg\n'
+diff --git a/test/test_templates.py b/test/test_templates.py
+index 561ec28..164f1b1 100644
+--- a/test/test_templates.py
++++ b/test/test_templates.py
+@@ -8,7 +8,10 @@
+     create_cmakelists, create_package_files, create_package_xml, PackageTemplate
+ from catkin_pkg.python_setup import generate_distutils_setup
+ 
+-from mock import MagicMock, Mock
++try:
++    from unittest.mock import MagicMock, Mock
++except ImportError:
++    from mock import MagicMock, Mock
+ 
+ 
+ def u(line):
+diff --git a/test/test_topological_order.py b/test/test_topological_order.py
+index 651cb6b..88f44b4 100644
+--- a/test/test_topological_order.py
++++ b/test/test_topological_order.py
+@@ -3,7 +3,10 @@
+ import sys
+ import unittest
+ 
+-from mock import Mock
++try:
++    from mock import Mock
++except ImportError:
++    from unittest.mock import Mock
+ 
+ try:
+     from catkin_pkg.topological_order import topological_order_packages, _PackageDecorator, \
+

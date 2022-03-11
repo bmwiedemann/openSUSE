@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar  8 16:32:14 UTC 2022 - Jason Record <jason.record@suse.com>
+
+- Removed OES dependent patterns (bsc#1196873)
+
+-------------------------------------------------------------------
 Fri Nov  5 01:33:23 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes to updated version 1.5.0

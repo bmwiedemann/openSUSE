@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  4 21:14:30 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Change papi_hl_output_writer.py script to reference Python3 (bsc#1196709)
+  New patch: python3.patch
+
+-------------------------------------------------------------------
 Thu Feb 11 06:32:54 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Update PAPI to v6.0.0.1 bugfix release:

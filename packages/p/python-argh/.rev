@@ -138,4 +138,12 @@
   * Deal with Python 3.9.x changes in argparse.</comment>
     <requestid>920718</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>6ae7eb72f7450dea2f1d5e744c08d194</srcmd5>
+    <version>0.26.2</version>
+    <time>1646948723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960713</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar  1 23:20:08 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to version 4.7.2.
+  * Core:
+    * VncView: limit preferred size to available desktop geometry
+    (i.e. all monitors)
+  * Plugins
+    * AuthKeys: use file name only to determine key name
+    * AuthKeys: fixed loading key specified through the
+      VEYON_AUTH_KEY_NAME environment variable
+    * Demo: in window mode, resize the window according to the
+      available desktop geometry
+    * PowerControl: don't allow aborting the shutdown countdown by pressing Alt+F4
+    * RemoteAccess: allow screen switching by tab/backtab (in view-only mode)
+    * RemoteAccess: fixed window being created twice
+    * RemoteAccess: only update clipboard if a remote access window is opened
+    * ScreenLock: resize to available desktop geometry
+  * Master
+    * Computer zoom: allow screen switching by pressing tab or backtab
+
+
+-------------------------------------------------------------------
 Mon Jan 24 15:18:11 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to version 4.7.1.

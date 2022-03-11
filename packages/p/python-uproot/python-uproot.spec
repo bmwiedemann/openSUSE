@@ -20,7 +20,7 @@
 %define skip_python36 1
 %global modname uproot
 Name:           python-uproot
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -28,11 +28,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/scikit-hep/uproot4
 Source0:        https://files.pythonhosted.org/packages/source/u/uproot/uproot-%{version}.tar.gz
 Source1:        tests.tar.xz
+# PATCH-FEATURE-OPENSUSE uproot-use-packaging-module.patch badshah400@gmail.com -- Use packaging module directly instead of calling it via setup.extern; the latter does not work on openSUSE directly
+Patch0:         uproot-use-packaging-module.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.13.1
+Requires:       python-packaging
 Recommends:     python-awkward
 Suggests:       python-lz4
 Suggests:       python-zstandard
@@ -47,6 +50,7 @@ BuildRequires:  %{python_module awkward}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy >= 1.13.1}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}

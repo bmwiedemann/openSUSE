@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Wed Mar  9 11:47:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove redundant python3 dependency from Requires
+- Update regular expression to fix python shebang
+
+-------------------------------------------------------------------
+Fri Feb 18 12:39:14 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 1.31.3 (bsc#1195916)
+  + Add skip-styletest.patch
+    - Style is enforced upstream and triggers unnecessary build version
+      requirements
+  + Allow specifying fs_id in cloudwatch log group name
+  + Includes fix for stunnel path
+
+-------------------------------------------------------------------
+Wed Aug 11 12:32:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_amazon-efs-mount-watchdog.service.patch
+
+-------------------------------------------------------------------
+Thu Jun 24 11:57:02 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.31.2
+  + Handle HTTPError and other unknown exception when fetching IMDS token
+  + Support Oracle Enterprise Linux 8
+- from version 1.31.1
+  + Support fallback to mount with mount target ip address when DNS resolution fails
+  + Bump py from 1.8.0 to 1.10.0
+- from version 1.30.2
+  + Add helper message when config file on instance is not latest
+  + Fix the throughput regression due to read_ahead configuration change
+    on Linux distribution with kernel version 5.4.x and above
+- from version 1.30.1
+  + Support mounting to specific AZ mount target
+  + Revert "Support mounting to specific AZ mount target"
+  + Support mounting to specific AZ mount target
+  + Use regional AWS STS endpoints instead of the global endpoint to reduce latency
+- from version 1.29.1-mac
+  + Fix issue where state files are removed after mount on EC2
+    instances running on MacOS Big Sur
+  + Add support for EC2 Mac instances running macOS Big Sur
+- from version 1.29.1
+  + Update the python dependency to python3
+  + Fix typo
+- from version 1.28.2
+  + Fix the issue that mounting with IAM authorization with
+    iam role does not work with IMDSv2
+- from version 1.28.1
+  + Support publishing mount success/failure notification via CloudWatch log
+  + filename of .deb-package now includes architecture
+- from version 1.27.1
+  + Merge PR #60 on GitHub. Adds support for AssumeRoleWithWebIdentity.
+  + Add support for AssumeRoleWithWebIdentity
+- from version 1.26.3
+  + Fix an issue where watchdog crashed during restart because stunnel
+    was killed and pid key was removed from state file
+- from version 1.26.2
+  + Fixes an issue with watchdog where it sometimes fails to restart stunnels in
+    efs-csi-driver container * Fixes an issue where fs cannot be mounted with tls
+    using systemd.automount-units due to mountpoint check
+  + Revert "Fixes an issue with watchdog where it sometimes fails to restart stunnels
+    in efs-csi-driver container"
+  + Fixes an issue with watchdog where it sometimes fails to restart stunnels in
+    efs-csi-driver container
+  + Remove non-ascii character in dist/efs-utils.conf
+- from version 1.25-3
+  + Check if mountpoint is already mounted beforehand for tls mount
+  + Bug fix and enhancement, support fedora
+- from version 1.25-2
+  + Fix python3 IAM role name encoded format, add optional
+    override for stunnel log
+  + Encode IAM role name to UTF-8
+- from version 1.25-1
+  + Create self-signed certificate for tls-only mount
+  + add CentOS 8 support
+- from version 1.24
+  + Fix the malformed certificate info
+  + bump the release id to 3
+  + Use IMDSv1 by default, and use IMDSv2 where required
+  + Revert "Use IMDSv1 by default, and fall back to IMDSv2 if necessary"
+  + Use IMDSv1 by default, and fall back to IMDSv2 if necessary
+  + Modify rhel8-support.sh to handle Fedora as well, and rename it
+  + Remove which from DEB package dependency
+  + List which as dependency to search command exec path
+  + Enable region sourcing from efs-utils configuration file and fix
+    stunnel exec path issue in openSUSE
+  + Update rpm changelog for v1.23-2, fix circleCI build issue
+- from version 1.23
+  + Add support for Amazon Elastic Container Service
+- from version 1.22
+  + Improvements to metadata retrieval and IAM authentication
+- from version 1.21
+  + Improvements to auth and access point support
+- from version 1.20
+  + Fixes the mount issue with full DNS name in the AWS China Regions;
+    Upgrades unit test coverage version dependency to enable accurate
+    python3.8 coverage test
+- from version 1.19
+  + Added region localization, Integrate repository with CircleCI to enable
+    package build visualization, Unit tests bug fixes for python3.5
+- from version 1.18
+  + Support IAM authentication and access points.
+- Add patch to disable mount_efs_test which requires networking
+  + disable_mount_efs_test.patch
+- Add openssl to BuildRequires, required for testsuite
+- Update Requires from requirements.txt
+
+-------------------------------------------------------------------
 Tue Nov  3 15:03:24 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop '-f' option with %service_del_preun/%service_del_postun

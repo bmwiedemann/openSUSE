@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar  3 11:53:37 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to 17.6.0:
+  * stream: revert map spec compliance
+  * esm: support https remotely and http locally under flag
+  * fs: support copy of relative links with cp and cpSync
+  * lib: add FormData global when fetch is enabled
+  * readline: bind keystroke ctrl+6 to redo
+  * process: deprecate multipleResolves
+
+-------------------------------------------------------------------
+Wed Mar  2 16:52:43 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add upstream fix gcc12-fix.patch for GCC 12 compiler.
+
+-------------------------------------------------------------------
 Thu Feb 17 13:17:11 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to 17.5.0:

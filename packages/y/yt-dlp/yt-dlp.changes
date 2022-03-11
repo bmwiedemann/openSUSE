@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  8 20:19:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.03.08.1
+  * Add regex operator and quoting to format filters
+  * Add brotli content-encoding support
+
+-------------------------------------------------------------------
 Fri Feb  4 09:31:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.02.04

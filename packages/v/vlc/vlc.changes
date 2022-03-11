@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Mar  7 15:34:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.17:
+  + Core:
+    * Fix a regression in parsing secondary source MRLs
+    * Allow brackets in path part of URLs
+  + Access:
+    * Fix support for screen capture on macOS with avcapture
+    * Fix closing of HTTP 1.x connections
+    * Improve HTTP2 memory usage
+    * Improve AVCapture module
+    * Improve AudioCD support (audio/data mixed mode, musicbrainz)
+    * Improve SMB compatibility by changing the read size
+    * Several improvements on the SRT modules (including streamID)
+  + Decoders/Packetizers:
+    * Add support for DTS LBR
+    * Fix some HEVC hardware decoding on Windows and crashes when aspect ratio changes
+    * Fix hardware decoding for some AMD GPU drivers
+    * Add support for new Fourcc for E-AC3, AV1, GeoVision
+    * Fix crashes with VP9 streams
+    * Fix styling issues with subs tx3g (mp4) tracks
+    * Fix playback of live AV1 streams
+  + Audio Output:
+    * iOS/tvOS: add support for spatial audio
+    * macOS: fix some channels ordering for > 5.1 channels
+    * Android: rework audio volume management
+  + Video Output:
+    * Fix a D3D11 crash when the stream changes aspect ratio
+  + Demux:
+    * Major overhaul of the adaptive streaming stack
+    * Support for DAV video files
+    * Add WebP image mapping
+    * Fix missing audio start of Opus audio in MKV/WebM
+    * Fix an infinite loop in MP4
+    * Fix attachments extractions in ogg files
+    * Support Uncompressed audio in mp4 (ISO/IEC 23003-5)
+    * Fix some lip sync issue in rare MPEG-TS streams
+  + Interface:
+    * Qt/macOS: Fixup user provided URLs
+    * Add safe area handling on macOS
+    * Qt: improve preferences search
+    * Qt: fix --no-mouse-events option
+  + Misc:
+    * Update YouTube script
+    * Fix Icecast directory parsing which could lead to missing entries
+    * Improve UPnP compatibility with some servers
+- Drop vlc-srto_tsbpddelay.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Feb 23 14:05:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequires pkgconfig(smbclient) instead of smbclient-devel:

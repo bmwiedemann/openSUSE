@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  8 16:45:39 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.9.6
+  * Security Fixes
+    Please check the advisories on GitHub for more details.
+    - Path traversal in static library file requests for 
+      unauthenticated users GHSA-5p3f-rh28-8frw
+    - SSH resources allow arbitrary code execution for
+      authenticated users GHSA-v9mv-h52f-7g63
+    - Unwanted disclosure of hosts and related data, linked to
+      decommissioned services GHSA-qcmg-vr56-x9wf
+
+-------------------------------------------------------------------
 Mon Nov 22 15:01:46 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.9.5

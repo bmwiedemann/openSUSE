@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  9 09:26:40 UTC 2022 - pgajdos@suse.com
+
+- python-mock is actually not needed for build
+
+-------------------------------------------------------------------
 Mon Dec 27 11:16:51 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap.

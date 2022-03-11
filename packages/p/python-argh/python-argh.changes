@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 10 10:09:41 UTC 2022 - pgajdos@suse.com
+
+- do not use python-mock for testing
+- added patches
+  fix https://github.com/neithere/argh/issues/152
+  + python-argh-no_mock.patch
+
+-------------------------------------------------------------------
 Wed Sep 22 04:41:45 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-py39.patch:

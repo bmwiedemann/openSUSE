@@ -31,4 +31,12 @@
     <comment>Don't depend on test dependencies for build</comment>
     <requestid>752791</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4aced58fefc9668b62525b626296301d</srcmd5>
+    <version>3.8.1</version>
+    <time>1646948729</time>
+    <user>dimstar_suse</user>
+    <comment>Fix NPE in test compilation</comment>
+    <requestid>960733</requestid>
+  </revision>
 </revisionlist>

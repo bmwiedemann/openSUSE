@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 11 07:18:33 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Updated for RHEL8.
+
+-------------------------------------------------------------------
 Wed Oct 20 13:18:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

@@ -20,6 +20,7 @@
 # systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
 %endif
+%global modprobe_d_files uisp_parport.conf
 
 %define prefix /usr/avr
 
@@ -91,6 +92,13 @@ mkdir -p       %{buildroot}/etc/resmgr.conf.d
 mkdir -p       %{buildroot}%{_modprobedir}
 install -m 644 %{SOURCE2} %{buildroot}%{_modprobedir}/uisp_parport.conf
 
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
+
 %post
 %if %suse_version >= 1000
 if [ "$1" -eq 1 ]; then
@@ -104,6 +112,13 @@ if [ "$1" -eq 1 ]; then
   fi
 fi
 %endif
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %files
 %defattr (-, root, root)

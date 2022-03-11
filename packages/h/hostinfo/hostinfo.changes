@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  9 16:55:17 UTC 2022 - Jason Record <jason.record@suse.com>
+
+- Additions to version 1.0.7
+  + Fix boot failure or delays from hostinfo.service (bsc#1195743)
+
+-------------------------------------------------------------------
+Tue Oct  5 14:08:43 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Added hardening to systemd service file pq#2
+
+-------------------------------------------------------------------
 Thu Mar 18 18:57:03 UTC 2021 - jason.record@gmail.com
 
 - Host information now persistent across reboots (bsc#1183732)

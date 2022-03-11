@@ -1,7 +1,7 @@
 #
 # spec file for package python-columnize
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %define modname columnize
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-columnize
 Version:        0.3.10
 Release:        0
 License:        MIT
 Summary:        Format a simple (i.e. not nested) list into aligned columns
-Url:            https://github.com/rocky/pycolumnize
+URL:            https://github.com/rocky/pycolumnize
 Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/source/c/columnize/columnize-%{version}.tar.gz
-# Include test file missed from being included in source tarball
-Source1:        https://raw.githubusercontent.com/rocky/pycolumnize/%{version}/test_columnize.py
+# Include test file missed from being included in source tarball gh#rocky/pycolumnize#29
+# https://raw.githubusercontent.com/rocky/pycolumnize/%%{version}/test_columnize.py
+Source1:        test_columnize.py
 # PATCH-FEATURE-OPENSUSE drop-nose-requirement.patch badshah400@gmail.com -- Drop requirement on outdated nose; we do not run tests anyway
 Patch0:         drop-nose-requirement.patch
-BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM python-columnize-no-mock.patch gh#rocky/pycolumnize#28 mcepl@suse.com
+# remove the need for external mock package
+Patch1:         python-columnize-no-mock.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION For tests
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
@@ -44,9 +49,9 @@ BuildArch:      noarch
 Format a simple (i.e. not nested) list into aligned columns.
 
 %prep
-%autosetup -p1 -n columnize-%{version}
-
+%setup -q -n columnize-%{version}
 cp %{SOURCE1} ./
+%autopatch -p1
 
 %build
 %python_build

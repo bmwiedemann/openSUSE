@@ -30,6 +30,7 @@ key_info_manager = "on-disk-manager"
 #tcti = "device:/dev/tpmrm0"
 #owner_hierarchy_auth = ""
 
+# CAL provider and hardware abstraction crate are unmaintained; See #585
 #[[provider]]
 #provider_type = "CryptoAuthLib"
 #key_info_manager = "on-disk-manager"

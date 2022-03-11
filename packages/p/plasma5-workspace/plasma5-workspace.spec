@@ -473,14 +473,13 @@ fi
 
 %config %{_kf5_configdir}/taskmanagerrulesrc
 %config %{_kf5_configdir}/plasmanotifyrc
-%dir %{_kf5_libdir}/libexec
-%{_kf5_libdir}/libexec/ksmserver-logout-greeter
-%{_kf5_libdir}/libexec/plasma-changeicons
+%{_libexecdir}/ksmserver-logout-greeter
+%{_libexecdir}/plasma-changeicons
+%{_libexecdir}/baloorunner
+%{_libexecdir}/plasma-sourceenv.sh
+%{_libexecdir}/plasma-dbus-run-session-if-needed
 %{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf5_libdir}/kconf_update_bin/krunnerhistory
-%{_kf5_libdir}/libexec/baloorunner
-%{_kf5_libdir}/libexec/plasma-sourceenv.sh
-%{_kf5_libdir}/libexec/plasma-dbus-run-session-if-needed
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.klipper.desktop
@@ -541,11 +540,11 @@ fi
 %{_kf5_sharedir}/kpackage/kcms/kcm_translations
 # %%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %{_kf5_sharedir}/kpackage/kcms/kcm_desktoptheme
-%dir %{_kf5_libdir}/libexec/kauth
-%{_kf5_libdir}/libexec/kauth/fontinst
-%{_kf5_libdir}/libexec/kauth/fontinst_helper
-%{_kf5_libdir}/libexec/kauth/fontinst_x11
-%{_kf5_libdir}/libexec/kfontprint
+%dir %{_libexecdir}/kauth
+%{_libexecdir}/kauth/fontinst
+%{_libexecdir}/kauth/fontinst_helper
+%{_libexecdir}/kauth/fontinst_x11
+%{_libexecdir}/kfontprint
 %exclude %{_kf5_libdir}/libkfontinst.so
 %{_kf5_libdir}/libkfontinst.so.*
 %exclude %{_kf5_libdir}/libkfontinstui.so

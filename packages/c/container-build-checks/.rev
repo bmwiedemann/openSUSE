@@ -32,4 +32,12 @@
   * Avoid crash on local builds</comment>
     <requestid>950888</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5b0eea43468328fe5a09091a8febc826</srcmd5>
+    <version>1643874076.3d0e13c</version>
+    <time>1646767883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959812</requestid>
+  </revision>
 </revisionlist>

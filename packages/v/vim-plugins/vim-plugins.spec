@@ -104,6 +104,7 @@ Source101:      vim-markdown-%{markdown_version}.tar.xz
 Source102:      neomutt.vim-%{neomutt_version}.tar.xz
 Source103:      salt-vim-%{salt_version}.tar.xz
 Source104:      vim-latex-%{latex_version}.tar.xz
+Source200:      gitrebase.vim
 Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
@@ -285,6 +286,19 @@ This script provides two functions to display git diffs in vim.
     Split the vim window vertically, display the HEAD, or some other changeset, version of the file in the split, then diff them.
 :GITChanges [commitish]
     Highlight lines that were changed since the HEAD or some other changeset.
+
+%package -n vim-plugin-gitrebase-keywordprg
+Version:        1
+Release:        0
+Summary:        Set keywordprg in git rebase --interactive
+License:        GPL-2.0-only
+Group:          Productivity/Text/Editors
+Requires:       git-core
+
+%description -n vim-plugin-gitrebase-keywordprg
+Set keywordprg in git rebase --interactive. This was used to done before vim
+8.2.4529, but was changed afterwards. For details, see
+https://github.com/vim/vim/issues/9845.
 
 %package -n vim-plugin-gnupg
 Version:        %gnupg_version
@@ -695,6 +709,9 @@ for i in vimplugin-* a.vim-* ack.vim-* Align-* calendar.vim--Matsumoto-* \
     popd
 done
 
+install -d %buildroot/%vimplugin_dir/after/ftplugin/
+install -m 644 %{SOURCE200} %buildroot/%vimplugin_dir/after/ftplugin/
+
 install -d %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
 mv %{buildroot}/%vimplugin_dir/nerdtree_plugin %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
 
@@ -836,6 +853,9 @@ fi \
 %files -n vim-plugin-gitdiff
 %defattr(-,root,root,0755)
 %vimplugin_dir/plugin/gitdiff.vim
+
+%files -n vim-plugin-gitrebase-keywordprg
+%vimplugin_dir/after/ftplugin/gitrebase.vim
 
 %files -n vim-plugin-gnupg
 %defattr(-,root,root,0755)

@@ -38,6 +38,11 @@ Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{ve
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.tar.gz
 Patch0:         gdal-perl.patch
+# PATCH-FIX-UPSTREAM gdal-fix-build-poppler.patch -- Fix build with poppler 22.03.0 and newer
+Patch1:         gdal-fix-build-poppler.patch
+# PATCH-FIX-UPSTREAM gdal-fix-poppler-leap.patch -- Fix build on Leap 15.4 and poppler
+Patch2:         gdal-fix-poppler-leap.patch
+
 BuildRequires:  KEALib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -341,6 +346,8 @@ rm -rf %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/Const/.packlist
 rm -rf %{buildroot}%{_bindir}/*.dox
 # License doesn't go there
 rm -f %{buildroot}%{_datadir}/gdal/LICENSE.TXT
+
+%fdupes %{buildroot}%{python3_sitearch}
 
 # avoid PACKAGE redefines
 sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_config.h

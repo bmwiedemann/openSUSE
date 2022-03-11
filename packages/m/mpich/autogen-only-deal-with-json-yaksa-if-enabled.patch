@@ -1,4 +1,4 @@
-commit 031bb25502d5ad35cf50419f153cd976fff82b5a
+commit ad48f4b53fa70b2b995fe884a87307298b737a52
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Thu Apr 1 09:06:56 2021 +0200
 
@@ -9,37 +9,11 @@ Date:   Thu Apr 1 09:06:56 2021 +0200
     
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
-diff --git autogen.sh autogen.sh
-index ed20d4b90187..f096c14ef5fb 100755
---- autogen.sh
-+++ autogen.sh
-@@ -603,7 +603,7 @@ echo
- check_submodule_presence modules/hwloc
- 
- # external packages that require autogen.sh to be run for each of them
--externals="src/pm/hydra src/pm/hydra2 src/mpi/romio modules/hwloc test/mpi modules/json-c modules/yaksa"
-+externals="src/pm/hydra src/pm/hydra2 src/mpi/romio modules/hwloc test/mpi"
- 
- if [ "yes" = "$do_izem" ] ; then
-     check_submodule_presence modules/izem
-@@ -622,10 +622,12 @@ fi
- 
- if [ "yes" = "$do_json" ] ; then
-     check_submodule_presence "modules/json-c"
-+    externals="${externals} modules/json-c"
- fi
- 
- if [ "yes" = "$do_yaksa" ] ; then
-     check_submodule_presence "modules/yaksa"
-+    externals="${externals} modules/yaksa"
- fi
- 
- ########################################################################
 diff --git configure.ac configure.ac
-index dd7b4d7c6425..fa8c8b16c81a 100644
+index e7a46106155a..5966d21ed4dc 100644
 --- configure.ac
 +++ configure.ac
-@@ -1189,14 +1189,23 @@ AC_SUBST([jsonsrcdir])
+@@ -1070,14 +1070,23 @@ AC_SUBST([jsonsrcdir])
  jsonlib=""
  AC_SUBST([jsonlib])
  
@@ -70,4 +44,4 @@ index dd7b4d7c6425..fa8c8b16c81a 100644
 +fi
  
  # ----------------------------------------------------------------------------
- # HWLOC
+ # HWLOC / NETLOC

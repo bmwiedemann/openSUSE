@@ -28,10 +28,18 @@ URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+Patch0:         pycountry.diff
 # List of additional build dependencies
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 Requires:       proteus
+# Leap uses an older pycountry
+%if 0%{?suse_version} <= 1500
+Requires:       python3-pycountry <= 20.7.3
+%else
+Requires:       python3-pycountry
+%endif
 Requires:       trytond
 
 BuildArch:      noarch
@@ -46,6 +54,13 @@ module.
 
 %prep
 %setup -q
+
+echo %{?suse_version}
+
+# TW uses newer pycountry
+%if 0%{?suse_version} > 1500
+%patch0 -p1
+%endif
 
 %build
 %python3_build

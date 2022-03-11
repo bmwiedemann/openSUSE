@@ -16,4 +16,12 @@
 </comment>
     <requestid>796002</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c1d37be01a02204f548b17598e47d9a7</srcmd5>
+    <version>2.4.0</version>
+    <time>1646848089</time>
+    <user>dimstar_suse</user>
+    <comment>Don't alias to the jakarta name</comment>
+    <requestid>960490</requestid>
+  </revision>
 </revisionlist>

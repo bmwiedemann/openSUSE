@@ -1,7 +1,7 @@
 #
 # spec file for package gradle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,14 +96,11 @@ BuildRequires:  mvn(com.google.code.findbugs:findbugs)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.code.gson:gson)
 BuildRequires:  mvn(com.google.guava:guava)
-BuildRequires:  mvn(com.google.http-client:google-http-client)
-BuildRequires:  mvn(com.google.oauth-client:google-oauth-client)
 BuildRequires:  mvn(com.googlecode.jarjar:jarjar)
 BuildRequires:  mvn(com.googlecode.jatl:jatl)
 BuildRequires:  mvn(com.jcraft:jsch)
 BuildRequires:  mvn(com.sun:tools)
 BuildRequires:  mvn(com.typesafe.zinc:zinc)
-BuildRequires:  mvn(com.uwyn:jhighlight)
 BuildRequires:  mvn(commons-beanutils:commons-beanutils)
 BuildRequires:  mvn(commons-cli:commons-cli)
 BuildRequires:  mvn(commons-codec:commons-codec)
@@ -128,7 +125,6 @@ BuildRequires:  mvn(org.apache.ant:ant-launcher)
 BuildRequires:  mvn(org.apache.commons:commons-compress)
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.geronimo.specs:geronimo-annotation_1.0_spec)
-BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
 BuildRequires:  mvn(org.apache.httpcomponents:httpcore)
 BuildRequires:  mvn(org.apache.ivy:ivy)
@@ -157,7 +153,6 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-classworlds)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  mvn(org.codenarc:CodeNarc)
 BuildRequires:  mvn(org.eclipse.aether:aether-api)
 BuildRequires:  mvn(org.eclipse.aether:aether-connector-basic)
 BuildRequires:  mvn(org.eclipse.aether:aether-impl)
@@ -180,7 +175,6 @@ BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.fusesource.hawtjni:hawtjni-runtime)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.fusesource.jansi:jansi-native)
-BuildRequires:  mvn(org.gmetrics:GMetrics)
 BuildRequires:  mvn(org.jsoup:jsoup)
 BuildRequires:  mvn(org.mozilla:rhino)
 BuildRequires:  mvn(org.objenesis:objenesis)

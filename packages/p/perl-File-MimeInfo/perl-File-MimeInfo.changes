@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  7 03:06:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.32
+   see /usr/share/doc/packages/perl-File-MimeInfo/Changes
+
+  0.32  2022-03-06
+   - Fix uninitialized values in _read_list() call, provided by mazunki
+
+-------------------------------------------------------------------
 Fri Jan  7 03:08:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.31

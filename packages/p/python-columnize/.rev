@@ -7,4 +7,17 @@
     <comment>New package - A python module to display simple lists in formatted columns.</comment>
     <requestid>952266</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09d9b41f62374f5f4cd08a0717fd1a2f</srcmd5>
+    <version>0.3.10</version>
+    <time>1646767929</time>
+    <user>dimstar_suse</user>
+    <comment>- Rearrange and reapply patches.
+- do not require python-mock for build
+- added patches
+  fix https://github.com/rocky/pycolumnize/issues/28
+  + python-columnize-no-mock.patch
+</comment>
+    <requestid>960173</requestid>
+  </revision>
 </revisionlist>

@@ -27,6 +27,9 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+%if 0%{suse_version} < 1500
+BuildRequires:  gcc11-c++
+%endif
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++
@@ -51,6 +54,9 @@ cat >"%{_builddir}/abslx.sym" <<-EOF
 	ABSL_%{version} { global: *; };
 EOF
 %define build_ldflags -Wl,--version-script=%{_builddir}/abslx.sym
+%if 0%{suse_version} < 1500
+export CXX=g++-11
+%endif
 %cmake
 %cmake_build
 

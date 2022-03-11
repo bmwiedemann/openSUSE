@@ -591,4 +591,22 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>943956</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>40a8304203a3cfea6166bc4be94efc8f</srcmd5>
+    <version>3.4.1</version>
+    <time>1646767914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960157</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>a379bb4cd879469714710d5b145e68e0</srcmd5>
+    <version>3.4.1</version>
+    <time>1646948726</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gdal-fix-poppler-leap.patch: Fix build on Leap 15.4 and poppler.
+- Add fdups macro, BuildRequires already in place, remove duplicate files.
+</comment>
+    <requestid>960732</requestid>
+  </revision>
 </revisionlist>

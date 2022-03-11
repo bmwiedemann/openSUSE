@@ -1,0 +1,40 @@
+From 17b96e0e266b809f2da5cd7b8d9b5314e8b259d1 Mon Sep 17 00:00:00 2001
+From: ellie timoney <ellie@fastmail.com>
+Date: Fri, 21 Jan 2022 11:00:33 +1100
+Upstream: merged(https://github.com/cyrusimap/cyrus-imapd/commit/17b96e0e266b809f2da5cd7b8d9b5314e8b259d1)
+Subject: [PATCH] imapd: recognise 3.6 and 3.7 backends
+
+---
+ imap/imapd.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/imap/imapd.c b/imap/imapd.c
+index d459df07dd..ee98e58ab5 100644
+--- a/imap/imapd.c
++++ b/imap/imapd.c
+@@ -8470,12 +8470,23 @@ static int backend_version(struct backend *be)
+      * In 3.3 and later, this function lives in backend.c
+      */
+
+-    /* It's like looking in the mirror and not suffering from schizophrenia */
++    /* identical banner? identical version! */
+     if (strstr(be->banner, cyrus_version())) {
+ 	return MAILBOX_MINOR_VERSION;
+     }
+
+-    /* unstable 3.5 series ranges from 17..?? */
++    /* unstable 3.7 series ranges from 17..?? */
++    if (strstr(be->banner, "Cyrus IMAP 3.7")) {
++        /* all versions of 3.7 support at least this version */
++        return 17;
++    }
++
++    /* version 3.6 is 17 */
++    if (strstr(be->banner, "Cyrus IMAP 3.6")) {
++        return 17;
++    }
++
++    /* unstable 3.5 series is 17 */
+     if (strstr(be->banner, "Cyrus IMAP 3.5")) {
+         /* all versions of 3.5 support at least this version */
+         return 17;

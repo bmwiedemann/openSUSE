@@ -1,10 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar  9 16:39:02 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.2.7
+  * General:
+    * Fix: VTOLs occasionally land to attack
+    * Fix: VTOLs may attempt to "attack" when empty
+    * Fix: Optimum range not moving past long range when clicking
+      a target
+- Correct the changelog entry for 4.2.6 update
+- Dropped unneeded glew dependencies 
+
+-------------------------------------------------------------------
+Tue Mar  8 13:58:49 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM
+
+-------------------------------------------------------------------
 Tue Mar  1 05:26:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.2.6
   * General:
-    * Fix: Do not make units move unnecessarily when attached to
-      commanders and ordering an attack
+    * Fix: Potential crash due to reinitializing default fog color 
 - Changes in 4.2.5
   * General:
     * Fix: Do not make units move unnecessarily when attached

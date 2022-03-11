@@ -1,7 +1,7 @@
 #
 # spec file for package python-dns-lexicon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-dns-lexicon
-Version:        3.5.3
+Version:        3.9.4
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT
 URL:            https://github.com/AnalogJ/lexicon
 Source0:        https://github.com/AnalogJ/lexicon/archive/v%{version}.tar.gz#/lexicon-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove-mock.patch gh#AnalogJ/lexicon#706
-Patch0:         remove-mock.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION Python build system requirements
@@ -99,7 +96,7 @@ find . -type f -name ".gitignore" -delete
 
 %check
 # test_auto does not work inside OBS
-%pytest lexicon/tests --ignore lexicon/tests/providers/test_auto.py
+%pytest lexicon/tests --ignore lexicon/tests/providers/test_auto.py --ignore lexicon/tests/providers/test_oci.py
 
 %post
 %python_install_alternative lexicon

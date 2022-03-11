@@ -115,16 +115,16 @@ Provides translations to the package %{name}.
 
 %files
 %license LICENSES/*
-%{_kf5_libdir}/libexec/kactivitymanagerd
 %{_kf5_libdir}/libkactivitymanagerd_plugin.so
-%{_kf5_plugindir}/
-%{_kf5_servicesdir}/
-%{_kf5_servicetypesdir}/
+%{_kf5_plugindir}/kactivitymanagerd/
+%{_kf5_servicesdir}/kactivitymanagerd.desktop
+%{_kf5_servicetypesdir}/kactivitymanagerd-plugin.desktop
 %dir %{_kf5_sharedir}/krunner/
 %dir %{_kf5_sharedir}/krunner/dbusplugins/
 %{_kf5_sharedir}/krunner/dbusplugins/plasma-runnners-activities.desktop
 %{_kf5_sharedir}/dbus-1/services/org.kde.ActivityManager.service
 %{_kf5_debugdir}/kactivitymanagerd.categories
+%{_libexecdir}/kactivitymanagerd
 %{_userunitdir}/plasma-kactivitymanagerd.service
 
 %changelog

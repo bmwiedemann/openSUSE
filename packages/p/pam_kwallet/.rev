@@ -820,4 +820,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>KDE Plasma 5.24.2</comment>
     <requestid>956973</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>b92d81bc09937a01b40b2b572ef964ee</srcmd5>
+    <version>5.24.2</version>
+    <time>1646848028</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960075</requestid>
+  </revision>
 </revisionlist>

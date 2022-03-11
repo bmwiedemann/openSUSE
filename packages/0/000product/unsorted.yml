@@ -1322,6 +1322,7 @@ unsorted:
   - bluez-obexd 
   - bluez-qt-devel 
   - bluez-test 
+  - bluez-tools 
   - bmake 
   - bmkdep 
   - bmon 
@@ -2134,8 +2135,6 @@ unsorted:
   - codelite 
   - codemodel 
   - codemodel-javadoc 
-  - codenarc 
-  - codenarc-javadoc 
   - codespell 
   - cogl-devel 
   - collectd 
@@ -3806,6 +3805,8 @@ unsorted:
   - fmt-devel 
   - fnotifystat 
   - fnotifystat-bash-completion 
+  - fnott 
+  - fnott-zsh-completion 
   - focuswriter 
   - focuswriter-lang 
   - folder-color-common 
@@ -3952,6 +3953,7 @@ unsorted:
   - fs-uae-launcher 
   - fs_mark 
   - fsarchiver 
+  - fscrypt 
   - fslsfonts 
   - fstobdf 
   - fstrcmp 
@@ -3991,6 +3993,8 @@ unsorted:
   - fusesmb 
   - fusesource-pom 
   - fusion-icon 
+  - fuzzel 
+  - fuzzel-zsh-completion 
   - fvwm-themes 
   - fvwm2 
   - fwbuilder 
@@ -5809,8 +5813,6 @@ unsorted:
   - glyrc 
   - gmavenplus-plugin 
   - gmavenplus-plugin-javadoc 
-  - gmetrics 
-  - gmetrics-javadoc 
   - gmic 
   - gmic-bash-completion 
   - gmic-data 
@@ -6118,26 +6120,10 @@ unsorted:
   - google-guest-oslogin 
   - google-guice 
   - google-guice-javadoc 
-  - google-http-java-client 
-  - google-http-java-client-findbugs 
-  - google-http-java-client-gson 
-  - google-http-java-client-jackson 
-  - google-http-java-client-jackson2 
-  - google-http-java-client-javadoc 
-  - google-http-java-client-jdo 
-  - google-http-java-client-parent 
-  - google-http-java-client-protobuf 
-  - google-http-java-client-test 
-  - google-http-java-client-xml 
   - google-inconsolata-fonts 
   - google-lekton-fonts 
   - google-merriweather-fonts 
   - google-nobile-fonts 
-  - google-oauth-java-client 
-  - google-oauth-java-client-java6 
-  - google-oauth-java-client-javadoc 
-  - google-oauth-java-client-parent 
-  - google-oauth-java-client-servlet 
   - google-osconfig-agent 
   - google-quiche-source 
   - google-roboto-mono-fonts 
@@ -7308,6 +7294,7 @@ unsorted:
   - iwpmd 
   - jack 
   - jack-32bit: [x86_64] 
+  - jack-example-tools 
   - jack-rack 
   - jack_capture 
   - jackson 
@@ -7493,6 +7480,8 @@ unsorted:
   - jawn-json4s 
   - jawn-parser 
   - jawn-util 
+  - jaxb-api 
+  - jaxb-api-javadoc 
   - jaxen 
   - jaxen-bootstrap 
   - jaxodraw 
@@ -7544,7 +7533,6 @@ unsorted:
   - jctools-channels 
   - jctools-experimental 
   - jctools-javadoc 
-  - jctools-parent 
   - jcuber 
   - jcuber-doc 
   - jdeparser 
@@ -12317,20 +12305,13 @@ unsorted:
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel-static 
-  - libnetcdf-fortran-gnu-hpc 
-  - libnetcdf-fortran-gnu-mpich-hpc 
-  - libnetcdf-fortran-gnu-mvapich2-hpc 
-  - libnetcdf-fortran-gnu-openmpi1-hpc 
-  - libnetcdf-fortran-gnu-openmpi2-hpc 
-  - libnetcdf-fortran-gnu-openmpi3-hpc 
-  - libnetcdf-fortran-gnu-openmpi4-hpc 
-  - libnetcdf-fortran_4_5_2-gnu-hpc: [i586] 
-  - libnetcdf-fortran_4_5_2-gnu-mpich-hpc: [i586] 
-  - libnetcdf-fortran_4_5_2-gnu-mvapich2-hpc: [i586] 
-  - libnetcdf-fortran_4_5_2-gnu-openmpi1-hpc: [i586] 
-  - libnetcdf-fortran_4_5_2-gnu-openmpi2-hpc: [i586] 
-  - libnetcdf-fortran_4_5_2-gnu-openmpi3-hpc: [i586] 
-  - libnetcdf-fortran_4_5_2-gnu-openmpi4-hpc: [i586] 
+  - libnetcdf-fortran-gnu-hpc: [x86_64] 
+  - libnetcdf-fortran-gnu-mpich-hpc: [x86_64] 
+  - libnetcdf-fortran-gnu-mvapich2-hpc: [x86_64] 
+  - libnetcdf-fortran-gnu-openmpi1-hpc: [x86_64] 
+  - libnetcdf-fortran-gnu-openmpi2-hpc: [x86_64] 
+  - libnetcdf-fortran-gnu-openmpi3-hpc: [x86_64] 
+  - libnetcdf-fortran-gnu-openmpi4-hpc: [x86_64] 
   - libnetcdf-fortran_4_5_3-gnu-hpc: [x86_64] 
   - libnetcdf-fortran_4_5_3-gnu-mpich-hpc: [x86_64] 
   - libnetcdf-fortran_4_5_3-gnu-mvapich2-hpc: [x86_64] 
@@ -13518,50 +13499,7 @@ unsorted:
   - libressl-devel-doc 
   - librest-0_7-0-32bit: [x86_64] 
   - librest-devel 
-  - libretro-2048 
-  - libretro-3dengine 
-  - libretro-81 
-  - libretro-atari800 
-  - libretro-beetle-gba 
-  - libretro-beetle-lynx 
-  - libretro-beetle-ngp 
-  - libretro-beetle-pce-fast 
-  - libretro-beetle-pcfx 
-  - libretro-beetle-psx 
-  - libretro-beetle-psx-hw 
-  - libretro-beetle-saturn 
-  - libretro-beetle-supergrafx 
-  - libretro-beetle-vb 
-  - libretro-beetle-wswan 
-  - libretro-blastem 
-  - libretro-bluemsx 
-  - libretro-bsnes 
-  - libretro-cap32 
-  - libretro-core-info 
-  - libretro-craft 
-  - libretro-crocods 
-  - libretro-database 
-  - libretro-desmume 
-  - libretro-dolphin: [x86_64] 
-  - libretro-easyrpg 
-  - libretro-fceumm 
-  - libretro-ffmpeg 
-  - libretro-flycast 
-  - libretro-freechaf 
-  - libretro-freeintv 
-  - libretro-fuse 
-  - libretro-gambatte 
   - libretro-gtk-1-0 
-  - libretro-handy 
-  - libretro-mgba 
-  - libretro-nestopia 
-  - libretro-parallel-n64 
-  - libretro-pcsx-rearmed 
-  - libretro-ppsspp 
-  - libretro-prosystem 
-  - libretro-stella 
-  - libretro-virtualjaguar 
-  - libretro-yabause 
   - librevenge-devel 
   - librevenge-doc 
   - librevenge-generators-0_0-0 
@@ -14741,6 +14679,7 @@ unsorted:
   - libxapian-devel 
   - libxapian30-32bit: [x86_64] 
   - libxapp-devel 
+  - libxapp1 
   - libxar-devel 
   - libxar1 
   - libxatracker-devel 
@@ -16533,14 +16472,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_3_4_3-gnu-hpc 
-  - mpich-ofi_3_4_3-gnu-hpc-devel 
-  - mpich-ofi_3_4_3-gnu-hpc-devel-static 
-  - mpich-ofi_3_4_3-gnu-hpc-macros-devel 
-  - mpich_3_4_3-gnu-hpc 
-  - mpich_3_4_3-gnu-hpc-devel 
-  - mpich_3_4_3-gnu-hpc-devel-static 
-  - mpich_3_4_3-gnu-hpc-macros-devel 
+  - mpich-ofi_4_0_1-gnu-hpc 
+  - mpich-ofi_4_0_1-gnu-hpc-devel 
+  - mpich-ofi_4_0_1-gnu-hpc-devel-static 
+  - mpich-ofi_4_0_1-gnu-hpc-macros-devel 
+  - mpich_4_0_1-gnu-hpc 
+  - mpich_4_0_1-gnu-hpc-devel 
+  - mpich_4_0_1-gnu-hpc-devel-static 
+  - mpich_4_0_1-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -16625,6 +16564,8 @@ unsorted:
   - muffin-lang 
   - mujs 
   - mujs-devel 
+  - multiload-ng-base 
+  - multiload-ng-xfce4 
   - multimon-ng 
   - multipath-tools-devel 
   - multitail 
@@ -17084,34 +17025,13 @@ unsorted:
   - netcdf-devel 
   - netcdf-devel-data 
   - netcdf-devel-static 
-  - netcdf-fortran-gnu-hpc: [i586] 
-  - netcdf-fortran-gnu-hpc-devel 
-  - netcdf-fortran-gnu-mpich-hpc: [i586] 
-  - netcdf-fortran-gnu-mpich-hpc-devel 
-  - netcdf-fortran-gnu-mvapich2-hpc: [i586] 
-  - netcdf-fortran-gnu-mvapich2-hpc-devel 
-  - netcdf-fortran-gnu-openmpi1-hpc: [i586] 
-  - netcdf-fortran-gnu-openmpi1-hpc-devel 
-  - netcdf-fortran-gnu-openmpi2-hpc: [i586] 
-  - netcdf-fortran-gnu-openmpi2-hpc-devel 
-  - netcdf-fortran-gnu-openmpi3-hpc: [i586] 
-  - netcdf-fortran-gnu-openmpi3-hpc-devel 
-  - netcdf-fortran-gnu-openmpi4-hpc: [i586] 
-  - netcdf-fortran-gnu-openmpi4-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-hpc: [i586] 
-  - netcdf-fortran_4_5_2-gnu-hpc-devel: [i586] 
-  - netcdf-fortran_4_5_2-gnu-mpich-hpc: [i586] 
-  - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel: [i586] 
-  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc: [i586] 
-  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc-devel: [i586] 
-  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc: [i586] 
-  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel: [i586] 
-  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc: [i586] 
-  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc-devel: [i586] 
-  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc: [i586] 
-  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel: [i586] 
-  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc: [i586] 
-  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc-devel: [i586] 
+  - netcdf-fortran-gnu-hpc-devel: [x86_64] 
+  - netcdf-fortran-gnu-mpich-hpc-devel: [x86_64] 
+  - netcdf-fortran-gnu-mvapich2-hpc-devel: [x86_64] 
+  - netcdf-fortran-gnu-openmpi1-hpc-devel: [x86_64] 
+  - netcdf-fortran-gnu-openmpi2-hpc-devel: [x86_64] 
+  - netcdf-fortran-gnu-openmpi3-hpc-devel: [x86_64] 
+  - netcdf-fortran-gnu-openmpi4-hpc-devel: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-hpc-devel: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-mpich-hpc-devel: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-mvapich2-hpc-devel: [x86_64] 
@@ -18537,6 +18457,7 @@ unsorted:
   - pam-doc 
   - pam-extra 
   - pam-extra-32bit: [x86_64] 
+  - pam-fscrypt 
   - pam-test 
   - pam_ccreds 
   - pam_ccreds-32bit: [x86_64] 
@@ -18642,7 +18563,7 @@ unsorted:
   - parpack-openmpi3-devel-32bit: [x86_64] 
   - parpack-openmpi4-devel 
   - parpack-openmpi4-devel-32bit: [x86_64] 
-  - parsec 
+  - parsec: [x86_64] 
   - parsec-tool 
   - partclone 
   - partclone-lang 
@@ -20319,6 +20240,7 @@ unsorted:
   - pgadmin4-doc 
   - pgadmin4-web 
   - pgadmin4-web-uwsgi 
+  - pgbackrest 
   - pgn-extract 
   - phetsarath-fonts 
   - phobos-devel 
@@ -20823,7 +20745,7 @@ unsorted:
   - postgresql10-devel 
   - postgresql10-docs 
   - postgresql10-llvmjit-devel 
-  - postgresql10-pg_cron 
+  - postgresql10-pg_cron: [x86_64] 
   - postgresql10-pgagent 
   - postgresql10-pgaudit 
   - postgresql10-pgsql-ogr-fdw 
@@ -20841,11 +20763,8 @@ unsorted:
   - postgresql11-docs 
   - postgresql11-llvmjit 
   - postgresql11-llvmjit-devel 
-  - postgresql11-pg_cron 
-  - postgresql11-pg_cron-llvmjit: [i586] 
+  - postgresql11-pg_cron: [x86_64] 
   - postgresql11-pgagent 
-  - postgresql11-pgaudit 
-  - postgresql11-pgaudit-llvmjit 
   - postgresql11-pgsql-ogr-fdw 
   - postgresql11-pgsql-ogr-fdw-llvmjit 
   - postgresql11-plperl 
@@ -20863,11 +20782,8 @@ unsorted:
   - postgresql12-docs 
   - postgresql12-llvmjit 
   - postgresql12-llvmjit-devel 
-  - postgresql12-pg_cron 
-  - postgresql12-pg_cron-llvmjit: [i586] 
+  - postgresql12-pg_cron: [x86_64] 
   - postgresql12-pgagent 
-  - postgresql12-pgaudit 
-  - postgresql12-pgaudit-llvmjit 
   - postgresql12-pgsql-ogr-fdw 
   - postgresql12-pgsql-ogr-fdw-llvmjit 
   - postgresql12-plperl 
@@ -20885,11 +20801,8 @@ unsorted:
   - postgresql13-docs 
   - postgresql13-llvmjit 
   - postgresql13-llvmjit-devel 
-  - postgresql13-pg_cron 
-  - postgresql13-pg_cron-llvmjit: [i586] 
+  - postgresql13-pg_cron: [x86_64] 
   - postgresql13-pgagent 
-  - postgresql13-pgaudit 
-  - postgresql13-pgaudit-llvmjit 
   - postgresql13-plperl 
   - postgresql13-plpython 
   - postgresql13-plr 
@@ -23468,6 +23381,7 @@ unsorted:
   - python310-modernize 
   - python310-mohawk 
   - python310-mongoengine 
+  - python310-monitoring-plugins-http_json 
   - python310-monotonic 
   - python310-more-itertools 
   - python310-moreorless 
@@ -24894,7 +24808,6 @@ unsorted:
   - python310-zstd 
   - python310-zxcvbn 
   - python310-zypp-plugin 
-  - python36-django-money 
   - python38-32bit: [x86_64] 
   - python38-APScheduler 
   - python38-AnyQt 
@@ -25864,7 +25777,6 @@ unsorted:
   - python38-django-mathfilters 
   - python38-django-minio-storage 
   - python38-django-model-utils 
-  - python38-django-money 
   - python38-django-nine 
   - python38-django-oauth-toolkit 
   - python38-django-oidc-provider 
@@ -28903,7 +28815,6 @@ unsorted:
   - python39-django-mathfilters 
   - python39-django-minio-storage 
   - python39-django-model-utils 
-  - python39-django-money 
   - python39-django-nine 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
@@ -41431,7 +41342,6 @@ unsorted:
   - tktable 
   - tkxcd 
   - tllist-devel 
-  - tls 
   - tlswrap 
   - tmate 
   - tmon 
@@ -41877,6 +41787,7 @@ unsorted:
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
   - typelib-1_0-Wp-0_4 
+  - typelib-1_0-XApp-1_0 
   - typelib-1_0-Xkl-1_0 
   - typelib-1_0-Xmlb-1_0 
   - typelib-1_0-XplayerPlParser-1_0 
@@ -42195,6 +42106,7 @@ unsorted:
   - vendor-reset-kmp 
   - vendor-reset-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - vendor-reset-kmp-pae: [i586] 
+  - vendored_licenses_packager 
   - verilator 
   - verilator-devel 
   - verilator-doc-pdf 
@@ -42235,6 +42147,7 @@ unsorted:
   - vim-plugin-file-line 
   - vim-plugin-fugitive 
   - vim-plugin-gitdiff 
+  - vim-plugin-gitrebase-keywordprg 
   - vim-plugin-gnupg 
   - vim-plugin-latex 
   - vim-plugin-locateopen 
@@ -42396,6 +42309,7 @@ unsorted:
   - wayland-protocols-devel 
   - waylandpp 
   - waylandpp-devel 
+  - wayshot 
   - wayvnc 
   - wbxml2-tools 
   - wcd 
@@ -42584,6 +42498,8 @@ unsorted:
   - xapian-core 
   - xapian-core-doc 
   - xapian-core-examples 
+  - xapps-common 
+  - xapps-common-lang 
   - xapps-mate 
   - xar 
   - xautolock 

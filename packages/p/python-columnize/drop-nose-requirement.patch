@@ -1,8 +1,16 @@
-Index: columnize-0.3.10/setup.py
-===================================================================
---- columnize-0.3.10.orig/setup.py
-+++ columnize-0.3.10/setup.py
-@@ -34,6 +34,5 @@ setup(
+---
+ setup.py |    2 --
+ 1 file changed, 2 deletions(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -28,12 +28,10 @@ setup(
+       long_description   = long_description,
+       long_description_content_type = "text/x-rst",
+       name               = modname,
+-      test_suite         = 'nose.collector',
+       url                = web,
+       version            = VERSION,
        py_modules         = py_modules,
        install_requires   = install_requires,
        tests_require      = tests_require,

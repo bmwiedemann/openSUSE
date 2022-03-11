@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  8 12:02:19 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * syslog-ng-nojavah.patch
+    + Do not use the removed javah tool, but the javac's -h option
+    + Allows to build with any java-devel >= 1.8
+- Require java-devel >= 1.8 for build
+- Add build dependency on autoconf and automake since we need them
+  to regenerate the build system after we patch it
+
+-------------------------------------------------------------------
 Fri Feb 18 10:27:21 UTC 2022 - peter czanik <peter@czanik.hu>
 
 - disable Java support for ARMv7 (compilation crashes)

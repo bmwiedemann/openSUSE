@@ -15,7 +15,10 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
+%if 0%{?rhel}
+# Fix ERROR: No build ID note found in
+%undefine _missing_build_ids_terminate_build
+%endif
 
 %{go_nostrip}
 
@@ -42,11 +45,16 @@ BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+%if 0%{?rhel}
+BuildRequires:  golang >= 1.14
+Requires(pre):  shadow-utils
+%else
 BuildRequires:  golang(API) >= 1.14
+Requires(pre):  shadow
+%endif
 %{?systemd_requires}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
-Requires(pre):  shadow
 %{go_provides}
 
 %description
@@ -67,17 +75,31 @@ install -D -m 0645 %{SOURCE3} %buildroot%{_fillupdir}/sysconfig.prometheus-postg
 %fdupes %{buildroot}
 
 %pre
-%service_add_pre prometheus-postgres_exporter.service
+%if 0%{?suse_version}
+%service_add_pre %{name}.service
+%endif
 
 %post
-%fillup_only -n prometheus-postgres_exporter
-%service_add_post prometheus-postgres_exporter.service
+%if 0%{?rhel}
+%systemd_post %{name}.service
+%else
+%service_add_post %{name}.service
+%fillup_only -n %{name}
+%endif
 
 %preun
-%service_del_preun prometheus-postgres_exporter.service
+%if 0%{?rhel}
+%systemd_preun %{name}.service
+%else
+%service_del_preun %{name}.service
+%endif
 
 %postun
-%service_del_postun prometheus-postgres_exporter.service
+%if 0%{?rhel}
+%systemd_postun %{name}.service
+%else
+%service_del_postun %{name}.service
+%endif
 
 %files
 %defattr(-,root,root,-)

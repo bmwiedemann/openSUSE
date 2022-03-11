@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:04:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
 Thu Feb 24 09:39:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix log output of some processes (boo#1196206):

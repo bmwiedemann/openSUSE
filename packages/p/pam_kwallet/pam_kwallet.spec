@@ -57,6 +57,7 @@ Summary:        Support files for the KWallet PAM module
 Group:          System/GUI/KDE
 Requires:       kwalletd5
 Requires:       socat
+BuildArch:      noarch
 
 %description common
 This package contains support files used by the KWallet PAM
@@ -69,9 +70,8 @@ module.
   # Before usrmerge, the PAM module goes into /lib*/security/
   %{cmake_kf5 -d build -- \
   %if !0%{?usrmerged}
-      -DKDE_INSTALL_LIBDIR=/%{_lib} \
+      -DKDE_INSTALL_LIBDIR=/%{_lib}
   %endif
-      -DLIBEXEC_INSTALL_DIR=%{_kf5_libexecdir}
   }
 
   %cmake_build
@@ -109,7 +109,7 @@ module.
 %files common
 %license LICENSES/*
 %config %{_kf5_configdir}/autostart/pam_kwallet_init.desktop
-%{_kf5_libexecdir}/pam_kwallet_init
+%{_libexecdir}/pam_kwallet_init
 %{_userunitdir}/plasma-kwallet-pam.service
 
 %changelog

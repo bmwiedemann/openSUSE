@@ -158,10 +158,10 @@ QML applications.
 %endif
 
 %post plugins
-%set_permissions %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
+%set_permissions %{_libexecdir}/ksysguard/ksgrd_network_helper
 
 %verifyscript plugins
-%verify_permissions -e %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
+%verify_permissions -e %{_libexecdir}/ksysguard/ksgrd_network_helper
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -204,11 +204,10 @@ QML applications.
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.ksysguard.processlisthelper.service
 %{_kf5_sharedir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
 %{_kf5_dbuspolicydir}/org.kde.ksysguard.processlisthelper.conf
-%dir %{_kf5_libdir}/libexec/
-%dir %{_kf5_libdir}/libexec/kauth/
-%{_kf5_libdir}/libexec/kauth/ksysguardprocesslist_helper
-%dir %{_kf5_libdir}/libexec/ksysguard/
-%{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
+%dir %{_libexecdir}/kauth/
+%{_libexecdir}/kauth/ksysguardprocesslist_helper
+%dir %{_libexecdir}/ksysguard/
+%{_libexecdir}/ksysguard/ksgrd_network_helper
 
 %files imports
 %license LICENSES/*

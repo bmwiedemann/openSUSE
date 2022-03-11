@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 24 03:08:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.29
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.29 2022-02-23T14:56:18+0900
+   - Fix use of "defined" in unit test
+
+  3.28 2022-02-21T15:40:56+0900
+   - Add channel to Mojo::Redis::PubSub::listen() callback
+
+-------------------------------------------------------------------
 Sat Nov 20 03:06:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.27

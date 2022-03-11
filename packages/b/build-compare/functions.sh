@@ -141,23 +141,38 @@ check_header()
 # - it is used as direntry below certain paths
 # - it is assigned to some variable in scripts, at the end of a line
 # - it is used in PROVIDES, at the end of a line
+#   - special-case KMP package:
+#     PROVIDES version_k.*-release at end of line, trim release
+#     [   23s] -acpi_call-kmp-default 8 1.2.2_k5.17.0_rc5_1.ga9b2c1d-6.110
+#     [   23s] +acpi_call-kmp-default 8 1.2.2_k5.17.0_rc5_1.ga9b2c1d-6.111
 # Trim name-version-release string:
 # - it is used in update-scripts which are called by libzypp
+#   - special-case KMP package:
+#     [   64s]  PREIN
+#     [   64s]  /bin/sh (none)  /usr/lib/module-init-tools/kernel-scriptlets/kmp-pre --name "acpi_call-kmp-default" \
+#     [   64s] -  --version "1.2.2_k5.17.0_rc5_1.ga9b2c1d" --release "6.112" --kernelrelease "5.17.0-rc5-1.ga9b2c1d" \
+#     [   64s] +  --version "1.2.2_k5.17.0_rc5_1.ga9b2c1d" --release "6.113" --kernelrelease "5.17.0-rc5-1.ga9b2c1d" \
 function trim_release_old()
 {
+  local rel_regex_l=${version_release_old_regex_l##*-}
   sed -e "
   /\(\/boot\|\/lib\/modules\|\/lib\/firmware\|\/usr\/src\|$version_release_old_regex_l\$\|$version_release_old_regex_l)\)/{s,$version_release_old_regex_l,@VERSION@-@RELEASE_LONG@,g;s,$version_release_old_regex_s,@VERSION@-@RELEASE_SHORT@,g}
   s/\(\/var\/adm\/update-scripts\/\)${name_ver_rel_old_regex_l}\([^[:blank:]]\+\)/\1@NAME_VER_REL@\2/g
   s/\(\/var\/adm\/update-messages\/\)${name_ver_rel_old_regex_l}\([^[:blank:]]\+\)/\1@NAME_VER_REL@\2/g
+  s/\(^[^[:blank:]].*-kmp-.*[[:blank:]].*_k.*-\)${rel_regex_l}$/\1@RELEASE_LONG@/g
+  s/--release \"${rel_regex_l}\" --kernel/--release \"@RELEASE_LONG@\" --kernel/g
   /\/usr\/lib\/\.build-id/d
   "
 }
 function trim_release_new()
 {
+  local rel_regex_l=${version_release_new_regex_l##*-}
   sed -e "
   /\(\/boot\|\/lib\/modules\|\/lib\/firmware\|\/usr\/src\|$version_release_new_regex_l\$\|$version_release_new_regex_l)\)/{s,$version_release_new_regex_l,@VERSION@-@RELEASE_LONG@,g;s,$version_release_new_regex_s,@VERSION@-@RELEASE_SHORT@,g}
   s/\(\/var\/adm\/update-scripts\/\)${name_ver_rel_new_regex_l}\([^[:blank:]]\+\)/\1@NAME_VER_REL@\2/g
   s/\(\/var\/adm\/update-messages\/\)${name_ver_rel_new_regex_l}\([^[:blank:]]\+\)/\1@NAME_VER_REL@\2/g
+  s/\(^[^[:blank:]].*-kmp-.*[[:blank:]].*_k.*-\)${rel_regex_l}$/\1@RELEASE_LONG@/g
+  s/--release \"${rel_regex_l}\" --kernel/--release \"@RELEASE_LONG@\" --kernel/g
   /\/usr\/lib\/\.build-id/d
   "
 }
@@ -280,16 +295,15 @@ function set_regex() {
 function cmp_rpm_meta ()
 {
     local RES
-    local file1 file2
     local f
     local sh=$1
     local oldrpm=$2
     local newrpm=$3
-
-    file1=`mktemp`
-    file2=`mktemp`
-    rpm_meta_old=`mktemp`
-    rpm_meta_new=`mktemp`
+    local tmpdir="$(mktemp -d)"
+    local file1="$tmpdir/file1"
+    local file2="$tmpdir/file2"
+    local rpm_meta_old="$tmpdir/rpm-meta-old"
+    local rpm_meta_new="$tmpdir/rpm-meta-new"
 
     collect_rpm_querytags
     set_rpm_meta_global_variables $oldrpm
@@ -303,6 +317,7 @@ function cmp_rpm_meta ()
     else
       ls -l $rpm_meta_old $rpm_meta_new
       echo "empty 'rpm -qp' output..."
+      rm -rf "$tmpdir"
       return 1
     fi
 
@@ -317,17 +332,20 @@ function cmp_rpm_meta ()
 
     # Check the whole spec file at first, return 0 immediately if they
     # are the same.
-    cat $rpm_meta_old | trim_release_old > $file1
-    cat $rpm_meta_new | trim_release_new > $file2
+    trim_release_old < $rpm_meta_old > $file1
+    trim_release_new < $rpm_meta_new > $file2
     echo "comparing the rpm tags of $name_new"
-    if diff --label old-rpm-tags --label new-rpm-tags -au $file1 $file2; then
-      rm $file1 $file2 $rpm_meta_old $rpm_meta_new
+    if diff --speed-large-files --label old-rpm-tags --label new-rpm-tags -au0 $file1 $file2; then
+      rm -rf "$tmpdir"
       return 0
     fi
 
     get_value QF_TAGS $rpm_meta_old > $file1
     get_value QF_TAGS $rpm_meta_new > $file2
-    comp_file rpmtags $file1 $file2 $rpm_meta_old $rpm_meta_new || return 1
+    if ! comp_file rpmtags $file1 $file2 $rpm_meta_old $rpm_meta_new; then
+      rm -rf "$tmpdir"
+      return 1
+    fi
 
     # This might happen when?!
     echo "comparing RELEASE"
@@ -337,6 +355,7 @@ function cmp_rpm_meta ()
           # Make sure all kernel packages have the same %RELEASE
           echo "release prefix mismatch"
           if test -z "$check_all"; then
+            rm -rf "$tmpdir"
             return 1
           fi
           difffound=1
@@ -348,16 +367,25 @@ function cmp_rpm_meta ()
 
     get_value QF_PROVIDES $rpm_meta_old | trim_release_old | sort > $file1
     get_value QF_PROVIDES $rpm_meta_new | trim_release_new | sort > $file2
-    comp_file PROVIDES $file1 $file2 $rpm_meta_old $rpm_meta_new || return 1
+    if ! comp_file PROVIDES $file1 $file2 $rpm_meta_old $rpm_meta_new; then
+      rm -rf "$tmpdir"
+      return 1
+    fi
 
     get_value QF_SCRIPT $rpm_meta_old | trim_release_old > $file1
     get_value QF_SCRIPT $rpm_meta_new | trim_release_new > $file2
-    comp_file scripts $file1 $file2 $rpm_meta_old $rpm_meta_new || return 1
+    if ! comp_file scripts $file1 $file2 $rpm_meta_old $rpm_meta_new; then
+      rm -rf "$tmpdir"
+      return 1
+    fi
 
     # First check the file attributes and later the md5s
     get_value QF_FILELIST $rpm_meta_old | trim_release_old > $file1
     get_value QF_FILELIST $rpm_meta_new | trim_release_new > $file2
-    comp_file filelist $file1 $file2 $rpm_meta_old $rpm_meta_new || return 1
+    if ! comp_file filelist $file1 $file2 $rpm_meta_old $rpm_meta_new; then
+      rm -rf "$tmpdir"
+      return 1
+    fi
 
     # now the md5sums. if they are different, we check more detailed
     # if there are different filenames, we will already have aborted before
@@ -392,8 +420,8 @@ function cmp_rpm_meta ()
         echo mv -v \"new/${f}\" \"new/`echo ${f} | trim_release_new`\"
       done >> "${sh}"
     fi
-    #
-    rm $file1 $file2
+
+    rm -rf "$tmpdir"
     [ "$difffound" = 1 ] && RES=1
     return $RES
 }
@@ -404,9 +432,9 @@ function adjust_controlfile() {
     version_release_new="`sed -ne 's/^Version: \(.*\)/\1/p' $2/control`"
     name_ver_rel_new="`sed -n -e 's/^Package: \(.*\)/\1/p' $2/control`-`sed -n -e 's/^Version: \(.*\)/\1/p' $2/control`"
     set_regex
-    cat $1/control | trim_release_old > $1/control.fixed
+    trim_release_old < $1/control > $1/control.fixed
     mv $1/control.fixed $1/control
-    cat $2/control | trim_release_new > $2/control.fixed
+    trim_release_new < $2/control > $2/control.fixed
     mv $2/control.fixed $2/control
 }
 

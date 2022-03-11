@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorama
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-colorama
 Version:        0.4.4
 Release:        0
@@ -25,7 +26,6 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/tartley/colorama
 Source:         https://github.com/tartley/colorama/archive/%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

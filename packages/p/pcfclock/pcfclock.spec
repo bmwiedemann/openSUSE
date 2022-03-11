@@ -1,7 +1,7 @@
 #
 # spec file for package pcfclock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-# systemd-rpm-macros(or kmod) is wrong in 15.2
+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
 %endif
+%global modprobe_d_files 50-pcfclock.conf
+
 Name:           pcfclock
 Version:        0.44
 Release:        0
@@ -111,9 +114,23 @@ mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}
 %endif
 
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
+
 %post
 # Create devices nodes at installation time
 systemd-tmpfiles --create %{_tmpfilesdir}/pcfclock.conf
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %files
 %defattr(-,root,root)

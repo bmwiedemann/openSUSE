@@ -1,7 +1,7 @@
 #
 # spec file for package python-coveralls-check
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cjw296/coverage-check
 Source:         https://files.pythonhosted.org/packages/source/c/coveralls-check/coveralls-check-%{version}.tar.gz
+# https://github.com/cjw296/coveralls-check/issues/3
+Patch0:         python-coveralls-check-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -32,11 +34,10 @@ Requires:       python-backoff
 Requires:       python-requests
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module backoff}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
@@ -49,6 +50,7 @@ A helper to check https://coveralls.io for a given commit hash.
 
 %prep
 %setup -q -n coveralls-check-%{version}
+%autopatch -p1
 
 %build
 %python_build

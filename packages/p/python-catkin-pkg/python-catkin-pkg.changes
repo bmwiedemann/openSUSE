@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  9 11:43:28 UTC 2022 - pgajdos@suse.com
+
+- do not require mock for build
+- added patches
+  https://github.com/ros-infrastructure/catkin_pkg/commit/b5c6812b40fa31da91ee560dda7c6e470dedcfb8
+  + python-catkin-pkg-no-mock.patch
+
+-------------------------------------------------------------------
 Sat Jan 15 18:34:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.24:

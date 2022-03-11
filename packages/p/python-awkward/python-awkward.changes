@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar  5 15:25:15 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.0:
+  * Bumped pybind11 to 2.9.1 [gh#scikit-hep/awkward-1.0#1316].
+  * Added optiontype_outside_record option to ak.zip
+    [gh#scikit-hep/awkward-1.0#1308].
+  * Fixed typo in ArrayBuilder documentation
+    [gh#scikit-hep/awkward-1.0#1326].
+  * Many more changes through various 1.8.0rc versions, see
+    https://awkward-array.readthedocs.io/en/latest/_auto/changelog.html.
+- Add awkward-import-packging-not-setuptools_external.patch:
+  Directly use packaging module instead of setuptools.extern; the
+  latter is used by upstream to keep dependencies to a minimum,
+  but importing setuptools and trying to then use
+  setuptools.external does not work on openSUSE.
+- Add python-packaging BuildRequires, needed for tests in light of
+  above patch, and Requires.
+
+-------------------------------------------------------------------
 Wed Dec  8 22:58:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.7.0:

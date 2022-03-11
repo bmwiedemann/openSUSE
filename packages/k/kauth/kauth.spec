@@ -104,13 +104,13 @@ Development files.
 %endif
 
 %files -n %{lname}
-%dir %{_kf5_libdir}/libexec
+%dir %{_libexecdir}/kauth
 %{_kf5_dbuspolicydir}/org.kde.kf5auth.conf
 %{_kf5_debugdir}/kauth.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5Auth.so.*
-%{_kf5_libdir}/libexec/kauth
-%{_kf5_plugindir}/
+%{_kf5_plugindir}/kauth/
+%{_libexecdir}/kauth/kauth-policy-gen
 
 %files -n libKF5AuthCore5
 %license LICENSES/*

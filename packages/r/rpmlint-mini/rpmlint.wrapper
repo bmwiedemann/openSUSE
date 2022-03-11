@@ -7,4 +7,4 @@ XDG_CONFIG_HOME="/opt/testing/share"
 LC_ALL=en_US.utf-8
 export PYTHONHOME LD_LIBRARY_PATH LC_ALL XDG_CONFIG_HOME
 # rely on rpmlint auto-loading support for rpmlintrc files
-exec /opt/testing/bin/rpmlint.real --mini-mode $@
+exec /opt/testing/bin/rpmlint.real --mini-mode --time-report $@

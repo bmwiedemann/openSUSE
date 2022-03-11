@@ -1,0 +1,5 @@
+<package name="jack-example-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:libs" package="jack-example-tools"/>
+</package>

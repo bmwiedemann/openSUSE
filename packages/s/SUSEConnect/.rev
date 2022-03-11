@@ -494,4 +494,14 @@
 - Add subscription name to output of 'SUSEConnect --status'</comment>
     <requestid>927797</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dade0deba940906ed0980dd2cd539e23</srcmd5>
+    <version>0.3.33</version>
+    <time>1646948764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.33
+- Add --keepalive command to send pings to SCC.
+- Add service/timer to periodically call --keepalive command (bsc#1196076)</comment>
+    <requestid>960832</requestid>
+  </revision>
 </revisionlist>

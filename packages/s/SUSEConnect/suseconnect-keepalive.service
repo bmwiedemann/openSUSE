@@ -1,0 +1,15 @@
+[Unit]
+Description=Run SUSEConnect --keepalive
+Wants=suseconnect-keepalive.timer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/SUSEConnect --keepalive
+
+# Filter out this special exit code, since it will be raised by `SUSEConnect
+# --keepalive` whenever a system is not registered, which is a pretty typical
+# scenario.
+SuccessExitStatus=71
+
+[Install]
+WantedBy=multi-user.target

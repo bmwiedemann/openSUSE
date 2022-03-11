@@ -70,15 +70,15 @@ KCron allows you to change your cron jobs setup.
 %license LICENSES/*
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol5/
+%dir %{_libexecdir}/kauth
 %{_kf5_appstreamdir}/org.kde.kcron.metainfo.xml
+%{_kf5_dbuspolicydir}/local.kcron.crontab.conf
 %{_kf5_debugdir}/kcron.categories
 %{_kf5_plugindir}/kcm_cron.so
 %{_kf5_servicesdir}/kcm_cron.desktop
-%dir %{_kf5_libdir}/libexec/kauth
-%{_kf5_libdir}/libexec/kauth/kcron_helper
 %{_kf5_sharedir}/dbus-1/system-services/local.kcron.crontab.service
-%{_kf5_sharedir}/dbus-1/system.d/local.kcron.crontab.conf
 %{_kf5_sharedir}/polkit-1/actions/local.kcron.crontab.policy
+%{_libexecdir}/kauth/kcron_helper
 
 %if %{with released}
 %files lang -f %{name}.lang

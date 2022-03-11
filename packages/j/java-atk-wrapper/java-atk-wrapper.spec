@@ -1,7 +1,7 @@
 #
 # spec file for package java-atk-wrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://gitlab.gnome.org/GNOME/java-atk-wrapper/
 Source0:        https://download.gnome.org/sources/%{name}/%{major_version}/%{name}-%{version}.tar.xz
 Source1:        HOWTO
 Source2:        https://gitlab.gnome.org/GNOME/%{name}/-/raw/%{version}/autogen.sh
+Patch0:         jaw-dependencies.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  java-devel >= 1.8
@@ -43,7 +44,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildConflicts: java-devel >= 9
 Requires:       java >= 1.8
 Requires:       xprop
 
@@ -59,14 +59,14 @@ change of underlying communication mechanism.
 
 %prep
 %setup -q
+%patch0 -p1
 cp %{SOURCE1} %{SOURCE2} .
-rm -f wrapper/org/GNOME/Accessibility/AtkWrapper.java
 
 %build
 chmod +x autogen.sh
 ./autogen.sh
-%configure --libdir=%{_libdir}/%{name} --disable-modular-jar JAVACFLAGS="-source 8 -target 8"
-make %{?_smp_mflags} -j1
+%configure --libdir=%{_libdir}/%{name} --disable-modular-jar
+make %{?_smp_mflags}
 
 %install
 make -C jni install DESTDIR=%{buildroot}

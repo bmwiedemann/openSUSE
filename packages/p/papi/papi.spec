@@ -1,7 +1,7 @@
 #
-# spec file for package papi
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://icl.cs.utk.edu/papi/index.html
 Source:         http://icl.cs.utk.edu/projects/papi/downloads/%{pname}-%{version}.tar.gz
 Source1:        %{pname}-rpmlintrc
+Patch1:         python3.patch
 
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
@@ -154,6 +155,7 @@ This package contains the PAPI runtime library.
 
 %prep
 %setup -q -n %{pname}-%{version}
+%autopatch -p1
 
 # Create baselibs.conf dynamically (non-HPC build only).
 %if %{without hpc}
@@ -267,8 +269,8 @@ EOF
 %files devel
 %defattr(-,root,root)
 %if %{with hpc}
-%dir %hpc_mandir 
-%dir %hpc_mandir/man1 
+%dir %hpc_mandir
+%dir %hpc_mandir/man1
 %dir %hpc_mandir/man3
 %dir %hpc_includedir
 %dir %hpc_pkgconfigdir

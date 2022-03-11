@@ -1,7 +1,7 @@
 #
 # spec file for package python-curtsies
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/bpython/curtsies
 Source:         https://files.pythonhosted.org/packages/source/c/curtsies/curtsies-%{version}.tar.gz
-# https://github.com/bpython/curtsies/pull/127
 BuildRequires:  %{python_module blessings}
 BuildRequires:  %{python_module cwcwidth}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyte}
 BuildRequires:  %{python_module setuptools}

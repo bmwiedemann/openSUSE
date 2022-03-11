@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 10 14:50:39 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add build dependency for less to match behavior described in the
+  manual page.
+
+-------------------------------------------------------------------
 Fri Sep 24 20:31:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.14.6:

@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 10 07:15:19 UTC 2022 - David Anes <david.anes@suse.com>
+
+- update to 6.4.28:
+  * Updated spanish translation.
+- fix typos in changelog.
+
+-------------------------------------------------------------------
 Fri Feb 25 18:13:26 UTC 2022 - David Anes <david.anes@suse.com>
 
-- update to 6.5.27:
+- update to 6.4.27:
   * Bump wolfSSL minimum required version to 5.1.1 to pull in 
     security fix.
   * Updated romanian translation.
@@ -18,7 +25,7 @@ Wed Jan 12 10:39:18 UTC 2022 - David Anes <david.anes@suse.com>
 -------------------------------------------------------------------
 Mon Dec 27 16:50:06 UTC 2021 - David Anes <david.anes@suse.com>
 
-- update to 6.5.26:
+- update to 6.4.26:
   * When using wolfSSL 5.0.0, work around a bug that appears to hit 
     wolfSSL when receiving handshake records while still in 
     SSL_peek(). Workaround is to read 1 byte and cache it, then
@@ -28,7 +35,7 @@ Mon Dec 27 16:50:06 UTC 2021 - David Anes <david.anes@suse.com>
 -------------------------------------------------------------------
 Sat Dec 11 23:23:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 6.5.25:
+- update to 6.4.25:
   * 6.4.24's workaround for OpenSSL 1.0.2's X509_V_FLAG_TRUSTED_FIRST flag
     contained a typo and would not kick in properly.
   * Library and/or rpath setting from configure.ac was fixed.

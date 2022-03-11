@@ -82,9 +82,9 @@ Provides Policy Kit Authentication Agent that nicely fits to KDE.
 %files
 %license LICENSES/*
 %{_kf5_configdir}/autostart/polkit-kde-authentication-agent-1.desktop
-%{_kf5_libdir}/libexec/polkit-kde-authentication-agent-1
 %{_kf5_notifydir}/
 %{_kf5_applicationsdir}/org.kde.polkit-kde-authentication-agent-1.desktop
+%{_libexecdir}/polkit-kde-authentication-agent-1
 %{_userunitdir}/plasma-polkit-agent.service
 
 %changelog

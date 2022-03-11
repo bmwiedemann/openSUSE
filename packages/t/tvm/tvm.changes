@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  7 16:27:13 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip test_meta_schedule_local_runner_time_out and
+  test_meta_schedule_local_runner_exception tests on Leap/SLE
+  since they require python 3.7+
+
+-------------------------------------------------------------------
 Wed Mar  2 13:35:32 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add deps on python3-tvm and python3-setuptools for tvmc - boo#1196646

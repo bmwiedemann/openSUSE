@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  9 16:58:42 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 0.6.225
+  * adds fixes from the last 5 years since version 0.6.0
+- supersedes patches 
+  * n_xorg-server-1.20.patch
+  * u_gcc10.patch 
+- possibly fixes boo#1196805
+- specfile: fixed URL and Source lines
+
+-------------------------------------------------------------------
 Tue Jun  9 11:06:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_gcc10.patch 

@@ -293,4 +293,41 @@ A model Open Source game.</comment>
     <comment></comment>
     <requestid>957827</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3362d94046a0cad143bcd5439f39f7fc</srcmd5>
+    <version>1.17.1</version>
+    <time>1646948753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.1:
+  * UtBS S08 Kromph and Dust Devil able to trigger Eloh's event #6428
+  * DM S14 Smooth undead appearance and add dialogue #6429
+  * TRoW S22 Fixed the possibility of a missplaced dialogue when a bridge was broken #6430
+  * Fix typo: &quot;with heavy loses&quot; -&gt; &quot;with heavy losses&quot; #6448
+  * Saurian sprites cleanup #6413
+  * [world conquest] Fix for HP glitch when picking up items/artifacts #6454
+  * HttT S04, S05b &amp; S06 Role code enhancement #6436
+  * Add a &quot;special notes&quot; section to terrain help pages #6400
+  * Use a less complicated implementation for the MAKE_ENUM of CONTROLLER. #6423
+  * SoF Proofread Pass and Campaign Prose edits torch in #6177
+  * Temporarily re-introduce the SPECIAL_NOTES macro #6463
+  * update codeblock projectfiles #6465
+  * various small sprite updates 01 in #6459
+  * Add /clear chat command #6457
+  * Add max_torch to about.cfg torch in #6480
+  * [world conquest] [artifact/abilities] Make banner stack with leadership ability. #6467
+  * Fix deprecation of [advancefrom], mark as already removed #6482
+  * Refactor the backstab unit test #6473
+  * Make the adhoc add-on download check more detailed. #6464
+  * forwardport #6477 01 in #6487
+  * Update credits #6481
+  * Add-ons manager: handle the selected add-on changing in small-screen mode #6499
+  * Change [filter_weapon] to not depend on attack_type::weapon_specials #6501
+  * [units] [Orcish Nightblade] Update Icon for the kick attack #6516
+  * reintroduced usage of time_cfg[current_time] in replace (local) schedule funtions #6495
+  * Replace deprecated share_maps and share_view with share_vision #6498
+  * Fix comment handling if the value is empty (fixes #6514) in #6522
+  * SoF: fix thursagan's arcanister advancement breaking in some cases #6484
+  * Upgrade to lua 5.4.4 #6527</comment>
+    <requestid>960835</requestid>
+  </revision>
 </revisionlist>

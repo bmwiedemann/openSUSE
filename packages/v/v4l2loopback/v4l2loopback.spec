@@ -1,7 +1,7 @@
 #
 # spec file for package v4l2loopback
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,12 @@
 # needssslcertforbuild
 
 
-%{!?_modprobedir: %define _modprobedir /lib/modprobe.d/} 
-%{!?_modulesloaddir: %define _modulesloaddir /usr/lib/modules-load.d/} 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files 98-v4l2loopback.conf
+%{!?_modulesloaddir: %define _modulesloaddir /usr/lib/modules-load.d/}
 
 Name:           v4l2loopback
 Version:        0.12.5
@@ -93,6 +97,20 @@ export BRP_PESIGN_FILES='*.ko'
 
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_modprobedir}/98-v4l2loopback.conf
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_modulesloaddir}/v4l2loopback.conf
+
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %files utils
 %attr(0755,root,root) %{_bindir}/v4l2loopback-ctl

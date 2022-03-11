@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 22 10:49:07 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Enhanced to build on Enterprise Linux 8.
+
+-------------------------------------------------------------------
 Mon Mar  8 10:56:22 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Build requires Go 1.15

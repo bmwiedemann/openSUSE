@@ -18,7 +18,7 @@
 
 %define cpan_name DateTime
 Name:           perl-DateTime
-Version:        1.56
+Version:        1.57
 Release:        0
 License:        Artistic-2.0
 Summary:        Date and time object for Perl
@@ -43,6 +43,7 @@ BuildRequires:  perl(Specio::Subs)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Warnings) >= 0.005
+BuildRequires:  perl(Test::Without::Module)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(namespace::autoclean) >= 0.19
 BuildRequires:  perl(parent)

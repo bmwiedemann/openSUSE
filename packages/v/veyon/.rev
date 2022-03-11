@@ -224,4 +224,12 @@ https://github.com/openSUSE/polkit-default-privs/pull/19</comment>
     <comment></comment>
     <requestid>948501</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e7fc30b2abbb475f54d733d749950633</srcmd5>
+    <version>4.7.2</version>
+    <time>1646848084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960443</requestid>
+  </revision>
 </revisionlist>

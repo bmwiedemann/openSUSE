@@ -1,7 +1,7 @@
 #
 # spec file for package mandoc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        ISC
 Group:          Productivity/Publishing/Troff
 URL:            http://mandoc.bsd.lv/
 Source:         http://mandoc.bsd.lv/snapshots/mandoc-%{version}.tar.gz
+BuildRequires:  less
 BuildRequires:  zlib-devel
 Provides:       man = %{version}
 Conflicts:      groff

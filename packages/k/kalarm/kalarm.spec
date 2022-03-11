@@ -117,12 +117,11 @@ Personal alarm message, command and email scheduler by KDE.
 %{_kf5_debugdir}/kalarm.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/kalarm.png
 %{_kf5_kxmlguidir}/kalarm/
-%dir %{_libdir}/libexec/kauth/
-%{_kf5_libdir}/libexec/kauth/kalarm_helper
 %{_kf5_notifydir}/kalarm.notifyrc
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kalarm.rtcwake.service
 %{_kf5_sharedir}/kalarm/
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kalarm.rtcwake.policy
+%{_libexecdir}/kauth/kalarm_helper
 
 %if %{with released}
 %files lang -f %{name}.lang

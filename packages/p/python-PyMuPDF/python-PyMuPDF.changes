@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Mar  6 12:27:52 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.6
+  * Fixed #1620. The TextPage created by Page.get_textpage() will
+    now be freed correctly (removed memory leak).
+  * Fixed #1601. Document open errors should now be more concise
+    and easier to interpret. In the course of this, two
+    PyMuPDF-specific Python exceptions have been added:
+    EmptyFileError – raised when trying to create a Document
+    (fitz.open()) from an empty file or zero-length memory.
+    FileDataError – raised when MuPDF encounters irrecoverable
+    document structure issues.
+  * Added Page.load_widget() given a PDF field’s xref.
+  * Added Dictionary pdfcolor which provide the about 500 colors
+    defined as PDF color values with the lower case color name as
+    key.
+  * Added algebra functionality to the Quad class. These objects
+    can now also be added and subtracted among themselves, and be
+    multiplied by numbers and matrices.
+  * Added new constants defining the default text extraction flags
+    for more comfortable handling. Their naming convention is like
+    TEXTFLAGS_WORDS for page.get_text("words"). See Text Extraction
+    Flags Defaults.
+  * Changed Page.annots() and Page.widgets() to detect and prevent
+    reloading the page (illegally) inside the iterator loops via
+    Document.reload_page(). Doing this brings down the interpretor.
+    Documented clean ways to do annotation and widget mass updates
+    within properly designed loops.
+  * Changed several internal utility functions to become
+    standalone (“SWIG inline”) as opposed to be part of the Tools
+    class. This, among other things, increases the performance of
+    geometry object creation.
+  * Changed Document.update_stream() to always accept stream
+    updates - whether or not the dictionary object behind the xref
+    already is a stream. Thus the former new parameter is now
+    ignored and will be removed in v1.20.0.
+
+-------------------------------------------------------------------
 Sun Feb  6 14:02:23 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
 
 - Update to v1.19.5

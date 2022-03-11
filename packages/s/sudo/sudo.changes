@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  3 12:00:46 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Add sudo-1.9.9-honor-T_opt.patch
+  * the -T option of sudo does nothing even when
+  'Defaults user_command_timeouts' is present in the configuration.
+  * [bsc#1193446]
+  * Credit to Jaroslav Jindrak <dzejrou@gmail.com>
+
+-------------------------------------------------------------------
 Wed Feb 16 04:34:33 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Restrict use of sudo -U other -l to people who have permission

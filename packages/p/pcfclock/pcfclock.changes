@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  7 20:05:06 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- use /lib/modprobe.d in 15.3, too 
+- Add code for safe modprobe.d migration
+  (https://en.opensuse.org/openSUSE:Packaging_UsrEtc)
+
+-------------------------------------------------------------------
 Fri Aug 20 20:11:49 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move modprobe.d files out of /etc

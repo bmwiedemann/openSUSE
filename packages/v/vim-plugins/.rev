@@ -350,4 +350,13 @@
   * vim-markdown   2.0.0+20220129</comment>
     <requestid>952101</requestid>
   </revision>
+  <revision rev="40" vrev="47">
+    <srcmd5>5f63fba02fa3bc78e6b117e81cbe6ffc</srcmd5>
+    <version>unknown</version>
+    <time>1646948711</time>
+    <user>dimstar_suse</user>
+    <comment>- add vim-plugin-gitrebase-keywordprg
+</comment>
+    <requestid>960651</requestid>
+  </revision>
 </revisionlist>

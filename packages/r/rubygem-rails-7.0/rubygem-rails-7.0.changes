@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 10 13:24:12 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.2.3
+
+  https://rubyonrails.org/2022/3/8/Rails-7-0-2-3-6-1-4-7-6-0-4-7-and-5-2-6-3-have-been-released
+
+-------------------------------------------------------------------
 Mon Mar  7 13:21:13 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Add requires (also as buildrequires) that are put in the default

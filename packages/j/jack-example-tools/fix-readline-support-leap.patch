@@ -1,0 +1,16 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix readline support in SLE/Leap 15.4
+
+Index: jack-example-tools-1/meson.build
+===================================================================
+--- jack-example-tools-1.orig/meson.build
++++ jack-example-tools-1/meson.build
+@@ -75,7 +75,7 @@ lib_jacknet = cc.find_library('jacknet',
+ 
+ dep_alsa = dependency('alsa', version: '>=1.0.18', required: alsa_required)
+ dep_opus = dependency('opus', version: '>=0.9.0', required: get_option('opus_support'))
+-dep_readline = dependency('readline', required: get_option('readline_support'))
++dep_readline = cc.find_library('readline', required: get_option('readline_support'))
+ dep_samplerate = dependency('samplerate', required: libsamplerate_required)
+ dep_sndfile = dependency('sndfile', required: get_option('jack_rec'))
+ dep_threads = dependency('threads')

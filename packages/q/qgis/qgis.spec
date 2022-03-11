@@ -1,7 +1,7 @@
 #
 # spec file for package qgis-ltr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.22.0
+Version:        3.24.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -35,10 +35,8 @@ Source1:        https://qgis.org/downloads/qgis-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
 Patch1:         fix-fastcgi-include.patch
-# PATCH-FIX-UPSTREAM ggis-pr45830-sip6-gil.patch -- release GIL with sip6 https://github.com/qgis/QGIS/pull/45830
-Patch2:         https://github.com/qgis/QGIS/pull/45830.patch#/qgis-pr45830-sip6-gil.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
-Patch4:         qgis-fix-cmake-findpdal.patch
+Patch2:         qgis-fix-cmake-findpdal.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4
@@ -298,7 +296,7 @@ popd
 %if %{with grass}
 %exclude %{_libdir}/libqgisgrass7.so
 %exclude %{_libdir}/libqgisgrass7.so.*
-%exclude %{_libdir}/qgis/libgrassplugin7.so
+%exclude %{_libdir}/qgis/libplugin_grass7.so
 %exclude %{_libdir}/qgis/libprovider_grass7.so
 %exclude %{_libdir}/qgis/libprovider_grassraster7.so
 %exclude %{_libdir}/qgis/grass
@@ -312,7 +310,7 @@ popd
 
 %if %{with grass}
 %files plugin-grass
-%{_libdir}/qgis/libgrassplugin7.so
+%{_libdir}/qgis/libplugin_grass7.so
 %{_libdir}/qgis/libprovider_grass7.so
 %{_libdir}/qgis/libprovider_grassraster7.so
 %{_libdir}/libqgisgrass7.so

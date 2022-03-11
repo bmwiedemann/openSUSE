@@ -946,4 +946,12 @@
     <comment>KDE Plasma 5.24.2</comment>
     <requestid>956960</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>cc1b65d1d7ea49a7093689b30fda5ef1</srcmd5>
+    <version>5.24.2</version>
+    <time>1646848002</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960079</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rails-7.0
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,35 +24,35 @@
 #
 
 Name:           rubygem-rails-7.0
-Version:        7.0.2.2
+Version:        7.0.2.3
 Release:        0
 %define mod_name rails
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -7.0
 # MANUAL
 #!BuildIgnore: ruby3.1-rubygem-sprockets-3.7
-BuildRequires: %{rubygem railties:7.0}
-BuildRequires: %{rubygem activemodel:7.0}
+BuildRequires:  %{rubygem activemodel:7.0}
+BuildRequires:  %{rubygem railties:7.0}
 
 # keep in sync with below
-BuildRequires: %{rubygem puma:5}
-BuildRequires: %{rubygem sprockets-rails}
-BuildRequires: %{rubygem sqlite3:1 >= 1.4}
-BuildRequires: %{rubygem importmap-rails}
-BuildRequires: %{rubygem bootsnap}
-BuildRequires: %{rubygem turbo-rails}
-BuildRequires: %{rubygem stimulus-rails}
-BuildRequires: %{rubygem jbuilder}
-BuildRequires: %{rubygem web-console }
-# It says 3.0, but to avoid any question for the 3.7 we 
+BuildRequires:  %{rubygem puma:5}
+BuildRequires:  %{rubygem bootsnap}
+BuildRequires:  %{rubygem importmap-rails}
+BuildRequires:  %{rubygem jbuilder}
+BuildRequires:  %{rubygem sprockets-rails}
+BuildRequires:  %{rubygem sqlite3:1 >= 1.4}
+BuildRequires:  %{rubygem stimulus-rails}
+BuildRequires:  %{rubygem turbo-rails}
+BuildRequires:  %{rubygem web-console }
+# It says 3.0, but to avoid any question for the 3.7 we
 # still have in Factory, let's go newer
-BuildRequires: %{rubygem sprockets > 3.8}
+BuildRequires:  %{rubygem sprockets > 3.8}
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://rubyonrails.org
+BuildRequires:  ruby-macros >= 5
+URL:            https://rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Full-stack web application framework

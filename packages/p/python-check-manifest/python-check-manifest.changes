@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 10 10:48:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add python-check-manifest-no-mock.patch
+  (gh#mgedmin/check-manifest#151) replace using mock with
+  unittest.mock.
+
+-------------------------------------------------------------------
+Wed Mar  9 10:06:10 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.47
+  0.47 (2021-09-22)
+  -----------------
+  - Fix ``setuptools_scm`` workaround for packages with dashes in the name
+    (`#145 <https://github.com/mgedmin/check-manifest/issues/145>`_).
+  0.46 (2021-01-04)
+  -----------------
+  - The `pre-commit <https://pre-commit.com>`__ hook now always uses Python 3.
+
+-------------------------------------------------------------------
 Tue Nov 24 15:53:15 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.45

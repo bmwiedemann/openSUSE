@@ -7,4 +7,12 @@
     <comment>Readding cyrus-imapd to openSUSE</comment>
     <requestid>947374</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd07ec0a50bc665a0a69e434694b9397</srcmd5>
+    <version>2.4.22</version>
+    <time>1646848079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960379</requestid>
+  </revision>
 </revisionlist>

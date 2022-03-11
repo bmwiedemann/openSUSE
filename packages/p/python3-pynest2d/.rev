@@ -31,4 +31,24 @@
     <comment></comment>
     <requestid>856521</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c066e254866c22087dd9e5ec6e1931ff</srcmd5>
+    <version>4.12.0</version>
+    <time>1646848082</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.12.0 (no changelog provided)
+- Drop upstream patch: Retrieve-required-flags-from-Libnest2D-target.patch
+- Rebase pynest2d-PyQt5.sip.patch (partially upstreamed)
+- Use BuildRequires python3-qt5-sip for Leap 15.4
+</comment>
+    <requestid>960430</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ede937dfdbdb96a229703e7ef2f5e94b</srcmd5>
+    <version>4.12.0</version>
+    <time>1646948702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960604</requestid>
+  </revision>
 </revisionlist>

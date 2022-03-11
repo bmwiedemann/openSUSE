@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  8 04:29:58 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to 4.3.1:
+  * Fix segfault when used with latest wlroots
+
+- Update source URL from github to https://git.sr.ht/~exec64/imv 
+-------------------------------------------------------------------
 Mon Aug 16 07:58:24 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.3.0:

@@ -1,0 +1,25 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://git.sr.ht/~shinyzenith/wayshot</param>
+    <param name="scm">git</param>
+    <param name="revision">3f2ec0c2e937b7b69f647765fb48470c48b5b28d</param>
+    <param name="version">1.1.2</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">wayshot</param>
+     <param name="compression">xz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">wayshot</param>
+  </service>
+</services>
+

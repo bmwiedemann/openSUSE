@@ -15,4 +15,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957418</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f09bd45b41e010a1e6caf056d9aff5e</srcmd5>
+    <version>17.6.0</version>
+    <time>1646767886</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.6.0:
+  * stream: revert map spec compliance
+  * esm: support https remotely and http locally under flag
+  * fs: support copy of relative links with cp and cpSync
+  * lib: add FormData global when fetch is enabled
+  * readline: bind keystroke ctrl+6 to redo
+  * process: deprecate multipleResolves
+
+- Add upstream fix gcc12-fix.patch for GCC 12 compiler.</comment>
+    <requestid>959854</requestid>
+  </revision>
 </revisionlist>

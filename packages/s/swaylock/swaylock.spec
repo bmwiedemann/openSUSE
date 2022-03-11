@@ -1,7 +1,7 @@
 #
 # spec file for package swaylock
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           swaylock
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Screen locker for Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/swaylock
 Source0:        https://github.com/swaywm/swaylock/archive/%{version}.tar.gz
-# https://github.com/swaywm/swaylock/pull/128
-Patch0:         swaylock-version.patch
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -73,7 +71,6 @@ Zsh command line completion support for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland"

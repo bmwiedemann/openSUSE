@@ -211,4 +211,15 @@ The compiler is NOT used by default.</comment>
 - Remove sys/rseq.h from include-fixed</comment>
     <requestid>953381</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>541a563433fb98e0fbfa512f0b808059</srcmd5>
+    <version>11.2.1+git1173</version>
+    <time>1646847992</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a list of Obsoletes to libstdc++6-pp-gcc11 so updates from
+  packages provided by older GCC work.  Add a requires from that
+  package to the corresponding libstc++6 package to keep those
+  at the same version.  [bsc#1196107]</comment>
+    <requestid>959906</requestid>
+  </revision>
 </revisionlist>

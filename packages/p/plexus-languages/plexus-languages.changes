@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 10 11:28:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.1.1
+  + fix for builds with a mix of modular and classic jar files
+- Fetch sources using source service instead of by a script
+
+-------------------------------------------------------------------
 Wed Feb 17 13:40:16 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - generate-tarball.sh: use safe temporary directory, avoid accidental deletion

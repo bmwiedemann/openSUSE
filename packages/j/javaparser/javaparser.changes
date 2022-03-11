@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 10 11:36:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to the latest version 3.24.0
+  * A long list of fixes is to be found at https://github.com/
+    /javaparser/javaparser/blob/master/changelog.md
+  * Upgrade needed to be able to upgrade jctools and make them
+    not depend hard on Java 8
+
+-------------------------------------------------------------------
 Tue Oct  1 13:29:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of javaparser 3.3.5

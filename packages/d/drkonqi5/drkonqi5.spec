@@ -89,11 +89,10 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 %files
 %license LICENSES/*
 %{_kf5_bindir}/installdbgsymbols.sh
-%dir %{_kf5_libdir}/libexec
-%{_kf5_libdir}/libexec/drkonqi
 %{_kf5_sharedir}/drkonqi/
 %{_kf5_applicationsdir}/org.kde.drkonqi.desktop
 %{_kf5_debugdir}/drkonqi.categories
+%{_libexecdir}/drkonqi
 
 %if %{with released}
 %files lang -f %{name}.lang

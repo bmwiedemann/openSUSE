@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Mar  9 06:09:00 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.8.0
+  * matomo-org/matomo
+    - #18448 Add an option to disable fingerprinting / config_id entirely
+    - #17686 Make Matomo compatible with PHP8.1
+    - #18699 Label shortened when opening multiple subtables
+    - #18819 Fix issues with anonymous user language change not
+      persisting due to incorrect setting of cookies with session lifetime
+    - #18138 Cache whether a DB supports transaction level or not for slight performance improvement
+    - #18783 Comparing two segments in goals, sets the graph to all zeros for the first segment
+    - #18718 Update JQuery UI to 1.13.0
+    - #18758 Fixes incorrect headline when adding a goal
+    - #18479 Minor marketplace tweaks to mention premium features free trial
+    - #18538 Fix page overlay sidebar authentication failure
+    - #18702 Ensure Google SEO metrics are returned with correct type
+    - #18711 Fix handling of invalid limit values for Live.getVisitorProfile
+    - #18720 Fix invalid parameter handling for PHP 8 in API.getBulkRequest
+    - #18785 Check folder & permission before downloading a GeoIP database
+    - #18788 Validate minTimestamp parameter for Live.getLastVisitsDetails
+    - #18798 Ensure Dashboard API methods can’t be performed by or for anonymous user
+    - #18709 Update orange brand color less variable in morpheus theme
+    - #18829 Fix possible dashboard warning
+    - #18564 Migrate sitesmanager controller and twig templates to Vue components
+    - #18566 Migrate capabilities edit component to Vue
+    - #18572 Migrate user-permissions-edit component to vue
+    - #18576 Migrate user edit form directive to Vue component
+    - #18582 Migrate paged users list component to vue
+    - #18583 Migrate usersmanager root component to Vue
+    - #18834 add dummy sitesManagerAPI service back in since it is referenced (but not used) by a premium feature
+    - #18775 Segmented visits log might show incorrect title
+    - #18797 Improve performance of some archiving queries
+    - #18804 Add mechanism to initialize vue components outside of angularjs
+  * matomo-org/device-detector
+    - #6986 Improves many detections, adds detection for various apps and adds detection for various bots
+    - #6987 Detect new brands Horizont and Detect devices for several existing brands
+    - #6990 Fixed minor syntax errors in some of the regular expressions
+    - #6993 Detect new brands iSafe Mobile, Redfox, Tigers, Vinabox, Beista,
+      YOTOPT and Detect devices for several existing brands
+    - #6994 Detect new brand TOSCIDO and Detect devices for several existing brands
+    - #6995 Detect new brands: OMIX, Technopc and Detect devices for several existing brands
+    - #6998 Detect new brands: b2m, Koslam, Orion, Massgo, S2Tel and Detect devices for several existing brands
+    - #6999 Detect new brand Jedi and improve detection of Remix OS
+    - #7001 Adds detection for various apps
+    - #7003 Librem phone is counted as an iOS device
+    - #7004 Adds detection for Purism brand and fix iOS detection
+    - #7005 Adds detection for Plasma Mobile operating system
+    - #7006 Detect Fuchsia OS
+    - #7007 Detect new brands: iPEGTOP, Nexa, Hi Nova and Detect devices for several existing brands
+    - #7010 Adds detection for Noontec brand, improves detection for Google, PocketBook, 
+      Samsung, Sony devices, Android, FreeBSD, Android Browser, Tizen Browser
+    - #7011 Adds detection for Android TV, Foresight Linux, Kanotix, LindowsOS, Linspire,
+      moonOS, Pardus, Zenwalk operating systems [by @liviuconcioiu, @sanchezzzhak]
+    - #7012 Detect new brands China Telecom, Royole, U-Magic, DORLAND and Detect
+      devices for several existing brands
+    - #7014 Improves detection for Samsung devices
+    - #7015 Improves detection for iOS and Apple iPhone
+    - #7017 Improves detection for Samsung devices
+  * matomo-org/tag-manager
+    - #421 Trim whitespace from matomoUrl,idSite,cookieDomain and cookiePath fields
+    - #337 If xdebug is enabled then change limit to prevent self-referencing variable loop
+    - #426 Added changes for tawktotag to work with new widgetID changes
+    - #440 TagManager (variable) values are not reset for tracking, even if they are set to “” or null.
+    - #408 Migrate field templates to field vue components
+    - #418 Migrate variable management to Vue JS
+    - #419 Migrate trigger management to Vue JS
+    - #422 Migrate tag management to Vue JS
+    - #438 Applies some wording improvements suggested for translations
+    - #441 Added code to update dimension even when value is empty or null
+  * matomo-org/referrer-spam-list
+    - #1310 Add essaytags.com
+    - #1311 Add lsitenonrepeat.com
+
+-------------------------------------------------------------------
 Wed Feb  2 06:42:40 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.7.0

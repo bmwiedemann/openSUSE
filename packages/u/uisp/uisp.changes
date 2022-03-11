@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  7 17:53:05 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Add code for safe modprobe.d migration
+  (https://en.opensuse.org/openSUSE:Packaging_UsrEtc)
+
+-------------------------------------------------------------------
 Fri Mar  4 20:12:56 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639) 

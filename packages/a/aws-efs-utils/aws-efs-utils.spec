@@ -1,7 +1,7 @@
 #
 # spec file for package aws-efs-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,27 @@
 
 
 Name:           aws-efs-utils
-Version:        1.17
+Version:        1.31.3
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/aws/efs-utils
-Source0:        https://github.com/aws/efs-utils/archive/v%{version}.tar.gz
+Source0:        efs-utils-%{version}.tar.gz
+Patch0:         disable_mount_efs_test.patch
+Patch1:         harden_amazon-efs-mount-watchdog.service.patch
+Patch2:         skip-styletest.patch
+BuildRequires:  openssl
 BuildRequires:  python3-attrs >= 17.4.0
-BuildRequires:  python3-coverage >= 4.5
-BuildRequires:  python3-flake8 >= 3.7.9
+BuildRequires:  python3-botocore >= 1.17.53
+BuildRequires:  python3-coverage >= 4.5.4
+#BuildRequires:  python3-flake8 >= 3.7.9
+BuildRequires:  python3-flake8
 BuildRequires:  python3-mccabe >= 0.6.1
 BuildRequires:  python3-mock >= 2.0.0
 BuildRequires:  python3-pbr >= 3.1.1
 BuildRequires:  python3-pluggy >= 0.13.0
-BuildRequires:  python3-py >= 1.8.0
+BuildRequires:  python3-py >= 1.10.0
 BuildRequires:  python3-pycodestyle >= 2.5.0
 BuildRequires:  python3-pyflakes >= 2.1.1
 BuildRequires:  python3-pytest >= 4.6.7
@@ -43,7 +49,6 @@ BuildRequires:  python3-six >= 1.11.0
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils
-Requires:       python3
 Requires:       stunnel >= 4.56
 BuildArch:      noarch
 
@@ -52,7 +57,10 @@ This package provides utilities for using the EFS file systems.
 
 %prep
 %setup -n efs-utils-%{version}
-find . -name "*.py" -exec sed -i 's/env python/python3/' {} +
+%patch0 -p1
+find . -name "*.py" -exec sed -i 's/env python3/python3/' {} +
+%patch1 -p1
+%patch2
 
 %build
 # No build required

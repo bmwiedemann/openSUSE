@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  7 11:58:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix installation:
+  * 0001-Use-KDE_INSTALL_FULL_-variables-where-needed.patch
+
+-------------------------------------------------------------------
 Sun Feb  6 10:16:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0

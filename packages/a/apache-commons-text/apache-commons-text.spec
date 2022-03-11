@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-text
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-text/
 Source0:        http://archive.apache.org/dist/commons/text/source/commons-text-%{version}-src.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
+BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-local
-BuildRequires:  mvn(org.apache.commons:commons-lang3)
-BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  javapackages-local
 BuildArch:      noarch
 
 %description
@@ -46,18 +46,36 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n commons-text-%{version}-src
+cp %{SOURCE1} build.xml
+
+%pom_remove_parent
+%pom_xpath_inject pom:project "<groupId>org.apache.commons</groupId>"
 
 %build
-%{mvn_build} -f -- -Dsource=8
+mkdir -p lib
+build-jar-repository -s lib apache-commons-lang3
+%{ant} package javadoc
 
 %install
-%mvn_install
+# jars
+install -dm 755 %{buildroot}%{_javadir}/%{name}
+install -m 0644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{short_name}.jar
+
+# pom
+install -dm 755 %{buildroot}%{_mavenpomdir}/%{name}
+install -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{short_name}.pom
+%add_maven_depmap %{name}/%{short_name}.pom %{name}/%{short_name}.jar
+
+# javadoc
+install -dm 755 %{buildroot}/%{_javadocdir}/%{name}
+cp -r target/site/apidocs/* %{buildroot}/%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE.txt NOTICE.txt
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt NOTICE.txt
 
 %changelog

@@ -1,7 +1,7 @@
 #
-# spec file for package python-check-manifest
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-check-manifest%{psuffix}
-Version:        0.45
+Version:        0.47
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mgedmin/check-manifest
 Source:         https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-check-manifest-no-mock.patch gh#mgedmin/check-manifest#151 pgajdos@suse.com
+# Replace using mock with unittest.mock.
+Patch0:         python-check-manifest-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +45,7 @@ Requires:       python-pep517
 Requires:       python-setuptools
 Requires:       python-toml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     git-core > 2.11
 Recommends:     python-pip
 Recommends:     python-wheel
@@ -52,7 +55,6 @@ Suggests:       subversion
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -71,6 +73,8 @@ and missing files in MANIFEST.
 
 %prep
 %setup -q -n check-manifest-%{version}
+%autopatch -p1
+
 sed -i '1{\,^#!%{_bindir}/env python,d}' check_manifest.py
 chmod -x check_manifest.py
 
@@ -89,7 +93,12 @@ chmod -x check_manifest.py
 export LANG=en_US.UTF-8
 # test_build_sdist uses pip which likes to use internet to resolve versions
 # test_python_from_path fails on Leap only
-%pytest -rs -k 'not (test_build_sdist or test_python_from_path)'
+skip='test_build_sdist or test_python_from_path'
+%if 0%{?python_version_nodots} <= 36
+# E       TypeError: tuple indices must be integers or slices, not str
+skip="$skip or test_extra_ignore_args or test_ignore_bad_ideas_args"
+%endif
+%pytest -rs -k "not ($skip)"
 %endif
 
 %if !%{with test}

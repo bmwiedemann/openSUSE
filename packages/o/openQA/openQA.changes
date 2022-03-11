@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar 10 17:48:51 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646920189.eb67fcddc:
+  * doc: Use "normal" wording instead of `CHAINED` and similar keywords
+  * doc: Improve documentation about job dependencies
+  * doc: Fix and improve certain references
+  * Dependency cron 2022-03-09
+  * Remove background color and redundant margin in needle editor
+  * Validate `groupid` parameter properly to avoid SQL errors in logs
+  * Add example for triggering a single set of jobs to CLI help
+  * Add test for destructor of `OpenQA::Worker::WebUIConnection`
+
+-------------------------------------------------------------------
+Tue Mar 08 09:58:58 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1646725675.1ddd06891:
+  * Validate `groupid` parameter properly to avoid SQL errors in logs
+  * Add test for destructor of `OpenQA::Worker::WebUIConnection`
+  * Workaround problems with coverage tracking
+  * Re-try accepting directly chained jobs to avoid skipping whole chain
+  * Refactor worker tests to de-duplicate definition of fake worker
+  * Dependency cron 2022-03-07
+  * Optimize jobs API by prefetching data
+  * Use correct filters in progress bar links
+
+-------------------------------------------------------------------
 Sun Mar 06 01:48:54 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1646407463.070318351:

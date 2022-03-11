@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  8 08:31:37 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6:
+  * Support for the new ext-session-lock-v1 protocol
+  * Add --indicator-{x,y}-position CLI options
+  * Support for key repeat
+  * Fix a potential use-after-free
+  * Fix indicator buffer not resizing after display powers off
+  * Prevent attaching and committing the surface twice
+- Remove swaylock-version.patch: fixed
+
+-------------------------------------------------------------------
 Thu Jan 23 08:56:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5:

@@ -1,7 +1,7 @@
 #
-# spec file for package maven-compiler-plugin
+# spec file
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,9 @@ URL:            http://maven.apache.org/plugins/maven-compiler-plugin
 Source0:        http://archive.apache.org/dist/maven/plugins/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
-Patch1:         00-plexus-languages-1.0.patch
+Patch1:         0001-plexus-languages-1.0.patch
+Patch2:         0002-MCOMPILER-359-Fix-for-NPE.patch
+
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
@@ -87,6 +89,7 @@ cp %{SOURCE1} build.xml
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %pom_remove_dep :::test
 

@@ -511,4 +511,16 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
     <comment>mtools 4.0.37 (forwarded request 945017 from AndreasStieger)</comment>
     <requestid>945333</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a852939638cce6bf549045a97e5769a6</srcmd5>
+    <version>4.0.38</version>
+    <time>1646767881</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.38:
+  * Make sure case byte is cleared when making the special
+    directory entries &quot;.&quot; and &quot;..&quot;
+  * In mattrib man page, replace &quot;attribute flags&quot; with &quot;attribute
+    bits&quot; (forwarded request 959790 from maciek_borzecki)</comment>
+    <requestid>959792</requestid>
+  </revision>
 </revisionlist>

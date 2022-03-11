@@ -1,7 +1,7 @@
 #
 # spec file for package xboxdrv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-# systemd-rpm-macros(or kmod) is wrong in 15.2
+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and before
 %define _modprobedir /lib/modprobe.d
 %endif
+%global modprobe_d_files 50-xpad.conf
+
 Name:           xboxdrv
 Version:        0.8.8
 Release:        0
@@ -89,6 +92,11 @@ rm %{buildroot}%{_bindir}/%{name}ctl
 
 %pre
 %service_add_pre %{name}.service
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
 
 %post
 %service_add_post %{name}.service
@@ -99,6 +107,13 @@ rm %{buildroot}%{_bindir}/%{name}ctl
 %postun
 %service_del_postun %{name}.service
 
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
+
 %files
 %license COPYING
 %doc AUTHORS NEWS PROTOCOL README.md TODO
@@ -106,6 +121,7 @@ rm %{buildroot}%{_bindir}/%{name}ctl
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
 %dir %{_modprobedir}
 %endif
+%dir %{_modprobedir}
 %{_modprobedir}/50-xpad.conf
 %{_bindir}/%{name}
 %{_sbindir}/rc%{name}

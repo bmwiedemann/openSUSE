@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 10 13:22:26 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.2.3
+
+  *   Added image transformation validation via configurable allow-list.
+      
+      Variant now offers a configurable allow-list for
+      transformation methods in addition to a configurable deny-list for arguments.
+      
+      [CVE-2022-21831]
+
+-------------------------------------------------------------------
 Tue Feb 15 07:13:08 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.2.2

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  7 20:22:50 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Fix modprobe.d location for 15.3
+- Add code for safe modprobe.d migration
+  (https://en.opensuse.org/openSUSE:Packaging_UsrEtc)
+
+-------------------------------------------------------------------
 Fri Jan  7 15:11:37 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

@@ -1,0 +1,34 @@
+--- ./src/sysclip.cfg.hh.orig	2021-11-18 15:41:23.581000000 +0100
++++ ./src/sysclip.cfg.hh	2021-11-19 14:38:45.056958236 +0100
+@@ -44,12 +44,10 @@
+     std::string cc_read;
+ 
+     std::string select(op_t op) const {
+-        switch (op) {
+-            case op_t::WRITE:
+-                return this->cc_write;
+-            case op_t::READ:
+-                return this->cc_read;
++        if (op == op_t::WRITE) {
++            return this->cc_write;
+         }
++        return this->cc_read;
+     }
+ };
+ 
+@@ -59,12 +57,10 @@
+     clip_commands c_find;
+ 
+     const clip_commands& select(type_t t) const {
+-        switch (t) {
+-            case type_t::GENERAL:
+-                return this->c_general;
+-            case type_t::FIND:
+-                return this->c_find;
++        if (t == type_t::GENERAL) {
++            return this->c_general;
+         }
++        return this->c_find;
+     }
+ };
+ 

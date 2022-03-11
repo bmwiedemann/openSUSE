@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar  4 03:37:40 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Support saving grub environment for POWER signed grub images (jsc#SLE-23854)
+  * 0001-Add-grub_envblk_buf-helper-function.patch
+  * 0002-Add-grub_disk_write_tail-helper-function.patch
+  * 0003-grub-install-support-prep-environment-block.patch
+  * 0004-Introduce-prep_load_env-command.patch
+  * 0005-export-environment-at-start-up.patch
+- Use enviroment variable in early boot config to looking up root device 
+  * grub2.spec
+
+-------------------------------------------------------------------
+Tue Mar  1 08:55:57 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Remove obsolete openSUSE 12.2 conditionals in spec file
+- Clean up powerpc certificate handling.
+
+-------------------------------------------------------------------
 Thu Feb 10 16:20:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Set grub2-check-default shebang to "#!/bin/bash", as the the code

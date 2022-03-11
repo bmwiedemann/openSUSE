@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar  5 10:52:37 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Enable --time-report.
+
+-------------------------------------------------------------------
 Wed Feb  2 10:26:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - include typing.py into the installed stdlib because

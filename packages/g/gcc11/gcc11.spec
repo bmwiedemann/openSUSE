@@ -551,8 +551,13 @@ library. It is needed for compiling C++ code.
 Summary:        GDB pretty printers for the C++ standard library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+# The -pp packages are tied to a specific shared library
+Requires:       libstdc++%{libstdcxx_sover} = %{version}-%{release}
 Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix} = %{version}-%{release}
 Provides:       libstdc++%{libstdcxx_sover}-pp = %{version}-%{release}
+# To allow updates from libstdc++6-pp-gccM to libstdc++6-pp-gccN we need
+# enumerates Obsoletes, the separate -pp package was introduced with GCC9.
+Obsoletes:      libstdc++6-pp-gcc9 libstdc++6-pp-gcc10
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp
@@ -570,8 +575,13 @@ from GDB.
 Summary:        GDB pretty printers for the C++ standard library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+# The -pp packages are tied to a specific shared library
+Requires:       libstdc++%{libstdcxx_sover}-32bit = %{version}-%{release}
 Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix} = %{version}-%{release}
 Provides:       libstdc++%{libstdcxx_sover}-pp-32bit = %{version}-%{release}
+# To allow updates from libstdc++6-pp-gccM to libstdc++6-pp-gccN we need
+# enumerates Obsoletes, the separate -pp package was introduced with GCC9.
+Obsoletes:      libstdc++6-pp-gcc9-32bit libstdc++6-pp-gcc10-32bit
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp-32bit
@@ -589,8 +599,13 @@ from GDB.
 Summary:        GDB pretty printers for the C++ standard library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+# The -pp packages are tied to a specific shared library
+Requires:       libstdc++%{libstdcxx_sover}-64bit = %{version}-%{release}
 Requires:       libstdc++%{libstdcxx_sover}-pp%{libdevel_suffix} = %{version}-%{release}
 Provides:       libstdc++%{libstdcxx_sover}-pp-64bit = %{version}-%{release}
+# To allow updates from libstdc++6-pp-gccM to libstdc++6-pp-gccN we need
+# enumerates Obsoletes, the separate -pp package was introduced with GCC9.
+Obsoletes:      libstdc++6-pp-gcc9-64bit libstdc++6-pp-gcc10-64bit
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
 Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp-64bit

@@ -47,4 +47,12 @@
     <comment>Converted from python2 to python3 bsc#1191005 (forwarded request 929484 from jrecord)</comment>
     <requestid>929485</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f514df576af9920dbc680a45e3856181</srcmd5>
+    <version>1.5.1</version>
+    <time>1646848047</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 960266 from jrecord)</comment>
+    <requestid>960267</requestid>
+  </revision>
 </revisionlist>

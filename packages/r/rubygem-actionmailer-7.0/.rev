@@ -7,4 +7,12 @@
     <comment>switch from rails 6 to 7</comment>
     <requestid>959880</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ca96bafd8ca8b825199328d547da9af</srcmd5>
+    <version>7.0.2.3</version>
+    <time>1646948735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960787</requestid>
+  </revision>
 </revisionlist>

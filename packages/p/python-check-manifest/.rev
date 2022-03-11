@@ -83,4 +83,23 @@ Needed for python3-jupyter_ipython</comment>
     <comment></comment>
     <requestid>850592</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bc176e99f1ce3056ab889976afc68b0e</srcmd5>
+    <version>0.47</version>
+    <time>1646948732</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-check-manifest-no-mock.patch
+  (gh#mgedmin/check-manifest#151) replace using mock with
+  unittest.mock.
+- version update to 0.47
+  0.47 (2021-09-22)
+  -----------------
+  - Fix ``setuptools_scm`` workaround for packages with dashes in the name
+    (`#145 &lt;https://github.com/mgedmin/check-manifest/issues/145&gt;`_).
+  0.46 (2021-01-04)
+  -----------------
+  - The `pre-commit &lt;https://pre-commit.com&gt;`__ hook now always uses Python 3.
+</comment>
+    <requestid>960722</requestid>
+  </revision>
 </revisionlist>

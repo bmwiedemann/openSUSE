@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>770360</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7e318878c76eac50ff7a02cbd050c9fe</srcmd5>
+    <version>2.25.0</version>
+    <time>1646848049</time>
+    <user>dimstar_suse</user>
+    <comment>- added /etc/nrpe.d/check_postgres.cfg, containing some pre-configured
+  nrpe checks for the different check options</comment>
+    <requestid>960268</requestid>
+  </revision>
 </revisionlist>

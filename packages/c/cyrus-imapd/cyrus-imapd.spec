@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-imapd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _lto_cflags %{nil}
 
@@ -32,7 +33,7 @@ Release:        0
 Summary:        The Cyrus IMAP and POP Mail Server
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Email/Servers
-Url:            http://www.cyrusimap.org
+URL:            http://www.cyrusimap.org
 # Upstream sources
 Source0:        https://github.com/cyrusimap/cyrus-imapd/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source90:       https://github.com/cyrusimap/cyrus-imapd/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz.sig
@@ -60,6 +61,10 @@ Patch28:        cyrus-imapd-2.4.19-implicit_definitions.patch
 Patch31:        cyrus-imapd-2.4.18-D19-Outlook_2013_XLIST.patch
 # PATCH-FIX-OPENSUSE -- Fix conflicting function name
 Patch32:        cyrus-imapd-2.4.21-fix-bdb-function-conflict.patch
+# PATCH-FIX-UPSTREAM cyrus-imapd-2.4.22-fix-cve-2021-33582.patch buschmann23@opensuse.org - Fix CVE-2021-33582
+Patch33:        cyrus-imapd-2.4.22-fix-cve-2021-33582.patch
+# PATCH-FIX-UPSTREAM cyrus-imapd-2.4.22-recognize-new-backends.patch buschmann23@opensuse.org - Recognize new backends
+Patch34:        cyrus-imapd-2.4.22-recognize-new-backends.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -88,7 +93,7 @@ Recommends:     perl-TermReadLine-Gnu
 Conflicts:      courier-imap
 Conflicts:      cyrus-imapd-kolab
 Conflicts:      imap
-Conflicts:	mailutils-delivery
+Conflicts:      mailutils-delivery
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  systemd
 Requires(pre):  %fillup_prereq

@@ -115,11 +115,11 @@ Main kpmcore library.
 
 %files
 %{_kf5_dbuspolicydir}/org.kde.kpmcore.*.conf
-%{_kf5_libdir}/libexec/kpmcore_externalcommand
 %{_kf5_plugindir}/libpmdummybackendplugin.so
 %{_kf5_plugindir}/libpmsfdiskbackendplugin.so
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kpmcore.helperinterface.service
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kpmcore.externalcommand.policy
+%{_libexecdir}/kpmcore_externalcommand
 
 %files -n libkpmcore%{sover}
 %license LICENSES/*

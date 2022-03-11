@@ -3551,4 +3551,12 @@
   + additional workaround for ImageMagick in test/picsmap.c</comment>
     <requestid>957339</requestid>
   </revision>
+  <revision rev="208" vrev="12">
+    <srcmd5>8ad3e4999b4a25d102ab774ca4d8c274</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1646847990</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959802</requestid>
+  </revision>
 </revisionlist>

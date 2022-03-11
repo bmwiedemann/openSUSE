@@ -1,7 +1,7 @@
 #
 # spec file for package racket
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012, 2013 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           racket
-Version:        8.3
+Version:        8.4
 Release:        0
 Summary:        Scheme implementation with teaching tools
 License:        Apache-2.0 OR MIT
@@ -159,7 +159,6 @@ install -d %{buildroot}/%{_datadir}/doc/%{name}/
 # we do not need *.la and *.a files
 find %{buildroot}%{_libdir} -name "*.la" -delete
 find %{buildroot}%{_libdir} -name "*.a" -delete
-find %{buildroot}%{_datadir} -name ".LOCKpkgs.rktd" -delete
 
 # make system clear
 for bin in mred mzscheme racket
@@ -180,9 +179,33 @@ do
     chmod 755 $bin
 done
 
-for html in syntax/module-helpers rackunit/api reference/collects
+files_to_filter="
+syntax/module-helpers
+rackunit/api
+reference/collects
+guide/exns
+math/array_broadcasting
+math/array_construct
+math/array_convert
+math/array_fold
+math/array_indexing
+math/array_nonstrict
+math/array_pointwise
+math/array_quick
+math/array_sequences
+math/array_slicing
+math/array_strict
+math/array_transform
+math/array_types
+math/matrix_construction
+math/matrix_intro
+math/matrix_poly
+math/stats
+ts-reference/Typed_Classes
+"
+for html in $files_to_filter
 do
-    html=%{_docdir}/%{name}/${html}.html
+    html=%{buildroot}%{_docdir}/%{name}/${html}.html
     test -e $html || continue
     sed -ri 's@%{buildroot}@@g' $html
 done
@@ -190,9 +213,6 @@ done
 # Bash completion
 install -Dm 644 %{SOURCE2} %{buildroot}%{_datadir}/bash_completion/completions/%{name}
 install -Dm 644 %{_builddir}/%{name}-%{version}/share/pkgs/drracket/drracket/drracket.png %{buildroot}%{_datadir}/pixmaps/drracket.png
-
-# Remove references to buildroot
-sed -i "s|%{buildroot}||g" %{buildroot}%{_docdir}/%{name}/ts-reference/Typed_Classes.html
 
 # rewrite path in .desktop files
 %suse_update_desktop_file -c drracket "DrRacket" "DrRacket is an interactive, integrated, graphical programming environment for the Racket programming languages" "%{_bindir}/drracket" "drracket" Development IDE

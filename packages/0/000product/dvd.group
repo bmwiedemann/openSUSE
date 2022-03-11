@@ -205,15 +205,12 @@
     <package name="blinken-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="blog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="blog-plymouth" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="blueberry" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="blueberry-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="bluedevil5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="bluedevil5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="bluez" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="bluez-qt-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="bluez-qt-udev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="bluez-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="boost-license1_78_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2761,7 +2758,6 @@
     <package name="libwrap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libx86emu3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libxapian30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libxapp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxatracker2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libxcb-composite0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxcb-cursor0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3760,7 +3756,7 @@
     <package name="python38-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="python38-setproctitle" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="python38-setproctitle" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python38-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python38-simplejson" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4604,7 +4600,6 @@
     <package name="typelib-1_0-WebKit2-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-WebKit2-4_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
     <package name="typelib-1_0-Wnck-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="typelib-1_0-XApp-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Xfconf-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-libdazzle-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ucode-amd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4695,8 +4690,6 @@
     <package name="wsdd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="x11-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xano-mincho-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="xapps-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xapps-common-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xauth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xawtv" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xbitmaps" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

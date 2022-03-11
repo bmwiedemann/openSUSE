@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  8 06:21:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove from build dependencies some artifacts that are not
+  needed
+
+-------------------------------------------------------------------
 Tue Oct 19 07:02:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

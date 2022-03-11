@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  7 10:58:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
 Wed Feb 23 20:39:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix mouse event issues in openQA (kde#449273):

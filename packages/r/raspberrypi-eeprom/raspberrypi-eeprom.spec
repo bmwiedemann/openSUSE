@@ -21,7 +21,7 @@
 %endif
 
 Name:           raspberrypi-eeprom
-Version:        2021.04.29
+Version:        2022.01.25
 Release:        0
 Summary:        Raspberry Pi 4 EEPROM firmware
 License:        SUSE-Firmware
@@ -63,6 +63,7 @@ First stage bootloader fimware blobs for Raspberry Pi 4
 %install
 mkdir -p %{buildroot}%{_bindir}
 install -m 0755 rpi-eeprom-config %{buildroot}%{_bindir}
+install -m 0755 rpi-eeprom-digest %{buildroot}%{_bindir}
 install -m 0755 rpi-eeprom-update %{buildroot}%{_bindir}
 mkdir -p %{buildroot}/etc/default
 install -m 644 rpi-eeprom-update-default %{buildroot}/etc/default/rpi-eeprom-update
@@ -78,6 +79,7 @@ cp -a firmware/default %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
 %files
 %license LICENSE
 %{_bindir}/rpi-eeprom-config
+%{_bindir}/rpi-eeprom-digest
 %{_bindir}/rpi-eeprom-update
 %config /etc/default/rpi-eeprom-update
 

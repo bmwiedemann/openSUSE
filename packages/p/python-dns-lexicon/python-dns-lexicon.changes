@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar  9 02:45:22 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update to Version 3.9.4
+  * Add webgo provider
+  * Extend possible record types list for dreamhost provider
+- Exclude test_oci.py due to failures.
+- Remove skip on python36
+- Drop remove-mock.patch, included upstream
+
+-------------------------------------------------------------------
 Wed Jul 14 10:45:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer build for python 3.6: not all dependencies are

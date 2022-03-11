@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  5 11:44:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.10:
+  + Fix for the broken GNOME Extensions link.
+  + Fix build with meson 0.60 and newer.
+  + Updated translations.
+- Drop 86.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Feb  1 13:32:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 86.patch: Fix build with meson 0.60.0 and newer.

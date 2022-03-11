@@ -130,8 +130,6 @@ exit 0
 %files
 %license COPYING*
 %{_distconfdir}/pam.d/kde
-%{_kf5_libdir}/libexec/kcheckpass
-%{_kf5_libdir}/libexec/kscreenlocker_greet
 %{_kf5_servicesdir}/
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_plugindir}/
@@ -140,6 +138,8 @@ exit 0
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_sharedir}/kpackage/kcms/kcm_screenlocker
+%{_libexecdir}/kcheckpass
+%{_libexecdir}/kscreenlocker_greet
 
 %files -n libKScreenLocker5
 %license COPYING*

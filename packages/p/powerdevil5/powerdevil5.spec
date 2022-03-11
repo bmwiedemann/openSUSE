@@ -108,8 +108,6 @@ DBus helper and KCM for configuring Power settings.
 %files
 %license COPYING*
 %{_kf5_debugdir}/powerdevil.categories
-%{_kf5_libdir}/libexec/kauth/
-%{_kf5_libdir}/libexec/org_kde_powerdevil
 %{_kf5_libdir}/libpowerdevilconfigcommonprivate.so.*
 %{_kf5_libdir}/libpowerdevilcore.so.*
 %{_kf5_libdir}/libpowerdevilui.so.*
@@ -141,6 +139,8 @@ DBus helper and KCM for configuring Power settings.
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.powerdevil.chargethresholdhelper.service
 %{_kf5_sharedir}/dbus-1/system.d/org.kde.powerdevil.chargethresholdhelper.conf
 %{_kf5_sharedir}/polkit-1/actions/org.kde.powerdevil.chargethresholdhelper.policy
+%{_libexecdir}/kauth/
+%{_libexecdir}/org_kde_powerdevil
 %{_userunitdir}/plasma-powerdevil.service
 
 %{_kf5_configdir}/autostart/powerdevil.desktop

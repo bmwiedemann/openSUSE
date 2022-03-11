@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define commands create_pkg find_pkg generate_changelog package_version prepare_release tag_changelog test_changelog
-
+%define skip_python2 1
 Name:           python-catkin-pkg
 Version:        0.4.24
 Release:        0
@@ -26,6 +26,8 @@ Summary:        Catkin package library
 License:        BSD-3-Clause
 URL:            https://wiki.ros.org/catkin_pkg
 Source:         https://github.com/ros-infrastructure/catkin_pkg/archive/%{version}.tar.gz
+# https://github.com/ros-infrastructure/catkin_pkg/commit/b5c6812b40fa31da91ee560dda7c6e470dedcfb8.diff
+Patch0:         python-catkin-pkg-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +41,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -51,6 +52,7 @@ Library for retrieving information about catkin packages.
 
 %prep
 %setup -q -n catkin_pkg-%{version}
+%autopatch -p1
 
 %build
 %python_build

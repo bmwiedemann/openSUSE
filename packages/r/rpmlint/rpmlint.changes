@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 07 11:10:29 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220307.795b565:
+  * D-Bus whitelistings: kpmcore: don't couple service file to digest
+
+-------------------------------------------------------------------
 Thu Mar 03 14:45:17 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220303.8fe2218:

@@ -93,9 +93,9 @@ KWayland provides a Qt-style Client and Server library wrapper for the Wayland l
 %{_kf5_libdir}/cmake/KF5Wayland/
 %{_kf5_libdir}/libKF5WaylandClient.so
 %{_kf5_libdir}/libKF5WaylandServer.so
-%{_kf5_libdir}/libexec/org-kde-kf5-kwayland-testserver
 %{_kf5_libdir}/pkgconfig/KF5WaylandClient.pc
 %{_kf5_mkspecsdir}/qt_KWaylandClient.pri
 %{_kf5_mkspecsdir}/qt_KWaylandServer.pri
+%{_libexecdir}/org-kde-kf5-kwayland-testserver
 
 %changelog

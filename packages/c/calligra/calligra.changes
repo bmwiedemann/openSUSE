@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 10 17:07:10 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add poppler-22.03.0.patch to fix build with poppler-22.03.0
+
+-------------------------------------------------------------------
 Wed Jan 19 08:57:18 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Set-CXX_STANDARD-to-17.patch to set language standard to

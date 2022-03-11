@@ -86,4 +86,12 @@
   * handle &quot;stack_info&quot; argument correctly</comment>
     <requestid>925756</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>32227a4b2a2bd5d5c8174ca502f6c177</srcmd5>
+    <version>3.0.1</version>
+    <time>1646948710</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires on mock, it has not been required since 3.0.0.</comment>
+    <requestid>960624</requestid>
+  </revision>
 </revisionlist>

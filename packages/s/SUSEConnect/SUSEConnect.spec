@@ -17,7 +17,7 @@
 
 
 Name:           SUSEConnect
-Version:        0.3.32
+Version:        0.3.33
 Release:        0
 %define mod_name suse-connect
 %define mod_full_name %{mod_name}-%{version}
@@ -84,6 +84,8 @@ Source1:        %{name}.5
 Source2:        %{name}.8
 Source3:        %{name}.example
 Source4:        %{name}-rpmlintrc
+Source5:        suseconnect-keepalive.timer
+Source6:        suseconnect-keepalive.service
 Patch0:         switch_server_cert_location_to_etc.patch
 
 Summary:        Utility to register a system with the SUSE Customer Center
@@ -134,6 +136,15 @@ touch %{buildroot}%_sysconfdir/zypp/credentials.d/SCCcredentials
     sed -i "1s/.*/#\!\/usr\/bin\/ruby\.%{ruby_version}/" %{buildroot}%{gem_base}/gems/%{mod_full_name}/bin/%{name}
 %endif
 
+# Install the SUSEConnect --keepalive timer and service.
+mkdir -p %{buildroot}%{_unitdir}
+install -m 644 %{_sourcedir}/suseconnect-keepalive.timer %{buildroot}%{_unitdir}
+install -m 644 %{_sourcedir}/suseconnect-keepalive.service %{buildroot}%{_unitdir}
+ln -sf service %{buildroot}%{_sbindir}/rcsuseconnect-keepalive
+
+%pre
+%service_add_pre suseconnect-keepalive.service suseconnect-keepalive.timer
+
 %post
 if [ -s /etc/zypp/credentials.d/NCCcredentials ] && [ ! -e /etc/zypp/credentials.d/SCCcredentials ]; then
     echo "Imported NCC system credentials to /etc/zypp/credentials.d/SCCcredentials"
@@ -155,6 +166,23 @@ if update-alternatives --config SUSEConnect  &> /dev/null ; then
   ln -fs ../sbin/%{name} %{_bindir}/%{name}
 fi
 
+%service_add_post suseconnect-keepalive.service suseconnect-keepalive.timer
+
+%preun
+%service_del_preun suseconnect-keepalive.service suseconnect-keepalive.timer
+
+%postun
+%service_del_postun suseconnect-keepalive.service suseconnect-keepalive.timer
+
+%posttrans
+# Force the enablement and the restart of the SUSEConnect --keepalive timer.
+if [ -x "$(command -v systemctl)" ]; then
+    if [ "$(/usr/bin/systemctl is-enabled suseconnect-keepalive.timer)" != "enabled" ]; then
+        /usr/bin/systemctl enable suseconnect-keepalive.timer
+    fi
+    /usr/bin/systemctl restart suseconnect-keepalive.timer
+fi
+
 %files
 %defattr(-,root,root,-)
 %{_sbindir}/SUSEConnect
@@ -171,5 +199,9 @@ fi
 %config %dir %{_sysconfdir}/zypp/
 %config %dir %{_sysconfdir}/zypp/credentials.d/
 %config(noreplace) %ghost %{_sysconfdir}/zypp/credentials.d/SCCcredentials
+
+%{_unitdir}/suseconnect-keepalive.service
+%{_unitdir}/suseconnect-keepalive.timer
+%{_sbindir}/rcsuseconnect-keepalive
 
 %changelog

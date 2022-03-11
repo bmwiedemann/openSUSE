@@ -7,4 +7,12 @@
     <comment>Fixing the name to be capitalized as on PyPI.</comment>
     <requestid>907357</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b82727674a920c5af60fd4b70ad1da56</srcmd5>
+    <version>1.5.3</version>
+    <time>1646948722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960710</requestid>
+  </revision>
 </revisionlist>

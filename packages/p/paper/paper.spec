@@ -22,7 +22,8 @@ Release:        0
 Summary:        Enables users to indicate their preferred paper size
 License:        GPL-3.0-or-later
 URL:            https://github.com/rrthomas/paper
-Source:         https://github.com/rrthomas/paper/releases/download/v%{version}/paper-%{version}.tar.gz
+Source:         %{url}/releases/download/v%{version}/paper-%{version}.tar.gz
+Source99:       %{name}-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  help2man
@@ -36,7 +37,7 @@ specifies system-wide and per-user paper size catalogues, which can be
 can also be used directly (see paperspecs(5)).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
@@ -44,14 +45,14 @@ can also be used directly (see paperspecs(5)).
 
 %install
 %make_install
+# Remove README, we install this with doc macro
+rm -vRf %{buildroot}%{_datadir}/doc/paper/README
 
 %files
 %license COPYING
-%doc ChangeLog 
+%doc ChangeLog README
 %config %{_sysconfdir}/paperspecs
 %{_bindir}/paper
-%dir %{_datadir}/doc/paper
-%{_datadir}/doc/paper/README
 %{_libexecdir}/localepaper
 %{_mandir}/man1/paper.1.gz
 %{_mandir}/man5/paperspecs.5.gz

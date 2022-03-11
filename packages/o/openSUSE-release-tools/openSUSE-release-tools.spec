@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20220307.7fa0e0de
+Version:        20220310.99e9d9a2
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -345,6 +345,7 @@ exit 0
 %{_bindir}/osrt-bugowner
 %{_bindir}/osrt-build-fail-reminder
 %{_bindir}/osrt-checknewer
+%{_bindir}/osrt-check_bugowner
 %{_bindir}/osrt-check_source_in_factory
 %{_bindir}/osrt-check_tags_in_requests
 %{_bindir}/osrt-compare_pkglist

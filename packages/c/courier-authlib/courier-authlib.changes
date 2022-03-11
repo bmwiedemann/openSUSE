@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  8 13:47:40 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.71.4:
+  * Fix a theoretical memory corruption during authentication if the
+    process runs out of memory. The server does not do much memory
+    allocation prior to authentication, this is mostly academic.
+
+-------------------------------------------------------------------
 Mon Aug 30 13:24:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:

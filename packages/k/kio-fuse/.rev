@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>897274</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>aa62a6bc8e98b169f9589d37b4e39cd0</srcmd5>
+    <version>5.0.1</version>
+    <time>1646848034</time>
+    <user>dimstar_suse</user>
+    <comment>Use %_libexecdir</comment>
+    <requestid>960100</requestid>
+  </revision>
 </revisionlist>

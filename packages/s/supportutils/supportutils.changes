@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar  4 17:56:15 UTC 2022 - Jason Record <jason.record@suse.com>
+
+- Changes to version 3.1.20
+  + Added command blkid #114
+  + Added s390x specific files and output #115
+  + Fix for invalid argument during updates (bsc#1193204)
+  + Optimized conf_files, conf_files_text and log_cmd functions #118
+  + Fixed iscsi initiator name (bsc#1195797)
+  + Added rpcinfo -p output #116
+  + Included /etc/sssd/conf.d configuration files #100
+
+-------------------------------------------------------------------
 Mon Jan 10 22:35:23 UTC 2022 - Jason Record <jason.record@suse.com>
 
 - Changes to version 3.1.19

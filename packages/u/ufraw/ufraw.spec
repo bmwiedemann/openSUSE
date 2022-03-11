@@ -1,7 +1,7 @@
 #
 # spec file for package ufraw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 # gimptool-2.0 --gimpplugindir
 %define _gimpplugindir %(gimptool-2.0 --gimpplugindir)
+
 Name:           ufraw
 Version:        0.22
 Release:        0
@@ -26,6 +27,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://ufraw.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/ufraw/ufraw/%{name}-%{version}/%{name}-%{version}.tar.gz
+
 Patch0:         %{name}-desktop.patch
 Patch1:         %{name}-boundary.patch
 Patch2:         %{name}-glibc210.patch
@@ -40,22 +42,24 @@ Patch10:        05_CVE-2018-19655.patch
 Patch11:        06_lensfun_destroy_cleanup.patch
 Patch12:        Fix-build-with-GCC9.patch
 Patch13:        ufraw-fix-c++.patch
+
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  gimp-devel
-BuildRequires:  lensfun-devel
-BuildRequires:  libexiv2-devel
-BuildRequires:  libgtkimageview-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  liblcms2-devel
-BuildRequires:  libpng-devel
 BuildRequires:  libstdc++-devel
-BuildRequires:  libtiff-devel
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-Recommends:     %{name}-lang
-%if 0%{?suse_version} > 1310
-BuildRequires:  cfitsio-devel
-%endif
+BuildRequires:  pkgconfig(cfitsio)
+BuildRequires:  pkgconfig(exiv2) >= 0.20
+BuildRequires:  pkgconfig(gimpui-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.12
+BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtkimageview) >= 1.6
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(lensfun) >= 0.2.5
+BuildRequires:  pkgconfig(libpng) >= 1.2
+BuildRequires:  pkgconfig(libtiff-4)
 
 %description
 ufraw is "The Unidentified Flying Raw". It is an application to read and
@@ -99,9 +103,10 @@ management using Little CMS, allowing the user to apply color profiles.
 %endif
 export CXXFLAGS="$CFLAGS"
 autoreconf -fi
-%configure --enable-contrast \
-  --enable-dst-correction
-make %{?_smp_mflags}
+%configure \
+	--enable-contrast \
+	--enable-dst-correction
+%make_build
 
 %install
 %make_install

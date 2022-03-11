@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar  5 03:10:36 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302190
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302190  2022-03-04 15:07:45-08:00 America/Los_Angeles
+
+      - Fix subtest times to be hi-res
+
+-------------------------------------------------------------------
 Sat Feb 26 03:10:44 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302189

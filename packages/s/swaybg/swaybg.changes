@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 10 09:54:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.1:
+  * Add editorconfig
+  * Only render a new frame when the buffer size changes
+  * Fix memory leak when using image tile mode
+
+-------------------------------------------------------------------
 Tue Jul 20 07:48:35 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1:

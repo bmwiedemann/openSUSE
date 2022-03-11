@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 10 14:05:24 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220310.99e9d9a2:
+  * package: Package /usr/bin/osrt-check_bugowner
+  * check_bugowner: Relax check for patchinfo - patchinfo.* is good as well
+  * gocd: Run check_bugowner on SLE side
+  * Add a test case for check_bugowner
+  * Add ReviewBot to check for bugowner lines in requests for new packages
+
+-------------------------------------------------------------------
+Tue Mar 08 13:06:56 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220308.807b0f93:
+  * tests: Make use of fixtures to be able to test different workflows
+
+-------------------------------------------------------------------
+Mon Mar 07 18:54:24 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220307.0e859719:
+  * CI: Split the tests in multiple runs
+
+-------------------------------------------------------------------
 Mon Mar 07 16:48:24 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220307.7fa0e0de:

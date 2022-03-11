@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 10 16:39:06 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.16.0
+
+  ### New features
+
+  * [#223](https://github.com/rubocop-hq/rubocop-ast/pull/223): Support `Parser::Ruby32` for Ruby 3.2 parser (experimental). ([@koic][])
+
+-------------------------------------------------------------------
 Tue Feb 15 07:41:48 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.15.2

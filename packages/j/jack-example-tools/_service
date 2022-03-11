@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/jackaudio/jack-example-tools.git</param>
+    <param name="revision">refs/tags/1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+<!--    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+-->
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>
+

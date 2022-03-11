@@ -1,10 +1,11 @@
 #!/bin/bash
 #
 # Copyright (c) 2009, 2010 SUSE Linux Product GmbH, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Licensed under GPL v2, see COPYING file for details.
 #
-# Written by Michael Matz and Stephan Coolo
-# Enhanced by Andreas Jaeger
+# Written by Michael Matz and Stephan Kulow
+# Enhanced by Andreas Jaeger and Dirk Müller
 
 # Compare two source RPMs
 
@@ -18,20 +19,15 @@ case $1 in
 esac
 
 if test "$#" != 2; then
-   echo "usage: $0 [-a|--check-all] old.rpm new.rpm"
-   exit 1
+  echo "usage: $0 [-a|--check-all] old.rpm new.rpm"
+  exit 1
 fi
 
 source $FUNCTIONS
 
-oldrpm=`readlink -f $1`
-newrpm=`readlink -f $2`
+oldrpm=$(readlink -f $1)
+newrpm=$(readlink -f $2)
 rename_script=
-
-# Get version-release from first RPM and keep for rpmlint check
-# Remember to quote the "." for future regexes
-ver_rel_old=$(rpm -qp --nodigest --nosignature --qf "%{RELEASE}" "${oldrpm}"|sed -e 's/\./\\./g')
-ver_rel_new=$(rpm -qp --nodigest --nosignature --qf "%{RELEASE}" "${newrpm}"|sed -e 's/\./\\./g')
 
 # For source RPMs, we can just check the metadata in the spec file
 # if those are not the same, the source RPM has changed and therefore 
@@ -59,41 +55,38 @@ esac
 # Now check that only the spec file has a changed release number and
 # nothing else
 
-dir=`mktemp -d`
-unpackage $oldrpm $dir/old
-unpackage $newrpm $dir/new
+dir=$(mktemp -d)
+unpackage $oldrpm $dir/old &
+unpackage $newrpm $dir/new &
 cd $dir
+wait
 
 check_single_file()
 { 
   local file=$1
   case $file in
     *.spec)
-       sed -i -e 's,^Release:.*$,Release: @RELEASE@,' old/$file
-       sed -i -e 's,^Release:.*$,Release: @RELEASE@,' new/$file
-       if ! cmp -s old/$file new/$file; then
-         echo "$file differs (spec file)"
-         diff -u old/$file new/$file | head -n 20
-         return 1
-       fi
-       return 0
-       ;;
+      sed -i -e 's,^Release:.*$,Release: @RELEASE@,' old/$file
+      sed -i -e 's,^Release:.*$,Release: @RELEASE@,' new/$file
+      diff --speed-large-files -su0 old/$file new/$file | head -n 20
+      return "${PIPESTATUS[0]}"
+      ;;
     *)
-       echo "$file differs"
-       # Nothing else should be changed
-       ;;
-   esac
-   return 1
+      echo "$file differs"
+      # Nothing else should be changed
+      ;;
+  esac
+  return 1
 }
 
 ret=0
 for file in "${files[@]}"; do
-   if ! check_single_file $file; then
-       ret=1
-       if test -z "$check_all"; then
-           break
-       fi
-   fi
+  if ! check_single_file $file; then
+    ret=1
+    if test -z "$check_all"; then
+      break
+    fi
+  fi
 done
 
 rm -rf $dir

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  7 19:21:06 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jaw-dependencies.patch
+    + Compile all java files in one run
+    + Compile the classes with source/target 8, since the code
+      does not allow lower versions
+    + Compile the module-info.class with source/target 9
+
+-------------------------------------------------------------------
 Fri Dec 11 08:36:20 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build as modular jar, since it is only used by Java 8

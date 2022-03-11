@@ -23,7 +23,7 @@
 %endif
 
 Name:           upower
-Version:        0.99.16
+Version:        0.99.16+4
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later

@@ -14,12 +14,42 @@
 CMPSCRIPT=${0%/*}/pkg-diff.sh
 SCMPSCRIPT=${0%/*}/srpm-check.sh
 
+declare -a exit_code
+# exit_code[0]='' # binaries_differ
+# exit_code[1]='' # rpmlint_differs
+# exit_code[2]='' # appdata_differs
+# exit_code[3]='' # srcrpm_differs
 file1=`mktemp`
 file2=`mktemp`
 _x() {
   rm -f ${file1} ${file2}
 }
 trap _x EXIT
+#
+remove_check_time_report() {
+  local f=$1
+  awk '
+    BEGIN {
+      ctr_seen=0;
+    }
+    /Check time report .*:$/ {
+      ctr_seen=1;
+      next;
+    }
+    /TOTAL[[:blank:]]+[0-9]/ {
+      if (ctr_seen == 1) {
+        ctr_seen=0;
+        next;
+      }
+    }
+    {
+      if (ctr_seen == 1) {
+        next;
+      }
+      print $0;
+    }
+  ' < "${f}"
+}
 #
 check_all=
 if test "$1" = "-a"
@@ -65,7 +95,13 @@ if test ! -f "$nsrpm"; then
 fi
 
 echo "compare $osrpm $nsrpm"
-bash $SCMPSCRIPT "$osrpm" "$nsrpm" || exit 1
+if bash $SCMPSCRIPT "$osrpm" "$nsrpm"
+then
+  : src.rpm identical
+else
+  test -z "${check_all}" && exit 1
+  exit_code[3]='srcrpm_differs'
+fi
 
 # technically we should not all exclude all -32bit but filter for different archs,
 # like done with -x86
@@ -96,7 +132,6 @@ NEWRPMS=($( sort --field-separator=/ --key=` sed -n '1s@[^/]@@gp' ${file2} | wc 
 ver_rel1=$(rpm -qp --nodigest --nosignature --qf "%{VERSION}-%{RELEASE}" "${OLDRPMS[0]}"|sed -e 's/\./\\./g')
 ver_rel2=$(rpm -qp --nodigest --nosignature --qf "%{VERSION}-%{RELEASE}" "${NEWRPMS[0]}"|sed -e 's/\./\\./g')
 
-SUCCESS=1
 rpmqp='rpm -qp --qf %{NAME} --nodigest --nosignature '
 for opac in ${OLDRPMS[*]}; do
   npac=${NEWRPMS[0]}
@@ -113,7 +148,7 @@ for opac in ${OLDRPMS[*]}; do
       echo "skipping -debuginfo package"
     ;;
     *)
-      bash $CMPSCRIPT $check_all "$opac" "$npac" || SUCCESS=0
+      bash $CMPSCRIPT $check_all "$opac" "$npac" || exit_code[0]='binaries_differ'
     ;;
   esac
 done
@@ -123,28 +158,38 @@ if [ -n "${NEWRPMS[0]}" ]; then
   exit 1
 fi
 
+OTHERDIR=
 # Compare rpmlint.log files
 if test -d /home/abuild/rpmbuild/OTHER; then
   OTHERDIR=/home/abuild/rpmbuild/OTHER
 elif test -d /usr/src/packages/OTHER; then
   OTHERDIR=/usr/src/packages/OTHER
 else
-  echo "no OTHERDIR"
-  OTHERDIR=
+  for newdir in $NEWDIRS
+  do
+    test -f "${newdir}/rpmlint.log" || continue
+    OTHERDIR="${newdir}"
+    break
+  done
+  test -n "$OTHERDIR" || echo "no OTHERDIR"
 fi
 
 if test -n "$OTHERDIR"; then
-  if test -e $OLDDIR/rpmlint.log -a -e $OTHERDIR/rpmlint.log; then
-    echo "comparing $OLDDIR/rpmlint.log and $OTHERDIR/rpmlint.log"
+  old_log=$OLDDIR/rpmlint.log
+  new_log=$OTHERDIR/rpmlint.log
+  if test -e ${old_log} && test -e ${new_log} ; then
+    echo "comparing ${old_log} and ${new_log}"
+    # Remove --time-report from rpmlint
     # Sort the files first since the order of messages is not deterministic
     # Remove release from files
-    sort -u $OLDDIR/rpmlint.log|sed -e "s,$ver_rel1,@VERSION@-@RELEASE@,g" -e "s|/tmp/rpmlint\..*spec|.spec|g" > $file1
-    sort -u $OTHERDIR/rpmlint.log|sed -e "s,$ver_rel2,@VERSION@-@RELEASE@,g" -e "s|/tmp/rpmlint\..*spec|.spec|g"  > $file2
+    remove_check_time_report ${old_log}|sort -u|sed -e "s,$ver_rel1,@VERSION@-@RELEASE@,g" -e "s|/tmp/rpmlint\..*spec|.spec|g" > $file1
+    remove_check_time_report ${new_log}|sort -u|sed -e "s,$ver_rel2,@VERSION@-@RELEASE@,g" -e "s|/tmp/rpmlint\..*spec|.spec|g" > $file2
     # Remove odd warning about not-hardlinked files
     # Remove odd warning about data and time, it comes and goes
     # Remove warning about python mtime mismatch, a republish will not help
     # Remove odd warning about filenames, they contain VERSION-RELEASE
     # Remove durations from progress reports
+    # Remove odd output about number of checks and packages
     sed -i -e "
     /: W: files-duplicate /d
     /: W: file-contains-date-and-time /d
@@ -152,37 +197,46 @@ if test -n "$OTHERDIR"; then
     /: W: filename-too-long-for-joliet /d
     /: I: \(filelist-initialization\|check-completed\) /s| [0-9]\+\.[0-9] s| x.x s|
     s/; has taken [0-9]\+\.[0-9] s/; has taken x.x s/
+    /^checks: [0-9]\+, packages: [0-9]\+/d
     " $file1 $file2
     if ! cmp -s $file1 $file2; then
       echo "rpmlint.log files differ:"
       diff -u $file1 $file2 |head -n 20
-      SUCCESS=0
+      exit_code[1]='rpmlint_differs'
     fi
     rm $file1 $file2
-  elif test -e $OTHERDIR/rpmlint.log; then
-    echo "rpmlint.log is new"
-    SUCCESS=0
+  else
+    if test -e "${new_log}"
+    then
+      exit_code[1]='rpmlint_new'
+      echo "rpmlint.log is new"
+    elif test -e "${old_log}"
+    then
+      exit_code[1]='rpmlint_old'
+      echo "rpmlint.log disappeared"
+    else
+      echo "No rpmlint.log available"
+    fi
   fi
 
   appdatas=$(cd $OTHERDIR && find . -name "*-appdata.xml")
   for xml in $appdatas; do
     # compare appstream data
-    if test -e $OLDDIR/$xml -a -e $OTHERDIR/$xml; then
+    if test -e $OLDDIR/$xml && test -e $OTHERDIR/$xml; then
       file1=$OLDDIR/$xml
       file2=$OTHERDIR/$xml
       if ! cmp -s $file1 $file2; then
         echo "$xml files differ:"
         diff -u0 $file1 $file2 |head -n 20
-        SUCCESS=0
+        exit_code[2]='appdata_differs'
       fi
     elif test -e $OTHERDIR/$xml; then
       echo "$xml is new"
-      SUCCESS=0
+      exit_code[2]='appdata_new'
     fi
   done
 fi
-
-if test $SUCCESS -eq 0; then
+if test -n "${exit_code[*]}"; then
   exit 1
 fi
 echo 'compare validated build as identical !'

@@ -24,9 +24,8 @@
 
 %{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-autobahn
-Version:        21.3.1
+Version:        22.2.2
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
@@ -46,7 +45,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flatbuffers >= 1.12}
 BuildRequires:  %{python_module hyperlink >= 21.0.0}
 BuildRequires:  %{python_module lz4 >= 0.7.0}
-BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module msgpack >= 1.0.2}
 BuildRequires:  %{python_module passlib >= 1.7.4}
 BuildRequires:  %{python_module py-ubjson >= 0.16.1}
@@ -114,6 +112,7 @@ export AUTOBAHN_USE_NVX=true
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/wamp
 %python_clone -a %{buildroot}%{_bindir}/xbrnetwork
+%python_clone -a %{buildroot}%{_bindir}/xbrnetwork-ui
 %if %{with nvx_support}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %else
@@ -131,10 +130,10 @@ export PY_IGNORE_IMPORTMISMATCH=1
 %endif
 
 %post
-%python_install_alternative wamp xbrnetwork
+%python_install_alternative wamp xbrnetwork xbrnetwork-ui
 
 %postun
-%python_uninstall_alternative wamp xbrnetwork
+%python_uninstall_alternative wamp xbrnetwork xbrnetwork-ui
 
 %files %{python_files}
 %license LICENSE
@@ -146,5 +145,6 @@ export PY_IGNORE_IMPORTMISMATCH=1
 %endif
 %python_alternative %{_bindir}/wamp
 %python_alternative %{_bindir}/xbrnetwork
+%python_alternative %{_bindir}/xbrnetwork-ui
 
 %changelog

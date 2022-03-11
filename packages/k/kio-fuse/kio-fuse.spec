@@ -81,8 +81,8 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 
 %files
 %license LICENSES/*
-%{_kf5_libdir}/libexec/kio-fuse
 %{_kf5_sharedir}/dbus-1/services/org.kde.KIOFuse.service
+%{_libexecdir}/kio-fuse
 %{_tmpfilesdir}/kio-fuse-tmpfiles.conf
 %{_userunitdir}/kio-fuse.service
 

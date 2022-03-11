@@ -3,7 +3,7 @@
 		<param name="scm">git</param>
 		<param name="url">https://github.com/raspberrypi/rpi-eeprom.git</param>
 		<param name="filename">raspberrypi-eeprom</param>
-		<param name="revision">34b752e8be6ba41f27f0348a9711107946150c9a</param>
+		<param name="revision">c1c19fd4ba380a3e349791089701082cb51da39d</param>
 		<param name="versionrewrite-pattern">v([0-9\.]{10}).*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 <!--

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  9 09:21:57 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches: 
+  + python-coveralls-check-no-mock.patch
+
+-------------------------------------------------------------------
 Wed May 27 09:36:49 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

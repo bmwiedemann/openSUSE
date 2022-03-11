@@ -17,11 +17,11 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define archive_version 1.0.0-rc1
+%define archive_version 1.0.0-rc2
 
 %{?systemd_ordering}
 Name:           parsec
-Version:        1.0.0~rc1
+Version:        1.0.0~rc2
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
@@ -72,10 +72,10 @@ cp %{SOURCE2} .cargo/config
 # Enable all providers
 sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
 # Features available in 1.0.0:
-# all-providers = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "trusted-service-provider"]
+# all-providers = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "trusted-service-provider"]
 # all-authenticators = ["direct-authenticator", "unix-peer-credentials-authenticator", "jwt-svid-authenticator"]
 # But disable "trusted-service-provider" until we have a trusted-services package
-echo 'default = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "all-authenticators"]' >> Cargo.toml
+echo 'default = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "all-authenticators"]' >> Cargo.toml
 
 %build
 export PROTOC=%{_bindir}/protoc

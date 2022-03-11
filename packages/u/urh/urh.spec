@@ -1,8 +1,8 @@
 #
 # spec file for package urh
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           urh
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        Tool for investigating unknown wireless protocols
 License:        GPL-3.0-only

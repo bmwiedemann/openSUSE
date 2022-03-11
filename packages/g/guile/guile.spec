@@ -23,7 +23,7 @@
 %define libgver     1
 %define gsuff       %{guilemaj}_%{guilemin}-%{libgver}
 Name:           guile
-Version:        %{guilevers}.7
+Version:        %{guilevers}.8
 Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
 License:        GFDL-1.3-only AND GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -31,15 +31,14 @@ Group:          Development/Languages/Scheme
 URL:            https://www.gnu.org/software/guile/
 Source0:        https://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=guile&download=1#/%{name}.keyring
+# key: 4FD4D288D445934E0A14F9A5A8803732E4436885 as from the release notes
+Source2:        %{name}.keyring
 Source3:        guile-rpmlintrc
 # Fix the resulting /usr/lib64/pkgconfig/guile-3.0.pc
 Patch0:         guile-3.0-gc_pkgconfig_private.patch
 # The out-of-memory test is flaky, so disable it
 Patch1:         disable-test-out-of-memory.patch
 Patch2:         gcc10-x86-disable-one-test.patch
-Patch3:         0007-Fix-non-revealed-port-is-closed-ports.test.patch
-Patch4:         gnulib-dynarray.patch
 BuildRequires:  gmp-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libltdl-devel
@@ -104,8 +103,6 @@ linked in as a library when building extensible programs.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 # remove broken prebuilt objects
 rm -r prebuilt/32-bit-big-endian

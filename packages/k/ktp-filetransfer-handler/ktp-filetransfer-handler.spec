@@ -69,9 +69,9 @@ Telepathy text filetransfer handler
 
 %files
 %license COPYING*
-%{_kf5_libdir}/libexec/
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.Telepathy.Client.KTp.FileTransferHandler.service
 %{_kf5_sharedir}/telepathy/
+%{_libexecdir}/ktp-filetransfer-handler
 
 %if %{with released}
 %files lang -f %{name}.lang

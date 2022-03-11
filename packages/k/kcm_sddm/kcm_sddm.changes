@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar  7 10:41:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
 Tue Feb 22 16:21:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.2

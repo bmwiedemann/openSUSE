@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96ac9bac051c8b3b6aa1f5108634acbf</srcmd5>
+    <version>2.37</version>
+    <time>1646767923</time>
+    <user>dimstar_suse</user>
+    <comment>Welcome a new backup tool for PostgreSQL, written in C and well maintained upstream by a team and is supported by commercial entity.
+The package has 2 maintainers/bugowner and the binary has shown its stability during the last few year in its devel repository.</comment>
+    <requestid>960159</requestid>
+  </revision>
+</revisionlist>

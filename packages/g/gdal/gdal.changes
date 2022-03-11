@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  8 14:47:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gdal-fix-poppler-leap.patch: Fix build on Leap 15.4 and
+  poppler.
+- Add fdups macro, BuildRequires already in place, remove
+  duplicate files.
+
+-------------------------------------------------------------------
+Mon Mar  7 20:33:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gdal-fix-build-poppler.patch: Fix build with poppler 22.03.0
+  and newer.
+
+-------------------------------------------------------------------
 Tue Jan  4 15:10:17 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 3.4.1 bugfix release

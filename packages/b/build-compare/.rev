@@ -1031,4 +1031,22 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
 - Drop another duration from rpmlint.log</comment>
     <requestid>920691</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>3c14a23e10a4de1f81b8007dc1e66a4a</srcmd5>
+    <version>20220307T115648.b5abdde</version>
+    <time>1646847986</time>
+    <user>dimstar_suse</user>
+    <comment>- handle -a also in same-build-result.sh
+- Find rpmlint.log in more places
+- fix logic error in appstream comparison
+- rework exit handling in same-build-result.sh
+- Fix result in case no rpmlint.log exist
+- remove count of checks and packages from rpmlint.log
+- remove Check time report from rpmlint.log
+- ELF diffing performance improvements
+- unpack packages in parallel
+- Add zstd handling
+- Add extra handling for KMP versions</comment>
+    <requestid>959841</requestid>
+  </revision>
 </revisionlist>

@@ -103,10 +103,10 @@ A Qt/KF5 backend implementation for xdg-desktop-portal
 %dir %{_kf5_sharedir}/xdg-desktop-portal
 %dir %{_kf5_sharedir}/xdg-desktop-portal/portals
 %{_kf5_applicationsdir}/org.freedesktop.impl.portal.desktop.kde.desktop
-%{_kf5_libdir}/libexec/xdg-desktop-portal-kde
 %{_kf5_notifydir}/xdg-desktop-portal-kde.notifyrc
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.impl.portal.desktop.kde.service
 %{_kf5_sharedir}/xdg-desktop-portal/portals/kde.portal
+%{_libexecdir}/xdg-desktop-portal-kde
 %{_userunitdir}/plasma-xdg-desktop-portal-kde.service
 
 %if %{with released}

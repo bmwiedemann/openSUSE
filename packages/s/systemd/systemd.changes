@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar  8 07:41:41 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Fix the default target when it's been incorrectly set to one of the runlevel
+  targets (bsc#1196567)
+
+  The script 'upgrade-from-pre-210.sh' used to initialize the default target
+  during migration from sysvinit to systemd. However it created symlinks to
+  runlevel targets, which are deprecated and might be missing when
+  systemd-sysvcompat package is not installed. If such symlinks are found the
+  script now renames them to point to 'true' systemd target units.
+
+- When migrating from sysvinit to systemd (it probably won't happen anymore),
+  let's use the default systemd target, which is the graphical.target one. In
+  most cases it will do the right thing anyway.
+
+-------------------------------------------------------------------
 Thu Feb 24 13:23:35 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Fix a regression caused by the split of the sysusers config files shipped by

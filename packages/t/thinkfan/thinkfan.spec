@@ -19,6 +19,12 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files 50-thinkfan.conf
+
 Name:           thinkfan
 Version:        1.3.1
 Release:        0
@@ -68,13 +74,18 @@ mkdir -p %{buildroot}/%{_unitdir}
 cp -v rcscripts/systemd/*.service %{buildroot}/%{_unitdir}/
 sed -i "s|%{_prefix}/local/sbin|%{_sbindir}|g" %{buildroot}/%{_unitdir}/*
 
-mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d
-echo "options thinkpad_acpi fan_control=1" > %{buildroot}%{_sysconfdir}/modprobe.d/50-thinkfan.conf
+mkdir -p %{buildroot}%{_modprobedir}
+echo "options thinkpad_acpi fan_control=1" > %{buildroot}%{_modprobedir}/50-thinkfan.conf
 
 %pre
 %service_add_pre %{name}.service
 %service_add_pre %{name}-sleep.service
 %service_add_pre %{name}-wakeup.service
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
 
 %post
 %service_add_post %{name}.service
@@ -92,13 +103,20 @@ echo "options thinkpad_acpi fan_control=1" > %{buildroot}%{_sysconfdir}/modprobe
 %service_del_postun %{name}-sleep.service
 %service_del_postun %{name}-wakeup.service
 
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
+
 %files
 %license COPYING
 %doc README.md examples/*
-%dir %{_sysconfdir}/modprobe.d
+%dir %{_modprobedir}
 %{_sbindir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}.yaml
-%config(noreplace) %{_sysconfdir}/modprobe.d/50-thinkfan.conf
+%{_modprobedir}/50-thinkfan.conf
 %{_fillupdir}/sysconfig.%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man5/thinkfan.conf.5%{?ext_man}
