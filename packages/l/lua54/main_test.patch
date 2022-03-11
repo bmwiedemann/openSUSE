@@ -1,5 +1,5 @@
---- a/main.lua
-+++ b/main.lua
+--- a/testes/main.lua
++++ b/testes/main.lua
 @@ -47,7 +47,7 @@
    assert(string.sub(s, -1) == "\n")
    local t = getoutput()

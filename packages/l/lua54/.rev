@@ -159,4 +159,20 @@
 </comment>
     <requestid>949765</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ded9b1b64cb57cb8a4a092cb356f445b</srcmd5>
+    <version>5.4.4</version>
+    <time>1647031182</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches from upstream:
+  * luabugs1.patch
+  * luabugs2.patch
+- Adjust buildsystem so that it matches upstream git (testes??)
+- Drop the lua_docdir define, package docs in the standard
+  location. Instead just silently drop packaging the README with
+  the path that does not makes sense for a rpm package, but for a
+  source tarball install. Simpler solution to boo#1186233.
+</comment>
+    <requestid>960439</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar  9 10:12:55 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Added patches from upstream:
+  * luabugs1.patch
+  * luabugs2.patch
+- Adjust buildsystem so that it matches upstream git (testes??)
+
+-------------------------------------------------------------------
+Mon Mar  7 10:19:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop the lua_docdir define, package docs in the standard
+  location. Instead just silently drop packaging the README with
+  the path that does not makes sense for a rpm package, but for a
+  source tarball install. Simpler solution to boo#1186233.
+
+-------------------------------------------------------------------
 Wed Jan 26 19:15:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Ensure shared library is installed with executable bit set

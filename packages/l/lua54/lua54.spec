@@ -24,7 +24,7 @@
 %endif
 %define major_version 5.4
 %define libname liblua5_4-5
-%define lua_docdir %{_datadir}/doc/lua%{major_version}
+
 Name:           lua54%{name_ext}
 Version:        5.4.4
 Release:        0
@@ -43,6 +43,10 @@ Patch1:         attrib_test.patch
 Patch2:         files_test.patch
 Patch3:         main_test.patch
 Patch6:         shared_link.patch
+# PATCH-FIX-UPSTREAM luabugsX.patch https://www.lua.org/bugs.html#5.4.4-X
+Patch7:         luabugs1.patch
+Patch8:         luabugs2.patch
+#
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
 %else
@@ -137,16 +141,9 @@ scripting, and rapid prototyping. Lua is implemented as a small library
 of C functions, written in ANSI C.
 
 %prep
-%if "%{flavor}" == "test"
-%setup -T -q -b1 -n lua-%{version}-tests
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%else
-%setup -q -n lua-%{version}
-%patch0 -p1
-%patch6 -p1
-%endif
+%setup -q -n lua-%{version} -a1
+mv lua-%{version}-tests testes
+%autopatch -p1
 
 # manpage
 %if "%{flavor}" != "test"
@@ -204,13 +201,9 @@ touch %{buildroot}%{_sysconfdir}/alternatives/liblua.so
 ln -sf %{_sysconfdir}/alternatives/liblua.so %{buildroot}%{_libdir}/liblua.so
 touch %{buildroot}%{_sysconfdir}/alternatives/lua.pc
 ln -sf %{_sysconfdir}/alternatives/lua.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
-# doc
-mkdir -p %{buildroot}%{lua_docdir}/doc
-install -Dm644 README %{buildroot}%{lua_docdir}
-install -Dm644 doc/* %{buildroot}%{lua_docdir}/doc
-rm %{buildroot}%{lua_docdir}/doc/*.1
 %else
 %check
+cd testes
 LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
 %endif
 
@@ -241,8 +234,6 @@ if [ "$1" = 0 ] ; then
 fi
 
 %files
-%dir %{lua_docdir}
-%doc %{lua_docdir}/README
 %dir %{_libdir}/lua
 %dir %{_libdir}/lua/%{major_version}
 %dir %{_datadir}/lua
@@ -281,8 +272,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/lua.pc
 
 %files doc
-%dir %{lua_docdir}/doc
-%doc %{lua_docdir}/doc/*
+%doc doc/*
 
 %endif
 %changelog
