@@ -71,6 +71,8 @@ Fish command line completion support for %{name}.
 
 %build
 %goprep %{goipath}
+# Avoid gold dependency on ARM64
+export CGO_ENABLED=0
 %gobuild -mod vendor -buildmode pie -ldflags "-X %{goipath}/internal/version.version=v%{version} -X %{goipath}/internal/version.gitCommit=%{git_commit} -X %{goipath}/internal/version.gitTreeState=%{git_dirty}" cmd/helm
 
 %install

@@ -279,4 +279,12 @@ See changelog in:
     <comment>- build against go 1.17 similar to how upstream does</comment>
     <requestid>958917</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>980927d8f6423e3126ec16a1e5426202</srcmd5>
+    <version>3.8.0</version>
+    <time>1647031265</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid CGO to workaround missing gold dependency (bsc#1183043)</comment>
+    <requestid>960521</requestid>
+  </revision>
 </revisionlist>
