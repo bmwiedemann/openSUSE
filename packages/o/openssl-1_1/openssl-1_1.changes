@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar  4 13:11:14 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1192820, CVE-2002-20001]
+  * Fix DHEATER: The Diffie-Hellman Key Agreement Protocol allows
+    remote attackers (from the client side) to send arbitrary
+    numbers that are actually not public keys, and trigger
+    expensive server-side DHE calculation.
+  * Stop recommending the DHE in SSL_DEFAULT_SUSE_CIPHER_LIST
+  * Rebase openssl-DEFAULT_SUSE_cipher.patch
+
+-------------------------------------------------------------------
+Tue Feb 22 17:35:53 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the engines section in /etc/ssl/openssl.cnf [bsc#1194187]
+  * In an INI-type file, the sections begin with a [section_name]
+    and they run until the next section begins.
+  * Rebase openssl-1_1-use-include-directive.patch
+
+-------------------------------------------------------------------
 Fri Feb 11 12:32:11 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Pull libopenssl-1_1 when updating openssl-1_1 with the same

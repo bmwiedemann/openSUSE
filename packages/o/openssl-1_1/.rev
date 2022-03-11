@@ -258,4 +258,12 @@
   * Add openssl-1_1-FIPS-fix-error-reason-codes.patch</comment>
     <requestid>954341</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>f50872be62f36712125b89601447bc3c</srcmd5>
+    <version>1.1.1m</version>
+    <time>1647031183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960473</requestid>
+  </revision>
 </revisionlist>
