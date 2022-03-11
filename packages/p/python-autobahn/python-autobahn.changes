@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 11 08:54:00 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix packaging for %arm, aarch64 and riscv64
+
+-------------------------------------------------------------------
 Wed Mar  9 05:57:11 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 22.2.2:

@@ -113,11 +113,7 @@ export AUTOBAHN_USE_NVX=true
 %python_clone -a %{buildroot}%{_bindir}/wamp
 %python_clone -a %{buildroot}%{_bindir}/xbrnetwork
 %python_clone -a %{buildroot}%{_bindir}/xbrnetwork-ui
-%if %{with nvx_support}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%else
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
 
 %if %{with nvx_support}
 # It tries to test NVX, even if disabled
@@ -138,11 +134,7 @@ export PY_IGNORE_IMPORTMISMATCH=1
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%if %{with nvx_support}
 %{python_sitearch}/*
-%else
-%{python_sitelib}/*
-%endif
 %python_alternative %{_bindir}/wamp
 %python_alternative %{_bindir}/xbrnetwork
 %python_alternative %{_bindir}/xbrnetwork-ui

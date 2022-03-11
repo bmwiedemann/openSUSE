@@ -297,4 +297,12 @@
 - Ship the xbrnetwork-ui cli tool</comment>
     <requestid>960358</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>12a2eb23510c0747286f22ab8d9099dc</srcmd5>
+    <version>22.2.2</version>
+    <time>1647031286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961037</requestid>
+  </revision>
 </revisionlist>
