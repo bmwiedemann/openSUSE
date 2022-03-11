@@ -1,5 +1,5 @@
 #
-# spec file for package qemu
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -22,15 +22,12 @@
 
 %define _buildshell /bin/bash
 
-%define build_x86_firmware_from_source 0
-%define build_skiboot_from_source 0
-%define build_slof_from_source 0
-%define build_opensbi_from_source 0
+%define build_x86_firmware 0
+%define build_ppc_firmware 0
+%define build_opensbi_firmware 0
 %define kvm_available 0
 %define legacy_qemu_kvm 0
 %define force_fit_virtio_pxe_rom 1
-
-%define build_rom_arch %ix86 x86_64 aarch64
 
 %if "%{?distribution}" == ""
 %define distro private-build
@@ -38,23 +35,37 @@
 %define distro %{distribution}
 %endif
 
-%ifarch %{build_rom_arch}
-# choice of building all from source or using provided binary x86 blobs
-%define build_x86_firmware_from_source 1
-%endif
+# So, we have openSUSE:Factory, and we have "ports". In openSUSE:Factory, we
+# have i586 and x86_64. In the :ARM port, we have aarch64, armv6l and armv7l.
+# In the :PowerPC port, we have ppc64, ppc and ppc64le. In the :zSystems port
+# we have s390x. And in the :RISCV we have riscv.
+#
+# Ideally, we'd want to build the firmwares at least once per port, and then
+# share the resulting packages among the arch-es within each port (check the
+# `ExportFilter` directives in the project config).
+#
+# Of course, we always build the "native fimrwares" (e.g., x86 firmwares on
+# x86_64, PPC firmwares on ppc64le, etc). But we also cross compile as much
+# firmwares as we can (e.g., both x86 and PPC firmwares on aarch64) so they'll
+# be available in as many ports as possible (as noarch packages).
 
-%ifarch ppc64
-%define build_skiboot_from_source 0
-%define build_slof_from_source 1
+%ifarch x86_64 aarch64
+%define build_ppc_firmware 1
+# Currently, opensbi does not cross build cleanly on 15.3 and 15.4
+%if ! 0%{?sle_version}
+%define build_opensbi_firmware 1
 %endif
-
-%ifarch ppc64le
-%define build_skiboot_from_source 0
-%define build_slof_from_source 1
+%define build_x86_firmware 1
 %endif
-
+%ifarch ppc64 ppc64le
+%define build_ppc_firmware 1
+%if ! 0%{?sle_version}
+%define build_opensbi_firmware 1
+%endif
+# FIXME: Try to enable cross building of x86 firmwares here on PPC
+%endif
 %ifarch riscv64
-%define build_opensbi_from_source 1
+%define build_opensbi_firmware 1
 %endif
 
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le s390x armv7hl aarch64
@@ -202,6 +213,8 @@ Patch00066:     iotests-60-more-accurate-set-dirty-bit-i.patch
 Patch00067:     iotest-214-explicit-compression-type.patch
 Patch00068:     iotests-declare-lack-of-support-for-comp.patch
 Patch00069:     block-backend-Retain-permissions-after-m.patch
+Patch00070:     virtiofsd-Drop-membership-of-all-supplem.patch
+Patch00071:     hw-scsi-megasas-check-for-NULL-frame-in-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -215,8 +228,12 @@ Patch02003:     help-compiler-out-by-initializing-array.patch
 # Patches applied in roms/sgabios/:
 Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
+# Patches applied in roms/skiboot/:
+Patch05000:     Makefile-define-endianess-for-cross-buil.patch
 # Patches applied in roms/qboot/:
 Patch11000:     qboot-add-cross.ini-file-to-handle-aarch.patch
+# Patches applied in roms/opensbi/:
+Patch13000:     Makefile-fix-build-with-binutils-2.38.patch
 # Patches applied in roms/edk2/BaseTools/Source/C/BrotliCompress/brotli/:
 Patch27000:     brotli-fix-actual-variable-array-paramet.patch
 
@@ -250,47 +267,52 @@ syscall layer occurs on the native hardware and operating system.
 # above section is for qemu-linux-user
 # ------------------------------------------------------------------------
 %else
-%if %{build_x86_firmware_from_source}
+%if %{build_x86_firmware}
 BuildRequires:  acpica
-%endif
-BuildRequires:  pkgconfig(alsa)
-%if %{build_x86_firmware_from_source}
 BuildRequires:  binutils-devel
-%endif
-BuildRequires:  bison
-BuildRequires:  brlapi-devel
-%if %{build_x86_firmware_from_source}
-%ifnarch %{ix86} x86_64
+BuildRequires:  dos2unix
+BuildRequires:  glibc-devel-32bit
+BuildRequires:  pkgconfig(liblzma)
+%ifnarch %ix86 x86_64
 # We must cross-compile on non-x86*
 BuildRequires:  cross-x86_64-binutils
 BuildRequires:  cross-x86_64-gcc%gcc_version
 %endif
 %endif
-BuildRequires:  pkgconfig(libcurl) >= 7.29
-BuildRequires:  pkgconfig(libsasl2)
-%if %{build_x86_firmware_from_source}
-BuildRequires:  dos2unix
+%if %{build_opensbi_firmware}
+%ifnarch riscv64
+BuildRequires:  cross-riscv64-binutils
+BuildRequires:  cross-riscv64-gcc%gcc_version
 %endif
+%endif
+%if %{build_ppc_firmware}
+%ifnarch ppc64 ppc64le
+BuildRequires:  cross-ppc64-binutils
+BuildRequires:  cross-ppc64-gcc%gcc_version
+%endif
+%endif
+BuildRequires:  bison
+BuildRequires:  brlapi-devel
 BuildRequires:  flex
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56
-%if %{build_x86_firmware_from_source}
-BuildRequires:  glibc-devel-32bit
-%endif
 BuildRequires:  libaio-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libfdt-devel >= 1.4.2
 BuildRequires:  libgcrypt-devel >= 1.8.0
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(glusterfs-api) >= 3
 BuildRequires:  pkgconfig(gnutls) >= 3.5.18
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libcacard) >= 2.5.1
 BuildRequires:  pkgconfig(libcap-ng)
+BuildRequires:  pkgconfig(libcurl) >= 7.29
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libiscsi) >= 1.9.0
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libsasl2)
 %if 0%{?with_daxctl}
 BuildRequires:  pkgconfig(libndctl)
 %endif
@@ -342,9 +364,6 @@ BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  xen-devel >= 4.2
 %endif
 BuildRequires:  xfsprogs-devel
-%if %{build_x86_firmware_from_source}
-BuildRequires:  pkgconfig(liblzma)
-%endif
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 %if "%{name}" == "qemu"
@@ -357,6 +376,26 @@ Requires(post): acl
 Requires(post): udev
 %ifarch s390x
 Requires(post): procps
+%endif
+%ifarch %ix86 x86_64
+Requires:       qemu-x86
+%else
+Suggests:       qemu-x86
+%endif
+%ifarch ppc ppc64 ppc64le
+Requires:       qemu-ppc
+%else
+Suggests:       qemu-ppc
+%endif
+%ifarch s390x
+Requires:       qemu-s390x
+%else
+Suggests:       qemu-s390x
+%endif
+%ifarch %arm aarch64
+Requires:       qemu-arm
+%else
+Suggests:       qemu-arm
 %endif
 Recommends:     kvm_stat
 %endif
@@ -376,26 +415,6 @@ Recommends:     qemu-hw-usb-redirect
 Recommends:     qemu-hw-usb-smartcard
 Recommends:     qemu-ui-gtk
 Recommends:     qemu-ui-spice-app
-%endif
-%ifarch %{ix86} x86_64
-Recommends:     qemu-x86
-%else
-Suggests:       qemu-x86
-%endif
-%ifarch ppc ppc64 ppc64le
-Recommends:     qemu-ppc
-%else
-Suggests:       qemu-ppc
-%endif
-%ifarch s390x
-Recommends:     qemu-s390x
-%else
-Suggests:       qemu-s390x
-%endif
-%ifarch %arm aarch64
-Recommends:     qemu-arm
-%else
-Suggests:       qemu-arm
 %endif
 Suggests:       qemu-block-dmg
 Suggests:       qemu-block-gluster
@@ -453,6 +472,7 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Requires:       %name = %{qemuver}
+Requires:       qemu-SLOF
 Recommends:     qemu-ipxe
 Recommends:     qemu-vgabios
 
@@ -915,7 +935,7 @@ Supplements:    modalias(pci:v0000FFFDd00000101sv*sd*bc*sc*i*)
 This package contains the QEMU guest agent. It is installed in the linux guest
 to provide information and control at the guest OS level.
 
-%ifarch %{build_rom_arch}
+%if %{build_x86_firmware}
 %package microvm
 Summary:        x86 MicroVM firmware for QEMU
 Group:          System/Emulators/PC
@@ -980,6 +1000,7 @@ Provides Preboot Execution Environment (PXE) ROM support for various emulated
 network adapters available with QEMU.
 %endif
 
+%if %{build_ppc_firmware}
 %package skiboot
 Summary:        OPAL firmware (aka skiboot), used in booting OpenPOWER systems
 Group:          System/Emulators/PC
@@ -993,6 +1014,18 @@ Provides:       %name:%_datadir/%name/forsplits/06
 %description skiboot
 Provides OPAL (OpenPower Abstraction Layer) firmware, aka skiboot, as
 traditionally packaged with QEMU.
+
+%package SLOF
+Summary:        Slimline Open Firmware - SLOF
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+BuildArch:      noarch
+
+%description SLOF
+Slimline Open Firmware (SLOF) is an implementation of the IEEE 1275 standard.
+It can be used as partition firmware for pSeries machines running on QEMU or KVM.
+%endif
 
 %package ksm
 Summary:        Kernel Samepage Merging services
@@ -1171,6 +1204,8 @@ This package records qemu testsuite results and represents successful testing.
 %patch00067 -p1
 %patch00068 -p1
 %patch00069 -p1
+%patch00070 -p1
+%patch00071 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1183,7 +1218,9 @@ This package records qemu testsuite results and represents successful testing.
 %patch02003 -p1
 %patch03000 -p1
 %patch03001 -p1
+%patch05000 -p1
 %patch11000 -p1
+%patch13000 -p1
 %patch27000 -p1
 
 %if "%{name}" != "qemu-linux-user"
@@ -1192,87 +1229,71 @@ This package records qemu testsuite results and represents successful testing.
 # openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
 # petalogix-s3adsp1800.dtb QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv
 # u-boot.e500 u-boot-sam460-20100605.bin opensbi-riscv32-generic-fw_dynamic.bin
-# opensbi-riscv32-generic-fw_dynamic.elf npcm7xx_bootrom.bin
+# opensbi-riscv32-generic-fw_dynamic.elfnpcm7xx_bootrom.bin
 
-# This first list group isn't specific to what this instance builds
-%define ppc_default_firmware {%nil}
+# Note that:
+# - default firmwares are built "by default", i.e., they're built automatically
+#   during the process of building QEMU (on each specific arch)
+# - extra firmwares are built "manually" (see below)  from their own sources
+#   (which, typically, are submodules checked out in the {srcdi}r/roms directory)
+%define ppc_default_firmware %{nil}
 %define ppc_extra_firmware {skiboot.lid slof.bin}
-%define ppc64_only_default_firmware {%nil}
-%define ppc64_only_extra_firmware {%nil}
-%define riscv64_default_firmware {opensbi-riscv64-generic-fw_dynamic.bin \
+%define riscv64_default_firmware %{nil}
+%define riscv64_extra_firmware {opensbi-riscv64-generic-fw_dynamic.bin \
 opensbi-riscv64-generic-fw_dynamic.elf}
-%define riscv64_extra_firmware {%nil}
 %define s390x_default_firmware {s390-ccw.img s390-netboot.img}
-%define s390x_extra_firmware {%nil}
+%define s390x_extra_firmware %{nil}
 %define x86_default_firmware {linuxboot.bin linuxboot_dma.bin multiboot.bin \
 multiboot_dma.bin kvmvapic.bin pvh.bin}
 %define x86_extra_firmware {bios.bin bios-256k.bin bios-microvm.bin qboot.rom \
 pxe-e1000.rom pxe-eepro100.rom pxe-ne2k_pci.rom pxe-pcnet.rom pxe-rtl8139.rom \
 pxe-virtio.rom sgabios.bin vgabios-ati.bin vgabios-bochs-display.bin \
 vgabios.bin vgabios-cirrus.bin vgabios-qxl.bin vgabios-ramfb.bin \
-vgabios-stdvga.bin vgabios-virtio.bin vgabios-vmware.bin}
-%define x86_64_only_default_firmware {%nil}
-%define x86_64_only_extra_firmware {efi-e1000.rom efi-e1000e.rom \
-efi-eepro100.rom efi-ne2k_pci.rom efi-pcnet.rom efi-rtl8139.rom efi-virtio.rom \
-efi-vmxnet3.rom}
+vgabios-stdvga.bin vgabios-virtio.bin vgabios-vmware.bin \
+efi-e1000.rom efi-e1000e.rom efi-eepro100.rom efi-ne2k_pci.rom efi-pcnet.rom \
+efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
 
+# Complete list of all the firmwares that we build, if we consider
+# all the builds, on all the arches.
 %define firmware { \
-%{?ppc_default_firmware} %{?ppc_extra_firmware} \
-%{?ppc64_only_default_firmware} %{?ppc64_only_extra_firmware} \
-%{?riscv64_default_firmware} %{?riscv64_extra_firmware} \
-%{?s390x_default_firmware} %{?s390x_extra_firmware} \
-%{?x86_default_firmware} %{?x86_extra_firmware} \
-%{?x86_64_only_default_firmware} %{?x86_64_only_extra_firmware} }
+%{ppc_default_firmware} %{ppc_extra_firmware} \
+%{riscv64_default_firmware} %{riscv64_extra_firmware} \
+%{s390x_default_firmware} %{s390x_extra_firmware} \
+%{x86_default_firmware} %{x86_extra_firmware} }
 
-# This second list group is specific to what this instance builds
+# Note that:
+# - {arch}_default_built_firmware are the firmwares that we will be built by
+#   default in this particular build, on the arch where we currently are on
+# - {arch}_extra_built_fimrware, likewise, but for extra firmwares, built manually
+%ifarch ppc64 ppc64le
 %define ppc_default_built_firmware %{ppc_default_firmware}
-%if %{build_skiboot_from_source} && %{build_slof_from_source}
-%define ppc_extra_built_firmware %{ppc_extra_firmware}
-%else
-%if %{build_skiboot_from_source}
-%define ppc_extra_built_firmware {skiboot.lid}
 %endif
-%if %{build_slof_from_source}
-%define ppc_extra_built_firmware {slof.bin}
-%endif
-%endif
-
-%ifarch ppc64
-%define ppc64_only_default_built_firmware %{ppc64_only_default_firmware}
-%define ppc64_only_extra_built_firmware %{ppc64_only_extra_firmware}
-%endif
-
 %ifarch riscv64
 %define riscv64_default_built_firmware %{riscv64_default_firmware}
-%define riscv64_extra_built_firmware %{riscv64_extra_firmware}
 %endif
-
 %ifarch s390x
 %define s390x_default_built_firmware %{s390x_default_firmware}
-%define s390x_extra_built_firmware %{s390x_extra_firmware}
 %endif
-
 %ifarch %ix86 x86_64
 %define x86_default_built_firmware %{x86_default_firmware}
-%ifarch x86_64
-%define x86_64_only_default_built_firmware %{x86_64_only_default_firmware}
-%endif
 %endif
 
-%if %{build_x86_firmware_from_source}
+%if %{build_opensbi_firmware}
+%define riscv64_extra_built_firmware %{riscv64_extra_firmware}
+%endif
+%if %{build_ppc_firmware}
+%define ppc_extra_built_firmware %{ppc_extra_firmware}
+%endif
+%if %{build_x86_firmware}
 %define x86_extra_built_firmware %{x86_extra_firmware}
-%ifarch x86_64
-%define x86_64_only_extra_built_firmware %{x86_64_only_extra_firmware}
-%endif
 %endif
 
+# List of only firmwares that will actually be built, in this instance
 %define built_firmware { \
 %{?ppc_default_built_firmware} %{?ppc_extra_built_firmware} \
-%{?ppc64_only_default_built_firmware} %{?ppc64_only_extra_built_firmware} \
 %{?riscv64_default_built_firmware} %{?riscv64_extra_built_firmware} \
 %{?s390x_default_built_firmware} %{?s390x_extra_built_firmware} \
-%{?x86_default_built_firmware} %{?x86_extra_built_firmware} \
-%{?x86_64_only_default_built_firmware} %{?x86_64_only_extra_built_firmware} }
+%{?x86_default_built_firmware} %{?x86_extra_built_firmware} }
 
 # above section is for qemu and qemu-testsuite
 %endif
@@ -1503,7 +1524,9 @@ cd %blddir
 
 %if "%{name}" == "qemu"
 
-# delete the firmware files that we intend to build
+# Let's build QEMU (and all the "default" firmwares, for each arch)
+
+# First, delete the firmware files that we intend to build...
 for i in %built_firmware
 do
   unlink %srcdir/pc-bios/$i
@@ -1511,68 +1534,57 @@ done
 
 make %{?_smp_mflags} V=1
 
-# Firmware
-
-%ifarch s390x
-for i in %s390x_default_built_firmware
+# ... And then, reinstate the firmwares that have been built already
+for i in %{?s390x_default_built_firmware}
 do
   cp pc-bios/s390-ccw/$i %srcdir/pc-bios/
 done
-%endif
 
-%ifarch ppc64
-for i in %ppc64_only_default_built_firmware
-do
-  cp pc-bios/spapr-rtas/$i %srcdir/pc-bios/
-done
-%endif
-
-%ifarch %ix86 x86_64
-for i in %x86_default_built_firmware
+for i in %{?x86_default_built_firmware}
 do
   cp pc-bios/optionrom/$i %srcdir/pc-bios/
 done
-%ifarch x86_64
-for i in %x86_64_only_default_built_firmware
-do
-  cp pc-bios/optionrom/$i %srcdir/pc-bios/
-done
-%endif
+
+# Build the "extra" firmwares. Note that the QEMU Makefile in {srcdir}/roms
+# does some cross-compiler auto detection. So we often don't need to define
+# or pass CROSS= and CROSS_COMPILE ourselves.
+
+%if %{build_ppc_firmware}
+# FIXME: check if we can upstream: Makefile-define-endianess-for-cross-buil.patch
+make %{?_smp_mflags} -C %srcdir/roms skiboot
+
+make %{?_smp_mflags} -C %srcdir/roms slof
 %endif
 
-%if %{build_x86_firmware_from_source}
-%ifnarch %{ix86} x86_64
-export CC=x86_64-suse-linux-gcc
-export LD=x86_64-suse-linux-ld
+%if %{build_opensbi_firmware}
+make %{?_smp_mflags} -C %srcdir/roms opensbi64-generic
 %endif
+
+%if %{build_x86_firmware}
 
 make %{?_smp_mflags} -C %srcdir/roms bios \
   SEABIOS_EXTRAVERSION="-rebuilt.opensuse.org" \
-%ifnarch %ix86 x86_64
-  HOSTCC=cc \
-%endif
 
+# FIXME: check if we can upstream: roms-Makefile-add-cross-file-to-qboot-me.patch
+# and qboot-add-cross.ini-file-to-handle-aarch.patch
 make %{?_smp_mflags} -C %srcdir/roms qboot
 
 make %{?_smp_mflags} -C %srcdir/roms seavgabios \
-%ifnarch %ix86 x86_64
-  HOSTCC=cc \
-%endif
 
 make %{?_smp_mflags} -C %srcdir/roms seavgabios-ati \
-%ifnarch %ix86 x86_64
-  HOSTCC=cc \
-%endif
 
 make %{?_smp_mflags} -C %srcdir/roms pxerom
 
-%ifnarch %ix86
 make %{?_smp_mflags} -C %srcdir/roms efirom \
   EDK2_BASETOOLS_OPTFLAGS='-fPIE'
-%endif
 
-make                 -C %srcdir/roms sgabios \
-  HOSTCC=cc
+# We're currently not building firmware on ix86, but let's make sure this works
+# fine if one enables it, e.g., locally (for debugging or something).
+# FIXME: check if we can get rid or upstream: roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
+make -C %srcdir/roms sgabios HOSTCC=cc \
+%ifnarch %ix86 x86_64
+    CC=x86_64-suse-linux-gcc LD=x86_64-suse-linux-ld \
+%endif
 
 %if %{force_fit_virtio_pxe_rom}
 pushd %srcdir
@@ -1607,26 +1619,13 @@ for i in %supported_nics_small
     exit 1
   fi
 done
-%ifnarch %{ix86} x86_64
-unset CC
-unset LD
-%endif
-%endif
 
-%if %{build_skiboot_from_source}
-make %{?_smp_mflags} -C %srcdir/roms skiboot CROSS=
 %endif
+# End of {build_x86_firmware}
 
-%if %{build_slof_from_source}
-make %{?_smp_mflags} -C %srcdir/roms slof
 %endif
+# End of "{name}" == "qemu"
 
-%if %{build_opensbi_from_source}
-make %{?_smp_mflags} -C %srcdir/roms opensbi64-generic CROSS_COMPILE=
-%endif
-
-# above section is for qemu
-%endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-testsuite"
 
@@ -1778,15 +1777,7 @@ ln -s qemu-binfmt %{buildroot}%_bindir/qemu-xtensaeb-binfmt
 %if "%{name}" == "qemu"
 
 make %{?_smp_mflags} install DESTDIR=%{buildroot}
-%ifarch %{build_rom_arch}
-install -D -m 0644 %{SOURCE14} %{buildroot}%_datadir/%name/firmware/50-seabios-256k.json
-install -D -m 0644 %{SOURCE15} %{buildroot}%_datadir/%name/firmware/60-seabios-128k.json
-%else
-for f in %{x86_extra_firmware} \
-         %{x86_64_only_extra_firmware}; do
-  unlink %{buildroot}%_datadir/%name/$f
-done
-%endif
+
 %find_lang %name
 install -d -m 0755 %{buildroot}%_datadir/%name/firmware
 install -d -m 0755 %{buildroot}/usr/lib/supportconfig/plugins
@@ -1796,6 +1787,7 @@ install -D -m 0755 %{SOURCE3} %{buildroot}%_datadir/%name/qemu-ifup
 install -D -p -m 0644 %{SOURCE8} %{buildroot}/usr/lib/udev/rules.d/80-qemu-ga.rules
 install -D -m 0755 scripts/analyze-migration.py  %{buildroot}%_bindir/analyze-migration.py
 install -D -m 0755 scripts/vmstate-static-checker.py  %{buildroot}%_bindir/vmstate-static-checker.py
+install -D -m 0755 scripts/kvm/vmxcap  %{buildroot}%_bindir/vmxcap
 install -D -m 0755 %{SOURCE9} %{buildroot}/usr/lib/supportconfig/plugins/%name
 install -D -m 0644 %{SOURCE10} %{buildroot}%_docdir/qemu-arm/supported.txt
 install -D -m 0644 %{SOURCE11} %{buildroot}%_docdir/qemu-ppc/supported.txt
@@ -1843,17 +1835,43 @@ unlink %{buildroot}%_datadir/%name/edk2-x86_64-secure-code.fd
 # this was never meant for customer consumption - delete even though installed
 unlink %{buildroot}%_bindir/elf2dmp
 
+install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
+for X in 00 01 02 03 04 05 07 08 09 10 11 12 13 14 15 16 17 18 19
+do
+  ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
+done
+
+# For PPC and x86 firmwares, there are a few extra install steps necessary.
+# In general, if we know that we have not built a firmware, remove it from the
+# install base, as the one that we have there is the upstream binary, that got
+# copied there during `make install`.
+
+%if %{build_ppc_firmware}
 # in support of update-alternatives
 mv %{buildroot}%_datadir/%name/skiboot.lid %{buildroot}%_datadir/%name/skiboot.lid.qemu
 # create a dummy target for /etc/alternatives/skiboot.lid
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
-
-install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
-for X in 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19
-do
-  ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
+ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/06
+%else
+for f in %{ppc_extra_firmware} ; do
+  unlink %{buildroot}%_datadir/%name/$f
 done
+%endif
+
+# For riscv64 firmwares (currently, only opensbi), we leave them there in
+# any case, because they're part of the qemu-extra package, and riscv is
+# a bit special in many ways already.
+
+%if %{build_x86_firmware}
+install -D -m 0644 %{SOURCE14} %{buildroot}%_datadir/%name/firmware/50-seabios-256k.json
+install -D -m 0644 %{SOURCE15} %{buildroot}%_datadir/%name/firmware/60-seabios-128k.json
+%else
+for f in %{x86_extra_firmware} ; do
+  unlink %{buildroot}%_datadir/%name/$f
+done
+%endif
+
 %suse_update_desktop_file qemu
 %fdupes -s %{buildroot}
 
@@ -1918,6 +1936,7 @@ fi
 %postun ksm
 %service_del_postun ksm.service
 
+%if %{build_ppc_firmware}
 %post skiboot
 update-alternatives --install \
    %{_datadir}/%name/skiboot.lid skiboot.lid %{_datadir}/%name/skiboot.lid.qemu 15
@@ -1926,6 +1945,7 @@ update-alternatives --install \
 if [ ! -f %{_datadir}/%name/skiboot.lid.qemu ] ; then
    update-alternatives --remove skiboot.lid %{_datadir}/%name/skiboot.lid.qemu
 fi
+%endif
 
 # above section is for qemu
 %endif
@@ -2212,7 +2232,6 @@ fi
 %_datadir/%name/canyonlands.dtb
 %_datadir/%name/openbios-ppc
 %_datadir/%name/qemu_vga.ndrv
-%_datadir/%name/slof.bin
 %_datadir/%name/u-boot.e500
 %_datadir/%name/u-boot-sam460-20100605.bin
 %dir %_docdir/qemu-ppc
@@ -2464,7 +2483,7 @@ fi
 %files lang -f %blddir/%name.lang
 %defattr(-, root, root)
 
-%ifarch %{build_rom_arch}
+%if %{build_x86_firmware}
 %files seabios
 %defattr(-, root, root)
 %dir %_datadir/%name
@@ -2516,6 +2535,7 @@ fi
 %_datadir/%name/pxe-virtio.rom
 %endif
 
+%if %{build_ppc_firmware}
 %files skiboot
 %defattr(-, root, root)
 %dir %_datadir/%name
@@ -2524,6 +2544,12 @@ fi
 %_datadir/%name/skiboot.lid
 %_datadir/%name/skiboot.lid.qemu
 %ghost %_sysconfdir/alternatives/skiboot.lid
+
+%files SLOF
+%defattr(-, root, root)
+%dir %_datadir/%name
+%_datadir/%name/slof.bin
+%endif
 
 %files vhost-user-gpu
 %defattr(-, root, root)
@@ -2542,6 +2568,7 @@ fi
 %_bindir/qemu-pr-helper
 %_bindir/qemu-storage-daemon
 %_bindir/vmstate-static-checker.py
+%_bindir/vmxcap
 %verify(not mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
 %_libexecdir/virtfs-proxy-helper
 %_libexecdir/virtiofsd

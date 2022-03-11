@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Mar  7 15:45:42 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Build PPC firmwares from sources on non-PPC builds as well
+  (bsc#1193545)
+- Build RiscV firmwares on non-RiscV builds as well
+- While there, refactor (and simplify!) the firmware building
+  logic and code
+* Patches added:
+  Makefile-define-endianess-for-cross-buil.patch
+  Makefile-fix-build-with-binutils-2.38.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 14:14:18 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- qemu,kvm,xen: NULL pointer dereference issue in megasas-gen2 host
+  bus adapter (bsc#1180432, CVE-2020-35503)
+* Patches added:
+  hw-scsi-megasas-check-for-NULL-frame-in-.patch
+
+-------------------------------------------------------------------
+Fri Feb 18 18:39:54 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Include vmxcap in the qemu-tools package (is being very useful
+  for debugging bsc#1193364)
+
+-------------------------------------------------------------------
+Fri Feb 18 18:26:26 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- The qemu package should require qemu-x86, qemu-arm, etc, as there's
+  no point installing it without _any_ of them. Additionally, right
+  now, the user does not get a working qemu, if recommended packages
+  are disabled (e.g., on MicroOS or SLE Micro). bsc#1196087
+
+-------------------------------------------------------------------
+Wed Feb 18 15:31:48 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Give clearer instructions on how to modify the package patches
+  from the output of update_git.sh (docs change only, no functional
+  change)
+
+-------------------------------------------------------------------
+Wed Feb 18 12:25:15 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- qemu,kvm: potential privilege escalation via virtiofsd
+  (bsc#1195161, CVE-2022-0358)
+* Patches added:
+  virtiofsd-Drop-membership-of-all-supplem.patch
+
+-------------------------------------------------------------------
 Fri Feb 18 11:47:54 UTC 2022 - Li Zhang <li.zhang@suse.com>
 
 * Patches added:

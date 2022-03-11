@@ -1049,8 +1049,10 @@ else # not LATEST
             bundle2local &> ~/pkg2git.log
             echo "SUCCESS"
             echo "To modify package patches, use the frombundle branch as the basis for updating"
-            echo "the $GIT_BRANCH branch with the new patch queue."
-            echo "Then export the changes back to the package using update_git.sh git2pkg"
+            echo "the $GIT_BRANCH branch with the new patch queue, e.g., like this:"
+            echo "  git checkout -f --recurse-submodules -B $GIT_BRANCH frombundle"
+            echo "Then make your changes and, when done, export them back to the package with:"
+            echo "  bash ./update_git.sh git2pkg"
             ;;
         refresh )
             echo "Updating the spec file and patches from the spec file template and the bundle"
