@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  8 03:06:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.47
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.47      2022-03-07 07:03:52 -0700
+    - Fixed bug where Probe::CBuilder plugin could report the wrong diagnostic
+      when throwing an exception (gh#296, gh#297, shawnlaffan++)
+
+-------------------------------------------------------------------
 Wed Dec  1 03:06:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.46
