@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 11 02:41:42 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.0:
+  * Rewrite the logic to parse Examples for Scenario Outlines. Now the
+    substitution of the examples is done during the parsing of Gherkin
+    feature files.
+  * Removed ``example_converters`` from ``scenario(...)`` signature.
+  * Removed ``--cucumberjson-expanded`` and ``--cucumber-json-expanded``
+    options. Now the JSON report is always expanded.
+  * Removed ``--gherkin-terminal-reporter-expanded`` option.
+  * `when` and `then` steps now can provide a `target_fixture`, just like
+    `given` does.
+  * Drop compatibility for python 2 and officially support only python >= 3.6.
+  * Fix error when using `--cucumber-json-expanded` in combination with
+    `example_converters` (marcbrossaissogeti).
+  * Fix `--generate-missing` not correctly recognizing steps with parsers
+- Drop python-mock and python-six from BuildRequires and Requires.
+- No longer skip tests that are not broken
+
+-------------------------------------------------------------------
 Fri Feb 26 20:50:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to 4.0.2

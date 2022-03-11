@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-bdd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-bdd
-Version:        4.0.2
+Version:        5.0.0
 Release:        0
 Summary:        BDD for pytest
 License:        MIT
@@ -34,20 +33,17 @@ Requires:       python-parse
 Requires:       python-parse_type
 Requires:       python-py
 Requires:       python-pytest >= 4.3.0
-Requires:       python-six >= 1.9.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module execnet}
 BuildRequires:  %{python_module glob2}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module parse_type}
 BuildRequires:  %{python_module parse}
 BuildRequires:  %{python_module pytest >= 4.3.0}
 BuildRequires:  %{python_module py}
-BuildRequires:  %{python_module six >= 1.9.0}
 %python_subpackages
 
 %description
@@ -85,9 +81,7 @@ mkdir -p build/testbin
 ln -s %{buildroot}%{_bindir}/pytest-bdd-%{$python_bin_suffix} build/testbin/pytest-bdd
 }
 export PATH=$PWD/build/testbin:$PATH
-# test_at_in_scenario: the result footer looks slightly different
-# test_step_trace: unraisable exception in the obs environment
-%pytest -k "not (test_at_in_scenario or test_step_trace)" -ra
+%pytest
 
 %post
 %python_install_alternative pytest-bdd
