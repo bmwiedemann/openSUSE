@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  8 10:58:26 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Refresh kbdsettings-nox86.patch to fix build on non-x86*
+  architectures
+
+-------------------------------------------------------------------
 Tue Mar  1 18:29:13 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - [kbdsettings] try to run numlockbios from /usr/libexec/kbd/ first

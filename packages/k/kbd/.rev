@@ -902,4 +902,12 @@ Fix version typo:
     <comment></comment>
     <requestid>958755</requestid>
   </revision>
+  <revision rev="112" vrev="9">
+    <srcmd5>7939f5e9fd7d10db9e68f66364a07e30</srcmd5>
+    <version>2.4.0</version>
+    <time>1647031190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960241</requestid>
+  </revision>
 </revisionlist>
