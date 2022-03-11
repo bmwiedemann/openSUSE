@@ -1594,4 +1594,21 @@
     <comment></comment>
     <requestid>928432</requestid>
   </revision>
+  <revision rev="168" vrev="29">
+    <srcmd5>57eabd3c3e068a63ce120f93d97ba340</srcmd5>
+    <version>unknown</version>
+    <time>1647031199</time>
+    <user>dimstar_suse</user>
+    <comment>- add reenable-nfsv2.patch for reverting nfsv2 deprecation until
+  test coverage is fixed  (poo#106679)
+
+- Add gcc12-fix.patch upstream fix for GCC 12 compiler.
+
+- Update to version 2.6.1
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.6.1/2.6.1-Changelog
+- remove patches from this release:
+  - 0001-gssd-fix-crash-in-debug-message.patch,
+  - Add-disable-sbin-override-for-when-sbin-is-a-symlink.patch</comment>
+    <requestid>960295</requestid>
+  </revision>
 </revisionlist>

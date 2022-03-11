@@ -1,0 +1,36 @@
+From 7f8463fe702174bd613df9d308cc899af25ae02e Mon Sep 17 00:00:00 2001
+From: Steve Dickson <steved@redhat.com>
+Date: Wed, 23 Feb 2022 15:19:51 -0500
+Subject: [PATCH] systemd: Fix format-overflow warning
+
+rpc-pipefs-generator.c:35:23: error: '%s' directive output between 0 and 2147483653 bytes may exceed minimum required size of 4095 [-Werror=format-overflow=]
+   35 |         sprintf(path, "%s/%s", dirname, pipefs_unit);
+      |                       ^
+
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ systemd/rpc-pipefs-generator.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/systemd/rpc-pipefs-generator.c b/systemd/rpc-pipefs-generator.c
+index c24db56..7b2bb4f 100644
+--- a/systemd/rpc-pipefs-generator.c
++++ b/systemd/rpc-pipefs-generator.c
+@@ -28,11 +28,12 @@ static int generate_mount_unit(const char *pipefs_path, const char *pipefs_unit,
+ {
+ 	char	*path;
+ 	FILE	*f;
++	size_t size = (strlen(dirname) + 1 + strlen(pipefs_unit));
+ 
+-	path = malloc(strlen(dirname) + 1 + strlen(pipefs_unit));
++	path = malloc(size);
+ 	if (!path)
+ 		return 1;
+-	sprintf(path, "%s/%s", dirname, pipefs_unit);
++	snprintf(path, size, "%s/%s", dirname, pipefs_unit);
+ 	f = fopen(path, "w");
+ 	if (!f)
+ 	{
+-- 
+1.8.3.1
+

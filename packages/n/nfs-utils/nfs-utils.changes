@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar  8 20:58:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add reenable-nfsv2.patch for reverting nfsv2 deprecation until
+  test coverage is fixed  (poo#106679)
+
+-------------------------------------------------------------------
+Thu Mar  3 10:08:47 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc12-fix.patch upstream fix for GCC 12 compiler.
+
+-------------------------------------------------------------------
+Mon Jan 31 07:24:41 UTC 2022 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.6.1
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.6.1/2.6.1-Changelog
+- remove patches from this release:
+  - 0001-gssd-fix-crash-in-debug-message.patch,
+  - Add-disable-sbin-override-for-when-sbin-is-a-symlink.patch
+
+-------------------------------------------------------------------
 Thu Oct 28 12:51:31 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add CONFIG parameter to %sysusers_generate_pre

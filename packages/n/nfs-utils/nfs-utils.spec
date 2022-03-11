@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.5.4
+Version:        2.6.1
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -42,9 +42,8 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         0001-gssd-fix-crash-in-debug-message.patch
-Patch2:         Add-disable-sbin-override-for-when-sbin-is-a-symlink.patch
-
+Patch1:         gcc12-fix.patch
+Patch2:         reenable-nfsv2.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

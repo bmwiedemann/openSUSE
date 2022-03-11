@@ -1,0 +1,60 @@
+This reverts https://git.kernel.org/pub/scm/linux/kernel/git/rw/nfs-utils.git/commit/?id=2c2c36c59fa1de2ff7fd28917e54700ecb39b730
+and https://git.kernel.org/pub/scm/linux/kernel/git/rw/nfs-utils.git/commit/?id=2c2c36c59fa1de2ff7fd28917e54700ecb39b730
+
+as openqa is still testing NFSv2
+see https://progress.opensuse.org/issues/106679
+
+--- nfs-utils-2.6.1.orig/utils/mount/configfile.c
++++ nfs-utils-2.6.1/utils/mount/configfile.c
+@@ -71,7 +71,7 @@ struct mnt_alias {
+ int mnt_alias_sz = (sizeof(mnt_alias_tab)/sizeof(mnt_alias_tab[0]));
+ 
+ static const char *version_keys[] = {
+-	"v3", "v4", "vers", "nfsvers", "minorversion", NULL
++	"v2", "v3", "v4", "vers", "nfsvers", "minorversion", NULL
+ };
+ 
+ static int strict;
+--- nfs-utils-2.6.1.orig/utils/mount/stropts.c
++++ nfs-utils-2.6.1/utils/mount/stropts.c
+@@ -1017,6 +1017,7 @@ static int nfs_try_mount(struct nfsmount
+ 	}
+ 
+ 	switch (mi->version.major) {
++		case 2:
+ 		case 3:
+ 			result = nfs_try_mount_v3v2(mi, FALSE);
+ 			break;
+@@ -1247,14 +1248,6 @@ static int nfsmount_start(struct nfsmoun
+ 	if (!nfs_validate_options(mi))
+ 		return EX_FAIL;
+ 
+-	/* 
+-	 * NFS v2 has been deprecated
+-	 */
+-	if (mi->version.major == 2) {
+-		mount_error(mi->spec, mi->node, EOPNOTSUPP);
+-		return EX_FAIL;
+-	}
+-
+ 	/*
+ 	 * Avoid retry and negotiation logic when remounting
+ 	 */
+--- nfs-utils-2.6.1.orig/utils/nfsd/nfsd.c
++++ nfs-utils-2.6.1/utils/nfsd/nfsd.c
+@@ -226,6 +226,7 @@ main(int argc, char **argv)
+ 				}
+ 				/* FALLTHRU */
+ 			case 3:
++			case 2:
+ 				NFSCTL_VERUNSET(versbits, c);
+ 				break;
+ 			default:
+@@ -250,6 +251,7 @@ main(int argc, char **argv)
+ 					minorvers = minorversset = minormask;
+ 				/* FALLTHRU */
+ 			case 3:
++			case 2:
+ 				NFSCTL_VERSET(versbits, c);
+ 				break;
+ 			default:
