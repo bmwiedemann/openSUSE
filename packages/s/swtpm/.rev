@@ -113,4 +113,22 @@
     <comment></comment>
     <requestid>957026</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b05a019b79de4cc8659e8ae4e068d85</srcmd5>
+    <version>0.7.2</version>
+    <time>1647031264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2:
+  - swtpm:
+    - Do not chdir(/) when using --daemon
+  - swtpm-localca:
+    - Re-implement variable resolution for swtpm-localca.conf
+  - tests:
+    - Use ${WORKDIR} in config files to test env. var replacement
+  - man pages:
+    - Add missing .config directory to path description when using ${HOME}
+  - build-sys:
+    - Add probing for -fstack-protector (forwarded request 960501 from wfrisch)</comment>
+    <requestid>960503</requestid>
+  </revision>
 </revisionlist>

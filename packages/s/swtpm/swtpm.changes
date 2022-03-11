@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  9 14:07:03 UTC 2022 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.7.2:
+  - swtpm:
+    - Do not chdir(/) when using --daemon
+  - swtpm-localca:
+    - Re-implement variable resolution for swtpm-localca.conf
+  - tests:
+    - Use ${WORKDIR} in config files to test env. var replacement
+  - man pages:
+    - Add missing .config directory to path description when using ${HOME}
+  - build-sys:
+    - Add probing for -fstack-protector 
+
+-------------------------------------------------------------------
 Mon Feb 21 12:04:56 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Update to version 0.7.1:
