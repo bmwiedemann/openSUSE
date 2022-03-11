@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 11 03:21:58 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.1.8~0:
+  * Fix workspace scanning
+  * Improve output to show fast/slow path updates
+  * Resolve issue with multibuild tests
+  * Improve handling when a lock is requested but not existing
+  * Improve do_scan for querying specific rustsec ids
+  * Improve tool to allow scanning of an individual advisory
+  * Fix do_scan to use nsjail
+  * Improve audit to generate lockfiles and keep working dir clean
+  * Allow running services before scan
+  * Add more docs
+
+-------------------------------------------------------------------
 Tue Feb 15 04:00:23 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.1.7~0:
