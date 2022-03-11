@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  9 15:17:10 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add org.opencontainers.image.source label
+
+-------------------------------------------------------------------
 Mon Feb  7 15:08:12 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Clean /var/log and /var/cache/zypp more explicitly to keep

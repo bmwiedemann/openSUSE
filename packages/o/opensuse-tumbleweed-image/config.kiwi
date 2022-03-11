@@ -30,6 +30,7 @@
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
             <label name="org.opencontainers.image.url" value="https://www.opensuse.org/"/>
+            <label name="org.opencontainers.image.source" value="%SOURCEURL%"/>
             <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/tumbleweed:%OS_VERSION_ID%.%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
           </suse_label_helper:add_prefix>
