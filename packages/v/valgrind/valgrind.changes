@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  9 10:31:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add upstream handle-rseq-syscall.patch to fix run with glibc 2.35 
+
+-------------------------------------------------------------------
 Tue Nov  9 00:27:36 UTC 2021 - Chris Bradbury <viff3000@gmail.com>
 
 - update to 3.18.1 (jsc#SLE-18639):

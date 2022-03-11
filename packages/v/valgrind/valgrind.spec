@@ -39,6 +39,7 @@ Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 # https://bugs.kde.org/show_bug.cgi?id=390553
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
+Patch1:         handle-rseq-syscall.patch
 Patch2:         armv6-support.diff
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
