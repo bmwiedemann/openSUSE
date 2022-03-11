@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar  5 14:18:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.7.0
+  * Enable high-frequency tooltip updates
+  * Remove rounding to multiples of 5 MiB/s
+  * Change default maximum I/O bandwidth from 40 MiB/s to 1024 MiB/s
+  * Adjust tooltip spacing
+  * Update and sort the list of authors
+  * Bump required GTK+ version to 3.16
+  * Update README
+  * Reformat copyright notices
+  * Update configuration files
+  * Fix compilation warnings
+  * Code cleanups
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Dec 21 17:39:08 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.6.3

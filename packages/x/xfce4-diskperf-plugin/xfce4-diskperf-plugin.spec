@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-diskperf-plugin
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.16.0
 %define plugin diskperf
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        2.6.3
+Version:        2.7.0
 Release:        0
 Summary:        Disk Performance Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-diskperf-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.6/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.7/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
 BuildRequires:  xfce4-dev-tools
 %endif
 Requires:       xfce4-panel >= %{panel_version}
-Recommends:     %{name}-lang = %{version}
+Recommends:     %{name}-lang = %{version}-%{release}
 # package was renamed in 2019 after Leap 15.1
 Provides:       xfce4-panel-plugin-%{plugin} = %{version}-%{release}
 Obsoletes:      xfce4-panel-plugin-%{plugin} < %{version}-%{release}
@@ -49,9 +49,9 @@ per second.
 %package lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Supplements:    %{name}
-Provides:       %{name}-lang-all = %{version}
+Provides:       %{name}-lang-all = %{version}-%{release}
 # package was renamed in 2019 after Leap 15.1
 Obsoletes:      xfce4-panel-plugin-%{plugin}-lang < %{version}-%{release}
 Provides:       xfce4-panel-plugin-%{plugin}-lang = %{version}-%{release}
@@ -85,7 +85,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libdiskperf.so
 %{_datadir}/xfce4/panel/plugins/diskperf.desktop
