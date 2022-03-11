@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar  8 13:59:38 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Require xdg-desktop-portal-gtk in mate_basis for compatibility
+  with desktop portal using software.
+- Recommend blueman instead of discontinued bluebeery.
+- No longer recommend brasero.
+
+-------------------------------------------------------------------
 Tue Sep 12 12:02:28 UTC 2017 - sor.alexei@meowr.ru
 
 - Require mate-desktop (boo#1058138).

@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-mate
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Patterns for Installation (MATE)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRequires:  patterns-rpm-macros
 
@@ -48,17 +48,16 @@ Recommends:     pattern() = games
 Recommends:     pattern() = imaging
 Recommends:     pattern() = mate_admin
 Recommends:     pattern() = mate_internet
+Recommends:     pattern() = mate_utilities
 Recommends:     pattern() = multimedia
 Recommends:     pattern() = office
-Recommends:     pattern() = mate_utilities
 #
 # Official upstream.
 # As MATE is the continuation of GNOME 2.x, patterns are based on GNOME ones
 # and some GNOME's are required.
 #
 Recommends:     atril
-Recommends:     blueberry
-Recommends:     brasero
+Recommends:     blueman
 Recommends:     caja-sendto
 Recommends:     caribou
 Recommends:     cheese
@@ -69,6 +68,7 @@ Recommends:     gcr-viewer
 # Support of gnome-contacts will be added in MATE 1.12
 #Recommends:     gnome-contacts
 Recommends:     gnome-font-viewer
+Recommends:     MozillaThunderbird
 Recommends:     gnome-nettool
 Recommends:     gparted
 Recommends:     gucharmap
@@ -80,7 +80,6 @@ Recommends:     mate-system-monitor
 Recommends:     mate-tweak
 Recommends:     mate-user-share
 Recommends:     mousetweaks
-Recommends:     MozillaThunderbird
 Recommends:     mozo
 Recommends:     orca
 Recommends:     pidgin
@@ -145,11 +144,12 @@ Recommends:     pattern() = gnome_basis_opt
 Requires:       caja
 Requires:       lightdm
 Requires:       marco
-Requires:       mate-desktop
 Requires:       mate-control-center
+Requires:       mate-desktop
 Requires:       mate-panel
 Requires:       mate-session-manager
 Requires:       mate-settings-daemon
+Requires:       xdg-desktop-portal-gtk
 Requires:       dbus(org.freedesktop.Notifications)
 #
 # Low-level parts that we need
@@ -168,33 +168,33 @@ Recommends:     susehelp
 # Branding
 #
 Recommends:     mate-control-center-branding-openSUSE
+Recommends:     desktop-branding
+Recommends:     hicolor-icon-theme-branding-openSUSE
+Recommends:     libsocialweb-branding-openSUSE
 Recommends:     mate-menus-branding-openSUSE
 Recommends:     mate-panel-branding-openSUSE
 Recommends:     mate-session-manager-branding-openSUSE
-Recommends:     hicolor-icon-theme-branding-openSUSE
-Recommends:     libsocialweb-branding-openSUSE
-Recommends:     desktop-branding
 #
 # Now the real packages
 #
 Recommends:     gnome-keyring-pam
 Recommends:     at-spi2-core
 Recommends:     canberra-gtk-play
-Recommends:     mate-themes
+Recommends:     gnome-keyring
+Recommends:     mate-applets
 Recommends:     mate-icon-theme
 Recommends:     mate-icon-theme-faenza
-Recommends:     gnome-keyring
-Recommends:     mate-menu
-Recommends:     mate-applets
 Recommends:     mate-media
+Recommends:     mate-menu
 Recommends:     mate-menus
 Recommends:     mate-notification-daemon
+Recommends:     mate-themes
 # boo#905679
 Recommends:     mate-polkit
+Recommends:     NetworkManager-applet
 Recommends:     mate-power-manager
 Recommends:     mate-screensaver
 Recommends:     mate-terminal
-Recommends:     NetworkManager-applet
 Recommends:     shared-mime-info
 Recommends:     tango-icon-theme
 Recommends:     xkeyboard-config
@@ -208,10 +208,10 @@ Recommends:     pulseaudio-utils
 Recommends:     xdg-user-dirs-gtk
 # We need something for xdg-su.
 Recommends:     libgnomesu
-Recommends:     google-droid-fonts
 Recommends:     MozillaFirefox
-Recommends:     desktop-data-openSUSE
 Recommends:     avahi
+Recommends:     desktop-data-openSUSE
+Recommends:     google-droid-fonts
 Recommends:     xdg-user-dirs
 # metalink downloader
 Suggests:       aria2
@@ -231,17 +231,17 @@ Provides:       pattern() = mate_internet
 Provides:       pattern-extends() = mate
 Provides:       pattern-icon() = package_network
 Provides:       pattern-order() = 2421
-Recommends:     pidgin
 Recommends:     MozillaThunderbird
+Recommends:     pidgin
 #
 # Packages that really make sense.
 #
 Recommends:     liferea
 # As NetworkManager works well on MATE, we should recommend the same packages
 Recommends:     NetworkManager-openvpn-gnome
+Recommends:     NetworkManager-openconnect-gnome
 Recommends:     NetworkManager-pptp-gnome
 Recommends:     NetworkManager-vpnc-gnome
-Recommends:     NetworkManager-openconnect-gnome
 # boo#530416
 Recommends:     hexchat
 Recommends:     transmission-gtk
@@ -270,7 +270,7 @@ Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 2260
 Supplements:    packageand(patterns-mate:patterns-laptop)
 Requires:       pattern() = mate
-Recommends:     blueberry
+Recommends:     blueman
 Recommends:     xournal
 Suggests:       mate-netbook
 
@@ -339,15 +339,15 @@ Requires:       pattern() = mate_basis
 # Official upstream
 #
 Recommends:     mate-disk-usage-analyzer
+Recommends:     caja-extension-sendto
 Recommends:     cheese
 Recommends:     engrampa
-Recommends:     pluma
 Recommends:     galculator
-Recommends:     mate-dictionary
 Recommends:     gnome-font-viewer
-Recommends:     mate-screenshot
 Recommends:     gucharmap
-Recommends:     caja-extension-sendto
+Recommends:     mate-dictionary
+Recommends:     mate-screenshot
+Recommends:     pluma
 Recommends:     seahorse
 #
 # Packages that can make sense.
