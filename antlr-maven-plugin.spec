@@ -1,7 +1,7 @@
 #
 # spec file for package antlr-maven-plugin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,10 @@ Patch0:         maven-antlr-plugin-2.2-modello-issue.patch
 Patch2:         maven-antlr-plugin-2.1-sinkfix.patch
 # Fix grammar processing bug (bz 1020312)
 Patch3:         0001-MANTLR-34-Fix-NPE-when-building-Jenkins.patch
+Patch4:         new-reporting-api.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.commons:commons-exec)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
@@ -42,7 +44,6 @@ BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-i18n)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -63,6 +64,7 @@ This package contains the API documentation for %{name}.
 %patch0 -p1 -b .modello
 %patch2 -b .sink
 %patch3 -p1 -b .fixnpe
+%patch4 -p1
 
 # reporting eventually pulls in another antlr and we'd break with weird errors
 %pom_xpath_inject "pom:dependency[pom:artifactId[text()='maven-reporting-impl']]/pom:exclusions" "
