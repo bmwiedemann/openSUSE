@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar  4 20:07:21 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
 Tue Jun  1 11:10:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.7.0. Check CHANGELOG.md for the full list of changes

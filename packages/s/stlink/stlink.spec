@@ -1,7 +1,7 @@
 #
 # spec file for package stlink
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files stlink_v1.conf
 
 %define         sover 1
 
@@ -66,6 +72,7 @@ STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers.
 
 %build
 %cmake -DSTLINK_UDEV_RULES_DIR="%_udevrulesdir" \
+       -DSTLINK_MODPROBED_DIR="%_modprobedir" \
        -DCMAKE_EXE_LINKER_FLAGS="-pie"
 
 %cmake_build
@@ -78,6 +85,20 @@ rm %{buildroot}%{_libdir}/*.a
 
 %suse_update_desktop_file -r stlink-gui Development Debugger
 
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
+
 %post -n libstlink%{sover} -p /sbin/ldconfig
 
 %postun -n libstlink%{sover} -p /sbin/ldconfig
@@ -87,7 +108,8 @@ rm %{buildroot}%{_libdir}/*.a
 %license LICENSE.md
 %{_bindir}/st-*
 %{_udevrulesdir}/49-stlink*
-%config %{_sysconfdir}/modprobe.d/stlink_v1.conf
+%dir %{_modprobedir}
+%{_modprobedir}/stlink_v1.conf
 %{_mandir}/man1/st-flash.1*
 %{_mandir}/man1/st-info.1*
 %{_mandir}/man1/st-util.1*
