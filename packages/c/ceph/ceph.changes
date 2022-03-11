@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar  8 22:33:00 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to 16.2.7-596-g7d574789716
+  + Update Prometheus Container image paths (pr #459)
+  + mgr/dashboard: Fix documentation URL (pr #456)
+  + mgr/dashboard: Adapt downstream branded navigation page (pr #454)
+
+-------------------------------------------------------------------
+Fri Mar  4 19:35:37 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to 16.2.7-577-g3e3603b5dd1
+  + Update prometheus-server version
+
+-------------------------------------------------------------------
+Mon Jan 10 21:24:48 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to 16.2.7-37-gb3be69440db:
+  + (bsc#1194353) Downstream branding breaks dashboard npm build 
+
+-------------------------------------------------------------------
 Tue Nov 22 12:57:53 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.2.6-463-g22e7612f9ad:

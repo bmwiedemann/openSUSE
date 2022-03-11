@@ -30,12 +30,12 @@
 %else
 %bcond_without tcmalloc
 %endif
+%bcond_with system_pmdk
 %if 0%{?fedora} || 0%{?rhel}
 %bcond_without selinux
 %ifarch x86_64 ppc64le
 %bcond_without rbd_rwl_cache
 %bcond_without rbd_ssd_cache
-%global _system_pmdk 1
 %else
 %bcond_with rbd_rwl_cache
 %bcond_with rbd_ssd_cache
@@ -61,12 +61,10 @@
 %bcond_with libradosstriper
 %ifarch x86_64 aarch64 ppc64le
 %bcond_without lttng
-%global _system_pmdk 1
 %bcond_without rbd_rwl_cache
 %bcond_without rbd_ssd_cache
 %else
 %bcond_with lttng
-%global _system_pmdk 0
 %bcond_with rbd_rwl_cache
 %bcond_with rbd_ssd_cache
 %endif
@@ -127,7 +125,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 16.2.6.463+g22e7612f9ad
+Version: 16.2.7.596+g7d574789716
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -143,7 +141,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-16.2.6-463-g22e7612f9ad.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-16.2.7-596-g7d574789716.tar.bz2
 %if 0%{?suse_version}
 Source94: ceph-rpmlintrc
 Source95: checkin.sh
@@ -265,7 +263,7 @@ BuildRequires:  nlohmann_json-devel
 BuildRequires:  libevent-devel
 BuildRequires:  yaml-cpp-devel
 %endif
-%if 0%{?_system_pmdk}
+%if 0%{with system_pmdk}
 BuildRequires:  libpmem-devel
 BuildRequires:  libpmemobj-devel
 %endif
@@ -422,6 +420,8 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %endif
 %if 0%{?weak_deps}
+%if 0%{?suse_version}
+%endif
 %endif
 %if 0%{?weak_deps}
 %endif
@@ -440,10 +440,6 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %if 0%{?suse_version}
-%endif
-%if 0%{?weak_deps}
-%if 0%{?suse_version}
-%endif
 %endif
 %if 0%{with jaeger}
 %endif
@@ -506,10 +502,6 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %endif
 %if 0%{?suse_version}
-%endif
-%if 0%{?weak_deps}
-%if 0%{?suse_version}
-%endif
 %endif
 %if 0%{with seastar}
 %if 0%{?suse_version}
@@ -594,7 +586,7 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-16.2.6-463-g22e7612f9ad
+%autosetup -p1 -n ceph-16.2.7-596-g7d574789716
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -724,7 +716,7 @@ ${CMAKE} .. \
 %if 0%{with rbd_ssd_cache}
     -DWITH_RBD_SSD_CACHE=ON \
 %endif
-%if 0%{?_system_pmdk}
+%if 0%{with system_pmdk}
     -DWITH_SYSTEM_PMDK:BOOL=ON \
 %endif
     -DBOOST_J=$CEPH_SMP_NCPUS \
@@ -795,7 +787,7 @@ ln -sf %{_sbindir}/mount.ceph %{buildroot}/sbin/mount.ceph
 install -m 0644 -D udev/50-rbd.rules %{buildroot}%{_udevrulesdir}/50-rbd.rules
 
 # sudoers.d
-install -m 0440 -D sudoers.d/ceph-osd-smartctl %{buildroot}%{_sysconfdir}/sudoers.d/ceph-osd-smartctl
+install -m 0440 -D sudoers.d/ceph-smartctl %{buildroot}%{_sysconfdir}/sudoers.d/ceph-smartctl
 
 %if 0%{?rhel} >= 8
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}%{_bindir}/*
@@ -868,6 +860,7 @@ rm -rf %{buildroot}%{_mandir}/man8/crushtool.8*
 rm -rf %{buildroot}%{_mandir}/man8/osdmaptool.8*
 rm -rf %{buildroot}%{_mandir}/man8/monmaptool.8*
 rm -rf %{buildroot}%{_mandir}/man8/ceph-kvstore-tool.8*
+rm -rf %{buildroot}%{_sysconfdir}/sudoers.d/ceph-smartctl
 rm -rf %{buildroot}%{_sbindir}/cephadm
 rm -rf %{buildroot}%{_mandir}/man8/cephadm.8*
 rm -rf %{buildroot}%{_sharedstatedir}/cephadm/.ssh/authorized_keys
@@ -1018,7 +1011,6 @@ rm -rf %{buildroot}%{_unitdir}/ceph-osd@.service
 rm -rf %{buildroot}%{_unitdir}/ceph-osd.target
 rm -rf %{buildroot}%{_unitdir}/ceph-volume@.service
 rm -rf %{buildroot}%{_sysctldir}/90-ceph-osd.conf
-rm -rf %{buildroot}%{_sysconfdir}/sudoers.d/ceph-osd-smartctl
 rm -rf %{buildroot}%{_bindir}/crimson-osd
 rm -rf %{buildroot}%{_prefix}/lib/ocf/resource.d/ceph/rbd
 rm -rf %{buildroot}%{_libdir}/librados.so.*
