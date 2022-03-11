@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  8 08:39:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use valgrind for more supported platforms
+- run tests in parallel for better build times
+- set PATH for test to just built ruby interpreter
+- skip network tests, they hang on timeouts, slowing down the build
+- remove exceptions for armv7 testing, these are all fixed
+
+-------------------------------------------------------------------
 Tue Feb 22 15:32:13 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.1.1 

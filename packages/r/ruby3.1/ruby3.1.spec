@@ -62,7 +62,7 @@ Release:        0
 # keep in sync with macro file!
 #
 # from valgrind.spec
-%ifarch %ix86 x86_64 ppc ppc64
+%ifarch %ix86 aarch64 x86_64 ppc64le s390x
 %define use_valgrind 1
 %endif
 # turn on testsuite by default. we dont hard fail anyway.
@@ -401,7 +401,7 @@ for bin in %{ua_binaries}; do
   ln -s %{_sysconfdir}/alternatives/$bin%{rb_binary_suffix} %{buildroot}%_bindir/$bin%{rb_binary_suffix}
 done
 install -dD %{buildroot}%{rb_extdir} %{buildroot}%{rb_extarchdir} %{buildroot}%{rb_extversionedarchdir} %{buildroot}%{rb_extarchdocdir}
-chmod -vR go-w,go+rX %{buildroot}%{_libdir}/ruby
+chmod -R go-w,go+rX %{buildroot}%{_libdir}/ruby
 
 # keep in sync with ruby-common/gem_build_cleanup
 find %{buildroot} \
@@ -431,21 +431,12 @@ fi
 %if %{with run_tests}
 %check
 DISABLE_TESTS=""
-%ifarch armv7l armv7hl armv7hnl
-# test_call_double(DL::TestDL) fails on ARM HardFP
-# http://bugs.ruby-lang.org/issues/6592
-DISABLE_TESTS="-x test_dl2.rb $DISABLE_TESTS"
-
-# Workaround OpenSSL::TestPKeyRSA#test_sign_verify_memory_leak timeouts on ARM.
-# https://bugs.ruby-lang.org/issues/9984
-sed -i -e 's|20_000|10_000|g' test/openssl/test_pkey_rsa.rb
-%endif
 # Allow MD5 in OpenSSL.
 # https://bugs.ruby-lang.org/issues/9154
 export OPENSSL_ENABLE_MD5_VERIFY=1
 export LD_LIBRARY_PATH="$PWD"
-# we know some tests will fail when they do not find a /usr/bin/ruby
-make check V=1 TESTOPTS="$DISABLE_TESTS" ||:
+export PATH=%{buildroot}%{_bindir}:$PATH
+make check V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x test_rinda -x test_address_resolve -x test_tcp " ||:
 %endif
 
 %post   -n %{libname} -p /sbin/ldconfig

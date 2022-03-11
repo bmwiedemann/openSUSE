@@ -29,4 +29,12 @@
 - Build ruby with jemalloc for sle 15 up</comment>
     <requestid>956806</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c8beda37f6352b057bc46de5dd03dc40</srcmd5>
+    <version>3.1.1</version>
+    <time>1647031253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960415</requestid>
+  </revision>
 </revisionlist>
