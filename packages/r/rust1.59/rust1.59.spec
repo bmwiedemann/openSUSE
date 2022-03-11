@@ -90,9 +90,6 @@ Obsoletes:      %{1}1.53%{?2:-%{2}}
 # armv6/7, s390x, ppc[64[le]], riscv are all "guaranteed to build" only
 # but may not always work.
 
-# Exclude problematic arches
-ExcludeArch: armv6hl
-
 # === broken distro llvm ===
 # In some situations the llvm provided on the platform may not work.
 # we add these conditions here.
@@ -237,7 +234,7 @@ BuildRequires:  ninja
 %endif
 
 # To allow linking to occur by default. This is a recommends so it can be ignored if desired.
-Recommends:       gcc
+Recommends:     gcc
 # Rustc doesn't really do much without Cargo, but you know, if you wanna yolo that ...
 Recommends:     cargo
 %if !%with bundled_llvm
@@ -247,7 +244,6 @@ Suggests:       clang
 # lld is significantly faster than gold for linking, so users may wish to preference it.
 Suggests:       lld
 %endif
-
 
 %if %{with test}
 BuildRequires:  cargo%{version_suffix} = %{version}
@@ -394,9 +390,7 @@ df -h /dev/shm
   %{?with_bundled_llvm: --disable-llvm-link-shared --set llvm.link-jobs=4} \
   --enable-optimize \
   %{?with_sccache: --enable-sccache} \
-%ifnarch armv6l armv6hl
   %{!?with_sccache: --enable-ccache} \
-%endif
   --disable-docs \
   --disable-compiler-docs \
   --enable-verbose-tests \
@@ -428,6 +422,8 @@ export RUSTFLAGS="%{rustflags}"
 export DESTDIR=%{buildroot}
 export CARGO_FEATURE_VENDORED=1
 unset FFLAGS
+unset MALLOC_CHECK_
+unset MALLOC_PERTURB_
 # END EXPORTS
 EOF
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  7 07:40:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- reenable armv6hl (bsc#1196328)
+- skip MALLOC_PERTURB, its not needed for building
+
+-------------------------------------------------------------------
 Thu Mar  3 01:12:55 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Resolve issue with multibuild test
