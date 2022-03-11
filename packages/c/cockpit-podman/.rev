@@ -55,4 +55,12 @@
 - fix_dependencies.patch no longer needed (forwarded request 911941 from lnussel)</comment>
     <requestid>911942</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>32987f85aecdfa7110eeb0ff804e8e51</srcmd5>
+    <version>33</version>
+    <time>1647031261</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>960477</requestid>
+  </revision>
 </revisionlist>
