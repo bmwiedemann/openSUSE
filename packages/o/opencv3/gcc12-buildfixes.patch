@@ -1,0 +1,22 @@
+From 302d14adefb98e02c2110eaa898cf04adb5564cd Mon Sep 17 00:00:00 2001
+From: Alexander Alekhin <alexander.a.alekhin@gmail.com>
+Date: Sat, 22 Jan 2022 11:48:44 +0000
+Subject: [PATCH] build: fix GCC12 compilation
+
+---
+ modules/core/src/persistence_base64.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/core/src/persistence_base64.cpp b/modules/core/src/persistence_base64.cpp
+index 6a32ab5450b..3191372b350 100644
+--- a/modules/core/src/persistence_base64.cpp
++++ b/modules/core/src/persistence_base64.cpp
+@@ -164,7 +164,7 @@ size_t base64_decode(char const * src, char * dst, size_t off, size_t cnt)
+ bool base64_valid(uint8_t const * src, size_t off, size_t cnt)
+ {
+     /* check parameters */
+-    if (src == 0 || src + off == 0)
++    if (src == 0)
+         return false;
+     if (cnt == 0U)
+         cnt = std::strlen(reinterpret_cast<char const *>(src));

@@ -1,7 +1,7 @@
 #
 # spec file for package opencv3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.
 Patch0:         opencv3-pr19384-tbb2021.patch
 # PATCH-FIX-OPENSUSE opencv-build-compare.patch -- avoid republish if some random external version number changes
 Patch1:         opencv-build-compare.patch
+Patch2:         https://github.com/opencv/opencv/commit/302d14adefb98e02c2110eaa898cf04adb5564cd.patch#/gcc12-buildfixes.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
