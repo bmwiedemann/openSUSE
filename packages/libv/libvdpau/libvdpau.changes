@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 10 17:27:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add U_Support-AV1.patch: Add support for AV1 in vdpauinfo.
+- Minor tweaks to spec.
+
+-------------------------------------------------------------------
+Wed Mar  9 11:42:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5:
+  * Add AV1 decode support in VDPAU API
+  * Addition of comma and removing the extra braces
+  * Add tracing for HEVCRangeExt picture info
+  * Add tracing for VP9 picture info
+- Also update vdpauinfo to version 1.4
+- Drop patches fixed upstream:
+  * c5a8e7c6c8b4b36a0e4c9a4369404519262a3256.patch
+  * e82dc4bdbb0db3ffa8c78275902738eb63aa5ca8.patch
+
+-------------------------------------------------------------------
 Thu Jan 14 18:33:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add c5a8e7c6c8b4b36a0e4c9a4369404519262a3256.patch

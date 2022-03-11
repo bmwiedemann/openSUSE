@@ -1,7 +1,7 @@
 #
 # spec file for package libvdpau
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,22 +20,20 @@
   %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
 Name:           libvdpau
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        VDPAU wrapper and trace libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/VDPAU/
 Source:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/vdpauinfo-1.3/vdpauinfo-1.3.tar.bz2
+Source1:        https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/1.4/vdpauinfo-1.4.tar.bz2
 Source2:        README
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 Patch0:         n_UsrEtc.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/commit/c5a8e7c6c8b4b36a0e4c9a4369404519262a3256.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         https://gitlab.freedesktop.org/vdpau/libvdpau/-/commit/e82dc4bdbb0db3ffa8c78275902738eb63aa5ca8.patch
+Patch1:         U_Support-AV1.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -90,7 +88,10 @@ Its usage is documented in the README.
 
 %prep
 %setup -q -b1
-%autopatch -p1
+%patch0 -p1
+pushd ../vdpauinfo-*
+%patch1 -p1
+popd
 
 %build
 %meson
@@ -108,7 +109,7 @@ autoreconf -fi
 VDPAU_CFLAGS=-I%{buildroot}%{_includedir} \
 VDPAU_LIBS="-L%{buildroot}/%{_libdir} -lvdpau -lX11"
 
-make %{?_smp_mflags}
+%make_build
 %make_install
 popd
 
@@ -119,7 +120,9 @@ cp %{_sourcedir}/README .
 
 %files -n libvdpau1
 %dir %{_libdir}/vdpau
+%if 0%{?suse_version} < 1550
 %dir %{_distconfdir}
+%endif
 %{_bindir}/vdpauinfo
 %{_libdir}/libvdpau.so.*
 %{_distconfdir}/vdpau_wrapper.cfg
