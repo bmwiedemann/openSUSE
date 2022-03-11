@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-data-tables
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-data-tables
-Version:        12.2.0
+Version:        12.3.0
 Release:        0
 Summary:        Microsoft Azure Azure Data Tables Client Library for Python
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.14.0
+Requires:       python-azure-core >= 1.15.0
 Requires:       python-azure-data-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.21
@@ -74,7 +74,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/data/tables
 %{python_sitelib}/azure_data_tables-*.egg-info
 
