@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-bundle
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Summary:        Maven Bundle Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://felix.apache.org
-Source0:        http://repo2.maven.org/maven2/org/apache/felix/%{site_name}/%{version}/%{site_name}-%{version}-source-release.tar.gz
+Source0:        https://repo1.maven.org/maven2/org/apache/felix/%{site_name}/%{version}/%{site_name}-%{version}-source-release.tar.gz
 # Needs polishing to be sent upstream
 Patch0:         0001-Port-to-current-maven-dependency-tree.patch
 # New maven-archiver removed some deprecated methods we were using
@@ -35,6 +35,7 @@ Patch1:         0002-Fix-for-new-maven-archiver.patch
 Patch2:         0003-Port-to-plexus-utils-3.0.24.patch
 # Port to newer Maven
 Patch3:         0004-Use-Maven-3-APIs.patch
+Patch4:         new-reporting-api.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bndlib)
@@ -80,6 +81,7 @@ API documentation for %{name}.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 find -name '*.jar' -delete
 
