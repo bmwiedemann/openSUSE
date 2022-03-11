@@ -21,7 +21,7 @@ Name:           partitionmanager
 Version:        21.12.3
 Release:        0
 Summary:        Easily manage disks, partitions and file systems on your KDE Desktop
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://apps.kde.org/partitionmanager
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
