@@ -6,6 +6,9 @@
     <physicalmemory>
       <size unit="G">8</size>
     </physicalmemory>
+    <memoryperjob>
+      <size unit="G">2</size>
+    </memoryperjob>
   </hardware>
   <overwrite>
     <conditions>
@@ -23,7 +26,7 @@
     </conditions>
     <hardware>
       <memory>
-        <size unit="G">13</size>
+        <size unit="G">12</size>
       </memory>
     </hardware>
   </overwrite>

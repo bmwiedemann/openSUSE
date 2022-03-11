@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 11 10:41:23 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add memoryperjob constraint to avoid OOM
+
+-------------------------------------------------------------------
 Mon Dec  6 08:54:18 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.3.0:
