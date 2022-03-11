@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 11 03:15:25 UTC 2022 - wbrown@suse.de
+
+- Update to version 20220311:
+  * Assigned RUSTSEC-2022-0013 to regex (#1208)
+  * add cve-2022-24713 (#1207)
+  * mark RUSTSEC-2021-0019 fixed, add references (#1206)
+  * RUSTSEC-2021-0134: Remove recursive_reference from the list of alternatives (#1200)
+  * Assigned RUSTSEC-2022-0012 to arrow2 (#1205)
+  * Added advisory for `arrow2::ffi::Ffi_ArrowArray` double free (#1204)
+  * Assigned RUSTSEC-2022-0011 to rust-crypto (#1202)
+  * `rust-crypto`: miscomputation when performing AES encryption (#1201)
+  * Update RUSTSEC-2020-0150.md (#1199)
+  * Assigned RUSTSEC-2022-0010 to enum-map (#1198)
+
+-------------------------------------------------------------------
 Tue Feb 15 00:57:25 UTC 2022 - wbrown@suse.de
 
 - Update to version 20220215:
