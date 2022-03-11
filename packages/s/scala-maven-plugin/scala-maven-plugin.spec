@@ -1,7 +1,7 @@
 #
 # spec file for package scala-maven-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        SUSE-Public-Domain
 URL:            https://github.com/davidB/%{name}
 Source0:        https://github.com/davidB/%{name}/archive/%{version}.tar.gz
 Patch0:         scala-maven-plugin-3.4.6-bootcp.patch
+Patch1:         new-reporting-api.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.typesafe.zinc:zinc)
@@ -61,6 +62,7 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %pom_remove_plugin :nexus-staging-maven-plugin
 %pom_remove_plugin :maven-javadoc-plugin

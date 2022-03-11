@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>779799</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f2d3f87bdbfc3ff706ac651d21eda6cb</srcmd5>
+    <version>3.4.6</version>
+    <time>1647031281</time>
+    <user>dimstar_suse</user>
+    <comment>fix building with the new maven-reporting-api</comment>
+    <requestid>961014</requestid>
+  </revision>
 </revisionlist>
