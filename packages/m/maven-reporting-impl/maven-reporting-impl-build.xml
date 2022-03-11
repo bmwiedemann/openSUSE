@@ -11,14 +11,14 @@
   <property name="project.groupId" value="org.apache.maven.reporting"/>
   <property name="project.artifactId" value="maven-reporting-impl"/>
   <property name="project.name" value="Apache Maven Reporting Implementation"/>
-  <property name="project.version" value="3.0.0"/>
+  <property name="project.version" value="3.1.0"/>
 
-  <property name="spec.version" value="3.0"/>
+  <property name="spec.version" value="3.1"/>
 
   <property name="project.organization.name"
             value="The Apache Software Foundation"/>
 
-  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.source" value="1.7"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName"

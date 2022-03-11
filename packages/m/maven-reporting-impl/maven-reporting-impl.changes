@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 11 07:02:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.1.0
+  * API sync with maven-reporting-api 3.1.0
+- Modified patch:
+  * 0001-Remove-dependency-on-junit-addons.patch
+    + rediff
+
+-------------------------------------------------------------------
 Wed Mar 11 11:43:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build against newer doxia that requires html5 module

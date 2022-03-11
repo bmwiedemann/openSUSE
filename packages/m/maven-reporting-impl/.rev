@@ -15,4 +15,12 @@
     <comment>upgrade doxia/doxia-sitetools</comment>
     <requestid>783794</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>713bf28fa803df5142426af77e4f111d</srcmd5>
+    <version>3.1.0</version>
+    <time>1647031279</time>
+    <user>dimstar_suse</user>
+    <comment>3.1.0</comment>
+    <requestid>961010</requestid>
+  </revision>
 </revisionlist>

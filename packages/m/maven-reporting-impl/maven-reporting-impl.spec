@@ -1,7 +1,7 @@
 #
 # spec file for package maven-reporting-impl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %bcond_with tests
 Name:           maven-reporting-impl
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Abstract classes to manage report generation
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/shared/%{name}
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/reporting/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://dlcdn.apache.org/maven/reporting/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 Patch0:         0001-Remove-dependency-on-junit-addons.patch
 BuildRequires:  ant
@@ -69,6 +69,8 @@ API documentation for %{name}.
 %setup -q
 cp %{SOURCE1} build.xml
 %patch0 -p1
+
+%pom_remove_parent
 
 # integration tests try to download stuff from the internet
 # and therefore they don't work in Build Service
