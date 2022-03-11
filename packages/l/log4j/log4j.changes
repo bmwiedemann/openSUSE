@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Thu Mar 10 11:20:50 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 2.17.2
+  * New Features
+    - Limit loading of configuration via a url to https by default.
+    - Require log4j2.Script.enableLanguages to be specified to 
+      enable scripting for specific languages.
+    - Add TB support to FileSize.
+    - Add the log4j-to-jul JDK Logging Bridge.
+    - Add org.apache.logging.log4j.core.appender.AsyncAppender.getAppenders()
+      to more easily port from org.apache.log4j.AsyncAppender.getAllAppenders().
+    - Add Configurator.setLevel(Logger, Level), 
+      setLevel(String, String), and setLevel(Class, Level).
+    - Add shorthand syntax for properties configuration format for
+      specifying a logger level and appender refs.
+    - Add optional additional fields to NoSQLAppender.
+  * Fixed Bugs
+    - Flag LogManager as initiialized if the LoggerFactory is 
+      provided as a property.
+    - Fix DefaultConfiguration leak in PatternLayout.
+    - Document that the Spring Boot Lookup requires the 
+      log4j-spring-boot dependency.
+    - Fix RoutingAppender backcompat and disallow recursive 
+      evaluation of lookup results outside of configuration 
+      properties.
+    - Fix ThreadContextDataInjector initialization deadlock.
+    - Fix substitutions when programmatic configuration is used.
+    - OptionConverter could cause a StackOverflowError.
+    - Log4j 1.2 bridge class ConsoleAppender should extend 
+      WriterAppender and provide better compatibility with custom 
+      appenders.
+    - Log4j 1.2 bridge method NDC.inherit(Stack) should not use 
+      generics to provide source compatibility.
+    - Log4j 1.2 bridge class PatternLayout is missing constants 
+      DEFAULT_CONVERSION_PATTERN and TTCC_CONVERSION_PATTERN.
+    - Log4j 1.2 bridge class PropertyConfigurator should implement 
+      Configurator.
+    - Log4j 1.2 bridge interface Configurator doConfigure() methods 
+      should use LoggerRepository, not LoggerContext.
+    - Log4j 1.2 bridge class OptionConverter is missing 
+      selectAndConfigure() methods.
+    - Log4j 1.2 bridge class Category should implement 
+      AppenderAttachable.
+    - Log4j 1.2 bridge method Category.exists(String) should be 
+      static.
+    - Log4j 1.2 bridge methods missing in org.apache.log4j.Category: 
+      getDefaultHierarchy(), getHierarchy(), getLoggerRepository().
+    - Log4j 1.2 bridge class LogManager default constructor should 
+      be public.
+    - Log4j 1.2 bridge interface org.apache.log4j.spi.RendererSupport
+      was in the wrong package and incomplete.
+    - Log4j 1.2 bridge interfaces missing from package 
+      org.apache.log4j.spi: ThrowableRenderer, 
+      ThrowableRendererSupport, TriggeringEventEvaluator.
+    - Log4j 1.2 bridge missing class org.apache.log4j.or.RendererMap.
+    - Log4j 1.2 bridge PropertiesConfiguration.buildAppender not 
+      adding filters to custom appender.
+    - Log4j 1.2 bridge should ignore case in properties file keys.
+    - Log4j 1.2 bridge adds org.apache.log4j.component.helpers.Constants.
+    - Log4j 1.2 bridge adds org.apache.log4j.helpers.LogLog.
+    - Log4j 1.2 bridge adds org.apache.log4j.helpers.Loader.
+    - Log4j 1.2 bridge adds org.apache.log4j.spi.RootLogger.
+    - Log4j 1.2 bridge class Category is missing some protected 
+      instance variables.
+    - Log4j 1.2 bridge adds org.apache.log4j.Hierarchy.
+    - Log4j 1.2 bridge methods Category.getChainedPriority() and 
+      getEffectiveLevel() should not be final.
+    - Log4j 1.2 bridge adds org.apache.log4j.spi.NOPLoggerRepository 
+      and NOPLogger.
+    - Log4j 1.2 bridge adds org.apache.log4j.spi.DefaultRepositorySelector.
+    - Log4j 1.2 bridge implements LogManager.getCurrentLoggers() 
+      fully.
+    - Log4j 1.2 bridge fixes parsing filters in properties 
+      configuration file #680.
+    - Log4j 1.2 bridge missing OptionConverter.instantiateByKey(
+      Properties, String, Class, Object).
+    - Log4j 1.2 bridge class org.apache.log4j.spi.LoggingEvent 
+      missing constructors and public instance variable.  
+    - Log4j 1.2 bridge does not support system properties in log4j.xml.  
+    - Log4j 1.2 bridge now logs a warning instead of throwing an 
+      NullPointerException when building a Syslog appender with a 
+      missing "SyslogHost" param.  
+    - Log4j 1.2 bridge should allow property and XML attributes to 
+      start with either an upper-case or lower-case letter. 
+    - Log4j 1.2 bridge uses the wrong default values for a 
+      TTCCLayout. 
+    - Log4j 1.2 bridge throws ClassCastException when using 
+      SimpleLayout and others.
+    - Log4j 1.2 bridge uses the wrong file pattern for rolling file 
+      appenders.
+    - Log4j 1.2 bridge throws ClassCastException when using 
+      SimpleLayout and others.
+    - Log4j 1.2 bridge creates a SocketAppender instead of a
+      SyslogAppender.  
+    - Log4j 1.2 bridge uses some incorrect default property values
+      in some appenders.
+    - Log4j 1.2 bridge supports the SocketAppender.  
+    - Log4j 1.2 bridge missing DefaultThrowableRenderer.  
+    - Log4j 1.2 bridge missing some ThrowableInformation constructors.  
+    - Log4j 1.2 bridge missing some LocationInfo constructors.  
+    - Log4j 1.2 bridge missed  
+    - Log4j 1.2 bridge missed org.apache.log4j.pattern.FormattingInfo.  
+    - Log4j 1.2 bridge missed org.apache.log4j.pattern.NameAbbreviator.  
+    - Log4j 1.2 bridge missing UtilLoggingLevel.  
+    - Log4j 1.2 bridge missing FormattingInfo.  
+    - Log4j 1.2 bridge missing PatternConverter.  
+    - Log4j 1.2 bridge missing PatternParser.  
+    - Log4j 1.2 bridge issues with filters.
+    - Log4j 1.2 bridge implements most of DOMConfigurator.  
+    - JndiManager reverts to 2.17.0 behavior: Read the system 
+      property for each call.
+    - Configurator.setLevel not fetching the correct LoggerContext.
+    - Fix DTD error: Add missing ELEMENT for Marker.
+    - Fix log4j-jakarta-web service file.
+    - AppenderLoggingException logging any exception to a MongoDB 
+      Appender.
+    - Possible NullPointerException in MongoDb4DocumentObject, 
+      MongoDbDocumentObject, DefaultNoSqlObject.  
+    - Trim whitespace before parsing a String into an Integer.  
+    - Log4j 1.2 bridge throws a ClassCastException when logging a 
+      Map with non-String keys.
+    - Log4j 1.2 bridge Check for non-existent appender when parsing
+      properties #761. Thanks to Kenny MacLeod.
+    - Log4j 1.2 bridge supports global threshold.
+  * Changes
+    - Change modifier of method 
+      org.apache.logging.log4j.core.tools.Generate#generate to 
+      public (was package private) to facilitate automated code
+      generation.
+ 
+-------------------------------------------------------------------
 Tue Feb 22 08:24:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove alias log4j:log4j from log4j-1.2-api, since it is not a
