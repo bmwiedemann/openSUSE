@@ -97,7 +97,11 @@ Patch42:        use-system-wide-tls-cipher-policy.patch
 Patch43:        vsftpd-allow-dev-log-socket.patch
 Patch44:        vsftpd-enable-sendto-for-prelogin-syslog.patch
 BuildRequires:  libcap-devel
-BuildRequires:  libopenssl-devel
+%if 0%{?suse_version} == 1315
+BuildRequires:  libopenssl-1_1-devel >= 1.1.1
+%else
+BuildRequires:  libopenssl-devel >= 1.1.1
+%endif
 BuildRequires:  pam-devel
 Requires:       logrotate
 Requires(pre):  shadow

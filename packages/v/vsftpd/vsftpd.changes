@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  3 16:44:28 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Use rpm conditional to build against the proper OpenSSL version
+  on all distributions. [jsc#PM-3322]
+
+-------------------------------------------------------------------
 Tue Feb  1 18:42:41 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add "seccomp-fixes.patch" to fix the syscall architecture offset
@@ -37,7 +43,7 @@ Tue Feb  1 18:42:41 UTC 2022 - Peter Simons <psimons@suse.com>
   default. Run the command "openssl ciphers -v DEFAULT_SUSE" to see
   which ciphers this includes.
 
-- Apply "add vsftpd-allow-dev-log-socket.patch" to allow sendto()
+- Apply "vsftpd-allow-dev-log-socket.patch" to allow sendto()
   syscall when /dev/log support is enabled. [bnc#786024]
 
 - Apply "vsftpd-enable-sendto-for-prelogin-syslog.patch" to allow
