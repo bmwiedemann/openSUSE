@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Fri Mar  4 19:36:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.0:
+  + Dependencies:
+    - dbus now requires at least a basic level of support for C99
+      variadic macros, as implemented in gcc >= 3, all versions of
+      Clang, and MSVC >= 2005. In practice this requirement has
+      existed since version 1.9.2, but it is now official.
+    - dbus now requires a C99-compatible va_copy() macro
+      (or a __va_copy() macro with the same behaviour), except when
+      building for Windows using MSVC and CMake.
+    - On Unix platforms, if getpwnam_r() and getgrnam_r() are
+      implemented, they must be POSIX-conformant. The non-POSIX
+      signature seen in ancient Solaris versions will no longer
+      work.
+    - GLib >= 2.38 is required if full test coverage is enabled
+      (reduced from 2.40 in dbus 1.12.x.)
+    - Building using CMake now requires CMake 3.4.
+    - Building documentation using CMake now requires xsltproc,
+      Docbook DTDs (for example docbook-xml on Debian derivatives),
+      and Docbook XSLT stylesheets (for example docbook-xsl on
+      Debian derivatives). Using KDE's meinproc4 documentation
+      processor is no longer supported.
+  + Build-time configuration changes: Move CMake build system to
+    top level, matching normal practice for CMake projects
+  + Deprecations:
+    - Third-party software should install default dbus policies for
+      the system bus into ${datadir}/dbus-1/system.d (this has been
+      supported since dbus 1.10, released in August 2015).
+      Installing default dbus policies in
+      ${sysconfdir}/dbus-1/system.d is now considered to be
+      deprecated. Policy files in ${sysconfdir}/dbus-1/system.d
+      continue to be read, but this directory should only be used
+      by system administrators wishing to override the default
+      policies.
+    - The ${datadir} applicable to dbus is usually /usr/share and
+      the ${sysconfdir} is usually /etc.
+    - A similar pattern applies to the session bus policies in
+      session.d.
+    - The dbus-send(1) man page now documents --bus and --peer
+      instead of the old --address synonym for --peer, which has
+      been deprecated since the introduction of --bus and --peer in
+      1.7.6
+    - The dbus-daemon man page now has scarier warnings about
+      <allow_anonymous/> and non-local TCP, which are insecure and
+      should not be used, particularly for the standard system and
+      session buses.
+    - DBusServer (and hence the dbus-daemon) no longer accepts
+      usernames (login names) for the recommended EXTERNAL
+      authentication mechanism, only numeric user IDs or the empty
+      string. See 1.13.0 release notes for full details.
+  + New features:
+    - On Linux 4.13 or later when built against a suitable glibc
+      version, GetConnectionCredentials() now includes
+      UnixGroupIDs, the effective group IDs of the initiator of the
+      connection, taken from SO_PEERGROUPS.
+    - On Linux 4.13 or later, <policy group="…"> now uses the
+      SO_PEERGROUPS credentials-passing socket option to get the
+      effective group IDs of the initiator of the connection. See
+      1.13.4 release notes for details.
+    - Add a --sender option to dbus-send, which requests a name and
+      holds it until the signal has been sent
+    - dbus-daemon <allow> and <deny> rules can now specify a
+      send_destination_prefix attribute, which is like a
+      combination of send_destination and the arg0namespace keyword
+      in match rules. See 1.13.12 release notes for more details.
+    - The dbus-daemon now filters the messages that it relays,
+      removing header fields that it does not understand. Clients
+      must not rely on this behaviour unless they have confirmed
+      that they are connected to a suitable message bus
+      implementation, for example by querying its Features
+      property.
+    - The dbus-daemon now emits a signal,
+      ActivatableServicesChanged, when the list of activatable
+      services may have changed. Support for this signal can be
+      discovered by querying the Features property.
+    - It is now possible to disable traditional (non-systemd)
+      service activation at build-time (Autotools:
+      --disable-traditional-activation, CMake:
+      -DENABLE_TRADITIONAL_ACTIVATION=OFF). See 1.13.10 release
+      notes for details.
+    - The API reference manual can be built as a Qt compiled help
+      file if qhelpgenerator(-qt5) is available. See 1.13.16
+      release notes for details.
+  + Miscellaneous behaviour changes:
+    - When using the "user bus" (--enable-user-session), put the
+      dbus-daemon in the session slice
+    - Several environment variables set by systemd are no longer
+      passed on to activated services
+    - If the dbus-daemon is compiled for Linux with systemd
+      support, it now informs systemd that it is ready for use via
+      the sd_notify() mechanism.
+    - Tarball releases no longer contain pre-2007 changelogs and
+      are now compressed with xz, making them around 35% smaller.
+- Drop conditionals for old obsolete versions of openSUSE.
+- Rebase patches with quilt.
+- Use https for source and sig URL.
+
+-------------------------------------------------------------------
 Tue Mar  1 18:29:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.22:

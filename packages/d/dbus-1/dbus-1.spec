@@ -16,33 +16,31 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-
 %define with_systemd 1
 %define _name   dbus
 %define _libname libdbus-1-3
 %bcond_without selinux
 Name:           dbus-1
-Version:        1.12.22
+Version:        1.14.0
 Release:        0
 Summary:        D-Bus Message Bus System
 License:        AFL-2.1 OR GPL-2.0-or-later
 URL:            https://dbus.freedesktop.org/
-Source0:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz
-Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz.asc
+Source0:        https://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.xz
+Source1:        https://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.xz.asc
 Source2:        dbus-1.keyring
 Source3:        baselibs.conf
 Source4:        dbus-1.desktop
 Source5:        messagebus.conf
+
+# PATCH-FEATURE-OPENSUSE feature-suse-log-deny.patch
 Patch0:         feature-suse-log-deny.patch
 # PATCH-FIX-OPENSUSE coolo@suse.de -- force a feature configure won't accept without x11 in buildrequires
 Patch1:         feature-suse-do-autolaunch.patch
-# Patch-Feature-opensuse sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
+# PATCH-FEATURE-OPENSUSE sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
 Patch2:         feature-suse-refuse-manual-start-stop.patch
+
+BuildRequires:  alts
 BuildRequires:  audit-devel
 BuildRequires:  cmake
 BuildRequires:  libcap-ng-devel
@@ -52,16 +50,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsystemd) >= 209
+
 Requires(post): %{_libname} = %{version}
 Requires(post): diffutils
 Requires(pre):  permissions
-%if %{with libalternatives}
 Requires:       alts
-BuildRequires:  alts
-%else
-Requires(post): update-alternatives
-Requires(preun):update-alternatives
-%endif
 Provides:       dbus-launch
 %sysusers_requires
 %if %{with selinux}
@@ -157,25 +150,6 @@ done
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/dbus
 
-%if !0%{?usrmerged}
-# Link the binaries that were in /bin back to /bin for compat (maybe remove for SLE-16)
-# Currently required to make upower work together with systemd
-mkdir -p %{buildroot}/bin
-
-ln -sf /%{_bindir}/dbus-cleanup-sockets %{buildroot}/bin/dbus-cleanup-sockets
-ln -sf /%{_bindir}/dbus-daemon %{buildroot}/bin/dbus-daemon
-ln -sf /%{_bindir}/dbus-monitor %{buildroot}/bin/dbus-monitor
-ln -sf /%{_bindir}/dbus-send %{buildroot}/bin/dbus-send
-ln -sf /%{_bindir}/dbus-test-tool %{buildroot}/bin/dbus-test-tool
-ln -sf /%{_bindir}/dbus-update-activation-environment %{buildroot}/bin/dbus-update-activation-environment
-ln -sf /%{_bindir}/dbus-uuidgen %{buildroot}/bin/dbus-uuidgen
-%endif
-
-%if ! %{with libalternatives}
-# create symlinks for update-alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/dbus-launch %{buildroot}%{_bindir}/dbus-launch
-%else
 # create entries for libalternatives
 ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/dbus-launch
 mkdir -p %{buildroot}%{_datadir}/libalternatives/dbus-launch
@@ -183,7 +157,6 @@ cat > %{buildroot}%{_datadir}/libalternatives/dbus-launch/10.conf <<EOF
 binary=%{_bindir}/dbus-launch.nox11
 group=dbus-launch
 EOF
-%endif
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -252,15 +225,6 @@ fi
 %{_bindir}/dbus-test-tool
 %{_bindir}/dbus-update-activation-environment
 %{_bindir}/dbus-uuidgen
-%if !0%{?usrmerged}
-/bin/dbus-cleanup-sockets
-/bin/dbus-daemon
-/bin/dbus-monitor
-/bin/dbus-send
-/bin/dbus-test-tool
-/bin/dbus-update-activation-environment
-/bin/dbus-uuidgen
-%endif
 %{_mandir}/man1/dbus-cleanup-sockets.1%{?ext_man}
 %{_mandir}/man1/dbus-daemon.1%{?ext_man}
 %{_mandir}/man1/dbus-monitor.1%{?ext_man}
@@ -280,8 +244,6 @@ fi
 %{_prefix}/lib/tmpfiles.d/dbus.conf
 %{_unitdir}/dbus.service
 %{_unitdir}/dbus.socket
-# %%dir %%{_unitdir}/dbus.target.wants
-# %%{_unitdir}/dbus.target.wants/dbus.socket
 %dir %{_unitdir}/multi-user.target.wants
 %{_unitdir}/multi-user.target.wants/dbus.service
 %dir %{_unitdir}/sockets.target.wants
@@ -290,13 +252,9 @@ fi
 %{_userunitdir}/dbus.socket
 %dir %{_userunitdir}/sockets.target.wants
 %{_userunitdir}/sockets.target.wants/dbus.socket
-%if ! %{with libalternatives}
-%ghost %{_sysconfdir}/alternatives/dbus-launch
-%else
 %dir %{_datadir}/libalternatives
 %dir %{_datadir}/libalternatives/dbus-launch
 %{_datadir}/libalternatives/dbus-launch/10.conf
-%endif
 %{_bindir}/dbus-launch.nox11
 %{_bindir}/dbus-launch
 

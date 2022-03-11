@@ -23,21 +23,24 @@
 %global _backup %{_sysconfdir}/sysconfig/services.rpmbak.%{name}-%{version}-%{release}
 %bcond_without selinux
 Name:           dbus-1-devel-doc
-Version:        1.12.22
+Version:        1.14.0
 Release:        0
 Summary:        Developer documentation package for D-Bus
 License:        AFL-2.1 OR GPL-2.0-or-later
 URL:            https://dbus.freedesktop.org/
-Source0:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz
-Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz.asc
+Source0:        https://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.xz
+Source1:        https://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.xz.asc
 Source2:        dbus-1.keyring
 Source3:        baselibs.conf
 Source4:        dbus-1.desktop
+
+# PATCH-FEATURE-OPENSUSE feature-suse-log-deny.patch
 Patch0:         feature-suse-log-deny.patch
 # PATCH-FIX-OPENSUSE coolo@suse.de -- force a feature configure won't accept without x11 in buildrequires
 Patch1:         feature-suse-do-autolaunch.patch
-# Patch-Feature-opensuse sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
+# PATCH-FEATURE-OPENSUSE sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
 Patch2:         feature-suse-refuse-manual-start-stop.patch
+
 BuildRequires:  doxygen
 BuildRequires:  libexpat-devel >= 2.1.0
 BuildRequires:  xmlto
@@ -82,8 +85,9 @@ doxygen -u
 rm -Rf %{buildroot}/%{_mandir}/man1/*
 rmdir -p --ignore-fail-on-non-empty %{buildroot}/%{_mandir}/man1
 
-# Remove DTDs (shipped in devel subpackage)
+# Remove DTDs and xml catalog (shipped in devel subpackage)
 rm -Rf %{buildroot}/%{_datadir}/xml/dbus-1/*dtd
+rm -Rf %{buildroot}/%{_datadir}/xml/dbus-1/*.xml
 rmdir -p --ignore-fail-on-non-empty %{buildroot}/%{_datadir}/xml/dbus-1
 
 mkdir -p %{buildroot}/%{_datadir}/susehelp/meta/Development/Libraries/
