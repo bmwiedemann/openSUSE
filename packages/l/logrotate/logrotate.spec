@@ -16,6 +16,8 @@
 #
 
 
+%{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
+
 Name:           logrotate
 Version:        3.19.0
 Release:        0
@@ -27,9 +29,10 @@ Source0:        https://github.com/%{name}/%{name}/releases/download/%{version}/
 # SUSE specific logrotate configurations
 Source1:        logrotate.wtmp
 Source2:        logrotate.default
+Source3:        logrotate.service
 Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source100:      %{name}-rpmlintrc
-Patch0:         logrotate-3.19.0-systemd_add_home_env.patch
+Patch0:         logrotate-3.19.0-man_logrotate.patch
 BuildRequires:  acl
 BuildRequires:  libacl-devel
 BuildRequires:  pkgconfig
@@ -63,10 +66,10 @@ It manages plain files only and is not involved in systemd's journal rotation.
 
 %install
 %make_install
-mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/wtmp
-install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.conf
-install -D -m 0644 examples/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
+install -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/logrotate.d/wtmp
+install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/logrotate.conf
+install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 examples/%{name}.timer %{buildroot}%{_unitdir}/%{name}.timer
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
 
@@ -90,14 +93,18 @@ fi
 %service_del_postun %{name}.service %{name}.timer
 
 %files
+%if %{?suse_version} <= 1500
+%dir %{_distconfdir}
+%endif
+%dir %{_distconfdir}/logrotate.d
 %license COPYING
 %doc ChangeLog.md README.md
 %{_sbindir}/logrotate
 %{_sbindir}/rc%{name}
 %{_mandir}/man8/logrotate.8%{?ext_man}
 %{_mandir}/man5/logrotate.conf.5%{?ext_man}
-%config %{_sysconfdir}/logrotate.conf
-%config(noreplace) %{_sysconfdir}/logrotate.d/wtmp
+%{_distconfdir}/logrotate.conf
+%{_distconfdir}/logrotate.d/wtmp
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}.timer
 

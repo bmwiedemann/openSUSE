@@ -649,4 +649,25 @@
     <comment></comment>
     <requestid>945243</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>174549c108320ad9a30abe0b9e00568e</srcmd5>
+    <version>3.19.0</version>
+    <time>1647031199</time>
+    <user>dimstar_suse</user>
+    <comment>- Added own logrotate.service file in order to define a new order
+  of parsed config files:
+  /usr/etc/logrotate.conf   Default configuration file defined by
+                            the vendor.
+  /usr/etc/logrotate.d/*    Directory for additional configuration
+                            files defined by the vendor.
+  /etc/logrotate.conf       Default configuration file defined by
+                            the administrator. (optional)
+  /etc/logrotate.d/*        Directory for additional configuration
+                            files defined by the administrator.
+                            (optional)
+- drop logrotate-3.19.0-systemd_add_home_env.patch: 
+  - included in new logrotate.service
+- Adapted man page: logrotate-3.19.0-man_logrotate.patch</comment>
+    <requestid>960296</requestid>
+  </revision>
 </revisionlist>

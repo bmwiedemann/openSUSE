@@ -20,4 +20,4 @@ compresscmd /usr/bin/xz
 uncompresscmd /usr/bin/xzdec
 
 # RPM packages drop log rotation information into this directory
-include /etc/logrotate.d
+include /usr/etc/logrotate.d

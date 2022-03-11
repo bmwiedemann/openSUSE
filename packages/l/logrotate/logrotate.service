@@ -1,0 +1,39 @@
+[Unit]
+Description=Rotate log files
+Documentation=man:logrotate(8) man:logrotate.conf(5)
+RequiresMountsFor=/var/log
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sh -c "/usr/bin/systemctl set-environment etc_conf=" ; \
+   /bin/sh -c "if [ -f /etc/logrotate.conf ]; then /usr/bin/systemctl set-environment etc_conf=/etc/logrotate.conf; fi" ; \
+   /bin/sh -c "/usr/bin/systemctl set-environment etc_dir=" ; \
+   /bin/sh -c "if [ -d /etc/logrotate.d ]; then /usr/bin/systemctl set-environment etc_dir=/etc/logrotate.d; fi"
+ExecStart=/bin/sh -c "/usr/sbin/logrotate /usr/etc/logrotate.conf ${etc_conf} ${etc_dir}"
+
+# performance options
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+Environment=HOME=/root
+
+# hardening options
+#  details: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+#  no ProtectHome for userdir logs
+#  no PrivateNetwork for mail deliviery
+#  no NoNewPrivileges for third party rotate scripts
+#  no RestrictSUIDSGID for creating setgid directories
+LockPersonality=true
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=full
+RestrictNamespaces=true
+RestrictRealtime=true

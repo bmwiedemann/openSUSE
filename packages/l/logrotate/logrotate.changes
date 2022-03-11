@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb 24 10:36:07 UTC 2022 - Stefan Schubert <schubi@suse.de>
+
+- Added own logrotate.service file in order to define a new order
+  of parsed config files:
+  /usr/etc/logrotate.conf   Default configuration file defined by
+                            the vendor.
+  /usr/etc/logrotate.d/*    Directory for additional configuration
+                            files defined by the vendor.
+  /etc/logrotate.conf       Default configuration file defined by
+                            the administrator. (optional)
+  /etc/logrotate.d/*        Directory for additional configuration
+                            files defined by the administrator.
+                            (optional)
+- drop logrotate-3.19.0-systemd_add_home_env.patch: 
+  - included in new logrotate.service
+- Adapted man page: logrotate-3.19.0-man_logrotate.patch  
+
+-------------------------------------------------------------------
 Fri Jan  7 20:23:36 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 3.19.0:

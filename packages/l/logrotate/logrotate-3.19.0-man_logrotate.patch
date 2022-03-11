@@ -1,0 +1,40 @@
+diff -Naur logrotate-3.19.0.orig/logrotate.8.in logrotate-3.19.0/logrotate.8.in
+--- logrotate-3.19.0.orig/logrotate.8.in	2022-02-24 11:18:24.202811846 +0100
++++ logrotate-3.19.0/logrotate.8.in	2022-02-24 11:28:25.137690351 +0100
+@@ -48,6 +48,17 @@
+ is given on the command line, every file in that directory is used as
+ a config file.
+ .P
++If \fBlogrotate\fR is called via \fBsystemd\fR(1), following  order of
++parsed config files is defined in the \fIlogrotate.service\fR file:
++.TS
++tab(:);
++l l l.
++\fI/usr/etc/logrotate.conf\fR:Default configuration file defined by the vendor.
++\fI/usr/etc/logrotate.d/*\fR:Directory for additional configuration files defined by the vendor.
++\fI/etc/logrotate.conf\fR:Default configuration file defined by the administrator. (optional)
++\fI/etc/logrotate.d/*\fR:Directory for additional configuration files defined by the administrator. (optional)
++.TE
++.P
+ If no command line arguments are given, \fBlogrotate\fR will print
+ version and copyright information, along with a short usage summary.  If
+ any errors occur while rotating logs, \fBlogrotate\fR will exit with
+@@ -76,7 +87,7 @@
+ acquires a lock on the state file, if it cannot be acquired \fBlogrotate\fR
+ will exit with value 3.  The default state file is \fI@STATE_FILE_PATH@\fR.
+ If \fI/dev/null\fR is given as the state file, then \fBlogrotate\fR will
+-not try to write the state file.
++not try to lock or write the state file.
+ 
+ .TP
+ \fB\-\-skip-state-lock\fR
+@@ -752,7 +763,8 @@
+ tab(:);
+ l l l.
+ \fI@STATE_FILE_PATH@\fR:Default state file.
+-\fI/etc/logrotate.conf\fR:Configuration options.
++\fI/usr/etc/logrotate.conf\fR:Configuration options defined by the vendor.
++\fI/etc/logrotate.conf\fR:Configuration options defined by the administrator.
+ .TE
+ 
+ 
