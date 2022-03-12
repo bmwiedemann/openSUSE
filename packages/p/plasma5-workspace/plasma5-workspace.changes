@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Mar  8 18:10:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- Changes since 5.24.2:
+  * kcms/colors: Implement radio button layouts better
+  * kcms/colors: fix spacing between radio buttons and content
+  * [Battery Monitor] Only show charge threshold hint for power supply batteries (kde#451161)
+  * [Icons KCM] Give measure delegate a text
+  * wallpapers: Sort BackgroundListModel by title
+  * applets/digital-clock: Fix `Qt.formatDateTime` returns different date when minute changes (kde#436796)
+  * applets/systray: align applet labels with differing line counts in hidden view (kde#438347)
+  * Show panel config above other windows (kde#450794)
+  * Use current accent colour to set ColorDialog object in colour picker
+  * SystemDialog: Allow accepting the dialogs with the keyboard (kde#450223)
+  * applets/systemtray: Do not open context menu on mouse pressed for SNI (kde#409768)
+  * Revert "Fix overdraw on Wayland"
+  * startkde: Forward stdout/stderr of started processes
+  * SDDM theme: stop eliding people's names so aggressively (kde#450673)
+  * applets/digital-clock: Word-wrap date string for desktop representation (kde#450632)
+  * wrap completely the invariants timer in NDEBUG
+  * ScreenPool as the source of truth of QScreen info
+  * Always ensure there is an user selected (kde#450182)
+  * Prevent panel going out of screen boundaries
+  * applets/clipboard: Focus on text area when transition is done
+  * applets/clipboard: Fix highlight after exiting edit mode
+- Drop patches, now upstream:
+  * 0001-startkde-Forward-stdout-stderr-of-started-processes.patch
+- Restore compatibility with older kf5-filesystem
+
+-------------------------------------------------------------------
 Mon Mar  7 11:04:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)

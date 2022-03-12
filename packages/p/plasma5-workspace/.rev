@@ -1869,4 +1869,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Use %_libexecdir</comment>
     <requestid>960072</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>9ee34ab73e8b08b90471220bb73f019e</srcmd5>
+    <version>5.24.3</version>
+    <time>1647101705</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.3</comment>
+    <requestid>960896</requestid>
+  </revision>
 </revisionlist>

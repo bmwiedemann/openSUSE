@@ -29,7 +29,7 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -41,8 +41,6 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspa
 Source2:        plasma.keyring
 %endif
 Source3:        xprop-kde-full-session.desktop
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-startkde-Forward-stdout-stderr-of-started-processes.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -473,11 +471,20 @@ fi
 
 %config %{_kf5_configdir}/taskmanagerrulesrc
 %config %{_kf5_configdir}/plasmanotifyrc
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/ksmserver-logout-greeter
 %{_libexecdir}/plasma-changeicons
 %{_libexecdir}/baloorunner
 %{_libexecdir}/plasma-sourceenv.sh
 %{_libexecdir}/plasma-dbus-run-session-if-needed
+%else
+%dir %{_kf5_libdir}/libexec
+%{_kf5_libdir}/libexec/ksmserver-logout-greeter
+%{_kf5_libdir}/libexec/plasma-changeicons
+%{_kf5_libdir}/libexec/baloorunner
+%{_kf5_libdir}/libexec/plasma-sourceenv.sh
+%{_kf5_libdir}/libexec/plasma-dbus-run-session-if-needed
+%endif
 %{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf5_libdir}/kconf_update_bin/krunnerhistory
 %{_kf5_plugindir}/
@@ -540,11 +547,20 @@ fi
 %{_kf5_sharedir}/kpackage/kcms/kcm_translations
 # %%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %{_kf5_sharedir}/kpackage/kcms/kcm_desktoptheme
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %dir %{_libexecdir}/kauth
 %{_libexecdir}/kauth/fontinst
 %{_libexecdir}/kauth/fontinst_helper
 %{_libexecdir}/kauth/fontinst_x11
 %{_libexecdir}/kfontprint
+%else
+%dir %{_kf5_libdir}/libexec/kauth
+%{_kf5_libdir}/libexec/kauth/fontinst
+%{_kf5_libdir}/libexec/kauth/fontinst_helper
+%{_kf5_libdir}/libexec/kauth/fontinst_x11
+%{_kf5_libdir}/libexec/kfontprint
+%endif
+
 %exclude %{_kf5_libdir}/libkfontinst.so
 %{_kf5_libdir}/libkfontinst.so.*
 %exclude %{_kf5_libdir}/libkfontinstui.so
