@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 12 11:02:55 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.12
+  * force scroll by item
+
+-------------------------------------------------------------------
 Sat Jan 29 15:35:03 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - add subpackage kcm_fcitx5 and not auto install it for no KDE desktop

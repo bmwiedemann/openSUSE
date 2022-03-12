@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-configtool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-configtool
-Version:        5.0.10
+Version:        5.0.12
 Release:        0
 Summary:        Configuration tool for fcitx5
 License:        GPL-2.0-or-later
@@ -58,9 +58,9 @@ Configuration tool for fcitx5
 
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
 %package -n kcm_fcitx5
-Summary:  Configuration module for fcitx5
-Group:  System/I18n/Chinese
-Supplements: (fcitx5 and plasma5-workspace)
+Summary:        Configuration module for fcitx5
+Group:          System/I18n/Chinese
+Supplements:    (fcitx5 and plasma5-workspace)
 Provides:       kcm5-fcitx = %{version}
 Provides:       kf5-kcm-fcitx = %{version}
 Provides:       kf5-kcm-fcitx-icons = %{version}
