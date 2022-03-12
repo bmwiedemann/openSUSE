@@ -20,21 +20,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-columnize
-Version:        0.3.10
+Version:        0.3.11
 Release:        0
 License:        MIT
 Summary:        Format a simple (i.e. not nested) list into aligned columns
 URL:            https://github.com/rocky/pycolumnize
 Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/source/c/columnize/columnize-%{version}.tar.gz
-# Include test file missed from being included in source tarball gh#rocky/pycolumnize#29
-# https://raw.githubusercontent.com/rocky/pycolumnize/%%{version}/test_columnize.py
-Source1:        test_columnize.py
-# PATCH-FEATURE-OPENSUSE drop-nose-requirement.patch badshah400@gmail.com -- Drop requirement on outdated nose; we do not run tests anyway
-Patch0:         drop-nose-requirement.patch
-# PATCH-FIX-UPSTREAM python-columnize-no-mock.patch gh#rocky/pycolumnize#28 mcepl@suse.com
-# remove the need for external mock package
-Patch1:         python-columnize-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION For tests
@@ -49,9 +41,7 @@ BuildArch:      noarch
 Format a simple (i.e. not nested) list into aligned columns.
 
 %prep
-%setup -q -n columnize-%{version}
-cp %{SOURCE1} ./
-%autopatch -p1
+%autosetup -p1 -n columnize-%{version}
 
 %build
 %python_build
@@ -66,8 +56,7 @@ cp %{SOURCE1} ./
 %files %{python_files}
 %doc NEWS.md README.rst
 %license LICENSE
-%{python_sitelib}/%{modname}.py*
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
-%pycache_only %{python_sitelib}/__pycache__/*
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}*-info/
 
 %changelog

@@ -20,4 +20,23 @@
 </comment>
     <requestid>960173</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e64c8c037fe3eb72ec6eedf4f6b4e7b</srcmd5>
+    <version>0.3.11</version>
+    <time>1647101727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.11:
+  - store source-code module in a directory
+  - black files
+  - use pytest
+  - use __version__ for version number
+  - start using github workflows
+  - Bundle tests into tarball
+- Remove upstreamed patches:
+  - drop-nose-requirement.patch
+  - python-columnize-no-mock.patch
+  - test_columnize.py
+</comment>
+    <requestid>961194</requestid>
+  </revision>
 </revisionlist>

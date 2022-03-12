@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 12 09:14:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.3.11:
+  - store source-code module in a directory
+  - black files
+  - use pytest
+  - use __version__ for version number
+  - start using github workflows
+  - Bundle tests into tarball
+- Remove upstreamed patches:
+  - drop-nose-requirement.patch
+  - python-columnize-no-mock.patch
+  - test_columnize.py
+
+-------------------------------------------------------------------
 Tue Mar  8 10:13:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Rearrange and reapply patches.
