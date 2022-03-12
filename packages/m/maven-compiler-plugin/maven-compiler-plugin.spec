@@ -23,24 +23,21 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-compiler-plugin
-Version:        3.8.1
+Version:        3.10.1
 Release:        0
 Summary:        Maven Compiler Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/plugins/maven-compiler-plugin
-Source0:        http://archive.apache.org/dist/maven/plugins/%{base_name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/plugins/maven-compiler-plugin
+Source0:        https://dlcdn.apache.org/maven/plugins/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
-Patch1:         0001-plexus-languages-1.0.patch
-Patch2:         0002-MCOMPILER-359-Fix-for-NPE.patch
-
-BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  maven-shared-incremental
 BuildRequires:  maven-shared-utils
+BuildRequires:  objectweb-asm
 BuildRequires:  plexus-compiler
 BuildRequires:  plexus-languages
 BuildRequires:  unzip
@@ -53,6 +50,7 @@ Name:           %{base_name}-bootstrap
 BuildRequires:  ant
 %else
 Name:           %{base_name}
+BuildRequires:  fdupes
 BuildRequires:  xmvn
 BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-jar-plugin)
@@ -88,10 +86,10 @@ API documentation for %{name}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
 
 %pom_remove_dep :::test
+
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %build
 %if %{with bootstrap}
@@ -104,6 +102,7 @@ build-jar-repository -s lib \
 	maven-plugin-tools/maven-plugin-annotations \
 	maven-shared-incremental/maven-shared-incremental \
 	maven-shared-utils/maven-shared-utils \
+	objectweb-asm/asm-all \
 	plexus-compiler/plexus-compiler-api \
 	plexus-compiler/plexus-compiler-javac \
 	plexus-compiler/plexus-compiler-manager \
@@ -122,7 +121,9 @@ xmvn --batch-mode --offline \
 
 %install
 %mvn_install
+%if %{without bootstrap}
 %fdupes -s %{buildroot}%{_javadocdir}
+%endif
 
 %files -f .mfiles
 %license LICENSE NOTICE
