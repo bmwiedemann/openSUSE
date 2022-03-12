@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  8 18:09:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- Changes since 5.24.2:
+  * flatpak: Do not emit about upgradeable packages that were just created
+  * flatpak: Use the sources map to check if a resource is already being used
+  * Set textFormat in Label to StyledText
+  * Fix build by explicitly creating a QUrl from QString
+- Restore compatibility with older kf5-filesystem
+
+-------------------------------------------------------------------
 Mon Mar  7 10:21:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
