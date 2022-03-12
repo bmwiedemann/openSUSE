@@ -32,17 +32,18 @@ Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
 Patch0:         0001-spa-json-fix-va_list-APIs-for-different-architectures.patch
 Patch1:         0001-restore-stream-do-not-crash-if-config_properties-is-nil.patch
+Patch2:         0002-policy-bluetooth-fix-string.find-crash-with-nil-string.patch
+Patch3:         0003-si-audio-adapter-relax-format-parsing.patch
+# PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch100:       reduce-meson-required-version.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
-BuildRequires:  python3-lxml
 # /docs
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pipewire >= %{pipewire_minimum_version}
-#!BuildIgnore:    pipewire-session-manager
 BuildRequires:  pipewire-spa-plugins-0_2 >= %{pipewire_minimum_version}
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -58,16 +59,17 @@ BuildRequires:  pkgconfig(libpipewire-0.3) >= %{pipewire_minimum_version}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(systemd)
+#!BuildIgnore:  pipewire-session-manager
+# Setup ALSA devices if pipewire handles pulseaudio connections.
+Requires:       (%{name}-audio if pipewire-pulseaudio)
 Requires:       pipewire >= %{pipewire_minimum_version}
+Provides:       pipewire-session-manager
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-Provides:       pipewire-session-manager
-# Setup ALSA devices if pipewire handles pulseaudio connections.
-Requires:       (%{name}-audio if pipewire-pulseaudio)
 
 %description
 WirePlumber is a modular session / policy manager for PipeWire and
@@ -80,8 +82,8 @@ Summary:        Session / policy manager implementation for PipeWire (audio supp
 Group:          Development/Libraries/C and C++
 Requires:       %{libwireplumber} = %{version}
 Requires:       %{name} = %{version}
-Conflicts:      pulseaudio
 Recommends:     pipewire-pulseaudio
+Conflicts:      pulseaudio
 
 %description audio
 WirePlumber is a modular session / policy manager for PipeWire and

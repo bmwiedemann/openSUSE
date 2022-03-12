@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 10 12:14:13 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add patch from upstream to fix a crash on tty switch
+  (glfo#pipewire/wireplumber#193):
+  * 0002-policy-bluetooth-fix-string.find-crash-with-nil-string.patch
+- Add patch from upstream to fix issues with PulseAudio support with
+  PipeWire 0.3.48+ (glfo#pipewire/pipewire#2189):
+  * 0003-si-audio-adapter-relax-format-parsing.patch
+- Some spec clean-up.
+
+-------------------------------------------------------------------
 Fri Feb 11 08:09:05 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix va_list APIs for ppc64le and
