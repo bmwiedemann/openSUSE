@@ -24,7 +24,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without released
 Name:           kwin5
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -39,8 +39,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version
 Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Revert-Remove-mysterious-s_cursorUpdateBlocking-bool.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11
@@ -326,9 +324,15 @@ This package provides development files.
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwin_effects
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwinrules
 %{_kf5_sharedir}/kpackage/kcms/kcm_virtualkeyboard
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kwin-applywindowdecoration
 %{_libexecdir}/kwin_killer_helper
 %{_libexecdir}/kwin_rules_dialog
+%else
+%{_kf5_libdir}/libexec/kwin-applywindowdecoration
+%{_kf5_libdir}/libexec/kwin_killer_helper
+%{_kf5_libdir}/libexec/kwin_rules_dialog
+%endif
 %{_userunitdir}/plasma-kwin_x11.service
 %{_userunitdir}/plasma-kwin_wayland.service
 

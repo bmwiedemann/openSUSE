@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar  8 18:09:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- Changes since 5.24.2:
+  * backends/drm: don't change the configuration while KWin is terminating
+  * backends/drm: wait for pending pageflips before doing a modeset
+  * output changes: handle to-be-enabled outputs first
+  * platform: check all outputs, not only enabled ones for the enabled flag
+  * backends/drm: fix recording with direct scanout (kde#450943)
+  * backends/drm: fix multi gpu (kde#450737)
+  * backends/drm: fix format choosing (kde#450779)
+  * inputmethod: fix placing the virtual keyboard at the bottom
+  * Revert "Remove mysterious s_cursorUpdateBlocking boolean flag in pointer_input.cpp" (kde#449273)
+- Drop patches, now upstream:
+  * 0001-Revert-Remove-mysterious-s_cursorUpdateBlocking-bool.patch
+- Restore compatibility with older kf5-filesystem
+
+-------------------------------------------------------------------
 Mon Mar  7 10:58:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
