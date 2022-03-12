@@ -17,14 +17,12 @@
 
 
 Name:           fcitx5-lua
-Version:        5.0.5
+Version:        5.0.7
 Release:        0
 Summary:        Lua support for fcitx
 License:        LGPL-2.1-or-later
 URL:            https://github.com/fcitx/fcitx5-lua
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-#PATCH-FIX-UPSTREAM dlopen liblua.so.5.4
-Patch:          %{name}-5.0.5-soname.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -52,7 +50,6 @@ This package provides development files for fcitx5-lua.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 %cmake
@@ -67,7 +64,7 @@ This package provides development files for fcitx5-lua.
 %doc README.md
 %dir %{_fcitx5_datadir}/lua
 %dir %{_fcitx5_datadir}/lua/imeapi
-%{_fcitx5_libdir}/luaaddonloader.so
+%{_fcitx5_libdir}/libluaaddonloader.so
 %{_fcitx5_addondir}/imeapi.conf
 %{_fcitx5_addondir}/luaaddonloader.conf
 %{_fcitx5_datadir}/lua/imeapi/imeapi.lua

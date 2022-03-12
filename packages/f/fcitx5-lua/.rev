@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>954430</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a7187a01683e0a38beb29ae8b8cb3c0</srcmd5>
+    <version>5.0.7</version>
+    <time>1647101727</time>
+    <user>dimstar_suse</user>
+    <comment>- update version 5.0.7
+  * local im should be False by default
+  * Only resolve lua soname if USE_DLOPEN
+  * Use the same old trick in fcitx 4 to resolve the SONAME and
+    use soname for dlopen
+  * Add config component
+  * Do not load lua library when dlopen is not used. This should
+    fix for static lua library
+  * Add include protection to base.lua.h.in
+- drop fcitx5-lua-5.0.5-soname.patch, upstreamed
+</comment>
+    <requestid>961196</requestid>
+  </revision>
 </revisionlist>
