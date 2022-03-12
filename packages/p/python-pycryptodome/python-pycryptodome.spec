@@ -94,7 +94,9 @@ export LC_ALL=en_US.UTF-8
 
 %check
 export LC_ALL=en_US.UTF-8
-%python_exec setup.py test
+%{python_expand pushd %{buildroot}%{$python_sitearch}
+PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m Crypto.SelfTest
+popd}
 
 %files %{python_files}
 %license LICENSE.rst

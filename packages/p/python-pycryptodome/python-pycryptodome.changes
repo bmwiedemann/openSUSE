@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  9 13:31:35 UTC 2022 - pgajdos@suse.com
+
+- do not use setup.py test construct
+  https://trello.com/c/me9Z4sIv/121-setuppy-test-leftovers
+
+-------------------------------------------------------------------
 Tue Feb 15 08:52:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.1:

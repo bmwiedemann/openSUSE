@@ -222,4 +222,12 @@
     than the ECC key.</comment>
     <requestid>954656</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a97356cb4cd764b700c1eeeb2b58efdd</srcmd5>
+    <version>3.14.1</version>
+    <time>1647101673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961035</requestid>
+  </revision>
 </revisionlist>
