@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kde-gtk-config5
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -105,7 +105,11 @@ the GTK3 application style from within the application style KCM
 
 %files gtk3
 %license LICENSES/*
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/gtk3_preview
+%else
+%{_kf5_libdir}/libexec/gtk3_preview
+%endif
 %dir %{_kf5_sharedir}/themes/Breeze/
 %{_kf5_sharedir}/themes/Breeze/window_decorations.css
 
