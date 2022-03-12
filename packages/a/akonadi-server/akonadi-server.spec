@@ -34,6 +34,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source99:       akonadi-server-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Apparmor-Also-look-in-usr-libexec.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  extra-cmake-modules >= %{kf5_version}

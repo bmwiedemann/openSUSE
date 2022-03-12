@@ -757,4 +757,13 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Gear 21.12.3</comment>
     <requestid>958766</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>b49ba15da3f4168df9c4dbbc94334d0a</srcmd5>
+    <version>21.12.3</version>
+    <time>1647101677</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch:
+  * 0001-Apparmor-Also-look-in-usr-libexec.patch</comment>
+    <requestid>961054</requestid>
+  </revision>
 </revisionlist>
