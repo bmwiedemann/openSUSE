@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  8 18:10:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- Changes since 5.24.2:
+  * Improved backlight devices selection (kde#399646)
+- Restore compatibility with older kf5-filesystem
+
+-------------------------------------------------------------------
 Mon Mar  7 11:06:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
