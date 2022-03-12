@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  8 18:09:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- Changes since 5.24.2:
+  * Fixed computational bug for bar chart spacing (kde#449868)
+- Restore compatibility with older kf5-filesystem
+
+-------------------------------------------------------------------
 Mon Mar  7 10:59:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
