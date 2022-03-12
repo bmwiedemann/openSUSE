@@ -2,7 +2,7 @@ Index: synapse/synapse/python_dependencies.py
 ===================================================================
 --- synapse.orig/synapse/python_dependencies.py
 +++ synapse/synapse/python_dependencies.py
-@@ -76,7 +76,7 @@ REQUIREMENTS = [
+@@ -69,7 +69,7 @@ REQUIREMENTS = [
      "msgpack>=0.5.2",
      "phonenumbers>=8.2.0",
      # we use GaugeHistogramMetric, which was added in prom-client 0.4.0.
@@ -11,13 +11,13 @@ Index: synapse/synapse/python_dependencies.py
      # we use `order`, which arrived in attrs 19.2.0.
      # Note: 21.1.0 broke `/sync`, see #9936
      "attrs>=19.2.0,!=21.1.0",
-@@ -86,7 +86,8 @@ REQUIREMENTS = [
+@@ -79,7 +79,8 @@ REQUIREMENTS = [
      "typing-extensions>=3.7.4",
      # We enforce that we have a `cryptography` version that bundles an `openssl`
      # with the latest security patches.
 -    "cryptography>=3.4.7",
 +    # opensuse we do not bump here as we do not use the intree copy
 +    "cryptography",
-     "ijson>=3.1",
+     # ijson 3.1.4 fixes a bug with "." in property names
+     "ijson>=3.1.4",
      "matrix-common~=1.1.0",
- ]

@@ -50,7 +50,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.53.0
+Version:        1.54.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -107,7 +107,7 @@ BuildRequires:  %{use_python}-frozendict >= 2.1.3
 %requires_peq   %{use_python}-frozendict
 BuildRequires:  %{use_python}-idna >= 2.5
 %requires_peq   %{use_python}-idna
-BuildRequires:  %{use_python}-ijson >= 3.1
+BuildRequires:  %{use_python}-ijson >= 3.1.4
 %requires_peq   %{use_python}-ijson
 BuildRequires:  %{use_python}-jsonschema >= 3.0.0
 %requires_peq   %{use_python}-jsonschema
@@ -153,6 +153,8 @@ BuildRequires:  %{use_python}-unpaddedbase64 >= 1.1.0
 BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= 0.1
 %requires_peq   %{use_python}-matrix-synapse-ldap3
 %endif
+BuildRequires:  %{use_python}-packaging >= 16.1
+%requires_peq   %{use_python}-packaging
 BuildRequires:  %{use_python}-psycopg2 >= 2.8
 %requires_peq   %{use_python}-psycopg2
 BuildRequires:  %{use_python}-pysaml2 >= 4.5.0
