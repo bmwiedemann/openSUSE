@@ -23,7 +23,7 @@ Name:           drkonqi5
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
@@ -92,7 +92,11 @@ The KDE Crash Handler gives the user feedback if a program has crashed.
 %{_kf5_sharedir}/drkonqi/
 %{_kf5_applicationsdir}/org.kde.drkonqi.desktop
 %{_kf5_debugdir}/drkonqi.categories
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/drkonqi
+%else
+%{_kf5_libdir}/libexec/drkonqi
+%endif
 
 %if %{with released}
 %files lang -f %{name}.lang
