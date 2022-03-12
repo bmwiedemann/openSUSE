@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kactivitymanagerd
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
@@ -124,7 +124,11 @@ Provides translations to the package %{name}.
 %{_kf5_sharedir}/krunner/dbusplugins/plasma-runnners-activities.desktop
 %{_kf5_sharedir}/dbus-1/services/org.kde.ActivityManager.service
 %{_kf5_debugdir}/kactivitymanagerd.categories
-%{_libexecdir}/kactivitymanagerd
 %{_userunitdir}/plasma-kactivitymanagerd.service
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
+%{_libexecdir}/kactivitymanagerd
+%else
+%{_kf5_libdir}/libexec/kactivitymanagerd
+%endif
 
 %changelog
