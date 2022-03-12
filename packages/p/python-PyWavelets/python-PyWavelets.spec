@@ -21,7 +21,7 @@
 # no python36-numpy in Tumbleweed (NEP 29)
 %define         skip_python36 1
 Name:           python-PyWavelets
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        PyWavelets is a Python wavelet transforms module
 License:        MIT
