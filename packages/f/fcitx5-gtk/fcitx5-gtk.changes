@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 12 09:51:57 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.13
+  * Revert to use the shared font map
+  * Keep gtkinputwindow screen to be same as the client_window
+    otherwise for application that opens multiple Gdk display,
+    it may cause issue
+  * check if prgname is not null
+  * Implement ProcessKeyEventBatch in gclient
+
+-------------------------------------------------------------------
 Sat Feb 12 15:11:14 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.12
