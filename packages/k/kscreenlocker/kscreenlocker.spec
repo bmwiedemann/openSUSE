@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kscreenlocker
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
@@ -138,8 +138,13 @@ exit 0
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_sharedir}/kpackage/kcms/kcm_screenlocker
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kcheckpass
 %{_libexecdir}/kscreenlocker_greet
+%else
+%{_kf5_libdir}/libexec/kcheckpass
+%{_kf5_libdir}/libexec/kscreenlocker_greet
+%endif
 
 %files -n libKScreenLocker5
 %license COPYING*

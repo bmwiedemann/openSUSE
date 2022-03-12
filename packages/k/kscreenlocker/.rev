@@ -954,4 +954,12 @@
     <comment>Use %_libexecdir</comment>
     <requestid>960079</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>940a9466b1d501f3b73225de258dfacb</srcmd5>
+    <version>5.24.3</version>
+    <time>1647101690</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.3</comment>
+    <requestid>960867</requestid>
+  </revision>
 </revisionlist>
