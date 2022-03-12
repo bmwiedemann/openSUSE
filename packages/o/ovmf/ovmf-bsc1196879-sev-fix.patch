@@ -1,0 +1,793 @@
+From de463163d9f6d3c5dc6b55ff35d1e5676e0e1b9f Mon Sep 17 00:00:00 2001
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Wed, 16 Feb 2022 15:00:57 +0800
+Subject: [PATCH 1/3] OvmfPkg/AmdSev: reserve snp pages
+
+The SNP patch series updated the OvmfPkgX64 build but forgot the AmdSev
+variant, resulting in a broken OvmfSevMetadata table.
+
+Fixes: cca9cd3dd6bf ("OvmfPkg: reserve CPUID page")
+Fixes: 707c71a01b9d ("OvmfPkg: reserve SNP secrets page")
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Brijesh Singh <brijesh.singh@amd.com>
+Acked-by: Jiewen Yao <jiewen.yao@intel.com>
+---
+ OvmfPkg/AmdSev/AmdSevX64.fdf | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/OvmfPkg/AmdSev/AmdSevX64.fdf b/OvmfPkg/AmdSev/AmdSevX64.fdf
+index 14b5b55..31f2be6 100644
+--- a/OvmfPkg/AmdSev/AmdSevX64.fdf
++++ b/OvmfPkg/AmdSev/AmdSevX64.fdf
+@@ -68,6 +68,12 @@ gUefiOvmfPkgTokenSpaceGuid.PcdQemuHashTableBase|gUefiOvmfPkgTokenSpaceGuid.PcdQe
+ 0x00D000|0x001000
+ gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupBase|gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecGhcbBackupSize
+ 
++0x00E000|0x001000
++gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSnpSecretsBase|gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSnpSecretsSize
++
++0x00F000|0x001000
++gUefiOvmfPkgTokenSpaceGuid.PcdOvmfCpuidBase|gUefiOvmfPkgTokenSpaceGuid.PcdOvmfCpuidSize
++
+ 0x010000|0x010000
+ gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecPeiTempRamBase|gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecPeiTempRamSize
+ 
+-- 
+2.12.3
+
+
+From 63c50d3ff2854a76432b752af4f2a76f33ff1974 Mon Sep 17 00:00:00 2001
+From: Brijesh Singh <brijesh.singh@amd.com>
+Date: Mon, 21 Feb 2022 22:59:13 +0800
+Subject: [PATCH 2/3] OvmfPkg/ResetVector: cache the SEV status MSR value
+ in workarea
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3582
+
+In order to probe the SEV feature the BaseMemEncryptLib and Reset vector
+reads the SEV_STATUS MSR. Cache the value on the first read in the
+workarea. In the next patches the value saved in the workarea will
+be used by the BaseMemEncryptLib. This not only eliminates the extra
+MSR reads it also helps cleaning up the code in BaseMemEncryptLib.
+
+Cc: Min Xu <min.m.xu@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Tom Lendacky <thomas.lendacky@amd.com>
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Erdem Aktas <erdemaktas@google.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Brijesh Singh <brijesh.singh@amd.com>
+Acked-by: Jiewen Yao <jiewen.yao@intel.com>
+---
+ OvmfPkg/Include/WorkArea.h                  | 12 +++++++--
+ OvmfPkg/ResetVector/Ia32/AmdSev.asm         | 38 +++++++++++++++++------------
+ OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm |  3 ++-
+ OvmfPkg/ResetVector/ResetVector.nasmb       |  3 +++
+ OvmfPkg/Sec/AmdSev.c                        |  2 +-
+ 5 files changed, 39 insertions(+), 19 deletions(-)
+
+diff --git a/OvmfPkg/Include/WorkArea.h b/OvmfPkg/Include/WorkArea.h
+index ce60d97..d982e02 100644
+--- a/OvmfPkg/Include/WorkArea.h
++++ b/OvmfPkg/Include/WorkArea.h
+@@ -46,12 +46,20 @@ typedef struct _CONFIDENTIAL_COMPUTING_WORK_AREA_HEADER {
+ // any changes must stay in sync with its usage.
+ //
+ typedef struct _SEC_SEV_ES_WORK_AREA {
+-  UINT8     SevEsEnabled;
+-  UINT8     Reserved1[7];
++  //
++  // Hold the SevStatus MSR value read by OvmfPkg/ResetVector/Ia32/AmdSev.c
++  //
++  UINT64    SevStatusMsrValue;
+ 
+   UINT64    RandomData;
+ 
+   UINT64    EncryptionMask;
++
++  //
++  // Indicator that the VC handler is called. It is used during the SevFeature
++  // detection in OvmfPkg/ResetVector/Ia32/AmdSev.c
++  //
++  UINT8     ReceivedVc;
+ } SEC_SEV_ES_WORK_AREA;
+ 
+ //
+diff --git a/OvmfPkg/ResetVector/Ia32/AmdSev.asm b/OvmfPkg/ResetVector/Ia32/AmdSev.asm
+index 1f827da..864d683 100644
+--- a/OvmfPkg/ResetVector/Ia32/AmdSev.asm
++++ b/OvmfPkg/ResetVector/Ia32/AmdSev.asm
+@@ -157,8 +157,9 @@ SevClearPageEncMaskForGhcbPage:
+     jnz       SevClearPageEncMaskForGhcbPageExit
+ 
+     ; Check if SEV-ES is enabled
+-    cmp       byte[SEV_ES_WORK_AREA], 1
+-    jnz       SevClearPageEncMaskForGhcbPageExit
++    mov       ecx, 1
++    bt        [SEV_ES_WORK_AREA_STATUS_MSR], ecx
++    jnc       SevClearPageEncMaskForGhcbPageExit
+ 
+     ;
+     ; The initial GHCB will live at GHCB_BASE and needs to be un-encrypted.
+@@ -219,12 +220,16 @@ GetSevCBitMaskAbove31Exit:
+ ; If SEV is disabled then EAX will be zero.
+ ;
+ CheckSevFeatures:
+-    ; Set the first byte of the workarea to zero to communicate to the SEC
+-    ; phase that SEV-ES is not enabled. If SEV-ES is enabled, the CPUID
+-    ; instruction will trigger a #VC exception where the first byte of the
+-    ; workarea will be set to one or, if CPUID is not being intercepted,
+-    ; the MSR check below will set the first byte of the workarea to one.
+-    mov     byte[SEV_ES_WORK_AREA], 0
++    ;
++    ; Clear the workarea, if SEV is enabled then later part of routine
++    ; will populate the workarea fields.
++    ;
++    mov    ecx, SEV_ES_WORK_AREA_SIZE
++    mov    eax, SEV_ES_WORK_AREA
++ClearSevEsWorkArea:
++    mov    byte [eax], 0
++    inc    eax
++    loop   ClearSevEsWorkArea
+ 
+     ;
+     ; Set up exception handlers to check for SEV-ES
+@@ -265,6 +270,10 @@ CheckSevFeatures:
+     ; Set the work area header to indicate that the SEV is enabled
+     mov     byte[WORK_AREA_GUEST_TYPE], 1
+ 
++    ; Save the SevStatus MSR value in the workarea
++    mov     [SEV_ES_WORK_AREA_STATUS_MSR], eax
++    mov     [SEV_ES_WORK_AREA_STATUS_MSR + 4], edx
++
+     ; Check for SEV-ES memory encryption feature:
+     ; CPUID  Fn8000_001F[EAX] - Bit 3
+     ;   CPUID raises a #VC exception if running as an SEV-ES guest
+@@ -280,10 +289,6 @@ CheckSevFeatures:
+     bt        eax, 1
+     jnc       GetSevEncBit
+ 
+-    ; Set the first byte of the workarea to one to communicate to the SEC
+-    ; phase that SEV-ES is enabled.
+-    mov       byte[SEV_ES_WORK_AREA], 1
+-
+ GetSevEncBit:
+     ; Get pte bit position to enable memory encryption
+     ; CPUID Fn8000_001F[EBX] - Bits 5:0
+@@ -313,7 +318,10 @@ NoSev:
+     ;
+     ; Perform an SEV-ES sanity check by seeing if a #VC exception occurred.
+     ;
+-    cmp       byte[SEV_ES_WORK_AREA], 0
++    ; If SEV-ES is enabled, the CPUID instruction will trigger a #VC exception
++    ; where the RECEIVED_VC offset in the workarea will be set to one.
++    ;
++    cmp       byte[SEV_ES_WORK_AREA_RECEIVED_VC], 0
+     jz        NoSevPass
+ 
+     ;
+@@ -407,9 +415,9 @@ SevEsIdtVmmComm:
+     ; If we're here, then we are an SEV-ES guest and this
+     ; was triggered by a CPUID instruction
+     ;
+-    ; Set the first byte of the workarea to one to communicate that
++    ; Set the recievedVc field in the workarea to communicate that
+     ; a #VC was taken.
+-    mov     byte[SEV_ES_WORK_AREA], 1
++    mov     byte[SEV_ES_WORK_AREA_RECEIVED_VC], 1
+ 
+     pop     ecx                     ; Error code
+     cmp     ecx, 0x72               ; Be sure it was CPUID
+diff --git a/OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm b/OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm
+index eb35466..c5c683e 100644
+--- a/OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm
++++ b/OvmfPkg/ResetVector/Ia32/Flat32ToFlat64.asm
+@@ -42,7 +42,8 @@ Transition32FlatTo64Flat:
+     ;
+     xor     ebx, ebx
+ 
+-    cmp     byte[SEV_ES_WORK_AREA], 0
++    mov     ecx, 1
++    bt      [SEV_ES_WORK_AREA_STATUS_MSR], ecx
+     jz      EnablePaging
+ 
+     ;
+diff --git a/OvmfPkg/ResetVector/ResetVector.nasmb b/OvmfPkg/ResetVector/ResetVector.nasmb
+index cc36474..9421f48 100644
+--- a/OvmfPkg/ResetVector/ResetVector.nasmb
++++ b/OvmfPkg/ResetVector/ResetVector.nasmb
+@@ -100,8 +100,11 @@
+   %define GHCB_BASE (FixedPcdGet32 (PcdOvmfSecGhcbBase))
+   %define GHCB_SIZE (FixedPcdGet32 (PcdOvmfSecGhcbSize))
+   %define SEV_ES_WORK_AREA (FixedPcdGet32 (PcdSevEsWorkAreaBase))
++  %define SEV_ES_WORK_AREA_SIZE 25
++  %define SEV_ES_WORK_AREA_STATUS_MSR (FixedPcdGet32 (PcdSevEsWorkAreaBase))
+   %define SEV_ES_WORK_AREA_RDRAND (FixedPcdGet32 (PcdSevEsWorkAreaBase) + 8)
+   %define SEV_ES_WORK_AREA_ENC_MASK (FixedPcdGet32 (PcdSevEsWorkAreaBase) + 16)
++  %define SEV_ES_WORK_AREA_RECEIVED_VC (FixedPcdGet32 (PcdSevEsWorkAreaBase) + 24)
+   %define SEV_ES_VC_TOP_OF_STACK (FixedPcdGet32 (PcdOvmfSecPeiTempRamBase) + FixedPcdGet32 (PcdOvmfSecPeiTempRamSize))
+   %define SEV_SNP_SECRETS_BASE  (FixedPcdGet32 (PcdOvmfSnpSecretsBase))
+   %define SEV_SNP_SECRETS_SIZE  (FixedPcdGet32 (PcdOvmfSnpSecretsSize))
+diff --git a/OvmfPkg/Sec/AmdSev.c b/OvmfPkg/Sec/AmdSev.c
+index 499d0c2..d8fd356 100644
+--- a/OvmfPkg/Sec/AmdSev.c
++++ b/OvmfPkg/Sec/AmdSev.c
+@@ -278,7 +278,7 @@ SevEsIsEnabled (
+ 
+   SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *)FixedPcdGet32 (PcdSevEsWorkAreaBase);
+ 
+-  return (SevEsWorkArea->SevEsEnabled != 0);
++  return ((SevEsWorkArea->SevStatusMsrValue & BIT1) != 0);
+ }
+ 
+ /**
+-- 
+2.12.3
+
+
+From f1d1c337e7c0575da7fd248b2dd9cffc755940df Mon Sep 17 00:00:00 2001
+From: Brijesh Singh <brijesh.singh@amd.com>
+Date: Mon, 21 Feb 2022 22:59:14 +0800
+Subject: [PATCH 3/3] OvmfPkg/BaseMemEncryptLib: use the SEV_STATUS MSR
+ value from workarea
+
+BZ: https://bugzilla.tianocore.org/show_bug.cgi?id=3582
+
+Improve the MemEncryptSev{Es,Snp}IsEnabled() to use the SEV_STATUS MSR
+value saved in the workarea. Since workarea is valid until the PEI phase,
+so, for the Dxe phase use the PcdConfidentialComputingGuestAttr to
+determine which SEV technology is enabled.
+
+Cc: Min Xu <min.m.xu@intel.com>
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Cc: Tom Lendacky <thomas.lendacky@amd.com>
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Erdem Aktas <erdemaktas@google.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Brijesh Singh <brijesh.singh@amd.com>
+Acked-by: Jiewen Yao <jiewen.yao@intel.com>
+---
+ .../BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf   |   1 +
+ .../DxeMemEncryptSevLibInternal.c                  | 141 ++++++++++-----------
+ .../BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf   |   1 +
+ .../PeiMemEncryptSevLibInternal.c                  | 141 +++++++--------------
+ .../BaseMemEncryptSevLib/SecMemEncryptSevLib.inf   |   1 +
+ .../SecMemEncryptSevLibInternal.c                  |  84 ++++++------
+ 6 files changed, 156 insertions(+), 213 deletions(-)
+
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+index f613bb3..35b7d51 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLib.inf
+@@ -58,3 +58,4 @@
+ 
+ [Pcd]
+   gEfiMdeModulePkgTokenSpaceGuid.PcdPteMemoryEncryptionAddressOrMask
++  gEfiMdePkgTokenSpaceGuid.PcdConfidentialComputingGuestAttr
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c
+index 15fcd55..4aba007 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/DxeMemEncryptSevLibInternal.c
+@@ -16,83 +16,84 @@
+ #include <Register/Amd/Msr.h>
+ #include <Register/Cpuid.h>
+ #include <Uefi/UefiBaseType.h>
++#include <ConfidentialComputingGuestAttr.h>
+ 
+-STATIC BOOLEAN  mSevStatus        = FALSE;
+-STATIC BOOLEAN  mSevEsStatus      = FALSE;
+-STATIC BOOLEAN  mSevSnpStatus     = FALSE;
+-STATIC BOOLEAN  mSevStatusChecked = FALSE;
+-
++STATIC UINT64   mCurrentAttr            = 0;
++STATIC BOOLEAN  mCurrentAttrRead        = FALSE;
+ STATIC UINT64   mSevEncryptionMask      = 0;
+ STATIC BOOLEAN  mSevEncryptionMaskSaved = FALSE;
+ 
+ /**
+-  Reads and sets the status of SEV features.
++  The function check if the specified Attr is set.
++
++  @param[in]  CurrentAttr   The current attribute.
++  @param[in]  Attr          The attribute to check.
+ 
+-  **/
++  @retval  TRUE      The specified Attr is set.
++  @retval  FALSE     The specified Attr is not set.
++
++**/
+ STATIC
+-VOID
+-EFIAPI
+-InternalMemEncryptSevStatus (
+-  VOID
++BOOLEAN
++AmdMemEncryptionAttrCheck (
++  IN  UINT64                             CurrentAttr,
++  IN  CONFIDENTIAL_COMPUTING_GUEST_ATTR  Attr
+   )
+ {
+-  UINT32                            RegEax;
+-  MSR_SEV_STATUS_REGISTER           Msr;
+-  CPUID_MEMORY_ENCRYPTION_INFO_EAX  Eax;
+-  BOOLEAN                           ReadSevMsr;
+-  UINT64                            EncryptionMask;
+-
+-  ReadSevMsr = FALSE;
+-
+-  EncryptionMask = PcdGet64 (PcdPteMemoryEncryptionAddressOrMask);
+-  if (EncryptionMask != 0) {
+-    //
+-    // The MSR has been read before, so it is safe to read it again and avoid
+-    // having to validate the CPUID information.
+-    //
+-    ReadSevMsr = TRUE;
+-  } else {
+-    //
+-    // Check if memory encryption leaf exist
+-    //
+-    AsmCpuid (CPUID_EXTENDED_FUNCTION, &RegEax, NULL, NULL, NULL);
+-    if (RegEax >= CPUID_MEMORY_ENCRYPTION_INFO) {
++  switch (Attr) {
++    case CCAttrAmdSev:
+       //
+-      // CPUID Fn8000_001F[EAX] Bit 1 (Sev supported)
++      // SEV is automatically enabled if SEV-ES or SEV-SNP is active.
+       //
+-      AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, &Eax.Uint32, NULL, NULL, NULL);
++      return CurrentAttr >= CCAttrAmdSev;
++    case CCAttrAmdSevEs:
++      //
++      // SEV-ES is automatically enabled if SEV-SNP is active.
++      //
++      return CurrentAttr >= CCAttrAmdSevEs;
++    case CCAttrAmdSevSnp:
++      return CurrentAttr == CCAttrAmdSevSnp;
++    default:
++      return FALSE;
++  }
++}
++
++/**
++  Check if the specified confidential computing attribute is active.
++
++  @param[in]  Attr          The attribute to check.
+ 
+-      if (Eax.Bits.SevBit) {
+-        ReadSevMsr = TRUE;
+-      }
+-    }
++  @retval TRUE   The specified Attr is active.
++  @retval FALSE  The specified Attr is not active.
++
++**/
++STATIC
++BOOLEAN
++EFIAPI
++ConfidentialComputingGuestHas (
++  IN  CONFIDENTIAL_COMPUTING_GUEST_ATTR  Attr
++  )
++{
++  //
++  // Get the current CC attribute.
++  //
++  // We avoid reading the PCD on every check because this routine could be indirectly
++  // called during the virtual pointer conversion. And its not safe to access the
++  // PCDs during the virtual pointer conversion.
++  //
++  if (!mCurrentAttrRead) {
++    mCurrentAttr     = PcdGet64 (PcdConfidentialComputingGuestAttr);
++    mCurrentAttrRead = TRUE;
+   }
+ 
+-  if (ReadSevMsr) {
+-    //
+-    // Check MSR_0xC0010131 Bit 0 (Sev Enabled)
+-    //
+-    Msr.Uint32 = AsmReadMsr32 (MSR_SEV_STATUS);
+-    if (Msr.Bits.SevBit) {
+-      mSevStatus = TRUE;
+-    }
+-
+-    //
+-    // Check MSR_0xC0010131 Bit 1 (Sev-Es Enabled)
+-    //
+-    if (Msr.Bits.SevEsBit) {
+-      mSevEsStatus = TRUE;
+-    }
+-
+-    //
+-    // Check MSR_0xC0010131 Bit 2 (Sev-Snp Enabled)
+-    //
+-    if (Msr.Bits.SevSnpBit) {
+-      mSevSnpStatus = TRUE;
+-    }
++  //
++  // If attr is for the AMD group then call AMD specific checks.
++  //
++  if (((RShiftU64 (mCurrentAttr, 8)) & 0xff) == 1) {
++    return AmdMemEncryptionAttrCheck (mCurrentAttr, Attr);
+   }
+ 
+-  mSevStatusChecked = TRUE;
++  return (mCurrentAttr == Attr);
+ }
+ 
+ /**
+@@ -107,11 +108,7 @@ MemEncryptSevSnpIsEnabled (
+   VOID
+   )
+ {
+-  if (!mSevStatusChecked) {
+-    InternalMemEncryptSevStatus ();
+-  }
+-
+-  return mSevSnpStatus;
++  return ConfidentialComputingGuestHas (CCAttrAmdSevSnp);
+ }
+ 
+ /**
+@@ -126,11 +123,7 @@ MemEncryptSevEsIsEnabled (
+   VOID
+   )
+ {
+-  if (!mSevStatusChecked) {
+-    InternalMemEncryptSevStatus ();
+-  }
+-
+-  return mSevEsStatus;
++  return ConfidentialComputingGuestHas (CCAttrAmdSevEs);
+ }
+ 
+ /**
+@@ -145,11 +138,7 @@ MemEncryptSevIsEnabled (
+   VOID
+   )
+ {
+-  if (!mSevStatusChecked) {
+-    InternalMemEncryptSevStatus ();
+-  }
+-
+-  return mSevStatus;
++  return ConfidentialComputingGuestHas (CCAttrAmdSev);
+ }
+ 
+ /**
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+index 50c8385..714da33 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLib.inf
+@@ -58,6 +58,7 @@
+ 
+ [FixedPcd]
+   gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfWorkAreaBase
+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfPeiMemFvBase
+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecPageTablesBase
+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfSecValidatedEnd
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c
+index d68ff08..3f8f91a 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/PeiMemEncryptSevLibInternal.c
+@@ -17,82 +17,51 @@
+ #include <Register/Cpuid.h>
+ #include <Uefi/UefiBaseType.h>
+ 
+-STATIC BOOLEAN  mSevStatus        = FALSE;
+-STATIC BOOLEAN  mSevEsStatus      = FALSE;
+-STATIC BOOLEAN  mSevSnpStatus     = FALSE;
+-STATIC BOOLEAN  mSevStatusChecked = FALSE;
++/**
++   Read the workarea to determine whether SEV is enabled. If enabled,
++   then return the SevEsWorkArea pointer.
++
++  **/
++STATIC
++SEC_SEV_ES_WORK_AREA *
++EFIAPI
++GetSevEsWorkArea (
++  VOID
++  )
++{
++  OVMF_WORK_AREA  *WorkArea;
++
++  WorkArea = (OVMF_WORK_AREA *)FixedPcdGet32 (PcdOvmfWorkAreaBase);
++
++  //
++  // If its not SEV guest then SevEsWorkArea is not valid.
++  //
++  if ((WorkArea == NULL) || (WorkArea->Header.GuestType != GUEST_TYPE_AMD_SEV)) {
++    return NULL;
++  }
+ 
+-STATIC UINT64   mSevEncryptionMask      = 0;
+-STATIC BOOLEAN  mSevEncryptionMaskSaved = FALSE;
++  return (SEC_SEV_ES_WORK_AREA *)FixedPcdGet32 (PcdSevEsWorkAreaBase);
++}
+ 
+ /**
+-  Reads and sets the status of SEV features.
++  Read the SEV Status MSR value from the workarea
+ 
+   **/
+ STATIC
+-VOID
++UINT32
+ EFIAPI
+ InternalMemEncryptSevStatus (
+   VOID
+   )
+ {
+-  UINT32                            RegEax;
+-  MSR_SEV_STATUS_REGISTER           Msr;
+-  CPUID_MEMORY_ENCRYPTION_INFO_EAX  Eax;
+-  BOOLEAN                           ReadSevMsr;
+-  SEC_SEV_ES_WORK_AREA              *SevEsWorkArea;
+-
+-  ReadSevMsr = FALSE;
+-
+-  SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *)FixedPcdGet32 (PcdSevEsWorkAreaBase);
+-  if ((SevEsWorkArea != NULL) && (SevEsWorkArea->EncryptionMask != 0)) {
+-    //
+-    // The MSR has been read before, so it is safe to read it again and avoid
+-    // having to validate the CPUID information.
+-    //
+-    ReadSevMsr = TRUE;
+-  } else {
+-    //
+-    // Check if memory encryption leaf exist
+-    //
+-    AsmCpuid (CPUID_EXTENDED_FUNCTION, &RegEax, NULL, NULL, NULL);
+-    if (RegEax >= CPUID_MEMORY_ENCRYPTION_INFO) {
+-      //
+-      // CPUID Fn8000_001F[EAX] Bit 1 (Sev supported)
+-      //
+-      AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, &Eax.Uint32, NULL, NULL, NULL);
+-
+-      if (Eax.Bits.SevBit) {
+-        ReadSevMsr = TRUE;
+-      }
+-    }
+-  }
++  SEC_SEV_ES_WORK_AREA  *SevEsWorkArea;
+ 
+-  if (ReadSevMsr) {
+-    //
+-    // Check MSR_0xC0010131 Bit 0 (Sev Enabled)
+-    //
+-    Msr.Uint32 = AsmReadMsr32 (MSR_SEV_STATUS);
+-    if (Msr.Bits.SevBit) {
+-      mSevStatus = TRUE;
+-    }
+-
+-    //
+-    // Check MSR_0xC0010131 Bit 1 (Sev-Es Enabled)
+-    //
+-    if (Msr.Bits.SevEsBit) {
+-      mSevEsStatus = TRUE;
+-    }
+-
+-    //
+-    // Check MSR_0xC0010131 Bit 2 (Sev-Snp Enabled)
+-    //
+-    if (Msr.Bits.SevSnpBit) {
+-      mSevSnpStatus = TRUE;
+-    }
++  SevEsWorkArea = GetSevEsWorkArea ();
++  if (SevEsWorkArea == NULL) {
++    return 0;
+   }
+ 
+-  mSevStatusChecked = TRUE;
++  return (UINT32)(UINTN)SevEsWorkArea->SevStatusMsrValue;
+ }
+ 
+ /**
+@@ -107,11 +76,11 @@ MemEncryptSevSnpIsEnabled (
+   VOID
+   )
+ {
+-  if (!mSevStatusChecked) {
+-    InternalMemEncryptSevStatus ();
+-  }
++  MSR_SEV_STATUS_REGISTER  Msr;
++
++  Msr.Uint32 = InternalMemEncryptSevStatus ();
+ 
+-  return mSevSnpStatus;
++  return Msr.Bits.SevSnpBit ? TRUE : FALSE;
+ }
+ 
+ /**
+@@ -126,11 +95,11 @@ MemEncryptSevEsIsEnabled (
+   VOID
+   )
+ {
+-  if (!mSevStatusChecked) {
+-    InternalMemEncryptSevStatus ();
+-  }
++  MSR_SEV_STATUS_REGISTER  Msr;
++
++  Msr.Uint32 = InternalMemEncryptSevStatus ();
+ 
+-  return mSevEsStatus;
++  return Msr.Bits.SevEsBit ? TRUE : FALSE;
+ }
+ 
+ /**
+@@ -145,11 +114,11 @@ MemEncryptSevIsEnabled (
+   VOID
+   )
+ {
+-  if (!mSevStatusChecked) {
+-    InternalMemEncryptSevStatus ();
+-  }
++  MSR_SEV_STATUS_REGISTER  Msr;
+ 
+-  return mSevStatus;
++  Msr.Uint32 = InternalMemEncryptSevStatus ();
++
++  return Msr.Bits.SevBit ? TRUE : FALSE;
+ }
+ 
+ /**
+@@ -163,24 +132,12 @@ MemEncryptSevGetEncryptionMask (
+   VOID
+   )
+ {
+-  if (!mSevEncryptionMaskSaved) {
+-    SEC_SEV_ES_WORK_AREA  *SevEsWorkArea;
+-
+-    SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *)FixedPcdGet32 (PcdSevEsWorkAreaBase);
+-    if (SevEsWorkArea != NULL) {
+-      mSevEncryptionMask = SevEsWorkArea->EncryptionMask;
+-    } else {
+-      CPUID_MEMORY_ENCRYPTION_INFO_EBX  Ebx;
+-
+-      //
+-      // CPUID Fn8000_001F[EBX] Bit 0:5 (memory encryption bit position)
+-      //
+-      AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, NULL, &Ebx.Uint32, NULL, NULL);
+-      mSevEncryptionMask = LShiftU64 (1, Ebx.Bits.PtePosBits);
+-    }
+-
+-    mSevEncryptionMaskSaved = TRUE;
++  SEC_SEV_ES_WORK_AREA  *SevEsWorkArea;
++
++  SevEsWorkArea = GetSevEsWorkArea ();
++  if (SevEsWorkArea == NULL) {
++    return 0;
+   }
+ 
+-  return mSevEncryptionMask;
++  return SevEsWorkArea->EncryptionMask;
+ }
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+index 939af0a..284e5ac 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLib.inf
+@@ -52,3 +52,4 @@
+ 
+ [FixedPcd]
+   gUefiCpuPkgTokenSpaceGuid.PcdSevEsWorkAreaBase
++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfWorkAreaBase
+diff --git a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c
+index 5d912b2..80aceba 100644
+--- a/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c
++++ b/OvmfPkg/Library/BaseMemEncryptSevLib/SecMemEncryptSevLibInternal.c
+@@ -18,7 +18,33 @@
+ #include <Uefi/UefiBaseType.h>
+ 
+ /**
+-  Reads and sets the status of SEV features.
++   Read the workarea to determine whether SEV is enabled. If enabled,
++   then return the SevEsWorkArea pointer.
++
++  **/
++STATIC
++SEC_SEV_ES_WORK_AREA *
++EFIAPI
++GetSevEsWorkArea (
++  VOID
++  )
++{
++  OVMF_WORK_AREA  *WorkArea;
++
++  WorkArea = (OVMF_WORK_AREA *)FixedPcdGet32 (PcdOvmfWorkAreaBase);
++
++  //
++  // If its not SEV guest then SevEsWorkArea is not valid.
++  //
++  if ((WorkArea == NULL) || (WorkArea->Header.GuestType != GUEST_TYPE_AMD_SEV)) {
++    return NULL;
++  }
++
++  return (SEC_SEV_ES_WORK_AREA *)FixedPcdGet32 (PcdSevEsWorkAreaBase);
++}
++
++/**
++  Read the SEV Status MSR value from the workarea
+ 
+   **/
+ STATIC
+@@ -28,38 +54,14 @@ InternalMemEncryptSevStatus (
+   VOID
+   )
+ {
+-  UINT32                            RegEax;
+-  CPUID_MEMORY_ENCRYPTION_INFO_EAX  Eax;
+-  BOOLEAN                           ReadSevMsr;
+-  SEC_SEV_ES_WORK_AREA              *SevEsWorkArea;
+-
+-  ReadSevMsr = FALSE;
+-
+-  SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *)FixedPcdGet32 (PcdSevEsWorkAreaBase);
+-  if ((SevEsWorkArea != NULL) && (SevEsWorkArea->EncryptionMask != 0)) {
+-    //
+-    // The MSR has been read before, so it is safe to read it again and avoid
+-    // having to validate the CPUID information.
+-    //
+-    ReadSevMsr = TRUE;
+-  } else {
+-    //
+-    // Check if memory encryption leaf exist
+-    //
+-    AsmCpuid (CPUID_EXTENDED_FUNCTION, &RegEax, NULL, NULL, NULL);
+-    if (RegEax >= CPUID_MEMORY_ENCRYPTION_INFO) {
+-      //
+-      // CPUID Fn8000_001F[EAX] Bit 1 (Sev supported)
+-      //
+-      AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, &Eax.Uint32, NULL, NULL, NULL);
+-
+-      if (Eax.Bits.SevBit) {
+-        ReadSevMsr = TRUE;
+-      }
+-    }
++  SEC_SEV_ES_WORK_AREA  *SevEsWorkArea;
++
++  SevEsWorkArea = GetSevEsWorkArea ();
++  if (SevEsWorkArea == NULL) {
++    return 0;
+   }
+ 
+-  return ReadSevMsr ? AsmReadMsr32 (MSR_SEV_STATUS) : 0;
++  return (UINT32)(UINTN)SevEsWorkArea->SevStatusMsrValue;
+ }
+ 
+ /**
+@@ -130,22 +132,14 @@ MemEncryptSevGetEncryptionMask (
+   VOID
+   )
+ {
+-  CPUID_MEMORY_ENCRYPTION_INFO_EBX  Ebx;
+-  SEC_SEV_ES_WORK_AREA              *SevEsWorkArea;
+-  UINT64                            EncryptionMask;
+-
+-  SevEsWorkArea = (SEC_SEV_ES_WORK_AREA *)FixedPcdGet32 (PcdSevEsWorkAreaBase);
+-  if (SevEsWorkArea != NULL) {
+-    EncryptionMask = SevEsWorkArea->EncryptionMask;
+-  } else {
+-    //
+-    // CPUID Fn8000_001F[EBX] Bit 0:5 (memory encryption bit position)
+-    //
+-    AsmCpuid (CPUID_MEMORY_ENCRYPTION_INFO, NULL, &Ebx.Uint32, NULL, NULL);
+-    EncryptionMask = LShiftU64 (1, Ebx.Bits.PtePosBits);
++  SEC_SEV_ES_WORK_AREA  *SevEsWorkArea;
++
++  SevEsWorkArea = GetSevEsWorkArea ();
++  if (SevEsWorkArea == NULL) {
++    return 0;
+   }
+ 
+-  return EncryptionMask;
++  return SevEsWorkArea->EncryptionMask;
+ }
+ 
+ /**
+-- 
+2.12.3
+

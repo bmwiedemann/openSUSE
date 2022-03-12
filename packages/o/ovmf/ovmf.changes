@@ -1,4 +1,333 @@
 -------------------------------------------------------------------
+Thu Mar 10 05:35:44 UTC 2022 - jlee@suse.com
+
+- Update to edk2-stable202202
+    - Features (https://github.com/tianocore/edk2/releases):
+	OvmfPkg Add new target for Cloud Hypervisor
+	Add TDVF to OvmfPkg
+	Add new APIs to UefiCpuPkg/UefiCpuLib
+	Add AMD Secure Nested Paging Support
+	Add SSDT PCI generator in DynamicTablesPkg
+	Support ACPI 6.4 PPTT changes
+	Add FdtHwInfoParser library
+	Add DynamicPlatRepo library
+	Make package and platform builds reproducible across source format changes
+	Add Uncrustify CI Plugin
+	Apply uncrustify changes to all package C and H files
+    - Patches (git log --oneline --reverse edk2-stable202111~..edk2-stable202202):
+	bb1bba3d77 NetworkPkg: Fix invalid pointer for DNS response token on error
+	ef9a059cdb EmulatorPkg/Win/Host: Update CC_FLAGS
+	69877614fd .pytool/Plugin/EccCheck: Remove RevertCode()
+	854462bd34 .pytool/Plugin/EccCheck: Remove temp directory on exception
+	3019f1bbab .pytool/Plugin/EccCheck: Add performance optimizations
+	99f84ff473 .pytools/Plugin/LicenseCheck: Use temp directory for git diff output
+	76a1ce4d5f .azurepipelines/templates: Update max pipeline job time to 2 hours
+	365dced2c3 ArmPkg: Update YAML to ignore specific ECC files/errors
+	1939fc9569 ArmPlatformPkg: Update YAML to ignore specific ECC files/errors
+	c97fee87f0 ArmVirtPkg: Update YAML to ignore specific ECC files/errors
+	d5744ecba8 CryptoPkg: Update YAML to ignore specific ECC files/errors
+	d7d30e8f21 EmulatorPkg: Update YAML to ignore specific ECC files/errors
+	9deb937076 MdeModulePkg: Update YAML to ignore specific ECC files/errors
+	df790cd6b3 MdePkg: Update YAML to ignore specific ECC files/errors
+	60fa40be45 SecurityPkg: Update YAML to ignore specific ECC files/errors
+	9944508e85 ShellPkg: Update YAML to ignore specific ECC files/errors
+	c30c40d6c6 StandaloneMmPkg: Update YAML to ignore specific ECC files/errors
+	c057347977 UefiPayloadPkg: Update YAML to ignore specific ECC files/errors
+	f0f3f5aae7 UnitTestFrameworkPkg: Update YAML to ignore specific ECC files/errors
+	dfafa8e453 MdeModulePkg/DxeCorePerformanceLib:Variable Initial
+	a4a582e180 ArmPkg: Change use of EFI_D_* to DEBUG_*
+	1d2482e1e3 ArmPlatformPkg: Change use of EFI_D_* to DEBUG_*
+	c5b3a56e4f ArmVirtPkg: Change use of EFI_D_* to DEBUG_*
+	a1878955b2 EmbeddedPkg: Change use of EFI_D_* to DEBUG_*
+	9c7da8d804 EmulatorPkg: Change use of EFI_D_* to DEBUG_*
+	917e98f3e5 FatPkg: Change use of EFI_D_* to DEBUG_*
+	87000d7708 MdeModulePkg: Change use of EFI_D_* to DEBUG_*
+	5f289f3ae3 MdePkg: Change use of EFI_D_* to DEBUG_*
+	c49ca4a29e NetworkPkg: Change use of EFI_D_* to DEBUG_*
+	47719926e8 OvmfPkg: Change use of EFI_D_* to DEBUG_*
+	ca56749b0e PcAtChipsetPkg: Change use of EFI_D_* to DEBUG_*
+	e905fbb05a SecurityPkg: Change use of EFI_D_* to DEBUG_*
+	4a1aee13d8 ShellPkg: Change use of EFI_D_* to DEBUG_*
+	586fda4800 SourceLevelDebugPkg: Change use of EFI_D_* to DEBUG_*
+	96e1cba5c1 UefiCpuPkg: Change use of EFI_D_* to DEBUG_*
+	1871d28eaf ArmPkg: Change OPTIONAL keyword usage style
+	2863ba97ca ArmPlatformPkg: Change OPTIONAL keyword usage style
+	9607597a74 ArmVirtPkg: Change OPTIONAL keyword usage style
+	c8f46130f8 CryptoPkg: Change OPTIONAL keyword usage style
+	fe2d81892f DynamicTablesPkg: Change OPTIONAL keyword usage style
+	792433088c EmbeddedPkg: Change OPTIONAL keyword usage style
+	c69fc80c80 EmulatorPkg: Change OPTIONAL keyword usage style
+	9c721071d3 FmpDevicePkg: Change OPTIONAL keyword usage style
+	e3917e22e7 MdeModulePkg: Change OPTIONAL keyword usage style
+	d0e2f8232a MdePkg: Change OPTIONAL keyword usage style
+	8874fa199d NetworkPkg: Change OPTIONAL keyword usage style
+	79d49e162e OvmfPkg: Change OPTIONAL keyword usage style
+	237295f46d PcAtChipsetPkg: Change OPTIONAL keyword usage style
+	dc8fe5ec95 RedfishPkg: Change OPTIONAL keyword usage style
+	12710fe93b SecurityPkg: Change OPTIONAL keyword usage style
+	9b8507cabe ShellPkg: Change OPTIONAL keyword usage style
+	18908e6131 SignedCapsulePkg: Change OPTIONAL keyword usage style
+	f9c9215b55 SourceLevelDebugPkg: Change OPTIONAL keyword usage style
+	902e76de19 StandaloneMmPkg: Change OPTIONAL keyword usage style
+	4ec586b9f6 UefiCpuPkg: Change OPTIONAL keyword usage style
+	e35dd32821 UefiPayloadPkg: Change OPTIONAL keyword usage style
+	78bc3bdd2a UnitTestFrameworkPkg: Change OPTIONAL keyword usage style
+	ea85f0fe13 ArmVirtPkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	e3b855f283 CryptoPkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	4a9d411662 DynamicTablesPkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	db52c7f755 MdeModulePkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	098307e082 MdePkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	ed7f7c9168 NetworkPkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	8e875037bf OvmfPkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	deba54761a PcAtChipsetPkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	f9f4fb2329 SecurityPkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	7c2a6033c1 UefiCpuPkg: Change complex DEBUG_CODE() to DEBUG_CODE_BEGIN/END()
+	429309e0c6 ArmPkg: Apply uncrustify changes
+	40b0b23ed3 ArmPlatformPkg: Apply uncrustify changes
+	2b16a4fb91 ArmVirtPkg: Apply uncrustify changes
+	7c34237831 CryptoPkg: Apply uncrustify changes
+	731c67e1d7 DynamicTablesPkg: Apply uncrustify changes
+	e7108d0e96 EmbeddedPkg: Apply uncrustify changes
+	a550d468a6 EmulatorPkg: Apply uncrustify changes
+	bcdcc4160d FatPkg: Apply uncrustify changes
+	45ce0a67bb FmpDevicePkg: Apply uncrustify changes
+	111f2228dd IntelFsp2Pkg: Apply uncrustify changes
+	7c7184e201 IntelFsp2WrapperPkg: Apply uncrustify changes
+	1436aea4d5 MdeModulePkg: Apply uncrustify changes
+	2f88bd3a12 MdePkg: Apply uncrustify changes
+	d1050b9dff NetworkPkg: Apply uncrustify changes
+	ac0a286f4d OvmfPkg: Apply uncrustify changes
+	5220bd211d PcAtChipsetPkg: Apply uncrustify changes
+	39de741e2d RedfishPkg: Apply uncrustify changes
+	c411b485b6 SecurityPkg: Apply uncrustify changes
+	47d20b54f9 ShellPkg: Apply uncrustify changes
+	b878648967 SignedCapsulePkg: Apply uncrustify changes
+	c1e126b119 SourceLevelDebugPkg: Apply uncrustify changes
+	91415a36ae StandaloneMmPkg: Apply uncrustify changes
+	053e878bfb UefiCpuPkg: Apply uncrustify changes
+	e5efcf8be8 UefiPayloadPkg: Apply uncrustify changes
+	7c0ad2c338 UnitTestFrameworkPkg: Apply uncrustify changes
+	dc453b5164 .pytool/Plugin/UncrustifyCheck: Add Uncrustify CI plugin
+	1832eb15aa UefiPayloadPkg/UefiPayloadPkg.fdf: Update DXE Apriori list
+	ca78281c25 UefiPayloadPkg/PayloadEntry: Inherit 4/5-level paging from bootloader
+	b2f7ee2ded UefiPayloadPkg: Increase SystemMemoryUefiRegionSize from 32M to 64M
+	94e0a7bddb UefiPayloadPkg: Add missing Guid gUefiAcpiBoardInfoGuid
+	2527723de9 UefiPayloadPkg: Add performance measurement feature
+	ffdde9d719 UefiPayloadPkg: Skip ModuleInfo HOB in Payload
+	965292135b UefiPayloadPkg/UefiPayloadPkg.dsc:Add BootManagerLib for BootManagerMenuApp
+	85a678bf76 UefiPayloadPkg: Add integration instruction for coreboot common error
+	7b28310008 BaseTools: Increase the DevicePath length for support more PCD value.
+	d25b803e51 MdeModulePkg/Bus/Pci/UhciDxe: Fix the UsbHc memory allocate and free issue
+	c82ab4d8c1 BaseTools/VfrCompile: Correct Bit Field Flags for numeric/one of
+	2ddacfb6b8 OvmfPkg/SecMain: move SEV specific routines in AmdSev.c
+	e2289d19d8 UefiCpuPkg/MpInitLib: move SEV specific routines in AmdSev.c
+	2fe8edfe55 OvmfPkg/ResetVector: move clearing GHCB in SecMain
+	3053183d41 OvmfPkg/ResetVector: introduce SEV metadata descriptor for VMM use
+	707c71a01b OvmfPkg: reserve SNP secrets page
+	cca9cd3dd6 OvmfPkg: reserve CPUID page
+	f2dc28f0b6 OvmfPkg/ResetVector: pre-validate the data pages used in SEC phase
+	34819f2cac OvmfPkg/ResetVector: use SEV-SNP-validated CPUID values
+	d9822304ce OvmfPkg/MemEncryptSevLib: add MemEncryptSevSnpEnabled()
+	7c3b2892ea OvmfPkg/SecMain: register GHCB gpa for the SEV-SNP guest
+	d2b998fbdc OvmfPkg/VmgExitLib: use SEV-SNP-validated CPUID values
+	a19b648952 OvmfPkg/PlatformPei: register GHCB gpa for the SEV-SNP guest
+	19914edc5a OvmfPkg/AmdSevDxe: do not use extended PCI config space
+	ade62c18f4 OvmfPkg/MemEncryptSevLib: add support to validate system RAM
+	d706f8fec2 OvmfPkg/MemEncryptSevLib: add function to check the VMPL0
+	11b15336f0 OvmfPkg/BaseMemEncryptSevLib: skip the pre-validated system RAM
+	d39f8d88ec OvmfPkg/MemEncryptSevLib: add support to validate > 4GB memory in PEI phase
+	202fb22be6 OvmfPkg/SecMain: validate the memory used for decompressing Fv
+	8eb79b5f4f OvmfPkg/PlatformPei: validate the system RAM when SNP is active
+	26210f9436 MdePkg: Define ConfidentialComputingGuestAttr
+	504ae26b80 OvmfPkg/PlatformPei: set PcdConfidentialComputingAttr when SEV is active
+	b95908e043 UefiCpuPkg/MpInitLib: use PcdConfidentialComputingAttr to check SEV status
+	f4e3ce5f53 UefiCpuPkg: add PcdGhcbHypervisorFeatures
+	f5a6e1bab5 OvmfPkg/PlatformPei: set the Hypervisor Features PCD
+	2c354252be MdePkg/GHCB: increase the GHCB protocol max version
+	9c703bc0f1 UefiCpuPkg/MpLib: add support to register GHCB GPA when SEV-SNP is enabled
+	d4d7c9ad5f UefiCpuPkg/MpInitLib: use BSP to do extended topology check
+	b928eb44d5 OvmfPkg/MemEncryptSevLib: change the page state in the RMP table
+	b7b8872031 OvmfPkg/MemEncryptSevLib: skip page state change for Mmio address
+	ea3a12d970 OvmfPkg/PlatformPei: mark cpuid and secrets memory reserved in EFI map
+	67484aed69 OvmfPkg/AmdSev: expose the SNP reserved pages through configuration table
+	06544455d0 UefiCpuPkg/MpInitLib: Use SEV-SNP AP Creation NAE event to launch APs
+	0f1d7477c0 OvmfPkg: Remove unused print service driver (PrintDxe)
+	30631f0a26 MdePkg: Add missing Cache ID (in)valid define
+	0077c22f6d MdePkg: Remove PPTT ID type structure
+	a50b65ce22 ShellPkg: Update Acpiview PPTT parser to ACPI 6.4
+	8cf2bdfcfb ShellPkg: Add Cache ID to PPTT parser
+	b2bbe3df54 DynamicTablesPkg: Remove PPTT ID structure from ACPI 6.4 generator
+	e139829dd6 DynamicTablesPkg: Update PPTT generator to ACPI 6.4
+	e81a81e584 DynamicTablesPkg: Add CacheId to PPTT generator
+	9afcd48a94 OvmfPkg: Handle Cloud Hypervisor host bridge
+	2ccefa32a6 OvmfPkg: Create global entry point for SMBIOS parsing
+	d8ef774346 OvmfPkg: Retrieve SMBIOS from Cloud Hypervisor
+	66bce05f6d OvmfPkg: Generalize AcpiPlatformDxe
+	7594c5bfe2 OvmfPkg: Install ACPI tables for Cloud Hypervisor
+	f6df289a1c OvmfPkg/OvmfXen: Fix Xen build
+	2b20a34fd5 OvmfPkg-EmuVariableFvbRuntimeDxe: Support Access To Memory Above 4G
+	d5efc875ef MdePkg: Introduce CcMeasurementProtocol for CC Guest firmware
+	a124cd4ef9 SecurityPkg: Support CcMeasurementProtocol in DxeTpm2MeasureBootLib
+	8c06c53b58 SecurityPkg: Support CcMeasurementProtocol in DxeTpmMeasurementLib
+	adf070ff56 OvmfPkg/Microvm: add PcdConfidentialComputingGuestAttr
+	2686468c43 OvmfPkg/Bhyve: add MemEncryptSevLib
+	61be49e0f7 OvmfPkg/PlatformCI: factor out PlatformBuildLib.py
+	21ee379407 OvmfPkg/PlatformCI: add QEMU_SKIP
+	64bccda534 OvmfPkg/PlatformCI: add BhyveBuild.py
+	04eacd3943 OvmfPkg/PlatformCI: add MicrovmBuild.py
+	8b8ae609a7 OvmfPkg/PlatformCI: add AmdSevBuild.py
+	2722856a87 OvmfPkg/PlatformCI: dummy grub.efi for AmdSev
+	1203eba58e OvmfPkg/PlatformCI: add XenBuild.py
+	64ef0dd1d3 OvmfPkg/Microvm/fdt: add device tree support
+	79dcaf7054 OvmfPkg/Microvm/fdt: load fdt from fw_cfg
+	c802f8935c OvmfPkg/Microvm/fdt: add empty fdt
+	2a68abf6ee OvmfPkg/Microvm/virtio: add virtio-mmio support
+	e07d27e24d OvmfPkg/Microvm: add README
+	7f1861be2b DynamicTablesPkg: AML Code generation for memory ranges
+	0e7147fe75 DynamicTablesPkg: AML Code generation to create a named Package()
+	fd5fc4bbb7 DynamicTablesPkg: AML Code generation to create a named ResourceTemplate()
+	b2b8def4e3 DynamicTablesPkg: AML Code generation to add _PRT entries
+	69ddfee1c3 DynamicTablesPkg: Add AmlAttachNode()
+	ce306e48eb DynamicTablesPkg: Add Pci related objects
+	e35a746cf5 DynamicTablesPkg: SSDT Pci express generator
+	ec37fd9c1f DynamicTablesPkg: Fix multiple objects parsing
+	557dede8a6 OvmfPkg/PlatformPei: ScanOrAdd64BitE820Ram improvements
+	759e3c6d21 OvmfPkg/PlatformPei: prefer etc/e820 for memory detection
+	41d8bb3038 OvmfPkg/PlatformPei: stop using cmos for memory detection
+	7a6e6ae933 EmulatorPkg: Update lldbefi.py to work with current lldb which uses python3
+	4d30352445 ArmPkg: Add SMC helper functions
+	c039fa7ff0 ArmPkg: Update SMC calls to use the new ArmCallSmc0/1/2/3 functions
+	90ad4b3b34 DynamicTablesPkg: Definition for HwInfoParser interface
+	d59c5a20f8 DynamicTablesPkg: FdtHwInfoParser: CM Object descriptor helper
+	5d8b5d171c DynamicTablesPkg: FdtHwInfoParser: Add FDT utility functions
+	8d2691c3d5 DynamicTablesPkg: FdtHwInfoParser: Add Boot Arch parser
+	3ebe1ff5c9 DynamicTablesPkg: FdtHwInfoParser: Generic Timer Parser
+	51941f7558 DynamicTablesPkg: FdtHwInfoParser: Add Serial port parser
+	e366a41ef0 DynamicTablesPkg: FdtHwInfoParser: Add GICC parser
+	0fa1217726 DynamicTablesPkg: FdtHwInfoParser: Add GICD parser
+	b04cf355a0 DynamicTablesPkg: FdtHwInfoParser: Add MSI Frame parser
+	d250d408cf DynamicTablesPkg: FdtHwInfoParser: Add ITS parser
+	7b6c8b30a5 DynamicTablesPkg: FdtHwInfoParser: Add GICR parser
+	26bf034a59 DynamicTablesPkg: FdtHwInfoParser: Add GIC dispatcher
+	c67bf628c8 DynamicTablesPkg: FdtHwInfoParser: Add PCI config parser
+	deb01dfd7f DynamicTablesPkg: Add FdtHwInfoParser library
+	9006967c8d DynamicTablesPkg: Handle 16550_WITH_GAS id
+	b2d0ed20fd DynamicTablesPkg: Definition for DynamicPlatRepoLib interface
+	2e2db65e39 DynamicTablesPkg: DynamicPlatRepo: Add TokenGenerator
+	740e3bb634 DynamicTablesPkg: DynamicPlatRepo: Add TokenFixer
+	5fe5b6f94f DynamicTablesPkg: DynamicPlatRepo: Add TokenMapper
+	38f6d78c3b DynamicTablesPkg: Add DynamicPlatRepo library
+	f14fff5135 StandaloneMmPkg/FvLib: Support large file with EFI_FFS_FILE_HEADER2.
+	3a72ec71cd OvmfPkg: remove unused TPM options from MicrovmX64.dsc
+	b47575801e OvmfPkg: move tcg configuration to dsc and fdf include files
+	5711ff4d0b OvmfPkg: drop TPM_CONFIG_ENABLE
+	b819388772 OvmfPkg: create Tcg12ConfigPei.inf
+	4de8d61bce OvmfPkg: rework TPM configuration
+	e6ea1464a8 OvmfPkg/PlatformPei: Revert "stop using cmos for memory detection"
+	a6c0418651 ArmPkg/SmbiosMiscDxe: Remove duplicate HII string definition
+	45e3842970 ArmPkg/SmbiosMiscDxe: Get full SMBIOS strings from OemMiscLib
+	b451c69088 ArmPkg/ProcessorSubClassDxe: Get serial and part number from OemMiscLib
+	8ed8568922 SecurityPkg: Debug code to audit BIOS TPM extend operations
+	195f011973 SecurityPkg: Reallocate TPM Active PCRs based on platform support
+	ab5ab2f603 SecurityPkg: TPM must go to Idle state on CRB command completion
+	c63a10ecb7 EmbeddedPkg/AcpiLib: Add more helper functions
+	f129b1f06f OvmfPkg/Bhyve: fix tls-enabled build
+	ee1f8262b8 OvmfPkg: Call PlatformInitializeConsole for GPU passthrough case
+	de9e5b7dc7 IntelFsp2WrapperPkg : FSPM/S UPD data address based on Build Type
+	9ec2cc1f31 IntelFsp2WrapperPkg : Remove EFIAPI from local functions.
+	ae8272ef78 MdeModulePkg/UsbBusDxe: fix NOOPT build error
+	15c596aeeb OvmfPkg: Bhyve: Delete unused AcpiTables/Ssdt.asl file
+	6612ff8561 UefiCpuPkg: Extend measurement of microcode patches to TPM
+	e910f076ad BaseTools: Fix the bug of --cmd-len build option
+	7935be0fbd IntelFsp2Pkg/FspSecCore: ExtendedImageRevision was not printed.
+	c095122d4b MdeModulePkg/PciBusDxe: Enumerator to check for RCiEP before looking for RP
+	d463c56ddd MdeModulePkg: Replace with UFS_UNIT_DESC to fix timeout problem
+	45920941d9 MdeModulePkg: Refactoring UFS DME request and fix timing problem
+	13d9e8ec98 MdeModulePkg: Put off UFS HCS.DP checking to fix timing problem
+	079a58276b OvmfPkg/AmdSev/SecretPei: Mark SEV launch secret area as reserved
+	9dd14fc91c MdePkg: Add registers of boot partition feature
+	14a731096d UnitTestFrameworkPkg: CI YAML: Grant cmockery spell check exception
+	6062002bd5 MdeModulePkg/PartitionDxe: Add break to handle invalid LBA0 in MBR
+	7438a85bf1 BaseTools: Fix wrong variable header size
+	c712ce2bb1 OvmfPkg/CloudHv: Add new target for Cloud Hypervisor
+	a2da72b2ca OvmfPkg/CloudHv: Replace legacy 8254 PIT with local APIC timer
+	6ecdda71fe OvmfPkg/CloudHv: Connect serial console
+	1552050ce7 OvmfPkg/CloudHv: Remove legacy 8259 PIC support
+	fdcea7ff6f OvmfPkg/CloudHv: Remove Q35 specifics
+	71082d3d1b OvmfPkg/CloudHv: Reduce dependency on QemuFwCfg
+	196be601f9 OvmfPkg/CloudHv: Remove video support
+	7b6cbe0a81 OvmfPkg/CloudHv: Remove USB support
+	e73d1bf96a OvmfPkg/CloudHv: Remove CSM support
+	b66056ef21 OvmfPkg/CloudHv: add Maintainers.txt entry
+	5302bd81d9 OvmfPkg: Add CloudHvX64 to the CI
+	59c48c9314 UefiPayloadPkg: Change the user interface name of the Uiapp
+	5801910013 UefiPayloadPkg: Not use BaseCpuTimerLib by default.
+	772c5bb8dc FmpDevicePkg/FmpDxe: Update FmpDeviceCheckImageWithStatus() handling
+	7709988dd8 RedfishPkg/RedfishRestExDxe:Simplify status check
+	21320ef669 MdeModulePkg/Variable: Make only EFI_VARIABLE_NON_VOLATILE invalid
+	7e5c603cba MdeModulePkg/SdMmcPciHcDxe: Robust improvements for SD card 1.8V switch
+	ee67067f17 MdeModulePkg: VariableSmmRuntimeDxe: Fix Variable Policy Message Length
+	5b39832e18 MdePkg: MmCommunication2: Update MM communicate2 function description
+	ce37f45955 ArmPkg: MmCommunicationDxe: MM communicate function argument attributes
+	541a077bd1 ArmPkg: MmCommunicationDxe: Update MM communicate `CommBuffer**` checks
+	1aa1ec4574 ArmPkg: MmCommunicationDxe: Update MM communicate `CommSize` check
+	8cc5590eab ArmPkg: MmCommunicationDxe: Update MM communicate `MessageLength` check
+	6777e67383 EmbeddedPkg: Fix a build error in FwVol.c in X64 arch
+	a867f3a704 UefiPayloadPkg: Use BaseCpuTimerLib for Universal Payload by default
+	f4b7b473b4 MdeModulePkg/UefiBootManagerLib: Convert BmLoadOption to Variable Policy
+	76b3d45b75 ShellPkg: Add the missing VariablePolicyHelperLib in ShellPkg.dsc
+	8542fc5f95 NetworkPkg: Add the missing VariablePolicyHelperLib in NetworkPkg.dsc
+	ae35314e7b Maintainers.txt: Add Sami Mujawar as reviewer for ArmPkg
+	862ea6e836 OvmfPkg: change qemu default resolution to 1280x800
+	e95b44c90e ArmVirtPkg: change qemu default resolution to 1280x800
+	929804b172 OvmfPkg: add PcdVideoResolutionSource
+	7f25ddbc03 OvmfPkg/QemuVideoDxe: simplify InitializeBochsGraphicsMode
+	336da55ca8 OvmfPkg/QemuVideoDxe: drop QEMU_VIDEO_BOCHS_MODES->ColorDepth
+	55c05427b9 OvmfPkg/QemuVideoDxe: factor out QemuVideoBochsAddMode
+	49a2d8cbf5 OvmfPkg/QemuVideoDxe: parse edid blob, detect display resolution
+	ba79becd55 OvmfPkg/BaseCachingPciExpressLib: Migrate BaseCachingPciExpressLib
+	103fa647d1 ArmPkg: Replace CoreId and ClusterId with Mpidr in ARM_CORE_INFO struct
+	742dafd2cc DynamicTablesPkg: Print specifier macro for CM_OBJECT_ID
+	13136cc311 DynamicTablesPkg: FdtHwInfoParserLib: Parse Pmu info
+	5751d60821 DynamicTablesPkg: AmlLib: AmlAddPrtEntry() to handle GSI
+	5816bd3eab DynamicTablesPkg: AcpiSsdtPcieLibArm: Remove link device generation
+	dc1118fa0d ArmVirtPkg: Add cspell exceptions
+	0dbd356983 ArmVirtPkg/Kvmtool: Add DSDT ACPI table
+	312ef7a0a4 ArmVirtPkg/Kvmtool: Add Configuration Manager
+	17a02163bd ArmVirtPkg/Kvmtool: Enable ACPI support
+	5b3c682d91 ArmVirtPkg/Kvmtool: Enable Acpiview
+	017564d637 ArmPkg/ArmMmuLib AARCH64: avoid EL0 accessible mappings
+	45b1612659 DynamicTablesPkg: Add Memory32Fixed function
+	007a95055b DynamicTablesPkg: Remove redundant cast in AmlCodeGenReturn
+	33189f0527 DynamicTablesPkg: Add AmlCodeGenMethodRetInteger function
+	a4b7aa362d MdeModulePkg/Bus/Pci/PciBusDxe: Support platform PCI ROM override
+	6fb09da89f ShellPkg: Fix incorrect PPTT FlagName dereference
+	c09dbc92e9 BaseTools/Conf: Add new macro for customizing dll file reduction.
+	d4ac53aa91 BaseTools: Fix error leg in DscBuildData.py
+	f78b937c95 MdeModulePkg/RuntimeDxe: clear mVirtualMapMaxIndex
+	96b8b5fd10 MdeModulePkg/UiApp: Fix spelling of 'FRONTPAGE'
+	bd676f080a Maintainers.txt: add missing github IDs to OvmfPkf/Fdt reviewers
+	1f54eaa725 Maintainers.txt: update email for Leif Lindholm
+	b360b0b589 Maintainers.txt: Update email address
+	c9b7c6e0cc BaseTools: Update CLANG{35,38}_WARNING_OVERRIDES to ignore unused vars
+	42af706dfb BaseTools: Update brotli submodule
+	1193aa2dfb MdeModulePkg: update brotli submodule
+	85589ddbf6 OvmfPkg/VmgExitLib: Fix uninitialized variable warning with XCODE5
+	c28e376edc OvmfPkg/FvbServicesSmm: use the VmgExitLibNull
+	8a57673316 ShellPkg: Fix Ping GetTimerPeriod API failure
+	b24306f15d NetworkPkg: Fix incorrect unicode string of the AKM/Cipher Suite
+- Add amd-sev-es to the following descriptors because James Fehlig 
+  tested them (bsc#1196879):
+        60-ovmf-x86_64.json
+        60-ovmf-x86_64-2m.json
+        60-ovmf-x86_64-ms.json
+        60-ovmf-x86_64-2m-ms.json
+- Backported patches in ovmf-bsc1196879-sev-fix.patch for fixing SEV:
+        de463163d9 OvmfPkg/AmdSev: reserve snp pages
+	63c50d3ff2 OvmfPkg/ResetVector: cache the SEV status MSR value in workarea
+	f1d1c337e7 OvmfPkg/BaseMemEncryptLib: use the SEV_STATUS MSR value from workarea
+
+-------------------------------------------------------------------
 Thu Feb 17 02:14:26 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Sort file lists for reproducible build results

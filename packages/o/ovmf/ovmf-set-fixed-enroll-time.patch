@@ -11,15 +11,14 @@ Signed-off-by: Gary Lin <glin@suse.com>
  OvmfPkg/EnrollDefaultKeys/EnrollDefaultKeys.c | 10 ++++++++++
  1 file changed, 10 insertions(+)
 
-diff --git a/OvmfPkg/EnrollDefaultKeys/EnrollDefaultKeys.c b/OvmfPkg/EnrollDefaultKeys/EnrollDefaultKeys.c
-index f45cb799f726..0e42e49d48f2 100644
---- a/OvmfPkg/EnrollDefaultKeys/EnrollDefaultKeys.c
-+++ b/OvmfPkg/EnrollDefaultKeys/EnrollDefaultKeys.c
-@@ -301,6 +301,16 @@ EnrollListOfCerts (
-   if (EFI_ERROR (Status)) {
+Index: edk2-edk2-stable202202/OvmfPkg/EnrollDefaultKeys/EnrollDefaultKeys.c
+===================================================================
+--- edk2-edk2-stable202202.orig/OvmfPkg/EnrollDefaultKeys/EnrollDefaultKeys.c
++++ edk2-edk2-stable202202/OvmfPkg/EnrollDefaultKeys/EnrollDefaultKeys.c
+@@ -324,6 +324,15 @@ EnrollListOfCerts (
      goto FreeData;
    }
-+
+ 
 +  // Set the fixed time for the reproducible build
 +  // 2019-5-20 00:00:00
 +  SingleHeader->TimeStamp.Year       = 2019;
@@ -28,10 +27,7 @@ index f45cb799f726..0e42e49d48f2 100644
 +  SingleHeader->TimeStamp.Hour       = 0;
 +  SingleHeader->TimeStamp.Minute     = 0;
 +  SingleHeader->TimeStamp.Second     = 0;
-+
++ 
    SingleHeader->TimeStamp.Pad1       = 0;
    SingleHeader->TimeStamp.Nanosecond = 0;
    SingleHeader->TimeStamp.TimeZone   = 0;
--- 
-2.21.0
-

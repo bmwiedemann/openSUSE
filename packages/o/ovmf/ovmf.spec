@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -22,12 +22,12 @@
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-Version:        202111
+Version:        202202
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
-URL:            https://github.com/tianocore/edk2
+Url:            https://github.com/tianocore/edk2
 Source0:        edk2-edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source111:      https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
@@ -51,6 +51,7 @@ Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-disable-brotli.patch
+Patch7:         %{name}-bsc1196879-sev-fix.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -166,6 +167,7 @@ rm -rf $PKG_TO_REMOVE
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
