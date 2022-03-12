@@ -1,7 +1,7 @@
 #
-# spec file for package tycho
+# spec file for package tycho-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,7 @@ Patch5:         0006-Mockito-does-not-have-test-scope.patch
 # Fix incorrect generated requires
 Patch6:         0007-Fix-dependency-problems-when-bootstrapping-with-extr.patch
 Patch7:         0008-Use-custom-resolver-for-tycho-eclipserun-plugin.patch
+Patch10:        tycho-sourcetarget.patch
 Patch100:       fedoraproject-p2-bootstrap-fix.patch
 BuildRequires:  bash
 BuildRequires:  fdupes
@@ -110,9 +111,6 @@ BuildRequires:  mvn(org.ow2.asm:asm-tree)
 BuildRequires:  mvn(org.ow2.asm:asm-util)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-simple)
-BuildConflicts: java >= 9
-BuildConflicts: java-devel >= 9
-BuildConflicts: java-headless >= 9
 Requires:       ecj >= 4.7.3a-1
 # maven-clean-plugin is bound to "initialize" Maven phase for
 # "eclipse-repository" projects
@@ -207,6 +205,7 @@ mv fedoraproject-p2-%{fp_p2_git_tag} fedoraproject-p2
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch10 -p1
 %patch100
 
 # Unneeded for RPM builds
@@ -346,7 +345,7 @@ sed -i '
 %endif
 %{mvn_build} %{no_javadoc} -f -- \
   -Dtycho-version=%{version}-SNAPSHOT -DtychoBootstrapVersion=%{version}-SNAPSHOT \
-  -Dmaven.repo.local=$(pwd)/.m2 -Dfedora.p2.repos=$(pwd)/bootstrap
+  -Dmaven.repo.local=$(pwd)/.m2 -Dfedora.p2.repos=$(pwd)/bootstrap -Dsource=8
 
 %{mvn_artifact} fedoraproject-p2/org.fedoraproject.p2/pom.xml
 

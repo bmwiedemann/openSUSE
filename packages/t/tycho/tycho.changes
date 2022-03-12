@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 12 09:50:44 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force building with java 1.8, but with any java >= 1.8
+- Added patch:
+  * tycho-sourcetarget.patch
+    + build with source/target levels 1.6, which allows to build
+      with javas >= 9
+
+-------------------------------------------------------------------
 Fri Jul  3 09:59:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.6.0
