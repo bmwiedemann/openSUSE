@@ -29,7 +29,7 @@
 %endif
 
 Name:           fcitx5-qt
-Version:        5.0.10
+Version:        5.0.11
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 12 08:44:23 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.11
+  * Use highlight color from fcitx theme in client side input
+    window, instead of Qt.
+
+-------------------------------------------------------------------
 Sat Feb 12 15:11:44 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.10
