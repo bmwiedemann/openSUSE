@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Mar  4 18:57:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 2.4.155.1:
+ - Changes
+   - Bump required python version for doc. [Raphaël Vinot]
+   - Remove python 3.6 from metadata. [Raphaël Vinot]
+ - Fix
+   - Incorrect call when requesting a new API key. [Raphaël Vinot]
+- update to version 2.4.155:
+ - New
+   - Get_new_authkey for a user. [Raphaël Vinot]
+   - [dep] Use pydeep2 instead of pydeep. [Jakub Onderka]
+ - Changes
+   - Re-bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump misp-objects. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump new minimal python version to 3.7. [Raphaël Vinot]
+   - Perl dependencies not longer required. [Jakub Onderka]
+   - Simplify submodules checkout. [Jakub Onderka]
+   - Use https for link to documentation. [Jakub Onderka]
+   - Bump deps. [Raphaël Vinot]
+   - [misp-objects] updated to the latest version. [Alexandre Dulaunoy]
+   - [FIPS] no clean way to support OpenSSL hashlib interface for FIPS.
+     [Alexandre Dulaunoy]
+   - [FIPS] falling back on older version of Python not having
+     usedforsecurity. [Alexandre Dulaunoy]
+   - [FIPS] in some cases, the `usedforsecurity` is not used. So fail if
+     the FIPS compliance is required and then the `usedforsecurity` is
+     disabled. [Alexandre Dulaunoy]
+   - [feeds] FIPS: when MD5 hashes are generated for fast-lookup it's not
+     for security. [Alexandre Dulaunoy]
+     hashlib provides an option to tell if the hash is used for security or
+     not. By default, it's set to True. For the feed cache generation, it's
+     not. Then usedforsecurity=False
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps, objects. [Raphaël Vinot]
+ - Fix
+   - Libfuzzy-dev is not longer required. [Jakub Onderka]
+   - [mispevent] cannot type. [Alexandre Dulaunoy]
+   - Make mypy happy. [Raphaël Vinot]
+ - Other
+   - Create add_filetype_object_from_csv.py. [Félix Herrenschmidt]
+   - Add feed option for local tag exclusion #817. [deku]
+- update to version 2.4.152:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps, object templates. [Raphaël Vinot]
+   - Bump objects templates. [Raphaël Vinot]
+   - Bump misp-objects. [Raphaël Vinot]
+   - Lief doesn't supports python 3.10. [Raphaël Vinot]
+   - Debug poetry install, freezes on the GHA. [Raphaël Vinot]
+   - Bump deps, use pytest. [Raphaël Vinot]
+   - [feed-generator] support for distribution and sharing groups.
+     [Christophe Vandeplas]
+ - Fix
+   - Update live tests to support proper format of SGs. [Raphaël Vinot]
+   - [sharinggroups] Fixes wrong model for SharingGroupOrg. [Christophe
+     Vandeplas]
+   - [feed-generator] code style fixes. [Christophe Vandeplas]
+   - [feed-generator] keeping function compatibility. [Christophe
+     Vandeplas]
+   - [feed-generator] fix missing except type. [Christophe Vandeplas]
+
+-------------------------------------------------------------------
 Wed Dec 22 11:25:46 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 2.4.152:
