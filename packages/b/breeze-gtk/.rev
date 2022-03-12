@@ -926,4 +926,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>KDE Plasma 5.24.2</comment>
     <requestid>956947</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>87f11743b1d0c3971182a844f29fd03d</srcmd5>
+    <version>5.24.3</version>
+    <time>1647101682</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.3</comment>
+    <requestid>960854</requestid>
+  </revision>
 </revisionlist>
