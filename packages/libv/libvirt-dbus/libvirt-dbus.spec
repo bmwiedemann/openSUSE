@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt-dbus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           libvirt-dbus
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        D-Bus API binding for libvirt
 License:        LGPL-2.1-or-later
 URL:            https://libvirt.org/
-Source0:        https://libvirt.org/sources/dbus/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        system-user-%{name}.conf
-# PATCH-FIX-UPSTREAM
-Patch:          libvirt-dbus-systemd.diff
 BuildRequires:  gcc
 BuildRequires:  meson
 BuildRequires:  polkit
@@ -36,7 +34,6 @@ BuildRequires:  pkgconfig(libvirt)
 BuildRequires:  pkgconfig(libvirt-glib-1.0)
 BuildRequires:  pkgconfig(systemd)
 Requires:       polkit
-Requires(pre):  group(libvirt)
 Requires:       user(libvirtdbus)
 
 %description
@@ -44,6 +41,8 @@ This package provides D-Bus API for libvirt
 
 %package -n system-user-libvirt-dbus
 Summary:        System user for libvirt-dbus
+Requires(pre):  group(libvirt)
+BuildArch:      noarch
 %sysusers_requires
 
 %description -n system-user-libvirt-dbus
@@ -78,7 +77,7 @@ ln -s service %{buildroot}%{_sbindir}/rclibvirt-dbus
 %pre -n system-user-%{name} -f system-user-%{name}.pre
 
 %files
-%doc AUTHORS.rst NEWS.rst
+%doc NEWS.rst
 %license COPYING
 %{_sbindir}/rclibvirt-dbus
 %{_sbindir}/libvirt-dbus
