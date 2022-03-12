@@ -23,7 +23,7 @@
 %bcond_without released
 
 Name:           plasma5-disks
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 Summary:        Plasma service for monitoring disk health
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -92,7 +92,11 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 %{_datadir}/dbus-1/system-services/org.kde.kded.smart.service
 %{_kf5_dbuspolicydir}/org.kde.kded.smart.conf
 %{_datadir}/polkit-1/actions/org.kde.kded.smart.policy
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kauth/kded-smart-helper
+%else
+%{_kf5_libdir}/libexec/kauth/kded-smart-helper
+%endif
 
 %if %{with released}
 %files lang -f %{name}.lang
