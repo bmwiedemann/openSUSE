@@ -1027,4 +1027,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>KDE Plasma 5.24.2</comment>
     <requestid>956959</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>0c2a60c1db022ff3ce1b2394aeacd1ce</srcmd5>
+    <version>5.24.3</version>
+    <time>1647101689</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.3</comment>
+    <requestid>960866</requestid>
+  </revision>
 </revisionlist>
