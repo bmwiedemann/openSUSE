@@ -25,7 +25,7 @@
 %endif
 
 Name:           fcitx5
-Version:        5.0.14
+Version:        5.0.15
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -79,6 +79,7 @@ BuildRequires:  appstream-glib-devel
 %endif
 Provides:       fcitx = %{version}
 Obsoletes:      fcitx <= 4.2.9.8
+Provides:       inputmethod
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  rsvg-convert
 %else
@@ -108,7 +109,7 @@ Group:          System/Libraries
 Provides:       libFcitx5Config5 = %{version}
 Obsoletes:      libFcitx5Config5 < %{version}
 Provides:       libfcitx-config4 = %{verson}
-Obsoletes:       libfcitx-config4 <= 4.2.9.8
+Obsoletes:      libfcitx-config4 <= 4.2.9.8
 
 %description -n libFcitx5Config6
 This package provides configuration libraries for fcitx5.
