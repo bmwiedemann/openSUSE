@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           pam_kwallet
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
@@ -69,6 +69,7 @@ module.
 %build
   # Before usrmerge, the PAM module goes into /lib*/security/
   %{cmake_kf5 -d build -- \
+	  -DKDE_INSTALL_LIBEXECDIR=%{_libexecdir} \
   %if !0%{?usrmerged}
       -DKDE_INSTALL_LIBDIR=/%{_lib}
   %endif
