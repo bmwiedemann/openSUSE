@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  8 18:10:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- Changes since 5.24.2:
+  * kcms/touchpad: Remove weird Q_EMIT changed(false) in resizeEvent
+- Drop patches, now upstream:
+  * 0001-kcms-touchpad-Remove-weird-Q_EMIT-changed-false-in-r.patch
+- Restore compatibility with older kf5-filesystem
+- Remove duplicate mention of kimpanel-ibus-panel
+
+-------------------------------------------------------------------
 Mon Mar  7 11:02:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)

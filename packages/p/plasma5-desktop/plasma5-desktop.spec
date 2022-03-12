@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           plasma5-desktop
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -43,8 +43,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-kcms-touchpad-Remove-weird-Q_EMIT-changed-false-in-r.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Apply-branding-to-default-favorites.patch
 Patch101:       0002-No-usr-bin-env-in-shebangs.patch
@@ -346,7 +344,6 @@ Press Meta+. to open an emoji selection window.
 %{_kf5_sharedir}/solid/
 %{_kf5_plasmadir}/
 %{_kf5_appstreamdir}/
-%{_libexecdir}/kimpanel-ibus-panel
 %{_kf5_qmldir}/org/kde/plasma/private/kimpanel/
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.kimpanel/
 %if !%{have_ibus_dict_emoji_pkg}
@@ -362,9 +359,15 @@ Press Meta+. to open an emoji selection window.
 %dir %{_kf5_plugindir}/plasma/dataengine/
 %{_kf5_plugindir}/plasma/dataengine/plasma_engine_touchpad.so
 %endif
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/kauth/kcmdatetimehelper
 %{_libexecdir}/kimpanel-ibus-panel
 %{_libexecdir}/kimpanel-ibus-panel-launcher
+%else
+%{_kf5_libdir}/libexec/kauth/kcmdatetimehelper
+%{_kf5_libdir}/libexec/kimpanel-ibus-panel
+%{_kf5_libdir}/libexec/kimpanel-ibus-panel-launcher
+%endif
 
 %files emojier
 %{_kf5_bindir}/ibus-ui-emojier-plasma
