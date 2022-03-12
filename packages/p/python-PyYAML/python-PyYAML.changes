@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  9 12:51:17 UTC 2022 - pgajdos@suse.com
+
+- do not use setup.py test construct
+  https://trello.com/c/me9Z4sIv/121-setuppy-test-leftovers
+
+-------------------------------------------------------------------
 Mon Nov  1 20:36:13 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Add patch setuptools.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyYAML
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,7 @@ find examples/ -type f | xargs chmod a-x
 %ifarch ppc ppc64 s390 s390x
 ulimit -Sn 2048
 %endif
-%python_exec setup.py test
+%{python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python tests/lib/test_all.py}
 
 %files %{python_files}
 %license LICENSE

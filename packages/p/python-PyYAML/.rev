@@ -234,4 +234,12 @@
   * remove remaining direct distutils usage</comment>
     <requestid>933317</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>82a69bb13140e88a75ef12f1746967e6</srcmd5>
+    <version>6.0</version>
+    <time>1647101674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961036</requestid>
+  </revision>
 </revisionlist>
