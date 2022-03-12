@@ -24,7 +24,7 @@
 
 %bcond_without released
 Name:           plasma5-phone-components
-Version:        5.24.0
+Version:        5.24.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,9 +34,9 @@ Summary:        Plasma Mobile
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         plasma-mobile-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-mobile-%{version}.tar.xz
 %if %{with released}
-Source1:        plasma-mobile-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-mobile-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5ModemManagerQt) >= %{kf5_version}
+BuildRequires:  cmake(KF5NetworkManagerQt) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
@@ -57,11 +58,12 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.1.90
+# TODO: Rename the package itself at some point
+Provides:       plasma5-mobile = %{version}
 # Forced on startup
 Requires:       qqc2-breeze-style
 # QML imports
 Requires:       bluez-qt-imports
-Requires:       kactivities5-imports
 Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kwin5
@@ -79,8 +81,6 @@ Requires:       plasma5-workspace >= %{_plasma5_bugfix}
 %description
 Plasma shell and components targeted for phones.
 
-%lang_package
-
 %prep
 %autosetup -p1 -n plasma-mobile-%{version}
 
@@ -90,9 +90,6 @@ Plasma shell and components targeted for phones.
 
 %install
   %kf5_makeinstall -C build
-%if %{with released}
-  %kf5_find_lang
-%endif
 
   # Wut?
   sed -i '#touch /tmp/simplelogin_starting#d' %{buildroot}%{_kf5_bindir}/kwinwrapper
@@ -118,8 +115,6 @@ Plasma shell and components targeted for phones.
 %dir %{_kf5_plasmadir}/shells
 %{_kf5_plasmadir}/shells/org.kde.plasma.phoneshell/
 %dir %{_kf5_plasmadir}/plasmoids/
-%{_kf5_plasmadir}/plasmoids/org.kde.phone.activities/
-%{_kf5_plasmadir}/plasmoids/org.kde.phone.krunner/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.panel/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.homescreen/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.taskpanel/
@@ -134,20 +129,12 @@ Plasma shell and components targeted for phones.
 %{_kf5_plugindir}/plasma/applets/plasma_containment_phone_taskpanel.so
 %{_kf5_appstreamdir}/org.kde.plasma.phone.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.phoneshell.appdata.xml
-%{_kf5_appstreamdir}/org.kde.phone.activities.appdata.xml
-%{_kf5_appstreamdir}/org.kde.phone.krunner.appdata.xml
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.activities.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.phone.homescreen.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.krunner.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.phone.panel.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.phone.taskpanel.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.airplanemode.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.nightcolor.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phone.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phoneshell.desktop
-
-%if %{with released}
-%files lang -f %{name}.lang
-%endif
 
 %changelog

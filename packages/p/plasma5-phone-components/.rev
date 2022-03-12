@@ -192,4 +192,12 @@
     <comment>Plasma 5.24.0. On Leap 15.3 there are some build failures, but those happen in K:F5 already and are unrelated to 5.24.0 (forwarded request 951861 from Vogtinator)</comment>
     <requestid>951902</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8fc0b80580a64de900c9644db4224819</srcmd5>
+    <version>5.24.3</version>
+    <time>1647101713</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.24.3</comment>
+    <requestid>960892</requestid>
+  </revision>
 </revisionlist>

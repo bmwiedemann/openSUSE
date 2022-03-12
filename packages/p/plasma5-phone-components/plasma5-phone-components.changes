@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Mar  9 10:49:13 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove applets/activities, applets/krunner and the lang
+  subpackage (since those applets where the only ones using it)
+  as they were removed by upstream.
+
+-------------------------------------------------------------------
+Tue Mar  8 18:10:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- No code changes since 5.24.2
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * actiondrawer: Darken landscape drawer background to be easier to read
+  * quicksettings: Ensure mobile data quick setting says not available if not available
+  * Ensure we have a default wallpaper
+  * homescreen: Fix app drawer not interactable in empty space
+  * taskpanel: Fix close action
+
+-------------------------------------------------------------------
+Tue Feb 15 20:01:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * mmplugin: Use NM autoconnect instead of wwan
+  * ci: Add networkmanager-qt
+  * quicksettings: Make mobile data quick setting use NM API directly
+  * taskswitcher: Ensure window is in maximized state when activating
+  * taskswitcher: Remove global variable calls
+  * mmplugin: Fix SIM being reported as locked when no sim is inserted
+  * applets/activities & applets/krunner: Remove from repo
+
+-------------------------------------------------------------------
 Sat Feb  5 19:51:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.0
