@@ -7541,11 +7541,10 @@ unsorted:
   - jdepend-demo 
   - jdependency 
   - jdependency-javadoc 
-  - jdo2-api 
-  - jdo2-api-javadoc 
   - jdom 
   - jdom2 
   - jdom2-javadoc 
+  - jdupes 
   - jedit 
   - jedit-javadoc 
   - jefferson 
@@ -7766,6 +7765,7 @@ unsorted:
   - julia-debug 
   - julia-devel 
   - julia-doc 
+  - juliaup 
   - julius 
   - junit 
   - junit-javadoc 
@@ -12163,6 +12163,7 @@ unsorted:
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
+  - libmozjs-91-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
@@ -12889,19 +12890,20 @@ unsorted:
   - libplplotfortran0 
   - libplplotqt2 
   - libplplotwxwidgets1 
-  - libpmem-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmem-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmem2-1: [x86_64] 
-  - libpmem2-devel: [x86_64] # devel package of dvd:libpmemobj1 
-  - libpmemblk-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmem2-devel: [x86_64] # devel package of dvd:pmdk 
+  - libpmemblk-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmemblk1: [x86_64] 
   - libpmemkv1: [x86_64] 
   - libpmemkv_json_config1: [x86_64] 
-  - libpmemlog-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmemlog-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmemlog1: [x86_64] 
   - libpmemobj-cpp-devel: [x86_64] 
   - libpmemobj-cpp-devel-doc: [x86_64] 
-  - libpmemobj-devel: [x86_64] # devel package of dvd:libpmemobj1 
-  - libpmempool-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmemobj-devel: [x86_64] # devel package of dvd:pmdk 
+  - libpmemobj1: [x86_64] 
+  - libpmempool-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmempool1: [x86_64] 
   - libpmi0: [x86_64] 
   - libpmix2: [x86_64] 
@@ -13519,7 +13521,7 @@ unsorted:
   - librnp0 
   - librocsgraphtheory0 
   - librpma0: [x86_64] 
-  - librpmem-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - librpmem-devel: [x86_64] # devel package of dvd:pmdk 
   - librpmem1: [x86_64] 
   - librrd8 
   - librsb-devel 
@@ -16378,6 +16380,8 @@ unsorted:
   - mozilla-zilla-slab-fonts 
   - mozjs78 
   - mozjs78-devel 
+  - mozjs91 
+  - mozjs91-devel 
   - mozldap-devel: [x86_64] 
   - mozldap-libs: [x86_64] 
   - mozldap-tools: [x86_64] 
@@ -31028,6 +31032,7 @@ unsorted:
   - qdox-javadoc 
   - qelectrotech 
   - qemacs 
+  - qemu-SLOF 
   - qemu-accel-qtest 
   - qemu-arm 
   - qemu-audio-alsa 
@@ -41372,7 +41377,7 @@ unsorted:
   - tomcat-lib 
   - tomcat-servlet-4_0-api 
   - tomcat-webapps 
-  - tomcatjss: [x86_64] 
+  - tomcatjss 
   - tomoe 
   - tomoe-devel 
   - tomoe-doc 
