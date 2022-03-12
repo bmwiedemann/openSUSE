@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-compiler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,10 @@
 
 
 Name:           plexus-compiler
-Version:        2.8.2
+Version:        2.11.1
 Release:        0
 Summary:        Compiler call initiators for Plexus
-# extras subpackage has a bit different licensing
-# parts of compiler-api are ASL2.0/MIT
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-compiler
 Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}.tar.gz
@@ -34,6 +32,7 @@ BuildRequires:  ecj
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  plexus-classworlds
+BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
@@ -47,10 +46,7 @@ additional compilers see %{name}-extras package.
 
 %package extras
 Summary:        Extra compiler support for %{name}
-# ASL 2.0: src/main/java/org/codehaus/plexus/compiler/util/scan/
-#          ...codehaus/plexus/compiler/csharp/CSharpCompiler.java
-# ASL 1.1/MIT: ...codehaus/plexus/compiler/jikes/JikesCompiler.java
-License:        MIT AND Apache-2.0 AND Apache-1.1
+License:        Apache-2.0
 Group:          Development/Libraries/Java
 Requires:       mvn(org.codehaus.plexus:plexus-compiler-api) = %{version}
 Requires:       mvn(org.codehaus.plexus:plexus-utils)
@@ -61,7 +57,7 @@ Additional support for csharp, eclipse and jikes compilers
 
 %package javadoc
 Summary:        Javadoc for %{name}
-License:        MIT AND Apache-2.0 AND Apache-1.1
+License:        Apache-1.1 AND Apache-2.0 AND MIT
 Group:          Documentation/HTML
 
 %description javadoc
@@ -87,15 +83,19 @@ cp %{SOURCE2} LICENSE.MIT
 
 for i in plexus-compiler-api plexus-compiler-manager plexus-compiler-test \
          plexus-compilers/plexus-compiler-csharp plexus-compilers/plexus-compiler-eclipse \
-		 plexus-compilers/plexus-compiler-jikes plexus-compilers/plexus-compiler-javac \
-		 plexus-compilers/plexus-compiler-j2objc; do
+		 plexus-compilers/plexus-compiler-javac plexus-compilers/plexus-compiler-j2objc; do
   %pom_remove_parent ${i}
   %pom_xpath_inject "pom:project" "<version>%{version}</version><groupId>org.codehaus.plexus</groupId>" ${i}
 done
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils plexus/classworlds plexus-containers/plexus-container-default ecj
+build-jar-repository -s lib plexus/utils plexus/classworlds \
+  plexus-containers/plexus-container-default \
+  plexus-containers/plexus-component-annotations \
+  plexus-metadata-generator objectweb-asm/asm \
+  jdom2/jdom2 commons-cli qdox plexus/cli guava/guava xbean/xbean-reflect \
+  ecj
 # Tests are skipped because of unavailable plexus-compiler-test artifact
 %{ant} \
   -Dtest.skip=true \
@@ -106,16 +106,15 @@ build-jar-repository -s lib plexus/utils plexus/classworlds plexus-containers/pl
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
 for i in plexus-compiler-api plexus-compiler-manager \
          plexus-compilers/plexus-compiler-csharp plexus-compilers/plexus-compiler-eclipse \
-		 plexus-compilers/plexus-compiler-jikes plexus-compilers/plexus-compiler-javac \
-		 plexus-compilers/plexus-compiler-j2objc; do
+		 plexus-compilers/plexus-compiler-javac plexus-compilers/plexus-compiler-j2objc; do
   install -pm 0644 ${i}/target/$(basename ${i})-%{version}.jar %{buildroot}%{_javadir}/%{name}/$(basename ${i}).jar
 done
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 # These ones belong to the *-extras package
-for i in plexus-compilers/plexus-compiler-csharp plexus-compilers/plexus-compiler-eclipse \
-		 plexus-compilers/plexus-compiler-jikes; do
+for i in plexus-compilers/plexus-compiler-csharp \
+		 plexus-compilers/plexus-compiler-eclipse; do
   bsnm=$(basename ${i})
   install -pm 0644 ${i}/pom.xml  %{buildroot}%{_mavenpomdir}/%{name}/$bsnm.pom
   %add_maven_depmap %{name}/$bsnm.pom %{name}/$bsnm.jar -f extras
@@ -131,8 +130,7 @@ done
 # javadoc
 for i in plexus-compiler-api plexus-compiler-manager \
          plexus-compilers/plexus-compiler-csharp plexus-compilers/plexus-compiler-eclipse \
-		 plexus-compilers/plexus-compiler-jikes plexus-compilers/plexus-compiler-javac \
-		 plexus-compilers/plexus-compiler-j2objc; do
+		 plexus-compilers/plexus-compiler-javac plexus-compilers/plexus-compiler-j2objc; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/${i}
   cp -pr ${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/${i}/
 done
