@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-chinese-addons
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           fcitx5-chinese-addons
-Version:        5.0.10
+Version:        5.0.12
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-chinese-addons
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
@@ -52,33 +52,33 @@ BuildRequires:  xz
 Conflicts:      fcitx <= 4.2.9.8
 Supplements:    fcitx5
 Provides:       fcitx-cloudpinyin = %{version}
+Provides:       fcitx-googlepinyin = %{version}
+Provides:       fcitx-libpinyin = %{version}
 Provides:       fcitx-pinyin = %{version}
+Provides:       fcitx-sunpinyin = %{version}
 Provides:       fcitx-table = %{version}
+Provides:       fcitx-table-cn-bingchan = %{version}
 Provides:       fcitx-table-cn-cangjie = %{version}
 Provides:       fcitx-table-cn-dianbao = %{version}
 Provides:       fcitx-table-cn-erbi = %{version}
-Provides:       fcitx-table-cn-bingchan = %{version}
 Provides:       fcitx-table-cn-wanfeng = %{version}
-Provides:       fcitx-table-cn-wubi-pinyin = %{version}
 Provides:       fcitx-table-cn-wubi = %{version}
+Provides:       fcitx-table-cn-wubi-pinyin = %{version}
 Provides:       fcitx-table-cn-ziran = %{version}
-Provides:       fcitx-googlepinyin = %{version}
-Provides:       fcitx-libpinyin = %{version}
-Provides:       fcitx-sunpinyin = %{version}
 Obsoletes:      fcitx-cloudpinyin <= 0.3.7
+Obsoletes:      fcitx-googlepinyin <= 0.1.6
+Obsoletes:      fcitx-libpinyin <= 0.5.3
 Obsoletes:      fcitx-pinyin <= 4.2.9.6
+Obsoletes:      fcitx-sunpinyin <= 0.4.2
 Obsoletes:      fcitx-table <= 4.2.9.6
+Obsoletes:      fcitx-table-cn-bingchan < 4.2.9.6
 Obsoletes:      fcitx-table-cn-cangjie < 4.2.9.6
 Obsoletes:      fcitx-table-cn-dianbao < 4.2.9.6
 Obsoletes:      fcitx-table-cn-erbi < 4.2.9.6
-Obsoletes:      fcitx-table-cn-bingchan < 4.2.9.6
 Obsoletes:      fcitx-table-cn-wanfeng < 4.2.9.6
-Obsoletes:      fcitx-table-cn-wubi-pinyin < 4.2.9.6
 Obsoletes:      fcitx-table-cn-wubi < 4.2.9.6
+Obsoletes:      fcitx-table-cn-wubi-pinyin < 4.2.9.6
 Obsoletes:      fcitx-table-cn-ziran < 4.2.9.6
-Obsoletes:      fcitx-googlepinyin <= 0.1.6
-Obsoletes:      fcitx-libpinyin <= 0.5.3
-Obsoletes:      fcitx-sunpinyin <= 0.4.2
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
