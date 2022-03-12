@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           polkit-kde-agent-5
-Version:        5.24.2
+Version:        5.24.3
 Release:        0
 Summary:        PolicyKit authentication agent for KDE
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -84,7 +84,11 @@ Provides Policy Kit Authentication Agent that nicely fits to KDE.
 %{_kf5_configdir}/autostart/polkit-kde-authentication-agent-1.desktop
 %{_kf5_notifydir}/
 %{_kf5_applicationsdir}/org.kde.polkit-kde-authentication-agent-1.desktop
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
 %{_libexecdir}/polkit-kde-authentication-agent-1
+%else
+%{_kf5_libdir}/libexec/polkit-kde-authentication-agent-1
+%endif
 %{_userunitdir}/plasma-polkit-agent.service
 
 %changelog
