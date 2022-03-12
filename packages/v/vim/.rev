@@ -5683,4 +5683,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Some command completion functions are too long.</comment>
     <requestid>957122</requestid>
   </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>80d0a82fe059f97a88737a88d98f1198</srcmd5>
+    <version>8.2.4542</version>
+    <time>1647101674</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.4542, fixes the following problems
+  * Terminal test may fail on some machines.
+  * The GPM library can only be linked statically.
+  * Vim9: compiling filter() call fails with funcref that has unknown
+  arguments.
+  * Vim9: compiling sort() call fails with a funcref that has unknown
+  arguments.
+  * Vim9: wrong error for defining dict function.
+  * Not enough testing for quickfix code.
+  * Completion only uses strict matching.
+  * Dtrace files are recognized as filetype D.
+  * Fuzzy completion does not order matches properly.
+  &quot;create-directories&quot; as the final argument.
+  * Running filetype test leaves file behind.
+  * Coverity warns for uninitialized struct member.
+  * Coverity warns for uninitialized variable.
+  * Coverity warns for use of a freed function name.
+  * Coverity warnds for not checking return value of ftell().
+  * Memory allocation failures not tested in quickfix code.
+  * Fuzzy cmdline completion does not work for lower case.
+  * Operator name spelled wrong.
+  * Crash when using fuzzy completion.
+  * No fuzzy completieon for maps and abbreviations.
+  * Suspending with CTRL-Z does not work on Android.
+  * Cmdline popup menu not removed when 'lazyredraw' is set.
+  * No fuzzy cmdline completion for user defined completion.
+  * Command completion makes two rounds to collect matches.
+  * Vim9: some error messages are not tested.
+  * Compiler warning for uninitialized variable.
+  * Vim9: cannot compare with v:null.</comment>
+    <requestid>961038</requestid>
+  </revision>
 </revisionlist>

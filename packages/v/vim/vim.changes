@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri Mar 11 09:22:50 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.4542, fixes the following problems
+  * Terminal test may fail on some machines.
+  * The GPM library can only be linked statically.
+  * Vim9: compiling filter() call fails with funcref that has unknown
+  arguments.
+  * Vim9: compiling sort() call fails with a funcref that has unknown
+  arguments.
+  * Vim9: wrong error for defining dict function.
+  * Not enough testing for quickfix code.
+  * Completion only uses strict matching.
+  * Dtrace files are recognized as filetype D.
+  * Fuzzy completion does not order matches properly.
+  "create-directories" as the final argument.
+  * Running filetype test leaves file behind.
+  * Coverity warns for uninitialized struct member.
+  * Coverity warns for uninitialized variable.
+  * Coverity warns for use of a freed function name.
+  * Coverity warnds for not checking return value of ftell().
+  * Memory allocation failures not tested in quickfix code.
+  * Fuzzy cmdline completion does not work for lower case.
+  * Operator name spelled wrong.
+  * Crash when using fuzzy completion.
+  * No fuzzy completieon for maps and abbreviations.
+  * Suspending with CTRL-Z does not work on Android.
+  * Cmdline popup menu not removed when 'lazyredraw' is set.
+  * No fuzzy cmdline completion for user defined completion.
+  * Command completion makes two rounds to collect matches.
+  * Vim9: some error messages are not tested.
+  * Compiler warning for uninitialized variable.
+  * Vim9: cannot compare with v:null.
+  * Build error with +eval but without +channel or +job.
+  * Failing test for comparing v:null with number.
+  * Terminal focus reporting only works for xterm-like terminals. (Jonathan
+  Rascher)
+  * MS-Windows makefile dependencies are outdated.
+  * No error if an option is given an invalid value with ":let &opt = val".
+  * Options test fails in the GUI.
+  * The find_tags() function is much too long.
+  * Help test fails in 24 line terminal.
+  * Coverity gives warnings after tags code refactoring.
+  * Wrong color for half of wide character next to pum scrollbar.
+  * Using <Plug> with "noremap" does not work.
+  * Vim9: at the script level declarations leak from try block to catch and
+  finally block.
+  * Vim9: can declare a global variable on the command line.
+  * With 'showbreak' set and after the end of the line the cursor may be
+  displayed in the wrong position.
+  * In the GUI a modifier is not recognized for the key typed after CTRL-X,
+  which may result in a mapping to be used. (Daniel            Steinberg)
+  * Vim9: there is no point in supporting :Print and :mode.
+  * When there is a partially matching map and modifyOtherKeys is active a
+  full map may not work.
+  * Vim9: outdated "autocmd nested" still works.
+  * "pattern not found" for :global is not an error message.
+  * Test fails because of new error message.
+  * Vim9: cannot assign to a global variable on the command line.
+  * Vim9: can declare a variable with ":va".
+  * Vim9: shortening commands leads to confusing script.
+  * Filetype test fails.
+  * The find_tags_in_file() function is much too long.
+  * Window-local directory is not applied if 'acd' fails.
+  * Vim9: some flow commands can be shortened.
+  * Old subsitute syntax is still supported.
+  * Build failure without the +eval feature.
+  * The binary tag search feature is always enabled.
+  * Vim9: Can still use ":fini" and ":finis" for ":finish".
+  * Using wrong highlight for cursor line number.
+  * Build failure without the +diff feature. (John Marriott)
+  * GUI test fails with Motif. (Dominique Pellé)
+  * When gvim is started maximized the 'window' option isn't set
+  properly. (Christian J. Robinson)
+  * Some GUI tests don't work on Athena.
+  * Vim9: cannot set variables to a null value.
+  * The Athena GUI is old and does not work well.
+  * Crash when using null_function for a partial.
+  * Vim9: comparing partial with function fails.
+  * Making comparison with null work changes legacy behavior.
+  * LGTM warnings for condition always true and buffer size too small.
+  * Suspending with CTRL-Z does not work on OpenBSD.
+  * Vim9: no test that after assigning null the type is still checked.
+  * Vim9: "is" operator with empty string and null returns true.
+  * Filename modifer ":8" removes the filename.
+  * Debugger test fails when breaking on expression.
+  * Output from linter and language server shows up in git.
+  * The find_tags_in_file() function is too long.
+  * When comparing special v:none and v:null are handled the same when
+  compiling.
+  * Line number for error is off by one.
+  * Crash in debugger when a variable is not available in the current block.
+  * Vim9: "break" inside try/catch not handled correctly.
+
+-------------------------------------------------------------------
 Wed Feb 23 16:05:16 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4456, fixes the following problems
