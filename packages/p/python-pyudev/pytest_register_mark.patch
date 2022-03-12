@@ -1,12 +1,5 @@
----
- pytest.ini                               |    5 ++++-
- tests/_device_tests/_attributes_tests.py |    1 +
- tests/_device_tests/_device_tests.py     |    1 +
- tests/_device_tests/_devices_tests.py    |    3 +++
- tests/test_enumerate.py                  |    2 +-
- tests/test_util.py                       |    2 ++
- 6 files changed, 12 insertions(+), 2 deletions(-)
-
+diff --git a/pytest.ini b/pytest.ini
+index 9d9100b..9c60249 100644
 --- a/pytest.ini
 +++ b/pytest.ini
 @@ -1,3 +1,6 @@
@@ -17,9 +10,11 @@
 +markers =
 +    conversion
 +    real_udev
+diff --git a/tests/_device_tests/_attributes_tests.py b/tests/_device_tests/_attributes_tests.py
+index 4e42cda..0ad1384 100644
 --- a/tests/_device_tests/_attributes_tests.py
 +++ b/tests/_device_tests/_attributes_tests.py
-@@ -122,6 +122,7 @@ class TestAttributes(object):
+@@ -122,6 +122,7 @@ def test_asbool(self, a_context, device_datum):
                  with pytest.raises(ValueError):
                      device.attributes.asbool(key)
  
@@ -27,9 +22,11 @@
      @_UDEV_TEST(167, "test_available_attributes")
      @given(strategies.sampled_from(_DEVICES))
      @settings(max_examples=5)
+diff --git a/tests/_device_tests/_device_tests.py b/tests/_device_tests/_device_tests.py
+index 30230f8..1b9a1af 100644
 --- a/tests/_device_tests/_device_tests.py
 +++ b/tests/_device_tests/_device_tests.py
-@@ -215,6 +215,7 @@ class TestDevice(object):
+@@ -215,6 +215,7 @@ def test_device_node(self, a_context, device_datum):
          if device.device_node:
              assert is_unicode_string(device.device_node)
  
@@ -37,9 +34,11 @@
      @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
      @settings(max_examples=5)
      def test_device_number(self, a_context, device_datum):
+diff --git a/tests/_device_tests/_devices_tests.py b/tests/_device_tests/_devices_tests.py
+index 2cb4825..01e5a8a 100644
 --- a/tests/_device_tests/_devices_tests.py
 +++ b/tests/_device_tests/_devices_tests.py
-@@ -128,6 +128,7 @@ class TestDevices(object):
+@@ -128,6 +128,7 @@ def test_from_name_nonexisting_subsystem(self):
          assert error.subsystem == "no_such_subsystem"
          assert error.sys_name == "foobar"
  
@@ -47,7 +46,7 @@
      @failed_health_check_wrapper
      @given(
          _CONTEXT_STRATEGY,
-@@ -143,6 +144,7 @@ class TestDevices(object):
+@@ -143,6 +144,7 @@ def test_from_device_number(self, a_context, a_device):
          device = Devices.from_device_number(a_context, typ, a_device.device_number)
          assert a_device == device
  
@@ -55,7 +54,7 @@
      @failed_health_check_wrapper
      @given(
          _CONTEXT_STRATEGY,
-@@ -178,6 +180,7 @@ class TestDevices(object):
+@@ -178,6 +180,7 @@ def test_from_device_number_invalid_type(self):
          with pytest.raises(DeviceNotFoundByNumberError):
              Devices.from_device_number(_CONTEXT, "foobar", 100)
  
@@ -63,17 +62,21 @@
      @failed_health_check_wrapper
      @given(
          _CONTEXT_STRATEGY,
+diff --git a/tests/test_enumerate.py b/tests/test_enumerate.py
+index 8efb1f8..83af62d 100644
 --- a/tests/test_enumerate.py
 +++ b/tests/test_enumerate.py
-@@ -104,7 +104,7 @@ class TestEnumerator(object):
+@@ -104,7 +104,7 @@ def test_match_subsystem(self, context, subsystem):
  
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
--    @settings(max_examples=1)
-+    @settings(max_examples=1, deadline=None)
-     def test_match_subsystem_nomatch(self, context, subsystem):
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=None)
+     def test_match_subsystem_nomatch_unfulfillable(self, context, subsystem):
          """
-         Subsystem no match gets no subsystem with subsystem.
+         Combining match and no match should give an empty result.
+diff --git a/tests/test_util.py b/tests/test_util.py
+index 1389b6b..4b8587d 100644
 --- a/tests/test_util.py
 +++ b/tests/test_util.py
 @@ -132,6 +132,7 @@ def raise_valueerror():
@@ -84,7 +87,7 @@
  @pytest.mark.skipif(len(_CHAR_DEVICES) == 0, reason="no tty devices")
  @given(strategies.sampled_from(_CHAR_DEVICES))
  @settings(max_examples=5)
-@@ -145,6 +146,7 @@ def test_get_device_type_character_devic
+@@ -145,6 +146,7 @@ def test_get_device_type_character_device(a_device):
  _BLOCK_DEVICES = list(_CONTEXT.list_devices(subsystem="block"))
  
  

@@ -1,7 +1,5 @@
----
- tests/test_enumerate.py |   10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
+diff --git a/tests/test_enumerate.py b/tests/test_enumerate.py
+index 83af62d..0c97a18 100644
 --- a/tests/test_enumerate.py
 +++ b/tests/test_enumerate.py
 @@ -91,7 +91,7 @@ class TestEnumerator(object):
@@ -13,7 +11,7 @@
      def test_match_subsystem(self, context, subsystem):
          """
          Subsystem match matches devices w/ correct subsystem.
-@@ -129,7 +129,7 @@ class TestEnumerator(object):
+@@ -116,7 +116,7 @@ def test_match_subsystem_nomatch_unfulfillable(self, context, subsystem):
  
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
@@ -22,25 +20,25 @@
      def test_match_subsystem_nomatch_complete(self, context, subsystem):
          """
          Test that w/ respect to the universe of devices returned by
-@@ -147,7 +147,7 @@ class TestEnumerator(object):
+@@ -134,7 +134,7 @@ def test_match_subsystem_nomatch_complete(self, context, subsystem):
  
      @failed_health_check_wrapper
-     @given(_CONTEXT_STRATEGY, _SYSNAME_STRATEGY)
+     @given(_CONTEXT_STRATEGY, _MATCH_PROPERTY_STRATEGY.filter(lambda x: _is_bool(x[1])))
+-    @settings(max_examples=10)
++    @settings(max_examples=10, deadline=500)
+     def test_match_property_bool(self, context, pair):
+         """
+         Verify that a probably boolean property lookup works.
+@@ -152,7 +152,7 @@ def test_match_property_bool(self, context, pair):
+     @given(
+         _CONTEXT_STRATEGY, device_strategy(filter_func=lambda d: d.parent is not None)
+     )
 -    @settings(max_examples=5)
 +    @settings(max_examples=5, deadline=500)
-     def test_match_sys_name(self, context, sysname):
+     def test_match_parent(self, context, device):
          """
-         A sysname lookup only gives devices with that sysname.
-@@ -221,7 +221,7 @@ class TestEnumeratorMatchCombinations(ob
-             unique_by=lambda p: p[0],
-         ),
-     )
--    @settings(max_examples=2)
-+    @settings(max_examples=2, deadline=500)
-     def test_combined_property_matches(self, context, ppairs):
-         """
-         Test for behaviour as observed in #1
-@@ -246,7 +246,7 @@ class TestEnumeratorMatchCombinations(ob
+         For a given device, verify that it is in its parent's children.
+@@ -178,7 +178,7 @@ class TestEnumeratorMatchCombinations(object):
          _SYSNAME_STRATEGY,
          _MATCH_PROPERTY_STRATEGY,
      )
@@ -49,3 +47,30 @@
      def test_match(self, context, subsystem, sysname, ppair):
          """
          Test that matches from different categories are a conjunction.
+@@ -234,7 +234,7 @@ def test_match_passthrough_sys_name(self, enumerator):
+             match_sys_name.assert_called_with(mock.sentinel.sys_name)
+ 
+     @given(_ENUMERATOR_STRATEGY)
+-    @settings(max_examples=1)
++    @settings(max_examples=1, deadline=500)
+     def test_match_passthrough_tag(self, enumerator):
+         """
+         Test that special keyword tag results in a match_tag call.
+@@ -245,7 +245,7 @@ def test_match_passthrough_tag(self, enumerator):
+ 
+     @_UDEV_TEST(172, "test_match_passthrough_parent")
+     @given(_ENUMERATOR_STRATEGY)
+-    @settings(max_examples=1)
++    @settings(max_examples=1, deadline=500)
+     def test_match_passthrough_parent(self, enumerator):
+         """
+         Test that special keyword 'parent' results in a match parent call.
+@@ -257,7 +257,7 @@ def test_match_passthrough_parent(self, enumerator):
+             match_parent.assert_called_with(mock.sentinel.parent)
+ 
+     @given(_ENUMERATOR_STRATEGY)
+-    @settings(max_examples=1)
++    @settings(max_examples=1, deadline=500)
+     def test_match_passthrough_property(self, enumerator):
+         """
+         Test that non-special keyword args are treated as properties.

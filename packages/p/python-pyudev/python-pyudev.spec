@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyudev
-Version:        0.22.0+git.1642212208.d5630bf
+Version:        0.23.2+14
 Release:        0
 Summary:        Udev bindings for Python
 License:        LGPL-2.1-or-later
@@ -32,20 +32,17 @@ Patch0:         pytest_register_mark.patch
 # tests timeout on OBS
 Patch2:         hypothesis_settings.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(udev)
 Requires:       libudev1
-Requires:       python-six
 BuildArch:      noarch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module yapf}
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-mock
@@ -66,7 +63,6 @@ in modern linux systems.
 
 # Disable intersphinx and issuetracker, we don't want to access the web during doc build:
 sed -i -e "s|'sphinx.ext.intersphinx',\\?||" -e "s|'sphinxcontrib.issuetracker',\\?||" doc/conf.py
-sed -i -e 's/tag_date = true/tag_date = false/' setup.cfg
 
 %build
 %python_build
