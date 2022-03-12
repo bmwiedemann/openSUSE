@@ -32,7 +32,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbclient%{psuffix}
-Version:        0.5.12
+Version:        0.5.13
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
