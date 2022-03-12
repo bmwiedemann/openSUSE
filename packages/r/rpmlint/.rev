@@ -3655,4 +3655,15 @@ oddjob-gpupdate isn't blocked)</comment>
   * D-Bus whitelistings: kpmcore: don't couple service file to digest</comment>
     <requestid>959845</requestid>
   </revision>
+  <revision rev="390" vrev="1">
+    <srcmd5>08b23335e92a9868282acfa188efeb8a</srcmd5>
+    <version>2.2.0+git20220308.a867f4a</version>
+    <time>1647101678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220308.a867f4a:
+  * test_whitelist_syntax: extend the check to cover also digest entry structure
+  * dbus whitelist: fix nodigests whitelisting, should contain the path
+  * Remove extra empty lines.</comment>
+    <requestid>960594</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 09 19:06:36 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220308.a867f4a:
+  * test_whitelist_syntax: extend the check to cover also digest entry structure
+  * dbus whitelist: fix nodigests whitelisting, should contain the path
+  * Remove extra empty lines.
+
+-------------------------------------------------------------------
 Mon Mar 07 11:10:29 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220307.795b565:
