@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 10 14:56:46 MST 2022 - carnold@suse.com
+
+- bsc#1196965 - openSUSE Tumbleweed unattended installation with
+  libvirt fails
+  opensuse-autoyast-desktop.patch
+
+-------------------------------------------------------------------
 Tue Mar  1 10:38:34 MST 2022 - carnold@suse.com
 
 - Update to database version 20220214

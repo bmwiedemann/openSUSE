@@ -1,13 +1,24 @@
---- osinfo-db-20210621/install-script/opensuse.org/opensuse-autoyast-desktop.xml.orig	2021-07-27 10:25:33.684570985 -0600
-+++ osinfo-db-20210621/install-script/opensuse.org/opensuse-autoyast-desktop.xml	2021-07-27 10:25:42.212571350 -0600
-@@ -168,9 +168,7 @@
-               </keymap>
-             </keyboard>
-             <language>
--              <language>
--                <xsl:call-template name="l10n-language"/>
--              </language>
-+              <xsl:call-template name="l10n-language"/>
-             </language>
-             <networking>
-               <dns>
+Index: osinfo-db-20220214/install-script/opensuse.org/opensuse-autoyast-desktop.xml
+===================================================================
+--- osinfo-db-20220214.orig/install-script/opensuse.org/opensuse-autoyast-desktop.xml
++++ osinfo-db-20220214/install-script/opensuse.org/opensuse-autoyast-desktop.xml
+@@ -232,9 +232,16 @@ touch /root/osinfo-install-successful
+               <default_target>graphical</default_target>
+             </services-manager>
+             <software>
+-              <products config:type="list">
+-                <product>openSUSE</product>
+-              </products>
++              <xsl:if test="contains(os/version, 'tumbleweed')">
++                <products config:type="list">
++                  <product>openSUSE</product>
++                </products>
++              </xsl:if>
++              <xsl:if test="(os/version &lt; 15.5) or contains(os/version, 42)">
++                <products config:type="list">
++                  <product>Leap</product>
++                </products>
++              </xsl:if>
+               <packages config:type="list">
+                 <package>autoyast2-installation</package>
+                 <package>gdm</package>

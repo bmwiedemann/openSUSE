@@ -432,4 +432,12 @@
     <comment>Update to database version 20220214</comment>
     <requestid>958324</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>8c5012a6b2061ab198a93b2046e33bd4</srcmd5>
+    <version>20220214</version>
+    <time>1647199504</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1196965 - openSUSE Tumbleweed unattended installation with libvirt fails</comment>
+    <requestid>960941</requestid>
+  </revision>
 </revisionlist>
