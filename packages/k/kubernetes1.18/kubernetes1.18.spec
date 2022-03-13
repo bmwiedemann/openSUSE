@@ -1,7 +1,7 @@
 #
-# spec file for package kubernetes1.18
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,8 +69,8 @@ management of containerized applications.
 It groups containers that make up an application into logical units
 for management and discovery.
 
-# packages to build containerized control plane
 
+# packages to build containerized control plane
 %if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 %package apiserver
 Summary:        Kubernetes apiserver for container image
@@ -160,9 +160,9 @@ kubeadm bootstrapping tool
 Summary:        Kubernetes client tools
 Group:          System/Management
 Provides:       kubernetes-client-provider = %{version}
-Requires:       kubernetes-client-common >= %{version} 
+Requires:       kubernetes-client-common >= %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      kubernetes-client < %{baseversion}
 Obsoletes:      kubernetes-%{baseversion}-client < %{version}
 
@@ -326,9 +326,8 @@ ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
 %fdupes -s %{buildroot}
 
 %post client-common
-export baseversion="%{baseversion}"
 %{_sbindir}/update-alternatives \
-  --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} ${baseversion/./}
+  --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} %(echo %{baseversion} | tr -d .)
 
 %postun client-common
 if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then

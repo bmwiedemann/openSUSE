@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 16:21:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in client-common postinstall script (bsc#1195391)
+
+-------------------------------------------------------------------
 Wed Jul 28 15:56:11 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.18.20:
