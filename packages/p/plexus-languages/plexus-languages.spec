@@ -29,7 +29,7 @@ Source100:      plexus-java-build.xml
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-containers-component-annotations

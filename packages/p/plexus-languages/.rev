@@ -39,4 +39,12 @@
     <comment>1.1.1</comment>
     <requestid>960769</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>baafb26f66c09c282db70e81345964b3</srcmd5>
+    <version>1.1.1</version>
+    <time>1647205316</time>
+    <user>dimstar_suse</user>
+    <comment>Build as multirelease modular jar</comment>
+    <requestid>961198</requestid>
+  </revision>
 </revisionlist>

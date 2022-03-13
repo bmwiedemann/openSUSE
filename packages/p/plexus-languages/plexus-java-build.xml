@@ -12,13 +12,15 @@
   <property name="project.artifactId" value="plexus-java"/>
   <property name="project.version" value="1.1.1"/>
 
-  <property name="compiler.source" value="1.7"/>
+  <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.outputDirJava9" value="${build.outputDir}/META-INF/versions/9"/>
   <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.srcDirJava9" value="src/main/java9"/>
   <property name="build.resourceDir" value="src/main/resources"/>
   <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
   <property name="build.testDir" value="src/test/java"/>
@@ -74,6 +76,49 @@
         <pathelement location="${build.srcDir}"/>
       </src>
       <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${build.outputDirJava9}"/>
+	<!-- All java9 files without the module-info.java -->
+    <javac destdir="${build.outputDirJava9}"
+           nowarn="false"
+           debug="true"
+           encoding="utf-8"
+           optimize="false"
+           deprecation="true"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDirJava9}"/>
+      </src>
+	  <exclude name="**/module-info.java"/>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+	<!-- Special compilation of module-info.java that needs modulepath -->
+    <javac destdir="${build.outputDirJava9}"
+           nowarn="false"
+           debug="true"
+           encoding="utf-8"
+           optimize="false"
+           deprecation="true"
+           target="9"
+           verbose="false"
+           fork="false"
+           source="9">
+      <src>
+        <pathelement location="${build.srcDirJava9}"/>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+	  <include name="**/module-info.java"/>
+      <modulepath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDirJava9}"/>
+        <pathelement location="${build.outputDir}"/>
+      </modulepath>
     </javac>
     <copy todir="${build.outputDir}">
       <fileset dir="${build.resourceDir}"/>
