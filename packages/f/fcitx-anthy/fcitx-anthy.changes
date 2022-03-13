@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 13 06:08:00 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- fix boo#1188417: fcitx-anthy doesn't require anthy but libanthy0
+   as fcitx-anthy is the anthy wrapper, the actual work still has to be
+   done by anthy itself, so anthy requirement is a must
+
+-------------------------------------------------------------------
 Wed May 12 01:28:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.2.4

@@ -32,6 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+Requires:  anthy
 %{fcitx_requires}
 
 %description
