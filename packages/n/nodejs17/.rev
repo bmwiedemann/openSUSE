@@ -31,4 +31,18 @@
 - Add upstream fix gcc12-fix.patch for GCC 12 compiler.</comment>
     <requestid>959854</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f3cb9bc9f787938e4a07a9b8e19176f9</srcmd5>
+    <version>17.7.0</version>
+    <time>1647199502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.7.0:
+  * crypto: add KeyObject.prototype.equals method
+  * net: add new options to net.Socket and net.Server
+  * src: allow preventing InitializeInspector in env
+  * deps: update nghttp2 to 1.47.0
+  * deps: upgrade npm to 8.5.2
+- versioned.patch: refreshed</comment>
+    <requestid>960850</requestid>
+  </revision>
 </revisionlist>

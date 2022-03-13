@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 10 17:01:19 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to 17.7.0:
+  * crypto: add KeyObject.prototype.equals method
+  * net: add new options to net.Socket and net.Server
+  * src: allow preventing InitializeInspector in env
+  * deps: update nghttp2 to 1.47.0
+  * deps: upgrade npm to 8.5.2
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Mar  3 11:53:37 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to 17.6.0:

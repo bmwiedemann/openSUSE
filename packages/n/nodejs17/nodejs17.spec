@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs17
-Version:        17.6.0
+Version:        17.7.0
 Release:        0
 
 # Double DWZ memory limits
@@ -302,7 +302,7 @@ Provides:       bundled(icu) = 70.1
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.45.1
+Provides:       bundled(nghttp2) = 1.47.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -392,7 +392,7 @@ Requires:       nodejs17 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 8.5.1
+Provides:       npm(npm) = 8.5.2
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -403,9 +403,6 @@ Provides:       bundled(node-abbrev) = 1.1.1
 Provides:       bundled(node-agent-base) = 6.0.2
 Provides:       bundled(node-agentkeepalive) = 4.2.0
 Provides:       bundled(node-aggregate-error) = 3.1.0
-Provides:       bundled(node-ansi-regex) = 2.1.1
-Provides:       bundled(node-ansi-regex) = 3.0.0
-Provides:       bundled(node-ansi-regex) = 5.0.0
 Provides:       bundled(node-ansi-regex) = 5.0.1
 Provides:       bundled(node-ansi-styles) = 4.3.0
 Provides:       bundled(node-ansicolors) = 0.3.2
@@ -432,7 +429,7 @@ Provides:       bundled(node-color-convert) = 2.0.1
 Provides:       bundled(node-color-name) = 1.1.4
 Provides:       bundled(node-color-support) = 1.1.3
 Provides:       bundled(node-colors) = 1.4.0
-Provides:       bundled(node-columnify) = 1.5.4
+Provides:       bundled(node-columnify) = 1.6.0
 Provides:       bundled(node-common-ancestor-path) = 1.0.1
 Provides:       bundled(node-concat-map) = 0.0.1
 Provides:       bundled(node-console-control-strings) = 1.1.0
@@ -471,12 +468,11 @@ Provides:       bundled(node-infer-owner) = 1.0.4
 Provides:       bundled(node-inflight) = 1.0.6
 Provides:       bundled(node-inherits) = 2.0.4
 Provides:       bundled(node-ini) = 2.0.0
-Provides:       bundled(node-init-package-json) = 2.0.5
+Provides:       bundled(node-init-package-json) = 3.0.0
 Provides:       bundled(node-ip) = 1.1.5
 Provides:       bundled(node-ip-regex) = 4.3.0
 Provides:       bundled(node-is-cidr) = 4.0.2
 Provides:       bundled(node-is-core-module) = 2.8.1
-Provides:       bundled(node-is-fullwidth-code-point) = 2.0.0
 Provides:       bundled(node-is-fullwidth-code-point) = 3.0.0
 Provides:       bundled(node-is-lambda) = 1.0.1
 Provides:       bundled(node-is-typedarray) = 1.0.0
@@ -486,17 +482,17 @@ Provides:       bundled(node-json-stringify-nice) = 1.1.4
 Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-just-diff) = 5.0.1
 Provides:       bundled(node-just-diff-apply) = 4.0.1
-Provides:       bundled(node-libnpmaccess) = 5.0.1
-Provides:       bundled(node-libnpmdiff) = 3.0.0
-Provides:       bundled(node-libnpmexec) = 3.0.3
-Provides:       bundled(node-libnpmfund) = 2.0.2
-Provides:       bundled(node-libnpmhook) = 7.0.1
-Provides:       bundled(node-libnpmorg) = 3.0.1
-Provides:       bundled(node-libnpmpack) = 3.1.0
-Provides:       bundled(node-libnpmpublish) = 5.0.1
-Provides:       bundled(node-libnpmsearch) = 4.0.1
-Provides:       bundled(node-libnpmteam) = 3.0.1
-Provides:       bundled(node-libnpmversion) = 2.0.2
+Provides:       bundled(node-libnpmaccess) = 6.0.0
+Provides:       bundled(node-libnpmdiff) = 4.0.0
+Provides:       bundled(node-libnpmexec) = 4.0.0
+Provides:       bundled(node-libnpmfund) = 3.0.0
+Provides:       bundled(node-libnpmhook) = 8.0.0
+Provides:       bundled(node-libnpmorg) = 4.0.0
+Provides:       bundled(node-libnpmpack) = 4.0.0
+Provides:       bundled(node-libnpmpublish) = 6.0.0
+Provides:       bundled(node-libnpmsearch) = 5.0.0
+Provides:       bundled(node-libnpmteam) = 4.0.0
+Provides:       bundled(node-libnpmversion) = 3.0.0
 Provides:       bundled(node-lru-cache) = 6.0.0
 Provides:       bundled(node-lru-cache) = 7.3.1
 Provides:       bundled(node-make-fetch-happen) = 10.0.3
@@ -523,20 +519,20 @@ Provides:       bundled(node-npm-audit-report) = 2.1.5
 Provides:       bundled(node-npm-bundled) = 1.1.2
 Provides:       bundled(node-npm-install-checks) = 4.0.0
 Provides:       bundled(node-npm-normalize-package-bin) = 1.0.1
-Provides:       bundled(node-npm-package-arg) = 8.1.5
+Provides:       bundled(node-npm-package-arg) = 9.0.0
 Provides:       bundled(node-npm-packlist) = 3.0.0
-Provides:       bundled(node-npm-pick-manifest) = 6.1.1
-Provides:       bundled(node-npm-profile) = 6.0.0
-Provides:       bundled(node-npm-registry-fetch) = 12.0.2
+Provides:       bundled(node-npm-pick-manifest) = 7.0.0
+Provides:       bundled(node-npm-profile) = 6.0.2
+Provides:       bundled(node-npm-registry-fetch) = 13.0.0
 Provides:       bundled(node-npm-user-validate) = 1.0.1
 Provides:       bundled(node-npmlog) = 6.0.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-p-map) = 4.0.0
-Provides:       bundled(node-pacote) = 12.0.3
+Provides:       bundled(node-pacote) = 13.0.3
 Provides:       bundled(node-parse-conflict-json) = 2.0.1
 Provides:       bundled(node-path-is-absolute) = 1.0.1
-Provides:       bundled(node-proc-log) = 1.0.0
+Provides:       bundled(node-proc-log) = 2.0.0
 Provides:       bundled(node-promise-all-reject-late) = 1.0.1
 Provides:       bundled(node-promise-call-limit) = 1.0.1
 Provides:       bundled(node-promise-inflight) = 1.0.1
@@ -564,14 +560,9 @@ Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
 Provides:       bundled(node-spdx-license-ids) = 3.0.11
 Provides:       bundled(node-ssri) = 8.0.1
-Provides:       bundled(node-string-width) = 2.1.1
-Provides:       bundled(node-string-width) = 4.2.2
 Provides:       bundled(node-string-width) = 4.2.3
 Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-stringify-package) = 1.0.1
-Provides:       bundled(node-strip-ansi) = 3.0.1
-Provides:       bundled(node-strip-ansi) = 4.0.0
-Provides:       bundled(node-strip-ansi) = 6.0.0
 Provides:       bundled(node-strip-ansi) = 6.0.1
 Provides:       bundled(node-supports-color) = 7.2.0
 Provides:       bundled(node-tar) = 6.1.11
