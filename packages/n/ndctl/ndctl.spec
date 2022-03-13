@@ -16,6 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files nvdimm-security.conf
 
 %define lname libndctl6
 %define dname libndctl-devel
@@ -29,7 +34,23 @@ URL:            https://github.com/pmem/ndctl
 Source0:        https://github.com/pmem/ndctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch9:         %{name}-namespace-skip-zero-namespaces-when-processing.patch
 Patch13:        %{name}-namespace-Suppress-ENXIO-when-processing-all-n.patch
-Patch14:	harden_ndctl-monitor.service.patch
+Patch14:        harden_ndctl-monitor.service.patch
+Patch15:        0001-ndctl-namespace-Fix-disable-namespace-accounting-rel.patch
+Patch16:        0002-Expose-ndctl_bus_nfit_translate_spa-as-a-public-func.patch
+Patch17:        0003-libndctl-Unify-adding-dimms-for-papr-and-nfit-famili.patch
+Patch18:        0004-daxctl-fail-reconfigure-device-based-on-kernel-onlin.patch
+Patch19:        0005-libdaxctl-add-an-API-to-check-if-a-device-is-active.patch
+Patch20:        0006-libndctl-check-for-active-system-ram-before-disablin.patch
+Patch21:        0007-daxctl-emit-counts-of-total-and-online-memblocks.patch
+Patch22:        0008-ndctl-Update-nvdimm-mailing-list-address.patch
+Patch23:        0009-libndctl-papr-Fix-probe-for-papr-scm-compatible-nvdi.patch
+Patch24:        0010-ndctl-scrub-Stop-translating-return-values.patch
+Patch25:        0011-ndctl-scrub-Reread-scrub-engine-status-at-start.patch
+Patch26:        0012-ndctl-dimm-Fix-label-index-block-calculations.patch
+Patch27:        0013-daxctl-Add-Soft-Reservation-theory-of-operation.patch
+Patch28:        0014-Documentation-ndctl-fix-self-reference-of-ndctl-disa.patch
+Patch29:        0015-ndctl-docs-Clarify-update-firwmware-activation-overf.patch
+Patch30:        0016-libndctl-papr-Add-support-for-reporting-shutdown-cou.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  keyutils-devel
@@ -107,15 +128,21 @@ make %{?_smp_mflags}
 %if 0%{?suse_version} > 1500
 export CFLAGS="%optflags -fcommon"
 %endif
-%make_install
+%make_install modprobedir=%{_modprobedir}
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rcndctl-monitor
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
+
 %pre
 %service_add_pre ndctl-monitor.service
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
 
 %post
 %service_add_post ndctl-monitor.service
@@ -125,6 +152,13 @@ ln -sf service %{buildroot}%{_sbindir}/rcndctl-monitor
 
 %postun
 %service_del_postun ndctl-monitor.service
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %files
 %license COPYING LICENSES/*/*
@@ -137,8 +171,8 @@ ln -sf service %{buildroot}%{_sbindir}/rcndctl-monitor
 %dir %{_sysconfdir}/ndctl/keys
 %{_sysconfdir}/ndctl/keys/keys.readme
 %config %{_sysconfdir}/ndctl/monitor.conf
-%dir %{_sysconfdir}/modprobe.d
-%config %{_sysconfdir}/modprobe.d/nvdimm-security.conf
+%dir %{_modprobedir}
+%{_modprobedir}/nvdimm-security.conf
 %{_unitdir}/ndctl-monitor.service
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/

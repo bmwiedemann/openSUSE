@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Mar  7 20:54:26 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Add support for reporting dirty shutdown count (jsc#SLE-18196).
+   + 0016-libndctl-papr-Add-support-for-reporting-shutdown-cou.patch
+   + 0009-libndctl-papr-Fix-probe-for-papr-scm-compatible-nvdi.patch
+   + 0003-libndctl-Unify-adding-dimms-for-papr-and-nfit-famili.patch
+- Merge fixes that went into v72 and v73
+   - Documentation updates
+      + 0015-ndctl-docs-Clarify-update-firwmware-activation-overf.patch
+      + 0014-Documentation-ndctl-fix-self-reference-of-ndctl-disa.patch
+      + 0013-daxctl-Add-Soft-Reservation-theory-of-operation.patch
+      + 0008-ndctl-Update-nvdimm-mailing-list-address.patch
+   - Label index block calculation fix
+      + 0012-ndctl-dimm-Fix-label-index-block-calculations.patch
+      + 0002-Expose-ndctl_bus_nfit_translate_spa-as-a-public-func.patch
+   - Scrub fix
+      + 0011-ndctl-scrub-Reread-scrub-engine-status-at-start.patch
+      + 0010-ndctl-scrub-Stop-translating-return-values.patch
+   - Add memblock count to JSON
+      + 0007-daxctl-emit-counts-of-total-and-online-memblocks.patch
+   - DAX disable fix
+      + 0006-libndctl-check-for-active-system-ram-before-disablin.patch
+      + 0005-libdaxctl-add-an-API-to-check-if-a-device-is-active.patch
+      + 0001-ndctl-namespace-Fix-disable-namespace-accounting-rel.patch
+   - DAX reconfigure fix
+      + 0004-daxctl-fail-reconfigure-device-based-on-kernel-onlin.patch
+
+-------------------------------------------------------------------
+Fri Mar  4 13:08:55 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Install modprobe.conf file to %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
 Wed Oct 13 07:15:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

@@ -1,10 +1,11 @@
-From 6a678667c6279369dda999da8535e327df036705 Mon Sep 17 00:00:00 2001
+From 07011a334fd1e4b641cdbfaf5de7500f7bdc941d Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
-Date: Thu, 23 Jul 2020 19:16:59 +0200
+Date: Wed, 6 Jan 2021 14:17:41 +0100
 Subject: [PATCH] ndctl/namespace: Suppress -ENXIO when processing all
  namespaces.
 
-Upstream: submitted https://patchwork.kernel.org/patch/11681431/
+Upstream: v72
+Git-commit: 07011a334fd1e4b641cdbfaf5de7500f7bdc941d
 
 When processing all namespaces and no namespaces exist user gets the
 default -ENXIO. Set default rc to 0 when processing all namespaces.
@@ -56,19 +57,20 @@ destroyed 0 namespaces
 Note: this does change the return value from -ENXIO to 0 in the cases
 when no namespaces exist and processing all namespaces was requested.
 
-Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+Link: https://patchwork.kernel.org/patch/11681431/
+Link: https://lore.kernel.org/r/32c8cd8d2716f5e52aebea4e4d303eeb4e0550f9.1609938610.git.msuchanek@suse.de
 Reviewed-by: Santosh S <santosh@fossix.org>
----
-v2: fix the error code references in the commit message
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+Signed-off-by: Vishal Verma <vishal.l.verma@intel.com>
 ---
  ndctl/namespace.c | 3 +++
  1 file changed, 3 insertions(+)
 
 diff --git a/ndctl/namespace.c b/ndctl/namespace.c
-index 3fabe4799d75..835f4076008a 100644
+index 5e65ed5..cd822b3 100644
 --- a/ndctl/namespace.c
 +++ b/ndctl/namespace.c
-@@ -2112,6 +2112,9 @@ static int do_xaction_namespace(const char *namespace,
+@@ -2151,6 +2151,9 @@ static int do_xaction_namespace(const char *namespace,
  	if (!namespace && action != ACTION_CREATE)
  		return rc;
  
@@ -79,5 +81,5 @@ index 3fabe4799d75..835f4076008a 100644
  		ndctl_set_log_priority(ctx, LOG_DEBUG);
  
 -- 
-2.28.0
+2.35.1
 
