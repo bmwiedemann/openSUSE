@@ -1,6 +1,6 @@
-diff -Nur wesnoth-1.16.2.orig/cmake/FindReadline.cmake wesnoth-1.16.2/cmake/FindReadline.cmake
---- wesnoth-1.16.2.orig/cmake/FindReadline.cmake	1970-01-01 01:00:00.000000000 +0100
-+++ wesnoth-1.16.2/cmake/FindReadline.cmake	2022-02-26 17:25:21.206738255 +0100
+diff -Nur wesnoth-1.17.1.orig/cmake/FindReadline.cmake wesnoth-1.17.1/cmake/FindReadline.cmake
+--- wesnoth-1.17.1.orig/cmake/FindReadline.cmake	1970-01-01 01:00:00.000000000 +0100
++++ wesnoth-1.17.1/cmake/FindReadline.cmake	2022-03-10 20:07:38.474800882 +0100
 @@ -0,0 +1,47 @@
 +# - Try to find readline include dirs and libraries 
 +#
@@ -49,10 +49,10 @@ diff -Nur wesnoth-1.16.2.orig/cmake/FindReadline.cmake wesnoth-1.16.2/cmake/Find
 +        Readline_INCLUDE_DIR
 +        Readline_LIBRARY
 +)
-diff -Nur wesnoth-1.16.2.orig/CMakeLists.txt wesnoth-1.16.2/CMakeLists.txt
---- wesnoth-1.16.2.orig/CMakeLists.txt	2022-01-16 19:10:36.000000000 +0100
-+++ wesnoth-1.16.2/CMakeLists.txt	2022-02-26 17:33:50.183109995 +0100
-@@ -479,6 +479,7 @@
+diff -Nur wesnoth-1.17.1.orig/CMakeLists.txt wesnoth-1.17.1/CMakeLists.txt
+--- wesnoth-1.17.1.orig/CMakeLists.txt	2022-02-20 18:32:14.000000000 +0100
++++ wesnoth-1.17.1/CMakeLists.txt	2022-03-10 20:09:22.146658333 +0100
+@@ -470,6 +470,7 @@
  	find_package(VorbisFile REQUIRED)
  	find_package(PkgConfig REQUIRED)
  	find_package(Fontconfig REQUIRED)
@@ -60,11 +60,11 @@ diff -Nur wesnoth-1.16.2.orig/CMakeLists.txt wesnoth-1.16.2/CMakeLists.txt
  	if(NOT MSVC)
  		# for everything else, use pkgconfig
  		# find_package can't be used for SDL2 since at least as of Ubuntu 20.04 they forgot to include the sdl2-config-version.cmake, so cmake can't tell if it's >= 2.0.8 and thus rejects using it
-@@ -500,7 +501,6 @@
- # TODO: can use find_package and Fontconfig::Fontconfig with cmake 3.14+
- 	pkg_check_modules(FONTCONFIG REQUIRED fontconfig>=2.4.1)
+@@ -489,7 +490,6 @@
+ 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
+ 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
  	pkg_check_modules(PANGO REQUIRED pango>=1.22.0)
--	pkg_check_modules(LIBREADLINE REQUIRED readline)
+-	pkg_check_modules(LIBREADLINE readline)
  endif()
  
  if(ENABLE_TESTS)

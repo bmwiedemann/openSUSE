@@ -330,4 +330,12 @@ A model Open Source game.</comment>
   * Upgrade to lua 5.4.4 #6527</comment>
     <requestid>960835</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>d0494be0b6f3a063b898283f4cd78769</srcmd5>
+    <version>1.17.1</version>
+    <time>1647199519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961439</requestid>
+  </revision>
 </revisionlist>
