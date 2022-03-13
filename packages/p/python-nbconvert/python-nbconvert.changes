@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 12 04:50:52 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update nbconvert-vendorize-mistune.patch (linenumbers changed and lines before patch)
+  * require beautiful-soup
+
+- update to version 6.4.4:
+  * HTMLExporter: Respect the embed_images flag for HTML blocks PR
+    #1721
+
+- changes from version 6.4.3:
+  * Remove ipython genutils PR #1727
+  * Add section to customizing showing how to use template inheritance
+    PR #1719
+
+-------------------------------------------------------------------
 Sat Feb 19 03:07:52 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.4.2:

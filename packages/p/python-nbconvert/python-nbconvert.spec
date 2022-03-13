@@ -32,7 +32,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-nbconvert%{psuffix}
-Version:        6.4.2
+Version:        6.4.4
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause
@@ -43,6 +43,7 @@ Source3:        https://files.pythonhosted.org/packages/source/m/mistune/mistune
 # PATCH-FIX-OPENSUSE nbconvert-vendorize-mistune.patch -- gh#jupyter/nbconvert#1685
 Patch1:         nbconvert-vendorize-mistune.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,6 +51,7 @@ BuildRequires:  unzip
 Requires:       jupyter-nbconvert = %{version}
 Requires:       python-Jinja2 >= 2.4
 Requires:       python-Pygments >= 2.4.1
+Requires:       python-beautifulsoup4
 Requires:       python-bleach
 Requires:       python-defusedxml
 Requires:       python-entrypoints >= 0.2.2

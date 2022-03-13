@@ -2,9 +2,9 @@ Index: nbconvert-6.3.0/nbconvert/filters/markdown_mistune.py
 ===================================================================
 --- nbconvert-6.3.0.orig/nbconvert/filters/markdown_mistune.py
 +++ nbconvert-6.3.0/nbconvert/filters/markdown_mistune.py
-@@ -18,7 +18,7 @@ except ImportError:
-     # Python 2
-     from cgi import escape as html_escape
+@@ -23,7 +23,7 @@ except ImportError:
+ 
+ import bs4
  
 -import mistune
 +from nbconvert.vendor import mistune
@@ -15,7 +15,7 @@ Index: nbconvert-6.3.0/setup.py
 ===================================================================
 --- nbconvert-6.3.0.orig/setup.py
 +++ nbconvert-6.3.0/setup.py
-@@ -212,7 +212,6 @@ setup_args = dict(
+@@ -214,7 +214,6 @@ setup_args = dict(
  )
  
  setup_args['install_requires'] = [
