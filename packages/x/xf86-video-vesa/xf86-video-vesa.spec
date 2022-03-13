@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-vesa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        %{name}.keyring
 Patch1:         u_Restore-palette-on-LeaveVT.patch
 Patch2:         u_DPMS-Query-DPMS-capabilites-and-query-current-state-before-changing.patch
 Patch3:         u_DPMS-Check-for-broken-DPMSGet.patch
+Patch4:         u_Refuse-to-run-on-machines-with-simpledrmfb-too.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
@@ -57,6 +58,7 @@ supports depths 8, 15 16 and 24.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %configure

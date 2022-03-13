@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 10 08:26:25 CET 2022 - tiwai@suse.de
+
+- Refuse vesa driver on the system with simpledrmfb (bsc#1193539):
+  u_Refuse-to-run-on-machines-with-simpledrmfb-too.patch
+
+-------------------------------------------------------------------
 Tue Apr  6 02:07:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 
