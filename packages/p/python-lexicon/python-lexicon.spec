@@ -1,7 +1,7 @@
 #
 # spec file for package python-lexicon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Requires:       python-six
 Conflicts:      python-dns-lexicon
 BuildArch:      noarch
 # SECTION tests
-BuildRequires:  %{python_module pytest-relaxed if (%python-base without python310-base)}
+BuildRequires:  %{python_module pytest-relaxed}
 # /SECTION tests
 %python_subpackages
 
@@ -56,7 +56,6 @@ Lexicon is a collection of dict subclasses:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-alias pytest-3.10='echo "Not testing: no pytest<6 on python 3.10"'
 %pytest
 
 %files %{python_files}
