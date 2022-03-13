@@ -1,4 +1,640 @@
 -------------------------------------------------------------------
+Sat Mar 12 20:35:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.0.0:
+  * Release 9.0.0 (#11067)
+  * Add Redis docs (#11073)
+  * Fix NLB Mongo/Postgres errors spam (#11059)
+  * [auto] Update webassets in branch/v9 (#11055)
+  * Added Machine ID docs.
+  * Release 9.0.0-rc.2 (#11038)
+  * UX improvements for tbot (#10833) (#11046)
+  * Moderated Sessions improvements (#10991) (#11051)
+  * Fix meaning of `bot_name` in bot join tokens (#11039) (#11047)
+  * Backport of #10289 (#11030)
+  * Better Semaphore Lease Contention Handling (#10666) (#10877)
+  * V9 backport 10871 (#11031)
+  * Prevent panic caused by nil session recorder (#10792) (#10874)
+  * (v9) Missing v9 backports (#11033)
+  * Fixed incorrectly named RPMs (#11029)
+  * Fix quadratic complexity in Reconciler.Reconcile(). (#10989) (#11023)
+  * Fix ACME instructions in start-auth-proxy.mdx (#11013)
+  * Update suggested systemctl command (#10733) (#11025)
+  * Switch to warning in case of resource origin clash. (#10947) (#11024)
+  * Regenerate server identity if APIDomain not present (#10944)
+  * Release 9.0.0-rc.1 (#11018)
+  * Fix RPMs using a too-new version of glibc (#11008)
+  * [v9] Disable automatic updating of API import path (#11010)
+  * Update database guides with database configurator. (#10451) (#10995)
+  * Add MariaDB to AWS RDS auto discovery (#10994)
+  * Update go-mysql package (#10997)
+  * Enable desktop access in Web UI in Cloud clusters (#10970)
+  * Handle case where display is itself a unix socket #10719 (#10985)
+  * [auto] Update webassets in branch/v9 (#10988)
+  * Release v9.0.0-beta.2 (#10982)
+  * (v9) Update e (#10964)
+  * flaky test: TestDatabaseAccessMongoConnectionCount (#10869) (#10955)
+  * skip databases that are not available during auto discovery (#10699) (#10870)
+  * feat(app): consider reverse tunnel errors in apps HA mechanism (#10734) (#10906)
+  * [v9] backport 10915 (memory leak) (#10927)
+  * Default to `https` scheme for `--proxy` argument in `tctl auth sign` (#10844) (#10911)
+  * Open parts files one at a time
+  * Fix Windows session uploads
+  * Complete empty uploads
+  * [v9] backport  #10765 and #10766 (#10855)
+  * Include tbot binary in Teleport packages and installs (#10646) (#10802)
+  * Add desktop access to front page (#10894)
+  * Add sorting for kube cluster (#10702) (#10921)
+  * Add `KindWindowsDesktops` to `ListResources` (#10769) (#10912)
+  * Fix missing identity in certs logic (#10822)
+  * Fix DynamoDB getAllRecords logic when 1MB query limit is reached (#10726) (#10845)
+  * Fix panic in MSSQL when Login7 package is invalid (#10709)
+  * Add support for more Redis Cluster commands (#10760)
+  * Backport #9470 to branch/v9 (#10823)
+  * Backport #9556 to branch/v9 (#10824)
+  * Update dronegen to fix build-darwin-amd64-pkg-tsh artifacts path (#10862)
+  * Fix panic in MongoDB message reader (#10710)
+  * Backport #9969 to branch/v9 (#10826)
+  * Backport #10061 to branch/v9 (#10827)
+  * Fix large clipboard copy/paste (#10670)
+  * Backport #10621 to branch/v9 (#10829)
+  * [v9] Sanitize leaf cluster CA (#10742)
+  * Fix ALPN panic on empty db handler (#10662)
+  * Do not block apt publishing if there is a more current pre-release (#10805)
+  * Restore docs deploy hook (#10838)
+  * Fix V5 role in getting started guide. (#10837)
+  * Tweaks in getting started guides. (#10780)
+  * docs: update CA rotation page (#10419)
+  * Improve HA behavior of database agents in leaf clusters (#10641) (#10771)
+  * Partial revert of session.connect event
+  * Print proxy server on instructions on nodes add command for cloud (#10750)
+  * Display correct error message when host is missing in `tctl auth sign` (#10739)
+  * [v9] Fix Mongo topology resource release (#10731)
+  * [v9] Backport #10460 to branch/v9 (#10616)
+  * Fix desktop session playback RBAC (#10570) (#10679)
+  * TF provider configuration environment variables (#10417) (#10548)
+  * Update CI to teleport9 buildbox (#10715)
+  * IAM join method support for tbot (#10535) (#10685)
+  * Add documentation for static windows hosts
+  * [auto] Update webassets in branch/v9 (#10712)
+  * Tag buildbox and upgrade to go1.17.7 (#10605)
+  * Change get resources webapi response (#10598) (#10683)
+  * Return filtered total count with ListResources (#10573) (#10682)
+  * Fix crash when AWS Redshift does not have Endpoint info (#10597) (#10675)
+  * helm: Fix enabled clause for db_service when using awsDatabases only (#10644)
+  * Disable BPF tests in CI (#10654) (#10691)
+  * [Docs update] Mention unsupported scenarios for IAM join method (#10530) (#10652)
+  * helm: Fix indenting on database autodiscovery (#10624)
+  * Update desktop access docs for 9.0 (#10406) (#10545)
+  * Fix artifacts path for build-darwin-amd64-pkg-tsh drone pipeline (#10600)
+  * docs: fix code block (#10495) (#10555)
+  * Restore teleport-private deb/rpm gating (#10536)
+  * [v9] Backport "helm: Revert PodSecurityPolicy change" (#10565)
+  * Release 9.0.0-beta.1 (#10508)
+  * Update e (#10505)
+  * [auto] Update AMI IDs for 8.3.1
+  * Certificate renewal bot (#10099)
+  * [auto] Update webassets in master (#10482)
+  * CertAuthority watcher filtering (#10020)
+  * Adds a `DesktopSessionRecording` flag to the ACL (#10365)
+  * Add SQL Server guide (#10293)
+  * Update x11 sshserver test to test concurrent sessions and requests. (#10470)
+  * Add MFA for Windows Desktop web access (#10271)
+  * Reduce concurrent connections in TestRedisTransaction (#10472)
+  * feat: aws database configurator (#9145)
+  * Add missing action VerbRead to ListResources (#10422)
+  * Re-sign .drone.yml (#10469)
+  * Remove drone step to publish centos6 buildbox (#10432)
+  * Fix server compare to check expiry last (#10380)
+  * Add teleport_audit_emit_event prometheus metric (#9134)
+  * Use tdr in Dronegen (#10453)
+  * helm: Add AWS database auto-discovery to teleport-kube-agent (#10344)
+  * Add support for windows desktop services proxying different desktops (#10101)
+  * Address Cloud users in guides (#9962)
+  * Mention Teleport Cloud in some of our guides (#9989)
+  * docs: Updated path to tctl/tsh for Enterprise binaries (#10428)
+  * Add a Cloud compatibility warning to Helm guides (#10023)
+  * Add a prominent warning to the config reference (#9558)
+  * [auto] Update webassets in master (#10427)
+  * IAM Joining Docs: Set join_method in token.yaml (#10433)
+  * Clear terminal when auth server is in FIPS mode (#10095)
+  * Update version thresholds (#10426)
+  * Add support for configurable ssh key extensions
+  * Fix HSM flaky integration tests (#10390)
+  * Install gcloud in /opt, so it can be accessed by non root (#10400)
+  * add where option with sessions so Access role by default can see their own session recordings (#10376)
+  * Add SQL Server support for database access (#10097)
+  * [auto] Update webassets in master (#10409)
+  * Switch shell to golang for latest version detection (#10295)
+  * Add a command to query the latest release
+  * Switch to testify
+  * Exclude draft releases from latest version logic
+  * Fix release sorting
+  * Add an lexicographic test case
+  * Integrate version-check into build.assets/tooling
+  * Implement resource sorter for server, appserver, dbserver (#10243)
+  * Check for shell user's home directory as that user (#10321)
+  * Update e submodule. (#10413)
+  * add teleport_connected_resources metric (#9603)
+  * MySQL prepared statement support (#10283)
+  * Fix TestHandleConnection directory not empty error (#10407)
+  * Add Redis integration (#10053)
+  * Only request CF_OEMTEXT clipboard data
+  * Add audit events for desktop clipboard access
+  * Increase GCB UT timeout (#10398)
+  * Remove the legacy JSON API for requesting host certs
+  * Remove CentOS 6 builds for Teleport 9
+  * docs: add warning about auditor role (#10258)
+  * Label active directory domain controllers (#10334)
+  * Fix Reverse Tunnels Not Properly reconnecting (#10368)
+  * Add TestModules (#10369)
+  * Ensure docs nav titles use title case consistently (#10353)
+  * Deflake TestFnCacheSanity (#10250)
+  * Clarify Kubernetes Getting Started guide (#9580)
+  * Fix db configure (#10349)
+  * Migrate the joined-tokens code to the OSS release. (#10288)
+  * Implement Moderated Sessions (#8563)
+  * Fix tctl insecure flag when TLS Routing is enabled (#10297)
+  * DigitalOcean 1-click Droplet and Kubernetes getting started guides (#8773)
+  * Return desktop events in SearchSessionEvents (#10325)
+  * Save unit test logs (#10076)
+  * Fix TestProcessKubeCSR (#10355)
+  * Implement global SessionData storage (#10287)
+  * Don't open clipboard static channel when clipboard is disabled (#10348)
+  * Synch Teleport preview updates (#10318)
+  * Replace /tmp with os.TempDir(). (#10322)
+  * Generate/validate a PIN for our virtual smartcard (#9919)
+  * Add passwordless-related information to protos (#10281)
+  * Expose reverse tunnel address to web ui (#10133)
+  * Fix fake streamer implementation to match the real one (#10330)
+  * Desktop session recording/playback (#9583)
+  * RFD 48: Desktop Session Recording (#9864)
+  * Ensure clipboard data is shared in the format Windows expects (#10284)
+  * Add docs for IAM join method (#8899)
+  * Add Prometheus metrics cache events and stale events (#9826)
+  * Add Teleport Cloud instructions to 3 guides (#9681)
+  * RFD 52/53/54: Passwordless (#9296)
+  * Add documentation for moderated sessions (#9425)
+  * Don't return `nil, nil` in (*AuditWriter).tryResumeStream (#10254)
+  * Trusted clusters doc: Use wildcard for spec.allow.cluster_labels.env
+  * Improve node labels example in roles docs (#9385)
+  * Fix interpolation example in role templates docs (#9382)
+  * Add missing DatabasesReady event to DB proxy (#10152)
+  * active node inventory cleanup
+  * Authentication options doc: wrap `on` in quotes
+  * Add keepalive heartbeat to kubernetes service (#9584)
+  * commit forgotten "make grpc" (#10280)
+  * feat: add create database config command (#9618)
+  * Convert auth test from gocheck to standard lib
+  * Document desktop role options for Teleport 9 (#10227)
+  * Replace testify/assert with testify/require (#9925)
+  * Adds Application certificate path to profile (#10043)
+  * [auto] Update AMI IDs for 8.2.0
+  * IAM Join Method (gRPC service) (#10087)
+  * Make our docs guidance discoverable (#10155)
+  * Use an apt-key alternative in install instructions (#10084)
+  * docs: add steps for joining w_d_s to a cloud cluster (#10219)
+  * Clean up desktop session error logging (#10232)
+  * [auto] Update webassets in master (#10235)
+  * Use buildbox images from quay.io (#10179)
+  * Remove Teleport DB Users only message for tctl users ls that is incorrect (#10181)
+  * Cleaned up NewClient in integration tests.
+  * Fixed TestSessionStartContainsAccessRequest.
+  * Fixed TestDisconnection
+  * Expand cloud in production usage faq question (#10218)
+  * Update the PR description for auto webassets udpates (#10212)
+  * IAM Join Method (backend implementation) (#10085)
+  * adds cliipboard to userACL (#10207)
+  * Add the `cert.create` event (#9822)
+  * [auto] Update AMI IDs for 8.1.5
+  * Reconnect broken LDAP connections (#10183)
+  * Enable map key sorting in `utils.FastMarshal` (#10070)
+  * Clarify `tsh config` usage docs on Windows (#8409)
+  * Update MariaDB docs (#10113)
+  * Add additional filters to ListResources (#10180)
+  * Desktop Access: clipboard support (#9976)
+  * Add more lint coverage (#10049)
+  * Add desktop_clipboard role option (#10165)
+  * update `github.com/gravitational/trace` to `v1.1.17` (#10079)
+  * [auto] Update webassets in master (#10161)
+  * x11 forwarding (#9897)
+  * Document docs labels (#9537)
+  * Update Docker image tags in docs (#9400)
+  * Modified FedRamp to FedRAMP in docs for proper acronym (#10114)
+  * Implement resource boolean expression parser (#10008)
+  * Add xauth binary to buildbox for X11 forwarding. (#10164)
+  * docs: Add extra commands and reference for AWS Managed AD to Desktop Access docs (#9669)
+  * Add role option for record_desktop_session (#9523)
+  * Fixes DocTest CI (#10117)
+  * [auto] Update AMI IDs for 8.1.3 (#10144)
+  * Update Documentation for GCP Cloud SQL Client Authentication (#10092)
+  * Update version-check paths (#10118)
+  * Fix.
+  * Removed `TestProxyReverseTunnel`.
+  * RFD 49: desktop access clipboard (#9868)
+  * Backward compatible kubernetes_labels behaviour for v3 and v4 roles (#10122)
+  * RFD 51: X11 forwarding (#10009)
+  * Remove broken links to /admin-guide/#public-addr (#10057)
+  * Use correct unmarshaller for json durations (#10124)
+  * Dynamically resolve reverse tunnel address (#9958)
+  * Updated assign and check logic for Cloud.
+  * fix tests - forwarder is not set during cluster session init anymore
+  * remove unnecessary file
+  * unfix test case
+  * tests
+  * address comments
+  * clean import
+  * diable http2 for kube streaming endpoints
+  * Update S3 canned ACL docs (#10072)
+  * Add teleport_reverse_tunnels_connected Prometheus metric (#9698)
+  * Log when App Service fails due to empty `proxy_service.public_addr` (#10056)
+  * Add metric tracking number of Teleport agents joined to cluster (#9749)
+  * Modify verbiage on AWS CLI (#10029)
+  * Fix docker-compose Getting Started guide issues (#9709)
+  * Add guide for Azure Postgres/MySQL database access (#9729)
+  * Refactor database engines registration (#10074)
+  * Add backporting tool. (#9568)
+  * Clarify token.file usage in server access getting started guide. (#10060)
+  * Updated the description of the location of the built binaries (#9885)
+  * Documentation update for Redshift auto discovery support (#9990)
+  * RFD 50: Cluster Join Methods and Endpoints (#9871)
+  * Client Certificate Authentication for GCP Cloud SQL (#9991)
+  * Fix tsh tctl do not load all CAS (#9357)
+  * Use SDK Cloud script to install gcloud (#9941)
+  * RFD 55: WebUI server-side paginating and filtering (#9633)
+  * Add teleport proxy addr to the kubeconfig exec args when specified (#9899)
+  * Add MatchSearch to resources for fuzzy search (#9892)
+  * Removes diagnosis address from being hidden (#9975)
+  * Update to Rust 1.58.1 (#9985)
+  * Update golang.org/x/crypto to v0.0.0-20220126234351-aa10faf2a1f8 (#9984)
+  * Respect errors from UserInfo (#9951)
+  * support for redshift auto discovery (#9851)
+  * add desktop and tip on assigned ports for networking ref (#9957)
+  * Add a Cargo workspace (#9960)
+  * Update teleport-agent readme links (#9963)
+  * add extra checks to avoid getSigninToken failure (#9792)
+  * Properly cleanup the connection monitor for desktop sessions (#9913)
+  * Fix k8 access - respect kube service labels (#9759)
+  * Updated docs for the improved Google OIDC connector (#9907)
+  * Include uid in session.start & upload events (#9791)
+  * Ignore artifact failures in remaining pipelines (#9932)
+  * Add diag addr, web idle timeout, token clarification (#8489)
+  * add ping oidc workaround documentation (#8486)
+  * Add access requests to audit events (#9758)
+  * Ignore failures for artifact registration step (#9921)
+  * feat: add KubeService and Node to ListResources (#9613)
+  * Add access request locks to the docs (#9866)
+  * Auto discovery aurora reader and custom endpoints (#9668)
+  * Access request locks (#9478)
+  * make protoc generation compatible with api v2+ (#9673)
+  * update RDS and Redshift CA URL (#9890)
+  * Add github teams to available traits
+  * Fix TLS Router serverName 'kube.' prefix based routing logic (#9777)
+  * Put note about skipping TLS verification in a <Details> box
+  * Check if the legacy password_file config field is set
+  * Run LDAP initialization in a retry loop
+  * Remove mention of LDAP password from docs
+  * authenticate to LDAP with client certificates
+  * Fix docs typo
+  * Add email parameter to example (#9850)
+  * Improved Google OIDC connector (#9697)
+  * Reject TDP ClientUsername messages that are too long
+  * [Breaking] Default to mongosh when connecting to MongoDB. (#8472) (#9754)
+  * Fix docs and config newline outputs
+  * Fix inclusion of non-existant gcp-credentials secret and credentialsPath when credentialSecretName is empty
+  * [auto] Update webassets in master (#9870)
+  * Update e-ref (#9843)
+  * Cleanup of minor bot issues.
+  * Remove devbox - build box now supports AMR64. (#9847)
+  * use google/uuid instead of pborman/uuid (#9793)
+  * Replace cluster periodics with watchers (#9609)
+  * Tweak the PNG encoder (#9817)
+  * make the switch in dynamic.go easier to read (#9836)
+  * Retry with re-login ignores TELEPORT_HOME. (#9436)
+  * Database auto discovery to be more tolerable to find as many as it can (#9426)
+  * Treat EC2 Node IDs as UUIDs (#9722)
+  * fix: removing new line convergance (#9579)
+  * Add an Error message to TDP (#9586)
+  * helm: Allow setting issuer group for certificate in teleport-cluster (#9138)
+  * helm: Add logging configuration to teleport-kube-agent chart (#9632)
+  * [docs] Add region and use of SSM decryption to Terraform docs (#8907)
+  * Allow impersonation of roles without users (#9561)
+  * Fix first desktop discovery reconcile loop (#9654)
+  * Naji/force http2 kubernetes (#9294)
+  * fix nindent of `service.spec` in teleport-cluster chart (#9645)
+  * Conditionally publish deb packages (#9496)
+  * docs: recommend a highly available LDAP endpoint. (#9744)
+  * Clean up system role parsing (#9756)
+  * Emit event when connecting to non-Teleport server (#9370)
+  * feat: app server requests failover (#9288)
+  * Don't shell out to `go list` when not needed (#9776)
+  * Fix reverse tunnel dialing for Windows Desktops
+  * omit invalid aws tags in rds autodiscovery (#9742)
+  * Covert password_test.go from gocheck to std test
+  * Run gpg in batch mode (#9728)
+  * Use teleport logger instead of gravitational/trace (#9738)
+  * Revert bot changes for `vendor/` (#9743)
+  * Add the `access_request.delete` event (#9552)
+  * Add support for MariaDB (#9409)
+  * Add Videos to Teleport Desktop Access (#9373)
+  * Update `google.golang.org/grpc` to v1.43.0 (#9656)
+  * Upgrade from `go.etcd.io/etcd` v3.4.14 to `go.etcd.io/etcd/{api,client}/v3` v3.5.1 (#9607)
+  * Add "limiter" support to database service (#9087)
+  * Fix log file location for vendorless (#9689)
+  * Move GOMODCACHE out of workspace
+  * Disable make target update-api-module-path.
+  * Mark RFD 47 as implemented
+  * Remove vendor
+  * Sign rpm repo metadata (#9027)
+  * Update e-ref (#9682)
+  * do not register Aurora serverless db clusters (#9386)
+  * truncate Labels for tsh db ls (#9671)
+  * Disable RDP client on ARM 32 bit (#9667)
+  * Adds Desktops to license (#9576)
+  * Remove unused context from sqlite backend (#9658)
+  * Update Postgres audit events (#9435)
+  * Add note about TLS routing backwards compatibility (#9630)
+  * Clean up dynamicLabels ssh server goroutines when server is closed
+  * Restrores CI lint for non-go files (#9663)
+  * Close all SQL statements (#9614)
+  * Fix race condition in multiplexer tests (#9660)
+  * Fall back to "/" when home directory doesn't exist for `tsh ssh` (#9413)
+  * Add teleport_build_info Prometheus metric to Teleport (#9595)
+  * Add note about testing local dependency changes
+  * RFD 47 - remove the vendor directory from source control
+  * bot: label PRs that touch lib/events with "audit-log"
+  * Fix Flaky Retry Tests (#9516)
+  * Specify level of TLS verification for database connections (#9197)
+  * Truncate label output in tsh ls and tsh app ls commands
+  * Dead code removal + extra commentry & logging in build script (#9509)
+  * Attempts to make CI integration test logs more useful (#9626)
+  * Log when connecting to potentially incompatiable authservers
+  * Only allow access request deletion through static roles' permissions (#9540)
+  * Upload release binaries to new release infrastructure (#8722)
+  * Add access requests to TLS certificates (#9501)
+  * Update API client: dial auth service with TLS Routing (#9498)
+  * Improve TestTwoClustersTunnel troubleshooting
+  * Remove utils.BroadcastWriter
+  * Use require.Eventually to avoid flakiness in TestAPILOckedOut
+  * fix dynamo error types
+  * fixes mdx comment style (#9599)
+  * Forward TELEPORT_HOME to kubeconfig (#9546)
+  * Adds the windows_desktop_service section to the meta teleport.yaml (#9573)
+  * Add ARM64 support for buildbox docker image (#9572)
+  * Emit the correct session ID for SessionLeave events
+  * Update locking guide to include Windows Desktops
+  * Allow locking a desktop
+  * Fixed missing reviewers issue.
+  * Added support for automatic labeling of PRs.
+  * Fix goroutine/socket leak in multiplexer (#9507)
+  * tweak test timeout
+  * fix typed nil panic
+  * fallback to calling origin if rc is missing from cache
+  * docs: update cloud roadmap and faq (#9479)
+  * Fix tsh db connect mongo dbuser logic (#9196)
+  * Restart teleport-kube-agent can't join cluster.
+  * add TLS routing support to helm chart
+  * Added log configuration to teleport-cluster chart.
+  * Added support for service.spec.loadBalancerIP.
+  * updted Helm install guide in installation page. -  link to getting started with kubernetes access page to refer Helm which is more up to date guide - removed  which shows deprecated warning
+  * Fix the UI to correctly determine if a user has access to a resource (#9473)
+  * Update rdp-rs (#9344)
+  * removes experimental note from example config (#9195)
+  * Skip tests on a docs-only PR (#9416)
+  * Update aws-console.mdx (#9477)
+  * [auto] Update webassets in master (#9504)
+  * Fix initKube: broadcast KubeReady event (#9418)
+  * Session locking tweaks
+  * Deduplicate access request IDs before signing certificates (#9453)
+  * Fix devbox on AMD64 (#9462)
+  * Clean up `make grpc` and .pb.go generation (#9432)
+  * Add jitter and backoff to prevent thundering herd on auth (#9133)
+  * Escape access request and access resolution reasons in tctl (#9381)
+  * Prevent Linear Retry from converging on Max (#9393)
+  * Allow loadtest teleport image to be configurable (#9398)
+  * tool/tsh: support ID for `tsh play -f json`
+  * Exclude Jitter from logging
+  * Update README.md (#9378)
+  * Fix flaky TestWebsocketPingLoop test (#9326)
+  * Split dev tools into a seperate docker container (#9410)
+  * update doc examples to change from admin role to editor,access (#9334)
+  * Do not parse MySQL server packets (#9423)
+  * feat: ListResources gRPC rpc (#9096)
+  * Clarify the Linux Getting Started guide (#9346)
+  * Create a blast radius reduction guide (#9189)
+  * Fix NO_PROXY addr logic (#9287)
+  * Port fixes from v8 (#9397)
+  * Fixed IsInternal issue in Check workflow.
+  * Updated checking logic for code owners.
+  * Enable canned ACL for S3 (#9042)
+  * Doc update mongo postgres separate listeners (#9340)
+  * Allow a configurable event TTL in DynamoDB (#8840)
+  * Add ability to run Mongo proxy on separate listener (#9194)
+  * Include --insecure options for teleport {db|app}
+  * Fix app server goroutine leak (#9332)
+  * Add ability to run Postgres proxy on separate listener (#8323)
+  * Ensure we don't miss the resolution of an access request (#9193)
+  * Run tsh play requests with correct CLI context
+  * Delete extra % sign
+  * [auto] Update webassets in master
+  * Update example username desktop service to single quotes
+  * Correct Dismiss function spelling.
+  * Tweak LDAPS troubleshooting docs
+  * Improve error message when TOPT is not valid
+  * fix racy test
+  * bump nginx1.12 to nginx1
+  * Use in-memory cache for autoscale HA cluster
+  * Add PDB to teleport-kube-agent chart
+  * Optionally allow cluster_name to override public_address being used for cluster_name
+  * Disable drone triggers (#9313)
+  * Check If HEAD Branch Is A Fork (#9302)
+  * Fix the CRL distribution point in Windows certs (#9299)
+  * improve lock tests
+  * improve Cache.ListNodes perf
+  * improve concurrent watcher registration perf
+  * bump backend limit
+  * Remove uploadCtx/uploadDone as these are automatically reflected with uploadLoopDoneCh
+  * Do not use the server's context to complete the stream - it might have been already cancelled. Proto stream to make sure the streams have been completely written before exiting from Close.
+  * Fix CryptoRandomHex function (#9186)
+  * Fix panic running TestIntegration/RotateChangeSigningAlg (#9316)
+  * Add `--cluster` flag to all `tsh db` subcommands, Add "--diag_addr" flag to `teleport db/app start` (#9220)
+  * tool/tctl: Log when requested ttl isnt granted for a cert
+  * Replace "loose" with "lose" (#9284)
+  * Avoid "Entering/Leaving directory" output in Make (#9246)
+  * Update docker-compose.yml
+  * Add thredUP case study to adopters page
+  * Fix confusing port example in standalone docs
+  * Add scopes description to the docs
+  * Remove duplicate YouTube link
+  * Add missing parenthesis in README
+  * remove sudo from yum install
+  * Update check.yaml
+  * Improve docs for per-session MFA
+  * Check if PR is from a fork before dismissing runs. (#9300)
+  * Add Security and UX sections to the canonical RFD (#9251)
+  * Fix CheckAndSetDefaults for UserTokenSecretsV3 (#9290)
+  * Trigger Assign workflow on opened and ready_for_review events. (#9272)
+  * Fix custom tsh home dir for some tsh commands. (#9240)
+  * simplify desktop access getting started guide (#9100)
+  * Prevent infinite dialing to Auth (#9254)
+  * Added more log lines to dismiss workflow.
+  * Add Teleport loadtest infrastructure and grafana dashboard (#9023)
+  * Fix sessions endpoint and remove namespaces (#9217)
+  * Fix make grpc (#9252)
+  * Add support for configurable KMS CMK keys for S3 SSE (#8354)
+  * Fix tsh ssh proxy for openssh client (#9219)
+  * `tsh db connect` do not respect TELEPORT_HOME (#9226)
+  * Fix incorrect paths in docker/Dockerfile. (#9164)
+  * Fixed error in assignment logic.
+  * Added extra logging to bot assignment.
+  * Bump x/crypto (#9205)
+  * Updated logic to find workflow by path.
+  * Updated code review assignment logic.
+  * Clear web terminal when session ends (#8850)
+  * Do not prompt for hardware MFA using `tsh` on Windows (#9081)
+  * Update e ref
+  * Create separate builds for CentOS7 (+fips)
+  * simplify connection establishment (#9098)
+  * Enhance LDAP desktop discovery (#9152)
+  * Add Azure access token auth support for Postgres/MySQL (#8951)
+  * docs: Fixes for pam_exec user creation script (#9001)
+  * Use t.Setenv in tests (#9154)
+  * Fix MySQL proxy handshake (#9161)
+  * Update fluentd.mdx
+  * Forwarding Access Logs using FluentD Video
+  * Google CloudBuild support (#9090)
+  * RFD 42 - S3 KMS Encryption (#8344)
+  * Fix misspelling
+  * Resolve potential data race (#9118)
+  * Resolve race in db tests (#9117)
+  * Clean up temp dir after app tests (#9119)
+  * Make the `tctl users update` command visible (#9080)
+  * Add public docs for active and recorded sessions "where" (#9084)
+  * Don't Dismiss Dismissed Reviews (#9094)
+  * Add Bot Logging (#9099)
+  * Refresh getting started guide to use TLS routing (#8988)
+  * Update docs for TLS routing (#9048)
+  * Keep Valid Reviews For External Contributors  (#9067)
+  * Make Teleport startup resilient to invalid roles (#9062)
+  * docs: LDAP service account setup (#8875)
+  * teleport configure: generate web_listen_addr (#9066)
+  * Implement where conditions for active sessions (#9040)
+  * add --publid-addr --cert-file --key-file for teleport configure (#9033)
+  * Update reviewers (#9050)
+  * Update vendor
+  * Bump e (#9022)
+  * Expose endpoint for fetching single desktop (#9041)
+  * Add app metatada to app audit events (#8930)
+  * Updated Docker Quickstart/Labs.
+  * Request keypair from pool rather than directly.
+  * Move unimplemented client methods out of the api client. (#8972)
+  * Re-Request Reviews When Approvals Are Invalidated (#9037)
+  * Fixed Helm publishing.
+  * Updated Drone pipeline to build Teleport 8 images.
+  * Clean up DB integration test output
+  * [auto] Update AMI IDs for 8.0.0 (#9025)
+  * make update-vendor (#9017)
+  * Restart entire node on tunnel collapse (#8102)
+  * update gosaml2 dep (#8937)
+  * Fix dialing kube trusted cluser in v2 telport config (#8993)
+  * teleport.cluster.local cleanup (#7922)
+  * role labels use key instead of name
+  * update docs to reflect terraform provider changes
+  * Fix tunnel address for TLS routing if public tunnel address is present (#8961)
+  * [pr-buddy] helm: Add support for annotation on secrets generated by cert-manager (#8872)
+  * Updated build-darwin-* pipeline.
+  * Remove explicit "deny" from preset "auditor" role, make preset roles V4 (#8959)
+  * Update CODEOWNERS
+  * replace dgrijalva/jwt-go with golang-jwt/jwt (#8939)
+  * Prevent system roles from being created by a user (#8924)
+  * RFD 43: Database access configurator (#8896)
+  * Fix KUBECONFIG server name (#8940)
+  * [auto] Update webassets in master (#8963)
+  * Update username (#8968)
+  * windows ldaps port (#8932)
+  * RFD 45: RBAC where conditions for active sessions list/read (#8962)
+  * Assign Doc Reviewers to Pull Requests with Changes to `docs/` (#8938)
+  * Merge 'config-proxy' and 'proxy ssh' commands logic (#8920)
+  * Add brief TLS routing description
+  * Update CHANGELOG.md
+  * Bypass required reviewers  (#8901)
+  * Add meta redirect for some routes (#8293)
+  * tctl: allow issuing app access certificates via `tctl auth sign` (#8717)
+  * Update check.go
+  * Use Hardcoded Map to Get Reviewers for Authors (#8928)
+  * Add user-facing documentation for WebAuthn (#8479)
+  * Improve SSH agent forwarding error message in proxy mode (#8829)
+  * Do Not Dismiss Commented Pull Request Reviews (#8912)
+  * Add space between reviewer usernames (#8905)
+  * remove checking if users exist
+  * RFD 44: RBAC `where` conditions for session recordings list/read (#8084)
+  * [auto] Update webassets in master (#8909)
+  * Fix race condition in integration tests. (#8888)
+  * Link libatomic on Linux
+  * RFD 9 (Locking): Update with latest developments (#7860)
+  * Update test plan (#8897)
+  * Fix the buildbox (again) (#8892)
+  * Fix ACME strict ALPN (#8869)
+  * Add RFD 43: Kubernetes Access Multiparty Sessions (#8510)
+  * Don't allow running Desktop Access in FIPS mode.
+  * Fix Rust buildbox (#8881)
+  * Rust & Desktop Access fixes (#8822)
+  * Use cgo.Handle for passing client refs between Rust/Go
+  * clarifying facet examples (#8705)
+  * Fix heartbeat for LDAP hosts
+  * Disable desktop access in Web UI in Cloud clusters (#8858)
+  * Fix tsh ssh proxy (#8826)
+  * Fix MFA for DB Access (#8796)
+  * Add dynamic registration and discovery guides (#8694)
+  * integration: name our subtests
+  * Fix typo in error check. (#8810)
+  * output of config is being included in copy/paste (#8855)
+  * Split auth.AccessPoint into variant specific interfaces (#8471)
+  * Update workflow files to run workflows in the context of master (#8728)
+  * Bring back previous u2f challenge response for web terminal (#8830)
+  * Update Go badge to 1.17 (#8841)
+  * Fix the client idle disconnect audit event for desktops
+  * Fix trailing whitespace
+  * Adds a test for scroll wheel
+  * updates keyboard test plan
+  * Include desktop access in test plan
+  * Fix mongo access with mfa and add tests (#8799)
+  * Fix reverse tunnel web ping call log severity (#8775)
+  * Update e-ref (#8819)
+  * Remove checking for error from session end in web terminal (#8797)
+  * Update rdp-rs to fix horizontal scroll + extended keys
+  * update to syntax change in terraform provider (#8782)
+  * [helm] Change path -> mountPath under extraVolumeMounts (#8806)
+  * [ami] Get wildcard DNS cert when using certbot/Letsencrypt with Terraform AMI (#8792)
+  * URL-encode Postgres username in connection string (#8771)
+  * Return created date with new recovery codes (#8777)
+  * [auto] Update AMI IDs for 7.3.2
+  * Update mac builds
+  * Update test plan (#8794)
+  * Set user verification to "discouraged" for WebAuthn (#8759)
+  * Add '+' to key sanitizer whitelist (#8396)
+  * flips struct ordering to match with tdp spec (#8753)
+  * Fix error message when direct dial fails (#8678)
+  * set packer version
+  * API release automation with go script (#8484)
+  * Fix race condition in PipeNetCon (#8643)
+  * Update e
+  * Ensure that Rust libraries are cleaned
+  * Update and mark WebAuthn RFD as implemented (#8751)
+  * Update TLS routing test plan scenarios (#8731)
+  * Make RegisterUsingTokenRequest a Protobuf type (#8690)
+  * Stop linking lcrypto and lssl
+  * Update e
+  * Add Rust to buildbox
+  * Add link to Teleport Changelog in helm chart repository site. (#8734)
+  * Include package-level failures in formatted test output (#8698)
+  * Fix event code duplication for PrivilegeTokenCreateCode (#8733)
+  * Update AWS CLI application access docs ref (#8634)
+  * Update docs per-connection MFA DB access (#8682)
+  * Add RFD 38 (#7769)
+  * RFD 31: Dynamic registration for apps and databases (#6787)
+
+-------------------------------------------------------------------
 Sat Mar 05 13:06:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 8.3.4:
