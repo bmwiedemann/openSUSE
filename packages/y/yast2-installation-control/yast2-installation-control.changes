@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 15 11:57:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move macros.skelcd from /etc/rpm to /usr/lib/rpm/macros.d
+  (boo#1185657).
+- 4.4.11
+
+-------------------------------------------------------------------
 Fri Jan 28 13:17:34 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - add boot timeout option (jsc#SLE-22667)

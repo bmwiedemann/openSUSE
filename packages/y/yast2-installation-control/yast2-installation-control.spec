@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation-control
-Version:        4.4.10
+Version:        4.4.11
 Release:        0
 Summary:        YaST2 - RNG schema for installation control files
 License:        GPL-2.0-only
@@ -46,7 +46,6 @@ This package contains RNG schema for validating the installation control files.
 %dir %{yast_controldir}
 %{yast_controldir}/*.rng
 %{yast_controldir}/*.rnc
-%dir %{_sysconfdir}/rpm
-%{_sysconfdir}/rpm/macros.skelcd
+%{_rpmmacrodir}/macros.skelcd
 
 %changelog
