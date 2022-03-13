@@ -1,7 +1,7 @@
 #
 # spec file for package python-invocations
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Patch1:         invocations-py3.patch
 BuildRequires:  %{python_module blessings >= 1.6}
 BuildRequires:  %{python_module invoke >= 1.6}
 BuildRequires:  %{python_module lexicon}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module releases >= 1.2}
 BuildRequires:  %{python_module semantic_version >= 2.4}
 BuildRequires:  %{python_module setuptools}
@@ -38,11 +40,6 @@ BuildRequires:  %{python_module tabulate >= 0.7.5}
 BuildRequires:  %{python_module tqdm >= 4.8.1}
 BuildRequires:  %{python_module twine >= 1.15}
 BuildRequires:  %{python_module wheel >= 0.24.0}
-# SECTION gh#bitprophet/pytest-relaxed#12, no pytest5 on python310
-BuildRequires:  %{python_module mock if (%python-base without python310-base)}
-BuildRequires:  %{python_module pytest < 6.1 if (%python-base without python310-base)}
-BuildRequires:  %{python_module pytest-relaxed if (%python-base without python310-base)}
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blessings >= 1.6
@@ -92,7 +89,6 @@ the Invoke project's communication channels for updates. Thanks!
 # packaging: not applicable to openSUSE
 # cannot use --ignore because of pytest-relaxed plugin
 rm -r tests/autodoc/ tests/packaging/
-alias pytest-3.10='echo "Not testing: no pytest<6 on python 3.10"'
 %pytest
 
 %files %{python_files}

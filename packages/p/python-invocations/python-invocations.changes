@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 10 06:25:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- pytest-relaxed now supports pytest 6, so test on all python versions. 
+
+-------------------------------------------------------------------
 Mon Dec 13 23:44:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.3.0
