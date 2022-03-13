@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_console
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter_console
-Version:        6.4.0
+Version:        6.4.3
 Release:        0
 Summary:        Jupyter terminal console
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module jupyter-client}
+BuildRequires:  %{python_module jupyter-client >= 7}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module pyzmq}
 Requires:       jupyter-jupyter_console = %{version}
 Requires:       python-ipykernel
 Requires:       python-ipython
-Requires:       python-jupyter-client
+Requires:       python-jupyter-client >= 7
 Requires:       python-prompt_toolkit >= 2
 Requires:       python-pyzmq
 Requires(post): update-alternatives
@@ -84,7 +84,7 @@ sed -i '/import sys/ a import setuptools' setup.py
 
 %files %{python_files}
 %doc CONTRIBUTING.md README.md
-%license COPYING.md
+%license LICENSE
 %python_alternative %{_bindir}/jupyter-console
 %{python_sitelib}/jupyter_console
 %{python_sitelib}/jupyter_console-%{version}*-info
