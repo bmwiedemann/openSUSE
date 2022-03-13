@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-server-mathjax
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-jupyter-server-mathjax
-Version:        0.2.3
+Version:        0.2.5
 Release:        0
 Summary:        MathJax resources as a Jupyter Server Extension
 License:        Apache-2.0 AND BSD-3-Clause
@@ -78,6 +78,6 @@ cp %{buildroot}%{python3_sitelib}/jupyter_server_mathjax/static/LICENSE LICENSE-
 
 %files -n jupyter-server-mathjax
 %license LICENSE LICENSE-STATIC
-%config %{_jupyter_server_confdir}/jupyter_server_mathjax.json
+%_jupyter_config %{_jupyter_server_confdir}/jupyter_server_mathjax.json
 
 %changelog
