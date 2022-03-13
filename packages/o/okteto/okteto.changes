@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 12 20:33:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.7:
+  * Remove code to delete deprecated volume #2327
+  * Warning if a service/volume in a stack already belongs to a different stack
+
+-------------------------------------------------------------------
 Wed Mar 02 14:06:15 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.15.6:
