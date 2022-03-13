@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 12 21:06:31 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.2.3:
+  * Add a start minimised (-m, --minimized) command line option.
+  * The main application icon is now presented in a scalable format
+    (SVG).
+
+-------------------------------------------------------------------
 Wed Mar  2 18:33:56 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Initial package.
