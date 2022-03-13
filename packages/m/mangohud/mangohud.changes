@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 13 10:49:22 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 0.6.6 & 0.6.6.1:
+  * fix mangoapp building without xnvctrl
+  * Fixed logging crashing in some games (cyberpunk etc)
+  * Limit keybind check to about 10hz (improves perf in high fps scenarios, like vkcube)
+  * Added spdlog
+  * Changed media_player_order to media_player_format={title};{artist};{album}. Semi-colon adds a new line.
+- Switched to a new %{internal_ver} macro for building as the internal version number 0.6.6-1 does not synergize with openSUSE's versioning system.
+- Add spdlog as it is now required to build mangohud, don't use system spdlog as mangohud needs version 1.8.5 specifically.
+
+-------------------------------------------------------------------
 Fri Jul  9 02:44:39 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.5:

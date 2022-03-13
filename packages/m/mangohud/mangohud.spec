@@ -1,7 +1,7 @@
 #
 # spec file for package mangohud
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,23 @@
 #
 
 
+%define internal_ver 0.6.6-1
 %define imgui_ver 1.81
 %define imgui_wrap 1
+%define spdlog_ver 1.8.5
+%define spdlog_wrap 1
+
 Name:           mangohud
-Version:        0.6.5
+Version:        0.6.6.1
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
 URL:            https://github.com/flightlessmango/MangoHud
-Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{internal_ver}.tar.gz#/%{name}-%{internal_ver}.tar.gz
 Source1:        https://github.com/ocornut/imgui/archive/v%{imgui_ver}/imgui-%{imgui_ver}.tar.gz
 Source2:        https://wrapdb.mesonbuild.com/v1/projects/imgui/%{imgui_ver}/%{imgui_wrap}/get_zip#/imgui-%{imgui_ver}-%{imgui_wrap}-wrap.zip
+Source3:        https://github.com/gabime/spdlog/archive/v%{spdlog_ver}/spdlog-%{spdlog_ver}.tar.gz
+Source4:        https://wrapdb.mesonbuild.com/v1/projects/spdlog/%{spdlog_ver}/%{spdlog_wrap}/get_zip#/spdlog-%{spdlog_ver}-%{spdlog_wrap}-wrap.zip
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -36,6 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-mako
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
 Suggests:       goverlay
@@ -45,13 +52,17 @@ Provides:       bundled(ImGui)
 A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 
 %prep
-%autosetup -n MangoHud-%{version}
-%autosetup -n MangoHud-%{version} -DTa1
-%autosetup -n MangoHud-%{version} -DTa2
+%autosetup -n MangoHud-%{internal_ver}
+%autosetup -n MangoHud-%{internal_ver} -DTa1
+%autosetup -n MangoHud-%{internal_ver} -DTa2
+%autosetup -n MangoHud-%{internal_ver} -DTa3
+%autosetup -n MangoHud-%{internal_ver} -DTa4
 sed -i -e '1d;2i#!/usr/bin/bash' bin/mangohud.in
 sed -i 's,^@ld_libdir_mangohud@ ,/usr/\$LIB/mangohud/,' bin/mangohud.in
 mkdir subprojects/imgui
 mv imgui-%{imgui_ver}/* subprojects/imgui/
+mkdir subprojects/spdlog
+mv spdlog-%{spdlog_ver}/* subprojects/spdlog/
 
 %build
 %meson \
