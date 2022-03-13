@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 27 01:08:20 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 8.2.0:
+  * Changes:
+    + len(AsyncMapResult) and progress ports now use the number of
+      items in the map, not the number of messages.
+  * Enhancements:
+    + Show output prior to errors in %%px
+  * Bugs fixed:
+    + Fix cases where engine id could be -1 in tracebacks
+    + Add missing pbs to engine launcher entrypoints
+
+-------------------------------------------------------------------
 Sat Jan 15 15:56:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.1.0

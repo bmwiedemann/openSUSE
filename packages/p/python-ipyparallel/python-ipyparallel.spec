@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipyparallel
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -40,20 +40,10 @@ BuildRequires:  %{python_module tornado >= 5.1}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module traitlets >= 4.3}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
-# SECTION test requirements, including ipython[test] (there is no iptest package anymore)
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module ipython >= 4}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-tornado}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testpath}
-# /SECTION
-Requires:       python-entrypoints
 Requires:       python-decorator
+Requires:       python-entrypoints
 Requires:       python-ipykernel >= 4.4
 Requires:       python-ipython >= 4
 Requires:       python-jupyter-client
@@ -67,9 +57,18 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     jupyter-ipyparallel = %{version}
 Recommends:     python-mpi4py
-Provides:       python-jupyter_ipyparallel = %{version}
-Obsoletes:      python-jupyter_ipyparallel < %{version}
+Provides:       python-jupyter_ipyparallel = %{version}-%{release}
+Obsoletes:      python-jupyter_ipyparallel < %{version}-%{release}
 BuildArch:      noarch
+# SECTION test requirements, including ipython[test] (there is no iptest package anymore)
+BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module ipython >= 4}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-tornado}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testpath}
+# /SECTION
 %python_subpackages
 
 %description
@@ -83,8 +82,8 @@ Group:          Development/Languages/Python
 Requires:       jupyter-jupyter-core
 Requires:       jupyter-notebook
 Requires:       python3-ipyparallel = %{version}
-Provides:       python-jupyter_ipyparallel-nbextension = %{version}
-Obsoletes:      python-jupyter_ipyparallel-nbextension < %{version}
+Provides:       python-jupyter_ipyparallel-nbextension = %{version}-%{release}
+Obsoletes:      python-jupyter_ipyparallel-nbextension < %{version}-%{release}
 
 %description -n jupyter-ipyparallel
 Use multiple instances of IPython in parallel, interactively.
@@ -109,7 +108,7 @@ Documentation and help files for ipyparallel.
 
 %install
 %python_install
-%{jupyter_move_config}
+%jupyter_move_config
 
 # Prepare for update-alternatives
 %python_clone -a %{buildroot}%{_bindir}/ipcluster
@@ -121,7 +120,7 @@ pushd %{buildroot}%{$python_sitelib}/ipyparallel
 for f in apps/iploggerapp.py cluster/app.py engine/app.py controller/app.py controller/heartmonitor.py; do
   chmod a+x $f
   # Fix wrong-script-interpreter
-  sed -i "s|#!%{_bindir}/env python|#!%__$python|" $f
+  sed -i "s|#!%{_bindir}/env python.*|#!%__$python|" $f
   $python -m compileall $f
   $python -O -m compileall $f
 done
@@ -147,7 +146,7 @@ popd
 %python_alternative %{_bindir}/ipcluster
 %python_alternative %{_bindir}/ipcontroller
 %python_alternative %{_bindir}/ipengine
-%{python_sitelib}/ipyparallel-%{version}-py*.egg-info
+%{python_sitelib}/ipyparallel-%{version}*-info
 %{python_sitelib}/ipyparallel/
 
 %files -n jupyter-ipyparallel
@@ -155,8 +154,8 @@ popd
 %doc README.md
 %{_jupyter_nbextension_dir}/ipyparallel/
 %{_jupyter_labextensions_dir3}/ipyparallel-labextension
-%_jupyter_config %{_jupyter_server_confdir}/ipyparallel.json
-%_jupyter_config %{_jupyter_servextension_confdir}/ipyparallel.json
-%_jupyter_config %{_jupyter_nb_tree_confdir}/ipyparallel.json
+%{_jupyter_config} %{_jupyter_server_confdir}/ipyparallel.json
+%{_jupyter_config} %{_jupyter_servextension_confdir}/ipyparallel.json
+%{_jupyter_config} %{_jupyter_nb_tree_confdir}/ipyparallel.json
 
 %changelog
