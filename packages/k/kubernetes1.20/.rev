@@ -282,4 +282,12 @@
   * Propagate conversion errors</comment>
     <requestid>936735</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>37c0621e0d4a3437b96f7f7a190a256d</srcmd5>
+    <version>1.20.13</version>
+    <time>1647199487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960747</requestid>
+  </revision>
 </revisionlist>
