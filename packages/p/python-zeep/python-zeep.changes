@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 13 07:31:39 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to 4.1.0
+  * Remove last dependency on six
+  * Use platformdirs instead of the appsdirs dependency
+  * Pass digest method when signing timestamp node
+  * Fix settings context manager when an exception is raised
+  * Don’t render decimals using scientific notation
+  * Remove dependency on defusedxml
+  * Improve handling of str values for Duration
+- added httpx-test.patch to use text instead of data
+
+-------------------------------------------------------------------
 Thu Jun  3 08:45:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 4.0.0
