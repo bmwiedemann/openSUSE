@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar  6 16:53:51 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add _constraints (storage)
+
+-------------------------------------------------------------------
 Mon Jan  3 12:49:43 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Make a "fixed appliance" for libguestfs
