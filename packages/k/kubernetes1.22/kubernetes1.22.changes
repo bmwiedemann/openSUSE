@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  7 16:21:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in client-common postinstall script (bsc#1195391)
+
+-------------------------------------------------------------------
 Fri Dec 17 10:02:26 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Tidy up merge marker
