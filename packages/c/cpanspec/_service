@@ -1,10 +1,10 @@
 <services>
-  <service name="obs_scm" mode="disabled">
-    <param name="versionprefix">1.81.01</param>
+  <service name="obs_scm" mode="manual">
+    <param name="versionprefix">1.82.01</param>
     <param name="url">git://github.com/openSUSE/cpanspec</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">github@dstoecker.de</param>
+    <param name="changesauthor">Tina Müller &lt;tina.mueller@suse.com&gt;</param>
     <param name="revision">master</param>
   </service>
   <service name="set_version" mode="disabled"/>

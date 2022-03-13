@@ -1,7 +1,7 @@
 #
 # spec file for package cpanspec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name cpanspec
 Name:           cpanspec
-Version:        1.81.01.1620405353.7ed9076
+Version:        1.82.01.1646998297.5af26bb
 Release:        0
 Summary:        Generate a SUSE spec file for a CPAN module
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -27,15 +27,18 @@ URL:            https://github.com/openSUSE/cpanspec
 Source0:        cpanspec-%{version}.tar.xz
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Algorithm::Diff)
 BuildRequires:  perl(Archive::Tar)
 BuildRequires:  perl(Archive::Zip)
 BuildRequires:  perl(IO::Uncompress::Bunzip2)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Parse::CPAN::Packages)
 BuildRequires:  perl(Perl::PrereqScanner)
+BuildRequires:  perl(Pod::POM)
 BuildRequires:  perl(Pod::Simple::TextContent)
 BuildRequires:  perl(Text::Autoformat)
 BuildRequires:  perl(YAML)
+BuildRequires:  perl(YAML::XS)
 Requires:       perl(Algorithm::Diff)
 Requires:       perl(Archive::Tar)
 Requires:       perl(Archive::Zip)
@@ -50,6 +53,7 @@ Requires:       perl(Pod::Simple::TextContent)
 Requires:       perl(Text::Autoformat)
 Requires:       perl(Text::Capitalize)
 Requires:       perl(YAML)
+Requires:       perl(YAML::XS)
 Recommends:     perl(IO::Uncompress::Bunzip2)
 BuildArch:      noarch
 %{perl_requires}
@@ -68,6 +72,7 @@ make %{?_smp_mflags}
 
 %check
 make %{?_smp_mflags} test
+perl ./cpanspec -h
 
 %install
 %perl_make_install

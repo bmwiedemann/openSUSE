@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 11 11:41:02 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Add a call to `cpanspec -h` for testing
+- Update dependencies
+
+-------------------------------------------------------------------
+Fri Mar 11 11:39:45 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Update to version 1.82.01.1646998297.5af26bb:
+  * v1.82.01
+  * Read from MYMETA.{json,yml} (#33)
+  * Drop perl markup in summary line (#32)
+
+-------------------------------------------------------------------
 Fri May  7 16:36:50 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Update to 1.81.01
