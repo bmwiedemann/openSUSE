@@ -4084,4 +4084,39 @@ I cannot test locally unfortunately.
     Crafted email could trigger an out-of-bounds write</comment>
     <requestid>955596</requestid>
   </revision>
+  <revision rev="275" vrev="1">
+    <srcmd5>ceda58527b8bdf69f80f8f90f6f07556</srcmd5>
+    <version>91.7.0</version>
+    <time>1647199469</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.7.0
+  * Thunderbird will use the first occurrence of headers that should
+    only appear once
+  * Auto-complete incorrectly changed a pasted email address to the
+    primary address of a contact
+  * Attachments with filename extensions that were not registered in
+    MIME types could not be opened
+  * Copy/Cut/Paste actions not working in Thunderbird Preferences
+  * Improved screen reader support of displayed message headers
+  MFSA 2022-12 (bsc#1196900)
+  * CVE-2022-26383 (bmo#1742421)
+    Browser window spoof using fullscreen mode
+  * CVE-2022-26384 (bmo#1744352)
+    iframe allow-scripts sandbox bypass
+  * CVE-2022-26387 (bmo#1752979)
+    Time-of-check time-of-use bug when verifying add-on signatures
+  * CVE-2022-26381 (bmo#1736243)
+    Use-after-free in text reflows
+  * CVE-2022-26386 (bmo#1752396)
+    Temporary files downloaded to /tmp and accessible by other
+    local users
+
+- Mozilla Thunderbird 91.6.2
+  MFSA 2022-09
+  * CVE-2022-26485 (bmo#1758062)
+    Use-after-free in XSLT parameter processing
+  * CVE-2022-26486 (bmo#1758070)
+    Use-after-free in WebGPU IPC Framework</comment>
+    <requestid>960657</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar  6 13:02:02 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.7.0
+  * Thunderbird will use the first occurrence of headers that should
+    only appear once
+  * Auto-complete incorrectly changed a pasted email address to the
+    primary address of a contact
+  * Attachments with filename extensions that were not registered in
+    MIME types could not be opened
+  * Copy/Cut/Paste actions not working in Thunderbird Preferences
+  * Improved screen reader support of displayed message headers
+  MFSA 2022-12 (bsc#1196900)
+  * CVE-2022-26383 (bmo#1742421)
+    Browser window spoof using fullscreen mode
+  * CVE-2022-26384 (bmo#1744352)
+    iframe allow-scripts sandbox bypass
+  * CVE-2022-26387 (bmo#1752979)
+    Time-of-check time-of-use bug when verifying add-on signatures
+  * CVE-2022-26381 (bmo#1736243)
+    Use-after-free in text reflows
+  * CVE-2022-26386 (bmo#1752396)
+    Temporary files downloaded to /tmp and accessible by other
+    local users
+
+-------------------------------------------------------------------
+Sun Mar  6 12:49:36 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.6.2
+  MFSA 2022-09
+  * CVE-2022-26485 (bmo#1758062)
+    Use-after-free in XSLT parameter processing
+  * CVE-2022-26486 (bmo#1758070)
+    Use-after-free in WebGPU IPC Framework
+
+-------------------------------------------------------------------
 Tue Feb 15 09:13:06 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.6.1
