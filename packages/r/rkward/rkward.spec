@@ -120,7 +120,11 @@ intégration dans les suites bureautiques.
 %{_kf5_sharedir}/icons/hicolor/scalable/apps/rkward.svgz
 %{_kf5_sharedir}/ktexteditor_snippets/
 %{_kf5_bindir}/rkward*
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
+%{_libexecdir}/rkward.rbackend
+%else
 %{_kf5_libdir}/libexec/
+%endif
 %{_kf5_sharedir}/rkward/
 %{_kf5_servicesdir}/rkward.protocol
 %if 0%{?suse_version} > 1320 || (0%{?suse_version} == 1315 && 0%{?sle_version} >= 120300)

@@ -368,4 +368,13 @@
   using ggplot2, see https://bugs.kde.org/show_bug.cgi?id=438993 (forwarded request 903945 from flyos)</comment>
     <requestid>903956</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>75483ad7ba1e137efe02ed297245208f</srcmd5>
+    <version>0.7.2</version>
+    <time>1647199741</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust filelist to a recent kf5-filesystem change in Factory to
+  fix build (forwarded request 961474 from wolfi323)</comment>
+    <requestid>961486</requestid>
+  </revision>
 </revisionlist>
