@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.81.0
+Version:        7.82.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -33,8 +33,10 @@ Source4:        https://daniel.haxx.se/mykey.asc#/curl.keyring
 Patch0:         libcurl-ocloexec.patch
 Patch1:         dont-mess-with-rpmoptflags.diff
 Patch2:         curl-secure-getenv.patch
-# PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
+#PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
+#PATCH-FIX-UPSTREAM Fix: openssl: fix CN check error code
+Patch4:         curl-fix-verifyhost.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       libcurl4 = %{version}
@@ -95,6 +97,7 @@ user interaction or any kind of interactivity.
 %patch1
 %patch2
 %patch3 -p1
+%patch4 -p1
 
 %build
 # curl complains if macro definition is contained in CFLAGS

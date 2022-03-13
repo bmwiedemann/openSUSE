@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Mar 11 16:36:50 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix: openssl: fix CN check error code
+  * Add curl-fix-verifyhost.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 08:01:26 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.82.0:
+  * curl: add --json command line option
+  * curl: make it so that sensitive command line arguments do not
+    show as easily in the output of ps(1)
+  * curl_multi_socket.3: remove callback and typical usage descriptions
+  * ftp: provide error message for control bytes in path
+  * ldap: return CURLE_URL_MALFORMAT for bad URL
+  * lib: remove support for CURL_DOES_CONVERSIONS
+  * mqtt: plug some memory leaks
+  * multi: allow user callbacks to call curl_multi_assign
+  * multi: remember connection_id before returning connection to pool
+  * multi: set in_callback for multi interface callbacks
+  * netware: remove support
+  * ngtcp2: adapt to changed end of headers callback proto
+  * openldap: implement SASL authentication
+  * openssl: return error if TLS 1.3 is requested when not supported
+  * sectransp: mark a 3DES cipher as weak
+  * smb: pass socket for writing and reading data instead of FIRSTSOCKET
+  * tool_getparam: DNS options that need c-ares now fail without it
+  * TPF: drop support
+  * url: given a user in the URL, find pwd for that user in netrc
+  * url: keep trailing dot in host name
+  * urlapi: handle "redirects" smarter
+  * urldata: CONN_IS_PROXIED replaces bits.proxy when proxy can be disabled
+  * urldata: remove conn->bits.user_passwd
+
+-------------------------------------------------------------------
 Sun Jan  9 21:24:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.81.0:
