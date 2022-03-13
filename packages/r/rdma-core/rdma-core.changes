@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 10 08:24:00 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update spec file from upstream
+  - install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639)
+  - fix build support for riscv
+- Added cmake-Make-modprobe.d-path-configurable.patch
+  - Backport from upstream to allow modprobe files to be installed in a
+    configurable directory
+
+-------------------------------------------------------------------
 Fri Feb 18 07:46:41 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add srp_daemon-Detect-proper-path-to-systemctl.patch to fix path to systemctl (bsc#1195874)

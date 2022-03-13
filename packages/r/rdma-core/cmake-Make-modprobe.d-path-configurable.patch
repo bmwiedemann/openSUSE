@@ -1,0 +1,46 @@
+commit 942bb1d8657f1ed6f2c122324f2aa5e002f0cd35
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Tue Mar 8 11:17:30 2022 +0100
+
+    cmake: Make modprobe.d path configurable
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git CMakeLists.txt CMakeLists.txt
+index 29b177abb4d3..ac795c4b04af 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -115,6 +115,8 @@ set(IBDIAG_NODENAME_MAP_PATH "${CMAKE_INSTALL_FULL_SYSCONFDIR}/rdma/ib-node-name
+ 
+ set(CMAKE_INSTALL_INITDDIR "${CMAKE_INSTALL_SYSCONFDIR}/init.d"
+   CACHE PATH "Location for init.d files")
++set(CMAKE_INSTALL_MODPROBEDIR "${CMAKE_INSTALL_SYSCONFDIR}/modprobe.d/"
++  CACHE PATH "Location for modprobe.d files")
+ set(CMAKE_INSTALL_SYSTEMD_SERVICEDIR "${CMAKE_INSTALL_PREFIX}/lib/systemd/system"
+   CACHE PATH "Location for systemd service files")
+ set(CMAKE_INSTALL_SYSTEMD_BINDIR "/lib/systemd"
+diff --git providers/ipathverbs/CMakeLists.txt providers/ipathverbs/CMakeLists.txt
+index 9031b86d0461..eaa73a8c6156 100644
+--- providers/ipathverbs/CMakeLists.txt
++++ providers/ipathverbs/CMakeLists.txt
+@@ -4,7 +4,7 @@ rdma_provider(ipathverbs
+   )
+ 
+ rdma_subst_install(FILES "truescale.conf.in"
+-  DESTINATION "${CMAKE_INSTALL_SYSCONFDIR}/modprobe.d/"
++  DESTINATION "${CMAKE_INSTALL_MODPROBEDIR}/"
+   RENAME "truescale.conf")
+ install(FILES truescale-serdes.cmds
+   DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}"
+diff --git providers/mlx4/CMakeLists.txt providers/mlx4/CMakeLists.txt
+index ad849f105231..c989c1d87ad1 100644
+--- providers/mlx4/CMakeLists.txt
++++ providers/mlx4/CMakeLists.txt
+@@ -13,6 +13,6 @@ publish_headers(infiniband
+   mlx4dv.h
+ )
+ 
+-install(FILES "mlx4.conf" DESTINATION "${CMAKE_INSTALL_SYSCONFDIR}/modprobe.d/")
++install(FILES "mlx4.conf" DESTINATION "${CMAKE_INSTALL_MODPROBEDIR}/")
+ 
+ rdma_pkg_config("mlx4" "libibverbs" "${CMAKE_THREAD_LIBS_INIT}")
