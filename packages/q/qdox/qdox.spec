@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/paul-hammant/qdox
 Source0:        https://repo1.maven.org/maven2/com/thoughtworks/qdox/qdox/%{version}/%{name}-%{version}-project.tar.bz2
 Source1:        qdox-build.xml
+Patch0:         Port-to-JFlex-1.7.0.patch
 BuildRequires:  ant
 BuildRequires:  byaccj
 BuildRequires:  fdupes
@@ -49,6 +50,7 @@ API docs for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
+%patch0 -p1
 find -name *.jar -delete
 find -name *.class -delete
 rm -rf bootstrap

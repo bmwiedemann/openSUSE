@@ -196,4 +196,12 @@
     <comment>2.0.1</comment>
     <requestid>946326</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>68368274ea17b069c8c9d3366442e2ac</srcmd5>
+    <version>2.0.1</version>
+    <time>1647199508</time>
+    <user>dimstar_suse</user>
+    <comment>Add Automatic-Module-Name to manifest and fix build with jflex 1.7</comment>
+    <requestid>961197</requestid>
+  </revision>
 </revisionlist>

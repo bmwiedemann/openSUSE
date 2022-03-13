@@ -88,6 +88,7 @@
          basedir="${build.outputDir}" 
          excludes="**/package.html">
       <manifest>
+		<attribute name="Automatic-Module-Name" value="com.thoughtworks.qdox"/>
 		<attribute name="Bundle-Localization" value="plugin"/>
 		<attribute name="Bundle-ManifestVersion" value="2"/>
 		<attribute name="Bundle-Name" value="%pluginName"/>
