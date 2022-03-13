@@ -7,5 +7,3 @@
   BuildRequires:  openssl-devel
   BuildRequires:  postgresql-devel
 
-:patches:
-  use-pkg-config.patch: -p1

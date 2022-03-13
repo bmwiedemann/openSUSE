@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pg
-Version:        1.2.3
+Version:        1.3.4
 Release:        0
 %define mod_name pg
 %define mod_full_name %{mod_name}-%{version}
@@ -41,9 +41,6 @@ URL:            https://github.com/ged/ruby-pg
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-pg-rpmlintrc
 Source2:        gem2rpm.yml
-# MANUAL
-Patch0:         use-pkg-config.patch
-# /MANUAL
 Summary:        Pg is the Ruby interface to the PostgreSQL RDBMS
 License:        BSD-2-Clause
 Group:          Development/Languages/Ruby
@@ -68,7 +65,6 @@ end.
 
 %prep
 %gem_unpack
-%patch0 -p1
 find -type f -print0 | xargs -0 touch -r %{S:0}
 %gem_build
 
@@ -76,7 +72,7 @@ find -type f -print0 | xargs -0 touch -r %{S:0}
 
 %install
 %gem_install \
-  --doc-files="ChangeLog History.rdoc LICENSE README.rdoc" \
+  --doc-files="History.rdoc LICENSE README.rdoc" \
   -f
 %gem_cleanup
 
