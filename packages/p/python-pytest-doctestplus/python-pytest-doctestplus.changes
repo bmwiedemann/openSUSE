@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 13 08:57:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.0
+  * MNT: Stop using distutils by @pllim in #172
+  * Add --doctest-ufunc option to doctest Numpy ufuncs by @lpsinger
+    in #174
+  * Fix typos by @kianmeng in #176
+  * Doctests in ufuncs should respect doctest_skip by @lpsinger in
+    #175
+  * Use windows-2019 for GitHub Actions jobs by @lpsinger in #178
+
+-------------------------------------------------------------------
 Sun Oct 17 13:49:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.11.0
