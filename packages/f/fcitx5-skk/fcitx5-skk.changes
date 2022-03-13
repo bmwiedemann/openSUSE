@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 13 07:33:41 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.11
+  * Set size policy so it can be same width when it's text label
+  * Add label to text property
+
+-------------------------------------------------------------------
 Wed Dec 15 12:46:32 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.9
