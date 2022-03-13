@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Mar 13 15:08:23 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 66.0.0
+  New features and enhancements:
+  * mkvpropedit: added a new option `--chapter-charset` allowing
+    the user to specify the character set to use when reading
+    the following chapter file.
+  * MKVToolNix GUI: each language shortcut can now be associated
+    with an optional track name that is set along with the
+    language when the shortcut is used.
+  Bug fixes:
+  * mkvmerge: Ogg/OGM reader: mkvmerge will no longer abort with
+    an exception when it encounters Vorbis comments that contain
+    data that isn't valid UTF-8.
+  * MKVToolNix GUI: multiplexer: fixed several issues with the
+    tab order of elements in the "properties" pane and the
+    "output" tab. Also fixed the language display widgets (e.g.
+    "track language" in the "properties" pane) never receiving
+    tab focus.
+  * MKVToolNix GUI: multiplexer: the chapter name template will
+    now be passed to `mkvmerge` if a chapter file is selected on
+    the "output" tab.
+
+-------------------------------------------------------------------
 Sun Feb  6 16:58:57 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 65.0.0

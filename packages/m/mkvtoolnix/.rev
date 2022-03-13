@@ -1210,4 +1210,31 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>951946</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>eaead0c42c1bca122b42a24e0c5dd893</srcmd5>
+    <version>66.0.0</version>
+    <time>1647199538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 66.0.0
+  New features and enhancements:
+  * mkvpropedit: added a new option `--chapter-charset` allowing
+    the user to specify the character set to use when reading
+    the following chapter file.
+  * MKVToolNix GUI: each language shortcut can now be associated
+    with an optional track name that is set along with the
+    language when the shortcut is used.
+  Bug fixes:
+  * mkvmerge: Ogg/OGM reader: mkvmerge will no longer abort with
+    an exception when it encounters Vorbis comments that contain
+    data that isn't valid UTF-8.
+  * MKVToolNix GUI: multiplexer: fixed several issues with the
+    tab order of elements in the &quot;properties&quot; pane and the
+    &quot;output&quot; tab. Also fixed the language display widgets (e.g.
+    &quot;track language&quot; in the &quot;properties&quot; pane) never receiving
+    tab focus.
+  * MKVToolNix GUI: multiplexer: the chapter name template will
+    now be passed to `mkvmerge` if a chapter file is selected on
+    the &quot;output&quot; tab. (forwarded request 961466 from alois)</comment>
+    <requestid>961467</requestid>
+  </revision>
 </revisionlist>
