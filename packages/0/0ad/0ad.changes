@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 11 10:35:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build on i586.
+
+-------------------------------------------------------------------
 Sun Feb 20 14:52:56 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add glibc-2.35.patch: Fix build with glibc 2.35.

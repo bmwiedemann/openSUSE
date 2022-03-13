@@ -1,7 +1,7 @@
 #
 # spec file for package 0ad
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,7 @@
 %else
 %bcond_with nvtt
 %endif
+ExcludeArch:    %{ix86}
 # We can use the system mozjs on Tumbleweed and Leap 15.4.
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without system_mozjs
@@ -34,7 +35,7 @@ Name:           0ad
 Version:        0.0.25b
 Release:        0
 Summary:        A real-time strategy game of ancient warfare
-License:        GPL-2.0-or-later AND LGPL-3.0-or-later AND CC-BY-SA-3.0 AND MIT AND ISC AND MPL-2.0 AND BSD-3-Clause
+License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT AND ISC AND MPL-2.0
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://play0ad.com/
 Source:         https://releases.wildfiregames.com/%{name}-%{version}-alpha-unix-build.tar.xz
