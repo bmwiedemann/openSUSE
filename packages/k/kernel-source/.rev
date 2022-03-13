@@ -5826,4 +5826,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.16.11 &amp; gcc 12 fix &amp; other fixes</comment>
     <requestid>957177</requestid>
   </revision>
+  <revision rev="634" vrev="1">
+    <srcmd5>d9202b0cc9a779e4182bbabe20ddbeae</srcmd5>
+    <version>5.16.14</version>
+    <time>1647199506</time>
+    <user>dimstar_suse</user>
+    <comment>5.16.14 &amp; 5.16.13 &amp; 5.16.12 &amp; 2 CVE fixes &amp; other fixes</comment>
+    <requestid>961079</requestid>
+  </revision>
 </revisionlist>
