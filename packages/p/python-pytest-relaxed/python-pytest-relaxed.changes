@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 10 06:05:48 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-makeitem-method.patch:
+  * Support pytest > 6.1 
+- No longer skip python310.
+
+-------------------------------------------------------------------
 Tue Dec 28 20:34:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python310 -- gh#bitprophet/pytest-relaxed#12

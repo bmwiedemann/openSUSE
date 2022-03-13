@@ -67,4 +67,14 @@
     <comment></comment>
     <requestid>943004</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>46e72b7ebee6db97c7bdd2d8c1ffdb50</srcmd5>
+    <version>1.1.5</version>
+    <time>1647199509</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-makeitem-method.patch:
+  * Support pytest &gt; 6.1 
+- No longer skip python310.</comment>
+    <requestid>960645</requestid>
+  </revision>
 </revisionlist>

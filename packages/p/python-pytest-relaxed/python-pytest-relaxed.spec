@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-relaxed
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python310 1
 Name:           python-pytest-relaxed
 Version:        1.1.5
 Release:        0
@@ -26,15 +25,16 @@ License:        BSD-2-Clause
 URL:            https://github.com/bitprophet/pytest-relaxed
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-relaxed/pytest-relaxed-%{version}.tar.gz
 Patch0:         https://github.com/bitprophet/pytest-relaxed/pull/10.patch#/pytest-relaxed-pr10.patch
+# PATCH-FIX-UPSTREAM gh#bitprophet/pytest-relaxed#21
+Patch1:         no-makeitem-method.patch
 BuildRequires:  %{python_module decorator >= 4}
-# gh#bitprophet/pytest-relaxed#12
-BuildRequires:  %{python_module pytest < 6.1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
-Requires:       python-pytest < 6.1
+Requires:       python-pytest
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
@@ -43,12 +43,11 @@ BuildArch:      noarch
 Relaxed test discovery/organization plugin for pytest from python-paramiko author
 
 %prep
-%setup -q -n pytest-relaxed-%{version}
+%autosetup -p1 -n pytest-relaxed-%{version}
 # do not hardcode deps
 sed -i setup.py \
     -e 's:pytest>=3,<5:pytest>=3:' \
     -e 's:decorator>=4,<5:decorator>=4:'
-%patch0 -p1
 
 %build
 export LANG=en_US.UTF-8
