@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>099a70e54038c226943d70849bc16754</srcmd5>
+    <version>1.1.2</version>
+    <time>1647211063</time>
+    <user>dimstar_suse</user>
+    <comment>new BuildRequires for ocaml-dune</comment>
+    <requestid>961498</requestid>
+  </revision>
+</revisionlist>

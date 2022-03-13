@@ -1,0 +1,10 @@
+<package name="ocaml-pp" project="openSUSE:Factory">
+  <title>Pretty-printing library</title>
+  <description>This library provides a lean alternative to the Format 1 module of the OCaml standard library.
+
+Pp uses the same concepts of boxes and break hints, and the final rendering is done to formatter from the Format module.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-pp"/>
+  <url>https://opam.ocaml.org/packages/pp</url>
+</package>
