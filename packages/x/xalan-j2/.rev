@@ -215,4 +215,12 @@
     <comment>Remove parent reference from pom file</comment>
     <requestid>904342</requestid>
   </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>be16dfcdce974780f16ff79c49f0c67c</srcmd5>
+    <version>2.7.2</version>
+    <time>1647199482</time>
+    <user>dimstar_suse</user>
+    <comment>Do not link the java_cup compatibility links, but the java-cup*.jar files</comment>
+    <requestid>960726</requestid>
+  </revision>
 </revisionlist>

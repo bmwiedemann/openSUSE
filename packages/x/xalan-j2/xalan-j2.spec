@@ -1,7 +1,7 @@
 #
 # spec file for package xalan-j2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -128,14 +128,14 @@ cp %{SOURCE2} serializer.pom
 %build
 if [ ! -e "$JAVA_HOME" ] ; then export JAVA_HOME="%{java_home}" ; fi
 pushd lib
-ln -sf $(build-classpath java_cup-runtime) runtime.jar
+ln -sf $(build-classpath java-cup-runtime) runtime.jar
 ln -sf $(build-classpath bcel) BCEL.jar
 ln -sf $(build-classpath regexp) regexp.jar
 ln -sf $(build-classpath xerces-j2) xercesImpl.jar
 ln -sf $(build-classpath xml-commons-apis) xml-apis.jar
 popd
 pushd tools
-ln -sf $(build-classpath java_cup) java_cup.jar
+ln -sf $(build-classpath java-cup) java_cup.jar
 ln -sf $(build-classpath ant) ant.jar
 ln -sf $(build-classpath jlex) JLex.jar
 ln -sf $(build-classpath stylebook) stylebook-1.0-b3_xalan-2.jar

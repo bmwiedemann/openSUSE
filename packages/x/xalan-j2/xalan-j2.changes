@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  9 10:03:49 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not link to the java_cup* compatibility links, but to the
+  java-cup* ones
+
+-------------------------------------------------------------------
 Tue Jul  6 07:31:04 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Remove parent from the pom files, since we are not building
