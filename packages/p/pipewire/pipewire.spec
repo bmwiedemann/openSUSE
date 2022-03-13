@@ -21,39 +21,33 @@
 %define apiver_str 0_3
 %define spa_ver 0.2
 %define spa_ver_str 0_2
-
 %define libpipewire libpipewire-%{apiver_str}-0
 %if %{pkg_vcmp pkgconfig(vulkan) >= 1.1}
 %define with_vulkan 1
 %else
 %define with_vulkan 0
 %endif
-
 %ifnarch s390 s390x ppc64
 %define with_ldacBT 1
 %else
 %define with_ldacBT 0
 %endif
-
-%bcond_with aptx
 %if 0%{?suse_version} >= 1550
 %bcond_without libcamera
 %else
 %bcond_with libcamera
 %endif
-
 %if 0%{?sle_version} && 0%{?sle_version} < 150400
 %bcond_with aac
 %else
 %bcond_without aac
 %endif
-
 %if %{?pkg_vcmp:%{pkg_vcmp meson >= 0.59.0}}%{!?pkg_vcmp:0}
 %bcond_without pipewire_jack_devel
 %endif
-
+%bcond_with aptx
 Name:           pipewire
-Version:        0.3.47
+Version:        0.3.48
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -63,37 +57,18 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-revert-loop-remove-destroy-list.patch
-Patch1:         0001-revert-loop-remove-destroy-list.patch
-# PATCH-FIX-UPSTREAM 0002-pulse-server-free-pending-sample-reply.patch
-Patch2:         0002-pulse-server-free-pending-sample-reply.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc9
-BuildRequires:  gcc9-c++
-%endif
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-%if 0%{?sle_version} == 150300
-BuildRequires:  meson >= 0.54.0
-%else
-BuildRequires:  meson >= 0.59.0
-%endif
 BuildRequires:  pkgconfig
+BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(alsa) >= 1.1.7
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(bluez)
-%if %{with libcamera}
-BuildRequires:  pkgconfig(libcamera) >= 0.0.0+g3381.1db1e31e
-%endif
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(libcap)
-%if %{with aac}
-BuildRequires:  pkgconfig(fdk-aac)
-%endif
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
@@ -105,19 +80,11 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(jack) >= 1.9.10
-BuildConflicts: pipewire-libjack-%{apiver_str}-devel
-%if %{with_ldacBT}
-BuildRequires:  pkgconfig(ldacBT-abr)
-BuildRequires:  pkgconfig(ldacBT-enc)
-%endif
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
-%if %{with aptx}
-BuildRequires:  pkgconfig(libfreeaptx)
-%endif
-BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
@@ -133,6 +100,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(webrtc-audio-processing)
 BuildRequires:  pkgconfig(x11)
+BuildConflicts: pipewire-libjack-%{apiver_str}-devel
 Requires:       %{libpipewire} = %{version}
 Requires:       %{name}-modules-%{apiver_str} = %{version}
 Requires:       %{name}-session-manager
@@ -141,6 +109,31 @@ Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
 Suggests:       wireplumber
 %{?systemd_ordering}
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc9
+BuildRequires:  gcc9-c++
+%endif
+%if 0%{?sle_version} == 150300
+BuildRequires:  meson >= 0.54.0
+%else
+BuildRequires:  meson >= 0.59.0
+%endif
+%if %{with libcamera}
+BuildRequires:  pkgconfig(libcamera) >= 0.0.0+g3381.1db1e31e
+%endif
+%if %{with aac}
+BuildRequires:  pkgconfig(fdk-aac)
+%endif
+%if %{with_ldacBT}
+BuildRequires:  pkgconfig(ldacBT-abr)
+BuildRequires:  pkgconfig(ldacBT-enc)
+%endif
+%if %{with aptx}
+BuildRequires:  pkgconfig(libfreeaptx)
+%endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildRequires:  pkgconfig(xfixes)
+%endif
 
 %description
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -156,9 +149,9 @@ Some of its features include:
 %package -n %{libpipewire}
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 Group:          System/Libraries
-Recommends:     pipewire >= %{version}
 Requires:       pipewire-modules-%{apiver_str} >= %{version}
 Requires:       pipewire-spa-plugins-%{spa_ver_str} >= %{version}
+Recommends:     pipewire >= %{version}
 
 %description -n %{libpipewire}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -301,8 +294,8 @@ This package contains documentation for the PipeWire media server.
 %package alsa
 Summary:        PipeWire media server ALSA support
 Group:          Development/Libraries/C and C++
-Recommends:     %{name} >= %{version}-%{release}
 Requires:       %{libpipewire} >= %{version}-%{release}
+Recommends:     %{name} >= %{version}-%{release}
 
 %description alsa
 This package contains an ALSA plugin for the PipeWire media server.
@@ -312,15 +305,14 @@ Summary:        PipeWire PulseAudio implementation
 Group:          Development/Libraries/C and C++
 Requires:       %{libpipewire} >= %{version}-%{release}
 Requires:       %{name} >= %{version}-%{release}
-Conflicts:      pulseaudio
-%if 0%{suse_version} >= 1550
-Requires(post): pulseaudio-setup
-%endif
 Recommends:     alsa-plugins-pulse
-
+Conflicts:      pulseaudio
+Conflicts:      pulseaudio-daemon
 # Virtual Provides to support swapping between PipeWire-PA and PA
 Provides:       pulseaudio-daemon
-Conflicts:      pulseaudio-daemon
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+Requires(post): pulseaudio-setup
+%endif
 #Provides:       pulseaudio-module-bluetooth
 #Provides:       pulseaudio-module-jack
 
@@ -383,6 +375,9 @@ export CXX=g++-9
 %else
     -Djack-devel=false \
 %endif
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
+    -Dx11-xfixes=disabled \
+%endif
     -Dsession-managers="[]" \
     %{nil}
 %meson_build
@@ -434,9 +429,9 @@ fi
 # for boo#1186561 has never been executed, we need to execute it now
 if [ ! -L %{_sysconfdir}/systemd/user/sockets.target.wants/pipewire.socket \
     -a ! -f %{_localstatedir}/lib/pipewire/pipewire_post_workaround \
-    -a -x /usr/bin/systemctl ]; then
+    -a -x %{_bindir}/systemctl ]; then
     for service in pipewire.service pipewire.socket ; do
-        /usr/bin/systemctl --global preset "$service" || :
+        %{_bindir}/systemctl --global preset "$service" || :
     done
 
     mkdir -p %{_localstatedir}/lib/pipewire
@@ -467,9 +462,9 @@ fi
 # for boo#1186561 has never been executed, we need to execute it now
 if [ ! -L %{_sysconfdir}/systemd/user/sockets.target.wants/pipewire-pulse.socket \
     -a ! -f %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround \
-    -a -x /usr/bin/systemctl ]; then
+    -a -x %{_bindir}/systemctl ]; then
     for service in pipewire-pulse.service pipewire-pulse.socket ; do
-        /usr/bin/systemctl --global preset "$service" || :
+        %{_bindir}/systemctl --global preset "$service" || :
     done
     mkdir -p %{_localstatedir}/lib/pipewire
     cat << EOF > %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
@@ -483,7 +478,7 @@ if [ ! -L %{_sysconfdir}/systemd/user/sockets.target.wants/pipewire-pulse.socket
 # https://bugzilla.opensuse.org/show_bug.cgi?id=1186561
 EOF
 fi
-%if 0%{suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 # Update the /etc/profile.d/pulseaudio.* files
 setup-pulseaudio --auto > /dev/null
 %endif
@@ -514,8 +509,8 @@ fi
 %{_bindir}/pipewire
 %{_userunitdir}/pipewire.service
 %{_userunitdir}/pipewire.socket
-%{_mandir}/man1/pipewire.1%{ext_man}
-%{_mandir}/man5/pipewire.conf.5%{ext_man}
+%{_mandir}/man1/pipewire.1%{?ext_man}
+%{_mandir}/man5/pipewire.conf.5%{?ext_man}
 %dir %{_datadir}/pipewire/
 %{_datadir}/pipewire/pipewire.conf
 %dir %{_datadir}/pipewire/filter-chain/
@@ -579,8 +574,8 @@ fi
 %ghost %{_sysconfdir}/alternatives/pw-jack.1%{ext_man}
 %{_bindir}/pw-jack-%{apiver}
 %{_bindir}/pw-jack
-%{_mandir}/man1/pw-jack-%{apiver}.1%{ext_man}
-%{_mandir}/man1/pw-jack.1%{ext_man}
+%{_mandir}/man1/pw-jack-%{apiver}.1%{?ext_man}
+%{_mandir}/man1/pw-jack.1%{?ext_man}
 %{_datadir}/pipewire/jack.conf
 %config %{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
 
@@ -615,13 +610,13 @@ fi
 %{_bindir}/pw-reserve
 %{_bindir}/pw-top
 %{_bindir}/pw-v4l2
-%{_mandir}/man1/pw-cat.1%{ext_man}
-%{_mandir}/man1/pw-cli.1%{ext_man}
-%{_mandir}/man1/pw-dot.1%{ext_man}
-%{_mandir}/man1/pw-metadata.1%{ext_man}
-%{_mandir}/man1/pw-mididump.1%{ext_man}
-%{_mandir}/man1/pw-mon.1%{ext_man}
-%{_mandir}/man1/pw-profiler.1%{ext_man}
+%{_mandir}/man1/pw-cat.1%{?ext_man}
+%{_mandir}/man1/pw-cli.1%{?ext_man}
+%{_mandir}/man1/pw-dot.1%{?ext_man}
+%{_mandir}/man1/pw-metadata.1%{?ext_man}
+%{_mandir}/man1/pw-mididump.1%{?ext_man}
+%{_mandir}/man1/pw-mon.1%{?ext_man}
+%{_mandir}/man1/pw-profiler.1%{?ext_man}
 
 %files spa-tools
 %{_bindir}/spa-inspect
@@ -643,7 +638,7 @@ fi
 
 %files pulseaudio
 %{_bindir}/pipewire-pulse
-%{_mandir}/man1/pipewire-pulse.1%{ext_man}
+%{_mandir}/man1/pipewire-pulse.1%{?ext_man}
 %{_userunitdir}/pipewire-pulse.*
 %{_datadir}/pipewire/pipewire-pulse.conf
 %ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
