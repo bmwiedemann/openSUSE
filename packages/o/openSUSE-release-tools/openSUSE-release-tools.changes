@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 12 18:42:23 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220312.c6232db2:
+  * pkglist: Don't exit with 0 if the stagings didn't calculcate lists
+
+-------------------------------------------------------------------
 Fri Mar 11 10:29:05 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220311.8c945063:
