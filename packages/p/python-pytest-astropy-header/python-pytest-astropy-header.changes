@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 13 08:25:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.2.1
+  * Import astropy so astropy can use this package by @pllim in #43
+
+-------------------------------------------------------------------
 Tue Dec 28 17:37:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.2

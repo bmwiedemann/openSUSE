@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,8 @@
 %define modname pytest-astropy-header
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-%{modname}%{psuffix}
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Pytest plugin to add diagnostic information to the header of the test output
 License:        BSD-3-Clause
