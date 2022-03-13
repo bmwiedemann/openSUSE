@@ -1,7 +1,7 @@
 #
 # spec file for package psutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           psutils
-Version:        2.04
+Version:        2.08
 Release:        0
 Summary:        Tools for Manipulating PostScript Files
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/PS
 URL:            https://github.com/rrthomas/psutils
-Source:         https://github.com/rrthomas/psutils/releases/download/v%{version}/psutils-%{version}.tar.gz
+Source:         %{url}/releases/download/v%{version}/psutils-%{version}.tar.gz
 Requires:       paper
 Requires:       perl
 Requires:       perl(IPC::Run3)
@@ -51,11 +51,11 @@ describes several Perl scripts for importing PostScript files. A manual
 page for each ps utility is also included.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

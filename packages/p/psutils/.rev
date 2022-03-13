@@ -132,4 +132,30 @@
   * pstops: fix a warning (forwarded request 867999 from dirkmueller)</comment>
     <requestid>868294</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>079259d953a9e47bfd6c83f69c37862e</srcmd5>
+    <version>2.08</version>
+    <time>1647199498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.08:
+  * man pages: names of programs should always start with
+    lower-case letter
+  * PSUtils.pm: update invocation of paper, and improve parsing of
+    output
+- Changes from 2.07:
+  * PSUtils.pm: add trailing colon to certain DSC keywords
+- Changes from 2.06:
+  * Fix normalization of rotations in pagespecs
+  * PSUtils.pm: in parsepaper, don’t pass empty string to
+    singledimension
+- Changes from 2.05:
+  * PSUtils.pm: print the culprit when we get a bad dimension
+  * Make programs use bindir prefix when running each other
+  * Fix a bug in test harness: don’t distribute built file
+    pre-inst-env
+  * tests: remove accidentally-added file
+  * Makefile.am: don’t echo an echo command in “make loc”
+- Use current macros. (forwarded request 960755 from iznogood)</comment>
+    <requestid>960767</requestid>
+  </revision>
 </revisionlist>
