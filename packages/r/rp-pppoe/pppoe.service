@@ -1,7 +1,6 @@
 [Unit]
 Description=PPPoE
 After=network.target
-Wants=network.target
 
 [Service]
 Group=dialout

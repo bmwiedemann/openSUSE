@@ -201,4 +201,12 @@
     <comment></comment>
     <requestid>891597</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>b12348db548c22580ec4707716e76a43</srcmd5>
+    <version>3.15</version>
+    <time>1647199499</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed Wants=network.target from pppoe.service (bsc#1196359).</comment>
+    <requestid>960800</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
-Sat May  8 20:24:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+Thu Mar 10 13:47:22 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Removed Wants=network.target from pppoe.service (bsc#1196359).
+
+-------------------------------------------------------------------
+Sat May  8 20:24:02 UTC 2021 - Илья Индиго <ilya@ilya.cf>
 
 - Refreshed spec-file via spec-cleaner and manual optimisations.
   * Changed files: pppoe-connect, pppoe-setup, pppoe-status and
@@ -10,7 +15,7 @@ Sat May  8 20:24:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
   * Switch from net-tools to iproute2.
 
 -------------------------------------------------------------------
-Thu May 28 01:11:10 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+Thu May 28 01:11:10 UTC 2020 - Илья Индиго <ilya@ilya.cf>
 
 - Refresh spec-file via spec-cleaner and manual optimisations.
   * Add make_build and autopatch macros.
@@ -29,7 +34,7 @@ Thu May 28 01:11:10 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   * Change VERSION macro to RP_VERSION to avoid conflict with pppd macro.
 
 -------------------------------------------------------------------
-Mon Jun 17 07:50:57 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
+Mon Jun 17 07:50:57 UTC 2019 - Илья Индиго <ilya@ilya.cf>
 
 - Refresh spec-file via spec-cleaner and manual optimisations.
   * New URL and Source project.
@@ -45,38 +50,38 @@ Wed Jun 12 14:56:41 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
   shortcut the build queues by allowing usage of systemd-mini
 
 -------------------------------------------------------------------
-Sat Mar 10 02:40:34 UTC 2018 - ilya@ilya.pp.ua
+Sat Mar 10 02:40:34 UTC 2018 - ilya@ilya.cf
 
 - Refresh spec-file via spec-cleaner and manual optimisations.
 - Add %license macro.
 
 -------------------------------------------------------------------
-Thu Nov 23 14:06:28 UTC 2017 - ilya@ilya.pp.ua
+Thu Nov 23 14:06:28 UTC 2017 - ilya@ilya.cf
 
 - Add Requires/Requires(pre) group(dialout) (boo#1067511).
 - Add %verify_permissions script for pppoe-wrapper.
 
 -------------------------------------------------------------------
-Thu Nov  9 12:53:45 UTC 2017 - ilya@ilya.pp.ua
+Thu Nov  9 12:53:45 UTC 2017 - ilya@ilya.cf
 
 - Refresh pppoe.spec via spec-cleaner.
 
 -------------------------------------------------------------------
-Sun Oct  8 12:26:27 UTC 2017 - ilya@ilya.pp.ua
+Sun Oct  8 12:26:27 UTC 2017 - ilya@ilya.cf
 
 - Add pppoe.service for run pppoe as client (boo#1060710).
 - Refresh pppoe.spec.
 - Drop SLE 11 support.
 
 -------------------------------------------------------------------
-Wed Nov 16 15:51:48 UTC 2016 - 13ilya@gmail.com
+Wed Nov 16 15:51:48 UTC 2016 - ilya@ilya.cf
 
 - Fix patches and script for version 3.12.
 - dropped logger-path.diff
 - Add net-tools support. net-tools-deprecated is no longer required.
 
 -------------------------------------------------------------------
-Tue Oct 25 22:23:41 EEST 2016 - 13ilya@gmail.com
+Tue Oct 25 22:23:41 EEST 2016 - ilya@ilya.cf
 
 - Update to version 3.12.
 - Fix patch release-buildsystem.diff for 3.12 version.
