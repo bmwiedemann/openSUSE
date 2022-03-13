@@ -321,4 +321,12 @@
     <comment></comment>
     <requestid>943314</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>e3374ace947fa4d710977f9d0097a5fe</srcmd5>
+    <version>2.6.0</version>
+    <time>1647205315</time>
+    <user>dimstar_suse</user>
+    <comment>- pytest-relaxed now supports pytest 6, so test on all python versions.</comment>
+    <requestid>960648</requestid>
+  </revision>
 </revisionlist>
