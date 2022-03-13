@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 11 13:13:09 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Always check for the package in the underlying system when
+  trying to detect if running on systemd (bsc#1196963).
+- 4.4.13
+
+-------------------------------------------------------------------
 Tue Feb 22 08:08:56 UTC 2022 - David Diaz <dgonzalez@suse.com>
 
 - Stop using 'lsm' kernel boot parameter even for the
