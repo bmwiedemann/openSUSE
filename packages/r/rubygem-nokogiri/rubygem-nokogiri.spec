@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.13.1
+Version:        1.13.3
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
@@ -33,13 +33,13 @@ Release:        0
 %define rb_build_versions  ruby27     ruby30
 %define rb_build_ruby_abis ruby:2.7.0 ruby:3.0.0
 %endif
-BuildRequires:  %{rubygem mini_portile2 >= 2.7}
+BuildRequires:  %{rubygem mini_portile2 >= 2.8}
 BuildRequires:  %{rubygem pkg-config}
 BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.7.0}
+BuildRequires:  %{rubydevel >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
@@ -72,7 +72,7 @@ perl -p -i.back -e 's/.*mini_portile.*//g' %{mod_full_name}.gemspec
 diff -urN %{mod_full_name}.gemspec{.back,} ||:
 rm -f %{mod_full_name}.gemspec.back
 
-MINI_PORTILE2_VERSION="2.7.0"
+MINI_PORTILE2_VERSION="2.8.0"
 
 if grep -q "~> ${MINI_PORTILE2_VERSION}" ext/nokogiri/extconf.rb ; then
   perl -p -i.back -e 's/~> ${MINI_PORTILE2_VERSION}/>= ${MINI_PORTILE2_VERSION}/g' ext/nokogiri/extconf.rb
