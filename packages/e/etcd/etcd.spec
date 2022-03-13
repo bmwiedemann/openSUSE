@@ -1,7 +1,7 @@
 #
 # spec file for package etcd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.4.16
+Version:        3.5.2
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
@@ -34,13 +34,14 @@ Source11:       %{name}.conf
 Source12:       %{name}.service
 Source15:       README.security
 Source16:       system-user-etcd.conf
-BuildRequires:  golang(API) = 1.14
+Source17:       vendor-update.sh
+BuildRequires:  golang(API) >= 1.16
 BuildRequires:  golang-packaging
-BuildRequires:  sysuser-tools
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  xz
 Requires(post): %fillup_prereq
-ExcludeArch:    s390 %ix86
+ExcludeArch:    s390 %{ix86}
 %sysusers_requires
 %{go_provides}
 # Make sure that the binary is not getting stripped.
@@ -63,26 +64,46 @@ Group:          System/Management
 A command line client for etcd. It can be used in scripts or for administrators
 to explore an etcd cluster.
 
+%package -n etcdutl
+Summary:        A simple command line client for etcd
+Group:          System/Management
+
+%description -n etcdutl
+A command line administration utility for etcd.
+It's designed to operate directly on etcd data files.
+
+For operations over a network, please use `etcdctl`.
+
 %prep
 %setup -q -a1
 cp %{SOURCE15} .
+cp -rla vendor/* ./ && rm -r vendor/
 
 %build
 %{goprep} %{project}
 
 mkdir -p ./bin
 
-go build -v -buildmode=pie -mod=vendor -o ./bin/etcd
-go build -v -buildmode=pie -mod=vendor -o ./bin/etcdctl ./etcdctl
+dir=$(pwd)
+for item in server etcdctl etcdutl;do
+  cd "$dir/$item"
+  go build -v \
+    -buildmode=pie \
+    -mod=vendor \
+    -ldflags="-s -X main.Version=%{version}" \
+    -o ../bin/"$item"
+done
+cd "$dir"
 
 %sysusers_generate_pre %{SOURCE16} %{name} system-user-etcd.conf
 
 %install
-install -d %{buildroot}/%{_sbindir}
-install -D -m 0755 ./bin/etcd %{buildroot}/%{_sbindir}/etcd
+install -d %{buildroot}%{_sbindir}
+install -D -m 0755 ./bin/server %{buildroot}%{_sbindir}/etcd
 
 install -d %{buildroot}/%{_bindir}
-install -D -m 0755 ./bin/etcdctl %{buildroot}/%{_bindir}/etcdctl
+install -D -m 0755 ./bin/etcdctl %{buildroot}%{_bindir}/etcdctl
+install -D -m 0755 ./bin/etcdutl %{buildroot}%{_bindir}/etcdutl
 
 # Service
 install -D -p -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/%{name}.service
@@ -90,14 +111,9 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # Sysconfig
 install -D -p -m 0644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.%{name}
-%ifarch aarch64
-# arm64 is not yet officially supported
-echo -e "\n#Enable arm64\nETCD_UNSUPPORTED_ARCH=arm64\n" >> %{buildroot}%{_fillupdir}/sysconfig.%{name}
-%endif
 
 # Additional
 install -d -m 750 %{buildroot}%{_localstatedir}/lib/%{name}
-
 install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-etcd.conf
 
 %pre -f %{name}.pre
@@ -115,7 +131,7 @@ install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-etcd.conf
 
 %files
 %license LICENSE
-%doc CONTRIBUTING.md README.md DCO NOTICE README.security
+%doc CONTRIBUTING.md README.md DCO README.security
 %{_sbindir}/%{name}
 %{_sysusersdir}/system-user-etcd.conf
 
@@ -131,5 +147,10 @@ install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-etcd.conf
 
 %files -n etcdctl
 %{_bindir}/etcdctl
+%doc etcdctl/README.md etcdctl/READMEv2.md
+
+%files -n etcdutl
+%{_bindir}/etcdutl
+%doc etcdutl/README.md
 
 %changelog

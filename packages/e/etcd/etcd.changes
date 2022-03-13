@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Mar 10 12:15:44 UTC 2022 - Elisei Roca <eroca@suse.com>
+
+- Add vendor-update.sh as a source to pass obs-service-source_validator
+
+-------------------------------------------------------------------
+Wed Mar  9 14:07:20 UTC 2022 - Elisei Roca <eroca@suse.com>
+
+- Drop ETCD_UNSUPPORTED_ARCH=arm64 from sysconfig as ARM64 is now officially supported
+- Update go version to 1.16
+- Update etcd.conf variables
+- Add the new etcdutl into separate subpackage
+- Update vendor.tar.gz to include vendoring for server, etcdctl and etcdutl
+  * see ./vendor-update.sh
+
+-------------------------------------------------------------------
+Wed Feb 23 15:54:14 UTC 2022 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.5.2:
+  * version: bump up to 3.5.2
+  * Update dep: require gopkg.in/yaml.v2 v2.2.8 -> v2.4.0 due to: CVE-2019-11254.
+  * fix runlock bug
+  * server: Require either cluster version v3.6 or --experimental-enable-lease-checkpoint-persist to persist lease remainingTTL
+  * etcdserver,integration: Store remaining TTL on checkpoint
+  * lease,integration: add checkpoint scheduling after leader change
+  * set the backend again after recovering v3 backend from snapshot
+  * *: implement a retry logic for auth old revision in the client
+  * client/v3: refresh the token when ErrUserEmpty is received while retrying
+  * server/etcdserver/api/etcdhttp: exclude the same alarm type activated by multiple peers
+  * storage/backend: Add a gauge to indicate if defrag is active (backport from 3.6)
+
+- Update to version 3.5.1:
+  * version: 3.5.1
+  * Dockerfile: bump debian bullseye-20210927
+  * client: Use first endpoint as http2 authority header
+  * tests: Add grpc authority e2e tests
+  * client: Add grpc authority header integration tests
+  * tests: Allow configuring integration tests to use TCP
+  * test: Use unique number for grpc port
+  * tests: Cleanup member interface by exposing Bridge directly
+  * tests: Make using bridge optional
+  * tests: Rename grpcAddr to grpcURL to imply that it includes schema
+  * tests: Remove bridge dependency on unix
+  * Decouple prefixArgs from os.Env dependency
+  * server: Ensure that adding and removing members handle storev2 and backend out of sync
+  * Stop using tip golang version in CI
+  * fix self-signed-cert-validity parameter cannot be specified in the config file
+  * fix health endpoint not usable when authentication is enabled
+  * workflows: remove ARM64 job for maintenance
+
+- Update to version 3.5.0:
+  * See link below, diff is too big
+    https://github.com/etcd-io/etcd/compare/v3.4.16...v3.5.0
+
+-------------------------------------------------------------------
 Tue Sep 14 07:23:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
