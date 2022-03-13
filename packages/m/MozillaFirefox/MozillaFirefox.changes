@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar  8 10:27:16 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 98.0
+  * Firefox has a new optimized download flow
+  * other changes as documented here
+    https://www.mozilla.org/en-US/firefox/98.0/releasenotes
+  MFSA 2022-10 (bsc#1196900)
+  * CVE-2022-26383 (bmo#1742421)
+    Browser window spoof using fullscreen mode
+  * CVE-2022-26384 (bmo#1744352)
+    iframe allow-scripts sandbox bypass
+  * CVE-2022-26387 (bmo#1752979)
+    Time-of-check time-of-use bug when verifying add-on signatures
+  * CVE-2022-26381 (bmo#1736243)
+    Use-after-free in text reflows
+  * CVE-2022-26382 (bmo#1741888)
+    Autofill Text could be exfiltrated via side-channel attacks
+  * CVE-2022-26385 (bmo#1747526)
+    Use-after-free in thread shutdown
+  * CVE-2022-0843 (bmo#1746523, bmo#1749062, bmo#1749164, bmo#1749214,
+    bmo#1749610, bmo#1750032, bmo#1752100, bmo#1752405, bmo#1753612,
+    bmo#1754508)
+    Memory safety bugs fixed in Firefox 98
+- requires NSS 3.75
+- add mozilla-bmo1756347.patch to fix i586 build
+
+-------------------------------------------------------------------
 Fri Feb 18 20:38:22 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 97.0.1
@@ -12,6 +39,17 @@ Fri Feb 18 20:38:22 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
   * Fixed: Fixed an issue causing users to see the Restore
     Session screen unexpectedly when starting Firefox
     (bmo#1749996)
+
+-------------------------------------------------------------------
+Mon Feb 14 19:31:29 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Remove bashisms ("source" and "function" keywords) from
+  mozilla.sh.in to ally with the #!/bin/sh shebang. If the end user
+  has either dash-sh package or busybox-sh to handle Bourn Shell
+  scripts rather than having bash-sh package, the script would
+  fail. Using "." instead of "source" and "create_langpack_link()"
+  function definition is enough to keep both sides sane,
+  behavior-wise.
 
 -------------------------------------------------------------------
 Tue Feb  8 08:40:45 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>

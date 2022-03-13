@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  216843712d6d6cd9d5bd519f6ef564d00406b43f
+# Parent  1191efd2ea64c4081a1825176a50e872a525d4da
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2165,18 +2165,16 @@ name = "glsl-to-cxx"
+@@ -2196,18 +2196,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -26,8 +26,8 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -102,13 +102,13 @@ moz_asserts = { path = "mozglue/static/r
- # Other overrides
+@@ -106,13 +106,13 @@ moz_asserts = { path = "mozglue/static/r
+ async-task = { git = "https://github.com/smol-rs/async-task", rev="f6488e35beccb26eb6e85847b02aa78a42cd3d0e" }
  chardetng = { git = "https://github.com/hsivonen/chardetng", rev="3484d3e3ebdc8931493aa5df4d7ee9360a90e76b" }
  chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
  coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }

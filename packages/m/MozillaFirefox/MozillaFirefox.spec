@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          97
-%define mainver        %major.0.1
-%define orig_version   97.0.1
+%define major          98
+%define mainver        %major.0
+%define orig_version   98.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.33
-BuildRequires:  mozilla-nss-devel >= 3.74
+BuildRequires:  mozilla-nss-devel >= 3.75
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -219,6 +219,7 @@ Patch20:        mozilla-s390x-skia-gradient.patch
 Patch21:        mozilla-libavcodec58_91.patch
 Patch22:        mozilla-silence-no-return-type.patch
 Patch23:        mozilla-bmo531915.patch
+Patch24:        mozilla-bmo1756347.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -684,12 +685,6 @@ FIN
 # fdupes
 %fdupes %{buildroot}%{progdir}
 %fdupes %{buildroot}%{_datadir}
-
-%clean
-rm -rf %{buildroot}
-%if %localize
-rm -rf %{_tmppath}/translations.*
-%endif
 
 %post
 # update mime and desktop database
