@@ -615,8 +615,8 @@ filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariaback
 touch mariadb-galera-exclude.files
 %else
 filelist_excludes galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera-exclude.files
-echo %{_datadir}/mysql/systemd/use_galera_new_cluster.conf >>mariadb-galera-exclude.files
-echo %{_datadir}/mysql/wsrep_notify >>mariadb-galera-exclude.files
+echo "%exclude %{_datadir}/mysql/systemd/use_galera_new_cluster.conf" >>mariadb-galera-exclude.files
+echo "%exclude %{_datadir}/mysql/wsrep_notify" >>mariadb-galera-exclude.files
 %endif
 
 # mariadb-bench.files

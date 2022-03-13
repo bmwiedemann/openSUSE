@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  8 09:35:54 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Do not include mariadb-galera files in the main package when
+  %{with galera} is false
+
+-------------------------------------------------------------------
 Wed Feb 16 09:59:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 10.7.3 (bsc#1196016):
