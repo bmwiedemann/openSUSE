@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ for management and discovery.
 
 
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -307,9 +308,8 @@ ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
 %fdupes -s %{buildroot}
 
 %post client-common
-export baseversion="%{baseversion}"
 %{_sbindir}/update-alternatives \
-  --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} ${baseversion/./}
+  --install %{_bindir}/kubectl kubectl %{_bindir}/kubectl%{baseversion} %(echo %{baseversion} | tr -d .)
 
 %postun client-common
 if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then
