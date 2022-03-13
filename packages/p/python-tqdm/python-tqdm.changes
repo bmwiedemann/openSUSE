@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 12 05:53:04 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.63.0:
+  * add __reversed__()
+  * add efficient __contains__()
+  * improve CLI startup time (replace pkg_resources => importlib)
+  * tqdm.autonotebook warning & std fallback on missing ipywidgets
+    (#1218 <- #1082, #1217)
+  * warn on positional CLI arguments
+  * misc build/test framework updates
+    + enable py3.10 tests
+    + add conda dependencies
+    + update pre-commit hooks
+    + fix pytest config (nbval, asyncio)
+    + fix dependencies & tests
+    + fix site deployment
+
+-------------------------------------------------------------------
 Sat Jan 22 10:58:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Ignore deprecation warnings from pytest-asycio for compatibility
