@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5XmlGui5
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kxmlgui
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        Framework for managing menu and toolbar actions
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -46,7 +46,6 @@ BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 # Now requires private headers
 BuildRequires:  libqt5-qtbase-private-headers-devel

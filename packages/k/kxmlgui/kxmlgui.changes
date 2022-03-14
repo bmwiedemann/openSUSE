@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:27:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Remove outdated readme file
+  * Add Qt6 Android CI
+  * Add an old formatting commit to git blame ignore file
+  * Make the BUILD_DESIGNERPLUGIN option dependent on not cross-compiling
+  * Support build without Qt session manager
+  * Add an action in help menu for command bar
+  * Update translation context of two strings
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
