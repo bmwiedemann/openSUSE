@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 14 11:40:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.5
+  * fixed cmake support
+  * prepend custom stylesheets to the application stylesheet
+  * updated Catalan translation
+  * updated French translation
+  * added troubleshooting settings
+  * added Japanese translation
+  * updated Dutch translation
+  * updated Spanish translation
+  * updated Russian translation
+  * updated Greek translation
+  * fixed build regression
+- Use CMake for building qt5ct.
+
+-------------------------------------------------------------------
 Sat May  1 12:15:22 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2:

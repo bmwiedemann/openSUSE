@@ -1,7 +1,7 @@
 #
 # spec file for package qt5ct
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qt5ct
-Version:        1.2
+Version:        1.5
 Release:        0
 Summary:        Qt5 Configuration Tool
 License:        BSD-2-Clause
@@ -27,14 +27,17 @@ Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
 Source1:        qt5ct.sh
 Source2:        qt5ct.csh
 BuildRequires:  gcc-c++
+BuildRequires:  libqt5-qtpaths
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5PlatformSupport-private-headers-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  libQt5Widgets-private-headers-devel
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5ThemeSupport)
+BuildRequires:  cmake(Qt5Widgets)
 %requires_eq    libQt5Gui5
 # libqt5-qtct was last used in openSUSE Leap 42.1.
 Provides:       libqt5-qtct = %{version}
@@ -48,11 +51,11 @@ font, icons, etc.) under DE/WM without Qt integration.
 %autosetup -p1
 
 %build
-%qmake5
-%make_build
+%cmake
+%cmake_build
 
 %install
-%qmake5_install
+%cmake_install
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/%{name}.csh
 
