@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Fri Mar  4 18:13:15 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to 0.6.1:
+ - Add a release checklist
+ - completions: Make zsh completion non-executable
+   The Autotools build system installed it with 0644 permissions because
+   it's listed as DATA, but the Meson build system installs executable
+   files as executable by default.
+   zsh completions don't need to be executable to work, and this one doesn't
+   have the `#!` marker that should start an executable script.
+- update to 0.6.0:
+ - meson: Improve compatibility with Meson 0.49
+   That version doesn't allow more than two arguments for define_variable.
+ - Disable test-specifying-pidns.sh under 'meson dist' while I investigate
+   This test is hanging when run under 'meson dist' for some reason, but
+   not when run under 'meson test', and not locally, only in the Github
+   Workflow-based CI. Disable it for now.
+ - meson: Actually build and run the tests
+ - tests: Fix compiler warnings for unused arguments
+ - meson: Run test scripts from $srcdir
+ - meson: Make G_TEST_SRCDIR, G_TEST_BUILDDIR match Autotools
+ - meson: Run the Python test script with Python, not bash
+   The python build option can be used to swap to a different interpreter,
+   for environments like the Steam Runtime where the python3 executable in
+   the PATH is extremely old but there is a better interpreter available.
+   This is treated as non-optional, because Meson is written in Python,
+   so the situation where there is no Python interpreter at build-time
+   shouldn't arise.
+ - meson: Build the try-syscall helper
+ - meson: Build tests with equivalent of -I$(top_srcdir) -I$(top_builddir)
+ - meson.build: Remove unnecessary check for sh
+ - Add a Meson build system
+   This allows bwrap to be built as a subproject in larger Meson projects.
+   When built as a subproject, we install into the --libexecdir and
+   require a program prefix to be specified: for example, Flatpak would use
+   program_prefix=flatpak- to get /usr/libexec/flatpak-bwrap. Verified to
+   be backwards-compatible as far as Meson 0.49.0 (Debian 9 backports).
+   Loosely based on previous work by Jussi Pakkanen (see #133).
+   Differences between the Autotools and Meson builds:
+   The Meson build requires a version of libcap that has pkg-config
+   metadata (introduced in libcap 2.23, in 2013).
+   The Meson build has no equivalent of --with-priv-mode=setuid. On
+   distributions like Debian <= 10 and RHEL <= 7 that require a setuid bwrap
+   executable, the sysadmin or distribution packaging will need to set the
+   correct permissions on the bwrap executable; Debian already did this via
+   packaging rather than the upstream build system.
+   The Meson build supports being used as a subproject, and there is CI
+   for this. It automatically disables shell completions and man pages,
+   moves the bubblewrap executable to ${libexecdir}, and renames the
+   bubblewrap executable according to a program_prefix option that the
+   caller must specify (for example, Flatpak would use
+   -Dprogram_prefix=flatpak- to get /usr/libexec/flatpak-bwrap). See the
+   tests/use-as-subproject/ directory for an example.
+ - Use HEAD to refer to other projects' default branches in documentation
+   This makes the URL independent of the name they have chosen for their
+   default branches.
+ - workflows: Update for rename of default branch to main
+ - tests: Exercise seccomp filters
+ - Allow loading more than one seccomp program
+   This will allow Flatpak to combine an allow-list (default-deny) of
+   known system calls with a deny-list (default-allow) of system calls
+   that are undesired.
+   Resolves: https://github.com/containers/bubblewrap/issues/453
+ - Generalize linked lists of LockFile and SetupOp
+   I'm about to add a third linked list, for seccomp programs, which would
+   seem like too much duplication.
+ - Handle argc == 0 better
+   Unfortunately it's possible for argc to be 0, so error out pretty early
+   on in that case. I don't think this is a security issue in this case.
+ - Fix typo
+ - Remove trailing whitespace
+ - Fix spelling
+ - bash: Fix shellcheck warnings
+ - bash: Invoke bash using /usr/bin/env
+ - bubblewrap: Avoid a -Wjump-misses-init false-positive
+   When building with -Wjump-misses-init as part of a larger project, gcc
+   reports that we jump past initialization of cover_proc_dirs. This is
+   technically true, but we only use this variable in the case where it's
+   initialized, so that's harmless.
+   However, we can avoid this altogether by making the array static and
+   constant, which allows it to be moved from initialized data to read-only
+   data.
+ - bind-mount: Be more const-correct
+   When compiled with -Wwrite-strings as part of a larger project, gcc and
+   clang both warn that we're assigning a string constant to a mutable
+   struct member. There's actually no reason why it should be mutable, so
+   make it const.
+ - die_with_error: Save errno sooner
+   We need to save errno immediately, otherwise it could be overwritten
+   by a failing library call somewhere in the implementation of fprintf.
+ - main: Warn when non-repeatable options are repeated
+   A user might reasonably expect that `bwrap --seccomp 3 --seccomp 4 ...`
+   would load seccomp programs from both fds 3 and 4, but in fact it only
+   loads the program from fd 4.
+   Helps: https://github.com/containers/bubblewrap/issues/453
+   Resolves: https://github.com/containers/bubblewrap/issues/454
+ - utils: Add warn()
+ - Add SPDX-License-Identifier for files that already specify license
+   This is a step towards REUSE compliance. Third-party files that we do
+   not otherwise edit (git.mk, m4/attributes.m4) are excluded here.
+ - tests: Use preferred spelling for SPDX license identifiers
+ - Remove obsolete .travis.yml
+   We no longer use Travis-CI.
+ - Remove obsolete papr CI
+   We no longer use this.
+
+
+-------------------------------------------------------------------
 Mon Sep 20 18:52:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.5.0:
