@@ -58,4 +58,12 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
     <comment></comment>
     <requestid>862708</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4842227d78255c8fc86f38753bc2d87d</srcmd5>
+    <version>1.2.16</version>
+    <time>1647282946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961667</requestid>
+  </revision>
 </revisionlist>
