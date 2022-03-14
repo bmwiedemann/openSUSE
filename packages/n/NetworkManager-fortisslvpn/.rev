@@ -45,4 +45,12 @@ If openfortivpn is not installed, vpn can not be started. (forwarded request 743
   (boo#1175106). (forwarded request 826295 from dimstar)</comment>
     <requestid>828180</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4dda107acede27d6066e0ec23c680c13</srcmd5>
+    <version>1.4.0</version>
+    <time>1647282945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961666</requestid>
+  </revision>
 </revisionlist>
