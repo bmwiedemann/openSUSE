@@ -156,6 +156,7 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.aether:aether-api)
 BuildRequires:  mvn(org.eclipse.aether:aether-connector-basic)
 BuildRequires:  mvn(org.eclipse.aether:aether-impl)
+BuildRequires:  mvn(org.eclipse.aether:aether-named-locks)
 BuildRequires:  mvn(org.eclipse.aether:aether-spi)
 BuildRequires:  mvn(org.eclipse.aether:aether-transport-wagon)
 BuildRequires:  mvn(org.eclipse.aether:aether-util)
@@ -269,6 +270,7 @@ Requires:       maven-lib
 Requires:       maven-resolver-api
 Requires:       maven-resolver-connector-basic
 Requires:       maven-resolver-impl
+Requires:       maven-resolver-named-locks
 Requires:       maven-resolver-spi
 Requires:       maven-resolver-transport-wagon
 Requires:       maven-resolver-util

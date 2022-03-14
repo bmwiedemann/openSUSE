@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 14 05:27:44 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-resolver 1.7.x
+- Modified patch:
+  * 0005-Port-to-Maven-3.3.9-and-Eclipse-Aether.patch
+    + package the new artifact maven-resolver-named-locks
+
+-------------------------------------------------------------------
 Tue Mar  8 06:21:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove from build dependencies some artifacts that are not

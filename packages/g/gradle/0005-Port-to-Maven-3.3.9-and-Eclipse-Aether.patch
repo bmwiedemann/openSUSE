@@ -37,7 +37,7 @@ index 73cf0b1ee08..54dc27d7fbe 100755
      dependency "org.codehaus.plexus:plexus-classworlds:2.4@jar"
  
      //sonatype plexus
-@@ -150,14 +156,17 @@ libraries.maven3 = dependencies.module("org.apache.maven:maven-core:${versions.m
+@@ -150,14 +156,18 @@ libraries.maven3 = dependencies.module("org.apache.maven:maven-core:${versions.m
      dependency 'org.apache.maven.wagon:wagon-file:2.4@jar'
      dependency 'org.apache.maven.wagon:wagon-http:2.4@jar'
      dependency 'org.apache.maven.wagon:wagon-provider-api:2.4@jar'
@@ -52,6 +52,7 @@ index 73cf0b1ee08..54dc27d7fbe 100755
 -    dependency 'org.sonatype.aether:aether-connector-wagon:1.13.1@jar'
 +    dependency "org.eclipse.aether:aether-api:1.0.0.v20140518@jar"
 +    dependency "org.eclipse.aether:aether-impl:1.0.0.v20140518@jar"
++    dependency "org.eclipse.aether:aether-named-locks:1.0.0.v20140518@jar"
 +    dependency "org.eclipse.aether:aether-spi:1.0.0.v20140518@jar"
 +    dependency "org.eclipse.aether:aether-util:1.0.0.v20140518@jar"
 +    dependency 'org.eclipse.aether:aether-connector-basic:1.0.0.v20140518@jar'
