@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:27:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * KPluginMetaData::serviceTypes() is gone in KF6
+  * Remove or upgrade QQC1 imports from tests where possible
+  * Port away from QXcbWindowFunctions for Qt6
+  * show the header if both this and dialog background fallback
+  * Fix a -Wint-to-void-pointer-cast warning
+  * breeze: Clean up SVG Tiny 1.2 errors in button
+  * Units: add mediumSpacing
+  * Units: update smallSpacing and largeSpacing documentation
+  * Use POSITION_INDEPENDENT_CODE for static lib (qt6)
+  * Use KConfigPropertyMap instead of KDeclarative::ConfigPropertyMap for KF6
+  * Remove the use of the QtQml namespace
+  * Adapt to the new location of the Qt namespace meta object in Qt6
+  * Adapt to native event filter signature changes in Qt6
+  * Adapt to the removed of QtX11Extras in Qt6
+  * Adapt to QQuickItem::geometryChanged being renamed in Qt6
+  * Port to QRegularExpression
+  * Adapt to Qt6 container sizes no longer being a 32bit integer
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0

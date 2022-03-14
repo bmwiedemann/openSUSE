@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma-framework
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -77,7 +77,6 @@ BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(x11)
 Recommends:     %{name}-components = %{version}
-Recommends:     %{name}-lang = %{version}
 Provides:       %{name}-private = %{version}
 Obsoletes:      %{name}-private < %{version}
 %ifarch %{arm} aarch64
