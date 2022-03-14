@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:26:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Split internal and external API into different files
+  * Also install the address format API header
+  * Improve output for incomplete addresses and formats with 3+ fields per line
+  * Rewrite the address formatter
+
+-------------------------------------------------------------------
 Sun Feb  6 10:16:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
