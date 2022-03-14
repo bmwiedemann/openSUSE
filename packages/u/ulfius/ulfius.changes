@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 13 16:35:15 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.8
+  * Fix Origin header setting in websocket client
+  * Remove header duplicates and Content-Length
+  * Redirect libmicrohttpd logs to yder
+  * Replace uint with unsigned int
+  * Add ulfius_export_request_http and ulfius_export_response_http
+  * Use o_strnullempty instead of o_strlen to check if a char * has
+    data
+
+-------------------------------------------------------------------
 Thu Dec  9 21:35:58 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.7
