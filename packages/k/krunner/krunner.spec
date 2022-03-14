@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Runner5
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           krunner
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        KDE Framework for providing different actions given a string query
 License:        LGPL-2.1-or-later
@@ -46,9 +46,7 @@ BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Plasma) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Solid) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5ThreadWeaver) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Quick) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
