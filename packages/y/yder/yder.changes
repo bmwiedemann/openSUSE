@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 13 16:47:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.15
+  * Use `o_strnullempty` instead of `o_strlen` to check if a
+    `char *` has data
+
+-------------------------------------------------------------------
 Sat May 29 11:15:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.4.14
