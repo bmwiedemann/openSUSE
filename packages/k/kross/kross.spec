@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kross
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        Scripting bridge for programs
 License:        LGPL-2.1-or-later
@@ -38,6 +38,7 @@ BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Completion) >= %{_tar_path}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_tar_path}
 BuildRequires:  cmake(KF5DocTools) >= %{_tar_path}
 BuildRequires:  cmake(KF5I18n) >= %{_tar_path}
 BuildRequires:  cmake(KF5IconThemes) >= %{_tar_path}
@@ -52,7 +53,6 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 Obsoletes:      libKF5KrossCore4
 Obsoletes:      libKF5KrossUi4
-Recommends:     %{name}-lang = %{version}
 
 %description
 Kross is a scripting bridge to embed scripting functionality
