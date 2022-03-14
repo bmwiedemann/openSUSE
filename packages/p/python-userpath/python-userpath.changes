@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 14 10:06:06 UTC 2022 - PragmaticLinux <info@pragmaticlinux.com>
+
+- update to 1.7.0
+  * Fix path normalization to be aware of case-insensitive
+    platforms and symlinks. 
+  * Use locale's encoding when handling output from subprocesses
+  * Modify bash start-up files based on their existence
+  * Remove distro dependency
+  * Fix fallback mechanism for detecting the name of the parent
+    process
+
+-------------------------------------------------------------------
 Thu Jul 23 11:07:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.1
