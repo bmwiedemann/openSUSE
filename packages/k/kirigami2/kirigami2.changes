@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:27:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Dialog: Accommodate vertical scrollbars widths properly
+  * Dialog: Fix implicitWidth binding loop when absolute maximum size used
+  * consider visibility when calculating page content positions
+  * Add Qt6 Android CI
+  * update commandlink url to a working one
+  * Dialog: Fix wrong import version in documentation
+  * Documentation: Add Dialog and NavigationTabBar to homepage
+  * Dialog: Fix padding
+  * FormLayout: make section headings slightly smaller but bolder
+  * NavigationTabBar: check checkedButton state before updating currentIndex
+  * Drawer should not eat mouse events at edges (kde#438017)
+  * Add a CI job to build and test the static build
+  * Use extra spacing to distinguish narrow-mode form labels and UI controls
+  * Revert "Bold labels for narrow FormLayout" (kde#450105)
+  * fix autotests/wheelhandler/tst_scrolling.qml after commit de215e19
+  * Units: add mediumSpacing property
+  * Use a nested toolbutton instead
+  * Ensure OverlayDrawer handles is keyboard navigable
+  * CheckableListItem: Reset list item's checked property when checking box
+  * CheckableListItem: Only conditionally trigger action when checked
+  * comment over the class
+  * PageRow: properly handle back button
+  * WheelHandler: Round contentX/contentY positions (kde#449884)
+  * Fix some more installation paths
+  * Allow compiling against Qt configured with -no-opengl
+  * Fix install path of settings and swipe navigator  components
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
