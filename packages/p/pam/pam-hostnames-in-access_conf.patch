@@ -1,12 +1,52 @@
-Index: Linux-PAM-1.3.91/modules/pam_access/pam_access.c
-===================================================================
---- Linux-PAM-1.3.91.orig/modules/pam_access/pam_access.c
-+++ Linux-PAM-1.3.91/modules/pam_access/pam_access.c
-@@ -699,10 +699,10 @@ string_match (pam_handle_t *pamh, const
-     return (NO);
+From d275f22cf28da287e93b5e5a1fdb8a68b2815982 Mon Sep 17 00:00:00 2001
+From: Thorsten Kukuk <kukuk@suse.com>
+Date: Thu, 24 Feb 2022 10:37:32 +0100
+Subject: [PATCH] pam_access: handle hostnames in access.conf
+
+According to the manual page, the following entry is valid but does not
+work:
+-:root:ALL EXCEPT localhost
+
+See https://bugzilla.suse.com/show_bug.cgi?id=1019866
+
+Patched is based on PR#226 from Josef Moellers
+---
+ modules/pam_access/pam_access.c | 95 ++++++++++++++++++++++++++-------
+ 1 file changed, 76 insertions(+), 19 deletions(-)
+
+diff --git a/modules/pam_access/pam_access.c b/modules/pam_access/pam_access.c
+index 0d033aa20..3cec542be 100644
+--- a/modules/pam_access/pam_access.c
++++ b/modules/pam_access/pam_access.c
+@@ -640,7 +640,7 @@ remote_match (pam_handle_t *pamh, char *tok, struct login_info *item)
+       if ((str_len = strlen(string)) > tok_len
+ 	  && strcasecmp(tok, string + str_len - tok_len) == 0)
+ 	return YES;
+-    } else if (tok[tok_len - 1] == '.') {
++    } else if (tok[tok_len - 1] == '.') {       /* internet network numbers (end with ".") */
+       struct addrinfo hint;
+ 
+       memset (&hint, '\0', sizeof (hint));
+@@ -681,7 +681,7 @@ remote_match (pam_handle_t *pamh, char *tok, struct login_info *item)
+       return NO;
+     }
+ 
+-    /* Assume network/netmask with an IP of a host.  */
++    /* Assume network/netmask, IP address or hostname.  */
+     return network_netmask_match(pamh, tok, string, item);
  }
  
--
+@@ -699,7 +699,7 @@ string_match (pam_handle_t *pamh, const char *tok, const char *string,
+     /*
+      * If the token has the magic value "ALL" the match always succeeds.
+      * Otherwise, return YES if the token fully matches the string.
+-	 * "NONE" token matches NULL string.
++     * "NONE" token matches NULL string.
+      */
+ 
+     if (strcasecmp(tok, "ALL") == 0) {		/* all: always matches */
+@@ -717,7 +717,8 @@ string_match (pam_handle_t *pamh, const char *tok, const char *string,
+ 
  /* network_netmask_match - match a string against one token
   * where string is a hostname or ip (v4,v6) address and tok
 - * represents either a single ip (v4,v6) address or a network/netmask
@@ -15,13 +55,11 @@ Index: Linux-PAM-1.3.91/modules/pam_access/pam_access.c
   */
  static int
  network_netmask_match (pam_handle_t *pamh,
-@@ -711,10 +711,14 @@ network_netmask_match (pam_handle_t *pam
+@@ -726,10 +727,12 @@ network_netmask_match (pam_handle_t *pamh,
      char *netmask_ptr;
      char netmask_string[MAXHOSTNAMELEN + 1];
      int addr_type;
-+    struct addrinfo *ai;
-+    struct sockaddr_storage tok_addr;
-+    struct addrinfo hint;
++    struct addrinfo *ai = NULL;
  
      if (item->debug)
 -    pam_syslog (pamh, LOG_DEBUG,
@@ -31,33 +69,17 @@ Index: Linux-PAM-1.3.91/modules/pam_access/pam_access.c
      /* OK, check if tok is of type addr/mask */
      if ((netmask_ptr = strchr(tok, '/')) != NULL)
        {
-@@ -724,7 +728,7 @@ network_netmask_match (pam_handle_t *pam
- 	*netmask_ptr = 0;
- 	netmask_ptr++;
- 
--	if (isipaddr(tok, &addr_type, NULL) == NO)
-+	if (isipaddr(tok, &addr_type, &tok_addr) == NO)
- 	  { /* no netaddr */
- 	    return NO;
- 	  }
-@@ -748,19 +752,47 @@ network_netmask_match (pam_handle_t *pam
+@@ -763,54 +766,108 @@ network_netmask_match (pam_handle_t *pamh,
  	    netmask_ptr = number_to_netmask(netmask, addr_type,
  		netmask_string, MAXHOSTNAMELEN);
  	  }
 -	}
 +
-+	/*
-+	 * Although isipaddr() has already converted the IP address,
-+	 * we call getaddrinfo here to properly construct an addrinfo list
-+	 */
-+	memset (&hint, '\0', sizeof (hint));
-+	hint.ai_flags = 0;
-+	hint.ai_family = AF_UNSPEC;
-+
-+	ai = NULL;	/* just to be on the safe side */
-+
-+	/* The following should not fail ... */
-+	if (getaddrinfo (tok, NULL, &hint, &ai) != 0)
++        /*
++         * Construct an addrinfo list from the IP address.
++         * This should not fail as the input is a correct IP address...
++         */
++	if (getaddrinfo (tok, NULL, NULL, &ai) != 0)
 +	  {
 +	    return NO;
 +	  }
@@ -70,15 +92,9 @@ Index: Linux-PAM-1.3.91/modules/pam_access/pam_access.c
 +	 * It is either an IP address or a hostname.
 +	 * Let getaddrinfo sort everything out
 +	 */
-+	memset (&hint, '\0', sizeof (hint));
-+	hint.ai_flags = 0;
-+	hint.ai_family = AF_UNSPEC;
-+
-+	ai = NULL;	/* just to be on the safe side */
-+
-+	if (getaddrinfo (string, NULL, &hint, &ai) != 0)
++	if (getaddrinfo (tok, NULL, NULL, &ai) != 0)
  	  {
-+	    pam_syslog(pamh, LOG_ERR, "cannot resolve hostname \"%s\"", string);
++	    pam_syslog(pamh, LOG_ERR, "cannot resolve hostname \"%s\"", tok);
 +
  	    return NO;
  	  }
@@ -87,13 +103,25 @@ Index: Linux-PAM-1.3.91/modules/pam_access/pam_access.c
  
      if (isipaddr(string, NULL, NULL) != YES)
        {
- 	/* Assume network/netmask with a name of a host.  */
--	struct addrinfo hint;
--
+-	/* Assume network/netmask with a name of a host.  */
+ 	struct addrinfo hint;
+ 
++	/* Assume network/netmask with a name of a host.  */
  	memset (&hint, '\0', sizeof (hint));
  	hint.ai_flags = AI_CANONNAME;
  	hint.ai_family = AF_UNSPEC;
-@@ -773,29 +805,54 @@ network_netmask_match (pam_handle_t *pam
+ 
+ 	if (item->gai_rv != 0)
++	  {
++	    freeaddrinfo(ai);
+ 	    return NO;
++	  }
+ 	else if (!item->res &&
+ 		(item->gai_rv = getaddrinfo (string, NULL, &hint, &item->res)) != 0)
++	  {
++	    freeaddrinfo(ai);
+ 	    return NO;
++	  }
          else
  	  {
  	    struct addrinfo *runp = item->res;
@@ -103,14 +131,18 @@ Index: Linux-PAM-1.3.91/modules/pam_access/pam_access.c
  	      {
  		char buf[INET6_ADDRSTRLEN];
  
- 		DIAG_PUSH_IGNORE_CAST_ALIGN;
+-		DIAG_PUSH_IGNORE_CAST_ALIGN;
 -		inet_ntop (runp->ai_family,
 -			runp->ai_family == AF_INET
 -			? (void *) &((struct sockaddr_in *) runp->ai_addr)->sin_addr
 -			: (void *) &((struct sockaddr_in6 *) runp->ai_addr)->sin6_addr,
 -			buf, sizeof (buf));
-+		(void) getnameinfo (runp->ai_addr, runp->ai_addrlen, buf, sizeof (buf), NULL, 0, NI_NUMERICHOST);
- 		DIAG_POP_IGNORE_CAST_ALIGN;
+-		DIAG_POP_IGNORE_CAST_ALIGN;
++		if (getnameinfo (runp->ai_addr, runp->ai_addrlen, buf, sizeof (buf), NULL, 0, NI_NUMERICHOST) != 0)
++		  {
++		    freeaddrinfo(ai);
++		    return NO;
++		  }
  
 -		if (are_addresses_equal(buf, tok, netmask_ptr))
 +		for (runp1 = ai; runp1 != NULL; runp1 = runp1->ai_next)
@@ -121,7 +153,11 @@ Index: Linux-PAM-1.3.91/modules/pam_access/pam_access.c
 +                    if (runp->ai_family != runp1->ai_family)
 +                      continue;
 +
-+                    (void) getnameinfo (runp1->ai_addr, runp1->ai_addrlen, buf1, sizeof (buf1), NULL, 0, NI_NUMERICHOST);
++                    if (getnameinfo (runp1->ai_addr, runp1->ai_addrlen, buf1, sizeof (buf1), NULL, 0, NI_NUMERICHOST) != 0)
++		      {
++			freeaddrinfo(ai);
++			return NO;
++		      }
 +
 +                    if (are_addresses_equal (buf, buf1, netmask_ptr))
 +                      {

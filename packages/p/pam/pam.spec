@@ -69,9 +69,7 @@ Patch2:         pam-hostnames-in-access_conf.patch
 Patch3:         pam-xauth_ownership.patch
 Patch4:         pam-bsc1177858-dont-free-environment-string.patch
 Patch10:        pam_xauth_data.3.xml.patch
-Patch11:        0001-Include-pam_xauth_data.3.xml-in-source-archive-400.patch
-Patch12:        0002-Only-include-vendordir-in-manual-page-if-set-401.patch
-Patch13:        0003-Use-vendor-specific-limits.conf-as-fallback-402.patch
+Patch11:        pam-git.diff
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -183,8 +181,6 @@ cp -a %{SOURCE12} .
 %patch4 -p1
 %patch10 -p1
 %patch11 -p1
-%patch12 -p1
-%patch13 -p1
 
 %build
 bash ./pam-login_defs-check.sh
@@ -258,7 +254,7 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
 
 mkdir %{buildroot}%{_distconfdir}/security
-mv %{buildroot}%{_sysconfdir}/security/limits.conf %{buildroot}%{_distconfdir}/security/limits.conf
+mv %{buildroot}%{_sysconfdir}/security/{limits.conf,faillock.conf,group.conf} %{buildroot}%{_distconfdir}/security/
 
 # Remove manual pages for main package
 %if !%{build_doc}
@@ -328,8 +324,8 @@ done
 %endif
 %config(noreplace) %{_sysconfdir}/environment
 %config(noreplace) %{_pam_secconfdir}/access.conf
-%config(noreplace) %{_pam_secconfdir}/group.conf
-%config(noreplace) %{_pam_secconfdir}/faillock.conf
+%{_distconfdir}/security/group.conf
+%{_distconfdir}/security/faillock.conf
 %{_distconfdir}/security/limits.conf
 %config(noreplace) %{_pam_secconfdir}/pam_env.conf
 %if %{enable_selinux}

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 11 11:25:35 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam-hostnames-in-access_conf.patch: update with upstream
+  submission. Fixes several bugs including memory leaks.
+
+-------------------------------------------------------------------
+Wed Feb  9 14:05:01 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move group.conf and faillock.conf to /usr/etc/security
+
+-------------------------------------------------------------------
+Mon Feb  7 09:46:16 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to current git for enhanced vendordir support (pam-git.diff)
+  Obsoletes:
+  - 0001-Include-pam_xauth_data.3.xml-in-source-archive-400.patch
+  - 0002-Only-include-vendordir-in-manual-page-if-set-401.patch
+  - 0003-Use-vendor-specific-limits.conf-as-fallback-402.patch
+
+-------------------------------------------------------------------
 Mon Dec 13 13:06:47 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop pam_umask-usergroups-login_defs.patch, does more harm
