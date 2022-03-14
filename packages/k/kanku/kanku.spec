@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -304,6 +304,16 @@ Requires:       perl(Net::AMQP::RabbitMQ)
 Command line client for kanku, mainly used for setup tasks
 and in developer mode.
 
+%post cli
+    cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something << EOF
+
+WARNING: kankus iptables/ss/netstat handling changed.
+
+Please re-run "kanku setup --devel" if you are using kanku in developer mode.
+
+
+EOF
+
 %files cli
 %dir /usr/share/kanku/views/cli/
 %dir /usr/share/kanku/views/cli/rjob
@@ -311,7 +321,10 @@ and in developer mode.
 /usr/share/kanku/views/cli/rjob/*.tt
 /usr/lib/kanku/lib/Kanku/Cli/
 /usr/lib/kanku/lib/Kanku/Cli.pm
+/usr/lib/kanku/iptables_wrapper
+/usr/lib/kanku/ss_netstat_wrapper
 /etc/bash_completion.d/kanku.sh
+%ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something
 
 %package common-server
 Summary:        Common server files or settings for kanku

@@ -99,4 +99,14 @@
   * [web][bugfix] filter iptable rules by domain name</comment>
     <requestid>955890</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0e08f83e49bbb66c8d40b810d3085687</srcmd5>
+    <version>0.12.3</version>
+    <time>1647282934</time>
+    <user>dimstar_suse</user>
+    <comment>New release 0.12.3
+
+* Fixes #boo 1196604</comment>
+    <requestid>961619</requestid>
+  </revision>
 </revisionlist>

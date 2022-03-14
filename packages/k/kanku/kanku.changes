@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 14 08:38:10 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.3:
+  * [web] fix outdated cached settings in "Job Groups"
+  * [cli] added job_groups to check_configs command
+  * [core] fixed config read
+  * [core] improvments for config file handling
+  * [core] improved iptables/ss/netstat handling
+    * Fixes #boo 1196604
+  * [setup] removed backup of sudoers file
+  * removed ssh_user from KankuFile
+  * [dist] change default logging to stderr/journald
+  * [util] VM::Image - use new buffer size while uncompressing
+  * [common] fixed x-scheme-handler_kanku
+  * [handler][bugfix] central config for host_interfaces in PortForward
+
+-------------------------------------------------------------------
 Fri Feb 18 08:49:08 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.12.2:
