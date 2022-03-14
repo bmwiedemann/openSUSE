@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Emoticons5
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kemoticons
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        Emoticon to graphical emoticon text converter
 License:        LGPL-2.1-or-later
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5DBus) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
