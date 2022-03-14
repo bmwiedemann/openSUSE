@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:27:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Too many changes since 5.91.0, only listing bugfixes:
+  * vimode: implement hlsearch (kde#449641, kde#449643)
+  * view: fix buggy scrolling on macOS (kde#442060)
+  * Guard against null widgets (kde#450094)
+  * use the url of the latest used document for save (kde#448618)
+  * Differentiate docs with identical filenames (kde#381532)
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
