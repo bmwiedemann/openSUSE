@@ -806,4 +806,12 @@
     <comment>Use %_libexecdir</comment>
     <requestid>960078</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>5a86b61c5f8e7c819a59e0ea15546c86</srcmd5>
+    <version>5.92.0</version>
+    <time>1647282888</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.92 (forwarded request 961114 from cgiboudeaux)</comment>
+    <requestid>961278</requestid>
+  </revision>
 </revisionlist>

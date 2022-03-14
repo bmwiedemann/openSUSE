@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  7 23:01:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Check executables exist in PATH before passing them to QProcess
+
+-------------------------------------------------------------------
 Mon Mar  7 10:57:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)
