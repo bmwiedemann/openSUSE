@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:26:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * specifydependencies: fix syntax in debug output
+  * Add Qt6 Android CI
+  * [ECMQmlModule] Fix doc syntax
+  * Add missing doc links
+  * ECMGeneratePriFile: support multiple include install dirs
+  * KDEInstallDirs6: replace ECMQueryQMake usage with qtpaths
+  * Adapt Android toolchain file and FindGradle to Qt6
+  * Fix typos
+
+-------------------------------------------------------------------
 Sun Feb  6 10:16:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
