@@ -24,9 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-jupyter-client%{psuffix}
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
@@ -108,7 +109,7 @@ popd
 %if !%{with test}
 %files %{python_files}
 %license COPYING.md
-%{python_sitelib}/jupyter_client-%{version}-py*.egg-info
+%{python_sitelib}/jupyter_client-%{version}*-info
 %{python_sitelib}/jupyter_client/
 
 %files -n jupyter-jupyter-client
