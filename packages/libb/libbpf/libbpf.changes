@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 10 18:28:17 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Enable building and packaging of static library.
+  Explicitly enable fat LTO objects.
+
+-------------------------------------------------------------------
+Mon Mar  7 11:52:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Python is not used during build; remove it and help break
+  a cycle.
+
+-------------------------------------------------------------------
 Fri Mar  4 10:18:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.7.0

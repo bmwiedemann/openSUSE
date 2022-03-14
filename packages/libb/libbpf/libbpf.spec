@@ -28,7 +28,6 @@ Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{n
 Source99:       baselibs.conf
 BuildRequires:  libelf-devel
 BuildRequires:  linux-glibc-devel >= 4.5
-BuildRequires:  python3
 BuildRequires:  zlib-devel
 
 %description
@@ -48,17 +47,26 @@ Requires:       linux-glibc-devel >= 5.16
 %description devel
 libbpf is a C library which provides API for managing eBPF programs and maps.
 
+%package devel-static
+Summary:        Static library for libbpf
+Requires:       %{libname} = %{version}
+Requires:       %{name}-devel = %{version}
+Requires:       linux-glibc-devel >= 5.16
+
+%description devel-static
+libbpf is a C library which provides API for managing eBPF programs and maps.
+
 %prep
 %autosetup
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 cd src
 %make_build V=1 CFLAGS="%{optflags}"
 
 %install
 cd src
 %make_install V=1
-rm -f %{buildroot}%{_libdir}/%{name}.a
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -72,5 +80,8 @@ rm -f %{buildroot}%{_libdir}/%{name}.a
 %{_includedir}/bpf
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+
+%files devel-static
+%{_libdir}/%{name}.a
 
 %changelog
