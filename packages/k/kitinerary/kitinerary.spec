@@ -97,7 +97,12 @@ to build programs that use the kitinerary library.
 %endif
 
 %check
-%ctest
+ctest \
+  --output-on-failure \
+  --force-new-ctest-process \
+  --test-dir build \
+  --parallel %{_smp_build_ncpus} \
+  --exclude-regex calendarhandlertest
 
 %post -n libKPimItinerary5 -p /sbin/ldconfig
 %postun -n libKPimItinerary5 -p /sbin/ldconfig
