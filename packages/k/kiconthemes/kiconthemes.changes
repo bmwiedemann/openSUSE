@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:26:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Make the BUILD_DESIGNERPLUGIN option dependent on not cross-compiling
+  * Fix pixelated icons in item views (kde#450336)
+  * [KIconEngine] Create high-dpi pixmap in paint
+  * Read the reference icon already scaled
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
