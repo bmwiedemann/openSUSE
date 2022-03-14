@@ -1,7 +1,7 @@
 #
 # spec file for package tealdeer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           tealdeer
-Version:        1.4.1
+Version:        1.5.0+0
 Release:        0
 Summary:        An implementation of tldr in Rust
 License:        Apache-2.0 OR MIT
 Group:          Productivity/Other
 URL:            https://github.com/dbrgn/tealdeer
-Source0:        https://github.com/dbrgn/tealdeer/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
 # Instructions on how to generate vendor.tar.xz
-Source2:        README.packager
-BuildRequires:  cargo
+Source3:        README.packager
+BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  libopenssl-devel
 BuildRequires:  rust
@@ -40,19 +41,13 @@ An implementation of tldr in Rust. It has example based and community-driven man
 %prep
 %setup -qa1
 mkdir .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+cp %{SOURCE2} .cargo/config
 
 %build
-cargo build --release --locked %{?_smp_mflags}
+%{cargo_build}
 
 %install
-cargo install --no-track --root=%{buildroot}%{_prefix} --path .
+%{cargo_install}
 
 %files
 %doc README.md

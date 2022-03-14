@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  7 01:19:17 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Version 1.5.0
+ - Custom pages and patches
+ - Change argument parsing from docopt to clap
+ - Multi-language support
+ - A new --show-paths command
+ - Compliance with the tldr client spec v1.5
+ - Docs
+- resolve bsc#1194119 (CVE-2021-45710)
+- Add support for cargo_vendor and obs_scm
+
+-------------------------------------------------------------------
 Fri Nov  5 04:03:54 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues
