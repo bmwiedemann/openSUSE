@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 11 14:00:11 UTC 2022 - David Anes <david.anes@suse.com>
+- fix changelog typos.
+- update to 12.4.5:
+   * sar/sadf: Make sure that datafiles with unknown activities can
+     be read by sar and sadf.
+   * sar/sadf: Don't reallocate buffers for activities not present
+     in file.
+   * sar: Make sure that all buffers are copied in copy_structures()
+     function.
+
+-------------------------------------------------------------------
 Mon Dec 20 23:00:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.14.4:
+- update to 12.4.4:
    * iostat: Always display persistent names with option -j.
    * iostat: Fix how device mapper names are taken into account when
      entered on the command line.
@@ -33,7 +44,7 @@ Fri Jun  4 07:18:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Feb 18 22:34:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.14.3:
+- update to 12.4.3:
   * sar: Fix return code sent by write_stats() function.
   * sar/sadc: Dereference nr array pointer in struct activity.
   * sadf: SVG: Make graphs discontinuous for disconnected devices.
@@ -48,7 +59,7 @@ Thu Feb 18 22:34:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Jan 29 00:01:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.14.2:
+- update to 12.4.2:
   * [Aleksei Nikiforov]: Fix alignment and structure size for 32-bit
   systems.
   * Fix metric's name in sar -y output: txmtin -> xmtin.
