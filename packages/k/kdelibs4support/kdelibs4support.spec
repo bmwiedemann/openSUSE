@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5KDELibs4Support5
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdelibs4support
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        Code and utilities to ease the transition to KDE Frameworks 5
 License:        LGPL-2.1-or-later
@@ -37,6 +37,8 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Use-KDE_INSTALL_FULL_-variables-where-needed.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Don-t-assume-libexec-is-a-LIB_INSTALL_DIR-subfolder.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
@@ -45,7 +47,6 @@ BuildRequires:  perl-URI
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Auth) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KDED) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
@@ -58,7 +59,6 @@ BuildRequires:  cmake(KF5GlobalAccel) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Parts) >= %{_kf5_bugfix_version}
@@ -81,7 +81,6 @@ BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
-Recommends:     %{name}-lang = %{version}
 Provides:       kde4support = %{version}
 Obsoletes:      kde4support < %{version}
 
