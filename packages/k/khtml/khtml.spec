@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5KHtml5
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           khtml
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        HTML rendering engine
 License:        LGPL-2.1-or-later
@@ -44,24 +44,18 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Codecs) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5GlobalAccel) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Init) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5ItemViews) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5JS) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5KIO) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Parts) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Sonnet) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5TextWidgets) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Wallet) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Phonon4Qt5)
