@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 11 17:58:36 UTC 2022 - Daniel Wagnrer <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc6:
+  * tree: add nvme_ctrl_get_ana_state() (bsc#1195938)
+  * tree: link paths to namespaces in nvme_subsystem_scan_namespace() (bsc#1195938)
+  * ioctl.h: ns list bug fix (wrong cns value)
+  * types.h: Key Value Command Set Identifier added (NVME_CSI_KV)
+  * types: fix status code type bug (wrong masking)
+
+-------------------------------------------------------------------
 Tue Mar  8 09:30:25 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update License information. The library is released under
