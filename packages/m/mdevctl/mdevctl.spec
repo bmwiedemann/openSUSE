@@ -1,7 +1,7 @@
 #
 # spec file for package mdevctl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           mdevctl
-Version:        0.81
+Version:        1.1.0
 Release:        0
 Summary:        Mediated device management and persistence utility
 License:        LGPL-2.1-or-later
 URL:            https://github.com/mdevctl/mdevctl
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  pkgconfig
+Source1:        vendor.tar.xz
+BuildRequires:  %{python_module docutils}
+BuildRequires:  cargo
+BuildRequires:  rust
 BuildRequires:  pkgconfig(udev)
-Requires:       findutils
-Requires:       jq
-Requires:       udev
-Requires:       util-linux
-BuildArch:      noarch
 
 %description
 mdevctl is a utility for managing and persisting devices in the mediated device
@@ -39,11 +37,27 @@ drivers like vfio-mdev for assignment to virtual machines.
 
 %prep
 %autosetup -p1
+%setup -q -D -T -a 1
+mkdir -p cargo-home
+cat >cargo-home/config <<EOF
+[source.crates-io]
+registry = 'https://github.com/rust-lang/crates.io-index'
+replace-with = 'vendored-sources'
+[source.vendored-sources]
+directory = './vendor'
+EOF
 
 %build
+export CARGO_HOME=$PWD/cargo-home
+cargo build --release %{?_smp_mflags}
 
 %install
 %make_install
+
+%check
+export MDEVCTL_LOG=debug RUST_BACKTRACE=full
+export CARGO_HOME=$PWD/cargo-home
+cargo test
 
 %files
 %license COPYING
@@ -52,7 +66,12 @@ drivers like vfio-mdev for assignment to virtual machines.
 %{_sbindir}/lsmdev
 %{_udevrulesdir}/60-mdevctl.rules
 %dir %{_sysconfdir}/mdevctl.d
+%dir %{_sysconfdir}/mdevctl.d/scripts.d
+%dir %{_sysconfdir}/mdevctl.d/scripts.d/callouts
+%dir %{_sysconfdir}/mdevctl.d/scripts.d/notifiers
 %{_mandir}/man8/mdevctl.8%{?ext_man}
 %{_mandir}/man8/lsmdev.8%{?ext_man}
+%{_datadir}/bash-completion/completions/mdevctl
+%{_datadir}/bash-completion/completions/lsmdev
 
 %changelog

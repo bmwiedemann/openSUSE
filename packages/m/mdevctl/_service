@@ -1,11 +1,12 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">mdevctl</param>
-    <param name="revision">c077ee72b286b117861dd77b710c58f63be33070</param>
+    <param name="revision">13084d837490f6c0671e2ab9a275cbe3611750c5</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/mdevctl/mdevctl</param>
     <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

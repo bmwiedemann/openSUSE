@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 11 17:23:03 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Add /etc/mdevctl.d/scripts.d directory to %files
+
+-------------------------------------------------------------------
+Thu Mar 10 11:26:24 UTC 2022 - ptesarik@suse.com
+
+- Update to version v1.1.0 (jsc#SLE-18449):
+  * use imported std::env for CARGO_PKG_VERSION in build.rs directly
+  * fix build.rs to allow specify exact path or name of the rst2man
+  *  Don't call unnecessary to_string()
+  * Report a useful error when /etc/mdevctl.d doesn't exist
+  * Handle FS permissions problems for defined devices
+  * Fix needless borrow warning from clippy
+  * tests: read stdin in callout test scripts
+  * Report root error when a callout can't be executed
+  * Don't emit warning for files in /etc/mdevctl.d/scripts.d
+  * env: add function to get base scripts directory
+
+-------------------------------------------------------------------
 Thu Jul 08 17:38:58 UTC 2021 - jfehlig@suse.com
 
 - Update to version 0.81:
