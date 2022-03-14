@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Mar 11 15:18:44 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest version 1.2.13
+- Fix some rpmlint suggested spec file issues
+
+-------------------------------------------------------------------
+Mon Jan 31 11:25:37 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest version (1.2.12)
+- Add licence to the spec file and fix formatting, add some globbing
+- Include the manpages in the package
+- Add changelog file
+  * File added: distrobox.changes
+
+-------------------------------------------------------------------
+Mon Jan 12 11:25:37 UTC 2022 - Nathan D <dhanas.nathan@gmail.com>
+
+- Initial package
