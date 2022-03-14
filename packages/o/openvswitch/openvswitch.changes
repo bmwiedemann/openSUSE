@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 11 11:33:18 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix OVS location for python bindings (dirs.py), boo#1196978
+  Make sure dirs.py is freshly generated
+
+-------------------------------------------------------------------
 Mon Mar  7 12:04:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix python3 requires (bsc#1196758)
