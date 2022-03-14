@@ -16,11 +16,11 @@
 #
 
 
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Only needed for the package signature condition
 %bcond_without released
 Name:           qqc2-desktop-style
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ Source2:        frameworks.keyring
 BuildRequires:  extra-cmake-modules
 # For dir ownership
 BuildRequires:  kf5-filesystem
+BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5Kirigami2)

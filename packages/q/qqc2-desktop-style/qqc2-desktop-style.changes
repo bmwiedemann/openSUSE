@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:27:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Thicken menus on transient touch as well as being in Tablet Mode
+  * PlasmaDesktopTheme: ensure we initialise the colours
+  * Fix typo
+  * PlasmaDesktopTheme: Do not compute the colors for invisible items
+  * PlasmaDesktopTheme: Do not call syncColors after syncWindow
+  * Menu: use hmargin and vmargin from QStyle
+  * Support displaying icons in ItemDelegate (kde#425867)
+  * fix checkbox position for CheckDelegate
+  * Drop lib prefix when building for Windows
+  * KQuickStyleItem: Simplify the updatePolish
+  * Use correct DBus signal for listening for font changes
+  * Use raw pointer instead of QPointer to track watchers
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
