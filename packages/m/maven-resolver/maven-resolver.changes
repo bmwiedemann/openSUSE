@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 11 12:10:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.7.3
+  * Change of API and incompatible with maven-resolver < 1.7
+
+-------------------------------------------------------------------
 Thu Jan 13 17:38:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.6.3

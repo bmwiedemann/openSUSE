@@ -19,18 +19,19 @@
 %define _buildshell /bin/bash
 %bcond_with tests
 Name:           maven-resolver
-Version:        1.6.3
+Version:        1.7.3
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/resolver/
+URL:            https://maven.apache.org/resolver/
 Source0:        http://archive.apache.org/dist/maven/resolver/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
+BuildRequires:  glassfish-annotation-api
 BuildRequires:  google-guice
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
@@ -83,6 +84,13 @@ Group:          Development/Libraries/Java
 
 %description util
 A collection of utility classes to ease usage of the repository system.
+
+%package named-locks
+Summary:        Maven Artifact Resolver Named Locks
+Group:          Development/Libraries/Java
+
+%description named-locks
+A synchronization utility implementation using Named locks
 
 %package impl
 Summary:        Maven Artifact Resolver Implementation
@@ -143,14 +151,17 @@ This package provides %{summary}.
 %prep
 %setup -q -a1
 
-# pointless plugin
-%pom_remove_plugin :maven-enforcer-plugin
+# requires internet connection
+rm maven-resolver-transport-http/src/test/java/org/eclipse/aether/transport/http/HttpTransporterTest.java
 
-# tests require jetty 7
-%pom_remove_dep :::test maven-resolver-transport-http
-rm -r maven-resolver-transport-http/src/test
+%pom_remove_plugin -r :bnd-maven-plugin
+%pom_remove_plugin -r org.codehaus.mojo:animal-sniffer-maven-plugin
+%pom_remove_plugin -r org.apache.maven.plugins:maven-enforcer-plugin
 
 %pom_disable_module maven-resolver-demos
+%pom_disable_module maven-resolver-named-locks-hazelcast
+%pom_disable_module maven-resolver-named-locks-redisson
+%pom_disable_module maven-resolver-transport-classpath
 
 # generate OSGi manifests
 for pom in $(find -mindepth 2 -name pom.xml) ; do
@@ -216,10 +227,10 @@ build-jar-repository -s lib \
 %endif
   package javadoc
 
-%mvn_artifact pom.xml
+%{mvn_artifact} pom.xml
 
 mkdir -p target/site/apidocs
-for i in api spi test-util util impl connector-basic transport-classpath transport-file transport-http transport-wagon; do
+for i in api spi test-util util named-locks impl connector-basic transport-classpath transport-file transport-http transport-wagon; do
   cp -r %{name}-${i}/target/site/apidocs target/site/apidocs/%{name}-${i}
   %{mvn_artifact} %{name}-${i}/pom.xml %{name}-${i}/target/%{name}-${i}-%{version}.jar
 done
@@ -237,6 +248,8 @@ done
 %files spi -f .mfiles-spi
 
 %files util -f .mfiles-util
+
+%files named-locks -f .mfiles-named-locks
 
 %files impl -f .mfiles-impl
 
