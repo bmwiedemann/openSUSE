@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 12 17:25:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.16:
+  + Gtk4 version of the editor plugin is now available (for use
+    with Control Center of GNOME 42 or later).
+  + Updated translations.
+- Add pkgconfig(gtk4) and pkgconfig(libnma-gtk4) BuildRequires and
+  pass --with-gtk4=yes to configure, build the gtk4 version.
+- Pass --enable-lto=yes to configure, build using LTO support.
+- Add optional libxml2-tools BuildRequires, build runs
+  xml-stripblanks preprocessing if available.
+
+-------------------------------------------------------------------
 Tue Jan 12 09:19:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.14:

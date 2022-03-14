@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-libreswan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-libreswan
-Version:        1.2.14
+Version:        1.2.16
 Release:        0
 Summary:        Libreswan VPN client plugin for NetworkManager
 License:        GPL-2.0-or-later
@@ -26,12 +26,15 @@ URL:            https://gitlab.gnome.org/GNOME/NetworkManager-libreswan
 Source0:        https://download.gnome.org/sources/NetworkManager-libreswan/1.2/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool >= 0.35
+BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4
+BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.2.8
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma) >= 1.2.0
+BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
 Requires:       /usr/sbin/ipsec
@@ -61,6 +64,8 @@ with the libreswan server with NetworkManager (GNOME files).
 %build
 %configure \
 	--disable-static \
+	--with-gtk4=yes \
+	--enable-lto=yes \
 	%{nil}
 %make_build
 
@@ -82,11 +87,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n NetworkManager-libreswan-gnome
 %{_libexecdir}/nm-libreswan-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-libreswan-editor.so
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/network-manager-libreswan.metainfo.xml
-%dir %{_datadir}/gnome-vpn-properties
-%dir %{_datadir}/gnome-vpn-properties/libreswan
-%{_datadir}/gnome-vpn-properties/libreswan/nm-libreswan-dialog.ui
+%{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-libreswan-editor.so
+%{_datadir}/metainfo/network-manager-libreswan.metainfo.xml
 
 %files lang -f %{name}.lang
 
