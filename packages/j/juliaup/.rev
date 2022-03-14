@@ -7,4 +7,12 @@
     <comment>I want to maintain this package in Factory. This package allows users from using julia and manage or switch versions using it.</comment>
     <requestid>960953</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb9c8da3ee591944c1066ab0daea3df7</srcmd5>
+    <version>1.5.37</version>
+    <time>1647282928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961553</requestid>
+  </revision>
 </revisionlist>

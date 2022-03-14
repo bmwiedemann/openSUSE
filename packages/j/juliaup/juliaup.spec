@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           juliaup
 Version:        1.5.37
 Release:        0
 Summary:        Julia installer and version multiplexer
-License:        Apache-2.0 AND ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND ISC AND MIT AND MPL-2.0 AND MIT
+License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND ISC AND MIT AND MPL-2.0 AND MIT
 Group:          Development/Languages/Other
-Url:            https://github.com/JuliaLang/juliaup
+URL:            https://github.com/JuliaLang/juliaup
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
@@ -31,7 +32,7 @@ BuildRequires:  cargo-packaging
 %description
 A cross-platform installer for the Julia programming language.
 
-The installer also bundles a full Julia version manager called juliaup. 
+The installer also bundles a full Julia version manager called juliaup.
 One can use juliaup to install specific Julia versions, it alerts users when new Julia versions are released and provides a convenient Julia release channel abstraction.
 
 %prep
