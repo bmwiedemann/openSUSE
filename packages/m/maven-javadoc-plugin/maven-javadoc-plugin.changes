@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 14 06:23:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * stale-data-encoding.patch
+    + use the same encoding when writing and getting the stale data
+    + fixes build with utf-8 sources on non utf-8 platforms
+
+-------------------------------------------------------------------
 Fri Mar 11 07:05:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.3.2

@@ -32,6 +32,7 @@ URL:            http://maven.apache.org/plugins/maven-javadoc-plugin
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
+Patch1:         stale-data-encoding.patch
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
@@ -120,6 +121,7 @@ API documentation for %{name}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 %pom_remove_dep :::test:
