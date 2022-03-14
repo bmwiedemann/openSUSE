@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 14 07:24:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Why did we need tornado in the first place?
+
+-------------------------------------------------------------------
 Tue Dec 14 12:51:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Tornado5 (and Flask) are optional. Tornado5 is not available for
