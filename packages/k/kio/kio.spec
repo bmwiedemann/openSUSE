@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Bookmarks) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Completion) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
@@ -175,6 +176,7 @@ export CXX=g++-10
 %dir %{_kf5_plugindir}/kf5/kiod
 %dir %{_kf5_sharedir}/kconf_update/
 %{_kf5_applicationsdir}/ktelnetservice5.desktop
+%{_kf5_applicationsdir}/kcm_trash.desktop
 %{_kf5_bindir}/ktelnetservice5
 %{_kf5_bindir}/ktrash5
 %{_kf5_configdir}/accept-languages.codes
