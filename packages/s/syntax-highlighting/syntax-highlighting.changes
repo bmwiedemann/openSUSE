@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:27:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * increment bash version number
+  * Bash: fix parameter expansion replacement with path without extended glob
+  * Lua: fix function highlighting with local function (#17)
+  * Add Android Qt6 CI
+  * Propagate Qt major version to external project build of the host tools
+  * increment versions
+  * Bash/Zsh: fix keyword ! in ! cmd
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
