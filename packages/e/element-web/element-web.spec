@@ -17,27 +17,54 @@
 
 
 Name:           element-web
-Version:        1.9.9
+Version:        1.10.4
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        Apache-2.0
 URL:            https://github.com/vector-im/element-web
-Source0:        element-%{version}.tar.gz
-Source1:        https://github.com/vector-im/element-web/archive/v%{version}.tar.gz#/element-web-%{version}.tar.gz
-Source2:        prepare_tarball.sh
+Source0:        https://github.com/vector-im/element-web/archive/v%{version}.tar.gz#/element-web-%{version}.tar.gz
+Source1:        npm-packages-offline-cache.tar.gz
+Source2:        jitsi_external_api.min.js
+Source3:        prepare.sh
 BuildRequires:  nodejs-electron
+BuildRequires:  yarn
 BuildArch:      noarch
 
 %description
 A glossy Matrix collaboration client - web files
 
 %prep
-%autosetup -n element-%{version}
+%autosetup -n element-web-%{version}
 
 %build
-tar xzvf %{SOURCE1} --strip-components 1 element-web-%{version}/LICENSE
+echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
+tar xf %{SOURCE1}
+ls ./npm-packages-offline-cache | head
+
+# fix some strange dependency
+cd ./npm-packages-offline-cache
+cp matrix-analytics-events-0.0.1.tgz @matrix-analytics-events-0.0.1.tgz
+cd ..
+ls ./npm-packages-offline-cache | grep matrix-analytics-events
+sed -i -e 's|    matrix-analytics-events "github:matrix-org/matrix-analytics-events.git#dfa6feaa12bcfc8e99b05a148e12fff7f9d62f08"|    matrix-analytics-events "^0.0.1"|' yarn.lock
+sed -i -e 's|"matrix-analytics-events@github:matrix-org/matrix-analytics-events#dfa6feaa12bcfc8e99b05a148e12fff7f9d62f08"|matrix-analytics-events@^0.0.1|' yarn.lock
+
+yarn install --offline --pure-lockfile
+
+mkdir -p webapp
+cp %{SOURCE2} ./webapp/jitsi_external_api.min.js
+echo 'return;' > scripts/build-jitsi.js
+
+DIST_VERSION=%{version} ./scripts/package.sh
+
+cd dist
+tar xf element-%{version}.tar.gz
+cd element-%{version}
+cp ../../LICENSE ./
 
 %install
+cd dist
+cd element-%{version}
 install -d %{buildroot}/{usr/share/webapps,etc/webapps}/element
 
 cp -r * "%{buildroot}%{_datadir}/webapps/element/"
