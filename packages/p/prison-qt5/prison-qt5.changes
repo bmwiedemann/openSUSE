@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:27:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * For KF6 use the more idiomatic include files installation layout
+  * Fix include dir for .pri file
+  * Normalise where headers are installed with the rest of KF
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
