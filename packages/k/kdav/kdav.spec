@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdav
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        DAV protocol implementation
 License:        LGPL-2.0-or-later
@@ -42,7 +42,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5XmlPatterns)
-Recommends:     %{name}-lang
 
 %description
 kdav is a library providing a KJob-based implementation of DAV protocols such as

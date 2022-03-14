@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:26:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Fix the Qt6 Android build
+  * Add iCloud info to README
+  * Fix variable name typo
+  * Replace absolute URIs with relative ones in calendar-multiget request
+
+-------------------------------------------------------------------
 Sun Feb  6 10:16:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
