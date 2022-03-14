@@ -1394,4 +1394,18 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * libexec cleanup: 'inn' news binaries now reside in libexec</comment>
     <requestid>915438</requestid>
   </revision>
+  <revision rev="150" vrev="30">
+    <srcmd5>806923285106a763990f6b652d287531</srcmd5>
+    <version>unknown</version>
+    <time>1647282837</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220309:
+  * apptainer whitelisting (bsc#1196145)
+
+- Update to version 20220202:
+  * mount.nfs: switch from migration mode to fixed path in /usr/sbin
+  * changed gendered pronouns
+  * mgetty: faxq-helper now finally reside in /usr/libexec</comment>
+    <requestid>961063</requestid>
+  </revision>
 </revisionlist>

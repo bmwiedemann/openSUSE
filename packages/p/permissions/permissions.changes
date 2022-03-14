@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 11 11:14:05 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 20220309:
+  * apptainer whitelisting (bsc#1196145)
+
+-------------------------------------------------------------------
+Fri Feb 25 09:34:23 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 20220202:
+  * mount.nfs: switch from migration mode to fixed path in /usr/sbin
+  * changed gendered pronouns
+  * mgetty: faxq-helper now finally reside in /usr/libexec
+
+-------------------------------------------------------------------
 Wed Sep 01 07:33:41 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 20210901:
