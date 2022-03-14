@@ -3729,7 +3729,6 @@
     <package name="python38-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-pyspnego" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-pytest" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python38-pytest5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python38-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-python-lzo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python38-python-memcached" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->

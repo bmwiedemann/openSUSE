@@ -3408,6 +3408,7 @@ unsorted:
   - etcd-for-k8s1.19: [x86_64] 
   - etcd-for-k8s1.22: [x86_64] 
   - etcd-for-k8s1.23: [x86_64] 
+  - etcdutl: [x86_64] 
   - etckeeper 
   - etckeeper-bash-completion 
   - etckeeper-zsh-completion 
@@ -17676,6 +17677,8 @@ unsorted:
   - ocaml-parmap-devel 
   - ocaml-pcre 
   - ocaml-pcre-devel 
+  - ocaml-pp 
+  - ocaml-pp-devel 
   - ocaml-ppx_bin_prot 
   - ocaml-ppx_bin_prot-devel 
   - ocaml-ppx_compare 
@@ -24003,6 +24006,7 @@ unsorted:
   - python310-pytest-random-order 
   - python310-pytest-randomly 
   - python310-pytest-regressions 
+  - python310-pytest-relaxed 
   - python310-pytest-remotedata 
   - python310-pytest-reorder 
   - python310-pytest-repeat 
@@ -30213,7 +30217,6 @@ unsorted:
   - python39-pytest-xdist 
   - python39-pytest-xprocess 
   - python39-pytest-xvfb 
-  - python39-pytest5 
   - python39-python-afl 
   - python39-python-aiml 
   - python39-python-akismet 
