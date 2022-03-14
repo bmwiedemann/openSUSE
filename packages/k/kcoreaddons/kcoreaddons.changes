@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:26:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Deprecate KPluginMetaData::fromDesktopFile
+  * KPluginMetaDataTest: Explicitly call dedicated constructors
+  * KPluginMetaData: Emit runtime deprecation warnings for deprecated code path
+  * KPluginMetaData: Add note for deprecated code paths to constructor
+  * KPluginMetaData: Use QFileInfo::completeBaseName for deriving plugin id
+  * Remove broken Python bindings generation
+  * Downgrade mismatched host tool version to WARNING
+  * Add a way to indicate to not show a notification on finished
+  * Allow to create valid KPluginMetaData for plugins without embedded JSON metadata
+  * Add an OUTPUT_FILE argument to kcoreaddons_desktop_to_json()
+  * KSignalHandler: attempt to fix Windows build
+  * Add KSignalHandler
+  * Build benchmarks of kdirwatch test as separate lib
+  * Build benchmarks of ktexttohtml as separate executable
+
+-------------------------------------------------------------------
 Sun Feb  6 10:16:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
