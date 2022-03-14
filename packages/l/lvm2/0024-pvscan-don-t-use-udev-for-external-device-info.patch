@@ -1,0 +1,35 @@
+From c7a5b5cca067496f5912bf992dcfedb6771dd083 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Wed, 9 Mar 2022 11:54:59 -0600
+Subject: [PATCH] pvscan: don't use udev for external device info
+
+pvscan is used to populate udev info, so it can't expect
+to use that udev info.
+---
+ tools/pvscan.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/tools/pvscan.c b/tools/pvscan.c
+index dcf183a464d9..db6709a5a23a 100644
+--- a/tools/pvscan.c
++++ b/tools/pvscan.c
+@@ -1710,13 +1710,11 @@ int pvscan_cache_cmd(struct cmd_context *cmd, int argc, char **argv)
+ 	}
+ 
+ 	/*
+-	 * If obtain_device_list_from_udev was set to 1, force it to 0.
+-	 * Don't ask udev for info since pvscan is running from udev.
+-	 * If a pvscan attempts to get dev info from udev, udev can
+-	 * repeatedly return errors about the dev not being initialized
+-	 * which will stall the pvscan.
++	 * Do not use udev for device listing or device info because pvscan
++	 * is used to populate udev info.
+ 	 */
+ 	init_obtain_device_list_from_udev(0);
++	init_external_device_info_source(DEV_EXT_NONE);
+ 
+ 	if (arg_is_set(cmd, major_ARG) + arg_is_set(cmd, minor_ARG))
+ 		devno_args = 1;
+-- 
+2.34.1
+

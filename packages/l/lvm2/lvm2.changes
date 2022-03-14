@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 10 01:25:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- Udev database has incomplete information about device /dev/sda. (bsc#1181242)
+  + 0024-pvscan-don-t-use-udev-for-external-device-info.patch
+
+-------------------------------------------------------------------
 Tue Mar  1 15:45:00 UTC 2022 - heming.zhao@suse.com
 
 - Update lvm2 from LVM2.2.03.12 to LVM2.2.03.15

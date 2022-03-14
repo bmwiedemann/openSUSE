@@ -86,6 +86,7 @@ Patch0020:      0020-devices-fix-dev_name-assumptions.patch
 Patch0021:      0021-devices-use-dev-cache-aliases-handling-from-label-sc.patch
 Patch0022:      0022-devices-only-close-PVs-on-LVs-when-scan_lvs-is-enabl.patch
 Patch0023:      0023-writecache-check-memory-usage.patch
+Patch0024:      0024-pvscan-don-t-use-udev-for-external-device-info.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -168,6 +169,7 @@ Volume Manager.
 %patch0021 -p1
 %patch0022 -p1
 %patch0023 -p1
+%patch0024 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
