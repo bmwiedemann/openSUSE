@@ -125,7 +125,7 @@ BuildRequires:  libmount-devel
 %endif
 %endif
 #END SECOND STAGE DEPENDENCIES
-Version:        2.37.3
+Version:        2.37.4
 Release:        0
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
 Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-%{version}.tar.xz
@@ -149,6 +149,8 @@ Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE: Avoid sulogin failing on not existing or not functional console devices
 Patch3:         util-linux-sulogin4bsc1175514.patch
+# PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
+Patch4:         util-linux-bash-completion-su-chsh-l.patch
 #
 %if %build_util_linux
 Supplements:    filesystem(minix)

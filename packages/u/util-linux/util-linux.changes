@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar  8 02:00:05 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.37.4:
+  * Fix security issue in chsh(1) and chfn(8) (CVE-2022-0563).
+    SUSE is not affected (bsc#1196241).
+
+-------------------------------------------------------------------
+Thu Mar  3 03:22:45 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix "su -s" bash completion
+  (bsc#1172427, util-linux-bash-completion-su-chsh-l.patch).
+
+-------------------------------------------------------------------
 Mon Jan 24 21:57:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.37.3 (bsc#1194976):

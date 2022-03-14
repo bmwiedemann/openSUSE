@@ -2295,4 +2295,13 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>948510</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>932c38cf674d861543fc7950d48fcf64</srcmd5>
+    <version>2.37.4</version>
+    <time>1647282836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.37.4...
+- Fix &quot;su -s&quot; bash completion...</comment>
+    <requestid>960950</requestid>
+  </revision>
 </revisionlist>
