@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 12 10:11:03 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.4 development release
+  - 'Light' theme enabled by default.
+  - Bundled vkd3d library.
+  - WineD3D, D3D12 and DXGI modules converted to PE.
+  - More large scale cleanups to support 'long' type.
+  - Various bug fixes.
+- update staging to 7.4 release
+
+-------------------------------------------------------------------
 Sat Feb 26 09:49:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.3 development release

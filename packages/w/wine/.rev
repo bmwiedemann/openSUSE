@@ -4353,4 +4353,18 @@
 - update staging to 7.3 release</comment>
     <requestid>959602</requestid>
   </revision>
+  <revision rev="371" vrev="1">
+    <srcmd5>bc70e0f9832af7b8dc364aab13ee64fe</srcmd5>
+    <version>7.4</version>
+    <time>1647282953</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4 development release
+  - 'Light' theme enabled by default.
+  - Bundled vkd3d library.
+  - WineD3D, D3D12 and DXGI modules converted to PE.
+  - More large scale cleanups to support 'long' type.
+  - Various bug fixes.
+- update staging to 7.4 release</comment>
+    <requestid>961715</requestid>
+  </revision>
 </revisionlist>
