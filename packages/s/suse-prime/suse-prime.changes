@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 14 15:05:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.7
+  * bbcheck(): no longer check for bbswitch kernel module (issue#78) 
+
+-------------------------------------------------------------------
 Fri Mar  4 15:19:17 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Install modprobe.conf file to %_modprobedir (bsc#1196275, jsc#SLE-20639) 

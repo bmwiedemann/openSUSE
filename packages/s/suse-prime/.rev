@@ -613,4 +613,13 @@ Latest changes:
     <comment></comment>
     <requestid>960166</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8277a515601875caa4fdafd697e884c0</srcmd5>
+    <version>0.8.7</version>
+    <time>1647282952</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.7
+  * bbcheck(): no longer check for bbswitch kernel module (issue#78)</comment>
+    <requestid>961710</requestid>
+  </revision>
 </revisionlist>
