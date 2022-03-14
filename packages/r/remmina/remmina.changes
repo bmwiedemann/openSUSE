@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 10 18:02:25 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to remmina version 1.4.25
+  * kiosk: Drop GNOME MediaKeys plugin !2377
+  * Honour soft links target in SFTP !2379
+  * Optional close confirmation !2380
+  * Fix some build warnings !2382
+  * Fix manpages !2378
+  * Snap cleanup + kwallet support !2381
+  * Deprecations and amend g_date_time_format_iso8601 !2383
+  * Fixes to snap build !2384
+  * Removing dependencies that are available as extensions !2385
+  * FreeRDP_OffscreenSupportLevel is of type UINT32 !2386
+  * Minor fixes !2387
+  * Get the right value for FreeRDP_AutoReconnectMaxRetries !2388
+
+-------------------------------------------------------------------
 Thu Feb 10 12:32:46 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to remmina version 1.4.24
