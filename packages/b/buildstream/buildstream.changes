@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 12 22:16:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.4:
+  + BuildElement classes now support `create-dev-shm`
+  + script element plugin now supports `create-dev-shm`
+  + Python 3.6 is no longer tested in CI but support is maintained
+    on best effort level.
+  + New fatal warnings for unaliased sources.
+  + New errors raised when using an unresolved source alias.
+  + Add support for .netrc in remote/tar/zip sources.
+  + Bugfixes and better stability in fuse layer.
+  + Drop CI support for EOL python 3.6 (although BuildStream should
+    still work when installed in python 3.6 environments).
+  + Various bug fixes, documentation updates and CI related
+    cleanup.
+
+-------------------------------------------------------------------
 Fri Dec 10 09:08:24 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is deprecated

@@ -1,7 +1,7 @@
 #
 # spec file for package buildstream
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           buildstream
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        A framework for modelling build pipelines in YAML
 License:        LGPL-2.1-or-later
@@ -27,13 +27,13 @@ Source0:        https://github.com/apache/buildstream/archive/refs/tags/%{versio
 
 BuildRequires:  bubblewrap
 BuildRequires:  fdupes
-BuildRequires:  python3-base >= 3.4
-BuildRequires:  python3-devel >= 3.4
+BuildRequires:  python3-base >= 3.7
+BuildRequires:  python3-devel >= 3.7
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  typelib-1_0-OSTree-1_0
 Requires:       bubblewrap
-Requires:       python3-base >= 3.4
+Requires:       python3-base >= 3.7
 Requires:       python3-click
 Requires:       python3-gobject
 Requires:       python3-grpcio >= 1.34
@@ -46,7 +46,7 @@ BuildStream is a flexible and extensible framework for the modelling of
 build and CI pipelines in a declarative YAML format, written in python.
 
 %prep
-%setup -q
+%autosetup -p1
 # Fix the shebang
 find -type f -exec sed -i 's|/usr/bin/env python3|%{_bindir}/python3|' {} \;
 # https://github.com/apache/buildstream/commit/b27b592a64a7050a205fa17c807fac193990b2a7
