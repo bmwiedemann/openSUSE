@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 14 06:37:35 UTC 2022 - william.brown@suse.com
+
+- Update to resolve bsc#1196972 CVE-2022-24713 - Regex DOS
+
+-------------------------------------------------------------------
 Wed Mar  9 04:51:15 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Use cargo lock2rpmprovides to fix LICENSE string
