@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:27:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Allow to build the Java parts with Gradle from both Qt5 and Qt6
+  * Fix compilation on Android with Qt6
+
+-------------------------------------------------------------------
 Sun Feb  6 10:17:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
