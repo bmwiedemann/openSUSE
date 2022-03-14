@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,10 +31,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-jupyter-core%{psuffix}
-Version:        4.9.1
+Version:        4.9.2
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -42,8 +42,6 @@ URL:            https://github.com/jupyter/jupyter_core
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_core/jupyter_core-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- use_rpms_paths.patch -- change paths so they are easy to replace at build time
 Patch0:         use_rpms_paths.patch
-# PATCH-FIX-UPSTREAM argv0_subcommand.patch -- gh#jupyter/jupyter_core#248, merged after the release of 4.9.1
-Patch1:         argv0_subcommand.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traitlets}
 BuildRequires:  fdupes

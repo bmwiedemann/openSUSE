@@ -86,4 +86,12 @@ Update to 4.6.1</comment>
 </comment>
     <requestid>931208</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9fcec26746776c77de27b52e0e243064</srcmd5>
+    <version>4.9.2</version>
+    <time>1647282917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961398</requestid>
+  </revision>
 </revisionlist>
