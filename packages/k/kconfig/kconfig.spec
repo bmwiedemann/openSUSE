@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.91
+%define _tar_path 5.92
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kconfig
-Version:        5.91.0
+Version:        5.92.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -43,14 +43,15 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Qml) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 %if %{with released}
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %endif
 
 %description
-KConfig provides an advanced configuration system. It is made of two parts:
-KConfigCore and KConfigGui.
+KConfig provides an advanced configuration system. It is made of three parts:
+KConfigCore, KConfigGui and KConfigQml.
 
 KConfigCore provides access to the configuration files themselves. It features:
 
@@ -62,6 +63,8 @@ KConfigCore provides access to the configuration files themselves. It features:
 KConfigGui provides a way to hook widgets to the configuration so that they are
 automatically initialized from the configuration and automatically propagate
 their changes to their respective configuration files.
+
+KConfigQml provides QtQuick bindings to KConfig, allowing it to be used with QML.
 
 %package -n libKF5ConfigCore%{sonum}
 Summary:        System for configuration files
@@ -88,6 +91,19 @@ KConfigGui provides a way to hook widgets to the configuration so that they are
 automatically initialized from the configuration and automatically propagate
 their changes to their respective configuration files.
 
+%package -n libKF5ConfigQml%{sonum}
+Summary:        QtQuick bindings for configuration entities
+Group:          System/GUI/KDE
+%requires_ge    libKF5ConfigCore5
+%requires_ge    libKF5ConfigGui5
+%requires_ge    libQt5Core5
+%requires_ge    libQt5Gui5
+%requires_ge    libQt5Xml5
+
+%description -n libKF5ConfigQml%{sonum}
+KConfigQml provides QtQuick bindings to KConfig, which allows using the library with
+QML.
+
 %package -n kconf_update5
 Summary:        Configuration file access
 Group:          System/GUI/KDE
@@ -106,6 +122,7 @@ Requires:       extra-cmake-modules
 Requires:       kconf_update5 = %{version}
 Requires:       libKF5ConfigCore%{sonum} = %{version}
 Requires:       libKF5ConfigGui%{sonum} = %{version}
+Requires:       libKF5ConfigQml%{sonum} = %{version}
 Requires:       cmake(Qt5DBus) >= 5.15.0
 Requires:       cmake(Qt5Xml) >= 5.15.0
 
@@ -145,6 +162,8 @@ their changes to their respective configuration files. Development files.
 %postun -n libKF5ConfigCore%{sonum} -p /sbin/ldconfig
 %post -n libKF5ConfigGui%{sonum} -p /sbin/ldconfig
 %postun -n libKF5ConfigGui%{sonum} -p /sbin/ldconfig
+%post -n libKF5ConfigQml%{sonum} -p /sbin/ldconfig
+%postun -n libKF5ConfigQml%{sonum} -p /sbin/ldconfig
 
 %if %{with released}
 %files -n libKF5ConfigCore%{sonum}-lang -f %{name}5.lang
@@ -162,6 +181,10 @@ their changes to their respective configuration files. Development files.
 %doc README*
 %{_kf5_libdir}/libKF5ConfigGui.so.*
 
+%files -n libKF5ConfigQml%{sonum}
+%doc README*
+%{_kf5_libdir}/libKF5ConfigQml.so.*
+
 %files -n kconf_update5
 %doc README*
 %dir %{_kf5_libexecdir}
@@ -172,6 +195,7 @@ their changes to their respective configuration files. Development files.
 %{_kf5_libdir}/cmake/KF5Config/
 %{_kf5_libdir}/libKF5ConfigCore.so
 %{_kf5_libdir}/libKF5ConfigGui.so
+%{_kf5_libdir}/libKF5ConfigQml.so
 %{_kf5_libexecdir}/kconfig_compiler_kf5
 %{_kf5_mkspecsdir}/qt_KConfigCore.pri
 %{_kf5_mkspecsdir}/qt_KConfigGui.pri

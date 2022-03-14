@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:26:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Remove broken Python bindings generation
+  * Add KWindowStateSaver
+  * Remove warning from kauthorized.h
+  * KConfigCompiler: support ItemAccessors=true with signalling items
+  * Add Qt6 Android CI
+  * Use our deprecation macros rather than Q_DECL_DEPRECATED directly
+  * KConfigPropertyMap: Clean up internal leftovers of autosave feature
+  * QMake pri files: fix missing new path to version header
+  * Support build without Qt session manager
+  * Add KConfig GUI logging category
+
+-------------------------------------------------------------------
 Sun Feb  6 10:16:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
