@@ -56,4 +56,12 @@
     <comment>Regenerate with newer aqute-bnd</comment>
     <requestid>926142</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>59f006ef0542aebf2047d435cd634634</srcmd5>
+    <version>unknown</version>
+    <time>1647282923</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against maven-resolver 1.7.3</comment>
+    <requestid>961510</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,6 +91,7 @@ BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-connector-basic
 BuildRequires:  maven-resolver-impl
+BuildRequires:  maven-resolver-named-locks
 BuildRequires:  maven-resolver-spi
 BuildRequires:  maven-resolver-transport-wagon
 BuildRequires:  maven-resolver-util
@@ -181,6 +182,7 @@ Requires:       maven-lib
 Requires:       maven-resolver-api
 Requires:       maven-resolver-connector-basic
 Requires:       maven-resolver-impl
+Requires:       maven-resolver-named-locks
 Requires:       maven-resolver-spi
 Requires:       maven-resolver-transport-wagon
 Requires:       maven-resolver-util
