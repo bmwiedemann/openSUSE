@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar  7 09:26:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Remove broken Python bindings generation
+  * KHamburgerMenu: Avoid null receiver warning upon showing menubar
+  * Port away from deprecated KAuth includes
+  * Add @since 5.92 in KColorScheme::operator== API docs
+  * Add a KColorScheme::operator==
+  * Make the BUILD_DESIGNERPLUGIN option dependent on not cross-compiling
+  * Add explicit CMake option HAVE_KAUTH
+  * KHambugerMenu: Fix crash on windows when showing the window menubar
+    from the KHamburgerMenu (kde#449806)
+
+-------------------------------------------------------------------
 Sun Feb  6 10:16:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.91.0
