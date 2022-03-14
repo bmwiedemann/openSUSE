@@ -2939,6 +2939,7 @@ unsorted:
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-MicroOS: [i586] 
   - distribution-logos-openSUSE-icons: [i586] 
+  - distrobox 
   - dita 
   - diy-devel: [x86_64] 
   - diy-mpich-devel: [x86_64] 
@@ -7712,6 +7713,7 @@ unsorted:
   - jpcre2-devel 
   - jpegoptim 
   - jpnevulator 
+  - jq 
   - jrosetta 
   - jrtplib-devel 
   - js-technology-fonts 
@@ -7964,6 +7966,7 @@ unsorted:
   - kdeclarative-devel 
   - kdeclarative-tools 
   - kded-devel 
+  - kded-lang 
   - kdegames-carddecks-other 
   - kdelibs4support-devel 
   - kdenlive 
@@ -8886,6 +8889,7 @@ unsorted:
   - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
   - libKDb3-4 
+  - libKF5ConfigQml5 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
   - libKF5KDGantt2-5 
@@ -9962,6 +9966,7 @@ unsorted:
   - libbox2d-devel-32bit: [x86_64] 
   - libbox2d2-32bit: [x86_64] 
   - libbpf-devel 
+  - libbpf-devel-static 
   - libbpf0 
   - libbpf0-32bit: [x86_64] 
   - libbraiding-devel 
@@ -11678,6 +11683,7 @@ unsorted:
   - libjpgalleg4_4 
   - libjpgalleg4_4-32bit: [x86_64] 
   - libjq-devel 
+  - libjq1 
   - libjreen-qt5-1 
   - libjreen-qt5-devel 
   - libjrtp3_11_1 
@@ -15210,6 +15216,7 @@ unsorted:
   - lsp-plugins 
   - lsp-plugins-common 
   - lsp-plugins-doc 
+  - lswt 
   - lsyncd 
   - ltrace 
   - ltrace-32bit: [x86_64] 
@@ -15864,6 +15871,7 @@ unsorted:
   - maven-resolver-connector-basic 
   - maven-resolver-impl 
   - maven-resolver-javadoc 
+  - maven-resolver-named-locks 
   - maven-resolver-spi 
   - maven-resolver-test-util 
   - maven-resolver-transport-classpath 

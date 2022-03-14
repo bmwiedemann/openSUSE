@@ -952,7 +952,6 @@
     <package name="jhead" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="joe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="jq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="json-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="juk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="juk-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -1033,7 +1032,6 @@
     <package name="kdeconnect-kde-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kdeconnect-kde-zsh-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kded" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kded-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdeedu-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kdegames-carddecks-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdegraphics-thumbnailers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2115,7 +2113,6 @@
     <package name="libjemalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjpeg-turbo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjpeg8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libjq1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjte2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2311,7 +2308,7 @@
     <package name="libogg0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liboggkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libokteta-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libonig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="libonig5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libopenal1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopenblas_pthreads0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopencc1_1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
