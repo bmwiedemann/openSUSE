@@ -516,4 +516,19 @@
     <comment></comment>
     <requestid>959374</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2b3e829a7ad8d59c4c4fab80d78c0a4b</srcmd5>
+    <version>2.0~6</version>
+    <time>1647282907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0-rc6:
+  * nvme: print out ANA state for 'list-subsys' (bsc#1195938)
+  * nvme: Explicit initialize all command line options (bsc#1195945)
+  * nvme: Explicit initialize passthru command line options
+  * nvme: list_ns bug fix (csi option enable)
+  * nvme: nvme write bug fix (no parse for option)
+  * documenation updates
+</comment>
+    <requestid>961125</requestid>
+  </revision>
 </revisionlist>
