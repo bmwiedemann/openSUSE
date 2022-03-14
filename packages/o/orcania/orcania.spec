@@ -1,7 +1,7 @@
 #
 # spec file for package orcania
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 2_2
 Name:           orcania
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        MISC function Library
 License:        LGPL-2.1-or-later

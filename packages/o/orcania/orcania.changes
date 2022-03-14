@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 13 16:41:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.2
+  * Add `o_strnullempty`
+  * Breaking: `trimwhitespace` now returns `const char *` instead
+    of `char *`, might give compiler warning
+  * Refactor `o_base64*` functions
+
+-------------------------------------------------------------------
 Sat Jun  5 13:27:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.1
