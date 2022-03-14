@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 11 12:11:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0005-Port-to-maven-resolver-1.7.2.patch
+    + fix build with the API incompatible maven-resolver 1.7.3
+- Link the new maven-resolver-named-locks artifact too
+
+-------------------------------------------------------------------
 Thu Jan 13 07:12:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.8.4

@@ -46,6 +46,7 @@ Patch1:         0001-Adapt-mvn-script.patch
 Patch2:         0002-Invoke-logback-via-reflection.patch
 Patch3:         qdox-2.0.1.patch
 Patch4:         0004-Use-non-shaded-HTTP-wagon.patch
+Patch5:         0005-Port-to-maven-resolver-1.7.2.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-codec
@@ -69,6 +70,7 @@ BuildRequires:  jdom2
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-connector-basic
 BuildRequires:  maven-resolver-impl
+BuildRequires:  maven-resolver-named-locks
 BuildRequires:  maven-resolver-spi
 BuildRequires:  maven-resolver-transport-wagon
 BuildRequires:  maven-resolver-util
@@ -152,6 +154,7 @@ Requires:       junit
 Requires:       maven-resolver-api
 Requires:       maven-resolver-connector-basic
 Requires:       maven-resolver-impl
+Requires:       maven-resolver-named-locks
 Requires:       maven-resolver-spi
 Requires:       maven-resolver-transport-wagon
 Requires:       maven-resolver-util
@@ -200,6 +203,7 @@ BuildArch:      noarch
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 # not really used during build, but a precaution
 find -name '*.jar' -not -path '*/test/*' -delete
@@ -252,6 +256,7 @@ build-jar-repository -s lib \
     jdom2/jdom2 \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-impl \
+    maven-resolver/maven-resolver-named-locks \
     maven-resolver/maven-resolver-spi \
     maven-resolver/maven-resolver-util \
     maven-shared-utils/maven-shared-utils \
@@ -336,6 +341,7 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-connector-basic \
     maven-resolver/maven-resolver-impl \
+    maven-resolver/maven-resolver-named-locks \
     maven-resolver/maven-resolver-spi \
     maven-resolver/maven-resolver-transport-wagon \
     maven-resolver/maven-resolver-util \
