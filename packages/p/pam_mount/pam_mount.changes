@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 12 19:35:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add tmpfiles.d conf for /run/pam_mount
+
+-------------------------------------------------------------------
 Wed Jan 12 16:09:44 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
 
 - Use the %_pam_moduledir macro in pam_mount.spec in order to

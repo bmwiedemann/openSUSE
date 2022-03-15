@@ -29,6 +29,7 @@ Source:         http://downloads.sf.net/pam-mount/%name-%version.tar.xz
 Source9:        http://downloads.sf.net/pam-mount/%name-%version.tar.asc
 Source1:        convert_pam_mount_conf.pl
 Source2:        convert_keyhash.pl
+Source3:        pam_mount.tmpfiles
 Source5:        baselibs.conf
 Source6:        %name.keyring
 Patch1:         pam_mount-0.47-enable-logout-kill.dif
@@ -122,9 +123,11 @@ ln -s /usr/sbin/umount.crypt "$b/sbin"
 ln -s /usr/sbin/mount.crypt_LUKS "$b/sbin"
 ln -s /usr/sbin/umount.crypt_LUKS "$b/sbin"
 %endif
+install -Dm0644 %SOURCE3 "$b/%_tmpfilesdir/%name.conf"
 %fdupes %buildroot/%_prefix
 
 %post
+%tmpfiles_create %_tmpfilesdir/%name.conf
 if [ -e etc/security/pam_mount.conf ]
 then
         cp etc/security/pam_mount.conf.xml %_docdir/%name/examples/
@@ -148,6 +151,7 @@ fi
 %files
 %_docdir/%name
 %{_pam_moduledir}/pam_mount*.so
+%_tmpfilesdir/%name.conf
 %_sbindir/mount.*
 %_sbindir/umount.*
 %_sbindir/pmvarrun
