@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        3.4
+Version:        3.4.1
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -181,27 +181,35 @@ install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.de
 %{_datadir}/icons/hicolor/*/apps/weechat.png
 
 %files -f "%{name}.lang" lang
+%license COPYING
 
 %files devel
+%license COPYING
 %{_includedir}/weechat
 %{_libdir}/pkgconfig/weechat.pc
 
 %files lua
+%license COPYING
 %{_libdir}/weechat/plugins/lua.so
 
 %files perl
+%license COPYING
 %{_libdir}/weechat/plugins/perl.so
 
 %files python
+%license COPYING
 %{_libdir}/weechat/plugins/python.so
 
 %files tcl
+%license COPYING
 %{_libdir}/weechat/plugins/tcl.so
 
 %files ruby
+%license COPYING
 %{_libdir}/weechat/plugins/ruby.so
 
 %files spell
+%license COPYING
 %{_libdir}/weechat/plugins/spell.so
 
 %changelog
