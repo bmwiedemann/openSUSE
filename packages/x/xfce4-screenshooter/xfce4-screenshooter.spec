@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screenshooter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,12 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %define plugin screenshooter
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.9.9
+Version:        1.9.10
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
@@ -40,15 +40,15 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.10.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
-Recommends:     %{name}-lang = %{version}
+Recommends:     %{name}-lang = %{version}-%{release}
 # needs xfhelp4
 Requires:       libxfce4ui-tools
 Suggests:       xfce4-%{plugin}-plugin
@@ -66,7 +66,7 @@ ZimageZ, a free online image hosting service.
 Summary:        Screenshot Plugin for the Xfce Panel
 Group:          System/GUI/XFCE
 Requires:       xfce4-panel >= %{panel_version}
-Requires:       xfce4-screenshooter = %{version}
+Requires:       xfce4-screenshooter = %{version}-%{release}
 # package was renamed in 2019 after Leap 15.1
 Provides:       xfce4-panel-plugin-%{plugin} = %{version}-%{release}
 Obsoletes:      xfce4-panel-plugin-%{plugin} < %{version}-%{release}

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 13 14:31:28 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.9.10
+  * Use symbolic icons
+  * Bump Xfce dependencies to 4.14
+  * _NET_FRAME_EXTENTS support
+  * Add back button to take new screenshot
+    (gxo#apps/xfce4-screenshooter!29)
+  * Fix Imgur upload via CLI (gxo#apps/xfce4-screenshooter!26)
+  * Set up ScreenshotData after commandline parsing
+  * Fix compile warning (#62)
+  * Update to description and addition of donate and translate links
+  * Replace link to bugzilla with gitlab
+    (gxo#apps/xfce4-screenshooter!25)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu May 20 09:02:54 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.9.9
