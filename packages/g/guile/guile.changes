@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  7 07:28:50 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix build on 32-bit big-endian targets
+  * adjust-32bit-big-endian-build-flags.patch
+- Run aclocal before %configure to regenerate aclocal.m4
+
+-------------------------------------------------------------------
 Thu Feb 24 18:24:20 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.0.8

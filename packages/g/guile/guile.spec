@@ -39,6 +39,7 @@ Patch0:         guile-3.0-gc_pkgconfig_private.patch
 # The out-of-memory test is flaky, so disable it
 Patch1:         disable-test-out-of-memory.patch
 Patch2:         gcc10-x86-disable-one-test.patch
+Patch3:         adjust-32bit-big-endian-build-flags.patch
 BuildRequires:  gmp-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libltdl-devel
@@ -103,6 +104,7 @@ linked in as a library when building extensible programs.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # remove broken prebuilt objects
 rm -r prebuilt/32-bit-big-endian
@@ -113,6 +115,7 @@ echo exit 77 > test-suite/standalone/test-stack-overflow
 %endif
 
 %build
+aclocal
 %configure \
   --disable-static \
   --with-pic \
