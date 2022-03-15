@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 13 15:42:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.7.14
+  * split into 3 packages: rhino, rhino-engine and rhino-runtime
+  * build also the javadoc documentation
+  * inspired by build.gradle file, write our own ant build.xml
+    that produces identical jar files
+  * create scripts using the %%jpackage_script macro
+  * remove unnecessary dependency on jline1
+- Removed patches:
+  * rhino-addOrbitManifest.patch
+  * rhino-build.patch
+    + not needed since we write our own build system
+
+-------------------------------------------------------------------
 Wed Jul 29 12:19:30 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
 
 - Update to 1.7.7.1:
