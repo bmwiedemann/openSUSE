@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 10 20:13:02 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use current Coin4 instead of Coin (3).
+
+-------------------------------------------------------------------
 Fri Mar  4 18:16:46 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add some unit test fixes:

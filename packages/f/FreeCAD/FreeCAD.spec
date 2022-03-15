@@ -49,7 +49,6 @@ Patch6:         0002-Base-Fix-wrong-character-encoding-for-micro-siemens.patch
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
 
-BuildRequires:  Coin-devel
 BuildRequires:  libboost_filesystem-devel >= 1.55
 BuildRequires:  libboost_graph-devel >= 1.55
 BuildRequires:  libboost_program_options-devel >= 1.55
@@ -93,6 +92,7 @@ BuildRequires:  python3-pycxx-devel
 BuildRequires:  python3-pyside2-devel
 BuildRequires:  python3-vtk
 BuildRequires:  python3-xml
+BuildRequires:  cmake(coin)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
