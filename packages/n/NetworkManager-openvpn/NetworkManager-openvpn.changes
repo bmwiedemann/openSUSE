@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 12 16:35:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.18:
+  + Gtk4 version of the editor plugin is now available (for use
+    with Control Center of GNOME 42 or later).
+  + Updated translations.
+- Drop nm-openvpn-bsc#1186091.patch: Fixed upstream.
+- Rebase patch with quilt.
+- Add pkgconfig(gtk4) and pkgconfig(libnma-gtk4) BuildRequires and
+  pass --with-gtk4=yes to configure, build the gtk4 version.
+- Stop passing --without-libnm-glib to configure, no longer
+  needed, nor recognized.
+- Pass --enable-lto=yes to configure, build using LTO support.
+- Add optional libxml2-tools BuildRequires, build runs
+  xml-stripblanks preprocessing if available.
+
+-------------------------------------------------------------------
 Wed Sep 29 07:23:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.16:

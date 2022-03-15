@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openvpn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-openvpn
-Version:        1.8.16
+Version:        1.8.18
 Release:        0
 Summary:        NetworkManager VPN support for OpenVPN
 License:        GPL-2.0-or-later
@@ -27,15 +27,17 @@ Source0:        https://download.gnome.org/sources/NetworkManager-openvpn/1.8/%{
 Source1:        system-user-nm-openvpn.conf
 # PATCH-FIX-OPENSUSE fix-for-missing-whirlpool-hmac-authentication.patch boo#1132946
 Patch0:         fix-for-missing-whirlpool-hmac-authentication.patch
-# PATCH-FIX-UPSTREAM nm-openvpn-bsc#1186091.patch glgo#GNOME/NetworkManager-openvpn!38, bsc#1186091 sckang@suse.com -- service: Don't add cert and key when they are not set
-Patch1:         nm-openvpn-bsc#1186091.patch
+
 BuildRequires:  intltool
+BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(libnm) >= 1.2.0
 BuildRequires:  pkgconfig(libnma) >= 1.2.0
+BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 Requires:       NetworkManager >= 1.2.0
 Requires:       openvpn
@@ -65,7 +67,8 @@ OpenVPN.
 %build
 %configure\
 	--disable-static \
-	--without-libnm-glib \
+	--with-gtk4=yes \
+	--enable-lto=yes \
 	%{nil}
 %make_build
 %sysusers_generate_pre %{SOURCE1} NetworkManager-openvpn system-user-nm-openvpn.conf
@@ -93,6 +96,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_datadir}/metainfo/network-manager-openvpn.metainfo.xml
 %{_libexecdir}/nm-openvpn-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn-editor.so
+%{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-openvpn-editor.so
 
 %files lang -f %{name}.lang
 
