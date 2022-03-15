@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 11 12:36:29 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Display the network configuration in the AutoYaST user interface
+  (see bsc#1197019).
+- 4.4.45
+
+-------------------------------------------------------------------
 Wed Mar  9 10:10:37 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Write NetworkManager s390 options to the ethernet section instead
