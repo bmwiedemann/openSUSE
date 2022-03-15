@@ -1353,4 +1353,12 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>946796</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>f195dc7ecb921b9caa4e28c41c90f507</srcmd5>
+    <version>3.38.1</version>
+    <time>1647367452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961697</requestid>
+  </revision>
 </revisionlist>

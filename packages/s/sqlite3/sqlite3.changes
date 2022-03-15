@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Mar 13 16:25:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.38.1:
+  * Fix problems with the new Bloom filter optimization that might
+    cause some obscure queries to get an incorrect answer.
+  * Fix the localtime modifier of the date and time functions so
+    that it preserves fractional seconds.
+  * Fix the sqlite_offset SQL function so that it works correctly
+    even in corner cases such as when the argument is a virtual
+    column or the column of a view.
+  * Fix row value IN operator constraints on virtual tables so that
+    they work correctly even if the virtual table implementation
+    relies on bytecode to filter rows that do not satisfy the
+    constraint.
+  * Other minor fixes to assert() statements, test cases, and
+    documentation. See the source code timeline for details.
+- add upstream patch to run atof1 tests only on x86_64
+  sqlite-src-3380100-atof1.patch
+
+-------------------------------------------------------------------
+Sat Feb 26 11:20:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.38.0
+  * Add the -> and ->> operators for easier processing of JSON
+  * The JSON functions are now built-ins
+  * Enhancements to date and time functions
+  * Rename the printf() SQL function to format() for better
+    compatibility, with alias for backwards compatibility.
+  * Add the sqlite3_error_offset() interface for helping localize
+    an SQL error to a specific character in the input SQL text 
+  * Enhance the interface to virtual tables 
+  * CLI columnar output modes are enhanced to correctly handle tabs
+    and newlines embedded in text, and add options like "--wrap N",
+    "--wordwrap on", and "--quote" to the columnar output modes.
+  * Query planner enhancements using a Bloom filter to speed up 
+    large analytic queries, and a balanced merge tree to evaluate
+    UNION or UNION ALL compound SELECT statements that have an
+    ORDER BY clause.
+  * The ALTER TABLE statement is changed to silently ignores
+    entries in the sqlite_schema table that do not parse when
+    PRAGMA writable_schema=ON
+
+-------------------------------------------------------------------
 Wed Jan 12 20:25:08 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.37.2:
