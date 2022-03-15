@@ -356,6 +356,9 @@ Patch838:       0002-Add-grub_disk_write_tail-helper-function.patch
 Patch839:       0003-grub-install-support-prep-environment-block.patch
 Patch840:       0004-Introduce-prep_load_env-command.patch
 Patch841:       0005-export-environment-at-start-up.patch
+Patch842:       0001-grub-install-bailout-root-device-probing.patch
+Patch843:       0001-RISC-V-Adjust-march-flags-for-binutils-2.38.patch
+Patch844:       0001-install-fix-software-raid1-on-esp.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

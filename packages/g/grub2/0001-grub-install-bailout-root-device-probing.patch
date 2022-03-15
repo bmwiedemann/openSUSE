@@ -1,0 +1,176 @@
+From 58dcf7985b20de876a6fc44a591aa377d0a0302c Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 10 Feb 2022 22:16:58 +0800
+Subject: [PATCH] grub-install: bailout root device probing
+
+The root device is probed to test if the filesystem is btrfs in order to setup
+boot configs for snapshot booting. However when the root device is a lvm thin
+volume, due to lack in grub support, the probing will be errored out and entire
+installation process aborts.
+
+Here we call out stat to bailout the situation whenever grub fails to probe
+filesystem in it's own right.
+
+  stat -f -c %T /
+
+The command is also used by grub-mkconfig for the same purpose.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/osdep/basic/no_platform.c |  5 +++++
+ grub-core/osdep/unix/platform.c     | 34 +++++++++++++++++++++++++++++
+ grub-core/osdep/windows/platform.c  |  6 +++++
+ include/grub/util/install.h         |  3 +++
+ util/grub-install.c                 | 31 ++++++++++++++++++--------
+ 5 files changed, 70 insertions(+), 9 deletions(-)
+
+diff --git a/grub-core/osdep/basic/no_platform.c b/grub-core/osdep/basic/no_platform.c
+index a173dafe90..dfbdd58e4e 100644
+--- a/grub-core/osdep/basic/no_platform.c
++++ b/grub-core/osdep/basic/no_platform.c
+@@ -51,3 +51,8 @@ grub_install_zipl (const char *d, int i, int f)
+   grub_util_error ("%s", _("no zIPL routines are available for your platform"));
+ }
+ 
++char *
++grub_install_get_filesystem (const char *path)
++{
++  return NULL;
++}
+diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
+index 4df143671a..68186480b2 100644
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -250,3 +250,37 @@ grub_install_zipl (const char *dest, int install, int force)
+ 	"-z", dest, NULL }))
+     grub_util_error (_("`%s' failed.\n"), PACKAGE"-zipl-setup");
+ }
++
++char *
++grub_install_get_filesystem (const char *path)
++{
++  int fd;
++  pid_t pid;
++  FILE *fp;
++  ssize_t len;
++  char *buf = NULL;
++  size_t bufsz = 0;
++
++  pid = grub_util_exec_pipe ((const char * []){ "stat", "-f", "-c", "%T", path, NULL }, &fd);
++  if (!pid)
++    return NULL;
++
++  fp = fdopen (fd, "r");
++  if (!fp)
++    return NULL;
++
++  len = getline (&buf, &bufsz, fp);
++  if (len == -1)
++    {
++      free (buf);
++      fclose (fp);
++      return NULL;
++    }
++
++  fclose (fp);
++
++  if (len > 0 && buf[len - 1] == '\n')
++    buf[len - 1] = '\0';
++
++  return buf;
++}
+diff --git a/grub-core/osdep/windows/platform.c b/grub-core/osdep/windows/platform.c
+index 733c36d72c..1d2e356e6b 100644
+--- a/grub-core/osdep/windows/platform.c
++++ b/grub-core/osdep/windows/platform.c
+@@ -430,3 +430,9 @@ grub_install_zipl (const char *d, int i, int f)
+ {
+   grub_util_error ("%s", _("no zIPL routines are available for your platform"));
+ }
++
++char *
++grub_install_get_filesystem (const char *path)
++{
++  return NULL;
++}
+diff --git a/include/grub/util/install.h b/include/grub/util/install.h
+index 154487b72b..456955c3d7 100644
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
+@@ -252,6 +252,9 @@ grub_install_sgi_setup (const char *install_device,
+ void
+ grub_install_zipl (const char *d, int i, int f);
+ 
++char *
++grub_install_get_filesystem (const char *path);
++
+ int 
+ grub_install_compress_gzip (const char *src, const char *dest);
+ int 
+diff --git a/util/grub-install.c b/util/grub-install.c
+index 7bc5f84378..213f54a782 100644
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -871,7 +871,6 @@ main (int argc, char *argv[])
+   const char *efi_file = NULL;
+   char **grub_devices;
+   grub_fs_t grub_fs;
+-  grub_fs_t root_fs;
+   grub_device_t grub_dev = NULL;
+   enum grub_install_plat platform;
+   char *grubdir, *device_map;
+@@ -1049,8 +1048,10 @@ main (int argc, char *argv[])
+   grub_host_init ();
+ 
+   {
+-    char *rootdir_grub_devname;
+-    grub_device_t rootdir_grub_dev;
++    grub_device_t rootdir_grub_dev = NULL;
++    char *rootdir_grub_devname = NULL;
++    char *root_fs_name = NULL;
++
+     char *t = grub_util_path_concat (2, "/", rootdir);
+ 
+     rootdir_path = grub_canonicalize_file_name (t);
+@@ -1071,20 +1072,32 @@ main (int argc, char *argv[])
+ 		       rootdir_devices[0]);
+ 
+     rootdir_grub_dev = grub_device_open (rootdir_grub_devname);
+-    if (! rootdir_grub_dev)
+-      grub_util_error ("%s", grub_errmsg);
++    if (!rootdir_grub_dev)
++      {
++	root_fs_name = grub_install_get_filesystem (t);
++	if (root_fs_name)
++	  grub_errno = 0;
++      }
++    else
++      {
++	grub_fs_t root_fs = grub_fs_probe (rootdir_grub_dev);
++	if (root_fs)
++	  root_fs_name = grub_strdup (root_fs->name);
++      }
+ 
+-    root_fs = grub_fs_probe (rootdir_grub_dev);
+-    if (!root_fs)
++    if (!root_fs_name)
+       grub_util_error ("%s", grub_errmsg);
+ 
+     if (config.is_suse_btrfs_snapshot_enabled
+-	&& grub_strncmp(root_fs->name, "btrfs", sizeof ("btrfs") - 1) == 0)
++	&& root_fs_name
++	&& grub_strncmp(root_fs_name, "btrfs", sizeof ("btrfs") - 1) == 0)
+       use_relative_path_on_btrfs = 1;
+ 
++    free (root_fs_name);
+     free (t);
+     free (rootdir_grub_devname);
+-    grub_device_close (rootdir_grub_dev);
++    if (rootdir_grub_dev)
++      grub_device_close (rootdir_grub_dev);
+   }
+ 
+   switch (platform)
+-- 
+2.34.1
+
