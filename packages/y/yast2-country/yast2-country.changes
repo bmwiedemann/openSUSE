@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 14 12:03:14 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed French (Canada) keyboard layout (bsc#1196891):
+  Use "ca", not "ca-fr-legacy"
+- 4.4.12
+
+-------------------------------------------------------------------
 Mon Jan 31 14:49:03 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed passing multiple arguments to "localectl set-locale"

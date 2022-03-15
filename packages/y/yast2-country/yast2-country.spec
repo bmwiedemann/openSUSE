@@ -17,7 +17,7 @@
 
 
 Name:           yast2-country
-Version:        4.4.11
+Version:        4.4.12
 Release:        0
 Summary:        YaST2 - Country Settings (Language, Keyboard, and Timezone)
 License:        GPL-2.0-only
