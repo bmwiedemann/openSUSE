@@ -1,7 +1,7 @@
 #
 # spec file for package SoQt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,10 @@ Name:           SoQt
 Version:        1.6.0
 Release:        0
 Summary:        A library which provides the glue between Coin and Qt
-License:        GPL-2.0-only
+License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://coin3d.github.io/SoQt/html/
 Source:         https://github.com/coin3d/soqt/releases/download/SoQt-%{version}/soqt-%{version}-src.tar.gz
-Patch0:         SoQt-man3.patch
-#PATCH-FIX-OPENSUSE 0001-Use-a-Find-module-to-find-older-Coin-versions.patch -- use a SoQt snapshot with a stable Coin package
-Patch1:         0001-Use-a-Find-module-to-find-older-Coin-versions.patch
-BuildRequires:  Coin-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -38,6 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(coin)
 
 %description
 The core rendering library Coin is a multiplatform high-level 3D graphics
@@ -50,13 +47,12 @@ applications and greatly increasing productivity.
 %package devel
 Summary:        Development files for SoQt
 Group:          Development/Libraries/C and C++
-Requires:       Coin-devel
-Requires:       Mesa-devel
 Requires:       libSoQt%{sover}
 Requires:       libpng-devel
 Requires:       cmake(Qt5Gui)
 Requires:       cmake(Qt5OpenGL)
 Requires:       cmake(Qt5Widgets)
+Requires:       cmake(coin)
 
 %description devel
 By using the combination of Coin, Qt and SoQt for your 3D applications, you
@@ -93,33 +89,22 @@ the resulting large gains in productivity.
 
 %prep
 %setup -q -n soqt
-%patch0
-%patch1 -p1
 # Fix broken Qt4 requires in pkgconfig file
 sed -i -e '/Requires:/ s/Qt\([^ ,]*\)/Qt5\1/g' SoQt.pc.cmake.in
 
 %build
-# using the cmake macro leads to compile errors
-mkdir my_build
-cd my_build
-cmake .. \
-      -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -DNDEBUG" \
-      -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-      -DCMAKE_PREFIX_PATH=%{_datadir}/cmake/Modules \
-      -DCMAKE_MODULES_INSTALL_DIR=%{_datadir}/cmake/Modules \
-      -DCMAKE_INSTALL_DOCDIR:PATH=%{_defaultdocdir}/%{name} \
-      -DCMAKE_SKIP_RPATH:BOOL=ON \
-      -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
-      -DBUILD_SHARED_LIBS:BOOL=ON \
-      -DCMAKE_COLOR_MAKEFILE:BOOL=OFF \
+# default __builddir clashes with existing "build" dir
+%global __builddir my_build
+%cmake .. \
+      -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
+      -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/Coin4/ \
       -DSOQT_BUILD_DOCUMENTATION=TRUE \
       -DSOQT_BUILD_DOC_MAN=TRUE \
-      -DCoin_DOC_DIR=%{_docdir}/Coin
-make %{?_smp_mflags}
+      %{nil}
+%cmake_build
 
 %install
-cd my_build
-%make_install
+%cmake_install
 
 %fdupes %{buildroot}%{_prefix}
 
@@ -129,6 +114,7 @@ cd my_build
 %files -n libSoQt%{sover}
 %license COPYING
 %doc AUTHORS README
+%{_libdir}/libSoQt.so.%{sover}*
 %{_libdir}/libSoQt.so.*
 
 %files doc
@@ -136,8 +122,8 @@ cd my_build
 
 %files devel
 %{_datadir}/SoQt
-%dir %{_includedir}/Inventor/Qt
-%{_includedir}/Inventor/Qt/*
+%dir %{_includedir}/Coin4/Inventor/Qt
+%{_includedir}/Coin4/Inventor/Qt/*
 %{_infodir}/SoQt1
 %{_libdir}/cmake/%{name}-%{realver}/
 %{_libdir}/libSoQt.so
