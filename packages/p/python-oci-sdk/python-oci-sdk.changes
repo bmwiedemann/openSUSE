@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Mar 15 13:10:21 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.60.0
+  * Support for the Sales Accelerator license option in the Content Management service
+  * Support for VCN hostname cluster endpoints in the Container Engine for Kubernetes service
+  * Support for optionally specifying an admin username and password when creating a database
+    system during a restore operation in the MySQL Database service
+  * Support for automatic tablespace creation on non-autonomous and autonomous database
+    dedicated targets in the Database Migration service
+  * Support for reporting excluded objects based on static exclusion rules and dynamic
+    exclusion settings in the Database Migration service
+  * Support for removing, listing, and adding database objects reported by the Cloud
+    Premigration Advisor Tool (CPAT) in the Database Migration service
+  * Support for migrating Oracle databases from the AWS RDS service to OCI as autonomous
+    databases, using the AWS S3 service and DBLINK for data transfer, in the Database
+    Migration service
+  * Support for querying additional fields of a resource using return clauses
+    in the Search service
+  * Support for clusters and station clusters in the Roving Edge Infrastructure service
+  * Support for creating database systems and database homes using customer-managed keys
+    in the Database service
+  * Support for retries enabled by default on operations in the Container Engine
+    for Kubernetes service
+  * Support for retries enabled by default on operations in the Resource Manager service
+  * Support for retries enabled by default on operations in the Search service
+- from version 2.59.0
+  * Support for DRG route distribution statements to be specified with a new match type
+    'MATCH_ALL' for matching criteria in the Networking service
+  * Support for VCN route types on DRG attachments for deciding whether to import VCN CIDRs
+    or subnet CIDRs into route rules in the Networking service
+  * Support for CPS offline reports in the Database service
+  * Support for infrastructure patching v2 features in the Database service
+  * Support for auto-scaling the storage of an autonomous database, as well
+    as shrinking an autonomous database, in the Database service
+  * Support for managed egress via a default networking option on jobs and
+    notebooks in the Data Science service
+  * Support for more types of saved search enums in the Management Dashboard service
+  * Support for retries enabled by default on some operations in the AI Vision service
+
+-------------------------------------------------------------------
 Fri Feb 25 11:05:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.58.0
