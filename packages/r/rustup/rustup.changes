@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 14 03:02:03 UTC 2022 - william.brown@suse.com
+
+- Update to resolve bsc#1196972 CVE-2022-24713 - Regex DOS
+
+-------------------------------------------------------------------
 Wed Mar 02 05:05:15 UTC 2022 - william.brown@suse.com
 
 - Update vendored dependencies
