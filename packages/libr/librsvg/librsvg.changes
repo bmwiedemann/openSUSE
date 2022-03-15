@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 12 09:53:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.52.7:
+  + Backport a fix for the regression that was introduced in the
+    last release: Output filled text as text for PDF; fixes
+    regression due to outputting all text as paths.
+
+-------------------------------------------------------------------
 Thu Feb 17 08:53:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.52.6:
