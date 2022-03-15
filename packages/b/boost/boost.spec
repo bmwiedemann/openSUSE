@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -272,6 +272,7 @@ BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libicu-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 %if %{with boost_fiber}
@@ -695,6 +696,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_iostreams%{library_version} = %{version}
 Requires:       pkgconfig(bzip2)
 Requires:       pkgconfig(liblzma)
+Requires:       pkgconfig(libzstd)
 Requires:       pkgconfig(zlib)
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_iostreams-devel-impl
