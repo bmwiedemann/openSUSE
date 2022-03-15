@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-zlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,8 @@ BuildRequires:  mingw64-cross-gcc
 BuildRequires:  mingw64-cross-pkg-config
 BuildRequires:  mingw64-filesystem
 BuildRequires:  xz
+%_mingw64_package_header_debug
 BuildArch:      noarch
-%{_mingw64_package_header_debug}
 
 %description
 zlib is a general-purpose lossless data-compression library,
@@ -75,6 +75,7 @@ Compatibility package.
 %package devel
 Summary:        Zlib compression library (development files)
 Group:          Development/Libraries/C and C++
+Requires:       mingw64-libz = %{version}
 
 %description devel
 zlib is a general-purpose lossless data-compression library,
@@ -96,6 +97,7 @@ Minizip is a library for manipulation with files from .zip archives.
 %package -n mingw64-minizip-devel
 Summary:        Development files for the minizip library
 Group:          Development/Libraries/C and C++
+Requires:       mingw64-libminizip1 = %{version}
 
 %description -n mingw64-minizip-devel
 This package contains the libraries and header files needed for
@@ -107,17 +109,17 @@ developing applications which use minizip.
 %autosetup -p1 -n zlib-%{version}
 
 %build
-%{_mingw64_cmake} . -DINSTALL_PKGCONFIG_DIR=%{_mingw64_libdir}/pkgconfig
-%{_mingw64_make} CFLAGS=-shared LDFLAGS=-no-undefined
+%_mingw64_cmake . -DINSTALL_PKGCONFIG_DIR=%{_mingw64_libdir}/pkgconfig
+%_mingw64_make CFLAGS=-shared LDFLAGS=-no-undefined
 
 cd contrib/minizip
 autoreconf -fi
 echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw64_cache}
 MINGW64_CFLAGS="%{_mingw64_cflags} -I%{_builddir}/%{name}-%{version}-%{release}" \
 MINGW64_LDFLAGS="%{_mingw64_ldflags} -L%{_builddir}/%{name}-%{version}-%{release}" \
-%{_mingw64_configure}
+%_mingw64_configure
 
-%{_mingw64_make} CFLAGS=-shared LDFLAGS=-no-undefined
+%_mingw64_make CFLAGS=-shared LDFLAGS=-no-undefined
 
 %install
 %make_install
