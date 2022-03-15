@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 14 09:21:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix one more case where sed env python was replaced with
+  python38 instead of python3.8.
+
+-------------------------------------------------------------------
+Fri Mar 11 09:15:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix name of python interpreter executables (python3.8 instead of
+  python38).
+
+-------------------------------------------------------------------
+Wed Feb 23 00:45:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 0.6.6:
+  * finalizing cmake support
+  * adding bindings to SoGeo*
+- Drop 0001-Allow-using-SoQt-snapshots-with-stable-Coin-version.patch
+- Use arch specific directory, add fix_python_installdir.patch
+- Use cmake for building, drop
+  0002-Fix-the-qmake-executable-name.patch.
+
+-------------------------------------------------------------------
 Thu May  7 01:16:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use correct macro %{python_version} instead of %{py_ver} to

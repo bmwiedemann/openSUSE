@@ -1,7 +1,7 @@
 #
 # spec file for package python-pivy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,28 @@
 #
 
 
+%define skip_python2 1
+#%%define skip_python39 1
+#%%define skip_python310 1
+
 Name:           python-pivy
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        Coin Binding for Python
-License:        ISC AND GPL-2.0-or-later
+# GPL only applies to some examples
+License:        GPL-2.0-only AND ISC
 Group:          Development/Libraries/Python
 URL:            https://github.com/FreeCAD/pivy
 Source0:        https://github.com/FreeCAD/pivy/archive/%{version}.tar.gz#/pivy-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE 0001-Allow-using-SoQt-snapshots-with-stable-Coin-version.patch -- Use CMake to find Coin and SoQt
-Patch1:         0001-Allow-using-SoQt-snapshots-with-stable-Coin-version.patch
-# PATCH-FIX-OPENSUSE 0002-Fix-the-qmake-executable-name.patch -- Fix the qmake executable name
-Patch2:         0002-Fix-the-qmake-executable-name.patch
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/coin3d/pivy/pull/92.patch#/fix_python_installdir.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  Coin-devel
-BuildRequires:  SoQt-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
+BuildRequires:  cmake(soqt)
 %python_subpackages
 
 %description
@@ -54,20 +56,40 @@ Pivy allows:
 
 %prep
 %autosetup -p1 -n pivy-%{version}
+%if 0%{suse_version} < 1550
+sed -i -e '/find_package/ s/SWIG 4.0.0/SWIG/' CMakeLists.txt
+%endif
 
 %build
-export CFLAGS="%{optflags}"
-%{python_build ; rm pivy/coin_wrap.cpp pivy/gui/soqt_wrap.cpp }
+%{python_expand #
+%define __builddir build_%{$python_bin_suffix}
+pushd .
+%cmake \
+  -DPython_EXECUTABLE:FILEPATH=%{_bindir}/python%{$python_bin_suffix}
+  %{nil}
+popd
+}
+
+%{python_expand #
+%define __builddir build_%{$python_bin_suffix}
+pushd %{__builddir}
+%cmake_build
+popd
+}
 
 %install
-%python_install
-
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/pivy/
+%{python_expand #
+%define __builddir build_%{$python_bin_suffix}
+%cmake_install
+$python ./setup.py install_egg_info --install-dir %{buildroot}%{$python_sitearch}
+find %{buildroot}%{$python_sitearch} -iname \*sogui.py -exec sed -i -e '1 s@env python@python%{$python_bin_suffix}@' '{}' \; -exec chmod +x '{}' \;
+%fdupes %{buildroot}%{$python_sitearch}/pivy/
+}
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS HACKING NEWS README.md THANKS
-%{python_sitelib}/pivy/
-%{python_sitelib}/Pivy-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/pivy/
+%{python_sitearch}/Pivy-%{version}-py%{python_version}.egg-info
 
 %changelog
