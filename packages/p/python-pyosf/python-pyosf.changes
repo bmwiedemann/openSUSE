@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 15 08:50:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use python_expand for fdupes 
+
+-------------------------------------------------------------------
 Wed Dec  8 12:01:49 UTC 2021 - pgajdos@suse.com
 
 - do not requires pytest-runner for build, testsuite does not run
