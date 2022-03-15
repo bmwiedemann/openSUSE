@@ -388,4 +388,23 @@
 </comment>
     <requestid>944190</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>769a0f0aa0be25cffd64b7d4ed7ee000</srcmd5>
+    <version>2.31.1</version>
+    <time>1647374456</time>
+    <user>dimstar_suse</user>
+    <comment>- - update to version 2.31.1:
+ - dont rewrite universal_newlines if text or **kwargs present
+ - upgrade flake8-typing-imports
+   Committed via https://github.com/asottile/all-repos
+ - drop python3.6 support
+   python 3.6 reached end of life on 2021-12-23
+   Committed via https://github.com/asottile/all-repos
+ - remove --fail-under from tox (covdefaults handles this)
+   Committed via https://github.com/asottile/all-repos
+ - Use diff syntax in more places in the docs
+- update to version 2.31.0:
+ - rewrite string formatting with **locals()</comment>
+    <requestid>961980</requestid>
+  </revision>
 </revisionlist>
