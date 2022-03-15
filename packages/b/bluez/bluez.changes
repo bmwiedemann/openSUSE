@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar  6 20:53:09 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Add code to restore user modifications for modprobe.d %config files
+  after moving the files to %_modprobedir
+- Use %_modprobedir (jsc#SLE-20639)
+
+-------------------------------------------------------------------
+Sat Mar  5 09:07:00 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 5.63:
+  * Fix issue with storing IRK causing invalid read access.
+  * Fix issue with disconnecting due to GattCharacteristic1.MTU.
+  * Add support for Device{Found,Lost} of advertising monitoring.
+
+-------------------------------------------------------------------
 Sat Feb 26 18:20:25 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

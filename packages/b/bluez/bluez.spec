@@ -1,7 +1,7 @@
 #
 # spec file for package bluez
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010-2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,9 +23,15 @@
 %bcond_with    mesh
 %endif
 %bcond_without bluez_deprecated
-#
+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%global _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files 50-bluetooth.conf
+
 Name:           bluez
-Version:        5.62
+Version:        5.63
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -246,7 +252,7 @@ autoreconf -fi
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-install --mode=0644 -D %{SOURCE7} %{buildroot}/%{_sysconfdir}/modprobe.d/50-bluetooth.conf
+install --mode=0644 -D %{SOURCE7} %{buildroot}/%{_modprobedir}/50-bluetooth.conf
 # no idea why this is suddenly necessary...
 install --mode 0755 -d %{buildroot}%{_localstatedir}/lib/bluetooth
 
@@ -303,6 +309,11 @@ touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 
 %pre
 %service_add_pre bluetooth.service bluetooth-mesh.service
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+	mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
 
 %post
 %{?udev_rules_update:%udev_rules_update}
@@ -318,6 +329,13 @@ touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 
 %postun
 %service_del_postun bluetooth.service bluetooth-mesh.service
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+	mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %post -n libbluetooth3 -p /sbin/ldconfig
 %postun -n libbluetooth3 -p /sbin/ldconfig
@@ -372,8 +390,8 @@ touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 # not packaged, boo#1151518
 ###%%config %%{_sysconfdir}/dbus-1/system.d/bluetooth-mesh.conf
 %dir %{_localstatedir}/lib/bluetooth
-%dir %{_sysconfdir}/modprobe.d
-%config(noreplace) %{_sysconfdir}/modprobe.d/50-bluetooth.conf
+%dir %{_modprobedir}
+%{_modprobedir}/50-bluetooth.conf
 %{_unitdir}/bluetooth.service
 %if %{with mesh}
 %{_unitdir}/bluetooth-mesh.service
