@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 14 13:15:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * java-cup-classpath.patch
+    + use the java-cup name instead of the java_cup one
+- Regenerate the generated files with newer flex
+
+-------------------------------------------------------------------
 Fri Jan 14 06:59:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to recent git checkout providing 0.11 beta

@@ -160,4 +160,12 @@
     <comment>Upgrade to 0.11 beta</comment>
     <requestid>946328</requestid>
   </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>363dcf2afac9f476b9cfdff9aeabe83e</srcmd5>
+    <version>0.11</version>
+    <time>1647367452</time>
+    <user>dimstar_suse</user>
+    <comment>very minor fixes</comment>
+    <requestid>961695</requestid>
+  </revision>
 </revisionlist>
