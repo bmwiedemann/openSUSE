@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sun Mar 13 14:46:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.1:
+  * Detailed tracing will be enabled when the environment variable
+    LIBDQLITE_TRACE is set before startup
+- remove explicit devel package requirements for private libs
+- remove conditional build dependencies for mandatory dependencies
+- run tests
+- update license specification
+
+-------------------------------------------------------------------
+Thu Aug  5 00:47:39 UTC 2021 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Updates to version v1.9.0
+  * Added dqlite_node_set_network_latency_ms which deprecates the old dqlite_node_set_network_latency.
+  * Added dqlite_node_recover_ext which deprecates the old dqlite_node_recover and takes node roles into account.
+
+-------------------------------------------------------------------
+Thu Jun 10 02:27:27 UTC 2021 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Updates to version v1.8.0
+  * Expose raft snapshot settings through dqlite_node_set_snapshot_params.
+  * Add DQLITE_VERSION_XXXXX macros to perform feature detection.
+
+-------------------------------------------------------------------
+Thu Apr 29 13:33:31 UTC 2021 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Updates to version v1.7.0
+  * Lowering of default HeartBeat timeout
+  * Multi platform fixes
+  * Various bugfixes
+
+-------------------------------------------------------------------
+Fri Oct 30 13:46:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim and wrap descriptions. Clear double-shipping of
+  documentation.
+
+-------------------------------------------------------------------
+Thu Oct 29 08:43:48 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- initial dqlite package, version v1.6.0
