@@ -29,6 +29,7 @@ Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 Patch0:         pycountry.diff
+Patch1:         revert_pycountry_limit.diff
 # List of additional build dependencies
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,6 +61,7 @@ echo %{?suse_version}
 # TW uses newer pycountry
 %if 0%{?suse_version} > 1500
 %patch0 -p1
+%patch1 -p1
 %endif
 
 %build

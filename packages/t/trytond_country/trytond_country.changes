@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 14 20:39:02 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- revert_pycountry_limit.diff added
+  fixes boo#1196857
+
+-------------------------------------------------------------------
 Tue Mar  8 13:35:21 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - added pycountry.diff (https://bugs.tryton.org/issue11128 )
