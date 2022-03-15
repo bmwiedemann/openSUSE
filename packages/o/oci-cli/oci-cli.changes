@@ -1,5 +1,84 @@
 -------------------------------------------------------------------
-Fri Feb 25 11:32:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+Tue Mar 15 13:36:13 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.6.0
+  * Support for the Sales Accelerator license option in the Content Management service  
+    * ``oci oce oce-instance create --add-on-features``
+    * ``oci oce oce-instance update --add-on-features``
+  * Support for new VCN hostname cluster endpoint as part of Container Engine service
+    * ``oci ce cluster create-kubeconfig --kube-endpoint VCN_HOSTNAME``
+  * Database Migration service
+    * Support for reporting all excluded objects based on static exclusion rules and
+      dynamic exclusion settings configured by the Database Migration Service (DMS) user
+      * ``oci database-migration excluded-object-summary list``
+    * Support to remove, list, and add database objects reported by the Cloud
+      Premigration Advisor Tool (CPAT)
+      * ``oci database-migration migration add``
+      * ``oci database-migration migration remove``
+      * ``oci database-migration migration-objects list``
+    * Support for migrating Oracle Database from Amazon Web Services (AWS) RDS to Oracle
+      Autonomous Database (ADB) using Amazon Simple Storage Service (Amazon S3) and DBLINK
+      for data transfer
+      * ``oci database-migration connection create --db-subtype``
+  * Enhancement in launch dbsystem as well as create database using customer managed
+    keys for VMBM in the Database service
+    * ``oci db system launch --vault-id``
+    * ``oci db database create --vault-id``
+    * ``oci db database migrate-vault-key --vault-id --admin-password --tde-wallet-password``
+  * The parameters --admin-username and --admin-password are now optional in the below
+    commands in the MySQL database service
+    * ``oci mysql db-system clone``
+    * ``oci mysql db-system create``
+    * ``oci mysql db-system import``
+  * [BREAKING] The command ``oci rover cluster`` is being deleted and its logic has been
+    divided in to the newly created commands below in the Roving Edge Infrastructure Service
+    * ``oci rover station-cluster``
+    * ``oci rover standalone-cluster``
+- from version 3.5.3
+  * Support for managed egress via a default networking option on jobs and notebooks
+    in the Data Science service
+    * ``oci data-science``
+  * Networking service
+    * Support for DRG route distribution statements to be specified with a new
+      match type 'MATCH_ALL' for matching criteria
+      * ``oci network drg-route-distribution-statement add --statements
+        '[{"matchCriteria":[{"matchType": "MATCH_ALL"}],"action": "ACCEPT","priority": 1}]'
+	--route-distribution-id "id-example"``
+    * Support for VCN route types on DRG attachments for deciding whether to import
+      VCN CIDRs or subnet CIDRs into route rules
+      * ``oci network drg-attachment create --drg-id "example-drg-id" --network-details
+        '{"type":"VCN","id":"example-vcn-id","vcnRouteType":"VCN_CIDRS"}'``
+  * Database service  
+    * Support for CPS offline reports in the Database service
+      * ``oci db exadata-infrastructure create --is-cps-offline-report-enabled``
+      * ``oci db exadata-infrastructure update --is-cps-offline-report-enabled``
+    * Support for infrastructure patching v2 features
+      * ``oci db maintenance-run update --current-custom-action-timeout-in-mins,
+        --custom-action-timeout-in-mins, --is-custom-action-timeout-enabled,
+	--is-resume-patching``
+    * Support for Autonomous Database Create with Auto Scaling Storage via
+      a new parameter (is-auto-scaling-for-storage-enabled)
+      * ``oci db autonomous-database create --is-auto-scaling-for-storage-enabled``
+      * ``oci db autonomous-database create-adb-cross-region-data-guard-details
+        --is-auto-scaling-for-storage-enabled``
+      * ``oci db autonomous-database create-from-backup-id --is-auto-scaling-for-storage-enabled``
+      * ``oci db autonomous-database create-from-backup-timestamp --is-auto-scaling-for-storage-enabled``
+      * ``oci db autonomous-database create-from-clone --is-auto-scaling-for-storage-enabled``
+      * ``oci db autonomous-database create-refreshable-clone --is-auto-scaling-for-storage-enabled``
+      * ``oci db autonomous-database create-virtual-clone --is-auto-scaling-for-storage-enabled``
+    * Support for Autonomous Database Update for Auto Scaling Storage via
+      a new parameter (is-auto-scaling-for-storage-enabled)
+      * ``oci db autonomous-database update --is-auto-scaling-for-storage-enabled``
+    * Support for shrinking an Autonomous Database
+      * ``oci db autonomous-database shrink --autonomous-database-id``
+  * Upgraded third party module cx_Oracle version to 8.3 to provide support for python 3.8
+  * Updated docs for ``oci iam db-token get``
+- Refresh patches for new version
+  + oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Mar 15 13:32:11 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.5.2
   * Support for Speech Service
