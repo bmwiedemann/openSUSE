@@ -798,4 +798,14 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
     <comment></comment>
     <requestid>955437</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>b7fcd0a51cb95c96edb5afa2c5298ff3</srcmd5>
+    <version>0.7.18+31</version>
+    <time>1647367426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.18+31:
+  * Fix extracting relative symlinks (boo#1196459)
+</comment>
+    <requestid>961651</requestid>
+  </revision>
 </revisionlist>
