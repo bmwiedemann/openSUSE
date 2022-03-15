@@ -1,0 +1,7 @@
+<package name="postgis" project="openSUSE:Factory">
+  <title>Geographic Information Systems Extensions to PostgreSQL</title>
+  <description>PostGIS adds support for geographic objects to the PostgreSQL object-relational database. In effect, PostGIS &quot;spatially enables&quot; the PostgreSQL server, allowing it to be used as a backend spatial database for geographic information systems (GIS), much like ESRI's SDE or Oracle's Spatial extension. PostGIS follows the OpenGIS &quot;Simple Features Specification for SQL&quot;.
+</description>
+  <devel project="Application:Geo" package="postgis"/>
+  <url>https://www.postgis.net/</url>
+</package>
