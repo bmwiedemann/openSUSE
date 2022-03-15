@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 14 08:41:35 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc12-disable-Werror=maybe-uninitialized.patch in order
+  to fix boo#1196587.
+
+-------------------------------------------------------------------
 Mon Jan 17 11:58:46 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.1:

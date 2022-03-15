@@ -25,6 +25,7 @@ Summary:        A microbenchmark support library
 License:        Apache-2.0
 URL:            https://github.com/google/benchmark
 Source:         %{name}-%{version}.tar.gz
+Patch0:         gcc12-disable-Werror=maybe-uninitialized.patch
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  gcc-c++
 BuildRequires:  git-core

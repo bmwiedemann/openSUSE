@@ -245,4 +245,12 @@
   * Fix un-initted error in test and fix change the API previously proposed to use std::string instead of raw char* (#1266)</comment>
     <requestid>946943</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e10c1733c58bde46cf2a6df3e1c46acd</srcmd5>
+    <version>1.6.1</version>
+    <time>1647367425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961637</requestid>
+  </revision>
 </revisionlist>
