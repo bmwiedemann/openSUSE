@@ -60,7 +60,7 @@ Development files for the Z3 library.
 %package -n python3-%{name}
 Summary:        Python bindings for Z3
 Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
+Requires:       libz3-%{sover} = %{version}
 
 %description -n python3-%{name}
 Python bindings for the Z3 library.
