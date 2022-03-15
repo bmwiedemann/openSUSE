@@ -18,7 +18,7 @@
 
 %global upstream_name   httpd
 %global testsuite_name  %{upstream_name}-framework
-%global tversion        svn1894461
+%global tversion        svn1898917
 %global flavor          @BUILD_FLAVOR@%{nil}
 %define mpm             %{nil}
 %if "%{flavor}" == "prefork" || "%{flavor}" == "test_prefork"
@@ -115,7 +115,7 @@
 %endif
 
 Name:           apache2%{psuffix}
-Version:        2.4.52
+Version:        2.4.53
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0
@@ -198,10 +198,6 @@ Patch100:       apache-test-application-xml-type.patch
 # even if in live system I do not experience this inconsistency, let's turn off
 # these variables from the test
 Patch101:       apache-test-turn-off-variables-in-ssl-var-lookup.patch
-# PATCH:    reverted logic, DirectorySlash NotFound is available in trunk onlyyet
-Patch102:       apache-test-DirectorySlash-NotFound-logic.patch
-# https://svn.apache.org/viewvc?view=revision&revision=1896889
-Patch103:       apache2-perl-io-socket.patch
 BuildRequires:  apache-rpm-macros-control
 #Since 2.4.7 the event MPM requires apr 1.5.0 or later.
 BuildRequires:  apr-devel >= 1.5.0
@@ -330,10 +326,6 @@ provides HTTP services in sync with the current HTTP standards.
 %patch4 -p1
 %patch100 -p1
 %patch101 -p1
-%patch102 -p1
-(cd httpd-framework
-%patch103 -p4
-)
 
 #
 # BUILD

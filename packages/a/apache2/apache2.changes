@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Mar 14 12:19:36 UTC 2022 - pgajdos@suse.com
+
+- httpd-framework updated to svn1898917
+- deleted patches
+  - apache-test-DirectorySlash-NotFound-logic.patch (upstreamed)
+  - apache2-perl-io-socket.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon Mar 14 11:20:53 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.4.53
+  *) SECURITY: CVE-2022-23943: mod_sed: Read/write beyond bounds
+     (cve.mitre.org)
+     Out-of-bounds Write vulnerability in mod_sed of Apache HTTP
+     Server allows an attacker to overwrite heap memory with possibly
+     attacker provided data.
+     This issue affects Apache HTTP Server 2.4 version 2.4.52 and
+     prior versions.
+     Credits: Ronald Crane (Zippenhop LLC)
+  *) SECURITY: CVE-2022-22721: core: Possible buffer overflow with
+     very large or unlimited LimitXMLRequestBody (cve.mitre.org)
+     If LimitXMLRequestBody is set to allow request bodies larger
+     than 350MB (defaults to 1M) on 32 bit systems an integer
+     overflow happens which later causes out of bounds writes.
+     This issue affects Apache HTTP Server 2.4.52 and earlier.
+     Credits: Anonymous working with Trend Micro Zero Day Initiative
+  *) SECURITY: CVE-2022-22720: HTTP request smuggling vulnerability
+     in Apache HTTP Server 2.4.52 and earlier (cve.mitre.org)
+     Apache HTTP Server 2.4.52 and earlier fails to close inbound
+     connection when errors are encountered discarding the request
+     body, exposing the server to HTTP Request Smuggling
+     Credits: James Kettle <james.kettle portswigger.net>
+  *) SECURITY: CVE-2022-22719: mod_lua Use of uninitialized value of
+     in r:parsebody (cve.mitre.org)
+     A carefully crafted request body can cause a read to a random
+     memory area which could cause the process to crash.
+     This issue affects Apache HTTP Server 2.4.52 and earlier.
+     Credits: Chamal De Silva
+  *) core: Make sure and check that LimitXMLRequestBody fits in system memory.
+     [Ruediger Pluem, Yann Ylavic]
+  *) core: Simpler connection close logic if discarding the request body fails.
+     [Yann Ylavic, Ruediger Pluem]
+  *) mod_http2: preserve the port number given in a HTTP/1.1
+     request that was Upgraded to HTTP/2. Fixes PR65881.
+     [Stefan Eissing]
+  *) mod_proxy: Allow for larger worker name.  PR 53218.  [Yann Ylavic]
+  *) dbm: Split the loading of a dbm driver from the opening of a dbm file. When
+     an attempt to load a dbm driver fails, log clearly which driver triggered
+     the error (not "default"), and what the error was. [Graham Leggett]
+  *) mod_proxy: Use the maxium of front end and backend timeouts instead of the
+     minimum when tunneling requests (websockets, CONNECT requests).
+     Backend timeouts can be configured more selectively (per worker if needed)
+     as front end timeouts and typically the backend timeouts reflect the
+     application requirements better.  PR 65886 [Ruediger Pluem]
+  *) ap_regex: Use Thread Local Storage (TLS) to recycle ap_regexec() buffers
+     when an efficient TLS implementation is available. [Yann Ylavic]
+  *) core, mod_info: Add compiled and loaded PCRE versions to version
+     number display.  [Rainer Jung]
+  *) mod_md: do not interfere with requests to /.well-known/acme-challenge/
+     resources if challenge type 'http-01' is not configured for a domain.
+     Fixes <https://github.com/icing/mod_md/issues/279>.
+     [Stefan Eissing]
+  *) mod_dav: Fix regression when gathering properties which could lead to huge
+     memory consumption proportional to the number of resources.
+     [Evgeny Kotkov, Ruediger Pluem]
+  *) Support pcre2 (10.x) library in place of the now end-of-life pcre (8.x)
+     for regular expression evaluation. This depends on locating pcre2-config.
+     [William Rowe, Petr Pisar <ppisar redhat.com>, Rainer Jung]
+  *) Add the ldap function to the expression API, allowing LDAP filters and
+     distinguished names based on expressions to be escaped correctly to
+     guard against LDAP injection. [Graham Leggett]
+  *) mod_md: the status description in MDomain's JSON, exposed in the
+     md-status handler (if configured) did sometimes not carry the correct
+     message when certificates needed renew.
+     [Stefan Eissing]
+  *) mpm_event: Fix a possible listener deadlock on heavy load when restarting
+     and/or reaching MaxConnectionsPerChild.  PR 65769.  [Yann Ylavic]
+
+-------------------------------------------------------------------
 Thu Jan 27 13:57:47 UTC 2022 - pgajdos@suse.com
 
 - ssl-global.conf: set SSLCipherSuite to PROFILE=SYSTEM instead of
