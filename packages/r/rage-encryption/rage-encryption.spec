@@ -16,8 +16,7 @@
 #
 
 
-%define _buildshell /bin/bash
-%define vlic_dir  vendored
+%{?!rust_tier1_arches:%global rust_tier1_arches x86_64 aarch64}
 
 Name:           rage-encryption
 #               This will be set by osc services, that will run after this.
@@ -34,15 +33,12 @@ URL:            https://github.com/str4d/rage
 Source0:        rage-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-# Licenses of dependency packages.
-Source3:        vendored_licenses_packager.sh
 %if %{suse_version} > 1500
 BuildRequires:  cargo-packaging
 %else
 BuildRequires:  rust+cargo >= 1.51
 %endif
-# for build scripts
-BuildRequires:  bash
+BuildRequires:  vendored_licenses_packager
 # for feature mount
 BuildRequires:  fuse-devel
 Recommends:     %{name}-bash-completion
@@ -70,10 +66,7 @@ Bash command line completion support for %{name}
 %setup -q -n rage-%{version} -a 1 -D -T
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
-
-cd vendor
-# Find licenses of dependency packages and prepare for installation
-bash %{SOURCE3} finder %{vlic_dir}
+%vendored_licenses_packager_prep
 
 %build
 %define build_args --manifest-path rage/Cargo.toml --features "mount" --release %{?_smp_mflags}
@@ -97,10 +90,7 @@ for i in "" -keygen -mount; do
   install -D -p -m 644 target/manpages/rage$i.1.gz %{buildroot}/%{_mandir}/man1/rage$i.1%{?ext_man}
   install -D -p -m 644 target/completions/rage$i.bash %{buildroot}%{_datadir}/bash-completion/completions/rage$i
 done
-
-# Dependency Licenses
-install -d -m 0755 %{buildroot}%{_licensedir}/%{name}/%{vlic_dir}
-bash %{SOURCE3} installer vendor/%{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir} verbose
+%vendored_licenses_packager_install
 
 %files
 %{_bindir}/rage
@@ -109,7 +99,7 @@ bash %{SOURCE3} installer vendor/%{vlic_dir} %{buildroot}/%{_licensedir}/%{name}
 %doc README.md rage/CHANGELOG.md
 # accept duplicates here
 %license LICENSE-APACHE LICENSE-MIT
-%{_licensedir}/%{name}/%{vlic_dir}/
+%vendored_licenses_packager_files
 %{_mandir}/man1/rage*.1%{?ext_man}
 
 %files bash-completion

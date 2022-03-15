@@ -23,4 +23,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957468</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a4d2f6a3a4f07b7bbd93c7531c5a003c</srcmd5>
+    <version>0.7.1+0</version>
+    <time>1647374455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to resolve bsc#1196972 CVE-2022-24713 - Regex DOS
+
+- switched to vendored_licenses_packager as build dependency
+- define macro &quot;rust_tier1_arches&quot; if undefined</comment>
+    <requestid>961976</requestid>
+  </revision>
 </revisionlist>
