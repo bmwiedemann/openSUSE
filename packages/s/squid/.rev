@@ -1011,4 +1011,12 @@ from the squid 3.x changelog</comment>
     <comment></comment>
     <requestid>958214</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>a402aae273ba6d762628aaa7a8566141</srcmd5>
+    <version>5.4.1</version>
+    <time>1647367432</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>961868</requestid>
+  </revision>
 </revisionlist>

@@ -79,7 +79,7 @@ Tue May 11 21:54:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - Limit HeaderLookupTable_t::lookup() to BadHdr and specific IDs
     (bsc#1185919, CVE-2021-28662)
   - Handle more Range requests (bsc#1185916, CVE-2021-31806)
-  - Handle more partial responses (bsc#1185923)
+  - Handle more partial responses (bsc#1185923, bsc#1186654, CVE-2021-33620)
   - Stop processing a response if the Store entry is gone
   - ... and some portability fixes
   - ... and some documentation updates
