@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 15 08:48:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use python_expand for fdupes 
+
+-------------------------------------------------------------------
 Mon Dec  6 21:25:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.42.0:

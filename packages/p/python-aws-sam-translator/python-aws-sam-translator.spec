@@ -1,7 +1,7 @@
 #
 # spec file for package python-aws-sam-translator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,7 +83,7 @@ sed -i -e 's:~=:>=:g' requirements/base.txt
 
 %install
 %python_install
-%python_exec %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 mkdir -p %{buildroot}%{_bindir}
 install -D -m 755 bin/sam-translate.py %{buildroot}%{_bindir}/sam-translate

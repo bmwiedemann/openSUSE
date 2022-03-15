@@ -115,4 +115,12 @@
   * event source filtering</comment>
     <requestid>936130</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b6e522956747f30a0049c6e38dda55e7</srcmd5>
+    <version>1.42.0</version>
+    <time>1647367491</time>
+    <user>dimstar_suse</user>
+    <comment>- use python_expand for fdupes</comment>
+    <requestid>961819</requestid>
+  </revision>
 </revisionlist>
