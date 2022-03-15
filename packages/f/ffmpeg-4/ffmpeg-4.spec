@@ -40,7 +40,7 @@
 
 # nvcodec headers only present after leap15
 %bcond_with nvcodec
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1500
 %bcond_without nvcodec
 %endif
 %if 0%{?BUILD_ORIG}

@@ -467,4 +467,12 @@
   smb shares mounted).</comment>
     <requestid>955492</requestid>
   </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>9c070f06fe26a68d4bb6c3d65a575515</srcmd5>
+    <version>4.4.1</version>
+    <time>1647367434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961685</requestid>
+  </revision>
 </revisionlist>
