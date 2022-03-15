@@ -110,4 +110,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959471</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>fcf454aa3716530bde663e4e65163d81</srcmd5>
+    <version>5.8.21</version>
+    <time>1647367496</time>
+    <user>dimstar_suse</user>
+    <comment>- change license tag to GPL-3.0-or-later. (forwarded request 961880 from hillwood)</comment>
+    <requestid>961881</requestid>
+  </revision>
 </revisionlist>

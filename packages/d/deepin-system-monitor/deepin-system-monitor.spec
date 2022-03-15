@@ -26,7 +26,7 @@ Name:           deepin-system-monitor
 Version:        5.8.21
 Release:        0
 Summary:        A user-friendly system monitor
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-system-monitor
 Source0:        https://github.com/linuxdeepin/deepin-system-monitor/archive/%{version}/%{name}-%{version}.tar.gz
