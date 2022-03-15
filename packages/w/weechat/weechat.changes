@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 14 19:07:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4.1:
+  * core: set again TLS verification functions after options
+    weechat.network.gnutls_ca_system and
+    weechat.network.gnutls_ca_user are changed (boo#1197083)
+
+-------------------------------------------------------------------
 Fri Feb 11 09:10:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:
