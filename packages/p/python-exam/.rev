@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>826992</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>cac58bb22fae138f57d3b7d519bd5b57</srcmd5>
+    <version>0.10.6</version>
+    <time>1647367422</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-mock.patch:
+  * Stop using mock.
+- Drop mock BuildRequires/Requires.
+- No longer run testsuite twice.</comment>
+    <requestid>961561</requestid>
+  </revision>
 </revisionlist>

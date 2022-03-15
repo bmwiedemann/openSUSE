@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 14 05:55:32 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-mock.patch:
+  * Stop using mock.
+- Drop mock BuildRequires/Requires.
+- No longer run testsuite twice. 
+
+-------------------------------------------------------------------
 Fri Aug 14 13:06:42 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add LICENSE

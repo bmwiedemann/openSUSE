@@ -1,0 +1,70 @@
+Index: exam-0.10.6/exam/decorators.py
+===================================================================
+--- exam-0.10.6.orig/exam/decorators.py
++++ exam-0.10.6/exam/decorators.py
+@@ -1,6 +1,6 @@
+ from __future__ import absolute_import
+ 
+-from mock import patch
++from unittest.mock import patch
+ from functools import partial, wraps
+ import types
+ 
+Index: exam-0.10.6/exam/helpers.py
+===================================================================
+--- exam-0.10.6.orig/exam/helpers.py
++++ exam-0.10.6/exam/helpers.py
+@@ -4,7 +4,7 @@ import shutil
+ import os
+ import functools
+ 
+-from mock import MagicMock, patch, call
++from unittest.mock import MagicMock, patch, call
+ 
+ 
+ def rm_f(path):
+Index: exam-0.10.6/exam/mock.py
+===================================================================
+--- exam-0.10.6.orig/exam/mock.py
++++ exam-0.10.6/exam/mock.py
+@@ -1,7 +1,7 @@
+ from __future__ import absolute_import
+ 
+-from mock import Mock as BaseMock
+-from mock import call
++from unittest.mock import Mock as BaseMock
++from unittest.mock import call
+ 
+ 
+ class Mock(BaseMock):
+Index: exam-0.10.6/tests/test_cases.py
+===================================================================
+--- exam-0.10.6.orig/tests/test_cases.py
++++ exam-0.10.6/tests/test_cases.py
+@@ -1,4 +1,4 @@
+-from mock import sentinel
++from unittest.mock import sentinel
+ from tests import TestCase
+ 
+ from exam.decorators import before, after, around, patcher
+Index: exam-0.10.6/tests/test_helpers.py
+===================================================================
+--- exam-0.10.6.orig/tests/test_helpers.py
++++ exam-0.10.6/tests/test_helpers.py
+@@ -1,5 +1,5 @@
+ from tests import TestCase
+-from mock import patch, Mock, sentinel
++from unittest.mock import patch, Mock, sentinel
+ 
+ from exam.helpers import intercept, rm_f, track, mock_import, call, effect
+ from exam.decorators import fixture
+Index: exam-0.10.6/tests/test_objects.py
+===================================================================
+--- exam-0.10.6.orig/tests/test_objects.py
++++ exam-0.10.6/tests/test_objects.py
+@@ -1,4 +1,4 @@
+-from mock import sentinel
++from unittest.mock import sentinel
+ from tests import TestCase
+ 
+ from exam.objects import always, noop
