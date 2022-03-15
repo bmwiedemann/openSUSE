@@ -59,6 +59,7 @@
   boo#1196978: '20220313'
   bsc#1161276: '20220313'
   bsc#1194208: '20220216'
+  bsc#1196925: '20220313'
   gh#os-autoinst/os-autoinst-distri-opensuse#13666: '20211129'
   kde#449273: '20220223'
   poo#100991: '20211117'
@@ -160,7 +161,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220313</value>
+    <value>20220314</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -488,8 +489,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20220312'
-publishing: '20220312'
+published: '20220313'
+publishing: '20220313'
 testing: '20220313'
 </value>
   </attribute>
