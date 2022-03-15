@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openconnect
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-openconnect
-Version:        1.2.6
+Version:        1.2.8
 Release:        0
 Summary:        NetworkManager VPN support for OpenConnect
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -25,13 +25,17 @@ Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager
 Source0:        https://download.gnome.org/sources/NetworkManager-openconnect/1.2/%{name}-%{version}.tar.xz
 Source1:        system-user-nm-openconnect.conf
+
 BuildRequires:  intltool
+BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gcr-3) >= 3.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4
+BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(libnm) >= 1.1.0
+BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-unstable)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openconnect) >= 3.02
@@ -62,9 +66,9 @@ OpenConnect, an implementation of the Cisco AnyConnect VPN system.
 
 %build
 %configure \
-        --disable-static \
-        --without-libnm-glib \
-        %{nil}
+	--disable-static \
+	--with-gtk4=yes \
+	%{nil}
 %make_build
 %sysusers_generate_pre %{SOURCE1} NetworkManager-openconnect system-user-nm-openconnect.conf
 
@@ -90,8 +94,8 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %files gnome
 %{_datadir}/appdata/network-manager-openconnect.metainfo.xml
 %{_libexecdir}/nm-openconnect-auth-dialog
-%{_datadir}/gnome-vpn-properties/
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openconnect-editor.so
+%{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-openconnect-editor.so
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 12 17:09:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.8:
+  + Gtk4 version of the editor plugin is now available (for use
+    with Control Center of GNOME 42 or later).
+  + Fix SNI and authgroup problems.
+  + Handle IPv6 nameservers.
+  + Allow IP prefixes of 0 for routing rules.
+  + Updated translations.
+- Add pkgconfig(gtk4) and pkgconfig(libnma-gtk4) BuildRequires and
+  pass --with-gtk4=yes to configure, build the gtk4 version.
+- Stop passing --without-libnm-glib to configure, no longer
+  needed, nor recognized.
+- Add optional libxml2-tools BuildRequires, build runs
+  xml-stripblanks preprocessing if available.
+
+-------------------------------------------------------------------
 Tue Sep 14 11:00:00 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
