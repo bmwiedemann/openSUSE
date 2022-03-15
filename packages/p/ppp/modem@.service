@@ -3,7 +3,6 @@ Description=Modem /dev/ttyACM%i
 BindsTo=dev-ttyACM%i.device
 After=dev-ttyACM%i.device
 Before=network.target
-Wants=network.target
 
 [Service]
 Group=dialout
