@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 16 13:22:51 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 10.3.0
+- Fix error: we support EITHER _multibuild OR multiple spec files
+
+-------------------------------------------------------------------
 Sat Mar 27 00:31:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc
@@ -10,22 +16,20 @@ Thu Mar 11 14:01:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
   printf specifiers
 
 -------------------------------------------------------------------
-Wed Sep  9 21:02:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+Tue Oct 20 06:40:27 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
-- Revert the ExclusiveArch/BuildArch. Having
-  mingw64-libssp0.{aarch64,ppc64,etc.}.rpm with AMD64 PE binaries
-  is exactly the point of mingw64-* packages.
+- Add _constraints to fix builds on Tumbleweed
 
 -------------------------------------------------------------------
-Fri Jun 19 12:25:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+Mon Jun 22 09:33:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Cannot be noarch, otherwise it makes mingw64-libssp0 available
-  on aarch64, which is wrong.
+- Cannot be noarch, otherwise it makes mingw64-libssp0 (and others)
+  available on other architectures, which is wrong.
 
 -------------------------------------------------------------------
-Fri Feb  7 08:59:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+Mon Jan  6 12:19:01 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
-- Build only on x86* archs
+- Update multibuild package names: mingw64* -> mingw64*
 
 -------------------------------------------------------------------
 Fri Dec 27 09:19:40 UTC 2019 - Ludwig Nussel <lnussel@suse.de>

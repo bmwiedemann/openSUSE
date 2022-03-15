@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-gcc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define include_ada 0
-%{_mingw64_package_header_debug}
+%_mingw64_package_header_debug
 Name:           mingw64-gcc
-Version:        9.2.0
+Version:        10.3.0
 Release:        0
 Summary:        MinGW Windows compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -56,14 +56,13 @@ Requires:       mingw64-cpp >= %{version}
 Requires:       mingw64-headers
 Requires:       mingw64-runtime
 Requires:       mingw64-winpthreads-devel
-BuildArch:      noarch
 %if %{include_ada}
 BuildRequires:  gcc-ada
 BuildRequires:  mingw64-cross-gcc-ada >= %{version}
 %endif
 # bugzilla.opensuse.org/1184052
 #!BuildIgnore:  mingw64(libstdc++-6.dll)
-#!BuildIgnore:  mingw64(libgcc_s_seh-1.dll)
+#!BuildIgnore:  mingw64(libgcc_s_sjlj-1.dll)
 
 %description
 MinGW Windows compiler (GCC) for C
@@ -82,13 +81,13 @@ is the native exception handling mechanism for Windows.
 [SEH support is currently only implemented for the x86_64 target,
 which is why the 32bit mingw package set does not contain it.]
 
-%package -n mingw32-libgcc_s_sjlj1
+%package -n mingw64-libgcc_s_sjlj1
 Summary:        MinGW Windows compiler for C shared libraries
 Group:          System/Libraries
-Obsoletes:      mingw32-libgcc < %{version}-%{release}
-Provides:       mingw32-libgcc = %{version}-%{release}
+Obsoletes:      mingw64-libgcc < %{version}-%{release}
+Provides:       mingw64-libgcc = %{version}-%{release}
 
-%description -n mingw32-libgcc_s_sjlj1
+%description -n mingw64-libgcc_s_sjlj1
 MinGW Windows compiler for C shared libraries
 
 This libgcc build uses SJLJ, a method for exception handling based on
@@ -285,6 +284,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %files
 %{_mingw64_bindir}/gcc*.exe
 %{_mingw64_bindir}/gcov*.exe
+%{_mingw64_bindir}/lto-dump*.exe
 %exclude %{_mingw64_bindir}/%{_mingw64_target}-gcc*.exe
 %dir %{_mingw64_libdir}/gcc/%{_mingw64_target}
 %dir %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}
@@ -321,6 +321,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw64_mandir}/man1/gcov.1*
 %{_mingw64_mandir}/man1/gcov-dump.1*
 %{_mingw64_mandir}/man1/gcov-tool.1*
+%{_mingw64_mandir}/man1/lto-dump.1*
 %{_mingw64_mandir}/man7/fsf-funding.7*
 %{_mingw64_mandir}/man7/gfdl.7*
 %{_mingw64_mandir}/man7/gpl.7*
@@ -336,8 +337,8 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw64_bindir}/libgcc_s_seh-1.dll
 %else
 
-%files -n mingw32-libgcc_s_sjlj1
-%{_mingw32_bindir}/libgcc_s_sjlj-1.dll
+%files -n mingw64-libgcc_s_sjlj1
+%{_mingw64_bindir}/libgcc_s_sjlj-1.dll
 %endif
 
 %files -n mingw64-libssp0
@@ -350,7 +351,6 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw64_bindir}/libatomic-1.dll
 
 %files -n mingw64-cpp
-#/lib/%{_mingw64_target}-cpp
 %{_mingw64_bindir}/cpp.exe
 %{_mingw64_mandir}/man1/cpp.1*
 %dir %{_mingw64_libdir}/gcc/%{_mingw64_target}
@@ -367,6 +367,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/include/c++/
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++.a
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++.dll.a
+%{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++fs.a
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libsupc++.a
 %{_mingw64_libexecdir}/gcc/%{_mingw64_target}/%{version}/cc1plus.exe
 

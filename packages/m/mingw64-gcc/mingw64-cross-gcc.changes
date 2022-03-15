@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 16 13:22:51 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 10.3.0
+- Fix error: we support EITHER _multibuild OR multiple spec files
+
+-------------------------------------------------------------------
 Thu Oct  7 10:00:58 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
 
 - UsrMerge: move cpp to %_prefix (boo#1191078)
@@ -13,11 +19,6 @@ Thu Mar 11 14:01:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 Mon Aug 31 17:09:50 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix invalid location to brp-compress on tumbleweed (boo#1175858)
-
--------------------------------------------------------------------
-Fri Feb  7 08:59:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
-
-- Build only on x86* archs
 
 -------------------------------------------------------------------
 Fri Dec 27 09:19:40 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
