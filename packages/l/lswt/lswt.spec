@@ -18,7 +18,7 @@
 Name:           lswt
 Version:        1.0.4
 Release:        0
-Summary:        List Wayland toplevels
+Summary:        Wayland toplevel lister
 License:        GPL-3.0-only
 Group:          System/X11/Utilities
 URL:            https://git.sr.ht/~leon_plickat/lswt
@@ -29,7 +29,7 @@ BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  pkgconfig(wayland-client)
 
 %description
-List Wayland toplevels
+A program to list Wayland toplevels.
 
 Requires the Wayland server to implement the foreign-toplevel-management-unstable-v1
 protocol extension.
