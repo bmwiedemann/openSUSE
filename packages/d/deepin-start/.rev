@@ -42,4 +42,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959470</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0466e60e36a61821a11e48c0fb8c8181</srcmd5>
+    <version>5.9.9.1</version>
+    <time>1647367497</time>
+    <user>dimstar_suse</user>
+    <comment>- Change license tag to GPL-3.0-or-later</comment>
+    <requestid>961884</requestid>
+  </revision>
 </revisionlist>

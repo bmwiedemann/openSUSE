@@ -23,7 +23,7 @@ Name:           deepin-start
 Version:        5.9.9.1
 Release:        0
 Summary:        Starter of deepin desktop
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/linuxdeepin/startdde
 Source0:        https://github.com/linuxdeepin/startdde/archive/%{version}/%{_name}-%{version}.tar.gz
