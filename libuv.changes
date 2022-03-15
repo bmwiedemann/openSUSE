@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 13 19:53:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.44.1:
+  * fix a hang after NOTE_EXIT
+- inclues changes from 1.44.0:
+  * Support for poxix_spawn API
+  * updates to documentation, tests, benchmarks and build scripts
+
+-------------------------------------------------------------------
 Sat Feb 12 11:48:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.43.0:
