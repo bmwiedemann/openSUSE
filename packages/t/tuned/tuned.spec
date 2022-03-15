@@ -1,7 +1,7 @@
 #
 # spec file for package tuned
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         profile_dir %{_prefix}/lib/%{name}
 
 Name:           tuned
-Version:        2.16.0
+Version:        2.18.0.8+git.6f907c9
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
@@ -59,6 +59,29 @@ Based on that information components will then be put into lower or higher
 power saving modes to adapt to the current usage. Currently only ethernet
 network and ATA harddisk devices are implemented.
 
+%package utils
+Summary:        Disk and net statistic monitoring systemtap scripts
+Group:          System/Base
+Requires:       %{name} = %{version}
+Requires:       powertop
+
+%description utils
+This package contains utilities that can help you to fine tune your
+system and manage tuned profiles.
+
+%package utils-systemtap
+Summary:        Disk and net statistic monitoring systemtap scripts
+Group:          System/Base
+Requires:       %{name} = %{version}
+Requires:       systemtap
+
+%description utils-systemtap
+This package contains several systemtap scripts to allow detailed
+manual monitoring of the system. Instead of the typical IO/sec it collects
+minimal, maximal and average time between operations to be able to
+identify applications that behave power inefficient (many small operations
+instead of fewer large ones).
+
 %package gtk
 Summary:        Disk and net statistic monitoring systemtap scripts - GTK GUI
 Group:          System/Base
@@ -67,6 +90,56 @@ Requires:       powertop
 
 %description gtk
 GTK GUI that can control tuned and provide simple profile editor.
+
+%package profiles-atomic
+Summary:        Additional tuned profiles targeted to Atomic
+Group:          System/Base
+Requires:       %{name} = %{version}
+
+%description profiles-atomic
+Additional profile(s) for the tuned daemon, targeted to Atomic host and guest.
+
+%package profiles-nfv
+Summary:        Additional tuned profiles targeted to Network Function Virtualization (NFV)
+Group:          System/Base
+Requires:       %{name} = %{version}
+
+%description profiles-nfv
+Additional profile(s) for the tuned daemon, targeted to Network Function Virtualization (NFV).
+
+%package profiles-openshift
+Summary:        Additional tuned profile(s) optimized for the OpenShift platform
+Requires:       %{name} = %{version}
+
+%description profiles-openshift
+Additional 3 profiles for the Openshift platform:
+A parent profile containing tuning shared by OpenShift control plane and worker nodes.
+One profile optimized for OpenShift control plane.
+And a third profile optimized for general workloads on OpenShift worker nodes.
+
+%package profiles-oracle
+Summary:        Additional tuned profiles targeted to Oracle loads
+Group:          System/Base
+Requires:       %{name} = %{version}
+
+%description profiles-oracle
+Additional profile(s) for the tuned daemon,  targeted to Oracle loads.
+
+%package profiles-postgresql
+Summary:        Additional tuned profile(s) targeted to PostgreSQL server loads
+Requires:       %{name} = %{version}
+
+%description profiles-postgresql
+Additional tuned profile(s) targeted to PostgreSQL server loads.
+
+%package profiles-realtime
+Summary:        Additional tuned profiles targeted to realtime
+Group:          System/Base
+Requires:       %{name} = %{version}
+
+%description profiles-realtime
+Additional profile(s) for the tuned daemon, targeted to realtime.
+
 
 # Do not ship SAP profiles for SLE and Leap, there are other packages
 # providing these profiles
@@ -88,54 +161,6 @@ Requires:       %{name} = %{version}
 Additional profile(s) for the tuned daemon, targeted to SAP HANA loads.
 %endif
 
-%package profiles-atomic
-Summary:        Additional tuned profiles targeted to Atomic
-Group:          System/Base
-Requires:       %{name} = %{version}
-
-%description profiles-atomic
-Additional profile(s) for the tuned daemon, targeted to Atomic host and guest.
-
-%package profiles-realtime
-Summary:        Additional tuned profiles targeted to realtime
-Group:          System/Base
-Requires:       %{name} = %{version}
-
-%description profiles-realtime
-Additional profile(s) for the tuned daemon, targeted to realtime.
-
-%package profiles-oracle
-Summary:        Additional tuned profiles targeted to Oracle loads
-Group:          System/Base
-Requires:       %{name} = %{version}
-
-%description profiles-oracle
-Additional profile(s) for the tuned daemon,  targeted to Oracle loads.
-
-%package profiles-nfv
-Summary:        Additional tuned profiles targeted to Network Function Virtualization (NFV)
-Group:          System/Base
-Requires:       %{name} = %{version}
-
-%description profiles-nfv
-Additional profile(s) for the tuned daemon, targeted to Network Function Virtualization (NFV).
-
-%package utils
-Summary:        Disk and net statistic monitoring systemtap scripts
-Group:          System/Base
-Requires:       %{name} = %{version}
-Requires:       powertop
-
-%description utils
-This package contains utilities that can help you to fine tune your
-system and manage tuned profiles.
-
-%package utils-systemtap
-Summary:        Disk and net statistic monitoring systemtap scripts
-Group:          System/Base
-Requires:       %{name} = %{version}
-Requires:       systemtap
-
 %package profiles-spectrumscale
 Summary:        Additional tuned profile(s) optimized for IBM Spectrum Scale
 Requires:       %{name} = %{version}
@@ -143,23 +168,8 @@ Requires:       %{name} = %{version}
 %description profiles-spectrumscale
 Additional tuned profile(s) optimized for IBM Spectrum Scale.
 
-%description utils-systemtap
-This package contains several systemtap scripts to allow detailed
-manual monitoring of the system. Instead of the typical IO/sec it collects
-minimal, maximal and average time between operations to be able to
-identify applications that behave power inefficient (many small operations
-instead of fewer large ones).
-
-%package profiles-postgresql
-Summary:        Additional tuned profile(s) targeted to PostgreSQL server loads
-Requires:       %{name} = %{version}
-
-%description profiles-postgresql
-Additional tuned profile(s) targeted to PostgreSQL server loads.
-
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 # The tuned daemon is written in pure Python. Nothing requires to be built.
@@ -208,28 +218,38 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %doc AUTHORS README
 %{_datadir}/bash-completion/completions/tuned-adm
 %{_datadir}/polkit-1/actions/com.redhat.tuned.policy
-%exclude %{python3_sitelib}/tuned/gtk
 %{python3_sitelib}/tuned
 %{_sbindir}/tuned
 %{_sbindir}/tuned-adm
 %{_sbindir}/rctuned
-%exclude %{_sysconfdir}/tuned/realtime-variables.conf
-%exclude %{_sysconfdir}/tuned/realtime-virtual-guest-variables.conf
-%exclude %{_sysconfdir}/tuned/realtime-virtual-host-variables.conf
-%exclude %{profile_dir}/realtime-virtual-guest
-%exclude %{profile_dir}/realtime-virtual-host
-%exclude %{profile_dir}/sap-netweaver
-%exclude %{profile_dir}/sap-hana
-%exclude %{_mandir}/man7/tuned-profiles-sap*.7.gz
-%exclude %{profile_dir}/atomic-host
-%exclude %{profile_dir}/atomic-guest
-%exclude %{profile_dir}/oracle
-%exclude %{profile_dir}/realtime
-%exclude %{profile_dir}/defirqaffinity*
-%exclude %{_prefix}/lib/tuned/postgresql
-%exclude %{_prefix}/lib/tuned/spectrumscale-ece
+%dir %{profile_dir}
+%dir %{profile_dir}/recommend.d
+%exclude %{python3_sitelib}/tuned/gtk
+
+# General files
 %{profile_dir}/pmqos-static.py
-%{profile_dir}
+%{profile_dir}/functions
+%{profile_dir}/recommend.d/50-tuned.conf
+%{profile_dir}/defirqaffinity.py
+
+# Profiles included in main package - alphabetically sorted
+%{profile_dir}/accelerator-performance
+%{profile_dir}/balanced
+%{profile_dir}/balanced
+%{profile_dir}/cpu-partitioning
+%{profile_dir}/desktop
+%{profile_dir}/hpc-compute
+%{profile_dir}/intel-sst
+%{profile_dir}/latency-performance
+%{profile_dir}/mssql
+%{profile_dir}/network-latency
+%{profile_dir}/network-throughput
+%{profile_dir}/optimize-serial-console
+%{profile_dir}/powersave
+%{profile_dir}/throughput-performance
+%{profile_dir}/virtual-guest
+%{profile_dir}/virtual-host
+
 # active_profile might be empty when built via build service, but typically
 # not on a real install -> better do not mark it %%ghost
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tuned/active_profile
@@ -239,8 +259,6 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %config(noreplace) %{_sysconfdir}/tuned/profile_mode
 %config(noreplace) %{_sysconfdir}/tuned/post_loaded_profile
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tuned/bootcmdline
-%dir %{_sysconfdir}/dbus-1
-%dir %{_sysconfdir}/dbus-1/system.d
 %config %{_sysconfdir}/dbus-1/system.d/com.redhat.tuned.conf
 %{_sysconfdir}/grub.d
 %{_tmpfilesdir}/tuned.conf
@@ -306,6 +324,13 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %defattr(-,root,root,-)
 %{_prefix}/lib/tuned/spectrumscale-ece
 %{_mandir}/man7/tuned-profiles-spectrumscale-ece.7*
+
+%files profiles-openshift
+%defattr(-,root,root,-)
+%{profile_dir}/openshift-control-plane
+%{profile_dir}/openshift-node
+%{profile_dir}/openshift
+%{_mandir}/man7/tuned-profiles-openshift.7%{?ext_man}
 
 %files utils
 %license COPYING

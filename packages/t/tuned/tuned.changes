@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Mar 15 12:09:24 UTC 2022 - trenn@suse.de
+
+- Add new openshift platform profiles
+- Instead of adding all profiles to main package and exclude subpackage
+  profiles, explicitly mention all added profiles in %files section
+- Sort (alphabetically) profiles and packages
+- Update to version 2.18.0.8+git.6f907c9:
+  * beakerlib: fix systemd rate limiting for variables-support-in-profiles
+  * scheduler: fix construction of the process name regex
+  * Added more conflicting implementations to the systemd unit file.
+  * raise the netfilter hash table size in openshift/atomic-{host,guest} to match the max netfilter conntrack entries, reducing such hash table load.
+  * Fixing save call and comments in tuned gui
+  * Adding option "txqueuelen" to net_plugin
+  * bootloader: on s390(x) remove TuneD variables from the BLS
+  * daemon: don't do full rollback on systemd failure
+  * profiles: use cstate.id_no_zero instead of the cstate.id
+  * Expanding cpu plugin force_latency option syntax
+  * Adding support for nvme subsystem block devices and adding tests so it won't throw errors on hdparms commands.
+  * Fix improper parsing of include directive
+  * application: log TuneD and kernel version
+  * readme: mention conflicting cpupower and power-profiles-daemon
+  * dbus: fix traceback on python-2.7
+  * cpu_partitioning: fixed no_balance_cores on newer kernels
+  * spec: do not require subscription-manager on CentOS
+  * Add conditional profile loading
+  * openshift profile: workaround high CPU utilization of [scheduler] plug-in.
+  * scheduler: new option cgroup_ps_blacklist
+  * breaking up various modules and implementing neccessary new syntax used downstream to keep docs repos synced
+
+-------------------------------------------------------------------
 Fri Sep 10 19:53:30 UTC 2021 - trenn@suse.de
 
 - Update to version 2.16.0:
