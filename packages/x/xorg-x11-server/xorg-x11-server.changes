@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 13 09:51:32 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_sync-pci-ids-with-Mesa-22.0.0.patch
+  * sync pci ids with Mesa 22.0.0
+
+-------------------------------------------------------------------
 Tue Feb 22 18:24:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - U_Fix-build-with-gcc-12.patch
