@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylast
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ Features:
 
 %install
 %python_install
-%python_exec %fdupes %{buildroot}/%{python_sitelib}
+%python_expand %fdupes %{buildroot}/%{python_sitelib}
 
 %check
 # every test file has:
