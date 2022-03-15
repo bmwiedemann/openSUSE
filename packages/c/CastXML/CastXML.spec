@@ -1,7 +1,7 @@
 #
 # spec file for package CastXML
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           CastXML
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        C-family Abstract Syntax Tree XML Output
 License:        Apache-2.0
@@ -27,6 +27,8 @@ BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  python3-Sphinx
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 CastXML is a C-family abstract syntax tree XML output tool.
@@ -44,6 +46,7 @@ CastXML is a C-family abstract syntax tree XML output tool.
 %cmake -DCastXML_INSTALL_MAN_DIR:PATH=%{_mandir} \
        -DCastXML_INSTALL_DOC_DIR:PATH=%{_docdir}/%{name} \
        -DCLANG_LINK_CLANG_DYLIB:BOOL=ON \
+       -DBUILD_TESTING:BOOL=ON \
        -DSPHINX_HTML:BOOL=ON \
        -DSPHINX_MAN:BOOL=ON
 
@@ -54,6 +57,9 @@ CastXML is a C-family abstract syntax tree XML output tool.
 
 # REMOVE FILES TO BE INSTALLED USING %%doc OR %%license
 rm %{buildroot}%{_docdir}/%{name}/LICENSE
+
+%check
+%ctest
 
 %files devel
 %license LICENSE
