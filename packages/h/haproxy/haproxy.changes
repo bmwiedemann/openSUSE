@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar 14 17:11:09 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.5.5+git0.384c5c59a:
+  * [RELEASE] Released version 2.5.5
+  * REGTESTS: fix the race conditions in be2hex.vtc
+  * BUG/MEDIUM: httpclient: must manipulate head, not first
+  * BUG/MINOR: httpclient: remove the UNUSED block when parsing headers
+  * BUG/MINOR: httpclient: consume partly the blocks when necessary
+  * CLEANUP: htx: remove unused co_htx_remove_blk()
+  * BUG/MEDIUM: httpclient: don't consume data before it was analyzed
+  * BUG/MINOR: session: fix theoretical risk of memleak in session_accept_fd()
+  * BUG/MAJOR: mux-pt: Always destroy the backend connection on detach
+  * DEBUG: stream: Fix stream trace message to print response buffer state
+  * DEBUG: stream: Add the missing descriptions for stream trace events
+  * BUG/MEDIUM: mcli: Properly handle errors and timeouts during reponse processing
+  * DEBUG: cache: Update underlying buffer when loading HTX message in cache applet
+  * BUG/MEDIUM: stream: Use the front analyzers for new listener-less streams
+  * BUG/MINOR: promex: Set conn-stream/channel EOI flags at the end of request
+  * BUG/MINOR: cache: Set conn-stream/channel EOI flags at the end of request
+  * BUG/MINOR: stats: Set conn-stream/channel EOI flags at the end of request
+  * BUG/MINOR: hlua: Set conn-stream/channel EOI flags at the end of request
+  * BUG/MINOR: httpclient: Set conn-stream/channel EOI flags at the end of request
+  * BUG/MINOR: cli: shows correct mode in "show sess"
+  * BUG/MINOR: add missing modes in proxy_mode_str()
+  * BUILD: fix recent build breakage of freebsd caused by kFreeBSD build fix
+  * BUILD: pools: fix backport of no-memory-trimming on non-linux OS
+  * MINOR: stats: Add dark mode support for socket rows
+  * MINOR: pools: add a new global option "no-memory-trimming"
+  * BUILD: fix kFreeBSD build.
+  * BUG/MEDIUM: pools: fix ha_free() on area in the process of being freed
+  * BUG/MINOR: pool: always align pool_heads to 64 bytes
+  * BUG/MEDIUM: httpclient/lua: infinite appctx loop with POST
+  * REGTESTS: fix the race conditions in secure_memcmp.vtc
+  * REGTESTS: fix the race conditions in normalize_uri.vtc
+  * BUG/MEDIUM: htx: Fix a possible null derefs in htx_xfer_blks()
+  * BUG/MEDIUM: mux-fcgi: Don't rely on SI src/dst addresses for FCGI health-checks
+  * BUILD: tree-wide: mark a few numeric constants as explicitly long long
+  * BUILD: atomic: make the old HA_ATOMIC_LOAD() support const pointers
+  * CI: Consistently use actions/checkout@v2
+  * CI: github actions: use cache for SSL libs
+  * CI: refactor OpenTracing build script
+  * CI: github actions: use cache for OpenTracing
+  * CI: github actions: add the output of $CC -dM -E-
+
+-------------------------------------------------------------------
 Fri Feb 25 16:21:33 UTC 2022 - mrueckert@suse.de
 
 - Update to version 2.5.4+git0.e55ab4208:
