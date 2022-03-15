@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 15 10:46:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.25.1
+  * In the past, Alpine did not recognize images embedded in an
+    HTML file, so now it does and a link to open them is given.
+  * Support for code_verifier and code_challenge when generating
+    a refresh token and access token in Gmail and Outlook using
+    the S256 method and plain method.
+  * Alpine is modified to not to attempt to continue a draft
+    message if the draft folder is empty. (Some servers do not
+    allow the Drafts folder to be removed, even when it is
+    empty.)
+  * Improvements to the screen that allows a user to select the
+    client-id when a user attempts to login to a server and more
+    than one client-id is available for that server.
+
+-------------------------------------------------------------------
+Wed Nov 24 10:11:28 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete chappa-WrtAcc.patch. Under Linux, one can use the Compose
+  key feature. (And for Windows, the putty client can provide an
+  equivalent Compose key feature.)
+
+-------------------------------------------------------------------
 Sun Sep 19 12:26:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.25

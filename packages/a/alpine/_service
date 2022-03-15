@@ -12,8 +12,8 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://repo.or.cz/alpine.git</param>
-		<param name="revision">v2.23.2</param>
-		<param name="versionformat">2.23.2</param>
+		<param name="revision">v2.25.1</param>
+		<param name="versionformat">2.25.1</param>
 		<param name="exclude">*.dll</param>
 		<param name="exclude">*.exe</param>
 		<param name="exclude">*.lib</param>

@@ -446,4 +446,12 @@
     <comment>- Update to release 2.25</comment>
     <requestid>920447</requestid>
   </revision>
+  <revision rev="55" vrev="25">
+    <srcmd5>509a4b9c480d40e9357af297b9f0ece2</srcmd5>
+    <version>unknown</version>
+    <time>1647367495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.25.1</comment>
+    <requestid>961873</requestid>
+  </revision>
 </revisionlist>

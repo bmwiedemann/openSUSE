@@ -1,7 +1,7 @@
 #
 # spec file for package alpine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           alpine
 # For debugging only:
 %define		build_vanilla		0
-Version:        2.25
+Version:        2.25.1
 Release:        0
 Summary:        Mail User Agent
 License:        Apache-2.0
@@ -27,8 +27,9 @@ Group:          Productivity/Networking/Email/Clients
 URL:            http://alpine.x10host.com/alpine/
 #Git-Clone:     https://repo.or.cz/alpine.git
 
-Source:         http://alpine.x10host.com/alpine/release/src/alpine-%version.tar.xz
-#Source2:        http://alpine.x10host.com/alpine/release/src/sig/alpine-%version.tar.xz.sig
+Source:         %name-%version.tar.xz
+#Source:         http://alpine.x10host.com/alpine/release/src/alpine-%%version.tar.xz
+#Source2:        http://alpine.x10host.com/alpine/release/src/sig/alpine-%%version.tar.xz.sig
 Source3:        %name.png
 Source4:        %name.desktop
 Source9:        UPDATING.txt
@@ -53,8 +54,6 @@ Source603:      chappa-insertpat.txt
 Patch603:       chappa-insertpat.patch
 Source604:      chappa-maildir.txt
 Patch604:       chappa-maildir.patch
-Source605:      chappa-WrtAcc.txt
-Patch605:       chappa-WrtAcc.patch
 Source614:      chappa-fillpara.txt
 Patch614:       chappa-fillpara.patch
 Source615:      chappa-fromheader.txt
@@ -130,7 +129,6 @@ fi
 %patch601 -p1
 %patch603 -p1
 %patch604 -p1
-%patch605 -p1
 %patch614 -p1
 %patch615 -p1
 %patch616 -p1
