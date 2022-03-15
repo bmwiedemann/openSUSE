@@ -11784,8 +11784,7 @@ unsorted:
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
-  - libkpmcore11: [x86_64] 
-  - libkpmcore7: [i586] 
+  - libkpmcore11 
   - libkrun: [x86_64] 
   - libkrunfw: [x86_64] 
   - libksane-devel 
