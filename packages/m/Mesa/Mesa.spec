@@ -40,7 +40,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 21.3.7
+%define _version 22.0.0
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -113,7 +113,7 @@
 %endif
 
 Name:           Mesa
-Version:        21.3.7
+Version:        22.0.0
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -135,6 +135,7 @@ Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch200:       u_fix-build-on-ppc64le.patch
 Patch300:       n_buildfix-21.3.0.patch
 Patch400:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
+Patch500:       U_meson-restore-private-requires-to-libdrm-in-dri.pc-f.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -219,10 +220,14 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %if 0%{?suse_version} >= 1550
 BuildRequires:  llvm-devel
 %else
+%if 0%{?sle_version} >= 150400
+BuildRequires:  llvm13-devel
+%else
 %if 0%{?sle_version} >= 150300
 BuildRequires:  llvm11-devel
 %else
 BuildRequires:  llvm9-devel
+%endif
 %endif
 %endif
 %endif
@@ -231,10 +236,14 @@ BuildRequires:  llvm9-devel
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
 %else
+%if 0%{?sle_version} >= 150400
+BuildRequires:  clang13-devel
+%else
 %if 0%{?sle_version} >= 150300
 BuildRequires:  clang11-devel
 %else
 BuildRequires:  clang9-devel
+%endif
 %endif
 %endif
 BuildRequires:  libclc
@@ -749,6 +758,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %ifarch %{ix86}
 %patch400 -p1
 %endif
+%patch500 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
@@ -823,15 +833,15 @@ egl_platforms=x11,wayland
             -Dvulkan-drivers= \
 %endif
   %ifarch %{ix86} x86_64
-            -Ddri-drivers=i915,i965,nouveau,r100,r200 \
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus \
+            -Ddri-drivers= \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus,i915 \
   %else
   %ifarch %{arm} aarch64
-            -Ddri-drivers=nouveau \
+            -Ddri-drivers= \
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,kmsro,v3d \
   %else
   %ifarch ppc64 ppc64le riscv64
-            -Ddri-drivers=nouveau \
+            -Ddri-drivers= \
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast \
   %else
             -Ddri-drivers= \
@@ -1093,7 +1103,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/dri/*_dri.so
 %ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
 %exclude %{_libdir}/dri/nouveau_dri.so
-%exclude %{_libdir}/dri/nouveau_vieux_dri.so
 %endif
 %ifarch %{arm} aarch64
 %exclude %{_libdir}/dri/vc4_dri.so
@@ -1109,7 +1118,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
 %files -n Mesa-dri-nouveau
 %{_libdir}/dri/nouveau_dri.so
-%{_libdir}/dri/nouveau_vieux_dri.so
 %endif
 
 %ifarch aarch64 %{arm}

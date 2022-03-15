@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 14 10:43:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_meson-restore-private-requires-to-libdrm-in-dri.pc-f.patch 
+  * Due to a typo the private requires to libdrm were lost in dri.pc.
+    Fixed another typo (only comment).
+
+-------------------------------------------------------------------
+Sat Mar 12 20:04:00 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- enabled "i915" Gallium-based Intel Gen3 driver
+
+-------------------------------------------------------------------
+Fri Mar 11 13:25:28 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed llvm/clang buildrequires for sle15-sp4/Leap 15.4 
+
+-------------------------------------------------------------------
+Fri Mar 11 09:08:27 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer try to build classic non-Gallium OpenGL drivers 
+  i915, i965, nouveau, r100 and r200, which have been dropped with
+  Mesa 22.0.0; see also some documentation on Phoronix
+  https://www.phoronix.com/scan.php?page=news_item&px=Mesa-Classic-Retired
+
+-------------------------------------------------------------------
+Thu Mar 10 18:39:34 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 22.0.0
+  * lavapipe,radv,anv KHR_dynamic_rendering
+  * radv EXT_image_view_min_lod
+  * VK_KHR_synchronization2 on RADV.
+  * OpenSWR has been moved to the Amber branch
+  * radeonsi, zink ARB_sparse_texture
+  * d3d12 GLES3.1 (shader storage buffers, images, compute, indirect draw, draw params, 
+    ARB_framebuffer_no_attachments, ARB_sample_shading, and GLSL400)
+  * radeonsi, zink ARB_sparse_texture2
+  * zink EXT_memory_object, EXT_memory_object_fd, EXT_semaphore, EXT_semaphore_fd
+  * anv VK_VALVE_mutable_descriptor_type
+  * Vulkan 1.3 on RADV,Anv.
+  * radeonsi, zink ARB_sparse_texture_clamp
+
+-------------------------------------------------------------------
 Thu Mar  3 09:14:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - baselibs.conf: readded mistakenly removed packages
