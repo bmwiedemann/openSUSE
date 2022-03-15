@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="localonly">
-    <param name="url">https://github.com/openSUSE/openSUSE-xfce-icon-theme.git</param>
+    <param name="url">https://code.opensuse.org/xfce/openSUSE-xfce-icon-theme.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">maurizio.galli@gmail.com</param>
     <param name="versionrewrite-pattern">v(.*)</param>

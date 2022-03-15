@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-xfce-icon-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define theme_name openSUSE-Xfce
 Name:           openSUSE-xfce-icon-theme
-Version:        4.16.1+git5.e82fd05
+Version:        4.16.1+git.5.e82fd05
 Release:        0
 Summary:        openSUSE Xfce Default Icon Theme
 License:        GPL-2.0-only
-URL:            https://github.com/openSUSE/openSUSE-xfce-icon-theme
+URL:            https://code.opensuse.org/xfce/openSUSE-xfce-icon-theme
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  adwaita-icon-theme
 Requires:       adwaita-icon-theme
@@ -42,16 +42,10 @@ mkdir -p  %{buildroot}%{_datadir}/icons/%{theme_name}
 cp -a ./ %{buildroot}%{_datadir}/icons/%{theme_name}
 rm %{buildroot}%{_datadir}/icons/%{theme_name}/{COPYING,README.md}
 
-%icon_theme_cache_create_ghost openSUSE-Xfce
-
-%post -n openSUSE-xfce-icon-theme
-%icon_theme_cache_post openSUSE-Xfce
-
 %files
 %license COPYING
 %doc README.md
 %dir %{_datadir}/icons/%{theme_name}
 %{_datadir}/icons/%{theme_name}/*
-%ghost %{_datadir}/icons/%{theme_name}/icon-theme.cache
 
 %changelog

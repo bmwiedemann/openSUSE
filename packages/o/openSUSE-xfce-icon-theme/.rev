@@ -34,4 +34,12 @@
 - Version 4.16.0 Initial package (forwarded request 889515 from mauriziogalli)</comment>
     <requestid>889518</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a11505d2b92787a4b59ec743235a4c4a</srcmd5>
+    <version>4.16.1+git.5.e82fd05</version>
+    <time>1647367483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961774</requestid>
+  </revision>
 </revisionlist>
