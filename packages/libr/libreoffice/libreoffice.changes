@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 14 10:38:05 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.3.2.1
+
+-------------------------------------------------------------------
+Wed Mar  9 16:33:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Refresh patches:
+  * 0001-Revert-java-9-changes.patch
+  * fix_gtk_popover_on_3.20.patch 
+
+-------------------------------------------------------------------
 Sat Mar  5 14:30:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add poppler-22-03-0.patch: Fix build with poppler 22.03.0. Patch
