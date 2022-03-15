@@ -18,15 +18,13 @@
 
 %{!?_userunitdir:%define _userunitdir %{_prefix}/lib/systemd/user}
 Name:           dunst
-Version:        1.6.1
+Version:        1.7.2
 Release:        0
 Summary:        A customizable notification daemon
 License:        BSD-3-Clause
 Group:          System/GUI/Other
 URL:            https://dunst-project.org
 Source:         https://github.com/dunst-project/dunst/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         makefile.patch
-Patch2:         dunst-xdg-open-can-open-URLs-don-t-rely-on-specific-hardco.patch
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(cairo)
@@ -36,6 +34,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -52,14 +51,10 @@ provided by most desktop environments.
 %autopatch -p1
 
 %build
-CFLAGS="%{optflags}" make %{?_smp_mflags} all dunstify
+%make_build SYSCONFDIR=%{_sysconfdir} all dunstify
 
 %install
-%make_install PREFIX=%{_prefix}
-install -Dm755 dunstify %{buildroot}%{_bindir}/dunstify
-
-sed -i -e 's/Exec.*/Exec=\/usr\/bin\/dunst/' %{buildroot}/%{_datadir}/dbus-1/services/org.knopwob.dunst.service
-sed -i -e 's/ExecStart.*/ExecStart=\/usr\/bin\/dunst/' %{buildroot}/%{_userunitdir}/dunst.service
+%make_install PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir}
 
 %files
 %doc CHANGELOG.md README.md

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  7 10:46:42 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.7.2
+  * release notes:
+    https://github.com/dunst-project/dunst/blob/master/CHANGELOG.md
+- Drop unneeded patch:
+  * makefile.patch
+- Drop upstreamed patch:
+  * dunst-xdg-open-can-open-URLs-don-t-rely-on-specific-hardco.patch
+
+-------------------------------------------------------------------
 Fri Jul  2 16:50:21 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Do not hardcode web browser
