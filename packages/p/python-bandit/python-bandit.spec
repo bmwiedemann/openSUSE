@@ -29,7 +29,7 @@
 %define pythons python3
 %bcond_without  builddocs
 Name:           python-bandit
-Version:        1.7.2
+Version:        1.7.4
 Release:        0
 Summary:        Security oriented static analyser for Python code
 License:        Apache-2.0
@@ -53,7 +53,6 @@ BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module bandit == %{version}}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.8.0}
 BuildRequires:  %{python_module fixtures >= 3.0.0}
-BuildRequires:  %{python_module mock >= 3.0.5}
 BuildRequires:  %{python_module pbr >= 2.0}
 BuildRequires:  %{python_module python-subunit >= 0.0.18}
 BuildRequires:  %{python_module setuptools}

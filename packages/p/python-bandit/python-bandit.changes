@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Mar 16 06:50:41 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.7.4
+  1.7.4
+  -----
+  * Add 1.7.4 in issue template (#846)
+  * core/config: Fix ConfigError missing argument if toml is missing (#845)
+  * Add version 1.7.3 to dropdown (#833)
+  * Fix traceback in hashlib\_insecure\_functions (#834)
+  1.7.3
+  -----
+  * Build of artifact fails if raw directive used (#831)
+  * Center the bandit logo in readme (#823)
+  * Target Python >= 3.7 in pre-commit hooks (#830)
+  * Inaccurate message in hashlib check (#827)
+  * Improve performance of linerange (#629)
+  * Use CWE link in HTML formatter (#825)
+  * Use versioned links to docs (#819)
+  * Fix root doc for readthedocs (#818)
+  * Fix up some warnings and errors in docs (#817)
+  * Test on operating systems we can support (#804)
+  * Cannot seek stdin on pipe (#496)
+  * Respect color environment variables if set (#813)
+  * Show usage with no arguments (#814)
+  * Cleanup the README
+  * Fix references to the default branch name (#810)
+  * Better hashlib check for Python 3.9 (#805)
+  * Check for hardcoded passwords in class attributes (#766)
+  *  Add new plugin to check use of pyghmi (#803)
+  * Remove redundant Python 3.6 code (#802)
+  * Check value of usedforsecurity for hashlib (#798)
+  * Change up how CWE is formatted (#788)
+  * Suport disabling individual tests
+  * Add functional test of snmp\_security\_check (#791)
+  * Avoid printing metrics as float point numbers (#794)
+  * Fix up warnings in output of tox (#793)
+  * Removal of the CWEMAP dict (#789)
+  * Including CWE information (#613)
+  * Add Getting Started chapter (migrate from README) (#773)
+  * Delete releasenotes directory (more openstack leftovers) (#786)
+  * Update publish-to-pypi.yml (#785)
+  * Use released version of gh-action-pypi-publish (#784)
+  * Delete release-drafter.yml (#781)
+  * Update issue template with latest versions (#783)
+  * Rely on toml conditionally
+
+-------------------------------------------------------------------
 Sun Feb  6 10:04:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:
