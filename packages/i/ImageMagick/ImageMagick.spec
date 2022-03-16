@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.0
-%define mfr_revision   26
+%define mfr_revision   27
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -50,7 +50,7 @@ Patch2:         ImageMagick-library-installable-in-parallel.patch
 Patch3:         ImageMagick-s390-disable-tests.patch
 #%%endif
 #%%ifarch i586
-#%%if %{?suse_version} < 1550
+#%%if %%{?suse_version} < 1550
 # do not report test issues related to 32-bit architectures upstream,
 # they do not want to dedicate any time to fix them:
 # https://github.com/ImageMagick/ImageMagick/issues/1215
@@ -519,14 +519,13 @@ fi
 
 %files
 %license LICENSE
-%doc ChangeLog NEWS.txt
+%doc ChangeLog.md NEWS.txt
 %{_bindir}/[^MW]*
 %{_mandir}/man1/*
 %exclude %{_mandir}/man1/*-config.1%{ext_man}
 
 %files -n libMagickCore%{libspec}%{clibver}
 %license LICENSE
-%doc ChangeLog NEWS.txt
 %{_libdir}/libMagickCore*.so.%{clibver}*
 %dir %{_libdir}/ImageMagick*
 %if !%{debug_build}
