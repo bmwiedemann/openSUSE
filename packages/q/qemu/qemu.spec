@@ -215,6 +215,7 @@ Patch00068:     iotests-declare-lack-of-support-for-comp.patch
 Patch00069:     block-backend-Retain-permissions-after-m.patch
 Patch00070:     virtiofsd-Drop-membership-of-all-supplem.patch
 Patch00071:     hw-scsi-megasas-check-for-NULL-frame-in-.patch
+Patch00072:     hw-nvram-at24-return-0xff-if-1-byte-addr.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1206,6 +1207,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch00069 -p1
 %patch00070 -p1
 %patch00071 -p1
+%patch00072 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 09:58:18 UTC 2022 - Li Zhang <li.zhang@suse.com>
+Fix bsc#1189702 CVE-2021-3713
+* Patches added:
+  hw-nvram-at24-return-0xff-if-1-byte-addr.patch
+
+-------------------------------------------------------------------
 Mon Mar  7 15:45:42 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Build PPC firmwares from sources on non-PPC builds as well
