@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-table-other
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-table-other
-Version:        5.0.6
+Version:        5.0.8
 Release:        0
 Summary:        Other Non-Chinese table input methods for Fcitx5
 License:        GPL-3.0-only AND SUSE-Public-Domain
@@ -44,10 +44,10 @@ Provides:       fcitx-table-malayalam-compose = %{version}
 Provides:       fcitx-table-malayalam-phonetic = %{version}
 Provides:       fcitx-table-ru-rustrad = %{version}
 Provides:       fcitx-table-ru-translit = %{version}
-Provides:       fcitx-table-ua-translit = %{version}
 Provides:       fcitx-table-ru-yawerty = %{version}
 Provides:       fcitx-table-tamil-remington = %{version}
 Provides:       fcitx-table-thai = %{version}
+Provides:       fcitx-table-ua-translit = %{version}
 Provides:       fcitx-table-vi-qr = %{version}
 Obsoletes:      fcitx-table-amharic <= 0.2.4
 Obsoletes:      fcitx-table-arabic <= 0.2.4
@@ -59,10 +59,10 @@ Obsoletes:      fcitx-table-malayalam-compose <= 0.2.4
 Obsoletes:      fcitx-table-malayalam-phonetic <= 0.2.4
 Obsoletes:      fcitx-table-ru-rustrad <= 0.2.4
 Obsoletes:      fcitx-table-ru-translit <= 0.2.4
-Obsoletes:      fcitx-table-ua-translit <= 0.2.4
 Obsoletes:      fcitx-table-ru-yawerty <= 0.2.4
 Obsoletes:      fcitx-table-tamil-remington <= 0.2.4
 Obsoletes:      fcitx-table-thai <= 0.2.4
+Obsoletes:      fcitx-table-ua-translit <= 0.2.4
 Obsoletes:      fcitx-table-vi-qr <= 0.2.4
 BuildArch:      noarch
 %if 0%{?suse_version} <= 1520
