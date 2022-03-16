@@ -1,4 +1,280 @@
 -------------------------------------------------------------------
+Tue Mar 15 17:42:07 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18 (released 2022-03-15) is a major release of Go.
+  go1.18.x minor releases will be provided through February 2023.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  Go 1.18 is a significant release, including changes to the
+  language, implementation of the toolchain, runtime, and
+  libraries. Go 1.18 arrives seven months after Go 1.17. As always,
+  the release maintains the Go 1 promise of compatibility. We
+  expect almost all Go programs to continue to compile and run as
+  before.
+  Refs boo#1193742 go1.18 release tracking
+  * See release notes https://golang.org/doc/go1.18. Excerpts
+    relevant to OBS environment and for SUSE/openSUSE follow:
+  * Go 1.18 includes an implementation of generic features as
+    described by the Type Parameters Proposal. This includes major
+    but fully backward-compatible changes to the language.
+  * The Go 1.18 compiler now correctly reports declared but not
+    used errors for variables that are set inside a function
+    literal but are never used. Before Go 1.18, the compiler did
+    not report an error in such cases. This fixes long-outstanding
+    compiler issue go#8560.
+  * The Go 1.18 compiler now reports an overflow when passing a
+    rune constant expression such as '1' << 32 as an argument to
+    the predeclared functions print and println, consistent with
+    the behavior of user-defined functions. Before Go 1.18, the
+    compiler did not report an error in such cases but silently
+    accepted such constant arguments if they fit into an
+    int64. Since go vet always pointed out this error, the number
+    of affected programs is likely very small.
+  * AMD64: Go 1.18 introduces the new GOAMD64 environment variable,
+    which selects at compile time a minimum target version of the
+    AMD64 architecture. Allowed values are v1, v2, v3, or v4. Each
+    higher level requires, and takes advantage of, additional
+    processor features. A detailed description can be found
+    here. The GOAMD64 environment variable defaults to v1.
+  * RISC-V: The 64-bit RISC-V architecture on Linux (the
+    linux/riscv64 port) now supports the c-archive and c-shared
+    build modes.
+  * Linux: Go 1.18 requires Linux kernel version 2.6.32 or later.
+  * Fuzzing: Go 1.18 includes an implementation of fuzzing as
+    described by the fuzzing proposal. See the fuzzing landing page
+    to get started. Please be aware that fuzzing can consume a lot
+    of memory and may impact your machine’s performance while it
+    runs.
+  * go get: go get no longer builds or installs packages in
+    module-aware mode. go get is now dedicated to adjusting
+    dependencies in go.mod. Effectively, the -d flag is always
+    enabled. To install the latest version of an executable outside
+    the context of the current module, use go install
+    example.com/cmd@latest. Any version query may be used instead
+    of latest. This form of go install was added in Go 1.16, so
+    projects supporting older versions may need to provide install
+    instructions for both go install and go get. go get now reports
+    an error when used outside a module, since there is no go.mod
+    file to update. In GOPATH mode (with GO111MODULE=off), go get
+    still builds and installs packages, as before.
+  * Automatic go.mod and go.sum updates: The go mod graph, go mod
+    vendor, go mod verify, and go mod why subcommands no longer
+    automatically update the go.mod and go.sum files. (Those files
+    can be updated explicitly using go get, go mod tidy, or go mod
+    download.)
+  * go version: The go command now embeds version control
+    information in binaries. It includes the currently checked-out
+    revision, commit time, and a flag indicating whether edited or
+    untracked files are present. Version control information is
+    embedded if the go command is invoked in a directory within a
+    Git, Mercurial, Fossil, or Bazaar repository, and the main
+    package and its containing main module are in the same
+    repository. This information may be omitted using the flag
+    -buildvcs=false. Additionally, the go command embeds
+    information about the build, including build and tool tags (set
+    with -tags), compiler, assembler, and linker flags (like
+    -gcflags), whether cgo was enabled, and if it was, the values
+    of the cgo environment variables (like CGO_CFLAGS). Both VCS
+    and build information may be read together with module
+    information using go version -m file or
+    runtime/debug.ReadBuildInfo (for the currently running binary)
+    or the new debug/buildinfo package. The underlying data format
+    of the embedded build information can change with new go
+    releases, so an older version of go may not handle the build
+    information produced with a newer version of go. To read the
+    version information from a binary built with go 1.18, use the
+    go version command and the debug/buildinfo package from go
+    1.18+.
+  * go mod download: If the main module's go.mod file specifies go
+    1.17 or higher, go mod download without arguments now downloads
+    source code for only the modules explicitly required in the
+    main module's go.mod file. (In a go 1.17 or higher module, that
+    set already includes all dependencies needed to build the
+    packages and tests in the main module.) To also download source
+    code for transitive dependencies, use go mod download all.
+  * go mod vendor: The go mod vendor subcommand now supports a -o
+    flag to set the output directory. (Other go commands still read
+    from the vendor directory at the module root when loading
+    packages with -mod=vendor, so the main use for this flag is for
+    third-party tools that need to collect package source code.)
+  * go mod tidy: The go mod tidy command now retains additional
+    checksums in the go.sum file for modules whose source code is
+    needed to verify that each imported package is provided by only
+    one module in the build list. Because this condition is rare
+    and failure to apply it results in a build error, this change
+    is not conditioned on the go version in the main module's
+    go.mod file.
+  * go work: The go command now supports a "Workspace" mode. If a
+    go.work file is found in the working directory or a parent
+    directory, or one is specified using the GOWORK environment
+    variable, it will put the go command into workspace mode. In
+    workspace mode, the go.work file will be used to determine the
+    set of main modules used as the roots for module resolution,
+    instead of using the normally-found go.mod file to specify the
+    single main module. For more information see the go work
+    documentation.
+  * go build -asan: The go build command and related commands now
+    support an -asan flag that enables interoperation with C (or
+    C++) code compiled with the address sanitizer (C compiler
+    option -fsanitize=address).
+  * //go:build lines: Go 1.17 introduced //go:build lines as a more
+    readable way to write build constraints, instead of // +build
+    lines. As of Go 1.17, gofmt adds //go:build lines to match
+    existing +build lines and keeps them in sync, while go vet
+    diagnoses when they are out of sync. Since the release of Go
+    1.18 marks the end of support for Go 1.16, all supported
+    versions of Go now understand //go:build lines. In Go 1.18, go
+    fix now removes the now-obsolete // +build lines in modules
+    declaring go 1.17 or later in their go.mod files. For more
+    information, see https://go.dev/design/draft-gobuild.
+  * go vet: The vet tool is updated to support generic code. In
+    most cases, it reports an error in generic code whenever it
+    would report an error in the equivalent non-generic code after
+    substituting for type parameters with a type from their type
+    set.
+  * go vet: The cmd/vet checkers copylock, printf, sortslice,
+    testinggoroutine, and tests have all had moderate precision
+    improvements to handle additional code patterns. This may lead
+    to newly reported errors in existing packages.
+  * Runtime: The garbage collector now includes non-heap sources of
+    garbage collector work (e.g., stack scanning) when determining
+    how frequently to run. As a result, garbage collector overhead
+    is more predictable when these sources are significant. For
+    most applications these changes will be negligible; however,
+    some Go applications may now use less memory and spend more
+    time on garbage collection, or vice versa, than before. The
+    intended workaround is to tweak GOGC where necessary. The
+    runtime now returns memory to the operating system more
+    efficiently and has been tuned to work more aggressively as a
+    result.
+  * Compiler: Go 1.17 implemented a new way of passing function
+    arguments and results using registers instead of the stack on
+    64-bit x86 architecture on selected operating systems. Go 1.18
+    expands the supported platforms to include 64-bit ARM
+    (GOARCH=arm64), big- and little-endian 64-bit PowerPC
+    (GOARCH=ppc64, ppc64le), as well as 64-bit x86 architecture
+    (GOARCH=amd64) on all operating systems. On 64-bit ARM and
+    64-bit PowerPC systems, benchmarking shows typical performance
+    improvements of 10% or more. As mentioned in the Go 1.17
+    release notes, this change does not affect the functionality of
+    any safe Go code and is designed to have no impact on most
+    assembly code. See the Go 1.17 release notes for more details.
+  * Compiler: The compiler now can inline functions that contain
+    range loops or labeled for loops.
+  * Compiler: The new -asan compiler option supports the new go
+    command -asan option.
+  * Compiler: Because the compiler's type checker was replaced in
+    its entirety to support generics, some error messages now may
+    use different wording than before. In some cases, pre-Go 1.18
+    error messages provided more detail or were phrased in a more
+    helpful way. We intend to address these cases in Go
+    1.19. Because of changes in the compiler related to supporting
+    generics, the Go 1.18 compile speed can be roughly 15% slower
+    than the Go 1.17 compile speed. The execution time of the
+    compiled code is not affected. We intend to improve the speed
+    of the compiler in Go 1.19.
+  * Linker: The linker emits far fewer relocations. As a result,
+    most codebases will link faster, require less memory to link,
+    and generate smaller binaries. Tools that process Go binaries
+    should use Go 1.18's debug/gosym package to transparently
+    handle both old and new binaries.
+  * Linker: The new -asan linker option supports the new go command
+    -asan option.
+  * Bootstrap: When building a Go release from source and
+    GOROOT_BOOTSTRAP is not set, previous versions of Go looked for
+    a Go 1.4 or later bootstrap toolchain in the directory
+    $HOME/go1.4 (%HOMEDRIVE%%HOMEPATH%\go1.4 on Windows). Go now
+    looks first for $HOME/go1.17 or $HOME/sdk/go1.17 before falling
+    back to $HOME/go1.4. We intend for Go 1.19 to require Go 1.17
+    or later for bootstrap, and this change should make the
+    transition smoother. For more details, see go#44505.
+  * The new debug/buildinfo package provides access to module
+    versions, version control information, and build flags embedded
+    in executable files built by the go command. The same
+    information is also available via runtime/debug.ReadBuildInfo
+    for the currently running binary and via go version -m on the
+    command line.
+  * The new net/netip package defines a new IP address type,
+    Addr. Compared to the existing net.IP type, the netip.Addr type
+    takes less memory, is immutable, and is comparable so it
+    supports == and can be used as a map key.
+  * TLS 1.0 and 1.1 disabled by default client-side: If
+    Config.MinVersion is not set, it now defaults to TLS 1.2 for
+    client connections. Any safely up-to-date server is expected to
+    support TLS 1.2, and browsers have required it since 2020. TLS
+    1.0 and 1.1 are still supported by setting Config.MinVersion to
+    VersionTLS10. The server-side default is unchanged at TLS
+    1.0. The default can be temporarily reverted to TLS 1.0 by
+    setting the GODEBUG=tls10default=1 environment variable. This
+    option will be removed in Go 1.19.
+  * Rejecting SHA-1 certificates: crypto/x509 will now reject
+    certificates signed with the SHA-1 hash function. This doesn't
+    apply to self-signed root certificates. Practical attacks
+    against SHA-1 have been demonstrated since 2017 and publicly
+    trusted Certificate Authorities have not issued SHA-1
+    certificates since 2015. This can be temporarily reverted by
+    setting the GODEBUG=x509sha1=1 environment variable. This
+    option will be removed in Go 1.19.
+  * crypto/elliptic The P224, P384, and P521 curve implementations
+    are now all backed by code generated by the addchain and
+    fiat-crypto projects, the latter of which is based on a
+    formally-verified model of the arithmetic operations. They now
+    use safer complete formulas and internal APIs. P-224 and P-384
+    are now approximately four times faster. All specific curve
+    implementations are now constant-time. Operating on invalid
+    curve points (those for which the IsOnCurve method returns
+    false, and which are never returned by Unmarshal or a Curve
+    method operating on a valid point) has always been undefined
+    behavior, can lead to key recovery attacks, and is now
+    unsupported by the new backend. If an invalid point is supplied
+    to a P224, P384, or P521 method, that method will now return a
+    random point. The behavior might change to an explicit panic in
+    a future release.
+  * crypto/tls: The new Conn.NetConn method allows access to the
+    underlying net.Conn.
+  * crypto/x509: Certificate.Verify now uses platform APIs to
+    verify certificate validity on macOS and iOS when it is called
+    with a nil VerifyOpts.Roots or when using the root pool
+    returned from SystemCertPool. SystemCertPool is now available
+    on Windows.
+  * crypto/x509: CertPool.Subjects is deprecated. On Windows,
+    macOS, and iOS the CertPool returned by SystemCertPool will
+    return a pool which does not include system roots in the slice
+    returned by Subjects, as a static list can't appropriately
+    represent the platform policies and might not be available at
+    all from the platform APIs.
+  * crypto/x509: Support for signing certificates using signature
+    algorithms that depend on the MD5 and SHA-1 hashes (MD5WithRSA,
+    SHA1WithRSA, and ECDSAWithSHA1) may be removed in Go 1.19.
+  * net/http: When looking up a domain name containing non-ASCII
+    characters, the Unicode-to-ASCII conversion is now done in
+    accordance with Nontransitional Processing as defined in the
+    Unicode IDNA Compatibility Processing standard (UTS #46). The
+    interpretation of four distinct runes are changed: ß, ς,
+    zero-width joiner U+200D, and zero-width non-joiner
+    U+200C. Nontransitional Processing is consistent with most
+    applications and web browsers.
+  * os/user: User.GroupIds now uses a Go native implementation when
+    cgo is not available.
+  * runtime/debug: The BuildInfo struct has two new fields,
+    containing additional information about how the binary was
+    built: GoVersion holds the version of Go used to build the
+    binary. Settings is a slice of BuildSettings structs holding
+    key/value pairs describing the build.
+  * runtime/pprof: The CPU profiler now uses per-thread timers on
+    Linux. This increases the maximum CPU usage that a profile can
+    observe, and reduces some forms of bias.
+  * syscall: The new function SyscallN has been introduced for
+    Windows, allowing for calls with arbitrary number of arguments.
+    As a result, Syscall, Syscall6, Syscall9, Syscall12, Syscall15,
+    and Syscall18 are deprecated in favor of SyscallN.
+
+-------------------------------------------------------------------
+Wed Mar  9 17:03:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add dont-force-gold-on-arm64.patch (bsc#1183043)
+- drop binutils-gold dependency 
+
+-------------------------------------------------------------------
 Fri Feb 18 02:10:17 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Add .bin assembler pattern table file and test data to packaging.
