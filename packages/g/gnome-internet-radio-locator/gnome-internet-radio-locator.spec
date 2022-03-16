@@ -17,13 +17,13 @@
 
 
 Name:           gnome-internet-radio-locator
-Version:        12.0.8
+Version:        12.3.0
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Apps/InternetRadioLocator
-Source0:        https://download.gnome.org/sources/gnome-internet-radio-locator/12.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-internet-radio-locator/12.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool
 BuildRequires:  itstool
