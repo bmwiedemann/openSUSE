@@ -22,7 +22,6 @@
 %else
 %bcond_with nvtt
 %endif
-ExcludeArch:    %{ix86}
 # We can use the system mozjs on Tumbleweed and Leap 15.4.
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without system_mozjs
@@ -47,6 +46,7 @@ Patch1:         no-version-check.patch
 Patch2:         PrepareZoneForGC.patch
 # PATCH-FIX-UPSTREAM -- Don't define M_PIf if glibc already provides it
 Patch3:         glibc-2.35.patch
+Patch4:         fix-i586-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXcursor-devel
@@ -100,6 +100,9 @@ flexible game engine.
 %if %{with system_mozjs}
 %patch1 -p1
 %patch2 -p1
+%endif
+%ifarch %{ix86}
+%patch4 -p1
 %endif
 
 %build

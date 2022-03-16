@@ -1,0 +1,40 @@
+Date: 2022-03-13
+Author: Bernhard M. Wiedemann <bwiedemann suse.de>
+
+fix/workaround i586 build
+https://bugzilla.opensuse.org/show_bug.cgi?id=1197065
+
+It was segfaulting in premake5 because of a problem with gcc11 and the premake5 source
+(gdb) bt
+#0  0x5666a68b in ?? ()
+#1  0x565713e5 in luaL_requiref ()
+#2  0x5658e67f in luaL_openlibs ()
+#3  0x5656edc7 in main ()
+
+
+diff --git a/build/premake/premake5/contrib/lua/src/lapi.c b/build/premake/premake5/contrib/lua/src/lapi.c
+index 02b7fab..cd4e176 100644
+--- a/build/premake/premake5/contrib/lua/src/lapi.c
++++ b/build/premake/premake5/contrib/lua/src/lapi.c
+@@ -204,7 +204,7 @@ static void reverse (lua_State *L, StkId from, StkId to) {
+ ** Let x = AB, where A is a prefix of length 'n'. Then,
+ ** rotate x n == BA. But BA == (A^r . B^r)^r.
+ */
+-LUA_API void lua_rotate (lua_State *L, int idx, int n) {
++LUA_API __attribute__((noipa)) void lua_rotate (lua_State *L, int idx, int n) {
+   StkId p, t, m;
+   lua_lock(L);
+   t = L->top - 1;  /* end of stack segment being rotated */
+diff --git a/build/premake/premake5/contrib/lua/src/lua.h b/build/premake/premake5/contrib/lua/src/lua.h
+index c236e36..7d4aebb 100644
+--- a/build/premake/premake5/contrib/lua/src/lua.h
++++ b/build/premake/premake5/contrib/lua/src/lua.h
+@@ -159,7 +159,7 @@ LUA_API int   (lua_absindex) (lua_State *L, int idx);
+ LUA_API int   (lua_gettop) (lua_State *L);
+ LUA_API void  (lua_settop) (lua_State *L, int idx);
+ LUA_API void  (lua_pushvalue) (lua_State *L, int idx);
+-LUA_API void  (lua_rotate) (lua_State *L, int idx, int n);
++LUA_API __attribute__((noipa)) void  (lua_rotate) (lua_State *L, int idx, int n);
+ LUA_API void  (lua_copy) (lua_State *L, int fromidx, int toidx);
+ LUA_API int   (lua_checkstack) (lua_State *L, int n);
+ 

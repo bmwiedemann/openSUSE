@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 13 11:57:58 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix-i586-build.patch to fix build on i586
+
+-------------------------------------------------------------------
 Fri Mar 11 10:35:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build on i586.
