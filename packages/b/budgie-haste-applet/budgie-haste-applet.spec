@@ -43,6 +43,7 @@ desktop.
 %setup -q -n %{name}-master
 
 %build
+export CFLAGS="$CFLAGS -Wno-pedantic"
 %meson
 %meson_build
 
