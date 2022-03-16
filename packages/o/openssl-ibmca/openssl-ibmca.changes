@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 15 22:00:05 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Completely revamped the postinstall scriptlet so that it doesn't
+  need to know or care about how many lines are in either
+  /etc/ssl/openssl.cnf, or the sample file at
+  /usr/share/doc/packages/openssl-ibmca/openssl.cnf.sample
+  We're now using the ".include" directive for the openssl.cnf
+  file, and only modifying that file the minimum necessary to
+  implement the change. (bsc#1004463)
+
+-------------------------------------------------------------------
 Fri Sep 17 19:32:37 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.2.1 (jsc#SLE-18333)
@@ -18,7 +29,7 @@ Fri Sep 17 19:32:37 UTC 2021 - Mark Post <mpost@suse.com>
   * openssl-ibmca 2.1.2
     Bug fixes
 - Modified spec file to
-  * Define a global variable enginedir the same was as IBM does
+  * Define a global variable enginesdir the same was as IBM does
     instead of _ENGINE_DIR as we had been doing.
   * Implemented %make_build macro according to spec-cleaner
   * Changed the package description to match IBM's.

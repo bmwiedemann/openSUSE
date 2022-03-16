@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-ibmca
 #
-# Copyright (c) 2018-2021 SUSE LLC
+# Copyright (c) 2018-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Hardware/Other
 URL:            https://github.com/opencryptoki/openssl-ibmca
 Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Source2:        engine_section.txt
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -61,52 +62,36 @@ sed -i -e "/^dynamic_path/s, = .*/, = %{enginesdir}/," src/openssl.cnf.sample
 %make_install
 rm %{buildroot}/%{enginesdir}/ibmca.la
 
+# This file contains the declaration of the ibmca engine section. It
+# needs to be on the "real" file system when the postinstall scriptlet
+# is run. It will be read by the openssl .include directive that points
+# to /etc/ssl/engines.d/
+mkdir -p %{buildroot}%{_datadir}/%{name}
+cp -p %{SOURCE2} %{buildroot}%{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
+
+# This will create the actual engine definition section that will be usable
+# by the .include directive of openSSL. That include will be inserted during
+# the postinstall phase of the package installation.
+grep -v "^#" src/openssl.cnf.sample | \
+    sed -n -e '/^\[ibmca_section\]/,$ p' | \
+    sed -e '/^$/ {N;N;s/\n\n/\n/g;}' | \
+    sed -e 's/^dynamic_path/#dynamic_path/' > %{buildroot}%{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
+
 %post
 #Original fix for bsc#942839 was to update on first install
 #For bsc#966139 update if openssl_def not found
-SSLCNF=%{_sysconfdir}/ssl/openssl.cnf
-SSLSMP=%{_docdir}/%{name}/openssl.cnf.sample
+SSLENGCNF=%{_sysconfdir}/ssl/engines.d
+SSLENGDEF=%{_sysconfdir}/ssl/engdef.d
 
-if [ -f ${SSLCNF} -a -f ${SSLSMP} ]; then
-  if grep '^openssl_conf[[:space:]]*=[[:space:]]*openssl_def$' ${SSLCNF} >/dev/null 2>&1; then
-    # Config already installed. Update library path if necessary
-    SECTSTART=$(grep -n '\[ibmca_section\]' ${SSLCNF} | head -n1 | cut -d':' -f1)
-    REPLINE=""
-    if [ "z${SECTSTART}" != "z" ]; then
-      REPLINE=$((SECTSTART - 1 + $(tail -n+${SECTSTART} ${SSLCNF} | grep -n 'dynamic_path' | head -n1 | cut -d':' -f1) ))
-    fi
-    if [ "z${REPLINE}" != "z" ]; then
-      head -n$((REPLINE - 1)) ${SSLCNF} > ${SSLCNF}.temp
-      grep 'dynamic_path' ${SSLSMP} >> ${SSLCNF}.temp
-      tail -n+$((REPLINE + 1)) ${SSLCNF} >> ${SSLCNF}.temp
-      mv ${SSLCNF}.temp ${SSLCNF}
-    fi
-  else
-    CNFSZE=350 # Size in lines of original openssl.cnf
-    SMPSZE=52  # Size in lines of original sample config file
-    CNFINS=9   # Line number in openssl.cnf to insert new line
-    SMPUSE=11  # Line number in sample to copy from
-    if [ $(wc -l ${SSLCNF} | cut -d ' ' -f 1) -ne ${CNFSZE} ]; then
-      echo Original ${SSLCNF} incorrect size. Please manually update from ${SSLSMP}
-    elif [ $(wc -l ${SSLSMP} | cut -d ' ' -f 1) -ne ${SMPSZE} ]; then
-      echo Original ${SSLSMP} incorrect size. Please manually update to ${SSLCNF}
-    else
-      mv ${SSLCNF} ${SSLCNF}.orig
-      head -n ${CNFINS} ${SSLCNF}.orig > ${SSLCNF}
-      head -n ${SMPUSE} ${SSLSMP} | tail -n 1 >> ${SSLCNF}
-      tail -n $((CNFSZE - CNFINS)) ${SSLCNF}.orig >> ${SSLCNF}
-      head -n $((SMPUSE - 1)) ${SSLSMP} >> ${SSLCNF}
-      tail -n $((SMPSZE - SMPUSE)) ${SSLSMP} >> ${SSLCNF}
-    fi
-  fi
-fi
+cp -p %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt ${SSLENGCNF}/openssl-ibmca.cnf
+cp -p %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf ${SSLENGDEF}/openssl-ibmca.cnf
 
 %postun
-if [ $1 -eq 0 ]; then # last uninstall, modify %%{_sysconfdir}/openssl.cnf (bsc#942839)
-  SSLCNF=%{_sysconfdir}/ssl/openssl.cnf
-  if [ -f ${SSLCNF}.orig ]; then
-    mv ${SSLCNF}.orig ${SSLCNF}
-  fi
+SSLENGCNF=%{_sysconfdir}/ssl/engines.d
+SSLENGDEF=%{_sysconfdir}/ssl/engdef.d
+if [ $1 -eq 0 ]; then # last uninstall
+  rm -f ${SSLENGCNF}/openssl-ibmca.cnf
+  rm -f ${SSLENGDEF}/openssl-ibmca.cnf
 fi
 
 %files
@@ -118,6 +103,8 @@ fi
 %doc src/openssl.cnf.libica-cex
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/openssl.cnf.*
+%{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
+%{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
 %{enginesdir}/ibmca.*
 %{_mandir}/man5/ibmca.5%{?ext_man}
 
