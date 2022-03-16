@@ -1,7 +1,7 @@
 #
 # spec file for package libsocketcan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libsocketcan
 %define lname	libsocketcan2
-Version:        0.0.11
+Version:        0.0.12
 Release:        0
 Summary:        Library for SocketCAN
 License:        LGPL-2.1-or-later
@@ -65,7 +65,7 @@ This package contains the libsocketcan development files.
 %build
 ./autogen.sh
 %configure --disable-static --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

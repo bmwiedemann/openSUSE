@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 15 13:54:42 UTC 2022 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to upstream release 0.0.12
+  * Corrected sizeof(struct ifaddrmsg) to sizeof(struct ifinfomsg)
+    in macro NLMSG_LENGTH()
+- Refreshed patch to avoid overriding user's CFLAGS during build
+
+-------------------------------------------------------------------
 Mon Aug 26 08:54:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to upstream release 0.0.11

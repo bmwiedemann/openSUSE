@@ -52,4 +52,12 @@
     <comment>- Update to upstream release 0.0.11</comment>
     <requestid>726109</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b3d8bad5df994a731bcabe7d779087a4</srcmd5>
+    <version>0.0.12</version>
+    <time>1647458440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream release 0.0.12</comment>
+    <requestid>962021</requestid>
+  </revision>
 </revisionlist>
