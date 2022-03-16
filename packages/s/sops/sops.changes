@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 16 08:03:54 UTC 2022 - rombert@apache.org
+
+- Update to version 3.7.2:
+  * Fixed CHANGELOG formatting
+  * prep v3.7.2
+  * Add arm64 .deb and .rpm builds
+  * README and author tweaks
+  * Change labeling and upload linux arm64
+  * Move age environment variable names to constants
+  * Support SOPS_AGE_KEY environment variable
+  * Added support for go 1.16 and darwin-arm64
+  * Tests should not fail fast
+
+-------------------------------------------------------------------
 Fri May  7 09:48:16 UTC 2021 - Chris Coutinho <chrisbcoutinho@gmail.com>
 
 - Initial commit

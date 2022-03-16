@@ -1,6 +1,7 @@
 #
 # spec file for package sops
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,22 +13,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sops
-Version:        3.7.1
+Version:        3.7.2
 Release:        0
-Summary:         Simple and flexible tool for managing secrets
+Summary:        Simple and flexible tool for managing secrets
 License:        MPL-2.0
-Group:           Productivity/Security
-Url:            https://github.com/mozilla/sops
+Group:          Productivity/Security
+URL:            https://github.com/mozilla/sops
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.15
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.15
 
 %description
 Simple and flexible tool for managing secrets

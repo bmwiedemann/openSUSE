@@ -7,4 +7,12 @@
     <comment>Sops is a simple and flexible tool for managing secrets using multiple encryption backends (GPG, AWS KMS, Azure Key Vault, etc)</comment>
     <requestid>925426</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>887332dece45a491176703da1a3ef19c</srcmd5>
+    <version>3.7.2</version>
+    <time>1647458455</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.7.2 (forwarded request 962083 from robert_munteanu)</comment>
+    <requestid>962121</requestid>
+  </revision>
 </revisionlist>

@@ -4,9 +4,10 @@
 		<param name="url">https://github.com/mozilla/sops</param>
 		<param name="scm">git</param>
 		<param name="filename">sops</param>
-		<param name="versionformat">3.7.1</param>
-		<param name="revision">v3.7.1</param>
+		<param name="versionformat">3.7.2</param>
+		<param name="revision">v3.7.2</param>
 		<param name="exclude">.git</param>
+        <param name="changesgenerate">enable</param>
 	</service>
 	<service name="set_version" mode="localonly">
 		<param name="basename">sops</param>
