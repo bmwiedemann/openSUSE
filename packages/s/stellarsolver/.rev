@@ -42,4 +42,41 @@
 </comment>
     <requestid>948439</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c8be321db09339b36ddfa392ce4a626</srcmd5>
+    <version>2.2</version>
+    <time>1647458503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2:
+  * fix valgrind issues
+  * improve memory management
+  * correcting downsample in WCSData
+- Update to 2.1:
+  * fix for watney solver
+  * remove wrong options from watney solver
+  * add ability to abort on internal star extraction
+  * detect ASTAP in /usr/bin
+  * add support for saving results
+  * avoid name conflict in includes in Kstars
+  * fix crash that may happen during logging
+  * fix solver paths
+- Update to 2.0:
+  * Eliminating the last external files: solved and cancel files from the internal solver
+  * Making an interface between the C++ and astrometry.net logging that works well to fix logging issues
+  * Making StellarSolver easier to use in a blocking way, including using it as a C++ temporary object
+  * Making the convolution filter easier to generate and use as well as adding more types of filters
+  * Significantly reducing the astrometry code needed for the solver
+  * Adding support for a new external solver: the Watney Astrometry Solver
+  * Improving the abort code so that it shuts down faster
+  * Adding a number of demos to show how to use StellarSolver
+  * Adding healpix and index series hints so that you can speed up solves in localized areas based on former solves
+  * Making it possible to run two stellar solvers simultaneously
+  * Adding some new options for star extraction
+  * Making API simplifications
+  * Fixing some memory leaks and other warnings on various operating systems
+  * Removing some unused code
+- Remove fix-version.patch
+</comment>
+    <requestid>962234</requestid>
+  </revision>
 </revisionlist>

@@ -16,17 +16,17 @@
 #
 
 
-%define sover 1
+%define sover 2
+%define min_sover 2
+
 Name:           stellarsolver
-Version:        1.9
+Version:        2.2
 Release:        0
 Summary:        Astrometric Solver
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/rlancaste/stellarsolver
-Source0:        https://github.com/rlancaste/stellarsolver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/rlancaste/stellarsolver/pull/88
-Patch0:         fix-version.patch
+Source0:        https://github.com/rlancaste/stellarsolver/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
@@ -75,7 +75,7 @@ Development headers and libraries for %{name}.
 %files -n libstellarsolver%{sover}
 %license LICENSE
 %{_libdir}/libstellarsolver.so.%{sover}
-%{_libdir}/libstellarsolver.so.%{version}
+%{_libdir}/libstellarsolver.so.%{sover}.%{min_sover}
 
 %files devel
 %license LICENSE
