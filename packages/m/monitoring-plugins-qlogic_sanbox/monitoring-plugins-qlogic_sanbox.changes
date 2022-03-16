@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 15 21:00:26 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- increase version to 1.4
+
+-------------------------------------------------------------------
+Fri Mar  4 20:52:36 UTC 2022 - Andrew Daugherity <adaugherity@tamu.edu>
+
+- fix POD errors shown in 'check_qlogic_sanbox -h' output
+- general POD cleanup
+
+-------------------------------------------------------------------
 Wed Jul 30 19:20:22 UTC 2014 - lars@linux-schulserver.de
 
 - Renamed package to monitoring-plugins-qlogic_sanbox
@@ -42,4 +53,3 @@ Tue Jun  5 01:33:11 CEST 2012 - ro@suse.de
 Sat May  5 17:11:23 UTC 2012 - lars@linux-schulserver.de
 
 - initial version
-

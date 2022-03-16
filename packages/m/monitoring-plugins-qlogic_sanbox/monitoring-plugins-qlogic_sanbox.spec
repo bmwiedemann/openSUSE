@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-qlogic_sanbox
 #
-# Copyright (c) 2013-2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Author: Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           monitoring-plugins-qlogic_sanbox
 Summary:        Check QLogic FC Sanboxes
 License:        BSD-3-Clause
 Group:          System/Monitoring
-Version:        1.3
-Release:        100
-Url:            http://en.opensuse.org/Monitoring-plugins-qlogic_sanbox
+Version:        1.4
+Release:        0
+URL:            https://en.opensuse.org/Monitoring-plugins-qlogic_sanbox
 Source0:        check_qlogic_sanbox
 Requires:       perl(Getopt::Long)
 Requires:       perl(Net::Ping)
