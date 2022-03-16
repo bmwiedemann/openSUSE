@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-hangul
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           fcitx5-hangul
-Version:        5.0.6
+Version:        5.0.8
 Release:        0
 Summary:        Hangul Wrapper for Fcitx5
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 URL:            https://github.com/fcitx/fcitx5-hangul
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
