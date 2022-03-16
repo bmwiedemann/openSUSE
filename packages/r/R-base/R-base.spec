@@ -1,7 +1,7 @@
 #
 # spec file for package R-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@
 %define release 1
 
 Name:           R-base
-Version:        4.1.2
+Version:        4.1.3
 Release:        %release
 %define Rversion %{version}
-Source0:        R-%{version}.tar.bz2
+Source0:        R-%{version}.tar.xz
 Source10:       macros.R
 #Source: http://cran.r-project.org/src/base/R-2/R-%%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Fix tre when wchar_t is unsigned int
@@ -1165,7 +1165,7 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Version:        7.3.19
+Version:        7.3.20
 Release:        %release
 Requires:       R-base
 
@@ -1252,7 +1252,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.81
+Version:        0.8.82
 Release:        %release
 Requires:       R-base
 
@@ -1282,7 +1282,7 @@ This packages provides R-foreign, one of the recommended packages.
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Version:        2.23.20
+Version:        2.23.30
 Release:        %release
 Requires:       R-base
 
@@ -1344,7 +1344,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.54
+Version:        7.3.55
 Release:        %release
 Requires:       R-base
 
@@ -1377,7 +1377,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.3.4
+Version:        1.4.0
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1425,7 +1425,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.8.38
+Version:        1.8.39
 Release:        %release
 Requires:       R-base
 
@@ -1456,7 +1456,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.153
+Version:        3.1.155
 Release:        %release
 Requires:       R-base
 
@@ -1489,7 +1489,7 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Version:        7.3.16
+Version:        7.3.17
 Release:        %release
 Requires:       R-base
 
@@ -1520,7 +1520,7 @@ This packages provides R-nnet, one of the recommended packages.
 
 %package -n R-rpart
 Summary:        Package provides recommended R-rpart
-Version:        4.1.15
+Version:        4.1.16
 Release:        %release
 Requires:       R-base
 
@@ -1552,7 +1552,7 @@ This packages provides R-rpart, one of the recommended packages.
 
 %package -n R-spatial
 Summary:        Package provides recommended R-spatial
-Version:        7.3.14
+Version:        7.3.15
 Release:        %release
 Requires:       R-base
 

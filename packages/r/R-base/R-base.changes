@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Mar 11 07:54:58 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.1.3:
+
+  NEW FEATURES:
+
+    * The default version of Bioconductor has been changed to 3.14.
+      (This is used by setRepositories and the menus in GUIs.)
+
+  UTILITIES:
+
+    * R CMD check --as-cran has a workaround for a bug in versions of
+      file up to at least 5.41 which mis-identify DBF files last
+      changed in 2022 as executables.
+
+  C-LEVEL FACILITIES:
+
+    * The legacy S-compatibility macros SINGLE_* in R_ext/Constants.h
+      (included by R.h) are deprecated and will be removed in R 4.2.0.
+
+  BUG FIXES:
+
+    * Initialization of self-starting nls() models with initialization
+      functions following the pre-R-4.1.0 API (without the ...
+      argument) works again for now, with a deprecation warning.
+
+    * Fixed quoting of ~autodetect~ in Java setting defaults to avoid
+      inadvertent user lookup due to leading ~, reported in PR#18231 by
+      Harold Gutch.
+
+    * substr(., start, stop) <- v now treats _negative_ stop values
+      correctly.  Reported with a patch in PR#18228 by Brodie Gaslam.
+
+    * Subscripting an array x without dimnames by a
+      length(dim(x))-column character matrix gave "random" non-sense,
+      now an error; reported in PR#18244 by Mikael Jagan.
+
+    * ...names() now matches names(list(...)) closely, fixing PR#18247.
+
+    * all.equal(*, scale = s) now works as intended when length(s) > 1,
+      partly thanks to Michael Chirico's PR#18272.
+
+    * print(x) for long vectors x now also works for named atomic
+      vectors or lists and prints the correct number when reaching the
+      getOption("max.print") limit; partly thanks to a report and
+      proposal by Hugh Parsonage to the R-devel list.
+
+    * all.equal(<selfStart>, *) no longer signals a deprecation
+      warning.
+
+    * reformulate(*, response=r) gives a helpful error message now when
+      length(r) > 1, thanks to Bill Dunlap's PR#18281.
+
+    * Modifying globalCallingHandlers inside withCallingHandlers() now
+      works or fails correctly, thanks to Henrik Bengtsson's PR#18257.
+
+    * hist(<Date>, breaks = "days") and hist(<POSIXt>, breaks = "secs")
+      no longer fail for inputs of length 1.
+
+    * qbeta(.001, .9, .009) and similar cases now converge correctly
+      thanks to Ben Bolker's report in PR#17746.
+
+    * window(x, start, end) no longer wrongly signals "'start' cannot
+      be after 'end'", fixing PR#17527 and PR#18291.
+
+    * data() now checks that its (rarely used) list argument is a
+      character vector - a couple of packages passed other types and
+      gave incorrect results.
+
+    * which() now checks its arr.ind argument is TRUE rather coercing
+      to logical and taking the first element - which gave incorrect
+      results in package code.
+
+    * model.weights() and model.offset() more carefully extract their
+      model components, thanks to Ben Bolker and Tim Taylor's R-devel
+      post.
+
+    * list.files(recursive = TRUE) now shows all broken symlinks
+      (previously, some of them may have been omitted, PR#18296).
+
+-------------------------------------------------------------------
 Mon Nov  1 09:24:49 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN R 4.1.2:

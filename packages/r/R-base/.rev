@@ -1707,4 +1707,41 @@ CHANGES IN R 3.4.2:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>930112</requestid>
   </revision>
+  <revision rev="83" vrev="40">
+    <srcmd5>0c944813cbe16f30eb46992d3b76a75a</srcmd5>
+    <version>unknown</version>
+    <time>1647458490</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN R 4.1.3:
+  NEW FEATURES:
+    * The default version of Bioconductor has been changed to 3.14.
+      (This is used by setRepositories and the menus in GUIs.)
+  UTILITIES:
+    * R CMD check --as-cran has a workaround for a bug in versions of
+      file up to at least 5.41 which mis-identify DBF files last
+      changed in 2022 as executables.
+  C-LEVEL FACILITIES:
+    * The legacy S-compatibility macros SINGLE_* in R_ext/Constants.h
+      (included by R.h) are deprecated and will be removed in R 4.2.0.
+  BUG FIXES:
+    * Initialization of self-starting nls() models with initialization
+      functions following the pre-R-4.1.0 API (without the ...
+      argument) works again for now, with a deprecation warning.
+    * Fixed quoting of ~autodetect~ in Java setting defaults to avoid
+      inadvertent user lookup due to leading ~, reported in PR#18231 by
+      Harold Gutch.
+    * substr(., start, stop) &lt;- v now treats _negative_ stop values
+      correctly.  Reported with a patch in PR#18228 by Brodie Gaslam.
+    * Subscripting an array x without dimnames by a
+      length(dim(x))-column character matrix gave &quot;random&quot; non-sense,
+      now an error; reported in PR#18244 by Mikael Jagan.
+    * ...names() now matches names(list(...)) closely, fixing PR#18247.
+    * all.equal(*, scale = s) now works as intended when length(s) &gt; 1,
+      partly thanks to Michael Chirico's PR#18272.
+    * print(x) for long vectors x now also works for named atomic
+      vectors or lists and prints the correct number when reaching the
+      getOption(&quot;max.print&quot;) limit; partly thanks to a report and
+      proposal by Hugh Parsonage to the R-devel list.</comment>
+    <requestid>962175</requestid>
+  </revision>
 </revisionlist>
