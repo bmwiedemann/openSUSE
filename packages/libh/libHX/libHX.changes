@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 15 13:10:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4
+  * Build fixes for mingw environments.
+
+-------------------------------------------------------------------
+Mon Mar 14 17:16:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3
+  * string: New functions ``HX_strtoull_sec``,
+    ``HX_unit_seconds`` for converting between second-based time
+    durations and human-readable durations like 129600 <-> 1d12h.
+  * io: New function ``HX_sendfile``.
+
+-------------------------------------------------------------------
 Sun Oct 17 16:55:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2
