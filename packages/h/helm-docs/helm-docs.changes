@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Wed Mar  2 05:58:26 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package helm-docs: A tool for automatically generating markdown documentation for helm charts
+- v1.6.0 and v1.7.0 tags are on the same commit
