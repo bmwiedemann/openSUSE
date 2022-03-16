@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 14 14:36:51 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- only limit to ruby 2.7 on sle 12
+
+-------------------------------------------------------------------
 Thu Mar  3 08:20:08 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.3.8
@@ -27,6 +32,11 @@ updated to version 2.3.8
     - Don't silently persist `BUNDLE_WITH` and `BUNDLE_WITHOUT` envs locally [#5335](https://github.com/rubygems/rubygems/pull/5335)
     - Fix `bundle config` inside an application saving configuration globally [#4152](https://github.com/rubygems/rubygems/pull/4152)
   
+
+-------------------------------------------------------------------
+Mon Feb 28 13:25:15 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix wrong if-condition, to only set ruby2.7 when suse_version is <= 1500
 
 -------------------------------------------------------------------
 Thu Jan 27 16:29:46 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
