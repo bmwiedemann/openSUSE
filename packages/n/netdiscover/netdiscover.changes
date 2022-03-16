@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 16 12:49:22 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9:
+  * ifaces: process_packet: Return if source MAC address matches
+    host MAC.
+
+-------------------------------------------------------------------
 Fri Nov  5 09:32:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.8.1
