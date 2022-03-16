@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 21:23:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- revert license tag change:
+  * no GPL-3.0-only declaration could be found in source
+
+-------------------------------------------------------------------
 Tue Feb  1 20:45:32 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.67
 
 - Update to version 5.0.67:

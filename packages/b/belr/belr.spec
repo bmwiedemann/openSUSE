@@ -22,7 +22,7 @@ Name:           belr
 Version:        5.0.67
 Release:        0
 Summary:        Language recognition library
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/belr/-/archive/%{version}/%{name}-%{version}.tar.bz2
