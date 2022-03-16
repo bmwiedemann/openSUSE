@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 16 10:57:31 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to 17.7.1:
+  * url: revert fix url.parse() for @hostname
+
+-------------------------------------------------------------------
+Tue Mar 15 13:29:41 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- 42342.patch: fix expired certificates in unit tests
+
+-------------------------------------------------------------------
 Thu Mar 10 17:01:19 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to 17.7.0:

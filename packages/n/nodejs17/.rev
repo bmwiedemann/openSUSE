@@ -45,4 +45,15 @@
 - versioned.patch: refreshed</comment>
     <requestid>960850</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e2dab2bc06a850c8d6c0925f4cd32072</srcmd5>
+    <version>17.7.1</version>
+    <time>1647462634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.7.1:
+  * url: revert fix url.parse() for @hostname
+
+- 42342.patch: fix expired certificates in unit tests</comment>
+    <requestid>962128</requestid>
+  </revision>
 </revisionlist>

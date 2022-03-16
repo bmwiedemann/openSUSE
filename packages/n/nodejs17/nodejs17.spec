@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 ###########################################################
 #
 #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
@@ -32,7 +31,7 @@
 %endif
 
 Name:           nodejs17
-Version:        17.7.0
+Version:        17.7.1
 Release:        0
 
 # Double DWZ memory limits
@@ -141,6 +140,8 @@ Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
 
+
+
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -160,12 +161,13 @@ Patch120:       flaky_test_rerun.patch
 
 Patch132:       test-skip-y2038-on-32bit-time_t.patch
 Patch133:       rsa-pss-revert.patch
+Patch134:       42342.patch
 
 # Use versioned binaries and paths
 Patch200:       versioned.patch
 
-BuildRequires:  fdupes
 BuildRequires:  pkg-config
+BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -185,10 +187,10 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:  gcc5-c++
+BuildRequires:   gcc5-c++
 %define forced_gcc_version 5
 %else
-BuildRequires:  gcc48-c++
+BuildRequires:   gcc48-c++
 %define forced_gcc_version 4.8
 %endif
 %endif
@@ -198,15 +200,15 @@ BuildRequires:  gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
-BuildRequires:  gcc10-c++
+BuildRequires:   gcc10-c++
 %define forced_gcc_version 10
 %else
 %if %node_version_number >= 14
-BuildRequires:  gcc9-c++
+BuildRequires:   gcc9-c++
 %define forced_gcc_version 9
 %else
 %if %node_version_number >= 8
-BuildRequires:  gcc7-c++
+BuildRequires:   gcc7-c++
 %define forced_gcc_version 7
 %endif
 %endif
@@ -215,7 +217,7 @@ BuildRequires:  gcc7-c++
 
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
-BuildRequires:  gcc10-c++
+BuildRequires:   gcc10-c++
 %define forced_gcc_version 10
 %endif
 %endif
@@ -225,6 +227,7 @@ BuildRequires:  gcc10-c++
 %if ! 0%{?forced_gcc_version:1}
 BuildRequires:  gcc-c++
 %endif
+
 
 # Python dependencies
 %if %node_version_number >= 16
@@ -250,8 +253,8 @@ BuildRequires:  python
 %endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  group(nobody)
 BuildRequires:  user(nobody)
+BuildRequires:  group(nobody)
 %endif
 
 %if ! 0%{with intree_openssl}
@@ -351,10 +354,11 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(brotli) = 1.0.9
-Provides:       bundled(libuv) = 1.43.0
 Provides:       bundled(uvwasi) = 0.0.12
+Provides:       bundled(libuv) = 1.43.0
 Provides:       bundled(v8) = 9.6.180.15
+Provides:       bundled(brotli) = 1.0.9
+
 
 Provides:       bundled(llhttp) = 6.0.4
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
@@ -373,8 +377,8 @@ provided by npm.
 Summary:        Development headers for NodeJS 17.x
 Group:          Development/Languages/NodeJS
 Provides:       nodejs-devel = %{version}
-Requires:       %{name} = %{version}
 Requires:       npm17 = %{version}
+Requires:       %{name} = %{version}
 
 %description devel
 This package provides development headers for Node.js needed for creation
@@ -391,12 +395,12 @@ Requires:       nodejs-common
 Requires:       nodejs17 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm = %{version}
 Provides:       npm(npm) = 8.5.2
+Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       group(nobody)
 Requires:       user(nobody)
+Requires:       group(nobody)
 %endif
 %endif
 Provides:       bundled(node-abbrev) = 1.1.1
@@ -560,8 +564,8 @@ Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
 Provides:       bundled(node-spdx-license-ids) = 3.0.11
 Provides:       bundled(node-ssri) = 8.0.1
-Provides:       bundled(node-string-width) = 4.2.3
 Provides:       bundled(node-string_decoder) = 1.3.0
+Provides:       bundled(node-string-width) = 4.2.3
 Provides:       bundled(node-stringify-package) = 1.0.1
 Provides:       bundled(node-strip-ansi) = 6.0.1
 Provides:       bundled(node-supports-color) = 7.2.0
@@ -647,6 +651,7 @@ tar Jxf %{SOURCE11}
 %if ! 0%{with openssl_RSA_get0_pss_params}
 %patch133 -p1
 %endif
+%patch134 -p1
 %patch200 -p1
 
 # remove backup files, if any
@@ -661,6 +666,7 @@ rm -r  deps/npm/node_modules/node-gyp
 mkdir deps/npm/node_modules/node-gyp
 tar -C deps/npm/node_modules/node-gyp Jxf %{SOURCE5}
 %endif
+
 
 %build
 # normalize shebang
