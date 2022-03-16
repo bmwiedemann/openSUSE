@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 13 08:03:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.2.0
+  * Add support for serialization and deserialization of
+    input_units_equivalencies for astropy models.
+  * Bugfix for units_mapping schema's property name conflicts.
+    Changes:
+    - inputs to unit_inputs
+    - outputs to unit_outputs
+  * Add converter support for Cosine1D, Tangent1D, ArcSine1D,
+    ArcCosine1D, ArcTangent1D models.
+  * Add converter for Spline1D model.
+  * Add astropy Table connector for ASDF.
+  * Move assert_model_equal to helpers module.
+  * Fix warnings raised during testing. 
+- Make _multibuild in order to avoid build cycles
+
+-------------------------------------------------------------------
 Tue Dec 28 15:09:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.1.2

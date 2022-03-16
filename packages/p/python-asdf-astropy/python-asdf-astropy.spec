@@ -1,7 +1,7 @@
 #
-# spec file for package python-asdf_astropy
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,45 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
-Name:           python-asdf-astropy
-Version:        0.1.2
+Name:           python-asdf-astropy%{psuffix}
+Version:        0.2.0
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/asdf-astropy
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/asdf_astropy-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module asdf >= 2.8.0}
-BuildRequires:  %{python_module asdf-coordinates-schemas}
-BuildRequires:  %{python_module asdf-transform-schemas}
-BuildRequires:  %{python_module astropy}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging >= 16.0}
-BuildRequires:  %{python_module importlib_resources >= 3 if %python-base < 3.9}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 2.8.0
 Requires:       python-asdf-coordinates-schemas
-Requires:       python-asdf-transform-schemas
+Requires:       python-asdf-transform-schemas >= 0.2.2
 Requires:       python-astropy
 Requires:       python-numpy
 Requires:       python-packaging >= 16.0
 %if 0%{?python_version_nodots} < 39
 Requires:       python-importlib_resources >= 3
 %endif
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
+%if %{with test}
+BuildRequires:  %{python_module asdf-astropy = %{version}}
 BuildRequires:  %{python_module pytest-astropy}
-# /SECTION
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,19 +63,26 @@ ASDF serialization support for astropy
 
 %prep
 %setup -q -n asdf_astropy-%{version}
+sed -i 's/--color=yes//' setup.cfg
 
 %build
 %python_build
 
+%if !%{with test}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %{python_sitelib}/asdf_astropy
 %{python_sitelib}/asdf_astropy-%{version}*-info
+%endif
 
 %changelog
