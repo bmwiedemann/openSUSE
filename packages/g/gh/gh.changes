@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 10 16:24:09 UTC 2022 - chris@computersalat.de
+
+- Update to 2.5.2
+  https://github.com/cli/cli/releases
+  * Other Bugfixes
+    - Fix HexToRGB panic by @markphelps in #5247
+  * Other Changes
+    - Support filtering PRs authored by GitHub Apps by @joshmgross in #5180
+    - gh auth login: added flags to partially automate flow by @jonathan-enf in #5158
+    - Codespaces Create: Allow Accepting Permissions by @markphelps in #5234
+  * Development & Docs
+    - Bump github.com/itchyny/gojq from 0.12.6 to 0.12.7 by @dependabot in #5263
+    - Misc. docs improvements by @mislav in #5223
+    - Use StringEnumFlag helper in more places by @mislav in #5221
+    - Change how gh-cli is installed on fedora by @Hanjingxue-Boling in #5204
+- updated vendor.tar.gz
+
+-------------------------------------------------------------------
 Thu Feb 17 17:02:15 UTC 2022 - <chris@computersalat.de>
 
 - Update to 2.5.1
