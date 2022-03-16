@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 15 01:55:58 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Update .gschema.override.in: Change default libreoffice startup
+  entry to libreoffice-startcenter.desktop according to the
+  libreoffice update (bsc#1195836, bsc#1196951).
+
+-------------------------------------------------------------------
 Sat Feb 12 21:27:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gnome-documents from favorite-apps for both openSUSE and
