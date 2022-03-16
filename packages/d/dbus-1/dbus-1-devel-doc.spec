@@ -61,12 +61,16 @@ bus daemon).
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> Doxyfile.in
-# Skip generation of API doc manpages we do not ship
-echo 'GENERATE_MAN=NO' >> Doxyfile.in
-
+# We use -fpie/-pie for the whole build; this is the recommended way to harden
+# the build upstream, see discussion in fdo#46570
+export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fpie"
+export LDFLAGS="-pie"
+export CXXFLAGS="%{optflags} -fno-strict-aliasing"
+export V=1
 %configure \
     --disable-static \
     --libexecdir=%{_libexecdir}/dbus-1 \
+    --runstatedir=%{_rundir} \
     --enable-doxygen-docs \
     --with-console-auth-dir=/run/dbus/at_console/ \
     --with-system-pid-file=/run/dbus/pid \

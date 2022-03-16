@@ -67,7 +67,6 @@ in this separate package so server systems need not install X.
 
 %build
 echo 'HTML_TIMESTAMP=NO' >> Doxyfile.in
-autoreconf -fi
 # We use -fpie/-pie for the whole build; this is the recommended way to harden
 # the build upstream, see discussion in fdo#46570
 export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fpie"
@@ -76,9 +75,10 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 export V=1
 %configure \
     --disable-static \
+    --runstatedir=%{_rundir} \
     --libexecdir=%{_libexecdir}/dbus-1 \
     --enable-inotify \
-	--disable-doxygen-docs \
+    --disable-doxygen-docs \
 %if %{with selinux}
     --enable-selinux \
 %endif

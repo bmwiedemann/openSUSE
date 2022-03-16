@@ -32,14 +32,12 @@ Source2:        dbus-1.keyring
 Source3:        baselibs.conf
 Source4:        dbus-1.desktop
 Source5:        messagebus.conf
-
 # PATCH-FEATURE-OPENSUSE feature-suse-log-deny.patch
 Patch0:         feature-suse-log-deny.patch
 # PATCH-FIX-OPENSUSE coolo@suse.de -- force a feature configure won't accept without x11 in buildrequires
 Patch1:         feature-suse-do-autolaunch.patch
 # PATCH-FEATURE-OPENSUSE sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
 Patch2:         feature-suse-refuse-manual-start-stop.patch
-
 BuildRequires:  alts
 BuildRequires:  audit-devel
 BuildRequires:  cmake
@@ -50,11 +48,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsystemd) >= 209
-
+Requires:       alts
 Requires(post): %{_libname} = %{version}
 Requires(post): diffutils
 Requires(pre):  permissions
-Requires:       alts
 Provides:       dbus-launch
 %sysusers_requires
 %if %{with selinux}
@@ -108,6 +105,7 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 export V=1
 %configure \
     --disable-static \
+    --runstatedir=%{_rundir} \
     --libexecdir=%{_libexecdir}/dbus-1 \
     --enable-inotify \
     --disable-doxygen-docs \
