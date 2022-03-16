@@ -280,4 +280,12 @@
 - Remove all version constraints in Requires (forwarded request 861574 from glaubitz)</comment>
     <requestid>861619</requestid>
   </revision>
+  <revision rev="23" vrev="20">
+    <srcmd5>2280a06c90cb7903298019983bed8ed4</srcmd5>
+    <version>4.0.0</version>
+    <time>1647458454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962117</requestid>
+  </revision>
 </revisionlist>

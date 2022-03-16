@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Mar 16 08:08:44 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-agfood
+  + python-azure-mgmt-agrifood
+  + python-azure-mgmt-avs
+  + python-azure-mgmt-chaos
+  + python-azure-mgmt-connectedvmware
+  + python-azure-mgmt-dataprotection
+  + python-azure-mgmt-deviceupdate
+  + python-azure-mgmt-digitaltwins
+  + python-azure-mgmt-edgeorder
+  + python-azure-mgmt-elastic
+  + python-azure-mgmt-extendedlocation
+  + python-azure-mgmt-fluidrelay
+  + python-azure-mgmt-guestconfig
+  + python-azure-mgmt-hybridnetwork
+  + python-azure-mgmt-loadtestservice
+  + python-azure-mgmt-logz
+  + python-azure-mgmt-mobilenetwork
+  + python-azure-mgmt-oep
+  + python-azure-mgmt-orbital
+  + python-azure-mgmt-purview
+  + python-azure-mgmt-quantum
+  + python-azure-mgmt-quota
+  + python-azure-mgmt-recoveryservicessiterecovery
+  + python-azure-mgmt-resourceconnector
+  + python-azure-mgmt-resourcehealth
+  + python-azure-mgmt-servicefabricmanagedclusters
+  + python-azure-mgmt-servicelinker
+  + python-azure-mgmt-storagepool
+  + python-azure-mgmt-testbase
+  + python-azure-mgmt-videoanalyzer
+  + python-azure-mgmt-webpubsub
+
+-------------------------------------------------------------------
 Fri Jan  8 10:07:31 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires
