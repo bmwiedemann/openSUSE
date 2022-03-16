@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Mar 16 08:03:31 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-agrifood-farming
+  + python-azure-ai-language-questionanswering
+  + python-azure-ai-translation-document
+  + python-azure-communication-identity
+  + python-azure-communication-networktraversal
+  + python-azure-communication-phonenumbers
+  + python-azure-confidentialledger
+  + python-azure-containerregistry
+  + python-azure-digitaltwins-core
+  + python-azure-media-videoanalyzer-edge
+  + python-azure-messaging-webpubsubservice
+  + python-azure-mgmt
+  + python-azure-mixedreality-authentication
+  + python-azure-monitor-query
+  + python-azure-purview-account
+  + python-azure-purview-administration
+  + python-azure-purview-catalog
+  + python-azure-purview-scanning
+  + python-azure-schemaregistry
+  + python-azure-schemaregistry-avroserializer
+  + python-azure-security-attestation
+
+-------------------------------------------------------------------
 Fri Jan  8 10:27:38 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires

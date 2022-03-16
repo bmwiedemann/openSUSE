@@ -103,4 +103,33 @@
 - Remove all version constraints in Requires (forwarded request 861575 from glaubitz)</comment>
     <requestid>861629</requestid>
   </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>58580592e7bea0923d070295c44354ec</srcmd5>
+    <version>4.0.0</version>
+    <time>1647458448</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-agrifood-farming
+  + python-azure-ai-language-questionanswering
+  + python-azure-ai-translation-document
+  + python-azure-communication-identity
+  + python-azure-communication-networktraversal
+  + python-azure-communication-phonenumbers
+  + python-azure-confidentialledger
+  + python-azure-containerregistry
+  + python-azure-digitaltwins-core
+  + python-azure-media-videoanalyzer-edge
+  + python-azure-messaging-webpubsubservice
+  + python-azure-mgmt
+  + python-azure-mixedreality-authentication
+  + python-azure-monitor-query
+  + python-azure-purview-account
+  + python-azure-purview-administration
+  + python-azure-purview-catalog
+  + python-azure-purview-scanning
+  + python-azure-schemaregistry
+  + python-azure-schemaregistry-avroserializer
+  + python-azure-security-attestation (forwarded request 962078 from glaubitz)</comment>
+    <requestid>962091</requestid>
+  </revision>
 </revisionlist>

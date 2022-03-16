@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-sdk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,11 +30,14 @@ URL:            https://github.com/Azure/azure-sdk-for-python
 BuildRequires:  python-rpm-macros
 Requires:       python-adal
 Requires:       python-applicationinsights
+Requires:       python-azure-agrifood-farming
 Requires:       python-azure-ai-anomalydetector
 Requires:       python-azure-ai-formrecognizer
+Requires:       python-azure-ai-language-questionanswering
 Requires:       python-azure-ai-metricsadvisor
 Requires:       python-azure-ai-nspkg
 Requires:       python-azure-ai-textanalytics
+Requires:       python-azure-ai-translation-document
 Requires:       python-azure-appconfiguration
 Requires:       python-azure-applicationinsights
 Requires:       python-azure-batch
@@ -67,8 +70,13 @@ Requires:       python-azure-cognitiveservices-vision-nspkg
 Requires:       python-azure-common
 Requires:       python-azure-communication-administration
 Requires:       python-azure-communication-chat
+Requires:       python-azure-communication-identity
+Requires:       python-azure-communication-networktraversal
 Requires:       python-azure-communication-nspkg
+Requires:       python-azure-communication-phonenumbers
 Requires:       python-azure-communication-sms
+Requires:       python-azure-confidentialledger
+Requires:       python-azure-containerregistry
 Requires:       python-azure-core
 Requires:       python-azure-core-tracing-opencensus
 Requires:       python-azure-core-tracing-opentelemetry
@@ -77,6 +85,7 @@ Requires:       python-azure-data-nspkg
 Requires:       python-azure-data-tables
 Requires:       python-azure-datalake-store
 Requires:       python-azure-devops
+Requires:       python-azure-digitaltwins-core
 Requires:       python-azure-eventgrid
 Requires:       python-azure-eventhub
 Requires:       python-azure-eventhub-checkpointstoreblob
@@ -91,11 +100,23 @@ Requires:       python-azure-keyvault-keys
 Requires:       python-azure-keyvault-nspkg
 Requires:       python-azure-keyvault-secrets
 Requires:       python-azure-loganalytics
+Requires:       python-azure-media-videoanalyzer-edge
+Requires:       python-azure-messaging-webpubsubservice
+Requires:       python-azure-mgmt
+Requires:       python-azure-mixedreality-authentication
 Requires:       python-azure-monitor
+Requires:       python-azure-monitor-query
 Requires:       python-azure-multiapi-storage
 Requires:       python-azure-nspkg
+Requires:       python-azure-purview-account
+Requires:       python-azure-purview-administration
+Requires:       python-azure-purview-catalog
+Requires:       python-azure-purview-scanning
+Requires:       python-azure-schemaregistry
+Requires:       python-azure-schemaregistry-avroserializer
 Requires:       python-azure-search-documents
 Requires:       python-azure-search-nspkg
+Requires:       python-azure-security-attestation
 Requires:       python-azure-servicebus
 Requires:       python-azure-servicefabric
 Requires:       python-azure-servicemanagement-legacy
@@ -122,9 +143,7 @@ Requires:       python-pydocumentdb
 Requires:       python-uamqp
 Requires:       python-vsts
 Requires:       python-vsts-cd-manager
-
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
