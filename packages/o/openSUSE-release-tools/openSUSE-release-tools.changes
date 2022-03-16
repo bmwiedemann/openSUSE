@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 12:47:11 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220315.0bbf3b2b:
+  * pkglistgen: If the groups contain a summary-staging.txt evaluate it
+
+-------------------------------------------------------------------
 Mon Mar 14 14:23:03 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220314.6cacf361:
