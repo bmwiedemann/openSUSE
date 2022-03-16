@@ -50,7 +50,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-astropy%{psuffix}
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -83,7 +83,7 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     libxml2-tools
 Recommends:     python-Bottleneck
-Recommends:     python-asdf >= 2.6
+Recommends:     python-asdf >= 2.9.2
 Recommends:     python-beautifulsoup4
 Recommends:     python-bleach
 Recommends:     python-h5py
@@ -96,7 +96,7 @@ Recommends:     python-pyarrow >= 5
 Recommends:     python-scipy >= 1.1
 Recommends:     python-setuptools
 Recommends:     python-sortedcontainers
-Recommends:     python-typing_extensions
+Recommends:     python-typing_extensions >= 3.10.0.1
 Conflicts:      perl-Data-ShowTable
 Conflicts:      python-matplotlib = 3.4.0
 %if %{with system_cfitsio}
@@ -111,7 +111,7 @@ BuildRequires:  pkgconfig(wcslib) >= 7
 %if %{with test}
 # SECTION Optional requirements
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module asdf >= 2.6}
+BuildRequires:  %{python_module asdf >= 2.9.2}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module h5py}
@@ -122,7 +122,7 @@ BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module sortedcontainers}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module typing_extensions >= 3.10.0.1}
 BuildRequires:  libxml2-tools
 # /SECTION
 # SECTION test requirements
@@ -130,7 +130,10 @@ BuildRequires:  libxml2-tools
 BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module ipython >= 4.2}
 BuildRequires:  %{python_module objgraph}
+# upstream declares pytest >= 7, but Tumbleweed is not ready for it (!)
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-astropy >= 0.9}
+BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
 BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module sgp4}
@@ -203,6 +206,10 @@ donttest+=" or (test_standard_profile and test_main)"
   # gh#astropy/astropy#12017
   donttest+=" or test_stats"
 %endif
+# These require pytest >= 7: new pytest.warns API
+donttest+=" or (test_c_reader.py and range)"
+donttest+=" or (test_profiling and test_spectrum)"
+donttest+=" or (test_utils and test_noncelestial_scale and True)"
 #
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace
