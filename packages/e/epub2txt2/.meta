@@ -1,0 +1,6 @@
+<package name="epub2txt2" project="openSUSE:Factory">
+  <title>epub2txt2</title>
+  <description>Simple command-line utility for extracting text from EPUB documents</description>
+  <devel project="utilities" package="epub2txt2"/>
+  <url>https://github.com/kevinboone/epub2txt2</url>
+</package>
