@@ -24,4 +24,15 @@
     <comment></comment>
     <requestid>840183</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf0087fc96b11297cdfd525f546dd24f</srcmd5>
+    <version>1.1.0</version>
+    <time>1647458441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Added build for Python 3.10
+  * Drop support of Python 3.5 &amp; 3.6 
+- Drop mock from BuildRequires, it has always fallen back to stdlib.</comment>
+    <requestid>962033</requestid>
+  </revision>
 </revisionlist>

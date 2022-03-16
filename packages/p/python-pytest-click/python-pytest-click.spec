@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-click
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-click
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Pytest plugin for Click
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Stranger6667/pytest-click
 Source:         https://github.com/Stranger6667/pytest-click/archive/v%{version}.tar.gz#/pytest-click-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

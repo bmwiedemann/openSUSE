@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 16 04:10:33 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.0:
+  * Added build for Python 3.10
+  * Drop support of Python 3.5 & 3.6 
+- Drop mock from BuildRequires, it has always fallen back to stdlib.
+
+-------------------------------------------------------------------
 Wed Oct  7 18:42:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.0.2
