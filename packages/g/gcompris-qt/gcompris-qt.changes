@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 13 13:13:13 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix release 2.3
+  + Fix broken 3 activities in 2.2 ("Alphabet sequence", 
+    "Even and odd numbers" and "Numbers in order")
+  + 2.2 changelog:
+    - Russian translation back to 100%.
+    - Better ordering of the letters in the virtual keyboard 
+      (follows the locale set in GCompris).
+    + Activities:
+    - New images for Tangram, Renewable energy and Watercycle activities.
+    - Lot of little issues fixed in Renewable energy and Watercycle activities.
+    - Fix a crash on some Android when starting Balancebox activity.
+    - Many other little fixes and improvements.
+    - New voices added for Norwegian Nynorsk (all except introduction ones).
+
+-------------------------------------------------------------------
 Sat Jan 22 16:02:40 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release version 2.1
