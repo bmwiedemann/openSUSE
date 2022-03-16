@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-netapp
-Version:        6.0.1
+Version:        7.0.0
 Release:        0
 Summary:        Microsoft Azure NetApp Files Management Client Library
 License:        MIT
