@@ -1101,4 +1101,34 @@ Now with build cycle removed.</comment>
   * Add codeberg.page to PSL (#1482)</comment>
     <requestid>952713</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>a7edf9d73b4d35aca4f4f33b42b60180</srcmd5>
+    <version>20220304</version>
+    <time>1647462618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220304:
+  * Add deta.app and deta.dev (#1511)
+  * Add typedream.app (#1509)
+  * Add `musician.io` - updates Staclar entry from #1331 (#1532)
+  * Remove couk.me and ukco.me from private section (#1519)
+  * add `*.build.run`, `*.database.run` and `*.migration.run` to PSL (#1498)
+  * Add ktistory.com (#1493)
+  * Remove WapBlog Suffix (#1510)
+  * Add `aivencloud.com` (#1508)
+  * Add site.transip.me (#1524)
+  * Add 105 `lolipop` and `heteml` domains to private section for GMO (#1522)
+  * Add `tech.orange` (#1526)
+  * Add rocky.page (#1491)
+  * Add messwithdns.com (#1490)
+  * Revise policy links for `.ac` `.io` `.sh` (#1528)
+  * Add kapsi.fi to PSL (#1476)
+  * Add translated.page (#1478)
+  * Add discordsays.com and discordsez.com (#1474)
+  * Add `onporter.run` (#1483)
+  * util: gTLD data autopull updates for 2022-02-18T15:13:38 UTC (#1525)
+  * Update `.cy` per request from nic.cy in Issue 1516 (#1517)
+  * add `*.beget.app` (#1470)
+  * Add `vultrobjects.com` and future regional subdomains (#1472)</comment>
+    <requestid>961835</requestid>
+  </revision>
 </revisionlist>
