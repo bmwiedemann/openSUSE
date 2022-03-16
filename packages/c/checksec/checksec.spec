@@ -1,7 +1,7 @@
 #
 # spec file for package checksec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013-2021 Fedora Project Authors
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ Requires:       binutils
 Requires:       file
 Requires:       findutils
 Requires:       gawk
+Requires:       procps
 Requires:       which
 BuildArch:      noarch
 

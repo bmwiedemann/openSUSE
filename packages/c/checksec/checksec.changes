@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 16 10:57:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add procps dependency for sysctl 
+
+-------------------------------------------------------------------
 Mon Dec 20 10:41:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:

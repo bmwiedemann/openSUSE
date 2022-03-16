@@ -30,4 +30,12 @@
   * Make --dir option follow symlinks</comment>
     <requestid>941623</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>31499a0a5c086ae055a6cb2bd5584d86</srcmd5>
+    <version>2.5.0</version>
+    <time>1647458458</time>
+    <user>dimstar_suse</user>
+    <comment>- add procps dependency for sysctl</comment>
+    <requestid>962127</requestid>
+  </revision>
 </revisionlist>
