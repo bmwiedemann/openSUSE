@@ -2686,4 +2686,12 @@
     <comment>Fix for bsc#1196545 - GCC 12: xen package fails</comment>
     <requestid>959301</requestid>
   </revision>
+  <revision rev="314" vrev="3">
+    <srcmd5>1bdcc57c93f93b1ab6eb9bcadb5039d3</srcmd5>
+    <version>4.16.0_06</version>
+    <time>1647462616</time>
+    <user>dimstar_suse</user>
+    <comment>Security Fix for bsc#1196915 - VUL-0: CVE-2022-0001, CVE-2022-0002, CVE-2021-26401: xen: BHB speculation issues (XSA-398)</comment>
+    <requestid>961753</requestid>
+  </revision>
 </revisionlist>

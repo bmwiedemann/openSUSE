@@ -189,6 +189,12 @@ Patch31:        6202afa4-x86-TSX-move-has_rtm_always_abort.patch
 Patch32:        6202afa5-x86-TSX-cope-with-deprecation-on-WHL-R-CFL-R.patch
 Patch33:        6202afa7-x86-CPUID-leaf-7-2-EDX-infra.patch
 Patch34:        6202afa8-x86-Intel-PSFD-for-guests.patch
+Patch35:        62278667-Arm-introduce-new-processors.patch
+Patch36:        62278668-Arm-move-errata-CSV2-check-earlier.patch
+Patch37:        62278669-Arm-add-ECBHB-and-CLEARBHB-ID-fields.patch
+Patch38:        6227866a-Arm-Spectre-BHB-handling.patch
+Patch39:        6227866b-Arm-allow-SMCCC_ARCH_WORKAROUND_3-use.patch
+Patch40:        6227866c-x86-AMD-cease-using-thunk-lfence.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

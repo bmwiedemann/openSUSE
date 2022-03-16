@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 14 10:14:00 CET 2022 - jbeulich@suse.com
+
+- bsc#1196915 - VUL-0: CVE-2022-0001, CVE-2022-0002,CVE-2021-26401:
+  xen: BHB speculation issues (XSA-398)
+  62278667-Arm-introduce-new-processors.patch
+  62278668-Arm-move-errata-CSV2-check-earlier.patch
+  62278669-Arm-add-ECBHB-and-CLEARBHB-ID-fields.patch
+  6227866a-Arm-Spectre-BHB-handling.patch
+  6227866b-Arm-allow-SMCCC_ARCH_WORKAROUND_3-use.patch
+  6227866c-x86-AMD-cease-using-thunk-lfence.patch
+
+-------------------------------------------------------------------
 Thu Mar  3 14:42:07 MST 2022 - carnold@suse.com
 
 - bsc#1196545 - GCC 12: xen package fails
