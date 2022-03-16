@@ -6,10 +6,10 @@ Subject: [PATCH] Updates the conf file to openssl11.cnf Resolves:
 
 Refactored for SUSE by Simon Lees sflees@suse.de
 
-Index: openssl-3.0.1/include/internal/cryptlib.h
+Index: openssl-3.0.2/include/internal/cryptlib.h
 ===================================================================
---- openssl-3.0.1.orig/include/internal/cryptlib.h
-+++ openssl-3.0.1/include/internal/cryptlib.h
+--- openssl-3.0.2.orig/include/internal/cryptlib.h
++++ openssl-3.0.2/include/internal/cryptlib.h
 @@ -61,7 +61,7 @@ DEFINE_STACK_OF(EX_CALLBACK)
  typedef struct mem_st MEM;
  DEFINE_LHASH_OF(MEM);
@@ -19,19 +19,10 @@ Index: openssl-3.0.1/include/internal/cryptlib.h
  
  # ifndef OPENSSL_SYS_VMS
  #  define X509_CERT_AREA          OPENSSLDIR
-Index: openssl-3.0.1/Configurations/unix-Makefile.tmpl
+Index: openssl-3.0.2/Configurations/unix-Makefile.tmpl
 ===================================================================
---- openssl-3.0.1.orig/Configurations/unix-Makefile.tmpl
-+++ openssl-3.0.1/Configurations/unix-Makefile.tmpl
-@@ -129,7 +129,7 @@ GENERATED_PODS={- # common0.tmpl provide
-                        fill_lines(" ", $COLUMNS - 15,
-                                   map { my $x = $_;
-                                         (
--                                          grep { 
-+                                          grep {
-                                                  $unified_info{attributes}->{depends}
-                                                  ->{$x}->{$_}->{pod} // 0
-                                                }
+--- openssl-3.0.2.orig/Configurations/unix-Makefile.tmpl
++++ openssl-3.0.2/Configurations/unix-Makefile.tmpl
 @@ -675,14 +675,14 @@ install_ssldirs:
  			: {- output_on() if windowsdll(); "" -}; \
  		fi; \
@@ -71,21 +62,21 @@ Index: openssl-3.0.1/Configurations/unix-Makefile.tmpl
 -link-utils: $(BLDDIR)/util/opensslwrap.sh $(BLDDIR)/apps/openssl.cnf
 +link-utils: $(BLDDIR)/util/opensslwrap.sh $(BLDDIR)/apps/openssl3.cnf
  
- $(BLDDIR)/util/opensslwrap.sh: configdata.pm
+ $(BLDDIR)/util/opensslwrap.sh: Makefile
  	@if [ "$(SRCDIR)" != "$(BLDDIR)" ]; then \
-@@ -1382,7 +1382,7 @@ $(BLDDIR)/util/opensslwrap.sh: configdat
+@@ -1382,7 +1382,7 @@ $(BLDDIR)/util/opensslwrap.sh: Makefile
  	    ln -sf "../$(SRCDIR)/util/`basename "$@"`" "$(BLDDIR)/util"; \
  	fi
  
--$(BLDDIR)/apps/openssl.cnf: configdata.pm
-+$(BLDDIR)/apps/openssl3.cnf: configdata.pm
+-$(BLDDIR)/apps/openssl.cnf: Makefile
++$(BLDDIR)/apps/openssl3.cnf: Makefile
  	@if [ "$(SRCDIR)" != "$(BLDDIR)" ]; then \
  	    mkdir -p "$(BLDDIR)/apps"; \
  	    ln -sf "../$(SRCDIR)/apps/`basename "$@"`" "$(BLDDIR)/apps"; \
-Index: openssl-3.0.1/Configure
+Index: openssl-3.0.2/Configure
 ===================================================================
---- openssl-3.0.1.orig/Configure
-+++ openssl-3.0.1/Configure
+--- openssl-3.0.2.orig/Configure
++++ openssl-3.0.2/Configure
 @@ -56,7 +56,7 @@ EOF
  #               directories bin, lib, include, share/man, share/doc/openssl
  #               This becomes the value of INSTALLTOP in Makefile
@@ -95,10 +86,10 @@ Index: openssl-3.0.1/Configure
  #               If it's a relative directory, it will be added on the directory
  #               given with --prefix.
  #               This becomes the value of OPENSSLDIR in Makefile and in C.
-Index: openssl-3.0.1/doc/HOWTO/certificates.txt
+Index: openssl-3.0.2/doc/HOWTO/certificates.txt
 ===================================================================
---- openssl-3.0.1.orig/doc/HOWTO/certificates.txt
-+++ openssl-3.0.1/doc/HOWTO/certificates.txt
+--- openssl-3.0.2.orig/doc/HOWTO/certificates.txt
++++ openssl-3.0.2/doc/HOWTO/certificates.txt
 @@ -16,7 +16,7 @@ Certificate authorities should read http
  In all the cases shown below, the standard configuration file, as
  compiled into openssl, will be used.  You may find it in /etc/,
@@ -108,10 +99,10 @@ Index: openssl-3.0.1/doc/HOWTO/certificates.txt
  You can specify a different configuration file using the
  '-config {file}' argument with the commands shown below.
  
-Index: openssl-3.0.1/doc/man3/OPENSSL_config.pod
+Index: openssl-3.0.2/doc/man3/OPENSSL_config.pod
 ===================================================================
---- openssl-3.0.1.orig/doc/man3/OPENSSL_config.pod
-+++ openssl-3.0.1/doc/man3/OPENSSL_config.pod
+--- openssl-3.0.2.orig/doc/man3/OPENSSL_config.pod
++++ openssl-3.0.2/doc/man3/OPENSSL_config.pod
 @@ -17,7 +17,7 @@ see L<openssl_user_macros(7)>:
  
  =head1 DESCRIPTION
@@ -121,16 +112,10 @@ Index: openssl-3.0.1/doc/man3/OPENSSL_config.pod
  reads from the application section B<appname>. If B<appname> is NULL then
  the default section, B<openssl_conf>, will be used.
  Errors are silently ignored.
-Index: openssl-3.0.1/INSTALL.md
+Index: openssl-3.0.2/INSTALL.md
 ===================================================================
---- openssl-3.0.1.orig/INSTALL.md
-+++ openssl-3.0.1/INSTALL.md
-@@ -1,4 +1,4 @@
--Build and Install
-+fBuild and Install
- =================
- 
- This document describes installation on all supported operating
+--- openssl-3.0.2.orig/INSTALL.md
++++ openssl-3.0.2/INSTALL.md
 @@ -567,7 +567,7 @@ is an objective.
  
  ### no-autoload-config

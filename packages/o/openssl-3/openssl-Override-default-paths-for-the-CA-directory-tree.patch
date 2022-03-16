@@ -40,21 +40,3 @@ Index: openssl-3.0.1/apps/openssl.cnf
  
  ####################################################################
  [ ca ]
-@@ -79,7 +88,7 @@ default_ca	= CA_default		# The default c
- ####################################################################
- [ CA_default ]
- 
--dir		= ./demoCA		# Where everything is kept
-+dir		= /etc/pki/CA		# Where everything is kept
- certs		= $dir/certs		# Where the issued certs are kept
- crl_dir		= $dir/crl		# Where the issued crl are kept
- database	= $dir/index.txt	# database index file.
-@@ -309,7 +318,7 @@ default_tsa = tsa_config1	# the default
- [ tsa_config1 ]
- 
- # These are used by the TSA reply generation only.
--dir		= ./demoCA		# TSA root directory
-+dir		= /etc/pki/CA		# TSA root directory
- serial		= $dir/tsaserial	# The current serial number (mandatory)
- crypto_device	= builtin		# OpenSSL engine to use for signing
- signer_cert	= $dir/tsacert.pem 	# The TSA signing certificate

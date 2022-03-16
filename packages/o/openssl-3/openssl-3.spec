@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" package!
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -51,7 +51,6 @@ Patch10:        fix-config-in-tests.patch
 BuildRequires:  pkgconfig
 # Add requires for ct_log_list.cnf{,.dist}
 Requires:       openssl
-
 
 %description
 OpenSSL is a software library to be used in applications that need to
