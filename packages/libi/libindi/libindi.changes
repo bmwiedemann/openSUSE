@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 10 07:26:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.5:
+  * Fixed updating of slew rate
+  * Add missing find_package for Qt5Core
+  * Fix setObjectRA and setObjectDEC for short and long format
+  * Allow Minutes Past Meridia +/- 180 degrees
+  * Adding new NexDome Beaver INDI driver 
+  * Add and apply Meade Protocol spec definitions
+  * Add Pier Side Status for lx200zeq25 
+  * Updated version of the AstroPhysics driver
+  * Fix Celestron focuser crash after calibration 
+  * Fix but setting AP UTC 
+  * Fix similar negative sign bug in AP driver
+  * Initial implementation for capture format and encode format 
+  * Update driver interface when the LX200 support a focuser 
+  * Add CEM70(G)-EC identifier and a deprecation note 
+  * Add Driver for Esatto with Arco (goto, abort, sync, cal) 
+- Remove 0001-Fix-warnings.patch
+
+-------------------------------------------------------------------
 Tue Jan 18 06:38:14 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.4:
