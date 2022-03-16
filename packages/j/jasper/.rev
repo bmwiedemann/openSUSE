@@ -188,4 +188,13 @@
     <comment></comment>
     <requestid>954679</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>06a8c2c3e787d32f260560050f528f41</srcmd5>
+    <version>3.0.3</version>
+    <time>1647458506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.3:
+  * Fix some portability issues in a few scripts.</comment>
+    <requestid>962246</requestid>
+  </revision>
 </revisionlist>

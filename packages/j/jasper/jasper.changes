@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 16 16:59:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.3:
+  * Fix some portability issues in a few scripts.
+
+-------------------------------------------------------------------
 Mon Feb 14 16:26:36 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add back missing Requires to the devel package
