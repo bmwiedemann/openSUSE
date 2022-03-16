@@ -1,7 +1,7 @@
 #
-# spec file for package python-asdf_transform_schemas
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,37 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
-Name:           python-asdf-transform-schemas
-Version:        0.2.0
+Name:           python-asdf-transform-schemas%{psuffix}
+Version:        0.2.2
 Release:        0
 Summary:        ASDF schemas for transforms
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf-transform-schemas
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-transform-schemas/asdf_transform_schemas-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module asdf >= 2.8.0}
-BuildRequires:  %{python_module importlib_resources >= 3 if %python-base < 3.9}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       python-asdf >= 2.8.0
+BuildRequires:  python-rpm-macros
+Requires:       python-asdf-standard >= 1.0.1
 %if 0%{?python_version_nodots} < 39
 Requires:       python-importlib_resources >= 3
 %endif
-# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module asdf-transform-schemas = %{version}}
+BuildRequires:  %{python_module asdf}
 BuildRequires:  %{python_module pytest}
-# /SECTION
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,15 +59,21 @@ ASDF schemas for transforms
 %build
 %python_build
 
+%if !%{with test}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %{python_sitelib}/asdf_transform_schemas
 %{python_sitelib}/asdf_transform_schemas-%{version}*-info
+%endif
 
 %changelog
