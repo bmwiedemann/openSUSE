@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 17:51:31 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Drop systemd hardening as it breaks some jobs, fixes bsc#1196219
+  * Remove harden_atd.service.patch
+
+-------------------------------------------------------------------
 Tue Feb 22 16:24:52 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 3.2.4:

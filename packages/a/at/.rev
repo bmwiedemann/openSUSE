@@ -655,4 +655,12 @@ I already created a maintenance request for 12.2 - #142949 (forwarded request 14
     <comment></comment>
     <requestid>956825</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>134018241aab8427b3eb4d58e9d51cdb</srcmd5>
+    <version>3.2.4</version>
+    <time>1647462632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961982</requestid>
+  </revision>
 </revisionlist>
