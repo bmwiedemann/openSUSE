@@ -249,6 +249,7 @@ cat > /usr/bin/yomi-sshd.sh <<-'EOF'
 
 	# If the paremeter is "1" or "y", change the config file
 	if [ "$sshd" = "1" ] || [ "$sshd" = "y" ]; then
+	   echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 	   echo 'PermitEmptyPasswords yes' >> /etc/ssh/sshd_config
 	fi
 EOF
