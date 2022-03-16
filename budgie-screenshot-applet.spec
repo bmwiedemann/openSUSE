@@ -46,6 +46,7 @@ Take a screenshot of your desktop, a window or region; save to disk and upload.
 %setup -q -n %{name}-master
 
 %build
+export CFLAGS="$CFLAGS -Wno-pedantic"
 %meson
 %meson_build
 
