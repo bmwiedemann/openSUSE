@@ -1,7 +1,7 @@
 #
 # spec file for package ComputeLibrary
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define so_ver 25
+%define so_ver 26
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        21.11
+Version:        22.02
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
@@ -92,7 +92,6 @@ scons os=linux \
       install_dir=install \
       set_soname=1 \
       examples=1 \
-      gles_compute=0 \
       opencl=1 \
 %if %{with computelibrary_tests}
       validation_tests=1 \
