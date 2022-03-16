@@ -27,6 +27,8 @@ unsorted:
   - Catch2-devel 
   - CharLS-devel 
   - Coin-devel 
+  - Coin4-devel 
+  - Coin4-devel-doc 
   - ColPack-devel 
   - ColPack-devel-32bit: [x86_64] 
   - ColorFull-devel 
@@ -3049,6 +3051,7 @@ unsorted:
   - dpkg 
   - dpkg-devel 
   - dpkg-lang 
+  - dqlite-devel 
   - dracula-gtk-theme 
   - dracut-extra 
   - dracut-fips 
@@ -8799,6 +8802,7 @@ unsorted:
   - libBulletXmlWorldImporter3_17 
   - libCSXCAD0 
   - libCoin60 
+  - libCoin80 
   - libColPack0 
   - libColPack0-32bit: [x86_64] 
   - libColorFull0 
@@ -10489,6 +10493,7 @@ unsorted:
   - libdnssec8 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-22: [x86_64] 
+  - libdqlite0 
   - libdrm-devel: [i586] # devel package of common_locks:libdrm2 
   - libdrm-devel-32bit: [x86_64] 
   - libdrm-tools 
@@ -12418,7 +12423,6 @@ unsorted:
   - libnm0-32bit: [x86_64] 
   - libnma-devel 
   - libnma-docs 
-  - libnma-gtk4-0 
   - libnma-gtk4-devel 
   - libnng1 
   - libnormaliz3 
@@ -20767,6 +20771,8 @@ unsorted:
   - postgresql10-plr 
   - postgresql10-plr-doc 
   - postgresql10-pltcl 
+  - postgresql10-postgis 
+  - postgresql10-postgis-utils 
   - postgresql10-server 
   - postgresql10-test 
   - postgresql10-timescaledb 
@@ -20785,6 +20791,8 @@ unsorted:
   - postgresql11-plr 
   - postgresql11-plr-doc 
   - postgresql11-pltcl 
+  - postgresql11-postgis 
+  - postgresql11-postgis-utils 
   - postgresql11-server 
   - postgresql11-server-devel 
   - postgresql11-test 
@@ -20804,6 +20812,8 @@ unsorted:
   - postgresql12-plr 
   - postgresql12-plr-doc 
   - postgresql12-pltcl 
+  - postgresql12-postgis 
+  - postgresql12-postgis-utils 
   - postgresql12-server 
   - postgresql12-server-devel 
   - postgresql12-test 
@@ -20821,6 +20831,8 @@ unsorted:
   - postgresql13-plr 
   - postgresql13-plr-doc 
   - postgresql13-pltcl 
+  - postgresql13-postgis 
+  - postgresql13-postgis-utils 
   - postgresql13-server 
   - postgresql13-server-devel 
   - postgresql13-test 
@@ -20832,6 +20844,8 @@ unsorted:
   - postgresql14-plperl 
   - postgresql14-plpython 
   - postgresql14-pltcl 
+  - postgresql14-postgis 
+  - postgresql14-postgis-utils 
   - postgresql14-server-devel 
   - postgresql14-test 
   - postgrey 
@@ -23882,7 +23896,6 @@ unsorted:
   - python310-pymisp 
   - python310-pymol 
   - python310-pymongo 
-  - python310-pympv 
   - python310-pymssql 
   - python310-pynamodb 
   - python310-pynetbox 
@@ -26912,7 +26925,6 @@ unsorted:
   - python38-pymilter 
   - python38-pymisp 
   - python38-pymol 
-  - python38-pympv 
   - python38-pymssql 
   - python38-pynamodb 
   - python38-pynetbox 
@@ -30058,7 +30070,6 @@ unsorted:
   - python39-pymisp 
   - python39-pymol 
   - python39-pymongo 
-  - python39-pympv 
   - python39-pymssql 
   - python39-pynamodb 
   - python39-pynetbox 
@@ -31754,6 +31765,9 @@ unsorted:
   - rhash-lang 
   - rhino 
   - rhino-demo 
+  - rhino-engine 
+  - rhino-javadoc 
+  - rhino-runtime 
   - rhythmbox 
   - rhythmbox-devel 
   - rhythmbox-lang 
@@ -41547,6 +41561,7 @@ unsorted:
   - tuned-gtk 
   - tuned-profiles-atomic 
   - tuned-profiles-nfv 
+  - tuned-profiles-openshift 
   - tuned-profiles-oracle 
   - tuned-profiles-postgresql 
   - tuned-profiles-realtime 
