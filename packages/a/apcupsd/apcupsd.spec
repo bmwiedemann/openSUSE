@@ -1,7 +1,7 @@
 #
 # spec file for package apcupsd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,6 @@ BuildRequires:  mailx
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  systemd-sysvinit
 BuildRequires:  tcpd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gconf-2.0)
@@ -61,7 +60,6 @@ BuildRequires:  pkgconfig(gdlib)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(x11)
 Requires:       mailx
 Requires(post): %fillup_prereq
@@ -114,6 +112,7 @@ cp -a %{SOURCE2} %{SOURCE4} .
 	--sysconfdir=%{_sysconfdir}/%{name} \
 	--with-libwrap \
 	--with-lock-dir=%{_localstatedir}/lock \
+	SHUTDOWN=/usr/sbin/shutdown \
 	--enable-gapcmon \
 	--enable-cgi \
 	--enable-usb \
@@ -200,8 +199,8 @@ rm -f etc/init.d/apcupsd-early-powerdown
 %{_sbindir}/smtp
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
-%{_prefix}/lib/systemd/system-shutdown/%{name}_shutdown
-%{_prefix}/lib/systemd/system-sleep/%{name}.sh
+%{_systemd_util_dir}/system-shutdown/
+%{_systemd_util_dir}/system-sleep/
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/changeme
 %config(noreplace) %{_sysconfdir}/%{name}/commfailure
