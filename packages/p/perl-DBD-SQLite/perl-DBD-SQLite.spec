@@ -21,7 +21,7 @@ Name:           perl-DBD-SQLite
 Version:        1.70
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Summary:        Self-contained RDBMS in a DBI Driver
+Summary:        Self Contained SQLite RDBMS in a DBI Driver
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -36,7 +36,11 @@ Requires:       perl(DBI) >= 1.57
 Requires:       perl(Test::More) >= 0.88
 %{perl_requires}
 # MANUAL BEGIN
-BuildRequires:  sqlite3-devel
+%if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
+%else
+BuildRequires:  sqlite3-devel >= 3.35
+Recommends:     sqlite3-devel
+%endif
 # MANUAL END
 
 %description
@@ -76,6 +80,11 @@ the typeless nature of the SQLite database.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version} -p1
+# MANUAL BEGIN
+%if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
+patch -p1 --reverse <%{PATCH0}
+%endif
+# MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -87,10 +96,25 @@ make test
 %install
 %perl_make_install
 %perl_process_packlist
+# MANUAL BEGIN
+%if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
+%else
+ln -fs %{_includedir}/sqlite3ext.h %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/
+ln -fs %{_includedir}/sqlite3.h %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/
+rm %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
+echo >%{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
+chmod 444 %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
+%endif
+# MANUAL END
 %perl_gen_filelist
 
 %files -f %{name}.files
 %doc Changes constants.inc dbdimp_tokenizer.inc dbdimp_virtual_table.inc README
 %license LICENSE
+# the links are ignored by perl_gen_filelist, so we need to add them manually again
+%if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
+%else
+%{perl_vendorarch}/auto/share/dist/%{cpan_name}/*.h
+%endif
 
 %changelog

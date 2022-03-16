@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 08:24:59 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- link embedded sqlite devel files to system files
+- build with internal sqlite on Leap systems
+
+-------------------------------------------------------------------
 Wed Feb 23 15:34:16 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
 
 - Use the system sqlite rather than the built-in one.

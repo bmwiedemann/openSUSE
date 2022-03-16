@@ -438,4 +438,14 @@ Used &quot;osc vc&quot; for once to document changes (forwarded request 78484 fr
     <comment></comment>
     <requestid>960440</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>9e392c0aa31f36fcfaf3e7893b65385d</srcmd5>
+    <version>1.70</version>
+    <time>1647462619</time>
+    <user>dimstar_suse</user>
+    <comment>- link embedded sqlite devel files to system files
+- build with internal sqlite on Leap systems
+</comment>
+    <requestid>961839</requestid>
+  </revision>
 </revisionlist>
