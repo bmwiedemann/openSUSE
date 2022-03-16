@@ -15,4 +15,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>911985</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b00fb0a43cc8afc56c66352543430c8</srcmd5>
+    <version>5.5.17</version>
+    <time>1647458415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.5.17
+  * Set scrollbar visible
+  * Add selected checked indicator icon
+  * Fix bug
+- Drop fix-library-link.patch, Merged by upstream
+- Drop libdsvgicon.so to workaround crash bug
+
+- Update version to 5.5.8
+  * Fix bugs
+  * Update style (forwarded request 962063 from hillwood)</comment>
+    <requestid>962066</requestid>
+  </revision>
 </revisionlist>

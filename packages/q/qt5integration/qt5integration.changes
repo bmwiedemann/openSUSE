@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 17 07:56:35 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.17
+  * Set scrollbar visible
+  * Add selected checked indicator icon
+  * Fix bug
+- Drop fix-library-link.patch, Merged by upstream
+- Drop libdsvgicon.so to workaround crash bug
+
+-------------------------------------------------------------------
+Tue Sep 21 08:32:46 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.8
+  * Fix bugs
+  * Update style 
+
+-------------------------------------------------------------------
 Thu Aug  5 13:29:32 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.3

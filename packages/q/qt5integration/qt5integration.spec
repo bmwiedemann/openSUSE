@@ -1,7 +1,7 @@
 #
 # spec file for package qt5integration
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           qt5integration
-Version:        5.5.3
+Version:        5.5.17
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Qt platform theme integration plugins
 URL:            https://github.com/linuxdeepin/qt5integration
 Group:          System/GUI/Other
 Source0:        https://github.com/linuxdeepin/qt5integration/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-library-link.patch hillwood@opensuse.org - Need link to dl
-# https://github.com/linuxdeepin/qt5integration/pull/47
-Patch0:         fix-library-link.patch
 BuildRequires:  gtest
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5PlatformSupport-devel-static
@@ -47,8 +44,8 @@ BuildRequires:  pkgconfig(Qt5XdgIconLoader)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(dtkcore5.5)
-BuildRequires:  pkgconfig(dtkwidget5.5)
+BuildRequires:  pkgconfig(dtkcore)
+BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -87,7 +84,9 @@ Multiple Qt plugins to provide better Qt5 integration for DDE are included.
 %install
 %qmake5_install
 
-find %{buildroot}%{_kf5_plugindir} -type f ! -name '*5.5.so' -delete -print
+# Drop libdsvgicon.so to workaround crash bug
+# https://github.com/linuxdeepin/developer-center/issues/2242
+rm -rf %{buildroot}%{_kf5_plugindir}/iconengines/libdsvgicon.so
 
 %files
 %doc CHANGELOG.md README.md
@@ -96,11 +95,11 @@ find %{buildroot}%{_kf5_plugindir} -type f ! -name '*5.5.so' -delete -print
 %dir %{_kf5_plugindir}/iconengines
 %dir %{_kf5_plugindir}/imageformats
 %dir %{_kf5_plugindir}/platformthemes
-%{_kf5_plugindir}/iconengines/libdtkbuiltin5.5.so
-%{_kf5_plugindir}/iconengines/libxdgicon5.5.so
-%{_kf5_plugindir}/imageformats/libdsvg5.5.so
-%{_kf5_plugindir}/platformthemes/libqdeepin5.5.so
-%{_kf5_plugindir}/styles/libchameleon5.5.so
-%{_kf5_plugindir}/iconengines/libdsvgicon5.5.so
+%{_kf5_plugindir}/iconengines/libdtkbuiltin.so
+%{_kf5_plugindir}/iconengines/libxdgicon.so
+%{_kf5_plugindir}/imageformats/libdsvg.so
+%{_kf5_plugindir}/platformthemes/libqdeepin.so
+%{_kf5_plugindir}/styles/libchameleon.so
+# %{_kf5_plugindir}/iconengines/libdsvgicon.so
 
 %changelog
