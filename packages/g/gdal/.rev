@@ -609,4 +609,16 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
 </comment>
     <requestid>960732</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>68e5e066c4adf94f9c2233017473ad32</srcmd5>
+    <version>3.4.2</version>
+    <time>1647458450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.2 bugfix release
+  See changelog https://github.com/OSGeo/gdal/blob/v3.4.2/gdal/NEWS.md
+- Remove merged upstream patches gdal-fix-poppler-leap.patch
+  and gdal-fix-build-poppler.patch 
+</comment>
+    <requestid>962125</requestid>
+  </revision>
 </revisionlist>

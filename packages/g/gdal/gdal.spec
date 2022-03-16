@@ -29,7 +29,7 @@
 %bcond_with heif_support
 %bcond_with tests_support
 Name:           gdal
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -37,12 +37,8 @@ URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.tar.gz
+#PATCH-FIX-OPENSUSE set proper perl install directories
 Patch0:         gdal-perl.patch
-# PATCH-FIX-UPSTREAM gdal-fix-build-poppler.patch -- Fix build with poppler 22.03.0 and newer
-Patch1:         gdal-fix-build-poppler.patch
-# PATCH-FIX-UPSTREAM gdal-fix-poppler-leap.patch -- Fix build on Leap 15.4 and poppler
-Patch2:         gdal-fix-poppler-leap.patch
-
 BuildRequires:  KEALib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
