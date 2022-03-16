@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 12 15:18:37 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.4.24
+  * Don't crash when removing the BZFS Cron server-side player
+  * Announce who adjusted the countdown with /modcount
+  * Add support for Apple silicon builds
+  * Work around an SDL 2.0.20 event handling regression
+  * Do not explicitly link to X11 when using SDL
+- Run spec-cleaner
+- Fix encoding of rc.bzflagserver, changed to UTF8
+- Fix obsolete-suse-version-check warning
+
+-------------------------------------------------------------------
 Thu Aug 26 11:36:28 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:

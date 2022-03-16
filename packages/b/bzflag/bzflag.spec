@@ -1,7 +1,7 @@
 #
 # spec file for package bzflag
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           bzflag
-Version:        2.4.22
+Version:        2.4.24
 Release:        0
 Summary:        3D Networked Multiplayer Tank Battle Game
 License:        GPL-2.0-or-later
@@ -48,17 +47,14 @@ BuildRequires:  libdrm-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
+Requires(pre):  %fillup_prereq
+%{?systemd_ordering}
 %if 0%{?sles_version}
 BuildRequires:  glew-devel
 %else
 BuildRequires:  pkgconfig(glew)
 %endif
-%if 0%{?suse_version} > 1230
 BuildRequires:  zlib-devel
-%endif
-Requires(pre):  %fillup_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_ordering}
 
 %description
 BZFlag is a 3D multiplayer tank battle game that allows users to play
@@ -79,7 +75,7 @@ cp %{SOURCE7} .
     --disable-dependency-tracking \
     --libdir=%{_libdir}/%{name} \
     --disable-static
-make %{?_smp_mflags} all
+%make_build all
 
 %pre
 %service_add_pre bzflagserver.service
