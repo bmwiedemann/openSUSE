@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpbin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/Runscope/httpbin
 Source:         python-httpbin-%{version}.tar.xz
 # https://github.com/postmanlabs/httpbin/pull/555
 Patch0:         werkzeug.patch
+# Based on https://github.com/postmanlabs/httpbin/pull/553
+Patch1:         fix-setup-py.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module MarkupSafe}
@@ -37,7 +39,6 @@ BuildRequires:  %{python_module flasgger}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module raven}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +51,6 @@ Requires:       python-decorator
 Requires:       python-flasgger
 Requires:       python-gevent
 Requires:       python-itsdangerous
-Requires:       python-raven
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
@@ -66,10 +66,7 @@ all kinds of HTTP scenarios. Additional endpoints are being considered.
 All endpoint responses are JSON-encoded.
 
 %prep
-%setup -q
-%patch0 -p1
-# use normal Brotli google module not wrapper
-sed -i -e 's:brotlipy:brotli:' setup.py
+%autosetup -p1
 
 %build
 export LANG=en_US.UTF-8

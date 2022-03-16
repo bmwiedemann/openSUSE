@@ -44,4 +44,14 @@
     <comment>- Modify werkzeug.patch to support Werkzeug 2.0, update Requires.</comment>
     <requestid>901426</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d22c4046f371ddb2c523f70252428f78</srcmd5>
+    <version>0.7.0+git20181107.f8ec666</version>
+    <time>1647462617</time>
+    <user>dimstar_suse</user>
+    <comment>- Use of raven has been removed, drop it from {Build,}Requires. 
+- Add patch fix-setup-py.patch:
+  * Drop raven and fix brotli in setup.py</comment>
+    <requestid>961776</requestid>
+  </revision>
 </revisionlist>
