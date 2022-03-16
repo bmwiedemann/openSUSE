@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-# Disable LTO until UnitTests passes with LTO enabled - https://github.com/ARM-software/armnn/issues/341
+# Disable LTO until UnitTests passes with LTO enabled - https://github.com/ARM-software/armnn/issues/623
 %define _lto_cflags %{nil}
 
 # Disable Python binding for now
@@ -45,7 +45,7 @@
 %endif
 # Extra tests require opencv(3)-devel, but it is broken for Leap 15.1 - boo#1154091
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-# FIXME: disabled for now, as it fails with version 21.05
+# FIXME: disabled for now, as it fails since version 21.05
 %bcond_with armnn_extra_tests
 %else
 %bcond_with armnn_extra_tests
@@ -63,9 +63,9 @@
 %else
 %bcond_with armnn_onnx
 %endif
-%define version_major 21
-%define version_minor 11
-%define version_lib 27
+%define version_major 22
+%define version_minor 02
+%define version_lib 28
 %define version_lib_tfliteparser 24
 %define version_lib_onnxparser 24
 Name:           armnn%{?package_suffix}
@@ -563,6 +563,8 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_includedir}/armnnDeserializer/IDeserializer.hpp
 %dir %{_includedir}/armnnSerializer/
 %{_includedir}/armnnSerializer/ISerializer.hpp
+%dir %{_includedir}/armnnTestUtils/
+%{_includedir}/armnnTestUtils/*.hpp
 %dir %{_libdir}/cmake/armnn
 %{_libdir}/cmake/armnn/*
 %{_libdir}/libarmnn.so
@@ -573,6 +575,7 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_libdir}/libarmnnSerializer.so
 %{_libdir}/libarmnnTfLiteParser.so
 %endif
+%{_libdir}/libarmnnTestUtils.so
 %if %{with armnn_onnx}
 %{_libdir}/libarmnnOnnxParser.so
 %endif

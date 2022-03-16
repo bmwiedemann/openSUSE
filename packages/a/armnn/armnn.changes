@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 15 13:06:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 22.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v22.02
+  * Add libarmnnTestUtils
+
+-------------------------------------------------------------------
 Wed Dec  1 10:03:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 21.11:
