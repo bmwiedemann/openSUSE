@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Mar 15 19:40:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.2.0:
+  New features:
+  * Fix GitHub Issue #181: Copy should copy also edges within
+    the group. When copying (and pasting) nodes, also the edges
+    within the copy group are now copied
+  Bug fixes:
+  * Fix GitHub Issue #195: Decrease size of "About" dialog
+  Other:
+  * Updated Dutch & Italian translations
+
+-------------------------------------------------------------------
+Tue Mar 15 19:39:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.1.0:
+  New features:
+  * Option to automatically snap existing nodes to grid
+  * Option for dashed lines in the edge context menu
+  Bug fixes:
+  * Fix GitHub Issue #186: Icon is installed in
+    /usr/share/icons/hicolor/64x64 but actual size is 256x256
+  * Fix GitHub Issue #188: Double-clicking on a large node zooms
+    in incorrectly
+  * Fix GitHub Issue #189: Export to PNG breaks zoom out
+  * Fix GitHub Issue #190: Export to PNG works only once
+  Other:
+  * Simplify edge context menu
+
+-------------------------------------------------------------------
+Tue Nov 30 08:01:34 UTC 2021 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- First upload to openSUSE, version 3.0.0. Changes:
+  * Double-click to zoom into a node
+  * Make it possible to change the font
+  * Make edge text disappear if it doesn't fit between nodes
+  * Fix auto save not triggering immediately on file operations
