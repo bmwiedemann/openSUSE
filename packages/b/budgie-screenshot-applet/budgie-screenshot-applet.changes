@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 16 11:48:21 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Avoid ISO C warnings by setting -Wno-pedantic
+
+-------------------------------------------------------------------
 Mon Aug 10 10:11:20 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to git 20200503
