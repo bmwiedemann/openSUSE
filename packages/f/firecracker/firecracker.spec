@@ -32,9 +32,10 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 
 ## Patches
+Patch000:       0001-cargo-update-regex-dependency.patch
 
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.35.0
+BuildRequires:  rust >= 1.46.0
 ExclusiveArch:  x86_64 aarch64
 
 %description
@@ -43,6 +44,7 @@ multi-tenant container and function-based services.
 
 %prep
 %setup -q -a1
+%patch000 -p1
 
 cp %{SOURCE2} .cargo/config
 # Remove exec bits to prevent an issue in fedora shebang checking

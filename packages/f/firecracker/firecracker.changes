@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 16 13:17:24 UTC 2022 - Liang Yan <lyan@opensuse.org>
+
+- Bump rust to 1.46.0 for vmm-sys-util building
+  https://blog.rust-lang.org/2020/08/27/Rust-1.46.0.html#const-fn-improvements
+- Bump Regex crate to 1.5.5
+  (CVE-2022-24713, boo#1196972)
+  0001-cargo-update-regex-dependency.patch
+
+-------------------------------------------------------------------
 Mon Feb 14 01:02:21 UTC 2022 - Liang Yan <ly@xryan.net>
 
 - Update firecracker to version 1.0.0
