@@ -2,7 +2,7 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/openSUSE/cscreen.git</param>
     <param name="scm">git</param>
-    <param name="revision">ec5bffe40e3074ac208c1b233f4ff5ae305469c8</param>
+    <param name="revision">0fd690eb5a060be92dc07d7dd784f12995264afe</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>

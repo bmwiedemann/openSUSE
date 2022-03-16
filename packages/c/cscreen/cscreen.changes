@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar  9 14:14:14 UTC 2022 - olaf@aepfle.de
+
+- version 1.4
+- remove braces from rpm macros
+- expand %name in rpm specfile for some files
+- Include new tmpfile in files section
+
+-------------------------------------------------------------------
+Wed Mar  9 13:13:13 UTC 2022 - olaf@aepfle.de
+
+- version 1.3
+- restrict usage of cscreen to a trusted set of users (bsc#1196451, CVE-2022-21946)
+- remove usage of fixed path /tmp/cscreen.debug (bsc#1196446, CVE-2022-21945)
+
+-------------------------------------------------------------------
 Mon Sep 27 13:48:15 UTC 2021 - olaf@aepfle.de
 
 - version 1.2
