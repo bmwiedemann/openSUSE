@@ -46,6 +46,7 @@ BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
+BuildRequires:  cmake(QMobipocket)
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 BuildRequires:  pkgconfig(poppler-qt5)
