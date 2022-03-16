@@ -1,5 +1,5 @@
 #
-# spec file for package python-pythran
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -22,21 +22,21 @@
 %define skip_python39 1
 %define skip_python310 1
 %bcond_without test
-ExclusiveArch:   x86_64
+ExclusiveArch:  x86_64
 %endif
 %if "%{flavor}" == "test-py39"
 %define psuffix -test-py39
 %define skip_python38 1
 %define skip_python310 1
 %bcond_without test
-ExclusiveArch:   x86_64
+ExclusiveArch:  x86_64
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python38 1
 %define skip_python39 1
 %bcond_without test
-ExclusiveArch:   x86_64
+ExclusiveArch:  x86_64
 %endif
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -53,6 +53,7 @@ URL:            https://github.com/serge-sans-paille/pythran
 # Tests are only availble in github archive
 Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%{version}.tar.gz#/pythran-%{version}-gh.tar.gz
 Source99:       python-pythran-rpmlintrc
+Patch0:         gcc12-fixes.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -76,8 +77,8 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pythran = %{version}}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  unzip
 BuildRequires:  gcc-c++
+BuildRequires:  unzip
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -87,6 +88,7 @@ Ahead of Time compiler for numeric kernels
 
 %prep
 %setup -q -n pythran-%{version}
+%patch0 -p1
 
 find -name '*.hpp' -exec chmod -x {} +
 sed -i '1{/env python/d}' pythran/run.py
