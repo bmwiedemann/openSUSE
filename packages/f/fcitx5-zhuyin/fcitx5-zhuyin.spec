@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-zhuyin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-zhuyin
-Version:        5.0.7
+Version:        5.0.8
 Release:        0
 Summary:        Libzhuyin Wrapper for Fcitx5
 License:        GPL-2.0-or-later
