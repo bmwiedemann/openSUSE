@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 16 10:05:43 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Updaet to 2.8.0:
+  * Improve choice of signature method and of allowed signature method (by Jakub
+    Hrozek <jhrozek@redhat.com>), it's now possible to completely forbid SHA1 for
+    example
+  * Change default RSA encryption padding to OAEP
+  * Fix: HMAC signature other than SHA1 (jhrozek@redhat.com)
+  * Fix: prevent multiple OneTimeUse elements
+
+-------------------------------------------------------------------
 Wed Sep 15 11:55:17 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - the required of xmlsec1 (which only has the commandline binariy)
