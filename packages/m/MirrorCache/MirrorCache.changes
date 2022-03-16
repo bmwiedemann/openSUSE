@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 09 12:42:33 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.026:
+  * Fix message for unknown folder render timeout (#260)
+  * Support single-country subsidiaries (#259)
+  * Add table server_stability (#258)
+
+-------------------------------------------------------------------
 Thu Feb 10 11:27:57 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.025:
