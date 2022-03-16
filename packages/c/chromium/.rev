@@ -3944,4 +3944,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>Cr99</comment>
     <requestid>959453</requestid>
   </revision>
+  <revision rev="324" vrev="1">
+    <srcmd5>936a612f02b2e7861c6374a699225873</srcmd5>
+    <version>99.0.4844.74</version>
+    <time>1647458458</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 99.0.4844.74 (boo#1197163)</comment>
+    <requestid>962131</requestid>
+  </revision>
 </revisionlist>

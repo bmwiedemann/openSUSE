@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 16 09:36:49 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 99.0.4844.74 (boo#1197163)
+  * CVE-2022-0971: Use after free in Blink Layout
+  * CVE-2022-0972: Use after free in Extensions
+  * CVE-2022-0973: Use after free in Safe Browsing
+  * CVE-2022-0974: Use after free in Splitscreen
+  * CVE-2022-0975: Use after free in ANGLE
+  * CVE-2022-0976: Heap buffer overflow in GPU
+  * CVE-2022-0977: Use after free in Browser UI
+  * CVE-2022-0978: Use after free in ANGLE
+  * CVE-2022-0979: Use after free in Safe Browsing
+  * CVE-2022-0980: Use after free in New Tab Page
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Fri Mar  4 10:46:36 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 99.0.4844.51 (boo#1196641)
