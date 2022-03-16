@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 13 15:45:01 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.6.0
+  * Active and recently finished downloads pop up in bar in the
+    bottom left corner, like they do in browsers.
+  * View recently downloaded files in Settings > Advanced
+    > Downloads.
+  * Get an alert before closing the app if you have
+    unfinished downloads.
+  * Share a direct t.me link to your phone number that instantly
+    opens a chat with you. Use the full number in
+    international format, like t.me/+123456789
+  * Manage Live Streams in your channels using external software
+    like OBS Studio or XSplit Broadcaster. Choose "Stream With..."
+    when staring a video chat or live stream - then copy your
+    Stream Key and paste it into your streaming software.
+- Update tg_owt
+
+-------------------------------------------------------------------
 Wed Feb  9 04:49:28 UTC 2022 - Xu Zhao <i@xuzhao.net>
 
 - Update to 3.5.2

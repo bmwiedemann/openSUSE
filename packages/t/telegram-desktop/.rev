@@ -813,4 +813,26 @@
     <comment></comment>
     <requestid>955489</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>33a8627a30e8ea97ef2ae7728041ba50</srcmd5>
+    <version>3.6.0</version>
+    <time>1647458419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0
+  * Active and recently finished downloads pop up in bar in the
+    bottom left corner, like they do in browsers.
+  * View recently downloaded files in Settings &gt; Advanced
+    &gt; Downloads.
+  * Get an alert before closing the app if you have
+    unfinished downloads.
+  * Share a direct t.me link to your phone number that instantly
+    opens a chat with you. Use the full number in
+    international format, like t.me/+123456789
+  * Manage Live Streams in your channels using external software
+    like OBS Studio or XSplit Broadcaster. Choose &quot;Stream With...&quot;
+    when staring a video chat or live stream - then copy your
+    Stream Key and paste it into your streaming software.
+- Update tg_owt (forwarded request 961483 from tux93)</comment>
+    <requestid>961971</requestid>
+  </revision>
 </revisionlist>
