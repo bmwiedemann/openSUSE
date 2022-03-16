@@ -12,7 +12,7 @@ Wed Oct 20 13:18:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Tue Aug 17 08:07:41 UTC 2021 - Martin Seidl <mseidl@suse.de>
 
-- Package rename (from golang-github-wrouesnel-postgres_exporter)
+- Package rename (from golang-github-wrouesnel-postgres_exporter) (jsc#SLE-23051)
 - Upgrade to version 0.10.0:
   * fix pg_replication_slots on postgresql versions 9.4 <> 10.0
 - Remove:
