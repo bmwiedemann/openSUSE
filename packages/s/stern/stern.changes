@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Mar  4 15:48:19 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package stern: Multi pod and container log tailing for Kubernetes
+- using the fork at https://github.com/stern/stern that is maintained
