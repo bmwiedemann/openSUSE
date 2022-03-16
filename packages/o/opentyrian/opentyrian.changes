@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 12 16:09:25 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to current git version
+  - Redesigned OpenTyrian menu
+  - Reworked mouse behavior in menus so that pointer is now visible
+  - Replaced JSON configuration file format with custom
+    configuration file format
+- Fix file has executable bits warning for opentyrian.appdata.xml
+- Fix datadir for Tyrian files: /usr/share/tyrian is used
+
+-------------------------------------------------------------------
 Sun Apr 11 00:17:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to current git version

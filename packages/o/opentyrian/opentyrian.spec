@@ -1,7 +1,7 @@
 #
 # spec file for package opentyrian
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           opentyrian
 # Upstream haven not tagged a version for more than seven years now.
 # There quite many bugfixes in the git version and it seems upstreams
 # develops it as rolling release.
-Version:        2.1.20201203
+Version:        2.1.20220311
 Release:        0
 Summary:        An arcade-style vertical scrolling shooter
 License:        GPL-2.0-or-later
@@ -48,7 +48,6 @@ to fight Microsol and save the galaxy.
 
 %prep
 %autosetup -p1
-chmod -x CREDITS
 
 %build
 make %{?_smp_mflags} all \
@@ -65,11 +64,11 @@ make %{?_smp_mflags} install \
   gamesdir="%{_datadir}" \
   OPENTYRIAN_VERSION=%{version}
 # Gamedata directory (for the Freeware Tyrian21 files
-mkdir -p %{buildroot}%{_datadir}/%{name}
+mkdir -p %{buildroot}%{_datadir}/tyrian
 
 # Install .desktop file and appdata
 cd linux
-install -D %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -Dm644 %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %suse_update_desktop_file -i %{name}
 for size in 128 24 32 48; do
   install -D icons/tyrian-$size.png "%{buildroot}%{_datadir}/icons/hicolor/${size}x$size/apps/%{name}.png"
@@ -77,19 +76,20 @@ done
 %fdupes -s %{buildroot}%{_datadir}
 
 %post
-echo "For running %{name} you have to download the Tyrian Freeware game assets.
+echo "For running opentyrian you have to download the Tyrian Freeware game assets.
 They can be be found here: https://www.camanis.net/tyrian/tyrian21.zip
-Unpack them and put them into %{_datadir}/%{name}
+Unpack them and put them into /usr/share/tyrian.
 "
 
 %files
 %license COPYING
 %doc %{_docdir}/%{name}
 %{_bindir}/%{name}
-%dir %{_datadir}/%{name}
+%dir %{_datadir}/tyrian
 %{_mandir}/man6/*
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/pixmaps/%{name}.png
 
 %changelog

@@ -5,7 +5,7 @@
 		<param name="versionformat">%cd</param>
 		<param name="versionprefix">2.1</param>
 	</service>
-	<service name="set_version" mode="localonly" />
+	<service name="set_version" mode="localonly"/>
 	<service name="tar" mode="buildtime" />
 	<service name="recompress" mode="buildtime">
 		<param name="file">*.tar</param>
