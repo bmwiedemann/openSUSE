@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 16 11:01:02 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to LTS release 16.14.1:
+  * deps: upgrade npm to 8.5.0
+  * http2: fix memory leak on nghttp2 hd threshold
+
+- 42342.patch: upstreamed, dropped
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
+Tue Mar 15 13:29:20 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- 42342.patch: fix expired certificates in unit tests 
+
+-------------------------------------------------------------------
 Thu Feb 17 12:31:36 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to LTS release 16.14.0:

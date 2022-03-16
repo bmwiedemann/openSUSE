@@ -242,4 +242,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957362</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2db5b2ff1290548b5640276990e3023b</srcmd5>
+    <version>16.14.1</version>
+    <time>1647462636</time>
+    <user>dimstar_suse</user>
+    <comment>- update to LTS release 16.14.1:
+  * deps: upgrade npm to 8.5.0
+  * http2: fix memory leak on nghttp2 hd threshold
+- 42342.patch: upstreamed, dropped
+- versioned.patch: refreshed
+
+- 42342.patch: fix expired certificates in unit tests</comment>
+    <requestid>962188</requestid>
+  </revision>
 </revisionlist>

@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 ###########################################################
 #
 #   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
@@ -32,7 +31,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.14.0
+Version:        16.14.1
 Release:        0
 
 # Double DWZ memory limits
@@ -136,6 +135,8 @@ Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
 
+
+
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -159,8 +160,8 @@ Patch133:       rsa-pss-revert.patch
 # Use versioned binaries and paths
 Patch200:       versioned.patch
 
-BuildRequires:  fdupes
 BuildRequires:  pkg-config
+BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -180,10 +181,10 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:  gcc5-c++
+BuildRequires:   gcc5-c++
 %define forced_gcc_version 5
 %else
-BuildRequires:  gcc48-c++
+BuildRequires:   gcc48-c++
 %define forced_gcc_version 4.8
 %endif
 %endif
@@ -193,15 +194,15 @@ BuildRequires:  gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
-BuildRequires:  gcc10-c++
+BuildRequires:   gcc10-c++
 %define forced_gcc_version 10
 %else
 %if %node_version_number >= 14
-BuildRequires:  gcc9-c++
+BuildRequires:   gcc9-c++
 %define forced_gcc_version 9
 %else
 %if %node_version_number >= 8
-BuildRequires:  gcc7-c++
+BuildRequires:   gcc7-c++
 %define forced_gcc_version 7
 %endif
 %endif
@@ -210,7 +211,7 @@ BuildRequires:  gcc7-c++
 
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
-BuildRequires:  gcc10-c++
+BuildRequires:   gcc10-c++
 %define forced_gcc_version 10
 %endif
 %endif
@@ -220,6 +221,7 @@ BuildRequires:  gcc10-c++
 %if ! 0%{?forced_gcc_version:1}
 BuildRequires:  gcc-c++
 %endif
+
 
 # Python dependencies
 %if %node_version_number >= 16
@@ -245,8 +247,8 @@ BuildRequires:  python
 %endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  group(nobody)
 BuildRequires:  user(nobody)
+BuildRequires:  group(nobody)
 %endif
 
 %if ! 0%{with intree_openssl}
@@ -346,10 +348,11 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(brotli) = 1.0.9
-Provides:       bundled(libuv) = 1.43.0
 Provides:       bundled(uvwasi) = 0.0.12
+Provides:       bundled(libuv) = 1.43.0
 Provides:       bundled(v8) = 9.4.146.24
+Provides:       bundled(brotli) = 1.0.9
+
 
 Provides:       bundled(llhttp) = 6.0.4
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
@@ -368,8 +371,8 @@ provided by npm.
 Summary:        Development headers for NodeJS 16.x
 Group:          Development/Languages/NodeJS
 Provides:       nodejs-devel = %{version}
-Requires:       %{name} = %{version}
 Requires:       npm16 = %{version}
+Requires:       %{name} = %{version}
 
 %description devel
 This package provides development headers for Node.js needed for creation
@@ -386,12 +389,12 @@ Requires:       nodejs-common
 Requires:       nodejs16 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
+Provides:       npm(npm) = 8.5.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 8.3.1
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       group(nobody)
 Requires:       user(nobody)
+Requires:       group(nobody)
 %endif
 %endif
 Provides:       bundled(node-abbrev) = 1.1.1
@@ -407,10 +410,10 @@ Provides:       bundled(node-ansicolors) = 0.3.2
 Provides:       bundled(node-ansistyles) = 0.1.3
 Provides:       bundled(node-aproba) = 2.0.0
 Provides:       bundled(node-archy) = 1.0.0
-Provides:       bundled(node-are-we-there-yet) = 2.0.0
+Provides:       bundled(node-are-we-there-yet) = 3.0.0
 Provides:       bundled(node-asap) = 2.0.6
 Provides:       bundled(node-balanced-match) = 1.0.2
-Provides:       bundled(node-bin-links) = 2.3.0
+Provides:       bundled(node-bin-links) = 3.0.0
 Provides:       bundled(node-binary-extensions) = 2.2.0
 Provides:       bundled(node-brace-expansion) = 1.1.11
 Provides:       bundled(node-builtins) = 1.0.3
@@ -420,7 +423,7 @@ Provides:       bundled(node-chownr) = 2.0.0
 Provides:       bundled(node-cidr-regex) = 3.1.1
 Provides:       bundled(node-clean-stack) = 2.2.0
 Provides:       bundled(node-cli-columns) = 4.0.0
-Provides:       bundled(node-cli-table3) = 0.6.0
+Provides:       bundled(node-cli-table3) = 0.6.1
 Provides:       bundled(node-clone) = 1.0.4
 Provides:       bundled(node-cmd-shim) = 4.1.0
 Provides:       bundled(node-color-convert) = 2.0.1
@@ -431,7 +434,7 @@ Provides:       bundled(node-columnify) = 1.5.4
 Provides:       bundled(node-common-ancestor-path) = 1.0.1
 Provides:       bundled(node-concat-map) = 0.0.1
 Provides:       bundled(node-console-control-strings) = 1.1.0
-Provides:       bundled(node-debug) = 4.3.2
+Provides:       bundled(node-debug) = 4.3.3
 Provides:       bundled(node-debuglog) = 1.0.1
 Provides:       bundled(node-defaults) = 1.0.3
 Provides:       bundled(node-delegates) = 1.0.0
@@ -448,13 +451,14 @@ Provides:       bundled(node-fs.realpath) = 1.0.0
 Provides:       bundled(node-function-bind) = 1.1.1
 Provides:       bundled(node-gauge) = 4.0.0
 Provides:       bundled(node-glob) = 7.2.0
-Provides:       bundled(node-graceful-fs) = 4.2.8
+Provides:       bundled(node-graceful-fs) = 4.2.9
 Provides:       bundled(node-has) = 1.0.3
 Provides:       bundled(node-has-flag) = 4.0.0
 Provides:       bundled(node-has-unicode) = 2.0.1
 Provides:       bundled(node-hosted-git-info) = 4.1.0
 Provides:       bundled(node-http-cache-semantics) = 4.1.0
 Provides:       bundled(node-http-proxy-agent) = 4.0.1
+Provides:       bundled(node-http-proxy-agent) = 5.0.0
 Provides:       bundled(node-https-proxy-agent) = 5.0.0
 Provides:       bundled(node-humanize-ms) = 1.2.1
 Provides:       bundled(node-iconv-lite) = 0.6.3
@@ -469,7 +473,7 @@ Provides:       bundled(node-init-package-json) = 2.0.5
 Provides:       bundled(node-ip) = 1.1.5
 Provides:       bundled(node-ip-regex) = 4.3.0
 Provides:       bundled(node-is-cidr) = 4.0.2
-Provides:       bundled(node-is-core-module) = 2.8.0
+Provides:       bundled(node-is-core-module) = 2.8.1
 Provides:       bundled(node-is-fullwidth-code-point) = 2.0.0
 Provides:       bundled(node-is-fullwidth-code-point) = 3.0.0
 Provides:       bundled(node-is-lambda) = 1.0.1
@@ -480,18 +484,20 @@ Provides:       bundled(node-json-stringify-nice) = 1.1.4
 Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-just-diff) = 5.0.1
 Provides:       bundled(node-just-diff-apply) = 4.0.1
-Provides:       bundled(node-libnpmaccess) = 5.0.0
+Provides:       bundled(node-libnpmaccess) = 5.0.1
 Provides:       bundled(node-libnpmdiff) = 3.0.0
-Provides:       bundled(node-libnpmexec) = 3.0.2
+Provides:       bundled(node-libnpmexec) = 3.0.3
 Provides:       bundled(node-libnpmfund) = 2.0.2
-Provides:       bundled(node-libnpmhook) = 7.0.0
-Provides:       bundled(node-libnpmorg) = 3.0.0
-Provides:       bundled(node-libnpmpack) = 3.0.1
-Provides:       bundled(node-libnpmpublish) = 5.0.0
-Provides:       bundled(node-libnpmsearch) = 4.0.0
-Provides:       bundled(node-libnpmteam) = 3.0.0
+Provides:       bundled(node-libnpmhook) = 7.0.1
+Provides:       bundled(node-libnpmorg) = 3.0.1
+Provides:       bundled(node-libnpmpack) = 3.1.0
+Provides:       bundled(node-libnpmpublish) = 5.0.1
+Provides:       bundled(node-libnpmsearch) = 4.0.1
+Provides:       bundled(node-libnpmteam) = 3.0.1
 Provides:       bundled(node-libnpmversion) = 2.0.2
 Provides:       bundled(node-lru-cache) = 6.0.0
+Provides:       bundled(node-lru-cache) = 7.3.1
+Provides:       bundled(node-make-fetch-happen) = 10.0.2
 Provides:       bundled(node-make-fetch-happen) = 9.1.0
 Provides:       bundled(node-minimatch) = 3.0.4
 Provides:       bundled(node-minipass) = 3.1.6
@@ -507,7 +513,7 @@ Provides:       bundled(node-mkdirp-infer-owner) = 2.0.0
 Provides:       bundled(node-ms) = 2.1.2
 Provides:       bundled(node-ms) = 2.1.3
 Provides:       bundled(node-mute-stream) = 0.0.8
-Provides:       bundled(node-negotiator) = 0.6.2
+Provides:       bundled(node-negotiator) = 0.6.3
 Provides:       bundled(node-node-gyp) = 8.4.1
 Provides:       bundled(node-nopt) = 5.0.0
 Provides:       bundled(node-normalize-package-data) = 3.0.3
@@ -518,15 +524,14 @@ Provides:       bundled(node-npm-normalize-package-bin) = 1.0.1
 Provides:       bundled(node-npm-package-arg) = 8.1.5
 Provides:       bundled(node-npm-packlist) = 3.0.0
 Provides:       bundled(node-npm-pick-manifest) = 6.1.1
-Provides:       bundled(node-npm-profile) = 5.0.4
-Provides:       bundled(node-npm-registry-fetch) = 11.0.0
+Provides:       bundled(node-npm-profile) = 6.0.0
+Provides:       bundled(node-npm-registry-fetch) = 12.0.2
 Provides:       bundled(node-npm-user-validate) = 1.0.1
-Provides:       bundled(node-npmlog) = 6.0.0
-Provides:       bundled(node-object-assign) = 4.1.1
+Provides:       bundled(node-npmlog) = 6.0.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-p-map) = 4.0.0
-Provides:       bundled(node-pacote) = 12.0.2
+Provides:       bundled(node-pacote) = 12.0.3
 Provides:       bundled(node-parse-conflict-json) = 2.0.1
 Provides:       bundled(node-path-is-absolute) = 1.0.1
 Provides:       bundled(node-proc-log) = 1.0.0
@@ -551,16 +556,16 @@ Provides:       bundled(node-set-blocking) = 2.0.0
 Provides:       bundled(node-signal-exit) = 3.0.6
 Provides:       bundled(node-smart-buffer) = 4.2.0
 Provides:       bundled(node-socks) = 2.6.1
-Provides:       bundled(node-socks-proxy-agent) = 6.1.0
+Provides:       bundled(node-socks-proxy-agent) = 6.1.1
 Provides:       bundled(node-spdx-correct) = 3.1.1
 Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
-Provides:       bundled(node-spdx-license-ids) = 3.0.10
+Provides:       bundled(node-spdx-license-ids) = 3.0.11
 Provides:       bundled(node-ssri) = 8.0.1
+Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-string-width) = 2.1.1
 Provides:       bundled(node-string-width) = 4.2.2
 Provides:       bundled(node-string-width) = 4.2.3
-Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-stringify-package) = 1.0.1
 Provides:       bundled(node-strip-ansi) = 3.0.1
 Provides:       bundled(node-strip-ansi) = 4.0.0
@@ -571,7 +576,7 @@ Provides:       bundled(node-tar) = 6.1.11
 Provides:       bundled(node-text-table) = 0.2.0
 Provides:       bundled(node-tiny-relative-date) = 1.3.0
 Provides:       bundled(node-treeverse) = 1.0.4
-Provides:       bundled(node-typedarray-to-buffer) = 3.1.5
+Provides:       bundled(node-typedarray-to-buffer) = 4.0.0
 Provides:       bundled(node-unique-filename) = 1.1.1
 Provides:       bundled(node-unique-slug) = 2.0.2
 Provides:       bundled(node-util-deprecate) = 1.0.2
@@ -580,9 +585,9 @@ Provides:       bundled(node-validate-npm-package-name) = 3.0.0
 Provides:       bundled(node-walk-up-path) = 1.0.0
 Provides:       bundled(node-wcwidth) = 1.0.1
 Provides:       bundled(node-which) = 2.0.2
-Provides:       bundled(node-wide-align) = 1.1.3
+Provides:       bundled(node-wide-align) = 1.1.5
 Provides:       bundled(node-wrappy) = 1.0.2
-Provides:       bundled(node-write-file-atomic) = 3.0.3
+Provides:       bundled(node-write-file-atomic) = 4.0.0
 Provides:       bundled(node-yallist) = 4.0.0
 
 %description -n npm16
@@ -662,6 +667,7 @@ rm -r  deps/npm/node_modules/node-gyp
 mkdir deps/npm/node_modules/node-gyp
 tar -C deps/npm/node_modules/node-gyp Jxf %{SOURCE5}
 %endif
+
 
 %build
 # normalize shebang
