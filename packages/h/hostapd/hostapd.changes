@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 11 21:35:37 UTC 2022 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Adjust config
+  * Enable SAE
+  * Enable DPP
+  * Enable wired driver
+  * Enable Airtime policy support
+  * Enable Fast Initial Link Setup (FILS) (IEEE 802.11ai)
+
+-------------------------------------------------------------------
 Mon Jan 17 08:33:09 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Removed obsolete patches:
