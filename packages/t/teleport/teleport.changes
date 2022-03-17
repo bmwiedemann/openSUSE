@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 17 10:28:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.0.1:
+  * Release 9.0.1 (#11208)
+  * Fix outdated CLI help for `tbot init --owner` (#11158) (#11167)
+  * Fix improper default value check in tbot's `FromCLIConf()` (#11169) (#11206)
+  * [branch/v9] Backport #10665 (#11064)
+  * Fix quit on ctrlc, race panic, atomic load align in session IO (#11112) (#11188)
+  * Refactored Ansible guide to work with Machine ID.
+  * Cleanup of Machine ID Getting Started Guide.
+  * Remove mention of max ttl for tctl tokens command (#11148) (#11164)
+  * Silence false positive lints from staticcheck in tbot/init.go (#11084) (#11128)
+  * docs: add desktops to per-session-mfa page
+  * Update docs for FIPS users
+  * Automatically calculate `public_addr` field for dynamic apps (#10941). (#10943) (#11139)
+  * Fix DeleteRange when the backend sanitizer is used (#11124) (#11131)
+  * Fix `tsh aws ecr` Internal Server Error (#10475) (#11108)
+  * correct db connect (#11097)
+  * 03/11 Upcoming Releases Update.
+  * 9.0 post-release 4 (#11089)
+  * 9.0 post-release 1: update docs versions (#11082)
+
+-------------------------------------------------------------------
 Sat Mar 12 20:35:40 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.0.0:
