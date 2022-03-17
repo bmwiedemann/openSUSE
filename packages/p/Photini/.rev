@@ -239,4 +239,12 @@ Also see sr#741039 for missing runtime dependency.</comment>
     <comment></comment>
     <requestid>955446</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5d7336d0e3c5ca5ec69c3b5ec9665e34</srcmd5>
+    <version>2022.3.0</version>
+    <time>1647532938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962486</requestid>
+  </revision>
 </revisionlist>

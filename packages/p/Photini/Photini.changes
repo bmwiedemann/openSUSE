@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 17 14:36:31 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2022.3.0
+  * Removed OpenStreetMap tab.
+  * Added licence related stuf to ownership tab.
+  * Removed --user option from post install script.
+  * Better caching of geocoder results.
+  * Other minor improvements and bug fixes.
+
+-------------------------------------------------------------------
 Wed Feb 16 18:07:23 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2022.2.0
