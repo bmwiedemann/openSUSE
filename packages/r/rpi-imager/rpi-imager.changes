@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 14 17:02:14 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 1.7.1
+- disable telemetry and auto updates (rpi-imager-noupdates.diff)
+
+-------------------------------------------------------------------
 Thu Sep  2 15:27:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop rpi-imager.yaml as it is not used in spec file

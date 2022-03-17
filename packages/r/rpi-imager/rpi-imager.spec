@@ -1,7 +1,7 @@
 #
 # spec file for package rpi-imager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,25 @@
 
 
 Name:           rpi-imager
-Version:        1.6.2
+Version:        1.7.1
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
 Group:          Hardware/Other
 URL:            https://github.com/raspberrypi/rpi-imager
 Source:         https://github.com/raspberrypi/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/raspberrypi/rpi-imager/pull/362
+Patch:          rpi-imager-noupdates.diff
+BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  libqt5-qtquickcontrols2
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  util-linux-systemd
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Qml)
@@ -42,7 +45,6 @@ BuildRequires:  pkgconfig(Qt5QuickWidgets)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  update-desktop-files
 
 %description
 
@@ -51,11 +53,11 @@ Raspberry Pi Imager is the quick and easy way to install Raspberry Pi OS and oth
 Download and install Raspberry Pi Imager to a computer with an SD card reader. Put the SD card you'll use with your Raspberry Pi into the reader and run Raspberry Pi Imager.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake .
-%cmake_build 
+%cmake . -DENABLE_CHECK_VERSION=0 -DENABLE_TELEMETRY=0
+%cmake_build
 
 %install
 %cmake_install
@@ -67,7 +69,7 @@ pwd
 pushd linux
 desktop-file-install --dir %{buildroot}%{_datadir}/applications/ rpi-imager.desktop
 %suse_update_desktop_file rpi-imager -r Settings HardwareSettings
-%suse_update_desktop_file rpi-imager -G Imager 
+%suse_update_desktop_file rpi-imager -G Imager
 
 %files
 %doc README.md
