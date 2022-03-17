@@ -46,7 +46,7 @@ rm -rf more_itertools.egg-info
 
 %install
 %python_install
-%python_exec %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v

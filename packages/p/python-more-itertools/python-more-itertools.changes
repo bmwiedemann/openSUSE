@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 15 08:49:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use python_expand for fdupes 
+
+-------------------------------------------------------------------
 Thu Feb  3 20:13:01 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
