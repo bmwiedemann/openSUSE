@@ -1,7 +1,7 @@
 #
 # spec file for package python-usbsdmux
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,24 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%define           skip_python2 1
 %define           orig_name usbsdmux
-Name:             python-usbsdmux
-Version:          0.1.8
-Release:          0
-Summary:          Tool to control an usb-sd-mux from the command line
-License:          LGPL-2.1-or-later
-URL:              https://shop.linux-automation.com/index.php?route=product/product&product_id=50
-Source0:          https://github.com/pengutronix/usbsdmux/archive/%{version}.tar.gz#/%{orig_name}-%{version}.tar.gz
-BuildRequires:    %{python_module devel}
-BuildRequires:    %{python_module setuptools}
-BuildRequires:    fdupes
-BuildRequires:    pkgconfig
-BuildRequires:    python-rpm-macros
-BuildRequires:    pkgconfig(udev)
-Requires:         %{orig_name}-udev
-Requires(post):   update-alternatives
-Requires(postun): update-alternatives
+Name:           python-usbsdmux
+Version:        0.2.1
+Release:        0
+Summary:        Tool to control an usb-sd-mux from the command line
+License:        LGPL-2.1-or-later
+URL:            https://shop.linux-automation.com/index.php?route=product/product&product_id=50
+Source0:        https://github.com/pengutronix/usbsdmux/archive/%{version}.tar.gz#/%{orig_name}-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(udev)
+Requires:       %{orig_name}-udev
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
