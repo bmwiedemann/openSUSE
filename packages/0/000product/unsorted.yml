@@ -7641,10 +7641,6 @@ unsorted:
   - jgoodies-forms-demo 
   - jgoodies-forms-javadoc 
   - jgoodies-forms-manual 
-  - jgoodies-looks 
-  - jgoodies-looks-demo 
-  - jgoodies-looks-javadoc 
-  - jgoodies-looks-manual 
   - jgraphx 
   - jgroups 
   - jgroups-javadoc 
@@ -9976,7 +9972,6 @@ unsorted:
   - libbox2d2-32bit: [x86_64] 
   - libbpf-devel 
   - libbpf-devel-static 
-  - libbpf0 
   - libbpf0-32bit: [x86_64] 
   - libbraiding-devel 
   - libbraiding0 
@@ -15008,6 +15003,7 @@ unsorted:
   - link-grammar 
   - link-grammar-devel 
   - linkloop 
+  - linode-cli-bash-completion 
   - linphone 
   - linphone-cli 
   - linssid 
@@ -20780,7 +20776,6 @@ unsorted:
   - postgresql10-postgis-utils 
   - postgresql10-server 
   - postgresql10-test 
-  - postgresql10-timescaledb 
   - postgresql11 
   - postgresql11-contrib 
   - postgresql11-devel 
@@ -20801,7 +20796,6 @@ unsorted:
   - postgresql11-server 
   - postgresql11-server-devel 
   - postgresql11-test 
-  - postgresql11-timescaledb 
   - postgresql12 
   - postgresql12-contrib 
   - postgresql12-devel 
@@ -20841,6 +20835,7 @@ unsorted:
   - postgresql13-server 
   - postgresql13-server-devel 
   - postgresql13-test 
+  - postgresql13-timescaledb 
   - postgresql14-devel 
   - postgresql14-devel-mini 
   - postgresql14-docs 
@@ -20853,6 +20848,7 @@ unsorted:
   - postgresql14-postgis-utils 
   - postgresql14-server-devel 
   - postgresql14-test 
+  - postgresql14-timescaledb 
   - postgrey 
   - postsrsd 
   - potrace 
@@ -23318,6 +23314,7 @@ unsorted:
   - python310-linecache2 
   - python310-lineup-widget 
   - python310-link-traits 
+  - python310-linode-cli 
   - python310-linstor 
   - python310-linstor-client 
   - python310-linux-procfs 
@@ -24498,6 +24495,7 @@ unsorted:
   - python310-structlog 
   - python310-subgrab 
   - python310-subliminal 
+  - python310-subprocess-tee 
   - python310-subprocrunner 
   - python310-subscene-api 
   - python310-subst 
@@ -26405,6 +26403,7 @@ unsorted:
   - python38-line_profiler 
   - python38-lineup-widget 
   - python38-link-traits 
+  - python38-linode-cli 
   - python38-linstor 
   - python38-linstor-client 
   - python38-lit 
@@ -27493,6 +27492,7 @@ unsorted:
   - python38-structlog 
   - python38-subgrab 
   - python38-subliminal 
+  - python38-subprocess-tee 
   - python38-subprocrunner 
   - python38-subscene-api 
   - python38-subst 
@@ -29492,6 +29492,7 @@ unsorted:
   - python39-linecache2 
   - python39-lineup-widget 
   - python39-link-traits 
+  - python39-linode-cli 
   - python39-linstor 
   - python39-linstor-client 
   - python39-linux-procfs 
@@ -30680,6 +30681,7 @@ unsorted:
   - python39-structlog 
   - python39-subgrab 
   - python39-subliminal 
+  - python39-subprocess-tee 
   - python39-subprocrunner 
   - python39-subscene-api 
   - python39-subst 
@@ -31957,6 +31959,10 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
+  - ruby3.1-rubygem-fog-core 
+  - ruby3.1-rubygem-fog-json 
+  - ruby3.1-rubygem-fog-libvirt 
+  - ruby3.1-rubygem-fog-xml 
   - ruby3.1-rubygem-gettext-setup 
   - ruby3.1-rubygem-rspec-rails-3.9 
   - ruby3.1-rubygem-sinatra 
