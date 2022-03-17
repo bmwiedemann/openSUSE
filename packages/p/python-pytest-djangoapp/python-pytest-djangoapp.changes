@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 17 05:37:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded {Build,}Requires on python-mock. 
+
+-------------------------------------------------------------------
 Mon Jan 10 20:59:26 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.15.2:

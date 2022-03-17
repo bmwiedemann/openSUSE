@@ -32,13 +32,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
-Requires:       python-mock
 Requires:       python-pytest
 Recommends:     python-ipdb
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

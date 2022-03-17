@@ -28,4 +28,12 @@
 </comment>
     <requestid>945411</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b13775fecc8a778c5efabf62a57112e4</srcmd5>
+    <version>0.15.2</version>
+    <time>1647532898</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded {Build,}Requires on python-mock.</comment>
+    <requestid>962307</requestid>
+  </revision>
 </revisionlist>
