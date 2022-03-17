@@ -45,4 +45,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1195555</comment>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>51d6278994743188e238f0892036907d</srcmd5>
+    <version>1.1.0</version>
+    <time>1647532892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>962288</requestid>
+  </revision>
 </revisionlist>
