@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar 17 10:14:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.17
+
+-------------------------------------------------------------------
+Wed Mar 16 18:04:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.24.3:
+  * chore(issue labels): added new labels (#1839)
+  * refactor: clarify db update warning messages (#1808)
+  * chore(ci): change trivy vulnerability scan for every day  (#1838)
+  * feat(helm): make Trivy service name configurable (#1825)
+  * chore(deps): updated sprig to version v3.2.2. (#1814)
+  * chore(deps): updated testcontainers-go to version v0.12.0 (#1822)
+  * docs: add packages.config for .NET (#1823)
+  * build: sign container image (#1668)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.4.0 to 0.5.0 (#1778)
+  * docs: fix Installation documentation (#1804)
+  * fix(report): ensure json report got a final new line (#1797)
+  * fix(terraform): resolve panics in defsec (#1811)
+  * feat(docker): Label images based on OCI image spec (#1793)
+  * fix(helm): indentation for ServiceAccount annotations (#1795)
+  * fix(hcl): fix panic in hcl2json (#1791)
+  * chore(helm): remove psp from helm manifest (#1315)
+  * build: Replace `make protoc` with `for loop` to return an error (#1655)
+  * fix: ASFF template to match ASFF schema (#1685)
+  * feat(helm): Add support for server token (#1734)
+
+-------------------------------------------------------------------
 Thu Mar 03 13:38:37 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.24.2:
