@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 17 13:45:39 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.14.0
+  - Correctly fail on validation warnings if --strict is specified
+  - Drop support for Go 1.13 and 1.14
+  - Support none filesystem format
+  - Fix incorrect config paths in validation reports on 386 architecture
+- Drop obsolete butane-0.11.0-fix-vcontext-report-copy.patch
+
+-------------------------------------------------------------------
 Fri Apr  9 23:27:35 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Initial package to replace ignition-config-transpiler/fcct
