@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment-profiles-openSUSE
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           enlightenment-profiles-openSUSE
-Version:        20160622
+Version:        20220317
 Release:        0
 Summary:        Enlightenment openSUSE profiles
 License:        BSD-2-Clause
 Group:          System/GUI/Other
-Url:            https://github.com/simotek/enlightenment-openSUSE-profiles
+URL:            https://github.com/openSUSE/enlightenment-openSUSE-profiles
 Source:         enlightenment-profiles-openSUSE-%{version}.tar.xz
 BuildRequires:  eet
 # The profile needs default.edj, it presumes it is the right default.edj for the theme
@@ -51,7 +51,8 @@ make install DESTDIR="%buildroot"
 
 %files
 %defattr(-,root,root)
-%doc README.md LICENSE AUTHORS
+%license LICENSE AUTHORS
+%doc README.md
 %{_datadir}/enlightenment
 
 %changelog

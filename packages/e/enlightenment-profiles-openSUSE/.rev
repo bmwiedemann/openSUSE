@@ -46,4 +46,12 @@
     <comment>Unify key bindings with other DE's boo#983953</comment>
     <requestid>403966</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>842325e418b8f8a97272bd90bdf75ada</srcmd5>
+    <version>20220317</version>
+    <time>1647532926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962461</requestid>
+  </revision>
 </revisionlist>

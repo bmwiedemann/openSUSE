@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 17 11:38:56 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- 20220317 - e25 dropped the teamwork module and I added the msgbus
+  module because its useful
+- Updated URL moved profiles out of my namespace and into the
+  openSUSE one.
+
+-------------------------------------------------------------------
 Wed Jun 22 02:35:02 UTC 2016 - sflees@suse.de
 
-- boo#983953 alt-F4 and Ctrl-Alt-X keybindings don't match other 
+- boo#983953 alt-F4 and Ctrl-Alt-X keybindings don't match other
   desktops
 
 -------------------------------------------------------------------
@@ -52,7 +60,7 @@ Fri Oct 18 23:17:24 UTC 2013 - simon@simotek.net
 
 - Fixed bug 844178
   Removed Ctrl+W (Close Window) Key binding
-  Moved swich workspace to Alt+Shift F* from Alt F* 
+  Moved swich workspace to Alt+Shift F* from Alt F*
       (Alt F2 and Alt F4 were used for other bindings)
 
 -------------------------------------------------------------------
@@ -93,4 +101,3 @@ Wed Jan  9 11:46:11 UTC 2013 - sleep_walker@suse.cz
 Wed Jan  9 10:51:53 UTC 2013 - sleep_walker@suse.cz
 
 - let there be e-profiles-openSUSE!
-
