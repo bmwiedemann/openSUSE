@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-table-extra
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           fcitx5-table-extra
-Version:        5.0.7
+Version:        5.0.9
 Release:        0
 Summary:        Extra Chinese table input methods for Fcitx5
-License:        GPL-2.0-only AND SUSE-Public-Domain
+License:        GPL-3.0-or-later AND SUSE-Public-Domain
 URL:            https://github.com/fcitx/fcitx5-table-extra
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  boost-devel
@@ -44,9 +44,9 @@ Provides:       fcitx-table-t9 = %{version}
 Provides:       fcitx-table-tw-array30 = %{version}
 Provides:       fcitx-table-tw-array30-large = %{version}
 Provides:       fcitx-table-tw-boshiamy = %{version}
+Provides:       fcitx-table-tw-cangjie-large = %{version}
 Provides:       fcitx-table-tw-cangjie3 = %{version}
 Provides:       fcitx-table-tw-cangjie5 = %{version}
-Provides:       fcitx-table-tw-cangjie-large = %{version}
 Provides:       fcitx-table-tw-easy-large = %{version}
 Provides:       fcitx-table-tw-quick-classic = %{version}
 Provides:       fcitx-table-tw-quick3 = %{version}
@@ -65,9 +65,9 @@ Obsoletes:      fcitx-table-t9 <= 0.3.8
 Obsoletes:      fcitx-table-tw-array30 <= 0.3.8
 Obsoletes:      fcitx-table-tw-array30-large <= 0.3.8
 Obsoletes:      fcitx-table-tw-boshiamy <= 0.3.8
+Obsoletes:      fcitx-table-tw-cangjie-large <= 0.3.8
 Obsoletes:      fcitx-table-tw-cangjie3 <= 0.3.8
 Obsoletes:      fcitx-table-tw-cangjie5 <= 0.3.8
-Obsoletes:      fcitx-table-tw-cangjie-large <= 0.3.8
 Obsoletes:      fcitx-table-tw-easy-large <= 0.3.8
 Obsoletes:      fcitx-table-tw-quick-classic <= 0.3.8
 Obsoletes:      fcitx-table-tw-quick3 <= 0.3.8
@@ -96,7 +96,7 @@ fcitx-table-extra provides extra table for Fcitx, including Boshiamy, Zhengma, C
 %cmake_install
 
 %files
-%license LICENSES/GPL-2.0-only.txt
+%license LICENSES/GPL-3.0-or-later.txt
 %doc README
 %{_datadir}/icons/hicolor/*/apps/fcitx-*
 %{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-*
