@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 16 12:16:20 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.19.1
+  1.19
+  * introduced truncate() to truncate a string while retaining the
+    sequences, #211 by fishermans-friend
+  * enhancement: Add small sleep in kbhit() on Windows to reduce CPU
+    load #209 by numerlor
+  * enhancement: rjust(), ljust(), and center() now accept
+    SupportsIndex types, #234
+  * enhancement: When 88 colors is detected, it is now interpreted
+    as 16 colors rather than raising an AssertionError, #235
+  * bugfix: Fix global variable declarations in type annotations, #230
+    by mwchase
+  1.18
+  * bugfix: split_seqs() for some sequences like term.move_left(3), #197.
+  * introduced: type annotations, #192 by dlax.
+  * bugfix: do not fail when sys.stdin is unset, #195 by Olen
+  * docfix: correct “Bottom of the screen” example to use end=''
+    and document about it in location.rst, #188 by pyfisch
+- python-mock not required
+
+-------------------------------------------------------------------
 Wed Aug 26 06:48:05 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.17.10:
