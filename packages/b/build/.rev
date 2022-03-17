@@ -1448,4 +1448,12 @@ Changes:
   * Updated distribution configurations (esp. Leap 15.4 and Tumbleweed)</comment>
     <requestid>959816</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>2c3c285b73ba33aebf27303b84dc3372</srcmd5>
+    <version>20220315</version>
+    <time>1647532879</time>
+    <user>dimstar_suse</user>
+    <comment>fix regression</comment>
+    <requestid>961965</requestid>
+  </revision>
 </revisionlist>
