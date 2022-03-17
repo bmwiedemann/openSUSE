@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 13:00:11 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.10.4
+  * Improved build process: Perform actual build in OBS
+
+-------------------------------------------------------------------
 Mon Jan 31 15:12:30 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.9.9

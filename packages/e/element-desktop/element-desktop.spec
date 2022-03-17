@@ -17,22 +17,28 @@
 
 
 Name:           element-desktop
-Version:        1.9.9
+Version:        1.10.4
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        Apache-2.0
 URL:            https://github.com/vector-im/element-desktop
 Source0:        https://github.com/vector-im/element-desktop/archive/v%{version}.tar.gz#/element-desktop-%{version}.tar.gz
 Source1:        https://github.com/vector-im/element-web/archive/v%{version}.tar.gz#/element-web-%{version}.tar.gz
-Source2:        dist.tar.gz
+Source2:        npm-packages-offline-cache.tar.gz
 Source3:        io.element.Element.desktop
 Source4:        element-desktop.sh
-Source5:        prepare_tarball.sh
-BuildRequires:  element-web
+Source5:        prepare.sh
+Source6:        electron-builder-offline-cache.tar.gz
+BuildRequires:  element-web = %{version}
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  nodejs-electron
-Requires:       element-web
+BuildRequires:  jq
+BuildRequires:  moreutils
+BuildRequires:  nodejs-electron-devel
+BuildRequires:  yarn
+Requires:       element-web = %{version}
 Requires:       nodejs-electron
+
+#Element contains no native code
 BuildArch:      noarch
 
 %description
@@ -40,7 +46,8 @@ A glossy Matrix collaboration client - desktop
 
 %prep
 %setup -q
-sed -i 's@"electronVersion": "11.2.3"@"electronVersion": "12.0.4"@g' package.json
+SYSTEM_ELECTRON_VERSION=$(<%{_libdir}/electron/version)
+jq -c '.build["electronVersion"]="'$SYSTEM_ELECTRON_VERSION'" | .build["electronDist"]="%{_libdir}/electron"' < package.json | sponge package.json
 sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/release/config.json
 pwd
 cd ..
@@ -50,15 +57,27 @@ tar xvf %{SOURCE1}
 cd element-desktop-%{version}
 
 %build
-# Unpack prepared (see prepare.sh) webapp
-tar xvf %{SOURCE2}
+echo 'yarn-offline-mirror "./npm-packages-offline-cache"' >> .yarnrc
+echo 'nodedir %{_includedir}/electron' >> .yarnrc
+tar xf %{SOURCE2}
+ls ./npm-packages-offline-cache | head
+
+export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+
+yarn install --offline --pure-lockfile
+
+tar xf %{SOURCE6}
+export PATH="$PATH:node_modules/.bin"
+export ELECTRON_BUILDER_CACHE="$(pwd)/electron-builder-offline-cache/"
+#yarn run build:native
+yarn run build
 
 %install
-install -d %{buildroot}{%{_prefix}/lib/element/,%{_sysconfdir}/webapps/element}
+install -d %{buildroot}{%{_datadir}/element/,%{_sysconfdir}/webapps/element}
 
 # Install the app content, replace the webapp with a symlink to the system package
-cp -r dist/linux-unpacked/resources/* "%{buildroot}%{_prefix}/lib/element/"
-ln -s %{_datadir}/webapps/element "%{buildroot}%{_prefix}/lib/element/webapp"
+cp -r dist/linux-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
+ln -s %{_datadir}/webapps/element "%{buildroot}%{_datadir}/element/webapp"
 
 # Config file
 ln -s %{_sysconfdir}/element/config.json "%{buildroot}%{_sysconfdir}/webapps/element/config.json"
@@ -79,8 +98,8 @@ done
 %files
 %license LICENSE
 %{_bindir}/%{name}
-%{_prefix}/lib/element/
-%{_sysconfdir}/webapps/element/config.json
+%{_datadir}/element/
+%config %{_sysconfdir}/webapps/element/config.json
 %{_datadir}/webapps/element/config.json
 %{_sysconfdir}/element/
 %{_datadir}/applications/io.element.Element.desktop

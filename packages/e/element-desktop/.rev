@@ -104,4 +104,14 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
 </comment>
     <requestid>950244</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84c7ffa74286ef40b417dac0d5f7b460</srcmd5>
+    <version>1.10.4</version>
+    <time>1647532929</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.10.4
+  * Improved build process: Perform actual build in OBS
+</comment>
+    <requestid>962471</requestid>
+  </revision>
 </revisionlist>
