@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfdatetime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define timestamp 20200824
+%define timestamp 20220131
 %define skip_python2 1
 %define modname dfdatetime
 Name:           python-dfdatetime
@@ -31,6 +31,7 @@ Source:         https://files.pythonhosted.org/packages/source/d/%{modname}/%{mo
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pbr >= 4.2.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.1.0}
 BuildRequires:  fdupes
@@ -56,9 +57,7 @@ rm -rfv %{buildroot}%{_datadir}/doc/%{modname}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Using pytest leads to some horribly-looking crashes, not sure what's
-# going on.
-%python_exec ./run_tests.py
+%pytest tests/*.py
 
 %files %{python_files}
 %license LICENSE
