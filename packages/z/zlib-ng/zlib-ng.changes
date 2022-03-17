@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 17 08:58:41 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.0.6:
+  * Fix hangs on macOS #1031
+  * Fix minideflate write buffers being overwritten #1060
+  * Fix deflateBound and compressBound returning too small size estimates #1049 #1071
+  * Fix incorrect function declaration warning #1080
+  * Fix build problems when building outside of source dir #1049
+  * Fix build problems on arm2-7 #1030
+  * Fixed some compile warnings #1020 #1036 #1037 #1048
+  * Improved posix memalign support #888
+  * Improvements to testing #637 #1026 #1032 #1035 #1049 #1051 #1056 #1063 #1067
+  * Improvements for integration into other projects #1022 #1042
+  * Code style fixes #637 #1040 #1050 #1075
+
+-------------------------------------------------------------------
 Thu Jul  1 14:22:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.0.5

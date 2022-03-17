@@ -1,7 +1,7 @@
 #
-# spec file for package zlib-ng
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# 'compat' flavor can be used as a drop-in replacement of 'libz'
+
 %define target @BUILD_FLAVOR@%{nil}
 %if "%target" == "compat"
 %bcond_without zlib_compat
@@ -31,7 +31,7 @@
 %endif
 
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
