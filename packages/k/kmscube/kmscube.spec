@@ -1,7 +1,7 @@
 #
 # spec file for package kmscube
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,15 @@
 
 
 Name:           kmscube
-Version:        0.0.0.git1585705428.4660a7d
+Version:        0.0.0.git1612698153.9f63f35
 Release:        0
 Summary:        Demo for bare metal graphics
 License:        MIT
 Group:          Development/Tools/Other
-URL:            https://github.com/bastibl/kmscube.git
+URL:            https://gitlab.freedesktop.org/mesa/kmscube
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
-BuildRequires:  meson >= 0.47
 BuildRequires:  gcc
 BuildRequires:  glib2-devel
 BuildRequires:  gstreamer-devel >= 1.6.0
@@ -35,6 +34,7 @@ BuildRequires:  gstreamer-plugins-base-devel >= 1.6.0
 BuildRequires:  libdrm-devel >= 2.4.71
 BuildRequires:  libgbm-devel >= 13.0
 BuildRequires:  make
+BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(x11)
