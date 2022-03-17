@@ -34,8 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
 BuildRequires:  gradle
-BuildRequires:  java-1_8_0-openjdk-devel
-BuildRequires:  java-1_8_0-openjdk-headless
+BuildRequires:  java-devel >= 8
 BuildRequires:  python3
 BuildArch:      noarch
 

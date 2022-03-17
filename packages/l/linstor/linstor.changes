@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  9 06:07:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not hardcode java 8 dependency, since the gradle in Factory
+  is able to build this one just fine and it works well with
+  java 11.
+
+-------------------------------------------------------------------
 Wed Jan 12 06:15:16 UTC 2022 - nick wang <nwang@suse.com>
 
 - bsc#1194567, update to 1.17.0 
