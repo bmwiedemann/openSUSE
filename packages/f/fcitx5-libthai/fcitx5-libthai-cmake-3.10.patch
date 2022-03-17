@@ -1,10 +1,10 @@
-Index: fcitx5-libthai-5.0.6/CMakeLists.txt
+Index: fcitx5-libthai-5.0.7/CMakeLists.txt
 ===================================================================
---- fcitx5-libthai-5.0.6.orig/CMakeLists.txt
-+++ fcitx5-libthai-5.0.6/CMakeLists.txt
+--- fcitx5-libthai-5.0.7.orig/CMakeLists.txt
++++ fcitx5-libthai-5.0.7/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.11)
 +cmake_minimum_required(VERSION 3.10)
- project(fcitx5-libthai VERSION 5.0.6)
+ project(fcitx5-libthai VERSION 5.0.7)
  find_package(ECM REQUIRED 1.0.0)
  set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
