@@ -993,4 +993,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment></comment>
     <requestid>945800</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>e81d7275a442c957a605e3c9a1eb7a6d</srcmd5>
+    <version>5.16</version>
+    <time>1647532886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959517</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  4 09:43:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add eBPF(libbpf) support
+- Adjust NETNS_RUN_DIR from /var/run to /run
+
+-------------------------------------------------------------------
 Tue Jan 11 21:22:27 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - remove routef from links; it doesn't exist anymore
