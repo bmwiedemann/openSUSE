@@ -1,7 +1,7 @@
 #
 # spec file for package fdupes
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?!_rpmmacrodir:%define _rpmmacrodir /usr/lib/rpm/macros.d}
 
@@ -23,9 +24,11 @@ Release:        0
 Summary:        Tool to identify or delete duplicate files
 License:        MIT
 Group:          Productivity/Archiving/Compression
-Url:            https://github.com/adrianlopezroche/fdupes
+URL:            https://github.com/adrianlopezroche/fdupes
 Source0:        https://github.com/adrianlopezroche/fdupes/releases/download/v%{version}/fdupes-%{version}.tar.gz
 Source1:        macros.fdupes
+Source2:        fdupes_wrapper.cpp
+BuildRequires:  gcc-c++
 
 %description
 FDUPES is a program for identifying or deleting duplicate files
@@ -37,10 +40,12 @@ residing within specified directories.
 %build
 %configure --without-ncurses
 %make_build
+g++ $RPM_OPT_FLAGS %{S:2} -o fdupes_wrapper
 
 %install
 %make_install
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.%{name}
+install -D -m755 fdupes_wrapper  %{buildroot}/usr/lib/rpm/fdupes_wrapper
 
 %check
 ./%{name} testdir
@@ -53,5 +58,6 @@ install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.%{name}
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1*
 %{_rpmmacrodir}/macros.%{name}
+/usr/lib/rpm/fdupes_wrapper
 
 %changelog
