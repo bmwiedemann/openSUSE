@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 17 09:40:55 UTC 2022 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.39
+- Bug Fixes
+ + ZBX-19789 Added SourceIP support to ldap simple checks
+ + ZBX-20680 Fixed reflected XSS issues 
+   ( Reflected XSSes in Zabbix Frontend (CVE-2022-24349, CVE-2022-24917, CVE-2022-24918, CVE-2022-24919) )
+   fixes for bsc#1196945 bsc#1196946 bsc#1196947
+
+-------------------------------------------------------------------
 Sun Feb 13 08:16:27 UTC 2022 - Boris Manojlovic <boris@steki.net>
 
 - mention dropped files from 3.x series so it can be accepted in backports...
