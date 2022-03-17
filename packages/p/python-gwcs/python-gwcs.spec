@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwcs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# Astropy dropped Python 3.6
-# But gwcs still supports it, so keep the -base, requirement below for potential Leap backports
-%define skip_python36 1
 Name:           python-gwcs
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
@@ -30,7 +27,7 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://gwcs.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{version}.tar.gz
 BuildRequires:  %{python_module asdf >= 2.8.1}
-BuildRequires:  %{python_module asdf-astropy}
+BuildRequires:  %{python_module asdf-astropy >= 0.2.0}
 BuildRequires:  %{python_module asdf_wcs_schemas}
 BuildRequires:  %{python_module astropy >= 4.1}
 BuildRequires:  %{python_module base >= 3.6}
@@ -41,7 +38,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 2.8.1
-Requires:       python-asdf-astropy
+Requires:       python-asdf-astropy >= 0.2.0
 Requires:       python-asdf_wcs_schemas
 Requires:       python-astropy >= 4.1
 Requires:       python-numpy
@@ -68,9 +65,7 @@ World Coordinate System of astronomical data.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# the schema tests do not tolerate numpy 1.20 deprecation warnings. Already fixed upstream, but patch is too unspecific
-# gh#spacetelescope/gwcs#353
-%pytest -ra -k "not (schemas and (label_mapper or regions_selector))"
+%pytest -ra
 
 %files %{python_files}
 %doc README.rst

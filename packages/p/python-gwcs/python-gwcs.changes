@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 17 07:59:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.1
+  * Bug fix update
+  * Remove references to the ``six`` package. [#402]
+  * Fix asdf-astropy related test failure
+
+-------------------------------------------------------------------
 Tue Dec 28 14:59:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.0
