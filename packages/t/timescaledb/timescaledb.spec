@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,28 @@
 #
 
 
-%define         pgname  @BUILD_FLAVOR@%{nil}
-%define         sname   timescaledb
-%define         priority    %{pgname}
-Version:        1.7.4
+%define         pg_name  @BUILD_FLAVOR@%{nil}
+%define         ext_name   timescaledb
+%{pg_version_from_name}
+
+Name:           %{pg_name}-%{ext_name}
+Version:        2.6.0
 Release:        0
 Summary:        A time-series database extension for PostgreSQL
 License:        Apache-2.0
 Group:          Productivity/Databases/Tools
 URL:            https://www.timescale.com/
-Source:         https://github.com/timescale/%{sname}/archive/%{version}/%{sname}-%{version}.tar.gz
-Patch0:         clang-format9_support.diff
-BuildRequires:  %{pgname}-server
-BuildRequires:  %{pgname}-server-devel
-BuildRequires:  clang
-BuildRequires:  cmake >= 3.4
-BuildRequires:  fdupes
-BuildRequires:  update-alternatives
-%requires_eq    %{pgname}-server
-%if "%{pgname}" == ""
-Name:           %{sname}
+Source:         https://github.com/timescale/%{ext_name}/archive/%{version}/%{ext_name}-%{version}.tar.gz
+Source1:        series
+Patch1:         clang-format9_support.diff
+Patch2:         https://github.com/timescale/timescaledb/commit/ab6b90caf.patch
+
+BuildRequires:  %{pg_name}-server-devel
+BuildRequires:  cmake >= 3.11
+%pg_server_requires
+%if "%{pg_name}" == ""
 ExclusiveArch:  do_not_build
-%else
-Name:           %{pgname}-%{sname}
-%endif
-%if ("%{pgname}" == "postgresql95" || "%{pgname}" == "postgresql96") && 0%{?suse_version} >= 1550
-ExclusiveArch:  do_not_build
+Name:           %{ext_name}
 %endif
 
 %description
@@ -55,42 +51,20 @@ TimescaleDB is packaged as a PostgreSQL extension.
 This build includes only Apache2 modules;
 TSL (timescale licenced modules are not built).
 
-This build only Apache2 modules,
-TSL (timescale licenced modules are not build)
-
 %prep
-%setup -q -n %{sname}-%{version}
-# Remove static .so
-rm -fv %{sname}.so
-%autopatch -p1
+%autosetup -p1 -n %{ext_name}-%{version}
 
 %build
-export PATH="$PATH:%{_prefix}/lib/%{pgname}/bin"
-# No-as-needed is mandatory for Build on Leap42/SLE12
-# Force build of only Apache2(community)
-%cmake -DAPACHE_ONLY=1 \
-    -DCMAKE_EXE_LINKER_FLAGS="-Wl,--no-as-needed -Wl,--no-undefined -Wl,-z,now" \
-    -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--no-as-needed" \
-    -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--no-as-needed -Wl,--no-undefined -Wl,-z,now" \
-    -DREGRESS_CHECKS=OFF \
-  ..
-
-make USE_PGXS=1 %{?_smp_mflags}
+%cmake -DAPACHE_ONLY=1 -DSEND_TELEMETRY_DEFAULT=OFF -DREGRESS_CHECKS=OFF
+%cmake_build
 
 %install
-export PATH="$PATH:%{_prefix}/lib/%{pgname}/bin"
-%cmake_install USE_PGXS=1 install DESTDIR=%{buildroot}
-
-%fdupes %{buildroot}/%{_datadir}/%{pgname}/extension
-
-#%%check
-# Need to be finished when we found pg_regress
+%cmake_install
 
 %files
-%defattr(-,root,root)
-%license LICENSE-APACHE NOTICE
-%doc README.md CONTRIBUTING.md CHANGELOG.md docs
-%{_prefix}/lib/%{pgname}/%{_lib}/%{sname}*.so
-%{_datadir}/%{pgname}/extension/%{sname}*
+%license LICENSE-APACHE NOTICE LICENSE
+%doc README.md CONTRIBUTING.md CHANGELOG.md
+%{pg_config_pkglibdir}/%{ext_name}*.so
+%{pg_config_sharedir}/extension/%{ext_name}*
 
 %changelog
