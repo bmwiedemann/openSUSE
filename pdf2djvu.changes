@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 16 09:30:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.9.18.2:
+  * Document minimum required Exiv2 version.
+  * Fix build failure with upcoming Exiv2 1.0.
+  * Remove spurious zero-width spaces from the Ukrainian manual
+    page.
+  * Improve the test suite
+- Add upstream changes:
+  * 0001-pdf-backend-fix-compat-with-Poppler-22.02.patch
+  * 0002-main-use-pdf-link-Destination-copy-constructor.patch
+  * 0003-pdf-backend-fix-compat-with-Poppler-22.02.patch
+  * 0004-pdf-backend-simplify-Poppler-22.03-compat-code.patch
+
+-------------------------------------------------------------------
 Sat Oct 23 18:23:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.9.18.1
