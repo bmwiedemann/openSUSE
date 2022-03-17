@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION tests
 BuildRequires:  %{python_module pytest >= 3.6}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildArch:      noarch
 %python_subpackages
