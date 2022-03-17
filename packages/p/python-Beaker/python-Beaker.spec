@@ -34,7 +34,6 @@ BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dbm}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pymongo}
@@ -103,11 +102,6 @@ Features include:
 %setup -q -n beaker-%{version}
 %autopatch -p1
 
-# needs mongo and redis running
-rm -r tests/test_managers
-rm tests/test_memcached.py
-rm tests/test_cachemanager.py
-
 %build
 %python_build
 
@@ -116,6 +110,10 @@ rm tests/test_cachemanager.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# needs mongo and redis running
+rm -r tests/test_managers
+rm tests/test_memcached.py
+rm tests/test_cachemanager.py
 %{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}
 # gh#bbangert/beaker#172
 rm -fv tests/test.db
