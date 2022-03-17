@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without lang
 Name:           kstars
-Version:        3.5.7
+Version:        3.5.8
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -31,8 +31,8 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         fix_flat.patch
+Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
+Source2:        %{name}.keyring
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -64,17 +64,17 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WebSockets)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  cmake(StellarSolver)
+BuildRequires:  cmake(StellarSolver) >= 2.2
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libindi)
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(wcslib)
+Requires:       libqt5-qtquickcontrols
 Recommends:     %{name}-lang
 Recommends:     libindi
 Recommends:     xplanet
-Requires:       libqt5-qtquickcontrols
 
 %description
 KStars is astronomy software. It provides an accurate graphical

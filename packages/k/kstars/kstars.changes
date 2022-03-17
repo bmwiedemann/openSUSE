@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Mar 16 15:59:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.8:
+  * Avoid in-sequence-counter countdown when already zero
+  * Only emit newCoord when mount is connected
+  * Bugfix initial guide deviation set blocks post MF calibration
+  * If telescope device is not defined or connected, do not process coordinates
+  * Make some usability improvements, especially in the Find Dialog
+  * Fix various memory leaks
+  * Fix bug that caused PAA to fail if a driver send HORIZONTAL_COORD as well
+  * Update stellarsolver requirement to 2.2
+  * Capture encoding is now fully implemented in the code along with capture format
+  * Fixed restoring of bin settings
+  * Improve tooltip and simplify UI
+  * Clear sequence array on clear sequence
+  * New Greedy Algorithm for Scheduler
+  * Allow to provide a custom URL to download index data from
+  * Make minimum exposure value 1 for refresh phase
+  * Add support for INDI capture format
+  * Adding popular asterisms as a sky culture
+  * Change gpg period spinbox from int to double
+  * Bugfix selecting guide deviation when guiding is not running
+  * Fix calibration not always shown
+  * Fix multiStar graphics offset by a frame
+  * Full changelog at https://invent.kde.org/education/kstars/-/blob/master/ChangeLog
+- Remove fix_flat.patch
+
+-------------------------------------------------------------------
 Wed Feb  9 14:47:31 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix_flat.patch: when duration is set in the filename, Kstars
