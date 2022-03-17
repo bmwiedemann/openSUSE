@@ -1,7 +1,7 @@
 #
 # spec file for package python-dictdiffer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  python-rpm-macros
 Suggests:       python-numpy >= 1.11.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module pytest >= 2.8.0}
 # /SECTION
 %python_subpackages
