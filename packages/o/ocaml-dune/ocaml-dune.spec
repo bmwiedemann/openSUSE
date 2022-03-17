@@ -24,7 +24,7 @@
 
 %define     pkg ocaml-dune
 Name:           %{pkg}%{nsuffix}
-Version:        2.9.1
+Version:        2.9.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A composable build system for OCaml
