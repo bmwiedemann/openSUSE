@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 14 07:21:10 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220312
+  + add xterm+acs building-block -TD
+  + add xterm-p370, for use in older terminals -TD
+  + add dec+sl to xterm-new, per patch #371 -TD
+  + add mosh and mosh-256color -TD
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.3.dif
+
+-------------------------------------------------------------------
+Mon Mar  7 07:17:09 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220305
+  + replace obsolescent "-gnatg" option with "-gnatwa" and "-gnatyg", to
+    work around build problems with gnat 12.
+  + update external links in Ada95.html
+  + trim unused return-value from canonical_name().
+
+-------------------------------------------------------------------
 Mon Feb 28 08:06:31 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220226

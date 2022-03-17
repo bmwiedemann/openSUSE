@@ -3559,4 +3559,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959802</requestid>
   </revision>
+  <revision rev="209" vrev="13">
+    <srcmd5>4f8ed2dffc8339ac6dc7949669cb05dd</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1647532872</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20220312
+  + add xterm+acs building-block -TD
+  + add xterm-p370, for use in older terminals -TD
+  + add dec+sl to xterm-new, per patch #371 -TD
+  + add mosh and mosh-256color -TD
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.3.dif
+
+- Add ncurses patch 20220305
+  + replace obsolescent &quot;-gnatg&quot; option with &quot;-gnatwa&quot; and &quot;-gnatyg&quot;, to
+    work around build problems with gnat 12.
+  + update external links in Ada95.html
+  + trim unused return-value from canonical_name().</comment>
+    <requestid>961608</requestid>
+  </revision>
 </revisionlist>
