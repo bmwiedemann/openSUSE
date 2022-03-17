@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 10 21:22:20 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update binutils-skip-rpaths.patch: add back fix for boo#1191473,
+  which got lost in the update to 2.38.
+
+-------------------------------------------------------------------
 Fri Mar  4 10:44:39 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update binutils-2.38-branch.diff.gz in order to include PR28879.
