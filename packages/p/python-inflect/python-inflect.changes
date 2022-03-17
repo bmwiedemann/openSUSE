@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 15 08:04:50 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- use %python_expand for %fdupes
+
+-------------------------------------------------------------------
 Wed Jan 20 15:12:07 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update URL to https://github.com/jaraco/inflect

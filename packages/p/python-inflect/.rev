@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>865036</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>544c325c3d2fbb4e5c77dc9f6207436a</srcmd5>
+    <version>5.0.2</version>
+    <time>1647532878</time>
+    <user>dimstar_suse</user>
+    <comment>- use %python_expand for %fdupes</comment>
+    <requestid>961820</requestid>
+  </revision>
 </revisionlist>
