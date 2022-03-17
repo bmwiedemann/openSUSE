@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define k3s_relabel_files() \
         mkdir -p /var/lib/cni; \
         mkdir -p /var/lib/kubelet/pods; \
@@ -33,37 +34,36 @@
 %define selinux_policyver 20210716-3.1
 %define container_policyver 2.164.2-1.1
 
-Name:       k3s-selinux
-Version:	0.5.latest.1
-Release:	0
-Summary:	SELinux policy module for k3s
+Name:           k3s-selinux
+Version:        1.1.stable.1
+Release:        0
+Summary:        SELinux policy module for k3s
 
-Group:	    System Environment/Base
-License:	Apache-2.0
-URL:		http://k3s.io/k3s-selinux
-Source:     %{name}-%{version}.tar.gz
-Source1:    k3s.if
+Group:          System Environment/Base
+License:        Apache-2.0
+URL:            http://k3s.io/k3s-selinux
+Source:         %{name}-%{version}.tar.gz
 
-BuildArch:  noarch
-BuildRequires: container-selinux >= %{container_policyver}
-BuildRequires: git
-BuildRequires: selinux-policy >= %{selinux_policyver}
-BuildRequires: selinux-policy-devel >= %{selinux_policyver}
+BuildArch:      noarch
+BuildRequires:  container-selinux >= %{container_policyver}
+BuildRequires:  git
+BuildRequires:  selinux-policy >= %{selinux_policyver}
+BuildRequires:  selinux-policy-devel >= %{selinux_policyver}
 
-Requires: policycoreutils, selinux-tools
+Requires:       policycoreutils
+Requires:       selinux-tools
 Requires(post): selinux-policy-base >= %{selinux_policyver}, policycoreutils, container-selinux >= %{container_policyver}
-Requires(postun): policycoreutils
+Requires(postun):policycoreutils
 
-Provides: %{name} = %{version}-%{release}
-Obsoletes: k3s-selinux <= 0.5
-Conflicts: rke2-selinux
+Provides:       %{name} = %{version}-%{release}
+Obsoletes:      k3s-selinux <= 0.5
+Conflicts:      rke2-selinux
 
 %description
 This package installs and sets up the SELinux policy security module for k3s.
 
 %prep
 %setup -q
-install -m 644 %{SOURCE1} policy/microos/k3s.if
 
 %build
 cd policy/microos
@@ -99,4 +99,3 @@ fi;
 %{_datadir}/selinux/devel/include/contrib/k3s.if
 
 %changelog
-

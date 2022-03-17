@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 16 17:40:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.1.stable.1:
+  * fix centos 7
+- remove file k3s.if as it is now included in a release
+
+-------------------------------------------------------------------
+Wed Mar 16 17:39:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.0.stable.1:
+  * centos 8 vault: side-step eol problems (#28)
+  * k3s-root: reduced executable privileges (#26)
+
+-------------------------------------------------------------------
 Wed Jan 26 11:52:45 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Add missing spec license/copyright 
