@@ -112,4 +112,12 @@
     <comment></comment>
     <requestid>959851</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>48a2f0d79664ef4ad379aa16ff1ecc19</srcmd5>
+    <version>0.23</version>
+    <time>1647532900</time>
+    <user>dimstar_suse</user>
+    <comment>Updated build requirements (forwarded request 962344 from alois)</comment>
+    <requestid>962345</requestid>
+  </revision>
 </revisionlist>

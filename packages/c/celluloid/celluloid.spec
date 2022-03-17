@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.6.1
 BuildRequires:  pkgconfig(mpv) >= 1.107
 Recommends:     %{name}-lang
 Recommends:     youtube-dl
