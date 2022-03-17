@@ -42,6 +42,7 @@ BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  libelf-devel
+BuildRequires:  libbpf-devel
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl)
