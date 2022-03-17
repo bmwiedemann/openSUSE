@@ -60,4 +60,15 @@
     <comment></comment>
     <requestid>942994</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>386f78f128a7831e81d680ffc870d3b4</srcmd5>
+    <version>0.18.1</version>
+    <time>1647532899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.1
+  * Bug fix update
+  * Remove references to the ``six`` package. [#402]
+  * Fix asdf-astropy related test failure (forwarded request 962341 from bnavigator)</comment>
+    <requestid>962342</requestid>
+  </revision>
 </revisionlist>
