@@ -130,4 +130,16 @@
 - Update Requires from setup.py</comment>
     <requestid>931554</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5b13c39825aab0afe3d2f268379e650a</srcmd5>
+    <version>4.5.0b6</version>
+    <time>1647532924</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.5.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 962336 from glaubitz)</comment>
+    <requestid>962441</requestid>
+  </revision>
 </revisionlist>
