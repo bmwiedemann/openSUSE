@@ -1,7 +1,7 @@
 #
 # spec file for package python-easydev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Common utilities to ease the development of Python packages
 License:        BSD-3-Clause
 URL:            https://github.com/cokelaer/easydev
 Source:         https://files.pythonhosted.org/packages/source/e/easydev/easydev-%{version}.tar.gz
+# https://github.com/cokelaer/easydev/issues/20
+Patch0:         python-easydev-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +41,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module colorlog}
 BuildRequires:  %{python_module line_profiler}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
@@ -54,7 +55,7 @@ is to help developers on speeding up their own dev. It has been used
 also as an incubator for other packages and is stable.
 
 %prep
-%setup -q -n easydev-%{version}
+%autosetup -p1 -n easydev-%{version}
 sed -i -e '/^#!\//, 1d' easydev/appdirs.py
 
 %build

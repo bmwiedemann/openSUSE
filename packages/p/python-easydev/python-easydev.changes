@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 16 13:50:05 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/cokelaer/easydev/issues/20
+  + python-easydev-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Sep 16 04:01:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.12.0:
