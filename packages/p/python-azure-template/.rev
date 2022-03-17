@@ -134,4 +134,15 @@
     CHANGELOG.md file provided with this package (forwarded request 946919 from glaubitz)</comment>
     <requestid>947005</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8e876a8d3c1b182ed562fd3df30b4147</srcmd5>
+    <version>0.1.0b1438905</version>
+    <time>1647532922</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b1438905
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 962335 from glaubitz)</comment>
+    <requestid>962440</requestid>
+  </revision>
 </revisionlist>
