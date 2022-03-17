@@ -104,4 +104,12 @@
 - Drop patch subpoint-usage-test.patch, which is no longer required.</comment>
     <requestid>878440</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>96ef130301f92e8d5b7e6753371ee9b7</srcmd5>
+    <version>0.4.0</version>
+    <time>1647532890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962274</requestid>
+  </revision>
 </revisionlist>

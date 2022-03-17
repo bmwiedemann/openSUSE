@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 16 12:52:10 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/google/python-fire/pull/265/files
+  + python-fire-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Mar 12 04:41:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.0:
