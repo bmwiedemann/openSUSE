@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 15 08:13:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- use %python_expand for %fdupes
+
+-------------------------------------------------------------------
 Sun Jan 23 15:40:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:

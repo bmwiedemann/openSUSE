@@ -77,7 +77,7 @@ rm -r py/_vendored_packages
 %install
 %if !%{with test}
 %python_install
-%python_exec %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
