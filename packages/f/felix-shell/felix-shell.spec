@@ -1,7 +1,7 @@
 #
 # spec file for package felix-shell
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,14 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://felix.apache.org
 Source0:        http://archive.apache.org/dist/felix/%{bundle}-%{version}-source-release.tar.gz
+Source1:        %{bundle}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  maven-local
-BuildRequires:  mvn(org.apache.felix:felix-parent:pom:)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.osgi:osgi.cmpn)
-BuildRequires:  mvn(org.osgi:osgi.core)
+BuildRequires:  javapackages-local
+BuildRequires:  osgi-compendium
+BuildRequires:  osgi-core
+Requires:       mvn(org.osgi:osgi.cmpn)
+Requires:       mvn(org.osgi:osgi.core)
 BuildArch:      noarch
 
 %description
@@ -45,6 +47,10 @@ This package contains API documentation for %{name}.
 
 %prep
 %setup -q -n %{bundle}-%{version}
+cp %{SOURCE1} build.xml
+
+%pom_remove_parent
+%pom_xpath_inject pom:project "<groupId>org.apache.felix</groupId>"
 
 %pom_remove_plugin org.codehaus.mojo:rat-maven-plugin
 
@@ -52,25 +58,32 @@ This package contains API documentation for %{name}.
 %pom_change_dep :org.osgi.core org.osgi:osgi.core
 %pom_change_dep :org.osgi.compendium org.osgi:osgi.cmpn
 
-%pom_add_dep junit:junit::test
-
-%{mvn_file} :%{bundle} "felix/%{bundle}"
-
 %build
-%{mvn_build} -f \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
-%endif
+mkdir -p lib
+build-jar-repository -s lib osgi-core osgi-compendium
+%ant jar javadoc
 
 %install
-%mvn_install
+# jar
+install -d -m 755 %{buildroot}%{_javadir}/felix
+install -m 644 target/%{bundle}-%{version}.jar %{buildroot}%{_javadir}/felix/%{bundle}.jar
+
+# pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}/felix
+install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
+%add_maven_depmap felix/%{bundle}.pom felix/%{bundle}.jar
+
+# javadoc
+install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
+cp -r target/site/apidocs/* %{buildroot}/%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE NOTICE
 %doc DEPENDENCIES
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE NOTICE
 
 %changelog

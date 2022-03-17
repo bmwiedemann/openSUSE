@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 16 12:49:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite the build system to ant so that we can eventually avoid
+  build cycles with maven-plugin-bundle built against
+  felix-bundlerepository
+
+-------------------------------------------------------------------
 Tue Mar 31 06:10:51 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Build against OSGi R7 APIs
