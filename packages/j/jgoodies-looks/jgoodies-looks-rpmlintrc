@@ -1,3 +1,0 @@
-# The demo jars should contain a CLASSPATH in manifest Thus the latest versions
-# of JVM distributed in openSUSE doesn't have a problem with this.
-addFilter("class-path-in-manifest")
