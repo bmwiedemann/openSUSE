@@ -37,7 +37,7 @@
     <param name="exclude">vendor</param>
     <param name="filename">aws-nitro-enclaves-cli</param>
     <param name="match-tag">*</param>
-    <param name="revision">8f6ed740b05225512d86163f8b02292668c4b056</param>
+    <param name="revision">841ef94fb5b95b59669b4378499d2b195b6796d4</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aws/aws-nitro-enclaves-cli.git</param>

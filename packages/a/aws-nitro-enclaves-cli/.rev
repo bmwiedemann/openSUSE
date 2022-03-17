@@ -24,4 +24,13 @@
 - init.c is maintained in aws-nitro-enclaves-sdk-bootstrap.git</comment>
     <requestid>948398</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ceae0a54f859b6a0be8ae086a9d0c56</srcmd5>
+    <version>1.2.0~git2.841ef94</version>
+    <time>1647532933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0~git2.841ef94 to get all the precious cargo
+  (bsc#1196972, CVE-2022-24713)</comment>
+    <requestid>962474</requestid>
+  </revision>
 </revisionlist>

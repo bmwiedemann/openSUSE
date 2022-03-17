@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 12:34:45 UTC 2022 - olaf@aepfle.de
+
+- Update to version 1.2.0~git2.841ef94 to get all the precious cargo
+  (bsc#1196972, CVE-2022-24713)
+
+-------------------------------------------------------------------
 Mon Jan 24 12:34:45 UTC 2022 - olaf@aepfle.de
 
 - Update to version 1.1.0~git32.8f6ed74 to get all the precious cargo

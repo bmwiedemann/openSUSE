@@ -19,7 +19,7 @@
 
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.1.0~git32.8f6ed74
+Version:        1.2.0~git2.841ef94
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
@@ -110,9 +110,7 @@ _EOF_
   chmod -v 555 *.sh
   docker build -t hello-enclave:1.0 ./
   nitro-cli build-enclave --docker-uri hello-enclave:1.0 --output-file hello.eif
-  nitro-cli run-enclave --eif-path hello.eif --cpu-count 2 --memory 512 --debug-mode
-  sleep 1
-  nitro-cli console --enclave-id $(nitro-cli describe-enclaves | jq -r ".[0].EnclaveID")
+  nitro-cli run-enclave --eif-path hello.eif --cpu-count 2 --memory 512 --debug-mode --attach-console
 _EOR_
 %install
 mkdir .cargo
