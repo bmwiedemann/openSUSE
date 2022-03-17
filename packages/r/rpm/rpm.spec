@@ -100,9 +100,9 @@ Patch69:        nobuildcolor.diff
 Patch70:        fileattrs.diff
 Patch71:        nomagiccheck.diff
 Patch73:        assumeexec.diff
-Patch75:        rpm-deptracking.patch
 Patch77:        langnoc.diff
 Patch78:        headerchk2.diff
+Patch79:        leave-malloc-check-set.diff
 Patch85:        brp-compress-no-img.patch
 Patch93:        weakdepscompat.diff
 Patch94:        checksepwarn.diff
@@ -184,10 +184,10 @@ Requires:       gawk
 Requires:       gcc
 #Requires:       gcc-PIE
 Requires:       gettext-tools
+Requires:       /usr/bin/gzip
 Requires:       glibc-devel
 Requires:       glibc-locale-base
 Requires:       grep
-Requires:       gzip
 Requires:       make
 Requires:       patch
 Requires:       sed
@@ -241,7 +241,7 @@ rm -rf sqlite
 %patch                   -P 43       -P 45 -P 46 -P 47
 %patch       -P 51
 %patch -P 60 -P 61                         -P 66 -P 67       -P 69
-%patch -P 70 -P 71       -P 73       -P 75       -P 77 -P 78
+%patch -P 70 -P 71       -P 73                   -P 77 -P 78 -P 79
 %patch                               -P 85
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103

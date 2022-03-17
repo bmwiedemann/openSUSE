@@ -2318,4 +2318,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- Fix minimize_writes not minimizing writes since 4.15 regression</comment>
     <requestid>955873</requestid>
   </revision>
+  <revision rev="295" vrev="5">
+    <srcmd5>fd3f691c73c3e190a69ef43bcde0c97a</srcmd5>
+    <version>4.17.0</version>
+    <time>1647532873</time>
+    <user>dimstar_suse</user>
+    <comment>-&gt;</comment>
+    <requestid>961665</requestid>
+  </revision>
 </revisionlist>
