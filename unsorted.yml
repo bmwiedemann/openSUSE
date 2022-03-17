@@ -1,5 +1,5 @@
 unsorted:
-  - 0ad: [x86_64] 
+  - 0ad 
   - 0ad-data 
   - 2048-cli 
   - 2ping 
@@ -3364,6 +3364,7 @@ unsorted:
   - epour 
   - epour-lang 
   - epplet-base 
+  - epub2txt2 
   - epy 
   - epymc: [x86_64] 
   - epymc-lang: [x86_64] 
@@ -3780,7 +3781,6 @@ unsorted:
   - fldigi 
   - fldigi-lang 
   - flex 
-  - flexdock 
   - flickcurl 
   - flickcurl-doc 
   - flickrnet 
@@ -3856,6 +3856,7 @@ unsorted:
   - forkstat 
   - forkstat-bash-completion 
   - form 
+  - fortio 
   - fortune 
   - fossil 
   - fotowall 
@@ -4035,6 +4036,8 @@ unsorted:
   - gamin-server 
   - gammaray 
   - gammaray-devel 
+  - gammastep 
+  - gammastep-indicator 
   - gammu 
   - gammu-bash-completion 
   - gammu-devel 
@@ -6743,11 +6746,13 @@ unsorted:
   - hedgewars-data 
   - heimdall 
   - heimdall-frontend 
+  - heimer 
   - hello 
   - hello-kubic: [x86_64] 
   - hello-lang 
   - helm: [i586] 
   - helm-bash-completion 
+  - helm-docs 
   - helm-fish-completion 
   - helm-mirror 
   - helm-zsh-completion 
@@ -9628,17 +9633,17 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute25: [x86_64] 
-  - libarm_compute_core25: [x86_64] 
-  - libarm_compute_graph25: [x86_64] 
+  - libarm_compute26: [x86_64] 
+  - libarm_compute_core26: [x86_64] 
+  - libarm_compute_graph26: [x86_64] 
   - libarmadillo10 
   - libarmadillo10-32bit: [x86_64] 
-  - libarmnn27: [x86_64] 
-  - libarmnn27-opencl: [x86_64] 
-  - libarmnnBasePipeServer27: [x86_64] 
-  - libarmnnBasePipeServer27-opencl: [x86_64] 
-  - libarmnnSerializer27: [x86_64] 
-  - libarmnnSerializer27-opencl: [x86_64] 
+  - libarmnn28: [x86_64] 
+  - libarmnn28-opencl: [x86_64] 
+  - libarmnnBasePipeServer28: [x86_64] 
+  - libarmnnBasePipeServer28-opencl: [x86_64] 
+  - libarmnnSerializer28: [x86_64] 
+  - libarmnnSerializer28-opencl: [x86_64] 
   - libarmnnTfLiteParser24: [x86_64] 
   - libarmnnTfLiteParser24-opencl: [x86_64] 
   - libarpack2 
@@ -13881,7 +13886,7 @@ unsorted:
   - libstdc++6-gcc7-locale 
   - libstdc++6-pp-gcc10 
   - libstdc++6-pp-gcc10-32bit: [x86_64] 
-  - libstellarsolver1 
+  - libstellarsolver2 
   - libstemmer0d 
   - libstfl-devel 
   - libstfl0 
@@ -14096,10 +14101,10 @@ unsorted:
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
   - libtiled1 
-  - libtimelineDecoder27: [x86_64] 
-  - libtimelineDecoder27-opencl: [x86_64] 
-  - libtimelineDecoderJson27: [x86_64] 
-  - libtimelineDecoderJson27-opencl: [x86_64] 
+  - libtimelineDecoder28: [x86_64] 
+  - libtimelineDecoder28-opencl: [x86_64] 
+  - libtimelineDecoderJson28: [x86_64] 
+  - libtimelineDecoderJson28-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -21979,6 +21984,7 @@ unsorted:
   - python310-asdf 
   - python310-asdf-astropy 
   - python310-asdf-coordinates-schemas 
+  - python310-asdf-standard 
   - python310-asdf-transform-schemas 
   - python310-asdf-wcs-schemas 
   - python310-asgiref 
@@ -25137,6 +25143,7 @@ unsorted:
   - python38-asdf 
   - python38-asdf-astropy 
   - python38-asdf-coordinates-schemas 
+  - python38-asdf-standard 
   - python38-asdf-transform-schemas 
   - python38-asdf-wcs-schemas 
   - python38-asgiref 
@@ -28137,6 +28144,7 @@ unsorted:
   - python39-asdf 
   - python39-asdf-astropy 
   - python39-asdf-coordinates-schemas 
+  - python39-asdf-standard 
   - python39-asdf-transform-schemas 
   - python39-asdf-wcs-schemas 
   - python39-asgiref 
@@ -32667,7 +32675,6 @@ unsorted:
   - sqlite-jdbc 
   - sqlite-jdbc-javadoc 
   - sqlite3 
-  - sqlite3-devel 
   - sqlite3-doc 
   - sqlitebrowser 
   - sqliteman 
@@ -32742,6 +32749,7 @@ unsorted:
   - steinberg-bravura-fonts 
   - stellarium 
   - stellarsolver-devel 
+  - stern 
   - stgit 
   - stix-integrals-fonts 
   - stix-pua-fonts 
