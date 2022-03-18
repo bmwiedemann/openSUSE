@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:48:05 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Backport fallowing patches mitigating CVE-2022-23960 [1] and [2].
+
+  0001-docs-security-security-advisory-for-CVE-2022-23960.patch
+  0002-fix-security-workaround-for-CVE-2022-23960.patch
+  0003-refactor-el3-runtime-change-Cortex-A76-implementatio.patch
+  0004-fix-security-loop-workaround-for-CVE-2022-23960-for-.patch
+  0005-fix-security-workaround-for-CVE-2022-23960-for-Corte.patch
+  0006-fix-security-SMCCC_ARCH_WORKAROUND_3-mitigations-for.patch
+
+  Fixes bsc#1196657
+
+  [1] https://trustedfirmware-a.readthedocs.io/en/latest/security_advisories/security-advisory-tfv-9.html
+  [2] https://review.trustedfirmware.org/q/topic:"spectre_bhb"
+
+-------------------------------------------------------------------
 Tue Feb  8 09:29:53 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update A3700-utils-marvell version:

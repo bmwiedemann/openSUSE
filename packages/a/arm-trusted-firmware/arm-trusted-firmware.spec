@@ -65,6 +65,12 @@ Source1:        mv-ddr-marvell-%{mv_ddr_ver}.tar.gz
 Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
 Patch1:         atf-allow-non-git-dir.patch
+Patch2:         0001-docs-security-security-advisory-for-CVE-2022-23960.patch
+Patch3:         0002-fix-security-workaround-for-CVE-2022-23960.patch
+Patch4:         0003-refactor-el3-runtime-change-Cortex-A76-implementatio.patch
+Patch5:         0004-fix-security-loop-workaround-for-CVE-2022-23960-for-.patch
+Patch6:         0005-fix-security-workaround-for-CVE-2022-23960-for-Corte.patch
+Patch7:         0006-fix-security-SMCCC_ARCH_WORKAROUND_3-mitigations-for.patch
 Patch150:       A3700_utils-drop-git.patch
 BuildRequires:  fdupes
 %if "%{platform}" != ""
@@ -164,7 +170,6 @@ Exception Level 3 (EL3).
 %if "%{platform}" == "poplar"
 %package devel
 Summary:        ARM Trusted Firmware -- %{platform} development files
-License:        BSD-3-Clause
 Group:          System/Boot
 Requires:       %{name} = %{version}
 
@@ -224,6 +229,12 @@ install -D -m 0755 %{_bindir}/TBB wtptp/linux/tbb_linux
 popd
 %endif
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 %build
 export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trusted-firmware.changes | tail -n 1 | cut -d- -f1 )" -u "+%%H:%%M:%%S, %%b %%e %%Y")\""
