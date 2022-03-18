@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-commons-vfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Patch1:         commons-vfs-1.0-jakarta-commons-httpclient-3.1.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
-BuildRequires:  jaf_1_1_api
 BuildRequires:  jakarta-commons-codec
 BuildRequires:  jakarta-commons-collections
 BuildRequires:  jakarta-commons-httpclient3
@@ -47,7 +46,6 @@ BuildRequires:  jsch
 BuildRequires:  junit
 BuildRequires:  oro
 BuildRequires:  xml-commons-apis
-Requires:       jaf_1_1_api
 Requires:       jakarta-commons-codec
 Requires:       jakarta-commons-collections
 Requires:       jakarta-commons-httpclient3
@@ -62,6 +60,9 @@ Requires:       oro
 Requires:       xml-commons-apis
 Obsoletes:      %{name}-manual
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-activation-api
+%endif
 
 %description
 Commons VFS provides a single API for accessing various different
@@ -94,7 +95,11 @@ find . -name "*.jar" | xargs -t rm
 %build
 export MAVEN_REPO_LOCAL=$(pwd)/.m2/repository
 mkdir -p $MAVEN_REPO_LOCAL
-export CLASSPATH=$(build-classpath commons-collections commons-httpclient3 commons-logging commons-net jaf_1_1_api javamail/mail jcifs jdom jsch junit slide/jakarta-slide-webdavlib):`pwd`/target/commons-vfs-%{version}.jar:`pwd`/target/test-classes
+export CLASSPATH=$(build-classpath commons-collections commons-httpclient3 commons-logging commons-net \
+%if 0%{?suse_version} > 1500
+	glassfish-activation-api \
+%endif
+	javamail/mail jcifs jdom jsch junit slide/jakarta-slide-webdavlib):`pwd`/target/commons-vfs-%{version}.jar:`pwd`/target/test-classes
 export OPT_JAR_LIST="junit ant/ant-junit"
 ant \
     -Dmaven.build.dir=`pwd`/target \
