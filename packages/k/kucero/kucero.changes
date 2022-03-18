@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:38:46 UTC 2022 - jenting.hsiao@suse.com
+
+- Update to version 1.6.0:
+  * For v1.6.0 release (#35)
+  * Honor Kubernetes CSR spec.expirationSeconds to control cert duration (#34)
+  * Add CI test on k8s v1.23.0 (#32)
+
+-------------------------------------------------------------------
+Fri Mar 18 12:34:07 UTC 2022 - jenting.hsiao@suse.com
+
+- Update to version 1.5.2:
+  * For v1.5.2 release (#31)
+  * Bump authorization.k8s.io to v1 (#30)
+
+-------------------------------------------------------------------
+Fri Mar 18 12:20:53 UTC 2022 - jenting.hsiao@suse.com
+
+- Update to version 1.5.1:
+  * For v1.5.1 release (#28)
+  * Bump certificates.k8s.io to v1 (#25)
+  * Bump E2E k8s version to v1.22.2 (#27)
+  * Bump base image go to 1.17 (#26)
+  * Add Go 1.17 CI test (#24)
+  * Add k8s v1.22 CI test (#22)
+  * Bump base image version to opensuse leap 15.3 (#20)
+  * Add Kubernetes v1.21 CI test (#21)
+
+-------------------------------------------------------------------
+Fri Mar 18 11:49:08 UTC 2022 - jenting.hsiao@suse.com
+
+- Update to version 1.5.0:
+  * For v1.5.0 release (#19)
+  * Support kubeadm >= v1.20.0 (#18)
+  * Bump CI kind version to engineerd/setup-kind@v0.5.0 (#17)
+  * Remove kubectl binary (#15)
+  * Update kubelet config (#13)
+  * Address insensitive language (#10)
+  * Add duration flag to change kubelet server certificate TTL (#8)
+  * Update README for CI badge
+  * SUSE use OBS to build/push container image, remove build/push to docker hub (#7)
+  * Update new recordings (#6)
+
+-------------------------------------------------------------------
 Tue Nov 10 01:51:50 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Bump verison v1.4.0

@@ -1,7 +1,7 @@
 #
 # spec file for package kucero
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define goipath github.com/jenting/kucero
 
 Name:           kucero
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        Kubernetes control plane certificate auto rotation
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://github.com/SUSE/kucero
 Source0:        https://github.com/SUSE/kucero/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) >= 1.16
 
 %description
 A Kubernetes daemonset to perform automatic control plane certificate rotation.
