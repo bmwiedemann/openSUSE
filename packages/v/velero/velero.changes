@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 17 13:42:20 UTC 2022 - jenting.hsiao@suse.com
+
+- Update to version 1.8.1:
+  * Bump up golang to 1.17.8
+  * Generate the changelog for v1.8.1
+  * Bypass the remap CRD version plugin when v1beta1 CRD is not supported (#4706)
+  * Append "-dev" suffix for the image tag of release branches
+  * Enable building and pushing image for release branches
+  * Modify according to comments
+  * [fix] Add regional PV support for GKE
+  * Check for nil before logging DefaultVolumesToRestic value
+
+-------------------------------------------------------------------
 Wed Feb 16 07:55:52 UTC 2022 - jenting.hsiao@suse.com
 
 - Update to version 1.8.0:

@@ -21,7 +21,7 @@
 %define gitstate clean
 
 Name:           velero
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0
