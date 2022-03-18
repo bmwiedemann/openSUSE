@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 18 11:44:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.1
+  * Big changelog since v2.4.0, most changes decribed in alpha and
+    beta release notes:
+    https://github.com/prusa3d/PrusaSlicer/releases
+  * introducing G-Code Substitutions
+  * fixing bugs found in 2.4.0 release
+
+-------------------------------------------------------------------
 Fri Dec 24 14:39:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.4.0
