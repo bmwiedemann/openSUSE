@@ -1,0 +1,317 @@
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/attachments/AttachmentPart.java axis-1_4/src/org/apache/axis/attachments/AttachmentPart.java
+--- axis-1_4.orig/src/org/apache/axis/attachments/AttachmentPart.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/attachments/AttachmentPart.java	2022-03-18 13:29:00.839161021 +0100
+@@ -546,4 +546,25 @@
+         //we get to release memory anyway
+         datahandler = null;
+     }
++
++    public InputStream getBase64Content() {
++        return null;
++    }
++
++    public void setBase64Content(InputStream content, String contentType) {
++    }
++
++    public void setRawContentBytes(byte[] content, int offset, int len, String contentType) {
++    }
++
++    public void setRawContent(InputStream content, String contentType) {
++    }
++
++    public byte[] getRawContentBytes() {
++        return new byte[0];
++    }
++
++    public InputStream getRawContent() {
++        return null;
++    }
+ }
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/message/Detail.java axis-1_4/src/org/apache/axis/message/Detail.java
+--- axis-1_4.orig/src/org/apache/axis/message/Detail.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/message/Detail.java	2022-03-18 13:29:43.371458397 +0100
+@@ -16,6 +16,7 @@
+ 
+ package org.apache.axis.message;
+ 
++import javax.xml.namespace.QName;
+ import javax.xml.soap.DetailEntry;
+ import javax.xml.soap.Name;
+ import javax.xml.soap.SOAPException;
+@@ -52,4 +53,8 @@
+     public Iterator getDetailEntries() {
+         return this.getChildElements();
+     }
++
++    public DetailEntry addDetailEntry(QName name) throws SOAPException {
++        return addDetailEntry(new PrefixedQName(name));
++    }
+ }
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/message/MessageElement.java axis-1_4/src/org/apache/axis/message/MessageElement.java
+--- axis-1_4.orig/src/org/apache/axis/message/MessageElement.java	2006-04-23 03:57:26.000000000 +0200
++++ axis-1_4/src/org/apache/axis/message/MessageElement.java	2022-03-18 13:29:55.583543778 +0100
+@@ -2143,4 +2143,57 @@
+         }
+         return doc;
+     }
++
++    // Adding unimplemented functions
++
++    public SOAPElement addAttribute(QName qname, String value) throws SOAPException {
++        return addAttribute(new PrefixedQName(qname), value);
++    }
++
++    public SOAPElement addChildElement(QName qname) throws SOAPException {
++        return addChildElement(new PrefixedQName(qname));
++    }
++
++    public QName createQName(String localName, String prefix) {
++        return new QName(getNamespaceURI(), localName, prefix);
++    }
++
++    public Iterator getAllAttributesAsQNames() {
++        int num = attributes.getLength();
++        Vector attrs = new Vector(num);
++        for (int i = 0; i < num; i++) {
++            String q = attributes.getQName(i);
++            String prefix = "";
++            if (q != null) {
++                int idx = q.indexOf(":");
++                if (idx > 0) {
++                    prefix = q.substring(0, idx);
++                } else {
++                    prefix= "";
++                }
++            }
++
++            attrs.add(new QName(attributes.getURI(i),
++                                        attributes.getLocalName(i),
++                                        prefix));
++        }
++        return attrs.iterator();
++    }
++
++    public String getAttributeValue(QName qname) {
++        return getAttributeValue(new PrefixedQName(qname));
++    }
++
++    public QName getElementQName() {
++        return new QName(getNamespaceURI(), getName(), getPrefix());
++    }
++
++    public boolean removeAttribute (QName qname) {
++        return removeAttribute(new PrefixedQName(qname));
++    }
++
++    public SOAPElement setElementQName(QName newName) {
++        return null; // unimplemented
++    }
++
+ }
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/message/SOAPBody.java axis-1_4/src/org/apache/axis/message/SOAPBody.java
+--- axis-1_4.orig/src/org/apache/axis/message/SOAPBody.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/message/SOAPBody.java	2022-03-18 11:12:57.250249421 +0100
+@@ -306,4 +306,22 @@
+     public void setSAAJEncodingCompliance(boolean comply) {
+         this.doSAAJEncodingCompliance = true;
+     }
++    
++    // uninmplemented functions
++    public javax.xml.soap.SOAPBodyElement addBodyElement(QName name)
++        throws SOAPException {
++        return addBodyElement(new PrefixedQName(name));
++    }
++
++    public javax.xml.soap.SOAPFault addFault(QName name, String s, Locale locale) throws SOAPException {
++        return addFault(new PrefixedQName(name), s, locale);
++    }
++
++    public javax.xml.soap.SOAPFault addFault(QName name, String s) throws SOAPException {
++        return addFault(new PrefixedQName(name), s);
++    }
++    
++    public Document extractContentAsDocument() {
++        return null;
++    }
+ }
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/message/SOAPFault.java axis-1_4/src/org/apache/axis/message/SOAPFault.java
+--- axis-1_4.orig/src/org/apache/axis/message/SOAPFault.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/message/SOAPFault.java	2022-03-18 13:01:31.303632820 +0100
+@@ -423,4 +423,56 @@
+             }
+         }
+     }
++    
++    public void addFaultReasonText(String text, Locale locale) {
++    }
++    
++    public Iterator getFaultReasonLocales() {
++        return null;
++    }
++    
++    public String getFaultReasonText(Locale locale) {
++        return null;
++    }
++    
++    public Iterator getFaultReasonTexts() {
++        return null;
++    }
++    
++    public void setFaultRole(String uri) {
++    }
++    
++    public void setFaultNode(String uri) {
++    }
++    
++    public String getFaultRole() {
++        return null;
++    }
++    
++    public String getFaultNode() {
++        return null;
++    }
++    
++    public boolean hasDetail() {
++        return false;
++    }
++    
++    public void appendFaultSubcode(QName subcode) {
++    }
++    
++    public QName getFaultCodeAsQName() {
++        Name name = getFaultCodeAsName();
++        return new QName(name.getURI(), name.getLocalName(), name.getPrefix());
++    }
++    
++    public void removeAllFaultSubcodes() {
++    }
++    
++    public Iterator getFaultSubcodes() {
++        return null;
++    }
++    
++    public void setFaultCode(QName faultCodeQName) throws SOAPException {
++        setFaultCode(new PrefixedQName(faultCodeQName));
++    }
+ }
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/message/SOAPHeader.java axis-1_4/src/org/apache/axis/message/SOAPHeader.java
+--- axis-1_4.orig/src/org/apache/axis/message/SOAPHeader.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/message/SOAPHeader.java	2022-03-18 11:05:17.135058675 +0100
+@@ -400,4 +400,26 @@
+         }
+         return headerElement;
+     }
++
++    
++    // new unimplemented stuff
++    public javax.xml.soap.SOAPHeaderElement addHeaderElement(QName qname) throws SOAPException {
++        return addHeaderElement(new PrefixedQName(qname));
++    }
++    
++    public javax.xml.soap.SOAPHeaderElement addNotUnderstoodHeaderElement(QName name) {
++        return null;
++    }
++
++    public javax.xml.soap.SOAPHeaderElement addUpgradeHeaderElement(String supportedSoapUri) {
++        return null;
++    }
++    
++    public javax.xml.soap.SOAPHeaderElement addUpgradeHeaderElement(String[] supportedSoapUris) {
++        return null;
++    }
++    
++    public javax.xml.soap.SOAPHeaderElement addUpgradeHeaderElement(Iterator<String> supportedSOAPURIs) {
++        return null;
++    }
+ }
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/Message.java axis-1_4/src/org/apache/axis/Message.java
+--- axis-1_4.orig/src/org/apache/axis/Message.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/Message.java	2022-03-18 13:34:41.697544322 +0100
+@@ -30,6 +30,7 @@
+ import javax.xml.soap.AttachmentPart;
+ import javax.xml.soap.SOAPException;
+ import javax.xml.soap.SOAPBody;
++import javax.xml.soap.SOAPElement;
+ import javax.xml.soap.SOAPHeader;
+ import javax.xml.soap.SOAPMessage;
+ 
+@@ -759,4 +760,11 @@
+             mAttachments.dispose();
+         }
+     }
++
++    public AttachmentPart getAttachment(SOAPElement element) {
++        return null;
++    }
++
++    public void removeAttachments(javax.xml.soap.MimeHeaders headers) {
++    }
+ }
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/soap/SOAPFactoryImpl.java axis-1_4/src/org/apache/axis/soap/SOAPFactoryImpl.java
+--- axis-1_4.orig/src/org/apache/axis/soap/SOAPFactoryImpl.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/soap/SOAPFactoryImpl.java	2022-03-18 13:11:18.083732230 +0100
+@@ -19,9 +19,11 @@
+ import org.apache.axis.message.MessageElement;
+ import org.apache.axis.message.PrefixedQName;
+ 
++import javax.xml.namespace.QName;
+ import javax.xml.soap.Name;
+ import javax.xml.soap.SOAPElement;
+ import javax.xml.soap.SOAPException;
++import javax.xml.soap.SOAPFault;
+ 
+ /**
+  * SOAP Element Factory implementation
+@@ -91,4 +93,13 @@
+             throws SOAPException {
+         return new PrefixedQName("",localName,"");
+     }
++    
++    public SOAPFault createFault() {
++        return null;
++    }
++    
++    public SOAPFault createFault(String reasonText, QName faultCode) {
++        return null;
++    }
++    
+ }
+diff -urEbwB axis-1_4.orig/src/org/apache/axis/SOAPPart.java axis-1_4/src/org/apache/axis/SOAPPart.java
+--- axis-1_4.orig/src/org/apache/axis/SOAPPart.java	2006-04-23 03:57:27.000000000 +0200
++++ axis-1_4/src/org/apache/axis/SOAPPart.java	2022-03-18 13:29:12.735244205 +0100
+@@ -49,6 +49,7 @@
+ import org.xml.sax.InputSource;
+ import org.xml.sax.SAXException;
+ 
++import javax.xml.soap.SOAPElement;
+ import javax.xml.soap.SOAPException;
+ import javax.xml.soap.SOAPMessage;
+ import javax.xml.transform.Source;
+@@ -1280,5 +1281,27 @@
+     public boolean isBodyStream() {
+         return (currentForm == SOAPPart.FORM_INPUTSTREAM || currentForm == SOAPPart.FORM_BODYINSTREAM);        
+     }
++
++    // javax.xml.soap.Node
++
++    public void detachNode() {
++    }
++
++    public void recycleNode() {
++    }
++
++    public SOAPElement getParentElement() {
++        return null;
++    }
++
++    public void setParentElement(SOAPElement parent) {
++    }
++
++    public void setValue(String value) {
++    }
++
++    public String getValue() {
++        return null;
++    }
+ }
+ 

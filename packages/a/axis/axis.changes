@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 18 13:55:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Unify the dependency on glassfish-activation-api instead of jaf
+  and gnu-jaf
+- Added patch:
+  * unimplemented-saaj13-methods.patch
+    + on systems where the JavaEE modules exist, allow building
+      against newer versions of APIs
+
+-------------------------------------------------------------------
 Tue Mar  1 15:46:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Alias relevant artifacts to org.apache.axis

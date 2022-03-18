@@ -275,4 +275,12 @@
     <comment>Add aliases to the maven artifacts</comment>
     <requestid>958688</requestid>
   </revision>
+  <revision rev="38" vrev="305">
+    <srcmd5>fce5df4894ac7a70afda3d6abedb7f9d</srcmd5>
+    <version>1.4</version>
+    <time>1647618164</time>
+    <user>dimstar_suse</user>
+    <comment>Depend on glassfish-activation-api</comment>
+    <requestid>962703</requestid>
+  </revision>
 </revisionlist>
