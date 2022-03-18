@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 18 10:18:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.6.0:
+  * Enable orb to use environment variables from context (#293)
+  * Update cobra, viper, and helm dependencies (#292)
+
+-------------------------------------------------------------------
 Thu Mar 10 07:42:31 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.5.3:
