@@ -1,17 +1,16 @@
-diff -urEbwB prosody-0.11.0/prosody.cfg.lua.dist prosody-0.11.0.new/prosody.cfg.lua.dist
---- prosody-0.11.0/prosody.cfg.lua.dist	2018-11-19 11:42:24.000000000 +0100
-+++ prosody-0.11.0.new/prosody.cfg.lua.dist	2018-11-22 12:53:45.221894008 +0100
-@@ -91,6 +91,9 @@
- 	-- "posix"; -- POSIX functionality, sends server to background, enables syslog, etc.
+diff -urEbw prosody-0.12.0/prosody.cfg.lua.dist prosody-0.12.0.new/prosody.cfg.lua.dist
+--- prosody-0.12.0/prosody.cfg.lua.dist	2022-03-08 13:34:39.594708341 +0100
++++ prosody-0.12.0.new/prosody.cfg.lua.dist	2022-03-18 09:59:19.359175774 +0100
+@@ -95,6 +95,8 @@
+ 	-- "posix"; -- POSIX functionality, sends server to background, etc.
  }
  
 +-- Unix specific
 +pidfile = "@@PIDDIR@@/prosody/prosody.pid"
-+
- -- Disable account creation by default, for security
- -- For more information see https://prosody.im/doc/creating_accounts
- allow_registration = false
-@@ -153,8 +156,8 @@
+ 
+ -- Server-to-server authentication
+ -- Require valid certificates for server-to-server connections?
+@@ -183,8 +185,8 @@
  -- Logging configuration
  -- For advanced logging see https://prosody.im/doc/logging
  log = {
@@ -20,5 +19,5 @@ diff -urEbwB prosody-0.11.0/prosody.cfg.lua.dist prosody-0.11.0.new/prosody.cfg.
 +	info = "/var/log/prosody/prosody.log"; -- Change 'info' to 'debug' for verbose logging
 +	error = "/var/log/prosody/prosody.err";
  	-- "*syslog"; -- Uncomment this for logging to syslog
- 	-- "*console"; -- Log to the console, useful for debugging with daemonize=false
+ 	-- "*console"; -- Log to the console, useful for debugging when running in the foreground
  }

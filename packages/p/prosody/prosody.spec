@@ -18,7 +18,7 @@
 
 %define _piddir /run
 Name:           prosody
-Version:        0.11.13
+Version:        0.12.0
 Release:        0
 Summary:        Communications server for Jabber/XMPP
 License:        MIT
@@ -34,6 +34,7 @@ Patch0:         prosody-lua51coexist.patch
 Patch1:         prosody-configure.patch
 # PATCH-FIX-OPENSUSE marguerite@opensuse.org - enable Unix features
 Patch3:         prosody-cfg.patch
+BuildRequires:  libicu-devel
 BuildRequires:  libidn-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  lua51-devel

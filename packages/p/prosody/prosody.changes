@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:01:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  Modules:
+  * mod_mimicking: Prevent address spoofing
+  * mod_s2s_bidi: Bi-directional server-to-server connections (XEP-0288)
+  * mod_external_services: Generic XEP-0215 support
+  * mod_turn_external: Easy setup of XEP-0215 for STUN/TURN for audio/video calls
+  * mod_http_file_share: File sharing via HTTP (XEP-0363)
+  * mod_http_openmetrics: Expose metrics to Prometheus and compatible monitoring systems
+  * mod_smacks: Stream management and resumption (XEP-0198)
+  * mod_auth_ldap: LDAP authentication
+  * mod_cron: One module to rule all the periodic tasks
+  * mod_admin_shell: New home of the Console admin interface
+  * mod_admin_socket: Enable secure connections to the Console
+  * mod_tombstones: Prevent re-registration of deleted accounts
+  * mod_invites: Create and manage invites
+  * mod_invites_register: Allow registering accounts using invites
+  * mod_invites_adhoc: Create invites via ad-hoc command
+  * mod_bookmarks: Synchronise open rooms between clients
+  Security and authentication:
+  * Unencrypted HTTP port (5280) restricted to loopback by default
+  * require_encryption options default to ‘true’ if unspecified
+  * Authentication module defaults to ‘internal_hashed’ if unspecified
+  * SNI support (including automatic certificate selection)
+  * ALPN support in mod_net_multiplex
+  * DANE support in low-level network layer
+  * Direct TLS support (c2s and s2s)
+  * SCRAM-SHA-256
+  * Direct TLS (including https) certificates are now updated on reload
+  * Pluggable authorization providers (mod_authz_*)
+  * Easy use of Mozilla TLS recommendations presets
+  HTTP:
+  * CORS handling now provided by mod_http
+  * Built-in HTTP server now handles HEAD requests
+  * Uploads can be handled incrementally
+  API:
+  * Module statuses (API change)
+  * util.error for encapsulating errors
+  * Promise based API for sending queries
+  * API for adding periodic tasks
+  * More APIs supporting ES6 Promises
+  * Async can be used during shutdown
+  Other:
+  * Plugin installer
+  * MUC presence broadcast controls
+  * MUC: support for XEP-0421 occupant identifiers
+  * prosodyctl check connectivity via observe.jabber.network
+  * STUN/TURN server tests in prosodyctl check
+  * libunbound for DNS queries
+  * The POSIX poll() API used by server_epoll on *nix other than Linux
+  Changed in this release:
+  * Improved rules for mobile optimizations in mod_csi_simple
+  * Improved rules for what messages should be archived in mod_mam
+  * mod_limits: Support for exempt JIDs
+  * mod_server_contact_info now loaded on components if enabled
+  * Statistics now based on OpenMetrics
+  * Statistics scheduling can be done by plugin
+  * Offline messages aren’t sent to MAM clients
+  * Archive quotas (maximum limit on items in an archive store)
+  * Rewritten migrator with archive support
+  * Improved automatic certificate locating and selecting
+  * Logging to syslog no longer missing startup messages
+  * Graceful shutdown sequence that closes ports first and waits for connections to close
+  Removed in this release:
+  * daemonize option deprecated
+  * SASL DIGEST-MD5 removed
+  * mod_auth_cyrus (older LDAP support)
+  * Network backend server_select deprecated (not actually removed yet)
+  Please see:
+  * https://blog.prosody.im/prosody-0.12.0-released/
+  * https://prosody.im/doc/release/0.12.0
+
+-------------------------------------------------------------------
 Fri Feb 18 14:29:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Do not replace config file on every upgrade

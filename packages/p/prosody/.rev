@@ -477,4 +477,41 @@
     <comment></comment>
     <requestid>956330</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e0c61453f1919c4a44c4f75971c62bf0</srcmd5>
+    <version>0.12.0</version>
+    <time>1647618139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  Modules:
+  * mod_mimicking: Prevent address spoofing
+  * mod_s2s_bidi: Bi-directional server-to-server connections (XEP-0288)
+  * mod_external_services: Generic XEP-0215 support
+  * mod_turn_external: Easy setup of XEP-0215 for STUN/TURN for audio/video calls
+  * mod_http_file_share: File sharing via HTTP (XEP-0363)
+  * mod_http_openmetrics: Expose metrics to Prometheus and compatible monitoring systems
+  * mod_smacks: Stream management and resumption (XEP-0198)
+  * mod_auth_ldap: LDAP authentication
+  * mod_cron: One module to rule all the periodic tasks
+  * mod_admin_shell: New home of the Console admin interface
+  * mod_admin_socket: Enable secure connections to the Console
+  * mod_tombstones: Prevent re-registration of deleted accounts
+  * mod_invites: Create and manage invites
+  * mod_invites_register: Allow registering accounts using invites
+  * mod_invites_adhoc: Create invites via ad-hoc command
+  * mod_bookmarks: Synchronise open rooms between clients
+  Security and authentication:
+  * Unencrypted HTTP port (5280) restricted to loopback by default
+  * require_encryption options default to ‘true’ if unspecified
+  * Authentication module defaults to ‘internal_hashed’ if unspecified
+  * SNI support (including automatic certificate selection)
+  * ALPN support in mod_net_multiplex
+  * DANE support in low-level network layer
+  * Direct TLS support (c2s and s2s)
+  * SCRAM-SHA-256
+  * Direct TLS (including https) certificates are now updated on reload
+  * Pluggable authorization providers (mod_authz_*)
+  * Easy use of Mozilla TLS recommendations presets</comment>
+    <requestid>962612</requestid>
+  </revision>
 </revisionlist>
