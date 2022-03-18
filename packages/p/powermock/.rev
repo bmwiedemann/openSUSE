@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>703102</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a99c6781d41002ea8321dee7ff1151b</srcmd5>
+    <version>1.6.5</version>
+    <time>1647618169</time>
+    <user>dimstar_suse</user>
+    <comment>Build against standalone activation api</comment>
+    <requestid>962714</requestid>
+  </revision>
 </revisionlist>

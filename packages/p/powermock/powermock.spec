@@ -1,7 +1,7 @@
 #
 # spec file for package powermock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,9 @@ BuildRequires:  mvn(org.objenesis:objenesis)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildRequires:  mvn(org.testng:testng)
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.activation:javax.activation-api)
+%endif
 
 %description
 %{desc}
@@ -188,6 +191,10 @@ rm modules/module-impl/junit4-common/src/test/java/org/powermock/modules/junit4/
 %pom_remove_plugin :rat-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 %pom_xpath_remove "pom:plugin[pom:artifactId='maven-javadoc-plugin']/pom:executions"
+
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.activation:javax.activation-api tests/utils
+%endif
 
 %{mvn_package} :powermock-core core
 %{mvn_package} :powermock-classloading-base core
