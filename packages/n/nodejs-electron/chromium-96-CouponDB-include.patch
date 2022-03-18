@@ -7,19 +7,16 @@ Subject: [PATCH] IWYU: add vector for std::vector in CouponDB
  chrome/browser/commerce/coupons/coupon_db.h | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/chrome/browser/commerce/coupons/coupon_db.h b/chrome/browser/commerce/coupons/coupon_db.h
-index f0758f4..93e2dd3 100644
---- a/chrome/browser/commerce/coupons/coupon_db.h
-+++ b/chrome/browser/commerce/coupons/coupon_db.h
-@@ -5,6 +5,8 @@
- #ifndef CHROME_BROWSER_COMMERCE_COUPONS_COUPON_DB_H_
- #define CHROME_BROWSER_COMMERCE_COUPONS_COUPON_DB_H_
+Index: electron-17.1.0/chrome/browser/commerce/coupons/coupon_db.h
+===================================================================
+--- electron-17.1.0.orig/chrome/browser/commerce/coupons/coupon_db.h	2022-03-07 17:20:30.800813005 +0100
++++ electron-17.1.0/chrome/browser/commerce/coupons/coupon_db.h	2022-03-09 08:26:32.625221232 +0100
+@@ -7,6 +7,8 @@
+ 
+ #include <vector>
  
 +#include <vector>
 +
  #include "base/callback_helpers.h"
+ #include "base/memory/raw_ptr.h"
  #include "base/memory/weak_ptr.h"
- #include "url/gurl.h"
--- 
-2.32.0
-

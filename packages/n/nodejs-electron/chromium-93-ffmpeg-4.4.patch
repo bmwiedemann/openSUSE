@@ -21,11 +21,11 @@ Signed-off-by: Marek Behún <kabel@kernel.org>
  media/filters/ffmpeg_demuxer.cc         | 16 ++++++++++++++++
  2 files changed, 20 insertions(+)
 
-Index: electron-16.0.6/media/filters/audio_decoder_unittest.cc
+Index: electron-17.1.2/media/filters/audio_decoder_unittest.cc
 ===================================================================
---- electron-16.0.6.orig/media/filters/audio_decoder_unittest.cc	2022-01-10 16:06:52.057311576 +0100
-+++ electron-16.0.6/media/filters/audio_decoder_unittest.cc	2022-01-13 16:04:27.849990428 +0100
-@@ -109,7 +109,11 @@ void SetDiscardPadding(AVPacket* packet,
+--- electron-17.1.2.orig/media/filters/audio_decoder_unittest.cc	2022-03-11 08:49:30.740949416 +0100
++++ electron-17.1.2/media/filters/audio_decoder_unittest.cc	2022-03-11 09:17:36.916088893 +0100
+@@ -102,7 +102,11 @@ void SetDiscardPadding(AVPacket* packet,
    }
  
    // If the timestamp is positive, try to use FFmpeg's discard data.
@@ -37,11 +37,11 @@ Index: electron-16.0.6/media/filters/audio_decoder_unittest.cc
    const uint32_t* skip_samples_ptr =
        reinterpret_cast<const uint32_t*>(av_packet_get_side_data(
            packet, AV_PKT_DATA_SKIP_SAMPLES, &skip_samples_size));
-Index: electron-16.0.6/media/filters/ffmpeg_demuxer.cc
+Index: electron-17.1.2/media/filters/ffmpeg_demuxer.cc
 ===================================================================
---- electron-16.0.6.orig/media/filters/ffmpeg_demuxer.cc	2022-01-10 16:06:52.061311603 +0100
-+++ electron-16.0.6/media/filters/ffmpeg_demuxer.cc	2022-01-13 16:04:27.853990450 +0100
-@@ -403,11 +403,19 @@ void FFmpegDemuxerStream::EnqueuePacket(
+--- electron-17.1.2.orig/media/filters/ffmpeg_demuxer.cc	2022-03-11 08:49:30.744949436 +0100
++++ electron-17.1.2/media/filters/ffmpeg_demuxer.cc	2022-03-11 09:17:36.916088893 +0100
+@@ -404,11 +404,19 @@ void FFmpegDemuxerStream::EnqueuePacket(
    scoped_refptr<DecoderBuffer> buffer;
  
    if (type() == DemuxerStream::TEXT) {
@@ -61,7 +61,7 @@ Index: electron-16.0.6/media/filters/ffmpeg_demuxer.cc
      uint8_t* settings_data = av_packet_get_side_data(
          packet.get(), AV_PKT_DATA_WEBVTT_SETTINGS, &settings_size);
  
-@@ -419,7 +427,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
+@@ -420,7 +428,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
      buffer = DecoderBuffer::CopyFrom(packet->data, packet->size,
                                       side_data.data(), side_data.size());
    } else {
@@ -73,7 +73,7 @@ Index: electron-16.0.6/media/filters/ffmpeg_demuxer.cc
      uint8_t* side_data = av_packet_get_side_data(
          packet.get(), AV_PKT_DATA_MATROSKA_BLOCKADDITIONAL, &side_data_size);
  
-@@ -480,7 +492,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
+@@ -481,7 +493,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
                                         packet->size - data_offset);
      }
  

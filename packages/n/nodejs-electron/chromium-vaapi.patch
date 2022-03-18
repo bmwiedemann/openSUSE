@@ -1,8 +1,8 @@
-Index: electron-16.0.6/chrome/browser/about_flags.cc
+Index: electron-17.1.0/chrome/browser/about_flags.cc
 ===================================================================
---- electron-16.0.6.orig/chrome/browser/about_flags.cc	2022-01-10 16:06:46.589275127 +0100
-+++ electron-16.0.6/chrome/browser/about_flags.cc	2022-01-13 16:03:32.565689855 +0100
-@@ -3817,12 +3817,12 @@ const FeatureEntry kFeatureEntries[] = {
+--- electron-17.1.0.orig/chrome/browser/about_flags.cc	2022-03-07 17:20:30.424811477 +0100
++++ electron-17.1.0/chrome/browser/about_flags.cc	2022-03-09 08:25:19.662417046 +0100
+@@ -3822,12 +3822,12 @@ const FeatureEntry kFeatureEntries[] = {
       flag_descriptions::kWebXrForceRuntimeDescription, kOsDesktop,
       MULTI_VALUE_TYPE(kWebXrForceRuntimeChoices)},
  #endif  // ENABLE_VR
@@ -18,13 +18,13 @@ Index: electron-16.0.6/chrome/browser/about_flags.cc
      {"system-keyboard-lock", flag_descriptions::kSystemKeyboardLockName,
       flag_descriptions::kSystemKeyboardLockDescription, kOsDesktop,
       FEATURE_VALUE_TYPE(features::kSystemKeyboardLock)},
-Index: electron-16.0.6/chrome/browser/flag_descriptions.cc
+Index: electron-17.1.0/chrome/browser/flag_descriptions.cc
 ===================================================================
---- electron-16.0.6.orig/chrome/browser/flag_descriptions.cc	2022-01-10 16:06:47.041278140 +0100
-+++ electron-16.0.6/chrome/browser/flag_descriptions.cc	2022-01-13 16:03:32.569689877 +0100
-@@ -4002,12 +4002,24 @@ const char kAccountManagementFlowsV2Desc
-     "Settings. "
-     "See go/betterAM";
+--- electron-17.1.0.orig/chrome/browser/flag_descriptions.cc	2022-03-07 17:20:30.960813654 +0100
++++ electron-17.1.0/chrome/browser/flag_descriptions.cc	2022-03-09 08:25:19.662417046 +0100
+@@ -3981,12 +3981,24 @@ const char kUseAngleGL[] = "OpenGL";
+ 
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
  
 +#endif
 +
@@ -47,13 +47,13 @@ Index: electron-16.0.6/chrome/browser/flag_descriptions.cc
  const char kAllowDisableMouseAccelerationName[] =
      "Allow disabling mouse acceleration";
  const char kAllowDisableMouseAccelerationDescription[] =
-Index: electron-16.0.6/chrome/browser/flag_descriptions.h
+Index: electron-17.1.0/chrome/browser/flag_descriptions.h
 ===================================================================
---- electron-16.0.6.orig/chrome/browser/flag_descriptions.h	2022-01-10 16:06:47.041278140 +0100
-+++ electron-16.0.6/chrome/browser/flag_descriptions.h	2022-01-13 16:03:32.573689898 +0100
-@@ -2295,9 +2295,21 @@ extern const char kUseAngleGL[];
- extern const char kAccountManagementFlowsV2Name[];
- extern const char kAccountManagementFlowsV2Description[];
+--- electron-17.1.0.orig/chrome/browser/flag_descriptions.h	2022-03-07 17:20:30.960813654 +0100
++++ electron-17.1.0/chrome/browser/flag_descriptions.h	2022-03-09 08:25:19.666416981 +0100
+@@ -2299,9 +2299,21 @@ extern const char kUseAngleGL[];
+ 
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
  
 +#endif
 +

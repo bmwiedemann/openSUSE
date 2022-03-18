@@ -1,7 +1,7 @@
-Index: electron-16.0.6/chrome/common/safe_browsing/BUILD.gn
+Index: electron-17.1.0/chrome/common/safe_browsing/BUILD.gn
 ===================================================================
---- electron-16.0.6.orig/chrome/common/safe_browsing/BUILD.gn	2022-01-10 16:06:48.181285739 +0100
-+++ electron-16.0.6/chrome/common/safe_browsing/BUILD.gn	2022-01-13 16:03:25.281650253 +0100
+--- electron-17.1.0.orig/chrome/common/safe_browsing/BUILD.gn	2022-03-07 17:20:32.164818543 +0100
++++ electron-17.1.0/chrome/common/safe_browsing/BUILD.gn	2022-03-09 08:25:16.218473339 +0100
 @@ -58,39 +58,6 @@ if (safe_browsing_mode == 1) {
      public_deps = [ "//components/safe_browsing/core/common/proto:csd_proto" ]
    }
@@ -50,10 +50,10 @@ Index: electron-16.0.6/chrome/common/safe_browsing/BUILD.gn
        "//components/safe_browsing/core/common",
      ]
  
-Index: electron-16.0.6/chrome/common/safe_browsing/DEPS
+Index: electron-17.1.0/chrome/common/safe_browsing/DEPS
 ===================================================================
---- electron-16.0.6.orig/chrome/common/safe_browsing/DEPS	2022-01-13 16:02:48.153448394 +0100
-+++ electron-16.0.6/chrome/common/safe_browsing/DEPS	2022-01-13 16:02:59.521510198 +0100
+--- electron-17.1.0.orig/chrome/common/safe_browsing/DEPS	2022-03-07 17:20:32.164818543 +0100
++++ electron-17.1.0/chrome/common/safe_browsing/DEPS	2022-03-09 08:25:16.218473339 +0100
 @@ -3,6 +3,5 @@ include_rules = [
    "+components/safe_browsing/core/common",
    "+third_party/maldoca",
@@ -61,10 +61,10 @@ Index: electron-16.0.6/chrome/common/safe_browsing/DEPS
 -  "+third_party/unrar",
    "+third_party/zlib",
  ]
-Index: electron-16.0.6/chrome/services/file_util/BUILD.gn
+Index: electron-17.1.0/chrome/services/file_util/BUILD.gn
 ===================================================================
---- electron-16.0.6.orig/chrome/services/file_util/BUILD.gn	2022-01-13 16:02:48.153448394 +0100
-+++ electron-16.0.6/chrome/services/file_util/BUILD.gn	2022-01-13 16:02:59.521510198 +0100
+--- electron-17.1.0.orig/chrome/services/file_util/BUILD.gn	2022-03-07 17:20:32.260818933 +0100
++++ electron-17.1.0/chrome/services/file_util/BUILD.gn	2022-03-09 08:25:16.218473339 +0100
 @@ -60,7 +60,6 @@ source_set("file_util") {
      deps += [
        "//chrome/common/safe_browsing",
@@ -73,11 +73,11 @@ Index: electron-16.0.6/chrome/services/file_util/BUILD.gn
      ]
  
      if (is_linux || is_win) {
-Index: electron-16.0.6/chrome/services/file_util/safe_archive_analyzer.cc
+Index: electron-17.1.0/chrome/services/file_util/safe_archive_analyzer.cc
 ===================================================================
---- electron-16.0.6.orig/chrome/services/file_util/safe_archive_analyzer.cc	2022-01-13 16:02:48.153448394 +0100
-+++ electron-16.0.6/chrome/services/file_util/safe_archive_analyzer.cc	2022-01-13 16:02:59.521510198 +0100
-@@ -45,10 +45,14 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
+--- electron-17.1.0.orig/chrome/services/file_util/safe_archive_analyzer.cc	2022-03-07 17:20:32.264818949 +0100
++++ electron-17.1.0/chrome/services/file_util/safe_archive_analyzer.cc	2022-03-09 08:25:16.218473339 +0100
+@@ -44,10 +44,14 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
  void SafeArchiveAnalyzer::AnalyzeRarFile(base::File rar_file,
                                           base::File temporary_file,
                                           AnalyzeRarFileCallback callback) {

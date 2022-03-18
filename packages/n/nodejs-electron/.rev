@@ -187,4 +187,34 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957272</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8030d5b129907b0169e72f4058962709</srcmd5>
+    <version>17.1.2</version>
+    <time>1647618101</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.1.2
+  * https://github.com/electron/electron/releases/tag/v17.1.2
+  * https://github.com/electron/electron/releases/tag/v17.1.1
+  * https://github.com/electron/electron/releases/tag/v17.1.0
+  * Added electron-17-breakpad-align-int-types.patch
+  * Added chromium-98-compiler.patch
+  * Added chromium-98-MiraclePtr-gcc-ice.patch
+  * Added chromium-98-WaylandFrameManager-check.patch
+  * Added chromium-98-EnumTable-crash.patch
+  * Added chromium-ffmpeg-first-dts.patch
+  * Added system-libdrm.patch
+  * Removed chromium-94-ffmpeg-roll.patch
+  * Removed chromium-95-compiler.patch
+  * Removed chromium-96-CommandLine-include.patch
+  * Removed chromium-96-DrmRenderNodePathFinder-include.patch
+  * Removed chromium-96-RestrictedCookieManager-tuple.patch
+  * Removed electron-16-node-fix-python3.10-import.patch
+- Fix building with gcc-12
+  * Added electron-16-fix-swiftshader-template.patch
+  * Added electron-16-v8-missing-utility-include.patch
+- Fix building on Fedora 36 and newer
+- Updated ffmpeg patches
+</comment>
+    <requestid>962506</requestid>
+  </revision>
 </revisionlist>

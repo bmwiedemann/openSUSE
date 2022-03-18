@@ -1,7 +1,7 @@
-Index: electron-16.0.6/third_party/angle/src/libANGLE/HandleAllocator.cpp
+Index: electron-17.1.0/third_party/angle/src/libANGLE/HandleAllocator.cpp
 ===================================================================
---- electron-16.0.6.orig/third_party/angle/src/libANGLE/HandleAllocator.cpp	2022-01-10 16:09:11.798243050 +0100
-+++ electron-16.0.6/third_party/angle/src/libANGLE/HandleAllocator.cpp	2022-01-13 16:02:43.673424038 +0100
+--- electron-17.1.0.orig/third_party/angle/src/libANGLE/HandleAllocator.cpp	2022-03-07 17:22:29.553295179 +0100
++++ electron-17.1.0/third_party/angle/src/libANGLE/HandleAllocator.cpp	2022-03-09 08:25:10.346569313 +0100
 @@ -9,6 +9,7 @@
  
  #include "libANGLE/HandleAllocator.h"
@@ -10,10 +10,10 @@ Index: electron-16.0.6/third_party/angle/src/libANGLE/HandleAllocator.cpp
  #include <algorithm>
  #include <functional>
  
-Index: electron-16.0.6/third_party/perfetto/src/trace_processor/containers/string_pool.cc
+Index: electron-17.1.0/third_party/perfetto/src/trace_processor/containers/string_pool.cc
 ===================================================================
---- electron-16.0.6.orig/third_party/perfetto/src/trace_processor/containers/string_pool.cc	2022-01-10 16:14:42.636448325 +0100
-+++ electron-16.0.6/third_party/perfetto/src/trace_processor/containers/string_pool.cc	2022-01-13 16:02:43.673424038 +0100
+--- electron-17.1.0.orig/third_party/perfetto/src/trace_processor/containers/string_pool.cc	2022-03-07 17:28:24.814737660 +0100
++++ electron-17.1.0/third_party/perfetto/src/trace_processor/containers/string_pool.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -14,9 +14,9 @@
   * limitations under the License.
   */
@@ -25,10 +25,10 @@ Index: electron-16.0.6/third_party/perfetto/src/trace_processor/containers/strin
  
  #include "perfetto/base/logging.h"
  #include "perfetto/ext/base/utils.h"
-Index: electron-16.0.6/third_party/perfetto/src/trace_processor/db/column.cc
+Index: electron-17.1.0/third_party/perfetto/src/trace_processor/db/column.cc
 ===================================================================
---- electron-16.0.6.orig/third_party/perfetto/src/trace_processor/db/column.cc	2022-01-10 16:14:42.636448325 +0100
-+++ electron-16.0.6/third_party/perfetto/src/trace_processor/db/column.cc	2022-01-13 16:02:43.673424038 +0100
+--- electron-17.1.0.orig/third_party/perfetto/src/trace_processor/db/column.cc	2022-03-07 17:28:24.814737660 +0100
++++ electron-17.1.0/third_party/perfetto/src/trace_processor/db/column.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -14,6 +14,7 @@
   * limitations under the License.
   */
@@ -37,10 +37,10 @@ Index: electron-16.0.6/third_party/perfetto/src/trace_processor/db/column.cc
  #include "src/trace_processor/db/column.h"
  
  #include "src/trace_processor/db/compare.h"
-Index: electron-16.0.6/third_party/perfetto/src/trace_processor/types/variadic.cc
+Index: electron-17.1.0/third_party/perfetto/src/trace_processor/types/variadic.cc
 ===================================================================
---- electron-16.0.6.orig/third_party/perfetto/src/trace_processor/types/variadic.cc	2022-01-10 16:14:42.656448460 +0100
-+++ electron-16.0.6/third_party/perfetto/src/trace_processor/types/variadic.cc	2022-01-13 16:02:43.677424060 +0100
+--- electron-17.1.0.orig/third_party/perfetto/src/trace_processor/types/variadic.cc	2022-03-07 17:28:24.838737758 +0100
++++ electron-17.1.0/third_party/perfetto/src/trace_processor/types/variadic.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -14,6 +14,7 @@
   * limitations under the License.
   */
@@ -49,10 +49,10 @@ Index: electron-16.0.6/third_party/perfetto/src/trace_processor/types/variadic.c
  #include "src/trace_processor/types/variadic.h"
  
  namespace perfetto {
-Index: electron-16.0.6/ui/accessibility/platform/ax_platform_atk_hyperlink.cc
+Index: electron-17.1.0/ui/accessibility/platform/ax_platform_atk_hyperlink.cc
 ===================================================================
---- electron-16.0.6.orig/ui/accessibility/platform/ax_platform_atk_hyperlink.cc	2022-01-10 16:07:03.045384820 +0100
-+++ electron-16.0.6/ui/accessibility/platform/ax_platform_atk_hyperlink.cc	2022-01-13 16:02:43.677424060 +0100
+--- electron-17.1.0.orig/ui/accessibility/platform/ax_platform_atk_hyperlink.cc	2022-03-07 17:20:48.460884710 +0100
++++ electron-17.1.0/ui/accessibility/platform/ax_platform_atk_hyperlink.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -245,7 +245,7 @@ static void AXPlatformAtkHyperlinkInit(A
  }
  
@@ -62,11 +62,11 @@ Index: electron-16.0.6/ui/accessibility/platform/ax_platform_atk_hyperlink.cc
  
    AXPlatformNodeAuraLinux::EnsureGTypeInit();
  
-Index: electron-16.0.6/ui/accessibility/platform/ax_platform_node_auralinux.cc
+Index: electron-17.1.0/ui/accessibility/platform/ax_platform_node_auralinux.cc
 ===================================================================
---- electron-16.0.6.orig/ui/accessibility/platform/ax_platform_node_auralinux.cc	2022-01-10 16:07:03.049384849 +0100
-+++ electron-16.0.6/ui/accessibility/platform/ax_platform_node_auralinux.cc	2022-01-13 16:02:43.677424060 +0100
-@@ -2274,7 +2274,7 @@ void ClassInit(gpointer class_pointer, g
+--- electron-17.1.0.orig/ui/accessibility/platform/ax_platform_node_auralinux.cc	2022-03-07 17:20:48.460884710 +0100
++++ electron-17.1.0/ui/accessibility/platform/ax_platform_node_auralinux.cc	2022-03-09 08:25:10.346569313 +0100
+@@ -2275,7 +2275,7 @@ void ClassInit(gpointer class_pointer, g
  GType GetType() {
    AXPlatformNodeAuraLinux::EnsureGTypeInit();
  
@@ -75,10 +75,10 @@ Index: electron-16.0.6/ui/accessibility/platform/ax_platform_node_auralinux.cc
    if (g_once_init_enter(&type_volatile)) {
      static const GTypeInfo type_info = {
          sizeof(AXPlatformNodeAuraLinuxClass),  // class_size
-Index: electron-16.0.6/ui/gtk/gtk_key_bindings_handler.cc
+Index: electron-17.1.0/ui/gtk/gtk_key_bindings_handler.cc
 ===================================================================
---- electron-16.0.6.orig/ui/gtk/gtk_key_bindings_handler.cc	2022-01-10 16:07:03.365386955 +0100
-+++ electron-16.0.6/ui/gtk/gtk_key_bindings_handler.cc	2022-01-13 16:02:43.677424060 +0100
+--- electron-17.1.0.orig/ui/gtk/gtk_key_bindings_handler.cc	2022-03-07 17:20:48.816886156 +0100
++++ electron-17.1.0/ui/gtk/gtk_key_bindings_handler.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -120,7 +120,7 @@ void GtkKeyBindingsHandler::HandlerClass
  }
  
@@ -88,10 +88,10 @@ Index: electron-16.0.6/ui/gtk/gtk_key_bindings_handler.cc
    if (g_once_init_enter(&type_id_volatile)) {
      GType type_id = g_type_register_static_simple(
          GTK_TYPE_TEXT_VIEW, g_intern_static_string("GtkKeyBindingsHandler"),
-Index: electron-16.0.6/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
+Index: electron-17.1.0/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
 ===================================================================
---- electron-16.0.6.orig/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc	2022-01-10 16:06:47.881283740 +0100
-+++ electron-16.0.6/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc	2022-01-13 16:02:43.681424081 +0100
+--- electron-17.1.0.orig/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc	2022-03-07 17:20:31.788817015 +0100
++++ electron-17.1.0/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -2,6 +2,7 @@
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file.
@@ -100,10 +100,10 @@ Index: electron-16.0.6/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
  #include "chrome/browser/ui/bookmarks/bookmark_tab_helper.h"
  
  #include "base/observer_list.h"
-Index: electron-16.0.6/components/bookmarks/browser/bookmark_expanded_state_tracker.cc
+Index: electron-17.1.0/components/bookmarks/browser/bookmark_expanded_state_tracker.cc
 ===================================================================
---- electron-16.0.6.orig/components/bookmarks/browser/bookmark_expanded_state_tracker.cc	2022-01-10 16:06:49.325293365 +0100
-+++ electron-16.0.6/components/bookmarks/browser/bookmark_expanded_state_tracker.cc	2022-01-13 16:02:43.681424081 +0100
+--- electron-17.1.0.orig/components/bookmarks/browser/bookmark_expanded_state_tracker.cc	2022-03-07 17:20:33.308823187 +0100
++++ electron-17.1.0/components/bookmarks/browser/bookmark_expanded_state_tracker.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -2,6 +2,7 @@
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file.
@@ -112,10 +112,10 @@ Index: electron-16.0.6/components/bookmarks/browser/bookmark_expanded_state_trac
  #include "components/bookmarks/browser/bookmark_expanded_state_tracker.h"
  
  #include <stdint.h>
-Index: electron-16.0.6/components/bookmarks/browser/base_bookmark_model_observer.cc
+Index: electron-17.1.0/components/bookmarks/browser/base_bookmark_model_observer.cc
 ===================================================================
---- electron-16.0.6.orig/components/bookmarks/browser/base_bookmark_model_observer.cc	2022-01-10 16:06:49.325293365 +0100
-+++ electron-16.0.6/components/bookmarks/browser/base_bookmark_model_observer.cc	2022-01-13 16:02:43.681424081 +0100
+--- electron-17.1.0.orig/components/bookmarks/browser/base_bookmark_model_observer.cc	2022-03-07 17:20:33.308823187 +0100
++++ electron-17.1.0/components/bookmarks/browser/base_bookmark_model_observer.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -2,6 +2,8 @@
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file.

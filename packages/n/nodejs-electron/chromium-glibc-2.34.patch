@@ -1,20 +1,8 @@
-Index: electron-16.0.6/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
+From: https://forums.gentoo.org/viewtopic-p-8644495.html
+Index: electron-17.1.2/sandbox/linux/services/credentials.cc
 ===================================================================
---- electron-16.0.6.orig/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc	2022-01-10 16:08:04.821796604 +0100
-+++ electron-16.0.6/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc	2022-01-13 16:03:37.805718344 +0100
-@@ -138,7 +138,7 @@ void InstallAlternateStackLocked() {
-   // SIGSTKSZ may be too small to prevent the signal handlers from overrunning
-   // the alternative stack. Ensure that the size of the alternative stack is
-   // large enough.
--  static const unsigned kSigStackSize = std::max(16384, SIGSTKSZ);
-+  static const unsigned kSigStackSize = std::max<size_t>(16384, SIGSTKSZ);
- 
-   // Only set an alternative stack if there isn't already one, or if the current
-   // one is too small.
-Index: electron-16.0.6/sandbox/linux/services/credentials.cc
-===================================================================
---- electron-16.0.6.orig/sandbox/linux/services/credentials.cc	2022-01-10 16:06:52.909317255 +0100
-+++ electron-16.0.6/sandbox/linux/services/credentials.cc	2022-01-13 16:03:37.805718344 +0100
+--- electron-17.1.2.orig/sandbox/linux/services/credentials.cc	2022-03-11 08:49:31.620954425 +0100
++++ electron-17.1.2/sandbox/linux/services/credentials.cc	2022-03-11 09:17:31.024046235 +0100
 @@ -100,7 +100,9 @@ bool ChrootToSafeEmptyDir() {
    // TODO(crbug.com/1247458) Broken in MSan builds after LLVM f1bb30a4956f.
    clone_flags |= CLONE_VM | CLONE_VFORK | CLONE_SETTLS;

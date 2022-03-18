@@ -18,6 +18,13 @@
 
 
 %undefine _package_note_file
+# https://fedoraproject.org/wiki/Changes/SetBuildFlagsBuildCheck
+%undefine _auto_set_build_flags
+%if 0%{?fedora}
+# Debuginfo packages aren't very useful here. If you need to debug
+# you should do a proper debug build (not implemented in this spec yet)
+%global debug_package %{nil}
+%endif
 
 %define mod_name electron
 ExcludeArch:    %{ix86} %{arm}
@@ -67,7 +74,7 @@ ExcludeArch:    %{ix86} %{arm}
 %endif
 %bcond_without system_ffmpeg
 Name:           nodejs-electron
-Version:        16.0.9
+Version:        17.1.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -78,7 +85,7 @@ Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
 Source11:       electron.desktop
 Source12:       electron-logo-symbolic.svg
-Patch0:         chromium-95-compiler.patch
+Patch0:         chromium-98-compiler.patch
 %if 0%{?sle_version} < 150300 || 0%{?fedora} < 34
 # Fixed with ld.gold >= 2.36
 # https://sourceware.org/bugzilla/show_bug.cgi?id=26200
@@ -94,12 +101,13 @@ Patch8:         chromium-glibc-2.34.patch
 Patch9:         chromium-86-fix-vaapi-on-intel.patch
 %if %{with system_ffmpeg}
 Patch10:        chromium-93-ffmpeg-4.4.patch
-Patch11:        chromium-94-ffmpeg-roll.patch
+Patch11:        chromium-ffmpeg-first-dts.patch
 %endif
-Patch12:        chromium-96-RestrictedCookieManager-tuple.patch
 Patch13:        chromium-96-CouponDB-include.patch
-Patch14:        chromium-96-DrmRenderNodePathFinder-include.patch
-Patch15:        chromium-96-CommandLine-include.patch
+Patch14:        chromium-98-MiraclePtr-gcc-ice.patch
+Patch15:        chromium-98-WaylandFrameManager-check.patch
+Patch16:        chromium-98-EnumTable-crash.patch
+Patch17:        system-libdrm.patch
 # Fix building sql recover_module
 Patch20:        electron-13-fix-sql-virtualcursor-type.patch
 # Always disable use_thin_lto which is an lld feature
@@ -116,13 +124,13 @@ Patch23:        electron-13-blink-gcc-ambiguous-nodestructor.patch
 Patch24:        electron-16-std-vector-non-const.patch
 # Fix common.gypi to include /usr/include/electron
 Patch25:        electron-16-system-node-headers.patch
-%if 0%{?fedora} >= 35
-# Fix collections import with python 3.10
-Patch26:        electron-16-node-fix-python3.10-import.patch
-%endif
 Patch27:        electron-16-freetype-visibility-list.patch
 Patch28:        electron-16-third_party-symbolize-missing-include.patch
 Patch29:        electron-16-webpack-fix-openssl-3.patch
+# https://bugzilla.redhat.com/show_bug.cgi?id=2052228
+Patch30:        electron-16-fix-swiftshader-template.patch
+Patch31:        electron-16-v8-missing-utility-include.patch
+Patch32:        electron-17-breakpad-align-int-types.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -312,10 +320,6 @@ Requires:       nodejs-electron = %{version}
 %description devel
 Development headers for Electron projects.
 
-%if 0%{?fedora}
-%global debug_package %{nil}
-%endif
-
 %prep
 %autosetup -n %{mod_name}-%{version} -p1
 
@@ -360,11 +364,11 @@ export CXX=clang++
 %else
 
 # REDUCE DEBUG as it gets TOO large
-ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
+ARCH_FLAGS="$(echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g')"
 %if 0%{?fedora}
 # Fix base/allocator/allocator_shim.cc:408:2: error: #error This code cannot be
 # used when exceptions are turned on.
-ARCH_FLAGS="`echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g'`"
+ARCH_FLAGS="$(echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g')"
 %endif
 
 export CXXFLAGS="${CXXFLAGS} ${ARCH_FLAGS} -Wno-return-type"
@@ -461,6 +465,9 @@ myconf_gn+=" use_swiftshader_with_subzero=true"
 myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
 myconf_gn+=" use_aura=true"
+# symbol_level=2 is full debug
+# symbol_level=1 is enough info for stacktraces
+# symbol_level=0 disable debug
 myconf_gn+=" symbol_level=1"
 myconf_gn+=" blink_symbol_level=0"
 myconf_gn+=" use_kerberos=true"
@@ -558,7 +565,6 @@ rsync -av --exclude '*.pak.info' locales %{buildroot}%{_libdir}/electron/
 
 %if %{with swiftshader}
 rsync -av --exclude '*.so.TOC' swiftshader %{buildroot}%{_libdir}/electron/
-install -m 0644 vk_swiftshader_icd.json %{buildroot}%{_libdir}/electron/vk_swiftshader_icd.json
 %else
 rm -f  %{buildroot}/%{_libdir}/electron/libvk_swiftshader.so
 %endif
@@ -606,7 +612,6 @@ rsync -av out/Release/gen/node_headers/include/node/* %{buildroot}%{_includedir}
 
 %if %{with swiftshader}
 %{_libdir}/electron/libvk_swiftshader.so
-%{_libdir}/electron/vk_swiftshader_icd.json
 
 %dir %{_libdir}/electron/swiftshader/
 %{_libdir}/electron/swiftshader/libEGL.so

@@ -20,10 +20,10 @@ Change-Id: Ia6dc388cc5ef1c0f2afc75f8ca45b9f12687ca9c
  sql/recover_module/pager.h   |  5 +++--
  6 files changed, 47 insertions(+), 29 deletions(-)
 
-Index: electron-15.3.3/sql/recover_module/btree.cc
+Index: electron-17.1.0/sql/recover_module/btree.cc
 ===================================================================
---- electron-15.3.3.orig/sql/recover_module/btree.cc	2021-12-15 12:00:57.864361036 +0100
-+++ electron-15.3.3/sql/recover_module/btree.cc	2021-12-15 13:09:05.476916962 +0100
+--- electron-17.1.0.orig/sql/recover_module/btree.cc	2022-03-07 17:20:37.440839965 +0100
++++ electron-17.1.0/sql/recover_module/btree.cc	2022-03-09 08:27:33.744217386 +0100
 @@ -136,16 +136,25 @@ static_assert(std::is_trivially_destruct
                "Move the destructor to the .cc file if it's non-trival");
  #endif  // !DCHECK_IS_ON()
@@ -56,10 +56,10 @@ Index: electron-15.3.3/sql/recover_module/btree.cc
  bool LeafPageDecoder::TryAdvance() {
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
    DCHECK(CanAdvance());
-Index: electron-15.3.3/sql/recover_module/btree.h
+Index: electron-17.1.0/sql/recover_module/btree.h
 ===================================================================
---- electron-15.3.3.orig/sql/recover_module/btree.h	2021-12-15 12:00:57.864361036 +0100
-+++ electron-15.3.3/sql/recover_module/btree.h	2021-12-15 13:09:05.476916962 +0100
+--- electron-17.1.0.orig/sql/recover_module/btree.h	2022-03-07 17:20:37.440839965 +0100
++++ electron-17.1.0/sql/recover_module/btree.h	2022-03-09 08:27:33.744217386 +0100
 @@ -103,7 +103,7 @@ class LeafPageDecoder {
    //
    // |db_reader| must have been used to read an inner page of a table B-tree.
@@ -103,10 +103,10 @@ Index: electron-15.3.3/sql/recover_module/btree.h
  
    // The reader's cursor state.
    //
-Index: electron-15.3.3/sql/recover_module/cursor.cc
+Index: electron-17.1.0/sql/recover_module/cursor.cc
 ===================================================================
---- electron-15.3.3.orig/sql/recover_module/cursor.cc	2021-12-15 12:00:57.864361036 +0100
-+++ electron-15.3.3/sql/recover_module/cursor.cc	2021-12-15 13:09:05.476916962 +0100
+--- electron-17.1.0.orig/sql/recover_module/cursor.cc	2022-03-07 17:20:37.440839965 +0100
++++ electron-17.1.0/sql/recover_module/cursor.cc	2022-03-09 08:27:33.744217386 +0100
 @@ -28,7 +28,7 @@ VirtualCursor::~VirtualCursor() {
  int VirtualCursor::First() {
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
@@ -168,11 +168,11 @@ Index: electron-15.3.3/sql/recover_module/cursor.cc
      return;
    }
  
-Index: electron-15.3.3/sql/recover_module/cursor.h
+Index: electron-17.1.0/sql/recover_module/cursor.h
 ===================================================================
---- electron-15.3.3.orig/sql/recover_module/cursor.h	2021-12-15 12:00:57.864361036 +0100
-+++ electron-15.3.3/sql/recover_module/cursor.h	2021-12-15 13:09:05.476916962 +0100
-@@ -129,7 +129,7 @@ class VirtualCursor {
+--- electron-17.1.0.orig/sql/recover_module/cursor.h	2022-03-07 17:20:37.440839965 +0100
++++ electron-17.1.0/sql/recover_module/cursor.h	2022-03-09 08:27:33.744217386 +0100
+@@ -130,7 +130,7 @@ class VirtualCursor {
    std::vector<std::unique_ptr<InnerPageDecoder>> inner_decoders_;
  
    // Decodes the leaf page containing records.
@@ -181,10 +181,10 @@ Index: electron-15.3.3/sql/recover_module/cursor.h
  
    SEQUENCE_CHECKER(sequence_checker_);
  };
-Index: electron-15.3.3/sql/recover_module/pager.cc
+Index: electron-17.1.0/sql/recover_module/pager.cc
 ===================================================================
---- electron-15.3.3.orig/sql/recover_module/pager.cc	2021-12-15 12:00:57.864361036 +0100
-+++ electron-15.3.3/sql/recover_module/pager.cc	2021-12-15 13:09:05.476916962 +0100
+--- electron-17.1.0.orig/sql/recover_module/pager.cc	2022-03-07 17:20:37.440839965 +0100
++++ electron-17.1.0/sql/recover_module/pager.cc	2022-03-09 08:27:33.744217386 +0100
 @@ -23,8 +23,7 @@ static_assert(DatabasePageReader::kMaxPa
                "ints are not appropriate for representing page IDs");
  
@@ -206,10 +206,10 @@ Index: electron-15.3.3/sql/recover_module/pager.cc
  
    // |page_id_| needs to be set to kInvalidPageId if the read failed.
    // Otherwise, future ReadPage() calls with the previous |page_id_| value
-Index: electron-15.3.3/sql/recover_module/pager.h
+Index: electron-17.1.0/sql/recover_module/pager.h
 ===================================================================
---- electron-15.3.3.orig/sql/recover_module/pager.h	2021-12-15 12:00:57.864361036 +0100
-+++ electron-15.3.3/sql/recover_module/pager.h	2021-12-15 13:09:05.476916962 +0100
+--- electron-17.1.0.orig/sql/recover_module/pager.h	2022-03-07 17:20:37.440839965 +0100
++++ electron-17.1.0/sql/recover_module/pager.h	2022-03-09 08:27:33.744217386 +0100
 @@ -5,6 +5,7 @@
  #ifndef SQL_RECOVER_MODULE_PAGER_H_
  #define SQL_RECOVER_MODULE_PAGER_H_
@@ -218,7 +218,7 @@ Index: electron-15.3.3/sql/recover_module/pager.h
  #include <cstdint>
  #include <memory>
  #include <ostream>
-@@ -71,7 +72,7 @@ class DatabasePageReader {
+@@ -72,7 +73,7 @@ class DatabasePageReader {
      DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
      DCHECK_NE(page_id_, kInvalidPageId)
          << "Successful ReadPage() required before accessing pager state";
@@ -227,7 +227,7 @@ Index: electron-15.3.3/sql/recover_module/pager.h
    }
  
    // The number of bytes in the page read by the last ReadPage() call.
-@@ -138,7 +139,7 @@ class DatabasePageReader {
+@@ -139,7 +140,7 @@ class DatabasePageReader {
    int page_id_ = kInvalidPageId;
    // Stores the bytes of the last page successfully read by ReadPage().
    // The content is undefined if the last call to ReadPage() did not succeed.
@@ -235,4 +235,4 @@ Index: electron-15.3.3/sql/recover_module/pager.h
 +  const std::array<uint8_t, kMaxPageSize> page_data_;
    // Raw pointer usage is acceptable because this instance's owner is expected
    // to ensure that the VirtualTable outlives this.
-   VirtualTable* const table_;
+   const raw_ptr<VirtualTable> table_;
