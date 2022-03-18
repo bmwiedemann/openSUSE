@@ -1,0 +1,6 @@
+<package name="docparser" project="openSUSE:Factory">
+  <title>A document parser library</title>
+  <description>docparser is a document parser library.It is ported from document2html.</description>
+  <devel project="X11:Deepin" package="docparser"/>
+  <url>https://github.com/linuxdeepin/docparser</url>
+</package>
