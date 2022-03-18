@@ -1,4 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">git://github.com/openSUSE/jeos-firstboot.git</param>
-              <param name="changesrevision">ab6c8a7fac1ce770a6bb522ba6c997c56da3f756</param></service></servicedata>
+                <param name="url">https://github.com/openSUSE/jeos-firstboot.git</param>
+              <param name="changesrevision">e0ae3fee933953e5f6c2c52fff95ac253ba8e315</param></service></servicedata>

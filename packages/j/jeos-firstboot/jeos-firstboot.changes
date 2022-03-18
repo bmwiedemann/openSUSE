@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 16 15:04:42 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.1.1.1:
+  * Quick'n'dirty NetworkManager support
+- Switch git URL to https
+- Require NetworkManager or wicked
+
+-------------------------------------------------------------------
 Thu Feb 17 14:58:12 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.1.1.0:

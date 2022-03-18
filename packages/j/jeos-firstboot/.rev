@@ -465,4 +465,12 @@
   * Skip broken consoles (bsc#1195975)</comment>
     <requestid>955654</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f8839391529d65b2755604405cf74b25</srcmd5>
+    <version>1.1.1.1</version>
+    <time>1647618096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962239</requestid>
+  </revision>
 </revisionlist>
