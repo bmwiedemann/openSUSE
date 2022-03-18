@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 18 04:14:59 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.3:
+  * Add a note on manual result printing to README - #50
+  * Bump Python version to 3.6 - fix #51 
+- Add patch remove-mock.patch:
+  * Remove use of mock.
+
+-------------------------------------------------------------------
 Fri Dec 17 13:50:46 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build

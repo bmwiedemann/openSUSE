@@ -65,4 +65,16 @@
     <comment></comment>
     <requestid>941307</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de6e578d93acf739d59481cc581cc244</srcmd5>
+    <version>1.3</version>
+    <time>1647618137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3:
+  * Add a note on manual result printing to README - #50
+  * Bump Python version to 3.6 - fix #51 
+- Add patch remove-mock.patch:
+  * Remove use of mock.</comment>
+    <requestid>962569</requestid>
+  </revision>
 </revisionlist>
