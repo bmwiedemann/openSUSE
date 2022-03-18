@@ -3006,6 +3006,7 @@ unsorted:
   - docker-machine-driver-kvm2: [x86_64] 
   - docker-zsh-completion 
   - docker_auth 
+  - docparser-devel 
   - doctest-devel 
   - dog: [x86_64] 
   - dogtail 
@@ -3630,6 +3631,8 @@ unsorted:
   - featherpad-lang 
   - fec-devel 
   - feh 
+  - felix-bundlerepository 
+  - felix-bundlerepository-javadoc 
   - felix-gogo-command 
   - felix-gogo-command-javadoc 
   - felix-gogo-parent 
@@ -3637,6 +3640,8 @@ unsorted:
   - felix-gogo-runtime-javadoc 
   - felix-gogo-shell 
   - felix-gogo-shell-javadoc 
+  - felix-osgi-obr 
+  - felix-osgi-obr-javadoc 
   - felix-parent 
   - felix-scr 
   - felix-scr-javadoc 
@@ -5712,6 +5717,9 @@ unsorted:
   - glade-lang 
   - glade-sharp2 
   - glances-common 
+  - glassfish-activation 
+  - glassfish-activation-api 
+  - glassfish-activation-javadoc 
   - glassfish-annotation-api 
   - glassfish-annotation-api-javadoc 
   - glassfish-dtd-parser 
@@ -5914,6 +5922,8 @@ unsorted:
   - gnome-pomodoro-lang 
   - gnome-power-manager 
   - gnome-power-manager-lang 
+  - gnome-radio 
+  - gnome-radio-lang 
   - gnome-recipes 
   - gnome-recipes-lang 
   - gnome-robots 
@@ -5978,7 +5988,6 @@ unsorted:
   - gnu-free-fonts 
   - gnu-getopt 
   - gnu-getopt-javadoc 
-  - gnu-inetlib 
   - gnu-jaf 
   - gnu-netcat 
   - gnu-regexp 
@@ -7637,10 +7646,6 @@ unsorted:
   - jgit 
   - jgit-javadoc 
   - jgmenu 
-  - jgoodies-forms 
-  - jgoodies-forms-demo 
-  - jgoodies-forms-javadoc 
-  - jgoodies-forms-manual 
   - jgraphx 
   - jgroups 
   - jgroups-javadoc 
@@ -10491,6 +10496,7 @@ unsorted:
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdnssec8 
+  - libdocparser1 
   - libdouble-conversion3-32bit: [x86_64] 
   - libdpdk-22: [x86_64] 
   - libdqlite0 
@@ -11137,7 +11143,8 @@ unsorted:
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
   - libgranite6 
-  - libgraphblas5 
+  - libgraphblas5: [i586] 
+  - libgraphblas6: [x86_64] 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
   - libgravatar-devel 
