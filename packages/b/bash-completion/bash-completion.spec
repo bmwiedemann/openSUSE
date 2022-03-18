@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,8 +46,6 @@ Source1:        bash-completion-rpmlintrc
 Patch0:         %{_name}-2.4.patch
 # PATCH-FIX-SUSE bnc#1012212 -- bash tab-autocompletion hangs on TAR-archiving with --create key
 Patch1:         tar-completion.patch
-# PATCH-FIX-SUSE bnc#903362 -- tab completion for file names prints error
-Patch2:         PS1-completion-boo903362.patch
 # PATCH-FIX-SUSE boo#905348 -- tab completion with shell variable changes command line with backslash
 Patch3:         FOO-dir-completion-boo905348.patch
 # PATCH-FIX-SUSE
@@ -78,7 +76,7 @@ BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
 %endif
 %if %{build_core}
-Requires:       bash
+Requires:       bash >= 5.1.16
 %endif
 
 %description

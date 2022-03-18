@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 28 19:19:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove PS1-completion-boo903362.patch as it breaks on non-bash
+  shells and the original problem in 
+  bsc#903362#c9 does not occur anymore
+- add versioned dependency to bash versions that have the fix
+
+-------------------------------------------------------------------
 Mon Oct  4 13:42:40 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch boo1190929-9af4afd0.patch for boo#1190929
