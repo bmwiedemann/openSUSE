@@ -22,6 +22,9 @@ Release:        0
 Summary:        Links for busybox applets
 License:        GPL-2.0-or-later
 Source:         busybox-links-rpmlintrc
+Source1:        zless
+Source2:        zmore
+Source3:        zgrep
 BuildRequires:  attr
 BuildRequires:  bc
 BuildRequires:  bind-utils
@@ -638,10 +641,9 @@ ln -sf %{_bindir}/busybox %{buildroot}%{_bindir}/sh
 %if !0%{?usrmerged}
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
 %endif
-cp -av %{_bindir}/zgrep %{buildroot}%{_bindir}
-cp -av %{_bindir}/zmore %{buildroot}%{_bindir}
-sed -e 's|PAGER-more|PAGER-less|g' %{buildroot}%{_bindir}/zmore > %{buildroot}%{_bindir}/zless
-chmod 755 %{buildroot}%{_bindir}/zless
+install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/zless
+install -m 755 %{SOURCE2} %{buildroot}%{_bindir}/zmore
+install -m 755 %{SOURCE3} %{buildroot}%{_bindir}/zgrep
 
 %files
 
