@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 11 14:44:21 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 1.2:
+  * Release fwupd-efi 1.2
+  * meson: use stadard objcopy binary
+  * meson: use find_program() to find the helper scripts we run
+  * meson: using local copy ldscript when local copy crt0 be used for SBAT
+  * sbat: clarify project URL
+  * trivial: Ignore some markdown issues
+  * Wait 5 seconds to reboot on errors
+  * Port pre-commit clang-format, codespell, markdownlint from fwupd
+  * trivial: fixup python errors by codacity/precommit
+  * trivial: fixup markdown format
+  * trivial: spelling errors
+  * Sleep longer when no updates to process
+  * README: fix typo and URL
+  * trivial: post release version bump
+- Remove 0001-meson-using-local-copy-ldscript-when-local-copy-crt0.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
 Fri Nov  5 18:47:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Re-add fwupdx64.efi.signed symlink (boo#1192206)

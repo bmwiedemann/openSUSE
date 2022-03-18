@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd-efi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 # needssslcertforbuild
 
+
 Name:           fwupd-efi
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Firmware update EFI binaries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,11 +27,10 @@ URL:            https://github.com/fwupd/fwupd-efi
 # Do not use upstream tarball, we are using source service!
 Source:         %{name}-%{version}.tar.xz
 
-Patch1:		0001-meson-using-local-copy-ldscript-when-local-copy-crt0.patch
-BuildRequires:  meson >= 0.47.0
-BuildRequires:  pkgconfig
 BuildRequires:  gnu-efi
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  pesign-obs-integration
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(efiboot)
 BuildRequires:  pkgconfig(efivar) >= 33
 Requires:       shim >= 11
