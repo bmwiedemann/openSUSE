@@ -21,7 +21,7 @@
 %define trustdir_cfg     %{pkidir_cfg}/trust
 %define trustdir_static  %{pkidir_static}/trust
 Name:           p11-kit
-Version:        0.23.22
+Version:        0.24.1
 Release:        0
 Summary:        Library to work with PKCS#11 modules
 License:        BSD-3-Clause
@@ -46,6 +46,7 @@ such a way that they're discoverable.
 %package -n libp11-kit0
 Summary:        Library to work with PKCS#11 modules
 Group:          System/Libraries
+Conflicts:      p11-kit < %{version}-%{release}
 
 %description -n libp11-kit0
 p11-kit provides a way to load and enumerate PKCS#11 modules, as well
@@ -55,6 +56,7 @@ such a way that they're discoverable.
 %package tools
 Summary:        Library to work with PKCS#11 modules -- Tools
 Group:          Development/Libraries/C and C++
+Conflicts:      p11-kit < %{version}-%{release}
 
 %description tools
 p11-kit provides a way to load and enumerate PKCS#11 modules, as well
@@ -108,8 +110,8 @@ Unix domain socket.  Note that this feature is still experimental.
 %install
 %make_install
 #
-install -d m 755 %{buildroot}%{trustdir_cfg}/{anchors,blacklist}
-install -d m 755 %{buildroot}%{trustdir_static}/{anchors,blacklist}
+install -d m 755 %{buildroot}%{trustdir_cfg}/{anchors,blocklist}
+install -d m 755 %{buildroot}%{trustdir_static}/{anchors,blocklist}
 # Create pkcs11 config directory
 test ! -e %{buildroot}%{_sysconfdir}/pkcs11/modules
 install -d %{buildroot}%{_sysconfdir}/pkcs11/modules
@@ -149,11 +151,11 @@ export NO_BRP_STALE_LINK_ERROR=yes # *grr*
 %dir %{pkidir_cfg}
 %dir %{trustdir_cfg}
 %dir %{trustdir_cfg}/anchors
-%dir %{trustdir_cfg}/blacklist
+%dir %{trustdir_cfg}/blocklist
 %dir %{pkidir_static}
 %dir %{trustdir_static}
 %dir %{trustdir_static}/anchors
-%dir %{trustdir_static}/blacklist
+%dir %{trustdir_static}/blocklist
 %{_datadir}/%{name}/modules/p11-kit-trust.module
 %{_libdir}/pkcs11/p11-kit-trust.so
 %dir %{_libexecdir}/%{name}

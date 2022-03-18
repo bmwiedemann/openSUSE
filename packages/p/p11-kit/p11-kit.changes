@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Mar  9 16:19:28 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- make sure p11-kit components have matching versions (boo#1196812)
+
+-------------------------------------------------------------------
+Tue Jan 25 10:42:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.24.1:
+  * rpc: Support protocol version negotiation.
+  * proxy: Support copying attribute array recursively.
+  * Link libp11-kit so that it cannot unload.
+  * Translation improvements.
+  * Build fixes.
+
+-------------------------------------------------------------------
+Fri Dec 17 13:47:17 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.24.0:
+  * Use inclusive language on certificate distrust. Note: This
+    changes the directory and attribute names to distrust certain
+    CAs to "blocklist".
+  * Fix issues spotted by coverity and ASan.
+  * Integrate gettext with tools more tightly.
+  * rpc: Forbid use of array of attributes.
+  * Build fixes.
+- Change dirs from blacklist to blocklist ref upstream changes.
+
+-------------------------------------------------------------------
 Mon Dec 13 11:11:31 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Enable systemd support
