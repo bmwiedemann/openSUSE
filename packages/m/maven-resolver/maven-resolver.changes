@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 17 03:20:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add the glassfish-annotation-api jar to the build classpath
+
+-------------------------------------------------------------------
 Fri Mar 11 12:10:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.7.3

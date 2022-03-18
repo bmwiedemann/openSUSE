@@ -31,7 +31,9 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
+%if 0%{?suse_version} > 1500
 BuildRequires:  glassfish-annotation-api
+%endif
 BuildRequires:  google-guice
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
@@ -202,6 +204,9 @@ mkdir -p lib
 build-jar-repository -s lib \
   atinject \
   commons-lang3 \
+%if 0%{?suse_version} > 1500
+  glassfish-annotation-api \
+%endif
   guice/google-guice-no_aop \
   httpcomponents/httpclient \
   httpcomponents/httpcore \
