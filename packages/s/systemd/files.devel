@@ -7,7 +7,7 @@
 %{_libdir}/libudev.so
 %{_libdir}/pkgconfig/libsystemd.pc
 %{_libdir}/pkgconfig/libudev.pc
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_mandir}/man3/SD_ALERT.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_ACCESS_DENIED.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_ADDRESS_IN_USE.3.gz
@@ -55,6 +55,7 @@
 %{_mandir}/man3/SD_BUS_PROPERTY.3.gz
 %{_mandir}/man3/SD_BUS_SIGNAL.3.gz
 %{_mandir}/man3/SD_BUS_SIGNAL_WITH_NAMES.3.gz
+%{_mandir}/man3/SD_BUS_VTABLE_CAPABILITY.3.gz
 %{_mandir}/man3/SD_BUS_VTABLE_END.3.gz
 %{_mandir}/man3/SD_BUS_VTABLE_START.3.gz
 %{_mandir}/man3/SD_BUS_WRITABLE_PROPERTY.3.gz
@@ -84,6 +85,8 @@
 %{_mandir}/man3/SD_ID128_MAKE_STR.3.gz
 %{_mandir}/man3/SD_ID128_MAKE_UUID_STR.3.gz
 %{_mandir}/man3/SD_ID128_NULL.3.gz
+%{_mandir}/man3/SD_ID128_STRING_MAX.3.gz
+%{_mandir}/man3/SD_ID128_TO_STRING.3.gz
 %{_mandir}/man3/SD_ID128_UUID_FORMAT_STR.3.gz
 %{_mandir}/man3/SD_INFO.3.gz
 %{_mandir}/man3/SD_JOURNAL_ALL_NAMESPACES.3.gz
@@ -426,6 +429,7 @@
 %{_mandir}/man3/sd_event_add_defer.3.gz
 %{_mandir}/man3/sd_event_add_exit.3.gz
 %{_mandir}/man3/sd_event_add_inotify.3.gz
+%{_mandir}/man3/sd_event_add_inotify_fd.3.gz
 %{_mandir}/man3/sd_event_add_io.3.gz
 %{_mandir}/man3/sd_event_add_post.3.gz
 %{_mandir}/man3/sd_event_add_signal.3.gz
@@ -495,6 +499,7 @@
 %{_mandir}/man3/sd_event_source_set_prepare.3.gz
 %{_mandir}/man3/sd_event_source_set_priority.3.gz
 %{_mandir}/man3/sd_event_source_set_ratelimit.3.gz
+%{_mandir}/man3/sd_event_source_set_ratelimit_expire_callback.3.gz
 %{_mandir}/man3/sd_event_source_set_time.3.gz
 %{_mandir}/man3/sd_event_source_set_time_accuracy.3.gz
 %{_mandir}/man3/sd_event_source_set_time_relative.3.gz

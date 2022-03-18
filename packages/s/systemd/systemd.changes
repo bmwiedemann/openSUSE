@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Mar 17 10:38:16 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Add 1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
+
+  A temporary workaround until bsc#1197178 is resolved.
+
+-------------------------------------------------------------------
+Wed Mar 16 20:50:35 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 8ef8dfd5401ba18caec59e54a05af9f2e0d7ac65 (merge of v250.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/ca89b1d1fd1ae86cc1e763d2d01ec2806f3a4d3a...8ef8dfd5401ba18caec59e54a05af9f2e0d7ac65
+
+-------------------------------------------------------------------
+Wed Mar 16 20:36:36 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit ca89b1d1fd1ae86cc1e763d2d01ec2806f3a4d3a
+
+  37b683c832 journal: preserve acls when rotating user journals with NOCOW attribute set
+  d043fabebc journal: when copying journal file to undo NOCOW flag, go via fd
+  78c2766689 journal-file: explicitly handle file systems that do not support hole punching
+  7ecfb4b098 journal-file: fix error handling of pread() in journald_file_punch_holes()
+  c4946a412c journal-file: don't use pread() when determining where to append, use mmap as before
+  d3fbd20628 journal: various fixes to journal_file_read_object()
+  5897a8e8d4 shared: Handle filesystems that don't support hole punching in COPY_HOLES
+  27746408e2 journal: Truncate file instead of punching hole in final object
+  59b6130030 shared: Ensure COPY_HOLES copies trailing holes
+  ac9ccba73f journal: stat journal file after truncating
+  0257283444 journal: Copy holes when archiving BTRFS journal files
+  26c2a9952d shared: Copy holes in sparse files in copy_bytes_full()
+  6c7191dece copy: fix wrong argument passed to S_ISREG() in copy_file_fd_full()
+  af0a43024d udev: 60-persistent-storage-tape.rules: handle duplicate device ID (bsc#1195529)
+
+-------------------------------------------------------------------
+Sat Mar 12 12:57:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update Supplements to new format in baselibs.conf
+- Fix libsystemd-shared exclusion in baselibs.conf
+- Exclude new cryptsetup libraries in baselibs.conf
+
+-------------------------------------------------------------------
+Tue Mar  8 19:08:03 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: minor simplification by assuming that %{bootstrap} is always
+  defined.
+
+-------------------------------------------------------------------
+Tue Mar  8 17:50:57 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Make sure to create 'systemd-coredump' system user when systemd-coredump is
+  installed (follow-up for the split of the sysusers config files).
+
+-------------------------------------------------------------------
+Tue Mar  8 09:41:42 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v250.3 (commit dbd8bd2b9fd827ca89ed18034b60703c95798e01)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v250/NEWS for
+  details. 
+
+  * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
+            0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
+
+- Dropped 0007-networkd-make-network.service-an-alias-of-systemd-ne.patch
+
+  The alias makes little sense as soon as multiple network managers are used in
+  parallel.
+
+-------------------------------------------------------------------
 Tue Mar  8 07:41:41 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Fix the default target when it's been incorrectly set to one of the runlevel

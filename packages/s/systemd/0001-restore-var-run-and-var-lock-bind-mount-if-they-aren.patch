@@ -1,4 +1,4 @@
-From e78660b66efc6ab28b655ca584315504b76cb4dc Mon Sep 17 00:00:00 2001
+From 9ab58f2dbcbbafc10a1b4de046a9b0e03bb08595 Mon Sep 17 00:00:00 2001
 From: Frederic Crozat <fcrozat@suse.com>
 Date: Mon, 29 Oct 2012 13:01:20 +0000
 Subject: [PATCH 02/11] restore /var/run and /var/lock bind mount if they
@@ -13,10 +13,10 @@ Subject: [PATCH 02/11] restore /var/run and /var/lock bind mount if they
  create mode 100644 units/var-run.mount
 
 diff --git a/units/meson.build b/units/meson.build
-index 17e9ead9c1..7b926f9f91 100644
+index a9bf28f6d9..739fd84d2c 100644
 --- a/units/meson.build
 +++ b/units/meson.build
-@@ -160,6 +160,8 @@ units = [
+@@ -165,6 +165,8 @@ units = [
          ['umount.target',                       ''],
          ['usb-gadget.target',                   ''],
          ['user.slice',                          ''],
@@ -24,7 +24,7 @@ index 17e9ead9c1..7b926f9f91 100644
 +        ['var-lock.mount',                      'HAVE_SYSV_COMPAT',        'local-fs.target.wants/'],
          ['var-lib-machines.mount',              'ENABLE_MACHINED',
           'remote-fs.target.wants/ machines.target.wants/'],
- ]
+         ['systemd-oomd.socket',                 'ENABLE_OOMD'],
 diff --git a/units/var-lock.mount b/units/var-lock.mount
 new file mode 100644
 index 0000000000..07277adac3
@@ -76,5 +76,5 @@ index 0000000000..ab4da424c9
 +Type=bind
 +Options=bind
 -- 
-2.26.2
+2.34.1
 

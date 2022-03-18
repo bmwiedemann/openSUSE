@@ -27,7 +27,7 @@
 %endif
 
 %define min_kernel_version 4.5
-%define suse_version +suse.86.g0bb1977021
+%define suse_version +suse.35.g8ef8dfd540
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
 
@@ -37,7 +37,7 @@
 %define __when_2() %{expand:%%{?with_%{1}:%{2}}%%{!?with_%{1}:false}}
 %define when()     %{expand:%%__when_%# %{*}}
 
-%if 0%{?bootstrap}
+%if %{bootstrap}
 %bcond_with     coredump
 %bcond_with     importd
 %bcond_with     journal_remote
@@ -71,12 +71,12 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        249.10
+Version:        250.4
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  kbd
 BuildRequires:  libapparmor-devel
@@ -132,7 +132,7 @@ BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.33
 BuildRequires:  gnu-efi
 %endif
 
-%if 0%{?bootstrap}
+%if %{bootstrap}
 #!BuildIgnore:  dbus-1
 Provides:       systemd = %{version}-%{release}
 Conflicts:      systemd
@@ -215,11 +215,15 @@ Patch1:         0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
 Patch2:         0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch3:         0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
 Patch5:         0005-udev-create-default-symlinks-for-primary-cd_dvd-driv.patch
-Patch7:         0007-networkd-make-network.service-an-alias-of-systemd-ne.patch
+%if %{with sysvcompat}
 Patch8:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
+%endif
 Patch10:        0001-conf-parser-introduce-early-drop-ins.patch
 Patch11:        0011-core-disable-session-keyring-per-system-sevice-entir.patch
 Patch12:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
+
+# Temporary workaround until bsc#1197178 is addressed.
+Patch1000:      1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
 
 # Patches listed below are put in quarantine. Normally all changes
 # must go to upstream first and then are cherry-picked in the SUSE git
@@ -241,7 +245,7 @@ drop-in replacement for sysvinit.
 %package doc
 Summary:        HTML documentation for systemd
 License:        LGPL-2.1-or-later
-%if 0%{?bootstrap}
+%if %{bootstrap}
 Conflicts:      systemd-doc
 Requires:       this-is-only-for-build-envs
 %else
@@ -259,7 +263,7 @@ Requires:       libudev%{?mini}1 = %{version}-%{release}
 Requires:       systemd-rpm-macros
 Provides:       libudev%{?mini}-devel = %{version}-%{release}
 Obsoletes:      libudev%{?mini}-devel < %{version}-%{release}
-%if 0%{?bootstrap}
+%if %{bootstrap}
 Provides:       systemd-devel = %{version}-%{release}
 Conflicts:      systemd-devel
 Provides:       libudev-devel = %{version}-%{release}
@@ -292,7 +296,7 @@ Please note that the content of this package is considered as deprecated.
 %package -n libsystemd0%{?mini}
 Summary:        Component library for systemd
 License:        LGPL-2.1-or-later
-%if 0%{?bootstrap}
+%if %{bootstrap}
 Conflicts:      kiwi
 Conflicts:      libsystemd0
 Provides:       libsystemd0 = %{version}-%{release}
@@ -338,7 +342,7 @@ Conflicts:      dracut < 044.1
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
 Conflicts:      util-linux < 2.16
-%if 0%{?bootstrap}
+%if %{bootstrap}
 Conflicts:      udev
 Provides:       udev = %{version}-%{release}
 %endif
@@ -353,7 +357,7 @@ call tools to initialize a device, or load needed kernel modules.
 %package -n libudev%{?mini}1
 Summary:        Dynamic library to access udev device information
 License:        LGPL-2.1-or-later
-%if 0%{?bootstrap}
+%if %{bootstrap}
 Conflicts:      kiwi
 Conflicts:      libudev1
 Provides:       libudev1 = %{version}-%{release}
@@ -387,7 +391,7 @@ Obsoletes:      nss-mymachines < %{version}-%{release}
 Provides:       nss-mymachines = %{version}-%{release}
 Provides:       systemd-container = %{version}-%{release}
 Provides:       systemd:%{_bindir}/systemd-nspawn
-%if 0%{?bootstrap}
+%if %{bootstrap}
 Conflicts:      systemd-container
 Provides:       systemd-container = %{version}-%{release}
 %endif
@@ -458,7 +462,7 @@ http://0pointer.net/blog/walkthrough-for-portable-services.html
 https://systemd.io/PORTABLE_SERVICES
 %endif
 
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %package -n nss-systemd
 Summary:        Plugin for local virtual host name resolution
 License:        LGPL-2.1-or-later
@@ -625,7 +629,7 @@ The package contains: homed, pstore, repart, userdbd.
 Have fun with these services at your own risk.
 %endif
 
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %lang_package
 %endif
 
@@ -670,7 +674,7 @@ Have fun with these services at your own risk.
         -Dima=false \
         -Delfutils=auto \
         -Doomd=false \
-%if 0%{?bootstrap}
+%if %{bootstrap}
         -Dbashcompletiondir=no \
         -Dzshcompletiondir=no \
         -Dtranslations=false \
@@ -690,6 +694,7 @@ Have fun with these services at your own risk.
 	\
         -Defi=%{when sd_boot} \
         -Dgnu-efi=%{when sd_boot} \
+        -Dsbat-distro= \
 	\
         -Dresolve=%{when resolved} \
         -Ddns-servers='' \
@@ -913,7 +918,7 @@ rm %{buildroot}%{_testsuitedir}/test/test-keymap-util/kbd-model-map
 find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
 %endif
 
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %find_lang systemd
 %endif
 
@@ -942,7 +947,7 @@ if [ "$(stat -c%a %{_sysconfdir}/machine-id)" != 444 ]; then
         chmod 444 %{_sysconfdir}/machine-id
 fi
 
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 pam-config --add --systemd || :
 %endif
 
@@ -1125,7 +1130,12 @@ fi
 %ldconfig
 %endif
 
-%if ! 0%{?bootstrap}
+%if %{with coredump}
+%post coredump
+%sysusers_create systemd-coredump.conf
+%endif
+
+%if ! %{bootstrap}
 %ldconfig_scriptlets -n nss-myhostname
 %ldconfig_scriptlets -n nss-systemd
 %endif
@@ -1270,13 +1280,13 @@ fi
 %defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libsystemd.so.0
-%{_libdir}/libsystemd.so.0.32.0
+%{_libdir}/libsystemd.so.0.33.0
 
 %files -n libudev%{?mini}1
 %defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libudev.so.1
-%{_libdir}/libudev.so.1.7.2
+%{_libdir}/libudev.so.1.7.3
 
 %if %{with coredump}
 %files coredump
@@ -1289,14 +1299,14 @@ fi
 %{_sysusersdir}/systemd-coredump.conf
 %config(noreplace) %{_sysconfdir}/systemd/coredump.conf
 %dir %{_localstatedir}/lib/systemd/coredump
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_mandir}/man1/coredumpctl*
 %{_mandir}/man5/coredump.conf*
 %{_mandir}/man8/systemd-coredump*
 %endif
 %endif
 
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %files lang -f systemd.lang
 
 %files -n nss-myhostname
@@ -1383,6 +1393,10 @@ fi
 %{_unitdir}/systemd-homed.service
 %{_unitdir}/systemd-homed-activate.service
 %{_pam_moduledir}/pam_systemd_home.so
+%{_datadir}/dbus-1/interfaces/org.freedesktop.home1.Home.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.home1.Manager.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Image.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Manager.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.home1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.home1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.home1.policy
