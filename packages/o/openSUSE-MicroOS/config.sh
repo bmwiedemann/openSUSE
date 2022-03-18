@@ -87,6 +87,13 @@ if [ -f /etc/chrony.conf ]; then
 	systemctl enable chronyd
 fi
 
+# Enable jeos-firstboot if installed, disabled by combustion/ignition
+if rpm -q --whatprovides jeos-firstboot >/dev/null; then
+	mkdir -p /var/lib/YaST2
+	touch /var/lib/YaST2/reconfig_system
+	systemctl enable jeos-firstboot.service
+fi
+
 # The %post script can't edit /etc/fstab sys due to https://github.com/OSInside/kiwi/issues/945
 # so use the kiwi custom hack
 cat >/etc/fstab.script <<"EOF"
@@ -214,6 +221,7 @@ if [[ "$kiwi_profiles" == *"SelfInstall"* ]]; then
 	[Unit]
 	Description=SelfInstall Image Reboot after Firstboot (to ensure ignition and such runs)
 	After=systemd-machine-id-commit.service
+	Before=jeos-firstboot.service
 	
 	[Service]
 	Type=oneshot

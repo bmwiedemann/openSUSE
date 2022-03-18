@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 17 12:05:55 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Enable jeos-firstboot iff installed
+
+-------------------------------------------------------------------
+Wed Mar 16 15:14:49 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Install image configuration tools on SelfInstall as well
+- Add jeos-firstboot
+
+-------------------------------------------------------------------
 Wed Mar  2 15:40:51 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Run wicked specific code only if wicked is installed
