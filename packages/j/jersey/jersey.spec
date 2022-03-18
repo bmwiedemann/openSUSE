@@ -32,14 +32,15 @@ Patch0:         jersey-2.17-mvc-jsp-servlet31.patch
 Patch2:         0002-Port-to-glassfish-jsonp-1.0.patch
 Patch3:         0003-Port-to-hibernate-validation-5.x.patch
 Patch4:         jersey-2.28-contended.patch
+BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.fasterxml.jackson.module:jackson-module-jaxb-annotations)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(com.sun.istack:istack-commons-maven-plugin)
-BuildRequires:  mvn(com.sun:tools)
 BuildRequires:  mvn(jakarta.ws.rs:jakarta.ws.rs-api)
+BuildRequires:  mvn(javax.activation:javax.activation-api)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(javax.validation:validation-api)
@@ -282,6 +283,8 @@ cp -p inject/hk2/src/main/resources/META-INF/services/org.glassfish.jersey.inter
 sed -i -e 's/javax\.annotation\.\*;version="!"/javax.annotation.*/' $(find -name pom.xml)
 # Make optional dep on javax.activation
 sed -i -e 's/javax\.activation\.\*;/javax.activation.*;resolution:=optional;/' core-common/pom.xml
+%pom_add_dep javax.activation:javax.activation-api::provided core-common
+%pom_add_dep javax.xml.bind:jaxb-api::provided core-server ext/entity-filtering ext/wadl-doclet
 
 # All aggregation poms conflict because they have the same aId
 %{mvn_file} "org.glassfish.jersey.connectors:project" %{name}/connectors-project
@@ -312,6 +315,7 @@ sed -i -e 's/javax\.activation\.\*;/javax.activation.*;resolution:=optional;/' c
 
 %install
 %mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %doc README.md CONTRIBUTING.md
