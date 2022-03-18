@@ -1,7 +1,7 @@
 #
 # spec file for package obantoo
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,50 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           obantoo
-License:        LGPL-3.0
-Group:          Development/Languages/Java
-Summary:        German Online Banking Library
 Version:        2.1.12
 Release:        0
-Url:            http://obantoo.sourceforge.net/
-Source:         %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  dos2unix
+Summary:        German Online Banking Library
+License:        LGPL-3.0-only
+Group:          Development/Languages/Java
+URL:            http://obantoo.sourceforge.net/
+Source0:        %{name}-%{version}.tar.gz
+Patch0:         %{name}-classpath.patch
 BuildRequires:  ant
+BuildRequires:  dos2unix
+BuildRequires:  itextpdf
+BuildRequires:  junit
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-jaxb-api
+%endif
 
 %description
 A library of tools for German online banking implementing SEPA, IBAN/BIC, DETAUS and QIF.
 
 %prep
 %setup -q
+%patch0 -p1
+find . -name \*.jar -print -delete
+build-jar-repository -s lib itextpdf junit
+%if 0%{?suse_version} > 1500
+build-jar-repository -s lib glassfish-jaxb-api
+%endif
+
 dos2unix *.txt
 
 %build
-%ant
+%{ant}
 
 %install
 mkdir -p %{buildroot}%{_javadir}
 install build/%{name}-bin-%{version}.jar %{buildroot}%{_javadir}
 
 %files
-%defattr(-,root,root)
 %doc LGPL.txt
 %{_javadir}/%{name}-bin-%{version}.jar
 
