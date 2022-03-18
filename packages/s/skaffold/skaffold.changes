@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Mar 18 10:30:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.37.0:
+  * fix: update helm binary digest to 3.8.0 digest (#7201)
+  * release: v1.37.0
+  * refactor: Use new logrus.Logger instead of default (#7193)
+  * fix: ignore concurrency if not specified (#7182)
+  * site: support nested tabs (#7195)
+  * feat: add basic metrics for resource selector usage (#7192)
+  * docs: fix skaffold resource selector docs (#7187)
+  * docs: fix bad link to docker deployer page (#7188)
+  * WIP: Update the default value of the parameters in the vulnerability monitoring CB job. (#7173)
+  * docs: Add Docker port-forwarding note (#7176)
+  * feat: Allow Confluent-for-Kubernetes types to be transformed (#7179)
+  * docs: add docs for new skaffold resourceSelector configuration (#7174)
+  * WIP: only report the vulnerability of the LTS images with last patch version. (#7167)
+  * feat: add metrics related to cross-platform build (#7172)
+  * feat: allow and deny list support for schema field overwriting (namely label and image fields atm) (#7056)
+  * fix: `make install` works for Mac M1 (#7159)
+  * chore(deps): bump github.com/containerd/containerd from 1.5.8 to 1.5.9 (#7151)
+  * fix: choose cli default-repo over config file (#7144)
+  * feat: add better support and messaging around using helm with skaffold apply (#7149)
+  * chore: cleanup default namespace deployment (#7148)
+  * chore(deps): bump actions/checkout from 2 to 3 (#7150)
+  * fix: warn instead of fail for multi-arch builds (#7145)
+  * chore: upgrade to helm 3.8.0 for experimental oci support (#7147)
+  * feat: cross-platform support with kaniko builder (#7142)
+  * docs: Remove references to XXenableJibInit and XXenableBuildpacksInit from init docs (#7108)
+  * docs: make noCache option more clear (#7141)
+  * docs: cross platform build support in GCB (#7140)
+  * fix: specifying platforms in ko builder (#7135)
+  * feat: implement cross-platform support for GCB build env (#7134)
+  * fix: `make preview-docs` should run on Mac M1 (#7136)
+  * docs: refresh DEVELOPMENT.md (#7129)
+  * Fix typo in warning message (#7138)
+  * chore: bump schema version to v2beta28 (#7130)
+  * feat(lsp): add validation checking to lsp (#7097)
+  * Revert "build: 30 min timeout for integration tests (#6684)" (#7128)
+  * feat: implement cross-platform support for jib builder (#7110)
+  * fix: correctly handle excluded profiles (#7107)
+  * fix: buildkit and custom output (#7024) (#7120)
+  * docs: Make explicit that user needs to change PROJECT_ID (#7068)
+  * fix: always reset cached repo if sync is true (#7069)
+  * chore(deps): bump github.com/docker/distribution (#7105)
+  * chore: Update ROADMAP.md (#7115)
+  * fix: parsing alternative config filename `skaffold.yml` by supporting absolute paths in `config.ReadConfiguration` (#7112)
+  * chore(deps): bump puma from 4.3.9 to 4.3.11 in ruby example (#7117)
+  * feat: add argo workflows kinds to transformable allow list (#7102)
+  * chore(deps): bump flask version from 2.0.2 to 2.0.3 in buildpacks-python example (#7116)
+  * fix: correctly set the default value of `StatusCheck` to nil (#7089)
+  * docs: add section on deactivating profiles (#7100)
+
+-------------------------------------------------------------------
 Thu Mar  3 08:21:17 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 1.36.1
