@@ -1,7 +1,7 @@
 #
 # spec file for package desktop-translations
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           desktop-translations
-Version:        84.87.20210517.b9a41955
+Version:        84.87.20220316.9301f89b
 Release:        0
 Summary:        Desktop Files Translations
 License:        MIT
@@ -49,7 +49,7 @@ mv desktop-file-translations-%{version}/* .
 
 %install
 pushd po
-for lang in *; do 
+for lang in *; do
   if test "$lang" = "nb_no"; then
     continue
   fi
@@ -57,7 +57,7 @@ for lang in *; do
 	rm $lang
   else
     mkdir -p %{buildroot}%{_datadir}/locale/${lang}/LC_MESSAGES
-    for f in ${lang}/*.po; do 
+    for f in ${lang}/*.po; do
        msgfmt -o %{buildroot}%{_datadir}/locale/${lang}/LC_MESSAGES/desktop_translations.mo $f
        msgunfmt --no-wrap %{buildroot}%{_datadir}/locale/${lang}/LC_MESSAGES/desktop_translations.mo | \
           grep -v '^"[A-Z][^ ]*: ' | grep '[^\][\]n"' && exit 1
