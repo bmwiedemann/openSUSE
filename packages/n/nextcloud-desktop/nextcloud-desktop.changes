@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 18 15:07:25 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.4.4
+  - desktop#4339 [stable-3.4] Do not remove files from a Group
+    folder and its nested folders when it is renamed or removed
+    while not allowed.
+  - desktop#4354 [stable-3.4] Bugfix/prevent overflow with mtime
+  - desktop#4356 Bump version to 3.4.4
+  - desktop#4358 Old submodule url does not work anylonger
+
+-------------------------------------------------------------------
 Mon Feb 28 07:19:08 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.4.3
