@@ -49,7 +49,7 @@ match to a specified pattern.  By default, grep prints the matching lines.
   %{nil}
 %if 0%{?do_profiling}
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
-  sh %{SOURCE4} # profiling run
+  setarch -R sh %{SOURCE4} # profiling run
   %make_build clean
   %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
