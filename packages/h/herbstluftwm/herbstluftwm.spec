@@ -1,7 +1,7 @@
 #
 # spec file for package herbstluftwm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           herbstluftwm
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
@@ -30,16 +30,25 @@ BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.1
 BuildRequires:  freetype-devel
 BuildRequires:  gcc-c++ >= 4.9
-BuildRequires:  glib2-devel
-BuildRequires:  libXft-devel
-BuildRequires:  libXrandr-devel
-BuildRequires:  libXrender-devel
-BuildRequires:  libxslt-devel
 BuildRequires:  ncurses-utils
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gmodule-export-2.0)
+BuildRequires:  pkgconfig(gmodule-no-export-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(libexslt)
+BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xrender)
 
 %description
 herbstluftwm is a manual tiling window manager for X11 using Xlib and Glib.
