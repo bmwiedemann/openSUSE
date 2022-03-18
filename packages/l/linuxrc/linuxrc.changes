@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Wed Mar 16 13:08:21 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#286
+- do not leave repository mounted when starting yast (bsc#1196061)
+- improve url logging function
+- handle umount errors better
+- 8.9
+
+--------------------------------------------------------------------
+Wed Mar 16 13:08:10 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#285
+- check also raid devices for install repo (bsc#1196061)
+
+--------------------------------------------------------------------
 Fri Jan 21 12:48:08 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#282
