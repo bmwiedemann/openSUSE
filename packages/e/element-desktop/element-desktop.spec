@@ -28,7 +28,6 @@ Source2:        npm-packages-offline-cache.tar.gz
 Source3:        io.element.Element.desktop
 Source4:        element-desktop.sh
 Source5:        prepare.sh
-Source6:        electron-builder-offline-cache.tar.gz
 BuildRequires:  element-web = %{version}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jq
@@ -48,7 +47,9 @@ A glossy Matrix collaboration client - desktop
 %setup -q
 SYSTEM_ELECTRON_VERSION=$(<%{_libdir}/electron/version)
 jq -c '.build["electronVersion"]="'$SYSTEM_ELECTRON_VERSION'" | .build["electronDist"]="%{_libdir}/electron"' < package.json | sponge package.json
-sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/release/config.json
+jq -c '.build["linux"]["target"]="dir"' < package.json | sponge package.json
+cat package.json
+jq '.piwik=false | .update_base_url=null' < element.io/release/config.json | sponge element.io/release/config.json
 pwd
 cd ..
 pwd
@@ -66,9 +67,9 @@ export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
 yarn install --offline --pure-lockfile
 
-tar xf %{SOURCE6}
+#tar xf %%{SOURCE6}
 export PATH="$PATH:node_modules/.bin"
-export ELECTRON_BUILDER_CACHE="$(pwd)/electron-builder-offline-cache/"
+#export ELECTRON_BUILDER_CACHE="$(pwd)/electron-builder-offline-cache/"
 #yarn run build:native
 yarn run build
 
@@ -99,6 +100,7 @@ done
 %license LICENSE
 %{_bindir}/%{name}
 %{_datadir}/element/
+%config %{_sysconfdir}/element/config.json
 %config %{_sysconfdir}/webapps/element/config.json
 %{_datadir}/webapps/element/config.json
 %{_sysconfdir}/element/

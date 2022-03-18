@@ -114,4 +114,13 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
 </comment>
     <requestid>962471</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7086023bc79bcd0fe51e71475b0b656c</srcmd5>
+    <version>1.10.4</version>
+    <time>1647618154</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on other architectures (boo#1197278)
+</comment>
+    <requestid>962673</requestid>
+  </revision>
 </revisionlist>
