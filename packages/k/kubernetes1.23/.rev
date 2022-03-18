@@ -23,4 +23,41 @@
     <comment></comment>
     <requestid>952641</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf91bdb057239fd6cb2cea71842f33b8</srcmd5>
+    <version>1.23.4</version>
+    <time>1647618091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.23.4:
+  * Update Go to 1.17.7
+  * Use serializable struct for x-kubernetes-validations in openapi
+  * Make JSON schema round tripping test more strict
+  * ignore CRI PodSandboxNetworkStatus for host network pods
+  * set secondary address on host-network pods
+  * Deeply copy JSONSchemaProps.XValidations.
+  * Ensure the execHostnameTest() compares hostnames
+  * Revert &quot;Fix comparison between FQDN and hostname&quot;
+  * service REST: Call Decorator(old) on update path
+  * add namespace in azurefile volumeid
+  * fix: azurefile volumeid conflict in csi migration
+  * Mark device as uncertain if unmount device succeeds
+  * Update CHANGELOG/CHANGELOG-1.23.md for v1.23.3
+  * kubelet: fix podstatus not containing pod full name
+  * Fix bug with node restriction blocking pvc.status.resizestatus change
+  * Fix regression pruning array fields with x-kubernetes-preserve-unknown-fields: true
+  * Set max results if its not set
+  * Update CHANGELOG/CHANGELOG-1.23.md for v1.23.2
+  * Update k/utils to v0.0.0-20211116205334-6203023598ed
+  * [go] update to Go 1.17.6
+  * fix: remove outdated ipv4 route when the corresponding node is deleted
+  * fix: delete non existing disk issue
+  * Revert &quot;Automated cherry pick of #107554: Correct the feature gate string for RBD migration.&quot;
+  * fix containers order after applying
+  * generated: ./hack/update-vendor.sh
+  * upgrade sigs.k8s.io/structured-merge-diff/v4 to v4.2.1
+  * Execute sync before taking the snapshot
+  * Correct the feature gate string for RBD migration.
+  * fix: azuredisk parameter lowercase translation issue</comment>
+    <requestid>962176</requestid>
+  </revision>
 </revisionlist>

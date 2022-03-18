@@ -22,7 +22,7 @@
 %define baseversionminus1 1.22
 
 Name:           kubernetes%{baseversion}
-Version:        1.23.0
+Version:        1.23.4
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -52,7 +52,7 @@ Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.17.3
+BuildRequires:  go >= 1.17.7
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -67,6 +67,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 
