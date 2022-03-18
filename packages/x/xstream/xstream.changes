@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 14:55:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against standalone activation-api and jaxb-api on systems
+  where the JavaEE modules are not part of JDK
+
+-------------------------------------------------------------------
 Fri Feb  4 10:43:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 1.4.19

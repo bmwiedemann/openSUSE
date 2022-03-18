@@ -33,6 +33,10 @@ BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(cglib:cglib)
 BuildRequires:  mvn(dom4j:dom4j)
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.activation:activation)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
+%endif
 BuildRequires:  mvn(joda-time:joda-time)
 BuildRequires:  mvn(net.sf.kxml:kxml2-min)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -135,9 +139,11 @@ find . -name "*.jar" -print -delete
 # Require unavailable proxytoys:proxytoys
 %pom_remove_plugin :maven-dependency-plugin xstream
 
-# provided by JDK
+%if 0%{?suse_version} <= 1500
+# provided by JDK on those systems
 %pom_remove_dep javax.activation:activation xstream
 %pom_remove_dep javax.xml.bind:jaxb-api xstream
+%endif
 
 %pom_xpath_set "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'cglib' ]/pom:artifactId" cglib xstream-hibernate
 %pom_xpath_inject "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'junit' ]" "<scope>test</scope>" xstream-hibernate

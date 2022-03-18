@@ -63,4 +63,12 @@
     <comment>CVE-2021-43859, bsc#1195458</comment>
     <requestid>951552</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>af73569129c5f0d131ec10f08ed07518</srcmd5>
+    <version>1.4.19</version>
+    <time>1647618176</time>
+    <user>dimstar_suse</user>
+    <comment>standalone jaxb-api and activation-api</comment>
+    <requestid>962741</requestid>
+  </revision>
 </revisionlist>
