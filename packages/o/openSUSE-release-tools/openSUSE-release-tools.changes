@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 18 07:03:48 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220318.33072b30:
+  * gocd: Don't evaluate a repo as succeeded if all are disabled
+
+-------------------------------------------------------------------
+Thu Mar 17 13:03:58 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220317.76c89fd3:
+  * pkglistgen: Fix packages disapparing in comments
+
+-------------------------------------------------------------------
+Thu Mar 17 11:04:35 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220317.42b3f302:
+  * CI: adapt miniobs to use the ruby OBS was built with (3.1)
+
+-------------------------------------------------------------------
 Thu Mar 17 10:29:24 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220317.518f6f90:
