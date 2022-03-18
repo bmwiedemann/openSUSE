@@ -550,6 +550,7 @@ Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
 Prefer: vtk-java
 Prefer: eclipse-swt
+Prefer: -jaf
 
 # wine comes in various flavors by now, we pick the unflavored ones
 Prefer: wine-32bit wine-devel-32bit wine-devel
