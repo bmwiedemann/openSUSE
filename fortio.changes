@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 18 10:22:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.21.2:
+  * readying for v1.21.2 (#521)
+  * Fix the empty body content error (#519)
+
+-------------------------------------------------------------------
 Wed Mar  9 14:29:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package fortio: Fortio (Φορτίο) started as, and is, Istio's load testing tool and now graduated to be its own project
