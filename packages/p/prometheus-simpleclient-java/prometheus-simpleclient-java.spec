@@ -38,6 +38,9 @@ BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-servlet)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
+%endif
 
 %description
 The Prometheus Java Suite: Client Metrics, Exposition, and Examples.
@@ -145,6 +148,10 @@ for m in simpleclient_caffeine \
          benchmark; do
 %pom_disable_module $m
 done
+
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.xml.bind:jaxb-api::provided simpleclient_pushgateway
+%endif
 
 %build
 %{mvn_build} -f -s -- -Dsource=8

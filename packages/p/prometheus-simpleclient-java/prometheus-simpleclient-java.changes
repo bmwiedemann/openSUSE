@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 12:56:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against standalone jaxb-api on distributions that have JDK
+  without the JavaEE modules
+
+-------------------------------------------------------------------
 Tue Feb 22 18:22:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages

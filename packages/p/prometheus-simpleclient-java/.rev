@@ -23,4 +23,12 @@
     <comment>Build against reload4j</comment>
     <requestid>957080</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>06d3e91d66b3fe62c79904504a856348</srcmd5>
+    <version>0.8.0</version>
+    <time>1647618170</time>
+    <user>dimstar_suse</user>
+    <comment>Build against standalone jaxb-api</comment>
+    <requestid>962715</requestid>
+  </revision>
 </revisionlist>
