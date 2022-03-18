@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 17 16:38:47 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1647535120.9c1b2bd80:
+  * Validate assetid in /tests/id/asset/assetid
+  * Return 404 for Jobs not found
+  * Add support for Mozilla's bug tracker
+  * Install script/*_templates compatibility symlinks
+  * Adjust self-references in openqa-*-templates(1)
+  * Rename script/*_templates -> openqa-*-templates
+  * Replace ->search->first with find or count
+  * Do not prefetch job assets where not needed
+  * openqa-clone-job: Fix adding parameters from CLI to job settings
+  * doc: Cover dependency handling of `openqa-clone-job`
+  * openqa-clone-job: Clone parallel children by default
+  * openqa-clone-job: Add `--clone-parallel-children`
+  * openqa-clone-job: Improve code of dependency handling
+  * Avoid `finalize_job_results` jobs failing with `Job terminated unexp…`
+  * ci: Make packages from `devel:openQA` available in OBS checks
+  * openqa-clone-job: Create jobs atomically to avoid dependency problems
+  * Move Tour to shepherd.js
+
+-------------------------------------------------------------------
 Thu Mar 10 17:48:51 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1646920189.eb67fcddc:
