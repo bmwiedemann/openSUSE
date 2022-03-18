@@ -246,4 +246,12 @@
     <comment>Build against reload4j</comment>
     <requestid>957054</requestid>
   </revision>
+  <revision rev="35" vrev="36">
+    <srcmd5>ce6809ef5b008d59cb25f5cdc9beea01</srcmd5>
+    <version>3.0.2</version>
+    <time>1647618167</time>
+    <user>dimstar_suse</user>
+    <comment>Depend on glassfish-activation-api instead of on gnu-jaf</comment>
+    <requestid>962710</requestid>
+  </revision>
 </revisionlist>

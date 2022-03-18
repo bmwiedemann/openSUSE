@@ -47,7 +47,6 @@ BuildRequires:  axis
 BuildRequires:  bcel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_3
-BuildRequires:  gnu-jaf
 BuildRequires:  java-devel >= 1.6
 BuildRequires:  javamail
 BuildRequires:  javapackages-local
@@ -65,7 +64,6 @@ BuildConflicts: java-devel-openj9
 Requires:       apache-commons-logging >= 1.0.1
 Requires:       axis >= 1.1
 Requires:       bcel >= 5.0
-Requires:       jaf
 Requires:       javamail >= 1.2-5jpp
 Requires:       jce >= 1.2.2
 Requires:       reload4j
@@ -78,6 +76,10 @@ Provides:       jmx
 Provides:       jmxri
 Provides:       openjmx = %{version}
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-activation-api
+Requires:       glassfish-activation-api
+%endif
 
 %description
 OpenJMX is an open source implementation of the Java(TM) Management
@@ -125,18 +127,23 @@ popd
 
 %build
 export GC_MAXIMUM_HEAP_SIZE="134217728" #128M
-ln -sf $(build-classpath javamail/mail) lib/
-ln -sf $(build-classpath activation) lib/
+build-jar-repository -s lib javamail/mail
+%if 0%{?suse_version} > 1500
+build-jar-repository -s lib glassfish-activation-api
+%endif
 export ANT_OPTS="-Djava.security.manager \
                  -Djava.security.policy=$(pwd)/build/mx4j-build.policy \
                  -Dant.build.javac.source=1.6 \
                  -Dant.build.javac.target=1.6"
 export OPT_JAR_LIST="ant/ant-junit junit ant/ant-trax jaxp_transform_impl"
-export CLASSPATH=$(build-classpath glibj-tools activation javamail/mailapi javamail/smtp \
+export CLASSPATH=$(build-classpath glibj-tools javamail/mailapi javamail/smtp \
    jetty4 jython jakarta-commons-logging xml-commons-apis bcel jaas jce \
    reload4j/reload4j jaxp_transform_impl axis/axis axis/jaxrpc axis/saaj \
    xml-resolver xdoclet/xdoclet xdoclet/xdoclet-jmx-module \
    xdoclet/xdoclet-mx4j-module xalan-j2-serializer)
+%if 0%{?suse_version} > 1500
+export CLASSPATH=${CLASSPATH}:$(build-classpath glassfish-activation-api)
+%endif
 export CLASSPATH=${CLASSPATH}:%{_builddir}/%{name}-%{version}/classes/core:%{_builddir}/%{name}-%{version}/build
 cd build
 ant compile.jmx compile.rjmx compile.tools compile.examples

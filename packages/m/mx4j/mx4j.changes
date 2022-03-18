@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 18 06:11:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Depend on glassfish-activation-api instead of on gnu-jaf
+
+-------------------------------------------------------------------
 Tue Feb 22 19:09:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j
