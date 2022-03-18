@@ -78,6 +78,7 @@ if grep -q "%OS_" ${files[@]}; then
 	[ -f "${tempdir}/etc/os-release" ] && . "${tempdir}/etc/os-release"
 
 	VERSION="${VERSION:-}"
+	VERSION_NO_DASH="${VERSION/-/ }"
 	# Special case for SLE X "SP 0", make sure it has .0
 	VERSION_ID_SP="${VERSION_ID}"
 	[[ "${VERSION_ID_SP%}" == *"."* ]] || VERSION_ID_SP="${VERSION_ID}.0"
@@ -120,6 +121,7 @@ if grep -q "%OS_" ${files[@]}; then
 	    -e "s/%OS_PRETTY_NAME_BEFORE_PAREN%/${PRETTY_NAME_BEFORE_PAREN}/g" \
 	    -e "s/%OS_PRETTY_NAME_BEFORE_PAREN_DASHED%/${PRETTY_NAME_BEFORE_PAREN_DASHED}/g" \
 	    -e "s/%OS_VERSION%/${VERSION}/g" \
+	    -e "s/%OS_VERSION_NO_DASH%/${VERSION_NO_DASH}/g" \
 	    -e "s/%OS_VERSION_ID_SP%/${VERSION_ID_SP}/g" "${files[@]}"
 fi
 

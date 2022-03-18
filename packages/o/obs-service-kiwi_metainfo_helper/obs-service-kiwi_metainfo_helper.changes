@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 15 11:03:50 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Generate OS_VERSION_NO_DASH based on os-release VERSION,
+  as workaround to replace dash with space in OS name
+  (bsc#1195061).
+- Bump version to 0.6
+
+-------------------------------------------------------------------
 Tue Feb  8 16:10:01 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Improve examples in README.
