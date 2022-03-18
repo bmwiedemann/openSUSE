@@ -287,8 +287,8 @@ ExportFilter: ^qemu-sgabios.*\.noarch\.rpm$ . i586 armv7l ppc ppc64 ppc64le s390
 # They are built on: x86_64, aarch64 and ppc64le. The x86_build can then by imported in i586, the
 # aarch64 one in armv7l and the ppc64le one in ppc and ppc64. As for the x86 firmwares, here in the
 # devel project, we export them directly to all the arch-es that can't build them, just for convenience.
-ExportFilter: ^qemu-skiboot.*\.noarch\.rpm$ . i586 armv7l ppc ppc64 s390x riscv64
-ExportFilter: ^qemu-SLOF.*\.noarch\.rpm$ . i586 armv7l ppc ppc64 s390x riscv64
+ExportFilter: ^qemu-skiboot.*\.noarch\.rpm$ . i586 armv7l ppc s390x riscv64
+ExportFilter: ^qemu-SLOF.*\.noarch\.rpm$ . i586 armv7l ppc s390x riscv64
 # TODO: does the 'qemu-edk2' package still exist?
 ExportFilter: ^qemu-edk2.*\.noarch\.rpm$ .    i586 armv7l aarch64 ppc ppc64 ppc64le s390x riscv64
 ExportFilter: ^qemu-microvm.*\.noarch\.rpm$ . i586 armv7l aarch64 ppc ppc64 ppc64le s390x riscv64
