@@ -1,7 +1,7 @@
 #
 # spec file for package supermin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Patch11:        supermin-kernel_version_compressed.patch
 Patch12:        disable-test-if-newer-ext2.patch
 # Backport of https://github.com/libguestfs/supermin/commit/4306a131c6cde92f8d0a2dd9376f4096ee538eff.patch
 Patch13:        initrd_support_ztd-compressed_modules.patch
+Patch14:        detect-aarch64-kernel.patch
 BuildRequires:  augeas
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -81,7 +82,7 @@ export ZYPPER=zypper
 export ZYPPER=%{_bindir}/zypper
 touch INSTALL NEWS AUTHORS ChangeLog
 #.gnulib/gnulib-tool --update
-#autoreconf -fi
+autoreconf -fi
 %configure --help
 %configure --disable-network-tests
 %make_build \

@@ -1,0 +1,34 @@
+References: bsc#1187532 - virt-make-fs hangs forever
+
+Index: supermin-5.2.1/src/format_ext2_kernel.ml
+===================================================================
+--- supermin-5.2.1.orig/src/format_ext2_kernel.ml
++++ supermin-5.2.1/src/format_ext2_kernel.ml
+@@ -128,6 +128,10 @@ and find_kernel_from_boot debug host_cpu
+   let files =
+     if files <> [] then files
+     else
++      kernel_filter ["Image-*"] is_arm all_files in
++  let files =
++    if files <> [] then files
++    else
+       (* In original: ls -1dvr /boot/vmlinuz-* 2>/dev/null | grep -v xen *)
+       kernel_filter ["vmlinu?-*"] is_arm all_files in
+ 
+@@ -223,9 +227,14 @@ and get_kernel_version debug kernel_file
+        else (
+          basename
+        ) in
+-     if string_prefix "vmlinuz-" basename || string_prefix "vmlinux-" basename
++     if string_prefix "vmlinuz-" basename || string_prefix "vmlinux-" basename || string_prefix "Image-" basename
+      then (
+-       let version = String.sub basename 8 (String.length basename - 8) in
++       let version =
++         if string_prefix "Image-" basename then (
++           String.sub basename 6 (String.length basename - 6)
++         ) else (
++           String.sub basename 8 (String.length basename - 8)
++         ) in
+        (* Does the version look reasonable? *)
+        let modpath = "/lib/modules" // version in
+        if has_modpath modpath then (

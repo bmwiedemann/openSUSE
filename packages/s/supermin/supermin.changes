@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  7 14:54:48 MST 2022 - carnold@suse.com
+
+- bsc#1187532 - virt-make-fs hangs forever
+  detect-aarch64-kernel.patch
+
+-------------------------------------------------------------------
 Tue Dec 21 15:33:22 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Add initrd_support_ztd-compressed_modules.patch:
