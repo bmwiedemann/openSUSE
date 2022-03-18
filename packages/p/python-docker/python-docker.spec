@@ -1,7 +1,7 @@
 #
 # spec file for package python-docker
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Group:          System/Management
 URL:            https://pypi.org/project/docker
 Source0:        https://files.pythonhosted.org/packages/source/d/docker/docker-%{version}.tar.gz
 BuildRequires:  %{python_module docker-pycreds >= 0.4.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module paramiko >= 2.4.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.3.1}
