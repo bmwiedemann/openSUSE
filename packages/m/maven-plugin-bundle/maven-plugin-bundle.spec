@@ -17,7 +17,7 @@
 
 
 %global site_name maven-bundle-plugin
-%bcond_with obr
+%bcond_without obr
 %bcond_without reporting
 Name:           maven-plugin-bundle
 Version:        3.5.1
