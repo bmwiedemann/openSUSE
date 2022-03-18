@@ -463,4 +463,312 @@ Tests/
     <comment></comment>
     <requestid>939448</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>4cb1e5657841f157c5f8384daead5e6c</srcmd5>
+    <version>3.4.0</version>
+    <time>1647618138</time>
+    <user>dimstar_suse</user>
+    <comment>- skip Python 2 builds
+- set PATH when running tests
+- update to upstream release 3.4.0
+  * Security fixes:
+    - Fix inefficient regular expression which allows denial-of-service attacks
+      when parsing specially-crafted LDAP schema (GHSL-2021-117, bsc#1194834)
+  * Changes:
+    - On MacOS, remove option to make LDAP connections from a file descriptor
+      when built with the system libldap (which lacks the underlying function,
+      ldap_init_fd)
+    - Attribute values of the post read control are now bytes
+      instead of ISO8859-1 decoded str
+    - LDAPUrl now treats urlscheme as case-insensitive
+    - Several OpenLDAP options are now supported:
+        - OPT_X_TLS_REQUIRE_SAN
+        - OPT_X_SASL_SSF_EXTERNAL
+        - OPT_X_TLS_PEERCERT
+  * Fixes:
+    - The copy() method of cidict was added back. It was unintentionally
+      removed in 3.3.0
+    - Fixed getting/setting SASL options on big endian platforms
+    - Unknown LDAP result code are now converted to LDAPexception,
+      rather than raising a SystemError.
+  * slapdtest:
+    - Show stderr of slapd -Ttest
+    - SlapdObject uses directory-based configuration of slapd
+    - SlapdObject startup is now faster
+- %check: use %pyunittest_arch rpm macro
+- update to upstream release 3.3.1:
+Highlights:
+* ``LDAPError`` now contains additional fields, such as ctrls, result, msgid
+* ``passwd_s`` can now extract the newly generated password
+* LDAP connections can now be made from a file descriptor
+This release is tested on Python 3.8, and the beta of Python 3.9.
+The following undocumented functions are deprecated and scheduled for removal:
+- ``ldap.cidict.strlist_intersection``
+- ``ldap.cidict.strlist_minus``
+- ``ldap.cidict.strlist_union``
+Modules/
+* Ensure ReconnectLDAPObject is not left in an inconsistent state after
+  a reconnection timeout
+* Syncrepl now correctly parses SyncInfoMessage when the message is a syncIdSet
+* Release GIL around global get/set option call
+* Do not leak serverctrls in result functions
+* Don't overallocate memory in attrs_from_List()
+* Fix thread support check for Python 3
+* With OpenLDAP 2.4.48, use the new header openldap.h
+Lib/
+* Fix some edge cases regarding quoting in the schema tokenizer
+* Fix escaping a single space in ldap.escape_dn_chars
+* Fix string formatting in ldap.compare_ext_s
+* Prefer iterating dict instead of calling dict.keys()
+Doc/
+* Clarify the relationship between initialize() and LDAPObject()
+* Improve documentation of TLS options
+* Update FAQ to include Samba AD-DC error message
+  &quot;Operation unavailable without authentication&quot;
+* Fix several incorrect examples and demos
+  (but note that these are not yet tested)
+* Update Debian installation instructions for Debian Buster
+* Typo fixes in docs and docstrings
+Test/
+* Test and document error cases in ldap.compare_s
+* Test if reconnection is done after connection loss
+* Make test certificates valid for the far future
+* Use slapd -Tt instead of slaptest
+Infrastructure:
+* Mark the LICENCE file as a license for setuptools
+* Use &quot;unittest discover&quot; rather than &quot;setup.py test&quot; to run tests
+- Reduce the runtime dependencies to match the actual needs
+  * User can use either openldap or 389-ds or anything else
+- Run the tests on the package
+- Fix the fdupes call
+- Add this package to SLE wrt fate#325747
+- Do not add version dependency to devel requirement
+- Require openldap2-client as some of the binaries are called
+  on the runtime
+- update to upstream release 3.1.0:
+  * Long-deprecated functions `ldap.open()` and `ldap.init()` are removed
+  * `LDAPObject.compare_s()` and `compare_ext_s` return bool instead of 0 or 1
+  * Tons of changes see CHANGES file
+- update to upstream release 3.0.0b4:
+  - Adds support for Python 3.4+
+  - Adds support for `bytes_mode`
+  - Idiotmatic python code changes
+  - Adds testing for `pypy`
+  - Fixes/enhances tests
+- Remove python-ldap.keyring and python-ldap-%{version}.tar.gz.asc:
+  There is no signature provided for the new upstream tarball
+- update to upstream release 2.5.2
+Changes since 2.5.1:
+* code-cleaning in setup.py
+Modules/
+* PyBytes_ instead of PyString_ and added PyInt_FromLong compat macro
+* moved code from version.c to ldapmodule.c
+* removed obsolete back-ward compability constants from common.h
+* build checks whether LDAP_API_VERSION is OpenLDAP 2.4.x
+* _ldap.__author__ and _ldap.__license__ also set from ldap.pkginfo
+* assume C extension API for Python 2.7+
+Lib/
+* removed all dependencies on modules string and types
+* removed use of .has_key()
+* removed class ldap.ldapobject.NonblockingLDAPObject
+* new global constant ldap.LIBLDAP_API_INFO
+* right after importing _ldap there is a call into libldap to initialize it
+* method .decodeControlValue() of SSSResponseControl and VLVResponseControl
+  does not set class attribute result_code anymore
+* always use bytes() for UUID() constructor in ldap.syncrepl
+* module ldif now uses functions b64encode() and b64decode()
+* fixed pickling and restoring of ReconnectLDAPObject
+* more modules with PEP-8 compliance
+* ldap.ldapobject split into module-package
+Tests/
+* scripts do not directly call SlapdTestCase.setUpClass() anymore
+* added LDIF test with folded, base64-encoded attribute
+* added more tests for sub-module ldap.dn
+* added tests for ldap.syncrepl (thanks to Karl Kornel)
+- update to upstream release 2.5.1
+- adjusted BuildRequires to match upstream prerequisites
+Changes since 2.4.45:
+Mandatory prerequisites:
+- Python 2.7.x
+- pyasn1 0.3.7+ and pyasn1_modules 0.1.5+
+Modules/
+* removed unused code schema.c
+Lib/
+* ldap.__version__, ldap.__author__ and ldap.__license__ now
+  imported from new sub-module ldap.pkginfo also to setup.py
+* Added safety assertion when importing _ldap:
+  ldap.pkginfo.__version__ must match _ldap.__version__
+* removed stand-alone module dsml
+* slapdtest.SlapdObject.restart() just restarts slapd
+  without cleaning any data
+* Compability changes for pyasn1 0.3.x or newer
+  (thanks to Ilya Etingof and Christian Heimes)
+* The methods SSSResponseControl.decodeControlValue() and
+  VLVResponseControl.decodeControlValue() now follow the coding
+  convention to use camel-cased ASN.1 name as class attribute name.
+  The old class names are still set for back-ward compability
+  but should not be used in new code because they might be removed
+  in a later release.
+* removed SSSRequestControl from ldap.controls.KNOWN_RESPONSE_CONTROLS
+Tests/
+* added explicit reconnect tests for ReconnectLDAPObject
+- update to upstream release 2.4.45
+  * fixed error handling
+- update to upstream release 2.4.44
+  * GIL fix
+- update to upstream release 2.4.43
+  * SASL bind fix
+- update to upstream release 2.4.42
+  * small enhancements to test suite
+- update to upstream release 2.4.41 (small LDIF parser enhancement)
+- update to upstream release 2.4.40 (small memleak fix)
+- update to upstream release 2.4.39
+- provide python2-ldap to support singlespec packages
+- update to upstream release 2.4.38
+- update to upstream release 2.4.37
+- Update to upstream release 2.4.30
+  (with compability fix for pyasn1 0.2.x)
+- Update to upstream release 2.4.29
+- added python-ldap.keyring to validate upstream source signatures
+- Update to upstream release 2.4.28
+- Update to upstream release 2.4.27
+- Update to upstream release 2.4.26
+- updated pypi source URL
+- Use HTTPS links
+- Aligned desciption with project's web site
+- Removed obsolete stuff:
+  * build flag -DLDAP_DEPRECATED
+  * outdated URL in package description
+  * removing of CVS files
+- Update to upstream release 2.4.25
+- Update to upstream release 2.4.22
+- Update to upstream release 2.4.21
+- Update to upstream release 2.4.20
+- Update to upstream release 2.4.19
+- Update to upstream release 2.4.18
+- Update to upstream release 2.4.17
+- Update to upstream release 2.4.16
+- Set license ot Python-2.0 (according to legal)
+- Update to upstream release 2.4.15
+  * Various fixes
+  * Support for subordinates search scope
+  * Support for select schema description extension
+- Update to upstream release 2.4.13
+  * mainly important fixes for ReconnectLDAPObject
+- Explicitly specify openssl build dependency
+- update to 2.4.10
+- Added dependencies to python-pyasn1 and python-pyasn1-modules
+- Remove service
+- Spec file cleanup:
+  * Remove outdated sections
+  * Proper macro usage
+- removed sasl.patch as it is no longer necessary
+- update to 2.4.3
+  * requires OpenLDAP 2.4.11 or higher
+  * improved documentation
+  * backwards-incompatible API for ldap.control
+  * a couple new features, e.g. support for OPT_X_TLS_PACKAGE
+  * improved LDAPv3 support
+- update to 2.3.13:
+  * Correct #ifdef-statement for LDAP_OPT_X_TLS_CRLFILE in
+    constants.c fixes build with older OpenLDAP libs
+  * Support for LDAP_OPT_DEFBASE (see SF#3072016)
+  * Several documentation improvements
+- update to 2.3.9
+  * support for handling ldap url extensions without explicit exvalue
+  * common version number for all modules
+- update to 2.3.8
+  * supposedly supports gcc4.4
+  * better handling of corner case errors
+  * minor fixes
+- fixed rpmlint warnings
+- update to 2.3.5
+  * minor fixes
+- removed cvs-related files from the package
+- update to 2.3.4
+  * better RFC 4514 compatibility
+  * bugfixes
+- cleaned up spec file
+- removed unnecessary source
+- added %fdupes
+- update to 2.3.1
+  * openLDAP 2.3+ is now required
+  * upstream fixed python2.5 problems
+  * support for Cancel operation
+  * DN related functions moved to submodule ldap.dn
+  * numerous bugfixes
+- removed dependency on openldap, added dependency on openldap-client
+- fixed a bug that would in some cases lead to invalid free() call
+  while deallocating the object
+- update to 2.2.0
+  - OpenLDAP 2.2+ is now required
+  - code is cleaned up, many memory leaks fixed
+  - improved ldap.async - fixed Dict, added IndexedDict
+  - lots of bugs fixed
+- fixed some 64bit problems with PEP353 conversion
+- updated to reflect python changes due to #149809
+- converted neededforbuild to BuildRequires
+- update to 2.0.11
+- using setup.cfg source designed for SuSE (minor adjustments
+  against Build/setup.cfg.suse-linux
+- added LDAP_DEPRECATED to CFLAGS to build correctly with·
+  OpenLDAP 2.3
+- update to 2.0.10
+- update to 2.0.8
+- update to 2.0.7
+- update to 2.0.6
+- update to 2.0.5
+- update to 2.0.2
+- update to 2.0.1
+- update to 2.0.0 final
+- include licence
+- updated to 2.0.0pre19
+- updated to 2.0.0pre18
+- updated to 2.0.0pre15
+- don't build as root
+- updated to 2.0.0pre14:
+    ldap.ldapobject:
+    * Added class attribute LDAPObject.network_timeout mapped to
+      set_option(ldap.OPT_NETWORK_TIMEOUT,..)
+    * LDAPObject.search_ext(): Pass arguments serverctrls,clientctrls
+      to _ldap.search_ext()
+    ldap.sasl:
+    * Added class ldap.sasl.external for handling
+      the SASL mechanism EXTERNAL
+    * Dictionary ldap.sasl.saslmech_handler_class built during import
+      for all the known SASL mechanisms derived from class definitions
+    ldap.schema:
+    * More graceful handling of KeyError in SubSchema.attribute_types()
+    * New method SubSchema.get_inheritedattr() for retrieving inherited
+      class attributes
+    * New method SubSchema.get_inheritedobj() for retrieving a
+      schema element instance including all inherited class attributes
+- updated to 2.0.0pre13
+- use record-rpm
+- updated to 2.0.0pre12
+- updated to 2.0.0pre11
+- use distutils for build
+- use versioned dependency on python
+- use sasl2 
+- updated to 2.0.0pre06
+- build with more features
+- add demo into docs
+- LDAP_FILT_MAXSIZ isn't defined in libldap anymore 
+- new version: 2.0.0pre05
+- use %_lib instead of lib
+- version 2.0.0pre04 to work with openldap2 (bug #13948)
+- fix Group tag to Development/Libraries/Python
+- Remove openldap from Requires
+- changed for openldap2 
+- fixed neededforbuild for openldap
+- renamed from pyldapm to python-ldap
+- updated to python-ldap-1.10alpha3
+- adopted spec file for python2.0
+- fixed neededforbuild (added ldaplib) 
+- fix need for build
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+- new version 1.5
+</comment>
+    <requestid>962609</requestid>
+  </revision>
 </revisionlist>
