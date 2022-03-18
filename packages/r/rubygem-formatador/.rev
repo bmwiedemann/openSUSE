@@ -53,4 +53,11 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>962288</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e387db9abada61059c0e45f3aa65c521</srcmd5>
+    <version>0.3.0</version>
+    <time>1647590117</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1195555</comment>
+  </revision>
 </revisionlist>
