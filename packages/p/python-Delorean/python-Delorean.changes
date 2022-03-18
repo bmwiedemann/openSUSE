@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 17 15:10:01 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Tue Nov  5 09:52:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Format with spec-cleaner

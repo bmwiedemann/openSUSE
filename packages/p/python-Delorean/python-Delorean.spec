@@ -1,7 +1,7 @@
 #
 # spec file for package python-Delorean
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Babel >= 2.1.1}
 BuildRequires:  %{python_module humanize >= 0.5.1}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.4.2}
 BuildRequires:  %{python_module pytz >= 2015.7}
 BuildRequires:  %{python_module tzlocal >= 1.2}
@@ -58,10 +58,9 @@ arise dealing with datetimes in Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python tests/delorean_tests.py
-}
+# https://github.com/myusuf3/delorean/issues/113
+sed -i 's:import mock:from unittest import mock:' tests/delorean_tests.py
+%pytest tests/delorean_tests.py
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
