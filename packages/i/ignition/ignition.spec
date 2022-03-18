@@ -35,6 +35,7 @@ Source9:        ignition-setup-user.service
 Source10:       ignition-enable-network.service
 Source11:       ignition-enable-network.sh
 Source12:       ignition-kargs-helper
+Source13:       ignition-remove-reconfig_system.service
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
@@ -82,12 +83,11 @@ GRUB2 configuration which sets ignition.firstboot based on
 which creates firstboot_happened after the first boot.
 
 %prep
-%setup -q
-%patch2 -p1
+%autosetup -p1
 
 mkdir dracut/30ignition-microos grub systemd_suse
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE12}
-cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} %{SOURCE10} %{SOURCE11} dracut/30ignition-microos/
+cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} %{SOURCE10} %{SOURCE11} %{SOURCE13} dracut/30ignition-microos/
 %ifarch aarch64 %{arm}
 cp %{SOURCE21} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 %else

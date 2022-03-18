@@ -1,0 +1,21 @@
+[Unit]
+Description=Disable firstboot wizard if ignition ran
+
+# Make sure ignition completed
+After=ignition-complete.target
+# Don't race with combustion
+After=combustion.service
+
+# Make sure /sysroot/etc and var are available
+After=initrd-parse-etc.service
+RequiresMountsFor=/sysroot/etc
+RequiresMountsFor=/sysroot/var
+
+ConditionPathExists=/sysroot/etc/.ignition-result.json
+ConditionPathExists=/sysroot/var/lib/YaST2/reconfig_system
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Use grep to avoid pulling in jq
+ExecStart=/bin/sh -ec 'if grep -q "\\"userConfigProvided\\":.*true" /sysroot/etc/.ignition-result.json; then rm /sysroot/var/lib/YaST2/reconfig_system; fi'
