@@ -1,7 +1,7 @@
 #
 # spec file for package jsonp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source0:        https://github.com/javaee/%{name}/archive/%{name}-%{version}.tar
 Source1:        https://raw.githubusercontent.com/javaee/%{name}/master/LICENSE.txt
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(javax.ws.rs:javax.ws.rs-api)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -77,13 +78,15 @@ sed -i '/check-module/d' api/pom.xml impl/pom.xml
 %pom_xpath_set "pom:parent/pom:version" %{version} api
 %pom_xpath_set "pom:parent/pom:version" %{version} jaxrs
 
+%pom_add_dep javax.annotation:javax.annotation-api::provided jaxrs
+
 %{mvn_file} :javax.json-api %{name}/%{name}-api
 %{mvn_file} :javax.json %{name}/%{name}
 %{mvn_file} :%{name}-jaxrs %{name}/%{name}-jaxrs
 
 %build
 
-%{mvn_build} -- -Dsource=6
+%{mvn_build} -f -- -Dsource=6
 
 %install
 %mvn_install
