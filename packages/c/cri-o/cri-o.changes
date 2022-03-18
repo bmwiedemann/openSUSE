@@ -1,4 +1,218 @@
 -------------------------------------------------------------------
+Wed Mar 16 12:10:25 UTC 2022 - rbrown@suse.com
+
+- Update to version 1.23.2:
+  * config/sysctl: fail if there is a + in the value
+  * Revert "config/sysctl: fail if there is a + in the value"
+  * bump to version 1.23.2
+  * config/sysctl: fail if there is a + in the value
+  * config/sysctls: validate against invalid spaces
+  * server: stop deleting pod from idIndex if already gone
+  * [1.23] ci: use kubernetes 1.23, cri-tools 1.23
+  * contrib/test/int/build/kubernetes: rm deprecated RunAsGroup
+  * hack/build-rpms.sh: fix yum-builddep failures
+  * image: use imageCache value for ImageStatus()
+  * oci: fix a leaked goroutine
+  * Reuse createContainerIO in CreateContainer
+  * Fix vm containers couldn't restore after CRI-O restart
+  * release-notes: add args for checksum fields
+  * Updated format
+  * Generate checksum files for artifacts
+  * bump to v1.23.1
+  * test: add test for skipped sysctls
+  * server: skip sysctls that would affect the host
+  * server: don't set memory swap when it's not enabled
+  * deep copy List{PodSandbox,Container} structs
+  * ci: use main branch for conmon
+  * server: fix race with kubelet
+  * Fix runtime panic on pod sandbox stats retrieval
+  * ci: use main version of runc
+  * openshift e2e: bump ci image
+  * server: fix a potential NULL-pointer dereference.
+  * pass the main mount point to fix crypto profiles binding
+  * test: update tests for allowed_devices
+  * config: add AllowedDevices option
+  * server: drop duplicate log message
+  * test: add test ensuring a stopped pod is restored
+  * sandbox stop: remove namespaces
+  * restore: handle removed namespaces
+  * Partially revert "restore: restore stop before managing namespace"
+  * restore: ensure containers are wiped on reboot
+  * use cmdrunner singleton
+  * conmonmgr: refactor for new CommandRunner
+  * cmdrunner: update mocks and add target to makefile
+  * config: prepend commands with taskset if InfraCtrCPUSet is configured
+  * cmdrunner: add tests for prepended commands
+  * cmdrunner: create singleton
+  * Use timeout for conmon cgroup move
+  * Fixed a problem where metricImagePullsBytesTotal was getting updated twice and on second call getting incorrect labels
+  * vendor: bump c/image to 5.17.0
+  * Add new metrics that match Prometheus best practices and reduce cardinality * add metrics with new names that match naming best practices   * use _total for all counters   * use base unit seconds, bytes * metrics that do not follow best practices have been marked deprecated,   these can be removed in a future release, it is to ensure non-breaking change   for couple of releases
+  * unit test: fix relative log test
+  * unit tests: update pinns path in case it isn't found in PATH
+  * test: skip target tests for userns
+  * test: add test for target namespace
+  * add support for target PID namespaces
+  * test: give testunit sudo
+  * oci: add managed pidns to container object
+  * pkg/container: take container namespace configuration
+  * nsmgrtest: take some namespace related test code
+  * nsmgr: add function to pin existing namespace
+  * nsmgr: take (and rename) NamespacePathFromProc
+  * pkg/sandbox: take config initialization
+  * Bump Kubernetes to v1.23.0
+  * set user.max_user_namespaces in case it's not
+  * lint: bump cyclo complexity
+  * gh-actions/contrib: setup sub{g,u}id
+  * docs: add tutorial for setting up user namespaces
+  * oci: put conmon in infra ctr cpuset if it is in the pod cgroup
+  * test: add tests for user namespace annotations
+  * test: move workload creation function to helpers
+  * cni manager: catch server shutdown
+  * server: notify user when network isn't ready yet
+  * stop using hardcoded "pod" const
+  * oci: always reap conmon zombies
+  * clarify some error messages
+  * Drop intermediate CRI types
+  * Relabel containerenv files
+  * Add minimum_mappable_(u|g)id settings
+  * Fix runtime panic on stats server shutdown
+  * restore: restore stop before managing namespace
+  * server: add {,List}SandboxStats
+  * server: refactor sandbox list
+  * server: use stats server to get container stats
+  * container server: use stats server
+  * stats: add stats server
+  * config: add StatsCollectionPeriod field
+  * cgmgr: move most of stats handling to cgmgr
+  * oci: make changes in preparation for moving stats functionality:
+  * server: stub {List,}PodSandboxStats
+  * server/cri: add PodSandboxStats support
+  * vendor: bump cri-api
+  * server/cri: refactor to make stats processing unified
+  * pkg/config: use iota
+  * Add go 1.17+ go:build tags
+  * Remove redundant build tags
+  * Add containerenv file to containers This file indicates that the current environment is inside a container environment. The same technique is used by podman and docker. The same file name/path as podman was used, as it is vendor agnostic.
+  * build(deps): bump github.com/containerd/containerd from 1.5.7 to 1.5.8
+  * config: merge runtime and workload allowed annotations
+  * Updates kubeadm.md: The cgroup property is removed in [kubeadm-config.v1beta3](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/)
+  * build(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+  * Specify runtime table format in  the error message
+  * build(deps): bump github.com/containerd/ttrpc from 1.0.2 to 1.1.0
+  * server: fix segfault when using cgroupv2
+  * gh-actions: add sed for kube e2e
+  * release-notes: update to main
+  * build(deps): bump github.com/onsi/gomega from 1.16.0 to 1.17.0
+  * build(deps): bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+  * Bug 2012838: fix override storage options from storage.conf
+  * oci: fix deadlock in container stop code
+  * build(deps): bump google.golang.org/grpc from 1.41.0 to 1.42.0
+  * oci: always close chControl
+  * oci: make some channels buffered
+  * build(deps): bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+  * build(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+  * build(deps): bump github.com/godbus/dbus/v5 from 5.0.5 to 5.0.6
+  * Add annotation that makes /sys/fs/cgroup writable
+  * Add support for CNI plugins v1.0.1
+  * bump(deps-opentelemetry)
+  * pin go.opentelemetry grpc/otelgrpc v0.25.0
+  * opentelemetry: add gRPC tracing
+  * build(deps): bump k8s.io/klog/v2 from 2.20.0 to 2.30.0
+  * build(deps): bump github.com/go-logr/logr from 1.1.0 to 1.2.0
+  * version: bump to 1.23.0
+  * build(deps): bump github.com/containers/podman/v3 from 3.3.1 to 3.4.1
+  * build(deps): bump github.com/containers/common from 0.43.2 to 0.46.0
+  * test: drop swap disable playbook
+  * server: add support for CRI unified field
+  * server: implement swap support
+  * server/cri: add support for 1.22 features
+  * test: bump cri-tools version
+  * scripts: pin cri-tools version
+  * server: reduce needless copying for sb.NamespaceOptions
+  * oci: refactor internal structure to use CRI type
+  * oci: use server CRI metadata type for containers
+  * sandbox: refactor internal structure to use CRI type
+  * sandbox: save createdAt as a int64
+  * build(deps): bump github.com/containerd/cgroups from 1.0.1 to 1.0.2
+  * build(deps): bump github.com/creack/pty from 1.1.16 to 1.1.17
+  * build(deps): bump github.com/Microsoft/go-winio from 0.5.0 to 0.5.1
+  * Bump Kubernetes to v1.22.2
+  * sandbox: use server CRI metadata type
+  * docs: emphasize deprecation notice
+  * update documentation for workloads
+  * add allowed annotations to workloads
+  * Log HTTP response writer message instead an error
+  * oci: use c/common signal parsing function
+  * Skip volume relabel for super privileged containers
+  * oci: chown stdin pipe to user in the container
+  * test: fix selinux test failures
+  * build(deps): bump github.com/onsi/ginkgo from 1.16.4 to 1.16.5
+  * Fix runtime handler docs
+  * build(deps): bump github.com/containers/image/v5 from 5.15.2 to 5.16.1
+  * scripts: fix release branch forward script
+  * server: FilterDisallowedAnnotations of containers earlier
+  * server: conditionally relabel volumes given annotation
+  * build(deps): bump github.com/containers/storage from 1.36.0 to 1.37.0
+  * test: refactor allowed_annotation tests
+  * server: reduce args in addOCIBindMounts
+  * build(deps): bump github.com/opencontainers/selinux from 1.8.5 to 1.9.1
+  * test: add label for openshift e2e in dockerfile
+  * build(deps): bump github.com/containerd/containerd from 1.5.5 to 1.5.7
+  * test: skip certificate check for downloading parallel
+  * Remove usge of deprecated apt-key in Ubuntu install
+  * Fix install.md links
+  * build(deps): bump google.golang.org/grpc from 1.40.0 to 1.41.0
+  * use a more appropriate console with code block
+  * build(deps): bump k8s.io/api from 0.22.1 to 0.22.2
+  * build(deps): bump k8s.io/cri-api from 0.22.1 to 0.22.2
+  * build(deps): bump sigs.k8s.io/yaml from 1.2.0 to 1.3.0
+  * build(deps): bump github.com/creack/pty from 1.1.15 to 1.1.16
+  * build(deps): bump k8s.io/apimachinery from 0.22.1 to 0.22.2
+  * fix node e2e
+  * build(deps): bump github.com/intel/goresctrl from 0.1.0 to 0.2.0
+  * bump crio commit used by node e2e installer
+  * server: mount cgroup if hostNetwork
+  * server: use container level host network setting
+  * server: don't recalculate hostnet
+  * Fix typo in install.md
+  * Remove one of the explanations for `bind_mount_prefix` because it is duplicated.
+  * node e2e: keep infra container
+  * add unit test for the `server/sandbox_remove`.
+  * test: fix journald test for new conmon
+  * fix shfmt
+  * update `install.md` for debian and ubuntu
+  * build(deps): bump github.com/json-iterator/go from 1.1.11 to 1.1.12
+  * build(deps): bump k8s.io/client-go from 0.22.1 to 0.22.2
+  * fix shfmt
+  * server: set spec when dropping infra
+  * Update 'master' branch links to 'main'
+  * bumps pause image to 3.6
+  * server: don't wait forever on conmon cgroup move fail
+  * build(deps): bump github.com/containers/storage from 1.34.1 to 1.36.0
+  * Remove bashism in sh script
+  * Do not log if Intel RDT is not supported
+  * build(deps): bump github.com/godbus/dbus/v5 from 5.0.4 to 5.0.5
+  * Fix cluster.yaml for kubectl create
+  * call cmd.Wait() in all cases we call Start()
+  * oci: call wait on conmon if cgroup move fails
+  * build(deps): bump github.com/go-logr/logr from 1.0.0 to 1.1.0
+  * Fix `crio_image_pulls_layer_size_` metrics docs
+  * Adapt to klog incompatible changes
+  * build(deps): bump k8s.io/klog/v2 from 2.10.0 to 2.20.0
+  * Add `--profile-cpu` and `--profile-mem` options
+  * build(deps): bump github.com/containers/podman/v3 from 3.3.0 to 3.3.1
+  * server: remove ineffective `updateLock`.
+  * Fix missing quantile in `latency_microseconds_total` metrics
+  * Update crio commit for node e2e
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.4.9 to 1.5.1
+  * Bump runc binary to 1.0.2
+  * Switch to go1.17 for CI
+  * fix debian 10 build doc
+  * test/testdata/sandbox_config.json: fix the dns_config
+  * adds updating instructions to install.md
+
+-------------------------------------------------------------------
 Thu Sep 02 14:57:14 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.22.0:

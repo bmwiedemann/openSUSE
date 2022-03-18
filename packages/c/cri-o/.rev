@@ -528,4 +528,41 @@
     <comment></comment>
     <requestid>916129</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>7bb20a8e5f4b1a710ff6de1e2b3ef24d</srcmd5>
+    <version>1.23.2</version>
+    <time>1647618089</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.23.2:
+  * config/sysctl: fail if there is a + in the value
+  * Revert &quot;config/sysctl: fail if there is a + in the value&quot;
+  * bump to version 1.23.2
+  * config/sysctl: fail if there is a + in the value
+  * config/sysctls: validate against invalid spaces
+  * server: stop deleting pod from idIndex if already gone
+  * [1.23] ci: use kubernetes 1.23, cri-tools 1.23
+  * contrib/test/int/build/kubernetes: rm deprecated RunAsGroup
+  * hack/build-rpms.sh: fix yum-builddep failures
+  * image: use imageCache value for ImageStatus()
+  * oci: fix a leaked goroutine
+  * Reuse createContainerIO in CreateContainer
+  * Fix vm containers couldn't restore after CRI-O restart
+  * release-notes: add args for checksum fields
+  * Updated format
+  * Generate checksum files for artifacts
+  * bump to v1.23.1
+  * test: add test for skipped sysctls
+  * server: skip sysctls that would affect the host
+  * server: don't set memory swap when it's not enabled
+  * deep copy List{PodSandbox,Container} structs
+  * ci: use main branch for conmon
+  * server: fix race with kubelet
+  * Fix runtime panic on pod sandbox stats retrieval
+  * ci: use main version of runc
+  * openshift e2e: bump ci image
+  * server: fix a potential NULL-pointer dereference.
+  * pass the main mount point to fix crypto profiles binding
+  * test: update tests for allowed_devices</comment>
+    <requestid>962167</requestid>
+  </revision>
 </revisionlist>
