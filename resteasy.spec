@@ -1,7 +1,7 @@
 #
 # spec file for package resteasy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -50,6 +50,10 @@ Requires:       resteasy-core = %{version}-%{release}
 Requires:       resteasy-jackson2-provider = %{version}-%{release}
 Requires:       resteasy-jaxb-provider = %{version}-%{release}
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.activation:activation)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
+%endif
 
 %description
 
@@ -138,8 +142,13 @@ find -name '*.jar' -print -delete
 
 %pom_remove_plugin :maven-clover2-plugin
 
+%if 0%{?suse_version} <= 1500
 # remove activation.jar dependencies
 %pom_remove_dep -r javax.activation:activation resteasy-jaxrs resteasy-spring
+%else
+# add the jaxb-api dependency
+%pom_add_dep javax.xml.bind:jaxb-api resteasy-jaxrs providers/jaxb
+%endif
 
 # remove resteasy-dependencies pom
 %pom_remove_dep "org.jboss.resteasy:resteasy-dependencies"
