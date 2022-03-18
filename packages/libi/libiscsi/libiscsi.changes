@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 16 13:26:08 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20220303:
+  * iscsi-command: Fix leak in iscsi_send_data_out
+  * iscsi-pr: add persistent reservation tool
+  * add iscsi_force_reconnect()
+  * add libiscsi.syms to .gitignore
+
+-------------------------------------------------------------------
 Thu Dec  9 10:48:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20210930:

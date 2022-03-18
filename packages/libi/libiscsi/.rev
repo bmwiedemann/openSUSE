@@ -266,4 +266,16 @@
   * test-tool: Do not use empty initializers</comment>
     <requestid>937751</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>26640760408e44b77b43d7ba5e94441c</srcmd5>
+    <version>1.19.0+git.20220303</version>
+    <time>1647618094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.0+git.20220303:
+  * iscsi-command: Fix leak in iscsi_send_data_out
+  * iscsi-pr: add persistent reservation tool
+  * add iscsi_force_reconnect()
+  * add libiscsi.syms to .gitignore</comment>
+    <requestid>962192</requestid>
+  </revision>
 </revisionlist>
