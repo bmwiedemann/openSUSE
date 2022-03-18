@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only
