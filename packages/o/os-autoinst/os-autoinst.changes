@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 17 18:48:00 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1647448515.d9b79947:
+  * Fix serialization error introduced by 7be44a78
+  * Add checks for initialization of `consoles::VNC` accessors from args
+  * Avoid warnings about redefinition of `has`
+  * Increase default VNC timeout for remote connections
+  * Reduce pipe size in test to make coverage less flaky
+  * myjsonrpc: Don't limit how often select may return EINTR
+  * Use proper perl "signatures" in common files - distribution
+  * backend: Harden hyperv|vmware regex vmm family check
+  * backend::svirt: Extract methods _is_hyperv/_is_vmware
+  * backend::svirt: Extract method _vmm_family
+
+-------------------------------------------------------------------
 Thu Mar 10 18:16:21 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1646895108.0c834255:
