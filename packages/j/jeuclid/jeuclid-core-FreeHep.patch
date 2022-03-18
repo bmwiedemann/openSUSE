@@ -1,11 +1,8 @@
---- jeuclid-parent-3.1.3/jeuclid-core/src/main/java/net/sourceforge/jeuclid/converter/ConverterRegistry.java	2008-09-24 07:03:08.000000000 -0700
-+++ jeuclid-parent-3.1.3.new/jeuclid-core/src/main/java/net/sourceforge/jeuclid/converter/ConverterRegistry.java	2008-11-24 19:04:21.000000000 -0800
-@@ -50,7 +50,7 @@
-     protected ConverterRegistry() {
-         ImageIODetector.detectConversionPlugins(this);
-         BatikDetector.detectConversionPlugins(this);
--        FreeHepDetector.detectConversionPlugins(this);
-+//        FreeHepDetector.detectConversionPlugins(this);
-     }
- 
-     /**
+Index: jeuclid-parent-3.1.9/jeuclid-core/src/main/resources/META-INF/services/net.sourceforge.jeuclid.converter.ConverterDetector
+===================================================================
+--- jeuclid-parent-3.1.9.orig/jeuclid-core/src/main/resources/META-INF/services/net.sourceforge.jeuclid.converter.ConverterDetector
++++ jeuclid-parent-3.1.9/jeuclid-core/src/main/resources/META-INF/services/net.sourceforge.jeuclid.converter.ConverterDetector
+@@ -1,3 +1,2 @@
+ net.sourceforge.jeuclid.converter.ImageIODetector
+ net.sourceforge.jeuclid.converter.BatikDetector
+-net.sourceforge.jeuclid.converter.FreeHepDetector

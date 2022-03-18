@@ -1,7 +1,7 @@
 #
 # spec file for package jeuclid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jeuclid
-Version:        3.1.3
+Version:        3.1.9
 Release:        0
 Summary:        MathML rendering solution
 # LGPL-2.1 is for the FreeHEP component only (see LICENSE.FreeHEP)
@@ -38,6 +38,8 @@ Patch1:         AppleJavaExtensions.patch
 Patch2:         MacOSX.patch
 Patch3:         jeuclid-commons-lang3.patch
 Patch4:         jeuclid-batik_1_10.patch
+# fixes casting the service provider
+Patch5:         jeuclid-service-providers.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli >= 1.1
 BuildRequires:  apache-commons-lang3
@@ -163,6 +165,7 @@ build-jar-repository -s -p lib jcip-annotations commons-logging xmlgraphics-comm
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 find -name '*.jar' -o -name '*.class' -exec rm -f '{}' \;
 
