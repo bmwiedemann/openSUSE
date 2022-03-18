@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 10 15:16:47 UTC 2022 - chris@computersalat.de
+
+- fix deps for SLES 12
+
+-------------------------------------------------------------------
 Mon Feb 21 21:22:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - "Downgrade" git-gui and gitk Recommends to Suggests.

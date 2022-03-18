@@ -267,7 +267,11 @@ Summary:        Git revision tree visualiser
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       tk >= 8.4
+%if 0%{?suse_version} == 1315
+Supplements:    packageand(git-core:tk)
+%else
 Supplements:    (git-core and tk)
+%endif
 
 %description -n gitk
 Grapical tool for visualization of revision trees of projects
@@ -282,7 +286,11 @@ Summary:        Grapical tool for common git operations
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       tk >= 8.4
+%if 0%{?suse_version} == 1315
+Supplements:    packageand(git-core:tk)
+%else
 Supplements:    (git-core and tk)
+%endif
 
 %description gui
 A Tcl/Tk based graphical user interface to Git. git-gui focuses on
@@ -300,7 +308,11 @@ Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       perl-CGI
 Requires:       perl-Git = %{version}
+%if 0%{?suse_version} == 1315
+Supplements:    packageand(git-core:apache2)
+%else
 Supplements:    (git-core and apache2)
+%endif
 
 %description web
 CGI script that allows browsing git repositories via web interface.
