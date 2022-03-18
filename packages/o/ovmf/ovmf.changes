@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 12:44:56 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- TPM_ENABLE got renamed to TPM2_ENABLE and TPM_CONFIG_ENABLE removed
+  (except on ARM for some reason) (boo#1197104)
+
+-------------------------------------------------------------------
 Thu Mar 10 05:35:44 UTC 2022 - jlee@suse.com
 
 - Update to edk2-stable202202
