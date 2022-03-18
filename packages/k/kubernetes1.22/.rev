@@ -87,4 +87,41 @@
     <comment></comment>
     <requestid>960750</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aed9d9400db80501d0d524b041679e2a</srcmd5>
+    <version>1.22.7</version>
+    <time>1647618092</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.7:
+  * Update Go to 1.16.14
+  * add namespace in azurefile volumeid
+  * fix: azurefile volumeid conflict in csi migration
+  * Execute sync before taking the snapshot
+  * Mark device as uncertain if unmount device succeeds
+  * Set max results if its not set
+  * Update CHANGELOG/CHANGELOG-1.22.md for v1.22.6
+  * Update k/utils to v0.0.0-20211116205334-6203023598ed
+  * [go] update to Go 1.16.13
+  * Enabling kube-proxy metrics on windows kernel mode
+  * fix: ignore the case when comparing azure tags in service annotation
+  * fix: remove outdated ipv4 route when the corresponding node is deleted
+  * fix: delete non existing disk issue
+  * fix containers order after applying
+  * generated: ./hack/update-vendor.sh
+  * upgrade sigs.k8s.io/structured-merge-diff/v4 to v4.2.1
+  * fix: azuredisk parameter lowercase translation issue
+  * fix: do not delete the lb that does not exist
+  * removed unnecessary log line
+  * Fix header mutation race in timeout filter
+  * use node informer to check volumes attachment status before backoff
+  * When volume is not marked in-use, do not backoff
+  * kubeadm: remove the restriction that the ca.crt can only contain one certificate
+  * flake fix: remove the error handler for cronjob integration test
+  * vendor: bump cAdvisor to v0.39.3
+  * Fix the leak of vSphere client sessions
+  * fix nil pointer in create secret commands
+  * client-go: Clear the ResourceVersionMatch on paged list calls
+  * Update GCE manifest to use konnectivity 0.0.27</comment>
+    <requestid>962177</requestid>
+  </revision>
 </revisionlist>
