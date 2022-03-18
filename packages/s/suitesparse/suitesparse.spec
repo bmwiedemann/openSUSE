@@ -30,7 +30,7 @@ Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        5.10.1
+Version:        5.11.0
 Release:        0
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
 Source0:        https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v%{version}.tar.gz#/SuiteSparse-%{version}.tar.gz
@@ -66,17 +66,17 @@ BuildRequires:  openblas-devel
 %define colamdver    2.9.6
 %define csparsever   3.2.0
 %define cxsparsever  3.2.0
-%define graphblasver 5.0.5
+%define graphblasver 6.2.5
 %define kluver       1.3.9
 %define ldlver       2.2.6
-%define mongoosever  2.0.3
+%define mongoosever  2.0.4
 %define rbiover      2.2.6
 %define slipluver    1.0.2
-%define spqrver      2.0.9
-%define umfpackver   5.7.8
+%define spqrver      2.1.0
+%define umfpackver   5.7.9
 # Your need define even it's just the same as main package
 # or the %%build loop will override %%version with umfpack's version.
-%define configver    5.10.1
+%define configver    5.11.0
 %define csparsemajor %(echo "%{csparsever}" | cut -d "." -f1)
 %define amdlib       %(echo "libamd%{amdver}"                  | cut -d "." -f1)
 %define btflib       %(echo "libbtf%{btfver}"                  | cut -d "." -f1)
