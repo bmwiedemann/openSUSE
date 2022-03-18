@@ -1,7 +1,7 @@
 #
 # spec file for package stax-ex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,13 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
-BuildRequires:  mvn(javax.activation:activation)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.activation:activation)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
+%endif
 
 %description
 This project develops a few extensions to complement JSR-173 StAX API in the
@@ -65,6 +68,12 @@ pushd %{name}
 %pom_remove_plugin :maven-deploy-plugin
 %pom_remove_plugin :maven-enforcer-plugin
 
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.xml.bind:jaxb-api::provided
+%else
+%pom_remove_dep javax.activation:activation
+%endif
+
 # Convert the license to UTF-8:
 mv LICENSE.txt LICENSE.txt.tmp
 iconv -f ISO-8859-1 -t UTF-8 LICENSE.txt.tmp > LICENSE.txt
@@ -77,7 +86,7 @@ popd
 %build
 pushd %{name}
 
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8
+%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=8
 popd
 
 %install

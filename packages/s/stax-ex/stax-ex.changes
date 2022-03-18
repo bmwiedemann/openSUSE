@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 17 13:26:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone activation-api and jaxb-api on
+  distributions that have a JDK without the JavaEE modules.
+- Use the include JavaEE modules on distributions that have a
+  JDK that includes them.
+
+-------------------------------------------------------------------
 Mon Mar  9 11:10:55 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of Metro stax-ex 1.8

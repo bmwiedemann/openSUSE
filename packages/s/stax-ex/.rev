@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>782936</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>416b3c2a7f4d52dfa031eb5ed856a841</srcmd5>
+    <version>1.8</version>
+    <time>1647618171</time>
+    <user>dimstar_suse</user>
+    <comment>standalone activation-api and jaxb-api</comment>
+    <requestid>962717</requestid>
+  </revision>
 </revisionlist>
