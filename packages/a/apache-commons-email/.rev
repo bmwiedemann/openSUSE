@@ -46,4 +46,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>620749</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>2e808aad49f5bae5bbd6024390aa2a29</srcmd5>
+    <version>1.5</version>
+    <time>1647618173</time>
+    <user>dimstar_suse</user>
+    <comment>Depend on glassfish-activation-api</comment>
+    <requestid>962724</requestid>
+  </revision>
 </revisionlist>

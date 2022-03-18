@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 03:13:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add glassfish-activation-api dependency so that we can build with
+  JDK that does not contain the JavaEE modules
+
+-------------------------------------------------------------------
 Tue May 15 09:41:06 UTC 2018 - fstrba@suse.com
 
 - Modified patch:

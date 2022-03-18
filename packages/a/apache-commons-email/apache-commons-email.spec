@@ -1,7 +1,7 @@
 #
-# spec file for package apache
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Apache Commons Email Package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://commons.apache.org/%{base_name}/
+URL:            http://commons.apache.org/%{base_name}/
 Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        build.xml.tar.bz2
 Patch0:         commons-email-1.5-sourcetarget.patch
@@ -37,6 +37,9 @@ BuildRequires:  javapackages-tools
 Requires:       java >= 1.8
 Requires:       javamail
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-activation-api
+%endif
 
 %description
 Commons-Email aims to provide an API for sending email. It is built on top of
@@ -70,13 +73,12 @@ cp -pr target/site/api*/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files
-%defattr(-,root,root,-)
-%doc LICENSE.txt RELEASE-NOTES.txt NOTICE.txt
+%license LICENSE.txt NOTICE.txt
+%doc RELEASE-NOTES.txt
 %{_javadir}/*
 
 %files javadoc
-%defattr(-,root,root,-)
-%doc LICENSE.txt NOTICE.txt
+%license LICENSE.txt NOTICE.txt
 %doc %{_javadocdir}/%{name}
 
 %changelog
