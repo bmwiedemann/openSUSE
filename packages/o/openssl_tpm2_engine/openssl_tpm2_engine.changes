@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  1 15:11:41 UTC 2022 - James.Bottomley@HansenPartnership.com
+
+- Update to version 3.1.1
+  * Fix use after free in dynamic engines
+
+-------------------------------------------------------------------
 Thu Feb 17 14:09:11 UTC 2022 - James.Bottomley@HansenPartnership.com
 
 - Update to version 3.1.0

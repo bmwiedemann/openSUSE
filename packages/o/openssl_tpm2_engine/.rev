@@ -49,4 +49,13 @@
     <user>dimstar_suse</user>
     <comment>Re-Update - poo#107107 is not product related</comment>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e73b9bc1dac09094474b9758b460376</srcmd5>
+    <version>3.1.1</version>
+    <time>1647618564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.1
+  * Fix use after free in dynamic engines (forwarded request 962758 from jejb1)</comment>
+    <requestid>962866</requestid>
+  </revision>
 </revisionlist>
