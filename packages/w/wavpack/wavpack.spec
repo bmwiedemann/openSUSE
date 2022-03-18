@@ -1,7 +1,7 @@
 #
 # spec file for package wavpack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            http://www.wavpack.com/
 Source0:        http://www.wavpack.com/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
+# CVE-2021-44269 [bsc#1197020], out of bounds read in processing .wav file
+Patch0:         wavpack-CVE-2021-44269.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -68,6 +70,7 @@ applications that want to make use of wavpack.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure --disable-static

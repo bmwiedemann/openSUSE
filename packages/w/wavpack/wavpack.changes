@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 16 09:03:47 UTC 2022 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2021-44269 [bsc#1197020], out of bounds read in processing .wav file
+  + wavpack-CVE-2021-44269.patch
+
+-------------------------------------------------------------------
 Mon Jan 18 12:40:18 UTC 2021 - Alexandros Toptsoglou <atoptsoglou@suse.com>
 
 - Update to version 5.4.0
