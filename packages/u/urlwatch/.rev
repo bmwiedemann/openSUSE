@@ -202,4 +202,36 @@
     is not installed (#667)</comment>
     <requestid>940291</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fc9729bac9cc84afff40475cfbcc5026</srcmd5>
+    <version>2.25</version>
+    <time>1647618140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.25:
+  Added:
+  * Add a colored setting for the Discord reporter, enabled by
+    default (PR#683)
+  * Add a splitlines filter for trimming leading/trailing whitespace
+    in each line (PR#693)
+  * If a shell job fails, the job's stdout and stderr are added to
+    the error message (fixes #689)
+  * shell job: Add optional stderr key to customize how output on
+    stderr is treated
+  * Add --dump-history JOB command-line option to print historic
+    job outputs (fixes #681)
+  * Add display / empty-diff configuration option to skip reports when
+    diffs are empty due to diff_filter (fixes #692)
+  * New man pages: urlwatch-intro(7), urlwatch-deprecated(7),
+    urlwatch-cookbook(7), urlwatch-jobs(5), urlwatch-filters(5),
+    urlwatch-config(5) and urlwatch-reporters(5).
+  Changed:
+  * Require minidb 2.0.6; issue VACUUM only with --gc-cache (fixes #690)
+  * For shell jobs, stderr output isn't sent to urlwatch's stdout anymore;
+    add stdout: urlwatch to your shell job definition if you depend on
+    the old default behavior
+  Fixed:
+  * pytest command-line arguments are not wrongly interpreted by
+    CommandConfig anymore (fixes #677)</comment>
+    <requestid>962616</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package urlwatch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           urlwatch
-Version:        2.24
+Version:        2.25
 Release:        0
 Summary:        A tool for monitoring webpages for updates
 License:        BSD-3-Clause
@@ -41,7 +41,6 @@ notified (via email, in your terminal or with a custom-written
 reporter class) of any changes. The change notification will include
 the URL that has changed and a unified diff of what has changed.
 
-
 A default config is ~/.urlwatch/urlwatch.yaml.
 use "urlwatch --edit-config" to customize it.
 
@@ -50,7 +49,7 @@ Use "urlwatch --edit" to open the file with your editor.
 
 Please look in
 
- /usr/share/doc/packages/urlwatch/README.md
+ %{_docdir}/urlwatch/README.md
 
  TIPS AND TRICKS what to use in urls.yaml.
 
@@ -64,13 +63,19 @@ python3 setup.py build
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
-%defattr(-,root,root,-)
 %doc CHANGELOG* README*
 %license COPYING*
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
 %{_datadir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man5/urlwatch-config.5%{?ext_man}
+%{_mandir}/man5/urlwatch-filters.5%{?ext_man}
+%{_mandir}/man5/urlwatch-jobs.5%{?ext_man}
+%{_mandir}/man5/urlwatch-reporters.5%{?ext_man}
+%{_mandir}/man7/urlwatch-cookbook.7%{?ext_man}
+%{_mandir}/man7/urlwatch-deprecated.7%{?ext_man}
+%{_mandir}/man7/urlwatch-intro.7%{?ext_man}
 
 %changelog
