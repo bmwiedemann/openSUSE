@@ -15,4 +15,12 @@
     <comment>bsc#1193879, CVE-2021-40690</comment>
     <requestid>941287</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c931e9be75b71dff2ba0cf80827a3776</srcmd5>
+    <version>2.1.7</version>
+    <time>1647618172</time>
+    <user>dimstar_suse</user>
+    <comment>standalone jaxb-api</comment>
+    <requestid>962721</requestid>
+  </revision>
 </revisionlist>

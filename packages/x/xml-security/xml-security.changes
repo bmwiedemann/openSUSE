@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 14:15:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against a standalone jaxb-api artifact on systems where the
+  JDK does not include the JavaEE modules
+
+-------------------------------------------------------------------
 Fri Dec 17 18:37:54 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.1.7 (bsc#1193879, CVE-2021-40690)

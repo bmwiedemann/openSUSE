@@ -1,7 +1,7 @@
 #
 # spec file for package xml-security
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,9 @@ BuildRequires:  mvn(xalan:xalan)
 BuildRequires:  mvn(xerces:xercesImpl)
 BuildRequires:  mvn(xml-apis:xml-apis)
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
+%endif
 
 %description
 Apache XML Security for Java supports XML-Signature Syntax and Processing,
@@ -62,6 +65,10 @@ This package contains javadoc for %{name}.
 %pom_xpath_remove pom:plugin/pom:configuration/pom:annotationProcessorPaths
 
 %pom_xpath_remove pom:profiles
+
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.xml.bind:jaxb-api::provided
+%endif
 
 %{mvn_file} :%{oname} %{name} %{oname}
 
