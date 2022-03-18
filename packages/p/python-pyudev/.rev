@@ -231,4 +231,12 @@
     <comment></comment>
     <requestid>960945</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>6a20c3d7e25fd678513fffd7d53a691e</srcmd5>
+    <version>0.23.2+14</version>
+    <time>1647618076</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip some unreliable tests.</comment>
+    <requestid>962364</requestid>
+  </revision>
 </revisionlist>

@@ -73,7 +73,8 @@ sed -i -e "s|'sphinx.ext.intersphinx',\\?||" -e "s|'sphinxcontrib.issuetracker',
 
 %check
 # We don't have real /dev in osc build chroot gh#pyudev/pyudev#404
-%pytest -k 'not real_udev'
+# ... or apparently, a reliable testsuite gh#pyudev/pyudev#457
+%pytest -k 'not (real_udev or test_as or test_getitem)'
 
 %files %{python_files}
 %license COPYING
