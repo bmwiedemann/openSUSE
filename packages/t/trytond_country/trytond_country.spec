@@ -28,8 +28,9 @@ URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
-Patch0:         pycountry.diff
-Patch1:         revert_pycountry_limit.diff
+Patch0:         001_pycountry.diff
+Patch1:         002_support_pycountry_22.diff
+Patch2:         003_revert_pycountry_limit.diff
 # List of additional build dependencies
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,6 +63,7 @@ echo %{?suse_version}
 %if 0%{?suse_version} > 1500
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %endif
 
 %build

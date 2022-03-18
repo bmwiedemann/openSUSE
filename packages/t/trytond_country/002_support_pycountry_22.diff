@@ -1,11 +1,8 @@
-diff -U 3 -dHrN -- a/country.py b/country.py
---- a/country.py	2021-05-03 16:34:04.000000000 +0200
-+++ b/country.py	2022-03-08 16:43:29.615772343 +0100
-@@ -94,15 +94,18 @@
-     code = fields.Char('Code', required=True, select=True,
-         help="The ISO code of the subdivision.")
-     type = fields.Selection([
-+        (None, ""),
+diff --git a/country.py b/country.py
+index 1e8e76671099672eb5baffd84dd6d1694f547de6..53fafa430e9c1eaef01c68c59d5fbaed3834cccf 100644
+--- a/country.py
++++ b/country.py
+@@ -98,12 +98,14 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
          ('administration', 'Administration'),
          ('administrative area', 'Administrative area'),
          ('administrative atoll', 'Administrative atoll'),
@@ -20,7 +17,7 @@ diff -U 3 -dHrN -- a/country.py b/country.py
          ('autonomous commune', 'Autonomous Commune'),
          ('autonomous communities', 'Autonomous communities'),
          ('autonomous community', 'Autonomous community'),
-@@ -118,44 +121,63 @@
+@@ -119,44 +121,63 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
          ('autonomous territorial unit', 'Autonomous territorial unit'),
          ('borough', 'Borough'),
          ('canton', 'Canton'),
@@ -84,7 +81,7 @@ diff -U 3 -dHrN -- a/country.py b/country.py
          ('metropolitan department', 'Metropolitan department'),
          ('metropolitan district', 'Metropolitan district'),
          ('metropolitan region', 'Metropolitan region'),
-@@ -164,12 +186,18 @@
+@@ -165,12 +186,18 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
          ('nation', 'Nation'),
          ('oblast', 'Oblast'),
          ('outlying area', 'Outlying area'),
@@ -103,7 +100,7 @@ diff -U 3 -dHrN -- a/country.py b/country.py
          ('popularates', 'Popularates'),
          ('prefecture', 'Prefecture'),
          ('principality', 'Principality'),
-@@ -178,27 +206,37 @@
+@@ -179,25 +206,35 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
          ('rayon', 'Rayon'),
          ('region', 'Region'),
          ('regional council', 'Regional council'),
@@ -137,24 +134,5 @@ diff -U 3 -dHrN -- a/country.py b/country.py
 +        ('voivodship', 'Voivodship'),
 +        ('ward', 'Ward'),
          ('zone', 'zone'),
--        ], 'Type', required=True)
-+        ], "Type")
+         ], "Type")
      parent = fields.Many2One('country.subdivision', 'Parent',
-         domain=[
-             ('country', '=', Eval('country', -1)),
-@@ -220,10 +258,15 @@
- 
-         super().__register__(module_name)
- 
-+        table_h = cls.__table_handler__(module_name)
-+
-         # Migration from 5.2: remove country data
-         cursor.execute(*data.delete(where=(data.module == 'country')
-                 & (data.model == cls.__name__)))
- 
-+        # Migration from 6.2: remove type required
-+        table_h.not_null_action('type', action='remove')
-+
-     @classmethod
-     def search_rec_name(cls, name, clause):
-         return ['OR',

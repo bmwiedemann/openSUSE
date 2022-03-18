@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 18 11:06:09 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- patches reorganized:
+  pycountry.diff removed
+  added:
+  001_pycountry.diff 
+  002_support_pycountry_22.diff
+  003_revert_pycountry_limit.diff 
+
+-------------------------------------------------------------------
 Mon Mar 14 20:39:02 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - revert_pycountry_limit.diff added
