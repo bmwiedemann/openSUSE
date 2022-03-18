@@ -23,7 +23,7 @@
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
 Name:           gstreamer-plugins-rs
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later

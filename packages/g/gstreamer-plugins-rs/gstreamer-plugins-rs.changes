@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 28 12:39:44 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.8.2:
+  * Update Cargo.lock
+  * ci: Use correct gstreamer-rs images template
+  * deny: Remove num-rational override
+  * dav1ddec:
+    - Use `AtomicRefCell` instead of `Mutex` for the state
+    - Fix compilation after some API changes
+    - Release input frames that immediately caused a decoding error
+
+-------------------------------------------------------------------
 Fri Feb 04 20:27:29 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.8.1:
