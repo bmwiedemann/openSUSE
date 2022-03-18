@@ -4303,6 +4303,10 @@
       <repopackage name="ruby3.1-rubygem-ffi-compiler"/>
       <repopackage name="ruby3.1-rubygem-flog"/>
       <repopackage name="ruby3.1-rubygem-fluentd"/>
+      <repopackage name="ruby3.1-rubygem-fog-core"/>
+      <repopackage name="ruby3.1-rubygem-fog-json"/>
+      <repopackage name="ruby3.1-rubygem-fog-libvirt"/>
+      <repopackage name="ruby3.1-rubygem-fog-xml"/>
       <repopackage name="ruby3.1-rubygem-font-awesome-rails"/>
       <repopackage name="ruby3.1-rubygem-formatador"/>
       <repopackage name="ruby3.1-rubygem-forwardable-extended"/>
