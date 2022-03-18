@@ -24,4 +24,12 @@
     <comment>Don't alias to the jakarta name</comment>
     <requestid>960490</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e7d2a3324f60f5e842c5362ff9f48d19</srcmd5>
+    <version>2.4.0</version>
+    <time>1647618163</time>
+    <user>dimstar_suse</user>
+    <comment>standalone jaxb-api for rings</comment>
+    <requestid>962608</requestid>
+  </revision>
 </revisionlist>

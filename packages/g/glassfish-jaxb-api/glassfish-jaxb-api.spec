@@ -17,6 +17,7 @@
 
 
 %global oname jaxb-spec
+%global bundle jaxb-api
 Name:           glassfish-jaxb-api
 Version:        2.4.0
 Release:        0
@@ -25,14 +26,14 @@ License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0
 Group:          Development/Libraries/Java
 URL:            https://jaxb.java.net/
 Source0:        https://github.com/javaee/%{oname}/archive/%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  glassfish-activation-api
 BuildRequires:  java-devel >= 9
-BuildRequires:  maven-local
+BuildRequires:  javapackages-local
 BuildRequires:  unzip
-BuildRequires:  mvn(javax.activation:javax.activation-api)
-BuildRequires:  mvn(net.java:jvnet-parent:pom:)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+Requires:       mvn(javax.activation:javax.activation-api)
 BuildArch:      noarch
 
 %description
@@ -49,6 +50,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{oname}-%{version}
+cp %{SOURCE1} jaxb-api/build.xml
 
 %pom_disable_module jaxb-api-test
 
@@ -60,22 +62,43 @@ This package contains javadoc for %{name}.
 %pom_remove_plugin :cobertura-maven-plugin jaxb-api
 %pom_remove_plugin :maven-dependency-plugin jaxb-api
 
+%pom_remove_parent jaxb-api
+%pom_xpath_inject pom:project "
+  <groupId>javax.xml.bind</groupId>
+  <version>%{version}</version>" jaxb-api
+
 %pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-javadoc-plugin']/pom:configuration" "
     <sourceFileExcludes>
         <exclude>module-info.java</exclude>
     </sourceFileExcludes>" jaxb-api
 
 %build
-%{mvn_build} -f -- -Dsource=8
+pushd jaxb-api
+mkdir -p lib
+build-jar-repository -s lib glassfish-activation-api
+%{ant} jar javadoc
+popd
 
 %install
-%mvn_install
+# jar
+install -d -m 755 %{buildroot}%{_javadir}
+install -m 644 %{bundle}/target/%{bundle}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+
+# pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}
+install -pm 644 %{bundle}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
+# javadoc
+install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
+cp -r %{bundle}/target/site/apidocs/* %{buildroot}/%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE.txt
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt
 
 %changelog
