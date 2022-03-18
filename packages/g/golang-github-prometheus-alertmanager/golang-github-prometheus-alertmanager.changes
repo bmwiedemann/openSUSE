@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 10 15:39:10 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update vendor tarball with prometheus/client_golang 1.11.1
+  (bsc#1196338, jsc#SLE-24077)
+  + Added 0002-Update-prometheus-client-to-version-1.11.1.patch
+- Use %autosetup macro
+
+-------------------------------------------------------------------
 Thu Mar 03 21:12:06 UTC 2022 - ecsos@opensuse.org
 
 - Update to version 0.23.0:

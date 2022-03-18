@@ -23,11 +23,14 @@ Summary:        Prometheus Alertmanager
 License:        Apache-2.0
 URL:            https://prometheus.io/
 Source:         alertmanager-%{version}.tar.gz
+# generated after applying 0002-Update-prometheus-client-to-version-1.11.1.patch
 Source1:        vendor.tar.gz
 Source2:        prometheus-alertmanager.service
 Source3:        alertmanager.yml
 # Lifted from Debian's alertmanager package
 Patch1:         0001-Default-settings.patch
+# This patch has been applied before generating vendor tarball
+Patch2:         0002-Update-prometheus-client-to-version-1.11.1.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
@@ -47,9 +50,7 @@ them to the correct receiver integration such as email, PagerDuty, or
 OpsGenie. It also takes care of silencing and inhibition of alerts.
 
 %prep
-%setup -q -n alertmanager-%{version}
-%setup -q -T -D -a 1 -n alertmanager-%{version}
-%patch1 -p 1
+%autosetup -a1 -p1 -n alertmanager-%{version}
 
 %build
 %goprep github.com/prometheus/alertmanager
