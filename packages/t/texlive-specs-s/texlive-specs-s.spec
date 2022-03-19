@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-s
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   186
+%define texlive_noarch   189
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -13463,6 +13463,7 @@ License:        GPL-2.0-or-later
 Summary:        Produce Encapsulated PostScript from PostScript
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Provides:       texlive-pstools:%{_texmfdistdir}/scripts/ps2eps/ps2eps.pl
 Requires(pre):  texlive-ps2eps-bin >= %{texlive_version}
 #!BuildIgnore: texlive-ps2eps-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -13522,6 +13523,8 @@ Summary:        Documentation for texlive-ps2eps
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Provides:       texlive-pstools-doc:%{_mandir}/man1/bbox.1%{?ext_man}
+Provides:       texlive-pstools-doc:%{_mandir}/man1/ps2eps.1%{?ext_man}
 Provides:       man(bbox.1)
 Provides:       man(ps2eps.1)
 
