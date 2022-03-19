@@ -73,6 +73,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fpie"
 export LDFLAGS="-pie"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 export V=1
+# --with-x=auto is a workaround until https://gitlab.freedesktop.org/dbus/dbus/-/merge_requests/263
+# is included (1.14.1+)
 %configure \
     --disable-static \
     --runstatedir=%{_rundir} \
@@ -90,7 +92,7 @@ export V=1
     --with-system-socket=/run/dbus/system_bus_socket \
     --with-systemdsystemunitdir=%{_unitdir} \
     --with-systemduserunitdir=%{_userunitdir} \
-    --with-x
+    --with-x=auto
 %make_build
 
 %install

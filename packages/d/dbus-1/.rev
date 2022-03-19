@@ -1403,4 +1403,12 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment>- set runstatedir correctly</comment>
     <requestid>961966</requestid>
   </revision>
+  <revision rev="171" vrev="3">
+    <srcmd5>d7ed49d560f1d09605ed750fd987b192</srcmd5>
+    <version>1.14.0</version>
+    <time>1647724829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962877</requestid>
+  </revision>
 </revisionlist>

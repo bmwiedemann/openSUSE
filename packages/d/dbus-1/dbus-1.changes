@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 21:00:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop use of %{with libalternatives}, there's no such bcond defined
+  and in many other places it's not optional anyway (boo#1197258)
+
+-------------------------------------------------------------------
 Mon Mar 14 10:46:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - set runstatedir correctly 

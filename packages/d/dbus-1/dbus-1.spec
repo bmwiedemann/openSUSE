@@ -168,12 +168,10 @@ rm -Rf %{buildroot}%{_datadir}/doc/dbus
 
 %pre -f messagebus.pre
 %service_add_pre dbus.service dbus.socket
-%if %{with libalternatives}
 # removing old update-alternatives entries
 if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
     %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
 fi
-%endif
 
 %post
 if [ -e %{_localstatedir}/lib/dbus/machine-id -a -e %{_sysconfdir}/machine-id ]; then
@@ -189,18 +187,10 @@ fi
 
 /sbin/ldconfig
 %set_permissions %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
-%if ! %{with libalternatives}
-%{_sbindir}/update-alternatives --install %{_bindir}/dbus-launch dbus-launch %{_bindir}/dbus-launch.nox11 10
-%endif
 %service_add_post dbus.service dbus.socket
 %tmpfiles_create %{_prefix}/lib/tmpfiles.d/dbus.conf
 
 %preun
-%if ! %{with libalternatives}
-if [ "$1" = 0 ] ; then
-  %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
-fi
-%endif
 %service_del_preun dbus.service dbus.socket
 
 %postun
