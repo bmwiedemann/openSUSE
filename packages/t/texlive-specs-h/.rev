@@ -439,4 +439,19 @@
     <comment>Add patches for better python3 support</comment>
     <requestid>905084</requestid>
   </revision>
+  <revision rev="44" vrev="47">
+    <srcmd5>ed00c93f9a5736726483709c4a32fe5e</srcmd5>
+    <version>unknown</version>
+    <time>1647724803</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport TeXLive 2021, full python3 support and no poppler anymore 
+- Add missed package splits for bsc#1196711
+
+- Extend patch texlive-scripts_scripts.dif
+  * boo#1193473 -- /etc/cron.daily/suse-texlive from texlive causes warnings
+    OK make them silent
+
+- Do not touch shebang with patch latexdiff_p2top3.dif</comment>
+    <requestid>962414</requestid>
+  </revision>
 </revisionlist>
