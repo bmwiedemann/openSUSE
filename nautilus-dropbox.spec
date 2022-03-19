@@ -28,6 +28,7 @@ URL:            https://www.dropbox.com
 Source:         https://www.dropbox.com/download?dl=packages/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE 98.patch dimstar@opensuse.org -- Hack together something to accept GNOME 40 version schemes
 Patch0:         https://patch-diff.githubusercontent.com/raw/dropbox/nautilus-dropbox/pull/98.patch
+Patch1:         nautilus-dropbox-gtk4.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  gobject-introspection
@@ -57,7 +58,7 @@ This package provides a basic dropbox command line interface for desktop and dow
 Summary:        Dropbox client integrated into Nautilus
 Group:          Productivity/File utilities
 Requires:       dropbox >= %{version}
-Supplements:    packageand(nautilus:dropbox-cli)
+Supplements:    (nautilus and dropbox-cli)
 
 %description -n nautilus-extension-dropbox
 Dropbox is a free service that lets you bring your photos, docs, and videos anywhere
