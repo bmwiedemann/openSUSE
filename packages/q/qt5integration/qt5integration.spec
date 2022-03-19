@@ -78,15 +78,11 @@ Multiple Qt plugins to provide better Qt5 integration for DDE are included.
 %autosetup -p1
 
 %build
-%qmake5
+%qmake5 BASED_DTK_DIR=based-dtk
 %make_build
 
 %install
 %qmake5_install
-
-# Drop libdsvgicon.so to workaround crash bug
-# https://github.com/linuxdeepin/developer-center/issues/2242
-rm -rf %{buildroot}%{_kf5_plugindir}/iconengines/libdsvgicon.so
 
 %files
 %doc CHANGELOG.md README.md
@@ -95,11 +91,21 @@ rm -rf %{buildroot}%{_kf5_plugindir}/iconengines/libdsvgicon.so
 %dir %{_kf5_plugindir}/iconengines
 %dir %{_kf5_plugindir}/imageformats
 %dir %{_kf5_plugindir}/platformthemes
+%dir %{_kf5_plugindir}/styles/based-dtk
+%dir %{_kf5_plugindir}/iconengines/based-dtk
+%dir %{_kf5_plugindir}/imageformats/based-dtk
+%dir %{_kf5_plugindir}/platformthemes/based-dtk
 %{_kf5_plugindir}/iconengines/libdtkbuiltin.so
 %{_kf5_plugindir}/iconengines/libxdgicon.so
 %{_kf5_plugindir}/imageformats/libdsvg.so
 %{_kf5_plugindir}/platformthemes/libqdeepin.so
 %{_kf5_plugindir}/styles/libchameleon.so
-# %{_kf5_plugindir}/iconengines/libdsvgicon.so
+%{_kf5_plugindir}/iconengines/libdsvgicon.so
+%{_kf5_plugindir}/iconengines/based-dtk/libdtkbuiltin.so
+%{_kf5_plugindir}/iconengines/based-dtk/libxdgicon.so
+%{_kf5_plugindir}/imageformats/based-dtk/libdsvg.so
+%{_kf5_plugindir}/platformthemes/based-dtk/libqdeepin.so
+%{_kf5_plugindir}/styles/based-dtk/libchameleon.so
+%{_kf5_plugindir}/iconengines/based-dtk/libdsvgicon.so
 
 %changelog

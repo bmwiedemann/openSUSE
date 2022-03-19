@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:05:33 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use another way to workaround crash bug: add BASED_DTK_DIR=based-dtk to qmake
+
+-------------------------------------------------------------------
 Thu Feb 17 07:56:35 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.17
