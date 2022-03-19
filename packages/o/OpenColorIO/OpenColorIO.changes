@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 21:28:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- adjust license declaration to be BSD-3-Clause only based on
+  licensereview in https://build.opensuse.org/request/show/951516 
+
+-------------------------------------------------------------------
 Fri Jan 28 22:48:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:

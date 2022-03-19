@@ -35,7 +35,7 @@ Name:           OpenColorIO-tools
 Version:        2.1.1
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
-License:        BSD-3-Clause AND GPL-2.0-or-later
+License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}.tar.gz
