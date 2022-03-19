@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>672465</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba1f223d6909ac59bfe75795816ec988</srcmd5>
+    <version>1+20100611git1f74ea7</version>
+    <time>1647724854</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk 17</comment>
+    <requestid>963080</requestid>
+  </revision>
 </revisionlist>

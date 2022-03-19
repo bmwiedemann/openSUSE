@@ -1,7 +1,7 @@
 #
 # spec file for package atinject
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Dependency injection specification for Java (JSR-330)
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://javax-inject.github.io/javax-inject/
+URL:            https://javax-inject.github.io/javax-inject/
 # git clone --bare git@github.com:javax-inject/javax-inject
 # git --git-dir=javax-inject.git archive --prefix %{name}-%{base_version}/ --format tar %{git_tag} | xz >%{name}-%{base_version}.tar.xz
 Source0:        %{name}-%{base_version}.tar.xz
@@ -33,8 +33,9 @@ Source0:        %{name}-%{base_version}.tar.xz
 Source1:        MANIFEST.MF
 Source2:        MANIFEST-TCK.MF
 Source3:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Patch0:         atinject-javadoc.patch
 BuildRequires:  fdupes
-BuildRequires:  java-devel > 1.6
+BuildRequires:  java-devel > 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  xz
@@ -65,6 +66,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{base_version}
+%patch0 -p1
 cp %{SOURCE3} LICENSE
 rm -rf lib/*
 build-jar-repository -p lib junit
@@ -76,8 +78,8 @@ sed -i -e 's/pom\.groupId/project.groupId/' tck-pom.xml
 set -e
 alias rm=:
 alias xargs=:
-alias javadoc='javadoc -source 6 -notimestamp'
-alias javac='javac -source 6 -target 6'
+alias javadoc='javadoc -source 8 -notimestamp'
+alias javac='javac -source 8 -target 8'
 . ./build.sh
 
 # Inject OSGi manifests required by Eclipse.
