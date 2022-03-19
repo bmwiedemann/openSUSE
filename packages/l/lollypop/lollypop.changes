@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 18 19:02:40 UTC 2022 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.30:
+  * Fix an error when playing compilations
+    (glgo#World/lollypop#2901).
+  * Use system dark mode preferences (glgo#World/lollypop#2887).
+  * Add support for DSD filetypes.
+  * Fix support for tracker files (.s3m, .it .mod).
+  * Fix AppStream validation.
+- Add new build dependency: pkgconfig(libhandy-1) >= 1.5.
+
+-------------------------------------------------------------------
 Tue Jan 25 22:23:43 UTC 2022 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.29:

@@ -1754,4 +1754,19 @@
   * Fix playlists disappearing (glgo#World/lollypop#2884).</comment>
     <requestid>949140</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>0229a59ef2dec91e00b3bfe8fc36721b</srcmd5>
+    <version>1.4.30</version>
+    <time>1647724836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.30:
+  * Fix an error when playing compilations
+    (glgo#World/lollypop#2901).
+  * Use system dark mode preferences (glgo#World/lollypop#2887).
+  * Add support for DSD filetypes.
+  * Fix support for tracker files (.s3m, .it .mod).
+  * Fix AppStream validation.
+- Add new build dependency: pkgconfig(libhandy-1) &gt;= 1.5.</comment>
+    <requestid>962949</requestid>
+  </revision>
 </revisionlist>
