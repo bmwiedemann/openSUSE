@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar  2 01:59:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable nautilus extension again.
+
+-------------------------------------------------------------------
+Wed Jan 12 15:59:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Temporarily disable the nautilus extension: not yet compatible
+  with Nautilus/GTK4.
+
+-------------------------------------------------------------------
 Fri Mar 13 10:09:11 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Remove empty post and postun
