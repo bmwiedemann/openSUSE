@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 16 16:39:10 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Change Requires: zlib-devel to pkgconfig(zlib) so as not to conflict with libz-ng-compat1.
+
+-------------------------------------------------------------------
 Fri Jan 28 20:38:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.4:

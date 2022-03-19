@@ -103,7 +103,7 @@ Group:          Development/Libraries/C and C++
 Requires:       gcc-c++
 Requires:       libprotobuf%{sover} = %{version}
 Requires:       libprotobuf-lite%{sover}
-Requires:       zlib-devel
+Requires:       pkgconfig(zlib)
 Conflicts:      protobuf2-devel
 Provides:       libprotobuf-devel = %{version}
 
