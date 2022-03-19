@@ -1,7 +1,7 @@
 #
 # spec file for package easytag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without nautilus_extension
 Name:           easytag
 Version:        2.4.3
 Release:        0
@@ -39,7 +40,9 @@ BuildRequires:  pkgconfig(flac) >= 1.1.4
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(id3tag)
+%if %{with nautilus_extension}
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.0
+%endif
 BuildRequires:  pkgconfig(ogg) >= 1.0
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(speex)
@@ -71,7 +74,11 @@ easier access to EasyTAG when opening directories and audio files.
 %patch0 -p1 -R
 
 %build
+%if %{with nautilus_extension}
 %configure
+%else
+%configure --disable-nautilus-actions
+%endif
 %make_build
 
 %install
@@ -96,8 +103,10 @@ rm -rf %{buildroot}%{_datadir}/doc
 
 %files lang -f %{name}.lang
 
+%if %{with nautilus_extension}
 %files -n nautilus-plugin-easytag
 %{_datadir}/appdata/easytag-nautilus.metainfo.xml
 %{_libdir}/nautilus/extensions-3.0/libnautilus-easytag.so
+%endif
 
 %changelog
