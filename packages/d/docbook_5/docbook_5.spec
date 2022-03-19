@@ -1,7 +1,7 @@
 #
 # spec file for package docbook_5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define schemaversions 5.0 5.1 5.2b10a5
+%define schemaversions 5.0 5.1 5.2b12
 #
 Name:           docbook_5
-Version:        5.2b10a5
+Version:        5.2b12
 Release:        0
 Summary:        DocBook Schemas (DTD, RELAX NG, W3C Schema) for Version 5.x
 License:        SUSE-Oasis-Specification-Notice

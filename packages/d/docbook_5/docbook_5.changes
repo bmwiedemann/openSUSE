@@ -1,5 +1,17 @@
 -------------------------------------------------------------------
-Thu Jul 15 07:02:57 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.210a5
+Wed Mar 16 15:17:56 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2b12
+
+- Update to version 5.2b12:
+  - Fix #223 by refactoring namespacesynopsis as packagesynopis
+  - Fix #221 by setting the queryBinding on Schematron schemas to xslt2
+
+- Update to version 5.2b11: 
+  - Fix #212 Incorrect XML catalog generation for CDN URIs.
+  - Fix #216 A bug in the citetitle element; the otherpubwork attribute was missing
+
+
+-------------------------------------------------------------------
+Thu Jul 15 07:02:57 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2b10a5
 
 - Update to version 5.2b10a5:
   - Fixed the bug where db.extension.inlines and db.extension.blocks were
