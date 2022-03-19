@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 19 13:05:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
 Tue Jul 27 14:12:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define %%make_build for systems where it is not defined in

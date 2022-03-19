@@ -164,4 +164,12 @@
     <comment>fix build on sle12</comment>
     <requestid>908783</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>996b345f8d0850d00d512bee39dceec8</srcmd5>
+    <version>1.2.4</version>
+    <time>1647724849</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963052</requestid>
+  </revision>
 </revisionlist>
