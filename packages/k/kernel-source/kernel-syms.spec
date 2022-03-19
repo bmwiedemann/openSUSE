@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,10 +24,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        5.16.14
+Version:        5.16.15
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g80acc65
+Release:        <RELEASE>.gd8f0e40
 %else
 Release:        0
 %endif
@@ -35,7 +35,7 @@ Release:        0
 %define kernel_source_release %(LC_ALL=C rpm -q kernel-devel%variant-%version --qf "%{RELEASE}" | grep -v 'not installed' || echo 0)
 Release:        %kernel_source_release
 %endif
-Url:            http://www.kernel.org/
+URL:            https://www.kernel.org/
 AutoReqProv:    off
 BuildRequires:  coreutils
 %ifarch aarch64
@@ -52,7 +52,7 @@ Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-80acc6576a154b5866520e600dba5148884bc07f
+Provides:       %name-srchash-d8f0e4059e0e053d843c5cb54700bdc033e4c284
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel

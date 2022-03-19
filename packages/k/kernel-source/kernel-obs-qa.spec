@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needsrootforbuild
 
 
-%define patchversion 5.16.14
+%define patchversion 5.16.15
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -36,9 +36,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.16.14
+Version:        5.16.15
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g80acc65
+Release:        <RELEASE>.gd8f0e40
 %else
 Release:        0
 %endif

@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needsrootforbuild
 
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.16.14
+%define patchversion 5.16.15
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-80acc6576a154b5866520e600dba5148884bc07f
+BuildRequires:  kernel%kernel_flavor-srchash-d8f0e4059e0e053d843c5cb54700bdc033e4c284
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.16.14
+Version:        5.16.15
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g80acc65
+Release:        <RELEASE>.gd8f0e40
 %else
 Release:        0
 %endif

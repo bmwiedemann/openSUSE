@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define srcversion 5.16
-%define patchversion 5.16.14
+%define patchversion 5.16.15
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,16 +29,16 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build,fdupes_relink})
 
 Name:           dtb-armv7l
-Version:        5.16.14
+Version:        5.16.15
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g80acc65
+Release:        <RELEASE>.gd8f0e40
 %else
 Release:        0
 %endif
 Summary:        Device Tree files for $MACHINES
 License:        GPL-2.0-only
 Group:          System/Boot
-Url:            http://www.kernel.org/
+URL:            https://www.kernel.org/
 ExclusiveArch:  armv7l armv7hl
 BuildRequires:  cpp
 %if 0%{?dtc_symbols}
@@ -48,7 +48,7 @@ BuildRequires:  dtc >= 1.4.0
 %endif
 BuildRequires:  xz
 Requires:       kernel = %version
-Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards

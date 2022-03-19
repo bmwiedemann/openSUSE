@@ -12,13 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# icecream 0
 
 
 %define srcversion 5.16
-%define patchversion 5.16.14
+%define patchversion 5.16.15
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -32,26 +31,26 @@
 %endif
 
 Name:           kernel-source
-Summary:        The Linux Kernel Sources
-License:        GPL-2.0-only
-Group:          Development/Sources
-Version:        5.16.14
+Version:        5.16.15
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g80acc65
+Release:        <RELEASE>.gd8f0e40
 %else
 Release:        0
 %endif
-Url:            http://www.kernel.org/
+Summary:        The Linux Kernel Sources
+License:        GPL-2.0-only
+Group:          Development/Sources
+URL:            https://www.kernel.org/
 AutoReqProv:    off
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-80acc6576a154b5866520e600dba5148884bc07f
+Provides:       %name-srchash-d8f0e4059e0e053d843c5cb54700bdc033e4c284
 Provides:       linux
 Provides:       multiversion(kernel)
-Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards

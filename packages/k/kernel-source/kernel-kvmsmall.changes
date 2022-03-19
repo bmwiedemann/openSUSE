@@ -1,4 +1,224 @@
 -------------------------------------------------------------------
+Wed Mar 16 19:45:27 CET 2022 - jslaby@suse.cz
+
+- Linux 5.16.15 (bsc#1012628).
+- arm64: dts: qcom: sm8350: Describe GCC dependency clocks
+  (bsc#1012628).
+- arm64: dts: qcom: sm8350: Correct UFS symbol clocks
+  (bsc#1012628).
+- HID: elo: Revert USB reference counting (bsc#1012628).
+- HID: hid-thrustmaster: fix OOB read in thrustmaster_interrupts
+  (bsc#1012628).
+- ARM: boot: dts: bcm2711: Fix HVS register range (bsc#1012628).
+- clk: qcom: gdsc: Add support to update GDSC transition delay
+  (bsc#1012628).
+- clk: qcom: dispcc: Update the transition delay for MDSS GDSC
+  (bsc#1012628).
+- soc: mediatek: mt8192-mmsys: Fix dither to dsi0 path's input
+  sel (bsc#1012628).
+- HID: vivaldi: fix sysfs attributes leak (bsc#1012628).
+- HID: nintendo: check the return value of alloc_workqueue()
+  (bsc#1012628).
+- arm64: dts: armada-3720-turris-mox: Add missing ethernet0 alias
+  (bsc#1012628).
+- tipc: fix kernel panic when enabling bearer (bsc#1012628).
+- vdpa/mlx5: add validation for VIRTIO_NET_CTRL_MQ_VQ_PAIRS_SET
+  command (bsc#1012628).
+- vduse: Fix returning wrong type in vduse_domain_alloc_iova()
+  (bsc#1012628).
+- net: phy: meson-gxl: fix interrupt handling in forced mode
+  (bsc#1012628).
+- mISDN: Fix memory leak in dsp_pipeline_build() (bsc#1012628).
+- vhost: fix hung thread due to erroneous iotlb entries
+  (bsc#1012628).
+- virtio-blk: Don't use MAX_DISCARD_SEGMENTS if max_discard_seg
+  is zero (bsc#1012628).
+- virtio-blk: Remove BUG_ON() in virtio_queue_rq() (bsc#1012628).
+- vdpa: fix use-after-free on vp_vdpa_remove (bsc#1012628).
+- isdn: hfcpci: check the return value of dma_set_mask() in
+  setup_hw() (bsc#1012628).
+- net: qlogic: check the return value of dma_alloc_coherent()
+  in qed_vf_hw_prepare() (bsc#1012628).
+- esp: Fix BEET mode inter address family tunneling on GSO
+  (bsc#1012628).
+- net: gro: move skb_gro_receive_list to udp_offload.c
+  (bsc#1012628).
+- qed: return status of qed_iov_get_link (bsc#1012628).
+- smsc95xx: Ignore -ENODEV errors when device is unplugged
+  (bsc#1012628).
+- gpiolib: acpi: Convert ACPI value of debounce to microseconds
+  (bsc#1012628).
+- drm/i915/psr: Set "SF Partial Frame Enable" also on full update
+  (bsc#1012628).
+- drm/sun4i: mixer: Fix P010 and P210 format numbers
+  (bsc#1012628).
+- net: dsa: mt7530: fix incorrect test in
+  mt753x_phylink_validate() (bsc#1012628).
+- ARM: dts: aspeed: Fix AST2600 quad spi group (bsc#1012628).
+- iavf: Fix handling of vlan strip virtual channel messages
+  (bsc#1012628).
+- i40e: stop disabling VFs due to PF error responses
+  (bsc#1012628).
+- ice: stop disabling VFs due to PF error responses (bsc#1012628).
+- ice: Fix error with handling of bonding MTU (bsc#1012628).
+- ice: Don't use GFP_KERNEL in atomic context (bsc#1012628).
+- ice: Fix curr_link_speed advertised speed (bsc#1012628).
+- ethernet: Fix error handling in xemaclite_of_probe
+  (bsc#1012628).
+- tipc: fix incorrect order of state message data sanity check
+  (bsc#1012628).
+- net: ethernet: ti: cpts: Handle error for clk_enable
+  (bsc#1012628).
+- net: ethernet: lpc_eth: Handle error for clk_enable
+  (bsc#1012628).
+- net: marvell: prestera: Add missing of_node_put() in
+  prestera_switch_set_base_mac_addr (bsc#1012628).
+- ax25: Fix NULL pointer dereference in ax25_kill_by_device
+  (bsc#1012628).
+- net/mlx5: Fix size field in bufferx_reg struct (bsc#1012628).
+- net/mlx5: Fix a race on command flush flow (bsc#1012628).
+- net/mlx5e: Lag, Only handle events from highest priority
+  multipath entry (bsc#1012628).
+- net/mlx5e: SHAMPO, reduce TIR indication (bsc#1012628).
+- NFC: port100: fix use-after-free in port100_send_complete
+  (bsc#1012628).
+- selftests: pmtu.sh: Kill tcpdump processes launched by subshell
+  (bsc#1012628).
+- selftests: pmtu.sh: Kill nettest processes launched in subshell
+  (bsc#1012628).
+- gpio: ts4900: Do not set DAT and OE together (bsc#1012628).
+- mm: gup: make fault_in_safe_writeable() use fixup_user_fault()
+  (bsc#1012628).
+- gianfar: ethtool: Fix refcount leak in gfar_get_ts_info
+  (bsc#1012628).
+- net: phy: DP83822: clear MISR2 register to disable interrupts
+  (bsc#1012628).
+- sctp: fix kernel-infoleak for SCTP sockets (bsc#1012628).
+- net: arc_emac: Fix use after free in arc_mdio_probe()
+  (bsc#1012628).
+- net: bcmgenet: Don't claim WOL when its not available
+  (bsc#1012628).
+- net: phy: meson-gxl: improve link-up behavior (bsc#1012628).
+- selftests/bpf: Add test for bpf_timer overwriting crash
+  (bsc#1012628).
+- swiotlb: fix info leak with DMA_FROM_DEVICE (bsc#1012628).
+- usb: dwc3: pci: add support for the Intel Raptor Lake-S
+  (bsc#1012628).
+- pinctrl: tigerlake: Revert "Add Alder Lake-M ACPI ID"
+  (bsc#1012628).
+- KVM: Fix lockdep false negative during host resume
+  (bsc#1012628).
+- kvm: x86: Disable KVM_HC_CLOCK_PAIRING if tsc is in always
+  catchup mode (bsc#1012628).
+- spi: rockchip: Fix error in getting num-cs property
+  (bsc#1012628).
+- spi: rockchip: terminate dma transmission when slave abort
+  (bsc#1012628).
+- drm/vc4: hdmi: Unregister codec device on unbind (bsc#1012628).
+- of/fdt: move elfcorehdr reservation early for crash dump kernel
+  (bsc#1012628).
+- x86/kvm: Don't use pv tlb/ipi/sched_yield if on 1 vCPU
+  (bsc#1012628).
+- drivers: hamradio: 6pack: fix UAF bug caused by mod_timer()
+  (bsc#1012628).
+- net-sysfs: add check for netdevice being present to speed_show
+  (bsc#1012628).
+- hwmon: (pmbus) Clear pmbus fault/warning bits after read
+  (bsc#1012628).
+- nvme-tcp: send H2CData PDUs based on MAXH2CDATA (bsc#1012628).
+- PCI: Mark all AMD Navi10 and Navi14 GPU ATS as broken
+  (bsc#1012628).
+- gpio: Return EPROBE_DEFER if gc->to_irq is NULL (bsc#1012628).
+- drm/amdgpu: bypass tiling flag check in virtual display case
+  (v2) (bsc#1012628).
+- Revert "xen-netback: remove 'hotplug-status' once it has served
+  its purpose" (bsc#1012628).
+- Revert "xen-netback: Check for hotplug-status existence before
+  watching" (bsc#1012628).
+- ipv6: prevent a possible race condition with lifetimes
+  (bsc#1012628).
+- tracing: Ensure trace buffer is at least 4096 bytes large
+  (bsc#1012628).
+- tracing/osnoise: Make osnoise_main to sleep for microseconds
+  (bsc#1012628).
+- tracing: Fix selftest config check for function graph start
+  up test (bsc#1012628).
+- selftest/vm: fix map_fixed_noreplace test failure (bsc#1012628).
+- selftests/memfd: clean up mapping in mfd_fail_write
+  (bsc#1012628).
+- ARM: Spectre-BHB: provide empty stub for non-config
+  (bsc#1012628).
+- fuse: fix fileattr op failure (bsc#1012628).
+- fuse: fix pipe buffer lifetime for direct_io (bsc#1012628).
+- staging: rtl8723bs: Fix access-point mode deadlock
+  (bsc#1012628).
+- staging: gdm724x: fix use after free in gdm_lte_rx()
+  (bsc#1012628).
+- net: macb: Fix lost RX packet wakeup race in NAPI receive
+  (bsc#1012628).
+- riscv: alternative only works on !XIP_KERNEL (bsc#1012628).
+- mmc: meson: Fix usage of meson_mmc_post_req() (bsc#1012628).
+- riscv: Fix auipc+jalr relocation range checks (bsc#1012628).
+- tracing/osnoise: Force quiescent states while tracing
+  (bsc#1012628).
+- tracing/osnoise: Do not unregister events twice (bsc#1012628).
+- arm64: dts: marvell: armada-37xx: Remap IO space to bus address
+  0x0 (bsc#1012628).
+- arm64: Ensure execute-only permissions are not allowed without
+  EPAN (bsc#1012628).
+- arm64: kasan: fix include error in MTE functions (bsc#1012628).
+- swiotlb: rework "fix info leak with DMA_FROM_DEVICE"
+  (bsc#1012628).
+- virtio: unexport virtio_finalize_features (bsc#1012628).
+- virtio: acknowledge all features before access (bsc#1012628).
+- net/mlx5: Fix offloading with ESWITCH_IPV4_TTL_MODIFY_ENABLE
+  (bsc#1012628).
+- ARM: fix Thumb2 regression with Spectre BHB (bsc#1012628).
+- watch_queue: Fix filter limit check (bsc#1012628).
+- watch_queue, pipe: Free watchqueue state after clearing pipe
+  ring (bsc#1012628).
+- watch_queue: Fix to release page in ->release() (bsc#1012628).
+- watch_queue: Fix to always request a pow-of-2 pipe ring size
+  (bsc#1012628).
+- watch_queue: Fix the alloc bitmap size to reflect notes
+  allocated (bsc#1012628).
+- watch_queue: Free the alloc bitmap when the watch_queue is
+  torn down (bsc#1012628).
+- watch_queue: Fix lack of barrier/sync/lock between post and read
+  (bsc#1012628).
+- watch_queue: Make comment about setting ->defunct more accurate
+  (bsc#1012628).
+- x86/boot: Fix memremap of setup_indirect structures
+  (bsc#1012628).
+- x86/boot: Add setup_indirect support in
+  early_memremap_is_setup_data() (bsc#1012628).
+- x86/module: Fix the paravirt vs alternative order (bsc#1012628).
+- x86/sgx: Free backing memory after faulting the enclave page
+  (bsc#1012628).
+- x86/traps: Mark do_int3() NOKPROBE_SYMBOL (bsc#1012628).
+- drm/panel: Select DRM_DP_HELPER for DRM_PANEL_EDP (bsc#1012628).
+- perf parse: Fix event parser error for hybrid systems
+  (bsc#1012628).
+- btrfs: make send work with concurrent block group relocation
+  (bsc#1012628).
+- riscv: dts: k210: fix broken IRQs on hart1 (bsc#1012628).
+- vhost: allow batching hint without size (bsc#1012628).
+- commit 2bd8d63
+
+-------------------------------------------------------------------
+Wed Mar 16 19:29:49 CET 2022 - ailiop@suse.com
+
+- config: enable XFS_RT (bsc#1197190)
+- commit d8f0e40
+
+-------------------------------------------------------------------
+Tue Mar 15 17:02:41 CET 2022 - mkubecek@suse.cz
+
+- esp: Fix possible buffer overflow in ESP transformation
+  (CVE-2022-0886 bsc#1197131).
+- commit f5ed8a3
+
+-------------------------------------------------------------------
 Fri Mar 11 13:02:42 CET 2022 - jslaby@suse.cz
 
 - Linux 5.16.14 (bsc#1012628).
@@ -95,6 +315,19 @@ Fri Mar 11 13:02:42 CET 2022 - jslaby@suse.cz
 - x86/speculation: Rename RETPOLINE_AMD to RETPOLINE_LFENCE
   (bsc#1012628).
 - commit 80acc65
+
+-------------------------------------------------------------------
+Thu Mar 10 08:31:37 CET 2022 - dmueller@suse.com
+
+- rpm/kernel-docs.spec.in: use %%license for license declarations
+  Limited to SLE15+ to avoid compatibility nightmares.
+- commit 73d560e
+
+-------------------------------------------------------------------
+Wed Mar  9 21:43:00 CET 2022 - dmueller@suse.com
+
+- rpm/*.spec.in: Use https:// urls
+- commit 77b5f8e
 
 -------------------------------------------------------------------
 Wed Mar  9 12:12:51 CET 2022 - tiwai@suse.de
