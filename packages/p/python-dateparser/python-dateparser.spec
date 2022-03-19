@@ -1,7 +1,7 @@
 #
 # spec file for package python-dateparser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module jdatetime}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}

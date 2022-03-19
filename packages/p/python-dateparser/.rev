@@ -69,4 +69,12 @@
 - Remove extranous %dir for egg-info.</comment>
     <requestid>883506</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d6973ba73298af0fd65f49cda95095bb</srcmd5>
+    <version>1.0.0</version>
+    <time>1647724826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962438</requestid>
+  </revision>
 </revisionlist>

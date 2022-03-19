@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 17 09:59:26 UTC 2022 - pgajdos@suse.com
+
+- python-mock is actually not required for build
+
+-------------------------------------------------------------------
 Wed Apr  7 06:37:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.0:
