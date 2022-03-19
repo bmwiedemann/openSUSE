@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   188
+%define texlive_noarch   189
 %define texlive_source   texlive-20210325-source
 
 %define __perl_requires		%{nil}
@@ -170,7 +170,8 @@ BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
 %if %{with buildbiber}
-BuildRequires:  perl-base >= 5.32.0
+#BuildRequires:  perl-base >= 5.32.0
+BuildRequires:  perl-base >= 5.26.1
 BuildRequires:  perl(autovivification)
 #BuildRequires: perl(Business::ISBN)
 BuildRequires:  perl-Business-ISBN >= 3.005
@@ -474,6 +475,7 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
 Requires(pre):  texlive-attachfile2 >= %{texlive_version}
 #!BuildIgnore:  texlive-attachfile2
+Provides:       texlive-pdftools-bin:%{_bindir}/pdfatfi
 Prefix:         %{_bindir}
 
 %description attachfile2-bin
@@ -2390,6 +2392,7 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
 Requires(pre):  texlive-pdftosrc >= %{texlive_version}
 #!BuildIgnore:  texlive-pdftosrc
+Provides:       texlive-pdftools-bin:%{_bindir}/pdftosrc
 Prefix:         %{_bindir}
 
 %description pdftosrc-bin
@@ -2550,6 +2553,7 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
 Requires(pre):  texlive-ps2eps >= %{texlive_version}
 #!BuildIgnore:  texlive-ps2eps
+Provides:       texlive-pstools-bin:%{_bindir}/e2pall
 Prefix:         %{_bindir}
 
 %description ps2eps-bin
@@ -2996,6 +3000,16 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
 Obsoletes:      texlive-pdftools-bin <= %{texlive_previous}
 Obsoletes:      texlive-pstools-bin <= %{texlive_previous}
+Provides:       texlive-tetex-bin:%{_bindir}/allcm
+Provides:       texlive-tetex-bin:%{_bindir}/allneeded
+Provides:       texlive-tetex-bin:%{_bindir}/dvi2fax
+Provides:       texlive-tetex-bin:%{_bindir}/dvired
+Provides:       texlive-tetex-bin:%{_bindir}/kpsetool
+Provides:       texlive-tetex-bin:%{_bindir}/kpsewhere
+Provides:       texlive-tetex-bin:%{_bindir}/texconfig-dialog
+Provides:       texlive-tetex-bin:%{_bindir}/texconfig-sys
+Provides:       texlive-tetex-bin:%{_bindir}/texlinks
+Provides:       texlive-texconfig-bin:%{_bindir}/texconfig
 Requires(pre):  texlive-scripts-extra >= %{texlive_version}
 #!BuildIgnore:  texlive-scripts-extra
 Recommends:     texlive-collection-basic >= %{texlive_version}

@@ -901,4 +901,41 @@
     <comment>- Fix wrong library paths in pkgconfig files (boo#1192662)</comment>
     <requestid>931525</requestid>
   </revision>
+  <revision rev="75" vrev="78">
+    <srcmd5>f2b53d25b192f19ac6299a457296f8bc</srcmd5>
+    <version>unknown</version>
+    <time>1647724792</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missed package splits for bsc#1196711 
+
+- Lower the official required perl version used for biber to get it
+  build on SLE-15-SP4
+- Drop the obsolete patches of the poppler support
+  * fix-lua-poppler-22.01.patch
+  * source-pdftoepdf-backport-from-2020.patch
+  * c++17-does-not-allow-dynamic-exception-specifications.patch
+  * fix-luatexdir-poppler-22.01.patch
+  * do-not-use-streamSetPos.patch
+  * fix-poppler-config-from-c.patch
+- Ignore patch source-dvipdfm-x.dif from bsc#1099563 as it is part
+  of upstream since TeXLive 2018
+
+- Backport TeXLive 2021, full python3 support and no poppler anymore
+
+- Add patches to build texlive with poppler 22.01.0
+  (boo#1195235, jsc#SLE-23488)
+  * source-poppler0.83.0.patch
+  * source-poppler0.86.0.patch
+  * source-fix-const-poppler0.66.0.patch
+  * source-fix-bool-poppler.patch
+  * source-pdftoepdf-backport-from-2020.patch
+  * fix-lua-poppler-22.01.patch
+  * fix-luatexdir-poppler-22.01.patch
+  * c++17-does-not-allow-dynamic-exception-specifications.patch
+  * do-not-use-streamSetPos.patch
+  * fix-poppler-config-from-c.patch
+- Also, as part of the changes to fix the build with poppler
+  22.01.0, use gcc9 and C++17.</comment>
+    <requestid>962406</requestid>
+  </revision>
 </revisionlist>
