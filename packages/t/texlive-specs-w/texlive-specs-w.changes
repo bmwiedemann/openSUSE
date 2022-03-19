@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 16 11:28:28 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Backport TeXLive 2021, full python3 support and no poppler anymore 
+- Add missed package splits for bsc#1196711
+
+-------------------------------------------------------------------
 Thu Dec  9 13:53:37 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
--  Extend patch texlive-scripts_scripts.dif
-   * boo#1193473 -- /etc/cron.daily/suse-texlive from texlive causes warnings
-     OK make them silent
+- Extend patch texlive-scripts_scripts.dif
+  * boo#1193473 -- /etc/cron.daily/suse-texlive from texlive causes warnings
+    OK make them silent
 
 -------------------------------------------------------------------
 Wed Jul 14 14:50:39 UTC 2021 - Dr. Werner Fink <werner@suse.de>
