@@ -446,4 +446,26 @@ Aggregate licenses for spec file without subpackages (forwarded request 131950 f
     <comment>Fix boo#1185941 and correct shebang of python(3) scripts</comment>
     <requestid>904195</requestid>
   </revision>
+  <revision rev="44" vrev="47">
+    <srcmd5>5efaa3d0f792864aea6f2a98b7e294b1</srcmd5>
+    <version>unknown</version>
+    <time>1647724800</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport TeXLive 2021, full python3 support and no poppler anymore 
+- Add missed package splits for bsc#1196711
+
+- Extend patch texlive-scripts_scripts.dif
+  * boo#1193473 -- /etc/cron.daily/suse-texlive from texlive causes warnings
+    OK make them silent
+
+- Do not touch shebang with patch latexdiff_p2top3.dif
+
+- Add the patches to convert python2 helper scripts to python3
+  * ejpecp_p2top3.dif
+  * enctex_p2top3.dif
+  * latexdiff_p2top3.dif
+  * newcommand_p2top3.dif
+  * punknova_p2top3.dif</comment>
+    <requestid>962412</requestid>
+  </revision>
 </revisionlist>
