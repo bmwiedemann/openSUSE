@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-z
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   186
+%define texlive_noarch   189
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -9166,6 +9166,8 @@ Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
 Obsoletes:      texlive-pdftools <= 2019
 Recommends:     texlive-pdftosrc >= %{texlive_version}
+Provides:       texlive-pdftools-doc:%{_mandir}/man1/pdfclose.1%{?ext_man}
+Provides:       texlive-pdftools-doc:%{_mandir}/man1/pdfopen.1%{?ext_man}
 Requires(pre):  texlive-xpdfopen-bin >= %{texlive_version}
 #!BuildIgnore: texlive-xpdfopen-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
