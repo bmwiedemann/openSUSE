@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 18 15:16:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.5:
+  + Make it easier to override parameters to `make` in the `make`
+    element.
+  + ostree: Remove `--mirror` parameter which has been causing some
+    issues.
+  + Fix test suite to work on some CI runners which hang while
+    resolving localhost when trying to open a port for the CAS
+    server.
+
+-------------------------------------------------------------------
 Sat Mar 12 22:16:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.4:
