@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 12 16:38:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add nautilus-dropbox-gtk4.patch: Fix build against Nautils/GTK4.
+
+-------------------------------------------------------------------
 Thu Feb 18 17:44:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 98.patch: workaround build script not coping with the new
