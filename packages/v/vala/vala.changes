@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Mar 15 09:04:55 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.54.7:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Generated SimpleType structs don't have a type id
+      . Avoid symbol clashes with "va_*" from "stdarg.h"
+      . Access of inline allocated array is guaranteed to be non
+        null
+      . Don't uncoditionally null check callback_func for
+        GLib.Closure
+      . Access of stack allocated struct is guaranteed to be non
+        null
+      . Use correct target/destroy of delegate field initializer
+    - gtkmodule: Improve UI parsing and handling of nested objects
+      and properties
+    - vala:
+      . Show source location when reporting deprecations
+      . Require lvalue access of delegate target/destroy "fields"
+      . Transform assignment of an array element as needed
+      . Add missing TraverseVisitor.visit_data_type()
+      . Make sure to drop our "trap" jump target in case of an
+        error
+      . Move dynamic property errors to semantic analyzer pass
+      . Free empty stack list for code contexts
+      . Clear SemanticAnalyzer.current_{symbol,source_file} when
+        not needed anymore
+    - parser: Reduce the source reference of main block method to
+      its beginning
+    - parser: Improve handling of nullable VarType in
+      with-statement
+    - manual: Update from wiki.gnome.org
+
+-------------------------------------------------------------------
 Sat Jan  8 19:41:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.54.6:

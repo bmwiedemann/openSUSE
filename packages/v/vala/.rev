@@ -1148,4 +1148,12 @@
     <comment>New stable rel 0.54.6 (forwarded request 944943 from iznogood)</comment>
     <requestid>945285</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>d9fb035dfbe5e174126113848e311404</srcmd5>
+    <version>0.54.7</version>
+    <time>1647724791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962390</requestid>
+  </revision>
 </revisionlist>
