@@ -57,7 +57,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.36.0
+Version:        1.36.2
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -131,12 +131,11 @@ BuildRequires:  pkgconfig(audit)
 %endif
 ##
 Requires:       NetworkManager-branding
-Requires:       dhcp-client
-Requires:       iproute2
-Requires:       iputils
 Requires:       mozilla-nss
 Requires:       sysconfig-netconfig >= 0.80.5
 Requires:       wpa_supplicant >= 0.6.4
+Recommends:     iproute2
+Recommends:     iputils
 Recommends:     dnsmasq
 Recommends:     iptables
 Recommends:     org.freedesktop.ModemManager
@@ -208,6 +207,7 @@ checking, install %{name}-branding-openSUSE.
 
 %package pppoe
 Summary:        NetworkManager plugin for ADSL connections
+Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
 Enhances:       %{name}
 Supplements:    (%{name} and rp-pppoe)
@@ -258,6 +258,9 @@ export PYTHON=%{_bindir}/python3
     -Dnm_cloud_setup=true \
     -Dbluez5_dun=true \
     -Dnetconfig=%{_sbindir}/netconfig \
+    -Dconfig_dhcp_default=internal \
+    -Ddhcpcanon=no \
+    -Ddhcpcd=no \
     -Ddhclient=%{_sbindir}/dhclient \
     -Ddocs=true \
     -Dtests=%{tests_meson_opt} \
