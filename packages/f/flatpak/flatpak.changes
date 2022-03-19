@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 15 18:47:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.12.7:
+  + allow networked access to X11 and PulseAudio services if that
+    is configured, and the application has network access
+  + Absolute paths in WAYLAND_DISPLAY now work
+  + Allow apps that were built with Flatpak 1.13.x to export
+    AppStream metadata in share/metainfo
+  + Most commands now work if /var/lib/flatpak exists but
+    /var/lib/flatpak/repo does not, and will automatically populate
+    the repo directory if possible
+  + Consistently pass relative subpaths to libostree, working
+    around a bug in libostree < 2021.6 when used with GLib >= 2.71
+  + Fix some memory leaks in GVariant data processing
+
+-------------------------------------------------------------------
 Tue Feb 22 06:48:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.12.6:
