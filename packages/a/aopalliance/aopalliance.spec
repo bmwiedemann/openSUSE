@@ -1,7 +1,7 @@
 #
 # spec file for package aopalliance
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ This package contains the API documentation for %{name}.
 export CLASSPATH=
 export OPT_JAR_LIST=:
 %{ant} \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
   -Dbuild.sysclasspath=only jar javadoc
 
 # Inject OSGi manifest required by Eclipse.
