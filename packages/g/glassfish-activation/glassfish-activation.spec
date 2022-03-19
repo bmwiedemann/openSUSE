@@ -28,6 +28,7 @@ Source1:        activation-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
+Obsoletes:      gnu-jaf
 Obsoletes:      jaf
 BuildArch:      noarch
 
@@ -40,6 +41,8 @@ bean to perform the operation(s).
 
 %package api
 Summary:        JavaBeans Activation Framework API jar
+Obsoletes:      gnu-jaf
+Obsoletes:      jaf
 
 %description api
 The JavaBeans Activation Framework (JAF) is a standard extension to the
