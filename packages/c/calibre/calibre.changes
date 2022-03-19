@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 18 14:48:32 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.39.0
+  * New Features
+    - E-book viewer: Allow scrolling of the ToC, highlights,
+      bookmarks, etc. with touch gestures
+    - Edit metadata dialog: When using the change case operations
+      if some text is selected, only operate on the selected text
+    - Use atomic writes for the config files ensures no partial
+      data is written in case of crash/powerloss
+  * Bug Fixes
+    - Content server: Fix reading of books with thousands of
+      internal files not working in the Chrome browser
+    - Catalog generation: Fix a rare crash when generating very
+      large catalogs
+    - Edit/Polish book: Fix hardcoded Unicode ligatures not being
+      preserved in AZW3 format books
+    - Fix automatic searches causing search box to lose focus when
+      search as you type is enabled in Preferences->Searching
+    - Edit book: Check book: Auto fix package identifier being empty
+    - Amazon metadata download: Fix getting series info from amazon.jp
+    - Edit book: Insert hyperlinks: When sorting anchors on
+      elements without any text content, use the anchor itself
+    - Edit book: Make the saved search panel freely resizable
+    - Edit book: When dragging to select a region or adjust the
+      selection fix mouse moving outside the image causing the
+      region to no longer be adjusted
+
+-------------------------------------------------------------------
 Fri Mar  4 06:06:36 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.38.0
