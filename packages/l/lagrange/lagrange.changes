@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 18 22:26:57 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.11.2
+  - Added a keybinding for focusing the URL field.
+  - Sidebar items (bookmarks, feed entries, history) can be middle-clicked to
+    open in a new tab. Holding Shift will open the tab in the foreground.
+  - Flags can be used as link icons. Note that additional fonts and HarfBuzz are
+    required for all the flag symbols to be visible.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Wed Mar  2 22:37:33 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.11.1
