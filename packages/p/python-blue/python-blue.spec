@@ -16,48 +16,32 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define modname blue
 Name:           python-blue
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
 URL:            https://github.com/grantjenks/blue
-Source:         https://github.com/grantjenks/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-Patch0:         support-new-flake8.patch
+Source:         https://github.com/grantjenks/blue/archive/v%{version}.tar.gz#/blue-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE unpin-black.patch -- we can't have a fixed black version in the distribution
+Patch0:         unpin-black.patch
+# PATCH-FIX-OPENSUSE unpin-tomli.patch -- gh#grantjenks/blue#66
+Patch1:         unpin-tomli.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module black >= 21.7}
-# BuildRequires:  %%{python_module doc8}
-BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rstcheck}
+BuildRequires:  %{python_module flake8 >= 3.8}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module twine}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python3-dataclasses if python3-base < 3.7)
-BuildRequires:  (python36-dataclasses if python36-base)
-Requires:       python-aiohttp >= 3.3.2
-Requires:       python-aiohttp_cors
-Requires:       python-appdirs
-Requires:       python-attrs >= 18.1.0
+# SECTION doc and test requirements
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 Requires:       python-black >= 21.7
-Requires:       python-click >= 7.1.2
-Requires:       python-flake8
-Requires:       python-mypy_extensions >= 0.4.3
-Requires:       python-pathspec >= 0.6
-Requires:       python-regex >= 2020.1.8
-Requires:       python-toml >= 0.10.1
-Requires:       python-typed-ast >= 1.4.0
-Requires:       python-typing_extensions
-%if 0%{?python_version_nodots} == 36
-Requires:       python-dataclasses
-%endif
+Requires:       python-flake8 > 3.8
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -83,6 +67,8 @@ HTML Documentation and examples for %name.
 
 %prep
 %autosetup -p1 -n blue-%{version}
+# avoid pytest addopts for coverage checks
+sed -i '/--cov/d' tox.ini
 
 %build
 %python_build
@@ -105,8 +91,8 @@ HTML Documentation and examples for %name.
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/blue
-%{python_sitelib}/blue/
-%{python_sitelib}/blue-%{version}-py*.egg-info
+%{python_sitelib}/blue
+%{python_sitelib}/blue-%{version}*-info
 
 %files -n python-blue-doc
 %doc docs/_build/html

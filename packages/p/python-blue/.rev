@@ -41,4 +41,12 @@
   * Support backwards incompatiable changes with flake8 4.0</comment>
     <requestid>945752</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d174616fcdfa0e8c204f0b4e5d373f0b</srcmd5>
+    <version>0.8.0</version>
+    <time>1647724849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963039</requestid>
+  </revision>
 </revisionlist>

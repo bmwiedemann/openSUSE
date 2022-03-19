@@ -1,0 +1,15 @@
+Index: blue-0.8.0/blue/__init__.py
+===================================================================
+--- blue-0.8.0.orig/blue/__init__.py
++++ blue-0.8.0/blue/__init__.py
+@@ -263,8 +263,8 @@ def parse_pyproject_toml(path_config: st
+ 
+     If parsing fails, will raise a tomli.TOMLDecodeError
+     """
+-    with open(path_config, encoding="utf8") as f:
+-        pyproject_toml = tomli.load(f)  # type: ignore  # due to deprecated API usage
++    with open(path_config, mode='rb') as f:
++        pyproject_toml = tomli.load(f)
+     config = pyproject_toml.get("tool", {}).get("blue", {})
+     return {k.replace("--", "").replace("-", "_"): v for k, v in config.items()}
+ 

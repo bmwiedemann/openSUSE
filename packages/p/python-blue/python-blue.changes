@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 19 10:29:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.0
+  * Fix compatibility with flake8 v4 (GH#58)
+- Drop support-new-flake8.patch fixed upstream
+- Add unpin-black.patch and unpin-tomli.patch
+- Clean requirements
+
+-------------------------------------------------------------------
 Wed Jan 12 07:25:55 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.0:
