@@ -147,6 +147,8 @@ Source4:        README.SUSE
 Source6:        go.gdbinit
 # We have to compile TSAN ourselves. boo#1052528
 Source100:      llvm-%{tsan_commit}.tar.xz
+# PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
+Patch7:         dont-force-gold-on-arm64.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
@@ -169,22 +171,8 @@ BuildRequires:  gcc-c++
 %endif
 #BNC#818502 debug edit tool of rpm fails on i586 builds
 BuildRequires:  rpm >= 4.11.1
-# Needed on arm aarch64 to avoid
-# collect2: fatal error: cannot find 'ld'-
-%ifarch %arm aarch64
-BuildRequires:  binutils-gold
-%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-# Needed on arm aarch64 to avoid
-# collect2: fatal error: cannot find 'ld'-
-%ifarch %arm aarch64
-%if 0%{?is_opensuse}
-Requires:       binutils-gold
-%else
-Recommends:     binutils-gold
-%endif
-%endif
 Requires:       gcc
 Provides:       go = %{version}
 Provides:       go-devel = go%{version}
@@ -234,6 +222,7 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %endif
 # go
 %setup -q -n go
+%patch7 -p1
 %if %{with gccgo}
 %if 0%{?gcc_go_version} == 6
 %patch8 -p1

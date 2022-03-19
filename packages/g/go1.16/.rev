@@ -346,4 +346,13 @@
   * go#50733 runtime/metrics: time histogram sub-bucket ranges are off by a factor of two (forwarded request 959305 from jfkw)</comment>
     <requestid>959307</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3ffd3100bbc6ad5c9ea8a021c18ebf3b</srcmd5>
+    <version>1.16.15</version>
+    <time>1647724783</time>
+    <user>dimstar_suse</user>
+    <comment>- add dont-force-gold-on-arm64.patch (bsc#1183043)
+- drop binutils-gold dependency (forwarded request 962279 from jfkw)</comment>
+    <requestid>962280</requestid>
+  </revision>
 </revisionlist>
