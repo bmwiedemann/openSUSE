@@ -16,9 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} < 1550
+%define _distconfdir %{_sysconfdir}
+%endif
 %define org org.buddiesofbudgie
 Name:           budgie-desktop-view
-Version:        1.1.1+5
+Version:        1.2+0
 Release:        0
 Summary:        Official Budgie Desktop icons application / implementation
 License:        Apache-2.0

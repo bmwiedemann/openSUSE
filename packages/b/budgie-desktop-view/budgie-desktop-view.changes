@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 08 18:08:15 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 1.2+0:
+  * Tag 1.2 stable release
+  * Set up directory for translations
+  * Add FUNDING.yml
+  * Link to releases page from release badge
+  * Add Matrix and backer badges
+  * Add GitHub Actions pipeline
+  * Update comment and warning
+  * Update to Budgie Control Center
+  * Remove "GTK4 Port" from TODO
+  * Fix launching of some file types.
+
+-------------------------------------------------------------------
 Fri Jan 07 11:23:07 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 1.1.1+5:
