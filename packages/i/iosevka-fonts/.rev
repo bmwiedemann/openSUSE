@@ -419,4 +419,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>959749</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2b69ac85c4837e4bf36f3e3d7f268f61</srcmd5>
+    <version>15.0.3</version>
+    <time>1647724855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.0.3
+  * Changes of version 15.0.3
+    = Add Asterism (U+2042) character (#1324).
+- Update to v15.0.2
+  * Changes of version 15.0.2
+    = Fix placement of COMBINING DOT ABOVE RIGHT (U+0358) (#1318).
+    = Fix fourfold width of @ under quasi-proportionals (#1319).
+</comment>
+    <requestid>963085</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 19 16:56:27 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.0.3
+  * Changes of version 15.0.3
+    = Add Asterism (U+2042) character (#1324).
+
+-------------------------------------------------------------------
+Mon Mar  7 20:26:26 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.0.2
+  * Changes of version 15.0.2
+    = Fix placement of COMBINING DOT ABOVE RIGHT (U+0358) (#1318).
+    = Fix fourfold width of @ under quasi-proportionals (#1319).
+
+-------------------------------------------------------------------
 Sun Feb 27 13:31:22 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v15.0.1
