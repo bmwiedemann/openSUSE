@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 18 19:00:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.16.1
+  * Update "python_requires" to 3.7+ (#757) (f80f068)
+- Release 2.16.0 Feature:
+  * Improps and immeta (#739) (05d6f33)
+- Release 2.15.0 Features:
+  * Add format_hint to v3 API (#734) (dd538ec)
+  * Make tifffile read resolution metadata (#732) (4f7f334)
+- Release 2.14.0 Feature:
+  * Allow mode=None when writing with pillow (#722) (7be2712)
+- Release 2.12.0 Feature:
+  * Allow plugin objects in plugin kwarg (#689) (8f0f689)
+- Release 2.11.0 Feature:
+  * Choose plugin based on extension and plugin lazy-import (#680)
+    (bdbe699)
+- Release 2.10.0 Features:
+  * Allow pillow to write/encode to byte strings (#669) (b5df806)
+  * Add CD pipeline (#667) (6dce3ab)
+  * Fail PIL write if extension isnt supported (0dc33d3)
+  * Make imopen use core.Request (c51fdb0)
+
+-------------------------------------------------------------------
 Mon Feb 15 19:25:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.9.0
