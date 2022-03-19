@@ -106,4 +106,12 @@ enable user-level storage back-ends.</comment>
     <comment></comment>
     <requestid>920892</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8ceaa5de855d49e33cb828bcf462df04</srcmd5>
+    <version>1.5.4</version>
+    <time>1647724829</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>962479</requestid>
+  </revision>
 </revisionlist>

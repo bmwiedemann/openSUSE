@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  8 22:18:43 UTC 2022 - David Disseldorp <ddiss@suse.com>
+
+- fix g_object_unref: assertion 'G_IS_OBJECT (object)' failed;
+  (bsc#1196787).
+
+-------------------------------------------------------------------
 Tue Sep 21 20:12:35 UTC 2021 - lduncan@suse.com
 
 - Updated to latest upstream (jsc#SLE-17360). Added file:
@@ -78,6 +84,11 @@ Sat Jan 30 19:34:44 UTC 2021 - lduncan@suse.com
   * alua: make the lock done as INFO message
 
 -------------------------------------------------------------------
+Thu Jan  7 23:43:54 UTC 2021 - David Disseldorp <ddiss@suse.com>
+
+- Fix for security advisory CVE-2020-28374; (bsc#1180676).
+
+-------------------------------------------------------------------
 Fri Jan  3 17:12:42 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Fixed i586 compilation complaint in tcmur_cmd_handler.c, adding:
@@ -89,7 +100,7 @@ Fri Jan  3 17:12:42 UTC 2020 - Lee Duncan <lduncan@suse.com>
 -------------------------------------------------------------------
 Thu Jan 02 23:19:36 UTC 2020 - lduncan@suse.com
 
-- Update to version 1.5.2:
+- Update to version 1.5.2 (see jsc#SLE-7751):
   * Bump version to 1.5.2
   * Fix man unmap len reporting
   * Bump version to 1.5.1.

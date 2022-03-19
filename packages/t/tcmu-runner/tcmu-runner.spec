@@ -1,7 +1,7 @@
 #
 # spec file for package tcmu-runner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,7 +78,7 @@ by regular files or block devices. But, if we want to get fancier with
 the capabilities of the device we're emulating, the kernel is not
 necessarily the right place. While there are userspace libraries for
 compression, encryption, and clustered storage solutions like
-Ceph or Gluster, these are not accessible from the kernel. 
+Ceph or Gluster, these are not accessible from the kernel.
 
 The TCMU userspace-passthrough backstore allows a userspace process to
 handle requests to a LUN. But since the kernel-user interface that
