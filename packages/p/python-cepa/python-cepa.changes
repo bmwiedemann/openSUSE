@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Mar 16 20:59:30 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- Provides/Obsoletes added to avoid python-stem conflict
+
+-------------------------------------------------------------------
+Thu Feb 24 20:49:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Create package on version 1.8.3, based on python-stem 1.8.0
+- Use mock.patch from python-stem
