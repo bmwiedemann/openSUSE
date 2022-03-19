@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 19 08:54:38 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.143.1:
+  * Add --skip-tests to helmfile template command by @drivelikebrazil
+    in #2057
+  * Fix context of the ReadDir templating function by @nlueb in #2058
+  * Fix readdir regression while merging by @mumoshu in #2061
+  * feat: Add --suppress option for diff and apply commands by
+    @sjentzsch in #2077
+  * enable get() to be used with alias $.StateValues by @itscaro
+    in #2081
+  * Use os.UserCacheDir()/helmfile to store downloaded artifacts
+    instead of relative .helmfile directory by @itscaro in #2022
+  * Fix various golangci-lint errors by @Sajfer in #2059
+  * add integration tests for helm v3.8.0 by @itscaro in #2085
+  * Update USERS.md by @yohanb in #2089
+  * Allow more characters in label selectors by @Sajfer in #2064
+  * Make release template to work on needs by @mumoshu in #2099
+  * Stop panic when deduplicating releases by @Sajfer in #2067
+  * Bump chartify to v0.9.2 by @mumoshu in #2102
+
+-------------------------------------------------------------------
 Sun Jan 23 09:04:01 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.143.0:
