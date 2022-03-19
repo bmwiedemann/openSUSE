@@ -1,7 +1,7 @@
 #
 # spec file for package pcp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -535,6 +535,7 @@ the interesting performance data in a system, and allows client
 applications to easily retrieve and process any subset of that data.
 
 
+
 #
 # pcp-conf
 #
@@ -548,6 +549,7 @@ Conflicts:      pcp-libs < 3.9
 
 %description conf
 Performance Co-Pilot (PCP) run-time configuration
+
 
 
 #
@@ -632,6 +634,7 @@ Obsoletes:      pcp-devel < %{version}
 Performance Co-Pilot (PCP) headers for development.
 
 
+
 #
 # pcp-devel
 #
@@ -648,6 +651,7 @@ Requires:       pcp = %{version}-%{release}
 
 %description devel
 Performance Co-Pilot (PCP) documentation and tools for development.
+
 
 
 #
@@ -670,6 +674,7 @@ Obsoletes:      pcp-gui-testsuite
 Quality assurance test suite for Performance Co-Pilot (PCP).
 
 
+
 #
 # perl-PCP-PMDA. This is the PCP agent perl binding.
 #
@@ -689,6 +694,7 @@ building Performance Metric Domain Agents (PMDAs) using Perl.
 Each PMDA exports performance data for one specific domain, for
 example the operating system kernel, Cisco routers, a database,
 an application, etc.
+
 
 
 #
@@ -713,6 +719,7 @@ instrumented script into the PCP infrastructure for monitoring
 and analysis with pmchart, pmie, pmlogger and other PCP tools.
 
 
+
 #
 # perl-PCP-LogImport
 #
@@ -732,6 +739,7 @@ importing data in various 3rd party formats into PCP archives so
 they can be replayed with standard PCP monitoring tools.
 
  #
+
 
 # perl-PCP-LogSummary
 #
@@ -754,6 +762,7 @@ data stored in a PCP archive.  The Perl interface is ideal for
 exporting this data into third-party tools (e.g. spreadsheets).
 
 
+
 #
 # pcp-import-sar2pcp
 #
@@ -771,6 +780,7 @@ Requires:       sysstat
 %description import-sar2pcp
 Performance Co-Pilot (PCP) front-end tools for importing sar data
 into standard PCP archive logs for replay with any PCP monitoring tool.
+
 
 
 #
@@ -830,6 +840,7 @@ Performance Co-Pilot (PCP) front-end tools for importing MTRG data
 into standard PCP archive logs for replay with any PCP monitoring tool.
 
 
+
 #
 # pcp-import-ganglia2pcp
 #
@@ -846,6 +857,7 @@ Requires:       perl-PCP-LogImport = %{version}-%{release}
 %description import-ganglia2pcp
 Performance Co-Pilot (PCP) front-end tools for importing ganglia data
 into standard PCP archive logs for replay with any PCP monitoring tool.
+
 
 
 #
@@ -905,6 +917,7 @@ to Elasticsearch - a distributed, RESTful search and analytics engine.
 See https://www.elastic.co/community for further details.
 
 
+
 #
 # pcp-export-pcp2graphite
 #
@@ -921,6 +934,7 @@ Requires:       python3-pcp = %{version}-%{release}
 %description export-pcp2graphite
 Performance Co-Pilot (PCP) front-end tools for exporting metric values
 to graphite (http://graphite.readthedocs.org).
+
 
 
 # pcp-export-pcp2influxdb
@@ -942,6 +956,7 @@ Performance Co-Pilot (PCP) front-end tools for exporting metric values
 to InfluxDB (https://influxdata.com/time-series-platform/influxdb).
 
 
+
 #
 # pcp-export-pcp2json
 #
@@ -956,6 +971,7 @@ Requires:       python3-pcp = %{version}-%{release}
 %description export-pcp2json
 Performance Co-Pilot (PCP) front-end tools for exporting metric values
 in JSON format.
+
 
 
 #
@@ -1007,6 +1023,7 @@ Requires:       python3-pcp = %{version}-%{release}
 %description export-pcp2xml
 Performance Co-Pilot (PCP) front-end tools for exporting metric values
 in XML format.
+
 
 
 #
@@ -1107,6 +1124,7 @@ collecting metrics about the ActiveMQ message broker.
 #end pcp-pmda-activemq
 
 
+
 #
 # pcp-pmda-bind2
 #
@@ -1124,6 +1142,7 @@ Requires:       perl(XML::LibXML)
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from BIND (Berkeley Internet Name Domain).
 #end pcp-pmda-bind2
+
 
 
 #
@@ -1177,6 +1196,7 @@ collecting metrics about bonded network interfaces.
 #end pcp-pmda-bonding
 
 
+
 #
 # pcp-pmda-dbping
 #
@@ -1192,6 +1212,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Database response times and Availablility.
 #end pcp-pmda-dbping
+
 
 
 #
@@ -1215,6 +1236,7 @@ collecting metrics about a 389 Directory Server.
 #end pcp-pmda-ds389
 
 
+
 #
 # pcp-pmda-ds389log
 #
@@ -1232,6 +1254,7 @@ collecting metrics from a 389 Directory Server log.
 #end pcp-pmda-ds389log
 
 
+
 #
 # pcp-pmda-gpfs
 #
@@ -1246,6 +1269,7 @@ Requires:       perl-PCP-PMDA = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the GPFS filesystem.
 #end pcp-pmda-gpfs
+
 
 
 #
@@ -1265,6 +1289,7 @@ collecting metrics about a GPS Daemon.
 #end pcp-pmda-gpsd
 
 
+
 #
 # pcp-pmda-docker
 #
@@ -1278,6 +1303,7 @@ URL:            https://pcp.io
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics using the Docker daemon REST API.
 #end pcp-pmda-docker
+
 
 
 #
@@ -1294,6 +1320,7 @@ Requires:       perl-PCP-PMDA = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Lustre Filesystem.
 #end pcp-pmda-lustre
+
 
 
 #
@@ -1316,6 +1343,7 @@ collecting metrics about the Lustre Filesystem Comms.
 #end pcp-pmda-lustrecomm
 
 
+
 #
 # pcp-pmda-memcache
 #
@@ -1331,6 +1359,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Memcached.
 #end pcp-pmda-memcache
+
 
 
 #
@@ -1354,6 +1383,7 @@ collecting metrics about the MySQL database.
 #end pcp-pmda-mysql
 
 
+
 #
 # pcp-pmda-named
 #
@@ -1369,6 +1399,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Named nameserver.
 #end pcp-pmda-named
+
 
 
 # pcp-pmda-netfilter
@@ -1387,6 +1418,7 @@ collecting metrics about the Netfilter packet filtering framework.
 #end pcp-pmda-netfilter
 
 
+
 #
 # pcp-pmda-news
 #
@@ -1402,6 +1434,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Usenet News.
 #end pcp-pmda-news
+
 
 
 #
@@ -1422,6 +1455,7 @@ collecting metrics about the Nginx Webserver.
 #end pcp-pmda-nginx
 
 
+
 #
 # pcp-pmda-oracle
 #
@@ -1440,6 +1474,7 @@ collecting metrics about the Oracle database.
 #end pcp-pmda-oracle
 
 
+
 #
 # pcp-pmda-pdns
 #
@@ -1455,6 +1490,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the PowerDNS.
 #end pcp-pmda-pdns
+
 
 
 #
@@ -1486,6 +1522,7 @@ collecting metrics about the Postfix (MTA).
 #end pcp-pmda-postfix
 
 
+
 #
 # pcp-pmda-rsyslog
 #
@@ -1503,6 +1540,7 @@ collecting metrics about Rsyslog.
 #end pcp-pmda-rsyslog
 
 
+
 #
 # pcp-pmda-samba
 #
@@ -1518,6 +1556,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Samba.
 #end pcp-pmda-samba
+
 
 
 #
@@ -1574,6 +1613,7 @@ collecting metrics for VMware.
 #end pcp-pmda-vmware
 
 
+
 #
 # pcp-pmda-zimbra
 #
@@ -1589,6 +1629,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Zimbra.
 #end pcp-pmda-zimbra
+
 
 
 #
@@ -1624,6 +1665,7 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the gluster filesystem.
 # end pcp-pmda-gluster
+
 
 
 #
@@ -1676,6 +1718,7 @@ collecting metrics about compressed swap.
 # end pcp-pmda-zswap
 
 
+
 #
 # pcp-pmda-unbound
 #
@@ -1692,6 +1735,7 @@ collecting metrics about the Unbound DNS Resolver.
 # end pcp-pmda-unbound
 
 
+
 #
 # pcp-pmda-mic
 #
@@ -1706,6 +1750,7 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Intel MIC cards.
 # end pcp-pmda-mic
+
 
 
 #
@@ -1766,6 +1811,7 @@ collecting metrics about Elasticsearch.
 #end pcp-pmda-elasticsearch
 
 
+
 #
 # pcp-pmda-openvswitch
 #
@@ -1780,6 +1826,7 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from Open vSwitch.
 #end pcp-pmda-openvswitch
+
 
 
 #
@@ -1844,6 +1891,7 @@ extracting metrics from OpenMetrics (https://openmetrics.io/) endpoints.
 #end pcp-pmda-openmetrics
 
 
+
 #
 # pcp-pmda-lmsensors
 #
@@ -1860,6 +1908,7 @@ Obsoletes:      pcp-pmda-lmsensors-debuginfo
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Linux hardware monitoring sensors.
 # end pcp-pmda-lmsensors
+
 
 
 #
@@ -1943,6 +1992,7 @@ collecting metrics about the Apache webserver.
 # end pcp-pmda-apache
 
 
+
 #
 # pcp-pmda-bash
 #
@@ -1962,6 +2012,7 @@ collecting metrics about the Bash shell.
 # end pcp-pmda-bash
 
 
+
 #
 # pcp-pmda-cifs
 #
@@ -1978,6 +2029,7 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Common Internet Filesytem.
 # end pcp-pmda-cifs
+
 
 
 #
@@ -1999,6 +2051,7 @@ collecting metrics about Cisco routers.
 # end pcp-pmda-cisco
 
 
+
 #
 # pcp-pmda-gfs2
 #
@@ -2015,6 +2068,7 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Global Filesystem v2.
 # end pcp-pmda-gfs2
+
 
 
 #
@@ -2037,6 +2091,7 @@ supports both sampled and event-style metrics.
 # end pcp-pmda-logger
 
 
+
 #
 # pcp-pmda-mailq
 #
@@ -2054,6 +2109,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about email queues managed by sendmail.
 # end pcp-pmda-mailq
+
 
 
 #
@@ -2075,6 +2131,7 @@ collecting metrics about filesystem mounts.
 # end pcp-pmda-mounts
 
 
+
 #
 # pcp-pmda-nvidia-gpu
 #
@@ -2091,6 +2148,7 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Nvidia GPUs.
 # end pcp-pmda-nvidia-gpu
+
 
 
 #
@@ -2152,6 +2210,7 @@ collecting metrics about Sendmail traffic.
 # end pcp-pmda-sendmail
 
 
+
 #
 # pcp-pmda-shping
 #
@@ -2172,6 +2231,7 @@ arbitrary shell commands.
 # end pcp-pmda-shping
 
 
+
 #
 # pcp-pmda-smart
 #
@@ -2187,6 +2247,7 @@ This package contains the PCP Performance Metric Domain Agent (PMDA) for
 collecting metrics of disk S.M.A.R.T values making use of data from the
 smartmontools package.
 #end pcp-pmda-smart
+
 
 
 #
@@ -2246,6 +2307,7 @@ collecting metrics about trace performance data in applications.
 # end pcp-pmda-trace
 
 
+
 #
 # pcp-pmda-weblog
 #
@@ -2263,6 +2325,7 @@ Supplements:    pcp
 %description pmda-weblog
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about web server logs.
+
 
 # end pcp-pmda-weblog
 # end C pmdas

@@ -8,8 +8,8 @@ Mon Feb  7 16:25:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 Mon Dec 13 13:48:47 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove sysconfig dependencies, this is not the equivalent of
-  the initscripts package and completly unneeded here.
-- Add missing hostname requires
+  the initscripts package and completly unneeded here; (jsc#CSD-124)
+- Add missing hostname requires; (jsc#CSD-124)
 
 -------------------------------------------------------------------
 Tue May 11 17:12:16 CEST 2021 - ro@suse.de
