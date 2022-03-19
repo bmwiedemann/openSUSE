@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Mar 15 17:14:07 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 20220315:
+  * release: bump version to 20220315
+  * doap: remove Jiri
+  * doap: add myself
+  * us: include information for voicemail for Verizon Wireless
+  * dtd: expand DTD to include information for vvm3 Visual
+    Voicemail standard
+  * us: add Purism SPC AweSIM MVNO
+  * us: added MCCMNC 310280 to AT&T
+  * ro: update the Romania Orange net and mms credentials
+  * eg: mms settings for vodafone.eg
+  * de: add mms information to combined apn
+  * us: added Ting provider information
+  * us: add US Mobile (T-Mobile MVNO): mcc="310" mnc="260"
+  * au: remove duplicate Telstra MMS entry
+  * bd: updated profile names and other information
+  * bd: remove defunct provider
+  * se: remove defunct operators
+  * fr: add AIF Mvno provider
+  * it: add Rabona Mobile
+  * us: move mobilenet APN to T-Mobile and add mmsc
+  * us: add Mint Mobile VVM, APN, and MMSC
+  * ca: update Fido APN settings
+  * us: add MMS settings to T-Mobile LTE APN
+  * us: add T-Mobile to LTE APN name
+  * fr: add TeleCoop
+  * dtd: fix a spelling error
+  * jp: add Japanese providers
+  * cl: update apn of main providers of Chile
+  * ca: change Wind Mobile to Freedom Mobile
+  * ca: add Public Mobile provider
+  * Rename Orange (Israel) to Partner
+  * Add APN information for We4G (Israel)
+  * Adds the missing MMSC and MMS proxy for Orange France into
+    serviceproviders.xml
+  * il: Add Golan Telecom and Hot Mobile MMS settings
+  * Update redirected GNOME wiki URL in CONTRIBUTING
+- Drop mobile-broadband-provider-info-tmobile-reorder.patch: Having
+  this patch downstream for ages makes no sense, and if it was
+  really needed, one would think it had landed as a bug upstream at
+  some point.
+
+-------------------------------------------------------------------
 Mon Aug 23 14:10:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 20210805:

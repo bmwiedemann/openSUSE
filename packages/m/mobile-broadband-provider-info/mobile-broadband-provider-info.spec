@@ -1,7 +1,7 @@
 #
 # spec file for package mobile-broadband-provider-info
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mobile-broadband-provider-info
-Version:        20210805
+Version:        20220315
 Release:        0
 Summary:        Mobile Service Provider Database
 License:        SUSE-Public-Domain
@@ -26,8 +26,7 @@ URL:            http://live.gnome.org/NetworkManager/MobileBroadband/ServiceProv
 # No full URL, as this is a git snapshot (using _service)
 Source0:        %{name}-%{version}.tar.xz
 Source1:        mobile-broadband-provider-info-rpmlintrc
-# PATCH-FIX-UPSTREAM mobile-broadband-provider-info-tmobile-reorder.patch boo#899028 dimstar@opensuse.org -- Move internet.t-d1.de to the bottom
-Patch0:         mobile-broadband-provider-info-tmobile-reorder.patch
+
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
@@ -38,8 +37,7 @@ This package contains mobile broadband settings for different service
 providers in different countries.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # Needed, as we have a git snapshot
