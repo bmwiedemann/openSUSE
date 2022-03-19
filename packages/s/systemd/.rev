@@ -5904,4 +5904,11 @@ handle manual pages that consist only of a .so directive such as
   defined.</comment>
     <requestid>962458</requestid>
   </revision>
+  <revision rev="353" vrev="4">
+    <srcmd5>d9f0aac9129929a858948a130fe391d1</srcmd5>
+    <version>249.10</version>
+    <time>1647687402</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1197309</comment>
+  </revision>
 </revisionlist>

@@ -3,7 +3,7 @@
 #
 %dir %{_sysconfdir}/systemd/nspawn
 %{_bindir}/systemd-nspawn
-%if ! %{bootstrap}
+%if ! 0%{?bootstrap}
 %{_datadir}/bash-completion/completions/systemd-nspawn
 %{_datadir}/zsh/site-functions/_systemd-nspawn
 %{_mandir}/man1/systemd-nspawn.1.gz
@@ -17,9 +17,6 @@
 %dir %{_unitdir}/machines.target.wants
 %{_bindir}/machinectl
 %{_datadir}/bash-completion/completions/machinectl
-%{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Image.xml
-%{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Machine.xml
-%{_datadir}/dbus-1/interfaces/org.freedesktop.machine1.Manager.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.machine1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.machine1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.machine1.policy
@@ -43,8 +40,6 @@
 %endif
 
 %if %{with importd}
-%{_datadir}/dbus-1/interfaces/org.freedesktop.import1.Manager.xml
-%{_datadir}/dbus-1/interfaces/org.freedesktop.import1.Transfer.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.import1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.import1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.import1.policy
