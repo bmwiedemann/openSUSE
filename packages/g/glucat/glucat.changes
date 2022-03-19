@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 19:45:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.10.1:
+  * Some GluCat configuration options have been deprecated.
+
+-------------------------------------------------------------------
 Mon Feb 14 23:26:42 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Split main and python builds into separate _multibuild flavors

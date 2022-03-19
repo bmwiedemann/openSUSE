@@ -30,7 +30,7 @@
 %endif
 
 Name:           %{pname}%{?psuffix}
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Library of C++ templates implementing universal Clifford algebras
 License:        LGPL-3.0-only
