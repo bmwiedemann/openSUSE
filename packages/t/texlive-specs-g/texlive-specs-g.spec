@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-g
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   186
+%define texlive_noarch   189
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -19354,6 +19354,7 @@ License:        LPPL-1.0
 Summary:        A small collection of minimal DTX examples
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Provides:       texlive-dtxgallery-doc
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
