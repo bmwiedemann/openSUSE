@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 19 13:00:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * aelfred-javadoc.patch
+    + fix build with javadoc 17
+
+-------------------------------------------------------------------
 Tue May 15 05:00:18 UTC 2018 - fstrba@suse.com
 
 - Build with source and target 8 to prepare for a possible removal
