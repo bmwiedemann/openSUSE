@@ -19,7 +19,7 @@
 %define __builder Ninja
 
 Name:           QMPlay2
-Version:        21.12.24
+Version:        22.03.19
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -28,10 +28,6 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-add-opensuse-customizations.patch
-# PATCH-FIX-OPENSUSE
-Patch2:         0001-fix-pipewire-build-error.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-fix-ffmpeg-5-compilation.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 # Use gcc 10 for openSUSE Leap 15.3+ and SLE15SP3+
@@ -48,6 +44,7 @@ BuildRequires:  pkgconfig(Qt5Qml) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.10.0
+BuildRequires:  pkgconfig(SPIRV-Tools)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libavcodec) >= 58.18.100
@@ -58,7 +55,6 @@ BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libpipewire-0.3)
-BuildRequires:  pkgconfig(SPIRV-Tools)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsidplayfp)
 BuildRequires:  pkgconfig(libswresample) >= 3.1.100
@@ -94,14 +90,9 @@ Requires:       %{name} = %{version}
 It's a development package for %{name}.
 
 %prep
-# %autosetup -p1 -n %{name}-src-%{version}
-%setup -q -n %{name}-src-%{version}
-%patch1 -p1
-# Apply pipewire patch for openSUSE Leap 15.3 and SLE15SP3 only
-%if 0%{?sle_version} == 150300
-%patch2 -p1
-%endif
-%patch3 -p1
+%autosetup -p1 -n %{name}-src-%{version}
+# %setup -q -n %{name}-src-%{version}
+# %patch1 -p1
 
 %build
 # Build options

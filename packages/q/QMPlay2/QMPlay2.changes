@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 19 23:42:47 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-pipewire-build-error.patch as it is merged upstream
+- Removed 0001-fix-ffmpeg-5-compilation.patch as it is merged upstream
+- Changed 0001-add-opensuse-customizations.patch to patch the new python command detection in QMPlay2 22.03.19 and higher
+- Update to version 22.03.19
+   * fix possible crashes in software video output and screenshots,
+   * fix yt-dlp on macOS where python3 can be in "/usr/local/bin",
+   * Vulkan can be now used on more devices (including R-Pi),
+   * fix some Vulkan issues on AMD Radeon on Windows,
+   * fix building with PipeWire older then 0.3.33,
+   * fix reading playlists with "\r" line ending,
+   * show YouTube description in Lyrics panel,
+   * fix compilation with FFmpeg 5.0,
+   * VA-API AV1 video decoder,
+   * other minor fixes.
+
+-------------------------------------------------------------------
 Sun Jan 23 11:55:36 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-ffmpeg-5-compilation.patch to fix a compilation error with FFmpeg >= 5.0.0
