@@ -129,4 +129,12 @@
   + Fix build with latest vala. (forwarded request 928306 from iznogood)</comment>
     <requestid>929588</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8571da983ac8a1c4516209a5a1e27046</srcmd5>
+    <version>2.0.0</version>
+    <time>1647806074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962638</requestid>
+  </revision>
 </revisionlist>

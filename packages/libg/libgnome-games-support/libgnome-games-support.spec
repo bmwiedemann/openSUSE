@@ -1,7 +1,7 @@
 #
 # spec file for package libgnome-games-support
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%define sover 3
+%define sover 4
+%define api 2
 
 Name:           libgnome-games-support
-Version:        1.8.2
+Version:        2.0.0
 Release:        0
 Summary:        Internal support library for GNOME games
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libgnome-games-support/
-Source0:        https://download.gnome.org/sources/libgnome-games-support/1.8/%{name}-%{version}.tar.xz
-Source1:        https://download.gnome.org/sources/libgnome-games-support/1.8/%{name}-%{version}.sha256sum
+Source0:        https://download.gnome.org/sources/libgnome-games-support/2.0/%{name}-%{version}.tar.xz
+Source1:        https://download.gnome.org/sources/libgnome-games-support/2.0/%{name}-%{version}.sha256sum
 
 BuildRequires:  intltool >= 0.50.2
 BuildRequires:  meson
@@ -35,20 +36,20 @@ BuildRequires:  vala >= 0.40
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.40
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.2
+BuildRequires:  pkgconfig(gtk4)
 
 %description
 libgnome-games-support is a small library intended for internal use by
 GNOME Games, but it may be used by others. The API will only break
 with the major version number. The ABI is unstable.
 
-%package -n libgnome-games-support-1-%{sover}
+%package -n libgnome-games-support-%{api}-%{sover}
 Summary:        Internal support library for GNOME games
 # In order for the -lang package to be installable
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 
-%description -n libgnome-games-support-1-%{sover}
+%description -n libgnome-games-support-%{api}-%{sover}
 libgnome-games-support is a small library intended for internal use by
 GNOME Games, but it may be used by others. The API will only break
 with the major version number. The ABI is unstable.
@@ -56,7 +57,7 @@ with the major version number. The ABI is unstable.
 %package devel
 Summary:        Development files for the GNOME Internal games library
 Group:          Development/Libraries/C and C++
-Requires:       libgnome-games-support-1-%{sover} = %{version}
+Requires:       libgnome-games-support-%{api}-%{sover} = %{version}
 
 %description devel
 libgnome-games-support is a small library intended for internal use by
@@ -74,20 +75,19 @@ with the major version number. The ABI is unstable.
 
 %install
 %meson_install
-%find_lang %{name}
+%find_lang libgnome-games-support2 %{name}.lang
 
 %check
 %meson_test
 
-%post -n libgnome-games-support-1-%{sover} -p /sbin/ldconfig
-%postun -n libgnome-games-support-1-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgnome-games-support-%{api}-%{sover}
 
-%files -n libgnome-games-support-1-%{sover}
+%files -n libgnome-games-support-%{api}-%{sover}
 %license COPYING COPYING.LESSER
-%{_libdir}/libgnome-games-support-1.so.%{sover}*
+%{_libdir}/libgnome-games-support-%{api}.so.%{sover}*
 
 %files devel
-%{_includedir}/gnome-games-support-1/
+%{_includedir}/gnome-games-support-%{api}/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/vala/

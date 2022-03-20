@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:37:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 15 11:40:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.beta.2:
+  + Fix parallel-installability of localizations
+- Changes from version 2.0.beta:
+  + Port to GTK 4
+  + New API version: libgnome-games-support-2, should be
+    parallel-installable.
+- Following upstreams port: Replace pkgconfig(gtk+-3.0) with
+  pkgconfig(gtk4) BuildRequires, bump sover to 4 and add a new api
+  define and set it to 2, renaming sub-packages to
+  libgnome-games-support-2-4
+
+-------------------------------------------------------------------
 Sat Oct 30 18:37:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.2:
