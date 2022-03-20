@@ -1,7 +1,7 @@
 #
-# spec file for package plexus-ant-factory
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
