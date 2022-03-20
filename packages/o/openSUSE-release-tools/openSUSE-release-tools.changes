@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 19 13:06:43 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220319.4424623d:
+  * pkglistgen: pass the test if the comment was replied to with 'ignore'
+  * installcheck: Annotate the duplicated binaries yaml
+
+-------------------------------------------------------------------
 Sat Mar 19 06:35:11 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220319.0f0a5ab6:
