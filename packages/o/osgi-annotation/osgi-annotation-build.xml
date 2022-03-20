@@ -8,7 +8,7 @@
 
   <property file="build.properties"/>
 
-  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
   
   <property name="project.artifactId" value="osgi.annotation"/>
