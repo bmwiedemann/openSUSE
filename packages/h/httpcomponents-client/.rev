@@ -23,4 +23,12 @@
     <comment>4.5.12</comment>
     <requestid>798214</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2461c984fbd045f4691797cb54cc4a6f</srcmd5>
+    <version>4.5.12</version>
+    <time>1647806126</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963162</requestid>
+  </revision>
 </revisionlist>
