@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 18 14:13:25 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- python-2.7.9-sles-disable-verification-by-default.patch: remove
+  as it by default now always does strict enforcement anyway and it
+  is 2022.
+
+-------------------------------------------------------------------
 Sat Feb 26 12:41:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update bundled pip wheel to the latest SLE version patched
