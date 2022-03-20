@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 08:46:05 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.1.4: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.1.4
+
+-------------------------------------------------------------------
 Fri Feb 25 12:43:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix boolean dep supplements: add parantheses. Without

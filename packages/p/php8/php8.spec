@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package php8
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.1.3
+Version:        8.1.4
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
