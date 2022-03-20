@@ -34,7 +34,6 @@
 %else
 %bcond_with kdeintegration
 %endif
-# Use bundled gpgme on SLE-15-SP3 onwards
 # Use system gpgme on TW and SLE15-SP4 or newer
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without system_gpgme
@@ -95,7 +94,6 @@ Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
 Source2010:     %{external_url}/skia-m97-a7230803d64ae9d44f4e1282444801119a3ae967.tar.xz
 Source2012:     %{external_url}/libcmis-0.5.2.tar.xz
-Source2013:     %{external_url}/curl-7.79.1.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -126,6 +124,7 @@ BuildRequires:  commons-logging
 BuildRequires:  cups-devel
 # Use bundled curl on SLE-12-SP5
 %if 0%{suse_version} >= 1500
+Source2013:     %{external_url}/curl-7.79.1.tar.xz
 BuildRequires:  curl-devel >= 7.68.0
 %endif
 # Needed for tests
@@ -314,7 +313,7 @@ BuildConflicts: java-headless < 9
 BuildRequires:  python-rpm-macros
 %endif
 %if %{with system_gpgme}
-BuildRequires:  libgpgmepp-devel
+BuildRequires:  libgpgmepp-devel >= 1.14
 %endif
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)

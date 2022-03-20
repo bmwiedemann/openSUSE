@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 17 10:10:22 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update gpgme minimum version
+- Only use curl tarball when needed
+- Remove wrong comment
+
+-------------------------------------------------------------------
 Mon Mar 14 10:38:05 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.3.2.1
