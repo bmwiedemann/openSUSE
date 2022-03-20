@@ -1598,7 +1598,7 @@ unsorted:
   - busybox-diffutils 
   - busybox-dos2unix 
   - busybox-ed 
-  - busybox-hostname 
+  - busybox-hostname: [i586] 
   - busybox-iproute2 
   - busybox-iputils 
   - busybox-k8s-yaml: [i586] 
@@ -2884,6 +2884,7 @@ unsorted:
   - dh-make 
   - dhall-json: [x86_64] 
   - dhall-yaml: [x86_64] 
+  - dhcp-client: [i586] 
   - dhcp-devel 
   - dhcp-doc 
   - dhcpd-pools 
@@ -7351,8 +7352,6 @@ unsorted:
   - jackson-parent 
   - jacktrip 
   - jaero 
-  - jaf 
-  - jaf-javadoc 
   - jafama 
   - jafama-javadoc 
   - jag 
@@ -11143,8 +11142,7 @@ unsorted:
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
   - libgranite6 
-  - libgraphblas5: [i586] 
-  - libgraphblas6: [x86_64] 
+  - libgraphblas6 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
   - libgravatar-devel 
@@ -22416,6 +22414,7 @@ unsorted:
   - python310-celery 
   - python310-celery-batches 
   - python310-celerymon 
+  - python310-cepa 
   - python310-cerealizer 
   - python310-certbot 
   - python310-certbot-apache 
@@ -25560,6 +25559,7 @@ unsorted:
   - python38-celery 
   - python38-celery-batches 
   - python38-celerymon 
+  - python38-cepa 
   - python38-cerealizer 
   - python38-certbot 
   - python38-certbot-apache 
@@ -28580,6 +28580,7 @@ unsorted:
   - python39-celery 
   - python39-celery-batches 
   - python39-celerymon 
+  - python39-cepa 
   - python39-cerealizer 
   - python39-certbot 
   - python39-certbot-apache 
