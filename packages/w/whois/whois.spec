@@ -17,7 +17,7 @@
 
 
 Name:           whois
-Version:        5.5.11
+Version:        5.5.12
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later
@@ -34,9 +34,6 @@ Provides:       ripe-whois-tools
 %{perl_requires}
 %if 0%{?suse_version} != 1310
 BuildRequires:  perl(autodie)
-%endif
-%if 0%{?suse_version} <= 1140
-BuildRequires:  libxcrypt-devel
 %endif
 
 %description

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 24 17:05:27 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 5.5.12:
+  * Updated the .pro TLD server, which was totally broken.
+  * Fixed the detection of Japanese locales using $LC_MESSAGES.
+  * Implemented providing partial salt strings to mkpasswd.
+  * Removed 2 new gTLDs which are no longer active.
+  * Updated one or more translations.
+  * Enabled full hardening in debian/rules.
+- Cleanup build requirements for SLE-11
+
+-------------------------------------------------------------------
 Tue Jan  4 16:35:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.11:
