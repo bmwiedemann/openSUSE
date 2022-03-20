@@ -1,7 +1,7 @@
 #
 # spec file for package upmpdcli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        UPnP Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
 URL:            https://www.lesbonscomptes.com/updmpdcli
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz
+Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz.asc
+Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
 Patch0:         harden_upmpdcli.service.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
