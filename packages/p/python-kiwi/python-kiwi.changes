@@ -1,4 +1,341 @@
 -------------------------------------------------------------------
+Thu Mar 10 23:19:33 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.28 → 9.24.29
+
+-------------------------------------------------------------------
+Thu Mar 10 21:37:00 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't bind mount /run during build time
+
+  In commit #9512318 a new bind mount of /run into the root tree
+  during build time was introduced. The bind mount was done because
+  in my tests running podman from config.sh it did not work without
+  /run bind mounted. However, it turned out that I was wrong because
+  along with the provided methods to prepare cgroups and a custom
+  runtime configuration method; setupContainerRuntime() it is not
+  needed to have /run bind mounted. Thus this commit deletes the
+  bind mount of /run and therefore Fixes #2067
+
+-------------------------------------------------------------------
+Thu Mar 10 08:49:11 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix github action running obs service refresh
+
+  The curl command to send the POST request for running the
+  obs remote service uses the --fail-with-body option.
+  Unfortunately the ubuntu-latest container used to run the
+  action comes with a curl version that does not support the
+  option. Thus this commit removes the use of the option
+
+-------------------------------------------------------------------
+Wed Mar 09 18:14:29 CET 2022 - Dan Čermák <45594031+dcermak@users.noreply.github.com>
+
+- Style changes in container docs
+
+  Reformulate the container building guide a bit
+
+-------------------------------------------------------------------
+Wed Mar 09 09:17:14 CET 2022 - David Cassany <dcassany@suse.com>
+
+- Update schema docs
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Tue Mar 08 20:10:52 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Provide schema version v7.5 in spec
+
+-------------------------------------------------------------------
+Tue Mar 08 20:10:22 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update descriptions to schema v7.5
+
+-------------------------------------------------------------------
+Sun Mar 06 16:03:13 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update cron for security scorecard
+
+  Run weekly on Saturdays
+
+-------------------------------------------------------------------
+Fri Mar 04 18:12:22 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for extended layout to msdos table
+
+  This commit adds the following new type attribute
+
+  <type ... dosparttable_extended_layout="true|false"/>
+
+  If set it specifies to make use of logical partitions inside
+  of an extended one. Effective only on type configurations which
+  uses the msdos table type, it will cause the fourth partition
+  to be an extended partition and all following partitions will be
+  placed as logical partitions inside of that extended partition.
+  This setting is useful if more than 4 partitions needs to be
+  created in an msdos table.
+
+  In addition to the support for extended/logical partitions the
+  the attributes 'mountpoint' and 'filesystem' in the <partitions>
+  section becomes optional. This also allows to place partitions
+  as placeholders not mounted into the system
+
+-------------------------------------------------------------------
+Fri Mar 04 17:51:45 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added type hints for partitioner interface
+
+-------------------------------------------------------------------
+Fri Mar 04 14:28:49 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.27 → 9.24.28
+
+-------------------------------------------------------------------
+Thu Mar 03 10:18:33 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed unconditional grub2 package requirement
+
+  The grub2 package does not exist on all distributions
+  as a name provider independent of the architecture.
+  On for example Debian and Ubuntu the packages are
+  handled differently and grub2 is only provided on
+  supported architectures. Thus the spec file should
+  set the grub2 requirement only if the distribution
+  provides it in any case
+
+-------------------------------------------------------------------
+Wed Mar 02 16:41:11 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.26 → 9.24.27
+
+-------------------------------------------------------------------
+Tue Mar 01 12:32:37 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added overlayroot_verity_blocks attribute
+
+  Setting this attribute to a number or 'all' in an overlayroot
+  configuration will create a dm verity hash from the number of
+  given blocks (or all) placed at the end of the squashfs compressed
+  read-only root filesystem. For later verification of the device,
+  and without further image description settings, the credentials
+  information produced by veritysetup from the cryptsetup tools, is
+  created as a file in /boot/overlayroot.verity and is stored as
+  such into the image by default.
+
+-------------------------------------------------------------------
+Tue Mar 01 10:00:48 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed disk.sh caller environment
+
+  The documentation explains the disk.sh script to be called
+  from inside of the image root as it exists on the block layer.
+  The disk.sh script is therefore also called after the sync
+  of the unpacked image root tree to the block layer. The
+  implementation however, was only partially calling disk.sh
+  from such an environment. In fact the environment was only
+  the mountpoint of the root partition but this is not the
+  complete system regarding layouts that uses extra partitions
+  and/or volumes. This commit introduces the use of the new
+  class ImageSystem and calls disk.sh in the way it was
+  designed and documented.
+
+-------------------------------------------------------------------
+Tue Mar 01 09:02:48 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added ImageSystem class
+
+  The class responsibility is to provide access to the
+  image root system from the block layer of the image
+  scope
+
+-------------------------------------------------------------------
+Tue Mar 01 08:57:05 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Prevent superfluous filesystem creation
+
+  In case of an overlayroot setup and the request for
+  no extra write partition, it is not needed to create
+  a filesystem for the write space which never gets
+  synced to the image
+
+-------------------------------------------------------------------
+Sat Feb 26 21:24:12 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.25 → 9.24.26
+
+-------------------------------------------------------------------
+Sat Feb 26 21:22:55 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed destructor test on oci_tools/buildah_test.py
+
+  Calling del() from teardown breaks when the method is
+  called through teardown_method
+
+-------------------------------------------------------------------
+Sat Feb 26 20:46:36 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.24 → 9.24.25
+
+-------------------------------------------------------------------
+Sat Feb 26 19:00:03 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support nose and xunit style tests
+
+  The modifications in this commit allows the unit tests
+  to run on both, pytest 6.x (nose test layout) and the new
+  pytest 7.x (xunit test layout). This Fixes #2072 in a
+  much nicer way. Thanks much to @smarlowucf
+
+-------------------------------------------------------------------
+Fri Feb 25 13:23:38 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update unit test to work in obs
+
+  Some unit tests fails if they run in an obs environment.
+  This is because the implementation checks the runtime
+  envoironment and behaves differently if the system is
+  an obs worker. The unit tests has to explicitly set this
+  condition right for the test
+
+-------------------------------------------------------------------
+Fri Feb 25 10:58:17 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Unit test adaptions to pytest v7"
+
+  This reverts commit 0dc2e803e0e8059c54a0ea23960245286675c86c.
+  The pytest interface from version v6 to v7 has received
+  changes which requires the tests to be adapted to work for
+  either the old or the new interface. As there are still many
+  distributions which uses v6 as the standard we decided to
+  revert back the adaptions done to support v7 and create
+  a version requirement to v6 in .virtualenv.dev-requirements.txt
+  This Fixes #2072
+
+-------------------------------------------------------------------
+Wed Feb 23 15:28:12 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added overlayroot_readonly_partsize attribute
+
+  Specifies the size in MB of the partition which stores the
+  squashfs compressed read-only root filesystem in an
+  overlayroot setup. This Fixes #2068
+
+-------------------------------------------------------------------
+Wed Feb 23 09:27:11 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update to scorecard CI 1.0.4
+
+-------------------------------------------------------------------
+Tue Feb 22 12:06:59 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added debootstrap log info to exception message
+
+  In case debootstrap fails there is more detailed information
+  in a logfile written by debootstrap itself. This commit changes
+  the exception information to contain this log information if
+  present. Related to Issue #1800
+
+-------------------------------------------------------------------
+Sun Feb 20 14:45:48 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.23 → 9.24.24
+
+-------------------------------------------------------------------
+Sun Feb 20 14:42:30 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added overlayroot_write_partition attribute
+
+  For the oem type only, allows to specify if the extra read-write
+  partition in an overlayroot setup should be created or not.
+  By default the partition is created and the kiwi-overlay dracut
+  module also expect it to be present. However, the overlayroot
+  feature can also be used without an initrd and under certain
+  circumstances it is handy to configure if the partition table
+  should contain the read-write partition or not.
+
+-------------------------------------------------------------------
+Sat Feb 19 00:34:06 CET 2022 - Matt Coleman <matt@datto.com>
+
+- Use DEB822-formatted .sources files instead .list files for APT
+
+-------------------------------------------------------------------
+Tue Feb 15 21:36:00 CET 2022 - David Cassany <dcassany@suse.com>
+
+- Support additional names for docker containers
+
+  Docker containers used to support the attribute `additionaltags` which
+  was used to provide multiple tags for the same image. Since only tags
+  were supported this commit renames the attribute to `additionalnames`
+  and now supports tags and names witht he following syntax:
+
+  * '<name>:<tag>' -> adds a full docker image reference including name
+  and tag
+  * ':<tag>'       -> adds an additional tag while reusing the former name
+  * '<name>'       -> adds an additional name while reusing the former tag
+
+  Fixes #2045
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Mon Feb 14 10:46:19 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Follow up fix on force deleting debs
+
+  Also remove eventual post scripting prior force removal
+  of deb packages. Similar inconsistencies as with the pre
+  scripts can occur on force removal. We want the operation
+  to be successful in force mode even if that means to
+  leave a dirty state.
+
+-------------------------------------------------------------------
+Sat Feb 12 20:04:40 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for pre_disk_sync.sh script
+
+  The optional pre_disk_sync.sh script is executed for the
+  disk image type oem only and runs right before the synchronisation
+  of the root tree into the disk image loop file. The script hook
+  can be used to change content of the root tree as a last action
+  before the sync to the disk image is performed. This is useful
+  for example to delete components from the system which were
+  needed before or cannot be modified afterwards when syncing
+  into a read-only filesystem.
+
+-------------------------------------------------------------------
+Thu Feb 10 14:17:29 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Create ci-scorecards-analysis.yml
+
+  Create security health metrics score card
+
+-------------------------------------------------------------------
+Tue Feb 08 20:04:39 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixup inplace podman storage and container conf
+
+  Newer versions of podman requires runroot and graphroot
+  to be explicitly set in storage.conf.
+
+  Newer versions of podman no longer reads the engine.cgroups
+  setting on containers.conf and prints a 'Failed to decode the
+  keys [\"engine.cgroups\"]' warning message
+
+  This commit fixes storage.conf and containers.conf written
+  by kiwi if the setupContainerRuntime method is used in
+  scripts.
+
+-------------------------------------------------------------------
+Tue Feb 08 10:41:47 CET 2022 - David Cassany <dcassany@suse.com>
+
+- Make use of container name in OCI images
+
+  Fixes #2050
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
 Mon Feb 07 22:16:48 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.22 → 9.24.23

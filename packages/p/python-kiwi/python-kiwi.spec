@@ -43,8 +43,8 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.24.23
-Provides:       kiwi-schema = 7.4
+Version:        9.24.29
+Provides:       kiwi-schema = 7.5
 Release:        0
 Url:            https://github.com/OSInside/kiwi
 Summary:        KIWI - Appliance Builder Next Generation
@@ -187,7 +187,9 @@ Recommends:     gfxboot
 Requires:       grub2-efi-x64
 %endif
 %endif
+%if ! (0%{?debian} || 0%{?ubuntu})
 Requires:       grub2
+%endif
 %ifarch %arm aarch64
 %if 0%{?fedora} || 0%{?rhel}
 Requires:       uboot-tools
