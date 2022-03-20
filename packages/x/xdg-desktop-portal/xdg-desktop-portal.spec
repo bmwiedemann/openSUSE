@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal
-Version:        1.12.1
+Version:        1.14.0
 Release:        0
 Summary:        A portal frontend service for Flatpak
 License:        LGPL-2.1-or-later
@@ -30,7 +30,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(flatpak)
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(fuse3)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -38,6 +39,7 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.5.2
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.2.90
 BuildRequires:  pkgconfig(libportal)
+BuildRequires:  pkgconfig(libsystemd)
 # Break cycle: we buildrequire flatpak, and flatpak has a requires on xdg-desktop-portal
 #!BuildIgnore:  xdg-desktop-portal
 # xdg-dfesktop-portal calls out to fusermount (in $PATH) (boo#1175899)
@@ -101,6 +103,7 @@ export LANG=C.UTF-8
 %{_datadir}/dbus-1/services/org.freedesktop.portal.Desktop.service
 %{_datadir}/dbus-1/services/org.freedesktop.portal.Documents.service
 %{_libexecdir}/%{name}
+%{_libexecdir}/xdg-desktop-portal-validate-icon
 %{_libexecdir}/xdg-document-portal
 %{_libexecdir}/xdg-permission-store
 %{_userunitdir}/%{name}.service
