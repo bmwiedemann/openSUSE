@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        2.0~6
+Version:        2.0~7
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -31,7 +31,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  libnvme-devel >= 1.0~6
+BuildRequires:  libnvme-devel >= 1.0~7
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  meson >= 0.47.0
@@ -83,7 +83,8 @@ Optional dependency offering zsh completion for NVM Express user space tools
     -Dudevrulesdir=%{_udevrulesdir} \
     -Ddracutrulesdir=%{_sysconfdir}/dracut/dracut.conf.d \
     -Dsystemddir=%{_unitdir} \
-    -Ddocs=man
+    -Ddocs=man \
+    -Dsystemctl=/usr/bin/systemctl
 %meson_build
 
 %install
@@ -92,8 +93,6 @@ install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostnqn
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostid
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/discovery.conf
 rm %{buildroot}%{_sysconfdir}/dracut/dracut.conf.d/70-nvmf-autoconnect.conf
-
-sed -i 's;/bin/systemctl;/usr/bin/systemctl;g' %{buildroot}%{_udevrulesdir}/70-nvmf-autoconnect.rules
 
 # for subpackage nvme-cli-regress-script:
 install -m 744 -D regress %{buildroot}%{_sbindir}/nvme-regress

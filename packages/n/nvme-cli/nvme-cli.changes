@@ -1,5 +1,22 @@
 -------------------------------------------------------------------
-Fri Mar 11 18:01:17 UTC 2022 - daniel.wagner@suse.com
+Fri Mar 18 19:13:06 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0-rc7:
+  * netapp-nvme: fix smdevices segfault in json output (bsc#1195937)
+  * fabrics: keep the backward compatibility
+  * nvme: Do not slash escape strings in JSON output (bsc#1195937)
+  * nvme: Print full device path
+  * nvme-print: Make JSON keys consistent with nvme-cli 1.x
+  * nvme-print: print generic device in list command
+  * fabrics: check for discovery controller instead of subsystem NQN (bsc#1197061)
+  * connect: Set errno to zero on nvmf_add_ctrl() success
+  * documenation updates
+- Set path to systemctl via newly introduced config option
+- Update 0100-harden_nvmf-connect@.service.patch due to upstream file rename
+- Moved bash completion script to /usr/share/bash-completion/completions/nvme
+
+-------------------------------------------------------------------
+Fri Mar 11 18:01:17 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.0-rc6:
   * nvme: print out ANA state for 'list-subsys' (bsc#1195938)
