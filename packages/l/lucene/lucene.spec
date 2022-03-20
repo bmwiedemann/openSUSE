@@ -1,7 +1,7 @@
 #
 # spec file for package lucene
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ Patch1:         0002-Dependency-generation.patch
 Patch2:         lucene-java8compat.patch
 Patch3:         lucene-osgi-manifests.patch
 Patch4:         lucene-missing-dependencies.patch
+Patch5:         lucene-nodoclint.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit >= 1.6
 BuildRequires:  antlr-java
@@ -510,6 +511,7 @@ Apache Lucene Java Test Framework.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 export CLASSPATH=$(build-classpath commons-digester jtidy junit regexp)

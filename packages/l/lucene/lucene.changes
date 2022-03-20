@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 20 16:11:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * lucene-nodoclint.patch
+    + Do not abort compilation on html5 errors with javadoc 17
+
+-------------------------------------------------------------------
 Thu Apr  9 09:20:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 8.5.0
