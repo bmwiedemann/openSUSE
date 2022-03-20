@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 19 13:38:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the javax.annotation:javax.annotation-api dependency on
+  distribution versions that do not incorporate the JavaEE modules
+
+-------------------------------------------------------------------
 Thu Mar 17 03:20:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add the glassfish-annotation-api jar to the build classpath
