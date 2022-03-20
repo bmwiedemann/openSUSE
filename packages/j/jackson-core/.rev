@@ -57,4 +57,12 @@
     <comment>Version upgrade</comment>
     <requestid>926592</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7756d8f2364c369454c02925ea201c8f</srcmd5>
+    <version>2.13.0</version>
+    <time>1647806175</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963295</requestid>
+  </revision>
 </revisionlist>
