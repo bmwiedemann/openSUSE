@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  7 16:40:16 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update vendor tarball with prometheus/client_golang 1.12.1
+  (bsc#1196338)
+  * Added 0003-Bump-client_golang-to-1.12.1.patch
+
+-------------------------------------------------------------------
 Tue Feb 22 15:27:25 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Fix Firewalld configuration file location (bsc#1196300)

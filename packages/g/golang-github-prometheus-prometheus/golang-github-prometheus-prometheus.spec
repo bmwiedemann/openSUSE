@@ -35,6 +35,7 @@ Group:          System/Monitoring
 URL:            https://prometheus.io/
 # also includes web assets generated with `make assets`
 Source:         prometheus-%{version}.tar.gz
+# generated after applying 0003-Bump-client_golang-to-1.12.1.patch
 Source1:        vendor.tar.gz
 Source2:        prometheus.service
 Source3:        prometheus.yml
@@ -43,6 +44,8 @@ Source5:        prometheus.firewall.xml
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
+# This patch has been applied before generating vendor tarball
+Patch3:         0003-Bump-client_golang-to-1.12.1.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 BuildRequires:  firewall-macros
