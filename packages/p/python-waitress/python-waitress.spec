@@ -1,7 +1,7 @@
 #
-# spec file for package python-waitress
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-waitress%{psuffix}
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        Waitress WSGI server
 License:        ZPL-2.1

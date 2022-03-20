@@ -225,4 +225,30 @@
     <comment></comment>
     <requestid>929842</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3a8d337aa84ec7dec7385c760f3831ca</srcmd5>
+    <version>2.1.1</version>
+    <time>1647806109</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.1 (bsc#1197255, CVE-2022-24761):
+  * Waitress now validates that chunked encoding extensions are valid, and don’t
+    contain invalid characters that are not allowed. They are still skipped/not
+    processed, but if they contain invalid data we no longer continue in and return
+    a 400 Bad Request. This stops potential HTTP desync/HTTP request smuggling.
+    Thanks to Zhang Zeyu for reporting this issue. See
+    https://github.com/Pylons/waitress/security/advisories/GHSA-4f7p-27jc-3c36
+  * Waitress now validates that the chunk length is only valid hex digits when
+    parsing chunked encoding, and values such as 0x01 and +01 are no longer
+    supported. This stops potential HTTP desync/HTTP request smuggling. Thanks
+    to Zhang Zeyu for reporting this issue. See
+    https://github.com/Pylons/waitress/security/advisories/GHSA-4f7p-27jc-3c36
+  * Waitress now validates that the Content-Length sent by a remote contains only
+    digits in accordance with RFC7230 and will return a 400 Bad Request when the
+    Content-Length header contains invalid data, such as +10 which would
+    previously get parsed as 10 and accepted. This stops potential HTTP
+    desync/HTTP request smuggling Thanks to Zhang Zeyu for reporting this issue.
+    See
+    https://github.com/Pylons/waitress/security/advisories/GHSA-4f7p-27jc-3c36</comment>
+    <requestid>962909</requestid>
+  </revision>
 </revisionlist>
