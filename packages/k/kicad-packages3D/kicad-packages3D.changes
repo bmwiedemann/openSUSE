@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 19 03:17:58 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 6.0.4
+  See https://www.kicad.org/blog/2022/03/KiCad-6.0.4-Release/ for details.
+- Fix directory for fdupes call
+
+-------------------------------------------------------------------
 Fri Feb 11 04:35:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 6.0.2

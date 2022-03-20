@@ -24,7 +24,7 @@
 %define _binary_payload w5T.xzdio
 
 Name:           kicad-packages3D
-Version:        6.0.2
+Version:        6.0.4
 Release:        0
 Summary:        3D model libraries for rendering and MCAD integration
 # License is CC-BY-SA-4.0 but there is an exception
@@ -58,7 +58,7 @@ library components for rendering and mechanical CAD (MCAD) integration.
 
 %install
 %cmake_install
-%fdupes %{buildroot}%{_datadir}/kicad/modules/
+%fdupes %{buildroot}%{_datadir}/kicad/3dmodels/
 
 %files
 %doc README.md CREDITS.md
