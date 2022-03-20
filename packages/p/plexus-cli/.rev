@@ -24,4 +24,12 @@
     <comment>Use source service</comment>
     <requestid>947105</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4b1ec06bcf07f5d925ae2c02e59f592d</srcmd5>
+    <version>1.6</version>
+    <time>1647806182</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963310</requestid>
+  </revision>
 </revisionlist>
