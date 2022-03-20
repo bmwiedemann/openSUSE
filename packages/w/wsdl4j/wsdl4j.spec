@@ -60,7 +60,7 @@ Description Language for Java.
 %setup -q -n %{name}-1_6_3
 
 %build
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 compile javadocs
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 compile javadocs
 
 %install
 # inject OSGi manifests

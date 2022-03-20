@@ -168,4 +168,12 @@
     <comment>Alias to axis:axis-wsdl4j</comment>
     <requestid>958692</requestid>
   </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>c2d5d77c85f5d5439d05fa408cdb7f21</srcmd5>
+    <version>1.6.3</version>
+    <time>1647806142</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963258</requestid>
+  </revision>
 </revisionlist>
