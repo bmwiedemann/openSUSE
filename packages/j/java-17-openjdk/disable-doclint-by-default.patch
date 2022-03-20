@@ -1,6 +1,17 @@
---- jdk15/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java	2020-03-11 22:25:18.000000000 +0100
-+++ jdk15/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java	2020-03-17 19:11:23.870026518 +0100
-@@ -155,12 +155,12 @@
+--- a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/toolkit/BaseConfiguration.java
++++ b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/toolkit/BaseConfiguration.java
+@@ -767,7 +767,7 @@ public abstract class BaseConfiguration {
+             }
+         } else {
+             // no -Xmsgs options of any kind, use default
+-            doclintOpts.add(DocLint.XMSGS_OPTION);
++            return;
+         }
+ 
+         if (!customTagNames.isEmpty()) {
+--- a/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java
++++ b/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java
+@@ -155,12 +155,12 @@ public class DocLintTest {
              files = List.of(new TestJFO("Test.java", code));
  
              test(List.of(htmlVersion),
@@ -17,7 +28,7 @@
  
  //            test(List.of("-Xdoclint:none"),
  //                    Main.Result.OK,
-@@ -183,8 +183,8 @@
+@@ -183,8 +183,8 @@ public class DocLintTest {
                      EnumSet.of(Message.DL_WRN12));
  
              test(List.of(htmlVersion, rawDiags, "-private"),

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 20 01:08:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * disable-doclint-by-default.patch
+    + try actually disable the doclint by default
+
+-------------------------------------------------------------------
 Fri Feb  4 07:07:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-17.0.2+8 (January 2021 CPU)
