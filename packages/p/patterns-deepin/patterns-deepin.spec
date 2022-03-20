@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-deepin
-Version:        15.4.20220204
+Version:        15.4.20220320
 Release:        0
 Summary:        Patterns for Installation (Deepin)
 License:        MIT
@@ -261,7 +261,7 @@ Provides:       pattern-order() = 2270
 Supplements:    packageand(patterns-deepin:patterns-office)
 Requires:       pattern() = deepin_basis
 Recommends:     pattern() = deepin_office_opt
-Recommends:     libreoffice-qt5
+Recommends:     libreoffice-gtk3
 Recommends:     deepin-reader
 
 %description deepin_office
