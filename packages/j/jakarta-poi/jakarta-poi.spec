@@ -17,13 +17,14 @@
 
 
 %define base_name poi
+%bcond_without tests
 Name:           jakarta-poi
 Version:        2.5.1
 Release:        0
 Summary:        Java API To Access Microsoft Format Files
 License:        Apache-2.0
 Group:          Development/Languages/Java
-URL:            http://jakarta.apache.org/poi/
+URL:            https://jakarta.apache.org/poi/
 Source0:        poi-src-2.5.1-final-20040804.tar.bz2
 #cvs -d :pserver:anoncvs@cvs.apache.org:/home/cvspublic  login
 #cvs -z3 -d :pserver:anoncvs@cvs.apache.org:/home/cvspublic export -r HEAD jakarta-poi/src/scratchpad
@@ -31,6 +32,7 @@ Source1:        poi-scratchpad-unreleased-src-20050824.tar.bz2
 Patch0:         poi-build_xml.patch
 Patch1:         poi-encoding.patch
 Patch2:         %{name}-%{version}-junittest.patch
+Patch3:         ambigous-Record.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-jdepend >= 1.6
 BuildRequires:  ant-junit >= 1.6
@@ -39,7 +41,7 @@ BuildRequires:  jakarta-commons-beanutils >= 1.6.1
 BuildRequires:  jakarta-commons-collections >= 2.1
 BuildRequires:  jakarta-commons-lang >= 2.0
 BuildRequires:  jakarta-commons-logging >= 1.0.3
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  jaxp_transform_impl
 BuildRequires:  jdepend >= 2.6
@@ -111,6 +113,7 @@ rm src/testcases/org/apache/poi/hssf/HSSFTests.java
 %patch0 -b .sav
 %patch1 -b .sav1
 %patch2 -b .sav2
+%patch3 -p1
 # wrong end of line necoding
 sed -i -e 's/.$//' \
         docs/jdepend/jdepend.xml \
@@ -137,40 +140,39 @@ xerces-j2 \
 xml-commons-apis \
 )
 export ANT_OPTS="-Xmx256m -Djava.awt.headless=true -Dbuild.sysclasspath=first -Ddisconnected=true"
-ant -Dant.build.javac.target=1.6 -Dant.build.javac.source=1.6 jar test
+ant -Dant.build.javac.target=1.8 -Dant.build.javac.source=1.8 jar \
+%if %{with tests}
+    test
+%endif
 
 %install
 install -dm 755 %{buildroot}%{_javadir}
 cp -p build/dist/%{base_name}-%{version}-final-*.jar \
-  %{buildroot}%{_javadir}/%{name}-%{version}.jar
+  %{buildroot}%{_javadir}/%{name}.jar
 cp -p build/dist/%{base_name}-contrib-%{version}-final-*.jar \
-  %{buildroot}%{_javadir}/%{name}-contrib-%{version}.jar
+  %{buildroot}%{_javadir}/%{name}-contrib.jar
 cp -p build/dist/%{base_name}-scratchpad-%{version}-final-*.jar \
-  %{buildroot}%{_javadir}/%{name}-scratchpad-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in %{name}*-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|jakarta-||g"`; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+  %{buildroot}%{_javadir}/%{name}-scratchpad.jar
+(cd %{buildroot}%{_javadir} && for jar in %{name}*.jar; do ln -sf ${jar} `echo $jar| sed "s|jakarta-||g"`; done)
+
 #javadoc
-install -dm 755 %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr docs/apidocs/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name} # ghost symlink
+install -dm 755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr docs/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 rm -rf docs/apidocs
+
 #manual
-install -dm 755 %{buildroot}%{_docdir}/%{name}-%{version}
-cp -pr docs/* %{buildroot}%{_docdir}/%{name}-%{version}
-cp -p LICENSE %{buildroot}%{_docdir}/%{name}-%{version}
-ln -s %{_javadocdir}/%{name}-%{version} %{buildroot}%{_docdir}/%{name}-%{version}/apidocs # ghost symlink
+install -dm 755 %{buildroot}%{_docdir}/%{name}
+cp -pr docs/* %{buildroot}%{_docdir}/%{name}
 %fdupes -s %{buildroot}
 
 %files
-%doc %{_docdir}/%{name}-%{version}/LICENSE
+%license LICENSE
 %{_javadir}/*.jar
 
 %files javadoc
-%doc %{_javadocdir}/%{name}-%{version}
-%ghost %doc %{_javadocdir}/%{name}
+%{_javadocdir}/%{name}
 
 %files manual
-%doc %{_docdir}/%{name}-%{version}
-%exclude %{_docdir}/%{name}-%{version}/LICENSE
+%doc %{_docdir}/%{name}
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 20 17:14:49 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Added patch:
+  * ambigous-Record.patch
+    + fix typename clash with the new java.lang.Record
+
+-------------------------------------------------------------------
 Tue Feb 22 19:28:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j
