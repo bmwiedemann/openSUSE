@@ -36,7 +36,6 @@ Provides:       %{short_name} = %{version}
 Obsoletes:      %{short_name} < %{version}
 #XXX: temporary fix to make axis auto dependencies work, need to revork package
 Provides:       osgi(org.apache.commons.discovery)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -60,7 +59,7 @@ chmod u+w .
 
 %build
 ant \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
   -Djunit.jar=%(find-jar junit) \
   -Dlogger.jar=%(find-jar commons-logging) \
   test.discovery dist
@@ -80,7 +79,7 @@ install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
-%doc LICENSE.txt
+%license LICENSE.txt
 %{_javadir}/%{name}.jar
 
 %files javadoc
