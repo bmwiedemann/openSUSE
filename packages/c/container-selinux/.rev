@@ -71,4 +71,25 @@
     <comment></comment>
     <requestid>931472</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6236ea7a9def3191fcb6e58b4a724c34</srcmd5>
+    <version>2.180.0</version>
+    <time>1647806083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.180.0
+  * Allow container domains to read/write kvm_device_t
+  * Update kublet mappings to inlcude /usr/local/*
+  * Allow container domains to use container runtime tcp and udp sockets
+  * Alow containers to use unix_stream_sockets leaked from container runtimes
+  * Allow userdomains to execute conmon_exec_t and use it as an entrypoint
+  * Allow conmon_exec_t as an entrypoint
+  * Add container_use_devices boolean to allow containers to use any device
+  * Add explicit range transition for conmon
+  * Add missing dbus class declaration into container_runtime_run()
+  * Remove lockdown allow rules
+  * Remove k3s fcontexts
+  * Allow container domains to be used by user roles
+- Changed source url to allow for download via source service (forwarded request 962680 from jsegitz)</comment>
+    <requestid>962685</requestid>
+  </revision>
 </revisionlist>

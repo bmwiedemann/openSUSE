@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:04:25 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.180.0
+  * Allow container domains to read/write kvm_device_t
+  * Update kublet mappings to inlcude /usr/local/*
+  * Allow container domains to use container runtime tcp and udp sockets
+  * Alow containers to use unix_stream_sockets leaked from container runtimes
+  * Allow userdomains to execute conmon_exec_t and use it as an entrypoint
+  * Allow conmon_exec_t as an entrypoint
+  * Add container_use_devices boolean to allow containers to use any device
+  * Add explicit range transition for conmon
+  * Add missing dbus class declaration into container_runtime_run()
+  * Remove lockdown allow rules
+  * Remove k3s fcontexts
+  * Allow container domains to be used by user roles
+- Changed source url to allow for download via source service
+
+-------------------------------------------------------------------
 Fri Nov 12 16:21:06 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Update to version 2.171.0
