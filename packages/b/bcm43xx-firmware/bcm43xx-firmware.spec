@@ -1,7 +1,7 @@
 #
 # spec file for package bcm43xx-firmware
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ Source391:      brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt
 Source3622:     https://github.com/Bananian/bananian/raw/master/deb/u-boot-m2-bananian_armhf/lib/firmware/brcm/brcmfmac43362-sdio.txt#/brcmfmac43362-sdio.sinovoip,bpi-m2.txt
 #BCM43430
 Source4309:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM43430A1.hcd
+Source4310:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM43430B0.hcd
 #brcmfmac4356-pcie.txt is taken from ChromeOS repo
 # https://chromium.googlesource.com/chromiumos/third_party/linux-firmware/+/f151f016b4fe656399f199e28cabf8d658bcb52b/brcm/brcmfmac4356-pcie.txt
 Source4356:     brcmfmac4356-pcie.txt
@@ -106,19 +107,23 @@ ln -s brcmfmac43455-sdio.raspberrypi,4-model-b.txt.xz  %{buildroot}%{_firmwaredi
 # serdev configured RPi Bluetooth driver expects the firmware files to be
 # stored in '/lib/firmware/brcm'
 install -c -m 0644 %{SOURCE4309} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4310} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4559} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4564} %{buildroot}%{_firmwaredir}/brcm/
 # Symlinks for compatibility with deprecated hciattach
 ln -s brcm/BCM4345C0.hcd %{buildroot}%{_firmwaredir}/BCM4345C0.hcd
 ln -s brcm/BCM4345C5.hcd %{buildroot}%{_firmwaredir}/BCM4345C5.hcd
 ln -s brcm/BCM43430A1.hcd %{buildroot}%{_firmwaredir}/BCM43430A1.hcd
+ln -s brcm/BCM43430B0.hcd %{buildroot}%{_firmwaredir}/BCM43430B0.hcd
 
 %files
 %license LICENCE.broadcom_bcm43xx LICENCE.cypress
 %{_firmwaredir}/BCM43430A1.hcd
+%{_firmwaredir}/BCM43430B0.hcd
 %{_firmwaredir}/BCM4345C0.hcd
 %{_firmwaredir}/BCM4345C5.hcd
 %{_firmwaredir}/brcm/BCM43430A1.hcd
+%{_firmwaredir}/brcm/BCM43430B0.hcd
 %{_firmwaredir}/brcm/BCM4345C0.hcd
 %{_firmwaredir}/brcm/BCM4345C5.hcd
 %{_firmwaredir}/brcm/brcmfmac4329-sdio.solidrun,cubox-i-dl.txt

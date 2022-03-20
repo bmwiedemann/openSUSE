@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:24:47 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Add required firmware file for Bluetooth module found on RPi Zero 2W (bsc#1197286)
+
+-------------------------------------------------------------------
 Wed Dec 15 08:26:03 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 - Introduce firmware files for Raspberry Pi Zero 2 W support (jsc#SLE-23064).
