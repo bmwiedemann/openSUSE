@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 16 06:47:50 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-control-center-reload-vpn-plugins.patch:
+  network/connection-editor: always load all available VPN plugins
+  (glgo#GNOME/gnome-control-center!1263).
+
+-------------------------------------------------------------------
 Mon Feb 14 09:05:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.4:

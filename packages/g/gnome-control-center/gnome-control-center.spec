@@ -40,6 +40,8 @@ Patch0:         gnome-control-center-disable-error-message-for-NM.patch
 Patch1:         gnome-control-center-fix-autologin-shortcut.patch
 # PATCH-FIX-UPSTREAM 496c719d7b1492b54c34ace648feb3802f34f774.patch -- Remove duplicate line from .desktop file
 Patch2:         https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/496c719d7b1492b54c34ace648feb3802f34f774.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-reload-vpn-plugins.patch glgo#GNOME/gnome-control-center!1263 sckang@suse.com -- network/connection-editor: always load all available VPN plugins
+Patch3:         gnome-control-center-reload-vpn-plugins.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -185,6 +187,7 @@ GNOME control center.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1
