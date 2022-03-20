@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 20 09:23:46 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.39.1
+  * Bug Fixes
+  - Fixes a couple of regressions that broke case change in the
+    Bulk metadata edit dialog and remembering column widths in the
+    book list on some systems.
+
+-------------------------------------------------------------------
 Fri Mar 18 14:48:32 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.39.0
