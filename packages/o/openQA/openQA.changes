@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 20 01:49:03 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1647710740.7574f1433:
+  * Use signatures in Schema::Result::Jobs
+  * openqa-clone-job: Allow printing result as JSON
+
+-------------------------------------------------------------------
 Thu Mar 17 16:38:47 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1647535120.9c1b2bd80:
