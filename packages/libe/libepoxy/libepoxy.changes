@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 18 17:35:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.10:
+  + Fix for building with MSVC on non-English locale.
+  + Fix build on Android.
+  + Add the right include paths for EGL and X11 headers.
+- Upstream tarball url changed, probably by mistake, so leave old
+  url in place, but disabled.
+
+-------------------------------------------------------------------
 Mon Sep 27 13:48:22 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - needed for jira#SLE/SLE-19965, jira#SLE/SLE-19964, jira#SLE/SLE-18653

@@ -153,4 +153,12 @@
     <comment>- needed for jira#SLE/SLE-19965, jira#SLE/SLE-19964, jira#SLE/SLE-18653</comment>
     <requestid>921810</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>26c0b5225b95d3ebccda9a1fd8371399</srcmd5>
+    <version>1.5.10</version>
+    <time>1647806111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962925</requestid>
+  </revision>
 </revisionlist>

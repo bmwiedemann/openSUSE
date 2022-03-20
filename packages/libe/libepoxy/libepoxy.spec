@@ -18,13 +18,14 @@
 
 %define sonum   0
 Name:           libepoxy
-Version:        1.5.9
+Version:        1.5.10
 Release:        0
 Summary:        OpenGL function pointer management library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/anholt/libepoxy
-Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+# Source0:        %%{url}/releases/download/%%{version}/%%{name}-%%{version}.tar.xz
+Source0:        %{url}/archive/refs/tags/1.5.10.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  meson >= 0.48
 BuildRequires:  pkgconfig
