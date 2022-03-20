@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-poetry-core
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Python poetry core utilities
 License:        MIT
