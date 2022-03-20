@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 17 23:09:29 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.0.7:
+  * Updated translations.
+  * Better wording in the documentation.
+
+-------------------------------------------------------------------
 Sat Nov  6 11:20:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing explicit libgnomesu0 Requires to devel package.
