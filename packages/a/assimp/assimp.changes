@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Mar 20 07:34:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.2.3:
+  * Show warning when assimp_viewer cannot be build on
+    target platform
+  * Fix ordering of member initialization
+  * Fix possible negative array access
+  * Expose the original OBJ "illum" value
+  * Optimize the problem of excessive memory allocation in
+    FBX import
+  * Update version of Hunter to v0.24.0 that supports VS 2022
+  * update LWO importer(available lwo3)
+  * Reinstate a deprecated gltfpbr macro: AI_MATKEY_GLTF_PBRSPECULARGLOSSINESS
+  * Fix parsing OBJ with free-form curve/surface body statements
+  * Fix missing members and do some small refactorings.
+  * Fix 'i >= 0' always true
+  * Update AI_TEXTURE_TYPE_MAX
+  * Fix getting anisotropy in obj
+  * glTF2: Metallic roughness split
+  * Add properties information on assimp info command line
+  * Added missing ObjMaterial.h to CMakeLists
+  * Update version in doxy-config
+  * add ifndef guard for resolve to fails to compil
+  * Add USE_STATIC_CRT option
+  * Fix nullptr dereferencing
+  * Fix stack-overflow in MDLLoader
+  * GLTF2 attribute name/parse bug
+
+-------------------------------------------------------------------
 Mon Feb 21 09:56:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.2.2
