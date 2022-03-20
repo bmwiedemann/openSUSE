@@ -120,4 +120,12 @@
     <comment>generate maven metadata and distribute as maven artifact</comment>
     <requestid>958689</requestid>
   </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>40b567908ba248a4b39c9bb91af1d5a2</srcmd5>
+    <version>0.5.1</version>
+    <time>1647806176</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963297</requestid>
+  </revision>
 </revisionlist>

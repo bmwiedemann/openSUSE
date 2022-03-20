@@ -37,7 +37,7 @@ Patch0:         ini4j-java8-compat.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  unzip
 Requires:       java
@@ -73,7 +73,7 @@ cp %{SOURCE3} src%{_sysconfdir}/buildinfo.properties
 %patch0 -p1
 
 %build
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 build
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 build
 ant javadoc
 
 %install
