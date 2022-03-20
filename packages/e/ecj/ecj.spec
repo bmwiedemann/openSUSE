@@ -1,7 +1,7 @@
 #
 # spec file for package ecj
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,9 @@ Source3:        java15api.pom
 Source4:        MANIFEST.MF
 # Always generate debug info when building RPMs
 Patch0:         %{name}-rpmdebuginfo.patch
+Patch1:         encoding.patch
 # Include java API stubs in build with java < 15
-Patch1:         javaAPI.patch
+Patch2:         javaAPI.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 10
 BuildRequires:  javapackages-local
@@ -55,8 +56,9 @@ the JDT Core batch compiler.
 %prep
 %setup -q -c -a 1
 %patch0 -p1
+%patch1 -p1
 %if %{?pkg_vcmp:%pkg_vcmp java-devel < 15}%{!?pkg_vcmp:1}
-%patch1
+%patch2
 %endif
 
 sed -i -e 's|debuglevel=\"lines,source\"|debug=\"yes\"|g' build.xml
@@ -79,7 +81,7 @@ jar -cf java15api.jar -C build/classes .
 # Remove everything except the jar, since ant looks for java files in "."
 rm -rf java15api-src build/classes
 
-ant \
+%ant \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel < 15}%{!?pkg_vcmp:1}
 	-Djavaapi=java15api.jar \
 %endif

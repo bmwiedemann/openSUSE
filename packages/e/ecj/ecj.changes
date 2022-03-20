@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 20 13:35:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * encoding.patch
+    + the encoding needs to be set for all JDK versions
+- Modified patch:
+  * ecj-rpmdebuginfo.patch
+    + rediff
+  * javaAPI.patch
+    + extract the encoding part to a separate patch
+
+-------------------------------------------------------------------
 Mon Oct 18 21:28:05 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
 
 - Upgrade to eclipse 4.18 ecj

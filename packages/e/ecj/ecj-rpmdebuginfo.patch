@@ -7,7 +7,7 @@ retrieving revision 1.327
 diff -u -r1.327 Main.java
 --- batch/org/eclipse/jdt/internal/compiler/batch/Main.java	21 Apr 2008 15:00:59 -0000	1.327
 +++ batch/org/eclipse/jdt/internal/compiler/batch/Main.java	20 Nov 2008 19:26:57 -0000
-@@ -2609,6 +2609,29 @@
+@@ -3097,6 +3097,29 @@ public void configure(String[] argv) {
  		this.options.put(CompilerOptions.OPTION_Process_Annotations, CompilerOptions.ENABLED);
  	}
  

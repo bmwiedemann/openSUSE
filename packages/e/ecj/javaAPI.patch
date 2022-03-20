@@ -1,6 +1,6 @@
 --- build.xml.orig	2020-09-02 22:05:12.000000000 +0200
 +++ build.xml	2021-03-16 14:41:19.331235267 +0100
-@@ -18,16 +18,20 @@
+@@ -18,6 +18,9 @@
  	<property name="output" value="bin" />
  	<property name="jar_file" value="ecj.jar" />
  
@@ -10,10 +10,7 @@
  	<target name="build">
  		<delete file="${basedir}/${jar_file}" failonerror="no" />
  		<delete dir="${output}" failonerror="no" />
- 		<mkdir dir="${output}" />
- 
- 		<javac srcdir="${basedir}" destdir="${output}"
-+					encoding="utf-8"
+@@ -28,7 +31,7 @@
  					debuglevel="lines,source"
  					source="1.8"
  					target="1.8">
