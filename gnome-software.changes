@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:56:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.5:
+  + Disable scroll-by-mouse-wheel on featured carousel.
+  + Ensure details page shows app provided on command line.
+  + Added several appstream-related fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Feb 10 15:49:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.4:
