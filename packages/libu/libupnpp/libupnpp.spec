@@ -1,7 +1,7 @@
 #
 # spec file for package libupnpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.lesbonscomptes.com/upmpdcli/index.html
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-%{version}.tar.gz
+Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-%{version}.tar.gz.asc
+Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
@@ -79,6 +81,7 @@ find %{buildroot} -type f -name "*a" -delete -print
 %{_libdir}/*.so.*
 
 %files devel
+%license COPYING
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
