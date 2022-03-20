@@ -1,7 +1,7 @@
 #
 # spec file for package jcifs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Common Internet File System Client in 100% Java
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-URL:            http://jcifs.samba.org/
+URL:            https://jcifs.samba.org/
 Source0:        http://jcifs.samba.org/src/%{name}-%{version}.tgz
 Source1:        https://repo1.maven.org/maven2/jcifs/jcifs/1.3.17/jcifs-1.3.17.pom
 Patch0:         jcifs-1.3.19-build.patch
@@ -91,7 +91,7 @@ find -name '*.jar' -delete
 rm examples/GetLocalGroupsMap.java
 rm examples/SmbShell.java
 %patch0 -p1
-sed -i "s|1.5|1.6|" build.xml
+sed -i "s|1.5|1.8|" build.xml
 cp -p %{SOURCE1} pom.xml
 sed -i "s|<version>1.3.17|<version>%{version}|" pom.xml
 %pom_remove_plugin :maven-gpg-plugin
@@ -102,9 +102,9 @@ sed -i "s|<version>1.3.17|<version>%{version}|" pom.xml
 %build
 export CLASSPATH=$(build-classpath glassfish-servlet-api)
 export OPT_JAR_LIST=:
-%{ant} -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 jar javadoc
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar javadoc
 export CLASSPATH=$(build-classpath glassfish-servlet-api):$(pwd)/%{name}-%{version}.jar
-(cd examples && %javac -target 1.6 -source 1.6 *.java)
+(cd examples && %javac -target 1.8 -source 1.8 *.java)
 
 %install
 # jar

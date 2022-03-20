@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 20 17:30:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Thu Dec 19 15:40:45 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Fix en incorrect URL of the pom file
