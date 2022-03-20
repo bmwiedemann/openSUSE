@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 21 13:16:41 UTC 2022 - jsrain@suse.com
+
+- adjusted the patch to the toolbox container in registry
+
+-------------------------------------------------------------------
 Wed Jan 26 13:48:14 UTC 2022 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - Allow docker as an alternative to podman in the package Requires. This was
