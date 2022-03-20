@@ -43,4 +43,13 @@
   * Fix error with annotations on duplicated pages</comment>
     <requestid>940186</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a34114017155548bf42ef907747c1b33</srcmd5>
+    <version>1.8.2</version>
+    <time>1647806133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * Fix 2 bugs in scaled pages export</comment>
+    <requestid>963195</requestid>
+  </revision>
 </revisionlist>
