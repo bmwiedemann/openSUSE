@@ -128,4 +128,12 @@
     <comment></comment>
     <requestid>942904</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>41311d75bafc3cb5bb8368d4ceab60d1</srcmd5>
+    <version>1.1.2</version>
+    <time>1647806143</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963259</requestid>
+  </revision>
 </revisionlist>

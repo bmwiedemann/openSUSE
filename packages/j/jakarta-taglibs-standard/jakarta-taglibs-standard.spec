@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-taglibs-standard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Patch3:         jakarta-taglibs-standard-java7.patch
 Patch4:         CVE-2015-0254.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  servletapi5
 BuildRequires:  xalan-j2
 Requires:       servletapi5 >= 5.0.16
@@ -70,7 +70,7 @@ EOBP
 
 %build
 ant \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
   -Dfinal.name=%{short_name} \
   -Dj2se.javadoc=%{_javadocdir}/java \
   -f standard/build.xml \
