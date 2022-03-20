@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Mar 17 19:08:12 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#863
+- do not run blkdiscard on extended partitions (bsc#1197257)
+- 4.4.94
+
+--------------------------------------------------------------------
 Mon Mar 7 11:04:17 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#862
