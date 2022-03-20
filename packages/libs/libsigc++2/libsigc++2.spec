@@ -1,7 +1,7 @@
 #
 # spec file for package libsigc++2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name libsigc++
 Name:           libsigc++2
-Version:        2.10.7
+Version:        2.10.8
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-2.1-or-later
@@ -69,6 +69,9 @@ of use unmatched by other C++ callback libraries.
 
 %prep
 %setup -q -n %{_name}-%{version}
+
+# Remove executable bit in NEWS...
+chmod -x NEWS
 
 %build
 %meson

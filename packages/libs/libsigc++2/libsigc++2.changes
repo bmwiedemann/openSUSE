@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 11 17:11:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.10.8:
+  + Build:
+    - Meson build: Perl is not required by new versions of
+      mm-common
+    - NMake Makefiles: Support building with VS2022
+  + Documentation: Upgrade the manual from DocBook 4.1 to DocBook
+    5.0
+
+-------------------------------------------------------------------
 Fri May 21 12:03:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.10.7:
