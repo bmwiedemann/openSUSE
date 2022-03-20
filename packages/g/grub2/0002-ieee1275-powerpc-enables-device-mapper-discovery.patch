@@ -10,12 +10,15 @@ since there is no function implemented to handle this case.
 This patch implements a function that will look into /sys/block/dm-*
 devices and search recursively inside slaves directory to find the root
 disk.
+
+v2:
+Fix gcc-12 error: pointer 'device_path' may be used after 'free'
+[-Werror=use-after-free]
+
 ---
- grub-core/osdep/linux/ofpath.c | 64 +++++++++++++++++++++++++++++++++-
+ grub-core/osdep/linux/ofpath.c |   64 ++++++++++++++++++++++++++++++++++++++++-
  1 file changed, 63 insertions(+), 1 deletion(-)
 
-diff --git a/grub-core/osdep/linux/ofpath.c b/grub-core/osdep/linux/ofpath.c
-index f2bc9fc5c..d1040c4e6 100644
 --- a/grub-core/osdep/linux/ofpath.c
 +++ b/grub-core/osdep/linux/ofpath.c
 @@ -37,6 +37,7 @@
@@ -26,7 +29,7 @@ index f2bc9fc5c..d1040c4e6 100644
  
  #ifdef __sparc__
  typedef enum
-@@ -754,13 +755,74 @@ strip_trailing_digits (const char *p)
+@@ -754,13 +755,74 @@
    return new;
  }
  
@@ -75,7 +78,7 @@ index f2bc9fc5c..d1040c4e6 100644
 +      closedir (dp);
 +    }
 +    else
-+      grub_util_warn (_("cannot open directory `%s'"), device_path);
++      grub_util_warn (_("cannot open directory `/sys/block/%s/slaves'"), curr_device);
 +  }
 +
 +  free (directory);
@@ -102,6 +105,3 @@ index f2bc9fc5c..d1040c4e6 100644
    device = get_basename (name_buf);
    devnode = strip_trailing_digits (name_buf);
    devicenode = strip_trailing_digits (device);
--- 
-2.26.2
-

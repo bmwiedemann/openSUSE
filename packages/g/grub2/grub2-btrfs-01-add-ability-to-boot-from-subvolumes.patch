@@ -21,15 +21,18 @@ V1:
   * Use overflow checking primitives where the arithmetic expression for
     buffer allocations may include unvalidated data
 
+V2:
+  * Fix gcc-12 error: the comparison will always evaluate as 'true' for the
+    address of 'label' will never be NULL [-Werror=address]
+
 ---
 
- grub-core/fs/btrfs.c |  529 +++++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 518 insertions(+), 11 deletions(-)
+ grub-core/fs/btrfs.c |  561 +++++++++++++++++++++++++++++++++++++++++++++++++--
+ include/grub/btrfs.h |    1 
+ 2 files changed, 544 insertions(+), 18 deletions(-)
 
-Index: grub-2.06~rc1/grub-core/fs/btrfs.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/fs/btrfs.c
-+++ grub-2.06~rc1/grub-core/fs/btrfs.c
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
 @@ -41,6 +41,9 @@
  #include <grub/crypto.h>
  #include <grub/diskfilter.h>
@@ -40,7 +43,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -79,9 +82,11 @@ struct grub_btrfs_superblock
+@@ -79,9 +82,11 @@
    grub_uint64_t generation;
    grub_uint64_t root_tree;
    grub_uint64_t chunk_tree;
@@ -54,7 +57,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
    struct grub_btrfs_device this_device;
    char label[0x100];
    grub_uint8_t dummy4[0x100];
-@@ -121,6 +126,7 @@ struct grub_btrfs_data
+@@ -121,6 +126,7 @@
    grub_uint64_t exttree;
    grub_size_t extsize;
    struct grub_btrfs_extent_data *extent;
@@ -62,7 +65,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  };
  
  struct grub_btrfs_chunk_item
-@@ -191,6 +197,14 @@ struct grub_btrfs_leaf_descriptor
+@@ -191,6 +197,14 @@
    } *data;
  };
  
@@ -77,7 +80,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  struct grub_btrfs_time
  {
    grub_int64_t sec;
-@@ -236,6 +250,14 @@ struct grub_btrfs_extent_data
+@@ -236,6 +250,14 @@
  
  #define GRUB_BTRFS_OBJECT_ID_CHUNK 0x100
  
@@ -92,7 +95,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  static grub_disk_addr_t superblock_sectors[] = { 64 * 2, 64 * 1024 * 2,
    256 * 1048576 * 2, 1048576ULL * 1048576ULL * 2
  };
-@@ -1173,6 +1195,62 @@ grub_btrfs_read_logical (struct grub_btr
+@@ -1173,6 +1195,62 @@
    return GRUB_ERR_NONE;
  }
  
@@ -155,7 +158,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  static struct grub_btrfs_data *
  grub_btrfs_mount (grub_device_t dev)
  {
-@@ -1208,6 +1286,13 @@ grub_btrfs_mount (grub_device_t dev)
+@@ -1208,6 +1286,13 @@
    data->devices_attached[0].dev = dev;
    data->devices_attached[0].id = data->sblock.this_device.device_id;
  
@@ -169,7 +172,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
    return data;
  }
  
-@@ -1674,6 +1759,98 @@ get_root (struct grub_btrfs_data *data,
+@@ -1674,6 +1759,98 @@
  }
  
  static grub_err_t
@@ -268,7 +271,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  find_path (struct grub_btrfs_data *data,
  	   const char *path, struct grub_btrfs_key *key,
  	   grub_uint64_t *tree, grub_uint8_t *type)
-@@ -1691,14 +1868,26 @@ find_path (struct grub_btrfs_data *data,
+@@ -1691,14 +1868,26 @@
    char *origpath = NULL;
    unsigned symlinks_max = 32;
  
@@ -299,7 +302,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
    while (1)
      {
        while (path[0] == '/')
-@@ -1871,9 +2060,21 @@ find_path (struct grub_btrfs_data *data,
+@@ -1871,9 +2060,21 @@
  	  path = path_alloc = tmp;
  	  if (path[0] == '/')
  	    {
@@ -324,7 +327,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  	    }
  	  continue;
  	}
-@@ -2114,6 +2315,20 @@ grub_btrfs_read (grub_file_t file, char
+@@ -2114,6 +2315,20 @@
  				 data->tree, file->offset, buf, len);
  }
  
@@ -345,7 +348,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  static grub_err_t
  grub_btrfs_uuid (grub_device_t device, char **uuid)
  {
-@@ -2125,15 +2340,7 @@ grub_btrfs_uuid (grub_device_t device, c
+@@ -2125,15 +2340,7 @@
    if (!data)
      return grub_errno;
  
@@ -362,7 +365,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  
    grub_btrfs_unmount (data);
  
-@@ -2190,6 +2397,248 @@ grub_btrfs_embed (grub_device_t device _
+@@ -2190,6 +2397,248 @@
  }
  #endif
  
@@ -395,7 +398,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
 +      return grub_error (GRUB_ERR_BAD_ARGUMENT, "failed to open fs");
 +    }
 +
-+  if (data->sblock.label)
++  if (*data->sblock.label != '\0')
 +    grub_printf("Label: '%s' ", data->sblock.label);
 +  else
 +    grub_printf("Label: none ");
@@ -611,7 +614,7 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  static struct grub_fs grub_btrfs_fs = {
    .name = "btrfs",
    .fs_dir = grub_btrfs_dir,
-@@ -2205,12 +2654,88 @@ static struct grub_fs grub_btrfs_fs = {
+@@ -2205,12 +2654,88 @@
  #endif
  };
  
@@ -700,11 +703,9 @@ Index: grub-2.06~rc1/grub-core/fs/btrfs.c
  }
 +
 +// vim: si et sw=2:
-Index: grub-2.06~rc1/include/grub/btrfs.h
-===================================================================
---- grub-2.06~rc1.orig/include/grub/btrfs.h
-+++ grub-2.06~rc1/include/grub/btrfs.h
-@@ -29,6 +29,7 @@ enum
+--- a/include/grub/btrfs.h
++++ b/include/grub/btrfs.h
+@@ -29,6 +29,7 @@
      GRUB_BTRFS_ITEM_TYPE_ROOT_ITEM = 0x84,
      GRUB_BTRFS_ITEM_TYPE_ROOT_BACKREF = 0x90,
      GRUB_BTRFS_ITEM_TYPE_DEVICE = 0xd8,

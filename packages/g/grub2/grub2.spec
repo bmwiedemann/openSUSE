@@ -359,6 +359,10 @@ Patch841:       0005-export-environment-at-start-up.patch
 Patch842:       0001-grub-install-bailout-root-device-probing.patch
 Patch843:       0001-RISC-V-Adjust-march-flags-for-binutils-2.38.patch
 Patch844:       0001-install-fix-software-raid1-on-esp.patch
+Patch845:       0001-mkimage-Fix-dangling-pointer-may-be-used-error.patch
+Patch846:       0002-Fix-Werror-array-bounds-array-subscript-0-is-outside.patch
+Patch847:       0003-reed_solomon-Fix-array-subscript-0-is-outside-array-.patch
+Patch848:       0001-grub-probe-Deduplicate-probed-partmap-output.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

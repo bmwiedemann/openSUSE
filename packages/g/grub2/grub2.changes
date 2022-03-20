@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:10:07 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix duplicated insmod part_gpt lines in grub.cfg (bsc#1197186)
+  * 0001-grub-probe-Deduplicate-probed-partmap-output.patch
+
+-------------------------------------------------------------------
+Wed Mar 16 14:57:02 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix GCC 12 build failure (bsc#1196546)
+  * 0001-mkimage-Fix-dangling-pointer-may-be-used-error.patch
+  * 0002-Fix-Werror-array-bounds-array-subscript-0-is-outside.patch
+  * 0003-reed_solomon-Fix-array-subscript-0-is-outside-array-.patch
+- Revised
+  * grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
+  * 0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
+
+-------------------------------------------------------------------
 Fri Mar 11 09:30:05 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix grub-install error when efi system partition is created as mdadm software
