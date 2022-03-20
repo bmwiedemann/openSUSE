@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-poetry
-Version:        1.1.12
+Version:        1.1.13
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -33,8 +33,6 @@ Patch0:         poetry-1645-1.1.patch
 Patch1:         use-new-name-of-MockFixture.patch
 # PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/pull/4749 -- make compatible with packaging >= 21
 Patch2:         poetry-4749-1.1.patch
-# PATCH-FIX-UPSTREAM poetry-3544-py310.patch -- gh#python-poetry/poetry#3544 -- python310 fixes
-Patch3:         https://github.com/python-poetry/poetry/pull/3544.patch#/poetry-3544-py310.patch
 BuildRequires:  %{python_module CacheControl >= 0.12.9}
 BuildRequires:  %{python_module cachy >= 0.3.0}
 BuildRequires:  %{python_module cleo >= 0.8.1}

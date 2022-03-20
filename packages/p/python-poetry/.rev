@@ -112,4 +112,20 @@
   gh#python-poetry/poetry#3544 (forwarded request 941282 from bnavigator)</comment>
     <requestid>941283</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3411891f233ffa01375964fdbd39768b</srcmd5>
+    <version>1.1.13</version>
+    <time>1647806081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.13
+  * Fixed an issue where envs in MSYS2 always reported as broken
+    (#4942)
+  * Fixed an issue where conda envs in windows are always reported
+    as broken(#5008)
+  * Fixed an issue where Poetry doesn't find its own venv on poetry
+    self update (#5048)
+- Refresh use-new-name-of-MockFixture.patch
+- Drop poetry-3544-py310.patch (forwarded request 962669 from bnavigator)</comment>
+    <requestid>962670</requestid>
+  </revision>
 </revisionlist>

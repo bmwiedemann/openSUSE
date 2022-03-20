@@ -4,10 +4,10 @@ This is mainly like
 https://github.com/python-poetry/poetry/commit/9591e88492508d4dba260952d53266a0032c04c7
 but without changing most package versions which is unrelated to this change.
 
-Index: poetry-1.1.6/tests/repositories/test_installed_repository.py
+Index: poetry-1.1.13/tests/repositories/test_installed_repository.py
 ===================================================================
---- poetry-1.1.6.orig/tests/repositories/test_installed_repository.py
-+++ poetry-1.1.6/tests/repositories/test_installed_repository.py
+--- poetry-1.1.13.orig/tests/repositories/test_installed_repository.py
++++ poetry-1.1.13/tests/repositories/test_installed_repository.py
 @@ -2,7 +2,7 @@ from typing import Optional
  
  import pytest
@@ -26,12 +26,12 @@ Index: poetry-1.1.6/tests/repositories/test_installed_repository.py
      mocker.patch(
          "poetry.utils._compat.metadata.Distribution.discover",
          return_value=INSTALLED_RESULTS,
-Index: poetry-1.1.6/pyproject.toml
+Index: poetry-1.1.13/pyproject.toml
 ===================================================================
---- poetry-1.1.6.orig/pyproject.toml
-+++ poetry-1.1.6/pyproject.toml
-@@ -66,7 +66,7 @@ pytest = [
-     {version = "^5.4.3", python = ">=3.5"}
+--- poetry-1.1.13.orig/pyproject.toml
++++ poetry-1.1.13/pyproject.toml
+@@ -70,7 +70,7 @@ pytest = [
+     {version = "^6.2.5", python = ">=3.6"}
  ]
  pytest-cov = "^2.5"
 -pytest-mock = "^1.9"

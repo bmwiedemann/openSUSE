@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 18 11:07:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.13
+  * Fixed an issue where envs in MSYS2 always reported as broken
+    (#4942)
+  * Fixed an issue where conda envs in windows are always reported
+    as broken(#5008)
+  * Fixed an issue where Poetry doesn't find its own venv on poetry
+    self update (#5048)
+- Refresh use-new-name-of-MockFixture.patch
+- Drop poetry-3544-py310.patch
+
+-------------------------------------------------------------------
 Fri Dec 17 18:14:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add poetry-3544-py310.patch for compatibility with Python 3.10
