@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipykernel
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -37,6 +37,7 @@ Requires:       python-ipython >= 7.23.1
 Requires:       python-jupyter-client
 Requires:       python-jupyter-core
 Requires:       python-matplotlib-inline >= 0.1
+Requires:       python-psutil
 Requires:       python-tornado >= 4.2
 Requires:       python-traitlets >= 5.1.0
 Provides:       python-jupyter_ipykernel = %{version}
@@ -59,6 +60,7 @@ BuildRequires:  %{python_module ipython >= 7.23.1}
 BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module matplotlib-inline >= 0.1}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado >= 4.2}
 BuildRequires:  %{python_module traitlets >= 5.1.0}
@@ -99,7 +101,9 @@ $python -m ipykernel install \
 %fdupes  %{buildroot}%{_jupyter_kernel_dir}
 
 %check
-%pytest ipykernel
+# flaky: bad timings in obs often cause this to fail
+donttest="test_shutdown_subprocesses"
+%pytest ipykernel -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
