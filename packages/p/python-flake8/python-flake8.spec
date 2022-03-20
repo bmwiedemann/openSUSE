@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pycodestyle >= 2.8.0}
 BuildRequires:  %{python_module pyflakes >= 2.4.0}
 BuildRequires:  %{python_module pytest}
