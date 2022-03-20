@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Mar 18 14:28:24 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- re-add suse-microos-branding.patch from GitHub
+- add hide-docs.patch (bsc#1197003)  
+
+-------------------------------------------------------------------
+Tue Mar 15 13:42:38 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- make package compatible with OBS version (bsc#1197224):
+  * move branding images to distribution-logos-SLE package
+  * re-add dependency on distribution-logos
+  * remove branding patch and assets (suse-microos-branding.patch,
+    suse-microos-branding.tar.gz); moved to GitHub fork
+  * remove local __python3 macro
+  * apply SLE specific patches only on SLE
+
+-------------------------------------------------------------------
+Mon Feb 28 10:41:31 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- add hide-pcp.patch to hide references to PCP (Performance
+  Co-Pilot) and metric collection (bsc#1195943). The cockpit-pcp
+  package is not included in SLE Micro 5.2 base and these parts
+  require it.
+
+-------------------------------------------------------------------
+Mon Jan 31 15:30:24 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- change self-signed cert group from cockpit-wsintance to
+  cockpit-ws on upgrade
+
+-------------------------------------------------------------------
+Mon Jan 31 08:26:46 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- update to new LTS version from openSUSE:Factory
+- port remove-pwscore.patch
+  * remove dependency on pwscore (bsc#1182924)
+  * remove password strenth indicator
+- port branding changes as suse-microos "theme"
+  * remove suse_cockpit_assets.tar.gz
+  * add suse-microos-branding.tar.gz
+  * remove branding_tests.patch
+  * add suse-microos-branding.patch
+- remove files not needed to build this version anymore
+  * webpack-warnings-are-not-errors.patch
+  * github_package.patch
+  * nodejs_output_helper.bash
+- remove cockpit.permissions workaround (bsc#1169614)
+
+-------------------------------------------------------------------
 Fri Jan 28 14:54:44 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - new version 251.3

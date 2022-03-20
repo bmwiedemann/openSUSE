@@ -65,6 +65,11 @@ Source97:       node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
 Patch0:         cockpit-redhatfont.diff
 Patch1:         0001-selinux-allow-login-to-read-motd-file.patch
+Patch2:         hide-docs.patch
+Patch3:         suse-microos-branding.patch
+# SLE Micro specific patches
+Patch100:       remove-pwscore.patch
+Patch101:       hide-pcp.patch
 
 # in RHEL 8 the source package is duplicated: cockpit (building basic packages like cockpit-{bridge,system})
 # and cockpit-appstream (building optional packages like cockpit-{pcp})
@@ -171,7 +176,16 @@ Recommends: subscription-manager-cockpit
 
 %prep
 %setup -q -n cockpit-%{version}
-%autopatch -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+
+%if 0%{?sle_version}
+%patch100 -p1
+%patch101 -p1
+%endif
+
 cp %SOURCE1 tools/cockpit.pam
 #
 local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
@@ -443,7 +457,9 @@ Requires: cockpit-bridge >= %{version}-%{release}
 Requires: shadow-utils
 %endif
 Requires: grep
+%if !0%{?sle_version}
 Requires: /usr/bin/pwscore
+%endif
 Requires: /usr/bin/date
 Provides: cockpit-shell = %{version}-%{release}
 Provides: cockpit-systemd = %{version}-%{release}
@@ -494,6 +510,8 @@ Recommends: system-logos
 Suggests: sssd-dbus
 %if 0%{?suse_version}
 Requires(pre): permissions
+Requires: distribution-logos
+Requires: wallpaper-branding
 %endif
 
 %description ws
@@ -580,6 +598,12 @@ if [ "$1" = 1 ]; then
     ln -s /run/cockpit/motd /etc/motd.d/cockpit
     ln -s /run/cockpit/motd /etc/issue.d/cockpit.issue
 fi
+# switch old self-signed cert group from cockpit-wsintance to cockpit-ws on upgrade
+if [ "$1" = 2 ]; then
+    certfile=/etc/cockpit/ws-certs.d/0-self-signed.cert
+    test -f $certfile && stat -c '%G' $certfile | grep -q cockpit-wsinstance && chgrp cockpit-ws $certfile
+fi
+
 %if 0%{?suse_version}
 %set_permissions %{_libexecdir}/cockpit-session
 %endif
