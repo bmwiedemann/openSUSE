@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 18 04:46:08 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update to use cargo-packaging
+
+-------------------------------------------------------------------
 Mon Mar 14 02:50:27 UTC 2022 - william.brown@suse.com
 
 - Update to resolve bsc#1196972 CVE-2022-24713 - Regex DOS

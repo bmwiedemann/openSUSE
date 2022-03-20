@@ -30,10 +30,9 @@ Source0:        %{workspace_name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 
-BuildRequires:  cargo
-BuildRequires:  pkgconfig(libgit2)
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
-ExcludeArch:    s390 s390x ppc ppc64 ppc64le %ix86
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Audit Cargo.lock files for crates with security vulnerabilities reported to the RustSec Advisory Database.
@@ -43,12 +42,9 @@ Audit Cargo.lock files for crates with security vulnerabilities reported to the 
 %setup -qa1 -n %{workspace_name}-%{version}
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
-# Remove exec bits to prevent an issue in fedora shebang checking
-find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 
 %build
-export RUSTFLAGS="%{rustflags}"
-cargo build --offline --release
+%{cargo_build}
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
