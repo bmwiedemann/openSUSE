@@ -361,8 +361,7 @@
     <package name="desktop-file-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="desktop-translations" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="device-mapper" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="dhcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="dhcp-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="dhcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dhcp-relay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dhcp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
