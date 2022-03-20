@@ -1,7 +1,7 @@
 #
 # spec file for package cpu-x
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define src_name CPU-X-%version
 Name:           cpu-x
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later
@@ -31,6 +31,8 @@ BuildRequires:  gettext-tools
 %ifarch %ix86 x86_64
 BuildRequires:  nasm
 %endif
+BuildRequires:  opencl-headers
+BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(libcpuid) >= 0.5.0
