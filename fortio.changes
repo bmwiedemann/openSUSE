@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 20 10:22:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.22.0:
+  * allow a headers json array in json rest api payload ... (#523)
+  * Echo prefix after /debug/ (#525)
+  * `-server-idle-timeout` and close=x as a % instead of just true/false for all echo requests, `-calc-qps` client side (#522)
+
+-------------------------------------------------------------------
 Fri Mar 18 10:22:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.21.2:
