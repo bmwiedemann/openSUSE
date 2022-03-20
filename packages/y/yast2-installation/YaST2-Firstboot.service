@@ -1,6 +1,8 @@
 [Unit]
 Description=YaST2 Firstboot
 After=apparmor.service local-fs.target plymouth-start.service YaST2-Second-Stage.service
+# Run after kernels are purged to prevent a zypper lock (bsc#1196431)
+After=purge-kernels.service
 Conflicts=plymouth-start.service
 Before=getty@tty1.service serial-getty@ttyS0.service serial-getty@ttyS1.service serial-getty@ttyS2.service
 Before=serial-getty@hvc0.service serial-getty@ttyAMA0.service

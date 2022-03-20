@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 17 12:46:16 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Run the YaST2-Second-Stage and YaST2-Firsboot services after
+  purge-kernels to prevent a zypper lock error message
+  (bsc#1196431).
+- 4.4.49
+
+-------------------------------------------------------------------
 Tue Mar  8 19:25:42 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Prevent getty auto-generation because it makes xvnc to fail when
