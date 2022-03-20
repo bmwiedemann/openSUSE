@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,15 +29,14 @@
 
 %define pkgname vtk
 
-# pugixml and gl2ps in Leap 15.x are too old
+# pugixml in Leap 15.x is too old
 %if 0%{?suse_version} <= 1500
 %bcond_with    pugixml
-%bcond_with    gl2ps
 %else
 %bcond_without pugixml
-%bcond_without gl2ps
 %endif
 
+%bcond_without gl2ps
 %bcond_without java
 %bcond_without pegtl
 
@@ -183,7 +182,7 @@ BuildRequires:  netcdf-%{mpi_flavor}-devel
 BuildRequires:  python3-mpi4py-devel
 %endif
 %if %{with pugixml}
-BuildRequires:  pkgconfig(pugixml)
+BuildRequires:  pkgconfig(pugixml) >= 1.11
 %endif
 %if %{with pegtl}
 BuildRequires:  pegtl-devel >= 2.0.0
@@ -213,9 +212,7 @@ This package provides the shared libraries for VTK.
 
 %package        devel
 Summary:        VTK header files for building C++ code
-# not strictly necessary, but required by VTKs cmake files
 Group:          Development/Libraries/C and C++
-%{?with_java:Requires:       %{name}-java = %{version}}
 Requires:       %{name}-qt = %{version}
 Requires:       %{shlib} = %{version}
 Requires:       cgns-devel
@@ -229,6 +226,7 @@ Requires:       libjpeg-devel
 Requires:       libmysqlclient-devel
 Requires:       libnetcdf_c++-devel
 Requires:       libtiff-devel
+# not strictly necessary, but required by VTKs cmake files
 Requires:       python3-%{name} = %{version}
 Requires:       utfcpp-devel
 %{?with_mpi:Requires:       %{mpi_flavor}}
@@ -258,7 +256,7 @@ Requires:       pkgconfig(zlib)
 Requires:       pegtl-devel
 %endif
 %if %{with pugixml}
-Requires:       pugixml-devel
+Requires:       pkgconfig(pugixml) >= 1.11
 %endif
 Conflicts:      vtk-compat_gl-devel
 
@@ -271,6 +269,23 @@ LOD control).
 
 This provides development libraries and header files required to
 compile C++ programs that use VTK to do 3D visualisation.
+
+%package        java-devel
+Summary:        Develoment files for VTK Java bindings
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-devel = %{version}
+Requires:       %{name}-java = %{version}
+Requires:       java-devel
+Provides:       %{name}-devel:%{my_libdir}/libvtkJava.so
+
+%description    java-devel
+VTK is a software system for image processing, 3D graphics, volume
+rendering and visualization. VTK includes many advanced algorithms
+(e.g. surface reconstruction, implicit modelling, decimation) and
+rendering techniques (e.g. hardware-accelerated volume rendering,
+LOD control).
+
+This provides the Java part of the development files.
 
 %package        devel-doc
 Summary:        VTK API documentation
@@ -540,8 +555,7 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %license Copyright.txt
 %{my_libdir}/lib*.so.*
 %exclude %{my_libdir}/libvtk*Qt*.so.*
-%exclude %{my_libdir}/libvtk*Java.so.1
-%exclude %{my_libdir}/libvtk*Python*.so.1
+%exclude %{my_libdir}/libvtk*Python*.so.*
 
 %files devel
 %license Copyright.txt
@@ -549,9 +563,10 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %if %{without gles}
 %{my_bindir}/vtkProbeOpenGLVersion
 %endif
-%{my_bindir}/%{pkgname}ParseJava
 %{my_bindir}/%{pkgname}WrapHierarchy
+# Should go into java-devel, but referenced by VTK-targets*.cmake
 %{my_bindir}/%{pkgname}WrapJava
+%{my_bindir}/%{pkgname}ParseJava
 %{my_bindir}/%{pkgname}WrapPython
 %{my_bindir}/%{pkgname}WrapPythonInit
 %{my_libdir}/*.so
@@ -560,7 +575,8 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %{my_libdir}/cmake/%{pkgname}-%{series}/
 %{my_incdir}/%{pkgname}-%{series}/
 # VTK JNI
-%exclude %{my_libdir}/libvtk*Java.so
+%exclude %{my_libdir}/libvtkJava.so
+%exclude %{my_libdir}/cmake/%{pkgname}-%{series}/VTKJava-*.cmake
 
 %if %{with documentation}
 %files devel-doc
@@ -571,14 +587,18 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %if %{with java}
 %files java
 %license Copyright.txt
-%{my_libdir}/libvtk*Java.so
-%{my_libdir}/libvtk*Java.so.1
+# VTK JNI
 %{my_libdir}/java/
+
+%files java-devel
+%{my_libdir}/libvtkJava.so
+%{my_libdir}/cmake/%{pkgname}-%{series}/VTKJava-*.cmake
 %endif
 
 %files -n python3-%{name}
 %license Copyright.txt
 %{my_bindir}/%{pkgname}python
+%{my_libdir}/libvtk*Python*.so.*
 %if %{with mpi}
 %{my_bindir}/p%{pkgname}python
 %{my_libdir}/py*
@@ -587,7 +607,6 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %{python3_sitearch}/vtk-%{version}*-info
 %{python3_sitearch}/vtkmodules
 %endif
-%{my_libdir}/libvtk*Python*.so.1
 
 %files qt
 %license Copyright.txt

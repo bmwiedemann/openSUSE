@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 10 22:01:28 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split java-devel subpackage from devel package, avoid pulling
+  in Java on most builds.
+- Move python support libraries to python subpackage.
+
+-------------------------------------------------------------------
+Thu Feb 10 21:33:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use system gl2ps also on Leap 15.x
+
+-------------------------------------------------------------------
 Thu Nov 18 04:03:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.1.0, see:
