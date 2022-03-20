@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 20 15:00:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 1.8
+- Remove unused source files
+- Removed patch:
+  * commons-transaction-1.1-project_xml.patch
+    + unneeded
+
+-------------------------------------------------------------------
 Tue Feb 22 19:27:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j

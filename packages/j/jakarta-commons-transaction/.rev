@@ -119,4 +119,12 @@
     <comment>Build against reload4j</comment>
     <requestid>957048</requestid>
   </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>bee43f716885fc8dce8946a2d43f0477</srcmd5>
+    <version>1.1</version>
+    <time>1647806170</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963279</requestid>
+  </revision>
 </revisionlist>

@@ -25,15 +25,11 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://jakarta.apache.org/commons/transaction/
 Source0:        commons-transaction-1.1-src.tar.bz2
-Source1:        pom-maven2jpp-depcat.xsl
-Source2:        pom-maven2jpp-newdepmap.xsl
-Source3:        pom-maven2jpp-mapdeps.xsl
-Source4:        commons-transaction-1.1-jpp-depmap.xml
-Patch0:         commons-transaction-1.1-project_xml.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  geronimo-jta-1_1-api
 BuildRequires:  jakarta-commons-beanutils
 BuildRequires:  jakarta-commons-codec
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  reload4j
@@ -58,28 +54,24 @@ compatible to JDK1.2 and should have minimal dependencies.
 %prep
 %setup -q -c -n %{base_name}
 find . -name "*.jar" | xargs rm
-%patch0 -b .sav
 
 %build
 export CLASSPATH=$(build-classpath commons-codec jta reload4j):`pwd`/build/classes
 export OPT_JAR_LIST=:
-ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
-    -Dbuild.sysclasspath=only -Dant.java.version=1.6 -Dcompile.target=1.6 \
+%{ant} \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
+    -Dbuild.sysclasspath=only -Dant.java.version=1.8 -Dcompile.target=1.8 \
 	jar
 
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 build/lib/commons-transaction-1.1.jar \
-           %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in jakarta-*; do \
-ln -sf ${jar} ${jar/jakarta-/}; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do \
-ln -sf ${jar} ${jar/-%{version}/}; done)
+install -m 644 build/lib/%{base_name}-%{version}.jar \
+           %{buildroot}%{_javadir}/%{name}.jar
+ln -sf %{name}.jar %{buildroot}%{_javadir}/%{base_name}.jar
 
 %files
-%doc LICENSE.txt
+%license LICENSE.txt
 %{_javadir}/*
 
 %changelog
