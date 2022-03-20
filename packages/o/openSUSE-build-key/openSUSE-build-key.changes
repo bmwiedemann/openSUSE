@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 14:29:59 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- gpg-pubkey-307e3d54-5aaa90a5.asc: remove the RSA 1024bit SLE11 key
+  and try to remove it from installed systems via Obsoletes.
+
+-------------------------------------------------------------------
 Fri Jan 14 09:52:48 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - refresh the openSUSE Backports key (bsc#1193092)

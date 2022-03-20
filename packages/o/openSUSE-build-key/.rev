@@ -287,4 +287,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment></comment>
     <requestid>946805</requestid>
   </revision>
+  <revision rev="34" vrev="43">
+    <srcmd5>c301a7d97bfcbbbb0e217da38d0cf869</srcmd5>
+    <version>1.0</version>
+    <time>1647806106</time>
+    <user>dimstar_suse</user>
+    <comment>- gpg-pubkey-307e3d54-5aaa90a5.asc: remove the RSA 1024bit SLE11 key
+  and try to remove it from installed systems via Obsoletes. (forwarded request 962744 from msmeissn)</comment>
+    <requestid>962757</requestid>
+  </revision>
 </revisionlist>

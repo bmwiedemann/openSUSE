@@ -25,8 +25,6 @@ Summary:        The public gpg keys for rpm package signature verification
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://en.opensuse.org/openSUSE:Security_team
-# build@suse.de for SLE11
-Source0:        gpg-pubkey-307e3d54-5aaa90a5.asc
 # opensuse@opensuse.org
 Source1:        gpg-pubkey-3dbdc284-53674dd4.asc
 # build@suse.de for SLE12 / SLE15
@@ -47,6 +45,9 @@ Source98:       security_at_suse_de.asc
 BuildRequires:  gpg
 Conflicts:      suse-build-key
 Provides:       build-key = %{version}
+
+# Old 1024 bit RSA key for SLE11.
+Obsoletes:      gpg-pubkey-307e3d54-5aaa90a5
 
 %description
 This package contains the gpg keys that are used to sign the
@@ -100,7 +101,6 @@ install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.a
 %attr(755,root,root) %dir %{_prefix}/lib/rpm/gnupg
 %attr(755,root,root) %dir %{keydir}
 %attr(755,root,root) %dir %{containerkeydir}
-%{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc
 %{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
 %{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
 %if 0%{?sle_version}
