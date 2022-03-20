@@ -1,7 +1,7 @@
 #
 # spec file for package libnpupnp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %define so_ver  4
 Name:           libnpupnp
-Version:        4.1.5
+Version:        4.2.1
 Release:        0
 Summary:        A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://www.lesbonscomptes.com/updmpdcli
+URL:            https://www.lesbonscomptes.com/upmpdcli/
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/libnpupnp-%{version}.tar.gz
+Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/libnpupnp-%{version}.tar.gz.asc
+Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
@@ -69,6 +71,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so.*
 
 %files -n libnpupnp-devel
+%license COPYING
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
