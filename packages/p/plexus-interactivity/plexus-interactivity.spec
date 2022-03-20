@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-interactivity
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,8 +69,8 @@ API module for %{name}.
 %package jline
 Summary:        jline module for %{name}
 Group:          Development/Libraries/Java
-Requires:       mvn(jline:jline)
 Requires:       plexus-interactivity-api = %{version}
+Requires:       mvn(jline:jline)
 
 %description jline
 jline module for %{name}.
