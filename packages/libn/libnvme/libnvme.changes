@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 18 19:08:52 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc7:
+  * linux: fixup log page offset in nvme_get_log_page()
+  * tree: Add support for default trsvcid for all controllers (bsc#1195858)
+  * tree: fixup coredump during nvme discover
+
+-------------------------------------------------------------------
 Fri Mar 11 17:58:36 UTC 2022 - Daniel Wagnrer <daniel.wagner@suse.com>
 
 - Update to version 1.0-rc6:
