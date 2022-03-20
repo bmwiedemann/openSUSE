@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(libvirt)
 BuildRequires:  pkgconfig(libvirt-glib-1.0)
 BuildRequires:  pkgconfig(systemd)
 Requires:       polkit
-Requires:       user(libvirtdbus)
+Requires(pre):  user(libvirtdbus)
 
 %description
 This package provides D-Bus API for libvirt
@@ -54,7 +54,7 @@ System user for libvirt-dbus.
 %build
 %meson -Dinit_script=systemd
 %meson_build
-%sysusers_generate_pre %{SOURCE1} system-user-%{name}
+%sysusers_generate_pre %{SOURCE1} system-user-%{name} system-user-%{name}.conf
 
 %install
 %meson_install

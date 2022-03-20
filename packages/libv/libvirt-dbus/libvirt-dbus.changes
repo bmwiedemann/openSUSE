@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 11 14:15:03 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+
+-------------------------------------------------------------------
 Fri Mar 11 01:09:18 UTC 2022 - jfehlig@suse.com
 
 - Update to version 1.4.1:
