@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 20 03:52:22 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.1.0~11:
+  * warn when non-root. Improve daemon mode. Set default pool path
+  * Fix repo metadata timeout
+
+-------------------------------------------------------------------
 Sun Mar 06 05:04:51 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.1.0~9:
