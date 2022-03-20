@@ -173,4 +173,12 @@
     <comment>generate maven metadata and distribute as maven artifact</comment>
     <requestid>958690</requestid>
   </revision>
+  <revision rev="25" vrev="137">
+    <srcmd5>d38ddfa5bdde06db8e9a17757f5836e6</srcmd5>
+    <version>0.4</version>
+    <time>1647806170</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963283</requestid>
+  </revision>
 </revisionlist>

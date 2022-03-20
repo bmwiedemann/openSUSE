@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 20 15:04:07 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Tue Mar  1 17:30:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Distribute commons-discovery as maven artifact
