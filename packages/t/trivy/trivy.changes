@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 18 10:21:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.24.4:
+  * fix(docker): Getting images without a tag (#1852)
+  * docs(gitlab-ci): Use environment variables TRIVY_CACHE_DIR and TRIVY_NO_PROGRESS (#1801)
+
+-------------------------------------------------------------------
 Thu Mar 17 10:14:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.17
