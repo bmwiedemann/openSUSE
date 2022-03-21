@@ -163,7 +163,9 @@ Prefer: libtolua++-5_4-devel libtolua++-5_3-devel libtolua++-5_1-devel
 Preinstall: liblua5_4-5
 
 FileProvides: /bin/bash bash
+FileProvides: /usr/bin/bash bash
 FileProvides: /bin/sh bash-sh busybox-sh
+FileProvides: /usr/bin/sh bash-sh busybox-sh
 Prefer: bash-sh
 FileProvides: /bin/csh tcsh
 FileProvides: /bin/hostname hostname busybox-hostname
