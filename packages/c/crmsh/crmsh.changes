@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Mar 21 08:22:17 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220321.8cf6a9d1:
+  * Dev: Parametrize the log dir
+
+-------------------------------------------------------------------
+Mon Mar 21 05:15:04 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220321.aa92b3f0:
+  * Dev: unittest: Add unit test for previous changes
+  * Dev: behave: Add functional test for the scenario one qnetd for multi cluster
+  * Dev: ui_cluster: Check if qdevice can contribute vote
+  * Dev: qdevice: Improve remove qdevice process
+  * Dev: qdevice: Add lock to protect for the same cluster name
+  * Fix: qdevice: Add lock to protect init_db_on_qnetd function (bsc#1197323)
+  * Dev: qdevice: Consolidate qdevice related separate functions into qdevice.QDevice class
+  * Dev: lock: Make lock.py more generic
+  * Dev: qdevice: Add cluster name suffix to qdevice-net-node.crq on qnet
+  * Dev: qdevice: remove askpass since it's unnecessary after passwordless configured on qnetd
+
+-------------------------------------------------------------------
+Mon Mar 21 04:21:47 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220321.fceabc07:
+  * Dev: utils: Remove duplicated debug message
+
+-------------------------------------------------------------------
+Fri Mar 18 15:34:39 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220318.7f434a3b:
+  * medium: utils: update detect_cloud pattern for aws
+
+-------------------------------------------------------------------
 Mon Mar 07 01:18:29 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220307.347f815c:
