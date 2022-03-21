@@ -1,7 +1,7 @@
 #
 # spec file for package matthewlib-java
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define orig_name libmatthew-java
-
 Name:           matthewlib-java
 Version:        0.8
 Release:        0
@@ -35,12 +34,11 @@ Source0:        libmatthew-java-0.8.tar.gz
 Patch0:         install_doc.patch
 Patch1:         classpath_fix.patch
 Patch2:         libmatthew-java-0.8-jdk10.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
+Requires:       java >= 1.8
 Requires:       javapackages-tools
-Requires:       jre >= 1.5.0
 Provides:       %{orig_name}
 
 %description
@@ -90,31 +88,26 @@ make \
     CFLAGS='%{optflags} -fpic -std=c99' \
     LIBDIR='%{_libdir}' \
     LD='gcc' \
-    JCFLAGS='-target 1.6 -source 1.6'
+    JCFLAGS='-target 1.8 -source 1.8'
 
 %install
 make install \
-    DESTDIR=$RPM_BUILD_ROOT \
+    DESTDIR=%{buildroot} \
     JARDIR=%{_javadir} \
     LIBDIR=%{_libdir}/ \
     DOCDIR=%{_javadocdir}/%{name}-%{version}
-%fdupes -s $RPM_BUILD_ROOT/
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%fdupes -s %{buildroot}/
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %{_javadir}/*jar
 %{_libdir}/lib*.so*
-%doc COPYING README
+%license COPYING
+%doc README
 
 %files javadoc
-%defattr(-,root,root,-)
 %{_javadocdir}/%{name}-%{version}
 
 %changelog

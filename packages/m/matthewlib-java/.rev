@@ -125,4 +125,12 @@
     <comment>Fix build with jdk10</comment>
     <requestid>559492</requestid>
   </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>d4e8c4d685b01af475330a18f9958846</srcmd5>
+    <version>0.8</version>
+    <time>1647889976</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963698</requestid>
+  </revision>
 </revisionlist>
