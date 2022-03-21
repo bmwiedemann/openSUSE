@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:58:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.5.2:
+  * changelog from 0.5.1 to 0.5.2:
+    https://github.com/parallaxsecond/parsec-tool/compare/0.5.1...0.5.2
+  * Fixes CVE-2022-24713 - boo#1196972
+
+-------------------------------------------------------------------
 Thu Feb 24 09:17:35 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0.5.1:
