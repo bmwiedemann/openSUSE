@@ -18,10 +18,8 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# not compatile with Python 3.10 API: https://github.com/pavlin-policar/openTSNE/issues/205
-%define skip_python310 1
 Name:           python-openTSNE
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Extensible, parallel implementations of t-SNE
 License:        BSD-3-Clause
@@ -29,18 +27,19 @@ URL:            https://github.com/pavlin-policar/openTSNE
 # tests are not packaged in the PyPI sdist, use GitHub instead
 Source:         %{url}/archive/v%{version}.tar.gz#/openTSNE-%{version}-gh.tar.gz
 Patch0:         python-openTSNE-disable-CPU-autodetection.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.16.6}
 BuildRequires:  %{python_module scikit-learn >= 0.20}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
+BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
 Requires:       python-numpy >= 1.16.6
 Requires:       python-scikit-learn >= 0.20
 Requires:       python-scipy
@@ -65,7 +64,11 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch --import-mode append
+%ifarch %ix86 %arm32
+# precision errors on 32bit
+%define donttest -k "not TestTSNECorrectnessUsingPrecomputedDistanceMatrix"
+%endif
+%pytest_arch --import-mode append %{?donttest}
 
 %files %{python_files}
 %doc README.rst

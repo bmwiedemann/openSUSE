@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar 20 19:38:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.2
+  * By default, we now use the MultiscaleMixture affinity model,
+    enabling us to pass in a list of perplexities instead of a
+    single perplexity value. This is fully backwards compatible.
+  * Previously, perplexity values would be changed according to the
+    dataset. E.g. we pass in perplexity=100 with N=150. Then
+    TSNE.perplexity would be equal to 50. Instead, keep this value
+    as is and add an effective_perplexity_ attribute (following the
+    convention from scikit-learn, which puts in the corrected
+    perplexity values.
+  * Fix bug where interpolation grid was being prepared even when
+    using BH optimization during transform.
+  * Enable calling .transform with precomputed distances. In this
+    case, the data matrix will be assumed to be a distance matrix.
+  * Fix potential problem with clang-13, which actually does
+    optimization with infinities using the -ffast-math flag
+- Enable python310 build
+- Skip a test in 32bit failing due to rounding errors
+
+-------------------------------------------------------------------
 Fri Feb  4 16:10:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.1
