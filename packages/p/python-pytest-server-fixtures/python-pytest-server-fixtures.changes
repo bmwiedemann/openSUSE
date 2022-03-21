@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 04:29:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop mock BuildRequires, it is not required. 
+
+-------------------------------------------------------------------
 Sun Oct 17 17:03:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix compatibikity with with Psycopg 2.9

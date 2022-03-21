@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-server-fixtures
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,6 @@ BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module kubernetes}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pymongo >= 3.6.0}
