@@ -29,7 +29,6 @@ Source:         https://github.com/graphql-python/graphene/archive/v%{version}.t
 BuildRequires:  %{python_module aniso8601 >= 8}
 BuildRequires:  %{python_module graphql-core >= 3.1.2}
 BuildRequires:  %{python_module graphql-relay >= 3.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module promise}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-benchmark}
