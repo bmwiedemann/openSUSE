@@ -22,8 +22,6 @@
 %bcond_with     mininet
 %bcond_with     grpc
 
-%define skip_python2 1
-
 %define frr_user frr
 %define frr_group frr
 %define frrvty_group frrvty
@@ -47,15 +45,15 @@ Patch3:         0003-babeld-fix-10487-by-adding-a-check-on-packet-length.patch
 Patch4:         0004-babeld-fix-10502-10503-by-repairing-the-checks-on-le.patch
 Patch5:         0005-isisd-fix-router-capability-TLV-parsing-issues.patch
 Patch6:         0006-isisd-fix-10505-using-base64-encoding.patch
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
 BuildRequires:  flex
 BuildRequires:  libtool
 BuildRequires:  makeinfo
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-devel
+BuildRequires:  python3-pytest
 %if %{with mininet}
 BuildRequires:  mininet
 %endif

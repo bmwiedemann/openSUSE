@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 17 11:45:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Make build a bit cheaper: do only BuildRequire the primary python
+  interpreter and its modules (python3-FOO) instead of all
+  available versions as done using %{python_module FOO}
+
+-------------------------------------------------------------------
 Mon Feb 28 11:05:48 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 
 - Apply fix for a buffer overflow in isisd due to the use of strdup
