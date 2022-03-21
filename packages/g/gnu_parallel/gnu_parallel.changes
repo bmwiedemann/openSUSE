@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 20 19:49:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220222:
+  * Encoding of remote commands has changed. This limits the length of
+    remote commands to less than half. It also requires $REMOTE_TMPDIR
+    to be writable. It makes this release beta quality.
+  * Time functions hh_mm_ss() hhmmss() hh_mm() hhmm() are now available
+    for {= =}.
+  * Many options in the man page for parallel now has 'see also' for
+    related options.
+  * parallel_options_map.pdf is a map showing which options other
+    options relate to.
+  * {uniq} added to --plus to only run jobs with unique values.
+  * sem --fg exits with the exit code of the job.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
 Sun Jan 23 16:15:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220122:
