@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Summary:        Human friendly input/output for text interfaces using Python
 License:        MIT
 URL:            https://github.com/xolox/python-humanfriendly
 Source:         https://files.pythonhosted.org/packages/source/h/humanfriendly/humanfriendly-%{version}.tar.gz
+# https://github.com/xolox/python-humanfriendly/issues/62
+Patch0:         python-humanfriendly-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -73,6 +75,7 @@ text interfaces more user friendly.
 
 %prep
 %setup -q -n humanfriendly-%{version}
+%patch0 -p1
 
 %build
 %python_build
