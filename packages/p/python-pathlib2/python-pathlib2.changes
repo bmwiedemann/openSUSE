@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 20 09:08:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.7.post1
+  * This version will be the last release to support Python 2.7.
+  * Fix bug in samefile on Windows when file does not exist.
+  * Add newline parameter for write_text (see issue #64).
+  * Add many more type annotations.
+  * Continuous integration migrated to github actions.
+  * Project migrated to jazzband.
+- Clean up specfile from old cruft handled by python-rpm-macros
+- Skip python310 tests: test file imports not compatible
+
+-------------------------------------------------------------------
 Tue Aug 17 11:54:47 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.3.6:

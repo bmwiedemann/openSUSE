@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,37 +20,36 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+# the test suite on <= 2.3.7.post1 is not compatible with Python 3.10
+# it is already fixed in upstream's devel branch
+%define skip_python310 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 Name:           python-pathlib2%{?psuffix}
-Version:        2.3.6
+Version:        2.3.7.post1
 Release:        0
 Summary:        Object-oriented filesystem paths
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/mcmtroffaes/pathlib2
+URL:            https://github.com/jazzband/pathlib2
 Source:         https://files.pythonhosted.org/packages/source/p/pathlib2/pathlib2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module scandir}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module pathlib2 = %{version}}
 BuildRequires:  %{python_module testsuite}
 %endif
 %ifpython2
+Requires:       python-mock
 Requires:       python-scandir
-%endif
-%ifpython2
-Provides:       %{oldpython}-pathlib2 = %{version}
-Obsoletes:      %{oldpython}-pathlib2 <= %{version}
+Requires:       python-typing
 %endif
 %python_subpackages
 
@@ -63,6 +62,7 @@ used also on older Python versions.
 
 %prep
 %autosetup -n pathlib2-%{version}
+dos2unix CHANGELOG.rst README.rst
 
 %build
 %python_build
@@ -75,15 +75,17 @@ used also on older Python versions.
 
 %if %{with test}
 %check
-export PYTHONPATH="$PWD"
-%python_exec tests/test_pathlib2.py
+pushd tests
+%pyunittest -v
+popd
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGELOG.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pathlib2
+%{python_sitelib}/pathlib2-%{version}*-info
 %endif
 
 %changelog
