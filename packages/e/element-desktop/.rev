@@ -123,4 +123,13 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
 </comment>
     <requestid>962673</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d81e4cad7c88bc855ce445b337f0ba66</srcmd5>
+    <version>1.10.4</version>
+    <time>1647889949</time>
+    <user>dimstar_suse</user>
+    <comment>- Use right build dir for aarch64 (boo#1197278)
+</comment>
+    <requestid>963653</requestid>
+  </revision>
 </revisionlist>

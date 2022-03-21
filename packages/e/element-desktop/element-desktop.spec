@@ -77,7 +77,11 @@ yarn run build
 install -d %{buildroot}{%{_datadir}/element/,%{_sysconfdir}/webapps/element}
 
 # Install the app content, replace the webapp with a symlink to the system package
-cp -r dist/linux-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
+if [ "$(arch)" == "aarch64" ] ; then
+	cp -r dist/linux-arm64-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
+else
+	cp -r dist/linux-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
+fi
 ln -s %{_datadir}/webapps/element "%{buildroot}%{_datadir}/element/webapp"
 
 # Config file

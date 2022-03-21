@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 10:11:21 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Use right build dir for aarch64 (boo#1197278)
+
+-------------------------------------------------------------------
 Fri Mar 18 11:42:33 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Fix build on other architectures (boo#1197278)
