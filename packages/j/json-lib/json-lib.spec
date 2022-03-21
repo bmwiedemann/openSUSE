@@ -33,7 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  maven-local
 BuildRequires:  mvn(antlr:antlr)
-BuildRequires:  mvn(asm:asm)
 BuildRequires:  mvn(commons-beanutils:commons-beanutils)
 BuildRequires:  mvn(commons-cli:commons-cli)
 BuildRequires:  mvn(commons-collections:commons-collections)
@@ -43,10 +42,10 @@ BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(net.sf.ezmorph:ezmorph)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
-BuildRequires:  mvn(org.apache:apache:pom:)
 BuildRequires:  mvn(org.codehaus.groovy:groovy-all:1.8)
 BuildRequires:  mvn(org.codehaus.groovy:groovy:1.8)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildRequires:  mvn(org.ow2.asm:asm)
 BuildRequires:  mvn(org.slf4j:slf4j-nop)
 BuildRequires:  mvn(oro:oro)
 BuildRequires:  mvn(xom:xom)
@@ -99,6 +98,7 @@ rm -r src/main/jdk15/net/sf/json/JSON*.java
 %pom_remove_dep :commons-httpclient
 
 %pom_change_dep org.codehaus.groovy:: org.codehaus.groovy::1.8
+%pom_change_dep asm: org.ow2.asm:
 
 # Remove the -SNAPSHOT postfix
 %pom_xpath_set pom:project/pom:version "2.4-jenkins-3" jenkins-%{name}-%{version}/pom.xml
@@ -115,17 +115,19 @@ popd
 
 %build
 %{mvn_file} : %{name}
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6
+	-Dmaven.compiler.release=8 \
 %endif
+    -Dproject.build.sourceEncoding=UTF-8
 
 # build Jenkins JSON lib
 pushd jenkins-%{name}-%{version}
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+	-Dmaven.compiler.release=8 \
 %endif
+    -Dproject.build.sourceEncoding=UTF-8
 
 popd
 

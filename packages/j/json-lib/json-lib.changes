@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 21 08:45:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on the old asm3
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Tue Feb 22 18:18:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages
