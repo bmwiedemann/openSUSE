@@ -1,7 +1,7 @@
 #
 # spec file for package akka
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,11 +39,10 @@ Source7:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-osgi_%{sca
 Source8:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-remote_%{scala_short_version}/%{namedversion}/akka-remote_%{scala_short_version}-%{namedversion}.pom
 Source9:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_%{scala_short_version}/%{namedversion}/akka-slf4j_%{scala_short_version}-%{namedversion}.pom
 Source10:       https://repo1.maven.org/maven2/com/typesafe/akka/akka-transactor_%{scala_short_version}/%{namedversion}/akka-transactor_%{scala_short_version}-%{namedversion}.pom
-Patch0:         akka-2.3.0-encoding.patch
 Patch1:         akka-2.3.0-typesafe-config-1.3.0.patch
 Patch2:         akka-2.3.16-typesafe-config-1.4.1.patch
 BuildRequires:  ant
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  mvn(com.google.protobuf:protobuf-java)
@@ -59,7 +58,7 @@ BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.uncommons.maths:uncommons-maths)
 # requires for akka-remote
 BuildRequires:  protobuf-devel
-Requires:       java-headless
+Requires:       java-headless >= 1.8
 Requires:       mvn(com.google.protobuf:protobuf-java)
 Requires:       mvn(com.typesafe:config)
 Requires:       mvn(io.netty:netty:3)
@@ -88,7 +87,6 @@ This package contains javadoc for %{name}.
 cp -p %{SOURCE1} build.xml
 sed -i "s|@VERSION@|%{namedversion}|" build.xml
 
-%patch0 -p1
 %if %{?pkg_vcmp:%pkg_vcmp typesafe-config >= 1.3}%{!?pkg_vcmp:0}
 %patch1 -p1
 %endif

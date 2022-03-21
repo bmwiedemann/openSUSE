@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 21 14:37:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Removed patch:
+  * akka-2.3.0-encoding.patch
+    + the change is directly integrated in the akka-build.xml file
+
+-------------------------------------------------------------------
 Tue Apr 20 07:44:10 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
