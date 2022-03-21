@@ -222,4 +222,19 @@ The compiler is NOT used by default.</comment>
   at the same version.  [bsc#1196107]</comment>
     <requestid>959906</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>60c35fc45ea0ec2d2f529c473c34a182</srcmd5>
+    <version>11.2.1+git1406</version>
+    <time>1647889849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-11 branch head (6a1150d1524aeda3381b21717), git1406
+  * includes change to adjust gnats idea of the target, fixing
+    the build of gprbuild.  [bsc#1196861]
+- Add gcc11-pr104931.patch to fix miscompile of embedded premake
+  in 0ad on i586.  [bsc#1197065]
+
+- drop armv5tel, merge arm and armv6hl
+- use --with-cpu rather than specifying --with-arch/--with-tune</comment>
+    <requestid>962391</requestid>
+  </revision>
 </revisionlist>

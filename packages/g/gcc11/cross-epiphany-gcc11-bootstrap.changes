@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 16 15:10:15 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (6a1150d1524aeda3381b21717), git1406
+  * includes change to adjust gnats idea of the target, fixing
+    the build of gprbuild.  [bsc#1196861]
+- Add gcc11-pr104931.patch to fix miscompile of embedded premake
+  in 0ad on i586.  [bsc#1197065]
+
+-------------------------------------------------------------------
+Mon Mar  7 22:43:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop armv5tel, merge arm and armv6hl
+- use --with-cpu rather than specifying --with-arch/--with-tune 
+
+-------------------------------------------------------------------
 Wed Mar  2 09:14:45 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Add a list of Obsoletes to libstdc++6-pp-gcc11 so updates from

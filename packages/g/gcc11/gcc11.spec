@@ -186,7 +186,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.2.1+git1173
+Version:        11.2.1+git1406
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -359,6 +359,7 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
+Patch21:        gcc11-pr104931.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 Patch52:        gcc10-foffload-default.patch
@@ -2000,6 +2001,7 @@ cd ..
 %patch19 -p1
 %endif
 %patch20 -p1
+%patch21 -p1
 %patch51
 %patch52 -p1
 %patch60 -p1
@@ -2244,14 +2246,6 @@ amdgcn-amdhsa,\
 	--with-native-system-header-dir=/include \
 %endif
 %endif
-%if "%{TARGET_ARCH}" == "arm"
-        --with-arch=armv6zk \
-        --with-tune=arm1176jzf-s \
-	--with-float=hard \
-	--with-abi=aapcs-linux \
-	--with-fpu=vfp \
-	--disable-sjlj-exceptions \
-%endif
 %if "%{TARGET_ARCH}" == "arm-none"
 	--enable-multilib \
 	--with-multilib-list=aprofile,rmprofile \
@@ -2264,24 +2258,15 @@ amdgcn-amdhsa,\
 	--disable-threads \
 	--disable-tls \
 %endif
-%if "%{TARGET_ARCH}" == "armv5tel"
-	--with-arch=armv5te \
-	--with-float=soft \
-	--with-mode=arm \
+%if "%{TARGET_ARCH}" == "armv6hl" || "%{TARGET_ARCH}" == "arm"
+	--with-cpu=arm1176jzf-s \
+	--with-float=hard \
 	--with-abi=aapcs-linux \
+	--with-fpu=vfpv2 \
 	--disable-sjlj-exceptions \
 %endif
-%if "%{TARGET_ARCH}" == "armv6hl"
-        --with-arch=armv6zk \
-        --with-tune=arm1176jzf-s \
-        --with-float=hard \
-        --with-abi=aapcs-linux \
-        --with-fpu=vfp \
-        --disable-sjlj-exceptions \
-%endif
 %if "%{TARGET_ARCH}" == "armv7hl"
-	--with-arch=armv7-a \
-	--with-tune=generic-armv7-a \
+	--with-cpu=generic-armv7-a \
 	--with-float=hard \
 	--with-abi=aapcs-linux \
 	--with-fpu=vfpv3-d16 \
