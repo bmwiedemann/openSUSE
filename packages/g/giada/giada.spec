@@ -1,7 +1,7 @@
 #
 # spec file for package giada
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -19,21 +19,19 @@
 
 
 Name:           giada
-Version:        0.16.0
+Version:        0.21.0+git.20220312.9f123ccf
 Release:        0
 Summary:        Sampler Audio Tool
 License:        GPL-3.0-or-later
 URL:            https://giadamusic.com
-Source0:        https://github.com/monocasual/giada/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        giada.svg
-Source2:        %{name}.changes
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         %{name}-findFLTK.patch
+BuildRequires:  cmake
 BuildRequires:  fltk-devel
-%if 0%{?suse_version} >= 1500
-BuildRequires:  gcc-c++
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc10-c++
 %else
-BuildRequires:  gcc7-c++
+BuildRequires:  gcc-c++
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
@@ -53,6 +51,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(xrandr)
 
 %description
 Giada is an audio tool for DJs and live performers. Up to 32 samples
@@ -61,26 +60,25 @@ machine) or loop mode (sequencer). The keyboard can be used to
 control this.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CXX=g++
-test -x "$(type -p g++-7)" && export CXX=g++-7 OBJCXX=g++-7
-./autogen.sh
-%configure --target=linux
-make %{?_smp_mflags}
+test -x "$(type -p g++-10)" && export CXX=g++-10 OBJCXX=g++-10
+%cmake -DCMAKE_BUILD_TYPE=Release -DWITH_VST3=ON
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
-install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %suse_update_desktop_file -c %{name} %{name} "Sampler Audio Tool" %{name} %{name} AudioVideo Audio Sequencer
 
 %files
 %doc ChangeLog
 %license COPYING
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/applications/*
+%{_datadir}/icons/hicolor/scalable/apps/*
+%{_datadir}/metainfo/*
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 16 09:07:47 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 0.21.0+git, switch to obs_scm service
+- add giada-findFLTK.patch
+- enable VST3 support
+
+-------------------------------------------------------------------
 Wed Jan  1 21:01:31 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.16.0
