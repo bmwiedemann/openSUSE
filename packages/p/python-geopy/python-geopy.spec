@@ -18,7 +18,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-geopy
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 License:        MIT
 Summary:        Python Geocoding Toolbox
@@ -29,8 +29,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 BuildRequires:  %{python_module async_generator}
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module geographiclib >= 1.49}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.10}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module six}
@@ -66,7 +66,6 @@ rm \
   test/geocoders/arcgis.py \
   test/geocoders/banfrance.py \
   test/geocoders/databc.py \
-  test/geocoders/geocodefarm.py \
   test/geocoders/geonames.py \
   test/geocoders/googlev3.py \
   test/geocoders/ignfrance.py \

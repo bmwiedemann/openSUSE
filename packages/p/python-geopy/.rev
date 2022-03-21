@@ -139,4 +139,41 @@
     <comment>- %check: use %pyunittest rpm macro (forwarded request 895274 from pgajdos)</comment>
     <requestid>895289</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9a32a9040f314b3c17d289816be4ad48</srcmd5>
+    <version>2.2.0</version>
+    <time>1647889999</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.2.0
+  New Features
+  ~~~~~~~~~~~
+  - :class:`.OpenCage`: added ``annotations`` param.
+    Contributed by mtmail. (:issue:`464`)
+  - :class:`.Photon`: added ``bbox`` param.
+    Contributed by Holger Bruch. (:issue:`472`)
+  - New geocoder: :class:`.Geocodio`.
+    Contributed by Jon Duckworth. (:issue:`468`)
+  - New geocoder: :class:`.HereV7`.
+    Contributed by Pratheek Rebala. (:issue:`433`)
+  - New geocoder: :class:`.What3WordsV3`.
+    Contributed by Saïd Tezel. (:issue:`444`)
+  - New error class: :class:`.exc.GeocoderRateLimited`. This error extends
+    :class:`.exc.GeocoderQuotaExceeded` and is now raised instead of it
+    for HTTP 422 error code. (:issue:`479`)
+  - :class:`.AdapterHTTPError`: added ``headers`` attribute. (:issue:`479`)
+  Breaking Changes
+  ~~~~~~~~~~~~~~~
+  - Removed GeocodeFarm class: the service is very unstable. (:issue:`445`)
+  
+  Deprecations
+  ~~~~~~~~~~~
+  - :class:`.GoogleV3` has been moved from ``geopy.geocoders.googlev3`` module
+    to ``geopy.geocoders.google``. The old module is still present for
+    backwards compatibility, but it will be removed in geopy 3. (:issue:`483`)
+  Bugfixes
+  ~~~~~~~
+  - :class:`.OpenCage`: improved error handling by using the default errors map
+    (e.g. to raise :class:`.exc.GeocoderQuotaExceeded` instead of (forwarded request 963687 from pgajdos)</comment>
+    <requestid>963739</requestid>
+  </revision>
 </revisionlist>
