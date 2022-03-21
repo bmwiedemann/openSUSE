@@ -1,7 +1,7 @@
 #
 # spec file for package jformatstring
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@ Source2:        http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 Patch0:         jformatstring-build.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 Provides:       jFormatString = %{version}-%{release}
 Obsoletes:      jFormatString < %{version}-%{release}
@@ -67,9 +67,9 @@ mkdir -p lib
 cp %{SOURCE2} LICENSE
 
 %build
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 jarFile
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jarFile
 mkdir -p javadoc
-javadoc -notimestamp -d javadoc -source 1.6 \
+javadoc -notimestamp -d javadoc -source 1.8 \
            $(find src/java -name \*.java | xargs)
 
 %install

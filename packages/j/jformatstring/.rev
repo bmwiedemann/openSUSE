@@ -129,4 +129,12 @@
     <comment>Calm down source validator</comment>
     <requestid>758467</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>2c846d2ef60fff86832e60a8f4c791fc</srcmd5>
+    <version>0.10~20131207</version>
+    <time>1647889972</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963683</requestid>
+  </revision>
 </revisionlist>

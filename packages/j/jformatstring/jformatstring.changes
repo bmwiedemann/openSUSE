@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:38:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Fri Dec 20 09:32:52 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Refetch the gpl-2.0.html to satisfy source validator
