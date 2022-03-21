@@ -1,15 +1,15 @@
 <services>
-	<service name="tar_scm" mode="manual">
+	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/openSUSE/rpm-config-SUSE</param>
-		<param name="parent-tag">e56ce28a20ccfa1d37d3b66eb943bd12922b61ae</param>
-		<param name="versionformat">0.g@TAG_OFFSET@</param>
+		<param name="revision">master</param>
+		<param name="versionformat">%cd</param>
 		<param name="changesgenerate">enable</param>
 		<param name="extract">package/rpm-config-SUSE.spec</param>
 	</service>
-	<service name="recompress" mode="manual">
+	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>
-		<param name="compression">xz</param>
+		<param name="compression">zst</param>
 	</service>
-	<service name="set_version" mode="manual"/>
+	<service name="set_version" mode="disabled"/>
 </services>

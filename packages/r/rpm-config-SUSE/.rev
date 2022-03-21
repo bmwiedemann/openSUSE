@@ -195,4 +195,13 @@
   * Avoid bash specific construct</comment>
     <requestid>951931</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>511b8ab77654b77580a7bc37a6c7a54c</srcmd5>
+    <version>20220317</version>
+    <time>1647889847</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220317:
+  * set buildshell to use bash</comment>
+    <requestid>962676</requestid>
+  </revision>
 </revisionlist>

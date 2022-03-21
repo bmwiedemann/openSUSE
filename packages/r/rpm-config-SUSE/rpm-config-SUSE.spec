@@ -18,19 +18,18 @@
 
 
 Name:           rpm-config-SUSE
-Version:        0.g96
+Version:        20220317
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/openSUSE/rpm-config-SUSE
-Source:         %{name}-%{version}.tar.xz
-
+Source:         %{name}-%{version}.tar.zst
+BuildRequires:  zstd
+#!BuildIgnore:  rpm-config-SUSE
 # RPM owns the directories we need
 Requires:       rpm
-
 BuildArch:      noarch
-#!BuildIgnore:  rpm-config-SUSE
 
 %description
 This package contains the RPM configuration data for the SUSE Linux
