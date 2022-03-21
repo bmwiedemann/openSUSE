@@ -1,7 +1,7 @@
 #
 # spec file for package berkeleylm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        pom.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -47,7 +48,7 @@ This package contains the API documentation for %{name}.
 
 %build
 %{ant} \
-	-Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+	-Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
 	-Dtest.skip=true \
 	jar javadoc
 
