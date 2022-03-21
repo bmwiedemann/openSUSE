@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 16 06:36:36 UTC 2022 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update 1.5.21 which is last that supports Python 3.6
+  *  #28: Optionally retry failing backups via "retries" and "retry_wait" configuration options.
+  *  #306: Add "list_options" MySQL configuration option for passing additional arguments to MySQL
+     list command.
+  *  #459: Add support for old version (2.x) of jsonschema library.
+  *  #387: Fix error when configured source directories are not present on the filesystem at the time
+     of backup. Now, Borg will complain, but the backup will still continue.
+  *  #455: Mention changing borgmatic path in cron documentation.
+     Update sample systemd service file with more granular read-only filesystem settings.
+  *  Move Gitea and GitHub hosting from a personal namespace to an organization for better
+     collaboration with related projects.
+  *  #389: Fix "message too long" error when logging to rsyslog.
+  *  #440: Fix traceback that can occur when dumping a database.
+
+-------------------------------------------------------------------
 Fri Sep 10 11:30:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - ExcludeArch %ix86: this is a bit a special trick, but as there is

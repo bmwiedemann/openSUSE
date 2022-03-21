@@ -1,7 +1,7 @@
 #
 # spec file for package borgmatic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.5.17
+Version:        1.5.21
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
