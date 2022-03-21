@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 21 08:09:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28:
+  * Added a method for returning the index of a section by name
+  * Allow filtering by section types in iter_sections
+  * Support Android compressed rel/rela sections
+  * Initial support for PPC64LE
+  * Initial DWARF v5 support
+  * Fixed parsing for structures containing uids or gids in core
+    dumps
+  * Allow filtering by segment types in iter_segments
+  * Add support for .note.gnu.property
+  * Update readelf tests to work with more recent version of
+    readelf
+  * Add support for note GNU_PROPERTY_X86_FEATURE_1_AND
+
+-------------------------------------------------------------------
 Sun Apr 04 21:40:51 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 0.27:
