@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 11:43:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-antrun-pluging >= 3.0.0
+
+-------------------------------------------------------------------
 Wed Jul 28 07:37:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Use -release only when building with java >= 9
