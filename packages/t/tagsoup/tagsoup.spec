@@ -1,7 +1,7 @@
 #
 # spec file for package tagsoup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,7 @@ Patch0:         tagsoup-1.2.1-man.patch
 Patch1:         tagsoup-1.2.1-jdk9.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  unzip
 BuildRequires:  xalan-j2
@@ -61,7 +62,7 @@ find . -name "*.jar" -delete
 %build
 export CLASSPATH=$(build-classpath xalan-j2-serializer xalan-j2)
 ant \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
   -Dtagsoup.version=%{version} \
   -Dj2se.apiurl=%{_javadocdir}/java \
   -Dclasspath=$(build-classpath xalan-j2-serializer xalan-j2) \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 20 21:54:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Compile with source and target levels 8
+
+-------------------------------------------------------------------
 Sat Feb  9 11:27:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Not only install the pom, but also generate maven metadata so
