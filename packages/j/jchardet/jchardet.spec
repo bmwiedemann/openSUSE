@@ -1,7 +1,7 @@
 #
 # spec file for package jchardet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@ Name:           jchardet
 Version:        1.1
 Release:        0
 Summary:        Java port of Mozilla's automatic character set detection algorithm
-License:        MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
+License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 URL:            https://jchardet.sourceforge.net/
 Source0:        https://download.sourceforge.net/jchardet/%{version}/jchardet-%{version}.zip
 Source1:        https://repo1.maven.org/maven2/net/sourceforge/%{name}/%{name}/1.0/%{name}-1.0.pom
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -59,7 +59,7 @@ cp %{SOURCE1} pom.xml
 
 %build
 # Build the jar file
-%{ant} -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 dist
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 dist
 # Generate the javadoc
 mkdir -p dist/javadoc
 javadoc -notimestamp -d dist/javadoc $(find src -name \*.java | xargs)
