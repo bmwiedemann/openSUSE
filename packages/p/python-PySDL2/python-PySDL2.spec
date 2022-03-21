@@ -1,7 +1,7 @@
 #
 # spec file for package python-PySDL2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         X_display         ":98"
 Name:           python-PySDL2
-Version:        0.9.8
+Version:        0.9.11
 Release:        0
-Summary:        Python SDL2 bindings
+Summary:        Python ctypes wrapper around SDL2
 License:        SUSE-Public-Domain
-URL:            https://github.com/marcusva/py-sdl2
+URL:            https://github.com/py-sdl/py-sdl2
 Source:         https://files.pythonhosted.org/packages/source/P/PySDL2/PySDL2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM PySDL2-pr193-skipnumpy.patch -- gh#marcusva/py-sdl2#193
-Patch0:         https://github.com/marcusva/py-sdl2/pull/193.patch#/PySDL2-pr193-skipnumpy.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  SDL2 >= 2.0.5
 BuildRequires:  SDL2_gfx >= 1.0.3
@@ -36,10 +34,10 @@ BuildRequires:  SDL2_ttf >= 2.0.14
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module opengl}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  xorg-x11-server
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 Requires:       SDL2 >= 2.0.5
 Requires:       SDL2_gfx >= 1.0.3
@@ -50,9 +48,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-PySDL2 is a wrapper around the SDL2 library and as such similar to the
-discontinued PySDL project. In contrast to PySDL, it has no licensing
-restrictions, nor does it rely on C code, but uses ctypes instead.
+PySDL2 is a pure Python wrapper around the SDL2, SDL2_mixer, SDL2_image,
+SDL2_ttf, and SDL2_gfx libraries. Instead of relying on C code, it uses
+the built-in ctypes module to interface with SDL2, and provides simple
+Python classes and wrappers for common SDL2 functionality.
 
 %prep
 %autosetup -p1 -n PySDL2-%{version}
@@ -75,22 +74,27 @@ Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 10
 
-pushd sdl2/test
-# these segfault when not tested separately
-testextra="SpriteFactory or SDL2EXTSprite or test_SDL_GL"
-# we do not have audio devices in build environment
-donttest+=" or test_Mix_OpenAudio or test_SDL_GetNumAudioDevices or TestSDLMixer"
-# we get border size 0 in build "desktop" environment
-donttest+=" or test_SDL_GetWindowsBordersSize"
-# flaky segfaults
-donttest+=" or (TestSDL2ExtWindow and (test_Window_position or test_Window_size))"
-# test suite assumes SDL devel version from mercurial (hg) checkout
-donttest+=" or test_SDL_GetRevision"
-# python2 env on Leap different, pytest arg missing
-python2_donttest="or test_SDL_GetBasePath or test_BitmapFont_render_on"
-%pytest -rfEs -k "not (${testextra} ${donttest} ${$python_donttest})"
-%pytest -rfEs -k "${testextra}"
-popd
+export SDL_VIDEODRIVER=dummy
+export SDL_AUDIODRIVER=dummy
+export SDL_RENDER_DRIVER=software
+export PYTHONFAULTHANDLER=1
+
+donttest="pytest_k_dummyprefix"
+# color mismatches, test shell variable because this is a noarch package
+if [ "$RPM_ARCH" = "ppc64" -o "$RPM_ARCH" = "ppc64le" -o "$RPM_ARCH" = "s390x" ]; then
+  donttest="$donttest or sdl2ext"
+fi
+# Does not recognize big endian byteorder
+if [ $(python3 -c "import sys; print(sys.byteorder)") = "big" ]; then
+  donttest="$donttest or PixelFormatEnum"
+fi
+%if 0%{suse_version} < 1550
+# Segfault with SDL on Leap
+donttest="$donttest or test_SDL_GetPowerInfo"
+# python2 env different, pytest arg missing
+python2_donttest=" or test_SDL_GetBasePath or test_render_on"
+%endif
+%pytest -rfEs -k "not ($donttest ${$python_donttest})"
 
 %files %{python_files}
 %license COPYING.txt

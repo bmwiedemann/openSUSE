@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Mar 20 09:55:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.9.11
+  * Added bindings for new functions and constants introduced in
+    SDL2 2.0.20
+  * Added bindings and documentation for new functions and
+    constants introduced in SDL2_ttf 2.0.18
+- Changelog for Release 0.9.10
+  * Added bindings for new functions and constants introduced in
+    SDL2 2.0.18
+  * Added experimental support for SDL 2.0.3 and 2.0.4 for older
+    platforms (tested on an iMac G4 running 10.4.11)
+  * Major improvements to the ext.pixelaccess module
+  * Major rewrite of the ext.image module
+  * New object-oriented method of rendering with sdl2.ext.Renderers
+    using the new sdl2.ext.Texture class
+  * Major expansion and rewrite of the sdl2.ext.Renderer class
+  * New powerful sdl2.ext.FontTTF class for font rendering
+  * Redocumented most of the sdl2.ext modules for better clarity
+    and maintainability
+  * Added automatic detection of Homebrew SDL2 binaries on Apple
+    Silicon Macs as a fallback Deprecated a number of sdl2.ext
+    modules and functions
+- Changelog for Release 0.9.9
+  * Added bindings for new functions and constants introduced in
+    SDL2 2.0.16
+  * Reverted the fix for issue #139 which inadvertently caused
+    Window.show() to force the window to use SDL2's software
+    rendering, breaking the Renderer class and compatibility with
+    PyOpenGL.
+- Drop PySDL2-pr193-skipnumpy.patch
+- Clean out test suite
+
+-------------------------------------------------------------------
 Sun Aug 29 10:31:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.9.8
