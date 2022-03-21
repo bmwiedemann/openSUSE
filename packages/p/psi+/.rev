@@ -713,4 +713,37 @@
     options.</comment>
     <requestid>931486</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>4f4ed561f800b95e7762b36ed2ed9b9f</srcmd5>
+    <version>1.5.1615+0</version>
+    <time>1647889957</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1615+0
+  * Iris relinked
+  * psicli: receive next pending event (for windows) (#682)
+  * Added receive-next-event to cli
+  * Good first Psi release date (#681)
+  * Add basic doap file (#678)
+  * Add openSUSE build requirements to INSTALL.md (#677)
+  * Harmonization of Iconsets (#676)
+  * Added context menu to EventNotifier widget
+  * Use EventNotifier widget instead of EventNotifierAction on Toolbar
+  * Added Dark New Classic theme for webkit/webengine
+  * submodules update
+  * Update desktop file
+  * Show read-only MUC vCard in muc info dialog
+  * jabber -&gt; xmppAddress (#648)
+  * Apply application default proxy to application default QNAM
+  * Issue 666: make it possible to use xmll proxy for http upload
+  * Get rid of legacy signals in PsiAccount
+  * Added an option to show technical kicks
+  * function-harmonizations (#661)
+  * gchat_templates -&gt; chat_templates (#658)
+  * Good order of Backward/Forward (#655)
+  * xmpp by default instead of mailto (#640)
+  * Del -&gt; canDel (#647)
+- skins added
+- skinplugin added</comment>
+    <requestid>963658</requestid>
+  </revision>
 </revisionlist>

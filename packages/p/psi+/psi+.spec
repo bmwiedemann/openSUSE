@@ -1,7 +1,7 @@
 #
 # spec file for package psi+
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.5.1582+0
+%define version_unconverted 1.5.1615+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.5.1582+0
+Version:        1.5.1615+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -246,6 +246,14 @@ Requires:       %{name} = %{version}
 %description plugins-messagefilterplugin
 A Psi plugin for filtering messages.
 
+%package plugins-skinsplugin
+Summary:        Plugin for Psi
+Group:          Productivity/Networking/Talk/Clients
+Requires:       %{name} = %{version}
+
+%description plugins-skinsplugin
+This plugin is designed to create, store and apply skins to Psi.
+
 %package plugins-watcherplugin
 Summary:        Plugin for Psi
 Group:          Productivity/Networking/Talk/Clients
@@ -444,6 +452,9 @@ rm -f %{buildroot}%{_datadir}/psi-plus/README.html
 %defattr(-,root,root)
 %{pluginspath}/libmessagefilterplugin.so
 
+%files plugins-skinsplugin
+%{pluginspath}/libskinsplugin.so
+
 %files plugins-watcherplugin
 %defattr(-,root,root)
 %{pluginspath}/libwatcherplugin.so
@@ -516,6 +527,7 @@ rm -f %{buildroot}%{_datadir}/psi-plus/README.html
 %{iconspath}/roster/README
 %{_datadir}/psi-plus/client_icons.txt
 %{_datadir}/psi-plus/sound
+%{_datadir}/psi-plus/skins/
 
 %files plugins-devel
 %defattr(-,root,root)

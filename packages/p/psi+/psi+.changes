@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Mar 16 11:10:55 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1615+0
+  * Iris relinked
+  * psicli: receive next pending event (for windows) (#682)
+  * Added receive-next-event to cli
+  * Good first Psi release date (#681)
+  * Add basic doap file (#678)
+  * Add openSUSE build requirements to INSTALL.md (#677)
+  * Harmonization of Iconsets (#676)
+  * Added context menu to EventNotifier widget
+  * Use EventNotifier widget instead of EventNotifierAction on Toolbar
+  * Added Dark New Classic theme for webkit/webengine
+  * submodules update
+  * Update desktop file
+  * Show read-only MUC vCard in muc info dialog
+  * jabber -> xmppAddress (#648)
+  * Apply application default proxy to application default QNAM
+  * Issue 666: make it possible to use xmll proxy for http upload
+  * Get rid of legacy signals in PsiAccount
+  * Added an option to show technical kicks
+  * function-harmonizations (#661)
+  * gchat_templates -> chat_templates (#658)
+  * Good order of Backward/Forward (#655)
+  * xmpp by default instead of mailto (#640)
+  * Del -> canDel (#647)
+- skins added
+- skinplugin added
+
+-------------------------------------------------------------------
 Mon Nov 15 08:11:29 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 1.5.1582+0
