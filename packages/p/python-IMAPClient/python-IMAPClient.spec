@@ -1,7 +1,7 @@
 #
 # spec file for package python-IMAPClient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,6 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mjs/imapclient/
 Source0:        https://github.com/mjs/imapclient/archive/%{version}.tar.gz
-BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 20.5}
 BuildRequires:  %{python_module six}
