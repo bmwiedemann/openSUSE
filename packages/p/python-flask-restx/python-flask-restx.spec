@@ -31,7 +31,6 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module aniso8601}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-flask}
 BuildRequires:  %{python_module pytest-mock}
