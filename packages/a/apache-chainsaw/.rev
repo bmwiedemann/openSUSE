@@ -15,4 +15,12 @@
     <comment>Build against reload4j</comment>
     <requestid>957039</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e930b6a31d7f3a9fff0bc47010aa5e3f</srcmd5>
+    <version>2.1.0</version>
+    <time>1647889998</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with maven-antrun-plugin &gt;= 3.0.0</comment>
+    <requestid>963736</requestid>
+  </revision>
 </revisionlist>

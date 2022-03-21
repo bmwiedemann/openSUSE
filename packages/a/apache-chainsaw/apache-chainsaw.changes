@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 05:41:30 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-antrun-plugin >= 3.0.0
+
+-------------------------------------------------------------------
 Tue Feb 22 19:20:37 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j

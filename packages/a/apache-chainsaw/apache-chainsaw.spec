@@ -92,8 +92,12 @@ perl -pi -e 's#org\.apache\.commons\.vfs\.#org\.apache\.commons\.vfs2\.#g' \
 %pom_remove_dep org.projectlombok:lombok
 
 # point chainsaw to our installed Javadoc
-perl -pi -e 's#\"docs/api\"#\"%{_javadocdir}/%{name}\"#g' \
+sed -i -e 's#\"docs/api\"#\"%{_javadocdir}/%{name}\"#g' \
   src/main/java/org/apache/log4j/chainsaw/help/HelpManager.java
+
+%if %{?pkg_vcmp:%pkg_vcmp maven-antrun-plugin >= 3}%{!?pkg_vcmp:0}
+sed -i -e 's#tasks\>#target\>#g' pom.xml
+%endif
 
 %build
 %{mvn_build} -f -- -Dsource=8
