@@ -1,7 +1,7 @@
 #
 # spec file for package schemaspy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Archie L. Cobbs.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,12 +28,12 @@ Source0:        schemaSpy_%{version}.source.jar
 Source1:        schemaspy.1
 # PATCH-FIX-OPENSUSE driver-location.patch
 Patch0:         driver-location.patch
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  unzip
 Requires:       graphviz
 Requires:       graphviz-gd
-Requires:       java >= 1.6
+Requires:       java >= 1.8
 Requires:       javapackages-tools
 Suggests:       mysql-connector-java
 BuildArch:      noarch
@@ -60,7 +60,7 @@ all of the vendor-specific SQL is optional.
 
 %build
 mkdir classes
-javac -source 1.6 -target 1.6 -d classes `find net -name '*.java' -print`
+javac -source 1.8 -target 1.8 -d classes `find net -name '*.java' -print`
 jar cf %{name}-%{version}.jar META-INF/MANIFEST.MF *.* images -C classes . `find net -name '*.properties'`
 
 %install

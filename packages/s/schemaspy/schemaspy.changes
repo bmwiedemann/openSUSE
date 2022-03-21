@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:42:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Mon Jul 26 17:40:46 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - %%jpackage_script needs javapackages-tools
