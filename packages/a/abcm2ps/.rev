@@ -245,4 +245,13 @@
     empty staves</comment>
     <requestid>950445</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3dabb65af1a1c00e0ffdf757026337ce</srcmd5>
+    <version>8.14.13</version>
+    <time>1647889926</time>
+    <user>dimstar_suse</user>
+    <comment>  * crash when accidental without a note at start of line after K: (CVE-2021-32435)
+  * array overflow when wrong duration in voice overlay (CVE-2021-32434, CVE-2021-32436)</comment>
+    <requestid>963753</requestid>
+  </revision>
 </revisionlist>

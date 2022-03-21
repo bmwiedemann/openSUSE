@@ -31,8 +31,8 @@ Thu Jul 15 06:20:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
   * crash when grace notes at end of line and voice overlay
   * crash when !trem2! at start of a grace note sequence
   * crash when wrong duration in 2 voice overlays and bad ties
-  * crash when accidental without a note at start of line after K:
-  * array overflow when wrong duration in voice overlay
+  * crash when accidental without a note at start of line after K: (CVE-2021-32435)
+  * array overflow when wrong duration in voice overlay (CVE-2021-32434, CVE-2021-32436)
   * loss of left margin after first page since previous commit
   * no respect of %%leftmargin with -E or -g
   * bad placement of chord symbols when in a music line with only invisible rests
