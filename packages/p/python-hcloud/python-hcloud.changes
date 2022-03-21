@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Mar 21 13:04:30 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.16.0
+  v1.16.0 (2021-08-17)
+  ---------------------
+  * Feature: Add support for Load Balancer DNS PTRs
+  v1.15.0 (2021-08-16)
+  ---------------------
+  * Feature: Add support for Placement Groups
+  v1.14.1 (2021-08-10)
+  ---------------------
+  * Bugfix: Fix crash on extra fields in public_net response
+  * Improvement: Format code with black
+  v1.14.0 (2021-08-03)
+  ---------------------
+  * Feature: Add support for Firewall rule descriptions
+  v1.13.0 (2021-07-16)
+  ---------------------
+  * Feature: Add support for Firewall Protocols ESP and GRE
+  * Feature: Add support for Image Type APP
+  * Feature: Add support for creating Firewalls with Firewalls
+  * Feature: Add support for Label Selectors in Firewalls
+  * Improvement: Improve handling of underlying TCP connections. Now for every
+     client instance a single TCP connection is used instead of one per call.
+  * Note: Support for Python 2.7 and Python 3.5 was removed
+  v1.12.0 (2021-04-06)
+  ---------------------
+  * Feature: Add support for managed Certificates
+  v1.11.0 (2021-03-11)
+  ---------------------
+  * Feature: Add support for Firewalls
+  * Feature: Add `primary_disk_size` to `Server` Domain
+  v1.10.0 (2020-11-03)
+  ---------------------
+  * Feature: Add `include_deprecated` filter to `get_list` and `get_all` on `ImagesClient`
+  * Feature: Add vSwitch support to `add_subnet` on `NetworksClient`
+  * Feature: Add subnet type constants to `NetworkSubnet` domain
+    (`NetworkSubnet.TYPE_CLOUD`, `NetworkSubnet.TYPE_VSWITCH`)
+  v1.9.1 (2020-08-11)
+  --------------------
+  * Bugfix: BoundLoadBalancer serialization failed when using IP targets
+  v1.9.0 (2020-08-10)
+  --------------------
+  * Feature: Add `included_traffic`, `outgoing_traffic` and `ingoing_traffic`
+    properties to Load Balancer domain
+  * Feature: Add `change_type`-method to `LoadBalancersClient`
+  * Feature: Add support for `LoadBalancerTargetLabelSelector`
+  * Feature: Add support for `LoadBalancerTargetLabelSelector`
+  v1.8.2 (2020-07-20)
+  --------------------
+  * Fix: Loosen up the requirements.
+- do not require python-mock for testing
+
+-------------------------------------------------------------------
 Sat Aug 15 10:05:33 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Tidy spec
@@ -6,4 +60,4 @@ Sat Aug 15 10:05:33 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 -------------------------------------------------------------------
 Sat Jul 11 22:03:45 UTC 2020 - mig4@auril.club
 
-- Initial package version 1.9.1
+- Initial package version 1.8.1
