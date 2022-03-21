@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 02:41:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove python3-raven from BuildRequires, it hasn't been needed since
+  2.2.9. 
+
+-------------------------------------------------------------------
 Mon Dec 20 14:28:57 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 2.2.28

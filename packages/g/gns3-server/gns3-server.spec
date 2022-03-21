@@ -1,7 +1,7 @@
 #
 # spec file for package gns3-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,6 @@ Requires:       python3-docker-py >= 1.4.0
 Requires:       python3-prompt_toolkit1
 Requires:       python3-psutil >= 5.6.6
 Requires:       python3-py-cpuinfo >= 7.0.0
-Requires:       python3-raven >= 5.2.0
 Requires:       python3-sentry-sdk >= 0.14.4
 Requires:       python3-zipstream >= 1.1.3
 Requires:       qemu
