@@ -17,18 +17,18 @@
 
 
 Name:           libressl
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
 Group:          Development/Libraries/C and C++
-Url:            http://libressl.org/
+URL:            https://www.libressl.org/
 
-#Freshcode-URL: http://freshcode.club/projects/libressl
-#Git-Clone:	git://github.com/libressl-portable/portable
-#See-Also:	git://github.com/libressl-portable/openbsd
-Source:         http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%name-%version.tar.gz
-Source2:        http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%name-%version.tar.gz.asc
+#Freshcode-URL: https://freshcode.club/projects/libressl
+#Git-Clone:	https://github.com/libressl-portable/portable
+#See-Also:	https://github.com/libressl-portable/openbsd
+Source:         https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%name-%version.tar.gz
+Source2:        https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%name-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         des-fcrypt.diff

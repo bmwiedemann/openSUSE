@@ -482,4 +482,12 @@
     <comment>- Update to release 3.4.2 [boo#1190853]</comment>
     <requestid>943262</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f6c9b0177d4e41a6e207741f50fa4021</srcmd5>
+    <version>3.4.3</version>
+    <time>1647889938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.4.3</comment>
+    <requestid>963474</requestid>
+  </revision>
 </revisionlist>
