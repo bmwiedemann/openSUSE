@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:28:55 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220321.0b6739ce:
+  * stagings: Report to standard repo if the images are enabled
+  * Staging accept: build-disable the images repository
+
+-------------------------------------------------------------------
 Sat Mar 19 13:06:43 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220319.4424623d:
