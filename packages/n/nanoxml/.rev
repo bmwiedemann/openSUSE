@@ -23,4 +23,12 @@
     <comment>Fix build with recent OpenJDK 11.0.2</comment>
     <requestid>671253</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2554d3fe3e7eac8393e198efca15a40c</srcmd5>
+    <version>2.2.3</version>
+    <time>1647889971</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963682</requestid>
+  </revision>
 </revisionlist>

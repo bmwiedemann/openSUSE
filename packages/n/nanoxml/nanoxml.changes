@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:35:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Removes patch:
+  * nanoxml-2.2.3_build.patch
+    + incorporated into nanoxml-build.patch
+- Modified patch:
+  * nanoxml-build.patch
+    + incorporate nanoxml-2.2.3_build.patch
+    + specify source and target levels 8
+
+-------------------------------------------------------------------
 Tue Feb  5 05:51:07 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

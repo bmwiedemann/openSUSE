@@ -1,7 +1,7 @@
 #
 # spec file for package nanoxml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,17 +23,16 @@ Release:        0
 Summary:        Small non-validating XML parser for Java
 License:        Zlib
 Group:          Development/Libraries/Java
-Url:            http://nanoxml.sourceforge.net/orig/
+URL:            http://nanoxml.sourceforge.net/orig/
 Source0:        NanoXML-2.2.3.tar.bz2
 Source1:        %{name}-java-1.4.2-package-list
 Patch0:         %{name}-build.patch
-Patch1:         %{name}-%{version}_build.patch
-Patch2:         %{name}-%{version}_enum.patch
+Patch1:         %{name}-%{version}_enum.patch
 BuildRequires:  fdupes
-BuildRequires:  java-devel
-BuildRequires:  jpackage-utils >= 1.6
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-tools
 BuildRequires:  unzip
-Requires:       java
+Requires:       java >= 1.8
 Recommends:     %{name}-manual = %{version}
 BuildArch:      noarch
 
@@ -82,7 +81,6 @@ Java documentation for %{name}.
 %setup -q -n NanoXML-%{version}
 %patch0
 %patch1
-%patch2
 cp %{SOURCE1} package-list
 find . -name "*.jar" -delete
 
