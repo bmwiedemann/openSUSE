@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 21 18:26:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Let maven-compiler-plugin decide the appropriate java source
+  and target levels
+
+-------------------------------------------------------------------
 Tue Feb 22 18:06:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages

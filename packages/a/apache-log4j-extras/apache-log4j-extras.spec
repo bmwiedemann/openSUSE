@@ -60,11 +60,7 @@ rm -f src/main/java/org/apache/log4j/DBAppender.java
 %pom_xpath_remove 'pom:plugin[pom:artifactId="maven-compiler-plugin"]/pom:configuration'
 
 %build
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
-%endif
-	-Dsource=6
+%{mvn_build} -f
 
 %install
 %mvn_install
