@@ -40,4 +40,12 @@
     <comment>Fix warnings-errors about unused variables</comment>
     <requestid>908812</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>7e2d71d4fd7d68e532e035c3e266f303</srcmd5>
+    <version>8.0.202</version>
+    <time>1647889967</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with maven-antrun-plugin 3.x</comment>
+    <requestid>963673</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:11:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-antrun-plugin 3.x
+
+-------------------------------------------------------------------
 Wed Jul 28 07:48:55 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

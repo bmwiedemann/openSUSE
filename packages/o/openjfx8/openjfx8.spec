@@ -1,7 +1,7 @@
 #
 # spec file for package openjfx8
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -206,6 +206,10 @@ for GRAPHMOD in compileJava compilePrismCompilers compilePrismJavaShaders compil
 do
 	mv pom-graphics_$GRAPHMOD.xml ./modules/graphics/$GRAPHMOD/pom.xml
 done
+
+%if %{?pkg_vcmp:%pkg_vcmp maven-antrun-plugin >= 3}%{!?pkg_vcmp:0}
+sed -i -e 's#tasks\>#target\>#g' modules/web/pom.xml modules/fxpackager/pom.xml
+%endif
 
 #set VersionInfo
 cp -a %{_sourcedir}/build.xml .
