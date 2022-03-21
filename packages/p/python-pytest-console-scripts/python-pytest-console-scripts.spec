@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-console-scripts
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Pytest plugin for testing console scripts
 License:        MIT
 URL:            https://github.com/kvas-it/pytest-console-scripts
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-console-scripts/pytest-console-scripts-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#kvas-it/pytest-console-scripts#53
-Patch0:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
