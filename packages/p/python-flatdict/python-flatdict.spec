@@ -1,7 +1,7 @@
 #
 # spec file for package python-flatdict
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,6 @@ Summary:        Python module for interacting with nested dicts
 License:        BSD-3-Clause
 URL:            https://github.com/gmr/flatdict
 Source:         https://github.com/gmr/flatdict/archive/%{version}.tar.gz#/flatdict-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
