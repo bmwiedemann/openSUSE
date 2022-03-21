@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Mar 10 01:36:22 UTC 2022 - hpj@urpla.net
+
+- Update to version 2.4.16:
+  * Release files for 2.4.16 (#1879)
+  * Add documentation for Podman support (#1871)
+  * Update bug_report.yml (#1877)
+  * Implement feature request to mark partially-downloaded files as .partial (#1868)
+  * Implement feature request --modified-by (#1869)
+  * Update YAML forms (#1875)
+  * Use GitHub YAML forms (#1873)
+  * Update USAGE.md
+  * Add --reauth to allow easy re-authentication of the client (#1867)
+  * Enhance error handling of GitHub version check (#1866)
+  * Improved Dockerfiles (#1795)
+  * Extend GitHub version check (#1863)
+  * Add function to check client version vs latest GitHub release (#1862)
+  * Update ubuntu-package-install.md
+  * Catch errors from OneDrive when initialising subscriptions (#1846)
+  * Update Docker.md (#1841)
+  * Update entrypoint.sh (#1861)
+  * Add config.yml to configure issue templates (#1845)
+  * Update README.md (#1838)
+  * Fix typo in the Ubuntu installation docs (#1830)
+  * Update USAGE.md (#1829)
+  * Split children query into a separate function which can be self-referred (#1828)
+  * Fixes in order to compile on an Android host (#1823)
+  * If a sync_list exclusion is matched, the item needs to be excluded when using --resync (#1820)
+  * Document risk regarding using --resync (#1816)
+  * Enable GitHub Sponsors (#1811)
+  * Update ubuntu-package-install.md (#1807)
+  * Update advanced-usage.md (#1806)
+  * Update build-rpm-howto.md (#1799)
+  * Update ubuntu-package-install.md (#1794)
+  * Explicitly set libcurl options (#1789)
+  * Update ubuntu-package-install.md (#1786)
+  * Update application file logging error handling (#1776)
+  * Update Ubuntu Docs (#1769)
+  * Release 2.4.16 Dev Prep (#1768)
+
+-------------------------------------------------------------------
 Thu Jan 20 20:41:06 UTC 2022 - Boris Manojlovic <boris@steki.net>
 
 - rebuild manually tar file to pass Factory legal reqs... 
