@@ -1,7 +1,7 @@
 #
 # spec file for package lttoolbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lttoolbox
-%define lname   liblttoolbox3-3_5-1
+%define lname   liblttoolbox3-3_6-1
 Summary:        Toolbox for lexical processing and morphological analysis
-Version:        3.5.4
+Version:        3.6.1
 Release:        0
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://apertium.org/
 
@@ -30,6 +30,10 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  utfcpp-devel
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-io)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
@@ -71,7 +75,7 @@ This subpackage contains the development files for lttoolbox.
 %build
 autoreconf -fiv
 # includedir intentional, cf. bugzilla.opensuse.org/795968
-%configure --disable-static --includedir="%_includedir/%name"
+%configure --disable-static --includedir="%_includedir/%name" CPPFLAGS="-I%_includedir/utf8cpp"
 %make_build
 
 %install
@@ -92,7 +96,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %license COPYING
 
 %files -n %lname
-%_libdir/liblttoolbox3-3.5.so.1*
+%_libdir/liblttoolbox3-3.6.so.1*
 
 %files devel
 %_includedir/%name/
