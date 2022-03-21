@@ -1,7 +1,7 @@
 #
 # spec file for package jisp2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,17 +22,17 @@ Release:        0
 Summary:        The Java Indexed Serialization Package
 License:        Libpng
 Group:          Development/Libraries/Java
-Url:            http://www.coyotegulch.com/jisp/
+URL:            http://www.coyotegulch.com/jisp/
 Source0:        jisp-2.5.1-source.tar.bz2
 Patch0:         jisp2-2.5.1-java5-enum.patch
 Patch1:         jisp2-2.5.1-javac-flags.patch
 # jisp-3.0.0 won't work with jakarta-turbine-jcs
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  make
 Requires:       javapackages-tools
 Requires(post): update-alternatives
-Requires(pre): update-alternatives
+Requires(pre):  update-alternatives
 Provides:       hibernate_in_process_cache
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -65,7 +65,7 @@ sed -i -e 's/\r$//g' svfl.txt
 
 %build
 export CLASSPATH=
-make JAVAC_FLAGS=" -target 1.6 -source 1.6" %{?_smp_mflags}
+make JAVAC_FLAGS=" -target 1.8 -source 1.8" %{?_smp_mflags}
 make jars %{?_smp_mflags}
 make docs %{?_smp_mflags}
 
