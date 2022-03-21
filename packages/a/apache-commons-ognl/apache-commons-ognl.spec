@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-ognl
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ License:        Apache-2.0
 URL:            https://commons.apache.org/proper/commons-ognl/
 Source0:        %{short_name}-%{git_rev}.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
@@ -56,9 +57,9 @@ This package contains the API documentation for %{name}.
 %build
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
+    -Dmaven.compiler.release=8 \
 %endif
-    -Dmaven.compiler.source=6
+    -Dmaven.compiler.source=8
 
 %install
 %mvn_install

@@ -15,4 +15,12 @@
     <comment>Fix builds</comment>
     <requestid>845704</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5f647a8ef0329bb73e063e4e188e71e7</srcmd5>
+    <version>4.0~20191021git51cf8f4</version>
+    <time>1647890000</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963741</requestid>
+  </revision>
 </revisionlist>

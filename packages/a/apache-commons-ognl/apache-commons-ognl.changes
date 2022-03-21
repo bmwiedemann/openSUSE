@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 15:38:27 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Tue Nov  3 11:56:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Fix javadoc build on some systems
