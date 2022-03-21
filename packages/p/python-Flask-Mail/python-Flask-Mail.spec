@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Mail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,14 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rduplain/flask-mail
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Mail/Flask-Mail-%{version}.tar.gz
+# do not use mock, upstream url unavailable
+Patch0:         python-Flask-Mail-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Test requirements
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module speaklater}
 # End of test requirements
 Requires:       python-Flask
@@ -44,6 +45,7 @@ A Flask extension for sending email messages.
 
 %prep
 %setup -q -n Flask-Mail-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -53,7 +55,7 @@ A Flask extension for sending email messages.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover
+%pyunittest -v
 
 %files %{python_files}
 %doc README.rst
