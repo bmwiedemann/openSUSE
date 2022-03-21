@@ -55,7 +55,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Faker >= 0.7.3}
 BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-benchmark >= 3.1.1}
 BuildRequires:  %{python_module pytest-flask >= 0.10.0}
 BuildRequires:  %{python_module pytest-mock >= 1.6.3}
