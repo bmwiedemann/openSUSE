@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 21 03:56:03 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch:
+  * Use stdlib unittest.mock
+- Drop mock BuildRequires. 
+
+-------------------------------------------------------------------
 Fri Feb 15 09:37:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.1.1:

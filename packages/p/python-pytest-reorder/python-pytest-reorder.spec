@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-reorder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/not-raspberry/pytest_reorder
 Source:         https://github.com/not-raspberry/pytest_reorder/archive/v%{version}.tar.gz
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 2.8.5
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module pylama >= 7.0.6}
 BuildRequires:  %{python_module pytest >= 2.8.5}
 # /SECTION
@@ -57,7 +57,7 @@ The default regular expressions can find unit, integration and UI tests both lai
 nested**. You can also specify your custom order.
 
 %prep
-%setup -q -n pytest_reorder-%{version}
+%autosetup -p1 -n pytest_reorder-%{version}
 
 %build
 %python_build
