@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:57:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove a bogus dependency on old asm3
+
+-------------------------------------------------------------------
 Wed Jul 28 07:33:16 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not start summaries with lower-case letter

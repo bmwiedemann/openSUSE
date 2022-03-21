@@ -1,7 +1,7 @@
 #
 # spec file for package groovy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Dynamic language for the Java Platform
 License:        Apache-2.0 AND BSD-3-Clause AND EPL-1.0 AND SUSE-Public-Domain AND CC-BY-2.5
 Group:          Development/Libraries/Java
 URL:            https://groovy-lang.org
-Source0:        https://dl.bintray.com/groovy/maven/apache-groovy-src-%{version}.zip
+Source0:        https://dlcdn.apache.org/groovy/%{version}/sources/apache-groovy-src-%{version}.zip
 Source1:        groovy-script.sh
 Source3:        groovy.desktop
 Source4:        cpl-v10.txt
@@ -49,7 +49,6 @@ BuildRequires:  apache-commons-collections
 BuildRequires:  apache-ivy
 BuildRequires:  apache-parent
 BuildRequires:  aqute-bnd
-BuildRequires:  asm3
 BuildRequires:  bsf
 BuildRequires:  desktop-file-utils
 BuildRequires:  glassfish-el-api
@@ -63,6 +62,7 @@ BuildRequires:  javapackages-local
 BuildRequires:  jline
 BuildRequires:  junit
 BuildRequires:  multiverse
+BuildRequires:  objectweb-asm
 BuildRequires:  qdox
 BuildRequires:  testng
 BuildRequires:  unzip

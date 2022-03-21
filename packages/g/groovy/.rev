@@ -47,4 +47,12 @@
     <comment>Rpmlint errors</comment>
     <requestid>908789</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7b271b24321cbbce0a3588376b100ec9</srcmd5>
+    <version>2.4.21</version>
+    <time>1647889978</time>
+    <user>dimstar_suse</user>
+    <comment>Bogus dependency on asm3</comment>
+    <requestid>963689</requestid>
+  </revision>
 </revisionlist>
