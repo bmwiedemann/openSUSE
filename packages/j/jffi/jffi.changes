@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 11:23:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-antrun-plugin >= 3.0.0
+
+-------------------------------------------------------------------
 Thu Jul  8 18:31:54 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.3.4

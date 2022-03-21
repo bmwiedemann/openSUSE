@@ -1,7 +1,7 @@
 #
 # spec file for package jffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
+BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildRequires:  pkgconfig(libffi)
 
@@ -70,6 +71,28 @@ This package contains the API documentation for %{name}.
 # ppc{,64} fix
 # https://bugzilla.redhat.com/show_bug.cgi?id=561448#c9
 sed -i.cpu -e '/m\$(MODEL)/d' {jni,libtest}/GNUmakefile
+
+%if %{?pkg_vcmp:%pkg_vcmp maven-antrun-plugin >= 3}%{!?pkg_vcmp:0}
+sed -i -e 's#tasks\>#target\>#g' pom.xml
+%pom_xpath_remove "pom:plugin[pom:artifactId='maven-antrun-plugin']/pom:executions/pom:execution/pom:configuration/pom:sourceRoot"
+%pom_xpath_set "pom:plugin[pom:artifactId='maven-antrun-plugin']/pom:version" "3.0.0"
+%pom_add_plugin "org.codehaus.mojo:build-helper-maven-plugin:3.2.0" pom.xml "
+    <executions>
+        <execution>
+            <id>add-source-directory</id>
+            <phase>generate-sources</phase>
+            <configuration>
+                <sources>
+                    <source>\${project.build.directory}/java</source>
+                </sources>
+            </configuration>
+            <goals>
+                <goal>add-source</goal>
+            </goals>
+        </execution>
+    </executions>
+"
+%endif
 
 # remove uneccessary directories
 rm -rf archive/* jni/libffi/ lib/junit*
