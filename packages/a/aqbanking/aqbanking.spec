@@ -16,7 +16,7 @@
 #
 
 
-%define          cmake_config_version 6.4
+%define          cmake_config_version 6.5
 %define          build_ofx 1
 %define          _name aqbanking
 %define          aq_plugindir   %{_libdir}/aqbanking/plugins/44
@@ -29,22 +29,22 @@
 %define          releasever  400
 %define          ascreleasever 399
 Name:           aqbanking
-Version:        6.4.1
+Version:        6.5.0
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.aquamaniac.de/aqbanking/
-Source:         https://www.aquamaniac.de/rdm/attachments/download/%{releasever}/aqbanking-%{version}.tar.gz
-Source1:        https://www.aquamaniac.de/rdm/attachments/download/%{ascreleasever}/aqbanking-%{version}.tar.gz.asc
+Source:         https://www.aquamaniac.de/rdm/attachments/download/435/aqbanking-%{version}.tar.gz
+Source1:        https://www.aquamaniac.de/rdm/attachments/download/434/aqbanking-%{version}.tar.gz.asc
 Source2:        aqbanking6-handbook-20190221.pdf
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-BuildRequires:  gwenhywfar-devel >= 5.5.1.1
-BuildRequires:  gwenhywfar-tools >= 5.5.1.1
+BuildRequires:  gwenhywfar-devel >= 5.8.2.1
+BuildRequires:  gwenhywfar-tools >= 5.8.2.1
 BuildRequires:  ktoblzcheck-devel >= 1.10
 BuildRequires:  libltdl-devel
 BuildRequires:  pkgconfig
