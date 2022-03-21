@@ -46,7 +46,6 @@ BuildRequires:  %{python_module cachetools >= 3.1.0}
 BuildRequires:  %{python_module cryptography >= 2.1.4}
 BuildRequires:  %{python_module email_validator >= 1.1.1}
 BuildRequires:  %{python_module itsdangerous >= 1.1.0}
-BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module passlib >= 1.7.2}
 BuildRequires:  %{python_module peewee >= 3.7.1}
 BuildRequires:  %{python_module phonenumbers >= 8.11.1}

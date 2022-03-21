@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 17 16:52:37 UTC 2022 - pgajdos@suse.com
+
+- python-mock is actually not required for build
+
+-------------------------------------------------------------------
 Sat Mar  5 18:01:11 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
