@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 21 13:02:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.0.0-rc3:
+  * Changelog: https://github.com/parallaxsecond/parsec/compare/1.0.0-rc2...1.0.0-rc3
+  * Fixes CVE-2022-24713 - boo#1196972
+
+-------------------------------------------------------------------
 Tue Mar  8 17:29:56 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.0.0-rc2:

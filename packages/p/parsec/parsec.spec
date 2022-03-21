@@ -17,11 +17,11 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define archive_version 1.0.0-rc2
+%define archive_version 1.0.0-rc3
 
 %{?systemd_ordering}
 Name:           parsec
-Version:        1.0.0~rc2
+Version:        1.0.0~rc3
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
