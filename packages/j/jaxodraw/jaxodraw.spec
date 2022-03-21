@@ -1,7 +1,7 @@
 #
 # spec file for package jaxodraw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Version:        %{major}.%{minor}
 Release:        0
 Summary:        A Java-based GUI for drawing Feynman diagrams
 # The xslt files in the manual are Apache-2.0 licensed, GPL-2.0+ for everything else
-License:        GPL-2.0-or-later AND Apache-2.0
+License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            http://jaxodraw.sourceforge.net
 Source0:        http://download.sourceforge.net/%{name}/%{name}-%{major}-%{minor}-src.tar.gz
@@ -38,11 +38,11 @@ Source5:        build.xml
 Patch0:         jaxodraw-set-default-viewers.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.7.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  tex(latex)
-Requires:       java >= 1.7.0
+Requires:       java >= 1.8
 Requires:       javapackages-tools
 Recommends:     %{name}-javadoc = %{version}
 Recommends:     %{name}-latex
@@ -82,9 +82,9 @@ Requires:       %{name} = %{version}
 Requires:       texlive-pst-tools
 Requires:       tex(latex)
 Requires(post): coreutils
-Requires(posttrans): texlive
-Requires(postun): coreutils
-Requires(postun): texlive
+Requires(posttrans):texlive
+Requires(postun):coreutils
+Requires(postun):texlive
 Requires(pre):  texlive
 
 %description latex

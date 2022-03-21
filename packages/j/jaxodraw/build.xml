@@ -165,8 +165,8 @@
             nowarn="off"
             debug="true"
             deprecation="on"
-            source="1.6"
-            target="1.6"
+            source="1.8"
+            target="1.8"
             includeAntRuntime="no"
             sourcepath="${java.dir}"
             classpath="${java.class.path}"
@@ -187,8 +187,8 @@
             nowarn="off"
             debug="true"
             deprecation="on"
-            source="1.6"
-            target="1.6"
+            source="1.8"
+            target="1.8"
             includeAntRuntime="no"
             srcdir="${java.dir}" 
             destdir="${build.dir}">
@@ -256,7 +256,7 @@
             author="true"
             version="true"
             use="false"
-            source="1.6"
+            source="1.8"
             windowtitle="JaxoDraw API">
             <doctitle><![CDATA[<h1>JaxoDraw</h1>]]></doctitle>
             <bottom><![CDATA[${javadoc.bottom}]]></bottom>
