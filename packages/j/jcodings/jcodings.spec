@@ -1,7 +1,7 @@
 #
 # spec file for package jcodings
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,12 @@ Release:        0
 Summary:        Java-based codings helper classes for Joni and JRuby
 License:        MIT
 Group:          Development/Libraries/Java
-Url:            https://github.com/jruby/jcodings
+URL:            https://github.com/jruby/jcodings
 Source0:        https://github.com/jruby/jcodings/archive/%{version}.tar.gz
 BuildRequires:  ant
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
-Requires:       java
+Requires:       java >= 1.8
 Requires:       javapackages-tools
 BuildArch:      noarch
 
@@ -44,7 +44,7 @@ find -name '*.jar' -exec rm -f '{}' \;
 %build
 echo "See %{url} for more info about the %{name} project." > README.txt
 
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
 mkdir -p %{buildroot}%{_javadir}
