@@ -1,7 +1,7 @@
 #
 # spec file for package aho-corasick-double-array-trie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            https://github.com/hankcs/AhoCorasickDoubleArrayTrie
 Source0:        https://github.com/hankcs/AhoCorasickDoubleArrayTrie/archive/v%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildArch:      noarch
 
@@ -44,7 +45,11 @@ cp %{SOURCE1} .
 %pom_remove_plugin :maven-source-plugin
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
