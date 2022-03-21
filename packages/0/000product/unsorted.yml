@@ -11073,7 +11073,10 @@ unsorted:
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_9 
   - libgnome-desktop-3-devel 
+  - libgnome-games-support-2-4 
   - libgnome-games-support-devel 
+  - libgnome-games-support-lang 
+  - libgnome-games-support1_3-devel 
   - libgnome-keyring-devel 
   - libgnome-keyring0-32bit: [x86_64] 
   - libgnome-menu-3-0-32bit: [x86_64] 
@@ -42300,14 +42303,18 @@ unsorted:
   - vte-tools 
   - vtk-devel 
   - vtk-java 
+  - vtk-java-devel 
   - vtk-openmpi2-devel 
   - vtk-openmpi2-java 
+  - vtk-openmpi2-java-devel 
   - vtk-openmpi2-qt 
   - vtk-openmpi3-devel 
   - vtk-openmpi3-java 
+  - vtk-openmpi3-java-devel 
   - vtk-openmpi3-qt 
   - vtk-openmpi4-devel 
   - vtk-openmpi4-java 
+  - vtk-openmpi4-java-devel 
   - vtk-openmpi4-qt 
   - vtk-qt 
   - vtkdata 
