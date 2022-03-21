@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,42 +26,38 @@
 %bcond_with test
 %endif
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-statsmodels%{psuffix}
-Version:        0.12.2
+Version:        0.13.2
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
 URL:            https://github.com/statsmodels/statsmodels
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM statsmodels-pr7373-future-sp-pd-mpl.patch -- gh#statsmodels/statsmodels#7373
-Patch1:         https://github.com/statsmodels/statsmodels/pull/7373.patch#/statsmodels-pr7373-future-sp-pd-mpl.patch
-# PATCH-FiX-UPSTREAM statsmodels-pr7737-32bit-iloc-dtype.patch gh#statsmodels/statsmodels#7737
-Patch2:         https://github.com/statsmodels/statsmodels/pull/7737.patch#/statsmodels-pr7737-32bit-iloc-dtype.patch
-BuildRequires:  %{python_module Cython >= 0.29}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.15}
-BuildRequires:  %{python_module scipy >= 1.1}
+BuildRequires:  %{python_module Cython >= 0.29.22}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module setuptools >= 0.6}
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.15
-Requires:       python-pandas >= 0.23
-Requires:       python-patsy >= 0.5.1
-Requires:       python-scipy >= 1.1
-Recommends:     python-matplotlib >= 2.2
+Requires:       python-numpy >= 1.17
+Requires:       python-pandas >= 1.0
+Requires:       python-patsy >= 0.5.2
+Requires:       python-scipy >= 1.3
+Recommends:     python-matplotlib >= 3
 %if %{with test}
-BuildRequires:  %{python_module matplotlib >= 2.2}
-# https://github.com/pandas-dev/pandas/issues/42626
-BuildRequires:  %{python_module pandas >= 0.23 without (%python-pandas >= 1.3 with %python-pandas < 1.3.2)}
-BuildRequires:  %{python_module patsy >= 0.5.1}
-BuildRequires:  %{python_module statsmodels >= %{version}}
-%endif
-# SECTION test requirements
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
+# SECTION mandatory
+BuildRequires:  %{python_module statsmodels = %{version}}
 # /SECTION
+# SECTION optional
+BuildRequires:  %{python_module matplotlib >= 3}
+# /SECTION
+# SECTION test requirements
+BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module pytest-xdist}
+# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -88,6 +84,8 @@ sed -i 's/\r$//' README_l1.txt
 %build
 %if !%{with test}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+# force cythonization
+export SM_FORCE_C=1
 %python_build
 %endif
 
@@ -95,11 +93,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-# Remove unwanted setup files
-%python_expand find %{buildroot}%{$python_sitearch} -name 'setup.py*' -exec rm {} \;
-rm -f %{buildroot}%{_prefix}/LICENSE.txt
-rm -f %{buildroot}%{_prefix}/setup.cfg
 %endif
 
 %check
@@ -111,8 +104,13 @@ rm -rf $testdir
 mkdir $testdir
 cp setup.cfg $testdir
 pushd $testdir
+%ifarch %{ix86} %{arm32}
+# Note: there is no upstream 32-bit support for testing
+# gh#statsmodels/statsmodels#7463
+%define donttest  -k "not (test_seasonal_order or (test_holtwinters and test_forecast_index))"
+%endif
 # not slow: some tests in tsa and discrete take AGES to run in OBS, like 2h per the folder
-%pytest_arch -n auto -p no:cacheprovider -m "not slow" %{$python_sitearch}/statsmodels
+%pytest_arch -n auto -p no:cacheprovider -m "not slow" %{$python_sitearch}/statsmodels %{?donttest}
 popd
 rm -r $testdir
 %endif

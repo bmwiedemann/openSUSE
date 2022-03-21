@@ -85,4 +85,12 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>920821</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1dbec56e6454e9baaa6555c5675e9ec5</srcmd5>
+    <version>0.13.2</version>
+    <time>1647889899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963466</requestid>
+  </revision>
 </revisionlist>

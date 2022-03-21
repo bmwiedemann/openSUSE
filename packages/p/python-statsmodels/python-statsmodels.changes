@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 20 14:43:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.2
+  * Autoregressive Distributed Lag models
+  * Copulas
+  * Ordered Models (Ordinal Regression)
+  * Beta Regression
+  * Improvements to ARIMA estimation options
+  * Python 3.10 support
+  * Protection against changes in recent versions of upstream
+    packages
+- Drop patches merged upstream
+  * statsmodels-pr7373-future-sp-pd-mpl.patch
+  * statsmodels-pr7737-32bit-iloc-dtype.patch
+
+-------------------------------------------------------------------
 Tue Sep 21 13:00:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix 32-bit test failures
