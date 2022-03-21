@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 20 10:14:41 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.17 (library 15.0.0):
+  * New program astscript-fits-view: Given any number of FITS files
+    this script will either open SAO DS9 (for 2D images or 3D
+    cubes) or TOPCAT (for tables) to visualize their contents in a
+    graphic user interface (GUI).
+  * add a set of installed scripts to enable easy estimation and
+    subtraction of the extended PSF (astscript-psf-*)
+  * Coordinate-related columns in all programs now also accept
+    sexagesimal values, not just degrees
+  * Columns of FITS tables can now be read in parallel
+  * multiple new operations and options
+  * Some operations and options were renamed
+  * A number of bug fixes
+
+-------------------------------------------------------------------
 Mon Oct 11 19:58:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.16 (library 14.0.0):

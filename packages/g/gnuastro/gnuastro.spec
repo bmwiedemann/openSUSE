@@ -1,7 +1,7 @@
 #
 # spec file for package gnuastro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 14
+%define sover 15
 %bcond_with     tests
 Name:           gnuastro
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later
@@ -110,6 +110,7 @@ mv -v %{buildroot}/%{_datadir}/%{name}/completion.bash %{buildroot}/%{_datadir}/
 %doc ChangeLog README NEWS THANKS AUTHORS
 %config %{_sysconfdir}/*.conf
 %{_bindir}/*
+%{_datadir}/gnuastro
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files -n libgnuastro%{sover}
@@ -123,10 +124,12 @@ mv -v %{buildroot}/%{_datadir}/%{name}/completion.bash %{buildroot}/%{_datadir}/
 %{_libdir}/pkgconfig/*.pc
 
 %files doc
+%license COPYING*
 %{_infodir}/gnuastro.info*.gz
 %{_infodir}/gnuastro-figures
 
 %files bash-completion
+%license COPYING*
 %{_datadir}/bash-completion/completions/%{name}
 
 %changelog
