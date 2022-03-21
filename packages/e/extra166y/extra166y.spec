@@ -1,7 +1,7 @@
 #
 # spec file for package extra166y
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch0:         extra166y-osgi-manifest.patch
 BuildRequires:  ant
 BuildRequires:  aqute-bnd >= 3.2.0-2
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  xmvn-install
@@ -72,8 +73,8 @@ rm -f src/test/extra166y/ParallelArrayAsListTest.java
 
 %{mvn_file} org.codehaus.jsr166-mirror:%{name} %{name}
 export CLASSPATH=$(build-classpath junit)
-%ant \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+%{ant} \
+  -Dbuild.sourcelevel=1.8 \
   extra166yjar extra166ydist-docs
 %{mvn_artifact} %{SOURCE1} build/%{name}lib/%{name}.jar
 
