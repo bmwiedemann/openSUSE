@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 04:43:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Tue Mar 26 12:36:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of maven-file-management 3.0.0
