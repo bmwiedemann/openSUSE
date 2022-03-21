@@ -1,7 +1,7 @@
 #
 # spec file for package python-gTTS
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gTTS
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 Summary:        Python module to create MP3 files from spoken text via the Google TTS API
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pndurette/gTTS
-Source:         https://files.pythonhosted.org/packages/source/g/gTTS/gTTS-%{version}.tar.gz
+Source:         https://github.com/pndurette/gTTS/archive/refs/tags/v%{version}.tar.gz#/gTTS-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM demock.patch gh#pndurette/gTTS#343 mcepl@suse.com
+# remove dependency on the external mock package
+Patch0:         demock.patch
+# PATCH-FIX-UPSTREAM network-tests.patch gh#pndurette/gTTS#344 mcepl@suse.com
+# one more test marked as the network requiring
+Patch1:         network-tests.patch
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module gTTS-token >= 1.1.3}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.9}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools >= 38.6}
@@ -43,7 +48,7 @@ Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,7 +59,7 @@ utility. It allows unlimited lengths to be spoken by tokenizing long
 sentences where the speech would naturally pause.
 
 %prep
-%setup -q -n gTTS-%{version}
+%autosetup -p1 -n gTTS-%{version}
 
 %build
 %python_build
@@ -66,7 +71,7 @@ sentences where the speech would naturally pause.
 
 %check
 # tests are sadly mostly online
-#%%pytest
+%pytest -k 'not net'
 
 %post
 %python_install_alternative gtts-cli
