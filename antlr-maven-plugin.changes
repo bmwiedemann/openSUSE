@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 14:49:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with maven.compiler.release=8 on any JDK >= 9
+
+-------------------------------------------------------------------
 Fri Mar 11 07:10:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

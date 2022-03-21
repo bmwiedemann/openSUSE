@@ -23,7 +23,7 @@ Summary:        Maven plugin that generates files based on grammar file(s)
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://mojo.codehaus.org/antlr-maven-plugin/
-Source0:        http://repo1.maven.org/maven2/org/codehaus/mojo/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/%{name}/%{version}/%{name}-%{version}-source-release.zip
 # Modern modello expects to see <models></models>, even if there is only one.
 Patch0:         maven-antlr-plugin-2.2-modello-issue.patch
 # siteRenderer.createSink doesn't exist anymore
@@ -32,6 +32,7 @@ Patch2:         maven-antlr-plugin-2.1-sinkfix.patch
 Patch3:         0001-MANTLR-34-Fix-NPE-when-building-Jenkins.patch
 Patch4:         new-reporting-api.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.commons:commons-exec)
@@ -80,7 +81,11 @@ find -name '*.jar' -exec rm -f '{}' \;
 %{mvn_file} : %{name}
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install

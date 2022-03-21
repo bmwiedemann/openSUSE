@@ -15,4 +15,12 @@
     <comment>fix building with the new maven-reporting-api</comment>
     <requestid>961013</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a88a427b562b952f26399b5315f7339c</srcmd5>
+    <version>2.2</version>
+    <time>1647889993</time>
+    <user>dimstar_suse</user>
+    <comment>maven.compiler.release=8</comment>
+    <requestid>963726</requestid>
+  </revision>
 </revisionlist>
