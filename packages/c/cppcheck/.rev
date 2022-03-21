@@ -205,4 +205,19 @@
     <comment></comment>
     <requestid>941431</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cce75e230b8f7fae097b39aba7cd6ff2</srcmd5>
+    <version>2.7.1</version>
+    <time>1647889860</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.1:
+  * Add support for container views. The view attribute has been added to the
+    &lt;container&gt; library tag to specify the class is a view. The lifetime
+    analysis has been updated to use this new attribute to find dangling
+    lifetime containers.
+  * Various checker improvements.
+  * Fixed false positives.
+- drop fix-i586.patch (obsolete)</comment>
+    <requestid>963325</requestid>
+  </revision>
 </revisionlist>
