@@ -1,7 +1,7 @@
 #
 # spec file for package fmpp
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,7 @@ build-jar-repository -s lib freemarker ant/ant bsh2 xml-resolver
 %build
 
 %{ant} \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
 	-Ddependency.freemarker.version=2.3.22 \
 	-Ddependency.bsh.version=2.0b4 \
 	-Ddependency.xmlResolver.version=1.2 \

@@ -16,7 +16,7 @@ index b4d0e1b..0704882 100644
    <property environment="env" />
    <property name="ant.jar.path" value="${env.ANT_HOME}/lib/ant.jar" />
  
-@@ -64,26 +57,17 @@
+@@ -64,26 +57,15 @@
    </target>
  
    <target name="compile" description="Compile Java files and copy resources">
@@ -42,8 +42,6 @@ index b4d0e1b..0704882 100644
             debug="on"
 -           source="1.5"
 -           target="1.5"
-+           source="1.6"
-+           target="1.6"
      >
        <classpath refid="classpath.path" />
      </javac>
@@ -56,7 +54,7 @@ index b4d0e1b..0704882 100644
      </javadoc>
    </target>
  
-@@ -315,15 +297,14 @@
+@@ -315,15 +297,12 @@
  
    <target name="test" depends="jar" description="Run test suite">
      <mkdir dir="build/test/classes" />
@@ -70,8 +68,6 @@ index b4d0e1b..0704882 100644
             debug="on"
 -           source="1.5"
 -           target="1.5"
-+           source="1.6"
-+           target="1.6"
      >
        <classpath refid="testClasspath.path" />
      </javac>
