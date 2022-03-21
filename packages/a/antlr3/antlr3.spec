@@ -1,7 +1,7 @@
 #
-# spec file for package antlr3
+# spec file for package antlr3-java
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch0:         0001-java8-fix.patch
 Patch1:         osgi-manifest.patch
 Patch100:       antlr3-generated_sources.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(antlr:antlr)
@@ -92,13 +93,13 @@ descriptions containing actions in a variety of target languages.
 %package     tool
 Summary:        ANother Tool for Language Recognition
 Group:          Development/Libraries/Java
-Requires:       mvn(org.antlr:antlr-runtime) = %{antlr_version}
 # Explicit requires for javapackages-tools since antlr3-script
 # uses /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
+Requires:       mvn(org.antlr:antlr-runtime) = %{antlr_version}
 %if %{without bootstrap}
-Provides:       antlr3-bootstrap-tool
 Conflicts:      antlr3-bootstrap-tool
+Provides:       antlr3-bootstrap-tool
 %endif
 
 %description tool
@@ -150,8 +151,8 @@ find -type f -a -name *.class -delete
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :maven-javadoc-plugin
 
-# compile for target 1.6, see BZ#842572
-sed -i 's/jsr14/1.6/' antlr3-maven-archetype/src/main/resources/archetype-resources/pom.xml \
+# compile for target 1.8
+sed -i 's/jsr14/1.8/' antlr3-maven-archetype/src/main/resources/archetype-resources/pom.xml \
                       antlr3-maven-plugin/pom.xml \
                                           gunit/pom.xml \
                                           gunit-maven-plugin/pom.xml \
@@ -176,16 +177,18 @@ sed -i 's/jsr14/1.6/' antlr3-maven-archetype/src/main/resources/archetype-resour
 %if %{with bootstrap}
 	-j \
 %endif
+    -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+	-Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %if %{without runtime} &&  %{without bootstrap}
 
 # build ant task
 pushd antlr-ant/main/antlr3-task/
 export CLASSPATH=$(build-classpath ant)
-javac -encoding ISO-8859-1 antlr3-src/org/apache/tools/ant/antlr/ANTLR3.java
+javac -encoding ISO-8859-1 -source 8 -target 8 antlr3-src/org/apache/tools/ant/antlr/ANTLR3.java
 jar cvf ant-antlr3.jar \
   -C antlr3-src org/apache/tools/ant/antlr/antlib.xml \
   -C antlr3-src org/apache/tools/ant/antlr/ANTLR3.class
@@ -228,6 +231,7 @@ EOF
 %endif
 
 %else
+
 %files -f .mfiles
 %license tool/LICENSE.txt
 
