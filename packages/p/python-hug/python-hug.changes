@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 11:35:57 UTC 2022 - pgajdos@suse.com
+
+- python-mock is actually not needed for build
+
+-------------------------------------------------------------------
 Thu Feb 17 12:13:03 UTC 2022 - pgajdos@suse.com
 
 - fix hug/api.py to work with python 3.10

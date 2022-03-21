@@ -41,7 +41,6 @@ BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module falcon}
 BuildRequires:  %{python_module marshmallow >= 3.0.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
