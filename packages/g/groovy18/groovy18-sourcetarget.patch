@@ -5,7 +5,7 @@
                  destdir="${targetDirectory}/tools"
                  includeantruntime="false"
 -                source="1.5" target="1.5" fork="true" classpathref="compilePath"/>
-+                source="1.6" target="1.6" fork="true" classpathref="compilePath"/>
++                source="1.8" target="1.8" fork="true" classpathref="compilePath"/>
          <java classpath="${targetDirectory}/tools"
                classpathref="compilePath"
                classname="org.codehaus.groovy.ExceptionUtilsGenerator">
@@ -14,7 +14,7 @@
  
          <javac srcdir="${mainSourcePath}" includeantruntime="false" destdir="${mainClassesDirectory}"
 -               deprecation="on" debug="yes" source="1.5" target="1.5" fork="true" classpathref="compilePath">
-+               deprecation="on" debug="yes" source="1.6" target="1.6" fork="true" classpathref="compilePath">
++               deprecation="on" debug="yes" source="1.8" target="1.8" fork="true" classpathref="compilePath">
              <exclude name="groovy/ui/**/*.java"/>
          </javac>
          <java classname="org.codehaus.groovy.tools.DgmConverter"
@@ -23,7 +23,7 @@
                  <path refid="compilePath"/>
              </classpath>
 -            <javac deprecation="on" debug="yes" source="1.5" target="1.5"/>
-+            <javac deprecation="on" debug="yes" source="1.6" target="1.6"/>
++            <javac deprecation="on" debug="yes" source="1.8" target="1.8"/>
          </groovyc>
      </target>
  
@@ -32,7 +32,7 @@
                  <path refid="testLibPath"/>
              </classpath>
 -            <javac source="1.5" target="1.5" nowarn="on"/>
-+            <javac source="1.6" target="1.6" nowarn="on"/>
++            <javac source="1.8" target="1.8" nowarn="on"/>
          </groovyc>
      </target>
  
@@ -42,7 +42,7 @@
              </classpath>
 -            <!-- currently not needed, add in if/when required -->
 -            <!--<javac source="1.5" target="1.5" nowarn="on"/>-->
-+            <javac source="1.6" target="1.6" nowarn="on"/>
++            <javac source="1.8" target="1.8" nowarn="on"/>
          </groovyc>
      </target>
  
@@ -52,8 +52,8 @@
                 destdir="${examplesClassesDirectory}"
 -               source="1.5"
 -               target="1.5"
-+               source="1.6"
-+               target="1.6"
++               source="1.8"
++               target="1.8"
                 fork="true">
              <classpath>
                  <pathelement path="${mainClassesDirectory}"/>
@@ -62,7 +62,7 @@
                  <path refid="examplesPath"/>
              </classpath>
 -            <javac source="1.5" target="1.5"/>
-+            <javac source="1.6" target="1.6"/>
++            <javac source="1.8" target="1.8"/>
          </groovyc>
  
      </target>
@@ -71,7 +71,7 @@
          <javadoc destdir="${docsDirectory}/api" author="true" version="true"
                   windowtitle="${title}" doctitle="${title}"
 -                 encoding="ISO-8859-1" useexternalfile="true" source="1.5"
-+                 encoding="ISO-8859-1" useexternalfile="true" source="1.6"
++                 encoding="ISO-8859-1" useexternalfile="true" source="1.8"
                   footer="${docFooter}"
                   overview="src/main/overviewj.html"
                   maxmemory="${javaDoc_mx}"

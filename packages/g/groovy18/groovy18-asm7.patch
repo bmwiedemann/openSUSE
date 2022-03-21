@@ -1,0 +1,57 @@
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/ant/VerifyClass.java	2013-02-15 09:42:29.000000000 +0100
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/ant/VerifyClass.java	2022-03-21 08:55:34.604198152 +0100
+@@ -119,23 +119,7 @@
+                     log("verifying of class " + clazz + " failed");
+                 }
+                 if (verbose) log(method.name + method.desc);
+-                TraceMethodVisitor mv = new TraceMethodVisitor(null) {
+-                    public void visitMaxs(int maxStack, int maxLocals) {
+-                        StringBuffer buffer = new StringBuffer();
+-                        for (int i = 0; i < text.size(); ++i) {
+-                            String s = frames[i] == null ? "null" : frames[i].toString();
+-                            while (s.length() < maxStack + maxLocals + 1) {
+-                                s += " ";
+-                            }
+-                            buffer.append(Integer.toString(i + 100000).substring(1));
+-                            buffer.append(" ");
+-                            buffer.append(s);
+-                            buffer.append(" : ");
+-                            buffer.append(text.get(i));
+-                        }
+-                        if (verbose) log(buffer.toString());
+-                    }
+-                };
++                TraceMethodVisitor mv = new TraceMethodVisitor(null);
+                 for (int j = 0; j < method.instructions.size(); ++j) {
+                     Object insn = method.instructions.get(j);
+                     if (insn instanceof AbstractInsnNode) {
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/runtime/callsite/GroovySunClassLoader.java	2013-02-15 09:42:29.000000000 +0100
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/runtime/callsite/GroovySunClassLoader.java	2022-03-21 08:58:16.241090031 +0100
+@@ -15,9 +15,10 @@
+  */
+ package org.codehaus.groovy.runtime.callsite;
+ 
++import org.codehaus.groovy.reflection.SunClassLoader;
+ import org.objectweb.asm.ClassReader;
++import org.objectweb.asm.ClassVisitor;
+ import org.objectweb.asm.ClassWriter;
+-import org.codehaus.groovy.reflection.SunClassLoader;
+ 
+ import java.io.IOException;
+ import java.io.InputStream;
+@@ -56,12 +57,13 @@
+     private void loadAbstract() throws IOException {
+         final InputStream asStream = GroovySunClassLoader.class.getClass().getClassLoader().getResourceAsStream(resName("org.codehaus.groovy.runtime.callsite.AbstractCallSite"));
+         ClassReader reader = new ClassReader(asStream);
+-        final ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS) {
++        final ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
++        final ClassVisitor cv = new ClassVisitor(4, cw) {
+             public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+                 super.visit(version, access, name, signature, "sun/reflect/GroovyMagic", interfaces);
+             }
+         };
+-        reader.accept(cw, ClassWriter.COMPUTE_MAXS);
++        reader.accept(cv, ClassWriter.COMPUTE_MAXS);
+         asStream.close();
+         define(cw.toByteArray(), "org.codehaus.groovy.runtime.callsite.AbstractCallSite");
+     }

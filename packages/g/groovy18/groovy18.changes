@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 21 15:03:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * groovy18-sourcetarget.patch
+    + Build with source and target levels 8
+- Added patches:
+  * groovy18-amgiguous-function-calls.patch
+    + Cast to Collection to help compiler to resolve ambiguities
+      with new JDKs
+  * groovy18-asm7.patch
+    + Remove dependency on the old asm3
+
+-------------------------------------------------------------------
 Mon Dec 16 09:21:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid too many compatibility symlinks, since this is already

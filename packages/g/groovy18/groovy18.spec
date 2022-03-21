@@ -1,7 +1,7 @@
 #
 # spec file for package groovy18
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,12 +40,13 @@ Patch5:         groovy18-sourcetarget.patch
 Patch6:         groovy18-iterator.patch
 Patch7:         groovy18-securitymanager.patch
 Patch8:         groovy18-notarget.patch
+Patch9:         groovy18-amgiguous-function-calls.patch
+Patch10:        groovy18-asm7.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  antlr
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-ivy
-BuildRequires:  asm3
 BuildRequires:  bsf
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -57,6 +58,7 @@ BuildRequires:  javapackages-local
 BuildRequires:  jline1
 BuildRequires:  jpackage-utils
 BuildRequires:  junit
+BuildRequires:  objectweb-asm
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
@@ -131,12 +133,16 @@ cp %{SOURCE3} .
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 # build.xml is not compatible with Ant 1.10+
 sed -i "s| depends=\"-excludeLegacyAntVersion\"||" build.xml
 
 # We don't want to generate auto-R on optional dependencies
 %pom_xpath_replace "pom:dependency[pom:optional[text()='true']]/pom:scope" "<scope>provided</scope>"
+
+%pom_change_dep asm::: org.ow2.asm::7.0:
 
 # java 7 apis
 %pom_remove_dep org.livetribe:livetribe-jsr223
@@ -164,8 +170,8 @@ mkdir -p target/lib/{compile,tools}
 
 # Construct classpath
 build-jar-repository target/lib/compile glassfish-servlet-api glassfish-jsp-api/javax.servlet.jsp-api \
-        asm3/asm-tree asm3/asm \
-        asm3/asm-util asm3/asm-analysis \
+        objectweb-asm/asm-tree objectweb-asm/asm \
+        objectweb-asm/asm-util objectweb-asm/asm-analysis \
         antlr ant/ant-antlr antlr \
         bsf jline1/jline-1 xstream ant junit apache-ivy commons-cli \
         jansi
