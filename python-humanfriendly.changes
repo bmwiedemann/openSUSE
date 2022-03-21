@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:15:56 UTC 2022 - pgajdos@suse.com
+
+- do not require mock for build
+- added patches
+  fix https://github.com/xolox/python-humanfriendly/issues/62
+  + python-humanfriendly-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Nov 18 11:55:15 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.0
