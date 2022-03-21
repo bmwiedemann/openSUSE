@@ -24,17 +24,18 @@ License:        GPL-2.0+
 Group:          Development/Tools/Debuggers
 Url:            https://github.com/KDAB/hotspot
 Source:         https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-CMake-Don-t-assume-KDE_INSTALL_-variables-are-relati.patch
 BuildRequires:  glibc-devel-static
-BuildRequires:  threadweaver-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  solid-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  threadweaver-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kitemmodels-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kwindowsystem-devel
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5ThreadWeaver)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
@@ -48,20 +49,25 @@ Hotspot is a standalone GUI for performance data with an UI like KCachegrind
 around Linux perf.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %cmake_kf5 -d build
 
 %install
-%cmake_install
+%kf5_makeinstall -C build
 
 %files
 %license LICENSE.GPL.txt
 %doc README.md
 %{_kf5_bindir}/hotspot
+%if %{pkg_vcmp kf5-filesystem >= 20220307}
+%{_libexecdir}/hotspot-perfparser
+%{_libexecdir}/elevate_perf_privileges.sh
+%else
 %{_kf5_libdir}/libexec/hotspot-perfparser
 %{_kf5_libdir}/libexec/elevate_perf_privileges.sh
+%endif
 %{_kf5_iconsdir}/hicolor/*/*/hotspot.png
 
 

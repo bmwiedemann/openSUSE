@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 20 13:58:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup.
+- Use %_libexec where needed.
+- Add patch:
+   * 0001-CMake-Don-t-assume-KDE_INSTALL_-variables-are-relati.patch
+
+-------------------------------------------------------------------
 Thu Sep 03 15:39:02 UTC 2020 - Markus Ebner <info@ebner-markus.de>
 
 - Update to 1.3.0
