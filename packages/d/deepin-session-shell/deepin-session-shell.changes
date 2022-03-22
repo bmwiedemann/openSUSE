@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 17 03:21:39 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.9
+  * Fix bugs
+  * Package development files
+  * Update translations
+- drop fix-crash-bug.patch, merged by upstream
+
+-------------------------------------------------------------------
 Thu Dec 16 08:41:34 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.112

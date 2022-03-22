@@ -19,16 +19,13 @@
 %define _name dde-session-shell
 
 Name:           deepin-session-shell
-Version:        5.4.112
+Version:        5.5.9
 Release:        0
 Summary:        Deepin desktop-environment - Session UI Shell
 License:        GPL-3.0+
 URL:            https://github.com/linuxdeepin/dde-session-shell
 Source0:        https://github.com/linuxdeepin/dde-session-shell/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        https://github.com/linuxdeepin/startdde/raw/master/misc/lightdm.conf
-# PATCH-FIX-UPSTREAM fix-crash-bug.patch hillwood@opensuse.org
-# https://github.com/linuxdeepin/dde-session-shell/pull/38
-Patch0:         fix-crash-bug.patch
 Group:          System/GUI/Other
 BuildRequires:  gtest
 BuildRequires:  update-desktop-files
@@ -36,7 +33,11 @@ BuildRequires:  deepin-gettext-tools
 BuildRequires:  dtkcore
 BuildRequires:  libqt5-linguist
 BuildRequires:  pam-devel
-BuildRequires:  pkgconfig(dtkwidget5.5) >= 5.5.0
+BuildRequires:  lightdm
+%if 0%{?suse_version} <= 1500
+BuildRequires:  lightdm-gtk-greeter 
+%endif
+BuildRequires:  pkgconfig(dtkwidget) >= 5.5.0
 BuildRequires:  libdframeworkdbus-devel >= 5.4.20
 BuildRequires:  pkgconfig(dde-dock)
 BuildRequires:  pkgconfig(gsettings-qt)
@@ -86,6 +87,14 @@ Recommends:     %{name}-lang = %{version}-%{release}
 A LightDM greeter that uses the Deepin Desktop. This is the reference implementation 
 of a LightDM greeter based on the Deepin Desktop.
 
+%package devel
+Summary:        Development tools for deepin-session-shell
+Group:          Development/Languages/C and C++
+
+%description devel
+The deepin-session-shell-devel package contains the header files and developer
+docs for deepin-session-shell-devel.
+
 %lang_package
 
 %prep
@@ -95,7 +104,7 @@ sed -i 's|qdbusxml2cpp|qdbusxml2cpp-qt5|g' CMakeLists.txt
 sed -i 's|backgrounds/default_background.jpg|wallpapers/openSUSEdefault/contents/images/1920x1080.jpg|g' \
 src/widgets/fullscreenbackground.cpp
 sed -i 's|backgrounds/deepin/desktop.jpg|wallpapers/openSUSEdefault/contents/images/1920x1080.jpg|g' \
-src/dde-shutdown/view/contentwidget.cpp
+src/session-widgets/lockcontent.cpp
 cp %{_datadir}/icons/hicolor/scalable/apps/openSUSE-distributor-logo.svg src/widgets/img/logo.svg
 
 %build
@@ -121,17 +130,27 @@ chmod +x %{buildroot}%{_bindir}/*
 %dir %{_datadir}/deepin-authentication/
 %dir %{_datadir}/deepin-authentication/privileges
 %{_datadir}/deepin-authentication/privileges/lightdm-deepin-greeter.conf
+%dir %{_datadir}/dsg
+%dir %{_datadir}/dsg/apps/
+%{_datadir}/dsg/apps/dde-lock
 
 %files -n lightdm-deepin-greeter
 %license LICENSE
+%dir %{_sysconfdir}/lightdm/deepin
+%config %{_sysconfdir}/lightdm/deepin/qt-theme.ini
 %{_bindir}/lightdm-deepin-greeter
 %{_sysconfdir}/deepin/greeters.d/lightdm-deepin-greeter
 %{_sysconfdir}/deepin/greeters.d/10-cursor-theme
-%dir %{_datadir}/lightdm
-%dir %{_datadir}/lightdm/lightdm.conf.d
+# %dir %{_datadir}/lightdm
+# %dir %{_datadir}/lightdm/lightdm.conf.d
 %{_datadir}/lightdm/lightdm.conf.d/60-deepin.conf
 %dir %{_datadir}/xgreeters
 %{_datadir}/xgreeters/lightdm-deepin-greeter.desktop
+%{_datadir}/dsg/apps/lightdm-deepin-greeter
+
+%files devel
+%{_includedir}/%{_name}
+%{_libdir}/cmake/DdeSessionShell
 
 %files lang
 %{_datadir}/%{_name}
