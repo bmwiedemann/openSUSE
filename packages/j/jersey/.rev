@@ -40,4 +40,12 @@
     <comment>Depend on glassfish-activation-api</comment>
     <requestid>962707</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>7bfb24dbb7aa8814188227a66b1c6fe4</srcmd5>
+    <version>2.28</version>
+    <time>1647974472</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964014</requestid>
+  </revision>
 </revisionlist>

@@ -172,6 +172,10 @@ find core-* containers/{grizzly2,jdk,jetty}-http media/sse ext/{entity-filtering
 %pom_add_dep org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Alpha3:provided ext/cdi/jersey-cdi1x-validation
 
 # Fix reference to JDK tools jar
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 13}%{!?pkg_vcmp:0}
+# uses com.sun.javadoc apis removed in JDK 13
+%pom_disable_module wadl-doclet ext
+%endif
 %pom_xpath_remove "pom:dependencies/pom:dependency[pom:artifactId = 'tools']/pom:scope" ext/wadl-doclet
 %pom_xpath_remove "pom:dependencies/pom:dependency[pom:artifactId = 'tools']/pom:systemPath" ext/wadl-doclet
 

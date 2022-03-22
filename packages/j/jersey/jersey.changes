@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 22 16:10:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- When building with java >= 13, don't build a module that
+  uses APIs that were removed
+
+-------------------------------------------------------------------
 Thu Mar 17 06:45:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against external activation and jaxb-api dependencies
