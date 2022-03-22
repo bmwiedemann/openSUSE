@@ -23,7 +23,7 @@ Release:        0
 Summary:        Java bindings for the OpenGL API
 License:        BSD-2-Clause
 Group:          Development/Libraries/Java
-URL:            http://jogamp.org/jogl/www/
+URL:            https://jogamp.org/jogl/www/
 Source0:        http://jogamp.org/deployment/v%{version}/archive/Sources/%{src_name}.tar.xz
 Patch0:         %{name}-0000-update-antlr-ant-contrib-jars.patch
 Patch1:         %{name}-0001-update-ant-contrib-tasks.patch
@@ -45,7 +45,7 @@ BuildRequires:  libXrender-devel
 BuildRequires:  libXt-devel
 BuildRequires:  libXxf86vm-devel
 Requires:       gluegen2 = %{version}
-Requires:       java
+Requires:       java >= 1.8
 Requires:       jpackage-utils
 
 %description
@@ -109,7 +109,7 @@ ant	-Dcommon.gluegen.build.done=true \
 	-Djavacdebug=true \
     -Djavacdebuglevel=lines,vars,source \
     -Dc.compiler.debug=true \
-    -Djava.version=1.6 -Dant.java.version=1.6 \
+    -Djava.version=1.8 -Dant.java.version=1.8 \
     -Dantlr.jar=$(build-classpath antlr) \
     -Djunit.jar=$(build-classpath junit) \
     -Dant.jar$(build-classpath ant) \
@@ -130,7 +130,8 @@ ln -s ../../..%{_jnidir}/%{name}.jar %{buildroot}%{_libdir}/%{name}/
 install -t %{buildroot}%{_libdir}/%{name}/ build/lib/*.so
 
 %files
-%doc README.txt LICENSE.txt CHANGELOG.txt
+%license LICENSE.txt
+%doc README.txt CHANGELOG.txt
 %{_libdir}/%{name}
 %{_jnidir}/%{name}.jar
 

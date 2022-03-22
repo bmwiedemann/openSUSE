@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 22 17:27:29 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Sun Feb  6 20:34:29 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - jogl2-riscv64.patch: Add support for riscv64
