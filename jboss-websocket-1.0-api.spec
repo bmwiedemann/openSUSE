@@ -1,7 +1,7 @@
 #
 # spec file for package jboss-websocket-1.0-api
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/jboss/jboss-websocket-api_spec
 Source0:        https://github.com/jboss/jboss-websocket-api_spec/archive/jboss-websocket-api_1.0_spec-%{namedversion}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.jboss:jboss-parent:pom:)
@@ -48,7 +49,11 @@ This package contains the API documentation for %{name}.
 
 %build
 %{mvn_alias} "org.jboss.spec.javax.websocket:jboss-websocket-api_1.0_spec" "javax.websocket:javax.websocket-api" "javax.websocket:javax.websocket-client-api"
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install

@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>746547</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4176b81b7381f7c8fec6c61ea69b126</srcmd5>
+    <version>1.0.0</version>
+    <time>1647974435</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963929</requestid>
+  </revision>
 </revisionlist>
