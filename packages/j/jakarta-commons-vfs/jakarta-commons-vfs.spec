@@ -38,6 +38,7 @@ BuildRequires:  jakarta-commons-httpclient3
 BuildRequires:  jakarta-commons-logging
 BuildRequires:  jakarta-commons-net
 BuildRequires:  jakarta-slide-webdavclient
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javamail
 BuildRequires:  javapackages-local
 BuildRequires:  jcifs
@@ -107,7 +108,6 @@ ant \
     -Dmaven.mode.offline=true \
     -Dmaven.repo.local=$MAVEN_REPO_LOCAL \
     -Dmaven.repo.remote=file:%{_datadir}/maven/repository \
-    -Dmaven.javadoc.source=1.4 \
     -Dmaven.home.local=$(pwd)/.maven \
     -Dmaven.test.skip=true \
     -Dmaven.test.error.ignore=true \
