@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 01:35:59 UTC 2022 - william.brown@suse.com
+
+- Update to version 1.0.0~git7.63c3500:
+  * Improve macros when libgit is a dependency
+
+-------------------------------------------------------------------
 Wed Oct 06 00:06:42 UTC 2021 - william.brown@suse.com
 
 - Update to version 1.0.0~git6.d878e38:
