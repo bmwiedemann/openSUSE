@@ -17,7 +17,7 @@
 
 
 Name:           gerbera
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -27,8 +27,6 @@ Source0:        https://github.com/gerbera/gerbera/archive/v%{version}.tar.gz#/%
 Source1:        config.xml
 Source2:        gerbera.sysusers.in
 Patch0:         harden_gerbera.service.patch
-# PATCH-FIX-UPSTREAM: this will be included with v1.9.3
-Patch1:         fix_for_smt_gt8.patch
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
@@ -49,12 +47,12 @@ BuildRequires:  pkgconfig(libebml)
 BuildRequires:  pkgconfig(libffmpegthumbnailer)
 BuildRequires:  pkgconfig(libmatroska)
 BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(libupnp) >= 1.14.0
+BuildRequires:  pkgconfig(libupnp) >= 1.14.6
 BuildRequires:  pkgconfig(pugixml)
-BuildRequires:  pkgconfig(spdlog)
-BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(spdlog) >= 1.8.1
+BuildRequires:  pkgconfig(sqlite3) >= 3.7.11
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(taglib) >= 1.11
+BuildRequires:  pkgconfig(taglib) >= 1.12
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate

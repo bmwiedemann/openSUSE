@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 21 15:35:03 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.10.0:
+  * show subdir of recursive autoscan in directory tree
+  * add screenshots for grid view
+  * add all metadata to search capabilities
+  * search title in metadata instead of file name
+  * reuse Request Handler
+  * lots of other fixes: https://github.com/gerbera/gerbera/releases/tag/v1.10.0
+- Remove fix_for_smt_gt8.patch
+
+-------------------------------------------------------------------
 Fri Jan 14 06:44:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Use %sysusers_create_package on Tumbleweed
