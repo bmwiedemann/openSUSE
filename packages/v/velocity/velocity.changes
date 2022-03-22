@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 22 15:13:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Tue Feb 22 18:59:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j

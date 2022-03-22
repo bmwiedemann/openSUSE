@@ -22,8 +22,8 @@ Release:        0
 Summary:        Java-based template engine
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://velocity.apache.org/
-Source0:        http://www.apache.org/dist/velocity/engine/%{version}/%{name}-%{version}.tar.gz
+URL:            https://velocity.apache.org/
+Source0:        https://archive.apache.org/dist/velocity/engine/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-%{version}.pom
 Patch0:         velocity-build_xml.patch
 Patch1:         velocity-1.7-CVE-2020-13936.patch
@@ -36,6 +36,7 @@ BuildRequires:  commons-lang
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
 BuildRequires:  hsqldb
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jdom >= 1.0-1
 BuildRequires:  junit
@@ -47,7 +48,7 @@ BuildRequires:  werken-xpath
 Requires:       avalon-logkit
 Requires:       commons-collections
 Requires:       commons-lang
-Requires:       java >= 1.6.0
+Requires:       java >= 1.8
 Requires:       jdom >= 1.0-1
 Requires:       oro
 Requires:       reload4j
@@ -169,7 +170,6 @@ cp %{SOURCE1} pom.xml
 %pom_remove_parent pom.xml
 
 %build
-#export JAVA_HOME=%{_jvmdir}/java-1.5.0
 # Use servletapi4 instead of servletapi5 in CLASSPATH
 mkdir -p bin/test-lib
 pushd bin/test-lib
@@ -198,7 +198,7 @@ export OPT_JAR_LIST="ant/ant-junit junit"
 #FIXME: tests failed on CommonsExtPropTestCase
 #but resulting files seems to be same
 ant \
-  -Djavac.source=1.6 -Djavac.target=1.6 \
+  -Djavac.source=1.8 -Djavac.target=1.8 \
   -buildfile build/build.xml \
   jar javadocs
 
