@@ -18,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.6.6
+Version:        0.6.8
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        MIT
@@ -27,7 +27,7 @@ URL:            https://github.com/ClementTsang/bottom
 Source:         https://github.com/ClementTsang/bottom/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-BuildRequires:  cargo
+BuildRequires:  cargo >= 1.58
 BuildRequires:  rust
 
 %description
