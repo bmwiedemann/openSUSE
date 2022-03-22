@@ -1,7 +1,7 @@
 #
 # spec file for package decentxml
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://storage.googleapis.com/google-code-archive-downloads/v2/
 # for running w3c conformance test suite
 Source1:        http://www.w3.org/XML/Test/xmlts20031210.zip
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
@@ -66,10 +67,11 @@ sed -i -e "s|junit-dep|junit|g" pom.xml
 
 %build
 %{mvn_file}  : %{name}
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+	-Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
