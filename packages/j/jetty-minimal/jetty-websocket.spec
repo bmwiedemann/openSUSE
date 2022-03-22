@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ License:        Apache-2.0 OR EPL-1.0
 URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 # Multiple providers, chose the 1.0 one over 1.1, since
 # the relevant artifacts assume the API version 1.0
 BuildRequires:  jboss-websocket-1.0-api
@@ -267,6 +268,8 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module jetty-xml
 %pom_disable_module jetty-webapp
 
+%pom_xpath_remove "pom:plugins/pom:plugin[pom:artifactId='maven-javadoc-plugin']/pom:configuration/pom:additionalJOption"
+
 %{mvn_file} :{*} %{base_name}/@1
 
 %build
@@ -301,7 +304,11 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 
 # we don't have all necessary dependencies to run tests
 # missing test dep: org.eclipse.jetty.toolchain:jetty-perf-helper
-%{mvn_build} -f -s
+%{mvn_build} -f -s -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install

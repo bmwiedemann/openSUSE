@@ -95,4 +95,12 @@
     <comment>make import of package sun.misc optional</comment>
     <requestid>926144</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e92aef61fff278227e966635178b9122</srcmd5>
+    <version>9.4.43</version>
+    <time>1647974468</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>963998</requestid>
+  </revision>
 </revisionlist>

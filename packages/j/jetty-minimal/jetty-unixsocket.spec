@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ License:        Apache-2.0 OR EPL-1.0
 URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.jnr:jnr-unixsocket)
 BuildRequires:  mvn(org.apache.ant:ant)
@@ -214,6 +215,8 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module jetty-xml
 %pom_disable_module jetty-webapp
 
+%pom_xpath_remove "pom:plugins/pom:plugin[pom:artifactId='maven-javadoc-plugin']/pom:configuration/pom:additionalJOption"
+
 %{mvn_file} :{*} %{base_name}/@1
 
 %build
@@ -238,7 +241,11 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %{mvn_package} :jetty-runner __noinstall
 %{mvn_package} :build-resources __noinstall
 
-%{mvn_build} -f
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
