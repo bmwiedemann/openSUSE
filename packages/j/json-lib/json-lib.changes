@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 22 18:21:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * json-lib-2.4-antrun-plugin.patch
+    + specify source and target levels 8 for maven-antrun-plugin
+      and for groovyc ant task
+- Add opens of java.lang from java.base module to all unnamed
+  * fixes build with jdk17
+
+-------------------------------------------------------------------
 Mon Mar 21 08:45:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not depend on the old asm3

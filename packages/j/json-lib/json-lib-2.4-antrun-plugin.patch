@@ -48,8 +48,8 @@ index cc191ee..37bb10a 100644
 +                        <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc">
 +                           <classpath refid="maven.plugin.classpath"/>
 +                        </taskdef>
-+                        <groovyc destdir="${project.build.outputDirectory}" srcdir="${basedir}/src/main" classpathref="maven.compile.classpath">
-+                           <javac source="1.6" target="1.6" debug="on"/>
++                        <groovyc destdir="${project.build.outputDirectory}" srcdir="${basedir}/src/main" classpathref="maven.compile.classpath" targetBytecode="1.8">
++                           <javac source="1.8" target="1.8" debug="on"/>
 +                        </groovyc>
 +                     </target>
 +                  </configuration>

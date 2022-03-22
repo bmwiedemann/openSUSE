@@ -30,7 +30,7 @@ Source100:      jenkins-%{name}-%{version}.tar.xz
 Patch0:         %{name}-%{version}-antrun-plugin.patch
 Patch100:       %{name}-%{version}-Use-Jenkins-default-values.patch
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(antlr:antlr)
 BuildRequires:  mvn(commons-beanutils:commons-beanutils)
@@ -115,6 +115,9 @@ popd
 
 %build
 %{mvn_file} : %{name}
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+MAVEN_OPTS="--add-opens=java.base/java.lang=ALL-UNNAMED" \
+%endif
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 	-Dmaven.compiler.release=8 \
