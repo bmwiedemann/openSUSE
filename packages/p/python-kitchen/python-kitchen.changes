@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 21:13:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests (gh#fedora-infra/kitchen#37).
+
+-------------------------------------------------------------------
 Tue Jan 19 06:35:00 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix bare words in spec, no longer supported

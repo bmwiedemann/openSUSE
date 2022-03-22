@@ -1,7 +1,7 @@
 #
 # spec file for package python-kitchen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,8 @@ pushd kitchen2
 %else
 pushd kitchen3
 %endif
-$python -m pytest -k 'not test_internal_generate_combining_table'
+# skips because of gh#fedora-infra/kitchen#29 and gh#fedora-infra/kitchen#37
+$python -m pytest -k 'not (test_internal_generate_combining_table or test_easy_gettext_setup_non_unicode or test_invalid_fallback_no_raise or test_lgettext or test_lngettext)'
 popd}
 
 %files %{python_files}

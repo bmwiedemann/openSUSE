@@ -60,4 +60,13 @@
     <comment></comment>
     <requestid>864230</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1f285b15cff1f7acc506ff789d0628b5</srcmd5>
+    <version>1.2.6</version>
+    <time>1647974387</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing tests (gh#fedora-infra/kitchen#37).
+</comment>
+    <requestid>963786</requestid>
+  </revision>
 </revisionlist>
