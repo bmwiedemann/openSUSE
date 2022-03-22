@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 22 13:52:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Mon Apr 19 16:59:36 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update generate-tarball.sh to use https URL [bsc#1182708]

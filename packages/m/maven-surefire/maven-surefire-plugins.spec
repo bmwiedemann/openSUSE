@@ -1,7 +1,7 @@
 #
-# spec file for package maven-surefire-plugins
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/surefire/
+URL:            https://maven.apache.org/surefire/
 # ./generate-tarball.sh
 Source0:        %{base_name}-%{version}.tar.gz
 # Remove bundled binaries which cannot be easily verified for licensing
@@ -34,6 +34,7 @@ Patch1:         0002-Port-to-current-doxia.patch
 Patch2:         0003-Port-to-TestNG-6.11.patch
 Patch3:         0004-Port-to-current-maven-shared-utils.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
@@ -161,20 +162,21 @@ find . -name dependency-reduced-pom.xml -delete
 %{mvn_package} ":*junit-platform*" junit5
 %{mvn_package} ":*{junit,testng,failsafe-plugin,report-parser}*"  @1
 
-%mvn_artifact pom.xml
+%{mvn_artifact} pom.xml
 mkdir -p target/site/apidocs
 for i in \
-   maven-failsafe-plugin \
-   maven-surefire-plugin \
-   maven-surefire-report-plugin; do
+    maven-failsafe-plugin \
+    maven-surefire-plugin \
+    maven-surefire-report-plugin; do
   pushd ${i}
-    %mvn_build -f \
+    %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
   popd
-  %mvn_artifact ${i}/pom.xml ${i}/target/${i}-%{version}.jar
+  %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
   if [ -d ${i}/target/site/apidocs ]; then
     cp -r ${i}/target/site/apidocs target/site/apidocs/${i}
   fi

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-surefire
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/surefire/
+URL:            https://maven.apache.org/surefire/
 # ./generate-tarball.sh
 Source0:        %{name}-%{version}.tar.gz
 # Remove bundled binaries which cannot be easily verified for licensing
@@ -38,6 +38,7 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
 BuildRequires:  javapackages-local
 BuildRequires:  jsr-305
@@ -213,12 +214,12 @@ build-jar-repository -s -p lib \
 	plexus-languages/plexus-java \
 	testng
 
-%ant \
+%{ant} \
 	-Dtest.skip=true \
 	package javadoc
 
-%mvn_artifact pom.xml
-%mvn_artifact surefire-providers/pom.xml
+%{mvn_artifact} pom.xml
+%{mvn_artifact} surefire-providers/pom.xml
 
 mkdir -p target/site/apidocs
 
@@ -232,7 +233,7 @@ for module in \
     maven-surefire-plugin \
     maven-failsafe-plugin \
     maven-surefire-report-plugin; do
-  %mvn_artifact ${module}/pom.xml ${module}/target/${module}-%{version}.jar
+  %{mvn_artifact} ${module}/pom.xml ${module}/target/${module}-%{version}.jar
   if [ -d ${module}/target/site/apidocs ]; then
     cp -r ${module}/target/site/apidocs target/site/apidocs/${module}
   fi
@@ -247,7 +248,7 @@ for module in \
     surefire-junit47 \
     surefire-testng-utils \
     surefire-testng; do
-  %mvn_artifact surefire-providers/${module}/pom.xml \
+  %{mvn_artifact} surefire-providers/${module}/pom.xml \
     surefire-providers/${module}/target/${module}-%{version}.jar
   if [ -d surefire-providers/${module}/target/site/apidocs ]; then
     cp -r surefire-providers/${module}/target/site/apidocs target/site/apidocs/${module}
