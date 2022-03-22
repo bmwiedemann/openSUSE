@@ -38,6 +38,7 @@ Requires:       python-azure-mgmt-agfood
 Requires:       python-azure-mgmt-agrifood
 Requires:       python-azure-mgmt-alertsmanagement
 Requires:       python-azure-mgmt-apimanagement
+Requires:       python-azure-mgmt-app
 Requires:       python-azure-mgmt-appconfiguration
 Requires:       python-azure-mgmt-applicationinsights
 Requires:       python-azure-mgmt-appplatform

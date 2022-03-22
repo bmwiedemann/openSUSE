@@ -288,4 +288,13 @@
     <comment></comment>
     <requestid>962117</requestid>
   </revision>
+  <revision rev="24" vrev="21">
+    <srcmd5>31da89ae13d8aec19a25b539dc282ad9</srcmd5>
+    <version>4.0.0</version>
+    <time>1647974428</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-app (forwarded request 963890 from glaubitz)</comment>
+    <requestid>963915</requestid>
+  </revision>
 </revisionlist>
