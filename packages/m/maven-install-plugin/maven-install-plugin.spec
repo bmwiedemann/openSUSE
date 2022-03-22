@@ -1,7 +1,7 @@
 #
 # spec file for package maven-install-plugin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,9 @@ Summary:        Maven Install Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/plugins/maven-install-plugin
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(commons-codec:commons-codec)
@@ -66,9 +67,9 @@ API documentation for %{name}.
 %build
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
+    -Dmaven.compiler.release=8 \
 %endif
-	-DmavenVersion=3.1.1
+    -Dsource=8 -DmavenVersion=3.1.1
 
 %install
 %mvn_install
