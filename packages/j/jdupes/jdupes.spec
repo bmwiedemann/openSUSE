@@ -1,7 +1,7 @@
 #
 # spec file for package jdupes
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Group:          Productivity/File utilities
 URL:            https://github.com/jbruchon/jdupes
 Source0:        https://github.com/jbruchon/jdupes/archive/refs/tags/v%{version}.tar.gz
 Source1:        macros.jdupes
+Source2:        jdupes_wrapper.cpp
+BuildRequires:  gcc-c++
 
 %description
 A program for identifying and taking actions upon duplicate files.
@@ -41,11 +43,13 @@ programs.
 %build
 make %{?_smp_mflags} \
      ENABLE_DEDUPE=1 \
-     STATIC_DEDUPE_H=1 \
+     STATIC_DEDUPE_H=1
+g++ %{optflags} -O2 -Wall %{SOURCE2} -o jdupes_wrapper
 
 %install
 make DESTDIR=%{buildroot} PREFIX=%{_prefix} install
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.%{name}
+install -D -m755 jdupes_wrapper  %{buildroot}/usr/lib/rpm/jdupes_wrapper
 
 %check
 ./jdupes -q -r testdir
@@ -56,5 +60,6 @@ install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.%{name}
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_rpmmacrodir}/macros.%{name}
+/usr/lib/rpm/jdupes_wrapper
 
 %changelog

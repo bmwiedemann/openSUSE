@@ -11,4 +11,12 @@
 - run tests</comment>
     <requestid>961045</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f642d3e21009621164686bad2273745a</srcmd5>
+    <version>1.20.2</version>
+    <time>1647974389</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>963793</requestid>
+  </revision>
 </revisionlist>
