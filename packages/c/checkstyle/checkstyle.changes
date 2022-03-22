@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 22 07:12:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with jdk < 13, since it uses APIs removed in
+  JDK 13
+- Fix build on systems where the JDK does not contain the JavaEE
+  modules
+
+-------------------------------------------------------------------
 Tue May 11 05:17:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

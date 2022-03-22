@@ -15,4 +15,12 @@
     <comment>Add patch to build without deprecated constants</comment>
     <requestid>892283</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bedf035c4605ad96168d8b9b967af6b2</srcmd5>
+    <version>8.0</version>
+    <time>1647974393</time>
+    <user>dimstar_suse</user>
+    <comment>Force building with jdk &lt; 13 and build against standalone jaxb-api</comment>
+    <requestid>963834</requestid>
+  </revision>
 </revisionlist>

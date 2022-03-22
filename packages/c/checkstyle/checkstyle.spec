@@ -1,7 +1,7 @@
 #
 # spec file for package checkstyle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,11 +43,15 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-failsafe-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:antlr-maven-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildConflicts: java >= 13
+BuildConflicts: java-devel >= 13
+BuildConflicts: java-headless >= 13
 #!BuildRequires: stringtemplate4
-# Explicit requires for javapackages-tools since checkstyle-script
-# uses /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
+%endif
 
 %description
 A tool for checking Java source code for adherence to a set of rules.
@@ -82,9 +86,10 @@ sed -i s/guava-jdk5/guava/ pom.xml
 %pom_remove_plugin :forbiddenapis
 %pom_remove_plugin :spotbugs-maven-plugin
 
-# get rid of system scope
 %pom_remove_dep com.sun:tools
-%pom_add_dep com.sun:tools::provided
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.xml.bind:jaxb-api
+%endif
 
 # fix encoding issues in docs
 sed -i 's/\r//' LICENSE LICENSE.apache20 README.md
@@ -97,9 +102,7 @@ sed -i '/testUnexpectedChar/s/./@org.junit.Ignore/' src/test/java/com/puppycrawl
 
 %build
 %{mvn_file}  : %{name}
-# Tests are skipped due to unavailable test dependencies
-# (com.github.stefanbirkner:system-rules:jar:1.9.0 and
-# nl.jqno.equalsverifier:equalsverifier:jar:1.7.2)
+
 %{mvn_build} -f
 
 %install
