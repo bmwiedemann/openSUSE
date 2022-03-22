@@ -1,7 +1,7 @@
 #
-# spec file for package modello-maven-plugin
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,9 +91,12 @@ sed -i s/maven-project/maven-core/ modello-maven-plugin/pom.xml
 %pom_remove_dep :modello-plugin-jsonschema modello-maven-plugin
 
 %build
-# skip tests because we have too old xmlunit in openSUSE now (1.5)
 pushd %{name}
-%{mvn_build} -f -- -Dmaven.version=3.1.1 -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dmaven.version=3.1.1 -Dsource=8
 popd
 
 %install
