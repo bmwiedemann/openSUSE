@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-slide-webdavclient
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,7 +31,7 @@ Release:        0
 Summary:        Slide WebDAV client
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/slide/
+URL:            http://jakarta.apache.org/slide/
 Source0:        jakarta-slide-webdavclient-src-2.1.tar.bz2
 Source1:        %{name}.sh
 Source2:        jakarta-slide-webdavclient-2.2-WebdavResource.java
@@ -39,7 +39,6 @@ Source3:        jakarta-slide-webdavclient-component-info.xml
 Source4:        http://mirrors.ibiblio.org/pub/mirrors/maven2/slide/slide-webdavlib/2.1/slide-webdavlib-2.1.pom
 # FIXME Temporary fix !!!
 Patch0:         jakarta-slide-webdavclient-3.0-compat.patch
-Patch1:         jakarta-slide-webdavclient-build-jdk16.patch
 Patch2:         jakarta-slide-webdavclient-jdk15.patch
 Patch3:         jakarta-slide-webdavclient-enum.patch
 BuildRequires:  ant >= 1.6
@@ -90,7 +89,6 @@ find . -name "*.jar" | xargs rm
 #done
 cp -p %{SOURCE2} clientlib/src/java/org/apache/webdav/lib/WebdavResource.java
 %patch0 -b .sav
-%patch1 -b .sav
 %patch2 -b .sav
 %patch3 -p1
 
@@ -103,7 +101,7 @@ geronimo-j2ee-1.4-apis \
 jdom \
 xml-im-exporter \
 )
-ant -v -d -Dbuild.sysclasspath=first
+ant -v -d -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 -Dbuild.sysclasspath=first
 
 %install
 install -dm 755 %{buildroot}%{_bindir}
