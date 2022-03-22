@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 21 20:46:04 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 0.5.2+git.1630978236.a30af77:
+  * Update to Python 3.6, drop 2to3
+  * invalid commands
+  * versionbump
+  * shebang
+  * small performance patch for Tempita
+  * order imports
+  * compatability is hard
+  * py3 unicode
+- Switch upstream (the original is so dead, it is hard to find it
+  even in the Web Archive; gh#nsoranzo/tempita#1).
+
+-------------------------------------------------------------------
 Thu Nov  7 15:54:29 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Run through spec-cleaner
