@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-packaging
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 
 
 Name:           cargo-packaging
-Version:        1.0.0~git6.d878e38
+Version:        1.0.0~git7.63c3500
 Release:        0
 BuildArch:      noarch
 Summary:        Some macros to assist with cargo and rust packaging
 License:        MPL-2.0
+Group:          Development/Languages/Rust
 URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.xz
 Requires:       cargo
