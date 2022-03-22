@@ -47,7 +47,7 @@ BuildRequires:  apache-commons-logging
 BuildRequires:  batik >= 1.10
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  jcip-annotations
 BuildRequires:  unzip
@@ -57,7 +57,7 @@ BuildRequires:  xmlgraphics-commons >= 1.3
 BuildRequires:  xmlgraphics-fop >= 0.95
 Requires:       apache-commons-logging
 Requires:       batik >= 1.10
-Requires:       java
+Requires:       java >= 1.8
 Requires:       javapackages-tools
 Requires:       jcip-annotations
 Requires:       xmlgraphics-commons >= 1.3

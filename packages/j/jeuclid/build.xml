@@ -122,7 +122,7 @@
   <property name="full.build.output.core" value="${package.name}/${build.output}" />
 
     <mkdir dir="${full.build.output.core}"/>
-    <javac destdir="${full.build.output.core}" debug="true" deprecation="true" optimize="false" source="6" target="6">
+    <javac destdir="${full.build.output.core}" debug="true" deprecation="true" optimize="false" source="8" target="8">
       <src>
         <pathelement location="${package.name}/src/main/java"/>
 
@@ -141,7 +141,7 @@
   <property name="package.name.mathviewer" value="jeuclid-mathviewer" />
   <property name="full.build.output.mathviewer" value="${package.name.mathviewer}/${build.output}" />
     <mkdir dir="${full.build.output.mathviewer}"/>
-    <javac destdir="${package.name.mathviewer}/${build.output}" debug="true" deprecation="true" optimize="false" source="6" target="6">
+    <javac destdir="${package.name.mathviewer}/${build.output}" debug="true" deprecation="true" optimize="false" source="8" target="8">
       <src>
         <pathelement location="${package.name.mathviewer}/src/main/java"/>
 
@@ -169,7 +169,7 @@
   <property name="full.build.output.cli" value="${package.name.cli}/${build.output}" />
 
     <mkdir dir="${full.build.output.cli}"/>
-    <javac destdir="${full.build.output.cli}" debug="true" deprecation="true" optimize="false" source="6" target="6">
+    <javac destdir="${full.build.output.cli}" debug="true" deprecation="true" optimize="false" source="8" target="8">
       <src>
         <pathelement location="${package.name.cli}/src/main/java"/>
 
@@ -195,7 +195,7 @@
   <property name="full.build.output.fop" value="${package.name.fop}/${build.output}" />
 
     <mkdir dir="${full.build.output.fop}"/>
-    <javac destdir="${full.build.output.fop}" debug="true" deprecation="true" optimize="false" source="6" target="6">
+    <javac destdir="${full.build.output.fop}" debug="true" deprecation="true" optimize="false" source="8" target="8">
       <src>
         <pathelement location="${package.name.fop}/src/main/java"/>
 
