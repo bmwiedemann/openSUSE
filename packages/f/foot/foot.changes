@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 17 08:18:45 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add "Requires: foot" for foot-themes package
+
+-------------------------------------------------------------------
+Thu Mar 17 08:15:10 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Make foot-themes a subpackage of foot.
+- Fix foot-themes summary and description.
+
+-------------------------------------------------------------------
 Sat Feb  5 23:01:59 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.11.0:

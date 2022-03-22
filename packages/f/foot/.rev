@@ -219,4 +219,12 @@
     to tests subdirectory, as discussed with upstream.</comment>
     <requestid>951810</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>69966811291dd0e40f046f062ab0eb5e</srcmd5>
+    <version>1.11.0</version>
+    <time>1647974377</time>
+    <user>dimstar_suse</user>
+    <comment>- Split themes into foot-themes subpackage.</comment>
+    <requestid>963768</requestid>
+  </revision>
 </revisionlist>

@@ -55,11 +55,20 @@ that provide more features than the files in the terminfo-base package.
 Set term=foot-extra or term=foot-extra-direct in foot.ini to
 take advantage of the files in this package.
 
+%package themes
+
+Summary:        Community-contributed themes for the foot terminal emulator
+Requires:       foot
+
+%description themes
+This package contains popular themes for the foot terminal emulator providing
+users an easy way to theme foot.
+
 %prep
 %autosetup -n %{name} -p1
 
 %build
-%meson -Db_lto=true
+%meson -Db_lto=true -Dthemes=true
 %meson_build
 
 %install
@@ -79,7 +88,8 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %{_datadir}/doc/%{name}/
 %{_datadir}/fish/
 %{_datadir}/zsh/
-%{_datadir}/%{name}/
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/foot.ini
 %{_datadir}/icons/hicolor/
 %{_mandir}/man1/foot.1.gz
 %{_mandir}/man1/footclient.1.gz
@@ -89,5 +99,9 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %files extra-terminfo
 %{_datadir}/terminfo/f/foot-extra
 %{_datadir}/terminfo/f/foot-extra-direct
+
+%files themes
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/themes
 
 %changelog
