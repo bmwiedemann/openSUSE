@@ -1,7 +1,7 @@
 #
 # spec file for package jhighlight
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,13 @@ Name:           jhighlight
 Version:        1.0.1
 Release:        0
 Summary:        An embeddable pure Java syntax highlighting library
-License:        LGPL-2.1-or-later OR CDDL-1.0
+License:        CDDL-1.0 OR LGPL-2.1-or-later
 Group:          Development/Libraries/Java
 URL:            http://svn.rifers.org/jhighlight
 Source0:        https://github.com/codelibs/jhighlight/archive/jhighlight-%{version}.tar.gz
 Patch0:         servlet31.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.servlet:servlet-api)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
@@ -52,7 +53,11 @@ This package contains the API documentation for %{name}.
 %{mvn_alias} : com.uwyn:
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
