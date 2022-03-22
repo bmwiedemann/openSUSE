@@ -1,7 +1,7 @@
 #
-# spec file for package maven-resources-plugin
+# spec file
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,13 @@ Release:        0
 Summary:        Maven Resources Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/plugins/maven-resources-plugin
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/plugins/maven-resources-plugin
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  maven-filtering
 BuildRequires:  maven-lib
@@ -92,23 +93,23 @@ cp %{SOURCE1} build.xml
 %if %{with bootstrap}
 mkdir -p lib
 build-jar-repository -s lib \
-	commons-io \
-	maven-filtering/maven-filtering \
-	maven/maven-core \
-	maven/maven-model \
-	maven/maven-plugin-api \
-	maven-plugin-tools/maven-plugin-annotations \
-	org.eclipse.sisu.plexus \
-	plexus/interpolation \
-	plexus/utils
+    commons-io \
+    maven-filtering/maven-filtering \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-plugin-api \
+    maven-plugin-tools/maven-plugin-annotations \
+    org.eclipse.sisu.plexus \
+    plexus/interpolation \
+    plexus/utils
 %{ant} -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \
-	-Dmaven.test.skip=true \
+    -Dmaven.test.skip=true \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+    -Dmaven.compiler.release=8 \
 %endif
-	package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
+    package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
 
 %{mvn_artifact} pom.xml target/%{base_name}-%{version}.jar
