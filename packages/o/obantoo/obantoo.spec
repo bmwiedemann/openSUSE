@@ -25,9 +25,11 @@ Group:          Development/Languages/Java
 URL:            http://obantoo.sourceforge.net/
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         %{name}-classpath.patch
+Patch1:         %{name}-no-hard-source-target.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  itextpdf
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  junit
 BuildArch:      noarch
 %if 0%{?suse_version} > 1500
@@ -40,6 +42,7 @@ A library of tools for German online banking implementing SEPA, IBAN/BIC, DETAUS
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 find . -name \*.jar -print -delete
 build-jar-repository -s lib itextpdf junit
 %if 0%{?suse_version} > 1500
@@ -49,7 +52,7 @@ build-jar-repository -s lib glassfish-jaxb-api
 dos2unix *.txt
 
 %build
-%{ant}
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
 mkdir -p %{buildroot}%{_javadir}

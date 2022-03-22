@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 22 15:57:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Added patch:
+  * obantoo-no-hard-source-target.patch
+    + Don't hardcode source and target levels in the build files,
+      but allow them to be specified on ant invocation
+
+-------------------------------------------------------------------
 Thu Mar 17 09:38:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the system libraries
