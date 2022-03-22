@@ -1,7 +1,7 @@
 #
 # spec file for package hawtbuf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,13 +72,13 @@ This package contains javadoc for %{name}.
 %{mvn_package} ":%{name}-project" %{name}
 
 for i in . %{name}-proto %{name}-protoc; do
-  %pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.6 ${i}
-  %pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.6 ${i}
+  %pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.8 ${i}
+  %pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.8 ${i}
 done
 
 %build
 
-%{mvn_build} -s -f -- -Dsource=6
+%{mvn_build} -s -f -- -Dsource=8
 
 %install
 %mvn_install
