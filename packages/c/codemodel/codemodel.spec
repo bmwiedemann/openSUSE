@@ -1,7 +1,7 @@
 #
 # spec file for package codemodel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,8 +52,8 @@ This package contains the API documentation for %{name}.
 %setup -q -n jaxb-%{name}-%{name}-project-2.6
 %patch0 -p1
 
-%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.6
-%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.6
+%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.8
+%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.8
 
 # Remove bundled jar files:
 find . -name '*.jar' -print -delete
@@ -64,7 +64,7 @@ find . -name '*.class' -print -delete
 
 %build
 
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=6
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
