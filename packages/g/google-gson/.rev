@@ -15,4 +15,12 @@
     <comment>2.8.8</comment>
     <requestid>926143</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a3135a42a1c43d5df547c25189f7ac36</srcmd5>
+    <version>2.8.8</version>
+    <time>1647974414</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>963891</requestid>
+  </revision>
 </revisionlist>
