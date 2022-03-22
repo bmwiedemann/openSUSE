@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jsp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Name:           glassfish-jsp
 Version:        2.3.4
 Release:        0
 Summary:        Glassfish J2EE JSP API implementation
-License:        (CDDL-1.1 OR GPL-2.0-only WITH Classpath-exception-2.0) AND Apache-2.0
+License:        Apache-2.0 AND (CDDL-1.1 OR GPL-2.0-only WITH Classpath-exception-2.0)
 Group:          Development/Libraries/Java
-URL:            http://glassfish.org
+URL:            https://glassfish.org
 Source0:        %{artifactId}-%{version}.tar.xz
 Source1:        https://raw.githubusercontent.com/javaee/javaee-jsp-api/%{artifactId}-%{version}/LICENSE
 Source2:        http://www.apache.org/licenses/LICENSE-2.0
@@ -32,6 +32,7 @@ Patch0:         %{name}-build-eclipse-compilers.patch
 Patch1:         %{name}-port-to-servlet-3.1.patch
 Patch2:         Tag.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  xmvn-subst
 BuildRequires:  mvn(javax.servlet.jsp:javax.servlet.jsp-api)
@@ -83,7 +84,7 @@ cp -p %{SOURCE2} .
 %{mvn_file} : %{name}/javax.servlet.jsp %{name}
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
