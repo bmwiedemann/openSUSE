@@ -34,3 +34,27 @@ diff --git a/tests/test-orphan-tags.t b/tests/test-orphan-tags.t
    $ git push --tags
    To $TESTTMP/git.bare
     * [new tag]         the_tag -> the_tag
+diff --git a/tests/test-illegal-contents.t b/tests/test-illegal-contents.t
+--- a/tests/test-illegal-contents.t
++++ b/tests/test-illegal-contents.t
+@@ -119,7 +119,8 @@
+   warning: path 'nested/.hg/00changelog.i' is within a nested repository, which Mercurial cannot check out.
+   warning: path 'nested/.hg/requires' is within a nested repository, which Mercurial cannot check out.
+   updating to branch default (no-hg57 !)
+-  updating to bookmark master (hg57 !)
++  warning: path 'nested/.hg/store/requires' is within a nested repository, which Mercurial cannot check out.
++  updating to bookmark master
+   abort: path 'nested/.hg/00changelog.i' is inside nested repo 'nested'
+   [255]
+   $ cd ..
+diff --git a/tests/test-git-tags.t b/tests/test-git-tags.t
+--- a/tests/test-git-tags.t
++++ b/tests/test-git-tags.t
+@@ -180,6 +180,7 @@
+   $ touch gamma
+   $ fn_hg_commit -A -m 'add gamma'
+   $ hg tag --git gamma --debug -r tip
++  invalid branch cache (visible): tip differs
+   adding git tag gamma
+   finding hg commits to export
+   exporting hg objects to git

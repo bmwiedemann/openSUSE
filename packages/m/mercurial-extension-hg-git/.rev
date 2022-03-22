@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>951393</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b3294a9a15cf870b3563fa409f38dfd4</srcmd5>
+    <version>0.10.4</version>
+    <time>1647974377</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete python3-hg-git as it is not the Factory package anymore
+
+- Fix failing tests.</comment>
+    <requestid>963764</requestid>
+  </revision>
 </revisionlist>

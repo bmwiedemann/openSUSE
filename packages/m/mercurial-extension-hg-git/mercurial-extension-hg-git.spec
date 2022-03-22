@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial-extension-hg-git
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?suse_version} >= 1550
 %bcond_without test
@@ -30,17 +31,19 @@ Group:          Development/Tools/Version Control
 URL:            http://foss.heptapod.net/mercurial/hg-git
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-git/hg-git-%{version}.tar.gz
 Patch:          fix-tests-expecting-different-git-output.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-dulwich >= 0.19.0
-BuildRequires:  python3-gpg
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  mercurial
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3
+BuildRequires:  python3-dulwich >= 0.19.0
+BuildRequires:  python3-gpg
+BuildRequires:  python3-setuptools
 BuildRequires:  unzip
-Requires:       python3-dulwich >= 0.19.0
 Requires:       mercurial
+Requires:       python3-dulwich >= 0.19.0
+Provides:       python3-hg-git = %{version}-%{release}
+Obsoletes:      python3-hg-git < %{version}-%{release}
 BuildArch:      noarch
 
 %description

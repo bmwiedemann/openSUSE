@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 18 15:28:51 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Obsolete python3-hg-git as it is not the Factory package anymore
+
+-------------------------------------------------------------------
+Fri Mar 18 15:24:42 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Fix failing tests.
+
+-------------------------------------------------------------------
 Wed Feb  2 21:05:39 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to v0.10.4.
