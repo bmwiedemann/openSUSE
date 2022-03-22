@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-transaction-api
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0
 URL:            https://github.com/javaee/javax.transaction
 Source0:        https://github.com/javaee/javax.transaction/archive/javax.transaction-api-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.enterprise:cdi-api)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
@@ -54,7 +55,7 @@ This package contains javadoc for %{name}.
 
 %build
 
-%{mvn_build} -- -Dsource=6
+%{mvn_build} -- -Dsource=8
 
 %install
 %mvn_install
