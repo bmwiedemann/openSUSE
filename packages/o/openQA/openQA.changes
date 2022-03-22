@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 22 09:59:08 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1647892469.8e63f7863:
+  * force_result: Allow only a specific list of new results
+  * Import log_error
+  * Extract function to find the "system" user
+  * Use DBIC method 'find' where applicable rather than search->first
+  * Dependency cron 2022-03-20
+
+-------------------------------------------------------------------
 Sun Mar 20 01:49:03 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1647710740.7574f1433:
