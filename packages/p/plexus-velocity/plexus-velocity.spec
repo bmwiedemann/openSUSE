@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-velocity
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  ant
 BuildRequires:  apache-commons-collections
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  velocity

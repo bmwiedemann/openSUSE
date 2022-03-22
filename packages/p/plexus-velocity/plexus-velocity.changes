@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 22 15:14:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Tue May 11 14:53:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not compiler/run the test build against legacy guava20 any
