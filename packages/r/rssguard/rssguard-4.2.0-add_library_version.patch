@@ -1,0 +1,128 @@
+Index: rssguard-4.2.0/src/librssguard/CMakeLists.txt
+===================================================================
+--- rssguard-4.2.0.orig/src/librssguard/CMakeLists.txt
++++ rssguard-4.2.0/src/librssguard/CMakeLists.txt
+@@ -539,11 +539,11 @@ if(WIN32)
+   list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
+ endif()
+ 
+-add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
++add_library(rssguard-${APP_VERSION} SHARED ${SOURCES} ${QM_FILES})
+ 
+ # Add OAuth services definitions.
+ if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     FEEDLY_OFFICIAL_SUPPORT
+@@ -557,7 +557,7 @@ else()
+ endif()
+ 
+ if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     GMAIL_OFFICIAL_SUPPORT
+@@ -571,7 +571,7 @@ else()
+ endif()
+ 
+ if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL "")
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     INOREADER_OFFICIAL_SUPPORT
+@@ -585,7 +585,7 @@ else()
+ endif()
+ 
+ # Add specific definitions.
+-target_compile_definitions(rssguard
++target_compile_definitions(rssguard-${APP_VERSION}
+   PRIVATE
+   RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+ 
+@@ -601,7 +601,7 @@ target_compile_definitions(rssguard
+   APP_URL_ISSUES_NEW="${APP_URL_ISSUES_NEW}"
+   APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}")
+ 
+-target_include_directories(rssguard
++target_include_directories(rssguard-${APP_VERSION}
+   PUBLIC
+   ${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_CURRENT_SOURCE_DIR}/gui
+@@ -614,7 +614,7 @@ target_include_directories(rssguard
+   ${CMAKE_CURRENT_SOURCE_DIR}/gui/toolbars
+ )
+ 
+-target_link_libraries(rssguard PUBLIC
++target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+   Qt${QT_VERSION_MAJOR}::Core
+   Qt${QT_VERSION_MAJOR}::Gui
+   Qt${QT_VERSION_MAJOR}::Network
+@@ -625,13 +625,13 @@ target_link_libraries(rssguard PUBLIC
+ )
+ 
+ if(QT_VERSION_MAJOR EQUAL 6)
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::Core5Compat
+   )
+ endif()
+ 
+ if(USE_WEBENGINE)
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::WebEngineWidgets
+   )
+ endif()
+@@ -643,13 +643,13 @@ if(WIN32 AND NOT BUILD_WITH_QT6)
+ endif()
+ 
+ if(NOT OS2)
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::Multimedia
+   )
+ endif()
+ 
+ if(UNIX AND NOT APPLE AND NOT ANDROID)
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::DBus
+   )
+ endif()
+@@ -679,7 +679,7 @@ if(WIN32 OR OS2)
+   )
+ elseif(UNIX AND NOT APPLE AND NOT ANDROID)
+   include (GNUInstallDirs)
+-  install(TARGETS rssguard
++  install(TARGETS rssguard-${APP_VERSION}
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   )
+   install(DIRECTORY services/abstract
+Index: rssguard-4.2.0/localization/CMakeLists.txt
+===================================================================
+--- rssguard-4.2.0.orig/localization/CMakeLists.txt
++++ rssguard-4.2.0/localization/CMakeLists.txt
+@@ -33,5 +33,5 @@ else()
+   )
+ 
+   add_custom_target(rssguard_lrelease DEPENDS ${QM_FILES})
+-  add_dependencies(rssguard rssguard_lrelease)
++  add_dependencies(rssguard-${APP_VERSION} rssguard_lrelease)
+ endif()
+Index: rssguard-4.2.0/src/rssguard/CMakeLists.txt
+===================================================================
+--- rssguard-4.2.0.orig/src/rssguard/CMakeLists.txt
++++ rssguard-4.2.0/src/rssguard/CMakeLists.txt
+@@ -17,7 +17,7 @@ target_link_libraries(app PUBLIC
+   Qt${QT_VERSION_MAJOR}::Core
+   Qt${QT_VERSION_MAJOR}::Gui
+   Qt${QT_VERSION_MAJOR}::Widgets
+-  rssguard
++  rssguard-${APP_VERSION}
+ )
+ 
+ if(QT_VERSION_MAJOR EQUAL 6)

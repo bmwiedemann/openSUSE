@@ -16,35 +16,33 @@
 #
 
 
-%define libver  4_1_2
+%define libver  4_2_0
 Name:           rssguard
-Version:        4.1.2
+Version:        4.2.0
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        AGPL-3.0-or-later AND GPL-3.0-only
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-OPENSUSE rssguard-4.0.2-add_library_version.patch aloisio@gmx.com -- add version to shared library
-Patch2:         rssguard-4.0.2-add_library_version.patch
-# PATCH-FIX-UPSTREAM rssguard-4.1.2-Qt512.patch
-Patch3:         rssguard-4.1.2-Qt512.patch
+# PATCH-FIX-OPENSUSE rssguard-4.2.0-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch2:         rssguard-4.2.0-add_library_version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.12
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5WebEngine)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core) >= 5.15
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5WebEngine)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      %{name}-lang < %{version}
 Provides:       %{name}-lang = %{version}
 
@@ -72,13 +70,11 @@ chmod -x resources/desktop/com.github.rssguard.appdata.xml
 find src/librssguard -name "*.h" -exec chmod -x {} \;
 
 %build
-# resources_big is not compatible with LTO
-%define _lto_cflags %{nil}
-%qmake5 PREFIX=%{_prefix} LIBDIR=%{_libdir} USE_WEBENGINE=true
-%make_jobs
+%cmake
+%cmake_build
 
 %install
-%qmake5_install
+%cmake_install
 # install autostart
 mkdir -pv %{buildroot}%{_datadir}/autostart
 install -m0644 resources/desktop/com.github.%{name}.desktop.autostart -t %{buildroot}%{_datadir}/autostart
@@ -100,7 +96,6 @@ install -m0644 resources/desktop/com.github.%{name}.desktop.autostart -t %{build
 
 %files -n librssguard-devel
 %{_includedir}/lib%{name}
-%{_libdir}/pkgconfig/%{name}.pc
 
 %files -n lib%{name}-%{libver}
 %{_libdir}/lib%{name}-%{version}.so
