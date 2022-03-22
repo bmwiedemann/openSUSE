@@ -1,7 +1,7 @@
 #
 # spec file for package glassfishbuild-maven-plugin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://javaee.github.io/glassfish
 Source0:        https://github.com/javaee/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         glassfishbuild-maven-plugin-3.2.26-maven-resolver-3.5.0.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.ant:ant)
@@ -55,8 +56,11 @@ This package provides %{summary}.
 %pom_remove_plugin :maven-checkstyle-plugin
 %pom_remove_plugin :glassfish-copyright-maven-plugin
 
+%pom_xpath_set "pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.8
+%pom_xpath_set "pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.8
+
 %build
-%{mvn_build} -f -- -Dsource=1.6
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
