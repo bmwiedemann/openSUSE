@@ -53,7 +53,7 @@ BuildRequires:  apache-commons-logging
 BuildRequires:  bsh2
 BuildRequires:  fdupes
 BuildRequires:  geronimo-jms-1_1-api
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  jaxp_parser_impl
 BuildRequires:  junit
@@ -174,7 +174,7 @@ ln -sf $(build-classpath mx4j/mx4j-jmx) .
 ln -sf $(build-classpath xalan-j2) .
 ln -sf $(build-classpath xalan-j2-serializer) .
 popd
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 jar javadoc gossip-service jgroups-service
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar javadoc gossip-service jgroups-service
 
 %install
 # jar
@@ -206,7 +206,8 @@ cp -pr doc/* %{buildroot}%{_docdir}/%{name}-%{version}
 %endif
 
 %files
-%doc CREDITS INSTALL.html README LICENSE
+%license LICENSE
+%doc CREDITS INSTALL.html README
 %{_javadir}/%{name}*jar
 %{_datadir}/%{name}-%{version}
 
