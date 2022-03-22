@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 22 19:41:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * groovy18-nofork.patch
+    + do not fork the groovyc and java tasks in the ant build.xml
+      file, so that the ANT_OPTS are propagated to the tasks
+- Add opens of java.lang from java.base module to all unnamed
+  * fixes build with jdk17
+
+-------------------------------------------------------------------
 Mon Mar 21 15:03:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

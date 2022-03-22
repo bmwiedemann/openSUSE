@@ -42,6 +42,7 @@ Patch7:         groovy18-securitymanager.patch
 Patch8:         groovy18-notarget.patch
 Patch9:         groovy18-amgiguous-function-calls.patch
 Patch10:        groovy18-asm7.patch
+Patch11:        groovy18-nofork.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  antlr
@@ -135,6 +136,7 @@ cp %{SOURCE3} .
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 # build.xml is not compatible with Ant 1.10+
 sed -i "s| depends=\"-excludeLegacyAntVersion\"||" build.xml
@@ -179,6 +181,9 @@ build-jar-repository target/lib/compile glassfish-servlet-api glassfish-jsp-api/
 # Build
 # TODO: Build at least tests, maybe examples
 export CLASSPATH=$(build-classpath ant/ant-antlr)
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+export ANT_OPTS="--add-opens=java.base/java.lang=ALL-UNNAMED"
+%endif
 %ant -DskipTests=on -DskipExamples=on -DskipFetch=on -DskipEmbeddable=on \
         createJars javadoc
 
