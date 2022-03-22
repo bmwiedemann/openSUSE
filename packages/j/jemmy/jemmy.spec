@@ -1,7 +1,7 @@
 #
 # spec file for package jemmy
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2010, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,9 +25,9 @@ Name:           jemmy
 Version:        2.3.0.0
 Release:        0
 Summary:        Java UI testing library
-License:        GPL-2.0 OR CDDL-1.0
+License:        CDDL-1.0 OR GPL-2.0-only
 Group:          Development/Libraries/Java
-Url:            https://jemmy.dev.java.net
+URL:            https://jemmy.dev.java.net
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
 #
@@ -40,11 +40,9 @@ Source1:        jemmy-2.3.0.0.pom
 Patch0:         jemmy-nosource.patch
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  fdupes
-BuildRequires:  java-devel
-# Needed for maven conversions
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
-Requires:       java >= 1.6.0
+Requires:       java >= 1.8
 Requires:       javapackages-tools
 BuildArch:      noarch
 
@@ -72,7 +70,7 @@ find . -type f -name '*.jar' | xargs -t rm
 echo "Please, visit https://jemmy.dev.java.net for more info about Jemmy." > README.txt
 
 %build
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 jar javadoc
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar javadoc
 
 %install
 # jar
@@ -88,11 +86,8 @@ mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -a %{target_javadoc} %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
+%files -f .mfiles
 %doc README.txt
-%{_javadir}/*.jar
-%{_mavenpomdir}/*
-%config(noreplace) %{_datadir}/maven-metadata/%{name}.xml*
 
 %files javadoc
 %{_javadocdir}/%{name}

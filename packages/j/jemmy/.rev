@@ -136,4 +136,12 @@ previous spec file license made no sense (forwarded request 157911 from babelwor
     <comment>Fix build with jdk9</comment>
     <requestid>527189</requestid>
   </revision>
+  <revision rev="19" vrev="26">
+    <srcmd5>5c1d659874bd5929914530c08d60194d</srcmd5>
+    <version>2.3.0.0</version>
+    <time>1647974471</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964002</requestid>
+  </revision>
 </revisionlist>

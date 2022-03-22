@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 22 16:01:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Mon Sep 18 23:11:43 UTC 2017 - fstrba@suse.com
 
 - Fix build with jdk9: specify java source and target 1.6
