@@ -1,7 +1,7 @@
 #
 # spec file for package jcsp
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ URL:            https://github.com/codehaus/jcsp
 Source0:        %{name}-%{namedversion}-clean.tar.xz
 Source1:        %{name}-create-tarball.sh
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.osgi:osgi.core)
@@ -120,10 +121,11 @@ rm -r src/org/jcsp/win32 \
 
 %build
 
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6
+	-Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8 -Dproject.build.sourceEncoding=UTF-8
 
 %install
 %mvn_install
