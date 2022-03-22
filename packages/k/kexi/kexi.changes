@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 16 10:14:22 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Use BuildRequires/Requires: breeze5-icons-rcc for Leap 15.4
+
+-------------------------------------------------------------------
 Wed Jul 28 09:49:43 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Use-plain-Marble-package-instead-of-KexiMarble.patch to fix
