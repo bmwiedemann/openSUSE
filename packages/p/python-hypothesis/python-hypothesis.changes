@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Mar 19 16:19:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.39.4
+  * This patch tweaks some internal formatting. There is no
+    user-visible change.
+- Release 6.39.3
+  * If the shrink phase is disabled, we now stop the generate phase
+    as soon as an error is found regardless of the value of the
+    report_multiple_examples setting, since that’s probably what
+    you wanted (issue #3244).
+- Release 6.39.2
+  * This patch clarifies rare error messages in builds() (issue
+    #3225) and floats() (issue #3207).
+- Release 6.39.1
+  * This patch fixes a regression where the bound inner function
+    (your_test.hypothesis.inner_test) would be invoked with
+    positional arguments rather than passing them by name, which
+    broke pytest-asyncio (issue #3245).
+- 6.39.0
+  * This release improves Hypothesis’ handling of positional-only
+    arguments, which are now allowed @st.composite strategies.
+  * On Python 3.8 and later, the first arguments to builds() and
+    from_model() are now natively positional-only. In cases which
+    were already errors, the TypeError from incorrect usage will
+    therefore be raises immediately when the function is called,
+    rather than when the strategy object is used.
+- Release 6.38.0
+  * This release makes floats() error consistently when your
+    floating-point hardware has been configured to violate IEEE-754
+    for subnormal numbers, instead of only when an internal
+    assertion was tripped (issue #3092).
+  * If this happens to you, passing allow_subnormal=False will
+    suppress the explicit error. However, we strongly recommend
+    fixing the root cause by disabling global-effect unsafe-math
+    compiler options instead, or at least consulting e.g. Simon
+    Byrne’s Beware of fast-math explainer first.
+- Release 6.37.2
+  * This patch fixes a bug in stateful testing, where returning a
+    single value wrapped in multiple() would be printed such that
+    the assigned variable was a tuple rather than the single
+    element (issue #3236).
+- Release 6.37.1
+  * This patch fixes a warning under pytest 7 relating to our rich
+    traceback display logic (issue #3223).
+- Release 6.37.0
+  * When distinguishing multiple errors, Hypothesis now looks at
+    the inner exceptions of PEP 654 ExceptionGroups.
+- Release 6.36.2
+  * This patch updates our vendored list of top-level domains,
+    which is used by the provisional domains() strategy.
+- Release 6.36.1
+  * This patch fixes some deprecation warnings from pytest 7.0,
+    along with some code formatting and docs updates.
+- Release 6.36.0
+  * This release disallows using typing.Final with from_type() and
+    register_type_strategy().
+  * Why? Because Final can only be used during class definition. We
+    don’t generate class attributes.
+  * It also does not make sense as a runtime type on its own.
+- Release 6.35.1
+  * This patch fixes hypothesis write output highlighting with rich
+    version 12.0 and later.
+- Drop importorskip-numpy-pandas.patch
+
+-------------------------------------------------------------------
 Thu Jan 20 16:04:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Correct exclusion of test_recursion_error_is_not_flaky for 3.10.

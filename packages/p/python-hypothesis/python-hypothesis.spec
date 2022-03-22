@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 %bcond_with ringdisabled
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -34,7 +33,7 @@ ExclusiveArch:  do_not_build
 %bcond_with test
 %endif
 Name:           python-hypothesis%{psuffix}
-Version:        6.35.0
+Version:        6.39.4
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -43,14 +42,8 @@ URL:            https://github.com/HypothesisWorks/hypothesis
 # Edit the `_service` file and run `osc service runall` for updates.
 # See also https://hypothesis.readthedocs.io/en/latest/packaging.html
 Source:         hypothesis-python-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE dont import numpy and pandas and skip tests if these optional packages are not available.
-Patch0:         importorskip-numpy-pandas.patch
-%if 0%{?suse_version} >= 1500
-BuildRequires:  %{pythons >= 3.5.2}
-%else
-BuildRequires:  %{python_module base >= 3.5.2}
-%endif
-BuildRequires:  %{python_module setuptools >= 36.2}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
@@ -76,9 +69,11 @@ Recommends:     (python-importlib_metadata >= 3.6 if python-base < 3.8)
 # /SECTION
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module attrs >= 19.2.0}
+BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module attrs >= 19.2.0}
+BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module black >= 19.10}
 BuildRequires:  %{python_module dpcontracts >= 0.4}
 BuildRequires:  %{python_module fakeredis}
@@ -87,28 +82,29 @@ BuildRequires:  %{python_module hypothesis = %{version}}
 BuildRequires:  %{python_module importlib_resources >= 3.3.0 if %python-base < 3.7}
 BuildRequires:  %{python_module lark-parser >= 0.6.5}
 BuildRequires:  %{python_module libcst >= 0.3.16}
+BuildRequires:  %{python_module numpy >= 1.9.0}
+BuildRequires:  %{python_module pandas >= 0.25}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module python-dateutil >= 1.4}
-BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
-BuildRequires:  %{python_module typing_extensions}
-BuildRequires:  %{python_module numpy >= 1.9.0 if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas >= 0.25 if (%python-base without python36-base)}
 # /SECTION
 %endif
 %python_subpackages
 
 %description
-Hypothesis is a library for testing your Python code against a much larger range
-of examples than you would ever want to write by hand. It's based on the Haskell
-library, Quickcheck, and is designed to integrate seamlessly into your existing
-Python unit testing work flow.
+Hypothesis is a family of testing libraries which let you write tests parametrized
+by a source of examples. A Hypothesis implementation then generates simple and
+comprehensible examples that make your tests fail. This simplifies writing your
+tests and makes them more powerful at the same time, by letting software automate
+the boring bits and do them to a higher standard than a human would, freeing you
+to focus on the higher level test logic.
 
-Hypothesis works with most widely used versions of Python. It supports implementations
-compatible with 2.6, 2.7 and 3.3+, and is known to work on CPython and PyPy (but not
-PyPy3 until they support a 3.3 compatible version of the language). It does *not* currently
-work on Jython or on Python 3.0 through 3.2.
+This sort of testing is often called "property-based testing", and the most widely
+known implementation of the concept is the Haskell library QuickCheck, but
+Hypothesis differs significantly from QuickCheck and is designed to fit idiomatically
+and easily into existing styles of testing that you are used to, with absolutely no
+familiarity with Haskell or functional programming needed.
 
 %prep
 %setup -q -n hypothesis-python-%{version}
@@ -138,35 +134,10 @@ sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_g
 
 %check
 %if %{with test}
-# python3 means Python 3.6 on SLE-15 not a generic exclusion for all Python 3.*
-#
 # theses tests try to write into global python_sitelib
 # https://github.com/HypothesisWorks/hypothesis/issues/2546
 donttest="test_updating_the_file_include_new_shrinkers"
 donttest+=" or test_can_learn_to_normalize_the_unnormalized"
-# extraneous encoding
-python36_donttest+=" or (test_cli_python_equivalence and json)"
-# typing_extension problem on python36 and Leap 15's python3
-python36_donttest+=" or test_mutually_recursive_types_with_typevar"
-python3_donttest+=" or test_mutually_recursive_types_with_typevar"
-# gh#HypothesisWorks/hypothesis#3035
-python310_donttest+=" or test_recursion_error_is_not_flaky"
-# requires backports.zoneinfo for python < 3.9
-python36_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
-python38_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
-python3_ignoretests=" --ignore tests/datetime/test_zoneinfo_timezones.py"
-# added for 6.24.x
-# generic exclusion of array_api* in not possible :-(
-# python3_ignoretests+=" --ignore tests/array_api/test_partial_adoptors.py"
-# python3_ignoretests+=" --ignore tests/array_api/test_pretty.py"
-# python3_ignoretests+=" --ignore tests/array_api/test_scalar_dtypes.py"
-# python3_ignoretests+=" --ignore tests/array_api/test_arrays.py"
-# python3_ignoretests+=" --tests/array_api/test_from_dtype.py"
-# python3_ignoretests+=" --tests/array_api/test_argument_validation.py"
-# python3_ignoretests+=" --tests/array_api/test_indices.py"
-python3_ignoretests+=" --ignore tests/array_api*"
-# not available for python36
-python36_ignoretests+=" --ignore tests/numpy --ignore tests/pandas"
 # adapted from pytest.ini in github repo toplevel dir (above hypothesis-python)
 echo '[pytest]
 addopts=
@@ -179,7 +150,7 @@ addopts=
 filterwarnings =
     ignore::hypothesis.errors.NonInteractiveExampleWarning
 ' > pytest.ini
-%pytest -c pytest.ini -k "not ($donttest ${$python_donttest})" ${$python_ignoretests} tests
+%pytest -c pytest.ini -k "not ($donttest)" tests
 %endif
 
 %if !%{with test}
