@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Fri Mar 18 16:02:59 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- Updated to v1.0.1 with following bug fixes
+  * Don't prompt for y/n to overwrite an existing file when build is called
+    from a non-interactive environment. Fail with an error.
+  * Preload NSS libraries prior to mountspace name creation to avoid
+    circumstances that can cause loading those libraries from the container
+    image instead of the host, for example in the startup environment.
+  * Fix race condition where newly created loop devices can sometimes not be opened.
+  * Support nvidia-container-cli v1.8.0 and above, via fix to capability set.
+
+
+-------------------------------------------------------------------
+Thu Feb 17 15:29:45 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- Updated to v1.0.0-rc1 changes to singularity 3.9.5 are
+  * The primary executable has been changed from singularity to apptainer.
+    However, a singularity command symlink alias has been created pointing to
+    the apptainer command. The contents of containers are unchanged and
+    continue to use the singularity name for startup scripts, etc. 
+  * The per-user configuration directory has changed from ~/.singularity to
+    ~/.apptainer. The first time the apptainer command accesses the user
+    configuration directory, relevant configuration is automatically imported
+    from the old directory to the new one.
+  * Environment variables have all been changed to have an APPTAINER prefix
+    instead of a SINGULARITY prefix. However, SINGULARITY prefix variables are
+    still recognized. If only a SINGULARITY prefix variable exists, a warning
+    will be printed about deprecated usage and then the value will be used. If
+    both prefixes exist and the value is the same, no warning is printed; this
+    is the recommended method to set environment variables for those who need
+    to support both apptainer and singularity. If both prefixes exist for the
+    same variable and the value is different then a warning is also printed.
+ *  The default SylabsCloud remote endpoint has been removed and replaced by
+    one called DefaultRemote which has no defined server for the library://
+    URI. System administrators may restore the old default if they wish by
+    adding it to /etc/apptainer/remote.yaml with a URI of cloud.sylabs.io and
+    setting it there as the Active remote, or users can add it to their own
+    configuration with the commands apptainer remote add SylabsCloud
+    cloud.sylabs.io and apptainer remote use SylabsCloud.
+  * The DefaultRemote's key server is https://keys.openpgp.org instead of the
+    Sylabs key server
+  * The apptainer build --remote option has been removed because there is no
+    standard protocol or non-commercial service that supports it.
+- New Features:
+  * Honor image binds and user binds in the order they're given instead of
+    always doing image binds first.
+  * Experimental support for checkpointing of instances using DMTCP has been
+    added. Additional flags --dmtcp-launch and --dmtcp-restart has been added
+    to the apptainer instance start command, and a checkpoint command group has
+    been added to manage the checkpoint state. A new
+    /etc/apptainer/dmtcp-conf.yaml configuration file is also added.
+    Limitations are that it can only work with dynamically linked applications
+    and the container has to be based on glibc.
+  * --writable-tmpfs can be used with apptainer build to run the %test section
+    of the build with a ephemeral tmpfs overlay, permitting tests that write to
+    the container filesystem.
+  * The --compat flag for actions is a new short-hand to enable a number of
+    options that increase OCI/Docker compatibility. Infers --containall,
+    --no-init, --no-umask, --writable-tmpfs. Does not use user, uts, or network
+    namespaces as these may not be supported on many installations.
+  * The experimental --nvccli flag will use nvidia-container-cli to setup the
+    container for Nvidia GPU operation. Apptainer will not bind GPU libraries
+    itself. Environment variables that are used with Nvidia's docker-nvidia
+    runtime to configure GPU visibility / driver capabilities & requirements
+    are parsed by the --nvccli flag from the environment of the calling user.
+    By default, the compute and utility GPU capabilities are configured. The
+    use nvidia-container-cli option in apptainer.conf can be set to yes to
+    always use nvidia-container-cli when supported. --nvccli is not supported
+    in the setuid workflow, and it requires being used in combination with
+    --writable in user namespace mode. Please see documentation for more
+    details.
+  * The --apply-cgroups flag can be used to apply cgroups resource and device
+    restrictions on a system using the v2 unified cgroups hierarchy. The
+    resource restrictions must still be specified in the v1 / OCI format, which
+    will be translated into v2 cgroups resource restrictions, and eBPF device
+    restrictions. 
+  * A new --mount flag and APPTAINER_MOUNT environment variable can be used to
+    specify bind mounts in
+    type=bind,source=<src>,destination=<dst>[,options...] format. This improves
+    CLI compatibility with other runtimes, and allows binding paths containing
+    : and , characters (using CSV style escaping).
+  * Perform concurrent multi-part downloads for library:// URIs. Uses 3
+    concurrent downloads by default, and is configurable in apptainer.conf or
+    via environment variables.
+   
+
+-------------------------------------------------------------------
+Wed Dec 15 08:38:57 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Explicit dependcy on go1.16.12 or go1.17.5 which fix 
+  (CVE-2021-44717) and (CVE-2021-44716) that may affect singualrity
+
+-------------------------------------------------------------------
+Mon Dec 13 12:55:47 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- inital commit of apptainer which is a singularity fork 
