@@ -1,7 +1,7 @@
 #
 # spec file for package maven-enforcer
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,14 @@ Release:        0
 Summary:        A build rule execution framework
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/enforcer
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/enforcer/enforcer/%{version}/enforcer-%{version}-source-release.zip
+URL:            https://maven.apache.org/enforcer
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/enforcer/enforcer/%{version}/enforcer-%{version}-source-release.zip
 # TODO forward upstream
 # https://issues.apache.org/jira/browse/MENFORCER-267
 Patch0:         0001-Port-to-Maven-3-API.patch
 Patch1:         0002-Port-to-artifact-transfer-0.11.0.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
@@ -101,10 +102,11 @@ sed -e "s|<artifactId>plexus-maven-plugin</artifactId>|<artifactId>plexus-compon
     -i enforcer-{api,rules}/pom.xml
 
 %build
-%{mvn_build} -s -f \
+%{mvn_build} -s -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
