@@ -1,10 +1,23 @@
 tryton-server for openSUSE
 ==========================
 
+Note for GNU Health 4.0 /Tryton 6.0 and above: 
+When installing GNU Health 4.0 or higher, note that dependency on postgresql-server is now 'Recommends'.
+This helps keeping the installation lean when running Postgresql on a separate server.
+If you are using --no-recommends for installation, you need to install postgresql-server additionally.
+If you install with recommendations, postgresql-server is installed automatically.
+
 How to get it running (Without reading the instructions)
 ========================================================
 
 You have already installed the package trytond and found this documentation. Good.
+
+An easy way to set-up a trton server is to use
+sudo openSUSE-trytond-setup
+
+Just answer the questions and the script does the steps, that are detailed below, for you.
+
+Setup in detail:
 
 1) Log in as root and start the database
 > su
@@ -105,8 +118,8 @@ Preparing the Tryton server
 
   * Setting up the Tryton server (trytond):
 
-    The openSUSE package comes with a working configuration example, see 
-    /usr/share/doc/packages/trytond/trytond.conf.example
+    The openSUSE package comes with a working configuration, see 
+    /etc/tryton/trytond.conf
     It contains all settings for a locally running database and manual database
     configuration.
     
@@ -236,7 +249,7 @@ Now, you're finished with the system setup. Please be aware of the following thi
         
   * Only the same major version of Tryton client and Tryton server can connect.
 
- -- Axel Braun <axel.braun@gmx.de>  MON Jun 11 10:27:14 UTC 2018
+ -- Axel Braun <DocB@opensuse.org> Wed Aug  4 14:27:11 UTC 2021
 
 
 This file is based on tryton-server.README.Debian

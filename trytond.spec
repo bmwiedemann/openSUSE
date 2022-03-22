@@ -17,10 +17,10 @@
 #
 
 
-%define majorver 5.0
+%define majorver 6.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.44
+Version:        %{majorver}.16
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -28,48 +28,49 @@ Group:          Productivity/Office/Management
 URL:            https://www.tryton.org/
 Source0:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Source1:        tryton-server.README.openSUSE
-Source2:        trytond.conf.example
 Source3:        %{name}.conf
 Source4:        %{name}_log.conf
 Source5:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source6:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+Source7:        openSUSE-trytond-setup
 Source20:       %{name}.service
-Patch0:         fix_werkzeug.patch
-Patch1:         revert_werkzeug_setup.patch
-Patch2:         fix_werkzeug_2.x.patch
-Patch3:         Update_changed_fields.diff
+Patch0:         fix_werkzeug_2.x.patch
+Patch1:         Update_changed_fields_6.0.diff
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Werkzeug
 BuildRequires:  python3-bcrypt
 BuildRequires:  python3-lxml >= 2.0
-BuildRequires:  python3-psycopg2
+BuildRequires:  python3-psycopg2 >= 2.5.4
 BuildRequires:  python3-pydot3
-BuildRequires:  python3-python-sql
+BuildRequires:  python3-python-sql >= 0.5
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wrapt
 
 Requires:       html2text
 Requires:       libreoffice-pyuno
-Requires:       postgresql-server
 Requires:       python3-Genshi
 Requires:       python3-Levenshtein
-Requires:       python3-Sphinx
+Requires:       python3-Pillow
 Requires:       python3-Werkzeug
 Requires:       python3-bcrypt
 Requires:       python3-dateutil
+Requires:       python3-defusedxml
+Requires:       python3-gevent
 Requires:       python3-lxml
-Requires:       python3-mock
 Requires:       python3-passlib >= 1.7.0
 Requires:       python3-polib
 Requires:       python3-psycopg2 >= 2.5.4
-Requires:       python3-python-sql >= 0.4
+Requires:       python3-pydot
+Requires:       python3-python-sql >= 0.5
 Requires:       python3-relatorio >= 0.7.0
-Requires:       python3-simpleeval
+Requires:       python3-weasyprint
 Requires:       python3-wrapt
 Requires:       unoconv
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+# Database may run on a different machine, so a hard requirement is not ideal
+Recommends:     postgresql-server
+
 BuildArch:      noarch
 %{?systemd_ordering}
 
@@ -83,16 +84,14 @@ security.
 %prep
 %setup -q
 cp %{SOURCE1} .
-cp %{SOURCE2} .
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
 
 #Werkzeug2 is not compatible with Werkzeug 1.x, so we need a conditional patch
 echo 0%{?suse_version}
 %if 0%{?suse_version} >= 1550
-%patch2 -p1
+%patch0 -p1
 %endif
+
+%patch1 -p1
 
 %build
 %python3_build
@@ -104,6 +103,9 @@ echo 0%{?suse_version}
 mkdir -p %{buildroot}%{_sysconfdir}/%{base_name}
 install -p -m 640 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{base_name}/%{name}.conf
 install -p -m 640 %{SOURCE4} %{buildroot}%{_sysconfdir}/%{base_name}/%{name}_log.conf
+
+mkdir -p -m 755 %{buildroot}%{_bindir}
+install -p -m 755 %{S:7} %{buildroot}%{_bindir}/openSUSE-trytond-setup
 
 mkdir -p %{buildroot}%{_unitdir}
 install -p -m 644 %{SOURCE20} %{buildroot}%{_unitdir}/%{name}.service
@@ -129,13 +131,11 @@ getent passwd tryton > /dev/null || %{_sbindir}/useradd -r -g tryton \
 
 %files
 %license LICENSE
-%doc README tryton-server.README.openSUSE trytond.conf.example doc/*
+%doc README.rst tryton-server.README.openSUSE doc/*
 %{python3_sitelib}/*
 %dir %{_sysconfdir}/%{base_name}
-%{_bindir}/%{name}
-%{_bindir}/%{name}-admin
-%{_bindir}/%{name}-cron
-%{_bindir}/%{name}-worker
+%{_bindir}/openSUSE-trytond-setup
+%{_bindir}/%{name}*
 %{_unitdir}/%{name}.service
 %attr(640,root,tryton) %config(noreplace)%{_sysconfdir}/%{base_name}/%{name}.conf
 %attr(640,root,tryton) %config(noreplace)%{_sysconfdir}/%{base_name}/%{name}_log.conf

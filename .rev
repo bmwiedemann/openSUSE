@@ -541,4 +541,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>952805</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>bdede6d3529f4229db0312c451fe5a9e</srcmd5>
+    <version>6.0.16</version>
+    <time>1647974381</time>
+    <user>dimstar_suse</user>
+    <comment>- on special request of our facory check script, we add the patches between tryton 5 and 6:
+  * revert_werkzeug_setup.patch is being deleted
+  * Update_changed_fields_6.0.diff is being added
+  * Update_changed_fields.diff is being deleted 
+  * fix_werkzeug.patch is being deleted 
+- Version 6.0.16 - Security Bugfix Release
+  * python3-defusedxml added
+- Version 6.0.15 - Bugfix Release
+- Version bump to Tryton 6.0 series
+</comment>
+    <requestid>963783</requestid>
+  </revision>
 </revisionlist>
