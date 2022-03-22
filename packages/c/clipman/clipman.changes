@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 22 11:43:28 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.6.1:
+  - properly deal with Windows-style newlines
+  - improve man pages
+  - --unix option to normalize all line endings to LF
+  - --primary option to serve the selection to primary instead
+    than clipboard
+  - show-history command to obtain a json representation of the
+    clipboard's history
+  - when using the bemenu tool we don't forcefully set it to
+    bottom position anymore
+
+-------------------------------------------------------------------
 Sun Jan 31 00:32:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from descriptions.

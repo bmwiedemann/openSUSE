@@ -1,7 +1,7 @@
 #
 # spec file for package clipman
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           clipman
-Version:        1.5.2
+Version:        1.6.1
 Release:        0
 Summary:        A clipboard manager for Wayland
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/yory8/clipman
 # Source0:        https://github.com/yory8/%%{name}/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source0:        https://github.com/yory8/%{name}/archive/v%{version}.tar.gz
