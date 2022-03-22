@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 19 08:26:41 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Add missing BuildRequires python-importlib_resources
+  to fix build error in leap.
+
+-------------------------------------------------------------------
 Thu Jan 13 12:30:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_double_patch.patch and remove_safe_hasattr.patch to

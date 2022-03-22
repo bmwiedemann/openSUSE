@@ -33,6 +33,7 @@ Patch0:         remove_safe_hasattr.patch
 # some objects were mocked twice
 Patch1:         remove_double_patch.patch
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module lockfile >= 0.10}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios >= 0.4}
