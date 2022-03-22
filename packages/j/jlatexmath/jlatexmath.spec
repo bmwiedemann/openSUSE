@@ -1,7 +1,7 @@
 #
 # spec file for package jlatexmath
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,20 +20,18 @@ Name:           jlatexmath
 Version:        1.0.3
 Release:        0
 Summary:        Java API to display mathematical formulas written in LaTeX
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-License:        GPL-2.0+
-Group:          Development/Libraries
-Url:            http://forge.scilab.org/index.php/p/jlatexmath/
-Source0:        http://forge.scilab.org/index.php/p/jlatexmath/downloads/get/%{name}-src-all-%{version}.zip
+License:        GPL-2.0-or-later
+Group:          Development/Libraries/Java
+URL:            https://github.com/opencollab/jlatexmath/
+Source0:        https://github.com/opencollab/%{name}/archive/refs/tags/%{version}.tar.gz
 Source1:        patched_fop.properties
 Patch0:         jlatexmath-1.0.3-nosource.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
-BuildRequires:  unzip
 BuildRequires:  xmlgraphics-fop
-Requires:       java
+Requires:       java >= 1.8
 Requires:       javapackages-tools
 BuildArch:      noarch
 
@@ -45,8 +43,7 @@ JLaTeXMath is a fork of the excellent project JMathTeX.
 
 %package fop
 Summary:        FOP plug-in for %{name}
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          Development/Libraries
+Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}-%{release}
 Requires:       javapackages-tools
 Requires:       xmlgraphics-fop
@@ -56,8 +53,7 @@ This package contains the FOP plug-in for %{name}.
 
 %package javadoc
 Summary:        API Documentation for %{name}
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          Documentation
+Group:          Documentation/HTML
 Requires:       %{name} = %{version}-%{release}
 
 %description javadoc
@@ -77,7 +73,7 @@ find -name '*.jar' -exec rm -f '{}' \;
 sed -i '/class-path/I d' plugin/fop/MANIFEST.MF
 
 %build
-ant -Djava_version=1.6 buildJar fop doc
+ant -Djava_version=1.8 buildJar fop doc
 
 %install
 
@@ -92,13 +88,13 @@ cp -rp doc/ %{buildroot}%{_javadocdir}/%{name}
 %files
 %{_javadir}/%{name}.jar
 %doc README
-%doc COPYING
-%doc LICENSE
+%license COPYING
+%license LICENSE
 
 %files fop
 %{_javadir}/%{name}-fop.jar
-%doc plugin/fop/COPYING
-%doc plugin/fop/LICENSE
+%license plugin/fop/COPYING
+%license plugin/fop/LICENSE
 
 %files javadoc
 %{_javadocdir}/%{name}
