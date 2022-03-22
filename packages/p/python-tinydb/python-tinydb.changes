@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 22 08:34:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to  4.7.0
+  * Feature: Allow inserting Document instances using
+    Table.insert_multiple (see #455).
+  * Performance: Only convert document IDs of a table when
+    returning documents. This improves performance the Table.count
+    and Table.get operations and also for Table.search when only
+    returning a few documents (see #460).
+  * Internal change: Run all Table tests JSONStorage in addition to
+    MemoryStorage.
+  * Fix: Make using callables as queries work again (see #454)
+  * Feature: Add map() query operation to apply a transformation to
+    a document or field when evaluating a query (see PR #445).
+  * Note: This may break code that queries for a field named map
+    using the Query APIs property access syntax
+  * Feature: Add support for typing-extensions v4
+- Disable mypy tests for GNUHealth submission into 15.4
+  jsc#SLE-23990
+- This package needs typing-extensions if used with Python 3.6
+
+-------------------------------------------------------------------
 Fri Nov 19 13:03:12 UTC 2021 - pgajdos@suse.com
 
 - version update to 4.5.2
