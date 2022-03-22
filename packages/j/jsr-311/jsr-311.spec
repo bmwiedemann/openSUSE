@@ -1,7 +1,7 @@
 #
 # spec file for package jsr-311
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@ Release:        0
 Summary:        JAX-RS: Java API for RESTful Web Services
 License:        CDDL-1.0
 Group:          Development/Libraries/Java
-URL:            http://jsr311.java.net
+URL:            https://jsr311.java.net
 Source0:        https://github.com/javaee/jsr311/archive/%{oname}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-Provides:       javax.ws.rs
 BuildArch:      noarch
 
 %description
@@ -52,10 +52,11 @@ This package contains javadoc for %{name}.
 %build
 
 %{mvn_file} :jsr311-api %{name} javax.ws.rs/%{name}
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8 -Dproject.build.sourceEncoding=UTF-8
 
 %install
 %mvn_install
