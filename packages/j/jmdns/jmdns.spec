@@ -24,6 +24,7 @@ License:        Apache-2.0
 URL:            https://github.com/jmdns/jmdns
 Source0:        https://github.com/jmdns/jmdns/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
@@ -49,8 +50,11 @@ chmod -x README.md
 
 %build
 # Tests are disabled because they try to use network
-%{mvn_build} -f -- -Dsource=6
-
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
