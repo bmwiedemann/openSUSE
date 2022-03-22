@@ -1,7 +1,7 @@
 #
 # spec file for package lout
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lout
-Version:        3.42
+Version:        3.42.1
 Release:        0
 Summary:        A document formatting system
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ fed to a printer. Lout is offered in multiple languages.
 
 %prep
 %setup -q
-chmod 0644 README
+find . -name README -exec chmod 0644 '{}' \;
 
 %build
 make COPTS="%{optflags}" \
