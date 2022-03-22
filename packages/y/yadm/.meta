@@ -1,0 +1,12 @@
+<package name="yadm" project="openSUSE:Factory">
+  <title>Yet another dotfiles manager</title>
+  <description>yadm is a tool for managing dotfiles.
+
+    Based on Git, with full range of Git's features
+    Supports system-specific alternative files or templated files
+    Encryption of private data using GnuPG, OpenSSL, transcrypt, or git-crypt
+    Customizable initialization (bootstrapping)
+    Customizable hooks for before and after any operation</description>
+  <devel project="utilities" package="yadm"/>
+  <url>https://github.com/TheLocehiliosan/yadm</url>
+</package>

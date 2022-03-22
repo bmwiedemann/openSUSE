@@ -1,0 +1,19 @@
+<!-- vim: syntax=xml ft=xml : 
+-->
+
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/TheLocehiliosan/yadm.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">3.2.1</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">stigpro@outlook.fr</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="set_version"/>
+</services>
+
