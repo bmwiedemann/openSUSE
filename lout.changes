@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 22 17:50:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.42.1:
+  - Update README version.
+  - Include README in updateversion.sh
+  - Ensure BINDIR is created
+  - makefile: Only chmod BINDIR if it is freshly created.
+  - Ensure CFLAGS/LDFLAGS can be passed to compiler 
+
+-------------------------------------------------------------------
 Fri May 14 13:46:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use fork by William Bader
