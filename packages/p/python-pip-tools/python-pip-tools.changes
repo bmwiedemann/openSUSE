@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 28 10:09:05 UTC 2022 - pgajdos@suse.com
+
+- version update to 6.5.1
+  Backwards Incompatible Changes:
+  - Remove support for EOL Python 3.5 and 2.7
+    ([#1243](https://github.com/jazzband/pip-tools/pull/1243)). Thanks @jdufresne
+  - Remove deprecated `--index/--no-index` option from `pip-compile`
+    ([#1234](https://github.com/jazzband/pip-tools/pull/1234)). Thanks @jdufresne
+  See CHANGELOG.md for more
+  
+-------------------------------------------------------------------
 Wed Nov 25 00:55:50 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update for v5.4.0
