@@ -721,6 +721,7 @@ unsorted:
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
+  - apptainer 
   - appx-util 
   - apr-devel 
   - apr-util-devel 
@@ -2195,6 +2196,8 @@ unsorted:
   - colorpicker-lang 
   - combustion 
   - commandergenius 
+  - commons-compiler 
+  - commons-compiler-jdk 
   - compartm 
   - compat-usrmerge 
   - compat-usrmerge-build 
@@ -2829,6 +2832,7 @@ unsorted:
   - deepin-screen-recorder 
   - deepin-screen-recorder-lang 
   - deepin-session-shell 
+  - deepin-session-shell-devel 
   - deepin-session-shell-lang 
   - deepin-session-ui 
   - deepin-session-ui-lang 
@@ -3856,6 +3860,7 @@ unsorted:
   - fontweak 
   - foot 
   - foot-extra-terminfo 
+  - foot-themes 
   - forge-parent 
   - forkbomb 
   - forked-daapd 
@@ -5729,6 +5734,7 @@ unsorted:
   - glassfish-el-api 
   - glassfish-el-javadoc 
   - glassfish-fastinfoset 
+  - glassfish-fastinfoset-javadoc 
   - glassfish-hk2 
   - glassfish-hk2-api 
   - glassfish-hk2-class-model 
@@ -6763,7 +6769,6 @@ unsorted:
   - helm-bash-completion 
   - helm-docs 
   - helm-fish-completion 
-  - helm-mirror 
   - helm-zsh-completion 
   - helmfile 
   - helmfile-bash-completion 
@@ -9029,9 +9034,12 @@ unsorted:
   - libPythonQt-Qt5-Python3-3 
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
-  - libQCoroCore0 
-  - libQCoroDBus0 
-  - libQCoroNetwork0 
+  - libQCoro5Core0 
+  - libQCoro5DBus0 
+  - libQCoro5Network0 
+  - libQCoro6Core0 
+  - libQCoro6DBus0 
+  - libQCoro6Network0 
   - libQMatrixClient0_5_3 
   - libQgpsmm29 
   - libQt53DAnimation-devel 
@@ -22135,6 +22143,7 @@ unsorted:
   - python310-azure-mgmt-agrifood 
   - python310-azure-mgmt-alertsmanagement 
   - python310-azure-mgmt-apimanagement 
+  - python310-azure-mgmt-app 
   - python310-azure-mgmt-appconfiguration 
   - python310-azure-mgmt-applicationinsights 
   - python310-azure-mgmt-appplatform 
@@ -24228,7 +24237,6 @@ unsorted:
   - python310-railroad-diagrams 
   - python310-random2 
   - python310-ravello-sdk 
-  - python310-raven 
   - python310-rawkit 
   - python310-rcssmin 
   - python310-rdflib 
@@ -25289,6 +25297,7 @@ unsorted:
   - python38-azure-mgmt-agrifood 
   - python38-azure-mgmt-alertsmanagement 
   - python38-azure-mgmt-apimanagement 
+  - python38-azure-mgmt-app 
   - python38-azure-mgmt-appconfiguration 
   - python38-azure-mgmt-applicationinsights 
   - python38-azure-mgmt-appplatform 
@@ -27248,7 +27257,6 @@ unsorted:
   - python38-rarfile 
   - python38-rarfile-doc 
   - python38-ravello-sdk 
-  - python38-raven 
   - python38-rawkit 
   - python38-rcssmin 
   - python38-rdflib 
@@ -27590,7 +27598,6 @@ unsorted:
   - python38-torch: [x86_64] 
   - python38-torch-devel: [x86_64] 
   - python38-torchvision: [x86_64] 
-  - python38-tornado5 
   - python38-tortilla 
   - python38-towncrier 
   - python38-tox 
@@ -28300,6 +28307,7 @@ unsorted:
   - python39-azure-mgmt-agrifood 
   - python39-azure-mgmt-alertsmanagement 
   - python39-azure-mgmt-apimanagement 
+  - python39-azure-mgmt-app 
   - python39-azure-mgmt-appconfiguration 
   - python39-azure-mgmt-applicationinsights 
   - python39-azure-mgmt-appplatform 
@@ -30411,7 +30419,6 @@ unsorted:
   - python39-rarfile 
   - python39-rarfile-doc 
   - python39-ravello-sdk 
-  - python39-raven 
   - python39-rawkit 
   - python39-rcssmin 
   - python39-rdflib 
@@ -30786,7 +30793,6 @@ unsorted:
   - python39-torch-devel: [x86_64] 
   - python39-torchvision: [x86_64] 
   - python39-tornado 
-  - python39-tornado5 
   - python39-tornado6 
   - python39-tortilla 
   - python39-towncrier 
@@ -31061,7 +31067,8 @@ unsorted:
   - qca-qt6 
   - qca-qt6-devel 
   - qca-qt6-plugins 
-  - qcoro-devel 
+  - qcoro-qt5-devel 
+  - qcoro-qt6-devel 
   - qcustomplot-devel 
   - qcustomplot-doc 
   - qd-devel 
@@ -43030,6 +43037,10 @@ unsorted:
   - xz-java 
   - xz-java-javadoc 
   - xz-static-devel 
+  - yadm 
+  - yadm-bash-completion 
+  - yadm-fish-completion 
+  - yadm-zsh-completion 
   - yaffshiv 
   - yaics 
   - yajl 
