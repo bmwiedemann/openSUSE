@@ -1,7 +1,7 @@
 #
 # spec file for package jgraphx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define src_ver 3_9_2
 Name:           jgraphx
-Version:        3.9.2
+Version:        4.2.2
 Release:        0
 Summary:        Java-based Diagram Component and Editor
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-Url:            http://www.jgraph.com/
-Source0:        http://downloads.jgraph.com/downloads/jgraphx/archive/jgraphx-%{src_ver}.zip
+URL:            https://github.com/jgraph
+Source0:        https://github.com/jgraph/%{name}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  ant
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
-BuildRequires:  unzip
-Requires:       java
+Requires:       java >= 1.8
 Requires:       jpackage-utils
 BuildArch:      noarch
 
@@ -40,7 +38,7 @@ for diagrams. Object and relations can be displayed in any Swing UI
 via provided zoomable component.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 # fix executable permissions
 chmod 644 docs/manual/images/mx_man_graph_analysis.jpg
@@ -49,7 +47,7 @@ chmod 644 docs/manual/images/mx_man_graph_analysis.jpg
 find -type f -name "*.jar" | xargs -t rm
 
 %build
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 # Remove copies of source so that we don't confuse
 # the debuginfo finder
@@ -66,7 +64,7 @@ pushd  %{buildroot}%{_javadir}
 popd
 
 %files
-%doc license.txt
+%license license.txt
 %{_javadir}/%{name}.jar
 %{_javadir}/%{name}-%{version}.jar
 

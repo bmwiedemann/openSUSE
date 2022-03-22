@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 22 16:43:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.2.2
+- Build with source and target levels 8
+- Fetch tarball from github.com, since the other location gives
+  error 404
+
+-------------------------------------------------------------------
 Thu Mar  1 15:02:20 UTC 2018 - pmonrealgonzalez@suse.com
 
 - Updated to version 3.9.2 [bsc#1083413, CVE-2017-18197]
