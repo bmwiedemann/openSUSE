@@ -1,7 +1,7 @@
 #
 # spec file for package joda-time
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Java date and time API
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.joda.org/joda-time/
+URL:            https://www.joda.org/joda-time/
 Source0:        https://github.com/JodaOrg/%{name}/archive/v%{version}.tar.gz
 Source1:        ftp://ftp.iana.org/tz/releases/%{tzversion}.tar.gz
 Source100:      %{name}-build.xml

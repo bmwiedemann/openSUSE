@@ -102,4 +102,12 @@
     <comment>Update to 2.10.1</comment>
     <requestid>672971</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9cedb028eec86e3208f1fb1974a8c579</srcmd5>
+    <version>2.10.1</version>
+    <time>1647981407</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964043</requestid>
+  </revision>
 </revisionlist>
