@@ -1,7 +1,7 @@
 #
 # spec file for package ed25519-java
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,10 @@ Summary:        Implementation of EdDSA (Ed25519) in Java
 License:        CC0-1.0
 URL:            https://github.com/str4d/ed25519-java
 Source0:        https://github.com/str4d/ed25519-java/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         0001-EdDSAEngine.initVerify-Handle-any-non-EdDSAPublicKey.patch
+Patch1:         0002-Disable-test-that-relies-on-internal-sun-JDK-classes.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
@@ -49,6 +52,8 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 # Unwanted tasks
 %pom_remove_plugin :maven-gpg-plugin
@@ -63,7 +68,11 @@ This package contains javadoc for %{name}.
 %{mvn_file} net.i2p.crypto:eddsa %{name} eddsa
 
 %build
-%{mvn_build} -f -- -Dsource=8
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
