@@ -5989,7 +5989,6 @@ unsorted:
   - gnu-free-fonts 
   - gnu-getopt 
   - gnu-getopt-javadoc 
-  - gnu-jaf 
   - gnu-netcat 
   - gnu-regexp 
   - gnu-regexp-demo 
@@ -11085,7 +11084,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
-  - libgnuastro14 
+  - libgnuastro15 
   - libgnuradio-3_9_5 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
@@ -11965,7 +11964,7 @@ unsorted:
   - liblttng-ust-ctl5 
   - liblttng-ust-python-agent1 
   - liblttng-ust1: [i586] 
-  - liblttoolbox3-3_5-1 
+  - liblttoolbox3-3_6-1 
   - liblua5_1-5 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
@@ -21059,6 +21058,7 @@ unsorted:
   - psi+-plugins-pepchangenotifyplugin 
   - psi+-plugins-qipxstatusesplugin 
   - psi+-plugins-screenshotplugin 
+  - psi+-plugins-skinsplugin 
   - psi+-plugins-stopspamplugin 
   - psi+-plugins-storagenotesplugin 
   - psi+-plugins-translateplugin 
@@ -23553,6 +23553,7 @@ unsorted:
   - python310-oletools 
   - python310-olm 
   - python310-opcodes 
+  - python310-openTSNE 
   - python310-openapi-codec 
   - python310-openapi-core 
   - python310-openapi-schema-validator 
@@ -24492,7 +24493,6 @@ unsorted:
   - python310-starlette 
   - python310-statsd 
   - python310-statsmodels 
-  - python310-stem 
   - python310-stestr 
   - python310-stomp.py 
   - python310-stomper 
@@ -27490,7 +27490,6 @@ unsorted:
   - python38-starlette 
   - python38-statsd 
   - python38-statsmodels 
-  - python38-stem 
   - python38-stestr 
   - python38-stomp.py 
   - python38-stomper 
@@ -30680,7 +30679,6 @@ unsorted:
   - python39-starlette 
   - python39-statsd 
   - python39-statsmodels 
-  - python39-stem 
   - python39-stestr 
   - python39-stomp.py 
   - python39-stomper 
@@ -43238,6 +43236,5 @@ unsorted:
   - zypp-gui 
   - zypper-aptitude 
   - zypper-changelog-plugin 
-  - zypper-migration-plugin 
   - zziplib-devel 
   - zziplib-devel-32bit: [x86_64] 
