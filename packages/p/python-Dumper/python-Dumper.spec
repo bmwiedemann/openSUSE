@@ -23,8 +23,7 @@ Release:        0
 Summary:        Tool to conveniently describe any Python datastructure
 License:        MIT
 URL:            https://github.com/jric/Dumper.py
-Source0:        https://files.pythonhosted.org/packages/source/D/Dumper/Dumper-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/jric/Dumper.py/master/test.py
+Source:         https://github.com/jric/Dumper.py/archive/refs/tags/%{version}.tar.gz#/Dumper.py-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,8 +34,7 @@ BuildArch:      noarch
 Tool to conveniently describe any Python datastructure
 
 %prep
-%setup -q -n Dumper-%{version}
-cp %{SOURCE1} .
+%setup -q -n Dumper.py-%{version}
 
 %build
 %python_build

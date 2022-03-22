@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 22 07:39:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch to the upstream tarball, when the repository is now
+  finally tagged (gh#jric/Dumper.py#2).
+
+-------------------------------------------------------------------
 Sat Jan  8 08:03:17 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add test.py and run tests.
