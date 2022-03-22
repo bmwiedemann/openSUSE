@@ -76,13 +76,8 @@ Provides:       calligra-kexi = %{version}
 # not ported yet
 Obsoletes:      calligra-kexi-spreadsheet-import < %{version}
 # Kexi needs breeze-icons.rcc during build and on runtime (it doesn't start without it installed)
-%if 0%{?suse_version} > 1500 || "%{?_repository}" == "KDE_Applications_openSUSE_Leap_15.2" || "%{?_repository}" == "KDE_Applications_openSUSE_Leap_15.3"
-BuildRequires:  breeze5-icons-rcc
-Requires:       breeze5-icons-rcc
-%else
-BuildRequires:  breeze5-icons
-Requires:       breeze5-icons
-%endif
+BuildRequires:  (breeze5-icons-rcc or breeze5-icons < 5.78.0)
+Requires:       (breeze5-icons-rcc or breeze5-icons < 5.78.0)
 
 %description
 Kexi is a visual database applications creator, competing with
