@@ -285,4 +285,12 @@
     <comment></comment>
     <requestid>963467</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>fdfed5ed4dfb70ef92eff8ace8ffbf1a</srcmd5>
+    <version>0.24.4</version>
+    <time>1647974418</time>
+    <user>dimstar_suse</user>
+    <comment>- tie to go.17 as 1.18 became available</comment>
+    <requestid>963901</requestid>
+  </revision>
 </revisionlist>

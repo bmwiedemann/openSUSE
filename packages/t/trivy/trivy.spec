@@ -28,7 +28,7 @@ URL:            https://github.com/aquasecurity/trivy
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) = 1.17
 Requires:       ca-certificates
 Requires:       git-core
 Requires:       rpm
