@@ -1,7 +1,7 @@
 #
 # spec file for package buildnumber-maven-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,12 @@ Name:           buildnumber-maven-plugin
 Version:        1.3
 Release:        0
 Summary:        Build Number Maven Plugin
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 URL:            http://svn.codehaus.org/mojo/tags/buildnumber-maven-plugin-%{version}
 Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(net.java.dev.jna:jna)
@@ -83,13 +84,10 @@ cp -p %{SOURCE1} .
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-invoker-plugin
 
-# junit dependency was removed in Plexus 1.6
-%pom_add_dep junit:junit::test
-
 %build
 %{mvn_build} -f -- \
-	-Dsource=6 -Dmaven.compiler.source=6 \
-	-Dmaven.compiler.target=6 -Dmojo.java.target=6
+	-Dsource=8 -Dmaven.compiler.source=8 \
+	-Dmaven.compiler.target=8 -Dmojo.java.target=8
 
 %install
 %mvn_install
