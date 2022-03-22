@@ -1,7 +1,7 @@
 #
 # spec file for package bitlbee-mastodon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bitlbee-mastodon
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        A Mastodon plugin for Bitlbee
 License:        GPL-2.0-only

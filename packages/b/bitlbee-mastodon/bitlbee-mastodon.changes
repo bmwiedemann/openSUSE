@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 22 11:37:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.4.5:
+  - fix timeline command for accounts
+  - add resolve=1 to status URL search so foreign statuses get
+    imported
+
+-------------------------------------------------------------------
 Fri Apr 10 15:00:42 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.4.4
