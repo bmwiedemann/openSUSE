@@ -1,7 +1,7 @@
 #
 # spec file for package mdadm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -158,6 +158,7 @@ Patch116:       0116-imsm-nvme-multipath-support.patch
 Patch117:       0117-Grow-be-careful-of-corrupt-dev_roles-list.patch
 Patch118:       0118-Remove-Spare-drives-line-from-details-for-external-m.patch
 Patch119:       0119-Don-t-associate-spares-with-other-arrays-during-RAID.patch
+Patch120:       0120-udev-md-raid-assembly.rules-skip-if-DM_UDEV_DISABLE_.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
@@ -284,6 +285,7 @@ mdadm is a program that can be used to control Linux md devices.
 %patch117 -p1
 %patch118 -p1
 %patch119 -p1
+%patch120 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

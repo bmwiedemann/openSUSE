@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 22:48:41 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- skip RAID assembly if DM_UDEV_DISABLE_OTHER_RULES_FLAG (bsc#1196054)
+  * Add 0120-udev-md-raid-assembly.rules-skip-if-DM_UDEV_DISABLE_.patch
+
+-------------------------------------------------------------------
 Tue Nov 23 08:42:24 UTC 2021 - Stefan Weiberg <sweiberg@suse.com>
 
 - Use %{_sbindir} for prerequisite of mkinitrd to work with

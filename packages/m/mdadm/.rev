@@ -1387,4 +1387,13 @@ which haven't landed upstream yet
   usrmerge of dracut-mkinitrd-deprecated (forwarded request 933221 from suntorytimed)</comment>
     <requestid>933225</requestid>
   </revision>
+  <revision rev="132" vrev="17">
+    <srcmd5>404aefbf5761e1cd108aa8c624922f40</srcmd5>
+    <version>4.1</version>
+    <time>1647974172</time>
+    <user>dimstar_suse</user>
+    <comment>- skip RAID assembly if DM_UDEV_DISABLE_OTHER_RULES_FLAG (bsc#1196054)
+  * Add 0120-udev-md-raid-assembly.rules-skip-if-DM_UDEV_DISABLE_.patch</comment>
+    <requestid>963102</requestid>
+  </revision>
 </revisionlist>
