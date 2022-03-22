@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 22 10:38:56 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Wed Jul 22 06:47:17 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of httpcomponents-asyncclient 4.1.4

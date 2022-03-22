@@ -1,7 +1,7 @@
 #
 # spec file for package httpcomponents-asyncclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://hc.apache.org/
 Source0:        https://archive.apache.org/dist/httpcomponents/httpasyncclient/source/%{name}-%{version}-src.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -107,7 +108,11 @@ done
 
 %build
 
-%{mvn_build} -f -s -- -Dproject.build.sourceEncoding=UTF-8
+%{mvn_build} -f -s -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8 -Dproject.build.sourceEncoding=UTF-8
 
 %install
 %mvn_install
