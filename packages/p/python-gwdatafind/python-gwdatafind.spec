@@ -30,7 +30,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module ligo-segments}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest >= 2.8.0}
 BuildRequires:  %{python_module six}
