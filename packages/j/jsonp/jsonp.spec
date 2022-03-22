@@ -86,7 +86,11 @@ sed -i '/check-module/d' api/pom.xml impl/pom.xml
 
 %build
 
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install

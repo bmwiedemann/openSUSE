@@ -15,4 +15,12 @@
     <comment>retrying it again</comment>
     <requestid>962736</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3899272a4a550db131cbea1d6ba237ae</srcmd5>
+    <version>1.0.4</version>
+    <time>1647974466</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>963995</requestid>
+  </revision>
 </revisionlist>

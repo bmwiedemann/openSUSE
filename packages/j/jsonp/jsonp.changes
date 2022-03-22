@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 22 15:22:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Thu Mar 17 06:54:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against standalone annotation api
