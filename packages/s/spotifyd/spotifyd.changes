@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 14 05:16:41 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update to resolve bsc#1196972 CVE-2022-24713 - Regex DOS
+
+-------------------------------------------------------------------
 Tue Feb 15 03:01:44 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update vendor.tar to resolve:
