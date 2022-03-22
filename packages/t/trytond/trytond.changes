@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar  7 14:27:27 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- on special request of our facory check script, we add the patches between tryton 5 and 6:
+  * revert_werkzeug_setup.patch is being deleted
+  * Update_changed_fields_6.0.diff is being added
+  * Update_changed_fields.diff is being deleted 
+  * fix_werkzeug.patch is being deleted 
+
+-------------------------------------------------------------------
+Wed Mar  2 11:33:56 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- Version 6.0.16 - Security Bugfix Release
+  * python3-defusedxml added
+
+-------------------------------------------------------------------
+Fri Feb 18 17:13:07 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- Version 6.0.15 - Bugfix Release
+
+-------------------------------------------------------------------
+Sat Feb 12 17:19:18 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- Version bump to Tryton 6.0 series
+
+-------------------------------------------------------------------
 Tue Feb  1 19:22:53 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - Version 5.0.44 - Bugfix Release
