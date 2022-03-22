@@ -1,7 +1,7 @@
 #
-# spec file for package stringtemplate4
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Group:          Development/Libraries/Java
 URL:            https://www.stringtemplate.org/
 Source0:        https://github.com/antlr/%{base_name}/archive/%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(antlr:antlr)
 BuildRequires:  mvn(org.antlr:antlr-runtime) >= 3.5.2
@@ -84,9 +85,11 @@ rm -r test/org/stringtemplate/v4/test/TestEarlyEvaluation.java
 %if %{with bootstrap}
 	-j \
 %endif
+    -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
