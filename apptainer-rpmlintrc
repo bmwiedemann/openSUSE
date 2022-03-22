@@ -1,0 +1,2 @@
+#  Have the same binary with and without setuid bit
+addFilter("files-duplicated-waste")

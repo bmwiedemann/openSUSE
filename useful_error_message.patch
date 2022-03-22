@@ -1,0 +1,26 @@
+From 5194ad8f863e971dde1c668d9c9de844b58ae893 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Mon, 13 Dec 2021 14:35:41 +0100
+Subject: [PATCH] Add an useful error message when the user doesn't belong to
+ the singularity group
+
+---
+ internal/pkg/util/starter/starter.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/internal/pkg/util/starter/starter.go b/internal/pkg/util/starter/starter.go
+index 11858ee20..5f76ac08d 100644
+--- a/internal/pkg/util/starter/starter.go
++++ b/internal/pkg/util/starter/starter.go
+@@ -94,7 +94,7 @@ func Exec(name string, config *config.Common, ops ...CommandOp) error {
+ 		return fmt.Errorf("while initializing starter command: %s", err)
+ 	}
+ 	err := unix.Exec(c.path, []string{name}, c.env)
+-	return fmt.Errorf("while executing %s: %s", c.path, err)
++  return fmt.Errorf("while executing %s: %s\nPlease read /usr/share/doc/packages/apptainer/README.SUSE to get help\n", c.path, err)
+ }
+ 
+ // Run executes the starter binary and returns once starter
+-- 
+2.34.1
+
