@@ -1,7 +1,7 @@
 #
 # spec file for package javacc-maven-plugin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source0:        javacc-maven-plugin-2.6.tar.bz2
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Patch0:         javacc-maven-plugin-pom.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java.dev.javacc:javacc)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-sink-api)
@@ -59,7 +60,11 @@ API documentation for %{name}.
 cp -p %{SOURCE1} .
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
