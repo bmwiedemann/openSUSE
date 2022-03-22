@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 14 16:12:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.4.0
+  * QCoro can now be built with Clang against libstdc++
+  * Qt5 and Qt6 builds of QCoro are now co-installable
+  * Fixed early co_return not resuming the caller
+  * Fixed QProcess example
+  * Test suite has been improved and extended
+  * Task move assignment operator checks for self-assignment
+  * QCoro can now be built as a subdirectory inside another CMake project
+  * Fixed QCoroCore/qcorocore.h header
+  * DBus is disabled by default on Windows, Mac and Android
+- Build Qt5 and Qt6 flavors.
+
+-------------------------------------------------------------------
 Fri Dec 10 16:18:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Install the dbus-launch executable at build time to run tests.

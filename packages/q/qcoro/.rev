@@ -16,4 +16,12 @@
     <comment>- Install the dbus-launch executable at build time to run tests.</comment>
     <requestid>939267</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c86afc6325f48475a6baf6c4b2ebc4f2</srcmd5>
+    <version>0.4.0</version>
+    <time>1647974399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963851</requestid>
+  </revision>
 </revisionlist>
