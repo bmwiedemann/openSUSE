@@ -1,8 +1,7 @@
 #
 # spec file for package janino
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2000-2007, JPackage Project
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,101 +17,100 @@
 
 
 Name:           janino
-Version:        2.7.8
+Version:        3.1.6
 Release:        0
 Summary:        An embedded Java compiler
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            http://janino-compiler.github.io/janino
-Source0:        http://janino.unkrig.de/download/%{name}-%{version}.zip
-Source1:        http://repo1.maven.org/maven2/org/codehaus/%{name}/%{name}-parent/%{version}/%{name}-parent-%{version}.pom
-Source2:        http://repo1.maven.org/maven2/org/codehaus/%{name}/commons-compiler/%{version}/commons-compiler-%{version}.pom
-Source3:        http://repo1.maven.org/maven2/org/codehaus/%{name}/commons-compiler-jdk/%{version}/commons-compiler-jdk-%{version}.pom
-Source4:        http://repo1.maven.org/maven2/org/codehaus/%{name}/%{name}/%{version}/%{name}-%{version}.pom
-# removes the de.unkrig.commons.nullanalysis annotations
-# http://unkrig.de/w/Unkrig.de
-# https://svn.code.sf.net/p/loggifier/code/tags/loggifier_0.9.9.v20140430-1829/de.unkrig.commons.nullanalysis/
-Patch0:         %{name}-2.7.8-remove-nullanalysis-annotations.patch
-BuildRequires:  dos2unix
+URL:            https://janino-compiler.github.io/janino
+Source0:        https://github.com/janino-compiler/janino/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
-BuildRequires:  unzip
+BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.ant:ant)
-BuildRequires:  mvn(org.codehaus:codehaus-parent:pom:)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+Requires:       commons-compiler = %{version}-%{release}
+Requires:       javapackages-tools
 BuildArch:      noarch
 
 %description
-Janino is a super-small, super-fast Java compiler. Not only can it compile
-a set of source files to a set of class files like the JAVAC tool, but also
-can it compile a Java expression, block, class body or source file in
-memory, load the byte-code and execute it directly in the same JVM. Janino
-is not intended to be a development tool, but an embedded compiler for
-run-time compilation purposes, e.g. expression evaluators or "server pages"
-engines like JSP.
+Janino is a super-small, super-fast Java compiler.
 
-%package javadoc
-Summary:        Javadoc for %{name}
+The "JANINO" implementation of the "commons-compiler" API: Super-small,
+super-fast, independent from the JDK's "tools.jar".
+
+%package     -n commons-compiler
+Summary:        Commons Compiler
 Group:          Development/Libraries/Java
 
-%description javadoc
-This package contains javadoc for %{name}.
+%description -n commons-compiler
+The "commons-compiler" API, including the "IExpressionEvaluator",
+"IScriptEvaluator", "IClassBodyEvaluator" and "ISimpleCompiler" interfaces.
+
+%package     -n commons-compiler-jdk
+Summary:        Commons Compiler JDK
+Group:          Development/Libraries/Java
+
+%description -n commons-compiler-jdk
+The "JDK" implementation of the "commons-compiler" API that uses the
+JDK's Java compiler (JAVAC) in "tools.jar".
+
+%package        javadoc
+Summary:        API documentation for %{name}
+Group:          Documentation/HTML
+
+%description    javadoc
+API documentation for %{name}.
 
 %prep
-%setup -q
 
-find . -name "*.jar" -delete
-find . -name "*.class" -delete
+%autosetup
 
-for m in commons-compiler \
-  commons-compiler-jdk \
-  %{name};do
-  mkdir -p ${m}/src
-  (
-    cd ${m}/src/
-    unzip -qq  ../../${m}-src.zip
-    if [ -f org.codehaus.commons.compiler.properties ]; then
-      mkdir -p main/resources
-      mv org.codehaus.commons.compiler.properties main/resources
-    fi
-  )
-done
+find -type f '(' -iname '*.jar' -o -iname '*.class' ')' -print -delete
 
-%patch0 -p1
+pushd %{name}-parent
+  %pom_xpath_remove pom:maven.compiler.source
+  %pom_xpath_remove pom:maven.compiler.target
+  %pom_xpath_remove pom:maven.compiler.executable
+  %pom_xpath_remove pom:maven.compiler.fork
 
-install -m 644 %{SOURCE1} pom.xml
-install -m 644 %{SOURCE2} commons-compiler/pom.xml
-install -m 644 %{SOURCE3} commons-compiler-jdk/pom.xml
-install -m 644 %{SOURCE4} %{name}/pom.xml
+  %pom_remove_plugin :nexus-staging-maven-plugin
+  %pom_remove_plugin :maven-jarsigner-plugin
+  %pom_remove_plugin :maven-javadoc-plugin
+  %pom_remove_plugin :maven-source-plugin
 
-%pom_change_dep -r :ant-nodeps :ant
+  %pom_disable_module ../commons-compiler-tests
 
-# RHBZ#842604
-%pom_xpath_set "pom:plugin[pom:artifactId = 'maven-compiler-plugin']/pom:configuration/pom:source" 1.6
-%pom_xpath_set "pom:plugin[pom:artifactId = 'maven-compiler-plugin']/pom:configuration/pom:target" 1.6
-
-dos2unix new_bsd_license.txt README.txt
-
-# Cannot run program "svn"
-%pom_remove_plugin :buildnumber-maven-plugin
-
-%pom_remove_plugin :maven-clean-plugin
-%pom_remove_plugin :maven-deploy-plugin
-%pom_remove_plugin :maven-site-plugin
-%pom_remove_plugin :maven-source-plugin
+  %{mvn_package} :%{name}-parent __noinstall
+popd
 
 %build
 
-%{mvn_build} -f -- -Dsource=6
+pushd %{name}-parent
+  %{mvn_build} -fs -- -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
+popd
 
 %install
-%mvn_install
-%fdupes -s %{buildroot}%{_javadocdir}
 
-%files -f .mfiles
-%doc README.txt
-%license new_bsd_license.txt
+pushd %{name}-parent
+  %mvn_install
+  %fdupes -s %{buildroot}%{_javadocdir}
 
-%files javadoc -f .mfiles-javadoc
-%license new_bsd_license.txt
+  %jpackage_script org.codehaus.commons.compiler.samples.CompilerDemo "" "" %{name}/janino:%{name}/commons-compiler janinoc true
+popd
+
+%files -f %{name}-parent/.mfiles-%{name}
+%license LICENSE
+%{_bindir}/janinoc
+
+%files -n commons-compiler -f %{name}-parent/.mfiles-commons-compiler
+%license LICENSE
+
+%files -n commons-compiler-jdk -f %{name}-parent/.mfiles-commons-compiler-jdk
+%license LICENSE
+
+%files javadoc -f %{name}-parent/.mfiles-javadoc
+%license LICENSE
 
 %changelog
