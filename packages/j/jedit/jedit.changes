@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 22 12:45:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and terget levels 8
+
+-------------------------------------------------------------------
 Thu May 20 11:02:03 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Include all available docs in the javadoc subpackage
