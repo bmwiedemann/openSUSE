@@ -1,7 +1,7 @@
 #
-# spec file for package glassfish
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/javaee/websocket-spec/
 Source0:        %{base_name}-%{version}.tar.xz
 Source1:        https://raw.githubusercontent.com/javaee/websocket-spec/master/LICENSE
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  xz
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
@@ -59,6 +60,9 @@ find  -name "*.jar"  -print -delete
 %pom_remove_plugin :maven-dependency-plugin server
 %pom_remove_plugin :maven-jar-plugin server
 
+%pom_xpath_set "pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" 1.8
+%pom_xpath_set "pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" 1.8
+
 %pom_xpath_set "pom:packaging" bundle client
 %pom_xpath_inject "pom:project" "<version>%{version}</version>" client
 %pom_add_plugin org.apache.felix:maven-bundle-plugin:2.3.7 client '
@@ -82,7 +86,7 @@ sed -i '/check-module/d' server/pom.xml
 
 %build
 
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
