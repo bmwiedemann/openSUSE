@@ -49,7 +49,7 @@ BuildRequires:  cmake(KF5QQC2DesktopStyle) >= %{_kf5_version}
 BuildRequires:  cmake(KF5Sonnet) >= %{_kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_version}
 BuildRequires:  cmake(KQuickImageEditor) >= 0.1
-BuildRequires:  cmake(QCoro)
+BuildRequires:  cmake(QCoro5)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Keychain)
