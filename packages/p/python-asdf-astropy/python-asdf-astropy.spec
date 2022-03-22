@@ -37,7 +37,11 @@ Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/as
 BuildRequires:  %{python_module packaging >= 16.0}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm}
+%if 0%{suse_version} >= 1550
 BuildRequires:  %{python_module tomli}
+%else
+BuildRequires:  %{python_module toml}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 2.8.0
