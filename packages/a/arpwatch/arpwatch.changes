@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 21 07:52:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2:
+  - Change update-ethercodes to not clobber ethercodes.dat on failure.
+  - Add a configure option to specify the path to sendmail
+- use https, its 2022 after all
+
+-------------------------------------------------------------------
 Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
 
 - remove instance units from post scripts, they can not be reloaded

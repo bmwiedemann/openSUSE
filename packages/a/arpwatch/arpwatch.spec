@@ -1,7 +1,7 @@
 #
 # spec file for package arpwatch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           arpwatch
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Tool to keep track of Ethernet<->IP address pairings
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
-URL:            http://www-nrg.ee.lbl.gov/nrg.html
-Source:         %{name}-%{version}.tar.gz
+URL:            https://ee.lbl.gov/nrg.html
+Source:         https://ee.lbl.gov/downloads/arpwatch/%{name}-%{version}.tar.gz
 Source10:       arpwatch@.service
 Source11:       sysconfig.arpwatch
 Source12:       arpwatch.service
