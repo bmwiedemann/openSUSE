@@ -63,4 +63,12 @@
     <comment>try to disable the doclint for real</comment>
     <requestid>963173</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b53197ec3b921743fe1f3db1b08db787</srcmd5>
+    <version>17.0.2.0</version>
+    <time>1647974382</time>
+    <user>dimstar_suse</user>
+    <comment>Fix an exception in javadoc generation</comment>
+    <requestid>963792</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 21 20:25:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * JDK-8282944.patch
+    + Upstream fix for JDK-8281944: JavaDoc throws
+      java.lang.IllegalStateException: ERRONEOUS
+
+-------------------------------------------------------------------
 Sun Mar 20 01:08:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
