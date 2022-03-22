@@ -1,7 +1,7 @@
 #
-# spec file for package maven-doxia-sitetools
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  guava
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  maven-artifact
