@@ -1,25 +1,42 @@
-Index: pip-20.2.3/src/pip/_vendor/certifi/core.py
-===================================================================
---- pip-20.2.3.orig/src/pip/_vendor/certifi/core.py
-+++ pip-20.2.3/src/pip/_vendor/certifi/core.py
-@@ -5,56 +5,18 @@ certifi.py
+---
+ src/pip/_vendor/certifi/core.py |   70 ++++------------------------------------
+ tests/unit/test_options.py      |    5 ++
+ 2 files changed, 13 insertions(+), 62 deletions(-)
+
+--- a/src/pip/_vendor/certifi/core.py
++++ b/src/pip/_vendor/certifi/core.py
+@@ -5,72 +5,18 @@ certifi.py
  ~~~~~~~~~~
  
  This module returns the installation location of cacert.pem or its contents.
 -"""
 -import os
+-
  
--try:
--    from importlib.resources import path as get_path, read_text
+-class _PipPatchedCertificate(Exception):
+-    pass
 +Patched by openSUSE: return the system bundle
 +"""
  
--    _CACERT_CTX = None
--    _CACERT_PATH = None
 +def read_text(_module=None, _path=None, encoding="ascii"):
 +    with open(where(), "r", encoding=encoding) as data:
 +        return data.read()
  
+-try:
+-    # Return a certificate file on disk for a standalone pip zipapp running in
+-    # an isolated build environment to use. Passing --cert to the standalone
+-    # pip does not work since requests calls where() unconditionally on import.
+-    _PIP_STANDALONE_CERT = os.environ.get("_PIP_STANDALONE_CERT")
+-    if _PIP_STANDALONE_CERT:
+-        def where():
+-            return _PIP_STANDALONE_CERT
+-        raise _PipPatchedCertificate()
+-
+-    from importlib.resources import path as get_path, read_text
+-
+-    _CACERT_CTX = None
+-    _CACERT_PATH = None
+-
 -    def where():
 -        # This is slightly terrible, but we want to delay extracting the file
 -        # in cases where we're inside of a zipimport situation until someone
@@ -44,6 +61,8 @@ Index: pip-20.2.3/src/pip/_vendor/certifi/core.py
 -
 -        return _CACERT_PATH
 -
+-except _PipPatchedCertificate:
+-    pass
 -
 -except ImportError:
 -    # This fallback will work for Python versions prior to 3.7 that lack the
@@ -67,3 +86,29 @@ Index: pip-20.2.3/src/pip/_vendor/certifi/core.py
  def contents():
 -    return read_text("certifi", "cacert.pem", encoding="ascii")
 +    return read_text(encoding="ascii")
+--- a/tests/unit/test_options.py
++++ b/tests/unit/test_options.py
+@@ -1,4 +1,5 @@
+ import os
++import os.path
+ from contextlib import contextmanager
+ from optparse import Values
+ from tempfile import NamedTemporaryFile
+@@ -11,6 +12,7 @@ from pip._internal.cli.main import main
+ from pip._internal.commands import create_command
+ from pip._internal.commands.configuration import ConfigurationCommand
+ from pip._internal.exceptions import PipError
++from pip._vendor.certifi import where
+ from tests.lib.options_helpers import AddFakeCommandMixin
+ from tests.lib.path import Path
+ 
+@@ -620,6 +622,9 @@ class TestOptionsConfigFiles:
+         else:
+             assert expect == cmd._determine_file(options, need_value=False)
+ 
++    def test_certificates(self):
++        assert os.path.exists(where())
++
+ 
+ class TestOptionsExpandUser(AddFakeCommandMixin):
+     def test_cache_dir(self) -> None:

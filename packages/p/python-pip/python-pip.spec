@@ -1,7 +1,7 @@
 #
-# spec file for package python-pip
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -32,14 +32,16 @@
 %if "%{flavor}" == "wheel"
 %define psuffix -wheel
 %bcond_without wheel
+%bcond_with test
 %else
 %define psuffix %{nil}
 %bcond_with test
 %bcond_with wheel
 %endif
 %endif
+%global skip_python2 1
 Name:           python-pip%{psuffix}
-Version:        20.2.4
+Version:        22.0.4
 Release:        0
 Summary:        A Python package management system
 License:        MIT
@@ -48,9 +50,7 @@ URL:            http://www.pip-installer.org
 Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz#/pip-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE pip-shipped-requests-cabundle.patch -- adapted patch from python-certifi package
 Patch0:         pip-shipped-requests-cabundle.patch
-# PATCH-FIX-UPSTREAM remove_mock.patch gh#pypa/pip#9266 mcepl@suse.com
-# remove dependency on the external module mock
-Patch1:         remove_mock.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -63,7 +63,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 Recommends:     ca-certificates-mozilla
 BuildArch:      noarch

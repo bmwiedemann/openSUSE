@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Sat Mar 19 17:14:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Avoid cycle: BuildRequire ca-certificates only in tests
+
+-------------------------------------------------------------------
+Fri Mar 18 09:32:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update requirements: v22 is not compatible with Python 3.6 and
+  thus not suitable for SLE/Leap 15.
+
+-------------------------------------------------------------------
+Thu Mar 17 10:28:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 22.0.4:
+  - Drop the doctype check, that presented a warning for index
+    pages that use non-compliant HTML 5.
+- Update to 22.0.3:
+  - Print the exception via rich.traceback, when running with
+    --debug.
+  - Only calculate topological installation order, for packages
+    that are going to be installed/upgraded.
+  - This fixes an AssertionError that occured when determining
+    installation order, for a very specific combination of
+    upgrading-already-installed-package + change of dependencies
+    + fetching some packages from a package index. This
+    combination was especially common in Read the Docs'
+    builds.
+  - Use html.parser by default, instead of falling back
+    to html5lib when --use-deprecated=html5lib is not
+    passed.
+  - Clarify that using per-requirement overrides disables the
+    usage of wheels.
+- Update to 22.0.2:
+  - Instead of failing on index pages that use non-compliant
+    HTML 5, print a deprecation warning and fall back to
+    html5lib-based parsing for now. This simplifies the migration
+    for non-compliant index pages, by letting such indexes
+    function with a warning.
+- Update to 22.0.1:
+  - Accept lowercase <!doctype html> on index pages.
+  - Properly handle links parsed by html5lib, when using
+    --use-deprecated=html5lib.
+- Update to 22.0:
+  - Completely replace :pypi:`tox` in our development workflow,
+    with :pypi:`nox`.
+  - Deprecate alternative progress bar styles, leaving only on
+    and off as available choices.
+  - Drop support for Python 3.6.
+  - Disable location mismatch warnings on Python versions prior
+    to 3.10.
+  - These warnings were helping identify potential issues as part
+    of the sysconfig -> distutils transition, and we no longer
+    need to rely on reports from older Python versions for
+    information on the transition.
+  - Changed PackageFinder to parse HTML documents using the
+    stdlib :class:`html.parser.HTMLParser` class instead of the
+    html5lib package.
+  - For now, the deprecated html5lib code remains and can be used
+    with the --use-deprecated=html5lib command line option.
+    However, it will be removed in a future pip release.
+  - Utilise rich for presenting pip's default download progress
+    bar.
+  - Present a better error message when an invalid wheel file is
+    encountered, providing more context where the invalid wheel
+    file is.
+  - Documents the --require-virtualenv flag for pip install.
+  - pip install <tab> autocompletes paths.
+  - Allow Python distributors to opt-out from or opt-in to the
+    sysconfig installation scheme backend by setting
+    sysconfig._PIP_USE_SYSCONFIG to True or False.
+  - Make it possible to deselect tests requiring cryptography
+    package on systems where it cannot be installed.
+  - Start using Rich for presenting error messages in
+    a consistent format.
+  - Improve presentation of errors from subprocesses.
+  - Forward pip's verbosity configuration to VCS tools to control
+    their output accordingly.
+  - Optimize installation order calculation to improve
+    performance when installing requirements that form a complex
+    dependency graph with a large amount of edges.
+  - When a package is requested by the user for upgrade,
+    correctly identify that the extra-ed variant of that same
+    package depended by another user-requested package is
+    requesting the same package, and upgrade it accordingly.
+  - Prevent pip from installing yanked releases unless explicitly
+    pinned via the == or === operators.
+  - Stop backtracking on build failures, by instead surfacing
+    them to the user and aborting immediately. This behaviour
+    provides more immediate feedback when a package cannot be
+    built due to missing build dependencies or platform
+    incompatibility.
+  - Silence Value for <location> does not match warning caused by
+    an erroneous patch in Slackware-distributed Python 3.9.
+  - Fix an issue where pip did not consider dependencies with and
+    without extras to be equal
+
+-------------------------------------------------------------------
+Sun Nov  7 17:07:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.3.1:
+  * Always refuse installing or building projects that have no ``pyproject.toml`` nor
+    ``setup.py``. 
+  * Tweak running-as-root detection, to check ``os.getuid`` if it exists, on
+    Unix-y and non-Linux/non-MacOS machines.
+  * When installing projects with a ``pyproject.toml`` in editable mode, and the build
+    backend does not support :pep:`660`, prepare metadata using
+    ``prepare_metadata_for_build_wheel`` instead of ``setup.py egg_info``. Also, refuse
+    installing projects that only have a ``setup.cfg`` and no ``setup.py`` nor
+    ``pyproject.toml``. These restore the pre-21.3 behaviour.
+  * Restore compatibility of where configuration files are loaded from on MacOS
+  * Upgrade pep517 to 0.12.0
+  * Improve deprecation warning regarding the copying of source trees when
+    installing from a local directory.
+  * Suppress location mismatch warnings when pip is invoked from a Python source
+    tree, so ``ensurepip`` does not emit warnings on CPython ``make install``.
+  * On Python 3.10 or later, the installation scheme backend has been changed to use
+    ``sysconfig``. This is to anticipate the deprecation of ``distutils`` in Python
+    3.10, and its scheduled removal in 3.12. For compatibility considerations, pip
+    installations running on Python 3.9 or lower will continue to use ``distutils``.
+  * Remove the ``--build-dir`` option and aliases, one last time.
+  * In-tree builds are now the default. ``--use-feature=in-tree-build`` is now
+    ignored. ``--use-deprecated=out-of-tree-build`` may be used temporarily to ease
+    the transition.
+  * Un-deprecate source distribution re-installation behaviour.
+  * Replace vendored appdirs with platformdirs.
+  * Support `PEP 610 <https://www.python.org/dev/peps/pep-0610/>`_ to detect
+    editable installs in ``pip freeze`` and  ``pip list``. The ``pip list`` column output
+    has a new ``Editable project location`` column, and the JSON output has a new
+    ``editable_project_location`` field.
+  * ``pip freeze`` will now always fallback to reporting the editable project
+    location when it encounters a VCS error while analyzing an editable
+    requirement. Before, it sometimes reported the requirement as non-editable.
+  * ``pip show`` now sorts ``Requires`` and ``Required-By`` alphabetically.
+  * Do not raise error when there are no files to remove with ``pip cache purge/remove``.
+    Instead log a warning and continue (to log that we removed 0 files).
+  * When backtracking during dependency resolution, prefer the dependencies
+    which are involved in the most recent conflict. This can significantly
+    reduce the amount of backtracking required.
+  * Cache requirement objects, to improve performance reducing reparses of requirement strings.
+  * Support editable installs for projects that have a ``pyproject.toml`` and use a
+    build backend that supports :pep:`660`.
+  * When a revision is specified in a Git URL, use git's partial clone feature
+    to speed up source retrieval.
+  * Add a ``--debug`` flag, to enable a mode that doesn't log errors and
+    propagates them to the top level instead. This is primarily to aid with
+    debugging pip's crashes.
+  * If a host is explicitly specified as trusted by the user (via the
+    --trusted-host option), cache HTTP responses from it in addition to HTTPS
+    ones.
+  * Present a better error message, when a ``file:`` URL is not found.
+  * Fix the auth credential cache to allow for the case in which
+    the index url contains the username, but the password comes
+    from an external source, such as keyring.
+  * Fix double unescape of HTML ``data-requires-python`` and ``data-yanked`` attributes.
+  * New resolver: Fixes depth ordering of packages during resolution, e.g. a
+    dependency 2 levels deep will be ordered before a dependecy 3 levels deep.
+- drop remove_mock.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Sep  8 16:07:38 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives. 
