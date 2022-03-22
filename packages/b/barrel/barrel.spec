@@ -16,7 +16,7 @@
 #
 
 Name:           barrel
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         barrel-%{version}.tar.xz
