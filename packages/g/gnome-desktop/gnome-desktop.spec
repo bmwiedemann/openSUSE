@@ -17,16 +17,18 @@
 
 
 Name:           gnome-desktop
-Version:        41.3
+Version:        42.0
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-desktop/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-desktop/42/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-desktop-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
 Patch1:         gnome-desktop-switch-Japanese-default-input-to-mozc.patch
+# PATCH-FIX-UPSTREAM a3ed548d92b160245b79978ae362d47091ad8dad.patch -- meson: Fix build_gtk4 option
+Patch2:         https://gitlab.gnome.org/GNOME/gnome-desktop/-/commit/a3ed548d92b160245b79978ae362d47091ad8dad.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -41,6 +43,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.53.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.31.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.3.6
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)
@@ -115,6 +118,71 @@ The libgnome-desktop library provides API shared by several applications
 on the desktop, but that cannot live in the platform for various
 reasons.
 
+%package -n libgnome-desktop-4-devel
+Summary:        Development files for the GNOME Desktop API library
+Group:          Development/Libraries/GNOME
+Requires:       libgnome-desktop-4-1 = %{version}
+Requires:       typelib-1_0-GnomeBG-4_0 = %{version}
+Requires:       typelib-1_0-GnomeDesktop-4_0 = %{version}
+Requires:       typelib-1_0-GnomeRR-4_0 = %{version}
+
+%description -n libgnome-desktop-4-devel
+The libgnome-desktop library provides API shared by several applications
+on the desktop, but that cannot live in the platform for various
+reasons.
+
+%package -n libgnome-desktop-4-1
+Summary:        The GNOME Desktop API Library
+Group:          System/Libraries
+# the library calls out to bwrap in order to fire up thumbnailers in a secure container
+Requires:       bubblewrap
+Requires:       gsettings-desktop-schemas
+# Data files for libgnome-desktop, split in an own package for SLPP compliancy
+Requires:       libgnome-desktop-3_0-common >= %{version}
+Provides:       %{name} = %{version}
+Obsoletes:      %{name} < %{version}
+
+%description -n libgnome-desktop-4-1
+The libgnome-desktop library provides API shared by several applications
+on the desktop, but that cannot live in the platform for various
+reasons.
+
+%package -n typelib-1_0-GnomeDesktop-4_0
+Summary:        Introspection bindings for the GNOME Desktop API library
+Group:          System/Libraries
+
+%description -n typelib-1_0-GnomeDesktop-4_0
+The libgnome-desktop library provides API shared by several applications
+on the desktop, but that cannot live in the platform for various
+reasons.
+
+This package provides the GObject Introspection bindings for
+libgnome-desktop.
+
+%package -n typelib-1_0-GnomeBG-4_0
+Summary:        Introspection bindings for the GNOME Desktop API library
+Group:          System/Libraries
+
+%description -n typelib-1_0-GnomeBG-4_0
+The libgnome-desktop library provides API shared by several applications
+on the desktop, but that cannot live in the platform for various
+reasons.
+
+This package provides the GObject Introspection bindings for
+libgnome-desktop.
+
+%package -n typelib-1_0-GnomeRR-4_0
+Summary:        Introspection bindings for the GNOME Desktop API library
+Group:          System/Libraries
+
+%description -n typelib-1_0-GnomeRR-4_0
+The libgnome-desktop library provides API shared by several applications
+on the desktop, but that cannot live in the platform for various
+reasons.
+
+This package provides the GObject Introspection bindings for
+libgnome-desktop.
+
 %lang_package
 
 %prep
@@ -142,6 +210,9 @@ reasons.
 %post -n libgnome-desktop-3-19 -p /sbin/ldconfig
 %postun -n libgnome-desktop-3-19 -p /sbin/ldconfig
 
+%post -n libgnome-desktop-4-1 -p /sbin/ldconfig
+%postun -n libgnome-desktop-4-1 -p /sbin/ldconfig
+
 %files -n libgnome-desktop-3-19
 %license COPYING.LIB
 %doc AUTHORS NEWS
@@ -161,7 +232,7 @@ reasons.
 %{_includedir}/gnome-desktop-3.0/
 %{_libdir}/libgnome-desktop-3.so
 %{_libdir}/pkgconfig/gnome-desktop-3.0.pc
-%{_datadir}/gir-1.0/*.gir
+%{_datadir}/gir-1.0/GnomeDesktop-3.0.gir
 %doc %{_datadir}/gtk-doc/html/gnome-desktop3/
 
 %files lang -f %{name}-3.0.lang
@@ -171,5 +242,31 @@ reasons.
 %files -n gnome-version
 %dir %{_datadir}/gnome
 %{_datadir}/gnome/gnome-version.xml
+
+%files -n libgnome-desktop-4-devel
+%{_datadir}/gir-1.0/GnomeBG-4.0.gir
+%{_datadir}/gir-1.0/GnomeDesktop-4.0.gir
+%{_datadir}/gir-1.0/GnomeRR-4.0.gir
+%{_includedir}/gnome-desktop-4.0
+%{_libdir}/libgnome-bg-4.so
+%{_libdir}/libgnome-desktop-4.so
+%{_libdir}/libgnome-rr-4.so
+%{_libdir}/pkgconfig/gnome-bg-4.pc
+%{_libdir}/pkgconfig/gnome-desktop-4.pc
+%{_libdir}/pkgconfig/gnome-rr-4.pc
+
+%files -n typelib-1_0-GnomeBG-4_0
+%{_libdir}/girepository-1.0/GnomeBG-4.0.typelib
+
+%files -n typelib-1_0-GnomeDesktop-4_0
+%{_libdir}/girepository-1.0/GnomeDesktop-4.0.typelib
+
+%files -n typelib-1_0-GnomeRR-4_0
+%{_libdir}/girepository-1.0/GnomeRR-4.0.typelib
+
+%files -n libgnome-desktop-4-1
+%{_libdir}/libgnome-desktop-4.so.1*
+%{_libdir}/libgnome-bg-4.so.1*
+%{_libdir}/libgnome-rr-4.so.1*
 
 %changelog
