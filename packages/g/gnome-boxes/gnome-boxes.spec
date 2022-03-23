@@ -22,17 +22,13 @@
 %define govf_sover 0.1
 %define gfrdp_sover 0.1
 Name:           gnome-boxes
-Version:        41.3
+Version:        42.0.1
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/41/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-UPSTREAM -- Ensure Tumbleweed is listed as recommended distribution
-Patch0:         gnome-boxes-opensuse.patch
-# PATCH-FIX-UPSTREAM fd0acfbe79444687c73dea182c2d1a5fa1c77324.patch -- Fix build with meson 0.60 and newer
-Patch1:         https://gitlab.gnome.org/GNOME/gnome-boxes/-/commit/fd0acfbe79444687c73dea182c2d1a5fa1c77324.patch
+Source0:        https://download.gnome.org/sources/gnome-boxes/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -144,7 +140,7 @@ search results from Boxes.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS HACKING README.md README.logos
+%doc NEWS README.md README.logos
 %doc %{_datadir}/help/C/gnome-boxes
 %{_bindir}/gnome-boxes
 %dir %{_datadir}/metainfo
