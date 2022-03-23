@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 24 14:12:30 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.42
+  * Set tooltip role and standalone role
+  * Wayland plugin merge from wayland_x86
+  * Fix bugs
+- Disable wayland plugin, workaround issue#2238
+  (https://github.com/linuxdeepin/developer-center/issues/2238)
+
+-------------------------------------------------------------------
+Thu Oct 28 02:47:01 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.40
+  * Add wm class name
+  * 2d wallpaper memory shared
+  * refactor: Only enable dxcb in dde
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Jul  6 03:59:48 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.0.23

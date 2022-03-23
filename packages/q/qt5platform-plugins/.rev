@@ -17,4 +17,23 @@
   * Support Qt 5.15.2 (forwarded request 904311 from hillwood)</comment>
     <requestid>904352</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8cb3755fe3b8ba0a52e1f0c47c825289</srcmd5>
+    <version>5.0.46</version>
+    <time>1648063149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.42
+  * Set tooltip role and standalone role
+  * Wayland plugin merge from wayland_x86
+  * Fix bugs
+- Disable wayland plugin, workaround issue#2238
+  (https://github.com/linuxdeepin/developer-center/issues/2238)
+
+- Update version to 5.0.40
+  * Add wm class name
+  * 2d wallpaper memory shared
+  * refactor: Only enable dxcb in dde
+  * Fix bugs (forwarded request 964286 from hillwood)</comment>
+    <requestid>964287</requestid>
+  </revision>
 </revisionlist>
