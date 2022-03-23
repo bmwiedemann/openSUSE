@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 11 19:53:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch to libportal-gtk4:
+  + Replace pkgconfig(libportal) with pkgconfig(libportal-gtk4)
+  + Drop 3e1f4da8c0e536c09ffaf3b43fe2eb5dc17cc23e.patch and
+    e128140d08c1faadc21ba42b81eefd451092f162.patch: no longer
+    needed.
+
+-------------------------------------------------------------------
 Tue Jan 11 19:26:33 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 41.0+72:
