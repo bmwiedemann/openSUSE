@@ -26,6 +26,9 @@ License:        BSD-2-Clause
 Group:          System/GUI/GNOME
 URL:            https://github.com/Keruspe/GPaste
 Source0:        http://www.imagination-land.org/files/%{name}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gpaste-bump-mutter-clutter.patch -- Bump mutter-clutter version needed
+Patch1:         gpaste-bump-mutter-clutter.patch
+
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0

@@ -15,6 +15,12 @@ Wed Feb  2 20:11:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 - Use ldconfig_scriptlets macro for post(un) handling.
 
 -------------------------------------------------------------------
+Wed Jan 12 12:26:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gpaste-bump-mutter-clutter.patch: Bump mutter-clutter version
+  needed.
+
+-------------------------------------------------------------------
 Wed Nov 24 20:40:49 UTC 2021 - Andrey Gankov <gav@qsolution.ru>
 
 - Update to version 3.42.2:
