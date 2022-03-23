@@ -1,7 +1,7 @@
 #
 # spec file for package univocity-parsers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/uniVocity/univocity-parsers
 Source0:        https://github.com/uniVocity/univocity-parsers/archive/v%{version}.tar.gz
 Source1:        %{name}-build.xml
+Patch0:         ambiguous-Record.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -45,6 +47,7 @@ API documentation for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
+%patch0 -p1
 
 # Tests require univocity-output-tester, which is not packaged yet.
 %{ant} jar javadoc
