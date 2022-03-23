@@ -9,4 +9,12 @@
 This is per https://code.opensuse.org/leap/features/issue/22#comment-838</comment>
     <requestid>946186</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>882c6ca1a8ba40a2f812b333128e9657</srcmd5>
+    <version>2.2.0</version>
+    <time>1648063143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>964275</requestid>
+  </revision>
 </revisionlist>

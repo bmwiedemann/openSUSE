@@ -18,14 +18,14 @@
 
 
 # moz plugin commit hash
-%global commit1 c5f1d0f3213178818cbfb3e16f31d07328980560
+%global commit1 3a01c086d1b0394238ff1b5ad22e76022830625a
 
 %global somajor 6
 %global libname lib%{name}-%{somajor}
 %global devname lib%{name}-devel
 
 Name:           openh264
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        H.264 codec library
 Group:          Productivity/Multimedia/Other
@@ -80,7 +80,10 @@ browsers.
 %autosetup -a1
 mv gmp-api-%{commit1} gmp-api
 
+
+%build
 # Update the makefile with our build options
+# Must be done in %%build in order to pick up correct LDFLAGS.
 sed -i -e 's|^CFLAGS_OPT=.*$|CFLAGS_OPT=%{build_cflags}|' Makefile
 sed -i -e 's|^PREFIX=.*$|PREFIX=%{_prefix}|' Makefile
 sed -i -e 's|^LIBDIR_NAME=.*$|LIBDIR_NAME=%{_lib}|' Makefile
@@ -89,8 +92,6 @@ sed -i -e 's|^SHAREDLIB_DIR=.*$|SHAREDLIB_DIR=%{_libdir}|' Makefile
 sed -i -e '/^CFLAGS_OPT=/i LDFLAGS=%{build_ldflags}' Makefile
 %endif
 
-
-%build
 # First build the openh264 libraries
 %make_build
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 16 11:21:48 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 2.2.0
+  + Add support for B-slice error concealment
+  + Thread decoding support for multi-slice frame
+  + Some Bug fixes for B-frame decoding
+  + Some minor bug fixes
+
+-------------------------------------------------------------------
 Thu Jan 13 13:49:47 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
 
 - Initial packaging derived from Fedora package
