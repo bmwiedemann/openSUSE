@@ -17,15 +17,13 @@
 
 
 Name:           epiphany
-Version:        41.3
+Version:        42.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        https://download.gnome.org/sources/epiphany/41/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM bfbb5f7bab38301d8a4a444173acdae8d9692146.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/epiphany/-/commit/bfbb5f7bab38301d8a4a444173acdae8d9692146.patch
+Source0:        https://download.gnome.org/sources/epiphany/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
@@ -101,10 +99,10 @@ search results from Web (epiphany)
 
 %build
 %meson \
-	-Ddeveloper_mode=false \
-	-Dunit_tests=disabled \
-	-Dsoup2=disabled \
-	-Dlibportal=disabled \
+	-D developer_mode=false \
+	-D unit_tests=disabled \
+	-D soup2=disabled \
+	-D libportal=disabled \
 	%{nil}
 %meson_build
 
