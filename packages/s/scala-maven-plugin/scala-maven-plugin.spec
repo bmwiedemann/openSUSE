@@ -73,9 +73,9 @@ This package contains javadoc for %{name}.
 
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
+    -Dmaven.compiler.release=8 \
 %endif
-	-Dmaven.compiler.source=6 -Dmaven.compiler.target=6 -Dsource=6
+    -Dsource=8
 
 %install
 %mvn_install
