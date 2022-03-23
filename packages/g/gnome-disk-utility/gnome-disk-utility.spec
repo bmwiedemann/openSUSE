@@ -17,27 +17,24 @@
 
 
 Name:           gnome-disk-utility
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Disks application for dealing with storage devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://wiki.gnome.org/Apps/Disks
-Source0:        https://download.gnome.org/sources/gnome-disk-utility/41/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 60.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-disk-utility/-/merge_requests/60.patch
+Source0:        https://download.gnome.org/sources/gnome-disk-utility/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(dvdread) >= 4.2.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16.0
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.1
-BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
+BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(liblzma) >= 5.0.5
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-1) >= 0.7
@@ -59,12 +56,13 @@ dealing with storage devices.
 %meson \
 	-Dlogind=libsystemd \
 	-Dgsd_plugin=true \
+	-Dman=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
-%suse_update_desktop_file -r -G "Disk Utility" org.gnome.DiskUtility GNOME GTK System HardwareSettings
+
 %find_lang %{name} %{?no_lang_C}
 
 %files
@@ -77,7 +75,6 @@ dealing with storage devices.
 %{_datadir}/icons/hicolor/
 %{_mandir}/man1/gnome-disk-image-mounter.1%{?ext_man}
 %{_mandir}/man1/gnome-disks.1%{?ext_man}
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 # The session / settings daemon plugin:

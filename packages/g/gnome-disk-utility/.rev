@@ -624,4 +624,12 @@
     <comment>- Add 60.patch: Fix build with meson 0.61 and newer. (forwarded request 952766 from iznogood)</comment>
     <requestid>952875</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>77baeef1ade725ba4cef778a7437485e</srcmd5>
+    <version>42.0</version>
+    <time>1648062978</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963586</requestid>
+  </revision>
 </revisionlist>

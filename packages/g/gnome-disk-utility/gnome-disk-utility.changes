@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Mar 18 20:54:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Add release helper.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  5 13:03:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Update screenshots.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 19:59:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Restore old window destruction to fix data retrieval
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  8 18:11:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.alpha:
+  + Support dark theme preference (required to bump libhandy to
+    1.5.0).
+  + Rewrite GUI parts to avoid deprecated things and prepare for
+    GTK 4.
+  + Improve the visual appearance of the devtab toolbar.
+  + metainfo: Align app name with .desktop name.
+  + Updated translations.
+- Drop update-desktop-files BuildRequires and macro, not needed.
+- Pass man=true to meson, ensure we build man pages.
+- Drop 60.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Feb  8 17:11:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 60.patch: Fix build with meson 0.61 and newer.
