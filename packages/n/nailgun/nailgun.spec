@@ -1,7 +1,7 @@
 #
 # spec file for package nailgun
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Java
 URL:            http://martiansoftware.com/nailgun/
 Source0:        https://github.com/martylamb/%{name}/archive/%{name}-all-%{version}.zip
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
@@ -55,10 +56,11 @@ find . -name '*.class' -delete
 %pom_remove_plugin :maven-source-plugin
 
 %build
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
