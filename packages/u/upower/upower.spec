@@ -30,10 +30,10 @@ License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://upower.freedesktop.org/
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE upower-hibernate-insteadof-hybridsleep.patch boo#985741 dimstar@opensuse.org -- Set the system per default to hibernate, not hybridsleep
-Patch0:         upower-hibernate-insteadof-hybridsleep.patch
+
 # PATCH-FEATURE-SLE upower-sle15.patch fcrozat@suse.com -- Disable some hardenings, don't work on SLE15 SP2+
 Patch1:         upower-sle15.patch
+
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
@@ -108,7 +108,6 @@ system) are restricted using PolicyKit.
 
 %prep
 %setup -q
-%patch0 -p1
 %if 0%{?sle_version}
 %patch1 -p1
 %endif
@@ -121,6 +120,7 @@ system) are restricted using PolicyKit.
 
 %install
 %meson_install
+
 install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %find_lang %{name}

@@ -706,4 +706,14 @@
     <comment></comment>
     <requestid>960734</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>232333f79fb060b093e0d1dd182902b2</srcmd5>
+    <version>0.99.17</version>
+    <time>1648062930</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop downstream patch that hopefully should no longer be needed:
+  + upower-hibernate-insteadof-hybridsleep.patch.
+</comment>
+    <requestid>963511</requestid>
+  </revision>
 </revisionlist>
