@@ -36,7 +36,6 @@ BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module feedparser}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-gnupg}
 BuildRequires:  %{python_module pytz if %python-base < 3.9}
