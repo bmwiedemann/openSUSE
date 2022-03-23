@@ -16,19 +16,17 @@
 #
 
 
-%define base_version 41
+%define base_version 42
 
 Name:           gnote
-Version:        41.2
+Version:        42.beta
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
-Source0:        https://download.gnome.org/sources/gnote/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnote/%{base_version}/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
-# PATCH-FIX-UPSTREAM 21.patch -- Fix build with meson 0.60 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnote/-/merge_requests/21.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
