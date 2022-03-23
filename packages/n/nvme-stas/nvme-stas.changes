@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 23 08:23:34 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc4:
+  * Check ignore-iface when creating TransportId object
+  * Adding man pages for ip-family and ignore-iface
+  * Add ignore-iface and ip-family conf. options
+  * Update the documentation
+  * Change default address returned by name resolver
+  * Filter out invalid IP addresses. (bsc#1197361)
+  * When reading the Host NQN, warn people if the NQN seems invalid
+  * Print descriptive message when unable to run stafctl/stacctl
+  * Use the newly added cntlrtype to check the type of controller
+  * minor fix to previous change to set the log level on libnvme
+  * LOG: enable libnvme debug when trace is enabled
+- Added python3-netifaces dependency
+
+-------------------------------------------------------------------
 Thu Mar  3 14:19:14 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Correct License information. This project is licenced under
