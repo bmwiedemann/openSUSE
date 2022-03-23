@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar  9 08:39:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.28 (bsc#1196036, CVE-2022-24407):
+  * https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html#new-in-2-1-28 
+- drop cyrus-sasl-bug587.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Jan 31 10:03:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - cyrus-sasl: prevent fail of %pre when berkely db utils are

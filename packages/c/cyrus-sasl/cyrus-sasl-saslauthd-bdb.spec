@@ -22,22 +22,18 @@
 %endif
 
 Name:           cyrus-sasl-saslauthd-bdb
-Version:        2.1.27
+Version:        2.1.28
 Release:        0
 Summary:        The SASL Authentication Server
 License:        BSD-4-Clause
 Group:          Productivity/Networking/Other
-URL:            http://asg.web.cmu.edu/sasl/
-
-Source:         cyrus-sasl-%{version}.tar.gz
+URL:            https://github.com/cyrusimap/cyrus-sasl
+Source:         https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-%{version}/cyrus-sasl-%{version}.tar.gz
 Source1:        cyrus-sasl-rc.tar.bz2
 Source2:        README.Source
 Source3:        baselibs.conf
 Source4:        saslauthd.service
-
 Patch:          cyrus-sasl.dif
-# see https://github.com/cyrusimap/cyrus-sasl/issues/587
-Patch1:         cyrus-sasl-bug587.patch
 Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
@@ -81,7 +77,6 @@ The SQL auxprop plugin supports PostgreSQL and MySQL
 %prep
 %setup -n cyrus-sasl-%{version} -a 1
 %patch
-%patch1 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1

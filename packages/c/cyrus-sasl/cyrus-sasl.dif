@@ -2,7 +2,7 @@ Index: m4/cyrus.m4
 ===================================================================
 --- m4/cyrus.m4.orig
 +++ m4/cyrus.m4
-@@ -37,7 +37,7 @@ AC_DEFUN([CMU_GUESS_RUNPATH_SWITCH], [
+@@ -36,7 +36,7 @@ AC_DEFUN([CMU_GUESS_RUNPATH_SWITCH], [
      SAVE_LDFLAGS="${LDFLAGS}"
      LDFLAGS="-R /usr/lib"
      AC_TRY_LINK([],[],[andrew_cv_runpath_switch="-R"], [
@@ -15,7 +15,7 @@ Index: Makefile.am
 ===================================================================
 --- Makefile.am.orig
 +++ Makefile.am
-@@ -43,6 +43,7 @@ AUTOMAKE_OPTIONS = 1.7
+@@ -44,6 +44,7 @@ ACLOCAL_AMFLAGS = -I m4
  #
  ################################################################
  
@@ -25,11 +25,11 @@ Index: Makefile.am
  else
 Index: sasldb/Makefile.am
 ===================================================================
---- sasldb/Makefile.am	2016-01-29 18:35:35.000000000 +0100
-+++ sasldb/Makefile.am	2018-11-17 12:51:05.800696917 +0100
-@@ -57,3 +57,9 @@
+--- sasldb/Makefile.am.orig
++++ sasldb/Makefile.am
+@@ -57,3 +57,9 @@ EXTRA_libsasldb_la_SOURCES = $(extra_com
  libsasldb_la_DEPENDENCIES = $(SASL_DB_BACKEND)
- libsasldb_la_LIBADD = $(SASL_DB_BACKEND)
+ libsasldb_la_LIBADD = $(SASL_DB_BACKEND) $(SASL_DB_LIB)
  libsasldb_la_LDFLAGS = -no-undefined
 +
 +# avoid these two files created at the same time, they use both the same

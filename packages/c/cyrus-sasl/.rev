@@ -592,4 +592,26 @@
     <comment></comment>
     <requestid>951340</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>3907506caf338b31a6ccaa9e2b4d8cce</srcmd5>
+    <version>2.1.28</version>
+    <time>1648062922</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.28 (bsc#1196036, CVE-2022-24407):
+  * https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html#new-in-2-1-28 
+- drop cyrus-sasl-bug587.patch (upstream)
+
+- update to 2.1.28 (bsc#1196036, CVE-2022-24407):
+  * https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html#new-in-2-1-28 
+- drop cyrus-sasl-bug587.patch (upstream)
+
+- update to 2.1.28 (bsc#1196036, CVE-2022-24407):
+  * https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html#new-in-2-1-28 
+- drop cyrus-sasl-bug587.patch (upstream)
+
+- update to 2.1.28 (bsc#1196036, CVE-2022-24407):
+  * https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html#new-in-2-1-28 
+- drop cyrus-sasl-bug587.patch (upstream)</comment>
+    <requestid>963371</requestid>
+  </revision>
 </revisionlist>

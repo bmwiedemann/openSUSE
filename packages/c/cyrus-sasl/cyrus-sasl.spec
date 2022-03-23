@@ -18,19 +18,17 @@
 
 %define lname	libsasl2-3
 Name:           cyrus-sasl
-Version:        2.1.27
+Version:        2.1.28
 Release:        0
 Summary:        Implementation of Cyrus SASL API
 License:        BSD-4-Clause
 Group:          Productivity/Networking/Other
-URL:            http://asg.web.cmu.edu/sasl/
-Source:         %{name}-%{version}.tar.gz
+URL:            https://github.com/cyrusimap/cyrus-sasl/
+Source:         https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-%{version}/cyrus-sasl-%{version}.tar.gz
 Source1:        cyrus-sasl-rc.tar.bz2
 Source2:        README.Source
 Source3:        baselibs.conf
 Patch0:         cyrus-sasl.dif
-# see https://github.com/cyrusimap/cyrus-sasl/issues/587
-Patch1:         cyrus-sasl-bug587.patch
 Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
@@ -47,55 +45,98 @@ Conflicts:      cyrus-sasl-bdb
 Obsoletes:      cyrus-sasl-64bit
 %endif
 
-%package      gssapi
+%description
+This is the Cyrus SASL API. It can be used on the client or server side
+to provide authentication. See RFC 2222 for more information.
+
+%package gssapi
 Summary:        Plugin for the GSSAPI SASL mechanism
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-gssapi
 
-%package      crammd5
+%description gssapi
+This is the Cyrus SASL API implementation. It can be used on the client
+or server side to provide authentication. See RFC 2222 for more
+information.
+
+%package crammd5
 Summary:        Plugin for the CRAMMD5 SASL mechanism
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-crammd5
 
-%package      digestmd5
+%description crammd5
+This is the Cyrus SASL API implementation. It can be used on the client
+or server side to provide authentication. See RFC 2222 for more
+information.
+
+%package digestmd5
 Summary:        Plugin for the DIGESTMD5 SASL mechanism
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-digestmd5
 
-%package      otp
+%description digestmd5
+This is the Cyrus SASL API implementation. It can be used on the client
+or server side to provide authentication. See RFC 2222 for more
+information.
+
+%package otp
 Summary:        Plugin for the OTP SASL mechanism
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-otp
 
-%package      plain
+%description otp
+This is the Cyrus SASL API implementation. It can be used on the client
+or server side to provide authentication. See RFC 2222 for more
+information.
+
+%package plain
 Summary:        Plugin for the PLAIN SASL mechanism
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-plain
 
-%package      ntlm
+%description plain
+This is the Cyrus SASL API implementation. It can be used on the client
+or server side to provide authentication. See RFC 2222 for more
+information.
+
+%package ntlm
 Summary:        Plugin for the NTLM SASL mechanism
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-ntlm
 
-%package      gs2
+%description ntlm
+This is the Cyrus SASL API. It can be used on the client or server side
+to provide authentication. See RFC 2222 for more information.
+
+%package gs2
 Summary:        Plugin for the GS2 SASL mechanism
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-ntlm
 
-%package      scram
+%description gs2
+This is the Cyrus SASL API implementation. It can be used on the client
+or server side to provide authentication. See RFC 2222 for more
+information.
+
+%package scram
 Summary:        Plugin for the SCRAM SASL mechanism
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Conflicts:      cyrus-sasl-bdb-scram
 
-%package      devel
+%description scram
+This is the Cyrus SASL API implementation. It can be used on the client
+or server side to provide authentication. See RFC 5802 for more
+information.
+
+%package devel
 Summary:        Cyrus SASL API Implementation, Libraries and Header Files
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
@@ -106,56 +147,13 @@ Conflicts:      cyrus-sasl-devel-bdb
 Obsoletes:      cyrus-sasl-devel-64bit
 %endif
 
-%package -n libsasl2-3
-Summary:        Simple Authentication and Security Layer (SASL) library
-Group:          System/Libraries
-
-%description
-This is the Cyrus SASL API. It can be used on the client or server side
-to provide authentication. See RFC 2222 for more information.
-
-%description gssapi
-This is the Cyrus SASL API implementation. It can be used on the client
-or server side to provide authentication. See RFC 2222 for more
-information.
-
 %description devel
 This is the Cyrus SASL API. It can be used on the client or server side
 to provide authentication. See RFC 2222 for more information.
 
-%description digestmd5
-This is the Cyrus SASL API implementation. It can be used on the client
-or server side to provide authentication. See RFC 2222 for more
-information.
-
-%description crammd5
-This is the Cyrus SASL API implementation. It can be used on the client
-or server side to provide authentication. See RFC 2222 for more
-information.
-
-%description otp
-This is the Cyrus SASL API implementation. It can be used on the client
-or server side to provide authentication. See RFC 2222 for more
-information.
-
-%description plain
-This is the Cyrus SASL API implementation. It can be used on the client
-or server side to provide authentication. See RFC 2222 for more
-information.
-
-%description ntlm
-This is the Cyrus SASL API. It can be used on the client or server side
-to provide authentication. See RFC 2222 for more information.
-
-%description gs2
-This is the Cyrus SASL API implementation. It can be used on the client
-or server side to provide authentication. See RFC 2222 for more
-information.
-
-%description scram
-This is the Cyrus SASL API implementation. It can be used on the client
-or server side to provide authentication. See RFC 5802 for more
-information.
+%package -n libsasl2-3
+Summary:        Simple Authentication and Security Layer (SASL) library
+Group:          System/Libraries
 
 %description -n libsasl2-3
 Simple Authentication and Security Layer (SASL) is a framework for
@@ -173,7 +171,6 @@ then
     rm -rf %{_builddir}/%{name}-%{version}/dlcompat-*
 fi
 %patch0
-%patch1 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
@@ -207,6 +204,7 @@ chmod 0644 doc/*
 rm -f doc/Makefile*
 rm -f %{buildroot}/%{_mandir}/cat?/*
 rm -f %{buildroot}/%{_mandir}/man8/saslauthd*
+rm -f %{buildroot}/%{_mandir}/man8/testsaslauthd*
 rm -f %{buildroot}%{_sbindir}/saslauthd
 rm -f %{buildroot}%{_sbindir}/testsaslauthd
 find %{buildroot} -type f -name "*.la" -delete -print
