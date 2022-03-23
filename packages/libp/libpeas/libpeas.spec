@@ -19,24 +19,18 @@
 %bcond_with lua51
 %bcond_without python3
 Name:           libpeas
-Version:        1.30.0
+Version:        1.32.0
 Release:        0
 Summary:        GObject-based Plugin Engine
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        https://download.gnome.org/sources/libpeas/1.30/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM a9d2ba590641d832dcf6b97184687b6eb424c00f.patch -- icons: Update icon licenses
-Patch0:         https://gitlab.gnome.org/GNOME/libpeas/-/commit/a9d2ba590641d832dcf6b97184687b6eb424c00f.patch
-# PATCH-FIX-UPSTREAM dfc763c16c0ce66a180ccb13205f1ca9666278a8.patch -- icons: Correct icon licenses again
-Patch1:         https://gitlab.gnome.org/GNOME/libpeas/-/commit/dfc763c16c0ce66a180ccb13205f1ca9666278a8.patch
-# PATCH-FIX-UPSTREAM 2a976339f444d70f10949901a6ee2b1f8ccb24b6.patch -- Build: add embedded-resources.h to libembedded_dep
-Patch2:         https://gitlab.gnome.org/GNOME/libpeas/-/commit/2a976339f444d70f10949901a6ee2b1f8ccb24b6.patch
+Source0:        https://download.gnome.org/sources/libpeas/1.32/%{name}-%{version}.tar.xz
 
 BuildRequires:  gettext
-BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gladeui-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
@@ -208,7 +202,8 @@ every application the chance to assume its own extensibility.
 %{_datadir}/glade/catalogs/libpeas-gtk.xml
 
 %files devel
-%{_datadir}/gtk-doc/html/libpeas/
+%{_datadir}/doc/libpeas-1.0
+%{_datadir}/doc/libpeas-gtk-1.0
 %{_includedir}/libpeas-1.0/
 %{_libdir}/libpeas-1.0.so
 %{_libdir}/libpeas-gtk-1.0.so

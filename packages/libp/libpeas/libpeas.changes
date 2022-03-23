@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 19 13:53:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.0:
+  + Icon licenses have been corrected.
+  + Parallel build system operation fixes.
+  + Various build warnings squashed.
+  + Various GIR data that should not have been exported was
+    removed.
+  + Use gi-docgen for documentation.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + a9d2ba590641d832dcf6b97184687b6eb424c00f.patch
+  + dfc763c16c0ce66a180ccb13205f1ca9666278a8.patch
+  + 2a976339f444d70f10949901a6ee2b1f8ccb24b6.patch
+- Replace gtk-doc with pkgconfig(gi-docgen) BuildRequires following
+  upstream changes.
+
+-------------------------------------------------------------------
 Tue Feb  8 21:42:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bug fix patches:
