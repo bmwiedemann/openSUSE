@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 16 16:40:33 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.027:
+  * Fix auto-disabled mirrors may be still used for redirection (#261)
+  * Increase logging level for timeouts in PEDANTIC mode (#261)
+  * Serve CentOS repodata from root only (#261)
+
+-------------------------------------------------------------------
 Wed Mar 09 12:42:33 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.026:
