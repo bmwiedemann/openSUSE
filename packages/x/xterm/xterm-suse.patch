@@ -3,10 +3,10 @@
 # from 7ecf75281e09a29875b61f38bb66920529368050:
 # improve display of chinese letters (bsc#1089049)
 
-diff --git a/UXTerm.ad.1 b/UXTerm.ad
-index 0eac2dd..2ba471d 100644
---- a/UXTerm.ad.1
-+++ b/UXTerm.ad
+Index: xterm-372/UXTerm.ad
+===================================================================
+--- xterm-372.orig/UXTerm.ad
++++ xterm-372/UXTerm.ad
 @@ -35,10 +35,20 @@
  ! to set resources for UTF-8 mode with corresponding fonts.
  ! See the uxterm script for an example.
@@ -64,15 +64,11 @@ index 0eac2dd..2ba471d 100644
  
  ! Here is an alternate set of fonts with better support for bold:
  !*VT100.font2:	-efont-biwidth-medium-r-normal--10-100-75-75-p-50-iso10646-1
-diff --git a/XTerm-col.ad b/XTerm-col.ad
---- a/XTerm-col.ad
-+++ b/XTerm-col.ad
-@@ -71,25 +71,25 @@
- 
- ! These are the 8 ANSI colors and their bright equivalents.  Depending on
- ! other resource settings, xterm may use the bright colors when displaying
- ! bold text (see the boldColors resource).
- *VT100*color0: black
+Index: xterm-372/XTerm-col.ad
+===================================================================
+--- xterm-372.orig/XTerm-col.ad
++++ xterm-372/XTerm-col.ad
+@@ -76,15 +76,15 @@
  *VT100*color1: red3
  *VT100*color2: green3
  *VT100*color3: yellow3
@@ -91,16 +87,11 @@ diff --git a/XTerm-col.ad b/XTerm-col.ad
  *VT100*color13: magenta
  *VT100*color14: cyan
  *VT100*color15: white
- 
- ! Disclaimer: there are no standard colors used in terminal emulation.
- !
- ! The choice for color4 and color12 is a tradeoff between contrast, depending
- ! on whether they are used for text or backgrounds.  Note that either color4 or
-diff --git a/XTerm.ad.1 b/XTerm.ad
-index dd6ef52..69aac16 100644
---- a/XTerm.ad.1
-+++ b/XTerm.ad
-@@ -105,21 +105,37 @@
+Index: xterm-372/XTerm.ad
+===================================================================
+--- xterm-372.orig/XTerm.ad
++++ xterm-372/XTerm.ad
+@@ -106,21 +106,37 @@
  *vtMenu*sixelScrolling*Label:  Sixel Scrolling
  *vtMenu*privateColorRegisters*Label:  Private Color Registers
  
@@ -145,7 +136,7 @@ index dd6ef52..69aac16 100644
  *fontMenu*font7*Label:	Enormous
  !*VT100.font7:		12x24
  *VT100.font7:		-adobe-courier-medium-r-normal--24-240-75-75-m-150-iso10646-1
-@@ -252,6 +268,59 @@
+@@ -253,6 +269,59 @@
  ! Alternatively,
  !*on2Clicks: regex [[:alpha:]]+://([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]][[:xdigit:]]))+
  
@@ -205,15 +196,11 @@ index dd6ef52..69aac16 100644
  ! VT100s and similar terminals recognize escape sequences and control
  ! characters to which they reply to the host with other escape sequences,
  ! to provide information.  The "resize" program uses this feature.
-diff --git a/xterm.man b/xterm.man
---- a/xterm.man
-+++ b/xterm.man
-@@ -4815,19 +4815,23 @@ This option specifies the font to be use
- in the \*(``OverTheSpot\*('' input method.
- .IP
- In \*(``OverTheSpot\*('' preedit type, the preedit (preconversion)
- string is displayed at the position of the cursor.
- It is the XIM server's responsibility to display the preedit string.
+Index: xterm-372/xterm.man
+===================================================================
+--- xterm-372.orig/xterm.man
++++ xterm-372/xterm.man
+@@ -5487,9 +5487,13 @@ It is the XIM server's responsibility to
  The XIM client must inform the XIM server of the cursor position.
  For best results, the preedit string must be displayed with a proper font.
  Therefore, \fI\*n\fP informs the XIM server of the proper font.
@@ -230,8 +217,3 @@ diff --git a/xterm.man b/xterm.man
  The \fBximFont\fP resource is provided to override this default font setting.
  .\"
  .SS Tek4014 Widget Resources
- .PP
- The following resources are specified
- as part of the \fItek4014\fP widget (class \fITek4014\fP).
- These are specified by patterns
- such as \*(``\fB__default_class__.tek4014.\fP\fINAME\fP\*('':

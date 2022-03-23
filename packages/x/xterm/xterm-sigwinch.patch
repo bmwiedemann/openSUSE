@@ -1,15 +1,16 @@
 # HG changeset patch
 # Parent  547d2ea5029c2c3edd129a9d23e424877c6f29f0
 
-diff --git a/screen.c b/screen.c
-index 6fb6b3b..238591f 100644
---- a/screen.c
-+++ b/screen.c
-@@ -2330,7 +2330,7 @@ ScreenResize(XtermWidget xw,
+Index: xterm-372/screen.c
+===================================================================
+--- xterm-372.orig/screen.c
++++ xterm-372/screen.c
+@@ -2246,7 +2246,7 @@ ScreenResize(XtermWidget xw,
  
  #ifdef TTYSIZE_STRUCT
-     if (update_winsize(screen->respond, rows, cols, height, width) == 0) {
+     if (update_winsize(screen, rows, cols, height, width) == 0) {
 -#if defined(SIGWINCH) && defined(TIOCGPGRP)
 +#if defined(SIGWINCH) && (defined(TIOCGPGRP) || defined(linux))
  	if (screen->pid > 1) {
  	    int pgrp;
+ 

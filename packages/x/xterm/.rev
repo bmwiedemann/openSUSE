@@ -1601,4 +1601,41 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>937738</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>d3f57e91f0021698bfa4c92f6bb0b7e5</srcmd5>
+    <version>372</version>
+    <time>1648062939</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 372:
+  * amend   allocation/freeing  of  scrollback  lines,  eliminating  an
+    adjustment  for status-line added in patch #371 (report/testcase by
+    Rajeev V. Pillai).
+- update to 371:
+     * drop   double-buffer   default   from   test-packages,  since  that
+       interferes with status-line.
+     * add  faceSize7  to  table  in  charproc.c, overlooked in patch #360
+       (patch by Vladimir A. Pavlov).
+     * use  XDrawString rather than XDrawString16 for text when the latter
+       is not needed.
+     * improve performance for initializing/reusing graphic objects in the
+       SIXEL feature.
+     * improve error-checking for resize.
+     * fix errata in manual page (Debian #988221).
+     * extended  list  of environment variables to purge on startup, i.e.,
+       in case a user starts xterm from another terminal emulator.
+     * add  comment  in cursor.c to explain why autowrap (DECAWM) does not
+       apply  to  data  saved/restored with save/restore cursor-operations
+       (report by Thomas Wolff).
+     * add  special  case  in  generating the combining-character table in
+       wcwidth.c,  for  Hangul  Jamo  Extended-B  (report  by  Luis Javier
+       Merino).
+     * simplify/improve portability of trap commands in shell-scripts.
+     * update configure options
+       --disable-rectangles,
+       --disable-tcap-fkeys and
+       --disable-tcap-query
+       to account for changed default settings.
+     * rather  than  ignore empty parameter for setting title, use that to</comment>
+    <requestid>963692</requestid>
+  </revision>
 </revisionlist>

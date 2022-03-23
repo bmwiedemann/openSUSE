@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:30:36 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- update to 372:
+  * amend   allocation/freeing  of  scrollback  lines,  eliminating  an
+    adjustment  for status-line added in patch #371 (report/testcase by
+    Rajeev V. Pillai).
+- update to 371:
+     * drop   double-buffer   default   from   test-packages,  since  that
+       interferes with status-line.
+     * add  faceSize7  to  table  in  charproc.c, overlooked in patch #360
+       (patch by Vladimir A. Pavlov).
+     * use  XDrawString rather than XDrawString16 for text when the latter
+       is not needed.
+     * improve performance for initializing/reusing graphic objects in the
+       SIXEL feature.
+     * improve error-checking for resize.
+     * fix errata in manual page (Debian #988221).
+     * extended  list  of environment variables to purge on startup, i.e.,
+       in case a user starts xterm from another terminal emulator.
+     * add  comment  in cursor.c to explain why autowrap (DECAWM) does not
+       apply  to  data  saved/restored with save/restore cursor-operations
+       (report by Thomas Wolff).
+     * add  special  case  in  generating the combining-character table in
+       wcwidth.c,  for  Hangul  Jamo  Extended-B  (report  by  Luis Javier
+       Merino).
+     * simplify/improve portability of trap commands in shell-scripts.
+     * update configure options
+       --disable-rectangles,
+       --disable-tcap-fkeys and
+       --disable-tcap-query
+       to account for changed default settings.
+     * rather  than  ignore empty parameter for setting title, use that to
+       reset it to “xterm” for scripting.
+     * check  for  out-of-bounds  condition while drawing sixels, and quit
+       that operation (report by Nick Black).
+     * add  fallback definition for PROJECTROOT so that a suitable default
+       location for luit will be compiled-in on build-servers.
+     * implement DEC status-line controls DECSASD/DECSSDT:
+          + decode controls, set state
+          + implement DECRQSS responses
+          + implement indicator-style status-line
+          + add configure option --enable-status-line
+          + add resource indicatorFormat
+          + implement    host-writable   status-line,   able   to   handle
+            video-attributes  and  simple left/right cursor movement. This
+            disallows all of the DEC/xterm private modes such as switching
+            to/from the alternate screen.
+          + move the status-line if the window is resized.
+          + Note:  the  associated  screen-resizing  does not work for the
+            special case of TrueType fonts with double-buffering (see note
+            in patch #349).
+     * modify  configure-script fixup for -Werror options to exclude fixup
+       for -Werror=format, e.g., -Werror=format-security.
+     * amend  change  from  patch  #370; DEC 070's pseudo-code for DECCOLM
+       incorrectly suggests that it enables DECLRMM as a side-effect.
+     * fix  some  memory leaks seen using esctest and asan2 (patch by Luis
+       Javier Merino).
+- xterm-sigwinch.patch,xterm-suse.patch: refreshed
+-------------------------------------------------------------------
 Tue Dec  7 08:55:20 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Use separate subpackage for resize binary. It does not actually
