@@ -1,7 +1,7 @@
 #
 # spec file for package string-template-maven-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/kevinbirch/%{name}
 Source0:        https://github.com/kevinbirch/%{name}/archive/%{name}-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/kevinbirch/%{name}/master/LICENSE
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.antlr:ST4)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
@@ -62,7 +63,11 @@ perl -pi -e 's#org\.sonatype\.aether#org.eclipse.aether#g' \
 	src/main/java/com/webguys/maven/plugin/st/Controller.java
 
 %build
-%mvn_build -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
