@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 22 14:40:00 UTC 2022 - heming.zhao@suse.com
+
+- fsck.ocfs2: do not try locking after replaying journals if -F is given (bsc#1196705)
+  + fsck.ocfs2-do-not-try-locking-after-replaying-journa.patch
+
+-------------------------------------------------------------------
 Fri Nov 12 14:20:25 UTC 2021 - ghe@suse.com
 
 - Rollback when dir_index creation fails (bsc#1192103)
