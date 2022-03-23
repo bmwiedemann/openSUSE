@@ -77,6 +77,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scipy}
 # /SECTION
 %endif
+Provides:       python-Mathics3 = %{version}
 %python_subpackages
 
 %description

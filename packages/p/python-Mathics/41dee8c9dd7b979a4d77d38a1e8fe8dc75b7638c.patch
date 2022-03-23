@@ -8,7 +8,7 @@ Subject: [PATCH] Bump to dev version
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mathics/version.py b/mathics/version.py
-index 7f01dd50..d24d22d6 100644
+index 7f01dd50e..d24d22d6c 100644
 --- a/mathics/version.py
 +++ b/mathics/version.py
 @@ -5,4 +5,4 @@
