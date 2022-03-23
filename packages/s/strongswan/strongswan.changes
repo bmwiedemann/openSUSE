@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 16 12:57:46 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- prf-plus-modularization.patch: updated from upstream branch
+  after certifier feedback, SKEYSEED generated via HKDF-Extract.
+
+-------------------------------------------------------------------
 Thu Mar  3 14:49:26 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Added prf-plus-modularization.patch that outsources the IKE 
