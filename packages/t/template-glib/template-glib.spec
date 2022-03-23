@@ -1,7 +1,7 @@
 #
 # spec file for package template-glib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           template-glib
-Version:        3.34.0
+Version:        3.34.1
 Release:        0
 Summary:        Library for generating text based on a template and user defined state
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-Url:            https://git.gnome.org/browse/template-glib/
+URL:            https://git.gnome.org/browse/template-glib/
 Source0:        https://download.gnome.org/sources/template-glib/3.34/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(vapigen)
 Template-GLib is a library for generating text based on a template and
 user defined state. Template-GLib does not use a language runtime, so it is
 safe to use from any GObject-Introspectable language.
-
 
 %package -n     libtemplate_glib-1_0-0
 Summary:        Library for generating text based on a template and user defined state

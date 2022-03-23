@@ -63,4 +63,12 @@
     <comment>Scripted push from {project}</comment>
     <requestid>736611</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8305719b1afa604e8989f115a1ab1a89</srcmd5>
+    <version>3.34.1</version>
+    <time>1648063063</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963637</requestid>
+  </revision>
 </revisionlist>
