@@ -1,8 +1,8 @@
-diff --git a/data/meson.build b/data/meson.build
-index 4a1e16d..490e793 100644
---- a/data/meson.build
-+++ b/data/meson.build
-@@ -115,8 +115,14 @@ if have_systemd
+Index: gnome-shell-42.rc/data/meson.build
+===================================================================
+--- gnome-shell-42.rc.orig/data/meson.build
++++ gnome-shell-42.rc/data/meson.build
+@@ -124,8 +124,14 @@ if have_systemd
      install_dir: systemduserunitdir
    )
  
@@ -19,17 +19,43 @@ index 4a1e16d..490e793 100644
  
    install_data(units, install_dir: systemduserunitdir)
  endif
-diff --git a/data/org.gnome.Shell-disable-extensions.service b/data/org.gnome.Shell-disable-extensions.service.in
-similarity index 85%
-rename from data/org.gnome.Shell-disable-extensions.service
-rename to data/org.gnome.Shell-disable-extensions.service.in
-index de91167..49236a6 100644
---- a/data/org.gnome.Shell-disable-extensions.service
-+++ b/data/org.gnome.Shell-disable-extensions.service.in
-@@ -11,5 +11,5 @@ ConditionPathExists=%t/gnome-shell-disable-extensions
- [Service]
- Type=simple
- # Disable extensions
+Index: gnome-shell-42.rc/data/org.gnome.Shell-disable-extensions.service
+===================================================================
+--- gnome-shell-42.rc.orig/data/org.gnome.Shell-disable-extensions.service
++++ /dev/null
+@@ -1,15 +0,0 @@
+-[Unit]
+-Description=Disable GNOME Shell extensions after failure
+-# Note that this unit must not conflict with anything, and must
+-# be able to run in parallel with the gnome-session-shutdown.target.
+-DefaultDependencies=no
+-
+-# We want to disable extensions only if gnome-shell has flagged the extensions
+-# to be a likely cause of trouble.
+-ConditionPathExists=%t/gnome-shell-disable-extensions
+-
+-[Service]
+-Type=simple
+-# Disable extensions
 -ExecStart=gsettings set org.gnome.shell disable-user-extensions true
+-Restart=no
+Index: gnome-shell-42.rc/data/org.gnome.Shell-disable-extensions.service.in
+===================================================================
+--- /dev/null
++++ gnome-shell-42.rc/data/org.gnome.Shell-disable-extensions.service.in
+@@ -0,0 +1,15 @@
++[Unit]
++Description=Disable GNOME Shell extensions after failure
++# Note that this unit must not conflict with anything, and must
++# be able to run in parallel with the gnome-session-shutdown.target.
++DefaultDependencies=no
++
++# We want to disable extensions only if gnome-shell has flagged the extensions
++# to be a likely cause of trouble.
++ConditionPathExists=%t/gnome-shell-disable-extensions
++
++[Service]
++Type=simple
++# Disable extensions
 +ExecStart=@bindir@/gsettings set org.gnome.shell disable-user-extensions true
- Restart=no
++Restart=no

@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        41.4
+Version:        42.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -37,22 +37,12 @@ Source2:        noise-texture.png
 
 # PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
 Patch1:         gnome-shell-private-connection.patch
-# PATCH-FIX-OPENSUSE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
-Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
-# PATCH-FEATURE-OPENSUSE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680, boo#1172826 qkzhu@suse.com -- make GDM background image configurable
-Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-FEATURE-OPENSUSE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
-# PATCH-FIX-UPSTREAM gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch jsc#SLE-16051 glgo#GNOME/gnome-shell!1563 qzhao@suse.com -- launch recommended input engines when Gnome-shell init in CJK regions.
-Patch6:         gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
 # PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
 Patch7:         gnome-shell-executable-path-not-absolute.patch
 # PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
 Patch8:         gnome-shell-exit-crash-workaround.patch
-# PATCH-FIX-UPSTREAM 2078.patch -- Fix build with meson 0.61 and newer
-Patch9:         https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2078.patch
-# PATCH-FIX-UPSTREAM gnome-shell-fix-NMDevice-get-path.patch bsc#1176553 glgo#GNOME/gnome-shell#4565 xwang@suse.com -- Fix NMDevice get path fail
-Patch10:        gnome-shell-fix-NMDevice-get-path.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -65,6 +55,12 @@ Patch1003:      gnome-shell-screen-disappear.patch
 Patch1004:      endSession-dialog-update-time-label-every-sec.patch
 # PATCH-FIX-SLE gs-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
 Patch1007:      gs-fate318433-prevent-same-account-multi-logins.patch
+# PATCH-FIX-SLE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
+Patch1008:      gnome-shell-disable-ibus-when-not-installed.patch
+# PATCH-FEATURE-SLE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680, boo#1172826 qkzhu@suse.com -- make GDM background image configurable
+Patch1009:      gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+# PATCH-FIX-UPSTREAM gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch jsc#SLE-16051 glgo#GNOME/gnome-shell!1563 qzhao@suse.com -- launch recommended input engines when Gnome-shell init in CJK regions.
+Patch1010:      gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
 
 # needed for directory ownership
 BuildRequires:  asciidoc
@@ -73,7 +69,7 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
 BuildRequires:  xsltproc
@@ -84,9 +80,9 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.69.2
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.71.1
 BuildRequires:  pkgconfig(gnome-autoar-0)
-BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.9.0
+BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.35.90
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -103,7 +99,7 @@ BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-9) >= 41.0
+BuildRequires:  pkgconfig(libmutter-10) >= 41.0
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
@@ -113,9 +109,9 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-9) >= 41.0
-BuildRequires:  pkgconfig(mutter-cogl-9) >= 41.0
-BuildRequires:  pkgconfig(mutter-cogl-pango-9) >= 41.0
+BuildRequires:  pkgconfig(mutter-clutter-10) >= 41.0
+BuildRequires:  pkgconfig(mutter-cogl-10) >= 41.0
+BuildRequires:  pkgconfig(mutter-cogl-pango-10) >= 41.0
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -183,16 +179,9 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
-%patch4 -p1
 %patch5 -p1
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-%patch6 -p1
-%endif
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
-%patch10 -p1
 
 %if 0%{?sle_version}
 %patch1001 -p1
@@ -200,6 +189,11 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch1003 -p1
 %patch1004 -p1
 %patch1007 -p1
+%patch1008 -p1
+%patch1009 -p1
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%patch1010 -p1
+%endif
 %endif
 
 cp %{SOURCE2} data/theme/
@@ -264,6 +258,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-launchers.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-system.xml
+%{_datadir}/gnome-control-center/keybindings/50-gnome-shell-screenshots.xml
 # Own these dirs for extensions, search-providers and work around a race condition
 %dir %{_datadir}/gnome-shell/extensions
 %dir %{_datadir}/gnome-shell/search-providers
@@ -272,6 +267,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/gnome-shell-theme.gresource
 %{_datadir}/gnome-shell/gnome-shell-osk-layouts.gresource
 %{_datadir}/gnome-shell/perf-background.xml
+%{_datadir}/gnome-shell/gnome-shell-icons.gresource
 %{_mandir}/man?/gnome-shell.?%{ext_man}
 %dir %{_datadir}/xdg-desktop-portal
 %dir %{_datadir}/xdg-desktop-portal/portals

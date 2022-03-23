@@ -1,8 +1,107 @@
 -------------------------------------------------------------------
+Sun Mar 13 09:19:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + introspect: Add WindowsChanged signal.
+  + Fix on-screen keyboard during grabs.
+  + Fixed crash.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  7 18:30:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Fix programatically set scrollview fade.
+  + Fix overview DND during screencasts.
+  + Fix taking screenshots with shift+PrntScrn.
+  + Disable workspace switching while in search.
+  + Fix opening device settings for enterprise WPA networks.
+  + Switch workspaces with Home and End keys in overview.
+  + Fix regressions from style refresh.
+  + Show disabled icons in system menu when devices are disabled.
+  + Fix inserting items from object inspector in looking glass.
+  + Fix drag placeholder position in dash in RTL locales.
+  + Simplify signal handling with (dis)connectObject() convenience
+    methods.
+  + Ensure remote access indicator is shown for a minimum time.
+  + Improve CSS shadow appearance.
+  + Ignore work area in overview layout.
+  + Fix glitches in overview transition.
+  + Fixed crash.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Update patches with quilt.
+
+-------------------------------------------------------------------
+Thu Feb 24 12:00:45 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 42.beta+40:
+  * overview: Don't expect time argument from drag-end signal
+  * workspaceAnimation: Fix warning on restacking
+  * cleanup:
+    - Use new indentation style for object literals
+    - Use new indentation style for arrays
+    - Stop using string concatenation
+  * status/network:
+    - Show disabled icon when bluetooth cellular is disabled
+    - Show vpn-disabled icon when vpn is disabled
+    - Show cellular-disabled icon when cellular is disabled
+  * status/bluetooth: Show bluetooth-disabled icon when disabled
+  * Updated translations.
+- Drop gnome-shell-fix-NMDevice-get-path.patch: Fixed upstream.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
+Thu Feb 17 19:07:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Thu Feb 17 02:01:38 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-shell-fix-NMDevice-get-path.patch: Fix the NMDevice
   get_path is null(bsc#1176553 glgo#GNOME/gnome-shell#4565).
+
+-------------------------------------------------------------------
+Tue Feb 15 22:16:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Add Swiss French and Swiss German OSK layouts
+  + Add switches for debug flags to looking glass
+  + Support auth lists on the login screen
+  + Overhaul shell stylesheet
+  + Fix timing issue on login screen
+  + Fix activating apps with tracked OR windows
+  + Fix banding issues with the vignette lightbox shader
+  + Implement in-shell screenshot and screencast UI
+  + Fix keyboard navigation to windows/apps in overview
+  + Adjust to Clutter grab API changes
+  + Fix stuck transition when using super-scroll gesture
+  + Support the new 'high-contrast' setting
+  + Remove rounded top bar corners
+  + Fix calendar events with custom timezone
+  + Support dark wallpapers
+  + Improve terminology for pinning icons to dash
+  + Use libadwaita for extension preferences
+  + Fix out-of-sync location indicator
+  + Fade screen when switching between dark/light mode
+  + Improve presentation of multi-day events in calendar
+  + Implement Extensions redesign
+  + Implement OSD redesign
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Replace pkgconfig(gnome-bluetooth-1.0) with
+  pkgconfig(gnome-bluetooth-3.0) BuildRequires following upstreams
+  port.
+- Move patches from openSUSE to SLE/Leap only status:
+  + gnome-shell-disable-ibus-when-not-installed.patch
+  + gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+  + gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
+
+-------------------------------------------------------------------
+Tue Feb 15 20:19:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop 2078.patch: Not needed for 42.alpha.
 
 -------------------------------------------------------------------
 Tue Feb 15 20:19:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -40,6 +139,39 @@ Thu Jan 27 02:58:53 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
   connection (bsc#1195141).
 
 -------------------------------------------------------------------
+Wed Jan 12 10:21:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.alpha:
+  + Fix icon updates while hidden.
+  + Fix erratic scrolling in GTK apps.
+  + Fix GTK color picker support.
+  + Fix sound-file support in notifications.
+  + Fix high-contrast switches.
+  + Allow extensions to opt-in to running on lock/login screen.
+  + magnifier: Avoid offscreen rendering if possible.
+  + Warn when unsafe-mode is toggled.
+  + Improve handling of all-day/zero-length events in calendar.
+  + Keep keyboard focus in notification list after deleting
+    message.
+  + switchMonitor: Don't include builtin/external modes on
+    desktops.
+  + Fix wrongly rejected D-Bus calls after gnome-shell restarts.
+  + Improve window tracking.
+  + Simplify scroll fade shader to work with old hardware.
+  + Tweak (un)minimize animations.
+  + Properly handle markup when highlighting search terms.
+  + Don't wake up screen in DND mode.
+  + Port to GWeather 4.0.
+  + extensions-app: Use libadwaita.
+  + Fix immediately withdrawn notifications getting stuck.
+  + Honor XDG SingleMainWindow key in .desktop files.
+  + Opt-in to unique GType names in extension prefs.
+  + Don't terminate remote sessions in headless mode.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jan 11 17:49:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.3:
@@ -57,7 +189,7 @@ Tue Jan 11 17:49:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Fri Dec 17 04:09:17 UTC 2021 - QK ZHU <qkzhu@suse.com>
 
-- Add gnome-shell-exit-crash-workaround.patch: 
+- Add gnome-shell-exit-crash-workaround.patch:
   + Backport from Ubuntu, This is a workaround to maintain a clean
     environment for gnome-shell and particularly JavaScript/GJS to
     shutdown without crashing.

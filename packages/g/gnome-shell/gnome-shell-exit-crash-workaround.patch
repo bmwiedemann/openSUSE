@@ -1,8 +1,8 @@
-diff --git a/src/main.c b/src/main.c
-index 3cd9e10..557f35a 100644
---- a/src/main.c
-+++ b/src/main.c
-@@ -566,7 +566,7 @@ main (int argc, char **argv)
+Index: gnome-shell-42.rc/src/main.c
+===================================================================
+--- gnome-shell-42.rc.orig/src/main.c
++++ gnome-shell-42.rc/src/main.c
+@@ -569,7 +569,7 @@ main (int argc, char **argv)
        ecode = EXIT_FAILURE;
      }
  
