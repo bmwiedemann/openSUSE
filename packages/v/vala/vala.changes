@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Thu Mar 17 09:56:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.0:
+  + Various improvements and bug fixes: codegen: Drop confusing
+    warning when accessing interface members.
+  + Bindings:
+    - Add webkit2gtk-4.1 bindings.
+    - glib-2.0: Fix memory management of TestSuite.add*/get_root()
+      with 2.70.
+    - libarchive: Fix a few binding errors.
+    - SDL2_ttf: Fix a few binding errors.
+    - tiff: Fix a few binding errors.
+
+-------------------------------------------------------------------
+Tue Mar 15 09:09:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.55.91:
+  + Various improvements and bug fixes:
+    - girparser:
+      . Handle duplicated and unnamed symbols.
+      . Add support for "copy_/free_function" metadata for compact
+        classes.
+      . Don't count instance-parameter when checking for backwards
+        closure reference.
+  + Bindings:
+    - gst-editing-services-1.0: Fix
+      BaseEffect.set_time_translation_funcs()
+    - gstreamer-audio-1.0: Fix a few binding errors
+    - gstreamer-base-1.0: Fix a few binding errors
+    - gstreamer-video-1.0: Fix a few binding errors
+    - gtk4: Fix content_deserialize_async()
+    - libarchive: Fix a few binding errors
+    - libgsf-1: Fix a few binding errors
+    - libgrss: Fix FeedItem.get_geo_point() parameters
+
+-------------------------------------------------------------------
+Tue Mar 15 09:08:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.55.90:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Emit G_DEFINE_AUTOPTR_CLEANUP_FUNC() for interfaces with
+        base class
+      . Emit G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC() for structs
+      . Default to "has_type_id = false" for external error-domains
+      . Emit GType definition for error domains
+    - vala:
+      . Catch and throw possible inner error of lock statements
+      . Keep error-code symbol reference in callable expression
+        context
+      . Allow delegate without target to be used as constant type
+    - girparser: Pick up type_id of error domains
+  + Bindings:
+    - glib-2.0: Update 2.70/72 symbols
+    - gstreamer: Update from 1.21.0+ git main
+    - vapi: Update GIR-based bindings
+
+-------------------------------------------------------------------
+Tue Mar 15 09:07:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.55.3:
+  + Highlights: Allow usage of dynamic on VarType
+  + Various improvements and bug fixes:
+    - codegen:
+      . Use correct target/destroy of delegate field initializer
+      . Stop generating wrappers for dynamic property access
+    - gtkmodule: Improve UI parsing and handling of nested objects
+      and properties
+    - vala:
+      . Add missing TraverseVisitor.visit_data_type()
+      . Improve check of generic type references in static contexts
+      . Make sure to drop our "trap" jump target in case of an
+        error
+      . Move dynamic property errors to semantic analyzer pass
+      . Free empty stack list for code contexts
+      . Clear SemanticAnalyzer.current_{symbol,source_file} when
+        not needed anymore
+  + Bindings:
+    - gio-2.0,glib-2.0,gobject-2.0: Update 2.72 symbols
+    - gstreamer: Update from 1.19.90+ git main
+    - gtk4: Specify sentinel for GtkAcessible methods
+    - gtk4: Update to 4.6.0+06ec4ec1
+    - vapi: Update GIR-based bindings
+
+-------------------------------------------------------------------
+Tue Mar 15 09:06:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.55.2:
+  + Highlights:
+    - Add support for async main and yield statements in main block
+    - Add foreach statement support for GLib.Array and
+      GLib.Sequence
+  + Various improvements and bug fixes:
+    - codegen:
+      . Avoid symbol clashes with "va_*" from "stdarg.h"
+      . Access of inline allocated array is guaranteed to be non
+        null
+      . Don't uncoditionally null check callback_func for
+        GLib.Closure
+      . Access of stack allocated struct is guaranteed to be non
+        null
+      . Write array length of formal parameters with fixed length
+    - vala:
+      . Require lvalue access of delegate target/destroy "fields"
+      . Implement missing YieldStatement.accept()
+      . Add support to infer return type of dynamic signals
+      . Transform assignment of an array element as needed
+    - parser:
+      . Reduce the source reference of main block method to its
+        beginning
+      . Improve handling of nullable VarType in with-statement
+    - manual: Update from wiki.gnome.org
+  + Bindings:
+    - glib-2.0,gio-2.0: Update 2.72 symbols
+    - gstreamer: Update from 1.19.3+ git master
+    - gtk4: Update to 4.6.0+a092986a
+    - glib-2.0: Fix criticals in string.joinv() with arrays that
+      start with null
+    - vapi: Add linux-media bindings (linux/media.h)
+    - alsa: Add/fix *.alloca() functions
+    - posix: Add limits.h binding
+    - v4l2: Update V4l2.Capabilities and fix some inline arrays
+
+-------------------------------------------------------------------
+Tue Mar 15 09:05:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.55.1:
+  + Highlights:
+    - Add support for partial classes.
+    - Add support for nested methods (local functions).
+    - Add multi-line support to Vala.Report.
+    - Support "emit" for explicit signal emission.
+    - Add native support to specify non default length-type for
+      arrays.
+  + Various improvements and bug fixes:
+    - codegen:
+      . Move some errors to semantic analyzer pass.
+      . Stop generating wrappers for dynamic signal connections.
+      . gdbus: Use g_dbus_method_invocation_take_error() as
+        simplification.
+      . Initialize type parameter properties for generics earlier.
+      . Initialize "result" variable on declaration for abstract
+        methods only.
+      . Use __once instead of __volatile in generated code.
+      . Generated SimpleType structs don't have a type id.
+    - vala:
+      . Add optional SourceReference parameter to DataType classes.
+      . Preserve the source reference when resolving data types.
+      . Set source references of created DataType instances in OCE.
+      . Set TypeParameter as symbol of GenericType.
+      . Add accessibility check of type for constants and structs
+        base type.
+      . Don't allow casting to void.
+      . Don't allow casting real structs to classes or
+        simple-types.
+      . Check accessibility of initializer for constant and enum
+        value.
+      . Show source location when reporting deprecations
+  + Updated bindings.
+- Update vala_version, vala_libversion, and vala_priority relating
+  to 'vala 0.56'.
+
+-------------------------------------------------------------------
 Tue Mar 15 09:04:55 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 0.54.7:
