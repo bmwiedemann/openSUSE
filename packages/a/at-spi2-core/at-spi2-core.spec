@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi2-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           at-spi2-core
-Version:        2.42.0
+Version:        2.44.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/at-spi2-core/2.42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-core/2.44/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gtk-doc
@@ -98,17 +98,21 @@ to develop applications that require these.
 
 %install
 %meson_install
-%find_lang at-spi2-core
+%find_lang %{name}
+# Move autostart file to /usr/etc
+mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+mkdir -p %{buildroot}%{_distconfdir}/xdg/Xwayland-session.d
+mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart/
+mv %{buildroot}%{_sysconfdir}/xdg/Xwayland-session.d/* %{buildroot}%{_distconfdir}/xdg/Xwayland-session.d/
 
-%post -n libatspi0 -p /sbin/ldconfig
-%postun -n libatspi0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libatspi0
 
 %files
 %license COPYING
 %{_libexecdir}/at-spi2/
-%dir %{_sysconfdir}/xdg/Xwayland-session.d
-%{_sysconfdir}/xdg/Xwayland-session.d/00-at-spi
-%{_sysconfdir}/xdg/autostart/at-spi-dbus-bus.desktop
+%dir %{_distconfdir}/xdg/Xwayland-session.d
+%{_distconfdir}/xdg/Xwayland-session.d/00-at-spi
+%{_distconfdir}/xdg/autostart/at-spi-dbus-bus.desktop
 %{_userunitdir}/at-spi-dbus-bus.service
 %dir %{_datadir}/dbus-1/accessibility-services/
 %{_datadir}/dbus-1/accessibility-services/org.a11y.atspi.Registry.service
@@ -123,7 +127,7 @@ to develop applications that require these.
 %{_libdir}/girepository-1.0/Atspi-2.0.typelib
 
 %files devel
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_includedir}/at-spi-2.0/
 %{_libdir}/libatspi.so
 %{_libdir}/pkgconfig/atspi-2.pc
