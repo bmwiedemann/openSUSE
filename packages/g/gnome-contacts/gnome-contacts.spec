@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-contacts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,25 @@
 
 
 Name:           gnome-contacts
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/41/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM b92f5a5198d3a52aaf7317ba6d8e86c633e9e18d.patch glgo#GNOME/gnome-contacts!168
-Patch0:         b92f5a5198d3a52aaf7317ba6d8e86c633e9e18d.patch
-# PATCH-FIX-UPSTREAM 6883d4fa2a1b3803896a5f5737df765d8f6f6f62.patch glgo#GNOME/gnome-contacts!168
-Patch1:         6883d4fa2a1b3803896a5f5737df765d8f6f6f62.patch
-# PATCH-FIX-UPSTREAM f89a9af36e4e2f0e92de62b3f6b7dc9ccc2b5ac6.patch glgo#GNOME/gnome-contacts!164
-Patch2:         f89a9af36e4e2f0e92de62b3f6b7dc9ccc2b5ac6.patch
-# PATCH-FIX-UPSTREAM 281decd15546987ca1c467e090ea4abf7a4a0a3b.patch glgo#GNOME/gnome-contacts!164
-Patch3:         281decd15546987ca1c467e090ea4abf7a4a0a3b.patch
+Source0:        https://download.gnome.org/sources/gnome-contacts/42/%{name}-%{version}.tar.xz
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.40.10
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(cheese)
-BuildRequires:  pkgconfig(cheese-gtk) >= 3.3.91
 BuildRequires:  pkgconfig(clutter-gtk-1.0)
 BuildRequires:  pkgconfig(folks) >= 0.14
 BuildRequires:  pkgconfig(folks-eds) >= 0.11.4
+BuildRequires:  pkgconfig(libportal)
 # Disable telepathy by default
 #BuildRequires:  pkgconfig(folks-telepathy) >= 0.11.4
 BuildRequires:  pkgconfig(gee-0.8)
@@ -54,11 +46,10 @@ BuildRequires:  pkgconfig(gmodule-export-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk4) >= 4.6
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libebook-1.2) >= 3.13.90
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.30
-BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.13.90
-BuildRequires:  pkgconfig(libhandy-1) >= 1.1.0
 # Disable telepathy by default, following upstream, NOTE pass -Dtelepathy=true to meson if you reenable this.
 #BuildRequires:  pkgconfig(telepathy-glib) >= 0.22.0
 
@@ -99,7 +90,6 @@ search results from contacts.
 
 %build
 %meson \
-	-Dcheese=enabled \
 	-Dtelepathy=false \
 	-Dmanpage=true \
 	%{nil}

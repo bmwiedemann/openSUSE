@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Mar 22 18:11:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + A fresh new look thanks to a port to GTK 4 and libadwaita,
+    along with a new UI design.
+  + It is now possible to open up a contact's location with your
+    default maps application (provided it supports "maps:" URIs).
+  + It is now possible to show and add the organisational role of a
+    contact. This is an especially useful feature for corporate
+    address books
+  + Contacts shows a little reminder when displaying someone's
+    contact information if their birthday is today.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 14 10:42:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Contact properties can be selected, which means you can also
+    copy them to paste it elsewhere.
+  + It is now possible to show and add the organisational role of a
+    contact. This is mostly useful for corporate address books, as
+    you can now see what job a colleague is performing.
+  + Some paper cuts that got introduced when porting to GTK4 have
+    been resolved.
+  + Contacts shows a little reminder when displaying someone's
+    contact information if their birthday is today.
+  + Fixed launching the Online Accounts dialog in GNOME 42.
+  + Updated translations.
+- Add desktop-file-utils BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Jan 13 08:40:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.alpha:
+  + A fresh new look thanks to a port to GTK 4 and libadwaita,
+    along with a new UI design.
+  + It is now possible to open up a contact's location with your
+    default maps application (provided it supports "maps:" URIs).
+  + Fixes to the birthday editor.
+  + Updated translations.
+- Drop pkgconfig(cheese) and pkgconfig(cheese-gtk4) BuildRequires:
+  no longer needed. Stop passing -Dcheese to meson.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4),
+  and pkgconfig(libhandy-1) with pkgconfig(libadwaita-1): changed
+  deps for GTK4 port.
+- Add pkgconfig(libportal): Requires to securely access the camera.
+- Drop pkgconfig(libedataserverui-1.2): no longer needed.
+- Drop patches included in upstream sources:
+  + 281decd15546987ca1c467e090ea4abf7a4a0a3b.patch
+  + 6883d4fa2a1b3803896a5f5737df765d8f6f6f62.patch
+  + b92f5a5198d3a52aaf7317ba6d8e86c633e9e18d.patch
+  + f89a9af36e4e2f0e92de62b3f6b7dc9ccc2b5ac6.patch
+
+-------------------------------------------------------------------
 Wed Sep 29 11:38:59 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add check section and run meson_test macro.
