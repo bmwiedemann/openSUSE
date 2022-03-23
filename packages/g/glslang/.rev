@@ -262,4 +262,12 @@
     <comment>- Update to release 11.8.0</comment>
     <requestid>950012</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>5682a6bb8a5cd1c134669834716c6829</srcmd5>
+    <version>11.8.0</version>
+    <time>1648062936</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable baselibs, for use by ffmpeg.</comment>
+    <requestid>963686</requestid>
+  </revision>
 </revisionlist>
