@@ -18,17 +18,14 @@
 
 %bcond_without  cdda
 Name:           gvfs
-Version:        1.48.1
+Version:        1.50.0
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
-Source0:        https://download.gnome.org/sources/gvfs/1.48/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gvfs/1.50/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
-# PATCH-FIX-UPSTREAM 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch -- Fix build with meson 0.61 and newer
-Patch0:         17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gvfs-nds.patch ksamrat@novell.com -- Provides NDS browsing for nautilus
@@ -49,7 +46,7 @@ BuildRequires:  pkgconfig(fuse3) >= 3.0.0
 BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.65.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.17.1
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
@@ -63,7 +60,7 @@ BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.2
 BuildRequires:  pkgconfig(libmtp) >= 1.1.12
 BuildRequires:  pkgconfig(libnfs) >= 1.9.8
 BuildRequires:  pkgconfig(libsecret-unstable)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42.0
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
@@ -161,7 +158,7 @@ gvfs plugins.
 
 %prep
 %setup -q
-%patch0 -p1
+
 %if 0%{?sle_version}
 %patch1000 -p1
 %patch1001 -p1
@@ -173,13 +170,14 @@ gvfs plugins.
 	-Dudisks2=true \
 	%{!?with_cdda: -Dcdda=false} \
 	-Dman=true \
+	-Dsystemduserunitdir=%{_userunitdir} \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 # drop polkit rules files (for wheel group) - boo#1125433
-rm %{buildroot}%{_datadir}/polkit-1/rules.d/org.gtk.vfs.file-operations.rules
+rm -v %{buildroot}%{_datadir}/polkit-1/rules.d/org.gtk.vfs.file-operations.rules
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}
 
@@ -204,7 +202,7 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %files
 %license COPYING daemon/trashlib/COPYING.trashlib
 %doc NEWS README.md
-%doc daemon/org.gtk.vfs.file-operations.rules
+%doc daemon/org.gtk.vfs.file-operations.rules.in
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/mounts
 %dir %{_datadir}/%{name}/remote-volume-monitors
