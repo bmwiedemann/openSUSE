@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 18 17:47:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.5:
+  + Misc HTTP/2 fixes.
+  + Fix missing files for installed-tests.
+  + Fix SoupServer not properly handling invalid percent encoded
+    paths.
+  + Fix other areas not properly handling invalid percent encoded
+    paths.
+  + Fix SoupLogger:max-body-size of 0 meaning log nothing.
+
+-------------------------------------------------------------------
 Fri Jan  7 14:57:23 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.4:
