@@ -1,7 +1,7 @@
 #
 # spec file for package dolly
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define _fwdefdir %{_prefix}/lib/firewalld/services
-%define vers 0.63.6
+
+%define vers 0.64.1
+
+%define githash %vers
 
 Name:           dolly
 Summary:        Tool for cloning data of one machine to other machines
@@ -25,14 +27,12 @@ Group:          Productivity/Networking/Other
 Version:        %vers
 Release:        0
 URL:            http://www.cs.inf.ethz.ch/stricker/CoPs/patagonia/dolly.html
-Source0:        https://github.com/openSUSE/dolly/archive/%{version}.tar.gz#/dolly-%{version}.tar.bz2
-Source1:        dolly.conf
-Source2:        dolly.md
-Source3:        dolly_firewall.xml
+Source0:        https://github.com/openSUSE/dolly/archive/%{githash}.tar.gz#/dolly-%{version}.tar.bz2
 
 #SLE15* does not contain pandoc packages
 %if 0%{?is_opensuse}
 %ifnarch i586
+BuildRequires:  firewalld
 BuildRequires:  pandoc
 Requires:       gzip
 %endif
@@ -45,49 +45,57 @@ partitions or whole hard disk drives to other partitions or
 hard disk drives. As it forms a "virtual TCP ring" to distribute
 data, it works best with fast switched networks.
 
-As dolly can clone whole partitions block-wise, it works for 
+As dolly can clone whole partitions block-wise, it works for
 most filesystems, including the types for Linux, Windows, Oberon,
 Solaris.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{githash}
 #mv %{name}-%{version}/* .
 #rmdir %{name}-%{commit}/
 
 %build
-make %{?_smp_mflags}
 %if 0%{?is_opensuse}
 %ifnarch i586
-pandoc --standalone -t man %{SOURCE2} -o dolly.1
-gzip dolly.1
+make %{?_smp_mflags}
+%else
+make %{?_smp_mflags} dolly
 %endif
+%else
+make %{?_smp_mflags} dolly
 %endif
 
 %install
-install -D -m 755 $RPM_BUILD_DIR/%{name}-%{version}/dolly %{buildroot}%{_sbindir}/dolly
-install -D -m 644  %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.conf
-# install firewall conf
-mkdir -p %{buildroot}/%{_fwdefdir}
-install -m 644 %{S:3} %{buildroot}/%{_fwdefdir}/dolly.xml
+%make_install
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdolly
 
-%if 0%{?is_opensuse}
-%ifnarch i586
-install -D -m 644 dolly.1.gz %{buildroot}%{_mandir}/man1/dolly.1.gz
-%endif
-%endif
+%pre
+%service_add_pre dolly.service dolly.socket
+
+%post
+%service_add_post dolly.service dolly.socket
+
+%preun
+%service_del_preun dolly.service dolly.socket
+
+%postun
+%service_del_postun dolly.service dolly.socket
 
 %files
-%doc README.md dolly.example
+%doc README.md dolly.example send_multiple_files.pl
+%license LICENSE
 %defattr(-,root,root,-)
 %dir %{_prefix}/lib/firewalld
-%dir %{_fwdefdir}
 %attr(755,root,root) %{_sbindir}/dolly
 %attr(644,root,root) %config(noreplace) %{_sysconfdir}/%{name}.conf
-%attr(644,root,root) %config(noreplace) %{_fwdefdir}/dolly.xml
+%{_prefix}/lib/firewalld/services/dolly.xml
 %if 0%{?is_opensuse}
 %ifnarch i586
 %{_mandir}/man1/dolly.1.gz
 %endif
 %endif
+%{_sbindir}/rcdolly
+%{_unitdir}/dolly.service
+%{_unitdir}/dolly.socket
 
 %changelog
