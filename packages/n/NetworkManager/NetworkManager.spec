@@ -57,7 +57,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.36.2
+Version:        1.36.4
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -134,10 +134,10 @@ Requires:       NetworkManager-branding
 Requires:       mozilla-nss
 Requires:       sysconfig-netconfig >= 0.80.5
 Requires:       wpa_supplicant >= 0.6.4
-Recommends:     iproute2
-Recommends:     iputils
 Recommends:     dnsmasq
+Recommends:     iproute2
 Recommends:     iptables
+Recommends:     iputils
 Recommends:     org.freedesktop.ModemManager
 # Provides required by sysconfig. The latter is used by older versions.
 Provides:       dhcdbd = 1.14
