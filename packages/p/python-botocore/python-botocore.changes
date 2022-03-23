@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Mon Mar 21 14:29:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.22:
+  * enhancement:jmespath: Add env markers to get working version of jmespath
+    for python 3.6
+  * api-change:``glue``: Added 9 new APIs for AWS Glue Interactive Sessions:
+    ListSessions, StopSession, CreateSession, GetSession, DeleteSession,
+    RunStatement, GetStatement, ListStatements, CancelStatement
+  * enhancement:Dependency: Added support for jmespath 1.0
+    api-change:``amplifybackend``: Adding the ability to customize Cognito
+    verification messages for email and SMS in CreateBackendAuth and
+    UpdateBackendAuth. Adding deprecation documentation for ForgotPassword in
+    CreateBackendAuth and UpdateBackendAuth
+  * api-change:``acm-pca``: AWS Certificate Manager (ACM) Private Certificate
+    Authority (CA) now supports customizable certificate subject names and
+    extensions.
+  * api-change:``ssm-incidents``: Removed incorrect validation pattern for
+    IncidentRecordSource.invokedBy
+  * api-change:``billingconductor``: This is the initial SDK release for AWS
+    Billing Conductor. The AWS Billing Conductor is a customizable billing
+    service, allowing you to customize your billing data to match your desired
+    business structure.
+  * api-change:``s3outposts``: S3 on Outposts is releasing a new API,
+    ListSharedEndpoints, that lists all endpoints associated with S3 on
+    Outpost, that has been shared by Resource Access Manager (RAM).
+  * api-change:``robomaker``: This release deprecates ROS, Ubuntu and Gazbeo
+    from RoboMaker Simulation Service Software Suites in favor of user-supplied
+    containers and Relaxed Software Suites.
+  * api-change:``dataexchange``: This feature enables data providers to use the
+    RevokeRevision operation to revoke subscriber access to a given revision.
+    Subscribers are unable to interact with assets within a revoked revision.
+  * api-change:``ec2``: Adds the Cascade parameter to the DeleteIpam API.
+    Customers can use this parameter to automatically delete their IPAM,
+    including non-default scopes, pools, cidrs, and allocations. There mustn't
+    be any pools provisioned in the default public scope to use this parameter.
+  * api-change:``cognito-idp``: Updated EmailConfigurationType and
+    SmsConfigurationType to reflect that you can now choose Amazon SES and
+    Amazon SNS resources in the same Region.
+  * enhancement:AWSCRT: Upgrade awscrt extra to 0.13.5
+  * api-change:``location``: New HERE style "VectorHereExplore" and
+    "VectorHereExploreTruck".
+  * api-change:``ecs``: Documentation only update to address tickets
+  * api-change:``keyspaces``: Fixing formatting issues in CLI and SDK documentation
+  * api-change:``rds``: Various documentation improvements
+  * api-change:``kendra``: Amazon Kendra now provides a data source connector
+    for Slack. For more information, see https://docs.aws.amazon.com/kendra/latest/dg/data-source-slack.html
+  * api-change:``timestream-query``: Amazon Timestream Scheduled Queries now
+    support Timestamp datatype in a multi-measure record.
+  * enhancement:Stubber: Added support for modeled exception fields when adding
+    errors to a client stub. Implements boto/boto3`#3178
+  * api-change:``elasticache``: Doc only update for ElastiCache
+  * api-change:``config``: Add resourceType enums for
+    AWS::ECR::PublicRepository and AWS::EC2::LaunchTemplate
+  * api-change:``outposts``: This release adds address filters for listSites
+  * api-change:``lambda``: Adds PrincipalOrgID support to AddPermission API.
+    Customers can use it to manage permissions to lambda functions at AWS
+    Organizations level.
+  * api-change:``secretsmanager``: Documentation updates for Secrets Manager.
+  * api-change:``connect``: This release adds support for enabling Rich
+    Messaging when starting a new chat session via the StartChatContact API.
+    Rich Messaging enables the following formatting options: bold, italics,
+    hyperlinks, bulleted lists, and numbered lists.
+  * api-change:``chime``: Chime VoiceConnector Logging APIs will now support
+    MediaMetricLogs. Also CreateMeetingDialOut now returns
+    AccessDeniedException.
+  * api-change:``transcribe``: Documentation fix for API
+    `StartMedicalTranscriptionJobRequest`, now showing min sample rate as 16khz
+  * api-change:``transfer``: Adding more descriptive error types for managed workflows
+  * api-change:``lexv2-models``: Update lexv2-models client to latest version
+  * api-change:``comprehend``: Amazon Comprehend now supports extracting the
+    sentiment associated with entities such as brands, products and services
+    from text documents.
+  * api-change:``eks``: Introducing a new enum for NodeGroup error code:
+    Ec2SubnetMissingIpv6Assignment
+  * api-change:``keyspaces``: Adding link to CloudTrail section in Amazon
+    Keyspaces Developer Guide
+  * api-change:``mediaconvert``: AWS Elemental MediaConvert SDK has added
+    support for reading timecode from AVCHD sources and now provides the
+    ability to segment WebVTT at the same interval as the video and audio in
+    HLS packages.
+  * api-change:``chime-sdk-meetings``: Adds support for Transcribe language
+    identification feature to the StartMeetingTranscription API.
+  * api-change:``ecs``: Amazon ECS UpdateService API now supports additional
+    parameters: loadBalancers, propagateTags, enableECSManagedTags, and
+    serviceRegistries
+  * api-change:``migration-hub-refactor-spaces``: AWS Migration Hub Refactor
+    Spaces documentation update.
+  * api-change:``synthetics``: Allow custom handler function.
+  * api-change:``transfer``: Add waiters for server online and offline.
+  * api-change:``devops-guru``: Amazon DevOps Guru now integrates with Amazon
+    CodeGuru Profiler. You can view CodeGuru Profiler recommendations for your
+    AWS Lambda function in DevOps Guru. This feature is enabled by default for
+    new customers as of 3/4/2022. Existing customers can enable this feature
+    with UpdateEventSourcesConfig.
+  * api-change:``macie``: Amazon Macie Classic (macie) has been discontinued
+    and is no longer available. A new Amazon Macie (macie2) is now available
+    with significant design improvements and additional features.
+  * api-change:``ec2``: Documentation updates for Amazon EC2.
+  * api-change:``sts``: Documentation updates for AWS Security Token Service.
+  * api-change:``connect``: This release updates the *InstanceStorageConfig
+    APIs so they support a new ResourceType:
+    REAL_TIME_CONTACT_ANALYSIS_SEGMENTS. Use this resource type to enable
+    streaming for real-time contact analysis and to associate the Kinesis
+    stream where real-time contact analysis segments will be published.
+  * api-change:``greengrassv2``: Doc only update that clarifies Create
+    Deployment section.
+  * api-change:``fsx``: This release adds support for data repository
+    associations to use root ("/") as the file system path
+  * api-change:``kendra``: Amazon Kendra now suggests spell corrections for a
+    query. For more information, see
+    https://docs.aws.amazon.com/kendra/latest/dg/query-spell-check.html
+  * api-change:``appflow``: Launching Amazon AppFlow Marketo as a destination
+    connector SDK.
+  * api-change:``timestream-query``: Documentation only update for SDK and CLI
+  * api-change:``gamelift``: Minor updates to address errors.
+  * api-change:``cloudtrail``: Add bytesScanned field into responses of
+    DescribeQuery and GetQueryResults.
+  * api-change:``athena``: This release adds support for S3 Object Ownership by
+    allowing the S3 bucket owner full control canned ACL to be set when Athena
+    writes query results to S3 buckets.
+  * api-change:``keyspaces``: This release adds support for data definition
+    language (DDL) operations
+  * api-change:``ecr``: This release adds support for tracking images lastRecordedPullTime.
+
+-------------------------------------------------------------------
 Wed Mar  2 14:10:44 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.24.10

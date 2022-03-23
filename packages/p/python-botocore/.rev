@@ -832,4 +832,41 @@
     <comment></comment>
     <requestid>962720</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>298f537d8f170f2158c62ce913f45199</srcmd5>
+    <version>1.24.22</version>
+    <time>1648062950</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.24.22:
+  * enhancement:jmespath: Add env markers to get working version of jmespath
+    for python 3.6
+  * api-change:``glue``: Added 9 new APIs for AWS Glue Interactive Sessions:
+    ListSessions, StopSession, CreateSession, GetSession, DeleteSession,
+    RunStatement, GetStatement, ListStatements, CancelStatement
+  * enhancement:Dependency: Added support for jmespath 1.0
+    api-change:``amplifybackend``: Adding the ability to customize Cognito
+    verification messages for email and SMS in CreateBackendAuth and
+    UpdateBackendAuth. Adding deprecation documentation for ForgotPassword in
+    CreateBackendAuth and UpdateBackendAuth
+  * api-change:``acm-pca``: AWS Certificate Manager (ACM) Private Certificate
+    Authority (CA) now supports customizable certificate subject names and
+    extensions.
+  * api-change:``ssm-incidents``: Removed incorrect validation pattern for
+    IncidentRecordSource.invokedBy
+  * api-change:``billingconductor``: This is the initial SDK release for AWS
+    Billing Conductor. The AWS Billing Conductor is a customizable billing
+    service, allowing you to customize your billing data to match your desired
+    business structure.
+  * api-change:``s3outposts``: S3 on Outposts is releasing a new API,
+    ListSharedEndpoints, that lists all endpoints associated with S3 on
+    Outpost, that has been shared by Resource Access Manager (RAM).
+  * api-change:``robomaker``: This release deprecates ROS, Ubuntu and Gazbeo
+    from RoboMaker Simulation Service Software Suites in favor of user-supplied
+    containers and Relaxed Software Suites.
+  * api-change:``dataexchange``: This feature enables data providers to use the
+    RevokeRevision operation to revoke subscriber access to a given revision.
+    Subscribers are unable to interact with assets within a revoked revision.
+  * api-change:``ec2``: Adds the Cascade parameter to the DeleteIpam API.</comment>
+    <requestid>963729</requestid>
+  </revision>
 </revisionlist>
