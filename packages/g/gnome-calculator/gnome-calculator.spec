@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calculator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        41.1
+Version:        42.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
-Source0:        https://download.gnome.org/sources/gnome-calculator/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calculator/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.52.0
@@ -40,9 +40,9 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.40
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.3
-BuildRequires:  pkgconfig(gtksourceview-4)
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(gtk4) >= 4.4.1
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.2.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.0.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
 BuildRequires:  pkgconfig(libxml-2.0)
 
@@ -53,7 +53,7 @@ A GNOME calculator package based on calctool and MP library.
 Summary:        GNOME Calculator -- Search Provider for GNOME Shell
 Group:          Productivity/Scientific/Math
 Requires:       %{name} = %{version}
-Supplements:    packageand(gnome-shell:%{name})
+Supplements:    (gnome-shell and %{name})
 
 %description -n gnome-shell-search-provider-gnome-calculator
 This package contains a search provider to enable GNOME Shell to get

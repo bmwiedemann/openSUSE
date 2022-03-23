@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Mar 20 08:12:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  6 10:11:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Use new gnome post_install script
+  + gcalc build fixes
+  + Updated screenshots
+  + Set default focus to entry
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 14 09:19:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Fixed build issues with GCI entry controller tests
+  + Force LTR in history view
+  + programing mode: Force bit digits to be always LTR
+  + Use AdwApplication
+  + ui: Fix styles
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 10 12:14:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.alpha:
+  + build: migrated to GTK4.
+  + entry: Added currencies completion provider.
+  + entry: Fixed percentage evaluation error.
+  + internal: Moved history view from MathDisplay to MathWindow.
+  + window: set default width for basic and keyboard mode.
+  + buttons: removed destructive action class from clear button.
+  + converter: search support in unit selector, separate conversion
+    category selector.
+  + Updated translations.
+- Update BuildRequires for port to GTK4:
+  + Replace pkgconfig(gtk+-3.0)with pkgconfig(gtk4)
+  + Replace pkgconfig(gtksourceview-4) with
+    pkgconfig(gtksourceview-5)
+  + Drop pkgconfig(libhandy-1)
+  + Add pgkconfig(libadwaita-1)
+- Update format of Supplements from packageane() to regular RPM
+  boolean deps.
+
+-------------------------------------------------------------------
 Mon Dec  6 10:22:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:
