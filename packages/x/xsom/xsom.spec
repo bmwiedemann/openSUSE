@@ -1,7 +1,7 @@
 #
 # spec file for package xsom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,9 +61,9 @@ popd
 %build
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
+	-Dmaven.compiler.release=8 \
 %endif
-	-Dproject.build.sourceEncoding=UTF-8 -Dsource=6
+	-Dproject.build.sourceEncoding=UTF-8 -Dsource=8
 
 %install
 %mvn_install
