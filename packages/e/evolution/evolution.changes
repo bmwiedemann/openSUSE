@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:53:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  4 10:02:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.43.3:
+  + e-widget-undo: Group user actions into a single undo record
+  + Set gtk+ CSS widget names for some widgets
+  + e_display_help: Call Yelp directly to display help
+  + help: Add shorter link titles for link trails
+  + Bugs fixed: glgo#GNOME/evolution#1373,
+    glgo#GNOME/evolution#1787, glgo#GNOME/evolution#1821,
+    glgo#GNOME/evolution#1824, glgo#GNOME/evolution!102.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 11:53:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.43.2:
+  + Use gtk_widget_is_visible() instead of gtk_widget_get_visible()
+    on some places
+  + Composer:
+    - Backup from toplevel BLOCKQUOTE on split for Undo/Redo
+    - Special-case requote of BLOCKQUOTE nodes in Plain Text mode
+    - Various changes for Plain Text re-quote
+  + MessageList: Show regen error in GUI, rather than in the
+    terminal
+  + Add a simple EMarkdownEditor widget
+  + text/markdown formatter: Allow HTML tags in the markdown
+  + Save temporary files into system temp, rather than under home
+  + Have a single function to convert markdown into HTML
+  + Add option to unset colors provided in HTML mails for preview
+    into Preferences
+  + Calendar: Add option to use a markdown editor for Description
+    in component editor
+  + ECompEditor: Timezone can be reset on component save
+  + Bugs fixed: glgo#GNOME/evolution#449,
+    glgo#GNOME/evolution#1763, glgo#GNOME/evolution#1767,
+    glgo#GNOME/evolution#1783, glgo#GNOME/evolution#1791,
+    glgo#GNOME/evolution#1792, glgo#GNOME/evolution#1793,
+    glgo#GNOME/evolution-data-server#372.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 10:51:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.43.1:
+  + GalViewInstanceSaveAsDialog: Do not show the dialog in the
+    init()
+  + By_Company.galview: Correct the column index in the grouping
+    part
+  + ESrvConfigLookup: Use correct extension name for properties
+  + em-format: Format text/markdown with cmark library
+  + Use `g_assert_true()` instead of `g_assert()` in the unit tests
+  + mail-importer: Ensure Message-ID header on imported message
+  + EWebView: Change mouse leave detection code
+  + mail-notification: Use different icon name in the notification
+    under Flatpak
+  + Misc:
+    - Generate appdata <releases/> from the NEWS file
+    - Do not build news-to-appdata executable
+    - Correct typo in fallback appdata attribute name
+    - Do not rely on build flags provided by evolution-data-server
+  + news-to-appdata: Escape text exported to XML
+  + flatpak: Update build manifests
+  + Calendar: Cannot always remove custom reminder message
+  + Composer: Don't show blockquote indicators on both sides for
+    6th+ level
+  + cal-config-weather: Bundle WeatherLocationEntry
+  + Calendar: Not all task lists included in the task panel
+  + Install legacy icons into correct directory
+  + EAddressbookModel: Update view on client's capabilities
+    property change
+  + Load JavaScript plugins for message preview and WebKit editor
+  + icalendar-importer: Can show incorrect time in imported data
+    preview
+  + WebDAVNotes: Let the user choose which extension is used for
+    new notes
+  + Update list of authors for Help->About->Credits
+  + help: Add note about UI element sorting workaround (GN)
+  + Bugs fixed: glgo#GNOME/evolution#1032,
+    glgo#GNOME/evolution#1373, glgo#GNOME/evolution#1555,
+    glgo#GNOME/evolution#1571, glgo#GNOME/evolution#1586,
+    glgo#GNOME/evolution#1605, glgo#GNOME/evolution#1609,
+    glgo#GNOME/evolution#1611, glgo#GNOME/evolution#1612,
+    glgo#GNOME/evolution#1613, glgo#GNOME/evolution#1621,
+    glgo#GNOME/evolution#1623, glgo#GNOME/evolution#1637,
+    glgo#GNOME/evolution#1639, glgo#GNOME/evolution#1640,
+    glgo#GNOME/evolution#1645, glgo#GNOME/evolution#1646,
+    glgo#GNOME/evolution#1649, glgo#GNOME/evolution#1653,
+    glgo#GNOME/evolution#1657, glgo#GNOME/evolution#1667,
+    glgo#GNOME/evolution#1672, glgo#GNOME/evolution#1679,
+    glgo#GNOME/evolution#1696, glgo#GNOME/evolution#1697,
+    glgo#GNOME/evolution#1698, glgo#GNOME/evolution#1705,
+    glgo#GNOME/evolution#1708, glgo#GNOME/evolution#1712,
+    glgo#GNOME/evolution#1714, glgo#GNOME/evolution#1715,
+    glgo#GNOME/evolution#1716, glgo#GNOME/evolution#1717,
+    glgo#GNOME/evolution#1718, glgo#GNOME/evolution#1721,
+    glgo#GNOME/evolution#1722, glgo#GNOME/evolution#1724,
+    glgo#GNOME/evolution#1729, glgo#GNOME/evolution#1730,
+    glgo#GNOME/evolution#1747, glgo#GNOME/evolution#1749,
+    glgo#GNOME/evolution#1756, glgo#GNOME/evolution#1757,
+    glgo#GNOME/evolution#1758, glgo#GNOME/evolution!93,
+    glgo#GNOME/evolution!95.
+  + Updated translations.
+- Add pkgconfig(libcmark) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Fri Feb 11 10:51:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.42.4:
