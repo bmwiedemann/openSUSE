@@ -888,4 +888,12 @@
     <comment></comment>
     <requestid>936211</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>acaa1d0c389e73fa1d12be7c9292c398</srcmd5>
+    <version>42.0</version>
+    <time>1648063020</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963645</requestid>
+  </revision>
 </revisionlist>

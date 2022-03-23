@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar 20 08:37:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated appdata screenshot.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:15:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Add a nightly app icon
+  + Use HdyApplicationWindow for rounded bottom corners
+  + Always use headerbar
+  + Support color scheme
+  + Add flatpak manifest
+  + Align app name in metadata with .desktop name
+  + Fix up issues with reload, including reloading on theme change
+  + Stop building the gtk-docs, because they are unused.
+- Add pkgconfig(libhandy-1) BuildRequires: New dependency.
+- Add explicit yelp Requires in devel subpackage, move
+  libyelpwebextension.so to main yelp package.
+- Add explicit pkgconfig(gio-2.0), pkgconfig(gio-unix-2.0),
+  pkgconfig(gtk+-unix-print-3.0) and pkgconfig(libxml-2.0)
+  BuildRequires: align better with what configure checks for.
+- Drop downstream patch yelp-lang-bundle.patch: We no longer ship
+  lang-packs in bundles, so it is no longer needed.
+
+-------------------------------------------------------------------
 Fri Dec  3 21:12:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:

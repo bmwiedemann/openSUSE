@@ -1,7 +1,7 @@
 #
 # spec file for package yelp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,25 @@
 
 
 Name:           yelp
-Version:        41.2
+Version:        42.0
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
-Source0:        https://download.gnome.org/sources/yelp/41/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE yelp-lang-bundle.patch bnc#689979 vuntz@opensuse.org -- Support help documents shipped in bundles
-Patch1:         yelp-lang-bundle.patch
+Source0:        https://download.gnome.org/sources/yelp/42/%{name}-%{version}.tar.xz
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  itstool >= 1.2.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gio-2.0) >= 2.67.4
+BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.3
+BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.5
 BuildRequires:  pkgconfig(libxslt) >= 1.1.4
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
@@ -63,6 +67,7 @@ This package provides Yelp's system shared libraries.
 Summary:        Development files for libyelp
 Group:          Development/Libraries/GNOME
 Requires:       libyelp0 = %{version}
+Requires:       yelp = %{version}
 
 %description devel
 Yelp is the help viewer in GNOME (it's what happens when you press F1). With
@@ -102,16 +107,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/yelp-xsl/xslt/common/domains/yelp.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Yelp.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Yelp-symbolic.svg
-
-%files -n libyelp0
-%{_libdir}/libyelp.so.0*
 %dir %{_libdir}/yelp/
 %dir %{_libdir}/yelp/web-extensions/
 %{_libdir}/yelp/web-extensions/libyelpwebextension.so
 
+%files -n libyelp0
+%{_libdir}/libyelp.so.0*
+
 %files devel
 %doc ChangeLog
-%doc %{_datadir}/gtk-doc/html/libyelp/
 %{_includedir}/libyelp/
 %{_libdir}/libyelp.so
 
