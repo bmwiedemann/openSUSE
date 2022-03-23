@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 15 19:31:58 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to 16.2.7-640-gceb23c7491b
+  + (bsc#1194875) common: fix FTBFS due to dout & need_dynamic on GCC-12
+  + (bsc#1196938) cephadm: preserve authorized_keys file during upgrade
+
+-------------------------------------------------------------------
 Tue Mar  8 22:33:00 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to 16.2.7-596-g7d574789716

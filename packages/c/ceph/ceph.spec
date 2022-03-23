@@ -125,7 +125,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.7.596+g7d574789716
+Version:	16.2.7.640+gceb23c7491b
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -141,7 +141,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.7-596-g7d574789716.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.7-640-gceb23c7491b.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -1199,7 +1199,7 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.7-596-g7d574789716
+%autosetup -p1 -n ceph-16.2.7-640-gceb23c7491b
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -1550,7 +1550,7 @@ exit 0
 %{_mandir}/man8/cephadm.8*
 %attr(0700,cephadm,cephadm) %dir %{_sharedstatedir}/cephadm
 %attr(0700,cephadm,cephadm) %dir %{_sharedstatedir}/cephadm/.ssh
-%attr(0600,cephadm,cephadm) %{_sharedstatedir}/cephadm/.ssh/authorized_keys
+%config(noreplace) %attr(0600,cephadm,cephadm) %{_sharedstatedir}/cephadm/.ssh/authorized_keys
 
 %files common
 %dir %{_docdir}/ceph
