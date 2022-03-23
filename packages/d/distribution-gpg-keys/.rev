@@ -52,4 +52,22 @@
     <comment></comment>
     <requestid>926948</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51247af0d9b0b59720afb440da1c4bb5</srcmd5>
+    <version>1.67</version>
+    <time>1648063122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.67
+  + Add EPEL9 key
+  + Add keys of RPM Fusion Fedora 37
+  + Add Navy Linux RPM GPG official key
+  + add new MySQL key
+  + add Fedora 37
+  + Add symlink for CentOS Stream 9 to main official key
+  + Add EuroLinux 9 key
+  + move Fedora Rawhide key to F37
+  + Add remi 2022 key
+  + Refresh all CentOS SIG keys (rh#2059424)</comment>
+    <requestid>964250</requestid>
+  </revision>
 </revisionlist>

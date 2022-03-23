@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021 Nicolas FORMICHELLA <stigpro@outlook.fr>
-# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global origrel 1
 
 Name:           distribution-gpg-keys
-Version:        1.58
+Version:        1.67
 Release:        0
 Summary:        GPG keys of various Linux distributions
 Group:          System/Packages

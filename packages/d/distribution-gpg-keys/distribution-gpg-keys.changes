@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 23 10:51:49 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to v1.67
+  + Add EPEL9 key
+  + Add keys of RPM Fusion Fedora 37
+  + Add Navy Linux RPM GPG official key
+  + add new MySQL key
+  + add Fedora 37
+  + Add symlink for CentOS Stream 9 to main official key
+  + Add EuroLinux 9 key
+  + move Fedora Rawhide key to F37
+  + Add remi 2022 key
+  + Refresh all CentOS SIG keys (rh#2059424)
+
+-------------------------------------------------------------------
 Fri Oct 22 07:16:29 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 - Update to v1.58
