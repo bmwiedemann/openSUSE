@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Feb 15 21:33:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + KGX now goes by Console and we have restored the legendary
+    ‘Day’ mode.
+  + Also in this release:
+    - 👓 Much better High Contrast support
+    - 🔬 Increased Zoom range
+    - 📋 Paste is now less pernickety
+    - 🩹 Fixed a couple leaks and assorted issues
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 17:56:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial build for openSUSE.
