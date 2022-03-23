@@ -18,13 +18,13 @@
 
 
 Name:           gnome-tweaks
-Version:        40.10
+Version:        42.beta
 Release:        0
 Summary:        A tool to customize advanced GNOME 3 options
 License:        CC0-1.0 AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
-Source0:        https://download.gnome.org/sources/gnome-tweaks/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-tweaks/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires
@@ -33,6 +33,7 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libhandy-1)
 Requires:       gnome-settings-daemon
 # Gsettings Schemas are needed from: gnome-shell, g-d-s and mutter
 Requires:       gnome-shell >= 3.24
