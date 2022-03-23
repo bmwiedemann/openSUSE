@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,25 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.2.0
+Version:        5.4.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        https://download.gnome.org/sources/gtksourceview/5.2/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtksourceview/5.4/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
 
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  gobject-introspection-devel >= 1.70
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-gi-docgen
 BuildRequires:  vala
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(fribidi)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66
-BuildRequires:  pkgconfig(gtk4) >= 4.2
+BuildRequires:  pkgconfig(gio-2.0) >= 2.70
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70
+BuildRequires:  pkgconfig(gtk4) >= 4.4
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 
 %description
@@ -75,7 +75,7 @@ GtkSourceView.
 %package devel
 Summary:        GTK+ Source Editing Widget
 Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
+Requires:       libgtksourceview-5-0 = %{version}
 Requires:       typelib-1_0-GtkSource-5 = %{version}
 
 %description devel
@@ -120,8 +120,8 @@ install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-5/language-specs/
 %{_includedir}/gtksourceview-5/
 %{_libdir}/libgtksourceview-5.so
 %{_libdir}/pkgconfig/gtksourceview-5.pc
+%{_datadir}/doc/%{name}/
 %{_datadir}/gir-1.0/GtkSource-5.gir
-%{_datadir}/gtk-doc/html/gtksourceview-5.0/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gtksourceview-5.*
 

@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Sun Mar 20 09:22:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.4.0:
+  + Style updates for Adwaita, Adwaita-dark, solarized-light,
+    solarized-dark, Classic, and a new Cobalt-light variant.
+  + Language improvements for C, C++, GTK-DOC, and JSON.
+  + Various header fixes.
+  + Additional API to append/prepend search paths for language
+    manager.
+  + Allow loading language specifications via GResources.
+  + A new "weight" attribute for style schemes which allows more
+    control than just bold="true".
+  + Various Vim emulation fixes.
+  + GtkSourceView now requires GTK 4.6 for various CSS improv.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 10 12:07:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.3.2:
+  + Support ctrl+shift+v in Vim insert mode to paste similar to
+    terminal.
+  + Improve placement of H/L movements in Vim emulation.
+  + Various build system improvements.
+  + Fix running testsuite before installation.
+  + Bump GTK required version to match actual requirements in code.
+  + Remove CSS line-height usage until we can depend on GTK 4.6.
+
+-------------------------------------------------------------------
+Fri Jan  7 14:59:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.3.1:
+  + python3.lang: add support for .pyi glob and f-strings.
+  + c.lang: Hightlight _t and _T types.
+  + rust.lang: You can now style lifetime and self in style
+    schemes.
+  + javascript.lang: Support for shebang's have been added.
+  + GObject Introspection improvements.
+  + Fixes to work around improper selections in some style-schemes.
+  + Vim: many improvements to and compatibility fixes in emulation.
+  + Tracing: More modules now use sysprof for tracing information.
+  + Ctrl+shift+u works again when auto-indent is enabled, which was
+    stealing input before ctrl+shift+u could process the unicode
+    input.
+  + Gutter renderers now more aggresively cache color information
+    for drawing highlights and more.
+  + GtkSourceGutterRendererLines avoids using GMarkup just for bold
+    attributes as using a single referenced PangoAttrList is
+    faster.
+  + Adwaita and Adwaita-dark have been updated and improved along
+    with more specific highlighting for a number of languages.
+  + You can now set `bold="false"` on current-line-number to
+    disable bold weight on the current line number.
+  + Drawing of background grids have been improved when margins are
+    used as well as trying harder to align to the character grid
+    and taking CSS line-height into account when possible.
+  + Current line number is no longer drawn specially when
+    selections are active. The highlight-current-line is also
+    disabled during selections.
+  + GtkSourceFileLoader now tries to use aligned pages when loading
+    buffers from storage and reads in a multiple of the page size.
+  + Build fixes for macOS.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  5 20:33:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.3.0:
+  + Documentation has been updated to use gi-docgen.
+  + Style schemes now support the <metadata> tag similar to
+    languages.
+  + Selections for most style schemes bundled with GtkSourceView
+    are now translucent and do not modify the foreground color.
+  + The Vala bindings have moved from the Gtk namespace to the
+    GtkSource namespace to match the bindings in all other
+    languages.
+  + A new Vim emulator in the form of GtkSourceVimIMContext. This
+    can emulate basic features such as Normal, Insert, Replace,
+    Visual, Visual Line, and Command Bar modes. Additionally, many
+    Vim-style motions and text-objects are supported.
+  + Updated language specs: rst.lang, c.lang, cpp.lang, vala.lang,
+    spice.lang, lean.lang, and yara.lang.
+  + Updated style schemes which improve the quality of output when
+    used with non-standard GTK themes.
+  + A new GtkSourceStyleSchemePreview widget.
+  + The GtkSourceStyleSchemeChooserWidget now uses
+    GtkSourceStyleSchemePreview to display style schemes.
+  + Improve autocompletion styling when used with libadwaita.
+  + Improvements to cell alignment in the gutter particularly
+    useful when the CSS line-height attribute is used.
+  + Many fit-n-finish improvements to GtkSourceMap.
+  + The gutter line renderer now adapts to more situations where it
+    will need to redraw based on highlight-current-line.
+  + Build system improvements.
+  + Updated translations.
+- Replace gtk-doc BuildRequires with python3-gi-docgen: follow
+  upstreams port to gi-docgen.
+- Fix rpmlint warning: use explicit dependency on
+  libgtksourceview-5-0 from -devel package instead of relying on
+  the virtual %{name} provides.
+
+-------------------------------------------------------------------
 Fri Sep  3 19:38:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.2.0:

@@ -7,4 +7,12 @@
     <comment>Version 5 parallel install</comment>
     <requestid>921985</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>adea41e64e0171bcb7d25dbad9987f97</srcmd5>
+    <version>5.4.0</version>
+    <time>1648062997</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963616</requestid>
+  </revision>
 </revisionlist>
