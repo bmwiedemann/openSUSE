@@ -1,7 +1,7 @@
 #
 # spec file for package laf-plugin
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,18 +23,18 @@ Summary:        Generic plugin framework for Java look-and-feels
 # nanoxml distributed with laf-plugin is licensed under Zlib license while laf-plugin itself is BSD-3-Clause
 License:        BSD-3-Clause AND Zlib
 Group:          Development/Libraries/Java
-Url:            https://java.net/projects/laf-plugin
+URL:            https://java.net/projects/laf-plugin
 # Upstream download URL https://laf-plugin.dev.java.net/files/documents/4261/50297/%{name}-all.zip seems dead
 Source0:        %{name}-all.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  unzip
 BuildRequires:  xmlbeans
-Requires:       java >= 1.5
+Requires:       java >= 1.8
 Requires:       jpackage-utils
 BuildArch:      noarch
 
@@ -63,35 +63,30 @@ dos2unix     src/org/jvnet/lafplugin/*.license
 chmod 644 src/org/jvnet/lafplugin/*.license
 
 %build
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 all
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 all
 
 javadoc -quiet \
     -d doc \
-    -source 1.6 \
+    -source 1.8 \
     -classpath ./build/classes50 \
     -public \
     `find ./ -name \*.java`
 
 %install
 # jars
-install -Dm 644 drop/%{name}-50.jar %{buildroot}%{_javadir}/%{name}-50-%{version}.jar
-pushd %{buildroot}%{_javadir} 1>/dev/null
-	for jar in *-%{version}*; do
-		ln -sf ${jar} $(echo $jar| sed "s|-%{version}||g")
-	done
-	ln -s %{name}-50.jar %{name}.jar
-popd 1>/dev/null
+install -Dm 644 drop/%{name}-50.jar %{buildroot}%{_javadir}/%{name}-50.jar
+ln -sf %{name}-50.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # javadoc
-install -dm 755 %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr doc/* %{buildroot}%{_javadocdir}/%{name}-%{version}/
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}-%{version}
+install -dm 755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr doc/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files
-%doc src/org/jvnet/lafplugin/*.license
+%license src/org/jvnet/lafplugin/*.license
 %{_javadir}/%{name}*.jar
 
 %files javadoc
-%doc %{_javadocdir}/%{name}-%{version}
+%doc %{_javadocdir}/%{name}
 
 %changelog
