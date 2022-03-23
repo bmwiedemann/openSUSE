@@ -20,13 +20,13 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        41.4
+Version:        42.1
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        https://download.gnome.org/sources/evince/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evince/42/%{name}-%{version}.tar.xz
 # PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
 Patch0:         0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
 Patch1:         0002-reversed-synctex-Sync-against-upstream-synctex.patch
@@ -37,21 +37,19 @@ Patch5:         0003-reversed-synctex-Silence-error-when-no-synctex-file-is-pres
 Patch6:         0004-reversed-synctex-Annotate-functions-that-wrap-vfprintf.patch
 Patch7:         0005-reversed-synctex-Fix-compilation.patch
 Patch8:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
-# PATCH-FIX-UPSTREAM 1060b24d051607f14220f148d2f7723b29897a54.patch -- Fix build with meson 0.60.0 and newer
-Patch9:         https://gitlab.gnome.org/GNOME/evince/-/commit/1060b24d051607f14220f148d2f7723b29897a54.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-x11
-BuildRequires:  gtk-doc >= 1.3
-BuildRequires:  meson
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-devel
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.22
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
@@ -63,7 +61,7 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(ice)
-BuildRequires:  pkgconfig(libarchive) >= 3.2.0
+BuildRequires:  pkgconfig(libarchive) >= 3.6.0
 BuildRequires:  pkgconfig(libgxps) >= 0.2.1
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.28
@@ -71,7 +69,7 @@ BuildRequires:  pkgconfig(libsecret-1) >= 0.5
 BuildRequires:  pkgconfig(libspectre) >= 0.2.0
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
-BuildRequires:  pkgconfig(poppler-glib) >= 0.86.0
+BuildRequires:  pkgconfig(poppler-glib) >= 22.02.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
 BuildRequires:  pkgconfig(synctex) >= 1.18
 BuildRequires:  pkgconfig(x11)
@@ -225,13 +223,11 @@ A plugin for Evince to read XPS documents.
 %patch7 -p1
 %patch8 -p1
 %endif
-%patch9 -p1
 
 %build
 %meson \
 	--libexecdir=%{_libexecdir}/%{name} \
 	-Dps=enabled \
-	-Dt1lib=disabled \
 	%{nil}
 %meson_build
 
@@ -240,10 +236,8 @@ A plugin for Evince to read XPS documents.
 %find_lang %{name} %{?no_lang_C} --metainfo %{name}
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libevdocument3-4 -p /sbin/ldconfig
-%postun -n libevdocument3-4 -p /sbin/ldconfig
-%post -n libevview3-3 -p /sbin/ldconfig
-%postun -n libevview3-3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libevdocument3-4
+%ldconfig_scriptlets -n libevview3-3
 
 %files
 %license COPYING
@@ -285,12 +279,8 @@ A plugin for Evince to read XPS documents.
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/evince*.pc
 %{_datadir}/gir-1.0/*.gir
-%{_datadir}/gtk-doc/html/evince
-%{_datadir}/gtk-doc/html/libevdocument-%{_major_version}
-%{_datadir}/gtk-doc/html/libevview-%{_major_version}
-# Own these repositories to not depend on gtk-doc while building:
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
+%{_datadir}/doc/libevview/
+%{_datadir}/doc/libevdocument/
 
 %files -n nautilus-evince
 %{_libdir}/nautilus/extensions-*/*.so

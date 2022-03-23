@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Sat Mar 19 13:51:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.1:
+  + data: Remove 42.x development releases from appdata.
+
+-------------------------------------------------------------------
+Fri Mar 18 14:41:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 14 10:57:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 14 10:57:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + all:
+    - Replace include guards with pragma once
+    - Remove legacy code path for Gtk < 3.22
+    - Rename default branch to main
+    - Align app name in metadata with .desktop name
+  + appdata:
+    - Fix missing tag
+    - Use a nondeprecated SPDX license identifier
+  + backends:
+    - Use C99 types for uint family types
+    - Use symbol visibility for exported symbols
+    - dvi:
+      . replace GdkColor with GdkRGBA
+      . Avoid using deprecated functions
+      . Remove support for T1 fonts on dvi
+    - comics:
+      . Add helper to get the state of the EvArchive
+      . Document array contents
+      . Speed up fetching page sizes
+      . Use libarchive for RAR support
+    - djvu:
+      . Also load DjVu images
+      . Extract XMP metadata
+    - pdf:
+      . Use GdkRGBA instead of GdkColor
+      . Fix dispose implementation
+      . Fix metadata parsing precedence
+      . Implement loading from file descriptor
+      . Only flag EvDocumentInfo fields when actually present
+      . Let launch action to open pdfs from click event
+    - tiff: Extract XMP metadata
+  + build:
+    - Fix dependency tracking
+    - Fix re-definition of default_options
+    - Only fail to build DVI by missing libkpathsea
+    - Remove cruft
+    - Require poppler 22.02.0 for PDF rendering
+    - Silence deprecated declarations warnings
+    - Use symbol visibility to hide symbols in private libs
+    - Use symbol visibility to hide symbols in the nautilus module
+    - Stop checking for execinfo.h
+    - Remove incorrect args for i18n.merge_file
+    - Fix multiple compilation warnings
+  + doc: Migrate to gi-docgen
+  + flatpak:
+    - Add gi-docgen and its dependencies as modules
+    - Add libarchive 3.6.0 build
+    - Build introspection and API documentation
+    - Bump gnome-desktop version
+    - Bump poppler version and update build options
+    - Bump poppler-data version
+  + icons: update symbols
+  + libdocument:
+    - Add API to create EvDocument from file descriptor
+    - Add function to sniff MIME type from FD
+    - Add missing headers to evince-document.h
+    - Add portal helper function
+    - Deprecate GTime usage in annotation's properties
+    - Don't install private headers
+    - Factor out function to create GDateTime from tag
+    - Fix mismatched allocators
+    - Fix volatile misuse
+    - Make ev_attachment_launch_app use GdkDisplay
+    - Make EvDocumentInfo extensible
+    - Make XMP parser take data length
+    - Move EvDocumentInfo to its own file
+    - Move GDateTime members to the extended struct
+    - Move XMP parsing from backend/pdf to libdocument
+    - Only register XML namespaces once
+    - Plug some mem leaks in the XMP parser
+    - Set EvDocumentInfo.fields_mask when parsing XMP
+    - Sort evince-document.h includes
+    - Use symbol visibility for exported symbols
+  + libmisc: Update style context classes
+  + libview:
+    - Add EvJobLoad class to load from file descriptor
+    - Add Portal implementation of EvPrintOperationExport
+    - Bugfix: Move cursor over link handling to a separate function
+    - Do not draw invalid surface
+    - EvAnnotationWindow is private to libview
+    - EvPageCache is private to libview
+    - EvPixbufCache is private to libview
+    - Fix critical warnings when destroying EvPageAccessible
+    - Fix typos in annotations
+    - Fix volatile misuse
+    - Open annotation windows when opening the document
+    - Split the unix printing impl from the export print operation
+    - Use GObject:constructed instead of constructor
+    - Use symbol visibility for exported symbols
+    - Whitespace cleanup
+    - ev-view-cursor.h private to libview
+    - Set has-tooltip property unconditionally at init
+    - Fix cancelling ongoing highlight text annotation
+    - Preview popups only triggered by motion events
+    - New EvView signal to inform EvWindow we cancelled adding
+      annotation
+  + previewer:
+    - Allow passing the document and print settings as FDs
+    - Support dark style preference
+    - Try sniffing MIME type from file descriptor
+- Replace gtk-doc with pkgconfig(gi-docgen) BuildRequires,
+  following upstreams port.
+- Stop passing t1lib=disabled to meson, no longer needed, nor
+  available.
+- Drop 1060b24d051607f14220f148d2f7723b29897a54.patch: Fixed
+  upstream.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Mon Mar 14 10:57:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.4:
