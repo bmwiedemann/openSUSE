@@ -422,4 +422,12 @@
     <comment></comment>
     <requestid>937829</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e2bfe935782db68b50473a2bdfc3df84</srcmd5>
+    <version>42.0</version>
+    <time>1648063022</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963647</requestid>
+  </revision>
 </revisionlist>
