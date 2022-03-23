@@ -1,7 +1,7 @@
 #
 # spec file for package spec-version-maven-plugin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Release:        0
 Summary:        Spec Version Maven Plugin
 License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0
 Group:          Development/Libraries/Java
-URL:            http://glassfish.java.net/
+URL:            https://glassfish.java.net/
 Source0:        https://github.com/javaee/spec-version-maven-plugin/archive/%{version}.tar.gz
 Source1:        https://github.com/javaee/spec-version-maven-plugin/raw/master/LICENSE
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -60,7 +61,11 @@ dos2unix LICENSE.txt
 
 %build
 
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
