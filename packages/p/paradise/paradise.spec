@@ -1,7 +1,7 @@
 #
 # spec file for package paradise
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,16 +28,19 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/scalamacros/paradise
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{bootstrap_version}.tar.xz
-Source100:      http://central.maven.org/maven2/org/scalamacros/%{name}_%{scala_version}/%{version}/%{name}_%{scala_version}-%{version}.pom
-Source101:      http://central.maven.org/maven2/org/scalamacros/quasiquotes_%{scala_short_version}/%{version}/quasiquotes_%{scala_short_version}-%{version}.pom
-BuildRequires:  javapackages-local xmvn-resolve xmvn-install
+Source100:      https://repo1.maven.org/maven2/org/scalamacros/%{name}_%{scala_version}/%{version}/%{name}_%{scala_version}-%{version}.pom
+Source101:      https://repo1.maven.org/maven2/org/scalamacros/quasiquotes_%{scala_short_version}/%{version}/quasiquotes_%{scala_short_version}-%{version}.pom
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local
 BuildRequires:  scala
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-resolve
 
 %description
 Empowers production Scala compiler with latest macro developments
 
 %package -n quasiquotes
-Summary: Notation to manipulate Scala syntax trees
+Summary:        Notation to manipulate Scala syntax trees
 
 %description -n quasiquotes
 Quasiquotes are a notation that allows to manipulate Scala syntax trees.
@@ -45,9 +48,9 @@ Quasiquotes are a notation that allows to manipulate Scala syntax trees.
 %prep
 %setup -q -a1
 
-%mvn_package :quasiquotes{*} quasiquotes
+%{mvn_package} :quasiquotes{*} quasiquotes
 
-%mvn_file :%{name}_%{scala_version} %{name}/%{name}_%{scala_version} %{name}/%{name}_%{scala_short_version}
+%{mvn_file} :%{name}_%{scala_version} %{name}/%{name}_%{scala_version} %{name}/%{name}_%{scala_short_version}
 
 %build
 # First build a bootstrap paradise scala plugin with the milestone that does not have circular dependencies
@@ -63,10 +66,10 @@ pushd %{name}-%{bootstrap_version}/plugin
   jar cf ../../boot-plug.jar -C target/classes .
 popd
 
-# Now we use this plugin to build the quasiquotes and plugin  
+# Now we use this plugin to build the quasiquotes and plugin
 pushd quasiquotes
   mkdir -p target/classes
-  javac -d target/classes -source 6 -target 6 \
+  javac -d target/classes -source 8 -target 8 \
     -cp $(build-classpath scala/scala-library scala/scala-reflect) \
     $(find src/main/java -name \*.java | xargs)
   scalac -d target/classes -Xplugin:../boot-plug.jar \
@@ -77,7 +80,7 @@ pushd quasiquotes
 	$(find src/main/scala -name \*.scala | xargs)
   jar cf ../quasiquotes.jar -C target/classes .
 popd
-%mvn_artifact %{SOURCE101} quasiquotes.jar
+%{mvn_artifact} %{SOURCE101} quasiquotes.jar
 pushd plugin
   mkdir -p target/classes
   scalac -d target/classes \
@@ -92,7 +95,7 @@ popd
 
 # Due to how the scala plugins work, we need to create an uberjar
 jar uf plugin.jar -C quasiquotes/target/classes .
-%mvn_artifact %{SOURCE100} plugin.jar
+%{mvn_artifact} %{SOURCE100} plugin.jar
 
 %install
 %mvn_install
