@@ -1,6 +1,6 @@
-diff -Nur orig-gnome-kiosk-41.0/meson.build gnome-kiosk-41.0/meson.build
---- orig-gnome-kiosk-41.0/meson.build	2022-02-10 19:30:05.416328516 +0100
-+++ gnome-kiosk-41.0/meson.build	2022-02-10 19:34:13.867701231 +0100
+diff -Nur orig-gnome-kiosk-42.alpha/meson.build gnome-kiosk-42.alpha/meson.build
+--- orig-gnome-kiosk-42.alpha/meson.build	2022-02-02 22:19:47.297891292 +0100
++++ gnome-kiosk-42.alpha/meson.build	2022-02-02 22:20:52.338499586 +0100
 @@ -142,7 +142,7 @@
          configuration: desktop_config_data
  )
@@ -10,57 +10,4 @@ diff -Nur orig-gnome-kiosk-41.0/meson.build gnome-kiosk-41.0/meson.build
          input: desktop_file,
          output: 'org.gnome.Kiosk.desktop',
          po_dir: po_dir,
-@@ -183,7 +183,7 @@
-         configuration: desktop_config_data
- )
- 
--i18n.merge_file('desktop',
-+i18n.merge_file(
-         input: desktop_file,
-         output: 'org.gnome.Kiosk.Script.desktop',
-         po_dir: po_dir,
-@@ -208,7 +208,7 @@
-         install_dir: session_dir,
- )
- 
--i18n.merge_file('desktop',
-+i18n.merge_file(
-         input: 'kiosk-script/xsessions/gnome-kiosk-script-xorg.desktop.in',
-         output: '@BASENAME@',
-         po_dir: po_dir,
-@@ -217,7 +217,7 @@
-         type: 'desktop'
- )
- 
--i18n.merge_file('desktop',
-+i18n.merge_file(
-         input: 'kiosk-script/wayland-sessions/gnome-kiosk-script-wayland.desktop.in',
-         output: '@BASENAME@',
-         po_dir: po_dir,
-@@ -237,7 +237,7 @@
- 
- subdir('input-selector')
- 
--i18n.merge_file('desktop',
-+i18n.merge_file(
-         input: session_file,
-         output: 'org.gnome.Kiosk.SearchApp.session',
-         po_dir: po_dir,
-@@ -246,7 +246,7 @@
-         type: 'desktop'
- )
- 
--i18n.merge_file('desktop',
-+i18n.merge_file(
-         input: 'search-app/org.gnome.Kiosk.SearchApp.Session.desktop.in',
-         output: 'org.gnome.Kiosk.SearchApp.Session.desktop',
-         po_dir: po_dir,
-@@ -261,7 +261,7 @@
-         configuration: desktop_config_data
- )
- 
--i18n.merge_file('desktop',
-+i18n.merge_file(
-         input: search_app_desktop_file,
-         output: 'org.gnome.Kiosk.SearchApp.desktop',
-         po_dir: po_dir,
+

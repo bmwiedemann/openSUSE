@@ -16,25 +16,30 @@
 #
 
 
+%define mutter_api 10
+
 Name:           gnome-kiosk
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-kiosk
-Source:         https://download.gnome.org/sources/gnome-kiosk/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-kiosk/42/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-kiosk-fix-meson-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
-Patch:          gnome-kiosk-fix-meson-061.patch
+Patch0:         gnome-kiosk-fix-meson-061.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
-BuildRequires:  mutter-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(libmutter-%{mutter_api})
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(mutter-clutter-%{mutter_api})
+BuildRequires:  pkgconfig(mutter-cogl-%{mutter_api})
+BuildRequires:  pkgconfig(mutter-cogl-pango-%{mutter_api})
 BuildRequires:  pkgconfig(systemd)
 Requires:       gnome-session
 
@@ -55,7 +60,8 @@ compositor is used.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	%{nil}
 %meson_build
 
 %install
