@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:28:57 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on ARM. 
+
+-------------------------------------------------------------------
+Sun Mar 20 11:54:46 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.12.2
+  * Support long long filename
+  * Support choosing 1, 2, 4, 8 CPU cores.
+  * The minimum window size is 620*300
+  * Update documents
+  * Fix bugs
+
+-------------------------------------------------------------------
 Sun Feb 27 12:45:19 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.11.8
