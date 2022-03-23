@@ -1,7 +1,7 @@
 #
 # spec file for package colord-gtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           colord-gtk
-Version:        0.2.0
+Version:        0.2.0+8
 Release:        0
 Summary:        System Daemon for Managing Color Devices -- GTK Integration
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://www.freedesktop.org/software/colord
-Source0:        %{url}/releases/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  docbook5-xsl-stylesheets
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(lcms2) >= 2.2
 
 %description
@@ -56,6 +57,18 @@ Suggests:       colord
 Provides:       %{name} = %{version}
 
 %description -n libcolord-gtk1
+colord is a system activated daemon that maps devices to color profiles.
+It is used by gnome-color-manager for system integration and use when
+there are no users logged in.
+
+%package -n libcolord-gtk4-1
+Summary:        System Daemon for Managing Color Devices -- GTK Integration Library
+Group:          System/Libraries
+Suggests:       colord
+# for the -lang package to be installable
+#Provides:       %%{name} = %%{version}
+
+%description -n libcolord-gtk4-1
 colord is a system activated daemon that maps devices to color profiles.
 It is used by gnome-color-manager for system integration and use when
 there are no users logged in.
@@ -76,6 +89,7 @@ libcolord-gtk library.
 Summary:        System Daemon for Managing Color Devices -- GTK Integration Development Files
 Group:          Development/Languages/C and C++
 Requires:       libcolord-gtk1 = %{version}
+Requires:       libcolord-gtk4-1 = %{version}
 Requires:       typelib-1_0-ColordGtk-1_0 = %{version}
 
 %description -n libcolord-gtk-devel
@@ -107,8 +121,8 @@ This package contains development documentation for the colord-gtk packages.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
-%post -n libcolord-gtk1 -p /sbin/ldconfig
-%postun -n libcolord-gtk1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcolord-gtk1
+%ldconfig_scriptlets -n libcolord-gtk4-1
 
 %files lang -f %{name}.lang
 
@@ -119,6 +133,9 @@ This package contains development documentation for the colord-gtk packages.
 %files -n libcolord-gtk1
 %license COPYING
 %{_libdir}/libcolord-gtk.so.*
+
+%files -n libcolord-gtk4-1
+%{_libdir}/libcolord-gtk4.so.*
 
 %files -n typelib-1_0-ColordGtk-1_0
 %{_libdir}/girepository-1.0/ColordGtk-1.0.typelib
@@ -131,6 +148,8 @@ This package contains development documentation for the colord-gtk packages.
 %{_datadir}/gir-1.0/ColordGtk-1.0.gir
 %{_datadir}/vala/vapi/colord-gtk.vapi
 %{_datadir}/vala/vapi/colord-gtk.deps
+%{_libdir}/libcolord-gtk4.so
+%{_libdir}/pkgconfig/colord-gtk4.pc
 
 %files doc
 %doc AUTHORS NEWS README

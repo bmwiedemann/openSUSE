@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 22 11:09:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build libcolord-gtk4-1-32bit: there is no consumer and so
+  far we avoid putting gtk4-32bit up.
+
+-------------------------------------------------------------------
+Tue Feb 15 20:51:48 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.2.0+8:
+  * trivial: Fix link to homepage
+  * trivial: Use the right vala package
+  * build: Make GTK3 build optional too
+  * Add a GTK4 variant
+  * build: Rename 'gtk' meson variable to 'gtk3'
+  * Make introspection optional in meson
+  * Update the example spec file
+  * trivial: post release version bump
+- Switch to git checkout.
+- Add pkgconfig(gtk4) BuildRequires: Build the new gtk4 support.
+
+-------------------------------------------------------------------
 Fri Oct 22 16:31:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.2.0:
