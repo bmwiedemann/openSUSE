@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Sat Mar 19 05:21:04 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 42.0:
+  + Updated C++ and Vala templates.
+  + Only enable Vala search provider if Vala is supported language
+    by the projects build system to avoid spawning LSP.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  8 10:49:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc1:
+  + Template updates for JavaScript, Python, C, and Vala
+  + Updates for Vala and Intelephense language servers.
+  + CMake integration improvements.
+  + Additional license options for templates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 25 10:25:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ignore RPM deps for %{_libdir}gnome-builder/plugins: those
+  plugins are all there to assist the user writing his code. The
+  deps are mostly relevant for the programs written using builder,
+  but not for builder itself.
+
+-------------------------------------------------------------------
+Wed Feb 23 18:39:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta1:
+  + Support for dark style preference
+  + Enable proc-macro with rust-analzyer
+  + Project template updates
+  + Improvements to podman integration
+  + Fix a number of crashes
+  + Use libhandy for window styling to match other GNOME
+    applications
+  + Fullscreen has been temporarily removed until the GTK 4 port to
+    allow for easier transition to libhandy
+  + Updates to syntax highlighting schemes
+  + Addition of IdeDiagnosticTool to simplify plugin creation
+  + Adwaita is now the default style scheme
+  + The gutter will now try to use colors from style scheme for
+    difffs
+  + Build system modernization
+  + Robustness fixes to terminal
+  + Fixes for header include completion
+  + gtk4 validation with RNG
+  + Clang improvements when using podman
+  + CMake integration fixes
+  + Updated icons
+  + VIM emulation fixes
+  + Updated translations.
+- Add pkgconfig(libhandy-1) BuildRequires: New dependency.
+- Drop e2b369ec056ff43701803c5e5185fa2ac391d238.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Feb 21 10:35:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream build fix patch:
+  + e2b369ec056ff43701803c5e5185fa2ac391d238.patch: doc: Correct
+    fragment in doc comment. Otherwise gi-docgen will fail the
+    build.
+
+-------------------------------------------------------------------
+Sat Jan  8 18:26:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.alpha1:
+  + Use updated libportal release
+  + Add buildstream plugin
+  + Support for "base runtimes" in flatpak manifests
+  + Use GtkScrolledWindow with terminals
+  + Allow specifying min-length for quick-highlight plugin
+  + Fixes to allow for external addons with Flatpak
+  + rubucop support
+  + Parse languages from meson.build more correctly
+  + CSS, Font, and syntax styling improvements
+  + An experimental clangd plugin, which distributions should not
+    enable by default as it consumes significantly more memory than
+    Builder's integrated clang support
+  + Search result ordering fixes
+  + Modernized mono template
+  + Clang-format integration
+  + Improved SDK download integration with Flatpak
+  + Make application-ids more restrictive when creating projects
+  + Avoid opening known GTK 4 templates with Glade
+  + Fix unloading of some pipeline addins
+  + Work around IBus breakage in how it stole our keybindings
+  + Allow markdown in diagnostics as used by some LSPs, notably
+    rust-analyzer
+  + Improved path detection with SDKs and extensions
+  + Markdown styling improvements
+  + A new LspService object has been added for plugins who need
+    simple integration with language servers, vastly simplifying
+    work necessary by plugins integrating language servers.
+  + Fixes to wordexp() usage when calculating long/short-form paths
+  + CSS plugin now knows about additional CSS property names
+  + Many LSP integration points with newer specifications have been
+    added
+  + You can now set run-options in build preferences
+  + Additional snippets have been added
+  + Support for integrating with intelephense language server
+  + Support for integrating with Blueprint language server and
+    syntax
+  + Updated translations
+- Drop 59be97f21e592a7b8e94128c368a87ca16cb2881.patch: Fixed
+  upstream.
+- Replace pkgconfig(libportal) with pkgconfig(libportal-gtk3)
+  BuildRequires, following upstream changes.
+- Bump basever define to 42, following upstream changes.
+
+-------------------------------------------------------------------
 Tue Dec  7 08:34:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.3:

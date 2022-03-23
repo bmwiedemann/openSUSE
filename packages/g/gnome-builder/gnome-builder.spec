@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-builder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,25 @@
 
 # FIXME # Figure out where this comes from and fix it.
 %global __requires_exclude typelib\\(Ide\\)
+%global __requires_exclude_from %{_libdir}/gnome-builder/plugins
 
 # Update this on every major/minor bump
-%define basever 41
+%define basever 42
 
 Name:           gnome-builder
-Version:        41.3
+Version:        42.0
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        https://download.gnome.org/sources/gnome-builder/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-builder/42/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM 59be97f21e592a7b8e94128c368a87ca16cb2881.patch -- Fix build for i586
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-builder/-/commit/59be97f21e592a7b8e94128c368a87ca16cb2881.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-clang-devel >= 3.5
-BuildRequires:  meson >= 0.54.0
+BuildRequires:  meson >= 0.59.1
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-gi-docgen
@@ -53,14 +52,15 @@ BuildRequires:  pkgconfig(gspell-1) >= 1.2.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
-BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.30.1
+BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.41.0
 BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.0
 BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.25.1
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.25.0
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.22.0
-BuildRequires:  pkgconfig(libportal) >= 0.3
+BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(pangoft2) >= 1.38.0
@@ -69,7 +69,7 @@ BuildRequires:  pkgconfig(sysprof-4) >= 3.37.1
 BuildRequires:  pkgconfig(sysprof-ui-4)
 BuildRequires:  pkgconfig(template-glib-1.0) >= 3.28.0
 BuildRequires:  pkgconfig(vapigen) >= 0.30.0.55
-BuildRequires:  pkgconfig(vte-2.91) >= 0.40.2
+BuildRequires:  pkgconfig(vte-2.91) >= 0.65.0
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26
 Requires:       autoconf
 Requires:       automake
@@ -187,9 +187,11 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %{_datadir}/gtksourceview-4/styles/Adwaita.style-scheme.xml
 %{_datadir}/gtksourceview-4/styles/builder-dark.style-scheme.xml
 %{_datadir}/gtksourceview-4/styles/builder.style-scheme.xml
+%{_datadir}/gtksourceview-4/language-specs/blueprint.lang
 %{_datadir}/icons/hicolor/
 %{_includedir}/%{name}/
 %{_includedir}/%{name}-%{basever}/
+%{_libdir}/pkgconfig/gnome-builder-42.0.pc
 %dir %{python3_sitelib}/gi
 %dir %{python3_sitelib}/gi/overrides
 %{python3_sitelib}/gi/overrides/*
