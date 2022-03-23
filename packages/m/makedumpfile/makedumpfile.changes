@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 21 11:22:52 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- makedumpfile-sadump-kaslr-fix-kaslr_offset-calculation.patch:
+  sadump, kaslr: fix failure of calculating kaslr_offset
+  (bsc#1196736).
+
+-------------------------------------------------------------------
 Fri Feb 11 14:15:33 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - Turn on zstd in Tumbleweed.

@@ -1128,4 +1128,12 @@ See README.static for an explanation why static linking is preferred for some li
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>955899</requestid>
   </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>d1a9919c2d4e9a3abca05ff646bae863</srcmd5>
+    <version>1.7.0</version>
+    <time>1648062934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963663</requestid>
+  </revision>
 </revisionlist>

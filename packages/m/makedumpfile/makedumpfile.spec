@@ -51,6 +51,7 @@ Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-override-libtinfo.patch
 Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
+Patch3:         %{name}-sadump-kaslr-fix-kaslr_offset-calculation.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
@@ -79,6 +80,7 @@ via gdb or crash utility.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
