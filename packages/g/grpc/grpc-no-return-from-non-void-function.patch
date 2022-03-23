@@ -1,0 +1,12 @@
+Index: grpc-1.45.0/src/core/lib/transport/metadata_batch.h
+===================================================================
+--- grpc-1.45.0.orig/src/core/lib/transport/metadata_batch.h
++++ grpc-1.45.0/src/core/lib/transport/metadata_batch.h
+@@ -530,6 +530,7 @@ struct GrpcStreamNetworkState {
+       case kNotSeenByServer:
+         return "not seen by server";
+     }
++    return "none";
+   }
+ };
+ 

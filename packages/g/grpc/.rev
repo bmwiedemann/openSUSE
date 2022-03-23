@@ -345,4 +345,12 @@ put together with abseil-cpp</comment>
     <comment>- Update to release 1.44.0</comment>
     <requestid>955130</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>43b65ada8d3733bc3ea4bf90be85e160</srcmd5>
+    <version>1.45.0</version>
+    <time>1648063156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964315</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Mar 19 15:08:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.45.0:
+  * Core:
+    - Backport "Include ADS stream error in XDS error updates
+      (#29014)" to 1.45.x [gh#grpc/grpc#29121].
+    - Bump core version to 23.0.0 for upcoming release
+      [gh#grpc/grpc#29026].
+    - Fix memory leak in HTTP request security handshake
+      cancellation [gh#grpc/grpc#28971].
+    - CompositeChannelCredentials: Comparator implementation
+      [gh#grpc/grpc#28902].
+    - Delete custom iomgr [gh#grpc/grpc#28816].
+    - Implement transparent retries [gh#grpc/grpc#28548].
+    - Uniquify channel args keys [gh#grpc/grpc#28799].
+    - Set trailing_metadata_available for recv_initial_metadata
+      ops when generating a fake status [gh#grpc/grpc#28827].
+    - Eliminate gRPC insecure build [gh#grpc/grpc#25586].
+    - Fix for a racy WorkSerializer shutdown [gh#grpc/grpc#28769].
+    - InsecureCredentials: singleton object [gh#grpc/grpc#28777].
+    - Add http cancel api [gh#grpc/grpc#28354].
+    - Memory leak fix on windows in grpc_tcp_create()
+      [gh#grpc/grpc#27457].
+    - xDS: Rbac filter updates [gh#grpc/grpc#28568].
+  * C++
+    - Bump the minimum gcc to 5 [gh#grpc/grpc#28786].
+    - Add experimental API for CRL checking support to gRPC C++
+      TlsCredentials [gh#grpc/grpc#28407].
+- Add grpc-no-return-from-non-void-function.patch to return a
+  default string from a function defined to return a string.
+
+-------------------------------------------------------------------
 Tue Feb 15 21:05:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.44.0

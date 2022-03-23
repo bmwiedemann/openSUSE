@@ -3,11 +3,11 @@ From: Atri Bhattacharya <badshah400@gmail.com>
 
 Make path for pkgconfig file installation consistent with gRPC_INSTALL_LIBDIR specification
 
-Index: grpc-1.34.0/CMakeLists.txt
+Index: grpc-1.45.0/CMakeLists.txt
 ===================================================================
---- grpc-1.34.0.orig/CMakeLists.txt
-+++ grpc-1.34.0/CMakeLists.txt
-@@ -16203,7 +16203,7 @@ function(generate_pkgconfig name descrip
+--- grpc-1.45.0.orig/CMakeLists.txt
++++ grpc-1.45.0/CMakeLists.txt
+@@ -17363,7 +17363,7 @@ function(generate_pkgconfig name descrip
      "${output_filepath}"
      @ONLY)
    install(FILES "${output_filepath}"
