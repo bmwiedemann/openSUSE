@@ -1,8 +1,85 @@
 -------------------------------------------------------------------
+Fri Mar 18 22:14:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 10 17:10:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + This version of gnome-bluetooth fixes a problem that could lead
+    to gnome-shell's Bluetooth menu not appearing when it should
+    have. This version also makes the Connect switch available for
+    Bluetooth LE MIDI devices.
+
+-------------------------------------------------------------------
+Wed Feb 23 16:54:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta.2:
+  + This version of gnome-bluetooth contains a number of bug fixes
+    related to the GTK4 port, including spinners not spinning,
+    device removal confirmation dialog not appearing, pairing
+    dialog not disappearing, and a work-around to a UPower
+    reference leak that could lead to a crash in the main
+    libraries, as well as fixes for basic functionality in
+    bluetooth-sendto.
+
+-------------------------------------------------------------------
+Tue Feb  8 18:10:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + This version of gnome-bluetooth adds a number of APIs to
+    eventually be used in Settings and gnome-shell:
+    - Export battery information for Bluetooth devices which
+      support it.
+    - Check whether any input devices are connected, so as to be
+      able to show a confirmation dialogue when switching off
+      Bluetooth.
+    - Check whether a device can be connected to.
+- Add pkgconfig(upower-glib) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Feb  3 06:01:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.alpha.2:
+  + This version of gnome-bluetooth splits the libraries into UI
+    and non-UI versions. The UI library is only exposed as a native
+    library for the benefit of gnome-control-center, and the non-UI
+    library is only exposed as an introspected library for the
+    benefit of gnome-shell.
+- Package new libgnome-bluetooth-ui-3_0-13 sub-package.
+- Drop 755fd758f866d3a3f7ca482942beee749f13a91e.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Feb  3 06:00:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 755fd758f866d3a3f7ca482942beee749f13a91e.patch Fix build with
   meson 0.61 and newer.
+
+-------------------------------------------------------------------
+Fri Jan  7 21:42:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.alpha:
+  + Port library to GTK4
+  + Remove chooser widgets from library
+  + Remove chooser UI from bluetooth-sendto
+  + Make bluetooth-sendto optional
+  + Replace canberra-gtk dependency with gsound
+  + GtkTreeModel-based API was replaced by a GListModel-based API
+  + Loads of bug fixes, many new tests
+  + Make changes to the way the default adapter is selected, see
+    README.md for details.
+- Following upstreams port:
+  + Drop: pkgconfig(gtk+-3.0) and pkgconfig(libcanberra-gtk3)
+    BuildRequires.
+  + Add: pkgconfig(gtk4), pkgconfig(gsound) and
+    pkgconfig(libadwaita-1) BuildRequires.
+- Rename libgnome-bluetooth13 to libgnome-bluetooth-3_0-13,
+  typelib-1_0-GnomeBluetooth-1_0 to typelib-1_0-GnomeBluetooth-3_0
+  and gnome-bluetooth2-lang to gnome-bluetooth-3.0-lang following
+  upstreams changes. 
 
 -------------------------------------------------------------------
 Sat Nov  6 11:15:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>

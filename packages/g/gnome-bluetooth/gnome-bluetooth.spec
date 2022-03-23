@@ -18,15 +18,13 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           gnome-bluetooth
-Version:        3.34.5
+Version:        42.0
 Release:        0
 Summary:        GNOME Bluetooth graphical utilities
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeBluetooth
-Source0:        https://download.gnome.org/sources/gnome-bluetooth/3.34/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 755fd758f866d3a3f7ca482942beee749f13a91e.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-bluetooth/-/commit/755fd758f866d3a3f7ca482942beee749f13a91e.patch
+Source0:        https://download.gnome.org/sources/gnome-bluetooth/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -36,10 +34,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(libcanberra-gtk3)
+BuildRequires:  pkgconfig(gsound)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.1
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(upower-glib) >= 0.99.14
 # Require bluez (mandatory, as per readme, bnc#622946)
 Requires:       bluez >= 5
 
@@ -48,22 +48,32 @@ A set of graphical utilities to setup, monitor and use Bluetooth devices.
 
 This package provides the utilities, data files and manuals for GNOME Bluetooth.
 
-%package -n libgnome-bluetooth13
+%package -n libgnome-bluetooth-3_0-13
 Summary:        GNOME Bluetooth's Shared Libraries
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n libgnome-bluetooth13
+%description -n libgnome-bluetooth-3_0-13
 A set of graphical utilities to setup, monitor and use Bluetooth devices.
 
 This package provides the GNOME Bluetooth's shared library.
 
-%package -n typelib-1_0-GnomeBluetooth-1_0
+%package -n libgnome-bluetooth-ui-3_0-13
+Summary:        GNOME Bluetooth's Shared Libraries
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description -n libgnome-bluetooth-ui-3_0-13
+A set of graphical utilities to setup, monitor and use Bluetooth devices.
+
+This package provides the GNOME Bluetooth's shared library.
+
+%package -n typelib-1_0-GnomeBluetooth-3_0
 Summary:        Introspection bindings for the GNOME Bluetooth libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n typelib-1_0-GnomeBluetooth-1_0
+%description -n typelib-1_0-GnomeBluetooth-3_0
 A set of graphical utilities to setup, monitor and use Bluetooth devices.
 
 This package provides the GObject Introspection bindings for the GNOME Bluetooth's
@@ -74,8 +84,9 @@ Summary:        Development files for the GNOME Bluetooth libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
-Requires:       libgnome-bluetooth13 = %{version}
-Requires:       typelib-1_0-GnomeBluetooth-1_0 = %{version}
+Requires:       libgnome-bluetooth-3_0-13 = %{version}
+Requires:       libgnome-bluetooth-ui-3_0-13 = %{version}
+Requires:       typelib-1_0-GnomeBluetooth-3_0 = %{version}
 
 %description devel
 A set of graphical utilities to setup, monitor and use Bluetooth devices.
@@ -95,35 +106,41 @@ This package provides the necessary files for development with GNOME Bluetooth.
 
 %install
 %meson_install
-%find_lang %{name}2 %{?no_lang_C}
+%find_lang %{name}-3.0 %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
-%ldconfig_scriptlets -n libgnome-bluetooth13
+%ldconfig_scriptlets -n libgnome-bluetooth-3_0-13
 
 %files
 %license COPYING
 %doc NEWS README.md
 %{_bindir}/bluetooth-*
 %{_datadir}/applications/bluetooth-sendto.desktop
-%{_datadir}/gnome-bluetooth/
-%{_datadir}/icons/hicolor/*/*/*bluetooth*
+%dir %{_datadir}/gnome-bluetooth-3.0
+%{_datadir}/gnome-bluetooth-3.0/pin-code-database.xml
 %{_mandir}/man1/bluetooth-*
 
-%files -n libgnome-bluetooth13
+%files -n libgnome-bluetooth-3_0-13
 %license COPYING.LIB
-%{_libdir}/libgnome-bluetooth.so.*
+%{_libdir}/libgnome-bluetooth-3.0.so.*
 
-%files -n typelib-1_0-GnomeBluetooth-1_0
-%{_libdir}/girepository-1.0/GnomeBluetooth-1.0.typelib
+%files -n libgnome-bluetooth-ui-3_0-13
+%license COPYING.LIB
+%{_libdir}/libgnome-bluetooth-ui-3.0.so.*
+
+%files -n typelib-1_0-GnomeBluetooth-3_0
+%{_libdir}/girepository-1.0/GnomeBluetooth-3.0.typelib
 
 %files devel
 %doc AUTHORS ChangeLog.README MAINTAINERS
-%doc %{_datadir}/gtk-doc/html/gnome-bluetooth
-%{_includedir}/gnome-bluetooth
-%{_libdir}/libgnome-bluetooth.so
-%{_libdir}/pkgconfig/gnome-bluetooth-1.0.pc
+%doc %{_datadir}/gtk-doc/html/gnome-bluetooth-3.0
+%{_includedir}/gnome-bluetooth-3.0
+%{_libdir}/libgnome-bluetooth-3.0.so
+%{_libdir}/libgnome-bluetooth-ui-3.0.so
+%{_libdir}/pkgconfig/gnome-bluetooth-3.0.pc
+%{_libdir}/pkgconfig/gnome-bluetooth-ui-3.0.pc
 %{_datadir}/gir-1.0/*.gir
 
-%files lang -f %{name}2.lang
+%files lang -f %{name}-3.0.lang
 
 %changelog

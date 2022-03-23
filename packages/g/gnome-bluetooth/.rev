@@ -796,4 +796,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment></comment>
     <requestid>951437</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>d6754a2b2a9f3a5a1d5fd7f7d579f747</srcmd5>
+    <version>42.0</version>
+    <time>1648062971</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963573</requestid>
+  </revision>
 </revisionlist>
