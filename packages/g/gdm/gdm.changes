@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 21 22:43:33 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 42.0:
+  + Improvements to work better on NVidia cards.
+  + Look in DATADIR for launching environment data files.
+  + PAM updates on exherbo.
+  + Updated translations.
+- Add pkgconfig(gudev-1.0), with minimal version of 232, as a new
+  build requirement.
+- Add explicit update-alternatives to post(un) requirements to
+  avoid rare unexpected behaviors due to package order of
+  installation.
+- Replace systemdsystemunitdir with _unitdir macro. There's no need
+  to manually define it anymore since systemd-rpm-macros already
+  provide it.
+
+-------------------------------------------------------------------
+Wed Mar 16 00:53:48 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-restart-session-when-X-server-restart.patch:
+  Avoiding the blank screen when X server restarts with
+  GDM_DISABLE_USER_DISPLAY_SERVER=1 (bsc#1196974).
+
+-------------------------------------------------------------------
 Wed Feb 16 08:33:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use _pam_vendordir instead of _distconfdir/pam.d (boo#1195996).

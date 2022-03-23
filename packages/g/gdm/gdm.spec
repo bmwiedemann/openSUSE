@@ -16,7 +16,6 @@
 #
 
 
-%define systemdsystemunitdir %(pkg-config --variable=systemdsystemunitdir systemd)
 # FIXME: need to check what should be done to enable this (at least adapt the pam files). See bnc#699999
 %define enable_split_authentication 0
 
@@ -29,14 +28,14 @@
 %endif
 
 Name:           gdm
-Version:        41.3
+Version:        42.0
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
 
-Source0:        https://download.gnome.org/sources/gdm/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gdm/42/%{name}-%{version}.tar.xz
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
 Source3:        gdm-launch-environment.pamd
@@ -76,6 +75,8 @@ Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
 Patch1000:      gdm-disable-gnome-initial-setup.patch
 # PATCH-FIX-SLE gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch bnc#1188912 jsc#SLE-17880 xwang@suse.com -- Add runtime option to start X under root instead of regular user.
 Patch1001:      gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
+# PATCH-FIX-SLE gdm-restart-session-when-X-server-restart.patch bsc#1196974 xwang@suse.com -- Fix blank screen when X restarts with GDM_DISABLE_USER_DISPLAY_SERVER=1.
+Patch1002:      gdm-restart-session-when-X-server-restart.patch
 BuildRequires:  check-devel
 # dconf and gnome-session-core are needed for directory ownership
 BuildRequires:  dconf
@@ -101,6 +102,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.12
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.1
+BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.4
 BuildRequires:  pkgconfig(libkeyutils)
@@ -124,6 +126,8 @@ Requires:       gnome-shell
 Requires:       xdm
 Requires(post): dconf
 Requires(pre):  group(video)
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     iso-codes
 # accessibility
 Recommends:     orca
@@ -185,7 +189,7 @@ providing graphical log-ins and managing local and remote displays.
 Summary:        The GNOME Display Manager -- Upstream default configuration
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
+Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
@@ -200,7 +204,7 @@ providing graphical log-ins and managing local and remote displays.
 This package provides the upstream default configuration for gdm.
 
 %package systemd
-Summary:        systemd gdm.service file
+Summary:        Systemd gdm.service file
 Group:          System/GUI/GNOME
 Requires:       gdm
 BuildArch:      noarch
@@ -243,6 +247,7 @@ running display manager.
 %if 0%{?sle_version}
 %patch1000 -p1
 %patch1001 -p1
+%patch1002 -p1
 %endif
 
 %build
@@ -321,6 +326,8 @@ install -m 644 %{SOURCE11} %{buildroot}%{_sysusersdir}/gdm.conf
 
 %check
 %meson_test
+
+# FIXME -- Document why we don't use %%service_add_*/%%service_del_* macros.
 
 %pre -f gdm.pre
 
@@ -404,7 +411,7 @@ dconf update
 %config(noreplace) %{_sysconfdir}/gdm/custom.conf
 
 %files systemd
-%{systemdsystemunitdir}/gdm.service
+%{_unitdir}/gdm.service
 
 %files -n gdmflexiserver
 %{_bindir}/gdmflexiserver
