@@ -16,21 +16,20 @@
 #
 
 
-# don't enable sysprof support by default
-%bcond_with profiler
+%bcond_without profiler
 
-%define api_major 9
+%define api_major 10
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        41.4
+Version:        42.0
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-# Source url disabled, we are using a git checkout via source service
-#Source0:        https://download.gnome.org/sources/mutter/41/%%{name}-%%{version}.tar.xz
+# Source url disabled, using git checkout via source service
+#Source0:        https://download.gnome.org/sources/mutter/42/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
@@ -39,8 +38,6 @@ Patch0:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 Patch1:         mutter-disable-cvt-s390x.patch
 # PATCH-FIX-OPENSUSE mutter-window-actor-Special-case-shaped-Java-windows.patch -- window-actor: Special-case shaped Java windows
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
-# PATCH-FIX-OPENSUSE 0002-Drop-CI-test-setup-that-needs-catchsegv.patch -- Fix build with glibc 2.35 and newer
-Patch3:         0002-Drop-CI-test-setup-that-needs-catchsegv.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -148,7 +145,6 @@ applications that want to make use of the mutter library.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}
@@ -207,7 +203,7 @@ applications that want to make use of the mutter library.
 %{_libdir}/mutter-%{api_major}/Meta-%{api_major}.typelib
 
 %{_libdir}/libmutter-%{api_major}.so.*
-%{_libdir}/libmutter-test-%{api_major}.so
+%{_libdir}/libmutter-test-%%{api_major}.so
 %dir %{_libdir}/mutter-%{api_major}/
 # users of libmutter need this directory
 %dir %{_libdir}/mutter-%{api_major}/plugins/
@@ -235,7 +231,7 @@ applications that want to make use of the mutter library.
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so
 %{_libdir}/libmutter-%{api_major}.so
 %{_libdir}/pkgconfig/libmutter-%{api_major}.pc
-%{_libdir}/pkgconfig/libmutter-test-%{api_major}.pc
+%{_libdir}/pkgconfig/libmutter-test-%%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-clutter-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-pango-%{api_major}.pc

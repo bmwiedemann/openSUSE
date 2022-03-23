@@ -1551,4 +1551,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>955417</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>c7d1de266ac0faec996dece86bf8e008</srcmd5>
+    <version>42.0</version>
+    <time>1648063007</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963629</requestid>
+  </revision>
 </revisionlist>
