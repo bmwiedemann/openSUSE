@@ -1,7 +1,7 @@
 #
 # spec file for package eog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,35 @@
 
 
 Name:           eog
-Version:        41.1
+Version:        42.0
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/EyeOfGnome
-Source0:        https://download.gnome.org/sources/eog/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/eog/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  gtk-doc
 BuildRequires:  libjpeg-devel
 BuildRequires:  meson >= 0.44.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exempi-2.0) >= 1.99.5
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.53.4
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.53.4
 BuildRequires:  pkgconfig(glib-2.0) >= 2.53.4
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 2.91.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 2.91.92
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.15
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0) >= 3.5.4
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.4
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 0.7.4
-BuildRequires:  pkgconfig(libportal) >= 0.3
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(shared-mime-info) >= 0.20
 
@@ -81,6 +81,7 @@ developing eog plugins.
 	-D gtk_doc=true \
 	-D introspection=true \
 	-D installed_tests=false \
+	-D libportal=false \
 	%{nil}
 %meson_build
 

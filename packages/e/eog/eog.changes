@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sun Mar 20 08:09:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + appdata: Update screenshot.
+  + Fix discovery of Evince for multi-page images.
+  + EogWindow: Also set wallpaper as dark wallpaper.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  5 20:27:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Replace gtk_window_set_title with hdy_header_bar_set_title.
+  + Disable Presenter action if no images are loaded.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 12 21:34:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Use gtk_widget_queue_draw to display thumbnails faster
+  + Replace properties dialog
+  + Shortcuts: Update keyboard shortcuts
+  + eog-window: use correct type for display_profile
+  + doc: migrate to gi-docgen
+  + Use libhandy for dark style preference and rounded window
+    corners
+  + Updated translations.
+- Replace gtk-doc with pkgconfig(gi-docgen) BuildRequires following
+  upstreams port.
+- Add pkgconfig(libhandy-1) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Mon Jan 10 15:43:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libportal) and pkgconfig(libportal-gtk3)
+  BuildRequires and pass portal=false to meson. Libportal support
+  is now optional, and we do not need it as we are not doing a
+  flatpak.
+
+-------------------------------------------------------------------
+Mon Jan 10 15:03:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.alpha:
+  + metainfo: Align app name with .desktop name.
+  + build: Set of improvements for meson.
+  + EogScrollView: Use overlay scrollbars.
+  + Update libportal usage.
+  + make zoom entry more visually stable.
+  + eog-image: fix double-free of eog image status mutex.
+  + Updated translations.
+- Drop f61f6b1ba33e87766dd9a1b227a3607d863d2197.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Jan  8 14:17:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add f61f6b1ba33e87766dd9a1b227a3607d863d2197.patch: Update
+  libportal usage. Libportal 0.5 is the first release with a stable
+  API so some changes were made. Following this, add
+  pkgconfig(libportal-gtk3) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
 Sat Dec  4 17:30:44 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:
