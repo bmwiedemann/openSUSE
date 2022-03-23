@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 19 05:39:54 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.42.0:
+  + Documentation improvements to use gi-docgen.
+  + Introspection fixes.
+- Replace gtk-doc with pkgconfig(gi-docgen) build requirement as
+  the new improved way for generating the API documentation.
+- Add temporary hacky SED commands to fix the gi-docgen generated
+  documentation ending up under /usr/share/doc/ rather than
+  /usr/share/doc/PKG_NAME.
+- Add jsonrpc-glib-rpmlintrc to filter out the:
+  "obsolete-not-provided typelib-1_0-Jsonrpc-1.0" since there's no
+  need to do so as we already used the capability typelib(foobar),
+  for requirements, before the renaming.
+
+-------------------------------------------------------------------
+Fri Jan  7 22:53:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.41.0:
+  + Improvements to JSONRPC_MESSAGE_PUT_VARIANT().
+- Replace post(un) handling with ldconfig_scriptlets macro.
+- Add check section, meson_test macro and pass enable_tests=true to
+  meson, run tests during build.
+
+-------------------------------------------------------------------
 Thu Sep 23 07:08:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.40.0:
