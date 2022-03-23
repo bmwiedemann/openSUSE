@@ -193,4 +193,18 @@
 - fix-bsc975503.diff: refresh</comment>
     <requestid>828315</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f887d231483f3196cfd797eb4ea772fd</srcmd5>
+    <version>0.2.10</version>
+    <time>1648062919</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.10:
+  * Fix display of some EPS files
+  * Fixed memory leak in in case spectre_presize is called multiple
+    times
+  * Use the new api to pass the callbacks to libgs. Needs
+    ghostscript &gt;= 9.53
+</comment>
+    <requestid>963347</requestid>
+  </revision>
 </revisionlist>

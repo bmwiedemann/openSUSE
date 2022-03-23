@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 20 19:41:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.10:
+  * Fix display of some EPS files
+  * Fixed memory leak in in case spectre_presize is called multiple
+    times
+  * Use the new api to pass the callbacks to libgs. Needs
+    ghostscript >= 9.53
+
+-------------------------------------------------------------------
 Thu Aug 20 22:01:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.2.9:

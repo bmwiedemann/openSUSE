@@ -1,7 +1,7 @@
 #
 # spec file for package libspectre
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %define debug_package_requires libspectre1 = %{version}-%{release}
 Name:           libspectre
-Version:        0.2.9
+Version:        0.2.10
 Release:        0
 Summary:        Library for Rendering PostScript Documents
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libspectre.freedesktop.org/
-Source0:        http://libspectre.freedesktop.org/releases/%{name}-%{version}.tar.gz
+Source0:        https://libspectre.freedesktop.org/releases/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-bsc975503.diff bsc#975503 fdo#97091 -- Parse ps files ignoring EOF comments which would stop parsing too soon in documents with embedded EPS files.
 Patch0:         fix-bsc975503.diff
-BuildRequires:  ghostscript-devel
+BuildRequires:  ghostscript-devel >= 9.53.0
 BuildRequires:  ghostscript-library
 BuildRequires:  pkgconfig
 
