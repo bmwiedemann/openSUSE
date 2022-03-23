@@ -1,7 +1,7 @@
 #
 # spec file for package swing-layout
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,17 @@ Name:           swing-layout
 Version:        1.0.3
 Release:        0
 Summary:        Natural layout for Swing panels
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Java
-Url:            https://swing-layout.dev.java.net/
+URL:            https://swing-layout.dev.java.net/
 Source0:        %{name}-%{version}-src.tar.bz2
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  xml-commons-apis
 BuildRequires:  xml-commons-resolver
-Requires:       jre >= 1.5
+Requires:       java >= 1.8
 BuildArch:      noarch
 
 %description
@@ -69,18 +69,12 @@ builders.
 sed -i -e 's/.$//' releaseNotes.txt COPYING
 
 %build
-ant -Djavac.source=1.6 -Djavac.target=1.6 jar javadoc
+ant -Djavac.source=1.8 -Djavac.target=1.8 jar javadoc
 
 %install
 # jars
 install -dm 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{name}.jar \
-	%{buildroot}%{_javadir}/%{name}-%{version}.jar
-pushd %{buildroot}%{_javadir}
-	for jar in *-%{version}*; do
-		ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`
-	done
-popd
+install -m 644 dist/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # javadoc
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/javadoc/* \
@@ -88,8 +82,9 @@ cp -pr dist/javadoc/* \
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files
-%doc releaseNotes.txt COPYING
-%{_javadir}/%{name}*.jar
+%license COPYING
+%doc releaseNotes.txt
+%{_javadir}/%{name}.jar
 
 %files javadoc
 %doc %{_javadocdir}/%{name}
