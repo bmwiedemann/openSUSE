@@ -1,7 +1,7 @@
 #
 # spec file for package tracker
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,17 +21,13 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/3.2/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM tracker-fix-actual-0-path-matches.patch bsc#1191207, glgo#GNOME/tracker#337 alynx.zhou@suse.com -- Fix no metadata available when using tracker3 info
-Patch1:         tracker-fix-actual-0-path-matches.patch
-# PATCH-FIX-UPSTREAM 5883cebf8d7b2948bcb808162e78a4629ab3315c.patch -- libtracker-sparql: Handle query cancellation on TrackerEndpointDBus
-Patch2:         https://gitlab.gnome.org/GNOME/tracker/-/commit/5883cebf8d7b2948bcb808162e78a4629ab3315c.patch
+Source0:        https://download.gnome.org/sources/tracker/3.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes

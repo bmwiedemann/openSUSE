@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Mar 20 07:54:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.3.0:
+  + Fix storage of subsecond information in date/time properties.
+  + Add more tests.
+
+-------------------------------------------------------------------
+Mon Mar  7 12:04:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.3.0.rc:
+  + Fix cursor column names for date and resource types.
+  + Fix possible crasher.
+  + Added non-installable benchmark utility.
+  + Added build option to pick libsoup versions to build support
+    for.
+  + Added build option to disable tests.
+  + Fixed generation of man pages with newer asciidoc.
+
+-------------------------------------------------------------------
+Mon Feb 14 17:15:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.3.0.beta:
+  + Add API to serialize data into various RDF formats
+  + Add API to map a TrackerSparqlConnection as a SERVICE of
+    another TrackerSparqlConnection
+  + Fixed possible warnings and missed notifications in
+    TrackerNotifier
+  + Updated "tracker3 export" to use serialization API
+  + Documentation fixes
+  + Added internal TrackerRowid type to represent ROWIDs
+
+-------------------------------------------------------------------
+Mon Jan 10 13:54:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.3.0.alpha:
+  + Add more specific error codes for problems found updating a
+    database to new ontology changes.
+  + Add method to create a TrackerStatement from a GResource file
+  + Fix 0-len matches in ? and * property path operators
+  + Handle query cancellation in TrackerEndpointDBus
+  + Consistency fixes to TrackerSparqlStatement API in all
+    connection types
+  + Deprecate tracker_namespace_manager_get_default(), use
+    tracker_sparql_connection_get_namespace_manager() instead
+  + Fix rare crash when concurrently querying the database while
+    a graph is being created/deleted.
+  + Add TRACKER_SPARQL_CONNECTION_ANONYMOUS_BNODES flag to
+    optionally enable a treatment of blank nodes that is
+    compliant with the SPARQL 1.1 specs.
+  + Documentation improvements
+  + Fix spurious locking errors with in-memory databases
+  + Fixes to CLI tools detection on NixOS
+  + Updated translations.
+- Drop tracker-fix-actual-0-path-matches.patch and
+  5883cebf8d7b2948bcb808162e78a4629ab3315c.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Nov 12 20:59:27 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 5883cebf8d7b2948bcb808162e78a4629ab3315c.patch:

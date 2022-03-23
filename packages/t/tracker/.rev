@@ -1222,4 +1222,12 @@
     <comment></comment>
     <requestid>931532</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>b72201aacc79c0736aeaf65b67530d5b</srcmd5>
+    <version>3.3.0</version>
+    <time>1648063014</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963639</requestid>
+  </revision>
 </revisionlist>
