@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 19 12:45:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Build without libcap-ng support (boo#1098245):
+  + Pass --without-libcap-ng to configure.
+  + Drop libcap-ng-devel BuildRequires.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:38:57 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

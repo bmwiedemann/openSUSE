@@ -1065,4 +1065,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930902</requestid>
   </revision>
+  <revision rev="143" vrev="3">
+    <srcmd5>f5533f0b646994759626748334142aaf</srcmd5>
+    <version>40.0</version>
+    <time>1648062978</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963588</requestid>
+  </revision>
 </revisionlist>

@@ -41,7 +41,6 @@ BuildRequires:  ca-certificates
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
-BuildRequires:  libcap-ng-devel
 BuildRequires:  libgcrypt-devel >= 1.2.2
 BuildRequires:  libselinux-devel
 BuildRequires:  openssh
@@ -125,6 +124,7 @@ The PAM module can be used to unlock the keyring on login.
 autoreconf -f
 %configure\
         --enable-pam \
+        --without-libcap-ng \
         --with-pam-dir=/%{_lib}/security
 %make_build
 
