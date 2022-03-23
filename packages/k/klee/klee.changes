@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 16 09:05:12 UTC 2022 - jslaby@suse.cz
+
+- Update to version 2.2+20220311:
+  * FD_Fail: use /dev/zero instead of /etc/mtab
+  * Core/Executor: Fix unaligned write of fp80 arguments
+  * Core/ExecutionState: Fix uninitialized reads in unit tests
+  * CI: add `-fno-sanitize-recover=undefined` to UBSAN flags
+  * tests: make UBSAN print stack traces
+  * CI: drop `-fsanitize=integer` from UBSAN flags
+  * CI: Update GTest to 1.11.0
+  * CI: Update Z3 to 4.8.14
+  * build: fix missing target for grep
+  * fix CMake: gtest from llvm includes gtest_main
+  * and many more
+- delete (they are all upstream)
+  * 0001-Support-FileHandling.cpp-rewrite-to-C-14.patch
+  * 0002-llvm13-llvm-fs-F_None-has-been-removed.patch
+  * 0003-llvm13-llvm-cl-GeneralCategory-is-no-longer-a-global.patch
+  * 0004-llvm13-CreateLoad-API-with-implicit-types-has-been-d.patch
+  * 0005-llvm13-CreateGEP-no-longer-accepts-nullptr.patch
+  * 0006-llvm13-llvm-APInt-toString-has-been-moved-to-StringE.patch
+  * 0007-llvm13-Add-LLVM-13-to-lit.cfg.patch
+  * 0008-llvm13-Add-LLVM-13-to-Travis-CI-and-GitHub-Actions.patch
+
+-------------------------------------------------------------------
 Tue Oct 19 07:47:49 UTC 2021 - jslaby@suse.cz
 
 - Update to version 2.2+20211017:

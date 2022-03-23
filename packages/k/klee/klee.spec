@@ -1,7 +1,7 @@
 #
 # spec file for package klee
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.2+20211017
+Version:        2.2+20220311
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
@@ -39,14 +39,6 @@ Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
 Patch0:         0001-test-disable-until-it-is-fixed.patch
-Patch1:         0001-Support-FileHandling.cpp-rewrite-to-C-14.patch
-Patch2:         0002-llvm13-llvm-fs-F_None-has-been-removed.patch
-Patch3:         0003-llvm13-llvm-cl-GeneralCategory-is-no-longer-a-global.patch
-Patch4:         0004-llvm13-CreateLoad-API-with-implicit-types-has-been-d.patch
-Patch5:         0005-llvm13-CreateGEP-no-longer-accepts-nullptr.patch
-Patch6:         0006-llvm13-llvm-APInt-toString-has-been-moved-to-StringE.patch
-Patch7:         0007-llvm13-Add-LLVM-13-to-lit.cfg.patch
-Patch8:         0008-llvm13-Add-LLVM-13-to-Travis-CI-and-GitHub-Actions.patch
 
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
@@ -74,7 +66,7 @@ ExcludeArch:    %{ix86} %{arm}
 %description
 KLEE is a symbolic virtual machine built on top of the LLVM compiler
 infrastructure, and available under the UIUC open source license. For more
-information on what KLEE is and what it can do, see the OSDI 2008 paper. 
+information on what KLEE is and what it can do, see the OSDI 2008 paper.
 
 %prep
 %autosetup -p1
