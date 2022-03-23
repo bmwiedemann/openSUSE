@@ -1,7 +1,7 @@
 #
 # spec file for package xml-maven-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,12 @@ Release:        0
 Summary:        Maven XML Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.mojohaus.org/xml-maven-plugin/
-Source0:        http://repo2.maven.org/maven2/org/codehaus/mojo/xml-maven-plugin/%{version}/xml-maven-plugin-%{version}-source-release.zip
+URL:            https://www.mojohaus.org/xml-maven-plugin/
+Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/xml-maven-plugin/%{version}/xml-maven-plugin-%{version}-source-release.zip
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-invoker-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -36,7 +38,6 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-io)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-resources)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(xml-resolver:xml-resolver)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -60,7 +61,11 @@ done
 sed -i 's|stylesheet |stylesheet version="1.0" |'  src/it/it8/src/main/xsl/it8.xsl
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+	-Dmaven.compiler.release=8 \
+%endif
+	-Dsource=8
 
 %install
 %mvn_install
