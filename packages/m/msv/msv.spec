@@ -1,7 +1,7 @@
 #
 # spec file for package msv
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@ Name:           msv
 Version:        2013.6.1
 Release:        0
 Summary:        Multi-Schema Validator
-License:        BSD-3-Clause AND Apache-1.1
+License:        Apache-1.1 AND BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            http://msv.java.net/
+URL:            https://msv.java.net/
 # To generate tarball from upstream source control:
 # $ ./create-tarball
 Source0:        %{name}-%{version}-clean.tar.gz
@@ -31,6 +31,7 @@ Source3:        create-tarball.sh
 # Use CatalogResolver from xml-commons-resolver package
 Patch1:         %{name}-Use-CatalogResolver-class-from-xml-commons-resolver.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(isorelax:isorelax)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
@@ -57,7 +58,7 @@ Summary:        Multi-Schema Validator Core
 # msv/src/com/sun/msv/writer/ContentHandlerAdaptor.java is partially under Public Domain
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
-License:        BSD-3-Clause AND Apache-1.1 AND Apache-2.0 AND SUSE-Public-Domain
+License:        Apache-1.1 AND BSD-3-Clause AND Apache-2.0 AND SUSE-Public-Domain
 Group:          Development/Libraries/Java
 Requires:       javapackages-tools
 
@@ -68,7 +69,7 @@ Requires:       javapackages-tools
 Summary:        Multi-Schema Validator RNG Converter
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
-License:        BSD-3-Clause AND Apache-1.1
+License:        Apache-1.1 AND BSD-3-Clause
 Group:          Development/Libraries/Java
 Requires:       javapackages-tools
 
@@ -79,7 +80,7 @@ Requires:       javapackages-tools
 Summary:        Multi-Schema Validator Generator
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
-License:        BSD-3-Clause AND Apache-1.1
+License:        Apache-1.1 AND BSD-3-Clause
 Group:          Development/Libraries/Java
 Requires:       javapackages-tools
 
@@ -88,7 +89,7 @@ Requires:       javapackages-tools
 
 %package xsdlib
 Summary:        Multi-Schema Validator XML Schema Library
-License:        BSD-3-Clause AND Apache-1.1
+License:        Apache-1.1 AND BSD-3-Clause
 Group:          Development/Libraries/Java
 
 %description xsdlib
@@ -96,7 +97,7 @@ Group:          Development/Libraries/Java
 
 %package javadoc
 Summary:        API documentation for Multi-Schema Validator
-License:        BSD-3-Clause AND Apache-1.1 AND Apache-2.0 AND SUSE-Public-Domain
+License:        Apache-1.1 AND BSD-3-Clause AND Apache-2.0 AND SUSE-Public-Domain
 Group:          Documentation/HTML
 
 %description javadoc
@@ -147,10 +148,8 @@ for m in $(find . -name MANIFEST.MF) ; do
 done
 
 # Fix isorelax groupId
-%pom_xpath_replace "pom:dependency[pom:groupId[text()='com.sun.xml.bind.jaxb']]/pom:groupId" "<groupId>isorelax</groupId>"
-%pom_xpath_replace "pom:dependency[pom:groupId[text()='com.sun.xml.bind.jaxb']]/pom:groupId" "<groupId>isorelax</groupId>" msv
+%pom_change_dep "com.sun.xml.bind.jaxb:" "isorelax:" . msv
 
-#
 %pom_remove_plugin :maven-enforcer-plugin
 
 # Change encoding of non utf-8 files
@@ -171,10 +170,11 @@ done
 %{mvn_package} ":%{name}{,-core}::{}:" %{name}-msv
 
 %build
-%{mvn_build} -s -f \
+%{mvn_build} -s -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
