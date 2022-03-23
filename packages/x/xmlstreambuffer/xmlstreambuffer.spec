@@ -1,7 +1,7 @@
 #
 # spec file for package xmlstreambuffer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://java.net/projects/xmlstreambuffer/
 Source0:        https://github.com/kohsuke/xmlstreambuffer/archive/streambuffer-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -81,9 +82,9 @@ rm -r test/com/sun/xml/stream/buffer/stax/InscopeNamespaceTest.java
 
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
+	-Dmaven.compiler.release=8 \
 %endif
-	-Dsource=6
+	-Dsource=8
 
 %install
 %mvn_install
