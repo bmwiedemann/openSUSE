@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 17 14:56:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.70.5:
+  + g_time_zone_new_offset() assertion failure if offset >= 25
+    hours.
+  + glib: fix buffer overflow in g_canonicalize_filename().
+  + gtimezone: Fix assertion failure when called with a huge
+    offset.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 28 18:15:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Split gtk-docs from -devel package, these are not needed
+  during building projects using glib2
+- Use _multibuild as the meson buildprocess is very awkward
+  regarding the documentation - builds single-jobs only and
+  twice (again during %install). This way the rest of distribution
+  waiting for glib2-devel to be available is not blocked by this
+
+-------------------------------------------------------------------
 Fri Feb 11 13:37:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.70.4:
