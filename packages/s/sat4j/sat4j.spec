@@ -1,7 +1,7 @@
 #
 # spec file for package sat4j
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,14 @@ Release:        0
 Summary:        A library of SAT solvers written in Java
 License:        EPL-1.0 AND LGPL-2.0-only
 Group:          Development/Libraries/Java
-URL:            http://www.sat4j.org/
+URL:            https://www.sat4j.org/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         sat4j-sourcetarget.patch
 Patch1:         sat4j-manifest.patch
 BuildRequires:  ant
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-Requires:       java
+Requires:       java >= 1.8
 BuildArch:      noarch
 
 %description
@@ -41,22 +42,21 @@ boxes", those willing to embed SAT technologies into their application
 without worrying about the details.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 %patch1 -p1
 
 %build
 ant \
     -Dbuild.compiler=modern -Drelease=%{version} \
-	-DBUILD_DATE=%{qualifier} -Dsource=1.6 -Dtarget=1.6 p2
+	-DBUILD_DATE=%{qualifier} -Dsource=1.8 -Dtarget=1.8 p2
 
 %install
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 0644 dist/%{version}/org.sat4j.core.jar %{buildroot}%{_javadir}/org.sat4j.core-%{version}.jar
-install -m 0644 dist/%{version}/org.sat4j.pb.jar   %{buildroot}%{_javadir}/org.sat4j.pb-%{version}.jar
-(cd %{buildroot}%{_javadir}/ && for jar in *-%{version}*; do ln -sf ${jar} ${jar/-%{version}/}; done)
+install -m 0644 dist/%{version}/org.sat4j.core.jar %{buildroot}%{_javadir}/org.sat4j.core.jar
+install -m 0644 dist/%{version}/org.sat4j.pb.jar   %{buildroot}%{_javadir}/org.sat4j.pb.jar
 
 %files
-%{_javadir}/org.%{name}*.jar
+%{_javadir}/*.jar
 
 %changelog
