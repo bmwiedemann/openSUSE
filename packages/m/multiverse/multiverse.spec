@@ -1,7 +1,7 @@
 #
 # spec file for package multiverse
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://github.com/pveentjer/Multiverse/archive/multiverse-0.7.0
 # Only the license header is included in the source
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildArch:      noarch
 
@@ -51,10 +52,17 @@ JavaDoc for %{name}.
 
 %pom_remove_plugin :maven-deploy-plugin
 
+%pom_xpath_set \
+    "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8" \
+    multiverse-core multiverse-core-drivers
+%pom_xpath_set \
+    "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8" \
+    multiverse-core multiverse-core-drivers
+
 cp -p %{SOURCE1} .
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install

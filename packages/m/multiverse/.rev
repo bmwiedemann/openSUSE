@@ -15,4 +15,12 @@
     <comment>clean-up dependencies</comment>
     <requestid>752795</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8a432de7dbfdd9984295b917ebfcee61</srcmd5>
+    <version>0.7.0</version>
+    <time>1648063168</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964355</requestid>
+  </revision>
 </revisionlist>
