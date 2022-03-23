@@ -26,20 +26,16 @@
 %endif
 
 Name:           gnome-control-center
-Version:        41.4
+Version:        42.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-control-center/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-control-center/42/%{name}-%{version}.tar.xz
 
-# PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
+# PATCH-NEEDS-REBASE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running Was:PATCH-FIX-OPENSUSE
 Patch0:         gnome-control-center-disable-error-message-for-NM.patch
-# PATCH-FIX-UPSTREAM gnome-control-center-fix-autologin-shortcut.patch glgo#GNOME/gnome-control-center!1084 bsc#1191887 qkzhu@suse.com -- Make autologin_switch a activatable_widget
-Patch1:         gnome-control-center-fix-autologin-shortcut.patch
-# PATCH-FIX-UPSTREAM 496c719d7b1492b54c34ace648feb3802f34f774.patch -- Remove duplicate line from .desktop file
-Patch2:         https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/496c719d7b1492b54c34ace648feb3802f34f774.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-reload-vpn-plugins.patch glgo#GNOME/gnome-control-center!1263 sckang@suse.com -- network/connection-editor: always load all available VPN plugins
 Patch3:         gnome-control-center-reload-vpn-plugins.patch
 
@@ -63,10 +59,8 @@ BuildRequires:  python3-dbusmock
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.39
 BuildRequires:  pkgconfig(cairo-gobject)
-BuildRequires:  pkgconfig(cheese) >= 3.28.0
-BuildRequires:  pkgconfig(cheese-gtk) >= 3.5.91
 BuildRequires:  pkgconfig(colord) >= 0.1.34
-BuildRequires:  pkgconfig(colord-gtk) >= 0.1.24
+BuildRequires:  pkgconfig(colord-gtk4)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
@@ -75,9 +69,10 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.18.2
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.33.4
-BuildRequires:  pkgconfig(gnome-settings-daemon) >= 3.25.90
+BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
+BuildRequires:  pkgconfig(gnome-desktop-4)
+BuildRequires:  pkgconfig(gnome-settings-daemon) >= 41
+BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(goa-1.0) >= 3.25.3
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -85,12 +80,12 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 40.alpha
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
 BuildRequires:  pkgconfig(libnm) >= 1.24.0
-BuildRequires:  pkgconfig(libnma) >= 1.8.0
+BuildRequires:  pkgconfig(libnma-gtk4)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -102,12 +97,12 @@ BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(pwquality) >= 1.2.2
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(udisks2) >= 2.8.2
-BuildRequires:  pkgconfig(upower-glib) >= 0.99.6
+BuildRequires:  pkgconfig(upower-glib) >= 0.99.8
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi) >= 1.2
-Requires:       gnome-settings-daemon
+Requires:       gnome-settings-daemon >= 41
 # needed for universal access panel
 Requires:       gnome-themes-accessibility
 Requires:       gnome-version
@@ -183,11 +178,10 @@ GNOME control center.
 
 %prep
 %setup -q
-
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+# Patch needs rebase
+#%%patch0 -p1
 %patch3 -p1
+
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1
@@ -197,21 +191,20 @@ GNOME control center.
 
 %build
 %meson \
-	-Dcheese=true \
 	-Ddocumentation=true \
 	%{!?with_ibus: -Dibus=false} \
 	-Dmalcontent=true \
 	%{nil}
 %meson_build
 
-%check
-%meson_test
+#%%check
+#%%meson_test
 
 %install
 %meson_install
 %find_lang %{name}-2.0 %{?no_lang_C}
 %find_lang %{name}-2.0-timezones %{name}-2.0.lang
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
 # We do not package gnome-control-center.rules (bnc#804966)
 rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
@@ -220,19 +213,18 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %license COPYING
 %doc NEWS README.md
 %{_bindir}/*
-%{_datadir}/metainfo/gnome-control-center.appdata.xml
+%{_datadir}/metainfo/org.gnome.Settings.appdata.xml
 %exclude %{_datadir}/applications/gnome-color-panel.desktop
 %exclude %{_datadir}/applications/gnome-online-accounts-panel.desktop
 %{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/gnome-control-center
-%{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
-%{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
-%{_datadir}/glib-2.0/schemas/org.gnome.ControlCenter.gschema.xml
+%{_datadir}/dbus-1/services/org.gnome.Settings.service
+%{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
+%{_datadir}/glib-2.0/schemas/org.gnome.Settings.gschema.xml
 %{_datadir}/gnome-control-center/
 %dir %{_datadir}/gnome-shell/
 %dir %{_datadir}/gnome-shell/search-providers/
-%{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
-%{_datadir}/icons/hicolor/*/*/*.png
+%{_datadir}/gnome-shell/search-providers/org.gnome.Settings.search-provider.ini
 %{_datadir}/icons/hicolor/*/*/*.svg
 %{_datadir}/icons/gnome-logo-text-dark.svg
 %{_datadir}/icons/gnome-logo-text.svg
@@ -247,6 +239,7 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %dir %{_datadir}/sounds/gnome/default/alerts
 %{_datadir}/sounds/gnome/default/alerts/*.ogg
 %{_libexecdir}/cc-remote-login-helper
+%{_libexecdir}/gnome-control-center-goa-helper
 %{_libexecdir}/gnome-control-center-print-renderer
 %{_libexecdir}/gnome-control-center-search-provider
 %{_mandir}/man1/gnome-control-center.1%{?ext_man}
