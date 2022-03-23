@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Mar 21 12:00:59 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+-  Updated to version 8.2.4602, fixes the following problems
+  * Vim9: "break" inside try/catch not handled correctly.
+  * Coverity warning for refactored tag search code.
+  * Coverity warnings for not using returned value.
+  * Duplicate #undef.
+  * The neXTaw GUI is old and does not work well.
+  * Script-local function is deleted when used in a funcref.
+  * Cannot build with Motif and editres. (Tony Mechelynck)
+  * When mapping <Esc> terminal codes are not recognized.
+  * In a :def function "put = expr" does not work.
+  * Linear tag search is a bit slow.
+  * Vim9: using null values not sufficiently tested.
+  * getmousepos() returns the wrong column. (Ernie Rael)
+  * Test fails without the +job or +channel feature. (Dominique Pellé)
+  * Confusing comment about 'cursorlineopt'.
+  * getmousepos() returns the screen column. (Ernie Rael)
+  * Suspending with CTRL-Z does not work on DragonFlyBSD.
+  * Build failure with some combination of features. (John Marriott)
+  * Linear tag search is not optimal.
+  * "z=" in Visual mode may go beyond the end of the line.
+  * Running test leaves file behind.  (Dominique Pellé)
+  * No command line completion for :breakadd and :breakdel.
+  * Check for existing buffer in session file does not work for files in
+  the home directory.
+  * Bracketed paste doesn't work well in Visual linewise mode.
+  * getmousepos() does not compute the column below the last line.
+  * Coverity warning for not using a return value.
+  * No command line completion for :profile and :profdel.
+  * Not all gdb files are recognized.
+  * Vim9: return type "any" is sometimes changed to first returned type.
+  (Virginia Senioria)
+  * A nested function (closure) is compiled for debugging without context.
+  * Vim9: test for profiling fails.
+  * Vim9: error for comparing with null can be annoying.
+  * Message test is flaky. (Elimar Riesebieter)
+  * No warning when an autoload script for completion function has an error.
+  * Cannot use page-up and page-down in the command line completion popup menu.
+  * Vim9: incorrect error for shadowing variable.
+  * Null types not fully tested.
+  * Useless code handling a type declaration.
+  * Screendump test fails.
+  * Error for using autoload function in custom completion.
+  * Cannot use keypad page-up/down for completion menu.
+  * Vim9: no error for using lower case name for "func" argument. (Ernie Rael)
+  * Vim9: double free after unpacking a list.
+  * Mapping with key code after other matching mapping does not work.
+  * Cannot index the g: dictionary.
+  * Vim9: range type check has wrong offset.
+  * Cursor line not updated when a callback moves the cursor.
+  * Search continues after giving E1204.
+  * Unnecessary call to redraw_later().
+  * Need to write script to a file to be able to source them.
+  * X11: using --remote-wait may keep the CPU busy.
+  * Installing tutor binary may fail.
+  * LuaV_debug() not covered by tests.
+  * Profile completion test sometimes fails.
+  * GTK: get assertion errors when scrolling a split window.
+  * Vim9: not enough test coverage for executing :def function.
+
+-------------------------------------------------------------------
 Fri Mar 11 09:22:50 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4542, fixes the following problems

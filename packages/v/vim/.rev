@@ -5720,4 +5720,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Vim9: cannot compare with v:null.</comment>
     <requestid>961038</requestid>
   </revision>
+  <revision rev="305" vrev="1">
+    <srcmd5>716533828e5ac20e743d3a2639872f77</srcmd5>
+    <version>8.2.4602</version>
+    <time>1648062937</time>
+    <user>dimstar_suse</user>
+    <comment>-  Updated to version 8.2.4602, fixes the following problems
+  * Vim9: &quot;break&quot; inside try/catch not handled correctly.
+  * Coverity warning for refactored tag search code.
+  * Coverity warnings for not using returned value.
+  * Duplicate #undef.
+  * The neXTaw GUI is old and does not work well.
+  * Script-local function is deleted when used in a funcref.
+  * Cannot build with Motif and editres. (Tony Mechelynck)
+  * When mapping &lt;Esc&gt; terminal codes are not recognized.
+  * In a :def function &quot;put = expr&quot; does not work.
+  * Linear tag search is a bit slow.
+  * Vim9: using null values not sufficiently tested.
+  * getmousepos() returns the wrong column. (Ernie Rael)
+  * Test fails without the +job or +channel feature. (Dominique Pellé)
+  * Confusing comment about 'cursorlineopt'.
+  * getmousepos() returns the screen column. (Ernie Rael)
+  * Suspending with CTRL-Z does not work on DragonFlyBSD.
+  * Build failure with some combination of features. (John Marriott)
+  * Linear tag search is not optimal.
+  * &quot;z=&quot; in Visual mode may go beyond the end of the line.
+  * Running test leaves file behind.  (Dominique Pellé)
+  * No command line completion for :breakadd and :breakdel.
+  * Check for existing buffer in session file does not work for files in
+  the home directory.
+  * Bracketed paste doesn't work well in Visual linewise mode.
+  * getmousepos() does not compute the column below the last line.
+  * Coverity warning for not using a return value.
+  * No command line completion for :profile and :profdel.
+  * Not all gdb files are recognized.
+  * Vim9: return type &quot;any&quot; is sometimes changed to first returned type.</comment>
+    <requestid>963690</requestid>
+  </revision>
 </revisionlist>
