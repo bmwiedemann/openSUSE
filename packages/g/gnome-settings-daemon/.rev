@@ -1405,4 +1405,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment></comment>
     <requestid>956056</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>22aec9572d26b8663c9cd3481243404a</srcmd5>
+    <version>42.1</version>
+    <time>1648062983</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963596</requestid>
+  </revision>
 </revisionlist>

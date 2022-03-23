@@ -28,13 +28,13 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        41.0
+Version:        42.1
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-settings-daemon/42/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
@@ -42,8 +42,6 @@ Patch1:         gnome-settings-daemon-initial-keyboard.patch
 Patch2:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-bgo793253.patch bgo#793253 dimstar@opensuse.org -- Fix no-return-in-nonvoid-function
 Patch3:         gnome-settings-daemon-bgo793253.patch
-# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gnome-settings-daemon/commit/afa7e4bb9c519e2daf500a6079088669500768c0.patch -- Fix build with meson 0.60.0 and newer
-Patch8:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/commit/afa7e4bb9c519e2daf500a6079088669500768c0.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
@@ -71,10 +69,10 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.11.1
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.35.91
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.3
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(gweather-3.0) >= 3.9.5
+BuildRequires:  pkgconfig(gweather4)
 BuildRequires:  pkgconfig(kbproto)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
@@ -145,7 +143,6 @@ contact the settings daemon via its DBus interface.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch8 -p1
 
 # Enable the patches for both Leap 15 and SLE 15, please find the clarification at bsc#1158476.
 %if 0%{?sle_version} >= 150000
@@ -181,8 +178,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/gnome-settings-daemon/
 %{_libexecdir}/gsd-backlight-helper
 %{_libexecdir}/gsd-printer
-%dir %{_libdir}/gnome-settings-daemon-41/
-%{_libdir}/gnome-settings-daemon-41/libgsd.so
+%dir %{_libdir}/gnome-settings-daemon-42/
+%{_libdir}/gnome-settings-daemon-42/libgsd.so
 # Explicitly list all the plugins so we know we don't lose any
 
 %{_libexecdir}/gsd-a11y-settings
@@ -287,7 +284,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 
 %files devel
 %doc AUTHORS ChangeLog
-%{_includedir}/gnome-settings-daemon-41/
+%{_includedir}/gnome-settings-daemon-42/
 %{_libdir}/pkgconfig/gnome-settings-daemon.pc
 
 %files lang -f %{name}.lang
