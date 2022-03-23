@@ -1,7 +1,7 @@
 #
 # spec file for package nekohtml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@ URL:            http://nekohtml.sourceforge.net/
 # tar cJf nekohtml-1.9.22.tar.xz nekohtml-1.9.22/
 Source0:        %{name}-%{version}.tar.xz
 Source2:        nekohtml-component-info.xml
-Source3:        http://central.maven.org/maven2/net/sourceforge/%{name}/%{name}/%{version}/%{name}-%{version}.pom
+Source3:        https://repo1.maven.org/maven2/net/sourceforge/%{name}/%{name}/%{version}/%{name}-%{version}.pom
 Patch1:         0002-Jar-paths.patch
 # Add proper attributes to MANIFEST.MF file so bundle can be used by other OSGI bundles.
 Patch2:         0003-Add-OSGi-attributes.patch
@@ -38,6 +38,7 @@ BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  bcel
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  xerces-j2 >= 2.7.1
 BuildRequires:  xml-apis
@@ -94,7 +95,7 @@ rm data/meta/test-meta-encoding3.html
 %build
 export CLASSPATH=$(build-classpath bcel xerces-j2 xml-apis)
 %{ant} \
-    -Dcompile.source=1.6 -Dcompile.target=1.6 \
+    -Dcompile.source=1.8 -Dcompile.target=1.8 \
     -Dbuild.sysclasspath=first \
     -Dlib.dir=%{_javadir} \
     -Djar.file=%{name}.jar \
