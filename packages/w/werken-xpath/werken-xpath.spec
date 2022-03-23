@@ -1,7 +1,7 @@
 #
 # spec file for package werken-xpath
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        XPath implementation using JDOM
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-Url:            http://sourceforge.net/projects/werken-xpath/
+URL:            https://sourceforge.net/projects/werken-xpath/
 Source0:        %{dotname}-%{version}-beta-src.tar.bz2
 Source1:        %{name}-%{version}.pom
 Patch0:         %{name}-ElementNamespaceContext.patch
@@ -38,8 +38,8 @@ Patch8:         %{name}-runtests_sh.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  antlr
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  jdom
 BuildRequires:  xerces-j2
 BuildRequires:  xml-commons-apis
@@ -88,7 +88,7 @@ done
 
 %build
 export CLASSPATH=$(build-classpath jdom antlr xerces-j2 xml-commons-apis)
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 -Dbuild.compiler=modern package javadoc compile-test
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 package javadoc compile-test
 # Note that you'll have to java in PATH for this to work, it is by default
 # when using a JPackage JVM.
 CLASSPATH=$CLASSPATH:build/werken.xpath.jar:build/test/classes
@@ -98,7 +98,7 @@ sh runtests.sh
 # jars
 mkdir -p %{buildroot}%{_javadir}
 cp -p build/%{dotname}.jar %{buildroot}%{_javadir}/%{dotname}.jar
-(cd %{buildroot}%{_javadir}; ln -sf %{dotname}.jar %{name}.jar)
+ln -sf %{dotname}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 mkdir -p %{buildroot}%{_mavenpomdir}
 cp %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-werken-xpath.pom
@@ -109,11 +109,10 @@ mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -pr build/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%doc LICENSE LIMITATIONS README TODO
-%{_javadir}/*
-%{_mavenpomdir}/*
-%{_datadir}/maven-metadata/%{name}.xml*
+%files -f .mfiles
+%{_javadir}/%{dotname}.jar
+%license LICENSE
+%doc LIMITATIONS README TODO
 
 %files javadoc
 %{_javadocdir}/%{name}

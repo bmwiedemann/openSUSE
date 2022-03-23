@@ -123,4 +123,12 @@ As acknowledgement is not binding this license is more akin to Apache-1.1 (forwa
     <comment>Fix build with jdk9</comment>
     <requestid>527494</requestid>
   </revision>
+  <revision rev="18" vrev="28">
+    <srcmd5>4fbbad2707f0e4f296091f5afbb74171</srcmd5>
+    <version>0.9.4</version>
+    <time>1648063136</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964271</requestid>
+  </revision>
 </revisionlist>
