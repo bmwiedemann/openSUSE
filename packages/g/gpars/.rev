@@ -15,4 +15,12 @@
     <comment>Allow buildign with Java 11</comment>
     <requestid>755231</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>10f471e30aea5354f1e3e5bb67c78cfa</srcmd5>
+    <version>1.2.1</version>
+    <time>1648063162</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8 + force java &lt;= 15</comment>
+    <requestid>964341</requestid>
+  </revision>
 </revisionlist>

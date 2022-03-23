@@ -1,7 +1,7 @@
 #
 # spec file for package gpars
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,17 @@ Patch0:         0001-JSR-166.patch
 Patch1:         0002-Enable-XMvn-local-mode.patch
 Patch2:         0003-Port-build-script-to-current-gradle.patch
 Patch3:         gpars-1.2.1-port-to-netty-3.10.6.patch
+Patch4:         gpars-sourcetarget.patch
 BuildRequires:  gradle-local
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  mvn(org.codehaus.groovy:groovy-all)
 BuildRequires:  mvn(org.codehaus.jcsp:jcsp)
 BuildRequires:  mvn(org.codehaus.jsr166-mirror:extra166y)
 BuildRequires:  mvn(org.jboss.netty:netty:3)
 BuildRequires:  mvn(org.multiverse:multiverse-core)
+BuildConflicts: java >= 16
+BuildConflicts: java-devel >= 16
+BuildConflicts: java-headless >= 16
 Obsoletes:      %{name}-bootstrap
 #!BuildRequires: gradle-bootstrap groovy-bootstrap
 BuildArch:      noarch
@@ -57,6 +62,7 @@ cp %{SOURCE1} .
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{gradle_build} -f
