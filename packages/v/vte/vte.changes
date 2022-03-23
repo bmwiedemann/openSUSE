@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Feb 12 18:46:34 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.67.90:
+  + widget:
+    - Defer alignment API to next cycle
+    - Deprecate VteCharAttributes struct
+    - Deprecate the attributes out-param for vte_terminal_get_text
+    - Fix measure baseline to return -1
+  + all: Remove SIXEL support from stable branch
+  + sixel: Fix DECGRI for parameter value 0
+  + build:
+    - Change gtk4 GIR version hack
+    - Assert on non-supported option on stable branch
+  + lib: Remove misplaced inline from function declaration
+  + emulation: Support XTVERSION sequence
+  + parser: Fix comments
+  + fonts: Fix height check
+  + Updated translations.
+- Disable gtk4 support via bcond. Upstream did not move forward
+  with this support for now.
+
+-------------------------------------------------------------------
+Thu Dec 30 11:10:22 UTC 2021 - bjorn.lie@gmail.com
+
+- Update to version 0.66.90+git.e32dba1:
+  + build:
+    - Fix check for -fstack-protector* compiler support
+    - Rework function checks
+    - Fix build with kernel headers from linux < 4.13
+  + app:
+    - Fix context menu styling
+    - Improve option value description
+    - Add option to set initial title
+  + widget:
+    - Split alignment and fill properties
+    - Fix Since version for new API
+    - Add vte_terminal_paste
+    - Add more precondition checks for vte_pty_spawn_async_with_fds
+    - Correct some API Since: versions
+    - Adjust preedit position to GtkEntry
+  + vala:
+    - Reference of [GtkChild] field is handled by GtkBuilder, type
+      must be unowned
+    - Fix accessibility of constant intializer expression
+  + terminal:
+    - Make CRLF pastification smarter
+    - Make pastification not replace something with nothing
+    - Add tests for text paste transformation
+  + parser:
+    - Fix some control codes
+    - Recognise more commands
+    - modes: Fix DECSDM default value
+  + lib:
+    - Check for close_range function and use it when available
+    - ABI repairs
+  + emulation:
+    - ECMA modes should not be saved by DECSC
+    - Use correct range for DECRQCRA
+    - Docs improvements
+    - Fix xterm window size request response
+  + fonts:
+    - Relax font sanitisation
+    - Improve font bolding
+    - More metrics sanity checks
+  + vte.sh: Fix the check for PROMPT_COMMAND when it is unset
+  + docs: Add index for API new in 0.68
+  + vte.sh: Use PROMPT_COMMAND as an array when possible
+  + spawn: FD reassignment code tweaks
+  + Updated translations.
+- Add pkgconfig(gtk4) BuildRequires and pass gtk4=true to meson,
+  build gtk4 widgets. Following this, add new sub-packages
+  typelib-1_0-Vte-2.91-gtk4 and vte-tools-gtk4.
+
+-------------------------------------------------------------------
 Sat Dec 04 17:33:26 UTC 2021 - bjorn.lie@gmail.com
 
 - Update to version 0.66.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package vte
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,10 @@
 %define _gtkver 3.0
 %define _name   vte
 
+%bcond_with     gtk4_support
+
 Name:           vte
-Version:        0.66.2
+Version:        0.67.90
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -52,6 +54,9 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gnutls) >= 3.2.7
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16.0
+%if %{with gtk4_support}
+BuildRequires:  pkgconfig(gtk4)
+%endif
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.21
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pango) >= 1.22.0
@@ -101,12 +106,41 @@ emulation settings.
 
 This package provides tools using VTE.
 
+%if %{with gtk4_support}
+%package -n typelib-1_0-Vte-%{?_binver}-gtk4
+Summary:        Introspection bindings for the VTE terminal emulator library
+License:        LGPL-2.0-only
+Group:          System/Libraries
+
+%description -n typelib-1_0-Vte-%{?_binver}-gtk4
+VTE is a terminal emulator library that provides a terminal widget for
+use with GTK+ as well as handling of child process and terminal
+emulation settings.
+
+This package provides the GObject Introspection bindings for VTE.
+
+%package tools-gtk4
+Summary:        Tools from the VTE terminal emulator package
+License:        LGPL-2.0-only
+Group:          System/Libraries
+
+%description tools-gtk4
+VTE is a terminal emulator library that provides a terminal widget for
+use with GTK+ as well as handling of child process and terminal
+emulation settings.
+
+This package provides tools using VTE.
+%endif
+
 %package devel
 Summary:        Development files for the VTE terminal emulator library
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 Requires:       libvte%{_sover} = %{version}
 Requires:       typelib-1_0-Vte-%{?_binver} = %{version}
+%if %{with gtk4_support}
+Requires:       typelib-1_0-Vte-%{?_binver}-gtk4 = %{version}
+%endif
 Provides:       vte-doc = %{version}
 Obsoletes:      vte-doc < %{version}
 
@@ -142,6 +176,9 @@ widgets in Glade.
 %build
 %meson \
 	-Ddocs=true \
+%if %{with gtk4_support}
+	-Dgtk4=true \
+%endif
 	%{nil}
 %meson_build
 
@@ -149,10 +186,9 @@ widgets in Glade.
 %meson_install
 
 %find_lang vte-%{_apiver}
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
-%post -n libvte%{_sover} -p /sbin/ldconfig
-%postun -n libvte%{_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libvte%{_sover}
 
 %files -n libvte%{_sover}
 %license COPYING.CC-BY-4-0 COPYING.GPL3 COPYING.LGPL3 COPYING.XTERM
@@ -169,6 +205,14 @@ widgets in Glade.
 %files tools
 %{_bindir}/vte-%{?_binver}
 
+%if %{with gtk4_support}
+%files -n typelib-1_0-Vte-%{?_binver}-gtk4
+%{_libdir}/girepository-1.0/Vte-4-%{_apiver}.typelib
+
+%files tools-gtk4
+%{_bindir}/vte-%{?_binver}-gtk4
+%endif
+
 %files devel
 %doc AUTHORS
 %{_libdir}/pkgconfig/*.pc
@@ -179,6 +223,11 @@ widgets in Glade.
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/vte-2.91.vapi
 %{_datadir}/vala/vapi/vte-2.91.deps
+
+%if %{with gtk4_support}
+%{_includedir}/vte-%{_apiver}-gtk4/
+%{_datadir}/gtk-doc/html/vte-gtk4-%{_apiver}/
+%endif
 
 %files -n glade-catalog-vte
 %{_datadir}/glade/catalogs/vte-2.91.xml
