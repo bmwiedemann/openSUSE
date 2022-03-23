@@ -4,7 +4,7 @@ Tue Mar 15 19:33:40 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 - Update to version 3.4.2 bugfix release
   See changelog https://github.com/OSGeo/gdal/blob/v3.4.2/gdal/NEWS.md
 - Remove merged upstream patches gdal-fix-poppler-leap.patch
-  and gdal-fix-build-poppler.patch 
+  and gdal-fix-build-poppler.patch
 
 -------------------------------------------------------------------
 Tue Mar  8 14:47:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
