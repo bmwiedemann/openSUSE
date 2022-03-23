@@ -1,7 +1,7 @@
 #
 # spec file for package libgsf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgsf
-Version:        1.14.48
+Version:        1.14.49
 Release:        0
 Summary:        I/O library for dealing with structured file formats
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
