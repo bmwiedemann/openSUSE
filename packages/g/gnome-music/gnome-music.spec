@@ -17,22 +17,20 @@
 
 
 Name:           gnome-music
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-music/41/%{name}-%{version}.tar.xz
-Source99:       %{name}-rpmlintrc
+Source0:        https://download.gnome.org/sources/gnome-music/42/%{name}-%{version}.tar.xz
 
 #PATCH-FIX-SLE  0001-gnome-music-use-python36.patch yfjiang@suse.com -- disable python 3.7 specific feature to allow gnome-music build and run on python 3.6 for SLE/Leap 15.4.
 Patch0:         0001-gnome-music-use-python36.patch
 #PATCH-FIX-SLE  0002-gnome-music-revert-from-future-import-annotations.patch yfjiang@suse.com -- disable python 3.7 specific feature to allow gnome-music build and run on python 3.6 for SLE/Leap 15.4.
 Patch1:         0002-gnome-music-revert-from-future-import-annotations.patch
-# PATCH-FIX-UPSTREAM d9f35b542adbf6b0e1114c7c077df04212a98fc7.patch -- Fix build with meson 0.61.0 and newer
-Patch2:         https://gitlab.gnome.org/GNOME/gnome-music/-/commit/d9f35b542adbf6b0e1114c7c077df04212a98fc7.patch
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
@@ -47,9 +45,8 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.35.90
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.13
 BuildRequires:  pkgconfig(grilo-plugins-0.3) >= 0.3.12
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.14
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.28.0
-BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libmediaart-2.0) >= 1.9.1
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(pango) >= 1.44.0
@@ -74,7 +71,9 @@ Requires:       tracker-miner-files >= 2.99
 # The versioned format depenency is written in a form not understood by our gi-scanner
 Requires:       typelib(Tracker) = 3.0
 Requires:       typelib(GstTag) = 1.0
-Recommends:     gstreamer-plugins-ugly
+Recommends:     gstreamer-plugins-base
+Recommends:     gstreamer-plugins-good
+BuildArch:      noarch
 
 %description
 Music player and management application for GNOME.
@@ -87,7 +86,6 @@ Music player and management application for GNOME.
 %patch0 -p1
 %patch1 -p1
 %endif
-%patch2 -p1
 # Fix shebangs:
 sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' gnome-music.in
 
@@ -114,7 +112,6 @@ sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' gnome-music.in
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Music*
 %{_datadir}/metainfo/org.gnome.Music.appdata.xml
 %{_datadir}/org.gnome.Music/
-%{_libdir}/org.gnome.Music/
 %{python3_sitelib}/gnomemusic/
 
 %files lang -f %{name}.lang

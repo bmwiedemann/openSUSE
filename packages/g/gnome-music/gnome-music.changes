@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Mar 20 21:00:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + GTK-4 regression fixes.
+  + Bugs fixed: App title untranslated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 17 11:43:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Port to GTK-4
+  + Dark mode switching
+  + Bugs fixed: Fix slow startup.
+  + Updated translations.
+- Drop d9f35b542adbf6b0e1114c7c077df04212a98fc7.patch: Fixed
+  upstream.
+- Replace the following BuildRequires:
+  + pkgconfig(gtk+-3.0) with pkgconfig(gtk4)
+  + pkgconfig(libhandy-1) with pkgconfig(libadwaita-1)
+- Drop pkgconfig(libdazzle-1.0) BuildRequires: No longer needed.
+- Drop gstreamer-plugins-ugly Recommends, all the codecs of intrest
+  for gnome-music, have moved.
+- Add gstreamer-plugins-base and gstreamer-plugins-good Recommends.
+- Add desktop-file-utils BuildRequires: New dependency.
+- Switch package to noarch BuildArch.
+- Drop gnome-music-rpmlintrc: No longer needed.
+
+-------------------------------------------------------------------
 Tue Feb  1 20:08:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add d9f35b542adbf6b0e1114c7c077df04212a98fc7.patch: Fix build
