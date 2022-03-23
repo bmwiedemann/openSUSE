@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 14:50:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop reenable-nfsv2.patch (poo#106679) 
+
+-------------------------------------------------------------------
 Tue Mar  8 20:58:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add reenable-nfsv2.patch for reverting nfsv2 deprecation until
