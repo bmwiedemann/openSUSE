@@ -158,4 +158,12 @@
   + No longer ship the htmldoc as part of the devel package. (forwarded request 854496 from dimstar)</comment>
     <requestid>854567</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ecdea5a6d177ef5db0e50e61a80d201d</srcmd5>
+    <version>3.2.0</version>
+    <time>1648063005</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963626</requestid>
+  </revision>
 </revisionlist>
