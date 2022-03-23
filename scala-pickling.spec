@@ -1,7 +1,7 @@
 #
 # spec file for package scala-pickling
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ Summary:        Scala Pickling
 License:        BSD-3-Clause
 URL:            https://github.com/scala/pickling
 Source0:        %{name}-%{version}.tar.xz
-Source1:        http://central.maven.org/maven2/org/scala-lang/modules/%{name}_%{scala_version}/%{version}/%{name}_%{scala_version}-%{version}.pom
+Source1:        https://repo1.maven.org/maven2/org/scala-lang/modules/%{name}_%{scala_version}/%{version}/%{name}_%{scala_version}-%{version}.pom
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  paradise
 BuildRequires:  xmvn-install
@@ -43,7 +44,7 @@ provide their own custom serialization format.
 %build
 pushd core
   mkdir -p target/classes
-  javac -d target/classes -source 6 -target 6 \
+  javac -d target/classes -source 8 -target 8 \
     -cp $(build-classpath scala) \
     $(find src/main/java -name \*.java | xargs)
   scalac -d target/classes -Xplugin:%{_javadir}/paradise/paradise_%{scala_version}.jar \
@@ -55,7 +56,7 @@ pushd core
   jar cf ../%{name}.jar -C target/classes .
 popd
 
-%mvn_artifact %{SOURCE1} %{name}.jar
+%{mvn_artifact} %{SOURCE1} %{name}.jar
 
 %install
 %mvn_install
