@@ -18,13 +18,13 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.70.1
+Version:        2.72.0
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/glib-networking/2.70/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib-networking/2.72/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  ca-certificates-mozilla
@@ -75,12 +75,13 @@ Currently, there is only a proxy module based on libproxy.
 %files
 %license COPYING LICENSE_EXCEPTION
 %doc NEWS README
+%{_datadir}/dbus-1/services/org.gtk.GLib.PACRunner.service
+%{_libdir}/gio/modules/libgioenvironmentproxy.so
 %{_libdir}/gio/modules/libgiognomeproxy.so
 %{_libdir}/gio/modules/libgiognutls.so
 %{_libdir}/gio/modules/libgiolibproxy.so
 %{_libexecdir}/glib-pacrunner
 %{_userunitdir}/glib-pacrunner.service
-%{_datadir}/dbus-1/services/org.gtk.GLib.PACRunner.service
 
 %files lang -f %{name}.lang
 

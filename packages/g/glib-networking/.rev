@@ -614,4 +614,12 @@ a newer version not fitting</comment>
     <comment>- Increase testsuite timeout (forwarded request 943750 from Andreas_Schwab)</comment>
     <requestid>944042</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>fd214402e9b8440ea07c2e3f3a296e7b</srcmd5>
+    <version>2.72.0</version>
+    <time>1648063032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964105</requestid>
+  </revision>
 </revisionlist>

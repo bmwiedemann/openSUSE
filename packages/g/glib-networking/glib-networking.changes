@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar 22 19:04:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.72.0:
+  + Fix proxy tests.
+  + GnuTLS: use IANA-style ciphersuite names with GnuTLS 3.7.4.
+  + meson devenv.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 22:53:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.72.beta:
+  + Add environment variable proxy resolver.
+  + OpenSSL: fix uninitialized memory use.
+
+-------------------------------------------------------------------
+Fri Jan  7 21:35:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.72.alpha:
+  + OpenSSL:
+    - Fix unsafe error handling.
+    - Fail when appropriate if Must-Staple extension is set.
+  + GnuTLS: fix TLS 1.3 ciphersuite names, should use underscores.
+  + Improve failure of tls-unique channel binding requests.
+  + Do not fill SNI extension with IP address.
+
+-------------------------------------------------------------------
 Tue Jan  4 11:37:15 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Increase testsuite timeout
