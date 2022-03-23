@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 20 08:41:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + appdata: Update screenshots.
+  + tracker: Correctly pass IndexLocation flags.
+  + Fix headerbar button vertical alignment.
+- Drop patches fixed upstream:
+  + gnome-photos-fix-vert-align.patch
+  + 1d22aac8fd7433cd1319fb2ffea0a1e294609f64.patch
+  + 5cafad57982fbef0d02b7ecb0b1a2c9f221de391.patch
+  + a0ac868a19d55dc52100e54fe4b2d29041bc6752.patch
+- Disable gnome-photos-on-demand-activate-dleyna.patch: Needs
+  rebase.
+
+-------------------------------------------------------------------
 Tue Feb  1 20:16:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add a0ac868a19d55dc52100e54fe4b2d29041bc6752.patch: Fix build

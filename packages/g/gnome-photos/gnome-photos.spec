@@ -17,23 +17,15 @@
 
 
 Name:           gnome-photos
-Version:        40.0
+Version:        42.0
 Release:        0
 Summary:        Photo viewer for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Design/Apps/Photos
-Source0:        https://download.gnome.org/sources/gnome-photos/40/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-photos-on-demand-activate-dleyna.patch bsc#992420, glgo#GNOME/gnome-photos#75 sckang@suse.com -- Activate dleyna-renderer-service on demand instead of on start-up.
+Source0:        https://download.gnome.org/sources/gnome-photos/42/%{name}-%{version}.tar.xz
+# PATCH-NEEDS-REBASE gnome-photos-on-demand-activate-dleyna.patch bsc#992420, glgo#GNOME/gnome-photos#75 sckang@suse.com -- Activate dleyna-renderer-service on demand instead of on start-up. WAS PATCH-FIX-UPSTREAM
 Patch0:         gnome-photos-on-demand-activate-dleyna.patch
-# PATCH-FIX-UPSTREAM gnome-photos-fix-vert-align.patch -- glgo#GNOME/gnome-photos!172 headerbar: Fix vertical alignment
-Patch1:         gnome-photos-fix-vert-align.patch
-# PATCH-FIX-UPSTREAM 5cafad57982fbef0d02b7ecb0b1a2c9f221de391.patch -- indexing-notification: Remove unused variable
-Patch2:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/5cafad57982fbef0d02b7ecb0b1a2c9f221de391.patch
-# PATCH-FIX-UPSTREAM 1d22aac8fd7433cd1319fb2ffea0a1e294609f64.patch -- indexing-notification: Handle TrackerMiner proxy being NULL on start-up
-Patch3:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/1d22aac8fd7433cd1319fb2ffea0a1e294609f64.patch
-# PATCH-FIX-UPSTREAM a0ac868a19d55dc52100e54fe4b2d29041bc6752.patch -- Fix build with meson 0.61.0 and newer
-Patch4:         https://gitlab.gnome.org/GNOME/gnome-photos/-/commit/a0ac868a19d55dc52100e54fe4b2d29041bc6752.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -96,7 +88,7 @@ search results from GNOME Photos.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
 
 %build
 %meson
