@@ -75,7 +75,7 @@ ExclusiveArch:  do-not-build
 %define _gold_linker 0
 %endif
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.34.6
+Version:        2.36.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -86,12 +86,8 @@ Source1:        %{url}/releases/%{_name}-%{version}.tar.xz.asc
 Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 
-# PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
+# PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 webkit
 Patch0:         no-forced-sse.patch
-# PATCH-FIX-UPSTREAM fix-warnings.patch mgorse@suse.com -- silence return-type warnings.
-Patch1:         fix-warnings.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-link-fix.patch mgorse@suse.com -- annotate executeJSCJITProbe.
-Patch2:         webkit2gtk3-link-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -102,6 +98,7 @@ BuildRequires:  bison >= 2.3
 BuildRequires:  bubblewrap
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
+BuildRequires:  flex
 %if %usegcc10
 BuildRequires:  gcc10-c++ >= 4.9
 %else
@@ -200,6 +197,9 @@ Requires:       xdg-dbus-proxy
 Provides:       %{_pkgname_no_slpp} = %{version}
 Provides:       WebKit2GTK-%{_apiver}
 Obsoletes:      webkit2gtk3-plugin-process-gtk2 < %{version}
+Recommends:     gstreamer-plugins-bad
+Recommends:     gstreamer-plugins-good
+Recommends:     xdg-desktop-portal-gtk
 
 %description -n libwebkit2gtk%{_wk2sover}
 WebKit is a web content engine, derived from KHTML and KJS from KDE,

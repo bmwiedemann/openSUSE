@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Mar 21 19:45:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.36.0:
+  + Add new accessibility implementation using ATSPI DBus
+    interfaces instead of ATK.
+  + Add support for requestVideoFrameCallback.
+  + Change hardware-acceleration-policy setting default value to
+    always.
+  + Add support for media session.
+  + Add new API to set HTTP response information to custom uri
+    schemes.
+  + Make user interactive threads (event handler, scrolling, …)
+    real time in linux.
+
+-------------------------------------------------------------------
+Mon Feb 28 01:29:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.35.90:
+  + Fix scrolling with the mouse wheel on sites using
+    overscroll-behavior.
+  + Suspend web processes after some time in the process cache.
+  + Fix renderning of horizontal scrollbars with themes enabling
+    steppers.
+  + Ensure EGL displays are terminated before web process exits.
+  + Deinitialize gstreamer before web process exits.
+  + Make fonts under XDG_DATA_DIRS available in web process sanbox.
+  + Canonicalize paths passed to bubblewrap launcher.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 17 16:14:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.35.3:
+  + Fix a crash at startup when bubblewrap sandbox is enabled.
+  + Fix a crash when starting a drag an drop on touchscreen.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.35.2:
+  + Add new accessibility implementation using ATSPI DBus
+    interfaces instead of ATK.
+  + Use native GtkWidgets for form validation popups.
+  + Add support for requestVideoFrameCallback.
+  + Add support for accent colors.
+  + Fix pinch zooming from a link to not activate the link.
+  + Fix kinetic scrolling via touch screen.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.35.1:
+  + Make user interactive threads (event handler, scrolling, …)
+    real time in linux.
+  + Add new API to set HTTP response information to custom uri
+    schemes.
+  + Add support for media session.
+  + Change hardware-acceleration-policy setting default value to
+    always.
+  + Fix jsc_value_object_define_property_accessor() to work with
+    objects not having a wrapped instance.
+  + Fix several crashes and rendering issues.
+- Add gstreamer-plugins-good, gstreamer-plugins-bad and
+  xdg-desktop-portal-gtk Recommends: Needed for mediaplayback and
+  features in the mandatory sandbox.
+- Add flex BuildRequires: Optional dependency.
+- Rebase no-forced-sse.patch: Not sure this makes sense anymore,
+  we are building for i686, and the number of cpu of that class not
+  supporting SSE2 can probably be counted on one hand.
+- Drop patches fixed upstream:
+  + fix-warnings.patch
+  + webkit2gtk3-link-fix.patch
+
+-------------------------------------------------------------------
 Thu Feb 17 16:14:42 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.34.6 (boo#1196133):
