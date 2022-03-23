@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 23 11:29:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Added patch:
+  * scirenderer-1.1.0-nosourcetarget.patch
+    + Do not hardcode source and target levels
+
+-------------------------------------------------------------------
 Wed Sep 20 07:33:57 UTC 2017 - fstrba@suse.com
 
 - Added patch:

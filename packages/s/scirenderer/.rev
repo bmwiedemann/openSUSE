@@ -31,4 +31,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>Fix build with jdk9</comment>
     <requestid>527468</requestid>
   </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e799bec3f5ee3b7624020829854284b1</srcmd5>
+    <version>1.1.0</version>
+    <time>1648063133</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964263</requestid>
+  </revision>
 </revisionlist>

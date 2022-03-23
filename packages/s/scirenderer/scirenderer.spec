@@ -1,7 +1,7 @@
 #
 # spec file for package scirenderer
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,19 +22,20 @@ Release:        0
 Summary:        A Java rendering library based on JoGL
 License:        CECILL-2.0
 Group:          Development/Libraries/Java
-Url:            http://forge.scilab.org/index.php/p/scirenderer
+URL:            https://forge.scilab.org/index.php/p/scirenderer
 Source0:        http://forge.scilab.org/index.php/p/scirenderer/downloads/get/%{name}-%{version}.tar.gz
 Patch0:         %{name}-0000-jogl2.0.2.patch
 # PATCH-FIX-UPSTREAM scirenderer-fix-compilation-with-jogl-2.3.patch badshah400@gmail.com -- Fix compilation with jogl 2.3.x
 Patch1:         scirenderer-fix-compilation-with-jogl-2.3.patch
 Patch2:         scirenderer-1.1.0-javadoc.patch
+Patch3:         scirenderer-1.1.0-nosourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jlatexmath
 BuildRequires:  jogl2 >= 2.3
 BuildRequires:  jpackage-utils
-Requires:       java
+Requires:       java >= 1.8
 Requires:       jpackage-utils
 BuildArch:      noarch
 
@@ -57,6 +58,7 @@ This package contains the documentation for SciRenderer.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # Update path according to the openSUSE
 tee scirenderer-libs.properties << EOF
@@ -69,7 +71,9 @@ EOF
 sed -i '/Class-Path/I d' build.xml
 
 %build
-%{ant} jar doc
+%{ant} \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
+    jar doc
 
 %install
 install -Dm 644 jar/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
@@ -80,7 +84,8 @@ cp -pr docs/* %{buildroot}%{_javadocdir}/%{name}
 
 %files
 %{_javadir}/%{name}.jar
-%doc README COPYING CHANGES
+%license COPYING
+%doc README CHANGES
 
 %files javadoc
 %{_javadocdir}/%{name}
