@@ -1,7 +1,7 @@
 #
 # spec file for package yelp-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           yelp-tools
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Collection of utilities to help create documentation
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://projects.gnome.org/yelp/
-Source:         https://download.gnome.org/sources/yelp-tools/41/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/yelp-tools/42/%{name}-%{version}.tar.xz
 BuildRequires:  itstool
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt
