@@ -17,31 +17,27 @@
 
 
 Name:           gnome-characters
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
-Source0:        https://download.gnome.org/sources/gnome-characters/41/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM mesonfix-061.patch -- Fix build with meson 0.61 and newer
-Patch0:         mesonfix-061.patch
+Source0:        https://download.gnome.org/sources/gnome-characters/42/%{name}-%{version}.tar.xz
 
-BuildRequires:  gobject-introspection-devel >= 1.35.9
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  intltool >= 0.50.1
-BuildRequires:  libunistring-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.43.3
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.0
 BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(pangoft2)
 # Ensure default sections are filled with content
 Recommends:     noto-coloremoji-fonts
 
@@ -65,15 +61,18 @@ search results from GNOME Characters.
 
 %build
 %meson \
-	-Dpangoft2=true \
-	-Dinstalled_tests=false \
+	-D pangoft2=true \
+	-D installed_tests=false \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang org.gnome.Characters %{name}.lang
-%suse_update_desktop_file org.gnome.Characters -r Utilities Utility Settings
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Characters.desktop
+%meson_test
 
 %files
 %license COPYING
@@ -85,7 +84,6 @@ search results from GNOME Characters.
 %{_datadir}/glib-2.0/schemas/org.gnome.Characters.gschema.xml
 %{_datadir}/icons/hicolor/*
 %{_datadir}/applications/org.gnome.Characters.desktop
-%{_datadir}/dbus-1/services/org.gnome.Characters.BackgroundService.service
 %{_datadir}/dbus-1/services/org.gnome.Characters.service
 %{_libdir}/org.gnome.Characters/
 
