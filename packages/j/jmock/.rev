@@ -137,4 +137,12 @@ uncritical open source license is not acceptable (forwarded request 111121 from 
     <comment>Build against objectweb-asm</comment>
     <requestid>657202</requestid>
   </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>d2352f967d43f09f6f3d2aab5e68dd14</srcmd5>
+    <version>1.2.0</version>
+    <time>1648063167</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk 17</comment>
+    <requestid>964353</requestid>
+  </revision>
 </revisionlist>

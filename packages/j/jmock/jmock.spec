@@ -1,7 +1,7 @@
 #
 # spec file for package jmock
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Test Java code using mock objects
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-Url:            http://jmock.codehaus.org/license.html
+URL:            http://jmock.codehaus.org/license.html
 Source0:        jmock-1.2.0.tar.gz
 # svn export http://svn.codehaus.org/jmock/tags/1.2.0/ jmock-1.2.0
 Source1:        jmock-1.2.0.pom
@@ -34,7 +34,7 @@ BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit
 BuildRequires:  cglib-nohook >= 2.1.3
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit >= 3.8.1
@@ -100,7 +100,7 @@ rm -rf src/test src/atest
 export OPT_JAR_LIST="ant/ant-junit junit"
 export CLASSPATH=`pwd`/build/classes:$(build-classpath objectweb-asm cglib)
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     -Dbuild.sysclasspath=only \
     package
 

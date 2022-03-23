@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 23 18:24:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Modified patch:
+  * jmock-1.2.0-build_xml.patch
+    + specify the keyalg attribute for GenKey Ant task
+    + fixes builds with newer keytool
+
+-------------------------------------------------------------------
 Tue Dec 11 12:30:26 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Build against objectweb-asm >= 5 in order to avoid hard

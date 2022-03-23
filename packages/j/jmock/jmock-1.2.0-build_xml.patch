@@ -54,3 +54,12 @@
  		
  		<jar destfile="build/testdata/signed.jar" compress="false">
  			<fileset dir="build/testdata/classes/" includes="*"/>
+@@ -108,7 +109,7 @@
+ 		<genkey alias="testdata"
+ 				keystore="build/testdata/keystore" storepass="testdata"
+ 				dname="CN=Test Data, OU=Test Data, O=Test Data, C=Unknown"
+-				validity="1"/>
++				keyalg="RSA" validity="1"/>
+ 		
+ 		<signjar jar="build/testdata/signed.jar" alias="testdata" 
+ 			     keystore="build/testdata/keystore" storepass="testdata"/>
