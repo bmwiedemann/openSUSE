@@ -1,7 +1,7 @@
 #
 # spec file for package jwnl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ URL:            https://sourceforge.net/projects/jwordnet/
 # tar cJf jwnl-1.4-rc3.tar.xz jwnl-1.4-rc3
 Source0:        %{name}-%{base_version}-%{reltag}.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildArch:      noarch
@@ -65,9 +66,9 @@ sed -i 's/\r//' changes.txt doc/*
 
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
+	-Dmaven.compiler.release=8 \
 %endif
-	-Dproject.build.sourceEncoding=UTF-8
+	-Dsource=8 -Dproject.build.sourceEncoding=UTF-8
 
 %install
 %mvn_install
