@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Mar 20 08:15:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.72.0:
+  + No changes from release candidate 1.71.90.
+
+-------------------------------------------------------------------
+Sun Mar  6 10:08:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.71.90:
+  + Cairo test broken with commit ea52cf92
+  + native: Convert to singleton class
+  + Checking `instanceof` for primitive types may lead to a crash
+    or error
+  + Change the GObject Introspection development branch
+  + gi_marshalling_tests_long_in_max test fails on i686
+  + GNOME Shell crashes at startup with the AppIndicator extension
+    enabled
+  + Instances of classes implementing interfaces can override
+    functions for all implentations of an interface
+  + package: Reverse order of running-from-source checks
+  + Various maintenance.
+
+-------------------------------------------------------------------
+Mon Feb 14 09:30:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.71.1:
+  + New JavaScript features! This version of GJS is based on
+    SpiderMonkey 91, an upgrade from the previous ESR (Extended
+    Support Release) of SpiderMonkey 78. Here are the highlights of
+    the new JavaScript features. For more information, look them up
+    on MDN or devdocs.io.
+- Replace pkgconfig(mozjs-78) with pkgconfig(mozjs-91).
+- Disable meson_tests, one test currently failing (expected during
+  unstable cycle). https://gitlab.gnome.org/GNOME/gjs/-/issues/461
+
+-------------------------------------------------------------------
 Tue Feb  8 09:07:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.70.1:
