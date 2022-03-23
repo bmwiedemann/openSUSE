@@ -1452,4 +1452,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>945919</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>0b4563f59ef3567febb84a87f4cc496d</srcmd5>
+    <version>42.0</version>
+    <time>1648063008</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963630</requestid>
+  </revision>
 </revisionlist>
