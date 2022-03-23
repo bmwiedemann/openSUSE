@@ -1,7 +1,7 @@
 #
 # spec file for package rxtx-java
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch5:         rxtx-java-38400.patch
 Patch6:         rxtx-java-version.patch
 Patch7:         rxtx-java-missing-javah.patch
 BuildRequires:  automake
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
@@ -50,7 +51,6 @@ Obsoletes:      %{name}-src
 BuildRequires:  aqute-bnd
 BuildRequires:  javapackages-local
 %else
-BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
 %endif
 %if 0%{?mdkversion}
@@ -93,9 +93,7 @@ the specification for Sun's Java Communications API.
 %patch4
 %patch5 -p1
 %patch6 -p1
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 1.8}%{!?pkg_vcmp:0}
 %patch7 -p1
-%endif
 
 %build
 export THREADS_FLAG=native
@@ -117,12 +115,12 @@ mv RXTXcomm-bnd.jar RXTXcomm.jar
 
 # build javadoc
 mkdir -p javadoc
-javadoc -d javadoc src/gnu/io/*.java
+javadoc -d javadoc -source 8 src/gnu/io/*.java
 
 %install
 install -dm 0755 %{buildroot}%{_jnidir} %{buildroot}%{_libdir}
 make RXTX_PATH=%{buildroot}%{_libdir} JHOME=%{buildroot}%{_jnidir} install
-find %{buildroot} -name '*.la' -print -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 
 find %{buildroot}%{_prefix} -xtype f -print | \
     sed "s@^$RPM_BUILD_ROOT@@g" > INSTALLED_FILES

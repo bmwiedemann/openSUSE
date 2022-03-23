@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 23 10:27:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Require java >= 1.8 for building
+- Build javadoc with source level 8 to prevent problems with 
+  "yield' becoming a restricted identifier in Java 13
+
+-------------------------------------------------------------------
 Tue Jul 27 13:11:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define %%make_build for systems that don't have it defined in
