@@ -436,4 +436,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>936191</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e6f4a8a11fdc79ae372c88aa73ba76c3</srcmd5>
+    <version>4.beta.1</version>
+    <time>1648063039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963382</requestid>
+  </revision>
 </revisionlist>

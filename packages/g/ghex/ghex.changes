@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Jan 10 13:46:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.beta.1:
+  + HexWidget: Implement Home and End keybindings.
+  + HexWidget: fix offsets redraw issue.
+  + appwin: fix function order when opening invalid file.
+  + help: initial rewrite to mallard and update for GHex4.
+  + help: add support for static HTML help.
+  + help: fix typos.
+
+-------------------------------------------------------------------
+Thu Dec 30 20:32:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.alpha.2:
+  + lib:
+    - Rename GtkHex to HexWidget
+    - Make some raw structs into boxed types for GI
+    - Rework data types so that we have a minimum cursor pos and
+      file size that works with files larger than 2 GB
+  + lib/docs: Initial API documentation (gi-docgen required)
+  + lib/app: asynchronous APIs for many operations, and integrate
+    with application features
+  + GUI/settings: support quadwords grouping
+  + Error handling improvements
+  + HexBufferIface: Standardize on GFile when it comes to file
+    handling
+  + HexWidget:
+    - Rework the "busy" spinner to be at the widget level
+    - Restore hex_widget_set_geometry API
+    - Dynamically sized offset column, and fix calculation of
+      offset cols required
+  + HexBufferMmap: improvements, fixes and optimizations
+  + findreplace: watch/busy feedback and cancellable
+  + converter: a11y update
+  + meson:
+    - Add `introspection` and `gtk_doc` options
+    - Remove `experimental-mmap` option; replace with
+      `buffer-backend` (with mmap being the new default, where
+      supported; see meson_options.txt)
+  + Various code cleanups and miscellaneous bugfixes
+  + Updated translations.
+- Changes from version 4.alpha.1:
+  + This is the first alpha release of GHex with GTK4 support. As
+    it has been substantially reworked from GHex 3.x, it will
+    require some substantial testing and translation updates.
+  + Visibly to the end user, some new features include:
+    - More modern and up-to-date look and feel, consistent with the
+      GNOME HIG.
+    - Tabbed interface.
+    - Dark Mode (by default, the GTK system-wide
+      "prefer-dark-theme" setting is used, but can be overridden
+      with a checkbox and a switch in the Preferences dialog).
+    - Libadwaita colour compatibility; if you use the Adwaita theme
+      and GNOME apps that utilize libadwaita, GHex will (read:
+      should) match the colour scheme. libadwaita is not a planned
+      dependency for GHex at this time as many of its users are GTK
+      users who do not run GNOME, and I want to keep GHex's
+      dependency requirements to a minimum.
+    - Custom clipboard data, for less error-prone copying and
+      pasting of binary data; this will fall back to plaintext when
+      unavailable.
+    - Copy and Paste Special dialogs, which allow you to, for
+      instance, copy and paste hex pairs from GHex into other
+      applications, and to paste hex pairs from other applications
+      into GHex.
+  + Changes: Port and rework for GTK4
+  + Updated translations.
+- Add pkgconfig(gi-docgen) BuildRequires, build api docs.
+- Replace pkgconfig(gtk+-3.0) with pkgconfig(gtk4) BuildRequires
+  following upstreams port.
+- Rename libgtkhex-3-0 to libgtkhex-4-0 following soname bump.
+- Add new sub package typelib-1_0-Hex-4.
+- Add so_ver define and set it to 4, ease future updates.
+
+-------------------------------------------------------------------
 Sun Dec  5 11:58:59 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.41.1:
