@@ -31,13 +31,13 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.42.4
+Version:        3.44.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-data-server/3.44/%{name}-%{version}.tar.xz
 
 BuildRequires:  cmake
 BuildRequires:  db-devel
@@ -49,9 +49,6 @@ BuildRequires:  gperf
 BuildRequires:  gtk-doc >= 1.9
 BuildRequires:  intltool
 BuildRequires:  krb5-devel
-BuildRequires:  libgdata-devel
-BuildRequires:  libgweather-devel >= 3.10
-BuildRequires:  libsoup-devel >= 2.42
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  nss-shared-helper-devel
 BuildRequires:  openldap2-devel
@@ -67,11 +64,14 @@ BuildRequires:  vala >= 0.22.0
 BuildRequires:  pkgconfig(gcr-base-3) >= 3.4
 BuildRequires:  pkgconfig(goa-1.0) >= 3.8
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
+BuildRequires:  pkgconfig(gweather-3.0) >= 3.10
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0.4
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.25
+BuildRequires:  pkgconfig(libgdata) >= 0.15.1
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-unstable) >= 0.5
+BuildRequires:  pkgconfig(libsoup-2.4) >= 2.58
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(protobuf) >= 2.4
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.11.91

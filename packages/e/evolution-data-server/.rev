@@ -2014,4 +2014,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment></comment>
     <requestid>953721</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>21dd8dbc407f10d27f14fdb06173c66f</srcmd5>
+    <version>3.44.0</version>
+    <time>1648062964</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963563</requestid>
+  </revision>
 </revisionlist>

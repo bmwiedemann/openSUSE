@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:52:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  4 09:59:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.43.3:
+  + Camel: Thaw frozen folders on failed Maildir message transfer
+  + CamelFolderSummary: Re-enable notifications on message info in
+    summary_assign_uid()
+  + Bugs fixed: glgo#GNOME/evolution-data-server#377,
+    glgo#GNOME/evolution-data-server#378,
+    glgo#GNOME/evolution-data-server!92,
+    glgo#GNOME/evolution-data-server!93.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 11:51:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.43.2:
+  + IMAPx: Avoid creating NOSELECT CamelFolder-s
+  + CamelMimeFilterCRLF: Correct encoding part of the filter
+  + CamelMimeParser: Correct body content parse when CRLF is used
+  + Provide database file name in SQLITE_CORRUPT error message
+  + camel-net-utils: Allow NULL string arguments in IDNA/ASCII
+    functions
+  + Bugs fixed: glgo#GNOME/evolution-data-server#369,
+    glgo#GNOME/evolution-data-server#372,
+    glgo#GNOME/evolution-data-server#374,
+    glgo#GNOME/evolution-data-server!79.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 10:46:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace libgdata-devel, libgweather-devel and libsoup-devel with
+  pkgconfig(libgdata), pkgconfig(gweather-3.0) and
+  pkgconfig(libsoup-2.4) BuildRequires: align with what cmake
+  checks for.
+
+-------------------------------------------------------------------
+Fri Feb 11 10:46:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.43.1.1:
+  + Correct install of the translation files.
+- Changes from version 3.43.1:
+  + LDAP: Fix a memory leak when filling a contact address
+  + book/cal-backend: Add some safety checks around
+    pending_operations queue
+  + Use `g_assert_true()` instead of `g_assert()` in the unit tests
+  + ERemindersWidget: Incorrect value for last selected snooze time
+    after open
+  + Camel: Correct a copy&paste error in a function documentation
+  + org.gnome.Evolution-alarm-notify.desktop: Add
+    X-GNOME-UsesNotifications=true
+  + Install legacy icons into correct directory
+  + LDAP: Some property changes do not update local cache properly
+  + secret-monitor: Turn runtime warnings into debug prints
+  + Camel: Use the same charset in all RFC2047-encoded words
+  + WebDAVNotes: Let the user choose which extension is used for
+    new notes
+  + _libedataserverui_init_icon_theme: Test whether default
+    GdkScreen exists
+  + camel-docs.sgml.in: Add camel-hostname-utils documentation
+  + e-cal-client: Correct non-NULL check in
+    e_cal_client_create_objects_sync()
+  + Calendar: Adapt to libical 3.0.12 change
+  + ECalComponent: Add safety checks on get/set of DTEND/DUE
+    properties
+  + Bugs fixed: glgo#GNOME/evolution-data-server#352,
+    glgo#GNOME/evolution-data-server#354,
+    glgo#GNOME/evolution-data-server#355,
+    glgo#GNOME/evolution-data-server#356,
+    glgo#GNOME/evolution-data-server#360,
+    glgo#GNOME/evolution-data-server#361,
+    glgo#GNOME/evolution-data-server#364,
+    glgo#GNOME/evolution-data-server#365,
+    glgo#GNOME/evolution-data-server#366,
+    glgo#GNOME/evolution-data-server#368,
+    glgo#GNOME/evolution-data-server#371,
+    glgo#GNOME/evolution-data-server!76,
+    glgo#GNOME/evolution-data-server!78,
+    glgo#GNOME/evolution-data-server!81,
+    glgo#GNOME/evolution-data-server!83,
+    glgo#GNOME/evolution-data-server!84,
+    glgo#GNOME/evolution-data-server!87,
+    glgo#GNOME/evolution-data-server!88,
+    glgo#GNOME/evolution-data-server#1032,
+    glgo#GNOME/evolution-data-server#1621,
+    glgo#GNOME/evolution-data-server#1639,
+    glgo#GNOME/evolution-data-server#1645,
+    glgo#GNOME/evolution-data-server#1698.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 11 10:46:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.42.4:
