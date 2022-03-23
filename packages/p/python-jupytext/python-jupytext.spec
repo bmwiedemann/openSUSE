@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupytext
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ Requires:       python-notebook
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nbformat >= 4.0.0}
 BuildRequires:  %{python_module testfixtures}
 # /SECTION
