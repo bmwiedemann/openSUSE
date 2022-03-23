@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 18 11:20:47 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not stop xvnc.socket but run the YaST2-Second-Stage and
+  YaST2-Firsboot services before it in order to prevent early
+  vnc connections (bsc#1197265)
+-4.4.50
+
+-------------------------------------------------------------------
 Thu Mar 17 12:46:16 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Run the YaST2-Second-Stage and YaST2-Firsboot services after
