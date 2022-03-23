@@ -1,4 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">git://github.com/openSUSE/packages-i18n.git</param>
-              <param name="changesrevision">5943e3346f63c2f721c0c95f2a655fe250a1b47b</param></service></servicedata>
+                <param name="url">https://github.com/openSUSE/packages-i18n</param>
+              <param name="changesrevision">36bed595a8a568966a6c4e4cd0360aa636979978</param></service></servicedata>

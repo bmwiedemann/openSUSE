@@ -17,7 +17,7 @@
 
 
 Name:           package-translations
-Version:        89.87.20220225.5943e334
+Version:        89.87.20220316.36bed595
 Release:        0
 Summary:        Summary and Descriptions Translations
 License:        BSD-3-Clause
