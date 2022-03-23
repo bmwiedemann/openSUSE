@@ -26,6 +26,7 @@ URL:            https://uima.apache.org/
 Source0:        http://archive.apache.org/dist/uima/%{name}-%{version}/%{name}-%{version}-source-release.zip
 Patch0:         uimaj-2.8.1-jackson2.7.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(ant-contrib:ant-contrib)
@@ -137,7 +138,11 @@ sed -i 's/\r//' NOTICE README
 %{mvn_package} :jcasgen-maven-plugin jcasgen-maven-plugin
 
 %build
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=7
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8 -Dproject.build.sourceEncoding=UTF-8
 
 %install
 %mvn_install
