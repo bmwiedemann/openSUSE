@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Mar 16 00:40:31 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.1.5~0:
+  * [update] Workflow.
+  * [update] Bump dependencies.
+  * [update] Readme
+  * [update] Remove testing code.
+  * [update] Fixes
+  * [update] Add workflow.
+  * [update] fix readme
+  * [update] Readme.
+  * [update]opensuse bin. Thanks to uncomfyhalomacro.
+  * [update] shm.rs, bug fix
+
+-------------------------------------------------------------------
+Fri Mar 11 14:28:00 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.1.5:
+  * [update] Remove testing code.
+  * [update] Fixes
+  * [update] Add workflow.
+  * [update] fix readme
+  * [update] Readme.
+  * [update]opensuse bin. Thanks to uncomfyhalomacro.
+  * [update] shm.rs, bug fix
+  * [update] Väinö Mäkelä, Replace unneeded roundtrip calls with dispatch
+  * [bump] Version updates
+  * [update] conflict with bin package
+
+-------------------------------------------------------------------
+Fri Mar 11 13:35:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove some reduntant Requires
+- Remove not needed BuildRequires
+
+-------------------------------------------------------------------
 Fri Feb 25 14:45:37 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec

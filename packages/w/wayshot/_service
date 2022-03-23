@@ -1,9 +1,12 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">https://git.sr.ht/~shinyzenith/wayshot</param>
+    <param name="url">https://github.com/waycrate/wayshot.git</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">3f2ec0c2e937b7b69f647765fb48470c48b5b28d</param>
-    <param name="version">1.1.2</param>
+    <param name="revision">main</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">socvirnyl.estela@gmail.com</param>
   </service>
