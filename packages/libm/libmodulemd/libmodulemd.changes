@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 18 11:48:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire glib2-doc when building against glib2 more recent
+  than 2.70.4: the documentation was split out (after it was
+  earlier merged; so for older distros we don't have to worry, as
+  glib2-devel provides glib2-doc there).
+
+-------------------------------------------------------------------
 Wed Jan  5 11:06:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop unknown meson parameters: developer_build,

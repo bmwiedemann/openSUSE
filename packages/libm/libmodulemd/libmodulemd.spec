@@ -40,6 +40,7 @@ Source0:        %{url}/releases/download/%{libmodulemd_version}/modulemd-%{libmo
 
 BuildRequires:  file-devel
 BuildRequires:  gcc
+BuildRequires:  glib2-doc
 BuildRequires:  help2man
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  python3-gobject
