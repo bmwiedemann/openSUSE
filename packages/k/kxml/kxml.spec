@@ -1,7 +1,7 @@
 #
 # spec file for package kxml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,21 +19,22 @@
 
 Name:           kxml
 Version:        2.3.0
-Release:        17%{?dist}
+Release:        0
 Summary:        Small XML pull parser
 License:        MIT
 Group:          Development/Libraries/Java
 URL:            http://kxml.sourceforge.net/
 # ./create-tarball.sh %%{version}
 Source0:        %{name}-%{version}-clean.tar.gz
-Source1:        http://repo1.maven.org/maven2/net/sf/kxml/kxml2/%{version}/kxml2-%{version}.pom
-Source2:        http://repo1.maven.org/maven2/net/sf/kxml/kxml2-min/%{version}/kxml2-min-%{version}.pom
+Source1:        https://repo1.maven.org/maven2/net/sf/kxml/kxml2/%{version}/kxml2-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/net/sf/kxml/kxml2-min/%{version}/kxml2-min-%{version}.pom
 Source3:        %{name}-%{version}-OSGI-MANIFEST.MF
 Source100:      create-tarball.sh
 Patch0:         0001-Unbundle-xpp3-classes.patch
 Patch1:         kxml-2.3.0-fix_build.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve

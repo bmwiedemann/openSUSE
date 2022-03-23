@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>700408</requestid>
   </revision>
+  <revision rev="2" vrev="18">
+    <srcmd5>2e70ef71995df02116473a697124f5e0</srcmd5>
+    <version>2.3.0</version>
+    <time>1648063101</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on JDK 17</comment>
+    <requestid>964164</requestid>
+  </revision>
 </revisionlist>
