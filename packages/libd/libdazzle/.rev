@@ -195,4 +195,12 @@
     <comment>Now with added provides (forwarded request 922155 from iznogood)</comment>
     <requestid>922157</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f2398e2bd65fbe15f121a5fbec7339c4</srcmd5>
+    <version>3.44.0</version>
+    <time>1648063000</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963620</requestid>
+  </revision>
 </revisionlist>

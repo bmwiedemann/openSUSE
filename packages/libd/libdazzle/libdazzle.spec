@@ -1,7 +1,7 @@
 #
 # spec file for package libdazzle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libdazzle
-Version:        3.42.0
+Version:        3.44.0
 Release:        0
 Summary:        Collection of fancy features for GLib and Gtk+
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://gitlab.gnome.org/GNOME/libdazzle
-Source0:        https://download.gnome.org/sources/libdazzle/3.42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libdazzle/3.44/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50.0
