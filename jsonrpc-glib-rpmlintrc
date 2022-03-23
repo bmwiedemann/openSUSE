@@ -1,0 +1,4 @@
+# This warning can be ignored as, despite the renaming of typelib-1_0-Jsonrpc-1.0
+# to typelib-1_0-Jsonrpc-1_0, there's no reason to add a provides tag for the old
+# name (we already used the capability typelib(foobar) before the renaming).
+addFilter(".* W: obsolete-not-provided typelib-1_0-Jsonrpc-1.0")
