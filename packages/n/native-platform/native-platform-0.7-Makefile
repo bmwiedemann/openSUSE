@@ -23,8 +23,8 @@ JAR=$(BUILD)/native-platform.jar
 known_os_archs := 
 JAR_ARCH=$(BUILD)/native-platform-linux.jar
 
-JTARGET=1.6
-JSOURCE=1.6
+JTARGET=1.8
+JSOURCE=1.8
 
 INCLUDE=-I$(IDIR) -I$(IGEN) -I/usr/include -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
 LDLIBS=-lncurses
