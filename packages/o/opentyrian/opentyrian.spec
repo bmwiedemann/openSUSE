@@ -20,7 +20,7 @@ Name:           opentyrian
 # Upstream haven not tagged a version for more than seven years now.
 # There quite many bugfixes in the git version and it seems upstreams
 # develops it as rolling release.
-Version:        2.1.20220311
+Version:        2.1.20220318
 Release:        0
 Summary:        An arcade-style vertical scrolling shooter
 License:        GPL-2.0-or-later
