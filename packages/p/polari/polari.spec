@@ -18,27 +18,27 @@
 
 
 Name:           polari
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://wiki.gnome.org/Apps/Polari
-Source0:        https://download.gnome.org/sources/polari/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/polari/42/%{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
-# PATCH-FIX-UPSTREAM polari-fix-nb-translation.patch glgo#GNOME/polari!145 -- Fix Norwegian bokmål translation
-Patch0:         polari-fix-nb-translation.patch
-# PATCH-FIX-UPSTREAM 0f0a4b54142d8b424969f0b6ace6fc8b53b1d05d.patch -- Fix build with meson 0.61.0 and newer
-Patch1:         https://gitlab.gnome.org/GNOME/polari/-/commit/0f0a4b54142d8b424969f0b6ace6fc8b53b1d05d.patch
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  gjs >= 1.57.3
+BuildRequires:  json-glib-devel
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.69.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
-#BuildRequires:  pkgconfig(gtk+-3.0) >= 3.21.6
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(telepathy-glib)
@@ -68,6 +68,9 @@ with GNOME 3.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+
+%check
+%meson_test
 
 %files
 %license COPYING

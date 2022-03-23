@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 20 22:18:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Move /command feedback into a popover.
+  + Port UI to libadwaita.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + 0f0a4b54142d8b424969f0b6ace6fc8b53b1d05d.patch
+  + polari-fix-nb-translation.patch
+- Add appstream-glib, desktop-file-utils and json-glib-devel
+  BuildRequires, and add check section and meson_test macro:
+  Validate appdata, desktopfile, networks.json and functions during
+  build.
+- Add pkgconfig(gtk4) and pkgconfig(libadwaita-1) BuildRequires:
+  New dependencies after upstreams port of UI to libadwaita.
+- Add obsolete-not-provided typelib-1_0-Polari-1_0 to rpmlintrc: We
+  know that we are not providing the Obsoleted typelib, this is on
+  purpose, as the typelib is now private.
+
+-------------------------------------------------------------------
 Tue Feb  1 12:31:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 0f0a4b54142d8b424969f0b6ace6fc8b53b1d05d.patch: Fix build
