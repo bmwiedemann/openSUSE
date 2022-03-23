@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 22 18:19:06 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Add libfdata-20211023-1TB-fix.patch
+    * Fixes bug associated with image offsets beyond 1TB
+    * see https://github.com/libyal/libbde/issues/47
+
+-------------------------------------------------------------------
 Sun Nov 14 13:10:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20211023

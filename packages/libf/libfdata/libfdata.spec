@@ -1,7 +1,7 @@
 #
 # spec file for package libfdata
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         https://github.com/libyal/libfdata/releases/download/%version/li
 Source2:        https://github.com/libyal/libfdata/releases/download/%version/libfdata-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Patch1:         system-libs.patch
+# The source code assumes 64bit integers for one of the function returns.  Fix that.
+Patch2:         libfdata-20211023-1TB-fix.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
