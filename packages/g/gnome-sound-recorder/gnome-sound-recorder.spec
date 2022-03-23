@@ -18,15 +18,13 @@
 
 
 Name:           gnome-sound-recorder
-Version:        40.0
+Version:        42.0
 Release:        0
 Summary:        Sound Recorder
 License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Design/Apps/SoundRecorder
-Source0:        https://download.gnome.org/sources/gnome-sound-recorder/40/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 1335b1b1aff61167f8648f7cb3c569764031960d.patch -- Fix build with meson 0.60 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-sound-recorder/-/commit/1335b1b1aff61167f8648f7cb3c569764031960d.patch
+Source0:        https://download.gnome.org/sources/gnome-sound-recorder/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -36,11 +34,12 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.54.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39.3
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.6
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0) >= 1.12
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
-BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 Requires:       gjs
-Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 BuildArch:      noarch
