@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Fri Mar 18 16:46:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.0:
+  + Updated translations.
+- Drop baselibs.conf, should not be needed for this new library.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Thu Mar  3 17:20:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.99.0:
+  + Updated location database.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 12 21:43:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.91.0:
+  + Renamed `gweather-weather.h` to `gweather-info.h`.
+  + Removed GWeatherTimezone.
+  + New locations: Palestine cities, county capitals in Romania.
+  + Fix Vala binding of Location.detect_nearest_city().
+  + Add GWeather.Location.has_timezone().
+  + Depend on GLib ≥ 2.68.
+  + Fix build on 32bit architectures.
+  + Documentation updates in the migration guide.
+  + Updated translations.
+- Pass soup2=true to meson, continue to build with old libsoup as
+  of now.
+
+-------------------------------------------------------------------
+Wed Jan 12 10:55:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 3.90, based on libgweather (parallel
+  installable).
+

@@ -1,0 +1,5 @@
+<package name="libgweather4" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="libgweather4"/>
+</package>
