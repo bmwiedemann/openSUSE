@@ -19,20 +19,16 @@
 %define _name   network-manager-applet
 
 Name:           NetworkManager-applet
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        GTK+ tray applet for use with NetworkManager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/projects/NetworkManager
-Source0:        https://download.gnome.org/sources/network-manager-applet/1.24/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/network-manager-applet/1.26/%{_name}-%{version}.tar.xz
 
-# PATCH-NEEDS-REBASE nm-applet-private-connection.patch boo#751211 bgo#646187 dimstar@opensuse.org -- Create private connections if the user is not authorised. Allows to create wifi connections without root access. Patch under discussion upstream. (WAS: PATCH-FIX-UPSTREAM)
-Patch0:         nm-applet-private-connection.patch
 # PATCH-FIX-UPSTREAM feature-app-indicator-desktop-file.patch sflees@suse.com --  nm-applet needs to be launched with --indicator and needs a startup delay incase its started before the systray
 Patch1:         feature-app-indicator-desktop-file.patch
-# PATCH-FIX-UPSTREAM 107.patch -- Fix build with meson 0.61.0 and newer
-Patch2:         https://gitlab.gnome.org/GNOME/network-manager-applet/-/merge_requests/107.patch
 
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
@@ -87,10 +83,7 @@ connection settings.
 
 %prep
 %setup -q -n %{_name}-%{version}
-# Needs rebase.
-# %%patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %meson \
