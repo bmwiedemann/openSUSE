@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-backgrounds
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-backgrounds
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        GNOME Backgrounds
-License:        CC-BY-2.0 AND GPL-2.0-or-later AND CC-BY-SA-2.0 AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-backgrounds
-Source0:        https://download.gnome.org/sources/gnome-backgrounds/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-backgrounds/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -44,7 +44,7 @@ Background images from the GNOME project.
 %meson_install
 
 %files
-%license COPYING COPYING_CCBY2 COPYING_CCBYSA2 COPYING_CCBYSA3
+%license COPYING
 %doc AUTHORS ChangeLog NEWS
 %{_datadir}/gnome-background-properties/
 %{_datadir}/backgrounds/

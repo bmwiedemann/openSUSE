@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 21 19:26:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Split xml files per background for easier cherry-picking by
+    distros.
+  + Clean up credentials.
+- Update License following upstream changes.
+
+-------------------------------------------------------------------
+Wed Feb 16 12:33:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + New default & supplemental wallpapers in light and dark variants
+  + Updated guidelines.
+
+-------------------------------------------------------------------
 Mon Sep 13 07:21:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 41.0:
