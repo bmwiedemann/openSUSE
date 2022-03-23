@@ -1,7 +1,7 @@
 #
 # spec file for package netbeans-javaparser
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        NetBeans Java Parser
 License:        GPL-2.0-with-classpath-exception
 Group:          Development/Libraries/Java
-Url:            http://java.netbeans.org/javaparser/
+URL:            http://java.netbeans.org/javaparser/
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
 # hg clone http://hg.netbeans.org/main/nb-javac/
@@ -33,9 +33,9 @@ Url:            http://java.netbeans.org/javaparser/
 # tar -czvf ../nb-javac-6.8.tar.gz .
 Source0:        nb-javac-%{version}.tar.bz2
 BuildRequires:  ant
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
-Requires:       java >= 1.6.0
+Requires:       java >= 1.8
 Requires:       javapackages-tools
 BuildArch:      noarch
 
@@ -48,22 +48,20 @@ Java parser to analyse Java source files inside of the NetBeans IDE
 find . -name "*.jar" -exec rm -f {} \;
 
 %build
-[ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java
-ant \
+%{ant} \
     -f make/netbeans/nb-javac/build.xml \
-    -Djavac.source=1.6 -Djavac.target=1.6 \
+    -Djavac.source=1.8 -Djavac.target=1.8 \
     jar
 
 %install
 # jar
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 make/netbeans/nb-javac/dist/javac-api.jar %{buildroot}%{_javadir}/%{name}-api-%{version}.jar
-ln -s %{name}-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
-install -m 644 make/netbeans/nb-javac/dist/javac-impl.jar %{buildroot}%{_javadir}/%{name}-impl-%{version}.jar
-ln -s %{name}-impl-%{version}.jar %{buildroot}%{_javadir}/%{name}-impl.jar
+install -m 644 make/netbeans/nb-javac/dist/javac-api.jar %{buildroot}%{_javadir}/%{name}-api.jar
+install -m 644 make/netbeans/nb-javac/dist/javac-impl.jar %{buildroot}%{_javadir}/%{name}-impl.jar
 
 %files
-%doc ASSEMBLY_EXCEPTION LICENSE README
+%license LICENSE ASSEMBLY_EXCEPTION
+%doc ASSEMBLY_EXCEPTION README
 %{_javadir}/*
 
 %changelog

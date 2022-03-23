@@ -120,4 +120,12 @@ SPDX format (forwarded request 125631 from babelworx)</comment>
     <comment>Fix build with jdk9</comment>
     <requestid>527341</requestid>
   </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>1f5c53de796269cdbf668a8ad5fea7cd</srcmd5>
+    <version>6.8</version>
+    <time>1648063085</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964130</requestid>
+  </revision>
 </revisionlist>
