@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 19 10:08:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.6.2:
+  + GtkScrolledWindow:
+    - Set scroll-to-focus on viewports
+    - Avoid doubly triggering deceleration
+  + GtkEntry: Stop cursor blinking on focus-out
+  + Emoji:
+    - Update Emoji data to CLDR 40 and Unicode 14
+    - Add more locales for Emoji data
+  + GDK:
+    - Optimize texture conversions on x86 and ARM
+    - Use EGK_KHR_swap_buffers_with_damage if available
+  + GSK:
+    - Avoid clearing opaque regions
+    - Support using a non-default framebuffer
+    - Handle large viewports by tiling
+  + Wayland:
+    - Prefer xdg-activation over gtk-shell
+    - text protocol: Fix text caret location
+    - text protocol: Use serials to control outbound messages
+  + Inspector: Show app ID and resource path
+  + Demos: widget-factory: Handle F11 to toggle fullscreen
+  + Tools: gtk-builder-tool: Allow use without display
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 14 12:24:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gtk4-tools = %%{version} to devel sub-package.

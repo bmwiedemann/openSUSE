@@ -22,7 +22,7 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.6.1
+Version:        4.6.2
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -200,9 +200,9 @@ widget toolkit.
 %package devel
 Summary:        Development files for the GTK+ toolkit library v4
 Group:          Development/Libraries/X11
+Requires:       %{name}-tools = %{version}
 Requires:       gettext-its-%{name} >= %{version}
 Requires:       libgtk-4-1 = %{version}
-Requires:       %{name}-tools = %{version}
 Requires:       typelib-1_0-Gtk-4_0 = %{version}
 Requires:       vulkan-devel
 
@@ -352,6 +352,18 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/gtk-4.0/emoji/es.gresource
 %{_datadir}/gtk-4.0/emoji/fr.gresource
 %{_datadir}/gtk-4.0/emoji/zh.gresource
+%{_datadir}/gtk-4.0/emoji/da.gresource
+%{_datadir}/gtk-4.0/emoji/hu.gresource
+%{_datadir}/gtk-4.0/emoji/it.gresource
+%{_datadir}/gtk-4.0/emoji/ko.gresource
+%{_datadir}/gtk-4.0/emoji/lt.gresource
+%{_datadir}/gtk-4.0/emoji/ms.gresource
+%{_datadir}/gtk-4.0/emoji/nl.gresource
+%{_datadir}/gtk-4.0/emoji/pl.gresource
+%{_datadir}/gtk-4.0/emoji/pt.gresource
+%{_datadir}/gtk-4.0/emoji/ru.gresource
+%{_datadir}/gtk-4.0/emoji/sv.gresource
+%{_datadir}/gtk-4.0/emoji/uk.gresource
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.Demo4.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.IconBrowser4.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.WidgetFactory4.svg
