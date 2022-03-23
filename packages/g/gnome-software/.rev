@@ -836,4 +836,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>962637</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>e90ae3814c76fc515662c6130ba4b1e0</srcmd5>
+    <version>42.0</version>
+    <time>1648062956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963545</requestid>
+  </revision>
 </revisionlist>
