@@ -818,4 +818,27 @@
     <comment>- add vine dependency</comment>
     <requestid>945463</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>a08087d0038d7bce8709807e170a3232</srcmd5>
+    <version>5.2.4</version>
+    <time>1648062928</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.4:
+  * allow getting recoverable_connection_errors without an active transport
+  * [pre-commit.ci] pre-commit autoupdate
+  * prevent KeyError: 'purelib'
+  * Revert &quot;try pining setuptools (#1466)&quot;
+  * Fix issue #789: Async http code not allowing for proxy config
+  * The times of retrying is not correct
+  * Set redelivered property for Celery with Redis
+  * Some small updates
+  * Remove use of OrderedDict in various places
+  * Warn about missing hostname only when default one is available
+  * All supported versions of Python define package.
+  * Added global_keyprefix support for pubsub clients
+  * try pytest 7
+  * Add an option to not base64-encode SQS messages.
+  * SQS: Fix message arg in backoff policy</comment>
+    <requestid>963484</requestid>
+  </revision>
 </revisionlist>
