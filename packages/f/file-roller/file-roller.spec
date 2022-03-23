@@ -17,7 +17,7 @@
 
 
 Name:           file-roller
-Version:        3.40.0+51
+Version:        3.42.0
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14.0
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.5
 BuildRequires:  pkgconfig(libnautilus-extension)
 BuildRequires:  pkgconfig(libnotify) >= 0.4.3
 # Formats that we likely want to support by default
