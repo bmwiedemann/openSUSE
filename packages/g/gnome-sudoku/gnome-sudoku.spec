@@ -17,15 +17,13 @@
 
 
 Name:           gnome-sudoku
-Version:        40.2
+Version:        42.0
 Release:        0
 Summary:        Sudoku Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://wiki.gnome.org/Apps/Sudoku
-Source0:        https://download.gnome.org/sources/gnome-sudoku/40/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 7c9935a02b48f332f67bad3e4ee020b75591084a.patch -- Fix build with meson 0.60.0 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-sudoku/-/commit/7c9935a02b48f332f67bad3e4ee020b75591084a.patch
+Source0:        https://download.gnome.org/sources/gnome-sudoku/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
