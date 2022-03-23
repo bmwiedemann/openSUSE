@@ -8,7 +8,7 @@ Mon Feb 28 22:00:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
   * glslideshow displays relative pathnames again
   * X11: fixed sonar failing to ping on some Linux systems
   * X11: Touch-screens work
-  * X11: Hold down Backspace to clear the whole password field
+  * X11: Hold down Backspace to clear the whole password field (bsc#1196593)
 - drop xscreensaver-6.02-marbling-std-c.patch
 
 -------------------------------------------------------------------
