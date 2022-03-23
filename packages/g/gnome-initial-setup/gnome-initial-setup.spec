@@ -17,16 +17,16 @@
 
 
 Name:           gnome-initial-setup
-Version:        41.4
+Version:        42.0
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/OS/InitialSetup
-Source0:        https://download.gnome.org/sources/gnome-initial-setup/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-initial-setup/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  krb5-devel
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(accountsservice)
@@ -36,18 +36,19 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdm) >= 3.8.3
 BuildRequires:  pkgconfig(geocode-glib-1.0)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.53.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.7.5
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.1
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.11.3
-BuildRequires:  pkgconfig(gweather-3.0)
+BuildRequires:  pkgconfig(gweather4)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.3.1
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libnm) >= 1.2
 BuildRequires:  pkgconfig(libnma) >= 1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18.8
@@ -68,13 +69,13 @@ Initial assistant, helping you to get the system up and running.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson \
-        -Dparental_controls=disabled \
+	-D parental_controls=disabled \
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
-        -Dsystemd=false \
+	-D systemd=false \
 %endif
 	%{nil}
 %meson_build
@@ -82,6 +83,11 @@ Initial assistant, helping you to get the system up and running.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+
+# Move autostart file to /usr/etc
+ mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+ mv %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop %{buildroot}%{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
+ mv %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop %{buildroot}%{_distconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
 
 %pre
 useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
@@ -99,8 +105,10 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %{_datadir}/polkit-1/rules.d/20-gnome-initial-setup.rules
 %{_libexecdir}/gnome-initial-setup
 %{_libexecdir}/gnome-initial-setup-copy-worker
-%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
-%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
+#%%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
+%{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
+#%%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
+%{_distconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
 %if !0%{?sle_version} || 0%{?sle_version} >= 160000
 %{_userunitdir}/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-initial-setup-first-login.service

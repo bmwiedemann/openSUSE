@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Mar 18 15:59:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  5 17:01:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Initial Setup now supports the GNOME 42 dark theme preference,
+    and picks up a dependency on libhandy to enable this. This will
+    only have a visible impact if a distribution overrides the
+    default value of this preference, since there is no way for a
+    user to adjust this preference until Initial Setup is complete.
+  + Updated translations.
+- Add pkgconfig(libhandy-1) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Thu Feb 10 23:14:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Bugs fixed:
+    - welcome: tweak illustration
+    - Load GisLocationEntry type before page template
+  + Updated translations.
+- Move autostart .desktop files to distconfdir.
+
+-------------------------------------------------------------------
+Thu Feb 10 18:47:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable pkgconfig(gnome-desktop-4) and pkgconfig(gweather4)
+  BuildRequires then drop pkgconfig(gnome-desktop-3.0) and
+  pkgconfig(gweather-3.0), no longer needed nor used.
+
+-------------------------------------------------------------------
+Thu Feb 10 17:49:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.alpha.1:
+  + Fix gweather4 pkg-config name.
+  + Fix project license identifier in Meson build rules.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 10 17:48:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.alpha:
+  + Initial Setup now depends on libgweather-4 and gnome-desktop-4,
+    rather than their predecessors. Meson wrap files are provided
+    in case these dependencies are not available.
+  + The third-party software sources page has been tweaked to more
+    accurately describe what the switch does, and to replace the
+    switch with a suggested-action toggle button. (This page is
+    currently Fedora-specific; patches welcome!)
+  + The COPYING file has been clarified to contain only a copy of
+    GPL version 2. Previously it also contained a copy of LGPL
+    version 2 (not 2.1). There is no change to the actual licensing
+    of GNOME Initial Setup: as before, it is distributed under the
+    terms of the GNU General Public License, version 2 or later.
+  + The summary page widget tree has been simplified, with no
+    visual change.
+  + Some Meson deprecation warnings have been addressed. Meson
+    0.53.0 or newer is now required to build Initial Setup.
+  + Updated translations.
+- Add disabled pkgconfig(gnome-desktop-4) and
+  pkgconfig(gweather4) BuildRequires, currently not available on
+  openSUSE following upstream changes.
+
+-------------------------------------------------------------------
 Thu Feb 10 17:47:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.4:
