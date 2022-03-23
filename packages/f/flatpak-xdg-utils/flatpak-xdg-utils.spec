@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak-xdg-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,16 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           flatpak-xdg-utils
 Summary:        Command-line tools for use inside Flatpak sandboxes
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/flatpak-xdg-utils
-Source:         https://github.com/flatpak/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  gcc
+BuildRequires:  c_compiler
 BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 
 Requires:       flatpak-spawn
