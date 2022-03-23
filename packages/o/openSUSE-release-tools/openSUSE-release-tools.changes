@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 23 15:42:45 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220323.bd336586:
+  * Remove rpmlint check from check_source
+  * Small fixes for staging-installcheck
+  * Add osc-pcheck: support devel prj maintainers
+
+-------------------------------------------------------------------
+Wed Mar 23 14:16:39 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- just testing
+
+-------------------------------------------------------------------
+Wed Mar 23 10:35:13 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220323.ad923e6f:
+  * Add some documentation for pkglistgen staging workflow
+  * accept: Create pkglistgen .changes entry and commit
+  * Prepare applying pkglistgen diffs on staging accept
+
+-------------------------------------------------------------------
+Tue Mar 22 14:29:18 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220322.e78b5352:
+  * staging-installcheck: Exit 1 for the letter stagings
+
+-------------------------------------------------------------------
 Mon Mar 21 16:39:25 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220321.48333852:
