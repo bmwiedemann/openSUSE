@@ -20,11 +20,11 @@
 %define         oldpython python
 %bcond_with test
 Name:           python-Cython
-Version:        0.29.27
+Version:        0.29.28
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
-URL:            http://www.cython.org
+URL:            https://cython.org/
 Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%{version}.tar.gz
 Source1:        python-Cython-rpmlintrc
 BuildRequires:  %{python_module devel}
