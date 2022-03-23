@@ -1,7 +1,7 @@
 #
 # spec file for package swing-worker
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,17 @@ Name:           swing-worker
 Version:        1.2
 Release:        0
 Summary:        UI updates support for long running tasks
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-Url:            https://swingworker.dev.java.net/
+URL:            https://swingworker.dev.java.net/
 Source0:        %{name}-src-%{version}.tar.bz2
 Source1:        releasenotes.txt
 Patch0:         swing-worker-1.2-nosource.patch
 Patch1:         swing-worker-1.2-encoding.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
-Requires:       java
+BuildRequires:  java-devel >= 1.8
+Requires:       java >= 1.8
 BuildArch:      noarch
 
 %description
@@ -72,14 +72,13 @@ sed -i -e 's/.$//' releasenotes.txt COPYING
 
 %build
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     bundles
 
 %install
 install -d -m 755 %{buildroot}/%{_javadir}
 # jars
-install -pm 644 dist/bundles/%{name}.jar %{buildroot}/%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir}/ && for jar in *-%{version}*; do ln -sf ${jar} ${jar/-%{version}/}; done)
+install -pm 644 dist/bundles/%{name}.jar %{buildroot}/%{_javadir}/%{name}.jar
 # javadoc
 install -d -m 755 %{buildroot}/%{_javadocdir}/%{name}
 cp -pr dist/javadoc/* %{buildroot}/%{_javadocdir}/%{name}
@@ -90,7 +89,8 @@ cp -pr src/demo %{buildroot}/%{_datadir}/%{name}
 %fdupes -s %{buildroot}/%{_datadir}/%{name}
 
 %files
-%doc COPYING releasenotes.txt
+%license COPYING
+%doc releasenotes.txt
 %{_javadir}/*.jar
 
 %files javadoc
