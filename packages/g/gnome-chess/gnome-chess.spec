@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-chess
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           gnome-chess
-Version:        41.1
+Version:        42.0
 Release:        0
 Summary:        Chess Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://wiki.gnome.org/Apps/Chess
-Source0:        https://download.gnome.org/sources/gnome-chess/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-chess/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-# ITS Tool is needed because there are some XML formats that Gettext does not handle, at least not now (3.27.2).
+# ITS Tool is needed because there are some XML formats that Gettext does not handle, at least not now (42.alpha).
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gtk4) >= 3.19.0
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 Requires:       chess_backend
 

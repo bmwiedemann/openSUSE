@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 18 05:13:45 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan  7 17:46:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.alpha:
+  + Use libadwaita.
+- Add pkgconfig(libadwaita-1) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
 Fri Oct 29 18:02:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:
