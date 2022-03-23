@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 15:53:42 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to 3.5+1647618797.gb7bc626.
+  + ceph_iscsi_config: disable emulate_legacy_capacity (bsc#1179557)
+
+-------------------------------------------------------------------
 Thu Dec  2 18:49:22 UTC 2021 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to 3.5+1638408991.g5341b5d
