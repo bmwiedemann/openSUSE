@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:27:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 09:25:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.49.90:
+  + http/dav: Port to libsoup3.
+  + http: Do not silently accept invalid certificates.
+  + build: Remove incorrect i18n.merge_file argument to fix build.
+  + Updated translations.
+- Drop 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch: Fixed
+  upstream.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
+Tue Feb  8 17:41:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch: Use
+  upstream commit.
+
+-------------------------------------------------------------------
 Tue Feb  8 17:40:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch: Fix build
@@ -10,6 +35,18 @@ Sat Jan 15 20:57:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 - Modernize and fix our Supplements.
 - Package org.gtk.vfs.file-operations.rules polkit rules file as an
   example in docs, previously it was just nuked.
+
+-------------------------------------------------------------------
+Fri Jan  7 18:12:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.49.1:
+  + sftp: Adapt on new OpenSSH password prompts
+  + build: Set of improvements for meson
+  + Add PartOf=graphical-session.target to all systemd units
+  + Move systemd services to session slice
+  + Updated translations.
+- Pass systemduserunitdir=%%{_userunitdir} to meson, ensure we
+  set the correct dir for systemduserunitdir.
 
 -------------------------------------------------------------------
 Thu Sep 16 01:56:26 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
