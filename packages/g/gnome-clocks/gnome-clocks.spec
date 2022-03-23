@@ -18,32 +18,31 @@
 
 
 Name:           gnome-clocks
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
-Source0:        https://download.gnome.org/sources/gnome-clocks/41/%{name}-%{version}.tar.xz
-
+Source0:        https://download.gnome.org/sources/gnome-clocks/42/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  vala >= 0.23.3
+BuildRequires:  vala >= 0.55.1
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 1.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.8
+BuildRequires:  pkgconfig(gnome-desktop-4) >= 3.8
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsound) >= 0.98
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-BuildRequires:  pkgconfig(gweather-3.0) >= 3.32.0
+BuildRequires:  pkgconfig(gtk4) >= 4.5
+BuildRequires:  pkgconfig(gweather4) >= 3.32.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.0
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.4
-BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
 
 %description
 A nice simple app to show the time, date, and alarms.
