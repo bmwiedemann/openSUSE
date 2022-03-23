@@ -1,7 +1,7 @@
-Index: gnome-shell-extensions-3.34.2/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-42.rc/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-3.34.2.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-3.34.2/extensions/apps-menu/extension.js
+--- gnome-shell-extensions-42.rc.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-42.rc/extensions/apps-menu/extension.js
 @@ -5,6 +5,8 @@ const {
      Atk, Clutter, Gio, GLib, GMenu, GObject, Gtk, Meta, Shell, St,
  } = imports.gi;
@@ -11,7 +11,7 @@ Index: gnome-shell-extensions-3.34.2/extensions/apps-menu/extension.js
  
  const DND = imports.ui.dnd;
  const ExtensionUtils = imports.misc.extensionUtils;
-@@ -46,8 +48,19 @@ class ApplicationMenuItem extends PopupM
+@@ -48,8 +50,19 @@ class ApplicationMenuItem extends PopupM
          let textureCache = St.TextureCache.get_default();
          let iconThemeChangedId = textureCache.connect('icon-theme-changed',
              this._updateIcon.bind(this));
@@ -31,7 +31,7 @@ Index: gnome-shell-extensions-3.34.2/extensions/apps-menu/extension.js
          });
          this._updateIcon();
  
-@@ -62,6 +75,107 @@ class ApplicationMenuItem extends PopupM
+@@ -64,6 +77,107 @@ class ApplicationMenuItem extends PopupM
          };
      }
  

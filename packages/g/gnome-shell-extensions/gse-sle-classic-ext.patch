@@ -1,7 +1,7 @@
-Index: gnome-shell-extensions-41.2/extensions/window-list/extension.js
+Index: gnome-shell-extensions-42.beta/extensions/window-list/extension.js
 ===================================================================
---- gnome-shell-extensions-41.2.orig/extensions/window-list/extension.js
-+++ gnome-shell-extensions-41.2/extensions/window-list/extension.js
+--- gnome-shell-extensions-42.beta.orig/extensions/window-list/extension.js
++++ gnome-shell-extensions-42.beta/extensions/window-list/extension.js
 @@ -177,6 +177,9 @@ class WindowTitle extends St.BoxLayout {
      }
  });
@@ -164,10 +164,10 @@ Index: gnome-shell-extensions-41.2/extensions/window-list/extension.js
          Main.overview.hide = this._hideOverviewOrig;
      }
  
-Index: gnome-shell-extensions-41.2/extensions/window-list/sle-classic.css
+Index: gnome-shell-extensions-42.beta/extensions/window-list/sle-classic.css
 ===================================================================
 --- /dev/null
-+++ gnome-shell-extensions-41.2/extensions/window-list/sle-classic.css
++++ gnome-shell-extensions-42.beta/extensions/window-list/sle-classic.css
 @@ -0,0 +1,46 @@
 +@import url("stylesheet.css");
 +
@@ -215,10 +215,10 @@ Index: gnome-shell-extensions-41.2/extensions/window-list/sle-classic.css
 +    color: #888;
 +    box-shadow: inset -1px -1px 1px rgba(0,0,0,0.5);
 +  }
-Index: gnome-shell-extensions-41.2/extensions/places-menu/extension.js
+Index: gnome-shell-extensions-42.beta/extensions/places-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-41.2.orig/extensions/places-menu/extension.js
-+++ gnome-shell-extensions-41.2/extensions/places-menu/extension.js
+--- gnome-shell-extensions-42.beta.orig/extensions/places-menu/extension.js
++++ gnome-shell-extensions-42.beta/extensions/places-menu/extension.js
 @@ -139,6 +139,10 @@ function init() {
  
  let _indicator;
@@ -242,10 +242,10 @@ Index: gnome-shell-extensions-41.2/extensions/places-menu/extension.js
  }
  
  /** */
-Index: gnome-shell-extensions-41.2/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-42.beta/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-41.2.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-41.2/extensions/apps-menu/extension.js
+--- gnome-shell-extensions-42.beta.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-42.beta/extensions/apps-menu/extension.js
 @@ -26,6 +26,10 @@ const NAVIGATION_REGION_OVERSHOOT = 50;
  Gio._promisify(Gio._LocalFilePrototype, 'query_info_async', 'query_info_finish');
  Gio._promisify(Gio._LocalFilePrototype, 'set_attributes_async', 'set_attributes_finish');
@@ -257,7 +257,7 @@ Index: gnome-shell-extensions-41.2/extensions/apps-menu/extension.js
  var ApplicationMenuItem = GObject.registerClass(
  class ApplicationMenuItem extends PopupMenu.PopupBaseMenuItem {
      _init(button, app) {
-@@ -699,8 +703,6 @@ class ApplicationsButton extends PanelMe
+@@ -703,8 +707,6 @@ class ApplicationsButton extends PanelMe
          this.applicationsByCategory = {};
          this._tree.load_sync();
          let root = this._tree.get_root_directory();
@@ -266,7 +266,7 @@ Index: gnome-shell-extensions-41.2/extensions/apps-menu/extension.js
          let iter = root.iter();
          let nextType;
          while ((nextType = iter.next()) !== GMenu.TreeItemType.INVALID) {
-@@ -715,11 +717,15 @@ class ApplicationsButton extends PanelMe
+@@ -719,11 +721,15 @@ class ApplicationsButton extends PanelMe
              this.applicationsByCategory[categoryId] = [];
              this._loadCategory(categoryId, dir);
              if (this.applicationsByCategory[categoryId].length > 0) {
@@ -284,7 +284,7 @@ Index: gnome-shell-extensions-41.2/extensions/apps-menu/extension.js
          // Load applications
          this._displayButtons(this._listApplications(null));
  
-@@ -783,7 +789,10 @@ let appsMenuButton;
+@@ -787,7 +793,10 @@ let appsMenuButton;
  function enable() {
      appsMenuButton = new ApplicationsButton();
      let index = Main.sessionMode.panel.left.indexOf('activities') + 1;
@@ -296,11 +296,11 @@ Index: gnome-shell-extensions-41.2/extensions/apps-menu/extension.js
  }
  
  /** */
-Index: gnome-shell-extensions-41.2/data/gnome-classic.css
+Index: gnome-shell-extensions-42.beta/data/gnome-classic.css
 ===================================================================
---- gnome-shell-extensions-41.2.orig/data/gnome-classic.css
-+++ gnome-shell-extensions-41.2/data/gnome-classic.css
-@@ -2619,9 +2619,9 @@ StScrollBar {
+--- gnome-shell-extensions-42.beta.orig/data/gnome-classic.css
++++ gnome-shell-extensions-42.beta/data/gnome-classic.css
+@@ -2262,9 +2262,9 @@ StScrollBar {
    #panel.solid .panel-corner:focus {
      -panel-corner-radius: 0; }
    #panel.lock-screen, #panel.unlock-screen, #panel.login-screen, #panel.solid.lock-screen, #panel.solid.unlock-screen, #panel.solid.login-screen {
@@ -312,18 +312,18 @@ Index: gnome-shell-extensions-41.2/data/gnome-classic.css
 +    background-gradient-end: none;
      border-bottom: none; }
      #panel.lock-screen .panel-button, #panel.unlock-screen .panel-button, #panel.login-screen .panel-button, #panel.solid.lock-screen .panel-button, #panel.solid.unlock-screen .panel-button, #panel.solid.login-screen .panel-button {
-       color: white; }
-@@ -2649,3 +2649,6 @@ StScrollBar {
+       color: #eeeeec; }
+@@ -2292,3 +2292,6 @@ StScrollBar {
  
  .calendar-day-with-events {
    background-image: url("calendar-today.svg"); }
 +
 +.popup-menu.panel-menu {
 +    margin-bottom: 0em; }
-Index: gnome-shell-extensions-41.2/extensions/workspace-indicator/extension.js
+Index: gnome-shell-extensions-42.beta/extensions/workspace-indicator/extension.js
 ===================================================================
---- gnome-shell-extensions-41.2.orig/extensions/workspace-indicator/extension.js
-+++ gnome-shell-extensions-41.2/extensions/workspace-indicator/extension.js
+--- gnome-shell-extensions-42.beta.orig/extensions/workspace-indicator/extension.js
++++ gnome-shell-extensions-42.beta/extensions/workspace-indicator/extension.js
 @@ -321,7 +321,8 @@ class WorkspaceIndicator extends PanelMe
      _updateThumbnailVisibility() {
          const { workspaceManager } = global;
@@ -334,10 +334,10 @@ Index: gnome-shell-extensions-41.2/extensions/workspace-indicator/extension.js
              vertical || workspaceManager.n_workspaces > MAX_THUMBNAILS;
          this.reactive = useMenu;
  
-Index: gnome-shell-extensions-41.2/extensions/workspace-indicator/stylesheet.css
+Index: gnome-shell-extensions-42.beta/extensions/workspace-indicator/stylesheet.css
 ===================================================================
---- gnome-shell-extensions-41.2.orig/extensions/workspace-indicator/stylesheet.css
-+++ gnome-shell-extensions-41.2/extensions/workspace-indicator/stylesheet.css
+--- gnome-shell-extensions-42.beta.orig/extensions/workspace-indicator/stylesheet.css
++++ gnome-shell-extensions-42.beta/extensions/workspace-indicator/stylesheet.css
 @@ -1,5 +1,7 @@
  .panel-workspace-indicator {
    padding: 0 8px;

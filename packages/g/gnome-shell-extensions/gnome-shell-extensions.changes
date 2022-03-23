@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar 13 09:22:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  7 18:34:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Rebase patches with quilt.
+- Disable gse-sle-classic-ext.patch: Fails to apply. This means
+  disabling sle classic desktop variant too.
+
+-------------------------------------------------------------------
+Tue Feb 15 22:33:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + workspace-indicator: Fix cancelling editing with Esc
+  + window-list: Update window tracking to avoid missing icons
+  + Use libadwaita for preferences
+  + Adapt to Clutter grab API changes
+  + Misc. bug fixes and cleanups.
+- Drop cdaa837d48894737ca0b4e7d2dfb365119e53759.patch: Fixed
+  upstream.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
+Tue Feb 15 21:22:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase cdaa837d48894737ca0b4e7d2dfb365119e53759.patch: Use
+  upstream commit.
+
+-------------------------------------------------------------------
 Tue Feb 15 20:22:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:
@@ -10,6 +45,13 @@ Thu Feb  3 05:51:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add cdaa837d48894737ca0b4e7d2dfb365119e53759.patch: Fix build
   with meson 0.61 and newer. Backported to apply on stable version.
+
+-------------------------------------------------------------------
+Wed Jan 12 10:29:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.alpha:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
 
 -------------------------------------------------------------------
 Mon Dec 13 16:10:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>

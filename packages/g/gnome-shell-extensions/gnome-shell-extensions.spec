@@ -19,25 +19,24 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        41.2
+Version:        42.0
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        https://download.gnome.org/sources/gnome-shell-extensions/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-shell-extensions/42/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        sle-classic.desktop
 Source5:        sle-classic.json
 Source6:        sle-classic@suse.com.tar.gz
 Source7:        00_org.gnome.shell.extensions.sle-classic.gschema.override
-# PATCH-FIX-UPSTREAM cdaa837d48894737ca0b4e7d2dfb365119e53759.patch -- Fix build with meson 0.61 and newer
-Patch0:         cdaa837d48894737ca0b4e7d2dfb365119e53759.patch
+
 # PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
 Patch1:         gnome-shell-add-app-to-desktop.patch
 
 ## NOTE keep SLE Classic patch at the bottom
-# PATCH-FIX-SLE gse-sle-classic-ext.patch Fate#318572 cxiong@suse.com -- add sle classic support
+# PATCH-NEEDS-REBASE gse-sle-classic-ext.patch Fate#318572 cxiong@suse.com -- add sle classic support Was:PATCH-FIX-SLE
 Patch1000:      gse-sle-classic-ext.patch
 BuildRequires:  fdupes
 # Needed for directory ownership
@@ -102,10 +101,11 @@ to pick system installed themes or even themes installed in the user's home.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 
-%patch1000 -p1
+# Patch needs rebase
+#%%patch1000 -p1
+
 # In openSUSE GNOME, we don't launch gnome-session directly, but wrap this through a shell script, /usr/bin/gnome
 sed -i "s:Exec=gnome-session:Exec=gnome:g" data/gnome-classic.desktop.in
 cp %{SOURCE1} .
@@ -125,14 +125,14 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %find_lang %{name} %{?no_lang_C}
 #Install SLE theme
 #Install sle-classic@suse.com extension
-install -m0644 %{SOURCE2} %{buildroot}/%{_datadir}/xsessions/sle-classic.desktop
-cp %{_builddir}/%{name}-%{version}/extensions/window-list/sle-classic.css \
-%{buildroot}/%{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/sle-classic.css
-install -m0644 %{SOURCE5} %{buildroot}/%{_datadir}/gnome-shell/modes/sle-classic.json
-tar -xzvf %{SOURCE6}
-install -d %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
-cp sle-classic@suse.com/*  %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
-install -m0644 %{SOURCE7} %{buildroot}/%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
+#install -m0644 %{SOURCE2} %{buildroot}/%{_datadir}/xsessions/sle-classic.desktop
+#cp %{_builddir}/%{name}-%{version}/extensions/window-list/sle-classic.css \
+#%{buildroot}/%{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/sle-classic.css
+#install -m0644 %{SOURCE5} %{buildroot}/%{_datadir}/gnome-shell/modes/sle-classic.json
+#tar -xzvf %{SOURCE6}
+#install -d %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
+#cp sle-classic@suse.com/*  %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
+#install -m0644 %{SOURCE7} %{buildroot}/%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
 %fdupes %{buildroot}%{_datadir}
 
 %if 0%{?sle_version}
@@ -163,7 +163,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.classic.gschema.override
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.apps-menu.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.window-list.gschema.xml
-%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
+#%%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
 %dir %{_datadir}/gnome-shell/extensions
 %{_datadir}/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com/
@@ -179,13 +179,17 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/gnome-shell/theme/classic-toggle-off-us.svg
 %{_datadir}/gnome-shell/theme/classic-toggle-on-intl.svg
 %{_datadir}/gnome-shell/theme/classic-toggle-on-us.svg
-%{_datadir}/gnome-shell/theme/gnome-classic.css
 %{_datadir}/gnome-shell/theme/gnome-classic-high-contrast.css
+%{_datadir}/gnome-shell/theme/gnome-classic.css
+%dir %{_datadir}/wayland-sessions
+%{_datadir}/wayland-sessions/gnome-classic-wayland.desktop
+%{_datadir}/wayland-sessions/gnome-classic.desktop
+%{_datadir}/xsessions/gnome-classic-xorg.desktop
 %{_datadir}/xsessions/gnome-classic.desktop
-%{_datadir}/xsessions/sle-classic.desktop
-%{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/sle-classic.css
-%{_datadir}/gnome-shell/modes/sle-classic.json
-%{_datadir}/gnome-shell/extensions/sle-classic@suse.com/
+#%%{_datadir}/xsessions/sle-classic.desktop
+#%{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/sle-classic.css
+#%{_datadir}/gnome-shell/modes/sle-classic.json
+#%{_datadir}/gnome-shell/extensions/sle-classic@suse.com/
 %if 0%{?sle_version}
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/xsessions/default.desktop
