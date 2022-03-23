@@ -1,0 +1,46 @@
+From 63b41f22a9f5c9aed64f63b1c07a162bcfd21f7f Mon Sep 17 00:00:00 2001
+From: "v.v.mitrofanov" <v.v.mitrofanov@yadro.com>
+Date: Fri, 4 Feb 2022 14:57:30 +0300
+Subject: [PATCH] util: Add barriers support for RISC-V
+
+Add barriers support for RISC-V architecture
+
+Signed-off-by: v.v.mitrofanov <v.v.mitrofanov@yadro.com>
+---
+ util/udma_barrier.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/util/udma_barrier.h b/util/udma_barrier.h
+index 5730576e..ea562b18 100644
+--- a/util/udma_barrier.h
++++ b/util/udma_barrier.h
+@@ -98,6 +98,8 @@
+ #define udma_to_device_barrier() asm volatile("" ::: "memory")
+ #elif defined(__loongarch__)
+ #define udma_to_device_barrier() asm volatile("dbar 0" ::: "memory")
++#elif defined(__riscv)
++#define udma_to_device_barrier() asm volatile("fence ow,ow" ::: "memory")
+ #else
+ #error No architecture specific memory barrier defines found!
+ #endif
+@@ -132,6 +134,8 @@
+ #define udma_from_device_barrier() asm volatile("" ::: "memory")
+ #elif defined(__loongarch__)
+ #define udma_from_device_barrier() asm volatile("dbar 0" ::: "memory")
++#elif defined(__riscv)
++#define udma_from_device_barrier() asm volatile("fence ir,ir" ::: "memory")
+ #else
+ #error No architecture specific memory barrier defines found!
+ #endif
+@@ -198,6 +202,8 @@
+ #define mmio_flush_writes() asm volatile("" ::: "memory")
+ #elif defined(__loongarch__)
+ #define mmio_flush_writes() asm volatile("dbar 0" ::: "memory")
++#elif defined(__riscv)
++#define mmio_flush_writes() asm volatile("fence ow,ow" ::: "memory")
+ #else
+ #error No architecture specific memory barrier defines found!
+ #endif
+-- 
+2.35.0
+

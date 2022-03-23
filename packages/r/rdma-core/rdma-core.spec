@@ -54,7 +54,7 @@ Group:          Productivity/Networking/Other
 %define  mlx4_lname   libmlx4-%{mlx4_so_major}
 %define  mlx5_lname   libmlx5-%{mlx5_so_major}
 
-%ifnarch s390 %arm riscv64
+%ifnarch s390 %arm
 %define dma_coherent 1
 %endif
 
@@ -79,6 +79,7 @@ Patch3:         cxgb3-fix-declaration-of-free_context.patch
 Patch4:         cxgb3-fix-support-for-new-uquery-API.patch
 Patch5:         srp_daemon-Detect-proper-path-to-systemctl.patch
 Patch6:         cmake-Make-modprobe.d-path-configurable.patch
+Patch7:         util-Add-barriers-support-for-RISC-V.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -424,6 +425,7 @@ easy, object-oriented access to IB verbs.
 %patch4
 %patch5
 %patch6
+%patch7 -p1
 
 %build
 

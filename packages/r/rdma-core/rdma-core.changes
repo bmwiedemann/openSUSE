@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 13:41:47 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- util-Add-barriers-support-for-RISC-V.patch: Backport from upstream: Add
+  barriers support for RISC-V
+
+-------------------------------------------------------------------
 Thu Mar 10 08:24:00 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update spec file from upstream
