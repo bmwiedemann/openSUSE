@@ -1,7 +1,7 @@
 #
 # spec file for package netcomponents
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,16 @@ Release:        0
 Summary:        Internet Protocol Suite Java Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-Url:            http://www.savarese.org/java/
-Source:         http://www.savarese.org/downloads/NetComponents/NetComponents-1.3.8-src.tar.gz
+URL:            https://www.savarese.org/java/
+# Link does not work any more
+# Source:         http://www.savarese.org/downloads/NetComponents/NetComponents-1.3.8-src.tar.gz
+Source:         NetComponents-1.3.8-src.tar.gz
 Patch0:         %{name}-java14compat.patch
 # PATCH-FIX-OPENSUSE Fix build due to non-existent overview-frame.html file
 Patch1:         netcomponents-overview-frame.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  xml-commons-apis
 BuildArch:      noarch
 
@@ -73,21 +76,21 @@ This package contains the javadoc documentation for netcomponents.
 
 %build
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     jar javadocs
 
 %install
 # jar
 mkdir -p %{buildroot}%{_javadir}
-cp -p build/lib/NetComponents-%{version}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+cp -p build/lib/NetComponents-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -pr build/docs/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files
-%doc CHANGES README COPYRIGHT LICENSE
+%license LICENSE
+%doc CHANGES README COPYRIGHT
 %{_javadir}/*
 
 %files javadoc
