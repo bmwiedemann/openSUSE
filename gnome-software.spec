@@ -16,22 +16,20 @@
 #
 
 
-%define gs_plugin_api 16
+%define gs_plugin_api 17
 
 Name:           gnome-software
-Version:        41.5
+Version:        42.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-software/42/%{name}-%{version}.tar.xz
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
-# PATCH-FIX-UPSTREAM gnome-software-flatpak-refresh-no-interaction.patch bsc#1123722 glgo#GNOME/gnome-software!1145 sckang@suse.com -- flatpak: Set no-interaction correctly when refreshing
-Patch1:         gnome-software-flatpak-refresh-no-interaction.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
@@ -46,12 +44,14 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.11.5
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.18.0
 BuildRequires:  pkgconfig(gspell-1)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
+#BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(malcontent-0) >= 0.3.0
 BuildRequires:  pkgconfig(ostree-1)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.0
@@ -90,9 +90,10 @@ GNOME software store plugins.
 
 %build
 %meson \
-	-Dtests=false \
-	-Dvalgrind=false \
-	-Dmalcontent=true \
+	-D tests=false \
+	-D valgrind=false \
+	-D malcontent=true \
+	-D soup2=true \
 	%{nil}
 %meson_build
 
@@ -102,15 +103,18 @@ GNOME software store plugins.
 
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
+# Move autostart file to /usr/etc
+mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildroot}%{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
 
 %files
 %license COPYING
 %doc NEWS README.md
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
 %dir %{_datadir}/app-info
 %dir %{_datadir}/app-info/xmls
 %{_datadir}/app-info/xmls/org.gnome.Software.Featured.xml
+%{_datadir}/app-info/xmls/org.gnome.Software.Popular.xml
 %{_datadir}/metainfo/org.gnome.Software.appdata.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Fwupd.metainfo.xml
@@ -127,11 +131,11 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}
 %{_libdir}/gnome-software/libgnomesoftware.so.%{gs_plugin_api}
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/*.so
-#{_libexecdir}/gnome-software-service
 %{_libexecdir}/gnome-software-cmd
 %{_libexecdir}/gnome-software-restarter
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
+#%%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop
+%{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
 
 %files devel
 %doc AUTHORS

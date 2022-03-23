@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:57:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Various fixes related to changed threading model.
+  + Added several appstream-related fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 18 09:56:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Cancel ongoing update downloads when system power is low
+  + Numerous small user interface fixes and tweaks
+  + Prioritize full matches in search results
+  + Improvements in dark mode
+  + Fix disabling flatpak remotes from the ‘Software Repositories’
+    dialog
+  + Threading and performance improvements which should reduce the
+    number of user interface freezes
+  + Update some icons
+  + Check for updates when moving from a metered to a non-metered
+    network connection
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 18 09:56:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Allow --verbose to be enabled at runtime
+  + Condense the rows in the age rating context dialog
+  + Update the UI for ratings and reviews of apps
+  + Improve the appearance of the category page loading screen
+  + Drop the first run dialog
+  + Improvements to dark theming
+  + Support viewing a specific metainfo file using --show-metainfo
+  + Several more threading improvements
+  + Icon updates
+  + Drop the hardcoded-popular plugin in favour of an appstream
+    file
+  + The background image for upgrades is now looked for using
+    several well-known (and distribution-specific) names in
+    ${DATADIR}/gnome-software/backgrounds, and the previous
+    Fedora-specific default background image is no longer
+    distributed. Similarly, the upgrade-background-uri GSettings
+    key has been removed. Distributions may need to update how they
+    ship background images. See doc/vendor-customisation.md.
+  + Updated translations.
+- Move autostart .desktop to distconfdir.
+
+-------------------------------------------------------------------
+Fri Mar 18 09:56:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.alpha:
+  + Various UI parts updated
+  + Support more markup in the application description
+  + Ask about package signature with PackageKit on signing issue
+  + Show better System Update progress
+- Drop gnome-software-flatpak-refresh-no-interaction.patch: Fixed
+  upstream.
+- Add pkgconfig(gtk4) and  pkgconfig(libadwaita-1) BuildRequires
+  following upstream changes.
+- Drop pkgconfig(gtk-3.0) BuildRequires following upstream changes.
+- Add disabled pkgconfig(libsoup-3.0) BuildRequires: We can not yet
+  enable this, as our flatpak is still built with libsoup-2.4.
+  Following this, pass soup2=true to meson to force the use of old
+  libsoup.
+- Bump gs_plugin_api define to 17 following upstream changes.
+
+-------------------------------------------------------------------
 Fri Mar 18 09:56:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.5:
