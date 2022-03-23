@@ -17,13 +17,13 @@
 
 
 Name:           gnome-maps
-Version:        41.4
+Version:        42.0
 Release:        0
 Summary:        Maps Application for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Maps
-Source0:        https://download.gnome.org/sources/gnome-maps/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-maps/42/%{name}-%{version}.tar.xz
 
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection

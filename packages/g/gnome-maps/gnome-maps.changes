@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Mar 19 10:11:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  5 13:00:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Save visibility of the scale in gsettings so it's remembered
+    between runs
+  + Update OSM POI definitions for OSM editing
+  + Correctly set the initially selected date in the calendar
+    widget for public transit routing, so that the date is always
+    set to today when first selecting a date, even if Maps was
+    started on an earlier day
+  + Fix some incositencies when showing times for public transit
+    itineraries
+  + Update appdata screenshots
+  + Use tabular numbers for time labels in the public transit
+    itinerary views to keep things tidily lined up vertically
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 12 09:35:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Fix build with Meson 0.60+
+  + Update required libhandy version
+  + Use the location portal when sandboxed
+  + Only use location bias when searching on high zoom levels, to
+    work around problems with finding some locations (such as
+    cities) with the Photon search API
+  + Fix shortcuts overlay for development builds
+  + Support alternative OpenStreetMap location URLs format in the
+    search bar
+  + Updated translations.
+- Drop def20cbb26e59e5023fe157e691de48d7afe7210.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Feb 12 09:35:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.alpha:
+  + Add more fine-tuned initial zoom levels for more place types.
+  + Add support for maps: URIs, DBus action, and command line
+    option to initiate a search.
+  + Show icons for u-turns in turn-by-turn routing.
+  + Add dual-installation support (with devel icon for nightly).
+  + Implement support for the new "prefer dark style" setting.
+  + Improvements to appdata metadata.
+  + Updated translations.
+- Rebase def20cbb26e59e5023fe157e691de48d7afe7210.patch, use
+  upstream commit.
+
+-------------------------------------------------------------------
 Sat Feb 12 09:35:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.4:
