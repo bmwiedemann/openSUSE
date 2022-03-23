@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 19:27:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.2:
+  * remote: do store the update_tips callback error value
+
+-------------------------------------------------------------------
 Sat Feb 19 07:58:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.1:
