@@ -1,14 +1,15 @@
+<?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="url">https://gitlab.gnome.org/GNOME/vte.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">refs/tags/0.66.2</param>
+    <param name="revision">refs/tags/0.67.90</param>
     <param name="exclude">doc/vttest.*</param>
   </service>
-  <service mode="buildtime" name="tar" />
-  <service mode="buildtime" name="recompress">
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
