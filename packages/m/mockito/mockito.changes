@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 07:20:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Wed Mar 25 11:45:10 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Fetch sources using source service instead of script

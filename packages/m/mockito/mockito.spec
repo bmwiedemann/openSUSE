@@ -1,7 +1,7 @@
 #
 # spec file for package mockito
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ BuildRequires:  cglib
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  hamcrest
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  objenesis
@@ -79,7 +80,7 @@ mkdir -p lib/compile lib/build lib/run lib/repackaged
 
 %build
 build-jar-repository lib/compile objenesis cglib junit hamcrest/core
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 jar javadoc prepare.poms
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar javadoc prepare.poms
 
 # Convert to OSGi bundle
 bnd wrap \
