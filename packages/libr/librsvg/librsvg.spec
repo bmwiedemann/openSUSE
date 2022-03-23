@@ -16,29 +16,35 @@
 #
 
 
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+
 # Don't forget to update this in baselibs.conf too!
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.52.8
+Version:        2.54.0
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
-Source0:        https://download.gnome.org/sources/librsvg/2.52/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
+Source2:        vendor.tar.xz
+Source3:        cargo_config
 Source99:       baselibs.conf
 
-BuildRequires:  cargo
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.40
+BuildRequires:  python3-docutils
+BuildRequires:  rust-packaging
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(cairo-png) >= 1.2.0
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2) >= 20.0.14
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.20
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.24.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
@@ -131,9 +137,13 @@ This package contains a thumbnailer to render SVG (scalable vector
 graphics) data.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a2
+mkdir .cargo
+cp %{SOURCE3} .cargo/config
 
 %build
+export RUSTFLAGS=%{rustflags}
+NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-static\
 	--enable-introspection\
@@ -142,16 +152,16 @@ graphics) data.
 %make_build
 
 %install
+export RUSTFLAGS=%{rustflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # %%doc is used to package such contents
-rm -rf %{buildroot}%{_datadir}/doc/%{name}
+rm -rf %{buildroot}%{_datadir}/doc/%{name}/CO*.md
 
-# Testsuite disabled for ver 2.52.4 + harfbuzz 3.1.1
-#%%check
-#%%ifnarch %%ix86 %%arm
-#%%make_build check
-#%%endif
+%check
+%ifarch %x86_64
+%make_build check
+%endif
 
 %post -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
 
@@ -184,15 +194,12 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
 %files devel
 %doc AUTHORS COMPILING.md CONTRIBUTING.md
+%doc %{_datadir}/doc/%{name}/
 %{_includedir}/librsvg-2.0/
 %{_libdir}/librsvg-2.so
 %{_libdir}/pkgconfig/librsvg-2.0.pc
 %{_datadir}/gir-1.0/Rsvg-2.0.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/librsvg-2.0.vapi
-# Own these directories to not depend on gtk-doc while building
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%doc %{_datadir}/gtk-doc/html/rsvg-2.0
 
 %changelog

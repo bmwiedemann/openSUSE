@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Mar 18 01:42:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.54.0:
+  + Librsvg now supports SVG2 geometry properties for these
+    elements: rect, circle, ellipse, image, svg.
+  + Catch circular references when rendering patterns.
+  + The C API documentation now uses gi-docgen instead of gtk-doc.
+    Rsvg-convert's man page is now converted to reStructuredText
+    instead of troff.
+  + The "Recommendations for applications" chapter in the
+    documentation is much improved.
+
+-------------------------------------------------------------------
+Fri Mar 18 01:42:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.53.2:
+  + Output filled text as text for PDF; fixes regression due to
+    outputting all text as paths.
+  + Fix taller-than-wide proportional scaling and size limiting in
+    rsvg-convert.
+  + Implement SVG2 geometry properties for these elements: rect,
+    circle, ellipse, image, svg.
+  + Fix potential unaligned accesses in surface iterators.
+  + Actually use GDK_PIXBUF_MODULEDIR when calling
+    gdk-pixbuf-query-loaders.
+  + Add links to functions and types throughout the C API
+    documentation.
+
+-------------------------------------------------------------------
+Fri Mar 18 01:42:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to gitcheckout of released tag.
+- Switch to rust-packaging:
+  + Add rust-packaging and libtool BuildRequires.
+  + Drop cargo and rust BuildRequires.
+  + Pass NOCONFIGURE=1 ./autogen.sh, bootstrap build.
+  + Add rust config to _service
+  + Add vendor.tar.xz and cargo_config as sources + macro.
+- Enable testsuite again for x86_64, as it now passes.
+
+-------------------------------------------------------------------
+Fri Mar 18 01:42:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.53.1:
+  + Fix incorrect text rendering when text has different scales
+    in the X/Y axes. This regressed after librsvg 2.52.5, when
+    Pango had to revert its fix for the same bug. Now librsvg
+    renders all text as paths, and does the scaling itself. Please
+    file a bug if you have evidence that this presents a
+    performance problem for you.
+  + Update to the latest gtk-rs release.
+
+-------------------------------------------------------------------
+Fri Mar 18 01:42:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.53.0:
+  + This is the first release in the new development series. There
+    are no new features, just changes to how the documentation is
+    built.
+  + The man page for rsvg-convert is now generated from a
+    reStructuredText document, and the C API reference is generated
+    using gi-docgen.
+  + Please make sure you install python3-docutils (for rst2man) and
+    gi-docgen before compiling librsvg from a tarball.
+- Add python3-docutils and pkgconfig(gi-docgen) BuildRequires
+  following upstream changes.
+
+-------------------------------------------------------------------
 Fri Mar 18 01:42:20 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 2.52.8:
