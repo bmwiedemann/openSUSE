@@ -1,7 +1,7 @@
 #
 # spec file for package gsettings-desktop-schemas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/
-Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/42/%{name}-%{version}.tar.xz
 # SOURCE-FIX-SLE 00_org.gnome.desktop.peripherals.gschema.override bsc#1171593 alynx.zhou@suse.com -- Change touchpad click method to default
 Source1:        00_org.gnome.desktop.peripherals.gschema.override
 
@@ -79,11 +79,12 @@ install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}
 %files
 %license COPYING
 %doc NEWS README
-%{_datadir}/glib-2.0/schemas/org.gnome.desktop.a11y.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.a11y.applications.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.desktop.a11y.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.desktop.a11y.interface.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.a11y.keyboard.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.desktop.a11y.mouse.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.a11y.magnifier.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.desktop.a11y.mouse.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.app-folders.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.background.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.background.lockdialog.gschema.xml
@@ -96,6 +97,7 @@ install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.lockdown.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.media-handling.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.notifications.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.desktop.peripherals.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.privacy.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.search-providers.gschema.xml
@@ -108,7 +110,6 @@ install -D -m0644 00_org.gnome.desktop.peripherals.gschema.override %{buildroot}
 %{_datadir}/glib-2.0/schemas/org.gnome.system.locale.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.system.location.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.system.proxy.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.desktop.peripherals.gschema.xml
 %if 0%{?sle_version}
 %{_datadir}/glib-2.0/schemas/00_org.gnome.desktop.peripherals.gschema.override
 %endif
