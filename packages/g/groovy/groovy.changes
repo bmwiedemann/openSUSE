@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 23 17:05:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with JDK <= 15, since gradle does not work with
+  anything higher
+- Modified patch:
+  * groovy-source-levels.patch
+    + build the whole with java source and target levels 8
+- Added patch:
+  * groovy-ambiguous-functions-calls.patch
+    + resolve parameter ambiguities with recent Java versions
+
+-------------------------------------------------------------------
 Mon Mar 21 12:57:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove a bogus dependency on old asm3

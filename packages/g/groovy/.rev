@@ -55,4 +55,12 @@
     <comment>Bogus dependency on asm3</comment>
     <requestid>963689</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>f0ac8122e32122a66e0ec9a43e4939d0</srcmd5>
+    <version>2.4.21</version>
+    <time>1648063163</time>
+    <user>dimstar_suse</user>
+    <comment>source/target 8 + build with java &lt;= 15</comment>
+    <requestid>964344</requestid>
+  </revision>
 </revisionlist>

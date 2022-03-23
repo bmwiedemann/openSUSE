@@ -40,6 +40,7 @@ Patch7:         groovy-overview.patch
 Patch8:         groovy-buildscan.patch
 Patch9:         groovy-java11.patch
 Patch10:        groovy-source-levels.patch
+Patch11:        groovy-ambiguous-functions-calls.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  antlr
@@ -73,6 +74,9 @@ BuildRequires:  mvn(javax.servlet:servlet-api)
 BuildRequires:  mvn(org.apache.ant:ant-junit)
 BuildRequires:  mvn(org.apache.ant:ant-launcher)
 BuildRequires:  mvn(org.codehaus.gpars:gpars)
+BuildConflicts: java >= 16
+BuildConflicts: java-devel >= 16
+BuildConflicts: java-headless >= 16
 Requires:       %{name}-ant = %{version}-%{release}
 Requires:       %{name}-bsf = %{version}-%{release}
 Requires:       %{name}-console = %{version}-%{release}
@@ -248,6 +252,7 @@ find \( -name *.jar -o -name *.class \) -delete
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %{mvn_package} ':groovy::indy:'
 %{mvn_package} ':groovy-{*}' @1
