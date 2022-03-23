@@ -15,4 +15,12 @@
     <comment>fix build with new maven-javadoc-plugin</comment>
     <requestid>750513</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>97dc338aa162f24fdb882d7a33f52ef3</srcmd5>
+    <version>1.11.0</version>
+    <time>1648063118</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964233</requestid>
+  </revision>
 </revisionlist>
