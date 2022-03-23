@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.16
+Version:        3.0.17.3
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -55,8 +55,6 @@ Patch3:         fix-build-with-fdk-2.0.patch
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
-# Fix building against recent srt where SRTO_TSBPDDELAY is no longer defined
-Patch105:       vlc-srto_tsbpddelay.patch
 # PATCH-FIX-UPSTREAM https://trac.videolan.org/vlc/ticket/25473 dominic.mayers@meditationstudies.org -- The maintainers of live555 changed connectionEndpointAddresss to getConnectionEndpointAddress, which now provides the address value by reference.
 Patch107:       vlc-get-addr-by-ref-from-getConnectionEndpointAddress.patch
 BuildRequires:  Mesa-devel
@@ -137,7 +135,9 @@ BuildRequires:  pkgconfig(libgme)
 #BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
 BuildRequires:  pkgconfig(libmpeg2) > 0.3.2
 BuildRequires:  pkgconfig(libmtp) >= 1.0.0
+%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnfs)
+%endif
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
@@ -147,7 +147,9 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-x11)
 BuildRequires:  pkgconfig(protobuf-lite) >= 2.5.0
+%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(soxr)
+%endif
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(taglib) >= 1.9
 BuildRequires:  pkgconfig(twolame)
@@ -297,16 +299,12 @@ suitable for server installations, for example, to run a streaming server.
 Should you decide to install the GUI modules, %{name}-noX will stay
 installed as a dependency.
 
-
-
+%package lang
 # we can't use %%lang_package, as we need a different dependency
 # boo#1012556
 # but the package name has to stay vlc-lang, as otherise the software centers
 # (AppStream based) can't see vlc being translated (vlc is the one listed in SC
 # not vlc-noX)
-
-%package lang
-# FIXME: consider using %%lang_package macro
 Summary:        Translations for package %{name}
 # We do not want to require vlc, which is GUI based, but only vlc-noX
 Group:          System/Localization
@@ -409,7 +407,6 @@ OpenCV based video filters and a face detection example.
 %patch100 -p1
 %endif
 %patch103 -p1
-%patch105 -p1
 ### Since live555-2020.12.11, connectionEndpointAddress() member function
 ### use a "struct sockaddr_storage" in preparation for eventual support of IPv6:
 ### http://www.live555.com/liveMedia/public/changelog.txt
@@ -808,7 +805,9 @@ fi
 %{_libdir}/vlc/plugins/access/liblinsys_hdsdi_plugin.so
 %{_libdir}/vlc/plugins/access/liblinsys_sdi_plugin.so
 %{_libdir}/vlc/plugins/access/liblive555_plugin.so
+%if 0%{?suse_version} >= 1500
 %{_libdir}/vlc/plugins/access/libnfs_plugin.so
+%endif
 %if 0%{?suse_version} < 1330 && ( 0%{?sle_version} < 120200 || 0%{?is_opensuse} < 1 )
 %{_libdir}/vlc/plugins/access/librdp_plugin.so
 %endif
@@ -859,7 +858,9 @@ fi
 %{_libdir}/vlc/plugins/audio_filter/libscaletempo_pitch_plugin.so
 %{_libdir}/vlc/plugins/audio_filter/libscaletempo_plugin.so
 %{_libdir}/vlc/plugins/audio_filter/libsimple_channel_mixer_plugin.so
+%if 0%{?suse_version} >= 1500
 %{_libdir}/vlc/plugins/audio_filter/libsoxr_plugin.so
+%endif
 %{_libdir}/vlc/plugins/audio_filter/libspatializer_plugin.so
 %{_libdir}/vlc/plugins/audio_filter/libspeex_resampler_plugin.so
 %{_libdir}/vlc/plugins/audio_filter/libstereo_widen_plugin.so

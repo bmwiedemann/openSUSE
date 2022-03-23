@@ -1277,4 +1277,20 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>958285</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>713ceb830f8e3accb7caff96e4e4cc7d</srcmd5>
+    <version>3.0.17</version>
+    <time>1646767900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960013</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>76f42a2ad2e426b7d9d29c715b044202</srcmd5>
+    <version>3.0.17.3</version>
+    <time>1648062931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963538</requestid>
+  </revision>
 </revisionlist>
