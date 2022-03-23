@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2018-2021 SUSE LLC
+# Copyright (c) 2018-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Source3:        openCryptoki-rpmlintrc
 # Patch 1 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch1:         ocki-3.11-remove-make-install-chgrp.patch
+Patch2:         openCryptoki-sles15-sp4-EP11-Dilithium-Specify-OID-of-key-strength-at-key-ge.patch
+Patch3:         openCryptoki-sles15-sp4-EP11-Fix-host-library-version-query.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
@@ -128,6 +130,8 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %prep
 %setup -q -n %{oc_cvs_tag}-%{version}
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 cp %{SOURCE2} .
 

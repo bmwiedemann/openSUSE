@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 23 15:32:25 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Added the following two patches for bac#1197395. The CKM_IBM_DILITHIUM
+  mechanism does not show up as supported by the EP11 token when an
+  upgraded EP11 host library is used.
+  * openCryptoki-sles15-sp4-EP11-Dilithium-Specify-OID-of-key-strength-at-key-ge.patch
+  * openCryptoki-sles15-sp4-EP11-Fix-host-library-version-query.patch 
+
+-------------------------------------------------------------------
 Thu Oct 21 19:31:51 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 3.17.0 (jsc#SLE-18326)
