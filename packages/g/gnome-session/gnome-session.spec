@@ -16,14 +16,16 @@
 #
 
 
+%define basever 42
+
 Name:           gnome-session
-Version:        41.3
+Version:        42.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-session/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-session/%{basever}/%{name}-%{version}.tar.xz
 Source1:        gnome
 Source2:        gnome.desktop
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
@@ -94,7 +96,6 @@ Group:          System/GUI/GNOME
 Requires:       dbus-1-x11
 Requires:       gsettings-desktop-schemas >= 0.1.7
 Requires:       hicolor-icon-theme
-%glib2_gsettings_schema_requires
 
 %description core
 This package contains a minimal version of gnome-session, that can be
@@ -126,7 +127,7 @@ install -d -m755 %{buildroot}%{_bindir}
 install -m755 %{SOURCE1} %{buildroot}%{_bindir}/gnome
 install -d -m755 %{buildroot}%{_datadir}/xsessions
 install -m644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/gnome.desktop
-%find_lang %{name}-41 %{?no_lang_C}
+%find_lang %{name}-%{basever} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 # remove wayland files on s390/s390x
 %ifarch s390 s390x
@@ -225,6 +226,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_userunitdir}/gnome-session@gnome.target.d
 %{_userunitdir}/gnome-session@gnome.target.d/gnome.session.conf
 
-%files lang -f %{name}-41.lang
+%files lang -f %{name}-%{basever}.lang
 
 %changelog

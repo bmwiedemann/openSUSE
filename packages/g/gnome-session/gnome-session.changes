@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 23 09:56:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Give better error when failing to get renderer string.
+  + Fix failure to run sessions for program accounts.
+  + Updated translations.
+- Rebase gnome-session-better-handle-empty-xdg_session_type.patch
+  with quilt.
+- Drop glib2_gsettings_schema_requires macro from
+  gnome-session-core package, no longer needed.
+- Add a basever define and set it to 42, make future version
+  updates simpler, as this will autorename lang-package with
+  regards to version (as done here, bumped to 42 from 41).
+
+-------------------------------------------------------------------
 Mon Feb 21 02:19:03 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add back gnome-session-exit-when-lost-name-on-bus.patch:
