@@ -16,16 +16,15 @@
 #
 
 
+%bcond_without nautilus_extension
 Name:           gnome-terminal
-Version:        3.42.2
+Version:        3.43.90
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
-Source0:        https://download.gnome.org/sources/gnome-terminal/3.42/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 9a168cc23962ce9fa106dc8a40407d381a3db403.patch -- Fix build with meson 0.61.0 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-terminal/-/commit/9a168cc23962ce9fa106dc8a40407d381a3db403.patch
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -44,7 +43,9 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 0.1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
+%if %{with nautilus_extension}
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.28.0
+%endif
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vte-2.91) >= 0.66.0
@@ -82,18 +83,25 @@ arbitrary folders.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+%if %{with nautilus_extension}
+    -Dnautilus_extension=true
+%else
+  -Dnautilus_extension=false
+%endif
 %meson_build
 
 %install
 %meson_install
+%if ! %{with nautilus_extension}
+rm %{buildroot}/usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
+%endif
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gnome-terminal
 %{_datadir}/metainfo/org.gnome.Terminal.metainfo.xml
@@ -112,9 +120,11 @@ arbitrary folders.
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/gnome-terminal-search-provider.ini
 
+%if %{with nautilus_extension}
 %files -n nautilus-extension-terminal
 %{_libdir}/nautilus/extensions-3.0/libterminal-nautilus.so
 %{_datadir}/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
+%endif
 
 %files lang -f %{name}.lang
 
