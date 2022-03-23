@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 18 17:29:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.8:
+  + ray:
+    - simplify NaN checking.
+    - Improve intersection
+  + Build fixes.
+  + SIMD:
+    - Make reciprocal operations 0-safe.
+    - Add simplified scalar reciprocal.
+  + tests:
+    - Fix installed introspection test.
+    - Add ray intersection unit.
+  + Fix detection of AArch64.
+  + Documentation fixes.
+
+-------------------------------------------------------------------
 Thu Apr 15 11:42:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.10.6:

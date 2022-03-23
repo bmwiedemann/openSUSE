@@ -1,7 +1,7 @@
 #
 # spec file for package graphene
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           graphene
-Version:        1.10.6
+Version:        1.10.8
 Release:        0
 Summary:        Thin type layer for graphic libraries
 License:        MIT
