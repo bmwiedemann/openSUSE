@@ -17,10 +17,7 @@
 #
 
 
-%define _buildshell /bin/bash
-%define vlic_dir  vendored
 %define short_name  rsign
-%define last_update  20220115
 
 # repeated here to guard against script deletes
 #
@@ -37,12 +34,9 @@ URL:            https://github.com/jedisct1/%{name}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-# Find licenses of dependency packages.
-Source3:        find_licenses.sh
-# Install licenses of dependency packages.
-Source4:        install_licenses.sh
 # on 20220115 at least crate bitflags had this minimum version requirement
 BuildRequires:  cargo >= 1.46
+BuildRequires:  vendored_licenses_packager
 Provides:       %{short_name} = %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -56,9 +50,7 @@ Rust implementation of Minisign, a tool to sign files and verify signatures.
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
-cd $PWD/vendor
-# Find licenses of dependency packages and prepare for installation
-bash %{SOURCE3} %{vlic_dir}
+%vendored_licenses_packager_prep
 
 %build
 cargo build --release %{?_smp_mflags}
@@ -69,14 +61,12 @@ cargo install --path . --root=%{buildroot}%{_prefix}
 rm %{buildroot}%{_prefix}/.crates.toml
 rm %{buildroot}%{_prefix}/.crates2.json
 
-# Dependency Licenses
-install -d -m 0755 %{buildroot}%{_licensedir}/%{name}/%{vlic_dir}
-bash %{SOURCE4} vendor/%{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir}
+%vendored_licenses_packager_install
 
 %files
 %{_bindir}/%{short_name}
 %doc README.md
 %license LICENSE
-%{_licensedir}/%{name}/%{vlic_dir}/
+%vendored_licenses_packager_files
 
 %changelog

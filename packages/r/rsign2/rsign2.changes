@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 22 12:00:00 UTC 2022 - cunix@mail.de
+
+- switched to vendored_licenses_packager as build dependency
+
+-------------------------------------------------------------------
 Sat Jan 15 12:00:00 UTC 2022 - cunix@mail.de
 
 - Bump minimum Rust version to 1.46
