@@ -119,6 +119,7 @@ Patch5:         soversion.patch
 Patch8:         vmaf-trim-usr-local.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
+Patch11:        ffmpeg-libglslang-detection.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -206,6 +207,9 @@ BuildRequires:  pkgconfig(vidstab) >= 0.98
 %endif
 %if %{with vulkan}
 BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(SPIRV-Tools)
+BuildRequires:  glslang-devel
+BuildRequires:  c++_compiler
 %endif
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
@@ -627,6 +631,7 @@ LDFLAGS="%_lto_cflags" \
 	--enable-ladspa \
 %if %{with vulkan}
 	--enable-vulkan \
+	--enable-libglslang \
 %endif
 %if ! %{with cuda_sdk}
 	--disable-cuda-sdk \

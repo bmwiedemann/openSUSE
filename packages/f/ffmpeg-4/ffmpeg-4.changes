@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 21:44:30 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Add ffmpeg-libglslang-detection.patch: detects libglslang
+- Enable Vulkan filters
+
+-------------------------------------------------------------------
 Sun Mar 13 15:20:53 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
 
 - Fix OS version check, so nvcodec is enabled for Leap too.
