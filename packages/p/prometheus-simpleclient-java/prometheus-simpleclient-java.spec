@@ -153,8 +153,12 @@ done
 %pom_add_dep javax.xml.bind:jaxb-api::provided simpleclient_pushgateway
 %endif
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+
 %build
-%{mvn_build} -f -s -- -Dsource=8
+%{mvn_build} -f -s -- \
+    -Dsource=8
 
 %install
 %mvn_install
