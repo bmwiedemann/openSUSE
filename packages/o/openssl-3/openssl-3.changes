@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 19 10:05:22 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable zlib compression support [bsc#1195149]
+
+-------------------------------------------------------------------
+Fri Mar 18 22:27:34 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Add crypto-policies support.
+  * Fix some tests that couldn't find the openssl3.cnf location
+  * Rebase patch:
+    openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
+
+-------------------------------------------------------------------
 Tue Mar 15 17:41:47 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.0.2: [bsc#1196877, CVE-2022-0778]

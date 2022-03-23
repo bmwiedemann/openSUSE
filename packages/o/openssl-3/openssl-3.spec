@@ -49,8 +49,12 @@ Patch8:         openssl-Override-default-paths-for-the-CA-directory-tree.patch
 Patch9:         openssl-use-versioned-config.patch
 Patch10:        fix-config-in-tests.patch
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
 # Add requires for ct_log_list.cnf{,.dist}
 Requires:       openssl
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+Requires:       crypto-policies
+%endif
 
 %description
 OpenSSL is a software library to be used in applications that need to
@@ -60,6 +64,9 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl3
 Summary:        Secure Sockets and Transport Layer Security
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+Requires:       crypto-policies
+%endif
 Recommends:     ca-certificates-mozilla
 
 %description -n libopenssl3
@@ -71,6 +78,7 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 %package -n libopenssl-3-devel
 Summary:        Development files for OpenSSL
 Requires:       libopenssl3 = %{version}
+Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
 # We need to have around only the exact version we are able to operate with
 Conflicts:      libopenssl-devel < %{version}
@@ -112,6 +120,7 @@ export MACHINE=armv6l
     enable-ec_nistp_64_gcc_128 \
 %endif
     enable-camellia \
+    zlib \
     --prefix=%{_prefix} \
     --libdir=%{_lib} \
     --openssldir=%{ssletcdir} \
@@ -125,7 +134,8 @@ export MACHINE=armv6l
     -DOPENSSL_NO_BUF_FREELISTS \
     $(getconf LFS_CFLAGS) \
     -Wall \
-    --with-rand-seed=getrandom
+    --with-rand-seed=getrandom \
+    --system-ciphers-file=%{_sysconfdir}/crypto-policies/back-ends/openssl.config
 
 # Show build configuration
 perl configdata.pm --dump
@@ -135,16 +145,14 @@ perl configdata.pm --dump
 %make_build all
 
 %check
+
+# We must revert patch8 before running tests, otherwise they will fail.
+patch -p1 -R < %{P:8}
+
 export MALLOC_CHECK_=3
 export MALLOC_PERTURB_=$(($RANDOM % 255 + 1))
 # export HARNESS_VERBOSE=yes
-LD_LIBRARY_PATH="$PWD" make TESTS='-test_req\
-                                  -test_verify_store\
-                                  -test_evp_fetch_prov\
-                                  -test_ca\
-                                  -test_ssl_old\
-                                  -test_tsa'\
-				  test -j1
+LD_LIBRARY_PATH="$PWD" make TESTS='-test_evp_fetch_prov -test_tsa' test -j1
 # show ciphers
 gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{buildroot}%{_libdir} -lssl -lcrypto
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ./showciphers

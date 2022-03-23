@@ -216,14 +216,6 @@ Index: openssl-3.0.1/ssl/ssl_ciph.c
      /* Add TLSv1.3 ciphers first - we always prefer those if possible */
      for (i = 0; i < sk_SSL_CIPHER_num(tls13_ciphersuites); i++) {
          const SSL_CIPHER *sslc = sk_SSL_CIPHER_value(tls13_ciphersuites, i);
-@@ -1656,6 +1713,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
-         if (!sk_SSL_CIPHER_push(cipherstack, sslc)) {
-             OPENSSL_free(co_list);
-             sk_SSL_CIPHER_free(cipherstack);
-+            OPENSSL_free(co_list);
-             return NULL;
-         }
-     }
 @@ -1690,6 +1748,14 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      *cipher_list = cipherstack;
  
