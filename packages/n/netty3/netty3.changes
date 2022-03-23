@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 23 08:49:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Added patch:
+  * x509certificate.patch
+    + Reimplement the OpenJdkSelfSignedCertGenerator class so that
+      it does not use removed classes.
+    + This adds new bouncycastle dependency
+
+-------------------------------------------------------------------
 Tue Feb 22 18:26:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages
