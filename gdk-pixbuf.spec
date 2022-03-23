@@ -1,7 +1,7 @@
 #
 # spec file for package gdk-pixbuf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.42.6
+Version:        2.42.8
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -137,15 +137,6 @@ cp -a %{SOURCE2} .
 
 %build
 %meson \
-	-Dpng=true \
-	-Dtiff=true \
-	-Djpeg=true \
-	-Dbuiltin_loaders=none \
-	-Dgtk_doc=false \
-	-Dintrospection=enabled \
-	-Dman=true \
-	-Drelocatable=false \
-	-Dnative_windows_loaders=false \
 	-Dinstalled_tests=false \
 	%{nil}
 %meson_build

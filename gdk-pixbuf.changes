@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:36:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.42.8:
+  + Clear the pixbuf's memory buffer to avoid returning
+    uninitialized memory.
+  + Turn GdkPixbufModule functions into typed callbacks.
+  + tiff: Use non-deprecated C99 integer types.
+  + gif: Check for overflow when compositing or clearing frames.
+  + Change png/jpeg/tiff build options from boolean to feature.
+  + jpeg: Do not rely on UB around setjmp/longjmp.
+  + Build fixes.
+  + Documentation fixes.
+  + Updated translations.
+- Stop passing options to meson that just follow upstream default,
+  just rely on upstream providing sane defaults, apart from where
+  we want to deviate.
+
+-------------------------------------------------------------------
 Thu Nov  4 10:19:51 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop passing no longer used nor recognized options jasper=false
