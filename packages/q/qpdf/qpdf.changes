@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 20 20:56:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.6.3:
+  * Minor internal changes to assist with building in other
+    environments: rename internal bits.icc to qpdf/bits_functions.hh
+    (not part of public API), enforce reordering of header files to
+    prevent jpeglib.h from interfering with other headers, remove an
+    unused header that was accidentally added in 10.6.0 but never
+    referenced by any code.
+  * Make build work and tests work when NDEBUG is defined. This
+    involved a few changes to some test files but no changes to any
+    library code.
+  * Bug fix in JSON parser: accept \/ in a string as valid input per
+    JSON spec even though we don't translate / to \/ on output.
+  * Recognize PDF strings explicitly marked as UTF-8 as allowed by
+    the PDF 2.0 spec. Fixes #654.
+  * Bug fix: when generating appearance streams, the font size was
+    substituted incorrectly from /DA if Tf was absent or the number
+    preceding Tf was out of range. Fixes #655.
+
+-------------------------------------------------------------------
 Wed Feb 23 10:47:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 10.6.2:
