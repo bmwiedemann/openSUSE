@@ -17,15 +17,13 @@
 
 
 Name:           gnome-calendar
-Version:        41.2
+Version:        42.0
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
-Source0:        https://download.gnome.org/sources/gnome-calendar/41/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM e35dbc1acd03dd1751b755b6c8e1932a692ad4e1.patch -- Fix build with meson 0.61.0 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-calendar/-/commit/e35dbc1acd03dd1751b755b6c8e1932a692ad4e1.patch
+Source0:        https://download.gnome.org/sources/gnome-calendar/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -35,14 +33,14 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
 BuildRequires:  pkgconfig(glib-2.0) >= 2.43.4
 BuildRequires:  pkgconfig(goa-1.0) >= 3.2.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.21.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
-BuildRequires:  pkgconfig(gweather-3.0) >= 3.27.2
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gweather4)
+BuildRequires:  pkgconfig(libadwaita-1) >= 0.0.9
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.1
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.2
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.1
 BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.17.1
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.4
-BuildRequires:  pkgconfig(libhandy-1) >= 0.0.9
 BuildRequires:  pkgconfig(libical) >= 3.0.5
 BuildRequires:  pkgconfig(libsoup-2.4)
 
