@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-text-editor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 Name:           gnome-text-editor
-Version:        41.1
+Version:        42.0
 Release:        0
 Summary:        GNOME Text Editor
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-text-editor
-Source:         https://download.gnome.org/sources/%{name}/41/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-text-editor/42/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  itstool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(enchant-2) >= 2.2.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69
 BuildRequires:  pkgconfig(gtk4) >= 4.3
-BuildRequires:  pkgconfig(gtksourceview-5) >= 5.1.1
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.3.1
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libadwaita-1)
 
@@ -53,18 +56,30 @@ you've never saved it to a file.
 
 %install
 %meson_install
+
 %find_lang %{name} %{?no_lang_C}
+%fdupes %{buildroot}%{_datadir}
+
+%check
+%meson_test
 
 %files
 %license COPYING
 %doc NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
-%{_bindir}/gnome-text-editor
-%{_datadir}/appdata/org.gnome.TextEditor.appdata.xml
+%{_bindir}/%{name}
 %{_datadir}/applications/org.gnome.TextEditor.desktop
 %{_datadir}/dbus-1/services/org.gnome.TextEditor.service
 %{_datadir}/glib-2.0/schemas/org.gnome.TextEditor.gschema.xml
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/styles
+%{_datadir}/%{name}/styles/builder-dark.xml
+%{_datadir}/%{name}/styles/builder.xml
+%{_datadir}/%{name}/styles/peninsula-dark.xml
+%{_datadir}/%{name}/styles/peninsula.xml
+%{_datadir}/%{name}/styles/printing.xml
 %{_datadir}/icons/hicolor/*/*/*.svg
+%{_datadir}/metainfo/org.gnome.TextEditor.appdata.xml
 
 %files lang -f %{name}.lang
 
