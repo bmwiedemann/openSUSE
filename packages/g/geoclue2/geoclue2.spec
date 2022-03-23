@@ -50,8 +50,6 @@ BuildRequires:  pkgconfig(mm-glib) >= 1.6
 BuildRequires:  pkgconfig(systemd)
 # This daemon runs as srvGeoClue
 Requires:       user(srvGeoClue)
-# we require shadow for useradd
-Requires(pre):  shadow
 # Virtual provides for the dbus service
 Provides:       dbus(org.freedesktop.GeoClue2) = %{version}
 %{?systemd_requires}
