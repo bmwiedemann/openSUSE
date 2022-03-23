@@ -16,25 +16,31 @@
 #
 
 
+# TODO -- Get rid of this once the Python stuff location issue gets
+# sorted out (https://gitlab.gnome.org/GNOME/alacarte/-/issues/14).
+%bcond_without aclocal_fix
+
 Name:           alacarte
-Version:        3.42.0
+Version:        3.44.0
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/alacarte
-Source:         https://download.gnome.org/sources/alacarte/3.42/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/alacarte/3.44/%{name}-%{version}.tar.xz
 
+%if %{with aclocal_fix}
+BuildRequires:  autoconf
+BuildRequires:  automake
+%endif
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 # Needed for the typelib() dependency parser
 BuildRequires:  gobject-introspection
-# Needed for %%icon_theme_cache_* macros.
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3 >= 3.2
+BuildRequires:  python3 >= 3.3
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
@@ -51,8 +57,14 @@ type to edit, add, and delete any menu entry.
 
 %prep
 %autosetup -p1
+%if %{with aclocal_fix}
+sed -i -r 's/(sysconfig.)(get_default_scheme)/\1_\2/' aclocal.m4
+%endif
 
 %build
+%if %{with aclocal_fix}
+NOCONFIGURE=1 autoreconf -ifv
+%endif
 %configure
 %make_build
 
@@ -68,7 +80,7 @@ type to edit, add, and delete any menu entry.
 %{_bindir}/alacarte
 %{_datadir}/alacarte
 %{_datadir}/applications/alacarte.desktop
-%{_datadir}/icons/hicolor/*/*/*.*
+%{_datadir}/icons/hicolor/
 %{python3_sitelib}/Alacarte
 %{_mandir}/man1/alacarte.1%{?ext_man}
 

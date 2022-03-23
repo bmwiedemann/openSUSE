@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 21 05:55:31 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.44.0:
+  + Resync command line validity on focus gained
+    (glgo#GNOME/alacarte#10).
+  + Fix icon changing (glgo#GNOME/alacarte#13).
+  + Updated translations.
+- Drop no longer needed hicolor-icon-theme build requirement. It
+  was only being required for the icon_theme_cache_post(un) macros,
+  which, by the way, have been replaced by RPM file trigger
+  facilities.
+- Bump Python minimal build requirement version from 3.2 to 3.3
+  aligning with configure build script checks.
+
+-------------------------------------------------------------------
 Mon Jan 10 07:29:17 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Add python-rpm-macros BuildRequires in case some build

@@ -534,4 +534,12 @@
   macros like %{python3_sitelib}. (forwarded request 945215 from yfjiang)</comment>
     <requestid>945291</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>0740ace1189411aec3730a94090a2620</srcmd5>
+    <version>3.44.0</version>
+    <time>1648063042</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963555</requestid>
+  </revision>
 </revisionlist>
