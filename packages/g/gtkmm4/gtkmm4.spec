@@ -20,7 +20,7 @@
 %define _name gtkmm
 
 Name:           gtkmm4
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        C++ Interface for GTK4 (a GUI Library for X)
 License:        LGPL-2.1-or-later
@@ -34,7 +34,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
-BuildRequires:  meson
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.15.4
