@@ -1,7 +1,7 @@
 #
 # spec file for package treelayout
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Java
 URL:            http://treelayout.sourceforge.net/
 Source0:        https://github.com/abego/treelayout/archive/v%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
@@ -89,10 +90,11 @@ mv %{core}/src/main/java/org/abego/treelayout/package-info.java.tmp \
 
 %build
 
-%{mvn_build} -sf \
+%{mvn_build} -sf -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
