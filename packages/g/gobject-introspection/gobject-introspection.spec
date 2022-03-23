@@ -17,7 +17,7 @@
 
 
 Name:           gobject-introspection
-Version:        1.70.0
+Version:        1.72.0
 Release:        0
 # FIXME: Find a way to identify if we need python3-gobject or python-gobject from gi-find-deps.sh.
 Summary:        GObject Introspection Tools
@@ -25,17 +25,13 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.70/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.72/%{name}-%{version}.tar.xz
 # gi-find-deps.sh is a rpm helper for Provides and Requires. Script creates typelib()-style Provides/Requires.
 Source1:        gi-find-deps.sh
 Source2:        gobjectintrospection.attr
 Source3:        gobject-introspection-typelib.template
 Source98:       baselibs.conf
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM -- Fix build with meson 0.61.0 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gobject-introspection/-/commit/827494d6415b696a98fa195cbd883b50cc893bfc.patch
-Patch1:         https://gitlab.gnome.org/GNOME/gobject-introspection/-/commit/effb1e09dee263cdac4ec593e8caf316e6f01fe2.patch
-Patch2:         https://gitlab.gnome.org/GNOME/gobject-introspection/-/commit/7c1178069f1c58a05ec56a94ca6ba124215a947b.patch
 
 BuildRequires:  bison
 BuildRequires:  fdupes

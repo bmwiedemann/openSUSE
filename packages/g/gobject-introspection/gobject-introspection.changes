@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:30:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.72.0:
+  + Add new utility API to libgirepository for bindings
+    implementing an argument cache.
+  + Update the GIR data for GLib, GObject, GModule, and GIO.
+
+-------------------------------------------------------------------
+Mon Feb 14 15:06:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.71.0:
+  + Create new API for libffi closures
+  + Treat @-prefixed shlib paths as absolute on macOS
+  + Add new `forever` scope
+  + Build fixes with newer Meson
+  + Improve regression test suite
+  + Avoid a segfault when using an invalid GType
+  + Build fixes on Windows when using g-i as a subproject
+  + Warn about property name collisions
+  + Add "strict" warnings to g-ir-scanner
+  + Add the "emitter" annotation for signal emitters
+  + Add a command line option to g-ir-scanner to specify the
+    compiler
+  + Add new convenience API to libgirepository
+  + Build fixes on Windows when using MSVC
+  + Documentation fixes
+  + Update the GIR data for GLib, GObject, and GIO
+- Drop patches fixed upstream:
+  + 7c1178069f1c58a05ec56a94ca6ba124215a947b.patch
+  + effb1e09dee263cdac4ec593e8caf316e6f01fe2.patch
+  + 827494d6415b696a98fa195cbd883b50cc893bfc.patch
+
+-------------------------------------------------------------------
 Thu Feb 10 20:54:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use bash for bash scripts (bsc#1195391) 
