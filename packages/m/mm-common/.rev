@@ -63,4 +63,12 @@
     <comment>Update to version 1.0.2 (forwarded request 876846 from jgwang)</comment>
     <requestid>877359</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1c5edf5bef75c9112696ad2a1ee877d3</srcmd5>
+    <version>1.0.4</version>
+    <time>1648063061</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963628</requestid>
+  </revision>
 </revisionlist>

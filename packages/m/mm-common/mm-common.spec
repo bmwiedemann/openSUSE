@@ -1,7 +1,7 @@
 #
 # spec file for package mm-common
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           mm-common
-Version:        1.0.2
+Version:        1.0.4
 Release:        0
 Summary:        Common build files of the GNOME C++ bindings
 License:        GPL-2.0-or-later
@@ -46,6 +46,9 @@ which could be used as a base for new mm module.
 
 %prep
 %autosetup -p1
+
+# Remove executable bit in NEWS...
+chmod -x NEWS
 
 %build
 %meson
