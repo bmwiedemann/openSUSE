@@ -17,41 +17,44 @@
 
 
 Name:           eog-plugins
-Version:        3.26.8
+Version:        42.0
 Release:        0
-#FIXME: add postr BuildRequires when we have a package
 Summary:        A collection of plugins for Eye of GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            http://live.gnome.org/EyeOfGnome/Plugins
-Source:         http://download.gnome.org/sources/eog-plugins/3.26/%{name}-%{version}.tar.xz
-Source1:        eog-plugins.SUSE
+Source:         http://download.gnome.org/sources/eog-plugins/42/%{name}-%{version}.tar.xz
+Source99:       eog-plugins.SUSE
+
 BuildRequires:  fdupes
+BuildRequires:  meson >= 0.57.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.2
 BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.9.0
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.1.2
-BuildRequires:  pkgconfig(eog) >= 3.11.4
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
+BuildRequires:  pkgconfig(eog) >= 41.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.53.4
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.3.8
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libgdata)
-BuildRequires:  pkgconfig(libpeas-1.0)
+BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
+BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
+
 Requires:       eog
 Suggests:       eog-plugin-exif-display
-Suggests:       eog-plugin-exif-export-to-folder
-Suggests:       eog-plugin-exif-fit-to-width
-Suggests:       eog-plugin-exif-fullscreenbg
-Suggests:       eog-plugin-exif-hide-titlebar
-Suggests:       eog-plugin-exif-light-theme
-Suggests:       eog-plugin-exif-map
-Suggests:       eog-plugin-exif-maximize-windows
-Suggests:       eog-plugin-exif-postasa
-Suggests:       eog-plugin-exif-pythonconsole
-Suggests:       eog-plugin-exif-send-by-mail
-Suggests:       eog-plugin-exif-slideshowshuffle
+Suggests:       eog-plugin-export-to-folder
+Suggests:       eog-plugin-fit-to-width
+Suggests:       eog-plugin-fullscreenbg
+Suggests:       eog-plugin-light-theme
+Suggests:       eog-plugin-map
+Suggests:       eog-plugin-maximize-windows
+Suggests:       eog-plugin-postasa
+Suggests:       eog-plugin-pythonconsole
+Suggests:       eog-plugin-send-by-mail
+Suggests:       eog-plugin-slideshowshuffle
 Enhances:       eog
+Obsoletes:      eog-plugin-hide-titlebar < 42
 
 %description
 This package contains plugins for additional features in Eye of GNOME.
@@ -100,15 +103,6 @@ Provides:       eog-plugins:%{_libdir}/eog/plugins/fullscreenbg.plugin
 
 %description -n eog-plugin-fullscreenbg
 The Eye of Gnome Fullscreen Background plugin
-
-%package -n eog-plugin-hide-titlebar
-Summary:        Eog hide-titlebar plugin
-Group:          Productivity/Graphics/Viewers
-Requires:       %{name}-data = %{version}
-Provides:       eog-plugins:%{_libdir}/eog/plugins/hide-titlebar.plugin
-
-%description -n eog-plugin-hide-titlebar
-The Eye of Gnome hide titlebar plugin
 
 %package -n eog-plugin-light-theme
 Summary:        Eog light-theme plugin
@@ -176,100 +170,87 @@ The Eye of Gnome Slideshow Shuffle plugin
 %lang_package
 
 %prep
-%setup -q
-install -m 644 %{SOURCE1} .
+%autosetup -p1
+install -m 644 %{SOURCE99} .
 
 %build
-%configure \
-        --with-plugins=all \
-        --enable-python
-make %{?_smp_mflags} V=1
+%meson \
+	%{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name}
-find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}/%{_libdir}/eog/plugins
+%fdupes %{buildroot}%{_libdir}/eog/plugins
 
 %files
 %doc eog-plugins.SUSE
 
 %files -n %{name}-data
 %license COPYING
-
 %dir %{_datadir}/eog/plugins
 
 %files -n eog-plugin-exif-display
-%{_datadir}/appdata/eog-exif-display.metainfo.xml
+%{_datadir}/metainfo/eog-exif-display.appdata.xml
 %{_libdir}/eog/plugins/exif-display.plugin
 %{_datadir}/glib-2.0/schemas/org.gnome.eog.plugins.exif-display.gschema.xml
 %{_libdir}/eog/plugins/libexif-display.so
 
 %files -n eog-plugin-export-to-folder
-%dir %{_libdir}/eog/plugins/__pycache__
-%{_datadir}/appdata/eog-export-to-folder.metainfo.xml
+%{_datadir}/metainfo/eog-export-to-folder.appdata.xml
 %{_libdir}/eog/plugins/export-to-folder.plugin
 %{_datadir}/eog/plugins/export-to-folder/
 %{_datadir}/glib-2.0/schemas/org.gnome.eog.plugins.export-to-folder.gschema.xml
 %{_libdir}/eog/plugins/export-to-folder.py
-%{_libdir}/eog/plugins/__pycache__/export-to-folder*
 
 %files -n eog-plugin-fit-to-width
 %{_libdir}/eog/plugins/fit-to-width.plugin
-%{_datadir}/appdata/eog-fit-to-width.metainfo.xml
+%{_datadir}/metainfo/eog-fit-to-width.appdata.xml
 %{_libdir}/eog/plugins/libfit-to-width.so
 
 %files -n eog-plugin-fullscreenbg
-%{_datadir}/appdata/eog-fullscreenbg.metainfo.xml
+%{_datadir}/metainfo/eog-fullscreenbg.appdata.xml
 %{_libdir}/eog/plugins/fullscreenbg.plugin
 %{_datadir}/glib-2.0/schemas/org.gnome.eog.plugins.fullscreenbg.gschema.xml
 %{_datadir}/eog/plugins/fullscreenbg/
 %{_libdir}/eog/plugins/fullscreenbg.py
-%{_libdir}/eog/plugins/__pycache__/fullscreenbg*
-
-%files -n eog-plugin-hide-titlebar
-%{_datadir}/appdata/eog-hide-titlebar.metainfo.xml
-%{_libdir}/eog/plugins/hide-titlebar.plugin
-%{_libdir}/eog/plugins/libhide-titlebar.so
 
 %files -n eog-plugin-light-theme
-%{_datadir}/appdata/eog-light-theme.metainfo.xml
+%{_datadir}/metainfo/eog-light-theme.appdata.xml
 %{_libdir}/eog/plugins/light-theme.plugin
 %{_libdir}/eog/plugins/liblight-theme.so
 
 %files -n eog-plugin-map
-%{_datadir}/appdata/eog-map.metainfo.xml
+%{_datadir}/metainfo/eog-map.appdata.xml
 %{_libdir}/eog/plugins/map.plugin
 %{_libdir}/eog/plugins/libmap.so
 
 %files -n eog-plugin-maximize-windows
-%{_datadir}/appdata/eog-maximize-windows.metainfo.xml
+%{_datadir}/metainfo/eog-maximize-windows.appdata.xml
 %{_libdir}/eog/plugins/maximize-windows.plugin
 %{_libdir}/eog/plugins/maximize-windows.py
-%{_libdir}/eog/plugins/__pycache__/maximize-windows*
 
 %files -n eog-plugin-postasa
-%{_datadir}/appdata/eog-postasa.metainfo.xml
+%{_datadir}/metainfo/eog-postasa.appdata.xml
 %{_libdir}/eog/plugins/postasa.plugin
 %{_libdir}/eog/plugins/libpostasa.so
 
 %files -n eog-plugin-pythonconsole
-%{_datadir}/appdata/eog-pythonconsole.metainfo.xml
+%{_datadir}/metainfo/eog-pythonconsole.appdata.xml
 %{_libdir}/eog/plugins/pythonconsole.plugin
 %{_libdir}/eog/plugins/pythonconsole/
 %{_datadir}/glib-2.0/schemas/org.gnome.eog.plugins.pythonconsole.gschema.xml
 %{_datadir}/eog/plugins/pythonconsole/
 
 %files -n eog-plugin-send-by-mail
-%{_datadir}/appdata/eog-send-by-mail.metainfo.xml
+%{_datadir}/metainfo/eog-send-by-mail.appdata.xml
 %{_libdir}/eog/plugins/send-by-mail.plugin
 %{_libdir}/eog/plugins/libsend-by-mail.so
 
 %files -n eog-plugin-slideshowshuffle
-%{_datadir}/appdata/eog-slideshowshuffle.metainfo.xml
+%{_datadir}/metainfo/eog-slideshowshuffle.appdata.xml
 %{_libdir}/eog/plugins/slideshowshuffle.plugin
 %{_libdir}/eog/plugins/slideshowshuffle.py
-%{_libdir}/eog/plugins/__pycache__/slideshowshuffle*
 
 %files lang -f %{name}.lang
 

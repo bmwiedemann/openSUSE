@@ -445,4 +445,12 @@
   + Updated translations. (forwarded request 945153 from iznogood)</comment>
     <requestid>945287</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d2217e634d365170c431ffbad0444f1f</srcmd5>
+    <version>42.0</version>
+    <time>1648063043</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963559</requestid>
+  </revision>
 </revisionlist>
