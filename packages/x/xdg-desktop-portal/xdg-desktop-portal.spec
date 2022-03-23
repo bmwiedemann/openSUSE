@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        A portal frontend service for Flatpak
 License:        LGPL-2.1-or-later
@@ -106,9 +106,11 @@ export LANG=C.UTF-8
 %{_libexecdir}/xdg-desktop-portal-validate-icon
 %{_libexecdir}/xdg-document-portal
 %{_libexecdir}/xdg-permission-store
+%{_libexecdir}/xdg-desktop-portal-rewrite-launchers
 %{_userunitdir}/%{name}.service
 %{_userunitdir}/xdg-document-portal.service
 %{_userunitdir}/xdg-permission-store.service
+%{_userunitdir}/xdg-desktop-portal-rewrite-launchers.service
 
 %files devel
 %doc %{_defaultdocdir}/%{name}/

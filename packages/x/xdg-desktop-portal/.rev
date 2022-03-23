@@ -269,4 +269,12 @@
 - Add BuildRequires: pkgconfig(libsystemd) and</comment>
     <requestid>962652</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5277300ed5579352b828ebbf5436f45d</srcmd5>
+    <version>1.14.1</version>
+    <time>1648063019</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963643</requestid>
+  </revision>
 </revisionlist>
