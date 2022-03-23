@@ -245,4 +245,12 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795019 from iznogood)</comment>
     <requestid>795175</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6eea4bb44f15749560e8cb0825e9016d</srcmd5>
+    <version>3.32.2</version>
+    <time>1648063045</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963566</requestid>
+  </revision>
 </revisionlist>

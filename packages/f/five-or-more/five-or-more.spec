@@ -1,7 +1,7 @@
 #
 # spec file for package five-or-more
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,10 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Five_or_more
 Source0:        https://download.gnome.org/sources/five-or-more/3.32/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-build-vala-055.patch -- Backport: Fix build with vala 0.55.x
+Patch0:         fix-build-vala-055.patch
+# PATCH-FIX-UPSTREAM fix-ref-gtk-child-unowned.patch bjorn.lie@gmail.com -- Reference of [GtkChild] fields is handled by GtkBuilder, type must be unowned
+Patch1:         fix-ref-gtk-child-unowned.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool

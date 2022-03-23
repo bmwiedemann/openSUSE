@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 19 19:21:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-build-vala-055.patch: Backport: Fix build with vala
+  0.55.x.
+- Add fix-ref-gtk-child-unowned.patch: Reference of [GtkChild]
+  fields is handled by GtkBuilder, type must be unowned.
+
+-------------------------------------------------------------------
 Sat Mar 28 19:11:02 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.2:
