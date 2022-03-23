@@ -16,8 +16,10 @@
 #
 
 
-%define major_ver 5.10
-%define shlib libparaview5_10
+%define major_ver 5
+%define minor_ver 10
+%define short_ver 5.10
+%define shlib libparaview%{major_ver}_%{minor_ver}
 
 %if 0%{?suse_version} <= 1500
 %bcond_with    pugixml
@@ -30,17 +32,17 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        5.10.0
+Version:        %{short_ver}.1
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Physics
 URL:            https://www.paraview.org
-Source0:        https://www.paraview.org/files/v%{major_ver}/ParaView-v%{version}.tar.xz
+Source0:        https://www.paraview.org/files/v%{short_ver}/ParaView-v%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
-Source2:        https://www.paraview.org/files/v%{major_ver}/ParaViewGettingStarted-%{version}.pdf
-Source3:        https://www.paraview.org/files/v%{major_ver}/ParaViewTutorial-%{version}.pdf
+Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{version}.pdf
+Source3:        https://www.paraview.org/files/v%{short_ver}/ParaViewTutorial-%{version}.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
@@ -218,11 +220,14 @@ find . \( -name \*.txt -o -name \*.xml -o -name '*.[ch]' -o -name '*.[ch][px][px
 %cmake_install
 
 # INSTALL DOCUMENTATION USED BY THE HELP MENU IN MAIN APP
-install -Dm0644 %{S:2} %{buildroot}%{_datadir}/%{name}-%{major_ver}/doc/GettingStarted.pdf
-install -Dm0644 %{S:3} %{buildroot}%{_datadir}/%{name}-%{major_ver}/doc/Guide.pdf
+install -Dm0644 %{S:2} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/GettingStarted.pdf
+install -Dm0644 %{S:3} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/Guide.pdf
 
 # REMOVE paraview-config: DOESN'T WORK WITHOUT STATIC LIBS ANYWAY
 rm %{buildroot}%{_bindir}/paraview-config
+
+# Delete zero-length cmake files
+find %{buildroot}%{_libdir}/cmake/paraview-%{short_ver}/ -size 0 -delete -print
 
 %fdupes %{buildroot}/
 
@@ -235,7 +240,7 @@ rm %{buildroot}%{_bindir}/paraview-config
 %{_bindir}/*
 %exclude %{_bindir}/smTest*
 %exclude %{_bindir}/vtk*
-%{_datadir}/%{name}-%{major_ver}/
+%{_datadir}/%{name}-%{short_ver}/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/applications/*.desktop
@@ -250,11 +255,11 @@ rm %{buildroot}%{_bindir}/paraview-config
 %{_libdir}/*.so.*
 
 %files plugins
-%{_libdir}/%{name}-%{major_ver}/
+%{_libdir}/%{name}-%{short_ver}/
 
 %files devel
 %{_libdir}/*.so
-%{_libdir}/cmake/paraview-%{major_ver}/
+%{_libdir}/cmake/paraview-%{short_ver}/
 %{_bindir}/smTest*
 %{_bindir}/vtk*
 %{_includedir}/%{name}*

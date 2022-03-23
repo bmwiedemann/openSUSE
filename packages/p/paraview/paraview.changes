@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Mar 17 13:40:21 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.10.1:
+  * User interface:
+    - State files appear as datasets.
+    - File dialog issues in client/server mode.
+    - Stride in Animation View is too restricted.
+    - Context menu in file dialog doesn't work on macOS with Qt
+      5.15.1.
+    - Python tracing fails when a custom source exists.
+    - Python Shell broken by any custom filter.
+    - Stereo broken in CAVE environments.
+    - Parallel Coordinates segfault.
+    - Can't set frame rate when saving MP4 animation.
+    - command_button widget is not visible anymore.
+    - Client information does not show VTK version.
+    - Only fetch favorites from server on creation.
+  * Filters:
+    - Ghost cell generator crash.
+    - Redistribute dataset on Image Data then generate Ghost cells
+      seems to give the wrong result.
+    - TemporalParticlesToPathlines fails with AMReX particle data:
+      "The input dataset did not have a valid DATA_TIME_STEPS
+      information key".
+  * Readers:
+    - Sideset error with IOSS reader.
+    - IOSS reader is slow with small, parallel dataset.
+    - IOSS reader and set variables don't work.
+    - Restart file fails with IOSS reader.
+    - PIO reader seg faults on warnings for client-server.
+    - PIO reader fails on extra file in directory.
+    - PIO reader access to restart block and even/odd checkpoints.
+    - openPMD: Fix Particle Time Series.
+  * Catalyst:
+    - Multiple grids with multiple pipelines produces failure in
+      coprocessing.py.
+    - SaveExtract volumetric cinema database crash.
+  * Build:
+    - Guard the list of required vtk components for paraview
+      package.
+    - pqPythonUtils.h not installed.
+- Update guide books:
+  * ParaViewGettingStarted-5.10.1.pdf.
+  * ParaViewTutorial-5.10.1.pdf.
+- Adapt defined macros for versioning to be more recyclable.
+- Drop some zero-length cmake files from %{_libdir}/cmake/ which
+  are useless anyway.
+
+-------------------------------------------------------------------
 Thu Feb 10 21:28:19 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop unused exodusII-devel build dependency (used vendored
