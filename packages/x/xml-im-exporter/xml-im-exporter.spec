@@ -1,7 +1,7 @@
 #
 # spec file for package xml-im-exporter
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,18 +20,17 @@ Name:           xml-im-exporter
 Version:        1.1
 Release:        0
 Summary:        XML Im-/Exporter
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
-Url:            http://xml-im-exporter.sourceforge.net/
+URL:            http://xml-im-exporter.sourceforge.net/
 Source0:        xml-im-exporter1.1.tar.bz2
-Source1:        http://mirrors.ibiblio.org/pub/mirrors/maven2/de/zeigermann/xml/xml-im-exporter/1.1/xml-im-exporter-1.1.pom
+Source1:        https://repo1.maven.org/maven2/de/zeigermann/xml/%{name}/%{version}/%{name}-%{version}.pom
 Patch0:         xml-im-exporter-build_xml.patch
 Patch1:         encoding.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit
-# Needed for maven conversions
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildArch:      noarch
 
@@ -66,7 +65,7 @@ sed -i -e 's/.$//' *.txt doc/javadoc/stylesheet.css doc/javadoc/package-list
 %build
 export CLASSPATH=
 export OPT_JAT_LIST="junit ant/ant-junit"
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 -Djavac.encoding="utf-8" jar test javadocs
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 -Djavac.encoding="utf-8" jar test javadocs
 
 %install
 # jars
