@@ -1,7 +1,7 @@
 #
 # spec file for package opennlp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0
 URL:            https://opennlp.apache.org/
 Source0:        http://archive.apache.org/dist/opennlp/%{name}-%{version}/apache-%{name}-%{version}-src.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.sf.jwordnet:jwnl)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -103,9 +104,9 @@ rm -r opennlp-maxent/src/test/java/opennlp/perceptron/PerceptronPrepAttachTest.j
 
 %{mvn_build} -f -j -s -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
+    -Dmaven.compiler.release=8 \
 %endif
-	-f opennlp/pom.xml -Dsource=6
+    -Dsource=8 -f opennlp/pom.xml
 
 %install
 %mvn_install

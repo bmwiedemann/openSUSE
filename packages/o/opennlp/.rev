@@ -15,4 +15,12 @@
     <comment>migrate from felix-osgi implementation to OSGi 7</comment>
     <requestid>790526</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>87b5dd8164969c314481095081cde2c3</srcmd5>
+    <version>1.5.3</version>
+    <time>1648063112</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964189</requestid>
+  </revision>
 </revisionlist>

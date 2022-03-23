@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 08:57:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Tue Mar 31 06:27:06 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Migrate away from the old felix-osgi implementation to OSGi r7
