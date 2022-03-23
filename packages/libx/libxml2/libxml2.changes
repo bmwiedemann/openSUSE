@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar 18 09:46:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Build python bindings in a 2nd run, using multibuild: otherwise,
+  libxml2 requires pkgconfig(libxml-2.0) to build, causing issues
+  to bootstrap.
+
+-------------------------------------------------------------------
+Tue Mar  8 06:32:13 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 2.9.13:
+  * Security fixes:
+    + [CVE-2022-23308] Use-after-free of ID and IDREF attributes
+      (boo#1196490);
+    + Several memory leaks and another issues.
+  * Many regressions fixes.
+  * Numerous bug fixes, including, among many others:
+    + xmllint's --maxmem option should work as expected now;
+    + xmllint now returns an error if arguments are missing.
+  * Numerous tests and code and fuzzing fixes and improvements.
+  * Updated documentation.
+- The full Libxml2 2.9.13 NEWS can be found here:
+  https://download.gnome.org/sources/libxml2/2.9/\
+  libxml2-2.9.13.news.
+- Replace version-release macros in all 3 Obsoletes tag with
+  plain 2.9.13 to avoid unwanted behaviors in the future.
+- Remove dropped upstream AUTHORS file from list of files to be
+  installed in the documentation location with 'cp' command.
+- Update http://xmlsoft.org URL tag to Libxml2's new web home:
+  https://gitlab.gnome.org/GNOME/libxml2.
+- Update ftp://xmlsoft.org Source tag to Libxml2's new download
+  host: https://download.gnome.org.
+- Drop deprecated Python-2-related macro definitions/conditional
+  statement from spec file.
+- Drop merged upstream patches:
+  libxml2-fix-lxml-corrupted-subtree-structures.patch;
+  libxml2-fix-regression-in-xmlNodeDumpOutputInternal.patch.
+- Drop libxml2.keyring source file as the new download host doesn't
+  offer GPG signatures.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Wed Oct 20 17:54:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Rewrite package to the single-spec %python_subpackage_only style and

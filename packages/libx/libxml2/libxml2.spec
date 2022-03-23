@@ -1,7 +1,7 @@
 #
-# spec file for package libxml2
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,53 +16,65 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
-%define bname libxml2
-%define lname libxml2-2
-Name:           libxml2
-Version:        2.9.12
+%define base_name  libxml2
+%define libname    libxml2-2
+%define flavor @BUILD_FLAVOR@%nil
+%if "%{flavor}" == "python"
+%define dash -
+%define buildpython 1
+%endif
+
+Name:           libxml2%{?dash}%{flavor}
+Version:        2.9.13
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
-URL:            http://xmlsoft.org
-Source:         ftp://xmlsoft.org/libxml2/%{bname}-%{version}.tar.gz
-Source1:        ftp://xmlsoft.org/libxml2/%{bname}-%{version}.tar.gz.asc
-Source2:        baselibs.conf
-Source3:        libxml2.keyring
+URL:            https://gitlab.gnome.org/GNOME/libxml2
+Source0:        https://download.gnome.org/sources/%{name}/2.9/libxml2-%{version}.tar.xz
+Source1:        baselibs.conf
+#
+### -- Upstream patches range from 0 to 999 -- ###
 # PATCH-FIX-UPSTREAM libxml2-python3-unicode-errors.patch bsc#1064286 mcepl@suse.com
 # remove segfault after doc.freeDoc()
-Patch1:         libxml2-python3-unicode-errors.patch
+Patch0:         libxml2-python3-unicode-errors.patch
 # PATCH-FIX-UPSTREAM libxml2-python3-string-null-check.patch bsc#1065270 mgorse@suse.com
 # https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/15
-Patch2:         libxml2-python3-string-null-check.patch
+Patch1:         libxml2-python3-string-null-check.patch
+#
+### -- openSUSE patches range from 1000 to 1999 -- ###
+# PATCH-FIX-OPENSUSE
+#Patch1000:
+#
+### -- SUSE patches starts from 2000 -- ###
+## TODO -- Is libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch really
+## SUSE-specific? If so, shouldn't it be applied only for SLE distributions?
 # PATCH-FIX-SUSE bsc#1135123 Added a new configurable variable XPATH_DEFAULT_MAX_NODESET_LENGTH to avoid nodeset limit
-Patch3:         libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
-# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/libxml2/-/issues/255
-Patch4:         libxml2-fix-lxml-corrupted-subtree-structures.patch
-Patch5:         libxml2-fix-regression-in-xmlNodeDumpOutputInternal.patch
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module xml}
+Patch2000:      libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
+#
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?buildpython}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module xml}
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(libxml-2.0)
 # TW: generate subpackages for every python3 flavor
 %define python_subpackage_only 1
 %python_subpackages
+%endif
 
 %description
 The XML C library was initially developed for the GNOME project. It is
 now used by many programs to load and save extensible data structures
 or manipulate any kind of XML files.
 
-%package -n %{lname}
+%package -n %{libname}
 Summary:        A Library to Manipulate XML Files
 
-%description -n %{lname}
+%description -n %{libname}
 The XML C library was initially developed for the GNOME project. It is
 now used by many programs to load and save extensible data structures
 or manipulate any kind of XML files.
@@ -80,17 +92,18 @@ progress.
 
 %package tools
 Summary:        Tools using libxml
-Provides:       %{bname} = %{version}-%{release}
-Obsoletes:      %{bname} < %{version}-%{release}
+Provides:       %{base_name} = %{version}-%{release}
+# Use hardcoded version to avoid unwanted behavior in the future.
+Obsoletes:      %{base_name} < 2.9.13
 
 %description tools
 This package contains xmllint, a very useful tool proving libxml's power.
 
 %package devel
 Summary:        Development files for libxml2, an XML manipulation library
-Requires:       %{bname} = %{version}
-Requires:       %{bname}-tools = %{version}
-Requires:       %{lname} = %{version}
+Requires:       %{base_name} = %{version}
+Requires:       %{base_name}-tools = %{version}
+Requires:       %{libname} = %{version}
 Requires:       glibc-devel
 Requires:       libxml2 = %{version}
 Requires:       readline-devel
@@ -108,7 +121,7 @@ applications that want to make use of libxml.
 
 %package doc
 Summary:        Documentation for libxml, an XML manipulation library
-Requires:       %{lname} = %{version}
+Requires:       %{libname} = %{version}
 BuildArch:      noarch
 
 %description doc
@@ -116,22 +129,18 @@ The XML C library was initially developed for the GNOME project. It is
 now used by many programs to load and save extensible data structures
 or manipulate any kind of XML files.
 
-%package -n python-%{name}
+%package -n python-libxml2
 Summary:        Python  Bindings for %{name}
-Requires:       %{lname} = %{version}
+Requires:       %{libname} = %{version}
 Requires:       python-extras
 Requires:       python-testtools >= 1.8.0
-Provides:       %{bname}-python = %{version}-%{release}
+Provides:       %{base_name}-python = %{version}-%{release}
 Provides:       python-libxml2-python = %{version}-%{release}
-Obsoletes:      %{bname}-python < %{version}-%{release}
-Obsoletes:      python-libxml2-python < %{version}-%{release}
-%if "%{python_flavor}" == "python2"
-Provides:       %{bname}-python = %{version}-%{release}
-Provides:       %{oldpython}-libxml2 = %{version}-%{release}
-Obsoletes:      %{oldpython}-libxml2 < %{version}-%{release}
-%endif
+# Use hardcoded version to avoid unwanted behavior in the future.
+Obsoletes:      %{base_name}-python < 2.9.13
+Obsoletes:      python-libxml2-python < 2.9.13
 
-%description -n python-%{name}
+%description -n python-libxml2
 This package contains a module that permits
 applications written in the Python programming language to use the
 interface supplied by the libxml2 library to manipulate XML files.
@@ -145,12 +154,14 @@ either at parse time or later once the document has been modified.
 %autosetup -p1 -n libxml2-%{version}
 
 %build
+%if ! 0%{?buildpython}
+# TODO -- Document why are we using the -fno-strict-aliasing extra flag.
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
     --disable-silent-rules \
     --disable-static \
-    --docdir=%{_docdir}/%{bname} \
-    --with-html-dir=%{_docdir}/%{bname}/html \
+    --docdir=%{_docdir}/%{base_name} \
+    --with-html-dir=%{_docdir}/%{base_name}/html \
     --without-python \
     --with-fexceptions \
     --with-history \
@@ -161,50 +172,54 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --with-reader \
     --with-http
 
-%make_build BASE_DIR="%{_docdir}" DOC_MODULE="%{bname}"
+%make_build BASE_DIR="%{_docdir}" DOC_MODULE="%{base_name}"
+%else
 pushd python
 %python_build
 popd
+%endif
 
 %install
-%make_install BASE_DIR="%{_docdir}" DOC_MODULE="%{bname}"
+%if ! 0%{?buildpython}
+%make_install BASE_DIR="%{_docdir}" DOC_MODULE="%{base_name}"
 find %{buildroot} -type f -name "*.la" -delete -print
-mkdir -p "%{buildroot}/%{_docdir}/%{bname}"
-cp -a AUTHORS NEWS README TODO* %{buildroot}%{_docdir}/%{bname}/
+mkdir -p "%{buildroot}/%{_docdir}/%{base_name}"
+cp -a NEWS README.md TODO* %{buildroot}%{_docdir}/%{base_name}/
 ln -s libxml2/libxml %{buildroot}%{_includedir}/libxml
 # Remove duplicated file Copyright as not found by fdupes
-rm -fr %{buildroot}%{_docdir}/%{bname}/Copyright
+rm -fr %{buildroot}%{_docdir}/%{base_name}/Copyright
 %fdupes %{buildroot}%{_datadir}
-
+%else
 pushd python
 %python_install
 popd
 chmod a-x python/tests/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
+%if ! 0%{?buildpython}
 %check
 # qemu-arm can't keep up atm, disabling check for arm
 %ifnarch %{arm}
 %make_build check
 %endif
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
-%files -n %{lname}
+%files -n %{libname}
 %{_libdir}/lib*.so.*
 %license COPYING* Copyright
-%doc %dir %{_docdir}/%{bname}
-%doc %{_docdir}/%{bname}/[ANRCT]*
+%doc %dir %{_docdir}/%{base_name}
+%doc %{_docdir}/%{base_name}/[ANRCT]*
 
-# the -n %%bname tag is necessary so that python_subpackages does not interfere
-%files -n %{bname}-tools
+# the -n %%base_name tag is necessary so that python_subpackages does not interfere
+%files -n %{base_name}-tools
 %{_bindir}/xmllint
 %{_bindir}/xmlcatalog
 %{_mandir}/man1/xmllint.1%{?ext_man}
 %{_mandir}/man1/xmlcatalog.1%{?ext_man}
 
-%files -n %{bname}-devel
+%files -n %{base_name}-devel
 %{_bindir}/xml2-config
 %dir %{_datadir}/aclocal
 %{_datadir}/aclocal/libxml.m4
@@ -217,20 +232,23 @@ chmod a-x python/tests/*.py
 %{_mandir}/man1/xml2-config.1%{?ext_man}
 %{_mandir}/man3/libxml.3%{?ext_man}
 
-%files -n %{bname}-doc
+%files -n %{base_name}-doc
 %{_datadir}/gtk-doc/html/*
-%doc %{_docdir}/%{bname}/examples
-%doc %{_docdir}/%{bname}/html
+%doc %{_docdir}/%{base_name}/examples
+%doc %{_docdir}/%{base_name}/html
 # owning these directories prevents gtk-doc <-> libxml2 build loop:
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 
-%files %{python_files %{name}}
+%else
+
+%files %{python_files libxml2}
 %doc python/TODO
 %doc python/libxml2class.txt
 %doc doc/*.py
 %doc doc/python.html
 %pycache_only %{python_sitearch}/__pycache__/*libxml2*
 %{python_sitearch}/*libxml2*
+%endif
 
 %changelog
