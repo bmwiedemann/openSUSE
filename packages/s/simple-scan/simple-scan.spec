@@ -17,17 +17,13 @@
 
 
 Name:           simple-scan
-Version:        40.7
+Version:        42.0
 Release:        0
 Summary:        Simple Scanning Utility
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/simple-scan
-Source0:        https://download.gnome.org/sources/simple-scan/40/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 200.patch dimstar@opensuse.org -- Fix accessibility conflict of constant and its value
-Patch0:         https://gitlab.gnome.org/GNOME/simple-scan/-/merge_requests/200.patch
-# PATCH-FIX-UPSTREAM da6626debe00be1a0660f30cf2bf7629186c01d5.patch -- Fix build with meson 0.61.0 and newer
-Patch1:         https://gitlab.gnome.org/GNOME/simple-scan/-/commit/da6626debe00be1a0660f30cf2bf7629186c01d5.patch
+Source0:        https://download.gnome.org/sources/simple-scan/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
