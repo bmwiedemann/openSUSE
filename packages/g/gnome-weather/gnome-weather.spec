@@ -18,15 +18,13 @@
 
 %define _name org.gnome.Weather
 Name:           gnome-weather
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-URL:            https://live.gnome.org/Design/Apps/Weather
-Source0:        https://download.gnome.org/sources/gnome-weather/41/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 4be71525f07189e97720688472172604879d49a5.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-weather/-/commit/4be71525f07189e97720688472172604879d49a5.patch
+URL:            https://apps.gnome.org/app/org.gnome.Weather
+Source0:        https://download.gnome.org/sources/gnome-weather/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -36,22 +34,23 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.50.0
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.71.0
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(gweather-3.0) >= 3.25.91
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gweather4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.3.1
-BuildRequires:  pkgconfig(libhandy-1)
 BuildArch:      noarch
 
 %description
 GNOME 3 weather app that does:
-* display current conditions
-* display forecasts
-* show radar maps
-* notify on hazardous weather conditions
+
+  * Display current conditions;
+  * Display forecasts;
+  * Show radar maps;
+  * Notify on hazardous weather conditions.
 
 %package -n gnome-shell-search-provider-gnome-weather
 Summary:        GNOME Weather -- Search Provider for GNOME Shell
