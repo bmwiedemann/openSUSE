@@ -64,6 +64,9 @@ Patch304:       port-to-guava-30.patch
 
 BuildRequires:  gradle-local
 BuildRequires:  xmvn-subst
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
+BuildConflicts: java >= 12
 
 # Generic build dependencies
 BuildRequires:  desktop-file-utils

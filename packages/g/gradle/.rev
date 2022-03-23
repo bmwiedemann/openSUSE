@@ -140,4 +140,12 @@
     <comment>Fix build against maven-resolver 1.7.3</comment>
     <requestid>961511</requestid>
   </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>39632606999f3c0d4e2d59992695daf8</srcmd5>
+    <version>4.4.1</version>
+    <time>1648063159</time>
+    <user>dimstar_suse</user>
+    <comment>Force building with java 11</comment>
+    <requestid>964333</requestid>
+  </revision>
 </revisionlist>
