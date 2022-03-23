@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Tue Mar 22 09:14:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit pkgconfig(libdrm), pgkconfig(gbm), and
+  pkgconfig(gudev-1.0) BuildRequires: meson checks for them. We
+  should not rely on any other package pulling it in.
+
+-------------------------------------------------------------------
+Mon Mar 21 08:49:44 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 42.0:
+  * Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 08 08:07:54 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 42.rc:
+  * Add 'grdctl'
+  * build:
+    - Bump nv-codec-headers version requirement
+    - Stop making the nv-codec-headers optional
+  * Cleanup server stopping
+  * ctl:
+    - Add --show-credentials to status
+    - Add 'status' command
+  * egl-thread:
+    - Add methods to upload data to the GPU
+    - Also allow bound dma-bufs to be mapped
+    - Don't require callback function for custom tasks
+  * Explicitly enable/disable backends via a setting
+  * hwaccel-nvidia:
+    - Add APIs to allocate and free device memory
+    - Add CUDA kernels for damage region detection
+    - Add methods to get CUDA functions and damage-kernels
+    - Add utility functions for accessing GL resources
+    - Also return aligned size when creating NVENC session
+    - Load extra CUDA functions for GL PBO mappings
+    - Push and pop CUDA context to and from the EGL thread
+    - Reduce global memory access in BGRX_TO_YUV420 kernel
+    - Unload modules before releasing CUDA context
+    - Use a block dim of 16x16x1 for BGRX_TO_YUV420 kernel
+    - Use mapped CUDA pointer for AVC420 encodings
+  * pipewire-utils: Add functions to check whether PipeWire buffer
+    has data
+  * rdp:
+    - Adapt to GrdRdpBuffer
+    - Adapt to GrdRdpDamageDetector
+    - Adapt to RDP buffer pool
+    - Add classes for damage region detection
+    - Add CUDA damage detector class
+    - Add display control class
+    - Add RDP buffer
+    - Add RDP buffer pool
+    - Add RDP monitor config
+    - Allocate and register GL resources for each RDP buffer
+    - Allow dma-bufs again when CUDA is available
+    - Allow passing virtual monitor settings to pipewire-stream
+      instance
+    - Always upload frame data to framebuffer on GPU, if possible
+    - Avoid local copy if possible
+    - Defer cairo region creation if possible
+    - Disable dma-buf support for now, if CUDA is supported
+    - Only initialize clipboard if CLIPRDR channel is joined
+    - Split up AVC420 encoding
+    - Stop reallocating NV12 buffer every frame
+    - Track and use rdp_surface reference in stream class
+    - Unref frame when success is FALSE
+    - Use internal enum for RDP errors
+  * rdp-buffer: Add API to unmap resources
+  * rdp-buffer-pool:
+    - Prefer buffers without mapped resources
+    - Unmap buffer resources with low priority GSource
+  * rdp-gfx-surface: Add way to override the render surface
+  * rdp-graphics-pipeline: Create separate render surface when
+    needed
+  * rdp-pipewire-stream:
+    - Add API to resize stream
+    - Don't miss any buffer data
+    - Don't queue chosen PipeWire buffer
+  * rdp/rdpgfx:
+    - Adapt to RDPGFX frame controller
+    - Add RDPGFX frame controller
+    - Allow GFX surfaces to have their own aligned size
+    - Allow surfaces to be created without an hwaccel session
+    - Forbid protocol resets without AVC support by the client
+    - Target render surface, when encoding data with AVC
+  * rdp-server:
+    - Cleanup resources directly when stopping the server
+    - Tear down NVENC after sessions
+  * rdp-surface: Create CUDA damage detector, if CUDA is available
+  * session: Also clear signal handler, when the session proxy is
+    closed
+  * session-rdp:
+    - Add API to submit new monitor configurations
+    - Add support for monitor layout changes during a session
+    - Add support for sessions with virtual monitors
+  * settings:
+    - Add new screenshare mode setting for the RDP backend
+    - Move Secret schemas into a separate file
+  * utils: Add helper to calculate aligned sizes
+  * vnc-pipewire-stream:
+    - Don't miss any buffer data
+    - Don't queue chosen PipeWire buffer
+  * vnc-server: Cleanup resources directly when stopping the server
+  * vnc: Unref frame when success is FALSE
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 16 12:38:47 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 42.beta:
+  * Add DMA buffer downloading support to EGL thread
+  * Add grd-utils
+  * build: Bump FreeRDP version requirement
+  * ci:
+    - Build mutter from git to have the updated screen cast API
+    - Install soon to be needed dependencies
+  * context: Hook up the EGL thread
+  * cuda: Fix out-of-bounds source read in BGRX_TO_YUV420 kernel
+  * egl-thread:
+    - Add API to query format modifiers
+    - Add API to run external functions in EGL thread
+    - Add fallback with EGL_PLATFORM_DEVICE_EXT
+    - Add sync function
+  * hwaccel-nvidia: Use compute devices retrieved from EGL thread
+  * Introduce an EGL thread
+  * pipewire-utils: Remove unused sync function
+  * rdp-gfx-surface: Don't forget to set the surface serial
+  * rdp-pipewire-stream:
+    - Add support for explicit DMA buffer modifiers
+    - Fetch cursor state before framebuffer content
+    - Make buffer processing a bit more async
+    - Make GrdRdpFrame ref counted
+    - Move pixel copy loop to a helper
+    - Use a helper variable for the pending frame
+    - Use EGL thread for DMA buffer downloads
+  * remote-desktop: Synchronize remote-desktop API with API in mutter
+  * Remove semi colon after GType macros
+  * Rename GrdRdpNvEnc to GrdHwAccelNvidia
+  * screen-cast: Synchronize screencast API with API in mutter
+  * session:
+    - Add methods to create streams on-the-fly
+    - Add method to notify subclasses when session is started
+    - Port record behaviour to new API
+    - Require stream for absolute pointer motion events
+  * session-rdp: Move on_pipewire_stream_closed() down a bit
+  * settings:
+    - Fix test RDP username override
+    - Unify code style in gsettings schema
+  * vnc-pipewire-stream:
+    - Add support for explicit DMA buffer modifiers
+    - Do not allocate frame data twice
+    - Do not leak pending frame, when destroying stream
+    - Do not resize framebuffer when client is gone
+    - Make buffer processing callback based
+    - Make GrdVncFrame reference counted
+    - Move format details helper to common area
+    - Simplify buffer merging
+    - Use EGL thread to download DMA buffers
+    - Use GSource to invoke main thread
+  * vnc-server: Make refusing VNC clients more explicit
+  * Updated translations.
+- Add pkgconfig(epoxy) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Thu Dec 09 12:36:19 UTC 2021 - bjorn.lie@gmail.com
 
 - Update to version 41.2:

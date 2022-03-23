@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-remote-desktop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define freerdp_version 2.2.0
 
 Name:           gnome-remote-desktop
-Version:        41.2
+Version:        42.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
@@ -33,15 +33,19 @@ BuildRequires:  meson >= 0.36.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(ffnvcodec)
 BuildRequires:  pkgconfig(freerdp-client2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp-server2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(fuse3) >= 3.9.1
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68
 BuildRequires:  pkgconfig(glib-2.0) >= 2.68
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.10.0
+BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(libsecret-1)
@@ -84,6 +88,7 @@ GNOME desktop environment.
 %files
 %license COPYING
 %doc README
+%{_bindir}/grdctl
 %{_libexecdir}/gnome-remote-desktop-daemon
 %{_userunitdir}/gnome-remote-desktop.service
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml
