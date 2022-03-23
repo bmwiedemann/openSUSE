@@ -17,13 +17,13 @@
 
 
 Name:           nautilus
-Version:        41.2
+Version:        42.0
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
-Source0:        https://download.gnome.org/sources/nautilus/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/nautilus/42/%{name}-%{version}.tar.xz
 # fate#308344 bgo#602147
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop
@@ -36,22 +36,23 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
-BuildRequires:  (python3-dataclasses if python3-base < 3.7)
-# We need the %%mime_database_* macros
-BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  pkgconfig(gail-3.0)
-BuildRequires:  pkgconfig(gexiv2) >= 0.12.2
+BuildRequires:  pkgconfig(gexiv2) >= 0.14.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.3.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.0.0
+#BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.8.0
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.6
 BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
+#BuildRequires:  pkgconfig(gtk4) >= 4.6
+#BuildRequires:  pkgconfig(libadwaita-1) >= 1.0
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
@@ -136,7 +137,7 @@ install -m0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/mount-archive.des
 %suse_update_desktop_file mount-archive
 mkdir -p %{buildroot}/%{_libdir}/nautilus/extensions-3.0
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 %if 0%{?sle_version}
 mkdir -p %{buildroot}%{_sysconfdir}/skel/.config/autostart
 install -m0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/skel/.config/autostart/set_trusted.desktop

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sun Mar 20 08:32:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Fix HiDPI thumbnails in list view.
+  + Properly dispose pathbar to avoid crashes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar  5 16:58:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Tweak thumbnail shadow drawing to fix performance regressions.
+  + Various search engine fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 12 01:47:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Revert GTK 4 switch and intentional regressions.
+  + Fix criticals when selecting non-ZIP formats for compression.
+  + Add shadows to thumbnails in the old views.
+  + Support dark mode setting.
+  + Updated translations.
+- Revert changes done in alpha, but leave the "gtk 4 port"
+  BuildRequires in place, but disabled. Add back
+  pkgconfig(gtk+-3.0), pkgconfig(libhandy-1) and
+  pkgconfig(gnome-desktop-3.0). Rename back to
+  typelib-1_0-Nautilus-3_0.
+
+-------------------------------------------------------------------
+Wed Jan 12 15:42:01 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.alpha:
+  + Improve design of the file renaming UI.
+  + Improve visuals of the file conflict UI.
+  + Use GtkBuilder UI definitions for more components.
+  + Fix "Move to"/"Copy to" from Starred.
+  + Improve disposition of shell search provider.
+  + Sort by subtype within type.
+  + Allow searching by creation time.
+  + Replace deprecated gexiv2 functions.
+  + Fix extension API introspection annotations.
+  + Expand on extension API documentation.
+  + Add compressed archives to Recent files.
+  + Preparations for GTK 4 switch.
+  + Complete the GtkFlowBox-based grid view.
+  + Remove EelCanvas-based grid view.
+  * Improve design of the path bar.
+  + Fix geographical coordinates displayed format.
+  + Port to GTK 4.
+  + Fix some GTK 4 switch regressions/warnings.
+  + Updated translations.
+- Update BuildRequires for switch to GTK4:
+  + Replace pkgconfig(gtk+-3.0) with pkgconfig(gtk4)
+  + Replace pkgconfig(libhandy-1) with pkgconfig(libadwaita-1)
+  + Replace pkgconfig(gnome-desktop-3.0) with
+    pkgconfig(gnome-desktop-4).
+- Drop shared-mime-info BuildRequires: it's been a long time that
+  the macros were not used anymore.
+- Rename typelib-1_0-Nautilus-3_0 to typelib-1_0-Nautilus-4_0,
+  following upstreams changes.
+
+-------------------------------------------------------------------
 Wed Jan 12 14:44:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:
