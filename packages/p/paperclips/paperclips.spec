@@ -1,7 +1,7 @@
 #
 # spec file for package paperclips
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,15 @@ Release:        0
 Summary:        Simplified Java Printing Support for SWT
 License:        EPL-1.0
 Group:          Development/Languages/Java
-Url:            https://code.google.com/archive/p/swt-paperclips/
-Source:         http://swt-paperclips.googlecode.com/files/net.sf.paperclips.source_%{version}.200908120926.jar
+URL:            https://code.google.com/archive/p/swt-paperclips/
+# The link is broken
+#Source:         https://swt-paperclips.googlecode.com/files/net.sf.paperclips.source_%{version}.200908120926.jar
+Source:         net.sf.paperclips.source_%{version}.200908120926.jar
 Patch0:         paperclips-1.0.4-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -66,7 +68,7 @@ and the layout is up to you.
 export CLASSPATH=%{_libdir}/java/swt.jar
 
 pushd src
-  %javac -source 1.6 -target 1.6 -g -encoding UTF-8 $(find . -type f -name "*.java")
+  %javac -source 1.8 -target 1.8 -g -encoding UTF-8 $(find . -type f -name "*.java")
   jarfile="../net.sf.paperclips_%{version}.jar"
   files="$(find . -type f \( -name '*.class' -o -name '*.properties' \))"
   test ! -d classes && mf="" \
@@ -77,7 +79,7 @@ popd
 
 %{ant} \
       -f gen_javadoc.xml \
-	  -Dant.build.javac.source=1.6 -Dswt.jar=$(build-classpath swt)
+	  -Dant.build.javac.source=1.8 -Dswt.jar=$(build-classpath swt)
 
 %install
 mkdir -p %{buildroot}%{_javadir}
