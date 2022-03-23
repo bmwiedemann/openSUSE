@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 10:31:05 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Fix number check of test (builtin) in %pre scriptlet (boo#1197317) 
+
+-------------------------------------------------------------------
 Thu Feb 17 21:22:49 UTC 2022 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives.

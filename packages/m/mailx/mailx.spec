@@ -114,7 +114,7 @@ minor enhancements like the ability to set a "From:" address.
     rm -rf %{buildroot}/bin
     mkdir  %{buildroot}/bin
 %if ! %{with libalternatives}
-    # create symlinks for update-alternatives    
+    # create symlinks for update-alternatives
     mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 %if !0%{?usrmerged}
     ln -sf %{_sysconfdir}/alternatives/binmail %{buildroot}/bin/mail
@@ -152,11 +152,11 @@ binary=%{_bindir}/mailx
 man=mailx.1
 group=mail, Mail
 EOF
-%endif   
+%endif
     install -m 0644 mail.rc %{buildroot}/etc
     mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
 
-%if ! %{with libalternatives}    
+%if ! %{with libalternatives}
 %post
 %{_sbindir}/update-alternatives --quiet --force \
     --install %{_bindir}/mail mail %{_bindir}/mailx 20 \
@@ -172,10 +172,11 @@ if test ! -e %{_bindir}/mailx; then
   %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mailx
 fi
 %else
+
 %pre
 # removing old update-alternatives entries
-if [ "$1" > 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
-  %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mailx    
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+  %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mailx
 fi
 %endif
 
