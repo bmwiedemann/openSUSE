@@ -1,7 +1,7 @@
 #
 # spec file for package netbeans-svnclientadapter
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,7 +28,7 @@ Release:        0
 Summary:        Subversion Client Adapter
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://subclipse.tigris.org/svnClientAdapter.html
+URL:            http://subclipse.tigris.org/svnClientAdapter.html
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
 # svn export --force --username guest -r4383 \
@@ -39,10 +39,10 @@ Source0:        %{svnCA}-%{svnCA_ver}.tar.bz2
 Patch0:         %{svnCA}-%{svnCA_ver}-build.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  subversion-javahl
-Requires:       java >= 1.6.0
+Requires:       java >= 1.8
 Requires:       javapackages-tools
 Requires:       subversion
 BuildArch:      noarch
@@ -58,23 +58,22 @@ find . -name "*.jar" -exec rm -f {} \;
 
 %patch0 -p1 -b .sav
 
-ln -s -f %{_javadir}/svnkit-javahl.jar lib/svnjavahl.jar
+ln -s -f $(find-jar svnkit-javahl) lib/svnjavahl.jar
 
 %build
-[ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java
-ant \
+%{ant} \
     -verbose \
-	-DtargetJvm=1.6 \
+	-DtargetJvm=1.8 \
 	svnClientAdapter.jar
 
 %install
 # jar
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 build/lib/svnClientAdapter.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-ln -s %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m 644 build/lib/svnClientAdapter.jar %{buildroot}%{_javadir}/%{name}.jar
 
 %files
-%doc license.txt readme.txt
+%license license.txt
+%doc readme.txt
 %{_javadir}/*
 
 %changelog

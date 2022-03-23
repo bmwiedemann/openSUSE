@@ -112,4 +112,12 @@
     <comment>Fix build with jdk9</comment>
     <requestid>527347</requestid>
   </revision>
+  <revision rev="17" vrev="22">
+    <srcmd5>c5600869c59a363af94898763d9a5205</srcmd5>
+    <version>6.7.1</version>
+    <time>1648063087</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964127</requestid>
+  </revision>
 </revisionlist>
