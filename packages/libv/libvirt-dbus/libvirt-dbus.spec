@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(libvirt-glib-1.0)
 BuildRequires:  pkgconfig(systemd)
 Requires:       polkit
 Requires(pre):  user(libvirtdbus)
+#!BuildIgnore:  user(libvirtdbus)
 
 %description
 This package provides D-Bus API for libvirt
