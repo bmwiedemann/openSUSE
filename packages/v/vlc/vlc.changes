@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Mar 19 14:19:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.17.3:
+  + This is a fixup release which fixes a regression that could
+    cause a lack of audio for adaptive streaming playback. It is
+    identical to 3.0.17.2 otherwise.
+  + This updates contains various fixes and improvements:
+    - Major adaptive streaming stack overhaul
+    - Major codec updates
+    - Many third party libraries update
+    - Allow brackets in the path section of URLs
+    - Better notch support for new macbooks
+    - Add support for DAV video and Webp image formats
+    - Improve AV1 live streaming support
+    - Several SRT support improvements
+    - Numerous crash fixes
+    - Update youtube script
+- Changes from version 3.0.17.2:
+  + This is a fixup release which fixes youtube playback and
+    contextual menus on integrated video for the Qt interface. It
+    is identical to 3.0.17-1 otherwise.
+- Changes from version 3.0.17-1:
+  + This is a fixup release which bumps libflac to 1.3.4 in order
+    to fix CVE-2020-0499 and CVE-2021-0561 on platforms for which
+    we provide binary releases.
+
+-------------------------------------------------------------------
+Thu Mar 10 14:26:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable libnfs and soxr integration on suse_version < 1500 (e.g
+  SLE12).
+
+-------------------------------------------------------------------
 Mon Mar  7 15:34:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.17:
