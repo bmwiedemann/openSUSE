@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Dec 11 05:12:11 UTC 2021 - Luciano Santos <luc14n0@linuxmail.org>
+
+- Update to stable version 4.0.1:
+  + Some minor fixes and updates on the appendix, translations and
+    meson build scripts.
+- Changes from stable version 4.0.0:
+  + Lots of changes in the example programs due to changes in gtk4
+    and gtkmm4.
+  + Update build-time dependencies and ajust some options passed to
+    meson.
+  + New addition describes how to build a multi-threaded program.
+- Changes from unstable version 3.97.1:
+  + Lots of small changes and improvements, most of them caused by
+    changes in gtkmm-4.0.
+- Changes from unstable version 3.95.1:
+  + Update most chapters and example programs, and add some
+    improvements as well.
+- Add "meson >= 0.50.0" to compile-time dependencies and its
+  macros while replacing Autotools requirements and macros.
+- Add docbook-xsl-stylesheets new build requirement.
+- Update current pkgconfig() BuildRequires:
+  + From "giomm-2.4 >= 2.50.0" to "giomm-2.68 >= 2.68.0"; and
+  + From "gtkmm-3.0 >= 3.24.0" to "gtkmm-4.0 >= 4.0.0".
+- Update http://www.gnome.org URL link to https://gtkmm.org,
+  the new gtkmm's web home.
+- Rename gtkmm3-tutorial subpackage to gtkmm4-tutorial.
+- Update gtkmm4-tutorial subpackage's gtkmm3-doc requirements/
+  supplements to gtkmm4-doc.
+- Add new confliction to gtkmm3-tutorial old package.
+- Change gtkmm3-documentation Provides tag to
+  gtkmm4-documentation.
+- Add gtkmm3-tutorial and gtkmm3-tutorial-lang to new Obsoletes
+  tag.
+- Added rpmlintrc file to filter warnings related to "package with
+  huge docs" and "obsolete package not provided", as the package
+  is documentation and there shall be a gtkmm3-documentation legacy
+  package, so there's no use adding any provision here.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:14:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

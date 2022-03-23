@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm-documentation
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,22 @@
 
 
 Name:           gtkmm-documentation
-Version:        3.24.0
+Version:        4.0.1
 Release:        0
 Summary:        C++ Bindings for GTK+ -- Documentation
 License:        GFDL-1.2-only AND GPL-2.0-or-later
 Group:          Documentation/Other
-URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gtkmm-documentation/3.24/%{name}-%{version}.tar.xz
+URL:            https://gtkmm.org
+Source0:        https://download.gnome.org/sources/gtkmm-documentation/4.0/%{name}-%{version}.tar.xz
+Source99:       %{name}-rpmlintrc
 
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(giomm-2.4) >= 2.50.0
-BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(giomm-2.68) >= 2.68.0
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.0.0
 BuildArch:      noarch
 
 %description
@@ -38,42 +41,46 @@ GTK+. Highlights include typesafe callbacks, widgets extensible via
 inheritance, and a comprehensive set of widget classes that can be
 freely combined to quickly create complex user interfaces.
 
-%package -n gtkmm3-tutorial
+%package -n gtkmm4-tutorial
 Summary:        C++ Bindings for GTK+ -- Tutorial
 Group:          Documentation/Other
-Requires:       gtkmm3-doc
-Supplements:    gtkmm3-doc
+Requires:       gtkmm4-doc
+Supplements:    gtkmm4-doc
 Conflicts:      gtkmm2-tutorial
+Conflicts:      gtkmm3-tutorial
+Obsoletes:      gtkmm3-tutorial < 3.97.1
+Obsoletes:      gtkmm3-tutorial-lang < 3.97.1
 Provides:       %{name} = %{version}
 Provides:       gtkmm-tutorial = %{version}
-Provides:       gtkmm3-documentation = %{version}
+Provides:       gtkmm4-documentation = %{version}
 
-%description -n gtkmm3-tutorial
+%description -n gtkmm4-tutorial
 Gtkmm provides a C++ interface to the GTK+ GUI library. gtkmm wraps
 GTK+. Highlights include typesafe callbacks, widgets extensible via
 inheritance, and a comprehensive set of widget classes that can be
 freely combined to quickly create complex user interfaces.
 
-%lang_package -n gtkmm3-tutorial
+%lang_package -n gtkmm4-tutorial
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
+
 # Drop html version: the docbook version is more than enough
-rm -r %{buildroot}%{_datadir}/doc/gtkmm-3.0/tutorial/html
+rm -r %{buildroot}%{_datadir}/doc/gtkmm-4.0/tutorial/html
 %find_lang gtkmm-tutorial %{?no_lang_C}
 
-%files -n gtkmm3-tutorial
+%files -n gtkmm4-tutorial
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
-%doc %{_datadir}/help/C/gtkmm-tutorial/
+%{_datadir}/help/C/gtkmm-tutorial/
 
-%files -n gtkmm3-tutorial-lang -f gtkmm-tutorial.lang
+%files -n gtkmm4-tutorial-lang -f gtkmm-tutorial.lang
 
 %changelog

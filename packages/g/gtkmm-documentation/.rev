@@ -260,4 +260,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767171 from dimstar)</comment>
     <requestid>767435</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>bd4089ae0fbd8fd196cf4e943e035078</srcmd5>
+    <version>4.0.1</version>
+    <time>1648063059</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963614</requestid>
+  </revision>
 </revisionlist>
