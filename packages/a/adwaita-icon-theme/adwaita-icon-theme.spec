@@ -17,18 +17,17 @@
 
 
 Name:           adwaita-icon-theme
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        GNOME Icon Theme
 License:        CC-BY-SA-3.0 OR LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/adwaita-icon-theme
-Source0:        https://download.gnome.org/sources/adwaita-icon-theme/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/adwaita-icon-theme/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  gtk3-tools >= 3.24.2
-
 BuildRequires:  pkgconfig
 # To make sure the icon theme cache gets generated
 Requires(post): (gtk3-tools if libgtk-3-0)

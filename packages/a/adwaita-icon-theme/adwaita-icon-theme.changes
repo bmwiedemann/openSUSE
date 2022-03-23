@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 21 19:24:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + symbolic: provide -rtl versions properly.
+  + README: bring up to date.
+  + fullcolor: fix input-mouse.
+
+-------------------------------------------------------------------
 Mon Feb 21 10:19:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace Requires(post): gtk3-tools with the 2 following:
@@ -7,6 +15,20 @@ Mon Feb 21 10:19:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   Do this as we want gtk3-tools when building and installing a gtk3
   based package, and gtk4-tools when building and installing a gtk4
   based package.
+
+-------------------------------------------------------------------
+Wed Feb 16 12:35:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Symbolic:
+    - Port over to core.svg for new toolchain (Symbolic Preview).
+    - Updated style across the board - simpler, rounder,
+      consistently 2px thick outlines.
+  + Fullcolor:
+    - Prune legacy fullcolor lowres, apps like Evolution ship their
+      assets from now on.
+    - Updated device icons.
+    - Updated folder icons.
 
 -------------------------------------------------------------------
 Mon Sep 13 07:19:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
