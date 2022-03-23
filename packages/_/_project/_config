@@ -169,6 +169,7 @@ FileProvides: /usr/bin/sh bash-sh busybox-sh
 Prefer: bash-sh
 FileProvides: /bin/csh tcsh
 FileProvides: /bin/hostname hostname busybox-hostname
+Prefer: -busybox-hostname
 FileProvides: /usr/bin/hostname hostname busybox-hostname
 FileProvides: /bin/logger util-linux-systemd
 FileProvides: /sbin/netconfig sysconfig-netconfig
@@ -228,7 +229,15 @@ Preinstall: libpopt0 libelf1 libpcre1 libzstd1 libpcre2-8-0
 Prefer: libdb-4_8-devel
 VMinstall: util-linux libmount1 perl-base libdb-4_8 libblkid1 libuuid1 libsmartcols1 libcrypt1
 VMinstall: kernel-obs-build
-VMInstall: iproute2 libmnl0
+# iproute seems not to be used anymore nowadays; the builders have working localnet without it
+# and on OBS we don't support 'network' access anyway, so the rest of the config is never reached
+# 2022-03-23 - dimstar
+# VMInstall: iproute2 libmnl0
+
+# Add hostname so that OBS/build will have a chance to identify the hostname (instead of localhost)
+# build has alternative ways to inject hostname nowadays - removed 2022-03-23 - dimstar
+#Support: hostname
+#Prefer: -busybox-hostname
 
 # Use the x86_64 kernel on i586 builds - boo#1178762 - Slow down in OBS since kernel 5.6.0 on 32bit
 ExportFilter: ^kernel-obs-build.*\.x86_64.rpm$ . i586
@@ -306,9 +315,6 @@ Prefer:  build-mkbaselibs
 Support: brp-check-suse
 Support: post-build-checks
 
-# Add hostname so that OBS/build will have a chance to identify the hostname (instead of localhost)
-Support: hostname
-Prefer: -busybox-hostname
 # remove build-compare support to disable "same result" package dropping
 Support: build-compare
 
