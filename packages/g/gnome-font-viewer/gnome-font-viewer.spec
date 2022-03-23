@@ -17,27 +17,25 @@
 
 
 Name:           gnome-font-viewer
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        A font viewer utility for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-font-viewer
-Source0:        https://download.gnome.org/sources/gnome-font-viewer/41/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 218166246e29a39e2eac8d3f06976038571b0603.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-font-viewer/-/commit/218166246e29a39e2eac8d3f06976038571b0603.patch
+Source0:        https://download.gnome.org/sources/gnome-font-viewer/42/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-glib
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.35.1
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gnome-desktop-4)
+BuildRequires:  pkgconfig(gtk4) >= 4.5.0
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libadwaita-1)
 Conflicts:      gnome-utils < 3.3.1
 
 %description
@@ -49,13 +47,17 @@ A utility to let you see the installed fonts at a glance.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	%{nil}
 %meson_build
 
 %install
 %meson_install
 %suse_update_desktop_file org.gnome.font-viewer Settings Utility
 %find_lang %{name}
+
+%check
+%meson_test
 
 %files
 %license COPYING
