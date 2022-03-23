@@ -1,7 +1,7 @@
 #
 # spec file for package librest
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name   rest
 %define sover   0
-%define abi     0.7
-%define abi_pkg 0_7
+%define abi     1.0
+%define abi_pkg 1_0
 %define libname librest-%{abi_pkg}-%{sover}
 Name:           librest
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Library to access RESTful web services
 License:        LGPL-2.1-only
 Group:          Development/Libraries/GNOME
 URL:            http://git.gnome.org/browse/librest/
-Source0:        http://download.gnome.org/sources/rest/0.8/%{_name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/rest/0.9/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3-gi-docgen
 BuildRequires:  pkgconfig(glib-2.0) >= 2.24
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(libsoup-2.4)
-BuildRequires:  pkgconfig(libsoup-gnome-2.4)
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
@@ -93,20 +97,23 @@ service should have urls that represent remote objects, which methods
 can then be called on.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
-%configure \
-    --disable-static \
-     --with-ca-certificates=%{_sysconfdir}/ssl/ca-bundle.pem
-make %{?_smp_mflags} V=1
+# We should be able to pass both these (though just the first should be needed) - it fails the build however
+#	-D ca_certificates=true \
+#	-D ca_certificates_path=%%{_sysconfdir}/ssl/ca-bundle.pem \
+%meson \
+	-D examples=false \
+	-D soup2=false \
+	-D tests=false \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license COPYING
@@ -127,6 +134,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/rest-extras-%{abi}.pc
 %{_datadir}/gir-1.0/*.gir
 %{_includedir}/rest-%{abi}/
-%doc %{_datadir}/gtk-doc/html/rest-%{abi}/
+%doc %{_datadir}/doc/librest-%{abi}/
 
 %changelog

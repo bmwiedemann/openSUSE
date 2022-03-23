@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 14 18:53:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.9.0:
+  + New oauth2 proxy to accomplish pkce workflow with api endpoints
+  + Introduced meson as buildsystem.
+  + Introduced the possibility to build librest with soup-2.4 or
+    soup-3.0
+- Bump abi and abi_pkg to 1.0 and 1_0 following upstream changes.
+- Add meson, gtk-doc, python3-gi-docgen and
+  pkgconfig(json-glib-1.0) BuildRequires and meson macros, port to
+  meson buildsystem.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Add pkgconfig(libsoup-3.0) BuildRequires and drop
+  pkgconfig(libsoup-2.4) pkgconfig(libsoup-gnome-2.4)
+  BuildRequires: Build with soup-3.0.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:36:09 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

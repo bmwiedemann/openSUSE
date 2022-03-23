@@ -209,4 +209,12 @@
     <comment>spec-cleaner (forwarded request 581249 from dimstar)</comment>
     <requestid>582696</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ef4819ff4dfc0f74f8c8e8a30cc9b588</srcmd5>
+    <version>0.9.0</version>
+    <time>1648063023</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963648</requestid>
+  </revision>
 </revisionlist>
