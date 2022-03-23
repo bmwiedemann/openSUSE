@@ -378,11 +378,9 @@ Prefer: ghostscript-mini
 Prefer: krb5-mini krb5-mini-devel
 Prefer: krb5-mini-devel:krb5-mini
 Prefer: libdebuginfod1 debuginfod-client
-Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
+Prefer: libudev-mini1 udev-debuginfo libudev1-debuginfo
 Prefer: libuna-mini-devel libuna1-mini
 Prefer: libunbound-devel-mini
-Prefer: tomcat:log4j12
-Prefer: log4j12-mini
 Prefer: systemd-mini systemd-mini-devel libsystemd0-mini systemd-mini-container
 Prefer: systemd-mini-devel:systemd-mini
 Prefer: udev-mini
@@ -463,7 +461,7 @@ Prefer: -cyrus-sasl-bdb-devel
 Prefer: spamassassin:curl
 
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
-Prefer: -python36 -python39
+Prefer: -python39
 Prefer: -python39-hotdoc
 Prefer: -python39-txt2tags -python310-txt2tags
 
@@ -491,9 +489,8 @@ Prefer: -python38-html2text -python39-html2text -python310-html2text
 Prefer: -budgie-desktop
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
-Prefer: -python36-tornado5
-Prefer: python38-tornado -python38-tornado5
-Prefer: python39-tornado -python39-tornado5
+Prefer: python38-tornado
+Prefer: python39-tornado
 Prefer: python310-tornado
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
@@ -538,7 +535,7 @@ Prefer: php8:php8-cli
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
-Prefer: python36-vsts python38-vsts python39-vsts
+Prefer: python38-vsts python39-vsts
 
 # have choice for (sysvinit(network) or service(network)) needed by sysconfig: NetworkManager wicked-service
 Prefer: -NetworkManager
@@ -558,7 +555,6 @@ Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
 Prefer: vtk-java
 Prefer: eclipse-swt
-Prefer: -jaf
 
 # wine comes in various flavors by now, we pick the unflavored ones
 Prefer: wine-32bit wine-devel-32bit wine-devel
@@ -770,7 +766,6 @@ Prefer: -libkms-devel-32bit
 Prefer: -liblbxutil-devel-32bit
 Prefer: -liblcms2-devel-32bit
 Prefer: -libmount-devel-32bit
-Prefer: -libnetapi-devel-32bit
 Prefer: -libnettle-devel-32bit
 Prefer: -libnl3-devel-32bit
 Prefer: -libnotify-devel-32bit
@@ -823,7 +818,6 @@ Prefer: -libstatgrab-devel-32bit
 Prefer: -libstdc++-devel-32bit
 Prefer: -libtasn1-devel-32bit
 Prefer: -libtiff-devel-32bit
-Prefer: -libudev-devel-32bit
 Prefer: -libunistring-devel-32bit
 Prefer: -libusb-1_0-devel-32bit
 Prefer: -libuuid-devel-32bit
@@ -845,7 +839,6 @@ Prefer: -libxkbui-devel-32bit
 Prefer: -libxml2-devel-32bit
 Prefer: -libxslt-devel-32bit
 Prefer: -libyajl-devel-32bit
-Prefer: -libyaz-devel-32bit
 Prefer: -libzstd-devel-32bit
 Prefer: -llvm10-LTO-devel-32bit
 Prefer: -llvm10-devel-32bit
@@ -905,14 +898,7 @@ Prefer: -zvbi-devel-32bit
 Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
-Prefer: ruby2.7-rubygem-fast_gettext ruby3.1-rubygem-fast_gettext
-Prefer: ruby2.7-rubygem-i18n
-Prefer: ruby2.7-rubygem-rack
-Prefer: ruby2.7-rubygem-sass-rails
-Prefer: ruby2.7-rubygem-sassc
-Prefer: ruby2.7-rubygem-thor
-Prefer: ruby2.7-rubygem-listen ruby2.7-rubygem-mime-types ruby2.7-rubygem-builder
-Prefer: -ruby2.7-rubygem-puma-4
+Prefer: ruby3.1-rubygem-fast_gettext
 
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel
@@ -951,7 +937,7 @@ Prefer: syslog-service
 Prefer: poppler-tools
 Prefer: libjpeg8-devel libjpeg-turbo
 Prefer: microcode_ctl:kernel-default
-Prefer: gnu-jaf yast2-control-center-qt
+Prefer: yast2-control-center-qt
 Prefer: wine
 Prefer: ndesk-dbus ndesk-dbus-glib tomcat-jsp-2_3-api
 Prefer: -servletapi4 -servletapi5
@@ -963,8 +949,6 @@ Prefer: librest-0_7-0
 
 Prefer: -geronimo-jta-1_0_1B-api -geronimo-jms-1_1-api -geronimo-el-1_0-api -geronimo-jta-1_1-api javamail
 Prefer: rhino:xmlbeans-mini
-Prefer: mx4j:log4j12-mini
-Prefer: maven-doxia-module-fo:log4j12-mini
 
 Prefer: rpcbind
 Prefer: wicked-service
@@ -1402,7 +1386,7 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-inifile
 Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2
 Prefer: %{rb_default_ruby_suffix}-rubygem-ronn
 Prefer: %{rb_default_ruby_suffix}-rubygem-rspec
-Prefer: -ruby3.0-rubygem-rspec-3_5 -ruby2.7-rubygem-rspec-3_5 -ruby3.1-rubygem-rspec-3_5
+Prefer: -ruby3.1-rubygem-rspec-3_5
 Prefer: %{rb_default_ruby_suffix}-rubygem-ruby-dbus
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass-rails

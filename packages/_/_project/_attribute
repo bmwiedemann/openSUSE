@@ -159,8 +159,7 @@ allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-m
 
 # packages in here are rebuild if their buildinfo changed
 rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini perf bpftool wsl-appx yast2-schema-default yast2-schema-micro
-
-bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-module permissions-unauthorized-file permissions-dir-without-slash permissions-file-as-dir permissions-fscaps permissions-file-setuid-bit permissions-directory-setuid-bit permissions-world-writable polkit-changed- polkit-unauthorized- polkit-untracked- </value>
+</value>
   </attribute>
   <attribute namespace="OSRT" name="OpenQAMapping">
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
@@ -493,9 +492,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220322'
-published: '20220321'
-publishing: '20220321'
+    <value>failed: ''
+published: '20220322'
+publishing: '20220322'
 testing: '20220322'
 </value>
   </attribute>
