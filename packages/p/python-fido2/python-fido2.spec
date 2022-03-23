@@ -27,8 +27,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Yubico/python-fido2
 Source0:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz
 Source1:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz.sig
+# https://github.com/Yubico/python-fido2/issues/135
+Patch0:         python-fido2-no-mock.patch
 BuildRequires:  %{python_module cryptography >= 1.5}
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pyfakefs >= 3.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
