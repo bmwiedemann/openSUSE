@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-node_exporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,9 +27,12 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://prometheus.io/
 Source:         node_exporter-%{version}.tar.gz
+# Generated after applying 0001-Update-prometheus-client-to-1.11.1.patch
 Source1:        vendor.tar.gz
 Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
+# This patch has been applied before generating vendor tarball
+Patch1:         0001-Update-prometheus-client-to-1.11.1.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14
