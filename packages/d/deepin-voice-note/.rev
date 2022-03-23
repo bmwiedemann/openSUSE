@@ -24,4 +24,12 @@
     <comment>* Optimize support for touchpad (forwarded request 910918 from hillwood)</comment>
     <requestid>910919</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>608bf002d3cd2102a51f44053ed7fc58</srcmd5>
+    <version>5.10.14</version>
+    <time>1648063100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964158</requestid>
+  </revision>
 </revisionlist>

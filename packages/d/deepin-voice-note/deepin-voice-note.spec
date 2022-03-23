@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-voice-note
-Version:        5.9.7
+Version:        5.10.14
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Voice Note 
@@ -47,12 +47,15 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(dtkcore)
 BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libvlc)
 Recommends:     %{name}-lang
+# Qt5WebEngineWidgets is invalid on these arches
+ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -83,6 +86,7 @@ sed -i 's/lupdate/lupdate-qt5/g;s/lrelease/lrelease-qt5/g' assets/translate_gene
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/%{name}.conf
+%{_datadir}/%{name}/web
 %{_datadir}/deepin-manual/manual-assets/application/%{name}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
