@@ -57,4 +57,12 @@
     <comment>Fix build on sle12-sp5</comment>
     <requestid>956685</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>00d7070bb8cb4aa310c10f8ca0cb5b7b</srcmd5>
+    <version>1.5.4</version>
+    <time>1648063148</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964285</requestid>
+  </revision>
 </revisionlist>

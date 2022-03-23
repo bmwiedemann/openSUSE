@@ -65,6 +65,7 @@ BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
 BuildRequires:  jack-audio-connection-kit-devel
 BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  maven-local
 BuildRequires:  update-desktop-files
@@ -142,8 +143,13 @@ find . -name "*.so" -print -delete
 %pom_xpath_inject pom:modules "<module>../../TuxGuitar-tray</module>
  <module>../../TuxGuitar-viewer</module>"  build-scripts/%{name}-linux-%{bit}
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8" . TuxGuitar-lib
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8" . TuxGuitar-lib
+
 %build
-%{mvn_build} -j -f -- -e -f build-scripts/%{name}-linux-%{bit}/pom.xml -Dproject.build.sourceEncoding=UTF-8 -Dnative-modules=true
+%{mvn_build} -j -f -- \
+    -e -f build-scripts/%{name}-linux-%{bit}/pom.xml \
+    -Dproject.build.sourceEncoding=UTF-8 -Dnative-modules=true
 
 %install
 %mvn_install
