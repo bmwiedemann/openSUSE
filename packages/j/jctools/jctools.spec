@@ -26,6 +26,7 @@ URL:            https://github.com/JCTools/JCTools
 Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 Patch0:         imports.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.javaparser:javaparser-core) >= 3.14.16
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -83,6 +84,9 @@ This package contains javadoc for %{name}.
 # disable unused modules with unavailable dependencies
 %pom_disable_module jctools-benchmarks
 %pom_disable_module jctools-concurrency-test
+
+%pom_xpath_set "pom:project/pom:properties/pom:java.version" "1.8"
+%pom_xpath_set "pom:project/pom:properties/pom:java.test.version" "1.8"
 
 # do not install internal build tools
 %{mvn_package} :jctools-build __noinstall
