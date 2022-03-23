@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-compressor
-Version:        5.11.8
+Version:        5.12.2
 Release:        0
 License:        GPL-3.0+
 Summary:        Archive Manager for Deepin Desktop
@@ -56,13 +56,18 @@ Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Archive Manager is a fast and lightweight application for creating and extracting archives.
+Archive Manager is a fast and lightweight application for creating and
+extracting archives.
 
 %lang_package
 
 %prep
 %autosetup -p1
 sed -i 's/lrelease/lrelease-qt5/g' src/translate_generation.sh
+sed -i 's|/usr/lib/|%{_libdir}/|g' src/source/common/pluginmanager.cpp
+%ifarch armv6l armv7l aarch64 
+sed -i '/#include <map>/a#include <cstdint>' tests/UnitTest/include/gtest/src/stub.h
+%endif
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
