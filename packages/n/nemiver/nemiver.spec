@@ -1,7 +1,7 @@
 #
 # spec file for package nemiver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 
 
 %define scm_bootstrap 0
+%if 0%{?suse_version} >= 1550
+%bcond_with memoryview
+%else
+%bcond_without memoryview
+%endif
 Name:           nemiver
 Version:        0.9.6
 Release:        0
@@ -39,7 +44,9 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gdlmm-3.0) >= 3.0
 BuildRequires:  pkgconfig(giomm-2.4) >= 2.15.2
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
+%if %{with memoryview}
 BuildRequires:  pkgconfig(gtkhex-3) >= 2.90
+%endif
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.0
 BuildRequires:  pkgconfig(gtksourceviewmm-3.0) >= 3.0
 BuildRequires:  pkgconfig(vte-2.91) >= 0.28
@@ -82,7 +89,12 @@ This package contains the development files to build debugger backend.
 NOCONFIGURE=1 gnome-autogen.sh
 %endif
 %configure --disable-static --with-pic\
-        --enable-gsettings
+        --enable-gsettings \
+%if %{with memoryview}
+       --enable-memoryview
+%else
+       --disable-memoryview
+%endif
 make %{?_smp_mflags}
 
 %install
@@ -96,14 +108,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # create hardlinks for the rest
 %fdupes %{buildroot}
 
-%if 0%{?suse_version} > 1130
+%if 0%{?suse_version} > 1130 && 0%{?suse_version} < 1550
 %post
 %desktop_database_post
 %icon_theme_cache_post
 %glib2_gsettings_schema_post
 %endif
 
-%if 0%{?suse_version} > 1130
+%if 0%{?suse_version} > 1130 && 0%{?suse_version} < 1550
 %postun
 %desktop_database_postun
 %icon_theme_cache_postun
