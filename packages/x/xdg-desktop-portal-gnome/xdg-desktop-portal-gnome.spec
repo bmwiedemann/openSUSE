@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-gnome
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xdg-desktop-portal-gnome
-Version:        41.1
+Version:        42.0.1
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
-Source:         https://download.gnome.org/sources/%{name}/41/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/%{name}/42/%{name}-%{version}.tar.xz
 
 BuildRequires:  c_compiler
 BuildRequires:  fontconfig
@@ -32,8 +32,10 @@ BuildRequires:  xdg-desktop-portal-gtk
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk4) >= 4.0
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xdg-desktop-portal)
 Requires:       xdg-desktop-portal

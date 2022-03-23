@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 18 17:28:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0.1:
+  + Adapt to xdg-desktop-portal screencast restore changes.
+  + Don't send selection on remote desktop when nothing was
+    selected.
+  + Minor cleanups.
+
+-------------------------------------------------------------------
+Fri Mar 18 15:49:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  8 07:54:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.rc:
+  + Support dark style preference.
+  + Support virtual screen cast sources.
+  + Redesign screencast portal window.
+  + Implement screencast restoration.
+  + Use libgnome-desktop-4 for wallpapers.
+  + Implement Account portal.
+  + Implement Print portal.
+- Add pkgconfig(libadwaita-1) and pkgconfig(gnome-desktop-4)
+  BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
 Fri Oct  1 19:50:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing xdg-desktop-portal Requires and (gnome-shell and

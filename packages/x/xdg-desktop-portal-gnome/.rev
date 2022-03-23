@@ -17,4 +17,12 @@
   installed. (forwarded request 922647 from iznogood)</comment>
     <requestid>923215</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e8278b341b84e3c521fd9f4411fad08</srcmd5>
+    <version>42.0.1</version>
+    <time>1648063019</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963644</requestid>
+  </revision>
 </revisionlist>
