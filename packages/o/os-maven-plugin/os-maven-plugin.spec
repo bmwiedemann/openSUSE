@@ -25,6 +25,7 @@ URL:            https://github.com/trustin/os-maven-plugin/
 Source0:        https://github.com/trustin/%{name}/archive/%{name}-%{version}.tar.gz
 Patch0:         0001-Don-t-fail-on-unknown-arch.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
@@ -67,10 +68,11 @@ find -name plugin.xml -delete
 %pom_remove_plugin org.codehaus.mojo:animal-sniffer-maven-plugin
 
 %build
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
