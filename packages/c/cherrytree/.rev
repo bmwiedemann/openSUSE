@@ -1387,4 +1387,19 @@
     <comment></comment>
     <requestid>950435</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8560d9ea358aa7766bebf9232dbb90ec</srcmd5>
+    <version>0.99.46+6</version>
+    <time>1648063074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.99.46+6:
+  * Fixed time created/modified filter on searches for node name and tags.
+  * Changed default keyboard shortcuts using Ctrl+Period to Ctrl+Backslash
+    for clash with latest linux desktops.
+  * Fixed restore window position on Windows and dual screen.
+  * Added strip trailing spaces action to rich text right click menu.
+  * Fixed issue restoring hpaned tree/text position with tree on the right.
+  * Added command line option to pass the password to open an encrypted document.</comment>
+    <requestid>964104</requestid>
+  </revision>
 </revisionlist>

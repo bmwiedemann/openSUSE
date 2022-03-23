@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 22 08:06:35 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.99.46+6:
+  * Fixed time created/modified filter on searches for node name and tags.
+  * Changed default keyboard shortcuts using Ctrl+Period to Ctrl+Backslash
+    for clash with latest linux desktops.
+  * Fixed restore window position on Windows and dual screen.
+  * Added strip trailing spaces action to rich text right click menu.
+  * Fixed issue restoring hpaned tree/text position with tree on the right.
+  * Added command line option to pass the password to open an encrypted document.
+
+-------------------------------------------------------------------
 Tue Feb 01 12:41:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.99.45+10:

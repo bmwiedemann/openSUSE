@@ -5,7 +5,6 @@
     <param name="submodules">enable</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">malcolmlewis@opensuse.org</param>
     <param name="filename">cherrytree</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
