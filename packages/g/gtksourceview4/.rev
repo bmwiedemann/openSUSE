@@ -210,4 +210,12 @@ We need to take a look at this:
 [  215s]  6 packages and 0 specfiles checked; 0 errors, 1 warnings, 0 badness; has taken 1.3 s (forwarded request 929780 from iznogood)</comment>
     <requestid>930079</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d866f247d0cbdf29b4cf3959b1bf379f</srcmd5>
+    <version>4.8.3</version>
+    <time>1648062996</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963615</requestid>
+  </revision>
 </revisionlist>
