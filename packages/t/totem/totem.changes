@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Mar 19 09:51:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0:
+  + Updated appdata screenshots.
+  + Fix screenshot functionality not working since the port to the
+    OpenGL video widget.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 25 08:34:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.beta:
+  + Port video widget from obsolete Clutter to OpenGL
+  + Move subtitles and audio track selection to its own menu
+  + Add shortcuts for mute, cycling through subtitles, toggling
+    subtitles and seeking to specific places in the video
+  + Implement a enabled-by-default native MPRIS plugin to replace
+    the Python MPRIS plugin
+  + Remove media-player-keys plugin that supported the old GNOME
+    Settings Daemon API, now replaced by MPRIS
+  + Show more precise elapsed time when stepping frame-by-frame
+  + Implement "search by title" in OpenSubtitles plugin
+  + Updated translations.
+- Drop patches fixed upstream:
+  + totem-fix-meson-061.patch
+  + totem-enable-vaapi.patch
+- Drop conditional zeitgeist plugin and Obsolete it, removed
+  upstream long ago.
+- Drop gcc-c++, pkgconfig(clutter-1.0), pkgconfig(clutter-gst-3.0),
+  and pkgconfig(clutter-gtk-1.0) BuildRequires following upstreams
+  port to OpenGL. Also drop gstreamer-plugin-cluttergst3
+  Recommends.
+- Add gstreamer-plugins-good-gtk, pkgconfig(libhandy-1) and
+  pkgconfig(libpeas-gtk-1.0) BuildRequires: New dependencies. Also
+  add gstreamer-plugins-good-gtk Requires.
+- Drop the workaround for parallel build breakage, no longer
+  needed.
+- Switch to gitcheckout via source service.
+
+-------------------------------------------------------------------
 Wed Feb  2 18:40:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add totem-fix-meson-061.patch: Fix build with meson 0.61 and

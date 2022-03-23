@@ -1158,4 +1158,12 @@
 - Use ldconfig_scriptlets macro for post(un) handling. (forwarded request 952777 from iznogood)</comment>
     <requestid>952879</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>e831b8ab469eb643eb1058df9b5fbc84</srcmd5>
+    <version>42.0</version>
+    <time>1648063013</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963638</requestid>
+  </revision>
 </revisionlist>

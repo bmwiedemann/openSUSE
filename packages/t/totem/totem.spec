@@ -16,25 +16,20 @@
 #
 
 
-%define build_zeitgeist_plugin 0
 Name:           totem
-Version:        3.38.2
+Version:        42.0
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
-Source0:        https://download.gnome.org/sources/totem/3.38/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE totem-enable-vaapi.patch -- Enable vaapi support again.
-Patch0:         totem-enable-vaapi.patch
-# PATCH-FIX-UPSTREAM totem-fix-meson-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
-Patch1:         totem-fix-meson-061.patch
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  gstreamer-plugins-good >= 0.11.93
+BuildRequires:  gstreamer-plugins-good
+BuildRequires:  gstreamer-plugins-good-gtk
 # For gst-inspect tool
 BuildRequires:  gstreamer-utils >= 0.11.93
 BuildRequires:  gtk-doc
@@ -45,9 +40,6 @@ BuildRequires:  python3-pylint
 BuildRequires:  vala >= 0.14.1
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
-BuildRequires:  pkgconfig(clutter-1.0) >= 1.17.3
-BuildRequires:  pkgconfig(clutter-gst-3.0) >= 2.99.2
-BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.8.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.0
@@ -59,37 +51,35 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libepc-ui-1.0) > 0.4.0
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.1.0
+BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.26.5
 BuildRequires:  pkgconfig(x11)
+
 # We want a useful set of plugins
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
+Requires:       gstreamer-plugins-good-gtk
 Requires:       iso-codes
-# Required for cluttersink
-Recommends:     gstreamer-plugin-cluttergst3
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-ugly
 Recommends:     totem-plugins
+
 # totem-plugin-brasero has been removed.
-Obsoletes:      totem-plugin-brasero
+Obsoletes:      totem-plugin-brasero < 3.38.0
 # totem-plugin-upnp has been substituted by a grilo plugin.
-Obsoletes:      totem-plugin-upnp <= %{version}
+Obsoletes:      totem-plugin-upnp < 3.38.0
 # The browser plugins were dropped with totem 3.13.90
 Obsoletes:      nautilus-totem < 3.31.92
 Obsoletes:      totem-browser-plugin < 3.13.90
 Obsoletes:      totem-browser-plugin-gmp < 3.13.90
 Obsoletes:      totem-browser-plugin-vegas < 3.13.90
 %glib2_gsettings_schema_requires
-%if %{build_zeitgeist_plugin}
-BuildRequires:  pkgconfig(zeitgeist-2.0) >= 0.9.12
-%endif
-%if ! %{build_zeitgeist_plugin}
-Obsoletes:      totem-plugin-zeitgeist <= %{version}
-%endif
+Obsoletes:      totem-plugin-zeitgeist < 3.38.0
 
 %description
 Totem is a movie player for the GNOME desktop based on GStreamer. It
@@ -108,19 +98,6 @@ Suggests:       gromit
 Totem is a movie player for the GNOME desktop based on GStreamer.
 
 This package includes plugins for Totem, to add advanced features.
-
-%if %{build_zeitgeist_plugin}
-%package plugin-zeitgeist
-Summary:        Zeitgeist support for the Totem movie player
-Group:          Productivity/Multimedia/Video/Players
-Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:zeitgeist)
-
-%description plugin-zeitgeist
-Totem is a movie player for the GNOME desktop based on GStreamer.
-
-This package includes the Zeitgeist plugin for Totem.
-%endif
 
 %package devel
 Summary:        Developer Documentation for Totem Movie Player
@@ -143,8 +120,6 @@ This package contains developer documentation.
 	-D enable-gtk-doc=true \
 	-D enable-python=yes \
 	%{nil}
-# workaround parallel build breakage (bgo#786248)
-%meson_build src/Totem-1.0.gir
 %meson_build
 
 %install
@@ -187,9 +162,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 # Explicitly list plugins
 %{_libdir}/totem/plugins/apple-trailers/
 %{_libdir}/totem/plugins/autoload-subtitles/
-%{_libdir}/totem/plugins/dbus/
 %{_libdir}/totem/plugins/im-status/
-%{_libdir}/totem/plugins/media-player-keys/
+%{_libdir}/totem/plugins/mpris/
 %{_libdir}/totem/plugins/open-directory/
 %{_libdir}/totem/plugins/opensubtitles/
 %{_libdir}/totem/plugins/properties/
@@ -206,11 +180,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %{_datadir}/GConf/gsettings/pythonconsole.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.plugins.opensubtitles.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.plugins.pythonconsole.gschema.xml
-
-%if %{build_zeitgeist_plugin}
-%files plugin-zeitgeist
-%{_libdir}/totem/plugins/zeitgeist-dp/
-%endif
 
 %files devel
 %doc AUTHORS NEWS README
