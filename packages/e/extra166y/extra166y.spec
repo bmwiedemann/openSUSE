@@ -74,7 +74,7 @@ rm -f src/test/extra166y/ParallelArrayAsListTest.java
 %{mvn_file} org.codehaus.jsr166-mirror:%{name} %{name}
 export CLASSPATH=$(build-classpath junit)
 %{ant} \
-  -Dbuild.sourcelevel=1.8 \
+  -Dbuild.sourcelevel=1.8 -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
   extra166yjar extra166ydist-docs
 %{mvn_artifact} %{SOURCE1} build/%{name}lib/%{name}.jar
 
