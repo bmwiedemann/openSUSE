@@ -50,4 +50,12 @@
     <comment></comment>
     <requestid>941312</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0dba99a6ab9622e96907dc0dc887da91</srcmd5>
+    <version>2022.1</version>
+    <time>1648063011</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963634</requestid>
+  </revision>
 </revisionlist>

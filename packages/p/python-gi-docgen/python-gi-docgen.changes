@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Feb 12 18:38:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2022.1:
+  + Do not qualify type names that are already qualified
+  + Handle implied zero-terminated=1 attribute
+  + Display type note for strings inside arrays
+  + Use C types for string and property types
+  + Add support for OpenSearch
+  + Fix links to callback types
+  + Validate the "type" link fragment
+  + Split type and array parsing
+  + Add exception mode to the GIR parser
+  + Handle missing type information in arguments
+  + Add more contrast to the dimmed text class
+  + Improve classification of pointer arguments
+  + Add blurb when eliding inherited methods
+  + Include bits in structure fields
+  + Add a test suite for the gi-docgen link generator
+  + Style keyboard shortcuts like libadwaita
+  + Do not require a message for deprecations
+  + Add anchors for enumeration values
+  + Add a ToC for the page navigation side bar
+  + Fix pointer type detection
+  + Note functions that are not introspectable or that have been
+    shadowed
+  + Split "related" libraries from "dependencies"
+- Drop 114.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Oct 29 20:53:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 114.patch: gir: Do not qualify type names that are already

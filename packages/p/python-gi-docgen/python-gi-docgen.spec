@@ -1,7 +1,7 @@
 #
 # spec file for package python-gi-docgen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %define pythons python3
 Name:           python-gi-docgen
-Version:        2021.8
+Version:        2022.1
 Release:        0
 Summary:        Documentation tool for GObject-based libraries
 License:        Apache-2.0 AND GPL-3.0-or-later AND CC0-1.0
 URL:            https://gitlab.gnome.org/ebassi/gi-docgen
 Source:         https://files.pythonhosted.org/packages/source/g/gi-docgen/gi-docgen-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 114.patch -- gir: Do not qualify type names that are already qualified
-Patch:          https://gitlab.gnome.org/GNOME/gi-docgen/-/merge_requests/114.patch
 
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
