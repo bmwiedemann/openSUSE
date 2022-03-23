@@ -259,4 +259,12 @@ Do not replace the active config file: boo#1182376</comment>
     <comment></comment>
     <requestid>957112</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>01ea951aa73a27c5598dc58464b64acf</srcmd5>
+    <version>5.63</version>
+    <time>1648063150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964297</requestid>
+  </revision>
 </revisionlist>
