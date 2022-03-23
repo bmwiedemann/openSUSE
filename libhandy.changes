@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Mar 18 21:55:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.1:
+  + HdyStyleManager: Correctly reset the theme if we're not
+    overriding it. Fixes switching away from HighContrast.
+
+-------------------------------------------------------------------
+Fri Mar 18 15:02:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + Fix introspection-related build warnings.
+  + AdwStyleManager: Make color-scheme work with GTK themes ending
+    in -dark.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  7 18:20:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.91:
+  + HdyAvatar: Fix invalid UTF-8 handling.
+  + HdyStyleManager: Don't disable non-CSS animations during style
+    changes.
+  + Fix carousel indicator sizing.
+
+-------------------------------------------------------------------
+Fri Feb 11 13:44:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.90:
+  + Documentation:
+    - Port to gi-docgen
+    - Use "Since: 1.0" for pre-1.0 symbols
+    - Various cleanups and consistency updates
+  + Demo:
+    - Fix keyboard navigation
+    - Don't make rows containing buttons activatable
+    - Set minimum width on the view switcher window
+  + HdyCarousel: Properly remove mouse wheel timer
+  + HdyClamp: Fix measuring
+  + HdyKeypad: Fix keyboard navigation
+  + HdyStyleManager: Properly reset animations after style changes
+  + HdySwipeTracker: Fix a runtime warning
+  + HdyTabView: Propagate Alt+[0-9] when trying to switch to the
+    selected tab
+  + HdyViewSwitcher: Properly center button labels
+  + Build and CI cleanups
+  + Remove unused distro packaging
+  + Updated translations.
+- Replace gtk-doc with pkgconfig(gi-docgen) BuildRequires following
+  upstreams port.
+
+-------------------------------------------------------------------
 Fri Nov 12 12:29:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.0:

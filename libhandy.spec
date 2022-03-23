@@ -1,7 +1,7 @@
 #
 # spec file for package libhandy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,21 +22,21 @@
 %define with_glade 1
 
 Name:           libhandy
-Version:        1.5.0
+Version:        1.6.1
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libhandy
-Source0:        https://download.gnome.org/sources/libhandy/1.5/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libhandy/1.6/%{name}-%{version}.tar.xz
 
-BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 %if 0%{?with_glade}
 BuildRequires:  pkgconfig(gladeui-2.0)
 %endif
+BuildRequires:  pkgconfig(gi-docgen) >= 2021.1
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.1
@@ -94,13 +94,13 @@ libhandy widgets in Glade.
 
 %build
 %meson \
-	-Dprofiling=false \
-	-Dintrospection=enabled \
-	-Dvapi=true \
-	-Dgtk_doc=true \
-	-Dtests=false \
-	-Dexamples=false \
-	-Dglade_catalog=%{?with_glade:enabled}%{?!with_glade:disabled} \
+	-D profiling=false \
+	-D introspection=enabled \
+	-D vapi=true \
+	-D gtk_doc=true \
+	-D tests=false \
+	-D examples=false \
+	-D glade_catalog=%{?with_glade:enabled}%{?!with_glade:disabled} \
 	%{nil}
 %meson_build
 
@@ -122,7 +122,7 @@ libhandy widgets in Glade.
 %{_libdir}/pkgconfig/libhandy-%{so_major}.pc
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libhandy-*
-%{_datadir}/gtk-doc/html/libhandy-%{so_major}/
+%{_datadir}/doc/libhandy-%{so_major}/
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/*.typelib
