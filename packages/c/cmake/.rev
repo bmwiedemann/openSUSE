@@ -1861,4 +1861,16 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>950420</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>1b4b6414097c626517d3f59db3e1a432</srcmd5>
+    <version>3.22.3</version>
+    <time>1648062921</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.22.3:
+  * The while() command again ignores errors in condition evaluation as CMake
+    3.21 and below did. This bug was fixed in 3.22.0, but exposed errors in
+    existing projects. The fix has been reverted to restore compatibility. The
+    fix may be restored in a future version of CMake via a policy.</comment>
+    <requestid>963363</requestid>
+  </revision>
 </revisionlist>

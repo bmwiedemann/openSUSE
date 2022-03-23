@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 20 21:08:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.22.3:
+  * The while() command again ignores errors in condition evaluation as CMake
+    3.21 and below did. This bug was fixed in 3.22.0, but exposed errors in
+    existing projects. The fix has been reverted to restore compatibility. The
+    fix may be restored in a future version of CMake via a policy. 
+
+-------------------------------------------------------------------
 Fri Jan 28 18:46:59 UTC 2022 - Markus Ebner <info@ebner-markus.de>
 
 - Build cmake's qhelp into new package cmake-doc-qhelp
