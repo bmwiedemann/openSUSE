@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 16 10:19:08 UTC 2022 - jslaby@suse.cz
+
+- Update to version 2.3.3+20220314:
+  * doc: fix typo
+  * stop aig rewriting if the number of and nodes doesn't reduce.
+  * Add command line option to control whether size reducing simplifications fixed point.
+  * refactor. Order the user flags.
+  * remove unreachable option
+  * Enable the setting of more options via the command-line arguments.
+  * fixes 421
+  * Trial assigning to flags at definition time.
+  * remove unused includes
+  * Fix. adaed499e3d24bcf906852a6c428df07b5a6cee2 shouldn't have turned on flattening when simplifications are disabled.
+  * Fix. Nodes that are complements shouldn't evaluate as being equal.
+  * and much more
+
+-------------------------------------------------------------------
 Fri Feb 19 07:27:14 UTC 2021 - jslaby@suse.cz
 
 - Update to version 2.3.3+20210104:
