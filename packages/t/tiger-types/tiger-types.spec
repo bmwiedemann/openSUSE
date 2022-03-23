@@ -1,7 +1,7 @@
 #
 # spec file for package tiger-types
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/kohsuke/tiger-types
 Source0:        https://github.com/kohsuke/%{name}/archive/%{name}-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/javaee/glassfish/5.0.1/LICENSE
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -76,10 +77,11 @@ This package contains javadoc for %{name}.
 cp -p %{SOURCE1} LICENSE
 
 %build
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
