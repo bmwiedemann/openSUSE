@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 12:22:25 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Sun Mar  6 15:28:49 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.1.0, see changelog.rst

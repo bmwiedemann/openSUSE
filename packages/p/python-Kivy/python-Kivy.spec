@@ -30,7 +30,6 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyenchant}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  Mesa-devel
