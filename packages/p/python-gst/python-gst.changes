@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 19 13:45:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.1:
+  + Fix build with Python 3.11.
+
+-------------------------------------------------------------------
+Wed Feb  9 22:23:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + Fixes for Python 3.10.
+  + Various build fixes.
+
+-------------------------------------------------------------------
 Fri Feb  4 19:54:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.6:
