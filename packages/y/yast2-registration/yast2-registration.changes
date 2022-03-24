@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 22 15:08:21 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed migration rollback in Leap => SLES migration
+  (related to jsc#SLE-17309)
+- 4.4.18
+
+-------------------------------------------------------------------
 Mon Feb 28 08:33:10 UTC 2022 - David Diaz <dgonzalez@suse.com>
 
 - Adapt test code for work with Ruby >= 3 (related to bsc#1193192)
