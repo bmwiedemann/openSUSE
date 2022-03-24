@@ -1,7 +1,7 @@
 #
 # spec file for package template-resolver
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/sbt/template-resolver
 Source0:        %{name}-%{version}.tar.xz
 Source1:        http://central.maven.org/maven2/org/scala-sbt/%{name}/%{version}/%{name}-%{version}.pom
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -45,11 +46,11 @@ JavaDoc documentation for %{name}
 %build
 # jar
 mkdir -p target/classes
-javac -d target/classes -source 6 -target 6 $(find src/main -name \*.java | xargs)
+javac -d target/classes -source 8 -target 8 $(find src/main -name \*.java | xargs)
 jar -cf target/%{name}-%{version}.jar -C target/classes .
 # javadoc
 mkdir -p target/site/apidocs
-javadoc -d target/site/apidocs -source 6 -notimestamp $(find src/main -name \*.java | xargs)
+javadoc -d target/site/apidocs -source 8 -notimestamp $(find src/main -name \*.java | xargs)
 %{mvn_artifact} %{SOURCE1} target/%{name}-%{version}.jar
 
 %install
