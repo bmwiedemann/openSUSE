@@ -1,7 +1,7 @@
 #
 # spec file for package python-nodeenv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ Summary:        Nodejs virtual environment builder
 License:        BSD-2-Clause
 URL:            https://github.com/ekalinin/nodeenv
 Source:         https://github.com/ekalinin/nodeenv/archive/%{version}.tar.gz#/nodeenv-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
+# https://github.com/ekalinin/nodeenv/issues/302
+Patch0:         python-nodeenv-no-mock.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,6 +41,7 @@ Node.js virtual environment builder.
 
 %prep
 %setup -q -n nodeenv-%{version}
+%patch0 -p1
 
 %build
 %python_build

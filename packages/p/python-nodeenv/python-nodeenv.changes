@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 24 11:47:05 UTC 2022 - pgajdos@suse.com
+
+- do not require pytest-mock for build
+- added patches
+  fix https://github.com/ekalinin/nodeenv/issues/302
+  + python-nodeenv-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Jun 17 21:09:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
