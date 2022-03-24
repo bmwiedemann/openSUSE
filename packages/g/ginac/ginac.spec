@@ -32,7 +32,7 @@ BuildArch:      noarch
 
 %define library_version 11
 Name:           %{srcname}%{?pkg_suffix}
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        C++ library for symbolic calculations
 License:        GPL-2.0-only
