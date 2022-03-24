@@ -16,18 +16,14 @@
 #
 
 
-%define vers 0.64.1
-
-%define githash %vers
-
 Name:           dolly
 Summary:        Tool for cloning data of one machine to other machines
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
-Version:        %vers
+Version:        0.64.2
 Release:        0
-URL:            http://www.cs.inf.ethz.ch/stricker/CoPs/patagonia/dolly.html
-Source0:        https://github.com/openSUSE/dolly/archive/%{githash}.tar.gz#/dolly-%{version}.tar.bz2
+URL:            https://github.com/openSUSE/dolly
+Source0:        dolly-%{version}.tar.xz
 
 #SLE15* does not contain pandoc packages
 %if 0%{?is_opensuse}
@@ -50,9 +46,7 @@ most filesystems, including the types for Linux, Windows, Oberon,
 Solaris.
 
 %prep
-%autosetup -p1 -n %{name}-%{githash}
-#mv %{name}-%{version}/* .
-#rmdir %{name}-%{commit}/
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %if 0%{?is_opensuse}
@@ -82,10 +76,11 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdolly
 %service_del_postun dolly.service dolly.socket
 
 %files
-%doc README.md dolly.example send_multiple_files.pl
+%doc README.md send_multiple_files.pl
 %license LICENSE
 %defattr(-,root,root,-)
 %dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
 %attr(755,root,root) %{_sbindir}/dolly
 %attr(644,root,root) %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_prefix}/lib/firewalld/services/dolly.xml

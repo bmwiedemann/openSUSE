@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 23 17:53:41 UTC 2022 - Antoine Ginies <aginies@suse.com>
+
+- update to dolly version 0.64.2: bugs and typo fixes, dolly is
+  less verbose by default
+
+-------------------------------------------------------------------
 Wed Mar 23 14:38:41 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 -  updated to dolly 0.64.1 which adds dolly as a service and/or

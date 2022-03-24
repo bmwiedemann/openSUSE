@@ -1,0 +1,27 @@
+<!--
+<services>
+  <service name="download_url">
+    <param name="host">github.com</param>
+    <param name="protocol">https</param>
+    <param name="path">/openSUSE/dolly/archive/refs/tags/0.64.2.tar.gz</param>
+  </service>
+</services>
+-->
+<services>
+  <!-- mode is disabled, so that it is not executed at every commit -->
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/openSUSE/dolly.git</param>
+     <!-- this is %version -->
+    <param name="version">0.64.2</param>
+    <!-- which git commit to use, if no tag is available -->
+    <param name="revision">0.64.2</param>
+    <param name="scm">git</param>
+  </service>
+<!-- the prior part will check out an git, archive, but we want a tar ball -->
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>
