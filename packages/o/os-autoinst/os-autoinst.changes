@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 24 17:14:23 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1648043830.be0fdb95:
+  * Print concrete error message when limit in command server is exceeded
+  * Remove limit for uploads via the command server
+  * Fix qemu test to actually wait for the process to be stopped
+  * Fix return value of set_assert_screen_timeout
+  * Fix typo for read_until
+  * Fix serialization error introduced by 7be44a78
+  * Add checks for initialization of `consoles::VNC` accessors from args
+  * Avoid warnings about redefinition of `has`
+  * Reduce pipe size in test to make coverage less flaky
+
+-------------------------------------------------------------------
 Sun Mar 20 02:11:02 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1647710532.fe0bf80d:
