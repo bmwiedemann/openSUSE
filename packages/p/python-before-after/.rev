@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>832906</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0aecc203efd8e1a2ebb6956c585ff19</srcmd5>
+    <version>1.0.1</version>
+    <time>1648159092</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pr_10.patch:
+  * Use stdlib unittest.mock.
+- Drop {Build,}Requires on mock.</comment>
+    <requestid>964447</requestid>
+  </revision>
 </revisionlist>

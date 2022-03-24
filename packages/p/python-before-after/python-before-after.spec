@@ -1,7 +1,7 @@
 #
 # spec file for package python-before-after
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/b/before_after/be
 # https://github.com/c-oreills/before_after/issues/8
 Source1:        https://raw.githubusercontent.com/c-oreills/before_after/master/LICENSE
 Patch0:         https://patch-diff.githubusercontent.com/raw/c-oreills/before_after/pull/6.patch#/pr_6.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/c-oreills/before_after/pull/10.patch#/pr_10.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mock >= 1.0.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -42,8 +41,7 @@ BuildRequires:  %{python_module pytest}
 before_after provides utilities for testing race conditions.
 
 %prep
-%setup -q -n before_after-%{version}
-%patch0 -p1
+%autosetup -p1 -n before_after-%{version}
 cp %{SOURCE1} .
 
 %build
