@@ -54,18 +54,25 @@
 %bcond_with zxing
 %endif
 
+%ifarch s390x
+%bcond_with ldacBT
+%else
+%bcond_without ldacBT
+%endif
+
 Name:           gstreamer-plugins-bad
-Version:        1.18.6
+Version:        1.20.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/gst-plugins-bad/%{_name}-%{version}.tar.xz
+Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 2564.patch dimstar@opensuse.org -- Allow build against neon 0.32.x
-Patch0:         https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/merge_requests/2564.patch
+# PATCH-FIX-SUSE Fix build with the old srt version inherited from SLE15 SP2
+Patch0:         fix-build-with-srt-1.3.4.patch
+
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
 %endif
@@ -101,6 +108,7 @@ BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gmodule-export-2.0)
+BuildRequires:  pkgconfig(graphene-1.0) >= 1.4.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-allocators-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= %{gstreamer_req_version}
@@ -108,7 +116,11 @@ BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(lcms2)
+%if %{with ldacBT}
+BuildRequires:  pkgconfig(ldacBT-enc)
+%endif
 BuildRequires:  pkgconfig(libass) >= 0.10.2
 BuildRequires:  pkgconfig(libchromaprint)
 BuildRequires:  pkgconfig(libcrypto)
@@ -117,18 +129,23 @@ BuildRequires:  pkgconfig(libdc1394-2) >= 2.0.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.55
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libkms)
-BuildRequires:  pkgconfig(libmms) >= 0.4
-BuildRequires:  pkgconfig(libofa) >= 0.9.3
+BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpng) >= 1.2
+BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.14
+BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsrtp2) >= 2.1.0
 BuildRequires:  pkgconfig(libssh2) >= 1.4.3
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-drm)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(lilv-0) >= 0.16
 BuildRequires:  pkgconfig(lrdf)
 BuildRequires:  pkgconfig(mjpegtools)
 BuildRequires:  pkgconfig(neon)
+BuildRequires:  pkgconfig(nice) >= 0.1.14
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openssl) >= 0.9.5
 BuildRequires:  pkgconfig(opus) >= 0.9.4
@@ -139,8 +156,17 @@ BuildRequires:  pkgconfig(sndfile) >= 1.0.16
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(spandsp) >= 0.0.6
 BuildRequires:  pkgconfig(srt)
+# FIXME we do not have pkgconfig(storage_client) in openSUSE yet -- remove -Dgs=disabled
+# BuildRequires:  pkgconfig(storage_client)
 BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(wayland-client) >= 1.0.0
+BuildRequires:  pkgconfig(wayland-cursor) >= 1.0
+BuildRequires:  pkgconfig(wayland-egl) >= 9.0
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.4
+BuildRequires:  pkgconfig(wayland-scanner) >= 1.4.0
 BuildRequires:  pkgconfig(webrtc-audio-processing) >= 0.2
+# FIXME we do not have pkgconfig(webrtc-audio-coding-1) in openSUSE yet -- remove -D
+#BuildRequires:  pkgconfig(webrtc-audio-coding-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb) >= 1.10
 BuildRequires:  pkgconfig(xkbcommon)
@@ -158,20 +184,9 @@ Requires(postun):glib2-tools
 Enhances:       gstreamer
 # Generic name, never used in SuSE:
 Provides:       gst-plugins-bad = %{version}
-Obsoletes:      libgstvdpau >= %{version}
+Obsoletes:      libgstvdpau < 1.18.0
 # Disabled - checking for opencv2/bgsegm.hpp... no
 #BuildRequires:  pkgconfig(opencv)
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(libopenmpt)
-BuildRequires:  pkgconfig(libsrtp2) >= 2.1.0
-BuildRequires:  pkgconfig(lilv-0) >= 0.16
-BuildRequires:  pkgconfig(nice) >= 0.1.14
-BuildRequires:  pkgconfig(wayland-client) >= 1.0.0
-BuildRequires:  pkgconfig(wayland-cursor) >= 1.0
-BuildRequires:  pkgconfig(wayland-egl) >= 9.0
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.4
-BuildRequires:  pkgconfig(wayland-scanner) >= 1.4.0
-%endif
 %if %{with bs2b}
 BuildRequires:  libbs2b-devel
 %endif
@@ -181,19 +196,17 @@ BuildRequires:  pkgconfig(libopenjp2)
 %if %{with zbar}
 BuildRequires:  pkgconfig(zbar) >= 0.9
 %endif
-BuildRequires:  pkgconfig(zvbi-0.2)
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(graphene-1.0) >= 1.4.0
-%endif
 %ifarch x86_64
 BuildRequires:  pkgconfig(libmfx)
 %endif
+
 %if 0%{?BUILD_ORIG}
 BuildRequires:  libdca-devel
 BuildRequires:  pkgconfig(dvdnav) >= 4.1.2
 BuildRequires:  pkgconfig(dvdread) >= 4.1.2
 BuildRequires:  pkgconfig(libde265) >= 0.9
 BuildRequires:  pkgconfig(libmodplug)
+BuildRequires:  pkgconfig(libopenaptx) == 0.2.0
 BuildRequires:  pkgconfig(librtmp)
 BuildRequires:  pkgconfig(openh264) >= 1.3.0
 BuildRequires:  pkgconfig(vo-aacenc) >= 0.1.0
@@ -211,7 +224,6 @@ BuildRequires:  libfaad-devel
 Provides:       patched_subset
 %else
 Provides:       %{name}-orig-addon = %{version}
-Obsoletes:      %{name}-orig-addon
 %endif
 %else
 Provides:       patched_subset
@@ -278,6 +290,28 @@ Summary:        GStreamer Streaming-Media Framework Plug-Ins
 Group:          System/Libraries
 
 %description -n libgstcodecs-1_0-0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related,from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n libgstplay-1_0-0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n libgstplay-1_0-0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related,from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n libgstva-1_0-0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins
+Group:          System/Libraries
+
+%description -n libgstva-1_0-0
 GStreamer is a streaming media framework based on graphs of filters
 that operate on media data. Applications using this library can do
 anything media-related,from real-time sound processing to playing
@@ -409,7 +443,6 @@ processing capabilities can be added simply by installing new plug-ins.
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       gstreamer-devel
 Requires:       gstreamer-plugins-bad-chromaprint
 Requires:       libgstadaptivedemux-1_0-0 = %{version}
 Requires:       libgstbadaudio-1_0-0 = %{version}
@@ -420,20 +453,21 @@ Requires:       libgstinsertbin-1_0-0 = %{version}
 Requires:       libgstisoff-1_0-0 = %{version}
 Requires:       libgstmpegts-1_0-0 = %{version}
 Requires:       libgstphotography-1_0-0 = %{version}
+Requires:       libgstplay-1_0-0 = %{version}
 Requires:       libgstplayer-1_0-0 = %{version}
 Requires:       libgstsctp-1_0-0 = %{version}
 Requires:       libgsturidownloader-1_0-0 = %{version}
+Requires:       libgstva-1_0-0 = %{version}
 Requires:       libgstvulkan-1_0-0 = %{version}
+Requires:       libgstwayland-1_0-0 = %{version}
 Requires:       libgstwebrtc-1_0-0 = %{version}
 Requires:       typelib-1_0-GstBadAudio-1_0 = %{version}
 Requires:       typelib-1_0-GstCodecs-1_0 = %{version}
 Requires:       typelib-1_0-GstInsertBin-1_0 = %{version}
 Requires:       typelib-1_0-GstMpegts-1_0 = %{version}
+Requires:       typelib-1_0-GstPlay-1_0 = %{version}
 Requires:       typelib-1_0-GstPlayer-1_0 = %{version}
 Requires:       typelib-1_0-GstWebRTC-1_0 = %{version}
-%if 0%{?suse_version} >= 1500
-Requires:       libgstwayland-1_0-0 = %{version}
-%endif
 %if %{with fluidsynth}
 Requires:       gstreamer-plugins-bad-fluidsynth
 %endif
@@ -463,6 +497,17 @@ Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bi
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstBadAudio-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+%package -n typelib-1_0-GstPlay-1_0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstPlay-1_0
 GStreamer is a streaming media framework based on graphs of filters
 that operate on media data. Applications using this library can do
 anything media-related, from real-time sound processing to playing
@@ -595,7 +640,11 @@ making use of the GStreamer Transcoding API.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%setup -n %{_name}-%{version}
+
+%if %{pkg_vcmp srt < 1.4.0}
+%patch0 -p1
+%endif
 
 %build
 %global optflags %{optflags} -fcommon
@@ -614,9 +663,11 @@ export PYTHON=%{_bindir}/python3
 	-Dvoamrwbenc=disabled \
 	-Dvoaacenc=disabled \
 	-Dx265=disabled \
+	-Dopenaptx=disabled \
 %else
 	-Dopenh264=enabled \
 %endif
+	-Dgpl=enabled \
 %if %{without avtp}
 	-Davtp=disabled \
 %endif
@@ -635,21 +686,24 @@ export PYTHON=%{_bindir}/python3
 	-Dfestival=disabled \
 	-Dflite=disabled \
 %if %{without fluidsynth}
-        -Dfluidsynth=disabled \
+	-Dfluidsynth=disabled \
 %endif
 %if %{without openjp2}
-        -Dopenjpeg=disabled \
+	-Dopenjpeg=disabled \
 %endif
 %if %{without zxing}
-        -Dzxing=disabled \
+	-Dzxing=disabled \
 %endif
 %if %{without zbar}
-        -Dzbar=disabled \
+	-Dzbar=disabled \
+%endif
+%if %{without ldacBT}
+	-Dldac=disabled \
 %endif
 	-Dhls-crypto=openssl \
 	-Dintrospection=enabled \
 	-Diqa=disabled \
-        -Dkate=disabled \
+	-Dkate=disabled \
 	-Dmagicleap=disabled \
 	-Dmicrodns=disabled \
 	-Dopencv=disabled \
@@ -663,6 +717,9 @@ export PYTHON=%{_bindir}/python3
 	-Dwayland=enabled \
 	-Dwildmidi=disabled \
 	-Dwpe=disabled \
+	-Dgs=disabled \
+	-Disac=disabled \
+	-Donnx=disabled \
 %ifarch x86_64
 	-Dmsdk=enabled \
 %else
@@ -687,42 +744,24 @@ fi
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-%{gst_branch}
 
-%post -n libgstadaptivedemux-1_0-0 -p /sbin/ldconfig
-%postun -n libgstadaptivedemux-1_0-0 -p /sbin/ldconfig
-%post -n libgstbadaudio-1_0-0 -p /sbin/ldconfig
-%postun -n libgstbadaudio-1_0-0 -p /sbin/ldconfig
-%post -n libgstbasecamerabinsrc-1_0-0 -p /sbin/ldconfig
-%postun -n libgstbasecamerabinsrc-1_0-0 -p /sbin/ldconfig
-%post -n libgstcodecs-1_0-0 -p /sbin/ldconfig
-%postun -n libgstcodecs-1_0-0 -p /sbin/ldconfig
-%post -n libgstcodecparsers-1_0-0 -p /sbin/ldconfig
-%postun -n libgstcodecparsers-1_0-0 -p /sbin/ldconfig
-%post -n libgstinsertbin-1_0-0 -p /sbin/ldconfig
-%postun -n libgstinsertbin-1_0-0 -p /sbin/ldconfig
-%post -n libgstisoff-1_0-0 -p /sbin/ldconfig
-%postun -n libgstisoff-1_0-0 -p /sbin/ldconfig
-%post -n libgstmpegts-1_0-0 -p /sbin/ldconfig
-%postun -n libgstmpegts-1_0-0 -p /sbin/ldconfig
-%post -n libgstphotography-1_0-0 -p /sbin/ldconfig
-%postun -n libgstphotography-1_0-0 -p /sbin/ldconfig
-%post -n libgstplayer-1_0-0 -p /sbin/ldconfig
-%postun -n libgstplayer-1_0-0 -p /sbin/ldconfig
-%post -n libgstsctp-1_0-0 -p /sbin/ldconfig
-%postun -n libgstsctp-1_0-0 -p /sbin/ldconfig
-%post -n libgsturidownloader-1_0-0 -p /sbin/ldconfig
-%postun -n libgsturidownloader-1_0-0 -p /sbin/ldconfig
-%post -n libgstvulkan-1_0-0 -p /sbin/ldconfig
-%postun -n libgstvulkan-1_0-0 -p /sbin/ldconfig
-%post -n libgstwebrtc-1_0-0 -p /sbin/ldconfig
-%postun -n libgstwebrtc-1_0-0 -p /sbin/ldconfig
-
-%if 0%{?suse_version} >= 1500
-%post -n libgstwayland-1_0-0 -p /sbin/ldconfig
-%postun -n libgstwayland-1_0-0 -p /sbin/ldconfig
-%endif
-
-%post -n libgsttranscoder-1_0-0 -p /sbin/ldconfig
-%postun -n libgsttranscoder-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgstadaptivedemux-1_0-0
+%ldconfig_scriptlets -n libgstbadaudio-1_0-0
+%ldconfig_scriptlets -n libgstbasecamerabinsrc-1_0-0
+%ldconfig_scriptlets -n libgstcodecs-1_0-0
+%ldconfig_scriptlets -n libgstcodecparsers-1_0-0
+%ldconfig_scriptlets -n libgstinsertbin-1_0-0
+%ldconfig_scriptlets -n libgstisoff-1_0-0
+%ldconfig_scriptlets -n libgstmpegts-1_0-0
+%ldconfig_scriptlets -n libgstphotography-1_0-0
+%ldconfig_scriptlets -n libgstplayer-1_0-0
+%ldconfig_scriptlets -n libgstsctp-1_0-0
+%ldconfig_scriptlets -n libgsturidownloader-1_0-0
+%ldconfig_scriptlets -n libgstvulkan-1_0-0
+%ldconfig_scriptlets -n libgstwebrtc-1_0-0
+%ldconfig_scriptlets -n libgstplay-1_0-0
+%ldconfig_scriptlets -n libgstva-1_0-0
+%ldconfig_scriptlets -n libgstwayland-1_0-0
+%ldconfig_scriptlets -n libgsttranscoder-1_0-0
 
 %files
 %license COPYING
@@ -732,6 +771,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstaccurip.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstadpcmdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstadpcmenc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstaes.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaiff.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaom.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstasfmux.so
@@ -750,6 +790,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstbz2.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcamerabin.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstclosedcaption.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstcodecalpha.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcoloreffects.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcolormanagement.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcurl.so
@@ -776,6 +817,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstgme.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgsm.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthls.so
+%if %{with ldacBT}
+%{_libdir}/gstreamer-%{gst_branch}/libgstldac.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstid3tag.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstipcpipeline.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstinter.so
@@ -787,7 +831,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstkms.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstladspa.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmidi.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstmms.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpeg2enc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegpsdemux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegtsdemux.so
@@ -799,19 +842,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstmusepack.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmxf.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstlegacyrawparse.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstneonhttpsrc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstnetsim.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstnvcodec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenexr.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopusparse.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstproxy.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstneonhttpsrc.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstofa.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstpcapparse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstpnm.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstlegacyrawparse.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstproxy.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstqroverlay.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstremovesilence.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrist.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrfbsrc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrist.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsvg.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtmp2.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtpmanagerbad.so
@@ -839,14 +882,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideosignal.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvmnc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvulkan.so
-%if 0%{?suse_version} >= 1500
 %{_libdir}/gstreamer-%{gst_branch}/libgstlv2.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenal.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenmpt.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsrtp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwaylandsink.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtc.so
-%endif
 %if %{with zxing}
 %{_libdir}/gstreamer-%{gst_branch}/libgstzxing.so
 %endif
@@ -875,6 +916,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files chromaprint
 %{_libdir}/gstreamer-%{gst_branch}/libgstchromaprint.so
+
+%files -n libgstplay-1_0-0
+%{_libdir}/libgstplay-%{gst_branch}.so.0*
+
+%files -n libgstva-1_0-0
+%{_libdir}/libgstva-%{gst_branch}.so.0*
 
 %files -n libgstadaptivedemux-1_0-0
 %{_libdir}/libgstadaptivedemux-%{gst_branch}.so.0*
@@ -918,13 +965,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libgstwebrtc-1_0-0
 %{_libdir}/libgstwebrtc-%{gst_branch}.so.0*
 
-%if 0%{?suse_version} >= 1500
 %files -n libgstwayland-1_0-0
 %{_libdir}/libgstwayland-1.0.so.*
-%endif
 
 %files -n typelib-1_0-GstBadAudio-1_0
 %{_libdir}/girepository-1.0/GstBadAudio-1.0.typelib
+
+%files -n typelib-1_0-GstPlay-1_0
+%{_libdir}/girepository-1.0/GstPlay-1.0.typelib
 
 %files -n typelib-1_0-GstCodecs-1_0
 %{_libdir}/girepository-1.0/GstCodecs-1.0.typelib
@@ -951,7 +999,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/GstWebRTC-1.0.typelib
 
 %files devel
-%doc AUTHORS NEWS README RELEASE REQUIREMENTS
+%doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
 %{_includedir}/gstreamer-%{gst_branch}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/gstreamer-bad-audio-%{gst_branch}.pc
@@ -966,12 +1014,27 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/gstreamer-vulkan-wayland-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-vulkan-xcb-%{gst_branch}.pc
 %{_libdir}/pkgconfig/gstreamer-webrtc-%{gst_branch}.pc
+%{_libdir}/pkgconfig/gstreamer-play-%{gst_branch}.pc
+%{_libdir}/pkgconfig/gstreamer-wayland-%{gst_branch}.pc
 %{_datadir}/gir-1.0/*.gir
 
-%files lang -f %{_name}-%{gst_branch}.lang
+%files -n gstreamer-transcoder
+%license COPYING
+%{_bindir}/gst-transcoder-%{gst_branch}
+%{_libdir}/gstreamer-%{gst_branch}/libgsttranscode.so
+%{_datadir}/gstreamer-%{gst_branch}/encoding-profiles/
 
-#%%{_datadir}/gtk-doc/html/gst-plugins-bad-plugins-%%{gst_branch}/
-#%%{_datadir}/gtk-doc/html/gst-plugins-bad-libs-%%{gst_branch}/
+%files -n libgsttranscoder-1_0-0
+%{_libdir}/libgsttranscoder-%{gst_branch}.so.0
+
+%files -n typelib-1_0-GstTranscoder-1_0
+%{_libdir}/girepository-1.0/GstTranscoder-%{gst_branch}.typelib
+
+%files -n gstreamer-transcoder-devel
+%{_libdir}/libgsttranscoder-%{gst_branch}.so
+%{_libdir}/pkgconfig/gstreamer-transcoder-%{gst_branch}.pc
+
+%files lang -f %{_name}-%{gst_branch}.lang
 
 %if 0%{?BUILD_ORIG}
 %if 0%{?BUILD_ORIG_ADDON}
@@ -998,21 +1061,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstx265.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstresindvd.so
 %endif
-
-%files -n gstreamer-transcoder
-%license COPYING
-%{_bindir}/gst-transcoder-%{gst_branch}
-%{_libdir}/gstreamer-%{gst_branch}/libgsttranscode.so
-%{_datadir}/gstreamer-%{gst_branch}/encoding-profiles/
-
-%files -n libgsttranscoder-1_0-0
-%{_libdir}/libgsttranscoder-%{gst_branch}.so.0
-
-%files -n typelib-1_0-GstTranscoder-1_0
-%{_libdir}/girepository-1.0/GstTranscoder-%{gst_branch}.typelib
-
-%files -n gstreamer-transcoder-devel
-%{_libdir}/libgsttranscoder-%{gst_branch}.so
-%{_libdir}/pkgconfig/gstreamer-transcoder-%{gst_branch}.pc
 
 %changelog

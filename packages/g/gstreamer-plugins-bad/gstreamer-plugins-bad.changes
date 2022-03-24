@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Wed Mar 23 07:36:33 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to support building with srt 1.3.4 in SLE
+  * fix-build-with-srt-1.3.4.patch
+- Do not build the gstldac plugin in s390x where
+  pkgconfig(ldacBT-enc) is not available.
+
+-------------------------------------------------------------------
+Fri Mar 18 07:35:17 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.1:
+  + GstPlay: Fix new error + warning parsing API (was unusuable
+    before)
+  + av1parse: let the parser continue on verbose OBUs
+  + d3d11converter: Fix RGB to GRAY conversion, broken debug
+    messages, and add missing GRAY conversion
+  + gs: look for google_cloud_cpp_storage.pc
+  + ipcpipeline: fix crash and error on windows with SOCKET or
+    _pipe()
+  + ivfparse: Don't set zero resolution on caps
+  + mpegtsdemux: Handle PES headers bigger than a mpeg-ts packet;
+    fix locking in error code path; handle more program updates
+  + mpegtsmux: Start last_ts with GST_CLOCK_TIME_NONE to fix VBR
+    muxing behaviour
+  + mpegtsmux: Thread safety fixes: lock mux->tsmux, the programs
+    hash table, and pad streams
+  + mpegtsmux: Skip empty buffers
+  + osxaudiodeviceprovider: Add initial support for duplex devices
+    on OSX
+  + rtpldacpay: Fix missing payload information
+  + sdpdemux: add media attributes to caps, fixes ptp clock
+    handling
+  + mfaudioenc: Handle empty IMFMediaBuffer
+  + nvdecoder: Various fixes for 4:4:4 and high-bitdepth decoding
+  + nvenc: Fix deadlock because of too strict buffer pool size
+  + va: fix library build issues, caps leaks in the vpp transform
+    function, and add vaav1dec to documentation
+  + v4l2codecs: vp9: Minor fixes
+  + v4l2codecs: h264: Correct scaling matrix ABI check
+  + dtlstransport: Notify ICE transport property changes
+  + webrtc: Various fixes to the webrtc-sendrecv python example
+  + webrtc-ice: Fix memory leaks in gst_webrtc_ice_add_candidate()
+  + Support build against libfreeaptx in openaptx plugin
+  + Fix linking issues on Illumos distros
+- Drop patch already included upstream:
+  + 1634.patch
+
+-------------------------------------------------------------------
+Fri Feb  4 20:35:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + Development in GitLab was switched to a single git repository
+    containing all the modules
+  + GstPlay: new high-level playback library, replaces GstPlayer
+  + WebM Alpha decoding support
+  + Encoding profiles can now be tweaked with additional
+    application-specified element properties
+  + Compositor: multi-threaded video conversion and mixing
+  + RTP header extensions: unified support in RTP depayloader and
+    payloader base classes
+  + SMPTE 2022-1 2-D Forward Error Correction support
+  + Smart encoding (pass through) support for VP8, VP9, H.265 in
+    encodebin and transcodebin
+  + Runtime compatibility support for libsoup2 and libsoup3
+    (libsoup3 support experimental)
+  + Video decoder subframe support
+  + Video decoder automatic packet-loss, data corruption, and
+    keyframe request handling for RTP / WebRTC / RTSP
+  + mp4 and Matroska muxers now support profile/level/resolution
+    changes for H.264/H.265 input streams (i.e. codec data changing
+    on the fly)
+  + mp4 muxing mode that initially creates a fragmented mp4 which
+    is converted to a regular mp4 on EOS
+  + Audio support for the WebKit Port for Embedded (WPE) web page
+    source element
+  + CUDA based video color space convert and rescale elements and
+    upload/download elements
+  + NVIDIA memory:NVMM support for OpenGL glupload and gldownload
+    elements
+  + Many WebRTC improvements
+  + The new VA-API plugin implementation fleshed out with more
+    decoders and new postproc elements
+  + AppSink API to retrieve events in addition to buffers and
+    buffer lists
+  + AppSrc gained more configuration options for the internal queue
+    (leakiness, limits in buffers and time, getters to read current
+    levels)
+  + Updated Rust bindings and many new Rust plugins
+  + Improved support for custom minimal GStreamer builds
+  + Support build against FFmpeg 5.0
+  + Linux Stateless CODEC support gained MPEG-2 and VP9
+  + Windows Direct3D11/DXVA decoder gained AV1 and MPEG-2 support
+  + Lots of new plugins, features, performance improvements and bug
+    fixes
+- Add explicit pkgconfig(libva) BuildRequires: meson checks for it.
+- Go back to using tarball from upstream, remove service.
+- Drop 2564.patch: Fixed upstream.
+- Add disabled pkgconfig(storage_client) and
+  pkgconfig(webrtc-audio-coding-1) BuildRequires and pass
+  gs=disabled, isac=disabled and onnx=disabled to meson, we do not
+  have the dependencies in openSUSE yet.
+- Add explicit BuildRequires:  pkgconfig(libsoup-2.4), meson checks
+  for it.
+- Add pkgconfig(json-glib-1.0), pkgconfig(ldacBT-enc) and
+  pkgconfig(libqrencode) BuildRequires, new dependencies.
+- Add pkgconfig(libopenaptx) BuildRequires in build_orig section
+  and pass openaptx=disabled to meson, do not build this in distro
+  by default.
+- Drop mms and ofa plugins, removed upstream. Drop
+  pkgconfig(libmms) and pkgconfig(libofa) BuildRequires following
+  the removal.
+- Add new sub-packages libgstplay-1_0-0, typelib-1_0-GstPlay-1_0
+  and libgstva-1_0-0, also add libgstva-1_0-0 and libgstplay-1_0-0
+  to baselibs.conf.
+- Tweak/fix and drop some Obsoletes.
+- Drop old conditionals for versions of openSUSE out of support.
+- Add 1634.patch -- AV1 playback fixes.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Drop explicit gstreamer-devel Requires from devel sub-package,
+  not needed as this is added via pkgconfig any way.
+
+-------------------------------------------------------------------
 Fri Feb  4 19:40:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.6:
