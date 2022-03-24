@@ -450,4 +450,14 @@
 </comment>
     <requestid>958314</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>03dbeef2b3428ef571610e115f63364a</srcmd5>
+    <version>5.1.15</version>
+    <time>1648159104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.15:
+  * no changelog
+</comment>
+    <requestid>964626</requestid>
+  </revision>
 </revisionlist>
