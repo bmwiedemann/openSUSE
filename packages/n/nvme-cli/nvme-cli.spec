@@ -123,6 +123,11 @@ if [ -f /sys/class/fc/fc_udev_device/nvme_discovery ]; then
 	%{_bindir}/echo add > /sys/class/fc/fc_udev_device/nvme_discovery
 fi
 
+%pre -n nvme-cli-bash-completion
+if [ -d %{_datadir}/bash-completion/completions/nvme ]; then
+    rm -r %{_datadir}/bash-completion/completions/nvme;
+fi
+
 %files
 %license LICENSE
 %doc README.md

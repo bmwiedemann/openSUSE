@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 22 13:49:50 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Fix install conflict caused by new bash completion script
+  location (bsc#1197365).
+
+-------------------------------------------------------------------
 Fri Mar 18 19:13:06 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.0-rc7:
