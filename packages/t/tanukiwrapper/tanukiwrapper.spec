@@ -1,7 +1,7 @@
 #
 # spec file for package tanukiwrapper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2006, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Java Service Wrapper
 License:        GPL-2.0-only
 Group:          Development/Languages/Java
-Url:            http://wrapper.tanukisoftware.org/
+URL:            http://wrapper.tanukisoftware.org/
 Source0:        http://download.sourceforge.net/wrapper/wrapper_%{version}_src.tar.gz
 Source1:        wrapper.1
 Patch0:         %{name}-additional-makefiles.patch
@@ -34,7 +34,7 @@ BuildRequires:  ant-nodeps >= 1.6.1
 BuildRequires:  cunit-devel
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  perl
 BuildRequires:  xerces-j2
@@ -80,11 +80,11 @@ rm -f bin/* build/* conf/* lib/* logs/* test/* src/c/*.o src/c/wrapperinfo.c
 %build
 export CLASSPATH=$(build-classpath ant junit xerces-j2 xml-commons-apis)
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
-    -Djavac.target.version=1.6 -Djava.specification.version=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
+    -Djavac.target.version=1.8 -Djava.specification.version=1.8 \
     -Dbuild.sysclasspath=first -Dbits=%{__isa_bits}
 
-javadoc -notimestamp -source 1.6 -sourcepath src/java -d build/javadoc org.tanukisoftware.wrapper
+javadoc -notimestamp -source 1.8 -sourcepath src/java -d build/javadoc org.tanukisoftware.wrapper
 
 %install
 # jar
@@ -111,8 +111,8 @@ install -p -m 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 
 %check
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
-    -Djavac.target.version=1.6 -Djava.specification.version=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
+    -Djavac.target.version=1.8 -Djava.specification.version=1.8 \
     -Dbuild.sysclasspath=first -Dbits=%{__isa_bits} \
     test
 
