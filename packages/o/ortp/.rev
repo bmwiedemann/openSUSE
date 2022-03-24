@@ -308,4 +308,14 @@
 </comment>
     <requestid>958308</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3c866693e43149f0e2508d6f52f72715</srcmd5>
+    <version>5.1.12</version>
+    <time>1648159102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.12:
+  * no changelog
+</comment>
+    <requestid>964622</requestid>
+  </revision>
 </revisionlist>
