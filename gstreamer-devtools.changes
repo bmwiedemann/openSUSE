@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 18 07:56:21 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.1:
+  + gst-env: various clean-ups and documentation improvements
+
+-------------------------------------------------------------------
+Wed Feb  9 22:28:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + No upstream changes available.
+- Add pkgconfig(gstreamer-transcoder-1.0) BuildRequires: New
+  dependency.
+
+-------------------------------------------------------------------
 Fri Feb  4 19:52:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.6:

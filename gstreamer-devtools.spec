@@ -19,7 +19,7 @@
 %define _name   gst-devtools
 
 Name:           gstreamer-devtools
-Version:        1.18.6
+Version:        1.20.1
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
 %if 0%{?suse_version} >= 1599
 BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= %{version}
 %endif
+BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 Obsoletes:      gstreamer-validate < 1.18.1
