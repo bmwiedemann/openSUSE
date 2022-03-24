@@ -1,7 +1,7 @@
 #
 # spec file for package exec-maven-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,28 @@
 
 
 Name:           exec-maven-plugin
-Version:        1.6.0
+Version:        3.0.0
 Release:        0
-Summary:        Maven plugin to allow execution of system and Java programs
+Summary:        Exec Maven Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.mojohaus.org/exec-maven-plugin/
-Source0:        http://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/%{version}/exec-maven-plugin-%{version}-source-release.zip
-Patch1:         exec-maven-plugin-1.6.0-Port-to-Maven-3.patch
-BuildRequires:  dos2unix
+URL:            https://www.mojohaus.org/exec-maven-plugin/
+Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/%{version}/exec-maven-plugin-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.commons:commons-exec)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
@@ -57,26 +54,23 @@ API documentation for %{name}.
 %prep
 %setup -q -n exec-maven-plugin-%{version}
 
-dos2unix LICENSE.txt
+sed -i 's/\r$//' LICENSE.txt
 find . -name *.jar -delete
-
-%pom_remove_dep :maven-project
-%pom_remove_dep :maven-toolchain
-%pom_remove_dep :maven-artifact-manager
-
-%pom_add_dep org.apache.maven:maven-compat
-%pom_add_dep junit:junit::test
 
 %pom_remove_plugin :animal-sniffer-maven-plugin
 
-%patch1 -p1
+#Drop test part. sonatype-aerther not available
+%pom_remove_dep :mockito-core
+%pom_remove_dep :maven-plugin-testing-harness
+%pom_remove_dep :plexus-interpolation
+
+rm -rf src/test/
 
 %build
-%{mvn_build} -f -- -DmavenVersion=3 -Dsource=6
+%{mvn_build} -f
 
 %install
 %mvn_install
-%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE.txt

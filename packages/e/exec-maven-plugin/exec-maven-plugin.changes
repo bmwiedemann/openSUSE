@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 22 08:31:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.0.0
+- Removed patch:
+  * exec-maven-plugin-1.6.0-Port-to-Maven-3.patch
+    + not needed any more with this version
+
+-------------------------------------------------------------------
 Sat Apr  6 12:09:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid trivial name repetition in summary.
