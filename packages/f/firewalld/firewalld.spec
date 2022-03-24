@@ -55,6 +55,8 @@ BuildRequires:  libxslt-tools
 BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
 Recommends:     logrotate
+Obsoletes:      firewalld-prometheus-config < 0.2
+Provides:       firewalld-prometheus-config = 0.2
 # Workaround: nftables seems to be a python3-nftables requirement,
 # not of firewalld.
 Requires:       nftables

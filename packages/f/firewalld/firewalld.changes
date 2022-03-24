@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:43:17 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Provide dummy firewalld-prometheus-config package (bsc#1197042)
+
+-------------------------------------------------------------------
 Mon Mar  7 16:45:58 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Add code for safe modprobe.d migration
