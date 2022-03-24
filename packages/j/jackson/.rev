@@ -15,4 +15,12 @@
     <comment>adapt to groovy18</comment>
     <requestid>757298</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eefffe4891ed29a85f2faf9440de2a26</srcmd5>
+    <version>1.9.13</version>
+    <time>1648159107</time>
+    <user>dimstar_suse</user>
+    <comment>Source and target levels 8 + fix build with standalone JavaEE modules</comment>
+    <requestid>964653</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package jackson
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,14 +37,17 @@ Patch2:         %{name}-dont-bundle-asm.patch
 Patch4:         %{name}-1.9.11-javadoc.patch
 Patch5:         jackson-sourcetarget.patch
 Patch6:         jackson-module.patch
+Patch7:         jackson-javaee.patch
 BuildRequires:  ant >= 1.8.2
-BuildRequires:  asm3 >= 3.3
 BuildRequires:  cglib >= 2.2
 BuildRequires:  fdupes
+BuildRequires:  glassfish-activation-api
+BuildRequires:  glassfish-jaxb-api
 BuildRequires:  groovy18 >= 1.8.5
 BuildRequires:  javapackages-local
 BuildRequires:  joda-time >= 1.6.2
 BuildRequires:  jsr-311 >= 1.1.1
+BuildRequires:  objectweb-asm
 BuildRequires:  stax2-api >= 3.1.1
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
@@ -74,6 +77,7 @@ This package contains javadoc for %{name}.
 %patch4
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # Remove all the binary jar files, as the packaging policies
 # forbids using them:
@@ -90,11 +94,13 @@ ln -s $(build-classpath joda-time) lib/ext/joda-time.jar
 mkdir -p lib/xml
 ln -s $(build-classpath stax2-api) lib/xml/sta2-api.jar
 ln -s $(build-classpath jsr-311) lib/jaxrs/jsr-311.jar
-ln -s $(build-classpath asm3/asm) lib/ext/asm/asm.jar
-ln -s $(build-classpath asm3/asm) lib/repackaged/jackson-asm.jar
+ln -s $(build-classpath objectweb-asm/asm) lib/ext/asm/asm.jar
+ln -s $(build-classpath objectweb-asm/asm) lib/repackaged/jackson-asm.jar
 ln -s $(build-classpath cglib/cglib) lib/ext/cglib/cglib-nodep.jar
 ln -s $(build-classpath groovy-1.8) lib/ext/groovy/groovy.jar
 ln -s $(build-classpath junit) lib/junit/junit.jar
+ln -s $(build-classpath glassfish-activation-api) lib/jaxb/activation.jar
+ln -s $(build-classpath glassfish-jaxb-api) lib/jaxb/jaxb-api-2.0.jar
 
 sed -i "s,59 Temple Place,51 Franklin Street,;s,Suite 330,Fifth Floor,;s,02111-1307,02110-1301," \
  release-notes/lgpl/LGPL2.1
@@ -104,7 +110,7 @@ iconv -f UTF-8 -t ASCII//TRANSLIT -o tmp src/test/org/codehaus/jackson/jaxrs/Tes
 
 %build
 
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 dist
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 dist
 
 %install
 
