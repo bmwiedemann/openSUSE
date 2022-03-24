@@ -21,18 +21,17 @@
 # Patched code is built by default.
 # Use rpmbuild -D 'BUILD_ORIG 1' to build original code.
 # Use rpmbuild -D 'BUILD_ORIG 1' -D 'BUILD_ORIG_ADDON 1' to build patched build plus original as addon.
-%define _experimental 0
 # Get minimum gstreamer and gstreamer-plugins-base required versions from configure.ac
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.18.6
+Version:        1.20.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/gst-plugins-ugly/%{_name}-%{version}.tar.xz
+Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
@@ -113,6 +112,7 @@ export PYTHON=%{_bindir}/python3
 	-Damrwbdec=disabled \
 	-Dx264=disabled \
 %endif
+	-Dgpl=enabled \
 	-Dsidplay=disabled \
 	-Ddoc=disabled \
 	%{nil}
@@ -124,7 +124,7 @@ export PYTHON=%{_bindir}/python3
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README RELEASE REQUIREMENTS
+%doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
 %{_libdir}/gstreamer-%{gst_branch}/libgsta52dec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdio.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdlpcmdec.so
