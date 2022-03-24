@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 23 22:46:15 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.44.1:
+  + Updated translations.
+- Replace intltool build requirement with gettext to follow
+  upstream changes.
+- Add a shell construct to check whether the ChangeLog file size is
+  zero or not. If it's zero, we don't package the file, but remove
+  it.
+
+-------------------------------------------------------------------
 Mon Mar 21 05:55:31 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 3.44.0:

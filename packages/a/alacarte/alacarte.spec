@@ -16,12 +16,8 @@
 #
 
 
-# TODO -- Get rid of this once the Python stuff location issue gets
-# sorted out (https://gitlab.gnome.org/GNOME/alacarte/-/issues/14).
-%bcond_without aclocal_fix
-
 Name:           alacarte
-Version:        3.44.0
+Version:        3.44.1
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
@@ -29,15 +25,11 @@ Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/alacarte
 Source:         https://download.gnome.org/sources/alacarte/3.44/%{name}-%{version}.tar.xz
 
-%if %{with aclocal_fix}
-BuildRequires:  autoconf
-BuildRequires:  automake
-%endif
 BuildRequires:  fdupes
+BuildRequires:  gettext
 BuildRequires:  glib2-devel
 # Needed for the typelib() dependency parser
 BuildRequires:  gobject-introspection
-BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3 >= 3.3
@@ -57,14 +49,8 @@ type to edit, add, and delete any menu entry.
 
 %prep
 %autosetup -p1
-%if %{with aclocal_fix}
-sed -i -r 's/(sysconfig.)(get_default_scheme)/\1_\2/' aclocal.m4
-%endif
 
 %build
-%if %{with aclocal_fix}
-NOCONFIGURE=1 autoreconf -ifv
-%endif
 %configure
 %make_build
 
@@ -74,9 +60,17 @@ NOCONFIGURE=1 autoreconf -ifv
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 
+# If ChangeLog is empty, don't package it.
+if test -s ChangeLog; then
+    install -p -m 0644 -D ChangeLog \
+      %{buildroot}%{_defaultdocdir}/Alacarte/ChangeLog
+else
+    rm -f ChangeLog
+fi
+
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %{_bindir}/alacarte
 %{_datadir}/alacarte
 %{_datadir}/applications/alacarte.desktop
