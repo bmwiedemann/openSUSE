@@ -117,7 +117,7 @@ pushd %{comp_name}
 	-f \
 %endif
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+	-- -Dmaven.compiler.release=8
 %endif
 
 # empty line, keep

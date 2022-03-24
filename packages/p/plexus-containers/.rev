@@ -68,4 +68,12 @@
     <comment>2.1.1</comment>
     <requestid>947120</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7118b518db7f540e9d390b7d589b0d13</srcmd5>
+    <version>2.1.1</version>
+    <time>1648159082</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964427</requestid>
+  </revision>
 </revisionlist>
