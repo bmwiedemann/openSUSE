@@ -16,6 +16,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+  %define _config_norepl %nil
+%else
+  %define _pam_vendordir %{_sysconfdir}/pam.d
+  %define _config_norepl %config(noreplace)
+%endif
+
 Name:           greetd
 Version:        0.8.0
 Release:        0
@@ -61,7 +68,7 @@ install -D -p -m 0644 config.toml %{buildroot}/%{_sysconfdir}/%{name}/config.tom
 
 install -D -m 0644 %{name}.service %{buildroot}/%{_unitdir}/%{name}.service
 
-install -D -m 0644 %{SOURCE3} %{buildroot}/%{_distconfdir}/pam.d/greetd
+install -D -m 0644 %{SOURCE3} %{buildroot}/%{_pam_vendordir}/greetd
 
 install -d %{buildroot}%{_localstatedir}/cache/greetd
 install -d %{buildroot}%{_localstatedir}/lib/greetd
@@ -91,7 +98,7 @@ getent passwd greeter >/dev/null || %{_sbindir}/useradd -r -g greeter -G video -
 %{_unitdir}/%{name}.service
 %dir %{_sysconfdir}/%{name}
 %attr(644,greeter,greeter) %config(noreplace) %{_sysconfdir}/%{name}/config.toml
-%{_distconfdir}/pam.d/greetd
+%_config_norepl %{_pam_vendordir}/greetd
 %ghost %attr(711,root,greeter) %dir /run/greetd/
 %ghost %attr(750,greeter,greeter) %dir %{_localstatedir}/lib/greetd/
 %ghost %dir %{_localstatedir}/cache/greetd/
