@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/javax-inject/javax-inject.git</param>
+		<param name="revision">1f74ea7bd05ce4a3a62ddfe4a2511bf1b4287a61</param>
+        <param name="parent-tag">1</param>
+		<param name="versionformat">@PARENT_TAG@+%cdgit%h</param>
+		<param name="filename">atinject</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

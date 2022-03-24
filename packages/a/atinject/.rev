@@ -15,4 +15,12 @@
     <comment>Fix build with jdk 17</comment>
     <requestid>963080</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d0cc52aa8c1cd8c9b137d7d208149ed</srcmd5>
+    <version>1+20160610git1f74ea7</version>
+    <time>1648159117</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build in factory</comment>
+    <requestid>964683</requestid>
+  </revision>
 </revisionlist>

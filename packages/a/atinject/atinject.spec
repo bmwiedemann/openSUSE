@@ -16,19 +16,14 @@
 #
 
 
-%global base_version 1
-%global git_tag 1f74ea7bd05ce4a3a62ddfe4a2511bf1b4287a61
-%global git_version 20100611git1f74ea7
 Name:           atinject
-Version:        %{base_version}+%{git_version}
+Version:        1+20160610git1f74ea7
 Release:        0
 Summary:        Dependency injection specification for Java (JSR-330)
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://javax-inject.github.io/javax-inject/
-# git clone --bare git@github.com:javax-inject/javax-inject
-# git --git-dir=javax-inject.git archive --prefix %{name}-%{base_version}/ --format tar %{git_tag} | xz >%{name}-%{base_version}.tar.xz
-Source0:        %{name}-%{base_version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 # These manifests based on the ones shipped by eclipse.org
 Source1:        MANIFEST.MF
 Source2:        MANIFEST-TCK.MF
@@ -51,7 +46,7 @@ beneficial to most nontrivial applications.
 %package        tck
 Summary:        TCK for testing %{name} compatibility with JSR-330
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 Requires:       junit
 
 %description    tck
@@ -65,28 +60,41 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{base_version}
+%setup -q
 %patch0 -p1
 cp %{SOURCE3} LICENSE
-rm -rf lib/*
-build-jar-repository -p lib junit
 
 # Fix dep in TCK pom
 sed -i -e 's/pom\.groupId/project.groupId/' tck-pom.xml
 
 %build
-set -e
-alias rm=:
-alias xargs=:
-alias javadoc='javadoc -source 8 -notimestamp'
-alias javac='javac -source 8 -target 8'
-. ./build.sh
+rm -rf build
+mkdir -p build/classes
+mkdir -p build/tck
+mkdir -p build/dist
+mkdir -p build/tck/classes
+mkdir -p build/tck/dist
 
-# Inject OSGi manifests required by Eclipse.
-jar umf %{SOURCE1} build/dist/javax.inject.jar
-jar umf %{SOURCE2} build/tck/dist/javax.inject-tck.jar
+# Compile classes.
+javac -source 8 -target 8 -g -d build/classes `find src -name \*.java`
+javac -source 8 -target 8 -g -classpath build/classes:$(build-classpath junit) -d build/tck/classes \
+	`find tck -name \*.java`
 
-mv build/tck/javadoc build/javadoc/tck
+# Generate Javadocs.
+FOOTER="<font size='-1'>Copyright (C) 2009 <a href='https://github.com/javax-inject/javax-inject'>\
+The JSR-330 Expert Group</a>. \
+Licensed under the <a href='http://www.apache.org/licenses/LICENSE-2.0'>Apache \
+License</a>, Version 2.0.</font>"
+javadoc -source 8 -protected -bottom "${FOOTER}" \
+    -header "<font color='red'><b>This is a DRAFT specification.</b></font>" \
+	-sourcepath src -d build/javadoc javax.inject
+javadoc -source 8 -classpath build/classes:lib/junit.jar -protected -bottom "$FOOTER" \
+	-sourcepath tck -d build/javadoc/tck org.atinject.tck \
+	org.atinject.tck.auto org.atinject.tck.auto.accessories
+
+# Generate jars.
+jar cmf %{SOURCE1} build/dist/javax.inject.jar -C build/classes .
+jar cmf %{SOURCE2} build/tck/dist/javax.inject-tck.jar -C build/tck/classes .
 
 %install
 # jars
