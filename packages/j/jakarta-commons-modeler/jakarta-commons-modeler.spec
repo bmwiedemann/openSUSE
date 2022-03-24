@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-commons-modeler
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{sh
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jakarta-commons-digester
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  mx4j
@@ -80,7 +81,7 @@ ant \
     -Djunit.jar=$(build-classpath junit) \
     -Dcommons-digester.jar=$(build-classpath commons-digester) \
     -Dcommons-logging.jar=$(build-classpath commons-logging) \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     dist
 
 %install
