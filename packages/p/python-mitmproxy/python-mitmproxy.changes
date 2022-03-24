@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 22 16:01:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 8.0.0
+  * mitmweb improvements
+    * Now renders TCP and WebSocket flows
+    * Offers direct cURL/HTTPie/raw HTTP export
+    * Added Experimental command bar
+  * Added Async Event Hooks
+  * Added event hooks to signal TLS handshake success and failure
+    for client and server connections
+  * Support proxy authentication for SOCKS v5 mode
+  * CVE-2022-24766: Fix request smuggling vulnerability, boo#1197381
+
+-------------------------------------------------------------------
 Thu Jan  6 13:33:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Register obs hypothesis profile for slow test executions

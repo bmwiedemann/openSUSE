@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-mitmproxy
-Version:        7.0.4
+Version:        8.0.0
 Release:        0
 Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module certifi >= 2019.9.11}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module cryptography >= 3.3}
-BuildRequires:  %{python_module h2 >= 4.0}
+BuildRequires:  %{python_module h2 >= 4.1}
 BuildRequires:  %{python_module hyperframe >= 6.0}
 BuildRequires:  %{python_module hypothesis >= 5.8}
 BuildRequires:  %{python_module kaitaistruct >= 0.7}
@@ -44,16 +44,16 @@ BuildRequires:  %{python_module parver >= 0.1}
 BuildRequires:  %{python_module passlib >= 1.6.5}
 BuildRequires:  %{python_module protobuf >= 3.14}
 BuildRequires:  %{python_module publicsuffix2 >= 2.20190812}
-BuildRequires:  %{python_module pyOpenSSL >= 20.0}
+BuildRequires:  %{python_module pyOpenSSL >= 21.0}
 BuildRequires:  %{python_module pyparsing >= 2.4.2}
 BuildRequires:  %{python_module pyperclip >= 1.6.0}
 BuildRequires:  %{python_module pytest >= 6.1.0}
-BuildRequires:  %{python_module pytest-asyncio >= 0.10.0}
+BuildRequires:  %{python_module pytest-asyncio >= 0.17.0}
 BuildRequires:  %{python_module requests >= 2.9.1}
 BuildRequires:  %{python_module ruamel.yaml >= 0.16}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sortedcontainers >= 2.3}
-BuildRequires:  %{python_module tornado >= 4.3}
+BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module urwid >= 2.1.1}
 BuildRequires:  %{python_module wsproto >= 1.0}
 BuildRequires:  %{python_module zstandard >= 0.11}
@@ -66,7 +66,7 @@ Requires:       python-blinker >= 1.4
 Requires:       python-certifi >= 2019.9.11
 Requires:       python-click >= 7.0
 Requires:       python-cryptography >= 3.3
-Requires:       python-h2 >= 4.0
+Requires:       python-h2 >= 4.1
 Requires:       python-hyperframe >= 6.0
 Requires:       python-kaitaistruct >= 0.7
 Requires:       python-ldap3 >= 2.8
@@ -74,12 +74,12 @@ Requires:       python-msgpack >= 1.0.0
 Requires:       python-passlib >= 1.6.5
 Requires:       python-protobuf >= 3.14
 Requires:       python-publicsuffix2 >= 2.20190812
-Requires:       python-pyOpenSSL >= 20.0
+Requires:       python-pyOpenSSL >= 21.0
 Requires:       python-pyparsing >= 2.4.2
 Requires:       python-pyperclip >= 1.6.0
 Requires:       python-ruamel.yaml >= 0.16
 Requires:       python-sortedcontainers >= 2.3
-Requires:       python-tornado >= 4.3
+Requires:       python-tornado >= 6.1
 Requires:       python-urwid >= 2.1.1
 Requires:       python-wsproto >= 1.0
 Requires:       python-zstandard >= 0.11
