@@ -48,7 +48,7 @@ BuildRequires:  libcdio-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libmng-devel
 BuildRequires:  libmpcdec-devel
-BuildRequires:  libsmbclient-devel
+BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  libtheora-devel
 BuildRequires:  libtool
 BuildRequires:  libv4l-devel >= 0.8.4
@@ -80,6 +80,7 @@ BuildRequires:  pkgconfig(xvmc)
 BuildRequires:  pkgconfig(zlib)
 %if %{without distributable}
 BuildRequires:  libfaad-devel
+BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libdts)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-glx)
@@ -93,9 +94,9 @@ BuildRequires:  SDL-devel
 BuildRequires:  libjack-devel
 %endif
 BuildRequires:  libmodplug-devel
-Version:        1.2.11
+Version:        1.2.12
 Release:        0
-%define abiversion 2.9
+%define abiversion 2.10
 Summary:        Video Player with Plug-Ins
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Multimedia/Video/Players
@@ -547,9 +548,7 @@ post/xineplug_post_audio_filters
 post/xineplug_post_goom
 post/xineplug_post_mosaico
 post/xineplug_post_switch
-%ifarch %ix86 x86_64 %arm aarch64
 post/xineplug_post_tvtime
-%endif
 post/xineplug_post_visualizations
 xineplug_dmx_video
 %endif
@@ -632,6 +631,11 @@ xineplug_decode_w32dll
 %endif
 xineplug_dxr3
 xineplug_vo_out_vaapi
+xineplug_hw_frame_vaapi
+xineplug_va_display_drm
+xineplug_va_display_glx
+xineplug_va_display_wl
+xineplug_va_display_x11
 # unfortunately using external ffmpeg links the planar post
 # processing plugin against ffmpeg libs
 post/xineplug_post_planar

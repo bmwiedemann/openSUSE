@@ -23,7 +23,7 @@ Fix playback of DVDs with a broken UDF file system (aka DVD-Movie-Protect).
 +
  /* Private but located in/shared with dvd_reader.c */
  extern int UDFReadBlocksRaw( dvd_reader_t *device, uint32_t lb_number,
- 				size_t block_count, unsigned char *data, 
+                                 size_t block_count, unsigned char *data,
 @@ -779,7 +785,9 @@ static int UDFFindPartition( dvd_reader_
      return part->valid;
  }
@@ -32,7 +32,7 @@ Fix playback of DVDs with a broken UDF file system (aka DVD-Movie-Protect).
 +
 +
 +static uint32_t UDFFindFileReal( dvd_reader_t *device, char *filename,
- 		      uint32_t *filesize )
+                       uint32_t *filesize )
  {
      uint8_t LogBlock_base[ DVD_VIDEO_LB_LEN + 2048 ];
 @@ -861,6 +869,84 @@ uint32_t UDFFindFile( dvd_reader_t *devi
@@ -45,7 +45,7 @@ Fix playback of DVDs with a broken UDF file system (aka DVD-Movie-Protect).
 + * When the file is not an IFO or VOB, it calls the real UDF routine.
 + */
 +uint32_t UDFFindFile( dvd_reader_t *device, char *filename,
-+		      uint32_t *filesize )
++                      uint32_t *filesize )
 +{
 +#ifndef __WIN32__
 +  if (!fnmatch("/VIDEO_TS/VTS_[0-9][0-9]_[0-9].???", filename, FNM_PATHNAME)) {

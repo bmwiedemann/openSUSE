@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Mar 15 10:46:27 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Fix non-distributable build:
+  * Add "BuildRequires: pkgconfig(glesv2)" to avoid compiler error
+    about missing include file
+  * Adjust plugins filelist
+
+-------------------------------------------------------------------
+Tue Mar 15 07:43:31 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 1.2.12
+- Rebase xine-lib-libdvdread_udf.diff
+- Upstream changes:
+  * Add string tree library (generic info parser).
+  * Add OpenSL ES audio output plugin.
+  * Add mpeg-dash input plugin.
+  * Add crypto input plugin.
+  * Add VAAPI support to opengl2 video output (requires using EGL).
+  * Better hls support.
+  * Improved DVB/live stream timing.
+  * Improved BT.2020 support.
+  * Fix compatibility with ffmpeg 5.0.
+  * Fix RSS parser.
+  * Fix output parameter setting (audio amplification, video hue etc.).
+  * Fix AC3 demuxer.
+  * Diverse small fixes and optimizations.
+  * Update german translation.
+  * Code cleanup.
+  * Build fixes.
+
+-------------------------------------------------------------------
+Mon Mar 14 14:14:14 UTC 2022 - olaf@aepfle.de
+
+- Use pkgconfig(smbclient) to refer to samba libaries
+
+-------------------------------------------------------------------
 Wed Jan  6 18:52:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 1.2.11
