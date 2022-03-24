@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 18 12:20:59 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Create firewalld-prometheus-config subpackage (bsc#1197042)
+
+-------------------------------------------------------------------
 Mon Mar  7 16:40:16 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update vendor tarball with prometheus/client_golang 1.12.1

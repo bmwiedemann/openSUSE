@@ -57,6 +57,7 @@ BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       firewalld-prometheus-config
 Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
 Requires(post): %fillup_prereq
@@ -146,6 +147,18 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
 %dir %{_sysconfdir}/prometheus
 %config(noreplace) %{_sysconfdir}/prometheus/prometheus.yml
 
+%package -n firewalld-prometheus-config
+Summary:        Firewalld configuration file for Prometheus
+Group:          Productivity/Networking/Security
+Version:        0.1
+Release:        0
+License:        GPL-2.0-or-later
+
+%description -n firewalld-prometheus-config
+This package contains configuration file for Prometheus for older versions of
+Firewalld which do not provide this in own package.
+
+%files -n firewalld-prometheus-config
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
