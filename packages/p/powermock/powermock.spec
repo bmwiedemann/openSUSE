@@ -37,6 +37,7 @@ Patch1:         0001-Fix-junit3-compat.patch
 # this is the same patch as in mockito to fix incompatibility with our cglib
 Patch2:         0002-Setting-naming-policy.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(cglib:cglib-nodep)
 BuildRequires:  mvn(commons-logging:commons-logging)
@@ -196,6 +197,9 @@ rm modules/module-impl/junit4-common/src/test/java/org/powermock/modules/junit4/
 %pom_add_dep javax.activation:javax.activation-api tests/utils
 %endif
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+
 %{mvn_package} :powermock-core core
 %{mvn_package} :powermock-classloading-base core
 %{mvn_package} :powermock-classloading-objenesis core
@@ -216,7 +220,7 @@ rm modules/module-impl/junit4-common/src/test/java/org/powermock/modules/junit4/
 %{mvn_package} ::pom: __noinstall
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install

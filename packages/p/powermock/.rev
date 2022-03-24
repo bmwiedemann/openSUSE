@@ -15,4 +15,12 @@
     <comment>Build against standalone activation api</comment>
     <requestid>962714</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8084812ad3ef7691511c43cb5da3fbeb</srcmd5>
+    <version>1.6.5</version>
+    <time>1648159052</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964376</requestid>
+  </revision>
 </revisionlist>

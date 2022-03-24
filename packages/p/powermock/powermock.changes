@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 23 21:05:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Modified patch:
+  * fix-build.patch
+    + Add a rewrite of function call with ?: into an if/else
+      statement, which fixes JDK 17 build
+
+-------------------------------------------------------------------
 Thu Mar 17 13:33:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Use the standalone activation api on systems where the JDK
