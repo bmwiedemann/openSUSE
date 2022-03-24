@@ -1,7 +1,7 @@
 #
 # spec file for package istack-commons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,9 @@ BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildRequires:  mvn(org.jsoup:jsoup)
 BuildRequires:  mvn(org.tukaani:xz)
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.activation:javax.activation-api)
+%endif
 
 %description
 Code shared between JAXP, JAXB, SAAJ, and JAX-WS projects.
@@ -131,6 +134,10 @@ pushd %{name}
 %pom_remove_plugin org.glassfish.copyright:glassfish-copyright-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:findbugs-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:buildnumber-maven-plugin
+
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.activation:javax.activation-api runtime
+%endif
 
 # backward compatibility symlinks
 %{mvn_file} com.sun.istack:%{name}-buildtools %{name}-buildtools %{name}/%{name}-buildtools

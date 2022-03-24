@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 23 23:31:07 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against standalone activation-api on distribution that have
+  JDK without the JavaEE modules
+
+-------------------------------------------------------------------
 Fri Mar  6 16:19:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of istack-commons 3.0.7
