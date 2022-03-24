@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 24 01:24:23 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.0:
+  * Added support for multiline docstrings
+  * Added logic to use docstring_summary instead of test name
+  * Added logic to ignore some tests from spec output
+  * Changed indicator for skipped tests
+  * Improve formatting for functions
+  * Changed actions to test against python and pytest versions
+  * Added tests to sdist
+- Add patch remove-mock.patch:
+  * Use stdlib unittest.mock
+- Correct filelist, and do not install test directory under sitelib.
+- Remove mock from {Build,}Requires, add six.
+- Drop seperate LICENSE, it's now included.
+- Actually run the testsuite.
+
+-------------------------------------------------------------------
 Thu Nov  5 15:35:43 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 3.0.5

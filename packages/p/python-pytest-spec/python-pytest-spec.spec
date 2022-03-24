@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-spec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-spec
-Version:        3.0.5
+Version:        3.2.0
 Release:        0
 Summary:        Plugin to display pytest execution output like a specification
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/pchomik/pytest-spec
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-spec/pytest-spec-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/pchomik/pytest-spec/master/LICENSE.txt
+# PATCH-FIX-UPSTREAM gh#pchomik/pytest-spec#51
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mock >= 1.0.1
+Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -41,22 +41,22 @@ BuildRequires:  %{python_module pytest}
 pytest plugin to display test execution output like a specification.
 
 %prep
-%setup -q -n pytest-spec-%{version}
-cp %{SOURCE1} .
+%autosetup -p1 -n pytest-spec-%{version}
 
 %build
 %python_build
 
 %install
 %python_install
+# Do not install tests
+%python_expand rm -r %{buildroot}%{$python_sitelib}/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no tests in PyPI tarball, no setup.py in GitHub tarball
-#%%pytest
+%pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE.txt
 %{python_sitelib}/*
 
