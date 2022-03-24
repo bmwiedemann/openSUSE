@@ -23,4 +23,12 @@
     <comment>Fix build in factory</comment>
     <requestid>881100</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>748d58c844379921f56fed40306100ed</srcmd5>
+    <version>2.0.36</version>
+    <time>1648159080</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964425</requestid>
+  </revision>
 </revisionlist>

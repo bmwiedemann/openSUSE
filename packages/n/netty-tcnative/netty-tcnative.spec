@@ -1,7 +1,7 @@
 #
 # spec file for package netty-tcnative
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source0:        https://github.com/netty/netty-tcnative/archive/%{name}-parent-%
 Source1:        fixLibNames.patch.in
 BuildRequires:  fdupes
 BuildRequires:  gcc
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtcnative-1-0
 BuildRequires:  maven-local
 BuildRequires:  mvn(io.netty:netty-jni-util::sources:)
@@ -73,7 +74,11 @@ patch -p1 < $patch
 %pom_xpath_remove pom:project/pom:profiles openssl-dynamic
 
 %build
-%{mvn_build} -f -- -Dsource=7
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
