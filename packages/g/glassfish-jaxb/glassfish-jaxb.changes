@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 23:23:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-antrun-plugin 3.x 
+
+-------------------------------------------------------------------
 Fri Mar  6 13:25:32 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of glassfish-jaxb 2.3.1

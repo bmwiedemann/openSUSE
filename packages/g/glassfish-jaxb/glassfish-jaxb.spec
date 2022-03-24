@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jaxb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -230,6 +230,10 @@ perl -pi -e 's#com\.sun\.org\.apache\.xml\.internal\.resolver#org\.apache\.xml\.
 %pom_remove_plugin :gfnexus-maven-plugin
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :buildnumber-maven-plugin
+
+%if %{?pkg_vcmp:%pkg_vcmp maven-antrun-plugin >= 3}%{!?pkg_vcmp:0}
+sed -i -e 's#tasks\>#target\>#g' xjc/pom.xml jxc/pom.xml
+%endif
 
 %{mvn_alias} org.glassfish.jaxb:jaxb-xjc "com.sun.xml.bind:jaxb-xjc"
 %{mvn_alias} :jaxb-jxc :jaxb-jxc-jdk9

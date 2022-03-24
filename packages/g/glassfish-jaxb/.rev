@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>786470</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4d4da96ff7314fc91d97fe37b21d79b2</srcmd5>
+    <version>2.3.1</version>
+    <time>1648159067</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with maven-antrun-plugin 3.x</comment>
+    <requestid>964407</requestid>
+  </revision>
 </revisionlist>
