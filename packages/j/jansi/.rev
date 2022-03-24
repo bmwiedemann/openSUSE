@@ -29,4 +29,12 @@
 </comment>
     <requestid>712780</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>68b31c7ea19ccabe128bf16ed88d96da</srcmd5>
+    <version>1.17.1</version>
+    <time>1648159072</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964413</requestid>
+  </revision>
 </revisionlist>

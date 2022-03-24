@@ -1,7 +1,7 @@
 #
 # spec file for package jansi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,7 +84,7 @@ popd
 %build
 mkdir -p jansi/lib
 build-jar-repository -s jansi/lib \
-	hawtjni/hawtjni-runtime jansi-native/jansi-native 
+	hawtjni/hawtjni-runtime jansi-native/jansi-native
 %{ant} -f %{name}-build.xml \
 %if %{without tests}
 	-Dtest.skip=true \
