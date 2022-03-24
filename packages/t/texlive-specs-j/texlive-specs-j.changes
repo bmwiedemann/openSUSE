@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 18 11:24:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Also add some obsoletes 
+
+-------------------------------------------------------------------
 Wed Mar 16 11:28:28 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Backport TeXLive 2021, full python3 support and no poppler anymore 
 - Add missed package splits for bsc#1196711
+- Skip patch latexmk_perl.dif as this is upstream in TL 2021 (bsc#1094731)
+- Ignore patch latexdiff_perl.dif for bsc#1118796 as this is
+  already part of upstream TeXLive 2021
+- Ignore patch fancyhdr_newtoks.dif for bsc#1190640 as this is
+  already part of upstream TeXLive 2021
 
 -------------------------------------------------------------------
 Thu Dec  9 13:53:37 UTC 2021 - Dr. Werner Fink <werner@suse.de>
