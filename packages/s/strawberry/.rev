@@ -950,4 +950,19 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
     <comment></comment>
     <requestid>959874</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e2119739e93124ce4139045bf4371c03</srcmd5>
+    <version>1.0.3</version>
+    <time>1648159128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+ + Bugfixes:
+ + Remove slash and backslash from filenames when saving album covers using album directory cover filenames (#903).
+ + Remove playlist file-extensions from accepted audio file extensions (#909).
+ + Fixed Qobuz requests only receiving the first 50 albums (#922).
+ + New features
+ + Added support for bs2b (Improved headphone listening of stereo audio records using Bauer stereophonic-to-binaural DSP) (#249).
+</comment>
+    <requestid>964722</requestid>
+  </revision>
 </revisionlist>

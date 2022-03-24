@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 24 20:29:51 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.3
+ + Bugfixes:
+ + Remove slash and backslash from filenames when saving album covers using album directory cover filenames (#903).
+ + Remove playlist file-extensions from accepted audio file extensions (#909).
+ + Fixed Qobuz requests only receiving the first 50 albums (#922).
+ + New features
+ + Added support for bs2b (Improved headphone listening of stereo audio records using Bauer stereophonic-to-binaural DSP) (#249).
+
+-------------------------------------------------------------------
 Mon Mar  7 08:40:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Increase the disk size needed to build strawberry on PowerPC.
