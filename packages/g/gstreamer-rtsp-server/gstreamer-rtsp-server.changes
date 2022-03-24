@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 18 07:46:41 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.1:
+  + Fix race in rtsp-client when tunneling over HTTP
+
+-------------------------------------------------------------------
+Wed Feb  9 22:38:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + GstRTSPMediaFactory gained API to disable RTCP
+    (gst_rtsp_media_factory_set_enable_rtcp(), "enable-rtcp"
+    property). Previously RTCP was always allowed for all RTSP
+    medias. With this change it is possible to disable RTCP
+    completely, irrespective of whether the client wants to do RTCP
+    or not.
+  + Make a mount point of / work correctly. While not allowed by
+    the RTSP 2 spec, the RTSP 1 spec is silent on this and it is
+    used in the wild. It is now possible to use / as a mount path
+    in gst-rtsp-server, e.g. rtsp://example.com/ would work with
+    this now. Note that query/fragment parts of the URI are not
+    necessarily correctly handled, and behaviour will differ
+    between various client/server implementations; so use it if you
+    must but don't bug us if it doesn't work with third party
+    clients as you'd hoped.
+  + multithreading fixes (races, refcounting issues, deadlocks).
+  + ONVIF audio backchannel fixes.
+  + ONVIF trick mode optimisations.
+  + rtspclientsink: new "update-sdp" signal that allows updating
+    the SDP before sending it to the server via ANNOUNCE. This can
+    be used to add additional metadata to the SDP, for example. The
+    order and number of medias must not be changed, however.
+
+-------------------------------------------------------------------
 Fri Feb  4 19:45:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.6:
