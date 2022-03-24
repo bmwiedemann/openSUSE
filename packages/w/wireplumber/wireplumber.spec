@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.8
+Version:        0.4.9
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,10 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-Patch0:         0001-spa-json-fix-va_list-APIs-for-different-architectures.patch
-Patch1:         0001-restore-stream-do-not-crash-if-config_properties-is-nil.patch
-Patch2:         0002-policy-bluetooth-fix-string.find-crash-with-nil-string.patch
-Patch3:         0003-si-audio-adapter-relax-format-parsing.patch
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch100:       reduce-meson-required-version.patch
 # docs
@@ -182,7 +178,6 @@ export XDG_RUNTIME_DIR=/tmp
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-default-nodes-api.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-default-nodes.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-default-profile.so
-%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-device-activation.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-file-monitor-api.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-logind.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-lua-scripting.so

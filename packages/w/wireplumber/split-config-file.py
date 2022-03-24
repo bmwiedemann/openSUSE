@@ -12,7 +12,7 @@ def md5FromData(data):
 contents = open('90-enable-all.lua', 'r', encoding='utf-8').read()
 
 md5sum = md5FromData(contents.encode('utf-8'))
-expected_md5sum = '2c036caab5a4b2698a6ee32c36eac94d'
+expected_md5sum = '74b508b1be26ae58d3e851d3abebc009'
 
 if md5sum != expected_md5sum:
     print('The script has to be updated for new changes in 90-enable-all.lua')
@@ -28,8 +28,7 @@ sections = ['enable-metadata',
             'track-user-choices-devices',
             'track-user-choices-streams',
             'link-nodes-by-roles',
-            'suspend-idle-nodes',
-            'device-activation']
+            'suspend-idle-nodes']
 
 if len(content_sections) != len(sections):
     print('The script has to be updated for new changes in 90-enable-all.lua')
