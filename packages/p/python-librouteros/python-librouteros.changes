@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 13:40:02 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Mon Feb  7 03:38:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove BuildRequires on chainmap, it's a builtin now. 

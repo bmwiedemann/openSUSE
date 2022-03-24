@@ -55,4 +55,12 @@
     <comment>- Remove BuildRequires on chainmap, it's a builtin now.</comment>
     <requestid>951999</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>95f4b803d5b0187791ccde896c4fe20f</srcmd5>
+    <version>3.2.0</version>
+    <time>1648159052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964377</requestid>
+  </revision>
 </revisionlist>
