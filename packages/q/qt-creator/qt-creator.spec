@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.0.2
-%define short_version 6.0
+%define real_version 7.0.0
+%define short_version 7.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -56,7 +56,7 @@ ExclusiveArch:  do_not_build
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
 Name:           %{pkgname_prefix}-creator
-Version:        6.0.2
+Version:        7.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -64,12 +64,11 @@ Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/imageviewer/imageview.cpp, src/plugins/vcsbase/wizard/vcsconfigurationpage.cpp -> BSD-3-Clause
 # src/plugins/emacskeys/* -> GPL-3.0-only
 # many files are dual licensed 'LGPL-3.0-only or (GPL-2.0-or-later OR GPL-3.0-or-later + KDE Free Qt Foundation option)', we'll use LGPL-3.0-only for these files
-License:        BSD-3-Clause AND GPL-3.0-only AND GPL-3.0-with-Qt-Company-Qt-exception-1.1 AND (LGPL-2.1-only OR LGPL-3.0-only) AND LGPL-3.0-only
+License:        GPL-3.0-with-Qt-Company-Qt-exception-1.1 AND (LGPL-2.1-only OR LGPL-3.0-only) AND GPL-3.0-only AND LGPL-3.0-only AND BSD-3-Clause
 URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
 # Patches 0-10 are upstream changes
-Patch0:         c7deacf.diff
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch

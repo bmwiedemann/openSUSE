@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 24 11:22:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 7.0.0
+  * https://www.qt.io/blog/qt-creator-7-released
+
+-------------------------------------------------------------------
+Fri Mar 11 11:12:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 7.0.0~rc1:
+  * https://www.qt.io/blog/qt-creator-7-rc-released
+- Drop c7deacf.diff. Merged upstream
+- Rebase fix-application-output.patch
+
+-------------------------------------------------------------------
 Fri Feb  4 09:03:21 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Explicitly require SQLite plugin for QtSql that is needed by the

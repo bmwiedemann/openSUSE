@@ -33,4 +33,18 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
   help system.</comment>
     <requestid>951707</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0750d1187b8e664696d467ed52e02f04</srcmd5>
+    <version>7.0.0</version>
+    <time>1648159121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.0
+  * https://www.qt.io/blog/qt-creator-7-released
+
+- Update to 7.0.0~rc1:
+  * https://www.qt.io/blog/qt-creator-7-rc-released
+- Drop c7deacf.diff. Merged upstream
+- Rebase fix-application-output.patch</comment>
+    <requestid>964701</requestid>
+  </revision>
 </revisionlist>

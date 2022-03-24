@@ -10,16 +10,16 @@ Workaround: set QT_LOGGING_TO_CONSOLE and QT_FORCE_STDERR_LOGGING
  1 file changed, 3 insertions(+)
 
 diff --git a/src/app/main.cpp b/src/app/main.cpp
-index b078786e..1f12fa97 100644
+index e17ef27..fce0595 100644
 --- a/src/app/main.cpp
 +++ b/src/app/main.cpp
-@@ -499,6 +499,9 @@ int main(int argc, char **argv)
+@@ -508,6 +508,9 @@ int main(int argc, char **argv)
          qputenv("QT_ENABLE_REGEXP_JIT", "0");
      }
  
 +    // Force Qt to log to stderr
 +    qputenv("QT_FORCE_STDERR_LOGGING", "1");
 +
-     Utils::TemporaryDirectory::setMasterTemporaryDirectory(QDir::tempPath() + "/" + Core::Constants::IDE_CASED_ID + "-XXXXXX");
- 
- #ifdef Q_OS_MACOS
+ #if defined(QTC_FORCE_XCB)
+     if (Utils::HostOsInfo::isLinuxHost() && !qEnvironmentVariableIsSet("QT_QPA_PLATFORM")) {
+         // Enforce XCB on Linux/Gnome, if the user didn't override via QT_QPA_PLATFORM
