@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 23 07:33:52 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: /etc/pam.d/greetd should be %config(noreplace) on SLE
+
+-------------------------------------------------------------------
+Mon Mar 14 15:41:18 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: don't directly use %{_distconfdir}, it's broken on SLE
+
+  We should instead make use of %_pam_vendordir but its definition is also
+  broken on SLE... hence let define our own macro for now.
+
+-------------------------------------------------------------------
 Fri Jan  7 01:22:46 UTC 2022 - William Brown <william.brown@suse.com>
 
 - resolve bsc#1194119 (CVE-2021-45710)
