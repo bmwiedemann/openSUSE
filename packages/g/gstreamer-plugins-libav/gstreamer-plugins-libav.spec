@@ -19,15 +19,14 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-libav
-Version:        1.18.6
+Version:        1.20.1
 Release:        0
 Summary:        A ffmpeg/libav plugin for GStreamer
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-libav/gst-libav-%{version}.tar.xz
 Source1000:     baselibs.conf
-Patch0:         add-gpl-option.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson
@@ -39,7 +38,7 @@ BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-base-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-check-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
-BuildRequires:  pkgconfig(libavcodec) >= 58
+BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
@@ -49,11 +48,6 @@ BuildRequires:  pkgconfig(orc-0.4) >= 0.4.16
 BuildRequires:  pkgconfig(zlib)
 Requires:       gstreamer >= %{version}
 Enhances:       gstreamer
-Supplements:    packageand(%{name}:gstreamer)
-%if 0%{?BUILD_ORIG}
-# Depend on the full build of the same libavcodec.so.N we built against
-Requires:       %(rpm --qf "%%{name}" -qf $(readlink -f %{_libdir}/libavcodec.so))(unrestricted)
-%endif
 
 %description
 GStreamer is a streaming media framework, based on graphs of filters which
@@ -82,17 +76,14 @@ plug-ins.
 This plugin contains the documentation
 
 %prep
-%setup -q -n gst-libav-%{version}
-%patch0 -p1
+%autosetup -n gst-libav-%{version} -p1
 
 %build
 %meson \
 	-Dpackage-name='openSUSE GStreamer-plugins-libav package' \
 	-Dpackage-origin='http://download.opensuse.org' \
-        -Dgpl=enabled \
-        -Ddoc=disabled \
+	-Ddoc=disabled \
 	%{nil}
-
 %meson_build
 
 %install
