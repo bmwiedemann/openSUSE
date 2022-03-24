@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 23 21:51:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220322:
+  * --sshlogin user:password@host is now supported by using sshpass.
+  * Bug fixes and man page updates: Many options now have a 'See also' section.
+
+-------------------------------------------------------------------
 Sun Mar 20 19:49:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220222:
