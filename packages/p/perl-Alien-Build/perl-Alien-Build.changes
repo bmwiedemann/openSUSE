@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 14 03:06:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.48
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.48      2022-03-13 11:20:19 -0600
+    - Added atleast_version to Probe::CommandLine and Probe::CBuilder plugins
+      (gh#299, gh#300, shawnlaffan++)
+    - Added Alien::Util module (gh#301)
+
+-------------------------------------------------------------------
 Tue Mar  8 03:06:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.47
