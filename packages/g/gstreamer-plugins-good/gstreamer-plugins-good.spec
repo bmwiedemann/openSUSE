@@ -25,17 +25,14 @@
 %define _name gst-plugins-good
 %define gst_branch 1.0
 
-# Option doesn't currently exist in meson
-%define ENABLE_EXPERIMENTAL 1
-
 Name:           gstreamer-plugins-good
-Version:        1.18.6
+Version:        1.20.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/gst-plugins-good/%{_name}-%{version}.tar.xz
+Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
 
@@ -78,9 +75,7 @@ BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-net-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
-%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(gtk+-wayland-3.0) >= 3.15.0
-%endif
 BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 3.15.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(jack) >= 0.99.10
@@ -91,6 +86,7 @@ BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libraw1394) >= 2.0.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsoup-gnome-2.4) >= 2.40.0
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.9
@@ -190,7 +186,7 @@ fi
 
 %files
 %license COPYING
-%doc AUTHORS README RELEASE REQUIREMENTS NEWS
+%doc AUTHORS README.md RELEASE REQUIREMENTS NEWS
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-good.appdata.xml
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstIirEqualizer10Bands.prs
@@ -268,9 +264,7 @@ fi
 %{_libdir}/gstreamer-%{gst_branch}/libgstcacasink.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcairo.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdv.so
-%if 0%{?ENABLE_EXPERIMENTAL}
 %{_libdir}/gstreamer-%{gst_branch}/libgstmonoscope.so
-%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstshout2.so
 
 %files jack
