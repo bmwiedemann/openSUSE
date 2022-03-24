@@ -1,7 +1,7 @@
 #
 # spec file for package hppc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,9 @@ BuildRequires:  mvn(org.apache.velocity:velocity)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 #!BuildRequires: log4j stringtemplate4
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.annotation:javax.annotation-api)
+%endif
 
 %description
 Fundamental data structures (maps, sets, lists, stacks, queues) generated for
@@ -72,6 +75,10 @@ find . -name "*.jar" -print -delete
 %pom_remove_plugin :junit4-maven-plugin hppc
 # Unneeded task
 %pom_remove_plugin -r :maven-assembly-plugin
+
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.annotation:javax.annotation-api hppc
+%endif
 
 # Convert from dos to unix line ending
 for file in CHANGES.txt; do
