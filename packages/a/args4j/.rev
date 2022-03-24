@@ -62,4 +62,12 @@
     <comment>Upgrade to 2.33</comment>
     <requestid>733004</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>20405a3515e854feb16f0a77cd1480fb</srcmd5>
+    <version>2.33</version>
+    <time>1648159062</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964402</requestid>
+  </revision>
 </revisionlist>

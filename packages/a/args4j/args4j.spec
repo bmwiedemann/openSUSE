@@ -1,7 +1,7 @@
 #
 # spec file for package args4j
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source0:        https://github.com/kohsuke/%{name}/archive/%{name}-site-%{versio
 Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 %if %{with tests}
