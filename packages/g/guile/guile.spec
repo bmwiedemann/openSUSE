@@ -119,10 +119,15 @@ aclocal
 %configure \
   --disable-static \
   --with-pic \
+  --enable-lto \
   --with-threads \
   --disable-silent-rules
+%if 0%{?_with_ringdisabled}
+%make_build
+%else
 # do sequential build for reproducible .go files = https://issues.guix.gnu.org/issue/20272 - boo#1102408
 %make_build -j1
+%endif
 
 %check
 LD_LIBRARY_PATH="." \

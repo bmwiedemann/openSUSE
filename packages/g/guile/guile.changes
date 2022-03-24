@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 21 20:52:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use parallel build for Rings
+- force LTO
+
+-------------------------------------------------------------------
+Mon Mar 21 10:38:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- adjust-32bit-big-endian-build-flags.patch: replace with working patch
+
+-------------------------------------------------------------------
 Mon Mar  7 07:28:50 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to fix build on 32-bit big-endian targets
