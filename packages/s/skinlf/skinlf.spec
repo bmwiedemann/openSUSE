@@ -1,7 +1,7 @@
 #
 # spec file for package skinlf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Patch1:         skinlf-6.7-getpeer.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.5
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  laf-plugin
 BuildRequires:  xalan-j2
@@ -98,14 +98,13 @@ done
 %patch1 -p1
 
 %build
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 jar javadocs
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar javadocs
 
 %install
 # jars
 install -dm 755 %{buildroot}%{_javadir}
 install -pm 644 lib/%{name}.jar \
-	%{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+	%{buildroot}%{_javadir}/%{name}.jar
 
 # javadoc
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}
@@ -142,7 +141,7 @@ install -m 755 bin/*.sh \
 %files
 %license LICENSE
 %doc AUTHORS CHANGES LICENSE_nanoxml README THANKS
-%{_javadir}/%{name}*.jar
+%{_javadir}/%{name}.jar
 
 %files javadoc
 %doc %{_javadocdir}/%{name}

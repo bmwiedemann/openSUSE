@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 19:08:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Fri Oct 26 15:05:43 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fixed architecture dependent scripts alwaysontop.sh and demo.sh

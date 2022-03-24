@@ -47,4 +47,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment></comment>
     <requestid>644967</requestid>
   </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>d8c13749133731686293dfc349a1a80f</srcmd5>
+    <version>6.7</version>
+    <time>1648159087</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964433</requestid>
+  </revision>
 </revisionlist>
