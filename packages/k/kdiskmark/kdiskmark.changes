@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 20 14:42:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup.
+- Use %_libexecdir where needed.
+
+-------------------------------------------------------------------
 Sun Oct 31 21:51:05 UTC 2021 - Dmitry Sidorov <jonmagon@gmail.com>
 
 - Update to version 2.3.0
