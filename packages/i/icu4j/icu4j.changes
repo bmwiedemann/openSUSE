@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 24 14:17:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to verison 70.1
+- Modified patches:
+  * icu4j-66.1-java8compat.patch -> icu4j-70.1-java8compat.patch
+  * icu4j-jdk10plus.patch
+    + rediff to changed context
+  * improve-osgi-manifest.patch
+    + replace also DATAVERSION token during the build
+- Added patch:
+  * icu4j-javadoc.patch
+    + fix invalid html entities
+
+-------------------------------------------------------------------
 Thu Apr 23 08:32:58 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 67.1

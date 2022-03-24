@@ -1,7 +1,7 @@
 #
 # spec file for package icu4j
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%global majorver 67
+%global majorver 70
 %global minorver 1
 Name:           icu4j
 Version:        %{majorver}.%{minorver}
@@ -26,14 +26,15 @@ Summary:        International Components for Unicode for Java
 # ICU itself is now covered by Unicode license, but still has contributed
 # components covered by MIT and BSD licenses
 # Data from the Timezone Database is Public Domain
-License:        Unicode AND MIT AND BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-3-Clause AND MIT AND Unicode AND SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            http://site.icu-project.org/
 Source0:        https://github.com/unicode-org/icu/releases/download/release-%{majorver}-%{minorver}/%{name}-%{majorver}_%{minorver}.tgz
 Patch0:         icu4j-jdk10plus.patch
 # Add better OSGi metadata to core jar
 Patch1:         improve-osgi-manifest.patch
-Patch2:         icu4j-66.1-java8compat.patch
+Patch2:         icu4j-70.1-java8compat.patch
+Patch3:         icu4j-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel
@@ -83,6 +84,7 @@ API documentation for %{name}.
 %patch0 -p1
 %patch1
 %patch2 -p1
+%patch3 -p1
 
 sed -i 's/\r//' APIChangeReport.html
 sed -i 's/\r//' readme.html
@@ -117,8 +119,10 @@ rm main/tests/charset/src/com/ibm/icu/dev/test/charset/TestConversion.java
 rm main/tests/translit/src/com/ibm/icu/dev/test/translit/TransliteratorDisorderedMarksTest.java
 
 %build
-ant \
-    -Dicu4j.javac.source=1.7 -Dicu4j.javac.target=1.7 \
+%ant \
+    -Djavac.source=1.8 -Djavac.target=1.8 \
+	-Ddoclint.option='-Xdoclint:none' \
+	-Dicu4j.api.doc.jdk.link= \
     jar docs
 
 for jar in icu4j icu4j-charset icu4j-localespi ; do
