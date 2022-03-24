@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-napalm
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/napalm-automation/napalm
 Source:         https://github.com/napalm-automation/napalm/archive/%{version}.tar.gz#/napalm-%{version}.tar.gz
+# https://github.com/napalm-automation/napalm/issues/1594
+Patch0:         python-napalm-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -78,7 +80,7 @@ NAPALM is a Python library that implements a set of functions to
 interact with different router vendor devices using a unified API.
 
 %prep
-%setup -q -n napalm-%{version}
+%autosetup -p1 -n napalm-%{version}
 sed -i '1{/env python/d}' napalm/pyIOSXR/*.py
 
 %build

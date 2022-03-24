@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar 24 12:42:56 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.4.0
+  Junos
+      Junos discard_config on error fix #1448
+      Junos LLDP improvements #1470
+      Junos pass self.ignore_warning to diff call in compare_config() #1480
+  NX-OS
+      Improve NX-API error messages #1461
+      NX-OS disable SSL InsecureRequestWarning if ssl_verify is False #1510
+      NX-OS unknown interface MTU and unknown speed as -1 #1511
+      NX-OS improve JSON handling in newer NX-OS versions #1490
+  IOS
+      IOS allow BGP configuration with no explicit AFI #1477
+      Escape vlan_name on IOS before building regex string #1546
+      Handle get_network_instances for IOS devices that do not support show vrf detail #1547
+  EOS
+      EOS fix get_bgp_config mismatch between neighbors and peer-group #1503
+  IOS-XR
+      Pass IOS-XR NETCONF optional_args to ncclient connect #1535
+  General
+      Bandwidth parameter returned as a float
+      Pin Netmiko to require Netmiko version 3.3.X or 3.4.X
+- added patches
+  fix https://github.com/napalm-automation/napalm/issues/1594
+  + python-napalm-no-mock.patch
+
+-------------------------------------------------------------------
 Tue Jan 11 21:55:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - remove selectors2 test requirement: It's unmaintained and pulled
