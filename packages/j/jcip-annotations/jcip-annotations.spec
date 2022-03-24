@@ -1,7 +1,7 @@
 #
 # spec file for package jcip-annotations
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,14 @@ Release:        0
 Summary:        Java Concurrency in Practice
 License:        CC-BY-2.5
 Group:          Development/Libraries/Java
-Url:            http://www.jcip.net/
+URL:            http://www.jcip.net/
 Source0:        http://www.jcip.net/jcip-annotations-src.jar
 Source1:        http://repo1.maven.org/maven/livetribe/maven/m2/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.pom
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  unzip
-Requires:       java >= 1.6.0
 BuildArch:      noarch
 
 %description
@@ -54,8 +53,8 @@ mv net src/main/java
 
 %build
 export JAVA_HOME=%{_jvmdir}/java
-$JAVA_HOME/bin/javac -source 1.6 -target 1.6 -d target/classes $(find src/main/java -name "*.java")
-$JAVA_HOME/bin/javadoc -source 1.6 -d target/site/apidocs -sourcepath src/main/java net.jcip.annotations
+$JAVA_HOME/bin/javac -source 1.8 -target 1.8 -d target/classes $(find src/main/java -name "*.java")
+$JAVA_HOME/bin/javadoc -source 1.8 -d target/site/apidocs -sourcepath src/main/java net.jcip.annotations
 for f in $(find aQute/ -type f -not -name "*.class"); do
     cp $f target/classes/$f
 done
