@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 23:38:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8 
+
+-------------------------------------------------------------------
 Fri Aug 27 06:59:45 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.0.2

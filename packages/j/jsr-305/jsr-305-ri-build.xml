@@ -20,7 +20,7 @@
   <property name="build.srcDir" value="src/main/java"/>
   <property name="build.resourceDir" value="src/main/resources"/>
 
-  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
