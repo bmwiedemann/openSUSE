@@ -16,7 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%global skip_python2 1
+%global skip_python36 1
 Name:           python-responses
 Version:        0.18.0
 Release:        0
@@ -39,10 +41,6 @@ Requires:       python-requests >= 2.0
 Requires:       python-six
 Suggests:       python-pytest
 BuildArch:      noarch
-%ifpython2
-Requires:       python2-cookies
-Requires:       python2-mock
-%endif
 %python_subpackages
 
 %description
