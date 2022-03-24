@@ -423,4 +423,12 @@ Reflect all of the licenses of the various components in the spec file license (
   * punknova_p2top3.dif</comment>
     <requestid>962429</requestid>
   </revision>
+  <revision rev="45" vrev="48">
+    <srcmd5>44ede7dea3c415db794b4f2043432f5b</srcmd5>
+    <version>unknown</version>
+    <time>1648159077</time>
+    <user>dimstar_suse</user>
+    <comment>Also add some obsoletes and conflicts</comment>
+    <requestid>964560</requestid>
+  </revision>
 </revisionlist>
