@@ -20,7 +20,7 @@
 %define _name gst-editing-services
 
 Name:           gstreamer-editing-services
-Version:        1.18.6
+Version:        1.20.1
 Release:        0
 Summary:        GStreamer Editing Services
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

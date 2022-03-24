@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Mar 18 07:48:15 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.1:
+  + Update validate test scenarios for videoaggregator rounding
+    behaviour change
+
+-------------------------------------------------------------------
+Wed Feb  9 22:34:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + Framepositioner: new "operator" property to access blending
+    modes in the compositor.
+  + timeline: Implement snapping to markers.
+  + smart-mixer: Add support for d3d11compositor and glvideomixer.
+  + titleclip: add "draw-shadow" child property.
+  + ges:// URI support to define a timeline from a description.
+  + command-line-formatter:
+    - Add track management to timeline description.
+    - Add keyframe support.
+  + ges-launch-1.0:
+    - Add an interactive mode where we can seek etc...
+    - Add option to forward tags
+    - Allow using an existing clip to determine the rendering
+      format (both topology and profile) via new --profile-from
+      command line argument.
+  + Fix static build.
+
+-------------------------------------------------------------------
 Fri Feb  4 19:50:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.6:
