@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Mar 23 13:50:58 UTC 2022 - pgajdos@suse.com
+
+- version update to 4.0
+  4.0
+  ---
+    BREAKING & SECURITY: The archive extraction functions now pass 3 security flags (SECURE_NODOTDOT, SECURE_NOABSOLUTEPATHS 
+      and SECURE_SYMLINKS) to libarchive by default, unless the current directory is the root.
+    BREAKING: The ArchiveEntry properties atime, mtime, ctime, birthtime and size now have the value None instead of 0 when they're unset.
+    BREAKING: The ArchiveEntry.pathname property now attempts to decode bytes using UTF-8. This breaks reading archives that
+      contain file names which look like UTF-8 but aren't, if such a thing exists. Proper support of encodings will probably be added
+      in the next version.
+    Multiple entries from the same archive can now be kept in memory, however only the current entry's content can be read.
+    The filetype, linkpath, size, mode, redvmajor, redvminor, uid and gid attributes of an archive entry can now be modified.
+    The four time properties of archive entries now have setters, so for example entry.set_mtime(0, 0) can be replaced by entry.mtime = 0.
+    Archive entries have 4 new properties: perm, rdev, uname and gname.
+    When adding files to an archive, a destination path can now be specified.
+    The ArchiveRead class now has a bytes_read property.
+    The ArchiveWrite class now has a bytes_written property.
+    Python 3.6 is no longer tested.
+    The documentation has been improved.
+  3.2
+  ---
+    This release fixes the seek callbacks passed to libarchive by the custom_reader and stream_reader function. See #116 for more details.
+  3.1
+  ---
+  This release is mostly meant to fix #113 (a bug introduced in 3.0), but it also contains the following changes:
+    the ffi.archive_error() function now returns an exception instead of raising it
+    seekable_stream_reader is now an alias of stream_reader
+    the misleadingly named ffi.VOID_CB function has been removed
+  3.0
+  ---
+  Changes to the library:
+    BREAKING: dropped support for Python 2.7 (#108)
+    implemented reading and writing encrypted archives (#109)
+    created a new context manager: seekable_stream_reader (#107)
+    added support for 64-bit time_t on 32-bit systems (#101)
+    load extra formats and filters when they're requested (#95)
+- added patches
+  fix https://github.com/Changaco/python-libarchive-c/commit/13b904e2b046db25a42cd63557d259b3d3998323
+  + python-libarchive-c-no-mock.patch
+- do not require mock
+
+-------------------------------------------------------------------
 Wed Apr 15 12:28:28 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.9
