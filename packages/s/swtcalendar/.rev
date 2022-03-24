@@ -15,4 +15,12 @@
     <comment>build with java source and target level 1.6</comment>
     <requestid>527293</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>62fe1f88e022f37d193e2474a27a4f4e</srcmd5>
+    <version>0.5</version>
+    <time>1648159050</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964374</requestid>
+  </revision>
 </revisionlist>

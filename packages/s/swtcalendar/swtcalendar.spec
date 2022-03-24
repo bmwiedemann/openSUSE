@@ -1,7 +1,7 @@
 #
 # spec file for package swtcalendar
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,12 @@ Release:        0
 Summary:        GUI date picker for Java using SWT
 License:        MIT
 Group:          Development/Languages/Java
-Url:            http://swtcalendar.sourceforge.net/
+URL:            http://swtcalendar.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}/%{name}-src-%{version}.zip
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  eclipse-swt
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -44,7 +45,7 @@ dos2unix *.txt
 
 %build
 export CLASSPATH=%{_libdir}/java/swt.jar
-%{ant} -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
 mkdir -p %{buildroot}%{_javadir}
