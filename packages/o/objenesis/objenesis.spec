@@ -1,7 +1,7 @@
 #
 # spec file for package objenesis
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +35,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://objenesis.org/
 Source0:        https://github.com/easymock/%{name}/archive/%{version}.tar.gz
+Patch0:         objenesis-javadoc.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -70,6 +71,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # Enable generation of pom.properties (rhbz#1017850)
 %pom_xpath_remove pom:addMavenDescriptor
@@ -91,7 +93,7 @@ javac -d main/build/classes -source 8 -target 8 -encoding utf-8 \
 jar cf %{name}-%{version}.jar -C main/build/classes .
 
 touch manifest.txt
-echo "Automatic-Module-Name: org.objenesis" >> manifest.txt  
+echo "Automatic-Module-Name: org.objenesis" >> manifest.txt
 echo "Bundle-Description: A library for instantiating Java objects" >> manifest.txt
 echo "Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt" >> manifest.txt
 echo "Bundle-Name: Objenesis" >> manifest.txt
