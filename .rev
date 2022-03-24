@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>780169</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>20ef62d6e2bcf09e40b2d0efa231ed26</srcmd5>
+    <version>0.7.1</version>
+    <time>1648159069</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone annotation-api</comment>
+    <requestid>964409</requestid>
+  </revision>
 </revisionlist>
