@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-jexl
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Release:        0
 Summary:        Java Expression Language (JEXL)
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/jexl
+URL:            https://commons.apache.org/jexl
 Source0:        http://www.apache.org/dist/commons/jexl/source/%{short_name}-%{version}-src.tar.gz
 Source1:        %{short_name}-%{version}-build.tar.xz
 # Patch to fix test failure with junit 4.11
@@ -37,6 +37,7 @@ Patch2:         0001-Port-to-current-javacc.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
 BuildRequires:  javapackages-local
 Requires:       mvn(commons-logging:commons-logging)
