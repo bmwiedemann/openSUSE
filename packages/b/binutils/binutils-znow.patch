@@ -1,0 +1,15 @@
+Index: binutils-2.38/ld/ldmain.c
+===================================================================
+--- ld/ldmain.c
++++ ld/ldmain.c
+@@ -309,6 +309,10 @@ main (int argc, char **argv)
+ #endif
+   if (getenv ("SUSE_ASNEEDED") && atoi(getenv ("SUSE_ASNEEDED")) > 0)
+     input_flags.add_DT_NEEDED_for_regular = true;
++  if (getenv ("SUSE_ZNOW") && atoi(getenv ("SUSE_ZNOW")) > 0) {
++    link_info.flags |= (bfd_vma) DF_BIND_NOW;
++    link_info.flags_1 |= (bfd_vma) DF_1_NOW;
++  }
+ 
+   config.build_constructors = true;
+   config.rpath_separator = ':';

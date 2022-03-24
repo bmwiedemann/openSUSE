@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 21 16:40:26 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Add usage of a SUSE_ZNOW environment variable which allows switching
+  on "-z now" by default using "export SUSE_ZNOW=1", similar to
+  the SUSE_ASNEEDED variable.  Adds binutils-znow.patch.
+
+-------------------------------------------------------------------
 Thu Mar 10 21:22:20 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update binutils-skip-rpaths.patch: add back fix for boo#1191473,

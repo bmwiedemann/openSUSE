@@ -2015,4 +2015,14 @@ contain it.
     <comment></comment>
     <requestid>961607</requestid>
   </revision>
+  <revision rev="155" vrev="3">
+    <srcmd5>f087de5da9275d500023ae26332fb32b</srcmd5>
+    <version>2.38</version>
+    <time>1648159006</time>
+    <user>dimstar_suse</user>
+    <comment>- Add usage of a SUSE_ZNOW environment variable which allows switching
+  on &quot;-z now&quot; by default using &quot;export SUSE_ZNOW=1&quot;, similar to
+  the SUSE_ASNEEDED variable.  Adds binutils-znow.patch.</comment>
+    <requestid>964006</requestid>
+  </revision>
 </revisionlist>

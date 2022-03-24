@@ -106,6 +106,7 @@ Patch9:         testsuite.diff
 Patch10:        enable-targets-gold.diff
 Patch12:        s390-pic-dso.diff
 Patch14:        binutils-build-as-needed.diff
+Patch15:        binutils-znow.patch
 Patch22:        binutils-bfd_h.patch
 Patch34:        aarch64-common-pagesize.patch
 Patch36:        binutils-pr22868.diff
@@ -210,6 +211,7 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch10
 %patch12
 %patch14
+%patch15
 %patch22
 %patch34 -p1
 %patch36 -p1
