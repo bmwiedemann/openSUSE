@@ -20,18 +20,18 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.18.6
+Version:        1.20.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/gst-plugins-base/%{_name}-%{version}.tar.xz
+Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
 
 # PATCH-FIX-OPENSUSE gstreamer-plugins-base-gl-deps.patch dimstar@opensuse.org -- Local workaround for https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/735
-Patch3:         gstreamer-plugins-base-gl-deps.patch
+#Patch3:         gstreamer-plugins-base-gl-deps.patch
 Patch4:         add_wayland_dep_to_tests.patch
 Patch5:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
 
@@ -46,7 +46,7 @@ BuildRequires:  libXext-devel
 BuildRequires:  libXv-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.59
 BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -664,7 +664,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/GstVideo-*.typelib
 
 %files devel
-%doc AUTHORS NEWS README RELEASE REQUIREMENTS
+%doc AUTHORS NEWS README.md RELEASE REQUIREMENTS
 %{_includedir}/gstreamer-%{gst_branch}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

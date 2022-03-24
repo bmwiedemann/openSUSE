@@ -1,9 +1,7 @@
-Index: check/meson.build
-===================================================================
---- a/tests/check/meson.build
-+++ b/tests/check/meson.build
-@@ -128,7 +128,7 @@ if valgrind_dep.found()
-   test_defines += ['-DHAVE_VALGRIND']
+--- orig-gst-plugins-base-1.19.90/tests/check/meson.build	2022-01-28 15:28:42.000000000 +0100
++++ gst-plugins-base-1.19.90/tests/check/meson.build	2022-01-29 22:32:03.705900464 +0100
+@@ -134,7 +134,7 @@
+   test_defines += ['-DTEST_GST_GL_ABI_CHECK']
  endif
  
 -test_deps = [gst_dep, gst_base_dep, gst_net_dep, gst_check_dep, audio_dep,
