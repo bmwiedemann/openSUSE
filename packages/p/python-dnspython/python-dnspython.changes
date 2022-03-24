@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 14 21:04:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.2.1:
+ * dns.zone.from_text failed if relativize was False and an origin was
+   specified in the parameters.
+ * A number of types permitted an empty "rest of the rdata".
+ * L32, L64, LP, and NID were missing from dns/rdtypes/ANY/__init__.py
+ * The type definition for dns.resolver.resolve_address() was incorrect.
+ * dns/win32util.py erroneously had the executable bit set.
+ * The type definition for a number of asynchronous query routines was
+   missing the default of None for the backend parameter.
+ * dns/tsigkeyring.py didn't import dns.tsig.
+ * A number of rdata types that have a "rest of the line" behavior for
+   the last field of the rdata erroneously permitted an empty string.
+ * Timeout intervals are no longer reported with absurd precision in
+   exception text.
+
+-------------------------------------------------------------------
 Fri Feb 11 19:31:34 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Only recommend and not require the installation of python-h2 because it is

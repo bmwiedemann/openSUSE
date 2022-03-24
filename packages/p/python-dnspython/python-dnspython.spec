@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-dnspython%{psuffix}
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
