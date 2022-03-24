@@ -1,0 +1,92 @@
+Index: Ming-0.11.2/ming/tests/odm/test_instrumented_collections.py
+===================================================================
+--- Ming-0.11.2.orig/ming/tests/odm/test_instrumented_collections.py	2020-05-04 22:01:26.000000000 +0200
++++ Ming-0.11.2/ming/tests/odm/test_instrumented_collections.py	2022-03-24 10:56:55.226968156 +0100
+@@ -1,6 +1,6 @@
+ from unittest import TestCase
+ 
+-from mock import Mock
++from unittest.mock import Mock
+ 
+ from ming.odm.icollection import instrument, deinstrument, InstrumentedObj
+ 
+Index: Ming-0.11.2/ming/tests/odm/test_mapper.py
+===================================================================
+--- Ming-0.11.2.orig/ming/tests/odm/test_mapper.py	2020-06-17 23:36:55.000000000 +0200
++++ Ming-0.11.2/ming/tests/odm/test_mapper.py	2022-03-24 10:56:35.954854123 +0100
+@@ -1,6 +1,6 @@
+ from unittest import TestCase
+ 
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ 
+ from ming import create_datastore
+ from ming import schema as S
+Index: Ming-0.11.2/ming/tests/test_datastore.py
+===================================================================
+--- Ming-0.11.2.orig/ming/tests/test_datastore.py	2020-06-17 23:36:55.000000000 +0200
++++ Ming-0.11.2/ming/tests/test_datastore.py	2022-03-24 10:56:35.954854123 +0100
+@@ -1,7 +1,7 @@
+ import sys
+ from unittest import TestCase, main
+ 
+-from mock import patch, Mock
++from unittest.mock import patch, Mock
+ from pymongo.errors import ConnectionFailure
+ 
+ import ming
+Index: Ming-0.11.2/ming/tests/test_declarative.py
+===================================================================
+--- Ming-0.11.2.orig/ming/tests/test_declarative.py	2020-05-04 22:01:26.000000000 +0200
++++ Ming-0.11.2/ming/tests/test_declarative.py	2022-03-24 10:56:35.954854123 +0100
+@@ -1,7 +1,6 @@
+-from unittest import TestCase
++from unittest import TestCase, mock
+ from collections import defaultdict
+ 
+-import mock
+ import pymongo
+ import six
+ from pymongo.errors import AutoReconnect
+Index: Ming-0.11.2/ming/tests/test_functional.py
+===================================================================
+--- Ming-0.11.2.orig/ming/tests/test_functional.py	2020-05-04 22:01:26.000000000 +0200
++++ Ming-0.11.2/ming/tests/test_functional.py	2022-03-24 10:56:35.954854123 +0100
+@@ -2,10 +2,9 @@
+ Test the new functional syntax for collection definition
+ '''
+ 
+-from unittest import TestCase
++from unittest import TestCase, mock
+ from collections import defaultdict
+ 
+-import mock
+ import pymongo
+ import six
+ 
+Index: Ming-0.11.2/ming/tests/test_mim.py
+===================================================================
+--- Ming-0.11.2.orig/ming/tests/test_mim.py	2021-10-15 17:17:48.000000000 +0200
++++ Ming-0.11.2/ming/tests/test_mim.py	2022-03-24 10:56:35.954854123 +0100
+@@ -6,7 +6,7 @@ import bson
+ from ming import create_datastore, mim
+ from pymongo import UpdateOne
+ from pymongo.errors import OperationFailure, DuplicateKeyError
+-from mock import patch
++from unittest.mock import patch
+ 
+ 
+ class TestDatastore(TestCase):
+Index: Ming-0.11.2/ming/tests/test_session.py
+===================================================================
+--- Ming-0.11.2.orig/ming/tests/test_session.py	2020-06-17 23:36:55.000000000 +0200
++++ Ming-0.11.2/ming/tests/test_session.py	2022-03-24 10:56:35.954854123 +0100
+@@ -1,7 +1,6 @@
+ from collections import defaultdict
+-from unittest import TestCase, main
++from unittest import TestCase, main, mock
+ 
+-import mock
+ import bson
+ import pymongo
+ 

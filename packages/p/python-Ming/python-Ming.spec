@@ -1,7 +1,7 @@
 #
 # spec file for package python-Ming
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Ming
-Version:        0.10.3
+Version:        0.11.2
 Release:        0
 Summary:        Database mapping layer for MongoDB on Python
 License:        MIT
@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/TurboGears/Ming
 Source:         https://files.pythonhosted.org/packages/source/M/Ming/Ming-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/TurboGears/Ming/master/LICENSE.txt
+# https://github.com/TurboGears/Ming/issues/39
+Patch0:         python-Ming-no-mock.patch
 BuildRequires:  %{python_module FormEncode >= 1.2.1}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
@@ -48,6 +50,7 @@ Includes schema enforcement and some facilities for schema migration.
 
 %prep
 %setup -q -n Ming-%{version}
+%patch0 -p1
 cp %{SOURCE1} .
 
 # gridfs fails
