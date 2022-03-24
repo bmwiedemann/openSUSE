@@ -96,4 +96,12 @@
   * Reformats repository using 'black'</comment>
     <requestid>958243</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9a58d6357c1f8befaaa24a942b61d04c</srcmd5>
+    <version>2.3.0</version>
+    <time>1648159071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964394</requestid>
+  </revision>
 </revisionlist>

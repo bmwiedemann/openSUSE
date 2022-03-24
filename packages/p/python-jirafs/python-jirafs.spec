@@ -48,7 +48,6 @@ BuildRequires:  %{python_module blessings >= 1.5.1}
 BuildRequires:  %{python_module environmental-override >= 0.1.2}
 BuildRequires:  %{python_module ipdb}
 BuildRequires:  %{python_module jira >= 3.1.1}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module prettytable >= 0.7.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.1}
@@ -79,6 +78,11 @@ rm jirafs/.pre-commit-config.yaml
 %python_clone -a %{buildroot}%{_bindir}/jirafs
 
 %check
+# https://github.com/coddingtonbear/jirafs/issues/69
+sed -i 's:import mock:import unittest.mock as mock:' \
+  tests/test_*.py tests/commands/base.py
+sed -i 's:from mock import:from unittest.mock import:' \
+  tests/test_*.py tests/commands/base.py tests/commands/test_push.py
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 %pytest -rs
