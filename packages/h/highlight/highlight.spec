@@ -1,7 +1,7 @@
 #
 # spec file for package highlight
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later
@@ -29,6 +29,7 @@ BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  lua-devel
+Requires:       %{name}-common = %{version}
 
 %description
 A utility that converts sourcecode to HTML, XHTML, RTF, LaTeX, TeX, XML or ANSI
@@ -38,6 +39,15 @@ Language descriptions are configurable and support regular expressions.
 The utility offers indentation and reformatting capabilities.
 It is easily possible to create new language definitions and colour themes.
 
+%package common
+Summary:        Common architecture-independent files for %{name}
+Group:          Development/Tools/Other
+BuildArch:      noarch
+
+%description common
+This package provides some architecture-independent files for %{name} such as
+configuration and themes.
+
 %if %{with gui}
 %package gui
 Summary:        Graphical Interface for %{name}
@@ -45,7 +55,7 @@ Group:          Development/Tools/Other
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  update-desktop-files
-Requires:       %{name} = %{version}
+Requires:       %{name}-common = %{version}
 
 %description gui
 This package provides graphical interface for %{name}.
@@ -83,14 +93,16 @@ rm %{buildroot}%{_docdir}/%{name}/INSTALL
 %files
 %{_bindir}/%{name}
 %{_docdir}/%{name}
-%dir %{_sysconfdir}/%{name}
-%config %{_sysconfdir}/%{name}/filetypes.conf
-%config %{_sysconfdir}/%{name}/lsp.conf
+%{_mandir}/man1/%{name}.1%{?ext_man}
+
+%files common
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/langDefs
 %{_datadir}/%{name}/plugins
 %{_datadir}/%{name}/themes
-%{_mandir}/man1/%{name}.1%{?ext_man}
+%dir %{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/filetypes.conf
+%config %{_sysconfdir}/%{name}/lsp.conf
 %{_mandir}/man5/filetypes.conf.5%{?ext_man}
 
 %if %{with gui}

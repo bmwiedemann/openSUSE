@@ -664,4 +664,30 @@
   * GUI: Fixed highlighting options tab title.</comment>
     <requestid>892605</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9086bb52cf6958d27e9e4c908144252f</srcmd5>
+    <version>4.2</version>
+    <time>1648159033</time>
+    <user>dimstar_suse</user>
+    <comment>- Create a common subpackage for architecture-independent files
+  required by both cli and gui applications.
+
+- Update to version 4.2:
+  * Added support for Critic markup (gl#saalen/highlight#197).
+  * Added support for jam/ham (gl#saalen/highlight#196).
+  * Added support for PureScript.
+  * Added support for Nix (gl#saalen/highlight#200).
+  * Added ino file mapping / Arduino C (gl#saalen/highlight#201).
+  * Fixed RTF page color attributes (gl#saalen/highlight#195).
+  * Fixed identifier parsing in yaml.lang (gl#saalen/highlight#190).
+  * Fixed symbol parsing in lisp.lang (gl#saalen/highlight#198).
+  * Fixed string parsing in csharp.lang (gl#saalen/highlight#199).
+  * Fixed string parsing in conf.lang (gl#saalen/highlight#203).
+  * Added make target `install-lib-shared` to install shared lib
+    (gl#saalen/highlight#202).
+  * GUI: Added Japanese translation.
+  * GUI: Disabled floating panel (state restore fails).
+- Remove useless dependency of gui on cli.</comment>
+    <requestid>964313</requestid>
+  </revision>
 </revisionlist>
