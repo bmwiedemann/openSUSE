@@ -1,7 +1,7 @@
 #
 # spec file for package signpost-core
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/mttkay/signpost
 Source0:        https://github.com/mttkay/signpost/archive/%{githash}/signpost-%{githash}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(commons-codec:commons-codec)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
@@ -79,10 +80,11 @@ sed -i 's/\r//' LICENSE
 %{mvn_file} :signpost-commonshttp4 signpost-commonshttp4
 
 %build
-%{mvn_build} -s -f \
+%{mvn_build} -s -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
