@@ -1,7 +1,7 @@
 #
 # spec file for package python-kmatch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kmatch
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        A language for matching/validating/filtering Python dictionaries
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ambitioninc/kmatch
 Source:         https://files.pythonhosted.org/packages/source/k/kmatch/kmatch-%{version}.tar.gz
+# https://github.com/ambitioninc/kmatch/issues/42
+Patch0:         python-kmatch-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -43,13 +45,14 @@ with logical operators.
 
 %prep
 %setup -q -n kmatch-%{version}
+%patch0 -p1
 sed -i '/nose/d' setup.py
 dos2unix README.rst LICENSE
 chmod a-x README.rst LICENSE
 rm -r *.egg-info
-mv kmatch/tests/ .tests
 
 %build
+mv kmatch/tests/ .tests
 %python_build
 
 %install
