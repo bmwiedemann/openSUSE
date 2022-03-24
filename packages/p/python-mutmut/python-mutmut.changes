@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 24 10:46:05 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Tue Feb  2 13:29:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (hammett requires python 3.7 or later) 

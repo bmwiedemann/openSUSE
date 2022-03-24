@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutmut
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Requires:       python-pony
 Requires:       python-setuptools
 Requires:       python-tri.declarative >= 3.0.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-coverage
 Recommends:     python-pytest
 Suggests:       python-pytest-cov
@@ -52,7 +52,6 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module hammett}
 BuildRequires:  %{python_module junit-xml >= 1.8}
-BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module parso}
 BuildRequires:  %{python_module pony}
 BuildRequires:  %{python_module pytest >= 2.8.7}

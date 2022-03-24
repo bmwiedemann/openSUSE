@@ -31,4 +31,12 @@
     <comment>- skip python 3.6 (hammett requires python 3.7 or later)</comment>
     <requestid>868660</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>aedb3549cdb00cb558c10622e8a6cfcb</srcmd5>
+    <version>2.0.0</version>
+    <time>1648159109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964657</requestid>
+  </revision>
 </revisionlist>
