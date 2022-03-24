@@ -19,13 +19,13 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.18.6
+Version:        1.20.1
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-%{version}.tar.xz
+Source0:        %{url}/src/%{name}/%{name}-%{version}.tar.xz
 Source1:        gstreamer.macros
 Source2:        gstreamer.prov
 Source99:       baselibs.conf
@@ -41,7 +41,7 @@ BuildRequires:  flex >= 2.5.31
 BuildRequires:  gobject-introspection-devel >= 1.31.1
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
@@ -170,8 +170,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %post
 %set_permissions %{_libexecdir}/gstreamer-%{gst_branch}/gst-ptp-helper
 
-%post -n libgstreamer-1_0-0 -p /sbin/ldconfig
-%postun -n libgstreamer-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgstreamer-1_0-0
 
 %files
 %license COPYING
@@ -203,7 +202,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_mandir}/man?/*-%{gst_branch}*%{ext_man}
 
 %files devel
-%doc AUTHORS ChangeLog NEWS README RELEASE
+%doc AUTHORS ChangeLog NEWS README.md RELEASE
 %{_datadir}/aclocal/*.m4
 # Own these directories to avoid build requirement on gdb
 # only for directories ownership

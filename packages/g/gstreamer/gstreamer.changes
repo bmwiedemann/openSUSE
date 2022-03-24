@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri Mar 18 07:25:21 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.1:
+  + deinterlace: various bug fixes for yadif, greedy and scalerbob
+    methods
+  + gtk video sink: Fix rotation not being applied when paused
+  + gst-play-1.0: Fix trick-mode handling in keyboard shortcut
+  + jpegdec: fix RGB conversion handling
+  + matroskademux: improved ProRes video handling
+  + matroskamux: Handle multiview-mode/flags/pixel-aspect-ratio
+    caps fields correctly when checking caps equality on input caps
+    changes
+  + videoaggregator fixes (negative rate handling, current position
+    rounding)
+  + soup http plugin: Lookup libsoup dylib files on Apple
+    platforms; fix Cerbero static build on Android and iOS
+  + Support build against libfreeaptx in openaptx plugin
+  + Fix linking issues on Illumos distros
+  + GstPlay: Fix new error + warning parsing API (was unusuable
+    before)
+  + mpegtsmux: VBR muxing fixes
+  + nvdecoder: Various fixes for 4:4:4 and high-bitdepth decoding
+  + Support build against libfreeaptx in openaptx plugin
+  + webrtc: Various fixes to the webrtc-sendrecv python example
+  + macOS: support a relocatable `GStreamer.framework` on macOS
+  + macOS: fix applemedia plugin failing to load on ARM64 macOS
+  + windows: ship wavpack library
+  + gst-python: Fix build with Python 3.11
+  + various bug fixes, memory leak fixes, and other stability and
+    reliability improvements
+  + plugin loader: show the reason when spawning of
+    gst-plugin-scanner fails
+  + registry, plugin loading: fix dynamic relocation if
+    GST_PLUGIN_SUBDIR (libdir) is not a single subdirectory;
+    improve GST_PLUGIN_SUBDIR handling
+  + context: fix transfer annotation on
+    gst_context_writable_structure() for bindings
+  + baseparse: Don't truncate the duration to milliseconds in
+    gst_base_parse_convert_default()
+  + bufferpool: Deactivate pool and get rid of references to other
+    objects from dispose instead of finalize
+
+-------------------------------------------------------------------
+Fri Feb  4 19:11:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + Development in GitLab was switched to a single git repository
+    containing all the modules
+  + GstPlay: new high-level playback library, replaces GstPlayer
+  + WebM Alpha decoding support
+  + Encoding profiles can now be tweaked with additional
+    application-specified element properties
+  + Compositor: multi-threaded video conversion and mixing
+  + RTP header extensions: unified support in RTP depayloader and
+    payloader base classes
+  + SMPTE 2022-1 2-D Forward Error Correction support
+  + Smart encoding (pass through) support for VP8, VP9, H.265 in
+    encodebin and transcodebin
+  + Runtime compatibility support for libsoup2 and libsoup3
+    (libsoup3 support experimental)
+  + Video decoder subframe support
+  + Video decoder automatic packet-loss, data corruption, and
+    keyframe request handling for RTP / WebRTC / RTSP
+  + mp4 and Matroska muxers now support profile/level/resolution
+    changes for H.264/H.265 input streams (i.e. codec data changing
+    on the fly)
+  + mp4 muxing mode that initially creates a fragmented mp4 which
+    is converted to a regular mp4 on EOS
+  + Audio support for the WebKit Port for Embedded (WPE) web page
+    source element
+  + CUDA based video color space convert and rescale elements and
+    upload/download elements
+  + NVIDIA memory:NVMM support for OpenGL glupload and gldownload
+    elements
+  + Many WebRTC improvements
+  + The new VA-API plugin implementation fleshed out with more
+    decoders and new postproc elements
+  + AppSink API to retrieve events in addition to buffers and
+    buffer lists
+  + AppSrc gained more configuration options for the internal queue
+    (leakiness, limits in buffers and time, getters to read current
+    levels)
+  + Updated Rust bindings and many new Rust plugins
+  + Improved support for custom minimal GStreamer builds
+  + Support build against FFmpeg 5.0
+  + Linux Stateless CODEC support gained MPEG-2 and VP9
+  + Windows Direct3D11/DXVA decoder gained AV1 and MPEG-2 support
+  + Lots of new plugins, features, performance improvements and bug
+    fixes
+- Use ldconfig_scriptlets macro for post(un) handling where
+  possible.
+- Update Source url.
+
+-------------------------------------------------------------------
 Fri Feb  4 19:10:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.6:
