@@ -1,7 +1,7 @@
 #
 # spec file for package jcommon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://www.jfree.org/jcommon/
 Source0:        jcommon-%{version}.tar.xz
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 Obsoletes:      %{name}-test
 BuildArch:      noarch
@@ -57,7 +57,7 @@ export CLASSPATH=%(build-classpath junit)
 ant \
     -f ant/build.xml \
     -Dbuildstable=true -Dproject.outdir=. -Dbasedir=. \
-    -Dbuild.source=1.6 -Dbuild.target=1.6 \
+    -Dbuild.source=1.8 -Dbuild.target=1.8 \
     compile javadoc
 
 %install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 21 05:25:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Tue Dec 28 12:55:00 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Update to upstream version 1.0.24:
