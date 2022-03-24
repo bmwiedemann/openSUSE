@@ -23,4 +23,12 @@
     <comment>cleanup</comment>
     <requestid>898001</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>34d09107e1a4c0b61f18de6f01719db9</srcmd5>
+    <version>2.4.0</version>
+    <time>1648159043</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964364</requestid>
+  </revision>
 </revisionlist>

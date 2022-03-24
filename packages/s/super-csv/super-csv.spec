@@ -1,7 +1,7 @@
 #
 # spec file for package super-csv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source:         https://github.com/super-csv/super-csv/archive/v%{version}.tar.g
 # PATCH-FIX-UPSTREAM https://github.com/super-csv/super-csv/pull/169
 Patch0:         jdk6.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
@@ -72,7 +73,11 @@ find -name '*.jar' -print -delete
 %pom_disable_module %{name}-distribution
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install
