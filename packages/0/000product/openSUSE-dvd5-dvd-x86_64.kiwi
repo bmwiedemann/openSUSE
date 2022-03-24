@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220322" schemaversion="4.1">
+<image name="OBS__openSUSE___20220323" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220322</productvar>
+      <productvar name="VERSION">20220323</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220322,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220323,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220322/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220323/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -308,7 +308,6 @@
       <repopackage name="cogl-lang"/>
       <repopackage name="colord"/>
       <repopackage name="colord-color-profiles"/>
-      <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="container-selinux"/>
@@ -864,6 +863,7 @@
       <repopackage name="gvfs-lang"/>
       <repopackage name="gvim" arch="x86_64"/>
       <repopackage name="gweather-data"/>
+      <repopackage name="gweather4-data"/>
       <repopackage name="gwenview5"/>
       <repopackage name="gwenview5-lang"/>
       <repopackage name="gxditview"/>
@@ -1355,6 +1355,8 @@
       <repopackage name="libaccountsservice0"/>
       <repopackage name="libacl1"/>
       <repopackage name="libacl1-32bit" arch="x86_64"/>
+      <repopackage name="libadwaita-1-0"/>
+      <repopackage name="libadwaita-lang"/>
       <repopackage name="libadwaitaqt5-1"/>
       <repopackage name="libaio1"/>
       <repopackage name="libalternatives1"/>
@@ -1525,12 +1527,13 @@
       <repopackage name="libclutter-gst-3_0-0"/>
       <repopackage name="libclutter-gtk-1_0-0"/>
       <repopackage name="libcmap4"/>
+      <repopackage name="libcmark0_30_2"/>
       <repopackage name="libcodec2-1_0"/>
       <repopackage name="libcogl-pango20"/>
       <repopackage name="libcogl20"/>
       <repopackage name="libcolamd2"/>
       <repopackage name="libcollection4"/>
-      <repopackage name="libcolord-gtk1"/>
+      <repopackage name="libcolord-gtk4-1"/>
       <repopackage name="libcolord2"/>
       <repopackage name="libcolorhug2"/>
       <repopackage name="libcom_err2"/>
@@ -1770,9 +1773,11 @@
       <repopackage name="libgmp10-32bit" arch="x86_64"/>
       <repopackage name="libgnome-autoar-0-0"/>
       <repopackage name="libgnome-autoar-gtk-0-0"/>
-      <repopackage name="libgnome-bluetooth13"/>
+      <repopackage name="libgnome-bluetooth-3_0-13"/>
+      <repopackage name="libgnome-bluetooth-ui-3_0-13"/>
       <repopackage name="libgnome-desktop-3-19"/>
       <repopackage name="libgnome-desktop-3_0-common"/>
+      <repopackage name="libgnome-desktop-4-1"/>
       <repopackage name="libgnome-games-support-1-3"/>
       <repopackage name="libgnome-games-support1_3-lang"/>
       <repopackage name="libgnome-keyring-lang"/>
@@ -1888,7 +1893,9 @@
       <repopackage name="libgvnc-1_0-0"/>
       <repopackage name="libgvpr2"/>
       <repopackage name="libgweather-3-16"/>
+      <repopackage name="libgweather-4-0"/>
       <repopackage name="libgweather-lang"/>
+      <repopackage name="libgweather4-lang"/>
       <repopackage name="libgxps2"/>
       <repopackage name="libhandle1"/>
       <repopackage name="libhandy-1-0"/>
@@ -2290,7 +2297,7 @@
       <repopackage name="libmount1"/>
       <repopackage name="libmount1-32bit" arch="x86_64"/>
       <repopackage name="libmousepad0"/>
-      <repopackage name="libmozjs-78-0"/>
+      <repopackage name="libmozjs-91-0"/>
       <repopackage name="libmp3lame0"/>
       <repopackage name="libmpath0"/>
       <repopackage name="libmpc3"/>
@@ -2454,7 +2461,7 @@
       <repopackage name="libpoppler119"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
-      <repopackage name="libportal0"/>
+      <repopackage name="libportal-1"/>
       <repopackage name="libportaudio2"/>
       <repopackage name="libpostproc55_9"/>
       <repopackage name="libpotrace0"/>
@@ -4864,6 +4871,7 @@
       <repopackage name="tv-common"/>
       <repopackage name="tv-fonts"/>
       <repopackage name="typelib-1_0-AccountsService-1_0"/>
+      <repopackage name="typelib-1_0-Adw-1"/>
       <repopackage name="typelib-1_0-AppIndicator3-0_1"/>
       <repopackage name="typelib-1_0-Atk-1_0"/>
       <repopackage name="typelib-1_0-Atspi-2_0"/>
@@ -4883,8 +4891,9 @@
       <repopackage name="typelib-1_0-GeocodeGlib-1_0"/>
       <repopackage name="typelib-1_0-GjsPrivate-1_0"/>
       <repopackage name="typelib-1_0-GMenu-3_0"/>
-      <repopackage name="typelib-1_0-GnomeBluetooth-1_0"/>
+      <repopackage name="typelib-1_0-GnomeBluetooth-3_0"/>
       <repopackage name="typelib-1_0-GnomeDesktop-3_0"/>
+      <repopackage name="typelib-1_0-GnomeDesktop-4_0"/>
       <repopackage name="typelib-1_0-Goa-1_0"/>
       <repopackage name="typelib-1_0-Graphene-1_0"/>
       <repopackage name="typelib-1_0-Grl-0_3"/>
@@ -4903,13 +4912,13 @@
       <repopackage name="typelib-1_0-GtkVnc-2_0"/>
       <repopackage name="typelib-1_0-GVnc-1_0"/>
       <repopackage name="typelib-1_0-GWeather-3_0"/>
+      <repopackage name="typelib-1_0-GWeather-4_0"/>
       <repopackage name="typelib-1_0-Handy-1_0"/>
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
       <repopackage name="typelib-1_0-IBus-1_0"/>
       <repopackage name="typelib-1_0-JavaScriptCore-4_0"/>
       <repopackage name="typelib-1_0-JavaScriptCore-4_1"/>
       <repopackage name="typelib-1_0-Json-1_0"/>
-      <repopackage name="typelib-1_0-libdazzle-1_0"/>
       <repopackage name="typelib-1_0-Libosinfo-1_0"/>
       <repopackage name="typelib-1_0-LibvirtGLib-1_0"/>
       <repopackage name="typelib-1_0-Libxfce4ui-2_0"/>
