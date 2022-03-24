@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-digester
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  ant
 BuildRequires:  commons-beanutils
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 Requires:       mvn(commons-beanutils:commons-beanutils)
 Requires:       mvn(commons-logging:commons-logging)
