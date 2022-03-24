@@ -211,4 +211,34 @@
  * Fixed a conflict with activesupport 5.2 (gh#mvidner/ruby-dbus#71)</comment>
     <requestid>865300</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>df4cfe0b80fce9397781c41fcde081c5</srcmd5>
+    <version>0.18.0.beta1</version>
+    <time>1648159015</time>
+    <user>dimstar_suse</user>
+    <comment>(Fix previous submissions by using the gem file from rubygems.org)
+
+- 0.18.0.beta1
+ API:
+ * D-Bus structs have been passed as Ruby arrays. Now these arrays
+   are frozen.
+ * Ruby structs can be used as D-Bus structs.
+ Bug fixes:
+ * Returning the value for o.fd.DBus.Properties.Get, use the
+   specific property signature, not the generic Variant
+   (gh#mvidner/ruby-dbus#97).
+- 0.17.0
+ API:
+ * Export properties with `dbus_attr_accessor`, `dbus_reader` etc.
+   (gh#mvidner/ruby-dbus#86).
+ Bug fixes:
+ * Depend on rexml which is separate since Ruby 3.0
+   (gh#mvidner/ruby-dbus#87, by Toshiaki Asai).
+   Nokogiri is faster but bigger so it remains optional.
+ * Fix connection in case ~/.dbus-keyrings has multiple cookies, showing
+   as &quot;Oops: undefined method `zero?' for nil:NilClass&quot;.
+ * Add the missing name to the root introspection node.
+</comment>
+    <requestid>963982</requestid>
+  </revision>
 </revisionlist>

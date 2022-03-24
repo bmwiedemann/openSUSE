@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ruby-dbus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,20 @@
 #
 
 Name:           rubygem-ruby-dbus
-Version:        0.16.0
+Version:        0.18.0.beta1
 Release:        0
 %define mod_name ruby-dbus
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-BuildRequires:  %{rubygem nokogiri >= 1.10.4}
+BuildRequires:  %{rubygem nokogiri >= 1.12}
 BuildRequires:  %{rubygem packaging_rake_tasks}
 BuildRequires:  %{rubygem rake}
-BuildRequires:  %{rubygem rspec}
+BuildRequires:  %{rubygem rspec >= 3.9}
 BuildRequires:  dbus-1
 BuildRequires:  netcfg
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.0.0}
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/mvidner/ruby-dbus
