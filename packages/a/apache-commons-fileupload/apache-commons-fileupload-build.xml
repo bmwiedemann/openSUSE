@@ -56,10 +56,10 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
-           target="1.6" 
+           target="1.8" 
            verbose="false" 
            fork="false" 
-           source="1.6">
+           source="1.8">
       <src>
         <pathelement location="${build.srcDir.0}"/>
       </src>
@@ -89,10 +89,10 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
-           target="1.6" 
+           target="1.8" 
            verbose="false" 
            fork="false" 
-           source="1.6">
+           source="1.8">
       <src>
         <pathelement location="${build.testDir.0}"/>
       </src>
@@ -195,7 +195,7 @@
              nohelp="false" 
              nonavbar="false" 
              serialwarn="false" 
-             source="1.6" 
+             source="1.8" 
              linksource="true" 
              breakiterator="false">
       <classpath refid="build.classpath"/>
@@ -231,7 +231,7 @@
 		<attribute name="Import-Package" value="javax.servlet,javax.servlet.http,org.apache.commons.io,org.apache.commons.io.output"/>
 		<attribute name="Include-Resource" value="META-INF/NOTICE.txt=NOTICE.txt,META-INF/LICENSE.txt=LICENSE.txt"/>
 		<attribute name="Private-Package" value="org.apache.commons.fileupload.util.mime"/>
-		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.6))&quot;"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.8))&quot;"/>
 		<attribute name="Specification-Title" value="Apache Commons FileUpload"/>
 		<attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
 		<attribute name="Specification-Version" value="1.4"/>
