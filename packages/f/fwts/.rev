@@ -843,4 +843,21 @@
   * lib: fwts_tpm.h: add new type definition</comment>
     <requestid>952709</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>e0f72e088b33e1a017ef8fea7a0f1386</srcmd5>
+    <version>22.03.00</version>
+    <time>1648159094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.03.00:
+  * lib: fwts_version.h - update to V22.03.00
+  * debian: update changelog
+  * fwts-test: sync up the sdev checking secure access components
+  * acpi: sdev: add checking secure access components
+  * acpi: macf: report failures instead of just logging the errors
+  * acpi/time: skip a number of TAD methods when _GCP[0] is clear
+  * acpi:dmar: update the link of DMAR table
+  * fwts-tests: update acpi dump data to be in sync with latest ACPICA
+  * ACPICA: Update to version 20211217</comment>
+    <requestid>964501</requestid>
+  </revision>
 </revisionlist>

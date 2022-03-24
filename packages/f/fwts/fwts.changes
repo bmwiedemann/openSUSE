@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 24 07:57:02 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 22.03.00:
+  * lib: fwts_version.h - update to V22.03.00
+  * debian: update changelog
+  * fwts-test: sync up the sdev checking secure access components
+  * acpi: sdev: add checking secure access components
+  * acpi: macf: report failures instead of just logging the errors
+  * acpi/time: skip a number of TAD methods when _GCP[0] is clear
+  * acpi:dmar: update the link of DMAR table
+  * fwts-tests: update acpi dump data to be in sync with latest ACPICA
+  * ACPICA: Update to version 20211217
+
+-------------------------------------------------------------------
 Tue Feb  8 14:12:10 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 22.01.00:
