@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentracing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/opentracing/opentracing-python
 Source:         https://files.pythonhosted.org/packages/source/o/opentracing/opentracing-%{version}.tar.gz
+# https://github.com/opentracing/opentracing-python/issues/156
+Patch0:         python-opentracing-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,7 +36,6 @@ Suggests:       python-tornado
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado}
@@ -47,6 +48,7 @@ See documentation at http://opentracing.io
 
 %prep
 %setup -q -n opentracing-%{version}
+%patch0 -p1
 
 %build
 %python_build

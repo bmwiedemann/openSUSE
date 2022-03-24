@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 24 11:07:38 UTC 2022 - pgajdos@suse.com
+
+- do not use python-mock for build
+- added patches
+  fix https://github.com/opentracing/opentracing-python/issues/156
+  + python-opentracing-no-mock.patch
+
+-------------------------------------------------------------------
 Tue Dec 14 12:43:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Allow tornado 6
