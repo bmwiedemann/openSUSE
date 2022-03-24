@@ -128,4 +128,12 @@
     <comment>Fix build with jdk11</comment>
     <requestid>639669</requestid>
   </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>b7e1bef05db7d4751d4f7191eac71012</srcmd5>
+    <version>0.9.4</version>
+    <time>1648159049</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964373</requestid>
+  </revision>
 </revisionlist>

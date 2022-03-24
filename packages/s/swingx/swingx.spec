@@ -1,7 +1,7 @@
 #
 # spec file for package swingx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,9 @@ Release:        0
 Summary:        A collection of Swing components
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Java
-Url:            https://swingx.dev.java.net/
-Source0:        https://swingx.dev.java.net/files/documents/2981/110622/%{name}-%{version}-src.tar.bz2
+URL:            https://swingx.dev.java.net/
+# The link https://swingx.dev.java.net/files/documents/2981/110622/%{name}-%{version}-src.tar.bz2 is dead
+Source0:        %{name}-%{version}-src.tar.bz2
 # Remove external dependency that's now included in JDK 1.6
 # See http://forums.java.net/jive/thread.jspa?messageID=318384
 Patch0:         swingx-0.9.4-LoginService.patch
@@ -37,10 +38,9 @@ Patch3:         swingx-0.9.4-toArray.patch
 BuildRequires:  ant
 BuildRequires:  batik
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
-Requires:       java >= 1.6.0
+Requires:       java >= 1.8
 BuildArch:      noarch
 
 %description
@@ -65,7 +65,7 @@ Documentation for the SwingX widgets
 rm -rf lib/
 
 %build
-ant -Djavac.source=1.6 -Djavac.target=1.6 jar javadoc
+ant -Djavac.source=1.8 -Djavac.target=1.8 jar javadoc
 
 %install
 # jar
@@ -81,11 +81,9 @@ mkdir -p %{buildroot}%{_javadocdir}/
 cp -r dist/javadoc %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%doc COPYING README
-%{_javadir}/*.jar
-%{_mavenpomdir}/*
-%config(noreplace) %{_datadir}/maven-metadata/%{name}.xml
+%files -f .mfiles
+%license COPYING
+%doc README
 
 %files javadoc
 %{_javadocdir}/%{name}
