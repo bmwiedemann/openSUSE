@@ -105,4 +105,12 @@
     <comment>January 2022 CPU release</comment>
     <requestid>956681</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e0ff2f95afa7d025b949211865271820</srcmd5>
+    <version>11.0.14</version>
+    <time>1648159046</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on JDK 17</comment>
+    <requestid>964370</requestid>
+  </revision>
 </revisionlist>

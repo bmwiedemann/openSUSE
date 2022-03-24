@@ -56,6 +56,9 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xxf86vm)
+BuildConflicts: java >= 16
+BuildConflicts: java-devel >= 16
+BuildConflicts: java-headless >= 16
 #!BuildRequires: gradle stringtemplate4
 #!BuildIgnore:  gradle-bootstrap
 #!BuildIgnore:  stringtemplate4-bootstrap
@@ -116,6 +119,7 @@ BUILD_JAVADOC = true
 BUILD_SRC_ZIP = true
 GRADLE_VERSION_CHECK = false
 CONF = DebugNative
+DOC_LINT = none
 EOF
 
 find -name '*.class' -type f -delete
