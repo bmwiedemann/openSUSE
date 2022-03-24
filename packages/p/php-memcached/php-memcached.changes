@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 24 18:57:34 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 3.2.0
+  * PHP 8.0 and 8.1 support
+  * store_retry_count is no more set explicitly (#452)
+  * fix MemcachedServer (libmemcached-awesome is recommended)
+  * code cleanup
+  * remove patches no longer needed
+    - fixup-unit-tests-broken-in-php8.patch
+    - fixup-unit-tests.patch
+    - fix-zend_dtoa-API-change.patch
+
+-------------------------------------------------------------------
 Tue Jan 25 20:55:13 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix zend_dtoa API change in 8.1.0beta1
