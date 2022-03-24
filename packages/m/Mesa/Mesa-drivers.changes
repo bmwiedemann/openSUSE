@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 22 11:13:43 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- get rid of Mesa-libVulkan-devel(-32bit) package, which no longer
+  makes sense since Mesa 21.1.0 
+  * https://gitlab.freedesktop.org/mesa/mesa/-/commit/5e6db1916860ec217eac60903e0a9d10189d1c53
+
+-------------------------------------------------------------------
 Mon Mar 14 10:43:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_meson-restore-private-requires-to-libdrm-in-dri.pc-f.patch 

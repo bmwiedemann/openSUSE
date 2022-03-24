@@ -4791,4 +4791,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * radeonsi, zink ARB_sparse_texture_clamp</comment>
     <requestid>961641</requestid>
   </revision>
+  <revision rev="433" vrev="305">
+    <srcmd5>6f0602be7e0b7cc92089b2d7db25379e</srcmd5>
+    <version>unknown</version>
+    <time>1648159012</time>
+    <user>dimstar_suse</user>
+    <comment>- get rid of Mesa-libVulkan-devel(-32bit) package, which no longer
+  makes sense since Mesa 21.1.0 
+  * https://gitlab.freedesktop.org/mesa/mesa/-/commit/5e6db1916860ec217eac60903e0a9d10189d1c53</comment>
+    <requestid>963924</requestid>
+  </revision>
 </revisionlist>

@@ -693,13 +693,6 @@ Group:          System/Libraries
 This package contains the Vulkan parts for Mesa.
 %endif
 
-%package -n Mesa-libVulkan-devel
-Summary:        Mesa's Vulkan development files
-Group:          Development/Libraries/C and C++
-
-%description -n Mesa-libVulkan-devel
-This package contains the development files for Mesa's Vulkan implementation.
-
 %package -n Mesa-vulkan-device-select
 Summary:        Vulkan layer to select Vulkan devices provided by Mesa
 Group:          System/Libraries
@@ -914,9 +907,6 @@ rm -rf %{buildroot}/%{_includedir}/KHR
 
 # workaround needed since Mesa 19.0.2
 rm -f %{buildroot}/%{_libdir}/vdpau/libvdpau_gallium.so
-
-# dropped with Mesa 21.1.0
-mkdir -p -m 755 %{buildroot}/%{_includedir}/vulkan
 
 %else
 
@@ -1206,9 +1196,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %dir %{_datadir}/vulkan/icd.d
 %{_datadir}/vulkan/icd.d/freedreno_icd.*.json
 %endif
-
-%files -n Mesa-libVulkan-devel
-%dir %{_includedir}/vulkan
 
 %files -n Mesa-vulkan-device-select
 %{_libdir}/libVkLayer_MESA_device_select.so
