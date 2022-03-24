@@ -431,4 +431,12 @@
   * punknova_p2top3.dif</comment>
     <requestid>962415</requestid>
   </revision>
+  <revision rev="44" vrev="47">
+    <srcmd5>c44e60c664e3786672c4e0e6b9d36e0e</srcmd5>
+    <version>unknown</version>
+    <time>1648159066</time>
+    <user>dimstar_suse</user>
+    <comment>Also add some obsoletes and conflicts</comment>
+    <requestid>964548</requestid>
+  </revision>
 </revisionlist>
