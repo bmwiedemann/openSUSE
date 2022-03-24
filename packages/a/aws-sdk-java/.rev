@@ -15,4 +15,12 @@
     <comment>increase memory constraint</comment>
     <requestid>752787</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>60eddbdd9ce88456fa22078fafb3a5ef</srcmd5>
+    <version>1.11.3</version>
+    <time>1648159063</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964403</requestid>
+  </revision>
 </revisionlist>

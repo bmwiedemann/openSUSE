@@ -1,7 +1,7 @@
 #
 # spec file for package aws-sdk-java
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,12 @@ Release:        0
 Summary:        AWS SDK for Java
 License:        Apache-2.0 AND SUSE-Public-Domain
 Group:          Development/Libraries/Java
-URL:            http://aws.amazon.com/sdk-for-java/
+URL:            https://aws.amazon.com/sdk-for-java/
 Source0:        https://github.com/aws/aws-sdk-java/archive/%{githash}/%{name}-%{githash}.tar.gz
+Patch0:         aws-sdk-java-ambiguous-Record.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-cbor)
@@ -36,6 +38,9 @@ BuildRequires:  mvn(joda-time:joda-time)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
+%endif
 
 %description
 The AWS SDK for Java enables Java developers to easily work with
@@ -149,8 +154,9 @@ This package holds the classes for uploading the
 client side metrics collected from AWS Java SDK to
 Amazon CloudWatch.
 
-#%% package code-generator
 
+
+#%% package code-generator
 %package codecommit
 Summary:        AWS Java SDK for AWS CodeCommit
 Group:          Development/Libraries/Java
@@ -169,8 +175,9 @@ The AWS Java SDK for AWS CodeDeploy module holds the
 client classes that are used for communicating with
 AWS CodeDeploy Service.
 
-#%% package codegen-maven-plugin
 
+
+#%% package codegen-maven-plugin
 %package codepipeline
 Summary:        AWS Java SDK for AWS CodePipeline
 Group:          Development/Libraries/Java
@@ -638,8 +645,9 @@ The AWS Java SDK for AWS Support module holds the
 client classes that are used for communicating with
 AWS Support Service.
 
-#%% package swf-libraries
 
+
+#%% package swf-libraries
 %package test-utils
 Summary:        AWS SDK for Java - Test Utils
 Group:          Development/Libraries/Java
@@ -675,6 +683,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-%{githash}
+%patch0 -p1
 
 # Remove deprecated httpclient annotations
 sed -i '/NotThreadSafe/d' \
@@ -791,6 +800,10 @@ sed -i '/GuardedBy/d' \
 
 %pom_remove_dep :aws-java-sdk-swf-libraries aws-java-sdk
 
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.xml.bind:jaxb-api aws-java-sdk-core
+%endif
+
 # Convert from dos to unix line ending
 dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java \
  src/samples/AmazonEC2SpotInstances-Advanced/GettingStartedApp.java \
@@ -805,9 +818,10 @@ dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java
  src/samples/AwsCloudFormation/CloudFormationSample.java \
  src/samples/AwsCloudFormation/CloudFormationSample.template
 
-# Generate javadoc with source level 1.6 to avoid complaints
+%pom_xpath_set "pom:project/pom:properties/pom:jre.version" "1.8"
+# Generate javadoc with the same source level to avoid complaints
 # about "_" being used as identifier with newer OpenJDK versions.
-%pom_xpath_inject pom:project/pom:properties "<source>1.6</source>"
+%pom_xpath_inject pom:project/pom:properties "<source>\${jre.version}</source>"
 
 %build
 # Tests require networking and unavailable test deps:
@@ -847,10 +861,12 @@ dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java
 %files cloudwatch -f .mfiles-aws-java-sdk-cloudwatch
 
 %files cloudwatchmetrics -f .mfiles-aws-java-sdk-cloudwatchmetrics
+
 #%% files code-generator -f .mfiles-aws-java-sdk-code-generator
 %files codecommit -f .mfiles-aws-java-sdk-codecommit
 
 %files codedeploy -f .mfiles-aws-java-sdk-codedeploy
+
 #%% files codegen-maven-plugin -f .mfiles-aws-java-sdk-codegen-maven-plugin
 %files codepipeline -f .mfiles-aws-java-sdk-codepipeline
 
@@ -966,6 +982,7 @@ dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java
 %files sts -f .mfiles-aws-java-sdk-sts
 
 %files support -f .mfiles-aws-java-sdk-support
+
 #%% files swf-libraries -f .mfiles-aws-java-sdk-swf-libraries
 #%% doc src/samples/AwsFlowFramework
 %files test-utils -f .mfiles-aws-java-sdk-test-utils
