@@ -288,4 +288,12 @@
   not allowed by upstream -- gh#python/mypy#11019 (forwarded request 948145 from bnavigator)</comment>
     <requestid>948161</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a6161371d60de292c49c6041ee1f6453</srcmd5>
+    <version>0.941</version>
+    <time>1648159028</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>964181</requestid>
+  </revision>
 </revisionlist>

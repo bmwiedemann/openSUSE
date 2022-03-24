@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define typed_ast_version 1.5.1
 Name:           mypy
-Version:        0.931
+Version:        0.941
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT

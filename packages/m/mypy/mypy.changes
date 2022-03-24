@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Mon Mar 14 21:44:08 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.9.41:
+ - No changelog available.
+
+-------------------------------------------------------------------
+Mon Mar 14 21:35:28 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.940:
+ - Match Statement
+   Mypy now has experimental support for type checking match statements introduced in Python 3.10.
+ - Python 2 End-of-Life Schedule
+   After this release, Python 2 support is in feature freeze. Mypy won’t add new features or fixes specific to type checking Python 2 code, expect for fixes of significant regressions.
+   Mypy will drop Python 2 support in the second half of 2022.
+   Important note: Since typeshed is in the process of removing Python 2 specific stubs, you should pin all installed typeshed stub packages for third-party libraries to a version from Feb 2022 or earlier if you want to type check Python 2 code.
+ - Miscellaneous New Features
+  - Add support for conditionally defined overloads (Marc Mueller, PR 10712)
+  - Give "as" variables in with statements separate scopes when it is safe to do so (Jukka Lehtosalo, PR 12254)
+  - Add an optional error code ignore-without-code to require ignore comments to have error codes (Peter Law, PR 11633)
+  - Add support for typing.Never and typing_extensions.Never as alternative spellings of NoReturn (Jelle Zijlstra, PR 12153)
+  - Add support for typing.reveal_type (Jelle Zijlstra, PR 12117)
+  - Support universal2 macOS wheels (97littleleaf11, PR 10651)
+  - Add match_args support to attr.s() (Nikita Sobolev, PR 12111)
+ - Enum Improvements
+  - Check Enum definition for invalid base classes (Nikita Sobolev, PR 12026)
+  - Understand the self-destructing nature of Enum._ignore_ (Kenny Stauffer, PR 12128)
+  - Add StrEnum support for Python 3.11 (Nikita Sobolev, PR 12035)
+  - Make enum values final (joey-laminar, PR 11962)
+  - Improve final detection for Enum (Nikita Sobolev, PR 11984)
+  - Fix Enum final properties and writable special members (Nikita Sobolev, PR 11945)
+  - Enum now accepts String literals and final values as 2nd argument (Vincent Perez, PR 8664)
+  - Fix false positive about member name reuse in enum (Max Rossmannek, PR 11972)
+  - Fix enum inheritance regression (Nikita Sobolev, PR 12260)
+ - Mypyc Fixes and Improvements
+  - Use Py_TYPE and Py_IsNone (97littleleaf11, PR 12233)
+  - Implement additional internal consistency checks (Jared Hance, PR 12191)
+  - Raise AttributeError also for non-refcounted types (Jukka Lehtosalo, PR 11940)
+  - Fix invalid unlikely() in certain rare branches (Jukka Lehtosalo, PR 11939)
+  - Skip no-op super calls to object.__init__() (Jukka Lehtosalo, PR 11938)
+  - Use latest pythoncapi_compat (97littleleaf11, PR 12188)
+  - Add helpful message to assert (Joshua Cannon, PR 12119)
+ - Documentation Updates
+  - Add documentations about Enum types (Nikita Sobolev, PR 11805)
+  - Update Enum documentation (Nikita Sobolev, PR 12238)
+  - Improve documentation of allow_redefinition (KotlinIsland, PR 11951)
+  - Fix intelligent indexing example (Chris Keefe, PR 11973)
+  - Explain generic Protocol[T1, T2, ...] shorthand (Matt Bogosian, PR 12047)
+  - Clarify that stub-only packages need to be installed (Gustav Gränsbo, PR 9958)
+  - Small documentation improvements for conditional overloads (Marc Mueller, PR 12283)
+ - Improved Error Messages
+  - Improve the "Argument must be a mapping" error message (Purna Chandra Mansingh, PR 12222)
+  - Coalesce Literals when printing unions (Marti Raudsepp, PR 12205)
+  - Suggest typing.Callable when using callable as type (Tuomas Siipola, PR 12204)
+  - Suggest typing.Any when using any as type (Tuomas Siipola, PR 12185)
+  - Add note about wrong error code in type: ignore (Jukka Lehtosalo, PR 12067)
+  - Add no-overload-impl error code (Brian Phillips, PR 11944)
+  - Display ellipsis when formatting variadic tuple[T, ...] (Marti Raudsepp, PR 11857)
+  - Deduplicate error codes for ignore-without-code (Marc Mueller, PR 12194)
+  - Tweak ignore-without-code error message (Marc Mueller, PR 12216)
+  - Mention common resolutions for build errors (Shantanu, PR 12154)
+ - Stubtest Improvements
+  - Ignore more dunder positional-only errors (Shantanu, PR 12294)
+  - Fix wrong assumption about relative path (Stanislav Levin, PR 12282)
+  - Catch more getattr errors (Shantanu, PR 12219)
+  - Error if module level dunder is missing, housekeeping (Shantanu, PR 12217)
+  - Ignore __main__ module (Shantanu, PR 12218)
+  - Error if a dunder method is missing from a stub (Alex Waygood, PR 12203)
+  - Error if a function is async at runtime but not in the stub (and vice versa) (Alex Waygood, PR 12212)
+  - Do not error if a stub is async, but runtime is not (Alex Waygood, PR 12234)
+  - Error if a class should be decorated with @final (Akuli, PR 12091)
+  - Use VERSIONS for submodules (Shantanu, PR 12083)
+  - Treat dicts as a subtype of typeddict (Shantanu, PR 12040)
+  - Ignore more exceptions in stubtest (Jelle Zijlstra, PR 11946)
+ - Other Notable Fixes and Improvements
+  - Fix non-default keyword-only argument positioning in stubgen (Štěpán Horáček, PR 12303)
+  - Remove orjson stubs from default list (Shantanu, PR 12264)
+  - Use __truediv__ for Python 2 with __future__ import (Nikita Sobolev, PR 11787)
+  - Fix Python 2 compatibility issue (Shantanu, PR 12244)
+  - Use type variable bound to infer constraints (Jukka Lehtosalo, PR 12230)
+  - Handle raise Exception(), None on Python 2.7 (Nikita Sobolev, PR 11786)
+  - Fix inference of protocol against overloaded function (Jukka Lehtosalo, PR 12227)
+  - Fix an issubclass failure for protocols with overloaded methods (Bas van Beek, PR 9904)
+  - Fix crashes in class scoped imports (PR 12199, PR 12023) (Shantanu)
+  - Fix use of TypeAlias from aliased imports (Shantanu, PR 12180)
+  - Delete open plugin (Shantanu, PR 9275)
+  - Read pyproject.toml with correct encoding on Windows (Dominic Davis-Foster, PR 12105)
+  - Fix issue with implicit type aliases in import cycles (but only for stubs) (Alex Waygood, PR 11915)
+  - Forbid extra ParamSpec arguments (Nikita Sobolev, PR 12024)
+  - Fix crash involving explicit any flag and Required (Mehdi Drissi, PR 12039)
+  - Fix join of Any against a union type (Jukka Lehtosalo, PR 12068)
+  - Simplify unions when erasing last known values (Jukka Lehtosalo, PR 12064)
+  - Fix crash with yield in comprehension (Alexandre Bouayad, PR 12048)
+  - Fix handling of NoReturn in union return types (Jannic Warken, PR 11996)
+  - Fix __init__ in dataclasses inheriting from Any (joey-laminar, PR 11966)
+  - Narrow NamedTuple to bool correctly when __bool__ is defined (Nikita Sobolev, PR 11822)
+  - Improve type of __attrs_attrs__ in attrs classes (Tin Tvrtković, PR 11794)
+  - Install dependencies needed for reports via pip install mypy[reports] (James Braza, PR 11777)
+  - Consider import * to be an explicit re-export (Shantanu, PR 11867)
+  - Fix --no-implicit-reexport inconsistency (Shantanu, PR 11707)
+  - Fix crash if "_" is in builtins (StefanM-TT, PR 11811)
+  - Fixes crash on subclassing Annotated without args (Nikita Sobolev, PR 11814)
+ - Typeshed Updates
+  - Typeshed is now modular and distributed as separate PyPI packages for everything except the standard library stubs. Please see git log for full list of typeshed changes.
+
+-------------------------------------------------------------------
 Sat Jan 22 18:36:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip teststubtest because we use a pytest-xdist version which is
