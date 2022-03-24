@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 24 09:48:32 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220324.20d1bcbd:
+  * Add test for remote services in factory-auto
+  * dist: Enable the ability to run services in miniobs
+  * Add test for setBadness in check_source
+  * Move check for generated files from check_source.pl to .py
+  * Move rpmlintrc checking from check_source.pl to .py
+  * Remove diff preparations from check_source.pl
+  * Move service check from check_source.pl to .py
+  * Remove unused repo_checker config entries
+
+-------------------------------------------------------------------
 Wed Mar 23 15:42:45 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220323.bd336586:
