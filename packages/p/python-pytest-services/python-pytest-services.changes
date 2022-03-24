@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 06:23:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove mock BuildRequires, not needed. 
+
+-------------------------------------------------------------------
 Thu Nov  5 15:53:37 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 2.2.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-services
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Summary:        Services plugin for pytest testing framework
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-services
 Source:         https://github.com/pytest-dev/pytest-services/archive/%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pytest}
