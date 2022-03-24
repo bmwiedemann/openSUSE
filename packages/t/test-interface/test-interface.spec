@@ -1,7 +1,7 @@
 #
 # spec file for package test-interface
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %global test_interface_version 1.0
-%global build_with_sbt 0
 Name:           test-interface
 Version:        %{test_interface_version}
 Release:        0
@@ -26,19 +25,11 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://github.com/sbt/test-interface
 Source0:        https://github.com/sbt/test-interface/archive/v%{test_interface_version}.tar.gz
+Source1:        https://repo1.maven.org/maven2/org/scala-sbt/%{name}/%{version}/%{name}-%{version}.pom
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
 BuildArch:      noarch
-%if ! %{build_with_sbt}
-Source1:        http://central.maven.org/maven2/org/scala-sbt/%{name}/%{version}/%{name}-%{version}.pom
-%endif
-%if %{build_with_sbt}
-BuildRequires:  sbt
-%else
-BuildRequires:  java-devel
-%endif
 
 %description
 
@@ -56,32 +47,9 @@ Javadoc for %{name}.
 %setup -q
 %{mvn_file} org.scala-sbt:test-interface %{name}
 
-%if %{build_with_sbt}
-sed -i -e 's/2[.]10[.]2/2.10.3/g' build.sbt
-sed -i -e '/scalatest_2.10/d' build.sbt
-
-sed -i -e 's/0[.]12[.]4/0.13.1/g' project/build.properties
-rm project/plugins.sbt
-
-cp -r %{_datadir}/java/sbt/ivy-local .
-mkdir boot
-%else # building without sbt
-
-cp -p %{SOURCE1} pom.xml
-# Remove unavailable test dep
-%pom_remove_dep :scalatest_2.10
-
-%endif
-
 %build
-
-%if %{build_with_sbt}
-export SBT_BOOT_DIR=boot
-export SBT_IVY_DIR=ivy-local
-sbt package deliverLocal publishM2Configuration
-%else # building without sbt
 mkdir -p classes target/api
-%javac -source 6 -target 6 -d classes $(find src/main/java -name "*.java")
+%javac -source 8 -target 8 -d classes $(find src/main/java -name "*.java")
 
 (
 cd classes
@@ -99,24 +67,29 @@ EOF
 %jar -cMf ../target/%{name}.jar *
 )
 
-%{javadoc} -source 6 -d target/api -classpath $PWD/target/%{name}.jar $(find src/main/java -name "*.java")
-
-cp pom.xml target/%{name}-%{version}.pom
-
-%{mvn_artifact} target/%{name}-%{version}.pom target/%{name}.jar
-
-%endif
+%{javadoc} -source 8 -d target/api -classpath $PWD/target/%{name}.jar $(find src/main/java -name "*.java")
 
 %install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 
-%mvn_install -J target/api
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE
 %doc README
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog
