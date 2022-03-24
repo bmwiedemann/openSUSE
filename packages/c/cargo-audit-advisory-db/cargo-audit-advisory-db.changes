@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 23 10:54:26 UTC 2022 - wbrown@suse.de
+
+- Update to version 20220323:
+  * Assigned RUSTSEC-2022-0015 to pty (#1215)
+  * Add unmaintained advisory for pty (#1213)
+  * Assigned RUSTSEC-2022-0014 to openssl-src (#1211)
+  * Add CVE-2022-0778 for openssl-src (#1210)
+  * Assigned RUSTSEC-2022-0013 to regex (#1208)
+  * add cve-2022-24713 (#1207)
+  * mark RUSTSEC-2021-0019 fixed, add references (#1206)
+  * RUSTSEC-2021-0134: Remove recursive_reference from the list of alternatives (#1200)
+  * Assigned RUSTSEC-2022-0012 to arrow2 (#1205)
+  * Added advisory for `arrow2::ffi::Ffi_ArrowArray` double free (#1204)
+
+-------------------------------------------------------------------
 Fri Mar 11 03:15:25 UTC 2022 - wbrown@suse.de
 
 - Update to version 20220311:
