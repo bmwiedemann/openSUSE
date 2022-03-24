@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 23 11:07:34 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.1.0
+  #. non class object can be a plugin too
+  #. `#20 <https://github.com/python-lml/lml/issues/20>`_: When a plugin was not
+     installed, it now calls raise_exception method
+- test the package
+- deleted patches
+  - remove_nose.patch (upstreamed)
+- added patches
+  fix https://github.com/python-lml/lml/issues/26
+  + python-lml-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Aug  7 13:13:56 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_nose.patch (gh#python-lml/lml#19), which
