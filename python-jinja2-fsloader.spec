@@ -1,7 +1,7 @@
 #
 # spec file for package python-jinja2-fsloader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2 >= 2.0}
 BuildRequires:  %{python_module contexter >= 0.1.4}
 BuildRequires:  %{python_module fs >= 2.1.0}
-BuildRequires:  %{python_module mock}
 # /SECTION
 %python_subpackages
 
