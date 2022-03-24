@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 23:25:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Thu Mar  3 07:40:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Use in the path of hawtjni-generator the asm-all.jar that is not

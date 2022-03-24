@@ -57,4 +57,12 @@
     <comment>Use asm-all.jar in classpath</comment>
     <requestid>958687</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>09ed9e1d5cb37494c48595f244186446</srcmd5>
+    <version>1.17</version>
+    <time>1648159068</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964408</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@ Source0:        https://github.com/fusesource/hawtjni/archive/hawtjni-project-%{
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-lang
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  objectweb-asm >= 5
 BuildRequires:  xbean
@@ -78,18 +78,18 @@ done
 
 %build
 mkdir -p hawtjni-runtime/build/classes
-javac -d hawtjni-runtime/build/classes -source 6 -target 6 \
+javac -d hawtjni-runtime/build/classes -source 8 -target 8 \
   $(find hawtjni-runtime/src/main/java/ -name *.java | xargs)
 jar cf hawtjni-runtime.jar -C hawtjni-runtime/build/classes .
 mkdir -p  hawtjni-generator/build/classes
 javac -d hawtjni-generator/build/classes \
-  -source 6 -target 6 \
+  -source 8 -target 8 \
   -cp $(build-classpath commons-cli commons-lang objectweb-asm/asm-all xbean/xbean-finder xbean/xbean-asm-util):hawtjni-runtime.jar \
   $(find hawtjni-generator/src/main/java/ -name *.java | xargs)
 jar cf hawtjni-generator.jar -C hawtjni-generator/build/classes .
 jar uf hawtjni-generator.jar -C hawtjni-generator/src/main/resources .
 mkdir -p hawtjni-runtime/build/apidoc
-javadoc -d hawtjni-runtime/build/apidoc -source 6 \
+javadoc -d hawtjni-runtime/build/apidoc -source 8 \
   -classpath $(build-classpath commons-cli commons-lang objectweb-asm/asm-all xbean/xbean-finder xbean/xbean-asm-util) \
   $(find hawtjni-runtime/src/main/java/ -name *.java && \
     find hawtjni-generator/src/main/java/ -name *.java| xargs)
