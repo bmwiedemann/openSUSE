@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 14 22:37:04 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Hide links pointing to RHEL docs, hide-docs.patch (bsc#1197003) 
+
+-------------------------------------------------------------------
+Thu Mar 10 15:41:35 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Require virt-install and qemu display drivers needed to start
+  new VMs (bsc#1196971)
+
+-------------------------------------------------------------------
+Mon Jan 31 09:50:20 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Remove translate-toolkit which is not available in SLE 
+
+-------------------------------------------------------------------
 Fri Jan 28 10:53:18 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
 - Re-add source-offset to _service. 

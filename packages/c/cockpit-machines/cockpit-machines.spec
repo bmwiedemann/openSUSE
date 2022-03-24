@@ -28,6 +28,7 @@ Source:         cockpit-machines.tar
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
+Patch0:         hide-docs.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  make
@@ -39,15 +40,16 @@ Requires:       libvirt-daemon-kvm
 %endif
 Requires:       libvirt-client
 Requires:       libvirt-dbus >= 1.2.0
+Requires:       qemu-chardev-spice
+Requires:       qemu-hw-display-qxl
+Requires:       virt-install
 # Optional components
-Recommends:     virt-install
 Recommends:     libosinfo
 Recommends:     python3-gobject-base
 #
 BuildRequires:  cockpit-devel >= 243
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
-BuildRequires:  translate-toolkit
 
 %description
 Cockpit component for managing virtual machines.
