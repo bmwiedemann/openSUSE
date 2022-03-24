@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-exec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Java library to reliably execute external processes from within the JVM
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/exec/
+URL:            https://commons.apache.org/exec/
 Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Patch0:         commons-exec-1.3-build_xml.patch
 BuildRequires:  ant
