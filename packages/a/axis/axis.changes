@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 21 13:15:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Depend on the glassfish-activation-api standalone in order to
+  prevent missing APIs when running the ant task
+
+-------------------------------------------------------------------
 Fri Mar 18 13:55:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Unify the dependency on glassfish-activation-api instead of jaf

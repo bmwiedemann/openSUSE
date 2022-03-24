@@ -57,6 +57,7 @@ BuildRequires:  ant-jdepend
 BuildRequires:  antlr
 BuildRequires:  apache-commons-httpclient
 BuildRequires:  apache-commons-logging
+BuildRequires:  glassfish-activation-api
 BuildRequires:  jakarta-commons-discovery
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javamail
@@ -70,18 +71,15 @@ BuildRequires:  wsdl4j
 BuildRequires:  xerces-j2
 Requires:       apache-commons-httpclient
 Requires:       apache-commons-logging
+Requires:       glassfish-activation-api
 Requires:       jakarta-commons-discovery
-Requires:       java
+Requires:       java >= 1.8
 Requires:       javamail
 Requires:       jaxp_parser_impl
 Requires:       reload4j
 Requires:       wsdl4j
 Obsoletes:      %{name}-javadoc
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-activation-api
-Requires:       glassfish-activation-api
-%endif
 
 %description
 Apache Axis is an implementation of the SOAP ("Simple Object Access
@@ -125,11 +123,9 @@ mkdir -p build/schema
 
 %build
 [ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java
-CLASSPATH=$(build-classpath wsdl4j commons-discovery commons-httpclient3 commons-logging reload4j \
-%if 0%{?suse_version} > 1500
-    glassfish-activation-api \
-%endif
-    javamail servletapi5)
+CLASSPATH=$(build-classpath wsdl4j commons-discovery \
+    commons-httpclient3 commons-logging reload4j \
+    glassfish-activation-api javamail servletapi5)
 export CLASSPATH=$CLASSPATH:$(build-classpath oro junit jdepend jimi xml-security jsse httpunit jms castor 2>/dev/null)
 export OPT_JAR_LIST="ant/ant-nodeps"
 ant -Dcompile.ime=true \
@@ -138,11 +134,7 @@ ant -Dcompile.ime=true \
     -Dcommons-logging.jar=$(build-classpath commons-logging) \
     -Dcommons-httpclient.jar=$(build-classpath commons-httpclient3) \
     -Dlog4j-core.jar=$(build-classpath reload4j/reload4j) \
-%if 0%{?suse_version} > 1500
     -Dactivation.jar=$(build-classpath glassfish-activation-api) \
-%else
-    -Dactivation.jar= \
-%endif
     -Dmailapi.jar=$(build-classpath javamail/mailapi) \
     -Dxerces.jar=$(build-classpath jaxp_parser_impl) \
     -Dservlet.jar=$(build-classpath servletapi5) \

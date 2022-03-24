@@ -283,4 +283,12 @@
     <comment>Depend on glassfish-activation-api</comment>
     <requestid>962703</requestid>
   </revision>
+  <revision rev="39" vrev="306">
+    <srcmd5>6a03c3428bab0bfdc3b7f595f1299d47</srcmd5>
+    <version>1.4</version>
+    <time>1648159065</time>
+    <user>dimstar_suse</user>
+    <comment>Build against the glassfish-activation-api unconditionally</comment>
+    <requestid>964405</requestid>
+  </revision>
 </revisionlist>
