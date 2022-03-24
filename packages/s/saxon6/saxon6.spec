@@ -1,7 +1,7 @@
 #
 # spec file for package saxon6
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Patch4:         saxon-add-fixes-from-com-isl-saxon-aelfred.patch
 Patch5:         saxon6-batch.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jdom >= 1.0
 BuildRequires:  unzip
@@ -147,7 +147,7 @@ rm -rf *.jar docs/api
 export LC_ALL=en_US.ISO-8859-2
 export CLASSPATH=%(build-classpath xml-commons-apis jdom)
 ant \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
   -Dj2se.javadoc=%{_javadocdir}/java \
   -Djdom.javadoc=%{_javadocdir}/jdom
 

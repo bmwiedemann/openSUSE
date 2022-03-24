@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 20:05:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Thu Nov 19 06:37:45 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Add the maven metadata in order to be usable in maven build
