@@ -489,4 +489,12 @@
     OK make them silent</comment>
     <requestid>962422</requestid>
   </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>e588108ad97ef741bced8bd62c3553fc</srcmd5>
+    <version>unknown</version>
+    <time>1648159072</time>
+    <user>dimstar_suse</user>
+    <comment>Also add some obsoletes and conflicts</comment>
+    <requestid>964553</requestid>
+  </revision>
 </revisionlist>
