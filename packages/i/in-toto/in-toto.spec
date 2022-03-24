@@ -1,7 +1,7 @@
 #
 # spec file for package in-toto
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # we just build the application, not the modules
 %define pythons python3
 Name:           in-toto
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        in-toto is a framework to protect supply chain integrity.
 License:        Apache-2.0
