@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 23 10:21:56 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Fix the infinite resizing freeze
+  (boo#1197418, https://issues.imfreedom.org/issue/PIDGIN-17602)
+  * added rb1342.patch (https://reviews.imfreedom.org/r/1342/)
+
+-------------------------------------------------------------------
 Sat Nov 13 12:30:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - pidgin 2.14.8:

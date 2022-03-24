@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Patch2:         pidgin-fix-perl-build.patch
 Patch3:         pidgin-use-default-alsa.patch
 # PATCH-FIX-OPENSUSE pidgin-always-enable-intltool.patch mgorse@suse.com -- always enable intltool, needed for autoconf 2.71.
 Patch4:         pidgin-always-enable-intltool.patch
+# https://reviews.imfreedom.org/r/1342/
+Patch5:         rb1342.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -233,6 +235,7 @@ scripts and plugins.
 %patch3 -p1
 %endif
 %patch4 -p1
+%patch5 -p1
 
 cp -f %{SOURCE3} %{name}-prefs.xml
 
