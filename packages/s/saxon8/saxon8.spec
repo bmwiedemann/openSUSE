@@ -1,7 +1,7 @@
 #
 # spec file for package saxon8
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Java Basic XPath 2.0, XSLT 2.0, and XQuery 1.0 implementation
 License:        MPL-1.1
 Group:          Development/Languages/Other
-Url:            http://saxon.sourceforge.net/
+URL:            http://saxon.sourceforge.net/
 Source0:        http://download.sf.net/saxon/saxon-resources8-8.tar.bz2
 Source1:        %{name}.saxon.script
 Source2:        %{name}.saxonq.script
@@ -33,7 +33,7 @@ Source5:        %{name}q.1
 BuildRequires:  ant
 BuildRequires:  bea-stax-api
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  jdom >= 1.0-0.b7
 BuildRequires:  unzip
@@ -172,7 +172,7 @@ export CLASSPATH=%(build-classpath xml-commons-apis jdom xom bea-stax-api)
 ant \
   -Dj2se.javadoc=%{_javadocdir}/java \
   -Djdom.javadoc=%{_javadocdir}/jdom \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
 # jars

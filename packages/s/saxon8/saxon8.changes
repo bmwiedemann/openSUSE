@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 20:08:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
 Mon Sep 18 18:02:12 UTC 2017 - fstrba@suse.com
 
 - Specify encoding ISO-8859-1 and java source and target 1.6 in
