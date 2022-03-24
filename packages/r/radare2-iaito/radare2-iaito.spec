@@ -1,7 +1,7 @@
 #
 # spec file for package radare2-iaito
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,6 +13,7 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %bcond_without graphviz
@@ -22,7 +23,7 @@
 %define ts_version 5.2.1
 
 Name:           radare2-iaito
-Version:        5.2.2
+Version:        5.3.1
 Release:        0
 Summary:        A Qt GUI for radare2 reverse engineering framework
 License:        GPL-3.0-only
@@ -30,6 +31,10 @@ Group:          Development/Tools/Debuggers
 URL:            https://github.com/radareorg/iaito
 Source0:        https://github.com/radareorg/iaito/archive/refs/tags/%{version}.tar.gz#/radare2-iaito-%{version}.tar.gz
 Source1:        https://github.com/radareorg/iaito-translations/archive/refs/tags/%{ts_version}.tar.gz#/radare2-iaito-translations-%{ts_version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-KSyntaxHighlighting-includes.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-for-r2-5.5.0.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -60,18 +65,15 @@ A Qt and C++ GUI for radare2 reverse engineering framework.
 %package devel
 Summary:        Development files for Iaito
 Group:          Development/Tools/Debuggers
-Requires:       radare2-devel
 Requires:       %{name} = %{version}
+Requires:       radare2-devel
 
 %description devel
 Development files for the Iatio GUI
 
 %prep
-%setup -n iaito-%{version}
-rm -rf radare2
-
-%setup -D -T -b1 -n iaito-%{version}
-mv ../iaito-translations-%{ts_version}/* ./src/translations/
+%autosetup -p1 -a1 -n iaito-%{version}
+mv iaito-translations-%{ts_version}/* ./src/translations/
 
 %build
 export CLANG_INSTALL_DIR=%{_prefix}

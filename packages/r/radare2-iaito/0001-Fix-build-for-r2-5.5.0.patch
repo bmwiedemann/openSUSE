@@ -1,0 +1,55 @@
+From e8e796a36eccabfdb6959e59bb5bc429cce88741 Mon Sep 17 00:00:00 2001
+From: pancake <pancake@nopcode.org>
+Date: Tue, 16 Nov 2021 14:47:42 +0100
+Subject: [PATCH] Fix build for r2 > 5.5.0
+
+---
+ src/core/Iaito.cpp | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/Iaito.cpp b/src/core/Iaito.cpp
+index a912d47..49afd52 100644
+--- a/src/core/Iaito.cpp
++++ b/src/core/Iaito.cpp
+@@ -2730,9 +2730,29 @@ QList<RelocDescription> IaitoCore::getAllRelocs()
+     QList<RelocDescription> ret;
+ 
+     if (core && core->bin && core->bin->cur && core->bin->cur->o) {
++        RBinReloc *br;
++#if R2_VERSION_NUMBER > 50500
++	RListIter *iter;
++	RList *list = r_bin_get_relocs_list (core->bin);
++	void *_br;
++	r_list_foreach (list, iter, _br) {
++            br = (RBinReloc*)_br;
++            RelocDescription reloc;
++
++            reloc.vaddr = br->vaddr;
++            reloc.paddr = br->paddr;
++            reloc.type = (br->additive ? "ADD_" : "SET_") + QString::number(br->type);
++
++            if (br->import)
++                reloc.name = br->import->name;
++            else
++                reloc.name = QString("reloc_%1").arg(QString::number(br->vaddr, 16));
++
++            ret << reloc;
++	}
++#else
+         auto relocs = core->bin->cur->o->relocs;
+         RBIter iter;
+-        RBinReloc *br;
+         r_rbtree_foreach (relocs, iter, br, RBinReloc, vrb) {
+             RelocDescription reloc;
+ 
+@@ -2747,6 +2767,7 @@ QList<RelocDescription> IaitoCore::getAllRelocs()
+ 
+             ret << reloc;
+         }
++#endif
+     }
+ 
+     return ret;
+-- 
+2.35.1
+

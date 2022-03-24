@@ -8,4 +8,12 @@
 depends on SR 879220</comment>
     <requestid>897221</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f9efe840dfe4e1649bf30a290c8efd9d</srcmd5>
+    <version>5.3.1</version>
+    <time>1648159094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964494</requestid>
+  </revision>
 </revisionlist>

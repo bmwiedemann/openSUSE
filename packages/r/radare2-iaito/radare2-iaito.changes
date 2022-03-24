@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 16 08:28:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.3.1. No changelog.
+- Add patch to fix build with old and new syntax-highlighting:
+  * 0001-Fix-KSyntaxHighlighting-includes.patch
+- Add upstream change:
+  * 0001-Fix-build-for-r2-5.5.0.patch
+
+-------------------------------------------------------------------
 Sun May 30 15:54:12 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version of radare2-iaito
