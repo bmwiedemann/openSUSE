@@ -1,7 +1,7 @@
 #
 # spec file for package fontforge
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fontforge
-Version:        20201107
+Version:        20220308
 Release:        0
 Summary:        A Font Editor
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ Source0:        https://github.com/fontforge/fontforge/archive/%{version}.tar.gz
 # workaround for bug 930076, imho upstream should fix this
 # https://github.com/fontforge/fontforge/issues/2270
 Patch0:         fontforge-version.patch
-Patch1:         fix-return-statement.patch
 Patch2:         fix-sphinx-doc.patch
 Patch5:         add-bitmap-transform-support.patch
 BuildRequires:  cairo-devel
@@ -44,7 +43,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
-BuildRequires:  libuninameslist-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
@@ -96,7 +94,6 @@ to develop applications that use FontForge libraries.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 %if %{?suse_version} < 1550
 %patch2 -p1
 %endif
@@ -130,7 +127,7 @@ rm %{buildroot}%{_docdir}/%{name}/html/.nojekyll
 %{_datadir}/icons/hicolor/*/apps/org.fontforge.FontForge.png
 %{_datadir}/icons/hicolor/scalable/apps/org.fontforge.FontForge.svg
 %{_datadir}/metainfo/org.fontforge.FontForge.*.xml
-%{_datadir}/pixmaps/org.fontforge.FontForge.*
+# %{_datadir}/pixmaps/org.fontforge.FontForge.*
 %{_datadir}/mime/packages/%{name}.xml
 %dir %{_docdir}/fontforge
 

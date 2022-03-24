@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 20 21:20:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220308:
+  * Overhauled resource/appearance management
+  * Merge/Simplify improvements 
+  * Updated Unicode support to Unicode 14.0.0
+  * Add Points Of Inflection / Balance / Harmonize
+  * Language system tag list/script range/feature list updates
+  * You can now substitute glyph(s) by NULL
+  * Reserved Font Names no longer written by default when adding SIL OFL to a font
+  * UFO include path is altered, please update your fonts if needed
+  * FontForge is now compiled with -Wall by default
+  * Cidmaps are now bundled
+- drop fix-return-statement.patch. obsolete 
+
+-------------------------------------------------------------------
 Sat Feb 20 10:46:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20201107:
