@@ -2186,6 +2186,7 @@ unsorted:
   - color-filesystem 
   - colord-gtk 
   - colord-gtk-doc 
+  - colord-gtk-lang 
   - colord-kde 
   - colord-kde-lang 
   - colordiff 
@@ -2261,6 +2262,8 @@ unsorted:
   - connman-test 
   - conntrack-tools: [i586] 
   - conntrackd 
+  - console 
+  - console-lang 
   - console-setup 
   - consoleet-darwin-fonts 
   - consoleet-kbd-fonts 
@@ -3343,7 +3346,6 @@ unsorted:
   - eog-plugin-export-to-folder 
   - eog-plugin-fit-to-width 
   - eog-plugin-fullscreenbg 
-  - eog-plugin-hide-titlebar 
   - eog-plugin-light-theme 
   - eog-plugin-map 
   - eog-plugin-maximize-windows 
@@ -5798,6 +5800,7 @@ unsorted:
   - glib2-devel 
   - glib2-devel-32bit: [x86_64] 
   - glib2-devel-static 
+  - glib2-doc 
   - glib2-tests-devel 
   - glib2-tools-32bit: [x86_64] 
   - glibc-devel-32bit: [x86_64] 
@@ -6522,6 +6525,8 @@ unsorted:
   - gtkmm3-doc 
   - gtkmm4-devel 
   - gtkmm4-doc 
+  - gtkmm4-tutorial 
+  - gtkmm4-tutorial-lang 
   - gtkpod 
   - gtkpod-devel 
   - gtkpod-lang 
@@ -9539,10 +9544,8 @@ unsorted:
   - libadns1-32bit: [x86_64] 
   - libadolc2 
   - libadolc2-32bit: [x86_64] 
-  - libadwaita-1-0 
   - libadwaita-devel 
   - libadwaita-docs 
-  - libadwaita-lang 
   - libadwaita-qt5-devel 
   - libadwaita-qt6-devel 
   - libadwaitaqt6-1 
@@ -10215,7 +10218,6 @@ unsorted:
   - libclzma-suse0 
   - libcm1 
   - libcmap4-32bit: [x86_64] 
-  - libcmark0_30_2 
   - libcmh0 
   - libcmis-0_5-5 
   - libcmis-c-0_5-5 
@@ -10249,6 +10251,7 @@ unsorted:
   - libcolm-0_14_7 
   - libcolord-devel 
   - libcolord-gtk-devel 
+  - libcolord-gtk1 
   - libcolord-gtk1-32bit: [x86_64] 
   - libcolord2-32bit: [x86_64] 
   - libcom_err-devel 
@@ -11057,6 +11060,7 @@ unsorted:
   - libgloox18 
   - libgloox18-32bit: [x86_64] 
   - libglpk40 
+  - libglslang11-32bit: [x86_64] 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglue-devel 
@@ -11078,6 +11082,7 @@ unsorted:
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_9 
   - libgnome-desktop-3-devel 
+  - libgnome-desktop-4-devel 
   - libgnome-games-support-2-4 
   - libgnome-games-support-devel 
   - libgnome-games-support-lang 
@@ -11163,9 +11168,9 @@ unsorted:
   - libgrooveloudness4 
   - libgrooveplayer-devel 
   - libgrooveplayer4 
-  - libgrpc++1_44 
-  - libgrpc22 
-  - libgrpc_plugin_support1_44 
+  - libgrpc++1_45 
+  - libgrpc23 
+  - libgrpc_plugin_support1_45 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -11229,7 +11234,7 @@ unsorted:
   - libgtkdsv-3-0 
   - libgtkglext-x11-1_0-0 
   - libgtkglext-x11-1_0-0-32bit: [x86_64] 
-  - libgtkhex-3-0 
+  - libgtkhex-4-0 
   - libgtkhotkey-devel 
   - libgtkhotkey1 
   - libgtkhtml-4_0-0 
@@ -11288,6 +11293,7 @@ unsorted:
   - libgvncpulse-1_0-0 
   - libgweather-3-16-32bit: [x86_64] 
   - libgweather-devel 
+  - libgweather4-devel 
   - libgwengui-cpp79 
   - libgwengui-fox16-79 
   - libgwengui-gtk2-79 
@@ -12187,7 +12193,7 @@ unsorted:
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
-  - libmozjs-91-0 
+  - libmozjs-78-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
@@ -12978,6 +12984,12 @@ unsorted:
   - libpoppler-qt6-devel 
   - libpoppler119-32bit: [x86_64] 
   - libportal-devel 
+  - libportal-gtk3-1 
+  - libportal-gtk3-devel 
+  - libportal-gtk4-1 
+  - libportal-gtk4-devel 
+  - libportal-qt5-1 
+  - libportal-qt5-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
   - libportmidi2 
@@ -13134,9 +13146,7 @@ unsorted:
   - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla2_qt6-15 
-  - libqt5-dwaylandplugin 
   - libqt5-dxcbplugin 
-  - libqt5-kwayland-shellplugin 
   - libqt5-linguist 
   - libqt5-linguist-devel 
   - libqt5-qt3d-devel 
@@ -13523,7 +13533,10 @@ unsorted:
   - libressl-devel-32bit: [x86_64] 
   - libressl-devel-doc 
   - librest-0_7-0-32bit: [x86_64] 
+  - librest-1_0-0 
+  - librest-1_0-0-32bit: [x86_64] 
   - librest-devel 
+  - librest0_7-devel 
   - libretro-gtk-1-0 
   - librevenge-devel 
   - librevenge-doc 
@@ -13549,7 +13562,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_2_0 
+  - librssguard-4_2_1 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -14279,7 +14292,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb22 
+  - libupb23 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -14343,10 +14356,10 @@ unsorted:
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
   - libvacuumutils37 
-  - libvala-0_54-0 
-  - libvala-0_54-devel 
-  - libvaladoc-0_54-0 
-  - libvaladoc-0_54-devel 
+  - libvala-0_56-0 
+  - libvala-0_56-devel 
+  - libvaladoc-0_56-0 
+  - libvaladoc-0_56-devel 
   - libvamp-hostsdk3: [i586] 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
@@ -16944,6 +16957,7 @@ unsorted:
   - native-platform-javadoc 
   - nautilus-devel 
   - nautilus-eiciel 
+  - nautilus-extension-console 
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
   - nautilus-extension-nextcloud 
@@ -18356,6 +18370,7 @@ unsorted:
   - osc-plugin-cycle: [x86_64] 
   - osc-plugin-install 
   - osc-plugin-origin: [x86_64] 
+  - osc-plugin-pcheck: [x86_64] 
   - osc-plugin-staging: [x86_64] 
   - osclib: [x86_64] 
   - osdlyrics 
@@ -41642,7 +41657,6 @@ unsorted:
   - tycho-bootstrap: [x86_64] 
   - tycho-javadoc: [x86_64] 
   - typelib-1_0-Accounts-1_0 
-  - typelib-1_0-Adw-1 
   - typelib-1_0-Amtk-5 
   - typelib-1_0-Anjuta-3_0 
   - typelib-1_0-AppStream-1.0 
@@ -41739,7 +41753,9 @@ unsorted:
   - typelib-1_0-Gladeui-2_0 
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
+  - typelib-1_0-GnomeBG-4_0 
   - typelib-1_0-GnomeKeyring-1_0 
+  - typelib-1_0-GnomeRR-4_0 
   - typelib-1_0-GoVirt-1_0 
   - typelib-1_0-Gom-1_0 
   - typelib-1_0-GooCanvas-2_0 
@@ -41776,6 +41792,7 @@ unsorted:
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-Gucharmap-2_90 
   - typelib-1_0-Handy-0_0 
+  - typelib-1_0-Hex-4 
   - typelib-1_0-Hinawa-2_0 
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
@@ -41816,6 +41833,7 @@ unsorted:
   - typelib-1_0-Playerctl-2_0 
   - typelib-1_0-Pluma-1_0 
   - typelib-1_0-Poppler-0_18 
+  - typelib-1_0-Rest-1_0 
   - typelib-1_0-Retro-1-0 
   - typelib-1_0-RygelCore-2_6 
   - typelib-1_0-RygelRenderer-2_6 
@@ -41841,6 +41859,9 @@ unsorted:
   - typelib-1_0-Workrave-1_0 
   - typelib-1_0-Wp-0_4 
   - typelib-1_0-XApp-1_0 
+  - typelib-1_0-Xdp-1_0 
+  - typelib-1_0-XdpGtk3-1_0 
+  - typelib-1_0-XdpGtk4-1_0 
   - typelib-1_0-Xkl-1_0 
   - typelib-1_0-Xmlb-1_0 
   - typelib-1_0-XplayerPlParser-1_0 
@@ -41848,6 +41869,7 @@ unsorted:
   - typelib-1_0-XreaderView-1_5 
   - typelib-1_0-Zpj-0_0 
   - typelib-1_0-kkc-1_0 
+  - typelib-1_0-libdazzle-1_0 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
   - typesafe-config-javadoc 
