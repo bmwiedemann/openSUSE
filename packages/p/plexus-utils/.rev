@@ -25,4 +25,12 @@
     <comment>3.3.0</comment>
     <requestid>750553</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>798c2adcfa374fb3bba78932eae4d195</srcmd5>
+    <version>3.3.0</version>
+    <time>1648159085</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964430</requestid>
+  </revision>
 </revisionlist>

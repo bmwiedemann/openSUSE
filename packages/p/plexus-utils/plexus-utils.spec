@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-utils
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,10 +71,10 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc NOTICE.txt LICENSE-2.0.txt
+%%license NOTICE.txt LICENSE-2.0.txt
 
 %files javadoc
-%doc NOTICE.txt LICENSE-2.0.txt
 %{_javadocdir}/%{name}
+%license NOTICE.txt LICENSE-2.0.txt
 
 %changelog
