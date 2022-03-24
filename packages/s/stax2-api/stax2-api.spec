@@ -1,7 +1,7 @@
 #
 # spec file for package stax2-api
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            http://wiki.fasterxml.com/WoodstoxStax2
 Source0:        https://github.com/FasterXML/%{name}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml:oss-parent:pom:)
 BuildRequires:  mvn(javax.xml.stream:stax-api)
@@ -51,15 +52,15 @@ This package contains the API documentation for %{name}.
 
 %pom_xpath_remove pom:Import-Package
 
-%pom_remove_plugin :maven-javadoc-plugin
+# %pom_remove_plugin :maven-javadoc-plugin
 
 %build
-
 %{mvn_file} :%{name} %{name}
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
