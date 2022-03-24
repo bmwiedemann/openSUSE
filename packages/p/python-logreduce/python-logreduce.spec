@@ -1,7 +1,7 @@
 #
 # spec file for package python-logreduce
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,6 @@ BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module alembic}
 BuildRequires:  %{python_module gear}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -99,6 +98,8 @@ fi}
 }
 
 %check
+# not sure where to report
+sed -i 's:from mock:from unittest.mock:' logreduce/tests/test_download.py
 %pytest
 
 %files %{python_files}

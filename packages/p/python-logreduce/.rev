@@ -179,4 +179,12 @@
   * Update filename2modelname method to work with kubernetes logs</comment>
     <requestid>871473</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d1d26b0e3b6c008634c3988574483195</srcmd5>
+    <version>0.6.1</version>
+    <time>1648159070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964392</requestid>
+  </revision>
 </revisionlist>
