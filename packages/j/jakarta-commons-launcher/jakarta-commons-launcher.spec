@@ -1,7 +1,7 @@
 #
-# spec file for package jakarta-commons-launcher
+# spec file
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define base_name       launcher
 %define short_name      commons-%{base_name}
-%define name            jakarta-%{short_name}
-%define section         devel
-Name:           jakarta-commons-launcher
+Name:           jakarta-%{short_name}
 Version:        1.1
 Release:        0
 Summary:        A Cross-Platform Java Application Launcher
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/commons/launcher/
-Source:         http://archive.apache.org/dist/jakarta/commons/launcher/source/commons-launcher-%{version}-src.tar.bz2
+URL:            https://jakarta.apache.org/commons/launcher/
+Source:         https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  junit
 BuildRequires:  xml-commons-apis
 BuildArch:      noarch
@@ -84,31 +82,25 @@ ant \
   -Dfinal.name=%{short_name} \
   -Dj2se.javadoc=%{_javadocdir}/java \
   -Dsrcdir=. \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
   jar javadoc
 
 %install
 # jars
 mkdir -p %{buildroot}%{_javadir}
-cp -p dist/bin/%{short_name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed "s|jakarta-||g"`; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
-# javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
-cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name} # ghost symlink
+cp -p dist/bin/%{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
+ln -sf %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 
-%post javadoc
-rm -f %{_javadocdir}/%{name}
-ln -s %{name}-%{version} %{_javadocdir}/%{name}
+# javadoc
+mkdir -p %{buildroot}%{_javadocdir}/%{name}
+cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files
-%doc LICENSE.txt
+%license LICENSE.txt
 %{_javadir}/*
 
 %files javadoc
-%doc %{_javadocdir}/%{name}-%{version}
-%ghost %doc %{_javadocdir}/%{name}
+%{_javadocdir}/%{name}
 
 %changelog
