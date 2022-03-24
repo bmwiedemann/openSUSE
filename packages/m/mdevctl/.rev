@@ -43,4 +43,12 @@ in virtual machines.</comment>
     <comment></comment>
     <requestid>961113</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a1d48298360ff30afd9f37617be3292c</srcmd5>
+    <version>1.1.0</version>
+    <time>1648159008</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>963778</requestid>
+  </revision>
 </revisionlist>

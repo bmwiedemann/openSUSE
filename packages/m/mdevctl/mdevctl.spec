@@ -24,8 +24,8 @@ License:        LGPL-2.1-or-later
 URL:            https://github.com/mdevctl/mdevctl
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  %{python_module docutils}
 BuildRequires:  cargo
+BuildRequires:  python3-docutils
 BuildRequires:  rust
 BuildRequires:  pkgconfig(udev)
 
