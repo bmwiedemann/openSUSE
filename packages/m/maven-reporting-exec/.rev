@@ -31,4 +31,12 @@
     <comment>fix build with new maven-javadoc-plugin</comment>
     <requestid>750590</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97a721bfa77fe8852e3a10463e77224e</srcmd5>
+    <version>1.6.0</version>
+    <time>1648159086</time>
+    <user>dimstar_suse</user>
+    <comment>1.6.0</comment>
+    <requestid>964431</requestid>
+  </revision>
 </revisionlist>
