@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 22 00:05:50 UTC 2022 - william.brown@suse.com
+
+- Resolve bsc#1197345 - CVE-2022-0996 - Mishandling of password expiry
+- Update to version 2.0.14~git25.e6431d959:
+  * Issue 5221 - User with expired password can still login with full privledges
+  * Issue 5218 - double-free of the virtual attribute context in persistent search (#5219)
+  * Issue 5200 - dscontainer should use environment variables with DS_ prefix
+  * Issue 5193 - Incomplete ruv occasionally returned from ruv search (#5194)
+  * Issue 5189 - memberOf plugin exclude subtree not cleaning up groups on modrdn
+  * Issue 5188 - UI - LDAP editor - add entry and group types
+  * Issue 5184 - memberOf does not work correctly with multiple include scopes
+  * Issue 5162 - BUG - error on importing chain files (#5164)
+  * Issue 5186 - UI - Fix SASL Mapping regex validation and other minor improvements
+  * Issue 5048 - Support for nsslapd-tcp-fin-timeout and nsslapd-tcp-keepalive-time (#5179)
+
+-------------------------------------------------------------------
 Wed Feb 02 02:33:42 UTC 2022 - william.brown@suse.com
 
 - Update to version 2.0.14~git3.c9226ad90:
