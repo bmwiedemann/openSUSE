@@ -448,4 +448,12 @@
 - Do not touch shebang with patch latexdiff_p2top3.dif</comment>
     <requestid>962425</requestid>
   </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>dfa558957275cc29bb286b1a1c7b9888</srcmd5>
+    <version>unknown</version>
+    <time>1648159076</time>
+    <user>dimstar_suse</user>
+    <comment>Also add some obsoletes and conflicts</comment>
+    <requestid>964556</requestid>
+  </revision>
 </revisionlist>
