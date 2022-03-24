@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 24 07:48:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * Updates source code baseline to upstream SQLite 3.37.2
+  * Adds PRAGMA cipher_log and cipher_log_level features to allow logging of
+    TRACE, DEBUG, INFO, WARN, and ERROR messages to stdout, stderr, file, or
+    logcat
+  * Modifies PRAGMA cipher_profile to use sqlite3_trace_v2 and adds logcat
+    target for Android
+  * Updates OpenSSL provider to use EVP_MAC API with version 3+
+  * Adds new PRAGMA cipher_test_on, cipher_test_off, and cipher_test_rand
+    (available when compiled with -DSQLCIPHER_TEST) to facilitate simulation of
+    error conditions
+  * Fixes PRAGMA cipher_integrity_check to work properly with databases larger
+    that 2GB
+  * Fixes missing munlock before free for context internal buffer
+
+-------------------------------------------------------------------
 Wed Feb  9 09:02:47 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - More relaxed dependencies on tcl (boo#1195711)
