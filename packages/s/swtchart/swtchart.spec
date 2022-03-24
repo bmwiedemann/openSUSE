@@ -1,7 +1,7 @@
 #
 # spec file for package swtchart
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source1:        build.xml
 BuildRequires:  ant
 BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  sed
 BuildRequires:  unzip
@@ -50,7 +50,7 @@ Developer documentation of SWT Chart.
 %build
 sed "s#SWTJAR#$(build-classpath swt)#g" <%{SOURCE1} >build.xml
 sed -i -e '/Classpath/d' org.swtchart/META-INF/MANIFEST.MF
-%{ant} -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
 mkdir -p %{buildroot}%{_javadir}
