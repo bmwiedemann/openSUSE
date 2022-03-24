@@ -16,4 +16,12 @@
 </comment>
     <requestid>892410</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>facbacece3569a28afafd81aa09f6f6d</srcmd5>
+    <version>1.10</version>
+    <time>1648159078</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964421</requestid>
+  </revision>
 </revisionlist>
