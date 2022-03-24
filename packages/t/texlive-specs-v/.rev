@@ -477,4 +477,12 @@ Adding the LPPL as many files are licensed under this license (forwarded request
   * punknova_p2top3.dif</comment>
     <requestid>962430</requestid>
   </revision>
+  <revision rev="49" vrev="52">
+    <srcmd5>8ada65ee4d5d2b23e072903d561f107b</srcmd5>
+    <version>unknown</version>
+    <time>1648159078</time>
+    <user>dimstar_suse</user>
+    <comment>Also add some obsoletes and conflicts</comment>
+    <requestid>964561</requestid>
+  </revision>
 </revisionlist>
