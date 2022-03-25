@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 25 09:41:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Supper GNOME 42 (boo#1197506):
+  + Add c008099ff.patch: Mark extension as compatible with
+    gnome-shell 42.
+  + Add d46371e4d.patch: Fix GNOME extension error reporting.
+- Adjust gnome-shell dependency to support GNOME 42 (< 43).
+
+-------------------------------------------------------------------
 Thu Sep 30 07:46:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Set maximum gnome-shell version to 42, now that it supports 41.
@@ -14,8 +23,8 @@ Mon Sep 20 14:02:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.2:
   * Fix dialog animation braking ScreenShield
-  * Cleanup deprecated code 
-  * Fix blur effect artifacts 
+  * Cleanup deprecated code
+  * Fix blur effect artifacts
   * Dont wake up the screen after screensaver
   * Fix possible recursion during blinking animation
   * Workaround choppy blur effect animation in gnome-shell 3.38

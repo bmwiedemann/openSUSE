@@ -251,4 +251,19 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment>Also fix Requires: gnome-shell to support 41</comment>
     <requestid>922408</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>37c1696771ae8b128b9cac80e23910a7</srcmd5>
+    <version>0.20.0</version>
+    <time>1648241685</time>
+    <user>dimstar_suse</user>
+    <comment>- Supper GNOME 42 (boo#1197506):
+  + Add c008099ff.patch: Mark extension as compatible with
+    gnome-shell 42.
+  + Add d46371e4d.patch: Fix GNOME extension error reporting.
+- Adjust gnome-shell dependency to support GNOME 42 (&lt; 43).
+
+  * Cleanup deprecated code
+  * Fix blur effect artifacts</comment>
+    <requestid>964866</requestid>
+  </revision>
 </revisionlist>

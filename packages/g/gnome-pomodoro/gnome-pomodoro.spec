@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-pomodoro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,15 @@ Group:          Productivity/Office/Other
 URL:            https://gnomepomodoro.org
 Source:         https://github.com/codito/%{name}/archive/%{version}.tar.gz
 Source99:       gnome-pomodoro-rpmlintrc
+# PATCH-FIX-UPSTREAM c008099ff.patch boo#1197506 dimstar@opensuse.org -- Mark extension as compatible with gnome-shell 42
+Patch0:         https://github.com/gnome-pomodoro/gnome-pomodoro/commit/c008099ff.patch
+# PATCH-FIX-UPSRTEAM d46371e4d.patch boo#1197506 dimstar@opensuse.org --  Fix GNOME extension error reporting
+Patch1:         https://github.com/gnome-pomodoro/gnome-pomodoro/commit/d46371e4d.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext >= 0.19.6
 BuildRequires:  gnome-common
-BuildRequires:  gnome-shell < 42
+BuildRequires:  gnome-shell < 43
 BuildRequires:  gnome-shell >= 3.36.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -46,7 +50,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libcanberra) >= 0.30
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       gnome-shell < 42
+Requires:       gnome-shell < 43
 Requires:       gnome-shell >= 3.36.0
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
@@ -61,7 +65,7 @@ intends to improve productivity and focus by taking short breaks after every
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
