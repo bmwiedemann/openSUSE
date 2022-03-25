@@ -1,7 +1,7 @@
-Index: accountsservice-0.6.55/data/accounts-daemon.service.in
+Index: accountsservice-22.04.62/data/accounts-daemon.service.in
 ===================================================================
---- accountsservice-0.6.55.orig/data/accounts-daemon.service.in
-+++ accountsservice-0.6.55/data/accounts-daemon.service.in
+--- accountsservice-22.04.62.orig/data/accounts-daemon.service.in
++++ accountsservice-22.04.62/data/accounts-daemon.service.in
 @@ -8,6 +8,15 @@ After=nss-user-lookup.target
  Wants=nss-user-lookup.target
  

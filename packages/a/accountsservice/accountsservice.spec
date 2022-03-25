@@ -17,7 +17,7 @@
 
 
 Name:           accountsservice
-Version:        0.6.55
+Version:        22.04.62
 Release:        0
 Summary:        D-Bus Service to Manipulate User Account Information
 License:        GPL-3.0-or-later
@@ -26,28 +26,21 @@ URL:            https://www.freedesktop.org/wiki/Software/AccountsService/
 Source0:        https://www.freedesktop.org/software/accountsservice/%{name}-%{version}.tar.xz
 
 # WARNING: do not remove/significantly change patch0 without updating the relevant patch in gdm too
-# PATCH-FIX-OPENSUSE accountsservice-sysconfig.patch bnc#688071 vuntz@opensuse.org -- Read/write autologin configuration from sysconfig, like gdm (see gdm-sysconfig-settings.patch) WAS PATCH-FIX-OPENSUSE
-Patch0:         accountsservice-sysconfig.patch
-# PATCH-FIX-OPENSUSE accountsservice-filter-suse-accounts.patch vuntz@opensuse.org -- Filter out some system users that are specific to openSUSE
-Patch1:         accountsservice-filter-suse-accounts.patch
-# PATCH-FIX-UPSTREAM accountsservice-read-root-user-cache.patch bsc#1114292 glfo#accountsservice/accountsservice#65 xwang@suse.com-- read root user cache file WAS PATCH-FIX-UPSTREAM
-Patch2:         accountsservice-read-root-user-cache.patch
-# PATCH-FIX-UPSTREAM accountsservice-wtmp-io-improvements.patch boo#1139487 fezhang@suse.com -- Backports that improve wtmp io performance.
-Patch3:         accountsservice-wtmp-io-improvements.patch
-# PATCH-FIX-UPSTREAM accountsservice-fix-gdm-crash.patch glfo#accountsservice/accountsservice#55 antoine.belvire@opensuse.org -- Prevent gdm crash upon service restart when autologin is enabled
-Patch4:         accountsservice-fix-gdm-crash.patch
+# PATCH-FIX-OPENSUSE accountsservice-sysconfig.patch bnc#688071 vuntz@opensuse.org -- Read/write autologin configuration from sysconfig, like gdm (see gdm-sysconfig-settings.patch)
+Patch1:         accountsservice-sysconfig.patch
 # PATCH-FIX-OPENSUSE harden_accounts-daemon.service.patch jsegitz@suse.com -- For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-Patch5:         harden_accounts-daemon.service.patch
-# PATCH-FIX-UPSTREAM ac9b14f1c1bbca413987d0bbfeaad05804107e9a.patch -- Fix build with meson 0.61.0
-Patch6:         https://gitlab.freedesktop.org/accountsservice/accountsservice/-/commit/ac9b14f1c1bbca413987d0bbfeaad05804107e9a.patch
+Patch2:         harden_accounts-daemon.service.patch
 
 ## SLE and Leap only patches start at 1000
 # PATCH-FEATURE-SLE as-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
 Patch1000:      as-fate318433-prevent-same-account-multi-logins.patch
 
+BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3-dbusmock
+BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.37.3
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -56,6 +49,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libsystemd) >= 186
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(vapigen)
 %{?systemd_ordering}
 
 %description
@@ -102,13 +96,8 @@ querying and manipulating user account information.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 # SLE and Leap patches start at 1000
 %if 0%{?sle_version}
@@ -117,15 +106,18 @@ querying and manipulating user account information.
 
 %build
 %meson \
-	-Dsystemd=true \
-	-Dintrospection=true \
-	-Dgtk_doc=true \
+	-D introspection=true \
+	-D gtk_doc=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang accounts-service
+%fdupes %{buildroot}%{_datadir}/accountsservice/user-templates
+
+%check
+%meson_test
 
 %pre
 %service_add_pre accounts-daemon.service
@@ -144,10 +136,10 @@ querying and manipulating user account information.
 
 %files
 %license COPYING
-%doc NEWS README.md
+%doc README.md
 %{_unitdir}/accounts-daemon.service
-%{_sysconfdir}/dbus-1/system.d/org.freedesktop.Accounts.conf
 %{_libexecdir}/accounts-daemon
+%{_datadir}/dbus-1/system.d/org.freedesktop.Accounts.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Accounts.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Accounts.User.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.Accounts.service
@@ -156,6 +148,10 @@ querying and manipulating user account information.
 %dir %{_localstatedir}/lib/AccountsService
 %dir %{_localstatedir}/lib/AccountsService/users
 %dir %{_localstatedir}/lib/AccountsService/icons
+%dir %{_datadir}/accountsservice
+%dir %{_datadir}/accountsservice/user-templates
+%{_datadir}/accountsservice/user-templates/administrator
+%{_datadir}/accountsservice/user-templates/standard
 
 %files -n libaccountsservice0
 %{_libdir}/*.so.0*
@@ -170,6 +166,9 @@ querying and manipulating user account information.
 %{_libdir}/pkgconfig/accountsservice.pc
 %{_includedir}/accountsservice-1.0/
 %{_datadir}/gir-1.0/AccountsService-1.0.gir
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/accountsservice.deps
+%{_datadir}/vala/vapi/accountsservice.vapi
 
 %files lang -f accounts-service.lang
 
