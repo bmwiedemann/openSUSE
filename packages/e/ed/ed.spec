@@ -1,7 +1,7 @@
 #
 # spec file for package ed
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           ed
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        A line-oriented text editor
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Text/Editors
 URL:            https://www.gnu.org/software/ed/
-# This is just recompressed from  http://ftp.gnu.org/gnu/ed/ed-%{version}.tar.lz
+# This is just recompressed from  https://ftp.gnu.org/gnu/ed/ed-%%{version}.tar.lz
 # in order to avoid pulling lzip to ring0
-Source0:        ed-%{version}.tar.xz
+Source0:        ed-%{version}.tar.zst
+BuildRequires:  zstd
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 GNU ed is a line-oriented text editor. It is used to create, display,
@@ -47,10 +48,6 @@ superseded by full-screen editors such as GNU Emacs or GNU Moe.
 
 %install
 %make_install
-%if !0%{?usrmerged}
-install -d -m 0755 %{buildroot}/bin
-ln -s %{_bindir}/ed %{buildroot}/bin/ed
-%endif
 
 %check
 %make_build check
@@ -63,10 +60,7 @@ ln -s %{_bindir}/ed %{buildroot}/bin/ed
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README TODO
-%if !0%{?usrmerged}
-/bin/%{name}
-%endif
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/%{name}
 %{_bindir}/r%{name}
 %{_infodir}/%{name}.info%{?ext_info}
