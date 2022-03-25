@@ -17,7 +17,7 @@
 
 
 Name:           nvme-stas
-Version:        1.0~rc4
+Version:        1.0~rc5
 Release:        0
 Summary:        NVMe STorage Appliance Services
 License:        Apache-2.0
@@ -30,14 +30,13 @@ BuildRequires:  python3
 BuildRequires:  python3-dasbus
 BuildRequires:  python3-gobject
 BuildRequires:  python3-libnvme >= 1.0~7
-BuildRequires:  python3-netifaces
 BuildRequires:  python3-pyudev
 BuildRequires:  python3-systemd
 BuildRequires:  systemd-rpm-macros
+Requires:       avahi
 Requires:       python3-dasbus
 Requires:       python3-gobject
 Requires:       python3-libnvme >= 1.0~7
-Requires:       python3-netifaces
 Requires:       python3-pyudev
 Requires:       python3-systemd
 
@@ -56,17 +55,6 @@ Automatic (zeroconf) and Manual configuration.
 
 %install
 %meson_install
-# fix up interpreter
-sed -i "s;/usr/bin/env python3;/usr/bin/python3;g" -i \
-	%{buildroot}%{_bindir}/stacctl
-sed -i "s;/usr/bin/env python3;/usr/bin/python3;g" -i \
-	%{buildroot}%{_bindir}/stafctl
-sed -i "s;/usr/bin/env python3;/usr/bin/python3;g" -i \
-	%{buildroot}%{_bindir}/stasadm
-sed -i "s;/usr/bin/env python3;/usr/bin/python3;g" -i \
-	%{buildroot}%{_sbindir}/stacd
-sed -i "s;/usr/bin/env python3;/usr/bin/python3;g" -i \
-	%{buildroot}%{_sbindir}/stafd
 
 %define services stacd.service stafd.service
 
@@ -85,7 +73,7 @@ sed -i "s;/usr/bin/env python3;/usr/bin/python3;g" -i \
 %files
 %license LICENSE
 %doc README.md
-%{_sysconfdir}/stas
+%dir %{_sysconfdir}/stas
 %config(noreplace) %{_sysconfdir}/stas/stacd.conf
 %config(noreplace) %{_sysconfdir}/stas/stafd.conf
 %config(noreplace) %{_sysconfdir}/stas/sys.conf.doc
@@ -98,7 +86,7 @@ sed -i "s;/usr/bin/env python3;/usr/bin/python3;g" -i \
 %{_sbindir}/stafd
 %{_unitdir}/stacd.service
 %{_unitdir}/stafd.service
-%{python3_sitearch}/staslib
+%dir %{python3_sitearch}/staslib
 %{python3_sitearch}/staslib/__init__.py
 %{python3_sitearch}/staslib/avahi.py
 %{python3_sitearch}/staslib/defs.py

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 25 11:32:30 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc5:
+  * Remove misconfiguration check. (bsc#1197361)
+  * Document how to increase the number of interfaces that Avahi can monitor.
+- Removed python3-netifaces dependency (bsc#1197361)
+- Added ahahi dependency
+- Do not list files twice (add %dir to directory paths)
+- Drop workaround for Python interpreter path fixup.
+
+-------------------------------------------------------------------
 Wed Mar 23 08:23:34 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.0-rc4:
