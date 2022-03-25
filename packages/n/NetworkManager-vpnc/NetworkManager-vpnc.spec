@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-vpnc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,23 @@
 
 
 Name:           NetworkManager-vpnc
-Version:        1.2.6
+Version:        1.2.8
 Release:        0
 Summary:        NetworkManager VPN Support for vpnc
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager
 Source0:        http://download.gnome.org/sources/NetworkManager-vpnc/1.2/%{name}-%{version}.tar.xz
+
 BuildRequires:  intltool
+BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(libnm) >= 1.2.0
 BuildRequires:  pkgconfig(libnma) >= 1.2.0
+BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1)
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.2.0
@@ -52,14 +56,14 @@ NetworkManager-vpnc provides VPN support to NetworkManager for vpnc.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure\
 	--disable-static \
-	--without-libnm-glib \
+	--with-gtk4=yes \
 	%{nil}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -72,13 +76,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libexecdir}/nm-vpnc-service
 %{_libexecdir}/nm-vpnc-service-vpnc-helper
 %{_vpnservicedir}/nm-vpnc-service.name
-%config %{_sysconfdir}/dbus-1/system.d/nm-vpnc-service.conf
+%{_datadir}/dbus-1/system.d/nm-vpnc-service.conf
 
 %files gnome
-%{_datadir}/appdata/network-manager-vpnc.metainfo.xml
-%{_datadir}/gnome-vpn-properties/
+%{_datadir}/metainfo/network-manager-vpnc.metainfo.xml
 %{_libexecdir}/nm-vpnc-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-vpnc-editor.so
+%{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-vpnc-editor.so
 
 %files lang -f %{name}.lang
 

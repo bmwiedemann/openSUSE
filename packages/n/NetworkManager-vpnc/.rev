@@ -501,4 +501,12 @@
   (jsc#SLE-21105). (forwarded request 920434 from sbrabec)</comment>
     <requestid>920591</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>db9f86f9282aa2831ce338d07ee72dc0</srcmd5>
+    <version>1.2.8</version>
+    <time>1648241668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964528</requestid>
+  </revision>
 </revisionlist>
