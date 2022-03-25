@@ -17,7 +17,7 @@
 
 
 Name:           gthumb
-Version:        3.12.0
+Version:        3.12.1
 Release:        0
 # FIXME: Add libchamplain BuildRequires once the map feature is considered stable.
 Summary:        An Image Viewer and Browser for GNOME
@@ -25,9 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/gthumb
 Source0:        https://download.gnome.org/sources/gthumb/3.12/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM daef485dffd67319c114cf1bda453bf6157e11ff.patch -- Remove duplicate lang entry
-Patch0:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/daef485dffd67319c114cf1bda453bf6157e11ff.patch
 
+BuildRequires:  AppStream
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -39,6 +38,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(champlain-0.12) >= 0.12.0
 BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.12.0
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.12.0
