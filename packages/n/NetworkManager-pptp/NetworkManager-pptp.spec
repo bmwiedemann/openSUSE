@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-pptp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
 Name:           NetworkManager-pptp
-Version:        1.2.8
+Version:        1.2.10
 Release:        0
 Summary:        NetworkManager VPN support for PPTP
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://wiki.gnome.org/Projects/NetworkManager
 Source0:        http://download.gnome.org/sources/NetworkManager-pptp/1.2/%{name}-%{version}.tar.xz
+
 BuildRequires:  grep
 BuildRequires:  intltool
+BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -34,8 +36,10 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4
+BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(libnm) >= 1.2.0
 BuildRequires:  pkgconfig(libnma) >= 1.2.0
+BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 Requires:       NetworkManager >= 1.2.0
 Requires:       pptp
@@ -56,15 +60,15 @@ NetworkManager-pptp provides VPN support to NetworkManager for PPTP.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure\
 	--disable-static \
 	--with-pppd-plugin-dir=%{pppd_plugin_dir} \
-	--without-libnm-glib \
+	--with-gtk4=yes \
 	%{nil}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -77,12 +81,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/NetworkManager/libnm-vpn-plugin-pptp.so
 %{_libexecdir}/nm-pptp-service
 %{_vpnservicedir}/nm-pptp-service.name
-%config %{_sysconfdir}/dbus-1/system.d/nm-pptp-service.conf
+%{_datadir}/dbus-1/system.d/nm-pptp-service.conf
 %{pppd_plugin_dir}/nm-pptp-pppd-plugin.so
 
 %files gnome
-%{_datadir}/appdata/network-manager-pptp.metainfo.xml
+%{_datadir}/metainfo/network-manager-pptp.metainfo.xml
 %{_libdir}/NetworkManager/libnm-vpn-plugin-pptp-editor.so
+%{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-pptp-editor.so
 %{_libexecdir}/nm-pptp-auth-dialog
 
 %files lang -f %{name}.lang
