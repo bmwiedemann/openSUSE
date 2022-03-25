@@ -1857,7 +1857,7 @@
     <package name="libfdt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libffi8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libffmpegthumbnailer4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libfftw3-3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libfftw3-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfftw3_threads3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libfido2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfile1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2008,6 +2008,7 @@
     <package name="libgstmpegts-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgstpbutils-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgstphotography-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libgstplay-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgstplayer-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgstreamer-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgstriff-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2017,6 +2018,7 @@
     <package name="libgstsdp-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgsttag-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgsturidownloader-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libgstva-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgstvideo-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgstvulkan-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgstwayland-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2242,7 +2244,6 @@
     <package name="libmlx4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libmlx5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libmm-glib0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libmms0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libmng2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmnl0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmodplug1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2312,7 +2313,7 @@
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodfgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libofa0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libofa0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libogg0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liboggkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libokteta-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -2452,7 +2453,7 @@
     <package name="libqmi-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqpdf28" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqqwing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libqrencode4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libqrencode4" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libqt5-qdbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqt5-qtbase-platformtheme-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libqt5-qtconnectivity-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
