@@ -1,7 +1,7 @@
 #
 # spec file for package mojo-parent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           mojo-parent
-Version:        40
+Version:        60
 Release:        0
 Summary:        Codehaus MOJO parent project pom file
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.mojohaus.org/mojo-parent/
+URL:            https://www.mojohaus.org/mojo-parent/
 Source0:        https://github.com/mojohaus/mojo-parent/archive/%{name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  javapackages-local
@@ -33,8 +33,6 @@ Codehaus MOJO parent project pom file
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-# Cobertura plugin is executed only during clean Maven phase.
-%pom_remove_plugin :cobertura-maven-plugin
 # Not needed
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-site-plugin
