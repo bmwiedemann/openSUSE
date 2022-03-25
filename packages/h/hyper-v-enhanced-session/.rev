@@ -7,4 +7,12 @@
     <comment>Adding '%dir %{_sysconfdir}/xrdp' back, staging build fails without it.</comment>
     <requestid>951651</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ec2f00d5e308b10b9addb947187375b7</srcmd5>
+    <version>1.0.1</version>
+    <time>1648241714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964945</requestid>
+  </revision>
 </revisionlist>

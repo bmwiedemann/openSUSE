@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           hyper-v-enhanced-session
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Hyper-V Enhanced session setup for openSUSE
 BuildArch:      noarch
 License:        GPL-2.0-only
 URL:            https://github.com/sbradnick/%{name}
-Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  systemd-rpm-macros
 Requires:       hyper-v
 # ---
@@ -32,10 +33,10 @@ Suggests:       lightdm
 Conflicts:      sddm
 # ---
 Requires:       xrdp
-Requires:       xorgxrdp
+Requires:       vncmanager
 Requires:       xmessage
 Requires:       xorg-x11-Xvnc-novnc
-Requires:       vncmanager
+Requires:       xorgxrdp
 Recommends:     icewm-default
 Suggests:       xfce4-session
 Suggests:       gnome-session-core
@@ -138,4 +139,3 @@ printf "***     NOTE: Copy /etc/xrdp/startwm.sh.userwindowmanager-sample to <you
 %{_presetdir}/91-default-xrdp.preset
 
 %changelog
-

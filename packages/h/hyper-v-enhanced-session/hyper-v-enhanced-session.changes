@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 25 19:57:32 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.1:
+  * Adjustment to 'xrdp.ini' putting [Xorg] before [Xvnc].
+
+-------------------------------------------------------------------
 Fri Feb  4 19:32:37 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.0
 
 - Adding %{_sysconfdir}/xrdp back, staging build fails without it.
