@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 25 09:13:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.4:
+  * Transform all keys to JSON format as specified by struct tags for RKE config values
+  * Add s390x arch support
+- versions 2.6.1, 2.6.2 and 2.6.3 are not existing
+
+-------------------------------------------------------------------
 Tue Jan 04 13:25:13 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.6.0:

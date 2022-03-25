@@ -1,7 +1,7 @@
 #
 # spec file for package rancher-cli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           rancher-cli
-Version:        2.6.0
+Version:        2.6.4
 Release:        0
 Summary:        Rancher CLI
 License:        Apache-2.0
