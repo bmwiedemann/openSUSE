@@ -71,4 +71,12 @@
     <comment>Fix an exception in javadoc generation</comment>
     <requestid>963792</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>bef03e44c81fdfeb8592e8cf394ed85b</srcmd5>
+    <version>17.0.2.0</version>
+    <time>1648241710</time>
+    <user>dimstar_suse</user>
+    <comment>Make this one to be stronger alternative then java-11-openjdk on Factory</comment>
+    <requestid>964938</requestid>
+  </revision>
 </revisionlist>

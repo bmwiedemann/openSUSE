@@ -60,8 +60,11 @@
 %global jaxb_ri_repository jaxb-v2
 %global jaxb_ri_tag 2.3.1
 # priority must be 6 digits in total
-# % global priority        2505
+%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
+%global priority        2705
+%else
 %global priority        0
+%endif
 %global javaver         %{featurever}
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
@@ -212,6 +215,7 @@ Patch200:       ppc_stack_overflow_fix.patch
 Patch201:       fix_armv6_build.patch
 #
 Patch300:       JDK-8282944.patch
+Patch301:       JDK-8282004.patch
 Patch302:       disable-doclint-by-default.patch
 Patch303:       alternative-tzdb_dat.patch
 #
@@ -494,6 +498,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch300 -p1
+%patch301 -p1
 %patch302 -p1
 %patch303 -p1
 
