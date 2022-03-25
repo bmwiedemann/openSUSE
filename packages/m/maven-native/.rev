@@ -31,4 +31,12 @@
     <comment>cleanup</comment>
     <requestid>908805</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7c24a18cd42e72b0da8b0e1d0b1226e3</srcmd5>
+    <version>1.0~alpha11</version>
+    <time>1648241680</time>
+    <user>dimstar_suse</user>
+    <comment>Plexus metadata not correctly generated</comment>
+    <requestid>964787</requestid>
+  </revision>
 </revisionlist>

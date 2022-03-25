@@ -1,7 +1,7 @@
 #
 # spec file for package maven-native
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,12 @@ Group:          Development/Libraries/Java
 URL:            https://www.mojohaus.org/plugins.html
 # Source code available @ https://github.com/mojohaus/maven-native
 Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/natives/%{name}/%{namedversion}/%{name}-%{namedversion}-source-release.zip
+Source1:        plexus_components-bcc.xml
+Source2:        plexus_components-generic-c.xml
+Source3:        plexus_components-manager.xml
+Source4:        plexus_components-msvc.xml
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mojo-parent
 BuildRequires:  unzip
@@ -103,9 +108,15 @@ sed -i "s|edu.emory.mathcs.backport.java.util.concurrent|java.util.concurrent|" 
 %{mvn_package} ":%{name}-mingw" components
 %{mvn_package} ":native-maven-plugin" native-maven-plugin
 
+mkdir -p maven-native-components/maven-native-{bcc,generic-c,manager,msvc}/src/main/resources/META-INF/plexus/
+cp -a %{SOURCE1} maven-native-components/maven-native-bcc/src/main/resources/META-INF/plexus/components.xml
+cp -a %{SOURCE2} maven-native-components/maven-native-generic-c/src/main/resources/META-INF/plexus/components.xml
+cp -a %{SOURCE3} maven-native-components/maven-native-manager/src/main/resources/META-INF/plexus/components.xml
+cp -a %{SOURCE4} maven-native-components/maven-native-msvc/src/main/resources/META-INF/plexus/components.xml
+
 %build
 
-%{mvn_build} -f -s -- -Dmojo.java.target=1.7 -Dmaven.test.failure.ignore=true -Dsource=7
+%{mvn_build} -f -s -- -Dmojo.java.target=1.8 -Dmaven.test.failure.ignore=true -Dsource=8
 
 %install
 %mvn_install

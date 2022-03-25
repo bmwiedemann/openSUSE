@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 25 07:57:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Put back the plexus components.xml files from alpha-8, since
+  they are not correctly genrated from the annotations 
+
+-------------------------------------------------------------------
 Wed Jul 28 07:38:26 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Clean-up the spec file a bit
