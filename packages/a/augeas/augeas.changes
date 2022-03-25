@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 24 12:11:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add sysctl_parsing.patch (bsc#1197443) 
+
+-------------------------------------------------------------------
 Fri Jan 28 16:14:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - testsuite requires glibc-locale, buildrequire it 

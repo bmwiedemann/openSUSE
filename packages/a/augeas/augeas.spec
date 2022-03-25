@@ -32,6 +32,8 @@ Patch1:         gcc9-disable-broken-test.patch
 Patch2:         augeas-new_options_for_chrony.patch
 Patch3:         augeas-allow_printable_ASCII.patch
 Patch4:         remove-unportable-tests.patch
+# from https://patch-diff.githubusercontent.com/raw/hercules-team/augeas/pull/755.patch
+Patch5:         sysctl_parsing.patch
 BuildRequires:  glibc-locale
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -100,6 +102,7 @@ modifying the official lenses, or when creating new ones.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %configure \
@@ -121,13 +124,13 @@ mv %{buildroot}/%{_datadir}/vim/vimfiles %{buildroot}/%{_datadir}/vim/site
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
+%license COPYING
+%doc AUTHORS NEWS
 %{_bindir}/augmatch
 %{_bindir}/augtool
 %{_bindir}/augparse
 %{_bindir}/fadot
 %{_mandir}/man1/*
-%license COPYING
-%doc AUTHORS NEWS
 
 %files -n %{libname}
 %{_libdir}/*.so.*
