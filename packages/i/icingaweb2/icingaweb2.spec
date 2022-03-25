@@ -20,7 +20,7 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.9.6
+Version:        2.10.0
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -107,13 +107,15 @@ Requires:       %{name}-vendor-JShrink = %{version}-%{release}
 Requires:       %{name}-vendor-Parsedown = %{version}-%{release}
 Requires:       %{name}-vendor-dompdf = %{version}-%{release}
 Requires:       %{name}-vendor-lessphp = %{version}-%{release}
-Requires:       icinga-php-library >= 0.6.1
+Requires:       icinga-l10n >= 1.1.0
+Requires:       icinga-php-library >= 0.8.0
 Requires:       icinga-php-thirdparty >= 0.10.0
 Requires:       icingacli = %{version}-%{release}
 Requires:       php-Icinga = %{version}-%{release}
 
 %define basedir         %{_datadir}/%{name}
 %define bindir          %{_bindir}
+%define storagedir      %{_sharedstatedir}/%{name}
 %define configdir       %{_sysconfdir}/%{name}
 %define logdir          %{_localstatedir}/log/%{name}
 %define phpdir          %{_datadir}/php
@@ -163,7 +165,8 @@ Group:          System/Monitoring
 Requires:       %{name}-common = %{version}-%{release}
 Requires:       %{php_cli} >= %{php_version}
 Requires:       bash-completion
-Requires:       icinga-php-library >= 0.6.1
+Requires:       icinga-l10n >= 1.1.0
+Requires:       icinga-php-library >= 0.8.0
 Requires:       icinga-php-thirdparty >= 0.10.0
 Requires:       php-Icinga = %{version}-%{release}
 %if 0%{?suse_version}
@@ -287,10 +290,10 @@ cd -
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/{%{basedir}/{modules,library/vendor,public},%{bindir},%{configdir}/modules,%{logdir},%{phpdir},%{wwwconfigdir},%{_sysconfdir}/bash_completion.d,%{docsdir}}
+mkdir -p %{buildroot}/{%{basedir}/{modules,library/vendor,public},%{bindir},%{configdir}/modules,%{storagedir},%{logdir},%{phpdir},%{wwwconfigdir},%{_datadir}/bash-completion/completions,%{docsdir}}
 cp -prv application doc %{buildroot}/%{basedir}
-install -Dm0644 etc/bash_completion.d/icingacli %{buildroot}%{_datadir}/bash-completion/completions/icingacli
-cp -prv modules/{monitoring,setup,doc,translation} %{buildroot}/%{basedir}/modules
+cp -pv etc/bash_completion.d/icingacli %{buildroot}/%{_datadir}/bash-completion/completions/icingacli
+cp -prv modules/{monitoring,setup,doc,translation,migrate} %{buildroot}/%{basedir}/modules
 cp -prv library/Icinga %{buildroot}/%{phpdir}
 cp -prv library/vendor/{dompdf,HTMLPurifier*,JShrink,lessphp,Parsedown,Zend} %{buildroot}/%{basedir}/library/vendor
 cp -prv public/{css,font,img,js,error_norewrite.html,error_unavailable.html} %{buildroot}/%{basedir}/public
@@ -320,7 +323,6 @@ cd -
 %endif
 %if 0%{?suse_version}
 %fdupes %{buildroot}/%{basedir}/library
-%find_lang icinga
 %endif
 
 %pre
@@ -382,14 +384,14 @@ fi
 getent group %{icingawebgroup} >/dev/null || groupadd -r %{icingawebgroup}
 exit 0
 
-%files common -f icinga.lang
+%files common
 %defattr(-,root,root)
 %dir %{basedir}
 %dir %{basedir}/application
 %dir %{basedir}/library
 %dir %{basedir}/library/vendor
 %dir %{basedir}/modules
-%{basedir}/application/locale
+%attr(0770,root,%{icingawebgroup}) %dir %{storagedir}
 %attr(0770,root,%{icingawebgroup}) %config(noreplace) %dir %{configdir}
 %attr(0770,root,%{icingawebgroup}) %config(noreplace) %dir %{configdir}/modules
 
@@ -416,6 +418,7 @@ done
 %{_sbindir}/restorecon -R %{basedir} &> /dev/null || :
 %{_sbindir}/restorecon -R %{configdir} &> /dev/null || :
 %{_sbindir}/restorecon -R %{logdir} &> /dev/null || :
+%{_sbindir}/restorecon -R %{storagedir} &> /dev/null || :
 
 %postun selinux
 if [ $1 -eq 0 ] ; then
@@ -426,6 +429,7 @@ if [ $1 -eq 0 ] ; then
   [ -d %{basedir} ] && %{_sbindir}/restorecon -R %{basedir} &> /dev/null || :
   [ -d %{configdir} ] && %{_sbindir}/restorecon -R %{configdir} &> /dev/null || :
   [ -d %{logdir} ] && %{_sbindir}/restorecon -R %{logdir} &> /dev/null || :
+  [ -d %{storagedir} ] && %{_sbindir}/restorecon -R %{storagedir} &> /dev/null || :
 fi
 
 %files selinux
