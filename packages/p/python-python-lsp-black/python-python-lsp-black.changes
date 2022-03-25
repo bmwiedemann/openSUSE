@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 25 12:39:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.0
+  * Support global config as a fallback by @jdost in #19
+  * Fix TypeError when formatting with black 22.1.0+ by @wlcx in
+    #30
+
+-------------------------------------------------------------------
 Tue Jul 13 12:59:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for version 1.0.0

@@ -7,4 +7,15 @@
     <comment>python-lsp-server is the community replacement for python-language-server abandoned by Palantir</comment>
     <requestid>906353</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00b3b0135856155773137d00fd3907bc</srcmd5>
+    <version>1.1.0</version>
+    <time>1648241698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0
+  * Support global config as a fallback by @jdost in #19
+  * Fix TypeError when formatting with black 22.1.0+ by @wlcx in
+    #30 (forwarded request 964846 from bnavigator)</comment>
+    <requestid>964847</requestid>
+  </revision>
 </revisionlist>
