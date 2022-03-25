@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 25 13:17:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.1
+  * Do not throw an error when printing info and a logger is
+    disconnected. #652
+
+-------------------------------------------------------------------
 Sat Feb  5 17:40:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.13.0
