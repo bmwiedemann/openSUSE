@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Mar  6 17:46:14 UTC 2022 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.0.0~rc2
+  - Fix missing prompt in "shell" command [bsc#1196580]
+  - Add output of tukit commands to log file
+  - Fix compilation error with GCC12 [boo#1194876]
+  - Fixed (non-critical) security review comments [boo#1196149]
+  - Fixed selfupdate
+  - Code cleanup
+
+-------------------------------------------------------------------
+Fri Nov 22 18:05:54 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.0.0~rc1
+  This release is API, but not ABI compatible with previous releases;
+  existing applications will have to be recompiled against this new version.
+  Major features:
+  - Introduces a D-Bus service to access the libtukit API via the
+    org.opensuse.tukit.Transaction interface
+  - Introduces a C binding via libtukit.h.
+  Other changes:
+  - t-u: Rework --quiet handling to make sure no output is shown even in
+    error cases; this is necessary for automation, e.g. with Salt.
+    [gh#openSUSE/transactional-update#73]
+  - tukit: Allow storing command output into variable by introducing a new
+    optional parameter for "execute" and "callExt".
+  - Replace multiple and non-standalone occurenses of {} in "callExt"
+    argument.
+  - Split transactional-update.timer into transactional-update.timer
+    and transactional-update-cleanup.timer; the later will clean up
+    old snapshots even when the system does not do automatic updates.
+  - tukit: Remove legacy alias "setDiscard" for "setDiscardIfUnchanged".
+  - Throw exception if snapshot is not found.
+  - Fix various compiler warnings
+- Update spec file:
+  - Include tukitd D-Bus daemon
+  - Only install one version of the library (as there are no breaking API
+    changes yet)
+  - Add %pre scriplets for systemd services
+  - Replace %systemd_postun scriptlets with %systemd_postun_with_restart
+    to satisfy rpmlint checks
+  - Add transactional-update log file as %ghost file
+
+-------------------------------------------------------------------
 Fri Nov 19 16:58:21 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.6.2
