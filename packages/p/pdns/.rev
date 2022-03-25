@@ -763,4 +763,17 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
     <comment></comment>
     <requestid>949709</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>c45de056b2257fb72c9a937cef7665e6</srcmd5>
+    <version>4.6.1</version>
+    <time>1648241702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6.1
+  * fixes incomplete validation of incoming IXFR transfer for
+  secondary zones for which IXFR transfers have been enabled and
+  the network path to the primary server is not trusted. Note that
+  IXFR transfers are not enabled by default.
+  (CVE-2022-27227, bsc#1197525)</comment>
+    <requestid>964869</requestid>
+  </revision>
 </revisionlist>

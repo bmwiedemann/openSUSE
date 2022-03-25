@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 25 13:17:15 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to 4.6.1
+  * fixes incomplete validation of incoming IXFR transfer for
+  secondary zones for which IXFR transfers have been enabled and
+  the network path to the primary server is not trusted. Note that
+  IXFR transfers are not enabled by default.
+  (CVE-2022-27227, bsc#1197525)
+
+-------------------------------------------------------------------
 Tue Jan 25 12:01:18 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Removed random from --with-dynmodules= because randombackend was removed
