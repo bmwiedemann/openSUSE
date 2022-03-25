@@ -41,6 +41,7 @@ BuildRequires:  babeltrace-devel
 %endif
 BuildRequires:  binutils-devel
 BuildRequires:  bison
+BuildRequires:  clang
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gtk2-devel
@@ -50,6 +51,7 @@ BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libtraceevent-devel
 BuildRequires:  libzstd-devel
+BuildRequires:  llvm
 BuildRequires:  newt-devel
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
@@ -89,7 +91,7 @@ Development headers for perf. This is currently only dlfilter header.
 
 %prep
 # copy necessary files from kernel-source since we need to modify them
-(cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
+(cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib kernel/bpf/disasm.[ch]) | tar -xf -
 chmod +x tools/perf/util/generate-cmdlist.sh
 
 # don't error out on deprecated definitions in gtk2.h
@@ -106,6 +108,7 @@ export WERROR=0
 # PASS rpm optflags as EXTRA_FLAGS, passing as CFLAGS overrides and breaks build
 make %{?_smp_mflags} -f Makefile.perf V=1 PYTHON=python3 \
 	LIBTRACEEVENT_DYNAMIC=1 \
+	BUILD_BPF_SKEL=1 \
 	EXTRA_CFLAGS="%{optflags}" \
 	ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 \
 	prefix=%{_prefix} \
@@ -120,6 +123,7 @@ cd tools/perf
 export WERROR=0
 make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" \
 	LIBTRACEEVENT_DYNAMIC=1 \
+	BUILD_BPF_SKEL=1 \
 	ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 \
 	prefix=%{_prefix} \
 	libdir=%{_libdir} \

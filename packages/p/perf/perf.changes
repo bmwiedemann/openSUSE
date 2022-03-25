@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 25 17:37:08 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Enable bpf skel support.
+  This enables shared counter support (--bpf-counters in perf-stat)
+
+-------------------------------------------------------------------
 Thu Feb 24 08:29:57 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - enable dwz compression again. This was finally fixed:
