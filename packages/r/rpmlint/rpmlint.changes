@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar 24 08:14:33 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220324.fe80080:
+  * Test again for non-breaking space in test_tags.py.
+  * dbus-services: add missing config whitelist for tukitd (bsc#1196149)
+
+-------------------------------------------------------------------
+Wed Mar 23 11:55:11 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220323.1c77669:
+  * Enhance --time-report
+  * dbus services: adjust to accountsservice path move (bsc#1197354)
+  * dbus services: NetworkManager-vpnc config locations (bsc#1197053)
+  * dbus services: adjust NetworkManager-pptp config locations (bsc#1197054)
+  * Use zypper for openSUSE.
+  * Add SUSE version checks in spec files (#292).
+
+-------------------------------------------------------------------
+Tue Mar 22 09:05:48 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220322.91ea8dc:
+  * Remove garbage chars (c2a0 c2a0) from file.
+  * Add only small badge for repology.
+  * Add packaging status.
+
+-------------------------------------------------------------------
 Wed Mar 09 19:06:36 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220308.a867f4a:
