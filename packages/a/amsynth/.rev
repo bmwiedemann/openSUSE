@@ -103,4 +103,13 @@
     <comment></comment>
     <requestid>945018</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d75ebef6dfe4e45b72f8dbf9289d20f0</srcmd5>
+    <version>1.12.4</version>
+    <time>1648241708</time>
+    <user>dimstar_suse</user>
+    <comment>- skip pandoc for arm 32bit platforms as well 
+</comment>
+    <requestid>964931</requestid>
+  </revision>
 </revisionlist>

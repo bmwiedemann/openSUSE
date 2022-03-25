@@ -27,7 +27,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-%ifnarch %ix86
+%ifnarch %ix86 %arm
 BuildRequires:  pandoc
 %endif
 BuildRequires:  pkgconfig
@@ -177,7 +177,7 @@ make %{?_smp_mflags}
 %{_datadir}/icons/hicolor/*/apps/amsynth.*
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/amsynth.appdata.xml
-%ifnarch %ix86
+%ifnarch %ix86 %arm
 %{_mandir}/man1/amsynth.1%{?ext_man}
 %endif
 
@@ -197,7 +197,7 @@ make %{?_smp_mflags}
 %{_datadir}/appdata/vst-amsynth-plugin.metainfo.xml
 
 %files lang -f %{name}.lang
-%ifnarch %ix86
+%ifnarch %ix86 %arm
 %{_mandir}/de/man1/amsynth.1%{?ext_man}
 %{_mandir}/fr/man1/amsynth.1%{?ext_man}
 %endif
