@@ -1246,4 +1246,12 @@
 </comment>
     <requestid>955428</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>2078876578eae724f805433df71187b5</srcmd5>
+    <version>4.4.2</version>
+    <time>1648241699</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.4.2 (forwarded request 964843 from alois)</comment>
+    <requestid>964844</requestid>
+  </revision>
 </revisionlist>

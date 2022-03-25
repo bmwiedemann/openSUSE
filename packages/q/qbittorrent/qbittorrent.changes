@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 25 09:28:47 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.4.2
+  New features:
+  * Allow to limit max memory working set size
+  Bug fixes:
+  * Fix UI crash when torrent is in a non-existent category
+  * Correctly handle changing of global save paths
+  * Disable performance alert
+  * Prevent loading resume data with inconsistent ID
+  * Properly handle metadata download for an existing torrent
+  * Prevent crash when open torrent destination folder
+
+-------------------------------------------------------------------
 Wed Feb 16 14:30:04 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.4.1
