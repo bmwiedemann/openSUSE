@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 22 13:52:13 UTC 2022 - dmueller@suse.com
+
+- Update to version 84.87+git20220322.48f07a0:
+  * Remove errneous whitespaces
+  * fix comparison name
+
+-------------------------------------------------------------------
+Mon Mar 21 17:40:44 UTC 2022 - lnussel@suse.de
+
+- Update to version 84.87+git20220321.9651edb:
+  * Restore secure permissions in build environment (bsc#1159963)
+  * Handle default being easy
+  * Various speedups around invoking rpm
+- change service file from disabled to manual
+
+-------------------------------------------------------------------
 Fri Jan 28 15:00:55 UTC 2022 - ro@suse.de
 
 - Update to version 84.87+git20220128.77a97b9:

@@ -883,4 +883,20 @@
   * support cross builds</comment>
     <requestid>949707</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>b4156cc6efa1dbc8d5725c0ca71c5175</srcmd5>
+    <version>84.87+git20220322.48f07a0</version>
+    <time>1648241664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20220322.48f07a0:
+  * Remove errneous whitespaces
+  * fix comparison name
+
+- Update to version 84.87+git20220321.9651edb:
+  * Restore secure permissions in build environment (bsc#1159963)
+  * Handle default being easy
+  * Various speedups around invoking rpm
+- change service file from disabled to manual</comment>
+    <requestid>963962</requestid>
+  </revision>
 </revisionlist>
