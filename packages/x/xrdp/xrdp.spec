@@ -56,6 +56,7 @@ Patch14:        xrdp-fate318398-change-expired-password.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  fuse-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libXfixes-devel
 BuildRequires:  libXrandr-devel
@@ -116,7 +117,8 @@ sh ./bootstrap
    --enable-ipv6 \
    --enable-painter \
    --with-systemdsystemunitdir=%{_unitdir} \
-   --enable-vsock
+   --enable-vsock \
+   --enable-fuse
 make %{?_smp_mflags} V=1
 
 %install

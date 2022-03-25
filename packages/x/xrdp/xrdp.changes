@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 25 14:56:37 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'BuildRequires:fuse-devel' and '--enable-fuse' to configure
+  so that hyper-v-enhanced-session package 'shared-drives' (and general
+  copy and paste of files) works correctly.
+
+-------------------------------------------------------------------
 Fri Feb  4 17:05:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rework files section: do not add config(noreplace) marker on the
