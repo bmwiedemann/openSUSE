@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 24 22:56:21 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
+
+- Update to version 8.15.1.
+  * Fixes an inconsistency when using module subtyping with
+    inductive types.
+  * Speeds up CoqIDE on large files.
+  * Fixes a bug where `coqc -vok` was not creating a .vok file.
+  * Fixes a regression in `cbn`.
+  * Improves usability of schemes with `elim foo using scheme with
+    (P0 := ...)` (the `P0` name was not accessible in 8.15.0).
+
+-------------------------------------------------------------------
 Sat Jan 15 18:03:24 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.15.0.

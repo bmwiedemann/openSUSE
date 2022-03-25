@@ -270,4 +270,20 @@
   * For more details, see refman/changes.html in coq-doc.</comment>
     <requestid>946708</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2f9535ff1e45179aec99d572bc789a02</srcmd5>
+    <version>8.15.1</version>
+    <time>1648241674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.15.1.
+  * Fixes an inconsistency when using module subtyping with
+    inductive types.
+  * Speeds up CoqIDE on large files.
+  * Fixes a bug where `coqc -vok` was not creating a .vok file.
+  * Fixes a regression in `cbn`.
+  * Improves usability of schemes with `elim foo using scheme with
+    (P0 := ...)` (the `P0` name was not accessible in 8.15.0).
+</comment>
+    <requestid>964734</requestid>
+  </revision>
 </revisionlist>
