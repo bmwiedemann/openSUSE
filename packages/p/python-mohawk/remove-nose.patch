@@ -1,12 +1,14 @@
 Index: mohawk-1.1.0/mohawk/tests.py
 ===================================================================
---- mohawk-1.1.0.orig/mohawk/tests.py
-+++ mohawk-1.1.0/mohawk/tests.py
-@@ -4,7 +4,6 @@ from unittest import TestCase
+--- mohawk-1.1.0.orig/mohawk/tests.py	2019-10-28 15:45:53.000000000 +0100
++++ mohawk-1.1.0/mohawk/tests.py	2022-03-24 14:26:38.698018107 +0100
+@@ -3,8 +3,7 @@ import warnings
+ from unittest import TestCase
  from base64 import b64decode, urlsafe_b64encode
  
- import mock
+-import mock
 -from nose.tools import eq_, raises
++import unittest.mock as mock
  import six
  
  from . import Receiver, Sender

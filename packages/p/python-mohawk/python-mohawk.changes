@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 24 13:27:46 UTC 2022 - pgajdos@suse.com
+
+- Extend remove-nose.patch: Use unittest.mock instead of
+  python-mock (https://trello.com/c/S6eADbii/64-remove-python-mock)
+
+-------------------------------------------------------------------
 Thu Sep 23 06:11:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-nose.patch:
