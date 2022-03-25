@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 25 10:00:18 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.5.1:
+  * Enable simulcast on Firefox.
+  * Fix rate control on Firefox.
+  * Fix corruption after packet reordering when saving to disk.
+  * Fix the H.264 profile for compatibility with older iPhones.
+  * Display a warning when joining a locked group.
+  * Add a hook that allows the client to influence the ICE policy.
+  * Fix error handling in peer-to-peer file transfer.
+
+-------------------------------------------------------------------
 Tue Mar 08 22:18:36 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.5:
