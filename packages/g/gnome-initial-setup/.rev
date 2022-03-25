@@ -138,4 +138,12 @@ Resub it :-)</comment>
     <comment></comment>
     <requestid>963546</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e18e1deec904904fd4857aa1f1407404</srcmd5>
+    <version>42.0.1</version>
+    <time>1648241686</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 964633 from iznogood)</comment>
+    <requestid>964804</requestid>
+  </revision>
 </revisionlist>

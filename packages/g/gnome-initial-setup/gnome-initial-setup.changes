@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 24 11:02:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.0.1:
+  + The dark theme preference support introduced in 42.rc caused a
+    regression in Initial Setup's handling of the login keyring.
+    The effect was that the new user's login keyring password does
+    not match their system password, and so cannot be unlocked.
+    This regression is fixed in this release.
+
+-------------------------------------------------------------------
 Fri Mar 18 15:59:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:
