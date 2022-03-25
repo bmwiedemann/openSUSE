@@ -1,7 +1,7 @@
 #
 # spec file for package freeciv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           freeciv
-Version:        2.6.6
+Version:        3.0.0
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            http://www.freeciv.org
-Source0:        http://files.freeciv.org/stable/%{name}-%{version}.tar.bz2
+Source0:        http://files.freeciv.org/stable/%{name}-%{version}.tar.xz
 Source1:        freeciv-gtk3.desktop
 Source2:        freeciv-qt.desktop
 Source3:        freeciv.png
@@ -111,7 +111,7 @@ install -m 644 $RPM_SOURCE_DIR/*.png %{buildroot}%{_datadir}/pixmaps
 %suse_update_desktop_file -i freeciv-manual Game StrategyGame
 rm %{buildroot}%{_docdir}/freeciv/COPYING
 
-%find_lang %{name}
+%find_lang %{name}-core
 %find_lang %{name}-nations
 %find_lang %{name}-ruledit
 %fdupes %{buildroot}/%{_datadir}/
@@ -128,27 +128,17 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/database.lua
 %{_bindir}/freeciv-ruledit
+%{_bindir}/freeciv-ruleup
 %{_bindir}/freeciv-server
 %{_bindir}/freeciv-manual
 %{_datadir}/applications/freeciv-manual.desktop
 %{_datadir}/applications/org.freeciv.server.desktop
 %{_datadir}/applications/org.freeciv.ruledit.desktop
 %{_datadir}/freeciv/
-%{_datadir}/icons/hicolor/128x128/apps/freeciv-client.png
-%{_datadir}/icons/hicolor/128x128/apps/freeciv-server.png
-%{_datadir}/icons/hicolor/128x128/apps/freeciv-modpack.png
-%{_datadir}/icons/hicolor/16x16/apps/freeciv-client.png
-%{_datadir}/icons/hicolor/16x16/apps/freeciv-server.png
-%{_datadir}/icons/hicolor/16x16/apps/freeciv-modpack.png
-%{_datadir}/icons/hicolor/32x32/apps/freeciv-client.png
-%{_datadir}/icons/hicolor/32x32/apps/freeciv-server.png
-%{_datadir}/icons/hicolor/32x32/apps/freeciv-modpack.png
-%{_datadir}/icons/hicolor/48x48/apps/freeciv-client.png
-%{_datadir}/icons/hicolor/48x48/apps/freeciv-server.png
-%{_datadir}/icons/hicolor/48x48/apps/freeciv-modpack.png
-%{_datadir}/icons/hicolor/64x64/apps/freeciv-client.png
-%{_datadir}/icons/hicolor/64x64/apps/freeciv-server.png
-%{_datadir}/icons/hicolor/64x64/apps/freeciv-modpack.png
+%{_datadir}/icons/hicolor/*x*/apps/freeciv-client.png
+%{_datadir}/icons/hicolor/*x*/apps/freeciv-server.png
+%{_datadir}/icons/hicolor/*x*/apps/freeciv-modpack.png
+%{_datadir}/icons/hicolor/*x*/apps/freeciv-ruledit.png
 %{_datadir}/pixmaps/freeciv-client.png
 %{_datadir}/pixmaps/freeciv-manual.png
 %{_datadir}/pixmaps/%{name}.png
@@ -156,7 +146,7 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %{_datadir}/appdata/freeciv-server.appdata.xml
 %{_datadir}/appdata/freeciv-ruledit.appdata.xml
 
-%files lang -f %{name}.lang -f %{name}-nations.lang -f %{name}-ruledit.lang
+%files lang -f %{name}-core.lang -f %{name}-nations.lang -f %{name}-ruledit.lang
 
 %files gtk3
 %{_bindir}/freeciv-gtk3

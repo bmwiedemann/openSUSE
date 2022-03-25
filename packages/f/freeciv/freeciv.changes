@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 23 22:18:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * This release is a major upgrade which with some changes that
+    can support backward compatible rulesets
+  * see https://freeciv.fandom.com/wiki/NEWS-3.0.0#WHAT.27S_CHANGED_SINCE_2.6
+
+-------------------------------------------------------------------
 Sat Dec 11 23:32:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.6:
