@@ -33,7 +33,7 @@ BuildRequires:  libtool
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(enchant) >= 1.6.0
+BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0

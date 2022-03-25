@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 25 19:16:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(enchant) for pkgconfig(enchant-2)
+  BuildRequires: Use the newer enchant-2 spellchecker.
+
+-------------------------------------------------------------------
 Wed Mar  2 21:18:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pan-lang Recommends: No longer needed.
