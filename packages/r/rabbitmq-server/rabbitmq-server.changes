@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 25 01:32:07 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.14
+  * See https://github.com/rabbitmq/rabbitmq-server/blob/v3.9.x/release-notes/3.9.14.md
+    for the full changelog.
+  * Build time compatibility with Elixir 1.13 (gh#rabbitmq/rabbitmq-server#4019)
+    - Drop Elixir-1.13-OptionParser-no-longer-supports-atom-val.patch
+    - Drop Support-Elixir-1.13.patch
+  * Adapt to a breaking Erlang 24.3 LDAP client change.
+
+-------------------------------------------------------------------
 Sat Feb 19 10:44:15 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add zsh BuildRequires to fix "directories not owned by a package"

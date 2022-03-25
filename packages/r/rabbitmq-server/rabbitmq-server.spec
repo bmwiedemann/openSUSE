@@ -39,7 +39,7 @@
 %define _rabbitmq_group rabbitmq
 
 Name:           rabbitmq-server
-Version:        3.9.13
+Version:        3.9.14
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -52,9 +52,6 @@ Source4:        rabbitmq-env.conf
 Source6:        rabbitmq-server.service
 Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.tmpfiles
 Source8:        README.SUSE
-# PATCH-FIX-UPSTREAM Allow building with elixir 1.13.x gh#rabbitmq/rabbitmq-server#4019
-Patch0:         Support-Elixir-1.13.patch
-Patch1:         Elixir-1.13-OptionParser-no-longer-supports-atom-val.patch
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
 BuildRequires:  erlang >= 23.2
@@ -121,8 +118,8 @@ Optional dependency offering bash completion for %{name}.
 Summary:        Zsh completion for %{name}
 Group:          System/Shells
 BuildRequires:  zsh
-Requires:       zsh
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
