@@ -1,7 +1,0 @@
-<package name="SUSEConnect" project="openSUSE:Factory">
-  <title>SUSEConnect</title>
-  <description>This package provides a command line tool and rubygem library for connecting a
-client system to the SUSE Customer Center. It will connect the system to your
-product subscriptions and enable the product repositories/services locally.</description>
-  <devel project="systemsmanagement:SCC" package="SUSEConnect"/>
-</package>
