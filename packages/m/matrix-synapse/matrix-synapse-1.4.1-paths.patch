@@ -37,7 +37,7 @@ Index: synapse/synapse/config/logger.py
 ===================================================================
 --- synapse.orig/synapse/config/logger.py
 +++ synapse/synapse/config/logger.py
-@@ -149,7 +149,7 @@ class LoggingConfig(Config):
+@@ -154,7 +154,7 @@ class LoggingConfig(Config):
          self.no_redirect_stdio = config.get("no_redirect_stdio", False)
  
      def generate_config_section(self, config_dir_path, server_name, **kwargs) -> str:

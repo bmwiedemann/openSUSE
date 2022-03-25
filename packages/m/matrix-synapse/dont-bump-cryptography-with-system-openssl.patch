@@ -11,8 +11,8 @@ Index: synapse/synapse/python_dependencies.py
      # we use `order`, which arrived in attrs 19.2.0.
      # Note: 21.1.0 broke `/sync`, see #9936
      "attrs>=19.2.0,!=21.1.0",
-@@ -79,7 +79,8 @@ REQUIREMENTS = [
-     "typing-extensions>=3.7.4",
+@@ -80,7 +80,8 @@ REQUIREMENTS = [
+     "typing-extensions>=3.10.0",
      # We enforce that we have a `cryptography` version that bundles an `openssl`
      # with the latest security patches.
 -    "cryptography>=3.4.7",
