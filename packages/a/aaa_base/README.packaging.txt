@@ -1,15 +1,10 @@
-This package should use just the content of the git tree. If you need
-to make changes, you have the following options:
-* Make them in git and update the package from git (you can send merge
-  request if you don't have write access)
-* Create a patch, add the patch to the package and let one of the
-  aaa_base packagers commit it for you
-
-The online repository is at:
+This package is maintained in git at
 http://github.com/openSUSE/aaa_base
 
-For building the package from git run the service directly:
-osc service disabledrun
+Please file a pull request for any changes. The spec file is also in
+git.
 
-Note that aaa_base.spec and aaa_base.changes are not part of the git
-repo.
+For building the package from git you have to adjust the _service
+file to point at the right branch, then call
+
+osc service manualrun

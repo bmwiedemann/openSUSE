@@ -3961,4 +3961,40 @@
     Avoid changing COLORTERM variable in urxvt (boo#1190833)</comment>
     <requestid>933654</requestid>
   </revision>
+  <revision rev="486" vrev="1">
+    <srcmd5>d109a2802b6c3c789153727e43f06ed2</srcmd5>
+    <version>84.87+git20220324.fca4619</version>
+    <time>1648241662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20220324.fca4619:
+  * No completion in restricted bash
+  * No longer install /usr/lib/restricted/bin/hostname =&gt; /bin/hostname symlink
+
+- Update to version 84.87+git20220321.f60f2de:
+  * order header in the way spec-cleaner wants it
+  * move changes from package to git
+  * merge audio files highlighting fixes from coreutils 9
+  * Update from coreutils 9
+  * Make source validator happy
+
+- Update to version 84.87+git20220321.5a5cb79:
+  * DIR_COLORS: lz support
+  * DIR_COLORS: zstd support
+
+- Update to version 84.87+git20220221.b62a2cf:
+  * package: Require new enough version of glibc
+  * package: build in place support
+  * drop /etc/ttytype (boo#1191923)
+
+- Update to version 84.87+git20211206.de24bdf:
+  * Add &quot;rpm&quot; make target
+  * Remove legacy usrmerged sections
+  * Add rpmlintrc and README from OBS too
+  * Fix osc service instructions
+  * Add obs workflow for git integration
+  * Adopt upstream way of setting rp_filter and promote_secondaries
+  * Don't fail if net.ipv4.ping_group_range can't be set
+  * add spec file</comment>
+    <requestid>964641</requestid>
+  </revision>
 </revisionlist>

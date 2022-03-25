@@ -5,6 +5,9 @@
     <param name="url">https://github.com/openSUSE/aaa_base.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
+    <param name="extract">aaa_base.spec</param>
+    <param name="extract">aaa_base-rpmlintrc</param>
+    <param name="extract">README.packaging.txt</param>
   </service>
   <service name="set_version" mode="manual"/>
 </services>

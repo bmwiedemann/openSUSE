@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Mar 24 11:21:41 UTC 2022 - dmueller@suse.com
+
+- Update to version 84.87+git20220324.fca4619:
+  * No completion in restricted bash
+  * No longer install /usr/lib/restricted/bin/hostname => /bin/hostname symlink
+
+-------------------------------------------------------------------
+Mon Mar 21 17:33:26 UTC 2022 - lnussel@suse.de
+
+- Update to version 84.87+git20220321.f60f2de:
+  * order header in the way spec-cleaner wants it
+  * move changes from package to git
+  * merge audio files highlighting fixes from coreutils 9
+  * Update from coreutils 9
+  * Make source validator happy
+
+-------------------------------------------------------------------
+Mon Mar 21 10:08:15 UTC 2022 - lnussel@suse.de
+
+- Update to version 84.87+git20220321.5a5cb79:
+  * DIR_COLORS: lz support
+  * DIR_COLORS: zstd support
+
+-------------------------------------------------------------------
+Mon Feb 21 09:18:44 UTC 2022 - lnussel@suse.de
+
+- Update to version 84.87+git20220221.b62a2cf:
+  * package: Require new enough version of glibc
+  * package: build in place support
+  * drop /etc/ttytype (boo#1191923)
+
+-------------------------------------------------------------------
+Sat Dec 11 16:05:25 UTC 2021 - dleuenberger@suse.com
+
+- Update to version 84.87+git20211206.de24bdf:
+  * Add "rpm" make target
+  * Remove legacy usrmerged sections
+  * Add rpmlintrc and README from OBS too
+  * Fix osc service instructions
+  * Add obs workflow for git integration
+  * Adopt upstream way of setting rp_filter and promote_secondaries
+  * Don't fail if net.ipv4.ping_group_range can't be set
+  * add spec file
+
+-------------------------------------------------------------------
 Thu Nov 25 07:16:25 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Clear term.sh and term.csh also from file list

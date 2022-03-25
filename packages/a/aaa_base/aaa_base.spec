@@ -1,7 +1,7 @@
 #
 # spec file for package aaa_base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,26 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+%if 0%{?_build_in_place}
+%define git_version %(git log '-n1' '--date=format:%Y%m%d' '--no-show-signature' "--pretty=format:+git%cd.%h")
+BuildRequires:  git-core
+%else
+# this is required for obs' source validator. It's
+# 20-files-present-and-referenced ignores all conditionals. So the
+# definition of git_version actually happens always.
+%define git_version %{nil}
+%endif
+
 Name:           aaa_base
-Version:        84.87+git20211124.5486aad
+Version:        84.87+git20220324.fca4619%{git_version}
 Release:        0
+Summary:        openSUSE Base Package
+License:        GPL-2.0-or-later
+Group:          System/Fhs
 URL:            https://github.com/openSUSE/aaa_base
-# do not require systemd - aaa_base is in the build environment and we don't
-# want to pull in tons of dependencies
-Conflicts:      sysvinit-init
+Source:         aaa_base-%{version}.tar
+Source1:        README.packaging.txt
+Source99:       aaa_base-rpmlintrc
 Requires:       /bin/mktemp
 Requires:       /usr/bin/cat
 Requires:       /usr/bin/date
@@ -39,28 +52,20 @@ Requires:       /usr/bin/tput
 Requires:       /usr/bin/xz
 Requires:       distribution-release
 Requires:       filesystem
+Requires(pre):  /usr/bin/rm
+Requires(pre):  (glibc >= 2.30 if glibc)
+Requires(post): fillup /usr/bin/chmod /usr/bin/chown
 Recommends:     aaa_base-extras
 Recommends:     iproute2
 Recommends:     iputils
 Recommends:     logrotate
 Recommends:     netcfg
 Recommends:     udev
-Requires(pre):  /usr/bin/rm
-Requires(pre):  glibc >= 2.30
-Requires(post): fillup /usr/bin/chmod /usr/bin/chown
+# do not require systemd - aaa_base is in the build environment and we don't
+# want to pull in tons of dependencies
+Conflicts:      sysvinit-init
 
-Summary:        openSUSE Base Package
-License:        GPL-2.0-or-later
-Group:          System/Fhs
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # run osc service mr to recreate
-Source:         aaa_base-%{version}.tar
-#
-# Read README.packaging.txt before making any changes to this
-# package
-#
-Source1:        README.packaging.txt
-Source99:       aaa_base-rpmlintrc
 
 %description
 This package installs several important configuration files and central scripts.
@@ -101,27 +106,12 @@ systems.
 
 %prep
 %setup -q
-sed -i 's|actiondir="/usr/lib/initscripts/legacy-actions"|actiondir="%{_libexecdir}/initscripts/legacy-actions"|' \
-    files/usr/sbin/service
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS" CC="%{__cc}" %{?_smp_mflags}
-if test -d patches/$RPM_ARCH; then
-	pushd files
-	for file in ../patches/$RPM_ARCH/*; do
-		patch -p0 --input=$file
-	done
-	find -name "*.orig" | xargs -r rm
-	popd
-fi
+%make_build CFLAGS="%{optflags}" CC="%{__cc}"
 
 %install
-#
-make DESTDIR=$RPM_BUILD_ROOT install
-%if 0%{?usrmerged}
-rm -f %{buildroot}/sbin/*
-%endif
-#
+%make_install
 mkdir -p %{buildroot}/etc/sysctl.d
 case "$RPM_ARCH" in
 	s390*) ;;
@@ -129,11 +119,11 @@ case "$RPM_ARCH" in
 esac
 #
 # make sure it does not creep in again
-test -d $RPM_BUILD_ROOT/root/.gnupg && exit 1
+test -d %{buildroot}/root/.gnupg && exit 1
 # TODO: get rid of that at some point in the future
-mkdir -p $RPM_BUILD_ROOT/etc/init.d
+mkdir -p %{buildroot}/etc/init.d
 for i in boot.local after.local ; do
-  install -m 755 /dev/null $RPM_BUILD_ROOT/etc/init.d/$i
+  install -m 755 /dev/null %{buildroot}/etc/init.d/$i
 done
 #
 install -d -m 755 %buildroot%{_libexecdir}/initscripts/legacy-actions
@@ -177,7 +167,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 %service_del_postun backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %config(noreplace) /etc/sysctl.conf
 %config /etc/bash.bashrc
@@ -203,7 +192,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/etc/profile.d/ls.bash
 /usr/etc/profile.d/ls.zsh
 %config /etc/shells
-%config /etc/ttytype
 %ghost %dir /etc/init.d
 %ghost %config(noreplace) /etc/init.d/boot.local
 %ghost %config(noreplace) /etc/init.d/after.local
@@ -220,7 +208,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/bin/rpmlocate
 /usr/bin/safe-rm
 /usr/bin/safe-rmdir
-/usr/lib/restricted/bin/hostname
 /usr/sbin/sysconf_addword
 /usr/share/man/man1/smart_agetty.1*
 /usr/share/man/man5/defaultdomain.5*
@@ -233,14 +220,8 @@ mkdir -p %{buildroot}%{_fillupdir}
 %{_fillupdir}/sysconfig.language
 %{_fillupdir}/sysconfig.proxy
 %{_fillupdir}/sysconfig.windowmanager
-%if !0%{?usrmerged}
-/sbin/service
-/sbin/refresh_initrd
-/sbin/smart_agetty
-%endif
 
 %files extras
-%defattr(-,root,root)
 %config(noreplace) /etc/DIR_COLORS
 /etc/skel/.emacs
 /etc/skel/.inputrc
@@ -255,12 +236,10 @@ mkdir -p %{buildroot}%{_fillupdir}
 %{_fillupdir}/sysconfig.backup
 
 %files malloccheck
-%defattr(-,root,root)
 /usr/etc/profile.d/malloc-debug.sh
 /usr/etc/profile.d/malloc-debug.csh
 
 %files wsl
-%defattr(-,root,root)
 /usr/etc/profile.d/wsl.csh
 /usr/etc/profile.d/wsl.sh
 
