@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 24 17:36:34 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220324.e25e4b7c:
+  * Run source_validator scripts from check_source.py directly
+  * Move license check from check_source.pl to .py
+  * Move changes check from check_source.pl to .py
+  * Move spec file checks from check_source.pl to .py
+  * Unskip test for remote services - miniobs got updated
+
+-------------------------------------------------------------------
+Thu Mar 24 15:57:33 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220324.9dc35be9:
+  * Fix staging accept approving package list changes
+
+-------------------------------------------------------------------
 Thu Mar 24 09:48:32 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220324.20d1bcbd:
