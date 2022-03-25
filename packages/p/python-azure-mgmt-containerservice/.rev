@@ -213,4 +213,15 @@
 - Update Requires from setup.py (forwarded request 956543 from glaubitz)</comment>
     <requestid>957066</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>499835534e4a8a9f1fe63fedc8dad251</srcmd5>
+    <version>18.0.0</version>
+    <time>1648241696</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 18.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 964780 from glaubitz)</comment>
+    <requestid>964835</requestid>
+  </revision>
 </revisionlist>
