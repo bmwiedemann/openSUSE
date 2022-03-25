@@ -264,9 +264,14 @@ rm spyder/plugins/ipythonconsole/scripts/conda-activate.bat
 # remove egg package pins read at runtime startup and for the test suite dependency sync checks
 sed -r \
     -e 's/(ipython.*),<8.0.0/\1/' \
-    -e 's/(pyqt[5 ])<5.13/\1/' \
-    -e 's/(pyqtwebengine.*)<5.13/\1/' \
+    -e 's/(IPython.*),<8.0.0/\1/' \
+    -e 's/(pyqt.*)<5.13/\1/' \
+    -e 's/(python-lsp-server.*),<1.4.0/\1/' \
     -i setup.py requirements/conda.txt binder/environment.yml
+sed -r \
+    -e 's/(IPYTHON_REQVER.*);<8.0.0/\1/' \
+    -e 's/(PYLSP_REQVER.*);<1.4.0/\1/' \
+    -i spyder/dependencies.py
 
 # Upstream brings its fixed versions for pyls, qdarksstyle and spyder-kernels for its
 # test environment, but we want to test against installed packages.
