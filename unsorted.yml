@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -100,7 +100,6 @@ unsorted:
   - Mesa-libGLESv2-devel-32bit: [x86_64] 
   - Mesa-libGLESv3-devel 
   - Mesa-libOpenCL 
-  - Mesa-libVulkan-devel 
   - Mesa-libd3d 
   - Mesa-libd3d-32bit: [x86_64] 
   - Mesa-libd3d-devel 
@@ -3755,6 +3754,7 @@ unsorted:
   - firewall-applet 
   - firewall-config 
   - firewall-macros 
+  - firewalld-prometheus-config 
   - firewalld-rpcbind-helper 
   - firewalld-test 
   - fish 
@@ -6805,6 +6805,7 @@ unsorted:
   - hibiscus 
   - hidviz 
   - highlight 
+  - highlight-common 
   - highlight-gui 
   - highlight-gui-lang 
   - himeno 
@@ -7828,8 +7829,6 @@ unsorted:
   - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab-widgets 
-  - jupyter-jupytext 
-  - jupyter-jupytext-jupyterlab 
   - jupyter-lineup-widget 
   - jupyter-matlab-kernel 
   - jupyter-matplotlib 
@@ -11206,6 +11205,7 @@ unsorted:
   - libgstmpegts-1_0-0-32bit: [x86_64] 
   - libgstpbutils-1_0-0-32bit: [x86_64] 
   - libgstphotography-1_0-0-32bit: [x86_64] 
+  - libgstplay-1_0-0-32bit: [x86_64] 
   - libgstplayer-1_0-0-32bit: [x86_64] 
   - libgstreamer-1_0-0-32bit: [x86_64] 
   - libgstreamerd-3-0 
@@ -11219,6 +11219,7 @@ unsorted:
   - libgsttag-1_0-0-32bit: [x86_64] 
   - libgsttranscoder-1_0-0 
   - libgsturidownloader-1_0-0-32bit: [x86_64] 
+  - libgstva-1_0-0-32bit: [x86_64] 
   - libgstvalidate-1_0-0 
   - libgstvideo-1_0-0-32bit: [x86_64] 
   - libgstvulkan-1_0-0-32bit: [x86_64] 
@@ -12156,6 +12157,7 @@ unsorted:
   - libmlx4-1-32bit: [x86_64] 
   - libmlx5-1-32bit: [x86_64] 
   - libmms-devel 
+  - libmms0 
   - libmms0-32bit: [x86_64] 
   - libmng-devel 
   - libmng2-32bit: [x86_64] 
@@ -13858,7 +13860,7 @@ unsorted:
   - libspnav0 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_36_0-0 
+  - libsqlcipher-3_37_2-0 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -23224,7 +23226,6 @@ unsorted:
   - python310-jupyterlab-pygments 
   - python310-jupyterlab-templates 
   - python310-jupyterlab-widgets 
-  - python310-jupytext 
   - python310-jwcrypto 
   - python310-k5test 
   - python310-kafka-python 
@@ -26319,7 +26320,6 @@ unsorted:
   - python38-jupyterlab-pygments 
   - python38-jupyterlab-templates 
   - python38-jupyterlab-widgets 
-  - python38-jupytext 
   - python38-jwcrypto 
   - python38-k5test 
   - python38-kafka-python 
@@ -29401,7 +29401,6 @@ unsorted:
   - python39-jupyterlab-pygments 
   - python39-jupyterlab-templates 
   - python39-jupyterlab-widgets 
-  - python39-jupytext 
   - python39-jwcrypto 
   - python39-k5test 
   - python39-kafka-python 
@@ -41776,6 +41775,7 @@ unsorted:
   - typelib-1_0-GstGLX11-1_0 
   - typelib-1_0-GstInsertBin-1_0 
   - typelib-1_0-GstMpegts-1_0 
+  - typelib-1_0-GstPlay-1_0 
   - typelib-1_0-GstPlayer-1_0 
   - typelib-1_0-GstRtp-1_0 
   - typelib-1_0-GstRtsp-1_0 
@@ -41993,7 +41993,6 @@ unsorted:
   - uom-parent 
   - upb-devel 
   - update-bootloader-rpm-macros 
-  - update-checker 
   - update-desktop-files 
   - update-test-32bit-pkg 
   - update-test-32bit-pkg-32bit: [x86_64] 
