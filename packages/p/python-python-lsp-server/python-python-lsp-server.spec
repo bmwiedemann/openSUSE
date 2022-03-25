@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,16 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-lsp-server
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 39.0.0}
+BuildRequires:  %{python_module setuptools >= 44}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
+BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
 BuildRequires:  %{python_module jedi >= 0.17.2}
@@ -47,11 +50,10 @@ BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 0.10.5}
 BuildRequires:  %{python_module ujson >= 3.0.0}
 BuildRequires:  %{python_module yapf}
-
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-jedi >= 0.17.2
-Requires:       python-pluggy
+Requires:       python-pluggy >= 1.0.0
 Requires:       python-python-lsp-jsonrpc >= 1.0.0
 Requires:       python-setuptools >= 39.0.0
 Requires:       python-ujson >= 3.0.0
@@ -60,6 +62,7 @@ Conflicts:      python-autopep8 >= 1.7.0
 Suggests:       python-flake8 >= 4.0.0
 Conflicts:      python-flake8 >= 4.1.0
 Suggests:       python-mccabe >= 0.6.0
+Conflicts:      python-mccabe >= 0.7.0
 Suggests:       python-pycodestyle >= 2.8.0
 Conflicts:      python-pycodestyle >= 2.9.0
 Suggests:       python-pydocstyle >= 2.0.0
@@ -109,11 +112,7 @@ ln -s %{_bindir}/pylint-%{$python_bin_suffix} build/testbin/pylint
 export PATH="$PWD/build/testbin:$PATH"
 # Remove pytest addopts
 rm setup.cfg
-%if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
-  # Test failure on Leap 15 due to mock hiccup
-  donttest+=" or test_flake8_config_param or test_flake8_executable_param"
-%endif
-%pytest -ra -k "not (dummy_k_expr_start ${donttest} ${$python_donttest})" -vv
+%pytest
 
 %post
 %python_install_alternative pylsp
