@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%global somajor 0
+%global somajor 4
 %global libprefix libtukit
 %global libname %{libprefix}%{somajor}
 %global devname %{libprefix}-devel
@@ -26,13 +26,14 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        3.6.2
+Version:        4.0.0~rc2
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://github.com/openSUSE/transactional-update
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+#Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        transactional-update-4.0.0~rc2.tar.gz
 Source1:        transactional-update.check
 
 BuildRequires:  autoconf
@@ -50,9 +51,11 @@ BuildRequires:  libzypp
 BuildRequires:  make
 BuildRequires:  suse-module-tools
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(libeconf)
 BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(systemd)
@@ -73,6 +76,7 @@ Requires:       zypper
 # Parameter --drop-if-no-change requires it
 Recommends:     inotify-tools
 Recommends:     rebootmgr
+Suggests:       tukitd = %{version}-%{release}
 
 %description
 transactional-update is a tool to update a system in an atomic
@@ -82,7 +86,7 @@ way with zypper, btrfs and snapshots.
 Summary:        Tool for doing transactional updates using Btrfs snapshots
 License:        GPL-2.0-or-later
 Group:          System/Base
-Requires:       %{libname}%{?_isa} = %{version}-%{release}
+Requires:       %{libname} = %{version}-%{release}
 Conflicts:      transactional-update < 3.0.0
 
 %description -n tukit
@@ -114,13 +118,24 @@ Requires:       snapper
 This package contains the libraries required for programs to do
 transactional updates using btrfs snapshots.
 
+%package -n tukitd
+Summary:        D-Bus controlling service for transactional updates
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+Requires:       %{libname} = %{version}-%{release}
+Requires:       dbus-1
+
+%description -n tukitd
+This package provedes the D-Bus service to access %{libname}'s
+functionality to manage transactional systems.
+
 %package -n %{devname}
 Summary:        Development files for tukit library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Provides:       tukit-devel = %{version}-%{release}
-Provides:       tukit-devel%{?_isa} = %{version}-%{release}
-Requires:       %{libname}%{?_isa} = %{version}-%{release}
+Provides:       tukit-devel = %{version}-%{release}
+Requires:       %{libname} = %{version}-%{release}
 
 %description -n %{devname}
 This package contains the files required to develop programs to do
@@ -168,14 +183,24 @@ rm -rf %{buildroot}%{_libdir}/*.la
 # Delete unwanted HTML documentation
 rm -rf %{buildroot}%{_docdir}/%{name}/*.html
 
+%pre
+%systemd_pre %{name}.service %{name}.timer
+%systemd_pre %{name}-cleanup.service %{name}-cleanup.timer
+
 %post
 %systemd_post %{name}.service %{name}.timer
+%systemd_post %{name}-cleanup.service %{name}-cleanup.timer
 
 %preun
 %systemd_preun %{name}.service %{name}.timer
+%systemd_preun %{name}-cleanup.service %{name}-cleanup.timer
 
 %postun
-%systemd_postun %{name}.service %{name}.timer
+%systemd_postun_with_restart %{name}.service %{name}.timer
+%systemd_postun_with_restart %{name}-cleanup.service %{name}-cleanup.timer
+
+%pre -n tukit
+%systemd_pre create-dirs-from-rpmdb.service
 
 %post -n tukit
 %systemd_post create-dirs-from-rpmdb.service
@@ -184,7 +209,19 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*.html
 %systemd_preun create-dirs-from-rpmdb.service
 
 %postun -n tukit
-%systemd_postun create-dirs-from-rpmdb.service
+%systemd_postun_with_restart create-dirs-from-rpmdb.service
+
+%pre -n tukitd
+%systemd_pre tukitd.service
+
+%post -n tukitd
+%systemd_post tukitd.service
+
+%preun -n tukitd
+%systemd_preun tukitd.service
+
+%postun -n tukitd
+%systemd_postun_with_restart tukitd.service
 
 %post -n dracut-%{name}
 %regenerate_initrd_post
@@ -206,6 +243,8 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*.html
 %config(noreplace) %{_sysconfdir}/logrotate.d/transactional-update
 %{_unitdir}/transactional-update.service
 %{_unitdir}/transactional-update.timer
+%{_unitdir}/transactional-update-cleanup.service
+%{_unitdir}/transactional-update-cleanup.timer
 %{_sbindir}/transactional-update
 %{_sbindir}/tu-rebuild-kdump-initrd
 %if %{?suse_version} <= 1500
@@ -217,6 +256,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*.html
 %{_mandir}/man8/transactional-update.8*
 %{_mandir}/man8/transactional-update.timer.8*
 %{_mandir}/man8/transactional-update.service.8*
+%ghost %attr(0644,root,root) %{_localstatedir}/log/transactional-update.log
 
 %files -n tukit
 %license COPYING gpl-2.0.txt
@@ -235,6 +275,13 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*.html
 %files -n %{libname}
 %license COPYING lgpl-2.1.txt
 %{_libdir}/libtukit.so.%{somajor}{,.*}
+
+%files -n tukitd
+%license COPYING gpl-2.0.txt
+%{_sbindir}/tukitd
+%{_unitdir}/tukitd.service
+%{_prefix}/share/dbus-1/system-services/tukitd.d-bus.service
+%{_prefix}/share/dbus-1/system.d/org.opensuse.tukit.conf
 
 %files -n %{devname}
 %license COPYING lgpl-2.1.txt
