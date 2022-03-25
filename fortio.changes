@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 25 09:05:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.23.0:
+  * Fast client support for https/TLS (#529)
+  * Be consistent with precedence, query args H= will overwrite a json
+
+-------------------------------------------------------------------
 Sun Mar 20 10:22:45 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.22.0:
