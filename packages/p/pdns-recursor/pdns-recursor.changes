@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 25 13:21:47 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.6.1
+  fixes incomplete validation of incoming IXFR transfer in
+  the Recursor. It applies to setups retrieving one or more RPZ
+  zones from a remote server if the network path to the server
+  is not trusted. (bsc#1197525, CVE-2022-27227)
+
+-------------------------------------------------------------------
 Fri Dec 17 16:08:44 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.6.0

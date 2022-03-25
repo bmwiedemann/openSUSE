@@ -1,7 +1,7 @@
 #
 # spec file for package pdns-recursor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake

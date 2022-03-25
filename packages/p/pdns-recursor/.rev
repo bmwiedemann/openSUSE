@@ -605,4 +605,16 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>942366</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c155f8c8e0c5b73ce967482e85355cac</srcmd5>
+    <version>4.6.1</version>
+    <time>1648241703</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.6.1
+  fixes incomplete validation of incoming IXFR transfer in
+  the Recursor. It applies to setups retrieving one or more RPZ
+  zones from a remote server if the network path to the server
+  is not trusted. (bsc#1197525, CVE-2022-27227)</comment>
+    <requestid>964870</requestid>
+  </revision>
 </revisionlist>
