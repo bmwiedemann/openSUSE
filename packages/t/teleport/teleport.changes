@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Mar 26 14:53:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.0.2:
+  * Release 9.0.2.
+  * Updated CHANGELOG.md.
+  * update enterprise (#11408)
+  * Reexec with `/proc/self/exe` on Linux (#11283) (#11453)
+  * Add version string to terraform role ref (#11407)
+  * [v9] Add HTTPS_PROXY for tsh (#11397)
+  * Add tests for motd fixes
+  * Fix MOTD not showing up on tsh login with certain arguments
+  * Fix panic in getWebConfig (#11389) (#11413)
+  * Update cargo deps (#11400) (#11416)
+  * Reslove comments, move all occurences of teleport.dev to use a constant
+  * Add configurable verbosity to `tctl get roles`
+  * Resolve comments
+  * Add verbosity to tctl * ls commands and resource get.
+  * Move 'MakeTableWithTruncatedColumn' to asciitable and truncate labels
+  * ls consistency: add support for tctl desktop ls
+  * ls consistency: add tctl kube ls command
+  * ls consistency: make tctl db ls output consistent
+  * ls consistency: make tctl apps ls output consistent
+  * ls consistency: Make tctl nodes ls output consistent, support yaml
+  * Add a .tsh/config file and add support for configuring custom http headers
+  * [v9] Backport: "helm: Adds missing namespaces to ConfigMap (#11032)" (#11343)
+  * add copy/paste mention (#11377)
+  * Edit Helm installation instructions (#11303)
+  * Situate the Installation guide more clearly (#11300)
+  * Edit four Kubernetes Access guides for Cloud users (#11354)
+  * Teleport cloud license info and other info update (#11376)
+  * add all token types (#11375)
+  * Update Redis links in docs (#11393)
+  * [v9] Add endpoint to webapi to generate DB join token (#10914) (#11256)
+  * Fix certificate extension not being included in `tctl auth sign`
+  * Show usage on invalid command line invocation. (#11174) (#11333)
+  * Remove the v5 Kubernetes migration guide (#11297)
+  * Add Cloud-specific instructions to two guides (#11314)
+  * Add notes about wildcard certificates (#11310)
+  * Fix broken link in the ADFS guide (#11307)
+  * update e module (#11341)
+  * [v9] helm: Backport chart changes from unit test addition (#11336)
+  * Added Machine ID CLI and configuration references.
+  * Update 'tctl apps/db/nodes ls' to accept filter flags (#11003) (#11076)
+  * docs: add desktop session recording and clipboard sharing (#11005) (#11252)
+  * Mention Cloud compatibility in three guides (#11234)
+  * Updates `tsh ls` for node/app/db/kube to accept new filter flags (#10980) (#11016)
+  * Add doc for filter support for CLI tools (#11012) (#11258)
+  * Support role bootstrapping in OSS (#11175) (#11247)
+  * corrects some powershell examples and put in code for linux commands (#11225)
+  * docs: clarify /healthz and /readyz (#11085) (#11231)
+  * Keep multiple per-node remoteConns in localSite (#11074) (#11184)
+  * Fix TLS multiplexing for the kubernetes_service in the teleport-cluster helm chart (#10002) (#11212)
+  * Update upcoming-releases.mdx
+  * Improve `tsh` error message if mysql client is missing (#11215)
+  * helm: Adds extraArgs and extraEnv to teleport-kube-agent (#11155) (#11237)
+  * helm: include static_labels in database example (#10414) (#11214)
+  * Revert "Only allow access request deletion through static roles' permissions (#9540)" (#11221)
+  * Address problems in concurrent sqlite access (#10706) (#11190)
+
+-------------------------------------------------------------------
 Thu Mar 17 10:28:30 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.0.1:
