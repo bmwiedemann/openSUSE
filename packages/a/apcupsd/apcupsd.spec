@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%{nil}
+%else
+%bcond_without gapcmon
+%endif
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -54,13 +59,15 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcpd-devel
+BuildRequires:  pkgconfig(gdlib)
+%if %{with gapcmon}
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gconf-2.0)
-BuildRequires:  pkgconfig(gdlib)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(x11)
+%endif
 Requires:       mailx
 Requires(post): %fillup_prereq
 Requires(post): grep
@@ -85,6 +92,7 @@ Requires:       %{name} = %{version}
 %description cgi
 A CGI interface to the APC UPS monitoring daemon.
 
+%if %{with gapcmon}
 %package gui
 Summary:        APC UPS Monitor GUI (for APC UPSs)
 Group:          Hardware/UPS
@@ -98,6 +106,7 @@ failure. Find APC on the Internet at http://www.apc.com/.
 
 APC also made their PowerChute plus available for download at
 http://www.apc.com/tools/download/.
+%endif
 
 %prep
 %setup -q
@@ -113,7 +122,11 @@ cp -a %{SOURCE2} %{SOURCE4} .
 	--with-libwrap \
 	--with-lock-dir=%{_localstatedir}/lock \
 	SHUTDOWN=/usr/sbin/shutdown \
+%if %{with gapcmon}
 	--enable-gapcmon \
+%else
+	--disable-gapcmon \
+%endif
 	--enable-cgi \
 	--enable-usb \
 	--enable-modbus-usb \
@@ -130,8 +143,10 @@ make %{?_smp_mflags}
 install -m744 platforms/apccontrol \
               %{buildroot}%{_sysconfdir}/%{name}/apccontrol
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
+%if %{with gapcmon}
 %suse_update_desktop_file gapcmon
 chmod 644 %{buildroot}/%{_datadir}/pixmaps/*.png
+%endif
 # Cleanup for later doc macro processing
 chmod -x examples/*.c
 rm examples/*.in
@@ -213,10 +228,12 @@ rm -f etc/init.d/apcupsd-early-powerdown
 %{_mandir}/man?/*.*
 %{_fillupdir}/sysconfig.%{name}
 
+%if %{with gapcmon}
 %files gui
 %{_bindir}/gapcmon
 %{_datadir}/applications/gapcmon.desktop
 %{_datadir}/pixmaps/*.png
+%endif
 
 %files cgi
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/%{name}.conf

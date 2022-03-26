@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 22 11:09:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Conditionally disable build for gcapmon for Tumbleweed and newer
+  via bcond. Gconf-2 is being removed from Tumbleweed, as it is
+  deprecated and archived upstream.
+
+-------------------------------------------------------------------
 Tue Feb 22 11:09:55 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Drop build requirements on systemd packages
