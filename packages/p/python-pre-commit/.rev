@@ -84,4 +84,23 @@
   * Fix language: golang repositories containing recursive submodules</comment>
     <requestid>945468</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8063780f66b9e8eea0b1abcce0547218</srcmd5>
+    <version>2.17.0</version>
+    <time>1648330334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.17.0:
+  - add warnings for regexes containing `[\\/]`.
+  - upgrade supported ruby versions.
+  - allow `language: conda` to use `mamba` or `micromamba` via
+    `PRE_COMMIT_USE_MAMBA=1` or `PRE_COMMIT_USE_MICROMAMBA=1` respectively.
+  - display `git --version` in error report.
+  - add `language: lua` as a supported language.
+  - temporarily add `setuptools` to the zipapp.
+  - use `go install` instead of `go get` for go 1.18+ support.
+  - fix `language: r` with a local renv and `RENV_PROJECT` set.
+  - forbid overriding `entry` in `language: meta` hooks which breaks them.
+  - always use `#!/bin/sh` on windows for hook script.</comment>
+    <requestid>965080</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pre-commit
-Version:        2.16.0
+Version:        2.17.0
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT
@@ -27,6 +27,8 @@ URL:            https://github.com/pre-commit/pre-commit
 Source:         https://github.com/pre-commit/pre-commit/archive/v%{version}.tar.gz#/pre_commit-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  lua54-devel
+BuildRequires:  lua54-luarocks
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.1
 Requires:       python-cfgv >= 2.0.0
@@ -91,6 +93,8 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or test_switch_language_versions_doesnt_clobber 
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_rust_additional_dependencies or test_installed_from_venv"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or conda or test_perl_hook or test_local_perl_additional_dependencies"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or dart or dotnet or r_ or node or ruby"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_lua_additional_dependencies"
+
 git init .
 %pytest -k "not ($EXCLUDED_TESTS)"
 
