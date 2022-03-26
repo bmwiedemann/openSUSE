@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 23 19:55:26 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.20:
+ * Added a new configuration command 'allow_from_override'. When
+   off, the --from option does not override the envelope-from
+   address anymore.
+
+-------------------------------------------------------------------
 Thu Nov  4 17:54:27 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.19:
