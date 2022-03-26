@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Mar 26 05:07:11 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v15.1.0
+  * Changes of version 15.1.0
+    = Add Characters
+      ~ MODIFIER LETTER YIN DEPARTING TONE MARK (U+02EA);
+      ~ MODIFIER LETTER YANG DEPARTING TONE MARK (U+02EB);
+      ~ MODIFIER LETTER DOUBLE APOSTROPHE (U+02EE);
+      ~ MODIFIER LETTER MIDDLE GRAVE ACCENT (U+02F4);
+      ~ MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT (U+02F5);
+      ~ MODIFIER LETTER MIDDLE DOUBLE ACUTE ACCENT (U+02F6);
+      ~ MODIFIER LETTER RAISED COLON (U+02F8);
+      ~ MODIFIER LETTER BEGIN HIGH TONE (U+02F9);
+      ~ MODIFIER LETTER END HIGH TONE (U+02FA);
+      ~ MODIFIER LETTER BEGIN LOW TONE (U+02FB);
+      ~ MODIFIER LETTER END LOW TONE (U+02FC);
+      ~ MODIFIER LETTER SHELF (U+02FD);
+      ~ MODIFIER LETTER OPEN SHELF (U+02FE);
+      ~ MODIFIER LETTER LOW LEFT ARROW (U+02FF);
+      ~ COMBINING LEFT ARROW BELOW (U+20EE);
+      ~ COMBINING RIGHT ARROW BELOW (U+20EF);
+
+-------------------------------------------------------------------
 Sat Mar 19 16:56:27 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v15.0.3
