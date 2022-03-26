@@ -2658,7 +2658,7 @@
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libtukit0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
+    <package name="libtukit4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libturbojpeg0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libtwolame0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4523,6 +4523,7 @@
     <package name="tree" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="trousers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="tukit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
+    <package name="tukitd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="tumbler" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tumbler-folder-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tumbler-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
