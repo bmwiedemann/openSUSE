@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 26 10:51:50 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.4.1
+  * fixed bug where the sftp event type was registered twice (issue 4389) 
+
+-------------------------------------------------------------------
 Fri Jan 21 13:24:08 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to version 1.4

@@ -17,13 +17,13 @@
 
 
 %define qore_version 0.9.15
-%define mod_ver 1.4
+%define mod_ver 1.4.1
 %define src_name module-ssh2-ssh2-release-%{version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
 %define module_dir %{_libdir}/qore-modules
 %define user_module_dir /usr/share/qore-modules
 Name:           qore-ssh2-module
-Version:        1.4
+Version:        1.4.1
 Release:        0
 Summary:        SSH2 module for Qore
 License:        LGPL-2.1-or-later OR MIT
