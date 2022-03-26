@@ -17,7 +17,7 @@
 
 
 Name:           tio
-Version:        1.33
+Version:        1.36
 Release:        0
 Summary:        Simple TTY terminal I/O application
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ Group:          Hardware/Modem
 URL:            https://tio.github.io/
 Source:         https://github.com/tio/tio/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  meson
+BuildRequires:  pkgconfig(inih)
 
 %description
 Tio is a simple TTY terminal application which features a straightforward
@@ -52,7 +53,7 @@ Bash completion script for %{name}.
 %meson_install
 
 %files
-%license COPYING
+%license LICENSE
 %doc AUTHORS ChangeLog README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}

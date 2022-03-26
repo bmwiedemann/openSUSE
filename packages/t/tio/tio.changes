@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 23 14:46:45 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.36
+ * Add support for defaults in config file
+ * Handle SIGHUP
+ * Add color configuration support
+ * Force dependency on libinih
+ * Update man page
+ * Document configuration file options
+ * Add support for a configuration file
+- Update to version 1.35
+ * Add support for automatically generated log filename
+ * Add support for configurable timestamp format
+
+-------------------------------------------------------------------
 Tue Feb 15 20:32:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.34
