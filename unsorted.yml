@@ -251,7 +251,6 @@ unsorted:
   - Rivet-devel 
   - Rivet-plugins 
   - SHERPA-MC-devel 
-  - SUSEConnect: [x86_64] 
   - SVT-AV1: [x86_64] 
   - SVT-AV1-devel: [x86_64] # devel package of common_locks:libSvtAv1Enc0 
   - SampleICC 
@@ -7024,6 +7023,7 @@ unsorted:
   - ices 
   - icewm-theme-yast-installation 
   - icewm-themes 
+  - icinga-l10n 
   - icinga-php-common 
   - icinga-php-library 
   - icinga-php-thirdparty 
@@ -33307,6 +33307,7 @@ unsorted:
   - texi2html-lang 
   - texi2roff 
   - texinfo 
+  - texlab: [x86_64] 
   - texlive 
   - texlive-12many 
   - texlive-12many-doc 
