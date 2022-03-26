@@ -1,7 +1,7 @@
 #
 # spec file for package python-munkres
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-munkres
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        Munkres implementation for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://software.clapper.org/munkres/
+URL:            https://software.clapper.org/munkres/
 Source:         https://github.com/bmc/munkres/archive/release-%{version}.tar.gz
-# https://github.com/bmc/munkres/pull/32
-Patch0:         python-munkres-remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -50,7 +48,6 @@ http://csclab.murraystate.edu/~bob.pilgrim/445/munkres.html.
 
 %prep
 %setup -q -n munkres-release-%{version}
-%patch0 -p1
 
 %build
 %python_build
