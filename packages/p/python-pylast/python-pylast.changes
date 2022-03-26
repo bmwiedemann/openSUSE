@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 26 18:47:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * Deprecate is_streamable and is_fulltrack_available
+  * Strip invalid XML characters from response
+  * Speedup: Use faster importlib.metadata for getting version (#377) @hugovk
+  * Convert setup.py to static setup.cfg and format with setup-cfg-fmt (#376) @hugovk
+  * Rename master to main, use 3.10 final, add workflow_dispatch (#374) @hugovk
+  * Set get_top_tracks limit even if it's None, to get unlimited user top_tracks
+  * Add support for Python 3.10
+  * Fix artist.get_bio_content() when bio is empty + other test fixes (#370) @hugovk
+  * Remove artist.shout("<3") in README.md (#369) @tieubinhco
+  * Bugfix for get_userloved and get_userplaycount resulting in an empty response from the server
+  * Fix unsafe creation of temp file for caching, and improve exception raising (#356) @kvanzuijlen
+  * [pre-commit.ci] pre-commit autoupdate (#362) @pre-commit-ci 
+
+-------------------------------------------------------------------
 Tue Mar 15 08:50:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use python_expand for fdupes 
