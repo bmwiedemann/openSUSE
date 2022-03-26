@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 26 18:36:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  - [pull #408] Fix for fenced code blocks issue #396
+  - [pull #410] Be more strict on auto linking urls, RE DOS fix
+  - [pull #389] Tables extra: allow whitespace at the end of the underline row
+  - [pull #392] Pyshell extra: enable syntax highlighting if `fenced-code-blocks` is loaded.
+  - [pull #402] Regex DOS bandaid fix
+
+-------------------------------------------------------------------
 Wed Jan 27 23:10:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.4.0 (bsc#1181270):

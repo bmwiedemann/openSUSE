@@ -96,4 +96,17 @@ of Markdown.</comment>
     <comment>  - [pull #387] Regex DoS fixes (CVE-2021-26813, bsc#1183171)</comment>
     <requestid>877797</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a4101bf876632cf4bac365503be1974</srcmd5>
+    <version>2.4.2</version>
+    <time>1648330325</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.2:
+  - [pull #408] Fix for fenced code blocks issue #396
+  - [pull #410] Be more strict on auto linking urls, RE DOS fix
+  - [pull #389] Tables extra: allow whitespace at the end of the underline row
+  - [pull #392] Pyshell extra: enable syntax highlighting if `fenced-code-blocks` is loaded.
+  - [pull #402] Regex DOS bandaid fix</comment>
+    <requestid>965066</requestid>
+  </revision>
 </revisionlist>
