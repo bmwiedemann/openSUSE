@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-SQLite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojo-SQLite
 Name:           perl-Mojo-SQLite
-Version:        3.008
+Version:        3.009
 Release:        0
-Summary:        Tiny Mojolicious wrapper for SQLite
 License:        Artistic-2.0
+Summary:        Tiny Mojolicious wrapper for SQLite
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
