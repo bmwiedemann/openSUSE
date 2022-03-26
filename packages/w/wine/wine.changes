@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 26 08:48:14 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.5 development release
+  - ALSA driver converted to PE.
+  - Locale database generated from Unicode CLDR.
+  - HLSL compiler support with the bundled vkd3d.
+  - Initial support for the OCSP protocol.
+  - More cleanups to support 'long' type.
+  - Various bug fixes.
+- update staging to 7.5 release
+
+-------------------------------------------------------------------
 Sat Mar 12 10:11:03 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.4 development release

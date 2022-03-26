@@ -4367,4 +4367,19 @@
 - update staging to 7.4 release</comment>
     <requestid>961715</requestid>
   </revision>
+  <revision rev="372" vrev="1">
+    <srcmd5>f965bf5a793a0b07754cdd467d044eef</srcmd5>
+    <version>7.5</version>
+    <time>1648330265</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.5 development release
+  - ALSA driver converted to PE.
+  - Locale database generated from Unicode CLDR.
+  - HLSL compiler support with the bundled vkd3d.
+  - Initial support for the OCSP protocol.
+  - More cleanups to support 'long' type.
+  - Various bug fixes.
+- update staging to 7.5 release</comment>
+    <requestid>965014</requestid>
+  </revision>
 </revisionlist>
