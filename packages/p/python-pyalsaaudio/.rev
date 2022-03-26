@@ -7,4 +7,22 @@
     <comment>New package, needed by mycroft-core</comment>
     <requestid>568477</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>831adc3f5caa34eb616e495c55a299bc</srcmd5>
+    <version>0.9.0</version>
+    <time>1648330327</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * 'getformats()' returns a dictionary of name / value pairs, one for each of the card's
+    supported formats - e.g. '{&quot;U8&quot;: 1, &quot;S16_LE&quot;: 2}',
+  * 'getchannels()' returns a list of the supported channel numbers, e.g. '[1, 2]',
+  * 'getrates()' returns supported sample rates for the device, e.g. '[48000]',
+  * 'getratebounds()' returns the device's official minimum and maximum supported 
+     sample rates as a tuple, e.g. '(4000, 48000)'.
+  * Prevent hang on close after capturing audio
+  * Return an empty string/bytestring when 'read()' detects an 
+    overrun. Previously the returned data was undefined
+  * Unlimited setperiod buffer size when reading frames</comment>
+    <requestid>965068</requestid>
+  </revision>
 </revisionlist>

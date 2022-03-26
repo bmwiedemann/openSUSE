@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyalsaaudio
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-pyalsaaudio
-Version:        0.8.4
+Version:        0.9.0
 Release:        0
 Summary:        ALSA bindings for Python
 License:        Python-2.0
 Group:          Development/Languages/Python
-Url:            http://larsimmisch.github.io/pyalsaaudio/
+URL:            https://larsimmisch.github.io/pyalsaaudio/
 Source:         https://files.pythonhosted.org/packages/source/p/pyalsaaudio/pyalsaaudio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
 %python_subpackages
 
 %description
@@ -55,8 +54,8 @@ export CFLAGS="%{optflags}"
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc CHANGES LICENSE
+%license LICENSE
+%doc CHANGES
 %{python_sitearch}/*
 
 %changelog
