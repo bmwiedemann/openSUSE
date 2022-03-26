@@ -220,4 +220,14 @@
 - drop fix-i586.patch (obsolete)</comment>
     <requestid>963325</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c236161537be6e803ed45ed3a661b8d6</srcmd5>
+    <version>2.7.4</version>
+    <time>1648330288</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.4:
+  * Fixes &quot;undefined reference to `tinyxml2::&quot;
+  * Replace tinyxml2_LIBRARY with tinyxml2_LIBRARIES</comment>
+    <requestid>965031</requestid>
+  </revision>
 </revisionlist>

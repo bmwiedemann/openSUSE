@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 26 14:06:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.4:
+  * Fixes "undefined reference to `tinyxml2::"
+  * Replace tinyxml2_LIBRARY with tinyxml2_LIBRARIES
+
+-------------------------------------------------------------------
 Sun Mar 20 19:22:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.1:
