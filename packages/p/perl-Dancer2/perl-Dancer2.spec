@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dancer2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Dancer2
 Name:           perl-Dancer2
-Version:        0.301004
+Version:        0.400000
 Release:        0
-Summary:        Lightweight yet powerful web application framework
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Lightweight yet powerful web application framework
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CR/CROMEDOME/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

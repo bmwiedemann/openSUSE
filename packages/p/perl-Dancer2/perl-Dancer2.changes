@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 15 03:06:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.400000
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  0.400000  2022-03-13 22:16:13-04:00 America/New_York
+      [ BUG FIXES ]
+      * PR #1634: Fix CI push setting to run tests on branches with / in the
+        name (Stefan Hornburg - Racke)
+      * PR #1641: Fix uninitialized warnings from parsing routes with mixed
+        regex/splats (Russell @veryrusty Jenkins)
+      [ ENHANCEMENTS ]
+      * PR #1627: Set minimum Perl to 5.10.1 (Peter Mottram - SysPete)
+      * PR #1643: Set minimum Perl to 5.12.5 (Jason A. Crome)
+      [ DOCUMENTATION ]
+      * PR #1633: Fix YAML example in the tutorial (Tina Müller)
+      * PR #1644: Add deprecation policy to docs; link git guide (Jason A.
+        Crome)
+
+-------------------------------------------------------------------
 Mon Jun  7 03:06:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.301004
