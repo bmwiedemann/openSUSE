@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Mar 26 14:28:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.12.45:
+ - Updated phone metadata for region code(s): BF, EE, JM, RE, SE, US
+ - New geocoding data for country calling code(s): 1464 (en)
+ - Updated carrier data for country calling code(s):
+   46 (en), 55 (en), 226 (en), 262 (en), 353 (en), 372 (en), 373 (en),
+   1345 (en)
+ - Updated / refreshed time zone meta data.
+ - Updated phone metadata for region code(s):
+   AG, AI, AS, BB, BM, BS, CA, CV, DM, DO, GD, GU, JM, KN, KY, LC, MP, MS, PR,
+   SC, SX, TC, TT, US, VC, VG, VI
+ - Updated short number metadata for region code(s): BE, PT, SC, SE, US
+ - Updated geocoding data for country calling code(s):
+   61 (en), 238 (en), 1345 (en)
+ - Updated carrier data for country calling code(s): 238 (en), 248 (en)
+ - Updated phone metadata for region code(s):
+   BJ, CL, GA, IS, KR, KW, LI, PA, SG, SL
+ - Updated short number metadata for region code(s): MS
+ - Updated geocoding data for country calling code(s): 56 (en, es)
+ - Updated carrier data for country calling code(s):
+   32 (en), 229 (en), 354 (en), 502 (en), 507 (en)
+ - Updated phone metadata for region code(s):
+   BG, BI, CF, DZ, GF, GP, HK, IR, MA, MQ, MW, PK, PL, PM, QA, TJ
+ - Updated short number metadata for region code(s):
+   AG, AI, AS, BB, BM, BS, CA, DM, DO, GD, GU, JM, KN, KY, LC, MP, MS, PR, SX,
+   TC, TT, US, VC, VG, VI
+ - Updated geocoding data for country calling code(s): 61 (en), 213 (en)
+ - Updated carrier data for country calling code(s):
+   45 (en), 48 (en), 57 (en), 98 (en, fa), 236 (en), 243 (en), 257 (en),
+   420 (en), 421 (en), 508 (en), 675 (en), 852 (en, zh), 974 (en), 992 (en)
+ - Updated phone metadata for region code(s): EH, IL, KE, LA, MA, OM, SG
+ - Updated short number metadata for region code(s): PY
+ - Updated carrier data for country calling code(s):
+   33 (en), 65 (en), 358 (en), 383 (en), 420 (en), 502 (en), 856 (en), 966 (en),
+   968 (en), 974 (en) 
+
+-------------------------------------------------------------------
 Thu Jan  6 18:17:03 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - version update to 8.12.40:
