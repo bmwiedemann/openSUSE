@@ -17,22 +17,26 @@
 
 
 Name:           remind
-Version:        3.3.12
+Version:        3.4.2
 Release:        0
-%define tar_version 03.03.12
+%define tar_version 03.04.02
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
 URL:            http://www.roaringpenguin.com/products/remind
 Source0:        %{name}-%{tar_version}.tar.gz
 Source100:      %{name}-rpmlintrc
-Patch0:         remind-nostrip.patch
 BuildRequires:  perl
+BuildRequires:  perl-Cairo
 BuildRequires:  perl-Getopt-Long-Descriptive
 BuildRequires:  perl-JSON-MaybeXS
+BuildRequires:  perl-Pango
+
 Requires:       perl
+Requires:       perl-Cairo
 Requires:       perl-Getopt-Long-Descriptive
 Requires:       perl-JSON-Any
+Requires:       perl-Pango
 Requires:       tcllib
 
 %description
@@ -50,10 +54,9 @@ It includes the following features:
 
 %prep
 %setup -q -n %{name}-%{tar_version}
-%patch0 -p1
 
 %build
-CFLAGS="%{optflags}" ./configure --prefix=%{_prefix}
+CFLAGS="%{optflags}" ./configure --disable-perl-build-artifacts --prefix=%{_prefix}
 make %{?_smp_mflags}
 
 %install
@@ -65,14 +68,20 @@ make DESTDIR=%{buildroot} install
 %files
 %defattr(-,root,root,-)
 %doc %{_mandir}/man1/rem.1%{ext_man}
+%doc %{_mandir}/man1/rem2html.1%{ext_man}
 %doc %{_mandir}/man1/rem2ps.1%{ext_man}
+%doc %{_mandir}/man1/rem2pdf.1%{ext_man}
 %doc %{_mandir}/man1/remind.1%{ext_man}
 %doc %{_mandir}/man1/tkremind.1%{ext_man}
+%doc %{_mandir}/man3/Remind::PDF.3pm%{ext_man}
+%doc %{_mandir}/man3/Remind::PDF::Entry.3pm%{ext_man}
 
 %{_bindir}/rem
+%attr(0755,root,root) %{_bindir}/rem2html
+%attr(0755,root,root) %{_bindir}/rem2pdf
 %attr(0755,root,root) %{_bindir}/rem2ps
 %attr(0755,root,root) %{_bindir}/remind
 %attr(0755,root,root) %{_bindir}/tkremind
-%attr(0755,root,root) %{_bindir}/rem2html
+%attr(0755,root,root) %{perl_vendorlib}/Remind/
 
 %changelog
