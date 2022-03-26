@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 26 11:04:09 UTC 2022 - Matthias Bach <marix@marix.org> - 1.5.0
+
+- Update to 1.5.0
+  * Input device is now closed from main thread in
+    InputDevice.close()
+  * util.find_ecodes_by_regex now works across all Python versions
+- Drop evdev-re-Pattern.patch now included upstream
+
+-------------------------------------------------------------------
 Mon Jan 10 20:16:20 UTC 2022 - Matthias Bach <marix@marix.org>
 
 - Work around broken pytest macro on Leap 15.3

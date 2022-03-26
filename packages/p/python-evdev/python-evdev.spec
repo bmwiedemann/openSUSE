@@ -18,7 +18,7 @@
 
 %define modname evdev
 Name:           python-evdev
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Python bindings to the Linux input handling subsystem
 License:        BSD-3-Clause
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/gvalkov/python-evdev
 # Source needs to be pulled form Github as the source distribution on PyPI lacks the test directory
 Source:         https://github.com/gvalkov/python-evdev/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM evdev-re-Pattern.patch -- gh#gvalkov/python-evdev#152
-Patch1:         evdev-re-Pattern.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
