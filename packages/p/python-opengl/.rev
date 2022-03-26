@@ -211,4 +211,13 @@
     <comment></comment>
     <requestid>880831</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>853e01c45569c976dd626e546ae2d538</srcmd5>
+    <version>3.1.6</version>
+    <time>1648330334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.6:
+  * python 3.8-3.10 support</comment>
+    <requestid>965075</requestid>
+  </revision>
 </revisionlist>
