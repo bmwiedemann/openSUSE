@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20220324.e25e4b7c
+Version:        20220325.205e07a9
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -103,9 +103,7 @@ OBS product release announcer for generating email diffs summaries.
 %package check-source
 Summary:        Check source review bot
 Group:          Development/Tools/Other
-# check_source.pl
 Requires:       obs-service-download_files
-Requires:       obs-service-format_spec_file
 Requires:       obs-service-source_validator
 Requires:       osclib = %{version}
 Requires:       perl-Text-Diff
@@ -373,7 +371,6 @@ exit 0
 %exclude %{_datadir}/%{source_dir}/abichecker
 %exclude %{_datadir}/%{source_dir}/%{announcer_filename}
 %exclude %{_datadir}/%{source_dir}/check_maintenance_incidents.py
-%exclude %{_datadir}/%{source_dir}/check_source.pl
 %exclude %{_datadir}/%{source_dir}/check_source.py
 %exclude %{_datadir}/%{source_dir}/devel-project.py
 %exclude %{_datadir}/%{source_dir}/metrics
@@ -411,7 +408,6 @@ exit 0
 
 %files check-source
 %{_bindir}/osrt-check_source
-%{_datadir}/%{source_dir}/check_source.pl
 %{_datadir}/%{source_dir}/check_source.py
 
 %files maintenance

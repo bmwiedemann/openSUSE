@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 25 11:54:44 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220325.205e07a9:
+  * Do not decline requests with download_files errors
+
+-------------------------------------------------------------------
+Fri Mar 25 10:48:45 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220325.45c2fb1e:
+  * check_source: Allow a .changes line to mention 2 patches
+
+-------------------------------------------------------------------
+Fri Mar 25 09:48:39 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220325.939beac7:
+  * Stay with minversion 3.6 (and require module we already use elsewhere)
+
+-------------------------------------------------------------------
+Fri Mar 25 08:51:37 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220325.1f0c9fd1:
+  * Move download URL check to check_source.py
+  * Ignore patches that are listed as sources
+  * Move the 'patch in changes' check from check_source.pl to .py
+
+-------------------------------------------------------------------
 Thu Mar 24 17:36:34 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220324.e25e4b7c:
