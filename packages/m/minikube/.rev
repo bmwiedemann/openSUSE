@@ -396,4 +396,28 @@
   * mount: Remove --mode flag</comment>
     <requestid>949675</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f563777fd1574b90e9aec0cf316a5929</srcmd5>
+    <version>1.25.2</version>
+    <time>1648330289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.25.2:
+  * add arch to binary and image cache paths #13539
+  * Adds 'minikube service --all' feature to allow forwarding all services in a namespace #13367
+  * Make the default container runtime dynamic #13251
+  * Add --disable-optimizations flag #13340
+  * Fix losing cluster on restart #13506
+  * Using Get-CmiInstance to detect Hyper-V availability #13596
+  * Fixes validation on image repository URL when it contains port but no scheme #13053
+  * Fixed SIGSEGV in kubectl when k8s not running #13631
+  * Fix hard coded docker driver in minikube service command #13514
+  * Fix hard coded docker driver in minikube tunnel command #13444
+  * Fix IstioOperator CustomResourceDefinition for istio-provisioner addon #13024
+  * fix ingress (also for multinode clusters) #13439
+  * Add exit message for too new Kubernetes version #13354
+  * drivers/kvm: Use ARP for retrieving interface ip addresses #13482
+  * kubeadm: allow skipping kube-proxy addon on restart #13538
+  * configure container runtimes for clusters without Kubernetes too #13442</comment>
+    <requestid>965038</requestid>
+  </revision>
 </revisionlist>
