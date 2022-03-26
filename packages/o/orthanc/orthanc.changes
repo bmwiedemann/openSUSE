@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 25 20:11:18 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.10.1
+* for detailed changelog see NEWS
+
+-------------------------------------------------------------------
 Wed Oct 13 13:27:12 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
