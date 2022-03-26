@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 19 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.68
+   see /usr/share/doc/packages/perl-Devel-PPPort/Changes
+
+  3.68 - 2022-03-18
+
+   * fix newSVsv_flags: rename variable to fix C++ compilation issue
+   * Update dNOOP definition for Perl < 5.27.7
+
+-------------------------------------------------------------------
 Wed Mar  9 03:06:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.67

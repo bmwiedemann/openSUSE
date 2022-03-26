@@ -18,7 +18,7 @@
 
 %define cpan_name Devel-PPPort
 Name:           perl-Devel-PPPort
-Version:        3.67
+Version:        3.68
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl/Pollution/Portability
