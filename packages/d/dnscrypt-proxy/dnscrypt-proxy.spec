@@ -22,7 +22,6 @@
 %define home_dir    %{_localstatedir}/lib/%{name}
 %define log_dir     %{_localstatedir}/log/%{name}
 %define services    %{name}.socket %{name}.service %{name}-resolvconf.service
-%define vlic_dir  vendored
 
 Name:           dnscrypt-proxy
 Version:        2.1.1
@@ -37,20 +36,17 @@ Source2:        %{name}.socket
 Source3:        %{name}-resolvconf.service
 # File to use with sed to modify default configuration.
 Source4:        example-dnscrypt-proxy.toml.sed
-# Find licenses of vendored packages.
-Source5:        find_licenses.sh
-# Install licenses of vendored packages.
-Source6:        install_licenses.sh
 # Some words
-Source7:        README.openSUSE
+Source5:        README.openSUSE
 # Example how to override socket unit
-Source8:        %{name}.socket.conf
+Source6:        %{name}.socket.conf
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.16
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  vendored_licenses_packager
 # For systemd pidfile solution.
 Requires:       bash
 # for daemon group/user
@@ -71,9 +67,6 @@ and ODoH (Oblivious DoH).
 %prep
 %setup -q -n %{name}-%{version}
 
-# Find licenses of vendored packages and prepare for installation
-bash %{SOURCE5} %{vlic_dir}
-
 # duplicate original config file
 cp ./%{name}/example-%{name}.toml ./%{name}.toml.default
 
@@ -88,6 +81,8 @@ sed -i "s/## This is an example configuration file./## This is a configuration f
 
 # python path instead of env
 sed -i "1s/#! \/usr\/bin\/env python3/#! \/usr\/bin\/python3/" utils/generate-domains-blocklist/generate-domains-blocklist.py
+
+%vendored_licenses_packager_prep
 
 %build
 cd %{name}
@@ -128,15 +123,13 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}-resolvconf.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-resolvconf
 
-# Vendor Licenses
-install -d -m 0755 %{buildroot}%{_licensedir}/%{name}/%{vlic_dir}
-bash %{SOURCE6} %{vlic_dir} %{buildroot}/%{_licensedir}/%{name}/%{vlic_dir}
+%vendored_licenses_packager_install
 
 # Some hints. Improvements and feedback welcome!
-cp %{SOURCE7} README.openSUSE
+cp %{SOURCE5} README.openSUSE
 
 # Example drop-in.
-cp %{SOURCE8} %{name}.socket.conf
+cp %{SOURCE6} %{name}.socket.conf
 
 %pre
 # group and user
@@ -178,6 +171,6 @@ getent passwd %{user_group} >/dev/null || %{_sbindir}/useradd -r -g %{user_group
 %dir %attr(0750,%{user_group},%{user_group}) %{home_dir}
 %dir %attr(0750,%{user_group},%{user_group}) %{log_dir}
 %license LICENSE
-%{_licensedir}/%{name}/%{vlic_dir}/
+%vendored_licenses_packager_files
 
 %changelog

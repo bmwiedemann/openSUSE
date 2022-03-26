@@ -259,4 +259,12 @@ dnscrypt-proxy v2 differs significantly from v1.</comment>
     <comment>Update to version 2.1.1</comment>
     <requestid>923330</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>584b2026502e29bfbb37fa1162f44ce4</srcmd5>
+    <version>2.1.1</version>
+    <time>1648330324</time>
+    <user>dimstar_suse</user>
+    <comment>switched to vendored_licenses_packager as build dependency</comment>
+    <requestid>965062</requestid>
+  </revision>
 </revisionlist>
