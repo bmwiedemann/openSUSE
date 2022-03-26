@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Util
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Data-Util
-Version:        0.66
-Release:        0
 %define cpan_name Data-Util
-Summary:        Selection of Utilities for Data and Data Types
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Data-Util/
+Name:           perl-Data-Util
+Version:        0.67
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Selection of utilities for data and data types
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SY/SYOHEX/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::PPPort) >= 3.19
@@ -51,10 +49,10 @@ opt for the XS backend.
 There are many benchmarks in the _DIST-DIR/benchmark/_ directory.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor optimize="%{optflags}"
+perl Build.PL installdirs=vendor optimize="%{optflags}"
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -65,8 +63,7 @@ There are many benchmarks in the _DIST-DIR/benchmark/_ directory.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes circle.yml example minil.toml README.md
+%doc Changes example minil.toml README.md
 %license LICENSE
 
 %changelog

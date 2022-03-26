@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 17 03:06:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.67
+   see /usr/share/doc/packages/perl-Data-Util/Changes
+
+  0.67 2022-03-16T04:28:19Z
+      - fix is_integer on usequadmath Perl
+
+-------------------------------------------------------------------
 Thu Apr  6 05:28:28 UTC 2017 - coolo@suse.com
 
 - updated to 0.66
