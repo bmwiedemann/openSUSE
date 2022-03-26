@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPIx-QuoteLike
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name PPIx-QuoteLike
 Name:           perl-PPIx-QuoteLike
-Version:        0.019
+Version:        0.020
 Release:        0
-Summary:        Parse Perl string literals and string-literal-like things
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Parse Perl string literals and string-literal-like things
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/W/WY/WYANT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

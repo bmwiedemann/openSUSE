@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 18 03:07:22 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.020
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.020		2022-03-17	T. R. Wyant
+      Correct and optimize the computation of logical column position (the
+      one that takes account of tabs).
+
+-------------------------------------------------------------------
 Tue Nov 16 03:07:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.019
