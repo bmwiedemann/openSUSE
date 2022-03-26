@@ -1,0 +1,302 @@
+-------------------------------------------------------------------
+Sat Aug 28 13:40:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.30
+  User-Visible Changes
+  * New translations: Bosnian, Chinese, Japanese, Norwegian, and
+    Slovene.
+  * New game objects: forward floors, glass marble, st_inkwell,
+    st_portal_glass, st_document, st_pebble.
+  * 116 new main-pack levels (now a total of 1100 main-pack levels,
+    plus 22 tutorials, 1119 sokoballs, 95 pentominoes, 268 dejavus,
+    and 2 training levels; altogether 2606).
+  * window can be resized.
+  * middle mouse key can be customized.
+  Internal changes
+  * switched from SDL 1.2 to SDL 2.0 .
+  * several bug fixes.
+  * support for additional tilesets.
+  * use of tinygettext instead of gettext.
+  List of shortcomings / known bugs
+  * Rescaling the application window introduces graphical
+    artifacts: Better use fixed window sizes for now.
+  * Not all fullscreen modes are available yet, in particular no
+    vertical screen modes. If you use a vertical screen, please
+    use Enigma in windowed mode.
+- Use github source url
+- Remove compat stuff for old distributions
+
+-------------------------------------------------------------------
+Fri Jul 13 20:00:06 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.21
+- Drop not longer needed patches
+- Use pgkconfig style dependencies
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Fri Nov 29 08:07:29 UTC 2013 - pgajdos@suse.com
+
+- use png_fix_dir macro [bnc#852862]
+
+-------------------------------------------------------------------
+Mon Jan 21 22:18:55 UTC 2013 - joop.boonen@opensuse.org
+
+- Created a png > 1.4 patch 
+
+-------------------------------------------------------------------
+Wed May  2 11:32:03 UTC 2012 - joop.boonen@opensuse.org
+
+- Added missing BuildRequires automake
+- Added gcc 4.7 patch
+- Passed the spec file through spec cleaner
+
+-------------------------------------------------------------------
+Sat Nov 19 13:55:14 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Nov 18 14:43:07 UTC 2011 - jreidinger@suse.com
+
+- update includes.patch to fix issue with new gcc for 12.1  
+
+-------------------------------------------------------------------
+Fri Jan  8 20:11:42 UTC 2010 - dnh@opensuse.org
+
+- fixes for 11.2 / x86_64 (includes.patch, xerces3.patch)
+
+-------------------------------------------------------------------
+Wed Oct 14 19:24:14 CEST 2009 - prusnak@suse.cz
+
+- fix strchr call (constchar.patch)
+- fix missing includes (includes.patch)
+- cleaned up spec file
+
+-------------------------------------------------------------------
+Fri May  1 16:15:55 CEST 2009 - dominique-obs@leuenberger.net
+
+- Added patch to compile against xerces 3 (openSUSE > 11.1)
+
+-------------------------------------------------------------------
+Tue May  6 11:05:40 CEST 2008 - aj@suse.de
+
+- Fix missing return value.
+- Fix some rpmlint warnings: Remove handling of version <= 9.3,
+  run fdupes, fix build requires, bzip sources.
+
+-------------------------------------------------------------------
+Mon Dec  3 12:51:20 CET 2007 - ro@suse.de
+
+- fix build with gcc-4.3 
+
+-------------------------------------------------------------------
+Mon Aug  6 21:05:48 CEST 2007 - sndirsch@suse.de
+
+- updated to release 1.01
+  * Enigma 1.01 is a bug fix and level addition release with some
+    small feature additions. 
+
+-------------------------------------------------------------------
+Mon Jul  9 22:01:39 CEST 2007 - sndirsch@suse.de
+
+- fixed BuildRequires for openSUSE > 10.2 
+
+-------------------------------------------------------------------
+Sun May  6 22:54:10 CEST 2007 - sndirsch@suse.de
+
+- added french and russian manual 
+
+-------------------------------------------------------------------
+Thu Jan 25 18:24:33 CET 2007 - sndirsch@suse.de
+
+- fixed "comparison with string literal" warning
+
+-------------------------------------------------------------------
+Fri Jan  5 18:47:45 CET 2007 - sndirsch@suse.de
+
+- updated to release 1.00
+  * 200++ new levels (now more than 970 in total) 
+  * New levelpack sorting 
+  * Drop & play of new levels and new levelpacks 
+  * Level inspector for ratings and statistics about levels 
+  * Screenshot viewer 
+  * Personal annotations and rating of levels 
+  * Translations of level titles and documents 
+  * New languages: Swedish, Russian, Hungarian, Portuguese 
+  * Countless smaller enhancements 
+
+-------------------------------------------------------------------
+Sat Oct 28 10:36:28 CEST 2006 - sndirsch@suse.de
+
+- fixed startup (Bug #216018)
+
+-------------------------------------------------------------------
+Fri Sep  8 15:36:14 CEST 2006 - sndirsch@suse.de
+
+- fixed build on SUSE 9.3 
+
+-------------------------------------------------------------------
+Thu Jun 15 00:06:55 CEST 2006 - dmueller@suse.de
+
+- build parallel 
+
+-------------------------------------------------------------------
+Tue Jun 13 07:53:52 CEST 2006 - sndirsch@suse.de
+
+- fixed wrong function declaration (Bug #183695)
+
+-------------------------------------------------------------------
+Sat Apr 15 18:38:13 CEST 2006 - sndirsch@suse.de
+
+- added german manual (PDF)
+
+-------------------------------------------------------------------
+Thu Feb 16 14:24:45 CET 2006 - stbinner@suse.de
+
+- add GenericName to .desktop file
+
+-------------------------------------------------------------------
+Fri Jan 27 11:41:27 CET 2006 - nadvornik@suse.cz
+
+- fixed BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Nov 10 09:54:47 CET 2005 - sndirsch@suse.de
+
+- docs.diff:
+  * fixes broken images in documentation (#133229) 
+
+-------------------------------------------------------------------
+Tue Oct 18 16:24:23 CEST 2005 - sndirsch@suse.de
+
+- removed extra qualifications (fatal error for gcc 4.1)
+
+-------------------------------------------------------------------
+Thu Jul 28 06:43:56 CEST 2005 - sndirsch@suse.de
+
+- added libmikmod to #neededforbuild 
+
+-------------------------------------------------------------------
+Fri Jul 22 08:24:50 CEST 2005 - sndirsch@suse.de
+
+- added SDL_mixer-devel to #neededforbuild 
+
+-------------------------------------------------------------------
+Fri Jun 10 15:18:46 CEST 2005 - sndirsch@suse.de
+
+- updated to release 0.92
+  * Added Spanish translation
+  * Fixed bug: ice is now working
+  * A few smaller bug fixes
+
+-------------------------------------------------------------------
+Thu May 12 23:40:22 CEST 2005 - sndirsch@suse.de
+
+- use norootforbuild 
+
+-------------------------------------------------------------------
+Thu May  5 22:01:43 CEST 2005 - sndirsch@suse.de
+
+- updated to release 0.91 
+- adjusted enigma-0.91.diff
+
+-------------------------------------------------------------------
+Sat Apr  2 20:53:05 CEST 2005 - coolo@suse.de
+
+- fix C++
+
+-------------------------------------------------------------------
+Thu Jan 27 23:17:50 CET 2005 - sndirsch@suse.de
+
+- updated to release 0.90 RC1
+
+-------------------------------------------------------------------
+Fri Nov 12 16:10:25 CET 2004 - sndirsch@suse.de
+
+- updated to release 0.90-beta
+
+-------------------------------------------------------------------
+Mon Oct 13 23:18:01 CEST 2003 - sndirsch@suse.de
+
+- updated to release 0.81
+- added desktop file/pixmap for new Game Manual
+
+-------------------------------------------------------------------
+Tue Sep 30 10:15:06 CEST 2003 - sndirsch@suse.de
+
+- updated to release 0.80-beta
+  * Time game
+  * Easy / difficult game mode
+  * Sokoban mode
+  * Game manual
+  * More than 300 new levels (now more than 550 in total)
+  * (partially working) Oxyd level importer
+  * Better soft scrolling
+  * Countless new game elements: turnstiles, volcanos, warp tunnels,
+    land-mines, jump pads, rotors, ...
+  * Reduced memory footprint
+- removed assert patch (already included upstream)
+- use new official desktop icon from package now
+
+-------------------------------------------------------------------
+Sat Aug 30 05:51:05 CEST 2003 - sndirsch@suse.de
+
+- added desktop icon
+
+-------------------------------------------------------------------
+Fri Aug  8 18:41:01 CEST 2003 - sndirsch@suse.de
+
+- added desktop file
+
+-------------------------------------------------------------------
+Wed Jul 30 14:54:47 CEST 2003 - meissner@suse.de
+
+- run autoreconf to make it work on ppc64
+
+-------------------------------------------------------------------
+Wed Feb 26 00:09:29 CET 2003 - ro@suse.de
+
+- include assert where needed 
+
+-------------------------------------------------------------------
+Mon Feb 17 22:36:10 CET 2003 - sndirsch@suse.de
+
+- updated to release 0.70
+  * Speed improvements
+  * Stereo sound
+  * More than 70 new levels
+  * Much better mouse controls
+  * Support for Oxyd's original sounds (see README)
+  * New game objects: Rubber bands, scissors, worm holes
+
+-------------------------------------------------------------------
+Sun Dec 29 18:10:40 CET 2002 - sndirsch@suse.de
+
+- updated to release 0.60
+
+-------------------------------------------------------------------
+Mon Aug 26 16:08:12 CEST 2002 - sndirsch@suse.de
+
+- added documentation
+
+-------------------------------------------------------------------
+Fri Aug 16 07:30:36 CEST 2002 - sndirsch@suse.de
+
+- updated to release 0.50
+
+-------------------------------------------------------------------
+Fri Jul 19 12:42:38 CEST 2002 - sndirsch@suse.de
+
+- added 'smpeg' to #neededforbuild
+
+-------------------------------------------------------------------
+Tue May 21 23:33:34 CEST 2002 - sndirsch@suse.de
+
+- created package
+
