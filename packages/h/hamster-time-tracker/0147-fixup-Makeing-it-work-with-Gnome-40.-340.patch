@@ -1,0 +1,52 @@
+From c1d12e632f18d72b20658123734e0d1e71b70b89 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 20 May 2021 22:41:59 +0200
+Subject: [PATCH 147/147] fixup Makeing it work with Gnome 40. #340
+
+On "develop" branch, these changes are from
+89a93f4 ("Merge branch 'upstream' into develop").
+---
+ extension/prefs.js | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/extension/prefs.js b/extension/prefs.js
+index c8b0e6b..e7f9b04 100644
+--- a/extension/prefs.js
++++ b/extension/prefs.js
+@@ -61,7 +61,10 @@ class HamsterSettingsWidget extends Gtk.Grid {
+         placementOptions.set(placementOptions.append(), [0, 1], ["Replace calendar", 1]);
+         placementOptions.set(placementOptions.append(), [0, 1], ["Replace activities", 2]);
+ 
+-        let placementCombo = new Gtk.ComboBox({model: placementOptions});
++        let placementCombo = new Gtk.ComboBox({
++            model: placementOptions,
++            visible: true
++        });
+ 
+         let placementComboRenderer = new Gtk.CellRendererText();
+         placementCombo.pack_start(placementComboRenderer, true);
+@@ -84,7 +87,10 @@ class HamsterSettingsWidget extends Gtk.Grid {
+         appearanceOptions.set(appearanceOptions.append(), [0, 1], ["Icon", 1]);
+         appearanceOptions.set(appearanceOptions.append(), [0, 1], ["Label and icon", 2]);
+ 
+-        let appearanceCombo = new Gtk.ComboBox({model: appearanceOptions});
++        let appearanceCombo = new Gtk.ComboBox({
++            model: appearanceOptions,
++            visible: true
++        });
+ 
+         let appearanceComboRenderer = new Gtk.CellRendererText();
+         appearanceCombo.pack_start(appearanceComboRenderer, true);
+@@ -103,7 +109,8 @@ class HamsterSettingsWidget extends Gtk.Grid {
+         let entry = new Gtk.Entry({
+             margin_bottom: 10,
+             margin_top: 5,
+-            text: this._settings.get_strv("show-hamster-dropdown")[0]
++            text: this._settings.get_strv("show-hamster-dropdown")[0],
++            visible: true
+         });
+         entry.connect('changed', this._onHotkeyChange.bind(this));
+         this.attach(entry, 1, 2, 1, 1);
+-- 
+2.31.1
+

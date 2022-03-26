@@ -1,0 +1,27 @@
+From 1bb61577d8ba9ec88dc2416f449d556f8e2615ba Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 18 Oct 2021 14:36:06 +0200
+Subject: [PATCH 152/153] metadata.json: add support for GNOME 41
+
+(cherry picked from commit 674a527ad883ca8bad622c7d28199fd28354f3e7)
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 9a9f41d..5bb293c 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -13,7 +13,8 @@
+         "3.34",
+         "3.36",
+         "3.38",
+-        "40"
++        "40",
++        "41"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.35.1
+

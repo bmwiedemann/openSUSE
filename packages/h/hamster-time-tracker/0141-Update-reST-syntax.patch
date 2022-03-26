@@ -1,0 +1,25 @@
+From 31e29aca270b135c7754765c7ab37db2a99c4ae2 Mon Sep 17 00:00:00 2001
+From: Benjamin Balder Bach <benjaoming@gmail.com>
+Date: Tue, 5 May 2020 12:57:18 +0200
+Subject: [PATCH 141/147] Update reST syntax
+
+---
+ README.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.rst b/README.rst
+index e4368d0..4808b9d 100644
+--- a/README.rst
++++ b/README.rst
+@@ -69,7 +69,7 @@ Build a fresh distribution package::
+ This will create a distributable archive located in the ``dist/`` folder.
+ 
+ 
+-*Shortcut on ``develop``*
++**Shortcut on** `develop`
+ 
+ If you are using the ``develop`` branch since May 2020, you can run ``make
+ install-user`` to install your current working branch in your user environment
+-- 
+2.31.1
+

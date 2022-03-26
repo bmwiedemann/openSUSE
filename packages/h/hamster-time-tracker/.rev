@@ -87,4 +87,52 @@
     <comment></comment>
     <requestid>893697</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>7b3fb9e4516367635b06602b0f17b37d</srcmd5>
+    <version>unknown</version>
+    <time>1648330278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream hamster 3.0.3~1
+- Upstream fixes and enhancements:
+  * Resume last activity using Ctl-Space. (#678)
+  * FactController: Fix start date picker modifying date twice (#674)
+  * Fix Wayland pop-up issues (#652)
+  * Add keyword entry to .desktop file (#649)
+  * Reset position in FactTree only when needed (#648)
+  * Remove dark bars for empty days in overview. (#650)
+- Fix GNOME shell versions for TW and 15.4
+- GNOME 41 and GNOME 42 support for GNOME shell extension
+  * added 0152-metadata.json-add-support-for-GNOME-41.patch
+  * added 0153-metadata.json.in-add-support-for-GNOME-42.patch
+- Changed default shortcut from Super-t to Super-h to avoid conflict
+  with GNOME's &quot;minimize window&quot; shortcut
+  * added 0151-Default-shortcut-Super-t.patch
+- Allow &quot;center&quot; positioning in menu bar
+  * added 0149-Extension-configuration-add-a-new-option-center-with.patch
+  * added 0150-Improve-description-of-center-positioning.patch
+- Display total time for the day
+  * added 0148-display-total-time-for-the-day.patch
+- GNOME 40 support for hamster shell extension
+  Upstream: d6e45d7 (&quot;Fix GNOME shell error message about factsBox.FactsBox&quot;)
+  * added 0131-metadata.json.in-fix-json-syntax-error.patch
+  * added 0132-Update-README.st.patch
+  * added 0133-Bump-latest-validated-gnome-shell-version-1.patch
+  * added 0134-README-mention-GNOME-shell-compatibility-of-this-ver.patch
+  * added 0135-README.rst-document-GNOME-shell-compatibility.patch
+  * added 0136-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+  * removed 0132-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+  * added 0137-README.rst-update-GNOME-shell-compatibility-informat.patch
+  * added 0138-Makefile-Add-install-user-target.patch
+  * added 0139-Makefile-Add-install-target.patch
+  * added 0140-README-Add-description-of-install-targets.patch
+  * added 0141-Update-reST-syntax.patch
+  * added 0142-Update-reST-syntax-take-2.patch
+  * added 0143-Document-GNOME-3.38-compatibility.patch
+  * added 0144-panelWidget-Remove-show-method.patch
+  * added 0145-panelWidget-Rename-toggle-to-toggle_menu.patch
+  * added 0146-Makeing-it-work-with-Gnome-40.-340.patch
+  * added 0147-fixup-Makeing-it-work-with-Gnome-40.-340.patch
+</comment>
+    <requestid>964949</requestid>
+  </revision>
 </revisionlist>

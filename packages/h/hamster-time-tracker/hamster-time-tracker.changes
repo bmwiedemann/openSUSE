@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Mar 25 19:53:17 UTC 2022 - mwilck@suse.com
+
+- Update to upstream hamster 3.0.3~1
+- Upstream fixes and enhancements:
+  * Resume last activity using Ctl-Space. (#678)
+  * FactController: Fix start date picker modifying date twice (#674)
+  * Fix Wayland pop-up issues (#652)
+  * Add keyword entry to .desktop file (#649)
+  * Reset position in FactTree only when needed (#648)
+  * Remove dark bars for empty days in overview. (#650)
+
+-------------------------------------------------------------------
+Fri Mar 25 19:21:03 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Fix GNOME shell versions for TW and 15.4
+- GNOME 41 and GNOME 42 support for GNOME shell extension
+  * added 0152-metadata.json-add-support-for-GNOME-41.patch
+  * added 0153-metadata.json.in-add-support-for-GNOME-42.patch
+- Changed default shortcut from Super-t to Super-h to avoid conflict
+  with GNOME's "minimize window" shortcut
+  * added 0151-Default-shortcut-Super-t.patch
+- Allow "center" positioning in menu bar
+  * added 0149-Extension-configuration-add-a-new-option-center-with.patch
+  * added 0150-Improve-description-of-center-positioning.patch
+- Display total time for the day
+  * added 0148-display-total-time-for-the-day.patch
+
+-------------------------------------------------------------------
+Thu May 20 20:53:22 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- GNOME 40 support for hamster shell extension
+  Upstream: d6e45d7 ("Fix GNOME shell error message about factsBox.FactsBox")
+  * added 0131-metadata.json.in-fix-json-syntax-error.patch
+  * added 0132-Update-README.st.patch
+  * added 0133-Bump-latest-validated-gnome-shell-version-1.patch
+  * added 0134-README-mention-GNOME-shell-compatibility-of-this-ver.patch
+  * added 0135-README.rst-document-GNOME-shell-compatibility.patch
+  * added 0136-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+  * removed 0132-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+  * added 0137-README.rst-update-GNOME-shell-compatibility-informat.patch
+  * added 0138-Makefile-Add-install-user-target.patch
+  * added 0139-Makefile-Add-install-target.patch
+  * added 0140-README-Add-description-of-install-targets.patch
+  * added 0141-Update-reST-syntax.patch
+  * added 0142-Update-reST-syntax-take-2.patch
+  * added 0143-Document-GNOME-3.38-compatibility.patch
+  * added 0144-panelWidget-Remove-show-method.patch
+  * added 0145-panelWidget-Rename-toggle-to-toggle_menu.patch
+  * added 0146-Makeing-it-work-with-Gnome-40.-340.patch
+  * added 0147-fixup-Makeing-it-work-with-Gnome-40.-340.patch
+
+-------------------------------------------------------------------
 Wed May 12 17:24:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.0.2

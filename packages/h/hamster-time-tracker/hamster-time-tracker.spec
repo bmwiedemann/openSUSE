@@ -1,7 +1,7 @@
 #
 # spec file for package hamster-time-tracker
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global ext_version 0.10.0
 
 %if 0%{?suse_version} >= 1550
-%global ext_gnome_version 3.36
+%global ext_gnome_version 42
+%else
+%if 0%{?sle_version} >= 150400
+%global ext_gnome_version 41
 %else
 %if 0%{?sle_version} >= 150200
 %global ext_gnome_version 3.34
@@ -26,61 +30,87 @@
 %global ext_gnome_version 3.26
 %endif
 %endif
+%endif
 
 %global ext_uuid contact@projecthamster.org
 %bcond_without extension
 
 Name:           hamster-time-tracker
-Version:        3.0.2
+Version:        3.0.3~1
 Release:        0
 Summary:        A time tracker for GNOME
-License:        GPL-3.0-or-later AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
 Group:          Productivity/Other
-Url:            https://github.com/projecthamster/hamster
-Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/hamster-%{version}.tar.gz
-# https://github.com/projecthamster/hamster-shell-extension/archive/0.10.0.tar.gz
+URL:            https://github.com/projecthamster/hamster
+Source:         hamster-time-tracker-%{version}.tar.xz
+# Pulled from github, see _service
 Source1:        hamster-shell-extension-%{ext_version}.tar.gz
+# necessary for GNOME < 3.32
 Source2:        https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/gnome-3-30/lib/convenience.js
 # avoid rpm error: env-script-interpreter
 Patch1:         replace-env-python-invocation-by-direct-call.patch
-Patch2:		waf-skip-gsettings-schema-compilation.patch
+Patch2:         waf-skip-gsettings-schema-compilation.patch
 # Patches for GNOME extension
 # GNOME up to 3.30
-Patch101:	0101-Don-t-try-to-access-controller.activities-before-it-.patch
-Patch102:	0102-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
-Patch103:	0103-convenience.js-has-been-removed-in-GNOME-extensions-.patch
-Patch104:	0104-Makefile-allow-shipping-convenience.js.patch
-Patch105:	0105-metadata.json-mark-GNOME-3.30-as-supported.patch
-Patch106:	0106-Fix-installation-instructions-matches-Ubuntu-18.04-T.patch
-Patch107:	0107-metadata.json-remove-version-field.patch
+Patch101:       0101-Don-t-try-to-access-controller.activities-before-it-.patch
+Patch102:       0102-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
+Patch103:       0103-convenience.js-has-been-removed-in-GNOME-extensions-.patch
+Patch104:       0104-Makefile-allow-shipping-convenience.js.patch
+Patch105:       0105-metadata.json-mark-GNOME-3.30-as-supported.patch
+Patch106:       0106-Fix-installation-instructions-matches-Ubuntu-18.04-T.patch
+Patch107:       0107-metadata.json-remove-version-field.patch
 # GNOME 3.32
-Patch108:	0108-drop-convenience.js.patch
-Patch109:	0109-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
-Patch110:	0110-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
-Patch111:	0111-Port-GObject-classes-to-JS6-classes.patch
-Patch112:	0112-add-jshint-validthis-to-silence-warnings-about-stric.patch
-Patch113:	0113-todaysFactsWidget-add-missing-bind.patch
-Patch114:	0114-replace-Lang.bind-with-function-.bind.patch
-Patch115:	0115-Port-non-GObject-class-to-JS6.patch
-Patch116:	0116-extension.js-add-jshint-validthis-hints.patch
-Patch117:	0117-extension.js-fix-indentation-after-previous-change.patch
-Patch118:	0118-Don-t-log-ACTIVITIES-at-every-refresh.patch
-Patch119:	0119-doc-remove-broken-link-to-usejsdoc.org.patch
+Patch108:       0108-drop-convenience.js.patch
+Patch109:       0109-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
+Patch110:       0110-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
+Patch111:       0111-Port-GObject-classes-to-JS6-classes.patch
+Patch112:       0112-add-jshint-validthis-to-silence-warnings-about-stric.patch
+Patch113:       0113-todaysFactsWidget-add-missing-bind.patch
+Patch114:       0114-replace-Lang.bind-with-function-.bind.patch
+Patch115:       0115-Port-non-GObject-class-to-JS6.patch
+Patch116:       0116-extension.js-add-jshint-validthis-hints.patch
+Patch117:       0117-extension.js-fix-indentation-after-previous-change.patch
+Patch118:       0118-Don-t-log-ACTIVITIES-at-every-refresh.patch
+Patch119:       0119-doc-remove-broken-link-to-usejsdoc.org.patch
 # GNOME 3.34
-Patch120:	0120-factsBox-use-GObject.registerClass.patch
-Patch121:	0121-panelWidget-fix-object.actor-is-deprecated-warning.patch
-Patch122:	0122-metadata.json-mark-GNOME-3.34-as-supported.patch
-Patch123:	0123-Makefile-don-t-fail-if-zip-is-unavailable.patch
-Patch124:	0124-Makefile-collect-must-depend-on-build.patch
+Patch120:       0120-factsBox-use-GObject.registerClass.patch
+Patch121:       0121-panelWidget-fix-object.actor-is-deprecated-warning.patch
+Patch122:       0122-metadata.json-mark-GNOME-3.34-as-supported.patch
+Patch123:       0123-Makefile-don-t-fail-if-zip-is-unavailable.patch
+Patch124:       0124-Makefile-collect-must-depend-on-build.patch
 # GNOME 3.36
-Patch125:	0125-todaysFactsWidget-replace-Clutter.TableLayout-with-C.patch
-Patch126:	0126-Fix-GNOME-shell-error-message-about-factsBox.FactsBo.patch
-Patch127:	0127-Makefile-configurable-extension-UUID.patch
-Patch128:	0128-metadata.json.in-mark-GNOME-3.36-supported.patch
-Patch129:	0129-README.rst-mention-the-GNOME-extensions-tool.patch
-Patch130:	0130-README.rst-Add-a-section-about-UUID-changing.patch
-Patch131:	0131-metadata.json.in-fix-json-syntax-error.patch
-Patch132:	0132-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+Patch125:       0125-todaysFactsWidget-replace-Clutter.TableLayout-with-C.patch
+Patch126:       0126-Fix-GNOME-shell-error-message-about-factsBox.FactsBo.patch
+Patch127:       0127-Makefile-configurable-extension-UUID.patch
+Patch128:       0128-metadata.json.in-mark-GNOME-3.36-supported.patch
+Patch129:       0129-README.rst-mention-the-GNOME-extensions-tool.patch
+Patch130:       0130-README.rst-Add-a-section-about-UUID-changing.patch
+Patch131:       0131-metadata.json.in-fix-json-syntax-error.patch
+Patch132:       0132-Update-README.st.patch
+Patch133:       0133-Bump-latest-validated-gnome-shell-version-1.patch
+Patch134:       0134-README-mention-GNOME-shell-compatibility-of-this-ver.patch
+Patch135:       0135-README.rst-document-GNOME-shell-compatibility.patch
+Patch136:       0136-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+Patch137:       0137-README.rst-update-GNOME-shell-compatibility-informat.patch
+Patch138:       0138-Makefile-Add-install-user-target.patch
+Patch139:       0139-Makefile-Add-install-target.patch
+Patch140:       0140-README-Add-description-of-install-targets.patch
+Patch141:       0141-Update-reST-syntax.patch
+Patch142:       0142-Update-reST-syntax-take-2.patch
+# GNOME 3.38
+Patch143:       0143-Document-GNOME-3.38-compatibility.patch
+Patch144:       0144-panelWidget-Remove-show-method.patch
+Patch145:       0145-panelWidget-Rename-toggle-to-toggle_menu.patch
+# GNOME 3.40
+Patch146:       0146-Makeing-it-work-with-Gnome-40.-340.patch
+Patch147:       0147-fixup-Makeing-it-work-with-Gnome-40.-340.patch
+Patch148:       0148-display-total-time-for-the-day.patch
+Patch149:       0149-Extension-configuration-add-a-new-option-center-with.patch
+Patch150:       0150-Improve-description-of-center-positioning.patch
+Patch151:       0151-Default-shortcut-Super-t.patch
+# GNOME 3.41 / 3.42
+Patch152:       0152-metadata.json-add-support-for-GNOME-41.patch
+Patch153:       0153-metadata.json.in-add-support-for-GNOME-42.patch
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -116,9 +146,9 @@ Requires:       python3-pyxdg
 %if 0%{?suse_version} < 1330
 # see https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
-Requires(post):	gtk3-tools
-Requires(postun): gtk3-tools
+Requires(postun):update-desktop-files
+Requires(post): gtk3-tools
+Requires(postun):gtk3-tools
 %endif
 
 Recommends:     %{name}-lang
@@ -137,7 +167,7 @@ is spent during the day on activities that are set up.
 %lang_package
 
 %prep
-%setup -q -n hamster-%{version} -a1
+%setup -q -n hamster-time-tracker-%{version} -a1
 %patch1 -p1
 %patch2 -p1
 %if %{with extension}
@@ -170,9 +200,8 @@ cd hamster-shell-extension-%{ext_version}
 %patch122 -p1
 %patch123 -p1
 %patch124 -p1
-# TW: GNOME 3.36 support
-# https://github.com/projecthamster/hamster-shell-extension/pull/323
-%if 0%{?suse_version} >= 1550
+# TW / 15.4: GNOME 41+ support
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %patch125 -p1
 %patch126 -p1
 %patch127 -p1
@@ -181,6 +210,27 @@ cd hamster-shell-extension-%{ext_version}
 %patch130 -p1
 %patch131 -p1
 %patch132 -p1
+%patch133 -p1
+%patch134 -p1
+%patch135 -p1
+%patch136 -p1
+%patch137 -p1
+%patch138 -p1
+%patch139 -p1
+%patch140 -p1
+%patch141 -p1
+%patch142 -p1
+%patch143 -p1
+%patch144 -p1
+%patch145 -p1
+%patch146 -p1
+%patch147 -p1
+%patch148 -p1
+%patch149 -p1
+%patch150 -p1
+%patch151 -p1
+%patch152 -p1
+%patch153 -p1
 %endif
 %endif
 
@@ -239,9 +289,9 @@ tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tar.gz \
 %{_datadir}/help/C/hamster
 
 %package -n gnome-shell-extension-hamster-time-tracker
-Version:        %{ext_version}_%{ext_gnome_version}
+Version:        3.0.3~1%{ext_version}_%{ext_gnome_version}
 Release:        0
-Summary:        Hamster time tracker for GNOME Shell status menu
+Summary:        Hamster time tracker extension for GNOME Shell
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 Requires:       gnome-shell >= %{ext_gnome_version}
@@ -254,8 +304,8 @@ Requires:       gnome-shell < 3.32
 Requires:       %{name}
 Supplements:    packageand(gnome-shell:%{name})
 # The predecessor package had a broken version number.
-Obsoletes:	gnome-shell-extension-hamster < 2.2.20.10.1
-Provides:	gnome-shell-extension-hamster = 2.2.20.10.1
+Obsoletes:      gnome-shell-extension-hamster < 2.2.20.10.1
+Provides:       gnome-shell-extension-hamster = 2.2.20.10.1
 
 %description -n gnome-shell-extension-hamster-time-tracker
 

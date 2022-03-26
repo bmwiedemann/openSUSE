@@ -1,0 +1,30 @@
+From 4a9cb089006a7d8ed18f64d4094f95e99ee196df Mon Sep 17 00:00:00 2001
+From: Andrew Jeffery <andrew@aj.id.au>
+Date: Mon, 27 Apr 2020 09:49:24 +0930
+Subject: [PATCH 138/147] Makefile: Add install-user target
+
+Script some of the behaviour previously captured in the readme as
+instructions to execute manually.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+---
+ Makefile | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 0e31de5..2fb39fa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -102,3 +102,9 @@ test-docs:
+ 
+ test-style:
+ 	jshint --config .jshint.cfg extension/
++
++.PHONY: install-user
++install-user: dist
++	rm -rf ${HOME}/.local/share/gnome-shell/extensions/$(UUID)
++	mkdir -p ${HOME}/.local/share/gnome-shell/extensions/$(UUID)
++	tar xfz dist/$(UUID).tar.gz -C ${HOME}/.local/share/gnome-shell/extensions/$(UUID)
+-- 
+2.31.1
+
