@@ -397,4 +397,19 @@
   - Append to _used_channel_ids in _used_channel_ids</comment>
     <requestid>943597</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e3b6cd46b89a641e58c1deb677a983c6</srcmd5>
+    <version>5.1.0</version>
+    <time>1648330337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  - Improve performance of _get_free_channel_id, fix channel max bug (#385).
+  - Document memoryview usage, minor frame_writer.write_frame refactor (#384).
+  - Start dropping python 3.6 (#387).
+  - Added experimental __slots__ to some classes (#368)
+  - Relaxed vine version for upcoming release.
+  - Upgraded topytest 7 (#388).
+- drop vine-no-double-equals-deps.patch (upstream)</comment>
+    <requestid>965088</requestid>
+  </revision>
 </revisionlist>
