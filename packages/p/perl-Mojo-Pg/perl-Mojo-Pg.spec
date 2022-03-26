@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-Pg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojo-Pg
 Name:           perl-Mojo-Pg
-Version:        4.26
+Version:        4.27
 Release:        0
-Summary:        Wrapper around DBD::Pg for using PostgreSql with Mojolicious
 License:        Artistic-2.0
+Summary:        Wrapper around DBD::Pg for using PostgreSql with Mojolicious
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
