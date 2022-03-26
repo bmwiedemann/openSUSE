@@ -1,7 +1,7 @@
 #
 # spec file for package icebreaker
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,17 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            http://www.mattdm.org/icebreaker/
 Source:         https://mattdm.org/icebreaker/2.2.x/icebreaker-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE icebreaker-makefile-fix.patch - fixes unterminated call to function 'shell' in makefile for openSUSE Leap and use $(CC) instead hardcoded gcc
+Patch1:         icebreaker-makefile-fix.patch
 BuildRequires:  desktop-file-utils
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(sdl)
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc10
+%else
+BuildRequires:  gcc
+%endif
 
 %description
 IceBreaker is an action-puzzle game in which the player must section
@@ -37,8 +45,14 @@ having similarities to the 1981 game of Qix.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-10
+%else
+export CC=gcc
+%endif
 %make_build OPTIMIZE="%{optflags}" prefix=%{_prefix}
 
 %install

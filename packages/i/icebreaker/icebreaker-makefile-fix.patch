@@ -1,0 +1,18 @@
+diff -Nur icebreaker-2.2.1.orig/Makefile icebreaker-2.2.1/Makefile
+--- icebreaker-2.2.1.orig/Makefile	2021-10-02 20:47:24.000000000 +0200
++++ icebreaker-2.2.1/Makefile	2022-03-20 07:44:13.509204236 +0100
+@@ -1,4 +1,4 @@
+-CC=gcc
++# CC=gcc
+ 
+ PKG_CONFIG ?= pkg-config
+ 
+@@ -33,7 +33,7 @@
+ SDL_LIB=$(SDL_MIXER) $(SDL_LDFLAGS)
+ SDL_CFLAGS := $(shell $(PKG_CONFIG) sdl --cflags)
+ SDL_LDFLAGS := $(shell $(PKG_CONFIG) sdl --libs)
+-VERSION := $(shell awk '/^#define VERSION/ { print $$3 }' icebreaker.h)
++VERSION := $(shell awk '/^\#define VERSION/ { print $$3 }' icebreaker.h)
+ VERDATE := $(shell LC_ALL=C date -u -r icebreaker.h +"%d %B %Y")
+ 
+ WINARCH=i686
