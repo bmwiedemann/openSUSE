@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Mar 26 14:55:05 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.17
+
+-------------------------------------------------------------------
+Fri Mar 25 21:05:54 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to 1.3.8:
+  * Enhancements
+    - Kubernetes v1.22 is no longer experimental and is now supported. Kubernetes v1.23 is experimental.
+  * Major Bug Fixes
+    - CoreDNS Autoscaler now has a readiness and liveness check. See #24939.
+    - Fixed a regression such that options passed in cluster configuration for nginx configuration don't get passed to the new nginx ingress controller configmap. This is fixed with Kubernetes versions 1.19.16-rancher1-4, 1.20.15-rancher1-2, 1.21.9-rancher1-2. See #36851 for more information.
+    - Fixed an issue where rotateEncryptionKey resulted into a panic when creating cluster. See #36333.
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. See #1725.
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.22.7-rancher1-1
+        - v1.21.10-rancher1-1
+        - v1.20.15-rancher1-2
+        - v1.19.16-rancher1-4
+        - v1.18.20-rancher1-3
+      - Experimental Kubernetes version
+        -v1.23.4-rancher1-1
+  * New Images in v1.23.4-rancher1, v1.22.7-rancher1, and v1.21.10-rancher1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.23.4-rancher1
+      - rancher/hyperkube:v1.22.7-rancher1
+      - rancher/hyperkube:v1.21.10-rancher1
+
+-------------------------------------------------------------------
 Wed Feb  9 08:19:41 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 1.3.7:
