@@ -263,4 +263,12 @@
   * Support for setting the IPv4 don't-fragment (DF) bit has been</comment>
     <requestid>899921</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>598fb6e9ca9c6c3fcf41586d60867e21</srcmd5>
+    <version>3.11</version>
+    <time>1648330269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965013</requestid>
+  </revision>
 </revisionlist>
