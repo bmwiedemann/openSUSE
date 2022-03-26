@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 22 09:58:05 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- added monitoring-plugins-2.3.1-check_disk_on_btrfs.patch
+  backport fix for check_disk reporting critical on btrfs (nagios-plugins
+  issue %569)
+
+-------------------------------------------------------------------
 Fri Dec  3 08:37:09 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
 
 - removed the following, either upstreamed or integrated in other patches:

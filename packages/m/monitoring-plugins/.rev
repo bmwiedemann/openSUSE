@@ -261,4 +261,12 @@ New patches:
     <comment>Preparing for inclusion in SLE12 and (latest) SLE15 as general update (to have the package on the same version in all SLE distributions. </comment>
     <requestid>940945</requestid>
   </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>fb84335997ae02f0cde78794baf25ca9</srcmd5>
+    <version>2.3.1</version>
+    <time>1648330270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965012</requestid>
+  </revision>
 </revisionlist>
