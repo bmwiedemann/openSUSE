@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 26 15:10:15 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 99.0.4844.84:
+  * CVE-2022-1096: Type Confusion in V8 (boo#1197552)
+
+-------------------------------------------------------------------
 Mon Mar 21 05:07:25 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 99.0.4844.82:
-  * Fix potential problem in Hangouts
+  * Fix potential problem in Hangouts (boo#1197332)
 
 -------------------------------------------------------------------
 Wed Mar 16 09:36:49 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
