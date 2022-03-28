@@ -9165,6 +9165,7 @@ Summary:        Commands to control PDF readers, under X11
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
 Obsoletes:      texlive-pdftools <= 2019
+Obsoletes:      texlive-pdftools-doc <= 2019
 Recommends:     texlive-pdftosrc >= %{texlive_version}
 Provides:       texlive-pdftools-doc:%{_mandir}/man1/pdfclose.1%{?ext_man}
 Provides:       texlive-pdftools-doc:%{_mandir}/man1/pdfopen.1%{?ext_man}
