@@ -200,4 +200,12 @@
     <comment>4.13.2</comment>
     <requestid>940091</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6f622989e64b7d0889a3fc15f7ba1f51</srcmd5>
+    <version>4.13.2</version>
+    <time>1648479540</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962897</requestid>
+  </revision>
 </revisionlist>
