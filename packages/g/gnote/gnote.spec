@@ -19,7 +19,7 @@
 %define base_version 42
 
 Name:           gnote
-Version:        42.beta
+Version:        42.0
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
