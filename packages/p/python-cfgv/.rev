@@ -41,4 +41,13 @@
   * No upstream changelog</comment>
     <requestid>824395</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc99cb72c653343c442bd89c72488873</srcmd5>
+    <version>3.3.1</version>
+    <time>1648479651</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.1:
+  * python 3.9 enabled</comment>
+    <requestid>965203</requestid>
+  </revision>
 </revisionlist>
