@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 23 13:36:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire hostname: the test suite wants to compare the output
+  of 'hostname' against 'busybox hostname'. We should not rely
+  hostname to be present in the build environment.
+
+-------------------------------------------------------------------
 Wed Jan 12 15:40:40 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to 1.35.0
