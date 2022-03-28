@@ -498,4 +498,12 @@ last submission had wrong tar ball for unknown reason</comment>
   * 20-files-present-and-references: do not complain about debian.*.triggers</comment>
     <requestid>951352</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>870cf0134880259dbb4584b3cd9f0338</srcmd5>
+    <version>0.23</version>
+    <time>1648479512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964648</requestid>
+  </revision>
 </revisionlist>

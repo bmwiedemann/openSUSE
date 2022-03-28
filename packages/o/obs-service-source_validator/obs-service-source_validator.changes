@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 22 10:23:11 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.23:
+  * Allow mode=manual services
+  * spec_query: add elif support
+  * 45-stale-changes: Also read <package/> in _multibuild
+
+-------------------------------------------------------------------
 Thu Feb 03 16:23:45 UTC 2022 - ro@suse.de
 
 - Update to version 0.22:
