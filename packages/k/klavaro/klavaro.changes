@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 26 15:29:44 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 3.13
+  * Fixed Close button on About dialog.
+  * Added French layout from AFNOR: azerty (amélioré).
+  * Updated translations: Croatian, Greek (partial), Portuguese (Portugal)
+- fix website URL 
+- removed _service file: use the upstream tarball directly
+
+-------------------------------------------------------------------
 Thu Apr 29 15:16:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.12

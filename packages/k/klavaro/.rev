@@ -242,4 +242,17 @@
     <comment></comment>
     <requestid>903822</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9bde2bb4a60272f7934f1e2a47018811</srcmd5>
+    <version>3.13</version>
+    <time>1648479664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.13
+  * Fixed Close button on About dialog.
+  * Added French layout from AFNOR: azerty (amélioré).
+  * Updated translations: Croatian, Greek (partial), Portuguese (Portugal)
+- fix website URL 
+- removed _service file: use the upstream tarball directly</comment>
+    <requestid>965332</requestid>
+  </revision>
 </revisionlist>

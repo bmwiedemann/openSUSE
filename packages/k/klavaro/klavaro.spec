@@ -1,7 +1,7 @@
 #
 # spec file for package klavaro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@
 %define espeak    espeak
 %endif
 Name:           klavaro
-Version:        3.12
+Version:        3.13
 Release:        0
 Summary:        Typing tutor
 License:        GPL-3.0-or-later
 Group:          Amusements/Teaching/Other
-URL:            https://klavaro.sourceforge.net/
+URL:            https://klavaro.sourceforge.io/
 Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -70,7 +70,7 @@ layouts.
 %install
 %make_install
 
-%fdupes -s %{buildroot}
+%fdupes -s %{buildroot}%{_datadir}
 
 %find_lang %{name}
 
@@ -78,16 +78,6 @@ layouts.
 %suse_update_desktop_file -r klavaro Education X-KDE-Edu-Teaching
 %else
 %suse_update_desktop_file -r klavaro Education Teaching
-%endif
-
-%if 0%{?suse_version} > 1130 && 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
 %endif
 
 %files -f %{name}.lang
