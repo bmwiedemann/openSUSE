@@ -200,7 +200,8 @@ BuildRequires:  distribution-logos-openSUSE-Kubic
 %define branding_skelcd   SMO
 %define branding_systemd  SMO
 %if "%theme" == "LeapMicro"
-BuildRequires:  Leap-Micro-release Leap-Micro-release-dvd
+BuildRequires:  Leap-Micro-release
+BuildRequires:  distribution-logos-openSUSE-LeapMicro
 %define branding_plymouth openSUSE
 %define branding_grub2    openSUSE
 %define branding_gfxboot  openSUSE
@@ -690,7 +691,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.45
+Version:        17.47
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
