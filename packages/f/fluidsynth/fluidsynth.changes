@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 24 07:06:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.6:
+  * Undeprecation and minor revisal of the OSS driver
+  * Minor improvements to CoreAudio and CoreMidi drivers
+  * Fix sustained voices being held after ALL_CTRL_OFF
+  * Fix clobbering of PORTAMENTO_CTRL after ALL_CRTL_OFF
+  * Prevent Modulation Envelope from being stuck in decay phase, causing
+    detuned voices and potentially other audible glitches for some soundfonts
+  * Fix a compilation issue with recent glib
+  
+-------------------------------------------------------------------
 Sun Feb  6 12:52:36 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.2.5
