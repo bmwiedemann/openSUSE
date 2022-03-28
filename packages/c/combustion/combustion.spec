@@ -17,12 +17,12 @@
 
 
 Name:           combustion
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        System for initial configuration of appliances
 License:        GPL-2.0-or-later
 Group:          System/Management
-URL:            https://build.opensuse.org/package/show/home:Vogtinator:combustion/combustion
+URL:            https://en.opensuse.org/Portal:MicroOS/Combustion
 Source1:        LICENSE
 Source2:        README
 Source3:        module-setup.sh

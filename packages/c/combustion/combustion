@@ -92,20 +92,15 @@ cleanup() {
 	# (https://github.com/systemd/systemd/issues/20329). To avoid that,
 	# wait until systemd processed the umount events. In a chroot (or with
 	# SYSTEMD_OFFLINE=1) systemctl always succeeds, so avoid an infinite loop.
-	if ! systemctl is-active does-not-exist.mount; then
-		while systemctl is-active sysroot.mount; do sleep 0.5; done
+	if ! systemctl --quiet is-active does-not-exist.mount; then
+		while systemctl --quiet is-active sysroot.mount; do sleep 0.5; done
 	fi
 	systemctl start sysroot.mount
 }
 
+# Note: The /sysroot remounting during cleanup happens unconditionally.
+# This is needed as ignition-mount.service's ExecStop is also disabled unconditionally.
 trap cleanup EXIT
-
-# ignition-mount.service mounts stuff below /sysroot in ExecStart and umounts
-# it on ExecStop, failing if umounting fails. This conflicts with the
-# mounts/umounts done by combustion. Ignition is already done, so just stop it.
-if systemctl --quiet is-active ignition-mount.service; then
-	systemctl stop ignition-mount.service
-fi
 
 if ! [ -d "${config_mount}/combustion" ]; then
 	echo "No config found - doing nothing."
@@ -165,6 +160,8 @@ if [ -x /sysroot/usr/sbin/transactional-update ]; then
 		chmod a+x script
 		./script
 		echo \$? > "${exchangedir}/retval"
+		# Snapshot got touched while the policy isn't active, needs relabeling again.
+		[ -e /etc/selinux/.relabelled ] && >> /etc/selinux/.autorelabel
 EOF
 		echo "transactional-update failed"
 		exit 1
@@ -175,9 +172,6 @@ EOF
 		chroot /sysroot transactional-update --no-selfupdate rollback
 		exit 1
 	fi
-
-	# Snapshot got touched while the policy isn't active, needs relabeling again.
-	[ -e /sysroot/etc/selinux/.relabelled ] && >> /sysroot/etc/selinux/.autorelabel
 else
 	mount -o remount,rw /sysroot
 	if ! chroot /sysroot sh -e -c "cd '${config_dir}'; chmod a+x script; ./script"; then

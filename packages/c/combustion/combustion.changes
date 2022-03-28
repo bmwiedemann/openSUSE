@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 24 09:40:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Bump version to 0.3
+- Use the Wiki page as URL (boo#1195383)
+- Don't touch /sysroot/etc/ after creating a new snapshot, it ends up
+  in the old snapshot's overlay
+
+-------------------------------------------------------------------
+Wed Mar 23 15:15:15 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Disable ignition-mount.service's ExecStop instead of stopping the
+  unit (boo#1197309)
+
+-------------------------------------------------------------------
+Mon Mar 21 13:20:39 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Be more --quiet with systemctl
+
+-------------------------------------------------------------------
 Thu Mar  3 11:58:07 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Support the dracut network-manager module
