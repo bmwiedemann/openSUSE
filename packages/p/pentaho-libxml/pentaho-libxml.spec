@@ -1,7 +1,7 @@
 #
 # spec file for package pentaho-libxml
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           pentaho-libxml
 Version:        1.1.3
 Release:        0
 Summary:        Namespace aware SAX parser utility library
-License:        LGPL-2.0
+License:        LGPL-2.0-only
 Group:          Development/Libraries/Java
-Url:            http://reporting.pentaho.org/
+URL:            http://reporting.pentaho.org/
 #Original source: http://downloads.sourceforge.net/jfreereport/%%{origname}-%%{version}.zip
 #unzip, find . -name "*.jar" -exec rm {} \;
 #to simplify the licensing
@@ -33,7 +33,7 @@ Patch0:         libxml-1.1.2-build.patch
 Patch1:         pentaho-libxml-1.1.3-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  libbase
 BuildRequires:  libloader
