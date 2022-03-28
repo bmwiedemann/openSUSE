@@ -1,7 +1,7 @@
 #
 # spec file for package sac
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Java standard interface for CSS parser
 License:        W3C
 Group:          Development/Libraries/Java
-Url:            http://www.w3.org/Style/CSS/SAC/
+URL:            http://www.w3.org/Style/CSS/SAC/
 #Original source: http://www.w3.org/2002/06/%{name}java-%{version}.zip
 #unzip, find . -name "*.jar" -exec rm {} \;
 #to simplify the licensing
@@ -32,7 +32,7 @@ Source2:        %{name}-MANIFEST.MF
 Source3:        http://mirrors.ibiblio.org/pub/mirrors/maven2/org/w3c/css/sac/1.3/sac-1.3.pom
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  unzip
@@ -59,7 +59,7 @@ find . -name "*.jar" -exec rm -f {} \;
 
 %build
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     jar javadoc
 
 %install
