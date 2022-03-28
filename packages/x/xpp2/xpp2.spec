@@ -1,7 +1,7 @@
 #
 # spec file for package xpp2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@ Release:        0
 Summary:        XML Pull Parser
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-Url:            http://www.extreme.indiana.edu/xgws/xsoap/xpp/
+URL:            http://www.extreme.indiana.edu/xgws/xsoap/xpp/
 Source0:        http://www.extreme.indiana.edu/xgws/xsoap/xpp/download/PullParser2/PullParser%{version}.tar.bz2
 Source1:        https://repo1.maven.org/maven2/pull-parser/pull-parser/%{version}/pull-parser-%{version}.pom
 Patch0:         xpp2-build_xml.patch
 Patch1:         xpp2-enum.patch
 BuildRequires:  ant >= 1.6
-BuildRequires:  ant-junit >= 1.6
+BuildRequires:  ant-junit >= 1.8
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools

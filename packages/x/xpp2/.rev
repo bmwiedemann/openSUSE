@@ -133,4 +133,12 @@
     <comment>Add pom file</comment>
     <requestid>897999</requestid>
   </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>187d04e5c694d1effe4c8465c1ae2489</srcmd5>
+    <version>2.1.10</version>
+    <time>1648479542</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962915</requestid>
+  </revision>
 </revisionlist>
