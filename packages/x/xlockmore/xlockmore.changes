@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 27 19:26:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.69:
+  Patch for xkb groups thanks to Audrey Af, public.irkutsk AT gmail.com.
+  Minor touches for xscreensaver-6.03 port, life and life3d. 
+
+-------------------------------------------------------------------
 Tue Jan 25 15:38:09 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 5.68:
