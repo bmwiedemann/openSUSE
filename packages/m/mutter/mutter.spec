@@ -38,6 +38,8 @@ Patch0:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 Patch1:         mutter-disable-cvt-s390x.patch
 # PATCH-FIX-OPENSUSE mutter-window-actor-Special-case-shaped-Java-windows.patch -- window-actor: Special-case shaped Java windows
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
+# PATCH-FIX-UPSTREAM mutter-bail-out-on-reentry-into-map-unmap.patch bsc#1197350, glgo#GNOME/mutter!2299 alynx.zhou@suse.com -- Bail out on reentry into map/unmap() in Clutter
+Patch3:         mutter-bail-out-on-reentry-into-map-unmap.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -145,6 +147,7 @@ applications that want to make use of the mutter library.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}
