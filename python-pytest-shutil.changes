@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 23 06:45:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch:
+  * Do not use external mock. 
+
+-------------------------------------------------------------------
 Fri Mar 13 12:37:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Build without python2 present

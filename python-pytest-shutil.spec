@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-shutil
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@ Version:        1.7.0
 Release:        0
 Summary:        A goodie-bag of unix shell and environment tools for pytest
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-shutil/pytest-shutil-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Adapted from gh#man-group/pytest-plugins#66bf6670f3ce10106d57a77ff634a8e5c9c3a39a
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module execnet}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module path.py}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git}
@@ -40,7 +40,6 @@ BuildRequires:  python-contextlib2
 %endif
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
-Requires:       python-mock
 Requires:       python-path.py
 Requires:       python-pytest
 Requires:       python-six
@@ -57,9 +56,10 @@ This library is a goodie-bag of Unix shell and environment management
 tools for automated tests.
 
 %prep
-%setup -q -n pytest-shutil-%{version}
+%autosetup -p1 -n pytest-shutil-%{version}
 sed -i '/contextlib2/d' setup.py
 sed -i '/path.\py/d' setup.py
+sed -i '/mock/d' setup.py
 
 %build
 %python_build
