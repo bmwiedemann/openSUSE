@@ -9718,6 +9718,7 @@ License:        LPPL-1.0
 Summary:        Extract source file or stream from PDF file
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Conflicts:      texlive-pdftools-doc
 Provides:       texlive-pdftools-doc:%{_mandir}/man1/pdftosrc.1%{?ext_man}
 Requires(pre):  texlive-pdftosrc-bin >= %{texlive_version}
 #!BuildIgnore: texlive-pdftosrc-bin
