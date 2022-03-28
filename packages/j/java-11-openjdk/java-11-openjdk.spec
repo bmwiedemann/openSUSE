@@ -20,7 +20,11 @@
 %{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x
 %global debug 0
+%if 0%{?suse_version} > 1500
+%global add_back_javaee_modules 0
+%else
 %global add_back_javaee_modules 1
+%endif
 %global is_release 1
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -238,7 +242,6 @@ Patch402:       jaw-nogtk.patch
 #
 Patch500:       activation-module.patch
 Patch501:       annotation-module.patch
-
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -593,7 +596,7 @@ sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE12} > nss.cfg
 
 # Setup nss.fips.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.fips.cfg
-sed -i -e "s:@NSS_SECMOD@:sql\:/etc/pki/nssdb:g" nss.fips.cfg
+sed -i -e "s:@NSS_SECMOD@:sql\:%{_sysconfdir}/pki/nssdb:g" nss.fips.cfg
 
 %build
 

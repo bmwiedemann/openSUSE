@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 17 08:42:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Stop adding the JavaEE modules when building for Factory
+
+-------------------------------------------------------------------
 Tue Feb 15 08:33:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.14.1+1
