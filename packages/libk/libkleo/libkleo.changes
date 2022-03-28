@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 25 14:47:41 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc12-fix.patch upstream fix in order to support GCC 12.
+
+-------------------------------------------------------------------
 Tue Mar  1 09:58:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.12.3
