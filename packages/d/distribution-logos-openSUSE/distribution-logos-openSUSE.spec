@@ -20,10 +20,10 @@
 Name:           distribution-logos-openSUSE
 Summary:        Logos for openSUSE Distros
 License:        CC-BY-SA-4.0
-Version:        20201117
+Version:        20220322
 Release:        0
 Url:            https://github.com/openSUSE/distribution-logos
-Source:         distribution-logos-master.zip
+Source:         distribution-logos-main.zip
 BuildRequires:  unzip
 BuildRequires:  hicolor-icon-theme
 BuildArch:      noarch
@@ -45,6 +45,19 @@ BuildArch:      noarch
 
 %description Leap
 Logos for openSUSE Leap
+
+%package LeapMicro
+Summary:        Logos for openSUSE Leap Micro
+
+Obsoletes:      distribution-logos
+Provides:       distribution-logos
+Conflicts:      distribution-logos
+
+RemovePathPostfixes: .LeapMicro
+BuildArch:      noarch
+
+%description LeapMicro
+Logos for openSUSE Leap Micro
 
 %else
 
@@ -104,7 +117,7 @@ BuildArch:      noarch
 Icons with openSUSE distribution logos.
 
 %prep
-%setup -qn distribution-logos-master
+%setup -qn distribution-logos-main
 
 %build
 # Skip build
@@ -114,7 +127,7 @@ export NO_BRP_STALE_LINK_ERROR=yes
 mkdir -p %{buildroot}%{_datadir}/pixmaps/distribution-logos
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{scalable,symbolic}/apps
 %if 0%{?sle_version}
-for distro in Leap; do \
+for distro in Leap LeapMicro; do \
 %else
 for distro in Tumbleweed Kubic MicroOS; do \
 %endif
@@ -134,6 +147,9 @@ ln -sf %{_datadir}/pixmaps/distribution-logos/square-symbolic.svg %{buildroot}%{
 
 %files Leap
 %{_datadir}/pixmaps/distribution-logos/*.Leap
+
+%files LeapMicro
+%{_datadir}/pixmaps/distribution-logos/*.LeapMicro
 
 %else
 
