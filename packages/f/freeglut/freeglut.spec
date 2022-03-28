@@ -1,7 +1,7 @@
 #
 # spec file for package freeglut
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _libname libglut3
 Name:           freeglut
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Freely licensed alternative to the GLUT library
 License:        MIT
@@ -26,7 +26,6 @@ URL:            http://freeglut.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/freeglut/%{name}/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://downloads.sourceforge.net/openglut/openglut-0.6.3-doc.tar.gz
 Source2:        baselibs.conf
-Patch0:         gcc10.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -108,7 +107,6 @@ joystick functions on a wide range of platforms.
 
 %prep
 %setup -q -a1
-%patch0 -p3
 
 %build
 %cmake \

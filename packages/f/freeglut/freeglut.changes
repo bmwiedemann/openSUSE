@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 24 07:18:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.2:
+  * Fix netbsd/aarch64 build by including sys/joystick.h instead of machine/joystick.h.
+  * Fix build with gcc >= 10 which made -fno-common the default by no longer relying on COMMON symbols for globals.
+  * Fix android build (default to FREEGLUT_GLES, and check for debug flags).
+  * Add flat shading option to the shapes demo.
+  * Fix crash when calling primitive drawing functions without creating a window first.
+  * Dropped really old and unmaintained doc directory from the source tree. 
+- drop gcc10.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Mar 12 09:39:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Explicitely disable rpath to fix Leap builds

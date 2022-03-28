@@ -313,4 +313,12 @@
     <comment>- Explicitely disable rpath to fix Leap builds</comment>
     <requestid>784234</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2dfccd2bf3877177b9b48bb0a2790efa</srcmd5>
+    <version>3.2.2</version>
+    <time>1648479495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964509</requestid>
+  </revision>
 </revisionlist>
