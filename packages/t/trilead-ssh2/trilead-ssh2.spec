@@ -1,7 +1,7 @@
 #
 # spec file for package trilead-ssh2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/jenkinsci/trilead-ssh2
 Source0:        https://github.com/jenkinsci/%{name}/archive/%{name}-build%{buildver}-jenkins-%{patchlvl}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -51,10 +51,10 @@ API documentation for %{name}.
 
 %build
 mkdir -p build/classes
-javac -d build/classes -source 6 -target 6 $(find src -name \*.java | xargs)
+javac -d build/classes -source 8 -target 8 $(find src -name \*.java | xargs)
 (cd build/classes && jar cf ../%{name}-%{version}.jar  $(find . -name \*.class))
 mkdir -p build/docs
-javadoc -d build/docs -source 6  $(find src -name \*.java | xargs)
+javadoc -d build/docs -source 8  $(find src -name \*.java | xargs)
 
 %install
 # jars
