@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 27 01:25:36 UTC 2022 - William Brown <william.brown@suse.com>
+
+- 0001-Ignore-some-env-vars.patch - sccache will ignore rebuilds if
+  env vars change. As a result, we need to filter a number of values
+  that rpm/osc-build injects that change frequently that disrupts
+  the ability for sccache to cache effectively.
+
+-------------------------------------------------------------------
+Fri Mar 25 05:23:56 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Ungate sccache from other arches
+
+-------------------------------------------------------------------
 Mon Mar 14 04:28:25 UTC 2022 - william.brown@suse.com
 
 - Update to resolve bsc#1196972 CVE-2022-24713 - Regex DOS

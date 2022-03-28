@@ -33,10 +33,10 @@ Source11:       sccache-dist-scheduler.service
 Source12:       builder.conf
 Source13:       scheduler.conf
 Source14:       client.example
+Patch1:         0001-Ignore-some-env-vars.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
 Requires:       bubblewrap
-ExclusiveArch:  x86_64 i586 i686 %{arm} aarch64 s390x
 
 %description
 Sccache is a ccache-like tool. It is used as a compiler wrapper and
@@ -47,24 +47,27 @@ the Google Cloud Storage (GCS) API.
 %prep
 %setup -q
 %setup -qa1
+%patch1 -p1
+
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 # Remove exec bits to prevent an issue in fedora shebang checking
 find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 
 %build
-# 'dist-server' available only on x86_64 so far - https://github.com/mozilla/sccache/issues/656
-features="azure,s3,memcached,redis"
-
 %ifarch x86_64
-features="$features,dist-server,dist-client"
-%endif
-# s390x can NOT build gcs support, ring fails. Use FS only
-%ifarch s390x
+# 'dist-server' available only on x86_64 so far - https://github.com/mozilla/sccache/issues/656
+features="azure,s3,redis,dist-server,dist-client"
+%else
+%ifarch aarch64
+features="azure,s3,redis"
+%else
+# Most other arches have issues (especially with ring). Use FS cache only
 features=""
 %endif
+%endif
 
-%{cargo_build} --features=$features
+%{cargo_build} --no-default-features --features=$features
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
