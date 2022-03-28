@@ -305,4 +305,15 @@
     <comment></comment>
     <requestid>961037</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e7230f063ffc430a531fb39862663429</srcmd5>
+    <version>22.3.1</version>
+    <time>1648479650</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.3.1:
+  * fix generate_token
+  * reduce twisted log noise for wamp clients
+  * add GitHub URL for PyPi</comment>
+    <requestid>965198</requestid>
+  </revision>
 </revisionlist>

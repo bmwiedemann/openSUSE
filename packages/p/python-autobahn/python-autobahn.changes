@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 27 13:53:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.1:
+  * fix generate_token
+  * reduce twisted log noise for wamp clients
+  * add GitHub URL for PyPi 
+
+-------------------------------------------------------------------
 Fri Mar 11 08:54:00 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix packaging for %arm, aarch64 and riscv64
