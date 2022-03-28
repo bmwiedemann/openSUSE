@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 19 21:48:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Specify the source/target levels 8 on ant invocation
+- Removed patch:
+  * jdepend-target16.patch
+    + not needed with the source/target levels being specified on
+      command-line
+
+-------------------------------------------------------------------
 Tue Dec 28 13:00:04 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Update to 2.10:

@@ -1,7 +1,7 @@
 #
 # spec file for package jdepend
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Group:          Development/Libraries/Java
 URL:            http://www.clarkware.com/software/JDepend.html
 Source0:        https://github.com/clarkware/jdepend/archive/refs/tags/%{version}.tar.gz
 Source1:        %{name}-%{version}.pom
-Patch0:         jdepend-target16.patch
 BuildRequires:  ant
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
@@ -58,10 +57,12 @@ This package contains demonstration and sample files for JDepend.
 %setup -q
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
-%patch0 -b .target15
 
 %build
-ant jar
+%ant \
+	-Dant.build.javac.source=1.8 \
+	-Dant.build.javac.target=1.8 \
+	jar
 
 %install
 # jars

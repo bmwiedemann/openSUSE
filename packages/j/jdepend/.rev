@@ -129,4 +129,12 @@
     <comment></comment>
     <requestid>943360</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>55cb901e76728c5785ed15e1590a2e28</srcmd5>
+    <version>2.10</version>
+    <time>1648479559</time>
+    <user>dimstar_suse</user>
+    <comment>source/target levels 8</comment>
+    <requestid>963094</requestid>
+  </revision>
 </revisionlist>
