@@ -60,4 +60,13 @@
     <comment></comment>
     <requestid>885216</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e2c9d0e6acd36309cc3bcc7b1cf1d74</srcmd5>
+    <version>2.5.0</version>
+    <time>1648479663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0:
+  * No changelog provided</comment>
+    <requestid>965326</requestid>
+  </revision>
 </revisionlist>
