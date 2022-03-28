@@ -110,4 +110,12 @@ Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.</co
     <comment>Missing some packaged resources</comment>
     <requestid>958716</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>53cf698bb62a66d20f01379b8d4fee1e</srcmd5>
+    <version>2.0.23</version>
+    <time>1648479546</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962931</requestid>
+  </revision>
 </revisionlist>

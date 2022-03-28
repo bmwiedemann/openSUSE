@@ -67,7 +67,7 @@ find -name '*.jar' -delete
 %build
 mkdir -p lib
 build-jar-repository -s lib bcmail bcpkix bcprov commons-logging
-ant -Dtest.skip=true package javadoc
+%ant -Dtest.skip=true package javadoc
 
 %install
 # Code
