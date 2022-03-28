@@ -441,4 +441,12 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     Windows.</comment>
     <requestid>936087</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>0a891b73fc44229d0c05acced965bb3c</srcmd5>
+    <version>1.1.6</version>
+    <time>1648479518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964655</requestid>
+  </revision>
 </revisionlist>

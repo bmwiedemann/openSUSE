@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mako
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ Group:          Development/Languages/Python
 URL:            https://www.makotemplates.org/
 Source:         https://files.pythonhosted.org/packages/source/M/Mako/Mako-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe >= 0.9.2}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
