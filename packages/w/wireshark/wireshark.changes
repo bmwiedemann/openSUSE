@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 24 08:08:33 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.6.3: 
+  * Fuzz job crash output: fuzz-2021-01-19-7399.pcap.
+  * TLS dissector incorrectly reports JA3 values.
+  * "Wiki Protocol page" in packet details menu is broken - wiki pages not migrated to GitLab?.
+  * Dissector bug, protocol PFCP display Flow Description IE value error in Additional Flow Description of PFD Management Request Message.
+  * Bluetooth: Fails to open Log file for SCO connection.
+  * Fuzz job crash output: fuzz-2022-03-07-10896.pcap.
+  * libwiretap: Save as ERF causes segmentation fault.
+  * HTTP server returning multiple early hints shows too many responses in "Follow HTTP Stream".
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.6.3.html
+
+-------------------------------------------------------------------
 Fri Feb 11 15:18:32 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.2:
