@@ -1,7 +1,7 @@
 #
 # spec file for package junitperf
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        JUnit extension for performance and scalability testing
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-Url:            http://www.clarkware.com/software/JUnitPerf.html
+URL:            http://www.clarkware.com/software/JUnitPerf.html
 Source0:        http://www.clarkware.com/software/junitperf-1.9.1.zip
 Patch0:         junitperf-1.9.1-javadoc.patch
 Requires:       junit >= 3.2
@@ -42,8 +42,6 @@ JUnitPerf is a collection of JUnit test decorators used to measure the
 performance and scalability of functionality contained within existing
 JUnit tests.
 
-
-
 %package javadoc
 Summary:        JUnit extension for performance and scalability testing
 Group:          Development/Libraries/Java
@@ -52,8 +50,6 @@ Group:          Development/Libraries/Java
 JUnitPerf is a collection of JUnit test decorators used to measure the
 performance and scalability of functionality contained within existing
 JUnit tests.
-
-
 
 %package demo
 Summary:        JUnit extension for performance and scalability testing
@@ -65,8 +61,6 @@ JUnitPerf is a collection of JUnit test decorators used to measure the
 performance and scalability of functionality contained within existing
 JUnit tests.
 
-
-
 %prep
 %setup -q
 %patch0 -p1
@@ -76,9 +70,7 @@ find . -name "*.jar" | xargs -t rm
 %build
 export CLASSPATH=
 export OPT_JAR_LIST="junit ant/ant-junit"
-# performance tests sometimes failed on build farm, so lets disable them to avoid unpredictable build fails
-#ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 -Dbuild.sysclasspath=first jar test javadoc
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 -Dbuild.sysclasspath=first jar javadoc
+%ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 -Dbuild.sysclasspath=first jar javadoc
 
 %install
 # jars
