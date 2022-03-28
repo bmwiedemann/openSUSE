@@ -19354,6 +19354,7 @@ License:        LPPL-1.0
 Summary:        A small collection of minimal DTX examples
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Obsoletes:      texlive-dtxgallery-doc
 Provides:       texlive-dtxgallery-doc
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
