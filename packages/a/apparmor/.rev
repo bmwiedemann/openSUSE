@@ -2273,4 +2273,15 @@ https://build.opensuse.org/request/show/951354
 so you might want to pick this SR into Staging:O (forwarded request 953283 from cboltz)</comment>
     <requestid>953284</requestid>
   </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>ee29a691758a18706257c20644747117</srcmd5>
+    <version>3.0.4</version>
+    <time>1648479635</time>
+    <user>dimstar_suse</user>
+    <comment>- Add update-samba-bgqd.diff to add new rule to fix 'DENIED' open on
+  /proc/{pid}/fd for samba-bgqd (bnc#1196850).
+- Add update-usr-sbin-smbd.diff to add new rule to allow reading of
+  openssl.cnf (bnc#1195463).</comment>
+    <requestid>964948</requestid>
+  </revision>
 </revisionlist>

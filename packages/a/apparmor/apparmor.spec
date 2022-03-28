@@ -77,6 +77,14 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
+# bsc#1196850 add rule to deal with 'DENIED' open of /proc/{pid}/fd
+# see (https://gitlab.com/apparmor/apparmor/-/merge_requests/860)
+# bsc#1195463 add rule to allow reading of openssl.cnf
+# see (https://gitlab.com/apparmor/apparmor/-/merge_requests/862)
+Patch7:         update-samba-bgqd.diff
+# bsc#1195463 add rule to allow reading of openssl.cnf
+# see (https://gitlab.com/apparmor/apparmor/-/merge_requests/862)
+Patch8:         update-usr-sbin-smbd.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -340,6 +348,8 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch3 -p1
 %patch4
 %patch5
+%patch7 -p1
+%patch8 -p1
 
 %build
 %define _lto_cflags %{nil}

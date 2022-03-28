@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 24 14:09:58 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Add update-samba-bgqd.diff to add new rule to fix 'DENIED' open on
+  /proc/{pid}/fd for samba-bgqd (bnc#1196850).
+- Add update-usr-sbin-smbd.diff to add new rule to allow reading of
+  openssl.cnf (bnc#1195463).
+
+-------------------------------------------------------------------
 Thu Feb 10 16:55:38 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.0.4
