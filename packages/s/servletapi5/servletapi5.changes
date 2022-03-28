@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 19 10:31:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source/target levels 8
+
+-------------------------------------------------------------------
 Wed Aug  4 14:29:48 UTC 2021 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Updated to build on Enterprise Linux.

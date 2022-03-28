@@ -1,7 +1,7 @@
 #
 # spec file for package servletapi5
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,12 +24,12 @@ Release:        0
 Summary:        Java servlet and JSP implementation classes
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/tomcat/
+URL:            http://jakarta.apache.org/tomcat/
 Source:         %{full_name}-5-src.tar.gz
 #!BuildIgnore:  xml-commons xml-commons-resolver xerces-j2 xml-commons-apis
 #!BuildIgnore:  xml-commons-jaxp-1.3-apis
 BuildRequires:  ant
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 %if !0%{?rhel}
 Requires(post): update-alternatives
 %endif
@@ -53,11 +53,11 @@ cd jakarta-tomcat-%{version}-src/jakarta-servletapi-5
 find . -type f -name "*.jar" -exec rm -f {} \;
 pushd .
 cd jsr154
-ant jar examples -Dservletapi.build=build -Dservletapi.dist=dist -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+ant jar examples -Dservletapi.build=build -Dservletapi.dist=dist -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 popd
 pushd .
 cd jsr152
-ant jar examples -Dservletapi.build=build -Dservletapi.dist=dist -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+ant jar examples -Dservletapi.build=build -Dservletapi.dist=dist -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 popd
 
 %install
