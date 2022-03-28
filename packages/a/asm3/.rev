@@ -54,4 +54,12 @@
     <comment>Stray rm -rf in spec file</comment>
     <requestid>956680</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>681e8bcb570781e0acd4c209df1e0e98</srcmd5>
+    <version>3.3.2</version>
+    <time>1648479548</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962932</requestid>
+  </revision>
 </revisionlist>

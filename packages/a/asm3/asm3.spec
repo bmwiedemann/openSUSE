@@ -89,7 +89,7 @@ mkdir -p test/lib
 
 %build
 ant \
-    -Dcompile.source=6 -Dcompile.target=6 \
+    -Dcompile.source=8 -Dcompile.target=8 \
     -Dobjectweb.ant.tasks.path=$(build-classpath objectweb-anttask) \
     jar jdoc
 
