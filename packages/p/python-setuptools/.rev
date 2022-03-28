@@ -831,4 +831,12 @@
   * #2737: fix various syntax and style errors in code snippets in docs</comment>
     <requestid>952221</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>3883d5542d64355b994c186d04897cf5</srcmd5>
+    <version>58.3.0</version>
+    <time>1648479527</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh remove_mock.patch to add a missing file to it.</comment>
+    <requestid>964742</requestid>
+  </revision>
 </revisionlist>

@@ -166,3 +166,15 @@ Index: setuptools-58.3.0/pkg_resources/tests/__init__.py
 +    import mock
 +except ImportError:
 +    from unittest import mock
+Index: setuptools-58.3.0/setuptools/tests/test_bdist_deprecations.py
+===================================================================
+--- setuptools-58.3.0.orig/setuptools/tests/test_bdist_deprecations.py
++++ setuptools-58.3.0/setuptools/tests/test_bdist_deprecations.py
+@@ -1,6 +1,6 @@
+ """develop tests
+ """
+-import mock
++from . import mock
+ import sys
+ 
+ import pytest
