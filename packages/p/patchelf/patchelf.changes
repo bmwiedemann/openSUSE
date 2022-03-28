@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 20 21:02:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.5:
+  * fix faulty version in 0.14.4
+  * Several test fixes to fix patchelf test suite on openbsd
+  * Allow multiple modifications in same call
+  * Add support to build with musl
+  * Fix typo: s/folllow/follow/
+  * mips: fix incorrect polarity on dyn_offset
+
+-------------------------------------------------------------------
 Wed Dec 15 20:45:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.3:
