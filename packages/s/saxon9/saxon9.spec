@@ -1,7 +1,7 @@
 #
 # spec file for package saxon9
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@ Name:           saxon9
 Version:        9.4.0.7
 Release:        0
 Summary:        The SAXON XSLT Processor from Michael Kay
-License:        MPL-1.0 AND Apache-2.0
+License:        Apache-2.0 AND MPL-1.0
 Group:          Productivity/Publishing/XML
-Url:            http://saxon.sourceforge.net/
+URL:            http://saxon.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/project/saxon/Saxon-HE/9.4/saxon9-4-0-7source.zip
 Source1:        %{name}.saxon.script
 Source2:        %{name}.saxonq.script
@@ -38,7 +38,7 @@ BuildRequires:  ant
 BuildRequires:  bea-stax-api
 BuildRequires:  dom4j
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  jdom
@@ -132,8 +132,8 @@ EOF
 
 export CLASSPATH=%(build-classpath xml-commons-apis jdom xom bea-stax-api dom4j xml-commons-resolver)
 ant \
-  -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
-  -Dant.build.javadoc.source=1.6 \
+  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
+  -Dant.build.javadoc.source=1.8 \
   -Dj2se.javadoc=%{_javadocdir}/java \
   -Djdom.javadoc=%{_javadocdir}/jdom
 

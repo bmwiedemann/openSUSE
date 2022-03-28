@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 19 10:41:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
 Thu Dec  6 14:14:45 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - BuildRequires xml-commons-resolver to fix build
