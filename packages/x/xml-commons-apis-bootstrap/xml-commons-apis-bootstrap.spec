@@ -2,7 +2,7 @@
 #
 # spec file for package xml-commons-apis-bootstrap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Patch1:         %{real_name}-resolver-crosslink.patch
 Patch2:         %{real_name}-resolver-1.1-build_xml.patch
 Patch3:         %{real_name}-enum.patch
 BuildRequires:  antlr-bootstrap
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 # Needed for maven conversions
 BuildRequires:  javapackages-tools
 #!BuildIgnore:  antlr
@@ -133,7 +133,7 @@ function mkJar() {
 #<<< end functions
 
 # variables:
-COMPILER_COMMAND="javac -source 1.6 -target 1.6 -classpath "
+COMPILER_COMMAND="javac -source 1.8 -target 1.8 -classpath "
 TARGET_DIR=`pwd`
 CLASSPATH_ORIG="$CLASSPATH"
 
