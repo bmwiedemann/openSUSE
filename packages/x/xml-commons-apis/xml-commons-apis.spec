@@ -1,7 +1,7 @@
 #
 # spec file for package xml-commons-apis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Source3:        http://repo1.maven.org/maven2/xml-apis/xml-apis/2.0.2/xml-apis-2
 Source4:        http://repo1.maven.org/maven2/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.pom
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  xz
 #!BuildIgnore:  xerces-j2 xml-apis xml-resolver
@@ -88,7 +88,7 @@ sed -i '/distributionManagement/,/\/distributionManagement/ {d}' *.pom
 %pom_remove_parent xml-apis-ext*.pom
 
 %build
-ant -Dant.build.javac.source=6 -Dant.build.javac.target=6 jar javadoc
+ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 jar javadoc
 
 # inject OSGi manifests
 jar ufm build/xml-apis.jar %{SOURCE1}
