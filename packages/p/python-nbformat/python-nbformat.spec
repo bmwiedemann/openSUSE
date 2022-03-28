@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbformat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,44 +16,42 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define doc_ver 5.2.0
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define doc_ver 5.0.4
 Name:           python-nbformat
-Version:        5.1.3
+Version:        5.2.0
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/nbformat
-# PyPI sdist has only some schema tests, get the full test suite frim GitHub sources
+# PyPI sdist has only some schema tests, get the full test suite from GitHub sources
 Source:         %{url}/archive/%{version}.tar.gz#/nbformat-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  unzip
-%if %{with libalternatives}
-Requires:       alts
-BuildRequires:  alts
-%else
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-%endif
 Requires:       jupyter-nbformat = %{version}
-Requires:       python-ipython_genutils
 Requires:       python-jsonschema > 2.5.0
 Requires:       python-jupyter_core
 Requires:       python-traitlets >= 4.1
 Provides:       python-jupyter_nbformat = %{version}
 Obsoletes:      python-jupyter_nbformat < %{version}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 # SECTION test requirements
-BuildRequires:  %{python_module ipython_genutils}
+BuildRequires:  %{pythons}
 BuildRequires:  %{python_module jsonschema > 2.5.0}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module pytest}

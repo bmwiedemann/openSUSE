@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 23 19:04:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update dependencies 
+
+-------------------------------------------------------------------
+Sat Mar 12 04:48:45 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 5.2.0:
+  * Add ability to capture validation errors
+  * Update supported python versions
+  * Ensure nbformat minor version is present when upgrading
+  * Only fix cell ID validation issues if asked
+  * Return the notebook when no conversion is needed
+  * Catch AttributeErrors stemming from ipython_genutils as
+    ValidationErrors on read
+  * Don't list pytest-cov as a test dependency
+  * Remove dependency on IPython genutils
+  * Include tests in sdist but not wheel
+
+-------------------------------------------------------------------
 Mon Nov 15 16:22:11 UTC 2021 - schubi <schubi@localhost>
 
 - Reenable libalternatives because gh#openSUSE/libalternatives#11
