@@ -35,6 +35,7 @@ BuildRequires:  git-core
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(libusb3380)
+ExclusiveArch:  %{ix86} x86_64 aarch64 armv7hl s390x
 
 %description
 Low level XTRX hardware abstraction library.
