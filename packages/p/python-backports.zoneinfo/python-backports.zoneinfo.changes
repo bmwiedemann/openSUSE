@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 25 17:22:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add zoneinfo-0.2.1-santiago-tz2022a.patch
+  * gh#pganssle/zoneinfo#114, gh#pganssle/zoneinfo#115
+  * includes gh#pganssle/zoneinfo#101 for the Sydney test errors
+- Don't use xdist in order to avoid pickling errors
+  on test failures for easier debugging. The test suite is very
+  fast anyway.
+
+-------------------------------------------------------------------
 Tue Dec 21 14:54:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix flavor skips for TW. skip_python3 would skip all flavors.
