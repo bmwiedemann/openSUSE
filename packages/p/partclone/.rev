@@ -147,4 +147,26 @@
     <comment></comment>
     <requestid>922300</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6e2296e3c055c20165b074172a9b8815</srcmd5>
+    <version>0.3.19</version>
+    <time>1648479663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.19:
+  * Ignore free space check if compression is enabled. by @zboszor in #147
+  * fix: crash when backing up swap partition by @justforlxz in #148
+  * Update to btrfs-progs 5.4.1 by @boretom in #151
+  * Change C99 for loop init to C89 for compatibility by @robert-scheck in #152
+  * doc: document the image formats by @pfrouleau in #157
+  * doc: fix typo for logfile argument by @mjoerg in #162
+  * WIP: Add block_size and blocks_total in torrent.info to provide partition info by @tjjh89017 in #164
+  * Use EVP OpenSSL API by @zboszor in #165
+  * Fix using EVP OpenSSL API by @zboszor in #166
+  * Fix typo by @jwilk in #169
+  * Support HFS+ wrapper volumes by @vasi in #172
+  * Domain file doc by @jowagner in #175
+  * Docs typo &quot;normanly&quot; by @jowagner in #178
+  * How to contribute docs: readme by @jowagner in #179</comment>
+    <requestid>965323</requestid>
+  </revision>
 </revisionlist>

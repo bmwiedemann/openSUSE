@@ -1,7 +1,7 @@
 #
 # spec file for package partclone
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Mariusz Fik <fisiu@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           partclone
-Version:        0.3.18
+Version:        0.3.19
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
@@ -30,11 +30,12 @@ BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  libbtrfs-devel
-BuildRequires:  ncurses-devel
 BuildRequires:  nilfs-utils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libntfs-3g)
+BuildRequires:  pkgconfig(mount)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(uuid)
 
