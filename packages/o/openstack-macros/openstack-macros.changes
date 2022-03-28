@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 15 12:37:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move rpm macros from /etc/rpm to /usr/lib/rpm/macros.d
+  (boo#1185669).
+
+-------------------------------------------------------------------
 Fri Jan 22 22:34:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to Version 2020.1.2:

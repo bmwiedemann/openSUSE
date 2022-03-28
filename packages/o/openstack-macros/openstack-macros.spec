@@ -1,7 +1,7 @@
 #
 # spec file for package openstack-macros
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %if 0%{?rhel}
 %global rdo 1
-%global rrcdir %{_prefix}/lib/rpm/redhat
+%global rrcdir %{_rpmconfigdir}/redhat
 %endif
 Name:           openstack-macros
 Version:        2020.1.2
@@ -49,29 +49,29 @@ packages.
 %build
 
 %install
-install -D -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-common
+install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.openstack-common
 %if 0%{?suse_version}
-install -D -m644 %{SOURCE2} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-suse
+install -D -m644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.openstack-suse
 %endif
 %if 0%{?rdo}
-install -D -m644 %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-rdo
+install -D -m644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.openstack-rdo
 install -D -m 755 %{SOURCE6} %{buildroot}%{rrcdir}/gpgverify
 %endif
 %if 0%{?fedora} || 0%{?rhel} > 7
-install -D -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-fedora
+install -D -m644 %{SOURCE4} %{buildroot}%{_rpmmacrodir}/macros.openstack-fedora
 %endif
 
 %files
-%{_sysconfdir}/rpm/macros.openstack-common
+%{_rpmmacrodir}/macros.openstack-common
 %if 0%{?suse_version}
-%{_sysconfdir}/rpm/macros.openstack-suse
+%{_rpmmacrodir}/macros.openstack-suse
 %endif
 %if 0%{?rdo}
-%{_sysconfdir}/rpm/macros.openstack-rdo
+%{_rpmmacrodir}/macros.openstack-rdo
 %{rrcdir}/gpgverify
 %endif
 %if 0%{?fedora} || 0%{?rhel} > 7
-%{_sysconfdir}/rpm/macros.openstack-fedora
+%{_rpmmacrodir}/macros.openstack-fedora
 %endif
 
 %changelog
