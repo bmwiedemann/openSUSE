@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 25 09:08:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add yelp-ghelp.patch: Be even more careful about stripping
+  slashes. Fix applications still using ghelp: URIs.
+
+-------------------------------------------------------------------
 Sun Mar 20 08:37:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:
