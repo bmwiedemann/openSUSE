@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Fri Mar 25 14:02:31 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- desktop-file-utils: add Budgie desktop environment
+
+-------------------------------------------------------------------
+Fri Mar 18 10:32:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.72.0:
+  + Bugs fixed: glgo#GNOME/GLib#2620, glgo#GNOME/GLib!2538,
+    glgo#GNOME/GLib!2542, glgo#GNOME/GLib!2547,
+    glgo#GNOME/GLib!2548, glgo#GNOME/GLib!2551,
+    glgo#GNOME/GLib!2552.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 14:56:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.71.3:
+  + Fix flaky `GDebugController` tests
+  + Numerous small documentation updates
+  + Bugs fixed: glgo#GNOME/GLib#517, glgo#GNOME/GLib#1929,
+    glgo#GNOME/GLib#2589, glgo#GNOME/GLib#2598,
+    glgo#GNOME/GLib#2609, glgo#GNOME/GLib#2611,
+    glgo#GNOME/GLib#2612, glgo#GNOME/GLib#2613,
+    glgo#GNOME/GLib!1707, glgo#GNOME/GLib!2424,
+    glgo#GNOME/GLib!2451, glgo#GNOME/GLib!2466,
+    glgo#GNOME/GLib!2480, glgo#GNOME/GLib!2485,
+    glgo#GNOME/GLib!2490, glgo#GNOME/GLib!2491,
+    glgo#GNOME/GLib!2492, glgo#GNOME/GLib!2493,
+    glgo#GNOME/GLib!2501, glgo#GNOME/GLib!2502,
+    glgo#GNOME/GLib!2503, glgo#GNOME/GLib!2504,
+    glgo#GNOME/GLib!2505, glgo#GNOME/GLib!2506,
+    glgo#GNOME/GLib!2507, glgo#GNOME/GLib!2508,
+    glgo#GNOME/GLib!2509, glgo#GNOME/GLib!2510,
+    glgo#GNOME/GLib!2512, glgo#GNOME/GLib!2513,
+    glgo#GNOME/GLib!2514, glgo#GNOME/GLib!2515,
+    glgo#GNOME/GLib!2516, glgo#GNOME/GLib!2517,
+    glgo#GNOME/GLib!2518, glgo#GNOME/GLib!2519,
+    glgo#GNOME/GLib!2520, glgo#GNOME/GLib!2523,
+    glgo#GNOME/GLib!2524, glgo#GNOME/GLib!2525,
+    glgo#GNOME/GLib!2526, glgo#GNOME/GLib!2527,
+    glgo#GNOME/GLib!2528, glgo#GNOME/GLib!2531.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 14:56:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Split gtk-docs from -devel package, these are not needed
+  during building projects using glib2
+- Use _multibuild as the meson buildprocess is very awkward
+  regarding the documentation - builds single-jobs only and
+  twice (again during %install). This way the rest of distribution
+  waiting for glib2-devel to be available is not blocked by this
+
+-------------------------------------------------------------------
+Thu Mar 17 14:56:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.71.2:
+  + Rework `glib-compile-resources` to output compiler-specific
+    files to reduce compilation time; see the new `--compiler`
+    option.
+  + Add a cross-platform API for aligned memory allocations
+    (`g_aligned_alloc()`, `g_aligned_alloc0()` and
+    `g_aligned_free()`).
+  + Deprecate `force_posix_threads` configure option, since it was
+    a workaround for static linking on Windows.
+  + Add `GBindingGroup` and `GSignalGroup` APIs.
+  + Implement FD remapping support for
+    `g_spawn_async_with_pipes_and_fds()` on Windows.
+  + Add an async file move API, `g_file_move_async()`.
+  + Bugs fixed: glgo#GNOME/GLib#1190, glgo#GNOME/GLib#2329,
+    glgo#GNOME/GLib#2492, glgo#GNOME/GLib#2563,
+    glgo#GNOME/GLib#2574, glgo#GNOME/GLib#2592,
+    glgo#GNOME/GLib#2601, glgo#GNOME/GLib!2235,
+    glgo#GNOME/GLib!2378, glgo#GNOME/GLib!2404,
+    glgo#GNOME/GLib!2433, glgo#GNOME/GLib!2458,
+    glgo#GNOME/GLib!2464, glgo#GNOME/GLib!2465,
+    glgo#GNOME/GLib!2467, glgo#GNOME/GLib!2468,
+    glgo#GNOME/GLib!2469, glgo#GNOME/GLib!2471,
+    glgo#GNOME/GLib!2472, glgo#GNOME/GLib!2473,
+    glgo#GNOME/GLib!2476, glgo#GNOME/GLib!2477,
+    glgo#GNOME/GLib!2481, glgo#GNOME/GLib!2482,
+    glgo#GNOME/GLib!2483, glgo#GNOME/GLib!2484,
+    glgo#GNOME/GLib!2487, glgo#GNOME/GLib!2488.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 14:56:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.71.1:
+  + Basic support for static builds on Windows
+  + Add `GDebugController` and a D-Bus implementation which exposes
+    whether debug output is enabled in a process using the
+    `org.gtk.Debugging` D-Bus interface
+  + Support for `AF_UNIX` sockets on Windows 10 (and later)
+  + Several important fixes to GDBus message and GVariant parsing
+    of invalid data
+  + Fix potential data loss due to missing fsync when saving files
+    on btrfs
+  + Fix potential buffer overflows in `garray.c` for very large
+    `GArray`s and `GPtrArray`s
+  + Fix FDs in gspawn not being closed and causing process hangs if
+    `close_range()` fails unexpectedly
+  + Fix `g_find_program_in_path()` not returning an absolute path
+    if `$PATH` is relative
+  + Add support for loading PKCS#12 encrypted files in
+    `GTlsCertificate`
+  + A number of improvements to unit tests
+  + Support `LOCAL_PEERPID` on macOS, giving partial support for
+    PIDs in `GCredentials` on that platform
+  + Add `g_get_user_state_dir()` to support `XDG_STATE_HOME`
+  + Add `g_hash_table_new_similar()` to copy a hash table and its
+    hash/equal functions without its data
+  + Support D-Bus client authentication with `EXTERNAL` on Windows
+  + Add a reStructuredText documentation generator to
+    `gdbus-codegen`
+  + Add a Windows implementation of `GMemoryMonitor`
+  + Bugs fixed: glgo#GNOME/GLib#692, glgo#GNOME/GLib#1190,
+    glgo#GNOME/GLib#2487, glgo#GNOME/GLib#2550,
+    glgo#GNOME/GLib#2557, glgo#GNOME/GLib#2559,
+    glgo#GNOME/GLib#2560, glgo#GNOME/GLib#2564,
+    glgo#GNOME/GLib#2565, glgo#GNOME/GLib#2571,
+    glgo#GNOME/GLib#2572, glgo#GNOME/GLib#2578,
+    glgo#GNOME/GLib#2579, glgo#GNOME/GLib#2580,
+    glgo#GNOME/GLib#2582, glgo#GNOME/GLib#2585,
+    glgo#GNOME/GLib#2586, glgo#GNOME/GLib!2239,
+    glgo#GNOME/GLib!2362, glgo#GNOME/GLib!2384,
+    glgo#GNOME/GLib!2395, glgo#GNOME/GLib!2399,
+    glgo#GNOME/GLib!2400, glgo#GNOME/GLib!2402,
+    glgo#GNOME/GLib!2403, glgo#GNOME/GLib!2405,
+    glgo#GNOME/GLib!2407, glgo#GNOME/GLib!2411,
+    glgo#GNOME/GLib!2412, glgo#GNOME/GLib!2413,
+    glgo#GNOME/GLib!2414, glgo#GNOME/GLib!2417,
+    glgo#GNOME/GLib!2423, glgo#GNOME/GLib!2425,
+    glgo#GNOME/GLib!2426, glgo#GNOME/GLib!2428,
+    glgo#GNOME/GLib!2429, glgo#GNOME/GLib!2431,
+    glgo#GNOME/GLib!2432, glgo#GNOME/GLib!2434,
+    glgo#GNOME/GLib!2440, glgo#GNOME/GLib!2441,
+    glgo#GNOME/GLib!2442, glgo#GNOME/GLib!2447,
+    glgo#GNOME/GLib!2448, glgo#GNOME/GLib!2452,
+    glgo#GNOME/GLib!2453, glgo#GNOME/GLib!2454,
+    glgo#GNOME/GLib!2456, glgo#GNOME/GLib!2459,
+    glgo#GNOME/GLib!2461, glgo#GNOME/GLib!2463.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 17 14:56:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.71.0:
+  + Fix network changes not being signalled from NetworkManager.
+  + Fix build when building with --fatal-meson-warnings.
+  + Various fixes to GWeakRef cleanup and toggle refs.
+  + Add `G_DBUS_PROXY_FLAGS_NO_MATCH_RULE` flag for disabling match
+    rules when creating a `GDBusProxy`.
+  + Fix FD remapping in `g_spawn_async_with_pipes_and_fds()` with
+    certain values of target FDs.
+  + Make `GDBusProxy::g-signal` signal detailed with D-Bus signal
+    names.
+  + Emit `launched` signal for D-Bus activation of apps with
+    `GDesktopAppInfo`.
+  + Fix IDs of `GDesktopAppInfo`s which are constructed from a
+    `.desktop` file in a subdirectory.
+  + Add `--interactive` option to `gdbus call`.
+  + Add `G_SUBPROCESS_FLAGS_SEARCH_PATH_FROM_ENVP` to
+    `GSubprocess`.
+  + Lots of bug fixes.
+  + Updated translations.
+- Rebase glib2-bgo569829-gettext-gkeyfile.patch.
+
+-------------------------------------------------------------------
 Thu Mar 17 14:56:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.70.5:
@@ -8,16 +178,6 @@ Thu Mar 17 14:56:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   + gtimezone: Fix assertion failure when called with a huge
     offset.
   + Updated translations.
-
--------------------------------------------------------------------
-Mon Feb 28 18:15:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
-
-- Split gtk-docs from -devel package, these are not needed
-  during building projects using glib2
-- Use _multibuild as the meson buildprocess is very awkward
-  regarding the documentation - builds single-jobs only and
-  twice (again during %install). This way the rest of distribution
-  waiting for glib2-devel to be available is not blocked by this
 
 -------------------------------------------------------------------
 Fri Feb 11 13:37:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

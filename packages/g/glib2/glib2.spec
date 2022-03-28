@@ -30,13 +30,13 @@
 %define libgobject libgobject-%{libver}
 %define libgthread libgthread-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.70.5
+Version:        2.72.0
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/GLib
-Source0:        https://download.gnome.org/sources/glib/2.70/glib-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib/2.72/glib-%{version}.tar.xz
 Source1:        glib2.sh
 Source2:        glib2.csh
 # Not upstream file. Only proposes upstream packages:
@@ -309,6 +309,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/gio-2.0 %{buildroot}%{_datadir}/app
 >> %{buildroot}%{_localstatedir}/cache/gio-2.0/xfce-mimeapps.list
 >> %{buildroot}%{_localstatedir}/cache/gio-2.0/lxde-mimeapps.list
 >> %{buildroot}%{_localstatedir}/cache/gio-2.0/pantheon-mimeapps.list
+>> %{buildroot}%{_localstatedir}/cache/gio-2.0/budgie-mimeapps.list
 ln -s %{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list %{buildroot}%{_datadir}/applications/gnome-mimeapps.list
 # gio-querymodules magic
 %if "%{_lib}" == "lib64"
@@ -442,6 +443,7 @@ done
 %ghost %{_localstatedir}/cache/gio-2.0/xfce-mimeapps.list
 %ghost %{_localstatedir}/cache/gio-2.0/lxde-mimeapps.list
 %ghost %{_localstatedir}/cache/gio-2.0/pantheon-mimeapps.list
+%ghost %{_localstatedir}/cache/gio-2.0/budgie-mimeapps.list
 
 %files devel
 %license COPYING
