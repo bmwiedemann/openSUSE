@@ -1,7 +1,7 @@
 #
 # spec file for package xml-commons-resolver
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Patch0:         %{name}-1.2-crosslink.patch
 Patch1:         %{name}-1.2-osgi.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 #!BuildIgnore:  xerces-j2 xml-apis xml-resolver
 # Explicit javapackages-tools requires since scripts use
@@ -79,7 +79,7 @@ sed -i 's/\r//' KEYS LICENSE.resolver.txt NOTICE-resolver.txt
 %pom_remove_parent .
 
 %build
-%{ant} -f resolver.xml -Dant.build.javac.source=6 -Dant.build.javac.target=6 jar javadocs
+%{ant} -f resolver.xml -Dant.build.javac.source=8 -Dant.build.javac.target=8 jar javadocs
 
 %install
 # jar
