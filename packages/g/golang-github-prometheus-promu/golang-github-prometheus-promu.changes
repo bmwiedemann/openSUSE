@@ -2,7 +2,7 @@
 Thu Mar 03 21:07:04 UTC 2022 - ecsos@opensuse.org
 
 - Update to version 0.13.0:
-  * Release 0.13.0
+  * Release 0.13.0 (jsc#SLE-24138, jsc#SLE-24139)
   * Add deprecation note to pkg directory
   * Add windows/arm64
   * Update common Prometheus files

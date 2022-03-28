@@ -51,4 +51,14 @@
     <comment></comment>
     <requestid>959294</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>97716139c67f53ecbef328de0476cd5a</srcmd5>
+    <version>0.13.0</version>
+    <time>1648488274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0:
+  * Release 0.13.0 (jsc#SLE-24138, jsc#SLE-24139)
+</comment>
+    <requestid>965329</requestid>
+  </revision>
 </revisionlist>

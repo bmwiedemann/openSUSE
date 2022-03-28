@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Mar 23 18:53:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to verson 1.15.6
+  * Missing warning when no authorizer in found ZMQ handlers #744
+    (@Zsailer)
+- Release notes for 1.15.5
+  * Relax type checking on ExtensionApp.serverapp #739 (@minrk)
+  * raise no-authorization warning once and allow disabled
+    authorization #738 (@Zsailer)
+- Release notes for 1.15.4
+  * Fix server-extension paths (3rd time's the charm) #734 (@minrk)
+- Release notes for 1.15.2
+  * allow handlers to work without an authorizer in the Tornado
+    settings #717 (@Zsailer)
+- Release notes for 1.15.1
+  * Revert "Re-use ServerApp.config_file_paths for consistency
+    (#715)" #728 (@blink1073)
+- Release notes for 1.15.0
+  * Add authorization layer to server request handlers #165
+    (@Zsailer) Enhancements made
+  * Validate notebooks once per fetch or save #724 (@kevin-bates)
+  * Register pre/post save hooks, call them sequentially #696
+    (@davidbrochart) 
+  * Implement Required Methods in Async Manner #721 (@jhamet93)
+  * Call pre_save_hook only on first chunk of large files #716
+    (@davidbrochart)
+  * Re-use ServerApp.config_file_paths for consistency #715
+    (@minrk)
+  * serverapp: Use .absolute() instead of .resolve() for symlinks
+    #712 (@EricCousineau-TRI)
+  * Fall back to legacy protocol if selected_subprotocol raises
+    exception #706 (@davidbrochart)
+  * Fix FilesHandler not meet RFC 6713 #701 (@Wh1isper)
+
+-------------------------------------------------------------------
+Thu Feb 10 05:17:10 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.13.5:
+  * Enhancements made
+    + Protocol alignment #657 (@davidbrochart)
+  * Bugs fixed
+    + Fix to remove potential memory leak on Jupyter Server
+      ZMQChannelHandler code #682 (@Vishwajeet0510)
+    + Pin pywintpy for now #681 (@blink1073)
+    + Fix the non-writable path deletion error #670 (@vkaidalov)
+    + make unit tests backwards compatible without pending kernels
+      #669 (@Zsailer)
+  * Maintenance and upkeep improvements
+    + Clean up full install test #689 (@blink1073)
+    + Update trigger_precommit.yml #687 (@blink1073)
+    + Add Auto Pre-Commit #685 (@blink1073)
+    + Fix a typo #683 (@krassowski)
+    + (temporarily) skip pending kernels unit tests on Windows CI #673
+      (@Zsailer)
+
+-------------------------------------------------------------------
 Sat Jan 29 19:35:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.13.4

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-flit
-Version:        3.6.0
+Version:        3.7.1
 Release:        0
 Summary:        Simplified packaging of Python modules
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ URL:            https://github.com/pypa/flit
 Source:         https://files.pythonhosted.org/packages/source/f/flit/flit-%{version}.tar.gz
 BuildRequires:  %{python_module base > 3.6}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module flit-core >= 3.6.0}
+BuildRequires:  %{python_module flit-core >= 3.7.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module tomli-w}

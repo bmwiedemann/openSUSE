@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 28 15:10:50 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.4.0
+  * Drop Python 2.7, 3.5 and 3.6 support #137
+  * Add Python 3.10 support #137
+  * Bump dependency upper bounds #137
+  * Drop pyrsistent direct dependency #142
+  * Use valid licence registry identifier for Apache-2.0 licence #139
+  * add setuptools dependency for pkg_resources, sort deps #141
+  * On validation error: add cause and context. #129
+  * Switch to poetry and update dependencies #136
+  * File handler Windows compatibility fix (#122)
+  * Recurse references in validation (#125)
+  * A $ref may be a property name fix (#124)
+  * Latest spec 3.0 schema (#110)
+  * Switched to using requests rather than direct use of urllib3 (#93)
+  * Handlers timeout param fix (#107)
+  * Detect duplicate operationId fix (#109)
+  * Repair default and $ref issue (#91)
+- python-mock is not required for build
+- modified patches
+  % openapi-spec-validator-skip-urls.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Dec 21 11:31:22 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.2.9:

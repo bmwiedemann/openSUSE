@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        3.4.1
+Version:        3.5
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -25,11 +25,9 @@ Group:          Productivity/Networking/IRC
 URL:            https://weechat.org
 Source:         https://weechat.org/files/src/%{name}-%{version}.tar.xz
 Source1:        weechat.desktop
-Source2:        %{name}.keyring
-Source3:        https://weechat.org/files/src/%{name}-%{version}.tar.xz.asc
+Source2:        https://weechat.org/files/src/%{name}-%{version}.tar.xz.asc
+Source3:        %{name}.keyring
 Source4:        %{name}.changes
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-ruby-add-detection-of-Ruby-3.1.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake
 BuildRequires:  curl-devel
@@ -40,6 +38,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libtool
 BuildRequires:  lzo-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig

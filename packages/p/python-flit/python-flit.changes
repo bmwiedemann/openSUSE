@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 25 12:11:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.7.1
+  * Support for external data files such as man pages or Jupyter
+    extension support files (PR #510).
+  * Project names are now lowercase in wheel filenames and
+    .dist-info folder names, in line with the specifications (PR
+    #498).
+  * Improved support for bootstrapping a Python environment, e.g.
+    for downstream packagers (PR #511). flit_core.wheel is usable
+    with python -m to create wheels before the build tool is
+    available, and flit_core sdists also include a script to
+    install itself from a wheel before installer is available.
+  * Use newer importlib APIs, fixing some deprecation warnings (PR
+    #499).
+  * Fix building packages which need execution to get the version
+    number, and have a relative import in __init__.py (PR #531).
+
+-------------------------------------------------------------------
 Sun Jan  9 12:21:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 3.6

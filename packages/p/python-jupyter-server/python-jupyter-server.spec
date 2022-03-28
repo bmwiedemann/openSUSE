@@ -25,17 +25,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server%{psuffix}
-Version:        1.13.4
+Version:        1.15.6
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -50,24 +48,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-%if %{with test}
-BuildRequires:  %{python_module jupyter-server-test = %{version}}
-# https://github.com/jupyter-server/jupyter_server/issues/666
-BuildRequires:  %{python_module jupyter-client >= 7.1.1}
-BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest-xdist}
-%endif
 Requires:       python >= 3.7
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
 Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi
-Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 6.1.1
 Requires:       python-jupyter-core >= 4.6.0
 Requires:       python-nbconvert
-Requires:       python-nbformat
+Requires:       python-nbformat >= 5.2.0
 Requires:       python-packaging
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
@@ -75,15 +64,22 @@ Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 5
 Requires:       python-websocket-client
+Provides:       python-jupyter_server = %{version}-%{release}
+Obsoletes:      python-jupyter_server < %{version}-%{release}
+%if %{with test}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module jupyter-client >= 6.1.1}
+BuildRequires:  %{python_module jupyter-server-test = %{version}}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xdist}
+%endif
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
-Provides:       python-jupyter_server = %{version}-%{release}
-Obsoletes:      python-jupyter_server < %{version}-%{release}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-jupyter-server = %{version}-%{release}
 Obsoletes:      jupyter-jupyter-server < %{version}-%{release}
@@ -129,8 +125,8 @@ Metapackage for the jupyter_server[test] requirement specifier
 %{python_expand # provide u-a entrypoints in the correct flavor version -- installed packages and jupyter-server
 mkdir -p build/xdgflavorconfig
 export XDG_CONFIG_HOME=$PWD/build/xdgflavorconfig
-if [ -d /usr/share/libalternatives/ ]; then
-  for b in /usr/share/libalternatives/*; do
+if [ -d %{_datadir}/libalternatives/ ]; then
+  for b in %{_datadir}/libalternatives/*; do
     if [ -e "${b}/%{$python_version_nodots}.conf" ]; then
         alts -n $(basename ${b}) -p %{$python_version_nodots}
     fi
