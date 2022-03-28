@@ -150,4 +150,12 @@
     <comment>- Use opencv 4 to build opentoonz if possible. (forwarded request 914790 from cgiboudeaux)</comment>
     <requestid>914791</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>fd1c5c574b22c6ff439c24ecad058ea0</srcmd5>
+    <version>1.5.0</version>
+    <time>1648479644</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>965163</requestid>
+  </revision>
 </revisionlist>

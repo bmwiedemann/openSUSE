@@ -1,7 +1,7 @@
 <services>
     <service name="tar_scm" mode="disabled">
         <param name="scm">git</param>
-        <param name="url">git://github.com/opentoonz/opentoonz</param>
+        <param name="url">https://github.com/opentoonz/opentoonz</param>
         <param name="revision">v1.5.0</param>
         <param name="versionformat">1.5.0</param>
         <!-- the openblas folder contains unredistributable files -->

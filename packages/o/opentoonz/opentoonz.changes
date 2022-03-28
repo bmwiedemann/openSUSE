@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 20 08:23:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use 'https://' in _service file to connect to Github.
+
+-------------------------------------------------------------------
 Sat Aug 28 13:06:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use opencv 4 to build opentoonz if possible.
