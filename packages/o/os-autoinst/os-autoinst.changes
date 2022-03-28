@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 27 01:59:13 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1648231888.efaf5f44:
+  * Reuse Mojo::Base for instantiating driver objects
+  * Switch to the new log module
+  * Add test for isotovideo exit status
+  * Fix a bug where the collected event was registered too late
+  * Print concrete error message when limit in command server is exceeded
+  * Remove limit for uploads via the command server
+  * Fix qemu test to actually wait for the process to be stopped
+  * Fix return value of set_assert_screen_timeout
+  * Fix typo for read_until
+  * Fix serialization error introduced by 7be44a78
+
+-------------------------------------------------------------------
 Thu Mar 24 17:14:23 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1648043830.be0fdb95:
