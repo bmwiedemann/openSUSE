@@ -1084,4 +1084,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment></comment>
     <requestid>964524</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>ac6108c69c920edd492f2a6fa93f4b79</srcmd5>
+    <version>22.04.62</version>
+    <time>1648452783</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop harden_accounts-daemon.service.patch: Seems to conflict with
+  SELinux since version 22.04.62.</comment>
+  </revision>
 </revisionlist>

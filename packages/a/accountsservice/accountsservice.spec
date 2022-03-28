@@ -28,8 +28,6 @@ Source0:        https://www.freedesktop.org/software/accountsservice/%{name}-%{v
 # WARNING: do not remove/significantly change patch0 without updating the relevant patch in gdm too
 # PATCH-FIX-OPENSUSE accountsservice-sysconfig.patch bnc#688071 vuntz@opensuse.org -- Read/write autologin configuration from sysconfig, like gdm (see gdm-sysconfig-settings.patch)
 Patch1:         accountsservice-sysconfig.patch
-# PATCH-FIX-OPENSUSE harden_accounts-daemon.service.patch jsegitz@suse.com -- For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-Patch2:         harden_accounts-daemon.service.patch
 
 ## SLE and Leap only patches start at 1000
 # PATCH-FEATURE-SLE as-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
@@ -97,7 +95,6 @@ querying and manipulating user account information.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 
 # SLE and Leap patches start at 1000
 %if 0%{?sle_version}
