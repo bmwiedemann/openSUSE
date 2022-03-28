@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 20 12:15:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * libbase-1.1.3-sourcetarget.patch
+    + build with source and target levels 8
+
+-------------------------------------------------------------------
 Fri Sep  8 11:28:47 UTC 2017 - fstrba@suse.com
 
 - Added patche:
