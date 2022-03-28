@@ -188,4 +188,12 @@
 - Drop remove-nose.patch, merged upstream.</comment>
     <requestid>927217</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>16366c551975a681efe119228aa982fe</srcmd5>
+    <version>7.1.5</version>
+    <time>1648479662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965314</requestid>
+  </revision>
 </revisionlist>
