@@ -1,7 +1,7 @@
 #
 # spec file for package dom4j
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        JarJar of dom4j for JBoss
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-URL:            http://www.dom4j.org/
+URL:            https://www.dom4j.org/
 #Source0:        dom4j-1.6.1.tar.gz
 # Debian sources don't need a proprietary msv for build, so that's why I used them
 # svn co svn://svn.debian.org/svn/pkg-java/trunk/dom4j
@@ -77,9 +77,12 @@ Requires:       xpp2
 Requires:       xpp3
 #Requires:       jaxp = 1.2
 Requires(post): javapackages-tools
-Requires(postun): javapackages-tools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(postun):javapackages-tools
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-jaxb-api
+Requires:       glassfish-jaxb-api
+%endif
 
 %description
 dom4j is an easy to use Open Source XML, XPath and XSLT framework for
@@ -122,6 +125,10 @@ DOM, SAX and JAXP and is seamlessly integrated with full XPath support.
 %setup -q -n %{name}
 # replace run.sh
 cp %{SOURCE1} run.sh
+cp %{SOURCE2} pom.xml
+%if 0%{?suse_version} > 1500
+%pom_add_dep javax.xml.bind:jaxb-api pom.xml "<optional>true</optional>"
+%endif
 rm -f src/test/org/dom4j/xpath/MatrixConcatTest.java
 # won't succeed in headless environment
 rm src/test/org/dom4j/bean/BeansTest.java
@@ -168,7 +175,11 @@ popd
 popd
 
 %build
-export CLASSPATH=$(build-classpath jaxen relaxngDatatype xpp3 xpp2)
+export CLASSPATH=$(build-classpath \
+%if 0%{?suse_version} > 1500
+    glassfish-jaxb-api \
+%endif
+    jaxen relaxngDatatype xpp3 xpp2)
 export OPT_JAR_LIST="junit ant/ant-junit"
 rm -rf src/java/org/dom4j/datatype
 ant package release-javadoc
@@ -181,7 +192,7 @@ cp -p build/%{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
 (cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
 
 mkdir -p %{buildroot}/%{_mavenpomdir}
-install -m 644 %{SOURCE2} %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
+install -m 644 pom.xml %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap
 
 # javadoc

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 17 15:40:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add jaxb-api dependency for relevant distribution versions so that
+  we can build with JDKs that do not include the JavaEE modules
+
+-------------------------------------------------------------------
 Fri Apr 17 12:04:59 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Security fix: [bsc#1169760, CVE-2020-10683]

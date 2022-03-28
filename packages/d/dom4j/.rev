@@ -173,4 +173,12 @@ SPDX (forwarded request 110717 from babelworx)</comment>
     <comment></comment>
     <requestid>798444</requestid>
   </revision>
+  <revision rev="24" vrev="34">
+    <srcmd5>fee27ea58bdb7d70fffe38af5d41e804</srcmd5>
+    <version>1.6.1</version>
+    <time>1648479535</time>
+    <user>dimstar_suse</user>
+    <comment>build against standalone jaxb-api</comment>
+    <requestid>962501</requestid>
+  </revision>
 </revisionlist>
