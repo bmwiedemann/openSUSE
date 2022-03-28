@@ -47,6 +47,8 @@ Patch1:         disable-gpu-when-using-nouveau-boo-1005323.diff
 Patch2:         sandbox-statx-futex_time64.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         rtc-dont-use-h264.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
 # http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint
