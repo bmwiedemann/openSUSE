@@ -1,7 +1,7 @@
 #
 # spec file for package rosegarden
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           rosegarden
-Version:        21.06.1
+Version:        21.12
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
 URL:            http://www.rosegardenmusic.com/
 Group:          Productivity/Multimedia/Sound/Midi
-#               https://downloads.sourceforge.net/project/rosegarden/rosegarden/21.06/rosegarden-21.06.1.tar.bz2
-Source0:        rosegarden-21.06.1.tar.xz
+Source0:        rosegarden-%{version}.tar.zst
 Source1:        %{name}.xpm
 Source2:        %{name}.1
 # PATCH-FIX-OPENSUSE davejplater@gmail.com This patch fixes the file search paths for examples, templates and midi driver libraries.
@@ -49,6 +48,7 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  lilypond-fonts-common >= 2.20
 BuildRequires:  lirc-devel
 BuildRequires:  pkg-config
+BuildRequires:  zstd
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -82,7 +82,13 @@ composers, musicians, music students, and small studio or
 home recording environments.
 
 %prep
+%if 0%{?suse_version} <= 1500
+zstd -d %{S:0} -o ./%{name}-%{version}.tar
+tar -xf %{name}-%{version}.tar
+cd %{name}-%{version}
+%else
 %setup -q
+%endif
 %autopatch -p1
 
 # When we build svn we need to execute bootstrap.sh

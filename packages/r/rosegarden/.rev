@@ -361,4 +361,14 @@ Only recommend jack to allow pipewire jack to be installed.
 </comment>
     <requestid>934968</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>309a50e9f4156a014d7811bb919a73a2</srcmd5>
+    <version>21.12</version>
+    <time>1648479655</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable Leap build again.
+- switch to the more performant zstd
+- Update to version 21.12</comment>
+    <requestid>965373</requestid>
+  </revision>
 </revisionlist>

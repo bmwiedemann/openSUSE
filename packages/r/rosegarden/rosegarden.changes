@@ -1,4 +1,224 @@
 -------------------------------------------------------------------
+Mon Mar 28 12:29:33 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Enable Leap build again.
+
+-------------------------------------------------------------------
+Sun Mar 27 19:52:36 UTC 2022 - dmueller@suse.com
+
+- switch to the more performant zstd
+- Update to version 21.12:
+  * add label for keyboard layout
+  * fix spelling and config group
+  * SD: Tweak text and spacing
+  * fix keyboard shortcuts on restart
+  * remove labels from ShortcutDialog
+  * mark keyboard translations
+  * update keyboard translations
+  * updates wiht multiselect and reset all
+  * correct french keyboard for shortcut translations
+  * add french keyboard for shortcut translations
+  * Improve plugin debug logging
+  * fix language problem for saving user shortcuts
+  * allow for different keyboard layouts. Bug fixes
+  * simplify ShortcutWarnDialog
+  * fix warning bug
+  * fix bug in addUserShortcut
+  * use name in shortcut editor if no text is provided
+  * catch escape key in ShortcutDelegate so esc can be set as a shortcut
+  * limit to single key press in ShortcutDelegate
+  * clean up ShortcutDialog
+  * initial ShortcutDialog version with in-place keysequnece editing
+  * enter does not accept ShortcutDisalog
+  * Locate Audio Files: Turn off wait cursor
+  * Implement missing audio file skip
+  * FLD: Add Skip button
+  * fix display bugs in matrix editor
+  * Shortcuts: Reduce debugging output
+  * Shortcuts: Update dialog message text
+  * disable debug output and remove trailing white spaces
+  * fix memory problem
+  * add OK/Cancel to ShortcutDialog
+  * Use QString::startsWith() for older Qt
+  * cmake: Use find_library for JACK
+  * Use QString::endsWith(), even better
+  * layout for scrollbar
+  * use QScrollArea in ShortcutWarnDialog
+  * Use at() for compatibility with older Qt
+  * additional features for ShortcutDialog
+  * ShortcutWrnDialog functional
+  * extend ShortcutWarnDialog
+  * allow for removing all shortcuts
+  * progress on ShortcutWarnDialog
+  * fix bug reading shortcuts from xml
+  * bug fixes
+  * remove unused getShortcuts menthods
+  * update shortcut edit
+  * fix crash + tidy up
+  * update ShortcutDialog for warnings
+  * activate user shortcuts
+  * change info data to key map
+  * prepare for whortcut warnings
+  * improve edit function
+  * further progress on shortcut editor
+  * further preparation for edit
+  * add KeySequenceEdit
+  * update preparation for edit
+  * Allow cancel of forced save
+  * Allow cancel when trying to record audio
+  * AFM: Reset recent files on save
+  * allow for shortcut translations
+  * autoload: Add more controller colors
+  * AIPP: Fix instrument label look and tooltip
+  * Remove InstrumentAliasButton
+  * AIFF: Edit label on click
+  * make tree non editable
+  * qt6: Correct use of QString::back()
+  * German translation update from Michael Stockinger
+  * CollapseNotesCommand - do not call makeNotesViable from matrix command
+  * dialog showing all shortcuts
+  * first attempt at a shortcut dialog
+  * Change default audio path
+  * Audio file not found, part 2
+  * Cleanup
+  * Audio file not found, part 1
+  * Comments
+  * XMLReader: Fix ignoring of parsing errors
+  * Handle some less likely audio path use cases
+  * AMF: Add support for double-dot (..)
+  * Clean up tr()
+  * AFM: Handle permissions issues on move
+  * AudioPropertiesPage update part 2
+  * AudioPropertiesPage update part 1
+  * AFLD: Add custom location edit box
+  * AFM: Support custom audio location
+  * Add audio location preferences
+  * Add Show AFLD to preferences
+  * AFLD: Add "don't show" checkbox
+  * set pointer position correctly in multi staff notation edit
+  * AFLD: Persistence and location enum
+  * Add AudioFileLocationDialog
+  * Simplify
+  * Cleanup
+  * Renames
+  * Cleanup
+  * AFM: Clarify absolute vs. relative paths
+  * Cleanup
+  * AudioFileManager::save() first draft
+  * Cleanup
+  * Spline: Fix endless loop
+  * set selected staff on note entry
+  * use QMessageBox::information in RosegardenDocument.cpp
+  * Add Yamaha PSR-220/230 device file
+  * Add update-copyright script
+  * Update copyright
+  * remove warnings from qt 6.2.2
+  * Pass QDebug by value to operator<<
+  * NotationView: Esc should both unselect and go to select mode
+  * Comments
+  * Add txt2rgd.py to scripts
+  * Cleanup
+  * allow preview for all staffs in multiple noation edit
+  * remove unused declaration in BeatsBarsDialog.h
+  * Move peak files when moving audio
+  * Add "move audio files" feature
+  * Simplify
+  * Comments and shuffling
+  * APP: Detect non-writable audio file path
+  * APP: Tweak math
+  * reset range when looping is switched off (with new loop setting off)
+  * Use QLocale to format numbers
+  * Cleanup
+  * Cleanup
+  * Cleanup
+  * Cleanup
+  * optimization
+  * Fix binary data in .rgd files
+  * Fix Insert Controller Sequence dialog for volume
+  * Update .rg XML file to use excludefromprinting
+  * Fix incorrect class name
+  * Rename SFNC -> SegmentExcludeFromPrintingCommand
+  * SFNC: Invert ForNotation -> ExcludeFromPrinting
+  * Change "For Notation" to "Exclude From Printing"
+  * Fix volume and pan issues with older .rg files
+  * fix bad debug output
+  * remove staff argument to clearPreviewNote
+  * German translation update from Michael Stockinger
+  * Comments
+  * Simplify: Use * instead of &
+  * Remove unneeded RG_DEBUGs
+  * Fix crash on Edit > Delete
+  * Notation: Remove copy/cut controller events
+  * Notation: Upgrade selection state behavior
+  * set modified false before emitting documentModified
+  * correct loopset
+  * allow reinstate of loop from transport button
+  * update default looping behaviour
+  * Simplify
+  * Notation: Add handling of two selections
+  * Remove unused slotRulerSelectionChanged()
+  * Remove BasicSelectionCommand class
+  * Renames and comments
+  * Okular exists in later versions than KDE 4 :-)
+  * NoteItem - stop going to timy mode for small bounding rectangle
+  * use min/max of time and notation time for renderElements calls
+  * fix performance issues
+  * do not stop jack transport for auto stop
+  * defer looping when whole composition is looping
+  * Renames
+  * store playback tracking in document
+  * Disable menu items when playing
+  * TristateCheckBox: Add text ctor
+  * NotationView: Revert delete to original behavior
+  * Matrix: Remove copy/cut controller events
+  * Matrix: Update selection when ruler tab changed
+  * Matrix: Enable delete with any selection
+  * Matrix: Upgrade selection state behavior
+  * Simplify
+  * Matrix: Add handling of two selections
+  * Notation: Fix delete of selected ruler events
+  * Matrix: Fix delete of selected ruler events
+  * EraseCommand: Reference -> Pointer
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * RespellCommand: Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * RetrogradeInvertCmd: Remove BasicSelectionCommand
+  * RetrogradeCommand: Remove BasicSelectionCommand
+  * PlaceControllersCmd: Remove BasicSelectionCommand
+  * MaskTriggerCommand: Remove BasicSelectionCommand
+  * Remove BasicSelectionCommand
+  * ClearTriggersCommand: Remove BasicSelectionCommand
+  * ChangeVelocityCmd: Remove BasicSelectionCommand
+  * AddDotCommand: Remove BasicSelectionCommand
+  * Add EventSelection::empty()
+  * Renames and simplification
+  * Cleanup
+  * Update version to 22.06
+  * Updates for version 21.12
+  * Update French tranlation
+  * Fix crash when restoring rulers in editors
+  * Update .ts files for 21.12 (scripts/make-ts)
+  * cleanup debug
+  * Try to loop entire song with setting
+  * dynamic update for whole song loop
+  * allow default looping of whole song
+  * stop playback at end of last segment in a composition
+
+-------------------------------------------------------------------
 Wed Dec  1 10:52:26 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Create _service download file due to the spec file's download
