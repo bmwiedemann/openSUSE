@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 17 06:50:19 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- timezone update 2022a:
+  * Palestine will spring forward on 2022-03-27, not -03-26*
+  * zdump -v now outputs better failure indications
+  * Bug fixes for code that reads corrupted TZif data
+
+-------------------------------------------------------------------
 Fri Oct 22 06:38:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - timezone update 2021e:
