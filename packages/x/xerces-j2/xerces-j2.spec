@@ -38,7 +38,7 @@ Patch1:         %{name}-manifest.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  xalan-j2 >= 2.7.1
 BuildRequires:  xml-commons-apis >= 1.4.01
@@ -101,7 +101,7 @@ popd
 
 # Build everything
 export ANT_OPTS="-Xmx256m -Djava.awt.headless=true -Dbuild.sysclasspath=first -Ddisconnected=true"
-ant -Djavac.source=1.6 -Djavac.target=1.6 \
+ant -Djavac.source=1.8 -Djavac.target=1.8 \
     -Dbuild.compiler=modern \
     clean jars javadocs
 

@@ -329,4 +329,12 @@
     <comment></comment>
     <requestid>953792</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>8a62353147b8577f94ba8c6f9121e624</srcmd5>
+    <version>2.12.2</version>
+    <time>1648479538</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962894</requestid>
+  </revision>
 </revisionlist>
