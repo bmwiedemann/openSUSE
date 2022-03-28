@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 18 16:43:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
 Thu Nov 15 10:23:30 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Add jakarta-regexp:jakarta-regexp alias to the maven artifact

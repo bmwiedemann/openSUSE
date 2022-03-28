@@ -1,7 +1,7 @@
 #
 # spec file for package regexp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Simple regular expressions API
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/%{name}/
+URL:            http://jakarta.apache.org/%{name}/
 Source0:        http://www.apache.org/dist/jakarta/regexp/jakarta-regexp-%{version}.tar.gz
 Source1:        regexp-%{version}.pom
 BuildRequires:  ant
@@ -56,7 +56,7 @@ find . -type f -name "*.jar" | xargs -t rm
 export OPT_JAR_LIST=:
 export CLASSPATH=
 mkdir lib
-ant -Djakarta-site2.dir=. -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6  jar
+ant -Djakarta-site2.dir=. -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8  jar
 
 %install
 # jars
