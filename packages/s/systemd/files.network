@@ -7,6 +7,10 @@
 %dir %{_systemd_util_dir}/network
 %{_bindir}/networkctl
 %{_datadir}/bash-completion/completions/networkctl
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.DHCPServer.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.Link.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.Manager.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.Network.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.network1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.network1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
@@ -15,11 +19,13 @@
 %{_mandir}/man1/networkctl.1.gz
 %{_mandir}/man5/networkd.conf.5.gz
 %{_mandir}/man5/networkd.conf.d.5.gz
+%{_mandir}/man5/org.freedesktop.network1.5.gz
 %{_mandir}/man5/systemd.network.5.gz
 %{_mandir}/man8/systemd-networkd-wait-online.8.gz
 %{_mandir}/man8/systemd-networkd-wait-online.service.8.gz
 %{_mandir}/man8/systemd-networkd.8.gz
 %{_mandir}/man8/systemd-networkd.service.8.gz
+%{_systemd_util_dir}/network/80-6rd-tunnel.network
 %{_systemd_util_dir}/network/80-container-host0.network
 %{_systemd_util_dir}/network/80-container-ve.network
 %{_systemd_util_dir}/network/80-container-vz.network
@@ -40,6 +46,9 @@
 %{_bindir}/systemd-resolve
 %{_datadir}/bash-completion/completions/resolvectl
 %{_datadir}/bash-completion/completions/systemd-resolve
+%{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.DnssdService.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.Link.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.Manager.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.resolve1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.resolve1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.resolve1.policy

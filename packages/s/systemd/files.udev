@@ -14,14 +14,14 @@
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %{_bindir}/systemd-hwdb
 %{_bindir}/udevadm
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_datadir}/bash-completion/completions/udevadm
 %endif
 %{_datadir}/pkgconfig/udev.pc
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_datadir}/zsh/site-functions/_udevadm
 %endif
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_mandir}/man5/udev.conf.5.gz
 %{_mandir}/man7/hwdb.7.gz
 %{_mandir}/man7/udev.7.gz
@@ -70,6 +70,8 @@
 %{_udevhwdbdir}/60-keyboard.hwdb
 %{_udevhwdbdir}/60-seat.hwdb
 %{_udevhwdbdir}/60-sensor.hwdb
+%{_udevhwdbdir}/70-analyzers.hwdb
+%{_udevhwdbdir}/70-cameras.hwdb
 %{_udevhwdbdir}/70-joystick.hwdb
 %{_udevhwdbdir}/70-mouse.hwdb
 %{_udevhwdbdir}/70-pointingstick.hwdb
@@ -92,6 +94,7 @@
 %{_udevrulesdir}/60-serial.rules
 %{_udevrulesdir}/61-persistent-storage-compat.rules
 %{_udevrulesdir}/64-btrfs.rules
+%{_udevrulesdir}/70-camera.rules
 %{_udevrulesdir}/70-joystick.rules
 %ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
 %{_udevrulesdir}/70-memory.rules

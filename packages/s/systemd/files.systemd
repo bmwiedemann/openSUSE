@@ -8,11 +8,12 @@
 %config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
 %config(noreplace) %{_sysconfdir}/systemd/user.conf
 %dir %{_binfmtdir}
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %endif
 %dir %{_datadir}/dbus-1
+%dir %{_datadir}/dbus-1/interfaces
 %dir %{_datadir}/dbus-1/services
 %dir %{_datadir}/dbus-1/system-services
 %dir %{_datadir}/dbus-1/system.d
@@ -20,14 +21,15 @@
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
 %dir %{_datadir}/systemd
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %endif
-%dir %{xinitconfdir}
-%dir %{xinitconfdir}/xinitrc.d
 %dir %{_environmentdir}
 %dir %{_journalcatalogdir}
+%if ! %{bootstrap}
+%dir %{_libdir}/cryptsetup
+%endif
 %dir %{_localstatedir}/lib/systemd
 %dir %{_localstatedir}/lib/systemd/catalog
 %dir %{_modprobedir}
@@ -82,6 +84,8 @@
 %dir %{_unitdir}/sockets.target.wants
 %dir %{_unitdir}/sysinit.target.wants
 %dir %{_unitdir}/timers.target.wants
+%dir %{xinitconfdir}
+%dir %{xinitconfdir}/xinitrc.d
 %doc %{_modprobedir}/README
 %doc %{_sysctldir}/README
 %doc %{_sysusersdir}/README
@@ -113,7 +117,8 @@
 %{_bindir}/systemd-cat
 %{_bindir}/systemd-cgls
 %{_bindir}/systemd-cgtop
-%if ! 0%{?bootstrap}
+%{_bindir}/systemd-creds
+%if ! %{bootstrap}
 %{_bindir}/systemd-cryptenroll
 %endif
 %{_bindir}/systemd-delta
@@ -136,7 +141,7 @@
 %{_bindir}/systemd-tty-ask-password-agent
 %{_bindir}/systemd-umount
 %{_bindir}/timedatectl
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %if %{with sd_boot}
 %{_datadir}/bash-completion/completions/bootctl
 %endif
@@ -160,6 +165,29 @@
 %{_datadir}/bash-completion/completions/systemd-run
 %{_datadir}/bash-completion/completions/timedatectl
 %endif
+# dbus introspection data for code generators: https://github.com/systemd/systemd/pull/20294
+%{_datadir}/dbus-1/interfaces/org.freedesktop.LogControl1.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.hostname1.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.locale1.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.login1.Manager.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.login1.Seat.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.login1.Session.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.login1.User.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Automount.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Device.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Job.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Manager.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Mount.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Path.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Scope.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Service.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Slice.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Socket.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Swap.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Target.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Timer.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.systemd1.Unit.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.timedate1.xml
 %{_datadir}/dbus-1/services/org.freedesktop.systemd1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.hostname1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.locale1.service
@@ -181,7 +209,7 @@
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %if %{with sd_boot}
 %{_datadir}/zsh/site-functions/_bootctl
 %endif
@@ -205,7 +233,6 @@
 %{_datadir}/zsh/site-functions/_systemd-tmpfiles
 %{_datadir}/zsh/site-functions/_timedatectl
 %endif
-%{xinitconfdir}/xinitrc.d/50-systemd-user.sh
 %{_environmentdir}/99-environment.conf
 %{_journalcatalogdir}/systemd.be.catalog
 %{_journalcatalogdir}/systemd.be@latin.catalog
@@ -219,6 +246,11 @@
 %{_journalcatalogdir}/systemd.ru.catalog
 %{_journalcatalogdir}/systemd.zh_CN.catalog
 %{_journalcatalogdir}/systemd.zh_TW.catalog
+%if ! 0%{bootstrap}
+%{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
+%{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
+%{_libdir}/cryptsetup/libcryptsetup-token-systemd-tpm2.so
+%endif
 %if ! 0%{bootstrap}
 %if %{with sd_boot}
 %{_mandir}/man1/bootctl.1.gz
@@ -235,6 +267,7 @@
 %{_mandir}/man1/systemd-cat.1.gz
 %{_mandir}/man1/systemd-cgls.1.gz
 %{_mandir}/man1/systemd-cgtop.1.gz
+%{_mandir}/man1/systemd-creds.1.gz
 %{_mandir}/man1/systemd-cryptenroll.1.gz
 %{_mandir}/man1/systemd-delta.1.gz
 %{_mandir}/man1/systemd-detect-virt.1.gz
@@ -250,6 +283,7 @@
 %{_mandir}/man1/systemd-path.1.gz
 %{_mandir}/man1/systemd-run.1.gz
 %{_mandir}/man1/systemd-socket-activate.1.gz
+%{_mandir}/man1/systemd-stdio-bridge.1.gz
 %{_mandir}/man1/systemd-tty-ask-password-agent.1.gz
 %{_mandir}/man1/systemd-umount.1.gz
 %{_mandir}/man1/systemd.1.gz
@@ -258,8 +292,10 @@
 %{_mandir}/man5/crypttab.5.gz
 %{_mandir}/man5/dnssec-trust-anchors.d.5.gz
 %{_mandir}/man5/environment.d.5.gz
+%{_mandir}/man5/extension-release.5.gz
 %{_mandir}/man5/hostname.5.gz
 %{_mandir}/man5/initrd-release.5.gz
+%{_mandir}/man5/integritytab.5.gz
 %{_mandir}/man5/journald.conf.5.gz
 %{_mandir}/man5/journald.conf.d.5.gz
 %{_mandir}/man5/journald@.conf.5.gz
@@ -323,8 +359,12 @@
 %{_mandir}/man7/file-hierarchy.7.gz
 %{_mandir}/man7/kernel-command-line.7.gz
 %if %{with sd_boot}
+%{_mandir}/man7/linuxaa64.efi.stub.7.gz
+%{_mandir}/man7/linuxia32.efi.stub.7.gz
+%{_mandir}/man7/linuxx64.efi.stub.7.gz
 %{_mandir}/man7/sd-boot.7.gz
 %{_mandir}/man7/systemd-boot.7.gz
+%{_mandir}/man7/systemd-stub.7.gz
 %endif
 %{_mandir}/man7/systemd.directives.7.gz
 %{_mandir}/man7/systemd.environment-generator.7.gz
@@ -383,6 +423,9 @@
 %{_mandir}/man8/systemd-hostnamed.8.gz
 %{_mandir}/man8/systemd-hostnamed.service.8.gz
 %{_mandir}/man8/systemd-hybrid-sleep.service.8.gz
+%{_mandir}/man8/systemd-integritysetup-generator.8.gz
+%{_mandir}/man8/systemd-integritysetup.8.gz
+%{_mandir}/man8/systemd-integritysetup@.service.8.gz
 %{_mandir}/man8/systemd-journald-audit.socket.8.gz
 %{_mandir}/man8/systemd-journald-dev-log.socket.8.gz
 %{_mandir}/man8/systemd-journald-varlink@.socket.8.gz
@@ -455,7 +498,7 @@
 %{_modprobedir}/systemd.conf
 %{_pam_moduledir}/pam_systemd.so
 %{_pam_vendordir}/systemd-user
-%{_prefix}/lib/kernel/install.d/00-entry-directory.install
+%{_prefix}/lib/kernel/install.conf
 %{_prefix}/lib/kernel/install.d/50-depmod.install
 %{_prefix}/lib/kernel/install.d/90-loaderentry.install
 %{_sbindir}/halt
@@ -472,7 +515,7 @@
 %{_systemd_util_dir}/boot/efi/linux*.elf.stub
 %{_systemd_util_dir}/boot/efi/systemd-boot*.efi
 %endif
-%{_systemd_util_dir}/libsystemd-shared-249.so
+%{_systemd_util_dir}/libsystemd-shared-250.so
 %{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
 %{_systemd_util_dir}/scripts/migrate-sysconfig-i18n.sh
 %{_systemd_util_dir}/scripts/upgrade-from-pre-210.sh
@@ -486,13 +529,16 @@
 %endif
 %{_systemd_util_dir}/systemd-boot-check-no-failures
 %{_systemd_util_dir}/systemd-cgroups-agent
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_systemd_util_dir}/systemd-cryptsetup
 %endif
 %{_systemd_util_dir}/systemd-fsck
 %{_systemd_util_dir}/systemd-growfs
 %{_systemd_util_dir}/systemd-hibernate-resume
 %{_systemd_util_dir}/systemd-hostnamed
+%if ! %{bootstrap}
+%{_systemd_util_dir}/systemd-integritysetup
+%endif
 %{_systemd_util_dir}/systemd-journald
 %{_systemd_util_dir}/systemd-localed
 %{_systemd_util_dir}/systemd-logind
@@ -516,7 +562,7 @@
 %{_systemd_util_dir}/systemd-user-runtime-dir
 %{_systemd_util_dir}/systemd-user-sessions
 %{_systemd_util_dir}/systemd-vconsole-setup
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_systemd_util_dir}/systemd-veritysetup
 %endif
 %{_systemd_util_dir}/systemd-volatile-root
@@ -548,7 +594,7 @@
 %if %{with sd_boot}
 %{_systemdgeneratordir}/systemd-bless-boot-generator
 %endif
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_systemdgeneratordir}/systemd-cryptsetup-generator
 %endif
 %{_systemdgeneratordir}/systemd-debug-generator
@@ -556,9 +602,12 @@
 %{_systemdgeneratordir}/systemd-getty-generator
 %{_systemdgeneratordir}/systemd-gpt-auto-generator
 %{_systemdgeneratordir}/systemd-hibernate-resume-generator
+%if ! %{bootstrap}
+%{_systemdgeneratordir}/systemd-integritysetup-generator
+%endif
 %{_systemdgeneratordir}/systemd-run-generator
 %{_systemdgeneratordir}/systemd-system-update-generator
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_systemdgeneratordir}/systemd-veritysetup-generator
 %endif
 %{_sysusersdir}/systemd-journal.conf
@@ -586,7 +635,7 @@
 %{_unitdir}/boot-complete.target
 %{_unitdir}/console-getty.service
 %{_unitdir}/container-getty@.service
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_unitdir}/cryptsetup-pre.target
 %{_unitdir}/cryptsetup.target
 %endif
@@ -602,6 +651,7 @@
 %{_unitdir}/emergency.service
 %{_unitdir}/emergency.target
 %{_unitdir}/exit.target
+%{_unitdir}/factory-reset.target
 %{_unitdir}/final.target
 %{_unitdir}/first-boot-complete.target
 %{_unitdir}/getty-pre.target
@@ -615,7 +665,7 @@
 %{_unitdir}/initrd-fs.target
 %{_unitdir}/initrd-parse-etc.service
 %{_unitdir}/initrd-root-device.target
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_unitdir}/initrd-root-device.target.wants/remote-cryptsetup.target
 %{_unitdir}/initrd-root-device.target.wants/remote-veritysetup.target
 %endif
@@ -624,6 +674,10 @@
 %{_unitdir}/initrd-switch-root.target
 %{_unitdir}/initrd-usr-fs.target
 %{_unitdir}/initrd.target
+%if ! %{bootstrap}
+%{_unitdir}/integritysetup-pre.target
+%{_unitdir}/integritysetup.target
+%endif
 %{_unitdir}/kexec.target
 %{_unitdir}/local-fs-pre.target
 %{_unitdir}/local-fs.target
@@ -646,12 +700,12 @@
 %{_unitdir}/proc-sys-fs-binfmt_misc.mount
 %{_unitdir}/quotaon.service
 %{_unitdir}/reboot.target
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_unitdir}/remote-cryptsetup.target
 %endif
 %{_unitdir}/remote-fs-pre.target
 %{_unitdir}/remote-fs.target
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_unitdir}/remote-veritysetup.target
 %endif
 %{_unitdir}/rescue.service
@@ -675,11 +729,14 @@
 %{_unitdir}/sys-kernel-debug.mount
 %{_unitdir}/sys-kernel-tracing.mount
 %{_unitdir}/sysinit.target
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_unitdir}/sysinit.target.wants/cryptsetup.target
 %endif
 %{_unitdir}/sysinit.target.wants/dev-hugepages.mount
 %{_unitdir}/sysinit.target.wants/dev-mqueue.mount
+%if ! %{bootstrap}
+%{_unitdir}/sysinit.target.wants/integritysetup.target
+%endif
 %{_unitdir}/sysinit.target.wants/proc-sys-fs-binfmt_misc.automount
 %{_unitdir}/sysinit.target.wants/sys-fs-fuse-connections.mount
 %{_unitdir}/sysinit.target.wants/sys-kernel-config.mount
@@ -703,11 +760,11 @@
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup.service
 %{_unitdir}/sysinit.target.wants/systemd-update-done.service
 %{_unitdir}/sysinit.target.wants/systemd-update-utmp.service
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_unitdir}/sysinit.target.wants/veritysetup.target
 %endif
 %{_unitdir}/syslog.socket
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_unitdir}/system-systemd\x2dcryptsetup.slice
 %endif
 %{_unitdir}/system-update-cleanup.service
@@ -725,6 +782,7 @@
 %{_unitdir}/systemd-boot-check-no-failures.service
 %if %{with sd_boot}
 %{_unitdir}/systemd-boot-system-token.service
+%{_unitdir}/systemd-boot-update.service
 %endif
 %{_unitdir}/systemd-exit.service
 %{_unitdir}/systemd-firstboot.service
@@ -784,10 +842,11 @@
 %{_unitdir}/user-runtime-dir@.service
 %{_unitdir}/user.slice
 %{_unitdir}/user@.service
-%if ! 0%{?bootstrap}
+%if ! %{bootstrap}
 %{_unitdir}/veritysetup-pre.target
 %{_unitdir}/veritysetup.target
 %endif
+%{xinitconfdir}/xinitrc.d/50-systemd-user.sh
 %if %{with split_usr}
 /bin/systemctl
 /sbin/halt
