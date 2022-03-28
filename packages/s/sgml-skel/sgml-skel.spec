@@ -1,7 +1,7 @@
 #
 # spec file for package sgml-skel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sgml-skel
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Helper Scripts for the SGML System
 License:        GPL-2.0-or-later
@@ -77,12 +77,12 @@ fi
 update-xml-catalog
 
 %files
-%defattr(-, root, root)
 %dir %{_sysconfdir}/sgml
 %dir %{_sysconfdir}/xml
 %dir %{_sysconfdir}/xml/catalog.d
 %dir %{_localstatedir}/lib/sgml
-%doc AUTHORS COPYING ChangeLog README*
+%license COPYING
+%doc AUTHORS ChangeLog README*
 %ghost %{_sysconfdir}/sgml/catalog
 %ghost %{_sysconfdir}/xml/suse-catalog.xml
 %ghost %{_sysconfdir}/xml/catalog-d.xml
