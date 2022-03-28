@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 19 21:51:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jsch-0.1.54-sourcetarget.patch
+    + build with source/target levels 8
+
+-------------------------------------------------------------------
 Tue Apr  7 13:56:09 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Version 0.1.55

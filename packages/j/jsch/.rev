@@ -177,4 +177,12 @@
     <comment>0.1.54 -&gt; 0.1.55</comment>
     <requestid>792006</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>a2b073a9ccad5175ab142daf65e729ba</srcmd5>
+    <version>0.1.55</version>
+    <time>1648479560</time>
+    <user>dimstar_suse</user>
+    <comment>source/target levels 8</comment>
+    <requestid>963095</requestid>
+  </revision>
 </revisionlist>
