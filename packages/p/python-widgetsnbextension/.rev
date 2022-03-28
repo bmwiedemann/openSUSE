@@ -30,4 +30,12 @@
 - Required by ipywidgets (forwarded request 928353 from bnavigator)</comment>
     <requestid>928354</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5411ffc56150f039b3601e651b4e4bc</srcmd5>
+    <version>3.6.0</version>
+    <time>1648479638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965097</requestid>
+  </revision>
 </revisionlist>
