@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 18 18:47:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
+Thu Mar 17 03:36:32 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add glassfish-activation-api dependency so that we can build with
+  JDK that does not contain the JavaEE modules
+
+-------------------------------------------------------------------
 Tue Jul 27 16:03:32 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Directory core/docs does not exist

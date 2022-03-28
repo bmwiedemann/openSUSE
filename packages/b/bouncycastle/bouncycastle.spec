@@ -1,7 +1,7 @@
 #
 # spec file for package bouncycastle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,9 @@ Requires(post): javapackages-tools
 Requires(postun):javapackages-tools
 Provides:       bcprov = %{version}-%{release}
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-activation-api
+%endif
 
 %description
 The Bouncy Castle Crypto package is a Java implementation of cryptographic
@@ -122,10 +125,14 @@ find . -type f -name "*.jar" -exec rm -f {} \;
 echo "package.version:\ %{version}" >> bc-build.properties
 echo "bundle.version:\ %{version}.0" >> bc-build.properties
 ant -f ant/jdk15+.xml \
-  -Dbc.javac.source=6 -Dbc.javac.target=6 \
+  -Dbc.javac.source=8 -Dbc.javac.target=8 \
   -Djunit.jar.home=$(build-classpath junit) \
   -Dmail.jar.home=$(build-classpath javax.mail) \
+%if 0%{?suse_version} > 1500
+  -Dactivation.jar.home=$(build-classpath glassfish-activation-api) \
+%else
   -Dactivation.jar.home= \
+%endif
   -Drelease.debug=true \
   clean build-provider build
 
