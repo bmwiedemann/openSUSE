@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 27 11:14:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.6:
+  * Fix bookmarks compat namespace
+  * Resolve websocket uri only via https
+
+-------------------------------------------------------------------
 Sat Nov 13 20:27:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.4:

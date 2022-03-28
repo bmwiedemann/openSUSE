@@ -269,4 +269,14 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
  * GSSAPI: Catch OSError</comment>
     <requestid>931289</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b7bf06b014a122cd6668304e4f5d61ca</srcmd5>
+    <version>2.0.6</version>
+    <time>1648479648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.6:
+  * Fix bookmarks compat namespace
+  * Resolve websocket uri only via https</comment>
+    <requestid>965192</requestid>
+  </revision>
 </revisionlist>
