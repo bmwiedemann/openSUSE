@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Mar 26 20:55:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update packaging: install the kernel
+- Re-enable tests
+
+-------------------------------------------------------------------
+Sun Feb 27 01:02:36 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.34.1:
+  * Bugs fixed
+    + Improve handling of default inline toolkit #209 (@blink1073)
+
+- changes from version 0.34.0:
+  * Enhancements made
+    + Use octave executable and qt backend by default #204
+      (@blink1073)
+  * Maintenance and upkeep improvements
+    + Fail if kernel test fails #203 (@blink1073)
+    + Use published jupyter_kernel_test #202 (@blink1073)
+
+- changes from version 0.33.1:
+  * Maintenance and upkeep improvements
+    + Prep for jupyter releaser usage #200 (@blink1073)
+    + Upgrade to jupyter packaging and github actions #199
+      (@blink1073)
+
+-------------------------------------------------------------------
 Tue Oct  5 20:20:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Disable tests: jupyter_kernel_test is broken and did not see any

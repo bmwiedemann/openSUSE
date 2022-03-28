@@ -1,7 +1,7 @@
 #
 # spec file for package python-octave-kernel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,27 +19,31 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-octave-kernel
-Version:        0.32.0
+Version:        0.34.1
 Release:        0
 Summary:        A Jupyter kernel for Octave
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/Calysto/octave_kernel
-Source:         https://files.pythonhosted.org/packages/source/o/octave-kernel/octave_kernel-%{version}.tar.gz
+URL:            https://github.com/Calysto/octave_kernel
+Source:         https://files.pythonhosted.org/packages/source/o/octave_kernel/octave_kernel-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module jupyter-client >= 4.3.0}
+BuildRequires:  %{python_module jupyter_kernel_test}
+BuildRequires:  %{python_module jupyter_packaging}
 BuildRequires:  %{python_module metakernel >= 0.24.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
+BuildRequires:  octave
 BuildRequires:  python-rpm-macros
+BuildRequires:  xvfb-run
 Requires:       jupyter-octave-kernel = %{version}
 Requires:       python-ipykernel
 Requires:       python-jupyter-client >= 4.3.0
 Requires:       python-metakernel >= 0.24.0
-Provides:       python-jupyter_octave_kernel = %{version}
-Obsoletes:      python-jupyter_octave_kernel < %{version}
-Conflicts:      jupyter-octave_kernel < 0.29.0
+Provides:       python-jupyter_octave_kernel = %{version}-%{release}
+Obsoletes:      python-jupyter_octave_kernel < %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,9 +57,9 @@ Summary:        Interactive plotting package for the Jupyter notebook
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
 Requires:       python3-octave-kernel = %{version}
-Provides:       jupyter-octave_kernel = %{version}
-Obsoletes:      jupyter-octave_kernel < %{version}
 Conflicts:      python3-jupyter_octave_kernel < 0.29.0
+Provides:       jupyter-octave_kernel = %{version}-%{release}
+Obsoletes:      jupyter-octave_kernel < %{version}-%{release}
 
 %description -n jupyter-octave-kernel
 A kernel to allow Octave to be used in Jupyter.
@@ -70,16 +74,22 @@ This package provides the jupyter notebook extension.
 
 %install
 %python_install
-sed -i "s|\"python\"|\"python3\"|" %{buildroot}%{_jupyter_kernel_dir}/octave/kernel.json
 
 %fdupes %{buildroot}%{_jupyter_prefix}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
+%{python_expand #
+xvfb-run $python -m octave_kernel.check
+xvfb-run $python -m unittest -v test_octave_kernel.py
+}
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/octave_kernel/
-%{python_sitelib}/octave_kernel-%{version}-py*.egg-info
+%{python_sitelib}/octave_kernel-%{version}*-info
 
 %files -n jupyter-octave-kernel
 %license LICENSE.txt
