@@ -95,4 +95,12 @@
     <comment>Fix build with java 9</comment>
     <requestid>522251</requestid>
   </revision>
+  <revision rev="15" vrev="26">
+    <srcmd5>9f60800091bff8c4c572fb2e32f8bae5</srcmd5>
+    <version>1.1</version>
+    <time>1648479558</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8 + rewamp the build system a bit</comment>
+    <requestid>963092</requestid>
+  </revision>
 </revisionlist>
