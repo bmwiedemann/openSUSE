@@ -18,6 +18,10 @@ Changes for openSUSE / SLE:
   Set timeout for Ignition device so boot will just continue if no physical
   Ignition configuration device is attached (e.g. when using platform
   specific configuration).
+* ignition-touch-selinux-autorelabel.conf:
+  Trigger SELinux autorelabel after Ignition runs; Ignition would support
+  SELinux itself, however this is a compile time option, so it can't be
+  used here.
 * ignition-suse-generator:
   Supplements the upstream generator by adding dependencies to
   ignition-setup-user.service and ignition-mount-initrd-fstab.service.

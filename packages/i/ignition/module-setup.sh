@@ -23,6 +23,8 @@ install() {
         "$systemdsystemunitdir/ignition-mount-initrd-fstab.service"
     inst_simple "$moddir/ignition-userconfig-timeout.conf" \
 	"$systemdsystemunitdir/dev-disk-by\x2dlabel-ignition.device.d/ignition-userconfig-timeout.conf"
+    inst_simple "$moddir/ignition-touch-selinux-autorelabel.conf" \
+        "$systemdsystemunitdir/ignition-files.service.d/ignition-touch-selinux-autorelabel.conf"
     inst_simple "$moddir/ignition-suse-generator" \
         "/etc/systemd/system-generators/ignition-generator"
     inst_script "$moddir/ignition-enable-network.sh" \
