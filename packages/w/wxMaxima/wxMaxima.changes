@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Mar 26 20:32:30 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 22.03.0:
+  * Add an compile option "WXM_INCLUDE_FONTS", which allows to
+    specify, if additional fonts should be included.
+  * Rename command line option --logtostdout to --logtostderr.
+  * A better heuristics for finding out what to style as 1D maths.
+  * Consistent image resolutions.
+  * No more crashes on exporting multiple animations at once
+    [gh#wxMaxima-developers/wxmaxima#1616].
+  * Drag-and-Drop in the table of contents
+  * Table of contents: Convert sections to subsections and similar
+    [gh#wxMaxima-developers/wxmaxima#1629].
+  * Parenthesis and quote matching now uses the maxima parser.
+  * A way of limiting the toc depth shown in the table of
+    contents.
+  * Now the problems after a kill(all) should be finally resolved.
+  * Better support for the debugger
+    [gh#wxMaxima-developers/wxmaxima#1625].
+  * Machine-Float NaNs no more causes XML errors.
+  * Labels with hexadecimal numbers no more cause crashes
+    [gh#wxMaxima-developers/wxmaxima#1633].
+  * wxMaxima no more skips chars in subscripted variables
+    [gh#wxMaxima-developers/wxmaxima#1632].
+  * Merging cells per keyboard shortcut works again
+    [gh#wxMaxima-developers/wxmaxima#1626].
+  * Symbols buttons whose symbols the GUI font lacks are now
+    hidden.
+- Minor rebase of wxMaxima-disable-slow-multithreadtest.patch to
+  apply cleanly.
+
+-------------------------------------------------------------------
 Tue Dec  7 22:52:13 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 21.11.0:

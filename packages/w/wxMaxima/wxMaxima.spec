@@ -1,7 +1,7 @@
 #
 # spec file for package wxMaxima
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        21.11.0
+Version:        22.03.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -123,7 +123,7 @@ sleep 5
 
 %files
 %license COPYING GPL.txt
-%doc AUTHORS NEWS.md README.md
+%doc AUTHORS.md NEWS.md README.md
 %{_datadir}/doc/%{tarname}/
 %{_bindir}/*
 %{_datadir}/wxMaxima/
