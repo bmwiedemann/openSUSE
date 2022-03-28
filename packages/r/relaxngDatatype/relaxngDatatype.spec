@@ -1,7 +1,7 @@
 #
 # spec file for package relaxngDatatype
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Source0:        https://github.com/java-schema-utilities/relaxng-datatype-java/a
 # License is not available in the tarball, this copy fetched from the tarball on the old sourceforge.net site
 Source1:        copying.txt
 BuildRequires:  ant
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 Obsoletes:      %{name}-javadoc
 BuildArch:      noarch
@@ -46,7 +46,7 @@ cp -p %{SOURCE1} .
 %build
 ant \
     -Dbuild.sysclasspath=only \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
 install -Dpm 644 %{name}.jar \
