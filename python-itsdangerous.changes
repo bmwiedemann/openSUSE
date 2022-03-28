@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 24 11:57:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add 32bit-handle-overflow.patch 
+
+-------------------------------------------------------------------
+Mon Mar 21 08:11:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Handle date overflow in timed unsign. :pr:`296`
+  * Drop support for Python 3.6. :pr:`272`
+  * Remove previously deprecated code. :pr:`273`
+    * JWS functionality: Use a dedicated library such as Authlib
+      instead.
+    * ``import itsdangerous.json``: Import ``json`` from the standard
+      library instead.
+
+-------------------------------------------------------------------
 Sat Jun 19 07:34:21 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to version 2.0.1

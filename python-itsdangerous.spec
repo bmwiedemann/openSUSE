@@ -1,7 +1,7 @@
 #
 # spec file for package python-itsdangerous
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python36 1
 Name:           python-itsdangerous
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        Various helpers to pass trusted data to untrusted environments and back
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://itsdangerous.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/i/itsdangerous/itsdangerous-%{version}.tar.gz
+# https://github.com/pallets/itsdangerous/pull/299
+Patch1:         32bit-handle-overflow.patch
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -50,6 +52,7 @@ Also I plan to add some extra things.  Work in progress.
 
 %prep
 %setup -q -n itsdangerous-%{version}
+%patch1 -p1
 
 %build
 %python_build
