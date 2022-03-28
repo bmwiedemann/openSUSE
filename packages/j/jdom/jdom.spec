@@ -60,7 +60,7 @@ Patch1:         jdom-1.1-OSGiManifest.patch
 Patch2:         jdom-1.1-xom-get-jaxen.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  relaxngDatatype
@@ -73,6 +73,9 @@ BuildRequires:  xpp3
 Requires:       mvn(jaxen:jaxen)
 Requires:       mvn(xerces:xercesImpl)
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-jaxb-api
+%endif
 
 %description
 JDOM is, quite simply, a Java representation of an XML document. JDOM
@@ -147,13 +150,13 @@ Release:        0
 Summary:        The jaxen project is a Java XPath Engine
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Provides:       jaxen-bootstrap = %{version}
-Obsoletes:      jaxen-bootstrap < %{version}
 Requires:       mvn(dom4j:dom4j)
 Requires:       mvn(jdom:jdom)
 Requires:       mvn(xerces:xercesImpl)
 Requires:       mvn(xml-apis:xml-apis)
 Requires:       mvn(xom:xom)
+Provides:       jaxen-bootstrap = %{version}
+Obsoletes:      jaxen-bootstrap < %{version}
 
 %description -n jaxen
 Jaxen is a universal object model walker, capable of evaluating XPath
@@ -178,11 +181,15 @@ cp %{SOURCE13} jaxen-%{jaxen_version}.pom
 %pom_remove_parent jaxen-%{jaxen_version}.pom
 
 %build
-export JAVA_OPTS="-source 1.6 -target 1.6 -encoding UTF-8 -J-Xss6m"
+export JAVA_OPTS="-source 1.8 -target 1.8 -encoding UTF-8 -J-Xss6m"
 export JAVAC="javac ${JAVA_OPTS} "
 export ANT_OPTS="-Xss6m"
 i=0
-CLASSPATH="%{stage1_build_dir}:$(build-classpath xerces-j2 xalan-j2 xalan-j2-serializer junit relaxngDatatype servletapi5 xpp2 xpp3)"
+CLASSPATH="%{stage1_build_dir}:$(build-classpath \
+%if 0%{?suse_version} > 1500
+    glassfish-jaxb-api \
+%endif
+    xerces-j2 xalan-j2 xalan-j2-serializer junit relaxngDatatype servletapi5 xpp2 xpp3)"
 SOURCE_DIRS="%{jaxen_dir}/src/java/main/ %{jdom_dir}/src/java/ %{saxpath_dir}/src/java/main/ %{xom_dir}/src/ %{dom4j_dir}/src/java"
 SOURCE_PATH=$(echo ${SOURCE_DIRS} | sed 's#\ #:#g')
 # Failing files
@@ -204,8 +211,8 @@ pushd %{jdom_dir}
 ant -Dparser.jar=$(build-classpath xerces-j2) \
     -Dxml-apis.jar=$(build-classpath xml-commons-apis) \
     -Djaxen.lib.dir=%{jdom_dir} \
-    -Dcompile.source=1.6 -Dcompile.target=1.6 \
-	-Dversion=%jdom_version \
+    -Dcompile.source=1.8 -Dcompile.target=1.8 \
+	-Dversion=%{jdom_version} \
     package
 mv build/jdom-%{jdom_version}.jar %{_builddir}/jdom-%{jdom_version}.jar
 rm jaxen.jar
@@ -224,7 +231,7 @@ CLASSPATH=%{_builddir}/jaxen-%{jaxen_version}.jar:%{_builddir}/jdom-%{jdom_versi
 mv build/saxpath.jar %{_builddir}/saxpath-%{saxpath_version}.jar
 popd
 pushd %{xom_dir}
-ant \
+%ant \
 -Djaxen.dir=%{stage1_build_dir} \
 -Dxml-apis.jar=$(build-classpath xml-commons-apis) \
 -Dparser.jar=$(build-classpath xerces-j2) \
@@ -233,7 +240,7 @@ ant \
 -Djunit.jar=$(build-classpath junit) \
 -Dresolver.jar=$(build-classpath xml-commons-resolver) \
 -Ddom4j.jar=%{stage1_build_dir} \
--Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+-Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
 compile compile15 jar
 mv build/xom-%{xom_version}.jar %{_builddir}
 popd

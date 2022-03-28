@@ -6,8 +6,8 @@
             deprecation="${deprecation}"
 -           target="1.2"
 -           source="1.3"
-+           target="1.6"
-+           source="1.6"
++           target="1.8"
++           source="1.8"
             encoding="UTF-8"
             excludes="nu/xom/pantry/* nu/xom/tools/* nu/xom/samples/*Servlet.java">
         <classpath refid="compile.class.path"/>
@@ -17,8 +17,8 @@
             deprecation="${deprecation}"
 -           target="1.2"
 -           source="1.3"
-+           target="1.6"
-+           source="1.6"
++           target="1.8"
++           source="1.8"
             encoding="UTF-8">
         <classpath refid="compile.class.path"/>
         <include name="nu/xom/samples/*Servlet.java" />
@@ -28,8 +28,8 @@
             deprecation="${deprecation}"
 -           target="1.2"
 -           source="1.3"
-+           target="1.6"
-+           source="1.6"
++           target="1.8"
++           source="1.8"
             encoding="UTF-8"
             failonerror="false">
         <classpath refid="compile.class.path"/>
@@ -39,8 +39,8 @@
             deprecation="${deprecation}"
 -           target="1.2"
 -           source="1.3"
-+           target="1.6"
-+           source="1.6"
++           target="1.8"
++           source="1.8"
             encoding="UTF-8"
             includes="nu/xom/tools/*">
        <classpath>
@@ -50,8 +50,8 @@
             deprecation="${deprecation}"
 -           target="1.2"
 -           source="1.3"
-+           target="1.6"
-+           source="1.6"
++           target="1.8"
++           source="1.8"
             encoding="UTF-8"
             includeAntRuntime="no"
             excludes="org/jaxen/dom/** 

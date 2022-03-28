@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 18 19:12:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jdom-1.1-build.xml.patch
+    + Build with source/target levels 8
+
+-------------------------------------------------------------------
+Thu Mar 17 15:50:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against standalone jaxb-api on distributions that have
+  JDK without the JavaEE modules
+
+-------------------------------------------------------------------
 Wed Mar  2 06:26:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Alias the xom artifact to the new com.io7m.xom groupId
