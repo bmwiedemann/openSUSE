@@ -13463,6 +13463,7 @@ License:        GPL-2.0-or-later
 Summary:        Produce Encapsulated PostScript from PostScript
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Conflicts:      texlive-pstools
 Provides:       texlive-pstools:%{_texmfdistdir}/scripts/ps2eps/ps2eps.pl
 Requires(pre):  texlive-ps2eps-bin >= %{texlive_version}
 #!BuildIgnore: texlive-ps2eps-bin
@@ -13523,6 +13524,7 @@ Summary:        Documentation for texlive-ps2eps
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Conflicts:      texlive-pstools-doc
 Provides:       texlive-pstools-doc:%{_mandir}/man1/bbox.1%{?ext_man}
 Provides:       texlive-pstools-doc:%{_mandir}/man1/ps2eps.1%{?ext_man}
 Provides:       man(bbox.1)
