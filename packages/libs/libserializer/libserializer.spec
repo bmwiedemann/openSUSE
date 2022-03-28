@@ -1,7 +1,7 @@
 #
 # spec file for package libserializer
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           libserializer
 Version:        1.1.2
 Release:        0
 Summary:        JFreeReport General Serialization Framework
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-Url:            http://reporting.pentaho.org
+URL:            http://reporting.pentaho.org
 #Original source: http://downloads.sourceforge.net/jfreereport/libserializer-%%{version}.zip
 #unzip, find . -name "*.jar" -exec rm {} \;
 #to simplify the licensing
@@ -32,7 +32,7 @@ Patch0:         libserializer-1.1.2.build.patch
 Patch1:         libserializer-1.1.2-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  libbase >= 1.1.2
 BuildRequires:  unzip
