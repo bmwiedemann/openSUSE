@@ -1,7 +1,7 @@
 #
 # spec file for package xmldb-api
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,17 +24,17 @@ Release:        0
 Summary:        XML:DB API for Java
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-Url:            http://xmldb-org.sourceforge.net
+URL:            http://xmldb-org.sourceforge.net
 # cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/xmldb-org login
 # cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/xmldb-org export -D 2004-10-10 xapi
 Source0:        xmldb-xapi-%{cvs_version}-src.tar.bz2
 Patch0:         xmldb-api-java5-enum.patch
 BuildRequires:  ant >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  xalan-j2
 Requires:       xalan-j2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -102,7 +102,7 @@ rm src/common/org/xmldb/common/xml/queries/xt/XPathQueryFactoryImpl.java
 export CLASSPATH=$(build-classpath junit xalan-j2)
 export OPT_JAR_LIST=:
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     -Djarname=%{name} -Dsdk.jarname=%{name}-sdk \
     dist
 

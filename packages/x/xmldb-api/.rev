@@ -113,4 +113,12 @@ SPÃƒDX (forwarded request 111165 from babelworx)</comment>
     <comment>1</comment>
     <requestid>523589</requestid>
   </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>933e264e6f242f3f5da5686b394c0a6b</srcmd5>
+    <version>0.1</version>
+    <time>1648479553</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963024</requestid>
+  </revision>
 </revisionlist>
