@@ -184,4 +184,12 @@
     <comment>build as eclipse bundle</comment>
     <requestid>732622</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>4e83b718eb70e37664850523ae185b94</srcmd5>
+    <version>1.1.3</version>
+    <time>1648479570</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963244</requestid>
+  </revision>
 </revisionlist>
