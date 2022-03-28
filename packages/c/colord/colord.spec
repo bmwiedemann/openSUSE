@@ -1,7 +1,7 @@
 #
 # spec file for package colord
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 
 Name:           colord
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        System Daemon for Managing Color Devices
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ URL:            https://github.com/hughsie/colord/
 Source0:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch0:	harden_colord.service.patch
+Patch0:         harden_colord.service.patch
 # Apparmor profile
 Source3:        usr.lib.colord
 Source4:        colord.sysusers
@@ -39,8 +39,8 @@ BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
-BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.25.9
@@ -90,10 +90,10 @@ there are no users logged in.
 
 %package color-profiles
 Summary:        Color profiles for colord
-# Last version of shared-color profiles packaged
 Group:          System/Libraries
+# Last version of shared-color profiles packaged
 Obsoletes:      shared-color-profiles <= 0.1.6
-Provides:       shared-color-profiles
+Provides:       shared-color-profiles = %{version}
 
 %description    color-profiles
 colord is a system activated daemon that maps devices to color profiles.
@@ -158,7 +158,6 @@ ulimit -Sv 2000000
 	-Dsystemd=true \
 	-Dlibcolordcompat=true \
 	-Dargyllcms_sensor=true \
-	-Dreverse=false \
 	-Dsane=false \
 	-Dvapi=true \
 	-Dprint_profiles=true \
@@ -195,6 +194,7 @@ test ! -d %{_localstatedir}/lib/colord || chown -R colord:colord %{_localstatedi
 %service_del_preun %{name}.service
 
 %post
+%tmpfiles_create %{_tmpfilesdir}/colord.conf
 %service_add_post %{name}.service
 
 %postun
@@ -212,7 +212,8 @@ test ! -d %{_localstatedir}/lib/colord || chown -R colord:colord %{_localstatedi
 %{_sysusersdir}/%{name}.conf
 %{_udevrulesdir}/*.rules
 %attr(755,colord,colord) %dir %{_localstatedir}/lib/colord
-%{_datadir}/bash-completion/completions/colormgr
+%ghost %attr(755,colord,colord) %{_localstatedir}/lib/colord/icc
+%attr(644,,-,-) %{_datadir}/bash-completion/completions/colormgr
 %{_bindir}/cd-create-profile
 %{_bindir}/cd-fix-profile
 %{_bindir}/cd-iccdump
