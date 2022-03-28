@@ -1,7 +1,7 @@
 #
 # spec file for package atk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           atk
-Version:        2.36.0
+Version:        2.38.0
 Release:        0
 Summary:        An Accessibility Toolkit
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Accessibility
-Source0:        https://download.gnome.org/sources/atk/2.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/atk/2.38/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  fdupes
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.31.2
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.46.0
+BuildRequires:  meson >= 0.56.2
 
 Requires:       %{name}-lang = %{version}
 Requires:       libatk-1_0-0
