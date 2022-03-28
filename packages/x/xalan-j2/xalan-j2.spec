@@ -40,7 +40,7 @@ BuildRequires:  bcel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-cup-bootstrap
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jlex
 BuildRequires:  servletapi5
@@ -142,7 +142,7 @@ ln -sf $(build-classpath stylebook) stylebook-1.0-b3_xalan-2.jar
 popd
 ant \
   -Dservlet-api.jar=$(build-classpath servletapi5) \
-  -Dcompiler.source=1.6 -Dcompiler.target=1.6 \
+  -Dcompiler.source=1.8 -Dcompiler.target=1.8 \
   -Djava.awt.headless=true \
   -Dapi.j2se=%{_javadocdir}/java \
   -Dbuild.xalan-interpretive.jar=build/xalan-interpretive.jar \
