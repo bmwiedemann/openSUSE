@@ -1,7 +1,7 @@
 #
 # spec file for package slop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           slop
 %define lname	libslopy7_5
-Version:        7.5
+Version:        7.6
 Release:        0
 Summary:        Tool to query for a screen region selection
 License:        GPL-3.0-or-later
