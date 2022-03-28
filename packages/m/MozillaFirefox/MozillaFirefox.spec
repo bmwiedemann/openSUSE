@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          98
-%define mainver        %major.0
-%define orig_version   98.0
+%define mainver        %major.0.2
+%define orig_version   98.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -220,6 +220,7 @@ Patch21:        mozilla-libavcodec58_91.patch
 Patch22:        mozilla-silence-no-return-type.patch
 Patch23:        mozilla-bmo531915.patch
 Patch24:        mozilla-bmo1756347.patch
+Patch25:        mozilla-bmo1757571.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch

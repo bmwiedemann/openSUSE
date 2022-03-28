@@ -5486,4 +5486,37 @@
   function definition is enough to keep both sides sane,</comment>
     <requestid>960656</requestid>
   </revision>
+  <revision rev="362" vrev="1">
+    <srcmd5>55dac1236c436d9b4295948a0f466f4c</srcmd5>
+    <version>98.0.2</version>
+    <time>1648479585</time>
+    <user>dimstar_suse</user>
+    <comment>- MozillaFirefox 98.0.2:
+  * Fixed: Fixed an issue preventing users from typing in Address
+    Bar after opening new tab and pressing cmd + enter
+    (bmo#1757376)
+  * Fixed: Fixed an issue causing some users to crash in out-of-
+    memory conditions (bmo#1757618)
+  * Fixed: Fixed an issue in session history which caused some
+    sites to fail to load (bmo#1758664)
+  * Fixed: Fixed an add-on specific compatibility issue
+    (bmo#1759162)
+
+- Change mozilla-kde.patch to follow the GNOME registry
+  behavior for new MIME types to avoid opening downloaded files
+  without any inquiries (bsc#1197319)
+
+- Add patch to fix start-up on aarch64:
+  * mozilla-bmo1757571.patch
+
+- exclude slow cpus for building 
+
+- Add cpu-flag `asimdrdm` to aarch64 constraints, to select newer,
+  faster buildhosts, as the others struggle to build FF.
+
+- Mozilla Firefox 98.0.1:
+  * Yandex and Mail.ru have been removed as optional search
+    providers in the drop-down search menu in Firefox</comment>
+    <requestid>964778</requestid>
+  </revision>
 </revisionlist>
