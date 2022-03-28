@@ -1,7 +1,7 @@
 #
 # spec file for package xpp3
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        XML Pull Parser
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-Url:            http://www.extreme.indiana.edu/xgws/xsoap/xpp/mxp1/index.html
+URL:            http://www.extreme.indiana.edu/xgws/xsoap/xpp/mxp1/index.html
 Source0:        http://www.extreme.indiana.edu/dist/java-repository/xpp3/distributions/xpp3-%{version}_src.tgz
 Source1:        http://central.maven.org/maven2/xpp3/xpp3/%{version}/xpp3-%{version}.pom
 Source2:        http://central.maven.org/maven2/xpp3/xpp3_min/%{version}/xpp3_min-%{version}.pom
@@ -30,13 +30,13 @@ Source3:        http://central.maven.org/maven2/xpp3/xpp3_xpath/%{version}/xpp3_
 Source4:        %{name}-%{version}-OSGI-MANIFEST.MF
 Patch0:         xpp3-sourcetarget.patch
 BuildRequires:  ant >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  perl
 BuildRequires:  xml-commons-apis
 Requires:       java >= 1.4.2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -106,7 +106,8 @@ install -p -m 644 %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}-xpath.pom
 
 %files
 %defattr(0644,root,root,0755)
-%doc README.html LICENSE.txt doc/*
+%license LICENSE.txt
+%doc README.html doc/*
 %{_javadir}/%{name}.jar
 %{_javadir}/%{name}-%{version}.jar
 %{_javadir}/%{name}-xpath.jar

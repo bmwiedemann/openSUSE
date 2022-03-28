@@ -141,4 +141,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>653659</requestid>
   </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>4aa09db78846765bfbf4d5aa23042376</srcmd5>
+    <version>1.1.4c</version>
+    <time>1648479543</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962916</requestid>
+  </revision>
 </revisionlist>
