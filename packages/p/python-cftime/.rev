@@ -122,4 +122,41 @@
 - Correct license file name.</comment>
     <requestid>876106</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18b1a3da6119cc623bef109891e31c93</srcmd5>
+    <version>1.6.0</version>
+    <time>1648479652</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * fix for masked array inputs
+  * improved performance of the num2date algorithm, in some cases providing
+    an over 100x speedup
+  * fix for date2index for select != 'exact' when select='exact' works
+  * silently change calendar='gregorian' to 'standard' internally, 
+    since 'gregorian' deprecated in CF v1.9
+  * add &quot;is_leap_year&quot; function
+  * wheels that work on Apple M1 (arm64) available on pypi.
+  * added support for &quot;common_year&quot; and &quot;common_years&quot; units for &quot;noleap&quot; 
+    and &quot;365_day&quot; calendars
+  * check consistency of year arg and has_year_zero kwarg in cftime.datetime
+    (issue #248).  Also assume if has_year_zero not specified it should be True
+    if year=0. Allow replace method to change has_year_zero. Issue UserWarning
+    if year set to zero and calendar default is changed from False to True
+    (so that user is aware the resulting instance will not be CF compliant).
+  * '360_day' was missing from list of 'idealized' calendars.
+  * fixed a bug that led to subclasses losing their type identity upon
+    pickling
+  * Change default behavior of proleptic_gregorian to has_year_zero=T
+    (to be consistent with ISO-8601 since CF does not specify the year zero convention
+    for this calendar). Issue warning when trying to
+    to create a cftime.datetime instance that is not allowed in CF
+  * clean-up deprecated calendar specific subclasses
+  * added string formatting support to `cftime.datetime` objects
+    (via `cftime.datetime.__format__`)
+  * add support for astronomical year numbering (including year zero) for
+    real-world calendars using 'has_year_zero' cftime.datetime kwarg
+    Default is False for 'real-world' calendars ('julian', 'gregorian'/'standard', 
+    'proleptic_gregorian'). Ignored for idealized calendars like '360_day</comment>
+    <requestid>965204</requestid>
+  </revision>
 </revisionlist>

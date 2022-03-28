@@ -1,7 +1,7 @@
 #
 # spec file for package python-cftime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # no numpy for Python 3.6
 %define skip_python36 1
 Name:           python-cftime
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        Time-handling functionality from netcdf4-python
 License:        MIT

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar 27 14:54:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * fix for masked array inputs
+  * improved performance of the num2date algorithm, in some cases providing
+    an over 100x speedup
+  * fix for date2index for select != 'exact' when select='exact' works
+  * silently change calendar='gregorian' to 'standard' internally, 
+    since 'gregorian' deprecated in CF v1.9
+  * add "is_leap_year" function
+  * wheels that work on Apple M1 (arm64) available on pypi.
+  * added support for "common_year" and "common_years" units for "noleap" 
+    and "365_day" calendars
+  * check consistency of year arg and has_year_zero kwarg in cftime.datetime
+    (issue #248).  Also assume if has_year_zero not specified it should be True
+    if year=0. Allow replace method to change has_year_zero. Issue UserWarning
+    if year set to zero and calendar default is changed from False to True
+    (so that user is aware the resulting instance will not be CF compliant).
+  * '360_day' was missing from list of 'idealized' calendars.
+  * fixed a bug that led to subclasses losing their type identity upon
+    pickling
+  * Change default behavior of proleptic_gregorian to has_year_zero=T
+    (to be consistent with ISO-8601 since CF does not specify the year zero convention
+    for this calendar). Issue warning when trying to
+    to create a cftime.datetime instance that is not allowed in CF
+  * clean-up deprecated calendar specific subclasses
+  * added string formatting support to `cftime.datetime` objects
+    (via `cftime.datetime.__format__`)
+  * add support for astronomical year numbering (including year zero) for
+    real-world calendars using 'has_year_zero' cftime.datetime kwarg
+    Default is False for 'real-world' calendars ('julian', 'gregorian'/'standard', 
+    'proleptic_gregorian'). Ignored for idealized calendars like '360_day
+    (they always have year zero).
+  * add "change_calendar" cftime.datetime method to switch to another 
+    'real-world' calendar. Enable comparison of cftime.datetime instances
+    with different 'real-world' calendars (using the new change_calendar method)
+  * remove legacy `utime` class, and legacy `JulianDayFromDate` and 
+    `DateFromJulianDay` functions (replaced by `cftime.datetime.toordinal`
+    and `cftime.datetime.fromordinal`).
+  * Change ValueError to TypeError in __sub__
+
+-------------------------------------------------------------------
 Tue Mar  2 05:51:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.1:
