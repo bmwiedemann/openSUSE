@@ -1092,4 +1092,15 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment>- Drop harden_accounts-daemon.service.patch: Seems to conflict with
   SELinux since version 22.04.62.</comment>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>a15707b5cbeb82707e56607b06ff15e6</srcmd5>
+    <version>22.04.62</version>
+    <time>1648467808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add accountsservice-too-restrictive.patch: weaken upstreams
+  policy of accounts-daemon.service to be similar, but still
+  stricter, to what we had with harden-accounts-daemon.service.patch.
+  Attempt to workaround
+  https://gitlab.freedesktop.org/accountsservice/accountsservice/-/issues/102</comment>
+  </revision>
 </revisionlist>
