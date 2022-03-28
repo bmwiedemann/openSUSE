@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-commons
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,7 @@ BuildRequires:  ant >= 1.6.5
 BuildRequires:  commons-io >= 1.1
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 Requires:       mvn(commons-io:commons-io) >= 1.1
 Requires:       mvn(commons-logging:commons-logging)
@@ -61,7 +62,7 @@ find . -name "*.jar" | xargs rm
 %build
 export CLASSPATH=
 build-jar-repository -s lib commons-io commons-logging
-ant -Djavac.source=1.6 -Djavac.target=1.6 package javadocs
+ant -Djavac.source=1.8 -Djavac.target=1.8 package javadocs
 
 %install
 # jar

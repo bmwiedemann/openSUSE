@@ -220,4 +220,12 @@
     <comment>2.6</comment>
     <requestid>866482</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>bd1604c257d5037f25ce9be587ebea8a</srcmd5>
+    <version>2.6</version>
+    <time>1648479568</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963171</requestid>
+  </revision>
 </revisionlist>
