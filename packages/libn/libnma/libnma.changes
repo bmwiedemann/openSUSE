@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 25 10:43:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.36:
+  + Include OWE wireless security option.
+  + Do not allow setting empty 802.1x domain for EAP TLS.
+  + The GtkBuilder files for Gtk4 are now included in the release
+    tarball.
+
+-------------------------------------------------------------------
 Wed Jan 19 21:40:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.34:

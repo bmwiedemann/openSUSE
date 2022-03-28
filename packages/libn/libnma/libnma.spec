@@ -20,7 +20,7 @@
 %define base_ver 1.8
 
 Name:           libnma
-Version:        1.8.34
+Version:        1.8.36
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
