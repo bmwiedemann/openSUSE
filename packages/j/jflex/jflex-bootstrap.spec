@@ -31,6 +31,9 @@ Source1:        jflex-%{version}-generated-files.tar.xz
 Source2:        jflex-build.xml
 Patch0:         jflex-1.8.2-no-auto-value.patch
 BuildRequires:  ant
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-annotation-api
+%endif
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
 Requires:       java_cup
@@ -94,9 +97,12 @@ rm -rf src/generated
 %if %{with bootstrap}
 %setup -q -T -D -a 1 -n jflex-%{version}
 cp %{SOURCE2} build.xml
-%patch0 -p1
 mkdir -p lib
+%patch0 -p1
 build-jar-repository -s lib java-cup-runtime
+%if 0%{?suse_version} > 1500
+build-jar-repository -s lib glassfish-annotation-api
+%endif
 %else
 %{mvn_file} : %{name} JFlex
 %endif

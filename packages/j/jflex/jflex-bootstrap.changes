@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 17 15:42:32 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against standalone glassfish-annotation-api for relevant
+  distribution versions that have JDK that does not contain the
+  JavaEE modules
+
+-------------------------------------------------------------------
 Fri Jan 14 07:05:37 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.8.2
