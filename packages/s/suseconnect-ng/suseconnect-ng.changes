@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 24 12:09:50 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 0.0.7~git0.3ef988e:
+  * Fix product tree traversal (bsc#1197398)
+  * Revert "Remove self from LD_PRELOAD (bsc#1196326)"
+  * Remove self from LD_PRELOAD (bsc#1196326)
+
+-------------------------------------------------------------------
 Tue Mar 01 14:09:34 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 0.0.6~git9.33e5847:

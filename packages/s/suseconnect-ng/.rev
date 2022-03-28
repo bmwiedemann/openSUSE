@@ -89,4 +89,15 @@
   * Exit with code 64 on connection refused like Ruby</comment>
     <requestid>958283</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b48197be06279b68172eac1e04b6d44f</srcmd5>
+    <version>0.0.7~git0.3ef988e</version>
+    <time>1648479515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.7~git0.3ef988e:
+  * Fix product tree traversal (bsc#1197398)
+  * Revert &quot;Remove self from LD_PRELOAD (bsc#1196326)&quot;
+  * Remove self from LD_PRELOAD (bsc#1196326)</comment>
+    <requestid>964650</requestid>
+  </revision>
 </revisionlist>
