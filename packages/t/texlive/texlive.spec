@@ -475,6 +475,7 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
 Requires(pre):  texlive-attachfile2 >= %{texlive_version}
 #!BuildIgnore:  texlive-attachfile2
+Conflicts:      texlive-pdftools-bin
 Provides:       texlive-pdftools-bin:%{_bindir}/pdfatfi
 Prefix:         %{_bindir}
 
@@ -2392,6 +2393,7 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
 Requires(pre):  texlive-pdftosrc >= %{texlive_version}
 #!BuildIgnore:  texlive-pdftosrc
+Conflicts:      texlive-pdftools-bin
 Provides:       texlive-pdftools-bin:%{_bindir}/pdftosrc
 Prefix:         %{_bindir}
 
@@ -2553,7 +2555,9 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
 Requires(pre):  texlive-ps2eps >= %{texlive_version}
 #!BuildIgnore:  texlive-ps2eps
-Provides:       texlive-pstools-bin:%{_bindir}/e2pall
+Conflicts:      texlive-pstools-bin
+Provides:       texlive-pstools-bin:%{_bindir}/bbox
+Provides:       texlive-pstools-bin:%{_bindir}/ps2eps
 Prefix:         %{_bindir}
 
 %description ps2eps-bin
@@ -2998,8 +3002,16 @@ License:        LPPL-1.0
 Summary:        Binary files of texlive-scripts-extra
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            http://www.tug.org/texlive/
-Obsoletes:      texlive-pdftools-bin <= %{texlive_previous}
-Obsoletes:      texlive-pstools-bin <= %{texlive_previous}
+Requires(pre):  texlive-scripts-extra >= %{texlive_version}
+#!BuildIgnore:  texlive-scripts-extra
+Recommends:     texlive-collection-basic >= %{texlive_version}
+Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
+Recommends:     texlive-collection-genericrecommended >= %{texlive_version}
+Obsoletes:      texlive-pdftools-bin <= 2019
+Obsoletes:      texlive-pstools-bin <= 2019
+Obsoletes:      texlive-tetex-bin <= 2019
+Obsoletes:      texlive-texconfig-bin <= 2017
+Provides:       texlive-pdftools-bin:%{_bindir}/e2pall
 Provides:       texlive-tetex-bin:%{_bindir}/allcm
 Provides:       texlive-tetex-bin:%{_bindir}/allneeded
 Provides:       texlive-tetex-bin:%{_bindir}/dvi2fax
@@ -3010,11 +3022,6 @@ Provides:       texlive-tetex-bin:%{_bindir}/texconfig-dialog
 Provides:       texlive-tetex-bin:%{_bindir}/texconfig-sys
 Provides:       texlive-tetex-bin:%{_bindir}/texlinks
 Provides:       texlive-texconfig-bin:%{_bindir}/texconfig
-Requires(pre):  texlive-scripts-extra >= %{texlive_version}
-#!BuildIgnore:  texlive-scripts-extra
-Recommends:     texlive-collection-basic >= %{texlive_version}
-Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
-Recommends:     texlive-collection-genericrecommended >= %{texlive_version}
 Prefix:         %{_bindir}
 
 %description -n texlive-scripts-extra-bin
@@ -4267,6 +4274,7 @@ popd
 	%perl_gen_filelist
 	pushd blib
 	    install -m 0644 bindoc/biber.1 %{buildroot}%{_mandir}/man1/
+	    gzip %{buildroot}%{_mandir}/man1/biber.1
 	popd
 	sed -ri '\@/usr/(share|bin)/.*@d' texlive.files
     popd
@@ -4608,7 +4616,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_bindir}/biber
 %if %{with buildbiber}
-%{_mandir}/man1/biber.1*
+%{_mandir}/man1/biber.1%{ext_man}
 %endif
 
 %files bibexport-bin

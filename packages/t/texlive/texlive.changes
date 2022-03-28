@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 24 08:36:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Gzip manual page of biber 
+
+-------------------------------------------------------------------
+Mon Mar 21 08:52:00 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do not attach prefix texlive twice in case of texlive-scripts-extra 
+
+-------------------------------------------------------------------
+Fri Mar 18 11:24:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Also add some obsoletes 
+
+-------------------------------------------------------------------
 Wed Mar 16 09:56:52 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add missed package splits for bsc#1196711 

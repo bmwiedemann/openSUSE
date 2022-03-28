@@ -938,4 +938,16 @@
   22.01.0, use gcc9 and C++17.</comment>
     <requestid>962406</requestid>
   </revision>
+  <revision rev="76" vrev="79">
+    <srcmd5>9c5df4619f876538a6c1f5c3dc886bf2</srcmd5>
+    <version>unknown</version>
+    <time>1648479500</time>
+    <user>dimstar_suse</user>
+    <comment>- Gzip manual page of biber 
+
+- Do not attach prefix texlive twice in case of texlive-scripts-extra 
+
+- Also add some obsoletes</comment>
+    <requestid>964539</requestid>
+  </revision>
 </revisionlist>
