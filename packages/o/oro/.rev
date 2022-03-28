@@ -140,4 +140,12 @@
     <comment>Distribute pom file and javadoc + cleanup</comment>
     <requestid>678586</requestid>
   </revision>
+  <revision rev="21" vrev="297">
+    <srcmd5>97deb716160cd381560b7bbc75f3d961</srcmd5>
+    <version>2.0.8</version>
+    <time>1648479564</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963168</requestid>
+  </revision>
 </revisionlist>

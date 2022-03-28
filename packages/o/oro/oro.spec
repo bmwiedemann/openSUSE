@@ -1,7 +1,7 @@
 #
 # spec file for package oro
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,12 @@ Release:        0
 Summary:        Full regular expressions API
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/oro/
-Source0:        http://archive.apache.org/dist/jakarta/oro/%{full_name}-%{version}.tar.gz
-Source1:        http://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
+URL:            https://jakarta.apache.org/oro/
+Source0:        https://archive.apache.org/dist/jakarta/oro/%{full_name}-%{version}.tar.gz
+Source1:        https://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  xml-commons-apis
 Provides:       %{full_name} = %{version}-%{release}
@@ -60,9 +61,11 @@ find . -name "*.jar" -exec rm -f {} \;
 for dir in `find . -type d -name CVS`; do rm -rf $dir; done
 for file in `find . -type f -name .cvsignore`; do rm -rf $file; done
 
+perl -pi -e 's#\@version\@#VERSION#g' $(grep -rl \@version\@ . |xargs)
+
 %build
-ant \
-	-Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+%ant \
+	-Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
 	-Dfinal.name=%{name} jar javadocs
 
 %install
