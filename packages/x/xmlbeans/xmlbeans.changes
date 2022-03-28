@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 19 23:19:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source/target levels 8
+- Build with java-devel < 13 because we are using
+  removed com.sun.javadoc
+
+-------------------------------------------------------------------
 Wed Oct  4 12:21:21 UTC 2017 - fstrba@suse.com
 
 - Remove the dependency on java-1_5_0-gcj-compat

@@ -1,7 +1,7 @@
 #
 # spec file for package xmlbeans
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        XML-Java binding tool
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://xmlbeans.apache.org
+URL:            https://xmlbeans.apache.org
 Source0:        http://archive.apache.org/dist/xmlbeans/source/%{real}-%{version}-src.tgz
 Source1000:     pre_checkin.sh
 Patch0:         xmlbeans-2.4.0-nodownload.patch
@@ -35,9 +35,11 @@ Patch2:         xmlbeans-2.6.0-java8.patch
 Patch3:         xmlbeans-2.6.0-jdk9.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  bea-stax-api
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  unzip
+# Removed com.sun.javadoc package
+BuildConflicts: java-devel >= 13
 #!BuildIgnore:  antlr
 #!BuildIgnore:  antlr-java
 BuildArch:      noarch
@@ -149,7 +151,8 @@ install -p -m 0644 external/lib/oldxbean.jar %{buildroot}%{_javadir}/%{real}/old
 %endif #if ! % { bootstrap}
 
 %files
-%doc LICENSE.txt NOTICE.txt README.txt
+%license LICENSE.txt NOTICE.txt
+%doc README.txt
 %dir %{_javadir}/xmlbeans/
 %{_javadir}/xmlbeans/*.jar
 

@@ -288,4 +288,13 @@
     <comment>Don't depend on java-gcj-compat</comment>
     <requestid>531458</requestid>
   </revision>
+  <revision rev="32" vrev="11">
+    <srcmd5>459d107b4b954ab6ba5222f07895ca0b</srcmd5>
+    <version>2.6.0</version>
+    <time>1648479580</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source target 8 and with java &lt; 13
+</comment>
+    <requestid>963453</requestid>
+  </revision>
 </revisionlist>
