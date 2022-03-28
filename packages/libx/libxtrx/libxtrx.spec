@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(SoapySDR) >= 0.5.2
 BuildRequires:  pkgconfig(libxtrxdsp)
 BuildRequires:  pkgconfig(libxtrxll)
+ExclusiveArch:  %{ix86} x86_64 aarch64 armv7hl
 
 %description
 High level API for XTRX software defined radio frontends.
