@@ -27,13 +27,12 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-flit-core%{psuffix}
-Version:        3.6.0
+Version:        3.7.1
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause
 URL:            https://github.com/pypa/flit
 Source0:        https://files.pythonhosted.org/packages/source/f/flit-core/flit_core-%{version}.tar.gz
-Source1:        https://github.com/pypa/flit/raw/%{version}/flit_core/build_dists.py
 BuildRequires:  %{python_module base >= 3.6}
 %if %{with test}
 BuildRequires:  %{python_module flit-core = %{version}}
@@ -52,22 +51,21 @@ Flit is a simple way to put Python packages and modules on PyPI.
 
 %prep
 %setup -q -n flit_core-%{version}
-cp %{SOURCE1} .
 
 %build
 # https://flit.readthedocs.io/en/latest/bootstrap.html
-python3 build_dists.py
+python3 -m flit_core.wheel
 
 %if !%{with test}
 %install
-%{python_expand # do manually what pip would do
+%{python_expand #
 mkdir -p %{buildroot}%{$python_sitelib}
-unzip dist/flit_core-%{version}-py3-none-any.whl -d %{buildroot}%{$python_sitelib}
-rm -r  %{buildroot}%{$python_sitelib}/flit_core/tests
-}
-%{python_expand # debundle after the bootstrap. See vendor/README
+$python bootstrap_install.py dist/flit_core-%{version}-py3-none-any.whl -i %{buildroot}%{$python_sitelib}
+# debundle after the bootstrap. See vendor/README
 sed -i 's/from .vendor import tomli/import tomli/'  %{buildroot}%{$python_sitelib}/flit_core/config.py
 rm -r %{buildroot}%{$python_sitelib}/flit_core/vendor
+# Don't package the tests
+rm -r  %{buildroot}%{$python_sitelib}/flit_core/tests
 }
 %{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
