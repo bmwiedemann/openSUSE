@@ -1,7 +1,7 @@
 #
 # spec file for package pentaho-reporting-flow-engine
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,14 +20,14 @@ Name:           pentaho-reporting-flow-engine
 Version:        0.9.4
 Release:        0
 Summary:        Pentaho Flow Reporting Engine
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Java
-Url:            http://reporting.pentaho.org/
+URL:            http://reporting.pentaho.org/
 Source:         http://downloads.sourceforge.net/jfreereport/flow-engine-%{version}.zip
 Source99:       %{name}-rpmlintrc
 BuildRequires:  ant
 BuildRequires:  flute
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  libbase
 BuildRequires:  libfonts
@@ -74,8 +74,8 @@ build-jar-repository -s -p lib commons-logging-api libbase libloader \
     libserializer
 
 %build
-ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+%ant \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     jar javadoc
 
 %install
