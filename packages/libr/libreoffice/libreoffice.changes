@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 25 11:45:21 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Also enable gtk3_kde5. The gtk3 interface is more stable than the
+  qt5/kf5 one, this option makes it possible to use gtk3 in kde
+  with the kde filepicker (boo#1197017)
+
+-------------------------------------------------------------------
 Thu Mar 17 10:10:22 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update gpgme minimum version

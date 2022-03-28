@@ -1123,7 +1123,7 @@ export NOCONFIGURE=yes
         --enable-gstreamer-1-0 \
         --enable-gtk3 \
 %if %{with kdeintegration}
-        --disable-gtk3-kde5 \
+        --enable-gtk3-kde5 \
         --enable-kf5 \
         --enable-qt5 \
 %else
@@ -1573,6 +1573,8 @@ exit 0
 %{_libdir}/libreoffice/program/libkf5be1lo.so
 %{_libdir}/libreoffice/program/libvclplug_kf5lo.so
 %{_libdir}/libreoffice/program/libvclplug_qt5lo.so
+%{_libdir}/libreoffice/program/libvclplug_gtk3_kde5lo.so
+%{_libdir}/libreoffice/program/lo_kde5filepicker
 %endif
 
 %files -f file-lists/officebean_list.txt officebean
