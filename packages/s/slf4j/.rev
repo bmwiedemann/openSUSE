@@ -233,4 +233,12 @@
     <comment>1.7.36</comment>
     <requestid>957713</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>e4584b51ebe7cf9e35a8ebe6f7866962</srcmd5>
+    <version>1.7.36</version>
+    <time>1648479552</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963010</requestid>
+  </revision>
 </revisionlist>
