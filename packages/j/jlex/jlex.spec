@@ -1,7 +1,7 @@
 #
 # spec file for package jlex
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,12 @@ Release:        0
 Summary:        A Lexical Analyzer Generator for Java
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-Url:            http://www.cs.princeton.edu/~appel/modern/java/JLex/
+URL:            http://www.cs.princeton.edu/~appel/modern/java/JLex/
 Source0:        http://www.cs.princeton.edu/~appel/modern/java/JLex/Archive/1.2.5/Main.java
 Source1:        %{name}-%{version}.build.xml
 Patch0:         %{name}-%{version}.static.patch
 BuildRequires:  ant
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  xml-commons-apis-bootstrap
 #!BuildIgnore:  xerces-j2
 #!BuildIgnore:  xml-commons
@@ -49,7 +49,7 @@ cp %{SOURCE1} build.xml
 
 %build
 unset CLASSPATH
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
 # jar
