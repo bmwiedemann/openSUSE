@@ -1,7 +1,7 @@
 #
 # spec file for package proftpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,24 @@
 #
 
 
+%define with_redis 1
+%define with_sodium 1
+
+%if 0%{?suse_version} == 1315 || 0%{?suse_version} == 1500
+%define with_redis 0
+%endif
+
+%if 0%{?suse_version} == 1315
+%define with_sodium 0
+%endif
+
 Name:           proftpd
 Summary:        Configurable GPL-licensed FTP server software
 # Please save your time and do not update to "rc" versions.
 # We only accept updates for "STABLE" Versions
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Servers
-Version:        1.3.6e
+Version:        1.3.7c
 Release:        0
 URL:            http://www.proftpd.org/
 Source0:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz
@@ -47,19 +58,29 @@ Patch103:       %{name}-strip.patch
 Patch104:       %{name}-no_BuildDate.patch
 #RPMLINT-FIX-openSUSE: env-script-interpreter
 Patch105:       %{name}_env-script-interpreter.patch
-Patch106:	harden_proftpd.service.patch
+#openSUSE:Security_Features#Systemd_hardening_effort
+Patch106:       harden_proftpd.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  gpg-offline
+BuildRequires:  cyrus-sasl-devel
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+%if 0%{?with_redis}
+BuildRequires:  hiredis-devel
+%endif
 BuildRequires:  krb5-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
-#BuildRequires:  libmemcached-devel
+BuildRequires:  libmemcached-devel
 #BuildRequires:  libGeoIP-devel
-BuildRequires:  mysql-devel
+BuildRequires:  libmysqld-devel
+%if 0%{?with_sodium}
+BuildRequires:  libsodium-devel
+%endif
 BuildRequires:  ncurses-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
+BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite3-devel
@@ -147,7 +168,7 @@ Here are Documentation for ProFTPD
 %prep
 #gpg_verify %{S:1}
 %setup -q
-rm README.AIX
+rm README.AIX README.cygwin README.FreeBSD README.Solaris2.5x README.Unixware
 #
 %patch100
 %patch101
@@ -155,7 +176,7 @@ rm README.AIX
 %patch103
 %patch104
 %patch105
-%patch106 -p1
+%patch106
 
 %build
 rm contrib/mod_wrap.c
@@ -163,7 +184,7 @@ rm contrib/mod_geoip.c
 PROFTPD_SHARED_MODS="$(for spec_mod in $(find contrib -name mod_\*.c|sort); do echo "$(basename ${spec_mod%%.c})"; done | tr '\n' ':' | sed -e 's|:$||')"
 export CFLAGS="%{optflags} -D_GNU_SOURCE -DLDAP_DEPRECATED"
 export CXXFLAGS="$CFLAGS"
-%configure --disable-static \
+%configure \
     --bindir=%{_sbindir} \
     --libexecdir=%{_libdir}/%{name} \
     --sysconfdir=%{_sysconfdir}/%{name} \
@@ -177,15 +198,24 @@ export CXXFLAGS="$CFLAGS"
     --enable-dso \
     --enable-facl \
     --enable-ipv6 \
+    --enable-memcache \
     --enable-nls \
     --enable-openssl \
+    --enable-pcre \
+%if 0%{?with_redis}
+    --enable-redis \
+%endif
+    --enable-shadow \
     --with-lastlog \
     --with-includes="%{_includedir}/mysql:%{_includedir}/pgsql" \
     --with-shared="${PROFTPD_SHARED_MODS}" \
     --disable-ident \
-    --disable-strip 
+    --disable-strip
 
 #    --enable-memcache \
+#    --enable-pcre \
+#    --enable-redis \
+#    --enable-shadow \
 make %{?_smp_mflags}
 
 %install
@@ -264,10 +294,12 @@ install -d %{_localstatedir}/run/%{name}
 
 %files
 %else
+
 %files -f %{name}.lang
 %endif
 %defattr(-,root,root)
-%doc COPYING CREDITS ChangeLog NEWS README* RELEASE_NOTES
+%license COPYING
+%doc CREDITS NEWS README* RELEASE_NOTES
 %doc contrib/README.*
 %doc sample-configurations/*.conf
 %dir %attr(0755,root,root) %{_sysconfdir}/%{name}/

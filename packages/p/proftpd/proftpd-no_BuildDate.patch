@@ -5,17 +5,61 @@
  src/main.c            |    6 ++----
  4 files changed, 9 insertions(+), 15 deletions(-)
 
+Index: contrib/mod_snmp/db.c
+===================================================================
+--- contrib/mod_snmp/db.c.orig
++++ contrib/mod_snmp/db.c
+@@ -1122,7 +1122,7 @@ int snmp_db_get_value(pool *p, unsigned
+       return 0;
+ 
+     case SNMP_DB_DAEMON_F_VERSION:
+-      *str_value = "ProFTPD Version " PROFTPD_VERSION_TEXT " (built at " BUILD_STAMP ")";
++      *str_value = "ProFTPD Version " PROFTPD_VERSION_TEXT;
+       *str_valuelen = strlen(*str_value);
+ 
+       pr_trace_msg(trace_channel, 19,
+Index: src/main.c
+===================================================================
+--- src/main.c.orig
++++ src/main.c
+@@ -1928,8 +1928,8 @@ static void standalone_main(void) {
+ 
+   init_bindings();
+ 
+-  pr_log_pri(PR_LOG_NOTICE, "ProFTPD %s (built %s) standalone mode STARTUP",
+-    PROFTPD_VERSION_TEXT " " PR_STATUS, BUILD_STAMP);
++  pr_log_pri(PR_LOG_NOTICE, "ProFTPD %s standalone mode STARTUP",
++    PROFTPD_VERSION_TEXT " " PR_STATUS);
+ 
+   if (pr_pidfile_write() < 0) {
+     fprintf(stderr, "error opening PidFile '%s': %s\n", pr_pidfile_get(),
+@@ -1989,7 +1989,6 @@ static void show_settings(void) {
+   printf("%s", "  Platform: " PR_PLATFORM " [unknown]\n");
+ #endif /* !HAVE_UNAME */
+ 
+-  printf("%s", "  Built: " BUILD_STAMP "\n");
+   printf("%s", "  Built With:\n    configure " PR_BUILD_OPTS "\n\n");
+ 
+   printf("%s", "  CFLAGS: " PR_BUILD_CFLAGS "\n");
+@@ -2571,7 +2570,6 @@ int main(int argc, char *argv[], char **
+   if (show_version == 2) {
+     printf("ProFTPD Version: %s", PROFTPD_VERSION_TEXT " " PR_STATUS "\n");
+     printf("  Scoreboard Version: %08x\n", PR_SCOREBOARD_VERSION); 
+-    printf("  Built: %s\n\n", BUILD_STAMP);
+ 
+     modules_list2(NULL, PR_MODULES_LIST_FL_SHOW_VERSION);
+     exit(0);
 Index: Makefile.in
 ===================================================================
 --- Makefile.in.orig
 +++ Makefile.in
-@@ -24,28 +24,26 @@ BUILD_BIN=proftpd$(EXEEXT) ftpcount$(EXE
+@@ -42,28 +42,25 @@ endif
  
  all: $(BUILD_BIN)
  
 -include/buildstamp.h:
--	echo \#define BUILD_STAMP \"`date +"%a %b %e %Y %H:%M:%S %Z"`\" > include/buildstamp.h
- 
+-	echo \#define BUILD_STAMP \"$(BUILD_STAMP)\" > include/buildstamp.h
+-
  dummy:
  
 -lib: include/buildstamp.h dummy
@@ -44,57 +88,16 @@ Index: Makefile.in
  	@dirs="$(DIRS)"; \
  	for dir in $$dirs; do \
  		if [ -d "$$dir" ]; then cd $$dir/ && $(MAKE); fi; \
-Index: contrib/mod_snmp/db.c
-===================================================================
---- contrib/mod_snmp/db.c.orig
-+++ contrib/mod_snmp/db.c
-@@ -1122,7 +1122,7 @@ int snmp_db_get_value(pool *p, unsigned
-       return 0;
- 
-     case SNMP_DB_DAEMON_F_VERSION:
--      *str_value = "ProFTPD Version " PROFTPD_VERSION_TEXT " (built at " BUILD_STAMP ")";
-+      *str_value = "ProFTPD Version " PROFTPD_VERSION_TEXT;
-       *str_valuelen = strlen(*str_value);
- 
-       pr_trace_msg(trace_channel, 19,
 Index: include/version.h
 ===================================================================
 --- include/version.h.orig
 +++ include/version.h
-@@ -1,5 +1,3 @@
+@@ -25,8 +25,6 @@
+ #ifndef PR_VERSION_H
+ #define PR_VERSION_H
+ 
 -#include "buildstamp.h"
 -
  /* Application version (in various forms) */
- #define PROFTPD_VERSION_NUMBER		0x0001030610
- #define PROFTPD_VERSION_TEXT		"1.3.6e"
-Index: src/main.c
-===================================================================
---- src/main.c.orig
-+++ src/main.c
-@@ -1893,8 +1893,8 @@ static void standalone_main(void) {
- 
-   init_bindings();
- 
--  pr_log_pri(PR_LOG_NOTICE, "ProFTPD %s (built %s) standalone mode STARTUP",
--    PROFTPD_VERSION_TEXT " " PR_STATUS, BUILD_STAMP);
-+  pr_log_pri(PR_LOG_NOTICE, "ProFTPD %s standalone mode STARTUP",
-+    PROFTPD_VERSION_TEXT " " PR_STATUS);
- 
-   if (pr_pidfile_write() < 0) {
-     fprintf(stderr, "error opening PidFile '%s': %s\n", pr_pidfile_get(),
-@@ -1954,7 +1954,6 @@ static void show_settings(void) {
-   printf("%s", "  Platform: " PR_PLATFORM " [unknown]\n");
- #endif /* !HAVE_UNAME */
- 
--  printf("%s", "  Built: " BUILD_STAMP "\n");
-   printf("%s", "  Built With:\n    configure " PR_BUILD_OPTS "\n\n");
- 
-   printf("%s", "  CFLAGS: " PR_BUILD_CFLAGS "\n");
-@@ -2534,7 +2533,6 @@ int main(int argc, char *argv[], char **
- 
-     printf("ProFTPD Version: %s", PROFTPD_VERSION_TEXT " " PR_STATUS "\n");
-     printf("  Scoreboard Version: %08x\n", PR_SCOREBOARD_VERSION); 
--    printf("  Built: %s\n\n", BUILD_STAMP);
- 
-     modules_list2(NULL, PR_MODULES_LIST_FL_SHOW_VERSION);
-     exit(0);
+ #define PROFTPD_VERSION_NUMBER		0x0001030708
+ #define PROFTPD_VERSION_TEXT		"1.3.7c"

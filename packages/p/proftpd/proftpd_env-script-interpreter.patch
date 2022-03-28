@@ -16,7 +16,7 @@ Index: contrib/ftpmail
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
  # ---------------------------------------------------------------------------
- # Copyright (C) 2008-2013 TJ Saunders <tj@castaglia.org>
+ # Copyright (C) 2008-2017 TJ Saunders <tj@castaglia.org>
  #
 Index: contrib/ftpquota
 ===================================================================
@@ -37,4 +37,4 @@ Index: src/prxs.in
 +#!/usr/bin/perl
  
  # ---------------------------------------------------------------------------
- # Copyright (C) 2008-2012 TJ Saunders <tj@castaglia.org>
+ # Copyright (C) 2008-2020 TJ Saunders <tj@castaglia.org>
