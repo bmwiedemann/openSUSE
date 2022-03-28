@@ -92,4 +92,12 @@
 - Changed source url to allow for download via source service (forwarded request 962680 from jsegitz)</comment>
     <requestid>962685</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6b6dfe19d48726b8f5ede068ae3081a5</srcmd5>
+    <version>2.180.0</version>
+    <time>1648479509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964617</requestid>
+  </revision>
 </revisionlist>

@@ -60,6 +60,8 @@ install -p -m 644 container.if %{buildroot}%{_datadir}/selinux/devel/include/ser
 install -m 0644 $MODULES %{buildroot}%{_datadir}/selinux/packages
 install -d %{buildroot}/%{_datadir}/containers/selinux
 install -m 644 container_contexts %{buildroot}/%{_datadir}/containers/selinux/contexts
+install -d %{buildroot}%{_datadir}/udica/templates
+install -m 0644 udica-templates/*.cil %{buildroot}%{_datadir}/udica/templates
 
 %check
 
@@ -95,5 +97,8 @@ fi
 %dir %{_datadir}/containers
 %dir %{_datadir}/containers/selinux
 %{_datadir}/containers/selinux/contexts
+%dir %{_datadir}/udica
+%dir %{_datadir}/udica/templates
+%{_datadir}/udica/templates/*
 
 %changelog
