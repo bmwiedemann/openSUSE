@@ -1,7 +1,7 @@
 #
 # spec file for package jsch-agent-proxy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,7 @@ Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
 Summary:        Pageant connector for jsch-agent-proxy
 Group:          Development/Libraries/Java
 Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
-Requires:       mvn(net.java.dev.jna:jna)	
+Requires:       mvn(net.java.dev.jna:jna)
 Requires:       mvn(net.java.dev.jna:platform)
 
 %description pageant
@@ -101,7 +101,7 @@ Requires:       mvn(com.trilead:trilead-ssh2)
 Summary:        USocketFactory implementation using JNA
 Group:          Development/Libraries/Java
 Requires:       mvn(com.jcraft:jsch.agentproxy.core) = %{version}
-Requires:       mvn(net.java.dev.jna:jna)	
+Requires:       mvn(net.java.dev.jna:jna)
 Requires:       mvn(net.java.dev.jna:platform)
 
 %description usocket-jna

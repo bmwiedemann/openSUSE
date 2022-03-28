@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 20 15:18:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 1.8
+
+-------------------------------------------------------------------
 Thu Oct 10 21:06:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - BuildRequire the new jna-contrib package
