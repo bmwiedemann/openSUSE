@@ -22,15 +22,13 @@
 %define with_zeitgeist  0
 
 Name:           folks
-Version:        0.15.4
+Version:        0.15.5
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
 Source:         https://download.gnome.org/sources/folks/0.15/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM c44d8e323affd7f1043f300f3325b358cd5b5f0b.patch -- folks-generics: Add missing generic type argument
-Patch:          https://gitlab.gnome.org/GNOME/folks/-/commit/c44d8e323affd7f1043f300f3325b358cd5b5f0b.patch
 
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
@@ -73,7 +71,6 @@ Telepathy connection managers) to create metacontacts.
 %package data
 Summary:        Data files for libfolks, a library to create metacontacts from many sources
 Group:          System/Libraries
-%glib2_gsettings_schema_requires
 Obsoletes:      libfolks-data < %{version}
 Provides:       libfolks-data = %{version}
 
