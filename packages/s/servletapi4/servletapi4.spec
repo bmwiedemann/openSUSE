@@ -1,7 +1,7 @@
 #
 # spec file for package servletapi4
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,12 +24,12 @@ Release:        0
 Summary:        Java servlet and JSP implementation classes
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/tomcat/
+URL:            http://jakarta.apache.org/tomcat/
 Source:         %{full_name}-4-src.tar.gz
 Patch160:       java160_build.patch
 BuildRequires:  ant
 BuildRequires:  ant >= 1.2
-BuildRequires:  java-devel >= 1.7.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  xml-commons-apis
 Requires(post): %{_sbindir}/update-alternatives

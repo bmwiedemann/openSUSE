@@ -140,4 +140,12 @@
     <comment>Fix build with jdk &lt;= 7</comment>
     <requestid>527019</requestid>
   </revision>
+  <revision rev="21" vrev="300">
+    <srcmd5>07a8f7a13400a04ac5bf9fbcbc4f797e</srcmd5>
+    <version>4.0.4</version>
+    <time>1648479554</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963028</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 19 10:33:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * java160_build.patch
+    + build with source/target levels 8
+
+-------------------------------------------------------------------
 Mon Sep 18 12:47:42 UTC 2017 - fstrba@suse.com
 
 - Modified patch:
