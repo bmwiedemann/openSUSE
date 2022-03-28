@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 21:44:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add conflicts for ffmpeg-5's tools
+
+-------------------------------------------------------------------
 Thu Mar 17 21:44:30 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Add ffmpeg-libglslang-detection.patch: detects libglslang

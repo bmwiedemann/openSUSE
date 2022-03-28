@@ -206,10 +206,10 @@ BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vidstab) >= 0.98
 %endif
 %if %{with vulkan}
-BuildRequires:  pkgconfig(vulkan)
-BuildRequires:  pkgconfig(SPIRV-Tools)
-BuildRequires:  glslang-devel
 BuildRequires:  c++_compiler
+BuildRequires:  glslang-devel
+BuildRequires:  pkgconfig(SPIRV-Tools)
+BuildRequires:  pkgconfig(vulkan)
 %endif
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
@@ -259,6 +259,7 @@ Provides:       ffmpeg-tools = %version
 Obsoletes:      ffmpeg-tools < %version
 Provides:       ffmpeg = %version
 Obsoletes:      ffmpeg < %version
+Conflicts:      ffmpeg-5
 Requires:       libavcodec58_134 = %version-%release
 Requires:       libavdevice58_13 = %version-%release
 Requires:       libavfilter7_110 = %version-%release
