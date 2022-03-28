@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%bcond_without tests
+%else
+%bcond_with    tests
+%endif
+
 %define _name   googlemock
 Name:           googletest
 Version:        1.11.0
@@ -77,14 +83,27 @@ with googlemock.
 %setup -q -n %{name}-release-%{version}
 
 %build
-%cmake
-%make_jobs
+%cmake \
+  %{?with_tests:-Dgtest_build_tests=ON} \
+  %{?with_tests:-Dgmock_build_tests=ON} \
+  %{nil}
+%cmake_build
 
 %install
 %cmake_install
 # Install the source code needed by some applications
 mkdir -p %{buildroot}%{_includedir}/gmock/src && install -m 0644 googlemock/src/* %{buildroot}%{_includedir}/gmock/src
 mkdir -p %{buildroot}%{_includedir}/gtest/src && install -m 0644 googletest/src/* %{buildroot}%{_includedir}/gtest/src
+
+%check
+%if %{with tests}
+%ctest
+%endif
+
+%post -n gtest -p /sbin/ldconfig
+%postun -n gtest -p /sbin/ldconfig
+%post -n gmock -p /sbin/ldconfig
+%postun -n gmock -p /sbin/ldconfig
 
 %files -n gtest
 %license LICENSE

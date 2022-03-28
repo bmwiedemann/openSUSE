@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  2 15:56:01 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add missing ldconfig calls in %post/%postun
+- Enable unit tests on Tumbleweed (fails on 15.x)
+- Update rpmlintrc for rpmlint 2.0
+
+-------------------------------------------------------------------
 Wed Jan  5 09:15:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:
