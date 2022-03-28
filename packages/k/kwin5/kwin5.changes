@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 24 16:08:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix client cursor offset in VMs (kde#427060):
+  * 0001-backends-drm-fall-back-to-legacy-mode-in-virtual-mac.patch
+
+-------------------------------------------------------------------
 Tue Mar  8 18:09:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.3
