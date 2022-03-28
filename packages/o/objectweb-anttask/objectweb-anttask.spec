@@ -1,7 +1,7 @@
 #
 # spec file for package objectweb-anttask
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           objectweb-anttask
 Version:        1.2
 Release:        0
 Summary:        ObjectWeb Ant task
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Java
-Url:            http://forge.objectweb.org/projects/monolog/
+URL:            http://forge.objectweb.org/projects/monolog/
 Source0:        ow_util_ant_tasks_1.2.zip
 Patch1:         objectweb-anttask-ant17.patch
 Patch2:         objectweb-anttask-java5.patch
@@ -48,16 +48,13 @@ find . -name "*.jar" -exec rm {} \;
 export CLASSPATH=$(build-classpath xalan-j2)
 ant \
     -Dbuild.compiler=modern \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     jar
 
 %install
 # jars
 install -d -m 0755 %{buildroot}%{_javadir}
-install -m 644 output/lib/ow_util_ant_tasks.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-pushd %{buildroot}%{_javadir}
-  ln -sf %{name}-%{version}.jar %{name}.jar
-popd
+install -m 644 output/lib/ow_util_ant_tasks.jar %{buildroot}%{_javadir}/%{name}.jar
 
 %files
 %{_javadir}/*

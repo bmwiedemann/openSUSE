@@ -119,4 +119,12 @@
     <comment>Don't depend on java-gcj-compat</comment>
     <requestid>531103</requestid>
   </revision>
+  <revision rev="19" vrev="264">
+    <srcmd5>dd3ef839b7cf4e476ca364a0d3e744dd</srcmd5>
+    <version>1.2</version>
+    <time>1648479573</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963287</requestid>
+  </revision>
 </revisionlist>
