@@ -1,7 +1,7 @@
 #
 # spec file for package python-nltk
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pyname nltk
 %define skip_python2 1
 Name:           python-nltk
-Version:        3.5
+Version:        3.7
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
@@ -44,8 +44,8 @@ Recommends:     python-requests
 Recommends:     python-scikit-learn
 Recommends:     python-scipy
 Recommends:     python-twython
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,13 +55,13 @@ Python modules, data sets and tutorials supporting research and
 development in Natural Language Processing.
 
 %prep
-%setup -q -n %{pyname}-%{version}
+%autosetup -p1 -n %{pyname}-%{version}
 
-sed -i "1,4{/\/usr\/bin\/env/d}" nltk/corpus/reader/knbc.py
-sed -i "1,4{/\/usr\/bin\/env/d}" nltk/test/runtests.py
-sed -i "1,4{/\/usr\/bin\/env/d}" nltk/test/unit/test_tgrep.py
-sed -i "1,4{/\/usr\/bin\/env/d}" nltk/tgrep.py
-sed -i "1,4{/\/usr\/bin\/env/d}" nltk/tokenize/stanford_segmenter.py
+# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/corpus/reader/knbc.py
+# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/test/runtests.py
+# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/test/unit/test_tgrep.py
+# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/tgrep.py
+# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/tokenize/stanford_segmenter.py
 
 %build
 %python_build

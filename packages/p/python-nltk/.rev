@@ -112,4 +112,41 @@
 </comment>
     <requestid>812413</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5d72abfffea1ddab1f0f72c50b9aed48</srcmd5>
+    <version>3.7</version>
+    <time>1648479652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7
+  - Improve and update the NLTK team page on nltk.org (#2855,
+    #2941)
+  - Drop support for Python 3.6, support Python 3.10 (#2920)
+- Update to 3.6.7
+  - Resolve IndexError in `sent_tokenize` and `word_tokenize`
+    (#2922)
+- Update to 3.6.6
+  - Refactor `gensim.doctest` to work for gensim 4.0.0 and up
+    (#2914)
+  - Add Precision, Recall, F-measure, Confusion Matrix to Taggers
+    (#2862)
+  - Added warnings if .zip files exist without any corresponding
+    .csv files. (#2908)
+  - Fix `FileNotFoundError` when the `download_dir` is
+    a non-existing nested folder (#2910)
+  - Rename omw to omw-1.4 (#2907)
+  - Resolve ReDoS opportunity by fixing incorrectly specified
+    regex (#2906, bsc#1191030, CVE-2021-3828).
+  - Support OMW 1.4 (#2899)
+  - Deprecate Tree get and set node methods (#2900)
+  - Fix broken inaugural test case (#2903)
+  - Use Multilingual Wordnet Data from OMW with newer Wordnet
+    versions (#2889)
+  - Keep NLTKs &quot;tokenize&quot; module working with pathlib (#2896)
+  - Make prettyprinter to be more readable (#2893)
+  - Update links to the nltk book (#2895)
+  - Add `CITATION.cff` to nltk (#2880)
+  - Resolve serious ReDoS in PunktSentenceTokenizer (#2869)
+  - Delete old CI config files (#2881)</comment>
+    <requestid>965220</requestid>
+  </revision>
 </revisionlist>
