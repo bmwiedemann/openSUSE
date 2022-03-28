@@ -1,7 +1,7 @@
 #
 # spec file for package flute
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,12 +21,12 @@ Version:        1.3.0
 Release:        0
 Summary:        Java CSS parser using SAC
 # The entire source code is W3C except ParseException.java which is LGPLv2+
-License:        W3C and LGPL-2.1+
+License:        LGPL-2.1-or-later AND W3C
 Group:          Development/Libraries/Java
-Url:            http://www.w3.org/Style/CSS/SAC/
+URL:            http://www.w3.org/Style/CSS/SAC/
 Source0:        http://downloads.sourceforge.net/jfreereport/%{name}-%{version}-OOo31.zip
 BuildRequires:  ant
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  sac
 BuildRequires:  unzip
@@ -54,7 +54,7 @@ build-jar-repository -s -p lib sac
 
 %build
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     jar javadoc
 
 %install

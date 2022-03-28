@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 20 12:23:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target level 8
+
+-------------------------------------------------------------------
 Fri Sep  8 05:55:04 UTC 2017 - fstrba@suse.com
 
 - Use java source and target level 1.6 in order to allow building
