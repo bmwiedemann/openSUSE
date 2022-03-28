@@ -15,4 +15,12 @@
     <comment>Remove reference to parent pom</comment>
     <requestid>762080</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0928344781c50d5e8a00b45524b7e132</srcmd5>
+    <version>3.6</version>
+    <time>1648479546</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962929</requestid>
+  </revision>
 </revisionlist>

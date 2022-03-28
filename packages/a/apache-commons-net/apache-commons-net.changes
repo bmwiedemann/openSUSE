@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 18 18:50:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
 Thu Jan  9 08:32:51 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Remove reference to the parent pom, since we don't build with
