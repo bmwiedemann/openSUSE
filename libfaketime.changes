@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 26 14:18:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.10:
+  - improved macOS Monterey support through dyld interposing
+  - changed interception hooks for stat() and similar functions,
+    refactored to use a common handler (@sirainen)
+  - added support for timespec_get, timerfd_{get,set} (@sliquister)
+  - generic syscall() interception for selected syscalls (@dkg)
+  - improved testing system (@dkg)
+
+-------------------------------------------------------------------
 Sun Feb 28 18:05:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.9:
