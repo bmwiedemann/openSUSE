@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 19 21:55:37 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source/target levels 8
+
+-------------------------------------------------------------------
 Mon Oct 12 10:02:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - %{suffix} is an rpm internal macro that extracts a suffix

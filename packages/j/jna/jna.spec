@@ -1,7 +1,7 @@
 #
 # spec file for package jna
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@ Name:           jna
 Version:        5.5.0
 Release:        0
 Summary:        Pure Java access to native libraries
-License:        LGPL-2.1-or-later OR Apache-2.0
+License:        Apache-2.0 OR LGPL-2.1-or-later
 URL:            https://github.com/twall/jna
 Source0:        https://github.com/twall/%{name}/archive/%{version}.tar.gz
 Source1000:     %{name}-rpmlintrc
@@ -84,13 +84,13 @@ sed -i 's|@LIBDIR@|%{_libdir}/%{name}|' src/com/sun/jna/Native.java
 
 %build
 build-jar-repository -s -p lib ant
-ant \
+%ant \
     jar \
     native \
     platform-jar \
     -Dcflags_extra.native="%{optflags}" \
     -Dbuild-native=true -Drelease \
-    -Dcompatibility=1.6 -Dplatform.compatibility=1.6 \
+    -Dcompatibility=1.8 -Dplatform.compatibility=1.8 \
     -Ddynlink.native=true \
     jar \
     native \
