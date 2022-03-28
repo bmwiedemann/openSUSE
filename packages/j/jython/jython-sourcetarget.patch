@@ -6,8 +6,8 @@
          <property name="build.compiler" value="modern" />
 -        <property name="jdk.target.version" value="1.4" />
 -        <property name="jdk.source.version" value="1.4" />
-+        <property name="jdk.target.version" value="1.6" />
-+        <property name="jdk.source.version" value="1.6" />
++        <property name="jdk.target.version" value="1.8" />
++        <property name="jdk.source.version" value="1.8" />
          <property name="deprecation" value="off" />
          <property name="debug" value="off" />
          <property name="optimize" value="on" />

@@ -1,7 +1,7 @@
 #
 # spec file for package jython
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        A Java implementation of the Python language
 License:        Apache-2.0 AND Python-2.0
 Group:          Development/Languages/Python
-URL:            http://www.jython.org/
+URL:            https://www.jython.org/
 # Use the included fetch-jython.sh script to generate the source drop
 # for jython 2.2.1
 # sh fetch-jython.sh \
@@ -184,7 +184,7 @@ export CLASSPATH=$CLASSPATH:%{_libdir}/libreadline-java/libreadline-java.jar
 rm -rf org/apache
 perl -p -i -e 's|execon|apply|g' build.xml
 
-ant \
+%{ant} \
   -Dpython.home=%{_bindir} \
   -Dht2html.dir=%{_datadir}/ht2html \
   -Dpython.lib=./CPythonLib \

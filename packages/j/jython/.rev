@@ -219,4 +219,12 @@ Use SPDX format (forwarded request 109062 from babelworx)</comment>
     <comment></comment>
     <requestid>901188</requestid>
   </revision>
+  <revision rev="30" vrev="25">
+    <srcmd5>c11c8bc82de64cd73b896f6753048859</srcmd5>
+    <version>2.2.1</version>
+    <time>1648479571</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963247</requestid>
+  </revision>
 </revisionlist>

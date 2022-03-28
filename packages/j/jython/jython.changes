@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 20 12:20:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jython-sourcetarget.patch
+    + build with java source and tartget level 1.8
+
+-------------------------------------------------------------------
 Mon Jun 21 13:12:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Change dependencies to Python 3
