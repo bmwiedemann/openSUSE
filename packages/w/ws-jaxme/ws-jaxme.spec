@@ -37,7 +37,7 @@ BuildRequires:  antlr
 BuildRequires:  apache-commons-codec
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  hsqldb
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  jaxp_transform_impl
 BuildRequires:  junit >= 3.8.1
@@ -48,6 +48,9 @@ BuildRequires:  xml-commons-apis
 BuildRequires:  xml-commons-resolver
 BuildRequires:  xmldb-api
 BuildArch:      noarch
+%if 0%{?suse_version} > 1500
+BuildRequires:  glassfish-jaxb-api
+%endif
 
 %description
 A Java/XML binding compiler takes as input a schema description (in
@@ -112,6 +115,9 @@ find . -name "*.jar" | xargs rm
 %build
 export OPT_JAR_LIST="ant/ant-trax jaxp_transform_impl ant/ant-apache-resolver"
 export CLASSPATH=$(build-classpath \
+%if 0%{?suse_version} > 1500
+    glassfish-jaxb-api \
+%endif
     antlr \
     apache-commons-codec \
     hsqldb \
@@ -124,7 +130,7 @@ export CLASSPATH=$(build-classpath \
     xml-commons-resolver \
     junit)
 ant  Docs.all \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     -Dbuild.sysclasspath=first \
     -Ddocbook.home=%{_datadir}/xml/docbook \
     -Ddocbookxsl.home=%{_datadir}/xml/docbook/stylesheet/nwalsh/current
@@ -147,7 +153,7 @@ install -dm 755 %{buildroot}%{_docdir}/%{name}-%{version}
 cp -pr build/docs/src/documentation/content/manual %{buildroot}%{_docdir}/%{name}-%{version}
 
 %files
-%doc LICENSE
+%license LICENSE
 %{_javadir}/%{base_name}
 
 %files javadoc

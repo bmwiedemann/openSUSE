@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 18 19:17:27 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * ws-jaxme-sourcetarget.patch
+    + Build with source/target levels 8
+
+-------------------------------------------------------------------
+Thu Mar 17 09:49:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- On relevant distributions, build against the standalone jaxb-api
+
+-------------------------------------------------------------------
 Tue Feb 22 18:56:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the log4j12 packages, use the new reload4j
