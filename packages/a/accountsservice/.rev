@@ -1103,4 +1103,11 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
   Attempt to workaround
   https://gitlab.freedesktop.org/accountsservice/accountsservice/-/issues/102</comment>
   </revision>
+  <revision rev="79" vrev="11">
+    <srcmd5>50328125674b70bc179085fc4c4df4e5</srcmd5>
+    <version>0.6.55</version>
+    <time>1648483260</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 0.6.65 - https://bugzilla.opensuse.org/show_bug.cgi?id=1197610</comment>
+  </revision>
 </revisionlist>
