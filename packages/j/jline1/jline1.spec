@@ -1,7 +1,7 @@
 #
-# spec file for package jline1
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,7 +87,6 @@ install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}.pom
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
-
 
 %files -f .mfiles
 %license LICENSE.txt

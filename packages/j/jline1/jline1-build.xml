@@ -15,7 +15,7 @@
   <property name="project.description" value="JLine is a java library for reading and editing user input in console applications. It features tab-completion, command history, password masking, customizable keybindings, and pass-through handlers to use to chain to other console applications."/>
   <property name="bundle.version" value="${project.version}.0"/>
 
-  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
