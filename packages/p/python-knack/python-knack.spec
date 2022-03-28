@@ -1,7 +1,7 @@
 #
 # spec file for package python-knack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/k/knack/knack-%{v
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argcomplete}
 BuildRequires:  %{python_module jmespath}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

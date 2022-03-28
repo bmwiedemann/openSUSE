@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 10:46:06 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Tue Dec  7 08:24:18 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.0
