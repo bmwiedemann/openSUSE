@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 22 22:22:22 UTC 2022 - ohering@suse.de
+
+- remove usage of external-lib-deps for dune3
+- define ocaml_dune_bootstrap_directory for dune3
+- remove braces from rpm macros
+
+-------------------------------------------------------------------
 Wed Oct 27 07:31:27 UTC 2021 - ohering@suse.de
 
 - Move cmxs files into the main package
