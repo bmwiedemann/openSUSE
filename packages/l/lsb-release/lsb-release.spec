@@ -1,7 +1,7 @@
 #
 # spec file for package lsb-release
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           lsb-release
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Linux Standard Base Release Tools
 License:        GPL-2.0-or-later
 Group:          System/Fhs
 URL:            https://github.com/thkukuk/lsb-release_os-release
-Source:         lsb-release-%{version}.tar.gz
+Source:         https://github.com/thkukuk/lsb-release_os-release/archive/refs/tags/v%{version}.tar.gz#/lsb-release-%{version}.tar.gz
 BuildArch:      noarch
 
 %description
 Tools from the Linux Standard Base project to determine the used distribution
 
 %prep
-%setup -q
+%setup -q -n lsb-release_os-release-%{version}
 
 %build
 make

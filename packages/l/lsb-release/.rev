@@ -146,4 +146,13 @@ Sourcing /etc/os-release instead of parsing /etc/SuSE-release and extracting the
   - Define Distribution ID based on PRETTY_NAME (forwarded request 783516 from kukuk)</comment>
     <requestid>783517</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8cf1b9955a4231d613bdf63586df58a5</srcmd5>
+    <version>3.2</version>
+    <time>1648479614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2
+  - Shell script compatibility cleanup</comment>
+    <requestid>964865</requestid>
+  </revision>
 </revisionlist>
