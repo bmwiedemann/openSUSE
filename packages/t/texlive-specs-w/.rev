@@ -470,4 +470,12 @@
     OK make them silent</comment>
     <requestid>962431</requestid>
   </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>5d5a26017ade8fd185906603f09d876e</srcmd5>
+    <version>unknown</version>
+    <time>1648479506</time>
+    <user>dimstar_suse</user>
+    <comment>Also add some obsoletes and conflicts</comment>
+    <requestid>964562</requestid>
+  </revision>
 </revisionlist>

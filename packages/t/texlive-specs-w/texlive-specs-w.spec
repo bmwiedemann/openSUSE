@@ -17770,8 +17770,7 @@ Requires:       texlive-texlive.infra >= %{texlive_version}
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(pre):  texlive-texlive.infra >= %{texlive_version}
 Requires(pre):  texlive-scripts-extra >= %{texlive_version}
-Provides:       texlive-texconfig >= %{texlive_version}
-Provides:       texlive-texconfig-bin >= %{texlive_version}
+Obsoletes:      texlive-texconfig <= 2017
 Requires(post): coreutils
 Requires(postun):coreutils
 Requires(postun):texlive-filesystem >= %{texlive_version}
@@ -17856,7 +17855,7 @@ Summary:        Documentation for texlive-scripts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
-Obsoletes:      texlive-tetex-doc <= %{texlive_previous}
+Obsoletes:      texlive-tetex-doc <= 2019
 Provides:       texlive-tetex-doc:%{_mandir}/man1/fmtutil-sys.1%{?ext_man}
 Provides:       texlive-tetex-doc:%{_mandir}/man1/fmtutil-user.1%{?ext_man}
 Provides:       texlive-tetex-doc:%{_mandir}/man1/fmtutil.1%{?ext_man}
@@ -17865,6 +17864,7 @@ Provides:       texlive-tetex-doc:%{_mandir}/man1/updmap-user.1%{?ext_man}
 Provides:       texlive-tetex-doc:%{_mandir}/man1/updmap.1%{?ext_man}
 Provides:       texlive-tetex-doc:%{_mandir}/man5/fmtutil.cnf.5%{?ext_man}
 Provides:       texlive-tetex-doc:%{_mandir}/man5/updmap.cfg.5%{?ext_man}
+Conflicts:      texlive-texconfig-doc
 Provides:       texlive-texconfig-doc:%{_mandir}/man1/texconfig-sys.1%{?ext_man}
 Provides:       texlive-texconfig-doc:%{_mandir}/man1/texconfig.1%{?ext_man}
 Provides:       man(fmtutil-sys.1)
@@ -17983,6 +17983,10 @@ Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
 Obsoletes:      texlive-pdftools <= %{texlive_previous}
 Obsoletes:      texlive-pstools <= %{texlive_previous}
+Conflicts:      texlive-texconfig
+Provides:       texlive-texconfig:%{_texmfdistdir}/texconfig/README
+Provides:       texlive-texconfig:%{_texmfdistdir}/texconfig/tcfmgr
+Provides:       texlive-texconfig:%{_texmfdistdir}/texconfig/tcfmgr.map
 Requires(pre):  texlive-scripts-extra-bin >= %{texlive_version}
 #!BuildIgnore: texlive-scripts-extra-bin
 Requires:       terminfo-base
@@ -18027,8 +18031,13 @@ Summary:        Documentation for texlive-scripts-extra
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Obsoletes:      texlive-pdftools-doc <= 2019
+Obsoletes:      texlive-texconfig-doc <= 2017
+Provides:       texlive-pdftools-doc:%{_mandir}/man1/e2pall.1%{?ext_man}
+Obsoletes:      texlive-pstools-doc <= 2019
 Provides:       texlive-pstools-doc:%{_mandir}/man1/ps2frag.1%{?ext_man}
 Provides:       texlive-pstools-doc:%{_mandir}/man1/pslatex.1%{?ext_man}
+Conflicts:      texlive-tetex-doc <= 2019
 Provides:       texlive-tetex-doc:%{_mandir}/man1/allcm.1%{?ext_man}
 Provides:       texlive-tetex-doc:%{_mandir}/man1/allec.1%{?ext_man}
 Provides:       texlive-tetex-doc:%{_mandir}/man1/allneeded.1%{?ext_man}
