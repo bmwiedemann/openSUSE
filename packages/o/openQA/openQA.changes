@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 27 01:49:03 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1648235193.5d75dd612:
+  * Fix test of openqa-clone-custom-git-refspec
+  * Update to Bootstrap v4.6.1 for real
+  * Fix for progress bars broken by bootstrap4 update
+  * Fix "Last use & match" popover for Bootstrap 4.2.0 and newer
+  * Update bootstrap and jquery
+  * doc: Extend `openqa-clone-job` documentation for setting variables
+  * openqa-clone-custom-git-refspec: Handle dependencies better
+  * openqa-clone-job: Allow appending via `+=` syntax
+
+-------------------------------------------------------------------
 Thu Mar 24 17:49:02 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1648129468.28317a4e6:
