@@ -40,4 +40,13 @@
     <comment>- Build without python2 present</comment>
     <requestid>784624</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>23f18f1b0bb37510e96f0de7ce0bbc8c</srcmd5>
+    <version>1.7.0</version>
+    <time>1648479484</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-mock.patch:
+  * Do not use external mock.</comment>
+    <requestid>964162</requestid>
+  </revision>
 </revisionlist>
