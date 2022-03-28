@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 25 07:47:09 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Make the wireplumber-audio noarch as it just contains a lua
+  config file.
+
+-------------------------------------------------------------------
 Tue Mar 22 18:36:13 UTC 2022 - alarrosa@suse.com
 
 - Update to version 0.4.9:

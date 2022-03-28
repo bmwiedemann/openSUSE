@@ -80,6 +80,7 @@ Requires:       %{libwireplumber} = %{version}
 Requires:       %{name} = %{version}
 Recommends:     pipewire-pulseaudio
 Conflicts:      pulseaudio
+BuildArch:      noarch
 
 %description audio
 WirePlumber is a modular session / policy manager for PipeWire and
