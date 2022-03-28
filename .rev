@@ -300,4 +300,12 @@
   * and more...</comment>
     <requestid>915660</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4b3120ce1bca5d5e5fda513105a32d83</srcmd5>
+    <version>0.8.0+2</version>
+    <time>1648479669</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>965356</requestid>
+  </revision>
 </revisionlist>

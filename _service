@@ -1,6 +1,6 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">git://git.kernel.org/pub/scm/utils/b4/b4.git</param>
+    <param name="url">https://git.kernel.org/pub/scm/utils/b4/b4</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="revision">stable-0.8.y</param>

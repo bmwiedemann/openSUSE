@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 21 10:21:21 UTC 2022 - jslaby@suse.cz
+
+- Update to version 0.8.0+2:
+  * Allow whitespace at the start of non-wrapped trailers
+  * validate: Use patatt's configured keyring as fallback
+
+-------------------------------------------------------------------
 Thu Sep 02 05:57:57 UTC 2021 - jslaby@suse.cz
 
 - Update to version 0.8.0+0:
