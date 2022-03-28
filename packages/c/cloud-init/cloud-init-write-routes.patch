@@ -1,3 +1,21 @@
+--- cloudinit/distros/__init__.py.orig
++++ cloudinit/distros/__init__.py
+@@ -220,6 +220,15 @@ class Distro(persistence.CloudInitPickle
+         network_state = parse_net_config_data(netconfig)
+         try:
+             self._write_network_state(network_state)
++            # The sysconfig renderer has no route writing implementation
++            # for SUSE yet use the old code for now that depends on the
++            # raw config.
++            try:
++                # Only exists for SUSE distro via this patch all other
++                # implementations throw which breaks testing
++                self._write_routes(netconfig)
++            except AttributeError:
++                pass
+         except NotImplementedError:
+             # backwards compat until all distros have apply_network_config
+             return self._apply_network_from_network_config(
 --- cloudinit/distros/opensuse.py.orig
 +++ cloudinit/distros/opensuse.py
 @@ -8,9 +8,12 @@
@@ -21,16 +39,10 @@
  
  class Distro(distros.Distro):
      clock_conf_fn = '/etc/sysconfig/clock'
-@@ -176,7 +180,147 @@ class Distro(distros.Distro):
-             util.write_file(out_fn, str(conf), 0o644)
+@@ -168,6 +172,143 @@ class Distro(distros.Distro):
+             conf.set_hostname(hostname)
+             util.write_file(filename, str(conf), 0o644)
  
-     def _write_network_config(self, netconfig):
--        return self._supported_write_network_config(netconfig)
-+        net_apply_res = self._supported_write_network_config(netconfig)
-+        # Clobber the route files that were written in RH key-value style
-+        self._write_routes(netconfig)
-+        return net_apply_res
-+
 +    def _write_routes_v1(self, netconfig):
 +        """Write route files, not part of the standard distro interface"""
 +        # Due to the implementation of the sysconfig renderer default routes
@@ -167,6 +179,7 @@
 +            LOG.warning(
 +                'unsupported or missing netconfig version, not writing routes'
 +            )
- 
++
      @property
      def preferred_ntp_clients(self):
+         """The preferred ntp client is dependent on the version."""

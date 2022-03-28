@@ -18,11 +18,11 @@
 %global configver 0.7
 
 Name:           cloud-init
-Version:        21.2
+Version:        21.4
 Release:        0
 License:        GPL-3.0
 Summary:        Cloud node initialization tool
-Url:            http://launchpad.net/cloud-init/
+Url:            https://github.com/canonical/cloud-init
 Group:          System/Management
 Source0:        %{name}-%{version}.tar.gz
 Source1:        rsyslog-cloud-init.cfg
@@ -35,16 +35,16 @@ Patch3:        cloud-init-break-resolv-symlink.patch
 Patch4:        cloud-init-sysconf-path.patch
 # FIXME (lp#1860164)
 Patch5:        cloud-init-no-tempnet-oci.patch
-# FIXME https://github.com/canonical/cloud-init/pull/857
-Patch6:        cloud-init-purge-cache-py-ver-change.patch
-# FIXME https://github.com/canonical/cloud-init/commit/899bfaa9d6bfab1db0df99257628ca1f6febff60
-Patch7:        cloud-init-update-test-characters-in-substitution-unit-test.patch
+# FIXME https://github.com/canonical/cloud-init/pull/1278
+Patch6:        cloud-init-sysctl-not-in-bin.patch
+Patch7:        cloud-init-vmware-test.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
 BuildRequires:  pkg-config
 # needed for /lib/udev
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 # Test requirements
@@ -54,6 +54,7 @@ BuildRequires:  python3-configobj >= 5.0.2
 BuildRequires:  python3-httpretty
 BuildRequires:  python3-jsonpatch
 BuildRequires:  python3-mock
+BuildRequires:  python3-netifaces
 BuildRequires:  python3-oauthlib
 BuildRequires:  python3-pytest
 BuildRequires:  python3-requests
@@ -74,6 +75,7 @@ Requires:       python3-configobj >= 5.0.2
 Requires:       python3-Jinja2
 Requires:       python3-jsonpatch
 Requires:       python3-jsonschema
+Requires:       python3-netifaces
 Requires:       python3-oauthlib
 Requires:       python3-pyserial
 Requires:       python3-PyYAML
@@ -204,6 +206,7 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %config(noreplace) %{_sysconfdir}/cloud/templates
 %{_sysconfdir}/dhcp/dhclient-exit-hooks.d/hook-dhclient
 %{_sysconfdir}/NetworkManager/dispatcher.d/hook-network-manager
+%{_sysconfdir}/systemd/system/sshd-keygen@.service.d/disable-sshd-keygen-if-cloud-init-active.conf
 %{_mandir}/man*/*
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 %dir %{_datadir}/bash-completion
@@ -223,12 +226,16 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %dir %{_sysconfdir}/rsyslog.d
 %{_sysconfdir}/rsyslog.d/21-cloudinit.conf
 /usr/lib/udev/rules.d/66-azure-ephemeral.rules
+# We use cloud-netconfig to handle new interfaces added to the instance
+%exclude %{systemd_prefix}/systemd/system/cloud-init-hotplugd.service
+%exclude %{systemd_prefix}/systemd/system/cloud-init-hotplugd.socket
 %dir %attr(0755, root, root) %{_localstatedir}/lib/cloud
 %dir %{docdir}
 %dir /etc/NetworkManager
 %dir /etc/NetworkManager/dispatcher.d
 %dir /etc/dhcp
 %dir /etc/dhcp/dhclient-exit-hooks.d
+%dir /etc/systemd/system/sshd-keygen@.service.d
 
 %files config-suse
 %defattr(-,root,root)

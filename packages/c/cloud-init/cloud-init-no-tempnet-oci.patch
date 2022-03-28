@@ -1,16 +1,28 @@
 --- cloudinit/sources/DataSourceOracle.py.orig
 +++ cloudinit/sources/DataSourceOracle.py
-@@ -133,8 +133,11 @@ class DataSourceOracle(sources.DataSourc
+@@ -134,14 +134,17 @@ class DataSourceOracle(sources.DataSourc
              BUILTIN_DS_CONFIG["configure_secondary_nics"]
          )
          network_context = noop()
 -        if not _is_iscsi_root():
--            network_context = dhcp.EphemeralDHCPv4(net.find_fallback_nic())
-+        # SUSE images are built with iSCSI setup. The detection of the 
+-            network_context = dhcp.EphemeralDHCPv4(
+-                iface=net.find_fallback_nic(),
+-                connectivity_url_data={
+-                    "url": METADATA_PATTERN.format(version=2, path="instance"),
+-                    "headers": V2_HEADERS,
+-                }
+-            )
++        # SUSE images are built with iSCSI setup. The detection of the
 +        # configured network for iscsi boot is distribution dependent.
 +        # There's no implementation for openSUSE/SLE yet.
 +        #if not _is_iscsi_root():
-+        #    network_context = dhcp.EphemeralDHCPv4(net.find_fallback_nic())
++        #    network_context = dhcp.EphemeralDHCPv4(
++        #        iface=net.find_fallback_nic(),
++        #        connectivity_url_data={
++        #            "url": METADATA_PATTERN.format(version=2, path="instance"),
++        #            "headers": V2_HEADERS,
++        #        }
++        #    )
          with network_context:
              fetched_metadata = read_opc_metadata(
                  fetch_vnics_data=fetch_vnics_data
