@@ -33,19 +33,19 @@ BuildRequires:  geronimo-jms-1_1-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javamail
 BuildRequires:  javapackages-local
-Obsoletes:      log4j12 < %{version}
-Obsoletes:      log4j12-mini < %{version}
-Obsoletes:      logfactor5 < %{version}
 Obsoletes:      chainsaw < 2.1
 Obsoletes:      log4j < 1.3
 Obsoletes:      log4j-mini < 1.3
+Obsoletes:      log4j12 < %{version}
+Obsoletes:      log4j12-mini < %{version}
+Obsoletes:      logfactor5 < %{version}
 Provides:       log4j12 = %{version}
 Provides:       log4j12-mini = %{version}
-Provides:       mvn(log4j:log4j:12) = %{version}
 Provides:       mvn(log4j:log4j:1.2.12) = %{version}
 Provides:       mvn(log4j:log4j:1.2.14) = %{version}
 Provides:       mvn(log4j:log4j:1.2.16) = %{version}
 Provides:       mvn(log4j:log4j:1.2.17) = %{version}
+Provides:       mvn(log4j:log4j:12) = %{version}
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit

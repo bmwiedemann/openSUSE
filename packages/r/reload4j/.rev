@@ -15,4 +15,12 @@
     <comment>Fine-tune Obsoletes/Provides</comment>
     <requestid>957132</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d80d733f1e9531f97c76cdea8180a0e8</srcmd5>
+    <version>1.2.19</version>
+    <time>1648479555</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963029</requestid>
+  </revision>
 </revisionlist>
