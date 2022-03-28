@@ -24,15 +24,17 @@ index 1cfd4fb..5a7c740 100644
          <javadoc packagenames="org.hamcrest.*" defaultexcludes="yes"
                   destdir="build/temp/hamcrest-all-${version}-javadoc.jar.contents" author="true" version="true" use="true"
 -                 windowtitle="Hamcrest" source="1.6" failonerror="yes" overview="overview.html">
-+                 windowtitle="Hamcrest" source="1.6" failonerror="yes">
++                 windowtitle="Hamcrest" source="1.8" failonerror="yes">
 +            <arg value="-Xdoclint:none"/>
              <classpath>
                  <fileset dir="lib/integration">
                      <include name="*.jar"/>
-@@ -313,6 +314,7 @@
+@@ -313,7 +314,8 @@
+         <sequential>
              <javadoc packagenames="org.hamcrest.*" sourcepath="build/temp/@{modulename}-${version}-sources.jar.contents" defaultexcludes="yes"
                       destdir="build/temp/@{modulename}-${version}-javadoc.jar.contents" author="true" version="true" use="true"
-                      windowtitle="Hamcrest" source="1.6" failonerror="yes">
+-                     windowtitle="Hamcrest" source="1.6" failonerror="yes">
++                     windowtitle="Hamcrest" source="1.8" failonerror="yes">
 +                <arg value="-Xdoclint:none"/>
                  <classpath>
                      <fileset dir="lib/integration">
