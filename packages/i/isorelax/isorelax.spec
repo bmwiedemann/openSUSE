@@ -1,7 +1,7 @@
 #
 # spec file for package isorelax
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,7 @@ export CLASSPATH=$(build-classpath \
 xerces-j2 \
 xml-apis \
 )
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     -Dbuild.sysclasspath=only release
 
 %install

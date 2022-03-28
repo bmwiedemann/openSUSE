@@ -125,4 +125,12 @@
     <comment>Add maven pom file + build against the generic xml-apis</comment>
     <requestid>659038</requestid>
   </revision>
+  <revision rev="19" vrev="30">
+    <srcmd5>6241e4fe4366f7e6c7280ce4edc37279</srcmd5>
+    <version>0.1</version>
+    <time>1648479558</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963093</requestid>
+  </revision>
 </revisionlist>
