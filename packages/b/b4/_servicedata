@@ -1,4 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">git://git.kernel.org/pub/scm/utils/b4/b4.git</param>
-              <param name="changesrevision">d8937ede7064a74623a9d1ef260d5d50a146dd44</param></service></servicedata>
+                <param name="url">https://git.kernel.org/pub/scm/utils/b4/b4</param>
+              <param name="changesrevision">846c6928b70727e3f8002f1e9c71176d2b824093</param></service></servicedata>
