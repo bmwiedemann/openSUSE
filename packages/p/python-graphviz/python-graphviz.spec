@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphviz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/xflr6/graphviz
 Source:         https://files.pythonhosted.org/packages/source/g/graphviz/graphviz-%{version}.zip
 Patch0:         python-graphviz-pytest.patch
-BuildRequires:  %{python_module mock >= 2}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-mock >= 1.8}
+BuildRequires:  %{python_module pytest-mock >= 3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -71,6 +70,8 @@ dos2unix LICENSE.txt README.rst docs/*.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+sed -i '/^mock/d' */requires.txt
+sed -i '/^mock_use_standalone_module/d' setup.cfg
 %pytest
 
 %files %{python_files}
