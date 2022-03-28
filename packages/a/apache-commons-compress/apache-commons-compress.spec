@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@ Source1:        http://archive.apache.org/dist/commons/compress/source/%{short_n
 Source2:        %{name}-build.xml
 Patch0:         0001-Remove-Brotli-compressor.patch
 Patch1:         0002-Remove-ZSTD-compressor.patch
-Patch2:         fix_java_8_compatibility.patch
+Patch2:         0003-Remove-Pack200-compressor.patch
+Patch3:         fix_java_8_compatibility.patch
 BuildRequires:  ant
-BuildRequires:  asm3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -71,8 +71,18 @@ rm -r src/{main,test}/java/org/apache/commons/compress/compressors/brotli
 rm -r src/{main,test}/java/org/apache/commons/compress/compressors/zstandard
 rm src/test/java/org/apache/commons/compress/compressors/DetectCompressorTestCase.java
 
-# Restore Java 8 compatibility
+# Remove support for pack200 which depends on ancient asm:asm:3.2
 %patch2 -p1
+%pom_remove_dep asm:asm
+rm -r src/{main,test}/java/org/apache/commons/compress/harmony
+rm -r src/main/java/org/apache/commons/compress/compressors/pack200
+rm src/main/java/org/apache/commons/compress/java/util/jar/Pack200.java
+rm src/test/java/org/apache/commons/compress/compressors/Pack200TestCase.java
+rm -r src/test/java/org/apache/commons/compress/compressors/pack200
+rm src/test/java/org/apache/commons/compress/java/util/jar/Pack200Test.java
+
+# Restore Java 8 compatibility
+%patch3 -p1
 
 # NPE with jdk10
 %pom_remove_plugin :maven-javadoc-plugin
@@ -84,7 +94,7 @@ rm src/test/java/org/apache/commons/compress/compressors/DetectCompressorTestCas
 
 %build
 mkdir -p lib
-build-jar-repository -s lib xz-java asm3
+build-jar-repository -s lib xz-java
 %{ant} package javadoc
 
 %install

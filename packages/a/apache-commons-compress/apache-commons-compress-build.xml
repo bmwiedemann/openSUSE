@@ -14,9 +14,8 @@
   <property name="build.dir" value="target"/>
   <property name="build.javadocDir" value="${build.dir}/site/apidocs"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
-  <property name="build.srcDir.0" value="src/main/java"/>
-  <property name="build.resourceDir.0" value="src/main/resources"/>
-  <property name="build.resourceDir.1" value="."/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
 
   <property name="commons.osgi.dynamicImport" value=""/>
   <property name="commons.osgi.excludeDependencies" value="true"/>
@@ -26,7 +25,7 @@
   <property name="commons.osgi.symbolicName" value="org.apache.commons.compress"/>
 
   <property name="compiler.source" value="1.8"/>
-  <property name="compiler.target" value="1.8"/>
+  <property name="compiler.target" value="${compiler.source}"/>
 
 
   <!-- ====================================================================== -->
@@ -65,17 +64,10 @@
            fork="false" 
            source="${compiler.source}">
       <src>
-        <pathelement location="${build.srcDir.0}"/>
+        <pathelement location="${build.srcDir}"/>
       </src>
       <classpath refid="build.classpath"/>
     </javac>
-    <mkdir dir="${build.outputDir}/META-INF"/>
-    <copy todir="${build.outputDir}/META-INF">
-      <fileset dir="${build.resourceDir.1}">
-        <include name="NOTICE.txt"/>
-        <include name="LICENSE.txt"/>
-      </fileset>
-    </copy>
   </target>
 
   <!-- ====================================================================== -->
@@ -84,7 +76,7 @@
 
   <target name="javadoc" description="Generates the Javadoc of the application">
     <mkdir dir="${build.javadocDir}"/>
-    <javadoc sourcepath="${build.srcDir.0}" 
+    <javadoc sourcepath="${build.srcDir}" 
              packagenames="*" 
              destdir="${build.javadocDir}" 
              access="protected" 

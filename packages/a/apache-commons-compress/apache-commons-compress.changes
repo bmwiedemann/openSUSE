@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 21 08:57:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0003-Remove-Pack200-compressor.patch
+    + Remove support for pack200 which depends on old asm3
+
+-------------------------------------------------------------------
 Tue Jul 20 07:17:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Updated to 1.21

@@ -31,4 +31,12 @@
     <comment>Security fixes</comment>
     <requestid>907250</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9c862327f897895342150ebc4098a12e</srcmd5>
+    <version>1.21</version>
+    <time>1648479581</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on asm3</comment>
+    <requestid>963731</requestid>
+  </revision>
 </revisionlist>
