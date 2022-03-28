@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 23 07:46:11 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix virtiofs crashing with glibc >= 2.35, due to rseq syscall
+  (bsc#1196924)
+* Patches added:
+  tools-virtiofsd-Add-rseq-syscall-to-the-.patch
+
+-------------------------------------------------------------------
+Tue Mar 22 09:58:56 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Avoid warnings caused by a GCC 12 bug, see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=98503
+  (bsc#1197018)
+* Patches added:
+  hw-i386-amd_iommu-Fix-maybe-uninitialize.patch
+  Silence-GCC-12-spurious-warnings.patch
+  Ignore-spurious-GCC-12-warning.patch
+
+-------------------------------------------------------------------
 Tue Mar 15 09:58:18 UTC 2022 - Li Zhang <li.zhang@suse.com>
 Fix bsc#1189702 CVE-2021-3713
 * Patches added:

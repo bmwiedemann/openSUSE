@@ -216,6 +216,8 @@ Patch00069:     block-backend-Retain-permissions-after-m.patch
 Patch00070:     virtiofsd-Drop-membership-of-all-supplem.patch
 Patch00071:     hw-scsi-megasas-check-for-NULL-frame-in-.patch
 Patch00072:     hw-nvram-at24-return-0xff-if-1-byte-addr.patch
+Patch00073:     hw-i386-amd_iommu-Fix-maybe-uninitialize.patch
+Patch00074:     tools-virtiofsd-Add-rseq-syscall-to-the-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -226,9 +228,12 @@ Patch02000:     ath5k-Add-missing-AR5K_EEPROM_READ-in-at.patch
 Patch02001:     stub-out-the-SAN-req-s-in-int13.patch
 Patch02002:     ipxe-Makefile-fix-issues-of-build-reprod.patch
 Patch02003:     help-compiler-out-by-initializing-array.patch
+Patch02004:     Silence-GCC-12-spurious-warnings.patch
 # Patches applied in roms/sgabios/:
 Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
 Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
+# Patches applied in roms/edk2/:
+Patch04000:     Ignore-spurious-GCC-12-warning.patch
 # Patches applied in roms/skiboot/:
 Patch05000:     Makefile-define-endianess-for-cross-buil.patch
 # Patches applied in roms/qboot/:
@@ -1208,6 +1213,8 @@ This package records qemu testsuite results and represents successful testing.
 %patch00070 -p1
 %patch00071 -p1
 %patch00072 -p1
+%patch00073 -p1
+%patch00074 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1218,8 +1225,10 @@ This package records qemu testsuite results and represents successful testing.
 %endif
 %patch02002 -p1
 %patch02003 -p1
+%patch02004 -p1
 %patch03000 -p1
 %patch03001 -p1
+%patch04000 -p1
 %patch05000 -p1
 %patch11000 -p1
 %patch13000 -p1
@@ -1534,7 +1543,7 @@ do
   unlink %srcdir/pc-bios/$i
 done
 
-make %{?_smp_mflags} V=1
+%make_build
 
 # ... And then, reinstate the firmwares that have been built already
 for i in %{?s390x_default_built_firmware}
@@ -1553,31 +1562,31 @@ done
 
 %if %{build_ppc_firmware}
 # FIXME: check if we can upstream: Makefile-define-endianess-for-cross-buil.patch
-make %{?_smp_mflags} -C %srcdir/roms skiboot
+%make_build -C %srcdir/roms skiboot
 
-make %{?_smp_mflags} -C %srcdir/roms slof
+%make_build -C %srcdir/roms slof
 %endif
 
 %if %{build_opensbi_firmware}
-make %{?_smp_mflags} -C %srcdir/roms opensbi64-generic
+%make_build -C %srcdir/roms opensbi64-generic
 %endif
 
 %if %{build_x86_firmware}
 
-make %{?_smp_mflags} -C %srcdir/roms bios \
+%make_build %{?_smp_mflags} -C %srcdir/roms bios \
   SEABIOS_EXTRAVERSION="-rebuilt.opensuse.org" \
 
 # FIXME: check if we can upstream: roms-Makefile-add-cross-file-to-qboot-me.patch
 # and qboot-add-cross.ini-file-to-handle-aarch.patch
-make %{?_smp_mflags} -C %srcdir/roms qboot
+%make_build -C %srcdir/roms qboot
 
-make %{?_smp_mflags} -C %srcdir/roms seavgabios \
+%make_build -C %srcdir/roms seavgabios \
 
-make %{?_smp_mflags} -C %srcdir/roms seavgabios-ati \
+%make_build -C %srcdir/roms seavgabios-ati \
 
-make %{?_smp_mflags} -C %srcdir/roms pxerom
+%make_build -C %srcdir/roms pxerom
 
-make %{?_smp_mflags} -C %srcdir/roms efirom \
+%make_build -C %srcdir/roms efirom \
   EDK2_BASETOOLS_OPTFLAGS='-fPIE'
 
 # We're currently not building firmware on ix86, but let's make sure this works
@@ -1592,7 +1601,7 @@ make -C %srcdir/roms sgabios HOSTCC=cc \
 pushd %srcdir
 patch -p1 < %_sourcedir/stub-out-the-SAN-req-s-in-int13.patch
 popd
-make %{?_smp_mflags} -C %srcdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
+%make_build -C %srcdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
 %endif
 
 # enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward
@@ -1658,15 +1667,15 @@ for conf in %{_builddir}/%buildsubdir/configs/targets/*-softmmu.mak; do
 done
 
 # Compile the QOM test binary first, so that ...
-make %{?_smp_mflags} tests/qtest/qom-test V=1
+%make_build tests/qtest/qom-test V=1
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
-make %{?_smp_mflags} check-report.tap V=1
+%make_build check-report.tap V=1
 
 %endif
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %ifarch %ix86
 %define qemu_arch i386
@@ -1705,7 +1714,7 @@ export QEMU_PROG=%_bindir/qemu-system-x86_64
 export QEMU_IMG_PROG=%_bindir/qemu-img
 export QEMU_IO_PROG=%_bindir/qemu-io
 export QEMU_NBD_PROG=%_bindir/qemu-nbd
-make %{?_smp_mflags} check-block V=1
+%make_build check-block V=1
 
 %endif
 # ------------------------------------------------------------------------
@@ -1715,7 +1724,7 @@ make %{?_smp_mflags} check-block V=1
 %ifnarch %arm
 %{qemu_arch}-linux-user/qemu-%{qemu_arch} %_bindir/ls > /dev/null
 %endif
-make %{?_smp_mflags} check-softfloat
+%make_build check-softfloat
 %endif
 
 %endif
@@ -1733,7 +1742,7 @@ install -D -m 0644 check-report.tap %{buildroot}%_datadir/qemu/check-report.tap
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu-linux-user"
 
-make %{?_smp_mflags} install DESTDIR=%{buildroot}
+%make_build install DESTDIR=%{buildroot}
 rm -rf %{buildroot}%_datadir/qemu/keymaps
 unlink %{buildroot}%_datadir/qemu/trace-events-all
 install -d -m 755 %{buildroot}%_sbindir
@@ -1778,7 +1787,7 @@ ln -s qemu-binfmt %{buildroot}%_bindir/qemu-xtensaeb-binfmt
 # ------------------------------------------------------------------------
 %if "%{name}" == "qemu"
 
-make %{?_smp_mflags} install DESTDIR=%{buildroot}
+%make_build install DESTDIR=%{buildroot}
 
 %find_lang %name
 install -d -m 0755 %{buildroot}%_datadir/%name/firmware
