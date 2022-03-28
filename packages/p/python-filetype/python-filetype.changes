@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 26 21:27:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.10:
+  * Merge pull request #113 from nottaw/master
+  * Use `==` for string comparisons
+  * Update __init__.py
+  * Merge pull request #111 from asfaltboy/patch-1
+  * Add python 3.9 to version classifiers
+  * Merge pull request #108 from hannesbraun/aiff-support
+  * Add AIFF support
+  * fix(Readme): rst syntax
+
+-------------------------------------------------------------------
 Mon Nov 22 17:51:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Restrict more which files are packaged.

@@ -59,4 +59,20 @@
 </comment>
     <requestid>933145</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22901a13187b242ccc3aef7c0a94838f</srcmd5>
+    <version>1.0.10</version>
+    <time>1648479638</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.10:
+  * Merge pull request #113 from nottaw/master
+  * Use `==` for string comparisons
+  * Update __init__.py
+  * Merge pull request #111 from asfaltboy/patch-1
+  * Add python 3.9 to version classifiers
+  * Merge pull request #108 from hannesbraun/aiff-support
+  * Add AIFF support
+  * fix(Readme): rst syntax</comment>
+    <requestid>965101</requestid>
+  </revision>
 </revisionlist>
