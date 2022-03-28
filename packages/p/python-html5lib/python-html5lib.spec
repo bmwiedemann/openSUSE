@@ -1,7 +1,7 @@
 #
 # spec file for package python-html5lib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/html5lib/html5lib-python
 Source:         https://files.pythonhosted.org/packages/source/h/html5lib/html5lib-%{version}.tar.gz
 # PATCH-FIX_UPSTREAM https://github.com/html5lib/html5lib-python/commit/2c19b9899ab3a3e8bd0ca35e5d78544334204169 Use Node.from_parent() constructor to support pytest 6
 Patch0:         pytest6.patch
+# https://github.com/html5lib/html5lib-python/issues/541
+Patch1:         python-html5lib-no-mock.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module mock}

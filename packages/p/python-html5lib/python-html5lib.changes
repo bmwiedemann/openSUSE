@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 21 14:10:17 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/html5lib/html5lib-python/issues/541
+  + python-html5lib-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Aug 27 14:03:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.1
