@@ -1,7 +1,7 @@
 #
 # spec file for package liblayout
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,14 +20,14 @@ Name:           liblayout
 Version:        0.2.10
 Release:        0
 Summary:        CSS based layouting framework
-License:        LGPL-2.1+ and Unicode
+License:        LGPL-2.1-or-later AND Unicode
 Group:          Development/Libraries/Java
-Url:            http://reporting.pentaho.org/
+URL:            http://reporting.pentaho.org/
 Source:         http://downloads.sourceforge.net/jfreereport/liblayout-%{version}.zip
 Source99:       %{name}-rpmlintrc
 BuildRequires:  ant
 BuildRequires:  flute
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  libbase >= 1.1.3
 BuildRequires:  libfonts
@@ -71,7 +71,7 @@ build-jar-repository -s -p lib flute libloader librepository libxml libfonts \
 
 %build
 ant \
-    -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 -Dant.build.javadoc.source=1.6 \
+    -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 -Dant.build.javadoc.source=1.8 \
     jar javadoc
 for file in README.txt licence-LGPL.txt ChangeLog.txt; do
     tr -d '\r' < $file > $file.new
