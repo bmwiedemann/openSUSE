@@ -1,6 +1,533 @@
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.h luajit-2.1.0~beta3+git.1624618403.e9577376/dynasm/dasm_s390x.h
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.h	1969-12-31 18:00:00.000000000 -0600
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/dynasm/dasm_s390x.h	2021-10-05 12:36:23.421160526 -0500
+---
+ dynasm/Examples/run.sh        |   13 
+ dynasm/Examples/test_z_inst.c |  487 ++++
+ dynasm/dasm_s390x.h           |  546 +++++
+ dynasm/dasm_s390x.lua         | 1633 ++++++++++++++++
+ src/Makefile                  |    4 
+ src/host/buildvm.c            |    2 
+ src/host/buildvm_asm.c        |   53 
+ src/jit/dis_s390x.lua         |    1 
+ src/lib_jit.c                 |    2 
+ src/lj_arch.h                 |   19 
+ src/lj_asm.c                  |    2 
+ src/lj_ccall.c                |   47 
+ src/lj_ccall.h                |   15 
+ src/lj_ccallback.c            |    9 
+ src/lj_err.c                  |    3 
+ src/lj_frame.h                |   14 
+ src/lj_target.h               |    2 
+ src/lj_target_s390x.h         |   80 
+ src/vm_s390x.dasc             | 4261 ++++++++++++++++++++++++++++++++++++++++++
+ 19 files changed, 7192 insertions(+), 1 deletion(-)
+
+--- /dev/null
++++ b/dynasm/Examples/run.sh
+@@ -0,0 +1,13 @@
++#!/bin/bash
++# set -x
++
++# run test
++lua ../dynasm.lua test_z_inst.c | gcc -DDASM_CHECKS -std=gnu99 -Wall -Werror -g -x c -o test_z_inst -
++./test_z_inst
++ec=$?
++
++# cleanup
++rm -f ./test_z_inst
++
++# exit
++exit $ec
+--- /dev/null
++++ b/dynasm/Examples/test_z_inst.c
+@@ -0,0 +1,487 @@
++#include <assert.h>
++#include <stdio.h>
++#include <sys/mman.h>
++
++#include "../dasm_proto.h"
++#include "../dasm_s390x.h"
++
++// DynASM directives.
++|.arch s390x
++|.actionlist actions
++|.globals lab_
++
++static void add(dasm_State *state)
++{
++  dasm_State ** Dst = &state;
++
++  | ar r2,r3
++  | br r14
++}
++
++/*
++static void add_rrd(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  | lgfi r4 , 0x02
++  | maer r2 , r3 , r4
++  | br r14
++}
++*/
++
++static void sub(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  | sr r2,r3
++  | br r14
++}
++
++static void mul(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  | msr r2 , r3
++  | br r14
++}
++
++static void rx(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  int x = 1;
++  int y = 4095;
++
++  | la r4, 4095(r2, r3)
++  | la r5, 4095(r4)
++  | la r1, x(r5)
++  | la r2, y(r1, r0)
++  | br r14
++}
++
++static void rxy(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  int x = -524287;
++  int y = 524286;
++
++  | lay r4, -524288(r2, r3)
++  | lay r5, 524287(r4)
++  | lay r1, x(r5)
++  | lay r2, y(r1, r0)
++  | br r14
++}
++
++static void lab(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  // r1 = 0; do { r2 += r2; r1 += 1; } while(r1 < r3);
++  | la r1, 0(r0)
++  |1:
++  | agr r2, r2
++  | la r1, 1(r1)
++  | cgr r1, r3
++  | jl <1
++  | br r14
++}
++
++static void labg(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  // r1 = 0; do { r2 += r2; r1 += 1; } while(r1 < r3);
++  | la r1, 0(r0)
++  |1:
++  | agr r2, r2
++  | la r1, 1(r1)
++  | cgr r1, r3
++  | jgl <1
++  | jgnl >1
++  | stg r0, 0(r0)
++  |1:
++  | br r14
++}
++
++static void jmp_fwd(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  // while(r2!=r3){r2 += 2};
++  | j >1
++  |1:
++  | cgr r2 , r3
++  | jne >2
++  | je >3
++  |2:
++  | afi r2, 0x2
++  | j <1
++  |3:
++  | br r14
++
++}
++
++static void add_imm16(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  | ahi r2 , 0xf
++  | br r14
++}
++
++static void add_imm32(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  | afi r2 , 0xe
++  | br r14
++}
++
++static void save(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  |.define CFRAME_SPACE,	224	// Delta for sp, 8 byte aligned.
++  |
++  |// Register save area.
++  |.define SAVE_GPRS,	264(sp)	// Save area for r6-r15 (10*8 bytes).
++  |
++  |// Argument save area, each slot is 8-bytes (32-bit types are sign/zero extended).
++  |.define RESERVED,	232(sp)	// Reserved for compiler use.
++  |.define BACKCHAIN,	224(sp)
++  |
++  |// Current stack frame.
++  |.define SAVE_FPR15,	216(sp)
++  |.define SAVE_FPR14,	208(sp)
++  |.define SAVE_FPR13,	200(sp)
++  |.define SAVE_FPR12,	192(sp)
++  |.define SAVE_FPR11,	184(sp)
++  |.define SAVE_FPR10,	176(sp)
++  |.define SAVE_FPR9,	168(sp)
++  |.define SAVE_FPR8,	160(sp)
++  |
++  |// Callee save area.
++  |.define CALLEESAVE,	000(sp)
++  |
++  |.macro saveregs
++  |  lay sp, -CFRAME_SPACE(sp)	// Allocate stack frame.
++  |  stmg r6, r15, SAVE_GPRS	// Technically we restore r15 regardless.
++  |  std f8, SAVE_FPR8		// f8-f15 are callee-saved.
++  |  std f9, SAVE_FPR9
++  |  std f10, SAVE_FPR10
++  |  std f11, SAVE_FPR11
++  |  std f12, SAVE_FPR12
++  |  std f13, SAVE_FPR13
++  |  std f14, SAVE_FPR14
++  |  std f15, SAVE_FPR15
++  |.endmacro
++  |
++  |.macro restoreregs
++  |  ld f8, SAVE_FPR8		// f8-f15 are callee-saved.
++  |  ld f9, SAVE_FPR9
++  |  ld f10, SAVE_FPR10
++  |  ld f11, SAVE_FPR11
++  |  ld f12, SAVE_FPR12
++  |  ld f13, SAVE_FPR13
++  |  ld f14, SAVE_FPR14
++  |  ld f15, SAVE_FPR15
++  |  lmg r6, r15, SAVE_GPRS	// Restores the stack pointer.
++  |.endmacro
++  |
++  | saveregs
++  | lgfi r7, 0x10 // 16
++  | lgfi r8, 0x20 // 32
++  | agr r2, r3
++  | agr r7, r8
++  | msgr r2, r7
++  | restoreregs
++  | br r14
++}
++
++static void labmul(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  // Multiply using an add function.
++  // Only correct if input is positive.
++  |->mul_func:
++  | stmg r6, r14, 48(sp)
++  | lgr r6, r2
++  | lgr r7, r3
++  | cgfi r7, 0
++  | je >3
++  | cgfi r7, 1
++  | je >2
++  |1:
++  | lgr r3, r6
++  | brasl r14, ->add_func
++  | lay r7, -1(r7)
++  | cgfi r7, 1
++  | jh <1
++  |2:
++  | lmg r6, r14, 48(sp)
++  | br r14
++  |3:
++  | la r2, 0(r0)
++  | j <2
++
++  |->add_func:
++  | agr r2, r3
++  | br r14
++}
++
++static void pc(dasm_State *state) {
++  dasm_State **Dst = &state;
++  int MAX = 10;
++  dasm_growpc(Dst, MAX+1);
++
++  | j =>MAX
++  for (int i = 0; i <= MAX; i++) {
++    |=>i:
++    if (i == 0) {
++      | br r14
++    } else {
++      | aghi r2, i
++      | j =>i-1
++    }
++  }
++}
++
++/*
++static void load_test(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  | ltdr r2 , r3
++  | br r14
++}
++*/
++
++
++static void test_mask(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  |lay   sp , -8(sp)
++  |stg   r2,  4(sp)
++  |tm    4(sp),0x04
++  |je >2
++  |jne >1
++|1:
++  |ar r2,r3
++  |br r14
++|2:
++  |sr r2,r3
++  |br r14
++}
++
++static void ssa(dasm_State *state) {
++  dasm_State **Dst = &state;
++
++  | lay sp, -16(sp)
++  | lay r0, -1(r0)
++  | stg r0, 8(sp)
++  | xc 8(8, sp), 8(sp)
++  | stg r2, 0(sp)
++  | mvc 13(2, sp), 6(sp)
++  | lg r2, 8(sp)
++  | la sp, 16(sp)
++  | br r14
++}
++
++static void ssa_act(dasm_State *state) {
++  dasm_State **Dst = &state;
++
++  int xl = 8;
++  int d1 = 13;
++  int l1 = 2;
++  int d2 = 6;
++
++  | lay sp, -16(sp)
++  | lay r0, -1(r0)
++  | stg r0, 8(sp)
++  | xc 8(xl, sp), 8(sp)
++  | stg r2, 0(sp)
++  | mvc d1(l1, sp), d2(sp)
++  | lg r2, 8(sp)
++  | la sp, 16(sp)
++  | br r14
++}
++
++typedef struct {
++  int a;
++  int b;
++} SimpleStruct;
++
++static void type(dasm_State *state) {
++  dasm_State **Dst = &state;
++
++  | .type SIMPLE, SimpleStruct
++  | lay sp, -8(sp)
++  | stg r2, 0(sp)
++  | xgr r2, r2
++  | l r2, SIMPLE:sp->b
++  | la sp, 8(sp)
++  | br r14
++}
++
++static void sil(dasm_State *state) {
++  dasm_State **Dst = &state;
++
++  | lay sp, -16(sp)
++  | xc 0(16, sp), 0(sp)
++  | mvghi 0(sp), 5
++  | mvhi 8(sp), 7
++  | mvhhi 12(sp), 11
++  | lghi r2, 0
++  | ag r2, 0(sp)  // r2 += 5
++  | a r2, 8(sp)   // r2 += 7
++  | ah r2, 12(sp) // r2 += 11
++  | la sp, 16(sp)
++  | br r14
++}
++
++static void rrfe_rrd(dasm_State *state) {
++  dasm_State ** Dst = &state;
++
++  | cefbr f0,r2
++  | cefbr f2,r3
++  | cefbr f4,r4
++  | maebr f0 ,f2 ,f4
++  | cfebr r2, 0, f0
++  | br r14
++}
++
++static void rre(dasm_State *state)  {
++
++  dasm_State **Dst = &state;
++
++  | lay   sp , -8(sp)
++  | cefbr f0 ,  r2
++  | cefbr f1 ,  r3
++  | fidr  f0 ,  f1
++  | cfebr r2 ,0,f0
++  | la    sp,   8(sp)
++  | br   r14
++}
++
++static void rsb(dasm_State *state) {
++  dasm_State **Dst = &state;
++
++  | lay sp, -4(sp)
++  | lghi r3, 0x0706
++  | lghi r4, 0
++  | iill r4, 6
++  | iilh r4, 7
++  | st r4, 0(sp)
++  | lghi r2, 0
++  | clm r3, 5, 0(sp)
++  | jne >1
++  | lghi r2, 1
++  |1:
++  | la sp, 4(sp)
++  | br r14
++}
++
++static void sqrt_rxe(dasm_State *state)
++{
++  dasm_State **Dst = &state;
++
++  | lay     sp , -8(sp)
++  | cefbr   f0 , r2
++  | stdy    f0 , 0(sp)
++  | sqeb    f0 ,0(r4,sp)
++  | cfebr   r2 ,0, f0
++  | la      sp, 8(sp)
++  | br      r14
++
++}
++
++static void rxf(dasm_State *state) {
++  dasm_State **Dst = &state;
++
++  | lay    sp , -8(sp)
++  | cegbra f1 ,0, r2,0
++  | cegbra f2 ,0,r3,0
++  | ste    f2 ,0(sp)
++  | maeb   f1, f2, 0(sp)
++  | cfebr  r2 ,0, f1
++  | la     sp, 8(sp)
++  | br     r14
++
++}
++
++typedef struct {
++  int64_t arg1;
++  int64_t arg2;
++  int64_t arg3;
++  void (*fn)(dasm_State *);
++  int64_t want;
++  const char *testname;
++} test_table;
++
++test_table test[] = {
++  { 1, 2, 0,       add,        3,     "add"},
++  {10, 5, 0,       sub,        5,     "sub"},
++  { 2, 3, 0,       mul,        6,     "mul"},
++  { 5, 7, 0,        rx,    12298,      "rx"},
++  { 5, 7, 0,       rxy,       10,     "rxy"},
++  { 2, 4, 0,       lab,       32,     "lab"},
++  { 2, 4, 0,      labg,       32,    "labg"},
++  { 2, 0, 0, add_imm16,       17,   "imm16"},
++  { 2, 0, 0, add_imm32,       16,   "imm32"},
++  { 7, 3, 0,      save,      480,    "save"},
++  { 7, 3, 0,    labmul,       21, "labmul0"},
++  { 7, 0, 0,    labmul,        0, "labmul1"},
++  { 0, 0, 0,        pc,       55,      "pc"},
++  { 2,12, 0,   jmp_fwd,       12, "jmp_fwd"},
++//  { 9,8, 0,    add_rrd,       25, "add_rrd"},
++//  { 2,4, 0,  load_test,        4,"load_test"},
++  {-1, 0, 0,       ssa, 65535<<8,     "ssa"},
++  {-1, 0, 0,   ssa_act, 65535<<8, "ssa_act"},
++  {27, 0, 0,      type,       27,    "type"},
++  { 0, 0, 0,       sil,       23,     "sil"},
++  {15, 3,10,   rrfe_rrd,      45, "rrfe_rrd"},
++  { 0, 0, 0,        rsb,       0,     "rsb"},
++  {12,10, 0,        rre,      10,     "rre"},
++  {16,10, 0,   sqrt_rxe,       4,"sqrt_rxe"},
++  {16,10, 0,        rxf,     116,     "rxf"},
++  { 4, 3, 0,  test_mask,       1,"test_mask"}
++};
++
++static void *jitcode(dasm_State **state, size_t *size)
++{
++  int dasm_status = dasm_link(state, size);
++  assert(dasm_status == DASM_S_OK);
++
++  void *ret = mmap(0, *size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++  dasm_encode(state, ret);
++  dasm_free(state);
++
++  mprotect(ret, *size, PROT_READ | PROT_EXEC);
++  return (int *)ret;
++}
++
++int main(int argc, char *argv[])
++{
++  dasm_State *state;
++  for(int i = 0; i < sizeof(test)/sizeof(test[0]); i++) {
++    dasm_init(&state, 1);
++    void* labels[lab__MAX];
++    dasm_setupglobal(&state, labels, lab__MAX);
++    dasm_setup(&state, actions);
++    test[i].fn(state);
++    size_t size;
++    int64_t (*fptr)(int64_t, int64_t, int64_t) = jitcode(&state, &size);
++    int64_t got = fptr(test[i].arg1, test[i].arg2, test[i].arg3);
++
++    if (got != test[i].want) {
++      fprintf(stderr, "FAIL: test %s: want %ld, got %ld\n", test[i].testname, test[i].want, got);
++      exit(1);
++    }
++    munmap(fptr, size);
++  }
++  printf("all tests passed\n");
++  return 0;
++}
+--- /dev/null
++++ b/dynasm/dasm_s390x.h
 @@ -0,0 +1,546 @@
 +/*
 +** DynASM s390x encoding engine.
@@ -472,7 +999,7 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.h l
 +        case DASM_LABEL_PC:
 +          break;
 +        case DASM_IMM8:
-+          cp[-1] |= n & 0xff;  
++          cp[-1] |= n & 0xff;
 +          break;
 +        case DASM_IMM16:
 +          *cp++ = n;
@@ -548,9 +1075,8 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.h l
 +  return D->status;
 +}
 +#endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.lua luajit-2.1.0~beta3+git.1624618403.e9577376/dynasm/dasm_s390x.lua
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.lua	1969-12-31 18:00:00.000000000 -0600
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/dynasm/dasm_s390x.lua	2021-10-05 12:36:23.461160737 -0500
+--- /dev/null
++++ b/dynasm/dasm_s390x.lua
 @@ -0,0 +1,1633 @@
 +------------------------------------------------------------------------------
 +-- DynASM s390x module.
@@ -1902,7 +2428,7 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.lua
 +      op2 = op2 + shl(b, 12) + d
 +    end
 +    wputhw(op1); wputhw(op2)
-+    if a then a() end 
++    if a then a() end
 +  elseif p == "RS-b" then
 +    local m = parse_mask(params[2])
 +    local d, b, a = parse_mem_b(params[3])
@@ -1990,7 +2516,7 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.lua
 +    op1 = op1 + shl(b, 12) + band(d, 0xfff)
 +    op2 = op2 + band(shr(d, 4), 0xff00)
 +    wputhw(op1); wputhw(op2)
-+    if a then a() end 
++    if a then a() end
 +  elseif p == "SS-a" then
 +    local d1, l1, b1, d1a, l1a = parse_mem_lb(params[1])
 +    local d2, b2, d2a = parse_mem_b(params[2])
@@ -2185,517 +2711,39 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/dasm_s390x.lua
 +end
 +return _M
 +------------------------------------------------------------------------------
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/Examples/run.sh luajit-2.1.0~beta3+git.1624618403.e9577376/dynasm/Examples/run.sh
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/Examples/run.sh	1969-12-31 18:00:00.000000000 -0600
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/dynasm/Examples/run.sh	2021-10-05 12:36:23.413160484 -0500
-@@ -0,0 +1,13 @@
-+#!/bin/bash
-+# set -x
-+
-+# run test
-+lua ../dynasm.lua test_z_inst.c | gcc -DDASM_CHECKS -std=gnu99 -Wall -Werror -g -x c -o test_z_inst -
-+./test_z_inst
-+ec=$?
-+
-+# cleanup
-+rm -f ./test_z_inst
-+
-+# exit
-+exit $ec
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/Examples/test_z_inst.c luajit-2.1.0~beta3+git.1624618403.e9577376/dynasm/Examples/test_z_inst.c
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/dynasm/Examples/test_z_inst.c	1969-12-31 18:00:00.000000000 -0600
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/dynasm/Examples/test_z_inst.c	2021-10-05 12:36:23.449160674 -0500
-@@ -0,0 +1,487 @@
-+#include <assert.h>
-+#include <stdio.h>
-+#include <sys/mman.h>
-+
-+#include "../dasm_proto.h"
-+#include "../dasm_s390x.h"
-+
-+// DynASM directives.
-+|.arch s390x
-+|.actionlist actions
-+|.globals lab_
-+
-+static void add(dasm_State *state)
-+{
-+  dasm_State ** Dst = &state;
-+
-+  | ar r2,r3
-+  | br r14
-+}
-+
-+/*
-+static void add_rrd(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+  
-+  | lgfi r4 , 0x02
-+  | maer r2 , r3 , r4
-+  | br r14
-+}
-+*/
-+
-+static void sub(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  | sr r2,r3
-+  | br r14
-+}
-+
-+static void mul(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  | msr r2 , r3
-+  | br r14
-+}
-+
-+static void rx(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  int x = 1;
-+  int y = 4095;
-+
-+  | la r4, 4095(r2, r3)
-+  | la r5, 4095(r4)
-+  | la r1, x(r5)
-+  | la r2, y(r1, r0)
-+  | br r14
-+}
-+
-+static void rxy(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  int x = -524287;
-+  int y = 524286;
-+
-+  | lay r4, -524288(r2, r3)
-+  | lay r5, 524287(r4)
-+  | lay r1, x(r5)
-+  | lay r2, y(r1, r0)
-+  | br r14
-+}
-+
-+static void lab(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  // r1 = 0; do { r2 += r2; r1 += 1; } while(r1 < r3);
-+  | la r1, 0(r0)
-+  |1:
-+  | agr r2, r2
-+  | la r1, 1(r1)
-+  | cgr r1, r3
-+  | jl <1
-+  | br r14
-+}
-+
-+static void labg(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  // r1 = 0; do { r2 += r2; r1 += 1; } while(r1 < r3);
-+  | la r1, 0(r0)
-+  |1:
-+  | agr r2, r2
-+  | la r1, 1(r1)
-+  | cgr r1, r3
-+  | jgl <1
-+  | jgnl >1
-+  | stg r0, 0(r0)
-+  |1:
-+  | br r14
-+}
-+
-+static void jmp_fwd(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+  
-+  // while(r2!=r3){r2 += 2};
-+  | j >1
-+  |1:
-+  | cgr r2 , r3
-+  | jne >2
-+  | je >3
-+  |2:
-+  | afi r2, 0x2
-+  | j <1
-+  |3:
-+  | br r14
-+
-+}
-+
-+static void add_imm16(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+  
-+  | ahi r2 , 0xf
-+  | br r14
-+}
-+
-+static void add_imm32(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+  
-+  | afi r2 , 0xe
-+  | br r14
-+}
-+
-+static void save(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  |.define CFRAME_SPACE,	224	// Delta for sp, 8 byte aligned.
-+  |
-+  |// Register save area.
-+  |.define SAVE_GPRS,	264(sp)	// Save area for r6-r15 (10*8 bytes).
-+  |
-+  |// Argument save area, each slot is 8-bytes (32-bit types are sign/zero extended).
-+  |.define RESERVED,	232(sp)	// Reserved for compiler use.
-+  |.define BACKCHAIN,	224(sp)
-+  |
-+  |// Current stack frame.
-+  |.define SAVE_FPR15,	216(sp)
-+  |.define SAVE_FPR14,	208(sp)
-+  |.define SAVE_FPR13,	200(sp)
-+  |.define SAVE_FPR12,	192(sp)
-+  |.define SAVE_FPR11,	184(sp)
-+  |.define SAVE_FPR10,	176(sp)
-+  |.define SAVE_FPR9,	168(sp)
-+  |.define SAVE_FPR8,	160(sp)
-+  |
-+  |// Callee save area.
-+  |.define CALLEESAVE,	000(sp)
-+  |
-+  |.macro saveregs
-+  |  lay sp, -CFRAME_SPACE(sp)	// Allocate stack frame.
-+  |  stmg r6, r15, SAVE_GPRS	// Technically we restore r15 regardless.
-+  |  std f8, SAVE_FPR8		// f8-f15 are callee-saved.
-+  |  std f9, SAVE_FPR9
-+  |  std f10, SAVE_FPR10
-+  |  std f11, SAVE_FPR11
-+  |  std f12, SAVE_FPR12
-+  |  std f13, SAVE_FPR13
-+  |  std f14, SAVE_FPR14
-+  |  std f15, SAVE_FPR15
-+  |.endmacro
-+  |
-+  |.macro restoreregs
-+  |  ld f8, SAVE_FPR8		// f8-f15 are callee-saved.
-+  |  ld f9, SAVE_FPR9
-+  |  ld f10, SAVE_FPR10
-+  |  ld f11, SAVE_FPR11
-+  |  ld f12, SAVE_FPR12
-+  |  ld f13, SAVE_FPR13
-+  |  ld f14, SAVE_FPR14
-+  |  ld f15, SAVE_FPR15
-+  |  lmg r6, r15, SAVE_GPRS	// Restores the stack pointer.
-+  |.endmacro
-+  |
-+  | saveregs
-+  | lgfi r7, 0x10 // 16
-+  | lgfi r8, 0x20 // 32
-+  | agr r2, r3
-+  | agr r7, r8
-+  | msgr r2, r7
-+  | restoreregs
-+  | br r14
-+}
-+
-+static void labmul(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  // Multiply using an add function.
-+  // Only correct if input is positive.
-+  |->mul_func:
-+  | stmg r6, r14, 48(sp)
-+  | lgr r6, r2
-+  | lgr r7, r3
-+  | cgfi r7, 0
-+  | je >3
-+  | cgfi r7, 1
-+  | je >2
-+  |1:
-+  | lgr r3, r6
-+  | brasl r14, ->add_func
-+  | lay r7, -1(r7)
-+  | cgfi r7, 1
-+  | jh <1
-+  |2:
-+  | lmg r6, r14, 48(sp)
-+  | br r14
-+  |3:
-+  | la r2, 0(r0)
-+  | j <2
-+
-+  |->add_func:
-+  | agr r2, r3
-+  | br r14
-+}
-+
-+static void pc(dasm_State *state) {
-+  dasm_State **Dst = &state;
-+  int MAX = 10;
-+  dasm_growpc(Dst, MAX+1);
-+
-+  | j =>MAX
-+  for (int i = 0; i <= MAX; i++) {
-+    |=>i:
-+    if (i == 0) {
-+      | br r14
-+    } else {
-+      | aghi r2, i
-+      | j =>i-1
-+    }
-+  }
-+}
-+
-+/*
-+static void load_test(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+  
-+  | ltdr r2 , r3
-+  | br r14
-+}
-+*/
-+
-+
-+static void test_mask(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  |lay   sp , -8(sp)
-+  |stg   r2,  4(sp)
-+  |tm    4(sp),0x04
-+  |je >2
-+  |jne >1
-+|1:
-+  |ar r2,r3
-+  |br r14
-+|2:
-+  |sr r2,r3
-+  |br r14
-+}
-+
-+static void ssa(dasm_State *state) {
-+  dasm_State **Dst = &state;
-+
-+  | lay sp, -16(sp)
-+  | lay r0, -1(r0)
-+  | stg r0, 8(sp)
-+  | xc 8(8, sp), 8(sp)
-+  | stg r2, 0(sp)
-+  | mvc 13(2, sp), 6(sp)
-+  | lg r2, 8(sp)
-+  | la sp, 16(sp)
-+  | br r14
-+}
-+
-+static void ssa_act(dasm_State *state) {
-+  dasm_State **Dst = &state;
-+
-+  int xl = 8;
-+  int d1 = 13;
-+  int l1 = 2;
-+  int d2 = 6;
-+
-+  | lay sp, -16(sp)
-+  | lay r0, -1(r0)
-+  | stg r0, 8(sp)
-+  | xc 8(xl, sp), 8(sp)
-+  | stg r2, 0(sp)
-+  | mvc d1(l1, sp), d2(sp)
-+  | lg r2, 8(sp)
-+  | la sp, 16(sp)
-+  | br r14
-+}
-+
-+typedef struct {
-+  int a;
-+  int b;
-+} SimpleStruct;
-+
-+static void type(dasm_State *state) {
-+  dasm_State **Dst = &state;
-+
-+  | .type SIMPLE, SimpleStruct
-+  | lay sp, -8(sp)
-+  | stg r2, 0(sp)
-+  | xgr r2, r2
-+  | l r2, SIMPLE:sp->b
-+  | la sp, 8(sp)
-+  | br r14
-+}
-+
-+static void sil(dasm_State *state) {
-+  dasm_State **Dst = &state;
-+
-+  | lay sp, -16(sp)
-+  | xc 0(16, sp), 0(sp)
-+  | mvghi 0(sp), 5
-+  | mvhi 8(sp), 7
-+  | mvhhi 12(sp), 11
-+  | lghi r2, 0
-+  | ag r2, 0(sp)  // r2 += 5
-+  | a r2, 8(sp)   // r2 += 7
-+  | ah r2, 12(sp) // r2 += 11
-+  | la sp, 16(sp)
-+  | br r14
-+}
-+
-+static void rrfe_rrd(dasm_State *state) {
-+  dasm_State ** Dst = &state;
-+
-+  | cefbr f0,r2
-+  | cefbr f2,r3
-+  | cefbr f4,r4
-+  | maebr f0 ,f2 ,f4
-+  | cfebr r2, 0, f0
-+  | br r14
-+}
-+
-+static void rre(dasm_State *state)  {
-+
-+  dasm_State **Dst = &state;
-+
-+  | lay   sp , -8(sp)
-+  | cefbr f0 ,  r2
-+  | cefbr f1 ,  r3
-+  | fidr  f0 ,  f1
-+  | cfebr r2 ,0,f0
-+  | la    sp,   8(sp)
-+  | br   r14
-+}
-+
-+static void rsb(dasm_State *state) {
-+  dasm_State **Dst = &state;
-+
-+  | lay sp, -4(sp)
-+  | lghi r3, 0x0706
-+  | lghi r4, 0
-+  | iill r4, 6
-+  | iilh r4, 7
-+  | st r4, 0(sp)
-+  | lghi r2, 0
-+  | clm r3, 5, 0(sp)
-+  | jne >1
-+  | lghi r2, 1
-+  |1:
-+  | la sp, 4(sp)
-+  | br r14
-+}
-+
-+static void sqrt_rxe(dasm_State *state)
-+{
-+  dasm_State **Dst = &state;
-+
-+  | lay     sp , -8(sp)
-+  | cefbr   f0 , r2
-+  | stdy    f0 , 0(sp)
-+  | sqeb    f0 ,0(r4,sp)
-+  | cfebr   r2 ,0, f0
-+  | la      sp, 8(sp)
-+  | br      r14
-+
-+}
-+
-+static void rxf(dasm_State *state) {
-+  dasm_State **Dst = &state;
-+
-+  | lay    sp , -8(sp)
-+  | cegbra f1 ,0, r2,0
-+  | cegbra f2 ,0,r3,0
-+  | ste    f2 ,0(sp)
-+  | maeb   f1, f2, 0(sp)
-+  | cfebr  r2 ,0, f1
-+  | la     sp, 8(sp)
-+  | br     r14
-+
-+}
-+
-+typedef struct {
-+  int64_t arg1;
-+  int64_t arg2;
-+  int64_t arg3;
-+  void (*fn)(dasm_State *);
-+  int64_t want;
-+  const char *testname;
-+} test_table;
-+
-+test_table test[] = {
-+  { 1, 2, 0,       add,        3,     "add"},
-+  {10, 5, 0,       sub,        5,     "sub"},
-+  { 2, 3, 0,       mul,        6,     "mul"},
-+  { 5, 7, 0,        rx,    12298,      "rx"},
-+  { 5, 7, 0,       rxy,       10,     "rxy"},
-+  { 2, 4, 0,       lab,       32,     "lab"},
-+  { 2, 4, 0,      labg,       32,    "labg"},
-+  { 2, 0, 0, add_imm16,       17,   "imm16"},
-+  { 2, 0, 0, add_imm32,       16,   "imm32"},
-+  { 7, 3, 0,      save,      480,    "save"},
-+  { 7, 3, 0,    labmul,       21, "labmul0"},
-+  { 7, 0, 0,    labmul,        0, "labmul1"},
-+  { 0, 0, 0,        pc,       55,      "pc"},
-+  { 2,12, 0,   jmp_fwd,       12, "jmp_fwd"},
-+//  { 9,8, 0,    add_rrd,       25, "add_rrd"},
-+//  { 2,4, 0,  load_test,        4,"load_test"},
-+  {-1, 0, 0,       ssa, 65535<<8,     "ssa"},
-+  {-1, 0, 0,   ssa_act, 65535<<8, "ssa_act"},
-+  {27, 0, 0,      type,       27,    "type"},
-+  { 0, 0, 0,       sil,       23,     "sil"},
-+  {15, 3,10,   rrfe_rrd,      45, "rrfe_rrd"},
-+  { 0, 0, 0,        rsb,       0,     "rsb"},
-+  {12,10, 0,        rre,      10,     "rre"},
-+  {16,10, 0,   sqrt_rxe,       4,"sqrt_rxe"},
-+  {16,10, 0,        rxf,     116,     "rxf"},
-+  { 4, 3, 0,  test_mask,       1,"test_mask"}
-+};
-+
-+static void *jitcode(dasm_State **state, size_t *size)
-+{
-+  int dasm_status = dasm_link(state, size);
-+  assert(dasm_status == DASM_S_OK);
-+
-+  void *ret = mmap(0, *size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-+  dasm_encode(state, ret);
-+  dasm_free(state);
-+
-+  mprotect(ret, *size, PROT_READ | PROT_EXEC);
-+  return (int *)ret;
-+}
-+
-+int main(int argc, char *argv[])
-+{
-+  dasm_State *state;
-+  for(int i = 0; i < sizeof(test)/sizeof(test[0]); i++) {
-+    dasm_init(&state, 1);
-+    void* labels[lab__MAX];
-+    dasm_setupglobal(&state, labels, lab__MAX);
-+    dasm_setup(&state, actions);
-+    test[i].fn(state);
-+    size_t size;
-+    int64_t (*fptr)(int64_t, int64_t, int64_t) = jitcode(&state, &size);
-+    int64_t got = fptr(test[i].arg1, test[i].arg2, test[i].arg3);
-+
-+    if (got != test[i].want) {
-+      fprintf(stderr, "FAIL: test %s: want %ld, got %ld\n", test[i].testname, test[i].want, got);
-+      exit(1);
-+    }
-+    munmap(fptr, size);
-+  }
-+  printf("all tests passed\n");
-+  return 0;
-+}
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/host/buildvm_asm.c luajit-2.1.0~beta3+git.1624618403.e9577376/src/host/buildvm_asm.c
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/host/buildvm_asm.c	2021-10-05 12:28:22.786623190 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/host/buildvm_asm.c	2021-10-05 12:36:23.421160526 -0500
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -245,6 +245,9 @@ else
+ ifneq (,$(findstring LJ_TARGET_ARM ,$(TARGET_TESTARCH)))
+   TARGET_LJARCH= arm
+ else
++ifneq (,$(findstring LJ_TARGET_S390X ,$(TARGET_TESTARCH)))
++  TARGET_LJARCH= s390x
++else
+ ifneq (,$(findstring LJ_TARGET_ARM64 ,$(TARGET_TESTARCH)))
+   ifneq (,$(findstring __AARCH64EB__ ,$(TARGET_TESTARCH)))
+     TARGET_ARCH= -D__AARCH64EB__=1
+@@ -273,6 +276,7 @@ else
+ endif
+ endif
+ endif
++endif
+ endif
+ endif
+ endif
+--- a/src/host/buildvm.c
++++ b/src/host/buildvm.c
+@@ -65,6 +65,8 @@ static int collect_reloc(BuildCtx *ctx,
+ #include "../dynasm/dasm_ppc.h"
+ #elif LJ_TARGET_MIPS
+ #include "../dynasm/dasm_mips.h"
++#elif LJ_TARGET_S390X
++#include "../dynasm/dasm_s390x.h"
+ #else
+ #error "No support for this architecture (yet)"
+ #endif
+--- a/src/host/buildvm_asm.c
++++ b/src/host/buildvm_asm.c
 @@ -87,6 +87,54 @@ err:
    }
    fprintf(ctx->fp, "\t%s %s\n", opname, sym);
@@ -2751,7 +2799,7 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/host/buildvm_asm.
  #else
  /* Emit words piecewise as assembler text. */
  static void emit_asm_words(BuildCtx *ctx, uint8_t *p, int n)
-@@ -303,6 +351,9 @@ void emit_asm(BuildCtx *ctx)
+@@ -299,6 +347,9 @@ void emit_asm(BuildCtx *ctx)
  	emit_asm_reloc(ctx, r->type, ctx->relocsym[r->sym]);
        }
        ofs += n+4;
@@ -2761,7 +2809,7 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/host/buildvm_asm.
  #else
        emit_asm_wordreloc(ctx, ctx->code+ofs, n, ctx->relocsym[r->sym]);
        ofs += n;
-@@ -311,6 +362,8 @@ void emit_asm(BuildCtx *ctx)
+@@ -307,6 +358,8 @@ void emit_asm(BuildCtx *ctx)
      }
  #if LJ_TARGET_X86ORX64
      emit_asm_bytes(ctx, ctx->code+ofs, next-ofs);
@@ -2770,26 +2818,12 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/host/buildvm_asm.
  #else
      emit_asm_words(ctx, ctx->code+ofs, next-ofs);
  #endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/host/buildvm.c luajit-2.1.0~beta3+git.1624618403.e9577376/src/host/buildvm.c
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/host/buildvm.c	2021-06-25 05:53:23.000000000 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/host/buildvm.c	2021-10-05 12:36:23.377160294 -0500
-@@ -65,6 +65,8 @@ static int collect_reloc(BuildCtx *ctx,
- #include "../dynasm/dasm_ppc.h"
- #elif LJ_TARGET_MIPS
- #include "../dynasm/dasm_mips.h"
-+#elif LJ_TARGET_S390X
-+#include "../dynasm/dasm_s390x.h"
- #else
- #error "No support for this architecture (yet)"
- #endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/jit/dis_s390x.lua luajit-2.1.0~beta3+git.1624618403.e9577376/src/jit/dis_s390x.lua
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/jit/dis_s390x.lua	1969-12-31 18:00:00.000000000 -0600
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/jit/dis_s390x.lua	2021-10-05 12:36:23.445160653 -0500
+--- /dev/null
++++ b/src/jit/dis_s390x.lua
 @@ -0,0 +1 @@
 +-- Not yet implemented.
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lib_jit.c luajit-2.1.0~beta3+git.1624618403.e9577376/src/lib_jit.c
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lib_jit.c	2021-06-25 05:53:23.000000000 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lib_jit.c	2021-10-05 12:58:31.960174477 -0500
+--- a/src/lib_jit.c
++++ b/src/lib_jit.c
 @@ -718,6 +718,8 @@ static uint32_t jit_cpudetect(void)
      if (x) flags |= JIT_F_MIPSXXR2;  /* Either 0x80000000 (R2) or 0 (R1). */
    }
@@ -2799,9 +2833,8 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lib_jit.c luajit-
  
  #else
  #error "Missing CPU detection for this architecture"
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_arch.h luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_arch.h
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_arch.h	2021-10-05 12:28:22.786623190 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_arch.h	2021-10-05 12:36:23.457160716 -0500
+--- a/src/lj_arch.h
++++ b/src/lj_arch.h
 @@ -31,6 +31,8 @@
  #define LUAJIT_ARCH_mips32	6
  #define LUAJIT_ARCH_MIPS64	7
@@ -2820,7 +2853,7 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_arch.h luajit-
  #elif defined(__ppc__) || defined(__ppc) || defined(__PPC__) || defined(__PPC) || defined(__powerpc__) || defined(__powerpc) || defined(__POWERPC__) || defined(__POWERPC) || defined(_M_PPC)
  #define LUAJIT_TARGET	LUAJIT_ARCH_PPC
  #elif defined(__mips64__) || defined(__mips64) || defined(__MIPS64__) || defined(__MIPS64)
-@@ -428,6 +432,21 @@
+@@ -418,6 +422,21 @@
  #define LJ_ARCH_VERSION		10
  #endif
  
@@ -2842,10 +2875,9 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_arch.h luajit-
  #else
  #error "No target architecture defined"
  #endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_asm.c luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_asm.c
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_asm.c	2021-06-25 05:53:23.000000000 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_asm.c	2021-10-05 12:36:23.389160358 -0500
-@@ -1642,6 +1642,8 @@ static void asm_loop(ASMState *as)
+--- a/src/lj_asm.c
++++ b/src/lj_asm.c
+@@ -1661,6 +1661,8 @@ static void asm_loop(ASMState *as)
  #include "lj_asm_ppc.h"
  #elif LJ_TARGET_MIPS
  #include "lj_asm_mips.h"
@@ -2854,29 +2886,9 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_asm.c luajit-2
  #else
  #error "Missing assembler for target CPU"
  #endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccallback.c luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_ccallback.c
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccallback.c	2021-10-25 16:52:59.684087182 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_ccallback.c	2021-10-25 15:40:46.949027757 -0500
-@@ -566,6 +566,15 @@ void lj_ccallback_mcode_free(CTState *ct
-   if (ctype_isfp(ctr->info) && ctr->size == sizeof(float)) \
-     ((float *)dp)[1] = *(float *)dp;
- 
-+#elif LJ_TARGET_S390X
-+
-+#define CALLBACK_HANDLE_REGARG \
-+  if (isfp) { \
-+    if (nfpr < CCALL_NARG_FPR) { sp = &cts->cb.fpr[nfpr++]; goto done; } \
-+  } else { \
-+    if (ngpr < maxgpr) { sp = &cts->cb.gpr[ngpr++]; goto done; } \
-+  }
-+
- #else
- #error "Missing calling convention definitions for this architecture"
- #endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccall.c luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_ccall.c
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccall.c	2021-10-05 12:28:22.790623212 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_ccall.c	2021-10-05 12:36:23.449160674 -0500
-@@ -653,6 +653,40 @@
+--- a/src/lj_ccall.c
++++ b/src/lj_ccall.c
+@@ -574,6 +574,40 @@
      goto done; \
    }
  
@@ -2917,16 +2929,16 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccall.c luajit
  #else
  #error "Missing calling convention definitions for this architecture"
  #endif
-@@ -1111,7 +1145,7 @@ static int ccall_set_args(lua_State *L,
+@@ -988,7 +1022,7 @@ static int ccall_set_args(lua_State *L,
      CTypeID did;
      CType *d;
      CTSize sz;
 -    MSize n, isfp = 0, isva = 0;
 +    MSize n, isfp = 0, isva = 0, onstack = 0;
      void *dp, *rp = NULL;
- #if LJ_TARGET_PPC && LJ_ARCH_BITS == 64
-     int isf32 = 0;
-@@ -1154,6 +1188,7 @@ static int ccall_set_args(lua_State *L,
+ 
+     if (fid) {  /* Get argument type from field. */
+@@ -1028,6 +1062,7 @@ static int ccall_set_args(lua_State *L,
      CCALL_HANDLE_REGARG  /* Handle register arguments. */
  
      /* Otherwise pass argument on stack. */
@@ -2934,7 +2946,7 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccall.c luajit
      if (CCALL_ALIGN_STACKARG && !rp && (d->info & CTF_ALIGN) > CTALIGN_PTR) {
        MSize align = (1u << ctype_align(d->info-CTALIGN_PTR)) -1;
        nsp = (nsp + align) & ~align;  /* Align argument on stack. */
-@@ -1234,6 +1269,16 @@ static int ccall_set_args(lua_State *L,
+@@ -1069,6 +1104,16 @@ static int ccall_set_args(lua_State *L,
        *(int64_t *)dp = (int64_t)*(int32_t *)dp;  /* Sign-extend to 64 bit. */
      }
  #endif
@@ -2951,10 +2963,9 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccall.c luajit
  #if LJ_TARGET_X64 && LJ_ABI_WIN
      if (isva) {  /* Windows/x64 mirrors varargs in both register sets. */
        if (nfpr == ngpr)
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccall.h luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_ccall.h
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccall.h	2021-10-05 12:28:22.790623212 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_ccall.h	2021-10-05 12:36:23.445160653 -0500
-@@ -139,6 +139,21 @@ typedef union FPRArg {
+--- a/src/lj_ccall.h
++++ b/src/lj_ccall.h
+@@ -126,6 +126,21 @@ typedef union FPRArg {
    struct { LJ_ENDIAN_LOHI(float f; , float g;) };
  } FPRArg;
  
@@ -2976,9 +2987,26 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccall.h luajit
  #else
  #error "Missing calling convention definitions for this architecture"
  #endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_err.c luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_err.c
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_err.c	2021-06-25 05:53:23.000000000 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_err.c	2021-10-05 12:36:23.457160716 -0500
+--- a/src/lj_ccallback.c
++++ b/src/lj_ccallback.c
+@@ -516,6 +516,15 @@ void lj_ccallback_mcode_free(CTState *ct
+   if (ctype_isfp(ctr->info) && ctr->size == sizeof(float)) \
+     ((float *)dp)[1] = *(float *)dp;
+ 
++#elif LJ_TARGET_S390X
++
++#define CALLBACK_HANDLE_REGARG \
++  if (isfp) { \
++    if (nfpr < CCALL_NARG_FPR) { sp = &cts->cb.fpr[nfpr++]; goto done; } \
++  } else { \
++    if (ngpr < maxgpr) { sp = &cts->cb.gpr[ngpr++]; goto done; } \
++  }
++
+ #else
+ #error "Missing calling convention definitions for this architecture"
+ #endif
+--- a/src/lj_err.c
++++ b/src/lj_err.c
 @@ -419,6 +419,9 @@ LJ_FUNCA int lj_err_unwind_dwarf(int ver
    if (version != 1)
      return _URC_FATAL_PHASE1_ERROR;
@@ -2989,10 +3017,9 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_err.c luajit-2
    L = cframe_L(cf);
    if ((actions & _UA_SEARCH_PHASE)) {
  #if LJ_UNWIND_EXT
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_frame.h luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_frame.h
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_frame.h	2021-10-05 12:28:22.794623233 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_frame.h	2021-10-05 12:36:23.453160695 -0500
-@@ -273,6 +273,20 @@ enum { LJ_CONT_TAILCALL, LJ_CONT_FFI_CAL
+--- a/src/lj_frame.h
++++ b/src/lj_frame.h
+@@ -264,6 +264,20 @@ enum { LJ_CONT_TAILCALL, LJ_CONT_FFI_CAL
  #endif
  #define CFRAME_OFS_MULTRES	0
  #define CFRAME_SHIFT_MULTRES	3
@@ -3013,9 +3040,8 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_frame.h luajit
  #else
  #error "Missing CFRAME_* definitions for this architecture"
  #endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_target.h luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_target.h
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_target.h	2021-06-25 05:53:23.000000000 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_target.h	2021-10-05 12:36:23.445160653 -0500
+--- a/src/lj_target.h
++++ b/src/lj_target.h
 @@ -144,6 +144,8 @@ typedef uint32_t RegCost;
  #include "lj_target_ppc.h"
  #elif LJ_TARGET_MIPS
@@ -3025,9 +3051,8 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_target.h luaji
  #else
  #error "Missing include for target CPU"
  #endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_target_s390x.h luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_target_s390x.h
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_target_s390x.h	1969-12-31 18:00:00.000000000 -0600
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_target_s390x.h	2021-10-05 12:36:23.445160653 -0500
+--- /dev/null
++++ b/src/lj_target_s390x.h
 @@ -0,0 +1,80 @@
 +/*
 +** Definitions for IBM z/Architecture (s390x) CPUs.
@@ -3046,7 +3071,7 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_target_s390x.h
 +  _(F0) _(F1) _(F2) _(F3) \
 +  _(F4) _(F5) _(F6) _(F7) \
 +  _(F8) _(F9) _(F10) _(F11) \
-+  _(F12) _(F13) _(F14) _(F15) 
++  _(F12) _(F13) _(F14) _(F15)
 +// TODO: VREG?
 +
 +#define RIDENUM(name)	RID_##name,
@@ -3109,30 +3134,8 @@ diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_target_s390x.h
 +/* -- Instructions -------------------------------------------------------- */
 +
 +#endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/Makefile luajit-2.1.0~beta3+git.1624618403.e9577376/src/Makefile
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/Makefile	2021-10-05 12:28:22.786623190 -0500
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/Makefile	2021-10-05 13:54:29.633902276 -0500
-@@ -245,6 +245,9 @@ else
- ifneq (,$(findstring LJ_TARGET_ARM ,$(TARGET_TESTARCH)))
-   TARGET_LJARCH= arm
- else
-+ifneq (,$(findstring LJ_TARGET_S390X ,$(TARGET_TESTARCH)))
-+  TARGET_LJARCH= s390x
-+else
- ifneq (,$(findstring LJ_TARGET_ARM64 ,$(TARGET_TESTARCH)))
-   ifneq (,$(findstring __AARCH64EB__ ,$(TARGET_TESTARCH)))
-     TARGET_ARCH= -D__AARCH64EB__=1
-@@ -273,6 +276,7 @@ else
- endif
- endif
- endif
-+endif
- endif
- endif
- endif
-diff -urpN luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/vm_s390x.dasc luajit-2.1.0~beta3+git.1624618403.e9577376/src/vm_s390x.dasc
---- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/vm_s390x.dasc	1969-12-31 18:00:00.000000000 -0600
-+++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/vm_s390x.dasc	2021-10-25 16:52:46.620017650 -0500
+--- /dev/null
++++ b/src/vm_s390x.dasc
 @@ -0,0 +1,4261 @@
 +|// Low-level VM code for IBM z/Architecture (s390x) CPUs in LJ_GC64 mode.
 +|// Bytecode interpreter, fast functions and helper functions.

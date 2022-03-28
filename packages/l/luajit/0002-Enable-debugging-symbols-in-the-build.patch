@@ -3,14 +3,12 @@ Date: Tue, 17 Nov 2015 16:27:11 +0100
 Subject: Enable debugging symbols in the build
 
 ---
- src/Makefile | 4 ++--
+ src/Makefile |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/src/Makefile b/src/Makefile
-index 8a38efd..6b73a89 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -54,9 +54,9 @@ CCOPT_arm64=
+@@ -55,9 +55,9 @@ CCOPT_arm64=
  CCOPT_ppc=
  CCOPT_mips=
  #

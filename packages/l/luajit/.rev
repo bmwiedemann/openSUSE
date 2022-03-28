@@ -31,4 +31,94 @@
 </comment>
     <requestid>927861</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b1aa8fec09427ca91bcfc75f1feb721</srcmd5>
+    <version>2.1.0~beta3+git.1647772157.43ebb949</version>
+    <time>1648479493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0~beta3+git.1647772157.43ebb949:
+  * Fix soft-float IR_POW splitting.
+  * Fix BC_UCLO insertion for returns.
+  * Fix compiler warning.
+  * Revert to trival pow() optimizations to prevent inaccuracies.
+  * Fix string buffer COW handling, part 2.
+  * Fix install docs for Android.
+  * *BSD: Fix getentropy() declaration.
+  * Fix string buffer COW handling.
+  * Fix command-line argv handling.
+  * Don't export internal symbol.
+  * Fix pow() optimization inconsistencies.
+  * Always exit after machine code page protection change fails.
+  * Fix FOLD rule for BUFHDR append with intervening buffer use.
+  * Fix compiled error handling for buffer methods.
+  * Prevent unroll across BC_ITERN.
+  * Prevent replay of buffer operation for PHI operands.
+  * Save trace recorder state around VM event call.
+  * Bump copyright date.
+  * FFI: Ensure library is loaded before de-serializing FFI types.
+  * Fix HREFK forwarding vs. table.clear().
+  * Fix FOLD rule for BUFHDR append.
+  * OSX: Disable unreliable assertion for external frame unwinding.
+  * Limit exponent range in number parsing.
+  * Fix tonumber(&quot;-0&quot;) in dual-number mode.
+  * Limit work done in SINK pass.
+  * Fix ABC FOLD rule with constants.
+  * Prevent CSE of a REF_BASE operand across IR_RETF.
+  * Windows: Fix binary output of jit.bcsave to stdout.
+  * Fix FOLD rule for x-0.
+  * Update Android build docs.
+  * Update Android build docs.
+  * ARM64: Fix pcall() error case.
+  * OSX/ARM64: Fix external unwinding.
+  * Fix string buffer method recording.
+  * Fix interaction of profiler and ITERN recording.
+  * Fix compilation of multi-result call to next().
+  * ARM64: Fix IR_HREF code generation.
+  * MIPS64: Fix soft-float IR_TOSTR.
+  * MIPS: Fix register allocation in assembly of HREF.
+  * Fix compiler warning.
+  * Windows/x64: Document MSVC flags for C++ exception interoperability.
+  * FFI: Ensure returned string is alive in ffi.typeinfo().
+  * OSX/ARM64: Disable unwind info.
+  * Fix stack allocation after on-trace stack check.
+  * Fix ITERN blacklisting.
+  * Ensure ITERN forward progress on interpreter bailout.
+  * ARM64: Reorder interpreter stack frame and fix unwinding.
+  * Don't bail out to interpreter to JLOOP originating from ITERN.
+  * FFI: Don't load PC from non-function object in FFI continuation.
+  * FFI: Don't load PC from non-function object in FFI continuation.
+  * FFI: Fix missing cts-&gt;L initialization in argv2ctype().
+  * OSX/ARM64: Disable external unwinding for now.
+  * Compile table traversals: next(), pairs(), BC_ISNEXT/BC_ITERN.
+  * Use IR_HIOP for generalized two-register returns.
+  * Refactor table traversal.
+  * ARM: Fix symbol display in trace disassembly.
+  * Refactor IR_TMPREF generation.
+  * Refactor IR_VLOAD to take an offset.
+  * MIPS: Fix trace linking.
+  * String buffers, part 4b: Improve de-serialization checks.
+  * String buffers, part 4a: Add metatable serialization dictionary.
+  * Consider slots used by upvalues in use-def analysis.
+  * Prevent loop in snap_usedef().
+  * Fix io.close() error message.
+  * Fix io.close().
+  * Fix minilua vararg stack handling.
+  * PS4: Fix compile.
+  * Avoid out-of-range number of results when compiling select(k, ...).
+  * String buffers, part 3d: Compile string buffer methods and functions.
+  * Minor improvements of optimizations.
+  * Fix error message in lj_lib_checkintrange().
+  * String buffers, part 2f: Prevent self-put of buffer.
+  * String buffers, part 3c: Add IRBUFHDR_WRITE mode.
+  * Fix IRXLOAD_* mode bits description.
+  * String buffers, part 3b: Change IR_BUFHDR op2 mode bits to mode.
+  * String buffers, part 3a: Add IR_TMPREF for passing TValues to helpers.
+  * Add IRCONV_NONE for pass-through INT to I64/U64 type change.
+  * Fix jit.dump() output for IR_CONV.
+- Patches broken in the need of rebase (temporarily switched off):
+  - 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+  - luajit-ppc64-replace-asserts.patch
+</comment>
+    <requestid>964404</requestid>
+  </revision>
 </revisionlist>

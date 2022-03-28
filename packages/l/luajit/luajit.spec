@@ -1,7 +1,7 @@
 #
 # spec file for package luajit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define realver -2.1.0-beta3
 
 Name:           luajit
-Version:        2.1.0~beta3+git.1624618403.e9577376
+Version:        2.1.0~beta3+git.1647772157.43ebb949
 Release:        0
 Summary:        JIT compiler for Lua language
 License:        MIT
@@ -34,11 +34,12 @@ Patch0:         luajit-lua-versioned.patch
 Patch2:         0002-Enable-debugging-symbols-in-the-build.patch
 # https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
 Patch3:         0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
-# https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
-Patch4:         0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
-Patch5:         luajit-ppc64-replace-asserts.patch
 # Most recent s390x patches at https://github.com/luajit/luajit/pull/631
-Patch6:         luajit-s390x.patch
+Patch4:         luajit-s390x.patch
+# https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+# Patch again out of sync, gh#LuaJIT/LuaJIT#140
+Patch5:         0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+Patch6:         luajit-ppc64-replace-asserts.patch
 BuildRequires:  pkgconfig
 Requires:       %{name}-%{lib_version}-%{so_version} = %{version}
 Obsoletes:      lua51-luajit <= 2.2.0
@@ -65,7 +66,9 @@ Provides:       libluajit-devel = %{version}
 Devel files for luajit package
 
 %prep
-%autosetup -p1
+%setup -q
+# PPC64 patches are out of sync
+%autopatch -p1 -M 4
 
 # Fix variables
 sed -i "s,PREFIX= %{_prefix}/local,PREFIX= %{_prefix}," Makefile

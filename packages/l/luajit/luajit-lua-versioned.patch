@@ -1,28 +1,12 @@
-Index: LuaJIT-2.1.0-beta3/src/Makefile
-===================================================================
---- LuaJIT-2.1.0-beta3.orig/src/Makefile
-+++ LuaJIT-2.1.0-beta3/src/Makefile
-@@ -15,6 +15,7 @@ MINVER=  1
- RELVER=  0
- ABIVER=  5.1
- NODOTABIVER= 51
-+SUFFIX= 5_1
- 
- ##############################################################################
- #############################  COMPILER OPTIONS  #############################
-@@ -512,7 +513,7 @@ LIB_VMDEFP= $(LIB_VMDEF)
- LUAJIT_O= luajit.o
- LUAJIT_A= libluajit.a
- LUAJIT_SO= libluajit.so
--LUAJIT_T= luajit
-+LUAJIT_T= luajit-$(SUFFIX)
- 
- ALL_T= $(LUAJIT_T) $(LUAJIT_A) $(LUAJIT_SO) $(HOST_T)
- ALL_HDRGEN= lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h \
-Index: LuaJIT-2.1.0-beta3/Makefile
-===================================================================
---- LuaJIT-2.1.0-beta3.orig/Makefile
-+++ LuaJIT-2.1.0-beta3/Makefile
+---
+ Makefile      |   15 ++++++++-------
+ etc/luajit.pc |    2 +-
+ src/Makefile  |    3 ++-
+ src/luaconf.h |    2 +-
+ 4 files changed, 12 insertions(+), 10 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
 @@ -19,6 +19,7 @@ RELVER=  0
  PREREL=  -beta3
  VERSION= $(MAJVER).$(MINVER).$(RELVER)$(PREREL)
@@ -56,7 +40,7 @@ Index: LuaJIT-2.1.0-beta3/Makefile
  INSTALL_ANAME= libluajit-$(ABIVER).a
  INSTALL_SOSHORT1= libluajit-$(ABIVER).so
  INSTALL_SOSHORT2= libluajit-$(ABIVER).so.$(MAJVER)
-@@ -79,7 +80,7 @@ LDCONFIG= ldconfig -n
+@@ -79,7 +80,7 @@ LDCONFIG= ldconfig -n 2>/dev/null
  SED_PC= sed -e "s|^prefix=.*|prefix=$(PREFIX)|" \
              -e "s|^multilib=.*|multilib=$(MULTILIB)|"
  
@@ -74,10 +58,8 @@ Index: LuaJIT-2.1.0-beta3/Makefile
  	cd etc && $(SED_PC) $(FILE_PC) > $(FILE_PC).tmp && \
  	  $(INSTALL_F) $(FILE_PC).tmp $(INSTALL_PC) && \
  	  $(RM) $(FILE_PC).tmp
-Index: LuaJIT-2.1.0-beta3/etc/luajit.pc
-===================================================================
---- LuaJIT-2.1.0-beta3.orig/etc/luajit.pc
-+++ LuaJIT-2.1.0-beta3/etc/luajit.pc
+--- a/etc/luajit.pc
++++ b/etc/luajit.pc
 @@ -10,7 +10,7 @@ multilib=lib
  exec_prefix=${prefix}
  libdir=${exec_prefix}/${multilib}
@@ -87,10 +69,27 @@ Index: LuaJIT-2.1.0-beta3/etc/luajit.pc
  
  INSTALL_LMOD=${prefix}/share/lua/${abiver}
  INSTALL_CMOD=${prefix}/${multilib}/lua/${abiver}
-Index: LuaJIT-2.1.0-beta3/src/luaconf.h
-===================================================================
---- LuaJIT-2.1.0-beta3.orig/src/luaconf.h
-+++ LuaJIT-2.1.0-beta3/src/luaconf.h
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -15,6 +15,7 @@ MINVER=  1
+ RELVER=  0
+ ABIVER=  5.1
+ NODOTABIVER= 51
++SUFFIX= 5_1
+ 
+ ##############################################################################
+ #############################  COMPILER OPTIONS  #############################
+@@ -512,7 +513,7 @@ LIB_VMDEFP= $(LIB_VMDEF)
+ LUAJIT_O= luajit.o
+ LUAJIT_A= libluajit.a
+ LUAJIT_SO= libluajit.so
+-LUAJIT_T= luajit
++LUAJIT_T= luajit-$(SUFFIX)
+ 
+ ALL_T= $(LUAJIT_T) $(LUAJIT_A) $(LUAJIT_SO) $(HOST_T)
+ ALL_HDRGEN= lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h \
+--- a/src/luaconf.h
++++ b/src/luaconf.h
 @@ -37,7 +37,7 @@
  #endif
  #define LUA_LROOT	"/usr/local"
