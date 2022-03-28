@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 20 07:25:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
 Tue Feb  2 17:56:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Set buildshell to bash for "<<<".
