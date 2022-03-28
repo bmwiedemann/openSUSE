@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 20 08:59:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * libserializer-1.1.2-sourcetarget.patch
+    + build with java source/target levels 8
+
+-------------------------------------------------------------------
 Mon Sep 11 16:35:03 UTC 2017 - fstrba@suse.com
 
 - Added patch:
