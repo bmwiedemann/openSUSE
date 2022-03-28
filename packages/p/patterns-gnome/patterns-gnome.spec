@@ -146,6 +146,7 @@ Recommends:     pidgin
 Recommends:     planner
 Recommends:     python3-speechd
 Recommends:     speech-dispatcher
+Recommends:     systemd-icon-branding
 # #608156
 Recommends:     tracker
 Recommends:     tracker-miner-files

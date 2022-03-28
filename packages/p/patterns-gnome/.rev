@@ -285,4 +285,14 @@
     <comment></comment>
     <requestid>954713</requestid>
   </revision>
+  <revision rev="31" vrev="10">
+    <srcmd5>f3c6a04ad7dae6e2e71c0c5412ec407e</srcmd5>
+    <version>20201210</version>
+    <time>1648479609</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend systemd-icon-branding by gnome_x11: try to get the
+  correct branding installed, allowing to show the correct icon in
+  gnome-control-center.</comment>
+    <requestid>964810</requestid>
+  </revision>
 </revisionlist>
