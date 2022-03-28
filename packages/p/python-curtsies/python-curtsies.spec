@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-curtsies
-Version:        0.3.5
+Version:        0.3.10
 Release:        0
 Summary:        Curses-like terminal wrapper, with colored strings!
 License:        MIT
