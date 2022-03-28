@@ -30,4 +30,12 @@
     <comment>Fix build with java 9</comment>
     <requestid>523304</requestid>
   </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>777e8782b7b15b131b6a1ac85fe7dc68</srcmd5>
+    <version>1.1.3</version>
+    <time>1648479578</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963354</requestid>
+  </revision>
 </revisionlist>
