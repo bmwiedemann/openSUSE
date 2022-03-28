@@ -4119,4 +4119,13 @@ I cannot test locally unfortunately.
     Use-after-free in WebGPU IPC Framework</comment>
     <requestid>960657</requestid>
   </revision>
+  <revision rev="276" vrev="2">
+    <srcmd5>18a7484fb1d43d8b9474e979cc0f24cc</srcmd5>
+    <version>91.7.0</version>
+    <time>1648479597</time>
+    <user>dimstar_suse</user>
+    <comment>- skip slow workers, this is a tough build job 
+</comment>
+    <requestid>964779</requestid>
+  </revision>
 </revisionlist>

@@ -8,6 +8,7 @@
       <size unit="G">9</size>
     </memory>
   </hardware>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
   <overwrite>
     <conditions>
       <arch>armv6l</arch>

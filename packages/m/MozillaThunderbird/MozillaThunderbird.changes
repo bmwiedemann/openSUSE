@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 17 14:39:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip slow workers, this is a tough build job 
+
+-------------------------------------------------------------------
 Sun Mar  6 13:02:02 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.7.0
