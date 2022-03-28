@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 17 05:53:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upsteam version 2.6.1
+- Modified patch:
+  * hsqldb-apidocs.patch
+    + adapt to changed context
+- Removed patches:
+  * hsqldb-2.4.1-javadoc10.patch
+  * hsqldb-cmdline.patch
+    + not needed with this version
+- Added patch:
+  * hsqldb-mdescriptor.patch
+    + module descriptor needs to be built with at least
+      source/target level 9
+
+-------------------------------------------------------------------
 Wed Sep 22 08:34:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

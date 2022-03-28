@@ -1,7 +1,7 @@
 #
 # spec file for package hsqldb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           hsqldb
-Version:        2.4.1
+Version:        2.6.1
 Release:        0
 Summary:        HyperSQL Database Engine
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ Source1:        hsqldb-1.8.0-standard.cfg
 Source2:        hsqldb-1.8.0-standard-server.properties
 Source3:        hsqldb-1.8.0-standard-webserver.properties
 Source4:        hsqldb-1.8.0-standard-sqltool.rc
-Source5:        http://www.hsqldb.org/repos/org/hsqldb/hsqldb/%{version}/hsqldb-%{version}.pom
+Source5:        https://repo1.maven.org/maven2/org/hsqldb/hsqldb/%{version}/hsqldb-%{version}.pom
 # Custom systemd files - talking with upstream about incorporating them, see
 # http://sourceforge.net/projects/hsqldb/forums/forum/73673/topic/5367103
 Source6:        hsqldb.systemd
@@ -42,10 +42,7 @@ Source8:        hsqldb-post
 Source9:        hsqldb-stop
 # Javadoc fails to create since apidocs folder is deleted and not recreated
 Patch0:         %{name}-apidocs.patch
-# Package org.hsqldb.cmdline was only compiled with java 1.5
-Patch1:         %{name}-cmdline.patch
-# Jdk10's javadoc ends up in error when a remote url cannot be reached
-Patch2:         hsqldb-2.4.1-javadoc10.patch
+Patch1:         %{name}-mdescriptor.patch
 Patch3:         harden_hsqldb.service.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -129,7 +126,6 @@ sed -i -e 's|doc/apidocs|%{_javadocdir}/%{name}|g' index.html
 
 %patch0 -p1
 %patch1 -p1
-%patch2 -p2
 %patch3 -p2
 
 %build

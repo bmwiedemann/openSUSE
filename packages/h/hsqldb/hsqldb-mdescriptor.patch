@@ -1,0 +1,11 @@
+--- a/build/build.xml	2021-07-19 10:09:56.000000000 +0200
++++ b/build/build.xml	2022-03-17 06:44:51.105907875 +0100
+@@ -676,6 +676,8 @@
+       <mkdir dir='classes/modules/${module.name}'/>
+       <javac srcdir="${swsrc}/modules/${module.name}"
+              sourcepath="${swsrc}"
++             source="9"
++             target="9"
+              includeantruntime="false"
+              encoding="${javac.encoding}"
+              destdir="classes/modules/${module.name}"
