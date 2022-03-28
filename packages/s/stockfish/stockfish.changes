@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 27 18:37:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.1:
+  Compared to Stockfish 14, this release introduces a more advanced NNUE
+  architecture and various search improvements. In self play testing, using a
+  book of balanced openings, Stockfish 14.1 wins three times more game pairs than
+  it loses. At this high level, draws are very common, so the Elo difference to
+  Stockfish 14 is about 17 Elo
+
+-------------------------------------------------------------------
 Fri Jul  9 08:34:14 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Update to version 14:
