@@ -1,7 +1,7 @@
 #
 # spec file for package rspamd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -380,6 +380,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/aws_s3.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/arc.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/asn.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/bimi.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/chartable.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/clickhouse.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/dcc.conf
@@ -428,6 +429,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 
 %dir %{_datadir}/rspamd
 %{_datadir}/rspamd/aws_s3.lua
+%{_datadir}/rspamd/bimi.lua
 %{_datadir}/rspamd/effective_tld_names.dat
 %{_datadir}/rspamd/external_relay.lua
 %{_datadir}/rspamd/http_headers.lua
@@ -539,6 +541,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %dir %{_datadir}/rspamd/lualib/lua_scanners
 %{_datadir}/rspamd/lualib/lua_scanners/avast.lua
 %{_datadir}/rspamd/lualib/lua_scanners/clamav.lua
+%{_datadir}/rspamd/lualib/lua_scanners/cloudmark.lua
 %{_datadir}/rspamd/lualib/lua_scanners/common.lua
 %{_datadir}/rspamd/lualib/lua_scanners/dcc.lua
 %{_datadir}/rspamd/lualib/lua_scanners/fprot.lua
@@ -577,6 +580,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/lualib/rspamadm/grep.lua
 %{_datadir}/rspamd/lualib/rspamadm/keypair.lua
 %{_datadir}/rspamd/lualib/rspamadm/mime.lua
+%{_datadir}/rspamd/lualib/rspamadm/publicsuffix.lua
 %{_datadir}/rspamd/lualib/rspamadm/rescore.lua
 %{_datadir}/rspamd/lualib/rspamadm/stat_convert.lua
 %{_datadir}/rspamd/lualib/rspamadm/statistics_dump.lua
