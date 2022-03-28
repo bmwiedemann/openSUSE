@@ -776,4 +776,14 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
   (CVE-2022-27227, bsc#1197525)</comment>
     <requestid>964869</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>17859226eb6aca0a955fece897a362b6</srcmd5>
+    <version>4.6.1</version>
+    <time>1648479670</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for SLE12
+- Remove dependency on protobuf since pdns now includes protozero
+- Add bundled provides to spec file</comment>
+    <requestid>965363</requestid>
+  </revision>
 </revisionlist>

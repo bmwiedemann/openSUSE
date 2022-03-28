@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 28 10:19:53 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Fix build for SLE12
+- Remove dependency on protobuf since pdns now includes protozero
+- Add bundled provides to spec file
+
+-------------------------------------------------------------------
 Fri Mar 25 13:17:15 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Update to 4.6.1

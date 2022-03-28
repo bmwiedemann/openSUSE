@@ -34,11 +34,6 @@
 %bcond_with    pdns_geoip
 %bcond_with    pdns_ixfrdist
 %endif
-%if 0%{?suse_version} > 1315 || 0%{?is_opensuse}
-%bcond_without pdns_protobuf
-%else
-%bcond_with    pdns_protobuf
-%endif
 %bcond_without pdns_tools
 %bcond_without pdns_pkcs11
 %bcond_without pdns_zeromq
@@ -46,6 +41,13 @@
 %bcond_without pdns_lmdb
 %else
 %bcond_with    pdns_lmdb
+%endif
+
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc9-c++
+%define compiler_ver -9
+%else
+BuildRequires:  gcc-c++
 %endif
 
 %define services %{name}.service %{name}@.service %{?ixfrdist_services}
@@ -105,9 +107,6 @@ BuildRequires:  openldap2-devel
 BuildRequires:  openldap-devel
 %endif
 #BuildRequires:  ragel
-%if %{with pdns_protobuf}
-BuildRequires:  protobuf-devel
-%endif
 %if %{with pdns_sqlite3}
 BuildRequires:  sqlite-devel >= 3
 %endif
@@ -135,6 +134,13 @@ Requires(pre):  pdns-common
 Requires:       pdns-common
 # dropped with version 4.3.0
 Obsoletes:      pdns-backend-mydns < %{version}
+
+Provides:       bundled(ipcrypt)
+Provides:       bundled(json11)
+Provides:       bundled(lmdb-safe)
+Provides:       bundled(luawrapper)
+Provides:       bundled(protozero) = 1.70
+Provides:       bundled(yahttp)
 
 %description
 The PowerDNS Nameserver is a authoritative-only nameserver.
@@ -257,6 +263,7 @@ This package holds the LMDB backend for pdns.
 %autosetup -n %{name}-%{version} -p1
 
 %build
+export CXX=g++%{?compiler_ver}
 %configure \
   --docdir=%{_docdir}/%{name}/ \
   --disable-silent-rules \
@@ -267,9 +274,6 @@ This package holds the LMDB backend for pdns.
   --with-service-user=pdns \
   --with-service-group=pdns \
   --with-socketdir=/run/ \
-%if %{with pdns_protobuf}
-  --with-protobuf \
-%endif
   --sysconfdir=%{_sysconfdir}/%{name} \
   --libdir=%{_libdir} \
   --with-mysql-lib=%{_libdir} \
@@ -386,10 +390,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/zone2json
 %{_sbindir}/rcpdns
 %{_sbindir}/pdns_server
-%if %{with pdns_protobuf}
 %{_bindir}/dnspcap2protobuf
 %{_mandir}/man1/dnspcap2protobuf.1%{?ext_man}
-%endif
 %{_mandir}/man1/dnsbulktest.1%{?ext_man}
 %{_mandir}/man1/dnspcap2calidns.1%{?ext_man}
 %{_mandir}/man1/dnsgram.1%{?ext_man}
