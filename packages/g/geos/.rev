@@ -184,4 +184,23 @@
 - Update project and download URL</comment>
     <requestid>942907</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cc9644b167185693d8610f351c2bf7e4</srcmd5>
+    <version>3.10.2</version>
+    <time>1648479661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.10.2:
+  * Fix crash in MonotoneChain with empty CoordinateSequence (GH-539, Sandro Santilli)
+  * Fix crash in GeoJSONWriter in case of empty points (TRAC-1139, Paul Ramsey)
+  * Improve BuildArea performance (TRAC-1122, Sandro Santilli)
+  * Fix unaryUnion to avoid segfault with empty polygon (GH-501, Mike Taves)
+  * Fix memory leak on exception in prepared geometry (GH-506, Dan Baston)
+  * Iterator invalidation in rare cases (GH-508, Momtchil Momtchev)
+  * Infinite loop on collapsed input to MaximumInscribedCircle (Paul Ramsey)
+  * Write LinearRing to GeoJSON as LineString (TRAC-1140, Paul Ramsey)
+  * Fix PolygonEarClipper to handle collapsed corners (GH-526, Martin Davis)
+  * Fix GEOSSTRtree_remove for empty tree (GH-544, Dan Baston)
+  * Fix crash on query of STRtree with removed items (GH-545, Dan Baston)</comment>
+    <requestid>965315</requestid>
+  </revision>
 </revisionlist>
