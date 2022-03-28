@@ -17,7 +17,7 @@
 
 
 %define gnutls_sover 30
-%define gnutlsxx_sover 28
+%define gnutlsxx_sover 30
 %define gnutls_dane_sover 0
 # unbound isn't in SLE (bsc#1086428)
 %if 0%{?is_opensuse}
@@ -34,7 +34,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.7.3
+Version:        3.7.4
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -47,6 +47,9 @@ Source3:        baselibs.conf
 Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch1:         gnutls-3.6.6-set_guile_site_dir.patch
 Patch2:         gnutls-FIPS-TLS_KDF_selftest.patch
+Patch3:         gnutls-FIPS-disable-failing-tests.patch
+#PATCH-FIX-SUSE bsc#1184669 FIPS: Additional PBKDF2 requirements for KAT
+Patch4:         gnutls-FIPS-PBKDF2-KAT-requirements.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -250,8 +253,6 @@ export BRP_FIPSHMAC_FILES=%{buildroot}%{_libdir}/libgnutls.so.%{gnutls_sover}
 # install docs
 mkdir -p %{buildroot}%{_docdir}/libgnutls-devel/
 cp doc/gnutls.html doc/*.png %{buildroot}%{_docdir}/libgnutls-devel/
-mkdir -p %{buildroot}%{_docdir}/libgnutls-devel/reference
-cp doc/reference/html/* %{buildroot}%{_docdir}/libgnutls-devel/reference/
 mkdir -p %{buildroot}%{_docdir}/libgnutls-devel/examples
 cp doc/examples/*.{c,h} %{buildroot}%{_docdir}/libgnutls-devel/examples/
 
@@ -265,8 +266,12 @@ rm -rf %{buildroot}%{_datadir}/doc/gnutls
 
 %check
 %if ! 0%{?qemu_user_space_build}
-# export GNUTLS_FORCE_FIPS_MODE=1
 make %{?_smp_mflags} check GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
+    find -name test-suite.log -print -exec cat {} +
+    exit 1
+}
+#Run the regression tests also in FIPS mode
+GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
     find -name test-suite.log -print -exec cat {} +
     exit 1
 }

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 18 18:31:06 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Additional PBKDF2 requirements for KAT [bsc#1184669]
+  * The IG 10.3.A and SP800-132 require some minimum parameters for
+    the salt length, password length and iteration count. These
+    parameters should be also used in the KAT.
+  * Add gnutls-FIPS-PBKDF2-KAT-requirements.patch
+- Enable to run the regression tests also in FIPS mode.
+
+-------------------------------------------------------------------
+Fri Mar 18 08:59:49 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.7.4:
+  * libgnutls: Added support for certificate compression as defined
+    in RFC8879.
+  * certtool: Added option --compress-cert that allows user to
+    specify compression  methods for certificate compression.
+  * libgnutls: GnuTLS can now be compiled with --enable-strict-x509
+    configure option to enforce stricter certificate sanity checks
+    that are compliant with RFC5280.
+  * libgnutls: Removed IA5String type from DirectoryString within
+    issuer and subject name to make DirectoryString RFC5280 compliant.
+  * libgnutls: Added function to retrieve the name of current
+    ciphersuite from session.
+  * Bump libgnutlsxx soname due to ABI break
+  * API and ABI modifications:
+    - GNUTLS_COMP_BROTLI: New gnutls_compression_method_t enum member
+    - GNUTLS_COMP_ZSTD: New gnutls_compression_method_t enum member
+    - gnutls_compress_certificate_get_selected_method: Added
+    - gnutls_compress_certificate_set_methods: Added
+  * Update gnutls.keyring
+
+-------------------------------------------------------------------
 Sun Feb 27 07:52:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - build with lto
@@ -92,6 +125,7 @@ Tue Jan 18 15:59:11 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 Tue Jan 18 14:41:04 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Fix regression tests in fips and non-fips mode [bsc#1194468]
+  * Add gnutls-FIPS-disable-failing-tests.patch
   * Remove patches:
     - gnutls-temporarily_disable_broken_guile_reauth_test.patch
     - disable-psk-file-test.patch

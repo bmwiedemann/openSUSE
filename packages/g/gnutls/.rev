@@ -1504,4 +1504,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>960464</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>909bafb99c4150bd255d8290f78a5003</srcmd5>
+    <version>3.7.4</version>
+    <time>1648479519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964662</requestid>
+  </revision>
 </revisionlist>
