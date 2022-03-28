@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 23 19:39:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 4.1.0:
+  + Various OSS-Fuzz fixes
+  + Make fallback vertical-origin match FreeType’s
+  + Treat visible viramas like dependent vowels in USE shaper
+  + Apply presentation forms features and discretionary features in
+    one go in Indic shaper, which seems to match Uniscribe and
+    CoreText behaviour
+  + Various bug fixes
+
+-------------------------------------------------------------------
 Sat Mar 12 21:21:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 4.0.1:
