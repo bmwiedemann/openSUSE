@@ -1,7 +1,7 @@
 #
 # spec file for package hamcrest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,10 @@ Patch6:         %{name}-%{version}-javadoc9.patch
 Patch7:         %{name}-%{version}-javadoc10.patch
 Patch8:         %{name}-%{version}-random-build-crash.patch
 Patch9:         hamcrest-reproducible-builds.patch
+Patch10:        hamcrest-matchers.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  qdox >= 2.0
 Requires:       %{name}-core = %{version}-%{release}
@@ -114,12 +116,13 @@ rm -fr hamcrest-integration/src/main/java/org/hamcrest/EasyMock2Matchers.java
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 sed -i 's/\r//' LICENSE.txt
 
 %build
 export CLASSPATH=$(build-classpath qdox)
-ant -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 -Dversion=%{version} -Dbuild.sysclasspath=last clean core generator library bigjar javadoc
+ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 -Dversion=%{version} -Dbuild.sysclasspath=last clean core generator library bigjar javadoc
 
 # inject OSGi manifests
 jar ufm build/%{name}-core-%{version}.jar %{SOURCE8}
