@@ -160,4 +160,12 @@
     <comment>Fix build with new rpm</comment>
     <requestid>755691</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fee6c8f09667f895b7a0b34af34713b0</srcmd5>
+    <version>2.5.0</version>
+    <time>1648479582</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk17</comment>
+    <requestid>964692</requestid>
+  </revision>
 </revisionlist>
