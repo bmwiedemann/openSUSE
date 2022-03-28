@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 24 10:18:36 UTC 2022 - pgajdos@suse.com
+
+- version update to 7.1.5
+  7.1.5
+  -----
+  Add AssumeRoleWithCertificate credential provider. by @balamurugana in #1182
+  7.1.4
+  -----
+  docs: fix typo in object_lock config function name by @harshavardhana in #1176
+  fix progress bar division by zero error by @harshavardhana in #1177
+  Add policy unset method to minio admin by @federicober in #1180
+  fix: lint checks and enable MINIO_CI_CD=1 for functional tests by @harshavardhana in #1181
+  7.1.3
+  -----
+  Update set_object_lock_config.py by @anooptp in #1170
+  fix finding user's home directory in AWSConfigProvider/MinioClientConfigProvider by @nfioraio-ec in #1175
+  fix EnvAWSProvider/EnvMinioProvider to fetch access/secret keys and session token always from os.environ by @nfioraio-ec in #1174
+  7.1.2
+  -----
+  fix: do not enforce role value for replicationConfig (#1166) (11/24/21) (Harshavardhana)
+  fix: canonical request path if empty choose '/' (#1165) (11/24/21) (Harshavardhana)
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Sun Oct 24 23:25:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.1.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-minio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-minio
-Version:        7.1.1
+Version:        7.1.5
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0
@@ -38,7 +38,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
@@ -63,6 +62,8 @@ sed -i -e '/configparser/d' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/minio/minio-py/issues/1187
+sed -i 's:import mock:import unittest.mock as mock:' tests/unit/*.py
 %pytest
 
 %files %{python_files}
