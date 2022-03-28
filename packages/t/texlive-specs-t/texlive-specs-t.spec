@@ -3963,6 +3963,9 @@ License:        BSD-3-Clause
 Summary:        A TeX system for publishing in Japanese
 Group:          Productivity/Publishing/TeX/Base
 URL:            http://www.tug.org/texlive/
+Obsoletes:      texlive-ptex-doc
+Provides:       texlive-ptex-doc:%{_mandir}/man1/makejvf.1%{?ext_man}
+Provides:       texlive-ptex-doc:%{_mandir}/man1/makejvf.1%{?ext_man}
 Requires:       texlive-cm >= %{texlive_version}
 #!BuildIgnore: texlive-cm
 Requires:       texlive-etex >= %{texlive_version}
