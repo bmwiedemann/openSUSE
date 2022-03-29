@@ -834,4 +834,12 @@ run -osc service localrun format_spec_file to fix copyright
   * Starred items not being synchronized to NextCloud News (#743)</comment>
     <requestid>943797</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>457082ace84c220dd3e7c52633f44c1a</srcmd5>
+    <version>2.27</version>
+    <time>1648570501</time>
+    <user>dimstar_suse</user>
+    <comment>build fixed</comment>
+    <requestid>965450</requestid>
+  </revision>
 </revisionlist>
