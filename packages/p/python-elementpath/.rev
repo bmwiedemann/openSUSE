@@ -143,4 +143,16 @@
   * Last release for Python 3.6</comment>
     <requestid>934521</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7d1aec5b4809f8380080e20542c347a4</srcmd5>
+    <version>2.5.0</version>
+    <time>1648570440</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * Add XPath 3.0 support
+  * Better use of lxml.etree features
+  * Full coverage of W3C tests
+  * Drop support for Python 3.6</comment>
+    <requestid>965099</requestid>
+  </revision>
 </revisionlist>

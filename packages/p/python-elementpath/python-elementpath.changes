@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 26 21:23:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Add XPath 3.0 support
+  * Better use of lxml.etree features
+  * Full coverage of W3C tests
+  * Drop support for Python 3.6
+
+-------------------------------------------------------------------
 Mon Nov 29 11:24:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:
