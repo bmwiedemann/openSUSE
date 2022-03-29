@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 28 18:05:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.2:
+  * fix: deploy commands not using screenbuff (#2441)
+  * fix: auth error on stack (#2439)
+  * fix: fail if depending svc has been restarted 3 times (#2402)
+  * fix: apply optimisation on compose deploys (#2434)
+  * Partially restore #2427. Update only the configmap for a running installer if it is a git deploy (#2437)
+  * build(deps): Bump github/super-linter from 4.9.0 to 4.9.1 (#2438)
+  * Reduce "Information" messages about images not built (#2436)
+  * Update help message of the "okteto build -f"  flag (#2432)
+  * Include the filename in the configmap for destroy command (#2433)
+  * fix: skip non existant folder on volume mounts (#2426)
+  * Jlopezbarb/fix manifest init image (#2431)
+  * Don't bypass "not-found-error" when destroying preview (#2387)
+  * Allow to update an existing configmap even if it is managed by an installer (#2427)
+  * Remove warning if "deploy" doesn't deploy anything (#2429)
+  * fix: volume mounts not pushing into global (#2425)
+  * Make option to destroy "dependencies" on "okteto destroy" (#2428)
+  * feat: add services to deploy on deploy command (#2424)
+  * fix: remove unused comments
+  * Jlopezbarb/fix init  (#2417)
+  * feat: add test checking env var expansion (#2418)
+  * Jlopezbarb/add deploy labels and annotations (#2421)
+  * fix: add manifest field to cfgmap in infered manifest (#2423)
+  * Update messages about global registry (#2415)
+  * fix: integration test (#2414)
+  * Tag image with manifest name (#2413)
+  * Update installation links (#2407)
+
+-------------------------------------------------------------------
 Tue Mar 22 16:23:02 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.0.1:
