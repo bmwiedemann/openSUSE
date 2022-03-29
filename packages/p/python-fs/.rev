@@ -117,4 +117,18 @@
   * Fixed precision bug for timestamps in `fs.OSFS.setinfo`.</comment>
     <requestid>946651</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>082f1bf7db39a6bc75bb356f1f41807b</srcmd5>
+    <version>2.4.15</version>
+    <time>1648570442</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.15:
+  - Support more lenient usernames and group names in FTP servers
+  - Fixed `MemoryFS.move` and `MemoryFS.movedir` not updating the name of moved
+    resources, causing `MemoryFS.scandir` to use the old name.
+  - Make `WrapFS.move` and `WrapFS.movedir` use the delegate FS methods instead
+    of `fs.move` functions, which was causing optimized implementation of 
+   `movedir` to be always skipped.</comment>
+    <requestid>965110</requestid>
+  </revision>
 </revisionlist>
