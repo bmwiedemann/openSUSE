@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 23 09:02:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add file-5.41-cache-regexps-locale-restore.patch to restore
+  previous locale handling behavior 
+
+-------------------------------------------------------------------
+Sat Mar 19 18:00:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add file-5.41-cache-regexps.patch to cache regexp lookups 
+
+-------------------------------------------------------------------
 Thu Feb 24 10:05:17 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Reenable libseccomp sandboxing 

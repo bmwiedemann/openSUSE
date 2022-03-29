@@ -1464,4 +1464,17 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   file 5.41</comment>
     <requestid>957248</requestid>
   </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>8cc2e28195ea24670ae2d5cc32e8b89b</srcmd5>
+    <version>5.41</version>
+    <time>1648570423</time>
+    <user>dimstar_suse</user>
+    <comment>- add file-5.41-cache-regexps-locale-restore.patch to restore
+  previous locale handling behavior 
+
+- add file-5.41-cache-regexps.patch to cache regexp lookups 
+
+- spec-cleaner run</comment>
+    <requestid>964719</requestid>
+  </revision>
 </revisionlist>

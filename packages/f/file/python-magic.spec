@@ -19,25 +19,23 @@
 # PyPI package name is file-magic. Version is taken from setup.py
 %define file_magic_version 0.3.0
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
+%global         _miscdir    %{_datadir}/misc
 Name:           python-magic
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  findutils
-BuildRequires:  libtool
-BuildRequires:  python-rpm-macros
-BuildRequires:  zlib-devel
-URL:            http://www.darwinsys.com/file/
 Version:        5.41
 Release:        0
 Summary:        Python module to use libmagic
 License:        BSD-3-Clause AND BSD-4-Clause
 Group:          Development/Languages/Python
-%{expand:%(sed -n -e '/^Source0\?:/,/^BuildRoot:/p' <%{_sourcedir}/file.spec)}
+URL:            https://www.darwinsys.com/file/
 Source99:       file.spec
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  findutils
+BuildRequires:  libtool
+BuildRequires:  python-rpm-macros
+BuildRequires:  zlib-devel
 Requires:       libmagic1
 Provides:       python-file-magic = %{file_magic_version}
-%global         _miscdir    %{_datadir}/misc
-
+%{expand:%(sed -n -e '/^Source0\?:/,/^BuildRoot:/p' <%{_sourcedir}/file.spec)}
 %python_subpackages
 
 %description
@@ -58,7 +56,6 @@ pushd python
 popd
 
 %files %{python_files}
-%defattr(-,root,root)
 %doc python/README python/example.py
 %{python_sitelib}/magic.py*
 %pycache_only %{python_sitelib}/__pycache__

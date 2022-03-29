@@ -62,7 +62,9 @@ Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch34:        file-5.23-endian.patch
 Patch37:        file-secure_getenv.patch
+Patch38:        file-5.41-cache-regexps.patch
 Patch39:        file-5.28-btrfs-image.dif
+Patch40:        file-5.41-cache-regexps-locale-restore.patch
 # Upstream commits as patches
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
@@ -125,7 +127,9 @@ to develop applications that require the magic "file" interface.
 %patch32 -p0 -b .clicfs
 %patch34 -p0 -b .endian
 %patch37 -p1 -b .getenv
+%patch38 -p1 -b .regexp
 %patch39 -p1 -b .btrfs
+%patch40 -p1 -b .locale
 %patch -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
