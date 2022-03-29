@@ -617,4 +617,15 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
   is not trusted. (bsc#1197525, CVE-2022-27227)</comment>
     <requestid>964870</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>00d0cb599d75df7d3dc4f6399ea61820</srcmd5>
+    <version>4.6.1</version>
+    <time>1648570562</time>
+    <user>dimstar_suse</user>
+    <comment>- fix building against sle-12 backports with gcc-9
+- remove obsolete BR on protobuf
+- add bundled information to the spec file
+- boost_context.patch: Boost.Context detection fix on SLE12</comment>
+    <requestid>965587</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 28 11:32:50 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- fix building against sle-12 backports with gcc-9
+- remove obsolete BR on protobuf
+- add bundled information to the spec file
+- boost_context.patch: Boost.Context detection fix on SLE12
+
+-------------------------------------------------------------------
 Fri Mar 25 13:21:47 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.6.1

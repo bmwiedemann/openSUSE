@@ -24,12 +24,6 @@
 %bcond_without systemd_separetedlibs
 %endif
 
-%if 0%{?suse_version} > 1315 || 0%{?is_opensuse}
-%bcond_without pdns_protobuf
-%else
-%bcond_with    pdns_protobuf
-%endif
-
 Name:           pdns-recursor
 Version:        4.6.1
 Release:        0
@@ -42,8 +36,8 @@ ExclusiveArch:  no-32bit-build
 %endif
 
 %if 0%{?suse_version} < 1500
-BuildRequires:  gcc7-c++
-%define compiler_ver -7
+BuildRequires:  gcc9-c++
+%define compiler_ver -9
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -66,15 +60,19 @@ PreReq:         shadow
 %else
 PreReq:         shadow-utils
 %endif
-%if %{with pdns_protobuf}
-BuildRequires:  protobuf-devel
-%endif
 BuildRequires:  pkgconfig(systemd)
 %if %{with systemd_separetedlibs}
 BuildRequires:  pkgconfig(libsystemd)
 %endif
 %{?systemd_ordering}
 PreReq:         pdns-common
+
+Provides:       bundled(json11)
+Provides:       bundled(luawrapper)
+Provides:       bundled(probds)
+Provides:       bundled(protozero) = 1.70
+Provides:       bundled(yahttp)
+
 #
 URL:            https://www.powerdns.com/
 Source:         https://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
@@ -82,6 +80,7 @@ Source10:       https://downloads.powerdns.com/releases/%{name}-%{version}.tar.b
 Source11:       https://powerdns.com/powerdns-keyblock.asc#/pdns-recursor.keyring
 Source1:        pdns-recursor.init
 Source2:        recursor.conf
+Patch1:         boost_context.patch
 #
 Summary:        Modern, advanced and high performance recursing/non authoritative nameserver
 License:        GPL-2.0-or-later
@@ -97,7 +96,7 @@ Authors:
     http://www.powerdns.com
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -p1
 
 %build
 export CXX=g++%{?compiler_ver}
@@ -108,9 +107,6 @@ ln effective_tld_names.dat effective_tld_list.dat
   --disable-silent-rules             \
   --bindir=%{_sbindir}               \
   --sysconfdir=%{_sysconfdir}/pdns/  \
-%if %{with dnsdist_protobuf}
-  --with-protobuf \
-%endif
   --with-lua                         \
   --with-socketdir=%{_rundir}        \
   --with-service-user=pdns           \
