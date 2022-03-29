@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 20 10:22:08 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 5.64:
+  This is another release mostly with bug fixes on HOG, GATT, A2DP,
+  Media, AVDTP, AVRCP, and scanning failure.
+  This release includes a fix for building with old glibc (< 2.25)
+  and other minor issues found with the static code analyzing tool.
+  ISO packet support is added to the emulator as a part of LE Audio
+  development.
+- removed obsoleted 0002-Use-g_memdup2-everywhere.patch
+
+-------------------------------------------------------------------
 Sun Mar  6 20:53:09 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Add code to restore user modifications for modprobe.d %config files
