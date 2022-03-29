@@ -17,12 +17,13 @@
 
 
 Name:           hawtjni-maven-plugin
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        Use HawtJNI from a maven plugin
 License:        Apache-2.0 AND EPL-1.0 AND BSD-3-Clause
 URL:            https://github.com/fusesource/hawtjni
 Source0:        https://github.com/fusesource/hawtjni/archive/hawtjni-project-%{version}.tar.gz
+Patch0:         use-commons-lang3.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
@@ -57,6 +58,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n hawtjni-hawtjni-project-%{version}
+%patch0 -p1
 
 # We build only the maven plugin in this one
 %pom_disable_module hawtjni-example

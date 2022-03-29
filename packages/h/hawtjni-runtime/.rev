@@ -65,4 +65,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964408</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>374388dea30d21e563984b00518f95bd</srcmd5>
+    <version>1.18</version>
+    <time>1648580814</time>
+    <user>dimstar_suse</user>
+    <comment>1.18 + migrate out of apache-commons-lang</comment>
+    <requestid>965687</requestid>
+  </revision>
 </revisionlist>

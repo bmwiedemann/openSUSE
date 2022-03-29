@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 28 18:09:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.18
+- Added patch:
+  * use-commons-lang3.patch
+    + use commons-lang3 instead of the old commons-lang
+
+-------------------------------------------------------------------
 Wed Mar 23 23:25:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8
