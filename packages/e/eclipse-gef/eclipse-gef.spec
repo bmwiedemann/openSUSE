@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-gef
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,9 @@ BuildRequires:  eclipse-pde
 BuildRequires:  maven-antrun-plugin
 BuildRequires:  maven-dependency-plugin
 BuildRequires:  tycho
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 Requires:       eclipse-platform
 BuildArch:      noarch
 # Upstream Eclipse no longer supports non-64bit arches
