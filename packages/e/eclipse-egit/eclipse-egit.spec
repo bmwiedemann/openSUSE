@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-egit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,9 @@ BuildRequires:  eclipse-platform-bootstrap
 BuildRequires:  fdupes
 BuildRequires:  maven-antrun-plugin
 BuildRequires:  tycho
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 #!BuildIgnore:  eclipse-jdt
 #!BuildIgnore:  eclipse-platform
 #!BuildIgnore:  tycho-bootstrap

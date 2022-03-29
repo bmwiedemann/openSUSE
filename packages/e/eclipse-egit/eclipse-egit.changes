@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 14:00:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with Java 11, since tycho is not knowing about any
+  Java >= 15
+
+-------------------------------------------------------------------
 Fri Jul 30 12:34:45 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to eclipse-egit 5.11.0
