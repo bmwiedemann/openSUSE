@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -96,7 +95,8 @@ information, please refer to the main README.
 
 %build
 %cmake -DENABLE_REMOTE_DEVICES=OFF \
-    -DENABLE_CATEGORIZED_VIEW=OFF
+    -DENABLE_CATEGORIZED_VIEW=OFF \
+    -DENABLE_LIBVLC=ON
 %cmake_build
 
 %install

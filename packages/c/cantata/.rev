@@ -267,4 +267,12 @@
   * Handle case where IceCast list is not GZipped.</comment>
     <requestid>958526</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>407cfe8f67d24c5286239bf315055bcb</srcmd5>
+    <version>2.5.0</version>
+    <time>1648570522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965569</requestid>
+  </revision>
 </revisionlist>
