@@ -1,7 +1,7 @@
 #
 # spec file for package python-jedi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,10 @@ skiptests+=" or test_speed"
 skiptests+=" or test_init_extension_module"
 # https://github.com/davidhalter/jedi/issues/1824
 skiptests+=" or (test_completion and lambdas and 112)"
+# https://github.com/davidhalter/jedi/issues/1846
+skiptests+=" or (test_completion and conftest and 27)"
+skiptests+=" or (test_completion and pytest and 142)"
+
 %pytest -k "not ($skiptests)"
 
 %files %{python_files}

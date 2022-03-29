@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 27 18:44:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip two test failing with pytest 7.1 -- gh#davidhalter/jedi#1846
+
+-------------------------------------------------------------------
 Mon Jan 10 23:17:12 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Force pytest >= 5 for successful 15.3 build in d:l:p
