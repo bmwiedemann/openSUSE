@@ -560,4 +560,17 @@
   * Properly close result repository during test.</comment>
     <requestid>951676</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d10a11562794b7eee6cbd6edd2b4f18e</srcmd5>
+    <version>0.20.35</version>
+    <time>1648570441</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.35:
+ * Document the ``path`` attribute for ``Repo``.
+ * Add support for multivars in configuration.
+ * Fix handling of escaped characters in ignore patterns.
+ * Add ``dulwich.contrib.requests_vendor``. (epopcon)
+ * Ensure git config is available in a linked working tree.</comment>
+    <requestid>965100</requestid>
+  </revision>
 </revisionlist>
