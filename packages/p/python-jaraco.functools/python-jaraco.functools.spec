@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.functools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jaraco.functools
-Version:        3.0.1
+Version:        3.5.0
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT
@@ -54,8 +54,6 @@ rm -rf jaraco.functools.egg-info
 
 %install
 %python_install
-
-%python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py
 
 %{?python_compileall}
 %{!?python_compileall: # if we haven no python_compileall we are for sure still without multiple python3 flavors.

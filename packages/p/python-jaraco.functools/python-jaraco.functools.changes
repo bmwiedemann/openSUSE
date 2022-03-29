@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 27 11:12:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * #19: Add type annotations to ``method_cache``.
+  * Require Python 3.7.
+  * ``apply`` now uses ``functools.wraps`` to ensure docstring
+  * passthrough.
+  * #18: In method_cache, support cache_clear before cache
+  * is initialized.
+  * Refreshed package metadata.
+  * Switched to PEP 420 for ``jaraco`` namespace.
+  * Added ``except_`` decorator.
+
+-------------------------------------------------------------------
 Wed Dec  2 21:54:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - compile cache for all python3 flavors
