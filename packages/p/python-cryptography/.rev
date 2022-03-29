@@ -618,4 +618,13 @@
     <comment>- split tests in a multibuild variant to optimize rebuild time a bit</comment>
     <requestid>955476</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>0477f2e1741652f55a061a3159536a84</srcmd5>
+    <version>36.0.2</version>
+    <time>1648570436</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 36.0.2:
+  * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 1.1.1n.</comment>
+    <requestid>965085</requestid>
+  </revision>
 </revisionlist>
