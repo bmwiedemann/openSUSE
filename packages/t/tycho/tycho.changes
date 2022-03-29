@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:55:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with java 11, since there is no config in tycho
+  for java >= 15
+
+-------------------------------------------------------------------
 Sat Mar 12 09:50:44 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not force building with java 1.8, but with any java >= 1.8

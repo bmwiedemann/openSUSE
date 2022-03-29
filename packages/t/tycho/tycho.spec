@@ -111,6 +111,9 @@ BuildRequires:  mvn(org.ow2.asm:asm-tree)
 BuildRequires:  mvn(org.ow2.asm:asm-util)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-simple)
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 Requires:       ecj >= 4.7.3a-1
 # maven-clean-plugin is bound to "initialize" Maven phase for
 # "eclipse-repository" projects

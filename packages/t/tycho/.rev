@@ -39,4 +39,12 @@
     <comment>Do not hardcode java 8 dependency</comment>
     <requestid>961206</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1294f068affb3c3f80f42efdaa415a99</srcmd5>
+    <version>1.6.0</version>
+    <time>1648580797</time>
+    <user>dimstar_suse</user>
+    <comment>Force build with java 11</comment>
+    <requestid>965670</requestid>
+  </revision>
 </revisionlist>
