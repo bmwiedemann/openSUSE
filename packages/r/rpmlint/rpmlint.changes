@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 26 05:36:56 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220325.40598ec:
+  * dbus-services: whitelist usbguard (bsc#1196621)
+
+-------------------------------------------------------------------
 Thu Mar 24 08:14:33 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220324.fe80080:

@@ -3689,4 +3689,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * Add packaging status.</comment>
     <requestid>964505</requestid>
   </revision>
+  <revision rev="392" vrev="1">
+    <srcmd5>681bf178164542d62ea2e7b71b7e54d1</srcmd5>
+    <version>2.2.0+git20220325.40598ec</version>
+    <time>1648570426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220325.40598ec:
+  * dbus-services: whitelist usbguard (bsc#1196621)</comment>
+    <requestid>964959</requestid>
+  </revision>
 </revisionlist>
