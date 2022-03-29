@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 25 22:03:32 UTC 2022 - Matthias Bach <marix@marix.org> - 55
+
+- Update to version 55
+  * Include proper version in installed pkgconfig files.
+
+-------------------------------------------------------------------
+Fri Mar 25 20:33:09 UTC 2022 - Matthias Bach <marix@marix.org> - 54
+
+- Update to version 54
+  * Improve quality of shared objects by explicitly defining symbol
+    visibility.
+
+-------------------------------------------------------------------
 Thu Mar 11 07:19:10 UTC 2021 - Wang Jun <jgwang@suse.com> - 53
 ￼
 - Update to version 53
