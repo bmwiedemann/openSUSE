@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 27 21:25:17 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.66.0
+  + Use `rpmdbCookie` from librpm, remove `hawkey.Sack._rpmdb_version`
+  + Fix handling transaction id in resolveTransactionItemReason (rh#2010259, rh#2053014)
+  + Remove deprecated assertions (rh#2027383)
+  + Increase required rpm version since we use `rpmdbCookie()`
+  + Skip rich deps for autodetection of unmet dependencies (rh#2033130)
+- Use ldconfig_scriptlets macro for ldconfig scriptlets
+
+-------------------------------------------------------------------
 Wed Nov  3 11:11:08 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.65.0

@@ -568,4 +568,19 @@
   + Remove failovermethod config option (rh#1961083)</comment>
     <requestid>929010</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c28ae145332365a61d45f9f02a896f1b</srcmd5>
+    <version>0.66.0</version>
+    <time>1648570456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.66.0
+  + Use `rpmdbCookie` from librpm, remove `hawkey.Sack._rpmdb_version`
+  + Fix handling transaction id in resolveTransactionItemReason (rh#2010259, rh#2053014)
+  + Remove deprecated assertions (rh#2027383)
+  + Increase required rpm version since we use `rpmdbCookie()`
+  + Skip rich deps for autodetection of unmet dependencies (rh#2033130)
+- Use ldconfig_scriptlets macro for ldconfig scriptlets
+</comment>
+    <requestid>965256</requestid>
+  </revision>
 </revisionlist>

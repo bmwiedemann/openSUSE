@@ -20,7 +20,7 @@
 %global libsolv_version 0.7.20
 %global libmodulemd_version 2.13.0
 %global librepo_version 1.13.1
-%global dnf_conflict 4.3.0
+%global dnf_conflict 4.11.0
 %global swig_version 3.0.12
 
 # Keep tests switched off for now, it bombs out on SUSE
@@ -34,7 +34,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.65.0
+Version:        0.66.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -66,13 +66,12 @@ BuildRequires:  pkgconfig(librepo) >= %{librepo_version}
 %if %{with valgrind}
 BuildRequires:  valgrind
 %endif
-BuildRequires:  rpm-devel >= 4.11.0
+BuildRequires:  rpm-devel >= 4.15.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.46.0
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(json-c)
-BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(modulemd-2.0) >= %{libmodulemd_version}
 BuildRequires:  pkgconfig(smartcols)
 BuildRequires:  pkgconfig(sqlite3)
@@ -205,10 +204,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/zypp/repos.d
 ln -sr %{buildroot}%{_sysconfdir}/zypp/repos.d %{buildroot}%{_sysconfdir}/distro.repos.d
 
 
+%ldconfig_scriptlets -n %{libname}
 
-%post -n %{libname} -p /sbin/ldconfig
-
-%postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname} -f %{name}.lang
 %license COPYING
