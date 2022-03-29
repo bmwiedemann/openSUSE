@@ -24,4 +24,14 @@
   * python 3.6 removal</comment>
     <requestid>945420</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3f2fc018ecffeb31b0f3f27c3d221bf2</srcmd5>
+    <version>2.5.1</version>
+    <time>1648570430</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.1:
+  - Add native support for nuitka
+  - Add support for Termux subsystems</comment>
+    <requestid>965067</requestid>
+  </revision>
 </revisionlist>
