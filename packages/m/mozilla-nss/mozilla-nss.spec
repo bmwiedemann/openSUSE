@@ -41,6 +41,8 @@ Source7:        cert9.db
 Source8:        key4.db
 Source9:        pkcs11.txt
 #Source10:       PayPalEE.cert
+Source11:       nss-util.pc.in
+Source13:       nss-util-config.in     
 Source99:       %{name}.changes
 Patch1:         nss-opt.patch
 Patch2:         system-nspr.patch
@@ -356,6 +358,10 @@ sed "s:%%LIBDIR%%:%{_libdir}:g
 s:%%VERSION%%:%{version}:g
 s:%%NSPR_VERSION%%:%{nspr_ver}:g" \
   %{SOURCE1} > %{buildroot}%{_libdir}/pkgconfig/nss.pc
+sed "s:%%LIBDIR%%:%{_libdir}:g
+s:%%VERSION%%:%{version}:g
+s:%%NSPR_VERSION%%:%{nspr_ver}:g" \
+  %{SOURCE11} > %{buildroot}%{_libdir}/pkgconfig/nss-util.pc
 # prepare nss-config file
 popd
 NSS_VMAJOR=`cat lib/nss/nss.h | grep "#define.*NSS_VMAJOR" | gawk '{print $3}'`
@@ -370,6 +376,18 @@ cat %{SOURCE3} | sed -e "s,@libdir@,%{_libdir},g" \
                      -e "s,@MOD_PATCH_VERSION@,$NSS_VPATCH,g" \
                      > %{buildroot}/%{_bindir}/nss-config
 chmod 755 %{buildroot}/%{_bindir}/nss-config
+NSSUTIL_VMAJOR=`cat lib/util/nssutil.h | grep "#define.*NSSUTIL_VMAJOR" | awk '{print $3}'`
+NSSUTIL_VMINOR=`cat lib/util/nssutil.h | grep "#define.*NSSUTIL_VMINOR" | awk '{print $3}'`
+NSSUTIL_VPATCH=`cat lib/util/nssutil.h | grep "#define.*NSSUTIL_VPATCH" | awk '{print $3}'`
+cat %{SOURCE13} | sed -e "s,@libdir@,%{_libdir},g" \
+                     -e "s,@prefix@,%{_prefix},g" \
+                     -e "s,@exec_prefix@,%{_prefix},g" \
+                     -e "s,@includedir@,%{_includedir}/nss3,g" \
+                     -e "s,@MOD_MAJOR_VERSION@,$NSSUTIL_VMAJOR,g" \
+                     -e "s,@MOD_MINOR_VERSION@,$NSSUTIL_VMINOR,g" \
+                     -e "s,@MOD_PATCH_VERSION@,$NSSUTIL_VPATCH,g" \
+                     > %{buildroot}/%{_bindir}/nss-util-config
+chmod 755 %{buildroot}/%{_bindir}/nss-util-config
 # setup-nsssysinfo.sh
 install -m 744 %{SOURCE6} %{buildroot}%{_sbindir}/
 # create empty NSS database
@@ -428,12 +446,14 @@ fi
 %{_libdir}/*.a
 %{_libdir}/pkgconfig/*
 %attr(755,root,root) %{_bindir}/nss-config
+%attr(755,root,root) %{_bindir}/nss-util-config
 
 %files tools
 %{_bindir}/*
 %exclude %{_sbindir}/setup-nsssysinit.sh
 %{_libexecdir}/nss/
 %exclude %{_bindir}/nss-config
+%exclude %{_bindir}/nss-util-config
 
 %files sysinit
 %dir %{_sysconfdir}/pki

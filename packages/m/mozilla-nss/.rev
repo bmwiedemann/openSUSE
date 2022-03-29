@@ -2551,4 +2551,12 @@
   * bmo#1728281 - Add ECH-13 HRR Handling.</comment>
     <requestid>960367</requestid>
   </revision>
+  <revision rev="185" vrev="2">
+    <srcmd5>819936b18cf3c18ad89b46185a78aa08</srcmd5>
+    <version>3.75</version>
+    <time>1648570453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965234</requestid>
+  </revision>
 </revisionlist>

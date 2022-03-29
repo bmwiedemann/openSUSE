@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 25 15:42:05 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add nss-util pkgconfig and config files (copied from RH/Fedora)
+
+-------------------------------------------------------------------
 Wed Mar  2 14:28:30 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.75

@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=%LIBDIR%
+includedir=${prefix}/include/nss3
+ 
+Name: NSS-UTIL
+Description: Network Security Services Utility Library
+Version: %VERSION%
+Requires: nspr >= %NSPR_VERSION%
+Libs: -lnssutil3
+Cflags: -I${includedir}
