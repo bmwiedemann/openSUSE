@@ -1,7 +1,7 @@
 #
 # spec file for package nfdump
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sfcapddatadir	%{_localstatedir}/lib/sfcapd
 %define nfhomedir     %{_var}/lib/%{name}
 Name:           nfdump
-Version:        1.6.23
+Version:        1.6.24
 Release:        0
 Summary:        CLI tools to collect and process netflow data
 License:        BSD-3-Clause
@@ -63,8 +63,8 @@ install -D -d -m 0750 \
 	%{buildroot}%{nfhomedir} \
 	%{buildroot}%{nfcapddatadir} \
 	%{buildroot}%{sfcapddatadir}
-rm -f "%{buildroot}/%{_libdir}"/libnfdump.a
-rm -f "%{buildroot}/%{_libdir}"/libnfdump.la
+rm "%{buildroot}/%{_libdir}"/libnfdump.a
+rm "%{buildroot}/%{_libdir}"/libnfdump.la
 
 %pre
 %{_sbindir}/groupadd -r %{name} &>/dev/null || :

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 26 12:24:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.24
+  * Fix cmd line processinf in nfanon. #328
+  * Make configure.ac autoconf 2.69 compatible
+  * Cleanup automake files. Fixes #304.
+  * Fix link handling in nfpcapd
+  * Fix compile flags #304
+  * Add NAT event record support for IPFIX. #298
+  * Fix issue #296 - broken json format with option -q
+  * Fix json msec formating
+  * Silence short packet logs due to small snaplen in pcaproc.c #221
+  * Fix minor bugs
+
+-------------------------------------------------------------------
 Thu May  6 18:30:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.23
