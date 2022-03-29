@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-table-extra
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           fcitx-table-extra
 Version:        0.3.8
 Release:        0
 Summary:        Extra table for Fcitx
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/fcitx/fcitx-table-extra
+URL:            https://github.com/fcitx/fcitx-table-extra
 Source:         http://download.fcitx-im.org/fcitx-table-extra/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel
@@ -310,7 +310,7 @@ Fcitx T9 table.
 
 %package lang 
 Summary:        Languages for package %{name} 
-License:        GPL-2.0+ and SUSE-Public-Domain
+License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          System/Localization 
 Requires:       %{name} = %{version}
 Provides:       %{name}-lang-all = %{version}
@@ -348,6 +348,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/boshiamy.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-boshiamy.png
 %{_fcitx_imicondir}/boshiamy.png
 
@@ -370,6 +372,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/scj6.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-scj6.png
 %{_fcitx_imicondir}/scj6.png
 
@@ -377,6 +381,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/cantonese.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-cantonese.png
 %{_fcitx_imicondir}/cantonese.png
 
@@ -384,6 +390,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/cantonhk.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-cantonhk.png
 %{_fcitx_imicondir}/cantonhk.png
 
@@ -391,6 +399,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/jyutping.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-jyutping.png
 %{_fcitx_imicondir}/jyutping.png
 
@@ -398,6 +408,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/stroke5.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-stroke5.png
 %{_fcitx_imicondir}/stroke5.png
 
@@ -405,6 +417,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/easy-big.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-easy-big.png
 %{_fcitx_imicondir}/easy-big.png
 
@@ -412,6 +426,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/quick3.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-quick3.png
 %{_fcitx_imicondir}/quick3.png
 
@@ -419,6 +435,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/quick5.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-quick5.png
 %{_fcitx_imicondir}/quick5.png
 
@@ -426,6 +444,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/quick-classic.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-quick-classic.png
 %{_fcitx_imicondir}/quick-classic.png
 
@@ -433,6 +453,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/array30.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-array30.png
 %{_fcitx_imicondir}/array30.png
 
@@ -440,6 +462,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/array30-big.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-array30-big.png
 %{_fcitx_imicondir}/array30-big.png
 
@@ -452,6 +476,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/wu.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-wu.png
 %{_fcitx_imicondir}/wu.png
 
@@ -459,6 +485,8 @@ popd
 %defattr(-,root,root)
 %doc COPYING
 %{_fcitx_tabledir}/zhengma.*
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-zhengma.png
 %{_fcitx_imicondir}/zhengma.png
 
@@ -472,6 +500,8 @@ popd
 %doc COPYING
 %{_fcitx_tabledir}/t9.*
 %{_fcitx_imicondir}/t9.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/64x64/apps/fcitx-t9.png
 
 %changelog
