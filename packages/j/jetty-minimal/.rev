@@ -103,4 +103,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>963998</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ae0642892aba31175a58185faee2ed96</srcmd5>
+    <version>9.4.46</version>
+    <time>1648580816</time>
+    <user>dimstar_suse</user>
+    <comment>9.4.46.v20220328</comment>
+    <requestid>965688</requestid>
+  </revision>
 </revisionlist>

@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20210629
+%global addver  .v20220328
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-minimal
-Version:        9.4.43
+Version:        9.4.46
 Release:        0
 Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
@@ -275,6 +275,8 @@ Group:          Productivity/Networking/Web/Servers
 
 find . -name "*.?ar" -exec rm {} \;
 find . -name "*.class" -exec rm {} \;
+
+%pom_remove_dep :::import
 
 # Plugins irrelevant or harmful to building the package
 %pom_remove_plugin -r :maven-checkstyle-plugin
