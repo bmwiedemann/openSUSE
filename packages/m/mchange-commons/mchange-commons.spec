@@ -1,7 +1,7 @@
 #
 # spec file for package mchange-commons
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        EPL-1.0 OR LGPL-2.0-only
 Group:          Development/Libraries/Java
 URL:            https://github.com/swaldman/mchange-commons-java
 Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{git_tag}.tar.gz
+Patch0:         fix-javadoc-lint-errors.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
@@ -46,6 +47,7 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q -n %{git_tag}
+%patch0 -p1
 
 find -name '*.class' -delete
 find -name '*.jar' -delete

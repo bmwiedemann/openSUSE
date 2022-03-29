@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 29 14:48:55 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Added patch:
+  * fix-javadoc-lint-errors.patch
+    + fix javadoc lint errors
+
+-------------------------------------------------------------------
 Tue Jul 27 15:53:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Require log4j >= 2 for build
