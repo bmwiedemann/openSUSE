@@ -3971,4 +3971,13 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>965046</requestid>
   </revision>
+  <revision rev="327" vrev="2">
+    <srcmd5>5f151d8301f52f6b63684b4be249eb8c</srcmd5>
+    <version>99.0.4844.84</version>
+    <time>1648570533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update disk constraints
+</comment>
+    <requestid>965591</requestid>
+  </revision>
 </revisionlist>
