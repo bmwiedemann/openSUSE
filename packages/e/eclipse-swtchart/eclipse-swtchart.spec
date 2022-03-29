@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-swtchart
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ Group:          Development/Languages/Java
 URL:            https://projects.eclipse.org/projects/science.swtchart
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  tycho
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 BuildArch:      noarch
 # Upstream Eclipse no longer supports non-64bit arches
 ExcludeArch:    s390 %{arm} %{ix86}

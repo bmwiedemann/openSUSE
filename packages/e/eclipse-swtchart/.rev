@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>845584</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c3faa59c3cfe3be70cc9f0f9a36e6b49</srcmd5>
+    <version>0.13.0</version>
+    <time>1648580813</time>
+    <user>dimstar_suse</user>
+    <comment>Force build with java 11</comment>
+    <requestid>965686</requestid>
+  </revision>
 </revisionlist>
