@@ -131,4 +131,12 @@
   (boo#1195368) (forwarded request 958433 from cgiboudeaux)</comment>
     <requestid>958434</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c35d7e737c2af045d111ed45add7b45a</srcmd5>
+    <version>6.2.4</version>
+    <time>1648570465</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.4 (forwarded request 965385 from cgiboudeaux)</comment>
+    <requestid>965388</requestid>
+  </revision>
 </revisionlist>

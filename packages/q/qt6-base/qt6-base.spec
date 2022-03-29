@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.3
+%define real_version 6.2.4
 %define short_version 6.2
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -39,7 +39,6 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-QProcess-Unix-ensure-we-don-t-accidentally-execute-s.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
@@ -233,9 +232,6 @@ Requires:       qt6-base-common-devel = %{version}
 # Some public classes require C++ 17 features
 Requires:       gcc10-c++
 %endif
-# boo#1195368
-# TODO: move the pri file into qt6-core-devel when 6.2.4 is out
-%requires_eq    qt6-core-private-devel
 
 %description -n qt6-core-devel
 Development files for the Qt 6 Core library.
@@ -915,12 +911,12 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Core.so
 %{_qt6_metatypesdir}/qt6core_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_core.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_core_private.pri
 %exclude %{_qt6_includedir}/QtCore/%{real_version}
 
 %files -n qt6-core-private-devel
 %dir %{_qt6_includedir}/QtCore/
 %{_qt6_includedir}/QtCore/%{real_version}/
-%{_qt6_mkspecsdir}/modules/qt_lib_core_private.pri
 
 %files -n libQt6DBus6
 %{_qt6_libdir}/libQt6DBus.so.*
