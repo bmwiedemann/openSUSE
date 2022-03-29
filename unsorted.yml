@@ -2945,7 +2945,6 @@ unsorted:
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-MicroOS: [i586] 
-  - distribution-logos-openSUSE-icons: [i586] 
   - distrobox 
   - dita 
   - diy-devel: [x86_64] 
@@ -10997,7 +10996,7 @@ unsorted:
   - libgeners0 
   - libgensio0 
   - libgeocode-glib0-32bit: [x86_64] 
-  - libgeos3_10_1 
+  - libgeos3_10_2 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -11104,7 +11103,7 @@ unsorted:
   - libgnutls-devel 
   - libgnutls-devel-32bit: [x86_64] 
   - libgnutlsxx-devel 
-  - libgnutlsxx28 
+  - libgnutlsxx30 
   - libgo11 
   - libgo11-32bit: [x86_64] 
   - libgo16 
@@ -18949,7 +18948,6 @@ unsorted:
   - perl-AnyEvent-WebSocket-Server 
   - perl-Apache-AuthCookie 
   - perl-Apache-DBI 
-  - perl-Apache-Filter 
   - perl-Apache-LogFormat-Compiler 
   - perl-Apache-Session 
   - perl-Apache-SessionX 
@@ -23210,6 +23208,7 @@ unsorted:
   - python310-jupyter-core 
   - python310-jupyter-jupyterlab-server 
   - python310-jupyter-jupyterlab-server-test 
+  - python310-jupyter-kernel-test 
   - python310-jupyter-nbutils 
   - python310-jupyter-packaging 
   - python310-jupyter-server 
@@ -26304,6 +26303,7 @@ unsorted:
   - python38-jupyter-core 
   - python38-jupyter-jupyterlab-server 
   - python38-jupyter-jupyterlab-server-test 
+  - python38-jupyter-kernel-test 
   - python38-jupyter-nbutils 
   - python38-jupyter-packaging 
   - python38-jupyter-server 
@@ -29385,6 +29385,7 @@ unsorted:
   - python39-jupyter-core 
   - python39-jupyter-jupyterlab-server 
   - python39-jupyter-jupyterlab-server-test 
+  - python39-jupyter-kernel-test 
   - python39-jupyter-nbutils 
   - python39-jupyter-packaging 
   - python39-jupyter-server 
