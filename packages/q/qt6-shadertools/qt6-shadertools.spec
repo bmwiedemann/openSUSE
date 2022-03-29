@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.3
+%define real_version 6.2.4
 %define short_version 6.2
 %define tar_name qtshadertools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-shadertools%{?pkg_suffix}
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Qt 6 ShaderTools library
 License:        GPL-3.0-or-later
