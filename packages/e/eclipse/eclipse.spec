@@ -216,6 +216,9 @@ BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 # Upstream Eclipse no longer supports non-64bit arches
 ExcludeArch:    s390 %{arm} %{ix86}
 %if %{with bootstrap}

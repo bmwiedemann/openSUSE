@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:57:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with Java 11, since tycho is not knowing about any
+  Java >= 15
+
+-------------------------------------------------------------------
 Sun Feb  6 16:14:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - eclipse-riscv64.patch: Add support for riscv64
