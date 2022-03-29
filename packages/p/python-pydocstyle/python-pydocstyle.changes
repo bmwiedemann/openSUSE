@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 26 18:56:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update 6.1.1:
+  * Split ``--source`` by lines instead of by characters (#536).
+  * Enable full toml configuration and pyproject.toml (#534).
+  * Support for Python 3.5 has been dropped (#510).
+  * Add flag to disable `# noqa` comment processing in API (#485).
+  * Methods, Functions and Nested functions that have a docstring now throw D418 (#511).
+  * Methods decorated with @overload no longer reported as D102 (#511).
+  * Functions and nested functions decorated with @overload no longer reported as D103 (#511).
+  * Treat "package" as an imperative verb for D401 (#356).
+  * Fix the parsing of decorated one line functions (#499).
+  * Methods, Functions and Nested functions that have a docstring now throw D418 (#511).
+  * Methods decorated with @overload no longer reported as D102.
+  * Functions and nested functions decorated with @overload no longer reported as D103.
+
+-------------------------------------------------------------------
 Sat Oct 10 18:42:12 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.1.1:

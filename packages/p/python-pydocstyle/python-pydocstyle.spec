@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydocstyle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pydocstyle
-Version:        5.1.1
+Version:        6.1.1
 Release:        0
 Summary:        Python docstring style checker
 License:        MIT
@@ -43,7 +43,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-six > 1.10.0
 Requires:       python-snowballstemmer
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-pep257 = %{version}
 Obsoletes:      python-pep257 < %{version}
 BuildArch:      noarch

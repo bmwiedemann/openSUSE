@@ -10,11 +10,11 @@ Closes https://github.com/PyCQA/pydocstyle/issues/177
  src/tests/test_integration.py | 9 +++++----
  1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/src/tests/test_integration.py b/src/tests/test_integration.py
-index d4ee72b..1f9507f 100644
---- a/src/tests/test_integration.py
-+++ b/src/tests/test_integration.py
-@@ -81,9 +81,10 @@ def invoke(self, args="", target=None):
+Index: pydocstyle-6.1.1/src/tests/test_integration.py
+===================================================================
+--- pydocstyle-6.1.1.orig/src/tests/test_integration.py
++++ pydocstyle-6.1.1/src/tests/test_integration.py
+@@ -99,9 +99,10 @@ class SandboxEnv:
          run_target = self.tempdir if target is None else \
              os.path.join(self.tempdir, target)
  
@@ -28,12 +28,3 @@ index d4ee72b..1f9507f 100644
          p = subprocess.Popen(cmd,
                               stdout=subprocess.PIPE,
                               stderr=subprocess.PIPE)
-@@ -201,7 +202,7 @@ def test_run_as_named_module():
-     """
-     # Add --match='' so that no files are actually checked (to make sure that
-     # the return code is 0 and to reduce execution time).
--    cmd = shlex.split("python -m pydocstyle --match=''")
-+    cmd = shlex.split("\"{}\" -m pydocstyle --match=''".format(sys.executable))
-     p = subprocess.Popen(cmd,
-                          stdout=subprocess.PIPE,
-                          stderr=subprocess.PIPE)
