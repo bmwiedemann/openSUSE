@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 26 18:42:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  - Add native support for nuitka
+  - Add support for Termux subsystems
+
+-------------------------------------------------------------------
 Mon Jan 10 22:19:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.1:
