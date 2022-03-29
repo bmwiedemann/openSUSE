@@ -1,7 +1,7 @@
 #
 # spec file for package icedtea-web
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,10 @@
 %define binsuffix      .itweb
 # Alternatives priority
 %define priority 18000
-# jnlp prorocol gnome registry keys
-%define gurlhandler   /desktop/gnome/url-handlers
-%define jnlphandler   %{gurlhandler}/jnlp
-%define jnlpshandler  %{gurlhandler}/jnlps
 %bcond_without docs
 %bcond_with plugin
 Name:           icedtea-web
-Version:        1.8.6
+Version:        1.8.8
 Release:        0
 Summary:        Java Web Start implementation
 License:        GPL-2.0-only WITH Classpath-exception-2.0
@@ -58,10 +54,8 @@ BuildConflicts: java-headless >= 11
 Requires:       java >= 1.8
 Requires:       rhino
 Requires:       tagsoup
-Requires(post): gconf2
 Requires(post): update-alternatives
-Requires(postun): gconf2
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       %{name}-javadoc
 Obsoletes:      java-1_6_0-openjdk-plugin < %{version}-%{release}
 Obsoletes:      java-1_7_0-openjdk-plugin < %{version}-%{release}
@@ -168,28 +162,16 @@ update-alternatives \
   --slave %{_mandir}/man1/javaws.1.gz javaws.1.gz %{_mandir}/man1/javaws%{binsuffix}.1.gz
 %endif
 
-gconftool-2 -s %{jnlphandler}/command  '%{_bindir}/javaws%{binsuffix}.sh %{s}' --type String &> /dev/null || :
-gconftool-2 -s %{jnlphandler}/enabled  --type Boolean true &> /dev/null || :
-gconftool-2 -s %{jnlpshandler}/command '%{_bindir}/javaws%{binsuffix}.sh %{s}' --type String &> /dev/null || :
-gconftool-2 -s %{jnlpshandler}/enabled --type Boolean true &> /dev/null || :
-
 %posttrans
 update-desktop-database &> /dev/null || :
 exit 0
 
 %postun
 update-desktop-database &> /dev/null || :
-if [ $1 -eq 0 ]
-then
 %if %{with plugin}
   update-alternatives --remove %{javaplugin} \
     %{_libdir}/IcedTeaPlugin.so
 %endif
-  gconftool-2 -u  %{jnlphandler}/command &> /dev/null || :
-  gconftool-2 -u  %{jnlphandler}/enabled &> /dev/null || :
-  gconftool-2 -u %{jnlpshandler}/command &> /dev/null || :
-  gconftool-2 -u %{jnlpshandler}/enabled &> /dev/null || :
-fi
 exit 0
 
 %files

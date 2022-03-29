@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 29 09:24:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop Requires(post)/(postun) gconf2, no longer needed. The
+  desktop file gconftool-2 was used for have the proper mime set,
+  so xdg-mime will take care of setting it as handler for those
+  url types.
+
+-------------------------------------------------------------------
 Wed May 19 10:58:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.8.6
