@@ -111,4 +111,13 @@
   * Updates test vectors to match python-cryptography 36.0.1</comment>
     <requestid>941720</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0c8ea8fb974c09885df7694f03d49e5e</srcmd5>
+    <version>36.0.2</version>
+    <time>1648570438</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 36.0.2:
+  * Updates test vectors to match python-cryptography 36.0.22</comment>
+    <requestid>965086</requestid>
+  </revision>
 </revisionlist>
