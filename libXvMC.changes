@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 26 18:17:05 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.13
+  * autotools: fix Requires and Requires.Private in pkgconfig
+  * meson: Add a meson build system
+  * meson: Fix typo
+  * editorconfig: add meson
+  * Fix spelling/wording issues
+  * Build xz tarballs instead of bzip2
+- supersedes n_bring-back-libXv-dep.patch
+
+-------------------------------------------------------------------
 Sun Oct 20 18:24:27 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add conflicts for old xorgproto-devel, X11/extensions/vldXvMC.h
