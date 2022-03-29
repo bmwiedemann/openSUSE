@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 26 10:43:23 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Remove autoreconf call, it breaks with uptodate autoconf versions
+
+-------------------------------------------------------------------
 Tue Feb 22 08:22:54 UTC 2022 - pgajdos@suse.com
 
 - deleted patches

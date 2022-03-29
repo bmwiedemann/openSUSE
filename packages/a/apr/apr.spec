@@ -38,7 +38,6 @@ Patch10:        apr-test-sendfile-timeout.patch
 Patch11:        apr-CVE-2021-35940.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  lksctp-tools-devel
 # for the testsuite
@@ -96,7 +95,6 @@ sed -i \
 	docs/doxygen.conf
 
 %build
-autoreconf -fiv
 %configure \
 	--enable-other-child \
 	--with-installbuilddir=%{installbuilddir} \
