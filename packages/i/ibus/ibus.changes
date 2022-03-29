@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Mar 27 04:28:04 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.5.26
+  * Enhance compose keys
+  * Enhance Emoji features
+  * Implement clear preedit for GTK4
+  * Calculate keycode from keysym in GTK3 forward-key-event
+  * Fix to send char position at update_preedit_text
+  * Deprecate gettext.bind_textdomain_codeset() since Python 3.8
+  * Fix ibus_key_event_from_string for gobject-introspection
+  * Fix a key event loop with forwarding keys
+  * Delete gnome-autogen dependency
+  * Change XKB layout string color in panel
+  * Add IBUS_INPUT_HINT_PRIVATE for browser private mode
+  * mkdir socket dirs instead of socket paths
+  * Add org.freedesktop.IBus.session.generic.service
+  * Check XDG_SESSION_DESKTOP for Plasma desktop
+  * Update simple.xml with xkeyboard-config 2.35.1
+  * Update ibusunicodegen.h with unicode-ucd 14.0.0
+  * Enhance CI
+  * Fix typos
+  * Fix wrong cursor location in gtk3 apps
+  * Update URLS
+  * invalidate cache based on symlink mtime too
+  * Fix unref problems with floating references
+  * Update man page for Emoji shortcut key
+  * Add systemd unit file
+  * Fix forward key keycode for GTK4
+- Drop ibus-fix-wrong-cursor-location.patch, merged by upstream
+
+-------------------------------------------------------------------
 Wed Jan  5 11:56:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not introduce ibus-gtk4-32bit unless there will be demand for

@@ -35,7 +35,7 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.25
+Version:        1.5.26
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -73,9 +73,8 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
 Patch16:        ibus-missing-include.patch
-# PATCH-FIX-UPSTREAM ibus-fix-wrong-cursor-location.patch gh#ibus/ibus#2337
-Patch17:        ibus-fix-wrong-cursor-location.patch
 BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(systemd)
 %if ! 0%{?with_gtk4}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -232,7 +231,6 @@ cp -r %{SOURCE11} .
 %patch15 -p1
 %patch16 -p1
 %endif
-%patch17 -p1
 
 %build
 %configure --disable-static \
@@ -347,6 +345,8 @@ rm -rf %{buildroot}%{_bindir}
 rm -rf %{buildroot}%{_libdir}/ibus
 rm -rf %{buildroot}%{_libdir}/libibus*
 rm -rf %{buildroot}%{_libdir}/pkgconfig
+rm -rf %{buildroot}%{_prefix}/lib/systemd
+rm -rf %{buildroot}%{_sysconfdir}/xdg
 
 %post -n %{_name}-gtk4
 %{gtk4_immodule_post}
@@ -374,6 +374,8 @@ fi
 %else
 %config %{_sysconfdir}/X11/xim.d/*
 %endif
+%dir %{_sysconfdir}/xdg/Xwayland-session.d
+%{_sysconfdir}/xdg/Xwayland-session.d/10-ibus-x11
 %{_bindir}/ibus
 %{_bindir}/ibus-autostart
 %{_bindir}/ibus-daemon
@@ -407,6 +409,9 @@ fi
 %{_mandir}/man1/ibus-setup.1%{ext_man}
 %{_mandir}/man5/00-upstream-settings.5%{ext_man}
 %{_mandir}/man5/ibus.5%{ext_man}
+%dir %{_prefix}/lib/systemd/user/gnome-session.target.wants
+%{_prefix}/lib/systemd/user/gnome-session.target.wants/org.freedesktop.IBus.session.GNOME.service
+%{_prefix}/lib/systemd/user/*.service
 
 %if %{with_emoji}
 %{_datadir}/applications/org.freedesktop.IBus.Panel.Emojier.desktop
