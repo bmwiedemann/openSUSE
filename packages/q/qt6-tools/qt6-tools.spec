@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.3
+%define real_version 6.2.4
 %define short_version 6.2
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -45,7 +45,7 @@ Source12:       org.qt.qdbusviewer6.desktop
 Source13:       org.qt.assistant6.desktop
 Source99:       qt6-tools-rpmlintrc
 # clang-devel in Leap 15.3 points to clang7...
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150300
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150300
 BuildRequires:  clang11-devel
 %else
 BuildRequires:  clang-devel >= 8
