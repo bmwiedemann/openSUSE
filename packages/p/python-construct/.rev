@@ -148,4 +148,14 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
   * no changelog available</comment>
     <requestid>930013</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4632b8011d52bc85384daca44671acf7</srcmd5>
+    <version>2.10.68</version>
+    <time>1648570447</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.68:
+  * declared compatibility with python 3.10
+  * documentation updates</comment>
+    <requestid>965190</requestid>
+  </revision>
 </revisionlist>
