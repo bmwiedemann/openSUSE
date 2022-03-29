@@ -16,7 +16,7 @@
 #
 
 Name:           distrobox
-Version:        1.2.13
+Version:        1.2.14
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0
@@ -44,7 +44,7 @@ external USB devices and graphical apps (X11/Wayland), and audio.
 %install
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_docdir}/%{name}
-./install -p %{buildroot}%{_bindir}
+./install --prefix %{buildroot}/%{_prefix}
 install -m 0644 docs/*.md %{buildroot}%{_docdir}/%{name}
 
 %files

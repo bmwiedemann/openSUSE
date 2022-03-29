@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 29 09:12:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest version 1.2.14. Some changes:
+  * all: detect if running sudo and improve error messages for container managers, pointing to documentation
+  * fix: move selinux fix into create phase
+  * enter: escape --workdir argument
+  * enter: Enter at workdir through child path of '/run/host' by @ennec-e in #186
+  * stop: Add distrobox-stop command
+  * enter: use container's $PATH when entering
+  * create: resolve path before mounting
+  * init: If user already exists in /etc/passwd set props again, do not skip
+  * init: Fix grep match of very short user or group names
+  * init: tighter systemd integration with host
+  *init: support LDAP/AD mail usernames
+  * export: support exporting of system flatpaks and document it
+  Full list available at: https://github.com/89luca89/distrobox/releases/tag/1.2.14
+- Switch from `install -p` to `install --prefix` (see
+  https://github.com/89luca89/distrobox/pull/190)
+
+-------------------------------------------------------------------
 Fri Mar 11 15:18:44 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest version 1.2.13
