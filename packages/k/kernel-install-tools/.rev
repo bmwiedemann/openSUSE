@@ -16,4 +16,12 @@
   * Support non-x86 architectures. (forwarded request 945397 from jeff_mahoney)</comment>
     <requestid>945398</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>701ab4e5bd56c4dcfac617b57eeff39c</srcmd5>
+    <version>0.3.0</version>
+    <time>1648575935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965727</requestid>
+  </revision>
 </revisionlist>

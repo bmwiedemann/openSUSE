@@ -17,18 +17,21 @@
 
 
 Name:           kernel-install-tools
-Version:        0.2.10
+Version:        0.3.0
 Release:        0
 Summary:        Useful tools for installing self-built kernels
 Group:          Development/Tools/Other
 License:        GPL-2.0-only
 URL:            https://github.com/jeffmahoney/kernel-install-tools
 Source:         %{name}-%{version}.tar.xz
-Requires:       mozilla-nss-tools
+Source1:        %{name}-rpmlintrc
 Requires:       openssl
+%ifarch ia64 %ix86 x86_64 aarch64 %arm riscv64
+Requires:       mozilla-nss-tools
 Requires:       pesign
-
-BuildArch:      noarch
+%else
+Requires:       kernel-default-devel
+%endif
 
 %description
 A collection of tools useful for installing self-built kernels.
@@ -44,8 +47,9 @@ for use on systems with UEFI Secure Boot enabled.
 
 %install
 %make_install
+
 %if 0%{?usrmerged}
-rm -f %buildroot/sbin/installkernel
+mv %{buildroot}/sbin/installkernel %{buildroot}/usr/sbin/installkernel
 %endif
 
 %files
@@ -54,8 +58,9 @@ rm -f %buildroot/sbin/installkernel
 %{_bindir}/sbtool-genkey
 %{_bindir}/sbtool-sign-kernel
 %{_sbindir}/sbtool-enroll-key
+%if 0%{?usrmerged}
 %{_sbindir}/installkernel
-%if !0%{?usrmerged}
+%else
 /sbin/installkernel
 %endif
 
