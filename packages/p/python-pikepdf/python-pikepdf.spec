@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pikepdf
-Version:        2.12.2
+Version:        5.1.0
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -28,16 +28,16 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/pikepdf/pikepdf
 Source:         https://files.pythonhosted.org/packages/source/p/pikepdf/pikepdf-%{version}.tar.gz
 ## SECTION test requirements
-BuildRequires:  %{python_module Pillow >= 7.0.0}
+BuildRequires:  %{python_module Pillow >= 9.0.0}
 BuildRequires:  %{python_module attrs >= 20.2.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis >= 5.0}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module lxml >= 4.0}
-#BuildRequires:  %%{python_module matplotlib}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module psutil >= 5}
-BuildRequires:  %{python_module pybind11 >= 2.6.0}
-BuildRequires:  %{python_module pybind11-devel >= 2.6.0}
+BuildRequires:  %{python_module pybind11 >= 2.9.0}
+BuildRequires:  %{python_module pybind11-devel >= 2.9.0}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-cov >= 2.10.1}
 BuildRequires:  %{python_module pytest-forked}
@@ -56,9 +56,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libqpdf) >= 10.0.3
-Requires:       python-Pillow >= 6.0.0
+BuildRequires:  pkgconfig(libqpdf) >= 10.6.2
+Requires:       python-Pillow >= 9.0.0
 Requires:       python-lxml >= 4.0
+Requires:       python-packaging
 %python_subpackages
 
 %description
@@ -66,9 +67,6 @@ Read and write PDFs with Python, powered by qpdf.
 
 %prep
 %setup -q -n pikepdf-%{version}
-# Simplify setup_requires
-sed -i 's/setuptools >= [0-9]*/setuptools/;/wheel/d' setup.py
-rm setup.cfg
 
 %build
 export CFLAGS="%{optflags}"
@@ -81,7 +79,9 @@ export CFLAGS="%{optflags}"
 %check
 # Ignore some test as it fails on Leap and Tumbleweed
 # despite all other tests passing.
-%pytest_arch -k 'not (test_unicode or test_bytes or TestName)'
+# %pytest_arch -k 'not (test_unicode or test_bytes or TestName)'
+
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE.txt licenses

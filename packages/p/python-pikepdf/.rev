@@ -95,4 +95,41 @@
     <comment></comment>
     <requestid>947963</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c8522232913bad874d20939a6b58daf9</srcmd5>
+    <version>5.1.0</version>
+    <time>1648577521</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  * Rebuild against QPDF 10.6.3.
+  * Improvements to Makefile for Apple Silicon wheels.
+  * Fix issue where Pdf.check() would report a failure if JBIG2 decoder was not
+    installed and the PDF contains JBIG2 content.
+  * Some errors and inconsistencies are in the &quot;pdfdoc&quot; encoding provided by pikepdf
+    have been corrected, in conjunction with fixes in libqpdf.
+  * libqpdf 10.6.2 is required.
+  * Previously, looking up the number of a page, given the page, required a linear
+    search of all pages. We now use a newer QPDF API that allows quicker lookups.
+  * Fixed gcc linker error with linking to a source-compiled version of qpdf. Thanks @jerkenbilt.
+  * Fixed dead/obsolete link to old QPDF manual. Thanks @m-holger.
+  * Rebuild binary wheels against qpdf 10.5.0. Note 10.6.0 has been released but
+    requires further changes so does not work yet.
+  * Removed some workarounds to support now-unsupported versions of pybind11.
+  * Adjusted hypothesis test settings so it does not randomly fail on PyPy.
+  * Mention vector vs raster images in documentation.
+  * JBIG2 decoding is now more tightly integrated. In particular, we can now decode
+    more types of JBIG2 image and they can be decoded using either the object or
+    image interface.
+  * Switch to tomli for TOML parsing.
+  * Refactor image tests to use hypothesis more effectively and use more random issues,
+    fixing many errors along the way.
+  * Fixed two instances of a Python object being copied without the GIL held.
+    May have caused some instability. Thanks @rwgk.
+  * Further improvements to handling of 2- and 4-bit per component images. Major
+    refactoring of relevant code and improved testing.
+  * Mark pybind11 2.9 as supported. Thanks @QuLogic.
+  * Improved support for images with bits per component set to values between 2 and 7
+    inclusive.</comment>
+    <requestid>965218</requestid>
+  </revision>
 </revisionlist>
