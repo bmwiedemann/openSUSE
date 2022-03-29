@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-jgit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,9 @@ BuildRequires:  slf4j
 BuildRequires:  tycho
 BuildRequires:  xml-commons-apis
 BuildRequires:  xmvn-subst
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 #!BuildIgnore:  eclipse-platform
 #!BuildIgnore:  tycho-bootstrap
 #!BuildRequires: eclipse-emf-core eclipse-ecf-core
