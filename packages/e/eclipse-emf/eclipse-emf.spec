@@ -1,7 +1,7 @@
 #
-# spec file for package eclipse-emf
+# spec file for package eclipse-emf-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,9 @@ Patch1:         0002-Remove-test-that-requires-talking-to-the-internet.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  xz
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 # Upstream Eclipse no longer supports non-64bit arches
 ExcludeArch:    s390 %{arm} %{ix86}
 %if %{with bootstrap}
@@ -65,6 +68,7 @@ The Eclipse Modeling Framework (EMF) and XML Schema Definition (XSD) plug-ins.
 %if %{with bootstrap}
 %package   -n eclipse-emf-core-bootstrap
 %else
+
 %package   core
 Obsoletes:      eclipse-emf-core-bootstrap
 %endif
@@ -74,6 +78,7 @@ Group:          Development/Libraries/Java
 %if %{with bootstrap}
 %description -n eclipse-emf-core-bootstrap
 %else
+
 %description core
 %endif
 Core EMF bundles required by the Eclipse platform.
@@ -224,6 +229,7 @@ done
 %if %{with bootstrap}
 %files -n eclipse-emf-core-bootstrap -f .mfiles
 %else
+
 %files core -f .mfiles
 %endif
 %license org.eclipse.emf/features/org.eclipse.emf.license-feature/*.html

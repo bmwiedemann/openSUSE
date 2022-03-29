@@ -31,4 +31,12 @@
     <comment>2.22.0</comment>
     <requestid>818529</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b3b07015c7985f59e0d309de3d0af288</srcmd5>
+    <version>2.22.0</version>
+    <time>1648580806</time>
+    <user>dimstar_suse</user>
+    <comment>Force build with java 11</comment>
+    <requestid>965678</requestid>
+  </revision>
 </revisionlist>
