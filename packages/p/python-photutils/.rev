@@ -259,4 +259,94 @@
   * photutils.segmentation</comment>
     <requestid>942354</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>885f2aee4b9b4f0115dba5f6ee282e40</srcmd5>
+    <version>1.4.0</version>
+    <time>1648570500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0 
+  New Features
+  * photutils.aperture
+    * Added a copy method to Aperture objects. [#1304]
+    * Added the ability to compare Aperture objects for equality.
+      [#1304]
+    * The theta keyword for EllipticalAperture, EllipticalAnnulus,
+      RectangularAperture, and RectangularEllipse can now be an
+      Astropy Angle or Quantity in angular units. [#1308]
+    * Added an ApertureStats class for computing statistics of
+      unmasked pixels within an aperture. [#1309, #1314, #1315,
+      #1318]
+    * Added a dtype keyword to the ApertureMask to_image method.
+      [#1320]
+  * photutils.background
+    * Added an alpha keyword to the Background2D.plot_meshes
+      method. [#1286]
+    * Added a clip keyword to the BkgZoomInterpolator class.
+      [#1324]
+  * photutils.segmentation
+    * Added SegmentationImage cmap attribute containing a default
+      colormap. [#1319]
+    * Improved the performance of SegmentationImage and
+      SourceCatalog, especially for large data arrays. [#1320]
+    * Added a convolved_data keyword to SourceCatalog. This is
+      recommended instead of using the kernel keyword. [#1321]
+  Bug Fixes
+  * photutils.aperture
+    * Fixed a bug in aperture_photometry where an error was not
+      raised if the data and error arrays have different units.
+      [#1285].
+  * photutils.background
+    * Fixed a bug in Background2D where using the pad edge method
+      would result in incorrect image padding if only one of the
+      axes needed padding. [#1292]
+  * photutils.centroid
+    * Fixed a bug in centroid_sources where setting error, xpeak,
+      or ypeak to None would result in an error. [#1297]
+    * Fixed a bug in centroid_quadratic where inputting a mask
+      would alter the input data array. [#1317]
+  * photutils.segmentation
+    * Fixed a bug in SourceCatalog where a UFuncTypeError would be
+      raised if the input data had an integer dtype [#1312].
+  API Changes
+  * photutils.aperture
+    * A ValueError is now raised if non-positive sizes are input to
+      sky-based apertures. [#1295]
+    * The BoundingBox.plot() method now returns a
+      matplotlib.patches.Patch object. [#1305]
+    * Inputting PixelAperture positions as an Astropy Quantity in
+      pixel units is deprecated. [#1310]
+    * Inputting SkyAperture shape parameters as an Astropy Quantity
+      in pixel units is deprecated. [#1310]
+  * photutils.background
+    * Removed the deprecated background_mesh_ma and
+      background_rms_mesh_ma Background2D properties. [#1280]
+    * By default, BkgZoomInterpolator uses clip=True to prevent the
+      interpolation from producing values outside the given input
+      range. If backwards-compatiblity is needed with older
+      Photutils versions, set clip=False. [#1324]
+  * photutils.centroid
+    * Removed the deprecated centroid_epsf and gaussian1d_moments
+      functions. [#1280]
+    * Importing tools from the centroids subpackage now requires
+      including the subpackage name. [#1280]
+  * photutils.morphology
+    * Importing tools from the morphology subpackage now requires
+      including the subpackage name. [#1280]
+  * photutils.segmentation
+    * Removed the deprecated source_properties function and the
+      SourceProperties and LegacySourceCatalog classes. [#1280]
+    * Removed the deprecated the filter_kernel keyword in the
+      detect_sources, deblend_sources, and make_source_mask
+      functions. [#1280]
+    * A TypeError is raised if the input array to SegmentationImage
+      does not have integer type. [#1319]
+    * A SegmentationImage may contain an array of all zeros.
+      [#1319]
+    * Deprecated the mask_value keyword in detect_threshold. Use
+      the mask keyword instead. [#1322]
+    * Deprecated the filter_fwhm and filter_size keywords in
+      make_source_mask. Use the kernel keyword instead. [#1322]
+</comment>
+    <requestid>965460</requestid>
+  </revision>
 </revisionlist>

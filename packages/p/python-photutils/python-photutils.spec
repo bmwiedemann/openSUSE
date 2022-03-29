@@ -1,7 +1,7 @@
 #
 # spec file for package python-photutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-photutils
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
@@ -28,29 +27,29 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.29.22}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module numpy-devel >= 1.18}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python >= 3.7
-Requires:       python-astropy >= 4.0
-Requires:       python-numpy >= 1.17
+Requires:       python-astropy >= 5.0
+Requires:       python-numpy >= 1.18
 Recommends:     python-Bottleneck
-Recommends:     python-gwcs >= 0.12
-Recommends:     python-matplotlib >= 2.2
-Recommends:     python-scikit-image >= 0.14.2
+Recommends:     python-gwcs >= 0.16
+Recommends:     python-matplotlib >= 3.1
+Recommends:     python-scikit-image >= 0.15.0
 Recommends:     python-scikit-learn
 Recommends:     python-scipy >= 1.6.0
 # SECTION test requirements
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module astropy >= 4.0}
-BuildRequires:  %{python_module gwcs >= 0.12}
-BuildRequires:  %{python_module matplotlib >= 2.2}
+BuildRequires:  %{python_module astropy >= 5.0}
+BuildRequires:  %{python_module gwcs >= 0.16}
+BuildRequires:  %{python_module matplotlib >= 3.1}
 BuildRequires:  %{python_module pytest-astropy}
-BuildRequires:  %{python_module scikit-image >= 0.14.2}
+BuildRequires:  %{python_module scikit-image >= 0.15.0}
 BuildRequires:  %{python_module scikit-learn}
 BuildRequires:  %{python_module scipy >= 1.6.0}
 # /SECTION
