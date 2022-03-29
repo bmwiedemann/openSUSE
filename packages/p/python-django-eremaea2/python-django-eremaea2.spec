@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-eremaea2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,16 @@ Version:        2.0.17
 Release:        0
 Summary:        A simple Django application to store and show webcam snapshots
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/matwey/django-eremaea2
 Source:         https://files.pythonhosted.org/packages/source/d/django-eremaea2/django-eremaea2-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  %{python_module Django >= 1.10}
 BuildRequires:  %{python_module cmdln}
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module django-dj-inmemorystorage}
 BuildRequires:  %{python_module djangorestframework >= 3.7.0}
-BuildRequires:  %{python_module mock}
-# python-magic is actual pypi name
+BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests-toolbelt}
@@ -43,8 +42,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# sqlite3 from standard library is requires for tests
-BuildRequires:  %{pythons}
 Requires:       eremaea = %{version}
 Requires:       python-Django >= 1.10
 Requires:       python-cmdln
@@ -53,8 +50,8 @@ Requires:       python-magic
 Requires:       python-requests
 Requires:       python-requests-toolbelt
 Requires:       python-six
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -92,7 +89,9 @@ ln -s service %{buildroot}%{_sbindir}/rceremaea
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+export DJANGO_SETTINGS_MODULE=tests.test_settings
+export PYTHONPATH=$(pwd)
+%pytest
 
 %post
 %python_install_alternative eremaeactl
