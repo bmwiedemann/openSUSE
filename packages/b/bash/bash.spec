@@ -107,7 +107,6 @@ Provides:       /bin/bash
 %if %{with alternatives}
 Provides:       /bin/sh
 %else
-Requires:       /usr/bin/sh
 Suggests:       bash-sh
 %endif
 
@@ -137,7 +136,7 @@ Summary:        Handle behaviour of /bin/sh
 Group:          System/Shells
 Provides:       alternative(sh)
 Conflicts:      alternative(sh)
-Requires:       bash = %{version}
+PreReq:         bash = %{version}
 
 %description sh
 Use bash as /bin/sh implementation.

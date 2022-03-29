@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 24 14:37:18 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do use old legacy PreReq to get bash installed before bash-sh 
+  but do not require bash-sh by bash (bsc#1197448)
+
+-------------------------------------------------------------------
 Thu Feb 24 08:17:32 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add signatures files of the upstream patches as well 
