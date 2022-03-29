@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar 25 17:23:27 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.4.6:
+  * caddycmd: Add `--keep-backup` to upgrade commands (#4387)
+  * caddycmd: Add `--skip-standard` to `list-modules` command, quieter output (#4386)
+  * caddycmd: fix caddy validate/fmt help message (#4377)
+  * caddyhttp: Add support for triggering errors from `try_files` (#4346)
+  * caddyhttp: Placeholder for client cert in DER + base64 format (#4241)
+  * caddyhttp: reverseproxy: clarify warning for -insecure (#4379)
+  * caddyhttp: Sanitize the path before evaluating path matchers (#4407)
+  * caddytls: Mark storage clean timestamp at end of routine (#4401)
+  * docs: General minor improvements
+  * fastcgi: Fix Caddyfile parsing when `handle_response` is used (#4342)
+  * fastcgi: Implement `try_files` override in Caddyfile directive (#4347)
+  * fileserver: Fix compression breaks using httpInclude (#4352) (#4358)
+  * fileserver: Fix displayed file size if it is symlink (#4354)
+  * fileserver: Make file listing links purple once visited (#4356)
+  * fileserver: Prevent focusing filter from scrolling on page load (#4393)
+  * fileserver: properly handle escaped/non-ascii paths (#4332)
+  * headers: Canonicalize case in replace (fix #4330)
+  * httpcaddyfile: Empty tls policy for internal http localhost (#4398)
+  * httpcaddyfile: Preserve IPv6 addresses through normalization (fix #4381)
+  * map: Fix 95c03506 (avoid repeated expansions)
+  * map: Fix regex mappings
+  * reverseproxy: Log error at error level (fix #4360)
+  * reverseproxy: Prevent copying the response if a response handler ran (#4388)
+  * reverseproxy: Sanitize scheme and host on incoming requests (#4237)
+  * templates: Add 'import' action (#4321)
+  * templates: Add tests for funcInclude and funcImport (#4357)
+  * templates: Propagate httpError to HTTP response
+
+-------------------------------------------------------------------
 Fri Oct 22 11:02:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.4.5:
