@@ -23,9 +23,9 @@ Summary:        Revision Control System
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://www.gnu.org/software/rcs/
-Source:         http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.lz
-Source2:        http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.lz.sig
-Source3:        rcs.keyring
+Source:         https://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.lz
+Source1:        https://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.lz.sig
+Source2:        rcs.keyring
 Patch0:         rcs-glibc-2.34.patch
 BuildRequires:  ed
 BuildRequires:  lzip
