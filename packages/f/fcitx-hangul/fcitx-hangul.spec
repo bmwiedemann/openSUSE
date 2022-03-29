@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-hangul
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           fcitx-hangul
 Version:        0.3.1
 Release:        0
 Summary:        Hangul Module for Fcitx IM Framework
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/I18n/Korean
-Url:            https://github.com/fcitx/fcitx-hangul
+URL:            https://github.com/fcitx/fcitx-hangul
 Source:         http://download.fcitx-im.org/fcitx-hangul/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel >= 4.2.2
@@ -80,6 +80,9 @@ fdupes -q -n -r %{buildroot}
 %{_fcitx_datadir}/hangul
 %{_fcitx_imicondir}/hangul.png
 %{_fcitx_inputmethoddir}/hangul.conf
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
+%dir %{_datadir}/icons/hicolor/*/status
 %{_datadir}/icons/hicolor/64x64/apps/%{name}.png
 %{_datadir}/icons/hicolor/48x48/status/*.png
 
