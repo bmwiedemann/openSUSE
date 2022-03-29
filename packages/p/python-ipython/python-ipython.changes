@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 27 17:53:22 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 8.2.0:
+  * Auto-suggestion can now be elected with the end
+    key. :ghpull:`13566`
+  * Some traceback issues with assert etb is not None have been
+    fixed. :ghpull:`13588`
+  * History is now pulled from the sqitel database and not from
+    in-memory. In particular when using the %paste magic, the content
+    of the pasted text will be part of the history and not the
+    verbatim text %paste anymore. :ghpull:`13592`
+  * Fix Ctrl-\\ exit cleanup :ghpull:`13603`
+  * Fixes to ultratb ipdb support when used outside of
+    IPython. :ghpull:`13498`
+
+-------------------------------------------------------------------
 Sat Mar  5 18:25:05 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 8.1.1:
