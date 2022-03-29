@@ -1,7 +1,7 @@
 #
 # spec file for package libXvMC
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 Name:           libXvMC
 %define lname	libXvMC1
-Version:        1.0.12
+Version:        1.0.13
 Release:        0
 Summary:        X-Video Motion Compensation library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXvMC
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXvMC/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch0:         n_bring-back-libXv-dep.patch
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(videoproto)
@@ -78,7 +77,6 @@ in %lname.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure --docdir=%_docdir/%name --disable-static

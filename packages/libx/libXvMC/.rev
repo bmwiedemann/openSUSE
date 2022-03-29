@@ -105,4 +105,19 @@
     <comment></comment>
     <requestid>741456</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>efbc5d9cee5d4981121be33216e2500b</srcmd5>
+    <version>1.0.13</version>
+    <time>1648570433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.13
+  * autotools: fix Requires and Requires.Private in pkgconfig
+  * meson: Add a meson build system
+  * meson: Fix typo
+  * editorconfig: add meson
+  * Fix spelling/wording issues
+  * Build xz tarballs instead of bzip2
+- supersedes n_bring-back-libXv-dep.patch</comment>
+    <requestid>965074</requestid>
+  </revision>
 </revisionlist>
