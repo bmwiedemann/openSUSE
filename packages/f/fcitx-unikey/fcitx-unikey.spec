@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-unikey
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,8 @@ fcitx-unikey provides support for Vietnamese unikey IM.
 %files -f %{name}.lang
 %license COPYING
 %dir %{_fcitx_libdir}/qt
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_fcitx_addondir}/%{name}.conf
 %{_fcitx_descdir}/%{name}.desc

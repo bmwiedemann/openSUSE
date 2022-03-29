@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 29 08:20:14 CEST 2022 - tiwai@suse.de
+
+- Fix the recent TW build breakage, add icons directory to file list
+
+-------------------------------------------------------------------
 Tue Nov 13 16:45:00 UTC 2019 - Tranter Madi <trmdi@yandex.com>
 
 - Add fix_the_shift_key_bug_in_chromium.patch
