@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-libpinyin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,8 @@ cp %{SOURCE1} data
 %{_fcitx_inputmethoddir}/pinyin-libpinyin.conf
 %{_fcitx_inputmethoddir}/shuangpin-libpinyin.conf
 %{_fcitx_inputmethoddir}/zhuyin-libpinyin.conf
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/status
 %{_datadir}/icons/hicolor/48x48/status/*.png
 %{_fcitx_datadir}/libpinyin
 
