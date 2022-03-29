@@ -1,7 +1,7 @@
 #
 # spec file for package python-executing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-executing
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 License:        MIT
 Summary:        Get the currently executing AST node of a frame, and other information
@@ -30,6 +30,7 @@ Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
 BuildRequires:  %{python_module asttokens}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module littleutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm >= 4.0.0}
 BuildRequires:  %{python_module setuptools}
