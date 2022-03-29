@@ -19,12 +19,12 @@
 %global qt_version %(qtpaths --qt-version | awk -F. '{ printf "%02d%02d%02d", $1, $2, $3 }')
 
 Name:           stellarium
-Version:        0.21.3
+Version:        0.22.0
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Astronomy
-URL:            http://stellarium.org/
+URL:            https://stellarium.org/
 Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
 Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
@@ -35,6 +35,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtpaths
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Charts)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Multimedia)

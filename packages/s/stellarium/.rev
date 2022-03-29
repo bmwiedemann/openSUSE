@@ -457,4 +457,12 @@
     <comment>Don't create a duplicated stellarium.desktop file.</comment>
     <requestid>953009</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c4e4e07e775ce26a958569785c900e5c</srcmd5>
+    <version>0.22.0</version>
+    <time>1648570512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965548</requestid>
+  </revision>
 </revisionlist>

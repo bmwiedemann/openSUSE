@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 27 19:07:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22:
+  * AstroCalc: Eclipse Finder
+  * AstroCalc: RTS (Rises, Transits, Settings)
+  * Switch from Bortle scale to physical brightness values for light pollution.
+  * Allow tweaks for the atmosphere brightness/color model and tone mapping
+  * Several new calendars in the Calendars plugin
+  * Seasonal polar caps on Mars
+  * New and improved sky cultures
+  * Larger textures allowed in Scenery3D
+  * Improved OnlineQueries and Satellites plugin
+  * Many fixes in core and plugins.
+  * Technical preparations towards a major upgrade of the internal Qt framework.
+
+-------------------------------------------------------------------
 Tue Feb  8 16:13:37 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Don't create a duplicated stellarium.desktop file -- there's already
