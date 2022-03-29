@@ -120,4 +120,12 @@
     <comment></comment>
     <requestid>957613</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7139ef96046d933dfa878f8d17e13632</srcmd5>
+    <version>1.1.1</version>
+    <time>1648570459</time>
+    <user>dimstar_suse</user>
+    <comment>needs the following changes: 964852</comment>
+    <requestid>964868</requestid>
+  </revision>
 </revisionlist>

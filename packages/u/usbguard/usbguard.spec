@@ -19,7 +19,7 @@
 %global _hardened_build 1
 %define lname libusbguard1
 Name:           usbguard
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A tool for implementing USB device usage policy
 ## Not installed
@@ -112,7 +112,7 @@ autoreconf -i -s --no-recursive ./
     --with-bundled-catch \
     --with-bundled-pegtl \
     --enable-systemd \
-    --without-dbus \
+    --with-dbus \
     --disable-static
 
 make %{?_smp_mflags}
@@ -142,16 +142,16 @@ install -p -m 644 scripts/usbguard-zsh-completion %{buildroot}%{_datadir}/zsh/si
 find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 
 %preun
-%service_del_preun usbguard.service
+%service_del_preun usbguard.service usbguard-dbus.service
 
 %post
-%service_add_post usbguard.service
+%service_add_post usbguard.service usbguard-dbus.service
 
 %postun
-%service_del_postun usbguard.service
+%service_del_postun usbguard.service usbguard-dbus.service
 
 %pre
-%service_add_pre usbguard.service
+%service_add_pre usbguard.service usbguard-dbus.service
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -163,17 +163,23 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 %dir %{_localstatedir}/log/usbguard
 %dir %{_sysconfdir}/usbguard
 %{_sbindir}/rcusbguard
+%{_sbindir}/usbguard-dbus
 %dir %{_sysconfdir}/usbguard/IPCAccessControl.d
 %config(noreplace) %attr(0600,-,-) %{_sysconfdir}/usbguard/usbguard-daemon.conf
 %config(noreplace) %attr(0600,-,-) %{_sysconfdir}/usbguard/rules.conf
 %{_unitdir}/usbguard.service
+%{_unitdir}/usbguard-dbus.service
 %{_mandir}/man8/usbguard-daemon.8%{?ext_man}
+%{_mandir}/man8/usbguard-dbus.8%{?ext_man}
 %{_mandir}/man5/usbguard-daemon.conf.5%{?ext_man}
 %{_mandir}/man5/usbguard-rules.conf.5%{?ext_man}
 %{_datadir}/bash-completion/completions/usbguard
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_usbguard
+%{_datadir}/dbus-1/system-services/org.usbguard1.service
+%{_datadir}/dbus-1/system.d/org.usbguard1.conf
+%{_datadir}/polkit-1/actions/org.usbguard1.policy
 
 %files -n %{lname}
 %license LICENSE
