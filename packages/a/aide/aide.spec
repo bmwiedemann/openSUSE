@@ -1,7 +1,7 @@
 #
 # spec file for package aide
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aide
-Version:        0.17.3
+Version:        0.17.4
 Release:        0
 Summary:        Advanced Intrusion Detection Environment
 License:        GPL-2.0-or-later

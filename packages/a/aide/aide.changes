@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 09:19:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.17.4:
+  * fix CVE-2021-45417: precalculate buffer size in base64 functions (bsc#1194735)
+
+-------------------------------------------------------------------
 Thu Nov  4 10:51:25 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added aide.service and aide.timer in order to run

@@ -276,4 +276,13 @@
 - aide-systemd.patch: hook in new manpages</comment>
     <requestid>929164</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>12fae8540d8d8063b453936c9864ed68</srcmd5>
+    <version>0.17.4</version>
+    <time>1648570569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.4:
+  * fix CVE-2021-45417: precalculate buffer size in base64 functions (bsc#1194735)</comment>
+    <requestid>965618</requestid>
+  </revision>
 </revisionlist>
