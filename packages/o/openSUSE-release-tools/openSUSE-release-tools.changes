@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:24:22 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.3acf5457:
+  * Add aggregates for fiscal quarter and year
+
+-------------------------------------------------------------------
+Tue Mar 29 14:46:51 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.c967b052:
+  * build-fail-reminder: Several enhancements
+
+-------------------------------------------------------------------
+Tue Mar 29 12:29:00 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.e9c42f69:
+  * Use all staging archs in adi projects
+
+-------------------------------------------------------------------
+Tue Mar 29 10:06:05 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.39d8309e:
+  * project-installcheck: Also store first failed results
+  * project-installcheck: Store when we first saw unresolvables
+
+-------------------------------------------------------------------
+Tue Mar 29 06:56:22 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.425fdc5f:
+  * staging-installcheck: Fix syntax error
+
+-------------------------------------------------------------------
+Tue Mar 29 06:45:26 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.8e2e22a2:
+  * project-installcheck: Fix off by one error
+
+-------------------------------------------------------------------
+Tue Mar 29 06:19:52 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.cc1b2e9d:
+  * project-installcheck: Fix syntax error
+
+-------------------------------------------------------------------
+Tue Mar 29 06:18:19 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.53f00a2b:
+  * project-installcheck: Only add comments for the run in openSUSE:Factory
+
+-------------------------------------------------------------------
+Tue Mar 29 04:57:24 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220329.5a25094e:
+  * Extend build-fail-reminder to notify about uninstallable packages
+
+-------------------------------------------------------------------
 Mon Mar 28 18:04:02 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220328.c6d6df6b:
