@@ -1,7 +1,7 @@
 #
 # spec file for package c3p0
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,15 +30,22 @@ URL:            https://www.mchange.com/projects/c3p0/
 Source0:        http://downloads.sourceforge.net/sourceforge/c3p0/c3p0-%{version}.src.tgz
 Patch1:         %{name}-javadoc.patch
 BuildRequires:  ant
+%if !0%{?rhel}
 BuildRequires:  ant-nodeps
+%endif
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  mchange-commons >= %{mchange_commons_min_version}
 Requires:       mchange-commons = %{mchange_commons_version}
+%if 0%{?rhel}
+Requires(post): chkconfig
+Requires(postun):chkconfig
+%else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+%endif
 Provides:       hibernate_jdbc_cache
 BuildArch:      noarch
 

@@ -1,13 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 29 14:50:43 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- fix building on EL8 OSes
+
+-------------------------------------------------------------------
 Fri Apr 16 20:10:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.9.5.5
   * Fixed CVE-2018-20433, version 0.9.5.2 allowed XXE in
     extractXmlConfigFromInputStream during initialization.
+    (bsc#1120648)
   * Properly implement the JDBC 4.1 abort method.
   * Make XML parsing much more restrictove by default, but allow
     users to revert to the old, permissive behavior by setting config
     property 'com.mchange.v2.c3p0.cfg.xml.usePermissiveParser' to true
+    CVE-2019-5427 (bsc#1133198)
   * Address situation where a throwable during forceKillAcquires() left
     the force_kill_acquires flag set to true, making it impossible for
     the pool to restart acquisition attempts on recovery.
