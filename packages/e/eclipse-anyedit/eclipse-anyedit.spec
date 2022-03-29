@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-anyedit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,9 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  tycho
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 #!BuildIgnore:  libjawt.so(SUNWprivate_1.1)
 #!BuildIgnore:  libjawt.so(SUNWprivate_1.1)(64bit)
 BuildArch:      noarch
