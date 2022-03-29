@@ -216,4 +216,14 @@
 </comment>
     <requestid>914290</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>970f49239469aaf91d435de3c83acd36</srcmd5>
+    <version>5.2.1</version>
+    <time>1648570508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.1:
+   * wacom: Fix column layout in button-mapping dialog.
+    * l10n: Generate files</comment>
+    <requestid>965485</requestid>
+  </revision>
 </revisionlist>
