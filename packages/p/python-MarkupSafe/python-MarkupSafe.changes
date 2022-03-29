@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 18 22:31:50 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * require python >= 3.7
+
+- update to version 2.1.1:
+  * Avoid ambiguous regex matches in "striptags". :pr:`293`
+
+- changes from version 2.1.0:
+  * Drop support for Python 3.6. :pr:`262`
+  * Remove "soft_unicode", which was previously deprecated. Use
+      "soft_str" instead. :pr:`261`
+  * Raise error on missing single placeholder during string
+      interpolation. :issue:`225`
+  * Disable speedups module for GraalPython. :issue:`277`
+
+-------------------------------------------------------------------
 Sun Jun 13 14:46:40 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - skip building for Python 2.x

@@ -1,7 +1,7 @@
 #
 # spec file for package python-MarkupSafe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,30 @@
 #
 
 
-%bcond_without test
 %define oldpython python
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without test
 Name:           python-MarkupSafe
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
-URL:            https://github.com/pallets/markupsafe
 Summary:        Implements a XML/HTML/XHTML Markup safe string for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/pallets/markupsafe
 Source:         https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-%if %{with test}
-BuildRequires:  %{python_module pytest}
-%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-base >= 3.7
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+%endif
 %ifpython2
 Provides:       %{oldpython}-markupsafe = %{version}
 Obsoletes:      %{oldpython}-markupsafe < %{version}
 %endif
-
 %python_subpackages
 
 %description
@@ -60,7 +60,7 @@ export CFLAGS="%{optflags}"
 
 %if %{with test}
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m pytest
+%pytest_arch
 %endif
 
 %files %{python_files}
