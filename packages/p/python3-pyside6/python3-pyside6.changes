@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 23 11:37:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.4
+  https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs/changes-6.2.4
+- Drop patches, now upstream:
+  * 0001-Prospective-fix-for-broken-QByteArray-__msetitem__-o.patch
+  * 0002-Refactor-code-snippets-for-QByteArray-__msetitem__-_.patch
+
+-------------------------------------------------------------------
 Thu Feb  3 15:43:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.3

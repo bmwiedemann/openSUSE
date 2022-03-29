@@ -24,13 +24,8 @@
 %global pyside_flavor pyside6
 %endif
 #
-# llvm/clang are too old in Leap 15.2
-%if %{?suse_version} == 1500 && 0%{?sle_version} == 150200
-ExclusiveArch:  do_not_build
-%endif
-#
 Name:           python3-%{pyside_flavor}
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -40,9 +35,6 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Always-link-to-python-libraries.patch
-# PATCH-FIX-UPSTREAM -- big endian fixes
-Patch2:         0001-Prospective-fix-for-broken-QByteArray-__msetitem__-o.patch
-Patch3:         0002-Refactor-code-snippets-for-QByteArray-__msetitem__-_.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes
@@ -191,12 +183,12 @@ export LD_LIBRARY_PATH=%{buildroot}%{_qt6_libdir}:$LD_LIBRARY_PATH
 %if "%{pyside_flavor}" == "pyside6"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
-# Excluded tests (last update: 2021-10-12)
-# registry_existence_test can only be run if pyside and shiboken are built together
-# QtWidgets_bug_635 fails
+# Excluded tests (last update: 2022-03-23)
+# registry_existence_test only works on the Qt CI
 # QtWebEngineWidgets_pyside-474-qtwebengineview & QtWebEngineCore_web_engine_custom_scheme
-# pass locally but not on the build service
-%define ctest_exclude_regex '(registry_existence_test|QtWidgets_bug_635|QtWebEngineWidgets_pyside-474-qtwebengineview|QtWebEngineCore_web_engine_custom_scheme)'
+# pass locally but not on the build service (SIGTRAP)
+# QtGui_qpen_test times out
+%define ctest_exclude_regex '(registry_existence_test|QtWebEngineWidgets_pyside-474-qtwebengineview|QtWebEngineCore_web_engine_custom_scheme|QtGui_qpen_test)'
 %endif
 
 pushd sources/%{pyside_flavor}
