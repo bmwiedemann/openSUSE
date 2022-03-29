@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 27 16:50:26 CEST 2022 - tumic@cbox.cz
+
+- Update to version 10.5
+  * Improved handling of MBTiles maps with nonconsecutive zoom
+    levels.
+  * Fixed broken loading of some IMG maps.
+  * Added a basic IMG nautical charts style.
+
+-------------------------------------------------------------------
 Sun Feb 13 23:31:55 CET 2022 - tumic@cbox.cz
 
 - Update to version 10.4
