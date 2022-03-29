@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-license
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,9 @@ URL:            https://wiki.eclipse.org/CBI
 Source1:        http://git.eclipse.org/c/cbi/org.eclipse.license.git/snapshot/%{eplv1_tag}.tar.xz
 Source2:        http://git.eclipse.org/c/cbi/org.eclipse.license.git/snapshot/%{eplv2_tag}.tar.xz
 BuildRequires:  tycho-bootstrap
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 #!BuildIgnore:  tycho
 BuildArch:      noarch
 # Upstream Eclipse no longer supports non-64bit arches

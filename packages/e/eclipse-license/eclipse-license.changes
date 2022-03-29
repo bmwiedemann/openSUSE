@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 14:07:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with Java 11, since tycho is not knowing about any
+  Java >= 15
+
+-------------------------------------------------------------------
 Fri Jul  3 09:40:19 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Build only on architectures where eclipse is supported

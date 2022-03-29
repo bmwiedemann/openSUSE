@@ -15,4 +15,12 @@
     <comment>Build on architectures that have eclipse only</comment>
     <requestid>818521</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>724464f3a52962f71fff29af24e3991a</srcmd5>
+    <version>unknown</version>
+    <time>1648580812</time>
+    <user>dimstar_suse</user>
+    <comment>Force build with java 11</comment>
+    <requestid>965685</requestid>
+  </revision>
 </revisionlist>
