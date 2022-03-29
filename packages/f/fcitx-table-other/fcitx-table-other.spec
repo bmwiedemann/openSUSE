@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-table-other
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           fcitx-table-other
 Version:        0.2.4
 Release:        0
 Summary:        A fork of ibus-table-others for Fcitx
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/fcitx/fcitx-table-other
+URL:            https://github.com/fcitx/fcitx-table-other
 Source:         http://download.fcitx-im.org/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel >= 4.2.3
@@ -39,7 +39,7 @@ provides non-Chinese additional tables.
 
 %package lang 
 Summary:        Languages for package %{name} 
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Localization 
 Requires:       %{name} = %{version}
 Provides:       %{name}-lang-all = %{version}
@@ -271,6 +271,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/cns11643.*
 %{_datadir}/fcitx/imicon/cns11643.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-cns11643.png
 
 %files -n fcitx-table-malayalam-compose
@@ -279,6 +281,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/compose.*
 %{_datadir}/fcitx/imicon/compose.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-compose.png
 
 %files -n fcitx-table-emoji
@@ -287,6 +291,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/emoji.*
 %{_datadir}/fcitx/imicon/emoji.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-emoji.png
 
 %files -n fcitx-table-ipa-x-sampa
@@ -295,6 +301,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/ipa-x-sampa.*
 %{_datadir}/fcitx/imicon/ipa-x-sampa.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-ipa-x-sampa.png
 
 %files -n fcitx-table-latex
@@ -303,6 +311,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/latex.*
 %{_datadir}/fcitx/imicon/latex.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-latex.png
 
 %files -n fcitx-table-malayalam-phonetic
@@ -311,6 +321,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/malayalam-phonetic.*
 %{_datadir}/fcitx/imicon/malayalam-phonetic.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-malayalam-phonetic.png
 
 %files -n fcitx-table-ru-rustrad
@@ -319,6 +331,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/rustrad.*
 %{_datadir}/fcitx/imicon/rustrad.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-rustrad.png
 
 %files -n fcitx-table-ru-translit
@@ -327,6 +341,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/translit.*
 %{_datadir}/fcitx/imicon/translit.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-translit.png
 
 %files -n fcitx-table-ua-translit
@@ -335,6 +351,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/translit-ua.*
 %{_datadir}/fcitx/imicon/translit-ua.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-translit-ua.png
 
 %files -n fcitx-table-ru-yawerty
@@ -343,6 +361,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/yawerty.*
 %{_datadir}/fcitx/imicon/yawerty.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-yawerty.png
 
 %files -n fcitx-table-tamil-remington
@@ -351,6 +371,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/tamil-remington.*
 %{_datadir}/fcitx/imicon/tamil-remington.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-tamil-remington.png
 
 %files -n fcitx-table-thai
@@ -359,6 +381,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/thai.*
 %{_datadir}/fcitx/imicon/thai.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-thai.png
 
 %files -n fcitx-table-vi-qr
@@ -367,6 +391,8 @@ fdupes -n -q -r %{buildroot}
 %dir %{_datadir}/fcitx/imicon/
 %{_datadir}/fcitx/table/viqr.*
 %{_datadir}/fcitx/imicon/viqr.png
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/fcitx-viqr.png
 
 %changelog
