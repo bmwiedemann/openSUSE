@@ -17,11 +17,11 @@
 #
 
 
-%global hawkey_version 0.65.0
+%global hawkey_version 0.66.0
 %global libcomps_version 0.1.8
 %global libmodulemd_version 2.9.3
 %global rpm_version 4.14.0
-%global min_plugins_core 4.0.20
+%global min_plugins_core 4.0.26
 %global min_plugins_extras 4.0.4
 
 %global confdir %{_sysconfdir}/%{name}
@@ -50,7 +50,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.10.0
+Version:        4.11.1
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
@@ -60,13 +60,15 @@ URL:            https://github.com/rpm-software-management/dnf
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
+## https://github.com/rpm-software-management/dnf/pull/1818
+Patch0001: Fix-processing-of-download-errors.patch
 
 # Fixes proposed upstream
 
 # openSUSE specific fixes
 ## Migrate DNF persistent state directory to /usr/lib/sysimage
 Patch1001:      dnf-4.8.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
-## We defalut allow_vendor_change to False, upstream has it as True
+## We default allow_vendor_change to False, upstream has it as True
 Patch1002:      dnf-4.6_vendor_change_doc.patch
 
 BuildRequires:  bash-completion
@@ -166,6 +168,8 @@ BuildRequires:  python3-hawkey >= %{hawkey_version}
 BuildRequires:  python3-libcomps >= %{libcomps_version}
 BuildRequires:  python3-libmodulemd >= %{libmodulemd_version}
 BuildRequires:  python3-rpm >= %{rpm_version}
+# required for DNSSEC main.gpgkey_dns_verification https://dnf.readthedocs.io/en/latest/conf_ref.html
+Recommends:     python3-unbound
 Recommends:     (python3-dbus-python if NetworkManager)
 Requires:       deltarpm
 Requires:       dnf-data = %{version}-%{release}

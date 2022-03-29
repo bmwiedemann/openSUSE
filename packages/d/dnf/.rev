@@ -550,4 +550,29 @@
     <comment>- Add /etc/dnf/modules.d directory to -data subpackage (boo#1193706)</comment>
     <requestid>945339</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6ae5e560b5ab4dafd2a64756ead61ee5</srcmd5>
+    <version>4.11.1</version>
+    <time>1648570457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.11.1
+  + Allow destdir option with modulesync command
+  + Add documentation for query api flags (rh#2035577)
+  + Fix swap command to work with local rpm files correctly (rh#2036434)
+  + Fix regression in verifying signatures using rpmkeys
+  + Use rpm.TransactionSet.dbCookie() to determining if rpmdb has changed (rh#2043476)
+  + Fix decompression of groups.xml (rh#2030255)
+  + Fix history undo on a Reason Change (rh#2010259, rh#2053014)
+  + Remove /usr/bin from sys.path to avoid accidentally importing garbage
+  + Fix: Python dnf API does not respect cacheonly (rh#1862970)
+  + Fix python3.11 build: remove deprecated, update traceback regex
+  + fix dnf mark error when history sqlite missing
+  + [doc] Improve description of multilib_policy=all (rh#1996681, rh#1995630)
+  + [doc] clarify effect of --enablerepo and --disablerepo options (rh#2031414)
+  + [doc] default values for module_obsoletes and module_stream_switch (rh#2051846)
+- Add Fix-processing-of-download-errors.patch backported from upstream
+  * Fix dnf incorrectly aborting on non-English systems when packages already cached (rh#2024527)
+</comment>
+    <requestid>965257</requestid>
+  </revision>
 </revisionlist>
