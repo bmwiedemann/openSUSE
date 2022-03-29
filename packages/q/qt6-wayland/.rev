@@ -95,4 +95,12 @@
     <comment>forward (forwarded request 951582 from cgiboudeaux)</comment>
     <requestid>951583</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>801b7e5d4f6ed2f4c1bf1fddd6d9d32d</srcmd5>
+    <version>6.2.4</version>
+    <time>1648570487</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.4 (forwarded request 965385 from cgiboudeaux)</comment>
+    <requestid>965413</requestid>
+  </revision>
 </revisionlist>
