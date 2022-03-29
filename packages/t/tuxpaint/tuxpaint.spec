@@ -1,7 +1,7 @@
 #
 # spec file for package tuxpaint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define         gnomedir   %(gnome-config --prefix)
 Name:           tuxpaint
-Version:        0.9.26
+Version:        0.9.27
 Release:        0
 Summary:        Drawing Program for Young Children
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            http://www.tuxpaint.org/
-Source:         https://sourceforge.net/projects/tuxpaint/files/tuxpaint/%{version}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        tuxpaint-rpmlintrc
 Patch0:         tuxpaint-import-eval.patch
 # PATCH-FIX-OPENSUSE tuxpaint-makefile.patch -- Disable update-desktop-database, because it do not work
@@ -48,6 +48,7 @@ BuildRequires:  zlib-devel
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
+BuildRequires:  libSDL_gfx-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  update-desktop-files
 Requires:       freefont
@@ -156,6 +157,14 @@ rm -rf %{buildroot}/%{_docdir}/%{name}
 # remove unneeded scripts
 rm %{buildroot}/%{_datadir}/%{name}/fonts/locale/zh_tw_docs/*.{sh,py,pe}
 
+%if 0%{?suse_version} >= 01500
+# move bash-completion to new home
+mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions/
+mv 	%{buildroot}%{_sysconfdir}/bash_completion.d/tuxpaint-completion.bash \
+	%{buildroot}%{_datadir}/bash-completion/completions/
+rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
+%endif
+
 # find lang
 %find_lang %{name}
 
@@ -163,18 +172,21 @@ rm %{buildroot}/%{_datadir}/%{name}/fonts/locale/zh_tw_docs/*.{sh,py,pe}
 %if 0%{?suse_version}
 %doc %{_defaultdocdir}/%{name}
 %endif
-%{_mandir}/man1/tuxpaint*
-%{_mandir}/pl/man1/tuxpaint.1%{?ext_man}
+%{_mandir}/*
+%exclude %{_mandir}/man1
+%exclude %{_mandir}/man1/tp-magic-config*
 %dir %{_sysconfdir}/%{name}
-%dir %{_mandir}/pl
-%dir %{_mandir}/pl/man1
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
+%if 0%{?suse_version} >= 01500
+%{_datadir}/bash-completion/completions/tuxpaint-completion.bash
+%else
 %config(noreplace) %{_sysconfdir}/bash_completion.d/tuxpaint-completion.bash
+%endif
 %{_bindir}/%{name}
 %{_bindir}/tuxpaint-import
 %{_libdir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/pixmaps/%{name}.*
+%{_datadir}/pixmaps/*%{name}.*
 %{_datadir}/applications/*.desktop
 
 %files devel

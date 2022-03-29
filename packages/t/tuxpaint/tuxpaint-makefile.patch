@@ -1,15 +1,38 @@
-diff -Nur tuxpaint-0.9.26/Makefile new/Makefile
---- tuxpaint-0.9.26/Makefile	2021-06-29 01:46:55.000000000 +0200
-+++ new/Makefile	2021-10-02 16:38:32.509556525 +0200
-@@ -79,6 +79,7 @@
+Index: tuxpaint-0.9.27/Makefile
+===================================================================
+--- tuxpaint-0.9.27.orig/Makefile
++++ tuxpaint-0.9.27/Makefile
+@@ -74,6 +74,7 @@ endif
  #   <HOSTROOT>/lib            Library files.
  #   <HOSTROOT>/lib/pkgconfig  *.pc files.
  #
 +HOST:=
  ifdef HOST
-   ifndef HOSTROOT
-     $(error Must set HOSTROOT to cross compile)
-@@ -924,9 +925,9 @@
+   ifdef HOSTROOT
+     ifeq ($(wildcard $(HOSTROOT)/.),)
+@@ -721,9 +722,9 @@ uninstall:	uninstall-i18n
+ 	@if [ "x$(shell which xdg-desktop-menu)" != "x" ]; then \
+ 	  xdg-desktop-menu uninstall tux4kids-tuxpaint.desktop ; \
+ 	fi
+-	-if [ "x$(shell which update-desktop-database)" != "x" ]; then \
+-	  update-desktop-database; \
+-	fi
++#	-if [ "x$(shell which update-desktop-database)" != "x" ]; then \
++#	  update-desktop-database; \
++#	fi
+ 
+ # Install default config file:
+ .PHONY: install-default-config
+@@ -905,7 +906,7 @@ install-nokia770:
+ .PHONY: install-xdg
+ install-xdg:
+ 	@echo
+-	@echo "...Installing launcher icon into desktop environment..."
++	@echo "...NOT installing launcher icon into desktop environment..."
+ 	@if [ "x$(shell which xdg-icon-resource install)" != "x" ]; then \
+ 	  xdg-icon-resource install --size 192 data/images/icon192x192.png tux4kids-tuxpaint ; \
+ 	  xdg-icon-resource install --size 128 data/images/icon128x128.png tux4kids-tuxpaint ; \
+@@ -921,9 +922,9 @@ install-xdg:
  	  xdg-desktop-menu install tux4kids-tuxpaint.desktop ; \
  	  rm ./tux4kids-tuxpaint.desktop ; \
  	fi

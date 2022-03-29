@@ -1,7 +1,8 @@
-diff -Nur tuxpaint-0.9.26/src/tuxpaint-import.sh new/src/tuxpaint-import.sh
---- tuxpaint-0.9.26/src/tuxpaint-import.sh	2017-10-10 01:37:05.000000000 +0200
-+++ new/src/tuxpaint-import.sh	2021-10-02 14:11:50.869928504 +0200
-@@ -143,7 +143,7 @@
+Index: tuxpaint-0.9.27/src/tuxpaint-import.sh
+===================================================================
+--- tuxpaint-0.9.27.orig/src/tuxpaint-import.sh
++++ tuxpaint-0.9.27/src/tuxpaint-import.sh
+@@ -143,7 +143,7 @@ fi
  # For each picture list...
  for x in $(seq 1 $#)
  do
