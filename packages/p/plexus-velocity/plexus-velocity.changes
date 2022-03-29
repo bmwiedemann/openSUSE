@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 14:22:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Simplify the build file and remove tests which depend on
+  apache-commons-lang
+
+-------------------------------------------------------------------
 Tue Mar 22 15:14:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

@@ -16,7 +16,6 @@
 #
 
 
-%bcond_with tests
 Name:           plexus-velocity
 Version:        1.2
 Release:        0
@@ -38,14 +37,6 @@ Requires:       mvn(commons-collections:commons-collections)
 Requires:       mvn(org.codehaus.plexus:plexus-container-default)
 Requires:       mvn(velocity:velocity)
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  apache-commons-lang
-BuildRequires:  guava
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-utils
-BuildRequires:  xbean
-%endif
 
 %description
 This package provides Plexus Velocity component - a wrapper for
@@ -72,16 +63,9 @@ cp -p %{SOURCE2} LICENSE
 
 mkdir -p lib
 build-jar-repository -s lib commons-collections plexus-containers/plexus-container-default velocity
-%if %{with tests}
-build-jar-repository -s lib commons-lang guava/guava plexus/classworlds plexus/utils xbean/xbean-reflect
-%endif
 
 %build
-ant \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
-  jar javadoc
+ant jar javadoc
 
 %install
 # jar
