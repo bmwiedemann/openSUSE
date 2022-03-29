@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 27 13:07:04 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.16
+  * Improvements
+    * Extended personality designation syntax of syscall specification expressions
+      to support all@pers and %class@pers.
+    * Enhanced rejection of invalid syscall numbers in syscall specification
+      expressions.
+    * Implemented decoding of set_mempolicy_home_node syscall, introduced
+      in Linux 5.17.
+    * Implemented decoding of IFLA_GRO_MAX_SIZE and TCA_ACT_IN_HW_COUNT netlink
+      attributes.
+    * Implemented decoding of PR_SET_VMA operation of prctl syscall.
+    * Implemented decoding of siginfo_t.si_pkey field.
+    * Implemented decoding of LIRC ioctl commands.
+    * Updated lists of FAN_*, IORING_*, IOSQE_*, KEY_*, KVM_*, MODULE_INIT_*,
+      TCA_ACT_*, and *_MAGIC constants.
+    * Updated lists of ioctl commands from Linux 5.17.
+- tests-ptrace.patch: Handle undefined SEGV_PKUERR
+
+-------------------------------------------------------------------
 Mon Jan 10 13:34:19 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 5.16
