@@ -17,7 +17,7 @@
 
 
 Name:           gparted
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Gnome Partition Editor
 License:        GPL-2.0-only
