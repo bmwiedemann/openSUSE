@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for python-ligo-lw
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -20,8 +20,6 @@
 %if "%{flavor}" == "test"
 %bcond_without test
 %define psuffix -test
-# Tests known to fail on 32 bit due to fp precision
-ExcludeArch:    %{ix86}
 %else
 %bcond_with test
 %define psuffix %{nil}
@@ -61,6 +59,10 @@ Requires:       python-lscsoft-glue
 Requires:       python-python-dateutil
 Requires:       python-six
 Requires:       python-tqdm
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+# lal no longer supported for 32bit, and is a hard dependency for ligo-lw
+ExcludeArch:    %{ix86}
 # SECTION Test requirements
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
@@ -78,8 +80,6 @@ BuildRequires:  libxml2-tools
 BuildRequires:  python3
 %endif
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %python_subpackages
 
 %description
