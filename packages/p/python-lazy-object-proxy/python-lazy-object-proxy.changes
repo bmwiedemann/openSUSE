@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 26 20:03:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Removed most of the Python 2 support code and fixed ``python_requires`` to
+    require at least Python 3.6.
+    * Note that 1.7.0 has been yanked because it could not install on Python 2.7.
+  * Switched CI to GitHub Actions, this has a couple consequences:
+  * Fixed ``__index__`` to fallback to ``int`` if the wrapped object doesn't
+    have an ``__index__`` method.  This prevents situations where code using a
+    proxy would otherwise likely just call ``int`` had the object not have an
+    ``__index__`` method.
+ 
+-------------------------------------------------------------------
 Wed Oct 13 09:02:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Unpin setuptools_scm<6.0 limit

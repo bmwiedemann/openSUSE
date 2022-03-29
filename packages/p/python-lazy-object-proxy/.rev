@@ -102,4 +102,20 @@
     <comment></comment>
     <requestid>925077</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef80517b2c3865011e5305f6b347e335</srcmd5>
+    <version>1.7.1</version>
+    <time>1648570435</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Removed most of the Python 2 support code and fixed ``python_requires`` to
+    require at least Python 3.6.
+    * Note that 1.7.0 has been yanked because it could not install on Python 2.7.
+  * Switched CI to GitHub Actions, this has a couple consequences:
+  * Fixed ``__index__`` to fallback to ``int`` if the wrapped object doesn't
+    have an ``__index__`` method.  This prevents situations where code using a
+    proxy would otherwise likely just call ``int`` had the object not have an
+    ``__index__`` method.</comment>
+    <requestid>965084</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,8 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%global skip_python2 1
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause
@@ -46,10 +46,6 @@ BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-travis-fold}
 BuildRequires:  %{python_module pytest}
-%endif
-%ifpython2
-Obsoletes:      %{oldpython}-lazy_object_proxy < %{version}
-Provides:       %{oldpython}-lazy_object_proxy = %{version}
 %endif
 %python_subpackages
 
