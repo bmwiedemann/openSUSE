@@ -17,10 +17,10 @@
 
 
 %define real_name pycountry
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-pycountry
-Version:        22.1.10
+Version:        22.3.5
 Release:        0
 Summary:        Databases for ISO standards 639 3166 3166-2 4217 15924
 License:        LGPL-2.1-only
