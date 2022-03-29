@@ -99,6 +99,7 @@ Source134:      %{sbt_ivy_descriptor compiler-interface}
 Source171:      %{sbt_ivy_descriptor sbt}
 Patch0:         sbt-%{sbt_version}-build-sbt.patch
 Patch2:         sbt-0.13.17-lines.patch
+Patch3:         sbt-new-ivy.patch
 Patch4:         sbt-0.13.13-sxr.patch
 BuildRequires:  apache-ivy
 #Source650:  https://oss.sonatype.org/service/local/repositories/releases/content/org/scala-sbt/sbt-giter8-resolver/sbt-giter8-resolver_%{scala_short_version}/0.1.0/sbt-giter8-resolver_%{scala_short_version}-0.1.0.jar
@@ -325,6 +326,7 @@ sbt is the simple build tool for Scala and Java projects.
 %endif
 
 %patch2 -p1
+%patch3 -p1
 
 %if !%{do_proper}
 %patch4 -p1
@@ -408,7 +410,7 @@ cp %{SOURCE63} .
 
 ./climbing-nemesis.py com.google.guava guava %{ivy_local_dir} --version 18.0 --ignore "jsr305"
 ./climbing-nemesis.py com.google.code.findbugs jsr305 %{ivy_local_dir} --version 1.3.9
-./climbing-nemesis.py javax.inject javax.inject %{ivy_local_dir} --version 1
+./climbing-nemesis.py javax.inject javax.inject %{ivy_local_dir} --version 1 --override javax.inject:javax.inject
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.plexus %{ivy_local_dir} --version 0.3.0.M1
 ./climbing-nemesis.py org.eclipse.aether aether-impl %{ivy_local_dir} --version 1.0.1.v20141111
 ./climbing-nemesis.py org.apache.maven.resolver maven-resolver-impl %{ivy_local_dir} --version 1.7.3

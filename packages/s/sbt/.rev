@@ -79,4 +79,12 @@
     <comment>Fix build against maven-resolver 1.7.3</comment>
     <requestid>961512</requestid>
   </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>aa7824afb3b7115b245b08bdc24bdd8c</srcmd5>
+    <version>0.13.18</version>
+    <time>1648580820</time>
+    <user>dimstar_suse</user>
+    <comment>fix build against new ivy</comment>
+    <requestid>965693</requestid>
+  </revision>
 </revisionlist>

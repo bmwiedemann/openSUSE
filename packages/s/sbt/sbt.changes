@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 28 09:19:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * sbt-new-ivy.patch
+    + fix build against apache-ivy 2.5.0
+
+-------------------------------------------------------------------
+Tue Mar 22 12:04:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Override javax.inject:javax:inject artifact coordinates in order
+  to be able to build against newer atinject versions if needed
+
+-------------------------------------------------------------------
 Mon Mar 14 05:31:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-resolver 1.7.3
