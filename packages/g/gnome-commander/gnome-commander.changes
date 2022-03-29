@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 28 10:54:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.2:
+  + Update of appdata file.
+  + Fix move of directory when it is sitting on a remote.
+  + Fix of size comparison: use correct getter method for
+    G_FILE_ATTRIBUTE_STANDARD_SIZE.
+  + When sorting for size, ignore directories.
+  + When copying files only step into recursive copy when not done
+    already.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar  2 00:52:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.1:
