@@ -16,13 +16,18 @@
 #
 
 
-%define real_version 6.2.3
+%define real_version 6.2.4
 %define short_version 6.2
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
 #
-Name:           qt6-remoteobjects
-Version:        6.2.3
+%global qt6_flavor @BUILD_FLAVOR@%{nil}
+%if "%{qt6_flavor}" == "docs"
+%define pkg_suffix -docs
+%endif
+#
+Name:           qt6-remoteobjects%{?pkg_suffix}
+Version:        6.2.4
 Release:        0
 Summary:        Qt6 RemoteObjects Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -36,10 +41,16 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6Widgets)
+%if "%{qt6_flavor}" == "docs"
+BuildRequires:  qt6-tools
+%{qt6_doc_packages}
+%endif
 
 %description
 Qt Remote Objects (QtRO) is an inter-process communication (IPC)
 module to enable information exchange between processes or computers.
+
+%if !%{qt6_docs_flavor}
 
 %package imports
 Summary:         Qt 6 RemoteObjects QML files
@@ -102,6 +113,8 @@ This package contains REPC, a compiler for Qt RemoteObjects API definition files
 
 %{qt6_examples_package}
 
+%endif
+
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
@@ -112,6 +125,8 @@ This package contains REPC, a compiler for Qt RemoteObjects API definition files
 
 %install
 %{qt6_install}
+
+%if !%{qt6_docs_flavor}
 
 # repparser has no private headers
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_repparser_private.pri
@@ -173,5 +188,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6RepParser
 
 %files tools
 %{_qt6_libexecdir}/repc
+
+%endif
 
 %changelog
