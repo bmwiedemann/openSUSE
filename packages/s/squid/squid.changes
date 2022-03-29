@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 29 10:48:38 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Fix upgrade path from squid 4.x where we replaced some symlinks
+  with directories in pretrans section (bsc#1197333)
+- old_nettle_compat.patch: refresh patch
+
+-------------------------------------------------------------------
 Sat Feb 26 11:29:47 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 5.4.1:

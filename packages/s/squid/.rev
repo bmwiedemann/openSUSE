@@ -1019,4 +1019,14 @@ from the squid 3.x changelog</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>961868</requestid>
   </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>7144abd82527c49eab02144d4635e15c</srcmd5>
+    <version>5.4.1</version>
+    <time>1648570575</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix upgrade path from squid 4.x where we replaced some symlinks
+  with directories in pretrans section (bsc#1197333)
+- old_nettle_compat.patch: refresh patch</comment>
+    <requestid>965649</requestid>
+  </revision>
 </revisionlist>

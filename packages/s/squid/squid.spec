@@ -232,6 +232,14 @@ install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 # Fails in chroot environment
 make check %{?_smp_mflags}
 
+%pretrans -p <lua>
+-- Remove symlink that is has become a directory
+path = "%_datadir/squid/errors/es-mx"
+st = posix.stat(path)
+if st and st.type == "link" then
+  os.remove(path)
+end
+
 %if 0%{?suse_version} >= 1500
 %pre -f squid.pre
 %else
