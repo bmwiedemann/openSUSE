@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webengine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.3
+%define real_version 6.2.4
 %define short_version 6.2
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -42,7 +42,7 @@
 %bcond_without system_minizip
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -55,12 +55,10 @@ Patch100:       rtc-dont-use-h264.patch
 Patch101:       sandbox-statx-futex_time64.patch
 # PATCH-FIX-UPSTREAM
 Patch102:       0001-Fix-build-with-glibc-2.34.patch
-# PATCH-FIX-OPENSUSE -- Needed for leap 15.2
-Patch103:       chromium-90-fseal.patch
 # PATCH-FIX-OPENSUSE -- disable-gpu-when-using-nouveau-boo-1005323.diff
 # PATCH-NEEDS-REBASE
 %if 0
-Patch104:       disable-gpu-when-using-nouveau-boo-1005323.diff
+Patch103:       disable-gpu-when-using-nouveau-boo-1005323.diff
 %endif
 #
 # Chromium/blink don't support all archs
