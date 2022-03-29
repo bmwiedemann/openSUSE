@@ -1440,4 +1440,30 @@
     regarding statement caching.</comment>
     <requestid>954392</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>20b48f11c33a617e3edffc7488584b48</srcmd5>
+    <version>1.7.7</version>
+    <time>1648570439</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.7:
+  * Fixed issue where using :meth:`.Operations.create_table` in conjunction
+    with a :class:`.CheckConstraint` that referred to table-bound
+    :class:`.Column` objects rather than string expressions would be added to
+    the parent table potentially multiple times, resulting in an incorrect DDL
+    sequence. Pull request courtesy Nicolas CANIART.
+  * The ``logging.fileConfig()`` line in ``env.py`` templates, which is used
+    to setup Python logging for the migration run, is now conditional on
+    :attr:`.Config.config_file_name` not being ``None``.  Otherwise, the line
+    is skipped as there is no default logging configuration present.
+  * Fixed bug where an :meth:`.Operations.alter_column` operation would change
+    a &quot;NOT NULL&quot; column to &quot;NULL&quot; by emitting an ALTER COLUMN statement that
+    did not specify &quot;NOT NULL&quot;. (In the absence of &quot;NOT NULL&quot; T-SQL was
+    implicitly assuming &quot;NULL&quot;). An :meth:`.Operations.alter_column` operation
+    that specifies :paramref:`.Operations.alter_column.type` should also
+    specify include either :paramref:`.Operations.alter_column.nullable` or
+    :paramref:`.Operations.alter_column.existing_nullable` to inform Alembic as
+    to whether the emitted DDL should include &quot;NULL&quot; or &quot;NOT NULL&quot;; a warning
+    is now emitted if this is missing under this scenario.</comment>
+    <requestid>965089</requestid>
+  </revision>
 </revisionlist>
