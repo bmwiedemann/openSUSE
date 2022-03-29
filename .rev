@@ -32,4 +32,14 @@
     <comment>Staging:I</comment>
     <requestid>784206</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bf66bb81c7f62b582a3f0332ec16ce4a</srcmd5>
+    <version>3.2.1</version>
+    <time>1648570446</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Refreshed package metadata.
+  * Switched to native namespace for jaraco package.</comment>
+    <requestid>965188</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.classes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jaraco.classes
-Version:        3.1.0
+Version:        3.2.1
 Release:        0
 Summary:        Tools to work with classes
 License:        MIT
@@ -48,11 +48,6 @@ sed -i 's/--black --cov//' pytest.ini
 
 %install
 %python_install
-# We will package the namespace __init__.py separately
-%{python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py*
-rm -rf %{buildroot}%{$python_sitelib}/jaraco/__pycache__/
-%fdupes %{buildroot}%{$python_sitelib}
-}
 
 %check
 %pytest
