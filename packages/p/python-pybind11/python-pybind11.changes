@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Mar 27 15:11:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * If possible, attach Python exception with py::raise_from to TypeError when
+    casting from C++ to Python. This will give additional info if Python
+    exceptions occur in the caster.
+  * Add a mapping of C++11 nested exceptions to their Python exception
+    equivalent using py::raise_from. This attaches the nested exceptions in
+    Python using the __cause__ field. 
+  * Propagate Python exception traceback using raise_from if a pybind11
+    function runs out of overloads.
+  * py::multiple_inheritance is now only needed when C++ bases are hidden from
+    pybind11.
+  * Allow py::args to be followed by other arguments; the remaining arguments
+    are implicitly keyword-only, as if a py::kw_only{} annotation had been
+    used.
+  * Fix a rare warning about extra copy in an Eigen constructor.
+  * Fix caching of the C++ overrides.
+  * Add missing std::forward calls to some cpp_function overloads.
+  * Support PyPy 7.3.7 and the PyPy3.8 beta. Test python-3.11 on PRs with the python dev label.
+  * Replace usage of deprecated Eigen::MappedSparseMatrix with Eigen::Map<Eigen::SparseMatrix<...>> for Eigen 3.3+.
+  * Tweaks to support Microsoft Visual Studio 2022.
+
+-------------------------------------------------------------------
 Mon Dec  6 10:07:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 2.8.1:

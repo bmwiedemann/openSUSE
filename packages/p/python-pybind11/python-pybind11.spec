@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pybind11
-Version:        2.8.1
+Version:        2.9.1
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
@@ -98,7 +98,7 @@ rm -rfv %{buildroot}%{_includedir}/python3.*/pybind11
 
 %check
 # test fails as python3-widget is not in distribuion
-rm tests/test_embed/test_interpreter.py
+rm -v tests/test_embed/test_interpreter.py tests/test_embed/test_trampoline.py
 export PYTHONPATH=${PWD}/build/tests/
 %pytest -k 'not (tests_build_wheel or tests_build_global_wheel)'
 
