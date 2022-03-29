@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 25 12:26:22 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220325.163dbdf:
+  * whitelisting: add usbguard actions (bsc#1196621)
+
+-------------------------------------------------------------------
+Thu Mar 24 10:10:39 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220324.7f46822:
+  * Fix generation of file /etc/polkit-1/rules.d/90-default-privs.rules
+
+-------------------------------------------------------------------
 Thu Mar 03 14:12:51 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 1550+20220303.95a78fb:
