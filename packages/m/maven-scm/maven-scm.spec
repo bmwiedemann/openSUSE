@@ -1,7 +1,7 @@
 #
 # spec file for package maven-scm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,11 +30,12 @@ Source0:        http://archive.apache.org/dist/maven/scm/%{name}-%{version}-sour
 Patch0:         maven-scm-1.12.0-sec-dispatcher-2.0.patch
 Patch1:         0001-Port-maven-scm-to-latest-version-of-plexus-default.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(commons-io:commons-io)
-BuildRequires:  mvn(commons-lang:commons-lang)
 BuildRequires:  mvn(junit:junit)
+BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-invoker-plugin)
@@ -95,6 +96,13 @@ Javadoc for %{name}.
 %pom_disable_module maven-scm-provider-cvsjava maven-scm-providers/maven-scm-providers-cvs
 sed -i s/cvsjava.CvsJava/cvsexe.CvsExe/ maven-scm-client/src/main/resources/META-INF/plexus/components.xml
 
+# Port to commons-lang3
+%pom_change_dep -r :commons-lang org.apache.commons:commons-lang3:3.8.1
+sed -i "s/org\.apache\.commons\.lang\./org.apache.commons.lang3./" \
+    maven-scm-providers/maven-scm-providers-git/maven-scm-provider-gitexe/src/main/java/org/apache/maven/scm/provider/git/gitexe/command/status/GitStatusConsumer.java \
+    maven-scm-providers/maven-scm-providers-svn/maven-scm-provider-svnexe/src/main/java/org/apache/maven/scm/provider/svn/svnexe/command/checkout/SvnCheckOutConsumer.java \
+    maven-scm-providers/maven-scm-providers-svn/maven-scm-provider-svnexe/src/main/java/org/apache/maven/scm/provider/svn/svnexe/command/remoteinfo/SvnRemoteInfoCommand.java
+
 # Tests are skipped anyways, so remove dependency on mockito.
 %pom_remove_dep org.mockito: maven-scm-providers/maven-scm-provider-jazz
 %pom_remove_dep org.mockito: maven-scm-providers/maven-scm-provider-accurev
@@ -110,9 +118,9 @@ sed -i s/cvsjava.CvsJava/cvsexe.CvsExe/ maven-scm-client/src/main/resources/META
 %build
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+	-Dmaven.compiler.release=8 \
 %endif
-	-Dsource=7
+	-Dsource=8
 
 %install
 %mvn_install
