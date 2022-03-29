@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.3
+%define real_version 6.2.4
 %define short_version 6.2
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -73,6 +73,7 @@ The Qt 6 Core 5 Compat library
 %package devel
 Summary:        Qt 6 Core 5 Compat library - Development files
 Requires:       libQt6Core5Compat6 = %{version}
+Requires:       qt6-core-private-devel
 
 %description devel
 Development files for the Qt 6 Core 5 Compat library
