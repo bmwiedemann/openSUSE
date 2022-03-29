@@ -55,4 +55,12 @@
     <comment>widen asm requirements</comment>
     <requestid>926740</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>45c644954acdbffeda50e8bcf1c4f56b</srcmd5>
+    <version>3.14.8</version>
+    <time>1648580804</time>
+    <user>dimstar_suse</user>
+    <comment>Force build with java 11</comment>
+    <requestid>965674</requestid>
+  </revision>
 </revisionlist>

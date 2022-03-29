@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:59:57 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with Java 11, since tycho is not knowing about any
+  Java >= 15
+
+-------------------------------------------------------------------
 Thu Oct 21 11:01:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with objectweb-asm 9.x

@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-ecf-bootstrap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,9 @@ BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  maven-plugin-build-helper
 BuildRequires:  osgi-annotation
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
 # Upstream Eclipse no longer supports non-64bit arches
 ExcludeArch:    s390 %{arm} %{ix86}
 %if %{with bootstrap}
