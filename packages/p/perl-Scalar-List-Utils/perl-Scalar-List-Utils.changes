@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 18 03:08:55 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.62 -- 2022-03-17
+  	[CHANGES]
+  	 * Prepare for perl 5.35.10 release:
+  	    + Skip the tainted tests if your perl was built without taint
+  	      support
+  	    + Document the existence of the `builtin::` equivalents for
+  	      several Scalar::Util functions
+
+-------------------------------------------------------------------
 Thu Feb 17 03:07:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.61
