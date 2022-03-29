@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 29 10:19:51 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1648546456.43990702:
+  * Avoid JSON::PP::Boolean warnings
+  * Add unit test for save_tmp_file
+  * Reuse Mojo::Base for instantiating driver objects
+  * Switch to the new log module
+  * Add test for isotovideo exit status
+  * Fix a bug where the collected event was registered too late
+  * testapi: Return name of saved file in save_tmp_file
+  * Print concrete error message when limit in command server is exceeded
+  * Remove limit for uploads via the command server
+
+-------------------------------------------------------------------
 Sun Mar 27 01:59:13 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1648231888.efaf5f44:
