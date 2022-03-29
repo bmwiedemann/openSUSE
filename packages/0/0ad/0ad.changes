@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 23 19:03:43 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop fix-i586-build.patch after boo#1197065 was fixed
+
+-------------------------------------------------------------------
 Sun Mar 13 11:57:58 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fix-i586-build.patch to fix build on i586

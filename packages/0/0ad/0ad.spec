@@ -46,7 +46,6 @@ Patch1:         no-version-check.patch
 Patch2:         PrepareZoneForGC.patch
 # PATCH-FIX-UPSTREAM -- Don't define M_PIf if glibc already provides it
 Patch3:         glibc-2.35.patch
-Patch4:         fix-i586-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXcursor-devel
@@ -100,9 +99,6 @@ flexible game engine.
 %if %{with system_mozjs}
 %patch1 -p1
 %patch2 -p1
-%endif
-%ifarch %{ix86}
-%patch4 -p1
 %endif
 
 %build
