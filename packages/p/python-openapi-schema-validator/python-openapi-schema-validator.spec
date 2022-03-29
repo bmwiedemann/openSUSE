@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-schema-validator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-openapi-schema-validator
-Version:        0.1.1
+Version:        0.2.3
 Release:        0
 Summary:        OpenAPI schema validator for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/p1c2u/openapi-schema-validator
 Source:         https://github.com/p1c2u/openapi-schema-validator/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +39,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module strict-rfc3339}
@@ -54,14 +55,16 @@ Wright Draft 00.
 %setup -q -n openapi-schema-validator-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i 's:\(addopts = -sv\).*:\1:' setup.cfg
+sed -i 's:tool.pytest.ini_options:hide:' pyproject.toml
+# no rfc3339-validator installed
+sed -i 's:\(DATETIME_HAS_RFC3339_VALIDATOR.*\)True:\1False:' tests/integration/test_validators.py
 %pytest
 
 %files %{python_files}

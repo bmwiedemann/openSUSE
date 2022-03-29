@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 28 10:45:14 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.2.3
+  * readOnly and writeOnly on jsonschema4 fix #41
+  * Validate oneOf, anyOf and allOf with discriminator (cherry-pick from 0.3.x) #30
+  * Revert "make jsonschema4 compatible (DeprecationWarning fix)" #34
+  * Drop python 3.6 support (cherry-pick from 0.3.x and part 2) #35
+  * Limit jsonschema dependency #36
+  * switch to poetry #27
+  * drop python 2.7 and 3.5 support #27 #28
+  * make jsonschema4 compatible (DeprecationWarning fix) #25
+  * Fix required in composition #16
+  * Prevent Schema Mutation #26
+  * Stop assigning a version to our Validator (#12)
+  * Switch to a MIT-licensed dependency (#4)
+  * Pypi license fix (#10)
+  * jsonschema dependency fix
+  * Permit uppercase characters in UUID (#8)
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Tue Mar 31 06:52:02 UTC 2020 - pgajdos@suse.com
 
 - initial version 0.1.1, required by openapi-core
