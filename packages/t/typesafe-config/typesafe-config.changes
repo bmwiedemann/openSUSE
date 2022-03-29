@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 29 14:44:12 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Added patch:
+  * fix-doc-lint.patch
+    + fix javadoc lint errors
+
+-------------------------------------------------------------------
 Tue Jul 27 13:49:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java-devel >= 1.8 since source/target levels 8 are

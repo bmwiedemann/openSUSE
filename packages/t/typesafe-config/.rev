@@ -31,4 +31,12 @@
     <comment>Build with java 8, since source/target level 8 is requested</comment>
     <requestid>908816</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e67100bf081100978f4848849f13b525</srcmd5>
+    <version>1.4.1</version>
+    <time>1648575937</time>
+    <user>dimstar_suse</user>
+    <comment>fix doclint errors</comment>
+    <requestid>965732</requestid>
+  </revision>
 </revisionlist>

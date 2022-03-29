@@ -1,7 +1,7 @@
 #
 # spec file for package typesafe-config
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/typesafehub/config
 Source0:        %{URL}/archive/v%{version}.tar.gz#/config-%{version}.tar.gz
 Source1:        https://repo1.maven.org/maven2/com/typesafe/config/%{version}/config-%{version}.pom
+Patch0:         fix-doc-lint.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -42,6 +43,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n config-%{version}
+%patch0 -p1
 
 %build
 pushd config
