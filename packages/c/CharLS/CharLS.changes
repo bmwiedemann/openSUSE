@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 29 21:45:02 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 2.3.4:
+  * Changed
+    - Replaced legacy test images
+  From version 2.3.3:
+  * Fixed
+    - [#167](https://github.com/team-charls/charls/issues/167),
+      Decoding\Encoding fails on IBM s390x CPU
+      (Big Endian architecture)
+  * Changed
+    - CTest is now used in the CI build pipeline to test the output
+      of the Linux and macOS builds.
+
+-------------------------------------------------------------------
 Wed Feb  2 23:35:11 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 2.3.2:
