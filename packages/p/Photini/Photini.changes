@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 30 08:52:22 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2022.3.2
+  * Fix urllib import error porblem on some systems.
+  */ Fix non-existing cache directory error.
+
+-------------------------------------------------------------------
 Tue Mar 22 17:06:22 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2022.3.1
