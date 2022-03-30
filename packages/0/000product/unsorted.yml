@@ -250,6 +250,7 @@ unsorted:
   - RigelEngine 
   - Rivet-devel 
   - Rivet-plugins 
+  - SDL_sound-devel 
   - SHERPA-MC-devel 
   - SVT-AV1: [x86_64] 
   - SVT-AV1-devel: [x86_64] # devel package of common_locks:libSvtAv1Enc0 
@@ -308,8 +309,8 @@ unsorted:
   - acars-examples 
   - acars2-examples 
   - acarsdec 
-  - accel-config 
-  - accel-config-devel 
+  - accel-config: [x86_64] 
+  - accel-config-devel: [x86_64] 
   - accerciser 
   - accerciser-lang 
   - accerciser-plugin-IPython 
@@ -789,9 +790,6 @@ unsorted:
   - aseqview 
   - asio-devel 
   - asl 
-  - asm3 
-  - asm3-examples 
-  - asm3-javadoc 
   - asm5 
   - asm5-examples 
   - asm5-javadoc 
@@ -1779,7 +1777,7 @@ unsorted:
   - cardpeek 
   - cargo 
   - cargo-audit: [x86_64] 
-  - cargo-audit-advisory-db 
+  - cargo-audit-advisory-db: [x86_64] 
   - cargo-c 
   - cargo-packaging 
   - cargo1.57 
@@ -2112,7 +2110,7 @@ unsorted:
   - cntlm 
   - cobbler 
   - cobbler-tests 
-  - coccigrep 
+  - coccigrep: [x86_64] 
   - coccinelle: [x86_64] 
   - cockpit 
   - cockpit-bridge: [i586] 
@@ -5858,6 +5856,9 @@ unsorted:
   - gnome-2048-lang 
   - gnome-autoar-devel 
   - gnome-backgrounds 
+  - gnome-bluetooth-1 
+  - gnome-bluetooth-1-devel 
+  - gnome-bluetooth-1-lang 
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
@@ -6671,7 +6672,6 @@ unsorted:
   - hda-verb 
   - hdajackretask 
   - hdajacksensetest 
-  - hdf5 
   - hdf5-devel 
   - hdf5-devel-32bit: [x86_64] 
   - hdf5-devel-data 
@@ -8357,6 +8357,7 @@ unsorted:
   - ksysguard5-lang 
   - ktexteditor-devel 
   - ktextwidgets-devel 
+  - ktikz 
   - ktimetracker 
   - ktimetracker-lang 
   - ktnef-devel 
@@ -9340,9 +9341,6 @@ unsorted:
   - libSDL_net-devel 
   - libSDL_net-devel-32bit: [x86_64] 
   - libSDL_sound-1_0-1 
-  - libSDL_sound-1_0-1-32bit: [x86_64] 
-  - libSDL_sound-devel 
-  - libSDL_sound-devel-32bit: [x86_64] 
   - libSDL_ttf-2_0-0 
   - libSDL_ttf-2_0-0-32bit: [x86_64] 
   - libSDL_ttf-devel 
@@ -9523,7 +9521,7 @@ unsorted:
   - libacars-devel 
   - libacars1 
   - libacars2-devel 
-  - libaccel-config1 
+  - libaccel-config1: [x86_64] 
   - libaccounts-glib-devel 
   - libaccounts-glib-docs 
   - libaccounts-glib-tools 
@@ -11087,6 +11085,7 @@ unsorted:
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_9 
+  - libgnome-bluetooth13 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
   - libgnome-games-support-2-4 
@@ -11363,7 +11362,6 @@ unsorted:
   - libhdf5_cpp-gnu-openmpi2-hpc 
   - libhdf5_cpp-gnu-openmpi3-hpc 
   - libhdf5_cpp-gnu-openmpi4-hpc 
-  - libhdf5_cpp103 
   - libhdf5_cpp103-32bit: [x86_64] 
   - libhdf5_cpp103-mvapich2 
   - libhdf5_cpp103-mvapich2-32bit: [x86_64] 
@@ -11389,7 +11387,6 @@ unsorted:
   - libhdf5_fortran-gnu-openmpi2-hpc 
   - libhdf5_fortran-gnu-openmpi3-hpc 
   - libhdf5_fortran-gnu-openmpi4-hpc 
-  - libhdf5_fortran102 
   - libhdf5_fortran102-32bit: [x86_64] 
   - libhdf5_fortran102-mvapich2 
   - libhdf5_fortran102-mvapich2-32bit: [x86_64] 
@@ -11415,7 +11412,6 @@ unsorted:
   - libhdf5_hl-gnu-openmpi2-hpc 
   - libhdf5_hl-gnu-openmpi3-hpc 
   - libhdf5_hl-gnu-openmpi4-hpc 
-  - libhdf5_hl100 
   - libhdf5_hl100-32bit: [x86_64] 
   - libhdf5_hl100-mvapich2 
   - libhdf5_hl100-mvapich2-32bit: [x86_64] 
@@ -11441,7 +11437,6 @@ unsorted:
   - libhdf5_hl_cpp-gnu-openmpi2-hpc 
   - libhdf5_hl_cpp-gnu-openmpi3-hpc 
   - libhdf5_hl_cpp-gnu-openmpi4-hpc 
-  - libhdf5_hl_cpp100 
   - libhdf5_hl_cpp100-32bit: [x86_64] 
   - libhdf5_hl_cpp100-mvapich2 
   - libhdf5_hl_cpp100-mvapich2-32bit: [x86_64] 
@@ -11467,7 +11462,6 @@ unsorted:
   - libhdf5_hl_fortran-gnu-openmpi2-hpc 
   - libhdf5_hl_fortran-gnu-openmpi3-hpc 
   - libhdf5_hl_fortran-gnu-openmpi4-hpc 
-  - libhdf5hl_fortran100 
   - libhdf5hl_fortran100-32bit: [x86_64] 
   - libhdf5hl_fortran100-mvapich2 
   - libhdf5hl_fortran100-mvapich2-32bit: [x86_64] 
@@ -17591,7 +17585,7 @@ unsorted:
   - objenesis-javadoc 
   - obs-scm-bridge 
   - obs-service-appimage 
-  - obs-service-cargo_audit 
+  - obs-service-cargo_audit: [x86_64] 
   - obs-service-cargo_vendor 
   - obs-service-cdi_containers_meta: [x86_64] 
   - obs-service-docker_label_helper 
@@ -21648,6 +21642,7 @@ unsorted:
   - python3-stdeb 
   - python3-stevedore 
   - python3-stp 
+  - python3-subliminal 
   - python3-susepubliccloudinfo 
   - python3-sushy 
   - python3-swiftclient 
@@ -22286,6 +22281,7 @@ unsorted:
   - python310-azure-mgmt-scheduler 
   - python310-azure-mgmt-search 
   - python310-azure-mgmt-security 
+  - python310-azure-mgmt-securityinsight 
   - python310-azure-mgmt-serialconsole 
   - python310-azure-mgmt-servermanager 
   - python310-azure-mgmt-servicebus 
@@ -24531,7 +24527,6 @@ unsorted:
   - python310-stripe 
   - python310-structlog 
   - python310-subgrab 
-  - python310-subliminal 
   - python310-subprocess-tee 
   - python310-subprocrunner 
   - python310-subscene-api 
@@ -25440,6 +25435,7 @@ unsorted:
   - python38-azure-mgmt-scheduler 
   - python38-azure-mgmt-search 
   - python38-azure-mgmt-security 
+  - python38-azure-mgmt-securityinsight 
   - python38-azure-mgmt-serialconsole 
   - python38-azure-mgmt-servermanager 
   - python38-azure-mgmt-servicebus 
@@ -27528,7 +27524,6 @@ unsorted:
   - python38-stripe 
   - python38-structlog 
   - python38-subgrab 
-  - python38-subliminal 
   - python38-subprocess-tee 
   - python38-subprocrunner 
   - python38-subscene-api 
@@ -28450,6 +28445,7 @@ unsorted:
   - python39-azure-mgmt-scheduler 
   - python39-azure-mgmt-search 
   - python39-azure-mgmt-security 
+  - python39-azure-mgmt-securityinsight 
   - python39-azure-mgmt-serialconsole 
   - python39-azure-mgmt-servermanager 
   - python39-azure-mgmt-servicebus 
@@ -30716,7 +30712,6 @@ unsorted:
   - python39-stripe 
   - python39-structlog 
   - python39-subgrab 
-  - python39-subliminal 
   - python39-subprocess-tee 
   - python39-subprocrunner 
   - python39-subscene-api 
@@ -32632,7 +32627,7 @@ unsorted:
   - solarus-quest-editor 
   - solarus-quest-editor-assets 
   - solarus-quest-editor-lang 
-  - solfege 
+  - solfege: [x86_64] 
   - solid-devel 
   - solo-udev 
   - something-for-reddit 
@@ -33198,10 +33193,10 @@ unsorted:
   - terraform-provider-azurerm 
   - terraform-provider-helm 
   - terraform-provider-libvirt 
-  - terraform-provider-null 
-  - terraform-provider-openstack 
-  - terraform-provider-template 
-  - terraform-provider-vsphere 
+  - terraform-provider-null: [x86_64] 
+  - terraform-provider-openstack: [x86_64] 
+  - terraform-provider-template: [x86_64] 
+  - terraform-provider-vsphere: [x86_64] 
   - teseq 
   - tesla-polyglot 
   - tesla-polyglot-atom 
@@ -41785,6 +41780,7 @@ unsorted:
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
   - typelib-1_0-GnomeBG-4_0 
+  - typelib-1_0-GnomeBluetooth-1_0 
   - typelib-1_0-GnomeKeyring-1_0 
   - typelib-1_0-GnomeRR-4_0 
   - typelib-1_0-GoVirt-1_0 
@@ -42515,6 +42511,7 @@ unsorted:
   - wizznic 
   - wl-clipboard 
   - wl-clipboard-bash-completion 
+  - wl-clipboard-fish-completion 
   - wl-clipboard-zsh-completion 
   - wlgreet 
   - wlr-randr 
