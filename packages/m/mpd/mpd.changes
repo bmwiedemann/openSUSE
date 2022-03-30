@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 29 21:26:09 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.23.6
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.6/NEWS
+  * protocol:
+    * support filename "cover.webp" for "albumart" command
+    * support "readcomments" and "readpicture" on CUE tracks
+  * decoder:
+    * ffmpeg: fix end-of-file check (update stuck at empty files)
+    * opus: fix "readpicture" on Opus files
+  * output:
+    * pipewire: fix crash bug if setting volume before playback starts
+    * wasapi: fix resume after pause
+
+-------------------------------------------------------------------
 Tue Jan 11 11:11:11 UTC 2022 - olaf@aepfle.de
 
 - Implement the migration to PCRE2 by specifying the build dependency

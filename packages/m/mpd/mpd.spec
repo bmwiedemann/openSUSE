@@ -1,7 +1,7 @@
 #
 # spec file for package mpd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.23.5
+Version:        0.23.6
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -75,6 +75,7 @@ BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libnfs)
 BuildRequires:  pkgconfig(libopenmpt)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
@@ -84,7 +85,6 @@ BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(shine)
 BuildRequires:  pkgconfig(shout)

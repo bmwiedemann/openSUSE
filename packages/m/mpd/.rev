@@ -579,4 +579,22 @@
     <comment></comment>
     <requestid>945578</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6ef13f6ded065cc2769e83d15ba92357</srcmd5>
+    <version>0.23.6</version>
+    <time>1648665357</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.6
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.6/NEWS
+  * protocol:
+    * support filename &quot;cover.webp&quot; for &quot;albumart&quot; command
+    * support &quot;readcomments&quot; and &quot;readpicture&quot; on CUE tracks
+  * decoder:
+    * ffmpeg: fix end-of-file check (update stuck at empty files)
+    * opus: fix &quot;readpicture&quot; on Opus files
+  * output:
+    * pipewire: fix crash bug if setting volume before playback starts
+    * wasapi: fix resume after pause</comment>
+    <requestid>965775</requestid>
+  </revision>
 </revisionlist>
