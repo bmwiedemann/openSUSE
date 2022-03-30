@@ -1,7 +1,7 @@
 #
 # spec file for package thermald
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           thermald
-Version:        2.4.6
+Version:        2.4.9
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
@@ -34,12 +34,12 @@ Source3:        sysconfig.%{name}
 Source10:       thermal-monitor.desktop
 Source11:       thermal-monitor.png
 Patch0:         fix-systemd-service.patch
-Patch1:         fix-man-thermald_8.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  qcustomplot-devel
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
@@ -83,7 +83,7 @@ To communicate with thermald via dbus, the user has to be member of "power" grou
 
 %build
 NO_CONFIGURE=1 ./autogen.sh
-%configure
+%configure --disable-werror
 %make_build CFLAGS="%{optflags}"
 %sysusers_generate_pre %{SOURCE2} power
 
@@ -141,8 +141,7 @@ install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
 %{_unitdir}/thermald.service
 
 %files -n thermal-monitor
-%license tools/thermal_monitor/qcustomplot/GPL.txt
-%doc tools/thermal_monitor/README
+%license tools/thermal_monitor/README
 %{_bindir}/ThermalMonitor
 %{_datadir}/applications/thermal-monitor.desktop
 %{_datadir}/pixmaps/thermal-monitor.png

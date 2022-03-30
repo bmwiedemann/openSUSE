@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar 29 07:27:03 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 2.4.9:
+  * Fix performance issues for Dell Latitude 5421
+  * Fix performance issues for Dell Latitude 7320/7420
+    (Depend on kernel patch "thermal: int340x: Update OS policy capability handshake")
+  * Adaptive improvements from Benzea
+  * Thermal Monitor fixes and cosmetic updates
+  * Documentation updates from Colin King
+  * Static analysis fixes from Benzea
+    (includes power-profiles-daemon integration and
+     removal of deprecated UPower API use)
+  * Fix test for compressed data vaults
+- Update to 2.4.8
+  * Fix Ideapad thermal shutdown issue #328
+- Update to 2.4.7:
+  * Fix AC/DC power limit issue in some HP TigerLake systems
+  * Regression fix for RAPL MSR usage in xml config file
+  * Added Japer Lake and Alder Lake CPU models
+  * Debug scripts for log collection to upload
+- Drop patches, now upstream:
+  * fix-man-thermald_8.patch
+- Don't build with -Werror
+
+-------------------------------------------------------------------
 Thu Jul 15 07:31:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.6:
