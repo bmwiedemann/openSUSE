@@ -1,0 +1,5 @@
+<package name="ktikz" project="openSUSE:Factory">
+  <title>ktikz</title>
+  <description>KtikZ is a small application helping you to create TikZ (from the LaTeX pgf package) diagrams for your publications. It requires qt5, libpoppler, LaTeX (pdflatex), the LaTeX preview-latex-style package and pgf itself. For the eps export functionality you also need the poppler-utils package.</description>
+  <devel project="Publishing" package="ktikz"/>
+</package>
