@@ -31,15 +31,13 @@ Patch0:         commons-email-1.5-sourcetarget.patch
 Patch1:         commons-email-1.5-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  glassfish-activation-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javamail
 BuildRequires:  javapackages-tools
 Requires:       java >= 1.8
 Requires:       javamail
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-activation-api
-%endif
 
 %description
 Commons-Email aims to provide an API for sending email. It is built on top of
