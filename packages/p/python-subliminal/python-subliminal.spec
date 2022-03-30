@@ -1,7 +1,7 @@
 #
 # spec file for package python-subliminal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%global pythons python3
 Name:           python-subliminal
 Version:        2.1.0
 Release:        0
@@ -43,7 +43,7 @@ Requires:       python-requests >= 2.7.0
 Requires:       python-six >= 1.9.0
 Requires:       python-stevedore >= 1.20.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-colorlog >= 2.6.0
 Provides:       subliminal = %{version}
 Obsoletes:      subliminal < %{version}

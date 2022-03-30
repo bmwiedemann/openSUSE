@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 09:41:55 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Build only for default python3 version
+
+-------------------------------------------------------------------
 Tue May 19 08:03:07 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
