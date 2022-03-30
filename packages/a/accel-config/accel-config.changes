@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 30 08:11:22 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.6.2:
+  * Allow driver_name to be configured in guest
+  * Disable mdev tests
+  * Update driver_name in unit test configs
+  * Improve error message in config attr failures
+- Update to version 3.4.6.1:
+  * Bug fix in wq driver name configuration
+  * Test configs add driver name attr
+- Update to version 3.4.6:
+  * Support new "read_buffer" attributes that replace "token" attributes
+  * Deprecate attributes with "token" names
+  * Add support for driver_name attr to get wq driver name
+  * Fix a read buffer length related bug
+  * Add opcode operation support
+- Build exclusively on x86_64, as kernel module idxd.ko cannot be
+  found on i586
+
+-------------------------------------------------------------------
 Thu Dec 30 15:11:29 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 3.4.4:
