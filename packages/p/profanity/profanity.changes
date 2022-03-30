@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Mar 30 12:41:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  * Fix format string for ncurses 6.3 (#1597)
+  * Remove /python sourcepath command (#1598)
+  * Add option to install plugins from global plugin installation directory (#945)
+  * Fix wrong timestamp display in MUC history (#1423)
+  * Add in-band account registration (XEP-0077) (#1574)
+  * New theme: snikket (#1604)
+  * Allow more UI indicator signs to be UTF-8 characters (#1607)
+  * Add /correct-editor command (#1596)
+  * Fix message encryption for sender devices (#1609)
+  * Deprecate libmesode. We require libstrophe >= 0.11.0 (#1608)
+  * Fix OMEMO /sendfile on non-glibc systems (#1478)
+  * Cleanup plugins code (#1616)
+  * Make readline check more portable (#1617)
+  * Fix carbons criteria (#1614, #1618)
+  * Add support for User Mood (XEP 0107) (#1605)
+  * Use wildcard for man pages in Makefile.am (#1622)
+  * Fix inserting messages to chat logs if archive_id is empty (#1589, #1625)
+  * Implement RFC 6120 see-other-host during login (#1628, #1631, #1632, #1633, #1637)
+  * Guard against invalid input in presence stanza (#1630)
+  * Do not check for OMEMO device id for JIDs banned of a MUC (#1594)
+  * Minor cleanups (#1635, #1653)
+  * Cleanup build files (#1641, #1642, #1657, #1659)
+  * Improve documentation for new developers (#1640)
+  * Set libstrophe log verbosity to fix jump on unconditional value (e55f6d)
+  * Add DOAP file (XEP-0453) (bd8c32)
+  * Add /subject editor command
+  * Improve OX user experience (#1644)
+  * Add hotkey for sending readline text to editor (#1645, #1648)
+  * Fix breaking autocompletion with nicknames containing '/' (#1474)
+  * Add autocompletion for /cmd (#1650)
+  * Add easy quoting (#1651)
+  * When typing > you can now use TAB to cycle through the messages in the chat
+  * window to quote those messages easily.
+  * Make sendfile work with self signed certificates (#1624)
+  * Reset URL autocompletion after usage (#1654)
+  * Use EDITOR environment variable and only use vim if this is unset (#1658)
+  * Fix invalid mbrlen in input field (#1660)
+
+-------------------------------------------------------------------
 Tue Sep 28 18:03:56 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.1:

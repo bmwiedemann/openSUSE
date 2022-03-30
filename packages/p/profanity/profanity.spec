@@ -1,7 +1,7 @@
 #
 # spec file for package profanity
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           profanity
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
@@ -31,16 +31,16 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libgcrypt-devel >= 1.7.0
 BuildRequires:  libgpgme-devel
-BuildRequires:  libmesode-devel >= 0.10.0
 BuildRequires:  libnotify-devel
 BuildRequires:  libotr-devel
-BuildRequires:  libsignal-protocol-c-devel >= 2.3.1
+BuildRequires:  libsignal-protocol-c-devel >= 2.3.2
+BuildRequires:  libstrophe-devel >= 0.11.0
 BuildRequires:  libuuid-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  sqlite3-devel >= 3.22.0
-Requires:       libmesode0 >= 0.10.0
+Requires:       libstrophe0 >= 0.11.0
 Requires:       profanity-binary = %{version}
 
 %description
@@ -129,8 +129,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
 ln -s -f %{_sysconfdir}/alternatives/profanity %{buildroot}%{_bindir}/profanity
 
 %files
-%{_mandir}/man1/profanity.1%{?ext_man}
-%{_mandir}/man1/profanity-*.1%{?ext_man}
+#{_mandir}/man1/profanity.1#{?ext_man}
+#{_mandir}/man1/profanity-*.1#{?ext_man}
 %dir %{_datadir}/profanity/
 %dir %{_datadir}/profanity/themes/
 %dir %{_datadir}/profanity/icons/
@@ -153,7 +153,6 @@ ln -s -f %{_sysconfdir}/alternatives/profanity %{buildroot}%{_bindir}/profanity
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
 %post mini
 %{_sbindir}/update-alternatives --install \
     %{_bindir}/profanity profanity %{_bindir}/profanity-mini 10
