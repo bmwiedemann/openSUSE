@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 30 00:04:30 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- replace %{version} to a custom %{_commit_hash} to fix build errors
+
+-------------------------------------------------------------------
+Tue Mar 29 23:58:55 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use the commit hash instead. Upstream maintainer didn't tagged a release
+  and only changed the README that it is version 2.03. This is to clarify
+  that commit `10e9ac86df9a823d7470deaaa50c44d2857ee6f7` is 2.03.
+
+-------------------------------------------------------------------
+Tue Mar 29 12:45:00 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix spec and sources.
+
+-------------------------------------------------------------------
+Tue Mar 29 12:20:59 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update epub2text2 version to 2.03:
+  * Fixed buffer overrun bug
+
+- Update patches:
+  * Add bmwiedemann/sort patch for reproducible builds
+  * Use `%autopatch -p1` in spec file 
+
+- add bmwiedemann-sort.patch
+
+-------------------------------------------------------------------
 Sat Mar 12 23:32:20 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for epub2text2 (2.01)

@@ -7,4 +7,23 @@
     <comment>I want to maintain this package in Factory</comment>
     <requestid>962231</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53a54f21fa8f6b37cd17af9f48b0d95c</srcmd5>
+    <version>2.03</version>
+    <time>1648665345</time>
+    <user>dimstar_suse</user>
+    <comment>- replace %{version} to a custom %{_commit_hash} to fix build errors
+- Use the commit hash instead. Upstream maintainer didn't tagged a release
+  and only changed the README that it is version 2.03. This (change) is to clarify
+  that commit `10e9ac86df9a823d7470deaaa50c44d2857ee6f7` signifies 2.03.
+- Fix spec and sources.
+- Update epub2text2 version to 2.03:
+  * Fixed buffer overrun bug
+- Update patches:
+  * Add bmwiedemann/sort patch for reproducible builds
+  * Use `%autopatch -p1` in spec file 
+- add bmwiedemann-sort.patch
+</comment>
+    <requestid>965784</requestid>
+  </revision>
 </revisionlist>

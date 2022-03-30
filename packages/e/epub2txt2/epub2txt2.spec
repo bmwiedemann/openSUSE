@@ -12,29 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%global _commit_hash "10e9ac86df9a823d7470deaaa50c44d2857ee6f7"
+
 Name:           epub2txt2
-Version:        2.01
+Version:        2.03
 Release:        0
-Summary:        Simple command-line utility for extracting text from EPUB documents 
+Summary:        Simple command-line utility for extracting text from EPUB documents
 License:        GPL-3.0-only
 Group:          Productivity/Text/Utilities
-Url:            https://github.com/kevinboone/epub2txt2
-Source:         https://github.com/kevinboone/epub2txt2/archive/v%{version}.tar.gz
-Patch:          LICENSE.patch
-BuildRequires:  make
+URL:            https://github.com/kevinboone/epub2txt2
+Source0:        https://github.com/kevinboone/epub2txt2/archive/10e9ac86df9a823d7470deaaa50c44d2857ee6f7.tar.gz
+Patch0:         LICENSE.patch
+Patch1:         bmwiedemann-sort.patch
 BuildRequires:  gcc
+BuildRequires:  make
 Requires:       unzip
 
 %description
 Simple command-line utility for extracting text from EPUB documents
 
 %prep
-%setup -q
-%patch -p1
+%setup -q -n %{name}-%{_commit_hash}
+%autopatch -p1
 
 %build
 %make_build
@@ -49,4 +52,3 @@ Simple command-line utility for extracting text from EPUB documents
 %{_mandir}/man1/epub2txt.1%{?ext_man}
 
 %changelog
-
