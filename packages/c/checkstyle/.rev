@@ -23,4 +23,12 @@
     <comment>Force building with jdk &lt; 13 and build against standalone jaxb-api</comment>
     <requestid>963834</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a70089da529a024a68b9924d47b55490</srcmd5>
+    <version>8.0</version>
+    <time>1648665367</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965947</requestid>
+  </revision>
 </revisionlist>

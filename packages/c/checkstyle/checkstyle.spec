@@ -34,6 +34,7 @@ BuildRequires:  mvn(antlr:antlr)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(commons-beanutils:commons-beanutils)
 BuildRequires:  mvn(commons-cli:commons-cli)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(org.antlr:antlr4-maven-plugin)
 BuildRequires:  mvn(org.antlr:antlr4-runtime)
 BuildRequires:  mvn(org.apache.ant:ant)
@@ -49,9 +50,6 @@ BuildConflicts: java-headless >= 13
 #!BuildRequires: stringtemplate4
 Requires:       javapackages-tools
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.xml.bind:jaxb-api)
-%endif
 
 %description
 A tool for checking Java source code for adherence to a set of rules.
@@ -87,9 +85,7 @@ sed -i s/guava-jdk5/guava/ pom.xml
 %pom_remove_plugin :spotbugs-maven-plugin
 
 %pom_remove_dep com.sun:tools
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.xml.bind:jaxb-api
-%endif
 
 # fix encoding issues in docs
 sed -i 's/\r//' LICENSE LICENSE.apache20 README.md
