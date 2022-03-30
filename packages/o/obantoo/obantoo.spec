@@ -28,13 +28,11 @@ Patch0:         %{name}-classpath.patch
 Patch1:         %{name}-no-hard-source-target.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
+BuildRequires:  glassfish-jaxb-api
 BuildRequires:  itextpdf
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  junit
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-jaxb-api
-%endif
 
 %description
 A library of tools for German online banking implementing SEPA, IBAN/BIC, DETAUS and QIF.
@@ -44,10 +42,7 @@ A library of tools for German online banking implementing SEPA, IBAN/BIC, DETAUS
 %patch0 -p1
 %patch1 -p1
 find . -name \*.jar -print -delete
-build-jar-repository -s lib itextpdf junit
-%if 0%{?suse_version} > 1500
-build-jar-repository -s lib glassfish-jaxb-api
-%endif
+build-jar-repository -s lib itextpdf junit glassfish-jaxb-api
 
 dos2unix *.txt
 
