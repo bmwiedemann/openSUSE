@@ -32,7 +32,7 @@ index 884ac25a1d35..ec314f3858e8 100755
          for s in opts.host_strings:
              hosts.extend(psshutil.parse_host_string(s, default_user=opts.user))
 +    if opts.pcmk_nodes:
-+		hosts += psshutil.get_pcmk_nodes()
++        hosts += psshutil.get_pcmk_nodes()
      do_pnuke(hosts, pattern, opts)
 diff --git a/bin/prsync b/bin/prsync
 index 5e25786a90e8..d7868c87a945 100755
@@ -52,7 +52,7 @@ index 5e25786a90e8..d7868c87a945 100755
          for s in opts.host_strings:
              hosts.extend(psshutil.parse_host_string(s, default_user=opts.user))
 +    if opts.pcmk_nodes:
-+		hosts += psshutil.get_pcmk_nodes()
++        hosts += psshutil.get_pcmk_nodes()
      do_prsync(hosts, local, remote, opts)
 diff --git a/bin/pscp b/bin/pscp
 index d569be7d5404..4408913ce077 100755
@@ -72,7 +72,7 @@ index d569be7d5404..4408913ce077 100755
          for s in opts.host_strings:
              hosts.extend(psshutil.parse_host_string(s, default_user=opts.user))
 +    if opts.pcmk_nodes:
-+		hosts += psshutil.get_pcmk_nodes()
++        hosts += psshutil.get_pcmk_nodes()
      do_pscp(hosts, localargs, remote, opts)
 diff --git a/bin/pslurp b/bin/pslurp
 index c7dece656f1b..0f17b5bc87d9 100755
@@ -92,7 +92,7 @@ index c7dece656f1b..0f17b5bc87d9 100755
          for s in opts.host_strings:
              hosts.extend(psshutil.parse_host_string(s, default_user=opts.user))
 +    if opts.pcmk_nodes:
-+		hosts += psshutil.get_pcmk_nodes()
++        hosts += psshutil.get_pcmk_nodes()
      do_pslurp(hosts, remote, local, opts)
 diff --git a/bin/pssh b/bin/pssh
 index 5b6c2a5e4661..cf02f40c2fbd 100755
@@ -112,9 +112,9 @@ index 5b6c2a5e4661..cf02f40c2fbd 100755
          sys.stderr.write('Could not open hosts file: %s\n' % e.strerror)
          sys.exit(1)
 +    if opts.pcmk_nodes:
-+		hosts = psshutil.get_pcmk_nodes()
-+		if not hosts:
-+			sys.exit(1)
++        hosts = psshutil.get_pcmk_nodes()
++        if not hosts:
++            sys.exit(1)
      if opts.host_strings:
          for s in opts.host_strings:
              hosts.extend(psshutil.parse_host_string(s, default_user=opts.user))
@@ -162,7 +162,7 @@ index 6c67f667637e..274b3b92546c 100644
 +        outp = p.communicate()[0]
 +        p.wait()
 +        rc = p.returncode
-+    except IOError, msg:
++    except IOError as msg:
 +        sys.stderr.write('%s failed: %s\n' % (cmd,msg))
 +        return hosts
 +    if rc != 0:

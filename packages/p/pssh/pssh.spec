@@ -1,7 +1,7 @@
 #
 # spec file for package pssh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %define pkg_version 2.3.4
 %define python_version 3
-%if ! %{defined python_sitelib}
-%define python_sitelib /usr/lib/python3.6/site-packages/
+%if ! %{defined python3_sitelib}
+%define python3_sitelib /usr/lib/python3.6/site-packages/
 %endif
 
 Name:           pssh
@@ -109,7 +109,7 @@ python%{python_version} setup.py install \
 %files -n python-pssh
 %license COPYING
 %doc AUTHORS ChangeLog
-%{python_sitelib}/%{name}-%{pkg_version}*
-%{python_sitelib}/%{name}lib
+%{python3_sitelib}/%{name}-%{pkg_version}*
+%{python3_sitelib}/%{name}lib
 
 %changelog

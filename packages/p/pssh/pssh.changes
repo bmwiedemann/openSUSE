@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 23 11:36:50 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- spec: use python3_sitelib macro rather than python_sitelib
+- bin: fix inconsistent use of tabs and spaces in indentation 
+- psshlib: fix invalid syntax of except
+
+- Update:
+  * 0008-openSUSE-add-C-pcmk_nodes-option-to-get-list-of-node.patch
+
+-------------------------------------------------------------------
 Mon Aug 23 13:01:23 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - Fix spec to be able to build on openLeap 15.N
