@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>925607</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>752404f4867107a9b95a392965258999</srcmd5>
+    <version>3.1.0</version>
+    <time>1648665343</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude build for 32bit targets</comment>
+    <requestid>965817</requestid>
+  </revision>
 </revisionlist>
