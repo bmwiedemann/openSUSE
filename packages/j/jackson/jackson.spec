@@ -51,9 +51,9 @@ BuildRequires:  objectweb-asm
 BuildRequires:  stax2-api >= 3.1.1
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
-Requires:       asm3 >= 3.3
 Requires:       joda-time >= 1.6.2
 Requires:       jsr-311 >= 1.1.1
+Requires:       objectweb-asm
 Requires:       stax2-api >= 3.1.1
 BuildArch:      noarch
 

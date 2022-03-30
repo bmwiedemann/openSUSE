@@ -23,4 +23,12 @@
     <comment>Source and target levels 8 + fix build with standalone JavaEE modules</comment>
     <requestid>964653</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d15e8b1ffed15a4135bfa6c2e0513ecd</srcmd5>
+    <version>1.9.13</version>
+    <time>1648665360</time>
+    <user>dimstar_suse</user>
+    <comment>Remove all dependency on asm3</comment>
+    <requestid>965863</requestid>
+  </revision>
 </revisionlist>
