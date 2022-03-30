@@ -1,7 +1,7 @@
 #
 # spec file for package coccigrep
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,9 @@ BuildRequires:  python3-setuptools
 BuildRequires:  xz
 Requires:       coccinelle
 Requires:       python3
-%if 0%{?suse_version} > 1110
+# Mimicing coccinelle
+ExclusiveArch:  aarch64 ppc64le s390x x86_64
 BuildArch:      noarch
-%endif
 
 %description
 coccigrep is a semantic grep for the C language based on coccinelle. It can be

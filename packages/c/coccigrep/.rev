@@ -115,4 +115,12 @@
     <comment></comment>
     <requestid>830944</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ae5935b417ba0ea814db1b4724696b4d</srcmd5>
+    <version>1.20</version>
+    <time>1648665352</time>
+    <user>dimstar_suse</user>
+    <comment>- Use ExclusiveArch the same as coccinelle</comment>
+    <requestid>965840</requestid>
+  </revision>
 </revisionlist>

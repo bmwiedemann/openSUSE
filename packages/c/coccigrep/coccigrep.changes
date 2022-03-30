@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 08:29:44 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Use ExclusiveArch the same as coccinelle
+
+-------------------------------------------------------------------
 Mon Aug 31 13:17:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.20:
