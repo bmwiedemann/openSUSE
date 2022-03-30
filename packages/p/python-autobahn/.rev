@@ -316,4 +316,15 @@
   * add GitHub URL for PyPi</comment>
     <requestid>965198</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2b86ca9661fe28e1b602e3ea65bda35e</srcmd5>
+    <version>22.3.2</version>
+    <time>1648665348</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.3.2:
+  * fix: split out UI deps into separate dist flavor (#1532)
+  * fix: deps for RTD builds (#1540)
+  * fix: use and bundle dev deps from requirements file</comment>
+    <requestid>965827</requestid>
+  </revision>
 </revisionlist>

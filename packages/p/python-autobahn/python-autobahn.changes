@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 30 07:49:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.2:
+  * fix: split out UI deps into separate dist flavor (#1532)
+  * fix: deps for RTD builds (#1540)
+  * fix: use and bundle dev deps from requirements file
+
+-------------------------------------------------------------------
 Sun Mar 27 13:53:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.1:
