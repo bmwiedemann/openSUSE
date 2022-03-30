@@ -34,7 +34,6 @@ License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-positioning-rpmlintrc
-BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  cmake(Qt6Core)
@@ -47,8 +46,6 @@ BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6SerialPort)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  pkgconfig(gconf-2.0)
-BuildRequires:  pkgconfig(gypsy)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %else
@@ -178,7 +175,6 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %files
 %dir %{_qt6_pluginsdir}/position
 %{_qt6_pluginsdir}/position/libqtposition_geoclue2.so
-%{_qt6_pluginsdir}/position/libqtposition_gypsy.so
 %{_qt6_pluginsdir}/position/libqtposition_positionpoll.so
 %{_qt6_pluginsdir}/position/libqtposition_nmea.so
 

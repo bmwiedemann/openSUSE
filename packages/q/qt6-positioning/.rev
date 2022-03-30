@@ -23,4 +23,13 @@
     <comment>Qt 6.2.4 (forwarded request 965385 from cgiboudeaux)</comment>
     <requestid>965400</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>588540fe42c973237391b1aa2085e5c7</srcmd5>
+    <version>6.2.4</version>
+    <time>1648665344</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the gypsy dependency. It's based on obsolete gypsy code
+  that cannot work anymore.</comment>
+    <requestid>965822</requestid>
+  </revision>
 </revisionlist>
