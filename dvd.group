@@ -830,6 +830,7 @@
     <package name="gzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="hack-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="haveged" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="hdf5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hdparm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="health-checker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="health-checker-plugins-MicroOS" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2065,6 +2066,11 @@
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhdf5-103" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5_cpp103" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5_fortran102" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5_hl100" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5_hl_cpp100" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhdf5hl_fortran100" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libheif1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhidapi-hidraw0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhiredis1_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
