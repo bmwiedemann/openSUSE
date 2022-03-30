@@ -31,6 +31,7 @@ BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(com.fasterxml.woodstox:woodstox-core)
 BuildRequires:  mvn(commons-codec:commons-codec)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache:apache:pom:)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
@@ -38,9 +39,6 @@ BuildRequires:  mvn(xalan:xalan)
 BuildRequires:  mvn(xerces:xercesImpl)
 BuildRequires:  mvn(xml-apis:xml-apis)
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.xml.bind:jaxb-api)
-%endif
 
 %description
 Apache XML Security for Java supports XML-Signature Syntax and Processing,
@@ -66,9 +64,7 @@ This package contains javadoc for %{name}.
 
 %pom_xpath_remove pom:profiles
 
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.xml.bind:jaxb-api::provided
-%endif
 
 %{mvn_file} :%{oname} %{name} %{oname}
 
