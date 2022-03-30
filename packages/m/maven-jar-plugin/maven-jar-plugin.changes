@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:53:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.2.2
+- Modified patch:
+  * 01-allow-replacing-artifacts.patch
+    + rediff to different line endings
+
+-------------------------------------------------------------------
 Tue Mar 22 13:18:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

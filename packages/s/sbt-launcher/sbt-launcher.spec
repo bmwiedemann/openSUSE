@@ -1,7 +1,7 @@
 #
-# spec file for package sbt-launcher
+# spec file
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source0:        %{short_name}-%{version}.tar.xz
 Source1:        http://central.maven.org/maven2/org/scala-sbt/%{short_name}-interface/%{version}/%{short_name}-interface-%{version}.pom
 # Generated offline by sbt make-pom and cleaned up
 Source2:        %{short_name}-implementation.pom
+Patch0:         launcher-ivy.patch
 BuildRequires:  apache-ivy
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -55,17 +56,18 @@ JavaDoc documentation for %{name}
 
 %prep
 %setup -q -n %{short_name}-%{version}
+%patch0 -p1
 
 %build
 pushd %{short_name}-interface
   cp %{SOURCE1} pom.xml
   # jar
   mkdir -p target/classes
-  javac -d target/classes -source 6 -target 6 $(find src/main -name \*.java | xargs)
+  javac -d target/classes -source 8 -target 8 $(find src/main -name \*.java | xargs)
   jar -cf target/%{short_name}-interface-%{version}.jar -C target/classes .
   # javadoc
   mkdir -p target/site/apidocs
-  javadoc -d target/site/apidocs -source 6 -notimestamp $(find src/main -name \*.java | xargs)
+  javadoc -d target/site/apidocs -source 8 -notimestamp $(find src/main -name \*.java | xargs)
 popd
 %{mvn_artifact} %{short_name}-interface/pom.xml %{short_name}-interface/target/%{short_name}-interface-%{version}.jar
 pushd %{short_name}-implementation
@@ -106,7 +108,7 @@ mv %{short_name}-implementation/target/site/apidocs target/site/apidocs/%{short_
 
 %files interface -f .mfiles-interface
 
-%files javadoc -f .mfiles-javadoc 
+%files javadoc -f .mfiles-javadoc
 %license licenses/LICENSE_Apache licenses/LICENSE_Scala NOTICE
 
 %changelog

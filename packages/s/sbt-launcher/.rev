@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>755296</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>390ea2b7bd8eabcfb3c5ef05718f97b2</srcmd5>
+    <version>1.1.2</version>
+    <time>1648580822</time>
+    <user>dimstar_suse</user>
+    <comment>Source/target 8 + fix build against new ivy</comment>
+    <requestid>965694</requestid>
+  </revision>
 </revisionlist>

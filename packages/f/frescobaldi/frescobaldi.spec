@@ -16,6 +16,8 @@
 #
 
 
+ExcludeArch:    i586
+
 Name:           frescobaldi
 Summary:        Lilypond editor
 License:        GPL-2.0-or-later
