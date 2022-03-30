@@ -25,11 +25,14 @@ URL:            https://github.com/openSUSE/obs-service-%{service}
 Version:        0.1.8~0
 Release:        0
 Source:         %{name}-%{version}.tar.xz
+Source99:       obs-service-cargo_audit-rpmlintrc
+BuildRequires:  cargo-packaging
 BuildRequires:  python3
 Requires:       cargo-audit
 Requires:       cargo-audit-advisory-db
+ExclusiveArch:  %{rust_tier1_arches}
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
 
 %description
 An OBS Source Service that will audit vendored Rust
