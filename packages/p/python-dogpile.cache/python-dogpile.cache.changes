@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 30 09:37:29 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.5
+  * Added support for additional pymemcache HashClient
+    parameters: retry_attempts, retry_timeout, and
+    dead_timeout.
+
+-------------------------------------------------------------------
 Fri Dec  3 21:43:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update requirements
