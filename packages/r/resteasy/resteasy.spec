@@ -25,7 +25,7 @@ Release:        0
 Summary:        Framework for RESTful Web services and Java applications
 License:        Apache-2.0 AND CDDL-1.0
 URL:            https://resteasy.jboss.org/
-Source0:        https://github.com/resteasy/Resteasy/archive/%{namedversion}/Resteasy-%{namedversion}.tar.gz
+Source0:        https://github.com/resteasy/resteasy/archive/%{namedversion}/%{name}-%{namedversion}.tar.gz
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
@@ -33,6 +33,8 @@ BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider)
 BuildRequires:  mvn(com.sun.xml.bind:jaxb-impl)
 BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(javax.activation:activation)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
@@ -50,10 +52,6 @@ Requires:       resteasy-core = %{version}-%{release}
 Requires:       resteasy-jackson2-provider = %{version}-%{release}
 Requires:       resteasy-jaxb-provider = %{version}-%{release}
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.activation:activation)
-BuildRequires:  mvn(javax.xml.bind:jaxb-api)
-%endif
 
 %description
 
@@ -103,7 +101,7 @@ Summary:        Client for %{name}
 %{extdesc} %{summary}.
 
 %prep
-%setup -q -n Resteasy-%{namedversion}
+%setup -q -n %{name}-%{namedversion}
 
 %pom_disable_module arquillian
 %pom_disable_module eagledns
@@ -142,13 +140,8 @@ find -name '*.jar' -print -delete
 
 %pom_remove_plugin :maven-clover2-plugin
 
-%if 0%{?suse_version} <= 1500
-# remove activation.jar dependencies
-%pom_remove_dep -r javax.activation:activation resteasy-jaxrs resteasy-spring
-%else
 # add the jaxb-api dependency
 %pom_add_dep javax.xml.bind:jaxb-api resteasy-jaxrs providers/jaxb
-%endif
 
 # remove resteasy-dependencies pom
 %pom_remove_dep "org.jboss.resteasy:resteasy-dependencies"
