@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_sound
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,9 @@ Release:        0
 Summary:        Sound Sample Library for SDL (Simple DirectMedia Layer)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://icculus.org/SDL_sound/  
+URL:            http://icculus.org/SDL_sound/
 
 Source:         %name-%version-nompglib.tar.bz2
-Source2:        baselibs.conf
 Patch0:         %name-%version-nompglib.patch
 BuildRequires:  flac-devel
 BuildRequires:  libSDL-devel
@@ -35,7 +34,6 @@ BuildRequires:  libogg-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  speex-devel
 BuildRequires:  pkgconfig(libmodplug)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 SDL_sound is a library that handles the decoding of several popular
@@ -57,15 +55,15 @@ play a file or alternatively decode a file and hand back a single
 pointer to the waveform. SDL_sound also can handle channel conversion
 on-the-fly and behind-the-scenes.
 
-%package -n libSDL_sound-devel
+%package devel
 Summary:        Development files for the SDL sound sample library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Requires:       pkgconfig(sdl)
-Provides:       SDL_sound-devel = %version
-Obsoletes:      SDL_sound-devel <= %version
+Provides:       libSDL_sound-devel = %version
+Obsoletes:      libSDL_sound-devel <= %version
 
-%description -n libSDL_sound-devel
+%description devel
 SDL_sound is a library that handles the decoding of several popular
 sound file formats, such as wav, ogg mp3 and midi. SDL_sound can just
 play a file or alternatively decode a file and hand back a single
@@ -73,8 +71,7 @@ pointer to the waveform. SDL_sound also can handle channel conversion
 on-the-fly and behind-the-scenes.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 %configure \
@@ -82,22 +79,20 @@ on-the-fly and behind-the-scenes.
     --disable-sdltest \
     --disable-smpeg \
     --disable-mpglib
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=%buildroot
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n libSDL_sound-1_0-1
-%defattr(-,root,root)
-%doc CHANGELOG COPYING CREDITS README TODO
+%license COPYING
 %_libdir/lib*.so.*
 
-%files -n libSDL_sound-devel
-%defattr(-,root,root)
+%files devel
 %_bindir/playsound*
 %_includedir/SDL/
 %_libdir/lib*.so

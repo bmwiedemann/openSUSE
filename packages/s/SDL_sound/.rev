@@ -174,4 +174,13 @@
   and the distro moved on.</comment>
     <requestid>666844</requestid>
   </revision>
+  <revision rev="25" vrev="95">
+    <srcmd5>763cd87414cc52fda5bb3006131c4e9a</srcmd5>
+    <version>1.0.3</version>
+    <time>1648665387</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf
+- Rename devel package to just %name-devel</comment>
+    <requestid>966040</requestid>
+  </revision>
 </revisionlist>
