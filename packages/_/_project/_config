@@ -431,12 +431,14 @@ Ignore: util-linux:info
 
 Ignore: polkit-default-privs:polkit
 
+# tcl requires sqlite3-tcl to uphold the promise from upstream to be complete
+# but as we decide to build sqlite3-tcl as part of sqlite, not tcl (to get more up-to-date version)
+# we need to ignore the tcl -> sqlite dep
+Ignore: tcl:sqlite3-tcl
+
 # Let's speed up things: We don't need Mesa-dri and Mesa-gallium in the build system
 Ignore: Mesa:Mesa-dri
 Ignore: Mesa:Mesa-gallium
-
-# man uses cron to update the DB normally, but we don't care for that in the build system
-Ignore: man:cron
 
 # udev: -full and -mini packages don't mingle well
 Prefer: libudev1:udev
@@ -1047,67 +1049,29 @@ Prefer: -wl-clipboard
 Prefer: -firewalld-prometheus-config
 
 Ignore: installation-images-openSUSE:cracklib-dict-full
-Ignore: systemd-sysvinit:systemd
 Ignore: openSUSE-release:openSUSE-release-ftp,openSUSE-release-dvd5,openSUSE-release-biarch,openSUSE-release-livecdkde,openSUSE-release-livecdgnome
 Ignore: openSUSE-MicroOS-release:openSUSE-MicroOS-release-dvd,openSUSE-MicroOS-release-kubic-dvd
 Ignore: MicroOS-release:openSUSE-MicroOS-release-dvd,openSUSE-MicroOS-release-kubic-dvd
 Ignore: MicroOS-release:MicroOS-release-ftp,MicroOS-release-dvd
 Ignore: cracklib:cracklib-dict
 Ignore: aaa_base:aaa_skel,suse-release,logrotate,ash,distribution-release,udev
-Ignore: sysvinit:mingetty
-Ignore: gettext-tools:libgcj,libstdc++-devel,libgcj41,libstdc++41-devel,libgcj42,libstdc++42-devel
-Ignore: libgcj43,libstdc++43-devel
-Ignore: libgcj44,libstdc++44-devel
-Ignore: libgcj45,libstdc++45-devel
-Ignore: libgcj46,libstdc++46-devel
-Ignore: libgcj47,libstdc++47-devel
-Ignore: librtas:util-linux
-Ignore: pwdutils:openslp
 Ignore: rpm:suse-build-key,build-key
 Ignore: cloud-init:cloud-init-config
-# python-pyudev requires libudev1 in normal situations
-Ignore: python-pyudev:libudev1
-Ignore: python2-pyudev:libudev1
-Ignore: python3-pyudev:libudev1
-Ignore: python-SPARQLWrapper:python-rdflib
-Ignore: python3-SPARQLWrapper:python3-rdflib
-Ignore: bind-utils:bind-libs
-Ignore: portmap:syslogd
 Ignore: xorg-x11:x11-tools,resmgr,xkeyboard-config,xorg-x11-Mesa,libusb,freetype2,libjpeg,libpng
 Ignore: xorg-x11-server:xorg-x11-driver-input,xorg-x11-driver-video
 Ignore: apache2:logrotate
-Ignore: arts:alsa,audiofile,resmgr,libogg,libvorbis
-Ignore: kdelibs3:alsa,arts,OpenEXR,aspell,cups-libs,mDNSResponder-lib,krb5,libjasper
-Ignore: kdelibs3-devel:libvorbis-devel
-Ignore: kdebase3:kdebase3-ksysguardd,OpenEXR,dbus-1,dbus-1-qt,hal,powersave,openslp,libusb
-Ignore: kdebase3-SuSE:release-notes
-Ignore: jack:alsa,libsndfile
 Ignore: libxml2-devel:readline-devel
-Ignore: gnome-vfs2:gnome-mime-data,desktop-file-utils,cdparanoia,dbus-1,dbus-1-glib,hal,libsmbclient,fam,file_alteration
-Ignore: libgda:file_alteration
 Ignore: gnutls:lzo,libopencdk
 Ignore: gnutls-devel:lzo-devel,libopencdk-devel
 Ignore: pango:cairo,glitz,libpixman,libpng
-# Disabled on 2019-05-13 by dimstar: pango.pc newly also requires cairo.pc
-#Ignore: pango-devel:cairo-devel
 Ignore: cairo-devel:libpixman-devel
-Ignore: libgnomeprint:libgnomecups
-Ignore: libgnomeprintui:libgnomecups
-Ignore: orbit2-devel:indent
-Ignore: qt3:libmng
-Ignore: qt-sql:qt_database_plugin
-Ignore: libgnomecanvas-devel:glib-devel
-Ignore: libgnomeui:gnome-icon-theme,shared-mime-info
 Ignore: scrollkeeper:docbook_4
-Ignore: gnome-desktop:libgnomesu,startup-notification
 Ignore: python-devel:python-tk
 Ignore: libgtk-3-0:adwaita-icon-theme
 Ignore: libgtk-3-0:gdk-pixbuf-loader-rsvg
 Ignore: samba-libs:krb5
-Ignore: libbonoboui:gnome-desktop
 Ignore: libxfce4ui-1-0:exo-tools
 Ignore: docbook_4:iso_ent,xmlcharent
-Ignore: control-center2:nautilus,evolution-data-server,gnome-menus,gstreamer-plugins,gstreamer,metacity,mozilla-nspr,mozilla,libxklavier,gnome-desktop,startup-notification
 Ignore: docbook-xsl-stylesheets:xmlcharent
 Ignore: liby2util-devel:libstdc++-devel,openssl-devel
 Ignore: yast2:yast2-ncurses,yast2_theme,perl-Config-Crontab,yast2-xml,SuSEfirewall2
@@ -1158,30 +1122,10 @@ Ignore: git-core:rsync
 Ignore: apache2:systemd
 Ignore: icewm-lite:icewm
 Ignore: cluster-glue:sudo
-Ignore: libgcc:glibc-32bit
-Ignore: libgcc41:glibc-32bit
-Ignore: libgcc42:glibc-32bit
-Ignore: libgcc43:glibc-32bit
-Ignore: libgcc44:glibc-32bit
-Ignore: libgcc45:glibc-32bit
-Ignore: libgcc46:glibc-32bit
-Ignore: libgcc47:glibc-32bit
-Ignore: libstdc++:glibc-32bit
-Ignore: libstdc41++:glibc-32bit
-Ignore: libstdc42++:glibc-32bit
-Ignore: libstdc43++:glibc-32bit
-Ignore: libstdc44++:glibc-32bit
-Ignore: libstdc45++:glibc-32bit
-Ignore: libstdc46++:glibc-32bit
-Ignore: libstdc47++:glibc-32bit
 Ignore: ncurses-32bit
 
-Ignore: susehelp:susehelp_lang,suse_help_viewer
 Ignore: mailx:smtp_daemon
 Ignore: cron:smtp_daemon
-Ignore: hotplug:syslog
-Ignore: pcmcia:syslog
-Ignore: openct:syslog
 Ignore: postfix:sysvinit(syslog)
 Ignore: cups:sysvinit(syslog)
 Ignore: jython:servlet
@@ -1195,17 +1139,13 @@ Ignore: mediawiki:php-session,php-gettext,php-zlib,php-mysql,mod_php_any
 Ignore: squirrelmail:mod_php_any,php-session,php-gettext,php-iconv,php-mbstring,php-openssl
 Ignore: perl-Log-Log4perl:rrdtool
 
-Ignore: simias:mono(log4net)
 Ignore: horde:mod_php_any,php-gettext,php-mcrypt,php-imap,php-pear-log,php-pear,php-session,php
 
 Ignore: xerces-j2:xml-commons-apis,xml-commons-resolver
 Ignore: xdg-menu:desktop-data
 Ignore: nessus-libraries:nessus-core
-Ignore: evolution:yelp
-Ignore: e17:e17-branding e17:e17-theme
 
 Ignore: mono-tools:mono(gconf-sharp),mono(glade-sharp),mono(gnome-sharp),mono(gtkhtml-sharp),mono(atk-sharp),mono(gdk-sharp),mono(glib-sharp),mono(gtk-sharp),mono(pango-sharp)
-Ignore: gecko-sharp2:mono(glib-sharp),mono(gtk-sharp)
 
 Ignore: vcdimager:libcdio.so.6,libcdio.so.6(CDIO_6),libiso9660.so.4,libiso9660.so.4(ISO9660_4)
 Ignore: libcdio:libcddb.so.2
@@ -1221,28 +1161,21 @@ Ignore: seamonkey:pinentry-dialog
 Ignore: pinentry:pinentry-dialog
 Ignore: gpg2:gpg2-lang
 Ignore: util-linux:util-linux-lang
-Ignore: suseRegister:distribution-release
 Ignore: compiz:compiz-decorator
 Ignore: icecream:gcc-c++
-Ignore: no
-Ignore: package
-Ignore: provides
-Ignore: j9vm/libjvm.so()(64bit)
-Ignore: kdepim3:suse_help_viewer
-Ignore: kdebase3-SuSE:kdebase3-SuSE-branding
-Ignore: kio_sysinfo:kdebase3-SuSE-branding
+#Ignore: no
+#Ignore: package
+#Ignore: provides
+#Ignore: j9vm/libjvm.so()(64bit)
 Ignore: gnome-menus:gnome-menus-branding
 Ignore: epiphany:epiphany-branding
 Ignore: gnome-control-center:gnome-control-center-branding
-Ignore: phonon:phonon-backend
-Ignore: openwbem-devel
 Ignore: MozillaFirefox:MozillaFirefox-branding
 Ignore: yast2:yast2-branding
 Ignore: plymouth:plymouth-branding
 Ignore: plymouth:suspend
 Ignore: yast2-qt:yast2-branding
 Ignore: yast2-theme-SLE:yast2-branding
-Ignore: yast2-registration:yast2-registration-branding
 Ignore: compiz:compiz-branding
 Ignore: texlive:perl-Tk texlive-bin:perl-Tk
 Ignore: xfce4-desktop:xfce4-desktop-branding
@@ -1252,20 +1185,10 @@ Ignore: kdebase4-runtime:kdebase4-runtime-branding
 Ignore: transmission-common:transmission-ui
 Ignore: sysvinit-tools:mkinitrd cifs-utils:mkinitrd
 Ignore: mkinitrd:sbin_init
-Ignore: opensc:pinentry
 Ignore: gpg2:pinentry
-Ignore: NetworkManager:dhcp
-Ignore: NetworkManager:iproute2
 # sysconfig requires it at runtime, not buildtime
-Ignore: sysconfig:dbus-1
-Ignore: sysconfig:procps
-Ignore: sysconfig:iproute2
-Ignore: sysconfig-network:iproute2
-Ignore: sysconfig:tunctl
 Ignore: sysconfig:sysvinit(network)
 # no build dependencies
-Ignore: libksuseinstall1:yast2-packager
-Ignore: libksuseinstall1:zypper
 Ignore: syslog-service:logrotate
 Ignore: libglue-devel:cluster-glue
 Ignore: libqca2:gpg2
@@ -1274,10 +1197,8 @@ Ignore: NetworkManager:dhcp-client
 Ignore: libgio-2_0-0:dbus-1-x11
 Ignore: libgio-2_0-0:dbus-1
 Prefer: libgio-2_0-0:dbus-1
-Ignore: weather-wallpaper:inkscape
 Ignore: libgamin-1-0:gamin-server
 Ignore: libfam0-gamin:gamin-server
-Ignore: python3:python3-pip
 Ignore: avahi:sysvinit(network)
 Ignore: cluster-glue:sysvinit(network)
 Ignore: dracut:systemd-sysvinit
