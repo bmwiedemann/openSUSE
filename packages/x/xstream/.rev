@@ -71,4 +71,12 @@
     <comment>standalone jaxb-api and activation-api</comment>
     <requestid>962741</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>aea7020fd03dae74d8ad8d2d50fb4b93</srcmd5>
+    <version>1.4.19</version>
+    <time>1648665365</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965945</requestid>
+  </revision>
 </revisionlist>
