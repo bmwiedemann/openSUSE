@@ -18,10 +18,10 @@
 
 %define cpan_name JSON-Validator
 Name:           perl-JSON-Validator
-Version:        5.05
+Version:        5.08
 Release:        0
-Summary:        Validate data against a JSON schema
 License:        Artistic-2.0
+Summary:        Validate data against a JSON schema
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

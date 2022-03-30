@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 25 03:06:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.08
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  5.08 2022-03-25T10:00:18+0900
+   - Fix handling OpenAPIv2 headers with collectionFormat
+
+  5.07 2022-03-23T07:58:02+0900
+   - Fix issues with OpenAPIv3 in 5.06
+
+  5.06 2022-03-23T07:29:23+0900
+   - Fix placing OpenAPIv2 bundled path $ref's inside "paths"
+
+-------------------------------------------------------------------
 Thu Jan  6 03:07:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.05
