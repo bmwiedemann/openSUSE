@@ -1685,7 +1685,6 @@ unsorted:
   - caffe_1_0-gnu-hpc-devel 
   - caffe_1_0-gnu-hpc-examples 
   - caffeine 
-  - cage 
   - cairo-clock 
   - cairo-clock-lang 
   - cairo-devel 
@@ -3951,7 +3950,7 @@ unsorted:
   - freexl-devel 
   - frei0r-plugins-devel 
   - frei0r-plugins-opencv 
-  - frescobaldi 
+  - frescobaldi: [x86_64] 
   - freshplayerplugin 
   - fribidi-devel 
   - frink 
@@ -9233,6 +9232,15 @@ unsorted:
   - libQt6QmlModels6 
   - libQt6QmlWorkerScript6 
   - libQt6QmlXmlListModel6 
+  - libQt6Quick3D6 
+  - libQt6Quick3DAssetImport6 
+  - libQt6Quick3DAssetUtils6 
+  - libQt6Quick3DEffects6 
+  - libQt6Quick3DHelpers6 
+  - libQt6Quick3DIblBaker6 
+  - libQt6Quick3DParticles6 
+  - libQt6Quick3DRuntimeRender6 
+  - libQt6Quick3DUtils6 
   - libQt6Quick6 
   - libQt6QuickControls2-6 
   - libQt6QuickControls2Impl6 
@@ -19268,7 +19276,6 @@ unsorted:
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
   - perl-Exporter-Tiny: [i586] 
-  - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
   - perl-ExtUtils-CppGuess 
@@ -23338,7 +23345,7 @@ unsorted:
   - python310-libwrc 
   - python310-libxml2 
   - python310-license-expression 
-  - python310-ligo-lw 
+  - python310-ligo-lw: [x86_64] 
   - python310-ligo-segments 
   - python310-ligotimegps 
   - python310-line_profiler 
@@ -26428,7 +26435,7 @@ unsorted:
   - python38-libvsmbr 
   - python38-libwrc 
   - python38-license-expression 
-  - python38-ligo-lw 
+  - python38-ligo-lw: [x86_64] 
   - python38-ligo-segments 
   - python38-ligotimegps 
   - python38-limnoria 
@@ -29515,7 +29522,7 @@ unsorted:
   - python39-libwrc 
   - python39-libxml2 
   - python39-license-expression 
-  - python39-ligo-lw 
+  - python39-ligo-lw: [x86_64] 
   - python39-ligo-segments 
   - python39-ligotimegps 
   - python39-limnoria 
@@ -31406,6 +31413,28 @@ unsorted:
   - qt6-qt5compat-private-devel 
   - qt6-quick-devel 
   - qt6-quick-private-devel 
+  - qt6-quick3d 
+  - qt6-quick3d-devel 
+  - qt6-quick3d-docs-html 
+  - qt6-quick3d-docs-qch 
+  - qt6-quick3d-examples 
+  - qt6-quick3d-imports 
+  - qt6-quick3d-private-devel 
+  - qt6-quick3dassetimport-devel 
+  - qt6-quick3dassetimport-private-devel 
+  - qt6-quick3dassetutils-devel 
+  - qt6-quick3dassetutils-private-devel 
+  - qt6-quick3deffects-devel 
+  - qt6-quick3dhelpers-devel 
+  - qt6-quick3dhelpers-private-devel 
+  - qt6-quick3diblbaker-devel 
+  - qt6-quick3diblbaker-private-devel 
+  - qt6-quick3dparticles-devel 
+  - qt6-quick3dparticles-private-devel 
+  - qt6-quick3druntimerender-devel 
+  - qt6-quick3druntimerender-private-devel 
+  - qt6-quick3dutils-devel 
+  - qt6-quick3dutils-private-devel 
   - qt6-quickcontrols2-devel 
   - qt6-quickcontrols2-private-devel 
   - qt6-quickcontrols2impl-devel 
@@ -31434,6 +31463,8 @@ unsorted:
   - qt6-quickwidgets-devel 
   - qt6-quickwidgets-private-devel 
   - qt6-remoteobjects-devel 
+  - qt6-remoteobjects-docs-html 
+  - qt6-remoteobjects-docs-qch 
   - qt6-remoteobjects-examples 
   - qt6-remoteobjects-imports 
   - qt6-remoteobjects-private-devel 
@@ -31988,10 +32019,8 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
-  - ruby3.1-rubygem-gettext-setup 
   - ruby3.1-rubygem-rspec-rails-3.9 
   - ruby3.1-rubygem-sinatra 
-  - ruby3.1-rubygem-spring-watcher-listen 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
@@ -41424,6 +41453,7 @@ unsorted:
   - tntdb-replicate 
   - tntdb-sqlite 
   - toilet 
+  - tokei: [x86_64] 
   - tolua 
   - toluapp-5.1 
   - toluapp-5.3 
