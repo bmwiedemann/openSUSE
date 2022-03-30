@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Mar 26 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.4.4
+
+  Reverted:
+  * Audio: PitchShift effect quality for different pitch scale values
+  * ProjectSettings "has_setting()" when used
+    on a overriden setting with feature tags
+
+  Fixed:
+  * CSG: visible seam on smoothed sphere, cylinder, and torus shapes
+  * CSG: mixed smoothed and non-smoothed face normals computation
+  * Portals: duplication of instanced scenes during conversion
+  * Animation: cubic interpolate when looping
+  * "UndoRedo::create_action()" invalid memory usage
+  * RichTextLabel: shadow color when text has transparency
+  * Editor: showing "Extend Script" option without script attached
+  * Physics: Update joints on "NOTIFICATION_POST_ENTER_TREE"
+  * GLES2: compression on blend shapes
+  * GLES2: "VersionKey" comparison in shader binding
+  * GLES3: shader state caching when blend shapes used
+  * GLES3: broken normals in meshes with blend shapes
+
+-------------------------------------------------------------------
 Sat Feb 26 12:00:00 UTC 2022 - cunix@mail.de
 
 - Update to 3.4.3
