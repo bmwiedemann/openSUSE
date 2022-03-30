@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-template
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,8 @@ URL:            https://github.com/terraform-providers/terraform-provider-templa
 Source:         %{repo}-%{version}.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.8
+# Terraform is not available for 32bit platforms
+ExcludeArch:    %ix86 %arm
 Requires:       terraform >= 0.12.0
 
 %if 0%{?suse_version}
