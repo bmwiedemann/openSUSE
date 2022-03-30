@@ -29,7 +29,7 @@ Source99:       terraform-rpmlintrc
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.15
 # See: https://github.com/hashicorp/terraform/issues/22807
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} %{arm}
 %{go_nostrip}
 %{go_provides}
 

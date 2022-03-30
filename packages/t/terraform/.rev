@@ -268,4 +268,12 @@
     <comment></comment>
     <requestid>952253</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d9686f6f54b7205638ab53741603e623</srcmd5>
+    <version>1.1.5</version>
+    <time>1648665336</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude arm32 bit builds as well</comment>
+    <requestid>965813</requestid>
+  </revision>
 </revisionlist>

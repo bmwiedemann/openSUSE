@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 06:54:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- exclude arm32 bit builds as well 
+
+-------------------------------------------------------------------
 Thu Feb  3 11:58:58 UTC 2022 - Marcus Hann <marcus@hhra.uk>
 
 - Update to 1.1.5
