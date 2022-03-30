@@ -28,13 +28,11 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
+BuildRequires:  mvn(javax.activation:activation)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.activation:activation)
-BuildRequires:  mvn(javax.xml.bind:jaxb-api)
-%endif
 
 %description
 This project develops a few extensions to complement JSR-173 StAX API in the
@@ -68,11 +66,7 @@ pushd %{name}
 %pom_remove_plugin :maven-deploy-plugin
 %pom_remove_plugin :maven-enforcer-plugin
 
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.xml.bind:jaxb-api::provided
-%else
-%pom_remove_dep javax.activation:activation
-%endif
 
 # Convert the license to UTF-8:
 mv LICENSE.txt LICENSE.txt.tmp

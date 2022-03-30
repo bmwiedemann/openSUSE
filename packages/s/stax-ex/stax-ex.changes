@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 09:26:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
 Thu Mar 17 13:26:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone activation-api and jaxb-api on
