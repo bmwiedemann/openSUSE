@@ -1,7 +1,7 @@
 #
 # spec file for package solaar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,11 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
+%define pythons python3
+
 Name:           solaar
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
@@ -28,19 +31,27 @@ Source0:        Solaar-%{version}.tar.gz
 Patch0:         solaar-fix-desktop-categories.patch
 #
 BuildRequires:  fdupes
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 #
-BuildRequires:  python3-gobject
-Requires:       python3-gobject
-BuildRequires:  python3-gobject-Gdk
-Requires:       python3-gobject-Gdk
-BuildRequires:  python3-PyYAML
-Requires:       python3-PyYAML
-Requires:       python3-pyudev
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module evdev}
+BuildRequires:  %{python_module gobject-Gdk}
+BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module python-xlib}
+BuildRequires:  %{python_module pyudev}
 BuildRequires:  typelib-1_0-Gtk-3_0
+
+Requires:       python3-PyYAML
+Requires:       python3-evdev
+Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
+Requires:       python3-psutil
+Requires:       python3-python-xlib
+Requires:       python3-pyudev
 Requires:       typelib-1_0-Gtk-3_0
 #
 Requires:       solaar-udev >= %{version}
@@ -87,10 +98,10 @@ sed -i '/yield autostart_path/d' setup.py
 
 %build
 sed -i 's#/usr/bin/env python##' lib/solaar/gtk.py lib/solaar/tasks.py
-%python3_build
+%python_build
 
 %install
-%python3_install
+%python_install
 %fdupes %{buildroot}%{python3_sitelib}
 %fdupes -s %{buildroot}%{_datadir}
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
@@ -116,6 +127,7 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
 %{python3_sitelib}/hidapi
 %{python3_sitelib}/logitech_receiver
+%{python3_sitelib}/keysyms
 %{python3_sitelib}/solaar
 %{python3_sitelib}/solaar-*
 
