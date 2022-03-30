@@ -24,8 +24,9 @@ License:        CC0-1.0
 URL:            https://github.com/RustSec/advisory-db
 Source0:        advisory-db-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  cargo-packaging
 Requires:       cargo-audit
-BuildArch:      noarch
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 The RustSec Advisory Database is a repository of security advisories filed against Rust crates

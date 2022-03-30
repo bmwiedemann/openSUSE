@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 01:47:58 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Resolve issue with obs install check on non-tier1 arches
+
+-------------------------------------------------------------------
 Wed Mar 23 10:54:26 UTC 2022 - wbrown@suse.de
 
 - Update to version 20220323:
