@@ -28,6 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(org.antlr:antlr4)
 BuildRequires:  mvn(org.antlr:antlr4-maven-plugin)
 BuildRequires:  mvn(org.apache.ant:ant)
@@ -40,9 +41,6 @@ BuildRequires:  mvn(org.apache.velocity:velocity)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 #!BuildRequires: log4j stringtemplate4
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.annotation:javax.annotation-api)
-%endif
 
 %description
 Fundamental data structures (maps, sets, lists, stacks, queues) generated for
@@ -76,9 +74,7 @@ find . -name "*.jar" -print -delete
 # Unneeded task
 %pom_remove_plugin -r :maven-assembly-plugin
 
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.annotation:javax.annotation-api hppc
-%endif
 
 # Convert from dos to unix line ending
 for file in CHANGES.txt; do

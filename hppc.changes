@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 10:24:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
 Wed Mar 23 23:27:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone glassfish-annotation-api on
