@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 10:13:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
 Sat Mar 19 13:38:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove the javax.annotation:javax.annotation-api dependency on

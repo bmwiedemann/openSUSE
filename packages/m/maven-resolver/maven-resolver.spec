@@ -31,6 +31,7 @@ BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
+BuildRequires:  glassfish-annotation-api
 BuildRequires:  google-guice
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
@@ -46,9 +47,6 @@ BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-annotation-api
-%endif
 %if %{with tests}
 BuildRequires:  ant-junit
 BuildRequires:  cglib
@@ -190,10 +188,6 @@ done
   </archive>
 </configuration>"
 
-%if 0%{?suse_version} <= 1500
-%pom_remove_dep javax.annotation:javax.annotation-api maven-resolver-impl
-%endif
-
 %{mvn_package} :maven-resolver
 %{mvn_package} :maven-resolver-{*}  @1
 %{mvn_alias} 'org.apache.maven.resolver:maven-resolver{*}' 'org.eclipse.aether:aether@1'
@@ -208,9 +202,7 @@ mkdir -p lib
 build-jar-repository -s lib \
   atinject \
   commons-lang3 \
-%if 0%{?suse_version} > 1500
   glassfish-annotation-api \
-%endif
   guice/google-guice-no_aop \
   httpcomponents/httpclient \
   httpcomponents/httpcore \
