@@ -23,4 +23,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964403</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7ecfd4507bbf7cf8c4c0dcc2b8b88015</srcmd5>
+    <version>1.11.3</version>
+    <time>1648665362</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965937</requestid>
+  </revision>
 </revisionlist>

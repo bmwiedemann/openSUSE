@@ -34,13 +34,11 @@ BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-cbor)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(javax.mail:javax.mail-api)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(joda-time:joda-time)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.xml.bind:jaxb-api)
-%endif
 
 %description
 The AWS SDK for Java enables Java developers to easily work with
@@ -155,7 +153,6 @@ client side metrics collected from AWS Java SDK to
 Amazon CloudWatch.
 
 
-
 #%% package code-generator
 %package codecommit
 Summary:        AWS Java SDK for AWS CodeCommit
@@ -174,7 +171,6 @@ Group:          Development/Libraries/Java
 The AWS Java SDK for AWS CodeDeploy module holds the
 client classes that are used for communicating with
 AWS CodeDeploy Service.
-
 
 
 #%% package codegen-maven-plugin
@@ -646,7 +642,6 @@ client classes that are used for communicating with
 AWS Support Service.
 
 
-
 #%% package swf-libraries
 %package test-utils
 Summary:        AWS SDK for Java - Test Utils
@@ -800,9 +795,7 @@ sed -i '/GuardedBy/d' \
 
 %pom_remove_dep :aws-java-sdk-swf-libraries aws-java-sdk
 
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.xml.bind:jaxb-api aws-java-sdk-core
-%endif
 
 # Convert from dos to unix line ending
 dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java \
