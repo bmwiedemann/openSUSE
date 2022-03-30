@@ -31,6 +31,7 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(ch.qos.logback:logback-classic)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
+BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging.log4j:log4j-core)
@@ -38,9 +39,6 @@ BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-servlet)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.xml.bind:jaxb-api)
-%endif
 
 %description
 The Prometheus Java Suite: Client Metrics, Exposition, and Examples.
@@ -149,16 +147,13 @@ for m in simpleclient_caffeine \
 %pom_disable_module $m
 done
 
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.xml.bind:jaxb-api::provided simpleclient_pushgateway
-%endif
 
 %pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
 %pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
 
 %build
-%{mvn_build} -f -s -- \
-    -Dsource=8
+%{mvn_build} -f -s -- -Dsource=8
 
 %install
 %mvn_install
