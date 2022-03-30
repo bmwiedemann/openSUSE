@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 26 03:06:51 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.23
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.23  2021-03-25
+    - Enable gzip compression by default in Mojolicious::Renderer.
+
+-------------------------------------------------------------------
 Fri Oct 22 03:08:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.22
