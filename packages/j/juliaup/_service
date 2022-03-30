@@ -3,9 +3,9 @@
     <param name="url">https://github.com/JuliaLang/juliaup</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">v1.5.37</param>
+    <param name="revision">v1.6.0</param>
     <param name="match-tag">*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)~0</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">socvirnyl.estela@gmail.com</param>
