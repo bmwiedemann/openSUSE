@@ -45,6 +45,8 @@ BuildRequires:  python3-sphinx_rtd_theme
 Requires:       python-numexpr >= 2.6.2
 Requires:       python-numpy >= 1.19
 Requires:       python-packaging
+# boo#1196682
+%requires_eq    hdf5
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     bzip2
