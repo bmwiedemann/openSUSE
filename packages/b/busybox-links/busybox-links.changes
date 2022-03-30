@@ -2,7 +2,7 @@
 Tue Mar 15 12:58:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - replace copy from buildroot's gzip with a reimplementation
-  that is not GPLv3 (jsc#PM-3301)
+  that is not GPLv3 (jsc#SLE-24210 or jsc#SLE-24211)
 
 -------------------------------------------------------------------
 Thu Feb 10 15:10:02 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
