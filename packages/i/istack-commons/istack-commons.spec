@@ -29,6 +29,7 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(args4j:args4j)
 BuildRequires:  mvn(com.sun.codemodel:codemodel)
 BuildRequires:  mvn(dom4j:dom4j)
+BuildRequires:  mvn(javax.activation:javax.activation-api)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.ant:ant)
@@ -59,9 +60,6 @@ BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildRequires:  mvn(org.jsoup:jsoup)
 BuildRequires:  mvn(org.tukaani:xz)
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.activation:javax.activation-api)
-%endif
 
 %description
 Code shared between JAXP, JAXB, SAAJ, and JAX-WS projects.
@@ -135,9 +133,7 @@ pushd %{name}
 %pom_remove_plugin org.codehaus.mojo:findbugs-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:buildnumber-maven-plugin
 
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.activation:javax.activation-api runtime
-%endif
 
 # backward compatibility symlinks
 %{mvn_file} com.sun.istack:%{name}-buildtools %{name}-buildtools %{name}/%{name}-buildtools
