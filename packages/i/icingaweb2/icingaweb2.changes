@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 30 14:15:33 CEST 2022 - ro@suse.de
+
+- add 6498d8b035cbaa287d67a61b3f09310a191a5e10.patch
+  taken from upstream PR 4721 fixing mouseover for list items
+  to make checks selectable again 
+
+-------------------------------------------------------------------
 Thu Mar 24 11:23:27 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.10.0

@@ -29,6 +29,8 @@ URL:            https://icinga.com
 Source0:        https://github.com/Icinga/icingaweb2/archive/v%{version}/%{name}-%{version}.tar.gz
 Source90:       README.SUSE
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM Restore mouseover for list items on the dashboard #4721
+Patch1:         6498d8b035cbaa287d67a61b3f09310a191a5e10.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -267,6 +269,7 @@ Icinga Web 2's fork of Zend Framework 1.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch1 -p1
 %if 0%{?use_selinux}
 mkdir selinux
 cp -p packages/selinux/icingaweb2.{fc,if,te} selinux
