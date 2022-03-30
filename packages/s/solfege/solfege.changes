@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 08:43:53 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Excluded 32 bit build, lillypond fonts only build for 64 bit
+
+-------------------------------------------------------------------
 Fri Oct 29 03:51:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Replace missed /usr/bin/python shebangs with python3. 

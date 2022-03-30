@@ -1,7 +1,7 @@
 #
 # spec file for package solfege
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,7 @@
 
 
 #
-%if 0%{?suse_version} > 1320 || 0%{?is_opensuse} == 1
 %define usemyprovides 0
-%else
-%define usemyprovides 1
-%endif
 
 Name:           solfege
 Summary:        An ear training program
@@ -38,16 +34,9 @@ BuildRequires:  libxslt
 BuildRequires:  python3-gobject-devel
 BuildRequires:  swig
 BuildRequires:  texinfo
+BuildRequires:  txt2man
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(python3)
-%if 0%{?suse_version} > 1320 || 0%{?is_opensuse} == 1
-BuildRequires:  txt2man
-%endif
-
-%if 0%{?usemyprovides} == 1
-%define _use_internal_dependency_generator 0
-%define my_provides /tmp/my-provides
-%endif
 
 Source0:        ftp://alpha.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        lessonfile_editor.1
@@ -60,6 +49,8 @@ Patch3:         reproducible.patch
 Requires:       lilypond-fonts-common >= 2.20
 Requires:       python3-gobject-Gdk
 Requires:       timidity
+#Lillypond only builds lilypond-fonts for 64 bit
+ExcludeArch:    i586 i686
 
 %description
 Solfege is an eartraining program for X written in python, using
