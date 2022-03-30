@@ -41,6 +41,7 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(cglib:cglib-nodep)
 BuildRequires:  mvn(commons-logging:commons-logging)
+BuildRequires:  mvn(javax.activation:javax.activation-api)
 BuildRequires:  mvn(javax.servlet:servlet-api)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -52,9 +53,6 @@ BuildRequires:  mvn(org.objenesis:objenesis)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildRequires:  mvn(org.testng:testng)
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  mvn(javax.activation:javax.activation-api)
-%endif
 
 %description
 %{desc}
@@ -193,9 +191,7 @@ rm modules/module-impl/junit4-common/src/test/java/org/powermock/modules/junit4/
 %pom_remove_plugin :maven-source-plugin
 %pom_xpath_remove "pom:plugin[pom:artifactId='maven-javadoc-plugin']/pom:executions"
 
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.activation:javax.activation-api tests/utils
-%endif
 
 %pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
 %pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
