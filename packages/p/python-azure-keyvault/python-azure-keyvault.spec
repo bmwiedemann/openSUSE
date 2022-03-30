@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-keyvault
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-keyvault
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Client Library
 License:        MIT
@@ -35,10 +35,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-keyvault-certificates >= 4.1
-Requires:       python-azure-keyvault-keys >= 4.1
+Requires:       python-azure-keyvault-certificates >= 4.4
+Requires:       python-azure-keyvault-keys >= 4.5
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
-Requires:       python-azure-keyvault-secrets >= 4.1
+Requires:       python-azure-keyvault-secrets >= 4.4
 Requires:       python-azure-nspkg >= 3.0.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
