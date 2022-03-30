@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 10:11:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
 Fri Mar 18 06:11:22 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Depend on glassfish-activation-api instead of on gnu-jaf

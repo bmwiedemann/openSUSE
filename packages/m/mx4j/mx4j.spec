@@ -26,13 +26,13 @@ URL:            http://mx4j.sourceforge.net/
 Source0:        mx4j-%{version}-src.tar.bz2
 Source1:        mx4j-build.policy
 Source2:        CatalogManager.properties
-Source3:        http://repo1.maven.org/maven2/mx4j/mx4j/%{version}/mx4j-%{version}.pom
-Source4:        http://repo1.maven.org/maven2/mx4j/mx4j-jmx/3.0.1/mx4j-jmx-3.0.1.pom
-Source6:        http://repo1.maven.org/maven2/mx4j/mx4j-remote/%{version}/mx4j-remote-%{version}.pom
-Source7:        http://repo1.maven.org/maven2/mx4j/mx4j-tools/3.0.1/mx4j-tools-3.0.1.pom
-Source8:        http://repo1.maven.org/maven2/mx4j/mx4j-impl/2.1.1/mx4j-impl-2.1.1.pom
-Source9:        http://repo1.maven.org/maven2/mx4j/mx4j-rimpl/2.1.1/mx4j-rimpl-2.1.1.pom
-Source10:       http://repo1.maven.org/maven2/mx4j/mx4j-rjmx/2.1.1/mx4j-rjmx-2.1.1.pom
+Source3:        https://repo1.maven.org/maven2/mx4j/mx4j/%{version}/mx4j-%{version}.pom
+Source4:        https://repo1.maven.org/maven2/mx4j/mx4j-jmx/3.0.1/mx4j-jmx-3.0.1.pom
+Source6:        https://repo1.maven.org/maven2/mx4j/mx4j-remote/%{version}/mx4j-remote-%{version}.pom
+Source7:        https://repo1.maven.org/maven2/mx4j/mx4j-tools/3.0.1/mx4j-tools-3.0.1.pom
+Source8:        https://repo1.maven.org/maven2/mx4j/mx4j-impl/2.1.1/mx4j-impl-2.1.1.pom
+Source9:        https://repo1.maven.org/maven2/mx4j/mx4j-rimpl/2.1.1/mx4j-rimpl-2.1.1.pom
+Source10:       https://repo1.maven.org/maven2/mx4j/mx4j-rjmx/2.1.1/mx4j-rjmx-2.1.1.pom
 Patch0:         mx4j-javaxssl.patch
 Patch2:         mx4j-build.patch
 Patch3:         mx4j-docbook.patch
@@ -47,6 +47,7 @@ BuildRequires:  axis
 BuildRequires:  bcel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_3
+BuildRequires:  glassfish-activation-api
 BuildRequires:  java-devel >= 1.6
 BuildRequires:  javamail
 BuildRequires:  javapackages-local
@@ -64,6 +65,7 @@ BuildConflicts: java-devel-openj9
 Requires:       apache-commons-logging >= 1.0.1
 Requires:       axis >= 1.1
 Requires:       bcel >= 5.0
+Requires:       glassfish-activation-api
 Requires:       javamail >= 1.2-5jpp
 Requires:       jce >= 1.2.2
 Requires:       reload4j
@@ -76,10 +78,6 @@ Provides:       jmx
 Provides:       jmxri
 Provides:       openjmx = %{version}
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-activation-api
-Requires:       glassfish-activation-api
-%endif
 
 %description
 OpenJMX is an open source implementation of the Java(TM) Management
@@ -127,10 +125,7 @@ popd
 
 %build
 export GC_MAXIMUM_HEAP_SIZE="134217728" #128M
-build-jar-repository -s lib javamail/mail
-%if 0%{?suse_version} > 1500
-build-jar-repository -s lib glassfish-activation-api
-%endif
+build-jar-repository -s lib javamail/mail glassfish-activation-api
 export ANT_OPTS="-Djava.security.manager \
                  -Djava.security.policy=$(pwd)/build/mx4j-build.policy \
                  -Dant.build.javac.source=1.6 \
@@ -141,10 +136,7 @@ export CLASSPATH=$(build-classpath glibj-tools javamail/mailapi javamail/smtp \
    reload4j/reload4j jaxp_transform_impl axis/axis axis/jaxrpc axis/saaj \
    xml-resolver xdoclet/xdoclet xdoclet/xdoclet-jmx-module \
    xdoclet/xdoclet-mx4j-module xalan-j2-serializer)
-%if 0%{?suse_version} > 1500
-export CLASSPATH=${CLASSPATH}:$(build-classpath glassfish-activation-api)
-%endif
-export CLASSPATH=${CLASSPATH}:%{_builddir}/%{name}-%{version}/classes/core:%{_builddir}/%{name}-%{version}/build
+export CLASSPATH=${CLASSPATH}:$(build-classpath glassfish-activation-api):%{_builddir}/%{name}-%{version}/classes/core:%{_builddir}/%{name}-%{version}/build
 cd build
 ant compile.jmx compile.rjmx compile.tools compile.examples
 
