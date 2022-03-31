@@ -16,14 +16,14 @@
 #
 
 
-%define sover  3_9_5
+%define sover  3_10_1
 %ifarch %{arm}
 # boo#1182440
 %define _lto_cflags %{nil}
 %endif
 %bcond_without docs
 Name:           gnuradio
-Version:        3.9.5.0
+Version:        3.10.1.1
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -35,23 +35,26 @@ Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
 BuildRequires:  alsa-devel
-BuildRequires:  cmake >= 3.10.2
+BuildRequires:  cmake >= 3.16.3
+BuildRequires:  codec2-devel
 BuildRequires:  cppunit-devel
 BuildRequires:  cppzmq-devel
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 9.3.0
 BuildRequires:  gmp-devel
 BuildRequires:  gsl-devel
 BuildRequires:  libSDL-devel
-BuildRequires:  libboost_atomic-devel >= 1.65
-BuildRequires:  libboost_filesystem-devel >= 1.65
-BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_atomic-devel >= 1.69
+BuildRequires:  libboost_filesystem-devel >= 1.69
+BuildRequires:  libboost_system-devel  >= 1.69
 BuildRequires:  libgsm-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libmpir-devel
 BuildRequires:  libsndfile-devel
-BuildRequires:  log4cpp-devel
+BuildRequires:  libthrift-devel
+BuildRequires:  libusb-1_0-devel
+BuildRequires:  libxml2-devel
 BuildRequires:  ninja
 BuildRequires:  orc
 BuildRequires:  pkgconfig
@@ -60,32 +63,36 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-click
 BuildRequires:  python3-click-plugins
+BuildRequires:  python3-devel >= 3.6.5
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-cairo
 BuildRequires:  python3-mako >= 1.0.7
-BuildRequires:  python3-numpy-devel >= 1.13.3
+BuildRequires:  python3-numpy-devel >= 1.17.4
 BuildRequires:  python3-pyaml >= 3.11
 BuildRequires:  python3-pybind11-devel >= 2.4.3
 BuildRequires:  python3-pycairo
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-six
+BuildRequires:  python3-thrift
 BuildRequires:  qwt6-qt5-devel
 BuildRequires:  soapy-sdr-devel
+BuildRequires:  spdlog-devel
+BuildRequires:  thrift
 BuildRequires:  uhd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  volk-devel >= 2.4.1
-BuildRequires:  pkgconfig(codec2)
-BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(py3cairo)
 BuildRequires:  typelib(Gtk) = 3.0
 BuildRequires:  typelib(PangoCairo) = 1.0
 BuildRequires:  typelib(cairo) = 1.0
+# gnuradio-companion dependencies
+Requires:       python3-cairo
+Requires:       python3-gobject-Gdk
+Requires:       typelib(Gtk) = 3.0
 # gr_modtool dependencies
 Requires:       python3-click
 Requires:       python3-click-plugins
-Requires:       python3-mako
-Requires:       python3-numpy
+Requires:       python3-mako >= 1.1.0
+Requires:       python3-numpy >= 1.17.4
 Requires:       python3-pyaml >= 3.11
 Requires:       python3-qt5
 # gr_filter dependencies
@@ -121,7 +128,7 @@ Summary:        Deveopment files for GNU Radio
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       gmp-devel
-Requires:       log4cpp-devel
+Requires:       spdlog-devel
 
 %description    devel
 GNU Radio is a collection of software that when combined with minimal
@@ -229,6 +236,8 @@ rm -rf %{buildroot}%{_datadir}/icons/gnome
 %{_docdir}/%{name}/README*
 %{_docdir}/%{name}/CHANGELOG*
 %{_docdir}/%{name}/CONTRIBUTING.md
+%dir %{_docdir}/%{name}/config/
+%{_docdir}/%{name}/config/*
 # doc package
 %exclude %{_docdir}/%{name}/html/
 %exclude %{_docdir}/%{name}/xml/

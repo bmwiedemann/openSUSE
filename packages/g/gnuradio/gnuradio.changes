@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Fri Mar 26 18:03:17 UTC 2022 - Mikhail Paulyshka <me@mixaill.net>
+
+- Added spdlog and thrift to dependencies
+- Added python3-cairo and python3-gobject to runtime dependencies
+- Removed log4cpp from dependencies
+- Update to version 3.10.1.1
+  * fixes an off-by-one error in output buffer allocation
+- Update to version 3.10.1.0
+  * Runtime
+    + Add ownership and locking to hier_block2 to avoid crash/freeze after disconnect.
+  * gr-analog
+    + Fix C++ code generation for random_uniform_source
+  * gr-blocks
+    + Minimal implementation of a SigMF Sink, allowing users to easily try out generation SigMF output. SigMF uses a raw data file and a separate JSON metadata file. A SigMF Source is also provided. At this time, it is a wrapper around a File Source (the data files are compatible), but metadata is not processed.
+  * gr-filter
+    + Bug fix: buses should now work with PFB channelizer and synthesizer.
+  * gr-iio
+    + Various fixes for fmcomms2/3/4.
+  * gr-uhd
+    + Bug fix: overflow count was uninitialized.
+    + Correct descriptor names in uhd_fpga_ddc/duc.
+  * GRC
+    + Bug fix: initialize value for "priority" parameter in Python Snippets.
+    + Show blocks with "deprecated" flags as deprecated.
+- Update to version 3.10.0.0
+  * Changed
+    + Moved PDU blocks from gr-blocks to gr-network and gr-pdu
+      - Compatibility shim included to allow access to these blocks from gr-blocks but these are deprecated from the gr-blocks namespace and the shim is scheduled for removal in 3.11.
+    + gr::blocks::pdu namespace has been reorganized in gr
+      - PDU vector types are accessible in gr::types
+      - PDU functions are accessible in gr::pdu
+      - Common msg port names are accessible in gr::ports
+    + Logging Infrastructure changed to use spdlog
+      - +dependency spdlog, -dependency Log4CPP
+      - New, more convenient logging methods
+      - Modernized Interface
+      - Removed iostream and cstdio from logging statements
+  * Project Scope
+    + C++17
+      - requires MSVC 1914 (Microsoft VS 2017 15.7)
+      - replace boost::filesystem with std::filesystem
+    + Windows build: removed unnecessary MSVC-specific system include overrides
+    + Removed unused volk_benchmark
+    + Use Pre-Compiled Headers - speeds up compilation time
+    + Further replacements of boost::bind with lambda functions
+    + Remove more manual memory management and general c++ modernization
+    + PEP8 formatting applied and enforced on all Python files
+    + Centralized min dependency and compiler versions in one place for GR and modtool created OOTs
+    + Update QA tests to work with OpenEmbedded cross compilations
+    + Dependency versions:
+      - Python 3.6.5
+      - numpy 1.17.4
+      - VOLK 2.4.1
+      - CMake 3.16.3
+      - Boost 1.69
+      - Mako 1.1.0
+      - PyBind11 2.4.3
+      - pygccxml 2.0.0
+    + Compiler options:
+      - GCC 9.3.0
+      - Clang 11.0.0 / Apple Clang 1100
+      - MSVC 1916 (Microsoft VS 2017 15.9)
+    + Replace deprecated distutils in CMake macros
+    + Build targets with python dependencies conditionally on ENABLE_PYTHON
+  * gr-blocks
+    + Remove deprecated networking blocks: udp_source, udp_sink, tcp_server_sink; replaced in 3.9 with more capable blocks in gr-network
+    + Document the supported operations in transcendental
+  * gr-analog
+    + fastnoise_source: Use uint64_t seed API, use size_t for vector length/indices
+    + fastnoise_source: Use a simple bitmask if the random pool length is a power of 2 to determine indices, instead of %, which consumed considerable CPU
+    + sig_source: Remove deprecated freq message port of signal source block; Use cmd port instead
+  * gr-filter
+    + Remove deprecated mmse_interpolator block; Replaced previously by mmse_resampler
+    + Speed up filter building with moves
+    + Add const to temporary tap vectors
+  * gr-digital
+    + Remove deprecated simple_{correlator,framer}
+    + Remove deprecated cma, lms, kurtotic equalizers; replaced in 3.9 by linear_equalizer
+    + Un-deprecate pfb_clock_sync
+    + Add header payload demux example
+    + Remove crc32 utility and most of packet_utils
+    + Remove yml files for non-existent QAM mod/demod blocks
+  * gr-dtv
+    + Refactor ATSC blocks to have separate metadata stream rather than passing structs
+    + Add energy normalization for DVB-S2X constellations
+  * gr-network
+    + Fix segfaults when TCP and UDP are restarted
+  * gr-qtgui
+    + Remove spurious volk includes
+    + Fix segfaulting overflow in time_sink and waterfall
+    + Support for Qwt 6.2
+    + Frequency/Waterfall Sinks expand range to 32k and enums in GRC
+    + Frequency/Waterfall Sinks force power of 2 for fft size
+  * gr-uhd
+    + Python bindings for RFNoC blocks
+  * gr-utils
+    + gr_modtool bind workaround for pygccxml incompatibility with spdlog
+  * gr-video-sdl
+    + Clean up the SDL sinks:
+      - Remove unused format parameter
+  * gnuradio-runtime
+    + gr::random uses xoroshiro128+ internally, takes uint64_t seed
+    + Remove unused misc.cc/h
+    + Accelerator Device Support
+      - Major changes to the runtime to support “custom buffers”
+      - Single Mapped Buffer abstraction that can be inherited out of tree
+    + Remove Tag Checker
+    + Explicitly convert path to string to fix MSVC build
+    + size_t for vmcircbuf constructor and buffer factories
+    + Reconfigurable timer value for input blocked condition (scheduler detail workaround)
+  * grc
+    + grcc –output switch for hierarchical blocks
+    + Clean up Bokeh server loop
+    + Don’t blacklist default as a flowgraph ID to prevent always starting in an error state
+  * Testing
+    + rm dependencies from disabled components in blocks/runtime tests
+  * Misc.
+    + dtools: Added run-clang-tidy-on-codebase, which does what the name suggests, then updates all bindtool hashes, and commits everything appropriately
+    + gr_filter_design
+      - update to support PyQt5
+      - fix loading of previously saved .csv files
+  * Added
+    + New in-tree module gr-pdu
+    + New in-tree module gr-iio
+
+-------------------------------------------------------------------
 Sun Feb 13 05:05:06 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Restore gr_modtool CMakeLists.txt files, protect from %cmake
