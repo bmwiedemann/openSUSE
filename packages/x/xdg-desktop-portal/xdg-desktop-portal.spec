@@ -42,9 +42,9 @@ BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libsystemd)
 # Break cycle: we buildrequire flatpak, and flatpak has a requires on xdg-desktop-portal
 #!BuildIgnore:  xdg-desktop-portal
-# xdg-dfesktop-portal calls out to fusermount (in $PATH) (boo#1175899)
-# document-portal/document-portal-fuse.c: char *umount_argv[] = { "fusermount", "-u", "-z", (char *) path, NULL };
-Requires:       %{_bindir}/fusermount
+# xdg-dfesktop-portal calls out to fusermount3 (in $PATH) (boo#1197567)
+# document-portal/document-portal-fuse.c: char *umount_argv[] = { "fusermount3", "-u", "-z", (char *) path, NULL };
+Requires:       %{_bindir}/fusermount3
 
 %description
 A portal frontend service for Flatpak and possibly other desktop containment frameworks.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 30 10:25:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update /usr/bin/fusermount requires to /usr/bin/fusermount3: the
+  code has been changed to call fusermount3 as  part of version
+  1.14.0: document-portal: Move to the libfuse3 API (boo#1197567).
+
+-------------------------------------------------------------------
 Sat Mar 19 09:41:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.1:
