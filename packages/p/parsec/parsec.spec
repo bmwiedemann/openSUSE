@@ -17,11 +17,11 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define archive_version 1.0.0-rc3
+%define archive_version 1.0.0
 
 %{?systemd_ordering}
 Name:           parsec
-Version:        1.0.0~rc3
+Version:        1.0.0
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
@@ -55,7 +55,7 @@ Requires(pre):  system-user-tss
 Requires:       tpm2-0-tss
 # Without libtss2-tcti-device0 parsec fails to start TPM properly
 Requires:       libtss2-tcti-device0
-ExcludeArch:    armv6l armv6hl
+ExcludeArch:    %{ix86} armv6l armv6hl
 
 %description
 PARSEC is the Platform AbstRaction for SECurity, an open-source initiative to provide

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 31 06:17:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.0.0:
+  * Update changelog file only
+- Disable build on x86 since the build fails
+
+-------------------------------------------------------------------
 Mon Mar 21 13:02:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.0.0-rc3:
