@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 27 19:39:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.8.28:
+  * Remove SMB support
+  * Add syntax highlighting for Ngspice/SPICE and DOT/Graphviz
+  * Support file/dir macros from mc.ect for standalone viewer
+  * Support Shift+Fn keys for KiTTY
+  * Filehighlight: graphical formats: avif, jp2, jxl, heic, heif,
+    psb, psd, Markdown
+  * bug fixes
+- drop mc-startup-timeout.patch
+
+-------------------------------------------------------------------
 Thu Sep  2 11:06:43 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Midnight Commander 4.8.27:

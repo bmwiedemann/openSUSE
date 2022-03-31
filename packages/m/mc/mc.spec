@@ -17,7 +17,7 @@
 
 
 Name:           mc
-Version:        4.8.27
+Version:        4.8.28
 Release:        0
 Summary:        Midnight Commander
 License:        GPL-3.0-or-later
@@ -47,8 +47,6 @@ Patch41:        mc-multi-press-f-keys.patch
 # Patches from Fedora
 #Patch adding -fpie and -pie to compilation and linking of setuid binaries
 Patch52:        mc-pie.patch
-# mc-startup-timeout.patch mc3082 nadvornik@suse.cz - fix for long timeout on startup, bnc#824729
-Patch60:        mc-startup-timeout.patch
 Patch61:        mc-extd-misc.patch
 Patch62:        mc-extd-video.patch
 Patch63:        mc-extd-doc.patch
@@ -108,7 +106,6 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE6} | head -n1 | cut -c1-64`  %{SOU
 %patch32
 %patch41 -p1
 %patch52 -p1
-%patch60 -p1
 %patch100 -p1
 
 %build
@@ -123,7 +120,6 @@ export PYTHON=%{_bindir}/python3
 %configure \
     --localstatedir=%{_localstatedir}/lib \
     --enable-charset \
-    --enable-vfs-smb --with-smb-configdir=%{_sysconfdir}/samba \
     --disable-vfs-fish
 
 %make_build
