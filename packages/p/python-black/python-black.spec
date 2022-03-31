@@ -19,19 +19,18 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-black
-Version:        21.12b0
+Version:        22.1.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
 URL:            https://github.com/psf/black
 Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM black-pr2718-unpin.patch -- gh#psf/black#2718 + gh#psf/black#2408 + gh#pypa/pip#10238; gh#psf/black#2703
-Patch1:         black-pr2718-unpin.patch
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
 BuildRequires:  %{python_module aiohttp_cors}
 BuildRequires:  %{python_module attrs >= 18.1.0}
 BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module click >= 7.1.2}
+BuildRequires:  %{python_module click >= 8.0.0}
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
 BuildRequires:  %{python_module pathspec >= 0.9.0}
 BuildRequires:  %{python_module platformdirs >= 2}
@@ -39,25 +38,26 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module typed-ast >= 1.4.2 if %python-base < 3.8}
+BuildRequires:  %{python_module typing_extensions >= 3.10.0.0 if %python-base < 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python3-dataclasses if python3-base < 3.7)
-BuildRequires:  (python3-typed-ast >= 1.4.2 if python3-base < 3.8)
 Requires:       python-aiohttp >= 3.3.2
 Requires:       python-aiohttp_cors
 Requires:       python-attrs >= 18.1.0
-Requires:       python-click >= 7.1.2
+Requires:       python-click >= 8.0.0
 Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-pathspec >= 0.9.0
 Requires:       python-platformdirs >= 2
 Requires:       python-tomli >= 1.1.0
-Requires:       python-typing_extensions
 %if 0%{?python_version_nodots} < 37
 Requires:       python-dataclasses
 %endif
 %if 0%{?python_version_nodots} < 38
 Requires:       python-typed-ast >= 1.4.2
+%endif
+%if 0%{?python_version_nodots} < 310
+Requires:       python-typing_extensions >= 3.10.0.0
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -99,7 +99,7 @@ export PATH=$PATH:~/bin
 
 # test_expression_diff - sometimes fails on async timing in OBS
 # test_bpo_2142_workaround fails on arm
-skiptests="test_expression_diff or py2 or test_bpo_2142_workaround"
+skiptests="test_expression_diff or test_bpo_2142_workaround"
 %pytest -k "not ($skiptests)"
 
 %post
