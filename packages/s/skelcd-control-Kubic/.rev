@@ -334,4 +334,13 @@
     <comment>submit new version 20210907</comment>
     <requestid>917274</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>2645a5e37e87d43bb5d99fc28fd35bd4</srcmd5>
+    <version>20220204</version>
+    <time>1648739896</time>
+    <user>dimstar_suse</user>
+    <comment>- Use NetworkManager always (boo#1172684)
+- 20220204</comment>
+    <requestid>965322</requestid>
+  </revision>
 </revisionlist>
