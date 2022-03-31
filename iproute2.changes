@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 26 13:58:23 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- update to 5.17:
+  * lib/fs: fix memory leak in get_task_name()
+  * bridge: Remove vlan listing from `bridge link`
+  * bond: add arp_missed_max option
+  * libnetlink: fix socket leak in rtnl_open_byproto()
+  * dcb: Fix error reporting when accessing "dcb app"
+  * tc_util: Fix parsing action control with space and slash
+  * lib: fix ax25.h include for musl
+  * uapi: add missing rose and ax25 files
+  * rdma: Fix res_print_uint() and add res_print_u64()
+  * tc: Add support for ce_threshold_value/mask in fq_codel
+- Add tmpfiles.d conf for /run/netns
+
+-------------------------------------------------------------------
 Fri Mar  4 09:43:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add eBPF(libbpf) support

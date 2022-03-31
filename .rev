@@ -1001,4 +1001,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment></comment>
     <requestid>959517</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>811dd7fcd5b4e6fab2095b83eeefa6dc</srcmd5>
+    <version>5.17</version>
+    <time>1648739911</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:O</comment>
+    <requestid>965968</requestid>
+  </revision>
 </revisionlist>

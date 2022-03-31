@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        5.16
+Version:        5.17
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -31,6 +31,7 @@ URL:            https://wiki.linuxfoundation.org/networking/iproute2
 #Git-Mirror:    https://github.com/shemminger/iproute2 ## not updated
 Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.xz
 Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.sign
+Source3:        %name.tmpfiles
 Source9:        %name.keyring
 Patch1:         adjust-installation-directories-for-openSUSE-SLE.patch
 Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
@@ -119,6 +120,7 @@ install -pm0644 "lib/libnetlink.a" "$b/%_libdir/"
 chmod -x "$b/%_libdir/libnetlink.a"
 install -pm0644 "include/libnetlink.h" "$b/%_includedir/"
 chmod -x "$b/%_includedir/libnetlink.h"
+install -Dm0644 "%SOURCE3" "$b/%_tmpfilesdir/%name.conf"
 %if 0%{?usrmerged}
 ln -sf "%_sbindir/ip" "$b/%_bindir/ip"
 %else
@@ -133,12 +135,17 @@ mkdir -p "$b/%_docdir/%name"
 cp -an README* examples/bpf "$b/%_docdir/%name/"
 %fdupes %buildroot/%_prefix
 
+%post
+%tmpfiles_create %_tmpfilesdir/%name.conf
+
 %files
 %_bindir/lnstat
 %_bindir/nstat
 %_bindir/routel
 %_bindir/ss
 %_sbindir/*
+%_tmpfilesdir/%name.conf
+%ghost %dir %_rundir/netns
 %exclude %_sbindir/arpd
 %if 0%{?usrmerged}
 %_bindir/ip
