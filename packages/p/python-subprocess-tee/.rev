@@ -7,4 +7,15 @@
     <comment>Required for the upgrade of ansible.</comment>
     <requestid>962333</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51170150eda6ee54e1f9c56bf8cc8c05</srcmd5>
+    <version>0.3.5</version>
+    <time>1648739925</time>
+    <user>dimstar_suse</user>
+    <comment>- Still missing BR: setuptools_scm_git_archive
+- remove dependency generator, as it is not adviced to do so
+- add setuptools_scm as dependency to fix the version number
+</comment>
+    <requestid>966167</requestid>
+  </revision>
 </revisionlist>

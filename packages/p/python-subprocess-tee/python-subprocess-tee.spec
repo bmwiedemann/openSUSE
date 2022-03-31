@@ -24,17 +24,17 @@ Summary:        Captures the output of subprocesses in real-time
 License:        MIT
 URL:            https://github.com/pycontribs/subprocess-tee
 Source:         https://files.pythonhosted.org/packages/source/s/subprocess-tee/subprocess-tee-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm_git_archive}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module enrich}
 # /SECTION
 BuildRequires:  fdupes
-BuildRequires: python-rpm-generators
-%{?python_enable_dependency_generator}
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,7 +62,8 @@ to provide instant feedback (progress) related to what is happening.
 %pytest -k 'not test_molecule'
 
 %files %{python_files}
-%{python_sitelib}/subprocess_tee*
+%{python_sitelib}/subprocess_tee/
+%{python_sitelib}/subprocess_tee-%{version}*-info
 %doc README.md
 %license LICENSE
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 31 09:15:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Still missing BR: setuptools_scm_git_archive
+
+-------------------------------------------------------------------
+Thu Mar 31 07:50:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove dependency generator, as it is not adviced to do so
+- add setuptools_scm as dependency to fix the version number
+
+-------------------------------------------------------------------
 Tue Mar 15 20:31:36 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Initial package for version 0.3.5.
