@@ -1,7 +1,7 @@
 #
 # spec file for package openjade
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        DSSSL Engine for SGML Documents
 License:        MIT
 Group:          Productivity/Publishing/SGML
-Url:            http://openjade.sourceforge.net/
+URL:            http://openjade.sourceforge.net/
 Source:         http://switch.dl.sourceforge.net/sourceforge/openjade/openjade-1.3.2.tar.bz2
 Source1:        jade_style-sheet.dtd
 Source2:        %{name}-README.SUSE
@@ -33,7 +33,6 @@ Patch3:         openjade-1.3.2-shared.patch
 Patch4:         gcc46_default_ctors.patch
 Patch5:         openjade-1.3.2-getopts.patch
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  opensp-devel
 Requires:       opensp
 Requires(pre):  %{regcat}
@@ -73,7 +72,7 @@ framework (package 'openjade').
 # -n %%{name}-1.3.2-rc2
 cp %{SOURCE1} dsssl
 cp %{SOURCE2} README.SUSE
-%patch1
+%patch1 -p1
 %patch2 -p1
 %patch3
 %patch4
@@ -88,17 +87,6 @@ export CXXFLAGS="%{optflags}"
 %endif
 # export CXXFLAGS="-g -march=i486 -mcpu=i686"
 # export DEFAULT_SCHEME_BUILTINS=/usr/share/sgml/openjade/builtins.dsl
-# % {?suse_update_config:% {suse_update_config config}}
-rm -fv aclocal.m4 missing
-[ -r config/configure.in ] && mv config/configure.in .
-libtoolize --force
-aclocal -I config
-#automake --force --copy
-# libtoolize --copy --force
-autoconf --force
-# # not using autoconf, because we don't have Makefile.am and that is
-# # the only way to pass flags to aclocal called by autoreconf
-# autoreconf --force --install -I config
 %configure --disable-static --with-gnu-ld --with-pic \
   --datadir=%{sgml_dir}/openjade \
   --enable-splibdir=%{_libdir} \
@@ -201,7 +189,8 @@ fi
 exit 0
 
 %files
-%doc COPYING NEWS README*
+%license COPYING
+%doc NEWS README*
 %doc index.html html
 %doc dsssl develdoc testsuite
 %doc japan.sgmldecl

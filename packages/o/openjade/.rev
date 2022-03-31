@@ -154,4 +154,12 @@
   C++&quot; (fix rpmlint warning).</comment>
     <requestid>541551</requestid>
   </revision>
+  <revision rev="23" vrev="373">
+    <srcmd5>d96b5713a2f925ef45335f74f30b5fdc</srcmd5>
+    <version>1.3.2</version>
+    <time>1648739890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965307</requestid>
+  </revision>
 </revisionlist>
