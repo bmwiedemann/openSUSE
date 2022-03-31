@@ -1,7 +1,7 @@
 #
 # spec file for package audit-secondary
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,12 +41,15 @@ Patch8:         change-default-log_format.patch
 Patch9:         fix-hardened-service.patch
 Patch10:        enable-stop-rules.patch
 Patch11:        create-augenrules-service.patch
+Patch12:        audit-userspace-517-compat.patch
+Patch13:        audisp-remote-fix-hang-with-disk_low_action-suspend-.patch
+Patch14:        libaudit-fix-unhandled-ECONNREFUSED-from-getpwnam-25.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  gcc-c++
 BuildRequires:  kernel-headers >= 2.6.30
-BuildRequires:  libldapcpp-devel
 BuildRequires:  libtool
+BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 %if %{with python2}
 BuildRequires:  python2-devel

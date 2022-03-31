@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 26 11:14:19 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Fix buildrequire for openldap2-devel - audit doesn't require the
+  (outdated) C++ binding, but the C headers that happen to be pulled
+  in by buildrequiring the C++ devel package
+
+-------------------------------------------------------------------
+Fri Mar 25 04:56:19 UTC 2022 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Fix unhandled ECONNREFUSED with LDAP environments (bsc#1196645)
+  * add libaudit-fix-unhandled-ECONNREFUSED-from-getpwnam-25.patch
+- Fix hang in audisp-remote with disk_low_action=suspend (bsc#1196517)
+  * add audisp-remote-fix-hang-with-disk_low_action-suspend-.patch
+
+-------------------------------------------------------------------
+Wed Mar 23 16:37:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add audit-userspace-517-compat.patch 
+
+-------------------------------------------------------------------
 Mon Nov 29 13:13:56 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Use %autosetup
