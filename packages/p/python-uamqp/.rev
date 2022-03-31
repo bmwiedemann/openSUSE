@@ -146,4 +146,15 @@
     HISTORY.rst file provided with this package (forwarded request 946059 from glaubitz)</comment>
     <requestid>946119</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e72dc6c81c9cab2d6740ac331fd687b1</srcmd5>
+    <version>1.5.3</version>
+    <time>1648739933</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.5.3
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 966183 from glaubitz)</comment>
+    <requestid>966201</requestid>
+  </revision>
 </revisionlist>
