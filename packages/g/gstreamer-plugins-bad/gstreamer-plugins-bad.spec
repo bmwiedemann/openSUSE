@@ -72,6 +72,8 @@ Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE Fix build with the old srt version inherited from SLE15 SP2
 Patch0:         fix-build-with-srt-1.3.4.patch
+# PATCH-FIX-UPSTREAM 8440e2a373e5ce681d15f5880cb2f2562be332cf.patch -- nvh264dec,nvh265dec: Fix broken key-unit trick and reverse playback
+Patch1:         https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/8440e2a373e5ce681d15f5880cb2f2562be332cf.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
@@ -640,11 +642,12 @@ making use of the GStreamer Transcoding API.
 %lang_package
 
 %prep
-%setup -n %{_name}-%{version}
+%setup -q -n %{_name}-%{version}
 
 %if %{pkg_vcmp srt < 1.4.0}
 %patch0 -p1
 %endif
+%patch1 -p3
 
 %build
 %global optflags %{optflags} -fcommon
