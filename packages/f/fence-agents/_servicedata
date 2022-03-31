@@ -1,4 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-            <param name="url">git://github.com/ClusterLabs/fence-agents.git</param>
-          <param name="changesrevision">5283cdb5435ecd22e9f29746ee0c79160555bfeb</param></service></servicedata>
+            <param name="url">https://github.com/ClusterLabs/fence-agents.git</param>
+          <param name="changesrevision">cd893f97fd61da22080463fe168c40daaa86aafd</param></service></servicedata>

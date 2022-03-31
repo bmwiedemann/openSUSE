@@ -850,4 +850,15 @@
   * fence_gce: add plugzonemap parameter</comment>
     <requestid>956714</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a1722880732643a48d430568d8a9f126</srcmd5>
+    <version>4.11.0+git.1647434775.2f1b86d8</version>
+    <time>1648739938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.11.0+git.1647434775.2f1b86d8:
+  * fence_apc.py compatibility for Firmware major release 7 workaround #475
+  * fence_lpar: fix missing import logging, use fail_usage
+  * fence_raritan: Also allow pure port number, not only system1/outletX string (#473)</comment>
+    <requestid>966235</requestid>
+  </revision>
 </revisionlist>
