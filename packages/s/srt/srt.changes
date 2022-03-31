@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Mar 27 19:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4:
+  * Monotonic/steady clock is enabled by default.
+  * Changed the default value of SRTO_RETRANSMITALGO socket option to 1. This
+    activates the efficient retransmission algorithm on the sender side which
+    optimizes the bandwidth usage by producing fewer retransmissions per lost
+    packet. The algorithm is available since v1.4.2. Intensive retransmission
+    algorithm (the former default) can be activated by setting
+    SRTO_RETRANSMITALGO=0.
+  * Improved random integer retrieval, which is mainly used for initial socket
+    ID and Initial Sequence Number (ISN) generation.
+  * Improved clock drift compensation algorithm. RTT samples are now taken into
+    account when estimating clock drift.
+  * Improved round-trip time (RTT) estimation.
+    On the receiver side, smoothed RTT (SRTT) is set to the first RTT
+    measurement obtained from the first ACK/ACKACK pair. When a subsequent RTT
+    measurement is made, an exponentially weighted moving average (EWMA) is used to
+    update smoothed RTT. Before the very first RTT sample is available, SRTT is
+    initialized as 100 ms or taken from the cache if one exists.
+  * On the sender side, in the case of unidirectional transmission, the values of
+    smoothed RTT and RTT variance are now extracted from ACK packets. In the case
+    of bidirectional transmission, an EWMA is still applied to be consistent with
+    the previous behavior.
+  * Improved 'No room to store incoming packet' warning with additional hints
+    to identify a possible reason.
+  * Added support for atomic types.
+  * Improved the logic of switching between main and backup links, extended the
+    list of member link states as well as defined events resulting in state
+    transition for Main/Backup mode of Connection Bonding.
+  * Documented Main/Backup mode of Connection Bonding. See here.
+  * Fixed group read-readiness update on the receiver side.
+  * Added missing lock when checking for read-readiness of a group member and
+    fixed the resulting crash.
+  * Fixed base time and drift synchronization in a group, which caused
+    insufficient packet loss recovery and end-to-end latency maintenance by a
+    group receiver.
+  * Fixed validation of the packet sequence number when reading from a group
+    member, which was causing an incorrect decision to break a member
+    connection.
+  * Fixed crash on dereferencing null CryptoControl instance in handshake reply.
+  * Placed some of the SRT classes under the 'srt' namespace.
+  * Fixed possible incorrect outcome of cookie contest function (rendezvous
+    connection mode) under certain compiler optimizations.
+  * Fixed uninitialized destination socket ID in Shutdown control message.
+  * Set CLOEXEC for epoll on Linux.
+  * Added missing receiver buffer lock into CUDT::receiveBuffer(..) and
+    CUDT::recvfile(..) functions.
+  * Make sure TTL will not drop packets over the last block.
+  * Fixed the value of the Last Packet Sequence Number field in Drop Request
+    control message on TTL packet drop.
+  * Fixed the content of the Drop Request control message. If a loss of packets
+    already missing in the sender buffer was reported, the very first packet
+    present in the sender buffer was incorrectly included in the range of
+    packets to be dropped.
+  * Fixed version rejection for handshake v4 caller (SRT prior to v1.3.0).
+  * Fixed the crash when referencing a resource already freed in CRendezvousQueue class.
+  * Fixed detection of reusable bindings and binding conflicts.
+  * Updated SRTO_RETRANSMITALGO socket option description.
+
+-------------------------------------------------------------------
 Tue May 11 23:55:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.4.3

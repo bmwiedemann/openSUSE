@@ -1,7 +1,7 @@
 #
 # spec file for package srt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1_4
 
 Name:           srt
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Secure Reliable Transport (SRT)
 License:        MPL-2.0
@@ -69,6 +69,7 @@ needed to develop applications with Secure Reliable Transport
 	-DCMAKE_INSTALL_INCLUDEDIR=%{_includedir} \
 	-DENABLE_CXX11=ON \
 	-DENABLE_SHARED=ON \
+        -DENABLE_MONOTONIC_CLOCK=ON \
 	-DENABLE_STATIC=OFF \
 	%{nil}
 %cmake_build
