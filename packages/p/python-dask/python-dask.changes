@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sun Mar 27 19:18:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- dask.dataframe requires dask.bag (revealed by swifter test suite)
+
+-------------------------------------------------------------------
+Fri Mar 25 19:02:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.3.0
+  * Bag: add implementation for reservoir sampling
+  * Add ma.count to Dask array
+  * Change to_parquet default to compression="snappy"
+  * Add weights parameter to dask.array.reduction
+  * Add ddf.compute_current_divisions to get divisions on a sorted
+    index or column
+  * Pass __name__ and __doc__ through on DelayedLeaf
+  * Raise exception for not implemented merge how option
+  * Move Bag.map_partitions to Blockwise
+  * Improve error messages for malformed config files
+  * Revise column-projection optimization to capture common
+    dask-sql patterns
+  * Useful error for empty divisions
+  * Scipy 1.8.0 compat: copy private classes into
+    dask/array/stats.py
+- Release 2022.2.1
+  * Add aggregate functions first and last to
+    dask.dataframe.pivot_table
+  * Add std() support for datetime64 dtype for pandas-like objects
+  * Add materialized task counts to HighLevelGraph and Layer html
+    reprs
+  * Do not allow iterating a DataFrameGroupBy
+  * Fix missing newline after info() call on empty DataFrame
+  * Add groupby.compute as a not implemented method
+  * Improve multi dataframe join performance
+  * Include bool type for Index
+  * Allow ArrowDatasetEngine subclass to override pandas->arrow
+    conversion also for partitioned write
+  * Increase performance of k-diagonal extraction in da.diag() and
+    da.diagonal()
+  * Change linspace creation to match numpy when num equal to 0
+  * Tokenize dataclasses
+  * Update tokenize to treat dict and kwargs differently
+- Release 2022.2.0
+  * Add region to to_zarr when using existing array
+  * Add engine_kwargs support to dask.dataframe.to_sql
+  * Add include_path_column arg to read_json
+  * Add expand_dims to Dask array
+  * Add scheduler option to assert_eq utilities
+  * Fix eye inconsistency with NumPy for dtype=None
+  * Fix concatenate inconsistency with NumPy for axis=None
+  * Type annotations, part 1
+  * Really allow any iterable to be passed as a meta
+  * Use map_partitions (Blockwise) in to_parquet
+- Update dask-fix8169-pandas13.patch
+- Add dask-py310-test.patch -- gh#dask/dask#8566
+- Make the distributed/dask update sync requirement even more
+  obvious.
+
+-------------------------------------------------------------------
 Sat Jan 29 17:35:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.1.1

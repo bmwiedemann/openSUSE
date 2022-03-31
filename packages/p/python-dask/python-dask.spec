@@ -31,32 +31,33 @@
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
-%define psuffix -test-py310"
+%define psuffix -test-py310
 %define skip_python38 1
 %define skip_python39 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
-# https://github.com/dask/distributed/issues/5350, https://github.com/dask/distributed/issues/5460
-%define skip_python310 1
 %bcond_with test
 %endif
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         ghversiontag 2022.01.1
+# ===> Note: python-dask MUST be updated in sync with python-distributed! <===
+%define         ghversiontag 2022.03.0
 Name:           python-dask%{psuffix}
-# Note: please always update together with python-distributed!
-Version:        2022.1.1
+# ===> Note: python-dask MUST be updated in sync with python-distributed! <===
+Version:        2022.3.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
 Source1:        https://github.com/dask/dask/raw/%{ghversiontag}/conftest.py
-# PATCH-FIX-UPSTREAM dask-fix8169-pandas13.patch -- gh#dask/dask#8169
+# PATCH-FIX-UPSTREAM dask-fix8169-pandas13.patch -- gh#dask/dask#8169, gh#dask/dask#8851
 Patch0:         dask-fix8169-pandas13.patch
-BuildRequires:  %{python_module base >= 3.7}
+# PATCH-FIX-UPSTREAM dask-py310-test.patch -- gh#dask/dask#8566
+Patch1:         https://github.com/dask/dask/pull/8566/commits/c329509fc9e78925682c9a0d5c579101da740d43.patch#/dask-py310-test.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -210,6 +211,7 @@ or log files.
 Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
+Requires:       %{name}-bag = %{version}
 Requires:       python-numpy >= 1.18
 # Patch0 requires pandas 1.3+ -- https://github.com/dask/dask/issues/8169
 Requires:       python-pandas >= 1.3
@@ -257,7 +259,7 @@ This meta package pulls in the distributed module into the dask namespace.
 Summary:        Diagnostics for dask
 Requires:       %{name} = %{version}
 Requires:       python-Jinja2
-Requires:       python-bokeh >= 2.1.1
+Requires:       python-bokeh >= 2.4.2
 
 %description diagnostics
 A flexible library for parallel computing in Python.
@@ -316,7 +318,7 @@ This package contains the graphviz dot rendering interface.
 %prep
 %autosetup -p1 -n dask-%{version}
 cp %{SOURCE1} ./
-sed -i  '/addopts/ {s/--durations=10//; s/--color=yes//}' setup.cfg
+sed -i  '/addopts/d' setup.cfg
 chmod a-x dask/dataframe/io/orc/utils.py
 
 %build
@@ -354,15 +356,17 @@ donttest+=" or test_development_guidelines_matches_ci"
 # requires otherwise optional pyarrow (not available on TW)
 donttest+=" or (test_parquet and (test_chunksize or test_extra_file))"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
-  # https://github.com/dask/dask/issues/8169
-  donttest+=" or test_categorize_info"
+  # https://github.com/dask/dask/issues/8620
   donttest+=" or test_query_with_meta"
 fi
-# https://github.com/dask/dask/issues/8639
-donttest+=" or test__get_paths"
 # (rarely) flaky on obs
 donttest+=" or test_local_scheduler"
-%pytest --pyargs dask -rfEs -m "not network" -k "not ($donttest)" -n auto
+donttest+=" or (test_threaded and test_interrupt)"
+# perhaps? rh#1968947#c4
+donttest+=" or test_select_from_select"
+# tries to get an IP address
+donttest+=" or test_map_partitions_df_input"
+%pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
 %endif
 
 %if !%{with test}
