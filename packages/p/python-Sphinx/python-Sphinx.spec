@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -38,7 +38,7 @@ Source1:        https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%
 # Provide intersphinx inventory offline
 # https://docs.python.org/3/objects.inv#/python3.inv
 Source2:        python3.inv
-# https://requests.readthedocs.io/en/master/objects.inv#/requests.inv
+# https://docs.python-requests.org/en/master/objects.inv#/requests.inv
 Source3:        requests.inv
 # https://docs.readthedocs.io/en/stable/objects.inv#/readthedocs.inv
 Source4:        readthedocs.inv
@@ -248,7 +248,7 @@ cp %{SOURCE4} doc/readthedocs.inv
 # Use a more recent default (currently 3.9) from the source tag instead.
 # The same for requests.
 sed -i -e "s/\((.https:..docs.python.org.3.., \)None\()\)/\1'python3.inv'\2/g" doc/conf.py
-sed -i -e "s/\((.https:..requests.readthedocs.io.*, \)None\()\)/\1'requests.inv'\2/g" doc/conf.py
+sed -i -e "s/\((.https:..docs.python-requests.org.*, \)None\()\)/\1'requests.inv'\2/g" doc/conf.py
 sed -i -e "s/\((.https:..docs.readthedocs.io.*, \)None\()\)/\1'readthedocs.inv'\2/g" doc/conf.py
 $python setup.py build_sphinx
 rm build/sphinx/html/.buildinfo
