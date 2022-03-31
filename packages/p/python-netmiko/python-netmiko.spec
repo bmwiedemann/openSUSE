@@ -1,7 +1,7 @@
 #
 # spec file for package python-netmiko
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-netmiko
-Version:        3.4.0
+Version:        4.0.0
 Release:        0
 Summary:        Multi-vendor library to simplify Paramiko SSH connections to network devices
 License:        MIT
@@ -34,7 +34,7 @@ Requires:       python-paramiko >= 2.6.0
 Requires:       python-pyserial
 Requires:       python-scp >= 0.13.2
 Requires:       python-tenacity
-Requires:       python-textfsm
+Requires:       python-textfsm >= 1.1.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -60,6 +60,9 @@ sed -i -e '/^#!\//, 1d' \
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/netmiko-cfg
+%python_clone -a %{buildroot}%{_bindir}/netmiko-grep
+%python_clone -a %{buildroot}%{_bindir}/netmiko-show
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,9 +73,22 @@ sed -i -e '/^#!\//, 1d' \
 # Unfortunately, we can't do that during build as those doesn't appeared
 # to be unit tests.
 
+%post
+%python_install_alternative netmiko-cfg
+%python_install_alternative netmiko-grep
+%python_install_alternative netmiko-show
+
+%postun
+%python_uninstall_alternative netmiko-cfg
+%python_uninstall_alternative netmiko-grep
+%python_uninstall_alternative netmiko-show
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
+%python_alternative %{_bindir}/netmiko-cfg
+%python_alternative %{_bindir}/netmiko-grep
+%python_alternative %{_bindir}/netmiko-show
 %{python_sitelib}/*
 
 %changelog

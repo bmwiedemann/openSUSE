@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Mar 30 09:27:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to vedrsion 4.0.0
+  Backwards incompatible and other major changes
+  * Convert send_command to use read_timeout.
+  * Convert send_command_timing to use read_timeout and last_read
+  * Add type hints and mypy support
+  * Relocate exceptions module to netmiko.exceptions (was
+    ssh_exceptions)
+  * Add read_timeout argument to send_config_set
+  * Convert netmiko-tools to be an entry point and directly a part
+    of Netmiko library
+  * Creating a new internal Channel class
+  * Restructure read methods
+  * Implement NoEnable and NoConfig inheritance classes to
+    standardize no-config and no-enable behavior
+  Major new features
+  * Add send_multiline() method
+  * Add send_multiline_timing() method
+  * Create new Netmiko factory function named ConnLogOnly
+  * Create new Netmiko factory function named ConnUnify
+  New Drivers
+  * Cisco Viptela Driver
+  * Dell SONiC Driver
+  * Cisco S300 Telnet Driver
+  * Allied Telesis AlliedWare Plus Driver
+  * Zyxel Driver
+  * Extreme Tierra OS Driver
+  * Extreme EXOS Secure Copy Support
+  Minor Enhancements
+  * Centralize standard no_auth code into SSHClient_noauth
+  * Remove vendored Textfsm library code
+  * Add a shim for cisco_xe to use cisco_ios in ntc-templates
+  * WLC add method send_command_w_yes to handle show command
+    that still prompts for pagination
+  * Platforms added to SSH autodetect
+  * Expand ANSI escape code stripping
+  * Expand SNMP autodetect support
+  Bug Fixes
+  * Fix read ahead issue with read methods
+  * Fix ntc-templates directory structure issue
+  * Aruba OS fix for hostname changes
+  * Fix flexvnf enter cli and prompt issue
+  * Mikrotik driver improvements and fixes
+  * Fixing IOS-XR confirm prompting issue during commit
+  * Fix the pan-os acknowledgment banner
+  * Fix Juniper ScreenOS accept issue
+  * Add support for Username: for telnet login on ProCurve
+  * Change ArubaOS command to disable paging
+  * utf-8 encoding for session_log
+  * Add bypass_commands support to send_config_set to disable
+    cmd_verify
+  * Fix disconnect() call for Dlink DS driver
+  * Prevent secret from being leaked to debug log
+  * Fix send_command() read issue where data spanned the deque
+  * Improve set_base_prompt behavior
+  * Increase the default conn_timeout to 10 seconds improve
+    Paramiko behavior on slow connections
+  Performance Improvements
+  * Fix IOS-XR performance issues
+  * Implement Netmiko performance improvements for a large set
+    of drivers (about half the drivers)
+  * Fixing Linux very slow disconnect issue
+
+-------------------------------------------------------------------
 Sat Apr 24 15:56:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4.0
