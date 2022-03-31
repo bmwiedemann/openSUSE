@@ -675,10 +675,11 @@ Prefer: -libSDL2_ttf-devel-32bit
 Prefer: -libSDL_Pango-devel-32bit
 Prefer: -libSDL_gfx-devel-32bit
 Prefer: -libSDL_image-devel-32bit
-Prefer: -libSDL_mixer-devel-32bit -libSDL_mixer-devel-64bit
+Prefer: -libSDL_mixer-devel-32bit
+Prefer: -libSDL_mixer-devel-64bit
 Prefer: -libSDL_net-devel-32bit
-Prefer: -libSDL_sound-devel-32bit
-Prefer: -libSDL_ttf-devel-32bit   -libSDL_ttf-devel-64bit
+Prefer: -libSDL_ttf-devel-32bit
+Prefer: -libSDL_ttf-devel-64bit
 Prefer: -libSDLmm-devel-32bit
 Prefer: -libSM-devel-32bit
 Prefer: -libX11-devel-32bit
@@ -1085,9 +1086,7 @@ Ignore: yast2-bootloader:bootloader-theme
 Ignore: yast2-packager:yast2-x11,libyui_pkg
 Ignore: autoyast2:yast2-schema
 # not during build
-Ignore: yui_backend
 Ignore: yast2-x11:sax2-libsax-perl
-Ignore: yast2-network:yast2-inetd
 Ignore: openslp-devel:openssl-devel
 Ignore: tetex:xorg-x11-libs,expat,fontconfig,freetype2,libjpeg,ghostscript-x11,xaw3d,gd,dialog,ed
 Ignore: texlive-bin:ghostscript-x11
@@ -1095,7 +1094,6 @@ Ignore: texlive-bin-omega:ghostscript-x11
 Ignore: yast2-country:yast2-trans-stats
 Ignore: tpb:tpctl-kmp
 Ignore: tpctl:tpctl-kmp
-Ignore: zaptel:zaptel-kmp
 Ignore: mkinitrd:pciutils
 Ignore: pciutils:pciutils-ids
 Ignore: postfix:iproute2
@@ -1184,7 +1182,6 @@ Ignore: xfce4-session:xfce4-session-branding
 Ignore: kdebase4-runtime:kdebase4-runtime-branding
 Ignore: transmission-common:transmission-ui
 Ignore: sysvinit-tools:mkinitrd cifs-utils:mkinitrd
-Ignore: mkinitrd:sbin_init
 Ignore: gpg2:pinentry
 # sysconfig requires it at runtime, not buildtime
 Ignore: sysconfig:sysvinit(network)
@@ -1202,6 +1199,7 @@ Ignore: libfam0-gamin:gamin-server
 Ignore: avahi:sysvinit(network)
 Ignore: cluster-glue:sysvinit(network)
 Ignore: dracut:systemd-sysvinit
+Ignore: yui_backend
 
 %ifarch ppc64le
 #Constraint: hostlabel PPC64LE_HOST
