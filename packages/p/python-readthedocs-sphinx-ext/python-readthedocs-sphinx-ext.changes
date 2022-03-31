@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 22:29:34 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.1.5:
+  * Search: correctly remove Search.init on Sphinx >= 5.0
+
+-------------------------------------------------------------------
 Sat Jan 29 17:46:24 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
