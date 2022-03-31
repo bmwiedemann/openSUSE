@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 23 22:21:07 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix build with armv7l on Leap: we have afl-llvm-rt-lto{,-32}.o.
+- Fix build with ppc64le: we don't seem to have the 32-bit object
+  files available there and there is also no gcc-32bit.
+
+-------------------------------------------------------------------
 Mon Jan 31 12:45:45 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.00c

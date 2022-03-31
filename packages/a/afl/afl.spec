@@ -16,6 +16,25 @@
 #
 
 
+%ifarch riscv64
+%define afl_rt compiler-rt,llvm-rt
+%else
+%define afl_rt compiler-rt,llvm-rt,llvm-rt-lto
+%endif
+
+%ifarch %{arm} %ix86 s390x x86_64
+%define afl_32 1
+%endif
+%ifarch ppc64le
+%if %{pkg_vcmp clang < 12}
+%define afl_32 1
+%endif
+%endif
+
+%ifarch aarch64 ppc64 ppc64le riscv64 s390x x86_64
+%define afl_64 1
+%endif
+
 Name:           afl
 Version:        4.00c
 Release:        0
@@ -82,25 +101,16 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/%{name}-as
 %{_libexecdir}/%{name}/as
-%ifarch x86_64 aarch64 ppc64 ppc64le s390x riscv64
-%{_libexecdir}/%{name}/afl-compiler-rt-64.o
-%{_libexecdir}/%{name}/afl-llvm-rt-64.o
-%ifnarch riscv64
-%{_libexecdir}/%{name}/afl-llvm-rt-lto-64.o
+%if 0%{?afl_64}
+%{_libexecdir}/%{name}/afl-{%{afl_rt}}-64.o
 %endif
+%if 0%{?afl_32}
+%{_libexecdir}/%{name}/afl-{%{afl_rt}}-32.o
 %endif
-%ifarch %ix86 %{arm} s390x ppc64le x86_64
-%{_libexecdir}/%{name}/afl-compiler-rt-32.o
-%{_libexecdir}/%{name}/afl-llvm-rt-32.o
-%endif
-%ifarch %ix86 aarch64 s390x ppc64le x86_64
+%ifarch aarch64
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-32.o
 %endif
-%{_libexecdir}/%{name}/afl-compiler-rt.o
-%{_libexecdir}/%{name}/afl-llvm-rt.o
-%ifnarch %{arm} riscv64
-%{_libexecdir}/%{name}/afl-llvm-rt-lto.o
-%endif
+%{_libexecdir}/%{name}/afl-{%{afl_rt}}.o
 %{_libexecdir}/%{name}/dynamic_list.txt
 %{_libexecdir}/%{name}/*.so
 %{_libexecdir}/%{name}/*.a

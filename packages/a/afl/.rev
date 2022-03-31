@@ -1057,4 +1057,12 @@
     -   fix -n dumb mode (nobody should use this mode though) (forwarded request 950196 from msmeissn)</comment>
     <requestid>950197</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>41f14a22723c16a75da3f426eb0b7626</srcmd5>
+    <version>4.00c</version>
+    <time>1648739929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966170</requestid>
+  </revision>
 </revisionlist>
