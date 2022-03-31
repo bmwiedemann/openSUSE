@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 27 19:11:43 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.14.0:
+  + Add an implementation of the dynamic launcher portal
+  + notification: Fix activation of default action with target
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jan 17 21:02:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to 1.12.0:
+- Update to version 1.12.0:
   + settings: Provide org.freedesktop.appearance.color-scheme key
   + settings: Handle org.gnome.desktop.a11y.interface schema
   + notification: Handle actions with targets properly
