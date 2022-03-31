@@ -1,11 +1,112 @@
 -------------------------------------------------------------------
+Fri Mar 25 19:18:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.03.0
+  * Support dumping cluster state to URL (GH#5863) Gabe Joseph
+  * Prevent data duplication on unspill (GH#5936) crusaderky
+  * Encapsulate spill buffer and memory_monitor (GH#5904)
+    crusaderky
+  * Drop pkg_resources in favour of importlib.metadata (GH#5923)
+    Thomas Grainger
+  * Worker State Machine refactor: redesign TaskState and scheduler
+    messages (GH#5922) crusaderky
+  * Tidying of OpenSSL 1.0.2/Python 3.9 (and earlier) handling
+    (GH#5854) jakirkham
+  * zict type annotations (GH#5905) crusaderky
+  * Add key to compute failed message (GH#5928) Florian Jetter
+  * Change default log format to include timestamp (GH#5897)
+    Florian Jetter
+  * Improve type annotations in worker.py (GH#5814) crusaderky
+- Add distributed-pr5952-py310.patch -- gh#dask/distributed#5952
+- Add distributed-ignore-thread-leaks.patch
+- Make the distributed/dask update sync requirement even more
+  obvious.
+
+-------------------------------------------------------------------
+Tue Mar  8 07:46:52 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2022.02.1:
+    Add the ability for Client to run preload code
+    Optionally use NumPy to allocate buffers
+    Add git hash to distributed-impl version
+    Immediately raise exception when trying to connect to a closed cluster
+    Lazily get dask version information
+    Remove the requirements to add comm to every handler
+    Raise on unclosed comms in check_instances
+    Constrained spill
+    Remove redundant str() conversions
+    Cluster dump now excludes run_spec by default
+    Dump more objects with dump_cluster_state
+    Do not connect to any sockets on import
+    Avoid deadlock when two tasks are concurrently waiting for an unresolved ActorFuture
+    Drop Python 3.7
+    Remove support for UCX < 1.11.1
+    Document and test spill->target hysteresis cycle
+    Fix flaky test_remove_replicas_while_computing
+    Fix time based test_assert_worker_story_malformed_story parameterize
+    Remove xfail from test_no_unnecessary_imports_on_worker
+    Start building pre-releases with cythonized scheduler
+    Do not mark tests xfail if they don't come up in time
+    Use gen_cluster where possible in test_dask_worker.py
+    Generate junit report when pytest-timeout kills pytest
+    Decrease timeout-minutes for GHA jobs
+    Bump pre-release version to be greater than stable releases
+    Do not run schedule jobs on forks
+    Remove pillow<9 pin in CI
+    Show scheduled test runs in report
+    Add obvious exclusions with pragma statement
+    Add coverage exclusions for cli files
+    Add pragma statements
+    Remove pragma: no cover from distributed.cli.dask_ssh
+    Add pragma - worker.py, client.py, stealing.py
+    Relax distributed / dask-core dependencies for pre-releases
+    Remove test_ucx_config_w_env_var flaky condition
+- Update to 2022.02.0:
+    Update client.scheduler_info in wait_for_workers
+    Increase robustness to TimeoutError during connect
+    Respect KeyboardInterrupt in sync
+    Add workflow / recipe to generate Dask/distributed pre-releases
+    Review Scheduler / Worker display repr
+    AMM: Graceful Worker Retirement
+    AMM: tentatively stabilize flaky tests around worker pause
+    AMM: speed up and stabilize test_memory
+    Defer pandas import on worker in P2P shuffle
+    Fix for distributed.worker.memory.target=False and spill=0.7
+    Transition flight to missing if no who_has
+    Remove deprecated ncores
+    Deprecate registering plugins by class
+    Deprecate --nprocs option for dask-worker CLI
+    Fix imbalanced backticks
+    xfail test_worker_reconnects_mid_compute
+    Fix linting CI build
+    Update pre-commit versions
+    Reactivate pytest_resourceleaks
+    Set test assumption for test_client_timeout
+    Remove client timeout from test_ucx_config_w_env_var
+    Remove test_failed_worker_without_warning
+    Fix longitudinal report
+    Fix flaky test_robust_to_bad_sizeof_estimates
+    Revert "Pin coverage to 6.2
+    Trigger test runs periodically to increases failure statistics
+    More fault tolerant test report
+    Pin pillow<9 to work around torch incompatability
+    Overhaul check_process_leak
+    Fix flaky test_exit_callback test
+    Generate tests summary
+    Upload different architectured pre-releases separately
+    Ignore non-test directories
+    Bump gpuCI PYTHON_VER to 3.9
+    Regression: threads noted down before they start
+- Remove upstreamed patches:
+  - 5709-avoid-deadlock-ActorFuture.patch
+
+-------------------------------------------------------------------
 Mon Feb 14 15:12:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add 5709-avoid-deadlock-ActorFuture.patch to avoid deadlock in
   ActorFuture (gh#dask/distributed#5709).
 
 -------------------------------------------------------------------
-
 Sat Jan 29 17:34:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2022.1.1

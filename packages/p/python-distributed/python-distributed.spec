@@ -31,15 +31,12 @@
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
-# add to _multibuild when enabling python310 (see below)
-%define psuffix -test-py310"
+%define psuffix -test-py310
 %define skip_python38 1
 %define skip_python39 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
-# https://github.com/dask/distributed/issues/5350 -- NOT fixed by https://github.com/dask/distributed/pull/5353
-%define skip_python310 1
 %bcond_with test
 %endif
 
@@ -53,22 +50,27 @@
 %define cythonize --with-cython
 %endif
 
+# use this to run tests with xdist in parallel, unfortunately fails server side
+%bcond_with paralleltests
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         ghversiontag 2022.01.1
+# ===> Note: python-dask MUST be updated in sync with python-distributed! <===
+%define         ghversiontag 2022.03.0
 Name:           python-distributed%{psuffix}
-# Note: please always update together with python-dask
-Version:        2022.1.1
+# ===> Note: python-dask MUST be updated in sync with python-distributed! <===
+Version:        2022.3.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
-URL:            https://distributed.readthedocs.io/en/latest/
-Source:         https://github.com/dask/distributed/archive/refs/tags//%{ghversiontag}.tar.gz#/distributed-%{ghversiontag}-gh.tar.gz
+URL:            https://distributed.dask.org
+Source:         https://github.com/dask/distributed/archive/refs/tags/%{ghversiontag}.tar.gz#/distributed-%{ghversiontag}-gh.tar.gz
 Source99:       python-distributed-rpmlintrc
-# PATCH-FIX-UPSTREAM 5709-avoid-deadlock-ActorFuture.patch gh#dask/distributed#5709 mcepl@suse.com
-# avoid deadlock in ActorFuture
-Patch0:         5709-avoid-deadlock-ActorFuture.patch
-BuildRequires:  %{python_module base >= 3.7}
+# PATCH-FIX-UPSTREAM distributed-pr5952-py310.patch -- gh#dask/distributed#5952
+Patch1:         distributed-pr5952-py310.patch
+# PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
+Patch2:         distributed-ignore-thread-leaks.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -116,6 +118,9 @@ BuildRequires:  %{python_module tblib}
 BuildRequires:  %{python_module toolz >= 0.8.2}
 BuildRequires:  %{python_module tornado >= 6.0.3}
 BuildRequires:  %{python_module zict >= 0.1.3}
+%if %{with paralleltests}
+BuildRequires:  %{python_module pytest-xdist}
+%endif
 %endif
 %python_subpackages
 
@@ -127,7 +132,8 @@ clusters.
 %prep
 %autosetup -p1 -n distributed-%{ghversiontag}
 
-sed -i  '/addopts/ {s/--durations=20//; s/--color=yes//}' setup.cfg
+sed -i -e '/addopts/ {s/--durations=20//; s/--color=yes//}' \
+       -e 's/timeout_method = thread/timeout_method = signal/' setup.cfg
 
 %build
 %if ! %{with test}
@@ -145,21 +151,44 @@ sed -i  '/addopts/ {s/--durations=20//; s/--color=yes//}' setup.cfg
 
 %if %{with test}
 %check
-# randomly fail server-side -- too slow for obs (?)
+# we obviously don't test a git repo
+donttest="test_git_revision"
+# logger error
+donttest+=" or test_version_warning_in_cluster"
+
+# Some tests randomly fail server-side -- too slow for obs (?)
+# see also https://github.com/dask/distributed/issues/5818
 donttest+=" or (test_asyncprocess and test_exit_callback)"
-donttest+=" or (test_nanny and test_throttle_outgoing_connections)"
-donttest+=" or (test_scheduler and test_rebalance)"
-donttest+=" or (test_tls_functional and test_rebalance)"
-donttest+=" or (test_worker and test_fail_write_to_disk)"
-donttest+=" or (test_worker and test_multiple_transfers)"
-donttest+=" or (test_worker and test_remove_replicas_while_computing)"
+donttest+=" or (test_client and test_repr)"
+donttest+=" or (test_priorities and test_compute)"
+donttest+=" or (test_resources and test_prefer_constrained)"
+donttest+=" or (test_steal and test_steal_twice)"
+donttest+=" or (test_worker and test_gather_dep_one_worker_always_busy)"
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
+
+# Exception messages not caught -- https://github.com/dask/distributed/issues/5460#issuecomment-1079432890
+python310_donttest+=" or test_exception_text"
+python310_donttest+=" or test_worker_bad_args"
+
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
-  # OverflowError
-  donttest+=" or (test_ensure_spilled_immediately)"
-  donttest+=" or (test_value_raises_during_spilling)"
+  # OverflowError -- https://github.com/dask/distributed/issues/5252
+  donttest+=" or test_ensure_spilled_immediately"
+  donttest+=" or test_value_raises_during_spilling"
+  donttest+=" or test_fail_to_pickle_target_1"
 fi
-%pytest_arch distributed/tests -r sfER -m "not avoid_ci" -k "not (${donttest:4})" --reruns 3 --reruns-delay 3
+
+%if %{with paralleltests}
+# not fully supported parallel test suite: https://github.com/dask/distributed/issues/5186
+# works locally, but fails with too many tests server-side
+notparallel="rebalance or memory or upload"
+notparallel+=" or test_open_close_many_workers"
+notparallel+=" or test_recreate_error_array"
+notparallel+=" or (test_preload and test_web_preload_worker)"
+%pytest_arch distributed/tests -m "not avoid_ci" -n auto -k "not ($notparallel or $donttest ${$python_donttest})"
+%pytest_arch distributed/tests -m "not avoid_ci" -k "($notparallel) and (not ($donttest ${$python_donttest}))"
+%else
+%pytest_arch distributed/tests -m "not avoid_ci" -k "not ($donttest ${$python_donttest})" --reruns 3 --reruns-delay 3
+%endif
 %endif
 
 %if ! %{with test}
@@ -177,6 +206,7 @@ fi
 %python_alternative %{_bindir}/dask-worker
 %{python_sitearch}/distributed
 %{python_sitearch}/distributed-%{version}*-info
+
 %endif
 
 %changelog
