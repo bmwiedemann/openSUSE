@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Mar 30 14:22:36 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220330.1114fbdd:
+  * Add new aggregation periods to Grafana dashboard
+
+-------------------------------------------------------------------
+Wed Mar 30 09:29:04 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220330.68fa08aa:
+  * Remove obsolete Leap 15.2 announcer config
+  * Remove obsolete Leap 15.2 scheduling
+
+-------------------------------------------------------------------
+Wed Mar 30 09:16:56 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220330.a2fa6583:
+  * dist: no longer package check_source_in_factory
+  * Fix adi projects having no archs
+
+-------------------------------------------------------------------
+Wed Mar 30 07:57:37 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220330.adef152c:
+  * Merge check_source_in_factory into check_tags_in_requests.py
+
+-------------------------------------------------------------------
 Wed Mar 30 07:09:37 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220330.39d635d6:
