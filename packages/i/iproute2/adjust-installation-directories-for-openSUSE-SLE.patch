@@ -61,6 +61,6 @@ Match the directory layout of openSUSE and SLE.
  
 -	snprintf(name, sizeof(name), "%s/%s.dist", get_tc_lib(), type);
 +	snprintf(name, sizeof(name), "%s/%s.dist", PKGDATADIR, type);
- 	if ((f = fopen(name, "r")) == NULL) {
+ 	f = fopen(name, "r");
+ 	if (f == NULL) {
  		fprintf(stderr, "No distribution data for %s (%s: %s)\n",
- 			type, name, strerror(errno));
