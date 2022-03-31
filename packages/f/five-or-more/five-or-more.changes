@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 31 11:46:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.32.3:
+  + Fixed email of one of the authors.
+  + Fixed minor meson warning.
+  + Updated translations.
+- Drop upstream merged patches: fix-build-vala-055.patch and
+  fix-ref-gtk-child-unowned.patch.
+
+-------------------------------------------------------------------
 Sat Feb 19 19:21:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-build-vala-055.patch: Backport: Fix build with vala

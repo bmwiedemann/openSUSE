@@ -17,17 +17,13 @@
 
 
 Name:           five-or-more
-Version:        3.32.2
+Version:        3.32.3
 Release:        0
 Summary:        "Five or More" Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Five_or_more
 Source0:        https://download.gnome.org/sources/five-or-more/3.32/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-build-vala-055.patch -- Backport: Fix build with vala 0.55.x
-Patch0:         fix-build-vala-055.patch
-# PATCH-FIX-UPSTREAM fix-ref-gtk-child-unowned.patch bjorn.lie@gmail.com -- Reference of [GtkChild] fields is handled by GtkBuilder, type must be unowned
-Patch1:         fix-ref-gtk-child-unowned.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
