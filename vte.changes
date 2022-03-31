@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 27 23:26:09 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.68.0:
+  + spawn: Fix build without CLOSE_RANGE_CLOEXEC
+  + Revert "emulation: Support XTVERSION sequence"
+
+-------------------------------------------------------------------
 Sat Feb 12 18:46:34 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.67.90:

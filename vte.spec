@@ -25,7 +25,7 @@
 %bcond_with     gtk4_support
 
 Name:           vte
-Version:        0.67.90
+Version:        0.68.0
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
