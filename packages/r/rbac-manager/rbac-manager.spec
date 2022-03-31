@@ -1,7 +1,7 @@
 #
 # spec file for package rbac-manager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           rbac-manager
-Version:        0.10.0
+Version:        1.1.0
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0
@@ -27,13 +27,15 @@ URL:            https://github.com/FairwindsOps/rbac-manager
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.17
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 %{go_nostrip}
 
 %description
-RBAC Manager was designed to simplify authorization in Kubernetes. This is an operator that supports declarative configuration for RBAC with new custom resources. Instead of managing role bindings or service accounts directly, you can specify a desired state and RBAC Manager will make the necessary changes to achieve that state.
+RBAC Manager is designed to simplify authorization in Kubernetes.
+This is an operator that supports declarative configuration for RBAC with new custom resources.
+Instead of managing role bindings or service accounts directly, you can specify a desired state and RBAC Manager will make the necessary changes to achieve that state.
 
 %package k8s-yaml
 Summary:        Kubernetes yaml file to run rbac-manager
@@ -49,6 +51,9 @@ rbac-manager in a kubernetes cluster.
 
 %build
 go build -mod vendor -buildmode=pie -a -o rbac-manager ./cmd/manager/main.go
+
+%check
+make test
 
 %install
 mkdir -p %{buildroot}%{_sbindir}/
