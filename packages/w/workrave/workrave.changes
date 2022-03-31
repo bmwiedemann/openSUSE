@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 31 08:27:29 UTC 2022 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Add patches for GNOME 42 from upstream (boo#1197808):
+ - gnome42.patch
+ - gnome42-vertical-alignment.patch
+ - gnome42-fixapplet.patch
+
+-------------------------------------------------------------------
 Wed Jan  5 20:34:12 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 1.10.49

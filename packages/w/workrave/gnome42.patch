@@ -1,0 +1,23 @@
+From 64dc9c66aac24e7a4d14e31c290169b92f7031f3 Mon Sep 17 00:00:00 2001
+From: Rob Caelers <rob.caelers@gmail.com>
+Date: Sun, 23 Jan 2022 20:44:42 +0100
+Subject: [PATCH] Support GNOME Shell 42
+
+# Conflicts:
+#	frontend/applets/gnome-shell/src/metadata.json.in
+---
+ frontend/applets/gnome-shell/src/metadata.json.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/frontend/applets/gnome-shell/src/metadata.json.in b/frontend/applets/gnome-shell/src/metadata.json.in
+index 7c8c8241e..7070a1987 100644
+--- a/frontend/applets/gnome-shell/src/metadata.json.in
++++ b/frontend/applets/gnome-shell/src/metadata.json.in
+@@ -25,6 +25,7 @@
+                        "3.32",
+                        "40",
+                        "41",
++                       "42",
+                        "@shell_current@" ],
+  "localedir": "@LOCALEDIR@",
+  "url": "@url@"
