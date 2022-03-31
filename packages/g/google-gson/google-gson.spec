@@ -17,13 +17,12 @@
 
 
 Name:           google-gson
-Version:        2.8.8
+Version:        2.8.9
 Release:        0
 Summary:        Java lib for conversion of Java objects into JSON representation
 License:        Apache-2.0
 URL:            https://github.com/google/gson
 Source0:        https://github.com/google/gson/archive/gson-parent-%{version}.tar.gz
-Patch0:         sun-misc.patch
 Patch1:         osgi-export-internal.patch
 Patch2:         allow-build-with-java8.patch
 # Remove dependency on unavailable templating-maven-plugin
@@ -31,6 +30,7 @@ Patch3:         no-template-plugin.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+BuildRequires:  mvn(javax.annotation:jsr250-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
 
@@ -48,7 +48,6 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n gson-gson-parent-%{version}
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
