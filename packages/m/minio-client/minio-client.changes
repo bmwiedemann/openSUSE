@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Thu Mar 31 07:19:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220331T045530Z:
+  * Fix mc rm --non-current to use --older-than filter if specified (#4030)
+  * Fix message in `admin subnet health` (#4019)
+  * Typo: Fix error messages on service account operations (#4026)
+  * admin trace: convert trace type to string in json fmt (#4029)
+
+-------------------------------------------------------------------
+Fri Mar 18 10:30:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220317T202506Z:
+  * use globalRootCAs always do not initialize new certPools
+  * Fix alias add when --insecure is passed in a non tty (#4025)
+  * replicate add should enable all replication types by default (#4021)
+  * alias: fetch peer certificate when adding an alias (#4010)
+
+-------------------------------------------------------------------
+Mon Mar 14 08:22:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220313T223400Z:
+  * mv: Fix regression when checking lock in target bucket (#4015)
+  * svcacct: Show successful message after deletion (#4016)
+
+-------------------------------------------------------------------
+Wed Mar  9 12:58:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- change executable name to minio-client; remove Conflicts to mc
+
+-------------------------------------------------------------------
+Wed Mar 09 12:44:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220309T020836Z:
+  * Allow remote target endpoint to point to different host (#4012)
+  * Implement "mc support perf net" for network throughput test (#3998)
+
+-------------------------------------------------------------------
+Fri Mar 04 08:54:09 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220303T211224Z:
+  * update some wording and docs under tier commands (#4007)
+  * Remove --schedule flag from `support diag` command (#4003)
+  * more validation for retention commands (#4004)
+  * Add support for tier-rm/tier-verify (#3996)
+  * Fix arm FreeBSD build (#4006)
+  * Quote special characters in share curl command (#4000)
+  * watch: Clean up watch when restarting mirror after an error (#3993)
+
+-------------------------------------------------------------------
+Sat Feb 26 09:58:39 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220226T035831Z:
+  * remove trimming of top level path
+  * Add cpuio profile type (#3988)
+  * Updated help text to clarify alias (#4001)
+  * mirror: Proper cleanup after exit (#3994)
+  * update wording of svacct command line
+  * update CREDITs file for new deps
+  * update go mod tidy -compat=1.17
+  * tier-info: Add bar charts for 24hr dailys tier-stats (#3928)
+
+-------------------------------------------------------------------
+Wed Feb 23 08:59:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220223T031559Z:
+  * update minio-go/v7 to v7.0.23
+  * fix: rename 'perf drives' to 'perf drive' (#3991)
+  * Add `mc support callhome get` command (#3986)
+  * Refactor profiling and add goroutines (#3992)
+  * fix: rm should reject --non-current with --recursive (#3987)
+  * Remove cli flag `subnet-proxy` (#3989)
+  * update minio-go to v7.0.22
+  * fix: admin info output for multiple pools (#3985)
+
+-------------------------------------------------------------------
+Mon Feb 21 12:42:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package minio-client (executable name: mc): MinIO Client is a replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage

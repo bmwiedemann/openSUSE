@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ac470e5ec67ad53b8973a25702d58ab</srcmd5>
+    <version>20220331T045530Z</version>
+    <time>1648739920</time>
+    <user>dimstar_suse</user>
+    <comment>new package minio-client (with executable using the same name, unlike upstream)</comment>
+    <requestid>966141</requestid>
+  </revision>
+</revisionlist>

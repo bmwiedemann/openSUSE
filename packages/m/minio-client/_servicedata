@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/minio/mc</param>
+              <param name="changesrevision">8eae2e3bbfafe952ecb33904c0d9073871a32169</param></service></servicedata>
