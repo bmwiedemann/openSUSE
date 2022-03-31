@@ -1,7 +1,7 @@
 #
 # spec file for package rbac-lookup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           rbac-lookup
-Version:        0.7.1
+Version:        0.8.3
 Release:        0
 Summary:        Tool to find roles and cluster roles in a Kubernetes cluster
 License:        Apache-2.0
@@ -33,14 +33,17 @@ ExcludeArch:    %{ix86}
 %{go_nostrip}
 
 %description
-This tool allows finding Kubernetes roles and cluster roles bound to
-any user, service account, or group name.
+RBAC Lookup is a CLI that allows you to easily find Kubernetes roles and cluster roles bound to any user, service account, or group name.
+Binaries are generated with goreleaser for each release for simple installation.
 
 %prep
 %setup -qa1
 
 %build
 go build -mod vendor -buildmode=pie -a -o rbac-lookup ./main.go
+
+%check
+make test
 
 %install
 mkdir -p %{buildroot}%{_sbindir}/

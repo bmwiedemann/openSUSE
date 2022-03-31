@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 25 16:09:40 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 0.8.3:
+  * Get signing secret from vault and sign checksums
+  * Update documentation
+  * Update e2e test versions of k8s
+
+-------------------------------------------------------------------
 Fri Oct 08 14:19:52 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 0.7.1:
