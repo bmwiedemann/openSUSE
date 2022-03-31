@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 24 13:10:53 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.1.0
+  * Add ``multistatement=True`` option. You can disable multi statement. (#500).
+  * Remove unnecessary bytes encoder which is remained for Django 1.11
+    compatibility (#490).
+  * Deprecate ``passwd`` and ``db`` keyword. Use ``password`` and ``database``
+    instead. (#488).
+  * Windows: Binary wheels are built with MariaDB Connector/C 3.2.4. (#508)
+  * ``set_character_set()`` sends ``SET NAMES`` query always. This means
+    all new connections send it too. This solves compatibility issues
+    when server and client library are different version. (#509)
+  * Remove ``escape()`` and ``escape_string()`` from ``MySQLdb`` package.
+    (#511)
+  * Add Python 3.10 support and drop Python 3.5 support.
+- deleted patches
+  - liberally-accept-charsets.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Sep 10 07:48:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add liberally-accept-charsets.patch:

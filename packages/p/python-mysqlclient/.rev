@@ -162,4 +162,12 @@
   * Support multibyte utf8 return values with new versions of MariaDB.</comment>
     <requestid>917898</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>24e2c73861750c1bd96246ecc2ed7a74</srcmd5>
+    <version>2.1.0</version>
+    <time>1648739893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965319</requestid>
+  </revision>
 </revisionlist>

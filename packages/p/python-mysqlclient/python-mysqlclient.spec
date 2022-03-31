@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,12 @@
 %bcond_with test
 %endif
 Name:           python-mysqlclient%{psuffix}
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        Python interface to MySQL
 License:        GPL-2.0-or-later
 URL:            https://github.com/PyMySQL/mysqlclient-python
 Source:         https://files.pythonhosted.org/packages/source/m/mysqlclient/mysqlclient-%{version}.tar.gz
-Patch0:         liberally-accept-charsets.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,7 +49,6 @@ Obsoletes:      python-mysql < %{version}
 Provides:       python-MySQL-python = %{version}
 Obsoletes:      python-MySQL-python < %{version}
 %if %{with test}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module mysqlclient >= %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  mariadb-rpm-macros
