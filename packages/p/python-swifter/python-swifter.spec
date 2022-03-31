@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-# no dask for python310 yet
-%define         skip_python310 1
 Name:           python-swifter
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Tool to speed up pandas calculations
 License:        MIT
@@ -59,6 +57,8 @@ pandas dataframe or series in the fastest available manner
 
 %prep
 %setup -q -n swifter-%{version}
+# https://github.com/jmcarpenter2/swifter/commit/bc754088feb97f883794585a7eeb8cb5914e1d4b
+sed -i 's/{VERSION}/%{version}/' setup.py
 
 %build
 %python_build
