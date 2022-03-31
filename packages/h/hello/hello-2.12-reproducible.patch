@@ -1,0 +1,38 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Mon, 28 Mar 2022 23:57:16 +0200
+Subject: make hello build reproducible build with PGO
+References: boo#1197575
+Upstream: no
+
+Simply removes the date based skipping.
+
+Index: hello-2.12/tests/greeting-2
+===================================================================
+--- hello-2.12.orig/tests/greeting-2
++++ hello-2.12/tests/greeting-2
+@@ -15,25 +15,6 @@ cat <<EOF > greeting-test2.ok
+ Wuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuhhh!
+ EOF
+ 
+-# Werewolves cry at full moon only.
+-set x `TZ=GMT date +"%Y %j %H %M %S"`; shift
+-year=$1; day=$2; hours=$3; minutes=$4; seconds=$5
+-years_since_2000=`expr $year - 2000`
+-days_since_2000=`expr '(' $years_since_2000 '*' 365 ')' + '(' '(' $years_since_2000 - 1 ')' / 4 ')' + $day`
+-seconds_since_2000=`expr '(' '(' '(' '(' '(' $days_since_2000 '*' 24 ')' + $hours ')' '*' 60 ')' + $minutes ')' '*' 60 ')' + $seconds`
+-# A moon period is ca. 2551442.8 seconds.
+-remainder=`expr $seconds_since_2000 % 2551443`
+-# Full moon is around remainder = 1760000, oscillating between ca. 1720000
+-# and ca. 1805000. Allow a tolerance of +/- 24 h.
+-if test `expr $remainder '>' 1650000` = 0 || test `expr $remainder '<' 1890000` = 0; then
+-  { echo "$0: Skipping test: not a full moon night"; rm -fr $tmpfiles; exit 77; }
+-fi
+-
+-# The exit 77 is the magic value which tells Automake's `make check'
+-# that this test was skipped.  It's also good to give a
+-# human-understandable reason why the test was skipped, so the person
+-# running the test can know.
+-
+ tmpfiles="$tmpfiles greeting-test2.out"
+ : ${HELLO=hello}
+ ${HELLO} -g 'Wuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuhhh!' \

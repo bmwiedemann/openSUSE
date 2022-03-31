@@ -1,7 +1,7 @@
 #
 # spec file for package hello
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,21 @@
 #
 
 
-Name:           hello
 # How to define macros
 %define hello echo "hello world"
-Provides:       mailreader
+Name:           hello
+Version:        2.12
+Release:        0
 Summary:        A Friendly Greeting Program
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
-Version:        2.10
-Release:        0
-Url:            http://www.gnu.org/software/hello
-Source0:        ftp://ftp.gnu.org/pub/gnu/hello/hello-%{version}.tar.gz
-Source1:        ftp://ftp.gnu.org/pub/gnu/hello/hello-%{version}.tar.gz.sig
-# https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=hello&download=1
-Source2:        %{name}.keyring
-Patch0:         hello-1.3.dif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://www.gnu.org/software/hello
+Source0:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz.sig
+Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Patch0:         hello-2.12-reproducible.patch
 BuildRequires:  makeinfo
+Provides:       mailreader
 
 %description
 The GNU hello program produces a familiar, friendly greeting.  It
@@ -47,37 +45,37 @@ GNU hello supports many native languages.
 %prep
 # Use defined macro
 %{hello}
-%setup -q
-%patch0
+%autosetup -p1
 # force rebuild with non-broken makeinfo
 rm -f doc/*.info
 
 %build
 export CFLAGS="%{optflags}"
 %configure
-%if %do_profiling
-  make CFLAGS="$CFLAGS %cflags_profile_generate" LDFLAGS="-fprofile-arcs"
-  make check
-  make clean
-  make CFLAGS="$CFLAGS %cflags_profile_feedback" LDFLAGS="-fprofile-arcs"
+%if %{do_profiling}
+  %make_build CFLAGS="$CFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
+  %make_build check
+  %make_build clean
+  %make_build CFLAGS="$CFLAGS %{cflags_profile_feedback}" LDFLAGS="-fprofile-arcs"
 %else
-  make
+  %make_build
 %endif
-
-%check
-make check
 
 %install
 %make_install
 %find_lang %{name}
 
+%check
+%make_build check
+
 %files
-%defattr(-, root, root)
-%doc COPYING TODO NEWS README THANKS ABOUT-NLS
+%license COPYING
+%doc TODO NEWS README THANKS ABOUT-NLS
 %{_bindir}/*
-%{_infodir}/*.gz
-%{_mandir}/*/*
+%{_infodir}/hello.info%{?ext_info}
+%{_mandir}/man1/hello.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog
