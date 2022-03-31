@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 19 11:22:05 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 1.58.0
+  * See https://rclone.org/changelog/#v1-58-0-2022-03-18 for their
+    complete changelog.
+  * New backends: Akamai Netstorage, Seagate Lyve, SeaweedFS, Storj,
+    RackCorp, Storj (renamed from Tardigrade)
+  * New commands: bisync - experimental bidirectional cloud sync
+  * tree: Remove obsolete --human replaced by global --human-readable
+
+-------------------------------------------------------------------
 Sat Feb  5 23:28:04 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix warning about packageand() by replacing the package and with
