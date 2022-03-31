@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 27 19:01:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add ignore-pytest-deprecationwarning.patch
+  * gh#aio-libs/aiohttp#6663
+
+-------------------------------------------------------------------
 Sat Dec 11 19:18:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 3.8.1

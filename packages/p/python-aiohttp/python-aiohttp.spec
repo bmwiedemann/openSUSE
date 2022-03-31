@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE ignore-pytest-deprecationwarning.patch -- gh#aio-libs/aiohttp#6663
+Patch0:         ignore-pytest-deprecationwarning.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module aiosignal >= 1.1.2}
 BuildRequires:  %{python_module async_timeout >= 4.0}
@@ -74,7 +76,7 @@ BuildRequires:  %{python_module trustme}
 # /SECTION
 # SECTION docs
 %if %{with docs}
-BuildRequires:  %{python_module MarkupSafe}
+BuildRequires:  python3-MarkupSafe
 BuildRequires:  python3-Pygments >= 2.1
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-aiohttp-theme
@@ -124,15 +126,14 @@ rm -r %{buildroot}%{$python_sitearch}/aiohttp/.hash
 
 %check
 donttest="test_aiohttp_request_coroutine or test_mark_formdata_as_processed or test_aiohttp_plugin_async"
-python36_donttest=" or test_read_boundary_with_incomplete_chunk"
 # no name resolution
 donttest+=" or test_client_session_timeout_zero or test_requote_redirect_url_default"
 # flaky
 donttest+=" or test_https_proxy_unsupported_tls_in_tls"
 %if 0%{?python3_version_nodots} == 36
-donttest+="$python36_donttest"
+donttest+=" or test_read_boundary_with_incomplete_chunk"
 %endif
-%pytest_arch --ignore ./aiohttp -rsEf -k "not ($donttest ${$python_donttest})"
+%pytest_arch --ignore ./aiohttp -rsEf -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.txt
