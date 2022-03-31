@@ -52,6 +52,7 @@ Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-disable-brotli.patch
 Patch7:         %{name}-bsc1196879-sev-fix.patch
+Patch8:         %{name}-ignore-spurious-GCC-12-warning.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -168,6 +169,7 @@ rm -rf $PKG_TO_REMOVE
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 26 05:57:17 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add GCC 12 workaround (ovmf-ignore-spurious-GCC-12-warning.patch)
+  that handles: https://bugzilla.tianocore.org/show_bug.cgi?id=3816
+  The same patch is already included in qemu package.
+
+-------------------------------------------------------------------
 Tue Mar 15 12:44:56 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - TPM_ENABLE got renamed to TPM2_ENABLE and TPM_CONFIG_ENABLE removed
