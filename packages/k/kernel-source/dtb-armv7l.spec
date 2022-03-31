@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.16
-%define patchversion 5.16.15
+%define srcversion 5.17
+%define patchversion 5.17.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -26,12 +26,12 @@
 %define dtc_symbols 1
 %endif
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build,fdupes_relink})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        5.16.15
+Version:        5.17.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd8f0e40
+Release:        <RELEASE>.g58205bc
 %else
 Release:        0
 %endif
@@ -100,7 +100,6 @@ Source82:       modflist
 Source83:       kernel-subpackage-build
 Source84:       kernel-subpackage-spec
 Source85:       kernel-default-base.spec.txt
-Source86:       fdupes_relink
 Source100:      config.tar.bz2
 Source101:      config.addon.tar.bz2
 Source102:      patches.arch.tar.bz2
@@ -520,9 +519,9 @@ cd linux-%srcversion
 %build
 source=linux-%srcversion
 cp $source/COPYING .
-SRCDIR=`pwd`/$source
+SRCDIR=$PWD/$source
 mkdir pp
-PPDIR=`pwd`/pp
+PPDIR=$PWD/pp
 export DTC_FLAGS="-R 4 -p 0x1000"
 %if 0%{?dtc_symbols}
 DTC_FLAGS="$DTC_FLAGS -@"

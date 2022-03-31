@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.16.15
+%define patchversion 5.17.1
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-d8f0e4059e0e053d843c5cb54700bdc033e4c284
+BuildRequires:  kernel%kernel_flavor-srchash-58205bc0990184a0cddf884ee828b9f8bc9290bb
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.16.15
+Version:        5.17.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd8f0e40
+Release:        <RELEASE>.g58205bc
 %else
 Release:        0
 %endif
@@ -157,7 +157,7 @@ dracut --reproducible --host-only --no-hostonly-cmdline \
 %if 0%{?suse_version} > 1550 || 0%{?sle_version} > 150200
 	--compress "zstd -19 -T0" \
 %endif
-	`echo /boot/%{kernel_name}-*%{kernel_flavor} | sed -n -e 's,[^-]*-\(.*'%{kernel_flavor}'\),\1,p'`
+	$(echo /boot/%{kernel_name}-*%{kernel_flavor} | sed -n -e 's,[^-]*-\(.*'%{kernel_flavor}'\),\1,p')
 %endif
 
 #cleanup

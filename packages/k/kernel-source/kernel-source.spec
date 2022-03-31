@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.16
-%define patchversion 5.16.15
+%define srcversion 5.17
+%define patchversion 5.17.1
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        5.16.15
+Version:        5.17.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd8f0e40
+Release:        <RELEASE>.g58205bc
 %else
 Release:        0
 %endif
@@ -42,12 +42,15 @@ License:        GPL-2.0-only
 Group:          Development/Sources
 URL:            https://www.kernel.org/
 AutoReqProv:    off
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+BuildRequires:  bash-sh
+%endif
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-d8f0e4059e0e053d843c5cb54700bdc033e4c284
+Provides:       %name-srchash-58205bc0990184a0cddf884ee828b9f8bc9290bb
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -102,7 +105,6 @@ Source82:       modflist
 Source83:       kernel-subpackage-build
 Source84:       kernel-subpackage-spec
 Source85:       kernel-default-base.spec.txt
-Source86:       fdupes_relink
 Source100:      config.tar.bz2
 Source101:      config.addon.tar.bz2
 Source102:      patches.arch.tar.bz2
@@ -133,7 +135,7 @@ Recommends:     kernel-install-tools
 %endif
 %obsolete_rebuilds %name
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build,fdupes_relink})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 # Force bzip2 instead of lzma compression to
 # 1) allow install on older dist versions, and
@@ -226,6 +228,8 @@ sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' linux-%kernelrelease%vari
 cd linux-%kernelrelease-vanilla
 %_sourcedir/apply-patches --vanilla %_sourcedir/series.conf %my_builddir %symbols
 rm -f $(find . -name ".gitignore")
+# Hardlink duplicate files automatically (from package fdupes).
+%fdupes $PWD
 cd ..
 %endif
 
@@ -237,11 +241,10 @@ rm -f $(find . -name ".gitignore")
 if [ -f %_sourcedir/localversion ] ; then
     cat %_sourcedir/localversion > localversion
 fi
+# Hardlink duplicate files automatically (from package fdupes).
+%fdupes $PWD
 cd ..
 %endif
-
-# Hardlink duplicate files.
-fdupes -q -p -n -H -o name -r %{buildroot} | %_sourcedir/fdupes_relink
 popd
 
 %if ! %vanilla_only

@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.16
-%define patchversion 5.16.15
+%define srcversion 5.17
+%define patchversion 5.17.1
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -44,7 +44,7 @@
 	%define klp_symbols 1
 %endif
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build,fdupes_relink})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 %global cpu_arch %(%_sourcedir/arch-symbols %_target_cpu)
 %define cpu_arch_flavor %cpu_arch/%build_flavor
@@ -107,13 +107,16 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.16.15
+Version:        5.17.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd8f0e40
+Release:        <RELEASE>.g58205bc
 %else
 Release:        0
 %endif
 URL:            https://www.kernel.org/
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+BuildRequires:  bash-sh
+%endif
 BuildRequires:  bc
 BuildRequires:  bison
 BuildRequires:  coreutils
@@ -231,10 +234,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-d8f0e4059e0e053d843c5cb54700bdc033e4c284
-Provides:       kernel-srchash-d8f0e4059e0e053d843c5cb54700bdc033e4c284
+Provides:       kernel-%build_flavor-base-srchash-58205bc0990184a0cddf884ee828b9f8bc9290bb
+Provides:       kernel-srchash-58205bc0990184a0cddf884ee828b9f8bc9290bb
 # END COMMON DEPS
-Provides:       %name-srchash-d8f0e4059e0e053d843c5cb54700bdc033e4c284
+Provides:       %name-srchash-58205bc0990184a0cddf884ee828b9f8bc9290bb
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -288,7 +291,6 @@ Source82:       modflist
 Source83:       kernel-subpackage-build
 Source84:       kernel-subpackage-spec
 Source85:       kernel-default-base.spec.txt
-Source86:       fdupes_relink
 Source100:      config.tar.bz2
 Source101:      config.addon.tar.bz2
 Source102:      patches.arch.tar.bz2
@@ -370,7 +372,6 @@ NoSource:       82
 NoSource:       83
 NoSource:       84
 NoSource:       85
-NoSource:       86
 NoSource:       100
 NoSource:       101
 NoSource:       102
@@ -919,7 +920,7 @@ if [ %CONFIG_MODULES = y ]; then
     # pointless to rely on its contents. Replacing by zeros to make the
     # checksums always the same for several builds of the same package.
     test -s %buildroot/lib/modules/%kernelrelease-%build_flavor/modules.dep && \
-    dd if=/dev/zero of=%buildroot/lib/modules/%kernelrelease-%build_flavor/modules.dep ibs=`stat -c%s %buildroot/lib/modules/%kernelrelease-%build_flavor/modules.dep` count=1
+    dd if=/dev/zero of=%buildroot/lib/modules/%kernelrelease-%build_flavor/modules.dep ibs=$(stat -c%s %buildroot/lib/modules/%kernelrelease-%build_flavor/modules.dep) count=1
 
     res=0
     if test -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor; then
@@ -1193,14 +1194,14 @@ fi
 %endif
 %preun
 %if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-preun --name "%name" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-preun --name "%name" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 %endif
 %postun
 %if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-postun --name "%name" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-postun --name "%name" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1259,13 +1260,13 @@ This package contains additional modules not supported by SUSE.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %preun extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-extra" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-extra" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %postun extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-extra" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-extra" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1325,13 +1326,13 @@ This package contains optional modules only for openSUSE Leap.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %preun optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-optional" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-optional" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %postun optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-optional" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-optional" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1492,13 +1493,13 @@ nodes in the cluster can access the MD devices simultaneously.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %preun -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "cluster-md-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "cluster-md-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %postun -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "cluster-md-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "cluster-md-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1539,13 +1540,13 @@ shared resources over the cluster.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %preun -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "dlm-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "dlm-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %postun -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "dlm-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "dlm-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1586,13 +1587,13 @@ GFS2 is Global Filesystem, a shared device filesystem.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %preun -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "gfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "gfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %postun -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "gfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "gfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1648,13 +1649,13 @@ environments, they are not intended to be run on production systems.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %preun -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "kselftests-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "kselftests-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %postun -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "kselftests-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "kselftests-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1696,13 +1697,13 @@ accessible simultaneously from multiple nodes of a cluster.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %preun -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "ocfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "ocfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %postun -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "ocfs2-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "ocfs2-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
@@ -1743,13 +1744,13 @@ provides the reiserfs module for the installation system.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %preun -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "reiserfs-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "reiserfs-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %postun -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "reiserfs-kmp-%build_flavor" \
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "reiserfs-kmp-%build_flavor" \
   --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
   --image "%image" --flavor "%build_flavor" --variant "%variant" \
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"

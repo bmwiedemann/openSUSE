@@ -1,4 +1,252 @@
 -------------------------------------------------------------------
+Thu Mar 31 07:28:17 CEST 2022 - jslaby@suse.cz
+
+- Revert "config: Enable BPF LSM" (bsc#1197746)
+  This reverts commit c2c25b18721866d6211054f542987036ed6e0a50.
+- commit 58205bc
+
+-------------------------------------------------------------------
+Mon Mar 28 11:35:43 CEST 2022 - tiwai@suse.de
+
+- Revert "swiotlb: rework "fix info leak with DMA_FROM_DEVICE""
+  (bsc#1197460).
+- commit ffd9dce
+
+-------------------------------------------------------------------
+Mon Mar 28 11:00:29 CEST 2022 - jslaby@suse.cz
+
+- block: restore the old set_task_ioprio() behaviour wrt
+  PF_EXITING (bsc#1197582).
+- commit c349fed
+
+-------------------------------------------------------------------
+Mon Mar 28 10:22:52 CEST 2022 - jslaby@suse.cz
+
+- Linux 5.17.1 (bsc#1012628).
+- llc: only change llc->dev when bind() succeeds (bsc#1012628).
+- drm/msm/gpu: Fix crash on devices without devfreq support (v2)
+  (bsc#1012628).
+- nds32: fix access_ok() checks in get/put_user (bsc#1012628).
+- m68k: fix access_ok for coldfire (bsc#1012628).
+- wcn36xx: Differentiate wcn3660 from wcn3620 (bsc#1012628).
+- tpm: use try_get_ops() in tpm-space.c (bsc#1012628).
+- tpm: fix reference counting for struct tpm_chip (bsc#1012628).
+- mac80211: fix potential double free on mesh join (bsc#1012628).
+- uaccess: fix integer overflow on access_ok() (bsc#1012628).
+- rcu: Don't deboost before reporting expedited quiescent state
+  (bsc#1012628).
+- jbd2: fix use-after-free of transaction_t race (bsc#1012628).
+- drm/virtio: Ensure that objs is not NULL in
+  virtio_gpu_array_put_free() (bsc#1012628).
+- Revert "ath: add support for special 0x0 regulatory domain"
+  (bsc#1012628).
+- Bluetooth: btusb: Use quirk to skip HCI_FLT_CLEAR_ALL on fake
+  CSR controllers (bsc#1012628).
+- Bluetooth: hci_sync: Add a new quirk to skip HCI_FLT_CLEAR_ALL
+  (bsc#1012628).
+- Bluetooth: btusb: Add one more Bluetooth part for the Realtek
+  RTL8852AE (bsc#1012628).
+- crypto: qat - disable registration of algorithms (bsc#1012628).
+- ACPI: video: Force backlight native for Clevo NL5xRU and NL5xNU
+  (bsc#1012628).
+- ACPI: battery: Add device HID and quirk for Microsoft Surface
+  Go 3 (bsc#1012628).
+- ACPI / x86: Work around broken XSDT on Advantech DAC-BJ01 board
+  (bsc#1012628).
+- netfilter: nf_tables: validate registers coming from userspace
+  (bsc#1012628).
+- netfilter: nf_tables: initialize registers in nft_do_chain()
+  (bsc#1012628).
+- drivers: net: xgene: Fix regression in CRC stripping
+  (bsc#1012628).
+- ALSA: pci: fix reading of swapped values from pcmreg in AC97
+  codec (bsc#1012628).
+- ALSA: cmipci: Restore aux vol on suspend/resume (bsc#1012628).
+- ALSA: usb-audio: Add mute TLV for playback volumes on RODE
+  NT-USB (bsc#1012628).
+- ALSA: pcm: Add stream lock during PCM reset ioctl operations
+  (bsc#1012628).
+- ALSA: pcm: Fix races among concurrent prealloc proc writes
+  (bsc#1012628).
+- ALSA: pcm: Fix races among concurrent prepare and
+  hw_params/hw_free calls (bsc#1012628).
+- ALSA: pcm: Fix races among concurrent read/write and buffer
+  changes (bsc#1012628).
+- ALSA: pcm: Fix races among concurrent hw_params and hw_free
+  calls (bsc#1012628).
+- ALSA: hda/realtek: Add quirk for ASUS GA402 (bsc#1012628).
+- ALSA: hda/realtek - Fix headset mic problem for a HP machine
+  with alc671 (bsc#1012628).
+- ALSA: hda/realtek: Add quirk for Clevo NP50PNJ (bsc#1012628).
+- ALSA: hda/realtek: Add quirk for Clevo NP70PNJ (bsc#1012628).
+- ALSA: usb-audio: add mapping for new Corsair Virtuoso SE
+  (bsc#1012628).
+- ALSA: oss: Fix PCM OSS buffer allocation overflow (bsc#1012628).
+- ASoC: sti: Fix deadlock via snd_pcm_stop_xrun() call
+  (bsc#1012628).
+- llc: fix netdevice reference leaks in llc_ui_bind()
+  (bsc#1012628).
+- Bluetooth: btusb: Add another Realtek 8761BU (bsc#1012628).
+- tpm: Fix error handling in async work (bsc#1012628).
+- commit e830013
+
+-------------------------------------------------------------------
+Fri Mar 25 10:23:19 CET 2022 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- update mainline references and move into sorted section:
+  - patches.suse/Bluetooth-btusb-Add-missing-Chicony-device-for-Realt.patch
+  - patches.suse/bpf-add-config-to-allow-loading-modules-with-BTF-mis.patch
+- commit 62d2682
+
+-------------------------------------------------------------------
+Fri Mar 25 10:14:04 CET 2022 - tiwai@suse.de
+
+- Revert "Input: clear BTN_RIGHT/MIDDLE on buttonpads"
+  (bsc#1197243).
+- commit 7257225
+
+-------------------------------------------------------------------
+Fri Mar 25 10:11:56 CET 2022 - tiwai@suse.de
+
+- Drop HID multitouch fix patch (bsc#1197243)
+  Delete patches.suse/HID-multitouch-fix-Dell-Precision-7550-and-7750-butt.patch.
+  Replaced with another revert patch.
+- commit 01821ca
+
+-------------------------------------------------------------------
+Mon Mar 21 17:53:26 CET 2022 - dmueller@suse.com
+
+- rpm/constraints.in: skip SLOW_DISK workers for kernel-source
+- commit e84694f
+
+-------------------------------------------------------------------
+Mon Mar 21 15:04:49 CET 2022 - msuchanek@suse.de
+
+- Revert "rpm/macros.kernel-source: avoid %if's and %define's"
+  This reverts commit d0cec50d019c853336e26f5ff5df5a4c9c3ea120.
+- commit b20736a
+
+-------------------------------------------------------------------
+Mon Mar 21 13:19:17 CET 2022 - msuchanek@suse.de
+
+- macros.kernel-source: Fix conditional expansion.
+  Fixes: bb95fef3cf19 ("rpm: Use bash for %() expansion (jsc#SLE-18234).")
+- commit 7e857f7
+
+-------------------------------------------------------------------
+Mon Mar 21 12:26:30 CET 2022 - jslaby@suse.cz
+
+- rpm/macros.kernel-source: avoid %if's and %define's
+  It's not supported in rpm macros scripts. So for now, resolve
+  %kernel_build_shell_package to bash-sh in stable branch unconditionally.
+  When this is fixed in the packaging branch, revert this.
+- commit d0cec50
+
+-------------------------------------------------------------------
+Mon Mar 21 08:47:36 CET 2022 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/Bluetooth-btusb-Add-missing-Chicony-device-for-Realt.patch.
+  Update upstream status.
+- commit 36a1351
+
+-------------------------------------------------------------------
+Sun Mar 20 22:25:20 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17 final
+- refresh configs (headers only)
+- commit be2cbd1
+
+-------------------------------------------------------------------
+Sat Mar 19 18:07:17 CET 2022 - msuchanek@suse.de
+
+- rpm: Use bash for %() expansion (jsc#SLE-18234).
+  Since 15.4 alternatives for /bin/sh are provided by packages
+  <something>-sh. While the interpreter for the build script can be
+  selected the interpreter for %() cannot.
+  The kernel spec files use bashisms in %().
+  While this could technically be fixed there is more serious underlying
+  problem: neither bash nor any of the alternatives are 100% POSIX
+  compliant nor bug-free.
+  It is not my intent to maintain bug compatibility with any number of
+  shells for shell scripts embedded in the kernel spec file. The spec file
+  syntax is not documented so embedding the shell script in it causes some
+  unspecified transformation to be applied to it. That means that
+  ultimately any changes must be tested by building the kernel, n times if
+  n shells are supported.
+  To reduce maintenance effort require that bash is used for kernel build
+  always.
+- commit bb95fef
+
+-------------------------------------------------------------------
+Sat Mar 19 15:19:05 CET 2022 - jslaby@suse.cz
+
+- Linux 5.16.16 (bsc#1012628).
+- ice: Fix race condition during interface enslave (bsc#1012628).
+- kselftest/vm: fix tests build with old libc (bsc#1012628).
+- bnx2: Fix an error message (bsc#1012628).
+- sfc: extend the locking on mcdi->seqno (bsc#1012628).
+- tcp: make tcp_read_sock() more robust (bsc#1012628).
+- nl80211: Update bss channel on channel switch for P2P_CLIENT
+  (bsc#1012628).
+- drm/vrr: Set VRR capable prop only if it is attached to
+  connector (bsc#1012628).
+- iwlwifi: don't advertise TWT support (bsc#1012628).
+- Input: goodix - workaround Cherry Trail devices with a bogus
+  ACPI Interrupt() resource (bsc#1012628).
+- Input: goodix - use the new soc_intel_is_byt() helper
+  (bsc#1012628).
+- netfilter: egress: silence egress hook lockdep splats
+  (bsc#1012628).
+- atm: firestream: check the return value of ioremap() in
+  fs_init() (bsc#1012628).
+- can: rcar_canfd: rcar_canfd_channel_probe(): register the CAN
+  device when fully ready (bsc#1012628).
+- Bluetooth: hci_core: Fix leaking sent_cmd skb (bsc#1012628).
+- ARM: 9178/1: fix unmet dependency on BITREVERSE for
+  HAVE_ARCH_BITREVERSE (bsc#1012628).
+- MIPS: smp: fill in sibling and core maps earlier (bsc#1012628).
+- mac80211: refuse aggregations sessions before authorized
+  (bsc#1012628).
+- ARM: dts: rockchip: fix a typo on rk3288 crypto-controller
+  (bsc#1012628).
+- ARM: dts: rockchip: reorder rk322x hmdi clocks (bsc#1012628).
+- arm64: dts: agilex: use the compatible
+  "intel,socfpga-agilex-hsotg" (bsc#1012628).
+- arm64: dts: rockchip: reorder rk3399 hdmi clocks (bsc#1012628).
+- arm64: dts: rockchip: align pl330 node name with dtschema
+  (bsc#1012628).
+- arm64: dts: rockchip: fix rk3399-puma eMMC HS400 signal
+  integrity (bsc#1012628).
+- xfrm: Fix xfrm migrate issues when address family changes
+  (bsc#1012628).
+- xfrm: Check if_id in xfrm_migrate (bsc#1012628).
+- arm64: dts: rockchip: fix rk3399-puma-haikou USB OTG mode
+  (bsc#1012628).
+- arm64: dts: rockchip: fix dma-controller node names on rk356x
+  (bsc#1012628).
+- Revert "xfrm: state and policy should fail if XFRMA_IF_ID 0"
+  (bsc#1012628).
+- commit d9656de
+
+-------------------------------------------------------------------
+Sat Mar 19 09:08:32 CET 2022 - tiwai@suse.de
+
+- HID: multitouch: fix Dell Precision 7550 and 7750 button type
+  (bsc#1197243).
+- commit 5500e44
+
+-------------------------------------------------------------------
+Fri Mar 18 04:15:38 CET 2022 - neilb@suse.de
+
+- Disable 5.16.10-026-NFSv4.1-query-for-fs_location-attr-on-a-new-f.patch (boo#1196521)
+  This patch causes a regression and probably should not have been
+  backported to stable anyway.  Disable it.
+  Links to upstream discussions in the bug.
+- commit 40a4b1d
+
+-------------------------------------------------------------------
 Wed Mar 16 19:45:27 CET 2022 - jslaby@suse.cz
 
 - Linux 5.16.15 (bsc#1012628).
@@ -212,11 +460,65 @@ Wed Mar 16 19:29:49 CET 2022 - ailiop@suse.com
 - commit d8f0e40
 
 -------------------------------------------------------------------
+Wed Mar 16 17:55:51 CET 2022 - msuchanek@suse.de
+
+- rpm: Run external scriptlets on uninstall only when available
+  (bsc#1196514 bsc#1196114 bsc#1196942).
+  When dependency cycles are encountered package dependencies may not be
+  fulfilled during zypper transaction at the time scriptlets are run.
+  This is a problem for kernel scriptlets provided by suse-module-tools
+  when migrating to a SLE release that provides these scriptlets only as
+  part of LTSS. The suse-module-tools that provides kernel scriptlets may
+  be removed early causing migration to fail.
+- commit ab8dd2d
+
+-------------------------------------------------------------------
+Wed Mar 16 13:56:15 CET 2022 - dmueller@suse.com
+
+- rpm/*.spec.in: remove backtick usage
+- commit 87ca1fb
+
+-------------------------------------------------------------------
+Wed Mar 16 11:10:48 CET 2022 - msuchanek@suse.de
+
+- rpm: SC2006: Use $(...) notation instead of legacy backticked `...`.
+- commit f0d0e90
+
+-------------------------------------------------------------------
 Tue Mar 15 17:02:41 CET 2022 - mkubecek@suse.cz
 
 - esp: Fix possible buffer overflow in ESP transformation
   (CVE-2022-0886 bsc#1197131).
 - commit f5ed8a3
+
+-------------------------------------------------------------------
+Tue Mar 15 09:32:45 CET 2022 - dmueller@suse.com
+
+- rpm/kernel-source.spec.in: call fdupes per subpackage
+  It is a waste of time to do a global fdupes when we have
+  subpackages.
+- commit 1da8439
+
+-------------------------------------------------------------------
+Mon Mar 14 22:49:56 CET 2022 - dmueller@suse.com
+
+- Revert "- rpm/fdupes_relink: dups linking implementation in perl (bsc#1195709)"
+  This has been fixed in fdupes directly, and is no longer necessary. Plus
+  this causes conflicts with packaging branch, where this should have
+  landed.
+  This reverts commit 359854d6ca73269851c604addecdd247d01dfbf0.
+- commit d0317f8
+
+-------------------------------------------------------------------
+Sun Mar 13 23:07:15 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17-rc8
+- update configs
+  - arm64
+    - MITIGATE_SPECTRE_BRANCH_HISTORY=y
+  - armv7hl
+    - HARDEN_BRANCH_HISTORY=y
+- commit 9555b2a
 
 -------------------------------------------------------------------
 Fri Mar 11 13:02:42 CET 2022 - jslaby@suse.cz
@@ -317,6 +619,12 @@ Fri Mar 11 13:02:42 CET 2022 - jslaby@suse.cz
 - commit 80acc65
 
 -------------------------------------------------------------------
+Thu Mar 10 10:57:16 CET 2022 - dmueller@suse.com
+
+- rpm/arch-symbols,guards,*driver: Replace Novell with SUSE.
+- commit 174a64f
+
+-------------------------------------------------------------------
 Thu Mar 10 08:31:37 CET 2022 - dmueller@suse.com
 
 - rpm/kernel-docs.spec.in: use %%license for license declarations
@@ -334,7 +642,7 @@ Wed Mar  9 12:12:51 CET 2022 - tiwai@suse.de
 
 - Bluetooth: btusb: Add missing Chicony device for Realtek
   RTL8723BE (bsc#1196779).
-- commit 714ef34
+- commit 47faa85
 
 -------------------------------------------------------------------
 Tue Mar  8 19:23:20 CET 2022 - jslaby@suse.cz
@@ -652,6 +960,21 @@ Mon Mar  7 14:50:57 CET 2022 - tiwai@suse.de
 - commit b002fe2
 
 -------------------------------------------------------------------
+Sun Mar  6 23:40:11 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17-rc7
+- commit 04b7727
+
+-------------------------------------------------------------------
+Fri Mar  4 09:58:51 CET 2022 - mkubecek@suse.cz
+
+- config: refresh
+  Since commit bb988d4625a3 ("kernel-binary: Do not include sourcedir in
+  certificate path."), MODULE_SIG_HASH config option is mandatory in diff
+  configs.
+- commit 191d88f
+
+-------------------------------------------------------------------
 Thu Mar  3 10:18:54 CET 2022 - pvorel@suse.cz
 
 - config: ppc64{,le}: build vmx-crypto as module (bsc#1195768)
@@ -961,6 +1284,21 @@ Wed Mar  2 13:08:07 CET 2022 - jslaby@suse.cz
 - mm/filemap: Fix handling of THPs in generic_file_buffered_read()
   (bsc#1012628).
 - commit 9b89dd3
+
+-------------------------------------------------------------------
+Sun Feb 27 23:55:03 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17-rc6
+- commit 3bbcd8f
+
+-------------------------------------------------------------------
+Sun Feb 27 21:50:19 CET 2022 - mkubecek@suse.cz
+
+- config: update vanilla configs
+  FB_BOOT_VESA_SUPPORT was replaced BOOT_VESA_SUPPORT by a patch but this
+  patch is not applied to vanilla flavor so that we have to keep the option
+  in */vanilla configs until the patch reaches mainline.
+- commit 22f5560
 
 -------------------------------------------------------------------
 Thu Feb 24 06:07:05 CET 2022 - jslaby@suse.cz
@@ -1376,13 +1714,28 @@ Wed Feb 23 10:26:15 CET 2022 - msuchanek@suse.de
 Mon Feb 21 09:38:40 CET 2022 - iivanov@suse.de
 
 - Revert: reset: raspberrypi: Don't reset USB if already up (bsc#1180336)
-- commit e7668e1
+- commit f3fe985
 
 -------------------------------------------------------------------
 Mon Feb 21 08:19:17 CET 2022 - jslaby@suse.cz
 
 - libsubcmd: Fix use-after-free for realloc(..., 0) (gcc 12).
 - commit 6e98c6d
+
+-------------------------------------------------------------------
+Sun Feb 20 23:32:57 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17-rc5
+- refresh configs
+- commit a9b2c1d
+
+-------------------------------------------------------------------
+Wed Feb 16 16:28:17 CET 2022 - tzimmermann@suse.de
+
+- Revert "config: x86-64: Enable DRM stack for early-boot graphics (boo#1193472)"
+  This reverts commit a6b1e6089c7fbcb3dc149eb1a005a32f0345fa13.
+  Going back to efifb/vesafb for now. See boo#1195885 and boo#1195887.
+- commit 230a3c7
 
 -------------------------------------------------------------------
 Wed Feb 16 16:24:46 CET 2022 - tzimmermann@suse.de
@@ -1770,6 +2123,15 @@ Wed Feb 16 10:56:42 CET 2022 - dmueller@suse.com
 - commit 4a5d464
 
 -------------------------------------------------------------------
+Tue Feb 15 22:49:32 CET 2022 - dmueller@suse.com
+
+- config.conf: reenable armv6hl/armv7hl and aarch64
+- Update config files:
+  Taken choices from x86_64/default for all new options
+  Otherwise =m where possible, =y otherwise unless DEBUG or EXPERIMENTAL
+- commit 2ab3225
+
+-------------------------------------------------------------------
 Mon Feb 14 16:22:20 CET 2022 - tiwai@suse.de
 
 - usb: gadget: clear related members when goto fail
@@ -1788,6 +2150,12 @@ Mon Feb 14 15:20:22 CET 2022 - tiwai@suse.de
 - commit 86181b2
 
 -------------------------------------------------------------------
+Sun Feb 13 21:55:06 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17-rc4
+- commit 660988d
+
+-------------------------------------------------------------------
 Fri Feb 11 19:39:08 CET 2022 - msuchanek@suse.de
 
 - kernel-binary: Do not include sourcedir in certificate path.
@@ -1800,6 +2168,12 @@ Fri Feb 11 19:39:08 CET 2022 - msuchanek@suse.de
   Also fabricate a certificate in the same location in build directory
   when none is provided.
 - commit bb988d4
+
+-------------------------------------------------------------------
+Fri Feb 11 18:32:23 CET 2022 - msuchanek@suse.de
+
+- BTF: Don't break ABI when debuginfo is disabled.
+- commit 9ff5fa4
 
 -------------------------------------------------------------------
 Fri Feb 11 15:18:50 CET 2022 - msuchanek@suse.de
@@ -2097,6 +2471,16 @@ Mon Feb  7 12:46:18 CET 2022 - tiwai@suse.de
 - commit 0503f69
 
 -------------------------------------------------------------------
+Sun Feb  6 21:56:24 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17-rc3
+- eliminate 1 patch
+  - patches.suse/cifs-fix-workstation_name-for-multiuser-mounts.patch
+- update configs
+  - FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION=n (y on i386)
+- commit 335402f
+
+-------------------------------------------------------------------
 Sun Feb  6 08:46:19 CET 2022 - jslaby@suse.cz
 
 - Linux 5.16.7 (bsc#1012628).
@@ -2194,7 +2578,7 @@ Sat Feb  5 09:12:16 CET 2022 - tiwai@suse.de
 
 - Refresh patches.suse/Input-elan_i2c-Add-deny-list-for-Lenovo-Yoga-Slim-7.patch
   Fix section mistmatch warning
-- commit 1f97ae0
+- commit 672f0d5
 
 -------------------------------------------------------------------
 Wed Feb  2 07:45:56 CET 2022 - jslaby@suse.cz
@@ -2544,14 +2928,14 @@ Wed Feb  2 06:30:38 CET 2022 - jslaby@suse.cz
 Tue Feb  1 15:23:26 CET 2022 - tiwai@suse.de
 
 - Input: synaptics: retry query upon error (bsc#1194086).
-- commit 5277fb2
+- commit cfcc1f5
 
 -------------------------------------------------------------------
 Tue Feb  1 14:42:29 CET 2022 - tiwai@suse.de
 
 - Input: elan_i2c: Add deny list for Lenovo Yoga Slim 7
   (bsc#1193064).
-- commit ea5f4b8
+- commit 26e60ad
 
 -------------------------------------------------------------------
 Mon Jan 31 15:20:36 CET 2022 - ludwig.nussel@suse.de
@@ -2570,6 +2954,17 @@ Mon Jan 31 09:54:23 CET 2022 - tzimmermann@suse.de
   DRM graphics stack for early-boot graphics, recovery and unsupported
   chipsets.
 - commit 8e500f5
+
+-------------------------------------------------------------------
+Sun Jan 30 21:04:57 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17-rc2
+- eliminate 3 patches
+  - patches.suse/s390-uaccess-fix-compile-error.patch
+  - patches.suse/tcp-Add-a-stub-for-sk_defer_free_flush.patch
+  - patches.suse/tcp-add-a-missing-sk_defer_free_flush-in-tcp_splice_.patch
+- refresh configs
+- commit e736c55
 
 -------------------------------------------------------------------
 Sat Jan 29 13:57:02 CET 2022 - jslaby@suse.cz
@@ -2594,6 +2989,27 @@ Sat Jan 29 09:39:04 CET 2022 - tiwai@suse.de
 - drm/vmwgfx: Fix stale file descriptors on failed usercopy
   (CVE-2022-22942 bsc#1195065).
 - commit c31491c
+
+-------------------------------------------------------------------
+Fri Jan 28 15:09:52 CET 2022 - mkubecek@suse.cz
+
+- tcp: add a missing sk_defer_free_flush() in tcp_splice_read()
+  (git-fixes).
+- commit f8aca60
+
+-------------------------------------------------------------------
+Fri Jan 28 15:08:56 CET 2022 - mkubecek@suse.cz
+
+- tcp: Add a stub for sk_defer_free_flush().
+  Fix another s390x/zfcpdump build failure.
+- commit 235f271
+
+-------------------------------------------------------------------
+Fri Jan 28 13:16:59 CET 2022 - mkubecek@suse.cz
+
+- s390/uaccess: fix compile error.
+  Fix s390x/zfcpdump build.
+- commit d01fea5
 
 -------------------------------------------------------------------
 Fri Jan 28 09:44:58 CET 2022 - jslaby@suse.cz
@@ -4328,6 +4744,14 @@ Fri Jan 28 09:44:58 CET 2022 - jslaby@suse.cz
 - commit c7377e3
 
 -------------------------------------------------------------------
+Fri Jan 28 01:01:10 CET 2022 - mkubecek@suse.cz
+
+- config: disable REGULATOR_MAX20086 on s390x
+  This driver seems to make little sense on s390x and it also fails to build
+  due to disabled CONFIG_GPIOLIB.
+- commit 5152409
+
+-------------------------------------------------------------------
 Thu Jan 27 17:44:27 CET 2022 - tiwai@suse.de
 
 - mac80211: allow non-standard VHT MCS-10/11 (bsc#1192891).
@@ -4338,7 +4762,7 @@ Thu Jan 27 17:43:38 CET 2022 - tiwai@suse.de
 
 - Delete patches.suse/Bluetooth-Apply-initial-command-workaround-for-more-.patch
   The upstream had already the fix
-- commit b65fedf
+- commit 59dcb9d
 
 -------------------------------------------------------------------
 Wed Jan 26 14:14:38 CET 2022 - tiwai@suse.de
@@ -4353,7 +4777,26 @@ Wed Jan 26 13:00:58 CET 2022 - tiwai@suse.de
 - Update config files: disable CONFIG_INTEL_IDXD_COMPAT (bsc#1194858)
   The compat support is rather unwanted, and this allows us to build
   idxd bus as module, too.
-- commit ccf8634
+- commit 527268a
+
+-------------------------------------------------------------------
+Tue Jan 25 20:08:42 CET 2022 - mrostecki@suse.de
+
+- config: Enable BPF LSM
+  This LSM might get more adoption both in core system projects and
+  container/k8s works and it would be good to be ready to support them.
+  BPF LSM is a feature available since kernel 5.7 which allows to write
+  BPF programs attached to LSM hooks and allowing/denying a particular
+  event.
+  BPF LSM is already adopted in a (not yet default) restrict-fs feature in
+  systemd[0].
+  BPF LSM is also used in the lockc[1] project which we develop at SUSE.
+  There should be no functional or performance changes for users who don't
+  load any BPF LSM programs. BPF LSM works only if some BPF programs is
+  explicitly loaded.
+  [0] https://github.com/systemd/systemd/blob/main/src/core/bpf/restrict_fs/restrict-fs.bpf.c
+  [1] https://github.com/rancher-sandbox/lockc
+- commit c2c25b1
 
 -------------------------------------------------------------------
 Tue Jan 25 12:10:49 CET 2022 - tiwai@suse.de
@@ -4382,6 +4825,134 @@ Mon Jan 24 11:55:17 CET 2022 - tiwai@suse.de
 
 - s390/mm: fix 2KB pgtable release race (bsc#1188896).
 - commit 6f62d73
+
+-------------------------------------------------------------------
+Sun Jan 23 23:54:31 CET 2022 - mkubecek@suse.cz
+
+- Update to 5.17-rc1
+- eliminated 73 patches (67 stable, 6 mainline)
+  - patches.kernel.org/*
+  - patches.suse/0001-usb-Add-Xen-pvUSB-protocol-description.patch
+  - patches.suse/0002-usb-Introduce-Xen-pvUSB-frontend-xen-hcd.patch
+  - patches.suse/ALSA-usb-audio-Add-minimal-mute-notion-in-dB-mapping.patch
+  - patches.suse/ALSA-usb-audio-Fix-dB-level-of-Bose-Revolve-SoundLin.patch
+  - patches.suse/ALSA-usb-audio-Use-int-for-dB-map-values.patch
+  - patches.suse/mwifiex-Fix-skb_over_panic-in-mwifiex_usb_recv.patch
+- refresh
+  - patches.rpmify/powerpc-64-BE-option-to-use-ELFv2-ABI-for-big-endian.patch
+  - patches.suse/iwlwifi-module-firmware-ucode-fix.patch
+  - patches.suse/vfs-add-super_operations-get_inode_dev
+  - patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+- disable ARM architectures (need config update)
+- new config options
+  - Power management and ACPI options
+    - ACPI_PFRUT=m
+    - ACPI_PCC=y
+    - X86_AMD_PSTATE=m
+  - Memory Management options
+    - ANON_VMA_NAME=y
+  - Networking support
+    - NET_9P_FD=m
+  - File systems
+    - CACHEFILES_ERROR_INJECTION=n
+    - UNICODE_UTF8_DATA=y
+  - Kernel hacking
+    - NET_DEV_REFCNT_TRACKER=n
+    - NET_NS_REFCNT_TRACKER=n
+    - PAGE_TABLE_CHECK=y
+    - PAGE_TABLE_CHECK_ENFORCED=n
+    - FTRACE_SORT_STARTUP_TEST=n
+    - TEST_REF_TRACKER=n
+    - TEST_SIPHASH=n
+  - Generic Driver Options
+    - DEVTMPFS_SAFE=n
+  - Network device support
+    - NET_VENDOR_ENGLEDER=y
+    - TSNEP=m
+    - TSNEP_SELFTESTS=n
+    - ICE_HWTS=y
+    - NET_VENDOR_VERTEXCOM=y
+    - MSE102X=m
+    - MCTP_SERIAL=m
+    - IWLMEI=m
+    - WWAN_DEBUGFS=n
+  - Hardware Monitoring support
+    - SENSORS_NZXT_SMART2=m
+    - SENSORS_DELTA_AHE50DC_FAN=m
+    - SENSORS_IR38064_REGULATOR=y
+    - SENSORS_MP5023=m
+    - SENSORS_INA238=m
+    - SENSORS_ASUS_WMI=m
+    - SENSORS_ASUS_WMI_EC=m
+  - Voltage and Current Regulator Support
+    - REGULATOR_MAX20086=m
+    - REGULATOR_TPS68470=m
+  - Graphics support
+    - TINYDRM_ILI9163=n
+  - Sound card support
+    - SND_HDA_SCODEC_CS35L41_I2C=m
+    - SND_HDA_SCODEC_CS35L41_SPI=m
+    - SND_SOC_INTEL_SOF_NAU8825_MACH=m
+    - SND_SOC_SOF_AMD_TOPLEVEL=m
+    - SND_SOC_SOF_AMD_RENOIR=m
+    - SND_SOC_AK4375=n
+    - SND_SOC_TLV320ADC3XXX=n
+  - X86 Platform Specific Device Drivers
+    - YOGABOOK_WMI=m
+    - ASUS_TF103C_DOCK=m
+    - INTEL_VSEC=m
+    - X86_ANDROID_TABLETS=m
+    - SIEMENS_SIMATIC_IPC=m
+    - SIEMENS_SIMATIC_IPC_WDT=m
+  - Common Clock Framework
+    - COMMON_CLK_TPS68470=n
+    - COMMON_CLK_LAN966X=n
+  - Industrial I/O support
+    - TI_ADS8344=n
+    - TI_ADS8688=n
+    - TI_ADS124S08=n
+    - AD74413R=n
+    - AD3552R=n
+    - AD7293=n
+    - MAX5821=n
+    - ADMV8818=n
+    - ADMV1013=n
+  - Misc drivers
+    - GNSS_USB=m
+    - SERIAL_8250_PERICOM=y
+    - GPIO_SIM=m
+    - CHARGER_MAX77976=m
+    - VIDEO_OV5693=m
+    - HID_LETSKETCH=m
+    - LEDS_SIEMENS_SIMATIC_IPC=m
+  - OF dependent (i386, ppc64/ppc64le, riscv64)
+    - DRM_RCAR_USE_LVDS=n
+    - DRM_RCAR_MIPI_DSI=n
+    - DRM_PANEL_BOE_BF060Y8M_AJ0=n
+    - DRM_PANEL_JDI_R63452=n
+    - DRM_PANEL_NOVATEK_NT35950=n
+    - DRM_PANEL_SONY_TULIP_TRULY_NT35521=n
+    - VIDEO_MAX96712=m
+    - PHY_FSL_IMX8M_PCIE=m
+  - x86_64
+    - SLS=y
+  - i386
+    - PHY_LAN966X_SERDES=m
+  - ppc64 / ppc64le
+    - KVM_BOOK3S_HV_NESTED_PMU_WORKAROUND=n
+    - SURFACE_PLATFORMS=n
+  - s390x
+    - SURFACE_PLATFORMS=n
+    - CRYPTO_CHACHA_S390=m
+  - riscv64
+    - SOC_STARFIVE=y
+    - RISCV_BOOT_SPINWAIT=y
+    - PINCTRL_STARFIVE=m
+    - SND_AMD_ACP_CONFIG=m
+    - CLK_STARFIVE_JH7100=y
+    - RESET_STARFIVE_JH7100=y
+    - PHY_LAN966X_SERDES=m
+- commit 8751a94
 
 -------------------------------------------------------------------
 Fri Jan 21 15:46:35 CET 2022 - tiwai@suse.de
