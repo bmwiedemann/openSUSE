@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-gtk
-Version:        1.12.0
+Version:        1.14.0
 Release:        0
 Summary:        Backend implementation for xdg-desktop-portal using GTK+
 License:        LGPL-2.1-or-later
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
-BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.5
+BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.14
 # Requires the xdg-desktop-portal service to be available
 Requires:       xdg-desktop-portal
 # Needed for use of gtk apps outside of gnome
