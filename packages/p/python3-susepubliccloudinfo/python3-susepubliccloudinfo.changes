@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 31 11:05:57 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 1.4.0
+  + Provide message when no regions or no images are found via cli and
+    XML output is requested
+
+-------------------------------------------------------------------
+Wed Mar 30 14:55:44 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 1.3.1
+  + Fix API breakage introduced with 1.3.0
+
+- From 1.3.0
+  + Update man page
+  + Provide message when no regions or no images are found via cli
+
+-------------------------------------------------------------------
 Fri Dec 17 17:58:29 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
 
 - Add rpm-macros to build requirements in spec.

@@ -1,7 +1,7 @@
 #
 # spec file for package python3-susepubliccloudinfo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define upstream_name susepubliccloudinfo
 Name:           python3-susepubliccloudinfo
-Version:        1.2.2
+Version:        1.4.0
 Release:        0
 Summary:        Query SUSE Public Cloud Info Service
 License:        GPL-3.0-or-later
