@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 27 19:45:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.15:
+  * Adjust rngtests for better behavior in travis
+  * fix use of non-posix setaffinity call to allow building on strict posix
+    (musl) systems
+  * Add armv6l to list of detected arches for pkcs11
+  * misc fixes to allow building on libc-musl
+  * fix a deadlock in jitter shutdown sequence
+  * minor warning fixups (unused variables)
+  * improve cpu detection code
+  * improve jitter cpu monopolization on small/single cpu systems 
+
+-------------------------------------------------------------------
 Mon Nov 15 16:03:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
