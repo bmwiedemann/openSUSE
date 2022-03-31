@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>963694</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d641befc37643c235dcdeffd52cd53c9</srcmd5>
+    <version>0.5.2</version>
+    <time>1648739918</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build on x86 to follow parsec package
+</comment>
+    <requestid>966124</requestid>
+  </revision>
 </revisionlist>

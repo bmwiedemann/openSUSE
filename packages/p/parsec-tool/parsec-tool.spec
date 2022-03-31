@@ -31,7 +31,7 @@ BuildRequires:  cargo
 BuildRequires:  protobuf-devel
 BuildRequires:  rust-packaging
 Requires:       parsec
-ExcludeArch:    armv6l armv6hl
+ExcludeArch:    %{ix86} armv6l armv6hl
 
 %description
 A tool to communicate with the Parsec service on the command-line.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 31 06:27:30 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build on x86 to follow parsec package
+
+-------------------------------------------------------------------
 Mon Mar 21 12:58:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0.5.2:
