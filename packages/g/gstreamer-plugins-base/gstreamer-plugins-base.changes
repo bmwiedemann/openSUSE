@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 26 17:25:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 5a074a11f90e3d70b24bf0c535ab0480fad9e701.patch: playsink:
+  Complete reconfiguration on pad release.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Fri Mar 18 07:30:44 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.20.1:

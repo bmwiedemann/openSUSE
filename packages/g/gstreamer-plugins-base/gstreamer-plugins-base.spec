@@ -30,10 +30,10 @@ Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
 
-# PATCH-FIX-OPENSUSE gstreamer-plugins-base-gl-deps.patch dimstar@opensuse.org -- Local workaround for https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/735
-#Patch3:         gstreamer-plugins-base-gl-deps.patch
 Patch4:         add_wayland_dep_to_tests.patch
 Patch5:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
+# PATCH-FIX-UPSTREAM 5a074a11f90e3d70b24bf0c535ab0480fad9e701.patch -- playsink: Complete reconfiguration on pad release
+Patch6:         https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/5a074a11f90e3d70b24bf0c535ab0480fad9e701.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
@@ -491,7 +491,10 @@ to compile and link applications that use gstreamer-plugins-base.
 %lang_package
 
 %prep
-%autosetup -n %{_name}-%{version} -p1
+%autosetup -n %{_name}-%{version} -N
+%patch4 -p1
+%patch5 -p1
+%patch6 -p3
 
 %build
 export PYTHON=%{_bindir}/python3
@@ -520,30 +523,18 @@ fi
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-%{gst_branch}
 
-%post -n libgstallocators-1_0-0 -p /sbin/ldconfig
-%postun -n libgstallocators-1_0-0 -p /sbin/ldconfig
-%post -n libgstapp-1_0-0 -p /sbin/ldconfig
-%postun -n libgstapp-1_0-0 -p /sbin/ldconfig
-%post -n libgstaudio-1_0-0 -p /sbin/ldconfig
-%postun -n libgstaudio-1_0-0 -p /sbin/ldconfig
-%post -n libgstfft-1_0-0 -p /sbin/ldconfig
-%postun -n libgstfft-1_0-0 -p /sbin/ldconfig
-%post -n libgstgl-1_0-0 -p /sbin/ldconfig
-%postun -n libgstgl-1_0-0 -p /sbin/ldconfig
-%post -n libgstpbutils-1_0-0 -p /sbin/ldconfig
-%postun -n libgstpbutils-1_0-0 -p /sbin/ldconfig
-%post -n libgstriff-1_0-0 -p /sbin/ldconfig
-%postun -n libgstriff-1_0-0 -p /sbin/ldconfig
-%post -n libgstrtp-1_0-0 -p /sbin/ldconfig
-%postun -n libgstrtp-1_0-0 -p /sbin/ldconfig
-%post -n libgstrtsp-1_0-0 -p /sbin/ldconfig
-%postun -n libgstrtsp-1_0-0 -p /sbin/ldconfig
-%post -n libgstsdp-1_0-0 -p /sbin/ldconfig
-%postun -n libgstsdp-1_0-0 -p /sbin/ldconfig
-%post -n libgsttag-1_0-0 -p /sbin/ldconfig
-%postun -n libgsttag-1_0-0 -p /sbin/ldconfig
-%post -n libgstvideo-1_0-0 -p /sbin/ldconfig
-%postun -n libgstvideo-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgstallocators-1_0-0
+%ldconfig_scriptlets -n libgstapp-1_0-0
+%ldconfig_scriptlets -n libgstaudio-1_0-0
+%ldconfig_scriptlets -n libgstfft-1_0-0
+%ldconfig_scriptlets -n libgstgl-1_0-0
+%ldconfig_scriptlets -n libgstpbutils-1_0-0
+%ldconfig_scriptlets -n libgstriff-1_0-0
+%ldconfig_scriptlets -n libgstrtp-1_0-0
+%ldconfig_scriptlets -n libgstrtsp-1_0-0
+%ldconfig_scriptlets -n libgstsdp-1_0-0
+%ldconfig_scriptlets -n libgsttag-1_0-0
+%ldconfig_scriptlets -n libgstvideo-1_0-0
 
 %files
 %license COPYING
