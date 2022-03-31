@@ -49,10 +49,10 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module confluent-kafka}
-BuildRequires:  %{python_module dask if %python-base < 3.10}
-BuildRequires:  %{python_module dask-dataframe if %python-base < 3.10}
-BuildRequires:  %{python_module dask-distributed if %python-base < 3.10}
-BuildRequires:  %{python_module distributed  if %python-base < 3.10}
+BuildRequires:  %{python_module dask >= 2.5}
+BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module dask-distributed}
+BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module ipywidgets}
@@ -86,15 +86,12 @@ Streamz helps you build pipelines to manage continuous streams of data.
 %check
 # infinite loop because the automatic skip does not work here; the kafka tests need a docker container with STREAMZ_LAUNCH_KAFKA=true
 donttest="test_from_kafka or test_to_kafka"
-# no dask on python310 yet: this disables a majority of the test suite, but dask and kafka are nominally optional
-python310_flags="--ignore streamz/dataframe/tests/test_dataframes.py"
-python310_flags+=" --ignore streamz/tests/test_core.py"
-python310_flags+=" --ignore streamz/tests/test_kafka.py"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   # don't test on 32-bit: 64-bit datatypes expected
   donttest+=" or test_dataframes"
 fi
 # flaky: some tests are very fragile when run server-side
+donttest+=" or test_tcp"
 %pytest -m "not network" --asyncio-mode=auto --force-flaky --max-runs=10 --no-success-flaky-report -rsfE ${$python_flags} -k "not ($donttest)"
 
 %files %{python_files}
