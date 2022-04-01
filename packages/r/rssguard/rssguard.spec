@@ -43,6 +43,8 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+Recommends:     nodejs
+Recommends:     npm
 Obsoletes:      %{name}-lang < %{version}
 Provides:       %{name}-lang = %{version}
 
