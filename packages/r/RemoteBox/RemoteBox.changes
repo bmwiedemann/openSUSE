@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 30 14:40:28 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.1
+  - Changed the RemoteBox logo
+  - Various minor GUI tweaks
+  - Added button to save the message log to a text file. Might be
+    useful for debugging purposes.
+  - Fixed: Regression introduced in 3.0 caused Connection Profiles
+    dialog to essentially stop working correctly, potentially
+    losing existing profiles in the process.
+  - Fixed: Regression introduced in 3.0 meant that NAT rules were
+    not shown for IPv4 and IPv6 networks
+  - Fixed column sorting in the VMM (Virtual Media Manager)
+  - Fixed various list selection bugs. The get_selected() method
+    under GTK3 returns both the model and the iterator, not just
+    the iterator as with GTK2
+  - RemoteBox is no longer bundled with a PDF manual. Documentation
+    is now exclusively maintained on the RemoteBox web site.
+
+-------------------------------------------------------------------
 Fri Jan  7 14:25:48 UTC 2022 - gallochri <chri@gallochri.com>
 
 - Update RemoteBox.spec file
