@@ -1,7 +1,7 @@
 #
 # spec file for package starboard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           starboard
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Kubernetes-native security toolkit
 License:        Apache-2.0
