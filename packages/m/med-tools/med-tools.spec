@@ -1,7 +1,7 @@
 #
 # spec file for package med-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,7 +135,6 @@ in English Modelisation and Data Exchange) is a library
 to store and exchange meshed data or computation results.
 It uses the HDF5 file format to store the data.
 
-
 %prep
 %setup -q -n med-%{version}
 %patch0 -p1
@@ -180,7 +179,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
 make test ARGS="--output-on-failure"
 
-%fdupes -s %{buildroot}
+%fdupes -s %{buildroot}%{_datadir}
+%fdupes -s %{buildroot}%{_includedir}
+%if %{with python_bindings}
+%fdupes -s %{buildroot}%{python_sitearch}
+%endif
 
 %post -n libmed%{sover} -p /sbin/ldconfig
 

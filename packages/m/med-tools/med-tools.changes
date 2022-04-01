@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  1 11:37:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Be more careful with fdupes to ensure we don't link across
+  boundaries.
+
+-------------------------------------------------------------------
+Thu Mar 31 20:56:50 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use hardlinks for fdupes call. Avoids dangling symlinks when
+  files from devel package reference debugsource an vice-versa.
+
+-------------------------------------------------------------------
 Wed Jan 06 05:51:56 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Fix no-return-in-nonvoid-function issue
