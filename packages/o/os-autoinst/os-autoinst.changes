@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 31 22:06:00 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1648754972.aa0153e1:
+  * Change test to not buffer log output
+  * Change test not to rely on a race condition
+  * Avoid command server uploads from running out of space
+  * Add explicit test for `set_pipe_sz()` to ensure stable test coverage
+  * Hide secrets in all log_call invocations
+  * Write command processing tests in a more compact style
+  * Do not require additional command to pause on a test module
+  * Avoid JSON::PP::Boolean warnings
+
+-------------------------------------------------------------------
 Tue Mar 29 10:19:51 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1648546456.43990702:
