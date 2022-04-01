@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 31 06:09:43 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.5.0:
+  * NEW: rows can now be reordered. Enable the reordering mode by using
+    the "up down" arrows button on the top left, then drag and drop rows where you want (#184)
+  * NEW: added a dark theme (enable it settings) (#207)
+  * NEW: allow to switch database. This is useful if you have
+    multiple OTPClient databases (e.g. work, personal, etc) (#186)
+  * NEW: add a button to lock the app (#236)
+  * FIX: when app is locked, the content is now hidden (#235)
+  * FIX: when clicking cancel on decryption, you can now choose to select another database (#196)
+  * FIX: small code improvements
+
+-------------------------------------------------------------------
 Mon Feb 28 12:52:16 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.9.1:
