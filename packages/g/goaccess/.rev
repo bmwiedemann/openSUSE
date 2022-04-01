@@ -593,4 +593,16 @@
   * Fixed regression where a lot of robots where not detected by GoAccess.</comment>
     <requestid>950439</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4d398b0edbda5fc9d93420f84f0edd8c</srcmd5>
+    <version>1.5.6</version>
+    <time>1648841811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.6:
+  * Added `--anonymize-level=&lt;1|2|3&gt;` option to specify IP anonymization level.
+  * Added minute specificity to the Visitors panel via `--date-spec=min`.
+  * Added the ability to toggle on/off panels on the HTML report.
+  * Changed stderr to stdout on non-error output when exiting goaccess.</comment>
+    <requestid>966435</requestid>
+  </revision>
 </revisionlist>
