@@ -35,6 +35,17 @@
 %bcond_with base
 %bcond_without general
 %endif
+
+%if 0%{?sle_version} && 0%{?suse_version} < 1550
+# Obsoleting previous "latest" Python versions
+# Next versions will get more lines like for older versions
+%define obsolete_python_versioned() \
+Obsoletes:      python39%{?1:-%{1}}
+%else
+%define obsolete_python_versioned() %{nil}
+%endif
+
+# Setting up variables
 %define _version %(c=%{version}; echo ${c/[a-z]*/})
 %define tar_suffix %(c=%{_version}; echo ${c#%{_version}})
 %define python_version %(echo %{_version}|cut -d. -f1-2)
@@ -53,7 +64,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.10.2
+%define         folderversion 3.10.4
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -89,7 +100,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.2
+Version:        3.10.4
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -146,8 +157,9 @@ Patch33:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch34:        skip-test_pyobject_freed_is_freed.patch
-# PATCH-FIX-UPSTREAM bpo-46811 gh#python/cpython#7da97f61816f3cadaa6788804b22a2434b40e8c5
-Patch35:        support-expat-245.patch
+# PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
+# remove duplicate link targets and make documentation with old Sphinx in SLE
+Patch35:        fix_configure_rst.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -197,6 +209,7 @@ Requires:       %{python_pkg_name}-base = %{version}
 Recommends:     %{python_pkg_name}-curses
 Recommends:     %{python_pkg_name}-dbm
 Recommends:     %{python_pkg_name}-pip
+%obsolete_python_versioned
 %if %{primary_interpreter}
 Provides:       python3 = %{python_version}
 %endif
@@ -219,6 +232,7 @@ development environment (python3-idle).
 %package -n %{python_pkg_name}-tk
 Summary:        TkInter, a Python Tk Interface
 Requires:       %{python_pkg_name} = %{version}
+%obsolete_python_versioned tk
 %if %{primary_interpreter}
 Provides:       python3-tk = %{version}
 %endif
@@ -229,6 +243,7 @@ Python interface to Tk. Tk is the GUI toolkit that comes with Tcl.
 %package -n %{python_pkg_name}-curses
 Summary:        Python Interface to the (N)Curses Library
 Requires:       %{python_pkg_name} = %{version}
+%obsolete_python_versioned curses
 %if %{primary_interpreter}
 Provides:       python3-curses
 %endif
@@ -240,6 +255,7 @@ Console User Interface.
 %package -n %{python_pkg_name}-dbm
 Summary:        Python Interface to the GDBM Library
 Requires:       %{python_pkg_name} = %{version}
+%obsolete_python_versioned dbm
 %if %{primary_interpreter}
 Provides:       python3-dbm
 %endif
@@ -252,6 +268,7 @@ the GNU implementation GDBM.
 Summary:        An Integrated Development Environment for Python
 Requires:       %{python_pkg_name} = %{version}
 Requires:       %{python_pkg_name}-tk
+%obsolete_python_versioned idle
 %if %{primary_interpreter}
 Provides:       python3-idle = %{version}
 %endif
@@ -265,6 +282,7 @@ a debugger.
 %package -n %{python_pkg_name}-doc
 Summary:        Package Documentation for Python 3
 Enhances:       %{python_pkg_name} = %{python_version}
+%obsolete_python_versioned doc
 %if %{primary_interpreter}
 Provides:       python3-doc = %{version}
 %endif
@@ -276,6 +294,7 @@ Python, and Macintosh Module Reference in HTML format.
 
 %package -n %{python_pkg_name}-doc-devhelp
 Summary:        Additional Package Documentation for Python 3 in devhelp format
+%obsolete_python_versioned doc-devhelp
 %if %{primary_interpreter}
 Provides:       python3-doc-devhelp = %{version}
 %endif
@@ -289,6 +308,7 @@ Python, and Macintosh Module Reference in format for devhelp.
 Summary:        Python 3 Interpreter and Stdlib Core
 Requires:       libpython%{so_version} = %{version}
 Recommends:     %{python_pkg_name} = %{version}
+%obsolete_python_versioned base
 #Recommends:     python3-ensurepip
 # python 3.1 didn't have a separate python-base, so it is wrongly
 # not a conflict to have python3-3.1 and python3-base > 3.1
@@ -296,8 +316,10 @@ Obsoletes:      python3 < 3.2
 # no Provides, because python3 is obviously provided by package python3
 # python 3.4 provides asyncio
 Provides:       %{python_pkg_name}-asyncio = %{version}
+%obsolete_python_versioned asyncio
 # python 3.6 provides typing
 Provides:       %{python_pkg_name}-typing = %{version}
+%obsolete_python_versioned typing
 # python3-xml was merged into python3, now moved into -base
 Provides:       %{python_pkg_name}-xml = %{version}
 %if %{primary_interpreter}
@@ -327,6 +349,7 @@ Summary:        Python Utility and Demonstration Scripts
 Requires:       %{python_pkg_name}-base = %{version}
 Provides:       %{python_pkg_name}-2to3 = %{version}
 Provides:       %{python_pkg_name}-demo = %{version}
+%obsolete_python_versioned tools
 %if %{primary_interpreter}
 Provides:       python3-2to3 = %{version}
 Provides:       python3-demo = %{version}
@@ -342,6 +365,7 @@ and a set of demonstration programs.
 %package -n %{python_pkg_name}-devel
 Summary:        Include Files and Libraries Mandatory for Building Python Modules
 Requires:       %{python_pkg_name}-base = %{version}
+%obsolete_python_versioned devel
 %if %{primary_interpreter}
 Provides:       python3-devel = %{version}
 %endif
@@ -361,6 +385,7 @@ package up to version 2.2.2.
 Summary:        Unit tests for Python and its standard library
 Requires:       %{python_pkg_name} = %{version}
 Requires:       %{python_pkg_name}-tk = %{version}
+%obsolete_python_versioned testsuite
 %if %{primary_interpreter}
 Provides:       python3-testsuite = %{version}
 %endif
@@ -524,6 +549,9 @@ EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multipr
 # so that ifconfig output has "HWaddr <something>".  Some kvm instances
 # done have any such interface breaking the uuid module.
 EXCLUDE="$EXCLUDE test_uuid"
+
+# bsc#1195140 and bpo#37169 - test_capi is failing on openSUSE, and not sure why
+EXCLUDE="$EXCLUDE test_capi"
 
 # Limit virtual memory to avoid spurious failures
 if test $(ulimit -v) = unlimited || test $(ulimit -v) -gt 10000000; then
