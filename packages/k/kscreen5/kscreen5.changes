@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:04:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- Changes since 5.24.3:
+  * KCM: Center Orientation label when there's no automatic options
+  * X11: align touchscreen to internal display (kde#415683)
+- Drop code for obsolete versions
+
+-------------------------------------------------------------------
 Tue Mar  8 18:09:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.3

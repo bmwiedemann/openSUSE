@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kscreen5
-Version:        5.24.3
+Version:        5.24.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -54,19 +54,17 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5QuickWidgets) >= 5.4.0
 BuildRequires:  cmake(Qt5Sensors) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.4.0
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig(xcb-atom)
+BuildRequires:  pkgconfig(xi)
 Requires:       kded
 Requires:       libkscreen2-plugin >= %{_plasma5_version}
 Requires:       xrdb
 Recommends:     %{name}-lang
 Recommends:     %{name}-plasmoid
 Supplements:    packageand(libkscreen2-plugin:plasma5-workspace)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       kscreen = %{version}
 Obsoletes:      kscreen < %{version}
-%else
-Conflicts:      kscreen
-%endif
 
 %description
 KScreen handles screen management for both X11 and Wayland sessions, including rotation, size, refresh rate, and scaling.

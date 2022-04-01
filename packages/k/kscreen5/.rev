@@ -1035,4 +1035,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>KDE Plasma 5.24.3</comment>
     <requestid>960866</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>cf1a1249547a3c0c1b17c14a1df66084</srcmd5>
+    <version>5.24.4</version>
+    <time>1648841703</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
+    <requestid>965899</requestid>
+  </revision>
 </revisionlist>
