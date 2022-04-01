@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 31 17:49:07 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1648720710.9f444c83a:
+  * Dependency cron 2022-03-31
+  * Let os-autoinst handle the limit for uploads
+  * Don't set `MOJO_MAX_MESSAGE_SIZE` for websocket server
+  * Remove upload limit on web UI and worker
+  * docs: Add documentation for custom worker engine command ISOTOVIDEO
+
+-------------------------------------------------------------------
 Tue Mar 29 09:49:01 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1648473912.da11be75c:
