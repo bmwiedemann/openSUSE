@@ -17,12 +17,8 @@
 
 
 %define project github.com/containers/buildah
-# Build with libostree-devel in Tumbleweed, Leap 15 and SLES 15
-%if 0%{?suse_version} >= 1500
-%define with_libostree 1
-%endif
 Name:           buildah
-Version:        1.24.2
+Version:        1.25.1
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -51,8 +47,10 @@ Requires:       libcontainers-storage
 Requires:       runc >= 1.0.2
 Requires:       slirp4netns
 %{go_nostrip}
-%if 0%{?with_libostree}
 BuildRequires:  libostree-devel
+# workaround for https://bugzilla.opensuse.org/show_bug.cgi?id=1183043
+%ifarch %arm %arm64
+BuildRequires:  binutils-gold
 %endif
 # Not supported by libseccomp-golang
 ExcludeArch:    ppc64

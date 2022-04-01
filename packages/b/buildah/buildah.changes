@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Mar 31 06:48:03 UTC 2022 - dcermak@suse.com
+
+- remove obsolete check for TW, SLE 15 & Leap 15
+- add workaround for https://bugzilla.opensuse.org/show_bug.cgi?id=1183043
+- Update to version 1.25.1:
+  * Bump to v1.25.1
+  * buildah: create WORKDIR with USER permissions
+  * vendor: update github.com/openshift/imagebuilder
+  * copier: attempt to open the dir before adding it
+  * Updated dependabot to get updates for GitHub actions.
+  * Switch most calls to filepath.Walk to filepath.WalkDir
+  * build: allow --no-cache and --layers so build cache can be overrided
+  * build(deps): bump github.com/onsi/gomega from 1.18.1 to 1.19.0
+  * Bump to v1.26.0-dev
+  * build(deps): bump github.com/golangci/golangci-lint in /tests/tools
+
+-------------------------------------------------------------------
+Wed Mar 30 08:30:01 UTC 2022 - dcermak@suse.com
+
+- fixes bsc#1197870
+- Update to version 1.25.0:
+  * Bump to v1.25.0
+  * install: drop RHEL/CentOS 7 doc
+  * build(deps): bump github.com/containers/common from 0.47.4 to 0.47.5
+  * Bump c/storage to v1.39.0 in main
+  * Add a test for CVE-2022-27651
+  * build(deps): bump github.com/docker/docker
+  * Bump github.com/prometheus/client_golang to v1.11.1
+  * [CI:DOCS] man pages: sort flags, and keep them that way
+  * build(deps): bump github.com/containerd/containerd from 1.6.1 to 1.6.2
+  * Don't pollute
+  * network setup: increase timeout to 4 minutes
+  * do not set the inheritable capabilities
+  * build(deps): bump github.com/golangci/golangci-lint in /tests/tools
+  * build(deps): bump github.com/containers/ocicrypt from 1.1.2 to 1.1.3
+  * parse: convert exposed GetVolumes to internal only
+  * buildkit: mount=type=cache support locking external cache store
+  * .in support: improve error message when cpp is not installed
+  * buildah image: install cpp
+  * build(deps): bump github.com/stretchr/testify from 1.7.0 to 1.7.1
+  * build(deps): bump github.com/spf13/cobra from 1.3.0 to 1.4.0
+  * build(deps): bump github.com/docker/docker
+  * Add --no-hosts flag to eliminate use of /etc/hosts within containers
+  * test: remove skips for rootless users
+  * test: unshare mount/umount if test is_rootless
+  * tests/copy: read correct containers.conf
+  * build(deps): bump github.com/docker/distribution
+  * cirrus: add seperate task and matrix for rootless
+  * tests: skip tests for rootless which need unshare
+  * buildah: test rootless integration
+  * vendor: bump c/storage to main/93ce26691863
+  * build(deps): bump github.com/fsouza/go-dockerclient from 1.7.9 to 1.7.10
+  * tests/copy: initialize the network, too
+  * [CI:DOCS] remove references to Kubic for CentOS and Ubuntu
+  * build(deps): bump github.com/containerd/containerd from 1.6.0 to 1.6.1
+  * use c/image/pkg/blobcache
+  * vendor c/image/v5@v5.20.0
+  * add: ensure the context directory is an absolute path
+  * executor: docker builds must inherit healthconfig from base if any
+  * docs: Remove Containerfile and containeringore
+  * build(deps): bump github.com/fsouza/go-dockerclient from 1.7.8 to 1.7.9
+  * helpers.bash: Use correct syntax
+  * speed up combination-namespaces test
+  * build(deps): bump github.com/golangci/golangci-lint in /tests/tools
+  * Bump back to 1.25.0-dev
+  * build(deps): bump github.com/containerd/containerd from 1.5.9 to 1.6.0
+
+-------------------------------------------------------------------
 Thu Feb 17 07:58:57 UTC 2022 - dcermak@suse.com
 
 - Update to version 1.24.2:
@@ -189,6 +257,12 @@ Thu Jan 27 07:30:30 UTC 2022 - dcermak@suse.com
   * conformance: add more tests for exclusion short-circuiting
   * Update VM Images + Drop prior-ubuntu testing
   * Bump to v1.24.0-dev
+
+-------------------------------------------------------------------
+Thu Nov 25 15:11:21 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Sync package with Factory (bsc#1192999)
+- remove no longer used CVE-2019-10214.patch
 
 -------------------------------------------------------------------
 Fri Oct 22 10:16:47 UTC 2021 - rpm@fthiessen.de
@@ -1254,7 +1328,8 @@ Fri Jan 08 11:52:40 UTC 2021 - rbrown@suse.com
 -------------------------------------------------------------------
 Mon Nov 30 13:24:14 UTC 2020 - Christian Goll <cgoll@suse.com>
 
-- added cni to requires as its needed for buildah to run 
+- added cni to requires as its needed for buildah to run
+  (bsc#1187812)
 
 -------------------------------------------------------------------
 Tue Nov  3 14:44:18 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
