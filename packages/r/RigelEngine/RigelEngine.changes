@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Apr  1 11:34:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.4
+  Smooth motion mode improvements
+  * Moving parts of the level (falling rocks, doors, ...) are now
+    moving smoothly as well.
+  * Fixed glitches (jittering top part) with the smash hammer and
+    grabber claw.
+  Modding support improvements
+  * It's now possible to replace STATUS.MNI with a PNG image that
+    can be original or higher resolution. This allows changing
+    various fonts and UI elements, including parts of the HUD.
+  * Replacements for actors used by the HUD can now be high
+    resolution.
+  Other improvements
+  * Improved performance on Raspberry Pi, especially when under
+    water areas are visible.
+  * Blocked off the area to the left of the HUD in widescreen
+    mode to avoid potentially showing out-of-bounds parts of the
+    map.
+  * Further improved digitized sound effect quality by replacing
+    the ADPCM decoding code with the exact same algorithm as
+    implemented in the SoundBlaster firmware, based on disassembly
+    of the latter
+  * Improved the sound test UI
+  Bug fixes
+  * Fixed camera moving too far down when falling into a
+    bottomless pit in widescreen mode
+  * Fixed important parts at the bottom of the level (like lava
+    pools) being hidden in certain cases in widescreen mode (e.g.
+    in E3L1)
+  * Fixed visual glitches on GL ES devices like Raspberry Pi and
+    Odroid Go (overly pixelated backdrop during scrolling, white
+    lines visible next to certain enemies during the damage
+    flash effect)
+  * Fixed missing fade-in effect when using the teleporter
+  * Fixed incorrect rendering of high-res replacement backdrops
+    when vertical auto-scrolling is used
+  * Fixed position of dialog boxes (quit confirm, game paused
+    etc.) in widescreen mode
+  * Fixed visual glitch when entering a menu while smooth motion
+    is enabled
+
+-------------------------------------------------------------------
 Sat Jan  1 17:29:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.3

@@ -18,7 +18,7 @@
 
 
 Name:           RigelEngine
-Version:        0.8.3beta
+Version:        0.8.4beta
 Release:        0
 Summary:        A modern reimplementation of the game Duke Nukem II
 License:        GPL-2.0-only
