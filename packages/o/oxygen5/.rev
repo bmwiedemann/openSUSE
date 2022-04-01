@@ -1105,4 +1105,12 @@ found conflict of filesystem-15.5-261.1.x86_64 with oxygen5-sounds-5.21.5-2.1.no
     <comment>KDE Plasma 5.24.3</comment>
     <requestid>960879</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>65227ea7cdf3aa7781aff8ab071c5b04</srcmd5>
+    <version>5.24.4</version>
+    <time>1648841712</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
+    <requestid>965912</requestid>
+  </revision>
 </revisionlist>
