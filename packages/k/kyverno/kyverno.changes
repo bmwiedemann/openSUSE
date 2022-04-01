@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 01 07:04:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.6.2:
+  * tag v1.6.2 (#3511)
+  * Cherry-pick #3111 and release v1.6.2-rc3 (#3506)
+  * tag v1.6.2-rc2 (#3500)
+  * feat: generate support for namespace policy (#3498)
+  * use mutex as field instead of embedded (#3480) (#3489)
+  * release v1.6.2-rc1 (#3482)
+  * Cherry-pick #3477 (#3479)
+  * adds lease objects for storing last-request-time and set-status annotations in deployment (#3447) (#3478)
+  * fix: use RWMutex lock while concurrent read/write (#3462) (#3467)
+  * support for deprecated API's (#3439) (#3453)
+  * fix cli panic for --cluster flag (#3436) (#3438)
+  * add missing namespace to role and rolebinding (#3389) (#3429)
+  * fix webhook configuration issue when auto update is disabled (#3417) (#3418)
+  * Cli Apply command support Dir as resources (#3391) (#3392)
+  * fix for gvk not working for existing resources policy (#3384) (#3386)
+  * Cherry pick/3366 (#3367)
+  * Update generate clusterrole (#3336) (#3359)
+  * fixing bug to handle two different types of rules  (#2954) (#3357)
+  * Fix any_all wildcard issue (#3352)
+
+-------------------------------------------------------------------
 Wed Mar 02 05:51:37 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.6.1:

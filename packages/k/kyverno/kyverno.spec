@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kyverno
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
