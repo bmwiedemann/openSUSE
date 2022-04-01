@@ -23,22 +23,16 @@ Release:        0
 Summary:        Java online help system
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Java
-URL:            https://javahelp.dev.java.net/
-Source0:        %{name}-src-%{version}.tar.bz2
-# svn export -r 59 https://javahelp.dev.java.net/svn/javahelp/trunk javahelp2-2.0.05 --username guest
-Source1:        %{name}-jhindexer.sh
-Source2:        %{name}-jhsearch.sh
-Source3:        %{oname}-%{version}.pom
-Source4:        https://javahelp.dev.java.net/license.txt
+URL:            https://github.com/javaee/javahelp
+Source0:        %{oname}-%{version}.tar.xz
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  fdupes
-BuildRequires:  geronimo-jsp-2_0-api
-BuildRequires:  geronimo-servlet-2_4-api
+BuildRequires:  glassfish-jsp-api
+BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
-Requires:       geronimo-jsp-2_0-api
-Requires:       geronimo-servlet-2_4-api
+Requires:       glassfish-jsp-api
+Requires:       glassfish-servlet-api
 BuildArch:      noarch
 
 %description
@@ -71,22 +65,21 @@ devices. Authors can also use the JavaHelp software to deliver online
 documentation for the Web and corporate Intranet.
 
 %prep
-%setup -q
+%setup -q -n %{oname}-%{version}
+
 # fix files perms
 chmod -R go=u-w *
+
 # remove windows files
 find . -type f -name .bat | xargs rm -f
-#
+
 # This class provides native browser integration and would require
-# JDIC project to be present. Currently there is no such jpackage.org
-# package, so deleting the class. When JDIC package is created,
-# add BuildProvides and remove the "rm" call.
-#
+# JDIC project to be present.
 rm jhMaster/JavaHelp/src/new/javax/help/plaf/basic/BasicNativeContentViewerUI.java
+
 mkdir javahelp_nbproject/lib
-ln -s $(build-classpath geronimo-jsp-2.0-api) javahelp_nbproject/lib/jsp-api.jar
-ln -s $(build-classpath geronimo-servlet-2.4-api) javahelp_nbproject/lib/servlet-api.jar
-cp %{SOURCE4} .
+ln -s $(build-classpath glassfish-jsp-api) javahelp_nbproject/lib/jsp-api.jar
+ln -s $(build-classpath glassfish-servlet-api) javahelp_nbproject/lib/servlet-api.jar
 
 %build
 ant \
@@ -99,25 +92,26 @@ ant \
     release javadoc
 
 %install
+# jar
 install -d -m 755 %{buildroot}%{_javadir}
-install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
-install -d -m 755 %{buildroot}%{_bindir}
-install -d -m 755 %{buildroot}%{_datadir}/%{name}
-install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/jh2indexer
-install -m 755 %{SOURCE2} %{buildroot}%{_bindir}/jh2search
 install -m 644 javahelp_nbproject/dist/lib/jhall.jar %{buildroot}%{_javadir}/%{name}.jar
-#cp -pr jhMaster/JavaHelp/doc/public-spec/dtd %{buildroot}%{_datadir}/%{name}
+
+# maven artifact
+%add_maven_depmap javax.help:javahelp:%{version} %{name}.jar
+
+# scripts
+%jpackage_script com.sun.java.help.search.Indexer "" "" javahelp2 jh2indexer true
+%jpackage_script com.sun.java.help.search.QueryEngine "" "" javahelp2 jh2search true
+#install -d -m 755 %{buildroot}%{_bindir}
+#install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/jh2indexer
+#install -m 755 %{SOURCE2} %{buildroot}%{_bindir}/jh2search
+
+# javadoc
+install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr javahelp_nbproject/dist/lib/javadoc/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-# pom
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 %{SOURCE3} \
-    %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap
-
 %files -f .mfiles
-%doc license.txt
 %attr(0755,root,root) %{_bindir}/*
 
 %files manual

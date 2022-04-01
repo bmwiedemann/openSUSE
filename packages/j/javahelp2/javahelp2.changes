@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  1 08:37:27 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on the geronimo-specs
+- Clean-up the spec file and fetch sources by source service
+
+-------------------------------------------------------------------
 Sun Mar 20 17:26:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8
