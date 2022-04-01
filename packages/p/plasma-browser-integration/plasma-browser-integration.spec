@@ -21,7 +21,7 @@
 %bcond_with browser_extension
 %bcond_without released
 Name:           plasma-browser-integration
-Version:        5.24.3
+Version:        5.24.4
 Release:        0
 Summary:        Helper for the KDE Plasma Browser Integration
 License:        GPL-3.0-or-later
@@ -48,10 +48,6 @@ BuildRequires:  cmake(LibTaskManager)
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
-%if 0%{?suse_version} < 1330
-# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-BuildRequires:  gcc7-c++
-%endif
 Recommends:     %{name}-lang
 Supplements:    packageand(plasma5-workspace:MozillaFirefox)
 Supplements:    packageand(plasma5-workspace:chromium)
@@ -78,12 +74,6 @@ KDE Plasma.
 %setup -q
 
 %build
-%if 0%{?suse_version} < 1330
-	# It does not build with the default compiler (GCC 4.8) on Leap 42.x
-	export CC=gcc-7
-	export CXX=g++-7
-%endif
-
 %if %{with browser_extension}
 %cmake_kf5 -d build -- -DINSTALL_CHROME_MANIFEST=1
 %else
