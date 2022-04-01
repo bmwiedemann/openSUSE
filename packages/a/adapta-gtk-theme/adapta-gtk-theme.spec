@@ -1,7 +1,7 @@
 #
 # spec file for package adapta-gtk-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,7 @@ Name:           adapta-gtk-theme
 Version:        3.95.0.11
 Release:        0
 Summary:        An adaptive Gtk+ theme based on Material Design Guidelines
-License:        GPL-2.0-only AND CC-BY-SA-4.0
-Group:          System/GUI/Other
+License:        CC-BY-SA-4.0 AND GPL-2.0-only
 URL:            https://github.com/adapta-project/adapta-gtk-theme
 Source:         https://github.com/adapta-project/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -35,7 +34,6 @@ BuildRequires:  gnome-shell >= 3.20.0
 BuildRequires:  gnu_parallel
 BuildRequires:  inkscape >= 0.91
 BuildRequires:  pkgconfig
-BuildRequires:  procps
 BuildRequires:  sassc >= 3.3
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32.2
 BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0) >= 2.32.2
@@ -55,7 +53,6 @@ created based on the Flat-Plat theme.
 
 %package -n metatheme-%{_name}-common
 Summary:        Adapta common theme files
-Group:          System/GUI/Other
 Requires:       google-roboto-fonts
 Requires:       noto-sans-fonts
 Suggests:       gtk2-metatheme-%{_name} = %{version}
@@ -71,7 +68,6 @@ This package contains common files for all Adapta themes.
 
 %package -n gtk2-metatheme-%{_name}
 Summary:        Adapta GTK+2 themes
-Group:          System/GUI/Other
 Requires:       gtk2 >= %{gtk2_min_version}
 Requires:       gtk2-engine-murrine >= 0.98.1
 Requires:       metatheme-%{_name}-common = %{version}
@@ -86,7 +82,6 @@ This package contains the GTK2+ themes.
 
 %package -n gtk3-metatheme-%{_name}
 Summary:        Adapta GTK+3 themes
-Group:          System/GUI/Other
 Requires:       gtk3 >= %{gtk3_min_version}
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:gtk3)
@@ -101,7 +96,6 @@ This package contains the GTK3+ themes.
 %if 0%{?suse_version} > 1500
 %package -n gtk4-metatheme-%{_name}
 Summary:        Adapta GTK+4 themes
-Group:          System/GUI/Other
 Requires:       gtk4
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:gtk4)
@@ -116,7 +110,6 @@ This package contains the GTK+4 themes.
 
 %package -n metacity-theme-%{_name}
 Summary:        Adapta Metacity themes
-Group:          System/GUI/Other
 Requires:       metacity
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:metacity)
@@ -130,7 +123,6 @@ This package contains the metacity themes.
 
 %package -n cinnamon-theme-%{_name}
 Summary:        Adapta Cinnamon themes
-Group:          System/GUI/Other
 Requires:       cinnamon >= 3.2.0
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:cinnamon)
@@ -144,7 +136,6 @@ This package contains the cinnamon themes.
 
 %package -n gnome-shell-theme-adapta
 Summary:        Adapta GNOME Shell themes
-Group:          System/GUI/Other
 Requires:       gnome-shell >= 3.20.0
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:gnome-shell)
@@ -158,7 +149,6 @@ This package contains the GNOME Shell themes.
 
 %package -n xfwm4-theme-%{_name}
 Summary:        Adapta Xfwm4 themes
-Group:          System/GUI/Other
 Requires:       metatheme-%{_name}-common = %{version}
 Requires:       xfwm4
 Supplements:    packageand(metatheme-%{_name}-common:xfwm4)
@@ -172,7 +162,6 @@ This package contains the Xfwm4 themes.
 
 %package -n xfce4-notifyd-theme-%{_name}
 Summary:        Adapta Xfce4 notifyd themes
-Group:          System/GUI/Other
 Requires:       metatheme-%{_name}-common = %{version}-%{release}
 Requires:       xfce4-notifyd
 Supplements:    packageand(metatheme-%{_name}-common:xfce4-notifyd)
@@ -186,7 +175,6 @@ This package contains the Xfce4 notifyd themes.
 
 %package -n plank-theme-%{_name}
 Summary:        Adapta Plank themes
-Group:          System/GUI/Other
 Requires:       metatheme-%{_name}-common = %{version}
 Requires:       plank
 Supplements:    packageand(metatheme-%{_name}-common:plank)
@@ -200,7 +188,6 @@ This package contains the Plank themes.
 
 %package -n openbox-theme-%{_name}
 Summary:        Adapta openbox themes
-Group:          System/GUI/Other
 Requires:       metatheme-%{_name}-common = %{version}
 Requires:       openbox >= 3.6.1
 Supplements:    packageand(metatheme-%{_name}-common:openbox)
@@ -214,7 +201,6 @@ This package contains the openbox themes.
 
 %package -n telegram-theme-%{_name}
 Summary:        Adapta Telegram themes
-Group:          System/GUI/Other
 Requires:       metatheme-%{_name}-common = %{version}
 Requires:       telegram-desktop
 Supplements:    packageand(metatheme-%{_name}-common:telegram-desktop)
@@ -227,7 +213,6 @@ This package contains Telegram themes.
 
 %package -n gedit-theme-%{_name}
 Summary:        Adapta gedit themes
-Group:          System/GUI/Other
 Requires:       gedit
 Requires:       metatheme-%{_name}-common = %{version}
 Supplements:    packageand(metatheme-%{_name}-common:gedit)
