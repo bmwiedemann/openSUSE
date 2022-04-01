@@ -17,10 +17,11 @@
 
 
 %define oname sqlite
-%define tarversion 3380100
+%define tarversion 3380200
 %bcond_with icu
+%bcond_without check
 Name:           sqlite3
-Version:        3.38.1
+Version:        3.38.2
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -102,6 +103,18 @@ directly to and from the database files on disk.
 SQLite can be used via the sqlite command-line tool or via any
 application which supports the Qt database plug-ins.
 
+%package tcl
+Summary:        Tcl binding for SQLite
+Group:          Development/Libraries/Tcl
+
+%description tcl
+This package contains laguage bindings from the Tcl programming
+language SQLite.
+
+SQLite is a C library that implements an embeddable SQL database
+engine. Programs that link with the SQLite library can have SQL
+database access without running a separate RDBMS process.
+
 %package doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
@@ -123,6 +136,7 @@ find -type f -name sqlite.css~ -delete
 cmp sqlite-doc-%{tarversion}/fileformat{,2}.html && ln -sf fileformat.html sqlite-doc-%{tarversion}/fileformat2.html
 
 %build
+export TCLLIBDIR=%tcl_archdir/sqlite%version
 export LIBS="$LIBS -lm %{?with_icu:-licuuc -licui18n}"
 export CFLAGS="%{optflags} \
 	-DSQLITE_ENABLE_API_ARMOR \
@@ -146,27 +160,27 @@ export CFLAGS="%{optflags} \
 	"
 %configure \
   --disable-static \
-  --disable-static-shell \
   --enable-readline \
   --enable-fts3 \
   --enable-fts4 \
   --enable-fts5 \
-  --enable-json1 \
   --enable-update-limit \
   --enable-rtree
 %make_build sqlite3.c
 %make_build
 
+%if %{with check}
 %check
 %make_build test
+%endif
 
 %install
 %make_install
-mkdir -p %{buildroot}/%{_mandir}/man1/
-install -Dpm 0644 sqlite3.1 \
-  %{buildroot}/%{_mandir}/man1/sqlite3.1
+#mkdir -p %{buildroot}/%{_mandir}/man{1,n}/
+install -Dp -m 0644 -t %{buildroot}/%{_mandir}/man1 sqlite3.1
+install -Dp -m 0644 -t %{buildroot}/%{_mandir}/mann autoconf/tea/doc/sqlite3.n
 # tcl bindings are provided by tcl itself
-rm -rf %{buildroot}%{_libdir}/tcl/tcl8.?/sqlite3*
+#rm -rf %{buildroot}%{_libdir}/tcl/tcl8.?/sqlite3*
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libsqlite3-0 -p /sbin/ldconfig
@@ -184,6 +198,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/sqlite3ext.h
 %{_libdir}/libsqlite3.so
 %{_libdir}/pkgconfig/sqlite3.pc
+
+%files tcl
+%tcl_archdir/*
+%doc %_mandir/mann/*
 
 %files doc
 %doc sqlite-doc-%{tarversion}/*

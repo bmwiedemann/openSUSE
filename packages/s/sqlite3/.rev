@@ -1361,4 +1361,21 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>961697</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>0ffd94669f2e282e556368ee823bf6db</srcmd5>
+    <version>3.38.2</version>
+    <time>1648841691</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.38.2:
+  * Fix a problem with the Bloom filter optimization that might
+    cause an incorrect answer when doing a LEFT JOIN with a WHERE
+    clause constraint that says that one of the columns on the
+    right table of the LEFT JOIN is NULL.
+  * Other minor patches.
+
+- Remove obsolete configure flags
+- Package the Tcl bindings here again so that we only ship one copy
+  of SQLite (bsc#1195773).</comment>
+    <requestid>965652</requestid>
+  </revision>
 </revisionlist>

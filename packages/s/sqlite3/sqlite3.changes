@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 29 08:21:26 UTC 2022 - Reinhard Max <max@suse.com>
+
+- update to 3.38.2:
+  * Fix a problem with the Bloom filter optimization that might
+    cause an incorrect answer when doing a LEFT JOIN with a WHERE
+    clause constraint that says that one of the columns on the
+    right table of the LEFT JOIN is NULL.
+  * Other minor patches.
+
+-------------------------------------------------------------------
+Wed Mar 16 16:24:45 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Remove obsolete configure flags
+- Package the Tcl bindings here again so that we only ship one copy
+  of SQLite (bsc#1195773).
+
+-------------------------------------------------------------------
 Sun Mar 13 16:25:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.38.1:
