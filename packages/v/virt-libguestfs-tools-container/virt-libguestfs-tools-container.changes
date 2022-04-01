@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  1 07:53:00 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Explicitly state the dependency on kubevirt main package
+
+-------------------------------------------------------------------
 Sun Mar  6 16:53:51 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add _constraints (storage)

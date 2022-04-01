@@ -17,6 +17,12 @@ PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%.%RELEASE%"
 
+# Note: the trick with install/remove kubevirt-manifests is needed to ensure
+# that OBS triggers the rebuild of the container whenever the main kubevirt
+# package is updated. Even though there is no direct dependency on the RPM
+# itself, we still need to add proper tags. Having a reference to the build
+# service obs-service-kubevirt_containers_meta in the _service file apparently
+# is not enough.
 RUN zypper -n install \
               bash \
               btrfsprogs \
@@ -29,6 +35,7 @@ RUN zypper -n install \
               guestfs-winsupport \
               jfsutils \
               kernel-kvmsmall \
+              kubevirt-manifests \
               ldmtool \
               libguestfs \
               libguestfs-devel \
@@ -41,6 +48,7 @@ RUN zypper -n install \
               xfsprogs \
               xorriso \
               zerofree && \
+    zypper -n remove kubevirt-manifests && \
     zypper clean -a
 
 COPY entrypoint.sh /entrypoint.sh
