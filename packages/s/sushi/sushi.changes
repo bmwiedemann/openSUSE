@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  1 11:17:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Enable web process (webkitgtk) sandbox.
+
+-------------------------------------------------------------------
 Sun Feb 13 00:10:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add typelib\\(LOKDocView\\) global requires exclude: We do not
