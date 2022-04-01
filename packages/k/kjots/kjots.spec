@@ -1,7 +1,7 @@
 #
 # spec file for package kjots
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ Source0:        https://download.kde.org/stable/kjots/%{version}/src/%{name}-%{v
 # PATCH-FIX-UPSTREAM
 Patch0:         noteshared-add-missing-library-to-link-list.patch
 Patch1:         Adapt-to-new-Akonadi-libraries.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         Fix-akonadi-includes.patch
+Patch3:         Fix-build-with-Akonadi-21.12.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
@@ -46,7 +49,6 @@ BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5PrintSupport)
-Recommends:     %{name}-lang = %{version}
 
 %description
 This package contains KJOTS, a note taking application using Akonadi.

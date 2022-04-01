@@ -89,4 +89,12 @@
   * Adapt-to-new-Akonadi-libraries.patch</comment>
     <requestid>944836</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ee99209c07efde0f08d246b0228f49d1</srcmd5>
+    <version>5.1.0</version>
+    <time>1648841773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966393</requestid>
+  </revision>
 </revisionlist>

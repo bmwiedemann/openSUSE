@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  1 10:30:50 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patches to fix build with Akonadi 22.04:
+  * Fix-akonadi-includes.patch
+  * Fix-build-with-Akonadi-21.12.patch
+- Drop redundant recommendation of the -lang package
+
+-------------------------------------------------------------------
 Tue Nov 30 14:53:36 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patches to fix build with Akonadi 21.12:
