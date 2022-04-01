@@ -277,7 +277,6 @@ fi
 %set_permissions %{squidhelperdir}/pinger
 %set_permissions %{_localstatedir}/cache/squid/
 %set_permissions %{_localstatedir}/log/squid/
-%set_permissions %{squidhelperdir}/basic_pam_auth
 %tmpfiles_create %{_tmpfilesdir}/squid.conf
 %service_add_post squid.service
 
@@ -288,7 +287,6 @@ fi
 %verify_permissions -e %{squidhelperdir}/pinger
 %verify_permissions -e %{_localstatedir}/cache/squid/
 %verify_permissions -e %{_localstatedir}/log/squid/
-%verify_permissions -e %{squidhelperdir}/basic_pam_auth
 
 %postun
 %service_del_postun squid.service

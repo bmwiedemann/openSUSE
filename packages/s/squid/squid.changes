@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 31 14:24:59 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Do not try to set special permissions for basic_pam_auth (bsc#1197649)
+
+-------------------------------------------------------------------
 Tue Mar 29 10:48:38 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Fix upgrade path from squid 4.x where we replaced some symlinks
