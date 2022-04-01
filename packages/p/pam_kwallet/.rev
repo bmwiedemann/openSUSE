@@ -836,4 +836,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>KDE Plasma 5.24.3</comment>
     <requestid>960880</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>976b02490ff79367d17728b19fd10808</srcmd5>
+    <version>5.24.4</version>
+    <time>1648841724</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
+    <requestid>965913</requestid>
+  </revision>
 </revisionlist>
