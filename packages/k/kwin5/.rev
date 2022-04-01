@@ -1388,4 +1388,12 @@
     <comment></comment>
     <requestid>964723</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>48323e3b685309b0790dbdd1dabfe697</srcmd5>
+    <version>5.24.4</version>
+    <time>1648841707</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
+    <requestid>965905</requestid>
+  </revision>
 </revisionlist>

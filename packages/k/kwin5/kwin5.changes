@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:04:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- Changes since 5.24.3:
+  * backends/drm: attempt a modeset on output disabling (kde#449878)
+  * plugins/screencast: Fix a glitch in cursor bitmap
+  * backends/drm: set max bpc in DrmPipeline
+  * backends/drm: fall back to legacy mode in virtual machines (kde#427060)
+  * backends/drm: only allow ARGB8888 as the cursor format
+  * effects/blur: Fix window flickering when the clip intersected with the current blur region. (kde#421135)
+  * screencast: better solution for missing context on cursor move
+  * Revert "screencast: make context current in tryEnqueue"
+  * src/kcmkwin: fix botched indentation code for final checkbox
+  * backends/drm: don't do direct scanout with software rotation
+  * screencast: make context current in tryEnqueue
+  * effects/desktopgrid: don't forget to schedule repaints when timeline is running (kde#444678)
+  * effects/desktopgrid: register down gesture (kde#444694)
+  * inputmethod: Do not reset when hiding
+  * inputmethod: Listen to text-input enablement changes when starting disabled
+- Drop patches, now upstream:
+  * 0001-backends-drm-fall-back-to-legacy-mode-in-virtual-mac.patch
+
+-------------------------------------------------------------------
 Thu Mar 24 16:08:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix client cursor offset in VMs (kde#427060):
