@@ -1456,4 +1456,16 @@ Changes:
     <comment>fix regression</comment>
     <requestid>961965</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>59b91b6851e2be3a93b0869e84f8e8bf</srcmd5>
+    <version>20220329</version>
+    <time>1648841728</time>
+    <user>dimstar_suse</user>
+    <comment>- docker: Add support for --root and --installroot global zypper options
+- debian cross build support via multi-arch (obsoleting cbinstall remnants)
+- Tumbleweed config synced
+- documentation updates
+- smaller bugfixes</comment>
+    <requestid>965580</requestid>
+  </revision>
 </revisionlist>
