@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 21 13:52:37 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Make extended status line support of xterm a switch (boo#1197313)
+
+-------------------------------------------------------------------
+Mon Mar 21 07:42:20 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220319
+  + add xgterm -TD
+  + correct setal in mintty/tmux entries, add to vte-2018 (report by
+    Robert Lange)
+  + add blink to vte-2018 (report by Robert Lange)
+  + improve tic warning about XT versus redundant tsl, etc.
+
+-------------------------------------------------------------------
 Mon Mar 14 07:21:10 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220312

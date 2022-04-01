@@ -27,6 +27,7 @@
 %bcond_with     ada
 %bcond_with     libbsd
 %bcond_with     usepcre2
+%bcond_with     xtermdsl
 
 %if %{with onlytinfo}
 %global soname_tinfo tinfo
@@ -349,6 +350,9 @@ mv tack-* tack
 %patch1 -p0 -b .327x
 %patch2 -p0 -b .hs
 %patch0 -p0 -b .p0
+%if ! %{with xtermdsl}
+sed -ri '/^xterm-suse/,/use=/{s/use=xterm-new/use=xterm-p370/;}' misc/terminfo.src
+%endif
 
 %build
 #

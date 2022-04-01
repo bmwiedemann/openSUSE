@@ -3580,4 +3580,12 @@
   + trim unused return-value from canonical_name().</comment>
     <requestid>961608</requestid>
   </revision>
+  <revision rev="210" vrev="14">
+    <srcmd5>65612090252065d02e5bd6a73c77942b</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1648841687</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>965427</requestid>
+  </revision>
 </revisionlist>
