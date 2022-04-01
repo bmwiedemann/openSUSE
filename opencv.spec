@@ -51,6 +51,7 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 # OpenJPEGTargets.cmake erroneously requires the binaries
 BuildRequires:  openjpeg2
@@ -282,6 +283,8 @@ cp opencv_contrib-%{version}/LICENSE LICENSE.contrib
 rm -f doc/packaging.txt
 
 %build
+%limit_build -m 1700
+
 # openCV does not understand the standard RelWithDebinfo,
 #   but has a separate variable for it
 # Dynamic dispatch: https://github.com/opencv/opencv/wiki/CPU-optimizations-build-options

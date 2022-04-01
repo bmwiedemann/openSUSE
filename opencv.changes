@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 10 11:08:32 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove the memoryperjob constraint which doesn't work as one
+  would expect and breaks ppc64 builds.
+- Use %limit_memory -m 1700 to set the number of concurrent
+  jobs to a sane value and fix OOM errors when building in
+  workers with many cores.
+- Decrease the disk constraint to 9G which seems to be enough
+
+-------------------------------------------------------------------
 Sat Dec 25 17:43:11 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.5.5, highlights below, for details check

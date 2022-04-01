@@ -2,13 +2,10 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">13</size>
+      <size unit="G">9</size>
     </disk>
     <memory>
       <size unit="M">5700</size>
     </memory>
-    <memoryperjob>
-      <size unit="M">1600</size>
-    </memoryperjob>
   </hardware>
 </constraints>
