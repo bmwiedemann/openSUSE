@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 25 14:59:29 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix memory corruption on deflate, bsc#1197459
+  * bsc1197459.patch - CVE-2018-25032
+- Update 410.patch
+  * Remove included patches:
+    bsc1174551-fxi-imcomplete-raw-streams.patch
+    zlib-compression-switching.patch
+    zlib-s390x-z15-fix-hw-compression.patch
+- Refresh bsc1174736-DFLTCC_LEVEL_MASK-set-to-0x1ff.patch
+
+-------------------------------------------------------------------
+Fri Mar 11 17:38:09 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Don't install (internal) crypt.h header in minizip
+  * minizip-dont-install-crypt-header.patch
+
+-------------------------------------------------------------------
 Mon Nov  9 08:00:35 UTC 2020 - Ali Abdallah <ali.abdallah@suse.com>
 
 - Fix hw compression on z15 bsc#1176201

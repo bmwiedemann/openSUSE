@@ -11,15 +11,14 @@ Index: zlib-1.2.11/deflate.c
  
      _tr_init(s);
  
-@@ -601,13 +601,13 @@ int ZEXPORT deflateParams(strm, level, s
+@@ -582,12 +582,12 @@ int ZEXPORT deflateParams(strm, level, s
      func = configuration_table[s->level].func;
  
-     if ((strategy != s->strategy || func != configuration_table[level].func ||
--         hook_flush != Z_NO_FLUSH) && s->high_water) {
-+         hook_flush != Z_NO_FLUSH) && s->last_flush != -2) {
+     if ((strategy != s->strategy || func != configuration_table[level].func) &&
+-        s->high_water) {
++        s->last_flush != -2) {
          /* Flush the last buffer: */
-         int err = deflate(strm, RANK(hook_flush) > RANK(Z_BLOCK) ?
-                           hook_flush : Z_BLOCK);
+         int err = deflate(strm, Z_BLOCK);
          if (err == Z_STREAM_ERROR)
              return err;
 -        if (strm->avail_out == 0)

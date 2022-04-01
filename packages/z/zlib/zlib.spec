@@ -1,7 +1,7 @@
 #
 # spec file for package zlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,16 +36,16 @@ Patch1:         zlib-format.patch
 Patch2:         0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch
 #PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/335
 Patch3:         zlib-power8-fate325307.patch
-#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/410
-Patch4:         410.patch
 #PATCH-FIX-SUSE do not check exact version match as the lib can be updated
 #               we should simply rely on soname versioning to protect us
 Patch5:         zlib-no-version-check.patch
 Patch6:         bsc1174736-DFLTCC_LEVEL_MASK-set-to-0x1ff.patch
-Patch7:         bsc1174551-fxi-imcomplete-raw-streams.patch
-Patch8:         zlib-compression-switching.patch
-#PATCH-FIX-SUSE: bsc#1176201, sent upstream by IBM
-Patch9:         zlib-s390x-z15-fix-hw-compression.patch
+#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/229
+Patch10:        minizip-dont-install-crypt-header.patch
+#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/commit/5c44459c3b28a9bd3283aaceab7c615f8020c531
+Patch11:        bsc1197459.patch
+#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/410
+Patch101:       410.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -134,22 +134,16 @@ It should exit 0
 %patch1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch101 -p1
 cp %{SOURCE4} .
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export LDFLAGS="-Wl,-z,relro,-z,now"
-%ifarch s390x s390
-  export CFLAGS="%{optflags} -DDFLTCC_LEVEL_MASK=0x7e"
-%else
-  export CFLAGS="%{optflags}"
-%endif
 # For sure not autotools build
 CC="cc" ./configure \
     --shared \
@@ -157,6 +151,7 @@ CC="cc" ./configure \
     --libdir=%{_libdir} \
 %ifarch s390x s390
     --dfltcc \
+    --dfltcc-level-mask=0x7e \
 %endif
     %{nil}
 

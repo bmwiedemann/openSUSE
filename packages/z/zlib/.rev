@@ -698,4 +698,12 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
     <comment></comment>
     <requestid>851291</requestid>
   </revision>
+  <revision rev="82" vrev="19">
+    <srcmd5>207bc9f9cee36b9d71336564fa94f024</srcmd5>
+    <version>1.2.11</version>
+    <time>1648841689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965637</requestid>
+  </revision>
 </revisionlist>

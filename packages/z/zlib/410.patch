@@ -1,4 +1,4 @@
-From 79ccd96ec69d2367291568c586aeaae941d2635c Mon Sep 17 00:00:00 2001
+From b25781e735363e04f6c56e21431c47e4afc50b17 Mon Sep 17 00:00:00 2001
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 Date: Wed, 18 Jul 2018 13:14:07 +0200
 Subject: [PATCH] Add support for IBM Z hardware-accelerated deflate
@@ -17,8 +17,8 @@ following build commands should be used:
 When built like this, zlib would compress in hardware on level 1, and in
 software on all other levels. Decompression will always happen in
 hardware. In order to enable DFLTCC compression for levels 1-6 (i.e. to
-make it used by default) one could either add -DDFLTCC_LEVEL_MASK=0x7e
-to CFLAGS at compile time, or set the environment variable
+make it used by default) one could either configure with
+--dfltcc-level-mask=0x7e or set the environment variable
 DFLTCC_LEVEL_MASK to 0x7e at run time.
 
 Two DFLTCC compression calls produce the same results only when they
@@ -34,6 +34,7 @@ DFLTCC does not support every single zlib feature, in particular:
     * inflate(Z_BLOCK) and inflate(Z_TREES)
     * inflateMark()
     * inflatePrime()
+    * inflateSyncPoint()
 
 When used, these functions will either switch to software, or, in case
 this is not possible, gracefully fail.
@@ -63,9 +64,9 @@ the new DEFLATE_RESET_KEEP_HOOK and INFLATE_RESET_KEEP_HOOK macros.
 The new DEFLATE_PARAMS_HOOK switches between hardware and software
 deflate implementations when deflateParams() arguments demand this.
 
-In order to make unsupported inflatePrime() and inflateMark() calls
-fail gracefully, the new INFLATE_PRIME_HOOK and INFLATE_MARK_HOOK macros
-were introduced.
+The new INFLATE_PRIME_HOOK, INFLATE_MARK_HOOK and
+INFLATE_SYNC_POINT_HOOK macros make the respective unsupported calls
+gracefully fail.
 
 The algorithm implemented in hardware has different compression ratio
 than the one implemented in software. In order for deflateBound() to
@@ -95,20 +96,24 @@ might be not allocated yet, inflate_ensure_window was factored out of
 updatewindow and made ZLIB_INTERNAL.
 ---
  Makefile.in                   |   8 +
- configure                     |  20 +
+ compress.c                    |  14 +-
+ configure                     |  24 +
  contrib/README.contrib        |   4 +
- contrib/s390/dfltcc.c         | 920 ++++++++++++++++++++++++++++++++++
- contrib/s390/dfltcc.h         |  55 ++
- contrib/s390/dfltcc_deflate.h |  54 ++
- deflate.c                     |  68 ++-
+ contrib/s390/README.txt       |  17 +
+ contrib/s390/dfltcc.c         | 996 ++++++++++++++++++++++++++++++++++
+ contrib/s390/dfltcc.h         |  81 +++
+ contrib/s390/dfltcc_deflate.h |  55 ++
+ deflate.c                     |  81 ++-
  deflate.h                     |  12 +
  gzguts.h                      |   4 +
- inflate.c                     |  85 +++-
+ inflate.c                     |  87 ++-
  inflate.h                     |   2 +
- test/infcover.c               |   2 +-
+ test/infcover.c               |   4 +-
  test/minigzip.c               |   4 +
  trees.c                       |  13 +-
- 14 files changed, 1197 insertions(+), 54 deletions(-)
+ zutil.h                       |   2 +
+ 17 files changed, 1348 insertions(+), 60 deletions(-)
+ create mode 100644 contrib/s390/README.txt
  create mode 100644 contrib/s390/dfltcc.c
  create mode 100644 contrib/s390/dfltcc.h
  create mode 100644 contrib/s390/dfltcc_deflate.h
@@ -132,6 +137,40 @@ Index: zlib-1.2.11/Makefile.in
  example.o: $(SRCDIR)test/example.c $(SRCDIR)zlib.h zconf.h
  	$(CC) $(CFLAGS) $(ZINCOUT) -c -o $@ $(SRCDIR)test/example.c
  
+Index: zlib-1.2.11/compress.c
+===================================================================
+--- zlib-1.2.11.orig/compress.c
++++ zlib-1.2.11/compress.c
+@@ -5,9 +5,15 @@
+ 
+ /* @(#) $Id$ */
+ 
+-#define ZLIB_INTERNAL
++#include "zutil.h"
+ #include "zlib.h"
+ 
++#ifdef DFLTCC
++#  include "contrib/s390/dfltcc.h"
++#else
++#define DEFLATE_BOUND_COMPLEN(source_len) 0
++#endif
++
+ /* ===========================================================================
+      Compresses the source buffer into the destination buffer. The level
+    parameter has the same meaning as in deflateInit.  sourceLen is the byte
+@@ -81,6 +87,12 @@ int ZEXPORT compress (dest, destLen, sou
+ uLong ZEXPORT compressBound (sourceLen)
+     uLong sourceLen;
+ {
++    uLong complen = DEFLATE_BOUND_COMPLEN(sourceLen);
++
++    if (complen > 0)
++	/* Architecture-specific code provided an upper bound. */
++	return complen + ZLIB_WRAPLEN;
++
+     return sourceLen + (sourceLen >> 12) + (sourceLen >> 14) +
+            (sourceLen >> 25) + 13;
+ }
 Index: zlib-1.2.11/configure
 ===================================================================
 --- zlib-1.2.11.orig/configure
@@ -140,11 +179,11 @@ Index: zlib-1.2.11/configure
        echo '  configure [--const] [--zprefix] [--prefix=PREFIX]  [--eprefix=EXPREFIX]' | tee -a configure.log
        echo '    [--static] [--64] [--libdir=LIBDIR] [--sharedlibdir=LIBDIR]' | tee -a configure.log
        echo '    [--includedir=INCLUDEDIR] [--archs="-arch i386 -arch x86_64"]' | tee -a configure.log
-+      echo '    [--dfltcc]' | tee -a configure.log
++      echo '    [--dfltcc] [--dfltcc-level-mask=MASK]' | tee -a configure.log
          exit 0 ;;
      -p*=* | --prefix=*) prefix=`echo $1 | sed 's/.*=//'`; shift ;;
      -e*=* | --eprefix=*) exec_prefix=`echo $1 | sed 's/.*=//'`; shift ;;
-@@ -137,6 +138,12 @@ case "$1" in
+@@ -137,6 +138,16 @@ case "$1" in
      -c* | --const) zconst=1; shift ;;
      -w* | --warn) warn=1; shift ;;
      -d* | --debug) debug=1; shift ;;
@@ -154,10 +193,14 @@ Index: zlib-1.2.11/configure
 +      PIC_OBJC="$PIC_OBJC dfltcc.lo"
 +      shift
 +      ;;
++    --dfltcc-level-mask=*)
++      CFLAGS="$CFLAGS -DDFLTCC_LEVEL_MASK=`echo $1 | sed 's/.*=//'`"
++      shift
++      ;;
      *)
        echo "unknown option: $1" | tee -a configure.log
        echo "$0 --help for help" | tee -a configure.log
-@@ -911,6 +918,19 @@ EOF
+@@ -911,6 +922,19 @@ EOF
    fi
  fi
  
@@ -166,7 +209,7 @@ Index: zlib-1.2.11/configure
 +#include <sys/sdt.h>
 +int main() { return 0; }
 +EOF
-+if try ${CC} ${CFLAGS} $test.c; then
++if try $CC -c $CFLAGS $test.c; then
 +    echo "Checking for sys/sdt.h ... Yes." | tee -a configure.log
 +    CFLAGS="$CFLAGS -DHAVE_SYS_SDT_H"
 +    SFLAGS="$SFLAGS -DHAVE_SYS_SDT_H"
@@ -192,11 +235,33 @@ Index: zlib-1.2.11/contrib/README.contrib
  testzlib/   by Gilles Vollant <info@winimage.com>
          Example of the use of zlib
  
+Index: zlib-1.2.11/contrib/s390/README.txt
+===================================================================
+--- /dev/null
++++ zlib-1.2.11/contrib/s390/README.txt
+@@ -0,0 +1,17 @@
++IBM Z mainframes starting from version z15 provide DFLTCC instruction,
++which implements deflate algorithm in hardware with estimated
++compression and decompression performance orders of magnitude faster
++than the current zlib and ratio comparable with that of level 1.
++
++This directory adds DFLTCC support. In order to enable it, the following
++build commands should be used:
++
++    $ ./configure --dfltcc
++    $ make
++
++When built like this, zlib would compress in hardware on level 1, and in
++software on all other levels. Decompression will always happen in
++hardware. In order to enable DFLTCC compression for levels 1-6 (i.e. to
++make it used by default) one could either configure with
++--dfltcc-level-mask=0x7e or set the environment variable
++DFLTCC_LEVEL_MASK to 0x7e at run time.
 Index: zlib-1.2.11/contrib/s390/dfltcc.c
 ===================================================================
 --- /dev/null
 +++ zlib-1.2.11/contrib/s390/dfltcc.c
-@@ -0,0 +1,920 @@
+@@ -0,0 +1,996 @@
 +/* dfltcc.c - SystemZ DEFLATE CONVERSION CALL support. */
 +
 +/*
@@ -208,6 +273,7 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +
 +#define _GNU_SOURCE
 +#include <ctype.h>
++#include <errno.h>
 +#include <inttypes.h>
 +#include <stddef.h>
 +#include <stdio.h>
@@ -549,8 +615,12 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +    int soft_bcc;
 +    int no_flush;
 +
-+    if (!dfltcc_can_deflate(strm))
++    if (!dfltcc_can_deflate(strm)) {
++        /* Clear history. */
++        if (flush == Z_FULL_FLUSH)
++            param->hl = 0;
 +        return 0;
++    }
 +
 +again:
 +    masked_avail_in = 0;
@@ -575,7 +645,8 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +        /* Clear history. */
 +        if (flush == Z_FULL_FLUSH)
 +            param->hl = 0;
-+        *result = need_more;
++        /* Trigger block post-processing if necessary. */
++        *result = no_flush ? need_more : block_done;
 +        return 1;
 +    }
 +
@@ -602,11 +673,16 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +            param->bcf = 0;
 +            dfltcc_state->block_threshold =
 +                strm->total_in + dfltcc_state->block_size;
-+            if (strm->avail_out == 0) {
-+                *result = need_more;
-+                return 1;
-+            }
 +        }
++    }
++
++    /* No space for compressed data. If we proceed, dfltcc_cmpr() will return
++     * DFLTCC_CC_OP1_TOO_SHORT without buffering header bits, but we will still
++     * set BCF=1, which is wrong. Avoid complications and return early.
++     */
++    if (strm->avail_out == 0) {
++        *result = need_more;
++        return 1;
 +    }
 +
 +    /* The caller gave us too much data. Pass only one block worth of
@@ -852,6 +928,110 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +    return 0;
 +}
 +
++local int env_dfltcc_disabled;
++local int env_source_date_epoch;
++local unsigned long env_level_mask;
++local unsigned long env_block_size;
++local unsigned long env_block_threshold;
++local unsigned long env_dht_threshold;
++local unsigned long env_ribm;
++local uint64_t cpu_facilities[(DFLTCC_FACILITY / 64) + 1];
++local struct dfltcc_qaf_param cpu_af __attribute__((aligned(8)));
++
++local inline int is_dfltcc_enabled OF((void));
++local inline int is_dfltcc_enabled(void)
++{
++    if (env_dfltcc_disabled)
++      /* User has explicitly disabled DFLTCC. */
++      return 0;
++
++    return is_bit_set((const char *)cpu_facilities, DFLTCC_FACILITY);
++}
++
++local unsigned long xstrtoul OF((const char *s, unsigned long _default));
++local unsigned long xstrtoul(s, _default)
++    const char *s;
++    unsigned long _default;
++{
++    char *endptr;
++    unsigned long result;
++
++    if (!(s && *s))
++        return _default;
++    errno = 0;
++    result = strtoul(s, &endptr, 0);
++    return (errno || *endptr) ? _default : result;
++}
++
++__attribute__((constructor)) local void init_globals OF((void));
++__attribute__((constructor)) local void init_globals(void)
++{
++    const char *endptr;
++    const char *env;
++    register char r0 __asm__("r0");
++
++    env = secure_getenv("DFLTCC");
++    env_dfltcc_disabled = env && !strcmp(env, "0");
++
++    env = secure_getenv("SOURCE_DATE_EPOCH");
++    env_source_date_epoch = !!env;
++
++#ifndef DFLTCC_LEVEL_MASK
++#define DFLTCC_LEVEL_MASK 0x2
++#endif
++    env_level_mask = xstrtoul(secure_getenv("DFLTCC_LEVEL_MASK"),
++                              DFLTCC_LEVEL_MASK);
++
++#ifndef DFLTCC_BLOCK_SIZE
++#define DFLTCC_BLOCK_SIZE 1048576
++#endif
++    env_block_size = xstrtoul(secure_getenv("DFLTCC_BLOCK_SIZE"),
++                              DFLTCC_BLOCK_SIZE);
++
++#ifndef DFLTCC_FIRST_FHT_BLOCK_SIZE
++#define DFLTCC_FIRST_FHT_BLOCK_SIZE 4096
++#endif
++    env_block_threshold = xstrtoul(secure_getenv("DFLTCC_FIRST_FHT_BLOCK_SIZE"),
++                                   DFLTCC_FIRST_FHT_BLOCK_SIZE);
++
++#ifndef DFLTCC_DHT_MIN_SAMPLE_SIZE
++#define DFLTCC_DHT_MIN_SAMPLE_SIZE 4096
++#endif
++    env_dht_threshold = xstrtoul(secure_getenv("DFLTCC_DHT_MIN_SAMPLE_SIZE"),
++                                 DFLTCC_DHT_MIN_SAMPLE_SIZE);
++
++#ifndef DFLTCC_RIBM
++#define DFLTCC_RIBM 0
++#endif
++    env_ribm = xstrtoul(secure_getenv("DFLTCC_RIBM"), DFLTCC_RIBM);
++
++    memset(cpu_facilities, 0, sizeof(cpu_facilities));
++    r0 = sizeof(cpu_facilities) / sizeof(cpu_facilities[0]) - 1;
++    /* STFLE is supported since z9-109 and only in z/Architecture mode. When
++     * compiling with -m31, gcc defaults to ESA mode, however, since the kernel
++     * is 64-bit, it's always z/Architecture mode at runtime.
++     */
++    __asm__ volatile(
++#ifndef __clang__
++                     ".machinemode push\n"
++                     ".machinemode zarch\n"
++#endif
++                     "stfle %[facilities]\n"
++#ifndef __clang__
++                     ".machinemode pop\n"
++#endif
++                     : [facilities] "=Q" (cpu_facilities)
++                     , [r0] "+r" (r0)
++                     :
++                     : "cc");
++
++    /* Initialize available functions */
++    if (is_dfltcc_enabled())
++        dfltcc(DFLTCC_QAF, &cpu_af, NULL, NULL, NULL, NULL, NULL);
++    else
++        memset(&cpu_af, 0, sizeof(cpu_af));
++}
++
 +/*
 +   Memory management.
 +
@@ -860,53 +1040,16 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +   `posix_memalign' is not an option. Thus, we overallocate and take the
 +   aligned portion of the buffer.
 +*/
-+local inline int is_dfltcc_enabled OF((void));
-+local inline int is_dfltcc_enabled(void)
-+{
-+    const char *env;
-+    uint64_t facilities[(DFLTCC_FACILITY / 64) + 1];
-+    register char r0 __asm__("r0");
-+
-+    env = secure_getenv("DFLTCC");
-+    if (env && !strcmp(env, "0"))
-+      /* User has explicitly disabled DFLTCC. */
-+      return 0;
-+
-+    memset(facilities, 0, sizeof(facilities));
-+    r0 = sizeof(facilities) / sizeof(facilities[0]) - 1;
-+    /* STFLE is supported since z9-109 and only in z/Architecture mode. When
-+     * compiling with -m31, gcc defaults to ESA mode, however, since the kernel
-+     * is 64-bit, it's always z/Architecture mode at runtime.
-+     */
-+    __asm__ volatile(".machinemode push\n"
-+                     ".machinemode zarch\n"
-+                     "stfle %[facilities]\n"
-+                     ".machinemode pop\n"
-+                     : [facilities] "=Q" (facilities)
-+                     , [r0] "+r" (r0)
-+                     :
-+                     : "cc");
-+    return is_bit_set((const char *)facilities, DFLTCC_FACILITY);
-+}
-+
 +void ZLIB_INTERNAL dfltcc_reset(strm, size)
 +    z_streamp strm;
 +    uInt size;
 +{
 +    struct dfltcc_state *dfltcc_state =
 +        (struct dfltcc_state *)((char FAR *)strm->state + ALIGN_UP(size, 8));
-+    struct dfltcc_qaf_param *param =
-+        (struct dfltcc_qaf_param *)&dfltcc_state->param;
-+    const char *s;
 +
-+    /* Initialize available functions */
-+    if (is_dfltcc_enabled()) {
-+        dfltcc(DFLTCC_QAF, param, NULL, NULL, NULL, NULL, NULL);
-+        memmove(&dfltcc_state->af, param, sizeof(dfltcc_state->af));
-+    } else
-+        memset(&dfltcc_state->af, 0, sizeof(dfltcc_state->af));
++    memcpy(&dfltcc_state->af, &cpu_af, sizeof(dfltcc_state->af));
 +
-+    if (secure_getenv("SOURCE_DATE_EPOCH"))
++    if (env_source_date_epoch)
 +        /* User needs reproducible results, but the output of DFLTCC_CMPR
 +         * depends on buffers' page offsets.
 +         */
@@ -917,36 +1060,11 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +    dfltcc_state->param.nt = 1;
 +
 +    /* Initialize tuning parameters */
-+#ifndef DFLTCC_LEVEL_MASK
-+#define DFLTCC_LEVEL_MASK 0x2
-+#endif
-+    s = secure_getenv("DFLTCC_LEVEL_MASK");
-+    dfltcc_state->level_mask = (s && *s) ? strtoul(s, NULL, 0) :
-+                                           DFLTCC_LEVEL_MASK;
-+#ifndef DFLTCC_BLOCK_SIZE
-+#define DFLTCC_BLOCK_SIZE 1048576
-+#endif
-+    s = secure_getenv("DFLTCC_BLOCK_SIZE");
-+    dfltcc_state->block_size = (s && *s) ? strtoul(s, NULL, 0) :
-+                                           DFLTCC_BLOCK_SIZE;
-+#ifndef DFLTCC_FIRST_FHT_BLOCK_SIZE
-+#define DFLTCC_FIRST_FHT_BLOCK_SIZE 4096
-+#endif
-+    s = secure_getenv("DFLTCC_FIRST_FHT_BLOCK_SIZE");
-+    dfltcc_state->block_threshold = (s && *s) ? strtoul(s, NULL, 0) :
-+                                                DFLTCC_FIRST_FHT_BLOCK_SIZE;
-+#ifndef DFLTCC_DHT_MIN_SAMPLE_SIZE
-+#define DFLTCC_DHT_MIN_SAMPLE_SIZE 4096
-+#endif
-+    s = secure_getenv("DFLTCC_DHT_MIN_SAMPLE_SIZE");
-+    dfltcc_state->dht_threshold = (s && *s) ? strtoul(s, NULL, 0) :
-+                                              DFLTCC_DHT_MIN_SAMPLE_SIZE;
-+#ifndef DFLTCC_RIBM
-+#define DFLTCC_RIBM 0
-+#endif
-+    s = secure_getenv("DFLTCC_RIBM");
-+    dfltcc_state->param.ribm = (s && *s) ? strtoul(s, NULL, 0) :
-+                                           DFLTCC_RIBM;
++    dfltcc_state->level_mask = env_level_mask;
++    dfltcc_state->block_size = env_block_size;
++    dfltcc_state->block_threshold = env_block_threshold;
++    dfltcc_state->dht_threshold = env_dht_threshold;
++    dfltcc_state->param.ribm = env_ribm;
 +}
 +
 +voidpf ZLIB_INTERNAL dfltcc_alloc_state(strm, items, size)
@@ -1034,6 +1152,28 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +    return Z_OK;
 +}
 +
++int ZLIB_INTERNAL dfltcc_deflate_done(strm, flush)
++    z_streamp strm;
++    int flush;
++{
++    deflate_state FAR *state = (deflate_state FAR *)strm->state;
++    struct dfltcc_state FAR *dfltcc_state = GET_DFLTCC_STATE(state);
++    struct dfltcc_param_v0 FAR *param = &dfltcc_state->param;
++
++    /* When deflate(Z_FULL_FLUSH) is called with small avail_out, it might
++     * close the block without resetting the compression state. Detect this
++     * situation and return that deflation is not done.
++     */
++    if (flush == Z_FULL_FLUSH && strm->avail_out == 0)
++        return 0;
++
++    /* Return that deflation is not done if DFLTCC is used and either it
++     * buffered some data (Continuation Flag is set), or has not written EOBS
++     * yet (Block-Continuation Flag is set).
++     */
++    return !dfltcc_can_deflate(strm) || (!param->cf && !param->bcf);
++}
++
 +/*
 +   Preloading history.
 +*/
@@ -1087,6 +1227,7 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.c
 +
 +    append_history(param, state->window, dictionary, dict_length);
 +    state->strstart = 1; /* Add FDICT to zlib header */
++    state->block_start = state->strstart; /* Make deflate_stored happy */
 +    return Z_OK;
 +}
 +
@@ -1121,7 +1262,7 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.h
 ===================================================================
 --- /dev/null
 +++ zlib-1.2.11/contrib/s390/dfltcc.h
-@@ -0,0 +1,55 @@
+@@ -0,0 +1,81 @@
 +#ifndef DFLTCC_H
 +#define DFLTCC_H
 +
@@ -1136,6 +1277,28 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.h
 +voidpf ZLIB_INTERNAL dfltcc_alloc_window OF((z_streamp strm, uInt items,
 +                                             uInt size));
 +void ZLIB_INTERNAL dfltcc_free_window OF((z_streamp strm, voidpf w));
++#define DFLTCC_BLOCK_HEADER_BITS 3
++#define DFLTCC_HLITS_COUNT_BITS 5
++#define DFLTCC_HDISTS_COUNT_BITS 5
++#define DFLTCC_HCLENS_COUNT_BITS 4
++#define DFLTCC_MAX_HCLENS 19
++#define DFLTCC_HCLEN_BITS 3
++#define DFLTCC_MAX_HLITS 286
++#define DFLTCC_MAX_HDISTS 30
++#define DFLTCC_MAX_HLIT_HDIST_BITS 7
++#define DFLTCC_MAX_SYMBOL_BITS 16
++#define DFLTCC_MAX_EOBS_BITS 15
++#define DFLTCC_MAX_PADDING_BITS 7
++#define DEFLATE_BOUND_COMPLEN(source_len) \
++    ((DFLTCC_BLOCK_HEADER_BITS + \
++      DFLTCC_HLITS_COUNT_BITS + \
++      DFLTCC_HDISTS_COUNT_BITS + \
++      DFLTCC_HCLENS_COUNT_BITS + \
++      DFLTCC_MAX_HCLENS * DFLTCC_HCLEN_BITS + \
++      (DFLTCC_MAX_HLITS + DFLTCC_MAX_HDISTS) * DFLTCC_MAX_HLIT_HDIST_BITS + \
++      (source_len) * DFLTCC_MAX_SYMBOL_BITS + \
++      DFLTCC_MAX_EOBS_BITS + \
++      DFLTCC_MAX_PADDING_BITS) >> 3)
 +int ZLIB_INTERNAL dfltcc_can_inflate OF((z_streamp strm));
 +typedef enum {
 +    DFLTCC_INFLATE_CONTINUE,
@@ -1175,13 +1338,17 @@ Index: zlib-1.2.11/contrib/s390/dfltcc.h
 +    do { \
 +        if (dfltcc_was_inflate_used((strm))) return -(1L << 16); \
 +    } while (0)
++#define INFLATE_SYNC_POINT_HOOK(strm) \
++    do { \
++        if (dfltcc_was_inflate_used((strm))) return Z_STREAM_ERROR; \
++    } while (0)
 +
 +#endif
 Index: zlib-1.2.11/contrib/s390/dfltcc_deflate.h
 ===================================================================
 --- /dev/null
 +++ zlib-1.2.11/contrib/s390/dfltcc_deflate.h
-@@ -0,0 +1,54 @@
+@@ -0,0 +1,55 @@
 +#ifndef DFLTCC_DEFLATE_H
 +#define DFLTCC_DEFLATE_H
 +
@@ -1195,6 +1362,7 @@ Index: zlib-1.2.11/contrib/s390/dfltcc_deflate.h
 +                                            int level,
 +                                            int strategy,
 +                                            int *flush));
++int ZLIB_INTERNAL dfltcc_deflate_done OF((z_streamp strm, int flush));
 +int ZLIB_INTERNAL dfltcc_deflate_set_dictionary OF((z_streamp strm,
 +                                                    const Bytef *dictionary,
 +                                                    uInt dict_length));
@@ -1225,11 +1393,11 @@ Index: zlib-1.2.11/contrib/s390/dfltcc_deflate.h
 +        if (err == Z_STREAM_ERROR) \
 +            return err; \
 +    } while (0)
++#define DEFLATE_DONE dfltcc_deflate_done
 +#define DEFLATE_BOUND_ADJUST_COMPLEN(strm, complen, source_len) \
 +    do { \
 +        if (dfltcc_can_deflate((strm))) \
-+            (complen) = (3 + 5 + 5 + 4 + 19 * 3 + (286 + 30) * 7 + \
-+                         (source_len) * 16 + 15 + 7) >> 3; \
++            (complen) = DEFLATE_BOUND_COMPLEN(source_len); \
 +    } while (0)
 +#define DEFLATE_NEED_CONSERVATIVE_BOUND(strm) (dfltcc_can_deflate((strm)))
 +#define DEFLATE_HOOK dfltcc_deflate
@@ -1240,7 +1408,7 @@ Index: zlib-1.2.11/deflate.c
 ===================================================================
 --- zlib-1.2.11.orig/deflate.c
 +++ zlib-1.2.11/deflate.c
-@@ -61,15 +61,29 @@ const char deflate_copyright[] =
+@@ -61,15 +61,30 @@ const char deflate_copyright[] =
   */
  
  /* ===========================================================================
@@ -1265,6 +1433,7 @@ Index: zlib-1.2.11/deflate.c
 +#define DEFLATE_GET_DICTIONARY_HOOK(strm, dict, dict_len) do {} while (0)
 +#define DEFLATE_RESET_KEEP_HOOK(strm) do {} while (0)
 +#define DEFLATE_PARAMS_HOOK(strm, level, strategy, hook_flush) do {} while (0)
++#define DEFLATE_DONE(strm, flush) 1
 +#define DEFLATE_BOUND_ADJUST_COMPLEN(strm, complen, sourceLen) do {} while (0)
 +#define DEFLATE_NEED_CONSERVATIVE_BOUND(strm) 0
 +#define DEFLATE_HOOK(strm, flush, bstate) 0
@@ -1277,7 +1446,7 @@ Index: zlib-1.2.11/deflate.c
  typedef block_state (*compress_func) OF((deflate_state *s, int flush));
  /* Compression function. Returns the block state after the call. */
  
-@@ -85,7 +99,6 @@ local block_state deflate_rle    OF((def
+@@ -85,7 +100,6 @@ local block_state deflate_rle    OF((def
  local block_state deflate_huff   OF((deflate_state *s, int flush));
  local void lm_init        OF((deflate_state *s));
  local void putShortMSB    OF((deflate_state *s, uInt b));
@@ -1285,7 +1454,7 @@ Index: zlib-1.2.11/deflate.c
  local unsigned read_buf   OF((z_streamp strm, Bytef *buf, unsigned size));
  #ifdef ASMV
  #  pragma message("Assembler code may have bugs -- use at your own risk")
-@@ -301,7 +314,7 @@ int ZEXPORT deflateInit2_(strm, level, m
+@@ -291,7 +305,7 @@ int ZEXPORT deflateInit2_(strm, level, m
          return Z_STREAM_ERROR;
      }
      if (windowBits == 8) windowBits = 9;  /* until 256-byte window bug fixed */
@@ -1294,7 +1463,7 @@ Index: zlib-1.2.11/deflate.c
      if (s == Z_NULL) return Z_MEM_ERROR;
      strm->state = (struct internal_state FAR *)s;
      s->strm = strm;
-@@ -318,7 +331,7 @@ int ZEXPORT deflateInit2_(strm, level, m
+@@ -308,7 +322,7 @@ int ZEXPORT deflateInit2_(strm, level, m
      s->hash_mask = s->hash_size - 1;
      s->hash_shift =  ((s->hash_bits+MIN_MATCH-1)/MIN_MATCH);
  
@@ -1303,7 +1472,7 @@ Index: zlib-1.2.11/deflate.c
      s->prev   = (Posf *)  ZALLOC(strm, s->w_size, sizeof(Pos));
      s->head   = (Posf *)  ZALLOC(strm, s->hash_size, sizeof(Pos));
  
-@@ -394,6 +407,7 @@ int ZEXPORT deflateSetDictionary (strm,
+@@ -426,6 +440,7 @@ int ZEXPORT deflateSetDictionary (strm,
      /* when using zlib wrappers, compute Adler-32 for provided dictionary */
      if (wrap == 1)
          strm->adler = adler32(strm->adler, dictionary, dictLength);
@@ -1311,7 +1480,7 @@ Index: zlib-1.2.11/deflate.c
      s->wrap = 0;                    /* avoid computing Adler-32 in read_buf */
  
      /* if dictionary would fill window, just replace the history */
-@@ -452,6 +466,7 @@ int ZEXPORT deflateGetDictionary (strm,
+@@ -484,6 +499,7 @@ int ZEXPORT deflateGetDictionary (strm,
  
      if (deflateStateCheck(strm))
          return Z_STREAM_ERROR;
@@ -1319,7 +1488,7 @@ Index: zlib-1.2.11/deflate.c
      s = strm->state;
      len = s->strstart + s->lookahead;
      if (len > s->w_size)
-@@ -498,6 +513,8 @@ int ZEXPORT deflateResetKeep (strm)
+@@ -530,6 +546,8 @@ int ZEXPORT deflateResetKeep (strm)
  
      _tr_init(s);
  
@@ -1328,7 +1497,7 @@ Index: zlib-1.2.11/deflate.c
      return Z_OK;
  }
  
-@@ -572,6 +589,7 @@ int ZEXPORT deflateParams(strm, level, s
+@@ -604,6 +622,7 @@ int ZEXPORT deflateParams(strm, level, s
  {
      deflate_state *s;
      compress_func func;
@@ -1336,7 +1505,7 @@ Index: zlib-1.2.11/deflate.c
  
      if (deflateStateCheck(strm)) return Z_STREAM_ERROR;
      s = strm->state;
-@@ -584,12 +602,14 @@ int ZEXPORT deflateParams(strm, level, s
+@@ -616,15 +635,18 @@ int ZEXPORT deflateParams(strm, level, s
      if (level < 0 || level > 9 || strategy < 0 || strategy > Z_FIXED) {
          return Z_STREAM_ERROR;
      }
@@ -1344,17 +1513,22 @@ Index: zlib-1.2.11/deflate.c
      func = configuration_table[s->level].func;
  
 -    if ((strategy != s->strategy || func != configuration_table[level].func) &&
--        s->high_water) {
-+    if ((strategy != s->strategy || func != configuration_table[level].func ||
-+         hook_flush != Z_NO_FLUSH) && s->high_water) {
+-        s->last_flush != -2) {
++    if (((strategy != s->strategy || func != configuration_table[level].func) &&
++         s->last_flush != -2) || hook_flush != Z_NO_FLUSH) {
          /* Flush the last buffer: */
 -        int err = deflate(strm, Z_BLOCK);
-+        int err = deflate(strm, RANK(hook_flush) > RANK(Z_BLOCK) ?
-+                          hook_flush : Z_BLOCK);
++        int flush = RANK(hook_flush) > RANK(Z_BLOCK) ? hook_flush : Z_BLOCK;
++        int err = deflate(strm, flush);
          if (err == Z_STREAM_ERROR)
              return err;
-         if (strm->avail_out == 0)
-@@ -659,6 +679,7 @@ uLong ZEXPORT deflateBound(strm, sourceL
+-        if (strm->avail_in || (s->strstart - s->block_start) + s->lookahead)
++        if (strm->avail_in || (s->strstart - s->block_start) + s->lookahead ||
++            !DEFLATE_DONE(strm, flush))
+             return Z_BUF_ERROR;
+     }
+     if (s->level != level) {
+@@ -691,6 +713,7 @@ uLong ZEXPORT deflateBound(strm, sourceL
      /* conservative upper bound for compressed data */
      complen = sourceLen +
                ((sourceLen + 7) >> 3) + ((sourceLen + 63) >> 6) + 5;
@@ -1362,7 +1536,7 @@ Index: zlib-1.2.11/deflate.c
  
      /* if can't get parameters, return conservative bound plus zlib wrapper */
      if (deflateStateCheck(strm))
-@@ -700,7 +721,8 @@ uLong ZEXPORT deflateBound(strm, sourceL
+@@ -732,7 +755,8 @@ uLong ZEXPORT deflateBound(strm, sourceL
      }
  
      /* if not default parameters, return conservative bound */
@@ -1372,7 +1546,7 @@ Index: zlib-1.2.11/deflate.c
          return complen + wraplen;
  
      /* default settings: return tight bound for that case */
-@@ -727,7 +749,7 @@ local void putShortMSB (s, b)
+@@ -759,7 +783,7 @@ local void putShortMSB (s, b)
   * applications may wish to modify it to avoid allocating a large
   * strm->next_out buffer and copying into it. (See also read_buf()).
   */
@@ -1381,7 +1555,7 @@ Index: zlib-1.2.11/deflate.c
      z_streamp strm;
  {
      unsigned len;
-@@ -997,7 +1019,8 @@ int ZEXPORT deflate (strm, flush)
+@@ -1029,7 +1053,8 @@ int ZEXPORT deflate (strm, flush)
          (flush != Z_NO_FLUSH && s->status != FINISH_STATE)) {
          block_state bstate;
  
@@ -1391,7 +1565,7 @@ Index: zlib-1.2.11/deflate.c
                   s->strategy == Z_HUFFMAN_ONLY ? deflate_huff(s, flush) :
                   s->strategy == Z_RLE ? deflate_rle(s, flush) :
                   (*(configuration_table[s->level].func))(s, flush);
-@@ -1086,9 +1109,9 @@ int ZEXPORT deflateEnd (strm)
+@@ -1118,9 +1143,9 @@ int ZEXPORT deflateEnd (strm)
      TRY_FREE(strm, strm->state->pending_buf);
      TRY_FREE(strm, strm->state->head);
      TRY_FREE(strm, strm->state->prev);
@@ -1403,7 +1577,7 @@ Index: zlib-1.2.11/deflate.c
      strm->state = Z_NULL;
  
      return status == BUSY_STATE ? Z_DATA_ERROR : Z_OK;
-@@ -1119,13 +1142,13 @@ int ZEXPORT deflateCopy (dest, source)
+@@ -1150,13 +1175,13 @@ int ZEXPORT deflateCopy (dest, source)
  
      zmemcpy((voidpf)dest, (voidpf)source, sizeof(z_stream));
  
@@ -1419,8 +1593,8 @@ Index: zlib-1.2.11/deflate.c
 +    ds->window = (Bytef *) ZALLOC_WINDOW(dest, ds->w_size, 2*sizeof(Byte));
      ds->prev   = (Posf *)  ZALLOC(dest, ds->w_size, sizeof(Pos));
      ds->head   = (Posf *)  ZALLOC(dest, ds->hash_size, sizeof(Pos));
-     overlay = (ushf *) ZALLOC(dest, ds->lit_bufsize, sizeof(ush)+2);
-@@ -1174,7 +1197,8 @@ local unsigned read_buf(strm, buf, size)
+     ds->pending_buf = (uchf *) ZALLOC(dest, ds->lit_bufsize, 4);
+@@ -1203,7 +1228,8 @@ local unsigned read_buf(strm, buf, size)
      strm->avail_in  -= len;
  
      zmemcpy(buf, strm->next_in, len);
@@ -1434,7 +1608,7 @@ Index: zlib-1.2.11/deflate.h
 ===================================================================
 --- zlib-1.2.11.orig/deflate.h
 +++ zlib-1.2.11/deflate.h
-@@ -304,6 +304,7 @@ void ZLIB_INTERNAL _tr_flush_bits OF((de
+@@ -299,6 +299,7 @@ void ZLIB_INTERNAL _tr_flush_bits OF((de
  void ZLIB_INTERNAL _tr_align OF((deflate_state *s));
  void ZLIB_INTERNAL _tr_stored_block OF((deflate_state *s, charf *buf,
                          ulg stored_len, int last));
@@ -1442,7 +1616,7 @@ Index: zlib-1.2.11/deflate.h
  
  #define d_code(dist) \
     ((dist) < 256 ? _dist_code[dist] : _dist_code[256+((dist)>>7)])
-@@ -346,4 +347,15 @@ void ZLIB_INTERNAL _tr_stored_block OF((
+@@ -343,4 +344,15 @@ void ZLIB_INTERNAL _tr_stored_block OF((
                flush = _tr_tally(s, distance, length)
  #endif
  
@@ -1478,7 +1652,7 @@ Index: zlib-1.2.11/inflate.c
 ===================================================================
 --- zlib-1.2.11.orig/inflate.c
 +++ zlib-1.2.11/inflate.c
-@@ -85,6 +85,23 @@
+@@ -85,6 +85,24 @@
  #include "inflate.h"
  #include "inffast.h"
  
@@ -1497,12 +1671,13 @@ Index: zlib-1.2.11/inflate.c
 +#define INFLATE_NEED_CHECKSUM(strm) 1
 +#define INFLATE_NEED_UPDATEWINDOW(strm) 1
 +#define INFLATE_MARK_HOOK(strm) do {} while (0)
++#define INFLATE_SYNC_POINT_HOOK(strm) do {} while (0)
 +#endif
 +
  #ifdef MAKEFIXED
  #  ifndef BUILDFIXED
  #    define BUILDFIXED
-@@ -137,6 +154,7 @@ z_streamp strm;
+@@ -137,6 +155,7 @@ z_streamp strm;
      state->lencode = state->distcode = state->next = state->codes;
      state->sane = 1;
      state->back = -1;
@@ -1510,7 +1685,7 @@ Index: zlib-1.2.11/inflate.c
      Tracev((stderr, "inflate: reset\n"));
      return Z_OK;
  }
-@@ -182,7 +200,7 @@ int windowBits;
+@@ -182,7 +201,7 @@ int windowBits;
      if (windowBits && (windowBits < 8 || windowBits > 15))
          return Z_STREAM_ERROR;
      if (state->window != Z_NULL && state->wbits != (unsigned)windowBits) {
@@ -1519,7 +1694,7 @@ Index: zlib-1.2.11/inflate.c
          state->window = Z_NULL;
      }
  
-@@ -221,7 +239,7 @@ int stream_size;
+@@ -218,7 +237,7 @@ int stream_size;
          strm->zfree = zcfree;
  #endif
      state = (struct inflate_state FAR *)
@@ -1528,7 +1703,7 @@ Index: zlib-1.2.11/inflate.c
      if (state == Z_NULL) return Z_MEM_ERROR;
      Tracev((stderr, "inflate: allocated\n"));
      strm->state = (struct internal_state FAR *)state;
-@@ -230,7 +248,7 @@ int stream_size;
+@@ -227,7 +246,7 @@ int stream_size;
      state->mode = HEAD;     /* to pass state test in inflateReset2() */
      ret = inflateReset2(strm, windowBits);
      if (ret != Z_OK) {
@@ -1537,7 +1712,7 @@ Index: zlib-1.2.11/inflate.c
          strm->state = Z_NULL;
      }
      return ret;
-@@ -252,6 +270,7 @@ int value;
+@@ -249,6 +268,7 @@ int value;
      struct inflate_state FAR *state;
  
      if (inflateStateCheck(strm)) return Z_STREAM_ERROR;
@@ -1545,7 +1720,7 @@ Index: zlib-1.2.11/inflate.c
      state = (struct inflate_state FAR *)strm->state;
      if (bits < 0) {
          state->hold = 0;
-@@ -379,6 +398,27 @@ void makefixed()
+@@ -376,6 +396,27 @@ void makefixed()
  }
  #endif /* MAKEFIXED */
  
@@ -1573,7 +1748,7 @@ Index: zlib-1.2.11/inflate.c
  /*
     Update the window with the last wsize (normally 32K) bytes written before
     returning.  If window does not exist yet, create it.  This is only called
-@@ -403,20 +443,7 @@ unsigned copy;
+@@ -400,20 +441,7 @@ unsigned copy;
  
      state = (struct inflate_state FAR *)strm->state;
  
@@ -1595,7 +1770,7 @@ Index: zlib-1.2.11/inflate.c
  
      /* copy state->wsize or less output bytes into the circular window */
      if (copy >= state->wsize) {
-@@ -849,6 +876,7 @@ int flush;
+@@ -846,6 +874,7 @@ int flush;
          case TYPE:
              if (flush == Z_BLOCK || flush == Z_TREES) goto inf_leave;
          case TYPEDO:
@@ -1603,7 +1778,7 @@ Index: zlib-1.2.11/inflate.c
              if (state->last) {
                  BYTEBITS();
                  state->mode = CHECK;
-@@ -1200,7 +1228,7 @@ int flush;
+@@ -1197,7 +1226,7 @@ int flush;
                  out -= left;
                  strm->total_out += out;
                  state->total += out;
@@ -1612,7 +1787,7 @@ Index: zlib-1.2.11/inflate.c
                      strm->adler = state->check =
                          UPDATE(state->check, put - out, out);
                  out = left;
-@@ -1252,8 +1280,9 @@ int flush;
+@@ -1249,8 +1278,9 @@ int flush;
       */
    inf_leave:
      RESTORE();
@@ -1624,7 +1799,7 @@ Index: zlib-1.2.11/inflate.c
          if (updatewindow(strm, strm->next_out, out - strm->avail_out)) {
              state->mode = MEM;
              return Z_MEM_ERROR;
-@@ -1263,7 +1292,7 @@ int flush;
+@@ -1260,7 +1290,7 @@ int flush;
      strm->total_in += in;
      strm->total_out += out;
      state->total += out;
@@ -1633,7 +1808,7 @@ Index: zlib-1.2.11/inflate.c
          strm->adler = state->check =
              UPDATE(state->check, strm->next_out - out, out);
      strm->data_type = (int)state->bits + (state->last ? 64 : 0) +
-@@ -1281,8 +1310,8 @@ z_streamp strm;
+@@ -1278,8 +1308,8 @@ z_streamp strm;
      if (inflateStateCheck(strm))
          return Z_STREAM_ERROR;
      state = (struct inflate_state FAR *)strm->state;
@@ -1644,7 +1819,15 @@ Index: zlib-1.2.11/inflate.c
      strm->state = Z_NULL;
      Tracev((stderr, "inflate: end\n"));
      return Z_OK;
-@@ -1474,21 +1503,22 @@ z_streamp source;
+@@ -1451,6 +1481,7 @@ z_streamp strm;
+     struct inflate_state FAR *state;
+ 
+     if (inflateStateCheck(strm)) return Z_STREAM_ERROR;
++    INFLATE_SYNC_POINT_HOOK(strm);
+     state = (struct inflate_state FAR *)strm->state;
+     return state->mode == STORED && state->bits == 0;
+ }
+@@ -1471,21 +1502,22 @@ z_streamp source;
  
      /* allocate space */
      copy = (struct inflate_state FAR *)
@@ -1671,7 +1854,7 @@ Index: zlib-1.2.11/inflate.c
      copy->strm = dest;
      if (state->lencode >= state->codes &&
          state->lencode <= state->codes + ENOUGH - 1) {
-@@ -1545,6 +1575,7 @@ z_streamp strm;
+@@ -1542,6 +1574,7 @@ z_streamp strm;
  
      if (inflateStateCheck(strm))
          return -(1L << 16);
@@ -1693,6 +1876,15 @@ Index: zlib-1.2.11/test/infcover.c
 ===================================================================
 --- zlib-1.2.11.orig/test/infcover.c
 +++ zlib-1.2.11/test/infcover.c
+@@ -373,7 +373,7 @@ local void cover_support(void)
+     mem_setup(&strm);
+     strm.avail_in = 0;
+     strm.next_in = Z_NULL;
+-    ret = inflateInit_(&strm, ZLIB_VERSION - 1, (int)sizeof(z_stream));
++    ret = inflateInit_(&strm, &ZLIB_VERSION[1], (int)sizeof(z_stream));
+                                                 assert(ret == Z_VERSION_ERROR);
+     mem_done(&strm, "wrong version");
+ 
 @@ -444,7 +444,7 @@ local void cover_wrap(void)
  }
  
@@ -1745,7 +1937,7 @@ Index: zlib-1.2.11/trees.c
  
  /* the arguments must not have side effects */
  
-@@ -1155,7 +1160,7 @@ local int detect_data_type(s)
+@@ -1133,7 +1138,7 @@ local int detect_data_type(s)
   * method would use a table)
   * IN assertion: 1 <= len <= 15
   */
@@ -1754,7 +1946,7 @@ Index: zlib-1.2.11/trees.c
      unsigned code; /* the value to invert */
      int len;       /* its bit length */
  {
-@@ -1187,7 +1192,7 @@ local void bi_flush(s)
+@@ -1165,7 +1170,7 @@ local void bi_flush(s)
  /* ===========================================================================
   * Flush the bit buffer and align the output on a byte boundary
   */
@@ -1763,3 +1955,16 @@ Index: zlib-1.2.11/trees.c
      deflate_state *s;
  {
      if (s->bi_valid > 8) {
+Index: zlib-1.2.11/zutil.h
+===================================================================
+--- zlib-1.2.11.orig/zutil.h
++++ zlib-1.2.11/zutil.h
+@@ -80,6 +80,8 @@ extern z_const char * const z_errmsg[10]
+ 
+ #define PRESET_DICT 0x20 /* preset dictionary flag in zlib header */
+ 
++#define ZLIB_WRAPLEN 6 /* zlib format overhead */
++
+         /* target dependencies */
+ 
+ #if defined(MSDOS) || (defined(WINDOWS) && !defined(WIN32))
