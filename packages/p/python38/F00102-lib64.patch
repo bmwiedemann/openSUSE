@@ -183,7 +183,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
      }
 --- a/configure
 +++ b/configure
-@@ -15262,9 +15262,9 @@ fi
+@@ -15264,9 +15264,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then
@@ -197,7 +197,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
  
 --- a/configure.ac
 +++ b/configure.ac
-@@ -4720,9 +4720,9 @@ fi
+@@ -4722,9 +4722,9 @@ fi
  dnl define LIBPL after ABIFLAGS and LDVERSION is defined.
  AC_SUBST(PY_ENABLE_SHARED)
  if test x$PLATFORM_TRIPLET = x; then

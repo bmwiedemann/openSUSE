@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Mar 26 21:59:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.13:
+Core and Builtins
+    bpo-46794: Bump up the libexpat version into 2.4.6
+    bpo-46985: Upgrade pip wheel bundled with ensurepip (pip 22.0.4)
+    bpo-46932: Update bundled libexpat to 2.4.7
+    bpo-46811: Make test suite support Expat >=2.4.5
+    bpo-46784: Fix libexpat symbols collisions with user
+      dynamically loaded or statically linked libexpat in embedded
+      Python.
+    bpo-46400: expat: Update libexpat from 2.4.1 to 2.4.4
+    bpo-46474: In importlib.metadata.EntryPoint.pattern, avoid
+      potential REDoS by limiting ambiguity in consecutive
+      whitespace.
+    bpo-44849: Fix the os.set_inheritable() function on FreeBSD
+      14 for file descriptor opened with the O_PATH flag: ignore
+      the EBADF error on ioctl(), fallback on the fcntl()
+      implementation.
+    bpo-41028: Language and version switchers, previously
+      maintained in every cpython branches, are now handled by
+      docsbuild-script.
+    bpo-45195: Fix test_readline.test_nonascii(): sometimes, the
+      newline character is not written at the end, so don’t
+      expect it in the output.
+    bpo-44949: Fix auto history tests of test_readline:
+      sometimes, the newline character is not written at the end,
+      so don’t expect it in the output.
+    bpo-45405: Prevent internal configure error when running
+      configure with recent versions of clang.
+- Remove upstreamed patches:
+  - support-expat-245.patch
+
+-------------------------------------------------------------------
 Tue Feb 22 05:53:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-expat-245.patch:

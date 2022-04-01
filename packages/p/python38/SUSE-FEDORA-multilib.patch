@@ -341,7 +341,7 @@
      }
 --- a/configure
 +++ b/configure
-@@ -15262,9 +15262,9 @@ fi
+@@ -15264,9 +15264,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then
@@ -355,7 +355,7 @@
  
 --- a/configure.ac
 +++ b/configure.ac
-@@ -4717,12 +4717,26 @@ else
+@@ -4719,12 +4719,26 @@ else
    LIBPYTHON=''
  fi
  
