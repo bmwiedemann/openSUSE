@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %bcond_with tests 0
 
 %define         skip_python2 1
@@ -23,7 +25,7 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.0
+Version:        %{majorver}.2
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
@@ -46,8 +48,8 @@ Patch0:         shebang.diff
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-pytest
+BuildRequires:  python3-setuptools
 # For the tests:
 BuildRequires:  trytond
 BuildRequires:  trytond_company
@@ -59,13 +61,13 @@ BuildRequires:  trytond_product
 Requires:       gnu-free-fonts
 Requires:       bsdtar
 Requires:       proteus
+Requires:       python3-Pillow
 Requires:       python3-PyWebDAV3-GNUHealth
 Requires:       python3-caldav
 Requires:       python3-hl7apy
 Requires:       python3-ldap3
 Requires:       python3-matplotlib
 Requires:       python3-passlib
-Requires:       python3-Pillow
 Requires:       python3-pyBarcode
 Requires:       python3-qrcode
 Requires:       python3-simpleeval
@@ -111,7 +113,7 @@ See https://en.opensuse.org/GNUHealth_on_openSUSE for instructions
 Summary:        Integration module for Orthanc
 Group:          Productivity/Office/Management
 Requires:       gnuhealth
-Requires:       python3-beren
+Requires:       python3-beren 
 Requires:       python3-pendulum
 
 %description -n %{name}-orthanc
@@ -171,7 +173,6 @@ for i in h*; do
   popd
 done
 %endif
-
 
 %pre
 #Write environment changes to /etc/bash.bashrc.local

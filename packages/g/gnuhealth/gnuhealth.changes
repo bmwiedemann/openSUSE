@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 23 07:34:28 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.0.2
+  * Use ODT binary format for pediatric growth charts reports
+  * Force Beren library to 0.7.0 to make it compatible with Python 3.6
+  * Allow Python minor versions > 10 (ej Python 3.10.2)
+  * fix webdav import error, bug #62165
+
+-------------------------------------------------------------------
 Sun Mar  6 10:01:47 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 4.0.0
