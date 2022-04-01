@@ -19,7 +19,7 @@
 %bcond_without released
 %global systemstatssover 1
 Name:           libksysguard5
-Version:        5.24.3
+Version:        5.24.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -145,10 +145,16 @@ QML applications.
 %autosetup -p1 -n libksysguard-%{version}
 
 %build
-  %if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500
     export CC=gcc-10 CXX=g++-10
-  %endif
+  # gcc-PIE only sets the default for gcc-7, get cmake to do it for us (boo#1195628)
+  # Set CMAKE_CXX_LINK_PIE_SUPPORTED to work without "check_pie_supported()"...
+  %{cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} \
+      -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CXX_LINK_PIE_SUPPORTED=ON}
+%else
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%endif
+
   %cmake_build
 
 %install

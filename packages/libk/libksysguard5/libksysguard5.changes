@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:04:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- No code changes since 5.24.3
+
+-------------------------------------------------------------------
+Tue Mar 29 11:20:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Force PIE when building with gcc-10 (boo#1195628, boo#1197641)
+
+-------------------------------------------------------------------
 Tue Mar  8 18:09:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.3
