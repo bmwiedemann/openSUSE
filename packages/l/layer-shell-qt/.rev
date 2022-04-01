@@ -127,4 +127,12 @@
     <comment>KDE Plasma 5.24.3</comment>
     <requestid>960874</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>320a638fdce259ed22230c72b497b418</srcmd5>
+    <version>5.24.4</version>
+    <time>1648841708</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.24.4 - untested (forwarded request 965768 from Vogtinator)</comment>
+    <requestid>965907</requestid>
+  </revision>
 </revisionlist>
