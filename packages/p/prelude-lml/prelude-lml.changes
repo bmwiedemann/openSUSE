@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 08:59:50 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * prelude-lml.service
+
+-------------------------------------------------------------------
 Sun Oct 25 18:29:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - prelude-lml 5.2.0:
