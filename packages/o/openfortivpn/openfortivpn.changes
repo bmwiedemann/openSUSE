@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 31 14:59:12 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.2
+  * fix memory leak when reading user input
+  * improve calls to getsockopt() and associated debug output
+  * allow reading config from process substitution
+  * work around CodeQL false positives, improving code at the same
+    time
+  * change type of systemd.service from simple to notify
+
+-------------------------------------------------------------------
 Wed Oct 13 10:41:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

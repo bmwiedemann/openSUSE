@@ -1,7 +1,7 @@
 #
 # spec file for package openfortivpn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           openfortivpn
-Version:        1.17.1
+Version:        1.17.2
 Release:        0
 Summary:        Client for PPP+SSL VPN tunnel services
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://github.com/adrienverge/openfortivpn
 Source0:        https://github.com/adrienverge/openfortivpn/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:	harden_openfortivpn@.service.patch
+Patch0:         harden_openfortivpn@.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  openssl-devel

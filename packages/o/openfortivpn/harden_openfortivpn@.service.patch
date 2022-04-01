@@ -1,10 +1,10 @@
-Index: openfortivpn-1.17.1/lib/systemd/system/openfortivpn@.service.in
-===================================================================
---- openfortivpn-1.17.1.orig/lib/systemd/system/openfortivpn@.service.in
-+++ openfortivpn-1.17.1/lib/systemd/system/openfortivpn@.service.in
+diff --git a/lib/systemd/system/openfortivpn@.service.in b/lib/systemd/system/openfortivpn@.service.in
+index 154bf60..7336b8f 100644
+--- a/lib/systemd/system/openfortivpn@.service.in
++++ b/lib/systemd/system/openfortivpn@.service.in
 @@ -6,6 +6,17 @@ Documentation=man:openfortivpn(1)
  [Service]
- Type=simple
+ Type=notify
  PrivateTmp=true
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
