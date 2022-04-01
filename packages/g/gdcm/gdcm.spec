@@ -1,8 +1,8 @@
 #
 # spec file for package gdcm
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2021 Dr. Axel Braun
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2019-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.10
+Version:        3.0.12
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
@@ -35,7 +35,12 @@ BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
+#check for Leap version = 15.4
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libexpat-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libpoppler-devel
@@ -130,9 +135,11 @@ rm -rf Utilities/rle
 rm -rf Utilities/wxWidgets
 
 %build
-
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+export CXX=g++-11
+%endif
 %cmake	.. \
-    -DCMAKE_CXX_FLAGS="%{optflags} -fpermissive" \
+    -DCMAKE_CXX_FLAGS="%{optflags} -fpermissive " \
 	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DGDCM_INSTALL_PACKAGE_DIR=%{_libdir}/cmake/%{name} \
 	-DGDCM_INSTALL_INCLUDE_DIR=%{_includedir}/%{name} \
