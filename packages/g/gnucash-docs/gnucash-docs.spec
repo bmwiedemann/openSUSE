@@ -1,7 +1,7 @@
 #
 # spec file for package gnucash-docs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           gnucash-docs
-Version:        4.9
+Version:        4.10.1
 Release:        9.1
 Summary:        Documentation Module for GnuCash
 License:        GFDL-1.1-only AND GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            https://www.gnucash.org/
 Source:         https://sourceforge.net/projects/gnucash/files/gnucash%20(stable)/%{version}/gnucash-docs-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  sgml-skel
 BuildRequires:  xsltproc
-BuildRequires:  cmake
 BuildArch:      noarch
 Recommends:     %{_bindir}/gnome-help
 
