@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Apr 01 07:11:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.17.4:
+  * Update v0.17.4 release notes (#804)
+  * Bump the Golang project version to 1.17 (#782)
+  * fixing Dockerfile to run as non root (#784)
+  * Add alemorcuq to the CODEOWNERS list (#803)
+  * Update Docker image version (#792)
+  * Added a way to run gosec using a Makefile task (#797)
+  * Fixing the deprecated MAINTAINER usage (#790)
+  * Bump prometheus/client_golang dependency to avoid CVE-2022-21698 (#783)
+  * New v0.17.4 release (#777)
+  * Bump distroless/static to fix DLA-2542-1, DLA-2509-1, DLA-2424-1 (#604)
+  * Document use of --controller-name for kubeseal (#774)
+  * [vib] fix trivy action configuration (#776)
+  * Include golangci-lint (#775)
+  * Fix linter errors running golangci-lint (#771)
+  * Update README file CI Badges (#772)
+  * Add script to easily run kubeseal with a service account credentials (#746)
+  * update k8s API dependencies for Go1.18 compatibility (#763)
+  * Add Controller's OpenAPI spec (#766)
+  * Helm chart - add support for customizing probes (#764)
+  * fix: address some golangci-lint issues (#751)
+  * Upgrade kubecfg from v0.16.0 to v0.25.0 (#760)
+  * Update VIB GitHub action repository (#759)
+  * docs: update README (#750)
+  * Add arm64 releases for Darwin (#752)
+  * Added required resourceName to Role (#745)
+  * Improve raw mode docs (#738)
+  * Trivial PR to test VIB integration (#743)
+  * Add integration with VIB (#742)
+  * Fix image pull secrets in chart (#737)
+  * docs: add webseal projects (#735)
+  * Do not add 'stale' label to issues marked as 'help wanted' (#736)
+  * Chart command args (#734)
+  * contrib/prometheus: Honor Labels added by controller (#614)
+  * Add 'Simple Issue Labeler' GH action (#733)
+  * updated ocp install using helm (#730)
+  * Chart: bump image version (#729)
+
+-------------------------------------------------------------------
 Fri Feb 11 14:09:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package kubeseal: CLI part for using Bitnami's SealedSecrets in Kubernetes
