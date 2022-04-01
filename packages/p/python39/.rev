@@ -426,4 +426,41 @@
   * Support Expat &gt;= 2.4.5</comment>
     <requestid>956584</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f966c8604a2954f11c4f4abe9e0cdd29</srcmd5>
+    <version>3.9.12</version>
+    <time>1648841686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.12:
+  - bpo-46968: Check for the existence of the “sys/auxv.h” header
+    in faulthandler to avoid compilation problems in systems
+    where this header doesn’t exist. Patch by Pablo Galindo
+  - bpo-47101: hashlib.algorithms_available now lists only
+    algorithms that are provided by activated crypto providers on
+    OpenSSL 3.0. Legacy algorithms are not listed unless the
+    legacy provider has been loaded into the default OSSL
+    context.
+  - bpo-23691: Protect the re.finditer() iterator from
+    re-entering.
+  - bpo-42369: Fix thread safety of zipfile._SharedFile.tell() to
+    avoid a “zipfile.BadZipFile: Bad CRC-32 for file” exception
+    when reading a ZipFile from multiple threads.
+  - bpo-38256: Fix binascii.crc32() when it is compiled to use
+    zlib’c crc32 to work properly on inputs 4+GiB in length
+    instead of returning the wrong result. The workaround prior
+    to this was to always feed the function data in increments
+    smaller than 4GiB or to just call the zlib module function.
+  - bpo-39394: A warning about inline flags not at the start of
+    the regular expression now contains the position of the flag.
+  - bpo-47061: Deprecate the various modules listed by PEP 594:
+  - aifc, asynchat, asyncore, audioop, cgi, cgitb, chunk, crypt,
+    imghdr, msilib, nntplib, nis, ossaudiodev, pipes, smtpd,
+    sndhdr, spwd, sunau, telnetlib, uu, xdrlib
+  - bpo-2604: Fix bug where doctests using globals would fail
+    when run multiple times.
+  - bpo-45997: Fix asyncio.Semaphore re-aquiring FIFO order.
+  - bpo-47022: The asynchat, asyncore and smtpd modules have been
+    deprecated since at least Python 3.6. Their documentation has</comment>
+    <requestid>965121</requestid>
+  </revision>
 </revisionlist>
