@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 28 15:33:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 12452-stringent-err-msg.patch to make mypy work
+  with more stringent error messages in Python
+  >= 3.10.3 (gh#python/mypy#12451).
+
+-------------------------------------------------------------------
+Fri Mar 25 21:32:58 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.942:
+ - Fixes to Regressions:
+  - Let overload item have a more general return type than the implementation (Jukka Lehtosalo, PR 12435)
+  - Fix inheritance false positives with dataclasses/attrs (Jukka Lehtosalo, PR 12411)
+  - Support overriding dunder attributes in Enum subclass (Petter Friberg, PR 12138)
+  - Fix small conditional overload regression (Marc Mueller, PR 12336)
+ - Other Fixes:
+  - Fix issues related to the order of processing in the builtins import cycle (Jukka Lehtosalo, PR 12431)
+  - Fix crash in match statement if class name is undefined (Jukka Lehtosalo, PR 12417)
+  - Allow non-final __match_args__ and overriding (Jukka Lehtosalo, PR 12415)
+
+-------------------------------------------------------------------
 Mon Mar 14 21:44:08 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- Update to version 0.9.41:
+- Update to version 0.941:
  - No changelog available.
 
 -------------------------------------------------------------------

@@ -296,4 +296,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>964181</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5cea14d78ead57137b153160f761924b</srcmd5>
+    <version>0.942</version>
+    <time>1648841688</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 12452-stringent-err-msg.patch to make mypy work
+  with more stringent error messages in Python
+  &gt;= 3.10.3 (gh#python/mypy#12451).
+
+- Update to version 0.942:
+ - Fixes to Regressions:
+  - Let overload item have a more general return type than the implementation (Jukka Lehtosalo, PR 12435)
+  - Fix inheritance false positives with dataclasses/attrs (Jukka Lehtosalo, PR 12411)
+  - Support overriding dunder attributes in Enum subclass (Petter Friberg, PR 12138)
+  - Fix small conditional overload regression (Marc Mueller, PR 12336)
+ - Other Fixes:
+  - Fix issues related to the order of processing in the builtins import cycle (Jukka Lehtosalo, PR 12431)
+  - Fix crash in match statement if class name is undefined (Jukka Lehtosalo, PR 12417)
+  - Allow non-final __match_args__ and overriding (Jukka Lehtosalo, PR 12415)
+
+- Update to version 0.941:</comment>
+    <requestid>965437</requestid>
+  </revision>
 </revisionlist>
