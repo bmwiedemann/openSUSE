@@ -71,6 +71,7 @@ cp %{S:99} tests/samples/cython-flags/setup.cfg
 cp %{S:99} tests/samples/issue-274-support-default-package-dir/setup.cfg
 cp %{S:99} tests/samples/issue-274-support-one-package-without-package-dir/setup.cfg
 cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup.cfg
+sed -i 's/from mock import/from unittest.mock import/' tests/*.py
 # remove coverage flags
 sed -i '/addopts/ d' setup.cfg
 
