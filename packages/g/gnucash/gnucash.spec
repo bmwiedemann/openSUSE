@@ -28,7 +28,7 @@
 %endif
 
 Name:           gnucash
-Version:        4.9
+Version:        4.10
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -91,6 +91,7 @@ Recommends:     iso-codes
 Recommends:     python3-gnucash = %{version}
 # Optional perl modules for online price retrieval
 Recommends:     perl(Date::Manip)
+Recommends:     yelp
 Recommends:     perl(Finance::Quote)
 BuildRequires:  pkgconfig(gwengui-gtk3)
 
