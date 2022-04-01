@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 31 10:13:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add global typelib gconf exclude, filter out unneeded and
+  unwanted gconf2 runtime Requires.
+
+-------------------------------------------------------------------
 Thu Dec 16 15:44:12 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.0.5 (changes since 2.0.3):

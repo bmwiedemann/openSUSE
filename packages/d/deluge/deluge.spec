@@ -1,7 +1,7 @@
 #
 # spec file for package deluge
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%global __requires_exclude typelib\\(GConf\\)
 
 %define _version 2.0
 Name:           deluge
