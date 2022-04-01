@@ -3529,7 +3529,6 @@ unsorted:
   - fbpdf 
   - fbreader 
   - fbterm 
-  - fcdproplus-udev 
   - fcft-devel 
   - fcgiwrap 
   - fcgiwrap-nginx 
@@ -6206,8 +6205,6 @@ unsorted:
   - gpuvis 
   - gpxsee 
   - gq 
-  - gr-fcdproplus 
-  - gr-fcdproplus-devel-doc 
   - gr-iqbal-devel-doc 
   - gr-iqbal-grc 
   - grabpng 
@@ -8305,6 +8302,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -11101,9 +11099,7 @@ unsorted:
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro15 
-  - libgnuradio-3_9_5 
-  - libgnuradio-fcdproplus-devel 
-  - libgnuradio-fcdproplus3_8_0 
+  - libgnuradio-3_10_1 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnutls-dane-devel 
@@ -15254,7 +15250,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -16236,6 +16232,7 @@ unsorted:
   - minimodem 
   - mininet 
   - mininews 
+  - minio-client 
   - minisat 
   - minisat-devel 
   - minitube 
@@ -18058,11 +18055,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -18614,7 +18614,7 @@ unsorted:
   - parpack-openmpi4-devel 
   - parpack-openmpi4-devel-32bit: [x86_64] 
   - parsec: [x86_64] 
-  - parsec-tool 
+  - parsec-tool: [x86_64] 
   - partclone 
   - partclone-lang 
   - parted-devel 
@@ -21249,7 +21249,6 @@ unsorted:
   - python-gnome-dvb-daemon 
   - python-gobject-common-devel 
   - python-gobject2-devel 
-  - python-gr-fcdproplus 
   - python-gtk-devel 
   - python-gtk-doc 
   - python-gunicorn-doc 
@@ -22606,6 +22605,15 @@ unsorted:
   - python310-dash-html-components 
   - python310-dash-renderer 
   - python310-dash-table 
+  - python310-dask 
+  - python310-dask-all 
+  - python310-dask-array 
+  - python310-dask-bag 
+  - python310-dask-dataframe 
+  - python310-dask-delayed 
+  - python310-dask-diagnostics 
+  - python310-dask-distributed 
+  - python310-dask-dot 
   - python310-databases 
   - python310-datadiff 
   - python310-dateparser 
@@ -22656,6 +22664,7 @@ unsorted:
   - python310-distlib 
   - python310-distob 
   - python310-distorm3 
+  - python310-distributed 
   - python310-distro 
   - python310-distroinfo 
   - python310-distutils-extra 
@@ -24540,6 +24549,7 @@ unsorted:
   - python310-svgwrite 
   - python310-svneverever 
   - python310-swapper 
+  - python310-swifter 
   - python310-sybil 
   - python310-sympy 
   - python310-synr 
@@ -31982,7 +31992,7 @@ unsorted:
   - rtl-sdr-devel 
   - rtl-sdr-udev 
   - rtl8812au 
-  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433 
   - rtl_433-devel 
@@ -43035,7 +43045,7 @@ unsorted:
   - xsv-bash-completion 
   - xsynth-dssi 
   - xtables-addons 
-  - xtables-addons-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - xtables-addons-kmp-default 
   - xtables-addons-kmp-pae: [i586] 
   - xtables-geoip 
   - xteddy 
