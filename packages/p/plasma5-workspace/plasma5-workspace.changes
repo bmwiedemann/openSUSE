@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:04:40 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- Changes since 5.24.3:
+  * kcms/users: Adjust for padding in overlay sheet (kde#451031)
+  * [Media Controller] Explicitly set slider "to" before setting "value"
+  * [Notifications] Fix implicit size propagation in SelectableLabel
+  * applets/kicker: Skip creating KService for non-desktop files or folders (kde#442970)
+  * Fix sleep/suspend sometimes not working ... from ksmserver-logout-greeter, by making the DBus calls synchronous.
+  * kicker/actionlist: Ensure we parse the args for the jumplist actions (kde#451418)
+  * libtaskmanager: recompute active task when a task is removed
+  * sddm/lockscreen: Fix weird behaviour
+  * [Notifications] Limit notification heading line count
+
+-------------------------------------------------------------------
 Tue Mar  8 18:10:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.3
