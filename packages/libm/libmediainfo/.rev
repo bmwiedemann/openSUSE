@@ -250,4 +250,56 @@ Dropped CVE-2019-11372_CVE-2019-11373.patch (merged upstream)
 </comment>
     <requestid>919762</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>57e54668886a1d48fc6c0d5bc53d6ebf</srcmd5>
+    <version>22.03</version>
+    <time>1648841734</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.03
+  Added features:
+  * NSV (Nullsoft Video): full featured support
+  * NSV: support of proprietary StarDiva metadata (by reverse
+    engineering)
+  * HEVC: CEA-608/708 support
+  * Dolby Audio Metadata: First frame of action, binaural render
+    modes
+  * Dolby Audio Metadata: 5.1 and 5.1.x downmix, 5.1 to 2.0
+    downmix, associated video frame rate, trim modes
+  * MOV/MP4, TTML, SCC, MXF TC: time code of last frame
+  * EIA-608: first displayed caption type
+  * EIA-608: Maximum count of lines per event and total count of
+    lines
+  * EIA-608: duration of the visible content
+  * TTML: Total count of lines
+  * TTML: Maximum count of lines per event (including
+    overlapping times)
+  * TTML: Frame count, display aspect ratio
+  * TTML: Support of timestamps in frames
+  * SCC: Delay
+  * Matroska: Encoding settings metadata support
+  * MOV/MP4: Gamma metadata output
+  * MPEG-4/MOV: difference between audio Center and Mono when
+    possible
+  * MP4/MOV: Support of dec3 atom in wave atom
+  * MPEG-4/MOV: show both values in case of chan atom
+    ChannelLayoutTag / ChannelDescriptions mismatch
+  * MP4/MOV: Support of dec3 atom in wave atom
+  * MXF: better support of AVC streams without SPS/PPS
+  * ADM: display channel index of trackUIDs
+  Fixed bugs:
+  * WAV: fix freeze with 32-bit PCM
+  * DPX: fix regression with DPX files more than 64 MB
+  * Dolby E: fix crash with some invalid streams
+  * E-AC-3: service kind was not correctly handled
+  * EXR: fix of bad handling of files with long names in
+    attributes
+  * TTML: correct handling of 29.97 DF time codes
+  * AV1: fix of the parsing of some streams, especially the ones
+    with HDR metadata
+  * WebVTT: was not correctly handling WebVTT header with comment
+  * Matroska: fix false positive detection of bad CRC32
+  * Several other parsing bug/crash fixes
+</comment>
+    <requestid>966243</requestid>
+  </revision>
 </revisionlist>
