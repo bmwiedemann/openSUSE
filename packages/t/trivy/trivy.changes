@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr  1 07:30:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Buildrequire go1.18 as upstream says in go.mod
+
+-------------------------------------------------------------------
+Fri Apr 01 07:03:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.0:
+  * docs(filter vulnerabilities): fix link (#1880)
+  * feat(template) Add misconfigurations to gitlab codequality report (#1756)
+  * fix(rpc): add PkgPath field to client / server mode (#1643)
+  * fix(vulnerabilities): fixed trivy-db vulns (#1883)
+  * feat(cache): remove temporary cache after filesystem scanning (#1868)
+  * feat(sbom): add a dedicated sbom command (#1799)
+  * feat(cyclonedx): add vulnerabilities (#1832)
+  * fix(option): hide false warning about remote options (#1865)
+  * chore: bump up Go to 1.18 (#1862)
+  * feat(filesystem): scan in client/server mode (#1829)
+  * refactor(template): remove unused test (#1861)
+  * fix(cli): json format for trivy version (#1854)
+  * docs: change URL for tfsec-checks (#1857)
+
+-------------------------------------------------------------------
 Tue Mar 22 10:46:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - tie to go.17 as 1.18 became available 

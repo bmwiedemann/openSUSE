@@ -293,4 +293,12 @@
     <comment>- tie to go.17 as 1.18 became available</comment>
     <requestid>963901</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bf1d083851c12cb85820e6424ada3684</srcmd5>
+    <version>0.25.0</version>
+    <time>1648841772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966387</requestid>
+  </revision>
 </revisionlist>
