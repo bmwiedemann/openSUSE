@@ -143,4 +143,12 @@
         S3control methods (get/put/delete_public_access_block) are no longer</comment>
     <requestid>950105</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4091f541cf8586b6f35d8a5a961b9739</srcmd5>
+    <version>3.1.3</version>
+    <time>1648841738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966274</requestid>
+  </revision>
 </revisionlist>

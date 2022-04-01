@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-moto
-Version:        3.0.2
+Version:        3.1.3
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
