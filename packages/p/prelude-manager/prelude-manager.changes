@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 11:45:44 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * prelude-manager.service
+
+-------------------------------------------------------------------
 Sun Oct 25 21:22:20 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - prelude-manager 5.2.0:
