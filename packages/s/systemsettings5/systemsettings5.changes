@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:04:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- Changes since 5.24.3:
+  * Don't let back arrow be re-colored to monochrome
+  * systemsettings runner: Ensure that we match keywords case insensitively (kde#451634)
+
+-------------------------------------------------------------------
 Tue Mar  8 18:10:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.3
