@@ -1967,4 +1967,13 @@ for 12.3</comment>
   * Fix generation of file /etc/polkit-1/rules.d/90-default-privs.rules</comment>
     <requestid>964852</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>51bc923f92b9bd941cf75605444253cf</srcmd5>
+    <version>1550+20220401.41ccb1d</version>
+    <time>1648841732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20220401.41ccb1d:
+  * usbguard: relax read-only operations to yes</comment>
+    <requestid>966384</requestid>
+  </revision>
 </revisionlist>

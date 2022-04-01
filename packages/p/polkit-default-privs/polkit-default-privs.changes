@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 01 09:50:52 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220401.41ccb1d:
+  * usbguard: relax read-only operations to yes
+
+-------------------------------------------------------------------
 Fri Mar 25 12:26:22 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 1550+20220325.163dbdf:
