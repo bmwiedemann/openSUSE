@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  1 13:02:03 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.4:
+  * Fixed crash when trying to create an object
+  * Fixed handling of deleted session file
+
+-------------------------------------------------------------------
 Fri Feb 18 16:01:56 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.2:

@@ -17,7 +17,7 @@
 
 
 Name:           tiled
-Version:        1.8.2
+Version:        1.8.4
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5OpenGL-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5Qml)

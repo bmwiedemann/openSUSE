@@ -711,4 +711,14 @@
   * AppImage: Updated to Sentry 0.4.15</comment>
     <requestid>955917</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0a21c79635f04c24f6cd3c0cfb39b20d</srcmd5>
+    <version>1.8.4</version>
+    <time>1648841809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.4:
+  * Fixed crash when trying to create an object
+  * Fixed handling of deleted session file</comment>
+    <requestid>966434</requestid>
+  </revision>
 </revisionlist>
