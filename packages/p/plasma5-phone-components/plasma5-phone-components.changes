@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:04:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- Changes since 5.24.3:
+  * mmplugin: set all connections to not autoconnect on setMobileDataEnabled(false) (#182)
+
+-------------------------------------------------------------------
 Wed Mar  9 10:49:13 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove applets/activities, applets/krunner and the lang
