@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 29 12:50:00 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Remove the SQLite extension and package it as a subpackage of
+  sqlite3 to have only a single copy and keep it more up to date
+  (bsc#1195773).
+- Clean up the lib dependencies in tclConfig.sh and tcl.pc.
+
+-------------------------------------------------------------------
 Tue Nov  9 17:08:21 UTC 2021 - Reinhard Max <max@suse.com>
 
 - New version 8.6.12:
@@ -116,6 +124,7 @@ Wed Dec 12 16:28:09 UTC 2018 - Reinhard Max <max@suse.com>
   * (bug)[9fd5c6] crash in object deletion, test oo-11.5
   * (bug)[3c32a3] crash deleting object with class mixed in
   * (platform) stop using -lieee, removed from glibc-2.27
+    (bsc#1179615, bsc#1181840).
   * (bug)[8e6a9a] bad binary [string match], test string-11.55
   * (bug)[1873ea] repair multi-thread std channel init
   * (bug)[db36fa] broken bytecode for index values

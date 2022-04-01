@@ -673,4 +673,17 @@ sqlite3 patch I will submit in a moment.</comment>
 - Bump %itclver and ensure it stays in sync.</comment>
     <requestid>930669</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>3bf374048c8a340aa1f4cfbaf2f83622</srcmd5>
+    <version>8.6.12</version>
+    <time>1648841692</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the SQLite extension and package it as a subpackage of
+  sqlite3 to have only a single copy and keep it more up to date
+  (bsc#1195773).
+- Clean up the lib dependencies in tclConfig.sh and tcl.pc.
+
+    (bsc#1179615, bsc#1181840).</comment>
+    <requestid>965666</requestid>
+  </revision>
 </revisionlist>

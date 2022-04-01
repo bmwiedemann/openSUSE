@@ -1,7 +1,7 @@
 #
 # spec file for package tcl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{!?_rpmmacrodir:1}
+%define _rpmmacrodir %{_rpmconfigdir}/macros.d
+%endif
 
 Name:           tcl
 URL:            http://www.tcl.tk
@@ -31,6 +35,9 @@ Provides:       itcl = %itclver
 Provides:       tclsh
 Provides:       tclsh%{TCL_MINOR}
 Obsoletes:      itcl < %itclver
+# Require the extension from the SQLite package instead of shipping
+# the embedded copy, which might be outdated.
+Requires:       sqlite3-tcl
 # bug437293
 %ifarch ppc64
 Obsoletes:      tcl-64bit
@@ -84,6 +91,10 @@ if ! test -d pkgs/itcl%itclver; then
    : Version mismatch in itcl, please chek the %%itclver macro!
    exit 1
 fi
+
+# The SQLite extension is provided by the sqlite3 package,
+# so don't build it here.
+rm -r pkgs/sqlite3.*
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -156,8 +167,11 @@ ln -sf tclsh%TCL_MINOR %buildroot%_prefix/bin/tclsh
 ln -sf tclsh.1.gz %buildroot%_mandir/man1/tclsh%TCL_MINOR.1.gz
 mkdir -p %buildroot%_datadir/tcl
 install -D %{S:3} -m 644 %buildroot%_rpmmacrodir/macros.tcl
-# We are Tcl, not SQLite
-rm -f %buildroot%bindir/sqlite*
+
+# The information in TCL_LIBS is not needed for shared libraries
+# and we don't support static linking.
+sed -i "/^TCL_LIBS=/s/'.*'$//" %buildroot%_libdir/tclConfig.sh
+sed -i "/^Libs.private: /s/ .*$//" %buildroot%_libdir/pkgconfig/tcl.pc
 
 %if "%_lib" == "lib64"
 %post
