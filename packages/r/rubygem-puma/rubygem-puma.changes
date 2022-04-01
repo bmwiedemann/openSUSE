@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 30 22:24:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 5.6.4
+  https://github.com/puma/puma/security/advisories/GHSA-h99w-9q5r-gjq9
+  https://github.com/puma/puma/releases/tag/v5.6.4
+
+-------------------------------------------------------------------
 Sat Feb 12 16:18:43 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 5.6.2

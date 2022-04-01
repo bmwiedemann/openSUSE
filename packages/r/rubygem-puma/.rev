@@ -395,4 +395,12 @@
   https://github.com/puma/puma/releases/tag/v5.6.0 (forwarded request 953929 from darix)</comment>
     <requestid>954164</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>7f9ae81aecd5ddfdd8fa23a856343718</srcmd5>
+    <version>5.6.4</version>
+    <time>1648841755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966342</requestid>
+  </revision>
 </revisionlist>
