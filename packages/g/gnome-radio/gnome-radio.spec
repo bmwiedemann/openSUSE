@@ -17,12 +17,12 @@
 
 
 Name:           gnome-radio
-Version:        16.0.4
+Version:        16.0.6
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
 URL:            http://www.gnomeradio.org
-Source:         http://download.gnome.org/sources/gnome-radio/16.0/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-radio/16.0/%{name}-%{version}.tar.xz
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
