@@ -454,4 +454,41 @@ insprired by a patch in https://bugs.debian.org/819767 (forwarded request 605522
     <comment></comment>
     <requestid>723032</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>93078423f561aa64e8dfc7233a3a5f5e</srcmd5>
+    <version>2.4.7</version>
+    <time>1648841690</time>
+    <user>dimstar_suse</user>
+    <comment>- add handle-Werror-return-type.patch
+- disable lto, breaks libtool as seen in testsuite 
+
+- update to 2.4.7:
+  - Libtool script now supports (configure-time and runtime) ARFLAGS
+    variable, which obsoletes AR_FLAGS.  This is due to naming conventions
+    among other *FLAGS and to be consistent with Automake's ARFLAGS.
+  - Gnulib testsuite is enabled and run during 'make check'.
+  - Support the Windows version of the Intel C Compiler (icl) in
+    libtool script.
+  - Pass '-fsanitize=*' flags for GCC and LLVM, and '-specs=*' for GCC
+    to linker.
+  - Pass '-Xassembler=*' and '-Wa,*' flag to compilers and linkers.
+  - The variable 'FILECMD' with default value of '/usr/bin/file' was used to
+    replace existing hard coded references to '/usr/bin/file'.
+  - Add MidnightBSD support.
+  - Libtool changed ARFLAGS/AR_FLAGS default from 'cru' to 'cr'.
+  - Do not pass '-pthread' to Solaris linker.
+  - 'libtool' and 'libtoolize' scripts now use '#! /usr/bin/env sh' shebang.
+    Previously '#! /bin/sh' was used, which presents challenges for
+    containerized environments.
+  - Fix significant slowdown of libtoolize for certain projects (regression
+    introduced in 2.4.3 release) caused by infinite m4 macro recursion.
+  - Mitigate the slowdown of libtool script (introduced in v2.4.3) caused by
+    increased number of calls to '$SED $sed_quote_subst' (bug#20006).
+  - Properly parse and export TLS symbols on AIX.
+  - Various bug fixes surrounding use of 'sed'.
+  - Darwin systems set proper &quot;allow undefined&quot; flag on OSX 11, and
+    PowerPC 10.5.
+  - Removed some deprecated tests related to 'Makefile.inc' files.</comment>
+    <requestid>965668</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file for package libtool
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,28 @@
 #
 
 
-#####################################################################
-#                                                                   #
-#   NOTE: PLEASE RUN pre_checkin.sh BEFORE SUBMITTING THE PACKAGE   #
-#                                                                   #
-#####################################################################
-Name:           libtool
-Version:        2.4.6
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "testsuite"
+%define psuffix -testsuite
+%else
+%define psuffix %{nil}
+%endif
+Name:           libtool%{psuffix}
+Version:        2.4.7
 Release:        0
 Summary:        A Tool to Build Shared Libraries
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.2-or-later
+License:        GFDL-1.2-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Building
-Url:            http://www.gnu.org/software/libtool/
-Source0:        http://ftp.gnu.org/gnu/libtool/libtool-%{version}.tar.xz
-Source1:        http://ftp.gnu.org/gnu/libtool/libtool-%{version}.tar.xz.sig
+URL:            https://www.gnu.org/software/libtool/
+Source0:        https://ftp.gnu.org/gnu/libtool/libtool-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/libtool/libtool-%{version}.tar.xz.sig
 Source2:        libtool.keyring
 Source3:        baselibs.conf
 Source4:        libtool-rpmlintrc
 # PATCH-FIX-OPENSUSE -- do not add build host name boo#1084909
 Patch0:         libtool-reproducible-hostname.patch
+# PATCH-FIX-OPENSUSE: workaround irrelevant compiler warning
+Patch1:         handle-Werror-return-type.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -47,8 +50,6 @@ Requires:       automake > 1.4
 Requires:       libltdl7 = %{version}
 Requires:       m4 >= 1.4.16
 Requires:       tar
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 Provides:       libltdl-devel
 # fedora name
 Provides:       libtool-ltdl-devel
@@ -66,50 +67,35 @@ Group:          Development/Libraries/C and C++
 Library needed by programs that use the ltdl interface of GNU libtool.
 
 %prep
-%setup -q -n libtool-%{version}
-%patch0 -p1
+%autosetup -p1 -n libtool-%{version}
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-./configure CFLAGS="%{optflags}" \
-   --prefix=%{_prefix} --infodir=%{_infodir} --libdir=%{_libdir}
-# force rebuild with non-broken makeinfo
+%define _lto_cflags %{nil}
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+%configure
 rm -f doc/libtool.info
-make V=1 %{?_smp_mflags}
+%make_build
 
-%if "%{name}" == "libtool-testsuite"
+%if "%{flavor}" == "testsuite"
 %check
 trap 'test $? -ne 0 && cat tests/testsuite.log' EXIT
-# Avoid spurious testsuite failures due to messages from icecream
-PATH=%{_prefix}/bin:$PATH
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %else
+
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 chmod +x %{buildroot}%{_datadir}/libtool/build-aux/ltmain.sh
 # Do not add builder's hostname into generated scripts
 sed -i "/uname -n/d" %{buildroot}%{_datadir}/aclocal/libtool.m4
 %endif
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/libtool.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/libtool.info-1.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/libtool.info-2.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libtool.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libtool.info-1.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libtool.info-2.gz
-
 %post -n libltdl7 -p /sbin/ldconfig
-
 %postun -n libltdl7 -p /sbin/ldconfig
 
 %if "%{name}" == "libtool"
 %files
-%defattr(-, root, root)
 %license COPYING
 %doc AUTHORS NEWS README THANKS ChangeLog
 %{_bindir}/libtool
@@ -120,14 +106,15 @@ sed -i "/uname -n/d" %{buildroot}%{_datadir}/aclocal/libtool.m4
 %attr(644, root, root) %{_libdir}/libltdl.la
 %{_libdir}/libltdl.so
 %{_datadir}/aclocal/*.m4
-%{_infodir}/libtool.info*
-%{_mandir}/man1/libtool.1.gz
-%{_mandir}/man1/libtoolize.1.gz
+%{_infodir}/libtool.info%{?ext_info}
+%{_infodir}/libtool.info-1%{?ext_info}
+%{_infodir}/libtool.info-2%{?ext_info}
+%{_mandir}/man1/libtool.1%{?ext_man}
+%{_mandir}/man1/libtoolize.1%{?ext_man}
 %{_datadir}/libtool
 
 %files -n libltdl7
-%defattr(-, root, root)
-%{_libdir}/libltdl.so.*
+%{_libdir}/libltdl.so.7*
 %endif
 
 %changelog
