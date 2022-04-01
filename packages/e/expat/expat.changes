@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 29 05:26:59 UTC 2022 - David Anes <david.anes@suse.com>
+
+- update to 2.4.8:
+  * Other changes:
+    - pkg-config: Move "-lm" to section "Libs.private"
+    - CMake|MSVC: Fix pkg-config section "Libs"
+    - CMake|macOS: Start using linker arguments 
+      "-compatibility_version <version>" and
+      "-current_version <version>" in a way compatible with GNU 
+      Libtool
+    - Version info bumped from 9:7:8 to 9:8:8;
+      see https://verbump.de/ for what these numbers do
+
+-------------------------------------------------------------------
 Sat Mar  5 06:34:13 UTC 2022 - David Anes <david.anes@suse.com>
 
-- udpate to 2.4.7 (bsc#1196784, CVE-2022-25236):
+- update to 2.4.7 (bsc#1196784, CVE-2022-25236):
   * Bug fixes:
     - Relax fix to CVE-2022-25236 (introduced with release 2.4.5)
       with regard to all valid URI characters (RFC 3986),
