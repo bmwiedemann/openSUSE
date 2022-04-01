@@ -1,7 +1,7 @@
 #
 # spec file for package hiawatha
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013-2020 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,7 @@ Source1:        %{name}.logrotate
 Source2:        %{name}.service
 Source102:      %{name}.firewalld
 Source103:      %{name}-ssl.firewalld
-Patch0:	harden_hiawatha.service.patch
+Patch0:         harden_hiawatha.service.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  firewall-macros
 BuildRequires:  gcc-c++

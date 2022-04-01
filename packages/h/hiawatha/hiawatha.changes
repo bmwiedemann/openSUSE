@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 11 08:22:15 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Allow read only access with ProtectHome=read-only to enable UserWebsites=yes
+  Modified harden_hiawatha.service.patch and hiawatha.service
+
+-------------------------------------------------------------------
 Wed Sep 22 08:03:45 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
