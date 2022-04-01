@@ -1,13 +1,312 @@
 -------------------------------------------------------------------
+Sat Mar 26 22:52:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.4:
+  - bpo-46968: Check for the existence of the “sys/auxv.h” header
+    in faulthandler to avoid compilation problems in systems
+    where this header doesn’t exist. Patch by Pablo Galindo
+  - bpo-23691: Protect the re.finditer() iterator from
+    re-entering.
+  - bpo-42369: Fix thread safety of zipfile._SharedFile.tell() to
+    avoid a “zipfile.BadZipFile: Bad CRC-32 for file” exception
+    when reading a ZipFile from multiple threads.
+  - bpo-38256: Fix binascii.crc32() when it is compiled to use
+    zlib’c crc32 to work properly on inputs 4+GiB in length
+    instead of returning the wrong result. The workaround prior
+    to this was to always feed the function data in increments
+    smaller than 4GiB or to just call the zlib module function.
+  - bpo-39394: A warning about inline flags not at the start of
+    the regular expression now contains the position of the flag.
+  - bpo-47061: Deprecate the various modules listed by PEP 594:
+  - aifc, asynchat, asyncore, audioop, cgi, cgitb, chunk, crypt,
+    imghdr, msilib, nntplib, nis, ossaudiodev, pipes, smtpd,
+    sndhdr, spwd, sunau, telnetlib, uu, xdrlib
+  - bpo-2604: Fix bug where doctests using globals would fail
+    when run multiple times.
+  - bpo-45997: Fix asyncio.Semaphore re-aquiring FIFO order.
+  - bpo-47022: The asynchat, asyncore and smtpd modules have been
+    deprecated since at least Python 3.6. Their documentation and
+    deprecation warnings and have now been updated to note they
+    will removed in Python 3.12 (PEP 594).
+  - bpo-46421: Fix a unittest issue where if the command was
+    invoked as python -m unittest and the filename(s) began with
+    a dot (.), a ValueError is returned.
+  - bpo-40296: Fix supporting generic aliases in pydoc.
+
+- Update to 3.10.3:
+  - bpo-46940: Avoid overriding AttributeError metadata
+    information for nested attribute access calls. Patch by Pablo
+    Galindo.
+  - bpo-46852: Rename the private undocumented
+    float.__set_format__() method to float.__setformat__() to fix
+    a typo introduced in Python 3.7. The method is only used by
+    test_float. Patch by Victor Stinner.
+  - bpo-46794: Bump up the libexpat version into 2.4.6
+  - bpo-46820: Fix parsing a numeric literal immediately (without
+    spaces) followed by “not in” keywords, like in 1not in x. Now
+    the parser only emits a warning, not a syntax error.
+  - bpo-46762: Fix an assert failure in debug builds when a ‘<’,
+    ‘>’, or ‘=’ is the last character in an f-string that’s
+    missing a closing right brace.
+  - bpo-46724: Make sure that all backwards jumps use the
+    JUMP_ABSOLUTE instruction, rather than JUMP_FORWARD with an
+    argument of (2**32)+offset.
+  - bpo-46732: Correct the docstring for the __bool__() method.
+    Patch by Jelle Zijlstra.
+  - bpo-46707: Avoid potential exponential backtracking when
+    producing some syntax errors involving lots of brackets.
+    Patch by Pablo Galindo.
+  - bpo-40479: Add a missing call to va_end() in
+    Modules/_hashopenssl.c.
+  - bpo-46615: When iterating over sets internally in
+    setobject.c, acquire strong references to the resulting items
+    from the set. This prevents crashes in corner-cases of
+    various set operations where the set gets mutated.
+  - bpo-45773: Remove two invalid “peephole” optimizations from
+    the bytecode compiler.
+  - bpo-43721: Fix docstrings of getter, setter, and deleter to
+    clarify that they create a new copy of the property.
+  - bpo-46503: Fix an assert when parsing some invalid N escape
+    sequences in f-strings.
+  - bpo-46417: Fix a race condition on setting a type __bases__
+    attribute: the internal function add_subclass() now gets the
+    PyTypeObject.tp_subclasses member after calling
+    PyWeakref_NewRef() which can trigger a garbage collection
+    which can indirectly modify PyTypeObject.tp_subclasses. Patch
+    by Victor Stinner.
+  - bpo-46383: Fix invalid signature of _zoneinfo’s module_free
+    function to resolve a crash on wasm32-emscripten platform.
+  - bpo-46070: Py_EndInterpreter() now explicitly untracks all
+    objects currently tracked by the GC. Previously, if an object
+    was used later by another interpreter, calling
+    PyObject_GC_UnTrack() on the object crashed if the previous
+    or the next object of the PyGC_Head structure became
+    a dangling pointer. Patch by Victor Stinner.
+  - bpo-46339: Fix a crash in the parser when retrieving the
+    error text for multi-line f-strings expressions that do not
+    start in the first line of the string. Patch by Pablo Galindo
+  - bpo-46240: Correct the error message for unclosed parentheses
+    when the tokenizer doesn’t reach the end of the source when
+    the error is reported. Patch by Pablo Galindo
+  - bpo-46091: Correctly calculate indentation levels for lines
+    with whitespace character that are ended by line continuation
+    characters. Patch by Pablo Galindo
+  - bpo-43253: Fix a crash when closing transports where the
+    underlying socket handle is already invalid on the Proactor
+    event loop.
+  - bpo-47004: Apply bugfixes from importlib_metadata 4.11.3,
+    including bugfix for EntryPoint.extras, which was returning
+    match objects and not the extras strings.
+  - bpo-46985: Upgrade pip wheel bundled with ensurepip (pip
+    22.0.4)
+  - bpo-46968: faulthandler: On Linux 5.14 and newer, dynamically
+    determine size of signal handler stack size CPython allocates
+    using getauxval(AT_MINSIGSTKSZ). This changes allows for
+    Python extension’s request to Linux kernel to use AMX_TILE
+    instruction set on Sapphire Rapids Xeon processor to succeed,
+    unblocking use of the ISA in frameworks.
+  - bpo-46955: Expose asyncio.base_events.Server as
+    asyncio.Server. Patch by Stefan Zabka.
+  - bpo-23325: The signal module no longer assumes that SIG_IGN
+    and SIG_DFL are small int singletons.
+  - bpo-46932: Update bundled libexpat to 2.4.7
+  - bpo-25707: Fixed a file leak in
+    xml.etree.ElementTree.iterparse() when the iterator is not
+    exhausted. Patch by Jacob Walls.
+  - bpo-44886: Inherit asyncio proactor datagram transport from
+    asyncio.DatagramTransport.
+  - bpo-46827: Support UDP sockets in asyncio.loop.sock_connect()
+    for selector-based event loops. Patch by Thomas Grainger.
+  - bpo-46811: Make test suite support Expat >=2.4.5
+  - bpo-46252: Raise TypeError if ssl.SSLSocket is passed to
+    transport-based APIs.
+  - bpo-46784: Fix libexpat symbols collisions with user
+    dynamically loaded or statically linked libexpat in embedded
+    Python.
+  - bpo-39327: shutil.rmtree() can now work with VirtualBox
+    shared folders when running from the guest operating-system.
+  - bpo-46756: Fix a bug in
+    urllib.request.HTTPPasswordMgr.find_user_password() and
+    urllib.request.HTTPPasswordMgrWithPriorAuth.is_authenticated()
+    which allowed to bypass authorization. For example, access to
+    URI example.org/foobar was allowed if the user was authorized
+    for URI example.org/foo.
+  - bpo-46643: In typing.get_type_hints(), support evaluating
+    stringified ParamSpecArgs and ParamSpecKwargs annotations.
+    Patch by Gregory Beauregard.
+  - bpo-45863: When the tarfile module creates a pax format
+    archive, it will put an integer representation of timestamps
+    in the ustar header (if possible) for the benefit of older
+    unarchivers, in addition to the existing full-precision
+    timestamps in the pax extended header.
+  - bpo-46676: Make typing.ParamSpec args and kwargs equal to
+    themselves. Patch by Gregory Beauregard.
+  - bpo-46672: Fix NameError in asyncio.gather() when initial
+    type check fails.
+  - bpo-46655: In typing.get_type_hints(), support evaluating
+    bare stringified TypeAlias annotations. Patch by Gregory
+    Beauregard.
+  - bpo-45948: Fixed a discrepancy in the C implementation of the
+    xml.etree.ElementTree module. Now, instantiating an
+    xml.etree.ElementTree.XMLParser with a target=None keyword
+    provides a default xml.etree.ElementTree.TreeBuilder target
+    as the Python implementation does.
+  - bpo-46521: Fix a bug in the codeop module that was
+    incorrectly identifying invalid code involving string quotes
+    as valid code.
+  - bpo-46581: Brings ParamSpec propagation for GenericAlias in
+    line with Concatenate (and others).
+  - bpo-46591: Make the IDLE doc URL on the About IDLE dialog
+    clickable.
+  - bpo-46400: expat: Update libexpat from 2.4.1 to 2.4.4
+  - bpo-46487: Add the get_write_buffer_limits method to
+    asyncio.transports.WriteTransport and to the SSL transport.
+  - bpo-45173: Note the configparser deprecations will be removed
+    in Python 3.12.
+  - bpo-46539: In typing.get_type_hints(), support evaluating
+    stringified ClassVar and Final annotations inside Annotated.
+    Patch by Gregory Beauregard.
+  - bpo-46491: Allow typing.Annotated to wrap typing.Final and
+    typing.ClassVar. Patch by Gregory Beauregard.
+  - bpo-46436: Fix command-line option -d/--directory in module
+    http.server which is ignored when combined with command-line
+    option --cgi. Patch by Géry Ogam.
+  - bpo-41403: Make mock.patch() raise a TypeError with
+    a relevant error message on invalid arg. Previously it
+    allowed a cryptic AttributeError to escape.
+  - bpo-46474: In importlib.metadata.EntryPoint.pattern, avoid
+    potential REDoS by limiting ambiguity in consecutive
+    whitespace.
+  - bpo-46469: asyncio generic classes now return
+    types.GenericAlias in __class_getitem__ instead of the same
+    class.
+  - bpo-46434: pdb now gracefully handles help when __doc__ is
+    missing, for example when run with pregenerated optimized
+    .pyc files.
+  - bpo-46333: The __eq__() and __hash__() methods of
+    typing.ForwardRef now honor the module parameter of
+    typing.ForwardRef. Forward references from different modules
+    are now differentiated.
+  - bpo-46246: Add missing __slots__ to
+    importlib.metadata.DeprecatedList. Patch by Arie Bovenberg.
+  - bpo-46266: Improve day constants in calendar.
+  - Now all constants (MONDAY … SUNDAY) are documented, tested,
+    and added to __all__.
+  - bpo-46232: The ssl module now handles certificates with bit
+    strings in DN correctly.
+  - bpo-43118: Fix a bug in inspect.signature() that was causing
+    it to fail on some subclasses of classes with
+    a __text_signature__ referencing module globals. Patch by
+    Weipeng Hong.
+  - bpo-26552: Fixed case where failing asyncio.ensure_future()
+    did not close the coroutine. Patch by Kumar Aditya.
+  - bpo-21987: Fix an issue with tarfile.TarFile.getmember()
+    getting a directory name with a trailing slash.
+  - bpo-20392: Fix inconsistency with uppercase file extensions
+    in MimeTypes.guess_type(). Patch by Kumar Aditya.
+  - bpo-46080: Fix exception in argparse help text generation if
+    a argparse.BooleanOptionalAction argument’s default is
+    argparse.SUPPRESS and it has help specified. Patch by Felix
+    Fontein.
+  - bpo-44439: Fix .write() method of a member file in ZipFile,
+    when the input data is an object that supports the buffer
+    protocol, the file length may be wrong.
+  - bpo-45703: When a namespace package is imported before
+    another module from the same namespace is created/installed
+    in a different sys.path location while the program is
+    running, calling the importlib.invalidate_caches() function
+    will now also guarantee the new module is noticed.
+  - bpo-24959: Fix bug where unittest sometimes drops frames from
+    tracebacks of exceptions raised in tests.
+  - bpo-44791: Fix substitution of ParamSpec in Concatenate with
+    different parameter expressions. Substitution with a list of
+    types returns now a tuple of types. Substitution with
+    Concatenate returns now a Concatenate with concatenated lists
+    of arguments.
+  - bpo-14156: argparse.FileType now supports an argument of ‘-’
+    in binary mode, returning the .buffer attribute of
+    sys.stdin/sys.stdout as appropriate. Modes including ‘x’ and
+    ‘a’ are treated equivalently to ‘w’ when argument is ‘-’.
+    Patch contributed by Josh Rosenberg
+  - bpo-46463: Fixes escape4chm.py script used when building the
+    CHM documentation file
+  - bpo-46913: Fix test_faulthandler.test_sigfpe() if Python is
+    built with undefined behavior sanitizer (UBSAN): disable
+    UBSAN on the faulthandler_sigfpe() function. Patch by Victor
+    Stinner.
+  - bpo-46708: Prevent default asyncio event loop policy
+    modification warning after test_asyncio execution.
+  - bpo-46678: The function make_legacy_pyc in
+    Lib/test/support/import_helper.py no longer fails when
+    PYTHONPYCACHEPREFIX is set to a directory on a different
+    device from where tempfiles are stored.
+  - bpo-46616: Ensures test_importlib.test_windows cleans up
+    registry keys after completion.
+  - bpo-44359: test_ftplib now silently ignores socket errors to
+    prevent logging unhandled threading exceptions. Patch by
+    Victor Stinner.
+  - bpo-46542: Fix a Python crash in test_lib2to3 when using
+    Python built in debug mode: limit the recursion limit. Patch
+    by Victor Stinner.
+  - bpo-46576: test_peg_generator now disables compiler
+    optimization when testing compilation of its own C extensions
+    to significantly speed up the testing on non-debug builds of
+    CPython.
+  - bpo-46542: Fix test_json tests checking for RecursionError:
+    modify these tests to use support.infinite_recursion(). Patch
+    by Victor Stinner.
+  - bpo-13886: Skip test_builtin PTY tests on non-ASCII
+    characters if the readline module is loaded. The readline
+    module changes input() behavior, but test_builtin is not
+    intented to test the readline module. Patch by Victor
+    Stinner.
+  - bpo-38472: Fix GCC detection in setup.py when
+    cross-compiling. The C compiler is now run with LC_ALL=C.
+    Previously, the detection failed with a German locale.
+  - bpo-46513: configure no longer uses AC_C_CHAR_UNSIGNED macro
+    and pyconfig.h no longer defines reserved symbol
+    __CHAR_UNSIGNED__.
+  - bpo-45296: Clarify close, quit, and exit in IDLE. In the File
+    menu, ‘Close’ and ‘Exit’ are now ‘Close Window’ (the current
+    one) and ‘Exit’ is now ‘Exit IDLE’ (by closing all windows).
+    In Shell, ‘quit()’ and ‘exit()’ mean ‘close Shell’. If there
+    are no other windows, this also exits IDLE.
+  - bpo-45447: Apply IDLE syntax highlighting to pyi files. Patch
+    by Alex Waygood and Terry Jan Reedy.
+  - bpo-46433: The internal function _PyType_GetModuleByDef now
+    correctly handles inheritance patterns involving static
+    types.
+  - bpo-14916: Fixed bug in the tokenizer that prevented
+    PyRun_InteractiveOne from parsing from the provided FD.
+
+- Remove upstreamed patches:
+  - support-expat-245.patch
+
+-------------------------------------------------------------------
 Tue Feb 22 05:53:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-expat-245.patch:
   * Support Expat >= 2.4.5 
 
 -------------------------------------------------------------------
+Tue Feb 15 23:05:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- bsc#1195831 Obsolete older "most modern" versions of python
+  packages (python39 for python310 and so forth). For next
+  versions it is necessary just to edit the macro.
+
+-------------------------------------------------------------------
 Tue Jan 25 16:09:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove second superfluous BR rpm-build-python
+
+-------------------------------------------------------------------
+Tue Jan 25 16:09:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove second superfluous BR rpm-build-python
+- Add fix_configure_rst.patch, which removes duplicate link
+  targets and make documentation with old Sphinx in SLE
+- Skip test_capi (bsc#1195140 and bpo#37169)
 
 -------------------------------------------------------------------
 Wed Jan 19 22:01:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -21,7 +320,7 @@ Wed Jan 19 22:01:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Dec  8 13:07:25 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
-- Upgrade to 3.10.1:
+- Upgrade to 3.10.1 (jsc#SLE-18038):
   - PEP 623 – Deprecate and prepare for the removal of the wstr
     member in PyUnicodeObject.
   - PEP 604 – Allow writing union types as X | Y
