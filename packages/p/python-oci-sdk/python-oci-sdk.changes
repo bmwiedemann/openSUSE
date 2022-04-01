@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 28 10:08:46 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.61.0
+  * Support for getting the storage utilization of a deployment on deployment
+    list and get operations in the GoldenGate service
+  * Support for virtual machines, bare metal machines, and Exadata databases
+    with private endpoints in the Operations Insights service
+  * Support for setting deletion policies on database systems
+    in the MySQL Database service
+  * Support for retries by default on operations in the Data Labeling
+    service (data plane and control plane)
+
+-------------------------------------------------------------------
 Tue Mar 15 13:10:21 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.60.0
