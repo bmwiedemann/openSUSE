@@ -23,12 +23,11 @@ Summary:        Java lib for conversion of Java objects into JSON representation
 License:        Apache-2.0
 URL:            https://github.com/google/gson
 Source0:        https://github.com/google/gson/archive/gson-parent-%{version}.tar.gz
-Patch1:         osgi-export-internal.patch
-Patch2:         allow-build-with-java8.patch
+Patch0:         osgi-export-internal.patch
 # Remove dependency on unavailable templating-maven-plugin
-Patch3:         no-template-plugin.patch
+Patch1:         no-template-plugin.patch
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.annotation:jsr250-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -48,15 +47,14 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n gson-gson-parent-%{version}
+%patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 # remove unnecessary dependency on parent POM
 %pom_remove_parent
 
 # presence of these files breaks builds with Java 8
-find -name "module-info.java" -print -delete
+# find -name "module-info.java" -print -delete
 
 # Use felix maven-bundle-plugin only for OSGi metadata
 %pom_remove_plugin :bnd-maven-plugin gson
@@ -76,12 +74,10 @@ find -name "module-info.java" -print -delete
     </execution>
   </executions>"
 
+%pom_xpath_set "pom:plugins/pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration" "<release>8</release>"
+
 %build
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
-%endif
-    -Dsource=8
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install

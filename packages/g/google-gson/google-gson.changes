@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  1 08:00:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with Java >= 9 in order to produce a modular jar by
+  compiling the module-info.java sources with all other classes
+  built with release 8 and still compatible with Java 8
+- Removed patch:
+  * allow-build-with-java8.patch
+    + not needed in this setting
+
+-------------------------------------------------------------------
 Thu Mar 31 09:40:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.8.9 (jsc#SLE-24261)
