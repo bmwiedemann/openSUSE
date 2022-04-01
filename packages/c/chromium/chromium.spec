@@ -49,13 +49,14 @@
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_with lto
 Name:           chromium
-Version:        99.0.4844.84
+Version:        100.0.4896.60
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
-Source1:        README.SUSE
+Source1:        esbuild.tar.gz
+Source3:        README.SUSE
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -83,14 +84,12 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-98-compiler.patch
+Patch15:        chromium-100-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
-Patch18:        chromium-86-nearby-explicit.patch
 Patch21:        chromium-gcc11.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch46:        chromium-91-sql-standard-layout-type.patch
 Patch50:        chromium-clang-nomerge.patch
-Patch51:        chromium-glibc-2.34.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch63:        chromium-ffmpeg-lp152.patch
 Patch65:        chromium-94-sql-no-assert.patch
@@ -100,10 +99,12 @@ Patch72:        chromium-95-quiche-include.patch
 Patch78:        chromium-98-EnumTable-crash.patch
 Patch80:        chromium-97-ScrollView-reference.patch
 Patch84:        chromium-third_party-symbolize-missing-include.patch
-Patch85:        chromium-v8-missing-utility-include.patch
 Patch86:        chromium-97-arm-tflite-cast.patch
 Patch87:        chromium-98-gtk4-build.patch
-Patch88:        chromium-99-AutofillAssistantModelExecutor-NoDestructor.patch
+Patch89:        chromium-100-GLImplementationParts-constexpr.patch
+Patch90:        chromium-100-InMilliseconds-constexpr.patch
+Patch91:        chromium-100-SCTHashdanceMetadata-move.patch
+Patch92:        chromium-100-macro-typo.patch
 Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch102:       chromium-prop-codecs.patch
@@ -117,6 +118,7 @@ BuildRequires:  flex
 BuildRequires:  gn >= 0.1807
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libcap-devel
@@ -206,7 +208,7 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xscrnsaver)
@@ -301,6 +303,14 @@ patch -R -p1 < %{PATCH68}
 %endif
 
 %build
+# esbuild
+rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
+tar -xf %{SOURCE1}
+pushd esbuild
+GO_FLAGS="-mod=vendor" make
+cp -a esbuild ../third_party/devtools-frontend/src/third_party/esbuild/esbuild
+popd
+
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
@@ -802,6 +812,7 @@ ln -s %{_bindir}/chromium-browser %{buildroot}%{_bindir}/chromium
 mkdir -p %{buildroot}%{_sysconfdir}/chromium/policies
 mkdir %{buildroot}%{_sysconfdir}/chromium/policies/managed
 mkdir %{buildroot}%{_sysconfdir}/chromium/policies/recommended
+chmod -w %{buildroot}%{_sysconfdir}/chromium/policies/managed
 # SVG
 install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/chromium-browser.svg
 

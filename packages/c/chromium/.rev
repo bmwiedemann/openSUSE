@@ -3980,4 +3980,45 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>965591</requestid>
   </revision>
+  <revision rev="328" vrev="1">
+    <srcmd5>eca65df473fba28f2e7141cb002341de</srcmd5>
+    <version>100.0.4896.60</version>
+    <time>1648841780</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 100.0.4896.60 (boo#1197680)
+  * CVE-2022-1125: Use after free in Portals
+  * CVE-2022-1127: Use after free in QR Code Generator
+  * CVE-2022-1128: Inappropriate implementation in Web Share API
+  * CVE-2022-1129: Inappropriate implementation in Full Screen Mode
+  * CVE-2022-1130: Insufficient validation of untrusted input in WebOTP
+  * CVE-2022-1131: Use after free in Cast UI
+  * CVE-2022-1132: Inappropriate implementation in Virtual Keyboard
+  * CVE-2022-1133: Use after free in WebRTC
+  * CVE-2022-1134: Type Confusion in V8
+  * CVE-2022-1135: Use after free in Shopping Cart
+  * CVE-2022-1136: Use after free in Tab Strip
+  * CVE-2022-1137: Inappropriate implementation in Extensions
+  * CVE-2022-1138: Inappropriate implementation in Web Cursor
+  * CVE-2022-1139: Inappropriate implementation in Background Fetch API
+  * CVE-2022-1141: Use after free in File Manager
+  * CVE-2022-1142: Heap buffer overflow in WebUI
+  * CVE-2022-1143: Heap buffer overflow in WebUI
+  * CVE-2022-1144: Use after free in WebUI
+  * CVE-2022-1145: Use after free in Extensions
+  * CVE-2022-1146: Inappropriate implementation in Resource Timing
+- Added patches:
+  * chromium-100-compiler.patch
+  * chromium-100-GLImplementationParts-constexpr.patch
+  * chromium-100-InMilliseconds-constexpr.patch
+  * chromium-100-SCTHashdanceMetadata-move.patch
+  * chromium-100-macro-typo.patch
+- Removed patches:
+  * chromium-98-compiler.patch
+  * chromium-86-nearby-explicit.patch
+  * chromium-glibc-2.34.patch
+  * chromium-v8-missing-utility-include.patch
+  * chromium-99-AutofillAssistantModelExecutor-NoDestructor.patch
+</comment>
+    <requestid>966432</requestid>
+  </revision>
 </revisionlist>

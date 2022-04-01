@@ -1,0 +1,29 @@
+From 1183b14db8bd08d731ff3433c436887de00be3aa Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Fri, 18 Feb 2022 16:28:25 +0000
+Subject: [PATCH] Fix typo in non-clang GSL_OWNER macro
+
+GCC build fails because GSL_OWNER is not defined (GSL_OWNER_ was
+the one actually declared).
+
+Bug: 819294
+Change-Id: I1c3d17cb1c08b9bc0e8a888452da9868c308ddb5
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3472080
+Reviewed-by: Daniel Cheng <dcheng@chromium.org>
+Commit-Queue: Daniel Cheng <dcheng@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#972974}
+---
+
+diff --git a/base/compiler_specific.h b/base/compiler_specific.h
+index eec5810..1ee8074 100644
+--- a/base/compiler_specific.h
++++ b/base/compiler_specific.h
+@@ -386,7 +386,7 @@
+ #define GSL_OWNER [[gsl::Owner]]
+ #define GSL_POINTER [[gsl::Pointer]]
+ #else
+-#define GSL_OWNER_
++#define GSL_OWNER
+ #define GSL_POINTER
+ #endif
+ 

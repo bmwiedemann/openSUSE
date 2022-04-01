@@ -1,0 +1,92 @@
+From d32156fd3773330eca99e9cba5e18db57aaa1a53 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sat, 19 Feb 2022 10:14:24 +0000
+Subject: [PATCH] GCC: make GLImplementationParts constructors constexpr
+
+Fix build error in GCC, as the constexpr operator== requires its
+invocations to be also constexpr.
+---
+ ui/gl/gl_implementation.cc | 23 -----------------------
+ ui/gl/gl_implementation.h  | 25 +++++++++++++++++++++++--
+ 2 files changed, 23 insertions(+), 25 deletions(-)
+
+diff --git a/ui/gl/gl_implementation.cc b/ui/gl/gl_implementation.cc
+index e4e5456..3e4a47c 100644
+--- a/ui/gl/gl_implementation.cc
++++ b/ui/gl/gl_implementation.cc
+@@ -26,29 +26,6 @@
+ 
+ namespace gl {
+ 
+-ANGLEImplementation MakeANGLEImplementation(
+-    const GLImplementation gl_impl,
+-    const ANGLEImplementation angle_impl) {
+-  if (gl_impl == kGLImplementationEGLANGLE) {
+-    if (angle_impl == ANGLEImplementation::kNone) {
+-      return ANGLEImplementation::kDefault;
+-    } else {
+-      return angle_impl;
+-    }
+-  } else {
+-    return ANGLEImplementation::kNone;
+-  }
+-}
+-
+-GLImplementationParts::GLImplementationParts(
+-    const ANGLEImplementation angle_impl)
+-    : gl(kGLImplementationEGLANGLE),
+-      angle(MakeANGLEImplementation(kGLImplementationEGLANGLE, angle_impl)) {}
+-
+-GLImplementationParts::GLImplementationParts(const GLImplementation gl_impl)
+-    : gl(gl_impl),
+-      angle(MakeANGLEImplementation(gl_impl, ANGLEImplementation::kDefault)) {}
+-
+ bool GLImplementationParts::IsValid() const {
+   if (angle == ANGLEImplementation::kNone) {
+     return (gl != kGLImplementationEGLANGLE);
+diff --git a/ui/gl/gl_implementation.h b/ui/gl/gl_implementation.h
+index 376ed58..a2513ea 100644
+--- a/ui/gl/gl_implementation.h
++++ b/ui/gl/gl_implementation.h
+@@ -59,8 +59,14 @@ enum class ANGLEImplementation {
+ };
+ 
+ struct GL_EXPORT GLImplementationParts {
+-  explicit GLImplementationParts(const ANGLEImplementation angle_impl);
+-  explicit GLImplementationParts(const GLImplementation gl_impl);
++  constexpr explicit GLImplementationParts(const ANGLEImplementation angle_impl)
++      : gl(kGLImplementationEGLANGLE),
++        angle(MakeANGLEImplementation(kGLImplementationEGLANGLE, angle_impl)) {}
++
++  constexpr explicit GLImplementationParts(const GLImplementation gl_impl)
++      : gl(gl_impl),
++        angle(MakeANGLEImplementation(gl_impl, ANGLEImplementation::kDefault)) {
++  }
+ 
+   GLImplementation gl = kGLImplementationNone;
+   ANGLEImplementation angle = ANGLEImplementation::kNone;
+@@ -80,6 +86,21 @@ struct GL_EXPORT GLImplementationParts {
+   bool IsValid() const;
+   bool IsAllowed(const std::vector<GLImplementationParts>& allowed_impls) const;
+   std::string ToString() const;
++
++ private:
++  constexpr ANGLEImplementation MakeANGLEImplementation(
++      const GLImplementation gl_impl,
++      const ANGLEImplementation angle_impl) {
++    if (gl_impl == kGLImplementationEGLANGLE) {
++      if (angle_impl == ANGLEImplementation::kNone) {
++        return ANGLEImplementation::kDefault;
++      } else {
++        return angle_impl;
++      }
++    } else {
++      return ANGLEImplementation::kNone;
++    }
++  }
+ };
+ 
+ struct GL_EXPORT GLWindowSystemBindingInfo {
+-- 
+2.34.1
+
