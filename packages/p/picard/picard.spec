@@ -37,6 +37,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-sip
 BuildRequires:  update-desktop-files
 Requires:       python3-Markdown
+Requires:       python3-PyYAML
 Requires:       python3-dateutil >= 2.7.3
 Requires:       python3-fasteners
 Requires:       python3-mutagen >= 1.37

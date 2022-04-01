@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  1 00:32:59 UTC 2022 - Federico Mena Quintero <federico@suse.com>
+
+- Add dependency on python3-PyYAML to avoid a crash on startup.
+
+-------------------------------------------------------------------
 Tue Jan 18 07:59:49 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.7.3:
