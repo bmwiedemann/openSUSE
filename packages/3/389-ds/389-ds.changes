@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 31 04:18:15 UTC 2022 - william.brown@suse.com
+
+- Resolve bsc#1197275 - CVE-2022-0918 - Crafted message may cause DoS
+- Update to version 2.1.1~git4.b7f891097:
+  * Issue 5242- Craft message may crash the server (#5243)
+  * Issue 5234 - UI - rename Users and Groups tab
+  * Issue 5217 - Simplify instance creation and administration by non root user (#5224)
+  * Issue 5227 - UI - No way to move back to Get Started step (#5233)
+  * Bump version to 2.1.1
+  * Issue 5230 - Race condition in RHDS disk monitoring functions
+  * Issue 4299 - UI - Add CoS funtionality (#5196)
+  * Issue 5225 - UI - impossible to manually set entry cache
+  * Issue 5186 - UI - Fix SASL Mapping regex test feature
+  * Issue 5221 - User with expired password can still login with full privledges
+
+-------------------------------------------------------------------
 Tue Mar 22 00:05:50 UTC 2022 - william.brown@suse.com
 
 - Resolve bsc#1197345 - CVE-2022-0996 - Mishandling of password expiry

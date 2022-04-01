@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.0.14~git25.e6431d959
+Version:        2.1.1~git4.b7f891097
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -65,6 +65,7 @@ BuildRequires:  libevent-devel
 BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
 BuildRequires:  libtool
+BuildRequires:  lmdb-devel
 BuildRequires:  sysuser-tools
 # net-snmp-devel is needed to build the snmp ldap-agent
 BuildRequires:  net-snmp-devel >= 5.1.2
