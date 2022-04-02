@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 28 15:09:44 UTC 2022 - Kirk Allan <kallan@suse.com>
+
+- Update to 12.0.0 (build 19345655) (boo#1196803)
+- jsc#SLE-24097 ECO Update open-vm-tools 12.0.0
+  + New/Updated features:
+    - Support for managing Salt Minion through guest variables.  A new
+      open-vm-tools-salt-minion rpm is added to handle this support.
+        jsc#SLE-24094 Update open-vm-tools 12.0.0 SLES15SP4
+        jsc#SLE-24095 Update open-vm-tools 12.0.0 SLES15SP3
+        jsc#SLE-24096 Update open-vm-tools 12.0.0 SLES12SP5
+    - New ComponentMgr plugin to manage (add, remove, monitor) components on
+      the guest VM. 
+    - Patch to fix potential Fail to Build from Source [FTBFS] (boo#1196804).
+    - Build vmhgfs with either libfuse2 or libfuse3.
+  + A number of Coverity and Codacy reported issues have been addressed.
+  + The following issues and pull requests reported on
+    github.com/vmware/open-vm-tools have been addressed: Issue # 128,
+    Issue # 314, Pull # 513, Pull # 544, Pull # 573
+    
+- Added patches
+  + gcc_size_t.patch (boo#1196804)
+
+-------------------------------------------------------------------
 Mon Oct  4 22:19:03 UTC 2021 - Kirk Allan <kallan@suse.com>
 
 - Update to 11.3.5 (build 18557794) (boo#1190987)

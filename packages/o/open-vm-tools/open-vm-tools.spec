@@ -1,7 +1,7 @@
 #
 # spec file for package open-vm-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,8 +40,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  18557794
-Version:        11.3.5
+%define bldnum  19345655
+Version:        12.0.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -124,7 +124,13 @@ BuildRequires:  pkgconfig(xerces-c)
 %define arg_xerces --without-xerces
 %endif
 # vmhgfs is always built so fuse is no longer optional
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0150400
+BuildRequires:  fuse3-devel
+%define         arg_with_fuse --with-fuse=3
+%else
 BuildRequires:  fuse-devel
+%define         arg_with_fuse --with-fuse=2
+%endif
 BuildRequires:  pkgconfig(udev)
 %if 0%( pkg-config --exists 'udev > 190' && echo '1' ) == 01
 %define _udevrulesdir /usr/lib/udev/rules.d
@@ -142,6 +148,7 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
+Patch1:         gcc_size_t.patch
 
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
@@ -201,6 +208,15 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %description      sdmp
 Service Discovery Plugin
 
+%package        salt-minion
+Summary:        Script file to install/uninstall salt-minion
+Group:          System Environment/Libraries
+Requires:       %{name}%{?_isa} = %{version}-%{release}, systemd, curl, coreutils, gawk, grep
+ExclusiveArch:  x86_64
+
+%description    salt-minion
+This package contains a script to setup Salt Minion on VMware virtual machines.
+
 %package -n libvmtools0
 Summary:        Open Virtual Machine Tools - shared library
 Group:          System/Libraries
@@ -224,6 +240,7 @@ if you intend to create own plugins for vmtoolsd.
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
+%patch1 -p2
 
 #SUSE specific patches
 %patch0 -p2
@@ -264,6 +281,8 @@ chmod 755 configure
     --with-udev-rules-dir=%{_udevrulesdir} \
     --enable-resolutionkms \
     --enable-servicediscovery \
+    %{arg_with_fuse} \
+    --enable-salt-minion \
     --disable-static
 make
 
@@ -418,6 +437,7 @@ systemctl try-restart vmtoolsd.service || :
 %{_libdir}/%{name}/plugins/vmsvc/libappInfo.so
 %{_libdir}/%{name}/plugins/vmsvc/libgdp.so
 %{_libdir}/%{name}/plugins/vmsvc/libguestStore.so
+%{_libdir}/%{name}/plugins/vmsvc/libcomponentMgr.so
 %{_libdir}/%{name}/plugins/common/libhgfsServer.so
 %{_libdir}/%{name}/plugins/common/libvix.so
 %{_bindir}/vmhgfs-fuse
@@ -481,6 +501,13 @@ systemctl try-restart vmtoolsd.service || :
 %{_sbindir}/rcvmblock-fuse
 %endif
 
+%endif
+
+%ifarch x86_64
+%files salt-minion
+%dir %{_libdir}/%{name}/componentMgr/
+%dir %{_libdir}/%{name}/componentMgr/saltMinion/
+%{_libdir}/%{name}/componentMgr/saltMinion/svtminion.sh
 %endif
 
 %files sdmp
