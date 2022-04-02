@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Mar 28 18:16:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.8.0
+  * https://scipy.github.io/devdocs/release.1.8.0.html
+  * SciPy 1.8.0 is the culmination of 6 months of hard work. It
+    contains many new features, numerous bug-fixes, improved test
+    coverage and better documentation. There have been a number of
+    deprecations and API changes in this release. All users are
+    encouraged to upgrade to this release, as there are a large
+    number of bug-fixes and optimizations. Before upgrading, we
+    recommend that users check that their own code does not use
+    deprecated SciPy functionality (to do so, run your code with
+    python -Wd and check for `DeprecationWarning`s). 
+  * A sparse array API has been added for early testing and
+    feedback; this work is ongoing, and users should expect minor
+    API refinements over the next few releases.
+  * The sparse SVD library PROPACK is now vendored with SciPy, and
+    an interface is exposed via scipy.sparse.svds with
+    solver='PROPACK'. It is currently default-off due to potential
+    issues on Windows that we aim to resolve in the next release,
+    but can be optionally enabled at runtime for friendly testing
+    with an environment variable setting of USE_PROPACK=1.
+  * A new scipy.stats.sampling submodule that leverages the UNU.RAN
+    C library to sample from arbitrary univariate non-uniform
+    continuous and discrete distributions
+  * All namespaces that were private but happened to miss
+    underscores in their names have been deprecated.
+  * Backwards incompatible changes
+    - SciPy has raised the minimum compiler versions to GCC 6.3 on
+      linux and VS2019 on windows. In particular, this means that
+      SciPy may now use C99 and C++14 features. For more details
+      see here.
+    - The result for empty bins for scipy.stats.binned_statistic
+      with the builtin 'std' metric is now nan, for consistency
+      with np.std.
+    - The function scipy.spatial.distance.wminkowski has been
+      removed. To achieve the same results as before, please use
+      the minkowski distance function with the (optional) w=
+      keyword-argument for the given weight.
+
+-------------------------------------------------------------------
 Sat Jan 29 20:44:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Provide empty debuginfo extraction for :test flavor

@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_7_3
+%define _ver 1_8_0
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -88,7 +88,7 @@ ExclusiveArch:  do_not_build
 %define         skip_python2 1
 
 Name:           %{package_name}
-Version:        1.7.3
+Version:        1.8.0
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -97,10 +97,10 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 Source100:      python-scipy-rpmlintrc
 BuildRequires:  %{python_module Cython >= 0.29.18}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pybind11 >= 2.4.3}
 BuildRequires:  %{python_module pybind11-devel >= 2.4.3}
-BuildRequires:  %{python_module pythran}
+BuildRequires:  %{python_module pythran >= 0.10.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -111,12 +111,13 @@ ExclusiveArch:  do_not_build
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy = %{version}}
+BuildRequires:  %{python_module threadpoolctl}
 %endif
 %if %{without hpc}
-BuildRequires:  %{python_module numpy-devel >= 1.16.5}
+BuildRequires:  %{python_module numpy-devel >= 1.17.3}
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-Requires:       python-numpy >= 1.16.5
+Requires:       python-numpy >= 1.17.3
 Requires:       python-pybind11 >= 2.4.3
  %if %{with openblas}
 BuildRequires:  openblas-devel
@@ -131,7 +132,7 @@ BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc >= 0.3
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
-Requires:       python-numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc >= 1.16.5
+Requires:       python-numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc >= 1.17.3
 %endif
 %python_subpackages
 
