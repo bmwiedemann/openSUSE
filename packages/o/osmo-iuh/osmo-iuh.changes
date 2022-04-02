@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  2 14:52:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Drop osmo-hnbgw
+  * Introduce dynamic log category for libosmo-rua/hnbap
+- Drop harden_osmo-hnbgw.service.patch
+
+-------------------------------------------------------------------
 Fri Nov 19 10:09:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.1.0

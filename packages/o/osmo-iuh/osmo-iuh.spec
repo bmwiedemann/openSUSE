@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-iuh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osmo-iuh
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -25,7 +25,6 @@ Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/osmohnbgw/wiki
 
 Source:         https://github.com/osmocom/osmo-iuh/archive/%version.tar.gz
-Patch0:         harden_osmo-hnbgw.service.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
@@ -132,8 +131,6 @@ autoreconf -fi
 %install
 %make_install
 find "%buildroot" -type f -name "*.la" -delete -print
-install -d %buildroot/%_sbindir
-ln -s %_sbindir/service %buildroot/%_sbindir/rcosmo-hnbgw
 
 %check
 if ! %make_build check; then
@@ -152,30 +149,8 @@ fi
 %post   -n libosmo-sabp1 -p /sbin/ldconfig
 %postun -n libosmo-sabp1 -p /sbin/ldconfig
 
-%pre
-%service_add_pre    osmo-hnbgw.service
-
-%post
-%service_add_post   osmo-hnbgw.service
-
-%preun
-%service_del_preun  osmo-hnbgw.service
-
-%postun
-%service_del_postun osmo-hnbgw.service
-
-%files
-%license COPYING
-%doc README.md
-%dir %_sysconfdir/osmocom
-%config(noreplace) %_sysconfdir/osmocom/osmo-hnbgw.cfg
-%dir %_docdir/%name/examples
-%_docdir/%name/examples/osmo-hnbgw.cfg
-%_bindir/osmo-hnbgw
-%_unitdir/osmo-hnbgw.service
-%_sbindir/rcosmo-hnbgw
-
 %files -n libosmo-hnbap0
+%license COPYING
 %_libdir/libosmo-hnbap.so.0*
 
 %files -n libosmo-hnbap-devel

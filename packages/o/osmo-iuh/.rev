@@ -95,4 +95,12 @@
     <comment>- Update to new upstream release 1.1.0</comment>
     <requestid>932577</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>906b646516790a7ee0ac556dc8056df4</srcmd5>
+    <version>1.2.0</version>
+    <time>1648916457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.0</comment>
+    <requestid>966548</requestid>
+  </revision>
 </revisionlist>
