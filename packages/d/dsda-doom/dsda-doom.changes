@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Mar 30 18:39:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.24.3
+  * Improved automatic keyframe timeout behaviour
+  * Fixed a crash caused by saving the game state after an
+    intercept overrun
+  * Added mouse stutter correction option (on by default)
+- Add fluidsynth1.diff
+
+-------------------------------------------------------------------
+Fri Mar  4 19:55:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.24.2
+  * Added another batch of cheats to the console
+  * Removed process affinity hack
+  * Added support for SNDFONT lump
+  * Moved default soundfont into dsda-doom.wad
+
+-------------------------------------------------------------------
+Sat Feb 19 16:16:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (v0.24.1) for build.opensuse.org
+- Reuse prboom-hbar-all.diff, prboom-hbar-gradient.diff,
+  prboom-nodatetime.diff from prboom-plus package.
