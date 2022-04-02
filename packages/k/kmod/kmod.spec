@@ -1,7 +1,7 @@
 #
 # spec file for package kmod
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ URL:            https://www.kernel.org/pub/linux/utils/kernel/kmod/
 #Git-Clone:	git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod
 Source:         https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-%version.tar.xz
 Source2:        https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-%version.tar.sign
+Source3:        %name.keyring
 Patch1:         0002-modprobe-Recognize-allow-unsupported-modules-on-comm.patch
 Patch2:         0003-libkmod-config-Recognize-allow_unsupported_modules-i.patch
 Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch

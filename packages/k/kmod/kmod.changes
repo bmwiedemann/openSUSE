@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 28 15:01:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add keyring so that gpg validation actually does something 
+
+-------------------------------------------------------------------
 Mon Dec  6 11:00:57 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Ensure that kmod and packages linking to libkmod provide same features
