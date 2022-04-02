@@ -802,4 +802,13 @@
     <comment>KDE Frameworks 5.92 (forwarded request 961114 from cgiboudeaux)</comment>
     <requestid>961262</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>c17c815c9e8a9dad8064110fd4b53899</srcmd5>
+    <version>5.92.0</version>
+    <time>1648916409</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix (kde#451165):
+  * 0001-Do-not-set-user-visible-name-as-additional-agent-inf.patch</comment>
+    <requestid>965488</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 28 14:45:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream fix (kde#451165):
+  * 0001-Do-not-set-user-visible-name-as-additional-agent-inf.patch
+
+-------------------------------------------------------------------
 Mon Mar  7 09:27:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
