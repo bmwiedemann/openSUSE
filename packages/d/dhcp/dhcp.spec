@@ -127,7 +127,7 @@ Requires:       dhcp = %{version}
 Requires:       iproute2
 Requires:       iputils
 %if 0%{?suse_version} >= 1330
-Requires:       hostname
+Requires:       /usr/bin/hostname
 %else
 Requires:       net-tools
 %endif

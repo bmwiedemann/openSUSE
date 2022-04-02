@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 15 07:45:51 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require hostname binary, not package [bsc#1197087]
+
+-------------------------------------------------------------------
 Wed Jan 19 09:53:39 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
 
 - modify source if-up.d.dhcpd-restart-hook:
