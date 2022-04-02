@@ -1,7 +1,7 @@
 #
 # spec file for package weave
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        weave-daemonset-k8s-1.11.yaml
 Source3:        weave-rpmlintrc
 Patch0:         Makefile.diff
 Patch1:         disable-iptables-setup.patch
+Patch2:         0001-cni-Add-cniVersion-to-Result.patch
 BuildRequires:  binutils-gold
 BuildRequires:  libpcap-devel
 BuildRequires:  golang(API) >= 1.15
@@ -99,9 +100,7 @@ weave is a virtual network that gives a subnet to each host for use with
 container runtimes.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} exes WEAVE_VERSION=%{version}

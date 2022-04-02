@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:29:13 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix compatibility with runtimes using cni >= 1.0.0
+  (boo#1197490, gh#weaveworks/weave#3936):
+  * 0001-cni-Add-cniVersion-to-Result.patch
+
+-------------------------------------------------------------------
 Thu Feb  4 16:16:13 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add init.sh for init container
