@@ -1,7 +1,7 @@
 #
 # spec file for package libevdev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sonum	2
 Name:           libevdev
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        A wrapper library for evdev devices
 License:        MIT
@@ -104,6 +104,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/libevdev-tweak-device
 %{_bindir}/touchpad-edge-detector
 %{_mandir}/man1/libevdev-tweak-device.1%{?ext_man}
+%{_mandir}/man1/mouse-dpi-tool.1%{?ext_man}
 %{_mandir}/man1/touchpad-edge-detector.1%{?ext_man}
 
 %changelog

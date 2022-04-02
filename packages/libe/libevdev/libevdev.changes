@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 29 11:40:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * Add manpage for mouse-dpi-tool
+  * include sync key codes from kernel 5.17
+
+-------------------------------------------------------------------
 Sat Dec 11 23:38:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.0:
