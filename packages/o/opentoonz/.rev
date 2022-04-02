@@ -158,4 +158,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>965163</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7f2b0f2a0f37b73e02a4633511496778</srcmd5>
+    <version>1.6.0</version>
+    <time>1648916453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  + Audio
+    * Improved Audio Recording
+  + Cleanup
+    * Enabled to Cleanup Without Line Processing
+  + Flipbook / Viewers
+    * (new) Zoom in/out and fit floating panel geometry commands
+    * Enhanced Flipbook playback
+    * (new) 30bit display feature
+  + Xsheet / Timeline
+    * (new) &quot;Implicit hold&quot; move by Shift+dragging cells
+    * (new) Cell Mark feature
+    * Allowed changing parent of column from XSheet (Tahoma2D
+      port)
+    * (new) Xsheet Minimum Layout
+    * (new) Xsheet zoom control
+    * Enhanced Note level column
+  + Xsheet (Export)
+    * (new) Export Xsheet to PDF
+    * (new) TVPaint JSON export
+  + Image Levels / Rendering / FFMPEG
+    * Enabled to set Raster level frame number format
+    * Enabled to use PNG for new Raster level
+    * (new) Multi-Thread FFMPEG option
+    * Enhanced FFMPEG GIF export
+    * (new) OpenEXR I/O
+  + Palettes / Style Editor
+    * (new) Raster Lock Alpha tool setting
+    * (new) Hex editbox in Style Editor
+    * (new) Hex color names editor</comment>
+    <requestid>966527</requestid>
+  </revision>
 </revisionlist>

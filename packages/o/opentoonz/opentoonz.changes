@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Apr  2 06:26:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.6.0:
+  + Audio
+    * Improved Audio Recording
+  + Cleanup
+    * Enabled to Cleanup Without Line Processing
+  + Flipbook / Viewers
+    * (new) Zoom in/out and fit floating panel geometry commands
+    * Enhanced Flipbook playback
+    * (new) 30bit display feature
+  + Xsheet / Timeline
+    * (new) "Implicit hold" move by Shift+dragging cells
+    * (new) Cell Mark feature
+    * Allowed changing parent of column from XSheet (Tahoma2D
+      port)
+    * (new) Xsheet Minimum Layout
+    * (new) Xsheet zoom control
+    * Enhanced Note level column
+  + Xsheet (Export)
+    * (new) Export Xsheet to PDF
+    * (new) TVPaint JSON export
+  + Image Levels / Rendering / FFMPEG
+    * Enabled to set Raster level frame number format
+    * Enabled to use PNG for new Raster level
+    * (new) Multi-Thread FFMPEG option
+    * Enhanced FFMPEG GIF export
+    * (new) OpenEXR I/O
+  + Palettes / Style Editor
+    * (new) Raster Lock Alpha tool setting
+    * (new) Hex editbox in Style Editor
+    * (new) Hex color names editor
+    * Enabled to paste style's color into a color field
+  + File Browser
+    * Enabled To view palette files from the File Browser
+  + Effects / Schematic
+    * (new) Conical Transform option for Fractal Noise Fx Iwa
+    * (new) "Image Size" option for the Input Size parameter
+      for Tile Fx Iwa
+    * Allowed Renaming Pass Through Nodes (Tahoma2D port)
+    * (new) Shader Fx: HSL Blend GPU
+    * (new) Fx Global Controls parameter
+    * Redesigned Pass Through Fx Node
+    * (new) Bokeh Advanced Iwa Fx
+    * (new) Compass Gadget for Radial and Spin Blur Fxs
+    * (new) Linear color space option for all Layer Blending
+      Ino fxs
+  + File I/O
+    * (new) File Path Processing Using Regular Expression
+  + Camera Capture / Stop Motion
+    * (new) Camera calibration for the Camera Capture feature
+    * Enabled inputting frame with suffix in Camera Capture
+    * Enhanced Stop motion feature
+- Enable build on all archs but ARM.
+
+-------------------------------------------------------------------
 Sun Mar 20 08:23:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use 'https://' in _service file to connect to Github.
