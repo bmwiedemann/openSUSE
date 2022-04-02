@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Mar 26 07:40:01 UTC 2022 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to version 1.10.2
+  * CHEEVOS: Update to rcheevos 10.3.3
+  * CHEEVOS: Support for Arduboy
+  * CHEEVOS: Fix tab sequences in rich presence being turned into t
+    character
+  * CHEEVOS: Fix overflow when parsing float value that has more than
+    9 digits after the decimal
+  * CHEEVOS: Fix memory mapping when disconnect mask breaks a region
+    into multiple blocks
+  * CORES: Enable manual selection of which cores are displayed in
+    the 'Standalone Cores' menu
+  * DATABASE/EXPLORE: Added more categories to the Explore menu
+  * INPUT: Fix analog stick not working with 'Unified Menu Controls'
+  * INPUT/MAPPING: Add 'Manage Remap Files' submenu + automatically
+    save input remaps when closing content
+  * INPUT/MAPPING: Add 'Reset Input Mapping' option to 'Manage Remap
+    Files' menu
+  * INPUT/MAPPING: Fix keyboard device remap nulling
+  * LIBRETRO: RETRO_ENVIRONMENT_SHUTDOWN fix - ensure core is properly
+    unloaded when RETRO_ENVIRONMENT_SHUTDOWN is called
+  * LIBRETRO: RETRO_ENVIRONMENT_SHUTDOWN fix - ensure menu stack is
+    properly flushed when RETRO_ENVIRONMENT_SHUTDOWN is called
+  * LINUX/MALI FBDEV: Fix segfault switching video threaded from
+    quickmenu
+  * LOCALIZATION: Add Czech language support
+  * MENU/SETTINGS: Remove 'Advanced Settings' flag from 'Settings >
+    Core' menu
+  * MENU/MATERIALUI: Add 'Gray Dark + Light' themes
+  * MENU/RGUI: Add 6x10 extended ASCII and Latin Extended A and B
+    fonts. These will enable most Latin alphabets to be displayed in RGUI.
+  * MENU/RGUI: Add 'Gray Dark + Light' themes
+  * MENU/XMB: Add title margin adjustment
+  * MENU/XMB: Vertical fade corrections
+  * MENU/OZONE: The size of the thumbnail bar can now be changed though
+    a new option (Settings->User interface->Appearance) up to double
+    its normal size.
+  * MENU/OZONE: Add 'Gray Dark + Light' themes
+  * MENU/OZONE: Add thumbnail scale option
+  * HOTKEYS: Added hotkey for toggling sync to exact content framerate
+  * HOTKEYS: Prevent log spam when using rewind hotkey with cores
+    that don't support rewind, if rewind functionality itself is disabled
+  * HOTKEYS: Add hotkey for toggling sync to exact content framerate
+  * VIDEO/HDR: Removed redundant copy of buffer in HDR mode if the
+    shader has already a HDR format i.e. R10G10B10A2 (updated
+    Vulkan/D3D11/D3D12 drivers)
+  * VIDEO/HDR: Fixed crash when using stock shader and HDR and
+    previous optimisation
+  * WAYLAND: Dynamically load libdecor at runtime
+  * WAYLAND: Fix splash screen when using xdg_toplevel
+  * WAYLAND: SHM anti-collision for the splash screen
+  * WAYLAND: Skip splash screen if window is not ready
+
+-------------------------------------------------------------------
 Sat Mar  5 06:56:33 UTC 2022 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 1.10.1
