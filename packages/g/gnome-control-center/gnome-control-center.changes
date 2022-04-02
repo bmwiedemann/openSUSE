@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:54:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add gnome-control-center-goa-helper-on-X11.patch: Fix GOA helper
+  not showing up on X11 [glgo#GNOME/gnome-control-center!1651].
+
+-------------------------------------------------------------------
 Fri Mar 18 21:53:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:

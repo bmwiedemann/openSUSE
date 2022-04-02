@@ -38,6 +38,8 @@ Source0:        https://download.gnome.org/sources/gnome-control-center/42/%{nam
 Patch0:         gnome-control-center-disable-error-message-for-NM.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-reload-vpn-plugins.patch glgo#GNOME/gnome-control-center!1263 sckang@suse.com -- network/connection-editor: always load all available VPN plugins
 Patch3:         gnome-control-center-reload-vpn-plugins.patch
+# PATCH-FIX_UPSTREAM gnome-control-center-goa-helper-on-X11.patch glgo#GNOME/gnome-control-center!1651 badshah400@gmail.com -- Fix GOA helper not showing up on X11
+Patch4:         gnome-control-center-goa-helper-on-X11.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -181,6 +183,7 @@ GNOME control center.
 # Patch needs rebase
 #%%patch0 -p1
 %patch3 -p1
+%patch4 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000

@@ -1785,4 +1785,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963584</requestid>
   </revision>
+  <revision rev="211" vrev="2">
+    <srcmd5>028deb76c1390d2ff684ec1f91db3819</srcmd5>
+    <version>42.0</version>
+    <time>1648916438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965765</requestid>
+  </revision>
 </revisionlist>
