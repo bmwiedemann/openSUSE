@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 25 20:14:59 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.5 
+* Take the configuration option "RestrictTransferSyntaxes" into
+  account not only for decoding, but also for transcoding
+* Upgrade to GDCM 3.0.10 for static builds- 
+
+-------------------------------------------------------------------
 Thu Jul 22 19:40:30 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.4 
