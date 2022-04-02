@@ -41,15 +41,13 @@ Patch1:         bouncycastle-osgi.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
+BuildRequires:  glassfish-activation-api
 BuildRequires:  javamail
 BuildRequires:  javapackages-local
 Requires(post): javapackages-tools
 Requires(postun):javapackages-tools
 Provides:       bcprov = %{version}-%{release}
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-activation-api
-%endif
 
 %description
 The Bouncy Castle Crypto package is a Java implementation of cryptographic
@@ -128,11 +126,7 @@ ant -f ant/jdk15+.xml \
   -Dbc.javac.source=8 -Dbc.javac.target=8 \
   -Djunit.jar.home=$(build-classpath junit) \
   -Dmail.jar.home=$(build-classpath javax.mail) \
-%if 0%{?suse_version} > 1500
   -Dactivation.jar.home=$(build-classpath glassfish-activation-api) \
-%else
-  -Dactivation.jar.home= \
-%endif
   -Drelease.debug=true \
   clean build-provider build
 
@@ -159,7 +153,7 @@ cp -r build/artifacts/jdk1.5/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
 {
   # Rebuild the list of security providers in classpath.security
   suffix=security/classpath.security
-  secfiles="%{_prefix}/lib/$suffix %{_prefix}/lib64/$suffix"
+  secfiles="%{_prefix}/lib/$suffix %{_libdir}/$suffix"
 
   for secfile in $secfiles
   do
@@ -183,7 +177,7 @@ if [ $1 -eq 0 ] ; then
   {
     # Rebuild the list of security providers in classpath.security
     suffix=security/classpath.security
-    secfiles="%{_prefix}/lib/$suffix %{_prefix}/lib64/$suffix"
+    secfiles="%{_prefix}/lib/$suffix %{_libdir}/$suffix"
 
     for secfile in $secfiles
     do
