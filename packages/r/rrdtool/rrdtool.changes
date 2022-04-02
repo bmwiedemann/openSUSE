@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:41:16 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.8.0:
+  For the list of changes, please have a look here:
+  https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES
+- Remove unneeded python3.patch
+
+-------------------------------------------------------------------
 Sun Jan 16 13:28:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove conditionals around patch declaration, found by Stefan Liehmann 

@@ -32,13 +32,13 @@
 %bcond_without  libwrap
 %bcond_with     rados
 Name:           rrdtool
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 Summary:        Round Robin Database Tool to store and display time-series data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://oss.oetiker.ch/rrdtool/
-Source0:        https://oss.oetiker.ch/%{name}/pub/%{name}-%{version}.tar.gz
+Source0:        https://github.com/oetiker/%{name}-1.x/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source2:        sysconfig.rrdcached
 Source4:        rrdcached-systemd-pre
 Source5:        rrdcached.service
@@ -65,7 +65,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       dejavu
-Patch13:        python3.patch
 Patch14:        harden_rrdcached.service.patch
 %if %{with python}
 BuildRequires:  %{python}-devel
@@ -215,9 +214,6 @@ daemon was written to alleviate these problems.
 %setup -q
 %patch3
 %patch12 -p1
-%if 0%{?suse_version} >= 1500
-%patch13 -p1
-%endif
 %patch14 -p1
 
 # rrd_tool/rrd_cgi: use the date of the last change
