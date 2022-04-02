@@ -1,7 +1,7 @@
 #
 # spec file for package spice
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,15 @@ Name:           spice
 Version:        0.15.0
 Release:        0
 Summary:        SPICE client and server library
-License:        LGPL-2.1-or-later OR GPL-2.0-or-later
+License:        GPL-2.0-or-later OR LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.spice-space.org/
 Source:         https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2
 Source1:        https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/spice/spice/-/merge_requests/207
+Patch0:         fix-build-with-gstreamer-1.20.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
@@ -95,6 +97,7 @@ and devices.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
