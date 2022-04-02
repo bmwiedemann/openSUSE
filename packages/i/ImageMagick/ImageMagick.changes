@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 23 21:46:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0.28:
+  * support 10-bit AVIF
+  * fix PS and EPS %%BoundingBox not being parsed
+  * fix stack based buffer overflow in _TIFFVGetField (https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=42549)
+  * fix heap buffer overflow in dcm image reading (https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=45640)
+
+-------------------------------------------------------------------
 Tue Mar 15 11:34:13 UTC 2022 - pgajdos@suse.com
 
 - version update to 7.1.0.27
