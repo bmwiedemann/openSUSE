@@ -4151,11 +4151,6 @@ unsorted:
   - gcompris-qt-activities 
   - gcompris-qt-lang 
   - gcompris-qt-voices 
-  - gconf-polkit 
-  - gconf2 
-  - gconf2-32bit: [x86_64] 
-  - gconf2-devel 
-  - gconf2-lang 
   - gcovr 
   - gcovr-doc 
   - gcstar 
@@ -8206,6 +8201,7 @@ unsorted:
   - kiwi-systemdeps-image-validation 
   - kiwi-systemdeps-iso-media 
   - kiwi-templates-JeOS 
+  - kiwi-templates-Minimal 
   - kiwi-tools 
   - kjobwidgets-devel 
   - kjots 
