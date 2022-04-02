@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  2 15:14:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.2
+  * Add support for new spec error in libkeccak
+  * Add shake128sum and rawshake128sum
+
+-------------------------------------------------------------------
 Sat May 15 08:39:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.2.1:
