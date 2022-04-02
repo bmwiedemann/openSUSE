@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 30 09:21:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.2.0
+  * Drop support for EOL Python 3.6 (#152) @hugovk
+  * Use <caption> tags to print html table titles (#160) @daibhid
+  * Add colorful tables and themes (#140) @BD103
+  * Convert None to empty cell or custom value (#164) @av-guy
+  * Resolve "KeyError" issue on _stringify_row (#167)
+    @michal-jagiello-tmpl
+  * Use concrete built-in exceptions instead of Exception base
+    class (#169) @hugovk
+  * Fix width for custom none_format (#174) @av-guy
+  * Enforce max widths for field names (#171) @OlafvdSpek
+
+-------------------------------------------------------------------
 Mon Jan  3 11:29:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:
