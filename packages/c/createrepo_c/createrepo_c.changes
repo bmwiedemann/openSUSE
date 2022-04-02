@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 30 11:39:21 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.20.0
+  + Remove obsoleted API cr_xml_parse_main_metadata_together
+  + Fix ampersand encoding in attributes when parsing repodata
+  + Add a streaming parsing API that is user-controllable
+  + Fix a bug in cr_repomd_record_compress_and_fill()
+  + Zero init buffer to prevent use of garbage values if input is too short
+  + Use copy+delete fallback when moving of a dir fails
+  + Switch default of --keep-all-metadata to TRUE and add --discard-additional-metadata
+  + Set database version only for the database records, not everything
+  + If the new repodata generated during an --update run exactly matches the old repodata don't touch the files
+  + Use --error-exit-val option by default
+  + Remove insecure hashes SHA-1 and MD5 from the default build (rh#1935486)
+  + Fix error when updating repo with removed modules metadata
+  + Exit with status code 1 when loading of repo's metadata fails
+  + Fix memory leaks and covscan warnings
+
+-------------------------------------------------------------------
 Tue Nov 30 04:52:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - python3-nose is not required for the testsuite, update BuildRequires

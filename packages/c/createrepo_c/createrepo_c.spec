@@ -2,7 +2,7 @@
 # spec file for package createrepo_c
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@
 %define devname lib%{name}-devel
 
 Name:           createrepo_c
-Version:        0.17.3
+Version:        0.20.0
 Release:        0
 Summary:        RPM repository metadata generation utility
 License:        GPL-2.0-or-later
