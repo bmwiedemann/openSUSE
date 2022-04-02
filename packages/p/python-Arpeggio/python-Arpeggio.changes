@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 22 18:46:22 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- ## [Unreleased]
+[Unreleased]: https://github.com/textX/Arpeggio/compare/2.0.0...HEAD
+- update to version 2.0.0:
+ - Added `eval_attrs` call to `NoMatch` exceptions ([ebfd60]). See [the
+   docs](https://textx.github.io/Arpeggio/latest/handling_errors/).
+ - Dropped support for deprecated Python versions. The lowest supported version
+   is 3.6. **(BIC)**
+[ebfd60]: https://github.com/textX/Arpeggio/commit/ebfd60a7330cd5e6aaacfd5be7001be0f7506ce8
+[2.0.0]: https://github.com/textX/Arpeggio/compare/1.10.2...2.0.0
+
+-------------------------------------------------------------------
 Thu Dec  9 10:47:09 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build
