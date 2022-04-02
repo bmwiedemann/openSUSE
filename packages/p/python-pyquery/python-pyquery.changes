@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 30 08:07:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * No longer use a universal wheel
+  * Fix exception raised when calling `PyQuery("<textarea></textarea>").text()`
+  * python2 is no longer supported
+
+-------------------------------------------------------------------
 Sun Aug 16 16:39:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with pytest

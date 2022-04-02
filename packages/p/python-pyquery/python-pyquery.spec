@@ -1,7 +1,7 @@
 #
-# spec file for package python-pyquery
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pyquery%{psuffix}
-Version:        1.4.1
+Version:        1.4.3
 Release:        0
 Summary:        A jQuery-like library for python
 License:        BSD-3-Clause

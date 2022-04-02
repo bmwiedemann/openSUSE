@@ -159,4 +159,15 @@ Can't create the python3 package in dlp, so whoever pulls this would have to do 
     <comment></comment>
     <requestid>827078</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f20993543b0b498a4ddd484dc4ba3438</srcmd5>
+    <version>1.4.3</version>
+    <time>1648916389</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3:
+  * No longer use a universal wheel
+  * Fix exception raised when calling `PyQuery(&quot;&lt;textarea&gt;&lt;/textarea&gt;&quot;).text()`
+  * python2 is no longer supported</comment>
+    <requestid>965832</requestid>
+  </revision>
 </revisionlist>
