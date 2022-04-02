@@ -859,4 +859,12 @@ behaviour fixing bsc#941569</comment>
     <comment>- Fix license tag in spec file.</comment>
     <requestid>955637</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>7829277d8e2f87c28558e0d49c945a7a</srcmd5>
+    <version>2.5.6</version>
+    <time>1648916392</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>965876</requestid>
+  </revision>
 </revisionlist>

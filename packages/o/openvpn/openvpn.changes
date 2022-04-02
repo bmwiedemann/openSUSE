@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 23 09:10:31 UTC 2022 - Reinhard Max <max@suse.com>
+
+- update to 2.5.6:
+  * bsc#1197341, CVE-2022-0547: possible authentication bypass in
+    external authentication plug-in
+  * Fix "--mtu-disc maybe|yes" on Linux
+  * Fix $common_name variable passed to scripts when
+    username-as-common-name is in effect.
+  * Fix potential memory leaks in add_route() and add_route_ipv6().
+  * Apply connect-retry backoff only to one side of the connection
+    in p2p mode.
+  * repair "--inactive" handling with a 'bytes' parameter larger
+    than 2 Gbytes.
+  * new plugin (sample-plugin/defer/multi-auth.c) to help testing
+    with multiple parallel plugins that succeed/fail in
+    direct/deferred mode.
+
+-------------------------------------------------------------------
 Thu Feb 10 13:36:16 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Fix license tag in spec file.
