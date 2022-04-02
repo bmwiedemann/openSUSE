@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-e1d
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           osmo-e1d
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        Osmocom E1 Daemon
 License:        GPL-2.0-or-later
@@ -52,13 +52,15 @@ Group:          System/Libraries
 %description -n libosmo-e1d1
 Osmocom E1 Daemon Protocol Library.
 
-%package -n libosmo-e1d-devel
+%package devel
 Summary:        Header files for the Osmocom E1 daemon protocol library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libosmo-e1d1 = %version
+Provides:       libosmo-e1d-devel = %version-%release
+Obsoletes:      libosmo-e1d-devel < %version-%release
 
-%description -n libosmo-e1d-devel
+%description devel
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmo-e1d.
 
@@ -111,7 +113,7 @@ rm -Rf "%buildroot/%_sysconfdir/osmocom"
 %files -n libosmo-e1d1
 %_libdir/libosmo-e1d.so.1*
 
-%files -n libosmo-e1d-devel
+%files devel
 %_includedir/%name/
 %_libdir/libosmo-e1d.so
 %_libdir/pkgconfig/libosmo-e1d.pc

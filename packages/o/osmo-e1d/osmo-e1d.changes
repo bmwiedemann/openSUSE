@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  2 14:45:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3.0
+  * e1d: Add watchdog timer to detect dead lines / USB devices
+  * e1d-ts-pipe: Don't write more HDLC bytes than e1d supports
+  * e1d: reliably detect EOF (HDLC-FCS & RAW mode)
+
+-------------------------------------------------------------------
 Fri Nov 19 10:40:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to release 0.2.2
