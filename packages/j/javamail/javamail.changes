@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 10:19:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
 Fri Mar 18 19:20:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8

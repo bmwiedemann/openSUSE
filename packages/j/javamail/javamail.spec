@@ -28,17 +28,15 @@ Source:         https://github.com/javaee/javamail/archive/%{git_tag}.tar.gz
 Patch0:         %{name}-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  glassfish-activation-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  perl-XML-XPath
+Requires:       mvn(javax.activation:activation)
 # Adapted from the classpathx-mail (and JPackage glassfish-javamail) Provides.
 Provides:       javamail-monolithic = %{version}-%{release}
 Provides:       javax.mail
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-activation-api
-Requires:       mvn(javax.activation:activation)
-%endif
 
 %description
 The JavaMail API provides a platform-independent and protocol-independent
@@ -54,10 +52,6 @@ Group:          Documentation/HTML
 %prep
 %setup -q -n %{name}-%{git_tag}
 %patch0 -p1
-
-%if 0%{?suse_version} <= 1500
-%pom_remove_dep javax.activation:activation pom.xml
-%endif
 
 add_dep() {
     %pom_xpath_inject pom:project "<dependencies/>" ${2}
@@ -89,9 +83,7 @@ rm mail/src/test/java/com/sun/mail/smtp/SMTPWriteTimeoutTest.java
 
 %build
 %{ant} -Djavac.source=1.8 -Djavac.target=1.8 \
-%if 0%{?suse_version} > 1500
     -Dactivation.jar=$(find-jar glassfish-activation-api) \
-%endif
     jar jars docs
 
 %install
