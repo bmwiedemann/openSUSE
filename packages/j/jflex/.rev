@@ -157,4 +157,12 @@
     <comment>build against standalone annotation-api</comment>
     <requestid>962502</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>4c96141cf5deb5062c5cf8d6bba78f7e</srcmd5>
+    <version>1.8.2</version>
+    <time>1648916399</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965941</requestid>
+  </revision>
 </revisionlist>
