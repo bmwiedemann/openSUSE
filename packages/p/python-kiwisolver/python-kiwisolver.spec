@@ -16,21 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%global skip_python36 1
 Name:           python-kiwisolver
-Version:        1.3.2
+Version:        1.4.1
 Release:        0
 Summary:        An implementation of the Cassowary constraint solver
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nucleic/kiwi
-Source:         https://github.com/nucleic/kiwi/archive/%{version}.tar.gz
-BuildRequires:  %{python_module cppy >= 1.1.0}
-BuildRequires:  %{python_module devel}
+Source:         https://files.pythonhosted.org/packages/source/k/kiwisolver/kiwisolver-%{version}.tar.gz
+BuildRequires:  %{python_module cppy >= 1.2.0}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
+BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -48,7 +50,7 @@ cases gaining a 40x improvement. Memory savings are consistently >5x.
 In addition to the C++ solver, Kiwi ships with hand-rolled Python bindings.
 
 %prep
-%setup -q -n kiwi-%{version}
+%setup -q -n kiwisolver-%{version}
 # Fix wrong-file-end-of-line-encoding
 dos2unix LICENSE README.rst releasenotes.rst
 
@@ -66,6 +68,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %doc README.rst releasenotes.rst
-%{python_sitearch}/*
+%{python_sitearch}/kiwisolver
+%{python_sitearch}/kiwisolver-%{version}*-info
 
 %changelog
