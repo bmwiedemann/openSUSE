@@ -1,7 +1,7 @@
 #
 # spec file for package python-trio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,16 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-trio
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Python async/await-native I/O library
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/python-trio/trio
 Source:         https://github.com/python-trio/trio/archive/v%{version}.tar.gz#/trio-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM trio-pr2043-py310ssl-deprecationwarnings.patch -- gh#python-trio/trio#2043
-Patch0:         https://github.com/python-trio/trio/pull/2043.patch#/trio-pr2043-py310ssl-deprecationwarnings.patch
 BuildRequires:  %{python_module astor >= 0.8}
 BuildRequires:  %{python_module async_generator >= 1.9}
 BuildRequires:  %{python_module attrs >= 19.2.0}
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module outcome}
 BuildRequires:  %{python_module pyOpenSSL}
@@ -38,7 +36,6 @@ BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module setuptools}
 # for protocol specifications
 BuildRequires:  %{python_module sniffio}
-BuildRequires:  %{python_module contextvars >= 2.1 if %python-base < 3.7}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module yapf >= 0.27.0}
@@ -51,9 +48,6 @@ Requires:       python-idna
 Requires:       python-outcome
 Requires:       python-sniffio
 Requires:       python-sortedcontainers
-%if 0%{?python_version_nodots} < 37
-Requires:       python-contextvars >= 2.1
-%endif
 BuildArch:      noarch
 %python_subpackages
 
