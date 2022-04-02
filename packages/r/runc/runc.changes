@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 29 03:33:30 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.1.1. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.1.1.
+
+  * runc run/start can now run a container with read-only /dev in OCI spec,
+    rather than error out. (#3355)
+  * runc exec now ensures that --cgroup argument is a sub-cgroup. (#3403)
+    libcontainer systemd v2 manager no longer errors out if one of the files
+    listed in /sys/kernel/cgroup/delegate do not exist in container's
+    cgroup. (#3387, #3404)
+  * Loosen OCI spec validation to avoid bogus "Intel RDT is not supported"
+    error. (#3406)
+  * libcontainer/cgroups no longer panics in cgroup v1 managers if stat
+    of /sys/fs/cgroup/unified returns an error other than ENOENT. (#3435)
+
+-------------------------------------------------------------------
 Mon Jan 17 07:15:26 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.0. Upstream changelog is available from
