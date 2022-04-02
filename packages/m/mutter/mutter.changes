@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 27 05:38:39 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add mutter-42.0-fix-top-bar-elements-hovering-effect.patch based
+  on commits: 0280b0aaa563db65bf79a3643f6a9e8e76bfe458 and
+  2aad56b949b86b4f1d0eab6d3d3b0d5491e8515b. A fix for elements in
+  the top bar not losing the cursor-hovering effect if the cursor
+  immediately enters an app window (glgo#GNOME/gnome-shell#203).
+
+-------------------------------------------------------------------
 Thu Mar 24 02:40:02 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add mutter-bail-out-on-reentry-into-map-unmap.patch: This fixes

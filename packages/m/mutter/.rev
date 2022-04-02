@@ -1570,4 +1570,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   glgo#GNOME/mutter!2299). (forwarded request 964689 from mgorse)</comment>
     <requestid>964805</requestid>
   </revision>
+  <revision rev="183" vrev="3">
+    <srcmd5>002dd6cbe6bc60e7ec00bace36ae55f5</srcmd5>
+    <version>42.0</version>
+    <time>1648916406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965477</requestid>
+  </revision>
 </revisionlist>

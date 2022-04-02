@@ -40,6 +40,11 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-UPSTREAM mutter-bail-out-on-reentry-into-map-unmap.patch bsc#1197350, glgo#GNOME/mutter!2299 alynx.zhou@suse.com -- Bail out on reentry into map/unmap() in Clutter
 Patch3:         mutter-bail-out-on-reentry-into-map-unmap.patch
+# PATCH-FIX-UPSTREAM mutter-42.0-fix-top-bar-elements-hovering-effect.patch -- luc14n0@opensuse.org
+#  Elements in the top bar don't lose the cursor hovering effect if the cursor immediately enters an app window.
+#  Based on commits: 0280b0aaa563db65bf79a3643f6a9e8e76bfe458 and 2aad56b949b86b4f1d0eab6d3d3b0d5491e8515b
+#  Upstream issue: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5203
+Patch4:         mutter-42.0-fix-top-bar-elements-hovering-effect.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -148,6 +153,7 @@ applications that want to make use of the mutter library.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}

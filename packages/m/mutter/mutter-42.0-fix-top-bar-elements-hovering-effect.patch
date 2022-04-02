@@ -1,0 +1,240 @@
+From 2aad56b949b86b4f1d0eab6d3d3b0d5491e8515b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
+Date: Sat, 5 Mar 2022 23:43:29 +0100
+Subject: [PATCH 1/2] clutter: Pass target actor of events to event filter
+ functions
+
+We'll need the additional context of which actor the event will be
+emitted to in mutters event filter (see next commit), so pass that
+target actor to the event filters that are installed.
+
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2321>
+---
+ clutter/clutter/clutter-event-private.h |  3 ++-
+ clutter/clutter/clutter-event.c         |  5 +++--
+ clutter/clutter/clutter-event.h         |  2 ++
+ clutter/clutter/clutter-main.c          | 12 +++++++++++-
+ clutter/clutter/clutter-stage.c         |  6 +++---
+ src/core/events.c                       |  6 ++++--
+ 6 files changed, 25 insertions(+), 9 deletions(-)
+
+diff --git a/clutter/clutter/clutter-event-private.h b/clutter/clutter/clutter-event-private.h
+index 011241ce18..69fdf24ed6 100644
+--- a/clutter/clutter/clutter-event-private.h
++++ b/clutter/clutter/clutter-event-private.h
+@@ -14,7 +14,8 @@ CLUTTER_EXPORT
+ void            _clutter_process_event                  (ClutterEvent       *event);
+ 
+ CLUTTER_EXPORT
+-gboolean        _clutter_event_process_filters          (ClutterEvent       *event);
++gboolean        _clutter_event_process_filters          (ClutterEvent *event,
++                                                         ClutterActor *event_actor);
+ 
+ /* clears the event queue inside the main context */
+ void            _clutter_clear_events_queue             (void);
+diff --git a/clutter/clutter/clutter-event.c b/clutter/clutter/clutter-event.c
+index b1a5b6252f..0433a1ec98 100644
+--- a/clutter/clutter/clutter-event.c
++++ b/clutter/clutter/clutter-event.c
+@@ -1772,7 +1772,8 @@ clutter_event_is_pointer_emulated (const ClutterEvent *event)
+ }
+ 
+ gboolean
+-_clutter_event_process_filters (ClutterEvent *event)
++_clutter_event_process_filters (ClutterEvent *event,
++                                ClutterActor *event_actor)
+ {
+   ClutterMainContext *context = _clutter_context_get_default ();
+   GList *l, *next;
+@@ -1789,7 +1790,7 @@ _clutter_event_process_filters (ClutterEvent *event)
+       if (event_filter->stage && event_filter->stage != event->any.stage)
+         continue;
+ 
+-      if (event_filter->func (event, event_filter->user_data) == CLUTTER_EVENT_STOP)
++      if (event_filter->func (event, event_actor, event_filter->user_data) == CLUTTER_EVENT_STOP)
+         return CLUTTER_EVENT_STOP;
+     }
+ 
+diff --git a/clutter/clutter/clutter-event.h b/clutter/clutter/clutter-event.h
+index 5a8e3c116a..94595542cd 100644
+--- a/clutter/clutter/clutter-event.h
++++ b/clutter/clutter/clutter-event.h
+@@ -615,6 +615,7 @@ union _ClutterEvent
+ /**
+  * ClutterEventFilterFunc:
+  * @event: the event that is going to be emitted
++ * @event_actor: the current device actor of the events device
+  * @user_data: the data pointer passed to clutter_event_add_filter()
+  *
+  * A function pointer type used by event filters that are added with
+@@ -628,6 +629,7 @@ union _ClutterEvent
+  * Since: 1.18
+  */
+ typedef gboolean (* ClutterEventFilterFunc) (const ClutterEvent *event,
++                                             ClutterActor       *event_actor,
+                                              gpointer            user_data);
+ 
+ CLUTTER_EXPORT
+diff --git a/clutter/clutter/clutter-main.c b/clutter/clutter/clutter-main.c
+index 402ca65547..e066e5aebe 100644
+--- a/clutter/clutter/clutter-main.c
++++ b/clutter/clutter/clutter-main.c
+@@ -741,6 +741,8 @@ update_device_for_event (ClutterStage *stage,
+ void
+ clutter_do_event (ClutterEvent *event)
+ {
++  ClutterActor *event_actor = NULL;
++
+   /* we need the stage for the event */
+   if (event->any.stage == NULL)
+     {
+@@ -765,7 +767,15 @@ clutter_do_event (ClutterEvent *event)
+       break;
+     }
+ 
+-  if (_clutter_event_process_filters (event))
++  if (event->any.type != CLUTTER_DEVICE_ADDED &&
++      event->any.type != CLUTTER_DEVICE_REMOVED &&
++      event->any.type != CLUTTER_NOTHING &&
++      event->any.type != CLUTTER_EVENT_LAST)
++    {
++      event_actor = clutter_stage_get_event_actor (event->any.stage, event);
++    }
++
++  if (_clutter_event_process_filters (event, event_actor))
+     return;
+ 
+   /* Instead of processing events when received, we queue them up to
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index f34a424797..5cd09a2c44 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -3478,7 +3478,7 @@ clutter_stage_update_device (ClutterStage         *stage,
+                                          CLUTTER_EVENT_NONE,
+                                          old_actor, new_actor,
+                                          point, time_ms);
+-          if (!_clutter_event_process_filters (event))
++          if (!_clutter_event_process_filters (event, old_actor))
+             _clutter_actor_handle_event (old_actor, root, event);
+ 
+           clutter_event_free (event);
+@@ -3492,7 +3492,7 @@ clutter_stage_update_device (ClutterStage         *stage,
+                                          CLUTTER_EVENT_NONE,
+                                          new_actor, old_actor,
+                                          point, time_ms);
+-          if (!_clutter_event_process_filters (event))
++          if (!_clutter_event_process_filters (event, new_actor))
+             _clutter_actor_handle_event (new_actor, root, event);
+ 
+           clutter_event_free (event);
+@@ -3676,7 +3676,7 @@ clutter_stage_notify_grab_on_pointer_entry (ClutterStage       *stage,
+                                      grab_actor : old_grab_actor,
+                                      entry->coords,
+                                      CLUTTER_CURRENT_TIME);
+-      if (!_clutter_event_process_filters (event))
++      if (!_clutter_event_process_filters (event, entry->current_actor))
+         _clutter_actor_handle_event (deepmost, topmost, event);
+       clutter_event_free (event);
+     }
+diff --git a/src/core/events.c b/src/core/events.c
+index 8363d9a3d3..7dfd974563 100644
+--- a/src/core/events.c
++++ b/src/core/events.c
+@@ -213,7 +213,8 @@ maybe_unfreeze_pointer_events (MetaBackend          *backend,
+ 
+ static gboolean
+ meta_display_handle_event (MetaDisplay        *display,
+-                           const ClutterEvent *event)
++                           const ClutterEvent *event,
++                           ClutterActor       *event_actor)
+ {
+   MetaBackend *backend = meta_get_backend ();
+   MetaWindow *window = NULL;
+@@ -540,11 +541,12 @@ meta_display_handle_event (MetaDisplay        *display,
+ 
+ static gboolean
+ event_callback (const ClutterEvent *event,
++                ClutterActor       *event_actor,
+                 gpointer            data)
+ {
+   MetaDisplay *display = data;
+ 
+-  return meta_display_handle_event (display, event);
++  return meta_display_handle_event (display, event, event_actor);
+ }
+ 
+ void
+-- 
+GitLab
+
+
+From 0280b0aaa563db65bf79a3643f6a9e8e76bfe458 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
+Date: Sat, 5 Mar 2022 23:46:24 +0100
+Subject: [PATCH 2/2] events: Use the event target actor to determine window
+ for event
+
+We use get_window_for_event() to check whether an event happened on top
+of a window or on top of shell UI to decide whether to bypass delivering
+the event to Clutter. In case of crossing events though, we can't just
+use the device actor to determine whether to forward the event to
+Clutter or not: We do want to forward CLUTTER_LEAVE events which
+happened on top of shell UI. In that case the device actor is already a
+window actor (the pointer already is on top of a window), but the shell
+still needs to get the LEAVE crossing event.
+
+Since the event source actor got removed from the detail of
+ClutterEvent, the context we're looking for (which actor did the pointer
+leave) is now the target actor that the event gets emitted to. Since the
+last commit, we also made event filters aware of this context by passing
+the target actor to them, so use this context now to determine whether
+we're on top of a window or not.
+
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2321>
+---
+ src/core/events.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/src/core/events.c b/src/core/events.c
+index 7dfd974563..0dc3a73222 100644
+--- a/src/core/events.c
++++ b/src/core/events.c
+@@ -81,23 +81,20 @@ stage_has_grab (MetaDisplay *display)
+ 
+ static MetaWindow *
+ get_window_for_event (MetaDisplay        *display,
+-                      const ClutterEvent *event)
++                      const ClutterEvent *event,
++                      ClutterActor       *event_actor)
+ {
+   switch (display->event_route)
+     {
+     case META_EVENT_ROUTE_NORMAL:
+       {
+-        ClutterActor *target;
+         MetaWindowActor *window_actor;
+ 
+         /* Always use the key focused window for key events. */
+         if (IS_KEY_EVENT (event))
+             return stage_has_key_focus () ? display->focus_window : NULL;
+ 
+-        target = clutter_stage_get_device_actor (clutter_event_get_stage (event),
+-                                                 clutter_event_get_device (event),
+-                                                 clutter_event_get_event_sequence (event));
+-        window_actor = meta_window_actor_from_actor (target);
++        window_actor = meta_window_actor_from_actor (event_actor);
+         if (window_actor)
+           return meta_window_actor_get_meta_window (window_actor);
+         else
+@@ -339,7 +336,7 @@ meta_display_handle_event (MetaDisplay        *display,
+     }
+ #endif
+ 
+-  window = get_window_for_event (display, event);
++  window = get_window_for_event (display, event, event_actor);
+ 
+   display->current_time = event->any.time;
+ 
+-- 
+GitLab
+
