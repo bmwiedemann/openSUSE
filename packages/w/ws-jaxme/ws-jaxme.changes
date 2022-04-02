@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 09:25:19 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
 Fri Mar 18 19:17:27 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

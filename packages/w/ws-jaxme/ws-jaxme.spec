@@ -36,6 +36,7 @@ BuildRequires:  ant-apache-resolver
 BuildRequires:  antlr
 BuildRequires:  apache-commons-codec
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  glassfish-jaxb-api
 BuildRequires:  hsqldb
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
@@ -48,9 +49,6 @@ BuildRequires:  xml-commons-apis
 BuildRequires:  xml-commons-resolver
 BuildRequires:  xmldb-api
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-jaxb-api
-%endif
 
 %description
 A Java/XML binding compiler takes as input a schema description (in
@@ -115,9 +113,7 @@ find . -name "*.jar" | xargs rm
 %build
 export OPT_JAR_LIST="ant/ant-trax jaxp_transform_impl ant/ant-apache-resolver"
 export CLASSPATH=$(build-classpath \
-%if 0%{?suse_version} > 1500
     glassfish-jaxb-api \
-%endif
     antlr \
     apache-commons-codec \
     hsqldb \
