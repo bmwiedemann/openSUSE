@@ -1,7 +1,7 @@
 #
 # spec file for package gnu_ddrescue
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnu_ddrescue
-Version:        1.25
+Version:        1.26
 Release:        0
 Summary:        I/O error aware data recovery and copying utility
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Source3:        %name.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  lzip
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 
 %description
 GNU ddrescue is a data recovery tool. It copies data from one file or
@@ -45,7 +45,7 @@ with more than a few hundred bad sectors.
 %build
 # not autoconf, but at least it behaves (nearly) like it.
 %configure --enable-linux CFLAGS="%optflags" CXXFLAGS="%optflags"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
