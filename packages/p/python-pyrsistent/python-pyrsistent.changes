@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  4 22:50:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.1:
+ * Add universal wheels for MacOS, thanks @ntamas for this!
+ * Add support for Python 3.10, thanks @hugovk for this!
+ * Fix #236 compilation errors under Python 3.10.
+ * Drop official support for Python 3.6 since it's EOL since 2021-12-23.
+ * Fix #238, failing doc tests on Python 3.11, thanks @musicinmybrain for this!
+
+-------------------------------------------------------------------
 Sat Oct 16 22:02:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.18.0:
