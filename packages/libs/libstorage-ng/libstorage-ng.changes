@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Thu Mar 31 14:28:54 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#866
+- fix for volume groups with extent sizes of 4 GiB and up (bsc#1197779)
+- 4.5.1
+
+--------------------------------------------------------------------
+Wed Mar 30 09:42:42 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#865
+- NFS: Validate fstype in fstab
+- Cleanup, rename argument
+- NFS/fstab: Validate file system type
+  (gh#openSUSE/libstorage-ng#864)
+- 4.5.0
+
+--------------------------------------------------------------------
 Thu Mar 17 19:08:12 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#863
