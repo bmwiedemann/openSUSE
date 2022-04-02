@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 28 14:43:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream fix (kde#451946):
+  * 0001-Fixed-crash-during-KIdleTime-timeoutReached.patch
+
+-------------------------------------------------------------------
 Mon Mar  7 09:26:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0

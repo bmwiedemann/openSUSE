@@ -798,4 +798,13 @@
     <comment>KDE Frameworks 5.92 (forwarded request 961114 from cgiboudeaux)</comment>
     <requestid>961251</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>844c3e8fbf199ec34fa16679a35e174c</srcmd5>
+    <version>5.92.0</version>
+    <time>1648916408</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix (kde#451946):
+  * 0001-Fixed-crash-during-KIdleTime-timeoutReached.patch</comment>
+    <requestid>965487</requestid>
+  </revision>
 </revisionlist>
