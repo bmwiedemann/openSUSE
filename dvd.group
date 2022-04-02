@@ -4359,6 +4359,7 @@
     <package name="splix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="spu-tools" supportstatus="unsupported"/> <!-- reason: dvd:spu-tools -->
     <package name="sqlite3-devel" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="sqlite3-tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="squashfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="squid" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="sscep" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
