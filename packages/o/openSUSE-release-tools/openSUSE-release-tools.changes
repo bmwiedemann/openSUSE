@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 01 13:04:09 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220401.3c2ced48:
+  * repo monitor: If a repo is in scheduler flux, just keep monitoring it
+  * check.build.success check: Just keep checking on dirty repos
+
+-------------------------------------------------------------------
 Fri Apr 01 09:03:37 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220401.69e19f82:
