@@ -45,8 +45,10 @@ export GOARCH=arm
 %ifarch aarch64
 export GOARCH=arm64
 %endif
-%ifarch s390x ppc64le
+%ifarch s390x ppc64le riscv64
 export GOARCH=%{_arch}
+%endif
+%ifarch s390x ppc64le
 export CGO_ENABLED=0
 %endif
 PLATFORMS=linux make dev VERSION=%{version}

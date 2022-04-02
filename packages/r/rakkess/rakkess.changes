@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 29 09:48:10 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Set GOARCH on riscv64
+
+-------------------------------------------------------------------
 Wed Jan 05 14:38:12 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.5.0:
