@@ -1,12 +1,28 @@
-diff -urN grub-2.02~beta2.old/util/grub-mkconfig_lib.in grub-2.02~beta2/util/grub-mkconfig_lib.in
---- grub-2.02~beta2.old/util/grub-mkconfig_lib.in	2014-04-11 15:20:42.451394845 +0200
-+++ grub-2.02~beta2/util/grub-mkconfig_lib.in	2014-04-11 15:58:02.940618803 +0200
-@@ -229,7 +229,7 @@
+v2:
+Fix wrong sorting order if version contains "-" delimiter 
+
+Index: grub-2.06/util/grub-mkconfig_lib.in
+===================================================================
+--- grub-2.06.orig/util/grub-mkconfig_lib.in
++++ grub-2.06/util/grub-mkconfig_lib.in
+@@ -220,9 +220,9 @@ version_sort ()
+ 
+ version_test_numeric ()
+ {
+-  version_test_numeric_a="$1"
++  version_test_numeric_a="`echo "$1" | sed -e 's/-\([^0-9]*\)$/\.\1/' -e 's/-/~/g' -e 's/~\([^~]*\)$/-\1/'`"
+   version_test_numeric_cmp="$2"
+-  version_test_numeric_b="$3"
++  version_test_numeric_b="`echo "$3" | sed -e 's/-\([^0-9]*\)$/\.\1/' -e 's/-/~/g' -e 's/~\([^~]*\)$/-\1/'`"
+   if [ "$version_test_numeric_a" = "$version_test_numeric_b" ] ; then
+     case "$version_test_numeric_cmp" in
+       ge|eq|le) return 0 ;;
+@@ -234,7 +234,7 @@ version_test_numeric ()
      version_test_numeric_a="$version_test_numeric_b"
      version_test_numeric_b="$version_test_numeric_c"
    fi
 -  if (echo "$version_test_numeric_a" ; echo "$version_test_numeric_b") | version_sort | head -n 1 | grep -qx "$version_test_numeric_b" ; then
-+  if [ "`printf '%s\n' "$version_test_gt_a" "$version_test_gt_b" | /usr/lib/rpm/rpmsort -r | head -n1`" = "$version_test_gt_a" ] ; then
++  if [ "`printf '%s\n' "$version_test_numeric_a" "$version_test_numeric_b" | /usr/lib/rpm/rpmsort -r | head -n1`" = "$version_test_numeric_a" ] ; then
      return 0
    else
      return 1

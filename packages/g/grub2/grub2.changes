@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 25 03:46:55 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix wrong order in kernel sorting of listing rc before final release
+  (bsc#1197376)
+  * grub2-use-rpmsort-for-version-sorting.patch
+
+-------------------------------------------------------------------
 Fri Mar 18 09:10:07 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix duplicated insmod part_gpt lines in grub.cfg (bsc#1197186)
