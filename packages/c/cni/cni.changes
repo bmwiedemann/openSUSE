@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 26 11:05:40 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version v1.0.1:
+  * Rewritten spec
+    + non-List configurations are removed
+    + the version field in the interfaces array was redundant and
+      is removed
+  * libcni improvements
+- Employ RPM macros.go where feasible
+- Use vendor tarball
+- Remove ./build.sh
+
+-------------------------------------------------------------------
 Mon May 31 10:38:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.1:

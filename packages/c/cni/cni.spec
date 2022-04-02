@@ -1,7 +1,7 @@
 #
 # spec file for package cni
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,28 @@
 #
 
 
+%global         provider_prefix github.com/containernetworking/cni
+%global         import_path     %{provider_prefix}
 %define         cni_etc_dir  %{_sysconfdir}/cni
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni
-
 Name:           cni
-Version:        0.8.1
+Version:        1.0.1
 Release:        0
 Summary:        Container Network Interface - networking for Linux containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/containernetworking/cni
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        99-loopback.conf
-Source2:        build.sh
+Source2:        vendor.tar.gz
+BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.13
-Recommends:     cni-plugins
 Requires(post): %fillup_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Recommends:     cni-plugins
 %{?systemd_requires}
-# Remove stripping of Go binaries.
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 %description
 The CNI (Container Network Interface) project consists of a
@@ -51,29 +49,32 @@ the container is deleted. Because of this focus, CNI has a wide
 range of support and the specification is simple to implement.
 
 %prep
-%setup -q
-cp %{SOURCE2} build.sh
+%autosetup -a2
 
 %build
-# go1.16+ default is GO111MODULE=on set to auto temporarily
-# until using upstream release with go.mod
-export GO111MODULE=auto
-sh ./build.sh
+export GOFLAGS=-mod=vendor
+%goprep %{import_path}
+%gobuild libcni
+%gobuild cnitool
+for d in plugins/test/*; do
+  if [ -d $d ]; then
+    %gobuild $d
+  fi
+done
 
 %install
-
 # install the plugins
-install -m 755 -d "%{buildroot}%{cni_bin_dir}"
-cp bin/noop "%{buildroot}%{cni_bin_dir}/"
-cp bin/sleep "%{buildroot}%{cni_bin_dir}/"
+install -m 755 -d %{buildroot}%{cni_bin_dir}
+install -D %{_builddir}/go/bin/noop %{buildroot}%{cni_bin_dir}/
+install -D %{_builddir}/go/bin/sleep %{buildroot}%{cni_bin_dir}/
 
 # undo a copy: cnitool must go to sbin/
-install -m 755 -d "%{buildroot}%{_sbindir}"
-cp bin/cnitool  "%{buildroot}%{_sbindir}/"
+install -m 755 -d %{buildroot}%{_sbindir}
+install -D %{_builddir}/go/bin/cnitool %{buildroot}%{_sbindir}/
 
 # config
-install -m 755 -d "%{buildroot}%{cni_etc_dir}"
-install -m 755 -d "%{buildroot}%{cni_etc_dir}/net.d"
+install -m 755 -d %{buildroot}%{cni_etc_dir}
+install -m 755 -d %{buildroot}%{cni_etc_dir}/net.d
 install -D -p -m 0644 %{SOURCE1} %{buildroot}%{cni_etc_dir}/net.d/99-loopback.conf.sample
 
 # documentation
@@ -83,7 +84,6 @@ install -m 755 -d "%{buildroot}%{cni_doc_dir}"
 %{fillup_only -n %{name}}
 
 %files
-%defattr(-,root,root)
 %doc CONTRIBUTING.md README.md DCO
 %license LICENSE
 %dir %{cni_etc_dir}
@@ -91,8 +91,7 @@ install -m 755 -d "%{buildroot}%{cni_doc_dir}"
 %config %{cni_etc_dir}/net.d/*
 %dir %{cni_bin_dir}
 %dir %{cni_doc_dir}
-%{cni_bin_dir}/*
-%{cni_etc_dir}/net.d/*
+%{cni_bin_dir}/{noop,sleep}
 %{_sbindir}/cnitool
 
 %changelog
