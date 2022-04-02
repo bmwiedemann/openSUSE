@@ -30,9 +30,15 @@
 # backwards compatibility for --without systemlibs
 %bcond_without systemlibs
 
+%if %{with systemlibs}
 %bcond_without system_cfitsio
 %bcond_without system_expat
 %bcond_without system_wcslib
+%else
+%bcond_with system_cfitsio
+%bcond_with system_expat
+%bcond_with system_wcslib
+%endif
 
 %if %{with system_cfitsio}
 %define unbundle_cfitsio export ASTROPY_USE_SYSTEM_CFITSIO=1
@@ -50,7 +56,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-astropy%{psuffix}
-Version:        5.0.2
+Version:        5.0.4
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
