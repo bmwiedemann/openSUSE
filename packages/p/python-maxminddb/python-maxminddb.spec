@@ -30,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  libmaxminddb-devel
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
