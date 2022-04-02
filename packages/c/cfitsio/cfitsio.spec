@@ -1,7 +1,7 @@
 #
 # spec file for package cfitsio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver 9
 Name:           cfitsio
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        ISC
