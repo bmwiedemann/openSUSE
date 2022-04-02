@@ -181,4 +181,12 @@ SPDX (forwarded request 110717 from babelworx)</comment>
     <comment>build against standalone jaxb-api</comment>
     <requestid>962501</requestid>
   </revision>
+  <revision rev="25" vrev="35">
+    <srcmd5>ac7de134fb75991c76aafcd559244e20</srcmd5>
+    <version>1.6.1</version>
+    <time>1648916439</time>
+    <user>dimstar_suse</user>
+    <comment>artifact alias + build against JavaEE standalone inconditionally</comment>
+    <requestid>965872</requestid>
+  </revision>
 </revisionlist>

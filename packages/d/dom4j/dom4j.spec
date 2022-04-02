@@ -33,7 +33,7 @@ URL:            https://www.dom4j.org/
 # tar --exclude-vcs -cjf dom4j-1.6.1-debian.tar.bz2 dom4j/
 Source0:        dom4j-1.6.1-debian.tar.bz2
 Source1:        dom4j_rundemo.sh
-Source2:        http://repo1.maven.org/maven2/dom4j/dom4j/1.6.1/dom4j-1.6.1.pom
+Source2:        https://repo1.maven.org/maven2/dom4j/dom4j/1.6.1/dom4j-1.6.1.pom
 Patch0:         dom4j-1.6.1-bug1618750.patch
 Patch1:         dom4j-sourcetarget.patch
 Patch2:         dom4j-javadoc.patch
@@ -48,6 +48,7 @@ BuildRequires:  ant-apache-resolver
 BuildRequires:  ant-junit
 BuildRequires:  bea-stax
 BuildRequires:  fdupes
+BuildRequires:  glassfish-jaxb-api
 BuildRequires:  isorelax
 BuildRequires:  java-devel >= 1.6
 # Needed for maven conversions
@@ -65,6 +66,7 @@ BuildRequires:  xerces-j2
 BuildRequires:  xpp2
 BuildRequires:  xpp3
 Requires:       bea-stax
+Requires:       glassfish-jaxb-api
 Requires:       isorelax
 Requires:       java >= 1.6.0
 Requires:       jaxen >= 1.1
@@ -79,10 +81,6 @@ Requires:       xpp3
 Requires(post): javapackages-tools
 Requires(postun):javapackages-tools
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-jaxb-api
-Requires:       glassfish-jaxb-api
-%endif
 
 %description
 dom4j is an easy to use Open Source XML, XPath and XSLT framework for
@@ -126,9 +124,8 @@ DOM, SAX and JAXP and is seamlessly integrated with full XPath support.
 # replace run.sh
 cp %{SOURCE1} run.sh
 cp %{SOURCE2} pom.xml
-%if 0%{?suse_version} > 1500
 %pom_add_dep javax.xml.bind:jaxb-api pom.xml "<optional>true</optional>"
-%endif
+
 rm -f src/test/org/dom4j/xpath/MatrixConcatTest.java
 # won't succeed in headless environment
 rm src/test/org/dom4j/bean/BeansTest.java
@@ -176,9 +173,7 @@ popd
 
 %build
 export CLASSPATH=$(build-classpath \
-%if 0%{?suse_version} > 1500
     glassfish-jaxb-api \
-%endif
     jaxen relaxngDatatype xpp3 xpp2)
 export OPT_JAR_LIST="junit ant/ant-junit"
 rm -rf src/java/org/dom4j/datatype
@@ -188,12 +183,11 @@ ant package release-javadoc
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
 install -d -m 755 %{buildroot}%{_datadir}/maven2/poms
-cp -p build/%{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+cp -p build/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 mkdir -p %{buildroot}/%{_mavenpomdir}
 install -m 644 pom.xml %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap
+%add_maven_depmap JPP-%{name}.pom %{name}.jar -a "org.dom4j:dom4j"
 
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
@@ -213,13 +207,8 @@ install -m 0755 run.sh %{buildroot}%{_datadir}/%{name}
 %fdupes -s %{buildroot}%{_docdir}/%{name}-%{version}
 %fdupes -s %{buildroot}%{_datadir}/%{name}
 
-%files
-%defattr(0644,root,root,0755)
+%files -f .mfiles
 %license LICENSE.txt
-%{_javadir}/%{name}.jar
-%{_javadir}/%{name}-%{version}.jar
-%{_mavenpomdir}/*
-%{_datadir}/maven-metadata/%{name}.xml*
 
 %files javadoc
 %defattr(0644,root,root,0755)

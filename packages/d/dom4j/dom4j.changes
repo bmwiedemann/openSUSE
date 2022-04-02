@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 30 09:56:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
+Mon Mar 28 13:50:07 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias to the new artifact coordinates org.dom4j:dom4j
+- Simplify the spec file a bit
+
+-------------------------------------------------------------------
 Thu Mar 17 15:40:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add jaxb-api dependency for relevant distribution versions so that
