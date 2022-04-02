@@ -375,4 +375,14 @@
   * matches tzdata 2021c</comment>
     <requestid>925749</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f2db49b86c2aaacc5e10b5370b7d009e</srcmd5>
+    <version>2022.1</version>
+    <time>1648916424</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.1
+  * matches tzdata 2022a
+  * declare python 3.10 compatibility</comment>
+    <requestid>965633</requestid>
+  </revision>
 </revisionlist>

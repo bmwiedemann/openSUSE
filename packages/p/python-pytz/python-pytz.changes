@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 29 11:46:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.1
+  * matches tzdata 2022a
+  * declare python 3.10 compatibility
+
+-------------------------------------------------------------------
 Sat Oct 16 20:27:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.3
