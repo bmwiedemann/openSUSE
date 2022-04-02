@@ -22,32 +22,39 @@
 %define spa_ver 0.2
 %define spa_ver_str 0_2
 %define libpipewire libpipewire-%{apiver_str}-0
+
 %if %{pkg_vcmp pkgconfig(vulkan) >= 1.1}
 %define with_vulkan 1
 %else
 %define with_vulkan 0
 %endif
+
 %ifnarch s390 s390x ppc64
 %define with_ldacBT 1
 %else
 %define with_ldacBT 0
 %endif
+
 %if 0%{?suse_version} >= 1550
 %bcond_without libcamera
 %else
 %bcond_with libcamera
 %endif
+
 %if 0%{?sle_version} && 0%{?sle_version} < 150400
 %bcond_with aac
 %else
 %bcond_without aac
 %endif
+
 %if %{?pkg_vcmp:%{pkg_vcmp meson >= 0.59.0}}%{!?pkg_vcmp:0}
 %bcond_without pipewire_jack_devel
 %endif
+
 %bcond_with aptx
+
 Name:           pipewire
-Version:        0.3.48
+Version:        0.3.49
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -61,7 +68,16 @@ BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc9
+BuildRequires:  gcc9-c++
+%endif
 BuildRequires:  graphviz
+%if 0%{?sle_version} == 150300
+BuildRequires:  meson >= 0.54.0
+%else
+BuildRequires:  meson >= 0.59.0
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
@@ -69,6 +85,9 @@ BuildRequires:  pkgconfig(alsa) >= 1.1.7
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
+%if %{with aac}
+BuildRequires:  pkgconfig(fdk-aac)
+%endif
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
@@ -80,12 +99,22 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(jack) >= 1.9.10
+%if %{with_ldacBT}
+BuildRequires:  pkgconfig(ldacBT-abr)
+BuildRequires:  pkgconfig(ldacBT-enc)
+%endif
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
+%if %{with libcamera}
+BuildRequires:  pkgconfig(libcamera) >= 0.0.0+g3381.1db1e31e
+%endif
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdrm)
+%if %{with aptx}
+BuildRequires:  pkgconfig(libfreeaptx)
+%endif
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
@@ -100,6 +129,9 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(webrtc-audio-processing)
 BuildRequires:  pkgconfig(x11)
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildRequires:  pkgconfig(xfixes)
+%endif
 BuildConflicts: pipewire-libjack-%{apiver_str}-devel
 Requires:       %{libpipewire} = %{version}
 Requires:       %{name}-modules-%{apiver_str} = %{version}
@@ -109,31 +141,6 @@ Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
 Suggests:       wireplumber
 %{?systemd_ordering}
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc9
-BuildRequires:  gcc9-c++
-%endif
-%if 0%{?sle_version} == 150300
-BuildRequires:  meson >= 0.54.0
-%else
-BuildRequires:  meson >= 0.59.0
-%endif
-%if %{with libcamera}
-BuildRequires:  pkgconfig(libcamera) >= 0.0.0+g3381.1db1e31e
-%endif
-%if %{with aac}
-BuildRequires:  pkgconfig(fdk-aac)
-%endif
-%if %{with_ldacBT}
-BuildRequires:  pkgconfig(ldacBT-abr)
-BuildRequires:  pkgconfig(ldacBT-enc)
-%endif
-%if %{with aptx}
-BuildRequires:  pkgconfig(libfreeaptx)
-%endif
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-BuildRequires:  pkgconfig(xfixes)
-%endif
 
 %description
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -617,6 +624,7 @@ fi
 %{_mandir}/man1/pw-mididump.1%{?ext_man}
 %{_mandir}/man1/pw-mon.1%{?ext_man}
 %{_mandir}/man1/pw-profiler.1%{?ext_man}
+%{_mandir}/man1/pw-top.1%{?ext_man}
 
 %files spa-tools
 %{_bindir}/spa-inspect
