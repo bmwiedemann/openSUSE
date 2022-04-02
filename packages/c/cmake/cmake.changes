@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 29 19:18:02 UTC 2022 - Christoph G <foss@grueninger.de>
+
+- Update to 3.23.0
+  * "cmake-presets(7)" files now have an optional "include" field,
+    which allows the files to include other files.
+  * The "install(TARGETS)" command gained a new "FILE_SET" argument,
+    which can be used to install header file sets associated with a
+    target.
+  * The "target_sources()" command gained a new "FILE_SET" mode,
+    which can be used to add headers as header-only source files of
+    a target.
+  * The "CMAKE_CUDA_ARCHITECTURES" variable and associated
+    "CUDA_ARCHITECTURES" target property now support the "all", and
+    "all-major" values for CUDA toolkit 7.0+.
+- Drop "fix-avoid-file-static-init.patch" which is part of upstream
+
+-------------------------------------------------------------------
 Sun Mar 20 21:08:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.22.3:

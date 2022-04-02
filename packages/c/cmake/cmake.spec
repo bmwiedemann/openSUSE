@@ -44,9 +44,9 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 3.22
+%define shortversion 3.23
 Name:           cmake%{?psuffix}
-Version:        3.22.3
+Version:        3.23.0
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -64,8 +64,6 @@ Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
 Patch2:         cmake-fix-png-include-dir.patch
-# boo#1194815 fix from upstream fixes gcc12 builds
-Patch3:         fix-avoid-file-static-init.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -74,7 +72,9 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  pkgconfig(libuv) >= 1.10
+%if %{suse_version} > 1500
+BuildRequires:  pkgconfig(libuv) >= 1.28
+%endif
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
 %if "%{flavor}" == ""
@@ -156,6 +156,9 @@ export CXXFLAGS="%{optflags}"
 %endif
     --parallel=0%{jobs} \
     --verbose \
+%if %{suse_version} < 1550
+    --no-system-libuv \
+%endif
 %if %{with qhelp}
     --sphinx-qthelp \
 %endif
