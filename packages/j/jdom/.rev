@@ -216,4 +216,12 @@
     <comment></comment>
     <requestid>962935</requestid>
   </revision>
+  <revision rev="30" vrev="38">
+    <srcmd5>b439ce7651e9c646103ceaf14b309a00</srcmd5>
+    <version>unknown</version>
+    <time>1648916398</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965940</requestid>
+  </revision>
 </revisionlist>

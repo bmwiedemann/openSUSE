@@ -51,15 +51,16 @@ Source2:        xom-%{xom_version}-src.tar.bz2
 # tar --exclude-vcs -cjf dom4j-1.6.1-debian.tar.bz2 dom4j/
 Source3:        dom4j-%{dom4j_version}-debian.tar.bz2
 Source4:        jaxen-%{jaxen_version}.tar.gz
-Source10:       http://repo.maven.apache.org/maven2/org/%{name}/%{name}/%{jdom_version}%{jdom_suffix}/%{name}-%{jdom_version}%{jdom_suffix}.pom
-Source11:       http://repo.maven.apache.org/maven2/saxpath/saxpath/%{saxpath_version}%{saxpath_suffix}/saxpath-%{saxpath_version}%{saxpath_suffix}.pom
-Source12:       http://repo.maven.apache.org/maven2/xom/xom/1.2.5/xom-1.2.5.pom
-Source13:       https://repo.maven.apache.org/maven2/jaxen/jaxen/%{jaxen_version}%{jaxen_suffix}/jaxen-%{jaxen_version}%{jaxen_suffix}.pom
+Source10:       https://repo1.maven.org/maven2/org/%{name}/%{name}/%{jdom_version}%{jdom_suffix}/%{name}-%{jdom_version}%{jdom_suffix}.pom
+Source11:       https://repo1.maven.org/maven2/saxpath/saxpath/%{saxpath_version}%{saxpath_suffix}/saxpath-%{saxpath_version}%{saxpath_suffix}.pom
+Source12:       https://repo1.maven.org/maven2/xom/xom/1.2.5/xom-1.2.5.pom
+Source13:       https://repo1.maven.org/maven2/jaxen/jaxen/%{jaxen_version}%{jaxen_suffix}/jaxen-%{jaxen_version}%{jaxen_suffix}.pom
 Patch0:         jdom-1.1-build.xml.patch
 Patch1:         jdom-1.1-OSGiManifest.patch
 Patch2:         jdom-1.1-xom-get-jaxen.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
+BuildRequires:  glassfish-jaxb-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
@@ -73,9 +74,6 @@ BuildRequires:  xpp3
 Requires:       mvn(jaxen:jaxen)
 Requires:       mvn(xerces:xercesImpl)
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-BuildRequires:  glassfish-jaxb-api
-%endif
 
 %description
 JDOM is, quite simply, a Java representation of an XML document. JDOM
@@ -186,9 +184,7 @@ export JAVAC="javac ${JAVA_OPTS} "
 export ANT_OPTS="-Xss6m"
 i=0
 CLASSPATH="%{stage1_build_dir}:$(build-classpath \
-%if 0%{?suse_version} > 1500
     glassfish-jaxb-api \
-%endif
     xerces-j2 xalan-j2 xalan-j2-serializer junit relaxngDatatype servletapi5 xpp2 xpp3)"
 SOURCE_DIRS="%{jaxen_dir}/src/java/main/ %{jdom_dir}/src/java/ %{saxpath_dir}/src/java/main/ %{xom_dir}/src/ %{dom4j_dir}/src/java"
 SOURCE_PATH=$(echo ${SOURCE_DIRS} | sed 's#\ #:#g')
@@ -231,7 +227,7 @@ CLASSPATH=%{_builddir}/jaxen-%{jaxen_version}.jar:%{_builddir}/jdom-%{jdom_versi
 mv build/saxpath.jar %{_builddir}/saxpath-%{saxpath_version}.jar
 popd
 pushd %{xom_dir}
-%ant \
+%{ant} \
 -Djaxen.dir=%{stage1_build_dir} \
 -Dxml-apis.jar=$(build-classpath xml-commons-apis) \
 -Dparser.jar=$(build-classpath xerces-j2) \
