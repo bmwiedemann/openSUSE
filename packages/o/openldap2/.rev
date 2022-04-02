@@ -1446,4 +1446,12 @@ Removal of SuSEfirewall2 service.
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1190197</comment>
   </revision>
+  <revision rev="172" vrev="72">
+    <srcmd5>ee84ff55212746ab3bc805ed7d33004c</srcmd5>
+    <version>2.5.9</version>
+    <time>1648916394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965879</requestid>
+  </revision>
 </revisionlist>
