@@ -1,7 +1,7 @@
 #
 # spec file for package cni-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni-plugins
 Name:           cni-plugins
-Version:        0.9.1
+Version:        1.1.1
 Release:        0
 Summary:        Container Network Interface plugins
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/containernetworking/plugins
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
@@ -34,8 +33,6 @@ BuildRequires:  golang(API) >= 1.15
 Requires:       cni
 Requires(post): %fillup_prereq
 %{?systemd_requires}
-# Make sure that the binary is not getting stripped.
-%{go_nostrip}
 
 %description
 The CNI (Container Network Interface) project consists of a
@@ -53,6 +50,9 @@ the containernetworking team.
 %setup -q
 
 %build
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
 ./build_linux.sh
 
 %install

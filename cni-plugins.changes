@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Tue Mar 29 10:08:13 UTC 2022 - fvogt@suse.com
+
+- Update to version 1.1.1:
+  * ipam/dhcp: Fix client id in renew/release
+  * call ipam.ExceDel after clean up device in netns fix #666
+  * portmap: fix checkPorts result when chain does not exist
+  * portmap: fix bug that new udp connection deletes all existing conntrack entries
+  * Enhanced dad set to 1
+  * Add boolean to enable/disable dad
+  * Disable DAD for container side veth
+  * firewall: support ingressPolicy=(open|same-bridge) for isolating bridges as in Docker
+  * Fix host-device gofmt
+  * host-device: Bring interfaces up after moving into container
+  * pkg/ns: use file system magic numbers from golang.org/x/sys/unix
+  * gofmt
+  * go mod tidy
+  * build: bump to go 1.17
+  * Remove arp notify setting per comment
+  * plugins: replace arping package with arp_notify
+  * fix #685
+  * Ran go fmt so tests would pass
+  * Fixed DHCP problem that broke when fast retry was added.
+  * dhcp ipam: adjust retry mechanism
+  * add ipam tests for dpdk device
+  * add ipam support for dpdk device
+  * ipvlan: Send Gratuitous ARP after IPs are set
+  * dhcp ipam: fix client id
+  * dhcp ipam: rename inconsistent options among files
+  * dhcp ipam: add more options capable for sending
+  * dhcp ipam: add fast retry
+  * dhcp ipam: support customizing dhcp options
+  * dhcp ipam: truncate client id to 254 bytes
+  * dhcp ipam: print error correctly without format string
+  * dhcp ipam: using full config to regular the code
+  * Allow setting sysctls on a particular interface
+  * dhcp: remove implemented TODO
+  * Don't redundantly filepath.Clean the output of filepath.Join
+  * Use crypto/rand.Read, not crypto.Reader.Read
+  * bridge: Add macspoofchk support
+  * plugins: fix bug where support for CNI version 0.4.0 or 1.0.0 was dropped
+  * vendor: bump to libcni v1.0.1
+  * static ipam: do not parse the CIDR twice
+  * static ipam: improve error msgs when provisioning invalid CIDR
+  * bump go to 1.16, other misc fixes
+  * vendor: bump all direct dependencies
+  * vendor: bump to libcni v1.0
+  * docs: Update the CI badge from Travis CI to GitHub Actions
+  * bridge: Fix typo in error message for promiscuous mode
+  * ip: place veth peer in host namspace directly
+  * bridge: Add mac field to specify container iface mac
+  * static ipam: decide wrong cidr error msg
+  * static ipam: stop wrapping net.ParseCIDR errors
+  * static ipam: show confusing error msg
+  * utils, hwaddr: Remove unused package
+  * ip, link_linux: Remove unused SetHWAddrByIP function
+  * plugins: remove flannel
+  * refactor(win-bridge): netconf
+  * refactor(win-bridge): hcn api processing
+  * refactor(win-bridge): hns api processing
+  * chore(win-bridge): location related
+  * chore(win-bridge): text related
+  * Remove Bryan Boreham as maintainer
+  * host-local: support ip/prefix in env args and CNI args
+  * [sbr]: Use different tableID for every ipCfg        Check tableID not in use for every ipCfg
+  * Small typo improves in README.md
+  * Allow multiple routes to be added for the same prefix. Enables ECMP
+  * Update to lastest vendor/github.com/vishvananda/netlink
+  * tuning: always update MAC in CNI result
+  * vendor: bump to libcni v1.0-rc1
+  * tuning: Add support of altering the allmulticast flag
+  * [sbr]: Use different tableID for every ipCfg        Move default table routes which  match the ipCfg config
+  * Fix nil-pointer check
+  * host-local: support custom IPs allocation through runtime configuration
+  * pkg/ip: introduce a new type `IP` to support formated <ip>[/<prefix>]
+  * go.mod: github.com/j-keck/arping v1.0.1
+  * go.mod: github.com/buger/jsonparser v1.1.1
+  * go.mod: github.com/alexflint/go-filemutex v1.1.0
+  * go.mod github.com/Microsoft/hcsshim v0.8.16
+  * go.mod: godbus/dbus/v5 v5.0.3, coreos/go-systemd v22.2.0
+  * go.mod: github.com/mattn/go-shellwords v1.0.11
+  * go.mod: github.com/sirupsen/logrus v1.8.1
+  * CI: Install linux-modules-extra for VRF module
+  * Fix broken links to online docs in plugin READMEs
+  * gha: update actions/setup-go@v2
+  * remove redundant startRange in RangeIter due to overlap check on multi ranges
+  * fix(win-bridge): panic while calling HNS api
+  * portmap: use slashes in sysctl template to support interface names which separated by dots
+  * pkg/ipam: use slash as sysctl separator so interface name can have dot
+  * [macvlan] Stop setting proxy-arp on macvlan interface
+  * tuning: increase test coverage to 1.0.0 and older spec versions
+  * portmap: increase test coverage to 1.0.0 and older spec versions
+  * flannel: increase test coverage to 1.0.0 and older spec versions
+  * firewall: increase test coverage to 1.0.0 and older spec versions
+  * bandwidth: increase test coverage to 1.0.0 and older spec versions
+  * host-local: increase test coverage to 1.0.0 and older spec versions
+  * static: increase test coverage to 1.0.0 and older spec versions
+  * dhcp: increase test coverage to 1.0.0 and older spec versions
+  * dhcp: add -resendmax option to limit lease acquisition time for testcases
+  * vlan: increase test coverage to 1.0.0 and older spec versions
+  * ptp: increase test coverage to 1.0.0 and older spec versions
+  * macvlan: increase test coverage to 1.0.0 and older spec versions
+  * loopback: increase test coverage to 1.0.0 and older spec versions
+  * ipvlan: increase test coverage to 1.0.0 and older spec versions
+  * host-device: increase test coverage to 1.0.0 and older spec versions
+  * bridge: increase test coverage to 1.0.0 and older spec versions
+  * bridge: simplify version-based testcase code
+  * testutils: add test utilities for spec version features
+  * plugins: update to spec version 1.0.0
+  * vendor: bump CNI to 1.0.0-pre @ 62e54113
+- Drop %go_nostrip
+
+-------------------------------------------------------------------
 Mon Apr 26 17:17:41 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 0.9.1:
