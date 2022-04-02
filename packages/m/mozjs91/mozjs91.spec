@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -199,9 +199,9 @@ autoconf-2.13
 	--disable-jemalloc
 
 %if 0%{?big_endian}
-echo "Generate big endian version of config/external/icu/data/icud67l.dat"
+echo "Generate big endian version of config/external/icu/data/icud69l.dat"
 pushd ../..
-  /usr/sbin/icupkg -tb config/external/icu/data/icudt67l.dat config/external/icu/data/icudt67b.dat
+  /usr/sbin/icupkg -tb config/external/icu/data/icudt69l.dat config/external/icu/data/icudt69b.dat
   rm -f config/external/icu/data/icudt*l.dat
 popd
 %endif
