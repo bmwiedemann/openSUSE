@@ -1,7 +1,7 @@
 #
 # spec file for package lksctp-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           lksctp-tools
+Version:        1.0.17
+Release:        0
 Summary:        Utilities for SCTP (Stream Control Transmission Protocol)
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
-Version:        1.0.16
-Release:        0
-Url:            http://lksctp.sourceforge.net
+URL:            http://lksctp.sourceforge.net
 Source0:        http://downloads.sourceforge.net/project/lksctp/lksctp-tools/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtool
 
 %description
@@ -54,25 +53,21 @@ transparent multi-homing, and multiple ordered streams of messages.
 
 %build
 %define _lto_cflags %{nil}
-./bootstrap
-CPPFLAGS="-I`pwd`/include" \
-%configure --prefix=/usr \
+%configure --prefix=%{_prefix} \
 	--enable-shared \
 	--disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
-rm $RPM_BUILD_ROOT/%{_libdir}/lksctp-tools/*.la
-rm $RPM_BUILD_ROOT/%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING ChangeLog COPYING.lib
+%license COPYING COPYING.lib
+%doc AUTHORS ChangeLog
 %doc doc/*.txt
 %{_bindir}/*
 %{_libdir}/libsctp.so.*
@@ -81,8 +76,8 @@ rm $RPM_BUILD_ROOT/%{_libdir}/*.la
 %{_mandir}/man7/*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/netinet/sctp.h
+%{_libdir}/pkgconfig/libsctp.pc
 %{_libdir}/libsctp.so
 %dir %{_libdir}/lksctp-tools
 %{_libdir}/lksctp-tools/*.so

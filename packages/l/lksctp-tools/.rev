@@ -199,4 +199,23 @@
     <comment></comment>
     <requestid>699388</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>201d618977f84c7dba37e2cd2e00886f</srcmd5>
+    <version>1.0.17</version>
+    <time>1648916391</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.17
+  * Build: add option to disable tests build
+  * sctp_test: fix hostname resolution
+  * man: remove sysctl listing from sctp.7
+  * Fix recieved-&gt;received typos
+  * Fix usage help for sctp_test
+  * test_1_to_1_accept_close: also expect EACCES when accept on
+    an established socket
+  * lksctp-tools: make bind_test can do while disable IPV6
+  * libsctp: add pkg-config support
+  * autoconf: add m4 folder
+- Run spec-cleaner (forwarded request 965348 from mnhauke)</comment>
+    <requestid>965858</requestid>
+  </revision>
 </revisionlist>
