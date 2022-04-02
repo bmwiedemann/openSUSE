@@ -1,7 +1,7 @@
 #
 # spec file for package libfido2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover  1
 Name:           libfido2
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
@@ -28,8 +28,8 @@ Source0:        https://developers.yubico.com/libfido2/Releases/%{name}-%{versio
 Source1:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz.sig
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  openssl-devel
 BuildRequires:  ninja
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(libcbor)
