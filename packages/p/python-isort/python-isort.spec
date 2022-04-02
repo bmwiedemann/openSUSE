@@ -60,12 +60,13 @@ BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module toml >= 0.10.2}
 BuildRequires:  git
 %endif
 %python_subpackages
 
 %description
-isort your python imports for you so you don’t have to.
+isort your python imports for you so you don't have to.
 
 isort is a Python utility / library to sort imports alphabetically, and
 automatically separated into sections and by type. It provides a command line

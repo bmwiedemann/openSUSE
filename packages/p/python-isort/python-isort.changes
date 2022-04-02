@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 28 17:55:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Tests require toml explicitly. Not pulled in anymore
+  automatically since many packages (setuptools_scm, pytest, ...)
+  switch to tomli.
+
+-------------------------------------------------------------------
 Sun Jan 16 19:49:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Unpin black for example project
