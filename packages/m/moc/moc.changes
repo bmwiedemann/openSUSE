@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 29 20:42:31 UTC 2022 - Victorhck <victorhck@opensuse.org>
+
+- Added patch moc.crash.GLIB-2.35-1.patch to fix bug with 
+  GLIBC 2.35 causes it to crash.
+
+-------------------------------------------------------------------
 Sat Mar 28 20:42:31 UTC 2020 - Xu Zhao <i@xuzhao.net>
 
 - Enable ncursesw (UTF-8 support) in the confgure.

@@ -27,6 +27,7 @@ Source0:        trunk-%{version}.tar.xz
 
 Patch1:         moc.timestamp.patch
 Patch2:         moc.TiMidity_Config.patch
+Patch3:         moc.crash.GLIB-2.35-1.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
