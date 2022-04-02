@@ -103,4 +103,12 @@
     <comment>- Update to release 2022.0</comment>
     <requestid>950023</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8a8982408f08d850298c7721300456a5</srcmd5>
+    <version>2022.0</version>
+    <time>1648916409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965495</requestid>
+  </revision>
 </revisionlist>

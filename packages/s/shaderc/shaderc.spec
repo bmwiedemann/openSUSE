@@ -16,6 +16,7 @@
 #
 
 
+# Remember to bump in baselibs.conf
 %define lname libshaderc_shared1
 Name:           shaderc
 Version:        2022.0
@@ -26,6 +27,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/google/shaderc
 #Git-Clone:	https://github.com/google/shaderc
 Source:         https://github.com/google/shaderc/archive/v%version.tar.gz
+Source99:       baselibs.conf
 Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 2.8.12

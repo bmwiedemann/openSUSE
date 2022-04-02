@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 28 20:42:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add baselibs.conf, containing libshaderc_shared1 (the shared lib).
+
+-------------------------------------------------------------------
 Sun Jan 30 14:58:58 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to release 2022.0
