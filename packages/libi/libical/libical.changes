@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 20 21:21:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.14:
+  * icalvalue: Reset non-UTC icaltimetype::zone on set
+  * Fix icalcomponent_set_due not removing TZID when necessary
+
+-------------------------------------------------------------------
 Fri Jan 21 21:03:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.13:
