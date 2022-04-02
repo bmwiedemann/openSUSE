@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 29 21:58:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 22.0.1
+  * fixes in lavapipe and zink, maintainer scripts and panfrost
+- supersedes U_meson-restore-private-requires-to-libdrm-in-dri.pc-f.patch
+
+-------------------------------------------------------------------
 Tue Mar 22 11:13:43 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - get rid of Mesa-libVulkan-devel(-32bit) package, which no longer

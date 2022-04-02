@@ -4801,4 +4801,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * https://gitlab.freedesktop.org/mesa/mesa/-/commit/5e6db1916860ec217eac60903e0a9d10189d1c53</comment>
     <requestid>963924</requestid>
   </revision>
+  <revision rev="434" vrev="306">
+    <srcmd5>66643c0e371d83408f987e16ec8d088a</srcmd5>
+    <version>unknown</version>
+    <time>1648916382</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.0.1
+  * fixes in lavapipe and zink, maintainer scripts and panfrost
+- supersedes U_meson-restore-private-requires-to-libdrm-in-dri.pc-f.patch</comment>
+    <requestid>965780</requestid>
+  </revision>
 </revisionlist>
