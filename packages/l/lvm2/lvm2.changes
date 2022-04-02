@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 30 10:11:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+-  lvm2-monitor.service reported warning messages for udev didn't finish to set up device database (bsc#1197183)
+  + 0025-vgchange-monitor-don-t-use-udev-info.patch
+
+-------------------------------------------------------------------
 Thu Mar 10 01:25:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - Udev database has incomplete information about device /dev/sda. (bsc#1181242)

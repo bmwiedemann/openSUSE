@@ -1,0 +1,36 @@
+From 72f0b637d239c893ca49b05b83e2ebddc327e900 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Fri, 25 Mar 2022 14:13:56 -0500
+Subject: [PATCH] vgchange monitor: don't use udev info
+
+vgchange --monitor y is run during startup when udev is being
+initialized and is not yet ready to be used.
+---
+ tools/vgchange.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/tools/vgchange.c b/tools/vgchange.c
+index fc076c1d56ba..09ade96a60e6 100644
+--- a/tools/vgchange.c
++++ b/tools/vgchange.c
+@@ -992,6 +992,17 @@ int vgchange(struct cmd_context *cmd, int argc, char **argv)
+ 			return ECMD_PROCESSED;
+ 	}
+ 
++	/*
++	 * Do not use udev for device listing or device info because
++	 * vgchange --monitor y is called during boot when udev is being
++	 * initialized and is not yet ready to be used.
++	 */
++	if (arg_is_set(cmd, monitor_ARG) &&
++	    arg_int_value(cmd, monitor_ARG, DEFAULT_DMEVENTD_MONITOR)) {
++		init_obtain_device_list_from_udev(0);
++		init_external_device_info_source(DEV_EXT_NONE);
++	}
++
+ 	if (update)
+ 		flags |= READ_FOR_UPDATE;
+ 	else if (arg_is_set(cmd, activate_ARG))
+-- 
+2.34.1
+
