@@ -30,6 +30,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-src-setlocale-in-main-for-tools-and-the-daemon.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-scripts-policy-device-profile-clear-tables-when-devices-removed.patch
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch100:       reduce-meson-required-version.patch
 # docs

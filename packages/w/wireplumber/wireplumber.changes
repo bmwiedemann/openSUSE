@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 30 16:12:03 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix no sound on reconnection of
+  bluetooth device (glfo#pipewire/wireplumber#234):
+  * 0001-scripts-policy-device-profile-clear-tables-when-devices-removed.patch
+
+-------------------------------------------------------------------
+Tue Mar 29 12:04:24 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to set locale in apps now that pw_init
+  doesn't call it by itself anymore in pipewire 0.3.49:
+  * 0001-src-setlocale-in-main-for-tools-and-the-daemon.patch
+
+-------------------------------------------------------------------
 Fri Mar 25 07:47:09 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Make the wireplumber-audio noarch as it just contains a lua
