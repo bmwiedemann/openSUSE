@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Mar 31 10:35:44 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+- Support the SGX feature (bsc#1197807) 
+* Patches added:
+  doc-Add-the-SGX-numa-description.patch
+  numa-Enable-numa-for-SGX-EPC-sections.patch
+  numa-Support-SGX-numa-in-the-monitor-and.patch
+
+-------------------------------------------------------------------
+Tue Mar 29 14:58:37 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+- Backport CVE-2021-3929 (bsc#1193880)
+* Patches added:
+  hw-nvme-fix-CVE-2021-3929.patch
+
+-------------------------------------------------------------------
+Tue Mar 29 10:16:18 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+- The patches from upstream cause testsuit failures (bsc#1197150 bsc#1197528)
+* Patches added:
+  Revert-python-iotests-replace-qmp-with-a.patch
+  Revert-python-machine-add-instance-disam.patch
+  Revert-python-machine-add-sock_dir-prope.patch
+  Revert-python-machine-handle-fast-QEMU-t.patch
+  Revert-python-machine-move-more-variable.patch
+  Revert-python-machine-remove-_remove_mon.patch
+
+-------------------------------------------------------------------
+Tue Mar 29 09:36:34 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add missing patch from a PTFs (bsc#1194938)
+* Patches added:
+  scsi-generic-check-for-additional-SG_IO-.patch
+
+-------------------------------------------------------------------
+Fri Mar 25 18:44:04 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Kill downstream patches around bifmt handling that makes
+  cumbersome to run multi-arch containers, and switch to the
+  upstream behavior, which is well documented and valid on
+  all other distros. This is possible thanks to Linux kernel
+  commit 2347961b11d4 and QEMU commit 6e1c0d7b951e19c53 (so
+  it can only work on Leap/SLE 15.4 and higher). (bsc#1197298)
+* Patches dropped:
+  qemu-binfmt-conf.sh-allow-overriding-SUS.patch
+  qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+
+-------------------------------------------------------------------
+Fri Mar 25 17:44:06 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix update_git.sh wiping all the package file of the local
+  checkout while cloning the git repository on demand (in case they
+  don't exist and the user as to do so).
+
+-------------------------------------------------------------------
+Thu Mar 24 11:18:54 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+- Improve test reliability
+* Patches added:
+  Fix-the-module-building-problem-for-s390.patch
+  tests-qemu-iotests-040-Skip-TestCommitWi.patch
+  tests-qemu-iotests-testrunner-Quote-case.patch
+
+-------------------------------------------------------------------
 Wed Mar 23 07:46:11 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix virtiofs crashing with glibc >= 2.35, due to rseq syscall
@@ -18,7 +82,8 @@ Tue Mar 22 09:58:56 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 -------------------------------------------------------------------
 Tue Mar 15 09:58:18 UTC 2022 - Li Zhang <li.zhang@suse.com>
-Fix bsc#1189702 CVE-2021-3713
+
+- Proactive fix
 * Patches added:
   hw-nvram-at24-return-0xff-if-1-byte-addr.patch
 

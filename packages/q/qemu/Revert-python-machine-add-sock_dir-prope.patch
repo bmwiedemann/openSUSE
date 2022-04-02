@@ -1,0 +1,70 @@
+From: Li Zhang <lizhang@suse.de>
+Date: Tue, 29 Mar 2022 12:02:45 +0200
+Subject: Revert "python/machine: add @sock_dir property"
+
+References: bsc#1197528 bsc#1197150
+
+To improve testsuit, these patches still need more testing.
+This reverts commit 87bf1fe5cbffefe6b7ee13a7015ae285250ad2db.
+
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ python/qemu/machine/machine.py | 17 ++++-------------
+ 1 file changed, 4 insertions(+), 13 deletions(-)
+
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index b1dd77b53885629eba452cdd1bc2..a487c397459a1fa6889276ab2538 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -134,9 +134,8 @@ class QEMUMachine:
+         self._qmp_timer = qmp_timer
+ 
+         self._name = name or "qemu-%d" % os.getpid()
+-        self._temp_dir: Optional[str] = None
+         self._base_temp_dir = base_temp_dir
+-        self._sock_dir = sock_dir
++        self._sock_dir = sock_dir or self._base_temp_dir
+         self._log_dir = log_dir
+ 
+         if monitor_address is not None:
+@@ -144,7 +143,7 @@ class QEMUMachine:
+             self._remove_monitor_sockfile = False
+         else:
+             self._monitor_address = os.path.join(
+-                self.sock_dir, f"{self._name}-monitor.sock"
++                self._sock_dir, f"{self._name}-monitor.sock"
+             )
+             self._remove_monitor_sockfile = True
+ 
+@@ -164,13 +163,14 @@ class QEMUMachine:
+         self._qmp_set = True   # Enable QMP monitor by default.
+         self._qmp_connection: Optional[QEMUMonitorProtocol] = None
+         self._qemu_full_args: Tuple[str, ...] = ()
++        self._temp_dir: Optional[str] = None
+         self._launched = False
+         self._machine: Optional[str] = None
+         self._console_index = 0
+         self._console_set = False
+         self._console_device_type: Optional[str] = None
+         self._console_address = os.path.join(
+-            self.sock_dir, f"{self._name}-console.sock"
++            self._sock_dir, f"{self._name}-console.sock"
+         )
+         self._console_socket: Optional[socket.socket] = None
+         self._remove_files: List[str] = []
+@@ -816,15 +816,6 @@ class QEMUMachine:
+                                               dir=self._base_temp_dir)
+         return self._temp_dir
+ 
+-    @property
+-    def sock_dir(self) -> str:
+-        """
+-        Returns the directory used for sockfiles by this machine.
+-        """
+-        if self._sock_dir:
+-            return self._sock_dir
+-        return self.temp_dir
+-
+     @property
+     def log_dir(self) -> str:
+         """

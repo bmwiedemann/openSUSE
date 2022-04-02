@@ -6,7 +6,6 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Git-commit: 1cbab82e9d1bdb2c7b9ef46a396fdc03ea3fa04c
-References: bsc#1193880 CVE-2021-3929
 
 The at24 eeproms are 2 byte devices that return 0xff when they are read
 from with a partial (1-byte) address written.  This distinction was

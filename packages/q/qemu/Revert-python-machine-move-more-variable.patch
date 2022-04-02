@@ -1,0 +1,56 @@
+From: Li Zhang <lizhang@suse.de>
+Date: Tue, 29 Mar 2022 11:57:11 +0200
+Subject: Revert "python/machine: move more variable initializations to
+ _pre_launch"
+
+References: bsc#1197528 bsc#1197150
+
+To improve testsuit, these patches still need more testing.
+This reverts commit b1ca99199320fcc010f407b84ac00d96e7e4baa1.
+
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ python/qemu/machine/machine.py | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index f92e73de4010d10c9e062259c706..ad529fd92a6022150fd0156d005d 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -327,14 +327,6 @@ class QEMUMachine:
+         self._qemu_log_path = os.path.join(self.log_dir, self._name + ".log")
+         self._qemu_log_file = open(self._qemu_log_path, 'wb')
+ 
+-        self._iolog = None
+-        self._qemu_full_args = tuple(chain(
+-            self._wrapper,
+-            [self._binary],
+-            self._base_args,
+-            self._args
+-        ))
+-
+     def _post_launch(self) -> None:
+         if self._qmp_connection:
+             self._qmp.accept(self._qmp_timer)
+@@ -398,6 +390,8 @@ class QEMUMachine:
+         if self._launched:
+             raise QEMUMachineError('VM already launched')
+ 
++        self._iolog = None
++        self._qemu_full_args = ()
+         try:
+             self._launch()
+             self._launched = True
+@@ -416,6 +410,12 @@ class QEMUMachine:
+         Launch the VM and establish a QMP connection
+         """
+         self._pre_launch()
++        self._qemu_full_args = tuple(
++            chain(self._wrapper,
++                  [self._binary],
++                  self._base_args,
++                  self._args)
++        )
+         LOG.debug('VM launch command: %r', ' '.join(self._qemu_full_args))
+ 
+         # Cleaning up of this subprocess is guaranteed by _do_shutdown.

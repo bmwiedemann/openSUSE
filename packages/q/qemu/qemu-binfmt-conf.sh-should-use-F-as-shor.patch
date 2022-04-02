@@ -13,7 +13,7 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
-index c46e604fa6ef3faaecccaae835ba..a73232edfd7f9dedb3a7c32218fb 100755
+index cb06245a834f9e8f2bb0464a25ce..53be2ba047fa3fba9d9b61030ab3 100755
 --- a/scripts/qemu-binfmt-conf.sh
 +++ b/scripts/qemu-binfmt-conf.sh
 @@ -340,7 +340,7 @@ PERSISTENT=no

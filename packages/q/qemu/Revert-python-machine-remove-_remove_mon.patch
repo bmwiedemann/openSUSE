@@ -1,0 +1,41 @@
+From: Li Zhang <lizhang@suse.de>
+Date: Tue, 29 Mar 2022 12:01:34 +0200
+Subject: Revert "python/machine: remove _remove_monitor_sockfile property"
+
+References: bsc#1197528 bsc#1197150
+
+To improve testsuit, these patches still need more testing.
+This reverts commit 6eeb3de7e1aff91ce6e092a39f85946d12664385.
+
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ python/qemu/machine/machine.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index ea9e07805df10a57115dace06885..b1dd77b53885629eba452cdd1bc2 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -141,10 +141,12 @@ class QEMUMachine:
+ 
+         if monitor_address is not None:
+             self._monitor_address = monitor_address
++            self._remove_monitor_sockfile = False
+         else:
+             self._monitor_address = os.path.join(
+                 self.sock_dir, f"{self._name}-monitor.sock"
+             )
++            self._remove_monitor_sockfile = True
+ 
+         self._console_log_path = console_log
+         if self._console_log_path:
+@@ -313,7 +315,8 @@ class QEMUMachine:
+             self._remove_files.append(self._console_address)
+ 
+         if self._qmp_set:
+-            if isinstance(self._monitor_address, str):
++            if self._remove_monitor_sockfile:
++                assert isinstance(self._monitor_address, str)
+                 self._remove_files.append(self._monitor_address)
+             self._qmp_connection = QEMUMonitorProtocol(
+                 self._monitor_address,

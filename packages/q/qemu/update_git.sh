@@ -839,6 +839,15 @@ fi
 
 #==============================================================================
 
+# cleanup directories from any previous failed run:
+rm -rf /dev/shm/qemu-???????-git-dir
+rm -rf /dev/shm/qemu-???????-cmp-dir
+rm -rf /dev/shm/qemu-???????-bun-dir
+# Temporary directories used in this script
+GIT_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-git-dir)
+CMP_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-cmp-dir)
+BUN_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-bun-dir)
+
 if [[ ! -e $(readlink -f ${LOCAL_REPO_MAP[0]}) ]]; then
     echo "No local repo found at ${LOCAL_REPO_MAP[0]}"
     if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
@@ -948,15 +957,6 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
         fi
     fi
 done
-
-# cleanup directories from any previous failed run:
-rm -rf /dev/shm/qemu-???????-git-dir
-rm -rf /dev/shm/qemu-???????-cmp-dir
-rm -rf /dev/shm/qemu-???????-bun-dir
-# Temporary directories used in this script
-GIT_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-git-dir)
-CMP_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-cmp-dir)
-BUN_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-bun-dir)
 
 if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     if [ "$1" = "continue" ]; then
