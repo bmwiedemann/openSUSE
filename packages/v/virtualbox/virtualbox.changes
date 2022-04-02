@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 29 19:01:11 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add fixes for kernel 5.17 - file "fixes_for_kernel_5.17.patch" added
+  Add fixes for kernel 5.18 - file "fixes_for_kernel_5.18.patch" added
+
+-------------------------------------------------------------------
+Fri Mar 11 18:45:02 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build error for guest modules in Leap 15.3
+
+-------------------------------------------------------------------
 Thu Jan 20 17:19:56 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.32 (released January 18 2022 by Oracle)

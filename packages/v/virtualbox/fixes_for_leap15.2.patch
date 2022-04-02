@@ -25,7 +25,7 @@ Index: VirtualBox-6.1.26/src/VBox/Additions/linux/drm/vbox_drv.c
 -	.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ |
 +#if RTLNX_VER_MAX(5,4,0)
 +	.driver_features =
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
++#if defined(OPENSUSE_152)
 +	    DRIVER_PRIME |
 +#endif
  # if RTLNX_VER_MAX(5,1,0) && !RTLNX_RHEL_MAJ_PREREQ(8,1)

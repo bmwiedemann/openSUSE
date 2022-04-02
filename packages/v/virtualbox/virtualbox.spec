@@ -179,6 +179,8 @@ Patch137:       handle_gsoap_208103.patch
 Patch142:       fixes_for_leap15.3.patch
 Patch143:       vb-6.1.16-modal-dialog-parent.patch
 Patch144:       fixes_for_leap15.4.patch
+Patch145:       fixes_for_kernel_5.17.patch
+Patch146:       fixes_for_kernel_5.18.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
@@ -315,6 +317,18 @@ the terms of the GNU Public License (GPL).
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ##########################################
 %package qt
 Summary:        Qt GUI part for %{name}
@@ -331,6 +345,18 @@ Obsoletes:      %{name}-ose-qt < %{version}
 
 %description qt
 This package contains the code for the GUI used to control VMs.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -369,6 +395,18 @@ The VirtualBox web server is used to control headless VMs using a browser.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 #########################################
 %package guest-x11
 Summary:        VirtualBox X11 drivers for mouse and video
@@ -382,6 +420,18 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 
 %description guest-x11
 This package contains X11 guest utilities and X11 guest mouse and video drivers
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -427,6 +477,18 @@ VirtualBox guest addition tools.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
@@ -458,6 +520,18 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################
 %package devel
 Summary:        Devel files for %{name}
@@ -470,6 +544,18 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -527,6 +613,18 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
@@ -537,6 +635,18 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -627,6 +737,8 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch144 -p1
 %endif
 %patch143 -p1
+%patch145 -p1
+%patch146 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 

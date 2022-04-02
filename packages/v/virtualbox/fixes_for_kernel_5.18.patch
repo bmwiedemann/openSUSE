@@ -1,0 +1,18 @@
+Index: VirtualBox-6.1.32/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+===================================================================
+--- VirtualBox-6.1.32.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
++++ VirtualBox-6.1.32/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
+@@ -2314,8 +2314,13 @@ int  vboxNetFltPortOsXmit(PVBOXNETFLTINS
+             {
+                 vboxNetFltDumpPacket(pSG, true, "host", (fDst & INTNETTRUNKDIR_WIRE) ? 0 : 1);
+                 Log6(("vboxNetFltPortOsXmit: pBuf->cb dump:\n%.*Rhxd\n", sizeof(pBuf->cb), pBuf->cb));
++# if RTLNX_VER_MAX(5, 18, 0)
+                 Log6(("vboxNetFltPortOsXmit: netif_rx_ni(%p)\n", pBuf));
+                 err = netif_rx_ni(pBuf);
++#else
++                Log6(("vboxNetFltPortOsXmit: netif_rx(%p)\n", pBuf));
++                err = netif_rx(pBuf);
++#endif
+                 if (err)
+                     rc = RTErrConvertFromErrno(err);
+             }
