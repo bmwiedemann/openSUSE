@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  2 07:38:13 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.1:
+ * Restart failed modules with exit codes other than 0
+
+-------------------------------------------------------------------
 Mon Nov  8 09:51:38 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:

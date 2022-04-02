@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-session
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           lxqt-session
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
-Group:          System/GUI/LXQt
+Group:          System/GUI/Other
 URL:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
+BuildRequires:  pkgconfig(lxqt) >= 1.0.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 Requires(post): update-alternatives
