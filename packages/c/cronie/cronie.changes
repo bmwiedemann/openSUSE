@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:08:02 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.6.0:
+  * Add switch -f for foreground mode
+  * Fix regression in handling */x crontab entries
+  * Add random within range '~' operator
+  * Fix RandomScale calculation
+  * crond: Fix description of '-P' option
+  * Increase the maximum number of crontab entries
+  * crontab: use bold colors
+- Remove upstreamed patches:
+  * cronie-1.5.7-increase_crontab_limit.patch
+  * cronie-piddir.patch
+- Refresh patches:
+  * cronie-nheader_lines.diff
+  * cronie-cron_pid.diff
+
+-------------------------------------------------------------------
 Wed Sep 15 12:00:14 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Increase limit of allowed entries in crontab files to fix bsc#1187508

@@ -1,7 +1,7 @@
 #
 # spec file for package cronie
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           cronie
-Version:        1.5.7
+Version:        1.6.0
 Release:        0
 Summary:        Cron Daemon
 License:        BSD-3-Clause AND GPL-2.0-only AND MIT
@@ -43,12 +43,9 @@ Patch3:         cronie-pam_config.diff
 Patch4:         cronie-nheader_lines.diff
 # we use cron.pid instead of crond.pid
 Patch5:         cronie-crond_pid.diff
-Patch12:        cronie-piddir.patch
 # PATCH-FIX-SUSE the first occurance of "/etc/anacrontab" was replaced by "/etc/crontab"
 # in manpage file because the /etc/crontab is still used in SUSE.
 Patch13:        fix-manpage-replace-anacrontab-with-crontab.patch
-# PATCH-FIX-UPSTREAM Increase the maximum number of crontab entries bsc#1187508
-Patch14:        cronie-1.5.7-increase_crontab_limit.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -106,9 +103,7 @@ overloaded in settings.
 %patch4
 %patch5 -p1
 cp %{SOURCE7} ./cron_to_cronie.README
-%patch12 -p1
 %patch13 -p1
-%patch14 -p1
 
 %build
 # fill macro CRON_VERSION it is used in top three lines of crontab file,should be reworked
