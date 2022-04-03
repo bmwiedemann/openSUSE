@@ -1,6 +1,6 @@
 <servicedata>
 <service name="tar_scm">
-<param name="url">git://github.com/ClusterLabs/resource-agents.git</param>
-<param name="changesrevision">212a978e62575a70fa54d55179b682dfd691c27d</param>
+<param name="url">https://github.com/ClusterLabs/resource-agents.git</param>
+<param name="changesrevision">26de0ad2f0f975166fe79ef72ab08e2c03519eea</param>
 </service>
 </servicedata>

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Mar 31 14:22:18 UTC 2022 - varkoly@suse.com
+
+- Update to version v4.11.0rc1+git2.d40f1f1b:
+  * Filesystem: fix logic for UUID/label devices with space between parameter and UUID/label
+  * build: update ChangeLog for 4.11.0-rc1
+  * ocf-distro: improve RHEL based distro detection
+  * ipsec: fix check string against another string not the before defined variable (#1755)
+  * spec: fix mount.cifs if
+  * LVM-activate:change lvm_status return value from ocf_not_running to ocf_err_generic (#1753)
+  * IPaddr2: Clarify behavior of 'arp_*' parameters for IPv4 and IPv6
+  * IPaddr2: Log 'ip addr add' options together
+  * IPaddr2: Allow to send IPv6 Neighbor Advertisements in background
+  * IPaddr2: Allow to disable Duplicate Address Detection for IPv6
+  * ocivip: new resource agent (#1751)
+  * corosync-qnetd: Add resource agent
+  * ocf-shellfuncs: quote pid in ocf_pidfile_status
+  * IPsrcaddr: fixes
+  * db2: only warn when notify isnt set, and use ocf_local_nodename() to get node name
+  * IPsrcaddr: fix indentation in better error message code
+  * IPsrcaddr: Better error message when no matching route found
+  * IPsrcaddr: Add warning about DHCP
+  * ocf-shellfuncs: Parametrise the log destinarion by OCF_RESKEY_trace_dir
+  * rabbitmq-server-ha: Use ocf_is_true, if applicable
+  * Fix SERVER_START_ARGS sname/name use for FQDN
+  * LinuxSCSI:replace error log messages with calls to ocf_exit_reason
+  * Filesystem: Add support for Amazon EFS mount helper
+  * Filesystem: Improve fstype_supported logs for fuse
+  * Filesystem: Fix OpenBSD check in fstype_supported()
+  * openstack agents: align timeout also for monitoring operation
+  * mysql-common: fix local SSL connection by using --ssl-mode=REQUIRED which is available on 5.7+ (--ssl is not available in 8.0)
+  * openstack-common: get_config(): expand tilde and exit for errors
+  * openstack-*: hardcode clouds.yaml paths as openstack cli doesnt support overriding it
+  * openstack-*: add support for multiple setup options
+  * LVM-activate: replace error log messages with calls to ocf_exit_reason (#1730)
+  * configure: fix typo (#1732)
+  * build: workaround gcc 12 warning
+  * openstack-info: align op timeout with other openstack agents
+  * openstack-*: allow agents to perform insecure connections to openstackcli
+  * Route: return OCF_NOT_RUNNING for probe action when interface or route doesnt exist
+  * podman: remove anonymous volumes
+  * asterisk: Sipsak check fix (#1716)
+  * [rpm] fix Requires to allow install on opensuse
+  * Filesystem: unmount bind mounts before unmount file system
+  * db2: use -l forever instead of -t nodes -l reboot, as they conflict with eachother
+  * nginx: replace error log messages with calls to ocf_exit_reason
+  * rabbitmq-server-ha: Revert "OCF RA: Do not start rabbitmq if notification of start is not about us" (#1713)
+  * asterisk: fix sipsak check during start-action (#1715)
+  * rabbitmq-server-ha: Avoid forget_cluster_node without node name
+  * gcp-ilb: only check if log_cmd binary is available if log_enable is true
+  * rabbitmq-server-ha: use "s"-suffix for timeouts/intervals
+  * rabbitmq-server-ha: rename and add to Makefiles
+  * nvmet-subsystem: fix allowed_initiators for to avoid only running once (found by shellcheck)
+  * gcp-ilb/Squid: fix issues detected by CI
+  * configure: only run ci/build.sh when shellcheck is present
+  * RabbitMQ OCF RA M/S HA cluster agent migration (#1698)
+
+-------------------------------------------------------------------
 Wed Jan 19 16:52:54 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - nfs ganehsa failover takes 5 minutes for the client to regain
