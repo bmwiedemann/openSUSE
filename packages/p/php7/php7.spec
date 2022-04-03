@@ -1,7 +1,7 @@
 #
 # spec file for package php7
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,6 +111,7 @@ BuildRequires:  freetds-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  gpg2
+BuildRequires:  libacl-devel
 BuildRequires:  libapparmor-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libtidy-devel
@@ -1087,8 +1088,9 @@ Build fastcgi \
 
 %if "%{flavor}" == "fpm"
 Build fpm \
-    --with-fpm-systemd \
     --enable-fpm \
+    --with-fpm-acl \
+    --with-fpm-systemd \
     --with-fpm-user=%{apache_user} \
     --with-fpm-group=%{apache_group} \
     --bindir=%{_bindir} \
