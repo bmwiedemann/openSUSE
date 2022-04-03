@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr 01 13:32:25 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0-rc8:
+  * fabrics: Add DIM command
+  * fabrics: Introduce force flag to overwrite persistence logic (bsc#1197076)
+  * fabrics: Free non-matching controller during discovery
+  * fabrics: add 'nvme config' command
+  * fabrics: Correctly stringify discovery.conf and config.json paths
+  * nvme-print: Add human readable print for nsattr field
+  * nvme-print: Update Persistent Event log fields
+  * nvme-print: print discovery async event support
+  * nvme-rpmb: Fix spelling for 'Partition'
+  * nvme-copy: add missing field to the command
+  * nvme: add get_mi_cmd_support_effects_log command
+  * nvme: Fixup namespace filtering yet again
+  * nvme: Use type bool for OPT_FLAG
+  * nvme: use filter for 'list-subsys <devname>' (bsc#1195938)
+  * Add lbstm option to create-ns
+  * argconfig: Do not use default value loading by getopt_long_only
+  * argconfig: Rename CFG_NONE to CFG_FLAG
+  * plugins: Use type bool for OPT_FLAG
+  * documenation updates
+- Drop 'ProtectKernelTunables=true' (bsc#1197076)
+
+-------------------------------------------------------------------
 Tue Mar 22 13:49:50 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Fix install conflict caused by new bash completion script

@@ -1,24 +1,29 @@
+Subject: systemd hardening effort
+
+https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+
+Apply the recommended hardening settings but without
+"ProtectKernelTunables=true" as we need write access to /sys.
+
+Signed-off-by: Daniel Wagner <dwagner@suse.de>
 ---
- nvmf-autoconnect/systemd/nvmf-connect@.service.in |   11 +++++++++++
- 1 file changed, 11 insertions(+)
+ nvmf-autoconnect/systemd/nvmf-connect@.service.in |    8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 --- a/nvmf-autoconnect/systemd/nvmf-connect@.service.in
 +++ b/nvmf-autoconnect/systemd/nvmf-connect@.service.in
-@@ -9,6 +9,17 @@ PartOf=nvmf-connect.target
+@@ -9,6 +9,14 @@ PartOf=nvmf-connect.target
  Requires=nvmf-connect.target
  
  [Service]
-+# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions
  Type=simple
  Environment="CONNECT_ARGS=%i"
  ExecStart=/bin/sh -c "@SBINDIR@/nvme connect-all --quiet `/bin/echo -e '${CONNECT_ARGS}'`"
