@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  1 11:08:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.6:
+  + Misc HTTP/2 fixes.
+  + Add PUT/POST support to examples/get.
+  + Add `--user-agent` option to examples/get.
+  + Misc meson improvements.
+  + Fix build with Visual Studio.
+
+-------------------------------------------------------------------
 Fri Mar 18 17:47:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.5:
