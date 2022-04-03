@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Mar 30 19:11:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- update to version 16.4.0
+  * #207: Added type hints and declare the library as typed.
+- Release 16.3.0
+  * Require Python 3.7 or later.
+  * #205: test_listdir_other_encoding now automatically skips
+    itself on file systems where it's not appropriate.
+- Release 16.2.0
+  * Deprecated passing bytes to write_text. Instead, users should
+    call write_bytes.
+- Release 16.1.0
+  * #204: Improved test coverage across the package to 99%, fixing
+    bugs in uncovered code along the way.
+- Release 16.0.0
+  * #200: TempDir context now cleans up unconditionally, even if an
+    exception occurs.
+- Release 15.1.2
+  * #199: Fixed broken link in README.
+- Release 15.1.1
+  * Refreshed package metadata.
+- Release 15.1.0
+  * Added ExtantPath and ExtantFile objects that raise errors when
+    they reference a non-existent path or file.
+- Release 15.0.1
+  * Refreshed package metadata.
+- Release 15.0.0
+  * Removed __version__ property. To determine the version, use
+    importlib.metadata.version('path').
+- Release 14.0.1
+  * Fixed regression on Python 3.7 and earlier where lru_cache did
+    not support a user function.
+- Release 14.0.0
+  * Removed namebase property. Use stem instead.
+  * Removed update parameter on method to Path.merge_tree. Instead,
+    to only copy newer files, provide a wrapped copy function, as
+    described in the doc string.
+  * Removed FastPath. Just use Path.
+  * Removed path.CaseInsensitivePattern. Instead use
+    path.matchers.CaseInsensitive.
+  * Removed path.tempdir. Use path.TempDir.
+  * #154: Added Traversal class and support for customizing the
+    behavior of a Path.walk.
+- Release 13.3.0
+  * #186: Fix test failures on Python 3.8 on Windows by relying on
+    realpath() instead of readlink().
+  * #189: realpath() now honors symlinks on Python 3.7 and earlier,
+    approximating the behavior found on Python 3.8.
+  * #187: lines() no longer relies on the deprecated .text().
+
+-------------------------------------------------------------------
 Wed Mar 11 15:41:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 13.2.0
