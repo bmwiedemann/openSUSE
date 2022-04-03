@@ -1,7 +1,7 @@
 #
 # spec file for package python-textX
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-textX
-Version:        2.3.0
+Version:        3.0.0
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  python2-xml
 %endif
 Requires:       python-Arpeggio >= 1.9.0
 Requires:       python-click >= 7.0
+Requires:       python-future
 Requires:       python-setuptools
 %if "%{python_flavor}" == "python2"
 Requires:       python2-xml
@@ -46,6 +47,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Arpeggio}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module click >= 7.0}
+BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module pytest}

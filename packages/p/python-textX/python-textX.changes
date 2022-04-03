@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Mar 22 20:51:24 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.0.0:
+ - Added:
+  - Added RREL-'fixed name'-extension, allowing to follow model elements 
+    given a fixed name (e.g. an object defined in a builtin model).
+    Details described in rrel.md ([#364]).
+  - Added ability to access the full path of named objects traversed while
+    resolving a RREL expression ([#304]).
+  - Added decorator `textx.textxerror_wrap` for object processors to automatically
+    transform non-TextXErrors to TextXErrors in order to indicate the filename and
+    position of the element being processed ([#306]).
+ - Fixed:
+  - `model_param_defs` on `TextXMetaMetaModel` ([#360]).
+  - Interpreting of backslash special chars (e.g. `\n`, `\t`) in grammar string
+    matches ([#323]). Possible **(BIC)** - backslash chars were not interpreted in
+    grammar files and raw Python strings prior to this fix.
+  - Exception/error messages ([#320])
+  - Relaxed assert in model creation enabling some model changes in user classes
+    ([#311])
+  - Model export to dot in cases where textX object is replaced in the
+    processor([#301])
+  - Do not allow "empty" RREL expressions (compare unittests in `test_rrel.py`; [#355])
+ - Changed:
+  - Inheritance chain calculation. Possible **(BIC)** ([#369]).
+  - Added `def_file_name` attribute to `RefRulePosition` for storing the definition's
+    model file name in case of cross-references between models. ([#313],[#277])
+  - Migrated from Travis CI to GitHub Actions ([#307])
+  - Dropped support for deprecated Python versions. The lowest supported version
+    is 3.6. **(BIC)**
+
+-------------------------------------------------------------------
 Sun Jul  4 09:56:22 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Fix package builds for Leap 15.2 and 15.3, requires python-xml
