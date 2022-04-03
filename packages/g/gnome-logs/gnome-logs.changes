@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 30 05:21:50 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 42.0:
+  + Opt-in to dark mode user preference.
+  + Rounded window corners using libhandy.
+  + Add feature to open journal files directly.
+  + Add several keyboard shortcuts to help overlay.
+  + Window sizing improvements.
+  + Some small fixes.
+  + Updated translations.
+- Add libhandy-1 pkgconfig module capability, with 1.5.0 as minimal
+  version, build requirement.
+- Remove hicolor-icon-theme build requirement as it's not really a
+  requirement. Own DATADIR/icons/hicolor/ directory directly
+  instead and its subdirectories, used by the package.
+
+-------------------------------------------------------------------
 Tue May 12 10:54:49 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.0:
