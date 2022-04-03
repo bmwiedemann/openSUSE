@@ -49,18 +49,15 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.2
+Version:        1.0.2+git8.g51e8c4d
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
 Group:          System/Kernel
 URL:            https://github.com/openSUSE/kdump
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-calibrate.tar.bz2
 Source2:        %{name}-rpmlintrc
-Patch1:         %{name}-calibrate-include-af_packet.patch
-Patch2:         %{name}-calibrate-fix-nic-naming.patch
-Patch3:         %{name}-calibrate.conf-depends-on-kdumptool.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.7
 BuildRequires:  gcc-c++
@@ -133,9 +130,6 @@ after a crash dump has occured.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 %setup -q -D -T -a 1
 
 %build

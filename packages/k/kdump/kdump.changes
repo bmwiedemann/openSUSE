@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 31 15:14:17 UTC 2022 - Jiri Bohac <jbohac@suse.com>
+
+- pull sources directly from git using obs_scm
+- fix bsc#1190299, bsc#1186272
+- add support for Zstandard compression algorithm
+- remove patches included in upstream git:
+  kdump-calibrate-include-af_packet.patch,
+  kdump-calibrate-fix-nic-naming.patch,
+  kdump-calibrate.conf-depends-on-kdumptool.patch
+
+-------------------------------------------------------------------
 Tue Feb  8 16:14:52 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - Exclude i586 from SLE builds.
