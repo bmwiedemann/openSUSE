@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 03 01:49:09 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1648829128.bccf1cfcd:
+  * Use syntax to specify SQL-syntax the linter can cope with
+  * Fix race condition during asset registration
+
+-------------------------------------------------------------------
 Thu Mar 31 17:49:07 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1648720710.9f444c83a:
