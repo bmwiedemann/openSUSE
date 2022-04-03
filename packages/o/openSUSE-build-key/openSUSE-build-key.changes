@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 24 15:50:39 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- gpg-pubkey-307e3d54-5aaa90a5 is actually "package gpg-pubkey,
+  version-release 307e3d54-5aaa90a5"
+
+-------------------------------------------------------------------
 Fri Mar 18 14:29:59 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - gpg-pubkey-307e3d54-5aaa90a5.asc: remove the RSA 1024bit SLE11 key

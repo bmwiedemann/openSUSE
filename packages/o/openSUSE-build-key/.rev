@@ -296,4 +296,12 @@ However, it would be good to have these out before we do switch. (forwarded requ
   and try to remove it from installed systems via Obsoletes. (forwarded request 962744 from msmeissn)</comment>
     <requestid>962757</requestid>
   </revision>
+  <revision rev="35" vrev="44">
+    <srcmd5>3a7a8bf96047276db15057e1e2168ed3</srcmd5>
+    <version>1.0</version>
+    <time>1649014234</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>966260</requestid>
+  </revision>
 </revisionlist>

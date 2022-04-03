@@ -47,7 +47,7 @@ Conflicts:      suse-build-key
 Provides:       build-key = %{version}
 
 # Old 1024 bit RSA key for SLE11.
-Obsoletes:      gpg-pubkey-307e3d54-5aaa90a5
+Obsoletes:      gpg-pubkey = 307e3d54-5aaa90a5
 
 %description
 This package contains the gpg keys that are used to sign the
