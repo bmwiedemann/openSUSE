@@ -100,4 +100,14 @@
   + system-upgrade: Handle empty transaction on download (rh#1917639)</comment>
     <requestid>914477</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5bf476bd56b3be9409f054881d27377c</srcmd5>
+    <version>4.0.16</version>
+    <time>1649014248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.16
+  + Fix cleaning up destdir after system-upgrade (rh#2024430)
+</comment>
+    <requestid>965259</requestid>
+  </revision>
 </revisionlist>

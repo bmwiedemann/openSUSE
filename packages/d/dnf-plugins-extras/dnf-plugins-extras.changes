@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 27 22:02:10 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 4.0.16
+  + Fix cleaning up destdir after system-upgrade (rh#2024430)
+
+-------------------------------------------------------------------
 Fri Aug 27 03:30:52 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 4.0.15
