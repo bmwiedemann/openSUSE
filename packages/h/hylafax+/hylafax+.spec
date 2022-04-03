@@ -1,7 +1,7 @@
 #
 # spec file for package hylafax+
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global faxspool    %{_localstatedir}/spool/hylafax
 %define lib_version %(echo %{version} | tr \. _)
 Name:           hylafax+
-Version:        7.0.4
+Version:        7.0.5
 Release:        0
 Summary:        A fax server
 License:        BSD-3-Clause
@@ -40,7 +40,6 @@ Source13:       hylafax-faxqclean.service
 Source14:       hylafax-faxmodem@.service
 Source15:       hylafax-service.xml
 Source16:       hylafax-helper.xml
-Patch0:         hylafax.diff
 
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++
@@ -105,7 +104,7 @@ used to access the server.
 
 %prep
 %setup -q -n hylafax-%{version}
-%patch0 -p2
+
 cp %{SOURCE8} .
 cp %{SOURCE9} .
 # pretend, that libtiff 4.4 is similar to 4.{0,1}

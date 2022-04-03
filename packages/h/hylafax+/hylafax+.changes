@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr  2 16:23:46 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.5
+  * hylafax.diff removed - included in source
+  * extend Class1RecvAbortOK = 0 timeout to 500 ms (4 Dec 2021)
+  * cope with Si2435 V.34/V.8 connection glitch (17, 19 Nov 2021)
+  * cope with spurious +FCERROR or other delayed messages from modem (26 Oct 2021)
+  * avoid letting corrupt RTC signals lead to RTN (26 Oct 2021)
+  * don't refer to DCN as an invalid response in error messages (20 Oct 2021)
+  * handle TSI during procedural interrupt (19 Oct 2021)
+  * do better with waiting on prologue frames from receiver (13 Oct 2021)
+  * cope with echo of ERR (13 Oct 2021)
+  * run ps2fax, pdf2fax, tiff2fax, pcl2fax coverters as fax user (12 Oct 2021)
+  * attempt to cope with receivers who signal RTN in ECM Phase D (23 Sep 2021)
+  * fix hfaxd build when LDAP libs are not present (23 Sep 2021)
+  * handle PPR echo after fourth PPR (22 Sep 2021)
+  * don't use CRP when waiting for CFR following training (15 Sep 2021)
+  * attempt to cope with receivers which signal CFR after PPS (14 Sep 2021)
+  * cope with senders who signal FTT in Phase D (10 Sep 2021)
+  * fix problem with handling NSF/CSI/DIS frame after CTC/EOR (9 Sep 2021)
+  * cope with senders who signal PPS without the PPS FCF (9 Sep 2021)
+  * handle echo of PPR when expecting CTC/EOR (8 Sep 2021)
+  * add failure messages for unspecified training failures (7 Sep 2021)
+  * don't use CRP when waiting for CTR (7 Sep 2021)
+  * handle echo of EOR, don't use CRP when waiting for ERR (7 Sep 2021)
+  * repeat PIN if sender repeats post-page or partial-page message (7-8 Sep 2021)
+
+-------------------------------------------------------------------
 Mon Oct 18 15:14:38 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 7.0.4
