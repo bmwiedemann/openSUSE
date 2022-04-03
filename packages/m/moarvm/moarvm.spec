@@ -16,31 +16,39 @@
 #
 
 
-%global mvrel 2022.02
+%global mvrel 2022.03
 Name:           moarvm
 Version:        %mvrel
 Release:        4.1
-Summary:        A virtual machine built especially for Rakudo Perl 6
+Summary:        A virtual machine built especially for Rakudo
 License:        Artistic-2.0
 Group:          Development/Libraries/Other
-URL:            http://moarvm.org
-Source:         http://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
+URL:            https://moarvm.org
+Source:         https://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
-Patch1:         moarvm_wrong_value_after_multi_level_inlining.diff
 BuildRequires:  perl(ExtUtils::Command)
 BuildRequires:  pkgconfig(libffi)
 %if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(libtommath)
 BuildRequires:  pkgconfig(libuv)
 %endif
+%if !0%{?rhel_version}
 BuildRequires:  pkgconfig(libzstd)
+%endif
 
 %description
-MoarVM (short for Metamodel On A Runtime Virtual Machine) is a runtime built
-for the 6model object system. It is primarily aimed at running NQP and Rakudo
-Perl 6, but should be able to serve as a backend for any compilers built using
-the NQP compiler toolchain.
+Short for "Metamodel On A Runtime", MoarVM is a modern virtual machine built
+for the Rakudo compiler implementing the Raku Programming Language, and the
+NQP Compiler Toolchain. MoarVM is used by the majority of Raku programmers.
+Highlights include:
+
+Great Unicode support, with strings represented at grapheme level
+Dynamic analysis of running code to identify hot functions and loops, and
+perform a range of optimizations, including type specialization and inlining
+Support for threads, a range of concurrency control constructs, and asynchronous
+sockets, timers, processes, and more
+Generational, parallel, garbage collection
 
 %package devel
 Summary:        MoarVM development headers and libraries
@@ -51,7 +59,9 @@ Requires:       pkgconfig(libffi)
 Requires:       pkgconfig(libtommath)
 Requires:       pkgconfig(libuv)
 %endif
+%if !0%{?rhel_version}
 Requires:       pkgconfig(libzstd)
+%endif
 
 %description devel
 MoarVM (Metamodel On A Runtime) development headers.
@@ -59,7 +69,6 @@ MoarVM (Metamodel On A Runtime) development headers.
 %prep
 %setup -q -n MoarVM-%{mvrel}
 %patch0 -p1
-%patch1 -p1
 
 %build
 extra_config_args=
@@ -70,11 +79,12 @@ extra_config_args+=" --has-libtommath --has-libuv"
 extra_config_args+=" --c11-atomics"
 %endif
 CFLAGS="%{optflags}" \
-perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 --no-mimalloc --has-libffi $extra_config_args
+perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 --has-libffi $extra_config_args
 make NOISY=1 %{?_smp_mflags}
 
 %install
 %make_install
+find %buildroot -type f \( -name '*.so' -o -name '*.so.*' \) -exec chmod 755 {} +
 mkdir -p $RPM_BUILD_ROOT/%{_libdir}/moar/share
 
 %files

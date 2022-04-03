@@ -304,4 +304,32 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>959742</requestid>
   </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>03a40dd853bd11ec8470f317e45944a0</srcmd5>
+    <version>2022.03</version>
+    <time>1649014266</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2022.03
++ Bump mimalloc to v2.0.5
++ The result of a getenv() call should not be freed
++ Some nativeref optimizations and fixes
++ Fix all returned native integers getting treated as signed
++ Fix potential invalid free in nativecall
++ Add missing _u cases to disp program callsite code
++ Correctly allocate/free CStrs when using mimalloc
++ Root orig since MVM_frame_capturelex can allocate
++ Restore jitting of sp_getarg_[inso]
++ Jit even more *_u versions of ops
++ Fix frame walker finding wrong value after multi level inlining
++ Fix spesh of named uint parameters
++ Add an MVM_nativecall_encode_string function
+- remove moarvm_wrong_value_after_multi_level_inlining.diff as is
+  contained in the release
+- Fix installation on RHEL7
+  On Redhat based distros, rpm's auto-provides requires shared libs
+  to be executable.
+- Fix build on RHEL7 which seems to lack libzstd
+</comment>
+    <requestid>966636</requestid>
+  </revision>
 </revisionlist>
