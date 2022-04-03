@@ -265,4 +265,20 @@
   + [playground] Disable playground command, since it doesn't work</comment>
     <requestid>929012</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3a0a442bb6ecb24085f9fc3fc84bb66b</srcmd5>
+    <version>4.1.0</version>
+    <time>1649014247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0
+  + Add a new subpackage with modulesync command. The command downloads
+    packages from modules and/or creates a repository with modular data. (rh#1868047)
+  + [groups-manager] Use full NEVRA (not only name) for matching packages (rh#2013633)
+  + [repoclosure] Print counts of missing dependencies
+  + [reposync] Do not stop downloading packages on the first error (rh#2009894)
+  + [versionlock] Fix: Multiple package-name-spec arguments don't lock correctly (rh#2001039) (rh#2013324)
+  + [versionlock] Update documentation for adding specifi version (rh#2013332)
+</comment>
+    <requestid>965258</requestid>
+  </revision>
 </revisionlist>

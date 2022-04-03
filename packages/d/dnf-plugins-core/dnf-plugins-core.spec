@@ -17,9 +17,9 @@
 #
 
 
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.22}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.11.0}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.46.1
+%global hawkey_version 0.64.0
 
 %if 0%{?is_opensuse}
 # Copr targets are available for openSUSE Leap 15.0 and newer
@@ -56,7 +56,7 @@
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.0.24
+Version:        4.1.0
 Release:        0
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -277,6 +277,19 @@ Version lock plugin takes a set of name/versions for packages and excludes all o
 versions of those packages. This allows you to e.g. protect packages from being
 updated by newer versions.
 
+%package -n python3-dnf-plugin-modulesync
+Summary:        Download module metadata and packages and create repository
+Group:          System/Packages
+Requires:       python3-%{name} = %{version}-%{release}
+Requires:       createrepo_c >= 0.17.4
+Provides:       dnf-plugin-modulesync = %{version}-%{release}
+Provides:       dnf-command(modulesync)
+
+%description -n python3-dnf-plugin-modulesync
+Download module metadata from all enabled repositories, module artifacts,
+and profiles of matching modules and create repository.
+
+
 %lang_package
 
 %prep
@@ -463,5 +476,10 @@ export PYTHONPATH=./plugins
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.list
 %{python3_sitelib}/dnf-plugins/versionlock.*
 %{_mandir}/man8/dnf-versionlock.*
+
+%files -n python3-dnf-plugin-modulesync
+%{python3_sitelib}/dnf-plugins/modulesync.*
+%{_mandir}/man8/dnf-modulesync.*
+
 
 %changelog

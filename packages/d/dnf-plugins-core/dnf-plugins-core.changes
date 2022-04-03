@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 27 21:52:22 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 4.1.0
+  + Add a new subpackage with modulesync command. The command downloads
+    packages from modules and/or creates a repository with modular data. (rh#1868047)
+  + [groups-manager] Use full NEVRA (not only name) for matching packages (rh#2013633)
+  + [repoclosure] Print counts of missing dependencies
+  + [reposync] Do not stop downloading packages on the first error (rh#2009894)
+  + [versionlock] Fix: Multiple package-name-spec arguments don't lock correctly (rh#2001039) (rh#2013324)
+  + [versionlock] Update documentation for adding specifi version (rh#2013332)
+
+-------------------------------------------------------------------
 Wed Nov  3 11:50:23 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 4.0.24
