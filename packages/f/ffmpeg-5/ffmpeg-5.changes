@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Thu Mar 10 13:37:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(celt) BuildRequires and stop passing
+  --enable-libcelt to configure and drop celt from enable_decoders,
+  abandoned upstream for opus.
+- Drop pkgconfig(libv4l2) BuildRequires and stop passing
+  --enable-libv4l2 to configure, only needed very old devices and
+  may cause problems for others for those needing it, use
+  LD_PRELOAD pointing on libv4l2.
+- Drop pkgconfig(librtmp) BuildRequires and stop passing
+  conditional --enable-librtmp to configure, built-in RTMP support
+  is better, and has listen mode.
+- Drop bcond conditionals for libaom, srt, lv2, soxr,
+  zmq, zimg and openmpt, build unconditionally for all supported
+  versions of openSUSE.
+- Drop pkgconfig(enca) BuildRequires: Seems unused.
+
+-------------------------------------------------------------------
+Sat Feb 19 13:26:41 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Use Shaderc instead of separate glslang/SPIRV-Tools for Vulkan support
+
+-------------------------------------------------------------------
+Fri Feb 18 22:32:41 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
+
+- Add patch to fix error returned with bad versions of OpenH264
+  * Patch: ffmpeg-openh264-averr-on-bad-version.patch
+- Enable OpenH264 as an H.264 codec via dlopen using patch from Fedora
+  * Patch: ffmpeg-dlopen-openh264.patch
+- Add source and script for headers for dlopening OpenH264
+  * Source: ffmpeg-dlopen-headers.tar.xz
+  * Source: ffmpeg_get_dlopen_headers.sh
+
+-------------------------------------------------------------------
+Wed Feb 16 18:46:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disamble libsmbclient usage (can always be built with
+  --with-smbclient): the usecase of ffmpeg directly accessing
+  smb:// shares is quite constructed (most users will have their
+  smb shares mounted).
+
+-------------------------------------------------------------------
+Sun Jan 30 20:07:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable building with glslang. (Should enable video blending
+  with GLSL.)
+- Unconditionalize ffnvcodec (like vmaf already is).
+
+-------------------------------------------------------------------
+Sun Jan 16 12:09:57 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add ffmpeg-chromium.patch: allows Chromium to use the now
+  internalised field first_dts
+
+-------------------------------------------------------------------
+Fri Jan 14 23:16:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Based on ffmpeg-4.0.spec, update to 5.0
+  * New Vulkan-powered filters for video horizontal/vertical
+    flipping.
+  * Speex decoder.
+  * Various new muxers/demuxers.
+  * An AV1 low-overhead bitstream format muxer is added.
+  * Swscale slice threading support.
+  * New audio and video filters.
+- Drop soversion.diff (for now; it may very well be reintroduced,
+  depending on how 5.1 is released).
