@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 29 19:44:24 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.2.0
+  * Adjust log file name, add timestamps
+  * Only show filename without path in the player window title
+  * Improve audio recording when recording from multiple devices on
+    PulseAudio
+  * Show message in audio tab if no PulseAudio server is found
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Dec 31 20:48:05 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.1.0

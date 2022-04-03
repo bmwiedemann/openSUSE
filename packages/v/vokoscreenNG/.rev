@@ -119,4 +119,12 @@
   * Option to show mouse clicks (forwarded request 943361 from tux93)</comment>
     <requestid>943483</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6ad4a5be2c1f606a55bda830061ec33b</srcmd5>
+    <version>3.2.0</version>
+    <time>1649014262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966613</requestid>
+  </revision>
 </revisionlist>
