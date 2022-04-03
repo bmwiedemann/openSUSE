@@ -17,20 +17,33 @@
 
 
 Name:           nqp
-Version:        2022.02
+Version:        2022.03
 Release:        1.1
 Summary:        Not Quite Perl
 License:        Artistic-2.0
 Group:          Development/Languages/Other
-URL:            http://rakudo.org/
+URL:            https://github.com/Raku/nqp
 Source:         nqp-%{version}.tar.gz
-BuildRequires:  moarvm-devel >= 2022.02
-Requires:       moarvm >= 2022.02
+BuildRequires:  moarvm-devel >= 2022.03
+Requires:       moarvm >= 2022.03
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%ifarch s390x
+BuildRequires:  libffi-devel
+%endif
+BuildRequires:  perl
+BuildRequires:  perl(Digest::SHA)
+BuildRequires:  perl(IPC::Cmd)
 
 %description
-This is "Not Quite Perl" -- a compiler for a subset of Perl 6 used
-to implement a full Perl 6 compiler.
+This is "Not Quite Perl" -- a lightweight Raku-like environment for virtual
+machines. The key feature of NQP is that it's designed to be a very small
+environment (as compared with, say, raku or Rakudo) and is focused on being
+a high-level way to create compilers and libraries for virtual machines like
+MoarVM, the JVM, and others.
+
+Unlike a full-fledged implementation of Raku, NQP strives to have as small a
+runtime footprint as it can, while still providing a Raku object model and
+regular expression engine for the virtual machine.
 
 %prep
 %setup -q

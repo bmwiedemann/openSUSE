@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr  3 11:01:45 CEST 2022 - nine@detonation.org
+
+- update to version 2022.03
+  * Remove some not-needed trys, or convert to nqp::can + the method call
+  * Provide op coerce_ns on MoarVM and JVM
+  * Fix all returned native integers getting treated as signed
+
+-------------------------------------------------------------------
+Sun Mar 27 08:14:25 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- Fix build on RHEL7
+  RHEL doesn't include perl's core libraries in its perl package, so
+  we need to explicitly depend on the modules we need for building.
+
+-------------------------------------------------------------------
 Mon Feb 21 15:58:49 CET 2022 - nine@detonation.org
 
 - update to version 2022.02
