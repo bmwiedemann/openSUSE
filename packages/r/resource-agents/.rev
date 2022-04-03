@@ -1495,4 +1495,41 @@
   * Filesystem: unmount bind mounts before unmount file system (jsc#SLE-21043)</comment>
     <requestid>950480</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>6e255e9e153ce43f05fd4de3e45fbc4c</srcmd5>
+    <version>4.11.0rc1+git2.d40f1f1b</version>
+    <time>1649014233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v4.11.0rc1+git2.d40f1f1b:
+  * Filesystem: fix logic for UUID/label devices with space between parameter and UUID/label
+  * build: update ChangeLog for 4.11.0-rc1
+  * ocf-distro: improve RHEL based distro detection
+  * ipsec: fix check string against another string not the before defined variable (#1755)
+  * spec: fix mount.cifs if
+  * LVM-activate:change lvm_status return value from ocf_not_running to ocf_err_generic (#1753)
+  * IPaddr2: Clarify behavior of 'arp_*' parameters for IPv4 and IPv6
+  * IPaddr2: Log 'ip addr add' options together
+  * IPaddr2: Allow to send IPv6 Neighbor Advertisements in background
+  * IPaddr2: Allow to disable Duplicate Address Detection for IPv6
+  * ocivip: new resource agent (#1751)
+  * corosync-qnetd: Add resource agent
+  * ocf-shellfuncs: quote pid in ocf_pidfile_status
+  * IPsrcaddr: fixes
+  * db2: only warn when notify isnt set, and use ocf_local_nodename() to get node name
+  * IPsrcaddr: fix indentation in better error message code
+  * IPsrcaddr: Better error message when no matching route found
+  * IPsrcaddr: Add warning about DHCP
+  * ocf-shellfuncs: Parametrise the log destinarion by OCF_RESKEY_trace_dir
+  * rabbitmq-server-ha: Use ocf_is_true, if applicable
+  * Fix SERVER_START_ARGS sname/name use for FQDN
+  * LinuxSCSI:replace error log messages with calls to ocf_exit_reason
+  * Filesystem: Add support for Amazon EFS mount helper
+  * Filesystem: Improve fstype_supported logs for fuse
+  * Filesystem: Fix OpenBSD check in fstype_supported()
+  * openstack agents: align timeout also for monitoring operation
+  * mysql-common: fix local SSL connection by using --ssl-mode=REQUIRED which is available on 5.7+ (--ssl is not available in 8.0)
+  * openstack-common: get_config(): expand tilde and exit for errors
+  * openstack-*: hardcode clouds.yaml paths as openstack cli doesnt support overriding it</comment>
+    <requestid>966246</requestid>
+  </revision>
 </revisionlist>
