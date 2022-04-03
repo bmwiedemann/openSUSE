@@ -1,0 +1,127 @@
+From 5595f1be4085006f62ebc603bf3fa52020205e48 Mon Sep 17 00:00:00 2001
+From: Allen Byrne <byrn@hdfgroup.org>
+Date: Fri, 11 Mar 2022 14:11:31 -0600
+Subject: [PATCH 1/2] Fix release check version logic #1438
+
+---
+ config/cmake/scripts/HDF5config.cmake |  2 +-
+ release_docs/RELEASE.txt              | 17 +++++++++++++++++
+ src/H5.c                              | 14 ++++++--------
+ test/CMakeTests.cmake                 |  2 +-
+ 4 files changed, 25 insertions(+), 10 deletions(-)
+
+Index: hdf5-1.10.8/release_docs/RELEASE.txt
+===================================================================
+--- hdf5-1.10.8.orig/release_docs/RELEASE.txt
++++ hdf5-1.10.8/release_docs/RELEASE.txt
+@@ -274,7 +274,23 @@ New Features
+         (ADB - 2020/09/24)
+ 
+     Library:
+-    --------
++    - Issue #1436 identified a problem with the H5_VERS_RELEASE check in the
++      H5check_version function.
++
++      Investigating the original fix, #812, we discovered some inconsistencies
++      with a new block added to check H5_VERS_RELEASE for incompatibilities.
++      This new block was not using the new warning text dealing with the
++      H5_VERS_RELEASE check and would cause the warning to be duplicated.
++
++      By removing the H5_VERS_RELEASE argument in the first check for 
++      H5_VERS_MAJOR and H5_VERS_MINOR, the second check would only check
++      the H5_VERS_RELEASE for incompatible release versions. This adheres
++      to the statement that except for the develop branch, all release versions
++      in a major.minor maintenance branch should be compatible. The prerequisite
++      is that an application will not use any APIs not present in all release versions.
++
++      (ADB - 2022/03/11, #1438)
++
+     - Change how the release part of version, in major.minor.release is checked
+       for compatibility
+ 
+Index: hdf5-1.10.8/src/H5.c
+===================================================================
+--- hdf5-1.10.8.orig/src/H5.c
++++ hdf5-1.10.8/src/H5.c
+@@ -821,6 +821,7 @@ H5check_version(unsigned majnum, unsigne
+     static int          checked                  = 0; /* If we've already checked the version info */
+     static unsigned int disable_version_check    = 0; /* Set if the version check should be disabled */
+     static const char * version_mismatch_warning = VERSION_MISMATCH_WARNING;
++    static const char * release_mismatch_warning = RELEASE_MISMATCH_WARNING;
+     herr_t              ret_value                = SUCCEED; /* Return value */
+ 
+     FUNC_ENTER_API_NOINIT_NOERR_NOFS
+@@ -841,10 +842,7 @@ H5check_version(unsigned majnum, unsigne
+     }
+ 
+     /* H5_VERS_MAJOR and H5_VERS_MINOR must match */
+-    /* Cast relnum to int to avoid warning for unsigned < 0 comparison
+-     * in first release versions */
+-    if (H5_VERS_MAJOR != majnum || H5_VERS_MINOR != minnum || H5_VERS_RELEASE > (int)relnum) {
+-
++    if (H5_VERS_MAJOR != majnum || H5_VERS_MINOR != minnum) {
+         switch (disable_version_check) {
+             case 0:
+                 HDfprintf(stderr, "%s%s", version_mismatch_warning,
+@@ -879,7 +877,7 @@ H5check_version(unsigned majnum, unsigne
+                 break;
+         } /* end switch */
+ 
+-    } /* end if (H5_VERS_MAJOR != majnum || H5_VERS_MINOR != minnum || H5_VERS_RELEASE > relnum) */
++    } /* end if (H5_VERS_MAJOR != majnum || H5_VERS_MINOR != minnum) */
+ 
+     /* H5_VERS_RELEASE should be compatible, we will only add checks for exceptions */
+     if (H5_VERS_RELEASE != relnum) {
+@@ -889,7 +887,7 @@ H5check_version(unsigned majnum, unsigne
+                 switch (disable_version_check) {
+                     case 0:
+                         HDfprintf(
+-                            stderr, "%s%s", version_mismatch_warning,
++                            stderr, "%s%s", release_mismatch_warning,
+                             "You can, at your own risk, disable this warning by setting the environment\n"
+                             "variable 'HDF5_DISABLE_VERSION_CHECK' to a value of '1'.\n"
+                             "Setting it to 2 or higher will suppress the warning messages totally.\n");
+@@ -908,7 +906,7 @@ H5check_version(unsigned majnum, unsigne
+                                   "%s'HDF5_DISABLE_VERSION_CHECK' "
+                                   "environment variable is set to %d, application will\n"
+                                   "continue at your own risk.\n",
+-                                  version_mismatch_warning, disable_version_check);
++                                  release_mismatch_warning, disable_version_check);
+                         /* Mention the versions we are referring to */
+                         HDfprintf(stderr, "Headers are %u.%u.%u, library is %u.%u.%u\n", majnum, minnum,
+                                   relnum, (unsigned)H5_VERS_MAJOR, (unsigned)H5_VERS_MINOR,
+@@ -986,7 +984,7 @@ done:
+ /*-------------------------------------------------------------------------
+  * Function:    H5close
+  *
+- * Purpose:    Terminate the library and release all resources.
++ * Purpose:	Terminate the library and release all resources.
+  *
+  * Return:    Non-negative on success/Negative on failure
+  *
+Index: hdf5-1.10.8/test/CMakeTests.cmake
+===================================================================
+--- hdf5-1.10.8.orig/test/CMakeTests.cmake
++++ hdf5-1.10.8/test/CMakeTests.cmake
+@@ -704,7 +704,7 @@ set_tests_properties (H5TEST-tcheck_vers
+     WORKING_DIRECTORY ${HDF5_TEST_BINARY_DIR}/H5TEST
+     WILL_FAIL "true"
+ )
+-# release + 1 should pass
++# release + 1 should pass on non-develop branches
+ add_test (NAME H5TEST-tcheck_version-release COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} $<TARGET_FILE:tcheck_version> "-tr")
+ set_tests_properties (H5TEST-tcheck_version-release PROPERTIES
+     WORKING_DIRECTORY ${HDF5_TEST_BINARY_DIR}/H5TEST
+Index: hdf5-1.10.8/config/cmake/scripts/HDF5config.cmake
+===================================================================
+--- hdf5-1.10.8.orig/config/cmake/scripts/HDF5config.cmake
++++ hdf5-1.10.8/config/cmake/scripts/HDF5config.cmake
+@@ -163,7 +163,7 @@ if (NOT DEFINED HPC)
+       set (SITE_COMPILER_NAME "vs2012")
+       set (SITE_COMPILER_VERSION "11")
+     else ()
+-      message (FATAL_ERROR "Invalid BUILD_GENERATOR must be - Unix, VS2017, or VS201764, VS2015, VS201564, VS2013, VS201364")
++      message (FATAL_ERROR "Invalid BUILD_GENERATOR must be - Unix, VS2017, VS201764, VS2015, VS201564, VS2013, VS201364")
+     endif ()
+   ##  Set the following to unique id your computer  ##
+     set (CTEST_SITE "WIN7${BUILD_GENERATOR}.XXXX")

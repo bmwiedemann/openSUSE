@@ -1,5 +1,5 @@
 #
-# spec file for package hdf5
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -436,6 +436,8 @@ Patch6:         hdf5-Remove-timestamps-from-binaries.patch
 # Could be ported but it's unknown if it's still needed
 Patch7:         hdf5-mpi.patch
 Patch8:         Disable-phdf5-tests.patch
+# boo#1179521, boo#1196682, gh#HDFGroup/hdf5#1494
+Patch9:         hdf5-1.10.8-pr1494-fix-release-check-version.patch
 BuildRequires:  fdupes
 %if 0%{?use_sz2}
 BuildRequires:  libsz2-devel
@@ -675,6 +677,7 @@ library packages.
 %patch6 -p1
 # %%patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %if %{without hpc}
 # baselibs looks different for different flavors - generate it on the fly

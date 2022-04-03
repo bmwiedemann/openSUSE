@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 31 08:25:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add hdf5-1.10.8-pr1494-fix-release-check-version.patch
+  * boo#1179521, boo#1196682, gh#HDFGroup/hdf5#1494
+  * Avoids package crashes due to an overeager version check.
+    Packages depending on the shared libraries are not being
+    rebuilt in Factory after a patchlevel version bump of hdf5
+    without SONAME changes.
+
+-------------------------------------------------------------------
 Wed Feb 16 11:18:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.10.8:
