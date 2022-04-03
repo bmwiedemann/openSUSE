@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  3 08:41:59 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.7
+  - Main application icon is now presented in scalable format
+    (SVG).
+  - Migrated command line parsing to QCommandLineParser/Option
+    (Qt >= 5.2)
+  - Fixed translations path to be relative to application runtime.
+
+-------------------------------------------------------------------
 Mon Jan 10 06:25:15 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.9.6

@@ -18,7 +18,7 @@
 
 
 Name:           qjackctl
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.2
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -57,7 +57,7 @@ including a enhanced patchbay and connection control features.
 
 %prep
 %setup -q
-sed -i '/^X-SuSE-translate/d' src/org.rncbc.%{name}.desktop
+sed -i '/^X-SuSE-translate/d' src/appdata/org.rncbc.%{name}.desktop
 
 %build
 %cmake -DCONFIG_QT6=0
@@ -68,7 +68,7 @@ sed -i '/^X-SuSE-translate/d' src/org.rncbc.%{name}.desktop
 lrelease-qt5 src/translations/*
 install -dm 0755 %{buildroot}%{_datadir}/%{name}/translations
 install -Dm 0644 src/translations/*.qm %{buildroot}%{_datadir}/%{name}/translations/
-install -Dm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+install -Dm 0644 src/man1/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %doc ChangeLog README TRANSLATORS
@@ -80,9 +80,9 @@ install -Dm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %dir %{_datadir}/metainfo
 %{_bindir}/%{name}
 %{_datadir}/applications/org.rncbc.%{name}.desktop
-%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/metainfo/org.rncbc.%{name}.xml
+%{_datadir}/icons/hicolor/32x32/apps/org.rncbc.%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/org.rncbc.%{name}.svg
+%{_datadir}/metainfo/org.rncbc.%{name}.metainfo.xml
 %{_mandir}/man?/%{name}.*
 
 %files lang
