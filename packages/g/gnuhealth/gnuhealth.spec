@@ -25,7 +25,7 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
@@ -113,7 +113,7 @@ See https://en.opensuse.org/GNUHealth_on_openSUSE for instructions
 Summary:        Integration module for Orthanc
 Group:          Productivity/Office/Management
 Requires:       gnuhealth
-Requires:       python3-beren 
+Requires:       python3-beren
 Requires:       python3-pendulum
 
 %description -n %{name}-orthanc

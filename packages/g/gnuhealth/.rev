@@ -462,4 +462,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>966280</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>448dfb48bb3588bb465785f5fe07434d</srcmd5>
+    <version>4.0.3</version>
+    <time>1649014249</time>
+    <user>dimstar_suse</user>
+    <comment>- version 4.0.3
+  *  Remove pinning from vobject library version (Vanilla installation)
+  *  fix bug #62235: Traceback on default health professional
+</comment>
+    <requestid>966554</requestid>
+  </revision>
 </revisionlist>
