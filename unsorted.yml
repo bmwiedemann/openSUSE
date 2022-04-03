@@ -1308,8 +1308,6 @@ unsorted:
   - blogc 
   - blosc-devel 
   - bluefish 
-  - blueman 
-  - blueman-lang 
   - bluemoon 
   - blueprint-cursor-theme 
   - bluez-auto-enable-devices 
@@ -3662,7 +3660,7 @@ unsorted:
   - ffcall 
   - fflas-ffpack-devel 
   - fflas-ffpack-doc 
-  - ffmpeg-4: [i586] 
+  - ffmpeg-4 
   - ffmpeg-4-libavcodec-devel 
   - ffmpeg-4-libavdevice-devel 
   - ffmpeg-4-libavfilter-devel 
@@ -3673,6 +3671,16 @@ unsorted:
   - ffmpeg-4-libswresample-devel 
   - ffmpeg-4-libswscale-devel 
   - ffmpeg-4-private-devel 
+  - ffmpeg-5: [i586] 
+  - ffmpeg-5-libavcodec-devel 
+  - ffmpeg-5-libavdevice-devel 
+  - ffmpeg-5-libavfilter-devel 
+  - ffmpeg-5-libavformat-devel 
+  - ffmpeg-5-libavutil-devel 
+  - ffmpeg-5-libpostproc-devel 
+  - ffmpeg-5-libswresample-devel 
+  - ffmpeg-5-libswscale-devel 
+  - ffmpeg-5-private-devel 
   - ffmsindex 
   - ffnvcodec-devel 
   - ffsb 
@@ -9731,10 +9739,18 @@ unsorted:
   - libavc1394-devel-32bit: [x86_64] 
   - libavc1394-tools 
   - libavcodec58_134-32bit: [x86_64] 
-  - libavdevice58_13: [i586] 
+  - libavcodec59: [i586] 
+  - libavcodec59-32bit: [x86_64] 
+  - libavdevice58_13 
   - libavdevice58_13-32bit: [x86_64] 
+  - libavdevice59: [i586] 
+  - libavdevice59-32bit: [x86_64] 
   - libavfilter7_110-32bit: [x86_64] 
+  - libavfilter8: [i586] 
+  - libavfilter8-32bit: [x86_64] 
   - libavformat58_76-32bit: [x86_64] 
+  - libavformat59: [i586] 
+  - libavformat59-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
   - libavif13-32bit: [x86_64] 
@@ -9743,18 +9759,17 @@ unsorted:
   - libavtp-devel 
   - libavtp0-32bit: [x86_64] 
   - libavutil56_70-32bit: [x86_64] 
+  - libavutil57: [i586] 
+  - libavutil57-32bit: [x86_64] 
   - libax25-0 
   - libax25-common 
   - libax25-devel 
   - libax25io0 
   - libayatana-appindicator-devel 
   - libayatana-appindicator1 
-  - libayatana-appindicator3-1 
   - libayatana-appindicator3-devel 
-  - libayatana-ido3-0_4-0 
   - libayatana-ido3-0_4-0-32bit: [x86_64] 
   - libayatana-indicator-devel 
-  - libayatana-indicator3-7 
   - libayatana-indicator3-devel 
   - libayatana-indicator7 
   - libazurestorage7 
@@ -12610,7 +12625,6 @@ unsorted:
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit: [x86_64] 
   - libopenmpt_modplug1 
-  - libopenobex2 
   - libopenraw-devel 
   - libopenraw1-32bit: [x86_64] 
   - libopenscap25 
@@ -12989,6 +13003,8 @@ unsorted:
   - libportaudiocpp0 
   - libportmidi2 
   - libpostproc55_9-32bit: [x86_64] 
+  - libpostproc56: [i586] 
+  - libpostproc56-32bit: [x86_64] 
   - libpowerman0 
   - libppl14 
   - libppl_c4 
@@ -14002,7 +14018,11 @@ unsorted:
   - libsvm2 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
+  - libswresample4: [i586] 
+  - libswresample4-32bit: [x86_64] 
   - libswscale5_9-32bit: [x86_64] 
+  - libswscale6: [i586] 
+  - libswscale6-32bit: [x86_64] 
   - libsybdb5 
   - libsybdb5-32bit: [x86_64] 
   - libsymmetrica2 
@@ -17563,7 +17583,6 @@ unsorted:
   - obconf 
   - obconf-qt 
   - obconf-qt-lang 
-  - obex-data-server 
   - obexd 
   - obexd-client 
   - obexd-server 
@@ -21432,6 +21451,7 @@ unsorted:
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
   - python3-dnf-plugin-local 
+  - python3-dnf-plugin-modulesync 
   - python3-dnf-plugin-post-transaction-actions 
   - python3-dnf-plugin-rpmconf 
   - python3-dnf-plugin-show-leaves 
@@ -41379,7 +41399,6 @@ unsorted:
   - thunar-plugin-shares-lang 
   - thunar-plugin-vcs 
   - thunar-plugin-vcs-lang 
-  - thunar-sendto-blueman 
   - thunar-sendto-clamtk 
   - thunar-volman-branding-upstream 
   - thunarx-python 
@@ -41698,7 +41717,6 @@ unsorted:
   - typelib-1_0-AtrilView-1_5_0 
   - typelib-1_0-Avahi-0_6 
   - typelib-1_0-AyatanaAppIndicator-0_1 
-  - typelib-1_0-AyatanaAppIndicator3-0_1 
   - typelib-1_0-AyatanaIdo3-0_4 
   - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
