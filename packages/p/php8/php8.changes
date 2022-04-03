@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 31 18:42:35 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- build PHP-FPM with libacl support (boo#1196870)
+
+-------------------------------------------------------------------
 Thu Mar 17 08:46:05 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 8.1.4: This is a bug fix release. See
