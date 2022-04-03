@@ -74,4 +74,15 @@
     calculator mode.  It also binds the Return key to the &quot;=&quot; button.</comment>
     <requestid>709093</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4849987f01c6925f375a2f5edaf4577d</srcmd5>
+    <version>1.1.1</version>
+    <time>1649014273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1
+  * This release fixes a regression introduced in xcalc 1.1.0 which
+    caused the wrong set of buttons to be colored for the digit
+    keys in TI mode.</comment>
+    <requestid>966681</requestid>
+  </revision>
 </revisionlist>

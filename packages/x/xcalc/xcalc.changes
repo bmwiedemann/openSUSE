@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  3 18:41:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.1
+  * This release fixes a regression introduced in xcalc 1.1.0 which
+    caused the wrong set of buttons to be colored for the digit
+    keys in TI mode.
+
+-------------------------------------------------------------------
 Tue Jun 11 09:14:45 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.0
