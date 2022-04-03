@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 31 01:27:19 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.14.2:
+  + Fix a frequent crash with WebKit processes.
+  + Fix a bug in parsing the app ID from the cgroup on KDE.
+  + Documentation improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar 30 10:25:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update /usr/bin/fusermount requires to /usr/bin/fusermount3: the
