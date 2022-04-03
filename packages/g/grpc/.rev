@@ -353,4 +353,12 @@ put together with abseil-cpp</comment>
     <comment></comment>
     <requestid>964315</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d44acc37f450dcc93844687af74f096d</srcmd5>
+    <version>1.45.1</version>
+    <time>1649014252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.45.1</comment>
+    <requestid>966565</requestid>
+  </revision>
 </revisionlist>
