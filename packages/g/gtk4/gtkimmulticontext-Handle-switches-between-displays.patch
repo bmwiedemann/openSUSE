@@ -1,0 +1,60 @@
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 31 Mar 2022 16:29:34 +0200
+Subject: gtkimmulticontext: Handle switches between displays
+Git-repo: https://gitlab.gnome.org/GNOME/gtk
+Git-commit: b67da38916b710ba6eedd65ffb569a29e47ddb4d
+References: glgo#GNOME/gtk#4805
+Upstream: merged
+
+Currently the GtkIMMultiContext may stick to a delegate GtkIMContext
+that no longer applies after the multicontext is dissociated from
+any widget.
+
+Handle set_client_widget() so that it can handle changes between
+widgets from 2 different display, but also so the delegate is made
+NULL whenever the context has a NULL widget.
+
+Doing so, any new client widget results in a new delegate IM context
+lookup from the right GdkDisplay and GtkSettings, which avoids any
+mix up.
+
+Fixes: https://gitlab.gnome.org/GNOME/gtk/-/issues/4805
+
+Acked-by: Jeff Mahoney <jeffm@suse.com>
+---
+ gtk/gtkimmulticontext.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/gtk/gtkimmulticontext.c b/gtk/gtkimmulticontext.c
+index 47347d299b..0a5ef9a5a6 100644
+--- a/gtk/gtkimmulticontext.c
++++ b/gtk/gtkimmulticontext.c
+@@ -314,6 +314,11 @@ gtk_im_multicontext_set_client_widget (GtkIMContext *context,
+   GtkIMContext *delegate;
+   GtkSettings *settings;
+ 
++  if (priv->client_widget == widget)
++    return;
++
++  gtk_im_multicontext_set_delegate (self, NULL, TRUE);
++
+   if (priv->client_widget != NULL)
+     {
+       settings = gtk_widget_get_settings (priv->client_widget);
+@@ -332,11 +337,11 @@ gtk_im_multicontext_set_client_widget (GtkIMContext *context,
+       g_signal_connect (settings, "notify::gtk-im-module",
+                         G_CALLBACK (im_module_setting_changed),
+                         self);
+-    }
+ 
+-  delegate = gtk_im_multicontext_get_delegate (self);
+-  if (delegate)
+-    gtk_im_context_set_client_widget (delegate, widget);
++      delegate = gtk_im_multicontext_get_delegate (self);
++      if (delegate)
++        gtk_im_context_set_client_widget (delegate, widget);
++    }
+ }
+ 
+ static void
+

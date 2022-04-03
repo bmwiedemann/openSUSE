@@ -34,6 +34,9 @@ Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
 
+# PATCH-FIX-UPSTREAM gtkimmulticontext-Handle-switches-between-displays.patch glgo#GNOME/gtk#4805 -- gtkimmulticontext: Handle switches between displays
+Patch1:         gtkimmulticontext-Handle-switches-between-displays.patch
+
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
 BuildConflicts: (cups-devel > 2.3 with cups-devel < 2.3.0)

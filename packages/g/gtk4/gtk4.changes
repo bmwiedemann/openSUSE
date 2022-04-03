@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 31 23:15:26 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- gtkimmulticontext: Handle switches between displays
+  (glgo#GNOME/gtk#4805). Added:
+  gtkimmulticontext-Handle-switches-between-displays.patch
+
+-------------------------------------------------------------------
 Sat Mar 19 10:08:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.6.2:

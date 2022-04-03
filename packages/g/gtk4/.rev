@@ -428,4 +428,15 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963613</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>689aa2229a493b6b4f9380e94a6b7b93</srcmd5>
+    <version>4.6.2</version>
+    <time>1649014243</time>
+    <user>dimstar_suse</user>
+    <comment>- gtkimmulticontext: Handle switches between displays
+  (glgo#GNOME/gtk#4805). Added:
+  gtkimmulticontext-Handle-switches-between-displays.patch
+</comment>
+    <requestid>966461</requestid>
+  </revision>
 </revisionlist>
