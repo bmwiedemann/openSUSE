@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -3082,6 +3082,7 @@ unsorted:
   - drumstick-lang 
   - drumstick-mimetypes 
   - drush 
+  - dsda-doom 
   - dssi 
   - dssi-devel 
   - dssim 
@@ -10120,9 +10121,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -12684,7 +12685,6 @@ unsorted:
   - libosmgpsmap-devel 
   - libosmo-dsp-devel 
   - libosmo-dsp-doc 
-  - libosmo-e1d-devel 
   - libosmo-e1d1 
   - libosmo-fl2k0 
   - libosmo-gsup-client-devel 
@@ -13326,8 +13326,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13350,7 +13350,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib400 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13537,7 +13537,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-lua 
@@ -13704,6 +13704,7 @@ unsorted:
   - libsfml2-2_5-32bit: [x86_64] 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
+  - libshaderc_shared1-32bit: [x86_64] 
   - libshadowdive0_0_0-suse 
   - libshadowsocks-libev2 
   - libsharp-devel 
@@ -17992,6 +17993,7 @@ unsorted:
   - open-isns-devel 
   - open-lldp: [i586] 
   - open-lldp-devel 
+  - open-vm-tools-salt-minion: [x86_64] 
   - open-vm-tools-sdmp 
   - openCryptoki 
   - openCryptoki-32bit: [i586] 
@@ -18142,7 +18144,6 @@ unsorted:
   - openldap2-devel-32bit: [x86_64] 
   - openldap2-devel-static 
   - openldap2-doc 
-  - openldap2-ppolicy-check-password 
   - openlibm-devel 
   - openlierox 
   - openmarkup 
@@ -18390,13 +18391,13 @@ unsorted:
   - osmo-bts-omldummy 
   - osmo-bts-virtual 
   - osmo-e1d 
+  - osmo-e1d-devel 
   - osmo-fl2k 
   - osmo-fl2k-devel 
   - osmo-fl2k-udev 
   - osmo-ggsn 
   - osmo-gtphub 
   - osmo-hlr 
-  - osmo-iuh 
   - osmo-mgw 
   - osmo-msc 
   - osmo-mslookup-client 
@@ -24369,7 +24370,7 @@ unsorted:
   - python310-scikit-umfpack: [x86_64] 
   - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
-  - python310-scipy_1_7_3-gnu-hpc: [x86_64] 
+  - python310-scipy_1_8_0-gnu-hpc: [x86_64] 
   - python310-scitokens 
   - python310-scour 
   - python310-scp 
@@ -27379,7 +27380,7 @@ unsorted:
   - python38-scikit-sparse: [x86_64] 
   - python38-scikit-umfpack: [x86_64] 
   - python38-scipy-gnu-hpc: [x86_64] 
-  - python38-scipy_1_7_3-gnu-hpc: [x86_64] 
+  - python38-scipy_1_8_0-gnu-hpc: [x86_64] 
   - python38-scitokens 
   - python38-scp 
   - python38-screeninfo 
@@ -30553,7 +30554,7 @@ unsorted:
   - python39-scikit-umfpack: [x86_64] 
   - python39-scipy 
   - python39-scipy-gnu-hpc: [x86_64] 
-  - python39-scipy_1_7_3-gnu-hpc: [x86_64] 
+  - python39-scipy_1_8_0-gnu-hpc: [x86_64] 
   - python39-scitokens 
   - python39-scour 
   - python39-scp 
@@ -31665,7 +31666,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
