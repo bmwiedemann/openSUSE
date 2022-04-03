@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 11:13:47 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * slpd.service
+
+-------------------------------------------------------------------
 Tue Mar 24 17:07:52 CET 2020 - mls@suse.de
 
 - Add missing openslp requires to the openslp-server package
