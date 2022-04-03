@@ -1,7 +1,7 @@
 #
-# spec file for package python-docutils
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,21 +26,20 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docutils%{psuffix}
-Version:        0.16
+Version:        0.17.1
 Release:        0
 Summary:        Python Documentation Utilities
-License:        Python-2.0 AND BSD-2-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
+License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
-Patch0:         pygments25.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-xml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-Pygments
 Recommends:     python-roman
@@ -63,7 +62,6 @@ easy-to-read, what-you-see-is-what-you-get plaintext markup syntax.
 
 %prep
 %setup -q -n docutils-%{version}
-%patch0 -p1
 # Remove useless ".py" ending from executables:
 for i in tools/rst*; do mv "$i" "${i/.py}"; done
 sed -i "s|'tools/\(rst.*\)\.py'|'tools/\1'|" setup.py
@@ -72,6 +70,7 @@ for i in {'code_analyzer','error_reporting','punctuation_chars','smartquotes','m
 sed -i -e "1d" "docutils/utils/$i.py"
 done
 sed -i -e "1d" "docutils/writers/xetex/__init__.py" "docutils/writers/_html_base.py"
+rm ./docs/dev/.release.txt.swp
 
 %build
 %python_build
@@ -80,7 +79,7 @@ sed -i -e "1d" "docutils/writers/xetex/__init__.py" "docutils/writers/_html_base
 %if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-for binary in rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5 ; do 
+for binary in rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5 ; do
     %python_clone -a %{buildroot}%{_bindir}/$binary
 done
 %endif

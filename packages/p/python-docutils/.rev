@@ -280,4 +280,41 @@ this resolves build failure for python3-Sphinx (forwarded request 139388 from Hi
     <comment></comment>
     <requestid>855611</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>78275c2210b6120f3dd945e513ac87ee</srcmd5>
+    <version>0.17.1</version>
+    <time>1649014232</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.1:
+  * Fix bug #406 (MathML translation of ``\mathbf``).
+  * Open &quot;docutils.sty&quot; with encoding set to &quot;utf8&quot;.
+  * Provide fallbacks for parser config settings
+    to facilitate programmatic use.
+  * Installing with ``setup.py`` now requires ``setuptools``.
+    Alternatively, install with `pip`_ (or &quot;manually&quot;).
+  * Use importlib.import_module() to programmatically import modules.
+  * Fix bug #385: Import of language modules.
+  * Arabic mappings by Shahin.
+  * Fixes in Korean translation by Shinjo Park.
+  * Fix error when copying `system_message` node
+  * Make the sidebar's &quot;title&quot; argument optional
+  * Make &quot;meta&quot; elements available for &quot;latex&quot; and &quot;odt&quot;.
+  * Prevent infinite inclusion loops.
+  * Move non-essential styling to ``plain.css``.
+  * Support &quot;captionbelow&quot; class value for tables.
+  * Display code line numbers as pseudo-elements which are skipped
+    when copying text from code blocks. Solves feature request #32.
+  * Support numbered figures.
+  * New optional style that adapts to different screen sizes.
+  * Fix #394 fix missing new line after rubric.
+  * Patch #168 fix crashing on empty citation (by Takeshi KOMIYA).
+  * Fix #126 manpage title with spaces.
+  * Fix #380 commandline option problem in sphinx.
+  * Fix/improve metadata handling:
+    fix &quot;keyword&quot; splitting,
+    allow generic fields (stored as &quot;Custom Properties&quot;).
+    __ docs/user/config.html#detailled
+  * Run python3 test like python2 against source not the build/-directory</comment>
+    <requestid>966231</requestid>
+  </revision>
 </revisionlist>
