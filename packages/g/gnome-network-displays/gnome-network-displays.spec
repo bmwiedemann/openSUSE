@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-network-displays
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-network-displays
-Version:        0.90.4
+Version:        0.90.5
 Release:        0
 Summary:        Miracast implementation for GNOME
 License:        GPL-3.0-only
@@ -68,6 +68,8 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdat
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/icons/*/*/*/*.svg
 %{_datadir}/metainfo/*.appdata.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/zones
 %{_prefix}/lib/firewalld/zones/P2P-WiFi-Display.xml
 
 %files lang -f %{name}.lang
