@@ -64,7 +64,8 @@ Recommends:     xfce4-screenshooter
 Recommends:     parole
 
 # Third-party applications
-Recommends:     blueberry
+Recommends:     blueman
+Recommends:     thunar-sendto-blueman
 Recommends:     file-roller
 Recommends:     gnome-calculator
 Recommends:     gnome-disk-utility
