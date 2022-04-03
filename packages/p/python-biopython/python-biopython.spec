@@ -1,7 +1,7 @@
 #
 # spec file for package python-biopython
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-biopython
-Version:        1.78
+Version:        1.79
 Release:        0
 Summary:        Python Tools for Computational Molecular Biology
-License:        MIT AND BSD-3-Clause
-URL:            http://www.biopython.org
+License:        BSD-3-Clause AND MIT
+URL:            https://biopython.org/
 Source0:        https://files.pythonhosted.org/packages/source/b/biopython/biopython-%{version}.tar.gz
 Source100:      python-biopython-rpmlintrc
 BuildRequires:  %{python_module devel}
@@ -56,7 +56,7 @@ available Python tools for computational molecular biology.
 %setup -q -n biopython-%{version}
 find -type f -name "*.py" -exec sed -i '/^#![ ]*\/usr\/bin\/.*$/ d' {} 2>/dev/null ';'
 # Example scripts cannot be in a subdirectory
-mv -v Doc/examples examples 
+mv -v Doc/examples examples
 
 %build
 export LANG=en_US.UTF-8

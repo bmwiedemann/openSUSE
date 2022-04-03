@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 27 13:57:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.79:
+  * This is intended to be our final release supporting Python 3.6. It also
+  supports Python 3.7, 3.8 and 3.9, and has also been tested on PyPy3.6.1 v7.1.1.
+  * Detailed list of changes see 
+  https://github.com/biopython/biopython/blob/biopython-179/NEWS.rst#1-june-2021-biopython-179
+
+-------------------------------------------------------------------
 Sat Feb 20 19:29:23 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.7.8.
