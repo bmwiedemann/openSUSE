@@ -61,4 +61,13 @@
     editres to libXt 1.0.99.1.</comment>
     <requestid>583036</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea1a3eafc683b18f2735ce951ba37724</srcmd5>
+    <version>1.0.8</version>
+    <time>1649014274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8
+  * bugfix release</comment>
+    <requestid>966683</requestid>
+  </revision>
 </revisionlist>
