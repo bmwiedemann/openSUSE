@@ -68,4 +68,41 @@
   - sync go modules (#1353) (forwarded request 956474 from msmeissn)</comment>
     <requestid>956475</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6fa4883e0dd5faa579c78ef92f2d1f8</srcmd5>
+    <version>1.6.0</version>
+    <time>1649014264</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.6.0
+  - Fix double time import in e2e tests by @saschagrunert in #1388
+  - Add --timeout support to sign command by @saschagrunert in #1379
+  - Fix comparison in replace option for attestation by @bburky in #1366
+  - Add Cosign logo to README by @nsmith5 in #1395
+  - Minor refactor to verify SCT and Rekor entry with multiple keys by @haydentherapper in #1396
+  - Fix a link of SECURITY.md by @knqyf263 in #1399
+  - update cosign and cross-build image for the release job by @cpanato in #1400
+  - feat: login command by @developer-guy in #1398
+  - TUF: Add root status output by @asraa in #1404
+  - Add a newline after password input by @knqyf263 in #1407
+  - make imageRef lowercase before parsing by @bobcallaway in #1409
+  - Improve error message when image is not found in registry by @imjasonh in #1410
+  - Add ability to override the Spiffe socket via environmental variable: by @vaikas in #1421
+  - Fix incorrect error check when verifying SCT by @haydentherapper in #1422
+  - Skip the ReadWrite test that flakes on Windows. by @dlorenc in #1415
+  - Allow PassFunc to be nil by @saschagrunert in #1426
+  - Update the cosign keyless documentation to point to the GA release. by @dlorenc in #1427
+  - Remove TUF timestamp from OCI signature bundle by @haydentherapper in #1428
+  - Add docs on API stability and deprecation table by @priyawadhwa in #1429
+  - update cross-build image which adds goimports by @cpanato in #1435
+  - feat: enhance clean cmd capability by @developer-guy in #1430
+  - use the upstream kubernetes version lib and ldflags by @n3wscott in #1413
+  - Improve log lines to match with implementation by @marcofranssen in #1432
+  - feat: fig autocomplete feature by @developer-guy in #1360
+  - update cross-build to use go 1.17.7 by @cpanato in #1446
+  - Fetch verification targets by TUF custom metadata by @haydentherapper in #1423
+  - feat: add -buildid= to ldflags by @developer-guy in #1451
+  - Streamline SignBlobCmd API with SignCmd by @saschagrunert in #1454
+  - convert release cosigned to also generate yaml artifact. by @k4leung4 in #1453 (forwarded request 966616 from msmeissn)</comment>
+    <requestid>966617</requestid>
+  </revision>
 </revisionlist>

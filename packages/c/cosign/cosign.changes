@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Apr  1 14:46:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.6.0
+  - Fix double time import in e2e tests by @saschagrunert in #1388
+  - Add --timeout support to sign command by @saschagrunert in #1379
+  - Fix comparison in replace option for attestation by @bburky in #1366
+  - Add Cosign logo to README by @nsmith5 in #1395
+  - Minor refactor to verify SCT and Rekor entry with multiple keys by @haydentherapper in #1396
+  - Fix a link of SECURITY.md by @knqyf263 in #1399
+  - update cosign and cross-build image for the release job by @cpanato in #1400
+  - feat: login command by @developer-guy in #1398
+  - TUF: Add root status output by @asraa in #1404
+  - Add a newline after password input by @knqyf263 in #1407
+  - make imageRef lowercase before parsing by @bobcallaway in #1409
+  - Improve error message when image is not found in registry by @imjasonh in #1410
+  - Add ability to override the Spiffe socket via environmental variable: by @vaikas in #1421
+  - Fix incorrect error check when verifying SCT by @haydentherapper in #1422
+  - Skip the ReadWrite test that flakes on Windows. by @dlorenc in #1415
+  - Allow PassFunc to be nil by @saschagrunert in #1426
+  - Update the cosign keyless documentation to point to the GA release. by @dlorenc in #1427
+  - Remove TUF timestamp from OCI signature bundle by @haydentherapper in #1428
+  - Add docs on API stability and deprecation table by @priyawadhwa in #1429
+  - update cross-build image which adds goimports by @cpanato in #1435
+  - feat: enhance clean cmd capability by @developer-guy in #1430
+  - use the upstream kubernetes version lib and ldflags by @n3wscott in #1413
+  - Improve log lines to match with implementation by @marcofranssen in #1432
+  - feat: fig autocomplete feature by @developer-guy in #1360
+  - update cross-build to use go 1.17.7 by @cpanato in #1446
+  - Fetch verification targets by TUF custom metadata by @haydentherapper in #1423
+  - feat: add -buildid= to ldflags by @developer-guy in #1451
+  - Streamline SignBlobCmd API with SignCmd by @saschagrunert in #1454
+  - convert release cosigned to also generate yaml artifact. by @k4leung4 in #1453
+  - Fix tkn link in readme by @Yongxuanzhang in #1459
+  - Print message when verifying with old TUF targets by @haydentherapper in #1468
+  - fix(sign): refactor unsupported provider log by @Dentrax in #1464
+  - tests: /bin/bash -> /usr/bin/env bash by @znewman01 in #1470
+  - Double goreleaser timeout by @znewman01 in #1472
+  - increase timeout for goreleaser snapshot by @cpanato in #1473
+  - fix(sign): kms unspported message by @Dentrax in #1475
+  - refactor release cloudbuild job by @cpanato in #1476
+  - Fix wording on attach attestation help by @luhring in #1480
+  - update go-tuf and simplify TUF client code by @asraa in #1455
+  - add initial changelog for 1.5.2 by @cpanato in #1483
+  - Fix linter error on main by @priyawadhwa in #1484
+  - Update Changelog for Security Advisory by @cpanato in #1485
+  - chore(makefile): use kocache, convert publish to build by @developer-guy in #1488
+  - Pick up a change to quiet ECR-login logging. by @mattmoor in #1491
+  - feat: support other types in copy cmd by @developer-guy in #1493
+  - Pick up some of the shared workflows by @mattmoor in #1490
+  - feat: nominate Dentrax as codeowner by @developer-guy in #1492
+  - add correct layer media type to cosign attach attestation by @spiffcs in #1503
+  - This sets up the scaffolding for the cosigned CRD types. by @mattmoor in #1504
+  - use v6 api calls in GH action for updating release milestones by @bobcallaway in #1511
+  - Add skeleton reconciler for cosigned API CRD. by @mattmoor in #1513
+  - bug fix: import ed25519 keys and fix error handling by @asraa in #1518
+  - optimize codeql speed by using caching and tracing by @bobcallaway in #1519
+  - Add a dummy.go file to allow vendoring config by @jdolitsky in #1520
+  - Add CertExtensions func to extract all extensions by @ckotzbauer in #1515
+  - chore(ci): add artifact hub support by @Dentrax in #1522
+  - Change Fulcio URL default to be fulcio.sigstore.dev by @haydentherapper in #1529
+  - Add codecov as github action, set permissions to read content only by @k4leung4 in #1530
+  - images: remove --bare flags that conflict with --base-import-paths by @cpanato in #1533
+  - Quay OCI Support in README by @sabre1041 in #1539
+  - add rpm,deb and apks for cosign packages by @strongjz in #1537
+  - Consistent parenthesis use in Makefile by @k4leung4 in #1541
+  - add changelog for 1.6.0 by @cpanato in #1535
+  - update golang cross image by @cpanato in #1543
+  - Add fields in policy CRD by @kkavitha in #1540
+  - Disable for now due some issues when downloading the knative module by @cpanato in #1546
+
+-------------------------------------------------------------------
 Mon Feb 21 12:28:25 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.5.2:
