@@ -2190,9 +2190,9 @@
     <package name="liblayout" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblcms2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libldac2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libldap-2_4-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libldap-2_5-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libldap-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libldapcpp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libldapcpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libldb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libldns3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5181,7 +5181,7 @@
     <package name="libjpeg8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libjson-c5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libkeyutils1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libldap-2_4-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libldap-2_5-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libldb2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libldm-1_0-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="liblsan0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
