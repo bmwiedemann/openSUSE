@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Apr 01 13:22:12 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc8:
+  * types: Add support for get log - MI Command Supported
+  * types: Add new Identify constant
+  * types: Update persistent event entry struct added new fields
+  * types: Add Host Initiated Data Gen Number to telemetry log struct
+  * tree: always allocate config file in nvme_read_config()
+  * tree: rework nvme_scan_subsystem()
+  * tree: make subsystem name mandatory in nvme_scan_ctrl()
+  * tree: move nvme_init_subsystem() into nvme_lookup_subsystem()
+  * tree: do not return error when filtering out subsystems
+  * tree: add debugging messages during scanning
+  * tree: Handle NULL subsysname in nvme_scan_ctrl()
+  * tree: Fix subsystem initialization in nvme_scan_ctrl()
+  * tree: Fix leaking 'name' in nvme_subsystem_lookup_namespace()
+  * tree: Avoid dereferencing nvme_subsystem_t before its check for NULL
+  * tree: Clarify NULL return values from nvme_get_attr()
+  * fabrics: Invoke nvmf_dim() with provided tas argument
+  * fabrics: add 'nvmf_update_config()'
+  * fabrics: Avoid out of bounds string chomping
+  * fabrics: Free old traddr in nvmf_add_ctrl
+  * fabrics: update log level for write failures
+  * fabrics: Streamlining documentation
+  * fabrics: Fix leaking ctrl in nvmf_connect_disc_entry()
+  * fabrics: Add missing break in a switch
+  * ioctl: Remove attribute packed and alignedof for args structs
+  * ioctl: Align arguments indentation with braces
+  * json: fix endless loop scanning for controllers
+  * Remove nvme_init_id_ns
+  * Add lbstm support for create-ns
+  * documentation updates
+
+-------------------------------------------------------------------
 Fri Mar 18 19:08:52 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.0-rc7:
