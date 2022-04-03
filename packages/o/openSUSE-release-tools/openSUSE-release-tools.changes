@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 02 11:43:00 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220402.0fac6e09:
+  * Split the Update.Repos.leap pipeline into two
+
+-------------------------------------------------------------------
+Sat Apr 02 09:32:29 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220402.6ce3c9b2:
+  * repo monitor: Only keep looking for scheduling repos
+
+-------------------------------------------------------------------
 Fri Apr 01 13:04:09 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220401.3c2ced48:
