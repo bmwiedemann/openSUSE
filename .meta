@@ -1,0 +1,5 @@
+<package name="budgie-control-center" project="openSUSE:Factory">
+  <title>Fork of GNOME Control Center for Budgie 10</title>
+  <description></description>
+  <devel project="X11:Solus" package="budgie-control-center"/>
+</package>
