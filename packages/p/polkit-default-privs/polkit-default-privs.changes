@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 04 12:41:06 UTC 2022 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20220404.7b4bea2:
+  * Add whitelisting to restrictive profile as well
+  * Add budgie-control-center whitelisting (bsc#1195023)
+
+-------------------------------------------------------------------
 Fri Apr 01 09:50:52 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 1550+20220401.41ccb1d:

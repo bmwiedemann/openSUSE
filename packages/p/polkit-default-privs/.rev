@@ -1976,4 +1976,12 @@ for 12.3</comment>
   * usbguard: relax read-only operations to yes</comment>
     <requestid>966384</requestid>
   </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>d70bf5cc588c2c868914c2391acfde24</srcmd5>
+    <version>1550+20220404.7b4bea2</version>
+    <time>1649078604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966817</requestid>
+  </revision>
 </revisionlist>
