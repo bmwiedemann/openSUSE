@@ -1,3 +1,9 @@
+# PATCH-FIX-UPSTREAM mapserver-7.6.1-fix_python_install_path.patch fixing python installation path badly defaulting to arch independent location
+
+There is a _mapserver.so file, which means the installation has to happen to sitearch.
+This patch makes it so (i.e. installation to /usr/lib64/python... rather than
+/usr/lib/python...)
+
 diff -Nur mapserver-7.6.3/mapscript/python/CMakeLists.txt new/mapscript/python/CMakeLists.txt
 --- mapserver-7.6.3/mapscript/python/CMakeLists.txt	2021-04-30 23:26:25.000000000 +0200
 +++ new/mapscript/python/CMakeLists.txt	2021-05-31 20:53:16.269084059 +0200

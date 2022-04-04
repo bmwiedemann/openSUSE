@@ -1,34 +1,10 @@
 <revisionlist>
   <revision rev="1" vrev="1">
-    <srcmd5>248ff3fe554f818b991c89b3cdf6b6c7</srcmd5>
-    <version>7.6.1</version>
-    <time>1617130648</time>
-    <user>RBrownSUSE</user>
-    <comment></comment>
-    <requestid>868337</requestid>
-  </revision>
-  <revision rev="2" vrev="1">
-    <srcmd5>669b5d818a5f461d2d7c9452ef4545ae</srcmd5>
-    <version>7.6.2</version>
-    <time>1617279457</time>
-    <user>RBrownSUSE</user>
-    <comment>Automatic submission by obs-autosubmit</comment>
-    <requestid>882230</requestid>
-  </revision>
-  <revision rev="3" vrev="1">
-    <srcmd5>08e3d943a62dc0d05330dfbb157b0cf3</srcmd5>
-    <version>7.6.3</version>
-    <time>1623868494</time>
-    <user>dimstar_suse</user>
-    <comment></comment>
-    <requestid>900287</requestid>
-  </revision>
-  <revision rev="4" vrev="1">
-    <srcmd5>075a45b720ec12bc926bf419c7c359f6</srcmd5>
+    <srcmd5>188ecf1da302a59f8f2509c7d5d7f9da</srcmd5>
     <version>7.6.4</version>
-    <time>1638388043</time>
+    <time>1649093228</time>
     <user>dimstar_suse</user>
     <comment></comment>
-    <requestid>934922</requestid>
+    <requestid>966846</requestid>
   </revision>
 </revisionlist>

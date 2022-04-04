@@ -1,7 +1,7 @@
 #
 # spec file for package mapserver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 # Copyright (c) 2015 Angelos Tzotsos (kalxas)
 #
@@ -18,16 +18,15 @@
 #
 
 
-%bcond_with ruby
-
-#
+%bcond_with php
 %bcond_without python
+%bcond_with ruby
 %define libname libmapserver2
 %define _cgibindir /srv/www/cgi-bin
-%if 0%{?suse_version} >= 1500
-%define php_name    php7
+%if 0%{?suse_version} >= 1550
+%define php_name    php8
 %else
-%define php_name    php5
+%define php_name    php7
 %endif
 
 Name:           mapserver
@@ -39,7 +38,10 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://www.mapserver.org/
 Source:         https://download.osgeo.org/mapserver/%{name}-%{version}.tar.gz
 Source9:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM mapserver-7.6.1-fix_python_install_path.patch fixing python installation path badly defaulting to arch independent location
+# Known issues:
+# - /usr/share/cmake/Modules/FindPostgreSQL.cmake is silly
+#   (the postgresql version list is manual), so no postgresql
+# - swig 4.0 can't do php8, gotta wait for 4.1 so no php
 Patch0:         mapserver-7.6.1-fix_python_install_path.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  apache2-devel
@@ -69,9 +71,9 @@ BuildRequires:  mysql-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  pam
 BuildRequires:  pam-devel
-BuildRequires:  postgresql-devel >= 9.1
+#BuildRequires:  postgresql-devel >= 9.1
 %if 0%{?suse_version} >= 1500
-BuildRequires:  postgresql-server-devel >= 9.1
+#BuildRequires:  postgresql-server-devel >= 9.1
 %endif
 BuildRequires:  libprotobuf-c-devel
 BuildRequires:  proj
@@ -100,9 +102,9 @@ Group:          System/Libraries
 Mapserver library for mapserver or mapscript module. you need this lib to run mapserver
 or any of the mapscript module (php, java, python, ruby)
 
+# We don't require apache2_mod-php8 users could have php5 running
+# with other modes (cgi, php-fpm, etc)
 
-# We don't require apache2_mod-php5 users could have php5 running
-# with other modes (cgi, php-fpm etc)
 %package -n php-mapscript
 Summary:        PHP/Mapscript map making extensions to PHP
 Group:          Development/Libraries/Other
@@ -110,7 +112,9 @@ Requires:       %{libname} = %{version}-%{release}
 Requires:       apache2
 Provides:       php-mapserver = %{version}-%{release}
 Obsoletes:      php-mapserver < %{version}-%{release}
+%if 0%{with php}
 BuildRequires:  php-devel
+%endif
 Requires:       php
 Requires:       php-gd
 
@@ -131,21 +135,14 @@ Obsoletes:      mapserver-perl < %{version}-%{release}
 The Perl/Mapscript extension provides full map customization capabilities
 within the Perl programming language.
 
-%if %{with python}
 %package -n python-mapscript
 Summary:        Python/Mapscript map making extensions to Python
 Group:          Development/Languages/Python
-%if %{suse_version} >= 1500
-%define python_sitearch %(python3 -c "from distutils.sysconfig import get_python_lib; print (get_python_lib(1))")
+%if 0%{with python}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-Requires:       python3-base
-%else
-%define python_sitearch %(python2 -c "from distutils.sysconfig import get_python_lib; print (get_python_lib(1))")
-BuildRequires:  python2-devel
-BuildRequires:  python2-setuptools
-Requires:       python2-base
 %endif
+Requires:       python3-base
 Requires:       %{libname} = %{version}-%{release}
 Provides:       mapserver-python = %{version}-%{release}
 Obsoletes:      mapserver-python < %{version}-%{release}
@@ -153,7 +150,6 @@ Obsoletes:      mapserver-python < %{version}-%{release}
 %description -n python-mapscript
 The Python/Mapscript extension provides full map customization capabilities
 within the Python programming language.
-%endif
 
 %package -n libjavamapscript
 Summary:        Java/Mapscript map making extensions to Java
@@ -173,12 +169,13 @@ Obsoletes:      mapserver-java < %{version}-%{release}
 The Java/Mapscript extension provides full map customization capabilities
 within the Java programming language.
 
-%if %{with ruby}
 %package -n ruby-mapscript
 Summary:        Ruby/Mapscript map making extensions to Ruby
 Group:          Development/Languages/Ruby
+%if 0%{with ruby}
 BuildRequires:  ruby-common
 BuildRequires:  ruby-devel
+%endif
 Requires:       %{libname} = %{version}-%{release}
 Requires:       ruby
 Provides:       mapserver-ruby = %{version}-%{release}
@@ -187,20 +184,18 @@ Obsoletes:      mapserver-ruby < %{version}-%{release}
 %description -n ruby-mapscript
 The Ruby/Mapscript extension provides full map customization capabilities
 within the Ruby programming language.
-%endif
 
 %package        devel
 Summary:        Mapserver development files
 Group:          Development/Libraries/Other
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{libname} = %{version}-%{release}
 
 %description    devel
 The Mapserver development package provides necessary files to build
 against the C Mapserver library.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
 mkdir build
@@ -241,15 +236,15 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DWITH_MYSQL=TRUE \
         -DWITH_PERL=TRUE \
         -DCUSTOM_PERL_SITE_ARCH_DIR="%{perl_vendorarch}" \
-        -DWITH_PHP=TRUE \
-        -DWITH_POSTGIS=TRUE \
+        -DWITH_PHPNG=FALSE \
+        -DWITH_POSTGIS=FALSE \
         -DWITH_PROJ=TRUE \
         -DUSE_PROJ=TRUE \
         -DWITH_PROTOBUFC=TRUE \
-%if %{with python}
+%if 0%{with python}
         -DWITH_PYTHON=TRUE \
 %endif
-%if %{with ruby}
+%if 0%{with ruby}
         -DWITH_RUBY=TRUE \
 %endif
         -DWITH_SOS=TRUE \
@@ -290,20 +285,20 @@ cp *.h %{buildroot}/%{_includedir}/%{name}/
 
 # fix some exec bits essentially on examples to make rpmlint happy
 # and avoid rpm adding require
-find ./mapscript/ -type f -iname "*.p[ly]" -exec chmod -x {} \;
-find ./mapscript/ -type f -iname "*.rb" -exec chmod -x {} \;
-find ./mapscript/ -type f -iname "*.dist" -exec chmod -x {} \;
+find mapscript/ -type f "(" -iname "*.p[ly]" -o -iname "*.rb" -o -iname "*.dist" ")" -exec chmod -x {} +
 
 cd build
 %make_install
 cd ..
 
+%if 0%{with php}
 mkdir -p %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/
 cat > %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/mapscript.ini <<EOF
 ; Enable %{name} extension module
 ; For 6.4 we name the symlink here
 extension=php_mapscript.so
 EOF
+%endif
 
 # Install our links
 #@ todo : check
@@ -315,8 +310,10 @@ ln -s %{_bindir}/scalebar %{buildroot}%{_cgibindir}/scalebar
 
 # remove vera fonts, these are provided system wide
 #@todo then we should patch the fonts file example
-rm -rf %{buildroot}%{_docdir}/%{name}/tests/vera
-rm -rf %{buildroot}%{_docdir}/%{name}-%{version}/tests/vera
+rm -rf %{buildroot}%{_docdir}/%{name}/tests/vera \
+       %{buildroot}%{_docdir}/%{name}-%{version}/tests/vera
+
+chmod a+x "%{buildroot}/%{_libdir}/libjavamapscript.so"
 
 %post -n %{libname} -p /sbin/ldconfig
 
@@ -344,11 +341,14 @@ rm -rf %{buildroot}%{_docdir}/%{name}-%{version}/tests/vera
 %files -n %{libname}
 %{_libdir}/libmapserver.so.*
 
+%if 0%{with php}
 %files -n php-mapscript
 %doc mapscript/php/README
 %doc mapscript/php/examples
 %config(noreplace) %{_sysconfdir}/%{php_name}/conf.d/mapscript.ini
-%{_libdir}/%{php_name}/extensions/php_mapscript.so*
+%{_libdir}/%{php_name}/extensions/mapscript.php
+%{_libdir}/%{php_name}/extensions/php_mapscriptng.so*
+%endif
 
 %files -n perl-mapscript
 %doc mapscript/perl/examples
@@ -356,12 +356,12 @@ rm -rf %{buildroot}%{_docdir}/%{name}-%{version}/tests/vera
 %{perl_vendorarch}/auto/mapscript/*
 %{perl_vendorarch}/mapscript.pm
 
-%if %{with python}
+%if 0%{with python}
 %files -n python-mapscript
 %doc mapscript/python/README.rst
 %doc mapscript/python/examples
 %doc mapscript/python/tests
-%{python_sitearch}/*
+%{python3_sitearch}/*
 %endif
 
 %files -n libjavamapscript
@@ -370,7 +370,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}-%{version}/tests/vera
 %doc mapscript/java/tests
 %{_libdir}/libjavamapscript.so
 
-%if %{with ruby}
+%if 0%{with ruby}
 %files -n ruby-mapscript
 %doc mapscript/ruby/README
 %doc mapscript/ruby/examples

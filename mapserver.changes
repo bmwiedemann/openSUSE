@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  9 12:06:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Make the package build on current Tumbleweed again:
+  * Disable PHP bindings (fails to build)
+  * Disable PostgreSQL (fails to configure)
+- Have mapserver-devel require the accompanying library
+
+-------------------------------------------------------------------
 Thu Nov 11 16:38:03 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 
