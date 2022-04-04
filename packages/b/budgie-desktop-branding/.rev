@@ -94,4 +94,17 @@
 </comment>
     <requestid>944793</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0cc0ec85d107c9542c306f30177403d7</srcmd5>
+    <version>20220316.1</version>
+    <time>1649093175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220316.1:
+  * fix inclusion of screensaver files in meson.build
+- Require systemd-icon-branding for LOGO in Budgie Control Center
+- Update to version 20220114.1:
+  * fix screensaver background being incorrect
+</comment>
+    <requestid>963076</requestid>
+  </revision>
 </revisionlist>

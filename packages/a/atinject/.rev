@@ -23,4 +23,12 @@
     <comment>Fix build in factory</comment>
     <requestid>964683</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b73dac464271de612c302d7dbbda8815</srcmd5>
+    <version>1+20160610git1f74ea7</version>
+    <time>1649093186</time>
+    <user>dimstar_suse</user>
+    <comment>alias to the new jakarta name</comment>
+    <requestid>966706</requestid>
+  </revision>
 </revisionlist>

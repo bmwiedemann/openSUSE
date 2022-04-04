@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  2 20:13:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add scikit-umfpack-pr68-scipy-sparse-linalg.patch
+  gh#scikit-umfpack/scikit-umfpack#68
+- x86_64 is the only platform where this works
+
+-------------------------------------------------------------------
 Thu Sep  9 02:08:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch from nose to pytest.

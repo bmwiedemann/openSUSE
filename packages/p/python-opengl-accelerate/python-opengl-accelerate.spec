@@ -1,7 +1,7 @@
 #
 # spec file for package python-opengl-accelerate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define tarname PyOpenGL-accelerate
-%define _version 3.1.5
+%define _version 3.1.6
 Name:           python-opengl-accelerate
 Version:        %{_version}
 Release:        0
@@ -26,10 +26,11 @@ Summary:        Acceleration for python-opengl
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            http://pyopengl.sourceforge.net
-Source0:        https://files.pythonhosted.org/packages/source/P/%{tarname}/%{tarname}-%{_version}.tar.gz
+Source0:        %{tarname}-%{_version}.tar.gz
 # test files: GitHub repo has no tags, use commit hash
-Source1:        https://github.com/mcfletch/pyopengl/raw/6ec398da44/accelerate/tests/test_arraydatatypeaccel.py
-Source2:        https://github.com/mcfletch/pyopengl/raw/6ec398da44/accelerate/tests/test_numpyaccel.py
+Source1:        https://github.com/mcfletch/pyopengl/raw/c26398b91a/accelerate/tests/test_arraydatatypeaccel.py
+Source2:        https://github.com/mcfletch/pyopengl/raw/c26398b91a/accelerate/tests/test_numpyaccel.py
+#
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module opengl >= %{version}}
@@ -50,6 +51,12 @@ code.
 
 %prep
 %setup -q -n %{tarname}-%{_version}
+
+# _service pulldown creates %%{tarname}-%%{_version}/accelerate/<required files>,
+# move them to root of build area and remove 'accelerate' directory
+# to continue as normal.
+mv accelerate/* ./
+rmdir accelerate
 
 # Force Cython to rebuild .c files
 rm src/*.c

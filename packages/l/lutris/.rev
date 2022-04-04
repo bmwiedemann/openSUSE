@@ -279,4 +279,37 @@
     <comment></comment>
     <requestid>940180</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8b613ac685e4c5983d83ce65fe49a5bb</srcmd5>
+    <version>0.5.10</version>
+    <time>1649093205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.10:
+  * Add new window to add games to Lutris, with searches from the website,
+    scanning a folder for previously installed games, installing a Windows
+    game from a setup file, installing from a YAML script or configuring a
+    single game manually.
+  * Move the search for Lutris installers from a tab in the Lutris service
+    to the window for adding games.
+  * Add option to add a Lutris game to Steam
+  * Add a coverart format
+  * Add integration with EA Origin
+  * Add integration with Ubisoft Connect
+  * Download missing media on startup
+  * Remove Winesteam runner (install Steam for Windows in Lutris instead)
+    PC (Linux and Windows) games have their own dedicated Nvidia shader cache
+  * Add dgvoodoo2 option
+  * Add option to enable BattleEye anti-cheat support
+  * Default to Retroarch cores in ~/.config/retroarch/cores if available
+  * Add support for downloading patches and DLC for GOG games
+  * Add --export and --import command line flags to export a game a lutris
+    game and re-import it (requires --dest for the destination path, feature still experimental)
+  * Add command line flags to manage runners: --install-runner, --uninstall-runners,
+    --list-runners, --list-wine-versions
+  * Change behavior of the &quot;Stop&quot; button, remove &quot;Kill all Wine processes&quot; action
+  * Gamescope option is now disabled on Nvidia GPUs
+  * Enable F-Sync by default
+  * For details see: https://github.com/lutris/lutris/releases/tag/v0.5.10</comment>
+    <requestid>966794</requestid>
+  </revision>
 </revisionlist>

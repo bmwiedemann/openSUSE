@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 31 11:16:01 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Fix salt-ssh opts poisoning (bsc#1197637)
+
+- Added:
+  * fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
+
+-------------------------------------------------------------------
+Thu Mar 31 08:34:58 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix multiple security issues (bsc#1197417)
+- * Sign authentication replies to prevent MiTM (CVE-2022-22935)
+- * Sign pillar data to prevent MiTM attacks. (CVE-2022-22934)
+- * Prevent job and fileserver replays (CVE-2022-22936)
+- * Fixed targeting bug, especially visible when using syndic and user auth. (CVE-2022-22941)
+
+- Added:
+  * fix-multiple-security-issues-bsc-1197417.patch
+
+-------------------------------------------------------------------
 Mon Feb 28 15:05:32 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix issues found around pre_flight_script_args

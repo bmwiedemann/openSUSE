@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 29 13:47:00 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Add install/uninstall scripts for the user service files
+- Drop ibus-missing-include.patch
+  * fix build error under Leap 15.4
+
+-------------------------------------------------------------------
 Sun Mar 27 04:28:04 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.5.26

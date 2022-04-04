@@ -17,13 +17,13 @@
 
 
 Name:           mingw32-zlib
-Version:        1.2.11
+Version:        1.2.12
 Release:        0
 Summary:        Zlib compression library
 License:        Zlib
 Group:          Productivity/Archiving/Compression
 URL:            https://www.zlib.net/
-Source:         http://www.zlib.net/zlib-%{version}.tar.xz
+Source:         http://www.zlib.net/zlib-%{version}.tar.gz
 Source1000:     %{name}-rpmlintrc
 Patch0:         zlib-1.2.5-nostrip.patch
 Patch1:         zlib-1.2.5-tml.patch

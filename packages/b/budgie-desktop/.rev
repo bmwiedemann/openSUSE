@@ -377,4 +377,12 @@
     <comment>update</comment>
     <requestid>944791</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3bf447a7142a36a6435111ea99ea9ec8</srcmd5>
+    <version>10.6+4</version>
+    <time>1649093177</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42</comment>
+    <requestid>964195</requestid>
+  </revision>
 </revisionlist>

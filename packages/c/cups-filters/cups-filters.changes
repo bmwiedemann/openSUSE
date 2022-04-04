@@ -1,8 +1,131 @@
 -------------------------------------------------------------------
+Tue Mar 22 18:38:20 UTC 2022 - Aurélien Joga <aurelienjoga@gmail.com>
+
+- Version upgrade to 1.28.12
+  * imagetoraster, imagetopdf: Fixed comparison of the image size
+    with the page size for print-scaling=auto. The image size
+    in pixels was compared with the page size in PostScript
+     points (1/72 inch).
+  * imagetoraster, imagetopdf: Fixed the "print-scaling=none"
+    (crop-to-fit) mode, also use crop-to-fit always when requested,
+    do not fall back to fit-to-page when the image size differs
+    significantly from the page size (Issue #362).
+  * libcupsfilters: Changed the default PPI resolution for images
+    as input files from 128 to 200 (Pull request #446).
+  * implicitclass: Do not check availability of "gs" and "pdftops"
+    executables, instead, check by the presence of "gstoraster"
+    and "pdftoraster" filters whether we have configured
+    cups-filters for Ghostscript and/or Poppler use.
+  * libcupsfilters: In the PPD generator for the driverless
+    utility and cups-browsed add "*cupsFilter2: ..." lines for
+    all supported driverless data formats (PDF, Apple/PWG Raster,
+    PCLm), and add lines for legacy data formats (PCL, PostScript)
+    only if no driverless formats available.
+  * libcupsfilters: Always use encryption for ipps. RFC7472
+    requires that 'ipps' must be used over HTTPS, but the
+    driverless utility does not enforce encryption
+    (Pull request #433).
+  * serial: Add a 10-msec sleep and at the end add a tcdrain().
+    For some unknown reason, every printing file need sleep a
+    little time to make sure the serial printer receive data
+    is right (Pull request #431).
+  * libcupsfilters: Fix resolver functions for DNS-SD-based URIs,
+    to make resolve_uri() also work when DEVICE_URI env variable
+    is set and to make ippfind_based_uri_converter() not
+    re-direct stdin.
+  * pdftopdf: Set default for print-scaling to avoid
+    "should never happem" log messages and undefined behavior.
+  * pdftopdf: Fix orientation-requested = 0. Consider this as
+    automatic selection and not as error.
+  * pdftopdf: Fixed all combinations of print-scaling and
+    number-up for printers with asymmetric margins
+    (top != bottom or left != right) and for input files
+    containing pages with different sizes and/or orientations.
+    Fixes backported from 2.x branch.
+  * pdftopdf: Add 2% tolerance for input size larger than output
+    page when "print-scaling=auto" or "print-scaling=auto-fit"
+    is used and too large input pages should be scaled, fitting
+    documents not. This prevents a random-looking behavior if
+    input and output page size seem to be equal, but in reality
+    there are slight differences between size dimensions.
+- Version upgrade to 1.28.11
+  * libcupsfilters: Let PPD generator take default ColorModel
+    from printer (CUPS issue #277).
+  * Braille: In vectortopdf check inkscape version to call inkscape
+    with the correct command line (Issue #315, Pull request #443).
+  * Build system: Make missing DejaVuSans.ttf non-fatal
+    in ./configure as the font is only needed for test programs,
+    not for actual use of cups-filters (Issue #411).
+  * libcupsfilters: In imagetoraster() fixed crash with SGray
+    (Issue #435).
+  * cups-browsed: Naming of local queues is matched to
+    CUPS' current naming of temporary queues (no leading or
+    trailing underscores), to avoid duplicates in print dialogs
+    which support CUPS' temporary queues.
+  * libcupsfilters: Make cupsRasterParseIPPOptions() work
+    correctly with PPDs (Issue #436).
+  * libcupsfilters: Let colord_get_profile_for_device_id()
+    not return empty file name, to avoid error messages
+    in CUPS error_log.
+  * foomatic-rip: Debug message was wrongly sent to stdout
+    and not to log (Issue #422).
+- Version upgrade to 1.28.10
+  * Sample PPDs: Add borderless page size definitions to
+    Generic PDF Printer, HP Color LaserJet CM3530 MFP PDF,
+    and Ricoh PDF Printer PPD files.
+  * Sample PPDs: From the PDF PPD files removed the unneeded
+    "*cupsFilters2: ..." line. For CUPS it does not make any
+    difference.
+  * libcupsfilters: Fixed pdftopdf filter to correctly support page
+    ranges without upper limit, like "10-" (Pull request #399).
+  * libcupsfilters: Use wildcard tag (IPP_TAG_ZERO) search for
+    "media-type" and "media-type-supported" in the PPD generator
+    (Pull request #398).
+  * implicitclass, parallel: Added missing newlines at error
+    messages.
+  * libfontembed: Removed unneeded fontembed/main.c and ttfread
+    executable. Eliminates the dependency on DejaVuSans.ttf
+    (Issue #386).
+  * gstoraster: Refactor the filter a little to clarify handling
+    of page counts and set job-impressions for TotalPageCount in
+    PWG-Raster header (Pull request #394).
+  * cups-browsed: Make NotifLeaseDuration configurable and renew
+    after half the lease duration not 60 sec before end. The early
+    renewal improves reliability on busy systems a lot. For easier
+    development and debugging short durations from 300 sec on can
+    get selected (Pull request #378).
+- Version upgrade to 1.28.9
+  * libcupsfilters: Silenced compiler warnings
+  * libcupsfilters: Removed duplicate code in the apply_filters()
+    function.
+  * driverless: If there are no driverless IPP printers available
+    let "driverless" terminate with exit code 0 and not 1, to
+    follow CUPS' standard of backends in discovery mode
+    terminating with 0 if there are no appropriate printers
+    found (Issue #375).
+  * gstoraster, foomatic-rip: Fixed Ghostscript command line for
+    counting pages as it took too long on PDFs from evince when
+    printing DjVu files (Issue #354, Pull request #371,
+    Ubuntu bug #1920730).
+  * cups-browsed: Renamed ldap_connect() due to conflict in new
+    openldap (Issue #367, Pull request #370).
+  * pdftoraster: Free color data after processing of each page
+    (Pull request #363).
+  * cups-browsed: Always save "...-default" option entries from
+    printers.conf, regardless of presence or absense of PPD file
+    (Pull request #359).
+  * cups-browsed: Start after network-online.target
+    (Pull request #360).
+  * texttopdf: Set default margins when no PPD file is used
+    (Pull request #356).
+- harden_cups-browsed.service.patch adapted to cups-filters-1.28.12
+
+-------------------------------------------------------------------
 Fri Oct 15 07:30:49 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
-- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
-  * harden_cups-browsed.service.patch
+- Added hardening to systemd service(s) (bsc#1181400), see
+  https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+  Added patch harden_cups-browsed.service.patch
 
 -------------------------------------------------------------------
 Tue Jun  8 11:28:42 CEST 2021 - jsmeix@suse.de

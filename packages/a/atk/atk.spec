@@ -33,7 +33,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.56.2
 
-Requires:       %{name}-lang = %{version}
 Requires:       libatk-1_0-0
 
 %description

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 31 11:44:11 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 42.1:
+  + Fixed URI parsing issue that can lead to crash.
+  + Updated location for appdata screenshot. 
+- Drop yelp-ghelp.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Mar 25 09:08:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add yelp-ghelp.patch: Be even more careful about stripping

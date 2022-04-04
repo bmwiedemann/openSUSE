@@ -18,16 +18,17 @@
 #
 
 
-#
+%if 0%{?suse_version} < 1550
+%define _distconfdir %{_sysconfdir}
+%endif
 Name:           budgie-desktop
-Version:        10.5.3+36
+Version:        10.6+4
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-desktop
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         override-syntax.patch
 # Solus stupid 1000
 BuildRequires:  budgie-screensaver
 BuildRequires:  intltool
@@ -47,7 +48,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libgnome-menu-3.0)
-BuildRequires:  pkgconfig(libmutter-9)
+BuildRequires:  (pkgconfig(libmutter-9) or pkgconfig(libmutter-10))
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -57,19 +58,29 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
-# rebrand
-Requires:       budgie-desktop-view >= 1.1.1+5
-Requires:       budgie-screensaver >= 4.0+2
-Requires:       gnome-control-center
+# https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
+Conflicts:      gnome-shell
+#
+# rebrand and gnome porting
+Requires:       budgie-desktop-view >= 1.2+0
+Requires:       budgie-screensaver >= 5.0+0
+Requires:       typelib-1_0-Budgie-1_0 >= %{version}
+Requires:       budgie-desktop-branding >= 20220316.1
+Requires:       budgie-control-center
+#
+# unchanged SOVER but new APIs
+Requires:       libraven0 >= %{version}
+Requires:       libbudgietheme0 >= %{version}
+Requires:       libbudgie-plugin0 >= %{version}
+Requires:       libbudgie-private0 >= %{version}
+#
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
+Requires:       gnome-bluetooth-1
 Requires:       ibus
 Requires:       libgnomesu
 Requires:       xdg-user-dirs-gtk
 Requires:       NetworkManager-applet
-# https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
-Conflicts:      gnome-shell
-#
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 
@@ -79,8 +90,7 @@ Budgie Desktop is the flagship desktop for the Solus Operating System.
 %package -n typelib-1_0-Budgie-1_0
 Summary:        Introspection bindings for the Budgie Desktop
 Group:          System/Libraries
-Requires:       %{name} = %{version}-%{release}
-Requires:       typelib(PeasGtk) = 1.0
+Requires:       typelib-1_0-PeasGtk-1_0
 
 %description -n typelib-1_0-Budgie-1_0
 This package provides GObject Introspection files required for
@@ -90,8 +100,10 @@ GObject Introspection bindings.
 %package devel
 Summary:        Development files for the Budgie Desktop
 Group:          Development/Libraries/GNOME
-Requires:       %{name} = %{version}-%{release}
-Requires:       typelib(Budgie) = 1.0
+Requires:       libraven0 = %{version}
+Requires:       libbudgietheme0 = %{version}
+Requires:       libbudgie-plugin0 = %{version}
+Requires:       libbudgie-private0 = %{version}
 
 %description devel
 This package provides development files required for software to be
@@ -138,10 +150,11 @@ Private library for Budgie desktop to link against.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-%meson -Dxdg-appdir=%{_distconfdir}/xdg/autostart
+export CFLAGS="$CFLAGS -Wno-pedantic"
+%meson -Dc_std=none -Dxdg-appdir=%{_distconfdir}/xdg/autostart
 %meson_build
 
 %install
@@ -186,6 +199,7 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
 %{_libdir}/budgie-desktop
+%{_datadir}/budgie
 %{_distconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
@@ -197,6 +211,8 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_libdir}/libbudgietheme.so.*
 
 %files -n libbudgie-plugin0
+%dir %{_libdir}/budgie-desktop
+%dir %{_libdir}/budgie-desktop/plugins
 %{_libdir}/libbudgie-plugin.so.*
 
 %files -n libbudgie-private0

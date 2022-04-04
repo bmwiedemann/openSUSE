@@ -72,7 +72,6 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # Qt5 does not be update to the new version and patch for ibus on Leap 15,
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
-Patch16:        ibus-missing-include.patch
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(systemd)
 %if ! 0%{?with_gtk4}
@@ -99,6 +98,7 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  systemd-rpm-macros
 %if %{with_emoji}
 Requires:       %{_name}-dict-emoji = %{version}
 %endif
@@ -210,7 +210,6 @@ This package contains ibus im module for use by gtk4.
 
 %prep
 %setup -q -n %{_name}-%{version}
-#%patch0 -p1
 %patch4 -p1
 %patch8 -p1
 %if 0%{?sle_version} < 150200 && 0%{?suse_version} <=1500
@@ -229,7 +228,6 @@ cp -r %{SOURCE11} .
 %patch12 -p1
 %if 0%{?suse_version} <= 1500
 %patch15 -p1
-%patch16 -p1
 %endif
 
 %build
@@ -311,15 +309,23 @@ install -m 644 %{SOURCE7} %{buildroot}%{_rpmmacrodir}
 
 %find_lang ibus10 %{?no_lang_C}
 
+%pre
+%systemd_user_pre org.freedesktop.IBus.session.GNOME.service org.freedesktop.IBus.session.generic.service
+
 %post
 %glib2_gsettings_schema_post
+%systemd_user_post org.freedesktop.IBus.session.GNOME.service org.freedesktop.IBus.session.generic.service
 
 %posttrans
 dconf update
 
+%preun
+%systemd_user_preun org.freedesktop.IBus.session.GNOME.service org.freedesktop.IBus.session.generic.service
+
 %postun
 %glib2_gsettings_schema_postun
 dconf update
+%systemd_user_postun org.freedesktop.IBus.session.GNOME.service org.freedesktop.IBus.session.generic.service
 
 %post gtk
 %{gtk2_immodule_post}
@@ -409,9 +415,9 @@ fi
 %{_mandir}/man1/ibus-setup.1%{ext_man}
 %{_mandir}/man5/00-upstream-settings.5%{ext_man}
 %{_mandir}/man5/ibus.5%{ext_man}
-%dir %{_prefix}/lib/systemd/user/gnome-session.target.wants
-%{_prefix}/lib/systemd/user/gnome-session.target.wants/org.freedesktop.IBus.session.GNOME.service
-%{_prefix}/lib/systemd/user/*.service
+%dir %{_userunitdir}/gnome-session.target.wants
+%{_userunitdir}/gnome-session.target.wants/org.freedesktop.IBus.session.GNOME.service
+%{_userunitdir}/*.service
 
 %if %{with_emoji}
 %{_datadir}/applications/org.freedesktop.IBus.Panel.Emojier.desktop

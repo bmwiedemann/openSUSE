@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/docker/buildx</param>
+              <param name="changesrevision">6224def4dd2c3d347eee19db595348c50d7cb491</param></service></servicedata>

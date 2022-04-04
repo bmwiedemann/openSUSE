@@ -48,19 +48,21 @@ Source11:       snmptrapd.sysconfig
 Source20:       net-snmp-tmpfs.conf
 Source98:       net-snmp-rpmlintrc
 Source99:       baselibs.conf
-Patch1:         net-snmp-5.8-socket-path.patch
-Patch2:         net-snmp-5.8-testing-empty-arptable.patch
-Patch3:         net-snmp-5.8-pie.patch
-Patch4:         net-snmp-5.8-net-snmp-config-headercheck.patch
-Patch5:         net-snmp-5.8-perl-tk-warning.patch
-Patch6:         net-snmp-5.8-velocity-mib.patch
-Patch7:         net-snmp-5.8-snmpstatus-suppress-output.patch
-Patch8:         net-snmp-5.8-fix-Makefile.PL.patch
-Patch9:         net-snmp-5.8-modern-rpm-api.patch
+Patch1:         net-snmp-5.9.1-socket-path.patch
+Patch2:         net-snmp-5.9.1-testing-empty-arptable.patch
+Patch3:         net-snmp-5.9.1-pie.patch
+Patch4:         net-snmp-5.9.1-net-snmp-config-headercheck.patch
+Patch5:         net-snmp-5.9.1-perl-tk-warning.patch
+Patch6:         net-snmp-5.9.1-velocity-mib.patch
+Patch7:         net-snmp-5.9.1-snmpstatus-suppress-output.patch
+Patch8:         net-snmp-5.9.1-fix-Makefile.PL.patch
+Patch9:         net-snmp-5.9.1-modern-rpm-api.patch
 Patch10:        net-snmp-5.9.1-add-lustre-fs-support.patch
 Patch11:        net-snmp-5.9.1-harden_snmpd.service.patch
 Patch12:        net-snmp-5.9.1-harden_snmptrapd.service.patch
 Patch13:        net-snmp-5.9.1-suse-systemd-service-files.patch
+Patch14:        net-snmp-5.9.1-fix-create-v3-user-outfile.patch
+Patch15:        net-snmp-5.9.1-subagent-set-response.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
@@ -113,7 +115,7 @@ Summary:        Shared Libraries from net-snmp
 License:        BSD-3-Clause AND MIT
 Group:          System/Libraries
 Requires:       perl-base = %{perl_version}
-Requires:       snmp-mibs = %{version}
+Requires:       snmp-mibs >= %{version}
 
 %description -n %{libname}
 Net-SNMP is a suite of applications used to implement SNMP v1, SNMP v2c
@@ -313,8 +315,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %service_add_pre snmpd.service snmptrapd.service
 
 %post
-%fillup_only snmpd
-%fillup_only snmptrapd
+%fillup_only -n snmpd
+%fillup_only -n snmptrapd
 %tmpfiles_create %{_tmpfilesdir}/net-snmp.conf
 %service_add_post snmpd.service snmptrapd.service
 

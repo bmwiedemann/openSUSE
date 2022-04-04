@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Mon Apr 04 06:57:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.2:
+  * vendor: update buildkit to 10e6f94b
+  * compose: add test for port mapping
+  * update github.com/compose-spec/compose-go to v1.2.1
+  * bake: fix skipped group when already visited by another one
+
+-------------------------------------------------------------------
+Mon Mar 21 08:20:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.1:
+  * bake: allow dot in target names for compose
+  * vendor: update fsutil to 9ed61262
+
+-------------------------------------------------------------------
+Thu Mar 10 07:44:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.8.0:
+  * vendor: update buildkit
+  * build: set remote digest when pushed with docker driver
+  * bake: restore consistent output for metadata
+  * imagetools inspect: missing manifest digest for manifest-list (json)
+  * imagetools inspect: deterministic platform order
+  * build: return imageID when loading without docker driver
+  * build: fix multi-node builds with mixed platforms
+  * build: remove target context if platform specific used
+  * progress: avoid double logs when multiple targets build same step
+  * vendor: update docker/cli to 8667ccd
+  * docs: small fixes
+  * vendor: update buildkit to 0692ad79
+  * imagetools inspect: multi-platform support
+  * imagetools inspect: add --format flag
+  * docs: update cli-docs-tool to v0.4.0
+  * bake: add path validation for remote bake invocations
+  * bake: make named contexts relative to remote bake input
+  * vendor: update buildkit to b124b0c3
+  * bake: use better error in named contexts not supported
+  * Fix typo in readme
+  * build: fix deadlock on handling deps errors
+  * set build-args from docker proxy configuration
+  * build: send buildinfo dependencies
+  * docs: metadata-file usage
+  * docs: built-in build args
+  * docs: user guides
+  * docs: ssh usage example
+  * docs: lint
+  * vendor: update buildkit to 1e6032c
+  * build(deps): bump github.com/docker/distribution
+  * e2e: add bake build and display metadata json
+  * build: enhance metadata json output
+  * docs: built-in build args
+  * forbid setting no-cache and no-cache-filter together
+  * bake: add no-cache-filter
+  * build: add no-cache-filter
+  * docs: secret usage examples
+  * vendor: update buildkit to 2f99651
+  * Separate io.Writer from console.File for NewPrinter
+  * cli: add --all-inactive and --force flags for rm command
+  * docs: add examples for bake named contexts
+  * bake: connect results between build targets
+  * util: add waitmap for target synchronization
+  * bake: add named contexts keys
+  * bake: restrict target name
+  * root: simple output format on logrus for parity with cli
+  * root: filter out useless commandConn.CloseWrite warning message
+  * bake: keep target inheritance
+  * Update install instructions
+  * bump github.com/zclconf/go-cty from 1.7.1 to 1.10.0
+  * chore: invalidate cache for outdated run stage
+  * ci: build with stable buildkit image
+  * build: inline buildinfo attrs
+  * docs: add docs for -build-context
+  * commands: provide more helpful error when —build-context is not supported
+  * commands: rename context flag to build-context
+  * compose: resolve build args from service environment
+  * compose: test env_file
+  * update github.com/compose-spec/compose-go to v1.0.8
+  * build: add support for named contexts
+  * root: filter out useless debug logs from vendored packages
+  * commands: build summary of warnings on build
+  * vendor: update buildkit to 539be170
+  * docker-container: set UsernsMode only when needed
+  * bake: fix group resolution
+  * bake: fix groups print
+  * bake: ignore NetworkMode field for json and hcl
+  * Remove support for network override in bake
+  * imagetools resolver: fix deprecated client opt
+  * imagetools resolver: discard containerd logger output
+  * Remove NetworkMode support for HCL targets
+  * disk usage: last accessed not displayed
+  * add note about variable syntax in json
+  * bake: build definition file via stdin
+  * Add NetworkMode to bake target
+  * docs: fix git protocol
+  * bake: fix print output
+  * commands: clean up unnecessary code
+  * Add an option to buildx rm to keep the buildkitd daemon running
+  * cli: fix flags usage
+  * dockerfile: update xx to 1.0.0
+
+-------------------------------------------------------------------
+Fri Mar  4 20:00:24 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package docker-buildx: Docker CLI plugin for extended build capabilities with BuildKit

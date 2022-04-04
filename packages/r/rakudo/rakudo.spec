@@ -17,26 +17,33 @@
 
 
 Name:           rakudo
-Version:        2022.02
+Version:        2022.03
 Release:        2.1
 Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
 Group:          Development/Languages/Other
-URL:            http://rakudo.org/
+URL:            https://rakudo.org/
 Source0:        rakudo-%{version}.tar.gz
 Patch0:         rakudo-test-log.diff
+%if !0%{?rhel_version}
 BuildRequires:  fdupes
-BuildRequires:  moarvm-devel >= 2022.02
-BuildRequires:  nqp >= 2022.02
+%endif
+BuildRequires:  moarvm-devel >= 2022.03
+BuildRequires:  nqp >= 2022.03
+BuildRequires:  perl(Archive::Tar)
+BuildRequires:  perl(Digest::SHA)
+BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(YAML::Tiny)
 Provides:       perl6 = %{version}-%{release}
-Requires:       moarvm >= 2022.02
-Requires:       nqp >= 2022.02
+Requires:       moarvm >= 2022.03
+Requires:       nqp >= 2022.03
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%ifarch s390x
+BuildRequires:  libffi-devel
+%endif
 
 %description
-Rakudo, is an implementation of the Raku (formerly Perl 6)
-specification that runs on the Moar virtual machine.
+The most mature, production-ready implementation of the Raku language.
 
 %prep
 %setup -q
@@ -60,8 +67,10 @@ rm "%{buildroot}/%{_bindir}/raku"
 rm "%{buildroot}/%{_bindir}/raku-debug"
 ln -s rakudo "%{buildroot}/%{_bindir}/raku"
 ln -s rakudo-debug "%{buildroot}/%{_bindir}/raku-debug"
+%if !0%{?rhel_version}
 %fdupes %{buildroot}/%{_bindir}
 %fdupes %{buildroot}/%{_datadir}/perl6/runtime
+%endif
 
 %files
 %defattr(-,root,root)

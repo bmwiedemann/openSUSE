@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Apr  3 11:11:38 CEST 2022 - nine@detonation.org
+
+- update to version 2022.03
+    + Expose the .file and .line methods on Label objects
+    + Allow Date / DateTime *day* parameter to be a Callable / Whatever
+    + Make error on Date.later(:hour|minute|second) more awesome
+    + Give .chomp the possibility to specify a needle
+    + Improve error message for invalid arguments passed to traits
+    + Un =my= X::Comp::Group
+    + Turn junctions into value objects
+    + Fix classification and categorization over junctions and gist over Junction keys
+    + Fix typo'd missing : in .nominal_type signature
+    + Decrement # of calls in a block if any are optimized away
+    + Fix IO::Path.parent
+    + Fix multi-method candidates lost when 6.e role is applied
+    + Workaround for cases where .ACCEPTS may return non-Raku object
+    + Fix issue with native array.splice
+    + Fix issue with Net::Curl
+    + Make DateTime.new(Allomorph:D) work
+    + Restore given / when optimization for Numeric cases
+    + Fix/test Pod::To::Text rendering of =defn elements
+    + Fix resources of the parent repo not found when using Staging
+    + Optimize more cases of p6decontrv ops
+    + Use new native unsigned integer NQP ops where applicable
+    + Use --/++$i instead of $i = nqp::add/sub_i($i,1) for readability
+    + Make Complex multiplication factor constant
+    + Streamline Complex -> Real coercion
+    + Simplify creating a Complex object
+    + Enable num->str coercion in native.repeated/unique
+    + Remove unneeded/confusing can('prec') checks
+    + Remove some unnecessary trys
+
+-------------------------------------------------------------------
+Sun Mar 27 09:19:10 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- Fix build on RHEL7 which contains no fdupes package
+  Also perl core packages are not installed by default
+
+-------------------------------------------------------------------
 Mon Feb 21 16:35:47 CET 2022 - nine@detonation.org
 
 - update to version 2022.02

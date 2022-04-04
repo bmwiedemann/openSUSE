@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr  1 18:52:20 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding _service file
+- Cleaning up Source0 declaration since PyPI doesn't have a tarball
+- Updating hash for 'accelerate/test' Source[1,2]
+- Adding code to %prep section to deal w/ how _service pulls down
+  files for the gzip'd tarball
+
+-------------------------------------------------------------------
+Thu Mar 31 15:25:18 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 3.1.6
+  * Pulled directly from https://github.com/mcfletch/pyopengl since
+    pypi.org (via py2pack fetch) doesn't have this version available.
+  * Seems that some packages which use PyOpenGL and accelerate have
+    a soft requirement that they're the same version.
+
+-------------------------------------------------------------------
 Tue Mar 23 20:48:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't build the numpy formathandler for python36.

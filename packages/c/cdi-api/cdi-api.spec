@@ -16,25 +16,21 @@
 #
 
 
-%bcond_with tests
 Name:           cdi-api
-Version:        1.2
+Version:        2.0.2
 Release:        0
 Summary:        Contexts and Dependency Injection for Java EE
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://seamframework.org/Weld
-# sh create-tarball.sh %%{version}
+URL:            https://seamframework.org/Weld
 Source0:        cdi-%{version}.tar.xz
 Source1:        %{name}-build.xml
-Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Patch0:         0001-Remove-dependency-on-glassfish-el.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  glassfish-el-api
 BuildRequires:  javapackages-local
 BuildRequires:  jboss-interceptors-1.2-api
-Requires:       mvn(javax.el:javax.el-api)
 Requires:       mvn(javax.inject:javax.inject)
 Requires:       mvn(org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec)
 BuildArch:      noarch
@@ -50,50 +46,46 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -qn cdi-%{version}
-pushd api/
-cp %{SOURCE1} build.xml
-cp %{SOURCE2} LICENSE
+%setup -q -n cdi-%{version}
+%patch0 -p1
+cp %{SOURCE1} api/build.xml
 
 # Use newer version of interceptors API
-%pom_change_dep "javax.interceptor:javax.interceptor-api" "org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec"
+%pom_change_dep "jakarta.interceptor:jakarta.interceptor-api" "org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec" api
 
-%pom_remove_parent
-popd
+%pom_remove_parent api
+%pom_remove_dep :jakarta.el-api api
 
 %build
 pushd api/
 mkdir -p lib
-build-jar-repository -s lib glassfish-el-api jboss-interceptors-1.2-api javax.inject
-%{ant} \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
-  jar javadoc
+build-jar-repository -s lib javax.inject jboss-interceptors-1.2-api
+%{ant} jar javadoc
 popd
 
 %install
-pushd api/
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 api/target/jakarta.enterprise.cdi-api-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 install -dm 0755 %{buildroot}%{_javadir}/javax.enterprise.inject
-install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 ln -sf ../%{name}/%{name}.jar %{buildroot}%{_javadir}/javax.enterprise.inject/%{name}.jar
+
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+install -pm 0644 api/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -a "javax.enterprise:cdi-api"
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
-popd
+cp -pr api/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -f api/.mfiles
-%license api/LICENSE
+%files -f .mfiles
 %{_javadir}/javax.enterprise.inject
+%license LICENSE.txt
+%doc README.md
 
 %files javadoc
 %{_javadocdir}/%{name}
+%license LICENSE.txt
 
 %changelog

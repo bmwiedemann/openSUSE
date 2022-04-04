@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 30 18:04:39 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-gcc12.patch: fix the build with gcc 12.
+
+-------------------------------------------------------------------
+Tue Mar 29 11:48:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disabled usage of gold linker for all targets via existing
+  define.
+
+-------------------------------------------------------------------
 Mon Mar 21 19:45:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.36.0:

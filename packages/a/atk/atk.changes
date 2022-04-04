@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 30 14:28:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop dependency from main package to -lang package: there seems
+  to be no indication to this being needed.
+
+-------------------------------------------------------------------
 Fri Mar 25 11:03:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.38.0:

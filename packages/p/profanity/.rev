@@ -476,4 +476,22 @@
   * Fix breaking autocompletion with nicknames containing '/' (#1474)</comment>
     <requestid>966029</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>537b46309a5b36c2fe07de793c3c1eb9</srcmd5>
+    <version>0.12.1</version>
+    <time>1649093230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to to 0.12.1:
+  * Fix resetting colors when loading invalid theme (#1681)
+  * Use correct color for nick of others in history (#1675)
+  * Fix a segfault when uploading or downloading files (f11ad16)
+  * Fix logging of text chatlogs (#1672, #1673)
+  * Simplification of tab completion code (#1664)
+  * Add Alt/Ctrl-arrows combinations for GNU Screen (#1667)
+  * Make all existing input functions bindable from config (#1669)
+  * Cleanup (#1665, #1670)
+  * Improve man pages (#1666, #1668)
+  * Fix race condition on resize (#1671)</comment>
+    <requestid>966863</requestid>
+  </revision>
 </revisionlist>

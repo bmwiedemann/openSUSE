@@ -41,7 +41,6 @@
 
 %if 0%{?suse_version} >= 1500
   %bcond_without openblas
-  %bcond_with    pcre2
 %endif
 
 # fails to build atm
@@ -94,10 +93,7 @@ BuildRequires:  lua-devel
 %if %{with openblas}
 BuildRequires:  openblas-devel
 %endif
-BuildRequires:  pcre-devel
-%if %{with pcre2}
 BuildRequires:  pcre2-devel
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
@@ -225,9 +221,7 @@ export CXX="g++-%{?force_gcc_version}"
   %if %{with utils}
   -DENABLE_UTILS=ON                         \
   %endif
-  %if %{with pcre2}
   -DENABLE_PCRE2=ON                         \
-  %endif
   %if %{with jemalloc}
   -DENABLE_JEMALLOC=ON                      \
   %endif

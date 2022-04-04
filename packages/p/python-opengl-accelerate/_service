@@ -1,0 +1,27 @@
+<!--
+# vim: set syntax=xml
+-->
+
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/mcfletch/pyopengl</param>
+    <param name="scm">git</param>
+    <param name="include">accelerate</param>
+    <!--  INFO: This is latest revision as of 20220401
+    <param name="revision">227f9c66976d9f5dadf62b9a97e6beaec84831ca</param>
+    -->
+    <param name="versionformat">%h</param>
+    <!--  Not sure if it's because of a lack of tagging, etc
+          but this was the only hacky way I could make this work
+          Not sure if it's a limitation of 'obs-service-tar_scm'
+          or my understanding of it.
+    -->
+    <param name="versionrewrite-pattern">227f9c66</param>
+    <param name="versionrewrite-replacement">3.1.6</param>
+    <param name="filename">PyOpenGL-accelerate</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

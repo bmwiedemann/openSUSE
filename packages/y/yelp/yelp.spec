@@ -17,15 +17,13 @@
 
 
 Name:           yelp
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
 Source0:        https://download.gnome.org/sources/yelp/42/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM yelp-ghelp.patch glgo#GNOME/yelp#187 dimstar@opensuse.org -- Fix openeing ghelp: URIs
-Patch0:         yelp-ghelp.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  itstool >= 1.2.0

@@ -47,4 +47,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea163f2f09e2d28569c6c6df97054d64</srcmd5>
+    <version>1.0.6</version>
+    <time>1649093181</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.6
+  * bugfix release 
+- supersedes U_Fix-.-configure-error-sysconfdir-command-not-found.patch</comment>
+    <requestid>966689</requestid>
+  </revision>
 </revisionlist>

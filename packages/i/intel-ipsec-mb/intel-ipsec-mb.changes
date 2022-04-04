@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Mar 31 18:24:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Move documentation out of libintel-ipsec-mb1
+  (conflicts with a future libintel-ipsec-mb2).
+
+-------------------------------------------------------------------
+Fri Mar 11 00:00:00 UTC 2022 - Stephen McIntyre <stephen.mcintyre@intel.com>
+
+- initial version of the SUSE package

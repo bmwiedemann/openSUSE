@@ -1979,4 +1979,22 @@ let build start it or we will get libvirt errors.
   * state.orchestrate_single-does-not-pass-pillar-none-4.patch</comment>
     <requestid>958078</requestid>
   </revision>
+  <revision rev="127" vrev="5">
+    <srcmd5>b88c23522f810106c2fb06622bbd1f5e</srcmd5>
+    <version>3004</version>
+    <time>1649093171</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix salt-ssh opts poisoning (bsc#1197637)
+- Added:
+  * fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
+
+- Fix multiple security issues (bsc#1197417)
+- * Sign authentication replies to prevent MiTM (CVE-2022-22935)
+- * Sign pillar data to prevent MiTM attacks. (CVE-2022-22934)
+- * Prevent job and fileserver replays (CVE-2022-22936)
+- * Fixed targeting bug, especially visible when using syndic and user auth. (CVE-2022-22941)
+- Added:
+  * fix-multiple-security-issues-bsc-1197417.patch</comment>
+    <requestid>966247</requestid>
+  </revision>
 </revisionlist>

@@ -73,4 +73,15 @@
   * Use fabsf when dealing with floating point numbers</comment>
     <requestid>715451</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e09f1648bb81d3d10f1923f4a3090c37</srcmd5>
+    <version>1.1.0</version>
+    <time>1649093182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  * This minor feature update includes an enhancement from Keith
+    Packard to make the analog clock hands update more smoothly
+    when using the X Render extension.</comment>
+    <requestid>966697</requestid>
+  </revision>
 </revisionlist>

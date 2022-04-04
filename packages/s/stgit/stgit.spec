@@ -1,7 +1,7 @@
 #
 # spec file for package stgit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stgit
-Version:        0.23
+Version:        1.5
 Release:        0
 Summary:        Stacked GIT - Source Code Management Tool
 License:        GPL-2.0-or-later
@@ -63,6 +63,5 @@ PYTHON=python3 make %{?_smp_mflags} prefix=%{_prefix} mandir=%{_mandir} DESTDIR=
 %{_bindir}/stg
 %{_mandir}/man1/stg*%{ext_man}
 %{python3_sitelib}/*
-%{_datadir}/stgit
 
 %changelog

@@ -90,6 +90,9 @@ Obsoletes:      %{1}1.53%{?2:-%{2}}
 # armv6/7, s390x, ppc[64[le]], riscv are all "guaranteed to build" only
 # but may not always work.
 
+# === Rust on armv6hl is broken ✨ again ✨ ===
+ExcludeArch:    armv6hl
+
 # === broken distro llvm ===
 # In some situations the llvm provided on the platform may not work.
 # we add these conditions here.
@@ -104,6 +107,23 @@ Obsoletes:      %{1}1.53%{?2:-%{2}}
 # Use bundled llvm instead.
 # For details see boo#1192067
 %bcond_without bundled_llvm
+%endif
+
+# === Use clang/lld during build if possible ===
+# i586 - unable to link libatomic
+# aarch64 - fails due to an invalid linker flag
+#
+%bcond_with llvmtools
+
+# === Enable wasm on t1 targets ===
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
+%ifarch x86_64 aarch64
+%bcond_without wasm32
+%else
+%bcond_with wasm32
+%endif
+%else
+%bcond_with wasm32
 %endif
 
 # Test is done in a different multibuild package (rustXXX-test).  This
@@ -145,23 +165,6 @@ Obsoletes:      %{1}1.53%{?2:-%{2}}
 %define debug_info --debuginfo-level=0 --debuginfo-level-rustc=0 --debuginfo-level-std=0 --debuginfo-level-tools=0 --debuginfo-level-tests=0
 %else
 %define debug_info %{nil}
-%endif
-
-# OBS workers have extremely poor IOPS, to a point that this build can take up to 5 times longer
-# than on a modern NVME system. To compensate, we can build into /dev/shm which brings us to par
-# at the cost we have to request more resources in constraints. We already require a high value
-# ram due to arm cpu selection, and for general performance of the worker, so this helps us
-# massively.
-#
-# Can only do this without bundled llvm and non-test
-%if "%{flavor}" == "test" || %with bundled_llvm
-%bcond_with dev_shm
-%else
-%ifarch x86_64 aarch64 %{ix86} s390x
-%bcond_without dev_shm
-%else
-%bcond_with dev_shm
-%endif
 %endif
 
 # Use hardening ldflags
@@ -211,6 +214,7 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  python3-base
+BuildRequires:  util-linux
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
@@ -221,23 +225,20 @@ BuildRequires:  sccache
 BuildRequires:  ccache
 %endif
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 
-%if !%with bundled_llvm
-# Use distro provided LLVM on Tumbleweed, but pin it to the matching LLVM!
-# For details see boo#1192067
-BuildRequires:  llvm%{llvm_version}-devel
-BuildRequires:  lld%{llvm_version}
-%else
-# Ninja required to drive the bundled llvm build.
-BuildRequires:  ninja
-%endif
-
-# To allow linking to occur by default. This is a recommends so it can be ignored if desired.
-Recommends:     gcc
 # Rustc doesn't really do much without Cargo, but you know, if you wanna yolo that ...
 Recommends:     cargo
-%if !%with bundled_llvm
+
+%if %{with llvmtools}
+BuildRequires:  clang%{llvm_version}
+BuildRequires:  libstdc++-devel
+BuildRequires:  lld%{llvm_version}
+Requires:       clang%{llvm_version}
+Requires:       lld%{llvm_version}
+%else
+BuildRequires:  gcc-c++
+# To allow linking to occur by default. This is a recommends so it can be ignored if desired.
+Requires:       gcc
 # Clang gives better errors than gcc during a compilation, and it keeps everything
 # within llvm ecosystem.
 Suggests:       clang
@@ -245,11 +246,23 @@ Suggests:       clang
 Suggests:       lld
 %endif
 
+%if %{with bundled_llvm}
+# Ninja required to drive the bundled llvm build.
+BuildRequires:  ninja
+%else
+# Use distro provided LLVM on Tumbleweed, but pin it to the matching LLVM!
+# For details see boo#1192067
+BuildRequires:  llvm%{llvm_version}-devel
+%endif
+
 %if %{with test}
 BuildRequires:  cargo%{version_suffix} = %{version}
 BuildRequires:  rust%{version_suffix} = %{version}
 # Required because FileCheck
 BuildRequires:  llvm%{llvm_version}-devel
+%if %{with wasm32}
+BuildRequires:  nodejs-default
+%endif
 %endif
 
 %obsolete_rust_versioned rust
@@ -349,12 +362,11 @@ Cargo downloads dependencies of Rust projects and compiles it.
 rm -rf src/llvm-emscripten/
 # We never enable other LLVM tools.
 rm -rf src/tools/clang
-rm -rf src/tools/lld
 rm -rf src/tools/lldb
 # CI tooling won't be used
 rm -rf src/ci
 
-%if !%with bundled_llvm
+%if !%{with bundled_llvm}
 rm -rf src/llvm/
 %endif
 
@@ -362,19 +374,94 @@ rm -rf src/llvm/
 sed -i '1s|#!%{_bindir}/env python|#!%{_bindir}/python3|' library/core/src/unicode/printable.py
 chmod +x library/core/src/unicode/printable.py
 
-# Debugging for if shm goes south.
+# Debugging for if anything goes south.
+lscpu
 free -h
-df -h /dev/shm
+df -h
 
 %build
+
+# There are some crates forked in github.  Use the vendored version to
+# stop trying `cargo` to access internet.
+#
+# https://github.com/rust-lang/rust/issues/90764
+mkdir .cargo
+cat > .cargo/config <<EOF
+[source.crates-io]
+replace-with = 'vendored-sources'
+registry = 'https://example.com'
+
+[source.vendored-sources]
+directory = '$(pwd)/vendor'
+
+[source."https://github.com/bjorn3/rust-ar.git"]
+git = "https://github.com/bjorn3/rust-ar.git"
+branch = "do_not_remove_cg_clif_ranlib"
+replace-with = "vendored-sources"
+
+[source."https://github.com/bytecodealliance/wasmtime.git"]
+git = "https://github.com/bytecodealliance/wasmtime.git"
+replace-with = "vendored-sources"
+EOF
+
+# Create exports file
+# Keep all the "export VARIABLE" together here, so they can be
+# reread in the %%install section below.
+# If the environments between build and install and different,
+# everything will be rebuilt during installation!
+
+%if %{with llvmtools}
+%if %{with sccache}
+cat > .env.sh <<EOF
+export CC="/usr/bin/sccache /usr/bin/clang"
+export CXX="/usr/bin/sccache /usr/bin/clang++"
+# export LD="/usr/bin/ld.lld"
+EOF
+%else
+cat > .env.sh <<EOF
+export CC="/usr/bin/clang"
+export CXX="/usr/bin/clang++"
+# export LD="/usr/bin/ld.lld"
+EOF
+%endif
+%endif
+
+# -Clink-arg=-B{_prefix}/lib/rustlib/{rust_triple}/bin/gcc-ld/"
+# -Clink-arg=-B{rust_root}/lib/rustlib/{rust_triple}/bin/gcc-ld/"
+
+cat >> .env.sh <<EOF
+export RUSTFLAGS="%{rustflags}"
+export LD_LIBRARY_PATH="%{rust_root}/lib"
+export SCCACHE_IDLE_TIMEOUT="3000"
+export DESTDIR=%{buildroot}
+export CARGO_FEATURE_VENDORED=1
+unset FFLAGS
+unset MALLOC_CHECK_
+unset MALLOC_PERTURB_
+# END EXPORTS
+EOF
+. ./.env.sh
+
+# Sometimes to debug sccache we need to know the state of the env.
+env
+
+# Check our rustroot works as we expect
+%if ! %{with test}
+cat >> main.rs <<EOF
+fn main() {}
+EOF
+RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args=-Wl,-v ${RUSTFLAGS} main.rs
+%endif
+
 # The configure macro will modify some autoconf-related files, which upsets
 # cargo when it tries to verify checksums in those files. So we don't use
 # the macro, as it provides no tangible benefit to our build process.
 # FUTURE: See if we can build sanitizers without the full llvm bundling.
 # {?with_tier1: --enable-sanitizers} \
 ./configure \
-  --build=%{rust_triple} --host=%{rust_triple} --target=%{rust_triple} \
-  %{?with_dev_shm: --set build.build-dir=/dev/shm/rustc-%{version}} \
+  --build=%{rust_triple} --host=%{rust_triple} \
+  %{!?with_wasm32: --target=%{rust_triple}} \
+  %{?with_wasm32: --target=%{rust_triple},wasm32-unknown-unknown} \
   --prefix=%{_prefix} \
   --bindir=%{_bindir} \
   --sysconfdir=%{_sysconfdir} \
@@ -386,8 +473,10 @@ df -h /dev/shm
   --docdir=%{_docdir}/rust \
   --enable-local-rust \
   %{!?with_test: --local-rust-root=%{rust_root} --disable-rpath} \
-  %{!?with_bundled_llvm: --llvm-root=%{_prefix} --enable-llvm-link-shared --set rust.use-lld=true} \
-  %{?with_bundled_llvm: --disable-llvm-link-shared --set llvm.link-jobs=4} \
+  %{!?with_bundled_llvm: --llvm-root=%{_prefix} --enable-llvm-link-shared} \
+  %{?with_bundled_llvm: --disable-llvm-link-shared --set llvm.link-jobs=0} \
+  %{?with_llvmtools: --set rust.use-lld=true --set llvm.use-linker=lld --default-linker=clang} \
+  --set rust.lld=true \
   --enable-optimize \
   %{?with_sccache: --enable-sccache} \
   %{!?with_sccache: --enable-ccache} \
@@ -400,36 +489,11 @@ df -h /dev/shm
   --tools="cargo" \
   --release-channel="stable"
 
-# Sometimes we may be rebuilding with the same compiler,
-# setting local-rebuild will skip stage0 build, reducing build time
-# -- we no longer need to set this manually as local-rust implies this if
-# the rustc version matches our target build version.
-
-# Create exports file
-# Keep all the "export VARIABLE" together here, so they can be
-# reread in the %%install section below.
-# If the environments between build and install and different,
-# everything will be rebuilt during installation!
-%if !%with bundled_llvm
-cat > .env.sh <<\EOF
-export CC="/usr/bin/clang"
-export CXX="/usr/bin/clang++"
-
-EOF
-%endif
-cat >> .env.sh <<\EOF
-export RUSTFLAGS="%{rustflags}"
-export DESTDIR=%{buildroot}
-export CARGO_FEATURE_VENDORED=1
-unset FFLAGS
-unset MALLOC_CHECK_
-unset MALLOC_PERTURB_
-# END EXPORTS
-EOF
-
 %if ! %{with test}
-. ./.env.sh
 python3 ./x.py build
+# Debug for post build
+free -h
+df -h
 %endif
 
 %install
@@ -483,31 +547,15 @@ rm -rf %{buildroot}/home
 %check
 . ./.env.sh
 
-# There are some crates forked in github.  Use the vendored version to
-# stop trying `cargo` to access internet.
-#
-# https://github.com/rust-lang/rust/issues/90764
+# Need to exclude issue-71519 as when we enable lld for wasm, this test incorrectly assumes
+# we can use it with -Z gcc-ld=lld (which is sadly trapped in nightly). We can't exclude
+# a single test so sadly we have to exclude that whole suite.
+%ifarch aarch64
+python3 ./x.py test --target=%{rust_triple} --exclude src/test/run-make
+%else
+python3 ./x.py test --target=%{rust_triple}
+%endif
 
-mkdir .cargo
-cat > .cargo/config <<EOF
-[source.crates-io]
-replace-with = 'vendored-sources'
-registry = 'https://example.com'
-
-[source.vendored-sources]
-directory = '$(pwd)/vendor'
-
-[source."https://github.com/bjorn3/rust-ar.git"]
-git = "https://github.com/bjorn3/rust-ar.git"
-branch = "do_not_remove_cg_clif_ranlib"
-replace-with = "vendored-sources"
-
-[source."https://github.com/bytecodealliance/wasmtime.git"]
-git = "https://github.com/bytecodealliance/wasmtime.git"
-replace-with = "vendored-sources"
-EOF
-
-python3 ./x.py test
 # End with test
 %endif
 
@@ -536,9 +584,16 @@ python3 ./x.py test
 %{rustlibdir}%{_sysconfdir}/lldb_providers.py
 %{rustlibdir}%{_sysconfdir}/rust_types.py
 %dir %{rustlibdir}/%{rust_triple}
+%dir %{rustlibdir}/%{rust_triple}/bin
 %dir %{rustlibdir}/%{rust_triple}/lib
+%{rustlibdir}/%{rust_triple}/bin/*
 %{rustlibdir}/%{rust_triple}/lib/*.so
 %{rustlibdir}/%{rust_triple}/lib/*.rlib
+%if %{with wasm32}
+%dir %{rustlibdir}/wasm32-unknown-unknown
+%dir %{rustlibdir}/wasm32-unknown-unknown/lib
+%{rustlibdir}/wasm32-unknown-unknown/lib/*.rlib
+%endif
 %{_libexecdir}/cargo-credential-1password
 
 %files -n cargo%{version_suffix}
@@ -549,6 +604,7 @@ python3 ./x.py test
 %{_mandir}/man1/cargo*.1%{?ext_man}
 %dir %{_datadir}/cargo
 %dir %{_datadir}/cargo/registry
+# End not with test
 %endif
 
 %changelog

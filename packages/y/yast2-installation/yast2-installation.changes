@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 29 09:25:58 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- AutoYaST: move custom file creation past user creation so that
+  the element files/file/file_owner actually has an effect
+  (bsc#1196595)
+- 4.4.51
+
+-------------------------------------------------------------------
 Fri Mar 18 11:20:47 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not stop xvnc.socket but run the YaST2-Second-Stage and

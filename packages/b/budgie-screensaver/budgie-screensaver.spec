@@ -16,35 +16,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{?suse_version} < 1550
+%define _distconfdir %{_sysconfdir}
+%endif
 %if 0%{?usrmerged}
 %define chkpwd %{_sbindir}/unix2_chkpwd
 %else
 %define chkpwd /sbin/unix2_chkpwd
 %endif
 Name:           budgie-screensaver
-Version:        4.0+2
+Version:        5.0+0
 Release:        0
 Summary:        Fork of GNOME Screensaver for Budgie 10
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-screensaver
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE remove-old-automake-macros.patch
-Patch0:         remove-old-automake-macros.patch
-# PATCH-FEATURE-OPENSUSE gnome-screensaver-suse-pam.patch
-Patch1:         gnome-screensaver-suse-pam.patch
-# PATCH-FIX-UPSTREAM gnome-screensaver-helper.patch bgo#640647 fcrozat@novell.com -- Put back helper authentication, removed by upstream
-Patch2:         gnome-screensaver-helper.patch
-# PATCH-FEATURE-OPENSUSE gnome-screensaver-xvkbd-on-lock.patch rodrigo@novell.com -- Run xvkbd when locking the screen
-Patch3:         gnome-screensaver-xvkbd-on-lock.patch
-# PATCH-FIX-UPSTREAM gnome-screensaver-multihead-unlock.patch bnc#444157 bgo#455118 rodrigo@novell.com
-Patch4:         gnome-screensaver-multihead-unlock.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  gnome-common
+Patch0:         gnome-screensaver-suse-pam.patch
+BuildRequires:  meson
 BuildRequires:  intltool
-BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -72,32 +62,25 @@ Fork of GNOME Screensaver for Budgie 10
 %autosetup -p1
 
 %build
-mkdir m4
-intltoolize -c -f --automake
-autoreconf -fiv
-%configure\
-	--with-pam-prefix=%{_sysconfdir}\
-	--enable-authentication-scheme=helper\
-	--with-passwd-helper="%{chkpwd}"\
-	--with-console-kit\
-	--with-systemd\
-	--disable-docbook-docs
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
 cp %{buildroot}%{_datadir}/applications/budgie-screensaver.desktop %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %find_lang budgie-screensaver
 
 %files
-%license COPYING
+%license LICENSE
 %config(noreplace) %{_sysconfdir}/pam.d/budgie-screensaver
-%{_bindir}/*
-%{_libexecdir}/*
+%{_bindir}/budgie-screensaver
+%{_bindir}/budgie-screensaver-command
+%{_libexecdir}/budgie-screensaver-dialog
 %{_datadir}/applications/budgie-screensaver.desktop
 %{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
-%{_mandir}/man1/*
+%{_mandir}/man1/budgie-screensaver-command.1%{?ext_man}
+%{_mandir}/man1/budgie-screensaver.1%{?ext_man}
 
 %files lang -f budgie-screensaver.lang
 

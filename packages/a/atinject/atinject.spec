@@ -107,7 +107,7 @@ install -m 0644 build/tck/dist/javax.inject-tck.jar %{buildroot}%{_javadir}/%{na
 install -dm 755 %{buildroot}%{_mavenpomdir}
 install -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 install -m 0644 tck-pom.xml %{buildroot}%{_mavenpomdir}/%{name}-tck.pom
-%add_maven_depmap %{name}.pom %{name}.jar
+%add_maven_depmap %{name}.pom %{name}.jar -a "jakarta.inject:jakarta.inject-api"
 %add_maven_depmap %{name}-tck.pom %{name}-tck.jar -f tck
 
 # javadoc

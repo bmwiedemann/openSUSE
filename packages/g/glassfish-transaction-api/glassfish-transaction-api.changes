@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  4 09:40:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Specify specMode=javaee to be able to use newer
+  spec-version-maven-plugin
+
+-------------------------------------------------------------------
 Tue Mar 22 09:21:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with target source and target levels 8

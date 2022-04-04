@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 30 17:38:31 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to v16.2.7-652-gf5dc462fdb5 
+  + (bsc#1194875) [SES7P] include/buffer: include <memory>
+
+-------------------------------------------------------------------
+Thu Mar 24 14:22:13 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to 16.2.7-650-gd083eaa3886
+  + (pr#469) cephadm: update image paths to registry.suse.com
+  + (pr#468) cephadm: use snmp-notifier image from registry.suse.de
+  + (pr#467) cephadm: infer the default container image during pull 
+  + (pr#465) mgr/cephadm: try to get FQDN for inventory address 
+  + Sync _constaints file for IBS and OBS
+
+-------------------------------------------------------------------
 Tue Mar 15 19:31:58 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to 16.2.7-640-gceb23c7491b

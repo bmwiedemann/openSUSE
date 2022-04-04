@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Mar 29 20:14:16 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.0.2:
+ - Ensure get_cache_dir works with relative paths (#131)
+ - Make cache_key portable (#127)
+   This will help getting the behavior more portable across different
+   systems, as the cache key for specific project name should be the
+   same, regardless location of user home directory or the source code
+   location.
+ - Correct pylint version (#128)
+   We previously used unreleased version of pylint.
+
+-------------------------------------------------------------------
+Tue Mar 15 20:51:08 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Initial package for version 2.0.0.

@@ -17,7 +17,7 @@
 
 
 Name:           profanity
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
@@ -129,8 +129,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
 ln -s -f %{_sysconfdir}/alternatives/profanity %{buildroot}%{_bindir}/profanity
 
 %files
-#{_mandir}/man1/profanity.1#{?ext_man}
-#{_mandir}/man1/profanity-*.1#{?ext_man}
+%{_mandir}/man1/profanity.1%{?ext_man}
+%{_mandir}/man1/profanity-*.1%{?ext_man}
 %dir %{_datadir}/profanity/
 %dir %{_datadir}/profanity/themes/
 %dir %{_datadir}/profanity/icons/

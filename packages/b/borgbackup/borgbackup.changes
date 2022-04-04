@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Sun Apr  3 12:26:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Note removal of borgbackup-1.1.17-old-sphinx-api.patch
+- Adjust copyright years
+
+-------------------------------------------------------------------
+Sat Apr  2 16:11:09 UTC 2022 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- revert changes to copyright header 
+
+-------------------------------------------------------------------
+Wed Mar 30 10:44:18 UTC 2022 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to 1.2.0
+  Compatibility notes:
+   * dropped support / testing for older Pythons, minimum
+     requirement is 3.8. In case your OS does not provide Python >=
+     3.8, consider using our binary, which does not need an
+     external Python interpreter. Or continue using borg 1.1.x,
+     which is still supported.
+   * freeing repository space only happens when "borg compact" is
+     invoked.
+   * mount: the default for --numeric-ids is False now (same as
+     borg extract)
+   * borg create --noatime is deprecated. Not storing atime is the
+     default behaviour now (use --atime if you want to store the 
+     atime).
+   * list: corrected mix-up of "isomtime" and "mtime" formats.
+     Previously, "isomtime" was the default but produced a verbose
+     human format, while "mtime" produced a ISO-8601-like format.
+     The behaviours have been swapped (so "mtime" is human,
+     "isomtime" is ISO-like), and the default is now "mtime".
+     "isomtime" is now a real ISO-8601 format ("T" between date and
+     time, not a space).
+   * create/recreate --list: file status for all files used to get
+     announced AFTER the file (with borg < 1.2). Now, file status
+     is announced BEFORE the file contents are processed. If the
+     file status changes later (e.g. due to an error or a content
+     change), the updated/final file status will be printed again.
+   * removed deprecated-since-long stuff (deprecated since):
+     command "borg change-passphrase" (2017-02), use "borg key ..."
+     option "--keep-tag-files" (2017-01), use "--keep-exclude-tags"
+     option "--list-format" (2017-10), use "--format"
+     option "--ignore-inode" (2017-09), use "--files-cache" w/o "inode"
+     option "--no-files-cache" (2017-09), use "--files-cache=disabled"
+   * removed BORG_HOSTNAME_IS_UNIQUE env var. to use borg you must
+     implement one of these 2 scenarios:
+     the combination of FQDN and result of uuid.getnode() must be
+     unique and stable (this should be the case for almost
+     everybody, except when having duplicate FQDN and MAC address
+     or all-zero MAC address) if you are aware that 1) is not the
+     case for you, you must set BORG_HOST_ID env var to something
+     unique.
+   * exit with 128 + signal number, #5161. if you have scripts
+     expecting rc == 2 for a signal exit, you need to update them
+     to check for >= 128.
+
+  Fixes:
+   * diff: reduce memory consumption, fix is_hardlink_master, #6295
+   * compact: fix / improve freeable / freed space log output
+   * derive really freed space from quota use before/after, #5679
+     do not say "freeable", but "maybe freeable" (based on hint,
+     unsure)
+   * fix race conditions in internal SaveFile function, #6306 #6028
+   * implement internal safe_unlink (was: truncate_and_unlink)
+     function more safely: usually it does not truncate any more,
+     only under "disk full" circumstances and only if there is only
+     one hardlink.
+     see: https://github.com/borgbackup/borg/discussions/6286
+
+  Other changes:
+   * info: use a pre12-meta cache to accelerate stats for borg
+     < 1.2 archives. the first time borg info is invoked on a
+     borg 1.1 repo, it can take a rather long time computing and
+     caching some stats values for 1.1 archives, which borg 1.2
+     archives have in their archive metadata structure. be patient,
+     esp. if you have lots of old archives. following invocations
+     are much faster due to the cache. related change: add archive
+     name to calc_stats progress display.
+   * docs:
+   * add borg 1.2 upgrade notes, #6217
+   * link to borg placeholders and borg patterns help
+   * init: explain the encryption modes better
+   * clarify usage of patternfile roots
+   * put import-tar docs into same file as export-tar docs
+   * explain the difference between a path that ends with or
+     without a slash, #6297
+
+- Full changelog at
+  https://github.com/borgbackup/borg/blob/1.2.0/docs/changes.rst#version-120-2022-02-22-220222--
+
+- change BuildRequires to python >= 3.8
+- supports msgpack up to 1.0.3
+- add %define for required borgbackup prefixes
+- Add BuildRequires: python3-msgpack, it ist not included with
+  borgbackup v 1.2.0 anymore
+- Add BuildRequires: python3-dateutil, otherwise borgbackup will
+  not build.
+- Add python3-pyfuse3 as a Requirement because upstream recommends
+  this if pyfuse3 is available on the system. Otherwise we are not
+  able to mount archives with borgbackup
+- change path for msgpack license copy. 
+
+-------------------------------------------------------------------
 Tue Jul 13 10:42:13 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 1.1.17 (2021-07-12):

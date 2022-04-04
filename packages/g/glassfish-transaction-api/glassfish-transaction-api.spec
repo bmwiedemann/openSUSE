@@ -55,7 +55,7 @@ This package contains javadoc for %{name}.
 
 %build
 
-%{mvn_build} -- -Dsource=8
+%{mvn_build} -- -Dsource=8 -DspecMode=javaee
 
 %install
 %mvn_install

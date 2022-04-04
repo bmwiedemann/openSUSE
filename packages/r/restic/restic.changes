@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar 27 20:01:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * #1106: Never lock repository for list locks
+  * #2345: Make cache crash-resistant and usable by multiple concurrent processes
+  * #2452: Improve error handling of repository locking
+  * #2738: Don't print progress for backup --json --quiet
+  * #3382: Make check command honor RESTIC_CACHE_DIR environment variable
+  * #3518: Make copy command honor --no-lock for source repository
+  * #3556: Fix hang with Backblaze B2 on SSL certificate authority error
+  * #3601: Fix rclone backend prematurely exiting when receiving SIGINT on Windows
+  * #3667: The mount command now reports symlinks sizes
+  * #3488: rebuild-index failed if an index file was damaged
+  * #3591: Fix handling of prune --max-repack-size=0
+  * #3619: Avoid choosing parent snapshots newer than time of new snapshot
+  * #3641: Ignore parent snapshot for backup --stdin
+  * #3519: Require Go 1.14 or newer
+  * #1542: Add --dry-run/-n option to backup command
+  * #2202: Add upload checksum for Azure, GS, S3 and Swift backends
+  * #233: Support negative include/exclude patterns
+  * #2388: Add warning for S3 if partial credentials are provided
+  * #2508: Support JSON output and quiet mode for the diff command
+  * #2656: Add flag to disable TLS verification for self-signed certificates
+  * #3003: Atomic uploads for the SFTP backend
+  * #3127: Add xattr (extended attributes) support for Solaris
+  * #3464: Skip lock creation on forget if --no-lock and --dry-run
+  * #3490: Support random subset by size in check --read-data-subset
+  * #3541: Improve handling of temporary B2 delete errors
+  * #3542: Add file mode in symbolic notation to ls --json
+  * #2594: Speed up the restore --verify command
+  * #2816: The backup command no longer updates file access times on Linux
+  * #2880: Make recover collect only unreferenced trees
+  * #3429: Verify that new or modified keys are stored correctly
+  * #3436: Improve local backend's resilience to (system) crashes
+  * #3508: Cache blobs read by the dump command
+  * #3511: Support configurable timeout for the rclone backend
+  * #3593: Improve copy performance by parallelizing IO
+
+-------------------------------------------------------------------
 Fri Aug  6 21:52:10 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Update to 0.12.1

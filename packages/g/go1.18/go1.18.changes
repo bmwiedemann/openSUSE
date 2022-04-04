@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 19 21:05:53 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add %define go_label as a configurable Go toolchain directory
+  * go_label can be used to package multiple Go toolchains with
+    the same go_api
+  * go_label should be defined as go_api with an optional suffix
+    e.g. %{go_api} or %{go_api}-foo
+  * Default go_label = go_api makes no changes to package layout
+
+-------------------------------------------------------------------
 Tue Mar 15 17:42:07 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18 (released 2022-03-15) is a major release of Go.

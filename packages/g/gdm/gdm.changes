@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  1 02:10:00 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-Fix-type-of-signal-connection-id.patch: backport upstream
+  commit f0f527ff (bsc#1197521).
+- Add gdm-Stop-listening-to-udev-events.patch: backport upstream
+  commit 307c683f (bsc#1197521).
+
+-------------------------------------------------------------------
 Mon Mar 21 22:43:33 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 42.0:

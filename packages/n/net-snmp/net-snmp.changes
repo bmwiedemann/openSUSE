@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar 30 15:32:41 UTC 2022 - Alexander Bergmann <abergmann@suse.com>
+
+- Decouple snmp-mibs from net-snmp version to allow major version
+  upgrade (bsc#1196955).
+- Fix LFH violation during v3 user creation (bsc#1181591).
+  Add net-snmp-5.9.1-fix-create-v3-user-outfile.patch
+- Fix subagent crash at save_set_var() (bsc#1178021).
+  Add net-snmp-5.9.1-subagent-set-response.patch
+- Fix missing sysconfig files creation (bsc#1108471). 
+- Rename patches to version number 5.9.1:
+  delete:
+  * net-snmp-5.8-socket-path.patch
+  * net-snmp-5.8-testing-empty-arptable.patch
+  * net-snmp-5.8-pie.patch
+  * net-snmp-5.8-net-snmp-config-headercheck.patch
+  * net-snmp-5.8-perl-tk-warning.patch
+  * net-snmp-5.8-velocity-mib.patch
+  * net-snmp-5.8-snmpstatus-suppress-output.patch
+  * net-snmp-5.8-fix-Makefile.PL.patch
+  * net-snmp-5.8-modern-rpm-api.patch
+  add:
+  * net-snmp-5.9.1-socket-path.patch
+  * net-snmp-5.9.1-testing-empty-arptable.patch
+  * net-snmp-5.9.1-pie.patch
+  * net-snmp-5.9.1-net-snmp-config-headercheck.patch
+  * net-snmp-5.9.1-perl-tk-warning.patch
+  * net-snmp-5.9.1-velocity-mib.patch
+  * net-snmp-5.9.1-snmpstatus-suppress-output.patch
+  * net-snmp-5.9.1-fix-Makefile.PL.patch
+  * net-snmp-5.9.1-modern-rpm-api.patch
+
+-------------------------------------------------------------------
 Mon Jan 24 21:02:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update net-snmp-5.8-socket-path.patch: use %_rundir for agentx

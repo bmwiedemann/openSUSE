@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 08 17:33:41 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 5.0+0:
+  * Unalign versioning with budgie-desktop
+  * Format header files using clang-format
+  * Update indentation from 8 spaces to tabs
+  * Add FUNDING.yml
+  * Add badges to README and update header
+  * Implement GitHub Actions pipeline
+  * Use S_ISDIR for PAM auth
+  * Change C STD to C11 from GNU11
+  * Remove spurious directive in Meson, add comment
+  * Update README compiling instructions
+  * Remove unused test C files
+  * Remove unused files
+  * Convert to Meson
+- Remove GNU autotools and add meson BRs
+- Removed old patches:
+  * remove-old-automake-macros.patch
+  * gnome-screensaver-helper.patch
+  * gnome-screensaver-xvkbd-on-lock.patch
+  * gnome-screensaver-multihead-unlock.patch
+
+-------------------------------------------------------------------
 Fri Jan 07 11:24:13 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 4.0+2:

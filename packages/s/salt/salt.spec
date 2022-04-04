@@ -290,6 +290,12 @@ Patch73:        add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
 Patch74:        prevent-shell-injection-via-pre_flight_script_args-4.patch
 ###############
 
+# PATCH-FIX_UPSTREAM: implemented at 3004.1 release (no PR)
+Patch75:        fix-multiple-security-issues-bsc-1197417.patch
+
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/501
+Patch76:        fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
+
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate

@@ -104,6 +104,7 @@ This package contains a miner to index files and applications.
 
 %build
 %meson \
+	-Dsystemd_user_services_dir=%{_userunitdir} \
 	-Dfunctional_tests=false \
 	-Dminer_rss=false \
 	%{nil}

@@ -389,4 +389,33 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963610</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e74bd99187896d29ec20516052eed64d</srcmd5>
+    <version>42.1</version>
+    <time>1649093201</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 42.1:
+  * Fixes to the new preferences tool.
+  * Style fixes.
+  * Translations updates.
+- Changes from version 42.0:
+  * Old libgpaste replaced by a new minimal libgpaste-2 with no gtk
+    dependency.
+  * New libgpaste-gtk3 for utils and settings ui.
+  * New libgpaste-gtk4 for utils and preferences ui.
+  * New gtk4 based gpaste-preferences utility.
+  * Autotools are no longer supported.
+  * Extension updated for gnome-shell 42.
+  * Translations updates.
+- Changes from version 3.42.6:
+  * Fix the storage path in meson builds.
+- Remove gpaste-bump-mutter-clutter.patch.
+- Remove subpackages: typelib-1_0-GPaste-1_0, libgpaste13
+- Add pkgconfig(gtk4) and pkgconfig(libadwaita-1) BuildRequires:
+  new dependencies.
+- Add subpackages: libgpaste2-0, libgpaste-gtk-3-0,
+  libgpaste-gtk4-0, typelib-1_0-GPaste-2, typelib-1_0-GPasteGtk-3,
+  typelib-1_0-GPasteGtk-4</comment>
+    <requestid>966770</requestid>
+  </revision>
 </revisionlist>

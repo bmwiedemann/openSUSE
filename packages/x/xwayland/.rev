@@ -97,4 +97,16 @@
   * xwayland: Fix cursor color</comment>
     <requestid>955407</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ad18106a5b321a5a0497c311f0927c22</srcmd5>
+    <version>22.1.1</version>
+    <time>1649093148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.1.1
+  * xwayland: Clear timer_armed in xwl_present_unrealize_window
+  * xwayland: Always hook up frame_callback_list in xwl_present_queue_vblank
+  * Xwayland: Do not map the COW by default when rootless
+  * xwayland/present: Fix use-after-free in xwl_unrealize_window()</comment>
+    <requestid>966177</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  3 21:42:17 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.0
+  * This minor feature update includes an enhancement from Keith
+    Packard to make the analog clock hands update more smoothly
+    when using the X Render extension.
+
+-------------------------------------------------------------------
 Mon Jul 15 10:01:47 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.9

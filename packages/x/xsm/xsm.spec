@@ -1,7 +1,7 @@
 #
 # spec file for package xsm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
 Name:           xsm
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        X Session Manager
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Patch0:         n_UsrEtc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake

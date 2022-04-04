@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  4 13:28:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add pg_cron-32bit-compat.patch: Fix build on archs where %ld does
+  not equal to long long int (eg 32bit arches).
+
+-------------------------------------------------------------------
 Thu Dec  2 11:47:08 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - fix postgresql_has_llvm usage

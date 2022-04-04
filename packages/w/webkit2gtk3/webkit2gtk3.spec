@@ -70,7 +70,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 # gold linker not available on old s390/s390x
-%define _gold_linker 1
+%define _gold_linker 0
 %ifarch ppc ppc64le s390
 %define _gold_linker 0
 %endif
@@ -88,6 +88,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 webkit
 Patch0:         no-forced-sse.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-gcc12.patch boo#1197584 webkit#238482 mgorse@suse.com -- fix the build with gcc 12.
+Patch1:         webkit2gtk3-gcc12.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

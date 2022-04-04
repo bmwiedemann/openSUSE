@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-sunpy
-Version:        3.1.3
+Version:        3.1.5
 Release:        0
 Summary:        SunPy: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 Source100:      python-sunpy-rpmlintrc
-# PATCH-FIX-UPSTREAM sunpy-pr5830-pandas140.patch -- gh#sunpy/sunpy#5830
-Patch0:         https://github.com/sunpy/sunpy/pull/5830.patch#/sunpy-pr5830-pandas140.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module asdf >= 2.6}
 BuildRequires:  %{python_module astropy >= 4.2}
@@ -78,10 +76,11 @@ Recommends:     python-zeep >= 3.4.0
 # /SECTION
 # SECTION extras_require:timeseries
 Recommends:     python-cdflib >= 0.3.19
+Conflicts:      python-cdflib = 0.4.0
 Recommends:     python-h5netcdf
 Recommends:     python-h5py
 Recommends:     python-pandas >= 1
-#               matlotlib
+#               matplotlib
 # /SECTION
 # SECTION test requirements (and extras)
 # even although we do not use tox and doctestplus, there are tests in the suite checking their existence.
@@ -89,14 +88,13 @@ BuildRequires:  %{python_module Glymur >= 0.8.18}
 BuildRequires:  %{python_module SQLAlchemy >= 1.3.4}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.0.0}
 BuildRequires:  %{python_module cdflib >= 0.3.19}
-# dask does not support Python 3.10 yet
-BuildRequires:  %{python_module dask-array >= 2.0 if %python-base < 3.10}
+BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module drms >= 0.6.1}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module h5py >= 3.1.0}
 BuildRequires:  %{python_module hypothesis >= 6.0.0}
-BuildRequires:  %{python_module importlib_metadata}
+BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jplephem}
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
 BuildRequires:  %{python_module mpl-animators >= 1.0.0}
@@ -105,7 +103,7 @@ BuildRequires:  %{python_module pytest-astropy >= 0.8}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.5}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-mpl >= 0.12}
-BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest-xdist >= 1.27}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module reproject}
 BuildRequires:  %{python_module requests}

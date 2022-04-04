@@ -1671,4 +1671,18 @@
   * Don't go beyond THUNAR_N_VISIBLE_COLUMNS while parsing col widths (forwarded request 919898 from tux93)</comment>
     <requestid>921151</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>0086ed729df889a95d3cd3a7c7af7eab</srcmd5>
+    <version>4.16.11</version>
+    <time>1649093211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.11
+  * Don't reload the view when text is copied (gxo#xfce/thunar#706)
+  * NULL checks to prevent crash on malformed bookmark URI (gxo#xfce/thunar#716)
+  * Use 'g_timeout_add_full' to set tree-view cursor (gxo#xfce/thunar#351)
+  * Fix signal disconnect in thunar_window_unrealize
+  * Don't go beyond THUNAR_N_VISIBLE_COLUMNS while parsing col widths
+  * Translation Updates (forwarded request 966763 from mauriziogalli)</comment>
+    <requestid>966841</requestid>
+  </revision>
 </revisionlist>

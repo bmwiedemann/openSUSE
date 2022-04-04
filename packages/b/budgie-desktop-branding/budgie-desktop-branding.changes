@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 16 18:49:24 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 20220316.1:
+  * fix inclusion of screensaver files in meson.build
+
+-------------------------------------------------------------------
+Wed Mar 16 12:09:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Require systemd-icon-branding for LOGO in Budgie Control Center
+
+-------------------------------------------------------------------
+Fri Jan 14 14:53:53 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 20220114.1:
+  * fix screensaver background being incorrect
+
+-------------------------------------------------------------------
 Fri Jan  7 16:19:08 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 20220107.1:

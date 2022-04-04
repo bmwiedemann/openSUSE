@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 31 10:33:24 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 7.3.2.2:
+  * tdf#147143 Word selection error in Arabic text [Noel Grandin]
+  * tdf#147744 Calc crashes when pasting simple formula in a filtered column [Kohei Yoshida]
+  * tdf#147767 CALC: Paste data with very small font from website [Noel Grandin]
+  * tdf#147928 Crash when inserting comment and undoing in Writer (gtk3 only) [Caolán McNamara]
+  * tdf#147961 Crash: Typing "++" and press Enter (AutoCorrect Create Table) [Noel Grandin]
+  * tdf#148053 Typing or pasting ZWNJ leads to Writer crash (debug build only) [Caolán McNamara]
+  You can find the complete release notes here:
+  https://wiki.documentfoundation.org/Releases/7.3.2/RC2
+
+-------------------------------------------------------------------
 Fri Mar 25 11:45:21 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Also enable gtk3_kde5. The gtk3 interface is more stable than the

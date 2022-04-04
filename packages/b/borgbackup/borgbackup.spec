@@ -1,8 +1,8 @@
 #
 # spec file for package borgbackup
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2016-2021 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2016-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 #
 
 
+# define variables needed to build/install borgbackup >= 1.2.0
+%define borg_openssl_prefix BORG_OPENSSL_PREFIX=%{_prefix}/lib:%{_libdir}
+# needed when building without the packaged algorithms
+%define borg_liblz4_prefix BORG_LIBLZ4_PREFIX=%{_includedir}
+%define borg_libzstd_prefix BORG_LIBZSTD_PREFIX=%{_includedir}
 %if 0%{?suse_version} >= 1500
 # use new compression libs (lz4, zstd)
 %bcond_without  borg_newcompr
@@ -29,23 +34,14 @@
 %bcond_with     borg_test
 %bcond_with     borg_guzzle
 %endif
-
 # libb2 is available since Leap 15.2
 %if ( 0%{?sle_version} >= 150200 && 0%{?is_opensuse} ) || ( 0%{?suse_version} > 1500 )
 %bcond_without	borg_sysblake2
 %else
 %bcond_with     borg_sysblake2
 %endif
-
-# old sphinx api, necessary before Leap 15.3
-%if ( 0%{?sle_version} >= 150300 && 0%{?is_opensuse} ) || ( 0%{?suse_version} > 1500 )
-%bcond_with     borg_old_sphinx_api
-%else
-%bcond_without  borg_old_sphinx_api
-%endif
-
 Name:           borgbackup
-Version:        1.1.17
+Version:        1.2.0
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -58,17 +54,33 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
-Patch1:         borgbackup-1.1.17-old-sphinx-api.patch
-
 # build dependencies
 BuildRequires:  bash
-%if 0%{?suse_version} == 1320 || 0%{?sle_version} == 120200
-BuildRequires:  bash-completion
-%endif
 BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
+BuildRequires:  openssl-devel >= 1.0.0
+BuildRequires:  pkgconfig
+# ver >= 1.2.0 requires python3 >= 3.8
+BuildRequires:  python3 >= 3.8
+BuildRequires:  python3-Cython
+# docs requirements
+BuildRequires:  python3-Sphinx
+# New requirements as of borg version >= 1.2.0
+BuildRequires:  python3-dateutil
+BuildRequires:  python3-devel
+# msgpack is not included with borg version >= 1.2.0 anymore
+BuildRequires:  python3-msgpack
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-sphinx_rtd_theme
+BuildRequires:  zsh
+BuildRequires:  pkgconfig(libxxhash)
+Requires:       python3-setuptools
+%if 0%{?suse_version} == 1320 || 0%{?sle_version} == 120200
+BuildRequires:  bash-completion
+%endif
 %if %{with borg_sysblake2}
 BuildRequires:  libb2-devel
 %endif
@@ -76,40 +88,22 @@ BuildRequires:  libb2-devel
 BuildRequires:  liblz4-devel >= 1.7.0
 BuildRequires:  libzstd-devel >= 1.3.0
 %endif
-BuildRequires:  openssl-devel >= 1.0.0
-BuildRequires:  python3 >= 3.5
-BuildRequires:  python3-Cython
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools_scm
-BuildRequires:  python3-sphinx_rtd_theme
-BuildRequires:  zsh
-%if ( 0%{?sle_version} >= 150300 && 0%{?is_opensuse} ) || ( 0%{?suse_version} > 1500 )
-BuildRequires:  pkgconfig(libxxhash)
-%else
-BuildRequires:  xxhash-devel
-%endif
-
-# docs requirements
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel
 %if %{with borg_guzzle}
 BuildRequires:  python3-guzzle_sphinx_theme
 %endif
-
 # testing requirements
 %if %{with borg_test}
 BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-benchmark
+BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-pytest-xdist
 %endif
-
-Requires:       python3-setuptools
 %if 0%{?suse_version} > 1500
-# upstream use pyfuse3 >= 3.1.1
-# suse has 3.2.0 but ">= 3.1.1" does not work in suse. Why?
-Recommends:     python3-pyfuse3
+# upstream recommends a "Requires" if pyfuse3 is available
+Requires:       python3-pyfuse3 >= 3.1.1
 %else
 Recommends:     python3-llfuse
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 BorgBackup is a deduplicating backup program which stores deltas. It
@@ -135,7 +129,7 @@ Summary:        Bash Completion for %{name}
 Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(borgbackup:bash)
+Supplements:    (borgbackup and bash)
 BuildArch:      noarch
 
 %description bash-completion
@@ -151,7 +145,7 @@ Summary:        Zsh Completion for %{name}
 Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
 Requires:       zsh
-Supplements:    packageand(borgbackup:zsh)
+Supplements:    (borgbackup and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
@@ -167,7 +161,7 @@ Summary:        Fish Completion for %{name}
 Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
 Requires:       fish
-Supplements:    packageand(borgbackup:fish)
+Supplements:    (borgbackup and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -183,9 +177,6 @@ This package contains the fish completion script for borgbackup.
 %if ! %{with borg_guzzle}
 %patch0 -p1
 %endif
-%if %{with borg_old_sphinx_api}
-%patch1 -p1
-%endif
 # remove bundled libraries, that we don't want to be included
 rm -rf src/borg/algorithms/{lz4,zstd}
 # remove bundled blake2 library, if appropriate
@@ -194,18 +185,16 @@ rm -rf src/borg/algorithms/blake2
 %endif
 # remove precompiled Cython code
 find src/ -name '*.pyx' | sed -e 's/.pyx/.c/g' | xargs rm -f
-# bundled msgpack is C++ based
-find src/ -name '*.pyx' | sed -e 's/.pyx/.cpp/g' | xargs rm -f
 # better name for msgpack license
-cp -a docs/3rd_party/msgpack/COPYING LICENSE.msgpack
+cp -a %{_datadir}/licenses/python38-msgpack/COPYING LICENSE.msgpack
 
 %build
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" python3 setup.py build
+%{borg_openssl_prefix} %{borg_libzstd_prefix} %{borg_liblz4_prefix} CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" python3 setup.py build
 export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-%{py3_ver}
-make -C docs html man && rm docs/_build/html/.buildinfo
+%make_build -C docs html man && rm docs/_build/html/.buildinfo
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%{borg_openssl_prefix} %{borg_liblz4_prefix} %{borg_libzstd_prefix} python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 # install all man pages
 mkdir -p %{buildroot}%{_mandir}/man1
 install -m 0644 docs/man/borg*.1 %{buildroot}%{_mandir}/man1
@@ -231,29 +220,24 @@ LANG=en_US.UTF-8 py.test -x -vk "$TEST_SELECTOR" $PYTHONPATH/borg/testsuite/*.py
 %endif
 
 %files
-%defattr(-,root,root,-)
 %doc CHANGES.rst README.rst
 %license LICENSE LICENSE.msgpack
 %{python3_sitearch}/borg/
 %{python3_sitearch}/borgbackup-%{version}-py%{py3_ver}.egg-info
 %{_bindir}/borg
 %{_bindir}/borgfs
-%{_mandir}/man1/borg*.1%{ext_man}
+%{_mandir}/man1/borg*.1%{?ext_man}
 
 %files doc
-%defattr(-,root,root,-)
 %doc docs/_build/html
 
 %files bash-completion
-%defattr(-,root,root,-)
 %{_datadir}/bash-completion/completions/borg
 
 %files zsh-completion
-%defattr(-,root,root,-)
 %{_datadir}/zsh/site-functions/_borg
 
 %files fish-completion
-%defattr(-,root,root,-)
 %{_datadir}/fish/vendor_completions.d/borg.fish
 
 %changelog

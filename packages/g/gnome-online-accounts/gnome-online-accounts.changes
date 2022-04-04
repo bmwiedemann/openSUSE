@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 31 11:53:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.44.0:
+  + Bugs fixed:
+    - Add .gitlab-ci.yml
+    - Update Fedora logo
+    - Silence -Wincompatible-pointer-types with GCC 11
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 19 11:57:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.43.1:

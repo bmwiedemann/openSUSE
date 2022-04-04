@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  4 10:37:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.1:
+  * #87 Garbled last row of pixels on some images
+  * [unfiled] Correctly label new functions since 1.10
+
+-------------------------------------------------------------------
 Mon Mar 21 11:08:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.0:

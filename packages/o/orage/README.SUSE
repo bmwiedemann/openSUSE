@@ -1,0 +1,13 @@
+* Beginning with version 4.7.6 Orage uses a different format in parameter files
+  and will loose existing parameters. In order to prevent this add the row
+[PARAMETERS]
+  as first line to the parameter file (~/.config/orage/oragerc).
+* The Orage Xfce panel plugin changed its name in 4.7, if you had it in your
+  panel you will have to remove it and add it back.
+* The location where Orage stores its ICS calendar files has moved to
+  ~/.local/share/orage. If you're upgrading from an earlier version of
+  orage, don't panic when all your appointments seem to be lost, you can
+  import them into the new version! Just make sure to quit orage and run the
+  command "mv ~/.config/xfce4/orage/*ics ~/.local/share/orage" (without the
+  double-quotes) on the command line prompt. Start orage again and your
+  appointments are back again.

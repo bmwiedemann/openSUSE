@@ -1,7 +1,7 @@
 #
 # spec file for package cni-plugin-dnsname
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cni-plugin-dnsname
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        CNI plugin to provide name resolution for containers
 License:        Apache-2.0
@@ -26,6 +26,7 @@ Source:         dnsname-%{version}.tar.xz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.13
 Requires:       cni
+Requires:       dnsmasq
 
 %description
 This CNI plugin sets up the use of dnsmasq on a given CNI network so that Pods
@@ -43,11 +44,11 @@ The dnsname plugin was specifically designed for the Podman container engine.
 %make_build GO_BUILD="GO111MODULE=on go build -mod=vendor -buildmode=pie" binaries
 
 %install
-PREFIX=/usr LIBEXECDIR=%{_libexecdir}/cni %make_install
+LIBEXECDIR=%{_libexecdir}/cni %make_install
 
 %files
 %license LICENSE
-%doc README.md README_PODMAN.md
+%doc README.md README_PODMAN.md RELEASE_NOTES.md
 %dir %{_libexecdir}/cni
 %{_libexecdir}/cni/dnsname
 

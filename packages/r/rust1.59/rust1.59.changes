@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 27 09:06:39 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Refactors to allow sccache to effectively work on the build
+- Allow an experimental LLVM based tooling build
+- Support wasm32 libraries for cross-compiling in tier 1 arches
+- Lower build requirements (mainly due to sccache)
+
+-------------------------------------------------------------------
 Mon Mar  7 07:40:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - reenable armv6hl (bsc#1196328)

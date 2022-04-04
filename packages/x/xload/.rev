@@ -67,4 +67,14 @@
     <comment></comment>
     <requestid>935488</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>236fa7bf72f58de9fb2734f225ee58af</srcmd5>
+    <version>1.1.4</version>
+    <time>1649093202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4
+  * This release ends support for SGI Irix, which SGI themselves
+    did in 2013.</comment>
+    <requestid>966782</requestid>
+  </revision>
 </revisionlist>

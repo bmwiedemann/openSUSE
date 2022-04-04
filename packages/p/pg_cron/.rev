@@ -103,4 +103,12 @@
   * PostgreSQL 14 is supported (no changes were needed)</comment>
     <requestid>940416</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>40b80c993fb8d6647840d6be811b02a8</srcmd5>
+    <version>1.4.1</version>
+    <time>1649093210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966829</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Mar 16 17:17:55 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix upgrading from older Budgie by adding versioned Requires on
+  shared libraries
+- Update versioned Requires for other Budgie applications
+
+-------------------------------------------------------------------
+Wed Mar 16 11:37:59 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.6+4:
+  * Only set valid target_icon_size values in icon tasklist
+
+-------------------------------------------------------------------
+Wed Mar 16 09:12:33 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Avoid ISO C warnings by setting -Wno-pedantic and removing
+  -std=c11
+
+-------------------------------------------------------------------
+Sat Mar 12 13:20:16 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.6+3:
+  * Proper icon tasklist scaling (#64)
+  * Fix inconsistency when opening Raven (#68)
+  * Add a null check to budgie_popover_manager_ungrab
+
+-------------------------------------------------------------------
+Tue Mar 08 17:32:36 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 10.6+0:
+  * Tag 10.6 release
+  * Fix SEGV when input source was switched by Alt+Shift_L
+  * Update tab switcher style for built-in theme
+  * Fix panel placement in dock mode
+  * Match Raven and Menu buttons to other hover/active colors
+  * Remove inset shadow on hover for icon tasklist
+  * Remove notification group padding to stop Raven size shifting
+  * Add support for mutter 10 / GNOME42
+  * Actually fix notification pausing sometimes breaking Firefox notifications
+  * Fix notification mute button sometimes starting without an image
+  * Scale down the logo too
+  * Update logo
+  * Fix some applications showing their own notification popups when paused
+  * Fix Current Internal Theme
+  * Ensure gschema override for switch-input-source* is formatted correctly.
+  * Add keywords to budgie-desktop-settings.desktop
+  * Perform additional sanity check on add_app due to invalid windows being tracked on app closures.
+  * Fix vertical panel struts
+  * Fix Raven size adjustments.
+  * Remove background on notifs in Raven
+  * Fix appmenu style with Plata Lumine (and other light themes)
+  - CHANGELOG cut here (too long)
+- Remove override-syntax.patch: upstreamed
+
+-------------------------------------------------------------------
 Fri Jan 07 11:18:46 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 10.5.3+36:

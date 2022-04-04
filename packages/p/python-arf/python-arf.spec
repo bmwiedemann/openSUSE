@@ -1,7 +1,7 @@
 #
 # spec file for package python-arf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-arf
 Version:        2.6.1
 Release:        0
@@ -28,15 +27,21 @@ Summary:        Advanced Recording Format for physiology and behavior
 License:        GPL-2.0-only
 URL:            https://github.com/melizalab/arf
 Source:         https://files.pythonhosted.org/packages/source/a/arf/arf-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM arf-pr10-h5py-open.patch -- gh#melizalab/arf#10
+Patch0:         arf-pr10-h5py-open.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-h5py >= 2.10
-Requires:       python-numpy >= 1.19
+Requires:       python-h5py >= 2.8
+Conflicts:      (python-h5py >= 3.3 with python-h5py < 3.4)
 BuildArch:      noarch
+# Leap 15.4 h5py-3.1 misses the cached-property requirement for python36
+%if 0%{suse_version} < 1550
+BuildRequires:  %{python_module cached-property}
+Requires:       python-cached-property
+%endif
 # SECTION test requirements
-BuildRequires:  %{python_module h5py >= 2.10}
-BuildRequires:  %{python_module numpy >= 1.19}
+BuildRequires:  %{python_module h5py >= 2.8 with (%python-h5py < 3.3 or %python-h5py >= 3.4)}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -54,8 +59,7 @@ other languages (e.g. MATLAB, Python, etc). ARF comprises a set of
 specifications on how different kinds of data are stored.
 
 %prep
-%setup -q -n arf-%{version}
-%autopatch -p1
+%autosetup -p1 -n arf-%{version}
 
 %build
 %python_build
@@ -65,12 +69,13 @@ specifications on how different kinds of data are stored.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#melizalab/arf#8
-%pytest -k 'not test01_creation_iter'
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/arf.py*
+%pycache_only %{python_sitelib}/__pycache__/arf*.pyc
+%{python_sitelib}/arf-%{version}*-info
 
 %changelog

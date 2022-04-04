@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 26 09:50:12 UTC 2022 - Andrey Gankov <gav@qsolution.ru>
+
+- Update to 42.1:
+  * Fixes to the new preferences tool.
+  * Style fixes.
+  * Translations updates.
+- Changes from version 42.0:
+  * Old libgpaste replaced by a new minimal libgpaste-2 with no gtk
+    dependency.
+  * New libgpaste-gtk3 for utils and settings ui.
+  * New libgpaste-gtk4 for utils and preferences ui.
+  * New gtk4 based gpaste-preferences utility.
+  * Autotools are no longer supported.
+  * Extension updated for gnome-shell 42.
+  * Translations updates.
+- Changes from version 3.42.6:
+  * Fix the storage path in meson builds.
+- Remove gpaste-bump-mutter-clutter.patch.
+- Remove subpackages: typelib-1_0-GPaste-1_0, libgpaste13
+- Add pkgconfig(gtk4) and pkgconfig(libadwaita-1) BuildRequires:
+  new dependencies.
+- Add subpackages: libgpaste2-0, libgpaste-gtk-3-0,
+  libgpaste-gtk4-0, typelib-1_0-GPaste-2, typelib-1_0-GPasteGtk-3,
+  typelib-1_0-GPasteGtk-4
+
+-------------------------------------------------------------------
 Wed Feb 16 08:55:17 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.42.5:

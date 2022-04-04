@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  4 10:19:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.3
+  * This minor maintenance release adds support for building on the
+    ARM platform for MacOS, as well as some more general bug fixes
+    and cleanups for all OS'es.
+
+-------------------------------------------------------------------
 Sun Mar  8 17:49:25 UTC 2015 - zaitor@opensuse.org
 
 - Update to version 1.2.2:

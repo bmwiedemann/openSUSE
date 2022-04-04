@@ -1,9 +1,9 @@
-Index: cups-filters-1.28.8/utils/cups-browsed.service
+Index: cups-filters-1.28.12/utils/cups-browsed.service
 ===================================================================
---- cups-filters-1.28.8.orig/utils/cups-browsed.service
-+++ cups-filters-1.28.8/utils/cups-browsed.service
-@@ -5,6 +5,17 @@ After=cups.service avahi-daemon.service
- Wants=avahi-daemon.service
+--- cups-filters-1.28.12.orig/utils/cups-browsed.service
++++ cups-filters-1.28.12/utils/cups-browsed.service
+@@ -5,6 +5,17 @@ After=cups.service avahi-daemon.service network-online.target
+ Wants=avahi-daemon.service network-online.target
  
  [Service]
 +# added automatically, for details please see

@@ -1,0 +1,45 @@
+From 307c683f00e1711973139837992ca0f6f55314a5 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Tue, 22 Mar 2022 10:16:58 -0400
+Subject: [PATCH] local-display-factory: Stop listening to udev events when
+ necessary
+
+At the moment we still listen for udev events after we've determined
+the system has settled (or a timeout has happened).
+
+This means if there is a udev event late, the login screen could get
+brought back up while the user is using the system.
+
+This commit fixes that.
+---
+ daemon/gdm-local-display-factory.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/daemon/gdm-local-display-factory.c b/daemon/gdm-local-display-factory.c
+index 4a66ad8f..b3335cd4 100644
+--- a/daemon/gdm-local-display-factory.c
++++ b/daemon/gdm-local-display-factory.c
+@@ -710,6 +710,10 @@ udev_is_settled (GdmLocalDisplayFactory *factory)
+ 
+         g_debug ("GdmLocalDisplayFactory: udev has %ssettled enough for graphics.", is_settled? "" : "not ");
+         g_list_free_full (devices, g_object_unref);
++
++        if (is_settled)
++                g_clear_signal_handler (&factory->uevent_handler_id, factory->gudev_client);
++
+         return is_settled;
+ }
+ #endif
+@@ -1287,9 +1291,6 @@ on_uevent (GUdevClient *client,
+         if (!udev_is_settled (factory))
+                 return;
+ 
+-        g_signal_handler_disconnect (factory->gudev_client, factory->uevent_handler_id);
+-        factory->uevent_handler_id = 0;
+-
+         gdm_settings_direct_reload ();
+         ensure_display_for_seat (factory, "seat0");
+ }
+-- 
+2.35.1
+

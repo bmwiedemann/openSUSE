@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 04 14:11:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.1:
+  * release: prepare v0.15.1 (#1107)
+  * fix: revert CronJobs to batch/v1beta1 (#1105)
+  * chore: add log context when nsa update fails (#1104)
+  * fix: krew manifest (#1091)
+
+-------------------------------------------------------------------
 Fri Apr 01 07:05:46 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.15.0:

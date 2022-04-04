@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 31 09:21:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.1.1
+  * xwayland: Clear timer_armed in xwl_present_unrealize_window
+  * xwayland: Always hook up frame_callback_list in xwl_present_queue_vblank
+  * Xwayland: Do not map the COW by default when rootless
+  * xwayland/present: Fix use-after-free in xwl_unrealize_window()
+
+-------------------------------------------------------------------
 Wed Feb 16 15:39:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 22.1.0

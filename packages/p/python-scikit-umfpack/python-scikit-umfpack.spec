@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-umfpack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python36 1
 %define         oldpython python
 Name:           python-scikit-umfpack
 Version:        0.3.2
@@ -27,6 +26,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/scikit-umfpack/scikit-umfpack
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-umfpack/scikit-umfpack-%{version}.tar.gz
 Patch0:         do-not-use-numpy-decorators.patch
+# PATCH-FIX-UPSTREAM scikit-umfpack-pr68-scipy-sparse-linalg.patch -- gh#scikit-umfpack/scikit-umfpack68
+Patch1:         scikit-umfpack-pr68-scipy-sparse-linalg.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.14.3}
 BuildRequires:  %{python_module scipy >= 1.0.0rc1}
@@ -40,7 +41,7 @@ BuildRequires:  suitesparse-devel
 BuildRequires:  swig
 Requires:       python-numpy >= 1.14.3
 Requires:       python-scipy >= 1.0.0rc1
-ExcludeArch:    aarch64 ppc64 ppc64le
+ExclusiveArch:  x86_64
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -81,6 +82,6 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %dir %{python_sitearch}/scikits/
 %{python_sitearch}/scikits/umfpack/
-%{python_sitearch}/scikit_umfpack-%{version}-py*.egg-info
+%{python_sitearch}/scikit_umfpack-%{version}*-info
 
 %changelog

@@ -59,4 +59,17 @@
 - drop binutils-gold dependency (forwarded request 962202 from dirkmueller)</comment>
     <requestid>962260</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>66a0a09e7b6cec6c42648ffe8c26bb92</srcmd5>
+    <version>1.18</version>
+    <time>1649093188</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %define go_label as a configurable Go toolchain directory
+  * go_label can be used to package multiple Go toolchains with
+    the same go_api
+  * go_label should be defined as go_api with an optional suffix
+    e.g. %{go_api} or %{go_api}-foo
+  * Default go_label = go_api makes no changes to package layout (forwarded request 966742 from jfkw)</comment>
+    <requestid>966745</requestid>
+  </revision>
 </revisionlist>
