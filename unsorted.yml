@@ -1482,6 +1482,9 @@ unsorted:
   - budgie-calendar-applet 
   - budgie-calendar-applet-lang 
   - budgie-clockworks-applet 
+  - budgie-control-center 
+  - budgie-control-center-devel 
+  - budgie-control-center-lang 
   - budgie-countdown-applet 
   - budgie-desktop 
   - budgie-desktop-branding-openSUSE 
@@ -2265,6 +2268,7 @@ unsorted:
   - container-build-checks-strict 
   - container-build-checks-vendor-SUSE 
   - container-build-checks-vendor-openSUSE 
+  - container-build-helpers 
   - container-diff 
   - container-registry-systemd 
   - container-support-utils 
@@ -2655,6 +2659,7 @@ unsorted:
   - d0_blind_id-devel 
   - dMagnetic 
   - dSFMT-devel 
+  - dagger 
   - dai-banna-fonts 
   - dante 
   - dante-devel 
@@ -2992,6 +2997,7 @@ unsorted:
   - docker 
   - docker-bash-completion 
   - docker-bench-security 
+  - docker-buildx 
   - docker-client-java 
   - docker-client-java-javadoc 
   - docker-distribution-registry: [x86_64] 
@@ -3219,6 +3225,7 @@ unsorted:
   - edict 
   - editorconfig 
   - editres 
+  - ee4j 
   - eekboard-devel 
   - eeyek-fonts 
   - efibootmgr: [i586] 
@@ -7177,6 +7184,7 @@ unsorted:
   - intel-gpu-tools 
   - intel-gpu-tools-devel 
   - intel-hybrid-driver 
+  - intel-ipsec-mb-devel: [x86_64] 
   - intel-media-driver 
   - intel-media-driver-32bit: [x86_64] 
   - intel-opencl: [x86_64] 
@@ -8899,6 +8907,7 @@ unsorted:
   - libIMECore0 
   - libIMEPinyin0 
   - libIMETable0 
+  - libIPSec_MB1: [x86_64] 
   - libIccXML-devel 
   - libIccXML2 
   - libIex-3_1-30-32bit: [x86_64] 
@@ -11139,7 +11148,9 @@ unsorted:
   - libgoocanvasmm-devel 
   - libgooglepinyin-devel 
   - libgovirt-devel 
-  - libgpaste13 
+  - libgpaste-gtk-3-0 
+  - libgpaste-gtk4-0 
+  - libgpaste2-0 
   - libgpg-error-devel 
   - libgpg-error-devel-32bit: [x86_64] 
   - libgpgme-devel 
@@ -11691,6 +11702,7 @@ unsorted:
   - libjasper-devel 
   - libjasper6 
   - libjasper6-32bit: [x86_64] 
+  - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
   - libjavascriptcoregtk-5_0-0 
@@ -12029,6 +12041,7 @@ unsorted:
   - libmanette-devel 
   - libmapidb-devel 
   - libmapidb1 
+  - libmapserver2 
   - libmarblewidget-qt5-28 
   - libmarco-private2 
   - libmariadb-devel 
@@ -15624,6 +15637,8 @@ unsorted:
   - mangohud 
   - mangohud-32bit: [x86_64] 
   - manpageeditor 
+  - mapserver 
+  - mapserver-devel 
   - marble 
   - marble-data 
   - marble-devel 
@@ -18348,6 +18363,8 @@ unsorted:
   - optipng 
   - opus-tools 
   - opusfile-devel 
+  - orage 
+  - orage-lang 
   - orc 
   - orc-doc 
   - orcania-devel 
@@ -20241,6 +20258,7 @@ unsorted:
   - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
+  - perl-mapscript 
   - perl-marisa 
   - perl-multidimensional 
   - perl-namespace-autoclean 
@@ -20808,7 +20826,7 @@ unsorted:
   - postgresql10-devel 
   - postgresql10-docs 
   - postgresql10-llvmjit-devel 
-  - postgresql10-pg_cron: [x86_64] 
+  - postgresql10-pg_cron 
   - postgresql10-pgagent 
   - postgresql10-pgaudit 
   - postgresql10-pgsql-ogr-fdw 
@@ -20827,7 +20845,7 @@ unsorted:
   - postgresql11-docs 
   - postgresql11-llvmjit 
   - postgresql11-llvmjit-devel 
-  - postgresql11-pg_cron: [x86_64] 
+  - postgresql11-pg_cron 
   - postgresql11-pgagent 
   - postgresql11-pgsql-ogr-fdw 
   - postgresql11-pgsql-ogr-fdw-llvmjit 
@@ -20847,7 +20865,7 @@ unsorted:
   - postgresql12-docs 
   - postgresql12-llvmjit 
   - postgresql12-llvmjit-devel 
-  - postgresql12-pg_cron: [x86_64] 
+  - postgresql12-pg_cron 
   - postgresql12-pgagent 
   - postgresql12-pgsql-ogr-fdw 
   - postgresql12-pgsql-ogr-fdw-llvmjit 
@@ -20868,7 +20886,7 @@ unsorted:
   - postgresql13-docs 
   - postgresql13-llvmjit 
   - postgresql13-llvmjit-devel 
-  - postgresql13-pg_cron: [x86_64] 
+  - postgresql13-pg_cron 
   - postgresql13-pgagent 
   - postgresql13-plperl 
   - postgresql13-plpython 
@@ -20885,7 +20903,7 @@ unsorted:
   - postgresql14-devel-mini 
   - postgresql14-docs 
   - postgresql14-llvmjit-devel 
-  - postgresql14-pg_cron: [x86_64] 
+  - postgresql14-pg_cron 
   - postgresql14-plperl 
   - postgresql14-plpython 
   - postgresql14-pltcl 
@@ -21284,6 +21302,7 @@ unsorted:
   - python-lxml-doc 
   - python-magnumclient-doc 
   - python-manilaclient-doc 
+  - python-mapscript 
   - python-marshmallow-docs 
   - python-masakariclient-doc 
   - python-md2workflow-common 
@@ -21391,6 +21410,7 @@ unsorted:
   - python3-SHERPA-MC 
   - python3-SoapySDR 
   - python3-YODA 
+  - python3-ansible-compat 
   - python3-ara 
   - python3-arpack-ng: [x86_64] 
   - python3-automaton 
@@ -21642,7 +21662,6 @@ unsorted:
   - python3-rrdtool 
   - python3-rust2rpm 
   - python3-saharaclient 
-  - python3-scikit-umfpack: [i586] 
   - python3-senlinclient 
   - python3-shiboken6 
   - python3-shiboken6-devel 
@@ -41775,7 +41794,9 @@ unsorted:
   - typelib-1_0-GFBGraph-0_2 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
-  - typelib-1_0-GPaste-1_0 
+  - typelib-1_0-GPaste-2 
+  - typelib-1_0-GPasteGtk-3 
+  - typelib-1_0-GPasteGtk-4 
   - typelib-1_0-GSSDP-1_0 
   - typelib-1_0-GSound-1_0 
   - typelib-1_0-GTop-2_0 
