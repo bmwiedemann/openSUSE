@@ -1,29 +1,33 @@
+---
+ vmstat.c |   12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
 --- vmstat.c
-+++ vmstat.c	2015-01-27 14:57:19.467491788 +0000
-@@ -295,7 +295,7 @@ static void new_format(void)
- 	unsigned int intr[2], ctxt[2];
- 	unsigned int sleep_half;
- 	unsigned long kb_per_page = sysconf(_SC_PAGESIZE) / 1024ul;
--	int debt = 0;		/* handle idle ticks running backwards */
-+	long long debt = 0;		/* handle idle ticks running backwards */
- 	struct tm *tm_ptr;
- 	time_t the_time;
- 	char timebuf[32];
-@@ -386,12 +386,12 @@ static void new_format(void)
++++ vmstat.c	2022-03-29 09:21:41.156855432 +0000
+@@ -362,7 +362,7 @@ static void new_format(void)
+     unsigned long pgpgin[2], pgpgout[2], pswpin[2] = {0,0}, pswpout[2];
+     unsigned int sleep_half;
+     unsigned long kb_per_page = sysconf(_SC_PAGESIZE) / 1024ul;
+-    int debt = 0;        /* handle idle ticks running backwards */
++    long long debt = 0;      /* handle idle ticks running backwards */
+     struct tm *tm_ptr;
+     time_t the_time;
+     char timebuf[32];
+@@ -481,12 +481,12 @@ static void new_format(void)
  
- 		/* idle can run backwards for a moment -- kernel "feature" */
- 		if (debt) {
--			didl = (int)didl + debt;
--			debt = 0;
-+			didl = (long long)didl + debt;
-+			debt = 0LL;
- 		}
--		if ((int)didl < 0) {
--			debt = (int)didl;
--			didl = 0;
-+		if ((long long)didl < 0) {
-+			debt = (long long)didl;
-+			didl = 0ULL;
- 		}
+         /* idle can run backwards for a moment -- kernel "feature" */
+         if (debt) {
+-            cpu_idl = (int)cpu_idl + debt;
+-            debt = 0;
++            cpu_idl = cpu_idl + debt;
++            debt = 0LL;
+         }
+-        if ((int)cpu_idl < 0) {
+-            debt = (int)cpu_idl;
+-            cpu_idl = 0;
++        if (cpu_idl < 0) {
++            debt = cpu_idl;
++            cpu_idl = 0LL;
+         }
  
- 		Div = duse + dsys + didl + diow + dstl;
+         Div = cpu_use + cpu_sys + cpu_idl + cpu_iow + cpu_sto;

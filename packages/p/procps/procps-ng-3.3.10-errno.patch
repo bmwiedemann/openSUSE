@@ -10,16 +10,16 @@ and this causes a problem later on (bsc#908516)
  1 file changed, 5 insertions(+)
 
 --- free.c
-+++ free.c	2018-04-04 12:47:06.360757839 +0000
-@@ -197,6 +197,7 @@ int main(int argc, char **argv)
- {
++++ free.c	2022-03-29 11:17:45.442230673 +0000
+@@ -209,6 +209,7 @@ int main(int argc, char **argv)
  	int c, flags = 0, unit_set = 0;
  	struct commandline_arguments args;
+ 	struct meminfo_info *mem_info = NULL;
 +	int errsv;
  
  	/*
  	 * For long options that have no equivalent short option, use a
-@@ -247,10 +248,12 @@ int main(int argc, char **argv)
+@@ -260,10 +261,12 @@ int main(int argc, char **argv)
  #ifdef HAVE_PROGRAM_INVOCATION_NAME
  	program_invocation_name = program_invocation_short_name;
  #endif
@@ -30,9 +30,9 @@ and this causes a problem later on (bsc#908516)
  	atexit(close_stdout);
 +	errno = errsv;
  
- 	while ((c = getopt_long(argc, argv, "bkmghltCc:ws:V", longopts, NULL)) != -1)
+ 	while ((c = getopt_long(argc, argv, "bkmghltvCc:ws:V", longopts, NULL)) != -1)
  		switch (c) {
-@@ -317,11 +320,13 @@ int main(int argc, char **argv)
+@@ -333,11 +336,13 @@ int main(int argc, char **argv)
  			break;
  		case 's':
  			flags |= FREE_REPEAT;

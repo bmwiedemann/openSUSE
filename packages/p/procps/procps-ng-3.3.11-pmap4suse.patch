@@ -4,8 +4,8 @@
  2 files changed, 44 insertions(+), 20 deletions(-)
 
 --- pmap.c
-+++ pmap.c	2018-06-05 09:37:34.404294888 +0000
-@@ -49,7 +49,9 @@ const char *nls_Address,
++++ pmap.c	2022-03-29 11:46:26.323303275 +0000
+@@ -55,7 +55,9 @@ const char *nls_Address,
  	   *nls_Kbytes,
  	   *nls_Mode,
  	   *nls_RSS,
@@ -16,7 +16,7 @@
  
  static void nls_initialize(void)
  {
-@@ -73,7 +75,9 @@ static void nls_initialize(void)
+@@ -79,7 +81,9 @@ static void nls_initialize(void)
  	nls_Kbytes  = _("Kbytes");
  	nls_Mode    = _("Mode");
  	nls_RSS     = _("RSS");
@@ -26,20 +26,20 @@
  }
  
  static int justify_print(const char *str, int width, int right)
-@@ -141,10 +145,10 @@ static int d_option;
- static int n_option;
- static int N_option;
- static int q_option;
--static int x_option;
+@@ -146,10 +150,10 @@ static int d_option = 0;
+ static int n_option = 0;
+ static int N_option = 0;
+ static int q_option = 0;
+-static int x_option = 0;
 +static int x_option = 1;
- static int X_option;
+ static int X_option = 0;
  
 -static int map_desc_showpath;
 +static int map_desc_showpath = 1;
  
  static unsigned shm_minor = ~0u;
  
-@@ -522,12 +526,17 @@ static int one_proc(const proc_t * p)
+@@ -533,12 +537,17 @@ static int one_proc (struct pids_stack *
  	char perms[32] = "";
  	const char *cp2 = NULL;
  	unsigned long long rss = 0ull;
@@ -55,12 +55,12 @@
  	int maxw1=0, maxw2=0, maxw3=0, maxw4=0, maxw5=0;
 +	int maxw6=0, maxw7=0;
  
- 	/* Overkill, but who knows what is proper? The "w" prog uses
- 	 * the tty width to determine this.
-@@ -557,13 +566,15 @@ static int one_proc(const proc_t * p)
+ 	printf("%u:   %s\n", PIDS_VAL(tgid, s_int, p, Pids_info), PIDS_VAL(cmdline, str, p, Pids_info));
+ 
+@@ -561,13 +570,15 @@ static int one_proc (struct pids_stack *
  	if (x_option) {
  		maxw1 = 16;
- 		if (sizeof(KLONG) == 4) maxw1 = 8;
+ 		if (sizeof(long) == 4) maxw1 = 8;
 -		maxw2 = maxw3 = maxw4 = 7;
 +		maxw2 = maxw3 = maxw4 = maxw6 = maxw7 = 7;
  		maxw5 = 5;
@@ -74,7 +74,7 @@
  			maxw5 = justify_print(nls_Mode, maxw5, 0);
  			justify_print(nls_Mapping, 0, 0);
  		}
-@@ -603,6 +614,11 @@ static int one_proc(const proc_t * p)
+@@ -607,6 +618,11 @@ static int one_proc (struct pids_stack *
  					total_rss += smap_value;
  					continue;
  				}
@@ -86,29 +86,30 @@
  				if (strcmp("Shared_Dirty", smap_key) == 0) {
  					shared_dirty = smap_value;
  					total_shared_dirty += smap_value;
-@@ -615,15 +631,19 @@ static int one_proc(const proc_t * p)
+@@ -619,16 +635,20 @@ static int one_proc (struct pids_stack *
  				}
  				if (strcmp("Swap", smap_key) == 0) {
  					/* doesn't matter as long as last */
--					if (cp2) printf("%0*" KLF "x %*lu %*llu %*llu %*s %s\n",
 +					swap = smap_value;
 +					total_swap += smap_value;
-+					if (cp2) printf("%0*" KLF "x %*lu %*llu %*llu %*llu %*llu %*s %s\n",
- 					       maxw1, start,
- 					       maxw2, (unsigned long)(diff >> 10),
- 					       maxw3, rss,
-+					       maxw6, pss,
- 					       maxw4, (private_dirty + shared_dirty),
-+					       maxw7, swap,
- 					       maxw5, perms,
- 					       cp2);
+ 					if (cp2)
+-                        printf("%0*lx %*lu %*llu %*llu %*s %s\n",
++                        printf("%0*lx %*lu %*llu %*llu %*llu %*llu %*s %s\n",
+                                maxw1, start_To_Avoid_Warning,
+                                maxw2, (unsigned long)(diff >> 10),
+                                maxw3, rss,
++                               maxw6, pss,
+                                maxw4, (private_dirty + shared_dirty),
++                               maxw7, swap,
+                                maxw5, perms,
+                                cp2);
  					/* reset some counters */
 -					rss = shared_dirty = private_dirty = 0ull;
 +					rss = pss = shared_dirty = private_dirty = swap = 0ull;
- 					start = diff = end = 0;
- 					perms[0] = '\0';
- 					cp2 = NULL;
-@@ -656,7 +676,6 @@ static int one_proc(const proc_t * p)
+                     diff = end = 0;
+                     perms[0] = '\0';
+                     cp2 = NULL;
+@@ -662,7 +682,6 @@ static int one_proc (struct pids_stack *
  		if (perms[3] == 's')
  			total_shared += diff;
  		if (perms[3] == 'p') {
@@ -116,7 +117,7 @@
  			if (perms[1] == 'w')
  				total_private_writeable += diff;
  			else
-@@ -708,17 +727,21 @@ static int one_proc(const proc_t * p)
+@@ -714,17 +733,21 @@ static int one_proc (struct pids_stack *
  				justify_print("----------------", maxw1, 0);
  			justify_print("-------", maxw2, 1);
  			justify_print("-------", maxw3, 1);
@@ -140,7 +141,7 @@
  		}
  		if (d_option) {
  			printf
-@@ -1028,16 +1051,18 @@ int main(int argc, char **argv)
+@@ -1037,16 +1060,18 @@ int main(int argc, char **argv)
  	while ((c = getopt_long(argc, argv, "xXrdqA:hVcC:nN:p", longopts, NULL)) != -1)
  		switch (c) {
  		case 'x':
@@ -162,7 +163,7 @@
  		case 'q':
  			q_option = 1;
 --- testsuite/pmap.test/pmap.exp
-+++ testsuite/pmap.test/pmap.exp	2018-06-05 09:23:53.955370363 +0000
++++ testsuite/pmap.test/pmap.exp	2022-03-29 11:19:45.948044571 +0000
 @@ -8,16 +8,16 @@ set pmap_procname "${mypid}:\\s+\\S+\[^\
  set pmap_initname "1:\\s+\\S+\[^\\r\]+\\s+"
  set pmap_std_header $pmap_procname

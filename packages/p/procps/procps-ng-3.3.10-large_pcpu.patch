@@ -3,17 +3,17 @@
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 --- top/top.c
-+++ top/top.c	2018-04-04 12:09:16.087193018 +0000
-@@ -2404,7 +2404,11 @@ static void zap_fieldstab (void) {
++++ top/top.c	2022-03-29 10:29:24.422368662 +0000
+@@ -2457,7 +2457,11 @@ static void zap_fieldstab (void) {
     Cpu_pmax = 99.9;
-    if (Rc.mode_irixps && smp_num_cpus > 1 && !Thread_mode) {
-       Cpu_pmax = 100.0 * smp_num_cpus;
--      if (smp_num_cpus > 10) {
-+      if (smp_num_cpus > 1000) {
-+	 if (Cpu_pmax > 9999999.0) Cpu_pmax = 9999999.0;
-+      } else if (smp_num_cpus > 100) {
-+	 if (Cpu_pmax > 999999.0) Cpu_pmax = 999999.0;
-+      } else if (smp_num_cpus > 10) {
+    if (Rc.mode_irixps && Cpu_cnt > 1 && !Thread_mode) {
+       Cpu_pmax = 100.0 * Cpu_cnt;
+-      if (Cpu_cnt > 10) {
++      if (Cpu_cnt > 1000) {
++        if (Cpu_pmax > 9999999.0) Cpu_pmax = 9999999.0;
++      } else if (Cpu_cnt > 100) {
++        if (Cpu_cnt > 999999.0) Cpu_pmax = 999999.0;
++      } else if (Cpu_cnt > 10) {
           if (Cpu_pmax > 99999.0) Cpu_pmax = 99999.0;
        } else {
           if (Cpu_pmax > 999.9) Cpu_pmax = 999.9;

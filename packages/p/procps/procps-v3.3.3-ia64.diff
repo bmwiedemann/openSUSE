@@ -1,6 +1,6 @@
 --- proc/devname.c
 +++ proc/devname.c	2012-06-01 13:35:43.452010553 +0000
-@@ -53,6 +53,10 @@
+@@ -51,6 +51,10 @@
  #define minor <-- do not use -->
  #endif
  

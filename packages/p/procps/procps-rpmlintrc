@@ -1,1 +1,1 @@
-addFilter(".*W:.*shared-lib-calls-exit.*libprocps\.so.*")
+addFilter(".*W:.*shared-lib-calls-exit.*libproc-2\.so.*")

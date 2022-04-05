@@ -4,9 +4,9 @@
  2 files changed, 9 insertions(+), 1 deletion(-)
 
 --- Makefile.am
-+++ Makefile.am	2018-04-04 12:28:14.937957527 +0000
-@@ -171,7 +171,7 @@ else
- slabtop_LDADD = $(LDADD) @NCURSES_LIBS@
++++ Makefile.am	2022-03-29 10:32:27.691037616 +0000
+@@ -190,7 +190,7 @@ if CYGWIN
+ top_top_SOURCES += lib/strverscmp.c
  endif
  
 -top_top_LDADD = $(LDADD) @NCURSES_LIBS@ $(DL_LIB)
@@ -15,8 +15,8 @@
  
  if BUILD_SKILL
 --- configure.ac
-+++ configure.ac	2018-04-04 12:29:23.364676155 +0000
-@@ -194,8 +194,16 @@ else
++++ configure.ac	2022-03-29 10:33:50.621534246 +0000
+@@ -233,8 +233,16 @@ else
    else
      WATCH_NCURSES_LIBS="$NCURSES_LIBS"
    fi
@@ -31,5 +31,5 @@
  AC_SUBST([NCURSES_LIBS])
 +AC_SUBST([TOP_NCURSES_LIBS])
  AC_SUBST([WATCH_NCURSES_LIBS])
- AC_SUBST([WATCH_NCURSES_CFLAGS])
  
+ AC_ARG_WITH([systemd],

@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Thu Mar 31 07:45:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Drop patch procps-ng-4.0.0-aix_sortformats.dif as replaced by
+  upstream patch 0002-ps-restore-aix-behavior-while-keeping-an-original-fi.patch
+- Add upstream patches
+  * 0001-top-update-one-function-prologue-after-rcfile-change.patch
+  * 0003-ps-restore-thread-display-when-using-a-pidlist-optio.patch
+
+-------------------------------------------------------------------
+Wed Mar 30 09:52:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Drop not needed patch procps-ng-3.3.9-watch.patch as the API
+  has changed here 
+
+-------------------------------------------------------------------
+Wed Mar 30 09:23:58 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procps-ng-4.0.0-floats.dif to avoid float errors on
+  32bit architectures
+
+-------------------------------------------------------------------
+Wed Mar 30 09:12:42 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procps-ng-4.0.0-aix_sortformats.dif to restore AIX sort
+  format support as well
+
+-------------------------------------------------------------------
+Tue Mar 29 12:49:48 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-4.0.0
+  + Warning: new shared library interface with libproc-2
+  * Rename pwait to pidwait
+  * free: Add committed line option                        merge #25
+  * free: Fix -h --si combined options                     issue #133, #223
+  * free: Fix first column justification                   issue #229, #204, #206, Debian #1001689
+  * free: Better spacing for Chinese language              issue #213
+  * library: renamed to libproc-2 and reset to 0:0:0
+  * library: add support for accessing smaps_rollup        issue #112, #201
+  * library: add support for accessing autogroups
+  * library: add support for LIBPROC_HIDE_KERNEL env var   merge #147
+  * library: add support for cpu utilization to pids i/f
+  * pkill: Check for lt- variants of program name          issue #192
+  * pgrep: Add newline after regex error message           merge #91
+  * pgrep: Fix selection where uid/gid > 2^31              merge !146
+  * pgrep: Select on cgroup v2 paths                       issue #168
+  * ps: Add OOM and OOMADJ fields                          issue #198
+  * ps: Add IO Accounting fields                           issue #184
+  * ps: Add PSS and USS fields                             issue #112
+  * ps: Add two new autogroup fields
+  * ps: Ignore SIGURG                                      merge !142
+  * slabtop: Don't combine d and o options                 issue #160
+  * sysctl: Add support for systemd glob patterns          issue #191
+  * sysctl: Check resolved path to be under /proc/sys      issue #179
+  * sysctl: return non-zero if EINVAL return for write     merge #76
+  * sysctl.conf.5: Note max line length                    issue #77
+  * top: added LOGID similar to 3.3.13 ps LUID
+  * top: added EXE identical to 3.3.17 ps EXE
+  * top: exploit some library smaps_rollup provisions      issue #112
+  * top: added four new IO accounting fields               issue #184
+  * top: 'F' key is now a new forest view 'focus' toggle
+  * top: summary area memory lines can print two abreast
+  * top: added two new autogroup fields
+  * top: added long versions of command line options
+  * top: added cpu utilization & 2 time related fields
+  * top: the time related fields can now be user scaled
+  * uptime: print short/pretty format correctly            issue #217
+  * vmstat: add -y option to remove first line             merge !72
+- Remove patch now upstream fixed
+  * procps-3.3.17-bsc1181976.patch
+  * procps-ng-3.3.10-bnc634071_procstat2.diff
+  * procps-ng-3.3.10-fdleak.dif
+  * bsc1195468-23da4f40.patch
+- Port patches 
+  * procps-ng-3.3.10-errno.patch
+  * procps-ng-3.3.10-large_pcpu.patch
+  * procps-ng-3.3.10-slab.patch
+  * procps-ng-3.3.10-xen.dif
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-bnc634840.patch
+  * procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.8-vmstat-terabyte.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-v3.3.3-columns.dif
+  * procps-v3.3.3-ia64.diff
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+- Port and rename patch
+  * procps-ng-3.3.8-accuracy.dif becomes procps-ng-4.0.0-accuracy.dif
+  * procps-ng-3.3.10-integer-overflow.patch becomes procps-ng-4.0.0-integer-overflow.patch
+
+-------------------------------------------------------------------
 Fri Feb  4 09:21:59 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch bsc1195468-23da4f40.patch to fix bsc#1195468 that is

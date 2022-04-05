@@ -1,0 +1,79 @@
+From 5e9956b9386d88a323c5b114f7b5a9faa90dfdba Mon Sep 17 00:00:00 2001
+From: Jim Warner <james.warner@comcast.net>
+Date: Wed, 30 Mar 2022 12:00:00 -0500
+Subject: [PATCH 2/3] ps: restore aix behavior while keeping an original fix
+
+The commit shown below broke the aix behavior that Dr.
+Fink recently reported. However, in the proposed patch
+the old behavior, showing garbage when '%cpu' was used
+with an invalid formatting option, would appear again.
+
+So this patch, based on Werner's patch, goes the extra
+distance to prevent that. Along the way we'll disallow
+commas in the aix format str to prevent their display.
+
+Reference(s):
+https://www.freelists.org/post/procps/Procpsng-400-released-with-newlib,2
+. Mar, 2022 - where aix bug was introduced
+commit 81df85a1b528d4edb9ab98b37fb6c6244430b6c4
+
+Prototyped-by: Dr. Werner Fink <werner@suse.de>
+Signed-off-by: Jim Warner <james.warner@comcast.net>
+---
+ ps/display.c    |  2 +-
+ ps/sortformat.c | 10 ++++++----
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/ps/display.c b/ps/display.c
+index 11c3a832..75c7d926 100644
+--- a/ps/display.c
++++ b/ps/display.c
+@@ -592,7 +592,7 @@ static void finalize_stacks (void)
+   // now accommodate any results not yet satisfied
+   f_node = format_list;
+   while (f_node) {
+-    (*f_node->pr)(NULL, NULL);
++    if (*f_node->pr) (*f_node->pr)(NULL, NULL);
+     f_node = f_node->next;
+   }
+   s_node = sort_list;
+diff --git a/ps/sortformat.c b/ps/sortformat.c
+index 2293aa95..965219c2 100644
+--- a/ps/sortformat.c
++++ b/ps/sortformat.c
+@@ -132,17 +132,20 @@ static const char *aix_format_parse(sf_node *sfn){
+     c = *walk++;
+     if(c=='%')    goto get_desc;
+     if(!c)        goto looks_ok;
++    if(c==',')    goto aix_oops;
+   /* get_text: */
+     items++;
+-  get_more_text:
++  get_more:
+     c = *walk++;
+     if(c=='%')    goto get_desc;
+-    if(c)         goto get_more_text;
++    if(c==' ')    goto get_more;
++    if(c)         goto aix_oops;
+     goto looks_ok;
+   get_desc:
+     items++;
+     c = *walk++;
+     if(c)         goto initial;
++  aix_oops:
+     return _("improper AIX field descriptor");
+   looks_ok:
+     ;
+@@ -313,8 +316,7 @@ static const char *format_parse(sf_node *sfn){
+   if(0) improper: err=_("improper format list");
+   if(0) badwidth: err=_("column widths must be unsigned decimal numbers");
+   if(0) notmacro: err=_("can not set width for a macro (multi-column) format specifier");
+-  if (!err)
+-    if(strchr(sfn->sf,'%')) err = aix_format_parse(sfn);
++  if(strchr(sfn->sf,'%')) err = aix_format_parse(sfn);
+   return err;
+ }
+ 
+-- 
+2.32.0
+
