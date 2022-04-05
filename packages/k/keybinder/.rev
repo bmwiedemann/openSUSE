@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>811523</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8c983c879b4fa1e2400e884d50337755</srcmd5>
+    <version>0.3.1</version>
+    <time>1649181333</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable python2 bindings on 15.4 - they fail to build.</comment>
+    <requestid>966875</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  4 18:53:53 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Disable python2 bindings on 15.4 - they fail to build.
+
+-------------------------------------------------------------------
 Thu Jun  4 11:04:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile constructs.
