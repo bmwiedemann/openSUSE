@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Mar 28 08:35:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.2:
+  * model/3mf: new type
+  * Match shared libraries with version suffix
+  * model/obj: add mtllib and Blender comment based magic
+  * model/mtl: add Blender comment magic, increase newmtl range
+  * model/obj, model/mtl: new types
+  * Add Electron Archive Format type application/x-asar
+  * text/x-qml: Lower match priority to avoid conflicts with Python
+  * Move '*.blend' to top of Blender glob list
+  * Adding SPARQL media types
+  * application/zip: Add `*.zipx` glob and test fixture
+  * Added DSD mime type
+  * Differentiate comic book archives
+  * FITS: Add missing `application/fits` and legacy globs
+  * Add Godot engine files
+  * Add FlashForge "xgcode" mime-type
+  * text/x-objc++src: new type
+  * image/heif: test .hif extension too
+  * image/hif: add *.hif glob
+  * image/heif: add another test case
+  * image/heif: add magics
+  * Add a build-tools option to allow installing only the mime data
+  * Add compressed SVG glob pattern `*.svg.gz`
+  * Add Apple Wallet pass type application/vnd.apple.pkpass
+  * migrate from custom itstool to builtin msgfmt for creating
+    translated XML
+  * Make the remaining plain text types subclasses of text/plain
+  * audio/mobile-xmf: separate from audio/x-xmf
+  * Adding ZIM file
+  * Make text/x-mrml a subclass of application/xml
+  * image/avif: move acronym and expansion to separate fields from
+    comment
+  * freedesktop_generate.sh: Don't hardcode ninja
+  * Add text/x-mpl2
+  * application/x-apple-systemprofiler+xml: require
+    _SPCommandLineArguments in plist
+  * image/jpeg: add test case with embedded property list XML
+  * audio/vnd.dts.hd: include parent type magic in magic match
+  * model/gltf+json: new type
+  * model/gltf-binary: new type
+  * application/x-object: add *.mod and a test case
+  * application/x-mod: add some ProTracker magics and a test case
+  * image/jxl: include test files in test list
+  * tests: add trailing linefeed to mime-detection list
+  * Make application/x-mswinurl a subclass of text/plain
+  * Change description for *.desktop files to "desktop entry"
+  * application/x-x509-ca-cert: add magics and test cases
+  * application/pkix-cert: add BEGIN/END X509 CERTIFICATE magic
+  * application/pkix-crl: add magic and test case
+  * application/pkix-cert: add magic and test case
+  * image/jxl: new type
+  * Added .sc filename extension for Scala source code, as it is
+    occasionally used
+  * application/schema+json: new type
+  * Add text/x-crystal
+  * application/x-krita: remove stray period from comment
+  * adding org-mode
+  * Add Elixir source code mime type
+  * Add two new offsets for .kra and .krz
+  * text/x-python3: add *.pyi glob (Python stub files)
+  * image/x-canon-cr3: new type
+  * image/x-xpixmap: make XPM3 magic more specific
+  * image/x-xpixmap: add XPM2 magic
+  * application/x-troff-man: add *.[1-9] glob
+  * application/toml: new type
+  * Lower priority of "BEGIN {" for perl, awk uses that too
+  * Add Smacker video type video/vnd.radgamettools.smacker
+  * Clarify database license
+  * meson: make xmlto optional, build spec only if found
+  * application/x-7z-compressed: add *.7z.001 glob
+  * Add Bink video type video/vnd.radgamettools.bink
+  * image/x-nikon-nrw: add test case
+  * image/x-nikon-nrw: new type
+  * application/x-vhdx-disk: improve acronym and its expansion
+  * application/ovf: new type
+  * application/x-qed-disk: new type
+  * application/x-vdi-disk: new type
+  * application/x-vmdk-disk: new type
+  * application/x-vhd-disk, /x-vhdx-disk: new types
+  * application/vnd.apple.numbers, .pages: add older magics and
+    test cases
+  * Add text/x-dart
+  * application/vnd.apple.numbers, /vnd.apple.pages: new types
+  * xdgmime: configure as submodule
+- Drop obsolete patches:
+  * fix-build-meson-0_60.patch
+  * drop-itstool-dep.patch
+
+-------------------------------------------------------------------
 Thu Nov 18 19:55:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-build-meson-0_60.patch: Fix build with meson 0.60 and

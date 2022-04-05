@@ -1,7 +1,7 @@
 #
 # spec file for package shared-mime-info
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,15 @@
 #
 
 
-%define commitid 0ee50652091363ab0d17e335e5e74fbe
-
 Name:           shared-mime-info
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Shared MIME Database
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info
-Source0:        %{url}/uploads/%{commitid}/%{name}-%{version}.tar.xz
+Source0:        https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        macros.shared-mime-info
-# PATCH-FIX-UPSTREAM fix-build-meson-0_60.patch -- Fix build with meson 0.60 and newer
-Patch0:         fix-build-meson-0_60.patch
-# PATCH-FIX-UPSTREAM drop-itstool-dep.patch -- Drop itstool as it is no longer needed
-Patch1:         drop-itstool-dep.patch
-
 BuildRequires:  glib2-devel
 BuildRequires:  libxml2-devel
 # needed for xmllint
