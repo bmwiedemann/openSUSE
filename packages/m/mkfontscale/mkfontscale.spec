@@ -1,7 +1,7 @@
 #
 # spec file for package mkfontscale
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mkfontscale
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Utility to create index of scalable font files for X
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(fontenc)
