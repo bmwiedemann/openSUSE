@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 05 08:50:17 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1649148610.29f5bfd8:
+  * Add check to ensure fully covered files stay at 100 % coverage
+  * Fix missing coverage in consoles/virtio_terminal.pm
+  * Speedup t/10-virtio_terminal.t
+  * Rely on signatures for get/set_snapshot in virtio_console
+  * Use consistent signatures in consoles::virtio_terminal.pm
+  * Update tidy to 20220217
+  * Mark uncoverable line in 10-virtio_terminal.t as such
+  * t: Reduce runtime of 18-qemu-options.t by doing less QEMU_APPEND checks
+
+-------------------------------------------------------------------
 Thu Mar 31 22:06:00 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1648754972.aa0153e1:
