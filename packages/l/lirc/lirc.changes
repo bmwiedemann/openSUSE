@@ -5,6 +5,12 @@ Wed Nov 24 13:00:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
   compatible with PyYAML 6.0+ (sht#lirc#365).
 
 -------------------------------------------------------------------
+Sat Nov 13 19:56:05 UTC 2021 - ldreier@vodafonemail.de
+
+- allow input device access in lircd.service file again. Changed:
+  * harden_lircd.service.patch
+
+-------------------------------------------------------------------
 Tue Oct  5 12:06:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Revert "Require typelib packages": better to have rpm auto-detect
