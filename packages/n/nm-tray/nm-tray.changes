@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  5 14:37:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * Add translations
+  * Use greater units for speed, if suitable
+  * Treat WireGuard connections as normal VPN connection
+  * Add bundled fallback icon
+  * Don't activate/deactivate on middle/right click
+- Remove nm-tray-0.4.3-nmmodel-include.patch: upstreamed
+
+-------------------------------------------------------------------
 Thu Oct  3 14:11:23 UTC 2019 - mvetter@suse.com
 
 - Add nm-tray-0.4.3-nmmodel-include.patch:

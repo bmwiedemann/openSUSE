@@ -90,4 +90,18 @@
   Fix build with newer Qt</comment>
     <requestid>734810</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2b36e2da0afff2822241f22173abfd7c</srcmd5>
+    <version>0.5.0</version>
+    <time>1649181362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Add translations
+  * Use greater units for speed, if suitable
+  * Treat WireGuard connections as normal VPN connection
+  * Add bundled fallback icon
+  * Don't activate/deactivate on middle/right click
+- Remove nm-tray-0.4.3-nmmodel-include.patch: upstreamed</comment>
+    <requestid>967034</requestid>
+  </revision>
 </revisionlist>
