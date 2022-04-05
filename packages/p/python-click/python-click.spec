@@ -1,7 +1,7 @@
 #
 # spec file for package python-click
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click
-Version:        8.0.3
+Version:        8.0.4
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
