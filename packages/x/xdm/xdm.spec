@@ -25,13 +25,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           xdm
-Version:        1.1.12
+Version:        1.1.13
 Release:        0
 Summary:        X Display Manager
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        xdm.tar.bz2
 Source2:        HOWTO.xdm
 Source4:        display-manager.service

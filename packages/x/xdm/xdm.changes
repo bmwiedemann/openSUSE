@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  4 10:13:13 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- udpate to release 1.1.13
+  * bugfix release
+
+-------------------------------------------------------------------
 Wed Feb  9 16:55:31 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - added "Recommends: xdmbgrd" to make sure we have a background for

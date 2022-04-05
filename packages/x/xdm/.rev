@@ -948,4 +948,13 @@
     <comment></comment>
     <requestid>953117</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>3a0cfb524e6ef65a436ebff2f649bc87</srcmd5>
+    <version>1.1.13</version>
+    <time>1649181306</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to release 1.1.13
+  * bugfix release</comment>
+    <requestid>966779</requestid>
+  </revision>
 </revisionlist>
