@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  4 20:41:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add security fixes:
+  * CVE-2022-0971-qtwebengine-5.15.patch (CVE-2022-0971, boo#1197163)
+  * CVE-2022-1096-qtwebengine-6.2.patch (CVE-2022-1096, boo#1197552)
+
+-------------------------------------------------------------------
 Mon Mar 21 08:46:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.4

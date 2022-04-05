@@ -50,6 +50,8 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
+Patch0:         CVE-2022-0971-qtwebengine-5.15.patch
+Patch1:         CVE-2022-1096-qtwebengine-6.2.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       sandbox-statx-futex_time64.patch
