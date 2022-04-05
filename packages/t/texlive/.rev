@@ -950,4 +950,12 @@
 - Also add some obsoletes</comment>
     <requestid>964539</requestid>
   </revision>
+  <revision rev="77" vrev="80">
+    <srcmd5>b7fdf6ff9238565f0f1144cd99fc2eb4</srcmd5>
+    <version>unknown</version>
+    <time>1649181302</time>
+    <user>dimstar_suse</user>
+    <comment>Use gzip -n for bit-reproducible builds (forwarded request 966045 from bmwiedemann)</comment>
+    <requestid>966760</requestid>
+  </revision>
 </revisionlist>

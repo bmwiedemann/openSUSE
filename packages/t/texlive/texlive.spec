@@ -19,7 +19,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   189
+%define texlive_noarch   190
 %define texlive_source   texlive-20210325-source
 
 %define __perl_requires		%{nil}
@@ -3011,6 +3011,7 @@ Obsoletes:      texlive-pdftools-bin <= 2019
 Obsoletes:      texlive-pstools-bin <= 2019
 Obsoletes:      texlive-tetex-bin <= 2019
 Obsoletes:      texlive-texconfig-bin <= 2017
+Conflicts:      texlive-texconfig-bin
 Provides:       texlive-pdftools-bin:%{_bindir}/e2pall
 Provides:       texlive-tetex-bin:%{_bindir}/allcm
 Provides:       texlive-tetex-bin:%{_bindir}/allneeded
@@ -4274,7 +4275,7 @@ popd
 	%perl_gen_filelist
 	pushd blib
 	    install -m 0644 bindoc/biber.1 %{buildroot}%{_mandir}/man1/
-	    gzip %{buildroot}%{_mandir}/man1/biber.1
+	    gzip -n %{buildroot}%{_mandir}/man1/biber.1
 	popd
 	sed -ri '\@/usr/(share|bin)/.*@d' texlive.files
     popd
