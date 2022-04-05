@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 30 17:50:55 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 4.2.0:
+  + Revert Indic shaper change in previous release that broke some
+    fonts and instead make per-syllable restriction of “GSUB”
+    application limited to script-specific Indic features, while
+    applying them and discretionary features in one go
+  + Fix decoding of private in gvar table
+  + Fix handling of contextual lookups that delete too many glyphs
+  + Make “morx” deleted glyphs don’t block “GPOS” application
+
+-------------------------------------------------------------------
 Wed Mar 23 19:39:23 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 4.1.0:
