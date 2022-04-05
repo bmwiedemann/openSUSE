@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  4 10:45:24 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- dbus-access.patch: restrict D-Bus access to tpm2-abrmd to members of the tss
+  group (bsc#1197532). This prevents arbitrary users from meddling with TPM
+  state and thus potential denial-of-service vectors.
+
+-------------------------------------------------------------------
 Wed Dec  8 16:50:13 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Version 2.4.0

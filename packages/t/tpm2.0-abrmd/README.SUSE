@@ -1,0 +1,11 @@
+The tpm2-abrmd by upstream default allows every local users in the system to
+access the TPM chip and modify its settings (bsc#1197532). Upstream suggests
+to use the TPM's internal security features (e.g. password protection) to
+prevent local users from manipulating the chip without authorization. Still
+the default behaviour that every user in the system can access TPM features
+without any authentication could come as a surprise to end users and system
+integrators alike.
+
+For this reason on SUSE only members of the 'tss' group are allowed to access
+the tpm2-abrmd D-Bus interface, thereby mirroring the access permissions of
+the /dev/tpm0 and /dev/tpmrm0 character devices.

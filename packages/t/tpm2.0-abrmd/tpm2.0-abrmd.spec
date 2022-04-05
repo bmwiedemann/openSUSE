@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-abrmd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,9 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-abrmd
 Source0:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{version}/tpm2-abrmd-%{version}.tar.gz
 Source1:        tpm2.0-abrmd.rpmlintrc
+Source2:        README.SUSE
 Patch0:         harden_tpm2-abrmd.service.patch
+Patch1:         dbus-access.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  checkpolicy
@@ -120,6 +122,7 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rctpm2-abrmd
 # don't install the systemd preset, our presets are handled by
 # systemd-presets-* packages
 rm %{buildroot}%{_prefix}/lib*/systemd/system-preset/tpm2-abrmd.preset
+cp %{SOURCE2} .
 %if ! 0%{?install_dbus_files}
 rm %{buildroot}/%{_sysconfdir}/dbus-1/system.d/tpm2-abrmd.conf
 rm %{buildroot}/%{_datadir}/dbus-1/system-services/com.intel.tss2.Tabrmd.service
@@ -158,7 +161,7 @@ fi
 %endif
 
 %files
-%doc *.md
+%doc *.md README.SUSE
 %license LICENSE
 %{_mandir}/man7/tss2-*
 %{_mandir}/man8/tpm2-*
