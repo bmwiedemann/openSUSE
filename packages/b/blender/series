@@ -1,7 +1,3 @@
-# only rely on patch availibility, if python_36 is requested
-make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 reproducible.patch
-# PATCH-FIX-OPENSUSE -- 32bit arch compatibility
-0001-Dont-hide-required-uint64-atomic-ops-when-available.patch
-fix_linking.patch
+blender-293-openexr3.patch

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Apr  5 07:14:16 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable %{ix86} builds due to missing OpenShadingLanguage
+
+-------------------------------------------------------------------
+Mon Mar 28 08:09:55 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Combine cycles devel package within blender
+- Remove unused %post{,un} sections, these caches/databases are
+  updated by rpm triggers
+- Updated blender.appdata.xml
+
+-------------------------------------------------------------------
+Sun Mar 20 15:01:45 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Optix enabled build depends on package nvidia-optix-headers now
+  (disabled by default due to copyright issues)
+
+-------------------------------------------------------------------
+Tue Mar 15 18:10:45 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Define %py3pkg literally allows use within {Build,}Requires
+- Guard unzip/wget requirements %{with optix}.
+
+-------------------------------------------------------------------
+Tue Mar 15 17:21:32 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add a OptiX build conditional, disabled by default and switched to 
+  a dynamic approach to handle the the OptiX support. This way, no
+  copyrighted bits are packaged.
+
+-------------------------------------------------------------------
+Sun Mar 13 18:52:26 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Adapt build for Python 3.10 (required minimum version)
+- Add optix includes that prepares the runtime OptiX renderer 
+  Similar to other renderers, the OptiX renderer is generated on the
+  first use, given a proper local installation
+- Drop outdated patch blender-293-openexr3.patch 
+
+-------------------------------------------------------------------
+Thu Mar 10 16:38:41 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.1.0 
+  https://www.blender.org/download/releases/3-1/
+  https://wiki.blender.org/wiki/Reference/Release_Notes/3.1
+- drop patches included in update
+  0001-Fix-T94661-Out-of-bounds-memory-access-due-to-malfor.patch
+  0001-Fix-T94629-The-IMB_flip-API-would-fail-with-large-im.patch
+  0001-Fix-T89542-Crash-when-loading-certain-.hdr-files.patch
+
+-------------------------------------------------------------------
 Sat Feb 19 16:44:47 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Apply 0001-Fix-T94661-Out-of-bounds-memory-access-due-to-malfor.patch

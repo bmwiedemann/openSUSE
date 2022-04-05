@@ -12,7 +12,7 @@ Download the OptiX package for Linux from
 
 https://developer.nvidia.com/designworks/optix/download
 
-At the time of this writing, this was Version 7.1.0.
+At the time of this writing, this was Version 7.4.0.
 The further description refers to this version.
 
 You need to unpack it in a specific location (as root). Since we need to specify
@@ -22,11 +22,11 @@ OptiX environment:
 $ su
 # mkdir -p /opt/nvidia
 # cd /opt/nvidia
-# sh ~user/Downloads/NVIDIA-OptiX-SDK-7.1.0-linux64-x86_64.sh
+# sh ~user/Downloads/NVIDIA-OptiX-SDK-7.4.0-linux64-x86_64.sh
 # # Answer all questions with yes.
 
 # # Note: adjust path accordingly
-# ln -s NVIDIA-OptiX-SDK-7.1.0-linux64-x86_64 optix
+# ln -s NVIDIA-OptiX-SDK-7.4.0-linux64-x86_64 optix
 
 Now set up OptiX environment, e.g. in ~/.profile or in /etc/profile.local:
 

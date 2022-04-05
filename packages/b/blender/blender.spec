@@ -27,6 +27,9 @@
 %bcond_with oidn
 %endif
 
+%bcond_with optix
+%define optix_version 7.4
+
 %if 0%{?gcc_version} < 10
 %bcond_without clang
 %bcond_with    lld
@@ -41,13 +44,17 @@
 
 # Set this to 1 for fixing bugs.
 %define debugbuild 0
+
 # Find the version of python3 that blender is going to build against.
-%define py3version %(pkg-config python3.9 --modversion)
+%define py3ver 3.10
+%define py3pkg python310
+
 # blender has versions like x.xxy which have x.xx (notice the missing
 # trailing y) in the directory path. This makes this additional variable
 # necessary.
 %define _version %(echo %{version} | cut -b 1-3)
 %define _suffix %(echo %{_version} | tr -d '.')
+
 %bcond_without alembic
 %bcond_without collada
 %bcond_without opensubdiv
@@ -58,8 +65,9 @@
 # TBD
 %bcond_with usd
 %bcond_with openxr
+
 Name:           blender
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -79,14 +87,9 @@ Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch0:         reproducible.patch
-# https://github.com/bartoszek/AUR-blender-2.83-git/blob/master/openexr3.patch
-Patch1:         blender-293-openexr3.patch
-# PATCH-FIX-OPENSUSE https://developer.blender.org/T94661 Fix for CVE-2022-0544
-Patch2:         0001-Fix-T94661-Out-of-bounds-memory-access-due-to-malfor.patch
-# PATCH-FIX-OPENSUSE https://developer.blender.org/T94629 Fix for CVE-2022-0545
-Patch3:         0001-Fix-T94629-The-IMB_flip-API-would-fail-with-large-im.patch
-# PATCH-FIX-OPENSUSE https://developer.blender.org/T94572 Fix for CVE-2022-0546
-Patch4:         0001-Fix-T89542-Crash-when-loading-certain-.hdr-files.patch
+BuildRequires:  %{py3pkg}-devel
+BuildRequires:  %{py3pkg}-numpy-devel
+BuildRequires:  %{py3pkg}-requests
 BuildRequires:  OpenColorIO-devel >= 2.0
 BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
@@ -129,8 +132,6 @@ BuildRequires:  pcre-devel
 BuildRequires:  perl-Text-Iconv
 BuildRequires:  pkgconfig
 BuildRequires:  potrace-devel
-BuildRequires:  python39-numpy-devel
-BuildRequires:  python39-requests
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -162,9 +163,9 @@ BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  libGLwM1
-Requires:       python39-base
-Requires:       python39-numpy
-Requires:       python39-requests
+Requires:       %{py3pkg}-base
+Requires:       %{py3pkg}-numpy
+Requires:       %{py3pkg}-requests
 Requires(post): hicolor-icon-theme
 Requires(postun):hicolor-icon-theme
 Recommends:     %name-demo = %version
@@ -220,6 +221,9 @@ BuildRequires:  openvdb-devel
 BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(blosc)
 %endif
+%if %{with optix}
+BuildRequires:  nvidia-optix-headers
+%endif
 %if %{with osl}
 BuildRequires:  OpenShadingLanguage-devel
 %endif
@@ -228,7 +232,8 @@ BuildRequires:  pkgconfig(audaspace) >= 1.3
 Requires:       audaspace-plugins
 %endif
 %ifarch x86_64
-Requires:       %{name}-cycles-devel = %{version}
+Obsoletes:      %{name}-cycles-devel = %{version}
+Provides:       %{name}-cycles-devel = %{version}
 %endif
 ExcludeArch:    %{ix86}
 
@@ -250,18 +255,9 @@ rendering, node-based compositing, and non linear video editing,
 as well as an integrated game engine for real-time interactive 3D
 and game creation and playback with cross-platform compatibility.
 
-%ifarch x86_64
-%package cycles-devel
-Summary:        Headers for cycles rendering with %{name}-%{version}
-#This package is for blender with cycles OSL
-License:        Apache-2.0
-Group:          Development/Sources
-Requires:       %{name}-%{_suffix} = %{version}
-BuildArch:      noarch
-
-%description cycles-devel
-These are the cycles headers that blender uses for rendering with
-specific gpus
+%if %{with optix}
+This build has enabled support for OptiX Version %{optix_version}.
+Check %{_docdir}/SUSE-NVIDIA-OptiX-rendering.txt.
 %endif
 
 %package demo
@@ -294,7 +290,7 @@ mkdir -p extern/glew/include
 sed -i 's|NOT WITH_SYSTEM_GLEW|WITH_SYSTEM_GLEW|' source/blender/gpu/CMakeLists.txt
 %endif
 
-for i in `grep -rl "%{_bindir}/env python3"`;do sed -i '1s@^#!.*@#!%{_bindir}/python3@' ${i} ;done
+for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s@^#!.*@#!%{_bindir}/python%{py3ver}@' ${i} ;done
 
 %build
 export SUSE_ASNEEDED=0
@@ -310,9 +306,6 @@ export CXX="g++-%{?force_gcc_version}"
 %endif
 
 echo "optflags: " %{optflags}
-# Find python3 version and abiflags
-export psver=$(pkg-config python-3.9 --modversion)
-export pver=$(pkg-config python-3.9 --modversion)$(python3.9-config --abiflags)
 mkdir -p build && pushd build
 
 # lean against build_files/cmake/config/blender_release.cmake
@@ -424,13 +417,13 @@ cmake ../ \
       -DWITH_PUGIXML:BOOL=ON \
       -DWITH_PYTHON:BOOL=ON \
       -DWITH_PYTHON_INSTALL:BOOL=OFF \
-      -DPYTHON_VERSION=$psver \
+      -DPYTHON_VERSION=%{py3ver} \
       -DPYTHON_LIBPATH=%{_libexecdir} \
-      -DPYTHON_LIBRARY=python$pver \
-      -DPYTHON_INCLUDE_DIRS=%{_includedir}/python$pver \
+      -DPYTHON_LIBRARY=python%{py3ver} \
+      -DPYTHON_INCLUDE_DIRS=%{_includedir}/python%{py3ver} \
       -DWITH_PYTHON_INSTALL_NUMPY=OFF \
-      -DPYTHON_NUMPY_PATH:PATH=%{python39_sitearch} \
-      -DPYTHON_NUMPY_INCLUDE_DIRS:PATH=%{python39_sitearch}/numpy/core/include \
+      -DPYTHON_NUMPY_PATH:PATH=%{_libdir}/python%{py3ver}/site-packages \
+      -DPYTHON_NUMPY_INCLUDE_DIRS:PATH=%{_libdir}/python%{py3ver}/site-packages/numpy/core/include \
       -DWITH_QUADRIFLOW:BOOL=ON \
       -DWITH_SDL:BOOL=ON \
       -DWITH_TBB:BOOL=ON \
@@ -453,10 +446,14 @@ cmake ../ \
 %if %{with openxr}
       -DWITH_XR_OPENXR:BOOL=ON \
 %endif
+%if %{with optix}
       -DWITH_CYCLES_DEVICE_OPTIX:BOOL=ON \
+      -DOPTIX_INCLUDE_DIR:PATH=%{_includedir}/optix/include \
       -DOPTIX_ROOT_DIR:PATH=/opt/nvidia/optix \
-      -DWITH_CYCLES_CUDA_BINARIES:BOOL=ON \
-      -DWITH_CYCLES_CUBIN_COMPILER:BOOL=OFF
+%endif
+      -DWITH_CYCLES_CUDA_BINARIES:BOOL=OFF \
+      -DWITH_CYCLES_CUBIN_COMPILER:BOOL=OFF \
+      -DWITH_CYCLES_HIP_BINARIES:BOOL=ON
 
 make %{?_smp_mflags}
 
@@ -524,16 +521,14 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %exclude %{_docdir}/%{name}/geeko_example_scene.*
 %{_datadir}/%{name}/%{_version}/scripts/
 %{_datadir}/%{name}/%{_version}/datafiles/
+%ifarch x86_64
+%{_datadir}/%{name}/%{_version}/scripts/addons/cycles
+%endif
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*.svg
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 %doc %{_docdir}/%{name}
-
-%ifarch x86_64
-%files cycles-devel
-%{_datadir}/%{name}/%{_version}/scripts/addons/cycles
-%endif
 
 %files demo
 %doc %{_docdir}/%{name}/geeko_example_scene.*
