@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>879515</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e9cdae59ab78ecdef1f5143cc4a0364c</srcmd5>
+    <version>1.0.9</version>
+    <time>1649181327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9
+  * bugfix release</comment>
+    <requestid>966684</requestid>
+  </revision>
 </revisionlist>

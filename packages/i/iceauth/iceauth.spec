@@ -1,7 +1,7 @@
 #
 # spec file for package iceauth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           iceauth
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Utility to edit and display the ICE authorization information
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
@@ -48,7 +48,7 @@ like the xauth program for X11 connection authentication records.
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog
 %{_bindir}/iceauth
 %{_mandir}/man1/iceauth.1%{?ext_man}
 
