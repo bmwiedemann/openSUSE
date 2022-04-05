@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ruqola
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Prison)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(KF5TextWidgets)

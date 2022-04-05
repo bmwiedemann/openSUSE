@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  2 12:49:06 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.7.0
+  * Add support for 2FA
+  * Don't repeat the same avatar and sender in consecutive messages,
+    also skip the context for threaded messages if it's the same
+  * Allow to follow/unfollow messages and threads
+  * Implement Search History
+  * Allow to open specific messages from URL
+
+-------------------------------------------------------------------
 Fri Feb 25 17:52:14 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 1.6.3
