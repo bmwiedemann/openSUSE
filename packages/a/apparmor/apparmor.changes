@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 29 20:04:22 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- ensure precompiled cache files are newer than (text) profiles
+- reload profiles in %posttrans instead of %post to ensure both
+  -profiles and -abstractons package are updated before the cache
+  in /var/cache/apparmor/ gets built (boo#1195463 #c20)
+
+-------------------------------------------------------------------
 Thu Mar 24 14:09:58 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Add update-samba-bgqd.diff to add new rule to fix 'DENIED' open on
