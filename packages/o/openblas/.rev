@@ -518,4 +518,41 @@
   for all suse_versions &amp;lt; current Factory in an attempt to fix bsc#1195232. (forwarded request 950115 from eeich)</comment>
     <requestid>950116</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4bf6cd1c128955065d07959740228981</srcmd5>
+    <version>0.3.20</version>
+    <time>1649181297</time>
+    <user>dimstar_suse</user>
+    <comment>- Build PPC64LE libraries with the lastest gcc available to
+  take advantage of instruction sets in later CPUs used in
+  the CPU specific kernels (jsc#SLE-18143, bsc#1197721).
+  For fortran use the stock compiler to avoid compatibility
+  issues between different versions of libfortran.
+  This is relevant for Leap/SLE only. It may be dropped once
+  gcc &lt; 10 is no longer supported.
+- Do the same for x86_64 on SLE to make sure Cooperlake support
+  is built properly.
+- Remove:
+  * Do-not-attempt-to-check-host-CPU-if-TARGET-is-set.patch
+  * Create-independent-kernel-Makfile-configuration-when-building-DYNAMIC_ARCH.patch
+  * For-DYNAMIC_ARCH-don-t-use-sbgemm_r-as-parameter.c-doesn-t-get-build.patch
+  Instead, add from upstream:
+  * Define-sbgemm_r-to-fix-DYNAMIC_ARCH-builds.patch
+  * Remove-extraneous-and-wrong-definition-of-sbgemm_r-on-x86_64.patch
+  * Fix-checks-for-AVX512-and-atomics.patch
+  * Revert-AVX512-capability-check-from-PR-1980-moved-to-build.patch
+  * Use-CC-and-full-command-line-instead-of-hard-coding-gcc-for-AVX512-checking.patch
+  * Utilize-compiler-AVX512-capability-info-from-c_check-when-building-getarch.patch
+
+- Update to v0.3.20:
+  * general:
+    some code cleanup, with added casts etc.
+    fixed obtaining the cpu count with OpenMP and OMP_PROC_BIND unset
+    fixed pivot index calculation by ?LASWP for negative increments other
+          than one
+    fixed input argument check in LAPACK ? GEQRT2
+    improved the check for a Fortran compiler in CMAKE builds
+    disabled building OpenBLAS' optimized versions of LAPACK complex SPMV,</comment>
+    <requestid>966746</requestid>
+  </revision>
 </revisionlist>

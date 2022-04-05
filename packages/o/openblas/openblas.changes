@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Wed Mar 30 12:00:30 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Build PPC64LE libraries with the lastest gcc available to
+  take advantage of instruction sets in later CPUs used in
+  the CPU specific kernels (jsc#SLE-18143, bsc#1197721).
+  For fortran use the stock compiler to avoid compatibility
+  issues between different versions of libfortran.
+  This is relevant for Leap/SLE only. It may be dropped once
+  gcc < 10 is no longer supported.
+- Do the same for x86_64 on SLE to make sure Cooperlake support
+  is built properly.
+- Remove:
+  * Do-not-attempt-to-check-host-CPU-if-TARGET-is-set.patch
+  * Create-independent-kernel-Makfile-configuration-when-building-DYNAMIC_ARCH.patch
+  * For-DYNAMIC_ARCH-don-t-use-sbgemm_r-as-parameter.c-doesn-t-get-build.patch
+  Instead, add from upstream:
+  * Define-sbgemm_r-to-fix-DYNAMIC_ARCH-builds.patch
+  * Remove-extraneous-and-wrong-definition-of-sbgemm_r-on-x86_64.patch
+  * Fix-checks-for-AVX512-and-atomics.patch
+  * Revert-AVX512-capability-check-from-PR-1980-moved-to-build.patch
+  * Use-CC-and-full-command-line-instead-of-hard-coding-gcc-for-AVX512-checking.patch
+  * Utilize-compiler-AVX512-capability-info-from-c_check-when-building-getarch.patch
+
+-------------------------------------------------------------------
+Fri Feb 25 20:10:04 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Update to v0.3.20:
+  * general:
+    some code cleanup, with added casts etc.
+    fixed obtaining the cpu count with OpenMP and OMP_PROC_BIND unset
+    fixed pivot index calculation by ?LASWP for negative increments other
+          than one
+    fixed input argument check in LAPACK ? GEQRT2
+    improved the check for a Fortran compiler in CMAKE builds
+    disabled building OpenBLAS' optimized versions of LAPACK complex SPMV,
+          SPR,SYMV,SYR with NO_LAPACK=1
+    fixed building of LAPACK on certain distributed filesystems with parallel
+          gmake
+    fixed building the shared library on MacOS with classic flang
+    (v0.3.19)
+    reverted unsafe TRSV/ZRSV optimizations introduced in 0.3.16
+    fixed a potential thread race in the thread buffer reallocation routines
+    that were introduced in 0.3.18
+    fixed miscounting of thread pool size on Linux with OMP_PROC_BIND=TRUE
+    fixed CBLAS interfaces for CSROT/ZSROT and CROTG/ZROTG
+    made automatic library suffix for CMAKE builds with INTERFACE64 available
+    to CBLAS-only builds
+    (v0.3.18)
+    when the build-time number of preconfigured threads is exceeded
+        at runtime (by an external program calling BLAS functions from
+        a larger number of threads), OpenBLAS will now allocate an
+        auxiliary control structure for up to 512 additional threads
+        instead of aborting
+    added support for Loongson's LoongArch64 cpu architecture
+    fixed building OpenBLAS with CMAKE and -DBUILD_BFLOAT16=ON
+    added support for building OpenBLAS as a CMAKE subproject
+    added support for building for Windows/ARM64 targets with clang
+    improved support for building with the IBM xlf compiler
+    imported Reference-LAPACK PR 625 (out-of-bounds access in ?LARRV)
+    imported Reference-LAPACK PR 597 for testsuite compatibility with
+    LLVM's libomp
+  * x86_64:
+    fixed cross-compilation with CMAKE for CORE2 target
+    fixed miscompilation of AVX512 code in DYNAMIC_ARCH builds
+    added support for the "incidental" AVX512 hardware in Alder Lake when 
+         enabled in BIOS
+    (v0.3.19)
+    DYNAMIC_ARCH builds now fall back to the cpu with most similar capabilities
+    when an unknown CPUID is encountered, instead of defaulting to Prescott
+    added cpu detection for Intel Alder Lake
+    added cpu detection for Intel Sapphire Rapids
+    added an optimized SBGEMM kernel for Sapphire Rapids
+    fixed DYNAMIC_ARCH builds on OSX with CMAKE
+    worked around DYNAMIC_ARCH builds made on Sandybridge failing on SkylakeX
+    fixed missing thread initialization for static builds on Windows/MSVC
+    fixed an excessive read in ZSYMV
+    (v0.3.18)
+    added SkylakeX S/DGEMM kernels for small problem sizes (MNK<=1000000)
+    added optimized SBGEMM for Intel Cooper Lake
+    reinstated the performance patch for AVX512 SGEMV_T with a proper fix
+    added a workaround for a gcc11 tree-vectorizer bug that caused spurious
+    failures in the test programs for complex BLAS3 when compiling at -O3
+    (the default for cmake "release" builds)
+    added support for runtime cpu count detection under Haiku OS
+    worked around a long-standing miscompilation issue of the Haswell DGEMV_T
+    kernel with gcc that could produce NaN output in some corner cases
+  * Power:  
+    added support for POWER10 in big-endian mode
+    added support for building with CMAKE
+    added optimized SGEMM and DGEMM kernels for small matrix sizes
+    (v0.3.18)
+    improved performance of DASUM on POWER10
+  * ARMV8:
+    added SVE-enabled CGEMM and ZGEMM kernels for ARMV8SVE and A64FX
+    added support for Neoverse N2 and V1 cpus    
+    (v0.3.19)
+    added basic support and cputype detection for Fujitsu A64FX
+    added a generic ARMV8SVE target
+    added SVE-enabled SGEMM and DGEMM kernels for ARMV8SVE and A64FX
+    added optimized CGEMM and ZGEMM kernels for Cortex A53 and A55 cpus
+    fixed cpuid detection for Apple M1 and improved performance
+    improved compiler flag setting in CMAKE builds
+    (v0.3.18)
+    fixed crashes (use of reserved register x18) on Apple M1 under OSX
+    fixed building with gcc releases earlier than 5.1
+- Fix out of bounds read in ?llarv    
+   LAPACK Reference: PR 625
+   CVE-2021-4048, bsc#1196513
+- Limit parallel builds according to available memory. 
+  Do NOT use %%_smp_mflags with top level 'make', set MAKE_NB_JOBS 
+  instead and let the build do the work.
+  Also change -flto=auto to -flto=1: spawning even more parallel builds
+  on top of parallel build treads will wreak havok.
+- Move calls to 'update-alternatives --remove' to %%postun instead
+  of %%preun as suggested by rpmlint.
+- Since we build with DYNAMIC_ARCH, create separate config files for
+  the different target kernels to help debugging
+  Add Create-independent-kernel-Makfile-configuration-when-building-DYNAMIC_ARCH.patch
+- Remove compiler feature detection when not using auto-detection.
+  Add Do-not-attempt-to-check-host-CPU-if-TARGET-is-set.patch
+- Do not depend in variables which are not available when building
+  DYNAMIC_ARCH.
+  Add For-DYNAMIC_ARCH-don-t-use-sbgemm_r-as-parameter.c-doesn-t-get-build.patch
+- Do not include symbols defined in driver/others/parameter.c in
+  DYNAMIC_BUILD to generate more conclusive error messages earlier.
+  Add Do-not-include-symbols-defined-in-driver-others-parameter.c-in-DYNAMIC_BUILD.patch
+- Install lapack and blas libraries to an openblas-flavor
+  specific subdirectory of %%_libdir and set up the alternatives
+  to point to this directory. Set the system-wide BLAS/LAPACK
+  default directory to %%_libdir/openblas-default.
+  This way, the blas/lapack libraries will remain consistent
+  and from the same source. The user is able to override this
+  easily by setting the LD_LIBRARY_PATH to include the preferred
+  BLAS/LAPACK implementation (boo#1177260).  
+- Consolidate packages 'openblas-devel' and 'openblas-devel-headers'
+  into 'openblas-common-devel' (these are built for the serial
+  flavor only).
+  'openblas-common-devel' will provide the removed 'openblas-devel-headers'
+  while the arch specific 'preferred' flavor will provide the removed
+  'openblas-devel'.
+- Fix the openblas default flavor selection:
+    # /usr/sbin/update-alternatives --config libopenblas.so.0
+- Add cmake and pkgconfig files.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:02:01 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fixed bsc#1195232 for good: found and removed offending entry.
+  This reintroduces part of:
+  Thu Jul  8 12:35:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+    - Do not create dummy symlinks on $self in /etc/alternatives: those
+      files are packages as %ghost and any real file existance only
+      confuses brp-checks, as it detects circular symlinks.
+
+-------------------------------------------------------------------
 Sun Jan 30 12:06:43 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Partly revert:

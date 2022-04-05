@@ -1,5 +1,5 @@
 #
-# spec file for package openblas
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_17
-%define vers 0.3.17
+%define _vers 0_3_20
+%define vers 0.3.20
 %define pname openblas
 
 %bcond_with ringdisabled
@@ -30,6 +30,16 @@ ExclusiveArch:  do_not_build
 %endif
 
 %global build_flags USE_THREAD=1 USE_OPENMP=1
+
+%ifarch ppc64le x86_64
+# Per request by IBM, always use latest gcc but 'stock' fortran
+%if 0%{?sle_version} == 150400
+%define cc_v 11
+%endif
+%if 0%{?sle_version} == 150300
+%define cc_v 10
+%endif
+%endif
 
 %if "%flavor" == "serial"
 %define build_flags USE_THREAD=0 USE_OPENMP=0
@@ -42,6 +52,7 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "pthreads"
 %define build_flags USE_THREAD=1 USE_OPENMP=0
  %ifarch %ix86 x86_64
+ %define arch_flavor 1
  %define openblas_so_prio 50
  %else
  %define openblas_so_prio 20
@@ -53,6 +64,7 @@ ExclusiveArch:  do_not_build
  %ifarch %ix86 x86_64
  %define openblas_so_prio 20
  %else
+ %define arch_flavor 1
  %define openblas_so_prio 50
  %endif
 %{bcond_with hpc}
@@ -135,7 +147,7 @@ ExclusiveArch:  do_not_build
 %define so_v 0
 %define p_prefix %_prefix
 %define p_includedir %_includedir/%pname
-%define p_libdir %_libdir
+%define p_libdir %_libdir/openblas%{?flavor:-%{flavor}}
 %define p_cmakedir %{p_libdir}/cmake/%{pname}
 %define num_threads 64
 
@@ -167,6 +179,14 @@ URL:            http://www.openblas.net
 Source0:        https://github.com/xianyi/OpenBLAS/archive/v%{version}.tar.gz#/OpenBLAS-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        README.HPC.SUSE
+Patch1:         Define-sbgemm_r-to-fix-DYNAMIC_ARCH-builds.patch
+Patch2:         Remove-extraneous-and-wrong-definition-of-sbgemm_r-on-x86_64.patch
+Patch3:         Do-not-include-symbols-defined-in-driver-others-parameter.c-in-DYNAMIC_BUILD.patch
+Patch4:         Utilize-compiler-AVX512-capability-info-from-c_check-when-building-getarch.patch
+Patch5:         Revert-AVX512-capability-check-from-PR-1980-moved-to-build.patch
+Patch6:         Fix-checks-for-AVX512-and-atomics.patch
+Patch7:         Use-CC-and-full-command-line-instead-of-hard-coding-gcc-for-AVX512-checking.patch
+
 # PATCH-FIX-UPSTREAM openblas-noexecstack.patch
 Patch101:       openblas-noexecstack.patch
 # PATCH port
@@ -175,8 +195,13 @@ Patch103:       openblas-ppc64be_up2_p8.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
+#BuildRequires:  cmake
+BuildRequires:  memory-constraints
 %if %{without hpc}
 BuildRequires:  gcc-fortran
+%if 0%{?cc_v:1}
+BuildRequires:  gcc%{?cc_v}-fortran
+%endif
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
@@ -212,12 +237,6 @@ Obsoletes:      lib%{pname}o0
 %hpc_requires
 %endif
 
-%if %{without hpc}
-%define libname %name
-%else
-%define libname %pname
-%endif
-
 %description -n lib%{name}%{?so_v}
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
@@ -228,7 +247,10 @@ Summary:        Development libraries for OpenBLAS, %{flavor} version
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{?so_v} = %{version}
 %if %{without hpc}
-Requires:       %{pname}-devel-headers = %{version}
+Requires:       %{pname}-common-devel = %{version}
+%if 0%{?arch_flavor}
+Provides:       %{pname}-devel
+%endif
 %else
 %hpc_requires_devel
 %endif
@@ -243,37 +265,20 @@ This package contains the development libraries for serial OpenBLAS version.
 %package        devel-static
 Summary:        Static version of OpenBLAS
 Group:          Development/Libraries/C and C++
-%if %{without hpc}
-Requires:       %{pname}-devel = %{version}
-%else
 Requires:       lib%{name}-devel = %{version}
-%endif
 
 %description    devel-static
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
 This package contains the static libraries.
 
-%package      -n %{pname}-devel
+%package      -n %{pname}-common-devel
 Summary:        Development headers and libraries for OpenBLAS
 Group:          Development/Libraries/C and C++
-Requires:       %{pname}-devel-headers = %{version}
-%ifarch %ix86 x86_64
-Requires:       lib%{pname}_pthreads-devel = %{version}
-%else
-Requires:       lib%{pname}_openmp-devel = %{version}
-%endif
+Provides:       %{pname}-devel-headers
+Provides:       pkgconfig(openblas)
 
-%description  -n %{pname}-devel
-OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
-
-%package      -n %{pname}-devel-headers
-Summary:        Development headers for OpenBLAS
-Group:          Development/Libraries/C and C++
-Conflicts:      %{pname}-devel < %{version}
-BuildArch:      noarch
-
-%description  -n %{pname}-devel-headers
+%description  -n %{pname}-common-devel
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
 This package contains headers for OpenBLAS.
@@ -281,9 +286,7 @@ This package contains headers for OpenBLAS.
 %prep
 
 %setup -q -n OpenBLAS-%{version}
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
+%autopatch -p1
 %ifarch s390
 sed -i -e "s@m32@m31@" Makefile.system
 %endif
@@ -295,8 +298,11 @@ cp %{SOURCE2} .
 %endif
 
 %build
+
+# Limit lto jobs to 1 - -flto=auto together with make -j<m>
+# would cause a huge number of build jobs spawned in parallel
 %if "%{?_lto_cflags}" != ""
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags -flto=1 -ffat-lto-objects
 %endif
 
 # disable lto for ppc64le, boo#1181733
@@ -310,6 +316,9 @@ cp %{SOURCE2} .
 %endif
 
 # Use DYNAMIC_ARCH everywhere - not sure about PPC?
+# Use DYNAMIC_ARCH to build for multiple targets, use TARGET to specify
+# the CPU model assumed for the common code. It should be set to the
+# oldest CPU model one expects to encounter.
 %global openblas_target DYNAMIC_ARCH=1
 # We specify TARGET= to avoid compile-time CPU-detection (boo#1100677)
 %ifarch %ix86 x86_64
@@ -337,17 +346,27 @@ cp %{SOURCE2} .
 # ../kernel/power/sasum_microk_power8.c:41:3: error: '__vector' undeclared (first use in this function); did you mean '__cpow'?
 # TODO why is it required ? (and not for ppc64le)
 %ifarch ppc64
-%define addopt -mvsx
+%global addopt -mvsx
 %endif
+%global addopt %{?addopt} -fno-strict-aliasing
+
 # Make serial, threaded and OpenMP versions
-make  %{?_smp_mflags} %{?openblas_target} %{?build_flags} \
-    %{?openblas_opt} COMMON_OPT="%{optflags} %{?addopt}" \
-    NUM_THREADS=%{num_threads} V=1 \
-    OPENBLAS_LIBRARY_DIR=%{p_libdir} \
-    OPENBLAS_INCLUDE_DIR=%{hpc_includedir} \
-    OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
-    PREFIX=%{p_prefix} \
-    %{!?with_hpc:LIBNAMESUFFIX=%flavor FC=gfortran CC=gcc}
+
+# Calculate process limits
+%limit_build -m 1500
+[[ -n $_threads ]] && jobs=$_threads
+[[ -z $jobs ]] && jobs=1
+# NEVER use %%_smp_mflags with top level make:
+# set MAKE_NB_JOBS instead and let the build do the work!
+make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
+     %{?openblas_opt} \
+     COMMON_OPT="%{optflags} %{?addopt}" \
+     NUM_THREADS=%{num_threads} V=1 \
+     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
+     OPENBLAS_INCLUDE_DIR=%{p_includedir} \
+     OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
+     PREFIX=%{p_prefix} \
+     %{!?with_hpc:LIBNAMESUFFIX=%flavor FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}}
 
 %install
 %if %{with hpc}
@@ -373,45 +392,39 @@ make  %{?_smp_mflags} %{?openblas_target} %{?build_flags} \
 %if 0%{!?build_devel:1}
 # We need the includes only once
 rm -rf %{buildroot}%{p_includedir}/
-rm -rf %{buildroot}%{p_libdir}/cmake/
-%else
+%endif
+
 # Fix cmake config file
 sed -i 's|%{buildroot}||g' %{buildroot}%{p_cmakedir}/*.cmake
-sed -i 's|_serial||g' %{buildroot}%{p_cmakedir}/*.cmake
-%endif
+sed -i 's|_%{flavor}||g' %{buildroot}%{p_cmakedir}/*.cmake
 
 # Put libraries in correct location
 rm -rf %{buildroot}%{p_libdir}/lib%{name}*
 
 # Install the serial library
-install -D -p -m 755 lib%{name}.so %{buildroot}%{p_libdir}/lib%{name}.so.0
-install -D -p -m 644 lib%{name}.a %{buildroot}%{p_libdir}/lib%{name}.a
+install -D -p -m 755 lib%{name}.so %{buildroot}%{p_libdir}/lib%{pname}.so.0
+install -D -p -m 644 lib%{name}.a %{buildroot}%{p_libdir}/lib%{pname}.a
 
 # Fix source permissions (also applies to LAPACK)
 find -name \*.f -exec chmod 644 {} +
 
-# Remove pkgconfig file, it can't be configured for different library suffixes we use and, as such, is useless
-rm -fr %{buildroot}%{p_libdir}/pkgconfig/
-
 # Dummy target for update-alternatives
 install -d %{buildroot}/%{_sysconfdir}/alternatives
-ln -s lib%{libname}.so.0 %{buildroot}/%{p_libdir}/lib%{pname}.so.0
-ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/libblas.so.3
-ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/libcblas.so.3
-ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/liblapack.so.3
-%if 0%{?suse_version} <= 1500 
-ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/lib%{pname}.so.0
-ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/libblas.so.3
-ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/libcblas.so.3
-ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/liblapack.so.3
-%endif
-
-# Fix symlinks
-pushd %{buildroot}%{p_libdir}
+ln -sf %{_sysconfdir}/alternatives/libblas.so.3 %{buildroot}/%{_libdir}/libblas.so.3
+ln -sf %{_sysconfdir}/alternatives/libcblas.so.3 %{buildroot}/%{_libdir}/libcblas.so.3
+ln -sf %{_sysconfdir}/alternatives/liblapack.so.3 %{buildroot}/%{_libdir}/liblapack.so.3
+ln -sf %{_sysconfdir}/alternatives/liblapacke.so.3 %{buildroot}/%{_libdir}/liblapacke.so.3
+ln -sf %{_sysconfdir}/alternatives/openblas-default %{buildroot}/%{_libdir}/openblas-default
+ln -s lib%{pname}.so.%{so_v} %{buildroot}%{p_libdir}/lib%{pname}.so
+ln -s %{_libdir}/openblas-default %{buildroot}%{_sysconfdir}/alternatives/openblas-default
+ln -s %{_sysconfdir}/alternatives/openblas-default/lib%{pname}.so.%{so_v} %{buildroot}%{_libdir}/lib%{pname}.so.%{so_v}
 %if 0%{?build_devel}
-ln -sf lib%{pname}.so.0 lib%{pname}.so
+ln -s lib%{pname}.so.%{so_v} %{buildroot}%{_libdir}/lib%{pname}.so
+install -d %{buildroot}%{_libdir}/pkgconfig/
+ln -s %{_sysconfdir}/alternatives/openblas-default/pkgconfig/openblas.pc %{buildroot}%{_libdir}/pkgconfig/
+install -d %{buildroot}/%{_libdir}/cmake
+ln -s %{_sysconfdir}/alternatives/openblas-default/cmake/openblas %{buildroot}/%{_libdir}/cmake/
 %endif
-ln -sf lib%{name}.so.0 lib%{name}.so
 
 %else # with hpc
 
@@ -462,30 +475,34 @@ EOF
 
 %post -n lib%{name}%{so_v}
 %{_sbindir}/update-alternatives --install \
-   %{p_libdir}/libblas.so.3 libblas.so.3 %{p_libdir}/lib%{name}.so.%{so_v}  20
-%{_sbindir}/update-alternatives --install \
-   %{p_libdir}/libcblas.so.3 libcblas.so.3 %{p_libdir}/lib%{name}.so.%{so_v}  20
-%{_sbindir}/update-alternatives --install \
-   %{p_libdir}/liblapack.so.3 liblapack.so.3 %{p_libdir}/lib%{name}.so.%{so_v}  20
-%{_sbindir}/update-alternatives --install \
-   %{p_libdir}/lib%{pname}.so.%{so_v} lib%{name}.so.%{so_v} %{p_libdir}/lib%{name}.so.%{so_v}  %openblas_so_prio
+   %{_libdir}/openblas-default openblas-default %{p_libdir} %openblas_so_prio
+for lib in libblas.so.3 libcblas.so.3 liblapack.so.3 liblapacke.so.3; do
+    %{_sbindir}/update-alternatives --install \
+     %{_libdir}/${lib} ${lib} %{_libdir}/lib%{pname}.so.%{so_v}  20
+done
 /sbin/ldconfig
 
-%preun -n lib%{name}%{so_v}
-if [ "$1" = 0 ] ; then
-   %{_sbindir}/update-alternatives --remove libblas.so.3 %{p_libdir}/lib%{name}.so.%{so_v}
-   %{_sbindir}/update-alternatives --remove libcblas.so.3 %{p_libdir}/lib%{name}.so.%{so_v}
-   %{_sbindir}/update-alternatives --remove liblapack.so.3 %{p_libdir}/lib%{name}.so.%{so_v}
-   %{_sbindir}/update-alternatives --remove lib%{name}.so.0 %{p_libdir}/lib%{name}.so.%{so_v}
+%postun -n lib%{name}%{so_v}
+if [ ! -f %{p_libdir}/lib%{pname}.so.%{so_v} ]; then
+    for lib in libblas.so.3 libcblas.so.3 liblapack.so.3 liblapacke.so.3; do
+	%{_sbindir}/update-alternatives --remove ${lib} %{_libdir}/lib%{pname}.so.%{so_v}
+    done
 fi
-
-%postun -n lib%{name}%{so_v} -p /sbin/ldconfig
+if [ ! -d %{p_libdir} ]; then
+    %{_sbindir}/update-alternatives --remove openblas-default %{p_libdir}
+fi
+/sbin/ldconfig
 
 %posttrans -n lib%{name}%{so_v}
 if [ "$1" = 0 ] ; then
-  if ! [ -f %{p_libdir}/lib%{name}.so.%{so_v} ] ; then
-      %{_sbindir}/update-alternatives --auto lib%{pname}.so.%{so_v}
+  if  [ ! -d %{_libdir}/openblas-default ] ; then
+      %{_sbindir}/update-alternatives --auto openblas-default
   fi
+  for lib in libblas.so.3 libcblas.so.3 liblapack.so.3 liblapacke.so.3; do
+      if ! [ -f %{_libdir}/${lib} ] ; then
+	  %{_sbindir}/update-alternatives --auto ${lib}
+      fi
+  done
 fi
 
 %else
@@ -497,16 +514,20 @@ fi
 
 %files -n lib%{name}%{?so_v}
 %defattr(-,root,root,-)
-%{p_libdir}/lib%{libname}.so.0
+%{p_libdir}/lib%{pname}.so.0
 %if %{without hpc}
-%ghost %{p_libdir}/lib%{pname}.so.%{so_v}
-%ghost %{p_libdir}/libblas.so.3
-%ghost %{p_libdir}/libcblas.so.3
-%ghost %{p_libdir}/liblapack.so.3
-%ghost %{_sysconfdir}/alternatives/lib%{pname}.so.%{so_v}
+%dir %{p_libdir}
+%{_libdir}/openblas-default
+%{_libdir}/lib%{pname}.so.%{so_v}
+%ghost %{_libdir}/libblas.so.3
+%ghost %{_libdir}/libcblas.so.3
+%ghost %{_libdir}/liblapack.so.3
+%ghost %{_libdir}/liblapacke.so.3
+%ghost %{_sysconfdir}/alternatives/openblas-default
 %ghost %{_sysconfdir}/alternatives/libblas.so.3
 %ghost %{_sysconfdir}/alternatives/libcblas.so.3
 %ghost %{_sysconfdir}/alternatives/liblapack.so.3
+%ghost %{_sysconfdir}/alternatives/liblapacke.so.3
 %else
 %hpc_dirs
 %{p_libdir}/libopenblas*r*.so
@@ -514,33 +535,31 @@ fi
 %endif
 
 %files -n lib%{name}-devel
-%defattr(-,root,root,-)
-%{p_libdir}/lib%{libname}.so
+%{p_libdir}/lib%{pname}.so
+%{p_cmakedir}/
 %if %{with hpc}
 %license LICENSE
 %doc Changelog.txt GotoBLAS* README.md README.HPC.SUSE
 %hpc_pkgconfig_file
-%{p_cmakedir}/
 %{p_includedir}/
+%else
+%dir %{p_libdir}/cmake
+%dir %{p_libdir}/pkgconfig
+%{p_libdir}/pkgconfig
 %endif
 
 %files devel-static
-%defattr(-,root,root,-)
-#%%{p_libdir}/lib%{libname}.a
 %{p_libdir}/libopenblas*.a
 
 %if 0%{?build_devel}
-%files  -n %{pname}-devel
-%defattr(-,root,root,-)
+%files  -n %{pname}-common-devel
 %license LICENSE
 %doc Changelog.txt GotoBLAS* README.md README.SUSE
-%{p_libdir}/libopenblas.so
-%dir %{p_libdir}/cmake
-%{p_cmakedir}/
-
-%files -n %{pname}-devel-headers
-%defattr(-,root,root,-)
+%{_libdir}/lib%{pname}.so
 %{p_includedir}/
+%{_libdir}/pkgconfig/openblas.pc
+%dir %{_libdir}/cmake
+%{_libdir}/cmake/openblas
 %endif
 
 %changelog
