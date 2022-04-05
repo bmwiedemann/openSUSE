@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 01 15:31:08 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 056+suse.252.g75c0d4d5:
+  See https://github.com/dracutdevs/dracut/releases/tag/056 for details.
+  Additional changes:
+  * feat(resume): sanity check (bsc#1197192)
+  * fix(dracut-initramfs-restore.sh): unpack uncompressed initrd as last option (bsc#1197195)
+  * fix(resume): only exclude this module when swap is netdev
+  * fix(network): do not use network-wicked as default network handler
+  * chore(suse): update spec
+
+-------------------------------------------------------------------
 Fri Feb 18 07:48:46 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 055+suse.238.gacab0df5:

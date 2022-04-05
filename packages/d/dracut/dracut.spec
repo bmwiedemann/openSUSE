@@ -25,10 +25,10 @@
 %endif
 
 Name:           dracut
-Version:        055+suse.238.gacab0df5
+Version:        056+suse.252.g75c0d4d5
 Release:        0
-Summary:        Initramfs generator using udev
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Summary:        Event driven initramfs infrastructure
+License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://dracut.wiki.kernel.org/
 Source0:        dracut-%{version}.tar.xz
@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(systemd) >= 219
 Requires:       %{_bindir}/get_kernel_version
 Requires:       bash
-# systemd-sysvinit provides: poweroff, reboot, halt
 Requires:       coreutils
 Requires(post): coreutils
 Requires:       cpio
@@ -59,7 +58,6 @@ Requires:       modutils
 Requires:       pigz
 Requires:       sed
 Requires:       systemd >= 219
-Requires:       systemd-sysvinit
 Requires:       udev > 166
 Requires:       util-linux >= 2.21
 Requires:       util-linux-systemd >= 2.36.2
@@ -177,6 +175,9 @@ ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-suse.sh %{buildroot}/%{dracu
 mv %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh
 ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
 %endif
+
+# create a link to dracut-util to be able to parse kernel command line arguments at generation time
+ln -s %{dracutlibdir}/dracut-util %{buildroot}/%{dracutlibdir}/dracut-getarg
 
 %post
 # check whether /var/run has been converted to a symlink
@@ -313,6 +314,7 @@ fi
 %{dracutlibdir}/dracut-initramfs-restore
 %{dracutlibdir}/dracut-install
 %{dracutlibdir}/dracut-util
+%{dracutlibdir}/dracut-getarg
 %{dracutlibdir}/dracut-cpio
 
 %dir %{dracutlibdir}/modules.d
@@ -325,6 +327,7 @@ fi
 %{dracutlibdir}/modules.d/01systemd-coredump
 %{dracutlibdir}/modules.d/01systemd-hostnamed
 %{dracutlibdir}/modules.d/01systemd-initrd
+%{dracutlibdir}/modules.d/01systemd-integritysetup
 %{dracutlibdir}/modules.d/01systemd-journald
 %{dracutlibdir}/modules.d/01systemd-ldconfig
 %{dracutlibdir}/modules.d/01systemd-modules-load
@@ -382,6 +385,8 @@ fi
 %{dracutlibdir}/modules.d/91crypt-gpg
 %{dracutlibdir}/modules.d/91crypt-loop
 %{dracutlibdir}/modules.d/91fido2
+%{dracutlibdir}/modules.d/91pcsc
+%{dracutlibdir}/modules.d/91pkcs11
 %{dracutlibdir}/modules.d/91tpm2-tss
 %{dracutlibdir}/modules.d/91zipl
 %{dracutlibdir}/modules.d/95cifs
