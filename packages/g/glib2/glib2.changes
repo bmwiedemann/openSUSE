@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  1 08:17:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove provides/obsoletes on glib2-doc, it was split into
+  two packages again 
+- spec-cleaner reorderings
+
+-------------------------------------------------------------------
 Fri Mar 25 14:02:31 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - desktop-file-utils: add Budgie desktop environment

@@ -1974,4 +1974,14 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>964928</requestid>
   </revision>
+  <revision rev="251" vrev="2">
+    <srcmd5>cb2f99385de37966e801b4082f2c6c24</srcmd5>
+    <version>2.72.0</version>
+    <time>1649181309</time>
+    <user>dimstar_suse</user>
+    <comment>- remove provides/obsoletes on glib2-doc, it was split into
+  two packages again 
+- spec-cleaner reorderings (forwarded request 966455 from dirkmueller)</comment>
+    <requestid>966824</requestid>
+  </revision>
 </revisionlist>
