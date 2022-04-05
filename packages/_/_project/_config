@@ -984,7 +984,8 @@ Prefer: -primus -primus-32bit
 Prefer: -staging-build-key
 Prefer: -clutter-gst-devel
 # We have multiple versions of ffmpeg available, the preferred one is ffmpeg4, followd by 3, followed by 2
-Prefer: ffmpeg-4 ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel ffmpeg-4-libavutil-devel ffmpeg-4-libswscale-devel ffmpeg-4-libavdevice-devel 
+%define ffmpeg_pref ffmpeg-4
+Prefer: %{ffmpeg_pref} %{ffmpeg_pref}-libavcodec-devel %{ffmpeg_pref}-libavformat-devel %{ffmpeg_pref}-libavutil-devel %{ffmpeg_pref}-libswscale-devel %{ffmpeg_pref}-libavdevice-devel %{ffmpeg_pref}-libavfilter-devel
 # oxygen5-icon-theme osboletes oxygen-icon-theme
 Prefer: oxygen5-icon-theme
 
