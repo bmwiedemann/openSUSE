@@ -160,6 +160,15 @@ GTK+ is a multi-platform toolkit for creating graphical user interfaces.
 Offering a complete set of widgets, GTK+ is suitable for projects
 ranging from small one-off projects to complete application suites.
 
+%package devel-tools
+Summary:        Auxiliary utilities for the GTK+ toolkit library v4
+Group:          System/Libraries
+
+%description devel-tools
+GTK+ is a multi-platform toolkit for creating graphical user interfaces.
+Offering a complete set of widgets, GTK+ is suitable for projects
+ranging from small one-off projects to complete application suites.
+
 %package schema
 Summary:        Config schema for the GTK+ toolkit library v4
 # The schema is shared between gtk3 and gtk4 - gtk4 wins
@@ -203,6 +212,7 @@ widget toolkit.
 %package devel
 Summary:        Development files for the GTK+ toolkit library v4
 Group:          Development/Libraries/X11
+Requires:       %{name}-devel-tools = %{version}
 Requires:       %{name}-tools = %{version}
 Requires:       gettext-its-%{name} >= %{version}
 Requires:       libgtk-4-1 = %{version}
@@ -299,22 +309,64 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 
 %files tools
 %{_bindir}/gtk4-broadwayd
-%{_bindir}/gtk4-icon-browser
-%{_bindir}/gtk4-builder-tool
-%{_bindir}/gtk4-encode-symbolic-svg
 %{_bindir}/gtk4-launch
-%{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-update-icon-cache
-%{_datadir}/applications/org.gtk.IconBrowser4.desktop
-%{_datadir}/applications/org.gtk.PrintEditor4.desktop
+%dir %{_datadir}/gtk-4.0/emoji
+%{_datadir}/gtk-4.0/emoji/da.gresource
+%{_datadir}/gtk-4.0/emoji/de.gresource
+%{_datadir}/gtk-4.0/emoji/es.gresource
+%{_datadir}/gtk-4.0/emoji/fr.gresource
+%{_datadir}/gtk-4.0/emoji/hu.gresource
+%{_datadir}/gtk-4.0/emoji/it.gresource
+%{_datadir}/gtk-4.0/emoji/ko.gresource
+%{_datadir}/gtk-4.0/emoji/lt.gresource
+%{_datadir}/gtk-4.0/emoji/ms.gresource
+%{_datadir}/gtk-4.0/emoji/nl.gresource
+%{_datadir}/gtk-4.0/emoji/pl.gresource
+%{_datadir}/gtk-4.0/emoji/pt.gresource
+%{_datadir}/gtk-4.0/emoji/ru.gresource
+%{_datadir}/gtk-4.0/emoji/sv.gresource
+%{_datadir}/gtk-4.0/emoji/uk.gresource
+%{_datadir}/gtk-4.0/emoji/zh.gresource
 %{_mandir}/man1/gtk4-broadwayd.1%{?ext_man}
-%{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
-%{_mandir}/man1/gtk4-builder-tool.1%{?ext_man}
-%{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
 %{_mandir}/man1/gtk4-launch.1%{?ext_man}
 %{_mandir}/man1/gtk4-query-settings.1%{?ext_man}
 %{_mandir}/man1/gtk4-update-icon-cache.1%{?ext_man}
+
+%files devel-tools
+%{_bindir}/gtk4-builder-tool
+%{_bindir}/gtk4-demo
+%{_bindir}/gtk4-demo-application
+%{_bindir}/gtk4-encode-symbolic-svg
+%{_bindir}/gtk4-icon-browser
+%{_bindir}/gtk4-print-editor
+%{_bindir}/gtk4-widget-factory
+%{_datadir}/applications/org.gtk.Demo4.desktop
+%{_datadir}/applications/org.gtk.IconBrowser4.desktop
+%{_datadir}/applications/org.gtk.PrintEditor4.desktop
+%{_datadir}/applications/org.gtk.WidgetFactory4.desktop
+%dir %{_datadir}/gtk-4.0
+%{_datadir}/gtk-4.0/gtk4builder.rng
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Demo4.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.IconBrowser4.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.Devel.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.WidgetFactory4.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Demo4-symbolic.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.IconBrowser4-symbolic.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.PrintEditor4-symbolic.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.WidgetFactory4-symbolic.svg
+%{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
+%{_datadir}/metainfo/org.gtk.IconBrowser4.appdata.xml
+%{_datadir}/metainfo/org.gtk.PrintEditor4.appdata.xml
+%{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
+%{_mandir}/man1/gtk4-builder-tool.1%{?ext_man}
+%{_mandir}/man1/gtk4-demo.1%{?ext_man}
+%{_mandir}/man1/gtk4-demo-application.1%{?ext_man}
+%{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
+%{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
+%{_mandir}/man1/gtk4-widget-factory.1%{?ext_man}
 
 %files schema
 %{_datadir}/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
@@ -335,47 +387,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 
 %files devel
 %doc CONTRIBUTING.md
-%{_bindir}/gtk4-demo
-%{_bindir}/gtk4-demo-application
-%{_bindir}/gtk4-widget-factory
-%{_mandir}/man1/gtk4-demo.1%{?ext_man}
-%{_mandir}/man1/gtk4-demo-application.1%{?ext_man}
-%{_mandir}/man1/gtk4-widget-factory.1%{?ext_man}
-%{_datadir}/applications/org.gtk.Demo4.desktop
-%{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
-%{_datadir}/applications/org.gtk.WidgetFactory4.desktop
-%{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
-%{_datadir}/metainfo/org.gtk.IconBrowser4.appdata.xml
-%{_datadir}/metainfo/org.gtk.PrintEditor4.appdata.xml
 %{_datadir}/gir-1.0/*.gir
-%dir %{_datadir}/gtk-4.0
-%{_datadir}/gtk-4.0/gtk4builder.rng
-%dir %{_datadir}/gtk-4.0/emoji
-%{_datadir}/gtk-4.0/emoji/de.gresource
-%{_datadir}/gtk-4.0/emoji/es.gresource
-%{_datadir}/gtk-4.0/emoji/fr.gresource
-%{_datadir}/gtk-4.0/emoji/zh.gresource
-%{_datadir}/gtk-4.0/emoji/da.gresource
-%{_datadir}/gtk-4.0/emoji/hu.gresource
-%{_datadir}/gtk-4.0/emoji/it.gresource
-%{_datadir}/gtk-4.0/emoji/ko.gresource
-%{_datadir}/gtk-4.0/emoji/lt.gresource
-%{_datadir}/gtk-4.0/emoji/ms.gresource
-%{_datadir}/gtk-4.0/emoji/nl.gresource
-%{_datadir}/gtk-4.0/emoji/pl.gresource
-%{_datadir}/gtk-4.0/emoji/pt.gresource
-%{_datadir}/gtk-4.0/emoji/ru.gresource
-%{_datadir}/gtk-4.0/emoji/sv.gresource
-%{_datadir}/gtk-4.0/emoji/uk.gresource
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Demo4.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.IconBrowser4.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.WidgetFactory4.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Demo4-symbolic.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.IconBrowser4-symbolic.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.WidgetFactory4-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.Devel.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.PrintEditor4-symbolic.svg
 %{_includedir}/gtk-4.0/
 %{_libdir}/pkgconfig/gtk4.pc
 %{_libdir}/pkgconfig/gtk4-broadway.pc
