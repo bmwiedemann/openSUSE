@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define skip_python2 1
 %define modname dqsegdb
 Name:           python-dqsegdb
@@ -37,13 +38,14 @@ Requires:       python-numpy
 Requires:       python-pyOpenSSL
 Requires:       python-pyRXP
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION For tests
 BuildRequires:  %{python_module lal}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module pytest}
 # /SECTION
+ExcludeArch:    %{ix86}
 
 %python_subpackages
 
