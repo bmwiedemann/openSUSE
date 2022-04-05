@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  3 18:37:48 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.4
+  * Don't try to destroy NULL condition variables 
+
+-------------------------------------------------------------------
+Thu Mar 31 08:53:37 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.4
+  * bugfix release 
+- supersedes p_khmer-compose.diff
+
+-------------------------------------------------------------------
 Fri Dec 10 10:04:50 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.7.3.1

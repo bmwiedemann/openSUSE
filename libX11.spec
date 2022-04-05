@@ -1,7 +1,7 @@
 #
 # spec file for package libX11
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.7.3.1
+Version:        1.7.5
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT
@@ -27,8 +27,6 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:       http://cgit.freedesktop.org/xorg/lib/libX11/
 Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM p_khmer-compose.diff fdo#48595 bnc#143348 -- required compose entries for Khmer
-Patch0:         p_khmer-compose.diff
 # PATCH-FEATURE-UPSTREAM p_xlib_skip_ext_env.diff fdo#48588 bnc#167317 -- Add support for disabling extensions through environment variables
 Patch1:         p_xlib_skip_ext_env.diff
 # PATCH-FIX-UPSTREAM en-locales.diff fdo#48596 bnc#388711 -- Add missing data for more en locales
@@ -135,7 +133,6 @@ in libX11-6 and libX11-xcb1.
 test -f nls/ja.U90/XLC_LOCALE.pre && exit 1
 test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 
-%patch0
 %patch1
 %patch2
 %patch3 -p1
