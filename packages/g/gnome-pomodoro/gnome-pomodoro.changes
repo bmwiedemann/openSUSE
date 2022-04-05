@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  4 10:27:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.0:
+  * Support for GNOME Shell 42
+  * Fixed app hanging at startup
+  * Added Croatian translation
+  * Added json-glib and cairo as dependencies
+- Remove upstreamed patches: c008099ff.patch, d46371e4d.patch
+
+-------------------------------------------------------------------
 Fri Mar 25 09:41:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Supper GNOME 42 (boo#1197506):

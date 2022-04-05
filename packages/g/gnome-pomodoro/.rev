@@ -266,4 +266,12 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
   * Fix blur effect artifacts</comment>
     <requestid>964866</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2148c383b87e1fca939fb1fb60291236</srcmd5>
+    <version>0.21.0</version>
+    <time>1649181329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966866</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-pomodoro
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
@@ -26,10 +26,6 @@ Group:          Productivity/Office/Other
 URL:            https://gnomepomodoro.org
 Source:         https://github.com/codito/%{name}/archive/%{version}.tar.gz
 Source99:       gnome-pomodoro-rpmlintrc
-# PATCH-FIX-UPSTREAM c008099ff.patch boo#1197506 dimstar@opensuse.org -- Mark extension as compatible with gnome-shell 42
-Patch0:         https://github.com/gnome-pomodoro/gnome-pomodoro/commit/c008099ff.patch
-# PATCH-FIX-UPSRTEAM d46371e4d.patch boo#1197506 dimstar@opensuse.org --  Fix GNOME extension error reporting
-Patch1:         https://github.com/gnome-pomodoro/gnome-pomodoro/commit/d46371e4d.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext >= 0.19.6
@@ -40,6 +36,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
@@ -47,6 +44,7 @@ BuildRequires:  pkgconfig(gom-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.16.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0.10
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra) >= 0.30
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(sqlite3)
@@ -84,7 +82,6 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/org.gnome.Pomodoro.d
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
 %posttrans
 gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
