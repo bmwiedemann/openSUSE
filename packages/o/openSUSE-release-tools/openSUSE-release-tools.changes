@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 04 16:03:57 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220404.3e495a4f:
+  * Don't play with the publish flag on freeze, images only switches build flag
+
+-------------------------------------------------------------------
 Mon Apr 04 13:14:11 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220404.60a2101e:
