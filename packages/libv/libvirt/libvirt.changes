@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  1 17:30:25 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 8.2.0
+  - CVE-2022-0897
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-2-0-2022-04-01
+  - Dropped patches:
+    823a62ec-qemu-fix-undefine-crash.patch
+
+-------------------------------------------------------------------
 Thu Mar  3 15:25:50 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Fix segmentation fault in qemuDomainUndefineFlags

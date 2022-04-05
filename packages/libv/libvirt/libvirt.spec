@@ -158,7 +158,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -300,7 +300,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         823a62ec-qemu-fix-undefine-crash.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1393,7 +1392,6 @@ fi
 %doc %{_mandir}/man8/virtlogd.8*
 %doc %{_mandir}/man8/virtlockd.8*
 %doc %{_mandir}/man8/virtproxyd.8*
-%doc %{_mandir}/man7/virkey*.7*
 %if %{with_apparmor}
 %dir %{_sysconfdir}/apparmor.d
 %dir %{_sysconfdir}/apparmor.d/abstractions
@@ -1701,6 +1699,7 @@ fi
 %doc %{_mandir}/man1/virt-xml-validate.1*
 %doc %{_mandir}/man1/virt-pki-query-dn.1*
 %doc %{_mandir}/man1/virt-pki-validate.1*
+%doc %{_mandir}/man7/virkey*.7*
 %{_bindir}/virsh
 %{_bindir}/virt-xml-validate
 %{_bindir}/virt-pki-query-dn

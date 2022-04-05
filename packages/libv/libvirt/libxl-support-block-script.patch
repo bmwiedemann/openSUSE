@@ -7,10 +7,10 @@ and npiv.
 
 For more details, see bsc#954872 and FATE#319810
 
-Index: libvirt-8.1.0/src/libxl/libxl_conf.c
+Index: libvirt-8.2.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-8.1.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-8.1.0/src/libxl/libxl_conf.c
+--- libvirt-8.2.0.orig/src/libxl/libxl_conf.c
++++ libvirt-8.2.0/src/libxl/libxl_conf.c
 @@ -944,6 +944,20 @@ libxlDiskSetDiscard(libxl_device_disk *x
  }
  
