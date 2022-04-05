@@ -1037,4 +1037,15 @@
 </comment>
     <requestid>958463</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>8f88537041ddbe636e53df89f28a1b09</srcmd5>
+    <version>1.19.2</version>
+    <time>1649181353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.19.2
+  * Enhancements:
+    #8180: Make error message upon reaching the free space quota more clear 
+</comment>
+    <requestid>966993</requestid>
+  </revision>
 </revisionlist>
