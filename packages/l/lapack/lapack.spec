@@ -290,7 +290,7 @@ install -m 755 libblas.so.%{version} %{buildroot}/%{_libdir}/blas
 ln -s libblas.so.%{version} %{buildroot}/%{_libdir}/blas/libblas.so.3
 ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so
 # dummy target for update-alternatives
-ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so.3
+ln -s %{_sysconfdir}/alternatives/libblas.so.3 %{buildroot}/%{_libdir}/libblas.so.3
 ## CBLAS
 install -m 644 CBLAS/include/*.h %{buildroot}/%{_includedir}
 install -m 644 libcblas.a %{buildroot}/%{_libdir}
@@ -298,7 +298,7 @@ install -m 755 libcblas.so.%{version} %{buildroot}/%{_libdir}/blas
 ln -s libcblas.so.%{version} %{buildroot}/%{_libdir}/blas/libcblas.so.3
 ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so
 # dummy target for update-alternatives
-ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so.3
+ln -s %{_sysconfdir}/alternatives/libcblas.so.3 %{buildroot}/%{_libdir}/libcblas.so.3
 ## LAPACK
 install -d %{buildroot}/%{_libdir}/lapack
 install -m 644 liblapack.a %{buildroot}/%{_libdir}
@@ -306,14 +306,16 @@ install -m 755 liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack
 ln -s liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapack.so.3
 ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so
 # dummy target for update-alternatives
-ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so.3
+ln -s %{_sysconfdir}/alternatives/liblapack.so.3 %{buildroot}/%{_libdir}/liblapack.so.3
 ## LAPACKE
 cd LAPACKE
 install -m 644 include/*.h %{buildroot}/%{_includedir}
 install -m 644 ../liblapacke.a %{buildroot}/%{_libdir}
-install -m 755 liblapacke.so.%{version} %{buildroot}/%{_libdir}
-ln -s liblapacke.so.%{version} %{buildroot}/%{_libdir}/liblapacke.so.3
-ln -s liblapacke.so.%{version} %{buildroot}/%{_libdir}/liblapacke.so
+install -m 755 liblapacke.so.%{version} %{buildroot}/%{_libdir}/lapack
+ln -s liblapacke.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapacke.so.3
+ln -s lapack/liblapacke.so.%{version} %{buildroot}/%{_libdir}/liblapacke.so
+# dummy target for update-alternatives
+ln -s %{_sysconfdir}/alternatives/liblapacke.so.3 %{buildroot}/%{_libdir}/liblapacke.so.3
 cd ..
 
 %post -n libblas3
@@ -373,9 +375,24 @@ if [ "$1" = 0 ] ; then
   fi
 fi
 
-%post -n liblapacke3 -p /sbin/ldconfig
+%post -n liblapacke3
+%{_sbindir}/update-alternatives --install \
+   %{_libdir}/liblapacke.so.3 liblapacke.so.3 %{_libdir}/lapack/liblapacke.so.3  50
+/sbin/ldconfig
+
+%preun -n liblapacke3
+if [ "$1" = 0 ] ; then
+   %{_sbindir}/update-alternatives --remove liblapacke.so.3 %{_libdir}/lapack/liblapacke.so.3
+fi
 
 %postun -n liblapacke3 -p /sbin/ldconfig
+
+%posttrans -n liblapacke3
+if [ "$1" = 0 ] ; then
+  if ! [ -f %{_libdir}/liblapacke.so.3 ] ; then
+      "%{_sbindir}/update-alternatives" --auto liblapacke.so.3
+  fi
+fi
 
 %files -n liblapack3
 %doc README.md
@@ -408,8 +425,10 @@ fi
 %{_libdir}/libblas.a
 
 %files -n liblapacke3
-%{_libdir}/liblapacke.so.%{version}
-%{_libdir}/liblapacke.so.3
+%{_libdir}/lapack/liblapacke.so.%{version}
+%{_libdir}/lapack/liblapacke.so.3
+%ghost %{_libdir}/liblapacke.so.3
+%ghost %{_sysconfdir}/alternatives/liblapacke.so.3
 
 %files -n lapacke-devel
 %doc LAPACKE/README

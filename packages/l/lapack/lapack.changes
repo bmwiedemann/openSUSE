@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 15 14:20:50 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Consolidate dummy links for update-alternatives bringing them
+  in sync with openblas. Add alternatives for lapacke.
+
+-------------------------------------------------------------------
 Mon Jan  3 08:34:37 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Add Fix-out-of-bounds-read.patch to fix out of bound reads when
