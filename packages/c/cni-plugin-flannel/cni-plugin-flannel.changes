@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Apr  5 08:56:04 UTC 2022 - Enno Gotthold <egotthold@suse.com>
+
+- Change package name to cni-plugin-flannel from flannel-cni-plugin
+
+-------------------------------------------------------------------
+Mon Apr  4 20:19:46 UTC 2022 - Enno Gotthold <egotthold@suse.com>
+
+- Inital packaging of version 1.0.1
