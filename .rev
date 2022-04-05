@@ -312,4 +312,16 @@
   * see included changelog for details</comment>
     <requestid>904417</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>41b19ca50276e4caec6f56947a6ff9cb</srcmd5>
+    <version>2.52.0</version>
+    <time>1649181364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.52.0
+  * wireprotocol is now independent from OCaml version
+  * see included changelog for details
+- Build with dune
+- Provide unison-text package</comment>
+    <requestid>967088</requestid>
+  </revision>
 </revisionlist>
