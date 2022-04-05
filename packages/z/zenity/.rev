@@ -480,4 +480,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920990 from dimstar)</comment>
     <requestid>921662</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>6e7df2af477c88025d9d4fff7ff5c610</srcmd5>
+    <version>3.42.0</version>
+    <time>1649181312</time>
+    <user>dimstar_suse</user>
+    <comment>New stable releasE (forwarded request 966466 from iznogood)</comment>
+    <requestid>966826</requestid>
+  </revision>
 </revisionlist>

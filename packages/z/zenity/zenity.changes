@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  1 16:51:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.0:
+  + tree: Clicking row checks radio/checkboxes.
+  + Fix search column selection with --imagelist.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 16 02:09:35 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
