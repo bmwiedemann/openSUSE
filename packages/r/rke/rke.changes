@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr  5 07:01:26 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to 1.3.9:
+  * BUGFIX:
+    A data-corruption issue is reported in etcd 3.5.0, 3.5.1 and 3.5.2 per upstream etcd advisory. The upstream issue has not yet been resolved and no fix is available.
+    All 1.22 and 1.23 releases of RKE embed etcd v3.5.x. For this reason, we recommend that users avoid deploying new production Kubernetes clusters using these releases until the issue is fixed upstream and we publish a release that includes that fix.
+    Please note that RKE v1.3.8+ creates clusters with v1.22.x by default so we recommend setting kubernetes_version: in cluster.yml to other available Kubernetes versions.
+    For existing clusters created with these versions, upstream recommends:
+      Enable data corruption check with --experimental-initial-corrupt-check flag. The flag is the only reliable automated way of detecting an inconsistency. This mode has seen significant usage in production and is going to be promoted as default in etcd v3.6.
+    Per upstream recommendation as mentioned above, please update your existing clusters to the following new versions introduced with RKE v1.3.9: v1.22.7-rancher1-2 and v1.23.4-rancher1-2. They have the etcd arg experimental-initial-corrupt-check set to true.
+    Note this may not always work etcd-io/etcd#13766 (comment) and we suggest not deploying new clusters on production with these versions.
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. See #1725.
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.22.7-rancher1-2
+        - v1.21.10-rancher1-1
+        - v1.20.15-rancher1-2
+        - v1.19.16-rancher1-4
+        - v1.18.20-rancher1-3
+      - Experimental Kubernetes version
+        - v1.23.4-rancher1-2
+  * New Images in v1.23.4-rancher1-2, v1.22.7-rancher1-2, and v1.21.10-rancher1-1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.23.4-rancher1
+      - rancher/hyperkube:v1.22.7-rancher1
+      - rancher/hyperkube:v1.21.10-rancher1
+
+-------------------------------------------------------------------
 Sat Mar 26 14:55:05 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.17
