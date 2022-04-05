@@ -132,8 +132,8 @@ PreReq:         gcc%{gcc_version}-info
 The system GNU Compiler documentation.
 
 
-# install / update the entries
 
+# install / update the entries
 %post -n gcc-info
 %install_info --info-dir=%{_infodir} --name=cpp --description='The GNU C preprocessor.' %{_infodir}/cpp.info.gz
 %install_info --info-dir=%{_infodir} --name=gcc --description='The GNU Compiler Collection.' %{_infodir}/gcc.info.gz
@@ -390,13 +390,13 @@ Requires:       gcc-d = %{version}
 %description -n gcc-d-64bit
 The system GNU D Compiler 64bit support.
 
-%package -n libgccjit%{libgccjit_sover}-devel
+%package -n libgccjit-devel
 Summary:        Support for embedding GCC inside programs and libraries
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       libgccjit%{libgccjit_sover}-devel-gcc%{gcc_version}
 
-%description -n libgccjit%{libgccjit_sover}-devel
+%description -n libgccjit-devel
 Package contains header files and documentation for GCC JIT front-end.
 
 %prep
@@ -664,7 +664,7 @@ fi
 
 %endif
 
-%files -n libgccjit%{libgccjit_sover}-devel
+%files -n libgccjit-devel
 %defattr(-,root,root)
 # empty - only for the dependency
 
