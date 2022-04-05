@@ -1094,4 +1094,15 @@
     <comment></comment>
     <requestid>954716</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>d1010cdc95aa8c615b36ef6dd8e4c023</srcmd5>
+    <version>42.0</version>
+    <time>1649181312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.0:
+  + Rename display name back to gedit.
+  + Build fix.
+  + Updated translations. (forwarded request 966480 from iznogood)</comment>
+    <requestid>966827</requestid>
+  </revision>
 </revisionlist>

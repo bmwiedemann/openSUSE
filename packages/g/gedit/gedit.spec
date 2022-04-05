@@ -18,13 +18,13 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        41.0
+Version:        42.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit
-Source0:        https://download.gnome.org/sources/gedit/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit/42/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
