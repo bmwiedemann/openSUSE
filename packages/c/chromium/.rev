@@ -4021,4 +4021,14 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>966432</requestid>
   </revision>
+  <revision rev="329" vrev="1">
+    <srcmd5>8654ad3799a3fac2455d363502637300</srcmd5>
+    <version>100.0.4896.75</version>
+    <time>1649181365</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 100.0.4896.75:
+  * CVE-2022-1232: Type Confusion in V8 (boo#1198053)
+</comment>
+    <requestid>967113</requestid>
+  </revision>
 </revisionlist>
