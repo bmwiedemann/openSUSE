@@ -1,7 +1,7 @@
 #
 # spec file for package orthos2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           orthos2
-Version:        1.0.141+git.58cc722
+Version:        1.2.77+git.f8950eb
 Release:        0
 Summary:        Machine administration
 URL:            https://github.com/openSUSE/orthos2
@@ -209,6 +209,8 @@ sudo -i -u orthos /usr/lib/orthos2/manage.py collectstatic --noinput
 %attr(755,orthos,orthos) %dir /srv/www/orthos2
 %ghost %dir /run/%{name}
 %ghost %dir /run/%{name}/ansible
+%ghost %dir /run/%{name}/ansible_lastrun
+%ghost %dir /run/%{name}/ansible_archive
 %attr(755,orthos,orthos) %dir /var/log/orthos2
 %attr(775,orthos,orthos) %dir /var/lib/orthos2
 %attr(775,orthos,orthos) %dir /var/lib/orthos2/archiv
@@ -220,7 +222,7 @@ sudo -i -u orthos /usr/lib/orthos2/manage.py collectstatic --noinput
 # Add whole ansible directory with correct attr for dirs and files
 # Always keep this at the end with defattr
 %defattr(664, orthos, orthos, 775)
-%attr(664,orthos,orthos) /usr/lib/orthos2/ansible
+/usr/lib/orthos2/ansible
 
 %files docs
 %dir %{orthos_web_docs}

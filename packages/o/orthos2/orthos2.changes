@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Mar 15 14:11:56 UTC 2022 - trenn@suse.de
+
+- Update to version 1.2.77+git.f8950eb:
+  * Remove shebang from utils/remote.py and add description how to use if for testing
+  * Set default serial device fro powerpc to hvc
+  * Enhance saver() machine checks to properly update serial console and BMC
+  * Do not allow renaming of machines
+  * Make use of ssh shell call instead of paramiko lib in machinechecks.py
+  * Add remote.py (ssh/scp) to replace paramiko python3 ssh library usage
+  * Add remote.py (ssh/scp) to replace paramiko python3 ssh library usage
+  * Properly update and also remove in empty case ipv6 and other machine options
+  * Properly fix port checking for remote power devices
+  * 'W0611' is cryptic: use '# pylint: disable=unused-import' instead
+  * Fix wrong import order
+  * Fix one bracket too much bug
+  * Fix: orthos2.noarch: E: non-executable-script
+  * orthos2.noarch: W: tmpfile-not-in-filelist /run/orthos2/ansible_lastrun
+  * orthos2.noarch: E: zero-length /usr/lib/python3.8/site-packages/orthos2/utils/models.py
+  * Remove not needed lintrc line
+  * Signal() does not have providing_args attribute in constructor anymore
+  * Use url_has_allowed_host_and_scheme instead of deprecated is_safe_url
+  * Convert old django.conf.url import to new django.url
+  * Remove wrong or unused translation bits and imports
+  * Enhance command line client documentation
+  * If no profile to install is provided, just install the assigned profile
+  * Introduce autoreinstall machine attribute
+  * BMC password field must be a password field.
+  * Remote power device username/pass is mandatory, pass must be a password field
+  * Provide default/fallback arguement for ServerConfig.by_key similar to dict.get
+  * Add URL field to power device to find WebGUI for configuration
+  * Add new use_hostname_as_port fence option
+  * Add per machine cobbler sync
+  * Do not hard code ansible key, this comes from /usr/lib/orthos2/ansible/ansible.cfg
+  * Show "All Machines" not only to superuser, but to all users
+  * We need a title for the cli manpage
+  * Add commandline.rst to doc directory again
+  * Remove suse specifics
+  * Add example orthosrc
+  * Fix regenerate cobbler help -> remove left over
+  * Fix indentation introduced by recent ansible lock fix
+  * sort serial console types in the cli
+  * Always allow to run ansible scan -> fix deadlock
+  * enabled the 'bad-indentation' warning, and made according fixes
+  * enabled the 'missing-format-argument-key' warning and made according fixes
+  * enabled the 'logging not lazy' warning and made according fixes
+  * Enabled the superfluous-parens warning, and made according fixes
+  * enabled line-to-long warning, and shortened lines accordingly.
+  * Enabled wrong-import-order warning and sorted imports accordingly
+  * Switched to lazy %s formating for logging
+  * reenabled some pylint warnings
+  * fixed a comprehension-escape error
+  * Fix HINT: Configure the DEFAULT_AUTO_FIELD setting warning
+  * Calm down pylint by removing unused exception variable
+  * include SyncCobblerDHCP in tasks init.py
+  * Enable and fix unused-variable via pylint
+  * Catch Token.DoesNotExist exception at first token generation
+  * Add missing sync_dhcp signal
+  * Removed unsed imports detected by pylint
+  * Create serial console entries for all domains served by a specific console server
+  * Add config command to show current connection stats
+  * Rework dump script - Use primary keys for only fresh database installation
+  * Fix again wrong attr on ansible directory, just use defattr declared one line above
+  * Diplay the  screen command in the admin interface
+  * Further enhance dump script
+  * Natural keys must be tuples
+  * Use PositiveSallIntererfield for kernel_device_num
+  * Don't delete data for 'Command' sconsoles
+
+-------------------------------------------------------------------
 Sat Oct 16 08:36:47 UTC 2021 - trenn@suse.de
 
 - Update to version 1.0.141+git.58cc722:

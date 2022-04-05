@@ -1,6 +1,6 @@
 <services>
   <service name="obs_scm" mode="localonly">
-    <param name="url">git://github.com/openSUSE/orthos2.git</param>
+    <param name="url">https://github.com/openSUSE/orthos2.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="versionrewrite-pattern">v(.*)</param>
