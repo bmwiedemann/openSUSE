@@ -1,7 +1,7 @@
 #
 # spec file for package opam
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           opam
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          System/Packages
 URL:            https://opam.ocaml.org/
-Source:         %{name}-%{version}.tar.xz
+Source:         %name-%version.tar.xz
 Patch0:         opam.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20211027
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(cudf)
@@ -42,7 +42,7 @@ BuildRequires:  ocamlfind(opam-file-format)
 BuildRequires:  ocamlfind(re)
 BuildRequires:  ocamlfind(unix)
 
-Requires:       %{name}-installer%{?_isa} = %{version}-%{release}
+Requires:       %name-installer%{?_isa} = %version-%release
 
 Requires:       bubblewrap
 
@@ -70,20 +70,20 @@ Git-friendly development workflow.
 %package installer
 Summary:        Standalone tool for opam install files
 Group:          System/Packages
-Requires:       %{name} = %{version}-%{release}
+Requires:       %name = %version-%release
 
 %description installer
 Handles (un)installation of package files following instructions from
 OPAM *.install files.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -107,14 +107,14 @@ dune_release_pkgs='opam-admin,opam-client,opam-core,opam-format,opam-installer,o
 %ocaml_dune_install
 %ocaml_create_file_list
 
-%files -f %{name}.files
-%{_bindir}/opam
-%{_bindir}/opam-admin.top
-%{_mandir}/man*/*
+%files -f %name.files
+%_bindir/opam
+%_bindir/opam-admin.top
+%_mandir/man*/*
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %files installer
-%{_bindir}/opam-installer
+%_bindir/opam-installer
 
 %changelog
