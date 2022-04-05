@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - olaf@aepfle.de
+
+- Update to version 2.52.0
+  * wireprotocol is now independent from OCaml version
+  * see included changelog for details
+- Build with dune
+- Provide unison-text package
+
+-------------------------------------------------------------------
 Thu Jun 24 15:15:15 UTC 2021 - olaf@aepfle.de
 
 - Update to version 2.51.4
