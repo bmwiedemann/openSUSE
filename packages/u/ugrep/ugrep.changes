@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr  2 14:32:47 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.7.7:
+  * New --hexdump options
+  * --ignore-files improvement
+  * speed improvements
+  * New option --min-count
+  * New complementary options --min-depth, --max-depth,
+    --min-line and --max-line which are added for consistency with
+    the updated options --min-count and --max-count
+  * Updated the --min-count option, which can now be combined with
+    any other option except with -v (--invert-match)
+  * Updated option -K (--range) to take a MAX argument instead of a
+    FIRST argument for consistency with other min/max options
+  * Recursive searching sysfd, such as /proc and /sys, no longer
+    blocks on special files/devices
+  * Fixed colorization of option -v when used with context options
+    -A, -B and -C
+  * Fixed option -r when combined with argument - (read standard
+    input), which does both, like GNU grep
+  * Updated --stats reporting and other minor improvements
+
+-------------------------------------------------------------------
 Fri Jan 28 05:13:03 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 3.7.1:
