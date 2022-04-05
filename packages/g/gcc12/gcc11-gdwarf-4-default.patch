@@ -1,0 +1,29 @@
+diff --git a/gcc/common.opt b/gcc/common.opt
+index a75b44ee47e..2d33861ad1f 100644
+--- a/gcc/common.opt
++++ b/gcc/common.opt
+@@ -3175,7 +3175,7 @@ Common Driver JoinedOrMissing Negative(gdwarf-)
+ Generate debug information in default version of DWARF format.
+ 
+ gdwarf-
+-Common Driver Joined UInteger Var(dwarf_version) Init(5) Negative(gstabs)
++Common Driver Joined UInteger Var(dwarf_version) Init(4) Negative(gstabs)
+ Generate debug information in DWARF v2 (or later) format.
+ 
+ gdwarf32
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 4a87b9ef8e8..4f1adcfe621 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -9638,9 +9638,8 @@ possible.
+ @opindex gdwarf
+ Produce debugging information in DWARF format (if that is supported).
+ The value of @var{version} may be either 2, 3, 4 or 5; the default
+-version for most targets is 5 (with the exception of VxWorks, TPF and
+-Darwin/Mac OS X, which default to version 2, and AIX, which defaults
+-to version 4).
++version for most targets is 4 (with the exception of VxWorks, TPF and
++Darwin/Mac OS X, which default to version 2).
+ 
+ Note that with DWARF Version 2, some ports require and always
+ use some non-conflicting DWARF 3 extensions in the unwind tables.

@@ -1,0 +1,18 @@
+Index: gcc/Makefile.in
+===================================================================
+--- gcc/Makefile.in	(revision 255776)
++++ gcc/Makefile.in	(working copy)
+@@ -3066,13 +3066,6 @@ stmp-fixinc: gsyslimits.h macro_list fix
+ 	    sysroot_headers_suffix=`echo $${ml} | sed -e 's/;.*$$//'`; \
+ 	    multi_dir=`echo $${ml} | sed -e 's/^[^;]*;//'`; \
+ 	    fix_dir=include-fixed$${multi_dir}; \
+-	    if ! $(inhibit_libc) && test ! -d ${BUILD_SYSTEM_HEADER_DIR}; then \
+-	      echo The directory that should contain system headers does not exist: >&2 ; \
+-	      echo "  ${BUILD_SYSTEM_HEADER_DIR}" >&2 ; \
+-	      tooldir_sysinc=`echo "${gcc_tooldir}/sys-include" | sed -e :a -e "s,[^/]*/\.\.\/,," -e ta`; \
+-	      if test "x${BUILD_SYSTEM_HEADER_DIR}" = "x$${tooldir_sysinc}"; \
+-	      then sleep 1; else exit 1; fi; \
+-	    fi; \
+ 	    $(mkinstalldirs) $${fix_dir}; \
+ 	    chmod a+rx $${fix_dir} || true; \
+ 	    (TARGET_MACHINE='$(target)'; srcdir=`cd $(srcdir); ${PWD_COMMAND}`; \
