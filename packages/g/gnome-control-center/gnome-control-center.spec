@@ -37,9 +37,15 @@ Source0:        https://download.gnome.org/sources/gnome-control-center/42/%{nam
 # PATCH-NEEDS-REBASE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running Was:PATCH-FIX-OPENSUSE
 Patch0:         gnome-control-center-disable-error-message-for-NM.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-reload-vpn-plugins.patch glgo#GNOME/gnome-control-center!1263 sckang@suse.com -- network/connection-editor: always load all available VPN plugins
-Patch3:         gnome-control-center-reload-vpn-plugins.patch
+Patch1:         gnome-control-center-reload-vpn-plugins.patch
 # PATCH-FIX_UPSTREAM gnome-control-center-goa-helper-on-X11.patch glgo#GNOME/gnome-control-center!1651 badshah400@gmail.com -- Fix GOA helper not showing up on X11
-Patch4:         gnome-control-center-goa-helper-on-X11.patch
+Patch2:         gnome-control-center-goa-helper-on-X11.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-42.0-fix-sharing-panel-crash.patch -- luc14n0@opensuse.org
+#  Sharing panel crashes when inicialized due to getlogin() returning NULL rather than the username.
+#  Upstream issue: https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/1727
+#  Bug report: https://bugzilla.opensuse.org/show_bug.cgi?id=1197529
+#  Based on commit: c2f088ac5220f3a64edc2c15e60fc0d7f1dfc9e5
+Patch3:         gnome-control-center-42.0-fix-sharing-panel-crash.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -104,6 +110,15 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi) >= 1.2
+## CONDITIONAL BUILD REQUIREMENTS
+%if %{with wacom}
+BuildRequires:  pkgconfig(clutter-1.0) >= 1.11.3
+BuildRequires:  pkgconfig(libwacom) >= 0.7
+%endif
+%if %{with ibus}
+BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.2
+%endif
+##
 Requires:       gnome-settings-daemon >= 41
 # needed for universal access panel
 Requires:       gnome-themes-accessibility
@@ -122,13 +137,6 @@ Recommends:     dbus(com.intel.dleyna-server)
 Recommends:     system-config-printer-dbus-service
 # For the power panel
 Recommends:     power-profiles-daemon
-%if %{with wacom}
-BuildRequires:  pkgconfig(clutter-1.0) >= 1.11.3
-BuildRequires:  pkgconfig(libwacom) >= 0.7
-%endif
-%if %{with ibus}
-BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.2
-%endif
 
 %description
 The control center is GNOME's main interface for configuration of
@@ -182,8 +190,9 @@ GNOME control center.
 %setup -q
 # Patch needs rebase
 #%%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000

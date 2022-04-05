@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 30 05:25:34 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add gnome-control-center-42.0-fix-sharing-panel-crash.patch,
+  based on commit c2f088ac5220f3a64edc2c15e60fc0d7f1dfc9e5, to fix
+  Sharing panel segfaulting due to getlogin() returning NULL rather
+  than the username (boo#1197529,
+  glgo#GNOME/gnome-control-center!1727).
+
+-------------------------------------------------------------------
 Tue Mar 29 13:54:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add gnome-control-center-goa-helper-on-X11.patch: Fix GOA helper

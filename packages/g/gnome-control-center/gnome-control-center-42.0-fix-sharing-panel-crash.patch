@@ -1,0 +1,48 @@
+From c2f088ac5220f3a64edc2c15e60fc0d7f1dfc9e5 Mon Sep 17 00:00:00 2001
+From: Hu Jialun <hujialun@comp.nus.edu.sg>
+Date: Mon, 28 Mar 2022 14:35:21 +0800
+Subject: [PATCH] sharing/remote-desktop: Fallback when getlogin() fails
+
+getlogin() can fail for several reasons as detailed in the man page, and
+the current behaviour is a segmentation fault when it fails and returns
+NULL.
+
+Make it fallback to getpwuid(getuid())->pw_name when that happens to
+prevent crashing.
+---
+ panels/sharing/cc-sharing-panel.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/panels/sharing/cc-sharing-panel.c b/panels/sharing/cc-sharing-panel.c
+index d126a2236..e65ebf92d 100644
+--- a/panels/sharing/cc-sharing-panel.c
++++ b/panels/sharing/cc-sharing-panel.c
+@@ -45,6 +45,9 @@
+ 
+ #include <config.h>
+ 
++#include <unistd.h>
++#include <pwd.h>
++
+ static void cc_sharing_panel_setup_label_with_hostname (CcSharingPanel *self, GtkWidget *label);
+ static GtkWidget *cc_sharing_panel_new_media_sharing_row (const char     *uri_or_path,
+                                                           CcSharingPanel *self);
+@@ -1372,9 +1375,13 @@ cc_sharing_panel_setup_remote_desktop_dialog (CcSharingPanel *self)
+                             G_CALLBACK (remote_desktop_credentials_changed),
+                             self);
+ 
+-  if (username == NULL)
++  if (username == NULL) {
++    username = getlogin ();
++    if (username == NULL)
++      username = getpwuid (getuid ())->pw_name;
+     gtk_editable_set_text (GTK_EDITABLE (self->remote_desktop_username_entry),
+-                           getlogin ());
++                           username);
++  }
+   if (password == NULL)
+     gtk_editable_set_text (GTK_EDITABLE (self->remote_desktop_password_entry),
+                            pw_generate ());
+-- 
+GitLab
+

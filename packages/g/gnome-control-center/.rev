@@ -1793,4 +1793,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment></comment>
     <requestid>965765</requestid>
   </revision>
+  <revision rev="212" vrev="3">
+    <srcmd5>147597520398ff36391220f7bacade86</srcmd5>
+    <version>42.0</version>
+    <time>1649181313</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 966519 from iznogood)</comment>
+    <requestid>966828</requestid>
+  </revision>
 </revisionlist>
