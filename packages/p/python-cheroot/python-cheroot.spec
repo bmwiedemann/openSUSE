@@ -112,7 +112,10 @@ pushd testclean
 %python_expand pytest_opts+=" --ignore  %{buildroot}%{$python_sitelib}/cheroot/test/test_wsgi.py"
 %endif
 # test_tls_client_auth[...-False-localhost-builtin] fails ocassionally on server-side OBS
-%pytest --pyargs cheroot $pytest_opts -k "not (test_tls_client_auth and False-localhost-builtin)"
+donttest="(test_tls_client_auth and False-localhost-builtin)"
+# https://github.com/cherrypy/cheroot/issues/502
+donttest="$donttest or test_high_number_of_file_descriptors"
+%pytest --pyargs cheroot $pytest_opts -k "not ($donttest)"
 popd
 
 %pre
