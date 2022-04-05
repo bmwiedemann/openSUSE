@@ -1,7 +1,7 @@
 #
 # spec file for package ccache
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ccache
-Version:        4.5.1
+Version:        4.6
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -25,7 +25,6 @@ URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch1:         xxhash-avoid-armv6-unaligned-access.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libzstd-devel >= 1.1.2

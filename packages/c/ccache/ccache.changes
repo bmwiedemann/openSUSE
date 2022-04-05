@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr  3 17:54:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ccache 4.6:
+  * Add an option to use a bearer token with the HTTP backend.
+  * Add support for caching standard output from the compiler.
+  * Add a new --inspect option for debugging cache entries,
+    replacing the previous --dump-manifest and --dump-result
+    options
+  * Enable HTTP keep-alive by default
+  * Improve detection of the .incbin assembler directive to reduce
+    false positives
+  * Ccache now verifies that /run/user/<UID>/ccache-tmp is writable
+    before using it for temporary files
+  * Fix statistics output for secondary storage
+  * Fix a problem when copying a cache entry from secondary storage
+    into an empty primary storage.
+  * The process umask is now respected when making hard linked files
+    read only
+  * A forced recache is no longer considered a “direct cache miss”
+  * Documentation updates
+- drop xxhash-avoid-armv6-unaligned-access.patch, included
+
+-------------------------------------------------------------------
 Fri Dec 17 15:25:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add xxhash-avoid-armv6-unaligned-access.patch (bsc#1193317) 
