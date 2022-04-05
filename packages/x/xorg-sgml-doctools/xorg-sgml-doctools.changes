@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  4 10:35:57 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.12 
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen: add default patch prefix
+  * configure: Drop AM_MAINTAINER_MODE
+  * nextfullreldate is clearly not 2013
+  * Set generate.consistent.ids in xsl stylesheets for more repeatable builds
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+
+-------------------------------------------------------------------
 Wed Jun  6 23:21:21 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 1.11
