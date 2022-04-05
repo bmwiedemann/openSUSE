@@ -1,5 +1,5 @@
 #
-# spec file for package ruby3.1
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,7 +16,12 @@
 #
 
 
-Name:           ruby3.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "testsuite"
+%define psuffix -testsuite
+%else
+%define psuffix %{nil}
+%endif
 
 ####
 #!!!
@@ -24,38 +29,39 @@ Name:           ruby3.1
 #!!!
 ####
 
-%define patch_level p0
+%global patch_level p0
+Name:           ruby3.1%{psuffix}
 Version:        3.1.1
 Release:        0
-%define pkg_version %{version}
+%global pkg_version %{version}
 # make the exported API version explicit
-%define api_version 3.1.0
-%define rb_binary_suffix .ruby3.1
-%define rb_soname ruby3.1
-%define _rb_ua_weight 31
+%global api_version 3.1.0
+%global rb_binary_suffix .ruby3.1
+%global rb_soname ruby3.1
+%global _rb_ua_weight 31
 
 # ruby-macros and ruby-common version
-%define rpm_macros_version 3
+%global rpm_macros_version 3
 
 #
 %define libname libruby3_1-3_1
 # keep in sync with macro file!
-%define rb_ver  %{api_version}
-%define rb_arch %(echo %{_target_cpu}-linux-gnu | sed -e "s/ppc/powerpc/")
-%define rb_arch_short %(echo %{_target_cpu}-linux | sed -e "s/ppc/powerpc/ ; s/i[0-9]86/x86/")
-%define rb_libdir                         %{_libdir}/ruby/%{rb_ver}/
-%define rb_archdir                        %{_libdir}/ruby/%{rb_ver}/%{rb_arch}
-%define rb_extdir                         %{_libdir}/ruby/gems/%{rb_ver}/extensions/
-%define rb_extarchdir                     %{_libdir}/ruby/gems/%{rb_ver}/extensions/%{rb_arch_short}/
-%define rb_extversionedarchdir            %{_libdir}/ruby/gems/%{rb_ver}/extensions/%{rb_arch_short}/%{rb_ver}
-%define rb_extdocdir                      %{_libdir}/ruby/gems/%{rb_ver}/doc/extensions
-%define rb_extarchdocdir                  %{_libdir}/ruby/gems/%{rb_ver}/doc/extensions/%{rb_arch_short}
+%global rb_ver  %{api_version}
+%global rb_arch %(echo %{_target_cpu}-linux-gnu | sed -e "s/ppc/powerpc/")
+%global rb_arch_short %(echo %{_target_cpu}-linux | sed -e "s/ppc/powerpc/ ; s/i[0-9]86/x86/")
+%global rb_libdir                         %{_libdir}/ruby/%{rb_ver}/
+%global rb_archdir                        %{_libdir}/ruby/%{rb_ver}/%{rb_arch}
+%global rb_extdir                         %{_libdir}/ruby/gems/%{rb_ver}/extensions/
+%global rb_extarchdir                     %{_libdir}/ruby/gems/%{rb_ver}/extensions/%{rb_arch_short}/
+%global rb_extversionedarchdir            %{_libdir}/ruby/gems/%{rb_ver}/extensions/%{rb_arch_short}/%{rb_ver}
+%global rb_extdocdir                      %{_libdir}/ruby/gems/%{rb_ver}/doc/extensions
+%global rb_extarchdocdir                  %{_libdir}/ruby/gems/%{rb_ver}/doc/extensions/%{rb_arch_short}
 
 %if "%{rb_default_ruby_suffix}" == "%{rb_soname}"
-%define is_default_ruby 1
-%define rb_ua_weight 1%{_rb_ua_weight}
+%global is_default_ruby 1
+%global rb_ua_weight 1%{_rb_ua_weight}
 %else
-%define rb_ua_weight %{_rb_ua_weight}
+%global rb_ua_weight %{_rb_ua_weight}
 %endif
 
 %define ua_binaries bundle bundler racc rake rbs rdoc ri typeprof rdbg
@@ -65,8 +71,6 @@ Release:        0
 %ifarch %ix86 aarch64 x86_64 ppc64le s390x
 %define use_valgrind 1
 %endif
-# turn on testsuite by default. we dont hard fail anyway.
-%bcond_without run_tests
 %bcond_without build_docs
 %if 0%{?suse_version} >= 1500
 %bcond_without jemalloc
@@ -81,13 +85,11 @@ Release:        0
 #
 URL:            https://www.ruby-lang.org/
 Source:         https://cache.ruby-lang.org/pub/ruby/3.1/ruby-%{pkg_version}.tar.xz
-#
-Source3:        %{name}.macros
-Source4:        %{name}-default.macros
+Source3:        %{rb_soname}.macros
+Source4:        %{rb_soname}-default.macros
 Source98:       series
-Source99:       %{name}-rpmlintrc
+Source99:       %{rb_soname}-rpmlintrc
 Patch:          use-pie.patch
-#
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  binutils-gold
@@ -109,12 +111,16 @@ BuildRequires:  ruby
 BuildRequires:  libffi-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  netcfg
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
+BuildRequires:  update-alternatives
+%if "%{flavor}" == "testsuite"
+BuildRequires:  netcfg
 BuildRequires:  procps
-BuildRequires:  readline-devel
+BuildRequires:  ruby3.1
 BuildRequires:  timezone
+%endif
+BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
 %if 0%{?use_valgrind}
 %if 0%{?suse_version} < 1550
@@ -139,10 +145,7 @@ Provides:       %{name}-stdlib = %{version}-%{release}
 Obsoletes:      %{name}-stdlib < %{version}-%{release}
 %endif
 PreReq:         update-alternatives
-BuildRequires:  update-alternatives
 Requires:       ruby-common
-
-#
 Summary:        An Interpreted Object-Oriented Scripting Language
 License:        BSD-2-Clause OR Ruby
 Group:          Development/Languages/Ruby
@@ -251,9 +254,9 @@ BuildArch:      noarch
 Example scripts for ruby
 
 %package test-suite
-Requires:       %{name} = %{version}
 Summary:        An Interpreted Object-Oriented Scripting Language
 Group:          Development/Languages/Ruby
+Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description test-suite
@@ -361,6 +364,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -std=gnu99"
 make %{?_smp_mflags} all V=1 STRIP=/bin/true
 
 %install
+%if "%{flavor}" != "testsuite"
 %makeinstall V=1 STRIP=/bin/true
 perl -p -i -e 's|#!/usr/local/bin/ruby|%{_bindir}/ruby|g' $(grep -r -l /usr/local/bin/ruby %{buildroot})
 echo "%defattr(-,root,root,-)" > devel-extra-excludes
@@ -374,13 +378,13 @@ done
 
 # Create gem native extensions dir
 # use shell scripting here as we're executing the just installed binary
-%define rb_binary %{buildroot}/usr/bin/ruby -I %{buildroot}%{rb_libdir} -I %{buildroot}%{rb_archdir}
+%define rb_binary %{buildroot}%{_bindir}/ruby -I %{buildroot}%{rb_libdir} -I %{buildroot}%{rb_archdir}
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 
-install -D -m 0644 %{S:3} %{buildroot}%{_rpmmacrodir}/macros.suse-ruby3.1
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.suse-ruby3.1
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 %if 0%{?is_default_ruby}
-  install -D -m 0644 %{S:4} %{buildroot}%{_rpmmacrodir}/macros.suse-ruby3.1-default
+  install -D -m 0644 %{SOURCE4} %{buildroot}%{_rpmmacrodir}/macros.suse-ruby3.1-default
   for bin in %{buildroot}%{_bindir}/{erb,gem,irb,ruby}%{rb_binary_suffix} ; do
     # yes really hard links
     ln $bin ${bin%%%{rb_binary_suffix}}
@@ -414,21 +418,25 @@ find %{buildroot} -type f -name \*.pem -delete
 
 %post
 for bin in %{ua_binaries}; do
-  /usr/sbin/update-alternatives --install \
+  %{_sbindir}/update-alternatives --install \
     %{_bindir}/$bin $bin %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
-  /usr/sbin/update-alternatives --install \
+  %{_sbindir}/update-alternatives --install \
     %{_bindir}/$bin%{rb_binary_suffix} $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
 done
 
 %preun
 if [ "$1" = 0 ] ; then
   for bin in %{ua_binaries}; do
-    /usr/sbin/update-alternatives --remove $bin %{_bindir}/$bin.ruby%{rb_binary_suffix}
-    /usr/sbin/update-alternatives --remove $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix}
+    %{_sbindir}/update-alternatives --remove $bin %{_bindir}/$bin.ruby%{rb_binary_suffix}
+    %{_sbindir}/update-alternatives --remove $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix}
   done
 fi
 
-%if %{with run_tests}
+%post   -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
+%endif
+
+%if "%{flavor}" == "testsuite"
 %check
 DISABLE_TESTS=""
 # Allow MD5 in OpenSSL.
@@ -436,11 +444,9 @@ DISABLE_TESTS=""
 export OPENSSL_ENABLE_MD5_VERIFY=1
 export LD_LIBRARY_PATH="$PWD"
 export PATH=%{buildroot}%{_bindir}:$PATH
-make check V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x test_rinda -x test_address_resolve -x test_tcp " ||:
-%endif
+make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x test_rinda -x test_address_resolve -x test_tcp -x test_gem_installer "
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%else
 
 %files
 %ghost %{_sysconfdir}/alternatives/bundle
@@ -474,13 +480,13 @@ make check V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x t
 %{_bindir}/ruby*
 %{_bindir}/racc*
 %{_bindir}/typeprof*
-%{_mandir}/man1/irb*.1*
-%{_mandir}/man1/erb*.1*
+%{_mandir}/man1/irb*.1%{?ext_man}
+%{_mandir}/man1/erb*.1%{?ext_man}
 #{_mandir}/man1/rake*.1*
-%{_mandir}/man1/ri*.1*
-%{_mandir}/man1/ruby*.1*
-%doc ChangeLog  KNOWNBUGS.rb NEWS.md README.EXT README.EXT.ja README.ja.md README.md CONTRIBUTING.md
-%license COPYING  COPYING.ja  GPL  LEGAL BSDL
+%{_mandir}/man1/ri*.1%{?ext_man}
+%{_mandir}/man1/ruby*.1%{?ext_man}
+%doc ChangeLog KNOWNBUGS.rb NEWS.md README.EXT README.EXT.ja README.ja.md README.md CONTRIBUTING.md
+%license COPYING COPYING.ja GPL LEGAL BSDL
 %{_rpmmacrodir}/macros.suse-ruby3.1*
 
 %if %{with separate_stdlib}
@@ -488,11 +494,11 @@ make check V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x t
 %endif
 %{_libdir}/ruby/
 %exclude %{_libdir}/ruby/gems/%{api_version}/gems/*/test/
-%dir %rb_extdir
-%dir %rb_extarchdir
-%dir %rb_extversionedarchdir
-%dir %rb_extdocdir
-%dir %rb_extarchdocdir
+%dir %{rb_extdir}
+%dir %{rb_extarchdir}
+%dir %{rb_extversionedarchdir}
+%dir %{rb_extdocdir}
+%dir %{rb_extarchdocdir}
 
 %files -n %{libname}
 %{_libdir}/libruby*.so.*
@@ -511,6 +517,7 @@ make check V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_TESTS" TESTS="-x t
 %files doc-ri
 %dir %{_datadir}/ri/
 %{_datadir}/ri/%{rb_ver}/
+%endif
 %endif
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 29 17:41:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- move tests into separate testsuite _multibuild:
+  * reduces buildrequires on main package (procps which is behind systemd:mini)
+  * reduces depth of distro rebuild chain
+- exclude more tests that require network
+- make test failures fatal, they pass now
+- light subset of spec-cleaner cleanups 
+- prefer %%global over %%define, they get evaluated at parse time
+
+-------------------------------------------------------------------
 Tue Mar  8 08:39:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use valgrind for more supported platforms
