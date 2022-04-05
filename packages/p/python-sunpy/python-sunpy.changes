@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  5 10:11:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add sunpy-test-ignore-warnings.patch
+  * Ignore Python 3.10 distutils usage
+  * Add hypothesis profile for slow obs test suite executions
+  * Ignore leap second warnings for reproducible tests
+    gh#sunpy/sunpy#6030
+
+-------------------------------------------------------------------
 Sat Apr  2 21:01:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.5

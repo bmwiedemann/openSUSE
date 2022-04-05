@@ -26,6 +26,8 @@ License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 Source100:      python-sunpy-rpmlintrc
+# PATCH-FIX-OPENSSUSE sunpy-test-ignore-warnings.patch -- g#sunpy/sunpy#6030
+Patch1:         sunpy-test-ignore-warnings.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module asdf >= 2.6}
 BuildRequires:  %{python_module astropy >= 4.2}
@@ -120,8 +122,6 @@ SunPy is a Python library for solar physics data analysis and visualization.
 %prep
 %autosetup -p1 -n sunpy-%{version}
 sed -i -e '/^#!\//, 1d' sunpy/extern/appdirs.py
-# Ignore Python 3.10 deprecation warning about distutils
-sed -i '/ignore:Distutils/ a \    ignore:The distutils.sysconfig module:DeprecationWarning' setup.cfg
 chmod -x sunpy/data/test/cor1_20090615_000500_s4c1A.fts
 
 %build
