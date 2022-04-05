@@ -1497,6 +1497,9 @@ Macros:
 %source_date_epoch_from_changelog Y
 # clamp_mtime_to_source_date_epoch Y
 
+# define which llvm package builds the system libraries
+%product_libs_llvm_ver 14
+
 # define which gcc package builds the system libraries
 %product_libs_gcc_ver 11
 # The following shlibs have latest versions built from GCC 6 sources
