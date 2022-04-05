@@ -33,6 +33,7 @@ Source2:        fcitx-README.suse
 Source3:        xim.fcitx.suse.template
 Source8:        openSUSE-themes.tar.gz
 Source9:        macros.%{name}
+Source99:       baselibs.conf
 Source100:      https://download.fcitx-im.org/fcitx/%{name}-%{version}_dict.tar.xz.sig
 # PATCH-FIX-OPENSUSE fcitx-autostart-check-INPUT_METHOD.patch boo#947576
 Patch2:         fcitx-autostart-check-INPUT_METHOD.patch
@@ -71,7 +72,7 @@ BuildRequires:  pkgconfig(xkbfile)
 Requires:       %{name}-branding = %{version}
 Recommends:     %{name}-pinyin = %{version}-%{release}
 Recommends:     %{name}-table = %{version}-%{release}
-# These libraries are dlopen-ed in fcitx at runtime 
+# These libraries are dlopen-ed in fcitx at runtime
 # for spell-checking for keyboard users. ld can't find
 # them, so explicitly recommends.
 Recommends:     libenchant1
@@ -119,8 +120,8 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
 Requires:       libfcitx-config4 = %{version}
 Requires:       libfcitx-core0 = %{version}
-Requires:       libfcitx-utils0 = %{version}
 Requires:       libfcitx-gclient1 = %{version}
+Requires:       libfcitx-utils0 = %{version}
 
 %description devel
 Development header files for Fcitx input method framework.
