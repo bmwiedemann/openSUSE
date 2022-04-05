@@ -869,4 +869,12 @@
   * api-change:``ec2``: Adds the Cascade parameter to the DeleteIpam API.</comment>
     <requestid>963729</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>eb7c8474b9e5524b0d1a10a6faeb1fee</srcmd5>
+    <version>1.24.32</version>
+    <time>1649181308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966808</requestid>
+  </revision>
 </revisionlist>
