@@ -1,7 +1,7 @@
 #
 # spec file for package libspnav
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2009,2011 Herbert Graeber
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,13 @@
 
 
 Name:           libspnav
-Version:        0.2.3
+Version:        1.0
 Release:        0
 Summary:        Library for accessing 3D connexion devices
 License:        BSD-3-Clause
 Group:          Hardware/Other
-URL:            http://sourceforge.net/projects/spacenav/
-Source:         https://github.com/FreeSpacenav/%{name}/archive/%{name}-%{version}.tar.gz
-Source1:        LICENSE
-Patch0:         libspnav-0.2.3-lib_links.patch
+URL:            https://sourceforge.net/projects/spacenav/
+Source0:        https://github.com/FreeSpacenav/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 
@@ -83,31 +81,36 @@ magellan API can continue using it with a free library without the
 restrictions of the official SDK.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
-cp %{SOURCE1} .
+%autosetup -p1
+
+# Set libdir properly
+sed -i 's#libdir=lib#libdir=%{_lib}#' configure
 
 %build
-# Set libdir properly
-sed -i "s/libdir=lib/libdir=%{_lib}/g" configure
 %configure
 sed -i "s/CFLAGS =/CFLAGS +=/g" Makefile
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-rm -f %{buildroot}%{_libdir}/*.a
+
+rm %{buildroot}%{_libdir}/libspnav.a
+
+# the pkgconfig file shall be in %%_libdir/pkgconfig
+mkdir -p %{buildroot}%{_libdir}/pkgconfig
+mv %{buildroot}%{_datadir}/pkgconfig/spnav.pc %{buildroot}%{_libdir}/pkgconfig/
 
 %post -n libspnav0 -p /sbin/ldconfig
 %postun -n libspnav0 -p /sbin/ldconfig
 
 %files -n libspnav0
 %license LICENSE
-%doc README examples
+%doc README.md examples
 %{_libdir}/libspnav.so.*
 
 %files devel
 %{_includedir}/*.h
 %{_libdir}/libspnav.so
+%{_libdir}/pkgconfig/spnav.pc
 
 %changelog

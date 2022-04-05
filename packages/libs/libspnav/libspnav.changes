@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr  5 14:04:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.0:
+  * Added support for spacenav protocol v1.
+  * Added new API entry points, for the new capabilities
+    introduced with protocol v1, including device queries,
+    configuration management, new events, device identifier
+    enumeration, etc.
+  * Added utility functions for processing spacenav motion inputs
+    and computing transformation matrices for object or view
+    manipulation.
+  * Added pkg-config file.
+  * Added new example program, showing how to use 6dof input to
+    control the view for flying in a 3D scene. This complements
+    the cube example which shows how to manipulate 3D objects.
+    Ported both examples to use the new helper functions.
+  * Added API documentation under doc/manual.md
+- Drop obsolete patch:
+  * libspnav-0.2.3-lib_links.patch
+
+-------------------------------------------------------------------
 Tue Aug 28 20:57:44 UTC 2018 - Herbert Graeber <herbert@graeber-clan.de> 0.2.3
 
 - The project moved its official repository to github
