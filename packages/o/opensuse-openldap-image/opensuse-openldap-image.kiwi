@@ -52,7 +52,6 @@
   <packages type="bootstrap">
     <package name="openldap2"/>
     <package name="openldap2-client"/>
-    <package name="openldap2-ppolicy-check-password"/>
     <package name="openssl"/>
     <package name="timezone"/>
     <package name="mandoc"/>
