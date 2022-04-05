@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 05 06:52:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.25.0:
+  * support for gzip with new gzip=true echo param (or gzip=10 for 10%) (#541)
+
+-------------------------------------------------------------------
 Mon Mar 28 07:10:20 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.24.0:
