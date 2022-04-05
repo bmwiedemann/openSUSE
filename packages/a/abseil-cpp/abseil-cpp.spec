@@ -17,6 +17,7 @@
 
 
 Name:           abseil-cpp
+%define lname	libabsl2111_0_0
 Version:        20211102.0
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
@@ -36,9 +37,19 @@ Abseil is a collection of C++11 libraries which augment the C++
 standard library. It also provides features incorporated into C++14
 and C++17 standards.
 
+%package -n %{lname}
+Summary:        C++11 libraries which augment the C++ stdlib
+Obsoletes:      abseil-cpp < %version-%release
+Provides:       abseil-cpp = %version-%release
+
+%description -n %{lname}
+Abseil is a collection of C++11 libraries which augment the C++
+standard library. It also provides features incorporated into C++14
+and C++17 standards.
+
 %package devel
 Summary:        Header files for Abseil
-Requires:       %{name} = %{version}
+Requires:       %{lname} = %{version}
 
 %description devel
 Abseil is a collection of C++11 libraries which augment the C++
@@ -49,11 +60,6 @@ This package contains headers and build system files for it.
 %autosetup -p1
 
 %build
-# let rpm/OBS have some versioning to work with when it comes to upgrades and rebuilds
-cat >"%{_builddir}/abslx.sym" <<-EOF
-	ABSL_%{version} { global: *; };
-EOF
-%define build_ldflags -Wl,--version-script=%{_builddir}/abslx.sym
 %if 0%{suse_version} < 1500
 export CXX=g++-11
 %endif
@@ -64,10 +70,10 @@ export CXX=g++-11
 %cmake_install
 %fdupes %{buildroot}/%{_prefix}
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post   -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%files
+%files -n %{lname}
 %license LICENSE
 %{_libdir}/libabsl_*.so.*
 
