@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  3 14:43:52 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.11:
+  * Add IBM858, ISO-8859-11 and ISO-8859-16 encodings.
+  * Fix displayed line lengths being incorrect for subtitles with
+    special characters such as apostrophes.
+
+-------------------------------------------------------------------
 Thu Oct  7 17:13:25 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.10.1:
