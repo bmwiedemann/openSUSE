@@ -1,7 +1,7 @@
 #
 # spec file for package google-roboto-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Source1:        https://raw.githubusercontent.com/googlefonts/roboto/master/LICE
 Source2:        google-roboto.metainfo.xml
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-%reconfigure_fonts_prereq
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 Roboto is Google’s signature family of fonts, the default font on Android and
@@ -41,8 +41,9 @@ as well as the currency symbol for the Georgian lari, to be published in Unicode
 The fonts are currently available in eighteen different styles.
 
 %prep
-unzip -j -o %{S:0}
-cp %{S:1} .
+unzip -j -o %{SOURCE0}
+cp %{SOURCE1} .
+chmod 0644 LICENSE
 
 %build
 
@@ -52,14 +53,13 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 
 # install metainfo
 install -m 0755 -d %{buildroot}%{_datadir}/metainfo
-install -m 0644 -p %{S:2} %{buildroot}%{_datadir}/metainfo
+install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/metainfo
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
 %license LICENSE
-%{_datadir}/metainfo
+%{_datadir}/metainfo/google-roboto.metainfo.xml
 %{_ttfontsdir}
 
 %changelog
