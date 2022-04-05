@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 11 23:37:41 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add %define go_label as a configurable Go toolchain directory
+  * go_label can be used to package multiple Go toolchains with
+    the same go_api
+  * go_label should be defined as go_api with an optional suffix
+    e.g. %{go_api} or %{go_api}-foo
+  * Default go_label = go_api makes no changes to package layout
+
+-------------------------------------------------------------------
 Wed Mar  9 17:03:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add dont-force-gold-on-arm64.patch (bsc#1183043)

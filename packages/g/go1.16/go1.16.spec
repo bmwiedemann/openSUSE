@@ -89,7 +89,17 @@
 # more details.
 %define tsan_commit 89f7ccea6f6488c443655880229c54db1f180153
 
+# go_api is the major version of Go.
+# Used by go1.x packages and go metapackage for:
+# RPM Provides: golang(API), RPM Requires: and rpm_vercmp
+# as well as derived variables such as go_label.
 %define go_api 1.16
+
+# go_label is the configurable Go toolchain directory name.
+# Used for packaging multiple Go toolchains with the same go_api.
+# go_label should be defined as go_api with optional suffix, e.g.
+# go_api or go_api-foo
+%define go_label %{go_api}
 
 # shared library support
 %if "%{rpm_vercmp %{go_api} 1.5}" > "0"
@@ -265,7 +275,7 @@ export GOARCH=arm
 export GOARM=7
 %endif
 export GOROOT="`pwd`"
-export GOROOT_FINAL=%{_libdir}/go/%{go_api}
+export GOROOT_FINAL=%{_libdir}/go/%{go_label}
 export GOBIN="$GOROOT/bin"
 mkdir -p "$GOBIN"
 cd src
@@ -288,29 +298,29 @@ grep "^race_linux_%{go_arch}.syso built with LLVM %{tsan_commit}" src/runtime/ra
 %endif
 
 %install
-export GOROOT="%{buildroot}%{_libdir}/go/%{go_api}"
+export GOROOT="%{buildroot}%{_libdir}/go/%{go_label}"
 
 # locations for third party libraries, see README-openSUSE for info about locations.
-install -d  %{buildroot}%{_datadir}/go/%{go_api}/contrib
+install -d  %{buildroot}%{_datadir}/go/%{go_label}/contrib
 install -d  $GOROOT/contrib/pkg/linux_%{go_arch}
-ln -s %{_libdir}/go/%{go_api}/contrib/pkg/ %{buildroot}%{_datadir}/go/%{go_api}/contrib/pkg
-install -d  %{buildroot}%{_datadir}/go/%{go_api}/contrib/cmd
-install -d  %{buildroot}%{_datadir}/go/%{go_api}/contrib/src
-ln -s %{_datadir}/go/%{go_api}/contrib/src/ %{buildroot}%{_libdir}/go/%{go_api}/contrib/src
+ln -s %{_libdir}/go/%{go_label}/contrib/pkg/ %{buildroot}%{_datadir}/go/%{go_label}/contrib/pkg
+install -d  %{buildroot}%{_datadir}/go/%{go_label}/contrib/cmd
+install -d  %{buildroot}%{_datadir}/go/%{go_label}/contrib/src
+ln -s %{_datadir}/go/%{go_label}/contrib/src/ %{buildroot}%{_libdir}/go/%{go_label}/contrib/src
 install -Dm644 README.SUSE $GOROOT/contrib/
-ln -s %{_libdir}/go/%{go_api}/contrib/README.SUSE %{buildroot}%{_datadir}/go/%{go_api}/contrib/README.SUSE
+ln -s %{_libdir}/go/%{go_label}/contrib/README.SUSE %{buildroot}%{_datadir}/go/%{go_label}/contrib/README.SUSE
 
 # source files for go install, godoc, etc
-install -d %{buildroot}%{_datadir}/go/%{go_api}
+install -d %{buildroot}%{_datadir}/go/%{go_label}
 for ext in *.{go,c,h,s,S,py,syso,bin}; do
-  find src -name ${ext} -exec install -Dm644 \{\} %{buildroot}%{_datadir}/go/%{go_api}/\{\} \;
+  find src -name ${ext} -exec install -Dm644 \{\} %{buildroot}%{_datadir}/go/%{go_label}/\{\} \;
 done
 # executable bash scripts called by go tool, etc
-find src -name "*.bash" -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_api}/\{\} \;
+find src -name "*.bash" -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_label}/\{\} \;
 
 mkdir -p $GOROOT/src
-for i in $(ls %{buildroot}/usr/share/go/%{go_api}/src);do
-  ln -s /usr/share/go/%{go_api}/src/$i $GOROOT/src/$i
+for i in $(ls %{buildroot}/usr/share/go/%{go_label}/src);do
+  ln -s /usr/share/go/%{go_label}/src/$i $GOROOT/src/$i
 done
 # add lib files that are needed (such as the timezone database).
 install -d $GOROOT/lib
@@ -333,7 +343,7 @@ rm -f %{buildroot}%{_bindir}/{hgpatch,quietgcc}
 install -Dm644 %{SOURCE6} $GOROOT/bin/gdbinit.d/go.gdb
 %if "%{_lib}" == "lib64"
 sed -i "s/lib/lib64/" $GOROOT/bin/gdbinit.d/go.gdb
-sed -i "s/\$go_api/%{go_api}/" $GOROOT/bin/gdbinit.d/go.gdb
+sed -i "s/\$go_label/%{go_label}/" $GOROOT/bin/gdbinit.d/go.gdb
 %endif
 
 # update-alternatives
@@ -352,62 +362,62 @@ find doc/ misc/ -type f -exec chmod 0644 '{}' +
 # remove unwanted arch-dependant binaries (rpmlint warning)
 rm -rf misc/cgo/test/{_*,*.o,*.out,*.6,*.8}
 # prepare go-doc
-mkdir -p %{buildroot}%{_docdir}/go/%{go_api}
-cp -r AUTHORS CONTRIBUTORS CONTRIBUTING.md LICENSE PATENTS README.md README.SUSE %{buildroot}%{_docdir}/go/%{go_api}
-cp -r doc/* %{buildroot}%{_docdir}/go/%{go_api}
+mkdir -p %{buildroot}%{_docdir}/go/%{go_label}
+cp -r AUTHORS CONTRIBUTORS CONTRIBUTING.md LICENSE PATENTS README.md README.SUSE %{buildroot}%{_docdir}/go/%{go_label}
+cp -r doc/* %{buildroot}%{_docdir}/go/%{go_label}
 
 %fdupes -s %{buildroot}%{_prefix}
 
 %post
 
 update-alternatives \
-  --install %{_bindir}/go go %{_libdir}/go/%{go_api}/bin/go $((20+$(echo %{go_api} | cut -d. -f2))) \
-  --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{go_api}/bin/gofmt \
-  --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_api}/bin/gdbinit.d/go.gdb
+  --install %{_bindir}/go go %{_libdir}/go/%{go_label}/bin/go $((20+$(echo %{go_label} | cut -d. -f2))) \
+  --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{go_label}/bin/gofmt \
+  --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_label}/bin/gdbinit.d/go.gdb
 
 %postun
 if [ $1 -eq 0 ] ; then
-	update-alternatives --remove go %{_libdir}/go/%{go_api}/bin/go
+	update-alternatives --remove go %{_libdir}/go/%{go_label}/bin/go
 fi
 
 %files
 %{_bindir}/go
 %{_bindir}/gofmt
 %dir %{_libdir}/go
-%{_libdir}/go/%{go_api}
+%{_libdir}/go/%{go_label}
 %dir %{_datadir}/go
-%{_datadir}/go/%{go_api}
+%{_datadir}/go/%{go_label}
 %dir %{_sysconfdir}/gdbinit.d/
 %config %{_sysconfdir}/gdbinit.d/go.gdb
 %ghost %{_sysconfdir}/alternatives/go
 %ghost %{_sysconfdir}/alternatives/gofmt
 %ghost %{_sysconfdir}/alternatives/go.gdb
 %dir %{_docdir}/go
-%dir %{_docdir}/go/%{go_api}
-%doc %{_docdir}/go/%{go_api}/AUTHORS
-%doc %{_docdir}/go/%{go_api}/CONTRIBUTORS
-%doc %{_docdir}/go/%{go_api}/CONTRIBUTING.md
-%doc %{_docdir}/go/%{go_api}/PATENTS
-%doc %{_docdir}/go/%{go_api}/README.md
-%doc %{_docdir}/go/%{go_api}/README.SUSE
+%dir %{_docdir}/go/%{go_label}
+%doc %{_docdir}/go/%{go_label}/AUTHORS
+%doc %{_docdir}/go/%{go_label}/CONTRIBUTORS
+%doc %{_docdir}/go/%{go_label}/CONTRIBUTING.md
+%doc %{_docdir}/go/%{go_label}/PATENTS
+%doc %{_docdir}/go/%{go_label}/README.md
+%doc %{_docdir}/go/%{go_label}/README.SUSE
 %if 0%{?suse_version} < 1500
-%doc %{_docdir}/go/%{go_api}/LICENSE
+%doc %{_docdir}/go/%{go_label}/LICENSE
 %else
-%license %{_docdir}/go/%{go_api}/LICENSE
+%license %{_docdir}/go/%{go_label}/LICENSE
 %endif
 
 # We don't include TSAN in the main Go package.
 %ifarch %{tsan_arch}
-%exclude %{_datadir}/go/%{go_api}/src/runtime/race/race_linux_%{go_arch}.syso
+%exclude %{_datadir}/go/%{go_label}/src/runtime/race/race_linux_%{go_arch}.syso
 %endif
 
 %files doc
 %defattr(-,root,root,-)
-%doc %{_docdir}/go/%{go_api}/*.html
+%doc %{_docdir}/go/%{go_label}/*.html
 
 %ifarch %{tsan_arch}
 %files race
-%{_datadir}/go/%{go_api}/src/runtime/race/race_linux_%{go_arch}.syso
+%{_datadir}/go/%{go_label}/src/runtime/race/race_linux_%{go_arch}.syso
 %endif
 
 %changelog
