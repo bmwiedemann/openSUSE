@@ -1,0 +1,7 @@
+<package name="cross-rx-gcc12-bootstrap" project="openSUSE:Factory">
+  <title></title>
+  <description>The GNU Compiler Collection (GCC) version 12 is an optimizing compiler produced by the GNU Project supporting various programming languages, hardware architectures and operating systems.</description>
+  <devel project="openSUSE:Factory" package="gcc12"/>
+  <url>https://gcc.gnu.org/</url>
+  <bcntsynctag>gcc12</bcntsynctag>
+</package>
