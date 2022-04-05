@@ -17,25 +17,21 @@
 
 
 Name:           spec-version-maven-plugin
-Version:        1.2
+Version:        2.1
 Release:        0
 Summary:        Spec Version Maven Plugin
-License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0
+License:        EPL-2.0 OR GPL-2.0-with-classpath-exception
 Group:          Development/Libraries/Java
-URL:            https://glassfish.java.net/
-Source0:        https://github.com/javaee/spec-version-maven-plugin/archive/%{version}.tar.gz
-Source1:        https://github.com/javaee/spec-version-maven-plugin/raw/master/LICENSE
+URL:            https://github.com/eclipse-ee4j/glassfish-spec-version-maven-plugin
+Source0:        https://github.com/eclipse-ee4j/glassfish-spec-version-maven-plugin/archive/%{version}.tar.gz
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
-BuildRequires:  mvn(net.java:jvnet-parent:pom:)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
-BuildRequires:  mvn(org.apache.maven:maven-model)
-BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-resources)
+BuildRequires:  mvn(org.eclipse.ee4j:project:pom:)
 BuildArch:      noarch
 
 %description
@@ -50,31 +46,31 @@ Group:          Documentation/HTML
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q
+%setup -q -n glassfish-%{name}-%{version}
+chmod -x *.md
+
+%pom_remove_plugin :maven-enforcer-plugin
+%pom_remove_plugin :maven-checkstyle-plugin
+# This one is needed only to process test resources
+%pom_remove_plugin :build-helper-maven-plugin
 
 sed -i "s|mvn|mvn-rpmbuild|" src/main/resources/checkVersion.sh
-
-cp -p %{SOURCE1} LICENSE.txt
-dos2unix LICENSE.txt
 
 %{mvn_file} :%{name} %{name}
 
 %build
 
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dsource=8
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
+%doc README.md
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE.txt
+%license LICENSE.md NOTICE.md
 
 %changelog
