@@ -237,4 +237,14 @@ The compiler is NOT used by default.</comment>
 - use --with-cpu rather than specifying --with-arch/--with-tune</comment>
     <requestid>962391</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9fdaac4a1c61f914431b46c67bc8c396</srcmd5>
+    <version>11.2.1+git1406</version>
+    <time>1649181317</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides/conflicts to glibc crosses since only one GCC version
+  for the same target can be installed at the same time.
+- Add provides/conflicts to libgccjit.</comment>
+    <requestid>966407</requestid>
+  </revision>
 </revisionlist>

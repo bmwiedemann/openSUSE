@@ -1041,6 +1041,9 @@ Runtime library for the GNU D language.
 Summary:	The GNU Compiler Collection JIT library
 License:	GPL-3.0-or-later
 Provides:	libgccjit%{libgccjit_sover} = %{version}-%{release}
+# Only one package may provide this - allows multiple gcc versions
+# to co-exist without an overly large list of provides/obsoletes
+Conflicts:	%selfconflict libgccjit%{libgccjit_sover}
 Requires: gcc@base_ver@
 
 %description -n libgccjit%{libgccjit_sover}%{libgccjit_suffix}
@@ -1054,6 +1057,10 @@ Support for embedding GCC inside programs and libraries
 Summary:        Support for embedding GCC inside programs and libraries
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
+Provides:	libgccjit%{libgccjit_sover}-devel = %{version}-%{release}
+# Only one gccjit package can be installed at the same time since
+# header files conflict
+Conflicts:	%selfconflict libgccjit%{libgccjit_sover}-devel
 Requires: libgccjit%{libgccjit_sover}%{libgccjit_suffix}
 
 %description -n libgccjit%{libgccjit_sover}-devel%{libdevel_suffix}

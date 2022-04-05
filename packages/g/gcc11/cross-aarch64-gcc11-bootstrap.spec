@@ -261,7 +261,7 @@ ExclusiveArch:  i586 ppc64le ppc64 x86_64 s390x  riscv64
 %if "%pkgname" == "cross-ppc64-gcc49"
 Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 %endif
-%if 0%{?gcc_target_newlib:1}
+%if 0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
 Provides:       %{gcc_target_arch}-gcc

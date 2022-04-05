@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  1 09:52:40 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add provides/conflicts to glibc crosses since only one GCC version
+  for the same target can be installed at the same time.
+- Add provides/conflicts to libgccjit.
+
+-------------------------------------------------------------------
 Wed Mar 16 15:10:15 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-11 branch head (6a1150d1524aeda3381b21717), git1406
