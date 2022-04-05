@@ -2,7 +2,14 @@
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
 %config(noreplace) %{_sysconfdir}/udev/udev.conf
+%if ! %{bootstrap}
+# %%dir %{_libdir}/cryptsetup
+%dir %{_modulesloaddir}
+%endif
 %dir %{_prefix}/lib/udev
+%if ! %{bootstrap}
+%dir %{_sysconfdir}/modules-load.d
+%endif
 %dir %{_sysconfdir}/udev
 %dir %{_sysconfdir}/udev/rules.d
 %dir %{_systemd_util_dir}/network
@@ -12,6 +19,10 @@
 %doc %{_udevrulesdir}/README
 %ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
+%ghost %{_localstatedir}/lib/systemd/backlight
+%if ! %{bootstrap}
+%{_bindir}/systemd-cryptenroll
+%endif
 %{_bindir}/systemd-hwdb
 %{_bindir}/udevadm
 %if ! %{bootstrap}
@@ -22,17 +33,50 @@
 %{_datadir}/zsh/site-functions/_udevadm
 %endif
 %if ! %{bootstrap}
+# %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
+# %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
+# %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-tpm2.so
+%{_mandir}/man1/systemd-cryptenroll.1.gz
+%{_mandir}/man5/crypttab.5.gz
+%{_mandir}/man5/integritytab.5.gz
+%{_mandir}/man5/modules-load.d.5.gz
 %{_mandir}/man5/udev.conf.5.gz
+%{_mandir}/man5/veritytab.5.gz
 %{_mandir}/man7/hwdb.7.gz
 %{_mandir}/man7/udev.7.gz
+%{_mandir}/man8/systemd-backlight.8.gz
+%{_mandir}/man8/systemd-backlight@.service.8.gz
+%{_mandir}/man8/systemd-cryptsetup-generator.8.gz
+%{_mandir}/man8/systemd-cryptsetup.8.gz
+%{_mandir}/man8/systemd-cryptsetup@.service.8.gz
+%{_mandir}/man8/systemd-fstab-generator.8.gz
+%{_mandir}/man8/systemd-gpt-auto-generator.8.gz
+%{_mandir}/man8/systemd-growfs.8.gz
+%{_mandir}/man8/systemd-growfs@.service.8.gz
 %{_mandir}/man8/systemd-hwdb.8.gz
+%{_mandir}/man8/systemd-integritysetup-generator.8.gz
+%{_mandir}/man8/systemd-integritysetup.8.gz
+%{_mandir}/man8/systemd-integritysetup@.service.8.gz
+%{_mandir}/man8/systemd-makefs.8.gz
+%{_mandir}/man8/systemd-makefs@.service.8.gz
+%{_mandir}/man8/systemd-modules-load.8.gz
+%{_mandir}/man8/systemd-modules-load.service.8.gz
 %{_mandir}/man8/systemd-network-generator.8.gz
 %{_mandir}/man8/systemd-network-generator.service.8.gz
+%{_mandir}/man8/systemd-rfkill.8.gz
+%{_mandir}/man8/systemd-rfkill.service.8.gz
+%{_mandir}/man8/systemd-rfkill.socket.8.gz
+%{_mandir}/man8/systemd-tmpfiles-setup-dev.service.8.gz
 %{_mandir}/man8/systemd-udev-settle.service.8.gz
 %{_mandir}/man8/systemd-udevd-control.socket.8.gz
 %{_mandir}/man8/systemd-udevd-kernel.socket.8.gz
 %{_mandir}/man8/systemd-udevd.8.gz
 %{_mandir}/man8/systemd-udevd.service.8.gz
+%{_mandir}/man8/systemd-veritysetup-generator.8.gz
+%{_mandir}/man8/systemd-veritysetup.8.gz
+%{_mandir}/man8/systemd-veritysetup@.service.8.gz
+%{_mandir}/man8/systemd-volatile-root.8.gz
+%{_mandir}/man8/systemd-volatile-root.service.8.gz
 %{_mandir}/man8/udevadm.8.gz
 %endif
 %{_prefix}/lib/udev/ata_id
@@ -47,8 +91,34 @@
 %{_prefix}/lib/udev/scsi_id
 %{_prefix}/lib/udev/v4l_id
 %{_systemd_util_dir}/network/99-default.link
+%{_systemd_util_dir}/systemd-backlight
+%if ! %{bootstrap}
+%{_systemd_util_dir}/systemd-cryptsetup
+%endif
+%{_systemd_util_dir}/systemd-growfs
+%if ! %{bootstrap}
+%{_systemd_util_dir}/systemd-integritysetup
+%endif
+%{_systemd_util_dir}/systemd-makefs
+%if ! %{bootstrap}
+%{_systemd_util_dir}/systemd-modules-load
+%endif
 %{_systemd_util_dir}/systemd-network-generator
+%{_systemd_util_dir}/systemd-rfkill
 %{_systemd_util_dir}/systemd-udevd
+%if ! %{bootstrap}
+%{_systemd_util_dir}/systemd-veritysetup
+%endif
+%{_systemd_util_dir}/systemd-volatile-root
+%if ! %{bootstrap}
+%{_systemdgeneratordir}/systemd-cryptsetup-generator
+%endif
+%{_systemdgeneratordir}/systemd-fstab-generator
+%{_systemdgeneratordir}/systemd-gpt-auto-generator
+%if ! %{bootstrap}
+%{_systemdgeneratordir}/systemd-integritysetup-generator
+%{_systemdgeneratordir}/systemd-veritysetup-generator
+%endif
 %{_tmpfilesdir}/static-nodes-permissions.conf
 %{_udevhwdbdir}/20-OUI.hwdb
 %{_udevhwdbdir}/20-acpi-vendor.hwdb
@@ -105,25 +175,63 @@
 %{_udevrulesdir}/75-net-description.rules
 %{_udevrulesdir}/75-probe_mtd.rules
 %{_udevrulesdir}/78-sound-card.rules
+%if ! %{bootstrap}
 %{_udevrulesdir}/80-drivers.rules
+%endif
 %{_udevrulesdir}/80-net-setup-link.rules
 %{_udevrulesdir}/81-net-dhcp.rules
 %{_udevrulesdir}/90-vconsole.rules
+%if ! %{bootstrap}
+%{_unitdir}/cryptsetup-pre.target
+%{_unitdir}/cryptsetup.target
+%{_unitdir}/initrd-root-device.target.wants/remote-cryptsetup.target
+%{_unitdir}/initrd-root-device.target.wants/remote-veritysetup.target
+%endif
 %{_unitdir}/initrd-udevadm-cleanup-db.service
+%if ! %{bootstrap}
+%{_unitdir}/integritysetup-pre.target
+%{_unitdir}/integritysetup.target
 %{_unitdir}/kmod-static-nodes.service
+%{_unitdir}/remote-cryptsetup.target
+%{_unitdir}/remote-veritysetup.target
+%endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
+%if ! %{bootstrap}
+%{_unitdir}/sysinit.target.wants/cryptsetup.target
+%{_unitdir}/sysinit.target.wants/integritysetup.target
 %{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
+%endif
 %{_unitdir}/sysinit.target.wants/systemd-hwdb-update.service
+%if ! %{bootstrap}
+%{_unitdir}/sysinit.target.wants/systemd-modules-load.service
+%endif
+%{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup-dev.service
 %{_unitdir}/sysinit.target.wants/systemd-udev-trigger.service
 %{_unitdir}/sysinit.target.wants/systemd-udevd.service
+%if ! %{bootstrap}
+%{_unitdir}/sysinit.target.wants/veritysetup.target
+%{_unitdir}/system-systemd\x2dcryptsetup.slice
+%endif
+%{_unitdir}/systemd-backlight@.service
 %{_unitdir}/systemd-hwdb-update.service
+%if ! %{bootstrap}
+%{_unitdir}/systemd-modules-load.service
+%endif
 %{_unitdir}/systemd-network-generator.service
+%{_unitdir}/systemd-rfkill.service
+%{_unitdir}/systemd-rfkill.socket
+%{_unitdir}/systemd-tmpfiles-setup-dev.service
 %{_unitdir}/systemd-udev-settle.service
 %{_unitdir}/systemd-udev-trigger.service
 %{_unitdir}/systemd-udevd-control.socket
 %{_unitdir}/systemd-udevd-kernel.socket
 %{_unitdir}/systemd-udevd.service
+%{_unitdir}/systemd-volatile-root.service
+%if ! %{bootstrap}
+%{_unitdir}/veritysetup-pre.target
+%{_unitdir}/veritysetup.target
+%endif
 %if %{with split_usr}
 /sbin/udevadm
 %endif

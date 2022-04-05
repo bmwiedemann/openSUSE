@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Mar 31 12:03:19 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Temporarily disable 'libcryptsetup plugins until dracut 056 is merged in
+  Factory
+
+-------------------------------------------------------------------
+Thu Mar 31 11:22:12 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Add 0001-meson-build-kernel-install-man-page-when-necessary.patch
+
+  Submitted to upstream: https://github.com/systemd/systemd/pull/22918
+
+-------------------------------------------------------------------
+Mon Mar 28 18:36:39 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Move systemd-boot and all components managing (secure) UEFI boot into udev
+  sub-package: they may deserve a dedicated sub-package in the future but for
+  now move them to udev so they aren't installed in systemd based containers.
+
+- Move a bunch of components operating on (mainly block) devices into udev as
+  without udev they're most likely useless.
+
+-------------------------------------------------------------------
+Mon Mar 28 17:02:04 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: enable 'efi' support regardless of whether sd_boot is enabled or not
+
+  We should support EFI systems even if systemd-boot is not enabled.
+
+-------------------------------------------------------------------
 Wed Mar 23 15:17:40 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - spec: cope with %{_modprobedir} being /lib/modprobe.d on SLE

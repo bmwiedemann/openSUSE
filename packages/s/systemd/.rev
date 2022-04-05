@@ -5948,4 +5948,25 @@ handle manual pages that consist only of a .so directive such as
 - systemd.spec: minor simplification by assuming that %{bootstrap} is always</comment>
     <requestid>964674</requestid>
   </revision>
+  <revision rev="355" vrev="3">
+    <srcmd5>d4428e953c9bff15f9dbfa4dfce4848e</srcmd5>
+    <version>250.4</version>
+    <time>1649181469</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporarily disable 'libcryptsetup plugins until dracut 056 is merged in
+  Factory
+
+- Add 0001-meson-build-kernel-install-man-page-when-necessary.patch
+  Submitted to upstream: https://github.com/systemd/systemd/pull/22918
+
+- Move systemd-boot and all components managing (secure) UEFI boot into udev
+  sub-package: they may deserve a dedicated sub-package in the future but for
+  now move them to udev so they aren't installed in systemd based containers.
+- Move a bunch of components operating on (mainly block) devices into udev as
+  without udev they're most likely useless.
+
+- spec: enable 'efi' support regardless of whether sd_boot is enabled or not
+  We should support EFI systems even if systemd-boot is not enabled.</comment>
+    <requestid>966218</requestid>
+  </revision>
 </revisionlist>

@@ -87,9 +87,7 @@ BuildRequires:  polkit
 BuildRequires:  python3-base
 BuildRequires:  python3-lxml
 BuildRequires:  pkgconfig(audit)
-BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
 BuildRequires:  pkgconfig(libdw)
-BuildRequires:  pkgconfig(libfido2)
 BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
@@ -97,9 +95,6 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libselinux) >= 2.1.9
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(tss2-esys)
-BuildRequires:  pkgconfig(tss2-mu)
-BuildRequires:  pkgconfig(tss2-rc)
 %ifarch aarch64 %ix86 x86_64 x32 %arm ppc64le s390x
 BuildRequires:  pkgconfig(libseccomp) >= 2.3.1
 %endif
@@ -117,20 +112,7 @@ BuildRequires:  python3-jinja2
 BuildRequires:  suse-module-tools >= 12.4
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid) >= 2.26
-BuildRequires:  pkgconfig(libkmod) >= 15
 BuildRequires:  pkgconfig(libpci) >= 3
-%if %{with importd}
-BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(zlib)
-%endif
-%if %{with journal_remote}
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.33
-%endif
-%if %{with sd_boot}
-BuildRequires:  gnu-efi
-%endif
 
 %if %{bootstrap}
 #!BuildIgnore:  dbus-1
@@ -156,11 +138,6 @@ Requires:       util-linux >= 2.27.1
 Requires:       group(lock)
 # This Recommends because some symbols of libpcre2 are dlopen()ed by journalctl
 Recommends:     libpcre2-8-0
-# ditto but dlopen()ed by systemd-cryptenroll
-Recommends:     libfido2
-Recommends:     libtss2-esys0
-Recommends:     libtss2-mu0
-Recommends:     libtss2-rc0
 Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding
@@ -201,6 +178,7 @@ Source202:      files.container
 Source203:      files.network
 Source204:      files.devel
 Source205:      files.sysvcompat
+Source206:      files.uefi-boot
 
 #
 # All changes backported from upstream are tracked by the git repository, which
@@ -231,6 +209,7 @@ Patch1000:      1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
 # upstream and need an urgent fix. Even in this case, the patches are
 # temporary and should be removed as soon as a fix is merged by
 # upstream.
+Patch6000:      0001-meson-build-kernel-install-man-page-when-necessary.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -328,6 +307,9 @@ This library provides several of the systemd C APIs:
 Summary:        A rule-based device node and kernel event manager
 License:        GPL-2.0-only
 URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+%if %{with sd_boot}
+BuildRequires:  gnu-efi
+%endif
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Requires:       filesystem
@@ -337,6 +319,22 @@ Requires:       group(kvm)
 Requires(post): sed
 Requires(post): coreutils
 Requires(postun):coreutils
+%if ! %{bootstrap}
+BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
+BuildRequires:  pkgconfig(libkmod) >= 15
+# Enable fido2 and tpm supports in systemd-cryptsetup, systemd-enroll. However
+# these tools are not linked against the libs directly but instead are
+# dlopen()ed at runtime to avoid hard dependencies. Hence the use of soft
+# dependencies.
+BuildRequires:  pkgconfig(libfido2)
+BuildRequires:  pkgconfig(tss2-esys)
+BuildRequires:  pkgconfig(tss2-mu)
+BuildRequires:  pkgconfig(tss2-rc)
+Recommends:     libfido2
+Recommends:     libtss2-esys0
+Recommends:     libtss2-mu0
+Recommends:     libtss2-rc0
+%endif
 Conflicts:      ConsoleKit < 0.4.1
 Conflicts:      dracut < 044.1
 Conflicts:      filesystem < 11.5
@@ -385,6 +383,11 @@ This package contains systemd-coredump, coredumpctl.
 %package container
 Summary:        Systemd tools for container management
 License:        LGPL-2.1-or-later
+%if %{with importd}
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(zlib)
+%endif
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Obsoletes:      nss-mymachines < %{version}-%{release}
@@ -494,6 +497,8 @@ To activate this NSS module, you will need to include it in
 %package journal-remote
 Summary:        Gateway for serving journal events over the network using HTTP
 License:        LGPL-2.1-or-later
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.33
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 
@@ -675,16 +680,20 @@ Have fun with these services at your own risk.
         -Delfutils=auto \
         -Doomd=false \
 %if %{bootstrap}
+        -Defi=false \
         -Dbashcompletiondir=no \
         -Dzshcompletiondir=no \
         -Dtranslations=false \
         -Dnss-myhostname=false \
         -Dnss-systemd=false \
 %else
+        -Defi=true \
+        -Dtpm=true \
         -Dtpm2=true \
         -Dman=true \
         -Dhtml=true \
 %endif
+        -Dlibcryptsetup-plugins=false \
         -Dcoredump=%{when coredump} \
         -Dimportd=%{when importd} \
         -Dmachined=%{when machined} \
@@ -692,7 +701,7 @@ Have fun with these services at your own risk.
         -Dportabled=%{when portabled} \
         -Dremote=%{when journal_remote} \
 	\
-        -Defi=%{when sd_boot} \
+        -Dkernel-install=%{when sd_boot} \
         -Dgnu-efi=%{when sd_boot} \
         -Dsbat-distro= \
 	\
@@ -994,7 +1003,6 @@ fi
 
 # Create default config in /etc at first install.
 # Later package updates should not overwrite these settings.
-%systemd_post remote-cryptsetup.target
 %systemd_post getty@.service
 %systemd_post machines.target
 %systemd_post remote-fs.target
@@ -1072,6 +1080,8 @@ fi
 %post -n udev%{?mini}
 %regenerate_initrd_post
 %udev_hwdb_update
+
+%systemd_post remote-cryptsetup.target
 
 # add KERNEL name match to existing persistent net rules
 sed -ri '/KERNEL/ ! { s/NAME="(eth|wlan|ath)([0-9]+)"/KERNEL=="\1*", NAME="\1\2"/}' \
@@ -1255,6 +1265,7 @@ fi
 %files -n udev%{?mini}
 %defattr(-,root,root)
 %include %{SOURCE201}
+%include %{SOURCE206}
 
 %files container
 %defattr(-,root,root)
