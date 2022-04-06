@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  5 15:44:56 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (1.5.3)
+  Most notable changes are all bugfixes, e.g.:
+  * Optimize constant logic in print format processing
+  * Better parsing of fields with typecasts
+  * Fix backward compatibility with tep_print_arg_string
+  * Log printing updates
+  * Fix man pages
+  * Sample program to simplify testing of event format parsing
+  * Better message of expected tokens
+  * Fix parsing print fmts with new lines
+  For details, see:
+  * https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/tag/?h=libtraceevent-1.5.3
+  * https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/tag/?h=libtraceevent-1.5.2
+  * https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/tag/?h=libtraceevent-1.5.1
+
+-------------------------------------------------------------------
 Thu Feb 24 10:23:14 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Use %{optflags}
