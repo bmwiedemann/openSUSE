@@ -385,4 +385,12 @@
     <comment>GNOME 42</comment>
     <requestid>964195</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>1d81bb2c352a5a27ddc4dfe5404b9c63</srcmd5>
+    <version>10.6+4</version>
+    <time>1649274718</time>
+    <user>dimstar_suse</user>
+    <comment>fix</comment>
+    <requestid>967257</requestid>
+  </revision>
 </revisionlist>

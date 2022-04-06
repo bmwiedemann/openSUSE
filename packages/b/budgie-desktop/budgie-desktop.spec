@@ -76,7 +76,7 @@ Requires:       libbudgie-private0 >= %{version}
 #
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
-Requires:       gnome-bluetooth-1
+Requires:       gnome-bluetooth = 3.34.5
 Requires:       ibus
 Requires:       libgnomesu
 Requires:       xdg-user-dirs-gtk
