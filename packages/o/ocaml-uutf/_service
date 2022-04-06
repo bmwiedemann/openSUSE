@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-uutf</param>
-    <param name="revision">d43c88c0673b0d30dc34960645d0f992d68b23a1</param>
+    <param name="revision">0536faa28e46a12142954575d95d8d0b86a96f30</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/dbuenzli/uutf.git</param>

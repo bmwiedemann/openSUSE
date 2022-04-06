@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-uutf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           ocaml-uutf
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Non-blocking streaming Unicode codec for OCaml
 License:        ISC
 Group:          Development/Languages/OCaml
 URL:            http://erratique.ch/software/uutf
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 Patch0:         ocaml-uutf.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20220222
 
 %description
 Uutf is a non-blocking streaming codec to decode and encode the UTF-8,
@@ -41,13 +41,13 @@ OCaml string values and to directly encode characters in OCaml
 Buffer.t values.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}-%{release}
+Requires:       %name = %version-%release
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -64,8 +64,8 @@ dune_release_pkgs='uutf'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

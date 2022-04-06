@@ -25,4 +25,13 @@ It is part of the dependency tree of opam.</comment>
     <comment>- build with dune via ocaml-uutf.patch</comment>
     <requestid>867948</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9a24f541722981ecd5c2ec72e1b94ba</srcmd5>
+    <version>1.0.3</version>
+    <time>1649274690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+  See included CHANGES.md for details</comment>
+    <requestid>967084</requestid>
+  </revision>
 </revisionlist>
