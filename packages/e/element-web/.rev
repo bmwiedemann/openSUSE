@@ -97,4 +97,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
 </comment>
     <requestid>961663</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>78e3050341c30bee78b9ad81c239d5ba</srcmd5>
+    <version>1.10.4</version>
+    <time>1649274731</time>
+    <user>dimstar_suse</user>
+    <comment>- Sync ExcludeArch with nodejs-electron.</comment>
+    <requestid>967333</requestid>
+  </revision>
 </revisionlist>

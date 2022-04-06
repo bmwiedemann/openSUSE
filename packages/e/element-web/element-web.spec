@@ -28,6 +28,7 @@ Source2:        jitsi_external_api.min.js
 Source3:        prepare.sh
 BuildRequires:  nodejs-electron
 BuildRequires:  yarn
+ExcludeArch:    %{ix86} %{arm}
 BuildArch:      noarch
 
 %description
