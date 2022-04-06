@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Fri Mar 12 22:04:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- use https urls 
+
+-------------------------------------------------------------------
+Sat Jan 30 07:20:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- autoconf 2.71:
+  * Compilers that support C99 but not C2011 are detected correctly
+  * Compatibility improved with clang and Oracle C++
+  * Compatibility restored with automake's rules for regenerating
+    configure
+  * Compatibility restored with old versions of std-gnu11.m4
+- dropped upstream patches:
+  * prog-c99-fix-typo.patch
+  * restore-compatibility-gnu11.patch
+  * autom4te-always-update-output-file.patch
+  * handle-gettext-alone.patch
+
+-------------------------------------------------------------------
+Sat Jan 16 18:47:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add autom4te-always-update-output-file.patch to fix testsuite
+  failures 
+- handle-gettext-alone.patch: support GNU_GETTEXT alone being called
+  again
+- add prog-c99-fix-typo.patch: fix typo in C99 detection
+- add restore-compatibility-gnu11.patch: restore compatibility in GNU11
+  mode
+
+-------------------------------------------------------------------
+Sun Dec 13 18:52:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- autoconf 2.70:
+  * Warnings about obsolete constructs are now on by default,
+    these warnings can be turned off with -Wno-obsolete
+  * Many macros have become pickier about argument quotation
+  * Many macros no longer AC_REQUIRE as many other macros as they
+    used to, may expose several classes of latent bugs
+  * More macros use config.sub and config.guess internally
+  * Setting CC to a C++ compiler is no longer supported
+  * Running configure tests with warnings promoted to errors is
+    not supported
+  * Including confdefs.h manually may cause test failures
+  * Older versions of automake and aclocal (< 1.8) are no longer
+    supported
+  * AC_CONFIG_SUBDIRS no longer directly supports Cygnus configure
+  * AC_CHECK_HEADER and AC_CHECK_HEADERS only do a compilation test
+  * AC_INCLUDES_DEFAULT assumes an ISO C90 compliant C implementation
+  * AS_ECHO and AS_ECHO_N unconditionally use ‘printf’
+  * Configure scripts require support for $( ... ) command
+    substitution
+  * AC_INIT now trims extra white space from its arguments
+  * Macros that take whitespace-separated lists as arguments
+    now always expand macros within those arguments
+  * AC_FUNC_STRERROR_R assumes strerror_r is unavailable if it’s
+    not declared
+  * AC_OPENMP can’t be used if you have files named ‘mp’ or ‘penmp’
+  * Configure scripts now support a ‘--runstatedir’ option
+  * autoreconf will now run gtkdocize and intltoolize when appropriate
+  * autoreconf now recognizes AM_GNU_GETTEXT_REQUIRE_VERSION
+  * autoheader handles secondary config headers better
+  * AC_PROG_CC now enables C2011 mode if the compiler supports it
+  * New macro AC_C__GENERIC tests for C2011 _Generic support
+  * AC_C_VARARRAYS has been aligned with C2011.
+  * New macro AC_CONFIG_MACRO_DIRS
+  * AC_USE_SYSTEM_EXTENSIONS knows about more extensions to enable
+  * New compatibility macro AC_CHECK_INCLUDES_DEFAULT
+  * AC_REQUIRE_AUX_FILE has been improved
+  * AC_PROG_LEX has an option to not look for yywrap
+  * Use of the long-deprecated name ‘configure.in’ for the autoconf
+    input file now elicits a warning in the “obsolete” category
+  * Use of the undocumented internal shell variables $as_echo and
+    $as_echo_n now elicits a warning in the “obsolete” category.
+    The macros AS_ECHO and AS_ECHO_N should be used instead.
+  * autoconf will now issue warnings (in the “syntax” category)
+    if the input file is missing a call to AC_INIT and/or AC_OUTPUT
+  * autoconf will now issue warnings (in the “syntax” category)
+    for a non-literal URL argument to AC_INIT, and for a TARNAME
+    argument to AC_INIT which is either non-literal or contains
+    characters that should not be used in file names (e.g. ‘*’).
+  * AC_PROG_CC_STDC, AC_PROG_CC_C89, AC_PROG_CC_C99 are now
+    obsolete. Applications should use AC_PROG_CC.
+  * AC_HEADER_STDC and AC_HEADER_TIME are now stubs.
+  * AC_DIAGNOSE, AC_FATAL, AC_WARNING, and _AC_COMPUTE_INT are now
+    replaced with modern equivalents by autoupdate.
+  * AC_CONFIG_HEADER is now diagnosed as obsolete, and replaced with
+    AC_CONFIG_HEADERS by autoupdate.
+  * The macro AC_OBSOLETE is obsolete.
+  * Man pages for config.guess and config.sub are no longer provided
+  * Bug fixes for compatibility with current Automake, Libtool,
+    Perl, Texinfo, and shells
+  * Compatibility fixes for compilers and build environments
+  * Various autotest enhancements
+- drop upstream patches:
+  * autoconf-perl-5.17-fixes.patch
+  * port-tests-to-bash-5.patch
+  * ac-header-major.patch
+- remove obsolete texinfo packaging macros
+
+-------------------------------------------------------------------
 Tue Nov  5 23:07:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix testsuite with Bash 5, add port-tests-to-bash-5.patch
