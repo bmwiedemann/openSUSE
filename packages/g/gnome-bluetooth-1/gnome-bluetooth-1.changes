@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  6 09:02:09 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add versioned gnome-bluetooth provides to be compatible with
+  older distributions
+
+-------------------------------------------------------------------
 Thu Feb  3 06:00:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 755fd758f866d3a3f7ca482942beee749f13a91e.patch Fix build with

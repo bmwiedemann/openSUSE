@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(libudev)
 Requires:       bluez >= 5
 # gnome-bluetooth-3.0 incompatible
 Conflicts:      gnome-bluetooth
+Provides:       gnome-bluetooth = %{version}-%{release}
 
 %description
 A set of graphical utilities to setup, monitor and use Bluetooth devices.

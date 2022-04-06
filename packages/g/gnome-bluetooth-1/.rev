@@ -7,4 +7,14 @@
     <comment>Budgie needs this after GNOME 42</comment>
     <requestid>964194</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc6a8ca357879e9c17a05ef7ae889b0c</srcmd5>
+    <version>3.34.5</version>
+    <time>1649274719</time>
+    <user>dimstar_suse</user>
+    <comment>- Add versioned gnome-bluetooth provides to be compatible with
+  older distributions
+</comment>
+    <requestid>967258</requestid>
+  </revision>
 </revisionlist>
