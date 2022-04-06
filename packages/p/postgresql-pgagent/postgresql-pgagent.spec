@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,9 @@ ExclusiveArch:  do_not_build
 ExclusiveArch:  do_not_build
 %endif
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150200 && "%{pgname}" == "postgresql13"
+ExclusiveArch:  do_not_build
+%endif
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150400 && "%{pgname}" == "postgresql14"
 ExclusiveArch:  do_not_build
 %endif
 %define         sname pgagent
