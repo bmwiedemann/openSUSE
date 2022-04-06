@@ -34,7 +34,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyaml}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pyflakes}

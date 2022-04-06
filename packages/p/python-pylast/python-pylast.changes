@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 10:17:02 UTC 2022 - pgajdos@suse.com
+
+- pytest-mock is not required for build
+
+-------------------------------------------------------------------
 Sat Mar 26 18:47:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.0:
