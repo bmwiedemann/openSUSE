@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-luv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,35 @@
 
 
 %bcond_with ocaml_luv_testsuite
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == "testsuite"
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
 %if %{without ocaml_luv_testsuite}
 ExclusiveArch:  do-not-build
 %endif
 %define nsuffix -testsuite
 %else
-%define nsuffix %{nil}
+%define nsuffix %nil
 %endif
 
 %define     pkg ocaml-luv
-Name:           %{pkg}%{nsuffix}
-Version:        0.5.10
+Name:           %pkg%nsuffix
+Version:        0.5.11
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to libuv cross-platform asynchronous I/O
 License:        MIT
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/luv
-Source0:        %{pkg}-%{version}.tar.xz
-Patch0:         %{pkg}.patch
+Source0:        %pkg-%version.tar.xz
+Patch0:         %pkg.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(ctypes)
 BuildRequires:  ocamlfind(result)
 BuildRequires:  pkgconfig(libuv)
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(luv)
 BuildRequires:  ocamlfind(alcotest)
 %endif
@@ -60,34 +60,34 @@ exposes a lot of other functionality, amounting to a full OS API, and an
 alternative to the standard module Unix.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 Requires:       pkgconfig(libuv)
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
-%autosetup -p1 -n %{pkg}-%{version}
+%autosetup -p1 -n %pkg-%version
 
 %build
 export LUV_USE_SYSTEM_LIBUV=yes
 dune_release_pkgs='luv,luv_unix'
 %ocaml_dune_setup
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_build
 %endif
 
 %install
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 export LUV_USE_SYSTEM_LIBUV=yes
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 %check
 %if %{without ocaml_luv_testsuite}
 exit 0
@@ -97,10 +97,10 @@ OCAML_DUNE_RUNTEST_ARGS='--no-buffer -j1'
 %ocaml_dune_test
 %endif
 
-%if "%{build_flavor}" == ""
-%files -f %{name}.files
+%if "%build_flavor" == ""
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %endif
 
