@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 12:55:49 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Tue Jan 11 22:08:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix deprecated collections.abc imports still not fully fixed in

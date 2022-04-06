@@ -27,7 +27,6 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/arista-eosplus/pyeapi
 Source:         https://files.pythonhosted.org/packages/source/p/pyeapi/pyeapi-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -56,6 +55,8 @@ developing custom implementations.
 # Deprecated collections usage since Python 3.3
 sed -i 's/from collections import/from collections.abc import/' pyeapi/api/abstract.py
 sed -i 's/collections.Iterable/collections.abc.Iterable/' test/unit/test_utils.py
+# https://github.com/arista-eosplus/pyeapi/issues/224
+sed -i 's/from mock/from unittest.mock/' test/*/test*.py
 
 %build
 %python_build
