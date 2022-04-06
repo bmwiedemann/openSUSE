@@ -1,7 +1,7 @@
 #
 # spec file for package qutebrowser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qutebrowser
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Keyboard-driven vim-like browser based on Qt5
 License:        GPL-3.0-or-later
@@ -106,8 +106,9 @@ rm %{buildroot}%{python3_sitelib}/%{name}/git-commit-id
 # NOTE: test suite disabled because the BDD tests are too unreliable
 # %%check
 # NOTE: test suite is slow but doesn’t run reliably with xdist
-# PYTHONPATH=. QUTE_BDD_WEBENGINE=true pytest -v \
-#    -k 'not importlib'
+# PYTHONPATH=. pytest -v \
+#     -k 'not importlib' \
+#     --qute-backend webengine
 
 %files
 %license LICENSE
