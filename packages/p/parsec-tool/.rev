@@ -64,4 +64,12 @@
 </comment>
     <requestid>966124</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>52d4298701b232e82941c9f57215953b</srcmd5>
+    <version>0.5.2</version>
+    <time>1649274709</time>
+    <user>dimstar_suse</user>
+    <comment>- use cargo-packaging (bsc#1198130)</comment>
+    <requestid>967244</requestid>
+  </revision>
 </revisionlist>

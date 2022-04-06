@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 07:05:29 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use cargo-packaging (bsc#1198130)
+
+-------------------------------------------------------------------
 Thu Mar 31 06:27:30 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable build on x86 to follow parsec package

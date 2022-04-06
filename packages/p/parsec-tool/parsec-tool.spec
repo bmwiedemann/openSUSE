@@ -28,8 +28,12 @@ Source0:        https://github.com/parallaxsecond/parsec-tool/archive/%{version}
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo
-BuildRequires:  protobuf-devel
+%if %suse_version > 1550
+BuildRequires:  cargo-packaging
+%else
 BuildRequires:  rust-packaging
+%endif
+BuildRequires:  protobuf-devel
 Requires:       parsec
 ExcludeArch:    %{ix86} armv6l armv6hl
 
