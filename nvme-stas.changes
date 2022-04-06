@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 06 11:07:53 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v1.0:
+  * Do not call persistent_set() from libnvme
+  * dbus: return native dbus data instead of json when possible.
+  * update documentation
+
+-------------------------------------------------------------------
 Fri Mar 25 11:32:30 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.0-rc5:
