@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  5 12:11:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace libportal-devel BuildRequires with
+  pkgconfig(libportal-gtk3) to be more specific and not be
+  dependant on package names.
+- Add gcolor-libportal-gtk3.patch: Fix build against recent
+  libportal, which has gtk3 and gtk4 backends.
+
+-------------------------------------------------------------------
 Mon May 17 17:47:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use SourceUrl, fixes Factory CI scripts

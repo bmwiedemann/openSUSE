@@ -1,7 +1,7 @@
 #
 # spec file for package gcolor3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,16 @@ Group:          Productivity/Graphics/Other
 URL:            https://www.hjdskes.nl/projects/gcolor3/
 Source0:        https://gitlab.gnome.org/World/gcolor3/-/archive/v%{version}/gcolor3-v%{version}.tar.bz2
 Patch0:         gcolor3-suse.patch
+Patch1:         gcolor-libportal-gtk3.patch
 BuildRequires:  cmake
 BuildRequires:  git
 BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libportal-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libportal-gtk3) >= 0.5
 
 %description
 Gcolor3 enables picking the color from any pixel on the screen. It
