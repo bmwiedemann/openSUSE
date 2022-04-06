@@ -3748,4 +3748,13 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * sync pci ids with Mesa 22.0.0</comment>
     <requestid>961428</requestid>
   </revision>
+  <revision rev="406" vrev="6">
+    <srcmd5>ac29ef4f035bebe2c0fec79c9c704ed4</srcmd5>
+    <version>21.1.3</version>
+    <time>1649274666</time>
+    <user>dimstar_suse</user>
+    <comment>- disable -z now linking for now, as there are some missing symbol
+  issues. (boo#1197994)</comment>
+    <requestid>966769</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 30 12:36:36 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- disable -z now linking for now, as there are some missing symbol
+  issues. (boo#1197994)
+
+-------------------------------------------------------------------
 Sun Mar 13 09:51:32 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_sync-pci-ids-with-Mesa-22.0.0.patch

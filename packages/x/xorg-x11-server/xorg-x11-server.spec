@@ -407,6 +407,13 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1960 -p1
 
 %build
+# We have some -z now related errors during X default startup (boo#1197994):
+# - when loading modesetting: gbm_bo_get_plane_count
+# - when loading fbdev: fbdevHWSave
+# - when loading vesa: VBESetModeParameters
+# this is directly visible on startup, so easy to test later on.
+export SUSE_ZNOW=0
+
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 test -e source-file-list || \
     find -L . -type f \! -name '*.orig' \! -path ./source-file-list > \
