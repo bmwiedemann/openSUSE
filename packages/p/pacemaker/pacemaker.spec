@@ -1,7 +1,7 @@
 #
 # spec file for package pacemaker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,11 +41,11 @@
 ## Add option to enable support for storing sensitive information outside CIB
 %bcond_without cibsecrets
 
+## Add option to enable Native Language Support (experimental)
+%bcond_with nls
+
 ## Add option to create binaries suitable for use with profiling tools
 %bcond_with profiling
-
-## Add option to create binaries with coverage analysis
-%bcond_with coverage
 
 ## Add option to skip generating documentation
 ## (the build tools aren't available everywhere)
@@ -81,7 +81,6 @@
 ### Default resource-stickiness to 1 when distro prefers that
 %global resource_stickiness --with-resource-stickiness-default=1
 
-
 # Python-related definitions
 
 ## Prefer Python 3 definitions explicitly, in case 2 is also available
@@ -106,13 +105,13 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.2+20220126.16c1bab10
+Version:        2.1.2+20220331.1ad8bbddd
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
-Url:            https://www.clusterlabs.org/
+URL:            https://www.clusterlabs.org/
 # Hint: use "spectool -s 0 pacemaker.spec" (rpmdevtools) to check the final URL:
 # https://github.com/ClusterLabs/pacemaker/archive/e91769e5a39f5cb2f7b097d3c612368f0530535e/pacemaker-e91769e.tar.gz
 Source0:        %{name}-%{version}.tar.xz
@@ -135,6 +134,7 @@ BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  findutils
 BuildRequires:  gcc
+BuildRequires:  gettext-tools >= 0.18
 BuildRequires:  grep
 BuildRequires:  help2man
 BuildRequires:  libtool
@@ -158,9 +158,9 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 # Pacemaker requires a minimum Python functionality
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  python-rpm-macros
 Requires:       %{name}-cli = %{version}-%{release}
 Requires:       corosync >= 2.0.0
 Requires:       libpacemaker3 = %{version}-%{release}
@@ -367,6 +367,7 @@ export LDFLAGS_HARDENED_EXE="%{?_hardening_ldflags}"
 export LDFLAGS_HARDENED_LIB="%{?_hardening_ldflags}"
 %endif
 
+mkdir -p libltdl/config
 autoreconf -fvi
 
 %configure \
@@ -383,8 +384,8 @@ autoreconf -fvi
         %{!?with_hardening:    --disable-hardening}    \
         %{?with_legacy_links:  --enable-legacy-links}  \
         %{?with_profiling:     --with-profiling}       \
-        %{?with_coverage:      --with-coverage}        \
         %{?with_cibsecrets:    --with-cibsecrets}      \
+        %{?with_nls:           --enable-nls}           \
         %{?with_sbd_sync:      --with-sbd-sync-default="true"} \
         %{?bug_url:            --with-bug-url=%{bug_url}} \
         %{?ocf_root:           --with-ocfdir=%{ocf_root}} \
@@ -406,6 +407,10 @@ install -d -m755 %{buildroot}%{_fillupdir}
 install -m 644 etc/sysconfig/pacemaker %{buildroot}%{_fillupdir}/sysconfig.pacemaker
 install -m 644 etc/sysconfig/crm_mon %{buildroot}%{_fillupdir}/sysconfig.crm_mon
 
+%if %{with nls}
+%find_lang %{name}
+%endif
+
 # Don't package static libs
 find %{buildroot} -type f -name "*.a" -delete -print
 # Don't package libtool archives
@@ -416,16 +421,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # advanced users, we can reconsider.
 rm -f %{buildroot}/%{_sbindir}/notifyServicelogEvent
 rm -f %{buildroot}/%{_sbindir}/ipmiservicelogd
-
-%if %{with coverage}
-GCOV_BASE=%{buildroot}/%{_var}/lib/pacemaker/gcov
-mkdir -p $GCOV_BASE
-find . -name '*.gcno' -type f | while read F ; do
-        D=`dirname $F`
-        mkdir -p ${GCOV_BASE}/$D
-        cp $F ${GCOV_BASE}/$D
-done
-%endif
 
 ln -s service %{buildroot}%{_sbindir}/rcpacemaker
 ln -s service %{buildroot}%{_sbindir}/rcpacemaker_remote
@@ -627,7 +622,7 @@ fi
 %dir %attr (770, %{uname}, %{gname}) %{_var}/log/pacemaker
 %dir %attr (770, %{uname}, %{gname}) %{_var}/log/pacemaker/bundles
 
-%files -n libpacemaker3
+%files -n libpacemaker3 %{?with_nls:-f %{name}.lang}
 %defattr(-,root,root)
 
 %{_libdir}/libcib.so.*
@@ -683,9 +678,6 @@ fi
 %defattr(-,root,root)
 %{_includedir}/pacemaker
 %{_libdir}/*.so
-%if %{with coverage}
-%{_var}/lib/pacemaker/gcov
-%endif
 %{_libdir}/pkgconfig/*.pc
 #%license licenses/LGPLv2.1
 %doc COPYING ChangeLog

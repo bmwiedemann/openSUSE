@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Sun Apr  3 07:44:37 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Create libltdl/config before autoreconf to fix an incompatibility
+  with autoconf 2.71
+
+-------------------------------------------------------------------
+Fri Apr 01 11:35:32 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220331.1ad8bbddd:
+- tools: Fix the -v option to attrd_updater.
+
+-------------------------------------------------------------------
+Wed Mar 30 09:22:01 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220329.efdcb0bbf:
+- resources: Add an OCF_RESKEY_dampen parameter to HealthSMART.
+- resources: Mark HealthSMART parameters as reloadable.
+- resources: Also fix HealthSMART_monitor.
+- resources: Fix a bug in init_smart in HealthSMART.
+- resources: Fix the stop action in HealthSMART.
+- resources: Add an OCF_RESKEY_smartctl parameter to HealthSMART.
+- resources: update HealthSMART agent for OCF 1.1
+
+-------------------------------------------------------------------
+Tue Mar 29 06:49:24 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220328.24d87d0b2:
+- tools: Do not allow certain operations on clone instances.
+- tools: Fix one method of restarting a cloned group.
+- tools: Fix restarting clone instances in crm_resource.
+- tools: If crm_resource is given an invalid node, error.
+- tools: Fix one way to restart a cloned primitive.
+- tools: Fix restarting implicit bundled resources without a host.
+- tools: Fix double free errors in crm_resource.
+- tools: Compare host names case insensitively...
+
+-------------------------------------------------------------------
+Mon Mar 28 15:43:15 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220328.2dd22a9d7:
+- tools: Update a couple option help strings in attrd_updater.
+- Convert attrd_updater to use glib for cmdline handling.
+
+-------------------------------------------------------------------
+Thu Mar 24 10:48:40 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220322.5129e5ca5:
+- tools: Add XML schema for the crm_attribute output.
+- tools: Fix indentation on crm_attribute help output.
+- tools: Finish using formatted output in crm_attribute.
+- tools: Switch crm_attribute to use formatted output.
+- schemas: Add a schema for the new crm_rule output.
+- tools: Allow passing -r to crm_rule more than once.
+- tools: crm_rule is no longer experimental.
+- tools: Convert crm_rule to formatted output.
+- rpm: Remove the coverage support from the spec file.
+
+-------------------------------------------------------------------
+Thu Mar 24 10:16:01 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220309.d007690cb:
+- cibadmin to be able to "render" access mode for selected user
+
+-------------------------------------------------------------------
+Tue Mar 08 15:49:01 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220307.022ae2d5f:
+- rpm: depend on gettext-tools instead of gettext
+- scheduler: Take case into account when finding resources.
+- scheduler: improve fencing-related messages
+
+-------------------------------------------------------------------
+Mon Mar 07 13:34:25 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220304.b2c456e77:
+- pacemakerd: override locale earlier in start-up
+- libcrmcommon: initialize NLS only once
+- tools: Fix a corner case in crm_mon outputting.
+- tools: Always output to the HTML dest file. (clbz#5492)
+- scheduler: shutdown locks apply to group members, not group itself
+
+-------------------------------------------------------------------
+Wed Mar 02 13:02:01 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220301.6981b549a:
+- libpacemaker: Fix a segfault in crm_mon.
+
+-------------------------------------------------------------------
+Wed Mar 02 12:54:59 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220301.a5db0024f:
+- scheduler: properly set data set flags when scheduling actions
+- scheduler: determine cluster status more efficiently
+
+-------------------------------------------------------------------
+Wed Mar 02 11:43:06 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220222.250a6b0d7:
+- rpm: add nls option
+
+-------------------------------------------------------------------
+Mon Feb 21 12:13:47 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220217.578a0bc42:
+- libpacemaker: Add a public function for one-shot crm_mon mode.
+
+-------------------------------------------------------------------
+Thu Feb 17 18:05:59 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220216.41a118c10:
+- NLS: expand translations to all executables
+- libcrmcommon: match allocation and free functions
+- executor: improve alert completion messages
+- libcrmservice: improve exit reasons for timeouts/signals
+- libcrmservice,tools: add more detail to exit reasons when available
+- controller: don't retry an invalid remote key
+- controller,fencer: add more detail to exit reasons when available
+- scheduler: improve "friendly" failed action output
+- libcrmservice: improve timeout message for alert agents
+- fencing: assert that fencing actions are non-recurring
+- libcrmservice: check parameter for NULL before dereferencing it
+- scheduler: improve messages for action configuration changes
+
+-------------------------------------------------------------------
+Thu Feb 17 17:22:45 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220215.aa3779ec6:
+- Add pacemaker(pacemaker-based) resource translatefile
+
+-------------------------------------------------------------------
+Thu Feb 17 17:13:59 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220215.c0ac153b7:
+- libcrmcommon: Escape option metadata descriptions. (rh#2050259)
+- libcrmservice: Escape systemd agent descriptions. (rh#2050259)
+
+-------------------------------------------------------------------
+Thu Feb 17 17:11:27 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220215.80e43ec90:
+- libcrmservice: Additional metadata fix for systemd templates. (rh#2045096)
+
+-------------------------------------------------------------------
+Tue Feb 15 12:26:08 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220214.81e6a29e4:
+- daemons: Add a longdesc to the pcmk_host_list parameter.
+- daemons: Put shortdesc after longdesc for parameters, too. (rh#2049722)
+- resources: Put shortdesc after longdesc in agents. (rh#2049722)
+
+-------------------------------------------------------------------
+Tue Feb 08 13:40:56 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.2+20220207.58dccbae0:
+- libcommon: avoid race when process checked while going away
+- pkg-config: libpacemaker requires libstonithd and libcrmservice.
+- scheduler: assert on notification entry memory errors
+- scheduler: avoid notification problems if node names are unknown
+
+-------------------------------------------------------------------
 Tue Feb 08 11:57:53 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.2+20220126.16c1bab10:

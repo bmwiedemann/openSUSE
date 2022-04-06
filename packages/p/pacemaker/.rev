@@ -1926,4 +1926,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>955066</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>8574bb14e7390e2e49d665183fd122e9</srcmd5>
+    <version>2.1.2+20220331.1ad8bbddd</version>
+    <time>1649274664</time>
+    <user>dimstar_suse</user>
+    <comment>- Create libltdl/config before autoreconf to fix an incompatibility
+  with autoconf 2.71
+
+- Update to version 2.1.2+20220331.1ad8bbddd:
+- tools: Fix the -v option to attrd_updater.
+
+- Update to version 2.1.2+20220329.efdcb0bbf:
+- resources: Add an OCF_RESKEY_dampen parameter to HealthSMART.
+- resources: Mark HealthSMART parameters as reloadable.
+- resources: Also fix HealthSMART_monitor.
+- resources: Fix a bug in init_smart in HealthSMART.
+- resources: Fix the stop action in HealthSMART.
+- resources: Add an OCF_RESKEY_smartctl parameter to HealthSMART.
+- resources: update HealthSMART agent for OCF 1.1
+
+- Update to version 2.1.2+20220328.24d87d0b2:
+- tools: Do not allow certain operations on clone instances.
+- tools: Fix one method of restarting a cloned group.
+- tools: Fix restarting clone instances in crm_resource.
+- tools: If crm_resource is given an invalid node, error.
+- tools: Fix one way to restart a cloned primitive.
+- tools: Fix restarting implicit bundled resources without a host.
+- tools: Fix double free errors in crm_resource.
+- tools: Compare host names case insensitively...
+
+- Update to version 2.1.2+20220328.2dd22a9d7:
+- tools: Update a couple option help strings in attrd_updater.
+- Convert attrd_updater to use glib for cmdline handling.
+
+- Update to version 2.1.2+20220322.5129e5ca5:</comment>
+    <requestid>966816</requestid>
+  </revision>
 </revisionlist>
