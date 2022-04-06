@@ -15,4 +15,12 @@
     <comment>Specify sane java language levels for children projects</comment>
     <requestid>757278</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>62b9270bd5bd5f406bbebf89f60ca79d</srcmd5>
+    <version>1.6</version>
+    <time>1649274721</time>
+    <user>dimstar_suse</user>
+    <comment>set java source/target 8 for children</comment>
+    <requestid>967275</requestid>
+  </revision>
 </revisionlist>
