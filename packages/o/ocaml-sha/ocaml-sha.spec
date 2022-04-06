@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sha
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,29 @@
 #
 
 
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == "testsuite"
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
 %define nsuffix -testsuite
 %else
-%define nsuffix %{nil}
+%define nsuffix %nil
 %endif
 
 %define     pkg ocaml-sha
-Name:           %{pkg}%{nsuffix}
-Version:        1.15.1
+Name:           %pkg%nsuffix
+Version:        1.15.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to the SHA cryptographic functions
 License:        ISC
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/sha
-Source0:        %{pkg}-%{version}.tar.xz
+Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.9
 BuildRequires:  ocamlfind(stdlib-shims)
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220222
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(ounit2)
 BuildRequires:  ocamlfind(sha)
 %endif
@@ -49,39 +49,39 @@ the MD5 digest included in the OCaml standard library.
 It's currently providing SHA1, SHA256 and SHA512 hash functions.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
-%autosetup -p1 -n %{pkg}-%{version}
+%autosetup -p1 -n %pkg-%version
 
 %build
 dune_release_pkgs='sha'
 %ocaml_dune_setup
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_build
 %endif
 
 %install
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 %check
 %ocaml_dune_test
 %endif
 
-%if "%{build_flavor}" == ""
-%files -f %{name}.files
+%if "%build_flavor" == ""
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %endif
 
