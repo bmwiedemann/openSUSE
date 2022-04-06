@@ -52,4 +52,12 @@
     <comment>- remove dependency to ounit via _multibuild</comment>
     <requestid>867970</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8dcc6c5731235f57f62ee22d613999a1</srcmd5>
+    <version>0.4.2</version>
+    <time>1649274676</time>
+    <user>dimstar_suse</user>
+    <comment>- add bcond ocaml_gettext_testsuite to disable failing testsuite</comment>
+    <requestid>967055</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- add bcond ocaml_gettext_testsuite to disable failing testsuite
+
+-------------------------------------------------------------------
 Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
 
 - remove dependency to ounit via _multibuild
