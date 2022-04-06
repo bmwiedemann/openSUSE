@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  3 07:48:54 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Do not run autoreconf - not patching any input files
+  and intltool is broken with autoreconf of 2.71
+
+-------------------------------------------------------------------
 Thu Nov 25 09:30:38 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
