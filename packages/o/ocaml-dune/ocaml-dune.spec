@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-dune
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,16 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == ""
-%define nsuffix %{nil}
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == ""
+%define nsuffix %nil
 %else
-%define nsuffix -%{build_flavor}
+%define nsuffix -%build_flavor
 %endif
 
 %define     pkg ocaml-dune
-Name:           %{pkg}%{nsuffix}
-Version:        2.9.3
+%global  _buildshell /bin/bash
+Name:           %pkg%nsuffix
+Version:        3.0.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A composable build system for OCaml
@@ -32,80 +33,114 @@ License:        MIT
 Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/dune
-Source0:        %{pkg}-%{version}.tar.xz
+Source0:        %pkg-%version.tar.xz
 Requires:       ocamlfind(compiler-libs)
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
-%if "%{build_flavor}" == ""
-BuildRequires:  ocamlfind(compiler-libs)
+%if "%build_flavor" == ""
+BuildRequires:  ocaml-dune-bootstrap = %version
+BuildRequires:  ocamlfind(csexp)
+BuildRequires:  ocamlfind(pp)
+BuildRequires:  ocamlfind(result)
+Provides:       ocaml-dune-configurator == %version-%release
+Obsoletes:      ocaml-dune-configurator <  %version-%release
 %description
 A composable build system for OCaml
 %endif
-%if "%{build_flavor}" == "configurator"
-BuildRequires:  ocaml-dune = %{version}
-BuildRequires:  ocamlfind(csexp)
-BuildRequires:  ocamlfind(result)
+%if "%build_flavor" == "bootstrap"
 %description
-dune-configurator is a small library that helps writing OCaml scripts that
-test features available on the system, in order to generate config.h
-files for instance.
-Among other things, dune-configurator allows one to:
-- test if a C program compiles
-- query pkg-config
-- import #define from OCaml header files
-- generate config.h file
+This package provides a minimal dune binary in %ocaml_dune_bootstrap_directory
+to build a few number of packages to bootstrap the full dune package.
 %endif
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Provides:       ocaml-dune-configurator-devel == %version-%release
+Obsoletes:      ocaml-dune-configurator-devel <  %version-%release
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
-%setup -q -n %{pkg}-%{version}
+%setup -q -n %pkg-%version
 
 %build
-%if "%{build_flavor}" == ""
 mv -vb src/dune_rules/setup.defaults.ml src/dune_rules/setup.ml
-ocaml configure.ml '--libdir=%{ocaml_standard_library}' '--mandir=%{_mandir}'
-ocaml bootstrap.ml
-rm -rfv        '%{_tmppath}/%{name}-%{release}'
-mkdir -vm 0700 '%{_tmppath}/%{name}-%{release}'
-mkdir -vm 0700 '%{_tmppath}/%{name}-%{release}/bin'
-test -x "$PWD/dune.exe"
-ln -vs "$_"    '%{_tmppath}/%{name}-%{release}/bin/dune'
-export    "PATH=%{_tmppath}/%{name}-%{release}/bin:$PATH"
-dune_release_pkgs='dune,dune-action-plugin,dune-build-info,dune-glob,dune-private-libs'
+ocaml configure.ml \
+	'--etcdir=%_sysconfdir' \
+	'--libdir=%ocaml_standard_library' \
+	'--mandir=%_mandir' \
+	%nil
+#
+%if "%build_flavor" == "bootstrap"
+jobs="-j `/usr/bin/getconf _NPROCESSORS_ONLN`"
+ocaml bootstrap.ml --verbose ${jobs}
+./dune.exe build \
+	dune.install \
+	--release \
+	--profile dune-bootstrap \
+	--verbose \
+	${jobs} \
+	%nil
+# leaving early
+exit 0
 %endif
 #
-%if "%{build_flavor}" == "configurator"
-dune_release_pkgs='dune-configurator'
-%endif
+%if "%build_flavor" == ""
+pkgs=(
+dune
+dune-action-plugin
+dune-build-info
+dune-configurator
+dune-glob
+dune-private-libs
+dune-rpc
+dune-site
+dyn
+fiber
+ordering
+stdune
+xdg
+)
+dune_release_pkgs="${pkgs[*]}"
+dune_release_pkgs="${dune_release_pkgs// /,}"
 #
+export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 %ocaml_dune_setup
 %ocaml_dune_build
-
-%install
-export    "PATH=%{_tmppath}/%{name}-%{release}/bin:$PATH"
-%ocaml_dune_install
-%ocaml_create_file_list
-rm -rfv        '%{_tmppath}/%{name}-%{release}'
-
-%files -f %{name}.files
-%defattr(-,root,root,-)
-%if "%{build_flavor}" == ""
-%doc CHANGES.md README.md
-%doc doc/*.rst
-%{_bindir}/*
-%{_mandir}/*/*
-%{_datadir}/emacs
 %endif
 
-%files devel -f %{name}.files.devel
+%install
+%if "%build_flavor" == "bootstrap"
+mkdir -vp %buildroot%ocaml_dune_bootstrap_directory
+cp -avL dune.exe %buildroot%ocaml_dune_bootstrap_directory/dune
+tee %name.files <<'_EOF_'
+%ocaml_dune_bootstrap_directory
+%%doc CHANGES.md
+_EOF_
+echo '%dir %ocaml_dune_bootstrap_directory' > %name.files.devel
+%endif
+#
+%if "%build_flavor" == ""
+export PATH="%ocaml_dune_bootstrap_directory:$PATH"
+%ocaml_dune_install
+%ocaml_create_file_list
+%endif
+
+%files -f %name.files
+%defattr(-,root,root,-)
+%if "%build_flavor" == ""
+%doc CHANGES.md README.md
+%doc doc/*.rst
+%_bindir/*
+%_mandir/*/*
+%_datadir/emacs
+%endif
+
+%files devel -f %name.files.devel
 %defattr(-,root,root,-)
 
 %changelog

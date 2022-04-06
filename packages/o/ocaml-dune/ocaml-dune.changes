@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- Update to version 3.0.3
+  see included CHANGES.md for details
+- Remove subpackage configurator
+- Add subpackage bootstrap
+
+-------------------------------------------------------------------
 Sun Mar 13 13:13:13 UTC 2022 - ohering@suse.de
 
 - Update to version 2.9.3
