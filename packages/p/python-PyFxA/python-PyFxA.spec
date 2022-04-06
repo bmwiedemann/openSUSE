@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyFxA
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,6 @@ BuildRequires:  %{python_module PyBrowserID}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module hawkauthlib}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyotp}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.4.2}
@@ -44,7 +43,7 @@ Requires:       python-cryptography
 Requires:       python-requests >= 2.4.2
 Requires:       python-six >= 1.14
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

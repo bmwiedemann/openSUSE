@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 10:23:23 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Mon Feb 22 14:42:08 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Drop broken %ifpython3 macro, we don't need setuptools during runtime
