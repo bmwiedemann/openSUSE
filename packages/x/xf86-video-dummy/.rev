@@ -79,4 +79,30 @@
     cleanups and compatibility with xorg-server 1.19.</comment>
     <requestid>448429</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d85af34f3e4b7f0c5216ce3051459224</srcmd5>
+    <version>0.4.0</version>
+    <time>1649274697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to verison 0.4.0
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * autogen: add default patch prefix
+  * Update configure.ac bug URL for gitlab migration
+  * Delete XV stuff
+  * Delete dPtr-&gt;screenSaver
+  * Remove DGA support
+  * Get rid of dPtr-&gt;FBBase
+  * DUMMYGetRec: Fix misleading indentation
+  * Update README for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Support for 30 bit depth in dummy driver
+  * RandR support in dummy video driver
+  * xf86-video-dummy: changeable physical output size
+  * Increase maximum number of video outputs to 16
+  * fix a memory leak in probe</comment>
+    <requestid>967130</requestid>
+  </revision>
 </revisionlist>
