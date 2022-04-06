@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-pcre
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,9 +25,9 @@ Summary:        Perl compatibility regular expressions (PCRE) for OCaml
 License:        LGPL-2.0-only
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/pcre
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  pkg-config
 BuildRequires:  ocaml(ocaml_base_version) >= 4.12
 BuildRequires:  ocamlfind(dune.configurator)
@@ -37,14 +37,14 @@ BuildRequires:  pkgconfig(libpcre)
 Perl compatibile regular expressions (PCRE) for OCaml.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 Requires:       pcre-devel
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -61,9 +61,9 @@ dune_release_pkgs='pcre'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 %doc README.md
 
 %changelog
