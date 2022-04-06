@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Apr  5 19:01:02 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Update to version v1.0.82 (from 1.0.74):
+  * tgt 1.0.82
+  * README: minor improvement
+  * Fix FMK and other flags. sg return good length and sense len. Not needed, additional condition. LTO streamer not work with check only ILI flag, need check FMK and may be other. Without thois check working fine. Test on LTO1 and LTO5 streamers.
+  * tgt 1.0.81
+  * README: use markdown format
+  * Add LICENSE file
+  * replace sourceforge with github
+  * tgt 1.0.80
+  * scripts/checkpatch.pl: escape literal left braces
+  * Replace __packed with __attribute__(...)
+  * Avoid passing NULL pointer to printf
+  * set INFORMATION field on COMPARE AND WRITE miscompare
+  * add helper to fill sense INFORMATION field
+  * Clean up error handling
+  * target: replace bzero with memset
+  * CHAP_AUTH_STATE_RESPONSE belongs to auth_state
+  * After rewind option, la->tail may equal la->head. This causes the old logmsg to be lost
+  * tgt 1.0.79
+  * fix coding style in log.h
+  * tgt 1.0.78
+  * tgtd: support pid file for tgtd daemon
+  * iscsi_tcp: add support for listening on random port
+  * iscsi_tcp: fix compile warning
+  * iscsi_tcp: Replace deprecated valloc function
+  * tgt 1.0.77
+  * spc: implement spc 0xb1 and support rotation rate
+  * tgt 1.0.76
+  * fix segmentation fault caused by scsi_sprintf
+  * tgt 1.0.75
+  * Fix gcc7 string truncation warnings.
+  * Update README
+  This removed the need for the following patch (in the code now):
+  * tgt-Fix-gcc7-string-truncation-warnings.patch
+  The SPEC file was also updated to match updated filenames.
+
+-------------------------------------------------------------------
 Wed Nov 24 15:09:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

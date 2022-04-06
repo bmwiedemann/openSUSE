@@ -1,7 +1,7 @@
 #
 # spec file for package tgt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,20 +22,19 @@
 %endif
 
 Name:           tgt
-Version:        1.0.74
+Version:        v1.0.82
 Release:        0
 Summary:        Generic Linux target framework (tgt)
 License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            http://stgt.sourceforge.net/
-Source:         https://github.com/fujita/%{name}/archive/v%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        %{name}d.service
 Source4:        sysconfig.%{name}
 Patch1:         %{name}-fix-build
 Patch2:         setup-tgt-conf-d.patch
 Patch3:         %{name}-include-sys-macros-for-major.patch
-Patch4:         %{name}-Fix-gcc7-string-truncation-warnings.patch
-Patch5:	harden_tgtd.service.patch
+Patch5:         harden_tgtd.service.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libaio-devel
 BuildRequires:  libxslt
@@ -59,7 +58,6 @@ user-space daemon and tools (i.e. they completely runs in user space).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 %patch5 -p1
 
 %build
@@ -97,9 +95,10 @@ ln -sf service %{buildroot}/%{_sbindir}/rc%{name}d
 %config %attr(0644,root,root) %{_sysconfdir}/tgt/targets.conf
 %{_fillupdir}/sysconfig.tgt
 %{_unitdir}/%{name}d.service
-%doc README doc/README.iscsi doc/README.iser doc/README.lu_configuration
+%doc README.md doc/README.iscsi doc/README.iser doc/README.lu_configuration
 %doc doc/README.mmc doc/README.passthrough doc/README.sbcjukebox doc/README.ssc
-%doc doc/README.rbd doc/tmf.txt
+%doc doc/README.rbd doc/README.glfs doc/README.sheepdog doc/README.vtl
+%doc doc/tmf.txt
 %doc %_defaultdocdir/%name/examples
 %doc %_defaultdocdir/%name/html
 %{_mandir}/man5/*
