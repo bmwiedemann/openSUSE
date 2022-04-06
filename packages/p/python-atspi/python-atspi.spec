@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-atspi
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -109,6 +109,8 @@ popd
 
 %if %{with test}
 %check
+# does not work with -z now due to some library overriding
+export SUSE_ZNOW=0
 %{python_expand pushd build_%{$python_bin_suffix}/tests
 dbus-run-session make %{?_smp_mflags} check CFLAGS="-Wno-return-type" || (cat pyatspi/test-suite.log && exit 1)
 popd

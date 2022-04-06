@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 29 11:05:05 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- link testsuite with -z lazy to avoid breaking the build.
+
+-------------------------------------------------------------------
 Fri Feb 11 10:41:43 UTC 2022 - pgajdos@suse.com
 
 - 2to3 module is not required for build
