@@ -160,4 +160,13 @@
 - Require current ocaml-rpm-macros</comment>
     <requestid>778545</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8dd273f5d86da61e2889890402ea654e</srcmd5>
+    <version>1.1.4</version>
+    <time>1649274672</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ocaml-facile.patch for dune 3
+- Remove obsolete ocaml-4.patch</comment>
+    <requestid>967048</requestid>
+  </revision>
 </revisionlist>

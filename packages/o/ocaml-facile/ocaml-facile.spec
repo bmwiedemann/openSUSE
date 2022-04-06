@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-facile
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@ Summary:        Ocaml Constraint Programming Library
 License:        LGPL-2.1+
 Group:          Development/Languages/OCaml
 Url:            https://github.com/Emmanuel-PLF/facile
-Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE ocaml-4.patch hrvoje.senjan@gmail.com -- Fixes build with ocaml 4
-Patch0:         ocaml-4.patch
+Source0:        %name-%version.tar.xz
+Patch0:         %name.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocamlfind(stdlib-shims)
 
 %description
 FaCiLe is a constraint programming library on integer and integer set
@@ -50,19 +50,20 @@ processing and interface are implemented with the same powerful and
 efficient language.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
+Requires:       ocamlfind(stdlib-shims)
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
 
 %build
-test -f lib/jbuild && dune upgrade --verbose
+rm -fv */jbuild
 dune_release_pkgs='facile'
 %ocaml_dune_setup
 %ocaml_dune_build
@@ -74,8 +75,8 @@ dune_release_pkgs='facile'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

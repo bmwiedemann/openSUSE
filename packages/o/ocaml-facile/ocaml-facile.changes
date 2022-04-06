@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- Add ocaml-facile.patch for dune 3
+- Remove obsolete ocaml-4.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
 
 - Update to 1.1.4
