@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyglet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %define skip_python2 1
 %bcond_with     pytest_helpers
 Name:           python-pyglet
-Version:        1.5.15
+Version:        1.5.23
 Release:        0
 Summary:        Windowing and multimedia library
 License:        BSD-3-Clause AND MIT
@@ -65,7 +65,6 @@ Recommends:     gtk2
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  Mesa-dri
 BuildRequires:  alsa-lib

@@ -99,4 +99,12 @@
     which relies on another event that may be called after WM_INPUT.</comment>
     <requestid>877643</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9b375933f0843be2d0d97e02036fb9a5</srcmd5>
+    <version>1.5.23</version>
+    <time>1649274727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967317</requestid>
+  </revision>
 </revisionlist>
