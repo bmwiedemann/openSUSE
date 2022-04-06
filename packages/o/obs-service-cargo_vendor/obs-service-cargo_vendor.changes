@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 06 05:26:52 UTC 2022 - wbrown@suse.de
+
+- Update to version 0.4.3~git2.08145c7:
+  * Update to account for srctar and tag
+
+-------------------------------------------------------------------
 Wed Mar  9 23:52:04 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Allow both rustup and cargo to provide the needed cargo-vendor
