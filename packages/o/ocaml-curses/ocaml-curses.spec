@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-curses
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           ocaml-curses
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml bindings for ncurses
 License:        LGPL-2.1+
 Group:          Development/Languages/OCaml
 Url:            https://opam.ocaml.org/packages/curses
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  pkg-config
 
@@ -36,14 +36,14 @@ BuildRequires:  pkg-config
 OCaml bindings for ncurses.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 Requires:       ncurses-devel
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -61,8 +61,8 @@ dune_release_pkgs='curses'
 dune_test_tolerate_fail='dune_test_tolerate_fail'
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

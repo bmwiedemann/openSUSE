@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-curses</param>
-    <param name="revision">bf8a3536d375ba29b4e85c8c4c6ce573260e65d9</param>
+    <param name="revision">a23a03d06206d85f53938c196b2a258ed1e4ef2e</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/mbacarella/curses.git</param>
