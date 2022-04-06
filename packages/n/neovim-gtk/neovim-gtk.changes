@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  5 05:29:15 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
 Fri Nov  5 03:16:52 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo_vendor and cargo_audit services
