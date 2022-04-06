@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlp5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,20 @@
 
 
 Name:           ocaml-camlp5
-Version:        8.00.02
+Version:        8.00.03
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/camlp5
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 Patch0:         ocaml-camlp5.patch
-BuildRequires:  ocaml < 4.14
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml < 4.15
+BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(compiler-libs)
+BuildRequires:  ocamlfind(findlib)
 
 %description
 Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and printing some result on standard output.
@@ -36,7 +38,7 @@ Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and prin
 %package devel
 Summary:        Development files for ocaml-camlp5
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description devel
 Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and printing some result on standard output.
@@ -51,20 +53,20 @@ This package contains the development files.
 ulimit -s $((1024 * 64))
 %endif
 ./configure \
-	--mandir %{_mandir}
+	--mandir %_mandir
 make %{?_smp_mflags} out
 make %{?_smp_mflags} world
 make %{?_smp_mflags} world.opt
 
 %install
 %make_install
-cp -Lavit %{buildroot}%{ocaml_standard_library}/camlp5 etc/META
+cp -Lavit %buildroot%ocaml_standard_library/camlp5 etc/META
 %ocaml_create_file_list
 
-%files -f %{name}.files
-%{_bindir}/*
-%{_mandir}/*/*
+%files -f %name.files
+%_bindir/*
+%_mandir/*/*
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
