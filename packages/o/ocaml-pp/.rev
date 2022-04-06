@@ -7,4 +7,12 @@
     <comment>new BuildRequires for ocaml-dune</comment>
     <requestid>961498</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd6bdfb6271540073b8c98a71eb52355</srcmd5>
+    <version>1.1.2</version>
+    <time>1649274682</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with ocaml-dune-bootstrap</comment>
+    <requestid>967066</requestid>
+  </revision>
 </revisionlist>
