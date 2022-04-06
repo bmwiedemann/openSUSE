@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  5 23:26:22 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.14.0 release
+  * [ENHANCEMENT] Continued typing improvements and coverage. #759, #771, #781
+  * [ENHANCEMENT] Allow binding to IPv6 addresses. #657
+  * [ENHANCEMENT] Negotiate gzip content-encoding, enabled by default. #776
+  * [ENHANCEMENT] Allow disabling _created metrics via the
+    PROMETHEUS_DISABLE_CREATED_SERIES environment variable. #774
+  * [BUGFIX] Correct minor typo in exception raised when exemplar labels are too long. #773
+
+-------------------------------------------------------------------
 Wed Feb  9 23:20:57 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to upstream 0.13.1 release
