@@ -17,26 +17,26 @@
 
 
 Name:           nvme-stas
-Version:        1.0~rc5
+Version:        1.0
 Release:        0
 Summary:        NVMe STorage Appliance Services
 License:        Apache-2.0
 URL:            https://github.com/linux-nvme/nvme-stas
 Source0:        nvme-stas-%{version}.tar.gz
 BuildRequires:  gobject-introspection
-BuildRequires:  libnvme-devel >= 1.0~7
+BuildRequires:  libnvme-devel >= 1.0~8
 BuildRequires:  meson >= 0.52.0
 BuildRequires:  python3
 BuildRequires:  python3-dasbus
 BuildRequires:  python3-gobject
-BuildRequires:  python3-libnvme >= 1.0~7
+BuildRequires:  python3-libnvme >= 1.0~8
 BuildRequires:  python3-pyudev
 BuildRequires:  python3-systemd
 BuildRequires:  systemd-rpm-macros
 Requires:       avahi
 Requires:       python3-dasbus
 Requires:       python3-gobject
-Requires:       python3-libnvme >= 1.0~7
+Requires:       python3-libnvme >= 1.0~8
 Requires:       python3-pyudev
 Requires:       python3-systemd
 
@@ -92,5 +92,6 @@ Automatic (zeroconf) and Manual configuration.
 %{python3_sitearch}/staslib/defs.py
 %{python3_sitearch}/staslib/glibudev.py
 %{python3_sitearch}/staslib/stas.py
+%{python3_sitearch}/staslib/version.py
 
 %changelog
