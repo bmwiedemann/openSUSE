@@ -285,4 +285,12 @@ We're in the process of easing the installation process across different Linux d
     https://github.com/HaxeFoundation/haxe/blob/4.2.4/extra/CHANGES.txt</comment>
     <requestid>928582</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>470079c7c2d87ec7f978cba60597d791</srcmd5>
+    <version>4.2.5</version>
+    <time>1649274712</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>967253</requestid>
+  </revision>
 </revisionlist>

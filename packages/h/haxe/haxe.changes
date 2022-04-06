@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 14 21:28:43 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 4.2.5
+  * New features:
+    * php : support PHP attributes generation gh#HaxeFoundation/haxe#9964
+  * Bugfixes:
+    * all : fixed compiler crash in complex constraints chains gh#HaxeFoundation/haxe#10445
+    * all : fixed timers execution order for timers with small time delta gh#HaxeFoundation/haxe#10567
+    * js : fixed constructors with rest arguments when compiling for ES3, ES5 gh#HaxeFoundation/haxe#10490
+    * php : excluded E_DEPRECATED notices from error reporting gh#HaxeFoundation/haxe#10502
+    * php : fixed safe casts to native arrays gh#HaxeFoundation/haxe#10576
+    * nullsafety : fixed false error on extern var fields without initialization gh#HaxeFoundation/haxe#10448
+
+
+-------------------------------------------------------------------
 Mon Nov  1 16:12:18 UTC 2021 - Andy Li <andy@onthewings.net>
 
 - Update to 4.2.4
