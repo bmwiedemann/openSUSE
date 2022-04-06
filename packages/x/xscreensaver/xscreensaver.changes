@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  4 10:04:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with autoconf 2.71: call sed only after autoreconf.
+  autoconf 2.71 internally calls intltoolize again, overwriting
+  po/Makefile.in.in.
+
+-------------------------------------------------------------------
+Sun Apr  3 07:03:54 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Copy config.rpath from gettext to have autoreconf work for autoconf
+  2.71
+
+-------------------------------------------------------------------
 Mon Feb 28 22:00:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.03:

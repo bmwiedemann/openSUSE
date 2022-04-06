@@ -176,9 +176,10 @@ sed -re '
   /.*vidwhacker -stdin -stdout/D;
   ' driver/XScreenSaver.ad.in > driver/XScreenSaver.ad.in.tmp && mv -f driver/XScreenSaver.ad.in.tmp driver/XScreenSaver.ad.in
 intltoolize --copy --force
-sed -i "s|@install_sh@|../install-sh -c|" po/Makefile.in.in
 chmod +x install-sh
+cp /usr/share/gettext/config.rpath .
 autoreconf -fi
+sed -i "s|@install_sh@|../install-sh -c|" po/Makefile.in.in
 #lie to configure so the default C standard is used
 export ac_cv_gcc_accepts_std=no
 # Disable direct PAM use and shadow (both needs suid).
