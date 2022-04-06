@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  6 08:39:02 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Mon Feb 28 07:47:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to v0.3.4
+- Update to v2.3.4
   * Add read handler for GitHub notebooks PR #622
   * Add cell description to tqdm PR #565
   * Update builds for python 3.9 and 3.10

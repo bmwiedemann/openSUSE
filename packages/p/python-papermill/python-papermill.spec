@@ -58,7 +58,6 @@ BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module gcsfs}
 BuildRequires:  %{python_module ipython >= 5.0}
 BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module nbclient >= 0.2.0}
 BuildRequires:  %{python_module nbformat >= 5.1.2}
@@ -89,6 +88,8 @@ and analyzing Jupyter Notebooks.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/nteract/papermill/issues/659
+sed -i 's:from mock:from unittest.mock:' papermill/tests/test_*.py
 # TestBrokenNotebook2: different output type expected
 %pytest -k "not TestBrokenNotebook2"
 
