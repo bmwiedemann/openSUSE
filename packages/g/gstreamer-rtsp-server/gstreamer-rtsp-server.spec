@@ -29,7 +29,6 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
 
-BuildRequires:  hotdoc
 BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
@@ -79,6 +78,7 @@ Development files for the GStreamer library for building an RTSP server.
 	-Dpackage-origin='http://download.opensuse.org' \
 	-Dtests=disabled \
 	-Dexamples=disabled \
+	-Ddoc=disabled \
 	%{nil}
 %meson_build
 
