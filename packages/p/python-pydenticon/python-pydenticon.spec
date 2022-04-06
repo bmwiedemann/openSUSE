@@ -1,7 +1,7 @@
 #
-# spec file for package python-pydenticon
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
@@ -75,6 +74,8 @@ original Sigil implementation, like:
 
 %check
 %if %{with test}
+# https://github.com/azaghal/pydenticon/issues/11
+sed -i 's:^import mock:from unittest import mock:' tests/test_pydenticon.py
 %pyunittest discover -v
 %endif
 
