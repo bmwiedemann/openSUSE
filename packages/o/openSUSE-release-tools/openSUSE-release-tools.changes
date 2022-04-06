@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 05 18:11:31 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220405.3982570a:
+  * Accept_command: create set_bugowner requests
+
+-------------------------------------------------------------------
+Tue Apr 05 15:49:02 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220405.5d0676ce:
+  * check_bugowner: Decline new packages without bugowner entry
+
+-------------------------------------------------------------------
+Tue Apr 05 11:17:03 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220405.b7d4dbdf:
+  * gocd: Simplify the groups and restrict them in the CI
+
+-------------------------------------------------------------------
 Mon Apr 04 16:03:57 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220404.3e495a4f:
