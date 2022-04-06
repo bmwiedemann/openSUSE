@@ -51,6 +51,8 @@ Patch1:         lib-finder-python-cmake.patch
 Patch2:         tvm-fix-openblas.patch
 # PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
 Patch3:         tvm-disable-vulkan-test-check.patch
+# PATCH-FIX-OPENSUSE tvm-do-not-force-synr-version.patch -- boo#1197347
+Patch4:         tvm-do-not-force-synr-version.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cloudpickle}
@@ -106,9 +108,9 @@ TVM is a deep learning compiler stack for CPUs, GPUs, and specialized accelerato
 %package -n tvmc
 Summary:        TVM command line driver
 Requires:       libtvm = %{version}
-Requires:       python3-tvm = %{version}
 Requires:       python3-scipy
 Requires:       python3-setuptools
+Requires:       python3-tvm = %{version}
 Requires:       python3-typed-ast
 Recommends:     python3-Pillow
 Recommends:     python3-onnx

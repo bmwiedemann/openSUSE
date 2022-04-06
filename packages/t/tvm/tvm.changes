@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  6 08:03:50 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix boo#1197347:
+  * tvm-do-not-force-synr-version.patch
+
+-------------------------------------------------------------------
 Mon Mar  7 16:27:13 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Skip test_meta_schedule_local_runner_time_out and
