@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-qcheck
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,34 @@
 
 
 %bcond_with ocaml_qcheck_testsuite
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == "testsuite"
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
 %if %{without ocaml_qcheck_testsuite}
 ExclusiveArch:  do-not-build
 %endif
 %define nsuffix -testsuite
 %else
-%define nsuffix %{nil}
+%define nsuffix %nil
 %endif
 
 %define     pkg ocaml-qcheck
-Name:           %{pkg}%{nsuffix}
-Version:        0.18
+Name:           %pkg%nsuffix
+Version:        0.18.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        QuickCheck inspired property-based testing for OCaml
 License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/qcheck
-Source0:        %{pkg}-%{version}.tar.xz
+Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.2
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(ounit2)
 BuildRequires:  ocamlfind(unix)
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)
 BuildRequires:  ocamlfind(qcheck)
 %endif
@@ -55,35 +55,35 @@ randomly generated instances of the type. It provides combinators for
 generating instances and printing them.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 
 %prep
-%autosetup -p1 -n %{pkg}-%{version}
+%autosetup -p1 -n %pkg-%version
 
 %build
 dune_release_pkgs='qcheck,qcheck-core,qcheck-ounit'
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 dune_release_pkgs="${dune_release_pkgs},qcheck-alcotest"
 %endif
 %ocaml_dune_setup
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_build
 %endif
 
 %install
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 %check
 %if "%_lib" == "lib"
 : https://github.com/c-cube/qcheck/issues/152
@@ -92,11 +92,11 @@ dune_release_pkgs="${dune_release_pkgs},qcheck-alcotest"
 %endif
 %endif
 
-%if "%{build_flavor}" == ""
-%files -f %{name}.files
+%if "%build_flavor" == ""
+%files -f %name.files
 %doc README.adoc
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 %endif
 
 %changelog
