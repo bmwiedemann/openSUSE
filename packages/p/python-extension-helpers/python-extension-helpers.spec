@@ -1,7 +1,7 @@
 #
 # spec file for package python-extension-helpers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,26 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-extension-helpers
-Version:        0.1
+Version:        1.0.0
 Release:        0
 Summary:        Utilities for building and installing packages in the Astropy ecosystem
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/extension-helpers
 Source:         https://files.pythonhosted.org/packages/source/e/extension-helpers/extension-helpers-%{version}.tar.gz
 Source100:      python-extension-helpers-rpmlintrc
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 43}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module numpy-devel if (%python-base without python36-base)}
+BuildRequires:  %{python_module wheel}
 # /SECTION
-Requires:       python-setuptools
+Requires:       python-setuptools >= 40.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,10 +56,10 @@ dependency in pyproject.toml files.
 %setup -q -n extension-helpers-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,6 +70,6 @@ dependency in pyproject.toml files.
 %doc CHANGES.rst README.rst
 %license LICENSE.rst licenses/LICENSE_ASTROSCRAPPY.rst
 %{python_sitelib}/extension_helpers
-%{python_sitelib}/extension_helpers-%{version}-py*.egg-info
+%{python_sitelib}/extension_helpers-%{version}*-info
 
 %changelog

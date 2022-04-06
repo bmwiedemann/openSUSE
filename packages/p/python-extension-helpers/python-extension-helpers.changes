@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  5 15:57:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0
+  * Added support for coverage>=5 for the extension-helpers test
+    suite. [#24]
+  * Removed any direct usage of distutils. [#34]
+  * Remove support for the undocumented --compiler argument to
+    setup.py. [#36]
+  * Added support for enabling extension-helpers from setup.cfg.
+    [#33]
+
+-------------------------------------------------------------------
 Sat Feb 20 18:28:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't test python36-numpy. Numpy 1.20 in Tumbleweed dropped
