@@ -23,11 +23,12 @@ Release:        0
 Summary:        Deriving plugin registry
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
+BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://github.com/ocaml-ppx/ppx_derivers
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20210409
 
 %description
 Ppx_derivers is a tiny package whose sole purpose is to allow
@@ -44,7 +45,7 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 dune_release_pkgs='ppx_derivers'
@@ -59,7 +60,9 @@ dune_release_pkgs='ppx_derivers'
 %ocaml_dune_test
 
 %files -f %{name}.files
+%defattr(-,root,root,-)
 
 %files devel -f %{name}.files.devel
+%defattr(-,root,root,-)
 
 %changelog
