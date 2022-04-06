@@ -63,4 +63,14 @@ update: fixed license ID (used wrong casing)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>891221</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9e3776e412fc43c36b417d0d540ffda5</srcmd5>
+    <version>1.0</version>
+    <time>1649274675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0
+  See included CHANGELOG.md for details
+- Remove obsolete ocaml-gen.patch</comment>
+    <requestid>967054</requestid>
+  </revision>
 </revisionlist>
