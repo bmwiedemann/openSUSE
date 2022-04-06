@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-bigarray-compat</param>
-    <param name="revision">757e11302b40619322fb839a8ef0cb0e16ba0828</param>
+    <param name="revision">2ea842ba4ab2cfee7b711f7ad927917f3179a6f9</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/mirage/bigarray-compat.git</param>
