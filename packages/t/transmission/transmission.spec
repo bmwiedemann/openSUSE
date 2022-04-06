@@ -1,7 +1,7 @@
 #
 # spec file for package transmission
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://www.transmissionbt.com/
 Source0:        https://github.com/%{name}/%{name}-releases/raw/master/%{name}-%{version}.tar.xz
 Source1:        transmission-qt.desktop
 Source3:        README.openSUSE
-Patch0:	harden_transmission-daemon.service.patch
+Patch0:         harden_transmission-daemon.service.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(zlib) >= 1.2.3
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       %{name}-ui = %{version}
 %if 0%{?WITH_APPINDICATOR}
 BuildRequires:  libappindicator3-devel >= 0.4.90
@@ -66,7 +66,7 @@ Requires:       %{name}-common = %{version}
 # For canberra-gtk-play binary
 Requires:       canberra-gtk-play
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       %{name}-ui = %{version}
 
 %description gtk
@@ -82,7 +82,7 @@ Summary:        Qt interface for the "transmission" BitTorrent client
 Group:          Productivity/Networking/Other
 Requires:       %{name}-common = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       %{name}-ui = %{version}
 
 %description qt
@@ -125,7 +125,6 @@ cp %{SOURCE3} .
 %patch0 -p1
 
 %build
-autoreconf -fi
 sed -i '/^Icon=/ s/$/-qt/' qt/transmission-qt.desktop
 %configure \
     --prefix=/usr \
