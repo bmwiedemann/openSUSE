@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- Update to version 20220325
+
+-------------------------------------------------------------------
 Sat Sep 25 20:58:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't use python(abi) construct it is not reliably supported in

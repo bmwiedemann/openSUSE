@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-pyml</param>
-    <param name="revision">8521e337944b651db2eb791ef561348d0ecfcf7a</param>
+    <param name="revision">c2fcdcfe2169ff8a57c8a905dba3352047f95c16</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/thierry-martinez/pyml.git</param>
