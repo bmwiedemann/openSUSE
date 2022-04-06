@@ -38,6 +38,7 @@
 %global package_glib 1
 # Docs are the same for GTK2/3, dito for glib
 %bcond_without docs
+%define gtkdoc %nil
 %endif
 %if "%{flavor}" == "gtk3"
 %global gtksuffix 3
@@ -47,6 +48,7 @@
 %global psuffix      -gtk%{gtkver}
 %bcond_with    testtools
 %bcond_with    docs
+%define gtkdoc GTKDOCIZE=true
 %endif
 %global libname_glib libdbusmenu-glib%{soname_glib}
 Name:           libdbusmenu%{?psuffix}
@@ -203,7 +205,7 @@ This package contains the development files for the dbusmenu-jsonloader library.
 
 %build
 export CFLAGS="%{optflags} -Wno-error"
-autoreconf -vfi
+%gtkdoc autoreconf -fiv
 
 %configure \
         --disable-static       \

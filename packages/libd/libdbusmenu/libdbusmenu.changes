@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  3 11:09:27 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Set GTKDOCIZE=true when gtk3 to fix issues with autoconf 2.70
+
+-------------------------------------------------------------------
 Mon Mar 23 10:54:05 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require the tyeplib packages from the -devel packages: typelibs
