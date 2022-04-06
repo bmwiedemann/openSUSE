@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-fileutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == "testsuite"
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
 %define nsuffix -testsuite
 %else
-%define nsuffix %{nil}
+%define nsuffix %nil
 %endif
 
 %define     pkg ocaml-fileutils
-Name:           %{pkg}%{nsuffix}
+Name:           %pkg%nsuffix
 Version:        0.6.3
 Release:        0
 %{?ocaml_preserve_bytecode}
@@ -32,16 +32,16 @@ Summary:        OCaml library for common file and filename operations
 License:        SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/fileutils
-Source0:        %{pkg}-%{version}.tar.xz
+Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(fileutils)
 BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(stdlib-shims)
@@ -58,39 +58,39 @@ manipulates real files, the second one is made for manipulating
 abstract filenames.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
-%autosetup -p1 -n %{pkg}-%{version}
+%autosetup -p1 -n %pkg-%version
 
 %build
 dune_release_pkgs='fileutils'
 %ocaml_dune_setup
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_build
 %endif
 
 %install
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 %check
 %ocaml_dune_test
 %endif
 
-%if "%{build_flavor}" == ""
-%files -f %{name}.files
+%if "%build_flavor" == ""
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %endif
 

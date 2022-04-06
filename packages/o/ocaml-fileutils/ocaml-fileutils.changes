@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- Use https URL for github.com
+
+-------------------------------------------------------------------
 Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
 
 - remove dependency to ounit via _multibuild

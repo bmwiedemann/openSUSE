@@ -56,4 +56,12 @@
     <comment>- remove dependency to ounit via _multibuild</comment>
     <requestid>867971</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>265e2dc90c5077ac8ec940bd12de9a07</srcmd5>
+    <version>0.6.3</version>
+    <time>1649274673</time>
+    <user>dimstar_suse</user>
+    <comment>- Use https URL for github.com</comment>
+    <requestid>967050</requestid>
+  </revision>
 </revisionlist>
