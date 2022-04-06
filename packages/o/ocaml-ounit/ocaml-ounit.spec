@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ounit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,19 @@
 %bcond_with     ocaml_lwt
 
 Name:           ocaml-ounit
-Version:        2.2.4
+Version:        2.2.6
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Ocaml OUnit test framework
 License:        MIT
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ounit
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(bytes)
+BuildRequires:  ocamlfind(seq)
 BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(threads)
@@ -47,12 +48,12 @@ framework for Haskell. It is similar to JUnit, and other xUnit testing
 frameworks.
 
 %package devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description devel
-Development files needed for application based on %{name}.
+Development files needed for application based on %name.
 
 %prep
 %autosetup -p1
@@ -67,15 +68,15 @@ dune_release_pkgs="${dune_release_pkgs},ounit-lwt,ounit2-lwt"
 
 %install
 %ocaml_dune_install
-mkdir %{buildroot}$(ocamlc -where)/oUnit
+mkdir %buildroot$(ocamlc -where)/oUnit
 cp -avt "$_" src/lib/oUnit/META
 %ocaml_create_file_list
 
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

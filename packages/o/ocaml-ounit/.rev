@@ -55,4 +55,13 @@
   Skip AssertCodePosition test if no debug symbols are available</comment>
     <requestid>867941</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0129bbfab0a4772e85e066ad17ce247c</srcmd5>
+    <version>2.2.6</version>
+    <time>1649274680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.6
+  support for OCaml 5.0</comment>
+    <requestid>967063</requestid>
+  </revision>
 </revisionlist>
