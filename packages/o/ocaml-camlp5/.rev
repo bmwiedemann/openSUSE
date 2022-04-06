@@ -93,4 +93,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921262</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bc434e484acdb5fdeb5dbc76631bc026</srcmd5>
+    <version>8.00.03</version>
+    <time>1649274668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.00.03
+  cover ocaml-4.14</comment>
+    <requestid>967043</requestid>
+  </revision>
 </revisionlist>
