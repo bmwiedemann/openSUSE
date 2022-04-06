@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Apr 06 07:33:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.5:
+  * temporarily disable the `platform` field.
+  * Automatically set target platform based on client architecture
+  * ci: Remove release.yml workflow
+  * ci: fix auto-release secrets
+  * ci: fix workflow secret names
+  * Remove incorrect installer documentation
+  * ci: move ci infra top-level
+  * ci: lint markdown files
+  * ci: lint shell
+  * ci: improve dogfood configuration
+  * ci: use dagger from source
+  * universe: go: add golangci-lint support
+  * task: source: fix vertex name
+  * client filesystem: remove .dagger from default exclusion
+  * universe: go: improve cache management
+  * universe: go: do not hardcode default platform
+  * docs: add tip for support symlink with git on Windows
+  * docs: fix Europa wording on migration docs (#2032)
+  * build(deps): bump sass from 1.49.10 to 1.49.11 in /website
+  * refactor!: Move image definitions to `dagger/core`
+  * Fix mounts in `cli.#Run`
+  * ci: Add full changelog to release notes
+  * ci: Add changelog exclusion for chores
+  * ci: Use github for the changelog
+  * docs: Correctly capitalize GitLab
+  * docs: Correctly capitalize GitHub
+  * universe: go: add git by default in go.#Image
+  * Adds support for 32bit armv7 devices.
+  * docs: s/poject/project/ in go-docker-swarm.md
+  * docs: fix broken link in universe README.md
+  * Fix typo (#1953)
+  * fix: tidy up a little
+  * fix: appease the linter
+  * build(deps): bump amplitude-js from 8.17.0 to 8.18.0 in /website
+  * Report error if FS is incorrectly handled on client filesystem read
+  * feat: add Pulumi support
+  * website: remove navbar schedule link
+  * website: update favicon
+  * Copied Dagger vs documentation to Europa.
+  * copy: support for include/exclude
+  * docs: Remove curl dependency when installing on Windows
+  * Prevents files to be used as input of dagger.#FS
+  * ci: add CODEOWNERS
+  * build(deps): bump sass from 1.49.9 to 1.49.10 in /website
+  * Fix export cache issue
+  * use h2 title instead of h3 + fix code css
+  * bump up docusaurus preset classic theme
+  * reduce main wrapper padding and sidebar width to avoid horizontal scrolling
+  * doc: remove the bash syntax highlighting
+  * Display getting started as the index page
+  * Update install procedure
+  * Docs Update:1200-local-dev.md build/index.html -> _buld/index/html
+  * Changed underscore position in hidden definition.
+  * Hid DefaultVersion definition.
+  * Changed test name due to conflict with bash tests.
+  * ci: Fix key copying
+  * ci: Unify keys and add private key for testing purposes
+  * docs: add getting started gitlab ci configuration
+  * doc: Improve wording on “Go on Docker Hub” use case
+  * Go on Docker Swarm
+  * Exclude docs from universe and integration tests
+  * fix: :adhesive_bandage: website: use docusaurus context
+  * fix: :adhesive_bandage: create a dev script with REACT_APP_AMPLITUDE_ID empty
+  * website: add environment var to avoid crash issue
+  * update references to alpha.dagger.io
+  * Move Dagger 0.1 link back to the bottom
+  * Fix Go on DockerHub id & filename + remove from sidebar
+  * examples: set as vendored to not count in repository stats
+  * docs: added page to sidebar
+  * docs: added a page about CLI telemetry
+  * build(deps-dev): bump cypress from 9.5.2 to 9.5.3 in /website
+  * build(deps): bump @docusaurus/core in /website
+
+-------------------------------------------------------------------
 Fri Apr  1 19:30:53 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package dagger: A portable devkit for CI/CD pipelines

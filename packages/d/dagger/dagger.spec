@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dagger
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        A portable devkit for CI/CD pipelines
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/dagger/dagger
 Source:         dagger-%{version}.tar.gz
 Source1:        vendor.tar.gz
@@ -33,7 +34,6 @@ Dagger is a portable devkit for CICD.
 Using Dagger, software teams can develop powerful CICD pipelines with minimal effort, then run them anywhere. Benefits include:
 * Unify dev and CI environments. Write your pipeline once, Dagger will run it the same everywhere.
 * Reduce CI lock-in. No more re-writing everything from scratch every 6 months.
-
 
 %prep
 %setup -q
