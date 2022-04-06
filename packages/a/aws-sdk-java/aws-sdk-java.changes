@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  5 16:37:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Double the maximum memory for javadoc to avoid out-of-memory
+  on certain architectures
+
+-------------------------------------------------------------------
 Wed Mar 30 10:00:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules inconditionally

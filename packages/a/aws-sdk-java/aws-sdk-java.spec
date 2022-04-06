@@ -152,8 +152,6 @@ This package holds the classes for uploading the
 client side metrics collected from AWS Java SDK to
 Amazon CloudWatch.
 
-
-#%% package code-generator
 %package codecommit
 Summary:        AWS Java SDK for AWS CodeCommit
 Group:          Development/Libraries/Java
@@ -172,8 +170,6 @@ The AWS Java SDK for AWS CodeDeploy module holds the
 client classes that are used for communicating with
 AWS CodeDeploy Service.
 
-
-#%% package codegen-maven-plugin
 %package codepipeline
 Summary:        AWS Java SDK for AWS CodePipeline
 Group:          Development/Libraries/Java
@@ -641,8 +637,6 @@ The AWS Java SDK for AWS Support module holds the
 client classes that are used for communicating with
 AWS Support Service.
 
-
-#%% package swf-libraries
 %package test-utils
 Summary:        AWS SDK for Java - Test Utils
 Group:          Development/Libraries/Java
@@ -816,11 +810,13 @@ dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java
 # about "_" being used as identifier with newer OpenJDK versions.
 %pom_xpath_inject pom:project/pom:properties "<source>\${jre.version}</source>"
 
+%pom_xpath_set "pom:plugins/pom:plugin/pom:configuration/pom:maxmemory" "2048m"
+
 %build
 # Tests require networking and unavailable test deps:
 # com.github.tomakehurst:wiremock:1.55
 # nl.jqno.equalsverifier:equalsverifier:1.7.5
-%{mvn_build} -sf
+%{mvn_build} -sf -- -Dsource=8
 
 %install
 %mvn_install
@@ -855,12 +851,10 @@ dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java
 
 %files cloudwatchmetrics -f .mfiles-aws-java-sdk-cloudwatchmetrics
 
-#%% files code-generator -f .mfiles-aws-java-sdk-code-generator
 %files codecommit -f .mfiles-aws-java-sdk-codecommit
 
 %files codedeploy -f .mfiles-aws-java-sdk-codedeploy
 
-#%% files codegen-maven-plugin -f .mfiles-aws-java-sdk-codegen-maven-plugin
 %files codepipeline -f .mfiles-aws-java-sdk-codepipeline
 
 %files cognitoidentity -f .mfiles-aws-java-sdk-cognitoidentity
@@ -976,8 +970,6 @@ dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java
 
 %files support -f .mfiles-aws-java-sdk-support
 
-#%% files swf-libraries -f .mfiles-aws-java-sdk-swf-libraries
-#%% doc src/samples/AwsFlowFramework
 %files test-utils -f .mfiles-aws-java-sdk-test-utils
 
 %files waf -f .mfiles-aws-java-sdk-waf
