@@ -5,7 +5,7 @@
     <param name="exclude">doc</param>
     <param name="exclude">examples</param>
     <param name="filename">ocaml-lablgtk2</param>
-    <param name="revision">156973670a9c00b10f7f97201bbca054e6f3b66b</param>
+    <param name="revision">78fcdd2fe3846209e4e75a10ba95d03546615c5f</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/garrigue/lablgtk.git</param>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- Update to version 2.18.12
+  prepare for ocaml-5.0
+
+-------------------------------------------------------------------
 Sat Dec 18 18:18:18 UTC 2021 - ohering@suse.de
 
 - Require gtk2 and rsvg in the devel pacakge

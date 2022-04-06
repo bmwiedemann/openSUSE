@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-lablgtk2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %global __ocaml_requires_opts -i GtkSourceView2_types
 
 Name:           ocaml-lablgtk2
-Version:        2.18.11
+Version:        2.18.12
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        An Objective Caml Interface to gtk2+
@@ -34,9 +34,9 @@ License:        LGPL-2.1-only
 Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/lablgtk
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(findlib)
 %if %{with ocaml_lablgtk2_gl}
 BuildRequires:  ocamlfind(lablgl)
@@ -59,10 +59,10 @@ BuildRequires:  pkgconfig(libgnomecanvas-2.0)
 BuildRequires:  pkgconfig(librsvg-2.0)
 %endif
 
-Provides:       lablgtk2 = %{version}
-Obsoletes:      lablgtk2 < %{version}
-Provides:       ocaml-lablgtk = %{version}
-Obsoletes:      ocaml-lablgtk < %{version}
+Provides:       lablgtk2 = %version
+Obsoletes:      lablgtk2 < %version
+Provides:       ocaml-lablgtk = %version
+Obsoletes:      ocaml-lablgtk < %version
 
 %description
 LablGTK2 uses the rich type system of Objective Caml 3 to provide a
@@ -74,12 +74,11 @@ level, which allows the interactive use of the library.
 %package devel
 Summary:        An Objective Caml interface to gtk2+
 Group:          Development/Languages/OCaml
-Provides:       lablgtk2-devel = %{version}
-Obsoletes:      lablgtk2-devel < %{version}
-Provides:       ocaml-lablgtk-devel = %{version}
-Obsoletes:      ocaml-lablgtk-devel < %{version}
-Provides:       lablgtk2:/usr/lib/ocaml/lablgtk2/glib.cmi
-Requires:       %{name} = %{version}
+Provides:       lablgtk2-devel = %version
+Obsoletes:      lablgtk2-devel < %version
+Provides:       ocaml-lablgtk-devel = %version
+Obsoletes:      ocaml-lablgtk-devel < %version
+Requires:       %name = %version
 Requires:       pkgconfig(gtk+-2.0)
 %if %{with ocaml_lablgtk2_rsvg}
 Requires:       pkgconfig(librsvg-2.0)
@@ -126,25 +125,25 @@ chmod a-x README
 %if %{with ocaml_lablgtk2_rsvg}
 	--with-rsvg \
 %endif
-	%{nil}
+	%nil
 make world
 make opt
 
 %install
 %make_install
 # Remove ld.conf (part of main OCaml dist).
-rm -fv %{buildroot}%{ocaml_standard_library}/ld.conf
+rm -fv %buildroot%ocaml_standard_library/ld.conf
 #
 %ocaml_create_file_list
 
-%files -f %{name}.files
+%files -f %name.files
 %defattr(-,root,root,-)
 %doc README
-%{_bindir}/*
+%_bindir/*
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 %defattr(-,root,root,-)
-%{ocaml_standard_library}/*/propcc
-%{ocaml_standard_library}/*/varcc
+%ocaml_standard_library/*/propcc
+%ocaml_standard_library/*/varcc
 
 %changelog
