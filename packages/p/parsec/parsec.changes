@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 07:00:43 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- rust-packaging -> cargo-packaging (bsc#1198131)
+
+-------------------------------------------------------------------
 Thu Mar 31 06:17:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.0.0:

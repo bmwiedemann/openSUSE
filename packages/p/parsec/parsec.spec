@@ -42,8 +42,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
 BuildRequires:  python3
 # jwt-svid-authenticator (SPIFFE-based authenticator) needs rust >= 1.53
-BuildRequires:  rust >= 1.53
+%if %suse_version > 1550
+BuildRequires:  cargo-packaging
+%else
 BuildRequires:  rust-packaging
+%endif
+BuildRequires:  rust >= 1.53
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(tss2-esys) >= 2.3.3
 # opensc is used to initialize HSM keys (PKCS#11 backend)
@@ -96,6 +100,9 @@ install -d -m0755 %{buildroot}%{_localstatedir}/lib/parsec
 # Move parsec to _libexecdir
 mkdir -p %{buildroot}%{_libexecdir}
 mv target/release/parsec %{buildroot}%{_libexecdir}
+
+# currently delete it from bin if there
+rm -f %{buildroot}%{_bindir}/parsec
 # Clean-up
 find %{buildroot} -name .crates2.json -delete
 rm -rf %{buildroot}%{_datadir}/cargo/registry
