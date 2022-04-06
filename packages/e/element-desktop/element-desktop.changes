@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 15:50:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Sync ExclusiveArch with nodejs-electron: %{ix86} %{arm}
+
+-------------------------------------------------------------------
 Mon Mar 21 10:11:21 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Use right build dir for aarch64 (boo#1197278)

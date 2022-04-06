@@ -37,6 +37,7 @@ BuildRequires:  yarn
 Requires:       element-web = %{version}
 Requires:       nodejs-electron
 
+ExcludeArch:    %{ix86} %{arm}
 #Element contains no native code
 BuildArch:      noarch
 
