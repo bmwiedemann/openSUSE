@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-fpath
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,25 +24,26 @@ Summary:        File paths for OCaml
 License:        ISC
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/fpath
-Source:         %{name}-%{version}.tar.xz
+Source:         %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(astring)
 BuildRequires:  ocamlfind(astring.top)
 BuildRequires:  ocamlfind(compiler-libs.toplevel)
+BuildRequires:  ocamlfind(result)
 
 %description
 Fpath is an OCaml module for handling file system paths with POSIX or Windows conventions. Fpath processes paths without accessing the file system and is independent from any system library.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -59,8 +60,8 @@ dune_release_pkgs='fpath'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
