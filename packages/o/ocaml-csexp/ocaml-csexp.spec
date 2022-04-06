@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-csexp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 %bcond_with ocaml_csexp_testsuite
-%define build_flavor @BUILD_FLAVOR@%{nil}
-%if "%{build_flavor}" == "testsuite"
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
 %if %{without ocaml_csexp_testsuite}
 ExclusiveArch:  do-not-build
 %endif
 %define nsuffix -testsuite
 %else
-%define nsuffix %{nil}
+%define nsuffix %nil
 %endif
 
 %define     pkg ocaml-csexp
-Name:           %{pkg}%{nsuffix}
+Name:           %pkg%nsuffix
 Version:        1.5.1
 Release:        0
 %{?ocaml_preserve_bytecode}
@@ -37,12 +37,16 @@ License:        MIT
 Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/csexp
-Source0:        %{pkg}-%{version}.tar.xz
+Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
+%if "%build_flavor" == ""
+BuildRequires:  ocaml-dune-bootstrap
+%else
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+%endif
+BuildRequires:  ocaml-rpm-macros >= 20220222
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(csexp)
 BuildRequires:  ocamlfind(ppx_expect)
 %endif
@@ -55,40 +59,44 @@ This library only provides a few helpers for simple applications. If you need mo
 To avoid a dependency on a particular S-expression library, the only module of this library is parameterised by the type of S-expressions.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
-%setup -q -n %{pkg}-%{version}
+%setup -q -n %pkg-%version
 
 %build
+%if "%build_flavor" == ""
+export PATH="%ocaml_dune_bootstrap_directory:$PATH"
+%endif
 dune_release_pkgs='csexp'
 %ocaml_dune_setup
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
 %ocaml_dune_build
 %endif
 
 %install
-%if "%{build_flavor}" == ""
+%if "%build_flavor" == ""
+export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
 
-%if "%{build_flavor}" == "testsuite"
+%if "%build_flavor" == "testsuite"
 %check
 %ocaml_dune_test
 %endif
 
-%if "%{build_flavor}" == ""
-%files -f %{name}.files
+%if "%build_flavor" == ""
+%files -f %name.files
 %defattr(-,root,root,-)
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 %defattr(-,root,root,-)
 
 %endif
