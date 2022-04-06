@@ -24,4 +24,13 @@
   Remove obsolete ocaml-lablgtk3.ml_table_extension_events.patch</comment>
     <requestid>867937</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>532c1f616b6d81801b22c39acfce4474</srcmd5>
+    <version>3.1.2</version>
+    <time>1649274706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.2
+  prepare for ocaml-5.0</comment>
+    <requestid>967058</requestid>
+  </revision>
 </revisionlist>
