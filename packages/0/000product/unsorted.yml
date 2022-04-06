@@ -790,9 +790,6 @@ unsorted:
   - aseqview 
   - asio-devel 
   - asl 
-  - asm5 
-  - asm5-examples 
-  - asm5-javadoc 
   - asn1c 
   - aspell 
   - aspell-af 
@@ -1284,8 +1281,7 @@ unsorted:
   - blasphemer 
   - bleachbit 
   - bleachbit-lang 
-  - blender: [x86_64] 
-  - blender-cycles-devel: [x86_64] 
+  - blender: [x86_64] # suggested by dvd:suggested:patterns-kde-kde 
   - blender-demo: [x86_64] 
   - blender-lang: [x86_64] 
   - bless 
@@ -2107,6 +2103,7 @@ unsorted:
   - cmus-plugins-all 
   - cni: [i586] 
   - cni-plugin-dnsname 
+  - cni-plugin-flannel 
   - cni-plugins: [i586] 
   - cntlm 
   - cobbler 
@@ -2345,6 +2342,7 @@ unsorted:
   - cpluff 
   - cpmono_v07-fonts 
   - cpp10 
+  - cpp12 
   - cpp7 
   - cppcheck-gui 
   - cpphs: [x86_64] 
@@ -2403,25 +2401,33 @@ unsorted:
   - cross-aarch64-gcc10-icecream-backend: [x86_64] 
   - cross-aarch64-gcc11 
   - cross-aarch64-gcc11-bootstrap 
+  - cross-aarch64-gcc12 
+  - cross-aarch64-gcc12-bootstrap 
   - cross-aarch64-gcc7: [x86_64] 
   - cross-aarch64-gcc7-icecream-backend: [x86_64] 
   - cross-aarch64-glibc-devel 
   - cross-aarch64-linux-glibc-devel 
   - cross-amdgcn-gcc10: [x86_64] 
   - cross-amdgcn-gcc11: [x86_64] 
+  - cross-amdgcn-gcc12: [x86_64] 
   - cross-amdgcn-newlib10-devel: [x86_64] 
   - cross-amdgcn-newlib11-devel: [x86_64] 
+  - cross-amdgcn-newlib12-devel: [x86_64] 
   - cross-arm-binutils 
   - cross-arm-gcc10: [x86_64] 
   - cross-arm-gcc10-icecream-backend: [x86_64] 
   - cross-arm-gcc11 
   - cross-arm-gcc11-icecream-backend 
+  - cross-arm-gcc12 
+  - cross-arm-gcc12-icecream-backend 
   - cross-arm-gcc7: [x86_64] 
   - cross-arm-linux-glibc-devel 
   - cross-arm-none-gcc10 
   - cross-arm-none-gcc10-bootstrap 
   - cross-arm-none-gcc11 
   - cross-arm-none-gcc11-bootstrap 
+  - cross-arm-none-gcc12 
+  - cross-arm-none-gcc12-bootstrap 
   - cross-arm-none-gcc7 
   - cross-arm-none-gcc7-bootstrap 
   - cross-arm-none-newlib-devel 
@@ -2430,6 +2436,8 @@ unsorted:
   - cross-avr-gcc10-bootstrap 
   - cross-avr-gcc11 
   - cross-avr-gcc11-bootstrap 
+  - cross-avr-gcc12 
+  - cross-avr-gcc12-bootstrap 
   - cross-avr-gcc7 
   - cross-avr-gcc7-bootstrap 
   - cross-epiphany-binutils 
@@ -2437,6 +2445,8 @@ unsorted:
   - cross-epiphany-gcc10-bootstrap 
   - cross-epiphany-gcc11 
   - cross-epiphany-gcc11-bootstrap 
+  - cross-epiphany-gcc12 
+  - cross-epiphany-gcc12-bootstrap 
   - cross-epiphany-gcc7 
   - cross-epiphany-gcc7-bootstrap 
   - cross-epiphany-newlib-devel 
@@ -2445,6 +2455,9 @@ unsorted:
   - cross-hppa-gcc10-icecream-backend: [x86_64] 
   - cross-hppa-gcc11 
   - cross-hppa-gcc11-icecream-backend 
+  - cross-hppa-gcc12 
+  - cross-hppa-gcc12-bootstrap 
+  - cross-hppa-gcc12-icecream-backend 
   - cross-hppa-gcc7: [x86_64] 
   - cross-hppa-gcc7-icecream-backend: [x86_64] 
   - cross-hppa-linux-glibc-devel 
@@ -2461,6 +2474,8 @@ unsorted:
   - cross-m68k-gcc10-icecream-backend: [x86_64] 
   - cross-m68k-gcc11 
   - cross-m68k-gcc11-icecream-backend 
+  - cross-m68k-gcc12 
+  - cross-m68k-gcc12-icecream-backend 
   - cross-m68k-gcc7: [x86_64] 
   - cross-m68k-gcc7-icecream-backend: [x86_64] 
   - cross-m68k-linux-glibc-devel 
@@ -2469,14 +2484,18 @@ unsorted:
   - cross-mips-gcc10-icecream-backend: [x86_64] 
   - cross-mips-gcc11 
   - cross-mips-gcc11-icecream-backend 
+  - cross-mips-gcc12 
+  - cross-mips-gcc12-icecream-backend 
   - cross-mips-gcc7: [x86_64] 
   - cross-mips-gcc7-icecream-backend: [x86_64] 
   - cross-mips-linux-glibc-devel 
   - cross-nvptx-gcc10: [x86_64] 
   - cross-nvptx-gcc11: [x86_64] 
+  - cross-nvptx-gcc12: [x86_64] 
   - cross-nvptx-gcc7: [x86_64] 
   - cross-nvptx-newlib10-devel: [x86_64] 
   - cross-nvptx-newlib11-devel: [x86_64] 
+  - cross-nvptx-newlib12-devel: [x86_64] 
   - cross-nvptx-newlib7-devel: [x86_64] 
   - cross-ppc-binutils 
   - cross-ppc64-binutils 
@@ -2484,6 +2503,8 @@ unsorted:
   - cross-ppc64-gcc10-icecream-backend: [x86_64] 
   - cross-ppc64-gcc11 
   - cross-ppc64-gcc11-icecream-backend 
+  - cross-ppc64-gcc12 
+  - cross-ppc64-gcc12-icecream-backend 
   - cross-ppc64-gcc7: [x86_64] 
   - cross-ppc64-gcc7-icecream-backend: [x86_64] 
   - cross-ppc64-linux-glibc-devel 
@@ -2492,6 +2513,8 @@ unsorted:
   - cross-ppc64le-gcc10-icecream-backend: [x86_64] 
   - cross-ppc64le-gcc11 
   - cross-ppc64le-gcc11-icecream-backend 
+  - cross-ppc64le-gcc12 
+  - cross-ppc64le-gcc12-icecream-backend 
   - cross-ppc64le-gcc7: [x86_64] 
   - cross-ppc64le-gcc7-icecream-backend: [x86_64] 
   - cross-ppc64le-linux-glibc-devel 
@@ -2501,10 +2524,14 @@ unsorted:
   - cross-riscv64-elf-gcc10-bootstrap 
   - cross-riscv64-elf-gcc11 
   - cross-riscv64-elf-gcc11-bootstrap 
+  - cross-riscv64-elf-gcc12 
+  - cross-riscv64-elf-gcc12-bootstrap 
   - cross-riscv64-gcc10: [x86_64] 
   - cross-riscv64-gcc10-icecream-backend: [x86_64] 
   - cross-riscv64-gcc11 
   - cross-riscv64-gcc11-bootstrap 
+  - cross-riscv64-gcc12 
+  - cross-riscv64-gcc12-bootstrap 
   - cross-riscv64-glibc-devel 
   - cross-riscv64-linux-glibc-devel 
   - cross-riscv64-newlib-devel 
@@ -2513,6 +2540,8 @@ unsorted:
   - cross-rx-gcc10-bootstrap 
   - cross-rx-gcc11 
   - cross-rx-gcc11-bootstrap 
+  - cross-rx-gcc12 
+  - cross-rx-gcc12-bootstrap 
   - cross-rx-gcc7 
   - cross-rx-gcc7-bootstrap 
   - cross-rx-newlib-devel 
@@ -2522,12 +2551,15 @@ unsorted:
   - cross-s390x-gcc10-icecream-backend: [x86_64] 
   - cross-s390x-gcc11 
   - cross-s390x-gcc11-icecream-backend 
+  - cross-s390x-gcc12 
+  - cross-s390x-gcc12-icecream-backend 
   - cross-s390x-gcc7: [x86_64] 
   - cross-s390x-gcc7-icecream-backend: [x86_64] 
   - cross-s390x-linux-glibc-devel 
   - cross-sparc-binutils 
   - cross-sparc-gcc10: [x86_64] 
   - cross-sparc-gcc11 
+  - cross-sparc-gcc12 
   - cross-sparc-gcc7: [x86_64] 
   - cross-sparc-linux-glibc-devel 
   - cross-sparc64-binutils 
@@ -2535,16 +2567,21 @@ unsorted:
   - cross-sparc64-gcc10-icecream-backend: [x86_64] 
   - cross-sparc64-gcc11 
   - cross-sparc64-gcc11-icecream-backend 
+  - cross-sparc64-gcc12 
+  - cross-sparc64-gcc12-icecream-backend 
   - cross-sparc64-gcc7: [x86_64] 
   - cross-sparc64-gcc7-icecream-backend: [x86_64] 
   - cross-sparc64-linux-glibc-devel 
   - cross-sparcv9-gcc10-icecream-backend: [x86_64] 
   - cross-sparcv9-gcc11-icecream-backend 
+  - cross-sparcv9-gcc12-icecream-backend 
   - cross-sparcv9-gcc7-icecream-backend: [x86_64] 
   - cross-spu-binutils 
   - cross-x86_64-binutils: [i586] 
   - cross-x86_64-gcc11: [i586] 
   - cross-x86_64-gcc11-icecream-backend: [i586] 
+  - cross-x86_64-gcc12: [i586] 
+  - cross-x86_64-gcc12-icecream-backend: [i586] 
   - cross-x86_64-linux-glibc-devel 
   - cross-xtensa-binutils 
   - crossguid-devel 
@@ -3541,6 +3578,7 @@ unsorted:
   - fcitx-anthy 
   - fcitx-devel 
   - fcitx-fbterm 
+  - fcitx-gtk3-32bit: [x86_64] 
   - fcitx-hangul 
   - fcitx-kkc 
   - fcitx-m17n 
@@ -3613,7 +3651,7 @@ unsorted:
   - fcitx5-lua-devel 
   - fcitx5-lua-migration-reminder 
   - fcitx5-m17n 
-  - fcitx5-mozc 
+  - fcitx5-mozc: [x86_64] 
   - fcitx5-pinyindictmanager 
   - fcitx5-qt-devel 
   - fcitx5-qt5 
@@ -4134,6 +4172,27 @@ unsorted:
   - gcc11-objc 
   - gcc11-objc-32bit: [x86_64] 
   - gcc11-testresults 
+  - gcc12 
+  - gcc12-32bit: [x86_64] 
+  - gcc12-PIE 
+  - gcc12-ada 
+  - gcc12-ada-32bit: [x86_64] 
+  - gcc12-c++ 
+  - gcc12-c++-32bit: [x86_64] 
+  - gcc12-d 
+  - gcc12-d-32bit: [x86_64] 
+  - gcc12-devel 
+  - gcc12-fortran 
+  - gcc12-fortran-32bit: [x86_64] 
+  - gcc12-go 
+  - gcc12-go-32bit: [x86_64] 
+  - gcc12-info 
+  - gcc12-locale 
+  - gcc12-obj-c++ 
+  - gcc12-obj-c++-32bit: [x86_64] 
+  - gcc12-objc 
+  - gcc12-objc-32bit: [x86_64] 
+  - gcc12-testresults 
   - gcc7 
   - gcc7-32bit: [x86_64] 
   - gcc7-ada 
@@ -6506,6 +6565,7 @@ unsorted:
   - gtk3-tools-32bit: [x86_64] 
   - gtk4-branding-upstream 
   - gtk4-devel 
+  - gtk4-devel-tools 
   - gtk4-docs 
   - gtk4-metatheme-adapta 
   - gtk4-metatheme-matcha 
@@ -8423,7 +8483,6 @@ unsorted:
   - kubernetes-pause 
   - kubernetes-proxy: [x86_64] 
   - kubernetes-proxy-minus1: [x86_64] 
-  - kubernetes-salt 
   - kubernetes-scheduler: [x86_64] 
   - kubernetes-scheduler-minus1: [x86_64] 
   - kubernetes1.18-apiserver: [x86_64] 
@@ -9548,6 +9607,8 @@ unsorted:
   - libada10-32bit: [x86_64] 
   - libada11 
   - libada11-32bit: [x86_64] 
+  - libada12 
+  - libada12-32bit: [x86_64] 
   - libada7 
   - libada7-32bit: [x86_64] 
   - libaddrxlat-devel 
@@ -9682,6 +9743,8 @@ unsorted:
   - libasan6-32bit: [x86_64] 
   - libasan6-gcc10 
   - libasan6-gcc10-32bit: [x86_64] 
+  - libasan8 
+  - libasan8-32bit: [x86_64] 
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
   - libasn1c-devel 
@@ -9707,6 +9770,8 @@ unsorted:
   - libatomic1-32bit: [x86_64] 
   - libatomic1-gcc10 
   - libatomic1-gcc10-32bit: [x86_64] 
+  - libatomic1-gcc11 
+  - libatomic1-gcc11-32bit: [x86_64] 
   - libatomic1-gcc7 
   - libatomic1-gcc7-32bit: [x86_64] 
   - libatomic_ops-devel 
@@ -10728,6 +10793,8 @@ unsorted:
   - libfcache1 
   - libfcft4 
   - libfcgi0 
+  - libfcitx-config4-32bit: [x86_64] 
+  - libfcitx-core0-32bit: [x86_64] 
   - libfcrypto-devel 
   - libfcrypto1 
   - libfdata-devel 
@@ -10960,11 +11027,15 @@ unsorted:
   - libgcalc-2-1_0_1 
   - libgcc_s1-gcc10 
   - libgcc_s1-gcc10-32bit: [x86_64] 
+  - libgcc_s1-gcc11 
+  - libgcc_s1-gcc11-32bit: [x86_64] 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
+  - libgccjit-devel 
   - libgccjit0 
-  - libgccjit0-devel 
   - libgccjit0-devel-gcc11 
+  - libgccjit0-devel-gcc12 
+  - libgccjit0-gcc11 
   - libgci-1-0_0_0 
   - libgcin-im-client1-32bit: [x86_64] 
   - libgck-1-0-32bit: [x86_64] 
@@ -11008,6 +11079,8 @@ unsorted:
   - libgdruntime1-32bit: [x86_64] 
   - libgdruntime2 
   - libgdruntime2-32bit: [x86_64] 
+  - libgdruntime3 
+  - libgdruntime3-32bit: [x86_64] 
   - libgeany0 
   - libgee-0_8-2-32bit: [x86_64] 
   - libgee-devel 
@@ -11038,6 +11111,8 @@ unsorted:
   - libgfortran5-32bit: [x86_64] 
   - libgfortran5-gcc10 
   - libgfortran5-gcc10-32bit: [x86_64] 
+  - libgfortran5-gcc11 
+  - libgfortran5-gcc11-32bit: [x86_64] 
   - libgfrpc0 
   - libgfxdr0 
   - libgiac0 
@@ -11134,12 +11209,16 @@ unsorted:
   - libgo16-32bit: [x86_64] 
   - libgo19 
   - libgo19-32bit: [x86_64] 
+  - libgo21 
+  - libgo21-32bit: [x86_64] 
   - libgoa-1_0-0-32bit: [x86_64] 
   - libgoa-backend-1_0-1-32bit: [x86_64] 
   - libgoffice-0_10-10 
   - libgomp1-32bit: [x86_64] 
   - libgomp1-gcc10 
   - libgomp1-gcc10-32bit: [x86_64] 
+  - libgomp1-gcc11 
+  - libgomp1-gcc11-32bit: [x86_64] 
   - libgomp1-gcc7 
   - libgomp1-gcc7-32bit: [x86_64] 
   - libgoocanvas-2_0-9 
@@ -11161,6 +11240,8 @@ unsorted:
   - libgphobos1-32bit: [x86_64] 
   - libgphobos2 
   - libgphobos2-32bit: [x86_64] 
+  - libgphobos3 
+  - libgphobos3-32bit: [x86_64] 
   - libgphoto2-6-32bit: [x86_64] 
   - libgphoto2-devel 
   - libgphoto2-devel-32bit: [x86_64] 
@@ -11687,6 +11768,8 @@ unsorted:
   - libitm1-32bit: [x86_64] 
   - libitm1-gcc10 
   - libitm1-gcc10-32bit: [x86_64] 
+  - libitm1-gcc11 
+  - libitm1-gcc11-32bit: [x86_64] 
   - libitm1-gcc7 
   - libitm1-gcc7-32bit: [x86_64] 
   - libivykis0 
@@ -11989,6 +12072,7 @@ unsorted:
   - liblrdf2-32bit: [x86_64] 
   - liblrs1 
   - liblsan0-gcc10: [x86_64] 
+  - liblsan0-gcc11: [x86_64] 
   - liblsan0-gcc7: [x86_64] 
   - liblscp-devel 
   - liblscp6 
@@ -12528,6 +12612,8 @@ unsorted:
   - libobjc4-32bit: [x86_64] 
   - libobjc4-gcc10 
   - libobjc4-gcc10-32bit: [x86_64] 
+  - libobjc4-gcc11 
+  - libobjc4-gcc11-32bit: [x86_64] 
   - libobjc4-gcc7 
   - libobjc4-gcc7-32bit: [x86_64] 
   - libobjc4_6 
@@ -12597,10 +12683,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_17-gnu-hpc 
-  - libopenblas-pthreads_0_3_17-gnu-hpc-devel 
-  - libopenblas_0_3_17-gnu-hpc 
-  - libopenblas_0_3_17-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_20-gnu-hpc 
+  - libopenblas-pthreads_0_3_20-gnu-hpc-devel 
+  - libopenblas_0_3_20-gnu-hpc 
+  - libopenblas_0_3_20-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -13321,6 +13407,8 @@ unsorted:
   - libquadmath0-32bit: [x86_64] 
   - libquadmath0-gcc10 
   - libquadmath0-gcc10-32bit: [x86_64] 
+  - libquadmath0-gcc11 
+  - libquadmath0-gcc11-32bit: [x86_64] 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit: [x86_64] 
   - libquagga_pb0 
@@ -13922,16 +14010,23 @@ unsorted:
   - libstdc++6-devel-gcc10 
   - libstdc++6-devel-gcc10-32bit: [x86_64] 
   - libstdc++6-devel-gcc11-32bit: [x86_64] 
+  - libstdc++6-devel-gcc12 
+  - libstdc++6-devel-gcc12-32bit: [x86_64] 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit: [x86_64] 
   - libstdc++6-gcc10 
   - libstdc++6-gcc10-32bit: [x86_64] 
   - libstdc++6-gcc10-locale 
+  - libstdc++6-gcc11 
+  - libstdc++6-gcc11-32bit: [x86_64] 
+  - libstdc++6-gcc11-locale 
   - libstdc++6-gcc7 
   - libstdc++6-gcc7-32bit: [x86_64] 
   - libstdc++6-gcc7-locale 
   - libstdc++6-pp-gcc10 
   - libstdc++6-pp-gcc10-32bit: [x86_64] 
+  - libstdc++6-pp-gcc11 
+  - libstdc++6-pp-gcc11-32bit: [x86_64] 
   - libstellarsolver2 
   - libstemmer0d 
   - libstfl-devel 
@@ -14226,6 +14321,7 @@ unsorted:
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
+  - libtsan2: [x86_64] 
   - libtsk19 
   - libtsm-devel 
   - libtsm4 
@@ -14267,6 +14363,8 @@ unsorted:
   - libubsan1-32bit: [x86_64] 
   - libubsan1-gcc10 
   - libubsan1-gcc10-32bit: [x86_64] 
+  - libubsan1-gcc11 
+  - libubsan1-gcc11-32bit: [x86_64] 
   - libuchardet-devel 
   - libuchardet0 
   - libuchardet0-32bit: [x86_64] 
@@ -14827,7 +14925,6 @@ unsorted:
   - libxkbcommon-x11-0-32bit: [x86_64] 
   - libxkbcommon-x11-devel 
   - libxkbcommon-x11-devel-32bit: [x86_64] 
-  - libxkbcommon0-32bit: [x86_64] 
   - libxkbfile-devel: [i586] # devel package of common_locks:libxkbfile1 
   - libxkbfile-devel-32bit: [x86_64] 
   - libxkbfile1-32bit: [x86_64] 
@@ -18104,10 +18201,9 @@ unsorted:
   - openamp-examples 
   - openbabel 
   - openbabel-devel 
-  - openblas-devel 
-  - openblas-devel-headers 
-  - openblas-pthreads_0_3_17-gnu-hpc-devel-static 
-  - openblas_0_3_17-gnu-hpc-devel-static 
+  - openblas-common-devel 
+  - openblas-pthreads_0_3_20-gnu-hpc-devel-static 
+  - openblas_0_3_20-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -42041,6 +42137,7 @@ unsorted:
   - unifraktur-fonts 
   - unionfs-fuse 
   - unique-factory-devel 
+  - unison-text 
   - unit-api 
   - unit-api-javadoc 
   - unittest-cpp-devel 
