@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-parmap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-parmap
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Multicore architecture exploitation for OCaml programs with minimal modifications
 License:        LGPL-2.0-only
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/parmap
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(graphics)
@@ -44,13 +44,13 @@ size of granularity of the parallel computation with the optional
 parameter chunksize.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 
 %prep
@@ -75,8 +75,8 @@ export nData=$((1000 * 10))
 export nProcs=2
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
