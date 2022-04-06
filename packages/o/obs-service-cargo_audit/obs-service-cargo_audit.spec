@@ -22,7 +22,7 @@ Summary:        An OBS source service: Audit vendored Rust crates for security i
 License:        MPL-2.0
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
-Version:        0.1.8~0
+Version:        0.1.8~1
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 Source99:       obs-service-cargo_audit-rpmlintrc
