@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 04 12:00:00 UTC 2022 - Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
+
+- Fixes cli11 dependency for 15.3.
+- Drops system gl2ps on Leap 15.x since a higher version of gl2ps
+  is needed than the system provided version on Leap 15.x.
+
+-------------------------------------------------------------------
 Thu Mar 17 13:40:21 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.10.1:

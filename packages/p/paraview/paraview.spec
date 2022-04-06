@@ -23,10 +23,12 @@
 
 %if 0%{?suse_version} <= 1500
 %bcond_with    pugixml
+%bcond_with gl2ps
 %else
 %bcond_without pugixml
-%endif
 %bcond_without gl2ps
+%endif
+
 # Need patched version with HPDF_SHADING
 %bcond_with    haru
 
@@ -79,7 +81,6 @@ BuildRequires:  python3-qt5-devel
 BuildRequires:  readline-devel
 BuildRequires:  utfcpp-devel
 BuildRequires:  wget
-BuildRequires:  pkgconfig(CLI11)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
@@ -105,6 +106,11 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf) >= 2.6.0
 %if %{with pugixml}
 BuildRequires:  pkgconfig(pugixml) >= 1.11
+%endif
+%if 0%{?suse_version} <= 1500
+BuildRequires:  cli11-devel
+%else
+BuildRequires:  pkgconfig(CLI11)
 %endif
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(xt)

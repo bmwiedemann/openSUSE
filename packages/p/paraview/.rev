@@ -434,4 +434,14 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>964079</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>10b807f0de29cbdedcee6d13273f3988</srcmd5>
+    <version>5.10.1</version>
+    <time>1649274692</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes cli11 dependency for 15.3.
+- Drops system gl2ps on Leap 15.x since a higher version of gl2ps  is needed than the system provided version on Leap 15.x.
+</comment>
+    <requestid>967117</requestid>
+  </revision>
 </revisionlist>
