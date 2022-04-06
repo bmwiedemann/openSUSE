@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysolr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ Requires:       python-requests >= 2.9.1
 Suggests:       python-kazoo >= 2.5.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.1}
 # /SECTION

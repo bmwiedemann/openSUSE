@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 10:11:54 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Wed Aug  5 15:21:54 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.9.0
