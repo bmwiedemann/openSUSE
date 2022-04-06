@@ -1,7 +1,7 @@
 #
 # spec file for package python-pilkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,14 @@ URL:            https://github.com/matthewwithanm/pilkit/
 Source:         https://files.pythonhosted.org/packages/source/p/pilkit/pilkit-%{version}.tar.gz
 Patch0:         pil-fix-test.patch
 Patch1:         switch-to-pytest.patch
+# https://github.com/matthewwithanm/pilkit/issues/54
+Patch2:         python-pilkit-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

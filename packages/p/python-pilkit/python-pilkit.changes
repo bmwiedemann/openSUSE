@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  6 10:37:26 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/matthewwithanm/pilkit/issues/54
+  + python-pilkit-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Sep  6 08:44:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add switch-to-pytest.patch:
