@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 30 15:00:05 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.028:
+  * Introduce in-application load balancing read queries to DB replica (#262)
+  * Fix bigint DB error when inserting hash for big files (#262)
+  * Move initialization code from before_server_start to execute earlier (#262)
+  * t: Fix unstable test 03-headquarter-subsidiaries-weight1 by correcting expected values (#262)
+  * spec: Fix renamed README in the spec file (#262)
+
+-------------------------------------------------------------------
 Wed Mar 16 16:40:33 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.027:
