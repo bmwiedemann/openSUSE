@@ -690,4 +690,12 @@
     <comment>January 2022 CPU</comment>
     <requestid>959709</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>0ac587a4cf789bbfe87695b30e4e3666</srcmd5>
+    <version>1.8.0.322</version>
+    <time>1649274661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966772</requestid>
+  </revision>
 </revisionlist>

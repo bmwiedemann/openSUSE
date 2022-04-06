@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  4 07:24:25 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Add java-1_8_0-openjdk-autoconf27.patch to accept autoconf 2.71
+  as autoconf 2.59 or later
+
+-------------------------------------------------------------------
 Sat Mar  5 07:44:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u322 (icedtea-3.22.0)

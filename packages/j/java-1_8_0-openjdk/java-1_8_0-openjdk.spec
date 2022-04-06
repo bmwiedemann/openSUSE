@@ -187,6 +187,7 @@ Patch14:        zero-javadoc-verbose.patch
 Patch103:       ppc-zero-hotspot.patch
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
+Patch1003:      java-1_8_0-openjdk-autoconf27.patch
 Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 Patch2003:      JDK-8076190.patch
@@ -409,6 +410,7 @@ this package unless you really need to.
 %ifarch s390
 %patch1002 -p1
 %endif
+%patch1003 -p1
 
 # Setup nss.fips.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE17} > nss.fips.cfg
