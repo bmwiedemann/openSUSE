@@ -17,4 +17,13 @@ It is a dependency of opam.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>746693</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4a17228ecc4eb3b1b3a1d8128312a7d4</srcmd5>
+    <version>1.1.1</version>
+    <time>1649274669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1
+  See included CHANGES.md for details</comment>
+    <requestid>967044</requestid>
+  </revision>
 </revisionlist>

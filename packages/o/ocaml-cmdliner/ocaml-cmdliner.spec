@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-parmap
 #
-# Copyright (c) 2016 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 Name:           ocaml-cmdliner
-Version:        1.0.4
+Version:        1.1.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        ISC
 Summary:        Declarative definition of command line interfaces for OCaml
 Url:            https://github.com/dbuenzli/cmdliner
 Group:          Development/Languages/OCaml
-Source:         %{name}-%{version}.tar.xz
-BuildRequires:  ocaml
+Source:         %name-%version.tar.xz
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20220222
 
 %description
 Cmdliner is a module for the declarative definition of command line interfaces.
@@ -38,13 +38,13 @@ generation. It supports programs with single or multiple commands and respects
 most of the POSIX and GNU conventions.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}-%{release}
+Requires:       %name = %version-%release
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -61,8 +61,8 @@ dune_release_pkgs='cmdliner'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog

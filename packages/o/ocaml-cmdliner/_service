@@ -1,11 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/dbuenzli/cmdliner.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">1.0.4</param>
-    <!-- v1.0.4 -->
-    <param name="revision">93ee8854625a312d9ce69f83398bbc1e8443402f</param>
     <param name="filename">ocaml-cmdliner</param>
+    <param name="revision">2c370b7ca519473584c04a3c4f89683f3cc0aad0</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/dbuenzli/cmdliner.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
