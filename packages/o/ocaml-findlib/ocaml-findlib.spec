@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-findlib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010-2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ocaml-findlib
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Objective CAML package manager and build helper
@@ -26,15 +26,15 @@ License:        MIT
 Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 Url:            https://github.com/ocaml/ocamlfind
-Source0:        findlib-%{version}.tar.xz
+Source0:        findlib-%version.tar.xz
 #
 Requires:       ocaml-compiler-libs
 Requires:       ocaml-runtime
 #
-Provides:       ocamlfind = %{version}
+Provides:       ocamlfind = %version
 BuildRequires:  ocaml
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20220222
 
 %description
 Findlib is a library manager for Objective Caml. It provides a
@@ -46,45 +46,45 @@ libraries in programs and scripts.
 %package        devel
 Summary:        Development files for ocaml-findlib
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
-Provides:       %{name}-camlp4 = %{version}-%{release}
-Obsoletes:      %{name}-camlp4 < %{version}-%{release}
+Requires:       %name = %version
+Provides:       %name-camlp4 = %version-%release
+Obsoletes:      %name-camlp4 < %version-%release
 
 %description    devel
 The ocaml-findlib-devel package contains libraries and signature files
 for developing applications that use ocaml-findlib.
 
 %prep
-%setup -q -n findlib-%{version}
+%setup -q -n findlib-%version
 
 %build
 rm -rfv site-lib-src
 (cd tools/extract_args && make)
 tools/extract_args/extract_args -o src/findlib/ocaml_args.ml ocamlc ocamlcp ocamlmktop ocamlopt ocamldep ocamldoc ||:
-./configure -config %{ocaml_standard_library}/ocamlfind.conf \
-  -bindir %{_bindir} \
-  -sitelib '%{ocaml_standard_library}' \
-  -mandir %{_mandir} \
+./configure -config %ocaml_standard_library/ocamlfind.conf \
+  -bindir %_bindir \
+  -sitelib '%ocaml_standard_library' \
+  -mandir %_mandir \
   -with-toolbox
 make all
 make opt
 
 %install
-make install prefix=%{buildroot}
-rm -rfv %{buildroot}%{ocaml_standard_library}/ocamlbuild
-rm -rfv %{buildroot}%{ocaml_standard_library}/findlib/Makefile.packages
+make install prefix=%buildroot
+rm -rfv %buildroot%ocaml_standard_library/ocamlbuild
+rm -rfv %buildroot%ocaml_standard_library/findlib/Makefile.packages
 %ocaml_create_file_list
 
-%files -f %{name}.files
+%files -f %name.files
 %defattr(-,root,root,-)
-%{ocaml_standard_library}/ocamlfind.conf
-%{ocaml_standard_library}/topfind
-%{_bindir}/*
-%{_mandir}/man?/*
+%ocaml_standard_library/ocamlfind.conf
+%ocaml_standard_library/topfind
+%_bindir/*
+%_mandir/man?/*
 #
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 %defattr(-,root,root,-)
-%{ocaml_standard_library}/*/Makefile.config
+%ocaml_standard_library/*/Makefile.config
 
 %changelog

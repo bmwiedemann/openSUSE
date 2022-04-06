@@ -163,4 +163,13 @@
   build native target unconditionally</comment>
     <requestid>887307</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>130952d5b3fa55b4996d080f70908284</srcmd5>
+    <version>1.9.2</version>
+    <time>1649274673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.2
+  Fix an incomaptibility with ocaml-5.0</comment>
+    <requestid>967051</requestid>
+  </revision>
 </revisionlist>
