@@ -108,4 +108,23 @@
     <comment></comment>
     <requestid>930470</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4e952c81bff3971843e29ff6d2f49a03</srcmd5>
+    <version>1.17.0</version>
+    <time>1649274732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.0
+  + New: Define some Cloud Instance constants and the usage
+    pattern of using them (#221, #433)
+  + Enhancement: Lazy-load dependencies so that the start-up
+    and run time will usually be faster. (#423, #454)
+  + Enhancement: Bubble up token refresh exceptions (#431, #434)
+  + Enhancement: Documents a simpler http_cache usage pattern (#439)
+  + Enhancement: Expose authority discovery error for troubleshooting (#443)
+  + Enhancement: Actionable exception message when local machine
+    time error is detected (#446, #449, #453)
+  + Enhancement: Actionable exception message when username
+    password flow encounters errors with ADFS (#456, #458) (forwarded request 967331 from glaubitz)</comment>
+    <requestid>967340</requestid>
+  </revision>
 </revisionlist>

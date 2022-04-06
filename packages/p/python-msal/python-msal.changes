@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 24 12:27:46 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.17.0
+  + New: Define some Cloud Instance constants and the usage
+    pattern of using them (#221, #433)
+  + Enhancement: Lazy-load dependencies so that the start-up
+    and run time will usually be faster. (#423, #454)
+  + Enhancement: Bubble up token refresh exceptions (#431, #434)
+  + Enhancement: Documents a simpler http_cache usage pattern (#439)
+  + Enhancement: Expose authority discovery error for troubleshooting (#443)
+  + Enhancement: Actionable exception message when local machine
+    time error is detected (#446, #449, #453)
+  + Enhancement: Actionable exception message when username
+    password flow encounters errors with ADFS (#456, #458)
+
+-------------------------------------------------------------------
 Tue Nov  2 12:11:05 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.16.0
