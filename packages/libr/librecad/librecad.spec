@@ -124,6 +124,9 @@ install -Dpm0644 "desktop/%name.1" "$b/%_mandir/man1/%name.1"
 p="$b/%_libdir/%name/plugins"
 mkdir -p "$p"
 install -Dpm0755 unix/resources/plugins/* "$p/"
+cat desktop/librecad.desktop
+perl -i -lpe 's{(MimeType=.*?);+$}{$1}' desktop/librecad.desktop
+cat desktop/librecad.desktop
 install -Dpm0644 "desktop/%name.desktop" "$b/%_datadir/applications/%name.desktop"
 install -Dpm0644 "librecad/res/main/%name.png" "$b/%_datadir/pixmaps/%name.png"
 install -Dpm0644 "desktop/%name.sharedmimeinfo" "$b/%_datadir/mime/packages/%name.xml"
