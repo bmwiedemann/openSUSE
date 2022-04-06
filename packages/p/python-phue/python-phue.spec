@@ -1,7 +1,7 @@
 #
 # spec file for package python-phue
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Philips Hue Python library
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/studioimaginaire/phue
+URL:            https://github.com/studioimaginaire/phue
 # https://github.com/studioimaginaire/phue/issues/152
 Source0:        https://github.com/studioimaginaire/phue/archive/1.1.tar.gz#/phue-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildArch:      noarch
@@ -48,6 +47,8 @@ Full featured Python library to control the Philips Hue lighting system.
 %python_build
 
 %check
+# https://github.com/studioimaginaire/phue/issues/196
+sed -i 's:import mock:import unittest.mock as mock:' tests/test_request.py
 %pytest
 
 %install
