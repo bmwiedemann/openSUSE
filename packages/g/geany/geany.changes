@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  3 07:37:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Add geany-inttool.patch and adopt geany-appstream.patch to fix
+  for autoconf 2.71 - upstream moved away from broken intltool,
+  so cherry picked that
+
+-------------------------------------------------------------------
 Fri Nov  5 11:31:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require libgeany0 by -devel package: we install the .so symlink

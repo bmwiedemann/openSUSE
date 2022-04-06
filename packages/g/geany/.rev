@@ -473,4 +473,12 @@
   and are thus responsible for the link target too. (forwarded request 929646 from dimstar)</comment>
     <requestid>929709</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>00f40cad0a01f49b32520dbe31752c25</srcmd5>
+    <version>1.38</version>
+    <time>1649274659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966665</requestid>
+  </revision>
 </revisionlist>
