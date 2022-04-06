@@ -35,4 +35,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>747694</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>49c138494d0d92a1510548db6b1ab7da</srcmd5>
+    <version>0.6.1.5</version>
+    <time>1649274678</time>
+    <user>dimstar_suse</user>
+    <comment>- Use upstream libvirt.git
+- Add ocaml-libvirt.patch to build with dune</comment>
+    <requestid>967059</requestid>
+  </revision>
 </revisionlist>

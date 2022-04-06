@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-libvirt</param>
-    <param name="revision">dune</param>
+    <param name="revision">06c073b25e4c18212b6fd1be77b23431b4612caf</param>
     <param name="scm">git</param>
-    <param name="url">https://github.com/olafhering/ocaml-libvirt.git</param>
-    <param name="versionformat">0.6.1.5</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/libvirt/libvirt-ocaml.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

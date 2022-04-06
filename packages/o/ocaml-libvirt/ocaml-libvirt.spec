@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-libvirt
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,30 +21,31 @@ Version:        0.6.1.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml binding for libvirt
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          Development/Languages/OCaml
-Url:            http://libvirt.org/ocaml/
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://opam.ocaml.org/packages/libvirt
+Source0:        %name-%version.tar.xz
+Patch0:         ocaml-libvirt.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  perl
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(unix)
-BuildRequires:  perl
 BuildRequires:  pkgconfig(libvirt)
 
 %description
 OCaml binding for libvirt.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 Requires:       pkgconfig(libvirt)
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -62,7 +63,9 @@ dune_release_pkgs='libvirt'
 dune_test_tolerate_fail='dune_test_tolerate_fail'
 %ocaml_dune_test
 
-%files -f %{name}.files
-%{_bindir}/*
+%files -f %name.files
+%_bindir/*
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
+
+%changelog
