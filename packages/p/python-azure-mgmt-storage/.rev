@@ -183,4 +183,15 @@
 - Update Requires from setup.py (forwarded request 955182 from glaubitz)</comment>
     <requestid>955354</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>28f48df0c4f2ce3c5dd04f52e06be86f</srcmd5>
+    <version>20.0.0</version>
+    <time>1649274723</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 20.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 967251 from glaubitz)</comment>
+    <requestid>967282</requestid>
+  </revision>
 </revisionlist>
