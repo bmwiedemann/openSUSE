@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  6 12:00:53 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.10.1
+  - Clicking anywhere on a list item in the dashboard now opens the
+    primary link again, instead of nothing #4710
+  - The Check Now and Remove Acknowledgement quick actions in an
+    object's detail header are now working again #4711
+  - Clicking on the big number in the tactical overview if there
+    are UNKNOWN services, shows UNKNOWN services now #4714
+  - The contrast of text in the sidebar, while in light mode,
+    has been increased #4720
+  - A theme without mode support, which is set globally,
+    now also prevents users from configuring the mode #4723
+- Drop 6498d8b035cbaa287d67a61b3f09310a191a5e10.patch,
+  because now in upstream.
+
+-------------------------------------------------------------------
 Wed Mar 30 14:15:33 CEST 2022 - ro@suse.de
 
 - add 6498d8b035cbaa287d67a61b3f09310a191a5e10.patch
