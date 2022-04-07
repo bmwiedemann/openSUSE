@@ -18,23 +18,23 @@
 #
 
 
-%define ocaml_base_version 4.13
+%define ocaml_base_version 4.14
 #
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
 # handle built-in ocaml helper from rpm-build, and helper from ocaml-rpm-macros
 %global __suseocaml_requires_opts \
 	-c \
-	-f "%_bindir/env OCAMLLIB=%buildroot%{ocaml_standard_library} %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
+	-f "%_bindir/env OCAMLLIB=%buildroot%ocaml_standard_library %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
 	%nil
 %global __ocaml_requires_opts \
 	-c \
-	-f "%_bindir/env OCAMLLIB=%buildroot%{ocaml_standard_library} %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
+	-f "%_bindir/env OCAMLLIB=%buildroot%ocaml_standard_library %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
 	%nil
 %global __suseocaml_provides_opts \
-	-f "%_bindir/env OCAMLLIB=%buildroot%{ocaml_standard_library} %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
+	-f "%_bindir/env OCAMLLIB=%buildroot%ocaml_standard_library %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
 	%nil
 %global __ocaml_provides_opts \
-	-f "%_bindir/env OCAMLLIB=%buildroot%{ocaml_standard_library} %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
+	-f "%_bindir/env OCAMLLIB=%buildroot%ocaml_standard_library %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
 	%nil
 
 %global  _buildshell /bin/bash
@@ -42,7 +42,7 @@
 %bcond_without suse_ocaml_use_rpm_license_macro
 
 Name:           ocaml
-Version:        4.13.1
+Version:        4.14.0
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 %if %{with suse_ocaml_use_rpm_license_macro}
@@ -64,10 +64,10 @@ BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %version-%release
 Obsoletes:      ocaml-docs
-Provides:       ocaml(compiler) = %{ocaml_base_version}
-Provides:       ocaml(ocaml_base_version) = %{ocaml_base_version}
+Provides:       ocaml(compiler) = %ocaml_base_version
+Provides:       ocaml(ocaml_base_version) = %ocaml_base_version
 Requires:       %(type -P gcc | xargs readlink -f | xargs rpm -qf --qf '%%{NAME}\n')
-Provides:       ocaml(ocaml.opt) = %{ocaml_base_version}
+Provides:       ocaml(ocaml.opt) = %ocaml_base_version
 Obsoletes:      ocaml-seq < %version-%release
 Obsoletes:      ocaml-seq-debuginfo < %version-%release
 Obsoletes:      ocaml-seq-devel < %version-%release
@@ -162,7 +162,6 @@ extra_cflags=()
 extra_cflags+=( '-Werror=implicit-function-declaration' )
 extra_cflags+=( '-Werror=return-type' )
 extra_cflags+=( '-Wno-deprecated-declarations' )
-extra_cflags+=( '-ffat-lto-objects' )
 export EXTRA_CFLAGS="${extra_cflags[@]}"
 bash -x tools/autogen
 %ifarch %arm
@@ -176,7 +175,7 @@ CFLAGS='-pipe'
 %configure \
 	${configure_target} \
 	--enable-native-compiler \
-	--libdir=%{ocaml_standard_library}
+	--libdir=%ocaml_standard_library
 %make_build
 #
 pushd testsuite
@@ -200,6 +199,7 @@ popd
 
 %install
 %make_install
+rm -rfv %buildroot%_datadir/doc/ocaml
 %fdupes %buildroot
 export EXCLUDE_FROM_STRIP="ocamldebug ocamlbrowser"
 
@@ -427,7 +427,7 @@ do
 	files='files.ocaml.META'
 	;;
 	esac
-	d=%{ocaml_standard_library}/${ocamlfind}
+	d=%ocaml_standard_library/${ocamlfind}
 	f=${d}/META
 	mkdir -vp %buildroot${d}
 	mv "${META}" %buildroot${f}
@@ -445,49 +445,48 @@ done
 %endif
 %_bindir/*
 %_mandir/*/*
-%{ocaml_standard_library}/*.a
-%{ocaml_standard_library}/*.cmxs
-%{ocaml_standard_library}/*.cmxa
-%{ocaml_standard_library}/*.cmx
-%{ocaml_standard_library}/*.o
-%{ocaml_standard_library}/*.mli
-%{ocaml_standard_library}/libcamlrun_shared.so
-%{ocaml_standard_library}/libasmrun_shared.so
-%{ocaml_standard_library}/threads/*.a
-%{ocaml_standard_library}/threads/*.cmxa
-%{ocaml_standard_library}/threads/*.cmx
-%{ocaml_standard_library}/threads/*.mli
-%{ocaml_standard_library}/caml
-%{ocaml_standard_library}/Makefile.config
-%{ocaml_standard_library}/eventlog_metadata
-%{ocaml_standard_library}/extract_crc
-%{ocaml_standard_library}/camlheader
-%{ocaml_standard_library}/camlheader_ur
-%{ocaml_standard_library}/expunge
-%{ocaml_standard_library}/ld.conf
-%{ocaml_standard_library}/camlheaderd
-%{ocaml_standard_library}/camlheaderi
+%ocaml_standard_library/*.a
+%ocaml_standard_library/*.cmxs
+%ocaml_standard_library/*.cmxa
+%ocaml_standard_library/*.cmx
+%ocaml_standard_library/*.o
+%ocaml_standard_library/*.mli
+%ocaml_standard_library/libcamlrun_shared.so
+%ocaml_standard_library/libasmrun_shared.so
+%ocaml_standard_library/threads/*.a
+%ocaml_standard_library/threads/*.cmxa
+%ocaml_standard_library/threads/*.cmx
+%ocaml_standard_library/threads/*.mli
+%ocaml_standard_library/caml
+%ocaml_standard_library/Makefile.config
+%ocaml_standard_library/eventlog_metadata
+%ocaml_standard_library/camlheader
+%ocaml_standard_library/camlheader_ur
+%ocaml_standard_library/expunge
+%ocaml_standard_library/ld.conf
+%ocaml_standard_library/camlheaderd
+%ocaml_standard_library/camlheaderi
 %exclude %_bindir/ocamlrun
 %exclude %_bindir/ocamldoc*
-%exclude %{ocaml_standard_library}/ocamldoc
+%exclude %ocaml_standard_library/ocamldoc
 
 %files runtime
 %defattr(-,root,root,-)
 %_bindir/ocamlrun
-%dir %{ocaml_standard_library}
-%{ocaml_standard_library}/*.cmo
-%{ocaml_standard_library}/*.cmi
-%{ocaml_standard_library}/*.cmt
-%{ocaml_standard_library}/*.cmti
-%{ocaml_standard_library}/*.cma
-%{ocaml_standard_library}/stublibs
-%dir %{ocaml_standard_library}/threads
-%{ocaml_standard_library}/threads/*.cmi
-%{ocaml_standard_library}/threads/*.cma
-%{ocaml_standard_library}/threads/*.cmti
-%exclude %{ocaml_standard_library}/topdirs.cmi
-%exclude %{ocaml_standard_library}/topdirs.cmt
-%exclude %{ocaml_standard_library}/topdirs.cmti
+%dir %ocaml_standard_library
+%ocaml_standard_library/*.cmo
+%ocaml_standard_library/*.cmi
+%ocaml_standard_library/*.cmt
+%ocaml_standard_library/*.cmti
+%ocaml_standard_library/*.cma
+%ocaml_standard_library/stublibs
+%dir %ocaml_standard_library/threads
+%ocaml_standard_library/threads/*.cmi
+%ocaml_standard_library/threads/*.cma
+%ocaml_standard_library/threads/*.cmti
+%exclude %ocaml_standard_library/topdirs.cmi
+%exclude %ocaml_standard_library/topdirs.cmt
+%exclude %ocaml_standard_library/topdirs.cmti
 %doc Changes
 %if %{with suse_ocaml_use_rpm_license_macro}
 %license LICENSE
@@ -495,34 +494,34 @@ done
 
 %files source
 %defattr(-,root,root,-)
-%{ocaml_standard_library}/*.ml
+%ocaml_standard_library/*.ml
 
 %files ocamldoc -f files.ocamldoc.META
 %defattr(-,root,root,-)
 %_bindir/ocamldoc*
-%{ocaml_standard_library}/ocamldoc
+%ocaml_standard_library/ocamldoc
 %doc ocamldoc/Changes.txt
 
 %files compiler-libs
 %defattr(-,root,root,-)
-%dir %{ocaml_standard_library}
-%{ocaml_standard_library}/topdirs.cmi
-%{ocaml_standard_library}/topdirs.cmt
-%{ocaml_standard_library}/topdirs.cmti
-%{ocaml_standard_library}/compiler-libs/*.cma
-%{ocaml_standard_library}/compiler-libs/*.cmi
-%{ocaml_standard_library}/compiler-libs/*.cmo
-%{ocaml_standard_library}/compiler-libs/*.cmt
-%{ocaml_standard_library}/compiler-libs/*.cmti
+%dir %ocaml_standard_library
+%ocaml_standard_library/topdirs.cmi
+%ocaml_standard_library/topdirs.cmt
+%ocaml_standard_library/topdirs.cmti
+%ocaml_standard_library/compiler-libs/*.cma
+%ocaml_standard_library/compiler-libs/*.cmi
+%ocaml_standard_library/compiler-libs/*.cmo
+%ocaml_standard_library/compiler-libs/*.cmt
+%ocaml_standard_library/compiler-libs/*.cmti
 
 %files compiler-libs-devel -f files.compiler-libs.META
 %defattr(-,root,root,-)
-%dir %{ocaml_standard_library}/compiler-libs
-%{ocaml_standard_library}/compiler-libs/*.a
-%{ocaml_standard_library}/compiler-libs/*.o
-%{ocaml_standard_library}/compiler-libs/*.cmx
-%{ocaml_standard_library}/compiler-libs/*.cmxa
-%{ocaml_standard_library}/compiler-libs/*.mli
+%dir %ocaml_standard_library/compiler-libs
+%ocaml_standard_library/compiler-libs/*.a
+%ocaml_standard_library/compiler-libs/*.o
+%ocaml_standard_library/compiler-libs/*.cmx
+%ocaml_standard_library/compiler-libs/*.cmxa
+%ocaml_standard_library/compiler-libs/*.mli
 
 %if %{with ocaml_make_testsuite}
 %check
