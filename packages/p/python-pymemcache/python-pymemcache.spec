@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymemcache
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pymemcache
-Version:        3.5.0
+Version:        3.5.2
 Release:        0
 Summary:        A pure Python memcached client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Pinterest/pymemcache
 Source:         https://files.pythonhosted.org/packages/source/p/pymemcache/pymemcache-%{version}.tar.gz
+# https://github.com/pinterest/pymemcache/commit/0bf1baa4f539dedf8e4e4b2e48f8da5d66ed57b5
+Patch0:         python-pymemcache-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  memcached
@@ -35,7 +37,6 @@ Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-memcached}
@@ -61,7 +62,7 @@ pymemcache supports the following features:
 * The (optional) ability to treat network and memcached errors as cache misses.
 
 %prep
-%setup -q -n pymemcache-%{version}
+%autosetup -p1 -n pymemcache-%{version}
 # Disable pytest-cov
 sed -i 's/tool:pytest/tool:ignore-pytest-cov/' setup.cfg
 

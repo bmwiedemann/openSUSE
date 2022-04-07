@@ -153,4 +153,17 @@
 - drop merged_pr_327.patch (upstream)</comment>
     <requestid>925750</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d475d32b6c66ff192f4cf7403b6e96b4</srcmd5>
+    <version>3.5.2</version>
+    <time>1649370507</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.5.2
+  * Handle blank ``STAT`` values.
+  * ``Client.get`` returns the default when using ``ignore_exc`` and if memcached
+    is unavailable
+  * Added ``noreply`` support to ``HashClient.flush_all``.
+- add python-pymemcache-no-mock.patch, do not require python-mock for build</comment>
+    <requestid>967531</requestid>
+  </revision>
 </revisionlist>
