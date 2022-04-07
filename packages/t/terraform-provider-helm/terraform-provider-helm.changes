@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 06:55:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- exclude build for 32bit targets 
+
+-------------------------------------------------------------------
 Thu Jul 29 09:44:58 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.2.0
