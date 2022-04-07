@@ -1,7 +1,7 @@
 #
 # spec file for package SDL
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
-Url:            http://libsdl.org/
+URL:            http://libsdl.org/
 
 #DL-URL:	http://libsdl.org/download-1.2.php
 Source:         http://libsdl.org/release/%name-%version.tar.gz
@@ -47,7 +47,6 @@ Patch10:        CVE-2019-7635.patch
 Patch11:        CVE-2019-7636.patch
 Patch12:        CVE-2019-7637.patch
 Patch13:        CVE-2019-13616.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  nasm
 BuildRequires:  pkg-config
@@ -61,9 +60,6 @@ BuildRequires:  pkgconfig(xrender)
 %if 0%{?aalib} == 1
 BuildRequires:  aalib-devel
 %endif
-%if 0%{?suse_version} < 1120
-BuildRequires:  arts-devel
-%endif
 
 %description
 This is the "Simple DirectMedia Layer" library. It provides a generic
@@ -72,30 +68,18 @@ across multiple platforms.
 
 %package -n %lname
 Summary:        Simple DirectMedia Layer Library
-# SDL was used last in 11.1
 Group:          System/Libraries
-Provides:       SDL = %version
-Obsoletes:      SDL < %version
-# bnc437293
-%ifarch ppc64
-Obsoletes:      SDL-64bit
-%endif
 
 %description -n %lname
 This is the "Simple DirectMedia Layer" library. It provides a generic
 API for access to audio, keyboard, mouse, and display framebuffer
 across multiple platforms.
 
-%package -n libSDL-devel
+%package devel
 Summary:        SDL Library Developer Files
-# SDL-devel was used last in 11.1
 Group:          Development/Libraries/X11
-Provides:       SDL-devel = %version
-Obsoletes:      SDL-devel < %version
-# bnc437293
-%ifarch ppc64
-Obsoletes:      SDL-devel-64bit
-%endif
+Provides:       libSDL-devel = %version
+Obsoletes:      libSDL-devel < %version
 Requires:       %lname = %version
 Requires:       c_compiler
 Requires:       pkgconfig
@@ -104,9 +88,16 @@ Requires:       pkgconfig(glu)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xproto)
 
-%description -n libSDL-devel
+%description devel
 This package contains files needed for development with the SDL
 library.
+
+%package devel-doc
+Summary:        Documentation for the Simple DirectMedia Layer 1.x API
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description devel-doc
 
 %prep
 %autosetup -p1
@@ -131,7 +122,7 @@ rm -f src/joystick/darwin/10.3.9-FIX/IOHIDLib.h
     --disable-video-svga \
     --disable-video-ps3 \
     --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -143,19 +134,20 @@ sed -i -e '/^Libs.private/d' "%buildroot/%_libdir/pkgconfig/sdl.pc"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
-%doc BUGS COPYING CREDITS README README-SDL.txt
+%license COPYING
 %_libdir/libSDL-1*.so.*
 
-%files -n libSDL-devel
-%defattr(-,root,root)
-%doc docs.html README.HG TODO WhatsNew
-%doc docs/index.html docs/html/ docs/images/
+%files devel
 %_bindir/sdl-config
 %_libdir/libSDL.so
 %_includedir/SDL/
 %_datadir/aclocal/
-%_mandir/man3/*.3*
 %_libdir/pkgconfig/sdl.pc
+
+%files devel-doc
+%doc BUGS COPYING CREDITS README README-SDL.txt
+%doc docs.html README.HG TODO WhatsNew
+%doc docs/index.html docs/html/ docs/images/
+%_mandir/man3/*.3*
 
 %changelog

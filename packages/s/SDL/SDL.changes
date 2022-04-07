@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 30 18:46:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename devel package to just %name-devel, which is what most
+  our packages do.
+- Move documentation into separate SDL-devel-doc. As SDL1 has been
+  superseded by SDL2, docs are not that hot anymore.
+
+-------------------------------------------------------------------
 Tue Aug 27 08:42:07 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Actually apply CVE-2019-7637.patch.
