@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 07 16:06:48 UTC 2022 - sweiberg@suse.com
+
+- Update to version 1.26.1:
+  * 1.26.1 Release (#1470)
+  * Added more installation instructions (#1468)
+  * Fix ImageStream tags in openshift provider mode (#1461)
+  * 1.26.0 Release (#1460)
+  * Infer storage type using label (#1456)
+  * Add make rule for darwin arm64 in cross target (#1455)
+  * Add support for placement preferences docker-compose v3.3+ (#1425)
+  * Add  support for statefulset controller. (#1452)
+  * Support tcp/http liveness/readiness probe (#1449)
+  * Update windows bin ext (#1451)
+
+-------------------------------------------------------------------
 Mon Jun 07 09:07:46 UTC 2021 - sweiberg@suse.com
 
 - Update to version 1.22.0:
