@@ -87,6 +87,7 @@ Patch8:         tomcat-9.0-CVE-2021-33037.patch
 Patch9:         tomcat-9.0-CVE-2021-30640.patch
 Patch10:        tomcat-9.0-NPE-JNDIRealm.patch
 Patch11:        tomcat-9.0-CVE-2022-23181.patch
+Patch12:        tomcat-9.0-hardening_getResources.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -264,6 +265,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl

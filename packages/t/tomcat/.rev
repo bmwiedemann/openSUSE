@@ -789,4 +789,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>bsc#1196137</comment>
     <requestid>957023</requestid>
   </revision>
+  <revision rev="83" vrev="7">
+    <srcmd5>07796d088c505edc7b28eff120070856</srcmd5>
+    <version>9.0.43</version>
+    <time>1649370512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967588</requestid>
+  </revision>
 </revisionlist>

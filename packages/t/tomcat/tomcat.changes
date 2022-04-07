@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  7 08:48:46 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Security hardening. Deprecate getResources() and always return null. (bsc#1198136)
+- Added patch: tomcat-9.0-hardening_getResources.patch
+
+-------------------------------------------------------------------
 Wed Feb 23 11:57:30 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on log4j/reload4j completely (bsc#1196137)
