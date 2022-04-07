@@ -626,4 +626,12 @@ depends on sr#251413</comment>
     <comment>New snapshots</comment>
     <requestid>948151</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>4400f601ab4393b17abc3366b7f67334</srcmd5>
+    <version>5.15.2+kde43</version>
+    <time>1649370433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967191</requestid>
+  </revision>
 </revisionlist>

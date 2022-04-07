@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  6 06:50:15 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase the disk constraint to 6GB since the SLE build use
+  5.5GB already (boo#1197992)
+
+-------------------------------------------------------------------
 Fri Jan 21 08:13:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde43:
