@@ -49,6 +49,10 @@ Patch2:         sandbox-statx-futex_time64.patch
 Patch3:         rtc-dont-use-h264.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         CVE-2022-0971-qtwebengine-5.15.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         CVE-2022-1096-qtwebengine-5.15.patch
 # http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

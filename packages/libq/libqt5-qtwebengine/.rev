@@ -776,4 +776,14 @@
     <comment></comment>
     <requestid>964921</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>162cff5f74747f12f157a8c0891a35a3</srcmd5>
+    <version>5.15.8</version>
+    <time>1649370391</time>
+    <user>dimstar_suse</user>
+    <comment>- Add security fixes:
+  * CVE-2022-0971-qtwebengine-5.15.patch (CVE-2022-0971, boo#1197163)
+  * CVE-2022-1096-qtwebengine-5.15.patch (CVE-2022-1096, boo#1197552)</comment>
+    <requestid>966883</requestid>
+  </revision>
 </revisionlist>
