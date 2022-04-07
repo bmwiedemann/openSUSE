@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  6 17:07:31 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Don't exclude cycles
+- Avoid complaint about executable scripts/modules/console_python.py
+
+-------------------------------------------------------------------
 Tue Apr  5 07:14:16 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Disable %{ix86} builds due to missing OpenShadingLanguage

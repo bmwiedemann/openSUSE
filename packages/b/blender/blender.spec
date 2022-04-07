@@ -463,6 +463,7 @@ echo "release version = %{_version}"
 %cmake_install
 
 rm -f %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/.gitignore
+chmod 644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -print0 | \
 	xargs -0r grep -l '#!' | xargs -d'\n' chmod -f 0755;
@@ -516,14 +517,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/%{name}/%{_version}/datafiles
 %exclude %{_datadir}/%{name}/%{_version}/datafiles/locale
 %ifarch x86_64
-%exclude %{_datadir}/%{name}/%{_version}/scripts/addons/cycles
+%{_datadir}/%{name}/%{_version}/scripts/addons/cycles
 %endif
 %exclude %{_docdir}/%{name}/geeko_example_scene.*
 %{_datadir}/%{name}/%{_version}/scripts/
 %{_datadir}/%{name}/%{_version}/datafiles/
-%ifarch x86_64
-%{_datadir}/%{name}/%{_version}/scripts/addons/cycles
-%endif
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*.svg
 %dir %{_datadir}/appdata
