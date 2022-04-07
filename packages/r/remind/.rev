@@ -398,4 +398,41 @@
 </comment>
     <requestid>965064</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>80368f78dac9fec8e90ba270be313813</srcmd5>
+    <version>4.0.0</version>
+    <time>1649370477</time>
+    <user>dimstar_suse</user>
+    <comment>-  VERSION 4.0 Patch 0 - 2022-04-04
+- MAJOR NEW FEATURE: remind: Remind output can effectively be
+  translated into other languages at run-time.  A number of system
+  variables let you translate English words to another language, and a
+  mechanism for altering the substitution filter at run-time lets you
+  translate its output so the results are idiomatic.  See the man page
+  sections &quot;RUN-TIME SUPPORT FOR OTHER LANGUAGES&quot;, &quot;RUN-TIME
+  MODIFICATION OF THE SUBSTITUTION FILTER&quot; and &quot;LANGUAGE PACKS&quot;.
+- NEW FEATURE: remind: Add the pad() built-in function
+- NEW FEATURE: tkremind: Day numbers can be displayed left-aligned,
+  centered or right-aligned.
+- IMPROVEMENT: contrib/remind-conf-mode: The Emacs syntax-highlighter
+  has been updated with the latest system variables and functions
+  and has been made case-insensitive.
+- IMPROVEMENT: remind, rem2ps: Use link-time optimization with gcc if
+  possible.
+- IMPROVEMENT: remind: Print better diagnostics when errors occur inside
+  a user-defined function.  We now show the stack trace to make it easier
+  to figure out where the error actually is.
+- CHANGE: Add a &quot;q&quot; sub-option to the &quot;-p&quot;, &quot;-pp&quot;, and &quot;-ppp&quot; options.
+  This causes Remind *not* to remove the %&quot;...%&quot; marker sequence from
+  remind bodies.
+- BUG FIX: rem2pdf: Make rem2pdf respect the --prefix ./configure flag.
+  Loosely based on patch by Jonathan Kamens.
+- BUG FIX: tkremind: Fix the &quot;-m&quot; flag, which was broken in 03.04.00.
+- BUG FIX: Fix the overflow-detection functions so they work with link-time
+  optimization.  The previous versions would be optimized away.
+- BUG FIX: Warn if the arguments to the &quot;-@&quot; option are out of range.
+  Problem noted by Ian! D. Allen.
+- BUG FIX: Always interpret $Latitude and $Longitude input values in the</comment>
+    <requestid>967431</requestid>
+  </revision>
 </revisionlist>

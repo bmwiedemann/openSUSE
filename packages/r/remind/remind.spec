@@ -17,13 +17,13 @@
 
 
 Name:           remind
-Version:        3.4.2
+Version:        4.0.0
 Release:        0
-%define tar_version 03.04.02
+%define tar_version 04.00.00
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
-URL:            http://www.roaringpenguin.com/products/remind
+URL:            https://dianne.skoll.ca/projects/remind/
 Source0:        %{name}-%{tar_version}.tar.gz
 Source100:      %{name}-rpmlintrc
 BuildRequires:  perl
@@ -83,5 +83,27 @@ make DESTDIR=%{buildroot} install
 %attr(0755,root,root) %{_bindir}/remind
 %attr(0755,root,root) %{_bindir}/tkremind
 %attr(0755,root,root) %{perl_vendorlib}/Remind/
+
+%dir /usr/share/remind/
+%dir /usr/share/remind/holidays
+%dir /usr/share/remind/lang
+%dir /usr/share/remind/site
+/usr/share/remind/holidays/ca.rem
+/usr/share/remind/holidays/us.rem
+/usr/share/remind/lang/auto.rem
+%lang(da) /usr/share/remind/lang/da.rem
+%lang(de) /usr/share/remind/lang/de.rem
+%lang(en) /usr/share/remind/lang/en.rem
+%lang(es) /usr/share/remind/lang/es.rem
+%lang(fi) /usr/share/remind/lang/fi.rem
+%lang(fr) /usr/share/remind/lang/fr.rem
+%lang(is) /usr/share/remind/lang/is.rem
+%lang(it) /usr/share/remind/lang/it.rem
+%lang(nl) /usr/share/remind/lang/nl.rem
+%lang(no) /usr/share/remind/lang/no.rem
+%lang(pl) /usr/share/remind/lang/pl.rem
+%lang(pt) /usr/share/remind/lang/pt.rem
+%lang(ro) /usr/share/remind/lang/ro.rem
+/usr/share/remind/site/README
 
 %changelog

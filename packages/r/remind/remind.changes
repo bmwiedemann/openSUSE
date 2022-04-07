@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Apr  5 18:53:29 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+-  VERSION 4.0 Patch 0 - 2022-04-04
+
+- MAJOR NEW FEATURE: remind: Remind output can effectively be
+  translated into other languages at run-time.  A number of system
+  variables let you translate English words to another language, and a
+  mechanism for altering the substitution filter at run-time lets you
+  translate its output so the results are idiomatic.  See the man page
+  sections "RUN-TIME SUPPORT FOR OTHER LANGUAGES", "RUN-TIME
+  MODIFICATION OF THE SUBSTITUTION FILTER" and "LANGUAGE PACKS".
+
+- NEW FEATURE: remind: Add the pad() built-in function
+
+- NEW FEATURE: tkremind: Day numbers can be displayed left-aligned,
+  centered or right-aligned.
+
+- IMPROVEMENT: contrib/remind-conf-mode: The Emacs syntax-highlighter
+  has been updated with the latest system variables and functions
+  and has been made case-insensitive.
+
+- IMPROVEMENT: remind, rem2ps: Use link-time optimization with gcc if
+  possible.
+
+- IMPROVEMENT: remind: Print better diagnostics when errors occur inside
+  a user-defined function.  We now show the stack trace to make it easier
+  to figure out where the error actually is.
+
+- CHANGE: Add a "q" sub-option to the "-p", "-pp", and "-ppp" options.
+  This causes Remind *not* to remove the %"...%" marker sequence from
+  remind bodies.
+
+- BUG FIX: rem2pdf: Make rem2pdf respect the --prefix ./configure flag.
+  Loosely based on patch by Jonathan Kamens.
+
+- BUG FIX: tkremind: Fix the "-m" flag, which was broken in 03.04.00.
+
+- BUG FIX: Fix the overflow-detection functions so they work with link-time
+  optimization.  The previous versions would be optimized away.
+
+- BUG FIX: Warn if the arguments to the "-@" option are out of range.
+  Problem noted by Ian! D. Allen.
+
+- BUG FIX: Always interpret $Latitude and $Longitude input values in the
+  "C" locale.  (We do accept localized input, but warn.)
+
+- BUG FIX: Fix many spelling mistakes caught by Jens Schleusener
+
+-------------------------------------------------------------------
 Sat Mar 26 18:00:17 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - remind-nostrip.patch removed, no longer needed 
