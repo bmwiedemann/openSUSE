@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (#bsc1198109)
+
+-------------------------------------------------------------------
+Tue Mar 15 11:45:57 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Modernized the Wizard2.rb example to use real Ruby
+- Added a new example Wizard-RelNotes.rb to test the release notes
+  viewer that is built into the YQWizard (bsc#1195158)
+
+-------------------------------------------------------------------
 Tue Feb  1 15:38:55 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added UI.AskForWidgetStyle() (jsc#SLE-20564)
