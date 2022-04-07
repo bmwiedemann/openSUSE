@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr  7 07:58:28 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.3.1
+  Version 2.3.1 (2022-02-03)
+  --------------------------
+  * Add a ``Runner.bench_async_func()`` to benchmark an asyncio coroutine.
+    Patch by Inada Naoki.
+  * pyperf now recognizes graalpython as the JIT-based implementation.
+    Patch by Tim Felgentreff.
+  Version 2.3.0 (2021-09-28)
+  --------------------------
+  * pyperf ref:`compare_to command <compare_to_cmd>` now supports the
+    ``--table-format`` option which can designate the table format
+    between reST and markdown.
+  Version 2.2.0 (2021-03-24)
+  --------------------------
+  * ``--track-memory`` option now supports macOS by using ``psutil``.
+  * Added ``--copy-env`` command line option that inherits all environment variables.
+  * The development branch ``master`` was renamed to ``main``.
+    See https://sfconservancy.org/news/2020/jun/23/gitbranchname/ for the
+    rationale.
+  Version 2.1.0 (2021-01-14)
+  --------------------------
+  * The :ref:`compare_to command <compare_to_cmd>` now computes the geometric
+    mean.
+  * The :ref:`compare_to command <compare_to_cmd>` no longer displays
+    percentages: display less numbers to make the output easier to read. Also,
+    percentage were almost the same values than the xxx faster or xxx slower
+    values, but rounded differenly which introduced confusion.
+  * Project moved to https://github.com/psf/pyperf/
+  * system command now only emits a warning rather than failing with a hard error
+    if it fails to get or set the frequency of a CPU.
+  * The pyperf project is now covered by the `PSF Code of Conduct
+    <https://www.python.org/psf/codeofconduct/>`_.
+
+-------------------------------------------------------------------
 Wed May 20 07:26:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
