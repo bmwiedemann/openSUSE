@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Mar 03 10:44:25 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 1.7.0:
+  * Improve memory management to avoid potential leaks
+  * Improve handle accounting use cases
+
+-------------------------------------------------------------------
+Tue Oct 26 17:48:51 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Initial revision
