@@ -119,7 +119,7 @@ the libopeniscsiusr library.
 
 %build
 [ -z "$SOURCE_DATE_EPOCH" ] || export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH
-make %{?_smp_mflags} OPTFLAGS="%{optflags} -fno-strict-aliasing -fno-common -DOFFLOAD_BOOT_SUPPORTED -DLOCK_DIR=\\\"%{_sysconfdir}/iscsi\\\"" LIB_DIR=%{_libdir} sbindir=%{_sbindir} user
+make %{?_smp_mflags} OPTFLAGS="%{optflags} -fno-strict-aliasing -fno-common -DOFFLOAD_BOOT_SUPPORTED -DLOCK_DIR=\\\"%{_sysconfdir}/iscsi\\\"" LIB_DIR=%{_libdir} SBINDIR=%{_sbindir} user
 cd iscsiuio
 touch AUTHORS NEWS
 autoreconf --install
@@ -127,17 +127,15 @@ autoreconf --install
 make %{?_smp_mflags} CFLAGS="%{optflags}" LIB_DIR=%{_libdir}
 
 %install
-make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} sbindir=%{_sbindir} install_user
-# install service files
-make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} sbindir=%{_sbindir} install_systemd
+make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} SBINDIR=%{_sbindir} RULESDIR=%{_udevrulesdir} install
 # create rc symlinks
 [ -d %{buildroot}%{_sbindir} ] || mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsi
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsid
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsiuio
 (cd %{buildroot}/etc; ln -sf iscsi/iscsid.conf iscsid.conf)
+# create an empty initiatorname file, as a package place holder
 echo > %{buildroot}%{_sysconfdir}/iscsi/initiatorname.iscsi
-install -m 0755 usr/iscsistart %{buildroot}/%{_sbindir}
 %make_install -C iscsiuio
 # rename iscsiuio logrotate file to proper name
 mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuio
@@ -210,6 +208,7 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 
 %files -n libopeniscsiusr0_2_0
 %{_libdir}/libopeniscsiusr.so.*
+%{_libdir}/pkgconfig/*.pc
 
 %files -n iscsiuio
 %{_sbindir}/iscsiuio

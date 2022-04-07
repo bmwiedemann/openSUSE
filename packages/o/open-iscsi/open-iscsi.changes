@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  6 17:02:04 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream, including bug fixes and cleanups.
+  Changes included:
+  * add handling name/value pairs for firmware login (bsc#1196113),
+    including man page update for same
+  * Fix bug where some package parts were installed using
+    DESTDIR twice
+  * general build cleanup (in prep for removing DB files from
+    /etc/iscsi some day soon)
+  Also, now delivering a "package config" file for libopeniscsiusr.
+
+-------------------------------------------------------------------
 Sat Mar  5 17:23:19 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Update to latest upstream, including test cleanup, minor
