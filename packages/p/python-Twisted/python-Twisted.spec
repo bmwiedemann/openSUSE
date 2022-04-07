@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-Twisted
-Version:        22.1.0
+Version:        22.2.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -41,6 +41,8 @@ Patch5:         no-pygtkcompat.patch
 Patch6:         remove-dependency-version-upper-bounds.patch
 # PATCH-FIX-OPENSUSE Skip test that is broken with Expat >= 2.4.5
 Patch7:         skip-namespacewithwhitespace.patch
+# PATCH-FIX-UPSTREAM Address CVE-2022-24801, can be dropped next upstream release
+Patch8:         CVE-2022-24801-http-1.1-leniency.patch
 BuildRequires:  %{python_module Automat >= 0.8.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}

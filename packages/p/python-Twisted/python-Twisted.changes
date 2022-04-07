@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr  7 02:31:24 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 22.2.0:
+  * Bugfixes
+    + twisted.internet.gireactor.PortableGIReactor.simulate and
+      twisted.internet.gtk2reactor.PortableGtkReactor.simulate no longer
+      raises TypeError when there are no delayed called. This was a
+      regression introduced with the migration to Python 3 in which the
+      builtin min function no longer accepts None as an argument. (#9660)
+    + twisted.conch.ssh.transport.SSHTransportBase now disconnects the
+      remote peer if the SSH version string is not sent in the first
+      4096 bytes. (#10284, CVE-2022-21716, GHSA-rv6r-3f5q-9rgx)
+  * Improved Documentation
+    + Add type annotations for twisted.web.http.Request.getHeader. (#10270)
+  * Deprecations and Removals
+    + Support for Python 3.6, which is EoL as of 2021-09-04, has been
+      deprecated. (#10303)
+- Add patch CVE-2022-24801-http-1.1-leniency.patch:
+  * Be stricter about HTTP/1.1 headers. (bsc#1198086)
+
+-------------------------------------------------------------------
 Wed Feb 23 00:30:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch skip-namespacewithwhitespace.patch:
