@@ -21,7 +21,7 @@
 %define libopenmpt_modplug_version 0.8.9.0
 
 Name:           libopenmpt
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        C++ and C library to decode tracker music files
 License:        BSD-3-Clause
@@ -32,7 +32,6 @@ Source1:        baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dos2unix
-BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -46,6 +45,12 @@ BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(zlib)
+# GCC >= 8 is required for charconv header
+%if 0%{suse_version} < 1550
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 libopenmpt is a C++ and C library to decode tracker music files
@@ -85,6 +90,9 @@ sed -i -e 's:-Werror ::g' configure.ac
 dos2unix LICENSE README.md
 
 %build
+%if 0%{suse_version} < 1550
+export CXX=g++-11
+%endif
 autoreconf -fvi
 # doxygen docu is better on their website, no need to ship it
 # docdir points to devel as it is installing the devel examples
