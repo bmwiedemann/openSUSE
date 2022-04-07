@@ -1,0 +1,8 @@
+--- sway-launcher-desktop.sh.orig	2020-10-02 20:07:53.165012365 +0200
++++ sway-launcher-desktop.sh	2020-10-02 20:08:03.017556547 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ # terminal application launcher for sway, using fzf
+ # Based on: https://gitlab.com/FlyingWombat/my-scripts/blob/master/sway-launcher
+ # https://gist.github.com/Biont/40ef59652acf3673520c7a03c9f22d2a
