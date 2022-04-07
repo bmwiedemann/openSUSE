@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Apr  5 13:40:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.4.2
+  * Fixed regression in DataFrame.drop() and Series.drop() when
+    Index had extension dtype and duplicates (GH45860)
+  * Fixed regression in read_csv() killing python process when
+    invalid file input was given for engine="c" (GH45957)
+  * Fixed memory performance regression in Series.fillna() when
+    called on a DataFrame column with inplace=True (GH46149)
+  * Provided an alternative solution for passing custom Excel
+    formats in Styler.to_excel(), which was a regression based on
+    stricter CSS validation. Examples available in the
+    documentation for Styler.format() (GH46152)
+  * Fixed regression in DataFrame.replace() when a replacement
+    value was also a target for replacement (GH46306)
+  * Fixed regression in DataFrame.replace() when the replacement
+    value was explicitly None when passed in a dictionary to
+    to_replace (GH45601, GH45836)
+  * Fixed regression when setting values with DataFrame.loc()
+    losing MultiIndex names if DataFrame was empty before (GH46317)
+  * Fixed regression when rendering boolean datatype columns with
+    Styler() (GH46384)
+  * Fixed regression in Groupby.rolling() with a frequency window
+    that would raise a ValueError even if the datetimes within each
+    group were monotonic (GH46061)
+  * Fix some cases for subclasses that define their _constructor
+    properties as general callables (GH46018)
+  * Fixed “longtable” formatting in Styler.to_latex() when
+    column_format is given in extended format (GH46037)
+  * Fixed incorrect rendering in Styler.format() with
+    hyperlinks="html" when the url contains a colon or other
+    special characters (GH46389)
+  * Improved error message in Rolling when window is a frequency
+    and NaT is in the rolling axis (GH46087)
+- Copy back the installed package into the source tree
+  * mimics upstreams test setup of an editable install
+  * avoids conftest.py collection errors with pytest 7
+
+-------------------------------------------------------------------
 Sat Feb 12 23:29:24 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.4.1:

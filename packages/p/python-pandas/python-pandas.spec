@@ -42,16 +42,16 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-pandas%{psuffix}
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.21}
+BuildRequires:  %{python_module Cython >= 0.29.24}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module devel >= 3.7.1}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.18.5}
 BuildRequires:  %{python_module python-dateutil >= 2.8.1}
 BuildRequires:  %{python_module pytz >= 2020.1}
@@ -107,6 +107,7 @@ BuildRequires:  %{python_module numexpr >= 2.7.1}
 BuildRequires:  %{python_module openpyxl >= 3.0.3}
 BuildRequires:  %{python_module pandas = %{version}}
 BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest-asyncio >= 0.17}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module scipy >= 1.4.1}
@@ -124,17 +125,8 @@ heterogeneous) and time series data. It is a high-level building
 block for doing data analysis in Python.
 
 %prep
-%if !%{with test}
 %setup -q -n pandas-%{version}
-%else
-%setup -q -c -n pandas-%{version} -T
-cd ..
-# unpack only the files we need for testing
-tar xf %{SOURCE0} \
-  pandas-%{version}/pyproject.toml \
-  pandas-%{version}/pandas/io/formats/templates/html.tpl
-sed -i 's/--strict-data-files//' pandas-%{version}/pyproject.toml
-%endif
+sed -i 's/--strict-data-files//' pyproject.toml
 
 %build
 %if !%{with test}
@@ -151,6 +143,12 @@ rm -r %{buildroot}%{$python_sitearch}/pandas/_libs/src
 rm -r %{buildroot}%{$python_sitearch}/pandas/_libs/tslibs/src
 %fdupes %{buildroot}%{$python_sitearch}
 }
+%else
+# Copy the installed package back into the source tree
+# This is equivalent to build and install editable (pip install -e .), and the only way
+# to have a passing test suite due to how the test collection works in pytest >= 7.
+# Only works for separate python flavors in multibuild.
+%python_expand cp -rf %{$python_sitearch}/pandas/* pandas/
 %endif
 
 %check
@@ -162,14 +160,20 @@ export PYTHONDONTWRITEBYTECODE=1
 # https://github.com/pytest-dev/pytest/issues/920
 # https://github.com/pytest-dev/pytest/issues/1075
 export PYTHONHASHSEED=1
-# tries to compile stuff in system sitearch
-SKIP_TESTS+=" or test_oo_optimizable"
 # dtypes not as expected
 # https://github.com/pandas-dev/pandas/issues/39096
 # https://github.com/pandas-dev/pandas/issues/36579
-SKIP_TESTS+=" or (test_misc and test_memory_usage and series and empty and index)"
+SKIP_TESTS="(test_misc and test_memory_usage and series and empty and index)"
 # pytest-xdist worker crash
 SKIP_TESTS+=" or test_pivot_number_of_levels_larger_than_int32"
+
+# --skip-* arguments: Upstream's custom way to skip marked tests. These do not use pytest.mark.
+SKIP_ARGS="--skip-network"
+# clipboard not set up properly in build service without window manager
+SKIP_MARKERS="clipboard"
+# skip tests which upstream marked for -n 1 only.
+SKIP_MARKERS+=" or single_cpu"
+
 if [ $(getconf LONG_BIT) -eq 32 ]; then
 # https://github.com/pandas-dev/pandas/issues/31856
 SKIP_TESTS+=" or test_maybe_promote_int_with_int"
@@ -202,24 +206,20 @@ SKIP_TESTS+=" or (test_groupby  and test_groupby_numerical_stability_sum_mean)"
 SKIP_TESTS+=" or (test_groupby  and test_groupby_numerical_stability_cumsum)"
 SKIP_TESTS+=" or (test_c_parser_only and test_float_precision_options)"
 # run the slow tests only on x86_64
-%define test_fast --skip-slow --skip-db
+SKIP_ARGS+=" --skip-slow --skip-db"
 %endif
+
 # The test collection consumes a lot of memory per worker. This sets %%jobs.
 %limit_build -m 2048
+
 %{python_expand $python -c 'import pandas; print(pandas.__path__); print(pandas.show_versions())'
-# -c pyproject.toml: get the marker declarations
 # cache: can't just say no cacheprovider, because one test checks for the --lf option of pytest-cache
-# --skip-* arguments: Upstreams custom way to skip marked tests. These do not use pytest.mark.
-# clipboard marker: not set up properly in build service
-# need to specify test path directly instead of --pyargs pandas in order
-# to find all conftest.py files https://github.com/pytest-dev/pytest/issues/1596
-xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} \
-                                      -c pyproject.toml \
+xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} --dist=loadfile \
                                       -o cache_dir=$PWD/.pytest_cache --cache-clear \
-                                      --skip-network %{?test_fast} \
-                                      -m "not clipboard" \
-                                      -k "not (${SKIP_TESTS:4})" \
-                                      %{$python_sitearch}/pandas
+                                      ${SKIP_ARGS} \
+                                      -m "not (${SKIP_MARKERS})" \
+                                      -k "not (${SKIP_TESTS})" \
+                                      pandas
 }
 %endif
 
