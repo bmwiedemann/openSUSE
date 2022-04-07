@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 19:36:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Don't limit the upper version of social-auth packages.
+
+-------------------------------------------------------------------
 Wed Mar  2 07:57:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.11 (bsc#1196540):

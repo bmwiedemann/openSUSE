@@ -103,8 +103,8 @@ BuildRequires:  python3-selenium
 BuildRequires:  python3-sentry-sdk >= 0.13.0
 BuildRequires:  python3-setuptools >= 40.3.0
 BuildRequires:  python3-siphashc >= 1.2
-BuildRequires:  python3-social-auth-app-django = 5.0.0
-BuildRequires:  python3-social-auth-core = 4.1.0
+BuildRequires:  python3-social-auth-app-django >= 5.0.0
+BuildRequires:  python3-social-auth-core >= 4.1.0
 BuildRequires:  python3-sphinx-jsonschema
 BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  python3-sphinxcontrib-httpdomain
@@ -163,8 +163,8 @@ Requires:       python3-requests >= 2.20.0
 Requires:       python3-sentry-sdk >= 0.13.0
 Requires:       python3-setuptools >= 40.3.0
 Requires:       python3-siphashc >= 1.2
-Requires:       python3-social-auth-app-django = 5.0.0
-Requires:       python3-social-auth-core = 4.1.0
+Requires:       python3-social-auth-app-django >= 5.0.0
+Requires:       python3-social-auth-core >= 4.1.0
 Requires:       python3-translation-finder >= 2.7
 Requires:       python3-user-agents >= 2.0
 Requires:       python3-weblate-language-data >= 2021.5
