@@ -8,7 +8,7 @@
 %dir %{_systemd_util_dir}/boot/efi
 %{_bindir}/bootctl
 %{_bindir}/kernel-install
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_datadir}/bash-completion/completions/bootctl
 %{_datadir}/bash-completion/completions/kernel-install
 %{_datadir}/zsh/site-functions/_bootctl

@@ -7,7 +7,7 @@
 %{_libdir}/libudev.so
 %{_libdir}/pkgconfig/libsystemd.pc
 %{_libdir}/pkgconfig/libudev.pc
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_mandir}/man3/SD_ALERT.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_ACCESS_DENIED.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_ADDRESS_IN_USE.3.gz

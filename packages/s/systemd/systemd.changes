@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr  6 09:55:10 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit e43a1b018899266b764ab81afb9c30fb417675c6
+
+  1c229f8fc1 cryptsetup: fall back to traditional unlocking if any TPM2 operation fails
+  8881f21539 cryptsetup: fix typo
+  5882148902 journald: make use of CLAMP() in cache_space_refresh()
+  6ee0601f73 journald: make sure journal_file_open() doesn't leave a corrupted file around after failing (bsc#1198114)
+  fe928f3d49 fs-util: make sure openat_report_new() initializes return param also on shortcut
+  3881af1806 fs-util: fix typos in comments
+  96060b73ba journal-file: port journal_file_open() to openat_report_new()
+  611d9955bb fs-util: add openat_report_new() wrapper around openat()
+  f16edb41d4 network: ignore all errors in loading .network files (bsc#1197968)
+  5422730a7b meson: build kernel-install man page when necessary
+  45c627cfc2 build: include status of TPM2 in the feature string show by --version
+
+- Drop 0001-meson-build-kernel-install-man-page-when-necessary.patch
+
+  It's been merged in the SUSE git repo.
+
+-------------------------------------------------------------------
+Mon Apr  4 11:40:30 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: define %bootstrap with %bcond_with so it can be used with %when. Also
+  re-order the meson options a bit.
+
+-------------------------------------------------------------------
+Mon Apr  4 08:49:40 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: make sure /lib exists when installing conf files in /lib/modprobe.d
+
+-------------------------------------------------------------------
 Thu Mar 31 12:03:19 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Temporarily disable 'libcryptsetup plugins until dracut 056 is merged in
@@ -94,6 +126,10 @@ Tue Mar  8 09:41:42 UTC 2022 - Franck Bui <fbui@suse.com>
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v250/NEWS for
   details. 
+
+  This includes the following bug fixes:
+
+    - upstream commit 34357545590d4791d1acbbeb07ae8f7636e187cb (bsc#1198093)
 
   * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
             0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch

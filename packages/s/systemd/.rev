@@ -5969,4 +5969,33 @@ handle manual pages that consist only of a .so directive such as
   We should support EFI systems even if systemd-boot is not enabled.</comment>
     <requestid>966218</requestid>
   </revision>
+  <revision rev="356" vrev="4">
+    <srcmd5>2683377e4fa7db1819567acaa48f19f7</srcmd5>
+    <version>250.4</version>
+    <time>1649370443</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit e43a1b018899266b764ab81afb9c30fb417675c6
+  1c229f8fc1 cryptsetup: fall back to traditional unlocking if any TPM2 operation fails
+  8881f21539 cryptsetup: fix typo
+  5882148902 journald: make use of CLAMP() in cache_space_refresh()
+  6ee0601f73 journald: make sure journal_file_open() doesn't leave a corrupted file around after failing (bsc#1198114)
+  fe928f3d49 fs-util: make sure openat_report_new() initializes return param also on shortcut
+  3881af1806 fs-util: fix typos in comments
+  96060b73ba journal-file: port journal_file_open() to openat_report_new()
+  611d9955bb fs-util: add openat_report_new() wrapper around openat()
+  f16edb41d4 network: ignore all errors in loading .network files (bsc#1197968)
+  5422730a7b meson: build kernel-install man page when necessary
+  45c627cfc2 build: include status of TPM2 in the feature string show by --version
+- Drop 0001-meson-build-kernel-install-man-page-when-necessary.patch
+  It's been merged in the SUSE git repo.
+
+- spec: define %bootstrap with %bcond_with so it can be used with %when. Also
+  re-order the meson options a bit.
+
+- spec: make sure /lib exists when installing conf files in /lib/modprobe.d
+
+  This includes the following bug fixes:
+    - upstream commit 34357545590d4791d1acbbeb07ae8f7636e187cb (bsc#1198093)</comment>
+    <requestid>967294</requestid>
+  </revision>
 </revisionlist>

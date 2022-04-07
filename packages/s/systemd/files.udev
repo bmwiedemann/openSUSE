@@ -2,12 +2,12 @@
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
 %config(noreplace) %{_sysconfdir}/udev/udev.conf
-%if ! %{bootstrap}
+%if %{without bootstrap}
 # %%dir %{_libdir}/cryptsetup
 %dir %{_modulesloaddir}
 %endif
 %dir %{_prefix}/lib/udev
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %dir %{_sysconfdir}/modules-load.d
 %endif
 %dir %{_sysconfdir}/udev
@@ -20,19 +20,19 @@
 %ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %ghost %{_localstatedir}/lib/systemd/backlight
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_bindir}/systemd-cryptenroll
 %endif
 %{_bindir}/systemd-hwdb
 %{_bindir}/udevadm
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_datadir}/bash-completion/completions/udevadm
 %endif
 %{_datadir}/pkgconfig/udev.pc
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_udevadm
 %endif
-%if ! %{bootstrap}
+%if %{without bootstrap}
 # %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
 # %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
 # %%{_libdir}/cryptsetup/libcryptsetup-token-systemd-tpm2.so
@@ -92,30 +92,30 @@
 %{_prefix}/lib/udev/v4l_id
 %{_systemd_util_dir}/network/99-default.link
 %{_systemd_util_dir}/systemd-backlight
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_systemd_util_dir}/systemd-cryptsetup
 %endif
 %{_systemd_util_dir}/systemd-growfs
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_systemd_util_dir}/systemd-integritysetup
 %endif
 %{_systemd_util_dir}/systemd-makefs
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_systemd_util_dir}/systemd-modules-load
 %endif
 %{_systemd_util_dir}/systemd-network-generator
 %{_systemd_util_dir}/systemd-rfkill
 %{_systemd_util_dir}/systemd-udevd
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_systemd_util_dir}/systemd-veritysetup
 %endif
 %{_systemd_util_dir}/systemd-volatile-root
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_systemdgeneratordir}/systemd-cryptsetup-generator
 %endif
 %{_systemdgeneratordir}/systemd-fstab-generator
 %{_systemdgeneratordir}/systemd-gpt-auto-generator
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_systemdgeneratordir}/systemd-integritysetup-generator
 %{_systemdgeneratordir}/systemd-veritysetup-generator
 %endif
@@ -175,20 +175,20 @@
 %{_udevrulesdir}/75-net-description.rules
 %{_udevrulesdir}/75-probe_mtd.rules
 %{_udevrulesdir}/78-sound-card.rules
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_udevrulesdir}/80-drivers.rules
 %endif
 %{_udevrulesdir}/80-net-setup-link.rules
 %{_udevrulesdir}/81-net-dhcp.rules
 %{_udevrulesdir}/90-vconsole.rules
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_unitdir}/cryptsetup-pre.target
 %{_unitdir}/cryptsetup.target
 %{_unitdir}/initrd-root-device.target.wants/remote-cryptsetup.target
 %{_unitdir}/initrd-root-device.target.wants/remote-veritysetup.target
 %endif
 %{_unitdir}/initrd-udevadm-cleanup-db.service
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_unitdir}/integritysetup-pre.target
 %{_unitdir}/integritysetup.target
 %{_unitdir}/kmod-static-nodes.service
@@ -197,25 +197,25 @@
 %endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_unitdir}/sysinit.target.wants/cryptsetup.target
 %{_unitdir}/sysinit.target.wants/integritysetup.target
 %{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
 %endif
 %{_unitdir}/sysinit.target.wants/systemd-hwdb-update.service
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_unitdir}/sysinit.target.wants/systemd-modules-load.service
 %endif
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup-dev.service
 %{_unitdir}/sysinit.target.wants/systemd-udev-trigger.service
 %{_unitdir}/sysinit.target.wants/systemd-udevd.service
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_unitdir}/sysinit.target.wants/veritysetup.target
 %{_unitdir}/system-systemd\x2dcryptsetup.slice
 %endif
 %{_unitdir}/systemd-backlight@.service
 %{_unitdir}/systemd-hwdb-update.service
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_unitdir}/systemd-modules-load.service
 %endif
 %{_unitdir}/systemd-network-generator.service
@@ -228,7 +228,7 @@
 %{_unitdir}/systemd-udevd-kernel.socket
 %{_unitdir}/systemd-udevd.service
 %{_unitdir}/systemd-volatile-root.service
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_unitdir}/veritysetup-pre.target
 %{_unitdir}/veritysetup.target
 %endif

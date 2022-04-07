@@ -8,7 +8,7 @@
 %config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
 %config(noreplace) %{_sysconfdir}/systemd/user.conf
 %dir %{_binfmtdir}
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %endif
@@ -21,7 +21,7 @@
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
 %dir %{_datadir}/systemd
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %endif
@@ -122,7 +122,7 @@
 %{_bindir}/systemd-tty-ask-password-agent
 %{_bindir}/systemd-umount
 %{_bindir}/timedatectl
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_datadir}/bash-completion/completions/busctl
 %{_datadir}/bash-completion/completions/coredumpctl
 %{_datadir}/bash-completion/completions/hostnamectl
@@ -186,7 +186,7 @@
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_busctl
 %{_datadir}/zsh/site-functions/_coredumpctl
 %{_datadir}/zsh/site-functions/_hostnamectl
@@ -219,7 +219,7 @@
 %{_journalcatalogdir}/systemd.ru.catalog
 %{_journalcatalogdir}/systemd.zh_CN.catalog
 %{_journalcatalogdir}/systemd.zh_TW.catalog
-%if ! 0%{bootstrap}
+%if %{without bootstrap}
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz
 %{_mandir}/man1/init.1.gz

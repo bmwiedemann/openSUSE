@@ -3,7 +3,7 @@
 #
 %dir %{_sysconfdir}/systemd/nspawn
 %{_bindir}/systemd-nspawn
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_datadir}/bash-completion/completions/systemd-nspawn
 %{_datadir}/zsh/site-functions/_systemd-nspawn
 %{_mandir}/man1/systemd-nspawn.1.gz

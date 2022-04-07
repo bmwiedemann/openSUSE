@@ -18,16 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%if "%{flavor}" == "mini"
-%define bootstrap 1
-%define mini -mini
-%else
-%define bootstrap 0
-%define mini %nil
-%endif
-
 %define min_kernel_version 4.5
-%define suse_version +suse.35.g8ef8dfd540
+%define suse_version +suse.47.ge43a1b0188
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
 
@@ -37,7 +29,13 @@
 %define __when_2() %{expand:%%{?with_%{1}:%{2}}%%{!?with_%{1}:false}}
 %define when()     %{expand:%%__when_%# %{*}}
 
-%if %{bootstrap}
+%define __when_not_1() %{expand:%%{?with_%{1}:false}%%{!?with_%{1}:true}}
+%define __when_not_2() %{expand:%%{?with_%{1}:false}%%{!?with_%{1}:%{2}}}
+%define when_not()     %{expand:%%__when_not_%# %{*}}
+
+%if "%{flavor}" == "mini"
+%define mini -mini
+%bcond_without  bootstrap
 %bcond_with     coredump
 %bcond_with     importd
 %bcond_with     journal_remote
@@ -50,6 +48,8 @@
 %bcond_with     experimental
 %bcond_with     testsuite
 %else
+%define mini %nil
+%bcond_with     bootstrap
 %bcond_without  coredump
 %bcond_without  importd
 %bcond_without  journal_remote
@@ -76,7 +76,7 @@ Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if ! %{bootstrap}
+%if %{without bootstrap}
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  kbd
 BuildRequires:  libapparmor-devel
@@ -114,7 +114,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid) >= 2.26
 BuildRequires:  pkgconfig(libpci) >= 3
 
-%if %{bootstrap}
+%if %{with bootstrap}
 #!BuildIgnore:  dbus-1
 Provides:       systemd = %{version}-%{release}
 Conflicts:      systemd
@@ -209,7 +209,6 @@ Patch1000:      1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
 # upstream and need an urgent fix. Even in this case, the patches are
 # temporary and should be removed as soon as a fix is merged by
 # upstream.
-Patch6000:      0001-meson-build-kernel-install-man-page-when-necessary.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -224,7 +223,7 @@ drop-in replacement for sysvinit.
 %package doc
 Summary:        HTML documentation for systemd
 License:        LGPL-2.1-or-later
-%if %{bootstrap}
+%if %{with bootstrap}
 Conflicts:      systemd-doc
 Requires:       this-is-only-for-build-envs
 %else
@@ -242,7 +241,7 @@ Requires:       libudev%{?mini}1 = %{version}-%{release}
 Requires:       systemd-rpm-macros
 Provides:       libudev%{?mini}-devel = %{version}-%{release}
 Obsoletes:      libudev%{?mini}-devel < %{version}-%{release}
-%if %{bootstrap}
+%if %{with bootstrap}
 Provides:       systemd-devel = %{version}-%{release}
 Conflicts:      systemd-devel
 Provides:       libudev-devel = %{version}-%{release}
@@ -275,7 +274,7 @@ Please note that the content of this package is considered as deprecated.
 %package -n libsystemd0%{?mini}
 Summary:        Component library for systemd
 License:        LGPL-2.1-or-later
-%if %{bootstrap}
+%if %{with bootstrap}
 Conflicts:      kiwi
 Conflicts:      libsystemd0
 Provides:       libsystemd0 = %{version}-%{release}
@@ -319,7 +318,7 @@ Requires:       group(kvm)
 Requires(post): sed
 Requires(post): coreutils
 Requires(postun):coreutils
-%if ! %{bootstrap}
+%if %{without bootstrap}
 BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
 BuildRequires:  pkgconfig(libkmod) >= 15
 # Enable fido2 and tpm supports in systemd-cryptsetup, systemd-enroll. However
@@ -340,7 +339,7 @@ Conflicts:      dracut < 044.1
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
 Conflicts:      util-linux < 2.16
-%if %{bootstrap}
+%if %{with bootstrap}
 Conflicts:      udev
 Provides:       udev = %{version}-%{release}
 %endif
@@ -355,7 +354,7 @@ call tools to initialize a device, or load needed kernel modules.
 %package -n libudev%{?mini}1
 Summary:        Dynamic library to access udev device information
 License:        LGPL-2.1-or-later
-%if %{bootstrap}
+%if %{with bootstrap}
 Conflicts:      kiwi
 Conflicts:      libudev1
 Provides:       libudev1 = %{version}-%{release}
@@ -394,7 +393,7 @@ Obsoletes:      nss-mymachines < %{version}-%{release}
 Provides:       nss-mymachines = %{version}-%{release}
 Provides:       systemd-container = %{version}-%{release}
 Provides:       systemd:%{_bindir}/systemd-nspawn
-%if %{bootstrap}
+%if %{with bootstrap}
 Conflicts:      systemd-container
 Provides:       systemd-container = %{version}-%{release}
 %endif
@@ -465,7 +464,7 @@ http://0pointer.net/blog/walkthrough-for-portable-services.html
 https://systemd.io/PORTABLE_SERVICES
 %endif
 
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %package -n nss-systemd
 Summary:        Plugin for local virtual host name resolution
 License:        LGPL-2.1-or-later
@@ -634,7 +633,7 @@ The package contains: homed, pstore, repart, userdbd.
 Have fun with these services at your own risk.
 %endif
 
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %lang_package
 %endif
 
@@ -655,64 +654,65 @@ Have fun with these services at your own risk.
         -Dsystem-gid-max=499 \
         -Dadm-group=false \
         -Dwheel-group=false \
-        -Dgshadow=false \
         -Ddefault-hierarchy=unified \
         -Ddefault-kill-user-processes=false \
-        -Dldconfig=false \
         -Dpamconfdir=no \
         -Dpamlibdir=%{_pam_moduledir} \
         -Dxinitrcdir=%{xinitconfdir}/xinitrc.d \
         -Drpmmacrosdir=no \
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
+%if %{with bootstrap}
+        -Dbashcompletiondir=no \
+        -Dzshcompletiondir=no \
+%endif
 %if %{without sysvcompat}
         -Dsysvinit-path= \
         -Dsysvrcnd-path= \
 %endif
         -Drc-local=/etc/init.d/boot.local \
         -Dcreate-log-dirs=false \
-        -Dbump-proc-sys-fs-nr-open=false \
         -Ddebug-shell=/bin/bash \
-        -Dseccomp=auto \
-        -Dselinux=auto \
-        -Dapparmor=auto \
-        -Dsmack=false \
+        \
+        -Dbump-proc-sys-fs-nr-open=false \
+        -Dgshadow=false \
         -Dima=false \
-        -Delfutils=auto \
-        -Doomd=false \
-%if %{bootstrap}
-        -Defi=false \
-        -Dbashcompletiondir=no \
-        -Dzshcompletiondir=no \
-        -Dtranslations=false \
-        -Dnss-myhostname=false \
-        -Dnss-systemd=false \
-%else
-        -Defi=true \
-        -Dtpm=true \
-        -Dtpm2=true \
-        -Dman=true \
-        -Dhtml=true \
-%endif
+        -Dldconfig=false \
         -Dlibcryptsetup-plugins=false \
+        -Doomd=false \
+        -Dsmack=false \
+        \
+        -Dapparmor=%{when_not bootstrap} \
+        -Defi=%{when_not bootstrap} \
+        -Delfutils=%{when_not bootstrap} \
+        -Dhtml=%{when_not bootstrap} \
+        -Dman=%{when_not bootstrap} \
+        -Dnss-myhostname=%{when_not bootstrap} \
+        -Dnss-systemd=%{when_not bootstrap} \
+        -Dseccomp=%{when_not bootstrap} \
+        -Dselinux=%{when_not bootstrap} \
+        -Dtpm=%{when_not bootstrap} \
+        -Dtpm2=%{when_not bootstrap} \
+        -Dtranslations=%{when_not bootstrap} \
+        \
         -Dcoredump=%{when coredump} \
         -Dimportd=%{when importd} \
         -Dmachined=%{when machined} \
         -Dnetworkd=%{when networkd} \
         -Dportabled=%{when portabled} \
         -Dremote=%{when journal_remote} \
-	\
-        -Dkernel-install=%{when sd_boot} \
+        \
         -Dgnu-efi=%{when sd_boot} \
+        -Dkernel-install=%{when sd_boot} \
         -Dsbat-distro= \
-	\
-        -Dresolve=%{when resolved} \
-        -Ddns-servers='' \
+        \
         -Ddefault-dnssec=no \
+        -Ddns-servers='' \
         -Ddns-over-tls=%{when resolved openssl} \
-	\
+        -Dresolve=%{when resolved} \
+        \
+        -Dhomed=%{when experimental} \
         -Dpstore=%{when experimental} \
         -Drepart=%{when experimental} \
-        -Dhomed=%{when  experimental} \
         -Duserdb=%{when experimental} \
         \
         -Dtests=%{when testsuite unsafe} \
@@ -774,8 +774,9 @@ rm -f %{buildroot}/etc/systemd/system/default.target
 install -m0644 -D --target-directory=%{buildroot}%{_pam_vendordir} %{SOURCE2}
 
 # kmod keeps insisting on using /lib on SLE.
-if [ "%{_modprobedir}" != /usr/lib/modprobe.d ]; then
-        mv %{buildroot}/usr/lib/modprobe.d %{buildroot}%{_modprobedir}
+if [ "$(realpath %{_modprobedir})" != /usr/lib/modprobe.d ]; then
+        mkdir -p %{buildroot}%{_modprobedir}
+        mv %{buildroot}/usr/lib/modprobe.d/* %{buildroot}%{_modprobedir}/
 fi
 
 # don't enable wall ask password service, it spams every console (bnc#747783)
@@ -932,7 +933,7 @@ rm %{buildroot}%{_testsuitedir}/test/test-keymap-util/kbd-model-map
 find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
 %endif
 
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %find_lang systemd
 %endif
 
@@ -961,7 +962,7 @@ if [ "$(stat -c%a %{_sysconfdir}/machine-id)" != 444 ]; then
         chmod 444 %{_sysconfdir}/machine-id
 fi
 
-%if ! %{bootstrap}
+%if %{without bootstrap}
 pam-config --add --systemd || :
 %endif
 
@@ -1150,7 +1151,7 @@ fi
 %sysusers_create systemd-coredump.conf
 %endif
 
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %ldconfig_scriptlets -n nss-myhostname
 %ldconfig_scriptlets -n nss-systemd
 %endif
@@ -1315,14 +1316,14 @@ fi
 %{_sysusersdir}/systemd-coredump.conf
 %config(noreplace) %{_sysconfdir}/systemd/coredump.conf
 %dir %{_localstatedir}/lib/systemd/coredump
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %{_mandir}/man1/coredumpctl*
 %{_mandir}/man5/coredump.conf*
 %{_mandir}/man8/systemd-coredump*
 %endif
 %endif
 
-%if ! %{bootstrap}
+%if %{without bootstrap}
 %files lang -f systemd.lang
 
 %files -n nss-myhostname
