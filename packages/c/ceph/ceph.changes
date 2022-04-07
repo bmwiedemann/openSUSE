@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 31 17:09:16 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
+
+- Update to v16.2.7-654-gd5a90ff46f0
+  + (bsc#1196733) remove build directory during %clean 
+
+-------------------------------------------------------------------
 Wed Mar 30 17:38:31 UTC 2022 - Stefen Allen <stefen.allen@suse.com>
 
 - Update to v16.2.7-652-gf5dc462fdb5 
