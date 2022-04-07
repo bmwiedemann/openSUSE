@@ -84,4 +84,12 @@
     <comment></comment>
     <requestid>925602</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>836b61507711636802500328c006bbd0</srcmd5>
+    <version>3.51.0</version>
+    <time>1649370490</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude build for 32bit targets</comment>
+    <requestid>967495</requestid>
+  </revision>
 </revisionlist>
