@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (#bsc1198109)
+
+-------------------------------------------------------------------
+Fri Feb  4 13:54:00 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Recover hosts caching (related to fate#318196).
+
+-------------------------------------------------------------------
 Wed Feb  2 17:06:10 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Adapt code for a better integration with the storage Expert
