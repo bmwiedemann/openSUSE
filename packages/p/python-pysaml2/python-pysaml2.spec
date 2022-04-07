@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysaml2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global modname pysaml2
 %global skip_python2 1
 Name:           python-pysaml2
-Version:        7.0.1
+Version:        7.1.2
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module cryptography >= 1.4}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module importlib-resources}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest}
@@ -93,6 +92,9 @@ done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/IdentityPython/pysaml2/issues/858
+sed -i 's:import mock:from unittest import mock:' tests/test_41_response.py
+sed -i 's:mock.mock:unittest.mock:' tests/test_52_default_sign_alg.py
 # Excluded tests for i586 gh#IdentityPython/pysaml2#682 and gh#IdentityPython/pysaml2#759
 %ifarch %{ix86}
 %pytest -k "not (test_assertion_consumer_service or test_swamid_sp or test_swamid_idp or test_other_response or test_mta or test_unknown_subject or test_filter_ava_registration_authority_1)" tests
