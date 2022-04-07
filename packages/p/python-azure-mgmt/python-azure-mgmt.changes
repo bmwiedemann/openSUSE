@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  7 08:57:51 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-redisenterprise
+
+-------------------------------------------------------------------
 Tue Mar 22 10:02:53 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires

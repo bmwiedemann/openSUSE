@@ -150,6 +150,7 @@ Requires:       python-azure-mgmt-recoveryservicesbackup
 Requires:       python-azure-mgmt-recoveryservicessiterecovery
 Requires:       python-azure-mgmt-redhatopenshift
 Requires:       python-azure-mgmt-redis
+Requires:       python-azure-mgmt-redisenterprise
 Requires:       python-azure-mgmt-regionmove
 Requires:       python-azure-mgmt-relay
 Requires:       python-azure-mgmt-reservations
