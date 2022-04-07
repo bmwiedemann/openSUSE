@@ -1,7 +1,7 @@
 #
-# spec file for package python-josepy
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname josepy
 %global skip_python2 1
 Name:           python-%{libname}
-Version:        1.10.0
+Version:        1.13.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
@@ -29,14 +29,14 @@ Source0:        https://files.pythonhosted.org/packages/source/j/%{libname}/%{li
 Source1:        https://files.pythonhosted.org/packages/source/j/%{libname}/%{libname}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  %{python_module coverage >= 4.0}
-BuildRequires:  %{python_module cryptography >= 0.8}
+BuildRequires:  %{python_module cryptography >= 1.5}
 BuildRequires:  %{python_module devel >= 2.7}
 BuildRequires:  %{python_module pyOpenSSL >= 0.13}
 BuildRequires:  %{python_module pytest >= 2.8.0}
 BuildRequires:  %{python_module setuptools >= 1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography >= 0.8
+Requires:       python-cryptography >= 1.5
 Requires:       python-pyOpenSSL >= 0.13
 Conflicts:      python-acme < 0.21.0
 Obsoletes:      python-%{libname}-doc
