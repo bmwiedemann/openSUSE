@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 12:14:40 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Sat Dec 11 22:31:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.1:

@@ -282,4 +282,12 @@
   0002-Fix-typo-from-bad-copy-paste.patch: obsolete (upstream)</comment>
     <requestid>941482</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>3ed5558682bb07d6e5dd6b53cc8ed9b3</srcmd5>
+    <version>1.4.1</version>
+    <time>1649370444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967318</requestid>
+  </revision>
 </revisionlist>

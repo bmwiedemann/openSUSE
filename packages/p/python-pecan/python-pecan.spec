@@ -1,7 +1,7 @@
 #
 # spec file for package python-pecan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  %{python_module WebOb >= 1.8}
 BuildRequires:  %{python_module WebTest >= 1.3.1}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module logutils}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module virtualenv}
