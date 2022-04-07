@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Apr  7 08:24:33 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.5.1
+  2.5.1
+  -----
+    - Fix TypeError exception thrown by `BaseAPI._query()` when using debug logging.
+  2.5.0
+  -----
+    - Python 3.10 added as a supported version
+      ([#213](https://github.com/voxpupuli/pypuppetdb/pull/213))
+  2.4.0
+  -----
+    - Added PQL support with `pql()` method
+      (PR [#201](https://github.com/voxpupuli/pypuppetdb/pull/201),
+       fixes [#167](https://github.com/voxpupuli/pypuppetdb/issues/167))
+    - Added ability to specify additional queries when using `Node.facts()`
+      ([#127](https://github.com/voxpupuli/pypuppetdb/pull/127))
+    - Improve the documentation (even more ;))
+      (PR [#206](https://github.com/voxpupuli/pypuppetdb/issues/206),
+       fixes [#143](https://github.com/voxpupuli/pypuppetdb/issues/143)
+       and [#129](https://github.com/voxpupuli/pypuppetdb/issues/129))
+    - Fixed creating `Edge` objects
+      ([#202](https://github.com/voxpupuli/pypuppetdb/issues/202))
+    - Python 3.9 added as a supported version
+      ([#203](https://github.com/voxpupuli/pypuppetdb/pull/203))
+  2.3.0
+  -----
+    - Added support for `with` statement
+      ([#185](https://github.com/voxpupuli/pypuppetdb/pull/185))
+    - Added explicit `disconnect()` method
+      ([#185](https://github.com/voxpupuli/pypuppetdb/pull/185))
+    - Improved the documentation on [Read the Docs](https://pypuppetdb.readthedocs.io/en/latest/)
+      and in the project's README
+      ([#190](https://github.com/voxpupuli/pypuppetdb/pull/190))
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Fri Aug  7 09:18:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.2.0
