@@ -17782,8 +17782,8 @@ unsorted:
   - ocaml-dose 
   - ocaml-dose-devel 
   - ocaml-dune 
-  - ocaml-dune-configurator 
-  - ocaml-dune-configurator-devel 
+  - ocaml-dune-bootstrap 
+  - ocaml-dune-bootstrap-devel 
   - ocaml-dune-devel 
   - ocaml-easy-format 
   - ocaml-easy-format-devel 
@@ -21000,6 +21000,7 @@ unsorted:
   - postgresql14-docs 
   - postgresql14-llvmjit-devel 
   - postgresql14-pg_cron 
+  - postgresql14-pgagent 
   - postgresql14-plperl 
   - postgresql14-plpython 
   - postgresql14-pltcl 
@@ -42881,6 +42882,8 @@ unsorted:
   - xfce4-fsguard-plugin-lang 
   - xfce4-genmon-plugin 
   - xfce4-genmon-plugin-lang 
+  - xfce4-kbdleds-plugin 
+  - xfce4-kbdleds-plugin-lang 
   - xfce4-mailwatch-plugin 
   - xfce4-mailwatch-plugin-lang 
   - xfce4-mount-plugin 
