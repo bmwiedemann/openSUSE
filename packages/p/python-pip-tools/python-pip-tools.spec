@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pip-tools
-Version:        6.5.1
+Version:        6.6.0
 Release:        0
 Summary:        Tool to keep pinned dependencies up to date
 License:        BSD-3-Clause
@@ -40,7 +40,6 @@ Recommends:     git-core
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 7}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip >= 21.2}
 BuildRequires:  %{python_module pytest-xdist}

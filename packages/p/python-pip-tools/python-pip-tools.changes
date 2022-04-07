@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  7 11:42:20 UTC 2022 - pgajdos@suse.com
+
+- version update to 6.6.0
+  Features:
+  - Add support for pip>=22.1 ([#1607](https://github.com/jazzband/pip-tools/pull/1607)).
+    Thanks @atugushev
+  Bug Fixes:
+  - Ensure `pip-compile --dry-run --quiet` still shows what would be done, while omitting
+    the dry run message ([#1592](https://github.com/jazzband/pip-tools/pull/1592)). Thanks
+    @AndydeCleyre
+  - Fix `--generate-hashes` when hashes are computed from files
+    ([#1540](https://github.com/jazzband/pip-tools/pull/1540)). Thanks @RazerM
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Mon Feb 28 10:09:05 UTC 2022 - pgajdos@suse.com
 
 - version update to 6.5.1
