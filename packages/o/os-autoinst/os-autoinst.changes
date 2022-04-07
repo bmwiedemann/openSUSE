@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 07 18:16:10 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1649341166.907d2f25:
+  * Use proper perl "signatures" in common files - autotest
+  * Use proper perl "signatures" in common files - basetest
+  * Use proper perl "signatures" in common files - cv
+  * Call make update-deps
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Add check to ensure fully covered files stay at 100 % coverage
+  * Fix missing coverage in consoles/virtio_terminal.pm
+  * Speedup t/10-virtio_terminal.t
+  * Use proper perl "signatures" in common files - needle
+  * Provide virtio RNG by default by changing QEMU_VIRTIO_RNG default to 1
+
+-------------------------------------------------------------------
 Tue Apr 05 08:50:17 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1649148610.29f5bfd8:
