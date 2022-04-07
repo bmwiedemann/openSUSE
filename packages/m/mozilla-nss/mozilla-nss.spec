@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.75
+%global nss_softokn_fips_version 3.76
 %define NSPR_min_version 4.32
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.75
+Version:        3.76.1
 Release:        0
-%define underscore_version 3_75
+%define underscore_version 3_76_1
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -42,7 +42,7 @@ Source8:        key4.db
 Source9:        pkcs11.txt
 #Source10:       PayPalEE.cert
 Source11:       nss-util.pc.in
-Source13:       nss-util-config.in     
+Source13:       nss-util-config.in
 Source99:       %{name}.changes
 Patch1:         nss-opt.patch
 Patch2:         system-nspr.patch

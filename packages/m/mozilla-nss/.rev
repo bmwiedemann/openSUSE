@@ -2559,4 +2559,24 @@
     <comment></comment>
     <requestid>965234</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>dace2b4322e0638a50457c1eb86c328e</srcmd5>
+    <version>3.76.1</version>
+    <time>1649370408</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.76.1
+  NSS 3.76.1
+  * bmo#1756271 - Remove token member from NSSSlot struct.
+  NSS 3.76
+  * bmo#1755555 - Hold tokensLock through nssToken_GetSlot calls in
+                  nssTrustDomain_GetActiveSlots.
+  * bmo#1370866 - Check return value of PK11Slot_GetNSSToken.
+  * bmo#1747957 - Use Wycheproof JSON for RSASSA-PSS
+  * bmo#1679803 - Add SHA256 fingerprint comments to old
+                  certdata.txt entries.
+  * bmo#1753505 - Avoid truncating files in nss-release-helper.py.
+  * bmo#1751157 - Throw illegal_parameter alert for illegal extensions
+                  in handshake message.</comment>
+    <requestid>967153</requestid>
+  </revision>
 </revisionlist>

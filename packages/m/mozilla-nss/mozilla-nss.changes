@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr  2 17:46:29 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.76.1
+  NSS 3.76.1
+  * bmo#1756271 - Remove token member from NSSSlot struct.
+  NSS 3.76
+  * bmo#1755555 - Hold tokensLock through nssToken_GetSlot calls in
+                  nssTrustDomain_GetActiveSlots.
+  * bmo#1370866 - Check return value of PK11Slot_GetNSSToken.
+  * bmo#1747957 - Use Wycheproof JSON for RSASSA-PSS
+  * bmo#1679803 - Add SHA256 fingerprint comments to old
+                  certdata.txt entries.
+  * bmo#1753505 - Avoid truncating files in nss-release-helper.py.
+  * bmo#1751157 - Throw illegal_parameter alert for illegal extensions
+                  in handshake message.
+
+-------------------------------------------------------------------
 Fri Mar 25 15:42:05 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add nss-util pkgconfig and config files (copied from RH/Fedora)
