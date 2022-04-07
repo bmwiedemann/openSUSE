@@ -369,4 +369,15 @@
     <comment></comment>
     <requestid>951559</requestid>
   </revision>
+  <revision rev="44" vrev="45">
+    <srcmd5>d0c9099255319be5e88ed95f8f94f392</srcmd5>
+    <version>MACRO</version>
+    <time>1649370441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022-04-01:
+  * Improve performance slightly
+  * Prog::Fangout() is no longer experimental
+</comment>
+    <requestid>967237</requestid>
+  </revision>
 </revisionlist>

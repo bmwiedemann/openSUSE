@@ -1,7 +1,7 @@
 #
 # spec file for package re2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global longver 2022-02-01
+%global longver 2022-04-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-9
 Name:           re2
@@ -28,12 +28,12 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/re2
 Source0:        %{url}/archive/%{longver}/%{name}-%{longver}.tar.gz
 Source99:       baselibs.conf
+BuildRequires:  pkgconfig
 %if %{?suse_version} < 1550
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  pkgconfig
 
 %description
 RE2 is a C++ library providing a fast, safe, thread-friendly alternative to
@@ -80,7 +80,7 @@ you will need to install %{name}-devel.
 
 %build
 %if 0%{?suse_version} < 1550
-export CXX=g++-10
+export CXX=g++-11
 %endif
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2/-O3/g'`"
 export CXXFLAGS="${ARCH_FLAGS}"
@@ -94,7 +94,7 @@ find %{buildroot} -name '*.a' -delete -print
 
 %check
 %if 0%{?suse_version} < 1550
-export CXX=g++-10
+export CXX=g++-11
 %endif
 %make_build shared-testinstall DESTDIR=%{buildroot} includedir=%{_includedir} libdir=%{_libdir}
 
