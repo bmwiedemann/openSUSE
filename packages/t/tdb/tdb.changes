@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 16 11:01:29 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 1.4.6
+  + Drop obsolete patch 0001-tdb-Fix-invalid-syntax-in-tdb.h.patch
+  + Fix Python docstrings
+  + Use atomic operations for tdb_[increment|get]_seqnum
+  + Raw performance torture to beat tdb_increment_seqnum
+
+-------------------------------------------------------------------
 Fri Sep 17 08:46:03 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to version 1.4.4
