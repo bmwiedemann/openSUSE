@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-terminal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %bcond_with git
 Name:           xfce4-terminal
-Version:        0.8.10
+Version:        1.0.0
 Release:        0
 Summary:        Terminal Emulator for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
 URL:            https://docs.xfce.org/apps/terminal/start
-Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/0.8/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.0/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -34,9 +34,9 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.8
 BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.14
-BuildRequires:  pkgconfig(vte-2.91)
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.16
+BuildRequires:  pkgconfig(vte-2.91) >= 0.51.3
 Recommends:     %{name}-lang
 
 %description

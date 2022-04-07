@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Apr  2 12:17:50 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.0.0
+  * Replace the deprecated GtkActionEntries with XfceGtkActionEntries
+    (gxo#apps/xfce4-terminal#79)
+  * Opening a dialog from a drop-down window closes the window
+    (gxo#apps/xfce4-terminal#136)
+  * Add `Fill` background image style (gxo#apps/xfce4-terminal!23).
+  * Improved options parsing (for both short and long forms)
+  * Add a menu entry to send signals to the foreground process
+    (gxo#apps/xfce4-terminal#59)
+  * Fix `keep window open` preference being applied on restart.
+  * Rework "--tab" and "--window" behavior (gxo#apps/xfce4-terminal#13)
+  * Ignore unused modifiers for scroll wheel zooming
+  * Add alternative shortcuts for zooming (gxo#apps/xfce4-terminal#126)
+  * Expand scrolled window and make dialog size 70% of parent
+    (gxo#apps/xfce4-terminal!17)
+  * Support libxfce4ui XfceTitledDialog new API
+  * Update unsafe paste dialog text (gxo#apps/xfce4-terminal#73)
+  * Fix paste button focus
+  * Replace subtitle by infobar for Unsafe paste dialog
+  * Fix the `unsafe paste` dialog to actually paste
+  * Update `.gitignore`, HACKING, AUTHORS, COPYRIGHTS
+  * Update --preferences, --tab and --window documentation
+  * Fix various typos
+  * Fix compilation warnings
+  * Remove unnecessary function call (gxo#apps/xfce4-terminal!24)
+  * Add a "Do not warn me again" checkbox for the "Unsafe Paste"
+    dialog (gxo#apps/xfce4-terminal#129)
+  * Use GtkScrolledWindow for TerminalScreen and add an
+    overlay-scrolling preference (gxo#apps/xfce4-terminal#149)
+  * Support the new Shortcuts editor widget
+    (requires libxfce4ui 4.17.2 or greater)
+  * New preference: Select right click action
+  * Improved `scrolling-on-output` behaviour.
+  * Unsafe Paste Dialog temporary override (gxo#apps/xfce4-terminal#106)
+  * Fix regression: File Menu missing `Close Window` entry
+  * Fix regression: Disable Help shortcut does not work
+  * Fix regression: go-to accelerators not working on startup
+  * Fix regression: Revert accelerator paths to maintain backwards
+    compatibility
+  * Use the latest .glade file structure
+  * Change incorrect reference to ${XDG_CONFIG_DIRS} in man page
+    (gxo#apps/xfce4-terminal#47)
+  * Change outdated documentation links
+  * Use XfceTitledDialog for `Find` (gxo#apps/xfce4-terminal#168)
+  * Include '\r' in unsafe-paste checks
+  * Update tab accelerators at runtime
+  * Consume events that activate accelerator callbacks
+    (gxo#apps/xfce4-terminal#159, gxo#apps/xfce4-terminal#153)
+  * Center on the active terminal window.
+  * Change handling of goto-tab accelerators so they can be changed
+    through the editor.
+  * Menubar changes size when the window is maximized
+    (gxo#apps/xfce4-terminal#156)
+  * Context Menu: Revert changes in order and contents introduced by
+    the transition to XfceGtkActionEntries
+  * Add "Show Window Borders" entry in View menu (it was missing
+    in the last 2 dev releases)
+  * Revert view menu order (Zoom entries below checkboxes)
+  * Fix the visibility flag of the scrollbar 
+    (gxo#apps/xfce4-terminal#161, could lead to broken themes)
+  * Replace GTimeVal with gint64
+  * Fix build warnings
+  * Update Copyright
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Dec 23 16:29:44 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.8.10
