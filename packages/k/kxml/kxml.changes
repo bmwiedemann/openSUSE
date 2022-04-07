@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  7 17:26:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch the sources using https instead of http protocol
+  * fixes bsc#1182284
+- Create *.tar.xz instead of *.tar.gz
+
+-------------------------------------------------------------------
 Wed Mar 23 07:07:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

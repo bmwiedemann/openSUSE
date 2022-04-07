@@ -25,7 +25,7 @@ License:        MIT
 Group:          Development/Libraries/Java
 URL:            http://kxml.sourceforge.net/
 # ./create-tarball.sh %%{version}
-Source0:        %{name}-%{version}-clean.tar.gz
+Source0:        %{name}-%{version}-clean.tar.xz
 Source1:        https://repo1.maven.org/maven2/net/sf/kxml/kxml2/%{version}/kxml2-%{version}.pom
 Source2:        https://repo1.maven.org/maven2/net/sf/kxml/kxml2-min/%{version}/kxml2-min-%{version}.pom
 Source3:        %{name}-%{version}-OSGI-MANIFEST.MF

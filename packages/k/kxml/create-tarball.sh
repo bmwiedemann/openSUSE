@@ -8,7 +8,7 @@ fi
 VERSION=${1}
 NAME="kxml"
 
-wget http://downloads.sourceforge.net/sourceforge/${NAME}/${NAME}2-src-${VERSION}.zip
+wget https://downloads.sourceforge.net/sourceforge/${NAME}/${NAME}2-src-${VERSION}.zip
 unzip -d ${NAME}-${VERSION} ${NAME}2-src-${VERSION}.zip
 rm ${NAME}2-src-${VERSION}.zip
 
@@ -17,5 +17,5 @@ rm ${NAME}2-src-${VERSION}.zip
   rm -Rf bin/ dist/* www/ samples_midp/ samples/ contrib/
 )
 
-tar czvf ${NAME}-${VERSION}-clean.tar.gz ./${NAME}-${VERSION}
+tar cJvf ${NAME}-${VERSION}-clean.tar.xz ./${NAME}-${VERSION}
 
