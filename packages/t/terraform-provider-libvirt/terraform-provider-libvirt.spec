@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-libvirt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ Requires:       mkisofs
 %else
 Requires:       genisoimage
 %endif
+# Terraform is not available for 32bit platforms
+ExcludeArch:    %ix86 %arm
 Requires:       terraform >= 0.12.0
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  golang

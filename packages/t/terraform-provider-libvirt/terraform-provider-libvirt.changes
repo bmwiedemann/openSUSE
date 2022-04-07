@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 30 06:55:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- exclude build for 32bit targets 
+
+-------------------------------------------------------------------
 Sat Oct 16 12:36:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop redundant %setup calls
