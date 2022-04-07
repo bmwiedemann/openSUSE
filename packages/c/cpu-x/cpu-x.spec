@@ -37,7 +37,11 @@ BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(libcpuid) >= 0.5.0
 BuildRequires:  pkgconfig(libpci)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libproc-2)
+%else
 BuildRequires:  pkgconfig(libprocps)
+%endif
 BuildRequires:  pkgconfig(ncursesw)
 Provides:       bundled(dmidecode) = 3.3.20201210
 

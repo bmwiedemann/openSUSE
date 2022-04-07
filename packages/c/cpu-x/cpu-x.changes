@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  7 08:21:55 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use new libproc-2 on Tumbleweed instead of libprocps.
+
+-------------------------------------------------------------------
 Sat Mar 19 20:40:06 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Add opencl-headers to the BuildRequires to fix build on
