@@ -590,4 +590,13 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>958077</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>48aed4a329cec2b215cc5fd719fa4ddf</srcmd5>
+    <version>2.5.0</version>
+    <time>1649370394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0
+  + No code changes, just bump version for samba 4.16.0 release</comment>
+    <requestid>966946</requestid>
+  </revision>
 </revisionlist>
