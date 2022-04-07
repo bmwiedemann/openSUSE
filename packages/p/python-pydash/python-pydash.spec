@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pydash
-Version:        4.8.0
+Version:        5.1.0
 Release:        0
 Summary:        The kitchen sink of Python functional utility libraries
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dgilland/pydash
 Source:         https://files.pythonhosted.org/packages/source/p/pydash/pydash-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,7 +48,8 @@ rm tox.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+sed -i '/--.*cov/d' setup.cfg
+%pytest tests/
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
