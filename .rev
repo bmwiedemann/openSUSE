@@ -118,4 +118,12 @@
     <comment>- change license tag to GPL-3.0-or-later. (forwarded request 961880 from hillwood)</comment>
     <requestid>961881</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>0b352db91b967f8a368106aff52f2d6a</srcmd5>
+    <version>5.8.21</version>
+    <time>1649370475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967429</requestid>
+  </revision>
 </revisionlist>
