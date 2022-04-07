@@ -103,4 +103,12 @@
   - always use `#!/bin/sh` on windows for hook script.</comment>
     <requestid>965080</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>33f17a535f0bb1a5457b74f4e4456842</srcmd5>
+    <version>2.18.1</version>
+    <time>1649370506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967528</requestid>
+  </revision>
 </revisionlist>

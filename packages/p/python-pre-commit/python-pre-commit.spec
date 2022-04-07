@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pre-commit
-Version:        2.17.0
+Version:        2.18.1
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT
@@ -44,7 +44,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module cfgv >= 2.0.0}
 BuildRequires:  %{python_module identify >= 1.0.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nodeenv >= 0.11.1}
 BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module pytest}
@@ -94,6 +93,7 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_rust_additional_dependencies or te
 EXCLUDED_TESTS="$EXCLUDED_TESTS or conda or test_perl_hook or test_local_perl_additional_dependencies"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or dart or dotnet or r_ or node or ruby"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_lua_additional_dependencies"
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_python_repo_python2"
 
 git init .
 %pytest -k "not ($EXCLUDED_TESTS)"
