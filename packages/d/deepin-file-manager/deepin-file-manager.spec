@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-file-manager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           deepin-file-manager
-Version:        5.5.1
+Version:        5.5.3
 Release:        0
 Summary:        Deepin File Manager
 License:        GPL-3.0-or-later AND MIT
@@ -35,10 +35,6 @@ URL:            https://github.com/linuxdeepin/dde-file-manager
 Source0:        https://github.com/linuxdeepin/dde-file-manager/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        deepin-file-dbus-installer.in
 Source2:        deepin-file-polkit-installer.in
-# PATCH-FIX-UPSTEAM fix-expected-token-errors.patch hillwood@opensuse.org - Fix error for js code
-# Patch1:         fix-expected-token-errors.patch
-# PATCH-FIX-UPSTEAM fix-return-type-error.patch hillwood@opensuse.org - Fix build error
-Patch1:         fix-return-type-error.patch
 # PATCH-FIX-UPSTEAM fix-header-include.patch hillwood@opensuse.org - dfsearch is necessary
 Patch2:         fix-header-include.patch
 Patch3:         harden_dde-filemanager-daemon.service.patch
@@ -79,6 +75,7 @@ BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dde-dock)
 BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(disomaster)
+BuildRequires:  pkgconfig(docparser)
 BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(dtkwm)
 BuildRequires:  pkgconfig(gio-qt)
@@ -101,11 +98,6 @@ BuildRequires:  pkgconfig(uchardet)
 BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-util)
-# Workaround the error: 'sleep_for' is not a member of 'std::this_thread'
-%if 0%{?suse_version} > 1500
-BuildRequires:  gcc10
-BuildRequires:  gcc10-c++
-%endif
 Requires:       deepin-shortcut-viewer
 Requires:       deepin-terminal
 Requires:       file-roller
@@ -215,10 +207,6 @@ cp 3rdparty/fsearch/* src/dde-file-manager-lib/search/
 %build
 
 qmake-qt5 \
-%if 0%{?suse_version} > 1500
-        QMAKE_CC=/usr/bin/gcc-10 \
-        QMAKE_CXX=/usr/bin/g++-10 \
-%endif
         PREFIX=%{_prefix} \
         LIBDIR=%{_libdir} \
         CONFIG+="DISABLE_ANYTHING" \

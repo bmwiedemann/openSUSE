@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 31 08:48:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer pin to GCC10: the code builds just fine using GCC11
+  too, so let's use the distro default compiler.
+
+-------------------------------------------------------------------
+Tue Feb 22 12:00:45 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.3
+  * Bring docparser
+  * Update translations
+  * Update manual documents
+  * Fix bugs
+- Drop fix-return-type-error.patch, fixed by upstream
+
+-------------------------------------------------------------------
 Thu Dec 16 13:10:46 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.1

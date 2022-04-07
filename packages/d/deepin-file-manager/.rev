@@ -42,4 +42,12 @@
   * Add new feature for document content: support markdown</comment>
     <requestid>950174</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3a89430fcc9adf215ec8bb45df847bbc</srcmd5>
+    <version>5.5.3</version>
+    <time>1649370480</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>967449</requestid>
+  </revision>
 </revisionlist>
