@@ -1,4 +1,244 @@
 -------------------------------------------------------------------
+Wed Apr  6 17:29:51 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Fix build for Factory. Currently, any Java version
+  is fine for Erlang.
+
+-------------------------------------------------------------------
+Sun Mar 27 10:40:39 UTC 2022 - matwey.kornilov@gmail.com
+
+- Changes for 24.3.2:
+  * erl_interface: Fix compile error regarding gethostbyaddr_r on
+    Android. Error introduced in OTP 24.3.
+  * kernel: Fix failed accepted connection setup after previous
+    established connection from same node closed down silently.
+  * kernel: Fixed a problem where typing Ctrl-R in the shell could
+    hang if there were some problem with the history log file.
+- Changes for 24.3.1:
+  * dialyzer: There could be spurious warnings for unknown types
+    when a type was a subtype of an existing type that was a
+    subtype of an unknown type.
+  * ssl: Client certification could fail for TLS-1.3 servers that
+    did not include the certificat_authorties extension in its
+    certificate request message.
+- Changes for 24.3:
+  * megaco: The compilation time is no longer recorded in BEAM
+    files. There remained several undocumented functions that
+    attempted to retrieve compilation times. Those have now been
+    removed.
+  * megaco: Update the performance and debug chapters of the megaco
+    user's guide. Also some updates to the meas tools.
+  * compiler: The expression <<0/native-float>>=Bin would always
+    fail to match, while <<0/float-native>>=Bin would match
+    (provided that Bin contained the binary representation of 0.0)
+  * compiler: The compiler will now compile huge functions with
+    straight-line code faster.
+  * erl_interface: Add --enable-ei-dynamic-lib configure option
+    that will make erl_interface also release a dynamic library
+    version of libei.
+  * erl_interface: The ei API for decoding/encoding terms is not
+    fully 64-bit compatible since terms that have a representation
+    on the external term format larger than 2 GB cannot be handled.
+  * sasl: Fix bug in systools:make_script/1 documentation.
+  * inets: The compilation time is no longer recorded in BEAM
+    files. There remained several undocumented functions that
+    attempted to retrieve compilation times. Those have now been
+    removed.
+  * inets: Documentation fix for inets:services_info/0, which now
+    describes that Info might be a Reason term() in case when
+    {error, Reason} is returned as service info.
+  * crypto: The crypto app in OTP can since OTP-24.2 be compiled,
+    linked and used with the new OpenSSL 3.0 cryptolib. The crypto
+    app has 3.0 support has been improved, but is still *not
+    recommended* for other usages than experiments and alpha
+    testing. There are not yet any guaranties that it works, not
+    even together with other OTP applications like for example SSL
+    and SSH, although there are no known errors. Since the previous
+    release, OTP-24.2, the following improvements have been done: -
+    It has been tested during nearly every nightly test on the OTP
+    lab - The hash algorithms md4 and ripemd160 have been enabled
+    with OpenSSL 3.0. - The ciphers blowfish_cbc, blowfish_ecb,
+    des_cbc, des_cfb, des_ecb, rc2_cbc and rc4 have been enabled
+    with OpenSSL 3.0. Disabled or unsupported with OpenSSL 3.0 are
+    still: - ENGINE support - FIPS mode - Other providers than the
+    built-in ones - Compiling and linking with OpenSSL 3.0
+    cryptolib in compatibility modes (for example to behave as
+    1.1.1) and, the ciphers blowfish_cfb64 and blowfish_ofb64 are
+    not supported and will not be either. Deprecated functions in
+    the OpenSSL 3.0 cryptolib must not be disabled as OTP/crypto
+    still uses some of the deprecated API functions. The gcc flag
+    -Wno-deprecated-declarations is set to prevent deprecation
+    warnings to be printed when compiling.
+  * crypto: Crypto is adapted to LibreSSL 3.5.0 on OpenBSD.
+  * crypto: New configure option ( --disable-otp-test-engine) to
+    prohibit the build of the OTP test engine used in some test
+    suites. The reason is that the test engine could be hard to
+    compile on for instance LibreSSL 3.5.0. For that particular
+    cryptolib version (or higher), this configure option is set
+    automatically.
+  * jinterface: Fix bug in OtpOutputStream.write_pid/4 and
+    write_ref/3 causing faulty encodig. Bug exists since OTP 23.0.
+  * wx: Removed the static_data option from wxImage creation
+    functions, as it was broken and could lead to crashes. Now
+    image data is always copied to wxWidgets as was the default
+    behavior. Removed some non working wxGridEvent event types,
+    which have there own events in newer wxWidgets versions, and
+    added a couple of event types that where missing in wx.
+  * asn1: Add support for the maps option in combination with the
+    jer backend.
+  * snmp: The compilation time is no longer recorded in BEAM files.
+    There remained several undocumented functions that attempted to
+    retrieve compilation times. Those have now been removed.
+  * snmp: [agent] Remove expectation of socket being a port.
+  * common_test: OTP internal test fix.
+  * runtime_tools: Fixed bug in scheduler:utilization(Seconds) that
+    would leave the scheduler_wall_time system flag incorrectly
+    enabled.
+  * runtime_tools: Add scheduler:get_sample/0 and get_sample_all/0.
+    Also clarify scheduler module documentation about how it
+    depends on system flag scheduler_wall_time.
+  * erts: Fixed a bug in the x86 JIT that might cause floating
+    point instructions to wrongly throw an exception.
+  * erts: Preserve correct nodedown_reason if supervised
+    distribution controller processes exit with {shutdown, Reason}.
+  * erts: Handling of send_timeout for gen_tcp has been corrected
+    so that the timeout is honored also when sending 0 bytes.
+  * erts: By default global does not take any actions to restore a
+    fully connected network when connections are lost due to
+    network issues. This is problematic for all applications
+    expecting a fully connected network to be provided, such as for
+    example mnesia, but also for global itself. A network of
+    overlapping partitions might cause the internal state of global
+    to become inconsistent. Such an inconsistency can remain even
+    after such partitions have been brought together to form a
+    fully connected network again. The effect on other applications
+    that expects that a fully connected network is maintained may
+    vary, but they might misbehave in very subtle hard to detect
+    ways during such a partitioning. In order to prevent such
+    issues, we have introduced a prevent overlapping partitions fix
+    which can be enabled using the prevent_overlapping_partitions
+    kernel(6) parameter. When this fix has been enabled, global
+    will actively disconnect from nodes that reports that they have
+    lost connections to other nodes. This will cause fully
+    connected partitions to form instead of leaving the network in
+    a state with overlapping partitions. Note that this fix has to
+    be enabled on all nodes in the network in order to work
+    properly. Since this quite substantially changes the behavior,
+    this fix is currently disabled by default. Since you might get
+    hard to detect issues without this fix you are, however,
+    strongly advised to enable this fix in order to avoid issues
+    such as the ones described above. As of OTP 25 this fix will
+    become enabled by default.
+  * erts: Corrected the type specification of erlang:seq_trace/2.
+  * erts: Fix memory leak when tracing on running on a process that
+    only handle system tasks or non-message signals (for example
+    process_info requests).
+  * erts: Add support for using socket:sockaddr_in() and
+    socket:sockaddr_in6() when using gen_sctp, gen_tcp and gen_udp.
+    This will make it possible to use Link Local IPv6 addresses.
+  * erts: Show on_load failure reasons in embedded mode.
+  * erts: Compile date saved in the Erlang VM executable has been
+    removed.
+  * erts: Improve documentation for the dynamic node name feature.
+  * ssh: Fix makefile dependency bugs.
+  * ssh: Fixed faulty OpenSSH decoding of Ed25519/Ed448 keys in the
+    OpenSSH format openssh_key_v1.
+  * ssh: Correction of ssh_file typing, specially for the
+    experimental openssh-key-v1 encoding.
+  * ssh: Improper tag for private ED keys when encoding with
+    ssh:encode/2. The tuple had ed_priv as first element, but
+    should have had ed_pri. This is now corrected. *** POTENTIAL
+    INCOMPATIBILITY ***
+  * ssh: Add support for Ed25519/Ed448 SSH host keys in the RFC
+    4716 format ("-----BEGIN EC PRIVATE KEY-----") generated by for
+    example openssl or via Erlang functions (i.e.
+    public_key:generate_key({namedCurve, ed25519})). Ed25519 SSH
+    host keys generated by ssh-keygen was, and are still,
+    supported.
+  * kernel: Handling of send_timeout for gen_tcp has been corrected
+    so that the timeout is honored also when sending 0 bytes.
+  * kernel: By default global does not take any actions to restore
+    a fully connected network when connections are lost due to
+    network issues. This is problematic for all applications
+    expecting a fully connected network to be provided, such as for
+    example mnesia, but also for global itself. A network of
+    overlapping partitions might cause the internal state of global
+    to become inconsistent. Such an inconsistency can remain even
+    after such partitions have been brought together to form a
+    fully connected network again. The effect on other applications
+    that expects that a fully connected network is maintained may
+    vary, but they might misbehave in very subtle hard to detect
+    ways during such a partitioning. In order to prevent such
+    issues, we have introduced a prevent overlapping partitions fix
+    which can be enabled using the prevent_overlapping_partitions
+    kernel(6) parameter. When this fix has been enabled, global
+    will actively disconnect from nodes that reports that they have
+    lost connections to other nodes. This will cause fully
+    connected partitions to form instead of leaving the network in
+    a state with overlapping partitions. Note that this fix has to
+    be enabled on all nodes in the network in order to work
+    properly. Since this quite substantially changes the behavior,
+    this fix is currently disabled by default. Since you might get
+    hard to detect issues without this fix you are, however,
+    strongly advised to enable this fix in order to avoid issues
+    such as the ones described above. As of OTP 25 this fix will
+    become enabled by default.
+  * kernel: Fix bug where logger would crash when logging a report
+    including improper lists.
+  * kernel: Make erlang:set_cookie work for dynamic node names.
+  * kernel: Add support for using socket:sockaddr_in() and
+    socket:sockaddr_in6() when using gen_sctp, gen_tcp and gen_udp.
+    This will make it possible to use Link Local IPv6 addresses.
+  * kernel: A net_tickintensity kernel parameter has been
+    introduced. It can be used to control the amount of ticks
+    during a net_ticktime period. A new net_kernel:start/2 function
+    has also been introduced in order to make it easier to add new
+    options. The use of net_kernel:start/1 has been deprecated.
+  * kernel: Improve documentation for the dynamic node name
+    feature.
+  * erl_docgen: Fix css for large tables and images on small
+    screens
+  * erl_docgen: Fix bug with codeinclude tag that caused it to not
+    include the code if used in a correct, but unexpected way.
+  * observer: Calculate the display width in etop, instead of hard-
+    coding it to 89 characters.
+  * debugger: Fix record index matching, it was broken and could
+    never match.
+  * ssl: Improved error handling.
+  * ssl: Before this change, net_kernel used with TLS distribution
+    might be leaking processes in case of connectivity issues.
+  * ssl: Fix makefile dependency bugs.
+  * ssl: Make sure the TLS sender process handles explicit calls to
+    erlang:disconnect_node properly, avoiding potential hanging
+    problems in net_kernel.
+  * ssl: Add support for TLS-1.3 certificate_authorities extension.
+    And process certificate_authorities field in pre-TLS-1.3
+    certificate requests.
+  * ssl: Support password fun for protected keyfiles in ssl:connect
+    function.
+  * ssl: Add in some cases earlier detection of possible DoS
+    attacks by malicious clients sending unexpected TLS messages
+    instead of the client hello. Note that such attacks are already
+    mitigated by providing a timeout for the TLS handshake.
+  * eldap: Fix eldap extensibleMatch dnAttributes option. According
+    to the ldap ASN1 the dnAttributes should be a bool, instead it
+    was generated as a string.
+  * eldap: Implemented paged searches according to https://www.rfc-
+    editor.org/rfc/rfc2696.txt
+  * public_key: Support password fun for protected keyfiles in
+    ssl:connect function.
+  * stdlib: The compilation time is no longer recorded in BEAM
+    files. There remained several undocumented functions that
+    attempted to retrieve compilation times. Those have now been
+    removed.
+  * mnesia: Reduce the number of locks taken during table copying,
+    should reduce the startup time on large systems.
+  * diameter: The compilation time is no longer recorded in BEAM
+    files. There remained several undocumented functions that
+    attempted to retrieve compilation times. Those have now been
+    removed.
+
+-------------------------------------------------------------------
 Sun Mar 06 07:18:42 UTC 2022 - matwey.kornilov@gmail.com
 
 - Changes for 24.2.2:

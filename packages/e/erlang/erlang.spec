@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        24.2.2
+Version:        24.3.2
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
@@ -46,7 +46,7 @@ BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  fop
 BuildRequires:  gcc-c++
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel
 BuildRequires:  openssh
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -260,7 +260,6 @@ sed -i 's|WX_LIBS=`$WX_CONFIG_WITH_ARGS --libs`|WX_LIBS="`$WX_CONFIG_WITH_ARGS -
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export JAVAC="javac -source 1.6 -target 1.6"
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS=$CFLAGS
 
