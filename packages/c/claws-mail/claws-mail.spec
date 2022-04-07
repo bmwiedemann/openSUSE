@@ -1,7 +1,7 @@
 #
 # spec file for package claws-mail
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,10 @@
 %bcond_with    litehtml
 %endif
 
-%bcond_with    tnef
 %if 0%{?suse_version} >= 1550
 %bcond_with     claws_pilot_link
 %else
-%if 0%{?is_opensuse}
+%if 0%{?is_opensuse} && 0%{?sle_version} <= 150300 
 %bcond_without  claws_pilot_link
 %else
 %bcond_with     claws_pilot_link
@@ -39,7 +38,7 @@
 %endif
 
 Name:           claws-mail
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
@@ -226,8 +225,6 @@ cp claws-mail-64x64.png %{buildroot}%{_datadir}/pixmaps/
 # Tools
 cp -r tools %{buildroot}%{_datadir}/%{name}
 rm %{buildroot}%{_datadir}/claws-mail/tools/Makefile*
-# The ca-certificates are meant for windows. On Linux, it is not used and should not be distributed.
-rm %{buildroot}%{_datadir}/claws-mail/tools/ca-certificates.crt
 mv %{buildroot}%{_datadir}/claws-mail/tools/README ./README.tools
 # fixing permissions
 chmod 755 %{buildroot}%{_datadir}/claws-mail/tools/*

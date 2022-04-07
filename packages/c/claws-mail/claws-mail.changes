@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Tue Apr  5 17:42:46 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Disable pilot-link also on openSUSE Leap >= 15.4 
+- The intree ca-certificates file was removed upstream. Remove our
+  cleanup code for it.
+
+-------------------------------------------------------------------
+Mon Apr  4 10:18:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.0:
+  * Text zooming in the Message View is now possible, using CTRL+mouse
+    wheel up/down, CRTL+touchpad two-fingered vertical swiping, or
+    the Message View's right-click menu.
+  * GtkColorChooser is now used in the Spell Checking preferences,
+    Colour Label preferences, and the folder Properties pages.
+  * 'Default From:' has been added to the Compose page of the folder
+    Properties. This allows setting an email address which will
+    override the Account's email address.
+  * An option has been added to the 'General' page of the folder
+    Properties, 'Skip folder when searching for unread or new
+    messages', so that the folder can be skipped when using Go To
+    next/previous unread/new message.
+  * 'By Sender' has been added to '/Tools/Create filtering rule/...'
+    and '/Tools/Create processing rule/...'
+  * The option 'Run processing rules before marking all messages in a
+    folder as read or unread' has been added to
+    '/Configuration/Preferences/Display/Summaries'.
+  * It is now possible to add a toolbar button to 'Run folder
+    processing rules'.
+  * The Actions configuration list now has 'Top' and 'Bottom' buttons.
+  * In '/Tools/List URLs' it is now possible to CTRL+c or right-click
+    a list item and 'Copy URL'; copying multiple selections is also
+    possible.
+    Phishing URLs are now indicated in red by default. This uses the
+    colour defined in the hidden preference, log_error_color.
+  * The method of handling Tags has been improved.
+  * When using the separate Message View the Enter key will open the
+    currently selected message in the Message List. So, for example,
+    if you delete the current message, pressing Enter will open the
+    next message without having to leave the separate Message View.
+  * The quicksearch type-ahead keypress delay is now customizable
+    using a hidden preference ("qs_press_timeout").
+  * Improvements to the storage of OAuth2 refresh tokens.
+  * A "View all" button has been added to the Themes preferences page
+    in order to preview all icons of a theme.
+  * The term 'master passphrase' has been replaced in the UI with
+    'primary passphrase'.
+  * The label 'SSL/TLS' has been replaced with 'TLS' in the UI.
+  * chmod 0600 is set on log files, history files, saved parts, etc.
+  * "Keyword Warner" plugin has been added. This shows a warning when
+    sending or queueing a message and a reference to one or more
+    user-defined keywords are found in the message text.
+  * Adding a new RSSyl feed or subscribing to a Webcal will
+    automatically suggest using any suitable URI found on the
+    clipboard.
+  * The user manuals have been updated.
+  * Updated translations: Brazilian Portuguese, British English,
+    Catalan, Czech, French, Indonesian, Polish, Romanian, Russian,
+    Slovak, Spanish, Turkish.
+* bug fixes:
+  + bug 4312, 'litehtml plugin loops (hangup)'
+  + bug 4346, 'Error: Certificate is for invalid2.invalid, but
+    connection is to imap.gmail.com'
+  + bug 4442, 'vcalendar segfault if in invitation email and
+    switch to another folder'
+  + bug 4495, 'Improve text strings for OAuth2'
+  + bug 4496, 'Fancy crashes when opening an email'
+  + bug 4511, 'Uses deprecated ghostscript operator'
+  + bug 4513, 'msg window too small in 3 column layout'
+  + bug 4517, 'Thread safety issues in signature checking code'
+  + bug 4524, 'Problems exiting/closing Claws Mail'
+  + bug 4534, 'Address book causing claws to terminate unexpectedly'
+  + bug 4535, 'Setting msgview_date_format=1 does not work'
+  + bug 4536, 'Tab for address selects second entry'
+  + bug 4556, 'Filesize in kilobytes versus kibibytes'
+  + bug 4577, 'Fancy plugin with GTK3 seems to ignore content encoding'
+  + when using 'hide_timezone' use UTC when generating MessageID
+  + non-translation of some button labels
+  + the initial position of the (X-)Face image
+  + return receipts from accounts without a name
+  + folderview pixmaps not being updated after icon theme change
+    until restart
+  + spell checker underlining when black is chosen
+  + text on various buttons
+  + scrolling in a message's attachments bar (scrolling left or
+    right were scrolling down).
+  + scrolling not working when GTK smooth scroll is set
+  + scroll to next/prev page in pdf_viewer
+  + build error with -Werror=format-security
+  + invalid crypto engine (gpgme_op_verify failed)
+  + vCalendar tooltip in Day View showed the wrong month.
+  + View Log button
+  + when closing Compose window dialogue requesting choice from
+    user is not shown and some options are lost in drafted copy
+  + weird logic with the 'Edit filter action' dialog
+  + resource leaks; memory corruption
+
+-------------------------------------------------------------------
 Sun Mar  6 15:40:35 UTC 2022 - malcolmlewis@opensuse.org
 
 - Re-enable fancy html viewer plugin.

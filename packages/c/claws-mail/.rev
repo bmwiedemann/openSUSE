@@ -908,4 +908,16 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment></comment>
     <requestid>959728</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>b6663b2799761f1cee0b9f1c409493c7</srcmd5>
+    <version>4.1.0</version>
+    <time>1649370485</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable pilot-link also on openSUSE Leap &gt;= 15.4 
+- The intree ca-certificates file was removed upstream. Remove our
+  cleanup code for it.
+
+- Update to 4.1.0:</comment>
+    <requestid>967470</requestid>
+  </revision>
 </revisionlist>
