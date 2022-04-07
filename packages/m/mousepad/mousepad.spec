@@ -1,7 +1,7 @@
 #
 # spec file for package mousepad
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libmousepad0
 Name:           mousepad
-Version:        0.5.8
+Version:        0.5.9
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Apr  2 12:02:02 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.9
+  * Add Shortcuts plugin, requires libxfce4ui >= 4.17.5 and as
+    such remains disabled at build time until Xfce 4.18 is released
+    (gxo#apps/mousepad#70, gxo#apps/mousepad!121)
+  * Add search history (gxo#apps/mousepad!119)
+  * File monitoring: Add an automatic reloading option
+  * Move the document modification mark to the close button
+    (gxo#apps/mousepad#63, gxo#apps/mousepad!122)
+  * Add mousepad styleclass for easier theming (gxo#apps/mousepad#33)
+  * Hide search bar by pressing Esc key even when not focused
+  * Search: Escape selection when regex search is enabled
+  * Plugins: Add a skeleton plugin to ease writing of new plugins
+  * Test plugin: Sanitize memory management of sources
+  * Honor GTK_CSD
+  * Filter entries from `accels.scm` on non-detailed action name
+  * i18n: Check for `bind_textdomain_codeset()`
+  * Update Copying (gxo#apps/mousepad#160, gxo#apps/mousepad!120)
+  * Session history: Never clear session array on exit
+    (gxo#apps/mousepad#162)
+  * Fix broken feature "Show menubar temporarily when hidden"
+  * Force encoding when reloading
+  * Force encoding when it has been explicitly set by the user
+  * Do not consider encoding as always user-set in the "Open" dialog
+  * Fix antonym of the word "indent" in preferences dialog
+    (gxo#apps/mousepad!118)
+  * File monitoring: Try to filter out fake deletions
+  * Add ellipsis to preferences menu entry (gxo#apps/mousepad!117)
+  * Switch all labels to title case in prefs dialog
+    (gxo#apps/mousepad!116)
+  * Correctly restore font size after zooming when using system font
+    (gxo#apps/mousepad#158)
+  * Printing: Enable line wrapping by default (gxo#apps/mousepad#156)
+  * Fix a warning from GCC static analyzer
+  * Search: Do not delay the search when the text changes
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Nov 29 09:45:08 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.8
