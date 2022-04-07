@@ -32,7 +32,6 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 # /SECTION
 %python_subpackages
 
