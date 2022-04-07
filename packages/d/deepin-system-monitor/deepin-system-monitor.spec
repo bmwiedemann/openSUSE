@@ -22,6 +22,8 @@
     %define  distribution  SUSE-Edition
 %endif
 
+%define    procps_version    %(rpm -q --queryformat '%%{VERSION}' procps-devel)
+
 Name:           deepin-system-monitor
 Version:        5.8.21
 Release:        0
@@ -51,6 +53,7 @@ BuildRequires:  libcap-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  ncurses-devel
+BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -72,7 +75,6 @@ BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-route-3.0)
-BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -94,6 +96,9 @@ Desktop.
 %autosetup -p1
 sed -i 's/Exec=deepin-music/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-system-monitor/g' \
 translations/desktop/%{name}.desktop
+%if "%{procps_version}" >= "4.0.0"
+sed -i '/find_library/s|procps|proc-2|' src/CMakeLists.txt
+%endif
 
 %build
 %cmake -DVERSION=%{version}-%{distribution}
