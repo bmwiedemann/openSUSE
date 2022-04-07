@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Thu Mar 24 20:49:46 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.9.6
+  * Fix error messages shown on successful commands
+  * Notification improvements (update existing notification, set
+    application name)
+  * Dependency updates
+
+
+-------------------------------------------------------------------
+Wed Mar  9 19:54:58 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Require cargo version 1.58 at least for binary stripping on cargo
+  build
+
+-------------------------------------------------------------------
+Wed Mar  9 19:42:49 UTC 2022 - Jab-Luca Kiok <me@jlk.one>
+
+- Strip binary
+
+-------------------------------------------------------------------
+Wed Mar  9 19:34:59 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.9.6
+  Maintenance
+  * Enable autojump for playlist selection list in context menu
+  * Use notify-rust with dbus instead of zbus
+  * Fix compilation on Rust versions < 1.58.0
+  * Make album sorting case-insensitive
+  * Enable gapless by default
+  * Improve playlist sorting
+  * Dependency updates
+
+-------------------------------------------------------------------
+Fri Jan 21 16:12:28 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.9.5
+  Maintenance
+  * Fix release build name and win32 feature
+  * seek spits out correct error when used with no args
+  * Migrate to cursive 0.17
+  * Remove notifications' dependency on cover
+  * Fix errors showing up even though the command was successful
+  * Fix lists that were shown as empty even though they contained
+    items
+
+-------------------------------------------------------------------
+Sat Jan 15 17:36:11 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.9.4
+  Maintenance
+  * Sort library after saving an album
+  * Stop player when Spotify worker thread dies
+  * Update librespot to 0.3.1
+  * Major/breaking update to rspotify 0.11.3
+  * Refactoring and other cleanups
+  * Fix crash when saving track or opening similar tracks
+  * Fixed MPRIS OpenUri function not respecting ncspot's shuffle
+    setting
+  * Fix queuing of playlists causing "play next" to be broken
+  * More detailed error message in case of command parse error
+  * Remove panics in the update_token flow
+  Features
+  * Add command to show recommendations
+  * Enable binding multiple commands to a key
+  * Add "Share album" contextmenu entry
+  * Add redraw command and bind to CTRL+L
+  * Add initial_screen config variable
+  * Add userRating entity to MPRIS metadata
+  * Show playlist owner name
+  * Introduce cache file format version indicator.
+  * Added Wayland clipboard support
+  * Added jumpnext and jumpprevious as commands
+  * Add exec command allowing users to execute shell commands on
+    key press
+  * Improved seek command to allow more units (e.g. 2s), check
+    parse_duration documentation for accepted units
+  * Set terminal title to ncspot
+
+-------------------------------------------------------------------
+Sat Aug 28 17:42:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.2
+  Maintenance
+  * Reduce API calls by only fetching the full track details if
+    necessary
+  * Refactoring, other cleanups and dependency updates
+  * Remove broken Facebook login code (#310).
+  Features
+  * Scrolling on volume text increases/decreases volume.
+
+-------------------------------------------------------------------
+Sun Aug 22 09:28:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.8.1
