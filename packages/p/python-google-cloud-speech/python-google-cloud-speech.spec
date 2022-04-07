@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-speech
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-speech
-Version:        1.3.2
+Version:        2.13.1
 Release:        0
 Summary:        Google Cloud Speech API client library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-speech/google-cloud-speech-%{version}.tar.gz
-BuildRequires:  %{python_module google-api-core >= 1.14.0}
+BuildRequires:  %{python_module google-api-core >= 1.31.5}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module proto-plus >= 1.15.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.14.0
+Requires:       python-google-api-core >= 1.31.5
+Requires:       python-proto-plus >= 1.15.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,6 +57,7 @@ rm tests/system/gapic/v1p1beta1/test_system_speech_v1p1beta1.py
 %pytest
 
 %files %{python_files}
+%exclude %{_bindir}/*.py
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*

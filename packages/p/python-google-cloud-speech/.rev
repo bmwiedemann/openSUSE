@@ -67,4 +67,41 @@
     <comment></comment>
     <requestid>792428</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a3f26d08b4525c94ece343f440dd3f0b</srcmd5>
+    <version>2.13.1</version>
+    <time>1649370499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.1
+  Bug Fixes
+  * **deps:** require google-api-core&gt;=1.31.5, &gt;=2.3.2 (#334)
+  * **deps:** require proto-plus&gt;=1.15.0 (b35bd09)
+- from version 2.13.0
+  Features
+  * add api key support (#313)
+  Bug Fixes
+  * **deps:** move libcst to extras (#322)
+  * resolve DuplicateCredentialArgs error when using credentials_file (#318)
+  Documentation
+  * add generated snippets (#321)
+- from version 2.12.0
+  Features
+  * add hint boost in SpeechContext (3fdef1f)
+  * add result_end_time to SpeechRecognitionResult (#291)
+  * add SpeechAdaptation configuration (3fdef1f)
+  * add spoken punctuation and spoken emojis (3fdef1f)
+  * add WEBM_OPUS codec (3fdef1f)
+  * add word confidence (3fdef1f)
+  * added alternative_language_codes to RecognitionConfig (#290)
+- from version 2.11.1
+  Bug Fixes
+  * **deps:** drop packaging dependency (43f25c0)
+  * **deps:** require google-api-core &gt;= 1.28.0 (43f25c0)
+  Documentation
+  * list oneofs in docstring (43f25c0)
+- from version 2.11.0
+  Features
+  * add support for python 3.10 (#274) (forwarded request 967509 from glaubitz)</comment>
+    <requestid>967510</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Thu Apr  7 13:46:45 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.13.1
+  Bug Fixes
+  * **deps:** require google-api-core>=1.31.5, >=2.3.2 (#334)
+  * **deps:** require proto-plus>=1.15.0 (b35bd09)
+- from version 2.13.0
+  Features
+  * add api key support (#313)
+  Bug Fixes
+  * **deps:** move libcst to extras (#322)
+  * resolve DuplicateCredentialArgs error when using credentials_file (#318)
+  Documentation
+  * add generated snippets (#321)
+- from version 2.12.0
+  Features
+  * add hint boost in SpeechContext (3fdef1f)
+  * add result_end_time to SpeechRecognitionResult (#291)
+  * add SpeechAdaptation configuration (3fdef1f)
+  * add spoken punctuation and spoken emojis (3fdef1f)
+  * add WEBM_OPUS codec (3fdef1f)
+  * add word confidence (3fdef1f)
+  * added alternative_language_codes to RecognitionConfig (#290)
+- from version 2.11.1
+  Bug Fixes
+  * **deps:** drop packaging dependency (43f25c0)
+  * **deps:** require google-api-core >= 1.28.0 (43f25c0)
+  Documentation
+  * list oneofs in docstring (43f25c0)
+- from version 2.11.0
+  Features
+  * add support for python 3.10 (#274)
+- from version 2.10.0
+  Features
+  * add context manager support in client (#268)
+- from version 2.9.3
+  Documentation
+  * **samples:** Remove reference to deprecated message "diarization_speaker_count"
+    in favor of diarization_config (#264)
+- from version 2.9.2
+  Bug Fixes
+  * improper types in pagers generation (a0bac07)
+- from version 2.9.1
+  Bug Fixes
+  * add 'dict' annotation type to 'request' (e75ada8)
+- from version 2.9.0
+  Features
+  * add output_config request field (#252)
+  Documentation
+  * **samples:** fixed model adaptation sample to correctly refer to custom classes (#246)
+- from version 2.8.0
+  Features
+  * Add transcript normalization (#235)
+  Documentation
+  * **samples:** remove io dependency in transcribe samples (#223)
+- from version 2.7.0
+  Features
+  * add total_billed_time response field (#224)
+- from version 2.6.0
+  Features
+  * **v1p1beta1:** add total_billed_time response field (#219)
+  Bug Fixes
+  * enable self signed jwt for grpc (#217)
+  * **v1p1beta1:** custom_class_id is required field in CreateCustomClassRequest. (e7efa67)
+  * **v1p1beta1:** phrase_set_id is required field in CreatePhraseSetRequest (e7efa67)
+  Documentation
+  * **samples:** Add Spoken Punctuation and Emojis code samples (#155)
+  * add Samples section to CONTRIBUTING.rst (#211)
+- from version 2.5.1
+  Bug Fixes
+  * **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions (#210)
+- from version 2.5.0
+  Features
+  * add always_use_jwt_access (#191)
+- from version 2.4.1
+  Documentation
+  * omit mention of Python 2.7 in 'CONTRIBUTING.rst' (#1127)
+- from version 2.4.0
+  Features
+  * add webm opus support (eb360ae)
+  * support self-signed JWT flow for service accounts (eb360ae)
+  Bug Fixes
+  * add async client to %name_%version/init.py (eb360ae)
+- from version 2.3.0
+  Features
+  * Support for spoken punctuation and spoken emojis (#143)
+- from version 2.2.1
+  Bug Fixes
+  * use correct retry deadline (#134)
+- from version 2.2.0
+  Features
+  * adds model adaptation sample (#121)
+  * Support output transcript to Google Cloud Storage for LongRunningRecognize (#128)
+- from version 2.1.0
+  Features
+  * add common resource helpers; expose transport; remove gRPC send/recv limits (#100)
+  * add from_service_account_info factory (3bed0b4)
+  * adds new multi region sample (#96)
+  * **v1p1beta1:** support Model Adaptation (#104)
+  Bug Fixes
+  * Remove incorrect comment on enhanced models (#95)
+  Documentation
+  * fix sphinx identifiers (3bed0b4)
+  * updated setup documentation to point to python-speech instead of python-docs-samples (#89)
+- from version 2.0.1
+  Bug Fixes
+  * deleted a line duplicating the call to the recognizer  (#83)
+  * migrated samples to speech 2.0.0 (#78)
+- from version 2.0.0
+  BREAKING CHANGES
+  * migrate to microgenerator (#61)
+  Features
+  * Migrate to microgenerator (#61)
+  Documentation
+  * remove example usage from READMe (#46)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Apr  8 11:46:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.3.2
