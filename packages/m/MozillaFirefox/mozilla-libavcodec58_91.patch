@@ -1,20 +1,10 @@
 # HG changeset patch
-# Parent  e4abeadbbb7a0c63c17177f1d14ea04c77c6128e
+# Parent  3802b7b2b99885f3ad4d2ec3e2c157e38d04a168
 
 diff --git a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
 --- a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
 +++ b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
-@@ -22,23 +22,27 @@ class FFmpegDecoderModule {
-   static already_AddRefed<PlatformDecoderModule> Create(FFmpegLibWrapper*);
- };
- 
- static FFmpegLibWrapper sLibAV;
- 
- static const char* sLibs[] = {
- // clang-format off
- #if defined(XP_DARWIN)
-+  "libavcodec.58.134.dylib",
-+  "libavcodec.58.91.dylib",
+@@ -31,16 +31,18 @@ static const char* sLibs[] = {
    "libavcodec.58.dylib",
    "libavcodec.57.dylib",
    "libavcodec.56.dylib",
@@ -22,6 +12,7 @@ diff --git a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp b/dom/media/plat
    "libavcodec.54.dylib",
    "libavcodec.53.dylib",
  #else
+   "libavcodec.so.59",
 +  "libavcodec.so.58.134",
 +  "libavcodec.so.58.91",
    "libavcodec.so.58",

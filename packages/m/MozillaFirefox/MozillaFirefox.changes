@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Apr  4 07:34:36 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 99.0
+  * You can now toggle Narrate in ReaderMode with the keyboard
+    shortcut "n."
+  * You can find added support for search—with or without
+    diacritics—in the PDF viewer.
+  * The Linux sandbox has been strengthened: processes exposed to web
+    content no longer have access to the X Window system (X11).
+  * Firefox now supports credit card autofill and capture in
+    Germany and France.
+  MFSA 2022-13 (bsc#1197903)
+  * CVE-2022-1097 (bmo#1745667)
+    Use-after-free in NSSToken objects
+  * CVE-2022-28281 (bmo#1755621)
+    Out of bounds write due to unexpected WebAuthN Extensions
+  * CVE-2022-28282 (bmo#1751609)
+    Use-after-free in DocumentL10n::TranslateDocument
+  * CVE-2022-28283 (bmo#1754066)
+    Missing security checks for fetching sourceMapURL
+  * CVE-2022-28284 (bmo#1754522)
+    Script could be executed via svg's use element
+  * CVE-2022-28285 (bmo#1756957)
+    Incorrect AliasSet used in JIT Codegen
+  * CVE-2022-28286 (bmo#1735265)
+    iframe contents could be rendered outside the border
+  * CVE-2022-28287 (bmo#1741515)
+    Text Selection could crash Firefox
+  * CVE-2022-24713 (bmo#1758509)
+    Denial of Service via complex regular expressions
+  * CVE-2022-28289 (bmo#1663508, bmo#1744525, bmo#1753508,
+    bmo#1757476, bmo#1757805, bmo#1758549, bmo#1758776)
+    Memory safety bugs fixed in Firefox 99 and Firefox ESR 91.8
+  * CVE-2022-28288 (bmo#1746415, bmo#1746495, bmo#1746500,
+    bmo#1747282, bmo#1748759, bmo#1749056, bmo#1749786,
+    bmo#1751679, bmo#1752120, bmo#1756010, bmo#1756017,
+    bmo#1757213, bmo#1757258, bmo#1757427)
+    Memory safety bugs fixed in Firefox 99
+- requires NSS >= 3.76.1
+- remove obsolete patch
+  * mozilla-bmo1756347.patch
+  * mozilla-bmo1757571.patch
+- update create-tar.sh
+
+-------------------------------------------------------------------
 Thu Mar 24 21:49:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - MozillaFirefox 98.0.2:
@@ -28,7 +73,7 @@ Tue Mar 22 12:22:51 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 -------------------------------------------------------------------
 Thu Mar 17 14:52:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- exclude slow cpus for building 
+- exclude slow cpus for building
 
 -------------------------------------------------------------------
 Thu Mar 17 09:18:01 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
