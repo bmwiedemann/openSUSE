@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/digitalocean/pynetbox
 Source:         https://files.pythonhosted.org/packages/source/p/pynetbox/pynetbox-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}

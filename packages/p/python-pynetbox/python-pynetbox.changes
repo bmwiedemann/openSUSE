@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  7 07:40:44 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Thu Feb 24 20:42:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.6.1
