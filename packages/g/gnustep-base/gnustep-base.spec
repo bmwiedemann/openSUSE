@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libgnustep-base1_27
+%define lname   libgnustep-base1_28
 %define         gnustep_sh       GNUstep.sh
 %define         gs_config        %{_sysconfdir}/GNUstep/GNUstep.conf
 %define         profile_dir      %{_sysconfdir}/profile.d
@@ -24,17 +24,15 @@
 %define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
 %define         gs_library       %{_libdir}/GNUstep
 Name:           gnustep-base
-Version:        1.27.0
+Version:        1.28.0
 Release:        0
 Summary:        GNUstep Base library package
-License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            http://www.gnustep.org/
 Source:         ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM gnustep-base-1.27.0-fix-compilation-icu68.patch -- https://github.com/gnustep/libs-base/pull/163
-Patch0:         gnustep-base-1.27.0-fix-compilation-icu68.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-objc
 BuildRequires:  gmp-devel
@@ -198,6 +196,7 @@ chmod 755 %{buildroot}%{profile_dir}/%{gs_userstart}
 %{_bindir}/plmerge
 %{_bindir}/plparse
 %{_bindir}/plser
+%{_bindir}/plutil
 %{_bindir}/sfparse
 %{_bindir}/xmlparse
 %{gs_library}
