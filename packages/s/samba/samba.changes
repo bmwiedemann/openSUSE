@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Mar 24 15:00:36 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.16.0
+  * New samba-dcerpcd binary to provide DCERPC in the member server
+    setup
+  * Certificate Auto Enrollment
+  * Ability to add ports to dns forwarder addresses in internal DNS
+    backend
+  * No longer using Linux mandatory locks for sharemodes
+  * SMB1 protocol has been deprecated, particularly older dialects
+  * SMB1 protocol SMBCopy command removed
+  * SMB1 server-side wildcard expansion removed
+- Add python3-dnspython to samba-ad-dc recommens; (bsc#1187101);
+- Use systemd-sysusers to create system users; (bsc#1182847);
+
+-------------------------------------------------------------------
+Tue Mar 15 17:54:57 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.15.6
+  * Renaming file on DFS root fails with
+    NT_STATUS_OBJECT_PATH_NOT_FOUND; (bso#14169);
+  * Samba does not response STATUS_INVALID_PARAMETER when opening 2
+    objects with same lease key; (bso#14737);
+  * NT error code is not set when overwriting a file during rename
+    in libsmbclient; (bso#14938);
+  * Fix ldap simple bind with TLS auditing; (bso#14996);
+  * net ads info shows LDAP Server: 0.0.0.0 depending on contacted
+    server; (bso#14674);
+  * Problem when winbind renews Kerberos; (bso#14979);
+    (bsc#1196224);
+  * pam_winbind will not allow gdm login if password about to
+    expire; (bso#8691);
+  * virusfilter_vfs_openat: Not scanned: Directory or special file;
+    (bso#14971);
+  * DFS fix for AIX broken; (bso#13631);
+  * Solaris and AIX acl modules: wrong function arguments;
+    (bso#14974);
+  * Function aixacl_sys_acl_get_file not declared / coredump;
+    (bso#7239);
+  * Regression: Samba 4.15.2 on macOS segfaults intermittently
+    during strcpy in tdbsam_getsampwnam; (bso#14900);
+  * Fix a use-after-free in SMB1 server; (bso#14989);
+  * smb2_signing_decrypt_pdu() may not decrypt with
+    gnutls_aead_cipher_decrypt() from gnutls before 3.5.2;
+    (bso#14968);
+  * Changing the machine password against an RODC likely destroys
+    the domain join; (bso#14984);
+  * authsam_make_user_info_dc() steals memory from its struct
+    ldb_message *msg argument; (bso#14993);
+  * Use Heimdal 8.0 (pre) rather than an earlier snapshot;
+    (bso#14995);
+  * Samba autorid fails to map AD users if id rangesize fits in the
+    id range only once; (bso#14967);
+
+-------------------------------------------------------------------
+Mon Mar 07 16:05:42 UTC 2022 - David Mulder <dmulder@suse.com>
+
+- Fix mismatched version of libldb2; (bsc#1196788).
+- Drop obsolete SuSEfirewall2 service files.
+
+-------------------------------------------------------------------
+Fri Mar  4 20:25:41 UTC 2022 - David Disseldorp <ddiss@suse.com>
+
+- Drop obsolete Samba fsrvp v0->v1 state upgrade functionality;
+  (bsc#1080338).
+
+-------------------------------------------------------------------
+Wed Feb 23 10:04:15 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Fix ntlm authentications with "winbind use default domain = yes";
+  (bso#13126); (bsc#1173429); (bsc#1196308).
+
+-------------------------------------------------------------------
+Mon Feb 14 18:15:29 UTC 2022 - David Mulder <dmulder@suse.com>
+
+- Fix samba-ad-dc status warning notification message by disabling
+  systemd notifications in bgqd; (bsc#1195896); (bso#14947).
+
+-------------------------------------------------------------------
+Mon Feb 07 20:15:46 UTC 2022 - David Mulder <dmulder@suse.com>
+
+- libldb version mismatch in Samba dsdb component; (bsc#1118508);
+
+-------------------------------------------------------------------
 Mon Jan 31 14:23:44 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Update to 4.15.5

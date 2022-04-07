@@ -3455,4 +3455,23 @@ list of changes.</comment>
     <comment></comment>
     <requestid>950370</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>12fbbce21312c354afcd5403ff3fe47c</srcmd5>
+    <version>4.16.0+git.224.70319beb8f8</version>
+    <time>1649370395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.16.0
+  * New samba-dcerpcd binary to provide DCERPC in the member server
+    setup
+  * Certificate Auto Enrollment
+  * Ability to add ports to dns forwarder addresses in internal DNS
+    backend
+  * No longer using Linux mandatory locks for sharemodes
+  * SMB1 protocol has been deprecated, particularly older dialects
+  * SMB1 protocol SMBCopy command removed
+  * SMB1 server-side wildcard expansion removed
+- Add python3-dnspython to samba-ad-dc recommens; (bsc#1187101);
+- Use systemd-sysusers to create system users; (bsc#1182847);</comment>
+    <requestid>966947</requestid>
+  </revision>
 </revisionlist>
