@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr  7 10:36:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.3.0
+  Features
+  * add support for Python 3.10 (#116)
+- from version 1.2.0
+  Features
+  * build wheels using CIBuildWheel (#103)
+  Documentation
+  * update list of supported wheel platforms / architectures (#105)
+- from version 1.1.5
+  Bug Fixes
+  * revert to silent fallback to pure-Python build (#93)
+  * fix segfault on MacOS 11 ("Big Sur") for Python < 3.9 (#93)
+- from version 1.1.4
+  Bug Fixes
+  * advise setting 'CRC32C_PURE_PYTHON' after build failure (#84)
+  * restore building 'manylinux1' wheels (#87)
+  * use correct Python 3.10 specifier (#88)
+- from version 1.1.3
+  Performance Improvements
+  * replace CFFI with a native C extension (#76)
+
+-------------------------------------------------------------------
 Fri Jun  4 08:56:19 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for google-crc32c version 1.1.2.

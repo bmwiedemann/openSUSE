@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-crc32c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,24 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname google-crc32c
 Name:           python-google-crc32c
-Version:        1.1.2
+Version:        1.3.0
 Release:        0
 Summary:        A python wrapper of the C library 'Google CRC32C'
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-crc32c
 Source:         https://github.com/googleapis/python-crc32c/archive/refs/tags/v%{version}.tar.gz#/python-crc32c-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  libcrc32c-devel
+BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module cffi >= 1.0.0}
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module cffi >= 1.0.0}
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  libcrc32c-devel
+BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.0.0
 Suggests:       python-pytest
+# SECTION test requirements
+BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
