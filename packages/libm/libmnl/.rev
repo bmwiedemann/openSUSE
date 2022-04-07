@@ -164,4 +164,12 @@
     <comment>- package the license text (forwarded request 794683 from AndreasStieger)</comment>
     <requestid>794684</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5fe65c5643aa8a75fc7991b35af4eeca</srcmd5>
+    <version>1.0.5</version>
+    <time>1649370431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.5</comment>
+    <requestid>967160</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libmnl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %define lname	%{name}0
 Name:           libmnl
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Minimalistic Netlink communication library
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/libmnl/
 #Git-Clone:	git://git.netfilter.org/libmnl
-Source:         ftp://ftp.netfilter.org/pub/libmnl/%name-%version.tar.bz2
-Source2:        ftp://ftp.netfilter.org/pub/libmnl/%name-%version.tar.bz2.sig
+Source:         https://www.netfilter.org/projects/libmnl/files/libmnl-%version.tar.bz2
+Source2:        https://www.netfilter.org/projects/libmnl/files/libmnl-%version.tar.bz2.sig
 Source3:        %name.keyring
 Source9:        baselibs.conf
-#git#BuildRequires:	autoconf, automake >= 1.6
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.21
 
@@ -51,12 +50,12 @@ constructing of both the Netlink header and TLVs that are repetitive
 and easy to get wrong. This library aims to provide simple helpers
 that allows you to re-use code and to avoid re-inventing the wheel.
 
-%package -n %name-devel
+%package devel
 Summary:        Development files for libmnl
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
-%description -n %name-devel
+%description devel
 libmnl is a minimalistic user-space library oriented to Netlink
 developers. There are a lot of common tasks in parsing, validating,
 constructing of both the Netlink header and TLVs that are repetitive
@@ -67,6 +66,7 @@ that allows you to re-use code and to avoid re-inventing the wheel.
 %setup -q
 
 %build
+# includedir intentional, cf. bugzilla.opensuse.org/795968
 %configure --includedir="%_includedir/%name"
 %make_build
 
@@ -84,7 +84,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %_libdir/libmnl.so.*
 
-%files -n %name-devel
+%files devel
 %license COPYING
 %doc README
 %_includedir/%name/

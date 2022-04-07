@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  5 21:27:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.5
+  * New example program
+  * "MNL_SOCKET_DUMP_SIZE" define, holding a recommended buffer
+    size for netlink dumps.
+  * Resolved compiler warnings
+
+-------------------------------------------------------------------
 Thu Apr 16 21:33:35 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - package the license text
