@@ -27,9 +27,23 @@ URL:            https://yt-dl.org/
 Source:         https://yt-dl.org/downloads/%version/%name-%version.tar.gz
 Source2:        https://yt-dl.org/downloads/%version/%name-%version.tar.gz.sig
 Source3:        %name.keyring
+# Generate with
+# python3 devscripts/prepare_manpage.py youtube-dl.1.temp.md
+# pandoc -f markdown -t rst -o youtube-dl.1.temp.rst youtube-dl.1.temp.md
+# and hand editing until rst2man youtube-dl.1.temp.rst youtube.1 runs
+Source4:        youtube-dl.1.temp.rst
+# PATCH-FIX-UPSTREAM 30713-new-ceskatelevize.patch gh#ytdl-org/youtube-dl#30713 mcepl@suse.com
+# Rewrite of the support for https://www.ceskatelevize.cz/
+Patch0:         30713-new-ceskatelevize.patch
+# PATCH-FEATURE-OPENSUSE no-pandoc-32bit.patch mcepl@suse.com
+# 32bit architectures don't have pandoc
+Patch1:         no-pandoc-32bit.patch
 BuildRequires:  make >= 4
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
+# For documentation
+BuildRequires:  python3-docutils
+BuildRequires:  python3-Pygments
 BuildRequires:  zip
 Requires:       ffmpeg
 Requires:       python3
@@ -72,6 +86,8 @@ ZSH command line completion support for %name.
 
 %prep
 %autosetup -p1 -n %name
+
+cp --no-preserve=timestamps %{SOURCE4} .
 
 %build
 rm -f youtube-dl

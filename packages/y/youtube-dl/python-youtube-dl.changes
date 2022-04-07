@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  6 07:11:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 30713-new-ceskatelevize.patch fixing download
+  from the redesigned https://www.ceskatelevize.cz/
+  (gh#ytdl-org/youtube-dl#30713).
+- Add no-pandoc-32bit.patch patching out the need for pandoc
+  (which is not available on all platforms).
+
+-------------------------------------------------------------------
+Fri Feb 25 13:06:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fish completions should be installed into
+  /usr/share/fish/vendor_completions.d, where it doesn't conflict
+  with the fish's own ones (gh#pyenv/pyenv#1944).
+
+-------------------------------------------------------------------
 Tue Dec 28 10:40:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - The youtube-dl SRPM (producing: yt-dlp BRPM) switches back from the
