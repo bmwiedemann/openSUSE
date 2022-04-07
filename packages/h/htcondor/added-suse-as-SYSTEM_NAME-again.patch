@@ -1,7 +1,7 @@
-From 25f8f5c3e64e23c68048c35fb0ca688d76aa1d25 Mon Sep 17 00:00:00 2001
+From 5d0522de7471f380e376bdbf2c0153e00b6daeed Mon Sep 17 00:00:00 2001
 From: Christian Goll <cgoll@suse.de>
-Date: Tue, 11 Jan 2022 11:52:13 +0100
-Subject: [PATCH] added suse as ${SYSTEM_NAME}
+Date: Wed, 6 Apr 2022 15:12:26 +0200
+Subject: [PATCH] added suse as ${SYSTEM_NAME} again
 
 ---
  externals/bundles/boost/1.66.0/CMakeLists.txt | 2 +-
@@ -9,28 +9,28 @@ Subject: [PATCH] added suse as ${SYSTEM_NAME}
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/externals/bundles/boost/1.66.0/CMakeLists.txt b/externals/bundles/boost/1.66.0/CMakeLists.txt
-index a01facbd51..bb825bfb5a 100644
+index 5114dd4216..bb825bfb5a 100644
 --- a/externals/bundles/boost/1.66.0/CMakeLists.txt
 +++ b/externals/bundles/boost/1.66.0/CMakeLists.txt
 @@ -75,7 +75,7 @@ else (WINDOWS)
                  set(USE_SYSTEM_BOOST True)
              endif()
          endif()
--        if (${SYSTEM_NAME} MATCHES "Debian" OR ${SYSTEM_NAME} MATCHES "Ubuntu" OR ${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" OR ${SYSTEM_NAME} MATCHES "fc")
+-        if (${SYSTEM_NAME} MATCHES "Debian" OR ${SYSTEM_NAME} MATCHES "Ubuntu" OR ${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" OR ${SYSTEM_NAME} MATCHES "fc" OR ${SYSTEM_NAME} MATCHES "rocky8")
 +        if (${SYSTEM_NAME} MATCHES "Debian" OR ${SYSTEM_NAME} MATCHES "Ubuntu" OR ${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" OR ${SYSTEM_NAME} MATCHES "fc" OR ${SYSTEM_NAME} MATCHES "rocky8" OR ${SYSTEM_NAME} MATCHES "suse")
              set(USE_SYSTEM_BOOST True)
              # BOOST_COMPONENTS breaks CMake boost detection on Ubuntu 20.04, Debian bullseye
              set(BOOST_COMPONENTS "" )
 diff --git a/src/python-bindings/CMakeLists.txt b/src/python-bindings/CMakeLists.txt
-index eb2b84bb01..afd5adfb14 100644
+index d3636a9586..72974334f3 100644
 --- a/src/python-bindings/CMakeLists.txt
 +++ b/src/python-bindings/CMakeLists.txt
 @@ -213,7 +213,7 @@ else()
            if (${SYSTEM_NAME} MATCHES "rhel7" OR ${SYSTEM_NAME} MATCHES "centos7" OR ${SYSTEM_NAME} MATCHES "sl7" OR ${SYSTEM_NAME} MATCHES "amzn2" OR ${SYSTEM_NAME} MATCHES "fc3[0-9]" OR ${SYSTEM_NAME} MATCHES "Debian.*10" OR WANT_PYTHON_WHEELS)
              set ( PYTHON_BOOST_LIB "boost_python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}" )
            endif()
--          if (${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" )
-+          if (${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" OR ${SYSTEM_NAME} MATCHES "rocky8" or ${SYSTEMN_NAME} MATCHES "suse")
+-          if (${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" OR ${SYSTEM_NAME} MATCHES "rocky8")
++          if (${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" OR ${SYSTEM_NAME} MATCHES "rocky8" OR ${SYSTEM_NAME} MATCHES "suse")
              set ( PYTHON_BOOST_LIB "boost_python${PYTHON_VERSION_MAJOR}" )
            endif()
            if (${SYSTEM_NAME} MATCHES "fc2[0-9]" )
@@ -38,11 +38,11 @@ index eb2b84bb01..afd5adfb14 100644
        if (NOT DEFINED PYTHON3_BOOST_LIB)
          if (${SYSTEM_NAME} MATCHES "Debian.*9" OR ${SYSTEM_NAME} MATCHES "Ubuntu.*16" OR ${SYSTEM_NAME} MATCHES "Ubuntu.*18")
            set ( PYTHON3_BOOST_LIB "boost_python-py${PYTHON3_VERSION_MAJOR}${PYTHON3_VERSION_MINOR}" )
--        elseif (${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" )
+-        elseif (${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" OR ${SYSTEM_NAME} MATCHES "rocky8")
 +        elseif (${SYSTEM_NAME} MATCHES "rhel8" OR ${SYSTEM_NAME} MATCHES "centos8" OR ${SYSTEM_NAME} MATCHES "rocky8" OR ${SYSTEM_NAME} MATCHES "suse")
            set ( PYTHON3_BOOST_LIB "boost_python${PYTHON3_VERSION_MAJOR}" )
          else ()
            set ( PYTHON3_BOOST_LIB "boost_python${PYTHON3_VERSION_MAJOR}${PYTHON3_VERSION_MINOR}" )
 -- 
-2.34.1
+2.35.1
 

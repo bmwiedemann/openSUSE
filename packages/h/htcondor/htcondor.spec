@@ -16,8 +16,8 @@
 #
 
 
-%define vers 9.0.8
-%define _vers 9_0_8
+%define vers 9.0.11
+%define _vers 9_0_11
 
 Name:           htcondor
 Version:        %vers
@@ -29,9 +29,9 @@ Source0:        https://github.com/htcondor/htcondor/archive/V%{_vers}.tar.gz#/h
 Source1:        condor_config
 Source2:        osg-env.conf
 
-Patch0:         added-suse-as-SYSTEM_NAME.patch
+#Patch0:         added-suse-as-SYSTEM_NAME.patch
+Patch0:         added-suse-as-SYSTEM_NAME-again.patch
 
-BuildRequires:  scitokens-cpp-devel
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -42,7 +42,6 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libvirt-devel
-BuildRequires:  voms-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  munge-devel
 BuildRequires:  ninja
@@ -51,8 +50,10 @@ BuildRequires:  pcre-devel
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  scitokens-cpp-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  sysuser-tools
+BuildRequires:  voms-devel
 BuildRequires:  zlib-devel
 
 Recommends:     %{name}-doc
@@ -65,6 +66,8 @@ to an HTCondor scheduler, which will run them on worker nodes managed by
 HTCondor.
 
 
+
+
 #######################
 %package doc
 Summary:        Man pages and exmamples for htcondor
@@ -72,6 +75,8 @@ Group:          Applications/System
 
 %description doc
 This package contains the man pages and addional exmples for htcondor
+
+
 
 
 #######################
@@ -83,6 +88,8 @@ Group:          Applications/System
 Development files for HTCondor
 
 
+
+
 #######################
 %package procd
 Summary:        HTCondor Process tracking Daemon
@@ -91,6 +98,8 @@ Group:          Applications/System
 %description procd
 A daemon for tracking child processes started by a parent.
 Part of HTCondor, but able to be stand-alone
+
+
 
 
 #######################
@@ -106,6 +115,8 @@ useful on systems where no device (e.g. /dev/*) can be used to
 determine console idle time.
 
 
+
+
 #######################
 %package vm-gahp
 Summary:        HTCondor's VM Gahp
@@ -118,6 +129,8 @@ Requires:       libvirt
 The condor_vm-gahp enables the Virtual Machine Universe feature of
 HTCondor. The VM Universe uses libvirt to start and control VMs under
 HTCondor's Startd.
+
+
 
 
 #######################
@@ -147,6 +160,8 @@ matching is used by the HTCondor central manager to determine the
 compatibility of jobs and workstations where they may be run.
 
 
+
+
 #######################
 %package classads-devel
 Summary:        Headers for HTCondor's classified advertisement language
@@ -160,6 +175,8 @@ Header files for HTCondor's ClassAd Library, a powerful and flexible,
 semi-structured representation of data.
 
 
+
+
 #######################
 %package test
 Summary:        HTCondor Self Tests
@@ -169,6 +186,8 @@ Requires:       %name-classads = %{version}-%{release}
 
 %description test
 A collection of tests to verify that HTCondor is operating properly.
+
+
 
 
 #######################
@@ -186,6 +205,8 @@ a condor_config.local.dedicated.resource file that sets up the current
 host as the DedicatedScheduler.
 
 
+
+
 #######################
 %package -n python3-condor
 Summary:        Python bindings for HTCondor.
@@ -197,18 +218,22 @@ The python bindings allow one to directly invoke the C++ implementations of
 the ClassAd library and HTCondor from python
 
 
+
+
 #######################
 %package credmon-vault
 Summary:        Vault credmon for HTCondor.
 Group:          Applications/System
 Requires:       %name = %version-%release
-Requires:       python3-six
 Requires:       python3-condor
+Requires:       python3-six
 Conflicts:      %name-credmon-oauth
 
 %description credmon-vault
 The Vault credmon allows users to obtain credentials from Vault using
 htgettoken and to use those credentials securely inside running jobs.
+
+
 
 
 #######################
@@ -231,6 +256,8 @@ cluster.  This allows the user to run their workflows using HTCondor tools acros
 multiple clusters.
 
 
+
+
 #######################
 %package -n minicondor
 Summary:        Configuration for a single-node HTCondor
@@ -243,6 +270,8 @@ Requires:       python3-condor = %version-%release
 This example configuration is good for trying out HTCondor for the first time.
 It only configures the IPv4 loopback address, turns on basic security, and
 shortens many timers to be more responsive.
+
+
 
 
 #######################
@@ -261,6 +290,8 @@ Requires:       python3-condor = %version-%release
 Include dependencies for all condor packages in a typical installation
 
 
+
+
 #######################
 %package credmon-oauth
 Summary:        OAuth2 credmon for HTCondor.
@@ -269,11 +300,11 @@ Requires:       %name = %version-%release
 Requires:       httpd
 Requires:       mod_wsgi
 Requires:       python3-Flask
-Requires:       python3-six
 Requires:       python3-condor
 Requires:       python3-cryptography
 Requires:       python3-requests-oauthlib
 Requires:       python3-scitokens
+Requires:       python3-six
 
 %description credmon-oauth
 The OAuth2 credmon allows users to obtain credentials from configured
@@ -516,6 +547,7 @@ sed -i 's@#!.*/usr/bin/env bash@#!/usr/bin/bash@' %{buildroot}%{_libexecdir}/con
 %_bindir/condor_qedit
 %_bindir/condor_userlog
 %_bindir/condor_release
+%_bindir/condor_remote_cluster
 %_bindir/condor_userlog_job_counter
 %_bindir/condor_config_val
 %_bindir/condor_reschedule
