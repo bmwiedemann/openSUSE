@@ -31,16 +31,6 @@ ExclusiveArch:  do_not_build
 
 %global build_flags USE_THREAD=1 USE_OPENMP=1
 
-%ifarch ppc64le x86_64
-# Per request by IBM, always use latest gcc but 'stock' fortran
-%if 0%{?sle_version} == 150400
-%define cc_v 11
-%endif
-%if 0%{?sle_version} == 150300
-%define cc_v 10
-%endif
-%endif
-
 %if "%flavor" == "serial"
 %define build_flags USE_THREAD=0 USE_OPENMP=0
 %define openblas_so_prio 20
@@ -140,6 +130,18 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
+%ifarch ppc64le x86_64 s390x
+%if 0%{?c_f_ver} > 9
+%else
+%if 0%{?sle_version} == 150400
+%define cc_v 11
+%endif
+%if 0%{?sle_version} == 150300
+%define cc_v 10
+%endif
+%endif
+%endif
+
 %if %{without hpc}
 %if 0%{!?package_name:1}
 %define package_name  %{pname}_%{flavor}
@@ -197,11 +199,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #BuildRequires:  cmake
 BuildRequires:  memory-constraints
-%if %{without hpc}
-BuildRequires:  gcc-fortran
 %if 0%{?cc_v:1}
 BuildRequires:  gcc%{?cc_v}-fortran
 %endif
+%if %{without hpc}
+BuildRequires:  gcc-fortran
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
@@ -366,7 +368,8 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      OPENBLAS_INCLUDE_DIR=%{p_includedir} \
      OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
      PREFIX=%{p_prefix} \
-     %{!?with_hpc:LIBNAMESUFFIX=%flavor FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}}
+     %{!?with_hpc:LIBNAMESUFFIX=%flavor FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
+     %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} CEXTRALIB=""}}
 
 %install
 %if %{with hpc}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  6 06:57:55 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Also build for s390x using latest gcc as requested by IBM
+  (jsc#SLE-18143, bsc#1197721).
+
+-------------------------------------------------------------------
+Mon Apr  4 08:57:16 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Build HPC packages with gcc-<n> <n> >= 10 on Leap/SLE.
+
+-------------------------------------------------------------------
 Wed Mar 30 12:00:30 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Build PPC64LE libraries with the lastest gcc available to

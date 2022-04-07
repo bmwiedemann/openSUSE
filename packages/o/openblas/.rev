@@ -555,4 +555,12 @@
     disabled building OpenBLAS' optimized versions of LAPACK complex SPMV,</comment>
     <requestid>966746</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>c76e9ef532d8eb77d8a9f2a1e2ae2124</srcmd5>
+    <version>0.3.20</version>
+    <time>1649370439</time>
+    <user>dimstar_suse</user>
+    <comment>(jsc#SLE-18143, bsc#1197721). (forwarded request 967232 from eeich)</comment>
+    <requestid>967236</requestid>
+  </revision>
 </revisionlist>
