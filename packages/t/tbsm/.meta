@@ -1,0 +1,6 @@
+<package name="tbsm" project="openSUSE:Factory">
+  <title>tbsm</title>
+  <description>A pure bash session or application launcher. Inspired by cdm, tdm and krunner.</description>
+  <devel project="X11:Utilities" package="tbsm"/>
+  <url>https://loh-tar.github.io/tbsm/</url>
+</package>
