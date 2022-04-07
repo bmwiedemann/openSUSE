@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygerrit2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pygerrit2
-Version:        2.0.13
+Version:        2.0.15
 Release:        0
 Summary:        Client library for interacting with Gerrit code review
 License:        MIT
@@ -33,7 +33,6 @@ Requires:       python-pbr >= 0.8.0
 Requires:       python-requests >= 2.20.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr >= 0.8.0}
 BuildRequires:  %{python_module requests >= 2.20.0}
 # /SECTION
@@ -58,6 +57,8 @@ See also: https://gerritcodereview.com/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/dpursehouse/pygerrit2/issues/247
+sed -i 's:from mock:from unittest.mock:' unittests.py
 %python_exec unittests.py
 
 %files %{python_files}
