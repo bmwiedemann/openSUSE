@@ -666,6 +666,7 @@ Prefer: -libQt5Test-devel-32bit
 Prefer: -libQt5Widgets-devel-32bit
 Prefer: -libQt5Xml-devel-32bit
 Prefer: -libSDL-devel-32bit
+Prefer: -SDL-devel-32bit
 Prefer: -libSDL2-devel-32bit
 Prefer: -libSDL2_gfx-devel-32bit
 Prefer: -libSDL2_image-devel-32bit
@@ -934,7 +935,7 @@ Prefer: -mingw64-headers-dummy-pthread -mingw32-headers-dummy-pthread
 
 Prefer: xorg-x11-Xvnc:icewm
 Prefer: cracklib-dict-small
-Prefer: libstdc++6 libgcc_s1 libquadmath0
+Prefer: libstdc++6 libgcc_s1 libquadmath0 libhwasan0
 Prefer: libstdc++6-32bit libstdc++6-64bit
 Prefer: syslog-service
 Prefer: poppler-tools
