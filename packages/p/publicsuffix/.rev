@@ -1131,4 +1131,22 @@ Now with build cycle removed.</comment>
   * Add `vultrobjects.com` and future regional subdomains (#1472)</comment>
     <requestid>961835</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>57ad9eea8eebc5275cf4420f33cf376c</srcmd5>
+    <version>20220405</version>
+    <time>1649370396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220405 (bsc#1198068):
+  * Update .AE policy link
+  * Add new `direct.quickconnect.cn` domain to Synology dynamic dns service. (#1547)
+  * util: gTLD data autopull updates for 2022-03-27T15:13:37 UTC (#1546)
+  * Add user.localcert.dev (#1459)
+  * Add Airkit domains (#1501)
+  * Add domains for encore.dev (#1531)
+  * util: gTLD data autopull updates for 2022-03-24T15:14:59 UTC (#1544)
+  * util: gTLD data autopull updates for 2022-03-22T15:14:59 UTC (#1542)
+  * Add: campaign.gov.uk (#1536)
+  * fix: Fixed spelling errors in PSL (#1530)</comment>
+    <requestid>966957</requestid>
+  </revision>
 </revisionlist>
