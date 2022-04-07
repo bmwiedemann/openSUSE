@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Apr  5 08:54:51 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+- Backport aqmp patches from upstream which can fix iotest issues
+* Patches added:
+  python-aqmp-add-__del__-method-to-legacy.patch
+  python-aqmp-add-_session_guard.patch
+  python-aqmp-add-SocketAddrT-to-package-r.patch
+  python-aqmp-add-socket-bind-step-to-lega.patch
+  python-aqmp-add-start_server-and-accept-.patch
+  python-aqmp-copy-type-definitions-from-q.patch
+  python-aqmp-drop-_bind_hack.patch
+  python-aqmp-fix-docstring-typo.patch
+  python-aqmp-Fix-negotiation-with-pre-oob.patch
+  python-aqmp-fix-race-condition-in-legacy.patch
+  Python-aqmp-fix-type-definitions-for-myp.patch
+  python-aqmp-handle-asyncio.TimeoutError-.patch
+  python-aqmp-refactor-_do_accept-into-two.patch
+  python-aqmp-remove-_new_session-and-_est.patch
+  python-aqmp-rename-accept-to-start_serve.patch
+  python-aqmp-rename-AQMPError-to-QMPError.patch
+  python-aqmp-split-_client_connected_cb-o.patch
+  python-aqmp-squelch-pylint-warning-for-t.patch
+  python-aqmp-stop-the-server-during-disco.patch
+  python-introduce-qmp-shell-wrap-convenie.patch
+  python-machine-raise-VMLaunchFailure-exc.patch
+  python-move-qmp-shell-under-the-AQMP-pac.patch
+  python-move-qmp-utilities-to-python-qemu.patch
+  python-qmp-switch-qmp-shell-to-AQMP.patch
+  python-support-recording-QMP-session-to-.patch
+  python-upgrade-mypy-to-0.780.patch
+
+-------------------------------------------------------------------
+Tue Apr  5 08:24:58 UTC 2022 - Li Zhang <li.zhang@suse.com>
+
+- Drop the patches which are workaround to fix iotest issues
+* Patches dropped:
+  Revert-python-iotests-replace-qmp-with-a.patch
+  Revert-python-machine-add-instance-disam.patch
+  Revert-python-machine-add-sock_dir-prope.patch
+  Revert-python-machine-handle-fast-QEMU-t.patch
+  Revert-python-machine-move-more-variable.patch
+  Revert-python-machine-remove-_remove_mon.patch
+
+-------------------------------------------------------------------
 Thu Mar 31 10:35:44 UTC 2022 - Li Zhang <li.zhang@suse.com>
 
 - Support the SGX feature (bsc#1197807) 

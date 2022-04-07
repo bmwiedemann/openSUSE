@@ -33,7 +33,6 @@ The QMP interface show:
 Signed-off-by: Yang Zhong <yang.zhong@intel.com>
 Message-Id: <20211101162009.62161-4-yang.zhong@intel.com>
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-(cherry picked from commit 4755927ae12547c2e7cb22c5fa1b39038c6c11b1)
 Signed-off-by: Li Zhang <lizhang@suse.de>
 ---
  hw/i386/sgx.c         | 51 +++++++++++++++++++++++++++++++++++--------
