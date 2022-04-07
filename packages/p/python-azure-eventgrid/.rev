@@ -139,4 +139,15 @@
     CHANGELOG.md file provided with this package (forwarded request 933133 from glaubitz)</comment>
     <requestid>933498</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0f4c1321e788231ebd70f7ef8acd1c5d</srcmd5>
+    <version>4.8.0</version>
+    <time>1649370488</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 967443 from glaubitz)</comment>
+    <requestid>967473</requestid>
+  </revision>
 </revisionlist>
