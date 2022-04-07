@@ -1,0 +1,35 @@
+Subject: VT-d: don't leak domid mapping on error path
+From: Jan Beulich jbeulich@suse.com Thu Jan 6 14:11:23 2022 +0100
+Date: Thu Jan 6 14:11:23 2022 +0100:
+Git: 84977e8b53935de9a1123f677213f1b146843a0e
+
+While domain_context_mapping() invokes domain_context_unmap() in a sub-
+case of handling DEV_TYPE_PCI when encountering an error, thus avoiding
+a leak, individual calls to domain_context_mapping_one() aren't
+similarly covered. Such a leak might persist until domain destruction.
+Leverage that these cases can be recognized by pdev being non-NULL.
+
+Fixes: dec403cc668f ("VT-d: fix iommu_domid for PCI/PCIx devices assignment")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+master commit: e6252a51faf42c892eb5fc71f8a2617580832196
+master date: 2021-11-24 11:07:11 +0100
+
+diff --git a/xen/drivers/passthrough/vtd/iommu.c b/xen/drivers/passthrough/vtd/iommu.c
+index de11c258ca..3b37bad25e 100644
+--- a/xen/drivers/passthrough/vtd/iommu.c
++++ b/xen/drivers/passthrough/vtd/iommu.c
+@@ -1517,7 +1517,12 @@ int domain_context_mapping_one(
+         rc = me_wifi_quirk(domain, bus, devfn, MAP_ME_PHANTOM_FUNC);
+ 
+     if ( rc )
+-        domain_context_unmap_one(domain, iommu, bus, devfn);
++    {
++        ret = domain_context_unmap_one(domain, iommu, bus, devfn);
++
++        if ( !ret && pdev && pdev->devfn == devfn )
++            check_cleanup_domid_map(domain, pdev, iommu);
++    }
+ 
+     return rc;
+ }

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr  4 09:58:24 MDT 2022 - carnold@suse.com
+
+- bsc#1197423 - VUL-0: CVE-2022-26356: xen: Racy interactions
+  between dirty vram tracking and paging log dirty hypercalls
+  (XSA-397)
+  xsa397.patch
+- bsc#1197425 - VUL-0: CVE-2022-26357: xen: race in VT-d domain ID
+  cleanup (XSA-399)
+  xsa399.patch
+- bsc#1197426 - VUL-0: CVE-2022-26358,CVE-2022-26359,
+  CVE-2022-26360,CVE-2022-26361: xen: IOMMU: RMRR (VT-d) and unity
+  map (AMD-Vi) handling issues (XSA-400)
+  xsa400-01.patch
+  xsa400-02.patch
+  xsa400-03.patch
+  xsa400-04.patch
+  xsa400-05.patch
+  xsa400-06.patch
+  xsa400-07.patch
+  xsa400-08.patch
+  xsa400-09.patch
+  xsa400-10.patch
+  xsa400-11.patch
+  xsa400-12.patch
+- Additional upstream bug fixes for XSA-400 (bsc#1027519)
+  61d6ea2d-VT-d-split-domid-map-cleanup-check-into-a-function.patch
+  61d6ea7b-VT-d-dont-leak-domid-mapping-on-error-path.patch
+  6229ba46-VT-d-drop-undue-address-of-from-check_cleanup_domid_map.patch
+
+-------------------------------------------------------------------
 Mon Mar 14 10:14:00 CET 2022 - jbeulich@suse.com
 
 - bsc#1196915 - VUL-0: CVE-2022-0001, CVE-2022-0002,CVE-2021-26401:
@@ -75,7 +105,7 @@ Thu Jan 13 10:55:58 MST 2022 - carnold@suse.com
 Wed Jan 12 14:16:53 MST 2022 - carnold@suse.com
 
 - bsc#1191668 - L3: issue around xl and virsh operation - virsh
-  list not giving any output
+  list not giving any output (see also bsc#1194267)
   libxl-dont-try-to-free-a-NULL-list-of-vcpus.patch
   libxl-dont-touch-nr_vcpus_out-if-listing-vcpus-and-returning-NULL.patch
 

@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.16.0_06
+Version:        4.16.0_08
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -195,7 +195,24 @@ Patch37:        62278669-Arm-add-ECBHB-and-CLEARBHB-ID-fields.patch
 Patch38:        6227866a-Arm-Spectre-BHB-handling.patch
 Patch39:        6227866b-Arm-allow-SMCCC_ARCH_WORKAROUND_3-use.patch
 Patch40:        6227866c-x86-AMD-cease-using-thunk-lfence.patch
+Patch41:        61d6ea2d-VT-d-split-domid-map-cleanup-check-into-a-function.patch
+Patch42:        61d6ea7b-VT-d-dont-leak-domid-mapping-on-error-path.patch
+Patch43:        6229ba46-VT-d-drop-undue-address-of-from-check_cleanup_domid_map.patch
 # EMBARGOED security fixes
+Patch97:        xsa397.patch
+Patch99:        xsa399.patch
+Patch101:       xsa400-01.patch
+Patch102:       xsa400-02.patch
+Patch103:       xsa400-03.patch
+Patch104:       xsa400-04.patch
+Patch105:       xsa400-05.patch
+Patch106:       xsa400-06.patch
+Patch107:       xsa400-07.patch
+Patch108:       xsa400-08.patch
+Patch109:       xsa400-09.patch
+Patch110:       xsa400-10.patch
+Patch111:       xsa400-11.patch
+Patch112:       xsa400-12.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch

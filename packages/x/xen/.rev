@@ -2694,4 +2694,12 @@
     <comment>Security Fix for bsc#1196915 - VUL-0: CVE-2022-0001, CVE-2022-0002, CVE-2021-26401: xen: BHB speculation issues (XSA-398)</comment>
     <requestid>961753</requestid>
   </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>5f4844a55675e7c839b3f00902705361</srcmd5>
+    <version>4.16.0_08</version>
+    <time>1649370399</time>
+    <user>dimstar_suse</user>
+    <comment>Security Fixes for bsc#1197423 (XSA-397), bsc#1197425 (XSA-399), and bsc#1197426 (XSA-400)</comment>
+    <requestid>967124</requestid>
+  </revision>
 </revisionlist>
