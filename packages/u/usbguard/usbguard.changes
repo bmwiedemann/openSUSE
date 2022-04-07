@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  5 12:26:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- When running autoreconf, do it complete so that it does not trip
+  over different versions of libtool being used.
+
+-------------------------------------------------------------------
 Wed Mar 16 13:02:20 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - update to 1.1.1

@@ -105,7 +105,7 @@ export CPPFLAGS='-fPIE'
 export LDFLAGS='-pie'
 %endif
 mkdir -p ./m4
-autoreconf -i -s --no-recursive ./
+autoreconf -fiv
 
 %configure \
     --disable-silent-rules \
