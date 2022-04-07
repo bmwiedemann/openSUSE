@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 07 02:56:02 UTC 2022 - william.brown@suse.com
+
+- Resolve bsc#1197896 - update samba schema to upstream latest
+- Update to version 2.1.1~git5.e988a3f55:
+  * Issue 5247 - BUG - Missing attributes in samba schema (#5248)
+
+-------------------------------------------------------------------
 Thu Mar 31 04:18:15 UTC 2022 - william.brown@suse.com
 
 - Resolve bsc#1197275 - CVE-2022-0918 - Crafted message may cause DoS
