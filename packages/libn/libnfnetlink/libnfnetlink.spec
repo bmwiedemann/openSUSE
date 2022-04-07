@@ -1,7 +1,7 @@
 #
 # spec file for package libnfnetlink
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libnfnetlink
 %define libsoname	%{name}0
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Low-level library for Netfilter-related kernel/userspace communication
 License:        GPL-2.0-only
@@ -64,6 +64,7 @@ libnetfilter_log, libnetfilter_queue or libnetfilter_conntrack.
 %autosetup -p1
 
 %build
+# includedir intentional, cf. bugzilla.opensuse.org/795968
 %configure --disable-static --includedir="%_includedir/%name"
 %make_build
 
