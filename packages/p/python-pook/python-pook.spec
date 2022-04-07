@@ -1,7 +1,7 @@
 #
 # spec file for package python-pook
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,14 +33,12 @@ Requires:       python-aiohttp
 Requires:       python-furl >= 0.5.6
 Requires:       python-jsonschema >= 2.5.1
 Requires:       python-xmltodict >= 0.11.0
-Suggests:       python-mock >= 2.0.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module furl >= 0.5.6}
 BuildRequires:  %{python_module jsonschema >= 2.5.1}
 BuildRequires:  %{python_module mocket >= 1.6.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module urllib3 >= 1.19.1}
