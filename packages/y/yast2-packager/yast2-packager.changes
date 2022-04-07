@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr  7 11:28:48 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Show package downloads in the global progress bar during package
+  installation (bsc#1195608)
+  PR: https://github.com/yast/yast-packager/pull/612
+- 4.5.1
+
+-------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (#bsc1198109)
+
+-------------------------------------------------------------------
+Thu Mar 31 15:52:11 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed regression in repository alias name for add-ons (bsc#1193214)
+- 4.4.27
+
+-------------------------------------------------------------------
 Thu Mar 17 08:01:35 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Read the products from libzypp in installed system, fixes crash
