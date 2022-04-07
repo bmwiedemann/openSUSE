@@ -1,0 +1,40 @@
+From 261f82d03ddaf4778ae48a903fd00d3bbb789989 Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Mon, 4 Apr 2022 08:49:37 -0400
+Subject: [PATCH] build-sys: Fix configure script to support _FORTIFY_SOURCE=3
+
+gcc 12.1 supports _FORTIFY_SOURCE=3. Modify the existing check for whether
+_FORTIFY_SOURCE=2 can be used to test compile with the user provided
+CFLAGS and only add _D_FORTIFY_SOURCE=2 to the HARDENING_CFLAGS if the
+user doesn't provide anything that's not compatible.
+
+Following an online article _FORTIFY_SOURCE=3 may add more overhead, so
+we only go up to level 2 for now and let build servers or user provide
+the higher level via the CFLAGS.
+
+https://developers.redhat.com/blog/2021/04/16/broadening-compiler-checks-for-buffer-overflows-in-_fortify_source#what_s_next_for__fortify_source
+
+Resolves: https://github.com/stefanberger/swtpm/issues/688
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ configure.ac | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 07d67b5c..ad3054e5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -410,10 +410,9 @@ if test "x$enable_hardening" != "xno"; then
+ 		HARDENING_CFLAGS="-fstack-protector-strong -Wstack-protector"
+ 	fi
+ 
+-	dnl Must not have -O0 but must have a -O for -D_FORTIFY_SOURCE=2
+-	TMP1="$(echo $CFLAGS | sed -n 's/.*\(-O0\).*/\1/p')"
+-	TMP2="$(echo $CFLAGS | sed -n 's/.*\(-O\).*/\1/p')"
+-	if test -z "$TMP1" && test -n "$TMP2"; then
++	dnl Only support -D_FORTIFY_SOURCE=2 and have higher levels passed in by user
++	dnl since they may create more overhead
++	if $CC $CFLAGS -Werror -D_FORTIFY_SOURCE=2 $srcdir/include/swtpm/tpm_ioctl.h 2>/dev/null; then
+ 		HARDENING_CFLAGS="$HARDENING_CFLAGS -D_FORTIFY_SOURCE=2"
+ 	fi
+ 	dnl Check linker for 'relro' and 'now'

@@ -131,4 +131,12 @@
     - Add probing for -fstack-protector (forwarded request 960501 from wfrisch)</comment>
     <requestid>960503</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b1d547e8c68efa913d1030aa2914121e</srcmd5>
+    <version>0.7.2</version>
+    <time>1649370442</time>
+    <user>dimstar_suse</user>
+    <comment>- Cheery-pick upstream patch allow-FORTIFY_SOURCE=3.patch. (forwarded request 967210 from marxin)</comment>
+    <requestid>967242</requestid>
+  </revision>
 </revisionlist>
