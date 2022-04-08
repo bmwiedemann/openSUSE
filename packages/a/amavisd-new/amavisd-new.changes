@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 30 07:45:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.2:
+  * Allow $timestamp_fmt_mysql to be used with the DBD::MariaDB driver.
+  * Resolve utf8mb4 problems when using DBD-MariaDB.
+  * Set correct originating flag when using milter/AM.PDP without policy banks.
+  * Resolve crash on reload with insufficient permissions.
+    Amavis now tests whether it is able read and evaluate its
+    configuration files with dropped privileges.
+    In case it cannot, amavis fails to start and refuses to reload.
+  * Resolve SSL client connection hangups with broken pipe
+
+-------------------------------------------------------------------
 Wed Dec  8 10:18:56 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - amavisd-new should require packets perl-IO-stringy and perl-Net-LibIDN
