@@ -45,7 +45,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
+%ifnarch %{arm}
+# Build fails with partio on armv7/armv6
 BuildRequires:  partio-devel
+%endif
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  8 07:42:38 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable partio on armv6/armv7 since it fails to build
+
+-------------------------------------------------------------------
 Wed Dec 22 09:32:50 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Disable %ix86 because of build failures
