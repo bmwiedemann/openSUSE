@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  7 07:22:31 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- modified patches
+  % python-pymacaroons-remove-nose.patch (refreshed)
+
+-------------------------------------------------------------------
 Fri Jun 26 11:39:00 UTC 2020 - pgajdos@suse.com
 
 - added patches
