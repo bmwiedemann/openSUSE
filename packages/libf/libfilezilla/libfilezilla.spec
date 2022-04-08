@@ -1,7 +1,7 @@
 #
 # spec file for package libfilezilla
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define major		23
+%define major		25
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.35.0
+Version:        0.37.1
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
@@ -77,6 +77,8 @@ Requires:       %{libname} = %{version}-%{release}
 
 %description -n	%{develname}
 Files needed for development with %{name}.
+
+
 
 # Need %%lang_package expanded for an extra conflict with an old library package
 %package lang

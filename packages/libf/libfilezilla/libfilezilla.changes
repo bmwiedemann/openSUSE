@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Apr  8 18:36:58 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.37.1
+  * New features:
+    - Added convenience functions ot fz::json
+  * Bugfixes and minor changes:
+    - MSW: Fixed spawning fz::process with blocking communication
+- Changes from 0.37.0
+  * New features:
+    - *nix: password-less impersonation can take an optional group
+    - Added demo https client showcasing usage of fz::socket and
+      fz::tls_layer
+    - Added some compile-time checks for fz::sprintf arguments
+    - MSW: Added fz::registry
+    - Added a way to use non-blocking read/write with fz::process
+  * Bugfixes and minor changes:
+    - Added fz::logger_interface::log_u which assumes string
+      arguments are in UTF-8 as opposed to the character set used
+      by the current locale
+    - Disallow spawning additional threads while fz::thread_pool is
+      in the process of being destroyed
+    - *nix: poll() is now mandatory, the select() based socket
+      event loop has been removed
+    - Simplified fz::socket implementation through use of internal
+      fz::poller
+- Changes from 0.36.0
+  * New features:
+    - Added parameter to tls_layer::set_alpn to control which peer
+      has priority over which ALPN is chosen.
+    - Added fz::hmac_sha1
+    - Mutex debugging framework to detect locking order inversions
+      that may lead to deadlocks
+    - Add additional io_redirect mode to fz::process_spawn where
+      the parent-side handles for stdin/out/err are always closed
+  * Bugfixes and minor changes:
+    - fz::json: Handle object members with empty string as name
+    - Minor performance improvements to removing timers and to
+      spawning processes
+
+-------------------------------------------------------------------
 Sun Dec 12 13:58:20 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.35.0
