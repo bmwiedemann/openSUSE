@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  8 12:48:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+  * fixes build in Factory with jdk17
+- Added patch:
+  * projectlibre-nosourcetarget.patch
+    + Do not hardcore java source and target levels in the build.xml
+      files. Allow them to be specified from ant command-line
+
+-------------------------------------------------------------------
 Tue Feb  2 16:53:37 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9.3 - no changelog

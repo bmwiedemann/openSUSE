@@ -1,7 +1,7 @@
 #
 # spec file for package projectlibre
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,11 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
 Source2:        %{name}.png
 Source3:        x-%{name}.desktop
+Patch0:         %{name}-nosourcetarget.patch
 BuildRequires:  ant
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  update-desktop-files
-Requires:       java >= 1.6.0
+Requires:       java >= 1.8
 BuildArch:      noarch
 
 %description
@@ -39,13 +41,14 @@ network diagrams and Earned Value Costing.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 #Set the file encoding for source files
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=cp1252
 cd projectlibre_build/
-ant clean
-ant
+%{ant} clean
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
 export NO_BRP_CHECK_BYTECODE_VERSION=true
