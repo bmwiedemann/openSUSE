@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr  8 18:38:16 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.59.0
+  * Bugfixes and minor changes:
+    - Windows binaries: Updated zlib, used purely to cache
+      re-scaled versions of icons shipped with FileZilla, to 1.2.12
+    - Updated to libfilezilla 0.37.1
+- Changes from 3.59.0-rc1
+  * Bugfixes and minor changes:
+    - Updated to libfilezilla 0.37.0
+    - Non-blocking communication with SFTP process
+    - macOS, *nix: Fixed "All files" category in file picker dialogs
+- Changes from 3.58.0
+  * Bugfixes and minor changes:
+    - More detailed error messages if an XML file known to exist
+      cannot be opened
+- Changes from 3.58.0-rc1
+  * New features:
+    - Negotiate custom ALPN with FileZilla Server >=1.3.0 during
+      TLS handshake to save some roundtrips during connection
+      establishment
+    - Prepare FileZilla to support TOTP-based 2FA authentication on
+      future FileZilla Server versions
+  * Bugfixes and minor changes:
+    - Made downloading updates more robust if the network
+      connection is unreliable
+    - Updated to libfilezilla 0.36.0
+
+-------------------------------------------------------------------
 Sun Dec 12 13:59:30 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.57.0
