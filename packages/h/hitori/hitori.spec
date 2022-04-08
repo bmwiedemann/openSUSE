@@ -17,15 +17,13 @@
 
 
 Name:           hitori
-Version:        3.38.3
+Version:        3.38.4
 Release:        0
 Summary:        Original puzzle of Nikoli
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://gitlab.gnome.org/GNOME/hitori
 Source0:        https://download.gnome.org/sources/hitori/3.38/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM d25728e122f1d7b985029a5ba96810c3e57c27f7.patch -- Fix build with meson 0.61 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/hitori/-/commit/d25728e122f1d7b985029a5ba96810c3e57c27f7.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

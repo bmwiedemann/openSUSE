@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  5 07:44:01 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.4:
+  + Initial support for playing the game with a keyboard.
+  + Bugs fixed:
+    - Make game playable with keyboard (bare minimum).
+    - build: Drop positional arguments from i18n.merge_file()
+      calls.
+    - interface: Fix a minor leak.
+    - snap: Add itstool to image.
+    - Move appdata screenshot to git.
+  + Updated translations.
+- Drop d25728e122f1d7b985029a5ba96810c3e57c27f7.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Wed Feb  2 17:30:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add d25728e122f1d7b985029a5ba96810c3e57c27f7.patch: Fix build
