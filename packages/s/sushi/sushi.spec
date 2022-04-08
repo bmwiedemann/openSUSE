@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(LOKDocView\\)
 
 Name:           sushi
-Version:        41.1
+Version:        41.2
 Release:        0
 Summary:        Quick Previewer for Nautilus
 License:        SUSE-GPL-2.0-with-plugin-exception
