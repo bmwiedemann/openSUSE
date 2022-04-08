@@ -1,7 +1,7 @@
 #
 # spec file for package osm-gps-map
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           osm-gps-map
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        A Gtk+ Widget for Displaying OpenStreetMap tiles
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            http://nzjrs.github.io/osm-gps-map/
-Source:         https://github.com/nzjrs/osm-gps-map/releases/download/1.1.0/%{name}-%{version}.tar.gz
+Source:         https://github.com/nzjrs/osm-gps-map/releases/download/1.2.0/%{name}-%{version}.tar.gz
 BuildRequires:  gnome-common
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
