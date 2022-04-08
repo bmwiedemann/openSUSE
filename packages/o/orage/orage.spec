@@ -27,6 +27,7 @@ Source:         http://archive.xfce.org/src/apps/orage/4.16/%{name}-%{version}.t
 Source1:        README.SUSE
 BuildRequires:  fdupes
 BuildRequires:  intltool
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.52.0
@@ -63,6 +64,8 @@ cp %{SOURCE1} .
 
 %install
 %make_install
+
+%suse_update_desktop_file -r org.xfce.orage.globaltime X-XFCE Utility Clock GTK
 
 %fdupes %{buildroot}%{_datadir}
 
