@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Apr  6 11:23:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.12.2:
+  + Fixed possible crash when changing directory during
+    thumbnails creation.
+  + Added support for larger thumbnail sizes: 512, 768 and
+    1024 pixels.
+
+-------------------------------------------------------------------
+Tue Mar 22 19:35:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.1:
+  + PNG loader ignores gAMA.
+  + Transparent webp images are rendered incorrectly.
+  + Crash when dropping files on an empty folder/catalog.
+  + Fixed location loading after mounting volume.
+  + JPEG image dimensions not displayed for files inside the
+    trash.
+  + Infinite Loop when viewing more than 50 thumbnails.
+  + X11 window title is not set.
+  + Copy release notes on build from NEWS to metainfo file.
+  + Fixed build if appstream >= 0.14.6 is not available.
+  + Fix incorrect usage of shared_module in extensions.
+  + cli: mention that user can open files and/or directories.
+  + Updated translations.
+- Drop daef485dffd67319c114cf1bda453bf6157e11ff.patch: Fixed
+  upstream.
+- Add pkgconfig(appstream) and AppStream BuildRequires: Needed to
+  build and install appdata now.
+
+-------------------------------------------------------------------
 Thu Feb 10 10:57:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add daef485dffd67319c114cf1bda453bf6157e11ff.patch: Remove

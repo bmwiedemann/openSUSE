@@ -17,7 +17,7 @@
 
 
 Name:           gthumb
-Version:        3.12.0
+Version:        3.12.2
 Release:        0
 # FIXME: Add libchamplain BuildRequires once the map feature is considered stable.
 Summary:        An Image Viewer and Browser for GNOME
@@ -25,9 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/gthumb
 Source0:        https://download.gnome.org/sources/gthumb/3.12/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM daef485dffd67319c114cf1bda453bf6157e11ff.patch -- Remove duplicate lang entry
-Patch0:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/daef485dffd67319c114cf1bda453bf6157e11ff.patch
 
+BuildRequires:  AppStream
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -39,6 +38,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(champlain-0.12) >= 0.12.0
 BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.12.0
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.12.0
@@ -114,8 +114,10 @@ slide shows, set your desktop background, and more.
 %{_bindir}/gthumb
 %{_datadir}/gthumb/
 %{_libdir}/gthumb/
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1590
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.gnome.gThumb.appdata.xml
+%endif
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gnome.gThumb*
 %{_datadir}/glib-2.0/schemas/org.gnome.gthumb.*.gschema.xml
