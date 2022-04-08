@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-dns-cloudxns
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-certbot-dns-cloudxns
-Version:        1.22.0
+Version:        1.26.0
 Release:        0
 Summary:        CloudXNS Authenticator plugin for Certbot
 License:        Apache-2.0

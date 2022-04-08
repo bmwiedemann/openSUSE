@@ -260,4 +260,12 @@
     <comment></comment>
     <requestid>941938</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>95155198094c65f59ffc846aa7e6ebd5</srcmd5>
+    <version>1.26.0</version>
+    <time>1649450762</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>967763</requestid>
+  </revision>
 </revisionlist>
