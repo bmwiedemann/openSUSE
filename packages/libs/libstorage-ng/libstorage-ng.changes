@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Thu Apr 7 16:15:26 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#867
+- escape more special characters in fstab
+- extended documentation
+- coding style
+- 4.5.2
+
+--------------------------------------------------------------------
+Wed Apr 6 20:45:06 UTC 2022 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech) (bsc#1149754)
+
+--------------------------------------------------------------------
 Thu Mar 31 14:28:54 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#866
