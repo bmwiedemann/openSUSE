@@ -17,7 +17,7 @@
 
 
 Name:           ddnet
-Version:        15.9.1
+Version:        16.0.3
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Zlib AND CC-BY-SA-3.0 AND Apache-2.0 AND MIT AND SUSE-Public-Domain
@@ -34,6 +34,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pnglite-devel
+BuildRequires:  glslang-devel
 BuildRequires:  python3
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
@@ -47,6 +48,7 @@ BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(wavpack)
+BuildRequires:  pkgconfig(vulkan) 
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}-%{release}
 
@@ -82,7 +84,8 @@ Standalone server for DDraceNetwork (DDNet).
   -DAUTOUPDATE=OFF \
   -DANTIBOT=ON \
   -DUPNP=ON \
-  -DSTEAM=OFF
+  -DSTEAM=OFF \
+  -DVIDEORECORDER=OFF
 %cmake_build
 
 %install
