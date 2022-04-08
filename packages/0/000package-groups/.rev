@@ -1345,4 +1345,11 @@ is not needed.
 </comment>
     <requestid>959439</requestid>
   </revision>
+  <revision rev="188" vrev="186">
+    <srcmd5>26579de9c82442a312371590a645e027</srcmd5>
+    <version>unknown</version>
+    <time>1649401224</time>
+    <user>dimstar_suse</user>
+    <comment>Add mozjs91 i686 into i586 tree</comment>
+  </revision>
 </revisionlist>
