@@ -1,7 +1,7 @@
 #
 # spec file for package python-parameterized
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parameterized
-Version:        0.7.4
+Version:        0.8.1
 Release:        0
 Summary:        Parameterized testing
 License:        BSD-2-Clause
@@ -30,7 +30,6 @@ Patch0:         skip_Documentation_tests.patch
 # PATCH-FIX-UPSTREAM remove_nose.patch mcepl@suse.com
 # Remove nose dependency (patch is not very good, DO NOT SEND UPSTREAM!)
 Patch1:         remove_nose.patch
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -55,10 +54,13 @@ Parameterized testing with any Python test framework.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/wolever/parameterized/issues/122
+sed -i 's:import mock:from unittest import mock:' parameterized/test.py
 export LANG=en_US.UTF8
 %{python_expand nose2-%$python_version -v -B --pretty-assert}
 %python_exec -m unittest parameterized.test
-%pytest parameterized/test.py
+# https://github.com/wolever/parameterized/issues/122
+%pytest parameterized/test.py -k 'not (test_with_docstring_1_v_l_ or test_with_docstring_0_value1)'
 
 %files %{python_files}
 %doc CHANGELOG.txt README.rst
