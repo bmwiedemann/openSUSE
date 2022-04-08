@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Apr 06 07:35:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.3:
+  * fix(downloadDB): add dbRepositoryFlag to repository and rootfs commands (#1956)
+  * fix(misconf): update BurntSushi/toml for fix runtime error (#1948)
+  * fix(misconf): Update fanal/defsec to resolve missing metadata issues (#1947)
+  * feat(jar): allow setting Maven Central URL using environment variable (#1939)
+  * chore(chart): update Trivy version in HelmChart to 0.25.0 (#1931)
+  * chore(chart): remove version comments (#1933)
+
+-------------------------------------------------------------------
+Wed Apr 06 07:32:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.2:
+  * fix(downloadDB): add flag to server command (#1942)
+
+-------------------------------------------------------------------
+Tue Apr 05 06:52:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.1:
+  * fix(misconf): update defsec to resolve panics (#1935)
+  * chore(deps): bump github.com/docker/docker (#1924)
+  * docs: restructure the documentation (#1887)
+  * chore(deps): bump github.com/urfave/cli/v2 from 2.3.0 to 2.4.0 (#1923)
+  * chore(deps): bump actions/cache from 2 to 3.0.1 (#1920)
+  * chore(deps): bump actions/checkout from 2 to 3 (#1916)
+  * chore(deps): bump github.com/open-policy-agent/opa from 0.37.2 to 0.39.0 (#1921)
+  * chore(deps): bump sigstore/cosign-installer from 2.0.0 to 2.1.0 (#1919)
+  * chore(deps): bump helm/chart-testing-action from 2.2.0 to 2.2.1 (#1918)
+  * chore(deps): bump golang from 1.17 to 1.18.0 (#1915)
+  * Add trivy horizontal logo (#1932)
+  * chore(deps): bump alpine from 3.15.0 to 3.15.3 (#1917)
+  * chore(deps): bump github.com/go-redis/redis/v8 from 8.11.4 to 8.11.5 (#1925)
+  * chore(deps): bump github.com/stretchr/testify from 1.7.0 to 1.7.1 (#1927)
+  * feat(db): Add dbRepository flag to get advisory database from OCI registry (#1873)
+
+-------------------------------------------------------------------
 Fri Apr  1 07:30:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - Buildrequire go1.18 as upstream says in go.mod
