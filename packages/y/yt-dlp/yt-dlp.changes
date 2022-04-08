@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  8 10:13:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.04.08
+  * Treat multiple --match-filters as OR
+  * De-prioritize automatic-subtitles when no --sub-lang is given
+
+-------------------------------------------------------------------
 Tue Mar  8 20:19:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.03.08.1
