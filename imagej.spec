@@ -28,12 +28,13 @@ Url:            http://rsbweb.nih.gov/ij/
 Source:         http://rsbweb.nih.gov/ij/download/src/ij%{SrcVersion}-src.zip
 Source1:        %{name}.in
 Source2:        %{name}.desktop
+Patch0:         imagej-nosourcetarget.patch
 BuildRequires:  ImageMagick
 BuildRequires:  ant
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-Requires:       java >= 1.6.0
+Requires:       java >= 1.8
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -60,9 +61,10 @@ compiler.
 
 %prep
 %setup -n source
+%patch0 -p1
 
 %build
-%ant build
+%ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 build
 
 %install
 install -d -m 755 %{buildroot}%{_datadir}/%{name}

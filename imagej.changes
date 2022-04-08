@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  8 13:44:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+  * Fixes build in Factory with jdk17
+- Added patch:
+  * imagej-nosourcetarget.patch
+    + Do not hardcode source and target levels, but allow them to
+      be specified on ant's command-line
+
+-------------------------------------------------------------------
 Wed Dec  2 18:37:15 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.53f.
