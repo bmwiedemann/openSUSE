@@ -17,7 +17,7 @@
 
 
 Name:           gthumb
-Version:        3.12.1
+Version:        3.12.2
 Release:        0
 # FIXME: Add libchamplain BuildRequires once the map feature is considered stable.
 Summary:        An Image Viewer and Browser for GNOME
@@ -114,8 +114,10 @@ slide shows, set your desktop background, and more.
 %{_bindir}/gthumb
 %{_datadir}/gthumb/
 %{_libdir}/gthumb/
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1590
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.gnome.gThumb.appdata.xml
+%endif
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gnome.gThumb*
 %{_datadir}/glib-2.0/schemas/org.gnome.gthumb.*.gschema.xml

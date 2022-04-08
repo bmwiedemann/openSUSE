@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  6 11:23:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.12.2:
+  + Fixed possible crash when changing directory during
+    thumbnails creation.
+  + Added support for larger thumbnail sizes: 512, 768 and
+    1024 pixels.
+
+-------------------------------------------------------------------
 Tue Mar 22 19:35:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.12.1:
