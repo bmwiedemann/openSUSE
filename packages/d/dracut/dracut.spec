@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        056+suse.252.g75c0d4d5
+Version:        056+suse.261.gf83268d5
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -79,7 +79,6 @@ NFS, iSCSI, NBD, FCoE.
 Summary:        Dracut modules to build a dracut initramfs with an integrity check
 Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
-Requires:       fipscheck
 Requires:       libcryptsetup12-hmac
 Requires:       libgcrypt20-hmac
 Requires:       libkcapi-tools

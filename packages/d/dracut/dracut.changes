@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 06 06:44:26 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 056+suse.261.gf83268d5:
+  * chore(suse): remove fipscheck requirement (bsc#1198065)
+
+-------------------------------------------------------------------
+Tue Apr 05 10:11:55 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 056+suse.259.g16e9c5e9:
+  * fix(ifcfg): repair POSIX compliance
+  * fix(network-legacy): repair POSIX compliance
+  * fix(dracut-install): copy files preserving ownership attributes (bsc#1197967)
+  * fix(bluetooth): make $dbussystem/bluetooth.conf optional (bsc#1195047)
+
+-------------------------------------------------------------------
 Fri Apr 01 15:31:08 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 056+suse.252.g75c0d4d5:
