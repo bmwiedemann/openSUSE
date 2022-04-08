@@ -15,4 +15,12 @@
     <comment>Fix build</comment>
     <requestid>862840</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>466b37f091bfa236fc50a512e19f1a5b</srcmd5>
+    <version>5.5.13.3</version>
+    <time>1649450783</time>
+    <user>dimstar_suse</user>
+    <comment>misc. security fixes</comment>
+    <requestid>967872</requestid>
+  </revision>
 </revisionlist>

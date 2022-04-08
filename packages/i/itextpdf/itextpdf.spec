@@ -1,7 +1,7 @@
 #
 # spec file for package itextpdf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           itextpdf
-Version:        5.5.13.2
+Version:        5.5.13.3
 Release:        0
 Summary:        A Free Java-PDF library
 License:        AGPL-3.0-only
 Group:          Development/Libraries/Java
 URL:            https://itextpdf.com
 Source0:        https://github.com/itext/%{name}/archive/%{version}.tar.gz
-Patch0:         itextpdf-5.5.13.2-bouncycastle.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.itextpdf:itext-parent:pom:)
@@ -54,7 +53,6 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # Both need git access during the build
 %pom_remove_plugin -r :jgitflow-maven-plugin itext
