@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  8 08:44:23 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Tue Oct 26 12:25:15 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 7.3.1
