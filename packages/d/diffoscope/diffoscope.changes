@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr  1 19:16:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 209:
+ - Update R test fixture for R 4.2.x series. (Closes: #1008446)
+ - Update minimum version of Black to prevent test failure on Ubuntu jammy.
+- update to version 208:
+ - Add graceful handling for UNIX sockets and named pipes.
+   (Closes: reproducible-builds/diffoscope#292)
+ - Remove a superfluous log message and reformatt comment lines.
+ - Reformat various files to satisfy current version of Black.
+
+-------------------------------------------------------------------
+Fri Mar 25 21:21:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 208:
+ - Add graceful handling for UNIX sockets and named pipes.
+   (Closes: reproducible-builds/diffoscope#292)
+ - Remove a superfluous log message and reformatt comment lines.
+ - Reformat various files to satisfy current version of Black.
+- update to version 207:
+ - Fix a gnarly regression when comparing directories against non-directories.
+   (Closes: reproducible-builds/diffoscope#292)
+ - Use our assert_diff utility where we can within test_directory.py
+
+-------------------------------------------------------------------
 Fri Mar  4 18:59:10 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 207:
