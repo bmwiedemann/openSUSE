@@ -1,7 +1,7 @@
 Index: pymacaroons-0.9.3/.coveragerc
 ===================================================================
---- pymacaroons-0.9.3.orig/.coveragerc	2015-08-20 17:47:34.000000000 +0200
-+++ pymacaroons-0.9.3/.coveragerc	2020-06-29 11:51:09.967837416 +0200
+--- pymacaroons-0.9.3.orig/.coveragerc
++++ pymacaroons-0.9.3/.coveragerc
 @@ -1,4 +1,3 @@
  [report]
  omit =
@@ -9,8 +9,8 @@ Index: pymacaroons-0.9.3/.coveragerc
 -    */site-packages/nose/*
 Index: pymacaroons-0.9.3/.gitignore
 ===================================================================
---- pymacaroons-0.9.3.orig/.gitignore	2015-08-20 17:47:34.000000000 +0200
-+++ pymacaroons-0.9.3/.gitignore	2020-06-29 11:51:19.983896739 +0200
+--- pymacaroons-0.9.3.orig/.gitignore
++++ pymacaroons-0.9.3/.gitignore
 @@ -36,7 +36,6 @@ htmlcov/
  .tox/
  .coverage
@@ -21,8 +21,8 @@ Index: pymacaroons-0.9.3/.gitignore
  # Translations
 Index: pymacaroons-0.9.3/requirements.txt
 ===================================================================
---- pymacaroons-0.9.3.orig/requirements.txt	2015-08-20 17:47:34.000000000 +0200
-+++ pymacaroons-0.9.3/requirements.txt	2020-06-29 11:51:32.275969541 +0200
+--- pymacaroons-0.9.3.orig/requirements.txt
++++ pymacaroons-0.9.3/requirements.txt
 @@ -2,7 +2,7 @@
  -e .
  
@@ -34,8 +34,8 @@ Index: pymacaroons-0.9.3/requirements.txt
  sphinx>=1.2.3
 Index: pymacaroons-0.9.3/tests/functional_tests/encrypted_field_tests.py
 ===================================================================
---- pymacaroons-0.9.3.orig/tests/functional_tests/encrypted_field_tests.py	2015-08-20 17:47:34.000000000 +0200
-+++ pymacaroons-0.9.3/tests/functional_tests/encrypted_field_tests.py	2020-06-29 12:28:52.997258139 +0200
+--- pymacaroons-0.9.3.orig/tests/functional_tests/encrypted_field_tests.py
++++ pymacaroons-0.9.3/tests/functional_tests/encrypted_field_tests.py
 @@ -2,7 +2,7 @@ from __future__ import unicode_literals
  
  import nacl.bindings
@@ -66,13 +66,15 @@ Index: pymacaroons-0.9.3/tests/functional_tests/encrypted_field_tests.py
 +        assert verified
 Index: pymacaroons-0.9.3/tests/functional_tests/functional_tests.py
 ===================================================================
---- pymacaroons-0.9.3.orig/tests/functional_tests/functional_tests.py	2015-08-20 17:47:34.000000000 +0200
-+++ pymacaroons-0.9.3/tests/functional_tests/functional_tests.py	2020-06-29 12:47:55.108100220 +0200
-@@ -2,7 +2,7 @@ from __future__ import unicode_literals
+--- pymacaroons-0.9.3.orig/tests/functional_tests/functional_tests.py
++++ pymacaroons-0.9.3/tests/functional_tests/functional_tests.py
+@@ -1,8 +1,8 @@
+ from __future__ import unicode_literals
  import json
  
- from mock import *
+-from mock import *
 -from nose.tools import *
++from unittest.mock import *
 +import pytest
  
  import nacl.bindings
@@ -301,15 +303,16 @@ Index: pymacaroons-0.9.3/tests/functional_tests/functional_tests.py
 +            'signature 7a9289bfbb92d725f748bbcb4f3e04e56b7021513ebeed8411bfba10a16a662e')
 Index: pymacaroons-0.9.3/tests/property_tests/macaroon_property_tests.py
 ===================================================================
---- pymacaroons-0.9.3.orig/tests/property_tests/macaroon_property_tests.py	2015-08-20 17:47:34.000000000 +0200
-+++ pymacaroons-0.9.3/tests/property_tests/macaroon_property_tests.py	2020-06-29 12:09:44.190436549 +0200
+--- pymacaroons-0.9.3.orig/tests/property_tests/macaroon_property_tests.py
++++ pymacaroons-0.9.3/tests/property_tests/macaroon_property_tests.py
 @@ -1,7 +1,8 @@
  from __future__ import unicode_literals
  
+-from mock import *
+-from nose.tools import *
 +import pytest
 +
- from mock import *
--from nose.tools import *
++from unittest.mock import *
  from hypothesis import assume, given, strategy
  from hypothesis.specifiers import one_of, sampled_from
  
@@ -325,8 +328,8 @@ Index: pymacaroons-0.9.3/tests/property_tests/macaroon_property_tests.py
 +        assert macaroon.signature == deserialized.signature
 Index: pymacaroons-0.9.3/tox.ini
 ===================================================================
---- pymacaroons-0.9.3.orig/tox.ini	2015-08-20 17:47:34.000000000 +0200
-+++ pymacaroons-0.9.3/tox.ini	2020-06-29 12:07:45.953736271 +0200
+--- pymacaroons-0.9.3.orig/tox.ini
++++ pymacaroons-0.9.3/tox.ini
 @@ -5,12 +5,12 @@ skip_missing_interpreters=True
  [testenv]
  deps=-rrequirements.txt
@@ -350,8 +353,8 @@ Index: pymacaroons-0.9.3/tox.ini
 +    pytest --cov=pymacaroons tests/
 Index: pymacaroons-0.9.3/pytest.ini
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ pymacaroons-0.9.3/pytest.ini	2020-06-29 12:31:07.738065336 +0200
+--- /dev/null
++++ pymacaroons-0.9.3/pytest.ini
 @@ -0,0 +1,5 @@
 +[pytest]
 +python_files = *test*.py

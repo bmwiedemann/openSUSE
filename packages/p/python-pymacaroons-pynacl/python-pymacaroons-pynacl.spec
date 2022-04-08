@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymacaroons-pynacl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define         github_name pymacaroons
 Name:           python-pymacaroons-pynacl
 Version:        0.9.3
@@ -31,7 +32,6 @@ Patch0:         python-pymacaroons-pynacl-remove-nose.patch
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module libnacl}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
