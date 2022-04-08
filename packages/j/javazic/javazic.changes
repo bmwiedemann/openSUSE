@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  8 13:48:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * javazic-fixup.patch
+    + not needed any more
+
+-------------------------------------------------------------------
+Thu Oct 18 09:41:04 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Update the sources with the recent versions from jdk7u tree
+- Build with source/target 7
+
+-------------------------------------------------------------------
 Mon Oct  2 14:02:52 UTC 2017 - fstrba@suse.com
 
 - Move the sun.util.calendar to sun.whatever.calendar in order to

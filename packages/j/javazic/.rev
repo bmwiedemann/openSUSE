@@ -89,4 +89,12 @@ SPDX syntax (forwarded request 116692 from babelworx)</comment>
     <comment>Allow building with java &gt; 1.7</comment>
     <requestid>530676</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9a599a257f57fbe215f825cc86d779a1</srcmd5>
+    <version>1.7.0</version>
+    <time>1649450772</time>
+    <user>dimstar_suse</user>
+    <comment>fix build in factory</comment>
+    <requestid>967836</requestid>
+  </revision>
 </revisionlist>

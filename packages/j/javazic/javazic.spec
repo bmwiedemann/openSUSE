@@ -1,7 +1,7 @@
 #
 # spec file for package javazic
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           javazic
-# javazic source codes comes from openjdk6-b09 source archive
-# see package java-1_6_0-java for details and source code
-Version:        1.6.0
+# javazic source codes comes from jdk7u/jdk mercurial
+Version:        1.7.0
 Release:        0
 Summary:        A time zone compiler for Java
 License:        GPL-2.0-with-classpath-exception
 Group:          Development/Libraries/Java
-Url:            http://icedtea.classpath.org
+URL:            https://icedtea.classpath.org
 Source0:        javazic.tar.gz
-Patch0:         javazic-fixup.patch
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.7
 BuildArch:      noarch
 
 %description
@@ -36,13 +34,10 @@ derived from openjdk6 source code.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch0 -b .javazic-fixup
 
 %build
-mv sun/util sun/whatever
-perl -pi -e 's#sun\.util\.calendar#sun\.whatever\.calendar#g' $(find sun/ -iname '*.java')
-javac -source 6 -target 6 $(find sun/ -iname '*.java')
-echo "Main-Class: sun.tools.javazic.Main" > manifest.txt
+javac -source 7 -target 7 $(find build/ -iname '*.java')
+echo "Main-Class: build.tools.javazic.Main" > manifest.txt
 jar -cfm %{name}-%{version}.jar manifest.txt $(find . -iname '*.class')
 
 %install
