@@ -1,7 +1,7 @@
 #
 # spec file for package OpenImageIO
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,18 +31,16 @@
 %bcond_with apidocs
 %bcond_with ptex
 
-%define so_ver 2_2
-%define major_minor_ver 2.2
+%define so_ver 2_3
+%define major_minor_ver 2.3
 Name:           OpenImageIO
-Version:        2.2.17.0
+Version:        2.3.14.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
 Source0:        https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz#/oiio-%{version}.tar.gz
-# using PREFER_CONFIG will grab the system tbb cmake definition, that's doesn't define the necessary variables
-Patch0:         fix-tbb-linking.diff
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.12
@@ -164,7 +162,7 @@ Group:          Development/Libraries/Python
 This package contains python bindings for OpenImageIO.
 
 %prep
-%setup -q -n oiio-Release-%{version}
+%setup -q -n oiio-%{version}
 %autopatch -p1
 
 # Make sure that bundled libraries are not used
@@ -251,7 +249,6 @@ ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/OpenImageIO.pc
 %{_libdir}/cmake
-%{_datadir}/cmake
 %{_libdir}/libOpenImageIO.so
 %{_libdir}/libOpenImageIO_Util.so
 
