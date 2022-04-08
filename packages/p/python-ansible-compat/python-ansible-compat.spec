@@ -21,12 +21,14 @@
 Name:           python-ansible-compat
 Version:        2.0.2
 Release:        0
-Summary:        Compatibility shim for Ansible 2.9 and newer.
+Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
 URL:            https://github.com/ansible-community/ansible-compat
 Source:         https://files.pythonhosted.org/packages/source/a/ansible-compat/ansible-compat-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 # SECTION test
