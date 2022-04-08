@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Apr 7 12:06:21 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#138
+- grub2/install: reset error code when passing through recover code
+  (bsc#1198197)
+- 0.938
+
+--------------------------------------------------------------------
 Thu Jan 13 15:50:57 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#137
