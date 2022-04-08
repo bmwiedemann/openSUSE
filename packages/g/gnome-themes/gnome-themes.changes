@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  8 07:53:04 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnome-themes-locale-directory.patch: ensure translations are
+  installed to /usr/share/locale.Upstream is basically dead, but
+  the fix is simple enough to let the package live on a bit longer.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:43:53 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
@@ -17,7 +24,7 @@ Wed Feb 28 16:29:57 UTC 2018 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Fri May 27 12:09:37 UTC 2016 - idonmez@suse.com
 
-- Update to GNOME 3.20.2 FATE#318572 
+- Update to GNOME 3.20.2 FATE#318572
 
 -------------------------------------------------------------------
 Wed Oct  1 14:40:54 UTC 2014 - dimstar@opensuse.org

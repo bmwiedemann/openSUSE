@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-themes
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://www.gnome.org/
 Source0:        http://download.gnome.org/sources/%{name}/3.0/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM gnome-themes-disable-engine-test.patch bgo#642970 fcrozat@novell.com -- don't check for gtk-engines-3 at build time
 Patch0:         gnome-themes-disable-engine-test.patch
+# PATCH-FIX-OPENSUSE gnome-themes-locale-directory.patch dimstar@opensuse.org -- Ensure locales installed to /usr/share
+Patch1:         gnome-themes-locale-directory.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gtk3-devel
@@ -40,8 +42,7 @@ images.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 #needed by patch0

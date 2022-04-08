@@ -496,4 +496,16 @@
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930908</requestid>
   </revision>
+  <revision rev="72" vrev="22">
+    <srcmd5>98fe4f2072d4406430ff531f888b2eed</srcmd5>
+    <version>3.0.0</version>
+    <time>1649450777</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-themes-locale-directory.patch: ensure translations are
+  installed to /usr/share/locale.Upstream is basically dead, but
+  the fix is simple enough to let the package live on a bit longer.
+
+- Update to GNOME 3.20.2 FATE#318572 (forwarded request 967703 from dimstar)</comment>
+    <requestid>967858</requestid>
+  </revision>
 </revisionlist>
