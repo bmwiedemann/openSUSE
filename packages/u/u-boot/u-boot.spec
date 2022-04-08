@@ -172,7 +172,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2022.01
+%define archive_version 2022.04
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -208,7 +208,7 @@ ExclusiveArch:  do_not_build
 %else
 %bcond_with uboot_atf
 %endif
-Version:        2022.01
+Version:        2022.04
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -229,22 +229,24 @@ Patch0006:      0006-Kconfig-add-btrfs-to-distro-boot.patch
 Patch0007:      0007-configs-Re-sync-with-CONFIG_DISTRO_.patch
 Patch0008:      0008-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
 Patch0009:      0009-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
-Patch0010:      0010-sunxi-Enable-SPI-support-on-Orange-.patch
-Patch0011:      0011-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
-Patch0012:      0012-smbios-Fix-table-when-no-string-is-.patch
-Patch0013:      0013-riscv-enable-CMD_BTRFS.patch
-Patch0014:      0014-Disable-timer-check-in-file-loading.patch
-Patch0015:      0015-Enable-EFI-and-ISO-partitions-suppo.patch
-Patch0016:      0016-mx6qsabrelite-Enable-DM_ETH-to-re-e.patch
-Patch0017:      0017-rockchip-sdhci-Fix-RK3399-eMMC-PHY-.patch
+Patch0010:      0010-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
+Patch0011:      0011-smbios-Fix-table-when-no-string-is-.patch
+Patch0012:      0012-riscv-enable-CMD_BTRFS.patch
+Patch0013:      0013-Disable-timer-check-in-file-loading.patch
+Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
+Patch0015:      0015-mx6qsabrelite-Enable-DM_ETH-to-re-e.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
 # Arndale board needs DTC >= 1.4
 BuildRequires:  dtc >= 1.4.0
+# gnutls/gnutls.h required for tools/mkeficapsule.c
+BuildRequires:  libgnutls-devel
 BuildRequires:  flex
 # u-boot-clearfog (tools/kwbimage.c) needs openssl to build
 BuildRequires:  libopenssl-devel
+# uuid/uuid.h required for tools/mkeficapsule.c
+BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -296,6 +298,10 @@ BuildRequires:  arm-trusted-firmware-sun50i_a64
 %endif
 %if 0%{?is_h6} && %{with uboot_atf}
 BuildRequires:  arm-trusted-firmware-sun50i_h6
+%endif
+%if "%target" == "tools" || "%target" == "avnetultra96rev1" || "%target" == "clearfog" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebudbarmada8k3" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "turrisomnia"
+# Fixes ld: cannot find -ltinfo: No such file or directory
+BuildRequires:  ncurses-devel
 %endif
 %if "%{name}" == "u-boot-qemu-ppce500"
 # Owns /usr/share/qemu directory

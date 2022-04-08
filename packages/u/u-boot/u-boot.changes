@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr  7 06:24:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add new build dependencies
+
+-------------------------------------------------------------------
+Wed Apr  6 06:00:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2022.04
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2022.04
+* Patches dropped:
+  0010-sunxi-Enable-SPI-support-on-Orange-.patch
+  0011-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
+  0012-smbios-Fix-table-when-no-string-is-.patch
+  0013-riscv-enable-CMD_BTRFS.patch
+  0014-Disable-timer-check-in-file-loading.patch
+  0015-Enable-EFI-and-ISO-partitions-suppo.patch
+  0016-mx6qsabrelite-Enable-DM_ETH-to-re-e.patch
+  0017-rockchip-sdhci-Fix-RK3399-eMMC-PHY-.patch
+* Patches added:
+  0010-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
+  0011-smbios-Fix-table-when-no-string-is-.patch
+  0012-riscv-enable-CMD_BTRFS.patch
+  0013-Disable-timer-check-in-file-loading.patch
+  0014-Enable-EFI-and-ISO-partitions-suppo.patch
+  0015-mx6qsabrelite-Enable-DM_ETH-to-re-e.patch
+
+-------------------------------------------------------------------
 Wed Feb  2 21:23:11 UTC 2022 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Add nanopc-t4-rk3399 and nanopi-m4b-rk3399 flavor
