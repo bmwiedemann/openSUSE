@@ -1,7 +1,7 @@
 #
 # spec file for package amavisd-new
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define logmsg         logger -t %{name}/rpm
 
 Name:           amavisd-new
-Version:        2.12.1
+Version:        2.12.2
 Release:        0
 Summary:        High-Performance E-Mail Virus Scanner
 License:        GPL-2.0-or-later
