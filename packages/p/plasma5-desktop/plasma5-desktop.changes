@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  7 06:26:15 UTC 2022 - Sarah Kriesch <ada.lovelace@gmx.de>
+
+- Repair build for s390x with unapplicable files for IBM Z
+
+-------------------------------------------------------------------
 Tue Mar 29 16:04:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.24.4
