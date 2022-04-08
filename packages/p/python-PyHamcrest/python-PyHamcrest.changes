@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr  7 06:52:55 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.0.3
+  * Features ^^^^^^^^
+      - * Adds the tests to the sdist. Fixed by #150
+    `#141 <https://github.com/hamcrest/PyHamcrest/issues/141>`_
+     - * Update the CI to test Python 3.10
+    `#160 <https://github.com/hamcrest/PyHamcrest/issues/160>`_
+     - * Add pretty string representation for matchers objects
+    `#170 <https://github.com/hamcrest/PyHamcrest/issues/170>`_
+  * Bugfixes ^^^^^^^^
+      - * Test coverage is now submitted to codecov.io.
+    `#135 <https://github.com/hamcrest/PyHamcrest/issues/135>`_
+     - Change to the ``has_entry()`` matcher - if exactly one key matches, but the value does not, report only the mismatching
+      value.
+    `#156 <https://github.com/hamcrest/PyHamcrest/issues/156>`_
+     - * Fix is_() type annotations
+
+-------------------------------------------------------------------
 Thu Mar 26 16:28:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.0.2

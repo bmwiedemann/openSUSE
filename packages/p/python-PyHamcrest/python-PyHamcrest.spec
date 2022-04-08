@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyHamcrest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyHamcrest
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Hamcrest framework for matcher objects
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ URL:            https://github.com/hamcrest/PyHamcrest
 Source:         https://github.com/hamcrest/PyHamcrest/archive/V%{version}.tar.gz
 Patch0:         0001-Add-boolean-matchers.patch
 BuildRequires:  %{python_module hypothesis >= 1.11}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
