@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  7 13:21:58 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- AutoYaST: do not clone device for hibernation and also check
+  during autoinstallation if device for hibernation exists and if
+  not then use proposed one. (bsc#1187690 and bsc#1197192)
+- 4.5.1
+
+-------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (#bsc1198109)
+
+-------------------------------------------------------------------
 Fri Jan 28 22:37:00 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - Allow product/system role to select boot timeout (jsc#SLE-22667)
@@ -70,7 +83,6 @@ Mon Aug 16 14:16:16 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 -------------------------------------------------------------------
 Wed Jul  7 09:22:03 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
-
 - Add the os-prober package to the set of packages to install
   if the package is available and supported on the arch
   (bsc#1186369)
