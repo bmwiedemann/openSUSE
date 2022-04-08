@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:12:00 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.26.0
+  * certbot-dns-route53 now requires boto3>=1.15.15.
+
+-------------------------------------------------------------------
 Tue Dec 21 19:24:10 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - update to version 1.22.0
