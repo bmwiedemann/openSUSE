@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 15:40:19 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Set LIBEXECDIR
+- Disable default stripping
+
+-------------------------------------------------------------------
 Tue Mar  8 12:07:34 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Respect %{optflags}.

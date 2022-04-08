@@ -38,9 +38,9 @@ BuildRequires:  zlib-devel
 PreReq:         update-alternatives
 
 %if %{suse_version} < 1550
-%define build_args SYSTEM_XXHASH=1
+%define build_args STRIP=true SYSTEM_XXHASH=1
 %else
-%define build_args SYSTEM_TBB=1 SYSTEM_XXHASH=1 SYSTEM_MIMALLOC=1
+%define build_args STRIP=true SYSTEM_TBB=1 SYSTEM_XXHASH=1 SYSTEM_MIMALLOC=1
 %endif
 
 %description
@@ -61,16 +61,27 @@ export CXX=g++-10
 export CC=gcc
 export CXX=g++
 %endif
-export MANDIR=%{_mandir}
-export LIBDIR=%{_libdir}
-export BINDIR=%{_bindir}
-
 export CXXFLAGS="%{optflags} -Wno-sign-compare"
-export LDFLAGS="${CXXFLAGS}"
-%make_build %{build_args} CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
+
+%make_build -e \
+CXXFLAGS="${CXXFLAGS}" \
+LDFLAGS="${CXXFLAGS}" \
+PREFIX=%{_prefix} \
+BINDIR=%{_bindir} \
+MANDIR=%{_mandir} \
+LIBDIR=%{_libdir} \
+LIBEXECDIR=%{_libexecdir} \
+%{build_args}
+
 
 %install
-%make_install PREFIX=%{_prefix} BINDIR=%{_bindir} MANDIR=%{_mandir} LIBDIR=%{_libdir} %{build_args}
+%make_install -e \
+PREFIX=%{_prefix} \
+BINDIR=%{_bindir} \
+MANDIR=%{_mandir} \
+LIBDIR=%{_libdir} \
+LIBEXECDIR=%{_libexecdir} \
+%{build_args}
 
 %post
 "%_sbindir/update-alternatives" --install \
@@ -92,14 +103,8 @@ fi
 %{_bindir}/ld.mold
 %{_bindir}/ld64.mold
 %dir %{_libdir}/mold
-%{_prefix}/libexec/mold/ld
-%if %{suse_version} < 1550
-%dir %{_prefix}/libexec
-%dir %{_prefix}/libexec/mold
-%else
 %{_libexecdir}/mold/ld
 %dir %{_libexecdir}/mold
-%endif
 %{_libdir}/mold/mold-wrapper.so
 %{_mandir}/man1/mold.1.gz
 
