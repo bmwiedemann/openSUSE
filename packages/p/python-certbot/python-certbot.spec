@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot
-Version:        1.22.0
+Version:        1.26.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -32,12 +32,12 @@ BuildRequires:  %{python_module configargparse >= 0.9.3}
 BuildRequires:  %{python_module configobj >= 5.0.6}
 BuildRequires:  %{python_module cryptography >= 2.5.0}
 BuildRequires:  %{python_module distro >= 1.0.1}
-BuildRequires:  %{python_module josepy >= 1.9.0}
+BuildRequires:  %{python_module josepy >= 1.13.0}
 BuildRequires:  %{python_module parsedatetime >= 2.4}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytz >= 2019.3}
+BuildRequires:  %{python_module setuptools >= 41.6.0}
 BuildRequires:  %{python_module zope.component}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
@@ -51,8 +51,8 @@ Requires:       python-future
 Requires:       python-josepy >= 1.9.0
 Requires:       python-parsedatetime >= 2.4
 Requires:       python-pyRFC3339
-Requires:       python-pytz
-Requires:       python-setuptools
+Requires:       python-pytz >= 2019.3
+Requires:       python-setuptools >= 41.6.0
 Requires:       python-zope.component
 Requires:       python-zope.interface
 Requires(post): update-alternatives

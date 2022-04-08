@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  7 15:22:22 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 1.26.0
+  * Added a check whether OCSP stapling is supported by the installer when requesting 
+    a certificate with the run subcommand in combination with the --must-staple option. 
+    If the installer does not support OCSP and the --must-staple option is used, Certbot 
+    will raise an error and quit.
+  * Certbot and its acme module now depend on josepy>=1.13.0 due to better type annotation support.
+  * Updated dependencies to use new version of cryptography that uses OpenSSL 1.1.1.
+  * When the --debug-challenges option is used in combination with -v, Certbot now 
+    displays the challenge URLs (for http-01 challenges) or FQDNs (for dns-01 challenges) 
+    and their expected return values.
+  * Support for Python 3.6 was removed.
+  * All Certbot components now require setuptools>=41.6.0.
+  * Certbot and its acme library now require pytz>=2019.3.
+  * Revoking a certificate based on an ECDSA key can now be done with --key-path.
+
+-------------------------------------------------------------------
 Tue Dec 21 18:16:52 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 1.22.0
