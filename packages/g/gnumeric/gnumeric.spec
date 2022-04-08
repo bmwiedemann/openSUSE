@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  libgsf-devel
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 # Disable python3-devel BR for now, not supported yet.
 #BuildRequires:  python3-devel
@@ -134,7 +133,6 @@ Gnumeric is part of the GNOME project.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-autoreconf -fiv
 %configure \
 	--disable-static \
 #	--enable-pdfdocs \
