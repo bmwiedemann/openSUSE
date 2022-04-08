@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  1 18:43:35 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 8.4:
+ * hxselect.c: The :attr() pseudo-element was only matched if it
+   was on the first selector, not if it was on a subsequent selector
+   in a comma-separated list of selectors. (Found and fixed by Bas
+   Ploeger.)
+ * tests/select33.sh: Added test for multiple :attr()
+   selectors. (Contributed by Bas Ploeger.)
+
+-------------------------------------------------------------------
 Fri Feb 11 15:17:14 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 8.3:

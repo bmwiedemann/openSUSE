@@ -17,7 +17,7 @@
 
 
 Name:           html-xml-utils
-Version:        8.3
+Version:        8.4
 Release:        0
 Summary:        A number of utilities for manipulating HTML and XML files
 License:        W3C
