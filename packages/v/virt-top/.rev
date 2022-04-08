@@ -31,4 +31,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>755158</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20e96dd3073fd8705a3f60b49e6545d8</srcmd5>
+    <version>1.1.1</version>
+    <time>1649450754</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 1.1.1
+- Use virt-top.patch to build with dune</comment>
+    <requestid>967744</requestid>
+  </revision>
 </revisionlist>

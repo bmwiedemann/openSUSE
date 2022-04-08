@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/olafhering/virt-top.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">1.0.9</param>
-    <param name="revision">dune-wip</param>
     <param name="filename">virt-top</param>
+    <param name="revision">6a45c04e27b942555e79f96f52e452e56d1aca97</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">git://git.annexia.org/virt-top.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

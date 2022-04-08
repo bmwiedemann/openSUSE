@@ -1,7 +1,7 @@
 #
 # spec file for package virt-top
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,26 @@
 
 
 Name:           virt-top
-Version:        1.0.9
+Version:        1.1.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Utility like top(1) for displaying virtualization stats
 License:        GPL-2.0+
 Group:          System/Management
 Url:            http://people.redhat.com/~rjones/virt-top/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
+Patch0:         %name.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20220222
 BuildRequires:  ocamlfind(calendar)
-BuildRequires:  ocamlfind(csv)
 BuildRequires:  ocamlfind(curses)
-BuildRequires:  ocamlfind(extlib)
+BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(gettext)
 BuildRequires:  ocamlfind(gettext-stub)
 BuildRequires:  ocamlfind(libvirt)
 BuildRequires:  ocamlfind(str)
-BuildRequires:  ocamlfind(xml-light)
+BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 virt-top is a 'top(1)'-like utility for showing stats of virtualized
@@ -57,9 +57,10 @@ dune_release_pkgs='virt-top'
 %install
 %ocaml_dune_install
 %ocaml_create_file_list
-tee -a %{name}.files < %{name}.files.devel
+tee -a %name.files < %name.files.devel
 
-%files -f %{name}.files
-%{_bindir}/*
+%files -f %name.files
+%_bindir/*
+%_mandir/man1/*
 
 %changelog
