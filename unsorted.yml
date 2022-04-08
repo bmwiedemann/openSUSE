@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -250,6 +250,10 @@ unsorted:
   - RigelEngine 
   - Rivet-devel 
   - Rivet-plugins 
+  - SDL-devel 
+  - SDL-devel-32bit: [x86_64] 
+  - SDL-devel-doc 
+  - SDL2_sound-devel 
   - SDL_sound-devel 
   - SHERPA-MC-devel 
   - SVT-AV1: [x86_64] 
@@ -9367,8 +9371,6 @@ unsorted:
   - libRecast1 
   - libRivet-3_1_5 
   - libSDL-1_2-0-32bit: [x86_64] 
-  - libSDL-devel 
-  - libSDL-devel-32bit: [x86_64] 
   - libSDL2-2_0-0-32bit: [x86_64] 
   - libSDL2-devel 
   - libSDL2-devel-32bit: [x86_64] 
@@ -9388,6 +9390,7 @@ unsorted:
   - libSDL2_net-2_0-0-32bit: [x86_64] 
   - libSDL2_net-devel 
   - libSDL2_net-devel-32bit: [x86_64] 
+  - libSDL2_sound2 
   - libSDL2_ttf-2_0-0 
   - libSDL2_ttf-2_0-0-32bit: [x86_64] 
   - libSDL2_ttf-devel 
@@ -17122,6 +17125,7 @@ unsorted:
   - ncmpcpp 
   - nco 
   - nco-doc 
+  - ncspot 
   - ncurses-devel 
   - ncurses-devel-32bit: [x86_64] 
   - ncurses-devel-static 
@@ -17739,16 +17743,12 @@ unsorted:
   - ocaml 
   - ocaml-astring 
   - ocaml-astring-devel 
-  - ocaml-base 
-  - ocaml-base-devel 
   - ocaml-base64 
   - ocaml-base64-devel 
   - ocaml-benchmark 
   - ocaml-benchmark-devel 
   - ocaml-bigarray-compat 
   - ocaml-bigarray-compat-devel 
-  - ocaml-bin_prot 
-  - ocaml-bin_prot-devel 
   - ocaml-bisect_ppx 
   - ocaml-bisect_ppx-devel 
   - ocaml-brlapi 
@@ -17791,8 +17791,6 @@ unsorted:
   - ocaml-extlib-devel 
   - ocaml-facile 
   - ocaml-facile-devel 
-  - ocaml-fieldslib 
-  - ocaml-fieldslib-devel 
   - ocaml-fileutils 
   - ocaml-fileutils-devel 
   - ocaml-findlib 
@@ -17829,8 +17827,6 @@ unsorted:
   - ocaml-mccs-devel 
   - ocaml-menhir 
   - ocaml-menhir-devel 
-  - ocaml-migrate-parsetree 
-  - ocaml-migrate-parsetree-devel 
   - ocaml-ocaml-compiler-libs 
   - ocaml-ocaml-compiler-libs-devel 
   - ocaml-ocamlbuild 
@@ -17846,24 +17842,8 @@ unsorted:
   - ocaml-pcre-devel 
   - ocaml-pp 
   - ocaml-pp-devel 
-  - ocaml-ppx_bin_prot 
-  - ocaml-ppx_bin_prot-devel 
-  - ocaml-ppx_compare 
-  - ocaml-ppx_compare-devel 
-  - ocaml-ppx_custom_printf 
-  - ocaml-ppx_custom_printf-devel 
   - ocaml-ppx_derivers 
   - ocaml-ppx_derivers-devel 
-  - ocaml-ppx_fields_conv 
-  - ocaml-ppx_fields_conv-devel 
-  - ocaml-ppx_here 
-  - ocaml-ppx_here-devel 
-  - ocaml-ppx_optcomp 
-  - ocaml-ppx_optcomp-devel 
-  - ocaml-ppx_sexp_conv 
-  - ocaml-ppx_sexp_conv-devel 
-  - ocaml-ppx_variants_conv 
-  - ocaml-ppx_variants_conv-devel 
   - ocaml-ppxlib 
   - ocaml-ppxlib-devel 
   - ocaml-ptmap 
@@ -17891,14 +17871,10 @@ unsorted:
   - ocaml-source 
   - ocaml-stdcompat 
   - ocaml-stdcompat-devel 
-  - ocaml-stdio 
-  - ocaml-stdio-devel 
   - ocaml-stdlib-shims 
   - ocaml-stdlib-shims-devel 
   - ocaml-uutf 
   - ocaml-uutf-devel 
-  - ocaml-variantslib 
-  - ocaml-variantslib-devel 
   - ocaml-xml-light 
   - ocaml-xml-light-devel 
   - ocaml-zarith 
@@ -21179,6 +21155,7 @@ unsorted:
   - protobuf-devel 
   - protobuf-java 
   - protobuf-source 
+  - protonvpn-gui 
   - proxychains-ng 
   - prun-ohpc 
   - psgml 
@@ -22402,6 +22379,7 @@ unsorted:
   - python310-azure-mgmt-recoveryservicessiterecovery 
   - python310-azure-mgmt-redhatopenshift 
   - python310-azure-mgmt-redis 
+  - python310-azure-mgmt-redisenterprise 
   - python310-azure-mgmt-regionmove 
   - python310-azure-mgmt-relay 
   - python310-azure-mgmt-reservations 
@@ -25567,6 +25545,7 @@ unsorted:
   - python38-azure-mgmt-recoveryservicessiterecovery 
   - python38-azure-mgmt-redhatopenshift 
   - python38-azure-mgmt-redis 
+  - python38-azure-mgmt-redisenterprise 
   - python38-azure-mgmt-regionmove 
   - python38-azure-mgmt-relay 
   - python38-azure-mgmt-reservations 
@@ -28577,6 +28556,7 @@ unsorted:
   - python39-azure-mgmt-recoveryservicessiterecovery 
   - python39-azure-mgmt-redhatopenshift 
   - python39-azure-mgmt-redis 
+  - python39-azure-mgmt-redisenterprise 
   - python39-azure-mgmt-regionmove 
   - python39-azure-mgmt-relay 
   - python39-azure-mgmt-reservations 
@@ -33076,6 +33056,7 @@ unsorted:
   - sway-branding-openSUSE 
   - sway-branding-upstream 
   - sway-contrib 
+  - sway-launcher-desktop 
   - swaybar 
   - swaybg 
   - swayidle 
@@ -33227,6 +33208,7 @@ unsorted:
   - tayga 
   - tbb-devel 
   - tboot 
+  - tbsm 
   - tcd 
   - tcl-32bit: [x86_64] 
   - tcl-Hamlib 
@@ -33332,10 +33314,10 @@ unsorted:
   - termrec 
   - termsyn-bitmap-fonts 
   - terraform: [x86_64] 
-  - terraform-provider-aws 
-  - terraform-provider-azurerm 
-  - terraform-provider-helm 
-  - terraform-provider-libvirt 
+  - terraform-provider-aws: [x86_64] 
+  - terraform-provider-azurerm: [x86_64] 
+  - terraform-provider-helm: [x86_64] 
+  - terraform-provider-libvirt: [x86_64] 
   - terraform-provider-null: [x86_64] 
   - terraform-provider-openstack: [x86_64] 
   - terraform-provider-template: [x86_64] 
