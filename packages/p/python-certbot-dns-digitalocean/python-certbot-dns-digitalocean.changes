@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 09:48:14 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.26.0
+  * dns-digitalocean used the SOA TTL for newly created records, rather than 30 seconds. Fixed.
+
+-------------------------------------------------------------------
 Tue Dec 21 18:49:02 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - update to version 1.22.0

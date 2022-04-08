@@ -244,4 +244,12 @@
     <comment></comment>
     <requestid>941937</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3b5f1df5b9c3685746470c7c074d64aa</srcmd5>
+    <version>1.26.0</version>
+    <time>1649450763</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>967764</requestid>
+  </revision>
 </revisionlist>
