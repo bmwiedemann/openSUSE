@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  8 09:11:11 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.144.0:
+  * Update README.md by @qb-abdul in #2105
+  * Add .StateValues as alias of .Values in EnvironmentTemplateData
+    by @itscaro in #2056
+  * Add template function isFile by @itscaro in #2045
+  * Enhance support for kube-version and api-versions by @mumoshu
+    in #2121
+
+-------------------------------------------------------------------
 Sat Mar 19 08:54:38 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.143.1:
