@@ -31,7 +31,11 @@ Source2:        openttd.appdata.xml
 BuildRequires:  SDL-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++ >= 8.1
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
@@ -109,6 +113,11 @@ This package provides the data files needed by %{name} or %{name}-dedicated.
 sed -i "s/__DATE__.*__TIME__/\"${SOURCE_DATE_EPOCH}\"/" src/rev.cpp.in
 
 %build
+%if 0%{?suse_version} <= 1500
+export CXX=g++-10
+%else
+export CXX=g++
+%endif
 # first, we build the dedicated binary inside dedicated/
 %define __builddir dedicated
 %cmake -DCMAKE_INSTALL_BINDIR="bin" -DCMAKE_INSTALL_DATADIR="share" -DOPTION_DEDICATED:BOOL=ON

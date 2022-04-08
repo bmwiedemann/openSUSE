@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  7 16:25:43 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix building for openSUSE Leap, using gcc10-c++
+
+-------------------------------------------------------------------
 Sat Apr  2 19:10:23 UTC 2022 - Jan Baier <jbaier@suse.com>
 
 - update to 12.2
