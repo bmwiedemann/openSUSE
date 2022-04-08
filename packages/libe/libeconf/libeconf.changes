@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 06 21:23:48 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.5+git20220406.c9658f2:
+  * econftool:
+    ** New call "syntax" for checking the configuration files only.
+       Returns an error string with line number if an error occurs.
+    ** New options "--comment" and "--delimeters"
+    ** Parsing one file only if needed.
+
+-------------------------------------------------------------------
 Tue Jan 04 11:22:44 UTC 2022 - schubi@suse.com
 
 - Update to version 0.4.4+git20220104.962774f:

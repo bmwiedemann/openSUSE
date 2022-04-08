@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.4.4+git20220104.962774f
+Version:        0.4.5+git20220406.c9658f2
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        LGPL-2.1-or-later
