@@ -17,7 +17,7 @@
 
 
 Name:           xclock
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Analog / digital clock for X
 License:        X11

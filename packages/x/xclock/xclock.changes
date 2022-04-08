@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  8 09:40:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.1
+  * This release fixes a build issue introduced in 1.1.0 that
+    causes builds to fail on NetBSD and other systems without
+    sincos() in the math library.
+
+-------------------------------------------------------------------
 Sun Apr  3 21:42:17 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.0

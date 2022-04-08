@@ -84,4 +84,15 @@
     when using the X Render extension.</comment>
     <requestid>966697</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>108c195cbfed8e3aab6b8b7746305233</srcmd5>
+    <version>1.1.1</version>
+    <time>1649450752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1
+  * This release fixes a build issue introduced in 1.1.0 that
+    causes builds to fail on NetBSD and other systems without
+    sincos() in the math library.</comment>
+    <requestid>967737</requestid>
+  </revision>
 </revisionlist>
