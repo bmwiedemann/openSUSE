@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 06:00:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- netty3-CVE-2021-43797.patch
+  * backport upstream fix for bsc#1193672, CVE-2021-43797
+
+-------------------------------------------------------------------
 Wed Mar 30 10:04:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules inconditionally
