@@ -250,4 +250,13 @@
     <comment>tweak (forwarded request 947493 from iznogood)</comment>
     <requestid>947901</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>2d096db1e6095152c3c8eeb70769bfa4</srcmd5>
+    <version>1.2.2</version>
+    <time>1649450778</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure flatpak &gt;= 1.12.4 is a build and runtime dependency.
+- Update url in description. (forwarded request 967814 from fcrozat)</comment>
+    <requestid>967860</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,8 @@
 #
 
 
+%define flatpak_version 1.12.4
+
 Name:           flatpak-builder
 Version:        1.2.2
 Release:        0
@@ -31,7 +33,7 @@ BuildRequires:  libcap-devel
 BuildRequires:  pkgconfig >= 0.24
 BuildRequires:  xmlto
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(flatpak) >= 0.11.8
+BuildRequires:  pkgconfig(flatpak) >= %{flatpak_version}
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
@@ -49,10 +51,11 @@ Requires:       %{_bindir}/patch
 Requires:       %{_bindir}/strip
 Requires:       %{_bindir}/tar
 Requires:       %{_bindir}/unzip
+Requires:       flatpak >= %{flatpak_version}
 
 %description
 Tool to build flatpaks from source.
-See https://wiki.gnome.org/Projects/SandboxedApps for more information.
+See https://docs.flatpak.org/ for more information.
 
 %prep
 %autosetup
