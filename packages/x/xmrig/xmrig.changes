@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr  8 14:36:54 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.17.0:
+  * v6.17.0
+  * Disable donate for astrobwt/v2.
+  * Update CHANGELOG.md
+  * v6.17.0-dev
+  * Fixed compilation error
+  * Optimized keccak
+  * Fixed AstroBWT OpenCL config generation
+  * Dero HE (astrobwt/v2) OpenCL support
+  * Dero HE (astrobwt/v2) CUDA config generator
+  * Fixed out of bounds access in astrobwt/v2
+  * Update hwloc for MSVC builds.
+  * #2941 Update deps scripts.
+  * Added alternative algo names for Dero HE
+  * Show block/miniblock counters more often
+  * DaemonClient: fixed broken `coin` setting
+  * Dero HE fork support (astrobwt/v2 algorithm)
+  * Fixed displayed DMI memory information for empty slots.
+  * Fixed GhostRider with hwloc disabled
+  * v6.16.5-dev
+
+-------------------------------------------------------------------
 Tue Feb  8 14:30:05 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.16.4:

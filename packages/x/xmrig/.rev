@@ -426,4 +426,31 @@
   * Fixed armv7 compilation</comment>
     <requestid>952718</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b2bcf9cb8eb6e54584ecbc4c76fccb7e</srcmd5>
+    <version>6.17.0</version>
+    <time>1649450779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.17.0:
+  * v6.17.0
+  * Disable donate for astrobwt/v2.
+  * Update CHANGELOG.md
+  * v6.17.0-dev
+  * Fixed compilation error
+  * Optimized keccak
+  * Fixed AstroBWT OpenCL config generation
+  * Dero HE (astrobwt/v2) OpenCL support
+  * Dero HE (astrobwt/v2) CUDA config generator
+  * Fixed out of bounds access in astrobwt/v2
+  * Update hwloc for MSVC builds.
+  * #2941 Update deps scripts.
+  * Added alternative algo names for Dero HE
+  * Show block/miniblock counters more often
+  * DaemonClient: fixed broken `coin` setting
+  * Dero HE fork support (astrobwt/v2 algorithm)
+  * Fixed displayed DMI memory information for empty slots.
+  * Fixed GhostRider with hwloc disabled
+  * v6.16.5-dev</comment>
+    <requestid>967848</requestid>
+  </revision>
 </revisionlist>
