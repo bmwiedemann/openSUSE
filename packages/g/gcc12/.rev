@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>966408</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>277306a7387b19be81010a15750f523b</srcmd5>
+    <version>12.0.1+git192423</version>
+    <time>1649450721</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to 86242eb1bd03eba82d8e22b01b16925d43bcc539, git192423.
+  Fixes aarch64 bootstrap issue (PR105144).</comment>
+    <requestid>967209</requestid>
+  </revision>
 </revisionlist>

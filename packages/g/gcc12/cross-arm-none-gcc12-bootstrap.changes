@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  6 07:22:15 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 86242eb1bd03eba82d8e22b01b16925d43bcc539, git192423.
+  Fixes aarch64 bootstrap issue (PR105144).
+
+-------------------------------------------------------------------
 Fri Apr  1 09:52:40 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Add provides/conflicts to glibc crosses since only one GCC version
