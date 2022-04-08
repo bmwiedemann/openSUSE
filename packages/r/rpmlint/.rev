@@ -3698,4 +3698,27 @@ oddjob-gpupdate isn't blocked)</comment>
   * dbus-services: whitelist usbguard (bsc#1196621)</comment>
     <requestid>964959</requestid>
   </revision>
+  <revision rev="393" vrev="1">
+    <srcmd5>a96f5b61a4e81d135d32404e6c082317</srcmd5>
+    <version>2.2.0+git20220406.bcfe5ad</version>
+    <time>1649450725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220406.bcfe5ad:
+  * sudoers whitelist: add preliminary ceph whitelisting (bsc#1196141)
+
+- Update to version 2.2.0+git20220331.762044d:
+  * Port opensuse checks.
+  * Additional name cleanup in pkg.py.
+  * lint.py: remove _check_valid_suffix and use str in ().
+  * pkg.py cleanup
+  * sudoers whitelist: add test entry for rpmlint-integration-test OBS package
+  * Re-init AlternativesCheck for each package.
+
+- Update to version 2.2.0+git20220330.4d069ea:
+  * new whitelist restriction for /etc/sudoers.d (bsc#1172785)
+
+- Update to version 2.2.0+git20220330.76fbb53:
+  * Re-init AlternativesCheck for each package.</comment>
+    <requestid>967262</requestid>
+  </revision>
 </revisionlist>

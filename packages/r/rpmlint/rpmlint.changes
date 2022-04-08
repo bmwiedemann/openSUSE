@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Apr 06 09:45:45 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220406.bcfe5ad:
+  * sudoers whitelist: add preliminary ceph whitelisting (bsc#1196141)
+
+-------------------------------------------------------------------
+Thu Mar 31 13:39:10 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220331.762044d:
+  * Port opensuse checks.
+  * Additional name cleanup in pkg.py.
+  * lint.py: remove _check_valid_suffix and use str in ().
+  * pkg.py cleanup
+  * sudoers whitelist: add test entry for rpmlint-integration-test OBS package
+  * Re-init AlternativesCheck for each package.
+
+-------------------------------------------------------------------
+Wed Mar 30 10:34:56 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220330.4d069ea:
+  * new whitelist restriction for /etc/sudoers.d (bsc#1172785)
+
+-------------------------------------------------------------------
+Wed Mar 30 07:37:43 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220330.76fbb53:
+  * Re-init AlternativesCheck for each package.
+
+-------------------------------------------------------------------
 Sat Mar 26 05:36:56 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220325.40598ec:
