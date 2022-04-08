@@ -34,4 +34,4 @@ diff -uNr antlr4-4.7.2.org/runtime/Cpp/runtime/CMakeLists.txt antlr4-4.7.2/runti
 +        DESTINATION ${LIB_INSTALL_DIR}
          EXPORT antlr4-targets)
  
- install(DIRECTORY "${PROJECT_SOURCE_DIR}/runtime/src/" 
+ install(DIRECTORY "${PROJECT_SOURCE_DIR}/runtime/src/"

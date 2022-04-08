@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  8 12:53:28 UTC 2022 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Upgrade to version 4.9.3
+  * changes https://github.com/antlr/antlr4/releases/tag/4.9.3
+- Removed patch:
+  * utf8cpp-from-system.patch
+    + merged upstream in 4.9.3
+- Updated patch:
+  * antlr4-install-path.patch.in
+    + removed space at line ending to match current code
+
+-------------------------------------------------------------------
 Wed Jul 28 07:26:49 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Small fixes to allow to build on SLE12-SP5

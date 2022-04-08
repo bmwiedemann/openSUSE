@@ -1,7 +1,7 @@
 #
 # spec file for package antlr4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define libver 4_9_2
+%define libver 4_9_3
 %define runtime_cpp_lib libantlr4-runtime
 %define runtime_cpp_libver %{runtime_cpp_lib}%{libver}
 Name:           antlr4
-Version:        4.9.2
+Version:        4.9.3
 Release:        0
 Summary:        Java parser generator
 # C# runtime is MIT-licensed, but currently it is not used in this package
@@ -30,7 +30,6 @@ URL:            https://www.antlr.org/
 Source0:        https://github.com/antlr/antlr4/archive/%{version}.tar.gz#/antlr4-%{version}.tar.gz
 Source100:      antlr4-install-path.patch.in
 Patch0:         unicodedata.patch
-Patch1:         utf8cpp-from-system.patch
 BuildRequires:  cmake >= 3.3.0
 BuildRequires:  fdupes
 %if 0%{?suse_version} >= 1500
@@ -136,7 +135,6 @@ binary files.
 
 %prep
 %setup -q
-%patch1 -p1
 cat %{SOURCE100} | sed 's#@LIBVER@#%{libver}#g' | patch -p1 -u
 
 find -name \*.jar -delete
