@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only
@@ -25,9 +25,6 @@ Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
 Source1:        https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz.asc
-# PATCH-FIX-UPSTREAM 8784-old-school-cmd-subst.patch gh#fish-shell/fish-shell#8784 mcepl@suse.com
-# Fix a syntax error (fish != bash)
-Patch0:         8784-old-school-cmd-subst.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
