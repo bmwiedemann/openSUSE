@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  8 07:59:30 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Mon Jan 25 08:05:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use pytest macro 
