@@ -1,4 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-            <param name="url">git://github.com/yast/yast-translations.git</param>
-          <param name="changesrevision">3dfcfc0d1f6ae8b0a8d829507446c39a45654641</param></service></servicedata>
+            <param name="url">https://github.com/yast/yast-translations.git</param>
+          <param name="changesrevision">6a9f225e0e6d0c0f92f49aaa35ee1ccdc3ae5839</param></service></servicedata>
