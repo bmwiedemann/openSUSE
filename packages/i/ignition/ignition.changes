@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  5 14:57:20 UTC 2022 - Ignaz Forster <iforster@suse.com>
+
+- ignition-mount-initrd-fstab.service:
+  - Don't ignore errors in loops
+  - Unmount mount points recursively - a new submount may have
+    appeared
+  - Split umount part into own service file:
+- ignition-umount-initrd-fstab.service:
+  - Unmounts the additional mounts as soon as they are not
+    required for Ignition any more; the ExecStop operation is
+    running quite late in initrd and may unmount essential mount
+    points flagged with "x-initrd.mount" (e.g. when storing /usr on
+    a separate mount point). In theory this will also affect
+    Ignition itself, but it hasn't been reported as a problem so
+    far.
+
+-------------------------------------------------------------------
+Mon Apr  4 17:23:10 UTC 2022 - Ignaz Forster <iforster@suse.com>
+
+- Don't include non-MarkDown files in documentation
+
+-------------------------------------------------------------------
 Fri Mar 25 09:59:53 UTC 2022 - Ignaz Forster <iforster@suse.com>
 
 - Add ignition-touch-selinux-autorelabel.conf:

@@ -17,7 +17,4 @@ Before=ignition-files.service
 
 [Service]
 Type=oneshot
-RemainAfterExit=yes
-ExecStart=/bin/sh -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ && $1 !~ /^#/ {print "if ! findmnt /sysroot" $2 " >/dev/null; then mount -t " $3 " -o " $4 " " $1 " /sysroot" $2 "; fi;" }'"'"' /sysroot/etc/fstab)'
-ExecStop=/bin/sh -c 'if [ -f /sysroot/etc/systemd/system-preset/20-ignition.preset ]; then while read line; do systemctl --root=/sysroot $line; done < /sysroot/etc/systemd/system-preset/20-ignition.preset; fi'
-ExecStop=/usr/bin/umount -a -O "x-initrd.mount"
+ExecStart=/bin/sh -e -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ && $1 !~ /^#/ {print "if ! findmnt /sysroot" $2 " >/dev/null; then mount -t " $3 " -o " $4 " " $1 " /sysroot" $2 "; fi;" }'"'"' /sysroot/etc/fstab)'

@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/coreos/ignition
 Source:         %{name}-%{version}.tar.xz
 Source1:        ignition-mount-initrd-fstab.service
+Source2:        ignition-umount-initrd-fstab.service
 Source3:        ignition-suse-generator
 Source4:        module-setup.sh
 Source5:        02_ignition_firstboot
@@ -88,7 +89,7 @@ which creates firstboot_happened after the first boot.
 
 mkdir dracut/30ignition-microos grub systemd_suse
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE12}
-cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} %{SOURCE10} %{SOURCE11} %{SOURCE13} %{SOURCE14} dracut/30ignition-microos/
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} %{SOURCE10} %{SOURCE11} %{SOURCE13} %{SOURCE14} dracut/30ignition-microos/
 %ifarch aarch64 %{arm}
 cp %{SOURCE21} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 %else
@@ -150,7 +151,7 @@ fi
 
 %files
 %license LICENSE
-%doc README.md README.SUSE docs
+%doc README.md README.SUSE docs/*.md
 %{_prefix}/lib/dracut/modules.d/30ignition
 %{_prefix}/lib/dracut/modules.d/30ignition-microos
 %{_bindir}/ignition-validate

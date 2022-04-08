@@ -1,6 +1,6 @@
 Changes for openSUSE / SLE:
 
-* ignition-mount-initrd-fstab.service:
+* ignition-mount-initrd-fstab.service / ignition-umount-initrd-fstab.service:
   Upstream Ignition will only mount partitions or subvolumes explicitly
   mentioned in the Ignition configuration. A default SUSE system, however,
   is split over several subvolumes, and most users won't want to define

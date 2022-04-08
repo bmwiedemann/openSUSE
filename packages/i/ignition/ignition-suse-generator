@@ -9,6 +9,7 @@ set -e
 . /run/ignition.env
 
 add_requires ignition-mount-initrd-fstab.service ignition-files.service
+add_requires ignition-umount-initrd-fstab.service ignition-files.service
 add_requires ignition-enable-network.service ignition-fetch.service
 
 if [ -z "${PLATFORM_ID}" ]; then

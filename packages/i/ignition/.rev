@@ -537,4 +537,18 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
     <comment></comment>
     <requestid>964893</requestid>
   </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>7a70ffe39df250482c1f30898b2c0dc2</srcmd5>
+    <version>2.13.0</version>
+    <time>1649461429</time>
+    <user>dimstar_suse</user>
+    <comment>- ignition-mount-initrd-fstab.service:
+  - Don't ignore errors in loops
+  - Unmount mount points recursively - a new submount may have appeared
+  - Split umount part into own service file:
+- ignition-umount-initrd-fstab.service:
+  - Unmounts the additional mounts as soon as they are not required for Ignition any more; the ExecStop operation is running quite late in initrd and may unmount essential mount points flagged with &quot;x-initrd.mount&quot; (e.g. when storing /usr on a separate mount point). In theory this will also affect Ignition itself, but it hasn't been reported as a problem so far.
+- Don't include non-MarkDown files in documentation</comment>
+    <requestid>967468</requestid>
+  </revision>
 </revisionlist>
