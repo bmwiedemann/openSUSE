@@ -29,7 +29,6 @@ Source:         https://github.com/PyCQA/pydocstyle/archive/%{version}.tar.gz#/p
 # Tests invoke pip and pycodestyle directly, when they should use sys.executable.
 # https://github.com/PyCQA/pydocstyle/pull/403
 Patch0:         integration-tests-invocation.patch
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pathlib}
 # Tests invoke pip
 BuildRequires:  %{python_module pip}

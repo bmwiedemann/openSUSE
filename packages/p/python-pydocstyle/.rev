@@ -127,4 +127,12 @@
   * Functions and nested functions decorated with @overload no longer reported as D103.</comment>
     <requestid>965073</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4536b3101e79f57d82a1834f478bd3ef</srcmd5>
+    <version>6.1.1</version>
+    <time>1649461434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967525</requestid>
+  </revision>
 </revisionlist>
