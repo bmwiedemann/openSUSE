@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  8 06:16:25 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Move upstream repository to
+  https://github.com/morrownr/8812au-20210629 since
+  https://github.com/gordboy/rtl8812au-5.9.3.2 is now archived
+  and the morrownr repository is the recommended alternative.
+- Update version to 5.13.6+git20220308.0ae0e77 which is the
+  version in the new upstream.
+- Drop patch. Linux 5.15 support is already included in the new
+  upstream:
+  * Drop-ipx-support-on-Linux-5.15.patch
+
+-------------------------------------------------------------------
 Mon Nov 15 11:25:06 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix build on Tumbleweed - use kernel_module_directory

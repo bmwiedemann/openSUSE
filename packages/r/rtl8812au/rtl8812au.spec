@@ -1,7 +1,7 @@
 #
 # spec file for package rtl8812au
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!kernel_module_directory:%define kernel_module_directory /lib/modules}
 
 Name:           rtl8812au
-Version:        5.9.3.2+git20210427.6ef5d8f
+Version:        5.13.6+git20220308.0ae0e77
 Release:        0
 Summary:        Kernel driver for Realtek 802.11ac 8812au wifi cards
 License:        GPL-2.0-only
@@ -33,8 +33,6 @@ Source2:        LICENSE
 Patch0:         fix-backported-ndo_select_queue.patch
 # PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
 Patch1:         fix-backported-update_mgmt_frame_registrations.patch
-# PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
-Patch2:         Drop-ipx-support-on-Linux-5.15.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  bc
 BuildRequires:  binutils
@@ -75,8 +73,6 @@ https://github.com/maurossi/rtl8812au/ .
 %if 0%{?sle_version} == 150300
 %patch1 -p1
 %endif
-
-%patch2 -p1
 
 set -- *
 mkdir source
