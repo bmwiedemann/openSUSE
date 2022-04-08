@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  7 15:45:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add missing bug references to this changelog.
+
+-------------------------------------------------------------------
 Mon Jun 14 21:04:54 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.38.0:
@@ -115,19 +120,20 @@ Mon Mar  9 09:56:49 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 -------------------------------------------------------------------
 Mon Jun 10 13:59:24 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
-- Update to fix release 0.35.2 ... just fixing the test suite.
+- Update to fix release 0.35.2 ... just fixing the test suite
+  (bsc#1172226).
 
 -------------------------------------------------------------------
 Sat Jun  8 08:58:56 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace fix_OpenSSL111c.patch with proper new release 0.35.1
-  (there is really not much more in it).
+  (there is really not much more in it; bsc#1149792).
 
 -------------------------------------------------------------------
 Fri Jun  7 22:21:23 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add fix_OpenSSL111c.patch patch to ensure compatibility with
-  OpenSSL 1.1.1c. gl#m2crypto/m2crypto#258
+  OpenSSL 1.1.1c. gl#m2crypto/m2crypto#258 and jsc#SLE-9135.
 
 -------------------------------------------------------------------
 Thu Jun  6 12:27:35 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -138,7 +144,7 @@ Thu Jun  6 12:27:35 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Fri Apr 26 16:48:44 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
-- Upgrade to 0.33.0:
+- Upgrade to 0.33.0 (bsc#1135009):
   - eb4525c - Stop pretending to support Python 3.4.
   - 6a89548 - Fix use of urlunsplit (25 hours ago)
   - 0a5a356 - tests/test_ssl: use -ciphercuites for TLS1.3 cipher in

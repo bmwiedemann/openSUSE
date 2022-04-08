@@ -448,4 +448,230 @@ this has necessary adjustments for openssl w/o sslv2; needed for Factory! (forwa
 </comment>
     <requestid>900001</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>71f2852ee92744da446b45721e08e6ee</srcmd5>
+    <version>0.38.0</version>
+    <time>1649461436</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing bug references to this changelog.
+- Update to 0.38.0:
+    - Remove the last use of setup.py test idiom.
+    - Use m2_PyObject_AsReadBuffer instead of PyObject_AsReadBuffer.
+    - Add support for arm64 big endian &lt;Steev Klimaszewski&gt;
+    - Make support of RSA_SSLV23_PADDING optional (it has been deprecated).
+    - Move project to src/ layout
+    - Allow verify_cb_* to be called with ok=True  &lt;Casey Deccio&gt;
+    - Be prepared if any of constants in x509_vfy.h is not available.
+    - But we do support 3.8
+    - We DO NOT support Python 2.6.
+- All patches were upstreamed:
+    - 293_sslv23_padding.patch
+    - no-need-parameterized.patch
+    - python-M2Crypto-Allow-on-UNABLE_TO_VERIFY_LEAF_SIGNATURE.patch
+- Add no-need-parameterized.patch ... we don't need run-time requirement
+  of parameterized package (bsc#1185150).
+- Add 293_sslv23_padding.patch to avoid using RSA_SSLV23_PADDING
+  (gl#m2crypto/m2crypto#293, gh#openssl/openssl#14216).
+- OpenSSL allows the verificaton to continue on
+  UNABLE_TO_VERIFY_LEAF_SIGNATURE
+  * This unifies the behaviour of a single certificate with an
+    unknown CA certificate with a self-signed certificate.
+- Add python-M2Crypto-Allow-on-UNABLE_TO_VERIFY_LEAF_SIGNATURE.patch
+  (Thanks for Debian,
+  https://salsa.debian.org/python-team/packages/m2crypto/-/commit/e0e9ad5cfff8)
+- Add source signature file
+- Dr. Strangelove or: How I Learned to Stop Worrying and Love pytest
+- Update to 0.37.1:
+    - Remove support for CentOS 6 and Python 2.6 (remove 
+      tests.vendor module). Python 2.7 is still fully supported.
+    - Remodel CI:
+      - on GitHub switched from Travis-CI to GH Actions
+      - on GitLab-CI: stop testing 2.7 on Fedora, add centos7
+      - update appveyor.yml
+    - Stop playing with swig in setup.py, we don't support swig 1.* 
+      anymore.
+    - Fix dereferencing of pointers (gl#m2crypto/m2crypto#281)
+    - Replace deprecated PyObject_AsReadBuffer with our own shim 
+      (thanks to Casey Deccio for saving my bacon there).
+    - Use parametrized to create parametrized tests (new external 
+      dependency).
+    - Only use DigestSign() and DigestUpdate() with OpenSSL &gt;= 1.1.1
+    - Expose all the X509_V_FLAG
+    - Add support for DigestSign* and DigestVerify*
+Update to 0.36.0:
+    - wrap SocketIO in io.Buffered* for makefile &lt;lethliel&gt;
+    - SSL.Connection.close accepts an argument to force the socket closing
+      &lt;Christophe Haen&gt;
+    - SSL.Connection: make the clientPostConnectionCheck an instance
+      attribute &lt;Christophe Haen&gt;
+    - Fixed bug with usage of unexisting method getreply at SSL_Transport
+      &lt;roman-nagaev&gt;
+    - Add appveyor builds for python 3.7 and 3.8 &lt;Daniel A. Wozniak&gt;
+    - Fixed syntax warning on line 44. &lt;randomfox&gt;
+    - Update M2Crypto.six to 1.13.0 &lt;Matěj Cepl&gt;
+    - base64.decodestring() was finally removed in Python 3.8. &lt;Matěj Cepl&gt;
+    - wrap SocketIO in io.Buffered* for makefile &lt;lethliel&gt;
+    - NULL is legal argument for key and iv paramters of EVP_CipherInit(3)
+      &lt;Matěj Cepl&gt;
+    - Expose X509_V_FLAG_ALLOW_PROXY_CERTS verification flag and
+      X509_STORE_SET_FLAGS function &lt;Christophe Haen&gt;
+    - Stop testing for 2.6 and 3.4 on Travis. Start testing 3.8 &lt;Matěj Cepl&gt;
+    - Extend test cert validity to 2049 &lt;Bernhard M. Wiedemann&gt;
+    - Revert using typing module in 2.6. It is just not worthy. &lt;Matěj Cepl&gt;
+    - Update Debian/stable SSL as well &lt;Matěj Cepl&gt;
+    - Make tests pass again. &lt;Matěj Cepl&gt;
+    - Stop using string module, which has been deprecated. &lt;Matěj Cepl&gt;
+    - Tiny fixes to make pyls more happy &lt;Matěj Cepl&gt;
+    - CI: Rework Fedora CI configuration &lt;Neal Gompa&gt; 
+- Remove upstream merged patch 001-fix-buffering-for-python38.patch.
+- Do not pull in py2 pkg on doc subpkg
+- in python3.8 the fp is wrapped in a Buffer. SSL.Connection.makefile 
+  returns a socketIO which is no buffer.
+  Added: 001-fix-buffering-for-python38.patch 
+- Update to fix release 0.35.2 ... just fixing the test suite
+  (bsc#1172226).
+- Replace fix_OpenSSL111c.patch with proper new release 0.35.1
+  (there is really not much more in it; bsc#1149792).
+- Add fix_OpenSSL111c.patch patch to ensure compatibility with
+  OpenSSL 1.1.1c. gl#m2crypto/m2crypto#258 and jsc#SLE-9135.
+- Upgrade to 0.34.0
+- no upstream changelog
+- Upgrade to 0.33.0 (bsc#1135009):
+  - eb4525c - Stop pretending to support Python 3.4.
+  - 6a89548 - Fix use of urlunsplit (25 hours ago)
+  - 0a5a356 - tests/test_ssl: use -ciphercuites for TLS1.3 cipher in
+        openssl1.1
+  - 8a0a3e3 - There are apparently multiword CPP variables. Taking that
+        into account.
+- Remove
+  0001-tests-test_ssl-use-ciphercuites-for-TLS1.3-cipher-in.patch
+  as it included in the latest release.
+- Fix for compatibility with OpenSSL 1.1.0h by adding the patch
+  0001-tests-test_ssl-use-ciphercuites-for-TLS1.3-cipher-in.patch
+- Update to 0.32.0:
+    * 471582f - setup.py: use ${CPP} as path to cpp &lt;Duncan Macleod&gt;
+    * efb1580 - Bump pipeline OpenSSL from 1.1.0i to 1.1.0j 
+    * 35bb71b - Stub wchar_t helpers and ignore unused WCHAR defs 
+    * effc7be - Add type comment to setup.py  &lt;Matěj Cepl&gt;
+- Whoops! Here -devel dependency certainly should stay
+- Remove superfluous devel dependency for noarch package
+- Update to 0.31.0 released tarball:
+    * Compatibility with OpenSSL 1.1.1 (partly workaround, maybe
+      requires further investigation)
+    * Fixes for Windows builds
+    * Fixes of installs on AWS Lambda
+    * Fixes of Mac OS X related failures
+    * Fix Python 2.6 compatibility issues
+- pre-release of 0.31.0 tarball
+- add openssl-1_1_1-compat.patch to fix OpenSSL 1.1.1 compatibility.
+- Update to 0.30.1:
+    * Various small typos (Windows builds, Fix SSL.Connection.__del__)
+    * The project is now Linux-distribution agnostic
+    * Replace all old-style classes with the new ones (it shouldn't
+      cause any problems, but feel free to file an issue, if it does)
+    * Do not by-pass a potential transfer decoding in m2urllib2
+    * Update M2Crypto.six with 1.11.0 and replace our local workarounds
+      with new functions.
+    * SSLv3 just removed.
+    * Don't support Python 2.6 on Windows anymore. Windows users don't
+      have python as a system package, so they are usually more likely
+      to upgrade anyway.
+- Update to 0.29.0 (Fixes of some small bugs)
+- Require python-xml that is used by some parts of M2crypto
+- Update to 0.28.2:
+  * Fix ppc builds
+- Enable tests, fix docu install phase
+- Removed obsolete patches fix-build-python3.diff
+  and fix-openssl-include-path.diff
+- Update to 0.28.1
+  * compability with Python 3
+  * building on Mac OS X should be now more reliable and automagic
+  * Fix licence in metadata: it is MIT, not BSD
+  * Fix and add tests for SWIG/_aes.i module
+  * Bundle-in unittest2 for Python 2.6
+  * Remove all PGP modules
+- use generic way to require python-typing now that python3 provides it
+- License set to MIT
+- Remove unnecessary fdupes call 
+- Update to 0.27.0
+  * Fix licence: it is MIT, not BSD
+  * At least minimal support of SNI in httpslib.
+  * Small bugfixes and cleanups.
+  * More effort to make build system more robust.
+  * Restore m2.rsa_set_e() and m2.rsa_set_n().
+  * Make sure that every exceptional return throws and exception and viceversa.
+- Add patch fix-build-python3.diff to let it build with python3
+- Add patch fix-openssl-include-path.diff to fix openssl include path
+  (the code already includes the openssl/ part)
+- Create a new package python-M2Crypto-doc for documentation since rpmlint
+  was complaining around 75% of the package was documentation.
+- Update to 0.26.4 with fix for OpenSSL 1.1.0 and LibreSSL
+- Update to 0.26.3 with fix for a syntax error
+- Update to 0.26.2
+  * compatibility with OpenSSL 1.1.0
+- only require python3-typing if necessary
+- It doesn't look like python3-m2crypto ever existed, so don't
+  provide it.
+- Add python-typing as a dependency 
+- Provide python-m2crypto in the python2 package
+- Update to 0.26.0
+  * No changelog provided
+- Implement single-spec version.
+- use pypi.io as Source URL
+- update to 0.25.1
+- set new dependency on package python-typing
+- update to 0.24.0 (bsc#1001377)
+  * No changelog provided
+- README is no longer included
+- Removed obsolete python-M2Crypto-SWIG-3.0.5.patch
+- fix SSLv2 link error for 13.2 and Leap 42.1 (M2Crypto-0.22.5-SSLv2_link_error.patch) (bsc#969731)
+- update to 0.22.5, fix URL
+- drop python-M2Crypto-SWIG-3.0.5.patch (functionality included upstream)
+- SLE12 requires swig3 for a successful build, too 
+- fix build for openSUSE Leap 42.1 (requires swig3)
+- Add python-M2Crypto-SWIG-3.0.5.patch: Fix generation of M2Crypto
+  module when using SWIG 3.0.5.
+- Manually install _m2crypto shadow file: setup.py misses it.
+  (boo#917759, boo#917815).
+- Update to 0.22.3
+  * No changelog provided
+- Demos are no longer included
+- Require python-setuptools instead of distribute (upstreams merged)
+- fixed %fdupes creating dangling symlinks (bnc#835687)
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Add requirement on python-pyOpenSSL, thinner than M2Crypto
+- Narrow the scops of fdupes (see bnc#784670)
+- fix Obsoletes
+- fix license to be in spdx.org format
+- Use SPDX style license
+- Require python-distribute instead of python-setuptools
+- Don't package testsuite
+- Renamed to python-M2Crypto to match PyPI upstream name
+  * Added Provides/Obsoletes for python-m2crypto
+- Fixed wrong-EOL, executable bit for docs rpmlint warnings
+- Update to 0.21.1
+  - Support OpenSSL 1.0. Thanks to Miloslav Trmac for figuring out
+    how to fix test_smime.py
+  - Rename m2.engine_init to engine_init_error so that ENGINE_init
+    and ENGINE_finish can be exposed, thanks to Erlo
+  - 0.20 started releasing Python locks even around some operations
+    that interacted with the Python runtime, potentially causing
+    crashes and other weirdness, fix by Miloslav Trmac
+  - Make httpslib.ProxyHTTPSConnection work with Python 2.3
+- Removed patches that are now upstream
+- Removed authors from spec
+- add some upstream patches to fix openssl 1.0 build
+- update to 0.20.2
+  * PGP subpackage is deprecated
+  * m2urllib now closes sockets properly
+  * port is now integer in ProxyHTTPSConnection
+  * many bugfixes
+  * test coverage up to 80%
+- enabled test suite in %check phase
+  (requires python-setuptools and openssl binary to run)
+- Update to M2Crypto 0.19.1.
+- package taken from devel:languages:python in OBS
+</comment>
+    <requestid>967536</requestid>
+  </revision>
 </revisionlist>
