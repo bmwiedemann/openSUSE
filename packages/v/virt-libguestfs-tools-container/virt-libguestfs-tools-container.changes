@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  4 13:04:36 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle aarch64 specific bits
+- Enable build only on aarch64 and x86_64
+
+-------------------------------------------------------------------
 Fri Apr  1 07:53:00 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Explicitly state the dependency on kubevirt main package

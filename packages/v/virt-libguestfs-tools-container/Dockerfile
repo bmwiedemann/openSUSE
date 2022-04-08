@@ -3,11 +3,16 @@
 #!BuildTag: %%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
+#!ExclusiveArch: x86_64 aarch64
+
 # libguestfs-tools container image
 # KUBEVIRTFROM defined in prjconf, e.g.
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
+# TARGETARCH defined in prjconf, to handle architecture specific bits
+# since TARGETARCH is not defined in OBS builds yet. Default to amd64.
+ARG TARGETARCH=amd64
 
 # labelprefix=%%LABELPREFIX%%
 PREFIXEDLABEL org.opencontainers.image.title="kubevirt libguestfs-tools container"
@@ -42,13 +47,24 @@ RUN zypper -n install \
               mdadm \
               parted \
               qemu-tools \
-              qemu-x86 \
               reiserfs \
               supermin \
               xfsprogs \
               xorriso \
-              zerofree && \
-    zypper -n remove kubevirt-manifests && \
+              zerofree
+
+#!ArchExclusiveLine: x86_64
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+              zypper -n install qemu-x86 ; \
+              fi;
+
+# qemu-x86 is required on aarch64 to get the test to pass (allow fallback to non KVM mode)
+#!ArchExclusiveLine: aarch64
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+              zypper -n install qemu-arm qemu-uefi-aarch64 qemu-x86; \
+              fi;
+
+RUN zypper -n remove kubevirt-manifests && \
     zypper clean -a
 
 COPY entrypoint.sh /entrypoint.sh
