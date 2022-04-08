@@ -493,4 +493,12 @@
     <comment></comment>
     <requestid>955420</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>a412d79c39a5306693e59ccaa50a0708</srcmd5>
+    <version>42.0</version>
+    <time>1649450775</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 42.0 (forwarded request 966951 from dimstar)</comment>
+    <requestid>967853</requestid>
+  </revision>
 </revisionlist>
