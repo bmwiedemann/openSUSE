@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        3.4.4
+Version:        4.0.3
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -32,6 +32,10 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
 Source3:        %{name}-rpmlintrc
 Source4:        README.SUSE.SLES
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Relabel-relabel-links-instead-of-their-targets.patch
+Patch2:         0002-specgen-do-not-set-OOMScoreAdj-by-default.patch
+Patch3:         0001-Adjust-buildah-to-opencontainers-selinux-v1.10.1.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel
@@ -47,7 +51,7 @@ BuildRequires:  libbtrfs-devel
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) = 1.13
+BuildRequires:  golang(API) = 1.16
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 Recommends:     apparmor-abstractions
@@ -77,7 +81,7 @@ Podman is able to interact with container images create in buildah, cri-o, and
 skopeo, as they all share the same datastore backend.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %package remote
 Summary: Client for managing podman containers remotely
@@ -128,7 +132,7 @@ make %{?_smp_mflags} docs
 # Updates must be tested manually.
 
 %install
-make DESTDIR=%{buildroot} PREFIX=/usr install install.completions install.docker install.docker-docs
+make DESTDIR=%{buildroot} PREFIX=/usr install install.completions install.docker
 
 # packaged in libcontainers-common
 rm %{buildroot}/usr/share/man/man5/oci-hooks.*
@@ -157,6 +161,9 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %dir %{_prefix}/lib/modules-load.d
 %{_prefix}/lib/modules-load.d/podman.conf
 %{_tmpfilesdir}/podman.conf
+# Rootless port
+%dir %{_libexecdir}/podman
+%{_libexecdir}/podman/rootlessport
 # Completion
 %{_datadir}/bash-completion/completions/podman
 %{_datadir}/zsh/site-functions/_podman
@@ -191,7 +198,6 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 
 %files docker
 %{_bindir}/docker
-%{_mandir}/man1/docker*.1*
 %{_tmpfilesdir}/podman-docker.conf
 
 %post docker
