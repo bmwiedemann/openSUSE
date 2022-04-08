@@ -25,6 +25,8 @@ Group:          System/X11/Terminals
 URL:            https://github.com/o2sh/onefetch
 Source0:        https://github.com/o2sh/onefetch/archive/v%{version}.tar.gz
 Source1:        vendor.tar.xz
+# PATCH-FIX-UPSTREAM https://github.com/o2sh/onefetch/commit/2c1f2f0b2c666f6ce94af0299f88048dd1d83484
+Patch0:         onefetch-fix-test.patch
 BuildRequires:  cargo
 BuildRequires:  rust
 
@@ -34,6 +36,7 @@ Onefetch is a command line tool that displays information about your Git reposit
 %prep
 %setup -q
 %setup -q -D -T -a 1
+%patch0 -p1
 mkdir -p .cargo
 cat >.cargo/config <<EOF
 [source.crates-io]
