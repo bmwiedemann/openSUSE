@@ -1,0 +1,16 @@
+diff -Nur onionshare-2.5/cli/onionshare_cli/web/web.py new/cli/onionshare_cli/web/web.py
+--- onionshare-2.5/cli/onionshare_cli/web/web.py	2022-01-17 21:56:39.000000000 +0100
++++ new/cli/onionshare_cli/web/web.py	2022-02-25 01:35:45.401731026 +0100
+@@ -164,10 +164,10 @@
+         elif self.mode == "chat":
+             if self.common.verbose:
+                 self.socketio = SocketIO(
+-                    async_mode="gevent", logger=True, engineio_logger=True
++                    logger=True, engineio_logger=True
+                 )
+             else:
+-                self.socketio = SocketIO(async_mode="gevent")
++                self.socketio = SocketIO()
+             self.socketio.init_app(self.app)
+             self.chat_mode = ChatModeWeb(self.common, self)
+ 

@@ -1,7 +1,7 @@
 #
-# spec file for package python-onionshare
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,59 +19,61 @@
 
 %define modname onionshare
 Name:           python-%{modname}
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/File-Sharing
-URL:            https://github.com/micahflee/onionshare
-Source0:        https://github.com/micahflee/onionshare/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-Source1:        %{modname}.desktop
+URL:            https://github.com/onionshare/onionshare
+Source0:        https://github.com/onionshare/onionshare/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE skip test_large_download in gui tests
 Patch0:         0001-adjust_tests.diff
-
+# PATCH-FIX-UPSTREAM fix-test-cli-web.patch -- https://github.com/onionshare/onionshare/issues/1534
+Patch1:         fix-test-cli-web.patch
+# PATCH-FIX-OPENSUSE relax-async-mode.patch -- Do not rely on gevent
+Patch2:         relax-async-mode.patch
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Flask
-BuildRequires:  python3-Flask-HTTPAuth
-BuildRequires:  python3-Flask-SocketIO
+BuildRequires:  python3-Flask >= 1.4.1
+BuildRequires:  python3-Flask-SocketIO >= 5.0.1
 BuildRequires:  python3-PyNaCl
 BuildRequires:  python3-PySocks
 BuildRequires:  python3-Unidecode
+BuildRequires:  python3-cepa >= 1.8.3
 BuildRequires:  python3-colorama
-BuildRequires:  python3-nautilus
+BuildRequires:  python3-eventlet
+BuildRequires:  python3-poetry
 BuildRequires:  python3-psutil
-BuildRequires:  python3-pycrypto
-BuildRequires:  python3-pyside2
+BuildRequires:  python3-pyside2 >= 5.15.2
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-xvfb
 BuildRequires:  python3-qrcode
 BuildRequires:  python3-requests
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-stem
+BuildRequires:  python3-urllib3
 BuildRequires:  tor
 BuildRequires:  update-desktop-files
-Requires:       python3-Flask
-Requires:       python3-Flask-HTTPAuth
-Requires:       python3-Flask-SocketIO
-Requires:       python3-Unidecode
-Requires:       python3-colorama
-Requires:       python3-psutil
+Requires:       python3-Flask >= 1.4.1
+Requires:       python3-Flask-SocketIO >= 5.0.1
 Requires:       python3-PyNaCl
-Requires:       python3-pycrypto
-Requires:       python3-pyside2
+Requires:       python3-Unidecode
+Requires:       python3-cepa >= 1.8.3
+Requires:       python3-colorama
+Requires:       python3-eventlet
+Requires:       python3-psutil
+Requires:       python3-pyside2 >= 5.15.2
 Requires:       python3-qrcode
 Requires:       python3-requests
-Requires:       python3-stem
+Requires:       python3-urllib3
 Requires:       tor
-BuildArch:      noarch
-
 Provides:       %{name}-%{version}
 Obsoletes:      %{name}-data < %{version}
 Obsoletes:      python36-onionshare < %{version}
 Obsoletes:      python38-onionshare < %{version}
 Obsoletes:      python39-onionshare < %{version}
+BuildArch:      noarch
 
 %description
 OnionShare lets the user share files securely and anonymously. It
@@ -83,32 +85,27 @@ program is run on. The receiving user just needs to open the URL in
 Tor Browser to download the file.
 
 %prep
-%setup -q -n %{modname}-%{version}
-%autopatch -p1
-cp %{SOURCE1} .
-
-sed -i 's/sys.platform != "Linux"/sys.platform != "linux"/' cli/tests/test_cli_settings.py cli/tests/test_cli_common.py
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
-cd cli
+pushd cli
 %python3_build
-cd ../desktop/src
+popd
+pushd desktop
 %python3_build
 
 %install
-cd cli
+pushd cli
+%python3_install
+popd
+pushd desktop
 %python3_install
 
-cd ../desktop/src
-%python3_install
-
-mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp org.onionshare.OnionShare.svg %{buildroot}%{_datadir}/pixmaps/.
-
-pwd
-
-desktop-file-install --dir %{buildroot}%{_datadir}/applications/ org.onionshare.OnionShare.desktop
-%suse_update_desktop_file org.onionshare.OnionShare
+install -Dm 0644 org.onionshare.OnionShare.appdata.xml \
+  %{buildroot}%{_datadir}/metainfo/org.onionshare.OnionShare.metainfo.xml
+install -Dm 0644 org.onionshare.OnionShare.svg \
+  %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.onionshare.OnionShare.svg
+%suse_update_desktop_file -i org.onionshare.OnionShare
 
 %fdupes %{buildroot}%{python3_sitelib}
 
@@ -135,8 +132,9 @@ popd
 %{_bindir}/%{modname}-cli
 %license LICENSE
 %doc README.md
-%{_datadir}/applications/*
-%{_datadir}/pixmaps/*
+%{_datadir}/applications/org.onionshare.OnionShare.desktop
+%{_datadir}/metainfo/org.onionshare.OnionShare.metainfo.xml
+%{_datadir}/icons/hicolor/scalable/apps/org.onionshare.OnionShare.svg
 %{python3_sitelib}/onionshare
 %{python3_sitelib}/onionshare-%{version}*-info
 %{python3_sitelib}/onionshare_cli
