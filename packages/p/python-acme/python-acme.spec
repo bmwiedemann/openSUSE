@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define libname acme
 Name:           python-%{libname}
-Version:        1.22.0
+Version:        1.26.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -29,22 +29,22 @@ Source0:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{li
 Source1:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{libname}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  %{python_module cryptography >= 2.5.0}
-BuildRequires:  %{python_module josepy >= 1.9.0}
+BuildRequires:  %{python_module josepy >= 1.13.0}
 BuildRequires:  %{python_module pyOpenSSL >= 17.3.0}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module pytz >= 2019.3}
+BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.5.0
-Requires:       python-josepy >= 1.9.0
+Requires:       python-josepy >= 1.13.0
 Requires:       python-pyOpenSSL >= 17.3.0
 Requires:       python-pyRFC3339
-Requires:       python-pytz
-Requires:       python-requests >= 2.14.2
+Requires:       python-pytz >= 2019.3
+Requires:       python-requests >= 2.20.0
 Requires:       python-requests-toolbelt >= 0.3.0
 BuildArch:      noarch
 %if %{?suse_version} < 1500

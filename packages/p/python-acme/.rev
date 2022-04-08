@@ -613,4 +613,27 @@
     <comment></comment>
     <requestid>941920</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>970b6719913fd7b52b5bb5b4631d9acb</srcmd5>
+    <version>1.26.0</version>
+    <time>1649450760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.0
+  * Added show_account subcommand, which will fetch the account information from 
+    the ACME server and show the account details (account URL and, if applicable, 
+    email address or addresses)
+  * The acme library now requires requests&gt;=2.20.0.
+  * Certbot and its acme library now require pytz&gt;=2019.3.
+  * Certbot and its acme module now depend on josepy&gt;=1.13.0 due to better type annotation support.
+  * Previously, when Certbot was in the process of registering a new ACME account 
+    and the ACME server did not present any Terms of Service, the user was asked 
+    to agree with a non-existent Terms of Service (&quot;None&quot;). This bug is now fixed, 
+    so that if an ACME server does not provide any Terms of Service to agree with, 
+    the user is not asked to agree to a non-existent Terms of Service any longer.
+  * If account registration fails, Certbot did not relay the error from the ACME 
+    server back to the user. This is now fixed: the error message from the ACME 
+    server is now presented to the user when account registration fails.
+</comment>
+    <requestid>967759</requestid>
+  </revision>
 </revisionlist>
