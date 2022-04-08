@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  8 06:20:56 UTC 2022 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Update to 3.6.2:
+  * format-offset being ignored (#2643)
+  * Negative struts (margin-bottom, margin-top) being ignored (#2642, #2644)
+  * Positioning in awesomeWM (#2651)
+  * internal/xworkspaces: The module sometimes crashed polybar when windows were closed. (#2655)
+  * Mouseover error when only one cursor is defined (#2656)
+  * custom/script: Timing inconsistencies (#2650, first described at #2630)
+
+-------------------------------------------------------------------
 Thu Mar 10 15:35:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.1:
