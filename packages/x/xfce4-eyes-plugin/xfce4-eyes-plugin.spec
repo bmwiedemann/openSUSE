@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-eyes-plugin
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define plugin eyes
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 Summary:        Eyes Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-eyes-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/4.5/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/4.6/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
