@@ -2,17 +2,26 @@ From: Andreas Schwab
 
 Index: src/emacs.c
 ===================================================================
---- src/emacs.c.orig
-+++ src/emacs.c
-@@ -869,7 +869,11 @@ load_pdump (int argc, char **argv)
-   /* Look for "emacs.pdmp" in PATH_EXEC.  We hardcode "emacs" in
-      "emacs.pdmp" so that the Emacs binary still works if the user
-      copies and renames it.  */
+---
+ src/emacs.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- src/emacs.c
++++ src/emacs.c	2021-10-08 09:36:17.039806927 +0000
+@@ -837,12 +837,16 @@ load_pdump (int argc, char **argv)
+     NULL
+ #endif
+     ;
 +#ifdef PDMP_BASE
-+  const char *argv0_base = PDMP_BASE;
++  const char *argv0_base = PDMP_BASE
 +#else
-   const char *argv0_base = "emacs";
+   const char *argv0_base =
+ #ifdef NS_SELF_CONTAINED
+     "Emacs"
+ #else
+     "emacs"
+ #endif
 +#endif
-   ptrdiff_t needed = (strlen (path_exec)
-                       + 1
-                       + strlen (argv0_base)
+     ;
+ 
+   /* TODO: maybe more thoroughly scrub process environment in order to

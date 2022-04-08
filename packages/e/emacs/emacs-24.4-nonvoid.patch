@@ -4,7 +4,7 @@
 
 --- src/xmenu.c
 +++ src/xmenu.c	2016-09-19 09:01:56.930605125 +0000
-@@ -1979,8 +1979,8 @@ Lisp_Object
+@@ -2003,8 +2003,8 @@ Lisp_Object
  xw_popup_dialog (struct frame *f, Lisp_Object header, Lisp_Object contents)
  {
    Lisp_Object title;

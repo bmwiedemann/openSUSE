@@ -7,7 +7,7 @@ Index: emacs-25.2/configure.ac
 
 --- emacs-27.1/configure.ac
 +++ emacs-27.1/configure.ac	2020-08-11 09:59:04.349950601 +0000
-@@ -2617,7 +2617,7 @@ if test "${HAVE_X11}" = "yes" || test "$
+@@ -2605,7 +2605,7 @@ if test "${HAVE_X11}" = "yes" || test "$
      else
         ## 6.3.5 is the earliest version known to work; see Bug#17339.
         ## 6.8.2 makes Emacs crash; see Bug#13867.
@@ -18,7 +18,7 @@ Index: emacs-25.2/configure.ac
      if test $HAVE_IMAGEMAGICK = yes; then
 --- emacs-27.1/src/image.c
 +++ emacs-27.1/src/image.c	2020-08-11 09:49:35.500181432 +0000
-@@ -8784,7 +8784,11 @@ imagemagick_compute_animated_image (Magi
+@@ -9005,7 +9005,11 @@ imagemagick_compute_animated_image (Magi
        PixelWand **source, **dest;
        size_t source_width, source_height;
        ssize_t source_left, source_top;
@@ -30,7 +30,7 @@ Index: emacs-25.2/configure.ac
        DisposeType dispose;
        ptrdiff_t lines = 0;
  
-@@ -8849,7 +8853,11 @@ imagemagick_compute_animated_image (Magi
+@@ -9070,7 +9074,11 @@ imagemagick_compute_animated_image (Magi
  	      if (dispose == BackgroundDispose || PixelGetAlpha (source[x]))
  		{
  		  PixelGetMagickColor (source[x], &pixel);
@@ -42,7 +42,7 @@ Index: emacs-25.2/configure.ac
  		}
  	    }
  	  PixelSyncIterator (dest_iterator);
-@@ -8894,7 +8902,11 @@ imagemagick_load_image (struct frame *f,
+@@ -9115,7 +9123,11 @@ imagemagick_load_image (struct frame *f,
    MagickWand *image_wand;
    PixelIterator *iterator;
    PixelWand **pixels, *bg_wand = NULL;

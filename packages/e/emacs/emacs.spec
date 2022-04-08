@@ -19,11 +19,14 @@
 %bcond_without  autoconf
 %if 0%{?suse_version} >= 1550
 %bcond_without  mailutils
+%bcond_without  nativecomp
 %else
 %bcond_with     mailutils
+%bcond_with     nativecomp
 %endif
 %bcond_without  cairo
 %bcond_with     tex4pdf
+%bcond_with     memmmap
 
 Name:           emacs
 %if %{with autoconf}
@@ -38,8 +41,10 @@ BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  fonts-config
 BuildRequires:  freetype2-devel
+BuildRequires:  gettext-devel
 BuildRequires:  giflib-devel
 BuildRequires:  git
+BuildRequires:  glibc-locale
 BuildRequires:  gpm-devel
 BuildRequires:  gtk3-devel
 # Used for installtion of info pages as well as to
@@ -74,6 +79,7 @@ BuildRequires:  texlive-collection-langczechslovak
 BuildRequires:  texlive-collection-langpolish
 BuildRequires:  texlive-lh
 %endif
+BuildRequires:  procps
 BuildRequires:  update-alternatives
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -86,6 +92,8 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(valgrind)
 %if %{with tex4pdf}
 BuildRequires:  tex(babel.sty)
 BuildRequires:  tex(fontenc.sty)
@@ -104,6 +112,9 @@ BuildRequires:  tex(verbatim.sty)
 BuildRequires:  pkgconfig(libacl)
 %else
 BuildRequires:  libacl-devel
+%endif
+%if %{with nativecomp}
+BuildRequires:  libgccjit-devel
 %endif
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(json)
@@ -127,7 +138,7 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xxf86vm)
 URL:            http://www.gnu.org/software/emacs/
-Version:        27.2
+Version:        28.1
 Release:        0
 Summary:        GNU Emacs Base Package
 License:        GPL-3.0-or-later
@@ -157,14 +168,13 @@ Source6:        ftp://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz.sig
 # https://ftp.gnu.org/gnu/gnu-keyring.gpg
 Source7:        %{name}.keyring
 Source8:        emacs-%{version}-pdf.tar.xz
-Patch:          emacs-27.1.dif
+Patch:          emacs-28.1.dif
 # Currently disabled
 Patch2:         emacs-24.4-glibc.patch
 Patch4:         emacs-24.3-asian-print.patch
 Patch5:         emacs-24.4-ps-bdf.patch
 Patch7:         emacs-24.1-ps-mule.patch
 Patch8:         emacs-24.4-nonvoid.patch
-Patch11:        emacs-24.4-xim.patch
 Patch12:        emacs-24.3-x11r7.patch
 Patch15:        emacs-24.3-iconic.patch
 Patch16:        emacs-24.4-flyspell.patch
@@ -177,12 +187,6 @@ Patch24:        emacs-25.2-ImageMagick7.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch29:        emacs-27.1-Xauthority4server.patch
-# This patch allows vte based terminals like gnome-terminal to get 24bit colors
-# without setting a custom terminfo, honouring COLORTERM=truecolor
-Patch30:        emacs-27.2-COLORTERM-24bit.patch
-# PATCH-FIX-UPSTREAM boo#1178942 -- emacs hang in isearch
-Patch31:        boo1178942-bedb3cb6.patch
-Patch39:        sigsegv-stack.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -205,15 +209,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{undefined ext_el}
 %define ext_el      .gz
 %endif
-%define info_files emacs eintr elisp auth autotype bovine calc ccmode cl dbus dired-x ebrowse ede ediff edt eieio emacs-mime epa erc ert eshell eudc efaq eww flymake forms gnus emacs-gnutls htmlfontify idlwave ido info.info mairix-el message mh-e newsticker nxml-mode octave-mode org pcl-cvs pgg rcirc remember reftex sasl sc semantic ses sieve smtpmail speedbar srecode todo-mode tramp url vhdl-mode vip viper widget wisent woman
+%define info_files emacs eintr elisp auth autotype bovine calc ccmode cl dbus dired-x ebrowse ede ediff edt eieio emacs-mime epa erc ert eshell eudc efaq eww flymake forms gnus emacs-gnutls htmlfontify idlwave ido info.info mairix-el message mh-e modus-themes newsticker nxml-mode octave-mode org pcl-cvs pgg rcirc remember reftex sasl sc semantic ses sieve smtpmail speedbar srecode todo-mode transient tramp url vhdl-mode vip viper widget wisent woman
 
 %description
-Basic package for the GNU Emacs editor. Requires emacs-x11 or
-emacs-nox.
+Basic package for the GNU Emacs editor.  For a documentation see https://www.emacsdocs.org/.
+This package requires emacs-x11 and/or emacs-nox to have the GNU Emacs editor its self.
 
 %package     -n emacs-nox
 Requires(post): fileutils
 Requires:       emacs = %{version}-%{release}
+%if %{with nativecomp}
+Requires:       emacs-eln = %{version}
+%endif
 Provides:       emacs_program = %{version}-%{release}
 Summary:        GNU Emacs-nox: An Emacs Binary without X Window System Support
 Group:          Productivity/Text/Editors
@@ -228,6 +235,9 @@ Love it or leave it.
 %package     -n emacs-x11
 Requires(post): fileutils
 Requires:       emacs = %{version}-%{release}
+%if %{with nativecomp}
+Requires:       emacs-eln = %{version}
+%endif
 Provides:       emacs_program = %{version}-%{release}
 Requires:       efont-unicode
 Requires:       ifnteuro
@@ -244,6 +254,29 @@ Emacs
 
 Love it or leave it. This is the Emacs binary with X Window System
 Support.
+
+%if %{with nativecomp}
+%package     -n emacs-eln
+# Without the el.gz files a starting emacs with support of native compiled
+# lisp code will show an error
+# >> Symbol's value as variable is void: auto-save-list-file-prefix <<
+# and exceeds the limit for open files as it opens warnings.elc several
+# times up to the set open file limit
+Requires:       emacs-el = %{version}
+Summary:        GNU Emacs-nox: Emacs Lisp native compiled binary files
+Group:          Productivity/Text/Editors
+
+%define _libeln %{_prefix}/lib
+
+%description -n emacs-eln
+Emacs Lisp (Elisp) is the Lisp dialect used by the Emacs text editor
+family. GNU Emacs can currently execute Elisp code either interpreted
+or byte-interpreted after it has been compiled to byte-code.
+The native compiler employs the byte-compiler's internal representation
+as input and exploits libgccjit to achieve code generation using the GNU
+Compiler Collection (GCC) infrastructure. Generated executables are stored
+as binary files and can be loaded and unloaded dynamically.
+%endif
 
 %package     -n emacs-el
 Requires:       emacs = %{version}-%{release}
@@ -284,12 +317,13 @@ and most assembler-like syntaxes.
 
 %prep
 %setup -q -b 2
-#%patch2  -p0 -b .glibc
+%if %{with memmmap}
+%patch2  -p0 -b .glibc
+%endif
 %patch4  -p0 -b .print
 %patch5  -p0 -b .psbdf
 %patch7  -p0 -b .psmu
 %patch8  -p0 -b .nvoid
-%patch11 -p0 -b .xim
 %patch12 -p0 -b .x11r7
 %patch15 -p0 -b .iconic
 %patch16 -p0 -b .flyspell
@@ -299,9 +333,6 @@ and most assembler-like syntaxes.
 %patch25 -p0 -b .xft
 %patch26 -p0 -b .fmt
 %patch29 -p0 -b .xauth
-%patch30 -p1 -b .colorterm
-%patch31 -p0 -b .isearch
-%patch39 -p1
 %patch   -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
@@ -400,7 +431,11 @@ export CC CFLAGS LANG LC_CTYPE LDFLAGS
 	 --datadir=%{_datadir} \
 	 --localstatedir=%{_localstatedir} \
 	 --sharedstatedir=%{_localstatedir}/lib \
-	 --libexecdir=%{_prefix}/lib \
+	 --libexecdir=%{_libexecdir} \
+	 --with-file-notification=yes \
+%if %{with nativecomp}
+	 --with-native-compilation \
+%endif
 	 --enable-locallisppath=%{_datadir}/emacs/%{version}/site-lisp:%{_datadir}/emacs/site-lisp
 "
 DESKTOP="--with-x \
@@ -482,25 +517,28 @@ ac_cv_lib_gif_EGifPutExtensionLast=yes
 export ac_cv_lib_gif_EGifPutExtensionLast
 
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-nox\"'" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
-%make_build bootstrap
+%make_build V=1
 make -C lisp/ updates compile V=1
 for i in $(find site-lisp/ -name '*.el'); do
     EMACSLOADPATH='' src/emacs -batch -q --no-site -f batch-byte-compile $i
 done
 cp src/emacs emacs-nox
 cp src/emacs.pdmp emacs-nox.pdmp
+find -name '*.eln'
 make distclean
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-gtk\"'" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
 %make_build
 cp src/emacs emacs-gtk
 cp src/emacs.pdmp emacs-gtk.pdmp
+find -name '*.eln'
 make distclean
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
 %make_build
 cp src/emacs emacs-x11
 cp src/emacs.pdmp emacs-x11.pdmp
+find -name '*.eln'
 
 %if %{with tex4pdf}
 #
@@ -522,16 +560,16 @@ VERSION=%{version}
 eval $(sed -rn "/^configuration=/p" config.log)
 sed -ri 's@/usr/lib/X11/fonts@/usr/share/fonts@g;s@(/usr/)local/(info|share|lib)@\1\2@;s@\$VERSION@%{version}@g;s@\$ARCH@'${configuration}'@g' doc/man/emacs.1
 mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_prefix}/lib/emacs/%{version}/${configuration}
+mkdir -p %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}
 install -m 0755 emacs-nox %{buildroot}%{_bindir}
 install -m 0755 emacs-gtk %{buildroot}%{_bindir}
 install -m 0755 emacs-x11 %{buildroot}%{_bindir}
-install -m 0644 emacs-nox.pdmp %{buildroot}%{_prefix}/lib/emacs/%{version}/${configuration}/
-install -m 0644 emacs-gtk.pdmp %{buildroot}%{_prefix}/lib/emacs/%{version}/${configuration}/
-install -m 0644 emacs-x11.pdmp %{buildroot}%{_prefix}/lib/emacs/%{version}/${configuration}/
+install -m 0644 emacs-nox.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/
+install -m 0644 emacs-gtk.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/
+install -m 0644 emacs-x11.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/
 make install DESTDIR=%{buildroot} systemdunitdir=%{_userunitdir}
 rm -vf %{buildroot}/usr/bin/emacs
-rm -vf %{buildroot}%{_prefix}/lib/emacs/%{version}/${configuration}/emacs.pdmp
+rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/emacs.pdmp
 install -p %{S:5} %{buildroot}/usr/bin/emacs
 chmod 0755        %{buildroot}/usr/bin/emacs
 tar cf - `find site-lisp/ -name '*.el'  -o -name '*.elc'` | \
@@ -643,15 +681,42 @@ xargs -n 2 | while read first second; do
 done
 # install desktop file
 test -e etc/emacs.desktop || exit 1
-echo 'X-KDE-StartupNotify=false' >> etc/emacs.desktop
-rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacs.desktop
 cp etc/images/icons/hicolor/32x32/apps/emacs.png $RPM_SOURCE_DIR/emacs.png
-%suse_update_desktop_file -r -i emacs TextEditor Utility
+for df in %{buildroot}%{_datadir}/emacs/%{version}/etc/emacs*.desktop
+do
+    test -e "$df" || break
+    base=${df##*/}
+    mv etc/${base} etc/${base}.orig
+    cp $df etc/${base}
+    echo 'X-KDE-StartupNotify=false' >> etc/${base}
+    rm -vf $df
+    %suse_update_desktop_file -r -i ${base%%.desktop} TextEditor Utility
+done
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/ctags		%{buildroot}%{_bindir}/ctags
 ln -sf %{_sysconfdir}/alternatives/ctags.1%{ext_man}	%{buildroot}%{_mandir}/man1/ctags.1%{ext_man}
 ln -sf %{_bindir}/gnuctags				%{buildroot}%{_sysconfdir}/alternatives/ctags
 ln -sf %{_mandir}/man1/gnuctags.1%{ext_man}		%{buildroot}%{_sysconfdir}/alternatives/ctags.1%{ext_man}
+
+%if %{with nativecomp}
+touch eln.list
+for eln in %{buildroot}%{_libeln}/emacs/%{version}/native-lisp/%{version}-*/*.eln
+do
+   if test -e $eln
+   then
+	echo '%%{_libeln}/emacs/%%{version}/native-lisp/%%{version}-*/*.eln' >> eln.list
+   fi
+   break
+done
+for eln in %{buildroot}%{_libeln}/emacs/%{version}/native-lisp/%{version}-*/preloaded/*.eln
+do
+   if test -e $eln
+   then
+	echo '%%{_libeln}/emacs/%%{version}/native-lisp/%%{version}-*/preloaded/*.eln' >> eln.list
+   fi
+   break
+done
+%endif
 
 %pre
 test -L usr/bin/emacs && rm -f usr/bin/emacs || true
@@ -701,8 +766,8 @@ test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
   --slave %{_mandir}/man1/ctags.1%{ext_man}	ctags.1	%{_mandir}/man1/gnuctags.1%{ext_man}
 %{_sbindir}/update-alternatives --auto ctags
 
-%preun -n etags
-if test $1 -eq 0 ; then
+%postun -n etags
+if test ! -f %{_bindir}/gnuctags ; then
     %{_sbindir}/update-alternatives --quiet --remove ctags %{_bindir}/gnuctags
 fi
 
@@ -712,18 +777,18 @@ fi
 %{_bindir}/ebrowse
 %{_bindir}/emacs
 %{_bindir}/emacsclient
-%dir %{_prefix}/lib/emacs/
-%dir %{_prefix}/lib/emacs/%{version}/
-%dir %{_prefix}/lib/emacs/%{version}/*-suse-linux*/
-%{_prefix}/lib/emacs/%{version}/*-suse-linux*/hexl
+%dir %{_libexecdir}/emacs/
+%dir %{_libexecdir}/emacs/%{version}/
+%dir %{_libexecdir}/emacs/%{version}/*-suse-linux*/
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/hexl
 %if %{without mailutils}
-%{_prefix}/lib/emacs/%{version}/*-suse-linux*/movemail
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/movemail
 %endif
-%{_prefix}/lib/emacs/%{version}/*-suse-linux*/rcs2log
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/rcs2log
 %if 0
-%attr(04755,games,games) %{_prefix}/lib/emacs/%{version}/*-suse-linux*/update-game-score
+%attr(04755,games,games) %{_libexecdir}/emacs/%{version}/*-suse-linux*/update-game-score
 %else
-%{_prefix}/lib/emacs/%{version}/*-suse-linux*/update-game-score
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/update-game-score
 %endif
 %{_userunitdir}/emacs.service
 %dir %{_datadir}/doc/packages/emacs/
@@ -745,16 +810,7 @@ fi
 %doc %{_datadir}/emacs/%{version}/etc/MACHINES
 %doc %{_datadir}/emacs/%{version}/etc/MH-E-NEWS
 %{_datadir}/emacs/%{version}/etc/NEWS
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.1-17
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.18
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.19
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.20
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.21
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.22
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.23
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.24
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.25
-%doc %{_datadir}/emacs/%{version}/etc/NEWS.26
+%doc %{_datadir}/emacs/%{version}/etc/NEWS.*
 %doc %{_datadir}/emacs/%{version}/etc/NEXTSTEP
 %doc %{_datadir}/emacs/%{version}/etc/NXML-NEWS
 %doc %{_datadir}/emacs/%{version}/etc/ORG-NEWS
@@ -896,14 +952,19 @@ fi
 %{_datadir}/emacs/%{version}/etc/charsets/stdenc.map
 %{_datadir}/emacs/%{version}/etc/charsets/symbol.map
 %{_datadir}/emacs/%{version}/etc/compilation.txt
+%dir %{_datadir}/emacs/%{version}/etc/org/
+%dir %{_datadir}/emacs/%{version}/etc/org/csl/
+%{_datadir}/emacs/%{version}/etc/org/csl/README
+%{_datadir}/emacs/%{version}/etc/org/csl/chicago-author-date.csl
+%{_datadir}/emacs/%{version}/etc/org/csl/locales-en-US.xml
 %dir %{_datadir}/emacs/%{version}/etc/e/
 %doc %{_datadir}/emacs/%{version}/etc/e/README
 %{_datadir}/emacs/%{version}/etc/e/eterm-color
 %{_datadir}/emacs/%{version}/etc/e/eterm-color.ti
 %{_datadir}/emacs/%{version}/etc/edt-user.el
 %{_datadir}/emacs/%{version}/etc/emacs-buffer.gdb
-%{_datadir}/emacs/%{version}/etc/emacs.appdata.xml
 %{_datadir}/emacs/%{version}/etc/emacs.icon
+%{_datadir}/emacs/%{version}/etc/emacs.metainfo.xml
 %{_datadir}/emacs/%{version}/etc/emacs.service
 %{_datadir}/emacs/%{version}/etc/enriched.txt
 %dir %{_datadir}/emacs/%{version}/etc/forms/
@@ -919,6 +980,16 @@ fi
 %{_datadir}/emacs/%{version}/etc/grep.txt
 %dir %{_datadir}/emacs/%{version}/etc/images/
 %doc %{_datadir}/emacs/%{version}/etc/images/README
+%{_datadir}/emacs/%{version}/etc/images/checkbox-mixed.svg
+%{_datadir}/emacs/%{version}/etc/images/checked.svg
+%{_datadir}/emacs/%{version}/etc/images/down.svg
+%{_datadir}/emacs/%{version}/etc/images/left.svg
+%{_datadir}/emacs/%{version}/etc/images/radio-checked.svg
+%{_datadir}/emacs/%{version}/etc/images/radio-mixed.svg
+%{_datadir}/emacs/%{version}/etc/images/radio.svg
+%{_datadir}/emacs/%{version}/etc/images/right.svg
+%{_datadir}/emacs/%{version}/etc/images/unchecked.svg
+%{_datadir}/emacs/%{version}/etc/images/up.svg
 %{_datadir}/emacs/%{version}/etc/images/attach.pbm
 %{_datadir}/emacs/%{version}/etc/images/attach.xpm
 %{_datadir}/emacs/%{version}/etc/images/back-arrow.pbm
@@ -1572,6 +1643,8 @@ fi
 %{_datadir}/emacs/%{version}/etc/rgb.txt
 %dir %{_datadir}/emacs/%{version}/etc/schema/
 %doc %{_datadir}/emacs/%{version}/etc/schema/README
+%{_datadir}/emacs/%{version}/etc/schema/OpenDocument-schema-v1.3+libreoffice.rnc
+%{_datadir}/emacs/%{version}/etc/schema/OpenDocument-schema-v1.3.rnc
 %{_datadir}/emacs/%{version}/etc/schema/calstbl.rnc
 %{_datadir}/emacs/%{version}/etc/schema/dbcalstbl.rnc
 %{_datadir}/emacs/%{version}/etc/schema/dbhier.rnc
@@ -1581,7 +1654,6 @@ fi
 %{_datadir}/emacs/%{version}/etc/schema/docbook.rnc
 %{_datadir}/emacs/%{version}/etc/schema/locate.rnc
 %{_datadir}/emacs/%{version}/etc/schema/od-manifest-schema-v1.2-os.rnc
-%{_datadir}/emacs/%{version}/etc/schema/od-schema-v1.2-os.rnc
 %{_datadir}/emacs/%{version}/etc/schema/rdfxml.rnc
 %{_datadir}/emacs/%{version}/etc/schema/relaxng.rnc
 %{_datadir}/emacs/%{version}/etc/schema/schemas.xml
@@ -1647,6 +1719,9 @@ fi
 %{_datadir}/emacs/%{version}/etc/themes/light-blue-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/manoj-dark-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/misterioso-theme.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-operandi-theme.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-themes.el
+%{_datadir}/emacs/%{version}/etc/themes/modus-vivendi-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/tango-dark-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/tango-theme.el
 %{_datadir}/emacs/%{version}/etc/themes/tsdh-dark-theme.el
@@ -1829,11 +1904,10 @@ fi
 %{_datadir}/emacs/%{version}/lisp/cedet/ede/srecode.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/ede/system.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/ede/util.elc
-%{_datadir}/emacs/%{version}/lisp/cedet/inversion.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/mode-local.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/pulse.elc
-%{_datadir}/emacs/%{version}/lisp/cedet/semantic.elc
 %dir %{_datadir}/emacs/%{version}/lisp/cedet/semantic/
+%{_datadir}/emacs/%{version}/lisp/cedet/semantic.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/analyze.elc
 %dir %{_datadir}/emacs/%{version}/lisp/cedet/semantic/analyze/
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/analyze/complete.elc
@@ -1880,6 +1954,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/fw.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/grammar-wy.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/grammar.elc
+%{_datadir}/emacs/%{version}/lisp/cedet/semantic/grm-wy-boot.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/html.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/ia-sb.elc
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/ia.elc
@@ -2015,6 +2090,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-preloaded.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-print.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-seq.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp-cstr.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/copyright.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/crm.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cursor-sensor.elc
@@ -2046,6 +2123,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/generic.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/gv.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/helper.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/hierarchy.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/inline.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/let-alist.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/lisp-mnt.elc
@@ -2054,6 +2132,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/macroexp.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/map-ynp.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/map.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/memory-report.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/nadvice.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/package-x.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/package.elc
@@ -2068,12 +2147,13 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/rx.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/seq.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/shadow.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/shortdoc.elc
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/shorthands.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/smie.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/subr-x.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/syntax.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/tabulated-list.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/tcover-ses.elc
-%{_datadir}/emacs/%{version}/lisp/emacs-lisp/tcover-unsafep.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/testcover.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/text-property-search.elc
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/thunk.elc
@@ -2106,6 +2186,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/epa-dired.elc
 %{_datadir}/emacs/%{version}/lisp/epa-file.elc
 %{_datadir}/emacs/%{version}/lisp/epa-hook.elc
+%{_datadir}/emacs/%{version}/lisp/epa-ks.elc
 %{_datadir}/emacs/%{version}/lisp/epa-mail.elc
 %{_datadir}/emacs/%{version}/lisp/epa.elc
 %{_datadir}/emacs/%{version}/lisp/epg-config.elc
@@ -2143,6 +2224,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/erc/erc-speedbar.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-spelling.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-stamp.elc
+%{_datadir}/emacs/%{version}/lisp/erc/erc-status-sidebar.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-track.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-truncate.elc
 %{_datadir}/emacs/%{version}/lisp/erc/erc-xdcc.elc
@@ -2208,7 +2290,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/fringe.elc
 %{_datadir}/emacs/%{version}/lisp/generic-x.el
 %dir %{_datadir}/emacs/%{version}/lisp/gnus/
-%{_datadir}/emacs/%{version}/lisp/gnus/.dir-locals.el
 %{_datadir}/emacs/%{version}/lisp/gnus/canlock.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/deuglify.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gmm-utils.elc
@@ -2221,6 +2302,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-cite.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-cloud.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-cus.elc
+%{_datadir}/emacs/%{version}/lisp/gnus/gnus-dbus.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-delay.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-demon.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-diary.elc
@@ -2246,6 +2328,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-registry.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-rfc1843.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-salt.elc
+%{_datadir}/emacs/%{version}/lisp/gnus/gnus-search.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-score.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-sieve.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-spec.elc
@@ -2289,7 +2372,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/nngateway.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnheader.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnimap.elc
-%{_datadir}/emacs/%{version}/lisp/gnus/nnir.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnmail.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnmaildir.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnmairix.elc
@@ -2300,6 +2382,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/nnoo.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnregistry.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnrss.elc
+%{_datadir}/emacs/%{version}/lisp/gnus/nnselect.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnspool.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nntp.elc
 %{_datadir}/emacs/%{version}/lisp/gnus/nnvirtual.elc
@@ -2353,6 +2436,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/international/charprop.el
 %{_datadir}/emacs/%{version}/lisp/international/charscript.elc
 %{_datadir}/emacs/%{version}/lisp/international/cp51932.elc
+%{_datadir}/emacs/%{version}/lisp/international/emoji-zwj.elc
 %{_datadir}/emacs/%{version}/lisp/international/eucjp-ms.elc
 %{_datadir}/emacs/%{version}/lisp/international/fontset.elc
 %{_datadir}/emacs/%{version}/lisp/international/isearch-x.elc
@@ -2470,6 +2554,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/leim/quail/ZIRANMA.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/ZOZY.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/arabic.elc
+%{_datadir}/emacs/%{version}/lisp/leim/quail/cham.elc
+%{_datadir}/emacs/%{version}/lisp/leim/quail/compose.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/croatian.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/cyril-jis.elc
 %{_datadir}/emacs/%{version}/lisp/leim/quail/cyrillic.elc
@@ -2540,14 +2626,13 @@ fi
 %{_datadir}/emacs/%{version}/lisp/mail/mailalias.elc
 %{_datadir}/emacs/%{version}/lisp/mail/mailclient.elc
 %{_datadir}/emacs/%{version}/lisp/mail/mailheader.elc
-%{_datadir}/emacs/%{version}/lisp/mail/metamail.elc
 %{_datadir}/emacs/%{version}/lisp/mail/mspools.elc
 %{_datadir}/emacs/%{version}/lisp/mail/qp.elc
 %{_datadir}/emacs/%{version}/lisp/mail/reporter.elc
 %{_datadir}/emacs/%{version}/lisp/mail/rfc2045.elc
 %{_datadir}/emacs/%{version}/lisp/mail/rfc2047.elc
 %{_datadir}/emacs/%{version}/lisp/mail/rfc2231.elc
-%{_datadir}/emacs/%{version}/lisp/mail/rfc2368.elc
+%{_datadir}/emacs/%{version}/lisp/mail/rfc6068.elc
 %{_datadir}/emacs/%{version}/lisp/mail/rfc822.elc
 %{_datadir}/emacs/%{version}/lisp/mail/rmail-spam-filter.elc
 %{_datadir}/emacs/%{version}/lisp/mail/rmail.elc
@@ -2615,6 +2700,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/ange-ftp.elc
 %{_datadir}/emacs/%{version}/lisp/net/browse-url.elc
 %{_datadir}/emacs/%{version}/lisp/net/dbus.elc
+%{_datadir}/emacs/%{version}/lisp/net/dictionary-connection.elc
+%{_datadir}/emacs/%{version}/lisp/net/dictionary.elc
 %{_datadir}/emacs/%{version}/lisp/net/dig.elc
 %{_datadir}/emacs/%{version}/lisp/net/dns.elc
 %{_datadir}/emacs/%{version}/lisp/net/eudc-bob.elc
@@ -2625,6 +2712,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/eudcb-bbdb.elc
 %{_datadir}/emacs/%{version}/lisp/net/eudcb-ldap.elc
 %{_datadir}/emacs/%{version}/lisp/net/eudcb-mab.elc
+%{_datadir}/emacs/%{version}/lisp/net/eudcb-macos-contacts.elc
 %{_datadir}/emacs/%{version}/lisp/net/eww.elc
 %{_datadir}/emacs/%{version}/lisp/net/gnutls.elc
 %{_datadir}/emacs/%{version}/lisp/net/goto-addr.elc
@@ -2655,6 +2743,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/sasl-digest.elc
 %{_datadir}/emacs/%{version}/lisp/net/sasl-ntlm.elc
 %{_datadir}/emacs/%{version}/lisp/net/sasl-scram-rfc.elc
+%{_datadir}/emacs/%{version}/lisp/net/sasl-scram-sha256.elc
 %{_datadir}/emacs/%{version}/lisp/net/sasl.elc
 %{_datadir}/emacs/%{version}/lisp/net/secrets.elc
 %{_datadir}/emacs/%{version}/lisp/net/sieve-manage.elc
@@ -2672,12 +2761,15 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/tramp-cache.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-cmds.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-compat.elc
+%{_datadir}/emacs/%{version}/lisp/net/tramp-crypt.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-ftp.elc
+%{_datadir}/emacs/%{version}/lisp/net/tramp-fuse.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-gvfs.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-integration.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-loaddefs.el
 %{_datadir}/emacs/%{version}/lisp/net/tramp-sh.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-smb.elc
+%{_datadir}/emacs/%{version}/lisp/net/tramp-sshfs.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-sudoedit.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-rclone.elc
 %{_datadir}/emacs/%{version}/lisp/net/tramp-uu.elc
@@ -2729,21 +2821,19 @@ fi
 %{_datadir}/emacs/%{version}/lisp/obsolete/gulp.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/html2text.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/info-edit.elc
+%{_datadir}/emacs/%{version}/lisp/obsolete/inversion.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/iswitchb.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/landmark.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/lazy-lock.elc
-%{_datadir}/emacs/%{version}/lisp/obsolete/ledit.elc
-%{_datadir}/emacs/%{version}/lisp/obsolete/levents.elc
-%{_datadir}/emacs/%{version}/lisp/obsolete/lmenu.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/longlines.elc
-%{_datadir}/emacs/%{version}/lisp/obsolete/lucid.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/mantemp.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/mailpost.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/meese.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/messcompat.el
+%{_datadir}/emacs/%{version}/lisp/obsolete/metamail.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/mouse-sel.elc
+%{_datadir}/emacs/%{version}/lisp/obsolete/nnir.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/old-emacs-lock.elc
-%{_datadir}/emacs/%{version}/lisp/obsolete/old-whitespace.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/otodo-mode.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/patcomp.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/pc-mode.elc
@@ -2755,7 +2845,9 @@ fi
 %{_datadir}/emacs/%{version}/lisp/obsolete/pgg-pgp5.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/pgg.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/rcompile.elc
+%{_datadir}/emacs/%{version}/lisp/obsolete/rfc2368.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/s-region.elc
+%{_datadir}/emacs/%{version}/lisp/obsolete/sb-image.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/sregex.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/starttls.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/sup-mouse.elc
@@ -2771,35 +2863,18 @@ fi
 %{_datadir}/emacs/%{version}/lisp/obsolete/ws-mode.elc
 %{_datadir}/emacs/%{version}/lisp/obsolete/yow.elc
 %dir %{_datadir}/emacs/%{version}/lisp/org/
-%{_datadir}/emacs/%{version}/lisp/org/ob-eshell.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-bbdb.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-bibtex.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-docview.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-eshell.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-eww.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-gnus.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-info.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-irc.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-mhe.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-rmail.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol-w3m.elc
-%{_datadir}/emacs/%{version}/lisp/org/ol.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-C.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-J.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-R.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-abc.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-asymptote.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-awk.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-calc.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-clojure.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-comint.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-coq.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-core.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-css.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-ditaa.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-dot.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-ebnf.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-emacs-lisp.elc
+%{_datadir}/emacs/%{version}/lisp/org/ob-eshell.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-eval.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-exp.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-forth.elc
@@ -2807,12 +2882,10 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/ob-gnuplot.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-groovy.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-haskell.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-hledger.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-io.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-java.elc
+%{_datadir}/emacs/%{version}/lisp/org/ob-julia.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-js.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-latex.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-ledger.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-lilypond.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-lisp.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-lob.elc
@@ -2820,12 +2893,10 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/ob-makefile.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-matlab.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-maxima.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-mscgen.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-ocaml.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-octave.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-org.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-perl.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-picolisp.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-plantuml.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-processing.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-python.elc
@@ -2835,15 +2906,31 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/ob-scheme.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-screen.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-sed.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-shen.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-shell.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-sql.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-sqlite.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-stan.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-table.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob-tangle.elc
-%{_datadir}/emacs/%{version}/lisp/org/ob-vala.elc
 %{_datadir}/emacs/%{version}/lisp/org/ob.elc
+%{_datadir}/emacs/%{version}/lisp/org/oc-basic.elc
+%{_datadir}/emacs/%{version}/lisp/org/oc-biblatex.elc
+%{_datadir}/emacs/%{version}/lisp/org/oc-csl.elc
+%{_datadir}/emacs/%{version}/lisp/org/oc-natbib.elc
+%{_datadir}/emacs/%{version}/lisp/org/oc.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-bbdb.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-bibtex.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-docview.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-doi.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-eshell.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-eww.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-gnus.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-info.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-irc.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-mhe.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-man.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-rmail.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol-w3m.elc
+%{_datadir}/emacs/%{version}/lisp/org/ol.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-agenda.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-archive.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-attach.elc
@@ -2890,6 +2977,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/ox-beamer.elc
 %{_datadir}/emacs/%{version}/lisp/org/ox-html.elc
 %{_datadir}/emacs/%{version}/lisp/org/ox-icalendar.elc
+%{_datadir}/emacs/%{version}/lisp/org/ox-koma-letter.elc
 %{_datadir}/emacs/%{version}/lisp/org/ox-latex.elc
 %{_datadir}/emacs/%{version}/lisp/org/ox-man.elc
 %{_datadir}/emacs/%{version}/lisp/org/ox-md.elc
@@ -2951,6 +3039,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/progmodes/cc-cmds.elc
 %{_datadir}/emacs/%{version}/lisp/progmodes/cc-defs.elc
 %{_datadir}/emacs/%{version}/lisp/progmodes/cc-engine.elc
+%{_datadir}/emacs/%{version}/lisp/progmodes/cl-font-lock.elc
 %{_datadir}/emacs/%{version}/lisp/progmodes/cc-fonts.elc
 %{_datadir}/emacs/%{version}/lisp/progmodes/cc-guess.elc
 %{_datadir}/emacs/%{version}/lisp/progmodes/cc-langs.elc
@@ -3044,7 +3133,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/ruler-mode.elc
 %{_datadir}/emacs/%{version}/lisp/savehist.elc
 %{_datadir}/emacs/%{version}/lisp/saveplace.elc
-%{_datadir}/emacs/%{version}/lisp/sb-image.elc
 %{_datadir}/emacs/%{version}/lisp/scroll-all.elc
 %{_datadir}/emacs/%{version}/lisp/scroll-bar.elc
 %{_datadir}/emacs/%{version}/lisp/scroll-lock.elc
@@ -3089,6 +3177,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/term/pc-win.elc
 %{_datadir}/emacs/%{version}/lisp/term/rxvt.elc
 %{_datadir}/emacs/%{version}/lisp/term/screen.elc
+%{_datadir}/emacs/%{version}/lisp/term/st.elc
 %{_datadir}/emacs/%{version}/lisp/term/sun.elc
 %{_datadir}/emacs/%{version}/lisp/term/tmux.elc
 %{_datadir}/emacs/%{version}/lisp/term/tty-colors.elc
@@ -3109,6 +3198,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/textmodes/css-mode.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/dns-mode.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/enriched.elc
+%{_datadir}/emacs/%{version}/lisp/textmodes/etc-authors-mode.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/fill.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/flyspell.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/ispell.elc
@@ -3143,6 +3233,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/textmodes/tex-mode.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/texinfmt.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/texinfo.elc
+%{_datadir}/emacs/%{version}/lisp/textmodes/texinfo-loaddefs.el
 %{_datadir}/emacs/%{version}/lisp/textmodes/texnfo-upd.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/text-mode.elc
 %{_datadir}/emacs/%{version}/lisp/textmodes/tildify.elc
@@ -3157,6 +3248,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/tmm.elc
 %{_datadir}/emacs/%{version}/lisp/tool-bar.elc
 %{_datadir}/emacs/%{version}/lisp/tooltip.elc
+%{_datadir}/emacs/%{version}/lisp/transient.elc
 %{_datadir}/emacs/%{version}/lisp/tree-widget.elc
 %{_datadir}/emacs/%{version}/lisp/tutorial.elc
 %{_datadir}/emacs/%{version}/lisp/type-break.elc
@@ -3277,17 +3369,17 @@ fi
 %files       -n emacs-nox
 %defattr(-, root, root)
 %{_bindir}/emacs-nox
-%{_prefix}/lib/emacs/%{version}/*-suse-linux*/emacs-nox.pdmp
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-nox.pdmp
 
 %files       -n emacs-x11
 %defattr(-, root, root)
 %{_bindir}/emacs-x11
 %{_bindir}/emacs-gtk
-%{_prefix}/lib/emacs/%{version}/*-suse-linux*/emacs-x11.pdmp
-%{_prefix}/lib/emacs/%{version}/*-suse-linux*/emacs-gtk.pdmp
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-x11.pdmp
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-gtk.pdmp
 %dir %{appDefaultsDir}
 %{appDefaultsFile}
-%{_datadir}/applications/emacs.desktop
+%{_datadir}/applications/emacs*.desktop
 %{_datadir}/icons/hicolor/128x128/apps/emacs.png
 %{_datadir}/icons/hicolor/16x16/apps/emacs.png
 %{_datadir}/icons/hicolor/24x24/apps/emacs.png
@@ -3300,8 +3392,18 @@ fi
 %if 0%{?suse_version} <= 1315
 %dir %{_datadir}/metainfo/
 %endif
-%{_datadir}/metainfo/emacs.appdata.xml
+%{_datadir}/metainfo/emacs.metainfo.xml
 %{_datadir}/pixmaps/emacs.png
+
+%if %{with nativecomp}
+%files       -n emacs-eln -f eln.list
+%defattr(-, root, root)
+%dir %{_libeln}/emacs/
+%dir %{_libeln}/emacs/%{version}/
+%dir %{_libeln}/emacs/%{version}/native-lisp/
+%dir %{_libeln}/emacs/%{version}/native-lisp/%{version}-*/
+%dir %{_libeln}/emacs/%{version}/native-lisp/%{version}-*/preloaded/
+%endif
 
 %files       -n emacs-info
 %defattr(-, root, root)
@@ -3449,7 +3551,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/cedet/ede/srecode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/ede/system.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/ede/util.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/cedet/inversion.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/mode-local.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/pulse.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic.el%{ext_el}
@@ -3496,6 +3597,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/fw.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/grammar-wy.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/grammar.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/cedet/semantic/grm-wy-boot.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/html.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/ia-sb.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/cedet/semantic/ia.el%{ext_el}
@@ -3613,6 +3715,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/chart.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/check-declare.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/checkdoc.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp-cstr.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-extra.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-generic.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/cl-indent.el%{ext_el}
@@ -3651,6 +3755,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/generic.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/gv.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/helper.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/hierarchy.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/inline.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/let-alist.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/lisp-mnt.el%{ext_el}
@@ -3659,6 +3764,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/macroexp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/map-ynp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/map.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/memory-report.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/nadvice.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/package-x.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/package.el%{ext_el}
@@ -3671,6 +3777,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/rx.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/seq.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/shadow.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/shortdoc.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/emacs-lisp/shorthands.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/smie.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/subr-x.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/syntax.el%{ext_el}
@@ -3678,7 +3786,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/rmc.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/tabulated-list.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/tcover-ses.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/emacs-lisp/tcover-unsafep.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/testcover.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/text-property-search.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/emacs-lisp/thunk.el%{ext_el}
@@ -3710,6 +3817,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/epa-dired.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/epa-file.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/epa-hook.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/epa-ks.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/epa-mail.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/epa.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/epg-config.el%{ext_el}
@@ -3745,6 +3853,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/erc/erc-speedbar.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-spelling.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-stamp.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/erc/erc-status-sidebar.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-track.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-truncate.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/erc/erc-xdcc.el%{ext_el}
@@ -3817,6 +3926,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-cite.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-cloud.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-cus.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/gnus/gnus-dbus.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-delay.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-demon.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-diary.el%{ext_el}
@@ -3843,6 +3953,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-rfc1843.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-salt.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-score.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/gnus/gnus-search.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-sieve.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-spec.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/gnus-srvr.el%{ext_el}
@@ -3885,7 +3996,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/nngateway.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnheader.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnimap.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/gnus/nnir.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnmail.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnmaildir.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnmairix.el%{ext_el}
@@ -3896,6 +4006,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/gnus/nnoo.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnregistry.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnrss.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/gnus/nnselect.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnspool.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nntp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/gnus/nnvirtual.el%{ext_el}
@@ -3945,6 +4056,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/international/characters.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/international/charscript.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/international/cp51932.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/international/emoji-zwj.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/international/eucjp-ms.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/international/fontset.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/international/isearch-x.el%{ext_el}
@@ -4037,6 +4149,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/leim/quail/ZIRANMA.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/ZOZY.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/arabic.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/leim/quail/cham.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/leim/quail/compose.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/croatian.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/cyril-jis.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/leim/quail/cyrillic.el%{ext_el}
@@ -4103,14 +4217,13 @@ fi
 %{_datadir}/emacs/%{version}/lisp/mail/mailalias.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/mailclient.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/mailheader.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/mail/metamail.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/mspools.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/qp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/reporter.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/rfc2045.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/rfc2047.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/rfc2231.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/mail/rfc2368.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/mail/rfc6068.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/rfc822.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/rmail-spam-filter.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/mail/rmail.el%{ext_el}
@@ -4173,6 +4286,8 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/ange-ftp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/browse-url.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/dbus.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/dictionary-connection.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/dictionary.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/dig.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/dns.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/eudc-bob.el%{ext_el}
@@ -4183,6 +4298,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/eudcb-bbdb.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/eudcb-ldap.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/eudcb-mab.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/eudcb-macos-contacts.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/eww.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/gnutls.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/goto-addr.el%{ext_el}
@@ -4213,6 +4329,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/sasl-digest.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/sasl-ntlm.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/sasl-scram-rfc.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/sasl-scram-sha256.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/sasl.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/secrets.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/sieve-manage.el%{ext_el}
@@ -4230,12 +4347,15 @@ fi
 %{_datadir}/emacs/%{version}/lisp/net/tramp-cache.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-cmds.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-compat.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/tramp-crypt.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-ftp.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/tramp-fuse.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-gvfs.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-integration.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-rclone.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-sh.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-smb.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/net/tramp-sshfs.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-sudoedit.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp-uu.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/net/tramp.el%{ext_el}
@@ -4285,19 +4405,17 @@ fi
 %{_datadir}/emacs/%{version}/lisp/obsolete/iswitchb.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/html2text.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/info-edit.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/obsolete/inversion.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/landmark.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/lazy-lock.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/obsolete/ledit.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/obsolete/levents.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/obsolete/lmenu.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/longlines.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/obsolete/lucid.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/mailpost.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/mantemp.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/obsolete/metamail.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/meese.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/mouse-sel.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/obsolete/nnir.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/old-emacs-lock.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/obsolete/old-whitespace.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/otodo-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/patcomp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/pc-mode.el%{ext_el}
@@ -4309,7 +4427,9 @@ fi
 %{_datadir}/emacs/%{version}/lisp/obsolete/pgg-pgp5.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/pgg.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/rcompile.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/obsolete/rfc2368.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/s-region.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/obsolete/sb-image.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/sregex.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/starttls.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/sup-mouse.el%{ext_el}
@@ -4324,33 +4444,16 @@ fi
 %{_datadir}/emacs/%{version}/lisp/obsolete/vip.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/ws-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/obsolete/yow.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-bbdb.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-bibtex.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-docview.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-eshell.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-eww.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-gnus.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-info.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-irc.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-mhe.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-rmail.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol-w3m.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ol.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-C.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-J.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-R.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-abc.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-asymptote.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-awk.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-calc.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-clojure.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-comint.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-coq.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-core.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-css.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-ditaa.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-dot.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-ebnf.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-emacs-lisp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-eshell.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-eval.el%{ext_el}
@@ -4360,12 +4463,10 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/ob-gnuplot.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-groovy.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-haskell.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-hledger.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-io.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-java.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ob-julia.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-js.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-latex.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-ledger.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-lilypond.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-lisp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-lob.el%{ext_el}
@@ -4373,12 +4474,10 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/ob-makefile.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-matlab.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-maxima.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-mscgen.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-ocaml.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-octave.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-org.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-perl.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-picolisp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-plantuml.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-processing.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-python.el%{ext_el}
@@ -4389,14 +4488,30 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/ob-screen.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-sed.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-shell.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-shen.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-sql.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-sqlite.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-stan.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-table.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob-tangle.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/org/ob-vala.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ob.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/oc-basic.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/oc-biblatex.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/oc-csl.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/oc-natbib.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/oc.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-bbdb.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-bibtex.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-docview.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-doi.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-eshell.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-eww.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-gnus.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-info.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-irc.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-man.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-mhe.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-rmail.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol-w3m.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ol.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-agenda.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-archive.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-attach.el%{ext_el}
@@ -4440,6 +4555,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/ox-beamer.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ox-html.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ox-icalendar.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/ox-koma-letter.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ox-latex.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ox-man.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/ox-md.el%{ext_el}
@@ -4507,6 +4623,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/progmodes/cc-styles.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/progmodes/cc-vars.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/progmodes/cfengine.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/progmodes/cl-font-lock.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/progmodes/cmacexp.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/progmodes/compile.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/progmodes/cperl-mode.el%{ext_el}
@@ -4591,7 +4708,6 @@ fi
 %{_datadir}/emacs/%{version}/lisp/rtree.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/savehist.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/saveplace.el%{ext_el}
-%{_datadir}/emacs/%{version}/lisp/sb-image.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/scroll-all.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/scroll-bar.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/scroll-lock.el%{ext_el}
@@ -4631,6 +4747,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/term/pc-win.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/rxvt.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/screen.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/term/st.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/sun.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/tmux.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/tty-colors.el%{ext_el}
@@ -4648,6 +4765,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/textmodes/conf-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/css-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/dns-mode.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/textmodes/etc-authors-mode.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/enriched.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/fill.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/textmodes/flyspell.el%{ext_el}
@@ -4696,6 +4814,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/tmm.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/tool-bar.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/tooltip.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/transient.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/tree-widget.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/tutorial.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/type-break.el%{ext_el}

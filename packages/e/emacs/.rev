@@ -1669,4 +1669,26 @@ From buildlog in develrepo:
 Now one could consider building emacs with gsettings support (both debian and fedora does), but that is out of scope for this change, and left up to maintainer. (forwarded request 953067 from iznogood)</comment>
     <requestid>958278</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>2c28cb6a956e8c7eb70081cbd4d65522</srcmd5>
+    <version>28.1</version>
+    <time>1649461426</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace emacs-27.2-pdf.tar.xz with refreshed emacs-28.1-pdf.tar.xz
+
+- Update to GNU Emacs version 28.1
+  * Emacs now optionally supports native compilation of Lisp files.
+  * The Cairo graphics library is now used by default if present.
+  * 'configure' now warns about building with libXft support.
+  * 'configure' now warns about not using HarfBuzz if using Cairo.
+  * Building without double buffering support.
+
+- Remove patches now upstream and in 28.1
+  * boo1178942-bedb3cb6.patch
+  * emacs-27.2-COLORTERM-24bit.patch
+  * sigsegv-stack.patch
+- Remove patch emacs-24.4-xim.patch as not needed anymore
+- Port and rename patch emacs-27.1.dif which is now emacs-28.1.dif</comment>
+    <requestid>967453</requestid>
+  </revision>
 </revisionlist>

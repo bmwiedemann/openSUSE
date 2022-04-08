@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  5 07:00:31 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Replace emacs-27.2-pdf.tar.xz with refreshed emacs-28.1-pdf.tar.xz
+
+-------------------------------------------------------------------
+Mon Apr  4 12:45:06 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to GNU Emacs version 28.1
+  * Emacs now optionally supports native compilation of Lisp files.
+  * The Cairo graphics library is now used by default if present.
+  * 'configure' now warns about building with libXft support.
+  * 'configure' now warns about not using HarfBuzz if using Cairo.
+  * Building without double buffering support.
+
+-------------------------------------------------------------------
 Wed Feb  9 23:28:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gconf-2.0) BuildRequires: is both unneeded and
@@ -8,6 +23,16 @@ Wed Feb  9 23:28:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 Thu Jan 27 12:59:04 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Remove unneeded pure size adjustments
+
+-------------------------------------------------------------------
+Wed Jan 19 14:56:14 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Remove patches now upstream and in 28.1
+  * boo1178942-bedb3cb6.patch
+  * emacs-27.2-COLORTERM-24bit.patch
+  * sigsegv-stack.patch
+- Remove patch emacs-24.4-xim.patch as not needed anymore
+- Port and rename patch emacs-27.1.dif which is now emacs-28.1.dif
 
 -------------------------------------------------------------------
 Thu Jan 13 07:25:28 UTC 2022 - Dr. Werner Fink <werner@suse.de>
