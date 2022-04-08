@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  8 01:35:35 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.15
+  * Optimize code
+  * Add interfaces for OCR and roll screenshot
+  * Optimize wayland support
+  * Fix bugs
+
+-------------------------------------------------------------------
 Sun Jan 30 14:55:04 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Leap 15.4 

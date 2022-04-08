@@ -16,8 +16,10 @@
 #
 
 
+%define    procps_version    %(rpm -q --queryformat '%%{VERSION}' procps-devel)
+
 Name:           deepin-screen-recorder
-Version:        5.10.9
+Version:        5.10.15
 Release:        0
 Summary:        Deepin Screen Recorder
 License:        GPL-3.0-or-later
@@ -36,7 +38,10 @@ BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
+BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -55,7 +60,6 @@ BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwm)
-BuildRequires:  pkgconfig(libprocps)
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(opencv4)
 %else
@@ -96,9 +100,14 @@ sed -i 's/dframeworkdbus/dframeworkdbus opencv4/' src/src.pro
 sed -i 's/dframeworkdbus/dframeworkdbus opencv/' src/src.pro
 %endif
 sed -i '/include <X11.extensions.XTest.h>/a #undef min' src/event_monitor.cpp
-sed -i '/#include <iostream>/d;1i #include <iostream>' src/screen_shot_event.cpp
+# sed -i '/#include <iostream>/d;1i #include <iostream>' src/screen_shot_event.cpp
 # sed -i '/include <X11.extensions.shape.h>/a #undef None' src/utils.cpp
 sed -i 's|/usr/lib|$$LIB_INSTALL_DIR|g' src/dde-dock-plugins/recordtime/recordtime.pro
+sed -i "s^cat /etc/os-version | grep 'Community'^echo 'Community'^" src/src.pro
+
+%if "%{procps_version}" >= "4.0.0"
+sed -i '/find_library/s|procps|proc-2|' src/CMakeLists.txt
+%endif
 
 %build
 %qmake5 LIB_INSTALL_DIR=%{_libdir} \
@@ -119,10 +128,9 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.md' -type f -print -exec chm
 %files
 %doc README.md CHANGELOG.md
 %license LICENSE
-%dir %{_sysconfdir}/due-shell
-%dir %{_sysconfdir}/due-shell/json
-%config %{_sysconfdir}/due-shell/json/screenRecorder.json
 %{_bindir}/%{name}
+%{_bindir}/deepin-pin-screenshots
+%{_datadir}/dbus-1/services/com.deepin.PinScreenShots.service
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
@@ -136,5 +144,6 @@ find %{buildroot}%{_datadir}/deepin-manual -name '*.md' -type f -print -exec chm
 
 %files lang
 %{_datadir}/%{name}
+%{_datadir}/deepin-pin-screenshots
 
 %changelog
