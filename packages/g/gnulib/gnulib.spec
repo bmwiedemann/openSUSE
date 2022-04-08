@@ -1,7 +1,7 @@
 #
 # spec file for package gnulib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,7 +122,7 @@ pushd build-tests
 make %{?_smp_mflags}
 popd
 # Rebuild removed java class
-javac -d lib -source 6 -target 1.6 lib/javaversion.java
+javac -d lib -source 1.8 -target 1.8 lib/javaversion.java
 # This part is done with the original path
 make %{?_smp_mflags} MODULES.html
 sed -i -r 's#HREF="(lib|m4|modules)#HREF="%{_datadir}/%{name}/\1#g' MODULES.html
