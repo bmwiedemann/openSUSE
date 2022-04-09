@@ -17,4 +17,12 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
   * Support PyYAML 6.0+</comment>
     <requestid>951464</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0494e7686b3682c595c2c36a0e1c9f06</srcmd5>
+    <version>0.0.5</version>
+    <time>1649544115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967920</requestid>
+  </revision>
 </revisionlist>

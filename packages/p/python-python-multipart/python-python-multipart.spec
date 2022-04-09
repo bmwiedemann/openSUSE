@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-python-multipart
 Version:        0.0.5
 Release:        0
@@ -25,12 +26,13 @@ Summary:        Python streaming multipart parser
 URL:            http://github.com/andrew-d/python-multipart
 Source:         https://files.pythonhosted.org/packages/source/p/python-multipart/python-multipart-%{version}.tar.gz
 Patch0:         support-pyyaml-6.patch
+# https://github.com/andrew-d/python-multipart/commit/8cff1aac7479fbb69087e355f66315b21640bab0
+Patch1:         python-python-multipart-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
