@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  9 02:30:54 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.0.1:
+  * Update compatibility with the latest Werkzeug
+      release. :issue:`511`
+
+-------------------------------------------------------------------
 Sun Feb 20 17:13:05 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

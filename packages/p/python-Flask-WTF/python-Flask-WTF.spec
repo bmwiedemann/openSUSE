@@ -20,7 +20,7 @@
 %define skip_python2 1
 %bcond_without     test
 Name:           python-Flask-WTF
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        WTForms support for Flask
 License:        BSD-3-Clause
