@@ -27,7 +27,7 @@ URL:            https://github.com/jboss-logging/jboss-logging
 Source0:        https://github.com/jboss-logging/jboss-logging/archive/%{namedversion}/%{name}-%{namedversion}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(log4j:log4j)
+BuildRequires:  mvn(log4j:log4j:1.2.16)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging.log4j:log4j-api)
 BuildRequires:  mvn(org.jboss.logmanager:jboss-logmanager)
