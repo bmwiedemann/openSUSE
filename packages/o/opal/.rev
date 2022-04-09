@@ -350,4 +350,12 @@ This is reported by the SUSE R&amp;D admins, and needed for us to use ekiga insi
     <comment></comment>
     <requestid>620183</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8f6fee635a4e07b35bb0e295c24ee948</srcmd5>
+    <version>3.18.8</version>
+    <time>1649547260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968033</requestid>
+  </revision>
 </revisionlist>

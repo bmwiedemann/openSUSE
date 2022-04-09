@@ -1,7 +1,7 @@
 #
 # spec file for package opal
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,6 +21,16 @@
 %bcond_with capi4linux
 
 Name:           opal
+Version:        3.18.8
+Release:        0
+Summary:        Open Phone Abstraction Library
+License:        MPL-1.0
+Group:          Development/Libraries/C and C++
+#Git-Clone:      https://git.code.sf.net/p/opalvoip/opal
+URL:            https://sf.net/projects/opalvoip/
+# FIXME: we should probably list all plugins in %%files to make sure we don't lose some when updating the package.
+%define _version 3_18_8
+Source0:        https://download.sf.net/opalvoip/%{name}-%{version}.tar.bz2
 %if %{with capi4linux}
 BuildRequires:  capi4linux-devel
 %endif
@@ -28,12 +38,16 @@ BuildRequires:  gcc-c++
 BuildRequires:  ilbc
 BuildRequires:  libcelt-devel
 BuildRequires:  libgsm-devel
+BuildRequires:  openldap2-devel
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(opus)
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavutil)
 %endif
 BuildRequires:  libopenssl-devel
-BuildRequires:  libpt-devel >= 2.10.1
+BuildRequires:  libpt-devel >= 2.18.5
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtheora-devel
@@ -43,38 +57,18 @@ BuildRequires:  libx264-devel
 BuildRequires:  pkg-config
 BuildRequires:  speex-devel
 BuildRequires:  swig
+BuildRequires:  pkgconfig(libsrtp2)
 # FIXME: ZRTP is implemented through libzrtp. Its webpage says it's AGPL, but I
 # was unable to find a copy with that license. srtp is in Contrib, it should be
 # moved back to support it here.
 BuildRequires:  spandsp-devel
-Summary:        Open Phone Abstraction Library
-License:        MPL-1.0
-Group:          System/Libraries
-Url:            http://www.opalvoip.org/
-Version:        3.10.10
-Release:        0
-# FIXME: we should probably list all plugins in %%files to make sure we don't lose some when updating the package.
-%define _version 3_10_10
-Source0:        http://download.gnome.org/sources/opal/3.10/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM opal-system-libgsm.patch vuntz@novell.com -- Fix detection of system libgsm
-Patch1:         opal-system-libgsm.patch
-# PATCH-FIX-UPSTREAM opal-fix-ambiguous.patch vuntz@novell.com -- Fix ambiguous code
-Patch2:         opal-fix-ambiguous.patch
-# PATCH-FIX-UPSTREAM opal-use-pkgconfig-for-PTLib.patch zaitor@opensuse.org  -- Use pkgconfig for PTLib, taken from upstream svn, fixes build.
-Patch4:         opal-use-pkgconfig-for-PTLib.patch 
-# PATCH-FIX-UPSTREAM bmwiedemann https://sourceforge.net/p/opalvoip/patches/333/
-Patch5:         reproducible.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Open Phone Abstraction Library, implementation of the ITU H.323
 teleconferencing protocol, and successor of the openh323 library. It
 supports the H.323 protocol as well as SIP and IAX2.
 
-
-
 %package -n lib%{name}%{_version}
-
 Summary:        Open Phone Abstraction Library
 Group:          System/Libraries
 
@@ -83,14 +77,13 @@ Open Phone Abstraction Library, implementation of the ITU H.323
 teleconferencing protocol, and successor of the openh323 library. It
 supports the H.323 protocol as well as SIP and IAX2.
 
-
-
 %package -n lib%{name}-devel
-
 Summary:        Development package for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{_version} = %{version}
-Requires:       libpt-devel
+Requires:       pkgconfig(libsrtp2)
+Requires:       pkgconfig(ptlib)
+Requires:       pkgconfig(speexdsp)
 # opal-devel was last used in openSUSE 11.3
 Provides:       opal-devel = %{version}
 Obsoletes:      opal-devel < %{version}
@@ -98,14 +91,8 @@ Obsoletes:      opal-devel < %{version}
 %description -n lib%{name}-devel
 Static libraries and header files for development with opal.
 
-
-
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 # this subdir contains GPL - to avoid license issues delete it before build
 rm -rf plugins/LID/VPB
 
@@ -116,38 +103,33 @@ autoreconf -fi
 cd ..
 %endif
 # Can support Voicetronix vpb
-export CXXFLAGS="%optflags -fvisibility-inlines-hidden -std=gnu++98"
+export CPPFLAGS="-I/usr/include/gsm"
+export CXXFLAGS="%optflags -fvisibility-inlines-hidden"
 %configure --disable-static \
 	--enable-sbc \
 %if %{with capi4linux}
 	--enable-capi \
 %endif
-	--disable-ixj
+	--disable-ixj --enable-cpp17
 
-make %{?_smp_mflags} VERBOSE=1
+%make_build OS="" CPU="" VERBOSE=1 DSYMUTIL=/bin/true
 
 %install
-%makeinstall
+%make_install OS="" CPU=""
 rm -f %{buildroot}%{_libdir}/lib%{name}_s.a
 
 %post -n lib%{name}%{_version} -p /sbin/ldconfig
 
 %postun -n lib%{name}%{_version} -p /sbin/ldconfig
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -n lib%{name}%{_version}
-%defattr(-,root,root)
 %doc  mpl-1.0.htm
-%dir %{_libdir}/%{name}-%{version}/ 
+%dir %{_libdir}/%{name}-%{version}/
 %dir %{_libdir}/%{name}-%{version}/codecs
 %dir %{_libdir}/%{name}-%{version}/codecs/audio
 %dir %{_libdir}/%{name}-%{version}/codecs/video
 %dir %{_libdir}/%{name}-%{version}/fax
 %{_libdir}/libopal.so.%{version}
-%{_libdir}/%{name}-%{version}/codecs/audio/celt_ptplugin.so
-%{_libdir}/%{name}-%{version}/codecs/audio/g7221_ptplugin.so
 %{_libdir}/%{name}-%{version}/codecs/audio/g7222_ptplugin.so
 %{_libdir}/%{name}-%{version}/codecs/audio/g722_ptplugin.so
 %{_libdir}/%{name}-%{version}/codecs/audio/g726_ptplugin.so
@@ -158,14 +140,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}-%{version}/codecs/audio/lpc10_ptplugin.so
 %{_libdir}/%{name}-%{version}/codecs/audio/silk_ptplugin.so
 %{_libdir}/%{name}-%{version}/codecs/audio/speex_ptplugin.so
+%{_libdir}/%{name}-%{version}/codecs/audio/opus_ptplugin.so
+%{_libdir}/%{name}-%{version}/codecs/audio/iSAC_ptplugin.so
 %{_libdir}/%{name}-%{version}/codecs/video/h261_vic_ptplugin.so
 %{_libdir}/%{name}-%{version}/codecs/video/theora_ptplugin.so
 %{_libdir}/%{name}-%{version}/fax/spandsp_ptplugin.so
 
 %files -n lib%{name}-devel
-%defattr(-,root,root)
 %{_includedir}/%{name}/
 %{_libdir}/libopal.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_datadir}/opal/
 
 %changelog

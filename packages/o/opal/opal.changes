@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr  2 10:41:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.18.8
+  * No changelog was provided
+- Drop opal-fix-ambiguous.patch (merged),
+  opal-system-libgsm.patch (replaced by setting CPPFLAGS),
+  opal-use-pkgconfig-for-PTLib.patch,
+  reproducible.patch (merged)
+
+-------------------------------------------------------------------
 Thu Jun 28 12:46:15 UTC 2018 - dimstar@opensuse.org
 
 - Pass --disable-ixj to configure instead of --enable-ixj: Linux
