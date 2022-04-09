@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,8 @@ BuildRequires:  cmake(Qt6WebEngineQuick)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 %requires_ge    python-PyQt6
 Provides:       python-qtwebengine-qt6 = %{version}-%{release}
+# No 32-bit builds of QtWebengine >= 6.3.0 anymore
+ExcludeArch:    %{ix86} %{arm}
 %python_subpackages
 
 %description
