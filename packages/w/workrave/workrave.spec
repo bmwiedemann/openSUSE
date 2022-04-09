@@ -16,9 +16,9 @@
 #
 
 
-%define upstream_version    1_10_49
+%define upstream_version    1_10_50
 Name:           workrave
-Version:        1.10.49
+Version:        1.10.50
 Release:        0
 Summary:        Recovery and prevention of Repetitive Strain Injury program
 License:        GPL-3.0-only
@@ -26,12 +26,6 @@ Group:          Productivity/Other
 URL:            http://www.workrave.org
 Source:         https://github.com/rcaelers/workrave/archive/v%{upstream_version}.tar.gz
 Source2:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM gnome42.patch -- support GNOME 42 in metadata boo#1197808
-Patch0:         gnome42.patch
-# PATCH-FIX-UPSTREAM gnome42-vertical-alignment.patch -- fix vertical alignment of the applet boo#1197808
-Patch1:         gnome42-vertical-alignment.patch
-# PATCH-FIX-UPSTREAM gnome42-fixapplet.patch -- fixes for the applet for GNOME 42 boo#1197808
-Patch2:         gnome42-fixapplet.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -74,9 +68,6 @@ Workrave.
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 ./autogen.sh

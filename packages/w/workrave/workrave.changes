@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  1 20:28:58 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.10.50:
+ -  The "Restbreak now" button in the main window no longer responds to keyboard (#368)
+ -  Allow installation on Windows without administrator rights.
+ -  Fix vertical alignment of GNOME shell applet (#356)
+ -  Support GNOME Shell 42 (#396)
+ -  Restore support for Windows Vista and up (#367)
+ -  The 'Backward shoulder stretch' exercises now plays a sound twice matching the description (#354)
+- remove obsolete gnome42.patch
+- remove obsolete gnome42-vertical-alignment.patch
+- remove obsolete gnome42-fixapplet.patch
+
+-------------------------------------------------------------------
 Thu Mar 31 08:27:29 UTC 2022 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Add patches for GNOME 42 from upstream (boo#1197808):
