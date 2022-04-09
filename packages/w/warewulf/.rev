@@ -52,4 +52,12 @@
   * Add-suse-to-overlay-template.patch</comment>
     <requestid>953261</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>233e7ca2fd4b7c9c46749d124af8e945</srcmd5>
+    <version>3.8.1</version>
+    <time>1649544126</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable i586 buildarch for openSUSE:Factory.</comment>
+    <requestid>967981</requestid>
+  </revision>
 </revisionlist>

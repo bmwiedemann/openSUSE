@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 17:00:32 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Disable i586 buildarch for openSUSE:Factory.
+
+-------------------------------------------------------------------
 Thu Feb 10 11:31:35 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Improve creating chroot on SLE: use repositories from host

@@ -21,7 +21,11 @@
 %if "%{?flavor}" == ""
 ExclusiveArch:  do_not_build
 %else
+ %if 0%{?suse_version} > 1500
+ExclusiveArch:  x86_64 aarch64
+ %else
 ExclusiveArch:  x86_64 aarch64 i586
+ %endif
  %ifarch x86_64 # on arch != x86_64 only build warewulf-provision-%%arch-initramfs
   %define full_build 1
  %endif
@@ -118,14 +122,13 @@ BuildRequires:  sysuser-tools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Warewulf is a set of utilities designed to better enable utilization 
+Warewulf is a set of utilities designed to better enable utilization
 and maintenance of clusters or groups of computers.
-
 
 %package common
 Summary:        Main Warewulf daemon and utilities
 Group:          Productivity/Clustering/Computing
-Requires(pre): shadow
+Requires(pre):  shadow
 Requires(post): mysql
 Requires:       mysql
 Requires:       perl-warewulf-common
@@ -133,14 +136,14 @@ Requires:       warewulf-doc
 BuildArch:      noarch
 
 %description common
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
 notification, and more via a modular plugin architecture.
 
-This is the main package which includes the command line interface, 
-initialization script, and configuration definition. All other warewulf 
+This is the main package which includes the command line interface,
+initialization script, and configuration definition. All other warewulf
 modules depend on this module for configuration information.
 
 %package -n perl-warewulf-common
@@ -151,10 +154,10 @@ Requires:       perl-DBD-mysql
 BuildArch:      noarch
 
 %description -n perl-warewulf-common
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
 notification, and more via a modular plugin architecture.
 
 This package includes the supporting libs for the Warewulf daemon.
@@ -165,15 +168,14 @@ Group:          Productivity/Clustering/Computing
 BuildArch:      noarch
 
 %description doc
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
 notification, and more via a modular plugin architecture.
 
-This package contains documentation for Warewulf, and installation 
+This package contains documentation for Warewulf, and installation
 recipes to assist in the deployment of a Warewulf cluster.
-
 
 %package provision
 Summary:        Warewulf Cluster Provisioning Module
@@ -183,18 +185,17 @@ Requires:       warewulf-common
 BuildArch:      noarch
 
 %description provision
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
-notification, and more via a modular plugin architecture.  The 
-provision module provides functionality for provisioning, configuring, 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
+notification, and more via a modular plugin architecture.  The
+provision module provides functionality for provisioning, configuring,
 and booting systems.
 
 This package contains the core provisioning components and
 administrative tools.  To actually provision systems, the
 warewulf-provision-server package is also required.
-
 
 %package -n perl-warewulf-provision
 Summary:        Perl support scripts for the Warewulf3 provisioning system
@@ -204,17 +205,16 @@ Requires:       perl-warewulf-common
 BuildArch:      noarch
 
 %description -n perl-warewulf-provision
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
-notification, and more via a modular plugin architecture.  The 
-provision module provides functionality for provisioning, configuring, 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
+notification, and more via a modular plugin architecture.  The
+provision module provides functionality for provisioning, configuring,
 and booting systems.
 
 This package includes the supporting libs for the Warewulf
 provisioning module.
-
 
 %package provision-server
 Summary:        Warewulf Cluster Provisioning Module Server
@@ -224,18 +224,17 @@ Requires:       warewulf-common
 BuildArch:      noarch
 
 %description provision-server
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
-notification, and more via a modular plugin architecture.  The 
-provision module provides functionality for provisioning, configuring, 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
+notification, and more via a modular plugin architecture.  The
+provision module provides functionality for provisioning, configuring,
 and booting systems.
 
 This package contains the CGI scripts and event components to actually
 provision systems.  Systems used solely for administration of Warewulf
 do not require this package.
-
 
 %package -n perl-warewulf-provision-server
 Summary:        Perl support scripts for the Warewulf3 provisioning system
@@ -251,17 +250,16 @@ Requires:       perl(Apache)
 BuildArch:      noarch
 
 %description -n perl-warewulf-provision-server
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
-notification, and more via a modular plugin architecture.  The 
-provision module provides functionality for provisioning, configuring, 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
+notification, and more via a modular plugin architecture.  The
+provision module provides functionality for provisioning, configuring,
 and booting systems.
 
 This package includes the supporting libs for the Warewulf
 provisioning server module.
-
 
 %package provision-%{_arch}-initramfs
 Summary:        Warewulf Cluster Provisioning Module initramfs for %{_arch} systems
@@ -270,17 +268,16 @@ Requires:       warewulf-provision
 BuildArch:      noarch
 
 %description provision-%{_arch}-initramfs
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
-notification, and more via a modular plugin architecture.  The 
-provision module provides functionality for provisioning, configuring, 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
+notification, and more via a modular plugin architecture.  The
+provision module provides functionality for provisioning, configuring,
 and booting systems.
 
 This package contains the %{_arch}-specific initramfs used to build the
 bootstrap for %{_arch} systems.
-
 
 %package provision-ipxe-images
 Summary:        Warewulf Cluster Provisioning Module iPXE Images
@@ -289,17 +286,16 @@ Requires:       warewulf-provision-server
 BuildArch:      noarch
 
 %description provision-ipxe-images
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
-notification, and more via a modular plugin architecture.  The 
-provision module provides functionality for provisioning, configuring, 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
+notification, and more via a modular plugin architecture.  The
+provision module provides functionality for provisioning, configuring,
 and booting systems.
 
-This package contains the iPXE images used to boot warewulf on i586, 
+This package contains the iPXE images used to boot warewulf on i586,
 x86_64, and arm64 systems.
-
 
 %package vnfs
 Summary:        Warewulf VNFS Module
@@ -308,15 +304,14 @@ Requires:       warewulf-common
 BuildArch:      noarch
 
 %description vnfs
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
 notification, and more via a modular plugin architecture.
 
 This is the VNFS module which supports the creation and management of
 Virtual Node FileSystem objects.
-
 
 %package cluster
 Summary:        Tools used for clustering with Warewulf
@@ -328,15 +323,14 @@ Requires:       warewulf-provision
 BuildArch:      noarch
 
 %description cluster
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
 notification, and more via a modular plugin architecture.
 
 This package contains tools to facilitate management of a Cluster
 with Warewulf.
-
 
 %package -n perl-warewulf-cluster
 Summary:        Perl support scripts for the Warewulf3 cluster module
@@ -346,13 +340,13 @@ Requires:       perl-warewulf-common
 BuildArch:      noarch
 
 %description -n perl-warewulf-cluster
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
 notification, and more via a modular plugin architecture.
 
-This package includes the supporting libs for the Warewulf cluster 
+This package includes the supporting libs for the Warewulf cluster
 server module.
 
 %package -n perl-warewulf-ipmi
@@ -364,10 +358,10 @@ Requires:       perl-warewulf-common
 BuildArch:      noarch
 
 %description -n perl-warewulf-ipmi
-Warewulf is a scalable systems management suite originally developed to 
-manage large high-performance Linux clusters. Focused on general 
-scalable system management, it includes a framework for system 
-configuration, management, provisioning/installation, monitoring, event 
+Warewulf is a scalable systems management suite originally developed to
+manage large high-performance Linux clusters. Focused on general
+scalable system management, it includes a framework for system
+configuration, management, provisioning/installation, monitoring, event
 notification, and more via a modular plugin architecture.
 
 This package includes the supporting libs for the Warewulf ipmi module.
