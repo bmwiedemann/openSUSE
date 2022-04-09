@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-distribution-remote-resources
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,9 @@ Group:          Development/Libraries/Java
 URL:            http://www.eclipse.org/jetty/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  maven-local
+BuildRequires:  xz
 BuildRequires:  mvn(org.apache.maven.plugins:maven-remote-resources-plugin)
 BuildRequires:  mvn(org.eclipse.jetty.toolchain:jetty-toolchain:pom:)
-BuildRequires:  xz
-#!BuildRequires: mvn(log4j:log4j)
 BuildArch:      noarch
 
 %description
