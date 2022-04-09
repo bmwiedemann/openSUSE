@@ -1,13 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  8 21:33:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the provider of mvn(log4j:log4j:1.2.16) instead of
+  mvn(log4j:log4j), in order to be able to build both on systems
+  with and without reload4j (bsc#1197787)
+
+-------------------------------------------------------------------
 Fri Apr  8 06:00:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - netty3-CVE-2021-43797.patch
   * backport upstream fix for bsc#1193672, CVE-2021-43797
-
--------------------------------------------------------------------
-Wed Mar 30 10:04:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
-
-- Build against the standalone JavaEE modules inconditionally
 
 -------------------------------------------------------------------
 Wed Mar 23 08:49:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
