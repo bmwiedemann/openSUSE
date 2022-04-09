@@ -5,82 +5,53 @@ Subject: libpt2: Build/API fixes for AVC plugins
 
 Signed-off-by: Jeff Mahoney <jeffm@suse.com>
 ---
- plugins/vidinput_avc/vidinput_avc.cxx |   20 +++++++++++++-------
- plugins/vidinput_avc/vidinput_avc.h   |    7 ++++++-
- 2 files changed, 19 insertions(+), 8 deletions(-)
+ plugins/vidinput_avc/vidinput_avc.cxx |   15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
---- a/plugins/vidinput_avc/vidinput_avc.cxx
-+++ b/plugins/vidinput_avc/vidinput_avc.cxx
-@@ -163,7 +163,8 @@ PBoolean PVideoInputDevice_1394AVC::Star
-   if (!IsOpen()) return PFalse;
-   if (IsCapturing()) return PTrue;
-   
--  if (raw1394_set_iso_handler(handle, 63, &RawISOHandler)!= NULL) {
-+  if (raw1394_iso_recv_init(handle, &RAWISOHandler, 2048, RAW_BUFFER_SIZE, 63,
-+			    RAW1394_DMA_BUFFERFILL, -1)) {
-     PTRACE (3, "Cannot set_iso_handler");
-     return PFalse;
+Index: ptlib-2.18.8/plugins/vidinput_avc/vidinput_avc.cxx
+===================================================================
+--- ptlib-2.18.8.orig/plugins/vidinput_avc/vidinput_avc.cxx
++++ ptlib-2.18.8/plugins/vidinput_avc/vidinput_avc.cxx
+@@ -135,6 +135,12 @@ PBoolean PVideoInputDevice_1394AVC::Open
+     return false;
    }
-@@ -371,14 +372,15 @@ PBoolean PVideoInputDevice_1394AVC::GetF
-   BYTE * capture_buffer_end = capture_buffer;
    
-   // this starts the bytes' rain
--  if (raw1394_start_iso_rcv(handle, 63) < 0) {
-+  if (raw1394_iso_recv_start(handle, -1, 0, 0) < 0) {
-     PTRACE(3, "Cannot receive data on channel 63");
-     return PFalse;
-   }
-   // calling the raw1394 event manager, to get a frame:
-   while(!frame_complete) {
-     raw1394_loop_iterate(handle);
--    if (*(uint32_t *)raw_buffer >= 492) {
-+    uint32_t *lenp = (uint32_t *)raw_buffer;
-+    if (*lenp >= 492) {
-       if (!found_first_frame) {
-         if (raw_buffer[16] == 0x1f && raw_buffer[17] == 0x07)
-           found_first_frame = PTrue;
-@@ -415,7 +417,7 @@ PBoolean PVideoInputDevice_1394AVC::GetF
-     }
-   }
-   // stops the bytes from coming at us!
--  raw1394_stop_iso_rcv(handle, 63);
-+  raw1394_iso_stop(handle);
++  auto &frameWidth = m_frameWidth;
++  auto &frameHeight = m_frameHeight;
++  auto &colourFormat = m_colourFormat;
++  auto &channelNumber = m_channelNumber;
++  auto &videoFormat = m_videoFormat;
++  auto &deviceName = m_deviceName;
+   frameWidth = CIFWidth;
+   frameHeight = CIFHeight;
+   colourFormat = "RGB24";
+@@ -401,6 +407,9 @@ bool PVideoInputDevice_1394AVC::Internal
+   dv_decode_full_frame(dv, capture_buffer, color_space, pixels, pitches);
    
-   dv_decoder_t *dv;
-   dv = dv_decoder_new(PTrue, PFalse, PFalse);
-@@ -500,12 +502,16 @@ PBoolean PVideoInputDevice_1394AVC::SetF
- }
+   // FIXME: this is a manual resize ; the original author wondered about it
++  auto &frameWidth = m_frameWidth;
++  auto &frameHeight = m_frameHeight;
++  auto &converter = m_converter;
+   float xRatio = dv->width / (float)frameWidth;
+   float yRatio = dv->height/ (float)frameHeight;
+   for(uint y = 0; y < frameHeight; y++)
+@@ -437,7 +446,7 @@ PBoolean PVideoInputDevice_1394AVC::Test
  
- 
--int RawISOHandler (raw1394handle_t handle, int channel, size_t length, u_int32_t * data)
-+enum raw1394_iso_disposition
-+RAWISOHandler(raw1394handle_t handle, unsigned char *data, unsigned int length,
-+	      unsigned char channel, unsigned char tag, unsigned char sy,
-+	      unsigned int cycle, unsigned int dropped)
+ PBoolean PVideoInputDevice_1394AVC::SetColourFormat(const PString & newFormat)
  {
-   if (length < RAW_BUFFER_SIZE) {
--    *(u_int32_t *) raw_buffer = length;
-+    uint32_t *lenp = (uint32_t *)raw_buffer;
-+    *lenp = length;
-     memcpy (raw_buffer + 4, data, length);
-   }
--  return 0;
-+  return RAW1394_ISO_OK;
+-  return newFormat == colourFormat;
++  return newFormat == m_colourFormat;
  }
- // End Of File ///////////////////////////////////////////////////////////////
---- a/plugins/vidinput_avc/vidinput_avc.h
-+++ b/plugins/vidinput_avc/vidinput_avc.h
-@@ -224,7 +224,12 @@ class PVideoInputDevice_1394AVC : public
-     PBoolean SetupHandle();
- };
  
--int RawISOHandler (raw1394handle_t handle, int channel, size_t length, u_int32_t * data);
-+extern "C" {
-+enum raw1394_iso_disposition
-+RAWISOHandler(raw1394handle_t handle, unsigned char *data, unsigned int lenth,
-+	      unsigned char channel, unsigned char tag, unsigned char sy,
-+	      unsigned int cycle, unsigned int dropped);
-+};
+ PBoolean PVideoInputDevice_1394AVC::SetFrameSize(unsigned width, unsigned height)
+@@ -445,6 +454,10 @@ PBoolean PVideoInputDevice_1394AVC::SetF
+   if ( ! ( (width == CIFWidth && height == CIFHeight) ) )
+     return false;
  
- #endif
- 
++  auto &frameWidth = m_frameWidth;
++  auto &frameHeight = m_frameHeight;
++  auto &colourFormat = m_colourFormat;
++  auto &nativeVerticalFlip = m_nativeVerticalFlip;
+   frameWidth = width;
+   frameHeight = height;
+   colourFormat = "RGB24";

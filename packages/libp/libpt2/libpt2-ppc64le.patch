@@ -1,6 +1,13 @@
---- a/configure
-+++ b/configure
-@@ -4676,6 +4676,12 @@
+---
+ configure    |    6 ++++++
+ configure.ac |    6 ++++++
+ 2 files changed, 12 insertions(+)
+
+Index: ptlib-2.18.8/configure
+===================================================================
+--- ptlib-2.18.8.orig/configure
++++ ptlib-2.18.8/configure
+@@ -7047,6 +7047,12 @@ fi
          LIB64=1
  	;;
  
@@ -11,11 +18,13 @@
 +	;;
 +
     * )
- 	MACHTYPE=$target_cpu
- 	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: \"CPU $target_cpu not recognized - proceed with caution!\"" >&5
---- a/configure.ac
-+++ b/configure.ac
-@@ -351,6 +351,12 @@
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: Operating system $target_os not recognized - proceed with caution!" >&5
+ printf "%s\n" "$as_me: WARNING: Operating system $target_os not recognized - proceed with caution!" >&2;}
+Index: ptlib-2.18.8/configure.ac
+===================================================================
+--- ptlib-2.18.8.orig/configure.ac
++++ ptlib-2.18.8/configure.ac
+@@ -178,6 +178,12 @@ case "$target_os" in
          LIB64=1
  	;;
  
@@ -26,5 +35,5 @@
 +	;;
 +
     * )
- 	MACHTYPE=$target_cpu
- 	AC_MSG_WARN("CPU $target_cpu not recognized - proceed with caution!")
+       OS_TAG="P_TARGET_OS"
+ esac

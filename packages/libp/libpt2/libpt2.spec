@@ -1,7 +1,7 @@
 #
 # spec file for package libpt2
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,39 +23,25 @@
 
 Name:           libpt2
 %define _name   ptlib
-Version:        2.10.11
+Version:        2.18.8
 Release:        0
 # FIXME: when upgrading, check if the dc plugin builds with the current version of libdc1394. - Last check: 2.10.9 / 3.12.2012
-%define _version 2_10_11
+%define _version 2_18_8
 Summary:        Portable Windows Library from Equivalence Pty. Ltd. version 2
 License:        MPL-1.0
-Group:          System/Libraries
-Url:            http://www.opalvoip.org/
-# https://sourceforge.net/projects/opalvoip
-Source:         http://download.gnome.org/sources/ptlib/2.10/%{_name}-%{version}.tar.xz
+Group:          Development/Libraries/C and C++
+#Git-Clone:     https://git.code.sf.net/p/opalvoip/ptlib
+URL:            https://sf.net/projects/opalvoip/
+Source:         https://downloads.sf.net/opalvoip/%{_name}-%{version}.tar.bz2
 # PATCH-MISSING-TAG libpt2-fix-avc-plugin.patch jeffm@suse.com -- Fix build for avc-plugin. 
 Patch1:         libpt2-fix-avc-plugin.patch 
 # PATCH-FIX-UPSTREAM libpt2-aarch64.patch schwab@suse.de -- Add support for aarch64
 Patch2:         libpt2-aarch64.patch
 Patch3:         libpt2-ppc64le.patch
-# PATCH-FIX-UPSTREAM libpt2-bison-3.0.patch sf#259 dimstar@opensuse.org -- Fix build with bison 3.0
-Patch4:         libpt2-bison-3.0.patch
-# PATCH-FIX-OPENSUSE libpt2-gcc5-fixes.patch dmueller@suse.com -- Fix build against GCC 5
-Patch5:         libpt2-gcc5-fixes.patch
-# PATCH-FIX-OPENSUSE libpt2-2.10.11-gcc6.patch dimstar@opensuse.org -- Fix build against GCC 6
-Patch6:         libpt2-2.10.11-gcc6.patch
 # PATCH-FIX-UPSTREAM missing-decls.patch -- Fix missing declarations
 Patch7:         missing-decls.patch
-# PATCH-FIX-UPSTREAM libpt2-openssl11.patch boo#1055477 mgorse@suse.com -- port to OpenSSL 1.1.
-Patch8:         libpt2-openssl11.patch
-Patch9:         reproducible.patch
 Patch10:        libpt2-gnu-make-4.3.patch
-# PATCH-FIX-UPSTREAM ptlib-2.10.11-signed_int_overflow.patch rh#1696458 fcrozat@suse.com -- fix overflow
-Patch11:	ptlib-2.10.11-signed_int_overflow.patch
-# PATCH-FIX-UPSTREAM libpt2-c11-fixes.patch fcrozat@suse.com -- Fix warning in C++11
-Patch12:	libpt2-c11-fixes.patch
-# PATCH-FIX-UPSTREAM libpt2-avoid-C-11-deprecation-warning-when-using-g-7.patch fcrozat@suse.com -- Fix build with old gcc
-Patch13:	libpt2-avoid-C-11-deprecation-warning-when-using-g-7.patch
+Patch11:        libpt2-move.patch
 BuildRequires:  SDL-devel
 BuildRequires:  alsa-devel
 BuildRequires:  bison
@@ -78,7 +64,6 @@ BuildRequires:  libv4l-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpulse)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is a moderately large class library that was created many years
@@ -188,18 +173,11 @@ This plugin enables pulseaudio support for %{name}.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 %patch7 -p1
-%patch8 -p1
-%patch9 -p1
 %if %{pkg_vcmp make >= 4.3}
 %patch10 -p1
 %endif
 %patch11 -p1
-%patch12 -p1
-%patch13 -p1
 
 %build
 export CXXFLAGS="%optflags -fvisibility-inlines-hidden"
@@ -214,11 +192,11 @@ export CFLAGS="%optflags -fvisibility-inlines-hidden"
 %if %{build_avc}
 	--enable-avc \
 %endif
-        --enable-ipv6
-make %{?_smp_mflags} V=1
+        --enable-ipv6 --enable-cpp17
+%make_build CPU="" OS="" DSYMUTIL=/bin/true
 
 %install
-%makeinstall
+%make_install CPU="" OS=""
 rm -f %{buildroot}%{_libdir}/libpt_s.a
 
 %post -n libpt%{_version} -p /sbin/ldconfig
@@ -226,55 +204,44 @@ rm -f %{buildroot}%{_libdir}/libpt_s.a
 %postun -n libpt%{_version} -p /sbin/ldconfig
 
 %files -n libpt%{_version}
-%defattr(-,root,root)
 %doc mpl-1.0.htm History.txt
 %{_libdir}/libpt.so.2*
 # We explicitly list the plugins that are shipped by default to make sure we
 # don't lose any without noticing it
 %dir %{_libdir}/%{_name}-%{version}
-%dir %{_libdir}/%{_name}-%{version}/devices
-%dir %{_libdir}/%{_name}-%{version}/devices/sound
-%dir %{_libdir}/%{_name}-%{version}/devices/videoinput
-%{_libdir}/%{_name}-%{version}/devices/sound/alsa_pwplugin.so
-%{_libdir}/%{_name}-%{version}/devices/sound/oss_pwplugin.so
-%{_libdir}/%{_name}-%{version}/devices/videoinput/v4l2_pwplugin.so
+%dir %{_libdir}/%{_name}-%{version}/device
+%dir %{_libdir}/%{_name}-%{version}/device/sound
+%dir %{_libdir}/%{_name}-%{version}/device/videoinput
+%{_libdir}/%{_name}-%{version}/device/sound/alsa_ptplugin.so
+%{_libdir}/%{_name}-%{version}/device/sound/oss_ptplugin.so
+%{_libdir}/%{_name}-%{version}/device/videoinput/v4l2_ptplugin.so
 
 %files -n libpt-devel
-%defattr(0644,root,root,0755)
-%doc ReadMe.txt ReadMe_QOS.txt
+%doc ReadMe.txt
 %{_datadir}/ptlib/
-%attr(0755, root, root) %{_datadir}/ptlib/make/ptlib-config
-%{_includedir}/ptbuildopts.h
-%{_includedir}/ptlib.h
-%{_includedir}/ptlib/
-%{_includedir}/ptclib/
-%{_bindir}/ptlib-config
+%{_includedir}/pt*
 %{_libdir}/libpt.so
 %{_libdir}/pkgconfig/ptlib.pc
 
 %if %{build_avc}
 
 %files -n libpt%{_version}-plugins-avc
-%defattr(-,root,root)
-%{_libdir}/%{_name}-%{version}/devices/videoinput/avc_pwplugin.so
+%{_libdir}/%{_name}-%{version}/device/videoinput/avc_ptplugin.so
 %endif
 
 %if %{build_dc}
 
 %files -n libpt%{_version}-plugins-dc
-%defattr(-,root,root)
-%{_libdir}/%{_name}-%{version}/devices/videoinput/dc_pwplugin.so
+%{_libdir}/%{_name}-%{version}/device/videoinput/dc_ptplugin.so
 %endif
 
 %if %{build_v4l}
 
 %files -n libpt%{_version}-plugins-v4l
-%defattr(-,root,root)
-%{_libdir}/%{_name}-%{version}/devices/videoinput/v4l_pwplugin.so
+%{_libdir}/%{_name}-%{version}/device/videoinput/v4l_ptplugin.so
 %endif
 
 %files -n libpt%{_version}-plugins-pulse
-%defattr(-,root,root)
-%{_libdir}/%{_name}-%{version}/devices/sound/pulse_pwplugin.so
+%{_libdir}/%{_name}-%{version}/device/sound/pulse_ptplugin.so
 
 %changelog

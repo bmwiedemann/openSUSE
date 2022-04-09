@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  2 09:47:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to upstream release 2.18.8
+  * No changelog was provided
+- Drop libpt2-bison-3.0.patch, libpt2-gcc5-fixes.patch,
+  libpt2-2.10.11-gcc6.patch, libpt2-openssl11.patch,
+  reproducible.patch (obsolete),
+  ptlib-2.10.11-signed_int_overflow.patch (merged),
+  libpt2-c11-fixes.patch,
+  libpt2-avoid-C-11-deprecation-warning-when-using-g-7.patch .
+- Add libpt2-move.patch .
+
+-------------------------------------------------------------------
 Fri Jun  4 12:38:44 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Add libpt2-avoid-C-11-deprecation-warning-when-using-g-7.patch:
