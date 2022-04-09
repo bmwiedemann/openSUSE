@@ -19,18 +19,19 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-lsp-black
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Black plugin for the Python LSP Server
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-black
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-black/python-lsp-black-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module black >= 19.3b0}
+BuildRequires:  %{python_module black >= 22.1.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-lsp-server}
+BuildRequires:  %{python_module python-lsp-server >= 1.4.0}
 BuildRequires:  %{python_module toml}
 # /SECTION
 BuildRequires:  fdupes

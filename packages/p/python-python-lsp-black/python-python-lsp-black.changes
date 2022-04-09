@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr  9 21:17:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0
+  * This release fixes formatting of Python files with non-UNIX
+    line endings, adds plugin configuration support and black
+    configuration caching to improve performance.
+  * Official support for Python 3.10 by @wlcx (PR 31).
+  * Correctly format files and ranges with line endings other than
+    LF by @ccordoba12 (PR 28).
+  * Plugin configuration support and black configuration caching by
+    @ccordoba12 and @haplo (PR 26).
+  * Fixed PyPI badge in Readme (PR 32).
+  * Updated pre-commit hooks' versions (PR 33).
+
+-------------------------------------------------------------------
 Fri Mar 25 12:39:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.0
