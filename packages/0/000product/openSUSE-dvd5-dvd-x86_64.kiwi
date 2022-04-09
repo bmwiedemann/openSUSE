@@ -320,7 +320,6 @@
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
       <repopackage name="cpp11"/>
-      <repopackage name="cpp12"/>
       <repopackage name="cppcheck"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-lang"/>
@@ -556,9 +555,6 @@
       <repopackage name="gcc11"/>
       <repopackage name="gcc11-info"/>
       <repopackage name="gcc11-locale"/>
-      <repopackage name="gcc12"/>
-      <repopackage name="gcc12-info"/>
-      <repopackage name="gcc12-locale"/>
       <repopackage name="gcin"/>
       <repopackage name="gcin-branding-openSUSE"/>
       <repopackage name="gcin-gtk2"/>
@@ -1389,7 +1385,6 @@
       <repopackage name="libargon2-1-32bit" arch="x86_64"/>
       <repopackage name="libaria2-0"/>
       <repopackage name="libasan6"/>
-      <repopackage name="libasan8"/>
       <repopackage name="libasm1"/>
       <repopackage name="libasound2"/>
       <repopackage name="libasound2-32bit" arch="x86_64"/>
@@ -1742,7 +1737,7 @@
       <repopackage name="libgcab-1_0-0"/>
       <repopackage name="libgcc_s1"/>
       <repopackage name="libgcc_s1-32bit" arch="x86_64"/>
-      <repopackage name="libgccjit0"/>
+      <repopackage name="libgccjit0-gcc11"/>
       <repopackage name="libgcin-im-client1"/>
       <repopackage name="libgck-1-0"/>
       <repopackage name="libgck-modules-gnome-keyring"/>
@@ -2827,7 +2822,6 @@
       <repopackage name="libtre5"/>
       <repopackage name="libts0"/>
       <repopackage name="libtsan0" arch="x86_64"/>
-      <repopackage name="libtsan2" arch="x86_64"/>
       <repopackage name="libtss2-esys0"/>
       <repopackage name="libtss2-mu0"/>
       <repopackage name="libtss2-rc0"/>
