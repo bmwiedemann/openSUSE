@@ -16,8 +16,8 @@
 #
 
 
-%global eplv2_ver 2.0.1
-%global eplv2_tag org.eclipse.license-license-%{eplv2_ver}.v20180423-1114
+%global eplv2_ver 2.0.2
+%global eplv2_tag org.eclipse.license-e80ffa9b3652eb2534d92a9b8729bc70ed0b4d06
 %global eplv1_ver 1.0.1
 %global eplv1_tag org.eclipse.license-license-%{eplv1_ver}.v20140414-1359
 Name:           eclipse-license
@@ -27,8 +27,8 @@ Summary:        Shared license features for Eclipse
 License:        EPL-1.0 AND EPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://wiki.eclipse.org/CBI
-Source1:        http://git.eclipse.org/c/cbi/org.eclipse.license.git/snapshot/%{eplv1_tag}.tar.xz
-Source2:        http://git.eclipse.org/c/cbi/org.eclipse.license.git/snapshot/%{eplv2_tag}.tar.xz
+Source1:        %{eplv1_tag}.tar.xz
+Source2:        %{eplv2_tag}.tar.xz
 BuildRequires:  tycho-bootstrap
 BuildConflicts: java >= 12
 BuildConflicts: java-devel >= 12
@@ -75,18 +75,18 @@ tar xf %{SOURCE2}
 
 %build
 pushd %{eplv1_tag}
-%{mvn_build} -j
+%mvn_build -j
 popd
 
 pushd %{eplv2_tag}
-sed -i -e 's/\(-SNAPSHOT\|\.qualifier\)/.v20180423-1114/' pom.xml */*.xml
-%{mvn_build} -j
+sed -i -e 's/\(-SNAPSHOT\|\.qualifier\)/.v20181016-2210/' pom.xml */*.xml
+%mvn_build -j
 popd
 
 %install
 pushd %{eplv1_tag}
-%{mvn_package} "::pom::" __noinstall
-%{mvn_package} ":" 1
+%mvn_package "::pom::" __noinstall
+%mvn_package ":" 1
 %mvn_install
 popd
 
@@ -95,8 +95,8 @@ popd
 rm -rf /tmp/tycho-bundles-external*
 
 pushd %{eplv2_tag}
-%{mvn_package} "::pom::" __noinstall
-%{mvn_package} ":" 2
+%mvn_package "::pom::" __noinstall
+%mvn_package ":" 2
 %mvn_install
 popd
 
