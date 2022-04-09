@@ -35,7 +35,7 @@ BuildRequires:  %{python_module python-lsp-server >= 1.4.0}
 BuildRequires:  %{python_module toml}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-black >= 19.3b0
+Requires:       python-black >= 22.1.0
 Requires:       python-python-lsp-server
 Requires:       python-toml
 BuildArch:      noarch
