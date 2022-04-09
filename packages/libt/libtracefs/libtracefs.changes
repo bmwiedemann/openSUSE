@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Tue Apr  5 15:46:56 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (1.3.1)
+  * Optimized string list handling. It was always stated that some string
+    lists must be freed with tracefs_list_free(), and now it is mandatory, as
+    metadata is used to store the size, and normal freeing of the list will
+    cause memory issues.
+  * More consistency with errno values
+  * sqlhist is now officially built
+  * New methods for setting and reading affinity
+      tracefs_instance_set_affinity_set()
+      tracefs_instance_set_affinity_raw()
+      tracefs_instance_set_affinity()
+      tracefs_instance_get_affinity()
+      tracefs_instance_get_affinity_raw()
+      tracefs_instance_get_affinity_set()
+  * New method to see the system tracers
+      tracefs_instances()
+  * New methods to read and clear the error log
+      tracefs_error_last()
+      tracefs_error_all()
+      tracefs_error_clear()
+  * New methods to modify the string lists
+      tracefs_list_add()
+      tracefs_list_size()
+  * New method to stop the iterator over raw events
+      tracefs_iterate_stop()
+  * New methods to make it easier to access event files
+      tracefs_event_get_file()
+      tracefs_event_file_read()
+      tracefs_event_file_write()
+      tracefs_event_file_append()
+      tracefs_event_file_clear()
+      tracefs_event_file_exists()
+  * New method to get the available filter functions
+      tracefs_filter_functions()
+  * New methods to enable or disable tracers
+      tracefs_tracer_set()
+      tracefs_tracer_clear()
+  * New methods for streaming the trace_pipe file
+      tracefs_trace_pipe_stream()
+      tracefs_trace_pipe_print()
+      tracefs_trace_pipe_stop()
+  * New methods for creating, modifying and destroying dynamic events
+      tracefs_dynevent_create()
+      tracefs_dynevent_destroy()
+      tracefs_dynevent_destroy_all()
+      tracefs_dynevent_free()
+      tracefs_dynevent_list_free()
+      tracefs_dynevent_get_all()
+      tracefs_dynevent_get()
+      tracefs_dynevent_info()
+      tracefs_dynevent_get_event()
+  * New method to create an event probe (then use dynamic methods above)
+      tracefs_eprobe_alloc()
+  * New methods to create kprobes and kretprobes
+      tracefs_kprobe_alloc()
+      tracefs_kretprobe_alloc()
+      tracefs_kprobe_raw()
+      tracefs_kretprobe_raw()
+  * New methods for creating, modifying and destroying histograms
+      tracefs_hist_free()
+      tracefs_hist_alloc()
+      tracefs_hist_alloc_2d()
+      tracefs_hist_alloc_nd()
+      tracefs_hist_get_name()
+      tracefs_hist_get_event()
+      tracefs_hist_get_system()
+      tracefs_hist_add_key()
+      tracefs_hist_add_value()
+      tracefs_hist_add_sort_key()
+      tracefs_hist_set_sort_key()
+      tracefs_hist_sort_key_direction()
+      tracefs_hist_add_name()
+      tracefs_hist_append_filter()
+      tracefs_hist_echo_cmd()
+      tracefs_hist_command()
+      tracefs_hist_start()
+      tracefs_hist_pause()
+      tracefs_hist_continue()
+      tracefs_hist_reset()
+      tracefs_hist_destroy()
+   * New methods for creating, modifying and destroying synthetic events
+      tracefs_synth_get_name()
+      tracefs_synth *tracefs_synth_alloc()
+      tracefs_synth_add_match_field()
+      tracefs_synth_add_compare_field()
+      tracefs_synth_add_start_field()
+      tracefs_synth_add_end_field()
+      tracefs_synth_append_start_filter()
+      tracefs_synth_append_end_filter()
+      tracefs_synth_trace()
+      tracefs_synth_snapshot()
+      tracefs_synth_save()
+      tracefs_synth_complete()
+      tracefs_synth_get_start_hist()
+      tracefs_synth_create()
+      tracefs_synth_destroy()
+      tracefs_synth_free()
+      tracefs_synth_echo_cmd()
+      tracefs_synth_raw_fmt()
+      tracefs_synth_show_event()
+      tracefs_synth_show_start_hist()
+      tracefs_synth_show_end_hist()
+      tracefs_synth_get_event()
+  * New methods to modify event filters
+      tracefs_filter_string_append()
+      tracefs_filter_string_verify()
+      tracefs_event_filter_apply()
+      tracefs_event_filter_clear()
+      tracefs_event_append_filter()
+      tracefs_event_verify_filter()
+  * New method to create a synthetic event via a SQL string
+      tracefs_sql()
+      The man page comes with its own program (sqlhist).
+
+-------------------------------------------------------------------
 Tue Feb 22 12:34:56 UTC 2022 - olaf@aepfle.de
 
 - Force correct pkgconfig_dir location to fix build
