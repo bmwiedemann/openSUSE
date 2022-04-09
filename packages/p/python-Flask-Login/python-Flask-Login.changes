@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Apr  9 02:28:36 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * require python >= 3.7
+
+- update to version 0.6.0:
+  * Drop support for Python 2.7, 3.5, and 3.6, which have all reached
+    the end of their official support. #594, #638
+  * The minimum supported version of Flask is 1.0.4, and Werkzeug is
+    1.0.1. However, projects are advised to use the latest versions of
+    both. #639
+  * Only flash "needs_refresh_message" if value is set #464
+  * Modify expand_login_view to allow for subdomain and host matching
+    for login_view #462
+  * Add accessors for request_loader and user_loader callback
+    functions #472
+  * Change "remember_me" cookie to match Werkzeug default value #488
+  * Change "remember_me" cookie to HttpOnly, matching Flask session
+    cookie #488
+  * Add example for using unauthorized_handler #492
+  * Fix assertEqual deprecation warning in pytest #518
+  * Fix collections deprecation warning under Python 3.8 #525
+  * Replace safe_str_cmp with hmac.compare_digest #585
+  * Document REMEMBER_COOKIE_SAMESITE config #577
+  * Revise setup.py to use README.md for long description #598
+  * Various documentation corrections #484, #482, #487, #534
+  * Fix from flask_login import * behavior, although note that import
+    * is not usually a good pattern in code. #485
+  * UserMixin.is_authenticated will return whatever is_active returns
+    by default. This prevents inactive users from logging in. #486,
+    #530
+  * Session protection will only mark the session as not fresh if it's
+    not already marked as such, avoiding modifying the session cookie
+    unnecessarily. #612
+
+-------------------------------------------------------------------
 Sun Feb 16 05:59:39 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
