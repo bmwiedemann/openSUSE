@@ -25,10 +25,10 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/jgraph
 Source0:        https://github.com/jgraph/%{name}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  ant
+BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  jpackage-utils
+BuildRequires:  javapackages-local
 Requires:       java >= 1.8
-Requires:       jpackage-utils
 BuildArch:      noarch
 
 %description
@@ -36,6 +36,13 @@ Jgraphx is the a lightweight and feature-rich graph component for Java,
 and the successor to jgraph. It provides automatic 2D layout and routing
 for diagrams. Object and relations can be displayed in any Swing UI
 via provided zoomable component.
+
+%package javadoc
+Summary:        API documentation for %{name}
+Group:          Documentation/HTML
+
+%description javadoc
+API documentation for %{name}.
 
 %prep
 %setup -q
@@ -54,18 +61,23 @@ ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 rm -rf build/src dist/%{name}-%{version}-src
 
 %install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 lib/jgraphx.jar %{buildroot}%{_javadir}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr docs/api/* %{buildroot}%{_javadocdir}/%{name}/
+%fdupes -s %{buildroot}%{_javadocdir}
 
-# jars
-mkdir -p %{buildroot}%{_javadir}
-cp -p lib/jgraphx.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-pushd  %{buildroot}%{_javadir}
-    #create symlink
-    ln -s %{name}-%{version}.jar %{name}.jar
-popd
-
-%files
+%files -f .mfiles
 %license license.txt
-%{_javadir}/%{name}.jar
-%{_javadir}/%{name}-%{version}.jar
+
+%files javadoc
+%license license.txt
+%{_javadocdir}/%{name}
 
 %changelog
