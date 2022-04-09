@@ -34,6 +34,7 @@ common_locks:
   - kernel-vanilla: [locked]
   - kernel-kvmsmall: [locked]
   - kernel-debug: [locked]
+  - gcc12: [locked]
 
 dvd:
   # We add the kernel-firmware-* packages

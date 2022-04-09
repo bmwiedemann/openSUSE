@@ -1352,4 +1352,11 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>Add mozjs91 i686 into i586 tree</comment>
   </revision>
+  <revision rev="189" vrev="187">
+    <srcmd5>b701bf17a63b892a5c56aa5bf4a1e67c</srcmd5>
+    <version>unknown</version>
+    <time>1649497249</time>
+    <user>dimstar_suse</user>
+    <comment>gcc12 is not yet needed</comment>
+  </revision>
 </revisionlist>
