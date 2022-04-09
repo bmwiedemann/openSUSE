@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  7 12:56:45 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix: Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
+  This is needed to prevent an AttributeError during
+  'import spack.environment as some_name'
+  when building Sphinx documentation - due to an outdated
+  Python on SLE.
+  The original version caused errors:
+  'NameError: name 'uenv' is not defined'
+  when using 'spack env activate' et.al. (bsc#1198212).
+
+-------------------------------------------------------------------
 Wed Mar  2 12:41:12 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Remove unneeded build dependency.

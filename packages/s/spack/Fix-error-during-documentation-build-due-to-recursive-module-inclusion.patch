@@ -1,72 +1,79 @@
 From: Egbert Eich <eich@suse.com>
-Date: Wed Nov 10 09:40:47 2021 +0100
+Date: Thu Apr 7 20:25:46 2022 +0200
 Subject: Fix error during documentation build due to recursive module inclusion
 Patch-mainline: Not yet
-Git-repo: https://github.com/spack/spack
-Git-commit: ffc7c32398d3aad53a2f5700b6d6ddee9f0d8ef2
+Git-commit: 7000c074119ebc3354b18a3b2aa27d431f906840
 References: 
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
- lib/spack/spack/build_environment.py       | 3 ++-
- lib/spack/spack/environment/environment.py | 3 ++-
- lib/spack/spack/main.py                    | 3 ++-
- lib/spack/spack/user_environment.py        | 3 ++-
- 4 files changed, 8 insertions(+), 4 deletions(-)
-diff --git a/lib/spack/spack/build_environment.py b/lib/spack/spack/build_environment.py
-index 83aa634276..3f32ed39cf 100644
---- a/lib/spack/spack/build_environment.py
-+++ b/lib/spack/spack/build_environment.py
-@@ -53,7 +53,8 @@
- import spack.build_systems.meson
+ lib/spack/spack/cmd/__init__.py            | 5 ++++-
+ lib/spack/spack/environment/environment.py | 5 ++++-
+ lib/spack/spack/installer.py               | 5 ++++-
+ lib/spack/spack/main.py                    | 5 ++++-
+ 4 files changed, 16 insertions(+), 4 deletions(-)
+diff --git a/lib/spack/spack/cmd/__init__.py b/lib/spack/spack/cmd/__init__.py
+index 0b0451c..cbedb9a 100644
+--- a/lib/spack/spack/cmd/__init__.py
++++ b/lib/spack/spack/cmd/__init__.py
+@@ -21,7 +21,10 @@
+ from llnl.util.tty.color import colorize
+ 
  import spack.config
- import spack.install_test
--import spack.main
-+if not ( "spack.main" in sys.modules ):
-+    import spack.main
- import spack.package
+-import spack.environment as ev
++try:
++    import spack.environment as ev
++except AttributeError:
++    pass
+ import spack.error
+ import spack.extensions
  import spack.paths
- import spack.platforms
 diff --git a/lib/spack/spack/environment/environment.py b/lib/spack/spack/environment/environment.py
-index a6be5d1c50..a8d1008c46 100644
+index 3114f55..059b057 100644
 --- a/lib/spack/spack/environment/environment.py
 +++ b/lib/spack/spack/environment/environment.py
-@@ -32,7 +32,8 @@
+@@ -32,7 +32,10 @@
  import spack.stage
  import spack.store
  import spack.subprocess_context
 -import spack.user_environment as uenv
-+if not ( "spack.user_environment" in sys.modules ):
++try:
 +    import spack.user_environment as uenv
++except AttributeError:
++    pass
  import spack.util.cpus
  import spack.util.environment
  import spack.util.hash
+diff --git a/lib/spack/spack/installer.py b/lib/spack/spack/installer.py
+index df1d704..ef0bda2 100644
+--- a/lib/spack/spack/installer.py
++++ b/lib/spack/spack/installer.py
+@@ -45,7 +45,10 @@
+ from llnl.util.tty.color import colorize
+ from llnl.util.tty.log import log_output
+ 
+-import spack.binary_distribution as binary_distribution
++try:
++    import spack.binary_distribution as binary_distribution
++except AttributeError:
++    pass
+ import spack.compilers
+ import spack.error
+ import spack.hooks
 diff --git a/lib/spack/spack/main.py b/lib/spack/spack/main.py
-index 31a4bfe4ed..dfb2078d4f 100644
+index f41423f..bb6c909 100644
 --- a/lib/spack/spack/main.py
 +++ b/lib/spack/spack/main.py
-@@ -36,7 +36,8 @@
+@@ -36,7 +36,10 @@
  import spack
  import spack.cmd
  import spack.config
 -import spack.environment as ev
-+if not ( "spack.environment" in sys.modules ):
++try:
 +    import spack.environment as ev
++except AttributeError:
++    pass
  import spack.modules
  import spack.paths
  import spack.platforms
-diff --git a/lib/spack/spack/user_environment.py b/lib/spack/spack/user_environment.py
-index 55f516b732..824583d2ef 100644
---- a/lib/spack/spack/user_environment.py
-+++ b/lib/spack/spack/user_environment.py
-@@ -5,7 +5,8 @@
- import os
- import sys
- 
--import spack.build_environment
-+if not ( "spack.build_environment" in sys.modules ):
-+    import spack.build_environment
- import spack.config
- import spack.util.environment as environment
- import spack.util.prefix as prefix
