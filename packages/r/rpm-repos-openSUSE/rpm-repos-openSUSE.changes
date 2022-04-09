@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  9 16:20:53 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Switch from MirrorBrain to MirrorCache based repositories to improve
+  reliability
+
+-------------------------------------------------------------------
 Wed Jan 19 12:11:29 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
 
 - Refresh GPG key link for openSUSE Backports (boo#1194871)

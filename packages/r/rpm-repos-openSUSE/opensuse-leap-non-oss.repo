@@ -1,7 +1,7 @@
 [opensuse-leap-non-oss]
 name=openSUSE Leap $releasever - Non-OSS
-baseurl=http://download.opensuse.org/distribution/leap/$releasever/repo/non-oss/
-#metalink=http://download.opensuse.org/distribution/leap/$releasever/repo/non-oss/repodata/repomd.xml.metalink
+baseurl=https://download.opensuse.org/distribution/leap/$releasever/repo/non-oss/
+#metalink=https://download.opensuse.org/distribution/leap/$releasever/repo/non-oss/repodata/repomd.xml.metalink
 enabled=0
 enabled_metadata=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
@@ -9,8 +9,8 @@ gpgcheck=1
 
 [opensuse-leap-non-oss-update]
 name=openSUSE Leap $releasever - Non-OSS - Updates
-baseurl=http://download.opensuse.org/update/leap/$releasever/non-oss/
-#metalink=http://download.opensuse.org/update/leap/$releasever/non-oss/repodata/repomd.xml.metalink
+baseurl=https://download.opensuse.org/update/leap/$releasever/non-oss/
+#metalink=https://download.opensuse.org/update/leap/$releasever/non-oss/repodata/repomd.xml.metalink
 enabled=0
 enabled_metadata=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
@@ -18,8 +18,8 @@ gpgcheck=1
 
 [opensuse-leap-non-oss-source]
 name=openSUSE Leap $releasever - Non-OSS - Source
-baseurl=http://download.opensuse.org/distribution/leap/$releasever/repo/src-non-oss/
-#metalink=http://download.opensuse.org/distribution/leap/$releasever/repo/src-non-oss/repodata/repomd.xml.metalink
+baseurl=https://download.opensuse.org/distribution/leap/$releasever/repo/src-non-oss/
+#metalink=https://download.opensuse.org/distribution/leap/$releasever/repo/src-non-oss/repodata/repomd.xml.metalink
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
 gpgcheck=1
