@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywebpush
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography >= 2.6.1}
 BuildRequires:  %{python_module http-ece >= 1.1.0}
-BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module py-vapid >= 1.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
@@ -59,6 +58,8 @@ WebPush publication library.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/web-push-libs/pywebpush/issues/146
+sed -i 's:from mock:from unittest.mock:' pywebpush/tests/test_webpush.py
 %pytest
 
 %post
