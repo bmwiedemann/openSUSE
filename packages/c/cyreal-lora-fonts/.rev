@@ -44,4 +44,23 @@
     <comment></comment>
     <requestid>912086</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a483489e00f54aeadb55bc2e054ed536</srcmd5>
+    <version>3.002</version>
+    <time>1649544124</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed because upstream unexpectedly changed the layout
+  of the source archive
+- Update to v3.002
+  * added SemiBold to the full weight run
+  * Fixes Italic and Weight axes confusion in VF
+  * Includes Tabular Figures
+  * ttfautohinted
+  * Fixes naming scheme issue #30
+  * Fixes #25
+- Additionally package weights: Medium, SemiBold
+- Change source URLs
+</comment>
+    <requestid>968011</requestid>
+  </revision>
 </revisionlist>
