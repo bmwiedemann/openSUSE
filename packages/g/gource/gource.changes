@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  9 08:35:16 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.52
+  * Support rendering at native resolution on Retina / Ultra HD displays.
+  * Support ISO 8601 timestamp format.
+  * Allow custom log and caption file timestamps to be strings.
+  * Change regular expression library to PCRE2.
+  * Fixed filenames not being affected by --font-scale (Carl Colena).
+  * Fixed file key not being affected by --font-scale.
+  * Added --file-idle-time-at-end option.
+  * Added --fixed-user-size option.
+
+-------------------------------------------------------------------
 Wed Feb  5 20:11:56 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 0.51:

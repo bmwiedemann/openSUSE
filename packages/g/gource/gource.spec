@@ -1,7 +1,7 @@
 #
 # spec file for package gource
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gource
-Version:        0.51
+Version:        0.52
 Release:        0
 Summary:        Software version control visualization tool
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
 BuildRequires:  pkgconfig(SDL2_image) >= 2.0
 BuildRequires:  pkgconfig(freetype2) >= 9.0.3
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(sdl2) >= 2.0
 Requires:       freefont
@@ -62,7 +62,7 @@ make %{?_smp_mflags}
 %make_install
 
 %files
-%doc ChangeLog README THANKS
+%doc ChangeLog README.md THANKS
 %license COPYING
 %{_mandir}/man1/*
 %{_bindir}/gource
