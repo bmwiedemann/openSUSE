@@ -41,4 +41,14 @@
     <comment></comment>
     <requestid>870119</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0906be43d06801d20b007b5b6c4d2c6a</srcmd5>
+    <version>0.2.5</version>
+    <time>1649544132</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 590-rm-getStringIO.patch, use standard StringIO
+  (gh#xhtml2pdf/xhtml2pdf#589).
+</comment>
+    <requestid>968017</requestid>
+  </revision>
 </revisionlist>

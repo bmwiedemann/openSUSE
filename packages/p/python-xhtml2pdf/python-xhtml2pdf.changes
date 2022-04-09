@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  9 13:23:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 590-rm-getStringIO.patch, use standard StringIO
+  (gh#xhtml2pdf/xhtml2pdf#589).
+
+-------------------------------------------------------------------
 Sun Feb  7 14:49:02 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add missing runtime dependency on setuptools

@@ -1,0 +1,32 @@
+From 7627296bdbab4cbd81ca91d655a9605f6630664f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?An=C5=BEe=20Pe=C4=8Dar?= <anze@pecar.me>
+Date: Fri, 18 Feb 2022 15:44:13 +0000
+Subject: [PATCH] Remove usage of getStringIO
+
+reportlab 3.6.7 removed getStringIO and getByteIO: https://github.com/MrBitBucket/reportlab-mirror/commit/684d21e2da8f835ca3670e78cc9a011ba71a7e9a
+
+This should resolve: Cannot import name 'getStringIO' from 'reportlab.lib.utils'  #589
+---
+ xhtml2pdf/xhtml2pdf_reportlab.py |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+--- a/xhtml2pdf/xhtml2pdf_reportlab.py
++++ b/xhtml2pdf/xhtml2pdf_reportlab.py
+@@ -17,7 +17,7 @@
+ from hashlib import md5
+ from reportlab.lib.enums import TA_RIGHT
+ from reportlab.lib.styles import ParagraphStyle
+-from reportlab.lib.utils import flatten, open_for_read, getStringIO, \
++from reportlab.lib.utils import flatten, open_for_read, \
+     LazyImageReader, haveImages
+ from reportlab.platypus.doctemplate import BaseDocTemplate, PageTemplate, IndexingFlowable
+ from reportlab.platypus.flowables import Flowable, CondPageBreak, \
+@@ -338,7 +338,7 @@ class PmlImageReader(object):  # TODO We
+                             register_reset(self._cache.clear)
+ 
+                         data = self._cache.setdefault(md5(data).digest(), data)
+-                    self.fp = getStringIO(data)
++                    self.fp = six.StringIO(data)
+                 elif imageReaderFlags == - 1 and isinstance(fileName, six.text_type):
+                     #try Ralf Schmitt's re-opening technique of avoiding too many open files
+                     self.fp.close()
