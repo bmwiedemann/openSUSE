@@ -1,9 +1,9 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://github.com/gohugoio/hugo.git</param>
+    <param name="url">https://github.com/gohugoio/hugo.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.82.1</param>
+    <param name="revision">v0.96.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

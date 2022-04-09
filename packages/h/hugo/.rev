@@ -95,4 +95,15 @@
 - Force dynamic linking against libsass (forwarded request 888479 from favogt)</comment>
     <requestid>888525</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4c050b5ebcdeed23a87c344307eae473</srcmd5>
+    <version>0.96.0</version>
+    <time>1649544135</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.96.0:
+- Packaging: add webp image encoding support to go build env vars
+  * CGO_CFLAGS add $(pkg-config --cflags libwebp) -DLIBWEBP_NO_SRC
+  * CGO_LDFLAGS add $(pkg-config --libs libwebp) (forwarded request 968044 from jfkw)</comment>
+    <requestid>968045</requestid>
+  </revision>
 </revisionlist>

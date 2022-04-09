@@ -1,7 +1,7 @@
 #
 # spec file for package hugo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           hugo
-Version:        0.82.1
+Version:        0.96.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
@@ -30,8 +30,9 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.18
 BuildRequires:  pkgconfig(libsass)
+BuildRequires:  pkgconfig(libwebp)
 
 %description
 Hugo is a static HTML and CSS website generator written in Go. It is optimized
@@ -62,9 +63,9 @@ The official bash completion script for %{name}, generated during the build.
 # Force using the system version of libsass.
 # Due to https://github.com/golang/go/issues/26366 it's not vendored properly
 # anyway.
-export CGO_CFLAGS="$(pkg-config --cflags libsass) -DUSE_LIBSASS_SRC"
+export CGO_CFLAGS="$(pkg-config --cflags libsass) -DUSE_LIBSASS_SRC $(pkg-config --cflags libwebp) -DLIBWEBP_NO_SRC"
 export CGO_CXXFLAGS="${CGO_CFLAGS}"
-export CGO_LDFLAGS="$(pkg-config --libs libsass)"
+export CGO_LDFLAGS="$(pkg-config --libs libsass) $(pkg-config --libs libwebp)"
 
 # Build the binary.
 go build \
@@ -84,7 +85,7 @@ mkdir -p "%{buildroot}/%{_mandir}/man1"
 install -D -m 0644 man/%{name}*.1 "%{buildroot}/%{_mandir}/man1"
 
 # Build the bash autocomplete file
-%{buildroot}/%{_bindir}/%{name} gen autocomplete --completionfile %{name}-autocomplete.sh
+%{buildroot}/%{_bindir}/%{name} completion bash > %{name}-autocomplete.sh
 
 # Install the bash autocomplete file
 install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/%{name}
