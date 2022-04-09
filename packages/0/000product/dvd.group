@@ -306,6 +306,7 @@
     <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cpp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cpp11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cpp12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cppcheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="cpupower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cpupower-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -412,6 +413,8 @@
     <package name="elilo" supportstatus="unsupported"/> <!-- reason: dvd:elilo -->
     <package name="emacs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-apel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="emacs-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="emacs-eln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-flim" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="emacs-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-nox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -525,6 +528,9 @@
     <package name="gcc11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="gcc11-info" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gcc11-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="gcc12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="gcc12-info" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="gcc12-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gcin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcin-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcin-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1599,6 +1605,7 @@
     <package name="libargon2-1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libaria2-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libasan6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libasan8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libasound2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libass9" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1898,6 +1905,7 @@
     <package name="libgc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgcab-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libgccjit0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgcin-im-client1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgck-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgck-modules-gnome-keyring" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5246,6 +5254,7 @@
     <package name="libtirpc3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtool" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libtsan0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libtsan2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libudev1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libunistring2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libuuid-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5327,6 +5336,7 @@
     <package name="python38-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="samba-client-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-winbind-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

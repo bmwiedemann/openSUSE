@@ -2346,7 +2346,6 @@ unsorted:
   - cpluff 
   - cpmono_v07-fonts 
   - cpp10 
-  - cpp12 
   - cpp7 
   - cppcheck-gui 
   - cpphs: [x86_64] 
@@ -3318,7 +3317,6 @@ unsorted:
   - elua 
   - emacs-auctex 
   - emacs-color-theme 
-  - emacs-el 
   - emacs-gnuplot-mode 
   - emacs-gnuplot-mode-doc 
   - emacs-plugin-devhelp 
@@ -4176,7 +4174,6 @@ unsorted:
   - gcc11-objc 
   - gcc11-objc-32bit: [x86_64] 
   - gcc11-testresults 
-  - gcc12 
   - gcc12-32bit: [x86_64] 
   - gcc12-PIE 
   - gcc12-ada 
@@ -4190,8 +4187,6 @@ unsorted:
   - gcc12-fortran-32bit: [x86_64] 
   - gcc12-go 
   - gcc12-go-32bit: [x86_64] 
-  - gcc12-info 
-  - gcc12-locale 
   - gcc12-obj-c++ 
   - gcc12-obj-c++-32bit: [x86_64] 
   - gcc12-objc 
@@ -9079,8 +9074,8 @@ unsorted:
   - libOpenEXRUtil-3_1-30-32bit: [x86_64] 
   - libOpenIPMI0 
   - libOpenImageDenoise1: [x86_64] 
-  - libOpenImageIO2_2 
-  - libOpenImageIO_Util2_2 
+  - libOpenImageIO2_3 
+  - libOpenImageIO_Util2_3 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph158 
   - libOpenThreads-devel 
@@ -9697,7 +9692,7 @@ unsorted:
   - libantlr3c3 
   - libantlr3c3-32bit: [x86_64] 
   - libantlr4-runtime-devel 
-  - libantlr4-runtime4_9_2 
+  - libantlr4-runtime4_9_3 
   - libao-devel 
   - libao-plugins4-32bit: [x86_64] 
   - libao4-32bit: [x86_64] 
@@ -9746,7 +9741,6 @@ unsorted:
   - libasan6-32bit: [x86_64] 
   - libasan6-gcc10 
   - libasan6-gcc10-32bit: [x86_64] 
-  - libasan8 
   - libasan8-32bit: [x86_64] 
   - libasm-devel 
   - libasm1-32bit: [x86_64] 
@@ -10857,7 +10851,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla23 
+  - libfilezilla25 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -11035,7 +11029,6 @@ unsorted:
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
   - libgccjit-devel 
-  - libgccjit0 
   - libgccjit0-devel-gcc11 
   - libgccjit0-devel-gcc12 
   - libgccjit0-gcc11 
@@ -14324,7 +14317,6 @@ unsorted:
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
-  - libtsan2: [x86_64] 
   - libtsk19 
   - libtsm-devel 
   - libtsm4 
@@ -15163,9 +15155,6 @@ unsorted:
   - linphone-cli 
   - linssid 
   - linstor 
-  - linstor-common 
-  - linstor-controller 
-  - linstor-satellite 
   - linux-atm 
   - linux-atm-devel 
   - linux-ftools 
@@ -17282,13 +17271,8 @@ unsorted:
   - netsniff-ng 
   - netsurf-buildsystem 
   - nettle 
-  - netty 
-  - netty-javadoc 
   - netty-jni-util 
   - netty-jni-util-sources 
-  - netty-poms 
-  - netty-tcnative 
-  - netty-tcnative-javadoc 
   - netty3 
   - netty3-javadoc 
   - network-autoconfig 
@@ -32105,7 +32089,7 @@ unsorted:
   - rtl-sdr-devel 
   - rtl-sdr-udev 
   - rtl8812au 
-  - rtl8812au-kmp-default 
+  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433 
   - rtl_433-devel 
