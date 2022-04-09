@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-lsp-server
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
