@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 10 01:49:18 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1649490476.badee12aa:
+  * Render multiple URLs in scheduled products table correctly
+  * Allow scheduling settings like `__…_URL`
+  * Avoid corrupted assets on concurrent uploads of same asset
+  * doc: Mention the problem of conflicting asset names more explicitly
+  * doc: Split asset handling section into more subsections
+  * doc: Remove obsolete remark about absolute assets paths
+
+-------------------------------------------------------------------
 Thu Apr 07 17:49:15 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1649340027.0e18e9edf:
