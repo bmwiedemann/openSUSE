@@ -1012,6 +1012,8 @@ export PHP_UNAME="Linux suse 2.6.36 #1 SMP 2011-02-21 10:34:10 +0100 x86_64 x86_
 export EXTENSION_DIR=%{extension_dir}
 # Fix build-cli for arm and aarch64
 export LIBS=-ltinfo
+# Some extensions are broken when linking with -z now
+export SUSE_ZNOW=0
 
 # build function
 Build()

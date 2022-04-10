@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  8 21:49:52 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Disable build with '-z now' as it breaks the php-mysql extension
+
+-------------------------------------------------------------------
 Thu Mar 31 18:42:35 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - build PHP-FPM with libacl support (boo#1196870)

@@ -1218,4 +1218,12 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
     <comment></comment>
     <requestid>966278</requestid>
   </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>225e1e1aa9ca02292a6d5c3bcc1a6d09</srcmd5>
+    <version>7.4.28</version>
+    <time>1649610330</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build with '-z now' as it breaks the php-mysql extension</comment>
+    <requestid>967926</requestid>
+  </revision>
 </revisionlist>
