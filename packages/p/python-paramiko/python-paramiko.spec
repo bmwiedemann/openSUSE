@@ -48,7 +48,6 @@ Requires:       python-bcrypt >= 3.1.3
 Requires:       python-cryptography >= 2.5
 Requires:       python-pyasn1 >= 0.1.7
 BuildArch:      noarch
-BuildRequires:  %{python_module mock}
 %python_subpackages
 
 %description
@@ -85,6 +84,8 @@ find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/paramiko/paramiko/issues/2027
+sed -i 's:from mock:from unittest.mock:' tests/test_*.py
 export LANG=en_US.UTF-8
 %pytest
 

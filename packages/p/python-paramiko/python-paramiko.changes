@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  8 07:44:16 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Fri Mar 18 22:52:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 2.10.3
