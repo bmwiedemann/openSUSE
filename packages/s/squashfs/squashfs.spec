@@ -1,7 +1,7 @@
 #
 # spec file for package squashfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           squashfs
-Version:        4.5
+Version:        4.5.1
 Release:        0
 Summary:        A Read-Only File System with Efficient Compression
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/plougher/squashfs-tools
-Source0:        https://github.com/plougher/squashfs-tools/archive/refs/tags/4.5.tar.gz
+Source0:        https://github.com/plougher/squashfs-tools/archive/refs/tags/%{version}.tar.gz
 Patch0:         squashfs-64k.patch
 Patch1:         squashfs-thread-limit
 BuildRequires:  lzma-devel

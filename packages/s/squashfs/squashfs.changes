@@ -1,8 +1,49 @@
 -------------------------------------------------------------------
+Sun Mar 20 19:51:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1 (bsc#1190531, CVE-2021-41072):
+  * This release adds Manpages for Mksquashfs(1), Unsquashfs(1),
+    Sqfstar(1) and Sqfscat(1).
+  * The -help text output from the utilities has been improved
+    and extended as well (but the Manpages are now more
+    comprehensive).
+  * CVE-2021-41072 which is a writing outside of destination
+    exploit, has been fixed.
+  * The number of hard-links in the filesystem is now also
+    displayed by Mksquashfs in the output summary.
+  * The number of hard-links written by Unsquashfs is now
+    also displayed in the output summary.
+  * Unsquashfs will now write to a pre-existing destination
+    directory, rather than aborting.
+  * Unsquashfs now allows "." to used as the destination, to
+    extract to the current directory.
+  * The Unsquashfs progress bar now tracks empty files and
+    hardlinks, in addition to data blocks.
+  * -no-hardlinks option has been implemented for Sqfstar.
+  * More sanity checking for "corrupted" filesystems, including
+    checks for multiply linked directories and directory loops.
+  * Options that may cause filesystems to be unmountable have
+    been moved into a new "experts" category in the Mksquashfs
+    help text (and Manpage).
+  * Maximum cpiostyle filename limited to PATH_MAX.  This
+    prevents attempts to overflow the stack, or cause system
+    calls to fail with a too long pathname.
+  * Don't always use "max open file limit" when calculating
+    length of queues, as a very large file limit can cause
+    Unsquashfs to abort.  Instead use the smaller of max open
+    file limit and cache size.
+  * Fix Mksquashfs silently ignoring Pseudo file definitions
+    when appending.
+  * Don't abort if no XATTR support has been built in, and
+    there's XATTRs in the filesystem.  This is a regression
+    introduced in 2019 in Version 4.4.
+  * Fix duplicate check when the last file block is sparse.
+
+-------------------------------------------------------------------
 Sat Dec 11 23:03:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5:
-  *  Mksquashfs now supports "Actions".
+  * Mksquashfs now supports "Actions".
   * New sqfstar command which will create a Squashfs image from a tar archive.
   * Tar style handling of source pathnames in Mksquashfs.
   * Cpio style handling of source pathnames in Mksquashfs.
