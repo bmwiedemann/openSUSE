@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr  8 17:06:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  - FreeType  now   handles  OT-SVG  fonts,  to   be  controlled  with
+   `FT_CONFIG_OPTION_SVG`  configuration macro.   By default,  it can
+    only load the 'SVG ' table of an OpenType font.  However, by using
+    the `svg-hooks` property of the new 'ot-svg' module it is possible
+    to register an  external SVG rendering engine.   The FreeType demo
+    programs  have been  set  up  to use  'librsvg'  as the  rendering
+    library. 
+  - The handling of fonts with an 'sbix' table has been improved.
+  - The internal 'zlib'  code has been updated to be  in sync with the
+    current 'zlib' version (1.2.11).
+  - The  previously internal  load  flag  `FT_LOAD_SBITS_ONLY` is  now
+    public.
+  - Some  minor improvements  of the  building systems,  in particular
+    handling of the 'zlib' library (internal vs. external).
+  - Support for non-desktop Universal Windows Platform.
+  - Various other minor bug and documentation fixes.
+  - The `ftdump` demo  program shows more information  for Type1 fonts
+    if option `-n` is given.
+  - `ftgrid` can now display embedded bitmap strikes.
+
+-------------------------------------------------------------------
 Thu Dec  2 22:07:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package ft2demos
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define freetype_version 2.11.1
+%define freetype_version 2.12.0
 Name:           ft2demos
-Version:        2.11.1
+Version:        2.12.0
 Release:        0
 Summary:        Freetype2 Utilities and Demo Programs
 License:        GPL-2.0-or-later
@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 Requires:       ftbench = %{version}-%{release}
