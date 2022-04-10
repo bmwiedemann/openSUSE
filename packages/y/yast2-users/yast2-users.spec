@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-users
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        4.4.10
+Version:        4.5.1
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only

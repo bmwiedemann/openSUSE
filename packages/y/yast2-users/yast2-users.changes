@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:27:57 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Fix import users: do not fail if the group does not exist
+  (bsc#1197040).
+- 4.5.1
+
+-------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (#bsc1198109)
+
+-------------------------------------------------------------------
 Mon Dec  6 13:43:07 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Prepare code for ruby3 (bsc#1193192)
