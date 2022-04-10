@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  2 13:55:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.6.0
+  * No changelog was provided
+- Remove undef.diff
+- Add 0001-build-resolve-compiler-warnings-and-errors-with-ptli.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 19:41:22 UTC 2015 - jengelh@inai.de
 
 - Update to new upstream release 3.13.0
