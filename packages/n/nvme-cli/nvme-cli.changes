@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 08 17:07:11 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.0:
+  * fabrics: Create persistent controller using unique subsystem NQN (bsc#1198243)
+  * fabrics: Set KATO for discovery controller when connecting
+  * fabrics: Do no modify default config for discovery controller
+  * fabrics: Set default trsvcid ports for TCP and RDMA (bsc#1195858)
+  * fabrics: Support connect even when no /etc/nvme/hostnqn file exists
+  * nvme: update to nvme_scan_filter_t modifications (bsc#1195938)
+  * plugins/intel: make 'buckets' a json array
+  * plugins: Update WDC capabilities command with new commmands
+  * plugins: Add OCP plugin
+
+-------------------------------------------------------------------
 Fri Apr 01 13:32:25 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.0-rc8:

@@ -3,12 +3,10 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/linux-nvme/nvme-cli.git</param>
     <param name="filename">nvme-cli</param>
-    <!-- <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param> -->
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v2.0-rc8</param>
-    <param name="match-tag">v[02].[0-9]*</param>
-    <param name="versionrewrite-pattern">v([^+]*)-rc([0-9]+)</param>
-    <param name="versionrewrite-replacement">\1~\2</param>
+    <param name="revision">v2.0</param>
+    <param name="versionrewrite-pattern">v(\d+.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">
