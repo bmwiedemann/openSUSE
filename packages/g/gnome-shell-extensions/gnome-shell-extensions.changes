@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  6 06:20:55 UTC 2022 - QK ZHU <qkzhu@suse.com>
+
+- Deprecate SLE-Classic in GNOME 42: 
+  + Drop 00_org.gnome.shell.extensions.sle-classic.gschema.override
+  + Drop gse-sle-classic-ext.patch
+  + Drop sle-classic.desktop
+  + Drop sle-classic.json
+  + Drop sle-classic@suse.com.tar.gz
+    SLE-Classic is not compatible with GNOME 42 which makes this mode
+    not usable. After careful consideration, we decide to deprecate
+    SLE-Classic in GNOME 42, please find the reason in (boo#1197907).
+
+-------------------------------------------------------------------
 Sun Mar 13 09:22:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:

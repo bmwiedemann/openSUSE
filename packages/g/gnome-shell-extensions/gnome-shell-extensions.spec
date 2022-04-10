@@ -27,17 +27,11 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
 Source0:        https://download.gnome.org/sources/gnome-shell-extensions/42/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
-Source2:        sle-classic.desktop
-Source5:        sle-classic.json
-Source6:        sle-classic@suse.com.tar.gz
-Source7:        00_org.gnome.shell.extensions.sle-classic.gschema.override
 
 # PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
 Patch1:         gnome-shell-add-app-to-desktop.patch
 
 ## NOTE keep SLE Classic patch at the bottom
-# PATCH-NEEDS-REBASE gse-sle-classic-ext.patch Fate#318572 cxiong@suse.com -- add sle classic support Was:PATCH-FIX-SLE
-Patch1000:      gse-sle-classic-ext.patch
 BuildRequires:  fdupes
 # Needed for directory ownership
 BuildRequires:  gnome-shell
@@ -103,9 +97,6 @@ to pick system installed themes or even themes installed in the user's home.
 %setup -q
 %patch1 -p1
 
-# Patch needs rebase
-#%%patch1000 -p1
-
 # In openSUSE GNOME, we don't launch gnome-session directly, but wrap this through a shell script, /usr/bin/gnome
 sed -i "s:Exec=gnome-session:Exec=gnome:g" data/gnome-classic.desktop.in
 cp %{SOURCE1} .
@@ -123,16 +114,6 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-#Install SLE theme
-#Install sle-classic@suse.com extension
-#install -m0644 %{SOURCE2} %{buildroot}/%{_datadir}/xsessions/sle-classic.desktop
-#cp %{_builddir}/%{name}-%{version}/extensions/window-list/sle-classic.css \
-#%{buildroot}/%{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/sle-classic.css
-#install -m0644 %{SOURCE5} %{buildroot}/%{_datadir}/gnome-shell/modes/sle-classic.json
-#tar -xzvf %{SOURCE6}
-#install -d %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
-#cp sle-classic@suse.com/*  %{buildroot}/%{_datadir}/gnome-shell/extensions/sle-classic@suse.com
-#install -m0644 %{SOURCE7} %{buildroot}/%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
 %fdupes %{buildroot}%{_datadir}
 
 %if 0%{?sle_version}
@@ -145,16 +126,6 @@ install -d -m755 %{buildroot}%{_datadir}/wayland-sessions
 ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
 %endif
 
-%if 0%{?sle_version}
-%post -n gnome-shell-classic
-%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
-  default-xsession.desktop %{_datadir}/xsessions/sle-classic.desktop 20
-
-%postun -n gnome-shell-classic
-[ -f %{_datadir}/xsessions/sle-classic.desktop ] || %{_sbindir}/update-alternatives \
-  --remove default-xsession.desktop %{_datadir}/xsessions/sle-classic.desktop
-%endif
-
 %files common
 %license COPYING
 %doc README.SUSE HACKING.md NEWS README.md
@@ -163,7 +134,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.classic.gschema.override
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.apps-menu.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.window-list.gschema.xml
-#%%{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
 %dir %{_datadir}/gnome-shell/extensions
 %{_datadir}/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com/
@@ -186,10 +156,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/wayland-sessions/gnome-classic.desktop
 %{_datadir}/xsessions/gnome-classic-xorg.desktop
 %{_datadir}/xsessions/gnome-classic.desktop
-#%%{_datadir}/xsessions/sle-classic.desktop
-#%{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/sle-classic.css
-#%{_datadir}/gnome-shell/modes/sle-classic.json
-#%{_datadir}/gnome-shell/extensions/sle-classic@suse.com/
 %if 0%{?sle_version}
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/xsessions/default.desktop

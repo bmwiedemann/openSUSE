@@ -2242,4 +2242,20 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963598</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>cdc96e1fe26c6db22de5e80e4234e3ec</srcmd5>
+    <version>42.0</version>
+    <time>1649610319</time>
+    <user>dimstar_suse</user>
+    <comment>- Deprecate SLE-Classic in GNOME 42: 
+  + Drop 00_org.gnome.shell.extensions.sle-classic.gschema.override
+  + Drop gse-sle-classic-ext.patch
+  + Drop sle-classic.desktop
+  + Drop sle-classic.json
+  + Drop sle-classic@suse.com.tar.gz
+    SLE-Classic is not compatible with GNOME 42 which makes this mode
+    not usable. After careful consideration, we decide to deprecate
+    SLE-Classic in GNOME 42, please find the reason in (boo#1197907). (forwarded request 967336 from qkzhu)</comment>
+    <requestid>967854</requestid>
+  </revision>
 </revisionlist>
