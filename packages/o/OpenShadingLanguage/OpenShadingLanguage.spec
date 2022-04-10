@@ -1,7 +1,7 @@
 #
 # spec file for package OpenShadingLanguage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.11.15.0
+Version:        1.11.17.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
@@ -31,10 +31,6 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
 Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
-# PATCH-FIX-UPSTREAM: 8682211d0bfe5c4be63a4a003d06037ff9721e66.diff - fix build with LLVM >= 12
-Patch0:         8682211d0bfe5c4be63a4a003d06037ff9721e66.diff
-# PATCH-FIX-UPSTREAM: 1420.diff - fix build with LLVM >= 13
-Patch1:         1420.diff
 BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
 BuildRequires:  bison

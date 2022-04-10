@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 10 10:06:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.17.0:
+  * Fix in runtime optimizer where tracking of messages and unknown messages
+    relied on uninitialized variables. 
+  * Minor changes related to OpenColorIO changing their master branch name to
+    "main". #1431
+  * Testing: Get texture3d tests operational again. #1437
+  * Docs: Fix missing "errormessage" explanation for environment() and
+    texture3d().
+  * Build/cmake fixes: Make PROJECT_VERSION_RELEASE_TYPE and
+    OSL_SUPPORTED_RELEASE be cache strings, so they can be overridden; change
+    OSL_IS_SUBPROJECT to PROJECT_IS_TOP_LEVEL (and change its sense) to match
+    CMake 21+ behavior; add a TIME_COMMANDS option to help debug performance of
+    the build. #1443 
+- drop 8682211d0bfe5c4be63a4a003d06037ff9721e66.diff, 1420.diff (upstream)
+
+-------------------------------------------------------------------
 Fri Apr  8 07:42:38 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable partio on armv6/armv7 since it fails to build
