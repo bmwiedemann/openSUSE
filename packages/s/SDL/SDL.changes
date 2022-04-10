@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  5 18:42:36 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE-2021-33657.patch: always create a full 256-entry color
+  map in case color values are out of range (boo#1198001
+  CVE-2021-33657).
+
+-------------------------------------------------------------------
 Wed Mar 30 18:46:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Rename devel package to just %name-devel, which is what most

@@ -47,6 +47,7 @@ Patch10:        CVE-2019-7635.patch
 Patch11:        CVE-2019-7636.patch
 Patch12:        CVE-2019-7637.patch
 Patch13:        CVE-2019-13616.patch
+Patch14:        CVE-2021-33657.patch
 BuildRequires:  autoconf
 BuildRequires:  nasm
 BuildRequires:  pkg-config

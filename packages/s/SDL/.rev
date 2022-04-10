@@ -432,4 +432,12 @@ readd --with-pic. Cleanup spec.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>967371</requestid>
   </revision>
+  <revision rev="58" vrev="24">
+    <srcmd5>3d8876bb09f7268ac10e3f98461e2656</srcmd5>
+    <version>1.2.15</version>
+    <time>1649610306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967674</requestid>
+  </revision>
 </revisionlist>
