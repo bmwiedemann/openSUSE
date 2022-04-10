@@ -175,4 +175,13 @@
 not sure if this will work with Factory's rebuild magic (forwarded request 690604 from bmwiedemann)</comment>
     <requestid>690628</requestid>
   </revision>
+  <revision rev="26" vrev="31">
+    <srcmd5>0636e33e3aca83ef7c73dba8309af4fb</srcmd5>
+    <version>MACRO</version>
+    <time>1649610839</time>
+    <user>dimstar_suse</user>
+    <comment>- rebuild when kernel version changes
+- spec cleaning (forwarded request 967869 from dirkmueller)</comment>
+    <requestid>968238</requestid>
+  </revision>
 </revisionlist>
