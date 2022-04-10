@@ -61,4 +61,13 @@
   no upstream changelog</comment>
     <requestid>886432</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b8ba7dcd6c6569dc79083bcd932b26c0</srcmd5>
+    <version>0.8</version>
+    <time>1649610347</time>
+    <user>dimstar_suse</user>
+    <comment>- Mesa-libd3d's d3dadapter9.so is loaded with dlopen and thus not
+  automatically recognized as runtime dependency, add it manually. (forwarded request 968055 from aaronpuchert)</comment>
+    <requestid>968227</requestid>
+  </revision>
 </revisionlist>

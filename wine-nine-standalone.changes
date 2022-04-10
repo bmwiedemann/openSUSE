@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  9 20:20:47 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Mesa-libd3d's d3dadapter9.so is loaded with dlopen and thus not
+  automatically recognized as runtime dependency, add it manually.
+
+-------------------------------------------------------------------
 Thu Apr 15 17:10:10 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.8
