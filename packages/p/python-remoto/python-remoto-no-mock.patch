@@ -1,0 +1,46 @@
+Index: remoto-1.2.1/remoto/tests/test_log.py
+===================================================================
+--- remoto-1.2.1.orig/remoto/tests/test_log.py
++++ remoto-1.2.1/remoto/tests/test_log.py
+@@ -1,7 +1,10 @@
+ from pytest import raises
+ from remoto import log
+ from remoto.exc import TimeoutError
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ 
+ 
+ class TestReporting(object):
+Index: remoto-1.2.1/remoto/tests/test_process.py
+===================================================================
+--- remoto-1.2.1.orig/remoto/tests/test_process.py
++++ remoto-1.2.1/remoto/tests/test_process.py
+@@ -1,6 +1,11 @@
+-from mock import Mock
+ from remoto import process
+ 
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
++
++
+ 
+ class TestExtendPath(object):
+ 
+Index: remoto-1.2.1/remoto/tests/test_rsync.py
+===================================================================
+--- remoto-1.2.1.orig/remoto/tests/test_rsync.py
++++ remoto-1.2.1/remoto/tests/test_rsync.py
+@@ -1,4 +1,7 @@
+-from mock import Mock, patch
++try:
++    from unittest.mock import Mock, patch
++except ImportError:
++    from mock import Mock, patch
+ from remoto import file_sync
+ 
+ 

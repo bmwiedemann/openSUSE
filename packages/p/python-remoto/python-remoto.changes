@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  8 09:21:48 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.2.1
+  * Prevent deadlock situations by avoiding stderr.read() and stdout.read() in favor of using communicate()
+- do not require python-mock for build
+- added patches
+  fix https://github.com/alfredodeza/remoto/commit/aa74f65bb59dc46998e72e4bdcd070287e4e2af6
+  + python-remoto-no-mock.patch
+
+-------------------------------------------------------------------
 Mon May 17 10:01:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary dependency on python-devel.

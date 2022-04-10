@@ -1,7 +1,7 @@
 #
 # spec file for package python-remoto
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-remoto
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Remote command executor using ssh and Python in the remote end
 License:        MIT
 URL:            https://github.com/alfredodeza/remoto
 Source0:        https://files.pythonhosted.org/packages/source/r/remoto/remoto-%{version}.tar.gz
+# https://github.com/alfredodeza/remoto/commit/aa74f65bb59dc46998e72e4bdcd070287e4e2af6
+Patch0:         python-remoto-no-mock.patch
 BuildRequires:  %{python_module execnet}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
@@ -32,7 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-execnet
 BuildArch:      noarch
 # SECTION build requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -44,7 +45,7 @@ python-remoto is built upon python-execnet which manages the
 connections and processes.
 
 %prep
-%setup -q -n remoto-%{version}
+%autosetup -p1 -n remoto-%{version}
 
 %build
 export REMOTO_NO_VENDOR=no
