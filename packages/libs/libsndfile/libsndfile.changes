@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Mar 29 18:07:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Added MPEG Encode/Decode Support
+  * New fuzzer for OSS-Fuzz, thanks @DavidKorczynski.
+  Fixed:
+  * Memory leak in caf_read_header(), credit to OSS-Fuzz (issue 30375).
+  * Stack overflow in guess_file_type()
+  * Abort in fuzzer, thanks @bobsayshilol, credit to OSS-Fuzz
+  * Infinite loop in svx_read_header(), thanks @bobsayshilol, credit to OSS-Fuzz
+  * GCC and Clang pedantic warnings, thanks @bobsayshilol.
+  * Normalisation issue when scaling floating point data to int in
+    replace_read_f2i(), thanks @bobsayshilol, (issue #702).
+  * Missing samples when doing a partial read of Ogg file from index till the
+    end of file, thanks @arthurt (issue #643).
+  * sndfile-salvage: Handle files > 4 GB on Windows OS
+  * Undefined shift in dyn_get_32bit(), credit to OSS-Fuzz
+  * Integer overflow in nms_adpcm_update(), credit to OSS-Fuzz
+  * Integer overflow in psf_log_printf(), credit to OSS-Fuzz
+  * ABI version incompatibility between Autotools and CMake build on Apple
+    platforms.
+  * Heap buffer overflow in wavlike_ima_decode_block()
+  * Heap buffer overflow in msadpcm_decode_block()
+  * Heap buffer overflow in psf_binheader_readf()
+  * Index out of bounds in psf_nms_adpcm_decode_block()
+  * Heap buffer overflow in flac_buffer_copy()
+  * Heap buffer overflow in copyPredictorTo24()
+  * Uninitialized variable in psf_binheader_readf()
+- drop sndfile-deinterlace-channels-check.patch ms_adpcm-Fix-and-extend-size-checks.patch,
+       libsndfile-CVE-2021-4156.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon Jan  3 08:35:12 CET 2022 - tiwai@suse.de
 
 - Fix heap buffer overflow in flac_buffer_copy (CVE-2021-4156,

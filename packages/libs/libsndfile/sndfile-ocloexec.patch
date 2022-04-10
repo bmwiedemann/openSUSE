@@ -2,9 +2,11 @@
  src/file_io.c |    3 +++
  1 file changed, 3 insertions(+)
 
---- a/src/file_io.c
-+++ b/src/file_io.c
-@@ -570,6 +570,9 @@ psf_open_fd (PSF_FILE * pfile)
+Index: libsndfile-1.1.0/src/file_io.c
+===================================================================
+--- libsndfile-1.1.0.orig/src/file_io.c
++++ libsndfile-1.1.0/src/file_io.c
+@@ -598,6 +598,9 @@ psf_open_fd (PSF_FILE * pfile)
  				return - SFE_BAD_OPEN_MODE ;
  				break ;
  		} ;
@@ -13,4 +15,4 @@
 +#endif
  
  	if (mode == 0)
- 		fd = open (pfile->path.c, oflag) ;
+ 		fd = open (pfile->path, oflag) ;

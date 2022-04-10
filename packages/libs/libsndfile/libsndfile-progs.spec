@@ -17,16 +17,15 @@
 
 
 Name:           libsndfile-progs
-Version:        1.0.31
+Version:        1.1.0
 Release:        0
 Summary:        Example Programs for libsndfile
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://libsndfile.github.io/libsndfile/
-Source0:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.bz2
-Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.bz2.sig
+Source0:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.xz
+Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.xz.asc
 Source2:        libsndfile.keyring
-Patch34:        sndfile-deinterlace-channels-check.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  alsa-devel
@@ -34,28 +33,28 @@ BuildRequires:  cmake
 BuildRequires:  flac-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libjack-devel
+BuildRequires:  libopus-devel
 BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
+BuildRequires:  speex-devel
 BuildRequires:  sqlite3-devel
 
 %description
 This package includes the example programs for libsndfile.
 
 %prep
-%setup -q -n libsndfile-%{version}
-%patch34 -p1
-%patch100 -p1
+%autosetup -p1 -n libsndfile-%{version}
 
 %build
-%cmake -DENABLE_EXPERIMENTAL=ON -DBUILD_EXAMPLES=OFF
+%cmake -DENABLE_EXPERIMENTAL=ON -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/libsndfile
 %cmake_build
 
 %install
 %cmake_install
 
 # remove unnecessary files
-rm -rf %{buildroot}%{_datadir}/doc/libsndfile
+rm -rf %{buildroot}%{_defaultdocdir}/libsndfile
 rm -rf %{buildroot}%{_libdir}
 rm -rf %{buildroot}%{_includedir}
 rm -rf %{buildroot}%{_datadir}/doc/libsndfile1-dev

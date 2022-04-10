@@ -18,19 +18,16 @@
 
 %define lname	%{name}1
 Name:           libsndfile
-Version:        1.0.31
+Version:        1.1.0
 Release:        0
 Summary:        Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://libsndfile.github.io/libsndfile/
-Source0:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.bz2
-Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.bz2.sig
-Source2:        %{name}.keyring
+Source0:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.xz
+Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.xz.asc
+Source2:        libsndfile.keyring
 Source3:        baselibs.conf
-Patch34:        sndfile-deinterlace-channels-check.patch
-Patch35:        ms_adpcm-Fix-and-extend-size-checks.patch
-Patch40:        libsndfile-CVE-2021-4156.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  cmake
@@ -77,8 +74,7 @@ This package contains the files needed to compile programs that use the
 libsndfile library.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake -DENABLE_EXPERIMENTAL=ON -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/libsndfile
@@ -96,13 +92,13 @@ rm -rf %{buildroot}%{_datadir}/doc/libsndfile
 %postun -n %{lname} -p /sbin/ldconfig
 
 %check
-# check requires -DBUILD_SHARED_LIBS=off
+# ctest fails?!
 
 %files -n %{lname}
 %{_libdir}/libsndfile.so.1*
 
 %files devel
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS CHANGELOG.md README
 %license COPYING
 %{_libdir}/libsndfile.so
 %{_includedir}/sndfile.h
