@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  7 12:36:08 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
+
+- Build firewalld-prometheus-config only for SUSE Linux Enterprise
+  15, 15.1 and 15.2, and require firewalld for it
+- firewalld-prometheus-config needs to be a Recommends, not a
+  Requires, as prometheus does not require it to run
+
+-------------------------------------------------------------------
 Fri Mar 18 12:20:59 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Create firewalld-prometheus-config subpackage (bsc#1197042)
