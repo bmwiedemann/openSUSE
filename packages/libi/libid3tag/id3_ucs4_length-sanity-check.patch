@@ -1,0 +1,13 @@
+diff -rup libid3tag-0.16.1.orig/ucs4.c libid3tag-0.16.1/ucs4.c
+--- libid3tag-0.16.1.orig/ucs4.c	2021-08-15 22:52:07.000000000 +0200
++++ libid3tag-0.16.1/ucs4.c	2022-04-08 09:47:54.980481313 +0200
+@@ -39,6 +39,9 @@ id3_length_t id3_ucs4_length(id3_ucs4_t
+ {
+   id3_ucs4_t const *ptr = ucs4;
+ 
++  if (! ucs4)
++    return 0;
++
+   while (*ptr)
+     ++ptr;
+ 

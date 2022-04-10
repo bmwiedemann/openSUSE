@@ -1,7 +1,7 @@
 #
 # spec file for package libid3tag
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/tenacityteam/libid3tag
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         id3_ucs4_length-sanity-check.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  gperf
@@ -55,6 +56,7 @@ develop applications with libid3tag.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake
