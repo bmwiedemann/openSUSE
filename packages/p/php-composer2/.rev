@@ -73,4 +73,12 @@
   * Performance improvement in pool optimization step (forwarded request 957604 from susnux)</comment>
     <requestid>957971</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>133c79ab1e91b126b233692ab4f12146</srcmd5>
+    <version>2.3.3</version>
+    <time>1649610342</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>968123</requestid>
+  </revision>
 </revisionlist>
