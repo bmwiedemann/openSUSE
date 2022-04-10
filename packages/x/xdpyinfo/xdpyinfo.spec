@@ -1,7 +1,7 @@
 #
 # spec file for package xdpyinfo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xdpyinfo
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Utility to display information about an X server
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(dmx)
 BuildRequires:  pkgconfig(x11)
@@ -63,7 +63,7 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog COPYING README.md
 %{_bindir}/xdpyinfo
 %{_mandir}/man1/xdpyinfo.1%{?ext_man}
 
