@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  8 15:49:30 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.10.0
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.10.0/CHANGELOG.md
+    for a complete changelog or check the CHANGELOG.md in the doc directory.
+
+-------------------------------------------------------------------
+Sat Dec 25 10:23:55 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Disable libaom and use rav1e by default
+  * As PHP 8.1 has AVIF support, use rav1e by default as it is more
+    secure being written in Rust.
+
+-------------------------------------------------------------------
 Thu Oct 21 07:56:31 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.9.3

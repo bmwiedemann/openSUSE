@@ -149,4 +149,18 @@ This lib uses rav1e and dav1d for encoding and decoding.</comment>
 </comment>
     <requestid>926673</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>be041ca804d0d2c654b070c28c7064fd</srcmd5>
+    <version>0.10.0</version>
+    <time>1649610323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.0
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.10.0/CHANGELOG.md
+    for a complete changelog or check the CHANGELOG.md in the doc directory.
+- Disable libaom and use rav1e by default
+  * As PHP 8.1 has AVIF support, use rav1e by default as it is more
+    secure being written in Rust.
+</comment>
+    <requestid>967877</requestid>
+  </revision>
 </revisionlist>

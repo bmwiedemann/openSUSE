@@ -1,7 +1,7 @@
 #
 # spec file for package libavif
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,18 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
 %bcond_without aom
+%else
+%bcond_with aom
+%endif
 
 # Also update baselibs.conf if you bump the version
-%define lib_name libavif13
+%global lib_soversion 14
+%global lib_name libavif%{lib_soversion}
 
 Name:           libavif
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -39,7 +44,7 @@ BuildRequires:  nasm
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(rav1e)
+BuildRequires:  pkgconfig(rav1e) >= 0.5.0
 BuildRequires:  pkgconfig(zlib)
 
 %if %{with aom}
@@ -123,8 +128,8 @@ This package holds the development files for libavif.
 
 %files -n %{lib_name}
 %license LICENSE
-%{_libdir}/libavif.so.13
-%{_libdir}/libavif.so.13.0.0
+%{_libdir}/libavif.so.%{lib_soversion}
+%{_libdir}/libavif.so.%{lib_soversion}.0.0
 
 %files devel
 %license LICENSE
