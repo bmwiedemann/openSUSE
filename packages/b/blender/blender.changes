@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Apr 10 09:52:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.2:
+  see https://wiki.blender.org/wiki/Reference/Release_Notes/3.1/Corrective_Releases
+  * Regression: The location of "Viewport Gizmos" is not correct in POSE mode
+  * Compositor: Missing output UI for Normal node.
+  * GPU subdivision: Crash on select in Edit Mode with X-Ray on and Mirror Modifier.
+  * GPU subdivision modifier: Smooth Shade doesn't work.
+  * OBJ export: mark the new 3.1+ exporter as experimental, and reintroduce menu item for the old exporter.
+  * Fix memory leak evaluating PyDrivers.
+  * PyAPI: ID property group returns wrong type with iter().
+  * Grease Pencil > Stroke > Normalize Thickness Causes Crash.
+  * GPencil: Fix unreported select error in Normalize operator.
+  * Unable to set active material output node using Python.
+  * is_active_output stopped working correctly.
+  * Nodegroups don't update the shaders anymore in 3.1.
+  * Crash with Close Area menu 3D view.
+  * Issue clicking on stem of arrow gizmos to scale on axis.
+  * Armature corrupted after undo.
+  * Overlapping Volumes broken in Cycles, GPU only (possible regression).
+  * Multiscatter GGX regression with non-zero roughness and a bump texture on a non-manifold object.
+  * Crash when changing shader to nodegroup in properties.
+  * GPencil: Fill freezes when use invert and click inside areas.
+  * Fix object centers & geometry selecting meta-elements in edit-mode.
+  * Stereoscopy with Motion Blur crashes in Eevee.
+  * C3D Import.
+  * Crash when a curve object got an array modifier with a mesh object containing a vertex group set as cap.
+  * Bake normals for multi-resolution object is broken.
+  * Set ID for Instances not work in Blender 3.1.
+  * Regression: Can not translate after selecting with Select Circle.
+  * Regression: NLA crash when reordering tracks if no object is selected.
+  * Crash on Geometry Nodes Edit Mode tap Tab.
+  * Regression: Texture Mapping properties of texture nodes are not updated in 3D Viewport.
+  * Regression: Crash when pressing F3 outside a Blender window if Developer extras is on.
+  * snap does not work properly.
+  * UV Editor doesn't work when GPU Subdivision in the Viewport is enabled.
+  * Fix missing updates for external render engines rendering tiles.
+  * Add Curve Extra Objects addon fails when adding Curvy Curve.
+  * Regression: Script using bmesh.ops.wireframe and bmesh.ops.bevel does not work the same in 3.1 and in 3.01.
+  * Regression: Crash when executing bpy.types.ShapeKey.normals_vertex_get.
+  * Fix text editor failure to move the cursor for syntax errors.
+  * Gpencil: Inverted Fill makes extra stroke at origin (0,0,0).
+  * Image editor: not updating after image operation.
+  * Regression: Blender 3.1 bake from multires not reflected in the Image Editor.
+  * Regression: GPencil primitives handlers not working.
+  * Regression: Snapping is broken with proportional editing.
+  * Regression: Cutting a strip with keyframes in the VSE deletes the keyframes from the original (left) strip.
+  * Regression: VSE Wipe transition does not work.
+  * Heap corruption in file_browse_exec.
+  * GPencil: Scripting weight_get cannot retrieve weights of certain vertex groups.
+  * vertex paint face selction display bug gpu subdivision.
+  * New OBJ exporter fixes:
+  * Reintroduce setting presets and an option to skip modifiers.
+  * Fix wrong normals on non-uniformly scaled objects.
+  * Fix scaling factor not being applied correctly.
+  * Fix export of "material groups" option.
+  * Fix issues with some apps (e.g. Procreate) with multiple materials; the new exporter was not grouping faces by material.
+
+-------------------------------------------------------------------
 Wed Apr  6 17:07:31 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Don't exclude cycles

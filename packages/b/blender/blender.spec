@@ -67,7 +67,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -95,7 +95,6 @@ BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
 BuildRequires:  OpenImageIO-devel
 BuildRequires:  SDL2-devel
-BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  distribution-release
@@ -175,6 +174,7 @@ Provides:       %{name}-%{_suffix} = %{version}
 BuildRequires:  pkgconfig(OpenEXR)
 %if %{with clang}
 BuildRequires:  clang
+BuildRequires:  clang-devel
 %if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
 BuildRequires:  libomp9-devel
 %else
