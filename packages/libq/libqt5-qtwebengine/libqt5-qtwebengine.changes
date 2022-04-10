@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Apr 06 14:41:04 UTC 2022 - christophe@krop.fr
+
+- Update to version 5.15.9:
+  * QPdfView: scale page rendering according to devicePixelRatio
+  * Update documented Chromium version
+  * Use IsSameDocument() rather than IsLoadingToDifferentDocument()
+  * Update module-split for installer
+  * Fix printing PDF files
+  * Do not override signal handlers
+  * Avoid using xkbcommon in non-X11 builds
+  * Update documentation
+  * Update Chromium:
+    * Bump V8_PATCH_LEVEL
+    * Do not overwrite signal handlers in the browser process.
+    * Replace base::ranges::set_union with std::set_union to fix
+      MSVC2017 build
+    * [Backport] CVE-2022-0100: Heap buffer overflow in Media
+      streams API
+    * [Backport] CVE-2022-0102: Type Confusion in V8
+    * [Backport] CVE-2022-0103: Use after free in SwiftShader
+    * [Backport] CVE-2022-0104: Heap buffer overflow in ANGLE
+    * [Backport] CVE-2022-0108: Inappropriate implementation
+      in Navigation
+    * [Backport] CVE-2022-0109: Inappropriate implementation
+      in Autofill
+    * [Backport] CVE-2022-0111 and CVE-2022-0117
+    * [Backport] CVE-2022-0113: Inappropriate implementatio
+      n in Blink
+    * [Backport] CVE-2022-0116: Inappropriate implementation
+      in Compositing
+    * [Backport] CVE-2022-0289: Use after free in Safe browsing
+    * [Backport] CVE-2022-0291: Inappropriate implementation
+      in Storage
+    * [Backport] CVE-2022-0293: Use after free in Web packaging
+    * [Backport] CVE-2022-0298: Use after free in Scheduling
+    * [Backport] CVE-2022-0305: Inappropriate implementation in
+      Service Worker API
+    * [Backport] CVE-2022-0306: Heap buffer overflow in PDFium
+    * [Backport] CVE-2022-0310 and CVE-0311: Heap buffer overflow
+      in Task Manager
+    * [Backport] CVE-2022-0456: Use after free in Web Search
+    * [Backport] CVE-2022-0459: Use after free in Screen Capture
+    * [Backport] CVE-2022-0460: Use after free in Window Dialog
+    * [Backport] CVE-2022-0461: Policy bypass in COOP
+    * [Backport] CVE-2022-0606: Use after free in ANGLE
+    * [Backport] CVE-2022-0607: Use after free in GPU
+    * [Backport] CVE-2022-0608: Integer overflow in Mojo
+    * [Backport] CVE-2022-0609: Use after free in Animation
+    * [Backport] CVE-2022-0610: Inappropriate implementation
+      in Gamepad API
+    * [Backport] CVE-2022-0971 (boo#1197163)
+    * [Backport] CVE-2022-1096 (boo#1197552)
+    * [Backport] CVE-2022-23852
+    * [Backport] Copy 'name_' member during StyleRuleProperty::Copy
+    * [Backport] Security bug 1256885
+    * [Backport] Security bug 1258603
+    * [Backport] Security bug 1259557
+    * [Backport] Security bug 1261415
+    * [Backport] Security bug 1265570
+    * [Backport] Security bug 1268448
+    * [Backport] Security bug 1270014
+    * [Backport] Security bug 1274113
+    * [Backport] Security bug 1276331
+    * [Backport] Security bug 1280743
+    * [Backport] Security bug 1289394
+    * [Backport] Security bug 1292537
+    * [Backport] sandbox: build if glibc 2.34+ dynamic stack size
+      is enabled
+- Drop patches, now upstream:
+  * CVE-2022-0971-qtwebengine-5.15.patch
+  * CVE-2022-1096-qtwebengine-5.15.patch
+
+-------------------------------------------------------------------
 Mon Apr  4 19:25:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add security fixes:
