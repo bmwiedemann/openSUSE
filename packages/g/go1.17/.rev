@@ -194,4 +194,24 @@
   * Default go_label = go_api makes no changes to package layout (forwarded request 966741 from jfkw)</comment>
     <requestid>966744</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9b18e1ef529d360d58baf39e23f8e119</srcmd5>
+    <version>1.17.8</version>
+    <time>1649610304</time>
+    <user>dimstar_suse</user>
+    <comment>- Template gcc-go.patch to substitute gcc_go_version and eliminate
+  multiple similar patches each with hardcoded gcc go binary name.
+  gcc-go.patch inserts gcc-go binary name e.g. go-8 to compensate
+  for current lack of gcc-go update-alternatives usage.
+  * add gcc-go.patch
+  * drop gcc6-go.patch
+  * drop gcc7-go.patch
+
+- For SLE-12 set gcc_go_version to 8 to bootstrap using gcc8-go.
+  gcc6-go and gcc7-go no longer successfully bootstrap go1.17 or
+  go1.18 on SLE-12 aarch64 ppc64le or s390x.
+  * gcc6-go fails with errors e.g. libnoder.a(_go_.o):(.toc+0x0):
+    undefined reference to `__go_pimt__I4_DiagFrN4_boolee3 (forwarded request 967627 from jfkw)</comment>
+    <requestid>967629</requestid>
+  </revision>
 </revisionlist>
