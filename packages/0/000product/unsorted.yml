@@ -7724,6 +7724,7 @@ unsorted:
   - jgit-javadoc 
   - jgmenu 
   - jgraphx 
+  - jgraphx-javadoc 
   - jgroups 
   - jgroups-javadoc 
   - jgroups-manual 
@@ -12666,7 +12667,7 @@ unsorted:
   - libopagent1 
   - libopagent1-32bit: [x86_64] 
   - libopal-devel 
-  - libopal3_10_10 
+  - libopal3_18_8 
   - libopamgt-devel: [x86_64] 
   - libopamgt0: [x86_64] 
   - libopasadb1_0_0: [x86_64] 
@@ -13171,9 +13172,9 @@ unsorted:
   - libpsx2 
   - libpsx2-32bit: [x86_64] 
   - libpt-devel 
-  - libpt2_10_11 
-  - libpt2_10_11-plugins-avc 
-  - libpt2_10_11-plugins-pulse 
+  - libpt2_18_8 
+  - libpt2_18_8-plugins-avc 
+  - libpt2_18_8-plugins-pulse 
   - libptexenc1 
   - libptl2 
   - libptscotch-gnu-mpich-hpc 
@@ -17277,8 +17278,6 @@ unsorted:
   - netsniff-ng 
   - netsurf-buildsystem 
   - nettle 
-  - netty-jni-util 
-  - netty-jni-util-sources 
   - netty3 
   - netty3-javadoc 
   - network-autoconfig 
@@ -20337,7 +20336,7 @@ unsorted:
   - perl-thrift 
   - perl-version 
   - perl-warewulf-cluster: [x86_64] 
-  - perl-warewulf-common 
+  - perl-warewulf-common: [x86_64] 
   - perl-warewulf-ipmi: [x86_64] 
   - perl-warewulf-provision: [x86_64] 
   - perl-warewulf-provision-server: [x86_64] 
@@ -21933,8 +21932,8 @@ unsorted:
   - python310-PyQt6-NetworkAuth 
   - python310-PyQt6-NetworkAuth-devel 
   - python310-PyQt6-QScintilla 
-  - python310-PyQt6-WebEngine 
-  - python310-PyQt6-WebEngine-devel 
+  - python310-PyQt6-WebEngine: [x86_64] 
+  - python310-PyQt6-WebEngine-devel: [x86_64] 
   - python310-PyQt6-devel 
   - python310-PyQt6-doc 
   - python310-PyQt6-sip 
@@ -25125,8 +25124,8 @@ unsorted:
   - python38-PyQt6-NetworkAuth 
   - python38-PyQt6-NetworkAuth-devel 
   - python38-PyQt6-QScintilla 
-  - python38-PyQt6-WebEngine 
-  - python38-PyQt6-WebEngine-devel 
+  - python38-PyQt6-WebEngine: [x86_64] 
+  - python38-PyQt6-WebEngine-devel: [x86_64] 
   - python38-PyQt6-devel 
   - python38-PyQt6-doc 
   - python38-PyQt6-sip 
@@ -28110,8 +28109,8 @@ unsorted:
   - python39-PyQt6-NetworkAuth 
   - python39-PyQt6-NetworkAuth-devel 
   - python39-PyQt6-QScintilla 
-  - python39-PyQt6-WebEngine 
-  - python39-PyQt6-WebEngine-devel 
+  - python39-PyQt6-WebEngine: [x86_64] 
+  - python39-PyQt6-WebEngine-devel: [x86_64] 
   - python39-PyQt6-devel 
   - python39-PyQt6-doc 
   - python39-PyQt6-sip 
@@ -41600,6 +41599,8 @@ unsorted:
   - totem-pl-parser-devel 
   - totem-plugin-gnome-dvb-daemon 
   - touchegg 
+  - tp_smapi-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - tp_smapi-kmp-pae: [i586] 
   - tpm-quote-tools 
   - tpm-tools 
   - tpm-tools-devel 
@@ -42503,11 +42504,10 @@ unsorted:
   - wallstreet 
   - wang-fonts 
   - warewulf-cluster: [x86_64] 
-  - warewulf-common 
-  - warewulf-doc 
+  - warewulf-common: [x86_64] 
+  - warewulf-doc: [x86_64] 
   - warewulf-nhc 
   - warewulf-provision: [x86_64] 
-  - warewulf-provision-i386-initramfs: [i586] 
   - warewulf-provision-ipxe-images: [x86_64] 
   - warewulf-provision-server: [x86_64] 
   - warewulf-provision-x86_64-initramfs: [x86_64] 
