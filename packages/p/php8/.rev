@@ -232,4 +232,12 @@
     <comment></comment>
     <requestid>966279</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>401b7b8d505bcfc149d026326ae99729</srcmd5>
+    <version>8.1.4</version>
+    <time>1649610330</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build with '-z now' as it breaks the php-mysql extension</comment>
+    <requestid>967927</requestid>
+  </revision>
 </revisionlist>
