@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:34:37 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Disable 2 warnings that are affected by GCC 12:
+  gh#google/googletest#3792 and gh#google/googletest#3793.
+
+-------------------------------------------------------------------
 Wed Feb  2 15:56:01 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add missing ldconfig calls in %post/%postun

@@ -83,6 +83,8 @@ with googlemock.
 %setup -q -n %{name}-release-%{version}
 
 %build
+%global optflags %(echo "%{optflags} -Wno-infinite-recursion -Wno-deprecated-declarations")
+
 %cmake \
   %{?with_tests:-Dgtest_build_tests=ON} \
   %{?with_tests:-Dgmock_build_tests=ON} \

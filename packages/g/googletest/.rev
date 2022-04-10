@@ -121,4 +121,13 @@
     <comment></comment>
     <requestid>964718</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>b1a1c67f1a130138fbc9256ae13cb421</srcmd5>
+    <version>1.11.0</version>
+    <time>1649610314</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable 2 warnings that are affected by GCC 12:
+  gh#google/googletest#3792 and gh#google/googletest#3793. (forwarded request 967778 from marxin)</comment>
+    <requestid>967823</requestid>
+  </revision>
 </revisionlist>
