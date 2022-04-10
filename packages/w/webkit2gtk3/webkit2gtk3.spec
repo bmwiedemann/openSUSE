@@ -88,8 +88,6 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 webkit
 Patch0:         no-forced-sse.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-gcc12.patch boo#1197584 webkit#238482 mgorse@suse.com -- fix the build with gcc 12.
-Patch1:         webkit2gtk3-gcc12.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -102,9 +100,9 @@ BuildRequires:  cmake
 BuildRequires:  enchant-devel
 BuildRequires:  flex
 %if %usegcc10
-BuildRequires:  gcc10-c++ >= 4.9
+BuildRequires:  gcc10-c++
 %else
-BuildRequires:  gcc-c++ >= 7.3
+BuildRequires:  gcc-c++ >= 8.3
 %endif
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
@@ -117,15 +115,14 @@ BuildRequires:  openjpeg2-devel
 BuildRequires:  perl >= 5.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  ruby >= 1.8.7
+BuildRequires:  ruby >= 1.9
 BuildRequires:  xdg-dbus-proxy
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.3
-BuildRequires:  pkgconfig(cairo) >= 1.10.2
+BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
 BuildRequires:  pkgconfig(freetype2) >= 2.4.2
-BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.5
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.4
 %if %usegcc10
 BuildRequires:  pkgconfig(glproto)
 %endif
@@ -149,10 +146,9 @@ BuildRequires:  pkgconfig(gtk4) >= 3.98.50
 BuildRequires:  pkgconfig(xcomposite)
 %endif
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(harfbuzz) >= 0.9.2
+BuildRequires:  pkgconfig(harfbuzz) >= 0.9.18
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
-BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.1
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseccomp)
@@ -160,7 +156,7 @@ BuildRequires:  pkgconfig(libsecret-1)
 %if %{_usesoup2}
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.54.0
 %else
-BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.9
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
 %endif
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp)
@@ -172,7 +168,7 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
-BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
+BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.6.0
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
 %if %{_gold_linker}
@@ -199,6 +195,7 @@ Requires:       xdg-dbus-proxy
 Provides:       %{_pkgname_no_slpp} = %{version}
 Provides:       WebKit2GTK-%{_apiver}
 Obsoletes:      webkit2gtk3-plugin-process-gtk2 < %{version}
+Recommends:     geoclue2
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-good
 Recommends:     xdg-desktop-portal-gtk

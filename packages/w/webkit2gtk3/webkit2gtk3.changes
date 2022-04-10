@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  6 15:12:09 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Drop webkit2gtk3-gcc12.patch. It isn't needed anymore, since the
+  relevant gcc change has been reverted for now.
+- Update some minimum version requirements to match cmake checks.
+- Remove build requirements on geoclue and libbrotlidec: they are
+  no longer build-time dependencies. Add geoclue2 to Recommends.
+
+-------------------------------------------------------------------
 Wed Mar 30 18:04:39 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-gcc12.patch: fix the build with gcc 12.

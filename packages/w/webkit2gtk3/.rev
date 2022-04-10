@@ -1231,4 +1231,16 @@
     <comment></comment>
     <requestid>966180</requestid>
   </revision>
+  <revision rev="141" vrev="3">
+    <srcmd5>188c23210a0084616f3494e9edd76f18</srcmd5>
+    <version>2.36.0</version>
+    <time>1649610320</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop webkit2gtk3-gcc12.patch. It isn't needed anymore, since the
+  relevant gcc change has been reverted for now.
+- Update some minimum version requirements to match cmake checks.
+- Remove build requirements on geoclue and libbrotlidec: they are
+  no longer build-time dependencies. Add geoclue2 to Recommends. (forwarded request 967369 from mgorse)</comment>
+    <requestid>967855</requestid>
+  </revision>
 </revisionlist>
