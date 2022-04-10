@@ -835,4 +835,12 @@
 - Update tg_owt (forwarded request 961483 from tux93)</comment>
     <requestid>961971</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>5cb6fac027e30e84c2d41be7797e8161</srcmd5>
+    <version>3.6.1</version>
+    <time>1649610339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968088</requestid>
+  </revision>
 </revisionlist>

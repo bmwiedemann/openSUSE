@@ -27,7 +27,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only

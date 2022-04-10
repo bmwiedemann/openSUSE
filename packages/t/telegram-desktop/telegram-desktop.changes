@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  8 07:53:51 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.6.1
+  * Change volume for RTMP stream from the context menu.
+  * Set a profile photo from your camera.
+  * Improve RTMP stream full screen mode.
+  * Improve edit account section design.
+  * Fix switching personal account or channel in video chats.
+  * Fix pinning chats in folders with 100 chats.
+  * Fix YouTube timestamp links after 10 hours.
+- Update tg_owt
+
+-------------------------------------------------------------------
 Sun Mar 13 15:45:01 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.6.0
