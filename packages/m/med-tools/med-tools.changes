@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  9 16:41:28 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Revert the silent change to symlinks again.
+- Use %docdir instead of %datadir/doc/packages, everywhere.
+
+-------------------------------------------------------------------
 Fri Apr  1 11:37:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Be more careful with fdupes to ensure we don't link across

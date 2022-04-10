@@ -165,8 +165,8 @@ rm -rf %buildroot/usr/bin/test*
 sed -i -e 's,/usr/bin/env wish,/usr/bin/wish,' %buildroot/usr/bin/xmdump*
 
 # move documentation
-mkdir -p %{buildroot}/%{_datadir}/doc/packages/
-mv %{buildroot}/%{_datadir}/doc/med* %{buildroot}/%{_datadir}/doc/packages/med-tools
+mkdir -p %{buildroot}/%{_docdir}
+mv %{buildroot}/%{_datadir}/doc/med* %{buildroot}/%{_docdir}/med-tools
 
 # add missing symlinks, install tries to generate these outside the buildroot
 ln -sf mdump3 %{buildroot}/usr/bin/mdump
@@ -179,10 +179,10 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
 make test ARGS="--output-on-failure"
 
-%fdupes -s %{buildroot}%{_datadir}
-%fdupes -s %{buildroot}%{_includedir}
+%fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}%{_includedir}
 %if %{with python_bindings}
-%fdupes -s %{buildroot}%{python_sitearch}
+%fdupes %{buildroot}%{python_sitearch}
 %endif
 
 %post -n libmed%{sover} -p /sbin/ldconfig
