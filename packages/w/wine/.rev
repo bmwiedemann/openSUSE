@@ -4382,4 +4382,17 @@
 - update staging to 7.5 release</comment>
     <requestid>965014</requestid>
   </revision>
+  <revision rev="373" vrev="1">
+    <srcmd5>1f975f69a8ef63c724a5343526bb309d</srcmd5>
+    <version>7.6</version>
+    <time>1649610344</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.6 development release
+  - Mono engine updated to version 7.2.0.
+  - More progress on the PE conversion of graphics drivers.
+  - Locale support using the new CLDR-based database.
+  - Various bug fixes.
+- update staging to 7.6 release</comment>
+    <requestid>968218</requestid>
+  </revision>
 </revisionlist>

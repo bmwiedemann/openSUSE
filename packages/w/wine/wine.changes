@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr  9 11:47:40 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.6 development release
+  - Mono engine updated to version 7.2.0.
+  - More progress on the PE conversion of graphics drivers.
+  - Locale support using the new CLDR-based database.
+  - Various bug fixes.
+- update staging to 7.6 release
+
+-------------------------------------------------------------------
 Sat Mar 26 08:48:14 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.5 development release

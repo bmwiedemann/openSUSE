@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 7.5
-Version:        7.5
+%define realver 7.6
+Version:        7.6
 Release:        0
 
 %if "%{flavor}" != ""
@@ -145,8 +145,8 @@ Source8:        wine-rpmlintrc
 # - currently none, but add them here
 Recommends:     wine-gecko >= 2.47.2
 Conflicts:      wine-gecko < 2.47.2
-Recommends:     wine-mono >= 6.1.1
-Conflicts:      wine-mono < 6.1.1
+Recommends:     wine-mono >= 7.2.0
+Conflicts:      wine-mono < 7.2.0
 # not packaged in distro...
 Recommends:     wine-mono
 Recommends:     alsa-plugins
@@ -161,7 +161,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 7.5
+%define staging_version 7.6
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
