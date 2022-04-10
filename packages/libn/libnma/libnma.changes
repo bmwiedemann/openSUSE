@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  7 08:14:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.38:
+  + libnma-gtk4 is no longer considered EXPERIMENTAL.
+  + meson now builds libnma-gtk4 properly.
+  + Keyboard accelerator for certificate chooser works again.
+  + Fixed libnma-gtk4 version of mobile-wizard.
+
+-------------------------------------------------------------------
 Fri Mar 25 10:43:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.36:
