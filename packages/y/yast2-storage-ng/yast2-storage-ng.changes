@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  7 16:29:00 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix fstab entry filesystem matching allowing the use of quotes
+  surrounding the device UUID or label (bsc#1197692)
+- 4.5.1
+
+-------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (#bsc1198109)
+
+-------------------------------------------------------------------
 Thu Feb 10 10:18:23 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Partitioner: 'Add NFS' instead of 'Add Nfs' in the menu (related
