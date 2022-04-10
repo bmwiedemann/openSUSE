@@ -30,6 +30,8 @@ Source0:        https://download.gnome.org/sources/gnome-software/42/%{name}-%{v
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
+# PATCH-FIX-UPSTREAM 8cbce25.patch dimstar@opensuse.org -- Fix repeating notification "Software updates failed"
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-software/-/commit/8cbce25.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
