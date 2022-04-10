@@ -36,6 +36,7 @@ BuildRequires:  libX11-devel
 BuildRequires:  meson
 BuildRequires:  wine
 BuildRequires:  wine-devel
+Requires:       Mesa-libd3d
 Obsoletes:      wine-nine < 4.2
 ExclusiveArch:  %{ix86} x86_64
 
@@ -76,9 +77,9 @@ CROSS=tools/cross-wine64
 %install
 %meson_install
 
-mkdir %{buildroot}/%{_libdir}/wine/fakedlls
-mv %{buildroot}/%{_libdir}/wine/d3d9-nine.dll.fake %{buildroot}/%{_libdir}/wine/fakedlls/d3d9-nine.dll
-mv %{buildroot}/%{_libdir}/wine/ninewinecfg.exe.fake %{buildroot}/%{_libdir}/wine/fakedlls/ninewinecfg.exe
+mkdir %{buildroot}%{_libdir}/wine/fakedlls
+mv %{buildroot}%{_libdir}/wine/d3d9-nine.dll.fake %{buildroot}%{_libdir}/wine/fakedlls/d3d9-nine.dll
+mv %{buildroot}%{_libdir}/wine/ninewinecfg.exe.fake %{buildroot}%{_libdir}/wine/fakedlls/ninewinecfg.exe
 
 %files
 %license LICENSE
