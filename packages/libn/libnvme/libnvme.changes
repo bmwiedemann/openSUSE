@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 08 17:04:22 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0:
+  * tree: Remove default port setting for TCP and RDMA ports
+  * tree: add 'f_args' argument to pass user data to the filter function
+  * tree: remove 'ctrl_get_ana_state()'
+  * tree: add namespace path iterators
+  * tree: filter out namespaces
+  * tree: update nvme_scan_filter_t usage
+
+-------------------------------------------------------------------
 Fri Apr 01 13:22:12 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.0-rc8:
