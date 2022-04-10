@@ -5341,6 +5341,7 @@
     <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="systemd-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="tp_smapi-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="v4l-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
