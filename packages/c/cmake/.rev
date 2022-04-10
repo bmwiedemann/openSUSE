@@ -1881,4 +1881,13 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>965811</requestid>
   </revision>
+  <revision rev="214" vrev="2">
+    <srcmd5>399e119d349f44650238c4542ee2a9bb</srcmd5>
+    <version>3.23.0</version>
+    <time>1649610313</time>
+    <user>dimstar_suse</user>
+    <comment>- speed up build of :mini flavor by using external zstd (part of 0-Bootstrap)
+  and turn off LTO</comment>
+    <requestid>967822</requestid>
+  </revision>
 </revisionlist>

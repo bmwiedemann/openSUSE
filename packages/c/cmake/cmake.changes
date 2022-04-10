@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:48:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- speed up build of :mini flavor by using external zstd (part of 0-Bootstrap)
+  and turn off LTO 
+
+-------------------------------------------------------------------
 Tue Mar 29 19:18:02 UTC 2022 - Christoph G <foss@grueninger.de>
 
 - Update to 3.23.0

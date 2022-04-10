@@ -75,6 +75,7 @@ BuildRequires:  pkgconfig(libssl)
 %if %{suse_version} > 1500
 BuildRequires:  pkgconfig(libuv) >= 1.28
 %endif
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
 %if "%{flavor}" == ""
@@ -94,7 +95,6 @@ Requires:       this-is-only-for-build-envs
 BuildRequires:  pkgconfig(jsoncpp) >= 1.4.1
 BuildRequires:  pkgconfig(libarchive) >= 3.3.3
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libzstd)
 %endif
 %if %{with gui}
 BuildRequires:  python3-Sphinx
@@ -136,10 +136,15 @@ echo "`grep cmake-%{version}.tar.gz %{SOURCE5} | grep -Eo '^[0-9a-f]+'`  %{SOURC
 %autosetup -p1 -n cmake-%{version}
 
 %build
-cp %{SOURCE99} .
-%if "%{flavor}" != ""
+cp -p %{SOURCE99} .
+%if %{with mini}
+# this is serial, so it takes too much time for the mini package
+%define _find_debuginfo_dwz_opts %{nil}
+%define _lto_cflags %{nil}
+%endif
 export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export CXXFLAGS="$CFLAGS"
+%if "%{flavor}" != ""
 # This is not autotools configure
 ./configure \
     --prefix=%{_prefix} \
@@ -152,7 +157,6 @@ export CXXFLAGS="%{optflags}"
     --no-system-nghttp2 \
     --no-system-jsoncpp \
     --no-system-libarchive \
-    --no-system-zstd \
 %endif
     --parallel=0%{jobs} \
     --verbose \
