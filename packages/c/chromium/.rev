@@ -4031,4 +4031,16 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>967113</requestid>
   </revision>
+  <revision rev="330" vrev="2">
+    <srcmd5>befbd016eeea4504afe9de58b087bb2e</srcmd5>
+    <version>100.0.4896.75</version>
+    <time>1649713696</time>
+    <user>dimstar_suse</user>
+    <comment>- Patches for GCC 12:
+  * chromium-fix-swiftshader-template.patch
+  * chromium-missing-include-tuple.patch
+  * chromium-webrtc-stats-missing-vector.patch
+</comment>
+    <requestid>968256</requestid>
+  </revision>
 </revisionlist>

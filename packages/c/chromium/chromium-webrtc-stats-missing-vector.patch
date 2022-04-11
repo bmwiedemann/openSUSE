@@ -1,0 +1,10 @@
+--- a/media/capabilities/webrtc_video_stats_db.h
++++ b/media/capabilities/webrtc_video_stats_db.h
+@@ -7,6 +7,7 @@
+
+ #include <memory>
+ #include <string>
++#include <vector>
+
+ #include "base/callback_forward.h"
+ #include "base/check.h"

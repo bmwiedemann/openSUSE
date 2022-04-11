@@ -99,12 +99,15 @@ Patch72:        chromium-95-quiche-include.patch
 Patch78:        chromium-98-EnumTable-crash.patch
 Patch80:        chromium-97-ScrollView-reference.patch
 Patch84:        chromium-third_party-symbolize-missing-include.patch
+Patch85:        chromium-fix-swiftshader-template.patch
 Patch86:        chromium-97-arm-tflite-cast.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch89:        chromium-100-GLImplementationParts-constexpr.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch91:        chromium-100-SCTHashdanceMetadata-move.patch
 Patch92:        chromium-100-macro-typo.patch
+Patch93:        chromium-missing-include-tuple.patch
+Patch94:        chromium-webrtc-stats-missing-vector.patch
 Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch102:       chromium-prop-codecs.patch
