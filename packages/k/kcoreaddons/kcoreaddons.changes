@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Add default argument for KPluginFactory::create where no keyword
+    and args have to be specified
+  * CI: require tests to pass on Linux
+  * Also wrap Kdelibs4ConfigMigrator in a QT_VERSION check for Qt6
+  * Optimize KPluginMetaData::findPluginById by using QPluginLoader directly
+  * Remove *.doc pattern for text/plain
+  * KPluginMetaData: find plugins in the directory of the executable, too
+
+-------------------------------------------------------------------
 Mon Mar  7 09:26:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
