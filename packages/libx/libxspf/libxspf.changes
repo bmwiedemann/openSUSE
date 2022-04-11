@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 10 14:57:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Fixed: GCC 4.4 test suite compilation
+  * Fixed: Missing unistd.h include in
+  * Fixed: Compile errors when uriparser is located in a
+      non-standard path that is passed to configure through
+      variable PKG_CONFIG_PATH
+  * Fixed: Update the GNU Autotools build system
+      so that ./autogen.sh runs without warnings
+  * Fixed: Allow linking with LLD
+  * Improved: Modernize the GNU Autotools build system
+  * Soname: 4:3:0 (please see https://verbump.de/
+                   for what these numbers do)
+- drop libxspf-1.1.0-gcc44.patch libxspf-automake.diff libxspf-gcc47.patch
+  (obsolete)
+
+-------------------------------------------------------------------
 Thu Nov 26 14:30:29 UTC 2015 - mpluskal@suse.com
 
 - Cleanup spec file with spec-cleaner
