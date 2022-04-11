@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 11 19:51:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Try harder to assure that all classes in tycho are understood
+  by Java 8 (bsc#1198279)
+
+-------------------------------------------------------------------
 Tue Mar 29 13:55:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with java 11, since there is no config in tycho

@@ -47,4 +47,12 @@
     <comment>Force build with java 11</comment>
     <requestid>965670</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>710ec02b4723de026763d67da08ee749</srcmd5>
+    <version>1.6.0</version>
+    <time>1649713793</time>
+    <user>dimstar_suse</user>
+    <comment>trying to solve bsc#1198279</comment>
+    <requestid>969278</requestid>
+  </revision>
 </revisionlist>

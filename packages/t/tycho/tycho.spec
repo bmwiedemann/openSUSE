@@ -341,14 +341,16 @@ sed -i '
 %{mvn_file} :{*} tycho/@1
 
 %build
+%{mvn_build} -f \
 %if %{with bootstrap}
-%global no_javadoc "-j"
-%else
-%global no_javadoc %{nil}
+    -j \
 %endif
-%{mvn_build} %{no_javadoc} -f -- \
-  -Dtycho-version=%{version}-SNAPSHOT -DtychoBootstrapVersion=%{version}-SNAPSHOT \
-  -Dmaven.repo.local=$(pwd)/.m2 -Dfedora.p2.repos=$(pwd)/bootstrap -Dsource=8
+    -- -Dtycho-version=%{version}-SNAPSHOT -DtychoBootstrapVersion=%{version}-SNAPSHOT \
+    -Dmaven.repo.local=$(pwd)/.m2 -Dfedora.p2.repos=$(pwd)/bootstrap \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %{mvn_artifact} fedoraproject-p2/org.fedoraproject.p2/pom.xml
 
