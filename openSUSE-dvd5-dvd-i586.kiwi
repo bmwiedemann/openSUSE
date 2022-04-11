@@ -679,7 +679,7 @@
       <repopackage name="gnome-themes-accessibility-gtk2"/>
       <repopackage name="gnome-tweaks"/>
       <repopackage name="gnome-tweaks-lang"/>
-      <repopackage name="gnome-user-docs" arch="i586,i686"/>
+      <repopackage name="gnome-user-docs"/>
       <repopackage name="gnome-user-share"/>
       <repopackage name="gnome-user-share-lang"/>
       <repopackage name="gnome-version"/>
@@ -1865,7 +1865,7 @@
       <repopackage name="libjackserver0"/>
       <repopackage name="libjansson4"/>
       <repopackage name="libjavascriptcoregtk-4_0-18"/>
-      <repopackage name="libjavascriptcoregtk-4_1-0" arch="i586,i686"/>
+      <repopackage name="libjavascriptcoregtk-4_1-0"/>
       <repopackage name="libjbig2"/>
       <repopackage name="libjcat1"/>
       <repopackage name="libjd0"/>
@@ -2724,7 +2724,7 @@
       <repopackage name="libwayland-egl1"/>
       <repopackage name="libwayland-server0"/>
       <repopackage name="libwebkit2gtk-4_0-37"/>
-      <repopackage name="libwebkit2gtk-4_1-0" arch="i586,i686"/>
+      <repopackage name="libwebkit2gtk-4_1-0"/>
       <repopackage name="libwebp7"/>
       <repopackage name="libwebpdemux2"/>
       <repopackage name="libwebpmux3"/>
@@ -2835,7 +2835,7 @@
       <repopackage name="libyajl2"/>
       <repopackage name="libyaml-0-2"/>
       <repopackage name="libyaml-cpp0_7"/>
-      <repopackage name="libyelp0" arch="i586,i686"/>
+      <repopackage name="libyelp0"/>
       <repopackage name="libyui-ncurses-pkg16"/>
       <repopackage name="libyui-ncurses16"/>
       <repopackage name="libyui-qt-graph16"/>
@@ -4638,7 +4638,7 @@
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
       <repopackage name="typelib-1_0-IBus-1_0"/>
       <repopackage name="typelib-1_0-JavaScriptCore-4_0"/>
-      <repopackage name="typelib-1_0-JavaScriptCore-4_1" arch="i586,i686"/>
+      <repopackage name="typelib-1_0-JavaScriptCore-4_1"/>
       <repopackage name="typelib-1_0-Json-1_0"/>
       <repopackage name="typelib-1_0-Libosinfo-1_0"/>
       <repopackage name="typelib-1_0-LibvirtGLib-1_0"/>
@@ -4668,7 +4668,7 @@
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
       <repopackage name="typelib-1_0-Vte-2.91"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
-      <repopackage name="typelib-1_0-WebKit2-4_1" arch="i586,i686"/>
+      <repopackage name="typelib-1_0-WebKit2-4_1"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-Xfconf-0"/>
       <repopackage name="ucode-amd"/>
@@ -4736,9 +4736,9 @@
       <repopackage name="wallpaper-branding-openSUSE"/>
       <repopackage name="wayland-utils"/>
       <repopackage name="WebKit2GTK-4.0-lang"/>
-      <repopackage name="WebKit2GTK-4.1-lang" arch="i586,i686"/>
+      <repopackage name="WebKit2GTK-4.1-lang"/>
       <repopackage name="webkit2gtk-4_0-injected-bundles"/>
-      <repopackage name="webkit2gtk-4_1-injected-bundles" arch="i586,i686"/>
+      <repopackage name="webkit2gtk-4_1-injected-bundles"/>
       <repopackage name="wget"/>
       <repopackage name="wget-lang"/>
       <repopackage name="which"/>
@@ -5050,9 +5050,9 @@
       <repopackage name="yast2-x11"/>
       <repopackage name="yast2-xml"/>
       <repopackage name="yast2-ycp-ui-bindings"/>
-      <repopackage name="yelp" arch="i586,i686"/>
-      <repopackage name="yelp-lang" arch="i586,i686"/>
-      <repopackage name="yelp-xsl" arch="i586,i686"/>
+      <repopackage name="yelp"/>
+      <repopackage name="yelp-lang"/>
+      <repopackage name="yelp-xsl"/>
       <repopackage name="yp-tools"/>
       <repopackage name="ypbind"/>
       <repopackage name="zd1211-firmware"/>
