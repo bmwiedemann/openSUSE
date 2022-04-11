@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  8 19:21:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add PRETTY_NAME="openSUSE Dummy" to etc/os-release: scripts that
+  rely on lsb_release to get the distributor_id will rely on
+  'openSUSE*' to be part of the PRETTY_NAME (seen in xpra for
+  example).
+- Set NAME to 'openSUSE Dummy': xpra is one of the examples that
+  extracts the distro from the name (which is wrong of course).
+
+-------------------------------------------------------------------
 Mon Jan 10 08:42:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add  ID="suse" to etc/os-release; there is at least one test

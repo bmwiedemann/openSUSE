@@ -41,7 +41,8 @@ echo -e "\nWelcome to Dummy Product - Kernel \\\r (\\\l).\n\n" > $RPM_BUILD_ROOT
 echo -e "Welcome to Dummy Product (%{_target_cpu}) - Kernel %%r (%%t)." > $RPM_BUILD_ROOT/etc/issue.net
 touch $RPM_BUILD_ROOT/etc/motd
 
-echo 'NAME=Dummy' > $RPM_BUILD_ROOT/etc/os-release
+echo 'NAME="openSUSE Dummy"' > $RPM_BUILD_ROOT/etc/os-release
+echo 'PRETTY_NAME="openSUSE Dummy"' >> $RPM_BUILD_ROOT/etc/os-release
 echo 'ID="suse"' >> $RPM_BUILD_ROOT/etc/os-release
 echo 'ID_LIKE="suse"' >> $RPM_BUILD_ROOT/etc/os-release
 echo 'VERSION_ID="Dummy"' >> $RPM_BUILD_ROOT/etc/os-release
