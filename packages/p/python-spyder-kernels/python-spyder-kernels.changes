@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr  9 22:17:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.3.0
+  * Add new handler to detect the current Matplotlib interactive
+    backend.
+  * Increase minimal required version of ipykernel to 6.9.2, by
+    @ccordoba12
+  * Handle getting dasks objects size, by @dalthviz
+  * Add new handler to detect the current Matplotlib interactive
+    backend, by @ccordoba12
+  * Remove support for outdated and unused Matplotlib backends, by
+    @ccordoba12
+  * Catch FileNotFoundError when trying to get file code from the
+    frontend, by @ccordoba12
+  * Increase minimal required IPython version to 7.31.1, by
+    @ccordoba12 (344)
+  * Avoid modifying the namespace view settings by reference, by
+    @impact27 (320)
+  * Fix issues when debugging comprehensions, by @impact27 (371)
+  * Leave unsaved files in linecache, by @impact27
+  * Print last line of Pdb code and some debugger fixes, by
+    @impact27 (330)
+
+-------------------------------------------------------------------
 Fri Jan 21 19:34:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.2.1
