@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Apr 11 08:03:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Disable PyQt6-WebEngine tests for 32-bit platforms
+  * QtWebEngine 6.3.0 disabled 32-bit support
+  * Needs multibuild flavor for platform specific conditions
+
+-------------------------------------------------------------------
+Sat Apr  9 20:48:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  * PR: Add missing imports in QtOpenGL by @renefritze in #307
+  * PR: Add missing QtGui utility function to QtCore.Qt for PySide
+    bindings by @dalthviz in #313
+  * PR: Add mapping for missing enum values aliases on QtCore.Qt by
+    @dalthviz in #314
+  * PR: Fix mappings of instance method and slot alias (PyQt6 and
+    PySide6) by @kumattau in #308
+  * PR: Add QtCharts alias for backward compatibility with 1.x by
+    @dalthviz in #315
+  * PR: Promote enum aliases by @MatthieuDartiailh in #319
+  * PR: Add missing tests for aliased methods by @dalthviz in #317
+- Release 2.0.0
+  * PR: Add support for PySide6 by @jschueller in #225
+  * PR: Add QShortcut class to QtWidgets module by @kumattau in
+    #254
+  * PR: Remove Qt4 support by @jschueller in #252
+  * PR: Drop Python 2 by @dalthviz in #251
+  * PR: Fix fallback API by @benoit-pierre in #256
+  * PR: Add additional Qt modules and more support and tests for
+    PyQt6/PySide6 by @jschueller in #255
+  * PR: Reorganize QtCharts module import and add missing skip
+    validation for QtNetworkAuth test with PyQt6 by @dalthviz in
+    #260
+  * PR: [PyQt6] Add exec_/print_, and add QOpenGLWidget/QShortcut
+    to QtWidgets by @kumattau in #259
+  * PR: Remove accidentally-duplicated lines of code in QtCore by
+    @kumattau in #263
+  * PR: [PyQt6] Add missing tabStopWidth/setTabStopWidth same as
+    PySide6 by @kumattau in #264
+  * PR: Use modern packaging instead of deprecated distutils for
+    version parse by @CAM-Gerlach in #266
+  * PR: Unify and cleanup CI infra, improve robustness and test
+    Python 3.9 and PyQt6 by @CAM-Gerlach in #262
+  * PR: Fix and improve Coveralls reporting by @CAM-Gerlach in #268
+  * PR: Avoid future deprecations and decrease general technical
+    debt by @CAM-Gerlach in #273
+  * PR: Fix regression in FORCE_QT_API behavior from merging
+    PySide6 support by @tlambert03 in #276
+  * PR: Add back legacy PYQT4 and PYSIDE package-level constants
+    for compat by @CAM-Gerlach in #279
+  * PR: Add Contributing Guide based on other Spyder projects by
+    @CAM-Gerlach in #277
+  * PR: Update README sponsors section by @dalthviz in #282
+  * PR: Unscoped enums access for PyQt6 and other missing PyQt6
+    compatibility changes by @dalthviz in #271
+  * PR: Upgrade packaging to avoid legacy/deprecated behavior and
+    follow PEP 517 by @CAM-Gerlach in #272
+  * PR: Map exec_ to their non-deprecated alternatives by @kumattau
+    in #287
+  * PR: Add QtTextToSpeech Module by @kumattau in #291
+  * PR: Import all classes in QtTest module. by @kumattau in #290
+  * PR: Define Qt/binding versions at top level, fix warnings if
+    versions not found, and fix test dir on CIs by @CAM-Gerlach in
+    #292
+  * PR: Update gitignore, gitattributes, license, authors and
+    security policy by @CAM-Gerlach in #278
+  * PR: Add minimum version check for Qt6 >=6.2.0 by @CAM-Gerlach
+    in #294
+  * PR: Add support for Python 3.10 on CIs and packaging by
+    @CAM-Gerlach in #296
+  * PR: Make QLibraryInfo.location work for PyQt6 by @stonebig in
+    #298
+  * PR: 'width' needed for PyQt6 by @stonebig in #299
+  * PR: Update README.md adding a line for QtPy usefulness when
+    migrating between Qt bindings/versions by @dalthviz in #301
+  * PR: Fix QFileSystemModel for PyQt6 by @almarklein in #303
+- Release 1.11.3
+  * PR: Catch PythonQtError when trying to do alias for
+    QtDataVisualization and dev version correction by @dalthviz in
+    #281
+  * PR: Add a warning for developers still running legacy Qt4-based
+    APIs by @CAM-Gerlach in #283
+  * PR: Import Callable and MutableMapping in py3compat for Python
+    2 compat by @davvid in #285
+  * PR: Add warning for deprecated/EoL Qt5 & PyQt5/PySide2 versions
+    to fix #284 by @CAM-Gerlach in #289
+  * PR: Update RELEASE.md for 1.x version by @dalthviz in #293
+- Release 1.11.2
+  * Issue 248 - Missing QtDataVisualization (PR 249 by @dalthviz)
+
+-------------------------------------------------------------------
 Tue Sep 14 11:06:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.11.1

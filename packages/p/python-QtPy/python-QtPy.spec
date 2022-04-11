@@ -1,7 +1,7 @@
 #
-# spec file for package python-QtPy
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,77 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
-Name:           python-QtPy
-Version:        1.11.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+BuildArch:      noarch
+%endif
+%bcond_without pyqt5
+%bcond_without pyqt6
+%ifnarch %power64 s390x
+%bcond_without pyside2
+%else
+%bcond_with pyside2
+%endif
+# unfortunately we get a segfault in the other backends when pyside6 is installed at the same time (!?)
+%bcond_with pyside6
+
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+Name:           python-QtPy%{psuffix}
+Version:        2.0.1
 Release:        0
 Summary:        Abstraction layer on top of Qt bindings
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/qtpy
 Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/QtPy-%{version}.tar.gz
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging
 # Note: Don't add any Requires, Recommends, or Suggests here,
 # because we need to minimize the space occupied on the
 # Tumbleweed DVD. The application importing QtPy will have to
 # know what backend to recommend and what extras to require (e.g.
 # qtwebengine). Note that setup.py does not declare any requirements,
-# either.
-BuildArch:      noarch
-# SECTION test requirements
-%if %{with python2}
-BuildRequires:  python2-mock
-%endif
-BuildRequires:  %{python_module pytest}
+# in this regard either.
+%if %{with test}
+BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module pytest-qt}
+%if %{with pyqt5}
 BuildRequires:  %{python_module qt3d-qt5}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module qtcharts-qt5}
 BuildRequires:  %{python_module qtdatavis3d-qt5}
+%ifnarch %{power64} s390x
 BuildRequires:  %{python_module qtwebengine-qt5}
+%endif
+%endif
+%if %{with pyqt6}
+BuildRequires:  %{python_module PyQt6-3D}
+BuildRequires:  %{python_module PyQt6-Charts}
+BuildRequires:  %{python_module PyQt6-DataVisualization}
+BuildRequires:  %{python_module PyQt6}
+BuildRequires:  qt6-sql-sqlite
+%ifnarch %{ix86} %{arm} %{power64} s390x
+# QtWebEngine 6.3.0 ceased support for 32-bit
+BuildRequires:  %{python_module PyQt6-WebEngine}
+%endif
+%endif
+%if %{with pyside2}
 BuildRequires:  python3-pyside2
-BuildRequires:  xvfb-run
-# /SECTION
+%endif
+%if %{with pyside6}
+BuildRequires:  python3-pyside6
+BuildRequires:  qt6-sql-sqlite
+%endif
+%endif
 %python_subpackages
 
 %description
@@ -65,40 +103,64 @@ modules from qtpy instead of PySide2 (or PyQt5)
 %setup -q -n QtPy-%{version}
 # wrong EOL encondig
 sed -i 's/\r$//' LICENSE.txt *.md
-# remove mock dependency for Python 3
-sed -i '/^import mock/ c try:\
-    from unittest import mock\
-except ImportError:\
-    import mock' qtpy/tests/test_macos_checks.py
-# qtcharts is present in our PyQt5 and Pyside2
+# qtcharts is present in our PyQt
 sed -i '/skipif.*not PYSIDE2/ d' qtpy/tests/test_qtcharts.py
-# remove script calling pytest so that pytest does not discover it
-rm qtpy/tests/runtests.py
 
 %build
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export QT_HASH_SEED=0
-export PYTHONDONTWRITEBYTECODE=1
+export QT_QPA_PLATFORM="offscreen"
 mkdir empty
 pushd empty
-%{python_expand # pytest-xvfb unfortunately fails here
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-xvfb-run --server-args="-screen 0 1920x1080x24" pytest-%{$python_bin_suffix} -rwEfs -v ../qtpy/tests/
-}
+%ifarch %{arm} aarch64
+# no QtOpenGL for these platforms
+donttest=" or test_qtopengl"
+%endif
+%if %{with pyqt5}
+# no QtSensors in our PyQt5
+donttest_pyqt5=" or test_qtsensors"
+%ifarch %{power64} s390x
+# No QtWebengine on ppc and s390x
+donttest_pyqt5="${donttest_pyqt5} or test_qtwebengine or test_qt_api"
+%endif
+export QT_API=pyqt5 FORCE_QT_API=1
+%pytest -rwEfs -v ../qtpy/tests/ -k "not (dummyprefix $donttest $donttest_pyqt5)"
+%endif
+%if %{with pyqt6}
+%ifarch %{ix86} %{arm} %{power64} s390x
+# QtWebEngine 6.3.0 ceased support for 32-bit
+# No QtWebengine (PyQt5 or PyqQt6 on ppc and s390x
+donttest_pyqt6=" or test_qtwebengine"
+%endif
+export QT_API=pyqt6 FORCE_QT_API=1
+%pytest -rwEfs -v ../qtpy/tests/ -k "not (dummyprefix $donttest $donttest_pyqt6)"
+%endif
+%if %{with pyside2}
 export QT_API=pyside2 FORCE_QT_API=1
-xvfb-run --server-args="-screen 0 1920x1080x24" pytest-%{python3_bin_suffix} -rwEfs -v ../qtpy/tests/
+pytest-%{python3_bin_suffix} -rwEfs -v ../qtpy/tests/ -k "not (dummyprefix $donttest)"
+%endif
+%if %{with pyside6}
+export QT_API=pyside6 FORCE_QT_API=1
+pytest-%{python3_bin_suffix} -rwEfs -v ../qtpy/tests/ -k "not (dummyprefix $donttest)"
+%endif
 popd
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %doc AUTHORS.md CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/qtpy
-%{python_sitelib}/QtPy-%{version}-py*.egg-info
+%{python_sitelib}/QtPy-%{version}*-info
+%endif
 
 %changelog
