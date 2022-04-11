@@ -1,7 +1,7 @@
 #
 # spec file for package opa-fmgui
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,84 +13,76 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define git_ver %{nil}
-
 %define name opa-fmgui
 %define appdir .
 %define appfolder opa-fmgui
 %define appjar opa-fmgui.jar
 %define _binary_payload w9.gzdio
 %define gradle_version	4.10.2
-
 Name:           opa-fmgui
 Version:        10.1.0.0.115
 Release:        0
 Summary:        Fabric Manager Graphical User Interface
 License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
-Url:            http://www.intel.com/
+URL:            https://www.intel.com/
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        antlr-2.7.7.jar
 Source2:        dom4j-1.6.1.jar
-# Source3:        gritty.jar
-Source4:        hibernate-commons-annotations-4.0.4.Final.jar
-Source5:        hibernate-core-4.3.5.Final.jar
-Source6:        hibernate-entitymanager-4.3.5.Final.jar
-Source7:        hibernate-jpa-2.1-api-1.0.0.Final.jar
-Source8:        hsqldb-2.3.2.jar
-Source9:        jandex-1.1.0.Final.jar
-Source10:       javahelp-2.0.05.jar
-Source11:       javassist-3.18.1-GA.jar
+Source3:        hibernate-commons-annotations-4.0.4.Final.jar
+Source4:        hibernate-core-4.3.5.Final.jar
+Source5:        hibernate-entitymanager-4.3.5.Final.jar
+Source6:        hibernate-jpa-2.1-api-1.0.0.Final.jar
+Source7:        hsqldb-2.3.2.jar
+Source8:        jandex-1.1.0.Final.jar
+Source9:        javahelp-2.0.05.jar
+Source10:       javassist-3.18.1-GA.jar
+Source11:       javax.activation-api-1.2.0.jar
 Source12:       javax.mail-1.5.2.jar
-Source13:       jboss-logging-3.1.3.GA.jar
-Source14:       jboss-logging-annotations-1.2.0.Beta1.jar
-Source15:       jboss-transaction-api_1.2_spec-1.0.0.Final.jar
-Source16:       jcommon-1.0.21.jar
-Source17:       jfreechart-1.0.17.jar
-Source18:       jgraphx-3.6.0.0.jar
-Source19:       jsch-0.1.53.jar
-Source20:       log4j-1.2.14.jar
+Source13:       jaxb-api-2.3.1.jar
+Source14:       jboss-logging-3.1.3.GA.jar
+Source15:       jboss-logging-annotations-1.2.0.Beta1.jar
+Source16:       jboss-transaction-api_1.2_spec-1.0.0.Final.jar
+Source17:       jcommon-1.0.21.jar
+Source18:       jfreechart-1.0.17.jar
+Source19:       jgraphx-3.6.0.0.jar
+Source20:       jsch-0.1.53.jar
 Source21:       log4j-over-slf4j-1.7.7.jar
 Source22:       logback-classic-1.1.2.jar
 Source23:       logback-core-1.1.2.jar
 Source24:       mbassador-1.2.4.2.jar
-Source25:       slf4j-api-1.7.7.jar
-Source26:       swingx-all-1.6.5.jar
-Source27:       swingx-action-1.6.5.jar
-Source28:       swingx-autocomplete-1.6.5.jar
-Source29:       swingx-beaninfo-1.6.5.jar
-Source30:       swingx-common-1.6.5.jar
-Source31:       swingx-core-1.6.5.jar
-Source32:       swingx-graphics-1.6.5.jar
-Source33:       swingx-mavensupport-1.6.5.jar
-Source34:       swingx-painters-1.6.5.jar
-Source35:       swingx-plaf-1.6.5.jar
-Source36:       swingx-testsupport-1.6.5.jar
-Source37:       gradle-%{gradle_version}-bin.zip
-
-Patch1:         gradle-use_local_repo.patch
-Patch3:         opa-fmgui-intel-manifest-license.patch
+Source25:       reload4j-1.2.20.jar
+Source26:       slf4j-api-1.7.7.jar
+Source27:       swingx-all-1.6.5.jar
+Source28:       swingx-action-1.6.5.jar
+Source29:       swingx-autocomplete-1.6.5.jar
+Source30:       swingx-beaninfo-1.6.5.jar
+Source31:       swingx-common-1.6.5.jar
+Source32:       swingx-core-1.6.5.jar
+Source33:       swingx-graphics-1.6.5.jar
+Source34:       swingx-mavensupport-1.6.5.jar
+Source35:       swingx-painters-1.6.5.jar
+Source36:       swingx-plaf-1.6.5.jar
+Patch0:         opa-fmgui-intel-manifest-license.patch
 # Patch auto extracted by service
-Patch5:         stl-14927-jgraphx-update.patch
-Patch6:         manifest-version.patch
-Patch7:         opa-fmgui-fix-build-for-JDK9-Gradle-3.2.patch
-Patch8:         opa-fmgui-force-loading-java.xml.bind-for-JDK9.patch
-
+Patch1:         stl-14927-jgraphx-update.patch
+Patch2:         manifest-version.patch
+Patch3:         opa-fmgui-fix-build-for-JDK9-Gradle-3.2.patch
 BuildRequires:  ant
-BuildRequires:  jre >= 1.7
-Requires:       jre >= 1.7
-Requires:       mlocate
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  java-devel >= 1.7
 BuildRequires:  openssl
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wget
+Requires:       jre >= 1.7
+Requires:       mlocate
 # BuildRequires:  gradle
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -98,19 +90,23 @@ FMGUI is the Fabric Manager Graphical User Interface.  It can be run by invoking
 script fmgui.
 
 %prep
-%setup -q -n  %{name}-%{version}%{git_ver}
+%setup -q -n %{name}-%{version}%{git_ver}
+%patch0 -p1
 %patch1 -p1
-%patch3 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7
-%patch8
+%patch2 -p1
+%patch3
 
 %build
-(cd %{_tmppath}; rm -Rf gradle-%{gradle_version}; unzip %{_sourcedir}/gradle-%{gradle_version}-bin.zip)
-GRADLE_LIB_DIR=%{_sourcedir}
-export GRADLE_LIB_DIR
-%{_tmppath}/gradle-%{gradle_version}/bin/gradle copyDeps buildOPA --info
+mkdir -p lib
+cp %{_sourcedir}/*.jar lib/
+
+pushd gritty
+mkdir -p classes
+javac -d classes -source 8 -target 8 -cp %{SOURCE20}:%{SOURCE25} $(find . -name \*.java | xargs)
+jar -cf ../lib/gritty.jar -C classes .
+popd
+
+%{ant}
 
 %install
 mkdir -p %{buildroot}%{_javadir}/%{appfolder}
@@ -163,7 +159,6 @@ rm %{buildroot}/fmgui.desktop
 %icon_theme_cache_postun
 
 %files
-%defattr(-,root,root,-)
 %doc README THIRD-PARTY-README Third_Party_Copyright_Notices_and_Licenses
 %license LICENSE gritty/gritty_license.txt
 %dir %{_sysconfdir}/xdg/menus
