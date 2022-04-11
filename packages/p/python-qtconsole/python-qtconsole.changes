@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  9 22:04:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.3.0
+  * Add support for PyQt6.
+  * Don't show spurious blank lines when running input statements.
+  * Fix showing Latex images with dark background colors.
+  * Drop support for Python 3.6
+
+-------------------------------------------------------------------
 Thu Feb  3 20:28:52 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
