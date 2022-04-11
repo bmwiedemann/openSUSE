@@ -35,6 +35,7 @@ BuildRequires:  mvn(com.lmax:disruptor)
 BuildRequires:  mvn(com.sun.mail:javax.mail)
 BuildRequires:  mvn(commons-logging:commons-logging)
 BuildRequires:  mvn(jakarta.servlet:jakarta.servlet-api)
+BuildRequires:  mvn(javax.activation:javax.activation-api)
 BuildRequires:  mvn(org.apache.commons:commons-compress)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging:logging-parent:pom:)
@@ -159,6 +160,8 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_remove_dep -r :jeromq
 %pom_remove_dep -r :commons-csv
 
+%pom_add_dep javax.activation:javax.activation-api %{name}-core
+
 rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/{jackson,config/yaml,parser}
 rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/{db,mom,nosql}
 rm log4j-core/src/main/java/org/apache/logging/log4j/core/layout/*{Csv,Jackson,Xml,Yaml,Json,Gelf}*.java
@@ -183,7 +186,7 @@ rm -r log4j-1.2-api/src/main/java/org/apache/log4j/or/jms
 %{mvn_build} -f -- -Dsource=8
 
 %install
-%{mvn_install}
+%mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
