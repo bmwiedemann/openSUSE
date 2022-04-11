@@ -1,7 +1,7 @@
 #
 # spec file for package nbd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           nbd
-Version:        3.23
+Version:        3.24
 Release:        0
 Summary:        Network Block Device Server and Client Utilities
 License:        GPL-2.0-or-later
@@ -128,12 +128,14 @@ fi
 %{_sbindir}/nbd-client
 %{_bindir}/nbd-server
 %{_bindir}/nbd-trdump
+%{_bindir}/nbd-trplay
 %{_sbindir}/min-nbd-client
 %{_sbindir}/rcnbd-server
 %{_unitdir}/%{name}@.service
 %{_unitdir}/%{name}-server.service
 %{_mandir}/man1/nbd-server.1%{?ext_man}
 %{_mandir}/man1/nbd-trdump.1%{?ext_man}
+%{_mandir}/man1/nbd-trplay.1%{?ext_man}
 %{_mandir}/man5/nbd-server.5%{?ext_man}
 %{_mandir}/man8/nbd-client.8%{?ext_man}
 %{_mandir}/man5/nbdtab.5%{?ext_man}
