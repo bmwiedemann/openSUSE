@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>863630</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2526d73f5d6ba75d861f6de121f9a9eb</srcmd5>
+    <version>2.4.0</version>
+    <time>1649713754</time>
+    <user>dimstar_suse</user>
+    <comment>Added ltfat-sourcetarget.patch
+ </comment>
+    <requestid>969158</requestid>
+  </revision>
 </revisionlist>

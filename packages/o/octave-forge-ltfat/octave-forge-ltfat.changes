@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  8 14:01:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * ltfat-sourcetarget.patch
+    + build with java source and target levels 8
+    + fixes build in Factory
+
+-------------------------------------------------------------------
 Sat Jan  9 11:48:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add ltfat-nsdgt_m-syntax-error.patch: Fix syntax error in

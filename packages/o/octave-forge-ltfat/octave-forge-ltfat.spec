@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-ltfat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,13 @@ URL:            https://octave.sourceforge.io/%{octpkg}/index.html
 Source0:        https://github.com/ltfat/ltfat/releases/download/2.4.0/ltfat-2.4.0-of.tar.gz
 # PATCH-FIX-UPSTREAM ltfat-nsdgt_m-syntax-error.patch gh#ltfat/ltfat#115 badshah400@gmail.com -- Fix syntax error in nsdgt.m to build against octave >= 6; patch taken from upstream git commit
 Patch0:         ltfat-nsdgt_m-syntax-error.patch
+Patch1:         ltfat-sourcetarget.patch
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  lapack-devel
 BuildRequires:  octave-devel
 BuildRequires:  portaudio-devel
