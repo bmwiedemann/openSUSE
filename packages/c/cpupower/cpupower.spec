@@ -1,8 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2021 SUSE LLC
-# Author: Thomas Renninger <trenn@suse.de>
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define maindir tools/power/cpupower
 %define tsdir tools/power/x86/turbostat
 %define pbdir tools/power/x86/x86_energy_perf_policy
 %define ssdir tools/power/x86/intel-speed-select
-
-Name:           cpupower
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
+Name:           cpupower
 Version:        %{version}
 Release:        0
 Summary:        Tools to determine and set CPU Power related Settings
@@ -34,8 +33,8 @@ Patch1:         cpupower_rapl.patch
 Patch2:         rapl_monitor.patch
 Patch3:         cpupower_exclude_kernel_Makefile.patch
 Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
-BuildRequires:  kernel-source
 BuildRequires:  gettext-tools
+BuildRequires:  kernel-source
 BuildRequires:  libcap-devel
 BuildRequires:  pciutils
 BuildRequires:  pciutils-devel
@@ -72,13 +71,24 @@ governor (e.g. ondemand, userspace, conservative) and the cpufreq HW driver
 For that purpose, it compares the performance governor to a configured
 powersave module.
 
+%package rebuild
+Summary:        Empty package to ensure rebuilding cpupower in OBS
+Group:          System/Monitoring
+%requires_eq    kernel-source
+
+%description rebuild
+This is empty package that ensures cpupower is rebuilt every time
+kernel-default is rebuilt in OBS.
+
+There is no reason to install this package.
+
 %lang_package
 
 %prep
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
 chmod +x tools/power/cpupower/utils/version-gen.sh
-cd %maindir
+cd %{maindir}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -146,5 +156,8 @@ mv %{buildroot}//%{_docdir}/%{name}/cpufreq-bench_script.sh %{buildroot}/%{_docd
 %{_libdir}/libcpu*.so
 
 %files lang -f %{name}.lang
+
+%files rebuild
+%license COPYING
 
 %changelog

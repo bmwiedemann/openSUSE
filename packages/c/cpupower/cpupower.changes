@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  8 14:57:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add rebuild subpackage to trigger rebuild on kernel updates 
+
+-------------------------------------------------------------------
 Fri Feb 18 15:56:24 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to building the package from kernel-source based on
