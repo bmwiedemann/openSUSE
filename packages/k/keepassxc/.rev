@@ -377,4 +377,12 @@
     <comment>- Update to 2.7.0</comment>
     <requestid>964738</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ae0a7831b988c43346d21d125898fe5e</srcmd5>
+    <version>2.7.1</version>
+    <time>1649713737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968371</requestid>
+  </revision>
 </revisionlist>

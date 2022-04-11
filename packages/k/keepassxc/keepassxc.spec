@@ -22,7 +22,7 @@
 %bcond_with    cmake_macros
 %endif
 Name:           keepassxc
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only

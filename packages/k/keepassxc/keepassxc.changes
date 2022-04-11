@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr  9 11:36:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * Show when tags are changed in entry history
+  * Improve tags editing and allow spaces in tags
+  * Improve layout of entry preview panel
+  * Incorporate patches to support Flatpak distribution
+  * Add expiration presets for 12 and 24 hours
+  * Fix crash when building history change list
+  * Fix hiding password on database unlock
+  * Fix AES KDF slow transform speed
+  * Auto-Type: Correct timing issue on macOS and Linux that prevented typing
+  * Auto-Type: Fix use of Ctrl/Alt/Shift/Win modifiers on Windows
+  * Auto-Type: Reduce/eliminate delay when searching for entries
+  * Auto-Type: Map ASCII dead keys on Linux for international keyboards
+  * CLI: Fix detection of hardware keys (YubiKey)
+  * CLI: Add missing parameter -c to add/edit entries command
+  * Secret Service: Fix crash when multiple prompts are shown
+  * SSH Agent: Fix default agent selection on Windows
+  * Fix database unlock dialog not being the top window on Linux
+  * Fix drag/drop entries between tabs on Wayland
+  * Fix compiling with minizip-ng 
+
+-------------------------------------------------------------------
 Thu Mar 24 21:30:20 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.7.0
