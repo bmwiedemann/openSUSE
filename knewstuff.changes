@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Fix problems renaming a temporary file on Windows
+  * Installation: don't let QTemporaryFile delete the file before using it
+  * Do not set user-visible name as additional agent information when copying provider
+  * Do not set user-visible name as additional agent information (kde#451165)
+  * Engine: Default to autoconfig.kde.org for reading ProvidersUrl
+  * Port to ECMQmlModule
+  * Fix close button for NewStuff.Dialog not existing on X11 (kde#437653)
+  * Fix certain tars not being recognized as valid archives (kde#450662)
+- Drop patch, now upstream:
+  * 0001-Do-not-set-user-visible-name-as-additional-agent-inf.patch
+
+-------------------------------------------------------------------
 Mon Mar 28 14:45:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream fix (kde#451165):

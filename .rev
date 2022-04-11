@@ -811,4 +811,12 @@
   * 0001-Do-not-set-user-visible-name-as-additional-agent-inf.patch</comment>
     <requestid>965488</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>62e60ed4b322e3cd0349f73198df41c6</srcmd5>
+    <version>5.93.0</version>
+    <time>1649713642</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.93.0</comment>
+    <requestid>968180</requestid>
+  </revision>
 </revisionlist>
