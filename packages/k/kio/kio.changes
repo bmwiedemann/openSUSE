@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Fix KRecentDocumentTest
+  * fix reading wrong integer type from config (kde#452048)
+  * Add Yandex search keywords
+  * [KFilePlacesView] Don't append "(hidden)" to disappearing groups
+  * Don't use KCrash on Android, currently not used there
+  * KOpenWithDialog: alternative fix for the sort filter model regex
+  * Introduce KCoreUrlNavigator
+  * filewidgets: Auto-select filename before extension in filename dialog
+  * Add support in krecentdocument to add to recently-used.xbel
+  * [KFilePlacesView] Drop now unused placeEntered/Left handling
+  * [KFilePlacesView] Show free space as permanent thin line
+  * include QStandardPaths
+  * autotests: port kdirmodeltest to QSignalSpy::wait
+  * KRecentDocuments: don't save history for hidden files by default
+  * KUrlNavigator: don't force LtR
+  * [KPropertiesDialog] Use PlainText format for most labels
+  * autotests: use temp dir to avoid issues with parallel tests
+  * KFileItem: protect againt ' ' passed mimeType
+  * KFileItem: use passed mimeType to determine isDir
+  * KOpenWithDialog: Include arguments in name when writing a new desktop file
+  * Add Android to the list of supported platforms
+  * [KPropertiesDialog] Make read-only filename label selectable by mouse
+  * [KFilePlacesModel] Improve outcome of dropped places
+  * Add autotest for KDirLister::setMimeFilter
+  * [ftp] Simplify code
+
+-------------------------------------------------------------------
 Mon Mar  7 09:27:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
