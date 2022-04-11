@@ -17,7 +17,7 @@
 
 
 Name:           xtables-addons
-Version:        3.19
+Version:        3.20
 Release:        0
 Summary:        IP Packet Filter Administration Extensions
 License:        GPL-2.0-only AND GPL-2.0-or-later
