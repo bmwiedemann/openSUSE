@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20220222
+Version:        20220409
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -173,8 +173,10 @@ tee %buildroot%_rpmmacrodir/macros.%name <<'_EOF_'
 %endif
 	  test -f "${license}" && echo "%%%%${license_macro} ${license}" >> '%%name.files.license' ;\
 	done ;\
-	find %%buildroot%%ocaml_standard_library -name '*.cmxs' -exec chmod -v a-x '{}' + ;\
-	find %%buildroot%%ocaml_standard_library ! -type d | awk\\\
+	if test -d %%buildroot%%ocaml_standard_library ;\
+	then\
+		find %%buildroot%%ocaml_standard_library -name '*.cmxs' -exec chmod -v a-x '{}' + ;\
+		find %%buildroot%%ocaml_standard_library ! -type d | awk\\\
 		-v "buildroot=%%buildroot"\\\
 		-v "ocaml_standard_library=%%ocaml_standard_library"\\\
 		-v "out_files_main=%%name.files"\\\
@@ -341,6 +343,7 @@ tee %buildroot%_rpmmacrodir/macros.%name <<'_EOF_'
 	END {\
 	;\
 	}' ;\
+	fi ;\
 	cat '%%name.files.changes' >> '%%name.files' ;\
 	cat '%%name.files.license' >> '%%name.files' ;\
 	if test -s %%name.files.ldsoconf ;\
@@ -424,7 +427,6 @@ ocaml setup.ml -configure \\\
 %%ocaml_oasis_test \
 	ocaml setup.ml -test
 #
-%%ocaml_dune_bootstrap_directory %%_libexecdir/dune-bootstrap
 %%ocaml_dune_setup \
 %ifarch ppc64 ppc64le
 	ulimit -s $((1024 * 64)) ; \
@@ -460,9 +462,10 @@ ocaml setup.ml -configure \\\
 		echo "${dune_release_pkgs}" > dune_release_pkgs-%%name-%%version-%%release ; \
 		dune_for_release="--for-release-of-packages=${dune_release_pkgs}" ; \
 	fi ; \
-	dune installed-libraries $OCAML_DUNE_INSTALLED_LIBRARIES_ARGS ; \
 	%%nil
 %%ocaml_dune_build \
+	dune --version ; \
+	dune installed-libraries $OCAML_DUNE_INSTALLED_LIBRARIES_ARGS ; \
 	if test -z "${_smp_mflags}" ;\
 	then \
 		_smp_mflags='%%{?_smp_mflags}' ;\

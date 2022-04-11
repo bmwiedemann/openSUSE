@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  9 12:34:56 UTC 2022 - ohering@suse.de
+
+- remove unused ocaml_dune_bootstrap_directory
+- move all invocations of dune from ocaml_dune_setup to ocaml_dune_build
+- process content of ocaml_standard_library only if it exists in buildroot
+
+-------------------------------------------------------------------
 Tue Feb 22 22:22:22 UTC 2022 - ohering@suse.de
 
 - remove usage of external-lib-deps for dune3

@@ -179,4 +179,14 @@ trim changes file</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>964736</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f9a37162ccbc88067cd0774eb1a264f7</srcmd5>
+    <version>20220409</version>
+    <time>1649715233</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unused ocaml_dune_bootstrap_directory
+- move all invocations of dune from ocaml_dune_setup to ocaml_dune_build
+- process content of ocaml_standard_library only if it exists in buildroot</comment>
+    <requestid>968054</requestid>
+  </revision>
 </revisionlist>
