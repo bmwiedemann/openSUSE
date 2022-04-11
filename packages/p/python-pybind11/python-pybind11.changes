@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr  9 22:47:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.2:
+  * Enum now has an ``__index__`` method on Python <3.8 too.
+  * Local internals are now cleared after finalizing the interpreter.
+  * Better support for Python 3.11 alphas.
+  * ``PYBIND11_TYPE_CASTER`` now uses fully qualified symbols, so it can be used
+    outside of ``pybind11::detail``.
+  * Some fixes for PyPy 3.9.
+  * Fixed a potential memleak in PyPy in ``get_type_override``.
+  * Fix usage of ``VISIBILITY_INLINES_HIDDEN``.
+  * Uses ``sysconfig`` module to determine installation locations on Python >=
+    3.10, instead of ``distutils`` which has been deprecated.
+  * Support Catch 2.13.5+ (supporting GLIBC 2.34+).
+  * Fix test failures with numpy 1.22 by ignoring whitespace when comparing
+    ``str()`` of dtypes.
+
+-------------------------------------------------------------------
 Sun Mar 27 15:11:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.1:

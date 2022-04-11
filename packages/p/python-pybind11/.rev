@@ -163,4 +163,25 @@
   * Tweaks to support Microsoft Visual Studio 2022.</comment>
     <requestid>965219</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c21f382dd74ceb0a86a6d312ded12df5</srcmd5>
+    <version>2.9.2</version>
+    <time>1649715234</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.2:
+  * Enum now has an ``__index__`` method on Python &lt;3.8 too.
+  * Local internals are now cleared after finalizing the interpreter.
+  * Better support for Python 3.11 alphas.
+  * ``PYBIND11_TYPE_CASTER`` now uses fully qualified symbols, so it can be used
+    outside of ``pybind11::detail``.
+  * Some fixes for PyPy 3.9.
+  * Fixed a potential memleak in PyPy in ``get_type_override``.
+  * Fix usage of ``VISIBILITY_INLINES_HIDDEN``.
+  * Uses ``sysconfig`` module to determine installation locations on Python &gt;=
+    3.10, instead of ``distutils`` which has been deprecated.
+  * Support Catch 2.13.5+ (supporting GLIBC 2.34+).
+  * Fix test failures with numpy 1.22 by ignoring whitespace when comparing
+    ``str()`` of dtypes.</comment>
+    <requestid>968080</requestid>
+  </revision>
 </revisionlist>
