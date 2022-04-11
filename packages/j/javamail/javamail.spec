@@ -53,6 +53,8 @@ Group:          Documentation/HTML
 %setup -q -n %{name}-%{git_tag}
 %patch0 -p1
 
+%pom_change_dep -r -f ::::: :::::
+
 add_dep() {
     %pom_xpath_inject pom:project "<dependencies/>" ${2}
     %pom_add_dep com.sun.mail:${1}:%{version}:provided ${2}
@@ -80,6 +82,10 @@ rm mail/src/test/java/com/sun/mail/imap/IMAPIdleUntaggedResponseTest.java
 rm mail/src/test/java/com/sun/mail/smtp/SMTPWriteTimeoutTest.java
 
 %pom_remove_parent .
+for i in mail mailapi mailapijar smtp imap gimap pop3 dsn; do
+  %pom_remove_parent ${i};
+  %pom_xpath_inject pom:project "<version>%{version}</version>" ${i}
+done
 
 %build
 %{ant} -Djavac.source=1.8 -Djavac.target=1.8 \

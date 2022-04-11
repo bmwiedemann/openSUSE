@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  9 14:24:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Remove all parents, since this package is not built with maven
+- Assure that every dependency has a version, or at least "any"
+  * fixes use with gradle
+
+-------------------------------------------------------------------
 Wed Mar 30 10:19:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules inconditionally
