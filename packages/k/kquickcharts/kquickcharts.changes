@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Add Android, Windows and MacOS to supported platforms
+  * Correct install location for ecm_finalize_qml_module()
+  * cmake: Use the right path to find ECMFindQmlModule.cmake
+  * Don't crash if we have no qmlContext for a deprecated object
+  * Use the right path when including ECMFindQmlModule in CMake package config
+  * Fix punctuation/whitespace of runtime rate-limited deprecation warnings
+  * Don't add module-uri based path to finalize_qml_module
+  * Don't use CMake exports for things that aren't really exported
+  * Port controls module to use ECMQmlModule
+  * Port main module to use ECMQmlModule
+
+-------------------------------------------------------------------
 Mon Mar  7 09:27:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
