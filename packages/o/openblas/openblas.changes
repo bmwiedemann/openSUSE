@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  9 06:13:09 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix issues in update paths from earlier versions introduced by
+  recent structural changes (bsc#1198264):
+  - Add Obsoletes for old package names
+  - Handle the change from directories to soft links properly
+
+-------------------------------------------------------------------
 Wed Apr  6 06:57:55 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Also build for s390x using latest gcc as requested by IBM

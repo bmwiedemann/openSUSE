@@ -251,7 +251,10 @@ Requires:       lib%{name}%{?so_v} = %{version}
 %if %{without hpc}
 Requires:       %{pname}-common-devel = %{version}
 %if 0%{?arch_flavor}
-Provides:       %{pname}-devel
+Provides:       %{pname}-devel = %version
+Provides:       %{pname}-devel(default) = %version
+%else
+Provides:       %{pname}-devel(other) = %version
 %endif
 %else
 %hpc_requires_devel
@@ -277,8 +280,11 @@ This package contains the static libraries.
 %package      -n %{pname}-common-devel
 Summary:        Development headers and libraries for OpenBLAS
 Group:          Development/Libraries/C and C++
-Provides:       %{pname}-devel-headers
-Provides:       pkgconfig(openblas)
+Requires:       (%{pname}-devel(default) or %{pname}-devel(other))
+Obsoletes:      %{pname}-devel < %version
+Obsoletes:      %{pname}-devel-headers < %version
+Provides:       %{pname}-devel-headers = %version
+Provides:       pkgconfig(openblas) = %version
 
 %description  -n %{pname}-common-devel
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
@@ -476,6 +482,12 @@ EOF
 
 %if %{without hpc}
 
+# Ensure directory used in older versions are replaced by symlink properly
+%pre -n %{pname}-common-devel
+d=%{_libdir}/cmake/openblas
+[ -d $d -a ! -L $d -a "$(rpm -q --qf '%%{NAME}' -f $d 2>/dev/null)" = "openblas-devel" ] \
+    && { n=$(mktemp -d $(dirname $d)/tmpd-XXXXX); mv $d $n; rm -rf $n; } || true
+
 %post -n lib%{name}%{so_v}
 %{_sbindir}/update-alternatives --install \
    %{_libdir}/openblas-default openblas-default %{p_libdir} %openblas_so_prio
@@ -555,7 +567,7 @@ fi
 %{p_libdir}/libopenblas*.a
 
 %if 0%{?build_devel}
-%files  -n %{pname}-common-devel
+%files -n %{pname}-common-devel
 %license LICENSE
 %doc Changelog.txt GotoBLAS* README.md README.SUSE
 %{_libdir}/lib%{pname}.so

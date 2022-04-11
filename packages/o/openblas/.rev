@@ -563,4 +563,15 @@
     <comment>(jsc#SLE-18143, bsc#1197721). (forwarded request 967232 from eeich)</comment>
     <requestid>967236</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>41a285720cd2a5790b993889a9ed7385</srcmd5>
+    <version>0.3.20</version>
+    <time>1649715229</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues in update paths from earlier versions introduced by
+  recent structural changes (bsc#1198264):
+  - Add Obsoletes for old package names
+  - Handle the change from directories to soft links properly (forwarded request 968024 from eeich)</comment>
+    <requestid>968025</requestid>
+  </revision>
 </revisionlist>
