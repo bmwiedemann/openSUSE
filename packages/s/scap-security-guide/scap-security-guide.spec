@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.60
+Version:        0.1.61
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -72,6 +72,7 @@ BuildRequires:  python3
 
 %if 0%{?suse_version}
 BuildRequires:  python3-xml
+BuildRequires:  python3-setuptools
 %endif
 
 %if 0%{?rhel} == 7

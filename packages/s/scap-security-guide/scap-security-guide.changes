@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  4 08:40:40 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.61 (jsc#ECO-3319)
+  - Stop building PCI-DSS-centric XCCDF benchmark for RHEL 7
+  - Introduce OL9 product
+  - Implement handling of logical expressions in platform definitions
+
+-------------------------------------------------------------------
 Tue Feb 22 15:19:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - bump disk size constraints to 7gb to avoid occasional disk fulls failures.
