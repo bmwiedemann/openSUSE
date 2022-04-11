@@ -11,31 +11,30 @@ I disagree, but that does not help much.
  src/buffer/katetextbuffer.cpp | 3 +--
  2 files changed, 1 insertion(+), 10 deletions(-)
 
-Index: ktexteditor-5.62.0git.20220101T121918~6bf059d3/src/CMakeLists.txt
+Index: ktexteditor-5.62.0git.20220309T193640~4bd631e8/src/CMakeLists.txt
 ===================================================================
---- ktexteditor-5.62.0git.20220101T121918~6bf059d3.orig/src/CMakeLists.txt
-+++ ktexteditor-5.62.0git.20220101T121918~6bf059d3/src/CMakeLists.txt
-@@ -395,15 +395,6 @@ include(ECMGeneratePriFile)
+--- ktexteditor-5.62.0git.20220309T193640~4bd631e8.orig/src/CMakeLists.txt	2022-03-09 23:11:02.257652721 +0100
++++ ktexteditor-5.62.0git.20220309T193640~4bd631e8/src/CMakeLists.txt	2022-03-09 23:11:51.353428607 +0100
+@@ -401,14 +401,6 @@
  ecm_generate_pri_file(BASE_NAME KTextEditor LIB_NAME KF5TextEditor DEPS "KParts" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextEditor)
  install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
  
--
--add_executable(kauth_ktexteditor_helper buffer/katesecuretextbuffer.cpp)
--target_link_libraries(kauth_ktexteditor_helper
--  KF5::AuthCore
--)
--install(TARGETS kauth_ktexteditor_helper DESTINATION ${KAUTH_HELPER_INSTALL_DIR} )
--kauth_install_helper_files(kauth_ktexteditor_helper org.kde.ktexteditor.katetextbuffer root)
--kauth_install_actions(org.kde.ktexteditor.katetextbuffer buffer/org.kde.ktexteditor.katetextbuffer.actions)
+-if(HAVE_KAUTH)
+-    add_executable(kauth_ktexteditor_helper buffer/katesecuretextbuffer.cpp)
+-    target_link_libraries(kauth_ktexteditor_helper KF5::AuthCore)
+-    install(TARGETS kauth_ktexteditor_helper DESTINATION ${KAUTH_HELPER_INSTALL_DIR} )
+-    kauth_install_helper_files(kauth_ktexteditor_helper org.kde.ktexteditor.katetextbuffer root)
+-    kauth_install_actions(org.kde.ktexteditor.katetextbuffer buffer/org.kde.ktexteditor.katetextbuffer.actions)
+-endif()
 -
  # add part
  add_subdirectory(part)
  
-Index: ktexteditor-5.62.0git.20220101T121918~6bf059d3/src/buffer/katetextbuffer.cpp
+Index: ktexteditor-5.62.0git.20220309T193640~4bd631e8/src/buffer/katetextbuffer.cpp
 ===================================================================
---- ktexteditor-5.62.0git.20220101T121918~6bf059d3.orig/src/buffer/katetextbuffer.cpp
-+++ ktexteditor-5.62.0git.20220101T121918~6bf059d3/src/buffer/katetextbuffer.cpp
-@@ -818,7 +818,7 @@ bool TextBuffer::saveBuffer(const QStrin
+--- ktexteditor-5.62.0git.20220309T193640~4bd631e8.orig/src/buffer/katetextbuffer.cpp	2022-03-09 23:10:51.833700156 +0100
++++ ktexteditor-5.62.0git.20220309T193640~4bd631e8/src/buffer/katetextbuffer.cpp	2022-03-09 23:11:02.257652721 +0100
+@@ -798,7 +798,7 @@
  
  TextBuffer::SaveResult TextBuffer::saveBufferUnprivileged(const QString &filename)
  {
