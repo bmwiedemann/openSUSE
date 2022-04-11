@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5NewStuff5
-%define _tar_path 5.92
+%define _tar_path 5.93
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knewstuff
-Version:        5.92.0
+Version:        5.93.0
 Release:        0
 Summary:        Framework for downloading and sharing additional application data
 License:        LGPL-2.1-or-later
@@ -35,8 +35,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Do-not-set-user-visible-name-as-additional-agent-inf.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
