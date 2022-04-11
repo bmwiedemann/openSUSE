@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 10 13:57:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Improved conversion from vectors of rational coefficients to
+    renf_elem_class by using a faster code path in FLINT.
+  * Improved conversion from SageMath number fields to pyeantic
+    RealEmbeddedNumberField. This adds a dependency of pyeantic
+    on gmpxxyy.
+
+-------------------------------------------------------------------
 Thu Feb 10 10:13:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.0
