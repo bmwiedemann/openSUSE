@@ -181,6 +181,7 @@ FileProvides: /usr/bin/csh tcsh
 FileProvides: /usr/bin/docbook2man docbook-utils
 FileProvides: /usr/bin/eu-nm elfutils
 FileProvides: /usr/bin/fipscheck fipscheck
+FileProvides: /usr/bin/fusermount3 fuse3
 FileProvides: /usr/bin/grep busybox-grep grep
 FileProvides: /usr/bin/gzip busybox-gzip gzip zstd-gzip
 Prefer: gzip
