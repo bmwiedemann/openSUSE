@@ -153,4 +153,12 @@ Semicolon is ambiguous. Use ^and^ or ^or^ depending on the interaction (forwarde
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>727475</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>0deb689a6772806e9edcec11d54a92bd</srcmd5>
+    <version>2.1.0+2.0.22+git6</version>
+    <time>1649713783</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with support for CAPI</comment>
+    <requestid>969257</requestid>
+  </revision>
 </revisionlist>

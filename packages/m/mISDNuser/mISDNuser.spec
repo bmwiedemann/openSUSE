@@ -1,7 +1,7 @@
 #
 # spec file for package mISDNuser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,12 @@ Group:          Hardware/ISDN
 URL:            https://github.com/ISDN4Linux/mISDNuser
 
 Source:         %name-%version.tar.xz
+Source8:        %name-rpmlintrc
+Patch0:         mISDNuser-fix-gcc10.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake
 BuildRequires:  flex
+BuildRequires:  libcapi20-devel
 BuildRequires:  libtool >= 2
 BuildRequires:  xz
 
@@ -51,8 +54,19 @@ Requires:       libmisdn1 = %version
 This package contain the header files and libraries for
 mISDNuser development.
 
+%package -n libcapi20-mod_misdn
+Summary:        mISDN plugin for libcapi
+Group:          Development/Libraries/C and C++
+Requires:       capi4linux
+
+%description -n libcapi20-mod_misdn
+This package contain the CAPI 2.0 module for mISDN.
+
 %prep
-%autosetup -p1
+%setup
+%if 0%{?suse_version} > 1500
+%patch0 -p1
+%endif
 
 %build
 if [ ! -e configure ]; then
@@ -61,8 +75,10 @@ if [ ! -e configure ]; then
 fi
 export CFLAGS="%optflags -Wno-error"
 export CXXFLAGS="$CFLAGS"
-%configure --disable-static
-make %{?_smp_mflags}
+%configure \
+  --disable-static \
+  --enable-capi
+%make_build
 
 %install
 %make_install
@@ -75,10 +91,20 @@ mv "$b/etc/udev/rules.d"/* "$b/%_prefix/lib/udev/rules.d/"
 %postun -n libmisdn1 -p /sbin/ldconfig
 
 %files
+%license COPYING.LIB LICENSE
+%doc AUTHORS NEWS README
+%doc capi20/capi20.conf.sample
+%doc tools/misdnlogger.conf.sample
+
 %_sysconfdir/misdn*conf
 %_bindir/*
 %_sbindir/*
 %_prefix/lib/udev/
+
+%files -n libcapi20-mod_misdn
+%exclude %_sysconfdir/capi20.conf
+%dir %_libdir/capi
+%_libdir/capi/lib_capi_mod_misdn.so*
 
 %files -n libmisdn1
 %_libdir/libmisdn.so.1*

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 10 16:58:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Build with support for CAPI
+- Add patch:
+  * mISDNuser-fix-gcc10.patch
+
+-------------------------------------------------------------------
 Sat Aug 24 14:13:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new snapshot 2.1.0+2.0.22+git6 (d6818dd9a)
