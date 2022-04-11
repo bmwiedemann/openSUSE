@@ -72,6 +72,8 @@ BuildRequires:  python3-dateutil
 BuildRequires:  python3-devel
 # msgpack is not included with borg version >= 1.2.0 anymore
 BuildRequires:  python3-msgpack
+# "ModuleNotFoundError: No module named 'msgpack'" otherwise
+Requires:       python3-msgpack
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-sphinx_rtd_theme

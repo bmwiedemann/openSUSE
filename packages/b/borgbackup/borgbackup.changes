@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 11 18:28:23 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Requires: python3-msgpack' per boo#1198267.
+
+-------------------------------------------------------------------
 Sun Apr  3 12:26:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Note removal of borgbackup-1.1.17-old-sphinx-api.patch
