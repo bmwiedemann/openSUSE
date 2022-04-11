@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 11 11:55:56 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.0.1:
+  * FIX #1033
+  * FIX #1034
+  * FIX #1035
+  * FIX #1036
+  * FIX runtime errors reported by telemetry, see #1037
+
+-------------------------------------------------------------------
+Mon Apr 11 04:54:54 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.0.0:
+  * fix(completion): push (#1022) to 3.0 by @kevinhwang91 in #1026
+  * fixed #976 by @xiyaowong in #983
+  * Ensure that a completion result has 'isIncomplete' by @yoshi1123 in #995
+  * update meta basic.lua by @fesily in #1004
+  * fix(semantic-tokens): coreect token type priority by @kevinhwang91 in #1009
+  * Event emitter support fix by @Cassolette in #1011
+  * fix meta debuginfo in jit version by @fesily in #1007
+  * chore(editorconfig): use lf for end_of_line by @kevinhwang91 in #1010
+  * feat(completion): truncate arguments for callSnippet by @kevinhwang91
+    in #1014
+  * fix(completion): use args table instead of args string to parse snippet
+    by @kevinhwang91 in #1016
+  * fix(completion): avoid unnecessary file sep as trigger chars by
+    @kevinhwang91 in #1017
+  * fix(completion): limit extra lines by @kevinhwang91 in #1019
+  * fix(files): check uri whether equal or not by @kevinhwang91 in #1020
+  * chore(postfix): pretty postfix description by @kevinhwang91 in #1021
+  * feat(completion): use Lua code as snippet description by @kevinhwang91
+    in #1022
+  * FIX #1023 by @CppCXY in #1024
+
+-------------------------------------------------------------------
 Thu Feb 10 08:40:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 2.6.4:
