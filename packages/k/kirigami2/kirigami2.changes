@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * InlineMessage: Do not layout for actions at bottom when there are none
+  * only change height if visible
+  * --warning: Shortcut.sequence is an Array
+  * Units: Delete QML FontMetrics object when Units is destructed
+  * ListItemDragHandle: Emit moveRequest when cursor enters a new index (kde#451014)
+  * BasicListItem: tighten up spacing for text+subtitle labels
+  * ListSectionHeader: vertically align default text item
+  * PlaceholderMessage: compare string length rather than content
+  * Render Page's default heading as PlainText
+  * Page: Don't load global toolbar async so that the header looks less stuttery
+  * Fix warning on the org.kde.desktop Theme
+  * controls/SwipeListItem: handle RtL properly (kde#441156)
+
+-------------------------------------------------------------------
 Mon Mar  7 09:27:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
