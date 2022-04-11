@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  5 14:34:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- For 32-bit systems, rename tbb32.pc (default upstream for
+  32-bit) to tbb.pc (same as 64-bit) so that applications
+  depending on tbb do not have to call different pkgconfig modules
+  based on arch.
+
+-------------------------------------------------------------------
 Fri Oct  8 08:11:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Allow gcc11

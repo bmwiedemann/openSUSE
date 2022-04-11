@@ -223,6 +223,10 @@ popd
 # we install it into the devel package docdir
 rm -r %{buildroot}%{_datadir}/doc/TBB
 
+# Rename tbb32.pc to tbb.pc (same as 64-bit) so that applications depending on tbb
+# do not have to call different pkgconfig modules based on arch
+test -f %{buildroot}%{_libdir}/pkgconfig/tbb32.pc && mv %{buildroot}%{_libdir}/pkgconfig/tbb32.pc %{buildroot}%{_libdir}/pkgconfig/tbb.pc 
+
 %check
 %if %{with test}
 %ctest --exclude-regex python_test
@@ -262,7 +266,7 @@ popd
 %{_includedir}/tbb/
 %{_includedir}/oneapi/
 %{_libdir}/cmake/TBB
-%{_libdir}/pkgconfig/tbb*.pc
+%{_libdir}/pkgconfig/tbb.pc
 %{_libdir}/libtbb.so
 %{_libdir}/libtbbmalloc.so
 %{_libdir}/libtbbmalloc_proxy.so
