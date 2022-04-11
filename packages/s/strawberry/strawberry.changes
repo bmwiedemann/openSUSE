@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 10 12:14:47 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.4
+
+ + Bugfixes:
+ + Fixed use-after-free memory in ALSA PCM device finder.
+ + Translate global shortcuts.
+ + Enhancement:
+ + Added save all playlists action.
+ + Other:
+ + Removed use of custom font in context.
+
+-------------------------------------------------------------------
 Thu Mar 24 20:29:51 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.3

@@ -965,4 +965,20 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>964722</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4c089975b8baf96c51fab66c519a1590</srcmd5>
+    <version>1.0.4</version>
+    <time>1649713694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4
+ + Bugfixes:
+ + Fixed use-after-free memory in ALSA PCM device finder.
+ + Translate global shortcuts.
+ + Enhancement:
+ + Added save all playlists action.
+ + Other:
+ + Removed use of custom font in context.
+</comment>
+    <requestid>968233</requestid>
+  </revision>
 </revisionlist>
