@@ -282,6 +282,7 @@ unsorted:
   - VirtualGL-devel 
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
+  - WebKit2GTK-4.1-lang: [x86_64] 
   - WebKit2GTK-5.0-lang 
   - WindowMaker-devel 
   - WoeUSB 
@@ -2901,6 +2902,7 @@ unsorted:
   - deja-dup-lang 
   - dejagnu 
   - delaguardo-inconsolata_lgc-fonts 
+  - delayacct-utils-rebuild 
   - deltafs 
   - deluge 
   - deluge-lang 
@@ -3805,7 +3807,6 @@ unsorted:
   - firewall-applet 
   - firewall-config 
   - firewall-macros 
-  - firewalld-prometheus-config 
   - firewalld-rpcbind-helper 
   - firewalld-test 
   - fish 
@@ -4257,7 +4258,7 @@ unsorted:
   - gdl-devel 
   - gdl-lang 
   - gdlmm-devel 
-  - gdm-branding-MicroOS: [i586] 
+  - gdm-branding-MicroOS 
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
@@ -5934,7 +5935,7 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
-  - gnome-branding-MicroOS: [i586] 
+  - gnome-branding-MicroOS 
   - gnome-builder 
   - gnome-builder-doc 
   - gnome-builder-lang 
@@ -6049,8 +6050,9 @@ unsorted:
   - gnome-todo-lang 
   - gnome-tour 
   - gnome-tour-lang 
-  - gnome-usage: [i586] 
+  - gnome-usage 
   - gnome-usage-lang 
+  - gnome-user-docs: [x86_64] 
   - gnome-user-docs-lang 
   - gnome-video-effects-devel 
   - gnonograms 
@@ -9830,7 +9832,7 @@ unsorted:
   - libavformat59-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif13-32bit: [x86_64] 
+  - libavif14-32bit: [x86_64] 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
   - libavtp-devel 
@@ -10583,6 +10585,7 @@ unsorted:
   - libdmtx0-32bit: [x86_64] 
   - libdmx-devel 
   - libdmx-devel-32bit: [x86_64] 
+  - libdmx1 
   - libdmx1-32bit: [x86_64] 
   - libdnet-devel 
   - libdnet1 
@@ -11789,6 +11792,7 @@ unsorted:
   - libjasper6-32bit: [x86_64] 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
+  - libjavascriptcoregtk-4_1-0: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
   - libjavascriptcoregtk-5_0-0 
   - libjaylink 
@@ -14654,6 +14658,7 @@ unsorted:
   - libwebcam-devel 
   - libwebcam0 
   - libwebkit2gtk-4_0-37-32bit: [x86_64] 
+  - libwebkit2gtk-4_1-0: [x86_64] 
   - libwebkit2gtk-4_1-0-32bit: [x86_64] 
   - libwebkit2gtk-5_0-0 
   - libwebp-devel 
@@ -15023,6 +15028,7 @@ unsorted:
   - libyaz-devel 
   - libyaz5 
   - libyder1_4 
+  - libyelp0: [x86_64] 
   - libykclient-devel 
   - libykclient3 
   - libykcs11-2 
@@ -18805,6 +18811,7 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
+  - patterns-microos-desktop-gnome: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -41941,6 +41948,7 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
+  - typelib-1_0-JavaScriptCore-4_1: [x86_64] 
   - typelib-1_0-JavaScriptCore-5_0 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
@@ -41995,6 +42003,7 @@ unsorted:
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_12 
+  - typelib-1_0-WebKit2-4_1: [x86_64] 
   - typelib-1_0-WebKit2-5_0 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
@@ -42551,6 +42560,7 @@ unsorted:
   - webkit-jsc-4 
   - webkit-jsc-4.1 
   - webkit-jsc-5.0 
+  - webkit2gtk-4_1-injected-bundles: [x86_64] 
   - webkit2gtk-5_0-injected-bundles 
   - webkit2gtk3-devel 
   - webkit2gtk3-minibrowser 
@@ -43290,8 +43300,11 @@ unsorted:
   - yder-devel 
   - yecht 
   - yecht-javadoc 
+  - yelp: [x86_64] 
   - yelp-devel 
+  - yelp-lang: [x86_64] 
   - yelp-tools 
+  - yelp-xsl: [x86_64] 
   - yishu 
   - yishu-lang 
   - ykclient 
