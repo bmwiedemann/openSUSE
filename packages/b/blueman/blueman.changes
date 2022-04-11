@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 11 08:14:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend -lang package: the auto-generated -lang package
+  already contains relevant supplements.
+
+-------------------------------------------------------------------
+Mon Apr 11 07:41:17 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Added iproute2 build dependency to satisfy ip requirement
+
+-------------------------------------------------------------------
 Tue Mar  8 11:52:40 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.2.4:

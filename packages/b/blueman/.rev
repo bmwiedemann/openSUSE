@@ -130,4 +130,15 @@
     <comment></comment>
     <requestid>960256</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>27ba15c6df8e6f23e265f980605760ac</srcmd5>
+    <version>2.2.4</version>
+    <time>1649713743</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend -lang package: the auto-generated -lang package
+  already contains relevant supplements.
+- Added iproute2 build dependency to satisfy ip requirement
+</comment>
+    <requestid>968381</requestid>
+  </revision>
 </revisionlist>

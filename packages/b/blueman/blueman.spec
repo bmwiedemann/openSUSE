@@ -43,6 +43,7 @@ BuildRequires:  fdupes
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool >= 0.35.0
+BuildRequires:  iproute2
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython
@@ -65,7 +66,6 @@ Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
 Requires:       python3-notify2
 Requires:       dbus(org.freedesktop.Notifications)
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description
