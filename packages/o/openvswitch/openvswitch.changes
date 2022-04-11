@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Apr  3 13:12:28 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Mention openvswitch-rpmlintrc as Source in spec file
+
+-------------------------------------------------------------------
+Mon Mar 14 13:55:07 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix installation of files shared with OVN (required for building
+  OVN without openvswitch sources), remove custom installation
+  of internal headers from SPEC-install section and use patches
+  (for upstreaming) instead.
+  * install-ovsdb-tools.patch
+  * Added 0001-openvswitch-merge-compiler.h-files-into-one-file.patch
+  * Added 0002-build-Seperated-common-used-headers.patch
+- Enabled check section / running testsuite by default to validate
+  build result. There must no problems with the testsuite anymore as
+  upstream runs it by CI and checked before release of a new version.
+- Renamed 0001-Don-t-change-permissions-of-dev-hugepages.patch to
+  Don-t-change-permissions-of-dev-hugepages.patch
+- Renamed 0001-Run-openvswitch-as-openvswitch-openvswitch.patch to
+  Run-openvswitch-as-openvswitch-openvswitch.patch
+- Renamed 0001-Use-double-hash-for-OVS_USER_ID-comment.patch to
+  Use-double-hash-for-OVS_USER_ID-comment.patch
+- Rebased 0001-Use-strongswan-for-openvswitch-ipsec-service.patch to
+  Use-strongswan-for-openvswitch-ipsec-service.patch
+
+-------------------------------------------------------------------
 Fri Mar 11 11:33:18 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fix OVS location for python bindings (dirs.py), boo#1196978

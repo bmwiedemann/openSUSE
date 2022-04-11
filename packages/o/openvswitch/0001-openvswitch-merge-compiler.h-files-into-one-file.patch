@@ -1,0 +1,1202 @@
+From 6a0bd6a46a662f9792966c06e61fed5fbed0aff4 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Mon, 28 Feb 2022 15:06:43 +0100
+Subject: [PATCH 1/2] openvswitch: merge compiler.h files into one file
+
+Signed-off-by: Ferdinand Thiessen <rpm@fthiessen.de>
+---
+ include/openvswitch/compiler.h         | 14 ++++++++
+ lib/bundle.h                           |  2 +-
+ lib/command-line.h                     |  2 +-
+ lib/compiler.h                         | 44 --------------------------
+ lib/coverage.h                         |  2 +-
+ lib/db-ctl-base.c                      |  3 +-
+ lib/db-ctl-base.h                      |  2 +-
+ lib/dns-resolve-stub.c                 |  2 +-
+ lib/dpctl.c                            |  3 +-
+ lib/dpctl.h                            |  2 +-
+ lib/dpif-netdev-extract-avx512.c       |  4 +--
+ lib/dpif-netdev-lookup-avx512-gather.c |  4 +--
+ lib/dpif-netdev-lookup-generic.c       |  6 ++--
+ lib/fat-rwlock.h                       |  2 +-
+ lib/guarded-list.h                     |  2 +-
+ lib/if-notifier-stub.c                 |  2 +-
+ lib/learn.h                            |  2 +-
+ lib/lldp/lldp.c                        |  2 +-
+ lib/lldp/lldpd.c                       |  2 +-
+ lib/multipath.h                        |  2 +-
+ lib/netdev-native-tnl.h                |  2 +-
+ lib/netdev-vport-private.h             |  2 +-
+ lib/netdev-vport.h                     |  2 +-
+ lib/netlink-conntrack.c                |  2 +-
+ lib/netlink-conntrack.h                |  2 +-
+ lib/nx-match.h                         |  2 +-
+ lib/ofp-actions.c                      |  2 +-
+ lib/ofp-print.c                        |  2 +-
+ lib/ovs-atomic.h                       |  2 +-
+ lib/ovs-numa.h                         |  2 +-
+ lib/ovs-rcu.h                          |  2 +-
+ lib/ovs-router.c                       |  4 +--
+ lib/ovs-thread.c                       |  2 +-
+ lib/ovsdb-data.h                       |  2 +-
+ lib/ovsdb-error.h                      |  2 +-
+ lib/ovsdb-idl.h                        |  2 +-
+ lib/ovsdb-parser.h                     |  2 +-
+ lib/ovsdb-types.h                      |  2 +-
+ lib/packets.h                          |  2 +-
+ lib/pcap-file.c                        |  2 +-
+ lib/route-table-stub.c                 |  2 +-
+ lib/rstp.h                             |  2 +-
+ lib/sha1.c                             |  2 +-
+ lib/stp.h                              |  2 +-
+ lib/syslog-direct.c                    |  2 +-
+ lib/syslog-libc.c                      |  2 +-
+ lib/syslog-null.c                      |  2 +-
+ lib/table.h                            |  2 +-
+ lib/tun-metadata.c                     |  2 +-
+ lib/unicode.h                          |  2 +-
+ lib/util.c                             |  2 +-
+ lib/util.h                             | 34 ++++++++++----------
+ ofproto/ofproto-dpif-sflow.c           |  2 +-
+ ovsdb/column.h                         |  2 +-
+ ovsdb/condition.h                      |  2 +-
+ ovsdb/file.h                           |  2 +-
+ ovsdb/log.h                            |  2 +-
+ ovsdb/mutation.h                       |  2 +-
+ ovsdb/ovsdb-client.c                   |  2 +-
+ ovsdb/ovsdb-tool.c                     |  3 +-
+ ovsdb/ovsdb.h                          |  2 +-
+ ovsdb/raft-rpc.c                       |  2 +-
+ ovsdb/raft.h                           |  2 +-
+ ovsdb/storage.h                        |  2 +-
+ ovsdb/table.h                          |  2 +-
+ ovsdb/transaction.h                    |  2 +-
+ tests/ovstest.h                        |  2 +-
+ tests/test-reconnect.c                 |  2 +-
+ utilities/ovs-dpctl.c                  |  2 +-
+ utilities/ovs-ofctl.c                  |  2 +-
+ utilities/ovs-testcontroller.c         |  2 +-
+ utilities/ovs-vsctl.c                  |  2 +-
+ vswitchd/ovs-vswitchd.c                |  2 +-
+ vtep/vtep-ctl.c                        |  4 +--
+ 74 files changed, 108 insertions(+), 141 deletions(-)
+ delete mode 100644 lib/compiler.h
+
+diff --git a/include/openvswitch/compiler.h b/include/openvswitch/compiler.h
+index cf009f826..ed155c766 100644
+--- a/include/openvswitch/compiler.h
++++ b/include/openvswitch/compiler.h
+@@ -27,6 +27,16 @@
+   #define __has_extension(x) 0
+ #endif
+ 
++/* Output a message (not an error) while compiling without failing the
++ * compilation process */
++#if HAVE_PRAGMA_MESSAGE && !__CHECKER__
++#define DO_PRAGMA(x) _Pragma(#x)
++#define BUILD_MESSAGE(x) \
++    DO_PRAGMA(message(x))
++#else
++#define BUILD_MESSAGE(x)
++#endif
++
+ /* To make OVS_NO_RETURN portable across gcc/clang and MSVC, it should be
+  * added at the beginning of the function declaration. */
+ #if __GNUC__ && !__CHECKER__
+@@ -38,6 +48,8 @@
+ #endif
+ 
+ #if __GNUC__ && !__CHECKER__
++#define OVS_MALLOC_LIKE __attribute__((__malloc__))
++#define OVS_ALWAYS_INLINE __attribute__((always_inline))
+ #define OVS_UNUSED __attribute__((__unused__))
+ #define OVS_PRINTF_FORMAT(FMT, ARG1) __attribute__((__format__(printf, FMT, ARG1)))
+ #define OVS_SCANF_FORMAT(FMT, ARG1) __attribute__((__format__(scanf, FMT, ARG1)))
+@@ -51,6 +63,8 @@
+ #define OVS_WARN_UNUSED_RESULT
+ #define OVS_LIKELY(CONDITION) (!!(CONDITION))
+ #define OVS_UNLIKELY(CONDITION) (!!(CONDITION))
++#define OVS_MALLOC_LIKE
++#define OVS_ALWAYS_INLINE
+ #endif
+ 
+ #if __has_feature(c_thread_safety_attributes)
+diff --git a/lib/bundle.h b/lib/bundle.h
+index b3b9cdcee..73e9f86bd 100644
+--- a/lib/bundle.h
++++ b/lib/bundle.h
+@@ -23,7 +23,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openflow/nicira-ext.h"
+ #include "openvswitch/ofp-errors.h"
+ #include "openvswitch/types.h"
+diff --git a/lib/command-line.h b/lib/command-line.h
+index fc2a2690f..957a53fc8 100644
+--- a/lib/command-line.h
++++ b/lib/command-line.h
+@@ -19,7 +19,7 @@
+ 
+ /* Utilities for command-line parsing. */
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct option;
+ 
+diff --git a/lib/compiler.h b/lib/compiler.h
+deleted file mode 100644
+index 03af47a03..000000000
+--- a/lib/compiler.h
++++ /dev/null
+@@ -1,44 +0,0 @@
+-/*
+- * Copyright (c) 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2019 Nicira, Inc.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at:
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-
+-#ifndef COMPILER_H
+-#define COMPILER_H 1
+-
+-#include "openvswitch/compiler.h"
+-
+-#if __GNUC__ && !__CHECKER__
+-#define STRFTIME_FORMAT(FMT) __attribute__((__format__(__strftime__, FMT, 0)))
+-#define MALLOC_LIKE __attribute__((__malloc__))
+-#define ALWAYS_INLINE __attribute__((always_inline))
+-#define SENTINEL(N) __attribute__((sentinel(N)))
+-#else
+-#define STRFTIME_FORMAT(FMT)
+-#define MALLOC_LIKE
+-#define ALWAYS_INLINE
+-#define SENTINEL(N)
+-#endif
+-
+-/* Output a message (not an error) while compiling without failing the
+- * compilation process */
+-#if HAVE_PRAGMA_MESSAGE && !__CHECKER__
+-#define DO_PRAGMA(x) _Pragma(#x)
+-#define BUILD_MESSAGE(x) \
+-    DO_PRAGMA(message(x))
+-#else
+-#define BUILD_MESSAGE(x)
+-#endif
+-
+-#endif /* compiler.h */
+diff --git a/lib/coverage.h b/lib/coverage.h
+index dea990e6f..8eb5a1e12 100644
+--- a/lib/coverage.h
++++ b/lib/coverage.h
+@@ -28,7 +28,7 @@
+  * a useful debugging tool. */
+ 
+ #include "ovs-thread.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ /* Makes coverage_run run every 5000 ms (5 seconds).
+  * If this value is redefined, the new value must
+diff --git a/lib/db-ctl-base.c b/lib/db-ctl-base.c
+index 707456158..0c459156f 100644
+--- a/lib/db-ctl-base.c
++++ b/lib/db-ctl-base.c
+@@ -22,8 +22,7 @@
+ 
+ #include "db-ctl-base.h"
+ 
+-#include "command-line.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dirs.h"
+ #include "openvswitch/dynamic-string.h"
+ #include "fatal-signal.h"
+diff --git a/lib/db-ctl-base.h b/lib/db-ctl-base.h
+index 284b573d0..1cea6559b 100644
+--- a/lib/db-ctl-base.h
++++ b/lib/db-ctl-base.h
+@@ -17,7 +17,7 @@
+ #ifndef DB_CTL_BASE_H
+ #define DB_CTL_BASE_H 1
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/dynamic-string.h"
+ #include "openvswitch/shash.h"
+ 
+diff --git a/lib/dns-resolve-stub.c b/lib/dns-resolve-stub.c
+index 859c76f6b..b54581d8b 100644
+--- a/lib/dns-resolve-stub.c
++++ b/lib/dns-resolve-stub.c
+@@ -16,7 +16,7 @@
+ 
+ #include <config.h>
+ #include "dns-resolve.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ void
+ dns_resolve_init(bool is_daemon OVS_UNUSED)
+diff --git a/lib/dpctl.c b/lib/dpctl.c
+index 29041fa3e..81cbe3730 100644
+--- a/lib/dpctl.c
++++ b/lib/dpctl.c
+@@ -27,8 +27,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
+-#include "command-line.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ct-dpif.h"
+ #include "dirs.h"
+ #include "dpctl.h"
+diff --git a/lib/dpctl.h b/lib/dpctl.h
+index 9d0052152..557f32936 100644
+--- a/lib/dpctl.h
++++ b/lib/dpctl.h
+@@ -18,7 +18,7 @@
+ 
+ #include <stdbool.h>
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct dpctl_params {
+     /* True if it is called by ovs-appctl command. */
+diff --git a/lib/dpif-netdev-extract-avx512.c b/lib/dpif-netdev-extract-avx512.c
+index c1c1fefb6..b8bb4f38d 100644
+--- a/lib/dpif-netdev-extract-avx512.c
++++ b/lib/dpif-netdev-extract-avx512.c
+@@ -468,12 +468,12 @@ mfex_handle_tcp_flags(const struct tcp_header *tcp, uint64_t *block)
+ }
+ 
+ /* Generic loop to process any mfex profile. This code is specialized into
+- * multiple actual MFEX implementation functions. Its marked ALWAYS_INLINE
++ * multiple actual MFEX implementation functions. Its marked OVS_ALWAYS_INLINE
+  * to ensure the compiler specializes each instance. The code is marked "hot"
+  * to inform the compiler this is a hotspot in the program, encouraging
+  * inlining of callee functions such as the permute calls.
+  */
+-static inline uint32_t ALWAYS_INLINE
++static inline uint32_t OVS_ALWAYS_INLINE
+ __attribute__ ((hot))
+ mfex_avx512_process(struct dp_packet_batch *packets,
+                     struct netdev_flow_key *keys,
+diff --git a/lib/dpif-netdev-lookup-avx512-gather.c b/lib/dpif-netdev-lookup-avx512-gather.c
+index 7bc1e9e9a..6e50f6ecd 100644
+--- a/lib/dpif-netdev-lookup-avx512-gather.c
++++ b/lib/dpif-netdev-lookup-avx512-gather.c
+@@ -152,7 +152,7 @@ netdev_rule_matches_key(const struct dpcls_rule *rule,
+  *   u64_lanes_mask: bitmask of lanes to process.
+  *   use_vpop: compile-time constant indicating if VPOPCNT instruction allowed.
+  */
+-static inline ALWAYS_INLINE __m512i
++static inline OVS_ALWAYS_INLINE __m512i
+ avx512_blocks_gather(__m512i v_u0,
+                      __m512i v_u1,
+                      const uint64_t *pkt_blocks,
+@@ -203,7 +203,7 @@ avx512_blocks_gather(__m512i v_u0,
+         return v_masked_blocks;
+ }
+ 
+-static inline uint32_t ALWAYS_INLINE
++static inline uint32_t OVS_ALWAYS_INLINE
+ avx512_lookup_impl(struct dpcls_subtable *subtable,
+                    uint32_t keys_map,
+                    const struct netdev_flow_key *keys[],
+diff --git a/lib/dpif-netdev-lookup-generic.c b/lib/dpif-netdev-lookup-generic.c
+index 6c74ac3a1..37a069401 100644
+--- a/lib/dpif-netdev-lookup-generic.c
++++ b/lib/dpif-netdev-lookup-generic.c
+@@ -170,12 +170,12 @@ netdev_rule_matches_key(const struct dpcls_rule *rule,
+  * unroll loops and flatten out code-sequences based on the knowledge of the
+  * mf_bits_* compile time values. This results in improved performance.
+  *
+- * Note: this function is marked with ALWAYS_INLINE to ensure the compiler
++ * Note: this function is marked with OVS_ALWAYS_INLINE to ensure the compiler
+  * inlines the below code, and then uses the compile time constants to make
+- * specialized versions of the runtime code. Without ALWAYS_INLINE, the
++ * specialized versions of the runtime code. Without OVS_ALWAYS_INLINE, the
+  * compiler might decide to not inline, and performance will suffer.
+  */
+-static inline uint32_t ALWAYS_INLINE
++static inline uint32_t OVS_ALWAYS_INLINE
+ lookup_generic_impl(struct dpcls_subtable *subtable,
+                     uint32_t keys_map,
+                     const struct netdev_flow_key *keys[],
+diff --git a/lib/fat-rwlock.h b/lib/fat-rwlock.h
+index 181fa9238..49480819b 100644
+--- a/lib/fat-rwlock.h
++++ b/lib/fat-rwlock.h
+@@ -17,7 +17,7 @@
+ #ifndef FAT_RWLOCK_H
+ #define FAT_RWLOCK_H 1
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/list.h"
+ #include "ovs-thread.h"
+ 
+diff --git a/lib/guarded-list.h b/lib/guarded-list.h
+index 80ce22c12..7f1d257e1 100644
+--- a/lib/guarded-list.h
++++ b/lib/guarded-list.h
+@@ -18,7 +18,7 @@
+ #define GUARDED_LIST_H 1
+ 
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/list.h"
+ #include "ovs-thread.h"
+ 
+diff --git a/lib/if-notifier-stub.c b/lib/if-notifier-stub.c
+index a5b529a4a..32c0e7a9e 100644
+--- a/lib/if-notifier-stub.c
++++ b/lib/if-notifier-stub.c
+@@ -17,7 +17,7 @@
+ #include <config.h>
+ #include "if-notifier.h"
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct if_notifier *
+ if_notifier_create(if_notify_func *cb OVS_UNUSED, void *aux OVS_UNUSED)
+diff --git a/lib/learn.h b/lib/learn.h
+index 2bdfee702..d962d48c8 100644
+--- a/lib/learn.h
++++ b/lib/learn.h
+@@ -17,7 +17,7 @@
+ #ifndef LEARN_H
+ #define LEARN_H 1
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/ofp-errors.h"
+ 
+ struct ds;
+diff --git a/lib/lldp/lldp.c b/lib/lldp/lldp.c
+index dfeb2a800..1b5b4db57 100644
+--- a/lib/lldp/lldp.c
++++ b/lib/lldp/lldp.c
+@@ -25,7 +25,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
+ #include <sys/types.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dp-packet.h"
+ #include "packets.h"
+ 
+diff --git a/lib/lldp/lldpd.c b/lib/lldp/lldpd.c
+index a024dc5e5..a600da550 100644
+--- a/lib/lldp/lldpd.c
++++ b/lib/lldp/lldpd.c
+@@ -39,7 +39,7 @@
+ #include <sys/select.h>
+ #include <sys/utsname.h>
+ #endif
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/dynamic-string.h"
+ #include "openvswitch/list.h"
+ #include "packets.h"
+diff --git a/lib/multipath.h b/lib/multipath.h
+index 4158302a7..5c09f731d 100644
+--- a/lib/multipath.h
++++ b/lib/multipath.h
+@@ -18,7 +18,7 @@
+ #define MULTIPATH_H 1
+ 
+ #include <stdint.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/ofp-errors.h"
+ 
+ struct ds;
+diff --git a/lib/netdev-native-tnl.h b/lib/netdev-native-tnl.h
+index 22ae2ce53..ba05b8b4c 100644
+--- a/lib/netdev-native-tnl.h
++++ b/lib/netdev-native-tnl.h
+@@ -19,7 +19,7 @@
+ 
+ #include <stdbool.h>
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dp-packet.h"
+ #include "packets.h"
+ #include "unixctl.h"
+diff --git a/lib/netdev-vport-private.h b/lib/netdev-vport-private.h
+index d89a28c66..490894f1a 100644
+--- a/lib/netdev-vport-private.h
++++ b/lib/netdev-vport-private.h
+@@ -19,7 +19,7 @@
+ 
+ #include <stdbool.h>
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "netdev.h"
+ #include "netdev-provider.h"
+ #include "ovs-thread.h"
+diff --git a/lib/netdev-vport.h b/lib/netdev-vport.h
+index 9d756a265..3f47f2fca 100644
+--- a/lib/netdev-vport.h
++++ b/lib/netdev-vport.h
+@@ -19,7 +19,7 @@
+ 
+ #include <stdbool.h>
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct dpif_netlink_vport;
+ struct dpif_flow_stats;
+diff --git a/lib/netlink-conntrack.c b/lib/netlink-conntrack.c
+index 78f1bf60b..8dca46e55 100644
+--- a/lib/netlink-conntrack.c
++++ b/lib/netlink-conntrack.c
+@@ -27,7 +27,7 @@
+ #include <linux/netfilter/nf_conntrack_sctp.h>
+ 
+ #include "byte-order.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/dynamic-string.h"
+ #include "netlink.h"
+ #include "netlink-socket.h"
+diff --git a/lib/netlink-conntrack.h b/lib/netlink-conntrack.h
+index 81c74549b..4972dc6ca 100644
+--- a/lib/netlink-conntrack.h
++++ b/lib/netlink-conntrack.h
+@@ -20,7 +20,7 @@
+ #include <linux/netfilter/nfnetlink_cttimeout.h>
+ 
+ #include "byte-order.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ct-dpif.h"
+ #include "openvswitch/dynamic-string.h"
+ #include "openvswitch/hmap.h"
+diff --git a/lib/nx-match.h b/lib/nx-match.h
+index 3120ac0a0..967c8d93f 100644
+--- a/lib/nx-match.h
++++ b/lib/nx-match.h
+@@ -20,7 +20,7 @@
+ #include <stdint.h>
+ #include <sys/types.h>
+ #include <netinet/in.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "flow.h"
+ #include "openvswitch/meta-flow.h"
+ #include "openvswitch/ofp-errors.h"
+diff --git a/lib/ofp-actions.c b/lib/ofp-actions.c
+index 006837c2e..f7fb96c5c 100644
+--- a/lib/ofp-actions.c
++++ b/lib/ofp-actions.c
+@@ -22,7 +22,7 @@
+ #include "bundle.h"
+ #include "byte-order.h"
+ #include "colors.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dummy.h"
+ #include "openvswitch/hmap.h"
+ #include "learn.h"
+diff --git a/lib/ofp-print.c b/lib/ofp-print.c
+index b0facbf9f..db7318205 100644
+--- a/lib/ofp-print.c
++++ b/lib/ofp-print.c
+@@ -30,7 +30,7 @@
+ #include "bundle.h"
+ #include "byte-order.h"
+ #include "colors.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dp-packet.h"
+ #include "flow.h"
+ #include "learn.h"
+diff --git a/lib/ovs-atomic.h b/lib/ovs-atomic.h
+index 8fdce0cf8..341e0d0cc 100644
+--- a/lib/ovs-atomic.h
++++ b/lib/ovs-atomic.h
+@@ -322,7 +322,7 @@
+ #include <stdbool.h>
+ #include <stddef.h>
+ #include <stdint.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "util.h"
+ 
+ #define IN_OVS_ATOMIC_H
+diff --git a/lib/ovs-numa.h b/lib/ovs-numa.h
+index ecc251a7f..2030bdb64 100644
+--- a/lib/ovs-numa.h
++++ b/lib/ovs-numa.h
+@@ -20,7 +20,7 @@
+ #include <limits.h>
+ #include <stdbool.h>
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/hmap.h"
+ 
+ #define OVS_CORE_UNSPEC INT_MAX
+diff --git a/lib/ovs-rcu.h b/lib/ovs-rcu.h
+index ecc4c9201..5e31181d8 100644
+--- a/lib/ovs-rcu.h
++++ b/lib/ovs-rcu.h
+@@ -157,7 +157,7 @@
+  *
+  */
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ovs-atomic.h"
+ 
+ #if __GNUC__
+diff --git a/lib/ovs-router.c b/lib/ovs-router.c
+index 09b81c6e5..e52cbb0bf 100644
+--- a/lib/ovs-router.c
++++ b/lib/ovs-router.c
+@@ -31,8 +31,8 @@
+ #include <unistd.h>
+ 
+ #include "classifier.h"
+-#include "command-line.h"
+-#include "compiler.h"
++#include "colors.h"
++#include "openvswitch/compiler.h"
+ #include "dpif.h"
+ #include "fatal-signal.h"
+ #include "openvswitch/dynamic-string.h"
+diff --git a/lib/ovs-thread.c b/lib/ovs-thread.c
+index 805cba622..542dbbc7d 100644
+--- a/lib/ovs-thread.c
++++ b/lib/ovs-thread.c
+@@ -23,7 +23,7 @@
+ #endif
+ #include <stdlib.h>
+ #include <unistd.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "fatal-signal.h"
+ #include "hash.h"
+ #include "openvswitch/list.h"
+diff --git a/lib/ovsdb-data.h b/lib/ovsdb-data.h
+index 47115a7b8..a27ce91ed 100644
+--- a/lib/ovsdb-data.h
++++ b/lib/ovsdb-data.h
+@@ -17,7 +17,7 @@
+ #define OVSDB_DATA_H 1
+ 
+ #include <stdlib.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ovsdb-types.h"
+ #include "openvswitch/json.h"
+ #include "openvswitch/shash.h"
+diff --git a/lib/ovsdb-error.h b/lib/ovsdb-error.h
+index 77a60e074..1621f0eac 100644
+--- a/lib/ovsdb-error.h
++++ b/lib/ovsdb-error.h
+@@ -16,7 +16,7 @@
+ #ifndef OVSDB_ERROR_H
+ #define OVSDB_ERROR_H 1
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct json;
+ 
+diff --git a/lib/ovsdb-idl.h b/lib/ovsdb-idl.h
+index d00599616..48cff8a83 100644
+--- a/lib/ovsdb-idl.h
++++ b/lib/ovsdb-idl.h
+@@ -37,7 +37,7 @@
+ 
+ #include <stdbool.h>
+ #include <stdint.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ovsdb-types.h"
+ #include "ovsdb-data.h"
+ #include "openvswitch/list.h"
+diff --git a/lib/ovsdb-parser.h b/lib/ovsdb-parser.h
+index 62e4c004f..8af64de36 100644
+--- a/lib/ovsdb-parser.h
++++ b/lib/ovsdb-parser.h
+@@ -17,7 +17,7 @@
+ #define OVSDB_PARSER_H 1
+ 
+ #include <stdbool.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/json.h"
+ #include "sset.h"
+ #include "util.h"
+diff --git a/lib/ovsdb-types.h b/lib/ovsdb-types.h
+index b9eb0928d..1776fdbec 100644
+--- a/lib/ovsdb-types.h
++++ b/lib/ovsdb-types.h
+@@ -19,7 +19,7 @@
+ #include <float.h>
+ #include <stdbool.h>
+ #include <stdint.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "uuid.h"
+ 
+ #ifdef __cplusplus
+diff --git a/lib/packets.h b/lib/packets.h
+index 5bdf6e4bb..ee4d96542 100644
+--- a/lib/packets.h
++++ b/lib/packets.h
+@@ -21,7 +21,7 @@
+ #include <sys/types.h>
+ #include <stdint.h>
+ #include <string.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/geneve.h"
+ #include "openvswitch/packets.h"
+ #include "openvswitch/types.h"
+diff --git a/lib/pcap-file.c b/lib/pcap-file.c
+index 41835f6f4..67c9b9bea 100644
+--- a/lib/pcap-file.c
++++ b/lib/pcap-file.c
+@@ -22,7 +22,7 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include "byte-order.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dp-packet.h"
+ #include "flow.h"
+ #include "openvswitch/hmap.h"
+diff --git a/lib/route-table-stub.c b/lib/route-table-stub.c
+index dd0b096d4..be3254855 100644
+--- a/lib/route-table-stub.c
++++ b/lib/route-table-stub.c
+@@ -14,7 +14,7 @@
+ 
+ #include <config.h>
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ovs-router.h"
+ #include "route-table.h"
+ 
+diff --git a/lib/rstp.h b/lib/rstp.h
+index 39a13b58c..90ea67d58 100644
+--- a/lib/rstp.h
++++ b/lib/rstp.h
+@@ -33,7 +33,7 @@
+ 
+ #include <stdint.h>
+ #include <stdbool.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "util.h"
+ 
+ /* Thread Safety: Callers passing in RSTP and RSTP port object
+diff --git a/lib/sha1.c b/lib/sha1.c
+index 87360d9cd..18f245c8b 100644
+--- a/lib/sha1.c
++++ b/lib/sha1.c
+@@ -33,7 +33,7 @@
+ #include "sha1.h"
+ #include <ctype.h>
+ #include <string.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "util.h"
+ 
+ /* a bit faster & bigger, if defined */
+diff --git a/lib/stp.h b/lib/stp.h
+index c64089af4..a0a127978 100644
+--- a/lib/stp.h
++++ b/lib/stp.h
+@@ -22,7 +22,7 @@
+ 
+ #include <stdbool.h>
+ #include <stdint.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "util.h"
+ 
+ struct dp_packet;
+diff --git a/lib/syslog-direct.c b/lib/syslog-direct.c
+index 85ca9e292..fd23a050e 100644
+--- a/lib/syslog-direct.c
++++ b/lib/syslog-direct.c
+@@ -20,7 +20,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/dynamic-string.h"
+ #include "socket-util.h"
+ #include "syslog-provider.h"
+diff --git a/lib/syslog-libc.c b/lib/syslog-libc.c
+index b702d4121..f3f3e24c0 100644
+--- a/lib/syslog-libc.c
++++ b/lib/syslog-libc.c
+@@ -21,7 +21,7 @@
+ #include <syslog.h>
+ #include <unistd.h>
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/dynamic-string.h"
+ #include "socket-util.h"
+ #include "syslog-provider.h"
+diff --git a/lib/syslog-null.c b/lib/syslog-null.c
+index 9dbd13911..294795f71 100644
+--- a/lib/syslog-null.c
++++ b/lib/syslog-null.c
+@@ -17,7 +17,7 @@
+ 
+ #include <config.h>
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "syslog-provider.h"
+ #include "util.h"
+ 
+diff --git a/lib/table.h b/lib/table.h
+index 33263e2a2..c68b8944b 100644
+--- a/lib/table.h
++++ b/lib/table.h
+@@ -19,7 +19,7 @@
+ 
+ #include <stdbool.h>
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/json.h"
+ 
+ struct ds;
+diff --git a/lib/tun-metadata.c b/lib/tun-metadata.c
+index af0bcbde8..168634a74 100644
+--- a/lib/tun-metadata.c
++++ b/lib/tun-metadata.c
+@@ -19,7 +19,7 @@
+ #include <stdbool.h>
+ 
+ #include "bitmap.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/hmap.h"
+ #include "openvswitch/match.h"
+ #include "nx-match.h"
+diff --git a/lib/unicode.h b/lib/unicode.h
+index 4a8baca68..5f86beab8 100644
+--- a/lib/unicode.h
++++ b/lib/unicode.h
+@@ -19,7 +19,7 @@
+ 
+ #include <stdbool.h>
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ /* Returns true if 'c' is a Unicode code point, otherwise false. */
+ static inline bool
+diff --git a/lib/util.c b/lib/util.c
+index 1195c7982..eb2341422 100644
+--- a/lib/util.c
++++ b/lib/util.c
+@@ -202,7 +202,7 @@ xstrdup(const char *s)
+     return xmemdup0(s, strlen(s));
+ }
+ 
+-char * MALLOC_LIKE
++char * OVS_MALLOC_LIKE
+ nullable_xstrdup(const char *s)
+ {
+     return s ? xstrdup(s) : NULL;
+diff --git a/lib/util.h b/lib/util.h
+index aea19d45f..964fb4f20 100644
+--- a/lib/util.h
++++ b/lib/util.h
+@@ -26,7 +26,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "util.h"
+ #include "openvswitch/util.h"
+ #if defined(__aarch64__) && __GNUC__ >= 6
+@@ -156,28 +156,28 @@ bool memory_locked(void);
+ OVS_NO_RETURN void out_of_memory(void);
+ 
+ /* Allocation wrappers that abort if memory is exhausted. */
+-void *xmalloc(size_t) MALLOC_LIKE;
+-void *xcalloc(size_t, size_t) MALLOC_LIKE;
+-void *xzalloc(size_t) MALLOC_LIKE;
++void *xmalloc(size_t) OVS_MALLOC_LIKE;
++void *xcalloc(size_t, size_t) OVS_MALLOC_LIKE;
++void *xzalloc(size_t) OVS_MALLOC_LIKE;
+ void *xrealloc(void *, size_t);
+-void *xmemdup(const void *, size_t) MALLOC_LIKE;
+-char *xmemdup0(const char *, size_t) MALLOC_LIKE;
+-char *xstrdup(const char *) MALLOC_LIKE;
+-char *nullable_xstrdup(const char *) MALLOC_LIKE;
++void *xmemdup(const void *, size_t) OVS_MALLOC_LIKE;
++char *xmemdup0(const char *, size_t) OVS_MALLOC_LIKE;
++char *xstrdup(const char *) OVS_MALLOC_LIKE;
++char *nullable_xstrdup(const char *) OVS_MALLOC_LIKE;
+ bool nullable_string_is_equal(const char *a, const char *b);
+-char *xasprintf(const char *format, ...) OVS_PRINTF_FORMAT(1, 2) MALLOC_LIKE;
+-char *xvasprintf(const char *format, va_list) OVS_PRINTF_FORMAT(1, 0) MALLOC_LIKE;
++char *xasprintf(const char *format, ...) OVS_PRINTF_FORMAT(1, 2) OVS_MALLOC_LIKE;
++char *xvasprintf(const char *format, va_list) OVS_PRINTF_FORMAT(1, 0) OVS_MALLOC_LIKE;
+ void *x2nrealloc(void *p, size_t *n, size_t s);
+ 
+ /* Allocation wrappers for specialized situations where coverage counters
+  * cannot be used. */
+-void *xmalloc__(size_t) MALLOC_LIKE;
+-void *xcalloc__(size_t, size_t) MALLOC_LIKE;
+-void *xzalloc__(size_t) MALLOC_LIKE;
++void *xmalloc__(size_t) OVS_MALLOC_LIKE;
++void *xcalloc__(size_t, size_t) OVS_MALLOC_LIKE;
++void *xzalloc__(size_t) OVS_MALLOC_LIKE;
+ void *xrealloc__(void *, size_t);
+ 
+-void *xmalloc_cacheline(size_t) MALLOC_LIKE;
+-void *xzalloc_cacheline(size_t) MALLOC_LIKE;
++void *xmalloc_cacheline(size_t) OVS_MALLOC_LIKE;
++void *xzalloc_cacheline(size_t) OVS_MALLOC_LIKE;
+ void free_cacheline(void *);
+ 
+ void ovs_strlcpy(char *dst, const char *src, size_t size);
+@@ -185,9 +185,9 @@ void ovs_strzcpy(char *dst, const char *src, size_t size);
+ 
+ int string_ends_with(const char *str, const char *suffix);
+ 
+-void *xmalloc_pagealign(size_t) MALLOC_LIKE;
++void *xmalloc_pagealign(size_t) OVS_MALLOC_LIKE;
+ void free_pagealign(void *);
+-void *xmalloc_size_align(size_t, size_t) MALLOC_LIKE;
++void *xmalloc_size_align(size_t, size_t) OVS_MALLOC_LIKE;
+ void free_size_align(void *);
+ 
+ /* The C standards say that neither the 'dst' nor 'src' argument to
+diff --git a/ofproto/ofproto-dpif-sflow.c b/ofproto/ofproto-dpif-sflow.c
+index 30e7caf54..772881b0d 100644
+--- a/ofproto/ofproto-dpif-sflow.c
++++ b/ofproto/ofproto-dpif-sflow.c
+@@ -23,7 +23,7 @@
+ #include <net/if.h>
+ #include <stdlib.h>
+ #include "collectors.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dpif.h"
+ #include "hash.h"
+ #include "openvswitch/hmap.h"
+diff --git a/ovsdb/column.h b/ovsdb/column.h
+index f75a1076d..890295629 100644
+--- a/ovsdb/column.h
++++ b/ovsdb/column.h
+@@ -17,7 +17,7 @@
+ #define OVSDB_COLUMN_H 1
+ 
+ #include <stdbool.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ovsdb-types.h"
+ 
+ struct ovsdb_table;
+diff --git a/ovsdb/condition.h b/ovsdb/condition.h
+index c794966ce..65728fb32 100644
+--- a/ovsdb/condition.h
++++ b/ovsdb/condition.h
+@@ -17,7 +17,7 @@
+ #define OVSDB_CONDITION_H 1
+ 
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ovsdb-data.h"
+ #include "bitmap.h"
+ #include "ovsdb-condition.h"
+diff --git a/ovsdb/file.h b/ovsdb/file.h
+index be4f6ad27..0ee758958 100644
+--- a/ovsdb/file.h
++++ b/ovsdb/file.h
+@@ -17,7 +17,7 @@
+ #define OVSDB_FILE_H 1
+ 
+ #include <stdbool.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct ovsdb;
+ struct ovsdb_schema;
+diff --git a/ovsdb/log.h b/ovsdb/log.h
+index 90714ea13..d823058f5 100644
+--- a/ovsdb/log.h
++++ b/ovsdb/log.h
+@@ -37,7 +37,7 @@
+ 
+ #include <stdint.h>
+ #include <sys/types.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct ds;
+ struct json;
+diff --git a/ovsdb/mutation.h b/ovsdb/mutation.h
+index 7566ef199..dfb2d6940 100644
+--- a/ovsdb/mutation.h
++++ b/ovsdb/mutation.h
+@@ -17,7 +17,7 @@
+ #define OVSDB_MUTATION_H 1
+ 
+ #include <stddef.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "ovsdb-data.h"
+ 
+ struct json;
+diff --git a/ovsdb/ovsdb-client.c b/ovsdb/ovsdb-client.c
+index f1b8d6491..db5eebc17 100644
+--- a/ovsdb/ovsdb-client.c
++++ b/ovsdb/ovsdb-client.c
+@@ -28,7 +28,7 @@
+ 
+ #include "command-line.h"
+ #include "column.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "daemon.h"
+ #include "dirs.h"
+ #include "openvswitch/dynamic-string.h"
+diff --git a/ovsdb/ovsdb-tool.c b/ovsdb/ovsdb-tool.c
+index d4a9e34cc..8465666e5 100644
+--- a/ovsdb/ovsdb-tool.c
++++ b/ovsdb/ovsdb-tool.c
+@@ -23,8 +23,7 @@
+ #include <string.h>
+ 
+ #include "column.h"
+-#include "command-line.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dirs.h"
+ #include "openvswitch/dynamic-string.h"
+ #include "fatal-signal.h"
+diff --git a/ovsdb/ovsdb.h b/ovsdb/ovsdb.h
+index ec2d235ec..b9e09b897 100644
+--- a/ovsdb/ovsdb.h
++++ b/ovsdb/ovsdb.h
+@@ -16,7 +16,7 @@
+ #ifndef OVSDB_OVSDB_H
+ #define OVSDB_OVSDB_H 1
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/hmap.h"
+ #include "openvswitch/list.h"
+ #include "openvswitch/shash.h"
+diff --git a/ovsdb/raft-rpc.c b/ovsdb/raft-rpc.c
+index dd14d8109..051291b0f 100644
+--- a/ovsdb/raft-rpc.c
++++ b/ovsdb/raft-rpc.c
+@@ -19,7 +19,7 @@
+ #include "raft-rpc.h"
+ #include <stdlib.h>
+ #include <string.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "jsonrpc.h"
+ #include "ovsdb-error.h"
+ #include "ovsdb-parser.h"
+diff --git a/ovsdb/raft.h b/ovsdb/raft.h
+index 599bc0ae8..5f2c0c773 100644
+--- a/ovsdb/raft.h
++++ b/ovsdb/raft.h
+@@ -61,7 +61,7 @@
+ 
+ #include <stdbool.h>
+ #include <stdint.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "uuid.h"
+ 
+ struct json;
+diff --git a/ovsdb/storage.h b/ovsdb/storage.h
+index ff026b77f..7d03d4015 100644
+--- a/ovsdb/storage.h
++++ b/ovsdb/storage.h
+@@ -18,7 +18,7 @@
+ 
+ #include <stdint.h>
+ #include <sys/types.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct json;
+ struct ovsdb_schema;
+diff --git a/ovsdb/table.h b/ovsdb/table.h
+index ce69a5d13..de2619514 100644
+--- a/ovsdb/table.h
++++ b/ovsdb/table.h
+@@ -17,7 +17,7 @@
+ #define OVSDB_TABLE_H 1
+ 
+ #include <stdbool.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/hmap.h"
+ #include "openvswitch/shash.h"
+ 
+diff --git a/ovsdb/transaction.h b/ovsdb/transaction.h
+index 6b5bb7f24..5c0bb3834 100644
+--- a/ovsdb/transaction.h
++++ b/ovsdb/transaction.h
+@@ -17,7 +17,7 @@
+ #define OVSDB_TRANSACTION_H 1
+ 
+ #include <stdbool.h>
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ struct json;
+ struct ovsdb;
+diff --git a/tests/ovstest.h b/tests/ovstest.h
+index ddd7f3eb9..72fe6d152 100644
+--- a/tests/ovstest.h
++++ b/tests/ovstest.h
+@@ -17,7 +17,7 @@
+ #ifndef OVSTEST_H
+ #define OVSTEST_H
+ 
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ 
+ #include "command-line.h"
+ 
+diff --git a/tests/test-reconnect.c b/tests/test-reconnect.c
+index c84bb1cdb..7262ea774 100644
+--- a/tests/test-reconnect.c
++++ b/tests/test-reconnect.c
+@@ -21,8 +21,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include "openvswitch/compiler.h"
+ #include "command-line.h"
+-#include "compiler.h"
+ #include "ovstest.h"
+ #include "svec.h"
+ #include "util.h"
+diff --git a/utilities/ovs-dpctl.c b/utilities/ovs-dpctl.c
+index 56d7a942b..46d248694 100644
+--- a/utilities/ovs-dpctl.c
++++ b/utilities/ovs-dpctl.c
+@@ -31,8 +31,8 @@
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ 
++#include "openvswitch/compiler.h"
+ #include "command-line.h"
+-#include "compiler.h"
+ #include "dirs.h"
+ #include "dpctl.h"
+ #include "fatal-signal.h"
+diff --git a/utilities/ovs-ofctl.c b/utilities/ovs-ofctl.c
+index ede7f1e61..85df32d7e 100644
+--- a/utilities/ovs-ofctl.c
++++ b/utilities/ovs-ofctl.c
+@@ -34,7 +34,7 @@
+ #include "command-line.h"
+ #include "daemon.h"
+ #include "colors.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "dirs.h"
+ #include "dp-packet.h"
+ #include "fatal-signal.h"
+diff --git a/utilities/ovs-testcontroller.c b/utilities/ovs-testcontroller.c
+index b489ff5fc..c3d4bc7ff 100644
+--- a/utilities/ovs-testcontroller.c
++++ b/utilities/ovs-testcontroller.c
+@@ -24,8 +24,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
++#include "openvswitch/compiler.h"
+ #include "command-line.h"
+-#include "compiler.h"
+ #include "daemon.h"
+ #include "fatal-signal.h"
+ #include "learning-switch.h"
+diff --git a/utilities/ovs-vsctl.c b/utilities/ovs-vsctl.c
+index 37cc72d40..6013e9f57 100644
+--- a/utilities/ovs-vsctl.c
++++ b/utilities/ovs-vsctl.c
+@@ -29,8 +29,8 @@
+ 
+ #include "db-ctl-base.h"
+ 
++#include "openvswitch/compiler.h"
+ #include "command-line.h"
+-#include "compiler.h"
+ #include "dirs.h"
+ #include "fatal-signal.h"
+ #include "hash.h"
+diff --git a/vswitchd/ovs-vswitchd.c b/vswitchd/ovs-vswitchd.c
+index 407bfc60e..09004e79b 100644
+--- a/vswitchd/ovs-vswitchd.c
++++ b/vswitchd/ovs-vswitchd.c
+@@ -26,8 +26,8 @@
+ #endif
+ 
+ #include "bridge.h"
++#include "openvswitch/compiler.h"
+ #include "command-line.h"
+-#include "compiler.h"
+ #include "daemon.h"
+ #include "dirs.h"
+ #include "dpif.h"
+diff --git a/vtep/vtep-ctl.c b/vtep/vtep-ctl.c
+index ab552457d..6c9259fba 100644
+--- a/vtep/vtep-ctl.c
++++ b/vtep/vtep-ctl.c
+@@ -29,9 +29,9 @@
+ 
+ #include "db-ctl-base.h"
+ 
+-#include "command-line.h"
+-#include "compiler.h"
++#include "openvswitch/compiler.h"
+ #include "openvswitch/dynamic-string.h"
++#include "command-line.h"
+ #include "fatal-signal.h"
+ #include "hash.h"
+ #include "openvswitch/json.h"
+-- 
+2.35.1
+

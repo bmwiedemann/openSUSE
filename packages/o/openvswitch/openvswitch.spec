@@ -30,8 +30,7 @@
 %bcond_with dpdk
 %endif
 # The testsuite is somewhat fragile for continuous testing in OBS
-# but keep it here as an option
-%bcond_with check
+%bcond_without check
 # Disable building the external kernel datapath by default
 %bcond_with kmp
 %define lname libopenvswitch-2_17-0
@@ -48,30 +47,35 @@ URL:            http://openvswitch.org/
 Source0:        http://openvswitch.org/releases/openvswitch-%{version}.tar.gz
 Source2:        preamble
 Source89:       Module.supported.updates
+Source99:       openvswitch-rpmlintrc
 # PATCH-FIX-OPENSUSE: Use-strongswan-for-openvswitch-ipsec-service.patch
-Patch0:         0001-Use-strongswan-for-openvswitch-ipsec-service.patch
-# PATCH-FIX-OPENSUSE: 0001-Run-openvswitch-as-openvswitch-openvswitch.patch
-Patch1:         0001-Run-openvswitch-as-openvswitch-openvswitch.patch
-# PATCH-FIX-OPENSUSE: 0001-Don-t-change-permissions-of-dev-hugepages.patch
-Patch2:         0001-Don-t-change-permissions-of-dev-hugepages.patch
-# PATCH-FIX-OPENSUSE: 0001-Use-double-hash-for-OVS_USER_ID-comment.patch
-Patch3:         0001-Use-double-hash-for-OVS_USER_ID-comment.patch
+Patch0:         Use-strongswan-for-openvswitch-ipsec-service.patch
+# PATCH-FIX-OPENSUSE: Run-openvswitch-as-openvswitch-openvswitch.patch
+Patch1:         Run-openvswitch-as-openvswitch-openvswitch.patch
+# PATCH-FIX-OPENSUSE: Don-t-change-permissions-of-dev-hugepages.patch
+Patch2:         Don-t-change-permissions-of-dev-hugepages.patch
+# PATCH-FIX-OPENSUSE: Use-double-hash-for-OVS_USER_ID-comment.patch
+Patch3:         Use-double-hash-for-OVS_USER_ID-comment.patch
 # PATCH-FEATURE-UPSTREAM install-ovsdb-tools.patch -- Install some tools required for building OVN
 Patch4:         install-ovsdb-tools.patch
+Patch5:         0001-openvswitch-merge-compiler.h-files-into-one-file.patch
+Patch6:         0002-build-Seperated-common-used-headers.patch
+# Python subpackage
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
+# Main package
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  graphviz
-BuildRequires:  libcap-ng-devel
-BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  python
-BuildRequires:  python-rpm-macros
+BuildRequires:  python3
 BuildRequires:  python3-Sphinx
 BuildRequires:  unbound-devel
+BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(openssl)
 Requires:       modutils
 # ovs-ctl / ovs-pki use /usr/bin/uuidgen:
@@ -162,6 +166,8 @@ Summary:        Development files for Open vSwitch
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
+# Required for ovsdb-ildc
+Requires:       python3-ovs = %{version}
 Provides:       %{name}-dpdk-devel = %{version}
 Obsoletes:      %{name}-dpdk-devel < 2.7.0
 
@@ -310,12 +316,14 @@ python3 build-aux/dpdkstrip.py \
 %if %{with check}
 touch resolv.conf
 export OVS_RESOLV_CONF=$(pwd)/resolv.conf
+mv python/build python/pb
+ln -s _build.tmp python/build
 
 # Recheck tests before we declare them broken. If that fails, dump
 # the log and exit. >2.5.0 uses the RECHECK env variable so this
 # needs to be taken into consideration for future releases.
-if ! make check TESTSUITEFLAGS="%{?_smp_mflags}" &&
-   ! make check TESTSUITEFLAGS='--recheck'; then
+if ! make check-am TESTSUITEFLAGS="%{?_smp_mflags}" &&
+   ! make check-am TESTSUITEFLAGS='--recheck'; then
     cat tests/testsuite.log
     exit 1
 fi
@@ -339,18 +347,10 @@ done
 # Remove static libraries and libtool files
 rm -f %{buildroot}%{_libdir}/*.{l,}a
 
-# Install extra headers not included with 'make install'
-copy_headers() {
-    src=$1
-    dst=%{buildroot}/$2
-    install -d -m 0755 $dst
-    install -m 0644 $src/*.h $dst
-}
-copy_headers include/sparse %{_includedir}/openvswitch/sparse
-copy_headers include/sparse/arpa %{_includedir}/openvswitch/sparse/arpa
-copy_headers include/sparse/netinet %{_includedir}/openvswitch/sparse/netinet
-copy_headers include/sparse/sys %{_includedir}/openvswitch/sparse/sys
-copy_headers lib %{_includedir}/openvswitch/lib
+# Fix installation path
+mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions/
+mv %{buildroot}/%{_sysconfdir}/bash_completion.d/ovs-* %{buildroot}/%{_datadir}/bash-completion/completions/
+chmod 0644 %{buildroot}/%{_datadir}/bash-completion/completions/*
 
 # Install systemd files
 for service in openvswitch \
@@ -365,10 +365,6 @@ done
 
 install -D -m 644 rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template \
         %{buildroot}%{_fillupdir}/sysconfig.openvswitch
-
-# Fix installation path
-mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions/
-mv %{buildroot}/%{_sysconfdir}/bash_completion.d/ovs-* %{buildroot}/%{_datadir}/bash-completion/completions/
 
 install -d -m 0755 %{buildroot}/%{_rundir}/openvswitch
 install -d -m 0755 %{buildroot}%{_sysconfdir}/logrotate.d
@@ -402,7 +398,7 @@ rm -f python/ovs/dirs.py
 make python/ovs/dirs.py
 pushd python
 export LDFLAGS="${LDFLAGS} -L %{buildroot}%{_libdir}"
-export CPPFLAGS="-I ../../include"
+export CPPFLAGS="-I %{buildroot}%{_includedir} -I %{buildroot}%{_includedir}/openvswitch"
 %python_build
 %python_install
 popd
