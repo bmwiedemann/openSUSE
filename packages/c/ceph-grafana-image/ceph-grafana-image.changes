@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 16 17:19:00 UTC 2022 - Tatjana Dehler <tdehler@suse.com>
+
+- Change path and version from 7.0 to 7.1 for SES7 Pacific.
+
+-------------------------------------------------------------------
+Fri Oct  1 20:23:06 UTC 2021 - Stefen Allen <stefen.allen@suse.com>
+
+- Add xml for ses7 pacific.
+
+-------------------------------------------------------------------
 Fri Jul 30 23:01:56 UTC 2021 - Mike Latimer <mlatimer@suse.com>
 
 - Add findutils package dependency for config.sh
