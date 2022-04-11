@@ -1,7 +1,7 @@
 #
 # spec file for package aubio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,7 @@ sed -i -e "s#/lib#/%{_lib}#" src/wscript_build
 sed -i -e 's#python\ ${SRC}#python3 ${SRC}#g' tests/wscript_build
 
 %build
-python3 ./waf configure --prefix=%{_prefix} --libdir=%{_libdir}
+python3 ./waf configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-fftw3
 python3 ./waf build -v %{?_smp_mflags}
 
 %install
