@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-w3m
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Summary:        An interface program to use w3m with Emacs
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 # Summary(ja): w3m を Emacs 上で動かすためのプログラムです
-Version:        1.4.632+501+gc088fe62
+Version:        1.4.632+512+gc3a3a947
 Release:        0
-Url:            http://emacs-w3m.namazu.org/
+URL:            http://emacs-w3m.namazu.org/
 Source0:        emacs-w3m-%{version}.tar.xz
 Source1:        suse-start.el
 Patch1:         w3m-el-1.3-map.patch
@@ -42,11 +42,11 @@ Obsoletes:      w3m-el < %{version}
 # %description -l ja
 # Emacs 上で動作するブラウザと言えば，普通 W3 のことですが，動作が非常に
 # 遅いので，なかなか常用しようという気になれません．
-# 
+#
 # それに対して，w3m というテキストベースで動作するブラウザがあり，非常に
 # 軽快に動作するので重宝しているのですが，端末に移動しなければいけないの
 # が面倒です．
-# 
+#
 # そこで，w3m を HTML の rendering engine として使用し，表示とインタフェー
 # スのみをEmacs で動かすようにすればいいんじゃないだろうか，ということを
 # 考えました．
@@ -70,8 +70,8 @@ autoreconf --force --install
 %configure \
             --with-lispdir=%{emacs_package_dir} \
             --with-icondir=%{emacs_package_dir} \
-            --with-emacs=emacs 
-make 
+            --with-emacs=emacs
+make
 
 %install
 mkdir -p %{buildroot}/%{emacs_package_dir}
