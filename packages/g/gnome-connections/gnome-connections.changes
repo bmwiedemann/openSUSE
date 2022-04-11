@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  8 17:17:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.1.1:
+  + Fix crash with multiple simultaneous connections.
+  + Allow for resizing and maximizing a display view.
+  + Reset credentials when authentication fails.
+  + Fix connection deletion on notification timeout.
+- Changes from version 42.1:
+  + Fixed double-free crash while connecting to RDP servers.
+  + Fixed RDP scaling and resizing issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 21 19:28:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:
