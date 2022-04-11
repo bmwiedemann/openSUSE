@@ -469,4 +469,31 @@ rename the package from spyder3 to spyder.
     <comment>- Fix unpinning of IPython and unpin pyls (forwarded request 964862 from bnavigator)</comment>
     <requestid>964863</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ee797d64248d4a6cdf6919254e42ce98</srcmd5>
+    <version>5.3.0</version>
+    <time>1649713726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.3.0
+  * New Run to current line and Run from current line actions in
+    the Editor
+  * New option to reset per-file run configurations
+  * Now the spyder-terminal plugin comes bundled with the
+    standalone installers (MacOS and Windows)
+  * Now the standalone Windows installers come with Python 3.8.10
+  * Drop support for Python 3.6
+  * Fix the restart logic in the IPython Console to set Matplotlib
+    interactive backends
+  * Fix some issues related to Black formatting configuration and
+    usage
+  * Improve Editor performance by decreasing the amount of requests
+    (didChange request) made to the pylsp server
+  * Disable Kite provider for completions
+  * Require IPython =&gt; 7.31.1 due to CVE-2022-21699
+  * Several fixes for type errors with Python 3.10
+  * New API features
+  * New on_close method for the PluginMainWidget class that its
+    called on closeEvent (forwarded request 968081 from bnavigator)</comment>
+    <requestid>968082</requestid>
+  </revision>
 </revisionlist>

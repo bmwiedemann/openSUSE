@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr  9 20:39:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.3.0
+  * New Run to current line and Run from current line actions in
+    the Editor
+  * New option to reset per-file run configurations
+  * Now the spyder-terminal plugin comes bundled with the
+    standalone installers (MacOS and Windows)
+  * Now the standalone Windows installers come with Python 3.8.10
+  * Drop support for Python 3.6
+  * Fix the restart logic in the IPython Console to set Matplotlib
+    interactive backends
+  * Fix some issues related to Black formatting configuration and
+    usage
+  * Improve Editor performance by decreasing the amount of requests
+    (didChange request) made to the pylsp server
+  * Disable Kite provider for completions
+  * Require IPython => 7.31.1 due to CVE-2022-21699
+  * Several fixes for type errors with Python 3.10
+  * New API features
+  * New on_close method for the PluginMainWidget class that its
+    called on closeEvent
+
+-------------------------------------------------------------------
 Fri Mar 25 13:29:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix unpinning of IPython and unpin pyls
