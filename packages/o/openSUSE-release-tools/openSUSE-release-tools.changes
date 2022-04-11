@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 11 08:41:07 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220411.23ca4c85:
+  * Write points to the DB only at the end of interval
+
+-------------------------------------------------------------------
 Fri Apr 08 06:56:18 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220408.1d368407:
