@@ -1,0 +1,6 @@
+<package name="catimg" project="openSUSE:Factory">
+  <title></title>
+  <description>Insanely fast image printing in your terminal.</description>
+  <devel project="graphics" package="catimg"/>
+  <url>https://posva.net/shell/retro/bash/2013/05/27/catimg</url>
+</package>

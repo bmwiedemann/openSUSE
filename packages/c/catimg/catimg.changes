@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Apr 10 18:51:38 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Do not strip binary on build
+
+-------------------------------------------------------------------
+Sat Apr  9 20:48:56 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Use cmake via macro
+- Package zsh completion on its own
+
+-------------------------------------------------------------------
+Thu Apr  7 18:52:53 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Correct source URL
+
+-------------------------------------------------------------------
+Thu Apr  7 17:57:26 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Format spec file via osc service
+
+-------------------------------------------------------------------
+Sun Feb 27 19:56:25 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Refit into graphics viewer group
+
+-------------------------------------------------------------------
+Sun Feb 27 19:50:40 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Use macros instead of commands
+- Remove unnecessary specfile components
+- Use macros for paths
+
+-------------------------------------------------------------------
+Mon May  4 10:43:31 UTC 2020 - JL K <jlk@fsfe.org>
+
+- Init project

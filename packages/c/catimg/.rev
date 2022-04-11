@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6808414542f1d11c6fde5326579dfde4</srcmd5>
+    <version>2.7.0</version>
+    <time>1649713685</time>
+    <user>dimstar_suse</user>
+    <comment>New package, announcement: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/K5JGL6R2TMUW7TC2Y3O2UULGC65DQWMJ/
+
+As pointed out the cmake macro is used instead of setting flags manually and the binary is not stripped.</comment>
+    <requestid>968288</requestid>
+  </revision>
+</revisionlist>
