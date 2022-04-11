@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Notify on notebook change for exceptions.
+  * Note use of low-level libical function
+  * Print more information about errors when loading vCalendars
+  * Implement notebook association when parsing iCal data.
+  * Correct a comment
+  * Fix storing of times with UTC offsets
+  * Second attempt to make testTodoCompletedOnce work all year
+  * Revert "Don't use the current date for recurring todo completion test"
+  * Compare QDateTime times, timespecs, and timezones
+
+-------------------------------------------------------------------
 Mon Mar  7 09:26:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
