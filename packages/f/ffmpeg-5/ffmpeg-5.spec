@@ -75,7 +75,7 @@
 %define _major_expected 6
 
 Name:           ffmpeg-5
-Version:        5.0
+Version:        5.0.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
