@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * PackageJobThread: Also check if metadata.json file exists
+  * Explicitly call KPluginMetaData::fromJsonFile when constructing metadata objects
+  * Fix desktoptojson invocation when cross-compiling
+
+-------------------------------------------------------------------
 Mon Mar  7 09:27:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
