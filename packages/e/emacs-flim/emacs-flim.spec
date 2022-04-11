@@ -17,13 +17,13 @@
 
 
 Name:           emacs-flim
-Version:        1.14.9
+Version:        1.14.9+125+g02735de
 Release:        0
 Summary:        An Emacs Library for MIME
 License:        GPL-2.0+
 Group:          Productivity/Editors/Emacs
-Url:            http://git.chise.org/elisp/flim
-Source:         http://git.chise.org/elisp/dist/flim/flim-1.14/flim-%{version}.tar.gz
+Url:            https://github.com/wanderlust/flim
+Source:         flim-%{version}.tar.gz
 Patch:          flim-encoding-fix.diff
 BuildRequires:  emacs-apel >= 10.7
 BuildRequires:  emacs-nox
@@ -41,8 +41,6 @@ For coding and decoding MIME messages.
 %prep
 %setup -q -n flim-%{version}
 %patch
-iconv -fiso2022jp -tutf-8 README.ja > README.ja.new
-mv README.ja.new README.ja
 
 %build
 make %{?_smp_mflags} EMACS=emacs \
@@ -69,7 +67,7 @@ rm -f %{buildroot}%{_datadir}/emacs/site-lisp/flim/ntlm.el*
 
 %files
 %defattr(-,root,root)
-%doc README.en README.ja ChangeLog NEWS
+%doc README.en README.ja ChangeLog.1 NEWS
 %{_datadir}/emacs/site-lisp/flim
 
 %changelog

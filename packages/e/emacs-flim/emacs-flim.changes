@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 09 07:17:16 UTC 2022 - schwab@linux-m68k.org
+
+- Switch to FLIM-LB from Wanderlust
+- Update to version 1.4.9+125+g02735de:
+  * Fold docstring of customizable variable within 80 characters
+  * Minor refactorings
+  * * sasl-xoauth2.el (sasl-xoauth2-host-url-table): Add examples. (not tested)
+  * Compare field names in a case insensitive manner
+  * Fix last change of std11-narrow-to-header.
+  * Adjust dependencies.
+  * Fix https://github.com/wanderlust/flim/issues/14
+  * * eword-decode.el (eword-lexical-analyze): Minor refactorings.
+  * * std11.el (std11-narrow-to-header): Narrow region only when needed.
+  * Update package description file for MELPA.
+
+-------------------------------------------------------------------
 Fri Jul 10 09:28:54 UTC 2015 - i@marguerite.su
 
 - fix URL
