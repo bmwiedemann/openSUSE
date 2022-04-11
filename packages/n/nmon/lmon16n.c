@@ -46,7 +46,7 @@ PRE_KERNEL_2_6_18 1 kernel levels before removed the following to the disk stats
 #define RAW(member)      (long)((long)(p->cpuN[i].member)   - (long)(q->cpuN[i].member))
 #define RAWTOTAL(member) (long)((long)(p->cpu_total.member) - (long)(q->cpu_total.member))
 
-#define VERSION "16k"
+#define VERSION "16n"
 char version[] = VERSION;
 static char *SccsId = "nmon " VERSION;
 
@@ -1108,7 +1108,7 @@ struct nfs_stat {
 
 #define NETMAX 32
 struct net_stat {
-    unsigned long if_name[17];
+    unsigned char if_name[17];
     unsigned long long if_ibytes;
     unsigned long long if_obytes;
     unsigned long long if_ipackets;
@@ -1436,7 +1436,7 @@ int diskmax = DISKMIN;
 
 /* Supports up to 780, but not POWER6 595 follow-up with POWER7 */
 /* XXXX needs rework to cope to with fairly rare but interesting higher numbers of CPU machines */
-#define CPUMAX (192 * 8)	/* MAGIC COOKIE WARNING */
+#define CPUMAX (240 * 8)	/* MAGIC COOKIE WARNING */
 
 struct data {
     struct dsk_stat *dk;
@@ -4023,8 +4023,22 @@ int getprocs(int records)
 
 /* --- */
 
-char cpu_line[] =
-    "---------------------------+-------------------------------------------------+";
+const char cpu_line[] = "---------------------------+-------------------------------------------------+";
+
+const char wide1[]       = "100%%-+--------+---------+---------+---------+---------+---------+-----+100%%";
+const char wide2[]       = " 90%%-|                                                                |-90%%";
+const char wide3[]       = " 80%%-|                                                                |-80%%";
+const char wide4[]       = " 70%%-|                                                                |-70%%";
+const char wide5[]       = " 60%%-|                                                                |-60%%";
+const char wide6[]       = " 50%%-|                                                                |-50%%";
+const char wide7[]       = " 40%%-|                                                                |-40%%";
+const char wide8[]       = " 30%%-|                                                                |-30%%";
+const char wide9[]       = " 20%%-|                                                                |-20%%";
+const char wide10[]      = " 10%%-|                                                                |-10%%";
+const char wide_1_64[]   = " CPU +1--------+10-------+20-------+30-------+40-------+50-------+60--+--0%%";
+const char wide_65_128[] = " CPU +65---+70-------+80-------+90-------+100------+110------+120-----+--0%%";
+const char wide_129_192[]= " CPU +129--------+140------+150------+160------+170------+180------+190--0%%";
+
 /* Start process as specified in cmd in a child process without waiting
  * for completion
  * not sure if want to prevent this funcitonality for root user
@@ -5683,27 +5697,6 @@ int main(int argc, char **argv)
 		if (cursed) {
 		    int rows = 0;
 		    BANNER(padwide, "CPU Utilisation Wide View");
-		    char *wide1 =
-			"100%%-+--------+---------+---------+---------+---------+---------+-----+100%%";
-		    char *wide2 =
-			" 90%%-|                                                                |-90%%";
-		    char *wide3 =
-			" 80%%-|                                                                |-80%%";
-		    char *wide4 =
-			" 70%%-|                                                                |-70%%";
-		    char *wide5 =
-			" 60%%-|                                                                |-60%%";
-		    char *wide6 =
-			" 50%%-|                                                                |-50%%";
-		    char *wide7 =
-			" 40%%-|                                                                |-40%%";
-		    char *wide8 =
-			" 30%%-|                                                                |-30%%";
-		    char *wide9 =
-			" 20%%-|                                                                |-20%%";
-		    char *wide10 =
-			" 10%%-|                                                                |-10%%";
-
 		    mvwprintw(padwide, 1, 0, wide1);
 		    mvwprintw(padwide, 2, 0, wide2);
 		    mvwprintw(padwide, 3, 0, wide3);
@@ -5714,8 +5707,7 @@ int main(int argc, char **argv)
 		    mvwprintw(padwide, 8, 0, wide8);
 		    mvwprintw(padwide, 9, 0, wide9);
 		    mvwprintw(padwide, 10, 0, wide10);
-		    mvwprintw(padwide, 11, 0,
-			      " CPU +1--------+10-------+20-------+30-------+40-------+50-------+60--+--0%%");
+		    mvwprintw(padwide, 11, 0, wide_1_64);
 		    mvwprintw(padwide, 1, 6, "CPU(s)=%d", cpus);
 		    if (wide_first_time) {
 			mvwprintw(padwide, 3, 7,
@@ -5765,8 +5757,7 @@ int main(int argc, char **argv)
 			mvwprintw(padwide, rows + 7, 0, wide8);
 			mvwprintw(padwide, rows + 8, 0, wide9);
 			mvwprintw(padwide, rows + 9, 0, wide10);
-			mvwprintw(padwide, rows + 10, 0,
-				  " CPU +65---+70-------+80-------+90-------+100------+110------+120-----+--0%%");
+			mvwprintw(padwide, rows + 10, 0, wide_65_128);
 			if (wide_first_time) {
 			    mvwprintw(padwide, rows + 3, 7,
 				      " Please wait gathering CPU statistics");
@@ -5823,8 +5814,7 @@ int main(int argc, char **argv)
 			mvwprintw(padwide, rows + 7, 0, wide8);
 			mvwprintw(padwide, rows + 8, 0, wide9);
 			mvwprintw(padwide, rows + 9, 0, wide10);
-			mvwprintw(padwide, rows + 10, 0,
-				  " CPU +129--------+140------+150------+160------+170------+180------+190--0%%");
+			mvwprintw(padwide, rows + 10, 0,wide_129_192);
 			if (wide_first_time) {
 			    mvwprintw(padwide, rows + 3, 7,
 				      " Please wait gathering CPU statistics");
@@ -6400,7 +6390,7 @@ int main(int argc, char **argv)
 		BANNER(padmem, "Memory and Swap");
 
 		COLOUR wattrset(padmem, COLOR_PAIR(1));
-		mvwprintw(padmem, 1, 1, "PageSize:%dKB", pagesize / 1024);
+		mvwprintw(padmem, 1, 1, "PageSize:%luKB", pagesize / 1024);
 		COLOUR wattrset(padmem, COLOR_PAIR(0));
 		mvwprintw(padmem, 2, 1, "Total (MB)");
 		mvwprintw(padmem, 3, 1, "Free  (MB)");
@@ -6894,7 +6884,7 @@ int main(int argc, char **argv)
 		else
 		    mvwprintw(padker, 5, BOOTCOL, "Uptime has overflowed");
 		mvwprintw(padker, 7, BOOTCOL, "%d CPU core threads", cpus);
-		mvwprintw(padker, 9, BOOTCOL, "Boot time %d", boottime);
+		mvwprintw(padker, 9, BOOTCOL, "Boot time %lld", boottime);
 		mvwprintw(padker,10, BOOTCOL, "%s", boottime_str);
 		COLOUR wattrset(padker, COLOR_PAIR(0));
 		DISPLAY(padker, 11);
@@ -7672,7 +7662,7 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 				      disk_busy_peak[i],
 				      disk_rate_peak[i]);
 			    COLOUR wattrset(paddisk, COLOR_PAIR(3));
-			    mvwprintw(paddisk, 2 + k, 70, "%3d", p->dk[i].dk_inflight);
+			    mvwprintw(paddisk, 2 + k, 70, "%3ld", p->dk[i].dk_inflight);
 			    COLOUR wattrset(paddisk, COLOR_PAIR(0));
 			    k++;
 			}
@@ -8229,7 +8219,7 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 					p->procs[i].pi_ppid, 
 					pgrp);
 			COLOUR wattrset(padtop, COLOR_PAIR(5));
-			mvwprintw(padtop, j + 2 - skipped, 24, "%4d %4d",
+			mvwprintw(padtop, j + 2 - skipped, 24, "%4ld %4ld",
 					p->procs[i].pi_nice,
 					p->procs[i].pi_pri);
 			if (topper[j].time * 100 / elapsed) {
@@ -8241,7 +8231,7 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 					(topper[j].time * 100 / elapsed) ? "Running " : get_state(p->procs[i].pi_state));
 
 			COLOUR wattrset(padtop, COLOR_PAIR(6));
-			mvwprintw(padtop, j + 2 - skipped, 45, "0x%08x",
+			mvwprintw(padtop, j + 2 - skipped, 45, "0x%08lx",
 					p->procs[i].pi_flags);
 			COLOUR wattrset(padtop, COLOR_PAIR(1));
 			mvwprintw(padtop, j + 2 - skipped, 54, "%1s",
@@ -8274,7 +8264,7 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 			    formatstring =
 				"  PID    %%CPU  Size   Res   Res   Res   Res Shared   Faults  Command";
 		    }
-		    CURSE mvwprintw(padtop, 1, y, formatstring);
+		    CURSE mvwprintw(padtop, 1, y, "%s", formatstring);
 
 		    if (show_args == ARGS_ONLY) {
 			formatstring =
@@ -8294,7 +8284,7 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 			    formatstring =
 				"         Used    KB   Set  Text  Data   Lib    KB  Min  Maj ";
 		    }
-		    CURSE mvwprintw(padtop, 2, 1, formatstring);
+		    CURSE mvwprintw(padtop, 2, 1, "%s", formatstring);
 		    for (j = 0; j < max_sorted; j++) {
 			i = topper[j].index;
 			if (!show_all) {

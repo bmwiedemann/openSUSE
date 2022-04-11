@@ -1,7 +1,7 @@
 #
 # spec file for package nmon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           nmon
-Version:        16m
+Version:        16n
 Release:        0
 Summary:        Performance Monitor
 License:        GPL-3.0-only
 URL:            http://nmon.sourceforge.net/pmwiki.php
-Source0:        http://sourceforge.net/projects/nmon/files/lmon%{version}.c
+Source0:        https://sourceforge.net/projects/nmon/files/lmon%{version}.c
 Source1:        https://www.gnu.org/licenses/gpl-3.0.txt
 BuildRequires:  ncurses-devel
 Provides:       lmon = %{version}
