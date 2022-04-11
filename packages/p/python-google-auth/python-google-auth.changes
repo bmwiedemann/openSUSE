@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Apr  9 19:20:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Improve %files to be more restrictive.
+
+-------------------------------------------------------------------
+Fri Apr  8 13:30:25 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.3
+  Bug Fixes
+  * change requests lib import place (#1010)
+  * clean up HTTP session and pool during tear down phase (#1007)
+  * pin click version and update sys test creds (#1008)
+- from version 2.6.2
+  Bug Fixes
+  * Rename aws imdsv2 url field and update token lifetime (#982)
+  Miscellaneous Chores
+  * let release-please finish the release (#991)
+- from version 2.6.1
+  Bug Fixes
+  * Add AWS session token to metadata requests (#958)
+- from version 2.6.0
+  Features
+  * ADC can load an impersonated service account credentials. (#962)
+  Bug Fixes
+  * revert "feat: add api key support (#826)
+
+-------------------------------------------------------------------
 Thu Jan 27 06:49:59 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to 2.5.0

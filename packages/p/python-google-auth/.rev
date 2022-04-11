@@ -181,4 +181,31 @@
     <comment></comment>
     <requestid>949687</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d90712d524701202fbdc230ee23bf62d</srcmd5>
+    <version>2.6.3</version>
+    <time>1649715232</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve %files to be more restrictive.
+- Update to 2.6.3
+  Bug Fixes
+  * change requests lib import place (#1010)
+  * clean up HTTP session and pool during tear down phase (#1007)
+  * pin click version and update sys test creds (#1008)
+- from version 2.6.2
+  Bug Fixes
+  * Rename aws imdsv2 url field and update token lifetime (#982)
+  Miscellaneous Chores
+  * let release-please finish the release (#991)
+- from version 2.6.1
+  Bug Fixes
+  * Add AWS session token to metadata requests (#958)
+- from version 2.6.0
+  Features
+  * ADC can load an impersonated service account credentials. (#962)
+  Bug Fixes
+  * revert &quot;feat: add api key support (#826)
+</comment>
+    <requestid>968048</requestid>
+  </revision>
 </revisionlist>

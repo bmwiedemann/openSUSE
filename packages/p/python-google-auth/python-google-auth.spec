@@ -17,34 +17,33 @@
 
 
 %define skip_python2 1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-auth
-Version:        2.5.0
+Version:        2.6.3
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
 URL:            https://github.com/GoogleCloudPlatform/google-auth-library-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-auth/google-auth-%{version}.tar.gz
 Patch0:         ga_python-executable-name.patch
-BuildRequires:  %{python_module cachetools >= 2.0.0}
-BuildRequires:  %{python_module pyasn1-modules >= 0.2.1}
-BuildRequires:  %{python_module rsa >= 3.1.4}
-BuildRequires:  %{python_module setuptools >= 40.3.0}
-BuildRequires:  %{python_module six >= 1.9.0}
+BuildRequires:  %{python_module Flask}
 # START TESTING SECTION
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
-BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module cachetools >= 2.0.0}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module oauth2client-gce}
 BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module pyOpenSSL >= 20.0.0}
+BuildRequires:  %{python_module pyasn1-modules >= 0.2.1}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyu2f >= 0.1.5}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module rsa >= 3.1.4}
+BuildRequires:  %{python_module setuptools >= 40.3.0}
+BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module urllib3}
 # END TESTING SECTION
 BuildRequires:  fdupes
@@ -81,6 +80,10 @@ This library simplifies using Google’s various server-to-server authentication
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/google
+%{python_sitelib}/google/auth
+%{python_sitelib}/google/oauth2
+%{python_sitelib}/google_auth-%{version}*-info
+%{python_sitelib}/google_auth-%{version}*-nspkg.pth
 
 %changelog
