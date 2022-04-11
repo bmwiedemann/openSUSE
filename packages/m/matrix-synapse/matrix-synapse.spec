@@ -50,7 +50,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.55.2
+Version:        1.56.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -83,7 +83,7 @@ BuildRequires:  unzip
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
 # NOTE: Keep this is in the same order as synapse/python_dependencies.py.
-BuildRequires:  (%{use_python}-Jinja2 >= 2.9 with %{use_python}-Jinja2 < 3.1)
+BuildRequires:  %{use_python}-Jinja2 >= 3.0
 %requires_peq   %{use_python}-Jinja2
 BuildRequires:  %{use_python}-Pillow >= 5.4.0
 %requires_peq   %{use_python}-Pillow
@@ -133,7 +133,7 @@ BuildRequires:  %{use_python}-pymacaroons >= 0.13.0
 %requires_peq   %{use_python}-pymacaroons
 BuildRequires:  %{use_python}-service_identity >= 18.1.0
 %requires_peq   %{use_python}-service_identity
-BuildRequires:  %{use_python}-signedjson >= 1.1.0
+BuildRequires:  (%{use_python}-signedjson >= 1.1.0 with %{use_python}-signedjson <= 1.1.1)
 %requires_peq   %{use_python}-signedjson
 BuildRequires:  %{use_python}-six >= 1.10
 %requires_peq   %{use_python}-six
