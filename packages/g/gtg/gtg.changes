@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 18 04:26:53 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 0.6:
+  + GTG 0.6 brings even more performance improvements, many bug
+    fixes, the introduction of the CalDAV synchronization service,
+    the new Gamify plugin, and a redesign of the Tag Editor. 
+  + Some of the new features additions:
+    - Support for undo/redo actions in the Task Editor.
+    - The ability to collapse and expand all tasks in the main menu.
+    - F10 shortcut to open the main menu.
+    - ESC now closes the calendar picker window.
+    - CTRL+B shortcut to set focus on the sidebar.
+    - An option to set the due date to "today" in the context menu.
+  + Some of the improvements:
+    - Made an update to prevent errors when no task is selected.
+    - Made several changes in preparation for Gtk 4.0.
+    - Added gtg://TASK-ID to the command-line help.
+    - Added the -p parameter for profiling in debug.sh.
+  + Updated documentation.
+- For a more extensive list of changes in 0.6, visit:
+  https://github.com/getting-things-gnome/gtg/blob/v0.6/NEWS
+- For a more detailed overview of what has changed in 0.6, visit:
+  https://fortintam.com/blog/gtg-0-6-released/
+- Drop already merged 0001-GTG-0.5-fix-meson-build-failure.patch
+  patch.
+- Add hamster-time-tracer recommendation for Hamster Plugin
+  integration.
+
+-------------------------------------------------------------------
 Thu Feb 10 10:36:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add explicit itstool BuildRequires: meson checks for it.

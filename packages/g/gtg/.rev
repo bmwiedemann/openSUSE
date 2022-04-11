@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>953246</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c579ce72bbd77b12c2c91a745099b912</srcmd5>
+    <version>0.6</version>
+    <time>1649713755</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.6 minor stable release. (forwarded request 968090 from luc14n0)</comment>
+    <requestid>969166</requestid>
+  </revision>
 </revisionlist>

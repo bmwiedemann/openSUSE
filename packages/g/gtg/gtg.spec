@@ -16,30 +16,48 @@
 #
 
 
+# TODO 1) Report unused itstool build requirement, despite it being
+#         checked by the build script.
+#      2) Meson is throwing out (gtg-0.6):
+#         "NOTICE: Future-deprecated features used:
+#                  0.56.0: {'meson.source_root'}"
+#      3) Report unneeded shebang in Python modules and executable bits
+#         on networkmanager.py.
+
 Name:           gtg
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Personal Organizer for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Apps/GTG
 Source0:        https://github.com/getting-things-gnome/gtg/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-meson-build-failure.patch -- luc14n0@opensuse.org
-# based on commit 1809d10663ae3d8f69c04138b66f9b4e66ee14f6.
-# Fix i18n.merge_file() that got "build_always_stale" keyword
-# argument removed from Meson 0.60 release.
-Patch0:         0001-GTG-0.5-fix-meson-build-failure.patch
 
 BuildRequires:  fdupes
+BuildRequires:  gettext-tools
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-cairo
+BuildRequires:  python3-caldav
+BuildRequires:  python3-gobject
+BuildRequires:  python3-liblarch
+BuildRequires:  python3-lxml
 BuildRequires:  update-desktop-files
+BuildRequires:  typelib(GLib)
+BuildRequires:  typelib(GdkPixbuf)
+BuildRequires:  typelib(Gtk) = 3.0
+BuildRequires:  typelib(GtkSource) = 4
+BuildRequires:  typelib(Pango)
+## Run-time Requirements
 Requires:       python3-gobject-Gdk
 Requires:       python3-liblarch
 Requires:       python3-liblarch-gtk
 Requires:       python3-lxml
 Requires:       python3-pycairo
+## For GTG's plugins
+# Hamster Time Tracker Integration
+Recommends:     hamster-time-tracker
 BuildArch:      noarch
 
 %description
@@ -56,9 +74,16 @@ from small tasks to large projects.
 %prep
 %autosetup -p1
 
-### Fix Shebang Issues ###
-sed -i -e '1s/env //' GTG/{gtg.in,core/networkmanager.py}
-sed -i -r '1s/(.*)/# \1/' GTG/{core/info.py.in,plugins/export/export_templates/script_pocketmod}
+## Fix shebang issues
+pushd GTG
+sed -i -e '1s/env //' gtg.in
+sed -i -r '1s,(#!/bin/sh),# \1,' \
+          plugins/export/export_templates/script_pocketmod
+for file in core/info.py.in core/networkmanager.py; do
+    sed -i -r '1s,^(#!/usr/bin/(|env )python3),# \1,' $file
+    chmod -x $file
+done
+popd
 
 %build
 %meson %{nil}
