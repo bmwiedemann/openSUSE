@@ -2,7 +2,7 @@ Index: lib/match.c
 ===================================================================
 --- lib/match.c.orig
 +++ lib/match.c
-@@ -770,3 +770,4 @@ match_init:
+@@ -772,3 +772,4 @@ match_init:
  # endif /* __ia64__ */
  #endif /* mc68000 || mc68020 */
  #endif /* i386 || _I386   */

@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           gzip
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        GNU Zip Compression Utilities
 License:        GPL-3.0-or-later

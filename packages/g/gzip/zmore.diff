@@ -2,11 +2,11 @@
  zmore.in |   25 ++++++++++++++++++++++++-
  1 file changed, 24 insertions(+), 1 deletion(-)
 
-Index: gzip-1.6/zmore.in
+Index: gzip-1.12/zmore.in
 ===================================================================
---- gzip-1.6.orig/zmore.in
-+++ gzip-1.6/zmore.in
-@@ -44,6 +44,29 @@ case $1 in
+--- gzip-1.12.orig/zmore.in
++++ gzip-1.12/zmore.in
+@@ -38,6 +38,29 @@ case $1 in
         exit 1;;
  esac
  
@@ -36,9 +36,9 @@ Index: gzip-1.6/zmore.in
  if test $# = 0; then
      if test -t 0; then
          printf >&2 '%s\n' "$0: missing operands; try '$0 --help' for help"
-@@ -57,4 +80,4 @@ do
+@@ -51,4 +74,4 @@ do
    test $# -lt 2 ||
      printf '::::::::::::::\n%s\n::::::::::::::\n' "$FILE" || break
-   gzip -cdfq -- "$FILE"
+   'gzip' -cdfq -- "$FILE"
 -done 2>&1 | eval ${PAGER-more}
 +done 2>&1 | pager

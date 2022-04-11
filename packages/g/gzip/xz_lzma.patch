@@ -1,8 +1,8 @@
-Index: gzip-1.5/zgrep.1
+Index: gzip-1.12/zgrep.1
 ===================================================================
---- gzip-1.5.orig/zgrep.1
-+++ gzip-1.5/zgrep.1
-@@ -10,7 +10,7 @@ zgrep \- search possibly compressed file
+--- gzip-1.12.orig/zgrep.1
++++ gzip-1.12/zgrep.1
+@@ -11,7 +11,7 @@ The
  .B zgrep
  command invokes
  .B grep
@@ -11,11 +11,11 @@ Index: gzip-1.5/zgrep.1
  All options specified are passed directly to
  .BR grep .
  If no file is specified, then the standard input is decompressed
-Index: gzip-1.5/zgrep.in
+Index: gzip-1.12/zgrep.in
 ===================================================================
---- gzip-1.5.orig/zgrep.in
-+++ gzip-1.5/zgrep.in
-@@ -178,6 +178,12 @@ do
+--- gzip-1.12.orig/zgrep.in
++++ gzip-1.12/zgrep.in
+@@ -215,6 +215,12 @@ do
      *.bz2)
        uncompress=bzip2
        ;;

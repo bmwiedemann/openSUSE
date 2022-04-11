@@ -1,12 +1,12 @@
 Index: zgrep.in
 ===================================================================
---- zgrep.in.orig	2012-01-01 09:53:58.000000000 +0100
-+++ zgrep.in	2012-10-16 13:22:26.304769138 +0200
-@@ -174,10 +174,18 @@ res=0
+--- zgrep.in.orig
++++ zgrep.in
+@@ -211,10 +211,18 @@ res=1
  
  for i
  do
-+  case $i in
++  case "$i" in
 +    *.bz2)
 +      uncompress=bzip2
 +      ;;
@@ -17,8 +17,8 @@ Index: zgrep.in
    # Fail if gzip or grep (or sed) fails.
    gzip_status=$(
      exec 5>&1
--    (gzip -cdfq -- "$i" 5>&-; echo $? >&5) 3>&- |
+-    ('gzip' -cdfq -- "$i" 5>&-; echo $? >&5) 3>&- |
 +    ($uncompress -cdfq -- "$i" 5>&-; echo $? >&5) 3>&- |
      if test $files_with_matches -eq 1; then
-       eval "$grep" >/dev/null && { printf '%s\n' "$i" || exit 2; }
+       eval "$grep$args" >/dev/null && { printf '%s\n' "$i" || exit 2; }
      elif test $files_without_matches -eq 1; then

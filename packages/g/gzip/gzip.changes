@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr  9 11:45:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12 (CVE-2022-1271,bsc#1198062):
+  * 'gzip -l' no longer misreports file lengths 4 GiB and larger.
+    Previously, 'gzip -l' output the 32-bit value stored in the gzip
+    header even though that is the uncompressed length modulo 2**32.
+    Now, 'gzip -l' calculates the uncompressed length by decompressing
+    the data and counting the resulting bytes.  Although this can take
+    much more time, nowadays the correctness pros seem to outweigh the
+    performance cons.
+  * 'zless' is no longer installed on platforms lacking 'less'.
+  * zgrep applied to a crafted file name with two or more newlines
+    can no longer overwrite an arbitrary, attacker-selected file.
+    [bug introduced in gzip-1.3.10]
+  * zgrep now names input file on error instead of mislabeling it as
+    "(standard input)", if grep supports the GNU -H and --label options.
+  * 'zdiff -C 5' no longer misbehaves by treating '5' as a file name.
+  * Configure-time options like --program-prefix now work.
+- refresh zdiff.diff, zgrep.diff, zmore.diff
+
+-------------------------------------------------------------------
 Sun Jan 30 23:02:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add conflicts/provides for alternative(gzip)

@@ -1,17 +1,17 @@
 Index: zdiff.in
 ===================================================================
---- zdiff.in.orig	2012-01-01 09:53:58.000000000 +0100
-+++ zdiff.in	2012-10-16 13:40:46.854905141 +0200
-@@ -105,9 +105,9 @@ elif test $# -eq 2; then
+--- zdiff.in.orig
++++ zdiff.in
+@@ -133,9 +133,9 @@ case $file2 in
                                  5<&0
                      then
                          gzip_status=$(
 -                          exec 4>&1
--                          (gzip -cdfq -- "$1" 4>&-; echo $? >&4) 3>&- |
--                            ( (gzip -cdfq -- "$2" 4>&-; echo $? >&4) 3>&- 5<&- </dev/null |
-+			  exec 4>&1 6<&0
-+			  (gzip -cdfq -- "$1" 4>&-; echo $? >&4) 3>&- 6<&- |
-+			    ( (gzip -cdfq -- "$2" 4>&- 0<&6 6<&-; echo $? >&4) 3>&- 5<&- </dev/null |
+-                          ('gzip' -cdfq -- "$file1" 4>&-; echo $? >&4) 3>&- |
+-                              (('gzip' -cdfq -- "$file2" 4>&-
++                          exec 4>&1 6<&0
++                          ('gzip' -cdfq -- "$file1" 4>&-; echo $? >&4) 3>&- 6<&- |
++                              (('gzip' -cdfq -- "$file2" 4>&- 0<&6 6<&-
+                                 echo $? >&4) 3>&- 5<&- </dev/null |
                                 eval "$cmp" /dev/fd/5 - >&3) 5<&0
                          )
-                         cmp_status=$?
