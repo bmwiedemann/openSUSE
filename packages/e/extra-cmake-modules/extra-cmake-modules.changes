@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:46:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Fix finding qmake
+  * ECMQueryQt: don't fail when TRY is used
+  * ECMQueryQt: Add fallbacks
+  * Require tests to pass for the CI to pass
+  * Fix unit tests for ECMAddTests for Qt6 after db2adb479
+  * ECMAddQch: Make it work with Qt6::qhelpgenerator too
+  * Deprecate ECMQueryQmake, superseded by ECMQueryQt
+  * KDEInstallDirs6: port from custom logic to ecm_query_qt
+  * Port from ECMQueryQmake to ECMQueryQt
+  * Android: use the current cmake executable
+  * Fix clang-format git hook script
+  * autotests: link to QtCore for WinMain on Windows
+  * autotests: tentative Windows fix
+  * Add ECMQueryQt module, which encompases both Qt5 Qmake
+    and Qt6 qtpaths
+  * KDEClangFormat: se the same source file extensions in
+    clang-format script and target
+  * generate-fastlane-metadata: Don't fail if source URL can
+    not be found
+  * Fix checking the repository name for detached remotes
+  * Android: Set CMAKE_TRY_COMPILE_PLATFORM_VARIABLES
+  * Check that you're building the framework in a supported
+    platform
+  * Android: autodetect the use of llvm
+
+-------------------------------------------------------------------
 Mon Mar  7 09:26:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
@@ -14,6 +47,12 @@ Mon Mar  7 09:26:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
   * KDEInstallDirs6: replace ECMQueryQMake usage with qtpaths
   * Adapt Android toolchain file and FindGradle to Qt6
   * Fix typos
+
+-------------------------------------------------------------------
+Sat Feb 26 20:43:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- split off -doc subpackage into a _multibuild so that dependent
+  builds can start while Sphinx is not yet built.
 
 -------------------------------------------------------------------
 Sun Feb  6 10:16:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>

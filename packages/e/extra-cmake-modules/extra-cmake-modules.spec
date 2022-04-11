@@ -16,7 +16,12 @@
 #
 
 
-%define _tar_path 5.92
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "doc"
+%global pkg_suffix -doc
+%endif
+
+%define _tar_path 5.93
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,16 +29,16 @@
 %bcond_without doc
 # Only needed for the package signature condition
 %bcond_without released
-Name:           extra-cmake-modules
-Version:        5.92.0
+Name:           extra-cmake-modules%{?pkg_suffix}
+Version:        5.93.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source:         extra-cmake-modules-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        extra-cmake-modules-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -41,35 +46,27 @@ Patch0:         bundle-lang.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 BuildRequires:  kf5-filesystem
+%if "%{flavor}" != "doc"
 Requires:       cmake >= 3.16
 Requires:       gcc-c++
 Requires:       kf5-filesystem
-Recommends:     %{name}-doc
+Recommends:     extra-cmake-modules-doc
 Provides:       kf5umbrella = 4.99.0
 Obsoletes:      kf5umbrella < 4.99.0
-%if %{with doc}
+%else
 BuildRequires:  python3-Sphinx
 %endif
+BuildArch:      noarch
 
 %description
 Extra modules and scripts for CMake.
+%if "%{flavor}" == "doc"
 
-For more information see https://community.kde.org/KDE_Core/Platform_11/Buildsystem/FindFilesSurvey
-
-%package doc
-Summary:        Documentation for extra-cmake-modules
-Group:          Documentation/Other
-Requires:       %{name} = %{version}
-BuildArch:      noarch
-
-%description doc
-Extra modules and scripts for CMake.
-
-For more information see https://community.kde.org/KDE_Core/Platform_11/Buildsystem/FindFilesSurvey
 This package provides documentation for extra-cmake-modules
+%endif
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n extra-cmake-modules-%{version}
 
 %build
 %cmake_kf5 -d build
@@ -78,12 +75,15 @@ This package provides documentation for extra-cmake-modules
 %install
 %kf5_makeinstall -C build
 
+%if "%{flavor}" == "doc"
+rm -r %{buildroot}%{_datadir}/ECM
+%endif
+
 %files
+%if "%{flavor}" != "doc"
 %license LICENSES/*
 %{_datadir}/ECM/
-
-%if %{with doc}
-%files doc
+%else
 %doc %{_datadir}/doc/ECM/
 %doc %lang(en) %{_mandir}/man7/ecm*.7*
 %endif
