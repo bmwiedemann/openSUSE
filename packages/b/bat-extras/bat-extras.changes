@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Sun Apr 10 18:23:12 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Create man dir on install
+
+-------------------------------------------------------------------
+Sun Apr 10 18:19:55 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Use direct shell commands instead of indirect macros within the
+  specfile
+- Move man pages to their correct subdir
+
+-------------------------------------------------------------------
+Thu Apr  7 17:56:23 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Format spec file via osc service
+
+-------------------------------------------------------------------
+Sun Feb 27 18:58:35 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Change interpreter to bash instead of env
+- Use macros instead of direct commands while installing
+
+-------------------------------------------------------------------
+Sun Feb 27 18:51:08 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Build and install manpages too
+
+-------------------------------------------------------------------
+Sun Feb 27 18:05:07 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Bump to 2021-08-21
+  batgrep
+    * Add support for '--' argument
+    * Respect the BAT_STYLE environment variable
+    * Add support for ripgrep 11
+  batman
+    * If fzf is installed, use batman to search through man pages
+    * Only set grid style if BAT_STYLE is not defined
+  batpipe
+    * Fix colors not showing up inside less
+    * Fix incorrect colors in usage instructions
+  batwatch
+    * Buffer --command mode to reduce flickering from redraw
+  Docs
+    * Fix manpage generation trimming spaces.
+    * Fix manpage generation leaving <br/> tags inside man page.
+
+-------------------------------------------------------------------
+Sat Dec  5 12:40:21 UTC 2020 - JL K <jlk@fsfe.org>
+
+- Bump to 2020-10-05
+
+-------------------------------------------------------------------
+Sun Jul 12 21:57:34 UTC 2020 - JL K <jlk@fsfe.org>
+
+- Init package

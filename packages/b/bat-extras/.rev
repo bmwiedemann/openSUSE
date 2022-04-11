@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50d996e69904dbbfe10505913390fcde</srcmd5>
+    <version>2021.08.21</version>
+    <time>1649713686</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/K5JGL6R2TMUW7TC2Y3O2UULGC65DQWMJ/
+
+As I noticed the man pages where not installed correctly which is fixed now.</comment>
+    <requestid>968284</requestid>
+  </revision>
+</revisionlist>
