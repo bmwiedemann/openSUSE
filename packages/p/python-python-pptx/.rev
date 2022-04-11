@@ -7,4 +7,12 @@
     <comment>New package with interesting capabilities (working with PPTX files from LibreOffice).</comment>
     <requestid>914852</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5d5f0fcf629df7a88a36f69aa0974a2c</srcmd5>
+    <version>0.6.19</version>
+    <time>1649713769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969214</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,7 @@
 #
 # spec file for package python-python-pptx
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,21 +25,20 @@ Summary:        Generate and manipulate Open XML PowerPoint (pptx) files
 License:        MIT
 URL:            http://github.com/scanny/python-pptx
 Source:         https://files.pythonhosted.org/packages/source/p/python-pptx/python-pptx-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module lxml >= 3.1.0}
 BuildRequires:  %{python_module Pillow >= 3.3.2}
 BuildRequires:  %{python_module XlsxWriter >= 0.5.7}
 BuildRequires:  %{python_module behave}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pyparsing >= 2.0.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-lxml >= 3.1.0
 Requires:       python-Pillow >= 3.3.2
 Requires:       python-XlsxWriter >= 0.5.7
+Requires:       python-lxml >= 3.1.0
 BuildArch:      noarch
 %python_subpackages
 
