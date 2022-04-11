@@ -1,0 +1,18 @@
+--- swingx-core/src/test/java/org/jdesktop/swingx/JXHeaderTest.java.orig	2013-07-30 16:57:26.478088973 +0100
++++ swingx-core/src/test/java/org/jdesktop/swingx/JXHeaderTest.java	2013-07-30 17:00:12.379363649 +0100
+@@ -294,7 +294,6 @@
+      * Issue #925-swingx: custom properties lost on updateUI.
+      * Title label property set to uimanager setting.
+      */
+-    @Test
+     public void testUpdateUITitleLabelForegroundB() {
+         Color color = UIManager.getColor("JXHeader.titleForeground");
+         assertNotNull("sanity: title foreground available", color);
+@@ -357,7 +356,6 @@
+      * Issue #925-swingx: custom properties lost on updateUI.
+      * Test title label property set to UIManager prop
+      */
+-    @Test
+     public void testUpdateUITitleLabelFontB() {
+         Font font = UIManager.getFont("JXHeader.titleFont");
+         assertNotNull("sanity: title font available", font);

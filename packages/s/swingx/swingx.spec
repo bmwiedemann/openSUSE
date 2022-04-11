@@ -16,31 +16,29 @@
 #
 
 
+%global real_version 1.6.5-1
 Name:           swingx
-Version:        0.9.4
+Version:        1.6.5.1
 Release:        0
 Summary:        A collection of Swing components
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Java
-URL:            https://swingx.dev.java.net/
-# The link https://swingx.dev.java.net/files/documents/2981/110622/%{name}-%{version}-src.tar.bz2 is dead
-Source0:        %{name}-%{version}-src.tar.bz2
-# Remove external dependency that's now included in JDK 1.6
-# See http://forums.java.net/jive/thread.jspa?messageID=318384
-Patch0:         swingx-0.9.4-LoginService.patch
-# Remove build dependencies on included binary jars and add system jars
-# Remove main class from manifest
-Patch1:         swingx-0.9.4-project-properties.patch
-# Don't do the "demo taglet" stuff
-Patch2:         swingx-0.9.4-swinglabs-build-impl.patch
-# Resolve the ambiguity of toArray in jdk11
-Patch3:         swingx-0.9.4-toArray.patch
-BuildRequires:  ant
-BuildRequires:  batik
+URL:            https://swingx.java.net/
+Source0:        https://github.com/ebourg/swingx/archive/refs/tags/%{real_version}.tar.gz
+Patch0:         swingx-remove-jhlabs-filters.patch
+Patch1:         swingx-java7-swing-painter-compat.patch
+Patch2:         swingx-java7-treepath-compat.patch
+Patch3:         swingx-uititlelabel-test-failure.patch
+Patch4:         swingx-java8-compat.patch
+Patch5:         jdk17.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-Requires:       java >= 1.8
+BuildRequires:  maven-local
+BuildRequires:  mvn(net.java:jvnet-parent:pom:)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
+BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildRequires:  mvn(org.kohsuke.metainf-services:metainf-services)
 BuildArch:      noarch
 
 %description
@@ -54,38 +52,41 @@ Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
 
 %description javadoc
-Documentation for the SwingX widgets
+This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}-src
+%setup -q -n %{name}-%{real_version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-rm -rf lib/
+%patch1
+%patch2
+%patch3
+%patch4
+%patch5 -p1
+
+%pom_disable_module %{name}-testsupport
+
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+
+%{mvn_file} :%{name}-all %{name} %{name}/%{name}-all
+
+# Remove all binaries
+find . -name "*.jar" -print -delete
+find . -name "*.class" -print -delete
+find . -name "*.so" -print -delete
+find . -name "*.dll" -print -delete
 
 %build
-ant -Djavac.source=1.8 -Djavac.target=1.8 jar javadoc
+%{mvn_build} -f -- -Pjvnet-release
 
 %install
-# jar
-mkdir -p %{buildroot}%{_javadir}
-cp -p dist/%{name}.jar  %{buildroot}%{_javadir}/%{name}.jar
-
-mkdir -p %{buildroot}/%{_mavenpomdir}/
-install -m 0644 pom.xml %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap
-
-# javadoc
-mkdir -p %{buildroot}%{_javadocdir}/
-cp -r dist/javadoc %{buildroot}%{_javadocdir}/%{name}
+%mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %license COPYING
-%doc README
 
-%files javadoc
-%{_javadocdir}/%{name}
+%files javadoc -f .mfiles-javadoc
+%license COPYING
 
 %changelog
