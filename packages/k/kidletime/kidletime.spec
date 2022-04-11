@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5IdleTime5
-%define _tar_path 5.92
+%define _tar_path 5.93
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kidletime
-Version:        5.92.0
+Version:        5.93.0
 Release:        0
 Summary:        User and system idle time reporting singleton
 License:        LGPL-2.1-or-later
@@ -36,8 +36,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fixed-crash-during-KIdleTime-timeoutReached.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

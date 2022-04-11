@@ -807,4 +807,12 @@
   * 0001-Fixed-crash-during-KIdleTime-timeoutReached.patch</comment>
     <requestid>965487</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>234fc596e90440b76d29268cb1c6fd38</srcmd5>
+    <version>5.93.0</version>
+    <time>1649713634</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.93.0</comment>
+    <requestid>968169</requestid>
+  </revision>
 </revisionlist>

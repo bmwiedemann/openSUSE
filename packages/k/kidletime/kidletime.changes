@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Fixed crash during KIdleTime::timeoutReached() (kde#451946)
+  * Use nativeInterface to access the x11 display
+- Drop patch, fixed upstream:
+  * 0001-Fixed-crash-during-KIdleTime-timeoutReached.patch
+
+-------------------------------------------------------------------
 Mon Mar 28 14:43:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream fix (kde#451946):
