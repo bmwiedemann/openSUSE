@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Apr  3 10:47:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Make WindowThumbnail build against Qt6 as well
+  * Plasmacomponents2 Highlight: add explicit id
+  * Highlight: change hover: property to hovered:
+  * Don't install the heading SVG in breeze-light and breeze-dark Plasma themes
+  * AppletInterface: Add `self` property which just returns `this`
+  * Allow applets to have empty json metadata & use KPackage's metadata instead
+  * Do not compute sizes within dialogs when they're not visible
+  * Port dateengine away from inperformant KPluginInfo hack
+  * Improve documentation of PlasmaExtras.Highlight
+  * Factor out QML module URI string
+  * Update documentation regarding PlasmaExtras.Highlight
+  * Adapt to the deprecation of qmlRegisterInterface in Qt6
+  * Add default switch statement
+  * Add power profile icons (kde#449475)
+  * Fix Plasmoid attached property look-up on Config objects (kde#451482)
+  * Fix potential null parent access
+  * Break recursion when checking compact representation
+  * Use generic breeze-styled arrow in Plasma style
+  * Port to PlasmaExtras version of Highlight
+  * Hardcode keyboard shortcut in SearchField for now
+  * Add ActionTextField, SearchField, and PasswordField
+  * PC3: Remove unreachable code in Svg item from DefaultListItemBackground
+  * AppletQuickItem: Ensure we provide the attached property when we have it
+  * Port from using plasmoid to Plasmoid
+  * Calendar: Draw highlight below the text (kde#451209)
+  * Use PACKAGE_CMAKE_INSTALL_PREFIX before any find_dependency() calls
+  * Move Highlight from PlasmaComponents 2.0 to PlasmaExtras
+  * Introduce PLASMA_NO_CONTEXTPROPERTIES to disable Plasma QML context properties
+
+-------------------------------------------------------------------
 Mon Mar  7 09:27:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.92.0
