@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 11 13:08:14 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0.5
+  * python 3.10 compatibility
+  * fixes for using idle in async
+  * use python's internal mock library instead of external mock
+  * expose connection status in async (connected property)
+
+-------------------------------------------------------------------
 Tue Oct 19 17:17:54 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Use %pyunittest macro instead of the homebrewn solution.

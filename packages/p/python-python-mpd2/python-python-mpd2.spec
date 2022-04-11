@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mpd2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-mpd2
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A Python MPD client library
 License:        LGPL-3.0-only
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Mic92/python-mpd2
 Source:         https://files.pythonhosted.org/packages/source/p/python-mpd2/python-mpd2-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
