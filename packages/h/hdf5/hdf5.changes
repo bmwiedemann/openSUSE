@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  7 23:51:05 UTC 2022 - Christoph Junghans <junghans@votca.org>
+
+- add hdf5-wrappers.patch from Fedora, so strip flags from
+  wrappers and prefer shared linking
+- add missing zlib-devel devel dep
+
+-------------------------------------------------------------------
 Thu Mar 31 08:25:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add hdf5-1.10.8-pr1494-fix-release-check-version.patch

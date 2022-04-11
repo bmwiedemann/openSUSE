@@ -438,6 +438,8 @@ Patch7:         hdf5-mpi.patch
 Patch8:         Disable-phdf5-tests.patch
 # boo#1179521, boo#1196682, gh#HDFGroup/hdf5#1494
 Patch9:         hdf5-1.10.8-pr1494-fix-release-check-version.patch
+# Imported from Fedora, strip flags from h5cc wrapper 
+Patch10:        hdf5-wrappers.patch
 BuildRequires:  fdupes
 %if 0%{?use_sz2}
 BuildRequires:  libsz2-devel
@@ -604,6 +606,7 @@ Requires:       %{libname -l _cpp -s %{sonum_CXX}} = %{version}
 Requires:       %{libname -l _hl_cpp -s %{sonum_HL_CXX}} = %{version}
 Requires:       %{name} = %{version}
 %{!?with_hpc:Requires:       %{pname}-devel-data = %{version}}
+Requires:       zlib-devel
 %if 0%{?use_sz2}
 Requires:       libsz2-devel
 %endif
@@ -678,6 +681,7 @@ library packages.
 # %%patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %if %{without hpc}
 # baselibs looks different for different flavors - generate it on the fly
