@@ -23,7 +23,7 @@ Summary:        Eclipse SWTChart
 License:        EPL-2.0
 Group:          Development/Languages/Java
 URL:            https://projects.eclipse.org/projects/science.swtchart
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  tycho
 BuildConflicts: java >= 12
 BuildConflicts: java-devel >= 12
@@ -61,7 +61,9 @@ SWTChart is a light-weight charting component for SWT.
 %{mvn_package} "::pom::" __noinstall
 
 %build
-%{mvn_build} -j -f -- -f org.eclipse.swtchart.cbi/pom.xml
+# Qualifier generated from last modification time of source tarball
+QUALIFIER=$(date -u -d"$(stat --format=%%y %{SOURCE0})" +v%%Y%%m%%d-%%H%%M)
+%{mvn_build} -j -f -- -f org.eclipse.swtchart.cbi/pom.xml -DforceContextQualifier=$QUALIFIER
 
 %install
 %mvn_install
