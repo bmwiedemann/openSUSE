@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-black
-Version:        22.1.0
+Version:        22.3.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
@@ -50,6 +50,9 @@ Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-pathspec >= 0.9.0
 Requires:       python-platformdirs >= 2
 Requires:       python-tomli >= 1.1.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+BuildArch:      noarch
 %if 0%{?python_version_nodots} < 37
 Requires:       python-dataclasses
 %endif
@@ -59,9 +62,6 @@ Requires:       python-typed-ast >= 1.4.2
 %if 0%{?python_version_nodots} < 310
 Requires:       python-typing_extensions >= 3.10.0.0
 %endif
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -77,7 +77,6 @@ also recognizes YAPF's block comments to the same effect.
 
 %prep
 %autosetup -p1 -n black-%{version}
-sed -i '1{/#!/d}' src/black_primer/cli.py src/black_primer/lib.py
 
 %build
 %python_build
@@ -86,10 +85,7 @@ sed -i '1{/#!/d}' src/black_primer/cli.py src/black_primer/lib.py
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/black
 %python_clone -a %{buildroot}%{_bindir}/blackd
-%python_clone -a %{buildroot}%{_bindir}/black-primer
-%{python_expand cp src/black_primer/primer.json %{buildroot}%{$python_sitelib}/black_primer/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
 %check
 # Copy one of the executable scripts into the PATH
@@ -103,7 +99,7 @@ skiptests="test_expression_diff or test_bpo_2142_workaround"
 %pytest -k "not ($skiptests)"
 
 %post
-%python_install_alternative black blackd black-primer
+%python_install_alternative black blackd
 
 %postun
 %python_uninstall_alternative black
@@ -113,9 +109,7 @@ skiptests="test_expression_diff or test_bpo_2142_workaround"
 %license LICENSE
 %python_alternative %{_bindir}/black
 %python_alternative %{_bindir}/blackd
-%python_alternative %{_bindir}/black-primer
 %{python_sitelib}/_black_version.py*
-%{python_sitelib}/black_primer/
 %{python_sitelib}/black/
 %{python_sitelib}/blackd/
 %{python_sitelib}/blib2to3/
