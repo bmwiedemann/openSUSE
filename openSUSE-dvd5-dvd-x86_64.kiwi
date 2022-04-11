@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220409" schemaversion="4.1">
+<image name="OBS__openSUSE___20220410" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220409</productvar>
+      <productvar name="VERSION">20220410</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220409,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220410,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220409/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220410/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -714,7 +714,6 @@
       <repopackage name="gnome-themes-accessibility-gtk2"/>
       <repopackage name="gnome-tweaks"/>
       <repopackage name="gnome-tweaks-lang"/>
-      <repopackage name="gnome-user-docs"/>
       <repopackage name="gnome-user-share"/>
       <repopackage name="gnome-user-share-lang"/>
       <repopackage name="gnome-version"/>
@@ -1422,7 +1421,7 @@
       <repopackage name="libavfilter8" arch="x86_64"/>
       <repopackage name="libavformat58_76"/>
       <repopackage name="libavformat59" arch="x86_64"/>
-      <repopackage name="libavif13"/>
+      <repopackage name="libavif14"/>
       <repopackage name="libavresample4_0"/>
       <repopackage name="libavtp0"/>
       <repopackage name="libavutil56_70"/>
@@ -1607,7 +1606,6 @@
       <repopackage name="libdlm3"/>
       <repopackage name="libdmapsharing-4_0-3"/>
       <repopackage name="libdmtx0"/>
-      <repopackage name="libdmx1"/>
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
@@ -1997,7 +1995,6 @@
       <repopackage name="libjansson4"/>
       <repopackage name="libjansson4-32bit" arch="x86_64"/>
       <repopackage name="libjavascriptcoregtk-4_0-18"/>
-      <repopackage name="libjavascriptcoregtk-4_1-0"/>
       <repopackage name="libjbig2"/>
       <repopackage name="libjbig2-32bit" arch="x86_64"/>
       <repopackage name="libjcat1"/>
@@ -2925,7 +2922,6 @@
       <repopackage name="libwayland-egl1"/>
       <repopackage name="libwayland-server0"/>
       <repopackage name="libwebkit2gtk-4_0-37"/>
-      <repopackage name="libwebkit2gtk-4_1-0"/>
       <repopackage name="libwebp7"/>
       <repopackage name="libwebpdemux2"/>
       <repopackage name="libwebpmux3"/>
@@ -3082,7 +3078,6 @@
       <repopackage name="libyajl2"/>
       <repopackage name="libyaml-0-2"/>
       <repopackage name="libyaml-cpp0_7"/>
-      <repopackage name="libyelp0"/>
       <repopackage name="libyui-ncurses-pkg16"/>
       <repopackage name="libyui-ncurses16"/>
       <repopackage name="libyui-qt-graph16"/>
@@ -4947,7 +4942,6 @@
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
       <repopackage name="typelib-1_0-IBus-1_0"/>
       <repopackage name="typelib-1_0-JavaScriptCore-4_0"/>
-      <repopackage name="typelib-1_0-JavaScriptCore-4_1"/>
       <repopackage name="typelib-1_0-Json-1_0"/>
       <repopackage name="typelib-1_0-Libosinfo-1_0"/>
       <repopackage name="typelib-1_0-LibvirtGLib-1_0"/>
@@ -4977,7 +4971,6 @@
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
       <repopackage name="typelib-1_0-Vte-2.91"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
-      <repopackage name="typelib-1_0-WebKit2-4_1"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-Xfconf-0"/>
       <repopackage name="ucode-amd"/>
@@ -5059,9 +5052,7 @@
       <repopackage name="wallpaper-branding-openSUSE"/>
       <repopackage name="wayland-utils"/>
       <repopackage name="WebKit2GTK-4.0-lang"/>
-      <repopackage name="WebKit2GTK-4.1-lang"/>
       <repopackage name="webkit2gtk-4_0-injected-bundles"/>
-      <repopackage name="webkit2gtk-4_1-injected-bundles"/>
       <repopackage name="wget"/>
       <repopackage name="wget-lang"/>
       <repopackage name="which"/>
@@ -5385,9 +5376,6 @@
       <repopackage name="yast2-x11"/>
       <repopackage name="yast2-xml"/>
       <repopackage name="yast2-ycp-ui-bindings"/>
-      <repopackage name="yelp"/>
-      <repopackage name="yelp-lang"/>
-      <repopackage name="yelp-xsl"/>
       <repopackage name="yp-tools"/>
       <repopackage name="ypbind"/>
       <repopackage name="zd1211-firmware"/>
