@@ -18,41 +18,37 @@
 
 %define _build 366
 %define tag V_2_10_4_BUILD_%{_build}
-
 Name:           hibiscus
+Version:        2.10.4
+Release:        0
 Summary:        Java online banking client using the HBCI standard
 License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
-Version:        2.10.4
-Release:        0
 URL:            https://www.willuhn.de/products/hibiscus/
 Source:         https://github.com/willuhn/hibiscus/archive/refs/tags/%{tag}.tar.gz
 Source2:        hibiscus-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ant
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
+BuildRequires:  hbci4java >= 3.1.55
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  itextpdf >= 5.5.2
 BuildRequires:  jameica-devel >= 2.10.1
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
+BuildRequires:  pcsc-towitoko-devel
+BuildRequires:  super-csv >= 2.4.0
 BuildRequires:  xml-commons-apis
+Requires:       hbci4java
+Requires:       itextpdf
 Requires:       jameica >= 2.10.0
+Requires:       pcsc-towitoko-devel
+Requires:       super-csv
 %ifnarch s390 %{arm} %{ix86}
 BuildRequires:  eclipse-swtchart >= 0.13.0
-Requires:       eclipse-swtchart
+%requires_eq    eclipse-swtchart
 %endif
-BuildRequires:  itextpdf >= 5.5.2
-Requires:       itextpdf
-BuildRequires:  hbci4java >= 3.1.55
-Requires:       hbci4java
-BuildRequires:  pcsc-towitoko-devel
-Requires:       pcsc-towitoko-devel
-BuildRequires:  super-csv >= 2.4.0
-Requires:       super-csv
-BuildRequires:  fdupes
-
 # Don't offer libraries linked in here to other packages:
-AutoReqProv:    off
 
 %description
 A free Java homebanking application that uses the HBCI4Java implementation
@@ -61,7 +57,7 @@ key files and PIN/TAN including chipTAN and smsTAN for authentification.
 Supported file formats include MT940, DTAUS, CSV, Moneyplex and PDF/HTML.
 
 %prep
-%setup -n %{name}-%{tag} -q
+%setup -q -n %{name}-%{tag}
 
 # Remove Windows and Mac libraries
 rm -rf lib/hbci4java-card-*
@@ -136,7 +132,6 @@ install -D -m 0644 %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.a
 %fdupes %{buildroot}
 
 %files
-%defattr(-,root,root)
 %doc build/ChangeLog
 %license LICENSE COPYING
 %{_prefix}/lib/jameica/plugins/%{name}
