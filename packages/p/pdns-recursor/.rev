@@ -628,4 +628,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
 - boost_context.patch: Boost.Context detection fix on SLE12</comment>
     <requestid>965587</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>39a9d6dded250c0390d70bcccf8b466d</srcmd5>
+    <version>4.6.2</version>
+    <time>1649793070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969514</requestid>
+  </revision>
 </revisionlist>
