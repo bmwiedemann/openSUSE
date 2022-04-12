@@ -147,4 +147,12 @@ logind (bnc#853492) (forwarded request 212963 from gary_lin)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>317741</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>28341ad7758d1bfe193aa099a2823668</srcmd5>
+    <version>0.5.0</version>
+    <time>1649793062</time>
+    <user>dimstar_suse</user>
+    <comment>- https url</comment>
+    <requestid>969499</requestid>
+  </revision>
 </revisionlist>
