@@ -38,12 +38,8 @@ Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/pp
 Source0:        %pkg-%version.tar.xz
-%if "%build_flavor" == ""
-BuildRequires:  ocaml-dune-bootstrap
-%else
 BuildRequires:  ocaml-dune >= 2.0
-%endif
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20220409
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 
 %if "%build_flavor" == "testsuite"
@@ -69,9 +65,6 @@ developing applications that use %name.
 %setup -q -n %pkg-%version
 
 %build
-%if "%build_flavor" == ""
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
-%endif
 dune_release_pkgs='pp'
 %ocaml_dune_setup
 %if "%build_flavor" == ""
@@ -80,7 +73,6 @@ dune_release_pkgs='pp'
 
 %install
 %if "%build_flavor" == ""
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif

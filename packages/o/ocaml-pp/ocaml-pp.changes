@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr  9 12:34:56 UTC 2022 - ohering@suse.de
+
+- Remove usage of ocaml-dune-bootstrap, following changes in ocaml-dune
+
+-------------------------------------------------------------------
 Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
 
 - Build with ocaml-dune-bootstrap
