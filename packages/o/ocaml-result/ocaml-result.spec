@@ -27,8 +27,8 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/result
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune-bootstrap
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20220409
 
 %description
 Projects that want to use the new result type defined in OCaml >= 4.03 while
@@ -51,18 +51,15 @@ This package contains development files for %name.
 %setup -q
 
 %build
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 dune_release_pkgs='result'
 %ocaml_dune_setup
 %ocaml_dune_build
 
 %install
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 %ocaml_dune_install
 %ocaml_create_file_list
 
 %check
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 %ocaml_dune_test
 
 %files -f %name.files
