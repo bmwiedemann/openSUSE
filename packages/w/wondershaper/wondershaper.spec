@@ -1,7 +1,7 @@
 #
 # spec file for package wondershaper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,21 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 Name:           wondershaper
-Version:        1.1a
+Version:        1.4.1+git.20211015
 Release:        0
 Summary:        A network QoS (Quality of Service) script
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
-Url:            http://lartc.org/wondershaper/
-
-Source0:        wondershaper-1.1a.tar.bz2
-Source1:        sysconfig.wondershaper
-Source2:        rcwondershaper
-Source3:        wondershaper.service
-Patch0:         %{name}-%{version}.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+URL:            https://github.com/magnific0/wondershaper
+Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE wondershaper-fix-conf-path.patch -- Use /etc/wondershaper for wondershaper.conf place
+Patch0:         wondershaper-fix-conf-path.patch
+# PATCH-FIX-OPENSUSE wondershaper-systemd-hardening.patch -- Added hardening to systemd service(s) (bsc#1181400)
+Patch1:         wondershaper-systemd-hardening.patch
 BuildRequires:  systemd-rpm-macros
 Requires:       iproute2
-Requires(post): %fillup_prereq
-%{?systemd_ordering}
+BuildArch:      noarch
 
 %description
 Many cablemodem and ADSL users experience horrifying latency while
@@ -49,44 +40,36 @@ allowing users of a router with a wondershaper to continue using SSH
 over a loaded link happily.
 
 %prep
-%setup 
-cp %{S:1} %{S:2} .
-%patch0 -p1
+%autosetup
+
+# Fix E: env-script-interpreter (Badness: 9) 
+sed -i 's|/usr/bin/env bash|/usr/bin/bash|' %{name}
 
 %build
 
 %install
-mv wshaper wshaper.cbq
-install -m 755 -d %{buildroot}/usr/sbin
-install -m 755 -d %{buildroot}/%{_fillupdir}
-install -d %{buildroot}/%{_datadir}/%{name}/scripts
-install -m 755 %{SOURCE2} %{buildroot}/%{_datadir}/%{name}/scripts
-install -d %{buildroot}/%{_unitdir}
-install -m 644 %{SOURCE3} %{buildroot}/%{_unitdir}
-install -d %{buildroot}/
-install -m 750 wshaper.* %{buildroot}/usr/sbin/
-install -m 644 sysconfig.wondershaper %{buildroot}/%{_fillupdir}/
-ln -sf service %{buildroot}/usr/sbin/rcwondershaper
+install -pDm 755 %{name} %{buildroot}/%{_sbindir}/%{name}
+install -pDm 644 %{name}.service %{buildroot}/%{_unitdir}/%{name}.service
+install -pDm 644 %{name}.conf %{buildroot}/%{_sysconfdir}/%{name}/%{name}.conf
 
 %pre
-%service_add_pre wondershaper.service
+%service_add_pre %{name}.service
 
 %post
-%service_add_post wondershaper.service
-%{fillup_only}
+%service_add_post %{name}.service
 
 %preun
-%service_del_preun wondershaper.service
+%service_del_preun %{name}.service
 
 %postun
-%service_del_postun wondershaper.service
+%service_del_postun %{name}.service
 
 %files
-%defattr(-, root, root)
-%doc COPYING ChangeLog README TODO VERSION
-%{_datadir}/%{name}
-%{_unitdir}
-%{_sbindir}/*
-%{_fillupdir}/*
+%license COPYING
+%doc ChangeLog README.bhubert README.md VERSION
+%{_sbindir}/%{name}
+%{_unitdir}/%{name}.service
+%dir %{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/%{name}.conf
 
 %changelog

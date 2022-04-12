@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/magnific0/wondershaper.git</param>
+    <param name="revision">98792b55c2ebf4ab4cafffb0780e0c4185fdc03d</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">wondershaper</param>
+    <param name="versionformat">1.4.1+git.%cd</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

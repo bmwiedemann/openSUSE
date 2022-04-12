@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Mar 12 07:05:17 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.4.1+git.20211015
+  - use Debian systemd paths
+  - add high priority host support
+- Changes since version 1.4
+  - download limiting has been added from (removed in 1.3), it had
+    to be reworked the script now directs ingress to ifb virtual
+    interface where it is properly limited.
+    Source for this work are:
+    - https://gist.github.com/ole1986/d9d6be5218affd41796610a35e3b069c
+    - https://wiki.archlinux.org/index.php/advanced_traffic_control
+  - make upload or download limiting optional
+- Changes since version 1.3
+  - move from CBQ to HTB queuing.
+    CBQ didn't cope well on a ~100Mbps link : individual downloads
+    were ceiling at 3Mbit/s. Moving to HTB allows to really use all
+    the available bandwidth, event with a single TCP connection,
+    and without any caveats on SIP telephony or link reactivity.
+- Changes since version 1.2 
+  - added command-line interface (through options and flags)
+    that didn't seem to be working before as the options were
+    hardcoded in the script.
+- Run spec-cleaner
+- Update project URL
+- Drop rcwondershaper, wondershaper.service, wondershaper-1.1a.diff
+- Drop sysconfig.wondershaper, wondershaper comes now itself with
+  a .conf file for configuration
+- Add wondershaper-fix-conf-path.patch: using /etc/wondershaper 
+  instead /etc/systemd
+- Add _service files
+- Add wondershaper-systemd-hardening.patch: bsc#1181400
+
+-------------------------------------------------------------------
 Wed Jan  5 10:55:28 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
