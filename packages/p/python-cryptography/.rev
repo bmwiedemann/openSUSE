@@ -627,4 +627,13 @@
   * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 1.1.1n.</comment>
     <requestid>965085</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>f57ac92b709640fcc1f8936ecc1d152f</srcmd5>
+    <version>36.0.2</version>
+    <time>1649793020</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.2 (bsc#1182066, CVE-2020-36242):
+- update to 3.2 (bsc#1178168, CVE-2020-25659):</comment>
+    <requestid>969246</requestid>
+  </revision>
 </revisionlist>

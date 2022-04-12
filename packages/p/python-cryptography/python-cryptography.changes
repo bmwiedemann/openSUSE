@@ -120,7 +120,7 @@ Mon Apr 26 10:07:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Sun Feb  7 20:11:11 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
-- update to 3.3.2:
+- update to 3.3.2 (bsc#1182066, CVE-2020-36242):
   * SECURITY ISSUE: Fixed a bug where certain sequences of update()
     calls when symmetrically encrypting very large payloads (>2GB) could
     result in an integer overflow, leading to buffer overflows.
@@ -176,7 +176,7 @@ Wed Oct 28 14:29:05 UTC 2020 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Mon Oct 26 11:39:02 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
-- update to 3.2:
+- update to 3.2 (bsc#1178168, CVE-2020-25659):
   * CVE-2020-25659: Attempted to make RSA PKCS#1v1.5 decryption more constant time,
     to protect against Bleichenbacher vulnerabilities. Due to limitations imposed
     by our API, we cannot completely mitigate this vulnerability.
