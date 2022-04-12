@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Thu Apr 07 22:44:11 UTC 2022 - perry.werneck@gmail.com
+
+- Update to version 5.4:
+  * Fixing lgtm analisys.
+  * Adding librsvg on modules list.
+  * Adjustments in translation files.
+  * Fixing LGTM warnings.
+  * Using only standard icons in the toolbar.
+  * Adding jhbuild info and modules.
+  * Fixing build/install on separated folder.
+  * Updating build methods.
+  * Fixing lgtm alerts.
+  * Adjustments on autogen.sh to allow use from another path.
+  * Fixing linux package.
+  * Fixing error reported by LGTM
+  * Updating lgtm control file.
+  * Updating lgtm.yml
+  * Adding macos targets.
+  * Fixing library name on mac.
+  * Fixing macos build.
+  * Moving _fire_copy and _fire_past to static in the action table source.
+  * Adding required macos sources.
+  * Fixing Makefile.
+  * Fixing configure.ac
+  * Updating autogen for brew
+  * Fixing url-open on windows platform.
+  * Fixing auto-open URL and adjustments in the host settings popup dialog.
+  * Adding font settings dialog action (for classic menu).
+  * Fixing build.
+  * Color settings dialog is now an standard action.
+  * Updating translations.
+  * Adjustment in the selection and clipboard settings dialog.
+  * Opening URL myself if no one answers to the open-url signal.
+  * Adding settings dialog for the 'open-url' attribute.
+  * Implementing the 'open-url' property.
+  * Implementing signal 'open-url'.
+  * Adding icons on host and keyboard dialog actions.
+  * Updating default accelerators.
+  * Working on accelerators dialog.
+  * Adding action for keyboard accelerators dialog.
+  * Implementing settings popup dialog.
+  * Changing default accelerator for 'copy-append' back to '<shift><ctrl>C'
+  * Working on lgtm configuration.
+  * Adding lgtm configuration file.
+  * Update README.md
+  * Fixing program message changes.
+  * Fixing warnings.
+  * Updating translation
+  * Updating cross-compilers install.
+  * Fixing pt-br translation.
+  * Small adjustment in popup dialog.
+  * Fixing warning.
+  * Updating win32 package.
+  * Updating trace handler, resetting trace states when trace window closes.
+  * Persisting trace file name.
+  * Loading/saving logfile from properties.
+  * Fixing windows build.
+  * Fixing url editor.
+  * Adding method to vinculate dialog with toplevel, preserving the icon.
+  * Updating translation.
+  * Refactoring URL input component.
+  * Refactoring host settings dialog.
+  * Refactoring hostselect dialog.
+  * Hide cursor position when offline.
+  * Improving accelerator error log.
+  * Fixing 'save-settings' on non realized terminal widget.
+  * Fixing translation file conflicts.
+  * Fixing arch build.
+  * Update README.md
+  * Visual adjustments.
+  * Fixing load 'dialog'.
+  * Adjustments on 'load' dialog.
+  * Adjustments on 'save' dialog.
+  * Fixing dialog boxes.
+  * Visual style adjustments.
+  * Cross-hair was too white in the selenized theme.
+  * Styling dialog section.
+  * Selecting first sensitive page on settings notebook.
+  * Fixing exit hang.
+  * Delaying reconnect action.
+  * Toggle should be the last options to load from key file to avoid triger of autostart without host info.
+  * Waiting for background tasks before finalize.
+  * Adjusting description.
+  * Adding default title bar on dialogs.
+
+-------------------------------------------------------------------
 Sun Nov 01 15:18:44 UTC 2020 - perry.werneck@gmail.com
 
 - Update to version 5.3+git20201027:

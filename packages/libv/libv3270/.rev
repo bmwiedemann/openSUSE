@@ -23,4 +23,12 @@
     <comment>Updating to the latest revision of version 5.3</comment>
     <requestid>845850</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a48852242052936e89135ed3678af471</srcmd5>
+    <version>5.4</version>
+    <time>1649792999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4, config package is now conflicting with version 5.3</comment>
+    <requestid>969426</requestid>
+  </revision>
 </revisionlist>

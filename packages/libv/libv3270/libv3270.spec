@@ -1,7 +1,7 @@
 #
 # spec file for package libv3270
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2008 Banco do Brasil S.A.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,26 +18,25 @@
 
 
 Name:           libv3270
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        3270 Virtual Terminal for GTK
 License:        LGPL-3.0-only
-Group:          Development/Languages/C and C++
 URL:            https://github.com/PerryWerneck/libv3270
+Group:          Development/Languages/C and C++
 Source:         libv3270-%{version}.tar.xz
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
 BuildRequires:  binutils
 BuildRequires:  coreutils
+BuildRequires:  libtool
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  m4
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(lib3270) >= %{version}
-%if 0%{?centos_version}
-# CENTOS Genmarshal doesn't depend on python!
-BuildRequires:  python
-%endif
+BuildRequires:  pkgconfig(lib3270) >= 5.4
+
+Suggests:       %{name}-config
 
 %description
 
@@ -47,13 +46,12 @@ provides a TN3270 virtual terminal widget for GTK 3.
 For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 
 %define MAJOR_VERSION %(echo %{version} | cut -d. -f1)
-%define MINOR_VERSION %(echo %{version} | cut -d. -f2)
+%define MINOR_VERSION %(echo %{version} | cut -d. -f2 | cut -d+ -f1)
 %define _libvrs %{MAJOR_VERSION}_%{MINOR_VERSION}
 %define _product %(pkg-config --variable=product_name lib3270)
 
 %package -n %{name}-%{_libvrs}
-Summary:        TN3270 access library
-Group:          Development/Languages/C and C++
+Summary:    TN3270 access library
 
 %description -n %{name}-%{_libvrs}
 Originally designed as part of the pw3270 application, this library
@@ -61,18 +59,26 @@ provides a TN3270 virtual terminal widget for GTK 3.
 
 For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 
+%package config
+Summary:    Configuration files for the 3270 Virtual Terminal library
+BuildArch:  noarch
+Requires:   %{name}-%{_libvrs} = %{version}
+Enhances:   %{_product}
+Conflicts:  libv3270-5_3
+
+%description config
+Originally designed as part of the pw3270 application, this package provides the configuration files required to %{name}.
+
 %package devel
-Summary:        Header files for the 3270 Virtual Terminal library
-Group:          Development/Languages/C and C++
-Requires:       %{name}-%{_libvrs} = %{version}
+Summary:    Header files for the 3270 Virtual Terminal library
+Requires:   %{name}-%{_libvrs} = %{version}
 
 %description devel
 Originally designed as part of the pw3270 application, this package provides the development files required to %{name}.
 
 %package -n glade-catalog-v3270
-Summary:        Glade catalog for the TN3270 terminal emulator library
-Group:          Development/Languages/C and C++
-Requires:       glade
+Summary:    Glade catalog for the TN3270 terminal emulator library
+Requires:   glade
 
 %description -n glade-catalog-v3270
 This package provides a catalog for Glade to allow the use of V3270
@@ -81,22 +87,24 @@ widgets in Glade.
 %prep
 %setup -q
 NOCONFIGURE=1 ./autogen.sh
-%configure --with-release=%{release}
+%configure --with-release=%{release} --disable-static
 
 %build
 make all %{?_smp_mflags}
 
 %install
 %make_install
-%find_lang %{name} langfiles
+%find_lang %{name}-%{MAJOR_VERSION}.%{MINOR_VERSION} langfiles
 
 %files -n %{name}-%{_libvrs} -f langfiles
 %license LICENSE
 %doc AUTHORS README.md
 %{_libdir}/%{name}.so.*
-%{_datadir}/%{_product}/colors.conf
+
+%files config
 %dir %{_datadir}/%{_product}/remap/
-%{_datadir}/%{_product}/remap/*.xml
+%config %{_datadir}/%{_product}/colors.conf
+%config %{_datadir}/%{_product}/remap/*.xml
 
 %files devel
 %{_datadir}/pw3270/pot/*.pot
