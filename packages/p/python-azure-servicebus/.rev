@@ -191,4 +191,15 @@
     CHANGELOG.md file provided with this package (forwarded request 953414 from glaubitz)</comment>
     <requestid>953577</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2bb19524b26d22b7aa514fb541ea7ce8</srcmd5>
+    <version>7.6.1</version>
+    <time>1649793067</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.6.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 969362 from glaubitz)</comment>
+    <requestid>969510</requestid>
+  </revision>
 </revisionlist>
