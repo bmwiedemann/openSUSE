@@ -273,4 +273,30 @@
   * Revalidate invalid blocks during deep-scrubbing (#105)</comment>
     <requestid>896938</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5e46b7e9013d2618a74799eee5df006a</srcmd5>
+    <version>0.16.0</version>
+    <time>1649793036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * ACTION REQUIRED: The Helm chart has seen some changes to default values
+    which might break some setups. Especially the default Ceph credential
+    volume mounts are no longer there. In addition, the dependant charts
+    have been updated and the PostgreSQL chart has changed significantly
+    and some keys and values will need adjustment if PostgreSQL is
+    deployed via Benji Helm chart.
+  * Support for RADOS/RBD namespaces has been added to both the rbd and the
+    rbdaio io modules and the Kubernetes integration.
+  * The fsfreeze feature works with Ceph CSI provisioned RBD volumes (includes
+    volumes provisioned by Rook).
+  * There is a new filtering operator like which mimics its SQL counterpart.
+  * Pushgateway grouping keys based on the Kubernetes namespace and PVC name
+    are used to separate the backup status of different PVCs.
+  * Deep-scrubbing with source comparison also checks sparse blocks. This
+    will detect blocks that are sparse in the backup and not in the source.
+  * A bug preventing restores of large images to succeed due using excessive
+    amounts of RAM when using the rbdaio io module has been fixed.
+  * Container images are based on AlmaLinux 8 and Ceph Pacific.</comment>
+    <requestid>969341</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 12 07:33:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * ACTION REQUIRED: The Helm chart has seen some changes to default values
+    which might break some setups. Especially the default Ceph credential
+    volume mounts are no longer there. In addition, the dependant charts
+    have been updated and the PostgreSQL chart has changed significantly
+    and some keys and values will need adjustment if PostgreSQL is
+    deployed via Benji Helm chart.
+  * Support for RADOS/RBD namespaces has been added to both the rbd and the
+    rbdaio io modules and the Kubernetes integration.
+  * The fsfreeze feature works with Ceph CSI provisioned RBD volumes (includes
+    volumes provisioned by Rook).
+  * There is a new filtering operator like which mimics its SQL counterpart.
+  * Pushgateway grouping keys based on the Kubernetes namespace and PVC name
+    are used to separate the backup status of different PVCs.
+  * Deep-scrubbing with source comparison also checks sparse blocks. This
+    will detect blocks that are sparse in the backup and not in the source.
+  * A bug preventing restores of large images to succeed due using excessive
+    amounts of RAM when using the rbdaio io module has been fixed.
+  * Container images are based on AlmaLinux 8 and Ceph Pacific.
+
+-------------------------------------------------------------------
 Wed Jun  2 15:13:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.0:

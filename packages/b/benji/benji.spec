@@ -1,7 +1,7 @@
 #
 # spec file for package benji
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           benji
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Deduplicating block based backup software
 License:        LGPL-3.0-only
