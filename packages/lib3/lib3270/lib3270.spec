@@ -1,7 +1,7 @@
 #
 # spec file for package lib3270
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) <2008> <Banco do Brasil S.A.>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,13 @@
 
 
 Name:           lib3270
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        TN3270 Access library
-License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
+License:        LGPL-3.0-only
 URL:            https://github.com/PerryWerneck/lib3270
 Source:         %{name}-%{version}.tar.xz
-Patch0:         fix-crl-get-engine.patch
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
 BuildRequires:  binutils
@@ -33,13 +32,12 @@ BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
+BuildRequires:  libtool
 BuildRequires:  m4
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  pkgconfig(openssl)
 
 %if 0%{?centos_version}
 # CENTOS Requires gdb for debuginfo
@@ -66,24 +64,23 @@ For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 
 %package devel
 Summary:        TN3270 Access library development files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{_libvrs} = %{version}
+Group:          Development/Libraries/C and C++
 
 %description devel
 Header files for the TN3270 access library.
 
 %prep
 %setup -q
-%patch0 -p1
 NOCONFIGURE=1 ./autogen.sh
-%configure --with-release=%{release}
+%configure --with-release=%{release} --disable-static
 
 %build
 make all %{?_smp_mflags}
 
 %install
 %make_install
-%find_lang %{name} langfiles
+%find_lang %{name}-%{MAJOR_VERSION}.%{MINOR_VERSION} langfiles
 
 %fdupes %{buildroot}/%{_prefix}
 

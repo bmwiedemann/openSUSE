@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Apr 07 22:24:02 UTC 2022 - perry.werneck@gmail.com
+
+- Update to version 5.4+git20220330:
+  * fix-crl-get-engine.patch removed 
+  * Adding SSL build options to the trace info.
+  * Update README.md
+  * Test bundle path before using it. If not found use the value from DATADIR.
+  * Reverting locale.
+  * Fixing install.
+  * Fixing use of a separated build dir.
+  * Refactoring Makefile to allow a separated build dir.
+  * Adding notes about jhbuild.
+  * Updating build system.
+  * Small updates on Makefile.
+  * Fixing autogen.
+  * Testing jhbuild.
+  * Updating configure.ac
+  * Fixing libcurl detection in macos (#25)
+  * Adjustments in autogen.sh
+  * Allowing build from another folder.
+  * Updating README.
+  * Restoring detection of MAC datadir.
+  * Fixing issues detected on linux test after macos changes (#25)
+  * Fixing MAC build (#25)
+  * Fixing libtool on mac brew, updating readme (#25)
+  * Updating Makefile and configure.ac.
+  * Using MAC library extension.
+  * Adding all-macos target required for MAC build #25
+  * Adding callback for 'select-word' action.
+  * Fixing configure.ac
+  * configure: set gettext version
+  * ASN1_TIME_diff is no longer available on libcrypt.
+  * Adding convenience method to get the product name set on ./configure.
+  * Updating build info.
+  * Reverting latest changes.
+  * Adding 'editable' property.
+  * Fixing windows registry tools.
+  * Fixing translation.
+  * Updating translation.
+  * Adding method to write string to windows registry.
+  * Updating cross-compiler install script.
+  * Adjusting ssl messsage.
+  * Adding nick for toggles, removing 'gtk-' from icons.
+  * Small fixes on log/trace modules.
+  * Updating requested revision.
+  * Updating msys build info.
+  * Adding userdata on default log.
+  * Adding userdata on log writer.
+  * Fixing trace file.
+  * Working on log/trace files.
+  * Adding 'tracefile' property (still incomplete).
+  * Fixing windows build.
+  * Fixing segfault on 'non-session' log write.
+  * Adding property to set a session based log file.
+  * Updating windows package.
+  * Small adjustments in toggle api.
+  * Fixing windows build.
+  * Fixing toggle table.
+  * Fixing 'default host' option.
+  * Working on 'hang' when the ssl negotiation fails.
+  * Debugging possible SSL problem.
+  * Update README.md
+  * Fixing popup on connection error.
+  * Small adjustmente on host type.
+  * Fixing package build.
+  * Small adjustments on package and sdk.
+  * Use environment compiler flags if set
+  * Reformatting sources with astyle.
+  * Update README.md
+  * Fixing deepcode alert.
+  * Fixing LGTM warning.
+  * spliting filetransfer set methods.
+  * Updating 'popup-an-errno' dialog.
+  * Adding utility functions.
+  * Refactoring file transfer module.
+  * Adjustments on file-transfer object.
+  * Adding dummy send/receive methods.
+  * Setting 'alt-f1' as default for action 'clear'
+  * Update README.md
+  * Fixing LGTM warnings.
+  * Fixing build.
+  * Updating control files.
+  * Fixing locale file conflicts.
+  * Fixing some autoheader warnings.
+  * Updating readme, fixing arch build.
+  * Update README.md
+  * Removing git checkout as required.
+  * Adding license badge.
+  * Fixing lgtm.com warning.
+  * Fixing CRL download.
+  * Bit field saved_rev_wraparound_mode of type int should have explicitly unsigned integral, explicitly signed integral, or enumeration type.
+  * Debugging auto-reconnect.
+  * Logging invalid callback table.
+  * Allowing customized reconnect method.
+  * Adding background task counter.
+  * Fix escaped url.
+  * Fixes from lgtm.com
+  * Enabling get peer and name methods required for custom audit plugin.
+  * Updating translation.
+  * Removing unused code
+  * Cleaning up unused code.
+  * Updating to version 5.4
+  * Updating package control files.
+  * Updating service file
+
+-------------------------------------------------------------------
 Wed Nov 18 21:07:38 UTC 2020 - Perry Werneck <perry.werneck@gmail.com>
 
 - Fixing CRL download engine
