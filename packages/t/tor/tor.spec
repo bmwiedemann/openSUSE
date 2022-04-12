@@ -1,7 +1,7 @@
 #
 # spec file for package tor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,20 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.6.9
+Version:        0.4.6.10
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
 URL:            https://www.torproject.org/
 Source0:        https://www.torproject.org/dist/%{name}-%{version}.tar.gz
-Source1:        https://www.torproject.org/dist/%{name}-%{version}.tar.gz.asc
 # https://www.torproject.org/docs/signing-keys.html.en
 Source2:        tor.keyring
 Source3:        tor.service
 Source4:        tor.tmpfiles
 Source5:        defaults-torrc
 Source6:        tor-master.service
+Source100:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256sum
+Source101:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256sum.asc
 Patch0:         tor-0.2.5.x-logrotate.patch
 Patch1:         fix-test.patch
 BuildRequires:  openssl-devel >= 1.0.1
@@ -76,6 +77,7 @@ strength of the anonymity provided. Tor is not presently suitable
 for high-stakes anonymity.
 
 %prep
+( cd $(dirname %SOURCE0) && echo "$(cat %SOURCE100 | cut -d' ' -f1) tor-%version.tar.gz" | sha256sum --check )
 %autosetup -p1
 
 %build
