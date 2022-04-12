@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 10 12:49:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.5
+  * Resolve a few warnings reported by cov-scan.
+
+-------------------------------------------------------------------
 Tue Mar 15 13:10:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.4
