@@ -17,7 +17,7 @@
 
 
 Name:           seadrive-gui
-Version:        2.0.19
+Version:        2.0.21
 Release:        0
 Summary:        GUI part of seafile drive
 License:        GPL-3.0-only
@@ -25,6 +25,8 @@ URL:            https://github.com/haiwen/seadrive-gui/
 Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/haiwen/seadrive-gui/pull/292
 Patch0:         seadrive-gui_fix-compilation-glib2_68.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         fix-cmake-exec-name.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -66,15 +68,14 @@ This package provides a graphical user interface for seadrive-fuse
 
 %prep
 %setup -q
-%if 0%{?suse_version} > 1500
-%patch0 -p1
-%endif
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -fPIE -pie"
 export CXXFLAGS="%{optflags} -fPIE -pie"
 %cmake \
-    -DBUILD_ENABLE_WARNINGS=OFF
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_ENABLE_WARNINGS=OFF
 
 %cmake_build
 

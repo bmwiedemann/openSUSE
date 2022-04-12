@@ -1,0 +1,29 @@
+--- seadrive-gui-2.0.21/CMakeLists.txt.orig	2022-04-12 12:20:29.557115074 +0200
++++ seadrive-gui-2.0.21/CMakeLists.txt	2022-04-12 13:10:13.406067595 +0200
+@@ -128,7 +128,7 @@
+ ###### BEGIN: QT configuration
+ ####################
+ 
+-FIND_PROGRAM(qmake_executable NAMES qmake qmake.exe)
++FIND_PROGRAM(qmake_executable NAMES qmake qmake.exe qmake-qt5)
+ EXECUTE_PROCESS(COMMAND
+     bash -c "${qmake_executable} --version | grep -iE '^using qt version [0-9.]+' | awk '{print $4}'"
+     OUTPUT_VARIABLE DETECTED_QT_VERSION
+@@ -136,7 +136,7 @@
+ MESSAGE("Qt version: ${DETECTED_QT_VERSION}")
+ 
+ EXECUTE_PROCESS(COMMAND
+-    bash -c "qmake --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
++    bash -c "qmake-qt5 --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
+     OUTPUT_VARIABLE QT_VERSION_MAJOR
+     OUTPUT_STRIP_TRAILING_WHITESPACE)
+ MESSAGE("QT_VERSION_MAJOR: ${QT_VERSION_MAJOR}")
+@@ -615,7 +615,7 @@
+     TARGET_LINK_LIBRARIES(seadrive-gui PRIVATE Qt6::DBus)
+ ELSE()
+     TARGET_LINK_LIBRARIES(seadrive-gui ${QT_QTDBUS_LIBRARIES})
+-    QT5_USE_MODULES(seadrive-gui ${USE_QT_LIBRARY})
++    QT5_USE_MODULES(seadrive-gui ${USE_QT_LIBRARIES})
+ ENDIF()
+ 
+ ENDIF()

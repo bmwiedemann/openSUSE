@@ -77,4 +77,12 @@
     <comment>- Update to v2.0.19 (no changelog)</comment>
     <requestid>943231</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>687cda5b3dd4a1d2be72cf58737de214</srcmd5>
+    <version>2.0.21</version>
+    <time>1649793044</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.0.21</comment>
+    <requestid>969407</requestid>
+  </revision>
 </revisionlist>
