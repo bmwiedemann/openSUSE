@@ -396,4 +396,16 @@
   * Fixed depend rule for custom/Makefile.</comment>
     <requestid>946083</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1cb468ee225f032f4c3f51cf2085d71f</srcmd5>
+    <version>2.14.1.0</version>
+    <time>1649793037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1.0:
+  * Fixed alignment of show item section of help command.
+  * Bug fix: While 0^0 == 1, now for y &gt; 0, 0^y == 0.
+  * Adjusted cal/test8900.cal to reflect this bug fix.
+  * Added tests to cal/regress.cal to help verify bug fix is fixed.</comment>
+    <requestid>969339</requestid>
+  </revision>
 </revisionlist>

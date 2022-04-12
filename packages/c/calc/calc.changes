@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 12 07:31:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.1.0:
+  * Fixed alignment of show item section of help command.
+  * Bug fix: While 0^0 == 1, now for y > 0, 0^y == 0.
+  * Adjusted cal/test8900.cal to reflect this bug fix.
+  * Added tests to cal/regress.cal to help verify bug fix is fixed.
+
+-------------------------------------------------------------------
 Wed Jan 12 17:00:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.0.14:
