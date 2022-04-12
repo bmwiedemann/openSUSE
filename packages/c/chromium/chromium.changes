@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 12 05:02:45 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 100.0.4896.88 (boo#1198361)
+  * CVE-2022-1305: Use after free in storage
+  * CVE-2022-1306: Inappropriate implementation in compositing
+  * CVE-2022-1307: Inappropriate implementation in full screen
+  * CVE-2022-1308: Use after free in BFCache
+  * CVE-2022-1309: Insufficient policy enforcement in developer tools
+  * CVE-2022-1310: Use after free in regular expressions
+  * CVE-2022-1311: Use after free in Chrome OS shell
+  * CVE-2022-1312: Use after free in storage
+  * CVE-2022-1313: Use after free in tab groups
+  * CVE-2022-1314: Type Confusion in V8
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Sun Apr 10 13:52:31 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Patches for GCC 12:
