@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  8 10:01:37 UTC 2022 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 8.0.28
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-28.html
+- Updated patch due to code changes
+  * modified mysql-connector-cpp-mariadb.patch
+
+-------------------------------------------------------------------
 Tue Nov  2 11:38:38 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to version 8.0.27

@@ -33,7 +33,7 @@ diff -uNr mysql-connector-c++-8.0.15-org/jdbc/driver/mysql_connection.cpp mysql-
    };
 @@ -303,7 +303,7 @@
  #if MYCPPCONN_STATIC_MYSQL_VERSION_ID >= 50700
-     {OPT_TLS_VERSION,          MYSQL_OPT_TLS_VERSION, false},
+     {OPT_TLS_VERSION,          MYSQL_OPT_TLS_VERSION, true},
  #endif
 -    {OPT_LOAD_DATA_LOCAL_DIR, MYSQL_OPT_LOAD_DATA_LOCAL_DIR, false}
 +    //{OPT_LOAD_DATA_LOCAL_DIR, MYSQL_OPT_LOAD_DATA_LOCAL_DIR, false}
