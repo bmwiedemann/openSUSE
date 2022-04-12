@@ -21,7 +21,7 @@ Tue Mar 29 11:48:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Mon Mar 21 19:45:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.36.0:
+- Update to version 2.36.0 (boo#1198290):
   + Add new accessibility implementation using ATSPI DBus
     interfaces instead of ATK.
   + Add support for requestVideoFrameCallback.
@@ -32,6 +32,7 @@ Mon Mar 21 19:45:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     schemes.
   + Make user interactive threads (event handler, scrolling, …)
     real time in linux.
+  + Security fixes: CVE-2022-22624, CVE-2022-22628, CVE-2022-22629.
 
 -------------------------------------------------------------------
 Mon Feb 28 01:29:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -140,7 +141,7 @@ Fri Jan 21 12:58:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     of IndexedDB databases created by other websites.
   + Security fixes: CVE-2021-30934, CVE-2021-30936, CVE-2021-30951,
     CVE-2021-30952, CVE-2021-30953, CVE-2021-30954, CVE-2021-30984,
-    CVE-2022-22594.
+    CVE-2022-22594, CVE-2022-22637.
 
 -------------------------------------------------------------------
 Wed Jan 19 15:12:02 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
