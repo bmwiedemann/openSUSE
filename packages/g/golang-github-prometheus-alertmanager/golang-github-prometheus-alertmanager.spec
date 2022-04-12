@@ -34,7 +34,7 @@ Patch2:         0002-Update-prometheus-client-to-version-1.11.1.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.11
+BuildRequires:  golang(API) >= 1.16
 Requires(pre):  group(prometheus)
 Requires(pre):  user(prometheus)
 Provides:       prometheus-alertmanager = %{version}

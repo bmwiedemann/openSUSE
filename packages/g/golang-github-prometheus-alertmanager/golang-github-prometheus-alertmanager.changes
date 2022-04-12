@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:54:29 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update required Go version to 1.16
+
+-------------------------------------------------------------------
 Thu Mar 10 15:39:10 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update vendor tarball with prometheus/client_golang 1.11.1
