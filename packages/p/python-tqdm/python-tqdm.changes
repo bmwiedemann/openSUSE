@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  9 01:57:42 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.64.0:
+  * add contrib.slack (#1313)
+
+- changes from version 4.63.2:
+  * rich: expose options kwargs (#1282)
+  * autonotebook: re-enable VSCode (#1309)
+  * misc docs typos (#1301, #1299)
+  * update dev dependencies (#1311)
+
+-------------------------------------------------------------------
 Sun Mar 27 18:02:52 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.63.1:
