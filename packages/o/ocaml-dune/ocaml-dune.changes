@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  9 12:34:56 UTC 2022 - ohering@suse.de
+
+- Adjust bootstrap of dune. Build the dune binary in the main
+  package, and all libraries in the devel subpackage. This reduces
+  the number of packages, and fixes dune --version output.
+- Remove subpackage bootstrap
+
+-------------------------------------------------------------------
 Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
 
 - Update to version 3.0.3

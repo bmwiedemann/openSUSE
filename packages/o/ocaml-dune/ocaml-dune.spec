@@ -28,41 +28,50 @@ Name:           %pkg%nsuffix
 Version:        3.0.3
 Release:        0
 %{?ocaml_preserve_bytecode}
-Summary:        A composable build system for OCaml
 License:        MIT
 Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/dune
 Source0:        %pkg-%version.tar.xz
 Requires:       ocamlfind(compiler-libs)
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20220409
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 %if "%build_flavor" == ""
-BuildRequires:  ocaml-dune-bootstrap = %version
+Provides:       %name-bootstrap = %version-%release
+Provides:       %name-bootstrap-devel = %version-%release
+Obsoletes:      %name-bootstrap < %version-%release
+Obsoletes:      %name-bootstrap-devel < %version-%release
+Summary:        A composable build system for OCaml
+%description
+This package provides the dune binary and the documentation.
+%endif
+%if "%build_flavor" == "devel"
+Summary:        Various libraries
+Group:          Development/Languages/OCaml
+BuildRequires:  ocaml-dune = %version
 BuildRequires:  ocamlfind(csexp)
 BuildRequires:  ocamlfind(pp)
 BuildRequires:  ocamlfind(result)
 Provides:       ocaml-dune-configurator == %version-%release
 Obsoletes:      ocaml-dune-configurator <  %version-%release
-%description
-A composable build system for OCaml
-%endif
-%if "%build_flavor" == "bootstrap"
-%description
-This package provides a minimal dune binary in %ocaml_dune_bootstrap_directory
-to build a few number of packages to bootstrap the full dune package.
-%endif
-
-%package        devel
-Summary:        Development files for %name
-Group:          Development/Languages/OCaml
 Provides:       ocaml-dune-configurator-devel == %version-%release
 Obsoletes:      ocaml-dune-configurator-devel <  %version-%release
-Requires:       %name = %version
 
-%description    devel
-The %name-devel package contains libraries and signature files for
-developing applications that use %name.
+%description
+This package provides various libraries:
+dune-action-plugin
+dune-build-info
+dune-configurator
+dune-glob
+dune-private-libs
+dune-rpc
+dune-site
+dyn
+fiber
+ordering
+stdune
+xdg
+%endif
 
 %prep
 %setup -q -n %pkg-%version
@@ -75,7 +84,9 @@ ocaml configure.ml \
 	'--mandir=%_mandir' \
 	%nil
 #
-%if "%build_flavor" == "bootstrap"
+%if "%build_flavor" == ""
+dune_release_pkgs='dune'
+%ocaml_dune_setup
 jobs="-j `/usr/bin/getconf _NPROCESSORS_ONLN`"
 ocaml bootstrap.ml --verbose ${jobs}
 ./dune.exe build \
@@ -85,13 +96,12 @@ ocaml bootstrap.ml --verbose ${jobs}
 	--verbose \
 	${jobs} \
 	%nil
-# leaving early
-exit 0
+mkdir .bin
+ln -s ../dune.exe .bin/dune
 %endif
 #
-%if "%build_flavor" == ""
+%if "%build_flavor" == "devel"
 pkgs=(
-dune
 dune-action-plugin
 dune-build-info
 dune-configurator
@@ -108,26 +118,35 @@ xdg
 dune_release_pkgs="${pkgs[*]}"
 dune_release_pkgs="${dune_release_pkgs// /,}"
 #
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 %ocaml_dune_setup
 %ocaml_dune_build
 %endif
 
 %install
-%if "%build_flavor" == "bootstrap"
-mkdir -vp %buildroot%ocaml_dune_bootstrap_directory
-cp -avL dune.exe %buildroot%ocaml_dune_bootstrap_directory/dune
-tee %name.files <<'_EOF_'
-%ocaml_dune_bootstrap_directory
-%%doc CHANGES.md
-_EOF_
-echo '%dir %ocaml_dune_bootstrap_directory' > %name.files.devel
+# use the just built dune
+PATH="$PWD/.bin:$PATH"
+%ocaml_dune_install
+%if "%build_flavor" == "devel"
+# the META file removed below belongs to this package, to provide dune.configurator
+mkdir -vp %buildroot%ocaml_standard_library/dune
+tee %buildroot%ocaml_standard_library/dune/META <<_EOM_
+package "configurator" (
+  directory = "configurator"
+  version = "%version"
+  requires = "dune-configurator"
+)
+_EOM_
+%endif
+%if "%build_flavor" == ""
+# the installed META file provides and requires 'dune-configurator'
+rm -rfv %buildroot%ocaml_standard_library
 %endif
 #
-%if "%build_flavor" == ""
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
-%ocaml_dune_install
 %ocaml_create_file_list
+#
+%if "%build_flavor" == "devel"
+# package everything, including the cmxs files
+tee -a %name.files < %name.files.devel
 %endif
 
 %files -f %name.files
@@ -140,7 +159,5 @@ export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 %_datadir/emacs
 %endif
 
-%files devel -f %name.files.devel
-%defattr(-,root,root,-)
 
 %changelog

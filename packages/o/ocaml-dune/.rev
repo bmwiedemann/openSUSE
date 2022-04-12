@@ -266,4 +266,15 @@ I will submit the packages one by one once this is accepted.</comment>
 - Add subpackage bootstrap</comment>
     <requestid>967047</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8f4e61bd67b02db7a9925803effddd75</srcmd5>
+    <version>3.0.3</version>
+    <time>1649792993</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust bootstrap of dune. Build the dune binary in the main
+  package, and all libraries in the devel subpackage. This reduces
+  the number of packages, and fixes dune --version output.
+- Remove subpackage bootstrap</comment>
+    <requestid>968050</requestid>
+  </revision>
 </revisionlist>
