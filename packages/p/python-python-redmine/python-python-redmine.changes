@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 12 08:29:30 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not take python2 into account, it is long dead... and drop mock requirement
+
+-------------------------------------------------------------------
 Sun Aug 16 21:15:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with pytest

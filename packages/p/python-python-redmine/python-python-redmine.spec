@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-redmine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-python-redmine
 Version:        2.3.0
 Release:        0
@@ -34,9 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.23.0
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 %python_subpackages
 
 %description
