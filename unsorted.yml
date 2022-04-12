@@ -1160,6 +1160,7 @@ unsorted:
   - bash-legacybin 
   - bash-loadables 
   - bat 
+  - bat-extras 
   - batctl 
   - bats 
   - bazel: [x86_64] 
@@ -1809,6 +1810,8 @@ unsorted:
   - catalan-pos-dict 
   - catatonit: [i586] 
   - catcodec 
+  - catimg 
+  - catimg-zsh-completion 
   - cava 
   - cbi-plugins: [x86_64] 
   - cbi-plugins-javadoc: [x86_64] 
@@ -2373,6 +2376,7 @@ unsorted:
   - cpuminer 
   - cpupower-bench 
   - cpupower-devel 
+  - cpupower-rebuild 
   - cpuset 
   - cpustat 
   - cpustat-bash-completion 
@@ -2950,6 +2954,7 @@ unsorted:
   - dictd-devel 
   - dicts-devel 
   - diff-pdf 
+  - diff-so-fancy 
   - diffmk 
   - diffoscope 
   - diffstat 
@@ -10164,6 +10169,7 @@ unsorted:
   - libcapi20-3-32bit: [x86_64] 
   - libcapi20-devel 
   - libcapi20-devel-32bit: [x86_64] 
+  - libcapi20-mod_misdn 
   - libcapnp-0_9 
   - libcapnp-devel 
   - libcapstone-devel 
@@ -16172,6 +16178,8 @@ unsorted:
   - metacity-theme-matcha 
   - metacity-theme-plata 
   - metacity-tools 
+  - metainf-services 
+  - metainf-services-javadoc 
   - metaio-devel 
   - metaio-utils 
   - metallb-controller: [x86_64] 
@@ -17761,8 +17769,6 @@ unsorted:
   - ocaml-cppo-devel 
   - ocaml-csexp 
   - ocaml-csexp-devel 
-  - ocaml-csv 
-  - ocaml-csv-devel 
   - ocaml-ctypes 
   - ocaml-ctypes-devel 
   - ocaml-cudf 
@@ -43154,7 +43160,7 @@ unsorted:
   - xsv-bash-completion 
   - xsynth-dssi 
   - xtables-addons 
-  - xtables-addons-kmp-default 
+  - xtables-addons-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - xtables-addons-kmp-pae: [i586] 
   - xtables-geoip 
   - xteddy 

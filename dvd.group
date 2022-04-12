@@ -5365,6 +5365,7 @@
     <package name="xmlstarlet" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xorg-x11-server-sdk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xorgproto-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="xtables-addons-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xtrans" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yast2-drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="zerofree" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
