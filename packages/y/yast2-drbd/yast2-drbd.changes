@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Fri May 21 10:12:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not make package noarch: we require a dependency (drbd) that
