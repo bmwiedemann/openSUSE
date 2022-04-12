@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr  9 12:34:56 UTC 2022 - ohering@suse.de
+
+- Require ocamlfind(dune-configurator)
+
+-------------------------------------------------------------------
 Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
 
 - Update to version 5.1.2

@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921268</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>83e6c243f47a04bfc11c1c86c661e184</srcmd5>
+    <version>5.1.2</version>
+    <time>1649792994</time>
+    <user>dimstar_suse</user>
+    <comment>- Require ocamlfind(dune-configurator)</comment>
+    <requestid>968051</requestid>
+  </revision>
 </revisionlist>
