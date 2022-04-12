@@ -14,6 +14,9 @@ echo "NAME:    $ELECTRON_PKGNAME"
 echo "VERSION: $ELECTRON_PKGVERSION"
 echo "PATH:    $ELECTRON_PATH"
 
+echo -n "This script will download about 60G to $ELECTRON_TMPDIR, continue? "
+read $ans
+
 cleanup_tmpdir() {
     popd 2>/dev/null || true
     rm -rf "$ELECTRON_TMPDIR"

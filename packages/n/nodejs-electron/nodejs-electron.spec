@@ -74,7 +74,7 @@ ExcludeArch:    %{ix86} %{arm}
 %endif
 %bcond_without system_ffmpeg
 Name:           nodejs-electron
-Version:        17.1.2
+Version:        17.3.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -168,7 +168,11 @@ BuildRequires:  libatomic
 BuildRequires:  ninja-build >= 1.7.2
 %endif
 BuildRequires:  nodejs >= 16.5.0
+%if 0%{?suse_version}
+BuildRequires:  npm-default
+%else
 BuildRequires:  npm
+%endif
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3

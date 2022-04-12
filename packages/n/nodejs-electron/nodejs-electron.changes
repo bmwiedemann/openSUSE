@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 11 11:11:47 UTC 2022 - thod_@gmx.de
+
+- Update to version 17.3.1
+  * https://github.com/electron/electron/releases/tag/v17.3.1
+  * https://github.com/electron/electron/releases/tag/v17.3.0
+  * https://github.com/electron/electron/releases/tag/v17.2.0
+
+-------------------------------------------------------------------
+Wed Apr  6 11:11:49 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Change npm BuildRequires to npm-default
+
+-------------------------------------------------------------------
 Thu Mar 10 07:36:16 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 17.1.2
