@@ -1,7 +1,7 @@
 #
 # spec file for package gsoap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gsoap
-%define lname	libgsoap-2_8_117
-Version:        2.8.117
+%define lname	libgsoap-2_8_121
+Version:        2.8.121
 Release:        0
 Summary:        Toolkit for SOAP/REST-based C/C++ server and client web service applications
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -27,7 +27,6 @@ URL:            http://www.genivia.com/dev.html
 
 Source:         gsoap-%version.tar.xz
 Source2:        sanitize_source.sh
-Patch1:         gsoap-automake1_13.diff
 Patch2:         gsoap-01-sharedlibs.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -80,16 +79,19 @@ This subpackage contains the documentation for the gSOAP toolkit.
 %prep
 %setup -q
 cmp gsoap/stdsoap2.cpp gsoap/stdsoap2.c
-%patch -P 1 -P 2 -p1
+%patch -P 2 -p1
 ln -fs stdsoap2.cpp gsoap/stdsoap2.c
 
 %build
-# The version is used for filenames, and GSOAP changed its ABI between
-# 2.8.22 and 2.8.28, so we need the full version.
-perl -i -lpe 's{AC_INIT\(gsoap, 2.8\)}{AC_INIT([gsoap], [%version])}' \
+# GSOAP changes its ABI between 2.8.22 and 2.8.28 without updating the SONAMEs.
+# Therefore, the full version must be present in the SONAME (and we can trigger
+# this by updating the AC_INIT field in this instance).
+#
+perl -i -lpe 's{AC_INIT\(\[gsoap\], 2.8\)}{AC_INIT([gsoap], [%version])}' \
 	configure.ac
 # Rebuild configure - fix that utterly long mktime test.
 # Also needed because Makefile.am and configure.ac are touched.
+#
 autoreconf -fi
 %configure --enable-ipv6 --disable-static CFLAGS="%optflags -fcommon"
 pushd gsoap/src/

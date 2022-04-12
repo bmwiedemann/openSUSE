@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Apr 10 12:59:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.121
+  * Stricter strict mode flag `SOAP_XML_STRICT` to reject
+    attributes with an unquoted value and attributes without a
+    value, this update rejects legacy XML-like formats such as
+    HTML.
+  * Improved wsdl2h tool to handle problematic SOAP header
+    definitions with doc/lit and rpc mixing with invalid or
+    missing message parts.
+  * Improved wsdl2h tool to handle ONVIF schemas better, notably
+    avoid the `final` C++ keyword clash.
+  * Added `fencoding` callback to inspect and accept or reject
+    special non-latin/UTF-8 XML encodings.
+  * Updated wsdl2h option -I to import schemas more
+    "authoritively" by checking lastly the -I path without the
+    importing WSDL/XSD location to import schemas (this also
+    restores the -I option behavior prior to 2.8.75).
+- Drop gsoap-automake1_13.diff (merged)
+
+-------------------------------------------------------------------
 Thu Aug 19 20:06:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.117
