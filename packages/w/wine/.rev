@@ -4395,4 +4395,12 @@
 - update staging to 7.6 release</comment>
     <requestid>968218</requestid>
   </revision>
+  <revision rev="374" vrev="2">
+    <srcmd5>f73711b0c0b89ffc46a1da3986a7d17d</srcmd5>
+    <version>7.6</version>
+    <time>1649794823</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable support for capi (forwarded request 969240 from mnhauke)</comment>
+    <requestid>969467</requestid>
+  </revision>
 </revisionlist>

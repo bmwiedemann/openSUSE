@@ -1,5 +1,5 @@
 #
-# spec file for package wine
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -62,6 +62,7 @@ BuildRequires:  giflib-devel
 BuildRequires:  glib2-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  krb5-devel
+BuildRequires:  libcapi20-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libgphoto2-devel
 BuildRequires:  libgsm-devel
