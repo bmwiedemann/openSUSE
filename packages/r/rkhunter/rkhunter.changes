@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 12 15:50:16 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- renable gpg verification, change to https urls.
+- rkhunter.keyring: changed from keyserver
+
+-------------------------------------------------------------------
 Thu Jan  9 14:22:50 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Remove default cron job and install it with the documentation.

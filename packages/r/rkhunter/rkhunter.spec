@@ -1,7 +1,7 @@
 #
 # spec file for package rkhunter
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2009-2010 by Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,10 +28,9 @@ Release:        0
 Summary:        A scanner for Rootkits, Backdoors, and Local Exploits
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://rkhunter.sourceforge.net/
-Source0:        http://sourceforge.net/projects/rkhunter/files/%{name}-%{version}.tar.gz
-# 2017-07-03 public key 0xE9C5DC50D13AAA83 is not available
-# Source1:        http://sourceforge.net/projects/rkhunter/files/%%{name}-%%{version}.tar.gz.asc
+URL:            http://rkhunter.sourceforge.net/
+Source0:        https://sourceforge.net/projects/rkhunter/files/%{name}-%{version}.tar.gz
+Source1:        https://sourceforge.net/projects/rkhunter/files/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.sysconfig
 Source3:        %{name}.cron
 Source5:        %{name}-README.SUSE
