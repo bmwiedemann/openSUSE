@@ -208,7 +208,8 @@ getent passwd %{name} >/dev/null || \
 %doc %{_defaultdocdir}/%{name}/
 %dir  %{_sysconfdir}/keepalived
 %dir %attr(-,keepalived,keepalived) %{_var}/lib/%{name}
-%config %{_sysconfdir}/keepalived/keepalived.conf.sample
+%config(noreplace) %ghost %attr(0640,root,root) %{_sysconfdir}/keepalived/keepalived.conf
+%config %attr(0640,root,root) %{_sysconfdir}/keepalived/keepalived.conf.sample
 %{_fillupdir}/sysconfig.%{name}
 %{_bindir}/genhash
 %{_sbindir}/rckeepalived
