@@ -1,7 +1,7 @@
 #
 # spec file for package postfix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@
 %bcond_without libnsl
 %bcond_without ldap
 Name:           postfix
-Version:        3.6.2
+Version:        3.6.5
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -52,7 +52,6 @@ Source0:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official
 Source1:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/official/postfix-%{version}.tar.gz.gpg2#/postfix-%{version}.tar.gz.asc
 Source2:        %{name}-SUSE.tar.gz
 Source3:        %{name}-mysql.tar.bz2
-#Source4:        http://cdn.postfix.johnriley.me/mirrors/postfix-release/wietse.pgp#/postfix.keyring
 Source4:        postfix.keyring
 Source10:       %{name}-rpmlintrc
 Source11:       check_mail_queue
@@ -68,45 +67,44 @@ Patch7:         %{name}-ssl-release-buffers.patch
 Patch8:         %{name}-vda-v14-3.0.3.patch
 Patch9:         fix-postfix-script.patch
 Patch10:        %{name}-avoid-infinit-loop-if-no-permission.patch
-Patch11:	set-default-db-type.patch
-Patch12:	postfix-3.6.2-glibc-234-build-fix.patch
+Patch11:        set-default-db-type.patch
+Patch12:        harden_postfix.service.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cyrus-sasl-devel
-#BuildRequires:  db-devel
 BuildRequires:  diffutils
 BuildRequires:  fdupes
 BuildRequires:  libicu-devel
 BuildRequires:  libopenssl-devel >= 1.1.1
+BuildRequires:  lmdb-devel
 BuildRequires:  m4
 BuildRequires:  mysql-devel
-%if %{with ldap}
-BuildRequires:  openldap2-devel
-%endif
-BuildRequires:  lmdb-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires(post): permissions
 Requires(pre):  %fillup_prereq
+Requires(pre):  group(%{mail_group})
 Requires(pre):  permissions
+Requires(pre):  user(nobody)
 Conflicts:      exim
-Conflicts:      sendmail
 Conflicts:      postfix-bdb
+Conflicts:      sendmail
 Provides:       postfix-lmdb = %{version}-%{release}
 Obsoletes:      postfix-lmdb < %{version}-%{release}
 Provides:       smtp_daemon
 %{?systemd_ordering}
+%sysusers_requires
+%if %{with ldap}
+BuildRequires:  openldap2-devel
+%endif
 %if %{with libnsl}
 BuildRequires:  libnsl-devel
 %endif
-BuildRequires:  sysuser-tools
-Requires(pre):  user(nobody)
-Requires(pre):  group(%{mail_group})
-%sysusers_requires
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program.
@@ -132,10 +130,10 @@ This package contains the documentation for %{name}
 Summary:        Postfix plugin to support MySQL maps
 Group:          Productivity/Networking/Email/Servers
 Requires(pre):  %{name} = %{version}
+%sysusers_requires
 %if 0%{?suse_version} < 1550
 Provides:       group(vmail)
 %endif
-%sysusers_requires
 
 %description mysql
 Postfix plugin to support MySQL maps. This library will be loaded by
@@ -235,12 +233,12 @@ export CCARGS="${CCARGS} -DNO_DB -DDEF_DB_TYPE=\\\"lmdb\\\""
 export PIE=-pie
 # using SHLIB_RPATH to specify unrelated linker flags, because LDFLAGS is
 # ignored
-make makefiles pie=yes shared=yes dynamicmaps=yes \
+%make_build makefiles pie=yes shared=yes dynamicmaps=yes \
   shlib_directory=%{_prefix}/lib/%{name} \
   meta_directory=%{_prefix}/lib/%{name} \
   config_directory=%{_sysconfdir}/%{name} \
   SHLIB_RPATH="-Wl,-rpath,%{pf_shlib_directory} -Wl,-z,relro,-z,now"
-make %{?_smp_mflags}
+%make_build
 # Create postfix user
 %sysusers_generate_pre %{SOURCE12} postfix postfix-user.conf
 %sysusers_generate_pre %{SOURCE13} vmail postfix-vmail-user.conf
@@ -252,7 +250,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 # create our default postfix ssl DIR (/etc/postfix/ssl)
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/ssl/certs
 # link cacerts to /etc/ssl/certs
-ln -sf ../../ssl/certs %{buildroot}%{_sysconfdir}/%{name}/ssl/cacerts
+ln -s ../../ssl/certs %{buildroot}%{_sysconfdir}/%{name}/ssl/cacerts
 cp lib/lib%{name}-*  %{buildroot}/%{_libdir}
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
 sh postfix-install -non-interactive \
@@ -268,9 +266,9 @@ sh postfix-install -non-interactive \
        setgid_group=%{pf_setgid_group} \
        readme_directory=%{pf_readme_directory} \
        data_directory=%{pf_data_directory}
-ln -sf ../sbin/sendmail %{buildroot}%{_libexecdir}/sendmail
+ln -s ../sbin/sendmail %{buildroot}%{_libexecdir}/sendmail
 for i in qmqp-source smtp-sink smtp-source; do
-	install -m 755 bin/$i %{buildroot}%{_sbindir}/$i
+	install -pm 0755 bin/$i %{buildroot}%{_sbindir}/$i
 done
 mkdir -p %{buildroot}/sbin/conf.d
 mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
@@ -281,10 +279,10 @@ mkdir -p %{buildroot}/%{pf_sample_directory}
 mkdir -p %{buildroot}/%{pf_html_directory}
 mkdir -p %{buildroot}%{_includedir}/%{name}
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-install -m 644 %{name}-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
+install -pm 0644 %{name}-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
 mkdir -p %{buildroot}%{_fillupdir}
 sed -e 's;@lib@;%{_lib};g' %{name}-SUSE/sysconfig.%{name} > %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -m 644 %{name}-SUSE/sysconfig.mail-%{name} %{buildroot}%{_fillupdir}/sysconfig.mail-%{name}
+install -pm 0644 %{name}-SUSE/sysconfig.mail-%{name} %{buildroot}%{_fillupdir}/sysconfig.mail-%{name}
 sed -e 's;@lib@;%{_lib};g' \
     -e 's;@conf_backup_dir@;%{conf_backup_dir};' \
     -e 's;@daemon_directory@;%{pf_daemon_directory};' \
@@ -296,19 +294,19 @@ sed -e 's;@lib@;%{_lib};g' \
     -e 's;@newaliases_path@;%{pf_newaliases_path};' \
     -e 's;@sample_directory@;%{pf_sample_directory};' \
     -e 's;@mailq_path@;%{pf_mailq_path};' %{name}-SUSE/config.%{name} > %{buildroot}%{_sbindir}/config.%{name}
-chmod 755 %{buildroot}%{_sbindir}/config.%{name}
-install -m 644 %{name}-SUSE/ldap_aliases.cf %{buildroot}%{_sysconfdir}/%{name}/ldap_aliases.cf
-install -m 644 %{name}-SUSE/helo_access %{buildroot}%{_sysconfdir}/%{name}/helo_access
-install -m 644 %{name}-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/%{name}
-install -m 644 %{name}-SUSE/sender_canonical %{buildroot}%{_sysconfdir}/%{name}/sender_canonical
-install -m 644 %{name}-SUSE/relay %{buildroot}%{_sysconfdir}/%{name}/relay
-install -m 644 %{name}-SUSE/relay_ccerts %{buildroot}%{_sysconfdir}/%{name}/relay_ccerts
-install -m 644 %{name}-SUSE/relay_recipients %{buildroot}%{_sysconfdir}/%{name}/relay_recipients
-install -m 600 %{name}-SUSE/sasl_passwd %{buildroot}%{_sysconfdir}/%{name}/sasl_passwd
+chmod 0755 %{buildroot}%{_sbindir}/config.%{name}
+install -pm 0644 %{name}-SUSE/ldap_aliases.cf %{buildroot}%{_sysconfdir}/%{name}/ldap_aliases.cf
+install -pm 0644 %{name}-SUSE/helo_access %{buildroot}%{_sysconfdir}/%{name}/helo_access
+install -pm 0644 %{name}-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/%{name}
+install -pm 0644 %{name}-SUSE/sender_canonical %{buildroot}%{_sysconfdir}/%{name}/sender_canonical
+install -pm 0644 %{name}-SUSE/relay %{buildroot}%{_sysconfdir}/%{name}/relay
+install -pm 0644 %{name}-SUSE/relay_ccerts %{buildroot}%{_sysconfdir}/%{name}/relay_ccerts
+install -pm 0644 %{name}-SUSE/relay_recipients %{buildroot}%{_sysconfdir}/%{name}/relay_recipients
+install -pm 0600 %{name}-SUSE/sasl_passwd %{buildroot}%{_sysconfdir}/%{name}/sasl_passwd
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
-install -m 600 %{name}-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
-install -m 644 %{name}-SUSE/openssl_%{name}.conf.in %{buildroot}%{_sysconfdir}/%{name}/openssl_%{name}.conf.in
-install -m 755 %{name}-SUSE/mk%{name}cert %{buildroot}%{_sbindir}/mk%{name}cert
+install -pm 0600 %{name}-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
+install -pm 0644 %{name}-SUSE/openssl_%{name}.conf.in %{buildroot}%{_sysconfdir}/%{name}/openssl_%{name}.conf.in
+install -pm 0755 %{name}-SUSE/mk%{name}cert %{buildroot}%{_sbindir}/mk%{name}cert
 {
 cat<<EOF
 #
@@ -347,12 +345,12 @@ sed -i	-e 's/\(.*ldap.*\)/#\1/g' \
 	%{buildroot}%{pf_shlib_directory}/postfix-files
 mkdir -p %{buildroot}%{pf_shlib_directory}/postfix-files.d
 # postfix-mysql
-install -m 644 %{name}-mysql/main.cf-mysql %{buildroot}%{_sysconfdir}/%{name}/main.cf-mysql
-install -m 640 %{name}-mysql/*_maps.cf     %{buildroot}%{_sysconfdir}/%{name}/
+install -pm 0644 %{name}-mysql/main.cf-mysql %{buildroot}%{_sysconfdir}/%{name}/main.cf-mysql
+install -pm 0640 %{name}-mysql/*_maps.cf     %{buildroot}%{_sysconfdir}/%{name}/
 # create paranoid permissions file
 printf '%%-38s %%-18s %%s\n' %{_sbindir}/postdrop "root.%{pf_setgid_group}" "0755" >> %{buildroot}%{_sysconfdir}/permissions.d/%{name}.paranoid
 printf '%%-38s %%-18s %%s\n' %{_sbindir}/postqueue "root.%{pf_setgid_group}" "0755" >> %{buildroot}%{_sysconfdir}/permissions.d/%{name}.paranoid
-install -m 644 include/*.h %{buildroot}%{_includedir}/%{name}/
+install -pm 0644 include/*.h %{buildroot}%{_includedir}/%{name}/
 # some rpmlint stuff
 # remove unneeded examples/chroot-setup
 for example in AIX42 BSDI* F* HPUX* IRIX* NETBSD1 NEXTSTEP3 OPENSTEP4 OSF1 Solaris*; do
@@ -366,12 +364,12 @@ rm %{buildroot}%{pf_docdir}/README_FILES/INSTALL
 rm -f %{buildroot}%{_sysconfdir}/%{name}/*.orig
 mkdir -p %{buildroot}%{_unitdir}/mail-transfer-agent.target.wants/
 mkdir -p %{buildroot}%{pf_shlib_directory}/systemd
-install -m 0644 %{name}-SUSE/%{name}.service         %{buildroot}%{_unitdir}/%{name}.service
-install -m 0755 %{name}-SUSE/config_%{name}.systemd  %{buildroot}%{pf_shlib_directory}/systemd/config_%{name}
-install -m 0755 %{name}-SUSE/update_chroot.systemd   %{buildroot}%{pf_shlib_directory}/systemd/update_chroot
-install -m 0755 %{name}-SUSE/update_postmaps.systemd %{buildroot}%{pf_shlib_directory}/systemd/update_postmaps
-install -m 0755 %{name}-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_shlib_directory}/systemd/wait_qmgr
-install -m 0755 %{name}-SUSE/cond_slp.systemd        %{buildroot}%{pf_shlib_directory}/systemd/cond_slp
+install -pm 0644 %{name}-SUSE/%{name}.service         %{buildroot}%{_unitdir}/%{name}.service
+install -pm 0755 %{name}-SUSE/config_%{name}.systemd  %{buildroot}%{pf_shlib_directory}/systemd/config_%{name}
+install -pm 0755 %{name}-SUSE/update_chroot.systemd   %{buildroot}%{pf_shlib_directory}/systemd/update_chroot
+install -pm 0755 %{name}-SUSE/update_postmaps.systemd %{buildroot}%{pf_shlib_directory}/systemd/update_postmaps
+install -pm 0755 %{name}-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_shlib_directory}/systemd/wait_qmgr
+install -pm 0755 %{name}-SUSE/cond_slp.systemd        %{buildroot}%{pf_shlib_directory}/systemd/cond_slp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -sv %{_unitdir}/%{name}.service %{buildroot}%{_unitdir}/mail-transfer-agent.target.wants/%{name}.service
 %fdupes %{buildroot}%{pf_docdir}
@@ -465,10 +463,8 @@ fi
 # ---------------------------------------------------------------------------
 
 %pre    mysql -f vmail.pre
-
 %post   mysql -p /sbin/ldconfig
 %postun mysql -p /sbin/ldconfig
-
 %post   postgresql -p /sbin/ldconfig
 %postun postgresql -p /sbin/ldconfig
 

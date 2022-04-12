@@ -2055,4 +2055,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191988</comment>
   </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>0f3e76d2aa55719a451d1225621c7e37</srcmd5>
+    <version>3.6.5</version>
+    <time>1649792594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968129</requestid>
+  </revision>
 </revisionlist>

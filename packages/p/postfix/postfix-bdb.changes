@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Apr  4 09:02:48 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- config.postfix fails to set smtp_tls_security_level
+  (bsc#1192314) 
+
+-------------------------------------------------------------------
+Fri Mar 18 20:29:34 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 3.6.5
+  * Glibc 2.34 implements closefrom(). This was causing a conflict
+    with Postfix's implementation for systems that have no closefrom()
+    implementation.
+  * Support for Berkeley DB version 18.
+- removed obsolete postfix-3.6.2-glibc-234-build-fix.patch
+
+-------------------------------------------------------------------
+Mon Mar 14 09:52:48 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Postfix on start don't run postalias /etc/postfix/aliases
+  (error open database /etc/postfix/aliases.lmdb). (bsc#1197041)
+  Apply proposed patch
+
+-------------------------------------------------------------------
+Wed Feb  9 09:22:41 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- config.postfix can't handle symlink'd /etc/resolv.cof
+  (bsc#1195019)
+  Adapt proposed change: using "cp -afL" by copying. 
+
+-------------------------------------------------------------------
+Tue Jan 18 23:32:41 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.6.4
+  * Bug introduced in bugfix 20210708: duplicate bounce_notice_recipient
+    entries in postconf output. This was caused by an incomplete
+    fix to send SMTP session transcripts to $bounce_notice_recipient.
+  * Bug introduced in Postfix 3.0: the proxymap daemon did not
+    automatically authorize proxied maps inside pipemap (example:
+    pipemap:{proxy:maptype:mapname, ...}) or inside unionmap.
+  * Bug introduced in Postfix 2.5: off-by-one error while writing
+    a string terminator. This code passed all memory corruption
+    tests, presumably because it wrote over an alignment padding
+    byte, or over an adjacent character byte that was never read.
+  * The proxymap daemon did not automatically authorize map features
+    added after Postfix 3.3, caused by missing *_maps parameter
+    names in the proxy_read_maps default value. Found during code
+    maintenance.
+
+-------------------------------------------------------------------
+Mon Nov  8 10:26:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.6.3
+  * (problem introduced in Postfix 2.4, released in 2007): queue
+    file corruption after a Milter (for example, MIMEDefang) made
+    a request to replace the message body with a copy of that message
+    body plus additional text (for example, a SpamAssassin report).
+  * (problem introduced in Postfix 2.10, released in 2012): The
+    postconf "-x" option could produce incorrect output, because
+    multiple functions were implicitly sharing a buffer for
+    intermediate results. Problem report by raf, root cause analysis
+    by Viktor Dukhovni.
+  * (problem introduced in Postfix 2.11, released in 2013): The
+    check_ccert_access feature worked as expected, but produced a
+    spurious warning when Postfix was built without SASL support.
+    Fix by Brad Barden.
+  * Fix for a compiler warning due to a missing 'const' qualifier
+    when compiling Postfix with OpenSSL 3. Depending on compiler
+    settings this could cause the build to fail.
+  * The known_tcp_ports settings had no effect. It also wasn't fully
+    implemented. Problem report by Peter.
+  * Fix for missing space between a hostname and warning text.
+
+-------------------------------------------------------------------
+Fri Oct 22 09:45:40 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Ensure postfix can write to home directory or server side
+  filtering wont work (sieve)
+
+-------------------------------------------------------------------
+Fri Oct 22 08:46:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Ensure service can write to /etc/postfix
+
+-------------------------------------------------------------------
+Thu Oct 21 15:39:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service (bsc#1181400). Added
+  harden_postfix.service.patch
+
+-------------------------------------------------------------------
 Thu Oct  7 08:03:40 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - config.postfix not updatet after lmdb switch
@@ -13,7 +103,7 @@ Thu Aug 26 13:59:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
   Adapt master.cf patch
 
 -------------------------------------------------------------------
-Tue Aug 24 09:55:02 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+Tue Aug 24 09:55:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - postfix fails with glibc 2.34
   Define HAS_CLOSEFROM 
@@ -5302,4 +5392,3 @@ Mon Oct  9 13:54:13 CEST 2000 - choeger@suse.de
 Mon Oct  9 11:48:39 CEST 2000 - choeger@suse.de
 
 - inititial revision of pfixtls
-
