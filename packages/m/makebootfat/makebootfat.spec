@@ -1,7 +1,7 @@
 #
 # spec file for package makebootfat
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           makebootfat
 Version:        1.4
 Release:        0
 Summary:        Create Bootable FAT File Systems
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Boot
-Url:            http://advancemame.sourceforge.net
-Source:         http://sourceforge.net/projects/advancemame/files/advanceboot/%{version}/%{name}-%{version}.tar.gz
+URL:            https://www.advancemame.it/
+Source:         https://sourceforge.net/projects/advancemame/files/advanceboot/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  nasm
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86
