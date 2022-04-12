@@ -94,4 +94,12 @@
     <comment>submit new version 4.4.1</comment>
     <requestid>887210</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9e6a77be79ab77702dc964e197748f36</srcmd5>
+    <version>4.5.0</version>
+    <time>1649793053</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.0</comment>
+    <requestid>969458</requestid>
+  </revision>
 </revisionlist>
