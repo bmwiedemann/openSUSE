@@ -39,12 +39,8 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/csexp
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
-%if "%build_flavor" == ""
-BuildRequires:  ocaml-dune-bootstrap
-%else
 BuildRequires:  ocaml-dune
-%endif
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20220409
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(csexp)
@@ -71,9 +67,6 @@ developing applications that use %name.
 %setup -q -n %pkg-%version
 
 %build
-%if "%build_flavor" == ""
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
-%endif
 dune_release_pkgs='csexp'
 %ocaml_dune_setup
 %if "%build_flavor" == ""
@@ -82,7 +75,6 @@ dune_release_pkgs='csexp'
 
 %install
 %if "%build_flavor" == ""
-export PATH="%ocaml_dune_bootstrap_directory:$PATH"
 %ocaml_dune_install
 %ocaml_create_file_list
 %endif
