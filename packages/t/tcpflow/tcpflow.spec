@@ -1,7 +1,7 @@
 #
 # spec file for package tcpflow
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Sebastien Braun.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Program for capturing and collecting TCP streams
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Diagnostic
-URL:            http://afflib.org/software/tcpflow
-Source:         http://www.digitalcorpora.org/downloads/tcpflow/%{name}-%{version}.tar.gz
+URL:            https://github.com/simsong/tcpflow
+Source:         https://www.digitalcorpora.org/downloads/tcpflow/%{name}-%{version}.tar.gz
 
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
