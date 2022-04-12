@@ -1,0 +1,6 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+# libraries shipped together with libndctl, no separate versioning
+addFilter("shlib-policy-name-error .* libcxl.so")
+addFilter("shlib-policy-name-error .* libdaxctl.so")

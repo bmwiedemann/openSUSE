@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Apr 10 11:46:05 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Provide compatibility symlink for libdaxctl.h in the old location
+
+-------------------------------------------------------------------
+Tue Mar  8 12:57:40 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 73:
+  * Many CXL fixes
+  * Fix shipped monitor.conf (bsc#1194696 https://github.com/pmem/ndctl/pull/189)
+  * inject-smart: Add support for papr
+  * Switch to meson build system
+    + ndctl-build-Fix-systemd-unit-directory-detection.patch
+    + ndctl-meson-make-modprobedatadir-an-option.patch
+- Add monitor.conf migration as upstream has (bsc#1194696)
+- Use %%config(noreplace) for files in /etc as upstream does.
+- Update to version 72.1
+   * Add support for CXL interface
+   * Configuration file rework
+   * Add service for automatic reconfiguration
+   * Drop upstreamed patches
+      - ndctl-namespace-skip-zero-namespaces-when-processing.patch
+      - ndctl-namespace-Suppress-ENXIO-when-processing-all-n.patch
+      - 0001-ndctl-namespace-Fix-disable-namespace-accounting-rel.patch
+      - 0002-Expose-ndctl_bus_nfit_translate_spa-as-a-public-func.patch
+      - 0003-libndctl-Unify-adding-dimms-for-papr-and-nfit-famili.patch
+      - 0004-daxctl-fail-reconfigure-device-based-on-kernel-onlin.patch
+      - 0005-libdaxctl-add-an-API-to-check-if-a-device-is-active.patch
+      - 0006-libndctl-check-for-active-system-ram-before-disablin.patch
+      - 0007-daxctl-emit-counts-of-total-and-online-memblocks.patch
+      - 0008-ndctl-Update-nvdimm-mailing-list-address.patch
+      - 0009-libndctl-papr-Fix-probe-for-papr-scm-compatible-nvdi.patch
+      - 0010-ndctl-scrub-Stop-translating-return-values.patch
+      - 0011-ndctl-scrub-Reread-scrub-engine-status-at-start.patch
+      - 0012-ndctl-dimm-Fix-label-index-block-calculations.patch
+      - 0013-daxctl-Add-Soft-Reservation-theory-of-operation.patch
+      - 0014-Documentation-ndctl-fix-self-reference-of-ndctl-disa.patch
+      - 0015-ndctl-docs-Clarify-update-firwmware-activation-overf.patch
+      - 0016-libndctl-papr-Add-support-for-reporting-shutdown-cou.patch
+- Add rpmlinrc filter for libcxl and libdaxctl (boo#1191773).
+- Fix asciidoctor conditional
+
+-------------------------------------------------------------------
 Mon Mar  7 20:54:26 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Add support for reporting dirty shutdown count (jsc#SLE-18196).
@@ -47,7 +90,7 @@ Wed Jan  6 18:31:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 71.1:
   * ndctl/dimm: Attempt an abort upon firmware-update-busy status
-  * ndctl/dimm: Fix submit_abort_firmware() 
+  * ndctl/dimm: Fix submit_abort_firmware()
 
 -------------------------------------------------------------------
 Thu Dec 31 14:00:54 UTC 2020 - Michal Suchanek <msuchanek@suse.de>

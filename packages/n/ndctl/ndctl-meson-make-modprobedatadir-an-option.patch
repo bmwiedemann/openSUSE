@@ -1,0 +1,43 @@
+From e5b064b2edc314d729dfe542e6928325011f2b91 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 10 Mar 2022 14:10:25 +0100
+Subject: [PATCH] meson: make modprobedatadir an option.
+
+Upstream: https://lore.kernel.org/nvdimm/20220310133055.GA106731@kunlun.suse.cz/T/#u
+
+The modprobe.d directory location is hardcoded.
+
+Fixes: 4e5faa1 ("build: Add meson build infrastructure")
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ contrib/meson.build | 5 ++++-
+ meson_options.txt   | 2 ++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/contrib/meson.build b/contrib/meson.build
+index 4ed3c20..ad63a50 100644
+--- a/contrib/meson.build
++++ b/contrib/meson.build
+@@ -24,5 +24,8 @@ if bashcompletiondir != 'no'
+   install_data('ndctl', rename : 'cxl', install_dir : bashcompletiondir)
+ endif
+ 
+-modprobedatadir = get_option('sysconfdir') + '/modprobe.d/'
++modprobedatadir = get_option('modprobedatadir')
++if modprobedatadir == ''
++  modprobedatadir = get_option('modprobedatadir')
++endif
+ install_data('nvdimm-security.conf', install_dir : modprobedatadir)
+diff --git a/meson_options.txt b/meson_options.txt
+index aa4a6dc..3a68460 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -23,3 +23,5 @@ option('pkgconfiglibdir', type : 'string', value : '',
+        description : 'directory for standard pkg-config files')
+ option('bashcompletiondir', type : 'string',
+        description : '''${datadir}/bash-completion/completions''')
++option('modprobedatadir', type : 'string',
++       description : '''${sysconfdir}/modprobe.d/''')
+-- 
+2.35.1
+

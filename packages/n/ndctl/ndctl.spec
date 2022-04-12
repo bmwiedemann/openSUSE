@@ -25,36 +25,21 @@
 %define lname libndctl6
 %define dname libndctl-devel
 Name:           ndctl
-Version:        71.1
+Version:        73
 Release:        0
 Summary:        Manage "libnvdimm" subsystem devices (Non-volatile Memory)
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/pmem/ndctl
 Source0:        https://github.com/pmem/ndctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch9:         %{name}-namespace-skip-zero-namespaces-when-processing.patch
-Patch13:        %{name}-namespace-Suppress-ENXIO-when-processing-all-n.patch
+Source1:        ndctl-rpmlintrc
 Patch14:        harden_ndctl-monitor.service.patch
-Patch15:        0001-ndctl-namespace-Fix-disable-namespace-accounting-rel.patch
-Patch16:        0002-Expose-ndctl_bus_nfit_translate_spa-as-a-public-func.patch
-Patch17:        0003-libndctl-Unify-adding-dimms-for-papr-and-nfit-famili.patch
-Patch18:        0004-daxctl-fail-reconfigure-device-based-on-kernel-onlin.patch
-Patch19:        0005-libdaxctl-add-an-API-to-check-if-a-device-is-active.patch
-Patch20:        0006-libndctl-check-for-active-system-ram-before-disablin.patch
-Patch21:        0007-daxctl-emit-counts-of-total-and-online-memblocks.patch
-Patch22:        0008-ndctl-Update-nvdimm-mailing-list-address.patch
-Patch23:        0009-libndctl-papr-Fix-probe-for-papr-scm-compatible-nvdi.patch
-Patch24:        0010-ndctl-scrub-Stop-translating-return-values.patch
-Patch25:        0011-ndctl-scrub-Reread-scrub-engine-status-at-start.patch
-Patch26:        0012-ndctl-dimm-Fix-label-index-block-calculations.patch
-Patch27:        0013-daxctl-Add-Soft-Reservation-theory-of-operation.patch
-Patch28:        0014-Documentation-ndctl-fix-self-reference-of-ndctl-disa.patch
-Patch29:        0015-ndctl-docs-Clarify-update-firwmware-activation-overf.patch
-Patch30:        0016-libndctl-papr-Add-support-for-reporting-shutdown-cou.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Patch15:        ndctl-build-Fix-systemd-unit-directory-detection.patch
+Patch16:        ndctl-meson-make-modprobedatadir-an-option.patch
 BuildRequires:  keyutils-devel
+BuildRequires:  libiniparser-devel
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
@@ -64,16 +49,18 @@ BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 ExclusiveArch:  x86_64 aarch64 ppc64le
 %{?systemd_requires}
 # required for documentation
-#if 0%{?suse_version} >= 1330
-%if %{defined rubygem(asciidoctor)}
+%if 0%{?suse_version} >= 1330
 BuildRequires:  rubygem(asciidoctor)
+%define asciidoc -Dasciidoctor=enabled
 %else
 BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
+%define asciidoc -Dasciidoctor=disabled
 %endif
 
 %description
@@ -115,23 +102,19 @@ Firmware Interface Table).
 %if 0%{?suse_version} > 1500
 export CFLAGS="%optflags -fcommon"
 %endif
-echo "%{version}" > version
-./autogen.sh
-CONF_FLAGS="--disable-static"
-%if ! %{defined rubygem(asciidoctor)}
-CONF_FLAGS="$CONF_FLAGS --disable-asciidoctor"
-%endif
-%configure $CONF_FLAGS
-make %{?_smp_mflags}
+%meson %{?asciidoc} -Dversion-tag=%{version} -Dmodprobedatadir=%{_modprobedir}
+%meson_build
 
 %install
 %if 0%{?suse_version} > 1500
 export CFLAGS="%optflags -fcommon"
 %endif
-%make_install modprobedir=%{_modprobedir}
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rcndctl-monitor
+# libdaxctl.h has moved breaking users of libdaxctl, provide a compatibility symlink
+ln -s ../daxctl/libdaxctl.h %{buildroot}%{_includedir}/ndctl
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -143,9 +126,30 @@ for _f in %{?modprobe_d_files}; do
     [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
         mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
 done
+if [ -f %{_sysconfdir}/ndctl/monitor.conf ] ; then
+  if ! [ -f %{_sysconfdir}/ndctl.conf.d/monitor.conf ] ; then
+    cp -a %{_sysconfdir}/ndctl/monitor.conf /var/run/ndctl-monitor.conf-migration
+  fi
+fi
 
 %post
 %service_add_post ndctl-monitor.service
+if [ -f /var/run/ndctl-monitor.conf-migration ] ; then
+  config_found=false
+  while read line ; do
+    [ -n "$line" ] || continue
+    case "$line" in
+      \#*) continue ;;
+    esac
+    config_found=true
+    break
+  done < /var/run/ndctl-monitor.conf-migration
+  if $config_found ; then
+    echo "[monitor]" > %{_sysconfdir}/ndctl.conf.d/monitor.conf
+    cat /var/run/ndctl-monitor.conf-migration >> %{_sysconfdir}/ndctl.conf.d/monitor.conf
+  fi
+  rm /var/run/ndctl-monitor.conf-migration
+fi
 
 %preun
 %service_del_preun ndctl-monitor.service
@@ -163,19 +167,28 @@ done
 %files
 %license COPYING LICENSES/*/*
 %doc README.md CONTRIBUTING.md
-%{_bindir}/ndctl
+%{_bindir}/cxl
 %{_bindir}/daxctl
+%{_bindir}/ndctl
 %{_sbindir}/rcndctl-monitor
+%{_unitdir}/daxdev-reconfigure@.service
+%{_udevrulesdir}/90-daxctl-device.rules
 %{_mandir}/man1/*
+%dir %{_sysconfdir}/daxctl.conf.d
+%config(noreplace) %{_sysconfdir}/daxctl.conf.d/daxctl.example.conf
 %dir %{_sysconfdir}/ndctl
+%dir %{_sysconfdir}/ndctl.conf.d
 %dir %{_sysconfdir}/ndctl/keys
 %{_sysconfdir}/ndctl/keys/keys.readme
-%config %{_sysconfdir}/ndctl/monitor.conf
+%config(noreplace) %{_sysconfdir}/ndctl.conf.d/monitor.conf
+%config(noreplace) %{_sysconfdir}/ndctl.conf.d/ndctl.conf
 %dir %{_modprobedir}
 %{_modprobedir}/nvdimm-security.conf
 %{_unitdir}/ndctl-monitor.service
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/cxl
+%{_datadir}/bash-completion/completions/daxctl
 %{_datadir}/bash-completion/completions/ndctl
 %dir %{_datadir}/daxctl
 %{_datadir}/daxctl/daxctl.conf
@@ -183,17 +196,22 @@ done
 %files -n %{lname}
 %license COPYING LICENSES/*/*
 %doc README.md CONTRIBUTING.md
-%{_libdir}/libndctl.so.*
+%{_libdir}/libcxl.so.*
 %{_libdir}/libdaxctl.so.*
+%{_libdir}/libndctl.so.*
 
 %files -n %{dname}
 %license COPYING LICENSES/*/*
 %doc README.md CONTRIBUTING.md
-%{_includedir}/ndctl/
-%{_libdir}/libndctl.so
-%{_libdir}/pkgconfig/libndctl.pc
+%{_includedir}/cxl/
+%{_libdir}/libcxl.so
+%{_libdir}/pkgconfig/libcxl.pc
 %{_includedir}/daxctl/
 %{_libdir}/libdaxctl.so
 %{_libdir}/pkgconfig/libdaxctl.pc
+%{_includedir}/ndctl/
+%{_libdir}/libndctl.so
+%{_libdir}/pkgconfig/libndctl.pc
+%{_mandir}/man3/*
 
 %changelog
