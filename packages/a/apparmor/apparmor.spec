@@ -86,6 +86,9 @@ Patch7:         update-samba-bgqd.diff
 # see (https://gitlab.com/apparmor/apparmor/-/merge_requests/862)
 Patch8:         update-usr-sbin-smbd.diff
 
+# add zgrep and xzgrep profile (submitted upstream 2022-04-10 https://gitlab.com/apparmor/apparmor/-/merge_requests/870)
+Patch9:         zgrep-profile-mr870.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -350,6 +353,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch5
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -580,6 +584,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/nvidia_modprobe
 %config(noreplace) %{_sysconfdir}/apparmor.d/php-fpm
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-bgqd
+%config(noreplace) %{_sysconfdir}/apparmor.d/zgrep
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/*
 %dir /usr/share/apparmor/
 %if %{with precompiled_cache}

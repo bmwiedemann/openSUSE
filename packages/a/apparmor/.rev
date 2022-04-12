@@ -2295,4 +2295,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   in /var/cache/apparmor/ gets built (boo#1195463 #c20) (forwarded request 966666 from cboltz)</comment>
     <requestid>966667</requestid>
   </revision>
+  <revision rev="167" vrev="4">
+    <srcmd5>7c5034d31d75d37778ece0226b87b3eb</srcmd5>
+    <version>3.0.4</version>
+    <time>1649792597</time>
+    <user>dimstar_suse</user>
+    <comment>- add profile for zgrep and xzgrep to prevent CVE-2022-1271
+  (zgrep-profile-mr870.diff) (forwarded request 968252 from cboltz)</comment>
+    <requestid>968253</requestid>
+  </revision>
 </revisionlist>
