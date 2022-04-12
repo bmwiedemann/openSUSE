@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Fri Apr  8 22:57:54 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Recommends: lsb-release' so 'Information' -> 'Session Info'
+  returns results vs. 'unknown'.
+
+-------------------------------------------------------------------
+Fri Apr  8 20:36:15 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing 'BuildRequires: lsb-release'.
+
+-------------------------------------------------------------------
+Fri Apr  8 17:47:47 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adjusting to use 'distribution-release' for Tumbleweed and
+  'openSUSE-release' for < Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Apr  8 16:31:22 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Swapping out 'openSUSE-release' (for 'distribution-release') BuildRequires.
+
+-------------------------------------------------------------------
+Thu Apr  7 22:46:29 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- xpra-paths.patch has been removed because the developer @totaam committed
+  https://github.com/Xpra-org/xpra/commit/0ed231fb95c8df3ec97d779698e6818faa7e5ef8
+  as a result of https://github.com/Xpra-org/xpra/issues/3501 "build tweaks for openSUSE"
+
+-------------------------------------------------------------------
+Tue Apr  5 18:58:47 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating .spec to accomodate TW (libexec) vs. Leap (lib) for %{_libexecdir}.
+
+-------------------------------------------------------------------
+Mon Apr 04 15:23:42 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220404.1e56be683:
+  * #3503 don't use gtk for reading atom names
+
+-------------------------------------------------------------------
+Mon Apr 04 15:04:18 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version v4.3+git20220402.2f1c3abe7:
+  * #3504 manage the cuda context outside the nvjpeg decoder
+  * #3504 cuda gpu buffer transfer for opengl backend
+  * #3509 protect access to mutable data
+  * check if paths exist before
+  * check XDG_DATA_DIRS/icons for pixmaps
+  * remove unused declarations
+  * #3509 prevent potential race condition
+  * don't use arrays if we can use tuples
+  * #3504 use pycuda rather than Cython
+  * don't store cython generated file
+  * #3504 common python definitions cannot live in pxd
+  * move common definitions to pxd file
+  * #3505 override sourced env with command line
+  * #3505 command line can override config files
+  * validate the option we're dealing with
+  * #3458 revert f5b1b663bd981b326c4720731b7c97a007b2b247 now that cuda 11.5.2 supports GCC 12
+  * try to build with gcc 12
+  * arch=all triggers warnings, silence them
+  * #3505 skip 'false' values
+
+-------------------------------------------------------------------
+Tue Mar 29 21:04:30 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding a few missing BuildRequires/Requires/Recommends.
+
+-------------------------------------------------------------------
+Tue Mar 29 19:34:07 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220328.5881281f1:
+  * #3504 add nvjpeg decoder
+  * remove unused definitions
+  * misaligned positional arguments
+  * remove unused definitions
+  * prefer immutable tuples
+  * workaround for libx264 version numbers
+  * export 'relative-position' and 'parent' from X11 shadow servers
+  * doh: group-leader and transient-for had gone AWOL
+  * #3476 support OR windows in shadow servers
+  * add debug logging to video delay calculations
+
+-------------------------------------------------------------------
+Tue Mar 29 19:33:24 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version for xpra with 'xpra-html5' pulled out.
+
+-------------------------------------------------------------------
+Mon Mar 28 16:39:13 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220328.5881281f1:
+  * #3504 add nvjpeg decoder
+  * remove unused definitions
+  * misaligned positional arguments
+  * remove unused definitions
+  * prefer immutable tuples
+  * workaround for libx264 version numbers
+  * export 'relative-position' and 'parent' from X11 shadow servers
+  * doh: group-leader and transient-for had gone AWOL
+  * #3476 support OR windows in shadow servers
+  * add debug logging to video delay calculations
+
+-------------------------------------------------------------------
+Sat Mar 26 19:22:48 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220326.5fd33c46d:
+  * export 'relative-position' and 'parent' from X11 shadow servers
+  * doh: group-leader and transient-for had gone AWOL
+  * #3476 support OR windows in shadow servers
+  * add debug logging to video delay calculations
+  * never delay unless we have a video region
+  * log damage image and scroll latency
+  * remove unused code
+  * #3501 build tweaks for openSUSE
+  * #3477 fixup opengl probing (again)
+  * #3502 control command for (un)setting start env
+
+-------------------------------------------------------------------
+Fri Mar 25 16:58:50 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220325.7f8ca92ba:
+  * #3477 fixup opengl probing (again)
+  * #3502 control command for (un)setting start env
+
+-------------------------------------------------------------------
+Thu Mar 24 20:07:11 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220324.785a44e79:
+  * #3476 relative window position tracking
+  * #3493 forgot to update mswindows exe script path
+  * #3493 no need for a man page if the command is hidden
+  * missed from d5e3d9b1d0248cca7fc265f5d390e0b9d63a7a82
+  * move manual to subdir of /u/s/doc/xpra
+  * typo
+  * fix distutils deprecation warning
+  * #3493 move signal watcher to libexec
+  * #3493 these files have moved
+  * #3493 'fs' should mirror the real paths
+
+-------------------------------------------------------------------
+Wed Mar 23 18:13:31 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updated to the following source version(s):
+  * xpra_ver 4.3.2
+  * html5_ver 4.5.2
+  * uglifyjs_ver 3.15.3
+- Added pkgconfig requirement for 'xres'.
+- Added a few new/missing items for '%files'.
+
+-------------------------------------------------------------------
 Wed Dec  1 21:50:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop unused pkgconfig(pygtk-2.0) BuildRequires: Not used since

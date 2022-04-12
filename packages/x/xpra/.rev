@@ -412,4 +412,41 @@
     <comment></comment>
     <requestid>935154</requestid>
   </revision>
+  <revision rev="43" vrev="16">
+    <srcmd5>30c4c0d018d2422e7dc2399ce0108e2a</srcmd5>
+    <version>4.4+git20220404.1e56be683</version>
+    <time>1649794826</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding 'Recommends: lsb-release' so 'Information' -&gt; 'Session Info'
+  returns results vs. 'unknown'.
+
+- Removing 'BuildRequires: lsb-release'.
+
+- Adjusting to use 'distribution-release' for Tumbleweed and
+  'openSUSE-release' for &lt; Tumbleweed.
+
+- Swapping out 'openSUSE-release' (for 'distribution-release') BuildRequires.
+
+- xpra-paths.patch has been removed because the developer @totaam committed
+  https://github.com/Xpra-org/xpra/commit/0ed231fb95c8df3ec97d779698e6818faa7e5ef8
+  as a result of https://github.com/Xpra-org/xpra/issues/3501 &quot;build tweaks for openSUSE&quot;
+
+- Updating .spec to accomodate TW (libexec) vs. Leap (lib) for %{_libexecdir}.
+
+- Update to version 4.4+git20220404.1e56be683:
+  * #3503 don't use gtk for reading atom names
+
+- Update to version v4.3+git20220402.2f1c3abe7:
+  * #3504 manage the cuda context outside the nvjpeg decoder
+  * #3504 cuda gpu buffer transfer for opengl backend
+  * #3509 protect access to mutable data
+  * check if paths exist before
+  * check XDG_DATA_DIRS/icons for pixmaps
+  * remove unused declarations
+  * #3509 prevent potential race condition
+  * don't use arrays if we can use tuples
+  * #3504 use pycuda rather than Cython
+  * don't store cython generated file</comment>
+    <requestid>969483</requestid>
+  </revision>
 </revisionlist>

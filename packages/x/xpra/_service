@@ -1,0 +1,34 @@
+<!--
+# vim: set syntax=xml
+-->
+
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/Xpra-org/xpra</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <!--  These need changed dependent on tags
+          at github.com/Xpra-org/xpra ; Currently
+          tag=4.3 but setup.py returns 4.4
+    -->
+    <param name="versionrewrite-pattern">v4.3</param>
+    <param name="versionrewrite-replacement">4.4</param>
+    <!--
+    <param name="package-meta">yes</param>
+    -->
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="disabled">
+  <!--  I'd like to include this, but METADATA_PATTERN
+        seems to block including .git
+    <param name="include">.git</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.git/objects/pack</param>
+  -->
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

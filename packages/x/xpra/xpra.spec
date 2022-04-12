@@ -1,8 +1,7 @@
 #
 # spec file for package xpra
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2012-2013 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,32 +20,38 @@
 %global with_pandoc 1
 %endif
 %bcond_with pandoc
-
-%define xpra_ver 4.2.3
-%define html5_ver 4.5.1
-%define uglifyjs_ver 3.14.2
+# -----
+# Comes from git tarball setup.py:
+# setup.py build --verbose ...
+# Xpra version 4.4
+%define xpra_ver 4.4
+# -----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        %{xpra_ver}
+Version:        4.4+git20220404.1e56be683
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
+Group:          System/X11/Utilities
 URL:            https://www.xpra.org/
-Source0:        https://xpra.org/src/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        xpra-icon.png
-Source2:        https://xpra.org/src/%{name}-html5-%{html5_ver}.tar.xz
-Source3:        https://registry.npmjs.org/uglify-js/-/uglify-js-%{uglifyjs_ver}.tgz
-# PATCH-FIX-OPENSUSE xpra-paths.patch -- use suse-specific paths
-Patch0:         %{name}-paths.patch
+# -----
 BuildRequires:  ImageMagick
 BuildRequires:  brotli
 BuildRequires:  cups
 BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
-# Needed by uglify-js
-BuildRequires:  nodejs-common
+# Needed for proper OS detection by setup.py
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+BuildRequires: distribution-release
+%else
+BuildRequires: openSUSE-release
+%endif
+# ---------
 BuildRequires:  pam-devel
 %if %{with pandoc}
 BuildRequires:  pandoc
@@ -56,6 +61,7 @@ BuildRequires:  python3-Cython >= 0.20.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-pyxdg
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec) >= 58
@@ -70,10 +76,12 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(xtst)
 Requires:       dbus-1-x11
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
+Requires:       gstreamer-utils
 %if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
 %else
@@ -93,13 +101,16 @@ Requires:       shared-mime-info
 Requires:       xf86-video-dummy
 Requires:       xorg-x11-xauth
 Requires(post): %fillup_prereq
+Recommends:     lsb-release
 Recommends:     pinentry
 Recommends:     python3-dnspython
+Recommends:     python3-netifaces
 Recommends:     python3-opencv
 Recommends:     python3-opengl
 Recommends:     python3-opengl-accelerate
 Recommends:     python3-paramiko
 Recommends:     python3-pyinotify
+Recommends:     python3-pyxdg
 %{?systemd_ordering}
 
 %description
@@ -114,42 +125,20 @@ Sessions can be accessed over SSH, or password protected over plain TCP sockets.
 Xpra is usable over reasonably slow links and does its best to adapt to changing
 network bandwidth constraints.
 
-%package        html5
-Version:        %{html5_ver}
-Summary:        HTML5 server and client support for xpra
-Requires:       %{name} = %{xpra_ver}
-# websockify is required to allow xpra to listen for an html5 client
-Requires:       python3-websockify
-Provides:       bundled(js-aurora)
-Provides:       bundled(js-bencode)
-Provides:       bundled(js-broadway)
-Provides:       bundled(js-forge)
-Provides:       bundled(js-jquery) = 3.1.1
-Provides:       bundled(js-jquery-ui) = 1.12.1
-Provides:       bundled(js-lz4)
-Provides:       bundled(js-zlib)
-BuildArch:      noarch
-
-%description    html5
-This package adds websockify support to allow xpra to listen for http
-connections, and also the xpra html5 client.
-
 %prep
-%setup -q -a 2 -a 3
-%autopatch -p1
-# fix shebangs
+
+%setup -q
 find -name '*.py' \
-     -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
+  -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
 install -m0644 %{SOURCE1} -T fs/share/icons/xpra.png
 # set fillup dir
 sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
-    -e 's|__UNITDIR__|%{_unitdir}|' \
-    -e 's|share/doc/xpra|share/doc/packages/xpra|' \
-    -i setup.py
-
-sed -i '/install_html5/s/verbose=False/verbose=True/' %{name}-html5-%{html5_ver}/setup.py
+  -e 's|__UNITDIR__|%{_unitdir}|' \
+  -e 's|share/doc/xpra|share/doc/packages/xpra|' \
+  -i setup.py
 
 %build
+
 export CFLAGS="%{optflags}"
 %if 0%{?suse_version} <= 1500
 export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
@@ -157,39 +146,35 @@ export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 python3 setup.py clean
 
 python3 setup.py build \
-    --verbose \
-    --with-enc_ffmpeg \
-    --with-vpx \
-    --with-dec_avcodec2 \
-    --with-csc_swscale \
-    --with-webp \
-    --with-Xdummy \
-    --with-Xdummy_wrapper \
-    --with-opengl \
-    --with-service \
-    --without-cuda_kernels \
-    --without-nvenc \
+  --verbose \
+  --with-enc_ffmpeg \
+  --with-vpx \
+  --with-dec_avcodec2 \
+  --with-csc_swscale \
+  --with-webp \
+  --with-Xdummy \
+  --with-Xdummy_wrapper \
+  --with-opengl \
+  --with-service \
+  --without-cuda_kernels \
+  --without-nvenc \
 %if !%{with pandoc}
-    --without-docs \
+  --without-docs \
 %endif
-    --without-nvfbc
+  --without-nvfbc
 
 %install
 python3 setup.py install \
-    --skip-build \
-    --root %{buildroot} \
-    --prefix %{_prefix} \
-    --with-service \
-    --with-Xdummy \
-    --with-Xdummy_wrapper \
+  --skip-build \
+  --root %{buildroot} \
+  --prefix %{_prefix} \
+  --with-service \
+  --with-Xdummy \
+  --with-Xdummy_wrapper \
 %if !%{with pandoc}
-    --without-docs \
+  --without-docs \
 %endif
-    --verbose
-
-pushd %{name}-html5-%{html5_ver}
-PATH=$PATH:../package/bin python3 setup.py install %{buildroot}%{_datadir}/%{name}/www
-popd
+  --verbose
 
 rm -rf %{buildroot}%{_datadir}/xpra/cuda
 
@@ -199,6 +184,11 @@ rm -rf %{buildroot}%{_datadir}/xpra/cuda
 
 mkdir -pv %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+
+%if ( 0%{?sle_version} == 150300 || 0%{?sle_version} == 150400 ) && 0%{?is_opensuse}
+mkdir -vp %{buildroot}%{_libexecdir}/%{name}
+mv -v %{buildroot}%{_prefix}/libexec/%{name}/* %{buildroot}%{_libexecdir}/%{name}
+%endif
 
 %fdupes -s %{buildroot}
 
@@ -229,7 +219,6 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %endif
 %license COPYING
 %dir %{_datadir}/xpra
-%dir %{_prefix}/lib/xpra
 %dir %{_sysconfdir}/pam.d
 %dir %{_sysconfdir}/xpra
 %dir %{_sysconfdir}/xpra/conf.d
@@ -249,13 +238,14 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_bindir}/xpra
 %{_bindir}/xpra_Xdummy
 %{_bindir}/xpra_launcher
-%{_bindir}/xpra_signal_listener
-%{_bindir}/xpra_udev_product_version
 %{_udevrulesdir}/71-xpra-virtual-pointer.rules
-%{_prefix}/lib/xpra/auth_dialog
-%{_prefix}/lib/xpra/gnome-open
-%{_prefix}/lib/xpra/gvfs-open
-%{_prefix}/lib/xpra/xdg-open
+%dir %{_libexecdir}/xpra
+%{_libexecdir}/xpra/auth_dialog
+%{_libexecdir}/xpra/gnome-open
+%{_libexecdir}/xpra/gvfs-open
+%{_libexecdir}/xpra/xdg-open
+%{_libexecdir}/xpra/xpra_signal_listener
+%{_libexecdir}/xpra/xpra_udev_product_version
 %{_sbindir}/rc%{name}
 %{python3_sitearch}/xpra
 %{python3_sitearch}/%{name}-%{xpra_ver}-py%{python3_version}.egg-info
@@ -268,6 +258,7 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_datadir}/pixmaps/xpra-shadow.png
 %{_datadir}/pixmaps/xpra.png
 %{_datadir}/mime/packages/application-x-xpraconfig.xml
+%{_datadir}/xpra/autostart.desktop
 %{_datadir}/xpra/bell.wav
 %{_datadir}/xpra/css
 %{_datadir}/xpra/icons
@@ -280,8 +271,7 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_unitdir}/xpra.service
 %{_unitdir}/xpra.socket
 %ghost %dir %{_rundir}/xpra
-
-%files html5
-%{_datadir}/xpra/www
+%ghost %dir %{_rundir}/xpra/proxy
 
 %changelog
+
