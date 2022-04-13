@@ -123,4 +123,16 @@
     <comment></comment>
     <requestid>939041</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>de7a1ee8504b9eec7e636490b8e3e592</srcmd5>
+    <version>0.9.3</version>
+    <time>1649876639</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.3:
+  * build-sys: Add probing for -fstack-protector
+  * tpm2: Do not call EVP_PKEY_CTX_set0_rsa_oaep_label() for label of size
+  * (OSSL 3)
+  * tpm2: When writing state initialize s_ContextSlotMask if not set (forwarded request 968240 from dirkmueller)</comment>
+    <requestid>968367</requestid>
+  </revision>
 </revisionlist>

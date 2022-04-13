@@ -1,7 +1,7 @@
 #
 # spec file for package libtpms
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname libtpms0
 Name:           libtpms
-Version:        0.9.1
+Version:        0.9.3
 Release:        0
 Summary:        Library providing Trusted Platform Module (TPM) functionality
 License:        BSD-3-Clause
