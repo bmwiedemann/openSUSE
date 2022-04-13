@@ -31,6 +31,7 @@ URL:            https://sf.net/projects/opalvoip/
 # FIXME: we should probably list all plugins in %%files to make sure we don't lose some when updating the package.
 %define _version 3_18_8
 Source0:        https://download.sf.net/opalvoip/%{name}-%{version}.tar.bz2
+Patch1:         arches.patch
 %if %{with capi4linux}
 BuildRequires:  capi4linux-devel
 %endif
