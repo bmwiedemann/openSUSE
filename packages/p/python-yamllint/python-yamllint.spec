@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamllint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yamllint
-Version:        1.24.2
+Version:        1.26.3
 Release:        0
 Summary:        A linter for YAML files
 License:        GPL-3.0-only
@@ -31,7 +31,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-pathspec >= 0.5.3
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}

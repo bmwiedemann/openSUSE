@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Sun Apr 10 11:26:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.26.3:
+ - Restore setuptools requirement for Python < 3.8
+   This reverts commit 8f68248 "Remove runtime dep 'setuptools' for Python
+   < 3.8". It looks like removing setuptools induces problems on some
+   systems, see for example the linked discussion.
+   Fixes https://github.com/adrienverge/yamllint/issues/380.
+- Update to version 1.26.2:
+ - setup: update python_requires to comply with PEP 345/440
+   According to PEP 345 Requires-Python
+   (https://www.python.org/dev/peps/pep-0345/#requires-python), the value
+   of this field must be a valid Version Specifier
+   (https://www.python.org/dev/peps/pep-0345/#version-specifiers). Which
+   in turn expects this to comply with PEP 440
+   (https://www.python.org/dev/peps/pep-0440/).
+   While not an issue for those that directly use `pip`, this will cause
+   issues for `poetry` users in the next release (if their current stance
+   is maintained). Discussion of the issue and there stance can be found
+   here: https://github.com/python-poetry/poetry/issues/4095.
+- Update to version 1.26.1:
+ - line_length: skip all hash signs starting comment
+ - Remove runtime dep 'setuptools' for Python < 3.8
+   > In recent versions of setuptools and Python, console-script entry
+   points are using stdlib importlib by default, thus setuptools is no
+   longer needed as a runtime dependency.
+   https://github.com/pypa/setuptools/pull/2197
+   https://github.com/pypa/setuptools/blob/main/CHANGES.rst#v4730
+   https://docs.python.org/3/library/importlib.metadata.html
+- Update to version 1.26.0:
+ - quoted-strings: Fix explicit octal recognition
+   PyYAML implements YAML spec version 1.1, not 1.2. Hence, values starting
+   with `0o` are not considered as numbers: they are just strings, so they
+   need quotes when `quoted-strings: {required: true}`.
+   >>> import yaml
+   >>> yaml.resolver.Resolver().resolve(yaml.nodes.ScalarNode, '100', (True, False))
+   'tag:yaml.org,2002:int'
+   >>> yaml.resolver.Resolver().resolve(yaml.nodes.ScalarNode, '0100', (True, False))
+   'tag:yaml.org,2002:int'
+   >>> yaml.resolver.Resolver().resolve(yaml.nodes.ScalarNode, '0o100', (True, False))
+   'tag:yaml.org,2002:str'
+   Let's try to prevent that.
+   Fixes https://github.com/adrienverge/yamllint/issues/351.
+ - End support for Python 2
+   As planned and advertized, yamllint drops support for Python 2 on 2021.
+ - Allow only non-empty brackets/braces
+   We'd like to disallow brackets and braces in our YAML, but there's a
+   catch: the only way to describe an empty array or hash in YAML is to
+   supply an empty one (`[]` or `{}`). Otherwise, the value will be null.
+   This commit adds a `non-empty` option to `forbid` for brackets and
+   braces. When it is set, all flow and sequence mappings will cause errors
+   _except_ for empty ones.
+ - Add support for Python 3.9, drop Python 3.4
+   Add support for Python 3.9 since it was officially released in October
+   and drop support for Python 3.4 since it is end-of-life (EOL).
+ - docs: Add configuration for integration with Arcanist
+- Update to version 1.25.0:
+ - gitignore: Add /.eggs
+   Quick PR to ignore the `/.eggs` folder, which appears to be generated every
+   time the `python setup.py test` command is run.
+   The content of the `./.eggs/README.txt` file:
+   > This directory contains eggs that were downloaded by setuptools to build,
+   > test, and run plug-ins.
+   > 
+   > This directory caches those eggs to prevent repeated downloads.
+   > 
+   > However, it is safe to delete this directory.
+ - directives: Fix DOS lines messing with rule IDs
+   Fixes #325
+   The linter allows a directive to contain trailing whitespace characters like
+   
+, but does not trim them before iterating on the rules. As a result, the last
+   rule in the list contains the trailing whitespace characters and never matches
+   any existing rule.
+   I added the necessary trimming, as well as a test with 2 checks to go along
+   with it.
+ - Auto-change output format if GitHub Actions detected
+ - Add support for GitHub Annotations output format
+   Support the format used by GitHub Actions to annotate pull
+   requests with linter failures
+ - fix: add runtime dependency to setuptools
+   yamllint depends on pkg_resources.load_entry_point from setuptools to
+   make its command working, so this runtime dependency to setuptools is
+   necessary to be listed.
+ - Add 'forbid' configurations to the braces and brackets rules
+   Add 'forbid' configuration parameters to the braces and brackets rules
+   to allow users to forbid the use of flow style collections, flow
+   mappings and flow sequences.
+ - quoted-strings: Fix detecting strings with hashtag as requiring quotes
+ - octal-values: Prevent detection of 8 and 9 as octal values
+ - docs: Make 'yaml-file' config documentation clearer
+   Related to https://github.com/adrienverge/yamllint/issues/311.
+ - enhancement: add some metadata to provide extra info in its PyPI page
+   Add some metadata (project_urls) to provide extra info in its PyPI page.
+   Signed-off-by: Satoru SATOH <satoru.satoh@gmail.com>
+ - Move setuptools' packaging configuration from setup.py to setup.cfg
+   Move setuptools' packaging configuration from setup.py to setup.cfg to
+   simplify setup.py and make its packaging more dedeclarative.
+   Signed-off-by: Satoru SATOH <satoru.satoh@gmail.com>
+ - docs: Add Python API usage example
+   Fixes: #297
+ - commas: Fix example in documentation
+   Error in the example snippet, it would NOT pass otherwise actually:
+   ```
+   $ cat test.yml
+   strange var:
+     [10, 20,30, {x: 1, y: 2}]
+   $ yamllint -d "{extends: default, rules: {commas: {min-spaces-after: 1, max-spaces-after: 1}}}" test.yml
+   test.yml
+     1:1       warning  missing document start "---"  (document-start)
+     2:11      error    too few spaces after comma  (commas)
+   ```
+ - docs: Add default values to rules with options
+ - CI: Add build environment without UTF-8 locales to travis-ci
+   Preventing regressions like #285
+
+-------------------------------------------------------------------
 Tue Jul 21 11:03:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.24.2
