@@ -1,7 +1,7 @@
 #
 # spec file for package cookiecutter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,18 @@
 
 %define skip_python2 1
 Name:           cookiecutter
-Version:        1.7.3
+Version:        2.0.2
 Release:        0
 Summary:        A command-line utility that creates projects from project templates
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/audreyr/cookiecutter
-Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%{version}.tar.gz
+Source:         https://github.com/cookiecutter/cookiecutter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# recent versions are not published on PyPI: https://github.com/cookiecutter/cookiecutter/issues/1636
+#Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%{version}.tar.gz
 Source1:        ccext.py
+# PATCH-FIX-UPSTREAM -- fix-setup-version.patch https://github.com/cookiecutter/cookiecutter/pull/1656
+Patch0:         https://github.com/cookiecutter/cookiecutter/pull/1656.patch#/fix-setup-version.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7}
 BuildRequires:  %{python_module binaryornot >= 0.2.0}
 BuildRequires:  %{python_module click >= 7.0}
@@ -41,6 +45,7 @@ BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-Jinja2 >= 2.7
+Requires:       python-PyYAML
 Requires:       python-binaryornot >= 0.2.0
 Requires:       python-click >= 7.0
 Requires:       python-future >= 0.15.2
@@ -54,6 +59,7 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION Testing requirements
 BuildRequires:  %{python_module chardet >= 2.0.0}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -61,6 +67,10 @@ BuildRequires:  %{python_module requests >= 2.18.0}
 # /SECTION
 # SECTION Documentation requirements
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx-click
+%if 0%{?sle_version} == 150300
+BuildRequires:  python3-commonmark
+%endif
 BuildRequires:  python3-recommonmark
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
@@ -89,6 +99,7 @@ This package contains the documentation for cookiecutter.
 
 %prep
 %setup -q -n cookiecutter-%{version}
+%patch0 -p1
 cp %{SOURCE1} docs
 # Remove pytest addopts:
 rm setup.cfg
@@ -112,7 +123,8 @@ cp -r docs/_build/html %{buildroot}%{_docdir}/cookiecutter-doc/
 %check
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-%pytest tests
+# test_generate_file_verbose_template_syntax_error: reported at https://github.com/cookiecutter/cookiecutter/issues/1655
+%pytest tests -k 'not test_generate_file_verbose_template_syntax_error'
 
 %pre
 # delete command if the old package was not update-alternatives controlled
@@ -127,8 +139,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %python_alternative cookiecutter
-%{python_sitelib}/cookiecutter
-%{python_sitelib}/cookiecutter-%{version}*-info
+%{python_sitelib}/cookiecutter*
 
 %files -n cookiecutter-doc
 %license LICENSE
