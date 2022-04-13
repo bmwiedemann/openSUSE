@@ -1,7 +1,7 @@
 #
 # spec file for package libbluray
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define         sover 2
 Name:           libbluray
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Library to access Blu-Ray disk
 License:        LGPL-2.1-or-later
