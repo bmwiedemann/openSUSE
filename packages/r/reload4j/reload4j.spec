@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           reload4j
-Version:        1.2.19
+Version:        1.2.20
 Release:        0
 Summary:        Revival of EOLed log4j 1.x
 License:        Apache-2.0
