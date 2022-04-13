@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth-oauthlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-auth-oauthlib
-Version:        0.4.5
+Version:        0.5.1
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0

@@ -53,4 +53,17 @@
     <comment></comment>
     <requestid>913351</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aac0f21a7194dee9121d38421072875e</srcmd5>
+    <version>0.5.1</version>
+    <time>1649876774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1
+  * avoid deprecated &quot;out-of-band&quot; authentication flow (#186)
+- from version 0.5.0
+  * deprecate OAuth out-of-band flow (#175)
+- from version 0.4.6
+  * remove dependency on `six` (#146), closes (#145) (forwarded request 969855 from glaubitz)</comment>
+    <requestid>969866</requestid>
+  </revision>
 </revisionlist>
