@@ -42,6 +42,7 @@ Patch3:         libpt2-ppc64le.patch
 Patch7:         missing-decls.patch
 Patch10:        libpt2-gnu-make-4.3.patch
 Patch11:        libpt2-move.patch
+Patch12:        pttypes.patch
 BuildRequires:  SDL-devel
 BuildRequires:  alsa-devel
 BuildRequires:  bison
@@ -178,6 +179,7 @@ This plugin enables pulseaudio support for %{name}.
 %patch10 -p1
 %endif
 %patch11 -p1
+%patch12 -p1
 
 %build
 export CXXFLAGS="%optflags -fvisibility-inlines-hidden"

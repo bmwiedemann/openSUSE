@@ -334,4 +334,12 @@
     <comment>- Update to upstream release 2.18.8</comment>
     <requestid>968043</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ee59f9c566d78314de5331a02f372d1b</srcmd5>
+    <version>2.18.8</version>
+    <time>1649876714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969717</requestid>
+  </revision>
 </revisionlist>
