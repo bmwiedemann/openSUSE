@@ -1,7 +1,7 @@
 #
 # spec file for package mkcomposecache
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           mkcomposecache
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
-License:        MIT
 Summary:        Utility to create Compose cache files
-Url:            http://xorg.freedesktop.org/
+License:        MIT
 Group:          System/X11/Utilities
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.3
@@ -48,7 +49,7 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%doc AUTHORS ChangeLog COPYING
 %{_sbindir}/mkcomposecache
 %{_mandir}/man8/mkcomposecache.8%{?ext_man}
 
