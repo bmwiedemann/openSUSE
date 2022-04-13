@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 11 10:16:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fix up for the previous change (related to bsc#1183893)
+- 4.5.2
+
+-------------------------------------------------------------------
 Fri Apr  8 15:53:45 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Remove dependency of YaST NIS packages from TW (bsc#1183893).
@@ -7,7 +13,7 @@ Fri Apr  8 15:53:45 UTC 2022 - José Iván López González <jlopez@suse.com>
 -------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
-- Bump version to 4.5.0 (#bsc1198109)
+- Bump version to 4.5.0 (bsc#1198109)
 
 -------------------------------------------------------------------
 Fri Feb 18 14:35:23 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
