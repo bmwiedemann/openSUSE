@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libnumbertext-1_0-0
 Name:           libnumbertext
-Version:        1.0.8
+Version:        1.0.10
 Release:        0
 Summary:        Language-neutral NUMBERTEXT and MONEYTEXT functions
 License:        MPL-2.0
@@ -76,7 +76,6 @@ autoreconf -fvi
 export CXX=g++-7
 %endif
 %configure \
-	--disable-werror \
 	--disable-static \
 	--disable-silent-rules \
 	%{nil}

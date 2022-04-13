@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 10 09:13:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.10:
+  * hu_Hung.sor: fix regression of transliteration on Windows
+    - non-BMP characters aren't supported in bracket expressions in regex of MS Visual C++,
+      resulting missing transliteration on Windows. Replaced by branches separated by |.
+  * hu_Hung.sor: fix regression of transliteration of punctuation marks
+
+-------------------------------------------------------------------
 Fri Feb 11 22:44:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.8:
