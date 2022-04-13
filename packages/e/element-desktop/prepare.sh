@@ -8,8 +8,12 @@ tmpdir="$(mktemp -d)"
 #zypper install yarn cargo gcc-c++ sqlcipher-devel libsecret-devel
 
 version=$(grep "Version:" element-desktop.spec | awk '{print $2}')
+osc rm element-web-*.tar.gz
+osc rm element-desktop-*.tar.gz
 wget -c https://github.com/vector-im/element-desktop/archive/v${version}.tar.gz -O element-desktop-${version}.tar.gz
 wget -c https://github.com/vector-im/element-web/archive/v${version}.tar.gz -O element-web-${version}.tar.gz
+osc add element-web-*.tar.gz
+osc add element-desktop-*.tar.gz
 cp element-desktop.spec "$tmpdir/"
 cd "$tmpdir"
 

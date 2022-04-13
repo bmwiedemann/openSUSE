@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 12 11:24:44 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.10.9
+  * Threading support
+  * APNG support
+  * Live location sharing
+
+-------------------------------------------------------------------
 Wed Mar 30 15:50:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Sync ExclusiveArch with nodejs-electron: %{ix86} %{arm}
