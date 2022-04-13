@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 13 12:40:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220412.00
+  * enable goproxy during build (#163)
+- from version 20220321.00
+  * enable routes for ipv6 (#160)
+
+-------------------------------------------------------------------
 Tue Feb  8 15:46:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220204.00 (bsc#1195437, bsc#1195438)

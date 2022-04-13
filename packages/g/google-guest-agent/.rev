@@ -133,4 +133,15 @@
   * add malformed ssh key unit test  (#142) (forwarded request 952733 from glaubitz)</comment>
     <requestid>952790</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5585e0fed73a364b8d391ee88e01511b</srcmd5>
+    <version>20220412.00</version>
+    <time>1649876775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220412.00
+  * enable goproxy during build (#163)
+- from version 20220321.00
+  * enable routes for ipv6 (#160) (forwarded request 969873 from glaubitz)</comment>
+    <requestid>969885</requestid>
+  </revision>
 </revisionlist>
