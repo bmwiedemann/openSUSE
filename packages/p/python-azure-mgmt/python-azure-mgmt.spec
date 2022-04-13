@@ -71,6 +71,7 @@ Requires:       python-azure-mgmt-core
 Requires:       python-azure-mgmt-cosmosdb
 Requires:       python-azure-mgmt-costmanagement
 Requires:       python-azure-mgmt-customproviders
+Requires:       python-azure-mgmt-dashboard
 Requires:       python-azure-mgmt-databox
 Requires:       python-azure-mgmt-databoxedge
 Requires:       python-azure-mgmt-databricks
@@ -162,6 +163,7 @@ Requires:       python-azure-mgmt-resourcemover
 Requires:       python-azure-mgmt-scheduler
 Requires:       python-azure-mgmt-search
 Requires:       python-azure-mgmt-security
+Requires:       python-azure-mgmt-securityinsight
 Requires:       python-azure-mgmt-serialconsole
 Requires:       python-azure-mgmt-servermanager
 Requires:       python-azure-mgmt-servicebus

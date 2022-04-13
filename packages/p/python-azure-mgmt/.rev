@@ -306,4 +306,14 @@
   + python-azure-mgmt-redisenterprise (forwarded request 967452 from glaubitz)</comment>
     <requestid>967476</requestid>
   </revision>
+  <revision rev="26" vrev="23">
+    <srcmd5>421a375785d5e1c54876a966336f598d</srcmd5>
+    <version>4.0.0</version>
+    <time>1649876772</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-dashboard
+  + python-azure-mgmt-securityinsight (forwarded request 969723 from glaubitz)</comment>
+    <requestid>969850</requestid>
+  </revision>
 </revisionlist>
