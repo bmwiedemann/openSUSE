@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 11 10:29:09 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.2.0+git20220411.c02b482:
+  * sudoers-whitelist: add another integration test whitelisting entry
+
+-------------------------------------------------------------------
 Wed Apr 06 09:45:45 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.2.0+git20220406.bcfe5ad:

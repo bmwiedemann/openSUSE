@@ -3721,4 +3721,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * Re-init AlternativesCheck for each package.</comment>
     <requestid>967262</requestid>
   </revision>
+  <revision rev="394" vrev="1">
+    <srcmd5>b8cb3d4a093d5089c4a72c9b077f8529</srcmd5>
+    <version>2.2.0+git20220411.c02b482</version>
+    <time>1649876674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0+git20220411.c02b482:
+  * sudoers-whitelist: add another integration test whitelisting entry</comment>
+    <requestid>969169</requestid>
+  </revision>
 </revisionlist>
