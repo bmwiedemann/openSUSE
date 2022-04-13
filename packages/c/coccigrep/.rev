@@ -123,4 +123,12 @@
     <comment>- Use ExclusiveArch the same as coccinelle</comment>
     <requestid>965840</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>480948f084cf6ec960fd2fb356a8517c</srcmd5>
+    <version>1.20</version>
+    <time>1649876711</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>969653</requestid>
+  </revision>
 </revisionlist>

@@ -43,14 +43,13 @@ the spatch program which comes with coccinelle.
 chmod 644 README.rst
 
 %build
-python3 setup.py build
-gzip -c coccigrep.1 > coccigrep.1.gz
+%python3_build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python3_install
 
 install -d %{buildroot}/%{_mandir}/man1/
-install -m 644 coccigrep.1.gz %{buildroot}/%{_mandir}/man1/
+install -m 644 coccigrep.1 %{buildroot}/%{_mandir}/man1/
 
 %files
 %license LICENSE
