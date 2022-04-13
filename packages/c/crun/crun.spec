@@ -1,7 +1,7 @@
 #
 # spec file for package crun
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
 Name:           crun
-Version:        0.21
+Version:        1.4.4
 Release:        0
 Source0:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz
 URL:            https://github.com/containers/crun
@@ -27,16 +27,16 @@ URL:            https://github.com/containers/crun
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
-BuildRequires:  git-core
+BuildRequires:  gettext
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-md2man
 BuildRequires:  libcap-devel
 BuildRequires:  libprotobuf-c-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  libselinux-devel
 BuildRequires:  libtool
 BuildRequires:  libyajl-devel
-BuildRequires:  python
+BuildRequires:  make
+BuildRequires:  python3
 BuildRequires:  python3-libmount
 BuildRequires:  systemd-devel
 %ifnarch %ix86
@@ -60,6 +60,13 @@ export LIBKRUN="--with-libkrun"
 ./autogen.sh
 %configure --disable-silent-rules $LIBKRUN CFLAGS='-I /usr/include/libseccomp'
 %make_build
+
+# TODO:
+# - it would be nice to enable the test-suite, but seems to behave (and fail!)
+#   differently when run inside of an OBS worker, with respect to when it's
+#   run manually on the host... Need to investigate more.
+#%check
+#make test-suite.log
 
 %install
 %make_install

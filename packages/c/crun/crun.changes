@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Apr 12 08:59:23 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- It'd be nice to run the test suite with %check. It however, still
+  does not work properly inside OBS workers. Add it commented and
+  explain it
+
+-------------------------------------------------------------------
+Tue Apr 12 08:36:54 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- switch to latest upstream version (1.4.4)
+- big jump from 0.21! Here's a short summary, for details,
+  see: https://github.com/containers/crun/releases
+  * 1.4.4
+    wasm, kubernetes: support wasm for kubernetes infrastructure with side-cars
+    Resolve symlinks in bind mounts when creating a user namespace.
+    Fix CVE-2022-27650: exec does not set inheritable capabilities.
+  * 1.4.3
+    cgroup: avoid potential infinite loop when deleting a cgroup.
+    support additional options for idmap mounts.
+    open the source for a bind mount in the host.
+  * 1.4.2
+    CRIU: add pre-dump support.
+    Fix running with a read-only /dev.
+    Ignore EROFS when chowning standard stream files.
+    Add validation for sysctls before applying them.
+  * 1.4.1
+    Fix check for an invalid path.
+    Allow deleting a container while in created state.
+    cgroup: do not set cpu limits if number of shares is set to 0.
+  * 1.4
+    wasm: support for running on kubernetes with containerd.
+    linux: add support for recursive mount options.
+    add support for idmapped mounts through a new mount option "idmap".
+    linux: improve detection of /dev target.
+    now crun exec uses CLONE_INTO_CGROUP on supported kernels when using cgroup v2.
+    retry the openat2 syscall if it fails with EAGAIN.
+    cgroup: set the CPUWeight/CPUShares on the systemd scope cgroup.
+    on new kernels, use setns with pidfd.
+    attempt the chdir again with the specified user if it failed before changing credentials.
+  * 1.3
+    add support to natively build and run WebAssembly workload and WebAssembly containers.
+    allow to specify sub-cgroup for exec.
+    chown std streams if they are not a TTY.
+    attach the correct streams if the container is suspended and restored multiple times.
+    fix race condition when enabling controllers on cgroup v2.
+  * 1.2
+    exec: fix regression in 1.1 where containers are being wrongly reported as paused.
+    criu: add support for external ipc, uts and time namespaces.
+  * 1.1
+    cgroup: use cgroup.kill when available.
+    exec: refuse to exec in a paused container/cgroup.
+    container: Set primary process to 1 via LISTEN_PID by default if user configuration is missing.
+    criu: Add support for external PID namespace.
+    criu: fix save of external descriptors.
+    utils: retry openat2 on EAGAIN.
+  * 1.0
+    cgroup: chown the current container cgroup to root in the container.
+    linux: treat pidfd_open failures EINVAL as ESRCH.
+    cgroup: add support for setting memory.use_hierarchy on cgroup v1.
+    Makefile.am: fix link error when using directly libcrun.
+    Fix symlink target mangling for tmpcopyup targets.
+- fix bsc#1197871, CVE-2022-27650 (as 1.4.4 contains the fixes itself)
+- update and fixup dependencies
+
+-------------------------------------------------------------------
 Tue Nov  2 08:58:05 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add libprotobuf-c-devel as an explicit dependency, for fixing
