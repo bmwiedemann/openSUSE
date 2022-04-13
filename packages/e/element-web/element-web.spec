@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.10.4
+Version:        1.10.9
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        Apache-2.0
@@ -47,8 +47,8 @@ cd ./npm-packages-offline-cache
 cp matrix-analytics-events-0.0.1.tgz @matrix-analytics-events-0.0.1.tgz
 cd ..
 ls ./npm-packages-offline-cache | grep matrix-analytics-events
-sed -i -e 's|    matrix-analytics-events "github:matrix-org/matrix-analytics-events.git#dfa6feaa12bcfc8e99b05a148e12fff7f9d62f08"|    matrix-analytics-events "^0.0.1"|' yarn.lock
-sed -i -e 's|"matrix-analytics-events@github:matrix-org/matrix-analytics-events#dfa6feaa12bcfc8e99b05a148e12fff7f9d62f08"|matrix-analytics-events@^0.0.1|' yarn.lock
+sed -i -e 's|    matrix-analytics-events "github:matrix-org/matrix-analytics-events.git#[^"]*"|    matrix-analytics-events "^0.0.1"|' yarn.lock
+sed -i -e 's|"matrix-analytics-events@github:matrix-org/matrix-analytics-events#[^"]*"|matrix-analytics-events@^0.0.1|' yarn.lock
 
 yarn install --offline --pure-lockfile
 
