@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-workbench
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define edition community
 Name:           mysql-workbench
-Version:        8.0.27
+Version:        8.0.28
 Release:        0
 Summary:        A MySQL visual database modeling, administration and querying tool
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -88,7 +88,7 @@ BuildRequires:  pkgconfig(libctemplate)
 BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libssh) >= 0.9.5
+BuildRequires:  pkgconfig(libssh) >= 0.9.6
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(lua)

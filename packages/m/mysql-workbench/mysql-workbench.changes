@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  8 10:46:14 UTC 2022 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to 8.0.28
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-28.html
+- Updated libssh to 0.9.6 required by 8.0.28
+
+-------------------------------------------------------------------
 Tue Nov  2 12:06:31 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to 8.0.27
