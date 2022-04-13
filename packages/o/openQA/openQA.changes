@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 12 09:49:15 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1649753938.422b00b04:
+  * Avoid running into limit when creating job modules
+  * Allow python3 in apparmor
+  * Prevent unnecessary linebreak in cache service logging
+
+-------------------------------------------------------------------
 Sun Apr 10 01:49:18 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1649490476.badee12aa:
