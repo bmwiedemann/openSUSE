@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 11 14:44:06 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Extract the translatable texts also from the wsl/firstboot.xml
+  file (bsc#1197965)
+- 4.5.1
+
+-------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Mon Feb 21 15:44:30 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Registration step is always enabled for SLE, even when running
