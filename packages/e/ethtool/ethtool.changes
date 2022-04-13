@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  4 00:11:20 UTC 2022 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 5.17
+  * Feature: transceiver module power mode (--set-module)
+  * Feature: transceiver module extended state (--show-module)
+  * Feature: get/set rx buffer length (-g and -G)
+  * Feature: tx copybreak buffer size (--get-tunable and
+    --set-tunable)
+  * Feature: JSON output for features (-k)
+  * Feature: support OSFP transceiver modules (-m)
+  * Fix: add missing free() calls (--get-tunable and --set-tunable)
+
+-------------------------------------------------------------------
 Tue Jan 18 23:36:15 UTC 2022 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 5.16

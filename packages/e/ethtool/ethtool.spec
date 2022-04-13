@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        5.16
+Version:        5.17
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
