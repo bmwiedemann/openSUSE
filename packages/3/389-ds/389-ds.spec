@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.1.1~git5.e988a3f55
+Version:        2.1.1~git8.d50340ba5
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -43,7 +43,7 @@ Source:         389-ds-base-%{version}.tar.xz
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
 Source3:        vendor.tar.xz
-Source4:        supportutils-plugin-dirsrv-v0.1.0~git2.4c54cf4.tar.xz
+Source4:        supportutils-plugin-dirsrv.tar.xz
 Source5:        70yast.ldif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
@@ -290,7 +290,7 @@ cp -R extra-schema "%{buildroot}/%{_datadir}/dirsrv/"
 cp %{SOURCE5} "%{buildroot}/%{_datadir}/dirsrv/schema/"
 
 # Install the support utils plugin.
-cp supportutils-plugin-dirsrv-*/dirsrv "%{buildroot}/usr/lib/supportconfig/plugins/dirsrv"
+cp supportutils-plugin-dirsrv*/dirsrv "%{buildroot}/usr/lib/supportconfig/plugins/dirsrv"
 
 # bring OpenLDAP copyright notice here because it is referenced by several extra schema files
 cp %{SOURCE2} ./
@@ -300,6 +300,9 @@ rm -rv %{buildroot}/usr/share/metainfo/389-console/
 mv src/svrcore/README{,.svrcore}
 mv src/svrcore/LICENSE{,.svrcore}
 install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
+
+# For the purposes of our krb integration, we enable this by default.
+mv %{buildroot}%{_datadir}/dirsrv/data/60kerberos.ldif %{buildroot}%{_datadir}/dirsrv/schema/60kerberos.ldif
 
 # Sssshhh duplicate checker ...
 %fdupes %{buildroot}/%{_prefix}

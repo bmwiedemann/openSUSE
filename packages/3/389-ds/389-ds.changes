@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 13 02:07:17 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.1.1~git8.d50340ba5:
+  * Issue 5260 - BUG - OpenLDAP allows multiple names of memberof overlay (#5261)
+  * Issue 5252 - During DEL, vlv search can erroneously return NULL candidate (#5256)
+  * Issue 5210 - Python undefined names in lib389
+
+-------------------------------------------------------------------
 Thu Apr 07 02:56:02 UTC 2022 - william.brown@suse.com
 
 - Resolve bsc#1197896 - update samba schema to upstream latest
