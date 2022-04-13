@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Apr 12 17:42:46 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.1 (released 2022-04-12) includes security fixes to the
+  crypto/elliptic, crypto/x509, and encoding/pem packages, as well
+  as bug fixes to the compiler, linker, runtime, the go command,
+  vet, and the bytes, crypto/x509, and go/types packages.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-24675 CVE-2022-28327 CVE-2022-27536
+  * boo#1198423 go#51853 CVE-2022-24675
+  * go#52037 encoding/pem: stack overflow
+    boo#1198424 go#52075 CVE-2022-28327
+  * go#52077 crypto/elliptic: generic P-256 panic when scalar has too many leading zeroes
+  * boo#1198427 go#51759 CVE-2022-27536
+  * go#51763 crypto/x509: Certificate.Verify crash on macOS with Go 1.18
+  * go#52140 cmd/go: go work use -r panics when given a directory that does not exist
+  * go#52119 go/types, cmd/compile: type set overlapping implementation for interface types might be not correct
+  * go#52032 go/types: spurious diagnostics for untyped shift operands with GoVersion < go1.13
+  * go#52007 go/types, types2: scope is unset on receivers of instantiated methods
+  * go#51874 cmd/go: Segfault on ppc64le during Go 1.18 build on Alpine Linux
+  * go#51855 cmd/compile: internal compiler error: panic: runtime error: index out of range [0] with length 0
+  * go#51852 crypto/x509: reject SHA-1 signatures in Verify
+  * go#51847 cmd/compile: cannot import "package" (type parameter bound more than once)
+  * go#51846 cmd/compile: internal compiler error: walkExpr: switch 1 unknown op RECOVER
+  * go#51796 bytes: Trim returns empty slice instead of nil in 1.18
+  * go#51767 cmd/go: "go test" seems to now require git due to -buildvcs
+  * go#51764 cmd/go: go work use panics when given a file
+  * go#51741 cmd/cgo: pointer to incomplete C type is mangled when passed through interface type and generic type assert
+  * go#51737 plugin: tls handshake panic: unreachable method called. linker bug?
+  * go#51727 cmd/vet, go/types: go vet crash when using self-recursive anonymous types in constraints
+  * go#51697 runtime: some tests fails on Windows with CGO_ENABLED=0
+  * go#51669 cmd/compile: irgen uses wrong dict param to generate code for getting dict type
+  * go#51665 go/types, types2: gopls crash in recordTypeAndValue
+
+-------------------------------------------------------------------
 Thu Apr  7 23:57:47 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Template gcc-go.patch to substitute gcc_go_version and eliminate
