@@ -31,9 +31,16 @@ BuildRequires:  cmake
 BuildRequires:  eigen3-devel >= 3
 BuildRequires:  expat
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+# gcc v8 is required as least for charconv header. version 10 exists on 15.4 and tumbleweed
+%if 0%{?suse_version} >= 1550
+%define gcc_ver %{gcc_version}
+%else
+%define gcc_ver 10
+%endif
+BuildRequires:  gcc%gcc_ver-c++
 # For now, use bundled GLEW because of gh#prusa3d/PrusaSlicer#6396
 #!BuildIgnore:  glew-devel
+#!BuildIgnore:  libglfw3-wayland
 BuildRequires:  gtest >= 1.7
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
@@ -85,6 +92,7 @@ rm resources/udev/90-3dconnexion.rules
   export CFLAGS="%optflags -mfpmath=sse -msse2"
   export CXXFLAGS="$CFLAGS"
 %endif
+export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
 %cmake \
   -DSLIC3R_FHS=1 \
   -DSLIC3R_GTK=3 \
