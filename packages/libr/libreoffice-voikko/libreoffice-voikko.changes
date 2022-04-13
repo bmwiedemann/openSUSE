@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 11 14:28:29 UTC 2022 - Marina Latini <marina.latini@suse.com>
+
+- Build also for ppc64le where LibreOffice is also available
+- Fix file permissions
+
+-------------------------------------------------------------------
 Wed May  2 08:12:23 UTC 2018 - tchvatal@suse.com
 
 - Use exclusive arch wrt issue bsc#1091620 as it gets unresolvable

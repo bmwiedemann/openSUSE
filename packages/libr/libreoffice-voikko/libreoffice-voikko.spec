@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice-voikko
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           libreoffice-voikko
 Version:        5.0
 Release:        0
 Summary:        LibreOffice spellchecker/hyphenator for finnish language
-License:        MPL-2.0 OR GPL-3.0-or-later
+License:        GPL-3.0-or-later OR MPL-2.0
 Group:          Productivity/Text/Spell
 URL:            http://voikko.puimula.org/
 Source0:        http://www.puimula.org/voikko-sources/%{name}/%{name}-%{version}.tar.gz
@@ -36,7 +36,7 @@ BuildRequires:  zip
 BuildRequires:  pkgconfig(libvoikko)
 Requires:       python3-libvoikko
 Provides:       locale(libreoffice:fi)
-ExclusiveArch:  aarch64 %{ix86} x86_64
+ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
 
 %description
 LibreOffice spellchecker/hyphenator for finnish language, which uses
@@ -58,6 +58,7 @@ unzip $voikko_pkg
 %files
 %license COPYING
 %doc README
+%defattr(644,root,root,755)
 %{_libdir}/libreoffice/share/extensions/voikko
 
 %changelog
