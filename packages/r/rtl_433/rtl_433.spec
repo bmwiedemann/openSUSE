@@ -1,8 +1,8 @@
 #
 # spec file for package rtl_433
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/merbanan/rtl_433.git
 Source:         https://github.com/merbanan/rtl_433/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-Fix-overflow-in-Acurite-00275rm-closes-2012.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
@@ -48,6 +49,7 @@ to make use of rtl_433.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake \

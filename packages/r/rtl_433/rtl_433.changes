@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 13 08:32:49 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch to fix security issue: CVE-2022-27419 (bsc#1198434)
+  * 0001-Fix-overflow-in-Acurite-00275rm-closes-2012.patch
+
+-------------------------------------------------------------------
 Thu Dec 16 18:39:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 21.12
