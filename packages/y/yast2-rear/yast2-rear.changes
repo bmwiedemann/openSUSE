@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Tue Sep  7 13:46:49 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Build the package only for supported architectures (bsc#1189646).
