@@ -49,6 +49,7 @@ amdgpu: pci:v00001002d0000131Bsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000131Csv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000131Dsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000013FEsv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000143Fsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000015D8sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000015DDsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000015E7sv*sd*bc*sc*i*
@@ -471,6 +472,7 @@ ath6kl_sdio: sdio:c*v0271d0401*
 ath6kl_sdio: sdio:c*v0271d0402*
 ath6kl_sdio: sdio:c*v0271d0418*
 ath6kl_sdio: sdio:c*v0271d0419*
+ath6kl_usb: usb:v04DAp390Dd*dc*dsc*dp*ic*isc*ip*in*
 ath6kl_usb: usb:v0CF3p9374d*dc*dsc*dp*ic*isc*ip*in*
 ath6kl_usb: usb:v0CF3p9375d*dc*dsc*dp*ic*isc*ip*in*
 ath9k_htc: usb:v040Dp3801d*dc*dsc*dp*ic*isc*ip*in*
@@ -564,6 +566,7 @@ brcmfmac: pci:v000014E4d000043ECsv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d000043EFsv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d0000440Dsv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004464sv*sd*bc02sc80i*
+brcmfmac: pci:v000014E4d0000AA31sv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d0000AA52sv*sd*bc02sc80i*
 brcmfmac: sdio:c*v02D0d4324*
 brcmfmac: sdio:c*v02D0d4329*
@@ -1541,6 +1544,9 @@ i915: pci:v00008086d000046C0sv*sd*bc03sc*i*
 i915: pci:v00008086d000046C1sv*sd*bc03sc*i*
 i915: pci:v00008086d000046C2sv*sd*bc03sc*i*
 i915: pci:v00008086d000046C3sv*sd*bc03sc*i*
+i915: pci:v00008086d000046D0sv*sd*bc03sc*i*
+i915: pci:v00008086d000046D1sv*sd*bc03sc*i*
+i915: pci:v00008086d000046D2sv*sd*bc03sc*i*
 i915: pci:v00008086d00004905sv*sd*bc03sc*i*
 i915: pci:v00008086d00004906sv*sd*bc03sc*i*
 i915: pci:v00008086d00004907sv*sd*bc03sc*i*
@@ -2557,7 +2563,9 @@ iwlwifi: pci:v00008086d000043F0sv*sd00004244bc*sc*i*
 iwlwifi: pci:v00008086d000043F0sv*sd000042A4bc*sc*i*
 iwlwifi: pci:v00008086d00004DF0sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d000051F0sv*sd*bc*sc*i*
+iwlwifi: pci:v00008086d000051F1sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d000054F0sv*sd*bc*sc*i*
+iwlwifi: pci:v00008086d00007740sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd00000090bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd00000098bc*sc*i*
@@ -2688,6 +2696,7 @@ iwlwifi: pci:v00008086d0000A370sv*sd00004034bc*sc*i*
 iwlwifi: pci:v00008086d0000A370sv*sd000040A4bc*sc*i*
 iwlwifi: pci:v00008086d0000A370sv*sd00004234bc*sc*i*
 iwlwifi: pci:v00008086d0000A370sv*sd000042A4bc*sc*i*
+iwlwifi: pci:v00008086d0000A840sv*sd*bc*sc*i*
 kaweth: usb:v03E8p0008d*dc*dsc*dp*ic*isc*ip*in*
 kaweth: usb:v04BBp0901d*dc*dsc*dp*ic*isc*ip*in*
 kaweth: usb:v0506p03E8d*dc*dsc*dp*ic*isc*ip*in*
@@ -2933,6 +2942,8 @@ netxen_nic: pci:v00004040d00000005sv*sd*bc02sc00i00*
 netxen_nic: pci:v00004040d00000024sv*sd*bc02sc00i00*
 netxen_nic: pci:v00004040d00000025sv*sd*bc02sc00i00*
 netxen_nic: pci:v00004040d00000100sv*sd*bc02sc00i00*
+nfp: pci:v000019EEd00003800sv000019EEsd*bc*sc*i*
+nfp: pci:v000019EEd00003803sv000019EEsd*bc*sc*i*
 nfp: pci:v000019EEd00004000sv000019EEsd*bc*sc*i*
 nfp: pci:v000019EEd00005000sv000019EEsd*bc*sc*i*
 nfp: pci:v000019EEd00006000sv000019EEsd*bc*sc*i*
@@ -4634,6 +4645,7 @@ rtl8192cu: usb:v07B8p8188d*dc*dsc*dp*ic*isc*ip*in*
 rtl8192cu: usb:v07B8p8189d*dc*dsc*dp*ic*isc*ip*in*
 rtl8192cu: usb:v0846p9021d*dc*dsc*dp*ic*isc*ip*in*
 rtl8192cu: usb:v0846p9041d*dc*dsc*dp*ic*isc*ip*in*
+rtl8192cu: usb:v0846p9042d*dc*dsc*dp*ic*isc*ip*in*
 rtl8192cu: usb:v0846p9043d*dc*dsc*dp*ic*isc*ip*in*
 rtl8192cu: usb:v0846pF001d*dc*dsc*dp*ic*isc*ip*in*
 rtl8192cu: usb:v0B05p17ABd*dc*dsc*dp*ic*isc*ip*in*
@@ -5285,6 +5297,12 @@ usbduxsigma: usb:v13D8p0022d*dc*dsc*dp*ic*isc*ip*in*
 vt6656_stage: usb:v160Ap3184d*dc*dsc*dp*ic*isc*ip*in*
 vxge: pci:v000017D5d00005733sv*sd*bc*sc*i*
 vxge: pci:v000017D5d00005833sv*sd*bc*sc*i*
+wfx: of:N*T*Csilabs,brd4001a
+wfx: of:N*T*Csilabs,brd4001aC*
+wfx: of:N*T*Csilabs,brd8022a
+wfx: of:N*T*Csilabs,brd8022aC*
+wfx: of:N*T*Csilabs,brd8023a
+wfx: of:N*T*Csilabs,brd8023aC*
 wfx: of:N*T*Csilabs,wf200
 wfx: of:N*T*Csilabs,wf200C*
 wfx: of:N*T*Csilabs,wfx-sdio
@@ -5292,6 +5310,9 @@ wfx: of:N*T*Csilabs,wfx-sdioC*
 wfx: of:N*T*Csilabs,wfx-spi
 wfx: of:N*T*Csilabs,wfx-spiC*
 wfx: sdio:c*v0000d1000*
+wfx: spi:brd4001a
+wfx: spi:brd8022a
+wfx: spi:brd8023a
 wfx: spi:wf200
 wfx: spi:wfx-spi
 whiteheat: usb:v0710p0001d*dc*dsc*dp*ic*isc*ip*in*

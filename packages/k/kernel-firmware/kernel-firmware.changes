@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 11 13:47:37 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220411 (git commit f219d616f42b):
+  * mediatek: Add mt8192 SCP firmware
+  * linux-firmware: Update AMD cpu microcode
+  * nvidia: add GA102/GA103/GA104/GA106/GA107 signed firmware
+  * brcm: rename Rock960 NVRAM to AP6356S and link devices to it
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * amdgpu: update green sardine VCN firmware
+  * amdgpu: update renoir VCN firmware
+  * amdgpu: update navi14 VCN firmware
+  * amdgpu: update navi12 VCN firmware
+  * amdgpu: update navi10 VCN firmware
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * rtw88: 8821c: Update normal firmware to v24.11.00
+  * ice: Add wireless edge file for Intel E800 series driver
+  * ice: update ice DDP comms package to 1.3.31.0
+  * amdgpu: update PSP 13.0.8 firmware
+  * amdgpu: update GC 10.3.7 firmware
+  * rtl_bt: Add firmware and config files for RTL8852B
+- Update aliases
+
+-------------------------------------------------------------------
 Tue Mar 15 15:20:49 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220309 (git commit cd01f857da28):

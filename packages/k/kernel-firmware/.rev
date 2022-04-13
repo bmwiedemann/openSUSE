@@ -1567,4 +1567,12 @@ SR 184278 -- creates ucode-intel, which contains the ucode from microcode_ctl fo
     <comment></comment>
     <requestid>961959</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>3efcb564d0edc01493ac481b9e64a22b</srcmd5>
+    <version>20220411</version>
+    <time>1649876659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969229</requestid>
+  </revision>
 </revisionlist>
