@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-yast
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-yast
-Version:        20210809
+Version:        20220411
 Release:        0
 Summary:        Patterns for Installation (YaST)
 License:        MIT
@@ -145,7 +145,11 @@ Recommends:     yast2-iscsi-client
 Recommends:     yast2-journal
 Recommends:     yast2-ldap-client
 Recommends:     yast2-nfs-client
+# YaST NIS packages are dropped from TW (bsc#1183893)
+# it is only available in SLE15/Leap15
+%if 0%{?sle_version}
 Recommends:     yast2-nis-client
+%endif
 Recommends:     yast2-ntp-client
 # see the discussion in #386473
 Recommends:     yast2-samba-client
@@ -192,7 +196,11 @@ Suggests:       yast2-firewall
 Suggests:       yast2-ldap
 Suggests:       yast2-ldap-client
 Suggests:       yast2-nfs-client
+# YaST NIS packages are dropped from TW (bsc#1183893)
+# it is only available in SLE15/Leap15
+%if 0%{?sle_version}
 Suggests:       yast2-nis-client
+%endif
 Suggests:       yast2-printer
 Suggests:       yast2-samba-client
 Suggests:       yast2-slp
