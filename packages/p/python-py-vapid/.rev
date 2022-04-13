@@ -22,4 +22,12 @@
 - Drop skip-test_sign_01.patch, no longer required</comment>
     <requestid>917409</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ab3469056d7c26e6b5528f3300e5ad7c</srcmd5>
+    <version>1.8.2</version>
+    <time>1649876696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969583</requestid>
+  </revision>
 </revisionlist>

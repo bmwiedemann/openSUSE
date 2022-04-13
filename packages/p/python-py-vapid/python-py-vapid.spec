@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-vapid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography >= 2.5}
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -43,6 +42,7 @@ VAPID header generation library.
 
 %prep
 %setup -q -n py-vapid-%{version}
+sed -i 's/from mock import/from unittest.mock import/' py_vapid/tests/test_vapid.py
 
 %build
 %python_build
