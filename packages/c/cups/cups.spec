@@ -1,7 +1,7 @@
 #
 # spec file for package cups
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,12 @@
 #
 
 
-# Cf. https://rpm.org/user_doc/conditional_builds.html
-# by default enable testsuite (i.e. in the 'check' section run make check and make test)
-#bcond_without testsuite
-# disable testsuite for now until https://github.com/OpenPrinting/cups/issues/155 is fixed
-%bcond_with testsuite
+# By default enable testsuite (i.e. in the 'check' section run 'make test')
+# cf. https://rpm.org/user_doc/conditional_builds.html
+# To disable the testsuite you may set 'bcond_with testsuite' instead
+# until https://github.com/OpenPrinting/cups/issues/155 is actually fixed
+# but we do not error out when 'make test' fails (see the 'check' section):
+%bcond_without testsuite
 
 # _tmpfilesdir is not defined in systemd macros up to openSUSE 13.2
 %{!?_tmpfilesdir: %global _tmpfilesdir /usr/lib/tmpfiles.d }
@@ -29,34 +30,34 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.3.3op2
+Version:        2.4.1
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
 URL:            https://openprinting.github.io/cups
 # To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.3.3op2-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz
-Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz
+# wget --no-check-certificate -O cups-2.4.1-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.1/cups-2.4.1-source.tar.gz
+Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.1/cups-2.4.1-source.tar.gz
 # To get Source1 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.3.3op2-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz.sig
-Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz.sig
-# To get Source2 go to https://www.msweet.org/pgp.html
-# PGP Fingerprint: 845464660B686AAB36540B6F999559A027815955
+# wget --no-check-certificate -O cups-2.4.1-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.1/cups-2.4.1-source.tar.gz.sig
+Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.1/cups-2.4.1-source.tar.gz.sig
+# To make Source2 use e.g.
+#   gpg --keyserver keys.openpgp.org --recv-keys 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
+#   gpg --export --armor 7082A0A50A2E92640F3880E0E4522DCC9B246FF7 >cups.keyring
+# See https://github.com/OpenPrinting/cups/discussions/327#discussioncomment-2060579
+# PGP Fingerprint: 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
 Source2:        cups.keyring
 # To manually verify Source0 with Source1 and Source2 do e.g.
 #   gpg --import cups.keyring
-#   gpg --list-keys | grep -1 'Michael R Sweet' | grep -v 'expired'
-#   gpg --verify cups-2.3.3op2-source.tar.gz.sig cups-2.3.3op2-source.tar.gz
+#   gpg --list-keys | grep -1 'Zdenek Dohnal'
+#   gpg --verify cups-2.4.1-source.tar.gz.sig cups-2.4.1-source.tar.gz
 Source102:      Postscript.ppd.gz
 Source105:      Postscript-level1.ppd.gz
 Source106:      Postscript-level2.ppd.gz
 Source108:      cups-client.conf
 Source109:      baselibs.conf
 # Patch0...Patch9 is for patches from upstream:
-# Patch1 upstream_pull_174.patch is https://github.com/OpenPrinting/cups/pull/174
-# Use 60s timeout for read_thread, revert read limits
-Patch1:         upstream_pull_174.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
@@ -64,15 +65,13 @@ Patch10:        cups-2.1.0-choose-uri-template.patch
 # Patch11 cups-2.1.0-default-webcontent-path.patch changes the default path whereto the
 # web content is installed from /usr/share/doc/cups to /usr/share/cups/webcontent
 # because the files of the CUPS web content are no documentation, see CUPS STR #3578
-# and http://bugzilla.novell.com/show_bug.cgi?id=546023#c6 and subsequent comments:
+# and https://bugzilla.suse.com/show_bug.cgi?id=546023#c6 and subsequent comments:
 Patch11:        cups-2.1.0-default-webcontent-path.patch
-# Patch12 cups-2.1.0-cups-systemd-socket.patch Use systemd socket activation properly:
-Patch12:        cups-2.1.0-cups-systemd-socket.patch
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 Patch100:       cups-pam.diff
 # Patch101 cups-2.0.3-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
-# see https://fate.novell.com/303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
+# see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 Patch101:       cups-2.0.3-additional_policies.patch
 # Patch103 cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # reverts the change which was added by Michael Sweet in Jan 2007
@@ -83,8 +82,16 @@ Patch101:       cups-2.0.3-additional_policies.patch
 Patch103:       cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 Patch104:       cups-config-libs.patch
-# Patch106 Fixes web UI Kerberos authentication (bsc#1175960)
-Patch106:       fix-negotiate-authentication-between-CGIs-and-scheduler.patch
+# Patch107 harden_cups.service.patch adds hardening to systemd service cups.service
+# see https://bugzilla.suse.com/show_bug.cgi?id=1181400
+# and https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+# where the default hardening settings are enhanced by adding
+# ReadWritePaths=/etc/cups because cupsd needs write access in /etc/cups
+# see https://bugzilla.suse.com/show_bug.cgi?id=1195288
+Patch107:       harden_cups.service.patch
+# Patch108 downgrade-autoconf-requirement.patch
+# downgrades the autoconf requirement to the autoconf available in Tumbleweed as of this writing:
+Patch108:       downgrade-autoconf-requirement.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -279,24 +286,19 @@ printer drivers for CUPS.
 %prep
 %setup -q
 # Patch0...Patch9 is for patches from upstream:
-# Patch1 upstream_pull_174.patch is https://github.com/OpenPrinting/cups/pull/174
-# Use 60s timeout for read_thread, revert read limits
-%patch1 -p1
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
 %patch10 -b choose-uri-template.orig
 # Patch11 cups-2.1.0-default-webcontent-path.patch changes the default path whereto the
 # web content is installed from /usr/share/doc/cups to /usr/share/cups/webcontent
 # because the files of the CUPS web content are no documentation, see CUPS STR #3578
-# and http://bugzilla.novell.com/show_bug.cgi?id=546023#c6 and subsequent comments:
+# and https://bugzilla.suse.com/show_bug.cgi?id=546023#c6 and subsequent comments:
 %patch11 -b default-webcontent-path.orig
-# Patch12 cups-2.1.0-cups-systemd-socket.patch Use systemd socket activation properly:
-#patch12 -b cups-systemd-socket.orig
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 %patch100 -b cups-pam.orig
 # Patch101 cups-2.0.3-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
-# see https://fate.novell.com/303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
+# see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 %patch101 -b additional_policies.orig
 # Patch103 cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # reverts the change which was added by Michael Sweet in Jan 2007
@@ -307,8 +309,16 @@ printer drivers for CUPS.
 %patch103 -b do_not_strip_recommended_from_PPDs.orig
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 %patch104 -b cups-config-libs.orig
-# Patch106 Fixes web UI Kerberos authentication (bsc#1175960)
-%patch106 -p1
+# Patch107 harden_cups.service.patch adds hardening to systemd service cups.service
+# see https://bugzilla.suse.com/show_bug.cgi?id=1181400
+# and https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+# where the default hardening settings are enhanced by adding
+# ReadWritePaths=/etc/cups because cupsd needs write access in /etc/cups
+# see https://bugzilla.suse.com/show_bug.cgi?id=1195288
+%patch107 -p1 -b harden_cups.service.orig
+# Patch108 downgrade-autoconf-requirement.patch
+# downgrades the autoconf requirement to the autoconf available in Tumbleweed as of this writing:
+%patch108 -p1 -b downgrade-autoconf-requirement.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
@@ -327,7 +337,7 @@ export CC=cc
 # default with-docdir path whereto the web content is installed
 # from /usr/share/doc/cups to /usr/share/cups/webcontent because the
 # files of the CUPS web content are no documentation, see CUPS STR #3578
-# and http://bugzilla.novell.com/show_bug.cgi?id=546023#c6 and subsequent comments
+# and https://bugzilla.suse.com/show_bug.cgi?id=546023#c6 and subsequent comments
 # so that the new default could be used as is but upstream may accept
 # cups-2.1.0-default-webcontent-path.patch in general but change its default
 # so that with-docdir is explicitly set here to be future proof.
@@ -377,6 +387,14 @@ install -m644 %{SOURCE108} %{buildroot}%{_sysconfdir}/cups/client.conf
 # Make the libraries accessible also via generic named links:
 ln -sf libcupsimage.so.2 %{buildroot}%{_libdir}/libcupsimage.so
 ln -sf libcups.so.2 %{buildroot}%{_libdir}/libcups.so
+# Move /usr/lib/pkgconfig/cups.pc to _libdir if it is not there
+# to avoid a conflict that cups-devel and cups-devel-32bit
+# would both contain /usr/lib/pkgconfig/cups.pc because
+# when cups.pc is arch dependent it has to be in _libdir
+# which it is because it contains 'libdir=/usr/lib64' on x86_64
+# (if it was arch independent it would have to be in _datadir)
+# cf. https://build.opensuse.org/request/show/965680
+test -d %{buildroot}%{_libdir}/pkgconfig || mv %{buildroot}/usr/lib/pkgconfig %{buildroot}%{_libdir}/pkgconfig
 # Add missing usual directories:
 install -d -m755 %{buildroot}%{_datadir}/cups/drivers
 install -d -m755 %{buildroot}%{_localstatedir}/cache/cups
@@ -398,7 +416,7 @@ install -m 644 %{SOURCE106} %{buildroot}%{_datadir}/cups/model/Postscript-level2
 rm -f %{buildroot}%{_datadir}/applications/cups.desktop
 rm -rf %{buildroot}%{_datadir}/icons
 # Save /etc/cups/cupsd.conf and /etc/cups/cupsd.conf.default from becoming hardlinked
-# via the fdupes run below, see https://bugzilla.novell.com/show_bug.cgi?id=773971
+# via the fdupes run below, see https://bugzilla.suse.com/show_bug.cgi?id=773971
 # by making their content different and at the same time fix the misleading comment.
 # Intentionally let the build fail if 'grep' does not find what 'sed' should change
 # because if upstream changed it 'sed' would silently no longer change the files:
@@ -427,22 +445,38 @@ EOF
 # Never run fdupes carelessly over the whole buildroot directory
 # because in older openSUSE and SLE11 versions fdupes
 # links files with different owner, group, or permissions
-# see https://bugzilla.novell.com/show_bug.cgi?id=784670
+# see https://bugzilla.suse.com/show_bug.cgi?id=784670
 # and even in current openSUSE versions fdupes links across sub-package
-# boundaries, compare https://bugzilla.novell.com/show_bug.cgi?id=784869
+# boundaries, compare https://bugzilla.suse.com/show_bug.cgi?id=784869
 %fdupes -s %{buildroot}/%{_datadir}/cups/templates
 
 %check
 %if %{with testsuite}
-# There appears to be some kind of race condition when running make check and make test
+# There appears to be some kind of race condition when running 'make test'
 # cf. https://github.com/OpenPrinting/cups/issues/155
-# We print all logs for debugging purposes if either testsuite fails
-echo "DEBUG: running make check"
-bash -c 'make %{?_smp_mflags} check; EXIT=$?; if [ $EXIT -ne 0 ]; then cat test/*_log*-$(whoami); fi; exit $EXIT'
-echo "DEBUG: running make test"
-bash -c 'make %{?_smp_mflags} test; EXIT=$?; if [ $EXIT -ne 0 ]; then cat test/*_log*-$(whoami); fi; exit $EXIT'
+# so we do not call 'make %{?_smp_mflags} test' but plain 'make test'
+# cf. https://github.com/OpenPrinting/cups/issues/155#issuecomment-802886811
+# We print the log files for debugging purposes if the testsuite fails.
+# The log files in the test directory are named like
+# access_log-2022-03-04-abuild
+# debug_log-2022-03-04-abuild
+# error_log-2022-03-04-abuild
+# page_log-2022-03-04-abuild
+# We do not error out because https://github.com/OpenPrinting/cups/issues/155
+# is not yet actually fixed so currently the testsuite still sometimes fails:
+echo "TEST: running 'make test'"
+if make test
+then echo "TEST: succeeded"
+else echo "TEST: 'make test' FAILED"
+     for logfile in test/*_log-*-$(whoami)
+     do echo "TEST: printing log file $logfile:"
+        cat $logfile
+        echo "TEST: end of log file $logfile"
+     done
+     echo "TEST: end of printing log files"
+fi
 %else
-echo "DEBUG: skipped running make check and make test, cf. https://github.com/OpenPrinting/cups/issues/155"
+echo "TEST: skipped 'make test', cf. https://github.com/OpenPrinting/cups/issues/155"
 %endif
 
 %pre -p /bin/bash
@@ -527,7 +561,7 @@ exit 0
 # This avoids that CUPS' configure magic might silently
 # not build and install an executable when whatever condition
 # for configure's automated tests is not fulfilled in the build system.
-# See https://bugzilla.novell.com/show_bug.cgi?id=526847#c9
+# See https://bugzilla.suse.com/show_bug.cgi?id=526847#c9
 # Regarding specific owner group and permission settings for directories
 # see https://bugzilla.suse.com/show_bug.cgi?id=1184161
 # When cupsd creates directories with specific owner group and permissions
@@ -682,6 +716,7 @@ exit 0
 %{_includedir}/cups/
 %{_libdir}/libcups.so
 %{_libdir}/libcupsimage.so
+%{_libdir}/pkgconfig/cups.pc
 
 %files ddk
 %defattr(-,root,root)

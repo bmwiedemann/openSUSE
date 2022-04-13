@@ -1,0 +1,26 @@
+Index: cups-2.3.3op2/scheduler/cups.service.in
+===================================================================
+--- cups-2.3.3op2.orig/scheduler/cups.service.in
++++ cups-2.3.3op2/scheduler/cups.service.in
+@@ -5,6 +5,21 @@ After=network.target sssd.service ypbind
+ Requires=cups.socket
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions
++# cupsd needs write access in /etc/cups see
++# https://bugzilla.opensuse.org/show_bug.cgi?id=1195288
++ReadWritePaths=/etc/cups
++# end of SUSE additions
+ ExecStart=@sbindir@/cupsd -l
+ Type=notify
+ Restart=on-failure

@@ -1,4 +1,210 @@
 -------------------------------------------------------------------
+Mon Apr  4 12:45:16 UTC 2022 - jsmeix@suse.de
+
+- Have cups.pc in %{_libdir} to avoid a conflict
+  that cups-devel and cups-devel-32bit would
+  both contain /usr/lib/pkgconfig/cups.pc because
+  when cups.pc is arch dependent it has to be in %{_libdir}
+  which it is because it contains 'libdir=/usr/lib64' on x86_64
+  (if it was arch independent it would have to be in %{_datadir})
+  cf. https://build.opensuse.org/request/show/965680
+
+-------------------------------------------------------------------
+Fri Mar  4 11:34:13 UTC 2022 - jsmeix@suse.de
+
+- Improved comments in spec file and in changes file
+- Have cups.keyring in ASCII armored format
+- Do not error out when 'make test' fails in the 'check' section
+  because https://github.com/OpenPrinting/cups/issues/155
+  is not yet actually fixed so currently the testsuite
+  still sometimes fails
+
+-------------------------------------------------------------------
+Tue Mar  1 18:16:11 UTC 2022 - Aurelien Joga <aurelienjoga@gmail.com>
+
+- Version upgrade to 2.4.1:
+  See https://github.com/openprinting/cups/releases
+  CUPS 2.4.1 is the first bug fix release from 2.4.x series.
+  Among the other bug fixes it fixes sharing default color mode
+  to clients and several memory leaks.
+  * The default color mode now is now configurable and defaults
+    to the printer's reported default mode (Issue #277)
+  * Configuration script now checks linking for -Wl,-pie flags
+    (Issue #303)
+  * Fixed memory leaks -
+    in testi18n (Issue #313),
+    in cups_enum_dests() (Issue #317),
+    in _cupsEncodeOption() and http_tls_upgrade() (Issue #322)
+  * Fixed missing bracket in de/index.html (Issue #299)
+  * Fixed typos in configuration scripts (Issues #304, #316)
+  * Removed remaining legacy code for RIP_MAX_CACHE environment
+    variable (Issue #323)
+  * Removed deprecated directives from cupsctl and
+    cups-files.conf (Issue #300)
+  * Removed purge-jobs legacy code from CGI scripts and
+    templates (Issue #325)
+- Version upgrade to 2.4.0:
+  CUPS 2.4.0 is the latest stable OpenPrinting CUPS release.
+  Among the changes from beta and release candidate
+  the stable release adds two new configuration options for
+  optimizing cupsd setup on servers and several other changes.
+  * Added configure option --with-idle-exit-timeout (Issue #294)
+  * Added --with-systemd-timeoutstartsec configure
+    option (Issue #298)
+  * DigestOptions now are applied for MD5 Digest authentication
+    defined by RFC 2069 as well (Issue #287)
+  * Fixed compilation on Solaris (Issue #293)
+  * Fixed and improved German translations (Issue #296, Issue #297)
+- Version upgrade to 2.4rc1:
+  CUPS 2.4rc1 is a release candidate for OpenPrinting CUPS 2.4.0,
+  which adds two enhancements before the stable release.
+  * Added warning and debug messages when loading printers
+    if the queue is raw or with driver (Issue #286)
+  * Compilation now uses -fstack-protector-strong
+    if available (Issue #285)
+- Version upgrade to 2.4b1:
+  CUPS 2.4b1 is the beta release for OpenPrinting CUPS 2.4
+  which contains several new features such as basic OAuth support,
+  support for AirPrint and Mopria clients and support for running
+  CUPS as a snap, several deprecations (Kerberos, cups-config),
+  removals of old deprecated directives, and many bug fixes.
+  * Added support for CUPS running in a Snapcraft snap.
+  * Added basic OAuth 2.0 client support (Issue #100)
+  * Added support for AirPrint and Mopria clients (Issue #105)
+  * Added configure support for specifying systemd dependencies
+    in the CUPS service file (Issue #144)
+  * Added several features and improvements to ipptool (Issue #153)
+  * Added a JSON output mode for ipptool.
+  * The ipptool command now correctly reports an error
+    when a test file cannot be found.
+  * CUPS library now uses thread safe getpwnam_r and getpwuid_r
+    functions (Issue #274)
+  * Fixed Kerberos authentication for the web interface (Issue #19)
+  * The ZPL sample driver now supports more "standard" label
+    sizes (Issue #70)
+  * Fixed reporting of printer instances when enumerating and when
+    no options are set for the main instance (Issue #71)
+  * Reverted USB read limit enforcement change
+    from CUPS 2.2.12 (Issue #72)
+  * The IPP backend did not return the correct status code
+    when a job was canceled at the printer/server (Issue #74)
+  * The testlang unit test program now loops over all of the
+    available locales by default (Issue #85)
+  * The cupsfilter command now shows error messages when options
+    are used incorrectly (Issue #88)
+  * The PPD functions now treat boolean values as
+    case-insensitive (Issue #106)
+  * Temporary queue names no longer end with an
+    underscore (Issue #110)
+  * The USB backend now runs as root (Issue #121)
+  * Added pkg-config file for libcups (Issue #122)
+  * Fixed a PPD memory leak caused by emulator
+    definitions (Issue #124)
+  * Fixed a DISPLAY bug in ipptool (Issue #139)
+  * The scheduler now includes the [Job N] prefix for job log
+    messages, even when using syslog logging (Issue #154)
+  * Added support for locales using the GB18030
+    character set (Issue #159)
+  * httpReconnect2 did not reset the socket file descriptor
+    when the TLS negotiation failed (Apple #5907)
+  * httpUpdate did not reset the socket file descriptor
+    when the TLS negotiation failed (Apple #5915)
+  * The IPP backend now retries Validate-Job requests (Issue #132)
+  * Now show better error messages when a driver interface program
+    fails to provide a PPD file (Issue #148)
+  * Added dark mode support to the CUPS web interface (Issue #152)
+  * Added a workaround for Solaris in httpAddrConnect2 (Issue #156)
+  * Fixed an interaction between --remote-admin and --remote-any
+    for the cupsctl command (Issue #158)
+  * Now use a 60 second timeout for reading USB backchannel
+    data (Issue #160)
+  * The USB backend now tries harder to find a serial
+    number (Issue #170)
+  * Fixed @IF(name) handling in cupsd.conf (Apple #5918)
+  * Fixed documentation and added examples for CUPS' limited
+    CGI support (Apple #5940)
+  * Fixed the lpc command prompt (Apple #5946)
+  * Now always pass "localhost" in the Host: header when talking
+    over a domain socket or the loopback interface (Issue #185)
+  * Fixed a job history update issue in the scheduler (Issue #187)
+  * Fixed job-pages-per-set value for duplex print jobs.
+  * Fixed an edge case in ippReadIO to make sure that only complete
+    attributes and values are retained on an error (Issue #195)
+  * Hardened ippReadIO to prevent invalid IPP messages from being
+    propagated (Issue #195, Issue #196)
+  * The scheduler now supports the "everywhere" model
+    directly (Issue #201)
+  * Fixed some IPP Everywhere option mapping problems (Issue #238)
+  * Fixed support for "job-hold-until" with the Restart-Job
+    operation (Issue #250)
+  * Fixed the default color/grayscale presets for
+    IPP Everywhere PPDs (Issue #262)
+  * Fixed support for the 'offline-report' state for all
+    USB backends (Issue #264)
+  * Documentation fixes (Issue #92, Issue #163, Issue #177,
+    Issue #184)
+  * Localization updates (Issue #123, Issue #129, Issue #134,
+    Issue #146, Issue #164)
+  * USB quirk updates (Issue #192, Issue #270, Apple #5766,
+    Apple #5838, Apple #5843, Apple #5867)
+  * Web interface updates (Issue #142, Issue #218)
+  * The ippeveprinter tool now automatically uses an
+    available port.
+  * Fixed several Windows TLS and hashing issues.
+  * Deprecated cups-config (Issue #97)
+  * Deprecated Kerberos (AuthType Negotiate)
+    authentication (Issue #98)
+  * Removed support for the (long deprecated and unused)
+    FontPath, ListenBackLog, LPDConfigFile, KeepAliveTimeout,
+    RIPCache, and SMBConfigFile directives in cupsd.conf
+    and cups-files.conf.
+  * Stubbed out deprecated httpMD5 functions.
+  * Add test for undefined page ranges during printing.
+- downgrade-autoconf-requirement.patch downgrades the
+  autoconf requirement to what is currently available in openSUSE
+- fix-negotiate-authentication-between-CGIs-and-scheduler.patch
+  is obsolete because it is included in the upstream code, see
+  https://github.com/OpenPrinting/cups/commit/3ff789ee90b18205c735e42e599eb3ee3043e88a
+  https://github.com/OpenPrinting/cups/pull/19
+  https://github.com/apple/cups/pull/5847
+  https://github.com/apple/cups/issues/5596
+- upstream_pull_174.patch
+  is obsolete because it is included in the upstream code, see
+  https://github.com/OpenPrinting/cups/commit/43edb9df51b977d92929b084186dcd67d4f5ca44
+  https://github.com/OpenPrinting/cups/pull/174
+  https://github.com/OpenPrinting/cups/issues/72
+- patch cups-2.1.0-cups-systemd-socket.patch
+  is obsolete because it is included in the upstream code, see
+  https://github.com/OpenPrinting/cups/commit/e96e96b4bd0d4e6f634bbb66b95d6e475501541c
+- Updated upstream source tarball signing key in cups.keyring, see
+  https://github.com/OpenPrinting/cups/discussions/327#discussioncomment-2060579
+- Re-enabled the CUPS upstream testsuite via 'make test'
+  and removed 'make check' because since the upstream commit
+  https://github.com/OpenPrinting/cups/commit/96ba46ebc818b610b0e40cbc9d62ef1dcd3ec9b6
+  the two Makefile targets 'test' and 'check' are identical.
+- Changed cups-2.1.0-cups-systemd-socket.patch
+  to accomodate new coding style
+- Changed cups-config-libs.orig to accommodate
+  recent code changes (SSL->TLS)
+- Changed cups-2.1.0-default-webcontent-path.patch
+  to accommodate code changes
+
+-------------------------------------------------------------------
+Tue Feb  1 09:18:27 UTC 2022 - jsmeix@suse.de
+
+- Enhanced harden_cups.service.patch by adding
+  ReadWritePaths=/etc/cups
+  because cupsd needs write access in /etc/cups
+  (boo#1195288)
+
+-------------------------------------------------------------------
+Fri Oct 15 07:31:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400), see
+  https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+  Added patch: harden_cups.service.patch
+
+-------------------------------------------------------------------
 Mon Jun  7 13:23:25 CEST 2021 - jsmeix@suse.de
 
 - Provide /usr/share/cups/ppdc/ in the "cups" main package
