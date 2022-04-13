@@ -30,14 +30,14 @@
 %bcond_without	ext2fs
 %endif
 Name:           libarchive
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Utility and C library to create and read several different streaming archive formats
 License:        BSD-2-Clause
 Group:          Productivity/Archiving/Compression
 URL:            https://www.libarchive.org/
-Source0:        https://www.libarchive.org/downloads/libarchive-%{version}.tar.xz
-Source1:        https://www.libarchive.org/downloads/libarchive-%{version}.tar.xz.asc
+Source0:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.xz
+Source1:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.xz.asc
 Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch

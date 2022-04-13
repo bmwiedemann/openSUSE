@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  8 17:01:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.1:
+  * 7zip reader: fix PPMD read beyond boundary (#1671)
+  * ZIP reader: fix possible out of bounds read (OSS-Fuzz 38766 #1672)
+  * ISO reader: fix possible heap buffer overflow in read_children() (OSS-Fuzz 38764, #1685)
+  * RARv4 redaer: fix multiple issues in RARv4 filter code (introduced in libarchive 3.6.0)
+  * fix heap use after free in archive_read_format_rar_read_data() (OSS-Fuzz 44547, 52efa50)
+  * fix null dereference in read_data_compressed() (OSS-Fuzz 44843, 1271f77)
+  * fix heap user after free in run_filters() (OSS-Fuzz 46279, #1715) 
+
+-------------------------------------------------------------------
 Thu Feb 24 19:18:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.6.0
