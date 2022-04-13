@@ -32,4 +32,12 @@
     <comment>standalone jaxb-api for rings</comment>
     <requestid>962608</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>743e1674ed3aa92f6439225d12046c7f</srcmd5>
+    <version>2.4.0</version>
+    <time>1649876652</time>
+    <user>dimstar_suse</user>
+    <comment>Assure that every dependency in the pom file has a version information</comment>
+    <requestid>969207</requestid>
+  </revision>
 </revisionlist>

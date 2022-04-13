@@ -72,6 +72,8 @@ cp %{SOURCE1} jaxb-api/build.xml
         <exclude>module-info.java</exclude>
     </sourceFileExcludes>" jaxb-api
 
+%pom_change_dep ::::: ::::: jaxb-api
+
 %build
 pushd jaxb-api
 mkdir -p lib

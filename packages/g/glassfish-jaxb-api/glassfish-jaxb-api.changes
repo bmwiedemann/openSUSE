@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 10 19:13:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Assure that every dependency has a version, or at least "any"
+  * fixes use with gradle
+
+-------------------------------------------------------------------
 Fri Mar 18 05:54:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Install the jar directly to the /usr/share/java as
