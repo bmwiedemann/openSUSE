@@ -1,7 +1,7 @@
 #
 # spec file for package lightly
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/Luwx/Lightly
 Source0:        https://github.com/Luwx/Lightly/archive/v%{version}.tar.gz#/Lightly-%{version}.tar.gz
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= %{kf5_ver}
+BuildRequires:  frameworkintegration-devel
 BuildRequires:  gcc-c++
 BuildRequires:  cmake(KDecoration2)
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_ver}
