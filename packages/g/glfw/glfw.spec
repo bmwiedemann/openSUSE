@@ -1,7 +1,7 @@
 #
 # spec file for package glfw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %define sover  3
 Name:           glfw
-Version:        3.3.6
+Version:        3.3.7
 Release:        0
 Summary:        Framework for OpenGL application development
 License:        Zlib
