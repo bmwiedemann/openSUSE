@@ -444,4 +444,16 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment></comment>
     <requestid>951441</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>55b8393bc17f47503f2ccffefbb35563</srcmd5>
+    <version>3.21.0</version>
+    <time>1649876645</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.21.0:
+  * New table for German 6-dot computer braille thanks to the Swiss Library for
+    the Blind, Visually Impaired and Print Disabled 
+  * see http://liblouis.org/liblouis/2022/03/07/liblouis-release-3.21.0.html
+    for list of bugfixes (forwarded request 968245 from dirkmueller)</comment>
+    <requestid>969164</requestid>
+  </revision>
 </revisionlist>

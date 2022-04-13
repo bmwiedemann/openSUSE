@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 10 12:48:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.21.0:
+  * New table for German 6-dot computer braille thanks to the Swiss Library for
+    the Blind, Visually Impaired and Print Disabled 
+  * see http://liblouis.org/liblouis/2022/03/07/liblouis-release-3.21.0.html
+    for list of bugfixes
+
+-------------------------------------------------------------------
 Mon Jan 31 20:12:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.20.0:
