@@ -17,7 +17,7 @@
 
 
 Name:           lollypop
-Version:        1.4.30
+Version:        1.4.32
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
@@ -32,7 +32,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(libhandy-1) >= 1.5
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.29.1
 Requires:       dbus-1-python3

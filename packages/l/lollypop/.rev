@@ -1769,4 +1769,24 @@
 - Add new build dependency: pkgconfig(libhandy-1) &gt;= 1.5.</comment>
     <requestid>962949</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>11077d7ba01cbda0e59195d21f8cb518</srcmd5>
+    <version>1.4.32</version>
+    <time>1649876690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.32:
+  * Fix an issue with alt+l shortcut (glgo#World/lollypop#2914).
+  * Fix a crash (glgo#World/lollypop#2915).
+
+- Update to version 1.4.31:
+  * Remove invalid shortcut (glgo#World/lollypop#2893)
+  * Bring back tooltip support (glgo#World/lollypop#2898).
+  * Improve dark theme support (glgo#World/lollypop#2912).
+  * Fix a filter issue (glgo#World/lollypop#2909).
+  * Fix an issue when playing a song from the commandline
+    (glgo#World/lollypop#2765).
+- Remove build dependency on pkgconfig(libhandy-1) &gt;= 1.5: Reverted
+  by upstream.</comment>
+    <requestid>969971</requestid>
+  </revision>
 </revisionlist>
