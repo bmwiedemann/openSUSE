@@ -1262,4 +1262,12 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>967547</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>87d147b54f4fcd218ec2a08604708ab3</srcmd5>
+    <version>4.5.3</version>
+    <time>1649876651</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>969194</requestid>
+  </revision>
 </revisionlist>
