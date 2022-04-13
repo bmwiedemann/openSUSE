@@ -1,7 +1,7 @@
 #
 # spec file for package rstudio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -219,6 +219,7 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(websocketpp)
 BuildRequires:  pkgconfig(zlib)
+BuildConflicts: java-devel >= 12
 Requires:       R-base
 Requires:       R-core-libs
 Recommends:     gcc

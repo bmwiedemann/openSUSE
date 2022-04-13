@@ -177,4 +177,12 @@ Rebase patches:
     <comment>- Add 0009-Fix-catch-build.patch to fix build with glibc 2.34. (forwarded request 927121 from aaronpuchert)</comment>
     <requestid>927136</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>6cdb12bea84531bb8bca8868de966619</srcmd5>
+    <version>1.4.1717</version>
+    <time>1649876777</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with jdk 11 to fix build failure (forwarded request 969878 from Andreas_Schwab)</comment>
+    <requestid>969884</requestid>
+  </revision>
 </revisionlist>

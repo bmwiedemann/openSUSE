@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 13 10:24:11 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Build with jdk 11 to fix build failure
+
+-------------------------------------------------------------------
 Sat Oct 23 15:45:10 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add 0009-Fix-catch-build.patch to fix build with glibc 2.34.
