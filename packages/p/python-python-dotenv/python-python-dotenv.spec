@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-python-dotenv
-Version:        0.15.0
+Version:        0.20.0
 Release:        0
 Summary:        Python library for .env support
 License:        BSD-3-Clause
 URL:            https://github.com/theskumar/python-dotenv
 Source:         https://github.com/theskumar/python-dotenv/archive/v%{version}.tar.gz#/python-dotenv-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 5.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.0.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sh >= 1.09}
@@ -47,6 +46,7 @@ Add .env support to your Fjango/Flask apps in development and deployments.
 
 %prep
 %setup -q -n python-dotenv-%{version}
+sed -i 's/import mock/import unittest.mock as mock/' tests/test_ipython.py tests/test_main.py
 
 %build
 export LANG=C.UTF-8

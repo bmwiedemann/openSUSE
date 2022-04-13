@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 11 10:55:56 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.20.0
+  * The default value of the encoding parameter for load_dotenv and dotenv_values is now "utf-8" instead of None
+  * Add --override/--no-override option to dotenv run
+  * Raise ValueError if quote_mode isn't one of always, auto or never in set_key
+  * Require Python 3.5 or a later version. Python 2 and 3.4 are no longer supported. 
+  * The stream argument of load_dotenv and dotenv_values can now be a text stream (IO[str]), 
+    which includes values like io.StringIO("foo") and open("file.env", "r")
+  * Add support for Python 3.10.
+  * Add encoding (Optional[str]) parameter to get_key, set_key and unset_key.
+- Do not require mock
+
+-------------------------------------------------------------------
 Mon Feb 21 09:09:13 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Skip building for python2
