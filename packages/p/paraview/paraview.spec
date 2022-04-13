@@ -23,11 +23,10 @@
 
 %if 0%{?suse_version} <= 1500
 %bcond_with    pugixml
-%bcond_with gl2ps
 %else
 %bcond_without pugixml
-%bcond_without gl2ps
 %endif
+%bcond_without gl2ps
 
 # Need patched version with HPDF_SHADING
 %bcond_with    haru
@@ -107,7 +106,7 @@ BuildRequires:  pkgconfig(protobuf) >= 2.6.0
 %if %{with pugixml}
 BuildRequires:  pkgconfig(pugixml) >= 1.11
 %endif
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 BuildRequires:  cli11-devel
 %else
 BuildRequires:  pkgconfig(CLI11)

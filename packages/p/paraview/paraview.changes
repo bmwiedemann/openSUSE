@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 10 13:40:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Revert gl2ps change. TW and 15.4 have a recent gl2ps, and the
+  15.3 package will not be upgraded (but is available in science).
+
+-------------------------------------------------------------------
 Mon Apr 04 12:00:00 UTC 2022 - Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
 
 - Fixes cli11 dependency for 15.3.
