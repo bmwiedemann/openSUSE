@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Wed Apr 13 10:13:58 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.1
+  Bug Fixes
+  * remove py.typed marker file for PEP 561 (#735), closes (#734)
+- from version 2.2.0
+  Features
+  * allow no project in client methods using storage emulator (#703)
+  Bug Fixes
+  * add user agent in python-storage when calling resumable media (c7bf615)
+  * **deps:** require google-api-core>=1.31.5, >=2.3.2 (#722) (e9aab38)
+  * Fix BlobReader handling of interleaved reads and seeks (#721) (5d1cfd2)
+  * retry client side requests timeout (#727) (e0b3b35)
+  Documentation
+  * fixed download_blob_to_file example (#704) (2c94d98)
+- from 2.1.0
+  Features
+  * add turbo replication support and samples (#622) (4dafc81)
+  * avoid authentication with storage emulator (#679) (8789afa)
+  * remove python 3.6 support (#689) (8aa4130)
+- from version 2.0.0
+  BREAKING CHANGES
+  * Remove Python 2 support (#657)
+  Features
+  * Remove Python 2 support (#657) (b611670)
+- from version 1.44.0
+  Features
+  * add raw_download kwarg to BlobReader (#668) (10cdad6)
+  Documentation
+  * Describe code sample more specifically (#660) (0459cb4)
+  * refresh readme instructions (#667) (ceb9314)
+  * This is just a simple PR to better describe what the code
+    is doing in the comments. (0459cb4)
+  * use writeable streamin example for 'download_blob_to_file' (#676) (96092d4)
+- from version 1.43.0
+  Features
+  * add ignore_flush parameter to BlobWriter (#644) (af9c9dc)
+  * add support for Python 3.10 (#615) (f81a2d0)
+  Bug Fixes
+  * raise a ValueError in BucketNotification.create() if a topic
+    name is not set (#617) (9dd78df)
+  Documentation
+  * add contributing and authoring guides under samples/ (#633) (420591a)
+  * add links to samples and how to guides (#641) (49f78b0)
+  * add README to samples subdirectory (#639) (58af882)
+  * update samples readme with cli args (#651) (75dda81)
+- from 1.42.3
+  Bug Fixes
+  * changeover unspecified to inherited (#603) (283a419)
+  * check response code in batch.finish (#609) (318a286)
+  * skip tests that use unspecified pap until we get the change in (#600) (38b9b55)
+- from version 1.42.2
+  Bug Fixes
+  * add preconditions and retry config support to ACL patch operationss (#586) (4333caf)
+  * add unpinned protobuf for python3 (#592) (53f7ad0)
+  * pin six as a required dependency (#589) (9ca97bf)
+- from version 1.42.1
+  Bug Fixes
+  * do not append duplicates to user agent string (#570) (57cf3a1)
+  Documentation
+  * pass explicit 'client' in '{Blob.Bucket}.from_string' examples (#545) (6eff22d)
+- from version 1.42.0
+  Features
+  * add 'page_size' parameter to 'Bucket.list_blobs, list_buckets (#520) (c5f4ad8)
+  Bug Fixes
+  * **deps:** add explicit ranges for 'google-api-core' and 'google-auth' (#530) (310f207)
+  * downloading no longer marks metadata fields as 'changed' (#523) (160d1ec)
+  * make 'requests.exceptions.ChunkedEncodingError retryable by default (#526) (4abb403)
+  Documentation
+  * update supported / removed Python versions in README (#519) (1f1b138)
+- from version 1.41.1
+  Bug Fixes
+  * **deps:** pin `{api,cloud}-core`, `auth` to allow 2.x versions on Python 3 (#512) (4d7500e)
+  * remove trailing commas from error message constants (#505) (d4a86ce)
+  Documentation
+  * replace usage of deprecated function `download_as_string` in docs (#508) (8dfa4d4)
+- from version 1.41.0
+  Features
+  * add support for Etag headers on reads (#489) (741d3fd)
+  Bug Fixes
+  * **deps:** update minimum dependency versions to pick up bugfixes (#496) (92251a5)
+  * populate etag / generation / metageneration properties during download (#488) (49ba14c)
+  * revise and rename is_etag_in_json(data) (#483) (0a52546)
+- from version 1.40.0
+  Features
+  * add preconditions and retry configuration to blob.create_resumable_upload_session (#484) (0ae35ee)
+  * add public access prevention to bucket IAM configuration (#304) (e3e57a9)
+  Bug Fixes
+  * replace default retry for upload operations (#480) (c027ccf)
+- from version 1.39.0
+  Features
+  * media operation retries can be configured using the same interface
+    as with non-media operation (#447) (0dbbb8a)
+  Bug Fixes
+  * add ConnectionError to default retry (#445) (8344253)
+  * apply idempotency policies for ACLs (#458) (2232f38)
+  * replace python lifecycle action parsing ValueError with warning (#437) (2532d50)
+  * revise blob.compose query parameters `if_generation_match` (#454) (70d19e7)
+  Documentation
+  * streamline 'timeout' / 'retry' docs in docstrings (#461) (78b2eba)
+  * streamline docstrings for conditional parmas (#464) (6999370)
+- Drop patches for issues fixed upstream
+  * no-network.patch
+  * no-sic.patch
+- Refresh patches for new upstream version
+  * no-relative-imports.patch
+- Update BuildRequires and Require from setup.py
+
+-------------------------------------------------------------------
 Thu Sep 30 09:19:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add no-relative-imports.patch to fix relative imports.

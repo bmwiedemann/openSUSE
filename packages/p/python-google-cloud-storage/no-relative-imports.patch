@@ -1,53 +1,47 @@
----
- tests/unit/test__signing.py |    5 ++++-
- tests/unit/test_client.py   |    5 ++++-
- 2 files changed, 8 insertions(+), 2 deletions(-)
-
---- a/tests/unit/test__signing.py
-+++ b/tests/unit/test__signing.py
-@@ -19,7 +19,9 @@ import binascii
- import calendar
- import datetime
- import json
-+import os.path
- import time
-+import sys
- import unittest
- 
- import mock
-@@ -27,7 +29,8 @@ import pytest
- import six
- from six.moves import urllib_parse
- 
--from . import _read_local_json
-+sys.path.insert(0, os.path.abspath(os.path.join(__file__, '..', '..')))
-+from unit import _read_local_json
- 
- 
- _SERVICE_ACCOUNT_JSON = _read_local_json("url_signer_v4_test_account.json")
---- a/tests/unit/test_client.py
-+++ b/tests/unit/test_client.py
-@@ -16,8 +16,10 @@ import base64
+diff -Nru google-cloud-storage-2.2.1.orig/tests/unit/test_client.py google-cloud-storage-2.2.1/tests/unit/test_client.py
+--- google-cloud-storage-2.2.1.orig/tests/unit/test_client.py	2022-03-15 20:58:01.000000000 +0100
++++ google-cloud-storage-2.2.1/tests/unit/test_client.py	2022-04-13 11:48:44.913965418 +0200
+@@ -17,9 +17,11 @@
  import io
  import json
  import mock
 +import os.path
  import pytest
  import re
-+import sys
  import requests
++import sys
  import unittest
- from six.moves import http_client
-@@ -26,10 +28,11 @@ from six.moves.urllib import parse as ur
- from google.api_core import exceptions
+ import urllib
  
- from google.oauth2.service_account import Credentials
--from . import _read_local_json
- 
+@@ -32,7 +34,8 @@
  from google.cloud.storage.retry import DEFAULT_RETRY
+ from google.cloud.storage.retry import DEFAULT_RETRY_IF_GENERATION_SPECIFIED
  
+-from . import _read_local_json
 +sys.path.insert(0, os.path.abspath(os.path.join(__file__, '..', '..')))
 +from unit import _read_local_json
  
  _SERVICE_ACCOUNT_JSON = _read_local_json("url_signer_v4_test_account.json")
  _CONFORMANCE_TESTS = _read_local_json("url_signer_v4_test_data.json")[
+diff -Nru google-cloud-storage-2.2.1.orig/tests/unit/test__signing.py google-cloud-storage-2.2.1/tests/unit/test__signing.py
+--- google-cloud-storage-2.2.1.orig/tests/unit/test__signing.py	2022-03-15 20:58:01.000000000 +0100
++++ google-cloud-storage-2.2.1/tests/unit/test__signing.py	2022-04-13 11:47:30.200372762 +0200
+@@ -19,6 +19,8 @@
+ import calendar
+ import datetime
+ import json
++import os.path
++import sys
+ import time
+ import unittest
+ import urllib.parse
+@@ -26,7 +28,8 @@
+ import mock
+ import pytest
+ 
+-from . import _read_local_json
++sys.path.insert(0, os.path.abspath(os.path.join(__file__, '..', '..')))
++from unit import _read_local_json
+ 
+ 
+ _SERVICE_ACCOUNT_JSON = _read_local_json("url_signer_v4_test_account.json")
