@@ -6,6 +6,6 @@ includedir=${prefix}/include/nss3
 Name: NSS
 Description: Network Security Services
 Version: %VERSION%
-Requires: nspr >= %NSPR_VERSION%
-Libs: -lssl3 -lsmime3 -lnss3 -lnssutil3
+Requires: nspr >= %NSPR_VERSION%, nss-util >= %VERSION%
+Libs: -lssl3 -lsmime3 -lnss3
 Cflags: -I${includedir}

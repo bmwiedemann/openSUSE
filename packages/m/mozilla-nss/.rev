@@ -2579,4 +2579,12 @@
                   in handshake message.</comment>
     <requestid>967153</requestid>
   </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>0829c6752cc32ea2204dfcbb292a3b86</srcmd5>
+    <version>3.76.1</version>
+    <time>1649876631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968290</requestid>
+  </revision>
 </revisionlist>

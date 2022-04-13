@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 10 18:32:41 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Require nss-util in nss.pc and subsequently remove -lnssutil3
+
+-------------------------------------------------------------------
 Sat Apr  2 17:46:29 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.76.1
