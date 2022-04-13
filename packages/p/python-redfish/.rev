@@ -68,4 +68,21 @@
 - add collections-python310.patch</comment>
     <requestid>947367</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>01ba42f49084cd77dab466f6b6b798db</srcmd5>
+    <version>3.1.5</version>
+    <time>1649876698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.5:
+  * Added methods for specifying proxies directly with a new 'proxies'
+    parameter
+  * Removed enforcement of trailing '/' in the 'default_prefix'
+  * Added support for Unix sockets
+  * Corrected usage of header storage and retrieval for static response objects
+  * Corrected 'import' statements to support Python 3.10
+- Drop patch collections-python310.patch, included upstream. 
+- Add requests-unixsocket to {Build,}Requires.
+- Drop unneeded BuildRequires on mock.</comment>
+    <requestid>969608</requestid>
+  </revision>
 </revisionlist>

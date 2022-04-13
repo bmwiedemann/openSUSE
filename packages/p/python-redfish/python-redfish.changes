@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 13 02:13:23 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.5:
+  * Added methods for specifying proxies directly with a new 'proxies'
+    parameter
+  * Removed enforcement of trailing '/' in the 'default_prefix'
+  * Added support for Unix sockets
+  * Corrected usage of header storage and retrieval for static response objects
+  * Corrected 'import' statements to support Python 3.10
+- Drop patch collections-python310.patch, included upstream. 
+- Add requests-unixsocket to {Build,}Requires.
+- Drop unneeded BuildRequires on mock.
+
+-------------------------------------------------------------------
 Wed Jan 19 09:35:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:

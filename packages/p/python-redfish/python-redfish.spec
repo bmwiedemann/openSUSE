@@ -19,15 +19,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redfish
-Version:        3.1.0
+Version:        3.1.5
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/DMTF/python-redfish-library
 Source:         https://github.com/DMTF/python-redfish-library/archive/%{version}.tar.gz#/redfish-%{version}.tar.gz
-# submitted as gh#DMTF/python-redfish-library#118
-Patch1:         collections-python310.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,14 +32,16 @@ Requires:       python-jsonpatch
 Requires:       python-jsonpath-rw
 Requires:       python-jsonpointer
 Requires:       python-requests
+Requires:       python-requests-toolbelt
+Requires:       python-requests-unixsocket
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module jsonpath-rw}
 BuildRequires:  %{python_module jsonpointer}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
