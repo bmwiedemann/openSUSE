@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-translate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-google-cloud-translate
-Version:        3.0.2
+Version:        3.7.2
 Release:        0
 Summary:        Google Cloud Translation API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-translate
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-translate/google-cloud-translate-%{version}.tar.gz
-BuildRequires:  %{python_module google-api-core >= 1.22.0}
-BuildRequires:  %{python_module google-cloud-core >= 1.1.0}
-BuildRequires:  %{python_module libcst >= 0.2.5}
-BuildRequires:  %{python_module proto-plus >= 0.4.0}
+BuildRequires:  %{python_module google-api-core >= 1.31.5}
+BuildRequires:  %{python_module google-cloud-core >= 1.3.0}
+BuildRequires:  %{python_module proto-plus >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
 # START TESTING SECTION
 BuildRequires:  %{python_module mock}
@@ -37,12 +36,11 @@ BuildRequires:  %{python_module pytest}
 # END TESTING SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.22.0
-Requires:       python-google-cloud-core >= 1.1.0
-Requires:       python-libcst >= 0.2.5
-Requires:       python-proto-plus >= 0.4.0
-Requires(post):     update-alternatives
-Requires(postun):   update-alternatives
+Requires:       python-google-api-core >= 1.31.5
+Requires:       python-google-cloud-core >= 1.3.0
+Requires:       python-proto-plus >= 1.15.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
