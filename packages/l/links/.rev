@@ -396,4 +396,12 @@ bsc#1022468</comment>
     <comment>links 2.25</comment>
     <requestid>930504</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>898c2736f761798ec86c1f23981a7972</srcmd5>
+    <version>2.26</version>
+    <time>1649876689</time>
+    <user>dimstar_suse</user>
+    <comment>links 2.26</comment>
+    <requestid>969557</requestid>
+  </revision>
 </revisionlist>

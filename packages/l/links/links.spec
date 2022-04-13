@@ -1,7 +1,7 @@
 #
 # spec file for package links
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           links
-Version:        2.25
+Version:        2.26
 Release:        0
 Summary:        Text-Based WWW Browser
 License:        GPL-2.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
