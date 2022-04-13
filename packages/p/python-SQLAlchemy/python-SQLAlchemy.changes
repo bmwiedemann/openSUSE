@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Sun Apr 10 17:41:04 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.4.35:
+  * sql
+    + [sql] [bug] Fixed bug in newly implemented
+      FunctionElement.table_valued.joins_implicitly feature where the
+      parameter would not automatically propagate from the original
+      TableValuedAlias object to the secondary object produced when
+      calling upon TableValuedAlias.render_derived() or
+      TableValuedAlias.alias().
+      Additionally repaired these issues in TableValuedAlias:
+      - repaired a potential memory issue which could occur when
+        repeatedly calling TableValuedAlias.render_derived() against
+        successive copies of the same object (for .alias(), we
+        currently have to still continue chaining from the previous
+        element. not sure if this can be improved but this is standard
+        behavior for .alias() elsewhere)
+      - repaired issue where the individual element types would be
+       lost when calling upon TableValuedAlias.render_derived() or
+       TableValuedAlias.alias().
+      References: #7890
+    + [sql] [bug] [regression] Fixed regression caused by #7823 which
+      impacted the caching system, such that bound parameters that had
+      been “cloned” within ORM operations, such as polymorphic
+      loading, would in some cases not acquire their correct
+      execution-time value leading to incorrect bind values being
+      rendered.  References: #7903
+
+- changes from version 1.4.34:
+  * orm
+    + [orm] [bug] [regression] Fixed regression caused by #7861 where
+      invoking an Insert construct which contained ORM entities
+      directly via Session.execute() would fail.  References: #7878
+  * postgresql
+    + [postgresql] [bug] Scaled back a fix made for #6581 where
+      “executemany values” mode for psycopg2 were disabled for all “ON
+      CONFLICT” styles of INSERT, to not apply to the “ON CONFLICT DO
+      NOTHING” clause, which does not include any parameters and is
+      safe for “executemany values” mode. “ON CONFLICT DO UPDATE” is
+      still blocked from “executemany values” as there may be
+      additional parameters in the DO UPDATE clause that cannot be
+      batched (which is the original issue fixed by #6581).
+      References: #7880
+
+- changes from version 1.4.33:
+  * orm
+    + [orm] [usecase] Added with_polymorphic.adapt_on_names to the
+      with_polymorphic() function, which allows a polymorphic load
+      (typically with concrete mapping) to be stated against an
+      alternative selectable that will adapt to the original mapped
+      selectable on column names alone.  References: #7805
+    + [orm] [usecase] Added new attributes
+      UpdateBase.returning_column_descriptions and
+      UpdateBase.entity_description to allow for inspection of ORM
+      attributes and entities that are installed as part of an Insert,
+      Update, or Delete construct. The Select.column_descriptions
+      accessor is also now implemented for Core-only selectables.
+      References: #7861
+    + [orm] [bug] [regression] Fixed regression in “dynamic” loader
+      strategy where the Query.filter_by() method would not be given
+      an appropriate entity to filter from, in the case where a
+      “secondary” table were present in the relationship being queried
+      and the mapping were against something complex such as a “with
+      polymorphic”.  References: #7868
+    + [orm] [bug] Fixed bug where composite() attributes would not
+      work in conjunction with the selectin_polymorphic() loader
+      strategy for joined table inheritance.  References: #7801
+    + [orm] [bug] [performance] Improvements in memory usage by the
+      ORM, removing a significant set of intermediary expression
+      objects that are typically stored when a copy of an expression
+      object is created. These clones have been greatly reduced,
+      reducing the number of total expression objects stored in memory
+      by ORM mappings by about 30%.  References: #7823
+    + [orm] [bug] Fixed issue where the selectin_polymorphic() loader
+      option would not work with joined inheritance mappers that don’t
+      have a fixed “polymorphic_on” column. Additionally added test
+      support for a wider variety of usage patterns with this
+      construct.  References: #7799
+    + [orm] [bug] Fixed bug in with_loader_criteria() function where
+      loader criteria would not be applied to a joined eager load that
+      were invoked within the scope of a refresh operation for the
+      parent object.  References: #7862
+    + [orm] [bug] Fixed issue where the Mapper would reduce a
+      user-defined Mapper.primary_key argument too aggressively, in
+      the case of mapping to a UNION where for some of the SELECT
+      entries, two columns are essentially equivalent, but in another,
+      they are not, such as in a recursive CTE. The logic here has
+      been changed to accept a given user-defined PK as given, where
+      columns will be related to the mapped selectable but no longer
+      “reduced” as this heuristic can’t accommodate for all
+      situations.  References: #7842
+  * engine
+    + [engine] [usecase] Added new parameter Engine.dispose.close,
+      defaulting to True. When False, the engine disposal does not
+      touch the connections in the old pool at all, simply dropping
+      the pool and replacing it. This use case is so that when the
+      original pool is transferred from a parent process, the parent
+      process may continue to use those connections.
+      See also
+       Using Connection Pools with Multiprocessing or os.fork() - revised documentation
+      References: #7815, #7877
+    + [engine] [bug] Further clarified connection-level logging to
+      indicate the BEGIN, ROLLBACK and COMMIT log messages do not
+      actually indicate a real transaction when the AUTOCOMMIT
+      isolation level is in use; messaging has been extended to
+      include the BEGIN message itself, and the messaging has also
+      been fixed to accommodate when the Engine level
+      create_engine.isolation_level parameter was used directly.
+      References: #7853
+  * sql
+    + [sql] [usecase] Added new parameter
+      FunctionElement.table_valued.joins_implicitly, for the
+      FunctionElement.table_valued() construct. This parameter
+      indicates that the given table-valued function implicitly joins
+      to the table it refers towards, essentially disabling the “from
+      linting” feature, i.e. the “cartesian product” warning, from
+      taking effect due to the presence of this parameter. May be used
+      for functions such as func.json_each().  References: #7845
+    + [sql] [bug] The bindparam.literal_execute parameter now takes
+      part of the cache generation of a bindparam(), since it changes
+      the sql string generated by the compiler. Previously the correct
+      bind values were used, but the literal_execute would be ignored
+      on subsequent executions of the same query.  References: #7876
+    + [sql] [bug] [regression] Fixed regression caused by #7760 where
+      the new capabilities of TextualSelect were not fully implemented
+      within the compiler properly, leading to issues with composed
+      INSERT constructs such as “INSERT FROM SELECT” and “INSERT…ON
+      CONFLICT” when combined with CTE and textual statements.
+      References: #7798
+  * schema
+    + [schema] [usecase] Added support so that the
+      Table.to_metadata.referred_schema_fn callable passed to
+      Table.to_metadata() may return the value BLANK_SCHEMA to
+      indicate that the referenced foreign key should be reset to
+      None. The RETAIN_SCHEMA symbol may also be returned from this
+      function to indicate “no change”, which will behave the same as
+      None currently does which also indicates no change.  References:
+      #7860
+  * sqlite
+    + [sqlite] [bug] [reflection] Fixed bug where the name of CHECK
+      constraints under SQLite would not be reflected if the name were
+      created using quotes, as is the case when the name uses mixed
+      case or special characters.  References: #5463
+  * mssql
+    + [mssql] [bug] [regression] Fixed regression caused by #7160
+      where FK reflection in conjunction with a low compatibility
+      level setting (compatibility level 80: SQL Server 2000) causes
+      an “Ambiguous column name” error. Patch courtesy @Lin-Your.
+      References: #7812
+  * misc
+    + [bug] [ext] Improved the error message that’s raised for the
+      case where the association_proxy() construct attempts to access
+      a target attribute at the class level, and this access
+      fails. The particular use case here is when proxying to a hybrid
+      attribute that does not include a working class-level
+      implementation.  References: #7827
+
+-------------------------------------------------------------------
 Sat Mar 12 05:44:28 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.4.32:
