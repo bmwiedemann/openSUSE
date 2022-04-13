@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 11 09:57:33 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Update to catatont v0.1.7
+- This release adds the ability for catatonit to be used as the only
+process in a pause container, by passing the -P flag (in this mode no
+subprocess is spawned and thus no signal forwarding is done). 
+
+-------------------------------------------------------------------
 Thu Nov 25 14:28:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 99bb9048f.patch: configure.ac: call AM_INIT_AUTOMAKE only
