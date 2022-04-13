@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 11 13:02:07 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not use mock
+
+-------------------------------------------------------------------
 Wed Jun  3 11:51:18 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest
