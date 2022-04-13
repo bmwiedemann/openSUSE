@@ -45,6 +45,8 @@ BuildRequires:  autoconf
 BuildRequires:  bison
 %ifarch aarch64
 BuildRequires:  clang >= 5
+BuildRequires:  lld
+BuildRequires:  llvm
 %endif
 BuildRequires:  cups-devel
 %if 0%{?suse_version} >= 1550
@@ -348,6 +350,11 @@ mv %{buildroot}/%{_mandir}/pl.UTF-8 %{buildroot}/%{_mandir}/pl
 find %{buildroot}/usr/lib*/wine/*-windows/ -type f -exec strip --strip-debug {} +
 %endif
 
+%ifarch aarch64
+# Do not ship static *.a libs
+rm %{buildroot}%{_libdir}/wine/*-windows/*.a
+%endif
+
 tar -xjf %{SOURCE5}
 # Copied from Ubuntu Wine out of debian.diff
 # https://launchpad.net/~ubuntu-wine/+archive/ppa/+packages
@@ -477,6 +484,9 @@ chmod 755 %winedir/my-find-requires.sh
 %{_libdir}/wine/*-windows/*.[b-z]*
 %{_libdir}/wine/*-windows/*.ax
 %{_libdir}/wine/*-windows/*.acm
+%ifarch aarch64
+%{_libdir}/wine/*-windows/st*
+%endif
 %dir %{_libdir}/wine/*-unix
 %{_libdir}/wine/*-unix/*.so*
 

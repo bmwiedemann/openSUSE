@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 13 07:32:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 - boo#1197233
+
+-------------------------------------------------------------------
 Mon Apr 11 15:34:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Reenable support for capi
