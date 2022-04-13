@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 12 21:39:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Do not use oauth2client on Tumbleweed: deprecated package.
+  oauth2 is supported since 4.8: gh#ClusterLabs/fence-agents#384
+
+-------------------------------------------------------------------
 Thu Mar 31 13:33:20 UTC 2022 - varkoly@suse.com
 
 - Update to version 4.11.0+git.1647434775.2f1b86d8:

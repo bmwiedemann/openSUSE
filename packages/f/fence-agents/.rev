@@ -861,4 +861,12 @@
   * fence_raritan: Also allow pure port number, not only system1/outletX string (#473)</comment>
     <requestid>966235</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>838e237d42d84151096341b62e6deec4</srcmd5>
+    <version>4.11.0+git.1647434775.2f1b86d8</version>
+    <time>1649876707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969621</requestid>
+  </revision>
 </revisionlist>
