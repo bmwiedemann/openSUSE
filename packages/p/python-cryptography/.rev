@@ -636,4 +636,12 @@
 - update to 3.2 (bsc#1178168, CVE-2020-25659):</comment>
     <requestid>969246</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>0149d3ea0f80b91825acd05fe7902b0b</srcmd5>
+    <version>36.0.2</version>
+    <time>1649876675</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.2 (bsc#1182066, CVE-2020-36242, bsc#1198331):</comment>
+    <requestid>969844</requestid>
+  </revision>
 </revisionlist>
