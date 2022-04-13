@@ -1359,4 +1359,12 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>gcc12 is not yet needed</comment>
   </revision>
+  <revision rev="190" vrev="188">
+    <srcmd5>0c9763c7473116ebe2baf9062ece4008</srcmd5>
+    <version>unknown</version>
+    <time>1649876658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969225</requestid>
+  </revision>
 </revisionlist>
