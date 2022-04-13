@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 12 17:40:33 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.1.4
+  * Fixed issue #2006: Removing second call breakpoint with same
+    function name
+  * Fixed issue #2060: XDebug breaks the Symfony "PhpFilesAdapter"
+    cache adapter
+  * Fixed issue #2061: Possible use after free with GC Stats
+  * Fixed issue #2063: Can't inspect ArrayObject storage elements
+  * Fixed issue #2064: Segmentation fault in symfony cache
+  * Fixed issue #2068: Debug session can be started with
+    "XDEBUG_SESSION_START=anything" when xdebug.trigger_value is set
+  * Fixed issue #2069: Warn when profiler_append is used together
+    with zlib compression
+  * Fixed issue #2075: Code coverage misses static array assignment
+    lines
+
+-------------------------------------------------------------------
 Mon Feb 14 14:09:26 UTC 2022 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to Xdebug 3.1.3
