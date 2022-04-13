@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  8 15:15:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add rebuild subpackage to ensure rebuild in TW 
+
+-------------------------------------------------------------------
 Thu Oct 14 11:40:44 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Enable libbfd feature to support dumping jited form of BPF programs

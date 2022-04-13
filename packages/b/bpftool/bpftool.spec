@@ -1,7 +1,7 @@
 #
 # spec file for package bpftool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-Name:           bpftool
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
+Name:           bpftool
 Version:        %{version}
 Release:        0
 Summary:        Tool for inspection and manipulation of BPF programs and maps
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-URL:            http://www.kernel.org/
+URL:            https://www.kernel.org/
 BuildRequires:  binutils-devel
 BuildRequires:  docutils
 BuildRequires:  kernel-source
@@ -33,14 +33,25 @@ BuildRequires:  libelf-devel
 bpftool allows for inspection and simple modification of BPF objects (programs
 and maps) on the system.
 
+%package rebuild
+Summary:        Empty package to ensure rebuilding bpftool in OBS
+Group:          System/Monitoring
+%requires_eq    kernel-source
+
+%description rebuild
+This is empty package that ensures bpftool is rebuilt every time
+kernel-default is rebuilt in OBS.
+
+There is no reason to install this package.
+
 %prep
-(cd /usr/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} kernel/bpf lib) | tar -xf -
-cp /usr/src/linux/LICENSES/preferred/GPL-2.0 .
+(cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} kernel/bpf lib) | tar -xf -
+cp %{_prefix}/src/linux/LICENSES/preferred/GPL-2.0 .
 sed -i -e 's/CFLAGS += -O2/CFLAGS = $(RPM_OPT_FLAGS)/' Makefile
 
 %build
 cd tools/bpf/bpftool
-%make_build V=1 \
+%make_build \
     feature-reallocarray=1 \
     feature-libbfd-liberty=1 \
     feature-disassembler-four-args=1 \
@@ -56,5 +67,8 @@ make install doc-install DESTDIR=%{buildroot} prefix=%{_prefix} mandir=%{_mandir
 %{_sbindir}/bpftool
 %{_datadir}/bash-completion/completions/bpftool
 %{_mandir}/man?/*.gz
+
+%files rebuild
+%license GPL-2.0
 
 %changelog
