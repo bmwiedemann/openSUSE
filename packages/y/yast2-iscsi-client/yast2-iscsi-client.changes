@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 11 12:04:00 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Use $PATH, not absolute paths for calling external programs
+  to allow for distros with or without usr-merge (/sbin -> /usr/sbin)
+  (bsc#1196086)
+- 4.5.1
+
+-------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Thu Jan 27 16:25:30 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
 
 - adjust to ruby 3.0 (bsc#1195226)
