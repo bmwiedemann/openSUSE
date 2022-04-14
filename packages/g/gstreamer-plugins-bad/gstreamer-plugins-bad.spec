@@ -74,6 +74,8 @@ Source99:       baselibs.conf
 Patch0:         fix-build-with-srt-1.3.4.patch
 # PATCH-FIX-UPSTREAM 8440e2a373e5ce681d15f5880cb2f2562be332cf.patch -- nvh264dec,nvh265dec: Fix broken key-unit trick and reverse playback
 Patch1:         https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/8440e2a373e5ce681d15f5880cb2f2562be332cf.patch
+# PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
+Patch2:         spandsp3.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
@@ -648,6 +650,9 @@ making use of the GStreamer Transcoding API.
 %patch0 -p1
 %endif
 %patch1 -p3
+%if %{pkg_vcmp spandsp-devel >= 3}
+%patch2 -p1
+%endif
 
 %build
 %global optflags %{optflags} -fcommon

@@ -1112,4 +1112,13 @@
     <comment></comment>
     <requestid>965368</requestid>
   </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>1ee83d4803f1054faf1e9c97d06e578b</srcmd5>
+    <version>1.20.1</version>
+    <time>1649949806</time>
+    <user>dimstar_suse</user>
+    <comment>- Add spandsp3.patch: Fix build with spandsp 3.x by including
+  private headers.</comment>
+    <requestid>969346</requestid>
+  </revision>
 </revisionlist>

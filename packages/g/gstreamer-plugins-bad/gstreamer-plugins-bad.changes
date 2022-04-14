@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 10 11:08:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add spandsp3.patch: Fix build with spandsp 3.x by including
+  private headers.
+
+-------------------------------------------------------------------
 Sat Mar 26 11:21:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 8440e2a373e5ce681d15f5880cb2f2562be332cf.patch:
