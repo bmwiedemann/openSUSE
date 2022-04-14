@@ -145,4 +145,12 @@ https://fate.suse.com/318486</comment>
     <comment>submit new version 4.4.1</comment>
     <requestid>936059</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a2200bdde2afd770284ae55af141bb04</srcmd5>
+    <version>4.5.0</version>
+    <time>1649949891</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.0</comment>
+    <requestid>969658</requestid>
+  </revision>
 </revisionlist>
