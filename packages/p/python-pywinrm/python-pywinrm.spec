@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywinrm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pywinrm
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Python library for Windows Remote Management
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/diyan/pywinrm/
 Source:         https://github.com/diyan/pywinrm/archive/refs/tags/v%{version}.tar.gz#/pywinrm-%{version}.tar.gz
 BuildRequires:  %{python_module kerberos}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.1}
 BuildRequires:  %{python_module requests_ntlm >= 0.3.0}
@@ -65,6 +64,8 @@ Microsoft's WinRM http://msdn.microsoft.com/en-us/library/aa384426.aspx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/diyan/pywinrm/issues/345
+sed -i 's:import mock:from unittest import mock:' winrm/tests/test_transport.py
 %pyunittest discover -v
 
 %files %{python_files}
