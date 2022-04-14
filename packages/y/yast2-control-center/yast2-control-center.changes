@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Mon Sep 13 15:49:40 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Avoid creating nohup.out file in the user's home directory
