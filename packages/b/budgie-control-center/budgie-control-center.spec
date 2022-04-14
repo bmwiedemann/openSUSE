@@ -71,6 +71,16 @@ Requires:       %{name} = %{version}
 %description devel
 This package contains the header files for Budgie Control Center
 
+%package bash-completion
+Summary:        Bash Completion for Budgie Control Center
+Group:          System/GUI/Other
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+This package contains the Bash Completion for Budgie Control Center
+
 %lang_package
 
 %prep
@@ -90,7 +100,6 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 %{_bindir}/*
 %{_datadir}/metainfo/budgie-control-center.appdata.xml
 %{_datadir}/applications/*.desktop
-%{_datadir}/bash-completion/completions/budgie-control-center
 %{_datadir}/dbus-1/services/org.buddiesofbudgie.ControlCenter.service
 %{_datadir}/glib-2.0/schemas/org.buddiesofbudgie.ControlCenter.gschema.xml
 %{_datadir}/budgie-control-center
@@ -111,6 +120,9 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 
 %files devel
 %{_datadir}/pkgconfig/budgie-keybindings.pc
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/budgie-control-center
 
 %files lang -f %{name}.lang
 # english locale should be in the main package
