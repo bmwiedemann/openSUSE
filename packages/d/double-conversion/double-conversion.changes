@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  9 22:33:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Fix quiet NANs on MIPS* and PA-RISC architectures.
+
+-------------------------------------------------------------------
 Thu Dec 30 09:36:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.7:

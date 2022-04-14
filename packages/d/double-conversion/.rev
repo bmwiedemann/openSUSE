@@ -105,4 +105,13 @@
   * Also add support for Synopsys ARC64 architecture (forwarded request 943179 from dirkmueller)</comment>
     <requestid>943528</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ba1ddd674e9fb77315e3cc35d3ff0c04</srcmd5>
+    <version>3.2.0</version>
+    <time>1649949792</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Fix quiet NANs on MIPS* and PA-RISC architectures. (forwarded request 968073 from dirkmueller)</comment>
+    <requestid>969261</requestid>
+  </revision>
 </revisionlist>
