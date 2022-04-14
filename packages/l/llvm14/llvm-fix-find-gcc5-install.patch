@@ -1,0 +1,14 @@
+Index: cfe-7.0.0rc1.src/lib/Driver/ToolChains/Gnu.cpp
+===================================================================
+--- cfe-7.0.0rc1.src.orig/lib/Driver/ToolChains/Gnu.cpp
++++ cfe-7.0.0rc1.src/lib/Driver/ToolChains/Gnu.cpp
+@@ -1596,7 +1596,8 @@ Generic_GCC::GCCVersion Generic_GCC::GCC
+       MinorStr = MinorStr.slice(0, EndNumber);
+     }
+   }
+-  if (MinorStr.getAsInteger(10, GoodVersion.Minor) || GoodVersion.Minor < 0)
++  if (!MinorStr.str().empty() && 
++      (MinorStr.getAsInteger(10, GoodVersion.Minor) || GoodVersion.Minor < 0))
+     return BadVersion;
+   GoodVersion.MinorStr = MinorStr.str();
+ 

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d2f71ccf0b92c18068ee85d8b9ebd9b</srcmd5>
+    <version>14.0.0</version>
+    <time>1649949775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.0.0.
+* For details, see the release notes:
+- https://releases.llvm.org/14.0.0/docs/ReleaseNotes.html
+- https://releases.llvm.org/14.0.0/tools/clang/docs/ReleaseNotes.html
+- https://releases.llvm.org/14.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+- https://releases.llvm.org/14.0.0/projects/libcxx/docs/ReleaseNotes.html
+- https://releases.llvm.org/14.0.0/tools/lld/docs/ReleaseNotes.html
+* New LLVM tools:
+- llvm-debuginfod-find: Tool to fetch debuginfod artifacts.
+- llvm-tli-checker: LLVM TargetLibraryInfo versus SDK checker.
+* New Clang tools:
+- clang-linker-wrapper: A wrapper utility over the host linker.
+- clang-nvlink-wrapper: A wrapper tool over nvlink program.
+- Add clang-repl-private-deps.patch to make link dependencies of
+clang-repl private, otherwise CMake can't install.
+- Add PPCISelLowering-Avoid-emitting-calls-to-__multi3.patch to
+fix build on PowerPC (32-bit).
+- Drop llvm-exegesis-link-dylib.patch, instead we don't build
+llvm-exegesis anymore and add check-no-llvm-exegesis.patch to
+disable the corresponding tests.
+- Rebase patches:
+* lldb-cmake.patch
+* llvm-do-not-install-static-libraries.patch
+* lvm-normally-versioned-libllvm.patch
+- Drop patches that have landed upstream:
+* llvm-update-extract-section-script.patch</comment>
+    <requestid>969600</requestid>
+  </revision>
+</revisionlist>
