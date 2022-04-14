@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 14 13:57:12 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Updated the cputype script to include the model number of IBM's
+  recently announced z16 processor.
+
+-------------------------------------------------------------------
+Mon Apr 11 21:11:48 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Added the following patches for bsc#1198285:
+  s390-tools-sles15sp4-01-genprotimg-remove-DigiCert-root-CA-pinning.patch
+  s390-tools-sles15sp4-02-genprotimg-check_hostkeydoc-relax-default-issuer-che.patch
+  The certificate verification of check_hostkeydoc is too strict and
+  doesn't match the checking performed by genprotimg.
+- Added the following patch for bsc#1198284:
+  s390-tools-sles15sp4-libseckey-Fix-re-enciphering-of-EP11-secure-key.patch
+  When re-enciphering the identity key and/or wrapping key of the
+  zkey KMIP plugin via 'zkey kms reencipher', the operation
+  completes without an error, but the secure keys are left 
+  un-reenciphered.
+
+-------------------------------------------------------------------
 Fri Mar  4 13:55:43 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - install modprobe.conf files into %_modprobedir (bsc#1196275, jsc#SLE-20639) 
