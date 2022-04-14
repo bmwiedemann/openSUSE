@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Thu Oct 07 19:40:21 UTC 2021 - David Mulder <dmulder@suse.com>
 
 - Fix yast2-python-bindings requires Python (bsc#1190890).
