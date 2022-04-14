@@ -17,7 +17,7 @@
 
 
 Name:           yast2-dns-server
-Version:        4.4.2
+Version:        4.5.0
 Release:        0
 URL:            https://github.com/yast/yast-dns-server
 Summary:        YaST2 - DNS Server Configuration
