@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Wed Sep 15 13:33:59 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Check for pkg UI extension (in interactive mode) and offer to
