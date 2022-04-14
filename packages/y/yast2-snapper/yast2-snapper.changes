@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Mon Jan 24 09:44:41 UTC 2022 - David Diaz <dgonzalez@suse.com>
 
 - Do not crash when trying to show found differences
