@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 14.1
+%define pgversion 14.2
 %define pgmajor 14
 %define pgsuffix %pgmajor
 %define buildlibs 1
@@ -114,9 +114,9 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang
+BuildRequires:  clang13
 BuildRequires:  gcc-c++
-BuildRequires:  llvm-devel
+BuildRequires:  llvm13-devel
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel

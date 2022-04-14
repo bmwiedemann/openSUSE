@@ -39,4 +39,20 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
 - Update the BuildIgnore section.</comment>
     <requestid>935204</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9055e807efe2e188fa98e39a5054c99</srcmd5>
+    <version>14.2</version>
+    <time>1649949777</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1198166: Pin to llvm13 until the next patchlevel update.
+
+- bsc#1195680: Upgrade to 14.2:
+  * https://www.postgresql.org/docs/14/release-14-2.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround</comment>
+    <requestid>969861</requestid>
+  </revision>
 </revisionlist>

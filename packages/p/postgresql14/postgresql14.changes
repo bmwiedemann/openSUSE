@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 13 12:17:48 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1198166: Pin to llvm13 until the next patchlevel update.
+
+-------------------------------------------------------------------
+Tue Feb  8 14:01:56 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1195680: Upgrade to 14.2:
+  * https://www.postgresql.org/docs/14/release-14-2.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+
+-------------------------------------------------------------------
+Sat Dec 11 17:27:53 UTC 2021 - Sarah Kriesch <ada.lovelace@gmx.de>
+
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround
+
+-------------------------------------------------------------------
 Thu Nov 25 11:02:15 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Add a llvmjit-devel subpackage to pull in the right versions
