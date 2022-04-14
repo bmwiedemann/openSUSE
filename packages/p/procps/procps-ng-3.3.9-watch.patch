@@ -1,0 +1,14 @@
+---
+ proc/libprocps.sym |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- proc/libprocps.sym
++++ proc/libprocps.sym	2016-07-11 12:45:32.463107052 +0000
+@@ -13,6 +13,7 @@ global:
+ 	get_ns_id;
+ 	get_ns_name;
+ 	get_pid_digits;
++	get_proc_stats;
+ 	get_slabinfo;
+ 	getbtime;
+ 	getdiskstat;

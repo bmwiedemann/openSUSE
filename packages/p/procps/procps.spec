@@ -16,8 +16,8 @@
 #
 
 
-%define somajor 0
-%define libname libproc-2-%{somajor}
+%define somajor 8
+%define libname libprocps%{somajor}
 %if !0%{?usrmerged}
 %bcond_with     bin2usr
 %else
@@ -26,7 +26,7 @@
 %bcond_without  pidof
 %bcond_without  nls
 Name:           procps
-Version:        4.0.0
+Version:        3.3.17
 Release:        0
 Summary:        The ps utilities for /proc
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -35,14 +35,17 @@ URL:            https://sf.net/projects/procps-ng/
 Source:         https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
 #Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%{version}/procps-v%{version}.tar.gz
 Source1:        procps-rpmlintrc
+Patch0:         procps-ng-3.3.9-watch.patch
 Patch1:         procps-v3.3.3-ia64.diff
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
 Patch7:         procps-ng-3.3.8-readeof.patch
 Patch8:         procps-ng-3.3.10-slab.patch
-Patch10:        procps-ng-4.0.0-accuracy.dif
+Patch10:        procps-ng-3.3.8-accuracy.dif
 Patch11:        procps-ng-3.3.10-xen.dif
+Patch12:        procps-ng-3.3.10-fdleak.dif
 Patch13:        procps-v3.3.3-columns.dif
-Patch14:        procps-ng-4.0.0-integer-overflow.patch
+Patch14:        procps-ng-3.3.10-integer-overflow.patch
+Patch15:        procps-ng-3.3.10-bnc634071_procstat2.diff
 Patch16:        procps-ng-3.3.8-bnc634840.patch
 Patch17:        procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
 Patch18:        procps-ng-3.3.8-petabytes.patch
@@ -57,12 +60,10 @@ Patch31:        procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
 Patch32:        procps-ng-3.3.10-errno.patch
 # PATCH-FEATURE-SUSE -- Let upstream pmap behave similar to old suse pmap
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
-# PATCH-FIX-UPSTREAM -- Avoid error on AIX sort formats
-Patch34:        0001-top-update-one-function-prologue-after-rcfile-change.patch
-Patch35:        0002-ps-restore-aix-behavior-while-keeping-an-original-fi.patch
-Patch36:        0003-ps-restore-thread-display-when-using-a-pidlist-optio.patch
-# PATCH-FIX-SUSE -- Avoid float errors on 32bit architectures
-Patch37:        procps-ng-4.0.0-floats.dif
+# PATCH-FIX-UPSTREAM -- bsc#1181976
+Patch34:        procps-3.3.17-bsc1181976.patch
+# PATCH-FIX-UPSTREAM -- bsc#1195468
+Patch35:        bsc1195468-23da4f40.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -120,15 +121,18 @@ The procps library can be used to read informations out from /proc
 the process information pseudo-file system.
 
 %prep
-%setup -q -n %{name}-ng-%{version}
+%setup -q
+%patch0
 %patch1
 %patch3 -b .trcate
 %patch7 -b .rof
 %patch8 -b .cache
 %patch10 -b .acc
 %patch11
+%patch12
 %patch13 -b .column
 %patch14 -b .ovrflw
+%patch15
 %patch16
 %patch17 -b .sysctl
 %patch18
@@ -139,10 +143,8 @@ the process information pseudo-file system.
 %patch31 -p1
 %patch32
 %patch33 -b .pmap4us
-%patch34 -p1
+%patch34
 %patch35 -p1
-%patch36 -p1
-%patch37
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version
@@ -203,11 +205,11 @@ rm -f %{buildroot}%{_mandir}/*/man1/uptime.1
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc/procps-ng
 
-if cmp -s %{buildroot}%{_mandir}/man1/pidwait.1 %{buildroot}%{_mandir}/man1/pkill.1
+if cmp -s %{buildroot}%{_mandir}/man1/procps.1 %{buildroot}%{_mandir}/man1/ps.1
 then
-    rm -vf %{buildroot}%{_mandir}/man1/pidwait.1
-    (cat > %{buildroot}%{_mandir}/man1/pidwait.1)<<-'EOF'
-	.so man1/pkill.1
+    rm -vf %{buildroot}%{_mandir}/man1/procps.1
+    (cat > %{buildroot}%{_mandir}/man1/procps.1)<<-'EOF'
+	.so man1/ps.1
 	EOF
 fi
 
@@ -350,7 +352,7 @@ test $error = no || exit 1
 %{_bindir}/pidof
 %endif
 %{_bindir}/pmap
-%{_bindir}/pidwait
+%{_bindir}/pwait
 %{_bindir}/pwdx
 %{_bindir}/skill
 %{_bindir}/slabtop
@@ -367,8 +369,9 @@ test $error = no || exit 1
 %endif
 %{_mandir}/man1/pkill.1%{?ext_man}
 %{_mandir}/man1/pmap.1%{?ext_man}
+%{_mandir}/man1/procps.1%{?ext_man}
 %{_mandir}/man1/ps.1%{?ext_man}
-%{_mandir}/man1/pidwait.1%{?ext_man}
+%{_mandir}/man1/pwait.1%{?ext_man}
 %{_mandir}/man1/pwdx.1%{?ext_man}
 %{_mandir}/man1/skill.1%{?ext_man}
 %{_mandir}/man1/slabtop.1%{?ext_man}
@@ -383,17 +386,29 @@ test $error = no || exit 1
 
 %files devel
 %defattr (-,root,root,755)
-%dir %{_includedir}/procps
-%{_includedir}/procps/*.h
-%{_libdir}/libproc-2.so
-%{_libdir}/pkgconfig/libproc-2.pc
-%{_mandir}/man3/procps.3%{?ext_man}
-%{_mandir}/man3/procps_misc.3%{?ext_man}
-%{_mandir}/man3/procps_pids.3%{?ext_man}
+%dir %{_includedir}/proc
+%{_includedir}/proc/alloc.h
+%{_includedir}/proc/devname.h
+%{_includedir}/proc/escape.h
+%{_includedir}/proc/numa.h
+%{_includedir}/proc/procps.h
+%{_includedir}/proc/pwcache.h
+%{_includedir}/proc/readproc.h
+%{_includedir}/proc/sig.h
+%{_includedir}/proc/slab.h
+%{_includedir}/proc/sysinfo.h
+%{_includedir}/proc/version.h
+%{_includedir}/proc/wchan.h
+%{_includedir}/proc/whattime.h
+%{_libdir}/libprocps.so
+%{_libdir}/pkgconfig/libprocps.pc
+%{_mandir}/man3/openproc.3%{?ext_man}
+%{_mandir}/man3/readproc.3%{?ext_man}
+%{_mandir}/man3/readproctab.3%{?ext_man}
 
 %files -n %{libname}
 %defattr (-,root,root,755)
-%{_libdir}/libproc-2.so.%{somajor}*
+%{_libdir}/libprocps.so.%{somajor}*
 
 %files lang -f procps-ng.lang
 

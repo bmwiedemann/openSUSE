@@ -1304,4 +1304,12 @@ There are also man pages translations but they doesn't get installed automatical
   * pgrep: Fix selection where uid/gid &gt; 2^31              merge !146</comment>
     <requestid>966137</requestid>
   </revision>
+  <revision rev="127" vrev="8">
+    <srcmd5>d9442d499db0292a8c098792954a17cd</srcmd5>
+    <version>3.3.17</version>
+    <time>1649949801</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, see https://bugzilla.opensuse.org/show_bug.cgi?id=1198266</comment>
+    <requestid>969331</requestid>
+  </revision>
 </revisionlist>
