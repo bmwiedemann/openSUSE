@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Thu Apr 14 09:28:12 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.0.5
+  * See https://krita.org/en/item/krita-5-0-5-released/
+  * Fix artefacts when using the color smudge brush on CMYK images
+    (kde#447211)
+  * Fix blurry results in 4-point perspective transform
+    (kde#447255)
+  * Fix undo of liquify transform properties (kde#447314)
+  * Fix the size of the About Krita dialog
+  * Fix a crash when changing the Instant Preview settings of a
+    brush preset
+  * Fix use of layer names when using the G'Mic plugin (kde#447293,
+    kde#429851)
+  * Add missing blending modes for G'Mic filters (kde#447293)
+  * Fix issues with resource libraries with upper-case filename
+    extensions (kde#447454)
+  * Fix crashes when undoing multiple layer operations too quickly
+    (kde#447462)
+  * Work around a crash in the transform mask applied to a
+    passthrough group (kde#447506)
+  * Fix the photoshop compatible shortcuts (kde#447771)
+  * Show the correct number of layers in the Image Properties
+    dialog
+  * Fix the layout of the docker titlebars
+  * Disable automatically assigning accelerator keys for selecting
+    dockers
+  * Fix a memory leak in the color history display
+  * Fix a race condition in the metadata system initialization
+  * Fix animation playback when having multiple views on an
+    animation (kde#450425)
+  * Fix dataloss when scaling an image with animated transform
+    masks (kde#450781)
+  * Fix incorrect basename for an animation when filepath or
+    filename changes (kde#451654)
+  * Fix restoring the default values for canvas input settings
+    (kde#396064)
+  * Update gradient colors correctly in layer styles (kde#452066)
+  * Fix a crash when handling touch events
+  * Fix a large number of defects found by Coverity
+  * Fix the hitboxes in the curve widget being too small on HiDPI
+    screens (kde#446755)
+  * Fix saving over deactivated resources
+  * Fix the Advanced Color Selector's hsySH square element
+    (kde#452422)
+  * Fix issues with cursors being too small on HiDPI screens
+    (kde#448107, kde#447314)
+  * Fix problems with animating transparency and filter masks
+    (kde#452170)
+  * Opacity now loads correctly for animated vector layers
+    (kde#452144)
+  * Stop the storyboard docker creating frames on locked layers
+    (kde#447396)
+  * Storyboards: add the ability to duplicate existing scenes
+  * Improve the interaction with ffmpeg when rendering animations
+    or recordings
+  * Improve detection of broken video sequences on import as
+    animation
+  * Work around a problem where not all pixels got copied when
+    copying a mask (kde#453164)
+  * Make it possible to save and load gradients on non-UTF8 locales
+    (kde#447730)
+  * Fix issue with masks and layers being broken after changing
+    the colorspace
+  * Update to LittleCMS 2.13.1 to fix a bug in the grayscale
+    colorspace and fix conversion between 8 bits and 16 bits
+    grayscale images (kde#447484)
+  * Fix a delay on autobrush strokes with randomness (kde#446663)
+  * Improve performance when moving a layer in a layer group
+    (kde#450957)
+  * Fix brush outline precision for pixel-art brushes (kde#447466)
+  * Improve the brush outline for low-density brushes (kde#447045)
+  * Set .apng as the default file extension for APNG files instead
+    of PNG (kde#451473)
+  * Fix crash when using the smart patch tool on HDR images
+    (kde#451912)
+  * Make it possible to set Weighted Distance to values larger than
+    100 (kde#451874)
+  * Fix the the fuzziness setting for the contiguous selection tool
+    (kde#447524)
+  * Fix the default eraser preset (kde#447650)
+  * Add missing shortcuts for the following filters:
+    slope/offset/power, cross-channel adjustment curves, halftone,
+    gaussian high pass, height to normal map, gradient map,
+    normalize and palettize (kde#451337)
+  * Fix saving new workspaces (kde#446985)
+  * Correctly handle the ICC profile blacklist
+  * Fix the "Photoshop signature verification failed!"  warning if
+    there are zero sized blocks in the PSD file (kde#450983)
+  * Make starting Krita more robust if the configuration file is
+    corrupted (kde#449983)
+  * Add pressure and rotation to touch support
+  * Handle flags in SVG paths in vector layers correctly
+    (kde#447417)
+  * Fix crash when the selected gradient isn't shown in the
+    gradient selector in the Layer Style dialog. Similar for
+    patterns. (kde#448296, kde#445922)
+  * Fix an issue in the brush preset selector if no brush preset
+    has been selected (kde#449226, kde#450121)
+  * Fix the menubar height in MDI mode with maximized subwindow on
+    HiDPI screens (kde#449118)
+  * Fix the speed sensor in the line tool (kde#434488)
+  * Fix a crash in the raindrops filter when applied to an empty
+    layer (kde#449408)
+  * Fix a race condition in Select All (kde#449122)
+  * Improve thread handling when painting, improving performance
+    and energy efficiency (kde#367901, kde#360677)
+  * Improve the performance of the resource selectors if there are
+    many resource libraries installed
+  * Fix issues with saving tags when updating the database schema
+  * Make it possible to tag and untag multiple resources at once
+  * Reset the painting assistant after each stroke (kde#448187)
+  * Fix issues with the color smudge radius range (kde#441682)
+  * Remove broken resource files after importing them fails
+    (kde#446279)
+  * Fix reference image update on resizing in HiDPI (kde#430988)
+  * Fix issue with MyPaint presets when Slow Tracking interacts
+    with the Stabilizer (kde#447562)
+  * Fix banding when rendering in HDR mode (kde#445672)
+  * Fix rendering SVG file layers (kde#448256)
+  * Fix the small color selector on OpenGL 2.1 (kde#447868)
+  * Fix using the default theme if there is no theme configured
+    (kde#448483)
+  * Fix sizing of preview images in the non-native file dialog
+    (kde#447805)
+  * Improve handling of the CTRL modifier key (kde#438784)
+  * Fix update of brush outline when switching brush preset or tool
+    (kde#428988, kde#442343)
+  * Improve handling the thumbnails for the recent files list
+  * Fix setting the configuration of a fill layer from the
+    scripting API (kde#447807)
+
+-------------------------------------------------------------------
 Fri Jan 14 15:55:53 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - convert the conflicts to recommends as we now have a working

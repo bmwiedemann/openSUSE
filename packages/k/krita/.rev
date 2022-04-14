@@ -647,4 +647,12 @@
 - Actually install the devel files as we need them for gmic</comment>
     <requestid>947181</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>4fdb0725537de1d952d2da480eeff4c3</srcmd5>
+    <version>5.0.5</version>
+    <time>1649949953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970141</requestid>
+  </revision>
 </revisionlist>
