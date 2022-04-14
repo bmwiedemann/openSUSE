@@ -17,7 +17,7 @@
 
 
 Name:           yast2-sound
-Version:        4.4.1
+Version:        4.5.0
 Release:        0
 Summary:        YaST2 - Sound Configuration
 License:        GPL-2.0-or-later
