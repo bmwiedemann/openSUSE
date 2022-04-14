@@ -1,5 +1,5 @@
 #
-# spec file for package php8
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -1347,7 +1347,9 @@ fi
 %endif
 
 %posttrans
+if [ -x /usr/bin/systemctl ]; then
 %_restart_on_update php-fpm.service
+fi
 
 %post apache
 if [ $1 -eq 1 ]; then

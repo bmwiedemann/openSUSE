@@ -240,4 +240,14 @@
     <comment>- Disable build with '-z now' as it breaks the php-mysql extension</comment>
     <requestid>967927</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>dcee30dca3a7bf69534a250b1dbcef45</srcmd5>
+    <version>8.1.4</version>
+    <time>1649949901</time>
+    <user>dimstar_suse</user>
+    <comment>- fpm %postrans: check whether sytemctl is available
+
+  [boo#1197994]</comment>
+    <requestid>969707</requestid>
+  </revision>
 </revisionlist>
