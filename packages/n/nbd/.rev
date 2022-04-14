@@ -474,4 +474,12 @@ Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
     <comment></comment>
     <requestid>968361</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>ba7edab4f262fc828ba33af3c007ae06</srcmd5>
+    <version>3.24</version>
+    <time>1649949828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970072</requestid>
+  </revision>
 </revisionlist>
