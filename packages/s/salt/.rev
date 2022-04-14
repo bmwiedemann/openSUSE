@@ -1997,4 +1997,27 @@ let build start it or we will get libvirt errors.
   * fix-multiple-security-issues-bsc-1197417.patch</comment>
     <requestid>966247</requestid>
   </revision>
+  <revision rev="128" vrev="6">
+    <srcmd5>345304787d76d6ce854a4d5cdda66174</srcmd5>
+    <version>3004</version>
+    <time>1649949903</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent data pollution between actions proceesed
+  at the same time (bsc#1197637)
+- Fix regression preventing bootstrapping new clients
+  caused by redundant dependency on psutil (bsc#1197533)
+- Added:
+  * fix-regression-with-depending-client.ssh-on-psutil-b.patch
+  * prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
+
+- Fixes for Python 3.10
+- Added:
+  * fixes-for-python-3.10-502.patch
+
+  * Sign authentication replies to prevent MiTM (CVE-2022-22935)
+  * Sign pillar data to prevent MiTM attacks. (CVE-2022-22934)
+  * Prevent job and fileserver replays (CVE-2022-22936)
+  * Fixed targeting bug, especially visible when using syndic and user auth. (CVE-2022-22941)</comment>
+    <requestid>969843</requestid>
+  </revision>
 </revisionlist>

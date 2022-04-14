@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 12 09:21:38 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Prevent data pollution between actions proceesed
+  at the same time (bsc#1197637)
+- Fix regression preventing bootstrapping new clients
+  caused by redundant dependency on psutil (bsc#1197533)
+
+- Added:
+  * fix-regression-with-depending-client.ssh-on-psutil-b.patch
+  * prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
+
+-------------------------------------------------------------------
+Tue Apr  5 09:29:14 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Fixes for Python 3.10
+
+- Added:
+  * fixes-for-python-3.10-502.patch
+
+-------------------------------------------------------------------
 Thu Mar 31 11:16:01 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
 
 - Fix salt-ssh opts poisoning (bsc#1197637)
@@ -10,10 +30,10 @@ Thu Mar 31 11:16:01 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
 Thu Mar 31 08:34:58 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix multiple security issues (bsc#1197417)
-- * Sign authentication replies to prevent MiTM (CVE-2022-22935)
-- * Sign pillar data to prevent MiTM attacks. (CVE-2022-22934)
-- * Prevent job and fileserver replays (CVE-2022-22936)
-- * Fixed targeting bug, especially visible when using syndic and user auth. (CVE-2022-22941)
+  * Sign authentication replies to prevent MiTM (CVE-2022-22935)
+  * Sign pillar data to prevent MiTM attacks. (CVE-2022-22934)
+  * Prevent job and fileserver replays (CVE-2022-22936)
+  * Fixed targeting bug, especially visible when using syndic and user auth. (CVE-2022-22941)
 
 - Added:
   * fix-multiple-security-issues-bsc-1197417.patch
