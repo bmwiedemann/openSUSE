@@ -20,7 +20,7 @@
 # which are pulled in by Autoreqprov because of the basicadd_displaytest tool:
 %define my_requires /tmp/my-requires
 Name:           yast2-printer
-Version:        4.4.2
+Version:        4.5.0
 Release:        0
 Summary:        YaST2 - Printer Configuration
 License:        GPL-2.0-only
