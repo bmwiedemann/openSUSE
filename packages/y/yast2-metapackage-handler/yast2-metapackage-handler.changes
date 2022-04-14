@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Mon May 17 08:53:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - only own the files, not the directories themselves (bsc#1184786)
