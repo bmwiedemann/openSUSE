@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Wed Feb  2 12:18:23 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Remove libsmbclient-devel BuildRequires in favor of
