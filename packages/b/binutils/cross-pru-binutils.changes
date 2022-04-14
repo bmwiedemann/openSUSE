@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 11 13:49:19 UTC 2022 - Michael Matz <matz@suse.com>
+
+- Update binutils-2.38-branch.diff.gz (to c210342d7f5) to include
+  recognition of 'z16' name for 'arch14' on s390.  [bsc#1198237]
+
+-------------------------------------------------------------------
 Mon Mar 21 16:40:26 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Add usage of a SUSE_ZNOW environment variable which allows switching

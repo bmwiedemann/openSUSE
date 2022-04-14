@@ -2025,4 +2025,13 @@ contain it.
   the SUSE_ASNEEDED variable.  Adds binutils-znow.patch.</comment>
     <requestid>964006</requestid>
   </revision>
+  <revision rev="156" vrev="4">
+    <srcmd5>4174935a9bfa476cb4f42d4ae30b37fe</srcmd5>
+    <version>2.38</version>
+    <time>1649949768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update binutils-2.38-branch.diff.gz (to c210342d7f5) to include
+  recognition of 'z16' name for 'arch14' on s390.  [bsc#1198237]</comment>
+    <requestid>969239</requestid>
+  </revision>
 </revisionlist>
