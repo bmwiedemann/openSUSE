@@ -2002,4 +2002,12 @@
     <comment>submit new version 4.4.18</comment>
     <requestid>963996</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>ae809a553b45a8f54c276488db3b4e9f</srcmd5>
+    <version>4.5.0</version>
+    <time>1649949849</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.0</comment>
+    <requestid>969469</requestid>
+  </revision>
 </revisionlist>
