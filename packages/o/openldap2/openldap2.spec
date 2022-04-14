@@ -17,7 +17,7 @@
 
 
 %define run_test_suite 0
-%define version_main 2.5.9
+%define version_main 2.6.1
 %define slapdrundir %{_rundir}/slapd
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == "contrib"
@@ -58,11 +58,11 @@ Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  argon2-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
 BuildRequires:  groff
 BuildRequires:  libopenssl-devel
-BuildRequires:  libsodium-devel
 BuildRequires:  libtool
 BuildRequires:  openslp-devel
 BuildRequires:  sysuser-tools
@@ -78,7 +78,7 @@ BuildRequires:  openldap2-devel
 %{?systemd_requires}
 %endif
 Requires:       /usr/bin/awk
-Requires:       libldap-2_5-0 = %{version_main}
+Requires:       libldap2 = %{version_main}
 Recommends:     cyrus-sasl
 Conflicts:      openldap
 PreReq:         %fillup_prereq
@@ -152,7 +152,9 @@ addpartial    Intercepts ADD requests, applies changes to existing entries
 allop
 allowed       Generates attributes indicating access rights
 autogroup
+authzid       implements RFC 3829 support
 cloak
+datamorph     store enumerated values and fixed size integers
 denyop
 lastbind      writes last bind timestamp to entry
 noopsrch      handles no-op search control
@@ -160,6 +162,8 @@ pw-sha2       generates/validates SHA-2 password hashes
 pw-pbkdf2     generates/validates PBKDF2 password hashes
 smbk5pwd      generates Samba3 password hashes (heimdal krb disabled)
 trace         traces overlay invocation
+variant       allows attributes/values to be shared between several entries
+vc            implements the verify credentials extended operation
 
 %package doc
 Summary:        OpenLDAP Documentation
@@ -173,7 +177,7 @@ The OpenLDAP Admin Guide plus a set of OpenLDAP related IETF internet drafts.
 %package client
 Summary:        OpenLDAP client utilities
 Group:          Productivity/Networking/LDAP/Clients
-Requires:       libldap-2_5-0 = %{version_main}
+Requires:       libldap2 = %{version_main}
 
 %description client
 OpenLDAP client utilities such as ldapadd, ldapsearch, ldapmodify.
@@ -187,7 +191,7 @@ Obsoletes:      openldap2-devel-64bit
 %endif
 #
 Conflicts:      openldap-devel
-Requires:       libldap-2_5-0 = %{version_main}
+Requires:       libldap2 = %{version_main}
 Recommends:     cyrus-sasl-devel
 
 %description devel
@@ -205,18 +209,18 @@ Requires:       openldap2-devel = %version
 This package provides the static versions of the OpenLDAP libraries
 for development.
 
-%package      -n libldap-2_5-0
+%package      -n libldap2
 Summary:        OpenLDAP Client Libraries
 Group:          Productivity/Networking/LDAP/Clients
 Recommends:     libldap-data >= %{version_main}
 
-%description -n libldap-2_5-0
+%description -n libldap2
 This package contains the OpenLDAP client libraries.
 
 %package      -n libldapcpp-devel
 Summary:        C++ wrapper around openLDAP API
 Group:          Development/Libraries/C and C++
-Requires:       libldapcpp0 = %{version}
+Requires:       libldapcpp0 = %{version_main}
 Requires:       openldap2-devel
 
 %description -n libldapcpp-devel
@@ -226,7 +230,7 @@ library.
 %package      -n libldapcpp0
 Summary:        C++ wrapper around openLDAP API
 Group:          Development/Libraries/C and C++
-Provides:       ldapcpplib = %{version}
+Provides:       ldapcpplib = %{version_main}
 Obsoletes:      ldapcpplib <= 0.0.5
 
 %description -n libldapcpp0
@@ -234,7 +238,6 @@ This package provides a C++ library for accessing LDAP (Version 3)
 Servers
 
 %prep
-# Unpack and patch OpenLDAP 2.5
 %setup -q -a 9 -n openldap-%{version_main}
 %patch3 -p1
 %patch5 -p1
@@ -246,7 +249,7 @@ cp %{SOURCE5} .
 %if "%flavor" == "contrib"
 cd contrib/ldapc++
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 %else
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -Wno-format-extra-args -fno-strict-aliasing -DNDEBUG -DSLAP_CONFIG_DELETE -DSLAP_SCHEMA_EXPOSE -DLDAP_COLLECTIVE_ATTRIBUTES -DLDAP_USE_NON_BLOCKING_TLS"
@@ -280,12 +283,12 @@ export STRIP=""
         --enable-syncprov=mod \
         --enable-ppolicy=mod \
         --with-yielding-select \
-        --with-argon2 \
+        --with-argon2=libargon2 \
   || cat config.log
 make depend
-make %{?_smp_mflags}
+%make_build
 # Build selected contrib overlays
-for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/sha2 passwd/pbkdf2 trace
+for SLAPO_NAME in addpartial allowed allop autogroup authzid datamorph lastbind denyop cloak noopsrch passwd/sha2 passwd/pbkdf2 trace variant vc
 do
   make -C contrib/slapd-modules/${SLAPO_NAME} %{?_smp_mflags} "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}"
 done
@@ -334,7 +337,7 @@ make STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdi
 # Additional symbolic link to slapd executable in /usr/sbin/
 ln -s %{_libdir}/slapd %{buildroot}%{_sbindir}/slapd
 # Install selected contrib overlays
-for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/sha2 passwd/pbkdf2 trace
+for SLAPO_NAME in addpartial allowed allop autogroup authzid datamorph lastbind denyop cloak noopsrch passwd/sha2 passwd/pbkdf2 trace variant vc
 do
   make -C contrib/slapd-modules/${SLAPO_NAME} STRIP="" DESTDIR="%{buildroot}" "mandir=%{_mandir}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
 done
@@ -415,9 +418,8 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %tmpfiles_create %{name}.conf
 %service_add_post slapd.service
 
-%post -n libldap-2_5-0 -p /sbin/ldconfig
-
-%postun -n libldap-2_5-0 -p /sbin/ldconfig
+%post -n libldap2 -p /sbin/ldconfig
+%postun -n libldap2 -p /sbin/ldconfig
 
 %preun
 %service_del_preun slapd.service
@@ -439,7 +441,6 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %else
 
 %files
-%defattr(-,root,root)
 %config %{_sysconfdir}/openldap/schema/*.schema
 %config %{_sysconfdir}/openldap/schema/*.ldif
 %config(noreplace) /etc/sasl2/slapd.conf
@@ -516,22 +517,18 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %doc %{DOCDIR}/slapd.ldif.default
 
 %files back-perl
-%defattr(-,root,root)
 %{_libdir}/openldap/back_perl*
 %doc %{_mandir}/man5/slapd-perl.*
 
 %files back-sock
-%defattr(-,root,root)
 %{_libdir}/openldap/back_sock*
 %doc %{_mandir}/man5/slapd-sock.*
 
 %files back-meta
-%defattr(-,root,root)
 %{_libdir}/openldap/back_meta*
 %doc %{_mandir}/man5/slapd-meta.*
 
 %files back-sql
-%defattr(-,root,root)
 %{_libdir}/openldap/back_sql*
 %doc %{_mandir}/man5/slapd-sql.*
 %doc servers/slapd/back-sql/examples
@@ -539,35 +536,35 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %doc servers/slapd/back-sql/docs/install
 
 %files -n libldap-data
-%defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/openldap/ldap.conf
 %doc %{_mandir}/man5/ldap.conf*
 %{_sysconfdir}/openldap/ldap.conf.default
 
 %files doc
-%defattr(-,root,root)
 %dir %{DOCDIR}
 %doc %{DOCDIR}/drafts
 %doc %{DOCDIR}/adminguide
 %doc %{DOCDIR}/images
 
 %files contrib
-%defattr(-,root,root)
 %{_libdir}/openldap/addpartial.*
-%{_libdir}/openldap/allowed.*
 %{_libdir}/openldap/allop.*
+%{_libdir}/openldap/allowed.*
+%{_libdir}/openldap/authzid.*
 %{_libdir}/openldap/autogroup.*
+%{_libdir}/openldap/cloak.*
+%{_libdir}/openldap/datamorph.*
+%{_libdir}/openldap/denyop.*
 %{_libdir}/openldap/lastbind.*
 %{_libdir}/openldap/noopsrch.*
-%{_libdir}/openldap/pw-sha2.*
 %{_libdir}/openldap/pw-pbkdf2.*
-%{_libdir}/openldap/denyop.*
-%{_libdir}/openldap/cloak.*
+%{_libdir}/openldap/pw-sha2.*
 %{_libdir}/openldap/smbk5pwd.*
 %{_libdir}/openldap/trace.*
+%{_libdir}/openldap/variant.*
+%{_libdir}/openldap/vc.*
 
 %files client
-%defattr(-,root,root)
 %doc %{_mandir}/man1/ldap*
 %doc %{_mandir}/man5/ldif.*
 %dir /etc/openldap
@@ -584,13 +581,11 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 /usr/bin/ldapvc
 /usr/bin/ldapwhoami
 
-%files -n libldap-2_5-0
-%defattr(-,root,root)
-%{_libdir}/liblber*2.5.so.*
-%{_libdir}/libldap*2.5.so.*
+%files -n libldap2
+%{_libdir}/liblber.so.*
+%{_libdir}/libldap.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc %{_mandir}/man3/ber*
 %doc %{_mandir}/man3/lber*
 %doc %{_mandir}/man3/ld_errno*
@@ -601,7 +596,6 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %{_libdir}/pkgconfig/*.pc
 
 %files devel-static
-%defattr(-,root,root)
 %_libdir/liblber.a
 %_libdir/libldap*.a
 

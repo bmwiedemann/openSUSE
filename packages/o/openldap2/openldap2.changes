@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 11 20:52:33 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Use libargon2 instead of libsodium because it supports p>1
+- Added new contrib overlays: authzid, datamorph, variant, vc
+
+-------------------------------------------------------------------
+Sat Apr  2 22:57:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.1
+  * Ability to log directly to a file bypassing syslog
+  * back-ndb is retired
+  * back-sql and back-perl are deprecated
+  * lloadd(8): Additional load balancing strategies.
+  * lloadd(8): Additional options to improve coherence with certain
+    controls and extended operations.
+
+-------------------------------------------------------------------
 Sat Mar 26 14:08:57 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Add _multibuild support to integrate the build of libldapcpp-devel
