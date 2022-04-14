@@ -866,4 +866,12 @@
     <comment> </comment>
     <requestid>960024</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>74de7926284407fa75bc37c141a8f5d6</srcmd5>
+    <version>2.0.4</version>
+    <time>1649949926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.4.</comment>
+    <requestid>970010</requestid>
+  </revision>
 </revisionlist>

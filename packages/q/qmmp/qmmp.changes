@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 13 14:28:28 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.0.4:
+  * Fix drag-and-dropped tracks order.
+  * Fix an issue with empty content type.
+  * Disable waveform seekbar for the tracks with unknown duration.
+  * Fix the taskbar plugin.
+  * Update translations.
+
+-------------------------------------------------------------------
 Mon Mar  7 08:18:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use the Qt6 cmake macros to fix the 15.4 build.
