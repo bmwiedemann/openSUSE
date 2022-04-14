@@ -402,4 +402,12 @@ Advantages:
     <comment>submit new version 4.4.11</comment>
     <requestid>960816</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b99219ef6daf9f03bd422435e41a32f7</srcmd5>
+    <version>4.5.0</version>
+    <time>1649949865</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.0</comment>
+    <requestid>969518</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Tue Feb 15 11:57:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move macros.skelcd from /etc/rpm to /usr/lib/rpm/macros.d
