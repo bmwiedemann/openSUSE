@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  6 03:13:00 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.021
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.021		2022-04-03	T. R. Wyant
+      Recognize postfix deref in '@{[ ... ]}' for determining minimum Perl
+      version.  This recognizes all forms of postfix dereference,
+      including ->%*, ->&*, and ->**.  NOTE that for now this remains a
+      PPIx::QuoteLike::Token::Interpolation.
+      Require PPI 1.238 for postfix deref support, and prune code that
+      dealt with PPI's old behavior.
+      Postfix %*, &*, and ** do not interpolate.
+      Correct perl_version_introduced() for interpolated postfix scalar
+      deref.
+
+-------------------------------------------------------------------
 Fri Mar 18 03:07:22 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.020

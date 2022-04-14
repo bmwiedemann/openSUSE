@@ -18,7 +18,7 @@
 
 %define cpan_name PPIx-QuoteLike
 Name:           perl-PPIx-QuoteLike
-Version:        0.020
+Version:        0.021
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse Perl string literals and string-literal-like things
@@ -29,12 +29,12 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build)
-BuildRequires:  perl(PPI::Document) >= 1.117
-BuildRequires:  perl(PPI::Dumper) >= 1.117
+BuildRequires:  perl(PPI::Document) >= 1.238
+BuildRequires:  perl(PPI::Dumper) >= 1.238
 BuildRequires:  perl(Readonly)
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(PPI::Document) >= 1.117
-Requires:       perl(PPI::Dumper) >= 1.117
+Requires:       perl(PPI::Document) >= 1.238
+Requires:       perl(PPI::Dumper) >= 1.238
 Requires:       perl(Readonly)
 %{perl_requires}
 
