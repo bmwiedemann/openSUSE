@@ -248,11 +248,20 @@ cmake --build . -t docs
 %qt6_install
 %endif
 
+# Install files needed to develop qtcreator plugins.
+DESTDIR=%{buildroot} cmake --install build --component Devel
+
 %if 0%{?build_clang_backend}
 if [ ! -f %{buildroot}%{_libexecdir}/qtcreator/clangbackend ]; then
   echo 'ERROR: The Clang backend was not built. Check the build requirements' ; exit 1
 fi
 %endif
+
+# The upstream scripts should not be needed for plugins development
+rm -r %{buildroot}%{_datadir}/qtcreator/scripts
+
+# Already packaged
+rm %{buildroot}%{_datadir}/qtcreator/{HACKING,LICENSE.GPL3-EXCEPT,README.md}
 
 # Broken and useless for most users
 rm %{buildroot}%{_bindir}/qtcreator.sh
@@ -269,40 +278,44 @@ cp -a doc/qtcreator/* %{buildroot}%{qtc_docdir}/qtcreator/
 # Source Code Pro is packaged independently
 rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 
-# plugin development files
-mkdir %{buildroot}%{_datadir}/qtcreator-devel
-cp *.pri %{buildroot}%{_datadir}/qtcreator-devel
-find src \( \
-   -name '*.h' -o -name '*.hpp' -o -name '*.pri' -o -iname 'license*.txt' -o \
-   -name 'QtConcurrentTools' \
-\) \
-   -exec cp --parents {} %{buildroot}%{_datadir}/qtcreator-devel \;
-
-mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-cat >%{buildroot}%{_sysconfdir}/profile.d/qtcreator-devel.sh <<EOF
-export QTC_SOURCE=%{_datadir}/qtcreator-devel
-export QTC_BUILD=%{_exec_prefix}
-EOF
-cat >%{buildroot}%{_sysconfdir}/profile.d/qtcreator-devel.csh <<EOF
-setenv QTC_SOURCE %{_datadir}/qtcreator-devel
-setenv QTC_BUILD %{_exec_prefix}
-EOF
-
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %license *GPL*
+%doc README.md HACKING
 %dir %{qtc_docdir}
+%dir %{_datadir}/qtcreator
+%dir %{_libdir}/qtcreator
 %dir %{_libexecdir}/qtcreator
 %{_bindir}/qtcreator
 %{_datadir}/applications/org.qt-project.qtcreator.desktop
 %{_datadir}/icons/hicolor/*/apps/QtProject-qtcreator.png
 %{_datadir}/metainfo/org.qt-project.qtcreator.appdata.xml
-%{_datadir}/qtcreator/
-%{qtc_docdir}/qtcreator.qch
-%{qtc_docdir}/qtcreator/
-%{_libdir}/qtcreator/
+%{_datadir}/qtcreator/android/
+%{_datadir}/qtcreator/cplusplus/
+%{_datadir}/qtcreator/debugger/
+%{_datadir}/qtcreator/externaltools/
+%if 0%{?qt6}
+# This won't be needed when syntax-highlighting has a KF6 release
+%{_datadir}/qtcreator/generic-highlighter/
+%endif
+%{_datadir}/qtcreator/glsl/
+%{_datadir}/qtcreator/indexer_preincludes/
+%{_datadir}/qtcreator/modeleditor/
+%{_datadir}/qtcreator/package-manager/
+%{_datadir}/qtcreator/qml-type-descriptions/
+%{_datadir}/qtcreator/qml/
+%{_datadir}/qtcreator/qmldesigner/
+%{_datadir}/qtcreator/qmlicons/
+%{_datadir}/qtcreator/schemes/
+%{_datadir}/qtcreator/snippets/
+%{_datadir}/qtcreator/styles/
+%{_datadir}/qtcreator/templates/
+%{_datadir}/qtcreator/themes/
+%{_datadir}/qtcreator/translations/
+%{_libdir}/qtcreator/*.so.*
+%{_libdir}/qtcreator/plugins/
 %{_libexecdir}/qtcreator/buildoutputparser
 %if 0%{?build_clang_backend}
 %{_libexecdir}/qtcreator/clangbackend
@@ -316,10 +329,14 @@ EOF
 %{_libexecdir}/qtcreator/qtcreator_process_stub
 %{_libexecdir}/qtcreator/qtpromaker
 %{_libexecdir}/qtcreator/sdktool
+%{qtc_docdir}/qtcreator.qch
+%{qtc_docdir}/qtcreator/
 
 %files plugin-devel
-%license *GPL*
-%{_datadir}/qtcreator-devel/
-%{_sysconfdir}/profile.d/qtcreator-devel.*
+%{_includedir}/qtcreator/
+%{_libdir}/cmake/QtCreator/
+%{_libdir}/qtcreator/*.a
+%{_libdir}/qtcreator/*.so
+%{_libdir}/qtcreator/objects-*/
 
 %changelog

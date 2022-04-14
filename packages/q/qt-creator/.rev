@@ -47,4 +47,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
 - Rebase fix-application-output.patch</comment>
     <requestid>964701</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fb46c2dbeb409076ddfd8951295506fe</srcmd5>
+    <version>7.0.0</version>
+    <time>1649949908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969958</requestid>
+  </revision>
 </revisionlist>
