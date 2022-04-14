@@ -1,7 +1,7 @@
 #
 # spec file for package libunistring
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,16 @@
 
 %define lname	libunistring2
 Name:           libunistring
-Version:        0.9.10
+Version:        1.0
 Release:        0
 Summary:        GNU Unicode string library
-License:        LGPL-3.0-or-later OR GPL-2.0-only
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.gnu.org/software/libunistring/
+URL:            https://www.gnu.org/software/libunistring/
 Source0:        http://ftp.gnu.org/gnu/libunistring/libunistring-%{version}.tar.xz
 Source1:        http://ftp.gnu.org/gnu/libunistring/libunistring-%{version}.tar.xz.sig
-Source2:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libunistring&download=1#/%{name}.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=1871/%{name}.keyring
 Source3:        baselibs.conf
-Patch0:         disable-broken-tests.patch
-%if %{?suse_version } == 1110
-BuildRequires:  xz
-%endif
 
 %description
 This portable C library implements Unicode string types in three flavours:
@@ -44,10 +40,6 @@ case folding and regular expressions).
 Summary:        Development files for the GNU Unicode string library
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
-Requires:       info
-# Obsoletes added in 12.2
-Obsoletes:      %{name} < %{version}-%{release}
-Provides:       %{name} = %{version}-%{release}
 
 %description devel
 Development files for programs using libunistring and documentation
@@ -65,12 +57,11 @@ This portable C library implements Unicode string types in three flavours:
 case folding and regular expressions).
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-static --disable-rpath --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 make DESTDIR=%{buildroot} INSTALL="install -p" install
@@ -86,7 +77,7 @@ rm -f %{buildroot}/%{_libdir}/libunistring.la
 sed -i 's:50000:50:g' tests/test-malloca.c
 %endif
 # do not run tests in parallel, it stucks randomly
-make check # %{?_smp_mflags}
+%make_build check #
 %endif
 
 %files -n %{lname}
@@ -103,12 +94,5 @@ make check # %{?_smp_mflags}
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
-%post devel
-/sbin/install-info %{_infodir}/libunistring.info.gz %{_infodir}/dir || :
-
-%preun devel
-if [ "$1" = 0 ]; then
-   /sbin/install-info --delete %{_infodir}/libunistring.info.gz %{_infodir}/dir || :
-fi
 
 %changelog

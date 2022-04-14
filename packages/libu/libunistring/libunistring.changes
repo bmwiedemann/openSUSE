@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  9 12:47:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.0:
+  * Unicode 14.0.0 support
+  * License changed to LGPL-3.0-or-later OR GPL-2.0-or-later
+  * *_uctomb functions now support strings larger than 2 GiB
+  * linebreak functions now make it easier to work with strings
+    that contain CR-LF sequences
+  * New properties for recognizing pictographics symbols and
+    regional indicators
+- drop disable-broken-tests.patch
+
+-------------------------------------------------------------------
 Fri Mar  8 09:12:41 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add disable-broken-tests.patch in order to fix broken
