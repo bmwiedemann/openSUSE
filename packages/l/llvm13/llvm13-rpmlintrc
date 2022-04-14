@@ -10,3 +10,7 @@ addFilter("devel-file-in-non-devel-package .*/lib.*/*.so")
 
 # We're deliberately conflicting with SLE. (https://code.opensuse.org/leap/features/issue/55)
 addFilter("SUSE_Backports_policy-SLE_conflict")
+
+# Different versions of LLVM can produce the same SONAME, so we'll have to use
+# non-standard names sometimes. (Leap's rpmlint complains, Tumbleweed's doesn't.)
+addFilter("shlib-policy-name-error")

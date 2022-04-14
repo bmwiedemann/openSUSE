@@ -103,4 +103,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957799</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>33c88bee48b6cf5c325d7d288d409baa</srcmd5>
+    <version>13.0.1</version>
+    <time>1649949772</time>
+    <user>dimstar_suse</user>
+    <comment>- Split up Clang libraries: libclang.so is no longer so-versioned
+  alongside LLVM but will stay at libclang.so.13 for now. So we
+  put it into a separate package from libclang-cpp.so. Since we
+  can't have multiple LLVM versions generate the same package, we
+  prefix it for the non-default LLVM with a mechanism inspired by
+  the GCC packaging.
+- Patch exported clang/ClangTargets-relwithdebinfo.cmake to refer
+  to libclang only by soname, because the installed library might
+  be newer than the one originally build with the package.
+- Use the same mechanism to for libc++ and package Clang scripts
+  only for the default version. This means we'll no longer have to
+  touch the package when a new major version comes out.
+- Make sure we properly clean up the clang scripts if we're not
+  packaging them.
+- Let python3-clang use libclang.so.XX, which means we can always
+  build it and makes it depend on libclang instead of clang-devel.
+- Fix some rpmlint issues: we don't need explicit library
+  dependencies that are detected automatically, and we add proper
+  library dependencies to the *-devel packages.
+- Merge llvm-LTO-devel into llvm-devel. That's where the header
+  files already are, and they are hard to separate.
+- Let llvm-polly-devel depend on llvm-devel.
+- Remove libLTO and *-devel packages from baselibs, they don't
+  seem to be needed. We mostly need libLLVM and maybe libclang-cpp.
+- Consistently set host triple as *-suse-linux-gnu*.
+- Only suggest documentation packages.
+- Add llvm-rust-mangle-for-fastcall.patch for rust 1.59.
+- Fix armv6hl cpu architecture typo.
+</comment>
+    <requestid>969598</requestid>
+  </revision>
 </revisionlist>

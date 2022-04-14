@@ -21,8 +21,10 @@
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  13.0
 %define _sonum  13
+%define _itsme13 1
 # Integer version used by update-alternatives
 %define _uaver  1301
+%define _soclang 13
 %define _socxx  1
 
 %ifarch x86_64 aarch64 %arm
@@ -62,9 +64,28 @@
 %bcond_with ffi
 %bcond_with oprofile
 %bcond_with valgrind
-%bcond_without clang_scripts
 %bcond_without polly
 %bcond_without lld
+
+# Figure out the host triple.
+%ifarch armv6hl
+# See https://build.opensuse.org/request/show/968066.
+%define host_cpu armv6kz
+%else
+%define host_cpu %{_host_cpu}
+%endif
+
+%ifarch %{arm}
+%define host_runtime gnueabihf
+%else
+%define host_runtime gnu
+%endif
+%define host_triple %{host_cpu}-%{_host_vendor}-%{_host_os}-%{host_runtime}
+
+%define _plv %{!?product_libs_llvm_ver:%{_sonum}}%{?product_libs_llvm_ver}
+
+# Expands to -n if we're providing the distribution default for the given package.
+%define multisource() %{expand:%%{?_itsme%{expand:%%{!?product_libs_llvm_ver_%{1}:%%{_plv}}%%{?product_libs_llvm_ver_%{1}}}:-n}}
 
 # set_jobs type memory
 # Set max_<type>_jobs so that every job of the given type has at least the
@@ -113,6 +134,9 @@ Source100:      %{name}-rpmlintrc
 Source101:      baselibs.conf
 # PATCH-FIX-OPENSUSE lto-disable-cache.patch -- Disable ThinLTO cache
 Patch0:         lto-disable-cache.patch
+# PATCH-FIX-UPSTREAM https://github.com/llvm/llvm-project/commit/54b909de682bfa4e3389b680b0916ab18c99952a,
+# rebased past https://github.com/llvm/llvm-project/commit/40ec1c0f16cb23f8b83fb3d28b195e83991defd9.
+Patch1:         llvm-rust-mangle-for-fastcall.patch
 # PATCH-FIX-OPENSUSE assume-opensuse.patch idoenmez@suse.de -- Always enable openSUSE/SUSE features
 Patch2:         assume-opensuse.patch
 # PATCH-FIX-OPENSUSE default-to-i586.patch -- Use i586 as default target for 32bit
@@ -150,11 +174,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(zlib)
-# Avoid multiple provider errors
-Requires:       libLLVM%{_sonum}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     %{name}-doc
 # llvm does not work on s390
 ExcludeArch:    s390
 %if %{with gold}
@@ -169,6 +190,7 @@ BuildRequires:  pkgconfig(valgrind)
 %if %{with oprofile}
 BuildRequires:  oprofile-devel
 %endif
+Suggests:       %{name}-doc
 
 %description
 LLVM is a compiler infrastructure designed for compile-time,
@@ -190,13 +212,16 @@ Summary:        Header Files for LLVM
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 %if %{with openmp}
+# Referenced by LLVMExports.cmake
 Requires:       libomp%{_sonum}-devel
 %endif
+Requires:       libLLVM%{_sonum} = %{version}
+Requires:       libLTO%{_sonum} = %{version}
 Requires:       libstdc++-devel
 Requires:       libtool
-Requires:       llvm%{_sonum}-LTO-devel
 Requires:       llvm%{_sonum}-gold
 %if %{with polly}
+# Referenced by LLVMExports.cmake
 Requires:       llvm%{_sonum}-polly-devel
 %endif
 Requires:       pkgconfig
@@ -207,6 +232,11 @@ Conflicts:      llvm5
 Conflicts:      llvm7
 %endif
 Conflicts:      cmake(LLVM)
+# libLTO.so used to be a separate package.
+Conflicts:      libLTO.so < %{version}
+Provides:       libLTO.so = %{version}
+Obsoletes:      llvm%{_sonum}-LTO-devel <= %{version}
+Provides:       llvm%{_sonum}-LTO-devel = %{version}
 Provides:       llvm-devel-provider = %{version}
 %if %{with ffi}
 Requires:       pkgconfig(libffi)
@@ -239,16 +269,13 @@ This package contains documentation for the LLVM infrastructure.
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 URL:            https://clang.llvm.org/
-# Avoid multiple provider errors
-Requires:       libLTO%{_sonum}
-Requires:       libclang%{_sonum}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     clang%{_sonum}-doc
 Recommends:     clang-tools
 Recommends:     gcc
 Recommends:     glibc-devel
 Recommends:     libstdc++-devel
+Suggests:       clang%{_sonum}-doc
 Suggests:       libc++-devel
 
 %description -n clang%{_sonum}
@@ -289,14 +316,28 @@ This package contains tools and scripts for using Clang, including:
 * scripts for using the Clang static analyzer: scan-build and scan-view,
 * a script for using find-all-symbols: run-find-all-symbols.
 
-%package -n libclang%{_sonum}
-Summary:        Library files needed for clang
-# Avoid multiple provider errors
+%package %{multisource libclang%{_soclang}} libclang%{_soclang}
+Summary:        Clang stable C API for indexing and code completion
 Group:          System/Libraries
-Requires:       libLLVM%{_sonum}
+Provides:       libclang%{_soclang} = %{version}
+Conflicts:      libclang%{_soclang} < %{version}
 
-%description -n libclang%{_sonum}
-This package contains the shared libraries needed for clang.
+%description %{multisource libclang%{_soclang}} libclang%{_soclang}
+This library exposes a limited C API for indexing and code completion for
+code written in languages of the C family.
+It is designed to be stable across major versions of LLVM.
+
+It corresponds to the header files in %{_includedir}/clang-c.
+
+%package -n libclang-cpp%{_sonum}
+Summary:        Clang full C++ API
+Group:          System/Libraries
+
+%description -n libclang-cpp%{_sonum}
+This library exposes the full C++ API to Clang that is used to implement
+all Clang tools. It is not stable across major LLVM versions.
+
+It corresponds to the header files in %{_includedir}/clang.
 
 %package -n clang%{_sonum}-devel
 Summary:        CLANG frontend for LLVM (devel package)
@@ -304,6 +345,8 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       clang%{_sonum} = %{version}
 Requires:       clang-tools >= %{version}
+Requires:       libclang%{_soclang} >= %{version}
+Requires:       libclang-cpp%{_sonum} = %{version}
 Conflicts:      cmake(Clang)
 
 %description -n clang%{_sonum}-devel
@@ -327,31 +370,14 @@ This package contains documentation for the Clang compiler.
 
 %package -n libLTO%{_sonum}
 Summary:        Link-time optimizer for LLVM
-# Avoid multiple provider errors
 Group:          System/Libraries
-Requires:       libLLVM%{_sonum}
 
 %description -n libLTO%{_sonum}
 This package contains the link-time optimizer for LLVM.
 
-%package LTO-devel
-Summary:        Link-time optimizer for LLVM (devel package)
-# Avoid multiple provider errors
-Group:          Development/Libraries/C and C++
-Requires:       %{name}-devel = %{version}
-Requires:       libLTO%{_sonum}
-Conflicts:      libLTO.so < %{version}
-Provides:       libLTO.so = %{version}
-
-%description LTO-devel
-This package contains the link-time optimizer for LLVM.
-(development files)
-
 %package gold
 Summary:        Gold linker plugin for LLVM
-# Avoid multiple provider errors
 Group:          Development/Tools/Building
-Requires:       libLLVM%{_sonum}
 Conflicts:      llvm-gold-provider < %{version}
 Provides:       llvm-gold-provider = %{version}
 Supplements:    packageand(clang%{_sonum}:binutils-gold)
@@ -361,61 +387,59 @@ This package contains the Gold linker plugin for LLVM.
 
 %package -n libomp%{_sonum}-devel
 Summary:        MPI plugin for LLVM
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
-Requires:       libLLVM%{_sonum}
 Conflicts:      libomp-devel < %{version}
 Provides:       libomp-devel = %{version}
 
 %description -n libomp%{_sonum}-devel
 This package contains the OpenMP MPI plugin for LLVM.
 
-%if %{with libcxx}
-%package -n libc++%{_socxx}
+%package %{multisource libcxx%{_socxx}} libc++%{_socxx}
 Summary:        C++ standard library implementation
 Group:          System/Libraries
 URL:            https://libcxx.llvm.org/
 Requires:       libc++abi%{_socxx} = %{version}
+Conflicts:      libc++%{_socxx} < %{version}
+Provides:       libc++%{_socxx} = %{version}
 
-%description -n libc++%{_socxx}
+%description %{multisource libcxx%{_socxx}} libc++%{_socxx}
 This package contains libc++, a new implementation of the C++
 standard library, targeting C++11.
 
-%package -n libc++-devel
+%package %{multisource libcxx_devel} libc++-devel
 Summary:        C++ standard library implementation (devel package)
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
-Requires:       libc++%{_socxx} = %{version}
-Requires:       libc++abi-devel = %{version}
+Requires:       libc++%{_socxx} >= %{version}
+Requires:       libc++abi.so >= %{version}
 Conflicts:      libc++.so < %{version}
 Provides:       libc++.so = %{version}
 
-%description -n libc++-devel
+%description %{multisource libcxx_devel} libc++-devel
 This package contains libc++, a new implementation of the C++
 standard library, targeting C++11. (development files)
 
-%package -n libc++abi%{_socxx}
+%package %{multisource libcxxabi%{_socxx}} libc++abi%{_socxx}
 Summary:        C++ standard library ABI
 Group:          System/Libraries
 URL:            https://libcxxabi.llvm.org/
+Conflicts:      libc++abi%{_socxx} < %{version}
+Provides:       libc++abi%{_socxx} = %{version}
 
-%description -n libc++abi%{_socxx}
+%description %{multisource libcxxabi%{_socxx}} libc++abi%{_socxx}
 This package contains the ABI for libc++, a new implementation
 of the C++ standard library, targeting C++11.
 
-%package -n libc++abi-devel
+%package %{multisource libcxx_devel} libc++abi-devel
 Summary:        C++ standard library ABI (devel package)
 Group:          Development/Libraries/C and C++
-Requires:       libc++-devel
-Requires:       libc++abi%{_socxx} = %{version}
+Requires:       libc++abi%{_socxx} >= %{version}
 Conflicts:      libc++abi.so < %{version}
 Provides:       libc++abi.so = %{version}
 
-%description -n libc++abi-devel
+%description %{multisource libcxx_devel} libc++abi-devel
 This package contains the ABI for libc++, a new implementation
 of the C++ standard library, targeting C++11.
 (development files)
-%endif
 
 %package        vim-plugins
 Summary:        Vim plugins for LLVM
@@ -428,16 +452,16 @@ BuildArch:      noarch
 %description    vim-plugins
 This package contains vim plugins for LLVM like syntax highlighting.
 
-%package -n python3-clang
+%package -n python3-clang%{_sonum}
 Summary:        Python bindings for libclang
 Group:          Development/Libraries/Python
-Requires:       clang%{_sonum}-devel = %{version}
+Requires:       libclang%{_soclang} >= %{version}
 Requires:       python3-base
 Conflicts:      %{python3_sitearch}/clang/
 Provides:       %{python3_sitearch}/clang/
 BuildArch:      noarch
 
-%description -n python3-clang
+%description -n python3-clang%{_sonum}
 This package contains the Python bindings to clang (C language)
 frontend for LLVM.
 
@@ -477,8 +501,6 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
-# Avoid multiple provider errors
-Requires:       liblldb%{_sonum} = %{version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python3-lldb%{_sonum}
@@ -492,17 +514,13 @@ disassembler.
 
 %package -n liblldb%{_sonum}
 Summary:        LLDB software debugger runtime library
-# Avoid multiple provider errors
 Group:          System/Libraries
-Requires:       libLLVM%{_sonum}
-Requires:       libclang%{_sonum}
 
 %description -n liblldb%{_sonum}
 This subpackage contains the main LLDB component.
 
 %package -n lldb%{_sonum}-devel
 Summary:        Development files for LLDB
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
 Requires:       clang%{_sonum}-devel = %{version}
 Requires:       liblldb%{_sonum} = %{version}
@@ -520,7 +538,6 @@ This package contains the development files for LLDB.
 Summary:        Python bindings for liblldb
 Group:          Development/Libraries/Python
 BuildRequires:  swig >= 3.0.11
-# Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{version}
 Requires:       python3-base
 Requires:       python3-six
@@ -553,6 +570,7 @@ level parallelism and expose SIMDization opportunities.
 %package polly-devel
 Summary:        Development files for Polly
 Group:          Development/Libraries/C and C++
+Requires:       llvm%{_sonum}-devel = %{version}
 Requires:       llvm%{_sonum}-polly = %{version}
 Conflicts:      llvm-polly-devel-provider < %{version}
 Provides:       llvm-polly-devel-provider = %{version}
@@ -563,8 +581,8 @@ This package contains the development files for Polly.
 
 %prep
 %setup -q -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -b 50 -b 51 -n llvm-%{_version}.src
-
 %patch0 -p2
+%patch1 -p2
 %patch5 -p1
 %patch13 -p1
 %patch14 -p1
@@ -654,10 +672,10 @@ mv libcxxabi-%{_version}.src projects/libcxxabi
 flags=$(echo %{optflags} | sed 's/-D_FORTIFY_SOURCE=./-D_FORTIFY_SOURCE=0/;s/\B-g\b//g')
 
 %ifarch armv6hl
-flags+=" -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -mfpu=vfp"
+flags+=" -mfloat-abi=hard -mcpu=arm1176jzf-s -mfpu=vfpv2"
 %endif
 %ifarch armv7hl
-flags+=" -mfloat-abi=hard -march=armv7-a -mtune=cortex-a15 -mfpu=vfpv3-d16"
+flags+=" -mfloat-abi=hard -march=armv7-a -mtune=cortex-a17 -mfpu=vfpv3-d16"
 %endif
 
 CFLAGS=$flags
@@ -713,6 +731,7 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
+    -DLLVM_HOST_TRIPLE=%{host_triple} \
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=OFF \
     -DLLVM_LINK_LLVM_DYLIB:BOOL=OFF \
     -DLLVM_PARALLEL_COMPILE_JOBS="$max_compile_jobs" \
@@ -793,6 +812,7 @@ export LD_LIBRARY_PATH=${PWD}/build/%{_lib}
 # -z,now is breaking now, it needs to be fixed
 %cmake \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
+    -DLLVM_HOST_TRIPLE=%{host_triple} \
     -DLLVM_BUILD_LLVM_DYLIB:BOOL=ON \
     -DLLVM_LINK_LLVM_DYLIB:BOOL=ON \
     -DCLANG_LINK_CLANG_DYLIB:BOOL=ON \
@@ -919,17 +939,58 @@ rm -r %{buildroot}%{_docdir}/llvm-clang/_sources
 popd
 
 # install python bindings
-# The python bindings use the unversioned libclang.so,
-# so it doesn't make sense to have multiple versions of it
-%if %{with clang_scripts}
 install -d %{buildroot}%{python3_sitelib}/clang
 pushd tools/clang/bindings/python
 cp clang/*.py %{buildroot}%{python3_sitelib}/clang
+# Make the bindings use the current so number, so that we don't need an unversioned libclang.so.
+sed -i "s/file = 'libclang\.so'/file = 'libclang.so.%{_soclang}'/" %{buildroot}%{python3_sitelib}/clang/cindex.py
 install -d %{buildroot}%{_docdir}/python-clang/examples/cindex
 cp -r examples %{buildroot}%{_docdir}/python-clang
 install -d %{buildroot}%{_docdir}/python-clang/tests/cindex/INPUTS
 cp -r tests %{buildroot}%{_docdir}/python-clang
 popd
+
+# Scripts for clang use unversioned executables, so it doesn't make sense to
+# have multiple versions of them. We package them only for the default version.
+%if %{_plv} == %{_sonum}
+%if "%{_libexecdir}" != "%{_prefix}/libexec"
+mv %{buildroot}%{_prefix}/libexec/{c++,ccc}-analyzer %{buildroot}%{_bindir}
+mv %{buildroot}%{_prefix}/libexec/{analyze,intercept}-{cc,c++} %{buildroot}%{_bindir}
+%endif
+
+mv %{buildroot}%{_datadir}/clang/clang-format-diff.py %{buildroot}%{_bindir}/clang-format-diff
+mv %{buildroot}%{_datadir}/clang/clang-tidy-diff.py %{buildroot}%{_bindir}/clang-tidy-diff
+mv %{buildroot}%{_datadir}/clang/run-find-all-symbols.py %{buildroot}%{_bindir}/run-find-all-symbols
+
+# Fix paths to internal binaries.
+sed -i "s|COMPILER_WRAPPER_\([A-Z]*\) = 'intercept-\([^']*\)'|COMPILER_WRAPPER_\1 = '%{_libexecdir_fallback}/intercept-\2'|" \
+    %{buildroot}%{_prefix}/lib/libscanbuild/intercept.py
+%if "%{_libexecdir}" != "%{_prefix}/libexec"
+LIBEXEC=%{_libexecdir_fallback}
+RELATIVE_LIBEXEC=${LIBEXEC#%{_prefix}/}
+RELATIVE_LIBEXEC_COMMA=${RELATIVE_LIBEXEC//\//\', \'}
+sed -i "s|os.path.join(scanbuild_dir, '..', 'libexec', 'analyze-\([^']*\)')|os.path.join(scanbuild_dir, '..', '$RELATIVE_LIBEXEC_COMMA', 'analyze-\1')|" \
+    %{buildroot}%{_prefix}/lib/libscanbuild/analyze.py
+%endif
+
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
+mv %{buildroot}%{_datadir}/clang/bash-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/clang
+
+# We don't care about applescript or sublime text
+rm %{buildroot}%{_datadir}/clang/*.applescript
+rm %{buildroot}%{_datadir}/clang/clang-format-sublime.py
+%else
+rm %{buildroot}%{_bindir}/{analyze,intercept}-build
+rm %{buildroot}%{_bindir}/clang-doc
+rm %{buildroot}%{_bindir}/git-clang-format
+rm %{buildroot}%{_bindir}/hmaptool
+rm %{buildroot}%{_bindir}/run-clang-tidy
+rm %{buildroot}%{_bindir}/scan-{build,build-py,view}
+rm -r %{buildroot}%{_prefix}/lib/lib{ear,scanbuild}
+rm %{buildroot}%{_prefix}/libexec/{c++,ccc}-analyzer
+rm %{buildroot}%{_prefix}/libexec/{analyze,intercept}-{cc,c++}
+rm -r %{buildroot}%{_datadir}/{clang,scan-build,scan-view}/
+rm %{buildroot}%{_mandir}/man1/scan-build.1
 %endif
 
 # Note that bfd-plugins is in /usr/lib/bfd-plugins before binutils 2.33.1
@@ -942,14 +1003,6 @@ for i in ftdetect ftplugin indent syntax; do
 done
 mv utils/vim/README utils/vim/README.vim
 
-%if "%{_libexecdir}" != "%{_prefix}/libexec"
-mv %{buildroot}%{_prefix}/libexec/{c++,ccc}-analyzer %{buildroot}%{_bindir}
-mv %{buildroot}%{_prefix}/libexec/{analyze,intercept}-{cc,c++} %{buildroot}%{_bindir}
-%endif
-mv %{buildroot}%{_datadir}/clang/clang-format-diff.py %{buildroot}%{_bindir}/clang-format-diff
-mv %{buildroot}%{_datadir}/clang/clang-tidy-diff.py %{buildroot}%{_bindir}/clang-tidy-diff
-mv %{buildroot}%{_datadir}/clang/run-find-all-symbols.py %{buildroot}%{_bindir}/run-find-all-symbols
-
 install -d %{buildroot}%{python3_sitelib}
 mv %{buildroot}%{_datadir}/opt-viewer/opt-diff.py %{buildroot}%{_bindir}/opt-diff
 mv %{buildroot}%{_datadir}/opt-viewer/opt-stats.py %{buildroot}%{_bindir}/opt-stats
@@ -957,12 +1010,8 @@ mv %{buildroot}%{_datadir}/opt-viewer/opt-viewer.py %{buildroot}%{_bindir}/opt-v
 mv %{buildroot}%{_datadir}/opt-viewer/optpmap.py %{buildroot}%{python3_sitelib}/optpmap.py
 mv %{buildroot}%{_datadir}/opt-viewer/optrecord.py %{buildroot}%{python3_sitelib}/optrecord.py
 
-mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-mv %{buildroot}%{_datadir}/clang/bash-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/clang
-
 rm %{buildroot}%{_mandir}/man1/{,clang-,lldb-,mlir-}tblgen.1
 rm %{buildroot}%{_mandir}/man1/llvm-locstats.1
-chmod -x %{buildroot}%{_mandir}/man1/scan-build.1
 
 %if %{with lldb_python}
 # Python: fix binary libraries location.
@@ -987,10 +1036,6 @@ rm %{buildroot}%{_libdir}/libgomp.so
 rm %{buildroot}%{_libdir}/libiomp*.so
 rm %{buildroot}%{_libdir}/libarcher_static.a
 %endif
-
-# We don't care about applescript or sublime text
-rm %{buildroot}%{_datadir}/clang/*.applescript
-rm %{buildroot}%{_datadir}/clang/clang-format-sublime.py
 
 # Prepare for update-alternatives usage
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
@@ -1058,6 +1103,11 @@ sed -i "$(
     done
 )" %{buildroot}%{_libdir}/cmake/{llvm/LLVMExports,clang/ClangTargets}-relwithdebinfo.cmake
 
+# For libclang, have the CMake export list refer to the library via soname.
+# The original library might not be available. (We might have a newer version.)
+sed -i "s|\"\${_IMPORT_PREFIX}/%{_lib}/libclang.so.%{_relver}\"|\"\${_IMPORT_PREFIX}/%{_lib}/libclang.so.%{_soclang}\"|g" \
+    %{buildroot}%{_libdir}/cmake/clang/ClangTargets-relwithdebinfo.cmake
+
 # rpm macro for version checking
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
 cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
@@ -1078,14 +1128,15 @@ cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
 %_llvm_with_ffi %{with ffi}
 %_llvm_with_oprofile %{with oprofile}
 %_llvm_with_valgrind %{with valgrind}
-%_llvm_with_clang_scripts %{with clang_scripts}
 %_llvm_with_lldb %{with lldb}
 EOF
 
 # Don't use env in shebangs, and prefer python3. (https://www.python.org/dev/peps/pep-0394/#for-python-runtime-distributors)
-for script in %{buildroot}%{_bindir}/{{analyze,intercept}-build,clang-{format,tidy}-diff,git-clang-format,\
-hmaptool,run-{clang-tidy,find-all-symbols},scan-{build,build-py,view},opt-{diff,stats,viewer}} \
+for script in %{buildroot}%{_bindir}/opt-{diff,stats,viewer} \
+%if %{_plv} == %{_sonum}
+        %{buildroot}%{_bindir}/{{analyze,intercept}-build,clang-{format,tidy}-diff,git-clang-format,hmaptool,run-{clang-tidy,find-all-symbols},scan-{build,build-py,view}} \
         %{buildroot}%{_libexecdir_fallback}/{{analyze,intercept}-{c++,cc},{c++,ccc}-analyzer} \
+%endif
 %ifarch aarch64 x86_64
         %{buildroot}%{_libdir}/clang/%{_relver}/bin/hwasan_symbolize \
 %endif
@@ -1096,21 +1147,12 @@ done
 # Remove executable bit where not needed.
 chmod -x \
   %{buildroot}%{python3_sitelib}/optpmap.py \
+  %{buildroot}%{_datadir}/opt-viewer/style.css \
+%if %{_plv} == %{_sonum}
   %{buildroot}%{_datadir}/bash-completion/completions/clang \
   %{buildroot}%{_datadir}/clang/clang-{format,include-fixer,rename}.{el,py} \
-  %{buildroot}%{_datadir}/opt-viewer/style.css \
-  %{buildroot}%{_prefix}/lib/libear/ear.c
-
-%if !%{with clang_scripts}
-rm %{buildroot}%{_bindir}/{c++,ccc}-analyzer
-rm %{buildroot}%{_bindir}/clang-{doc,format-diff,tidy-diff}
-rm %{buildroot}%{_bindir}/git-clang-format
-rm %{buildroot}%{_bindir}/hmaptool
-rm %{buildroot}%{_bindir}/run-{clang-tidy,find-all-symbols}
-rm %{buildroot}%{_bindir}/scan-{build,view}
-rm %{buildroot}%{_datadir}/bash-completion/completions/clang
-rm -r %{buildroot}%{_datadir}/{clang,scan-build,scan-view}/
-rm %{buildroot}%{_mandir}/man1/scan-build.1
+  %{buildroot}%{_mandir}/man1/scan-build.1
+find %{buildroot}%{_prefix}/lib/{libear,libscanbuild} -type f -executable -exec chmod -x {} +
 %endif
 
 %fdupes -s %{buildroot}%{_docdir}/llvm
@@ -1187,8 +1229,10 @@ rm -rf ./stage1 ./build
 
 %post -n libLLVM%{_sonum} -p /sbin/ldconfig
 %postun -n libLLVM%{_sonum} -p /sbin/ldconfig
-%post -n libclang%{_sonum} -p /sbin/ldconfig
-%postun -n libclang%{_sonum} -p /sbin/ldconfig
+%post %{multisource libclang%{_soclang}} libclang%{_soclang} -p /sbin/ldconfig
+%postun %{multisource libclang%{_soclang}} libclang%{_soclang} -p /sbin/ldconfig
+%post -n libclang-cpp%{_sonum} -p /sbin/ldconfig
+%postun -n libclang-cpp%{_sonum} -p /sbin/ldconfig
 %post -n libLTO%{_sonum} -p /sbin/ldconfig
 %postun -n libLTO%{_sonum} -p /sbin/ldconfig
 %post -n clang%{_sonum}-devel -p /sbin/ldconfig
@@ -1203,8 +1247,6 @@ rm -rf ./stage1 ./build
 %postun gold -p /sbin/ldconfig
 %post devel -p /sbin/ldconfig
 %postun devel -p /sbin/ldconfig
-%post LTO-devel -p /sbin/ldconfig
-%postun LTO-devel -p /sbin/ldconfig
 
 %if %{with openmp}
 %post -n libomp%{_sonum}-devel -p /sbin/ldconfig
@@ -1212,14 +1254,14 @@ rm -rf ./stage1 ./build
 %endif
 
 %if %{with libcxx}
-%post -n libc++%{_socxx} -p /sbin/ldconfig
-%postun -n libc++%{_socxx} -p /sbin/ldconfig
-%post -n libc++abi%{_socxx} -p /sbin/ldconfig
-%postun -n libc++abi%{_socxx} -p /sbin/ldconfig
-%post -n libc++-devel -p /sbin/ldconfig
-%postun -n libc++-devel -p /sbin/ldconfig
-%post -n libc++abi-devel -p /sbin/ldconfig
-%postun -n libc++abi-devel -p /sbin/ldconfig
+%post %{multisource libcxx%{_socxx}} libc++%{_socxx} -p /sbin/ldconfig
+%postun %{multisource libcxx%{_socxx}} libc++%{_socxx} -p /sbin/ldconfig
+%post %{multisource libcxxabi%{_socxx}} libc++abi%{_socxx} -p /sbin/ldconfig
+%postun %{multisource libcxxabi%{_socxx}} libc++abi%{_socxx} -p /sbin/ldconfig
+%post %{multisource libcxx_devel} libc++-devel -p /sbin/ldconfig
+%postun %{multisource libcxx_devel} libc++-devel -p /sbin/ldconfig
+%post %{multisource libcxx_devel} libc++abi-devel -p /sbin/ldconfig
+%postun %{multisource libcxx_devel} libc++abi-devel -p /sbin/ldconfig
 %endif
 
 %if %{with polly}
@@ -1850,7 +1892,7 @@ fi
 %{_libdir}/clang/%{_relver}/share
 %endif
 
-%if %{with clang_scripts}
+%if %{_plv} == %{_sonum}
 %files -n clang-tools
 %license CREDITS.TXT LICENSE.TXT
 %{_bindir}/analyze-build
@@ -1894,9 +1936,14 @@ fi
 %{_libdir}/libLLVM*.so.*
 %{_libdir}/libRemarks.so.*
 
-%files -n libclang%{_sonum}
+%files %{multisource libclang%{_soclang}} libclang%{_soclang}
 %license CREDITS.TXT LICENSE.TXT
-%{_libdir}/libclang*.so.*
+%{_libdir}/libclang.so.%{_soclang}
+%{_libdir}/libclang.so.%{_relver}
+
+%files -n libclang-cpp%{_sonum}
+%license CREDITS.TXT LICENSE.TXT
+%{_libdir}/libclang-cpp.so.%{_sonum}
 %dir %{_libdir}/clang/
 %dir %{_libdir}/clang/%{_relver}/
 %{_libdir}/clang/%{_relver}/include
@@ -1928,21 +1975,21 @@ fi
 %endif
 
 %if %{with libcxx}
-%files -n libc++%{_socxx}
+%files %{multisource libcxx%{_socxx}} libc++%{_socxx}
 %license CREDITS.TXT LICENSE.TXT
 %{_libdir}/libc++.so.*
 
-%files -n libc++abi%{_socxx}
+%files %{multisource libcxxabi%{_socxx}} libc++abi%{_socxx}
 %license CREDITS.TXT LICENSE.TXT
 %{_libdir}/libc++abi.so.*
 
-%files -n libc++-devel
+%files %{multisource libcxx_devel} libc++-devel
 %license CREDITS.TXT LICENSE.TXT
 %{_libdir}/libc++.so
 %dir %{_includedir}/c++/
 %{_includedir}/c++/v%{_socxx}
 
-%files -n libc++abi-devel
+%files %{multisource libcxx_devel} libc++abi-devel
 %license CREDITS.TXT LICENSE.TXT
 %{_libdir}/libc++abi.so
 %endif
@@ -1953,6 +2000,7 @@ fi
 %{_bindir}/llvm-config
 %{_libdir}/libLLVM.so
 %{_libdir}/libLLVMTableGen.so
+%{_libdir}/libLTO.so
 %{_libdir}/libRemarks.so
 %{_includedir}/llvm/
 %{_includedir}/llvm-c/
@@ -1974,21 +2022,15 @@ fi
 %files -n clang%{_sonum}-doc
 %{_docdir}/llvm-clang/
 
-%files LTO-devel
-%license CREDITS.TXT LICENSE.TXT
-%{_libdir}/libLTO.so
-
 %files vim-plugins
 %license CREDITS.TXT LICENSE.TXT
 %doc utils/vim/README.vim
 %{_datadir}/vim/
 
-%if %{with clang_scripts}
-%files -n python3-clang
+%files -n python3-clang%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
 %{python3_sitelib}/clang/
 %{_docdir}/python-clang/
-%endif
 
 %if %{with lld}
 %files -n lld%{_sonum}

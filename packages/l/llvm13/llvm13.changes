@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Apr  3 13:42:27 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Split up Clang libraries: libclang.so is no longer so-versioned
+  alongside LLVM but will stay at libclang.so.13 for now. So we
+  put it into a separate package from libclang-cpp.so. Since we
+  can't have multiple LLVM versions generate the same package, we
+  prefix it for the non-default LLVM with a mechanism inspired by
+  the GCC packaging.
+- Patch exported clang/ClangTargets-relwithdebinfo.cmake to refer
+  to libclang only by soname, because the installed library might
+  be newer than the one originally build with the package.
+- Use the same mechanism to for libc++ and package Clang scripts
+  only for the default version. This means we'll no longer have to
+  touch the package when a new major version comes out.
+- Make sure we properly clean up the clang scripts if we're not
+  packaging them.
+- Let python3-clang use libclang.so.XX, which means we can always
+  build it and makes it depend on libclang instead of clang-devel.
+- Fix some rpmlint issues: we don't need explicit library
+  dependencies that are detected automatically, and we add proper
+  library dependencies to the *-devel packages.
+- Merge llvm-LTO-devel into llvm-devel. That's where the header
+  files already are, and they are hard to separate.
+- Let llvm-polly-devel depend on llvm-devel.
+- Remove libLTO and *-devel packages from baselibs, they don't
+  seem to be needed. We mostly need libLLVM and maybe libclang-cpp.
+- Consistently set host triple as *-suse-linux-gnu*.
+- Only suggest documentation packages.
+
+-------------------------------------------------------------------
+Wed Mar  9 17:53:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Add llvm-rust-mangle-for-fastcall.patch for rust 1.59.
+
+-------------------------------------------------------------------
+Sun Mar  6 21:24:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Fix armv6hl cpu architecture typo.
+
+-------------------------------------------------------------------
 Sat Feb 19 15:23:13 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Let clang-devel accept a newer version of clang-tools:
