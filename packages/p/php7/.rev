@@ -1226,4 +1226,14 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
     <comment>- Disable build with '-z now' as it breaks the php-mysql extension</comment>
     <requestid>967926</requestid>
   </revision>
+  <revision rev="113" vrev="4">
+    <srcmd5>599e0871d7156ab7d4b91cece490c810</srcmd5>
+    <version>7.4.28</version>
+    <time>1649949899</time>
+    <user>dimstar_suse</user>
+    <comment>- fpm %postrans: check whether sytemctl is available
+
+  [boo#1197994]</comment>
+    <requestid>969706</requestid>
+  </revision>
 </revisionlist>

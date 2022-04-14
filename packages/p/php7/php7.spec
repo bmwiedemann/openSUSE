@@ -1,5 +1,5 @@
 #
-# spec file for package php7
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -1346,7 +1346,9 @@ fi
 %endif
 
 %posttrans
+if [ -x /usr/bin/systemctl ]; then
 %_restart_on_update php-fpm.service
+fi
 %endif
 
 %if "%{flavor}" == "embed"

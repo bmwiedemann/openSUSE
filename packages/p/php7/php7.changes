@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 11 19:36:58 UTC 2022 - pgajdos@suse.com
+
+- fpm %postrans: check whether sytemctl is available
+
+-------------------------------------------------------------------
 Fri Apr  8 21:49:52 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Disable build with '-z now' as it breaks the php-mysql extension
+  [boo#1197994]
 
 -------------------------------------------------------------------
 Thu Mar 31 18:42:35 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
