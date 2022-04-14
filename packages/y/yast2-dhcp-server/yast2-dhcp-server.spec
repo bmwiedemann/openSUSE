@@ -17,7 +17,7 @@
 
 
 Name:           yast2-dhcp-server
-Version:        4.4.2
+Version:        4.5.0
 Release:        0
 Summary:        YaST2 - DHCP Server Configuration
 License:        GPL-2.0-only
