@@ -83,4 +83,12 @@
     <comment>- More specfile modernization.</comment>
     <requestid>832618</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>af8eddf1d2907d91ee3d6bc1a7097d93</srcmd5>
+    <version>3.0.0.g15</version>
+    <time>1649949789</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>967988</requestid>
+  </revision>
 </revisionlist>

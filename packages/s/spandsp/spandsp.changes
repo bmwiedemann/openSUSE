@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  2 07:34:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 3.0.0.g15
+  * Add ARMv7 NEON support
+  * Add V.32bis and V.34 support
+- Remove spandsp-autoconf.diff
+
+-------------------------------------------------------------------
 Sun Sep  6 14:04:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - More specfile modernization.

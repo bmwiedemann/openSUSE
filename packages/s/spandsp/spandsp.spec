@@ -1,7 +1,7 @@
 #
 # spec file for package spandsp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           spandsp
-%define lname	libspandsp2
-Summary:        A DSP library for Telephony and SoftFAX
-License:        LGPL-2.1-only AND GPL-2.0-only
-Group:          Development/Libraries/C and C++
-Version:        0.0.6
+%define lname	libspandsp3
+Version:        3.0.0.g15
 Release:        0
-URL:            http://soft-switch.org/
+Summary:        A DSP library for Telephony and SoftFAX
+License:        GPL-2.0-only AND LGPL-2.1-only
+Group:          Development/Libraries/C and C++
+URL:            https://github.com/freeswitch/spandsp
 
-Source:         http://soft-switch.org/downloads/spandsp/%name-%version.tar.gz
+Source:         %name-%version.tar.xz
 Source2:        baselibs.conf
-Patch1:         spandsp-autoconf.diff
 Patch2:         spandsp-raise-traintime-tolerance.diff
 Patch3:         spandsp-handle-international-dialstring-prefix.diff
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
+BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
@@ -60,7 +60,7 @@ Summary:        Development files for the SpanDSP library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
-Requires:       glibc-devel
+Requires:       libjpeg-devel
 Requires:       libtiff-devel
 
 %description devel
@@ -81,7 +81,7 @@ and a complete software FAX machine.
 
 %package doc
 Summary:        Documentation for the libspandsp API
-License:        LGPL-2.1-only AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Documentation/HTML
 BuildArch:      noarch
 
@@ -89,7 +89,7 @@ BuildArch:      noarch
 This package contains documentation for the libspandsp API.
 
 %prep
-%autosetup -n %name-0.0.6 -p1
+%autosetup -p1
 
 %build
 %define _lto_cflags %nil
@@ -117,6 +117,7 @@ mkdir -p "%buildroot%_docdir/%name"
 cp -a NEWS README DueDiligence ChangeLog doc/api/html \
 	"%buildroot/%_docdir/%name"
 rm -f "%buildroot/%_libdir"/*.la
+ln -s ../spandsp.h "%buildroot/%_includedir/spandsp/spandsp.h"
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -128,7 +129,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %_libdir/pkgconfig/*.pc
 
 %files -n %lname
-%_libdir/lib%name.so.2*
+%_libdir/lib%name.so.3*
 
 %files doc
 %_docdir/%name/
