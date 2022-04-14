@@ -21,7 +21,7 @@
 %define qmmp_ver_max 2.0.99
 %define mver    2.0
 Name:           qmmp-plugin-pack
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
