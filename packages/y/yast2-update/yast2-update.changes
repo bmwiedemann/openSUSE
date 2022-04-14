@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Wed Dec  1 07:50:46 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not crash after selecting the system to upgrade when using
