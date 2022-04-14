@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvmomi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/vmware/pyvmomi
 Source:         https://github.com/vmware/pyvmomi/archive/v%{version}.tar.gz#/pyvmomi-%{version}.tar.gz
 BuildRequires:  %{python_module fixtures >= 1.3.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module requests >= 2.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.7.3}
