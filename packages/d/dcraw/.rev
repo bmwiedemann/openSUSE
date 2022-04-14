@@ -281,4 +281,12 @@ Use option (b) from dcraw.c (forwarded request 111328 from babelworx)</comment>
     <comment>security fixes</comment>
     <requestid>828966</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>71c9076070962178a57f674bbf87ff8f</srcmd5>
+    <version>9.28.0</version>
+    <time>1649949904</time>
+    <user>dimstar_suse</user>
+    <comment>Miscellaneous security fixes + bring back jasper that survived clinical death</comment>
+    <requestid>969894</requestid>
+  </revision>
 </revisionlist>

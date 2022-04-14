@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 12 11:30:56 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * iowrappers.patch
+    + Written wrappers of fread(),fwrite(),fseek() library functions
+      which check their return values. If an input/output failure is
+      detected, dcraw immediately exits with non-zero status and
+      prints a descriptive message (bsc#1097973, CVE-2018-5805;
+      bsc#1097974, CVE-2018-5806; bsc#1117622, CVE-2018-19565;
+      bsc#1117517, CVE-2018-19566; bsc#1117512, CVE-2018-19567;
+      bsc#1117436, CVE-2018-19568)
+  * dcraw-CVE-2021-3624.patch
+    + Bail out if integer overflow happened and the allocated buffer
+      would be too small (bsc#1189642, CVE-2021-3624)
+
+-------------------------------------------------------------------
 Sun Aug 16 22:39:47 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 9.28.0:
@@ -12,12 +28,6 @@ Sun Aug 16 22:39:47 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
   * dcraw-CVE-2018-5801.patch (CVE-2018-5801, bsc#1084690)
 - Run spec-cleaner
   * Remove package groups
-
--------------------------------------------------------------------
-Mon Jul 22 08:18:01 UTC 2019 - mvetter@suse.com
-
-- bsc#1142308: Drop dependency on libjasper
-  Thus removing support for decoding RED camera movies
 
 -------------------------------------------------------------------
 Fri Aug  5 22:12:55 UTC 2016 - asterios.dramis@gmail.com

@@ -1,7 +1,7 @@
 #
 # spec file for package dcraw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,10 @@ Patch2:         dcraw-CVE-2017-14608.patch
 Patch3:         dcraw-CVE-2018-19655.patch
 # PATCH-FIX-UPSTREAM dcraw-CVE-2018-5801.patch
 Patch4:         dcraw-CVE-2018-5801.patch
+Patch5:         iowrappers.patch
+Patch6:         dcraw-CVE-2021-3624.patch
 BuildRequires:  gettext-runtime
+BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 Recommends:     %{name}-lang = %{version}
@@ -63,6 +66,8 @@ cp -a %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -fstack-protector-all"
@@ -71,12 +76,12 @@ for file in *.c ; do
   LDFLAGS=
   OTHERFLAGS=
   if test $file = dcraw.c ; then
-    LDFLAGS="-lm -ljpeg -llcms2 -DLOCALEDIR=\""%{_datadir}/locale"\""
+    LDFLAGS="-lm -ljasper -ljpeg -llcms2 -DLOCALEDIR=\""%{_datadir}/locale"\""
   fi
   if test $file = fuji_green.c ; then
     LDFLAGS="-lm"
   fi
-  gcc $CFLAGS $OTHERFLAGS -o ${file%.c} $file $LDFLAGS -DNO_JASPER
+  gcc $CFLAGS $OTHERFLAGS -o ${file%.c} $file $LDFLAGS
 done
 # Compile with -D_16BIT to rotate 48-bit PPM images
 gcc $CFLAGS -D_16BIT -o fujiturn16 fujiturn.c
