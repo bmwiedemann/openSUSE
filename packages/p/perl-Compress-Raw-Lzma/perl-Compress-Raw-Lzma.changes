@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 13 19:15:03 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- separate BuildRequires
+
+-------------------------------------------------------------------
+Wed Apr  6 03:07:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.103 3 April 2022
+        * No changes
+
+-------------------------------------------------------------------
 Sun Feb 21 03:07:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.101
@@ -338,4 +349,3 @@ Mon Sep 13 22:26:28 UTC 2010 - jw@novell.com
 Wed Jun 30 23:30:43 UTC 2010 - jw@novell.com
 
 - initial version 2.029 needed by perl-IO-Compress-Lzma
-
