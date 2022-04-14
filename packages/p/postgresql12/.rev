@@ -240,4 +240,19 @@ Upgrade to version 12.6:
 - Update the BuildIgnore section.</comment>
     <requestid>935206</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>90f720c8d6516839313dec0c54569b8c</srcmd5>
+    <version>12.10</version>
+    <time>1649949780</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1198166: Pin to llvm13 until the next patchlevel update.
+
+- bsc#1195680: Upgrade to 12.10:
+  * https://www.postgresql.org/docs/12/release-12-10.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround</comment>
+    <requestid>969863</requestid>
+  </revision>
 </revisionlist>
