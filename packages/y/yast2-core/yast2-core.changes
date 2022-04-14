@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Thu Jan 27 20:17:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - require glibc-locale for testsuite in cs_CS locale (bsc#1195390)
