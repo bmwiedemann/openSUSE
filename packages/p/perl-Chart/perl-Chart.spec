@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Chart
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Chart
-Version:        2.4.10
-Release:        0
 %define cpan_name Chart
-Summary:        Series of Charting Modules
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Chart/
-Source0:        http://www.cpan.org/authors/id/C/CH/CHARTGRP/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Chart
+Version:        2.401.1
+Release:        0
+License:        Artistic-2.0
+Summary:        Series of charting modules
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/L/LI/LICHTKIND/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Carp) >= 1.35
+BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(GD) >= 2
+Requires:       perl(Carp) >= 1.35
 Requires:       perl(GD) >= 2
 %{perl_requires}
 
@@ -47,17 +48,14 @@ it from the bottom up to be easy to modify. Like GIFgraph, Chart uses
 Lincoln Stein's GD module for all of its graphics primitives calls.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
-
-rm -f pm_to_blib
+%autosetup  -n %{cpan_name}-v%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -65,7 +63,7 @@ rm -f pm_to_blib
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc doc Documentation.pdf README TODO
+%doc Changes CONTRIBUTING doc Documentation.pdf README Readme.md TODO
+%license LICENSE
 
 %changelog
