@@ -116,6 +116,7 @@ needs to be modified.
       new package name.
    6. Change the "_sonum" tag in llvmX.spec to match the
       new major/minor versions. It should be of the form "X".
+      Change the "_itsme" definition to "%define _itsmeX 1".
    7. Change the "_minor" tag in llvmX.spec to match
       the new major/minor versions.  It should be of the
       form "X.0".
@@ -125,28 +126,30 @@ needs to be modified.
       the patches as described in PATCH-LEVEL UPDATES above.
   10. Confirm llvmX.spec builds successfully and there are
       no new rpmlint issues.
-  11. Check whether the .so number of "libc++.so.W.V" has
-      changed.  If so, change "_socxx" tag to match.
+  11. Check whether the .so numbers of "libc++.so.W.V" or
+      "libclang.so.X" have changed. If so, change the
+      "_socxx" or "_soclang" tag to match.
       It should be of the form "W" if the "V" value is 0
       or "W_V" if the "V" value is greater than 0.
   12. Confirm everything builds successfully and there are
       no new rpmlint issues.  Some patches may need to be 
       removed or rebased.
   13. Update the llvmX.changes file.
-2. Old llvmX package:
-   1. If the .so number of libc++.so.W.V has not changed,
-      remove the "%if" and %ifarch" tests around 
-      %bcond_without/%bcond_with libcxx in llvmX.spec
-      and make it always %bcond_with.  If the .so numbers
-      have changed, these can be left-as-is.
-   3. Change "%bcond_without clang_scripts" to
-      "%bcond_with clang_scripts" in llvmX.spec.
-   4. Confirm everything builds successfully and there are
-      no new rpmlint issues.
-   5. Update the llvmX.changes file.
-3. llvm package:
+2. llvm package:
    1. Update the "Version" tag to match the new llvmX
       version.
    2. Change the "_sonum" tag to match the one in the
       new "llvmX.spec" file.
    3. Update the llvm.changes file.
+3. Project config:
+   1. Change %product_libs_llvm_ver to X.
+   2. If one of the .so version numbers for libclang, libc++
+      or libc++abi changed, add a corresponding
+      Prefer: libcxxW
+      Prefer: libcxxabiW
+      Prefer: libclangW
+      for the new .so version and a corresponding definition
+      %product_libs_llvm_ver_libcxxW X
+      %product_libs_llvm_ver_libcxxabiW X
+      %product_libs_llvm_ver_libclangW X
+      with W the old .so version and X the old LLVM version.

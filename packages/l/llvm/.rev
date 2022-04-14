@@ -2018,4 +2018,29 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
     This release is API and ABI compatible with 13.0.0.</comment>
     <requestid>951462</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>402c7949d240ff282f92f4c8620c8f62</srcmd5>
+    <version>14.0.0</version>
+    <time>1649949770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/14.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/14.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/14.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/14.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/14.0.0/tools/lld/docs/ReleaseNotes.html
+- Now that python3-clang uses libclang.so.XX and is versioned, we
+  provide a metapackage for it to replace existing installations.
+- Merge llvm-LTO-devel into llvm-devel just like the underlying
+  versioned packages have been merged.
+- Remove baselibs.conf: it didn't do anything, and we shouldn't
+  need any of these to be imported.
+- Only suggest documentation packages.
+- Update README.packaging to reflect the new packaging strategy.
+  We don't need to touch the old package on version updates any
+  longer, but we need to change the project configuration.
+</comment>
+    <requestid>968065</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package llvm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 13
+%define _sonum 14
 %ifarch x86_64
 %define has_lldb 1
 # python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
@@ -31,12 +31,13 @@
 Obsoletes:      %{1}10%{?2:-%{2}} \
 Obsoletes:      %{1}11%{?2:-%{2}} \
 Obsoletes:      %{1}12%{?2:-%{2}} \
+Obsoletes:      %{1}13%{?2:-%{2}} \
 Obsoletes:      %{1}7%{?2:-%{2}} \
 Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
 
 Name:           llvm
-Version:        13.0.1
+Version:        14.0.0
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
@@ -44,14 +45,12 @@ Group:          Development/Languages/Other
 URL:            https://www.llvm.org/
 # This file documents the process for updating llvm
 Source0:        README.packaging
-Source101:      baselibs.conf
 # Avoid multiple providers error
 BuildRequires:  clang%{_sonum} = %{version}
 BuildRequires:  clang%{_sonum}-devel = %{version}
 BuildRequires:  clang%{_sonum}-doc = %{version}
 BuildRequires:  lld%{_sonum} = %{version}
 BuildRequires:  llvm%{_sonum} = %{version}
-BuildRequires:  llvm%{_sonum}-LTO-devel = %{version}
 BuildRequires:  llvm%{_sonum}-devel = %{version}
 BuildRequires:  llvm%{_sonum}-doc = %{version}
 BuildRequires:  llvm%{_sonum}-gold = %{version}
@@ -61,10 +60,11 @@ Requires:       llvm%{_sonum} = %{version}
 BuildRequires:  lldb%{_sonum} = %{version}
 BuildRequires:  lldb%{_sonum}-devel = %{version}
 %endif
+BuildRequires:  python3-clang%{_sonum} = %{version}
 %if 0%{?has_lldb_python}
 BuildRequires:  python3-lldb%{_sonum} = %{version}
 %endif
-Recommends:     %{name}-doc
+Suggests:       %{name}-doc
 # Mirrors ExcludeArch in llvm%{_sonum}
 ExcludeArch:    s390
 
@@ -84,8 +84,11 @@ don't require a specific LLVM version should depend on this.
 Summary:        Header Files for LLVM
 Group:          Development/Libraries/C and C++
 Requires:       llvm%{_sonum}-devel = %{version}
+Provides:       llvm-LTO-devel = %{version}
+Obsoletes:      llvm-LTO-devel <= %{version}
 Requires:       llvm-gold
 %obsolete_llvm_versioned llvm devel
+%obsolete_llvm_versioned llvm LTO-devel
 
 %description devel
 This package contains library and header files needed to develop
@@ -114,10 +117,10 @@ Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 URL:            https://clang.llvm.org/
 Requires:       clang%{_sonum} = %{version}
-Recommends:     clang-doc
 Provides:       llvm-clang = %{version}
 Obsoletes:      llvm-clang < %{version}
 Provides:       llvm-emacs-plugins
+Suggests:       clang-doc
 
 %description -n clang
 This package contains the clang (C language) frontend for LLVM.
@@ -157,20 +160,6 @@ This package contains documentation for the Clang compiler.
 This package is a dummy package that depends on the version of
 clang-doc that openSUSE currently supports.  Packages that
 don't require a specific Clang version should depend on this.
-
-%package LTO-devel
-Summary:        Link-time optimizer for LLVM (devel package)
-Group:          Development/Libraries/C and C++
-Requires:       llvm%{_sonum}-LTO-devel = %{version}
-%obsolete_llvm_versioned llvm LTO-devel
-
-%description LTO-devel
-This package contains the link-time optimizer for LLVM.
-(development files)
-
-This package is a dummy package that depends on the version of
-llvm-LTO-devel that openSUSE currently supports.  Packages that
-don't require a specific LLVM version should depend on this.
 
 %package gold
 Summary:        Gold linker plugin for LLVM
@@ -245,6 +234,16 @@ This package contains the development files for LLDB.
 This package is a dummy package that depends on the version of
 lldb-devel that openSUSE currently supports.  Packages that
 don't require a specific LLDB version should depend on this.
+
+%package -n python3-clang
+Summary:        Python bindings for libclang
+Group:          Development/Libraries/Python
+Requires:       python3-clang%{_sonum}
+BuildArch:      noarch
+
+%description -n python3-clang
+This package contains the Python bindings to clang (C language)
+frontend for LLVM.
 
 %package -n python3-lldb
 Summary:        Python bindings for liblldb
@@ -333,9 +332,6 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %files -n clang-doc
 %doc README
 
-%files LTO-devel
-%doc README
-
 %files vim-plugins
 %doc README
 
@@ -348,13 +344,14 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 
 %files -n lldb-devel
 %doc README
-
 %endif
+
+%files -n python3-clang
+%doc README
 
 %if 0%{?has_lldb_python}
 %files -n python3-lldb
 %doc README
-
 %endif
 
 %files -n lld

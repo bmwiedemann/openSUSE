@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr  3 14:13:45 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 14.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/14.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/14.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/14.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/14.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/14.0.0/tools/lld/docs/ReleaseNotes.html
+
+-------------------------------------------------------------------
+Sun Apr  3 13:42:27 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Now that python3-clang uses libclang.so.XX and is versioned, we
+  provide a metapackage for it to replace existing installations.
+- Merge llvm-LTO-devel into llvm-devel just like the underlying
+  versioned packages have been merged.
+- Remove baselibs.conf: it didn't do anything, and we shouldn't
+  need any of these to be imported.
+- Only suggest documentation packages.
+- Update README.packaging to reflect the new packaging strategy.
+  We don't need to touch the old package on version updates any
+  longer, but we need to change the project configuration.
+
+-------------------------------------------------------------------
 Thu Feb  3 21:56:28 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 13.0.1.
