@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  6 03:13:41 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.084
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.084		2022-04-02	T. R. Wyant
+      Require PPI 1.238 for postfix deref support, and recode the
+      postfix deref logic in terms of 1.238's functionality.
+
+      Parse '@{[ ... ]}' as code, not interpolation.  This is more in line
+      with what it actually represents, and allows correct versioning of
+      postfix dereferences.  But is is an incompatible change.
+
+-------------------------------------------------------------------
 Fri Mar 18 03:08:02 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.083

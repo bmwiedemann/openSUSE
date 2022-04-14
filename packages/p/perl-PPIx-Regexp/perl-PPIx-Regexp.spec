@@ -18,7 +18,7 @@
 
 %define cpan_name PPIx-Regexp
 Name:           perl-PPIx-Regexp
-Version:        0.083
+Version:        0.084
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse regular expressions
@@ -29,12 +29,12 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.420000
-BuildRequires:  perl(PPI::Document) >= 1.117
-BuildRequires:  perl(PPI::Dumper) >= 1.117
+BuildRequires:  perl(PPI::Document) >= 1.238
+BuildRequires:  perl(PPI::Dumper) >= 1.238
 BuildRequires:  perl(Task::Weaken)
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(PPI::Document) >= 1.117
-Requires:       perl(PPI::Dumper) >= 1.117
+Requires:       perl(PPI::Document) >= 1.238
+Requires:       perl(PPI::Dumper) >= 1.238
 Requires:       perl(Task::Weaken)
 %{perl_requires}
 
