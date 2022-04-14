@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20220324.fca4619%{git_version}
+Version:        84.87+git20220411.adfb912%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -81,8 +81,7 @@ Provides:       aaa_base:/etc/DIR_COLORS
 
 %description extras
 The parts of aaa_base that should be installed by default but are not
-strictly required to run a system. (Shell aliases, bash completions
-and convenience hacks).
+strictly required to run a system. (bash completions and convenience hacks).
 
 %package malloccheck
 Summary:        SUSE Linux Base Package (malloc checking)
@@ -184,7 +183,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/etc/profile.d/profile.sh
 /usr/etc/profile.d/xdg-environment.csh
 /usr/etc/profile.d/xdg-environment.sh
-/usr/etc/profile.d/complete.bash
 /usr/etc/profile.d/alias.ash
 /usr/etc/profile.d/alias.bash
 /usr/etc/profile.d/alias.tcsh
@@ -226,6 +224,7 @@ mkdir -p %{buildroot}%{_fillupdir}
 /etc/skel/.emacs
 /etc/skel/.inputrc
 %dir /usr/lib/base-scripts
+/usr/etc/profile.d/complete.bash
 /usr/lib/base-scripts/backup-rpmdb
 /usr/lib/base-scripts/backup-sysconfig
 /usr/lib/base-scripts/check-battery

@@ -3997,4 +3997,13 @@
   * add spec file</comment>
     <requestid>964641</requestid>
   </revision>
+  <revision rev="487" vrev="1">
+    <srcmd5>9be53b7f81c6bc70ed6a0477510ac661</srcmd5>
+    <version>84.87+git20220411.adfb912</version>
+    <time>1649949767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20220411.adfb912:
+  * move bash completion back to -extras (bsc#1187213)</comment>
+    <requestid>968369</requestid>
+  </revision>
 </revisionlist>

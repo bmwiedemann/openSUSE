@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 11 07:35:07 UTC 2022 - lnussel@suse.de
+
+- Update to version 84.87+git20220411.adfb912:
+  * move bash completion back to -extras (bsc#1187213)
+
+-------------------------------------------------------------------
 Thu Mar 24 11:21:41 UTC 2022 - dmueller@suse.com
 
 - Update to version 84.87+git20220324.fca4619:
