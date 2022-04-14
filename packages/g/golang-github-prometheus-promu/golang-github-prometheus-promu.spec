@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?rhel}
+# Fix ERROR: No build ID note found in
+%undefine _missing_build_ids_terminate_build
+%endif
 
 %{go_nostrip}
 
@@ -28,7 +32,11 @@ URL:            https://github.com/prometheus/promu
 Source:         promu-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
+%if 0%{?rhel}
+BuildRequires:  golang >= 1.15
+%else
 BuildRequires:  golang(API) = 1.15
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
 
