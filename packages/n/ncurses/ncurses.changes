@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  4 07:48:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220402
+  + amend extended_captype(), returning CANCEL if a string is explicitly
+    cancelled.
+  + make description-fields distinct -TD
+
+-------------------------------------------------------------------
+Mon Mar 28 07:40:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220326
+  + update teken -TD
+  + add teken-16color, teken-vt and teken-sc -TD
+  + add a few missing details for vte-2018 (report by Robert Lange) -TD
+
+-------------------------------------------------------------------
 Mon Mar 21 13:52:37 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Make extended status line support of xterm a switch (boo#1197313)
