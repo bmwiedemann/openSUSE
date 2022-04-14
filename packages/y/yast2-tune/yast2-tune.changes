@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Thu Dec 16 13:18:07 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed heading if component is empty or nil (bsc#1193809)
