@@ -17,6 +17,9 @@
 #
 
 
+%define _dwz_low_mem_die_limit  40000000
+%define _dwz_max_die_limit     200000000
+
 # changed with every update
 # orig_version vs. mainver: To have beta-builds
 # FF70beta3 would be released as FF69.99

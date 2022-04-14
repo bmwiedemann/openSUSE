@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 12 07:30:18 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Set memory limits for DWZ to 4x.
+
+-------------------------------------------------------------------
 Thu Mar 17 14:39:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip slow workers, this is a tough build job 
