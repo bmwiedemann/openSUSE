@@ -178,7 +178,7 @@ export PATHBU=$PATH
 #Remove -m64 from CFLAGS, it causes VST build failure.
 export CFLAGS="-O2 -g -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables"
 %define optflags $CFLAGS
-%if 0%{?suse_version} > 1501
+%if 0%{?suse_version} > 1501 || 0%{?sle_version} > 150300
 #Add workaround for boo#1179734 to create the missing libwine.so symlink
 export WINELIB=$(find %{_libdir} -name libwine.so.?)
 export WINELIB32=$(find %{_prefix}/lib -name libwine.so.?)
@@ -209,7 +209,7 @@ export CFLAGS="$CFLAGS -fPIC"
   -DCMAKE_SKIP_RPATH=OFF \
   -Wno-dev
 export PATH=$PATHBU
-%if 0%{?suse_version} > 1501
+%if 0%{?suse_version} > 1501 || 0%{?sle_version} > 150300
 sed -i 's/\/wine\/libwinecrt0.a//' plugins/vst_base/CMakeFiles/vstbase.dir/build.make
 sed -i 's/libwinecrt0.a\/wine\///' plugins/vst_base/CMakeFiles/vstbase.dir/build.make
 %endif
