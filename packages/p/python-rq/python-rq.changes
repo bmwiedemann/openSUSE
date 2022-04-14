@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 14 08:52:04 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Mon Jan 17 18:35:11 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.10.1 
