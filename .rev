@@ -2421,4 +2421,14 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   (boo#1195386, CVE-2022-23853, boo#1196501, CVE-2022-25255):</comment>
     <requestid>958069</requestid>
   </revision>
+  <revision rev="129" vrev="5">
+    <srcmd5>a4fe61c26be7080825a20f44c9b41b0d</srcmd5>
+    <version>5.15.2+kde294</version>
+    <time>1649949819</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mitigate-FORTIFY_SOURCE-3.patch that should mitigate
+  new -D_FORTIFY_SOURCE=3 level as analyzed in GCC bug:
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105078. (forwarded request 969342 from marxin)</comment>
+    <requestid>969356</requestid>
+  </revision>
 </revisionlist>
