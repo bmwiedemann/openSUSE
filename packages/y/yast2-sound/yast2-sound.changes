@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Wed Feb  2 09:19:14 UTC 2022 - David Diaz <dgonzalez@suse.com>
 
 - Support uncompressed as well as xz, zstd, and gzip compressed
