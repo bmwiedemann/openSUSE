@@ -1,7 +1,7 @@
 #
 # spec file for package osslsigncode
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Summary:        Platform-independent tool for Authenticode signing of EXE/CAB files
-License:        GPL-3.0
-Group:          Productivity/Security
-Url:            http://osslsigncode.sourceforge.net/
 Name:           osslsigncode
-Version:        1.7.1
+Version:        2.3.0
 Release:        0
-Source0:        http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-%{version}.tar.gz
+Summary:        Platform-independent tool for Authenticode signing of EXE/CAB files
+License:        GPL-3.0-only
+Group:          Productivity/Security
+URL:            http://osslsigncode.sourceforge.net/
+Source0:        https://github.com/mtrojnar/osslsigncode/releases/download/2.3/osslsigncode-%{version}.tar.gz
+Source1:        https://github.com/mtrojnar/osslsigncode/releases/download/2.3/osslsigncode-%{version}.tar.gz.asc
+Source2:        https://raw.githubusercontent.com/mtrojnar/osslsigncode/master/LICENSE.txt
+Source3:        https://raw.githubusercontent.com/mtrojnar/osslsigncode/master/COPYING.txt
+Source99:       %{name}.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libgsf-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto) >= 1.1
 BuildRequires:  pkgconfig(libcurl)
-Patch0:         0001-Make-code-work-with-OpenSSL-1.1.patch
 
 %description
 osslsigncode is a small utility for placing signatures on Microsoft cabinate
@@ -38,18 +41,18 @@ files and executables.
 
 %prep
 %setup -q
-%patch0 -p1
+
 %build
+cp -p %{SOURCE2} %{SOURCE3} .
 %configure
-make
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-, root, root)
-%license COPYING
-%doc README
-%{_bindir}/*
+%license COPYING.txt LICENSE.txt
+%{_bindir}/%{name}
+%{_datadir}/bash-completion/completions/%{name}.bash
 
 %changelog
