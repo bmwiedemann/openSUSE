@@ -1,7 +1,130 @@
 -------------------------------------------------------------------
+Thu Apr 14 07:44:51 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Added libopus build dependency and "-DCMAKE_SKIP_RPATH:BOOL=on"
+  to fix Leap builds.
+
+-------------------------------------------------------------------
+Wed Apr 13 23:35:32 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 3.1.3
+  * remove patches, now upstream:
+    0001-Adds-an-option-to-disable-Conan.patch
+    0001-Fixes-wxwidgets-fixup-script.patch
+    0001-Scope-libraries-required-by-the-optional-features.patch
+    Refresh missing-include.patch
+  * Improved performance of loading in projects
+  * Added snap guides when resizing clips
+  * Added new shortcuts for looping:
+    Shift+L for "Set Loop to Selection",
+    Shift+Alt+L for "Clear Looping Region"
+  * Added a new selection region indicator in the timeline
+  * Re-added the Quick Play indicator
+  * Lot of bug fixes
+
+-------------------------------------------------------------------
 Mon Jan 31 08:17:38 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Added conditional %post and %postun for Leap, to fix boo#1194977
+
+-------------------------------------------------------------------
+Fri Dec  3 17:09:54 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- prefer more system packages
+  - sqlite3
+  - portmidi
+  - portaudio
+- add some missing includes: missing-include.patch
+- make sure we no longer strip the binaries: added
+  no-more-strip.patch
+- audacity_use_ffmpeg=linked no longer works. switch to loaded.
+- bump from c++11 to c++17 (as the package now requires a c++17
+  compiler)
+- drop patches:
+  0001-Adds-an-option-to-disable-Conan.patch
+  0001-Fixes-wxwidgets-fixup-script.patch
+  0001-Scope-libraries-required-by-the-optional-features.patch
+  Fixes-GCC11-compatibility.patch
+  audacity-misc-errors.patch
+- refresh patches:
+  audacity-no_buildstamp.patch
+  audacity-no_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
+Fri Dec  3 17:08:54 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.1.3~beta1
+  This is a hotfix release. It improves project performance
+  significantly (up to 50x) compared to 3.1.0, and fixes the
+  following bugs:
+  - Fixes a crash when releasing a clip handle #2147
+
+-------------------------------------------------------------------
+Fri Dec  3 17:04:17 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.1.2
+  This is a hotfix release. It fixes the following bugs:
+  - Fixed UTF8 support in clip titles #2135
+  - Fixed data loss when joining clips #2123
+  - Fixed a crash with exporting resampled tracks #2136
+  - Fixed a crash when opening projects with very small double
+    values #2128
+- Update to 3.1.1
+  This is a hotfix release. It fixes the following bugs:
+  Other than that, this release is identical to Audacity 3.1.0
+  - Fixed FFMPEG imports only importing the left channel #2046
+  - Improved Audacity's performance when many clips are present
+  - Fixed a crash with detach at silences #2072
+  - Fixed clip name corruption when applying effects to adjacent
+    clips #1889
+  - Fixed a crash with the time shift commands #2061
+  - Fixed custom themes not working #2043
+- Update to 3.1.0
+  This release introduces clip handles, smart clips and playback
+  looping as its major new features.
+  Smaller changes:
+  - Context menus have been added in more places.
+  - In the preferences, Tracks > Track behaviors > Editing a clip
+    can move other clips is now disabled by default
+  - The spectrogram defaults have been changed: scale type to Mel
+    (was Linear), top of scale to 20000 Hz (was 8000 Hz), window
+    size to 2048 (was 1024), and zero padding to 2 (was 1).
+  - The main volume controls no longer change the system volume.
+  - Raw Import now will remember the previously used settings.
+    Automatic detection of the format now is a button.
+  - A journaling feature has been added for QA purposes.
+  - Generate > Tone now supports triangle waves.
+  - There now exist "What's new" screens for the update and welcome
+    dialogs.
+  - Timeline Quick Play for regions and locked regions have been
+    replaced by playback looping.
+  - The shortcut to rename labels and clip names has temporarily
+    been hardcoded to Ctrl+F2.
+  - This conflicts with the default xfce shortcut to change
+    workspaces. Library changes:
+  - FFMPEG now supports avformat 55, 57 and 58.
+  - PortAudio has been updated to version 19.7 and devendored (so
+    it can be built against 19.6).
+  - Several libraries (expat, libsndfile, ...) have been
+    devendored. The CMakeLists.txt lists which versions we build
+    against. Fixed Bugs: There are some 50 issues closed labeled as
+    bug. Among them:
+  - AppImages support localization. #1382
+  - Progress bars for Nyquist generators have been made more
+    accurate. #1856
+  - Rhythm tracks can no longer drift off-time by 2ms over 9
+    minutes; they're now sample-accurate. #1853
+  - The play button has regained a pixel or two to become a
+    triangle once more. #1792
+  - Auto Duck has been made way more accurate and should no longer
+    miss sections above the threshold. #1389
+  - The manual now only is included in the executable once #1917
+  - Shift-clicking a menu item no longer opens the settings menu
+    #1358
+  - FFMPEG no longer segfaults ALSA #1170
+  - Audacity no longer crashes when macros output directory is set
+    to C:\ #1174
+  - A bouncing ball of death problem has been fixed #1312
 
 -------------------------------------------------------------------
 Tue Nov 30 06:17:14 UTC 2021 - Dave Plater <davejplater@gmail.com>

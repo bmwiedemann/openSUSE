@@ -1,20 +1,7 @@
-Index: b/lib-src/portaudio-v19/qa/loopback/src/paqa.c
+Index: audacity-Audacity-3.1.3-beta-1/src/AboutDialog.cpp
 ===================================================================
---- a/lib-src/portaudio-v19/qa/loopback/src/paqa.c
-+++ b/lib-src/portaudio-v19/qa/loopback/src/paqa.c
-@@ -1460,7 +1460,7 @@ int main( int argc, char **argv )
- 	int justMath = 0;
-     char *executableName = argv[0];
- 
--	printf("PortAudio LoopBack Test built " __DATE__ " at " __TIME__ "\n");
-+	printf("PortAudio LoopBack Test built " "17 March 2017" " at " "23:15" "\n");
- 
- 	if( argc > 1 ){
- 		printf("running with arguments:");
-Index: b/src/AboutDialog.cpp
-===================================================================
---- a/src/AboutDialog.cpp
-+++ b/src/AboutDialog.cpp
+--- audacity-Audacity-3.1.3-beta-1.orig/src/AboutDialog.cpp
++++ audacity-Audacity-3.1.3-beta-1/src/AboutDialog.cpp
 @@ -71,7 +71,7 @@ hold information about one contributor t
  #endif
  
@@ -24,7 +11,7 @@ Index: b/src/AboutDialog.cpp
  #else
  #define REV_IDENT (XO("No revision identifier was provided").Translation())
  #endif
-@@ -597,8 +597,8 @@ void AboutDialog::PopulateInformationPag
+@@ -598,8 +598,8 @@ void AboutDialog::PopulateInformationPag
        << XO("The Build")
        << wxT("</h3>\n<table>"); // start build info table
  
@@ -35,16 +22,3 @@ Index: b/src/AboutDialog.cpp
     AddBuildinfoRow(&informationStr, XO("Commit Id:"), REV_IDENT );
  
     auto buildType =
-Index: b/CMakeLists.txt
-===================================================================
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -19,7 +19,7 @@ endif ()
- # still link to the alpha manual online.
- 
- # Set this value to 0 for alpha, 1 for beta, 2 for release builds
--set( AUDACITY_BUILD_LEVEL 0 CACHE STRING "0 for alpha, 1 for beta, 2 for release builds" )
-+set( AUDACITY_BUILD_LEVEL 2 CACHE STRING "0 for alpha, 1 for beta, 2 for release builds" )
- 
- # The Audacity version
- # Increment as appropriate after release of a new version, and set back

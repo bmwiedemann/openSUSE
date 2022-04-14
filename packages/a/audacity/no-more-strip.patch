@@ -1,0 +1,25 @@
+Index: audacity-Audacity-3.1.3-beta-1/cmake-proxies/cmake-modules/AudacityFunctions.cmake
+===================================================================
+--- audacity-Audacity-3.1.3-beta-1.orig/cmake-proxies/cmake-modules/AudacityFunctions.cmake
++++ audacity-Audacity-3.1.3-beta-1/cmake-proxies/cmake-modules/AudacityFunctions.cmake
+@@ -440,13 +440,13 @@ function( audacity_module_fn NAME SOURCE
+    target_link_options( ${TARGET} PRIVATE ${LOPTS} )
+    target_link_libraries( ${TARGET} PUBLIC ${LIBRARIES} )
+ 
+-   if( NOT CMAKE_SYSTEM_NAME MATCHES "Windows" )
+-      add_custom_command(
+-         TARGET "${TARGET}"
+-         POST_BUILD
+-         COMMAND $<IF:$<CONFIG:Debug>,echo,strip> -x $<TARGET_FILE:${TARGET}>
+-      )
+-   endif()
++   # if( NOT CMAKE_SYSTEM_NAME MATCHES "Windows" )
++   #    add_custom_command(
++   #       TARGET "${TARGET}"
++   #       POST_BUILD
++   #       COMMAND $<IF:$<CONFIG:Debug>,echo,strip> -x $<TARGET_FILE:${TARGET}>
++   #    )
++   # endif()
+ 
+    if( NOT REAL_LIBTYPE STREQUAL "MODULE" )
+       if( CMAKE_SYSTEM_NAME MATCHES "Windows" )

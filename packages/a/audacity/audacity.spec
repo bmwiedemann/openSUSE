@@ -17,32 +17,31 @@
 
 
 Name:           audacity
-Version:        3.0.5
+Version:        3.1.3
 Release:        0
+%define pkg_version 3.1.3
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://audacityteam.org/
 #               https://github.com/audacity/audacity/archive/refs/tags/Audacity-3.0.4.tar.gz
-Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
+Source:         https://github.com/audacity/audacity/archive/Audacity-%{pkg_version}.tar.gz
 #Source:         https://www.fosshub.com/Audacity.html/%%{name}-minsrc-%%{version}.tar.xz
 Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
-Patch1:         audacity-misc-errors.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
-Patch2:         audacity-no_return_in_nonvoid.patch
-Patch3:         0001-Adds-an-option-to-disable-Conan.patch
-Patch4:         0001-Scope-libraries-required-by-the-optional-features.patch
-Patch5:         0001-Fixes-wxwidgets-fixup-script.patch
-Patch6:         Fixes-GCC11-compatibility.patch
-BuildRequires:  cmake >= 3.15
+Patch1:         audacity-no_return_in_nonvoid.patch
+Patch2:         missing-include.patch
+Patch3:         no-more-strip.patch
+BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 #!BuildIgnore:  gstreamer-0_10-plugins-base
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
+BuildRequires:  portmidi-devel
 BuildRequires:  wxWidgets-3_2-nostl-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
@@ -59,12 +58,15 @@ BuildRequires:  pkgconfig(lilv-0) >= 0.24.6
 BuildRequires:  pkgconfig(lv2) >= 1.16.0
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(serd-0) >= 0.30.2
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(sord-0) >= 0.16.4
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(soxr)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(sratom-0) >= 0.6.4
 BuildRequires:  pkgconfig(suil-0)  >= 0.10.6
 BuildRequires:  pkgconfig(twolame)
@@ -100,7 +102,7 @@ physical memory size can be edited.
 %lang_package
 
 %prep
-%setup -q -n %{name}-Audacity-%{version}
+%setup -q -n %{name}-Audacity-%{pkg_version}
 %autopatch -p1
 
 cp -f %{SOURCE1} LICENSE_NYQUIST.txt
@@ -133,15 +135,19 @@ then
 export PKG_CONFIG_PATH="`echo $PWD`:%{_libdir}/pkgconfig"
 fi
 export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb $(wx-config --cflags)"
-export CXXFLAGS="$CFLAGS -std=gnu++11"
+export CXXFLAGS="$CFLAGS -std=gnu++17"
 %cmake \
+       -DCMAKE_SKIP_RPATH:BOOL=on \
+       -DAUDACITY_REV_TIME=$(date -u -d "@${SOURCE_DATE_EPOCH}" "+%Y-%m-%dT%H:%M:%SZ") \
+       -DAUDACITY_REV_LONG=STRING:%{version} \
+       -DAUDACITY_BUILD_LEVEL=1 \
        -DCMAKE_MODULE_LINKER_FLAGS:STRING="$(wx-config --libs)" \
        -DCMAKE_SHARED_LINKER_FLAGS:STRING="$(wx-config --libs)" \
        -Daudacity_conan_enabled=Off \
        -Daudacity_has_networking:BOOL=Off \
        -Daudacity_lib_preference:STRING=system \
        -Duse_lame:STRING=system \
-       -Daudacity_use_ffmpeg:STRING=linked
+       -Daudacity_use_ffmpeg:STRING=loaded
 
 make %{?_smp_mflags}
 
@@ -156,7 +162,6 @@ mv -f %{buildroot}%{_datadir}/pixmaps/gnome-mime-application-x-audacity-project.
   %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes/application-x-audacity-project.xpm
 rm -rf %{buildroot}%{_datadir}/pixmaps/
 rm -rf %{buildroot}%{_datadir}/doc
-cp -v lib-src/portmixer/LICENSE.txt portmixer.LICENSE.txt
 
 # Why make install installs these is a mystery
 rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu-suse-nostl.so.*
@@ -182,10 +187,10 @@ ldconfig %{_libdir}/%{name}
 %files
 %defattr(-,root,root)
 %doc README.txt
-%license LICENSE.txt LICENSE_NYQUIST.txt portmixer.LICENSE.txt
+%license LICENSE.txt LICENSE_NYQUIST.txt
 %{_bindir}/%{name}
 %{_libdir}/%{name}
-#%%{_libdir}/%%{name}/modules/mod-script-pipe.so
+%{_libdir}/%{name}/modules/mod-script-pipe.so
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*

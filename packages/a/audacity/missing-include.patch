@@ -1,0 +1,24 @@
+Index: b/libraries/lib-utility/BufferedStreamReader.h
+===================================================================
+--- a/libraries/lib-utility/BufferedStreamReader.h	2021-12-22 17:35:36.000000000 +0200
++++ b/libraries/lib-utility/BufferedStreamReader.h	2022-04-14 09:56:19.275619728 +0200
+@@ -13,6 +13,7 @@
+ #include <vector>
+ #include <cstddef>
+ #include <cstdint>
++#include <cstddef>
+ #include <type_traits>
+ 
+ /*!
+Index: b/libraries/lib-xml/XMLAttributeValueView.cpp
+===================================================================
+--- a/libraries/lib-xml/XMLAttributeValueView.cpp	2021-12-22 17:35:36.000000000 +0200
++++ b/libraries/lib-xml/XMLAttributeValueView.cpp	2022-04-14 09:56:19.275619728 +0200
+@@ -12,6 +12,7 @@
+ #include "FromChars.h"
+ 
+ #include <numeric>
++#include <limits>
+ 
+ XMLAttributeValueView::XMLAttributeValueView(bool value) noexcept
+     : mInteger(value)
