@@ -1,7 +1,7 @@
 #
 # spec file for package python-restview
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-restview
-Version:        2.9.2
+Version:        3.0.0
 Release:        0
 Summary:        ReStructuredText viewer
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://mg.pov.lt/restview/
 Source:         https://files.pythonhosted.org/packages/source/r/restview/restview-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/mgedmin/restview/commit/a1ded30a87c65f3ce59a18497a7fc5099317c2be New mock release returns False from patcher.stop()
-Patch0:         false.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,11 +32,10 @@ Requires:       python-docutils
 Requires:       python-pygments
 Requires:       python-readme_renderer
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readme_renderer}

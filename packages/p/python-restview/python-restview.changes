@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 14 07:20:58 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.0.0
+  3.0.0 (2022-01-12)
+  - Drop support for Python 2.7.
+  2.9.3 (2021-11-29)
+  - Fix incompatibility with docutils 0.18.1 that resulted in "Cannot embed
+    stylesheet" errors (`issue 61 <https://github.com/mgedmin/restview/pull/61>`_,
+    contributed by Sébastien Besson).
+  - Add support for Python 3.8, 3.9, and 3.10.
+  - Drop support for Python 3.5.
+- deleted patches
+  - false.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Apr  1 12:58:17 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add false.patch to fix recent build failure
