@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 14 07:44:51 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.4.8
+  * #204 Fix not implemented error by @Inveracity
+  * #211 Fix access option.temp_dir correctly in the restore script by @mishawakerman
+  * #213 Fix bug in Trio's _read_exactly() by @mehaase
+  * #238 Fix Trio Connection Pool Error by @murali-shankar
+  * #183 Allowing dash in table namesby @hchac
+  * #182 do not close socket on EWOULDBLOCK by @tommilligan
+
+-------------------------------------------------------------------
 Tue May 19 09:27:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

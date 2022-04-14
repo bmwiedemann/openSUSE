@@ -1,7 +1,7 @@
 #
 # spec file for package python-rethinkdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rethinkdb
-Version:        2.4.5
+Version:        2.4.8
 Release:        0
 Summary:        Python driver library for the RethinkDB database server
 License:        Apache-2.0
@@ -31,10 +31,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 # /SECTION
@@ -71,6 +70,8 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/rethinkdb/rethinkdb-python/issues/168
+sed -i 's:from mock:from unittest.mock:' tests/test_*.py
 %pytest
 
 %post
