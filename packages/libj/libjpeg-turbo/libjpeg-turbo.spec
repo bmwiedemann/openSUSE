@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg-turbo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 %define asan_build 0
 %define debug_build 0
-%define srcver   2.1.2
 %define major    8
 %define minor    2
 %define micro    2
@@ -28,13 +27,13 @@
 %define tmicro   0
 %define tlibver  %{tmajor}.%{tminor}.%{tmicro}
 Name:           libjpeg-turbo
-Version:        %{srcver}
+Version:        2.1.3
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause
 URL:            https://sourceforge.net/projects/libjpeg-turbo
-Source0:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz
-Source1:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz.sig
+Source0:        https://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz
+Source1:        https://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz.sig
 Source2:        libjpeg-turbo.keyring
 Source3:        baselibs.conf
 Patch1:         libjpeg-turbo-1.3.0-tiff-ojpeg.patch
@@ -133,14 +132,14 @@ MYCFLAGS="$MYCFLAGS -O0 -g"
 exit 0
 %endif
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-%if 0%{?fedora_version}
+%if 0%{?fedora_version} || 0%{?centos_version}
   ctest --output-on-failure --force-new-ctest-process
 %else
   %ctest
 %endif
 
 %install
-%if 0%{?fedora_version}
+%if 0%{?fedora_version} || 0%{?centos_version}
   make DESTDIR=%{buildroot} install/fast
 %else
   %cmake_install

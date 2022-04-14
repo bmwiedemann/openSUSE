@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg62-turbo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,16 @@
 %define major   62
 %define minor   3
 %define micro   0
-%define srcver  2.1.2
 %define libver  %{major}.%{minor}.%{micro}
+%define srcver  2.1.3
 Name:           libjpeg62-turbo
 Version:        %{srcver}
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause
 URL:            https://sourceforge.net/projects/libjpeg-turbo
-Source0:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz
-Source1:        http://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz.sig
+Source0:        https://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz
+Source1:        https://downloads.sf.net/libjpeg-turbo/libjpeg-turbo-%{version}.tar.gz.sig
 Source2:        libjpeg-turbo.keyring
 Source3:        baselibs.conf
 Patch1:         libjpeg-turbo-1.3.0-tiff-ojpeg.patch
