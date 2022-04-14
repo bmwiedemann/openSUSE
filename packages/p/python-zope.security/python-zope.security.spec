@@ -1,7 +1,7 @@
 #
-# spec file for package python-zope.security
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.security%{psuffix}
-Version:        5.1.1
+Version:        5.2
 Release:        0
 Summary:        Zope Security Framework
 License:        ZPL-2.1
@@ -67,7 +67,6 @@ policies on Python objects.
 
 %prep
 %setup -q -n zope.security-%{version}
-rm -rf *.egg-info
 
 %build
 %python_build
@@ -76,18 +75,22 @@ rm -rf *.egg-info
 %if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand rm %{buildroot}%{$python_sitearch}/zope/security/*.c
 %endif
 
 %if %{with test}
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{_bindir}/zope-testrunner-%{$python_bin_suffix} -vvv --test-path src
+%python_expand %{_bindir}/zope-testrunner-%{$python_bin_suffix} -vvv --test-path src
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitearch}/*
+%dir %{python_sitearch}/zope
+%{python_sitearch}/zope/security
+%{python_sitearch}/zope.security-%{version}*-info
+%{python_sitearch}/zope.security-%{version}*-nspkg.pth
 %endif
 
 %changelog
