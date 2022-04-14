@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 12 03:07:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.013
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.013 2022-04-11 23:58:42+02:00
+
+      - Change License to MIT because of included libyaml
+      - Add tag_directives entry to events (needed by yamltidy)
+
+-------------------------------------------------------------------
 Wed Sep  9 03:11:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.012
