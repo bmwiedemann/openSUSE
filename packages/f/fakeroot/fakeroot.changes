@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Mar 25 18:03:42 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 1.28
+  * Revert commit "Use fixed-width members in fake_msg"
+  * Annotate sharutils dependency <!nocheck>. (Closes: #982188)
+  * Wrap the "stat" library call. Closes: #1001961
+  * Work around segfault on ppc64el. Closes: #995393
+  * Includes patch from lemonsqueeze to improve fakeroot-tcp
+    performance by setting TCP_NODELAY.  closes: #1003596.
+  * Includes patch from Samuel Thibault to handle _STAT_VER on
+    GNU/Hurd.  closes: #1006151.
+  * autoconf 2.71 required
+  * Add also-wrap-stat-library-call.patch (deb#1001961)
+  * Remove fakeroot-1.20-eglibc-fts-without-LFS.patch
+  * Remove fakeroot-drop-tartest.patch
+  * Remove 0001-glibc-2.33-compatibility-fixes.patch
+  * Remove fakeroot-1.20-lib32.patch
+  * Remove stat-ver-riscv.patch
+  
+-------------------------------------------------------------------
 Sun May 16 21:18:43 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - stat-ver-riscv.patch: fix _STAT_VER on riscv

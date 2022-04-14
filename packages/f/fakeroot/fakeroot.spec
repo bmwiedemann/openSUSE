@@ -1,7 +1,7 @@
 #
 # spec file for package fakeroot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,23 @@
 
 
 Name:           fakeroot
-Version:        1.25.3
+Version:        1.28
 Release:        0
 Summary:        Wrapper that gives a fake root environment
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            http://fakeroot.alioth.debian.org/
-Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz#/%{name}_%{version}.orig.tar.gz
 Source99:       baselibs.conf
-Patch0:         %{name}-1.20-lib32.patch
-Patch1:         %{name}-1.20-eglibc-fts-without-LFS.patch
 # PATCH-FIX-UPSTREAM fakeroot-1.21-fix-shell-in-fakeroot.patch (deb#828810)
-Patch2:         %{name}-1.21-fix-shell-in-fakeroot
-Patch3:         fakeroot-drop-tartest.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-glibc-2.33-compatibility-fixes.patch
-Patch5:         stat-ver-riscv.patch
+Patch0:         fakeroot-1.21-fix-shell-in-fakeroot
+#PATCH-FIX-UPSTREAM also-wrap-stat-library-call.patch (deb#1001961)
+Patch1:         also-wrap-stat-library-call.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 # user(daemon)/group(sys) is required for t.tar testsuite
+BuildRequires:  intltool
+BuildRequires:  autoconf
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
@@ -58,7 +56,7 @@ had the user really been root.
 %autosetup -p1
 
 %build
-autoreconf -fi
+./bootstrap
 pushd doc
 po4a -k 0 --rm-backups --variable "srcdir=../doc/" po4a/po4a.cfg
 popd
