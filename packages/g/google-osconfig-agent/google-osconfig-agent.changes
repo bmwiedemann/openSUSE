@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 17 08:49:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220314.01
+  * Support COS on arm64 (#426)
+- from version 20220314.00
+  * Fix previous PR: exec.CommandContext cannot be reused (#425)
+- from version 20220304.00
+  * Update the error message when an exec task is run on Windows
+    without an interpreter (#423)
+  * Fix string that apt-get returns when requiring downgrade (#422)
+  * e2e_tests: fix patch test rerun (#421)
+  * Add --allow-downgrades flag to apt-get calls when it
+    fails because of wanting to downgrade a package (#418)
+  * Create e2e test that runs apt-get in a state that makes
+    it downgrade a package (#420)
+  * e2e_tests: update OS targets, adjust retries (#419)
+  * Create change_group.yaml (#416)
+- from version 20220215.00
+  * Add regex support to package exclusion in OS Patch (#415)
+
+-------------------------------------------------------------------
 Mon Feb 14 12:48:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220209.00 (bsc#1195437, bsc#1195438)
