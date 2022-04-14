@@ -1,7 +1,7 @@
 #
 # spec file for package sratom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://drobilla.net/software/sratom/
 Source0:        http://download.drobilla.net/sratom-%{version}.tar.bz2
 Source1:        baselibs.conf
+Patch0:         fix-FORTIFY_SOURCE3.patch
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
@@ -55,7 +56,7 @@ Obsoletes:      libsratom-0-devel < %{version}
 Development files for libsratom.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS='%{optflags} -std=gnu99'

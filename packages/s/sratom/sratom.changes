@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 12 08:35:33 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add fix-FORTIFY_SOURCE3.patch that is suggested to upstream:
+  gh#lv2/sratom#6
+
+-------------------------------------------------------------------
 Mon Mar  8 23:14:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.8:
