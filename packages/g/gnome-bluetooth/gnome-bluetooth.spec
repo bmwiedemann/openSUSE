@@ -42,6 +42,8 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.14
 # Require bluez (mandatory, as per readme, bnc#622946)
 Requires:       bluez >= 5
+# ensure BT is enabled at startup (glgo#GNOME/gnome-bluetooth#110)
+Recommends:     bluez-auto-enable-devices
 
 %description
 A set of graphical utilities to setup, monitor and use Bluetooth devices.

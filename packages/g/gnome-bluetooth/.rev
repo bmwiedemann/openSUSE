@@ -804,4 +804,13 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963573</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>34a1d76bb1d0c62404f177f3258011ef</srcmd5>
+    <version>42.0</version>
+    <time>1649949828</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommends bluez-auto-enable-devices to ensure BT is enabled
+  at startup (glgo#GNOME/gnome-bluetooth#110). (forwarded request 969381 from fcrozat)</comment>
+    <requestid>969388</requestid>
+  </revision>
 </revisionlist>
