@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 10 18:42:17 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.2.5:
+  * Prevent an graph refresh or update as much as possible while in
+    some canvas editing business.
+  * Possibly fix a random segfault when rendering connection lines
+    ahead of time.
+
+-------------------------------------------------------------------
 Sat Mar 19 13:12:19 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.2.4:
