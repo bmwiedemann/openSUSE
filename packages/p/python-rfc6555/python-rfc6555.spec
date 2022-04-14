@@ -1,7 +1,7 @@
 #
 # spec file for package python-rfc6555
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-rfc6555
-Version:        0.0.0
+Version:        0.1.0
 Release:        0
 Summary:        Python implementation of the Happy Eyeballs Algorithm described in RFC 6555
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/sethmlarson/rfc6555
-Source:         https://files.pythonhosted.org/packages/source/r/rfc6555/rfc6555-%{version}.tar.gz
-Patch0:         dependencies.patch
+Source:         https://github.com/sethmlarson/rfc6555/archive/refs/tags/v%{version}.tar.gz#/rfc6555-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,7 +48,6 @@ integration into other projects.
 
 %prep
 %setup -q -n rfc6555-%{version}
-%patch0 -p1
 
 %build
 %python_build
