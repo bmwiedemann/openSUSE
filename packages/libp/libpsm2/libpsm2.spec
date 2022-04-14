@@ -108,7 +108,7 @@ rm  %{buildroot}/usr/lib/%name/libpsm2-compat.cmds
 # remove static library
 rm  %{buildroot}%{_libdir}/libpsm2.a
 
-%pre
+%pre compat
 # Avoid restoring outdated stuff in posttrans
 for _f in %{?modprobe_d_files}; do
     [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
@@ -120,7 +120,7 @@ done
 %post compat -p /sbin/ldconfig
 %postun compat -p /sbin/ldconfig
 
-%posttrans
+%posttrans compat
 # Migration of modprobe.conf files to _modprobedir
 for _f in %{?modprobe_d_files}; do
     [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \

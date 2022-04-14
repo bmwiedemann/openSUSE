@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 11 20:24:48 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Run modprobe.conf handling scriptlets in -compat subpackage (bsc#1198322) 
+
+-------------------------------------------------------------------
 Fri Mar  4 12:41:50 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - move modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639)
