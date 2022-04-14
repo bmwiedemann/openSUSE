@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 11 03:06:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.65
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+  2.65  - fix rt.cpan.org#132893: clarified license, now licensed
+          under the Artistic License 2.0.
+        - fix rt.cpan.org#139261: correctly include directories.
+        - fix rt.cpan.org#118746: remove the comma from legal
+  	    variable names, added mandatory start characters a-zA-Z0-9,
+          added a section in the POD to clarify this.
+  	  - fix rt.cpan.org#119160: fix IfDefine code. Thanks for the patch.
+  2.64  - fix rt.cpan.org#142095: copy default hash, avoid modification.
+        - the Catalyst folks who hosted the source of this module
+          closed or moved the repository, I have not been informed and
+          have therefore lost all history of the module. So I moved
+          to github (https://github.com/TLINDEN/Config-General).
+          Thanks for nothing, Catalyst.
+
+-------------------------------------------------------------------
 Sun Jul 31 05:09:04 UTC 2016 - coolo@suse.com
 
 - updated to 2.63
