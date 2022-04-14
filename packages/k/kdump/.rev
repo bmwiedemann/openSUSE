@@ -1067,4 +1067,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
 </comment>
     <requestid>966472</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>e20ce6f0fcebb8b0a57d41794a114862</srcmd5>
+    <version>1.0.2+git12.g1a68ca5</version>
+    <time>1649949857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969482</requestid>
+  </revision>
 </revisionlist>

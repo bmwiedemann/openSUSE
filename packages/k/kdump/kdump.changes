@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 12 14:41:25 UTC 2022 - Jiri Bohac <jbohac@suse.com>
+
+- remount filesystem r/w for fadump (bsc#1197125)
+- stop reloading FADump on CPU hot-add event
+
+-------------------------------------------------------------------
 Thu Mar 31 15:14:17 UTC 2022 - Jiri Bohac <jbohac@suse.com>
 
 - pull sources directly from git using obs_scm
