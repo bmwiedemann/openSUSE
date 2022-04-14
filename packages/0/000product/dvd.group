@@ -4901,8 +4901,6 @@
     <package name="yast2-nfs-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-nfs-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-nfs-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="yast2-nis-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="yast2-nis-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-ntp-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-online-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-online-update-frontend" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

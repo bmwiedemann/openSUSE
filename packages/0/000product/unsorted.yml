@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -1413,6 +1413,7 @@ unsorted:
   - bowtie: [x86_64] 
   - bowtie2: [x86_64] 
   - bpftool 
+  - bpftool-rebuild 
   - bpftrace: [x86_64] 
   - bpftrace-tools: [x86_64] 
   - bpm-tools 
@@ -9441,7 +9442,7 @@ unsorted:
   - libSavitar-devel 
   - libSavitar0 
   - libSciTokens0 
-  - libSimGearCore-2020_3_12 
+  - libSimGearCore-2020_3_13 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoapySDR0_8 
@@ -19019,7 +19020,6 @@ unsorted:
   - pegtl-devel-doc 
   - peksystray 
   - pen 
-  - pencil 
   - pentaho-libxml-javadoc 
   - pentaho-reporting-flow-engine-javadoc 
   - pentobi 
@@ -24577,6 +24577,7 @@ unsorted:
   - python310-sphinx-argparse 
   - python310-sphinx-book-theme 
   - python310-sphinx-bootstrap-theme 
+  - python310-sphinx-click 
   - python310-sphinx-feature-classification 
   - python310-sphinx-inline-tabs 
   - python310-sphinx-issues 
@@ -27578,6 +27579,7 @@ unsorted:
   - python38-sphinx-autodoc-typehints 
   - python38-sphinx-book-theme 
   - python38-sphinx-bootstrap-theme 
+  - python38-sphinx-click 
   - python38-sphinx-feature-classification 
   - python38-sphinx-inline-tabs 
   - python38-sphinx-issues 
@@ -30767,6 +30769,7 @@ unsorted:
   - python39-sphinx-autodoc-typehints 
   - python39-sphinx-book-theme 
   - python39-sphinx-bootstrap-theme 
+  - python39-sphinx-click 
   - python39-sphinx-feature-classification 
   - python39-sphinx-inline-tabs 
   - python39-sphinx-issues 
@@ -43248,6 +43251,7 @@ unsorted:
   - yast2-installation-control 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
+  - yast2-nis-client 
   - yast2-online-update-configuration 
   - yast2-pkg-bindings-devel-doc 
   - yast2-rdp 
