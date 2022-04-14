@@ -16,14 +16,14 @@
 #
 
 
-%define sover  3_10_1
+%define sover  3_10_2
 %ifarch %{arm}
 # boo#1182440
 %define _lto_cflags %{nil}
 %endif
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.1.1
+Version:        3.10.2.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -66,6 +66,7 @@ BuildRequires:  python3-click-plugins
 BuildRequires:  python3-devel >= 3.6.5
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-cairo
+BuildRequires:  python3-jsonschema
 BuildRequires:  python3-mako >= 1.0.7
 BuildRequires:  python3-numpy-devel >= 1.17.4
 BuildRequires:  python3-pyaml >= 3.11
@@ -87,6 +88,7 @@ BuildRequires:  typelib(cairo) = 1.0
 # gnuradio-companion dependencies
 Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
+Requires:       python3-jsonschema
 Requires:       typelib(Gtk) = 3.0
 # gr_modtool dependencies
 Requires:       python3-click
@@ -98,6 +100,8 @@ Requires:       python3-qt5
 # gr_filter dependencies
 Requires:       python3-scipy
 Requires:       python3-pyqtgraph
+# gr_network dependencies
+Requires:       python3-pyzmq
 %if %{with docs}
 BuildRequires:  doxygen
 BuildRequires:  mathjax

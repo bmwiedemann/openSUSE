@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Apr 11 20:26:33 UTC 2022 - Mikhail Paulyshka <me@mixaill.net>
+
+- Added python3-jsonschema to build and runtime dependencies
+- Added python3-pyzmq to runtime dependencies
+- Update to version 3.10.2.0
+  * gnuradio-runtime
+    + Correct size/usage for single-mapped buffers (part of the new Custom Buffers feature).
+  * grc
+    + Improve discovery of xterm and related programs.
+    + Save generated hierarchical block code to the block library instead of the directory containing the current GRC flowgraph.
+    + New JSON Config and YAML Config blocks that load configuration variables from files at runtime. Those variables may then be used in block parameters.
+    + Store the GNU Radio version in flowgraph metadata when saving.
+    + Minor change in Python evaluation code to allow affinity, minoutbuf and maxoutbuf to be adjusted via script parameters.
+  * Build system and packaging
+    + Require C++-17 for gnuradio-runtime and code compiled against it (via cmake flags).
+    + Add pythonschema to build- and run-time dependencies.
+  * gr-blocks
+    + Add exponential distribution to Message Strobe Random block’s delay selection.
+    + Quiet down debug messages in File Sink.
+    + Skip alignment check in File Source when the input file is not seekable (e.g., it is a pipe).
+  * gr-filter
+    + Fix crash in Rational Resampler logging
+  * gr-digital
+    + Add generic CRC blocks: CRC Append and CRC Check.
+  * gr-qtgui
+    + Improve text/background color on Range widget.
+    + Digital Number Control emits message with new, instead of previous, value.
+    + Message Edit Box sends message only when return is pressed, rather than whenever focus is lost.
+    + Vector Sink allows legend to be disabled.
+    + Type error fixes (Python 3.10 is stricter about int casting).
+  * gr-trellis
+    + Provide Python bindings for PCCC Encoder and Viterbi Combo.
+  * gr-vocoder
+    + Add C++ generation support to gr-vocoder
+  * Code generation tools
+    + Support strongly-typed enums in Python bindings
+
+-------------------------------------------------------------------
 Fri Mar 26 18:03:17 UTC 2022 - Mikhail Paulyshka <me@mixaill.net>
 
 - Added spdlog and thrift to dependencies
