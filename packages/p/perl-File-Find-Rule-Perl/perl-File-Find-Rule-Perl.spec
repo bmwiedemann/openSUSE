@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Find-Rule-Perl
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-File-Find-Rule-Perl
-Version:        1.15
-Release:        0
 %define cpan_name File-Find-Rule-Perl
+Name:           perl-File-Find-Rule-Perl
+Version:        1.16
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Common rules for searching for Perl things
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/File-Find-Rule-Perl/
-Source0:        http://www.cpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Find::Rule) >= 0.20
@@ -40,23 +38,23 @@ Requires:       perl(Parse::CPAN::Meta) >= 1.38
 
 %description
 I write a lot of things that muck with Perl files. And it always annoyed me
-that finding "perl files" requires a moderately complex the
-File::Find::Rule manpage pattern.
+that finding "perl files" requires a moderately complex File::Find::Rule
+pattern.
 
 *File::Find::Rule::Perl* provides methods for finding various types
 Perl-related files, or replicating search queries run on a distribution in
 various parts of the CPAN ecosystem.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
 # MANUAL no testing (broken within build env)
-#%{__make} test
+#make test
 
 %install
 %perl_make_install
@@ -64,7 +62,6 @@ various parts of the CPAN ecosystem.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes
 
 %changelog

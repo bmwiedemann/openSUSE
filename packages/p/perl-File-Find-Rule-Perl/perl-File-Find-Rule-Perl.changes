@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  6 03:09:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-File-Find-Rule-Perl/Changes
+
+  1.16    2022-03-29
+          - fix test when run after 'make clean' (RT#142008)
+
+-------------------------------------------------------------------
 Thu May  7 07:13:18 UTC 2015 - coolo@suse.com
 
 - updated to 1.15
