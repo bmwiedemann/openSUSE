@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 12 10:49:53 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 056+suse.268.g0b2bd662:
+  * fix(resume): do not add this module if there is no suitable swap (bsc#1198095)
+  * feat(resume): improve sanity check by verifying volatile swap (bsc#1198095)
+  * fix(resume): correct call to block_is_netdevice function (bsc#1197737)
+  * fix(lvm): add missing grep requirement (bsc#1198271)
+
+-------------------------------------------------------------------
 Wed Apr 06 06:44:26 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 056+suse.261.gf83268d5:
