@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 12 08:40:50 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add 0001-Use-D_FORTIFY_SOURCE-instead-of-Wp-D_FORTIFY_SOURCE.patch
+  that enables future switch to -D_FORTIFY_SOURCE=3
+  (gl#spice/usbredir#60).
+
+-------------------------------------------------------------------
 Wed Jan  5 11:20:04 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop unknown llvm-fuzz meson paramerter: meson 0.60 is strict and

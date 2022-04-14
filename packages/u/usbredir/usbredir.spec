@@ -26,6 +26,7 @@ Group:          System/Libraries
 URL:            https://www.spice-space.org/usbredir.html
 Source:         https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz
 Source1:        https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz.sig
+Patch0:         0001-Use-D_FORTIFY_SOURCE-instead-of-Wp-D_FORTIFY_SOURCE.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.44
 BuildRequires:  meson >= 0.48
@@ -73,7 +74,7 @@ attached. See usb-redirection-protocol.md for the description / definition
 of this protocol.
 
 %prep
-%setup -n %{name}-%{version}
+%autosetup -n %{name}-%{version}
 
 %build
 %meson

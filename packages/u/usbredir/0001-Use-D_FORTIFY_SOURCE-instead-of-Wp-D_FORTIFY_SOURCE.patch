@@ -1,0 +1,27 @@
+From 8110301ebb44bb30ca5afecc4c8a2b3b383a3622 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Mon, 4 Apr 2022 13:21:03 +0200
+Subject: [PATCH] Use -D_FORTIFY_SOURCE instead of -Wp,-D_FORTIFY_SOURCE.
+
+Do not use -Wp as one can't then easily overwrite the macro with:
+-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 25c985b..6ed4dc1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -15,7 +15,7 @@ cc_flags = [
+     '--param=ssp-buffer-size=4',
+ ]
+ if host_machine.system() != 'windows'
+-    cc_flags += [ '-Wp,-D_FORTIFY_SOURCE=2' ]
++    cc_flags += [ '-D_FORTIFY_SOURCE=2' ]
+     if not get_option('stack_protector').disabled()
+         cc_flags += [ '-fstack-protector' ]
+     endif
+-- 
+2.35.1
+
