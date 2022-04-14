@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZODB
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/Z/ZODB/ZODB-%{ver
 BuildRequires:  %{python_module BTrees >= 4.2.0}
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module manuel}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module persistent-devel >= 4.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -49,7 +48,7 @@ Requires:       python-zc.lockfile
 Requires:       python-zodbpickle >= 1.0.1
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

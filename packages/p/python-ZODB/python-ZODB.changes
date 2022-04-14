@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 14 08:57:22 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Fri Jun 12 03:50:06 UTC 2020 - Jason Craig <os-dev@jacraig.com>
 
 - Update to 5.6.0:
