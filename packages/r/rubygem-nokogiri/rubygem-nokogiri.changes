@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 12 09:18:33 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 1.13.4
+  - Security
+    - Address CVE-2022-24836, a regular expression
+      denial-of-service vulnerability. See GHSA-crjr-9rc5-ghw8 for
+      more information.
+    - [CRuby] Vendored zlib is updated to address CVE-2018-25032.
+      See GHSA-v6gp-9mmm-c6p5 for more information.
+    - [JRuby] Vendored Xerces-J (xerces:xercesImpl) is updated to
+      address CVE-2022-23437. See GHSA-xxx9-3xcr-gjj3 for more
+      information.
+    - [JRuby] Vendored nekohtml (org.cyberneko.html) is updated to
+      address CVE-2022-24839. See GHSA-gx8x-g87m-h5q6 for more
+      information.
+  - Dependencies
+    - [CRuby] Vendored zlib is updated from 1.2.11 to 1.2.12. (See
+      LICENSE-DEPENDENCIES.md for details on which packages
+      redistribute this library.)
+    - [JRuby] Vendored Xerces-J (xerces:xercesImpl) is updated from
+      2.12.0 to 2.12.2.
+    - [JRuby] Vendored nekohtml (org.cyberneko.html) is updated
+      from a fork of 1.9.21 to 1.9.22.noko2. This fork is now
+      publicly developed at
+      https://github.com/sparklemotion/nekohtml
+
+-------------------------------------------------------------------
 Thu Mar 10 19:05:21 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - use mini_portile2 2.8
@@ -29,6 +56,11 @@ Thu Mar 10 18:44:28 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
   * [CRuby] Vendored libxml2 is updated from 2.9.12 to 2.9.13. Full changelog is available at https://download.gnome.org/sources/libxml2/2.9/libxml2-2.9.13.news
   * [CRuby] Vendored libxslt is updated from 1.1.34 to 1.1.35. Full changelog is available at https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.35.news
+
+-------------------------------------------------------------------
+Thu Jan 27 17:40:19 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix ruby versions for the leap build
 
 -------------------------------------------------------------------
 Tue Jan 25 18:12:51 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>

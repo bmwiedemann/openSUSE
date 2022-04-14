@@ -24,14 +24,14 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.13.3
+Version:        1.13.4
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-%define rb_build_versions  ruby27     ruby30
-%define rb_build_ruby_abis ruby:2.7.0 ruby:3.0.0
+%if 0%{?suse_version} == 1500
+%define rb_build_versions  ruby27
+%define rb_build_ruby_abis ruby:2.7.0
 %endif
 BuildRequires:  %{rubygem mini_portile2 >= 2.8}
 BuildRequires:  %{rubygem pkg-config}
