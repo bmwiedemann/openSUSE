@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 14 11:12:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220411.00
+  * pam login: split conditions for logging (#83)
+
+-------------------------------------------------------------------
 Tue Feb  8 15:47:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220205.00 (bsc#1195437, bsc#1195438)
