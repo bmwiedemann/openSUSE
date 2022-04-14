@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  8 14:06:22 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add mitigate-FORTIFY_SOURCE-3.patch that should mitigate
+  new -D_FORTIFY_SOURCE=3 level as analyzed in GCC bug:
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105078.
+
+-------------------------------------------------------------------
 Mon Feb 14 10:44:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update patch after it was merged to dev upstream and fix another
