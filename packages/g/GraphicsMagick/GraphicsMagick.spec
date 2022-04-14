@@ -1,7 +1,7 @@
 #
 # spec file for package GraphicsMagick
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.37
+Version:        1.3.38
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
@@ -37,8 +37,8 @@ Patch1:         GraphicsMagick-disable-insecure-coders.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
+BuildRequires:  ghostscript
 BuildRequires:  ghostscript-fonts-std
-BuildRequires:  ghostscript-mini
 %if 0%{?suse_version} >= 1315
 BuildRequires:  libjbig-devel
 BuildRequires:  libltdl-devel
