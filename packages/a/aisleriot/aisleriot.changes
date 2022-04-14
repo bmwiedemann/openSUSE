@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 13 16:09:18 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.22.22
+  + Add support for loading user-installed themes.
+  + Fix build with guile 2.2.
+  + Fix build with meson 0.60.
+  + Updated translations.
+- Drop 4bf6fcf5c8043adfcadd948e678cc68f150cc998.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Wed Feb  2 09:23:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 4bf6fcf5c8043adfcadd948e678cc68f150cc998.patch: Fix build

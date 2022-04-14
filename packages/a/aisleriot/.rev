@@ -524,4 +524,18 @@
     <comment></comment>
     <requestid>951424</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e69b025bc819e177f3fe363c0feeb17f</srcmd5>
+    <version>3.22.22</version>
+    <time>1649949932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.22.22
+  + Add support for loading user-installed themes.
+  + Fix build with guile 2.2.
+  + Fix build with meson 0.60.
+  + Updated translations.
+- Drop 4bf6fcf5c8043adfcadd948e678cc68f150cc998.patch: fixed
+  upstream.</comment>
+    <requestid>970067</requestid>
+  </revision>
 </revisionlist>
