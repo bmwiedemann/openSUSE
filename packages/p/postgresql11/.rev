@@ -276,4 +276,19 @@ Upgrade to version 11.11:
 - Update the BuildIgnore section.</comment>
     <requestid>935207</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2120f431e957020d73adb96b0ce05196</srcmd5>
+    <version>11.15</version>
+    <time>1649949782</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1198166: Pin to llvm13 until the next patchlevel update.
+
+- bsc#1195680: Upgrade to 11.15:
+  * https://www.postgresql.org/docs/11/release-11-15.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround</comment>
+    <requestid>969864</requestid>
+  </revision>
 </revisionlist>
