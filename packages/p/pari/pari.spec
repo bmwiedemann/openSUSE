@@ -1,7 +1,7 @@
 #
 # spec file for package pari
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ power series, algebraic numbers, and transcendental functions.\
 %global sover 7
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.13.3
+Version:        2.13.4
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
@@ -137,7 +137,7 @@ mv %buildroot%_datadir/%name/examples %buildroot%_defaultdocdir/%name
 %_bindir/*
 %_datadir/%name
 %_libdir/%name.cfg
-%_mandir/*/*.1*
+%_mandir/*/*.1%{?ext_man}
 
 %files doc
 %_defaultdocdir/%name/

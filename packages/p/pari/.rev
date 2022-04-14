@@ -224,4 +224,12 @@
   * Fp_issquare(0, p) would return 0                          [F71] (forwarded request 928639 from urbic)</comment>
     <requestid>928684</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5f3f9fe51c76af318c873f9365f671ea</srcmd5>
+    <version>2.13.4</version>
+    <time>1649949967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.13.4</comment>
+    <requestid>970168</requestid>
+  </revision>
 </revisionlist>

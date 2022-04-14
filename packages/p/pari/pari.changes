@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Apr 13 18:58:43 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to release 2.13.4
+  * For z=x+wy a t_QUAD, z.pol returned the modulus z.mod instead
+    of the t_POL x+'w*y
+  * allow eulerianpol(0) (= 1)
+  * allow polylog(0,x) (was broken when eulerianpol
+    was introduced)
+  * concat(t_LIST,t_LIST) was leaking memory
+  * missing type checks in ellchangepoint (led to a SIGSEGV)
+  * polsturm(-25*x^4+2*x^3+99*x^2-44*x-132,[-oo,-4])
+    returned garbage
+  * ellheight(E,,Q) led to a SIGSEGV
+  * besselj(80,66) led to an infinite loop
+  * lfun(1, 0.0) "normalizing a series with a 0 leading term"
+  * (0. + O(x) == 1) returned 'true'
+  * idealismaximal(nfinit(x),Mat(2)) -> 0
+  * O(29^(-1)) == 1 was FALSE (same for -1)
+  * Mod(0, 2*x^0)  == 1 was FALSE (same for -1)
+  * [X11] resizing a window could keep traces
+    of previous drawing
+  * x->x+0x1 was not displayed correctly
+  * bnfinit(Q) was not using current precision
+  * polresultant(t_POL with t_RFRAC coefs,...) led to internal
+    errors
+  * znchardecompose(znstar(2,1),[],2) led to SIGSEGV
+  * missing roots in nfroots(t_POL,)
+  * factorpadic: ensure leading coefs are powers of p
+  * nfsnf returned wrong results
+  * rare SEGV occurred in nfdisc
+  * factor((Mod(1,2)*((t^2+1)*x^4+(t^4+1)*x^2+1)))
+    led to a division by 0
+  * minpoly(Mod(1/(x-(t+1))*Mod(1,2),(t+1)*x^2+t*x+1))
+    led to an error
+  * factor(Mod(1,2)*x^5+a*x^3) led to division by 0
+  * nfgrunwaldwang: fix infinite loop
+  * ti=thueinit(3*x^3 + 5*x^2 - 14*x + 54,1); thue(ti,1)
+    led to an error
+  * bnrclassfield led to incorrect result when fundamental
+    units are large
+
+-------------------------------------------------------------------
 Tue Nov  2 00:19:07 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to release 2.13.3. Fixed
