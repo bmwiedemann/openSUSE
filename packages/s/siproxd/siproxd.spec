@@ -1,7 +1,7 @@
 #
 # spec file for package siproxd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Source1:        susefirewall2.%{name}
 Source2:        %name.init.in
 Source3:        %name.logrotate
 Source4:        %name.8.gz
-Source5:        syslog-ng.conf.addon	
+Source5:        syslog-ng.conf.addon
 Source6:        siproxd.service
 # PATCH-FIX-FOR-UPSTREAM -- http://sourceforge.net/tracker/?func=detail&aid=3086321&group_id=60374&atid=493974
 #Code to detect libltdl was placed before the code that populates the library locations.
@@ -60,7 +60,6 @@ BuildRequires:  texlive-times
 %if %suse_version > 1315
 BuildRequires:  texlive-kpathsea
 BuildRequires:  texlive-metafont
-BuildRequires:  texlive-texconfig
 BuildRequires:  texlive-wasy
 %endif
 Requires:       logrotate

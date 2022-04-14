@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 14:33:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop texlive-texconfig BuildRequires: package no longer exists
+  and the build succeeds without it too.
+
+-------------------------------------------------------------------
 Wed Nov 17 08:26:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

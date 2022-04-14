@@ -359,4 +359,13 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
     <comment></comment>
     <requestid>954073</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>aa53f7ad7e78f89279257b9b2bcf1e21</srcmd5>
+    <version>0.8.3</version>
+    <time>1649949925</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop texlive-texconfig BuildRequires: package no longer exists
+  and the build succeeds without it too. (forwarded request 967851 from dimstar)</comment>
+    <requestid>970006</requestid>
+  </revision>
 </revisionlist>
