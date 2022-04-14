@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-pam
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-pam
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        YaST2 - PAM Agent
 License:        GPL-2.0-only

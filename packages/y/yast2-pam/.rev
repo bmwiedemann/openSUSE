@@ -332,4 +332,12 @@
     <comment>submit new version 4.4.0</comment>
     <requestid>889604</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>87e436dd78b590cb8dfd79b007575bb3</srcmd5>
+    <version>4.5.0</version>
+    <time>1649949875</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.0</comment>
+    <requestid>969594</requestid>
+  </revision>
 </revisionlist>
