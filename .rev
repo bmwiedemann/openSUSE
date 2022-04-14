@@ -1135,4 +1135,20 @@ PubCloud:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>965849</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>937fe9c2b10d0a8bddfd9158cd650c4e</srcmd5>
+    <version>2.8.0</version>
+    <time>1649949907</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.8.0
+- Forwarding information of registered systems to SCC more efficiently in batches
+- Syncing the systems' most recent last seen timestamps to SCC
+- Optional '--no-confirmation' switch to skip user confirmation when cleaning repository data
+- Fix &quot;rmt-cli systems list --csv -a&quot; for RMTs with millions of systems (bsc#1191552)
+- Enable nginx configs to serve on IPv6
+- Enable users with old versions of RMT to sync systems with SCC by default
+- Fix build using ruby 3.x (boo#1195318).
+</comment>
+    <requestid>969900</requestid>
+  </revision>
 </revisionlist>
