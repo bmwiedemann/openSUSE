@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Wed May  5 10:21:50 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix an error importing the configuration when the json does not
