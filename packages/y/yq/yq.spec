@@ -1,7 +1,7 @@
 #
-# spec file for package kubeconform
+# spec file for package yq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,19 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global provider_prefix github.com/mikefarah/yq
 %global import_path     %{provider_prefix}
 
 Name:           yq
 Version:        4.18.1
 Release:        0
-Summary:        A portable command-line YAML processor 
+Summary:        A portable command-line YAML processor
 License:        MIT
 URL:            https://github.com/mikefarah/yq
 Source0:        https://github.com/mikefarah/yq/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # conflict with all python3X-yq packages since they install /usr/bin/yq
+# we need to handle Leap 15.4 specially since the python3dist() is not
+# generated there
+%if 0%{?suse_version} >= 1550
 Conflicts:      python3dist(yq)
+%else
+Conflicts:      python3-yq
+%endif
 BuildRequires:  go >= 1.17
 
 %description
@@ -77,7 +84,6 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
 %{buildroot}/%{_bindir}/%{name} shell-completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/%{name} shell-completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
-
 
 %files bash-completion
 %defattr(-,root,root)
