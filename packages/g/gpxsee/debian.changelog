@@ -1,3 +1,9 @@
+gpxsee (10.6) stable; urgency=low
+
+  * Improved marine charts rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 13 Apr 2022 00:00:09 +0200
+
 gpxsee (10.5) stable; urgency=low
 
   * Improved handling of MBTiles maps with nonconsecutive zoom
