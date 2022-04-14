@@ -1,7 +1,7 @@
 #
 # spec file for package kajaani-kombat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,13 +28,10 @@ Source0:        http://kombat.kajaani.net/dl/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
 Source2:        %{name}-fullscreen.desktop
 Patch0:         %{name}-fix-build.patch
+Patch1:         kajaani-kombat-gcc11.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
-%if 0%{?suse_version} >= 1550
-BuildRequires:  gcc10-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -66,14 +63,13 @@ may always use the same machine).
 This subpackage includes the server binary.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-%if 0%{?suse_version} >= 1550
-export CXX="g++-10"
-%endif
 export CXXFLAGS="%{optflags}"
+%if 0%{?suse_version} >= 1550
+export CXXFLAGS="${CXXFLAGS} -std=c++14"
+%endif
 make all server %{?_smp_mflags}
 
 %install
