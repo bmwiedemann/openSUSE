@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Mon Feb  7 13:25:10 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Set "x509ignoreCN=0" GODEBUG environment variable option to
