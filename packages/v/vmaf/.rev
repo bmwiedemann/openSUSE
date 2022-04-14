@@ -39,4 +39,12 @@
     <comment>- Update to release 2.3.0</comment>
     <requestid>925760</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dddae0e4b0fcd4999460ed951a5d7606</srcmd5>
+    <version>2.3.1</version>
+    <time>1649949796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.3.1</comment>
+    <requestid>969285</requestid>
+  </revision>
 </revisionlist>

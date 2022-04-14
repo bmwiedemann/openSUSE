@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 11 19:21:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.1
+  * CAMBI extensions: full reference, PQ eotf, up to 16 bit-depth
+    support, max_log_contrast parameter.
+  * CAMBI: option to output heatmaps.
+
+-------------------------------------------------------------------
 Sat Oct 16 21:44:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.0

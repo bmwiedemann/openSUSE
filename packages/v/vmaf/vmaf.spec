@@ -1,7 +1,7 @@
 #
 # spec file for package vmaf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # undefined reference to `vmaf_cpu_cpuid'
 %define _lto_cflags %nil
 Name:           vmaf
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Perceptual video quality assessment algorithm
 License:        BSD-2-Clause-Patent AND BSD-3-Clause
