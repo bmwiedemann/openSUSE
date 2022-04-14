@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 12 02:32:28 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch:
+  * Use stdlib mock, not external mock. 
+- Drop mock BuildRequires.
+
+-------------------------------------------------------------------
 Tue Dec 14 00:08:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - refresh migrate-to-pytest.patch: remove pytest-relaxed 

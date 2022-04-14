@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ URL:            https://github.com/bitprophet/releases
 Source:         https://files.pythonhosted.org/packages/source/r/releases/releases-%{version}.tar.gz
 Patch0:         semanticversioning.patch
 Patch1:         migrate-to-pytest.patch
+Patch2:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +46,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Sphinx >= 1.3}
 BuildRequires:  %{python_module invocations}
 BuildRequires:  %{python_module invoke}
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module semantic_version}
 BuildRequires:  %{python_module six >= 1.4.1}
@@ -70,8 +70,7 @@ Specifically:
   overridden on a per-issue basis.
 
 %prep
-%setup -q -n releases-%{version}
-%autopatch -p1
+%autosetup -p1 -n releases-%{version}
 
 %build
 %python_build
