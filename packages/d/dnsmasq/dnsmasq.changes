@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  5 07:16:18 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1197872, CVE-2022-0934, dnsmasq-CVE-2022-0934.patch:
+  Heap use after free in dhcp6_no_relay
+
+-------------------------------------------------------------------
 Thu Nov 18 13:59:55 UTC 2021 - Reinhard Max <max@suse.com>
 
 - bsc#1192529, dnsmasq-resolv-conf.patch:

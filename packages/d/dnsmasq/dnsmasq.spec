@@ -1,7 +1,7 @@
 #
 # spec file for package dnsmasq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ Source6:        system-user-dnsmasq.conf
 Source8:        %{name}-rpmlintrc
 Patch0:         dnsmasq-groups.patch
 Patch1:         dnsmasq-resolv-conf.patch
+Patch2:         dnsmasq-CVE-2022-0934.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  libidn2-devel
@@ -77,6 +78,7 @@ server's leases.
 %setup -q
 %patch0
 %patch1
+%patch2
 
 # Remove the executable bit from python example files to
 # avoid unwanted automatic dependencies
