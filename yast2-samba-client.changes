@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Bump version to 4.5.0 (bsc#1198109)
+
+-------------------------------------------------------------------
 Fri Jan 28 09:30:17 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Switch from file based krb5 ccache to kernel keyring;
