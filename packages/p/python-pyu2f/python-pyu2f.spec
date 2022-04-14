@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyu2f
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module mock >= 1.0.1}
 BuildRequires:  %{python_module pyfakefs >= 2.4}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -42,6 +41,7 @@ U2F host library for interacting with a U2F device over USB.
 
 %prep
 %setup -q -n pyu2f-%{version}
+sed -i 's/import mock/from unittest import mock/' pyu2f/tests/*_test.py pyu2f/tests/hid/*_test.py
 
 %build
 %python_build
