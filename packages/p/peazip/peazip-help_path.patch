@@ -1,6 +1,8 @@
---- peazip-8.3.0.src/peach.pas.orig	2021-11-17 08:05:28.276986802 +0100
-+++ peazip-8.3.0.src/peach.pas	2021-11-17 08:05:58.097106865 +0100
-@@ -41412,7 +41412,7 @@
+Index: peazip-8.6.0.src/peach.pas
+===================================================================
+--- peazip-8.6.0.src.orig/peach.pas
++++ peazip-8.6.0.src/peach.pas
+@@ -41307,7 +41307,7 @@ end;
  
  procedure TForm_peach.baboutlocalhelpClick(Sender: TObject);
  begin
@@ -9,7 +11,7 @@
  end;
  
  procedure TForm_peach.baboutremoveadditionalClick(Sender: TObject);
-@@ -63622,7 +63622,7 @@
+@@ -63737,7 +63737,7 @@ end;
  
  procedure TForm_peach.mpeahelpofflineClick(Sender: TObject);
  begin

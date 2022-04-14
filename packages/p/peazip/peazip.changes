@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 14 05:38:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.6.0:
+  BACKEND
+    * Pea 1.07
+    * 7z updated to 21.07
+    * (Linux) Zstd 1.5.2
+  CODE
+    * Fixed dictionary size for ZIP using XZ compression
+    * Compiled with Lazarus 2.2.0
+    * Various fixes
+  FILE MANAGER
+    * Improved theming
+    * New .ico and .png icons are now available in (peazip)/res/share/icons
+      directory for customizing the application on Linux, macOS, and Windows systems
+    * Simplified organization of UI layout
+    * Added link to devices mounted in /var/run/media in filesystem treeview, when applicable
+    * File / archive browser can now alternatively display larger details,
+      and large list modes (from Style menu on status bar) in order to improve readability and touch usability
+  EXTRACTION and ARCHIVING
+    * Added "Immediate execution" option for Profiles and Presets, in Add button's dropdown menu
+    * Added command line switches to compress items using one of the compression presets
+      or loading a saved custom compression setting
+    * Added option to not immediately save edited files into archive, keeping changes for further editing
+      (or for manually saving to archive from context menu, More submenu)
+    * Labels in status bar of Archiving and Extraction screens are clickable to show synthetic information about the task
+    * Improved compression settings
+    * Improved usage of Layouts
+- Switch from GTK2 to QT5
+
+-------------------------------------------------------------------
 Wed Jan 26 13:05:11 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.4.0:

@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 8.4.0
+%define         _helpver 8.6.0
 Name:           peazip
-Version:        8.4.0
+Version:        8.6.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -43,6 +43,7 @@ BuildRequires:  fpc
 BuildRequires:  fpc-src
 BuildRequires:  kf5-filesystem
 BuildRequires:  lazarus
+BuildRequires:  libQt5Pas-devel
 BuildRequires:  unzip
 BuildRequires:  upx
 BuildRequires:  zpaq
@@ -102,7 +103,7 @@ lazbuild \
 %ifarch x86_64
 	--cpu=x86_64 \
 %endif
-	--widgetset=gtk2 \
+	--widgetset=qt5 \
         --max-process-count=1 \
 	-B project_pea.lpi project_peach.lpi
 
@@ -134,9 +135,13 @@ ln -s %{_peazipinstalldir}/res/pea %{buildroot}%{_bindir}/pea
 mkdir -p  %{buildroot}%{_datadir}/applications/
 cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.desktop %{buildroot}%{_datadir}/applications/
 rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.desktop
+# Remove duplicate comment line
+sed -i '/Comment=PeaZip/d' %{buildroot}%{_datadir}/applications/peazip.desktop
 mkdir -p %{buildroot}%{_datadir}/pixmaps/
 cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png %{buildroot}%{_datadir}/pixmaps/
 rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png
+# Remove hard linked png
+rm %{buildroot}%{_peazipinstalldir}/res/share/icons/peazip_app.png
 
 pushd %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus
