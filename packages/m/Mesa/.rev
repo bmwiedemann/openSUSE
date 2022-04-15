@@ -4811,4 +4811,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - supersedes U_meson-restore-private-requires-to-libdrm-in-dri.pc-f.patch</comment>
     <requestid>965780</requestid>
   </revision>
+  <revision rev="435" vrev="307">
+    <srcmd5>e0108d9128f4b27b378b73167fdc899c</srcmd5>
+    <version>unknown</version>
+    <time>1650060779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970004</requestid>
+  </revision>
 </revisionlist>

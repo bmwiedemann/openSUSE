@@ -1,5 +1,5 @@
 #
-# spec file for package Mesa
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,21 +16,12 @@
 #
 
 
-# Following define and the Name attribute are the only difference between
-# Mesa.spec and Mesa-drivers.spec. Mesa-drivers.spec is generated from
-# Mesa.spec using the pre_checkin.sh script.
-#
-# Mesa.spec builds everything that is hardware independent and does not
-# require llvm. Most importantly it builds all OpenGL (ES) libraries.
-#
-# Mesa-drivers.spec builds hardware specific drivers and parts that require
-# llvm.
-#
-# The purpose of this split is to be able to build most Mesa-* packages fast
-# without waiting for llvm. This helps speed up whole distribution build in
-# OBS. (https://bugzilla.suse.com/show_bug.cgi?id=1071297)
-# Note that if you actually need to render something, you need the packages
-# from Mesa-driver.
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "drivers"
+%global psuffix -drivers
+%else
+%global psuffix %{nil}
+%endif
 
 %ifarch armv6l armv6hl
 %define _lto_cflags %{nil}
@@ -87,7 +78,7 @@
 %define have_gallium 0
 %endif
 
-%if %{drivers}
+%if "%{flavor}" == "drivers"
   %define glamor 0
 %else
   # No llvm dependencies
@@ -112,7 +103,7 @@
   %define with_vulkan 0
 %endif
 
-Name:           Mesa
+Name:           Mesa%{psuffix}
 Version:        22.0.1
 Release:        0
 Summary:        System for rendering 3-D graphics
@@ -125,7 +116,7 @@ Source1:        https://mesa.freedesktop.org/archive/%{_name_archive}-%{_version
 Source2:        baselibs.conf
 Source3:        README.updates
 Source4:        manual-pages.tar.bz2
-Source6:        %{name}-rpmlintrc
+Source6:        Mesa-rpmlintrc
 Source7:        Mesa.keyring
 Patch2:         n_add-Mesa-headers-again.patch
 # never to be upstreamed
@@ -167,7 +158,7 @@ BuildRequires:  pkgconfig(valgrind)
 BuildRequires:  pkgconfig(libkms) >= 1.0.0
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(presentproto)
-%if %{drivers}
+%if "%{flavor}" == "drivers"
 BuildRequires:  pkgconfig(vdpau) >= 1.1
 %endif
 BuildRequires:  pkgconfig(x11)
@@ -774,7 +765,7 @@ egl_platforms=x11,wayland
 
 %meson \
             --auto-features=disabled \
-%if %{drivers}
+%if "%{flavor}" == "drivers"
             -Dgles1=false \
             -Dgles2=false \
             -Degl=true \
@@ -810,7 +801,7 @@ egl_platforms=x11,wayland
             -Dllvm=true \
             -Dshared-llvm=true \
 %endif
-%if %{drivers}
+%if "%{flavor}" == "drivers"
 %if %{gallium_loader}
             -Dgallium-vdpau=true \
             -Dgallium-xvmc=true \
@@ -865,7 +856,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}/%{_libdir}/libwayland-egl.so*
 rm -f %{buildroot}/%{_libdir}/pkgconfig/wayland-egl.pc
 
-%if %{drivers}
+%if "%{flavor}" == "drivers"
 # Delete things that we do not package in the Mesa-drivers variant, but can
 # not disable from buildling and installing.
 
@@ -930,7 +921,7 @@ done
 
 %fdupes -s %{buildroot}/%{_mandir}
 
-%if !%{drivers}
+%if "%{flavor}" != "drivers"
 # Use dummy README file that can be included in both Mesa and Mesa-32bit. This way Mesa-32bit will be build (otherwise it would be skipped as empty) and it can be used by the other *-32bit packages.
 echo "The \"Mesa\" package does not have the ability to render, but is supplemented by \"Mesa-dri\" and \"Mesa-gallium\" which contain the drivers for rendering" > docs/README.package.%{_arch}
 %endif
@@ -967,7 +958,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %postun -n Mesa-libd3d -p /sbin/ldconfig
 
-%if !%{drivers}
+%if "%{flavor}" != "drivers"
 %files
 %license docs/license.rst
 %doc docs/README*
@@ -1027,7 +1018,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/pkgconfig/gbm.pc
 %endif
 
-%if %{drivers}
+%if "%{flavor}" == "drivers"
 %ifarch aarch64 %{ix86} x86_64 %{arm} ppc64 ppc64le riscv64
 %files -n libxatracker2
 %{_libdir}/libxatracker.so.2*
@@ -1077,7 +1068,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 %endif
 
-%if !%{drivers}
+%if "%{flavor}" != "drivers"
 %files libglapi0
 %{_libdir}/libglapi.so.0*
 
@@ -1085,7 +1076,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/libglapi.so
 %endif
 
-%if %{drivers}
+%if "%{flavor}" == "drivers"
 %files -n Mesa-dri
 %dir %{_libdir}/dri
 %{_libdir}/dri/*_dri.so
@@ -1116,7 +1107,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 # drivers
 %endif
 
-%if !%{drivers}
+%if "%{flavor}" != "drivers"
 %files dri-devel
 %{_includedir}/GL/internal
 %{_libdir}/pkgconfig/dri.pc
@@ -1152,7 +1143,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/libMesaOpenCL.so*
 %endif
 
-%if %{drivers}
+%if "%{flavor}" == "drivers"
 %ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
 %files -n Mesa-libva
 %{_libdir}/dri/*_drv_video.so
