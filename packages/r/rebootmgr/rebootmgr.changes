@@ -68,6 +68,7 @@ Fri Sep  6 13:03:15 CEST 2019 - kukuk@suse.de
 
 - Update to version 0.20
   - add support to write changes back to /etc/rebootmgr.conf
+  - fix compilation with glibc 2.30 [bsc#1197850]
 
 -------------------------------------------------------------------
 Wed Aug 28 12:56:07 CEST 2019 - kukuk@suse.de
