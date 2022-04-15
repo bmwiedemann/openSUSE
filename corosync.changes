@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 11 16:06:20 UTC 2022 - Emil Penchev <emil.penchev@suse.com>
+
+- Update to version corosync-2.4.5+git.5d625cef:
+  * totemudpu: Don't block local socketpair
+  * totemsrp: Switch totempg buffers at the right time
+  * logsys: Unlock config mutex on error
+
+-------------------------------------------------------------------
 Mon Aug 23 10:02:21 UTC 2021 - varkoly@suse.com
 
 - Update to version 2.4.5+git70.64010f57:
