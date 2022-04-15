@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 14 12:49:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.11:
+  * zcmp.cc, zdiff.cc (main): Fix race returning 1 instead of 2 when a
+    compressor is not found or when the wrong format is forced.
+  * zcmp.cc (getnum): Show option name and valid range if error.
+  * All tools: Show option name if error in option argument.
+  * Add support for zstd format to all tools.
+  * 'zdiff -v -V' now prints the version of the diff program used.
+  * 'zgrep --verbose -V' now prints the version of the grep program used.
+  * zutils.texi: Document recompression of read-only files by linking.
+  * zutils.texi: Change GNU Texinfo category to 'Compression'.
+
+-------------------------------------------------------------------
 Thu Jan 21 09:42:36 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.10:

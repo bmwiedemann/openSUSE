@@ -1,7 +1,7 @@
 #
 # spec file for package zutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zutils
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Collection of utilities for dealing with compressed files
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ Patch1:         zutils-1.7-noconflict.patch
 BuildRequires:  gcc-c++
 BuildRequires:  lzip
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 Zutils is a collection of utilities able to deal with any combination

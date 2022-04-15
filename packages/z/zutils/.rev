@@ -78,4 +78,12 @@
   * check.sh: Test empty input files with all tools except zupdate.</comment>
     <requestid>865314</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>643dd6558056750bf46b250a02bb678a</srcmd5>
+    <version>1.11</version>
+    <time>1650060853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970183</requestid>
+  </revision>
 </revisionlist>
