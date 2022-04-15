@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Wed Apr 13 13:59:49 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.4745, fixes the following problems
+  * Vim9: not enough test coverage for executing :def function.
+  * Sourcing buffer lines is too complicated.
+  * Error for redefining a script item may be confusing.
+  * Error for arguments of remote_expr() even when the +clientserver feature
+  is not included.
+  * Test fails because of changed error message.
+  * Sourcing buffer lines may lead to errors for conflicts.
+  * getcompletion() does not work properly when 'wildoptions contains "fuzzy".
+  * :unhide does not check for failing to close a window.
+  * Some conditions are always true.
+  * Typos in tests; one lua line not covered by test.
+  * Vim9: cannot use a recursive call in a nested function. (Sergey Vlasov)
+  * Return type of swapfile_unchanged() is wrong.
+  * Redrawing too much when 'cursorline' is set and jumping around.
+  * Mapping with escaped bar does not work in :def function. (Sergey Vlasov)
+  * Vim9: Declarations in a {} block of a user command do not use Vim9 rules
+  if defined in a legacy script. (Yegappan Lakshmanan)
+  * No completion for :scriptnames.
+  * Command line completion does not recognize single letter commands.
+  * Mapping is cancelled when mouse moves and popup is visible.
+  * Two letter substitute commands don't work. (Yegappan Lakshmanan)
+  * Crash when using the tabline right-click menu.
+  * Vim9: Crash with :execute and :finish. (Sergey Vlasov)
+  * Coverity warns for using uninitialized field.
+  * Old Coverity warning for resource leak.
+  * Old Coverity warning for resource leak.
+  * Visual area not fully updated when removing sign in Visual mode while
+  scrolling.
+  * flatten() does not use maxdepth correctly.
+  * Not enough testing for 2/3 letter substitute commands.
+  * flattennew() makes a deep copy unnecessarily.
+  * 'cursorline' not always updated with 'cursorlineopt' is "screenline".
+  * Crash when switching window in BufWipeout autocommand.
+  * Using freed memory in flatten().
+  * Visual range does not work before command modifiers.
+  * Vim9: cannot initialize a variable to null_list.
+  * Tests using null list or dict fail.
+  * Not using Visual range.
+  * Warning for using uninitialized variable. (Tony Mechelynck)
+  * Superfluous check if a redraw is needed for 'cursorline'.
+  * Not sufficient parenthesis in preprocessor macros.
+  * Some boolean options use "long" instead of "int".
+  * May mark the wrong window for redrawing.
+  * Vim9: in :def function script var cannot be null.
+  * Vim9: variable may be locked unintentionally.
+  * Redrawing too often when 'relativenumber' is set.
+  * 'shortmess' changed when session does not store options.
+  * Using buffer line after it has been freed in old regexp engine.
+  * "source" can read past end of copied line.
+  * Handling LSP messages is a bit slow.
+  * Various formatting problems.
+  * "import autoload" only works with using 'runtimepath'.
+  * Test fails because path differs.
+  * Leaking memory if assignment fails.
+  * "import autoload" does not check the file name.
+  * Missing changes for import check.
+  * Command line completion popup menu positioned wrong when using a terminal
+  window.
+  * Vim9: can't use items from "import autoload" with autoload directory name.
+  * Errors for functions are sometimes hard to read.
+  * Org-mode files are not recognized.
+  * Invalid memory access when using printable function name.
+  * Cursorcolumn is sometimes not correct.
+  * Coverity warning for using uninitialized variable.
+  * No error for using out of range list index.
+  * Occasional crash when running the GUI tests.
+  * Elvish files are not recognized.
+  * Popup with "minwidth" and scrollbar not updated properly.
+  * Vim9: assignment not recognized in skipped block.
+  * expandcmd() fails on an error.
+  * Buffer allocation failures insufficiently tested.
+  * In compiled code len('string') is not inlined.
+  * Memory allocation failures for new tab page not tested.
+  * 'wildignorecase' is sometimes not used for glob().
+  * Using :normal with Ex mode may make :substitute hang.
+  * Redrawing a vertically split window is slow when using CTRL-F and CTRL-B.
+  * Cannot force getting MouseMove events.
+  * No error for missing expression after :elseif. (Ernie Rael)
+  * Test fails with different error.
+  * Vim9: not all code is tested.
+  * Cannot have expandcmd() give an error message for mistakes.
+  * Build failure without +postscript.
+  * Build fails with a combination of features.
+  * Vim9: can use :unlockvar for const variable. (Ernie Rael)
+  * Verbose check with dict_find() to see if a key is present.
+  * Cannot open a channel on a Unix domain socket.
+  * When a swap file is found for a popup there is no dialog and the buffer
+  is loaded anyway.
+  * Configure doesn't find the Motif library with Cygwin.
+  * "vimgrep /\%v/ *" may cause a crash.
+  * New regexp engine does not give an error for "\%v".
+  * Using <Cmd> in a mapping does not work for mouse keys in Insert
+  mode. (Sergey Vlasov)
+  * Channel tests fail on MS-Windows.
+  * Solution for <Cmd> in a mapping causes trouble.
+  * No test for what 8.2.4691 fixes.
+  * new regexp does not accept pattern "\%>0v".
+  * Avoidance of #elif causes more preproc nesting.
+  * JSON encoding could be faster.
+  * delete() with "rf" argument does not report a failure.
+  * Vim9: crash when adding a duplicate key to a dictionary.
+  * Vim9: script variable has no flag that it was set.
+  * Hard to reproduce hang when reading from a channel.
+  * Buffer remains active if a WinClosed event throws an exception.
+  * Kuka Robot Language files not recognized.
+  * C++ scope labels are hard-coded.
+  * Memory leak in handling 'cinscopedecls'.
+  * Using "else" after return or break increases indent.
+  * Jump list marker disappears.
+  * Buffer remains active if a WinClosed event throws an exception when
+  there are multiple tabpages.
+  * Redrawing could be a bit more efficient.
+  * PHP test files are not recognized.
+  * After :redraw the statusline highlight might be used.
+  * Smart indenting does not work after completion.
+  * When 'insermode' is set :edit from <Cmd> mapping misbehaves.
+  * Only get profiling information after exiting.
+  * Plugins cannot track text scrolling.
+  * Using g:filetype_dat and g:filetype_src not tested.
+  * Vagrantfile not recognized.
+  * Memory allocation failure not tested when defining a function.
+  * For TextYankPost v:event does not contain information about the operation
+  being inclusive or not.
+  * @@@ in the last line sometimes drawn in the wrong place.
+  * ">" marker sometimes not displayed in the jumplist.
+  * ABB Rapid files are not recognized properly.
+  * Cooklang files are not recognized.
+  * When a recording is ended with a mapped key that key is also recorded.
+  * The ModeChanged autocmd event is inefficient.
+  * Current instance of last search pattern not easily spotted.
+  * Unused variable in tiny build.
+  * Cannot use expand() to get the script name.
+  * Unused code.
+  * No test that v:event cannot be modified.
+  * HEEx and Surface templates do not need a separate filetype.
+  * The changelist index is not remembered per buffer.
+  * Duplicate code to free fuzzy matches.
+  * HEEx and Surface do need a separate filetype.
+  * getcharpos() may change a mark position.
+  * Quickfix tests can be a bit hard to read.
+  * Build problem for Cygwin with Motif.
+  * // in JavaScript string recognized as comment.
+  * Esc on commandline executes command instead of abandoning it.
+  * Accessing freed memory after WinScrolled autocmd event.
+  * When expand() fails there is no error message.
+  * Startup test fails.
+  * There is no way to start logging very early in startup.
+  * A terminal window can't use the bell.
+  * Using wrong flag for using bell in the terminal.
+
+-------------------------------------------------------------------
 Mon Mar 21 12:00:59 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -  Updated to version 8.2.4602, fixes the following problems

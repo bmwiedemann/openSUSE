@@ -5757,4 +5757,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Vim9: return type &quot;any&quot; is sometimes changed to first returned type.</comment>
     <requestid>963690</requestid>
   </revision>
+  <revision rev="306" vrev="1">
+    <srcmd5>cee815065d71964ad33209a6c9fd1ac4</srcmd5>
+    <version>8.2.4745</version>
+    <time>1650060843</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.4745, fixes the following problems
+  * Vim9: not enough test coverage for executing :def function.
+  * Sourcing buffer lines is too complicated.
+  * Error for redefining a script item may be confusing.
+  * Error for arguments of remote_expr() even when the +clientserver feature
+  is not included.
+  * Test fails because of changed error message.
+  * Sourcing buffer lines may lead to errors for conflicts.
+  * getcompletion() does not work properly when 'wildoptions contains &quot;fuzzy&quot;.
+  * :unhide does not check for failing to close a window.
+  * Some conditions are always true.
+  * Typos in tests; one lua line not covered by test.
+  * Vim9: cannot use a recursive call in a nested function. (Sergey Vlasov)
+  * Return type of swapfile_unchanged() is wrong.
+  * Redrawing too much when 'cursorline' is set and jumping around.
+  * Mapping with escaped bar does not work in :def function. (Sergey Vlasov)
+  * Vim9: Declarations in a {} block of a user command do not use Vim9 rules
+  if defined in a legacy script. (Yegappan Lakshmanan)
+  * No completion for :scriptnames.
+  * Command line completion does not recognize single letter commands.
+  * Mapping is cancelled when mouse moves and popup is visible.
+  * Two letter substitute commands don't work. (Yegappan Lakshmanan)
+  * Crash when using the tabline right-click menu.
+  * Vim9: Crash with :execute and :finish. (Sergey Vlasov)
+  * Coverity warns for using uninitialized field.
+  * Old Coverity warning for resource leak.
+  * Old Coverity warning for resource leak.
+  * Visual area not fully updated when removing sign in Visual mode while
+  scrolling.
+  * flatten() does not use maxdepth correctly.</comment>
+    <requestid>969893</requestid>
+  </revision>
 </revisionlist>
