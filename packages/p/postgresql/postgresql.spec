@@ -75,6 +75,7 @@ Source5:        postgresql-bashprofile
 Source6:        postgresql-script
 Source7:        postgresql-install-alternatives
 Source8:        postgresql-extensions-macros
+Source9:        postgresql.sysusers
 
 %if 0%{?suse_version} > 1100
     %define fwdir /etc/sysconfig/SuSEfirewall2.d/services
@@ -104,7 +105,12 @@ Requires:       postgresql-server-implementation
 Requires:       postgresql = %version-%release
 Recommends:     %defaultpackage-server
 %if 0%{?suse_version} >= 1315
+%if 0%{?suse_version} >= 1500
+BuildRequires:  sysuser-tools
+%sysusers_requires
+%else
 Requires(pre):  shadow
+%endif
 %else
 Requires(pre):  pwdutils
 %endif
@@ -308,6 +314,9 @@ and triggers.
 %prep
 
 %build
+%if 0%{?suse_version} >= 1500
+%sysusers_generate_pre %{SOURCE9} %{name}-server %{name}-server.conf
+%endif
 echo "This is a dummy package to provide a dependency on the default PostgreSQL version." > README
 
 %install
@@ -345,16 +354,25 @@ ln -sf /etc/init.d/postgresql %buildroot/usr/sbin/rcpostgresql
 
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_rpmmacrodir}/macros.%{name}
 
+# sysusers.d
+%if 0%{?suse_version} >= 1500
+install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{name}-server.conf
+%endif
+
 
 %define eflag /run/postgresql-was-enabled
 %define aflag /run/postgresql-was-running
 
+%if 0%{?suse_version} >= 1500
+%pre server -f %{name}-server.pre
+%else
 %pre server
 getent group postgres > /dev/null ||
 	groupadd -g 26 -o -r postgres
 getent passwd postgres > /dev/null ||
 	useradd -g postgres -o -r -d /var/lib/pgsql -s /bin/bash \
 	-c "PostgreSQL Server" -u 26 postgres
+%endif
 %if %{with systemd}
 %service_add_pre postgresql.service
 
@@ -451,6 +469,9 @@ fi
 %else
 %config /etc/init.d/postgresql
 %dir %attr(1775,postgres,postgres) /var/run/postgresql
+%endif
+%if 0%{?suse_version} >= 1500
+%{_sysusersdir}/%{name}-server.conf
 %endif
 
 %files test
