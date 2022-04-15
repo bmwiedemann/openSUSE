@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:51:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.0:
+  * Add @namespaces and @excludedNamespaces matchers (#255)
+  * Add docs for @matchExpression, @namespaces, @excludedNamespaces annotations (#256)
+  * Only parse imports prefixed with data.lib.* (#249)
+  * Add support for @matchExpression label selector (#251)
+  * Bump k8s.io/apimachinery from 0.23.4 to 0.23.5 (#250)
+  * Bump github.com/open-policy-agent/opa from 0.38.1 to 0.39.0 (#254)
+  * Bump alpine from 3.14.2 to 3.15.3 (#253)
+  * Bump EndBug/add-and-commit from 8.0.2 to 9 (#246)
+  * go.mod: Bump dependencies (#247)
+  * Bump actions/checkout from 2 to 3 (#245)
+  * Bump golang from 1.17.6-alpine to 1.17.7-alpine (#241)
+  * style: Consistent policy format via conftest fmt (#239)
+  * go.mod: Update to opa-0.37.2 (#240)
+  * Bump EndBug/add-and-commit from 8.0.1 to 8.0.2 (#235)
+- BuildRequire go1.17
+
+-------------------------------------------------------------------
 Thu Feb 03 07:21:10 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.18.0:
