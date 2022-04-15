@@ -159,4 +159,19 @@
 - Drop obsolete remove-x86-specific-code.patch, fixed upstream.</comment>
     <requestid>940114</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eae68b4f6e3e44d4784e72c0b23c0a97</srcmd5>
+    <version>0.18</version>
+    <time>1650060933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18, update LLVM/Clang to version 14.
+  * Fix crash on C++20 consteval expressions.
+  * Use more conventional exit codes. (Breaking change!)
+  * Fix deprecation warning for python3.
+  * Fix crash on va_list on AArch64.
+  * Improved support for using-declarations based on new Clang
+    design.
+</comment>
+    <requestid>970336</requestid>
+  </revision>
 </revisionlist>

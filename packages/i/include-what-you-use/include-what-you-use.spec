@@ -1,8 +1,8 @@
 #
 # spec file for package include-what-you-use
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2021 Aaron Puchert.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 #
 
 
+%define _llvm_version 14
+
 Name:           include-what-you-use
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -28,10 +30,10 @@ Source0:        https://include-what-you-use.org/downloads/%{name}-%{version}.sr
 Patch1:         fix-shebang.patch
 Patch2:         iwyu_include_picker.patch
 BuildRequires:  c++_compiler
-BuildRequires:  clang13-devel
+BuildRequires:  clang%{_llvm_version}-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
-BuildRequires:  llvm13-devel
+BuildRequires:  llvm%{_llvm_version}-devel
 BuildRequires:  python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
