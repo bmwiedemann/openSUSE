@@ -42,8 +42,8 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 459d0dfbbb51
-%define git_commit_epoch 1639303911
+%define git_version 87a90dc786bd
+%define git_commit_epoch 1649909084
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
@@ -56,10 +56,10 @@
 %define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        20.10.12_ce
+Version:        20.10.14_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
-%define nice_version 20.10.12-ce
+%define nice_version 20.10.14-ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -119,7 +119,7 @@ Provides:       docker-libnetwork%{name_suffix} = 0.7.0.2.%{version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
 Requires:       runc >= 1.0.2
-Requires:       containerd >= 1.4.12
+Requires:       containerd >= 1.5
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit

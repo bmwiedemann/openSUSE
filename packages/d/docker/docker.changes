@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 14 04:09:58 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.14-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/#201014>. bsc#1197517
+  CVE-2022-24769
+
+-------------------------------------------------------------------
 Mon Jan 17 07:23:01 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.12-ce. See upstream changelog online at
