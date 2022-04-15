@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/z/zdaemon/%{modna
 Patch0:         obs-timeout.patch
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module manuel}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zc.customdoctests}
 BuildRequires:  %{python_module zope.testing}
@@ -65,6 +64,8 @@ rm -rf src/zdaemon.egg-info
 %python_clone -a %{buildroot}%{_bindir}/zdaemon
 
 %check
+# https://github.com/zopefoundation/zdaemon/issues/28
+sed -i 's:import mock:from unittest import mock:' src/zdaemon/tests/testuser.py
 pushd src
 %pyunittest discover -v
 
