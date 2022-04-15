@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 13 17:53:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.3:
+  * compatibility with git's changes for CVE-2022-24765 boo#1187234
+  * several correctness fixes where invalid input can lead to a
+    crash and denial of service
+
+-------------------------------------------------------------------
 Thu Mar 17 19:27:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.2:
