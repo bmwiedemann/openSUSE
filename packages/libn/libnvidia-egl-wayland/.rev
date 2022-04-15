@@ -43,4 +43,18 @@
   Nvidia driver (upcoming G06 driver series)</comment>
     <requestid>945353</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>731298e02bc5df07ed59dca7fc7c351c</srcmd5>
+    <version>1.1.9</version>
+    <time>1650060791</time>
+    <user>dimstar_suse</user>
+    <comment>- baselibs.conf
+  * Add 32-bit package variants. These are required for any EGL-using
+    32-bit wayland binary (which is pretty much all of them) to work
+    at all: without it, running any 32-bit game under wayland will
+    segfault on startup. With SDL 2.0.22 planning to use wayland by
+    default, this is pretty important, as all 32-bit SDL programs will
+    break.</comment>
+    <requestid>970092</requestid>
+  </revision>
 </revisionlist>

@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-wayland
 Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{version}/%{rname}-%{version}.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 14 08:37:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- baselibs.conf
+  * Add 32-bit package variants. These are required for any EGL-using
+    32-bit wayland binary (which is pretty much all of them) to work
+    at all: without it, running any 32-bit game under wayland will
+    segfault on startup. With SDL 2.0.22 planning to use wayland by
+    default, this is pretty important, as all 32-bit SDL programs will
+    break.
+
+-------------------------------------------------------------------
 Mon Jan 10 14:19:00 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.1.9, which is needed by new 5xx.yy.zz
