@@ -19,7 +19,7 @@
 %define _name libusb
 %define debug_package_requires libusb-1_0-0 = %{version}-%{release}
 Name:           libusb-1_0
-Version:        1.0.25
+Version:        1.0.26
 Release:        0
 Summary:        USB Library
 License:        LGPL-2.1-or-later

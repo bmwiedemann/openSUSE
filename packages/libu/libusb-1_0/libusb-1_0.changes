@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 10 19:17:47 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.26
+  * Fix regression with transfer free's after closing device
+  * Fix regression with destroyed context if API is misused
+  * Workaround for applications using missing default context
+  * Fix hotplog enumeration regression
+  * Build fixes for various platforms and configurations
+  * Add interface bound checking for broken devices
+  * Add umockdev tests on Linux
+
+-------------------------------------------------------------------
 Tue Feb  1 21:43:03 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.25
