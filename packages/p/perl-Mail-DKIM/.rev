@@ -212,4 +212,12 @@ Update to version 0.40 (forwarded request 161402 from rusjako)</comment>
     <comment></comment>
     <requestid>842811</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>368644a01bddc7edb4741637cad51d38</srcmd5>
+    <version>1.20220408</version>
+    <time>1650060773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969988</requestid>
+  </revision>
 </revisionlist>

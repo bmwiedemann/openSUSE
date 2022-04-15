@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-DKIM
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Mail-DKIM
-Version:        1.20200907
-Release:        0
 %define cpan_name Mail-DKIM
-Summary:        Signs/verifies Internet mail with DKIM/DomainKey signatures
+Name:           perl-Mail-DKIM
+Version:        1.20220408
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Signs/verifies Internet mail with DKIM/DomainKey signatures
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MB/MBRADSHAW/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Crypt::OpenSSL::RSA)
@@ -72,12 +70,12 @@ sorted, you can set $Mail::DKIM::SORTTAGS to a true value, and all created
 headers will get sorted keys
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -88,7 +86,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes doc HACKING.DKIM README README.md TODO
 %license LICENSE
 
