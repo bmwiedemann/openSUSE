@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 12 20:20:55 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add use-volatile-to-workaround-buffer-overflow-false-pos.patch
+  upstream patch that supports -D_FORTIFY_SOURCE=3.
+
+-------------------------------------------------------------------
 Fri Feb 25 09:30:08 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Set lg-page to 2^16 on aarch64 to be compatible with 64k

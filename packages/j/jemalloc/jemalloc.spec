@@ -1,7 +1,7 @@
 #
 # spec file for package jemalloc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://jemalloc.net/
 Source:         https://github.com/jemalloc/jemalloc/releases/download/%version/jemalloc-%version.tar.bz2
+Patch0:         use-volatile-to-workaround-buffer-overflow-false-pos.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
