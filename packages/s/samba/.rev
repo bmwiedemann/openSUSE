@@ -3474,4 +3474,12 @@ list of changes.</comment>
 - Use systemd-sysusers to create system users; (bsc#1182847);</comment>
     <requestid>966947</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>1f89afd87b1812ae1d484b50e63d2e27</srcmd5>
+    <version>4.16.0+git.227.931848a12ab</version>
+    <time>1650060845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970232</requestid>
+  </revision>
 </revisionlist>

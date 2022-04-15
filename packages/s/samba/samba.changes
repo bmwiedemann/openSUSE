@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 13 15:33:22 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Fix update-apparmor-samba-profile script, sed doesn't like
+  multibyte separators; (bsc#1198309).
+
+-------------------------------------------------------------------
 Thu Mar 24 15:00:36 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.16.0
