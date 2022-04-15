@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  6 03:15:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.62
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.62      2022-04-05 01:04:17Z
+      - Allow downloading to a filehandle (GH#400) (Andrew Fresh)
+
+-------------------------------------------------------------------
 Sat Jan 22 03:09:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.61
