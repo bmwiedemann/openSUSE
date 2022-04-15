@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 12 13:49:37 UTC 2022 - pgajdos@suse.com
+
+- update or add Bengali fonts [bsc#1197977]:
+  * AkaashNormal.ttf  Ani.ttf  JamrulNormal.ttf  
+    MitraMono.ttf  MuktiBold.ttf  Mukti.ttf
+- remove obsoleted Bengali fonts [bsc#1197977c#4]
+  * mitra.ttf MuktiNarrow.ttf MuktiNarrowBold.ttf
+    bng2-n.ttf bng2-b.ttf
+
+-------------------------------------------------------------------
 Thu May 12 14:45:16 UTC 2016 - pgajdos@suse.com
 
 - gujrati fonts [bsc#977195]: remove hinting instructions for all 

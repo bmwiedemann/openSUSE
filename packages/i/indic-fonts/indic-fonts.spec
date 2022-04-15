@@ -1,7 +1,7 @@
 #
 # spec file for package indic-fonts
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           indic-fonts
 Version:        20160512
 Release:        0
 Summary:        Professional Indian Language TrueType Fonts
-License:        GPL-2.0+ and OFL-1.1
+License:        GPL-2.0-or-later AND OFL-1.1
 Group:          System/X11/Fonts
-Url:            https://fedorahosted.org/lohit/
+URL:            https://fedorahosted.org/lohit/
 Source0:        https://fedorahosted.org/releases/l/o/lohit/lohit-ttf-%{lohit_version}.tar.gz
 # Other free indic fonts collected by
 # Amish Munshi <amunshi@novell.com> (he is not working at Novell anymore):
