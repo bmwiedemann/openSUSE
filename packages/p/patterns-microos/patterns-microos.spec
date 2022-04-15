@@ -453,6 +453,8 @@ Requires:       gnome-user-docs
 Requires:       gpgme
 # for online accounts and calendar integration
 Requires:       gnome-bluetooth
+# needed to ensure bluetooth is enabled at startup (glgo#GNOME/gnome-bluetooth#110)
+Requires:       bluez-auto-enable-devices
 Requires:       gnome-control-center-goa
 Requires:       gnome-online-accounts
 Requires:       gnome-shell-calendar

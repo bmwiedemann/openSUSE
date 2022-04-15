@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 13 08:39:06 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Revert "Remove requirement of pattern-bootloader". Containers
+  should not be using pattern-microos-base. MicroOS needs pattern
+  for having a branded bootloader
+
+-------------------------------------------------------------------
+Tue Apr 12 10:58:06 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure bluez-auto-enable-devices is required for GNOME desktop
+  (glgo#GNOME/gnome-bluetooth#110).
+
+-------------------------------------------------------------------
 Fri Feb  4 10:06:07 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Do not include wicked in base pattern, NetworkManager instead 
@@ -19,7 +32,16 @@ Tue Feb  1 14:29:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 -------------------------------------------------------------------
 Tue Jan  12 10:00:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
 
-- added kde-gtk-config5-gtk3 to the KDE pattern, so that System Settings can also change GTK theming, which is generally used for flatpaks.
+- Added kde-gtk-config5-gtk3 to the KDE pattern, so that System
+  Settings can also change GTK theming, which is generally used for
+  flatpaks.
+
+-------------------------------------------------------------------
+Thu Dec  2 16:19:56 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove requirement of pattern-bootloader. This pattern is currenly
+  present in the Kiwi appliance, and the presence here can complicate
+  the creation of containers that use pattern-microos-base.
 
 -------------------------------------------------------------------
 Tue Nov  2 12:34:02 UTC 2021 - Richard Brown <rbrown@suse.com>

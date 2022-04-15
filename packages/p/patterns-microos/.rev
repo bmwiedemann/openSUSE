@@ -430,4 +430,25 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
 - Do not include wicked in base pattern, NetworkManager instead</comment>
     <requestid>959828</requestid>
   </revision>
+  <revision rev="46" vrev="46">
+    <srcmd5>038f2bfd4adc9e0d5add48de49f43cd0</srcmd5>
+    <version>5.0</version>
+    <time>1650060832</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert &quot;Remove requirement of pattern-bootloader&quot;. Containers
+  should not be using pattern-microos-base. MicroOS needs pattern
+  for having a branded bootloader
+
+- Ensure bluez-auto-enable-devices is required for GNOME desktop
+  (glgo#GNOME/gnome-bluetooth#110).
+
+- Added kde-gtk-config5-gtk3 to the KDE pattern, so that System
+  Settings can also change GTK theming, which is generally used for
+  flatpaks.
+
+- Remove requirement of pattern-bootloader. This pattern is currenly
+  present in the Kiwi appliance, and the presence here can complicate
+  the creation of containers that use pattern-microos-base.</comment>
+    <requestid>969735</requestid>
+  </revision>
 </revisionlist>
