@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 13 13:38:29 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Add samba-new-dcerpcd.patch, samba-4.16 has a new dcerpcd daemon
+  which now will spawn new additional services on demand. We need to
+  modify the existing smbd/winbind profiles and additionally add a
+  new set of profiles to cater for the new functionality;
+  (bnc#1198309);
+  
+-------------------------------------------------------------------
+Mon Apr 11 14:34:51 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Add samba_deny_net_admin.patch to add new rule to deny
+  noisy setsockopt calls from systemd; (bnc#1196850).
+
+-------------------------------------------------------------------
 Sun Apr 10 13:08:56 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - add profile for zgrep and xzgrep to prevent CVE-2022-1271

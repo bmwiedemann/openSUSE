@@ -2304,4 +2304,20 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   (zgrep-profile-mr870.diff) (forwarded request 968252 from cboltz)</comment>
     <requestid>968253</requestid>
   </revision>
+  <revision rev="168" vrev="5">
+    <srcmd5>899d055b7b548988373e97d022c540e0</srcmd5>
+    <version>3.0.4</version>
+    <time>1650060846</time>
+    <user>dimstar_suse</user>
+    <comment>- Add samba-new-dcerpcd.patch, samba-4.16 has a new dcerpcd daemon
+  which now will spawn new additional services on demand. We need to
+  modify the existing smbd/winbind profiles and additionally add a
+  new set of profiles to cater for the new functionality;
+  (bnc#1198309);
+  
+
+- Add samba_deny_net_admin.patch to add new rule to deny
+  noisy setsockopt calls from systemd; (bnc#1196850). (forwarded request 970229 from npower)</comment>
+    <requestid>970238</requestid>
+  </revision>
 </revisionlist>

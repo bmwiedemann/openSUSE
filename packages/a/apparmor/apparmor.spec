@@ -88,7 +88,13 @@ Patch8:         update-usr-sbin-smbd.diff
 
 # add zgrep and xzgrep profile (submitted upstream 2022-04-10 https://gitlab.com/apparmor/apparmor/-/merge_requests/870)
 Patch9:         zgrep-profile-mr870.diff
-
+# squash noisy setsockopt calls https://gitlab.com/apparmor/apparmor/-/merge_requests/867
+# bsc#1196850
+Patch10:        samba_deny_net_admin.patch
+# support for new dcerpcd subsytem in >= samba-4.16
+# https://gitlab.com/apparmor/apparmor/-/merge_requests/871
+# bsc#1198309
+Patch11:        samba-new-dcerpcd.patch
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -354,6 +360,8 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -584,6 +592,9 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/nvidia_modprobe
 %config(noreplace) %{_sysconfdir}/apparmor.d/php-fpm
 %config(noreplace) %{_sysconfdir}/apparmor.d/samba-bgqd
+%config(noreplace) %{_sysconfdir}/apparmor.d/samba-dcerpcd
+%config(noreplace) %{_sysconfdir}/apparmor.d/samba-rpcd
+%config(noreplace) %{_sysconfdir}/apparmor.d/samba-rpcd-*
 %config(noreplace) %{_sysconfdir}/apparmor.d/zgrep
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/*
 %dir /usr/share/apparmor/
