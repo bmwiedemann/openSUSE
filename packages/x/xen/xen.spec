@@ -28,7 +28,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.16.0-testing
+%define xen_build_dir xen-4.16.1-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -119,12 +119,12 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.16.0_08
+Version:        4.16.1_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.16.0-testing-src.tar.bz2
+Source0:        xen-4.16.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source3:        xen-utils-0.1.tar.bz2
@@ -155,64 +155,7 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         61b31d5c-x86-restrict-all-but-self-IPI.patch
-Patch2:         61b88e78-x86-CPUID-TSXLDTRK-definition.patch
-Patch3:         61bc429f-revert-hvmloader-PA-range-should-be-UC.patch
-Patch4:         61d5687a-x86-spec-ctrl-opt_srb_lock-default.patch
-Patch5:         61e0296a-x86-time-calibration-relative-counts.patch
-Patch6:         61e029c8-x86-time-TSC-freq-calibration-accuracy.patch
-Patch7:         61e02a1c-libxl-PCI-PV-hotplug-stubdom-coldplug.patch
-Patch8:         61e98e88-x86-introduce-get-set-reg-infra.patch
-Patch9:         61e98e89-x86-MSR-split-SPEC_CTRL-handling.patch
-Patch10:        61e98e8a-x86-spec-ctrl-drop-ENTRY-EXIT-HVM.patch
-Patch11:        61e98e8b-VT-x-SPEC_CTRL-NMI-race-condition.patch
-Patch12:        61eaaa23-x86-get-set-reg-infra-build.patch
-Patch13:        61efec1d-Arm-P2M-always-clear-entry-on-mapping-removal.patch
-Patch14:        61efec4d-gnttab-only-decrement-refcounter-on-final-unmap.patch
-Patch15:        61efec96-IOMMU-x86-stop-pirq-iteration-immediately-on-error.patch
-Patch16:        61f2d886-x86-CPUID-disentangle-new-leaves-logic.patch
-Patch17:        61f2d887-x86-CPUID-leaf-7-1-EBX-infra.patch
-Patch18:        61f2dd76-x86-SPEC_CTRL-migration-compatibility.patch
-Patch19:        61f7b2af-libxl-dont-touch-nr_vcpus_out-if-listing.patch
-Patch20:        61f933a4-x86-cpuid-advertise-SSB_NO.patch
-Patch21:        61f933a5-x86-drop-use_spec_ctrl-boolean.patch
-Patch22:        61f933a6-x86-new-has_spec_ctrl-boolean.patch
-Patch23:        61f933a7-x86-dont-use-spec_ctrl-enter-exit-for-S3.patch
-Patch24:        61f933a8-x86-SPEC_CTRL-record-last-write.patch
-Patch25:        61f933a9-x86-SPEC_CTRL-use-common-logic-for-AMD.patch
-Patch26:        61f933aa-SVM-SPEC_CTRL-entry-exit-logic.patch
-Patch27:        61f933ab-x86-AMD-SPEC_CTRL-infra.patch
-Patch28:        61f933ac-SVM-enable-MSR_SPEC_CTRL-for-guests.patch
-Patch29:        61f946a2-VMX-drop-SPEC_CTRL-load-on-VMEntry.patch
-Patch30:        6202afa3-x86-clean-up-MSR_MCU_OPT_CTRL-handling.patch
-Patch31:        6202afa4-x86-TSX-move-has_rtm_always_abort.patch
-Patch32:        6202afa5-x86-TSX-cope-with-deprecation-on-WHL-R-CFL-R.patch
-Patch33:        6202afa7-x86-CPUID-leaf-7-2-EDX-infra.patch
-Patch34:        6202afa8-x86-Intel-PSFD-for-guests.patch
-Patch35:        62278667-Arm-introduce-new-processors.patch
-Patch36:        62278668-Arm-move-errata-CSV2-check-earlier.patch
-Patch37:        62278669-Arm-add-ECBHB-and-CLEARBHB-ID-fields.patch
-Patch38:        6227866a-Arm-Spectre-BHB-handling.patch
-Patch39:        6227866b-Arm-allow-SMCCC_ARCH_WORKAROUND_3-use.patch
-Patch40:        6227866c-x86-AMD-cease-using-thunk-lfence.patch
-Patch41:        61d6ea2d-VT-d-split-domid-map-cleanup-check-into-a-function.patch
-Patch42:        61d6ea7b-VT-d-dont-leak-domid-mapping-on-error-path.patch
-Patch43:        6229ba46-VT-d-drop-undue-address-of-from-check_cleanup_domid_map.patch
 # EMBARGOED security fixes
-Patch97:        xsa397.patch
-Patch99:        xsa399.patch
-Patch101:       xsa400-01.patch
-Patch102:       xsa400-02.patch
-Patch103:       xsa400-03.patch
-Patch104:       xsa400-04.patch
-Patch105:       xsa400-05.patch
-Patch106:       xsa400-06.patch
-Patch107:       xsa400-07.patch
-Patch108:       xsa400-08.patch
-Patch109:       xsa400-09.patch
-Patch110:       xsa400-10.patch
-Patch111:       xsa400-11.patch
-Patch112:       xsa400-12.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch

@@ -2702,4 +2702,12 @@
     <comment>Security Fixes for bsc#1197423 (XSA-397), bsc#1197425 (XSA-399), and bsc#1197426 (XSA-400)</comment>
     <requestid>967124</requestid>
   </revision>
+  <revision rev="316" vrev="1">
+    <srcmd5>0bb0581ba94de078401863ba2fcee0f2</srcmd5>
+    <version>4.16.1_02</version>
+    <time>1650060775</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xen version 4.16.1</comment>
+    <requestid>969996</requestid>
+  </revision>
 </revisionlist>

@@ -13,8 +13,10 @@ xen/arch/x86/mm/shadow/private.h
 xen/include/asm-x86/paging.h
 
 
---- a/xen/drivers/passthrough/amd/iommu_intr.c
-+++ b/xen/drivers/passthrough/amd/iommu_intr.c
+Index: xen-4.16.1-testing/xen/drivers/passthrough/amd/iommu_intr.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/drivers/passthrough/amd/iommu_intr.c
++++ xen-4.16.1-testing/xen/drivers/passthrough/amd/iommu_intr.c
 @@ -23,6 +23,10 @@
  
  #include "iommu.h"
@@ -26,8 +28,10 @@ xen/include/asm-x86/paging.h
  union irte32 {
      uint32_t raw;
      struct {
---- a/xen/drivers/passthrough/x86/hvm.c
-+++ b/xen/drivers/passthrough/x86/hvm.c
+Index: xen-4.16.1-testing/xen/drivers/passthrough/x86/hvm.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/drivers/passthrough/x86/hvm.c
++++ xen-4.16.1-testing/xen/drivers/passthrough/x86/hvm.c
 @@ -901,6 +901,9 @@ static void __hvm_dpci_eoi(struct domain
      hvm_pirq_eoi(pirq);
  }
@@ -38,8 +42,10 @@ xen/include/asm-x86/paging.h
  static void hvm_gsi_eoi(struct domain *d, unsigned int gsi)
  {
      struct pirq *pirq = pirq_info(d, gsi);
---- a/xen/common/domctl.c
-+++ b/xen/common/domctl.c
+Index: xen-4.16.1-testing/xen/common/domctl.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/common/domctl.c
++++ xen-4.16.1-testing/xen/common/domctl.c
 @@ -32,6 +32,10 @@
  #include <public/domctl.h>
  #include <xsm/xsm.h>
@@ -51,8 +57,10 @@ xen/include/asm-x86/paging.h
  static DEFINE_SPINLOCK(domctl_lock);
  
  static int nodemask_to_xenctl_bitmap(struct xenctl_bitmap *xenctl_nodemap,
---- a/xen/common/efi/boot.c
-+++ b/xen/common/efi/boot.c
+Index: xen-4.16.1-testing/xen/common/efi/boot.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/common/efi/boot.c
++++ xen-4.16.1-testing/xen/common/efi/boot.c
 @@ -31,6 +31,10 @@
  #undef __ASSEMBLY__
  #endif
@@ -64,8 +72,10 @@ xen/include/asm-x86/paging.h
  #define EFI_REVISION(major, minor) (((major) << 16) | (minor))
  
  #define SMBIOS3_TABLE_GUID \
---- a/xen/common/xmalloc_tlsf.c
-+++ b/xen/common/xmalloc_tlsf.c
+Index: xen-4.16.1-testing/xen/common/xmalloc_tlsf.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/common/xmalloc_tlsf.c
++++ xen-4.16.1-testing/xen/common/xmalloc_tlsf.c
 @@ -28,6 +28,10 @@
  #include <xen/pfn.h>
  #include <asm/time.h>
@@ -77,8 +87,10 @@ xen/include/asm-x86/paging.h
  #define MAX_POOL_NAME_LEN       16
  
  /* Some IMPORTANT TLSF parameters */
---- a/xen/common/memory.c
-+++ b/xen/common/memory.c
+Index: xen-4.16.1-testing/xen/common/memory.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/common/memory.c
++++ xen-4.16.1-testing/xen/common/memory.c
 @@ -35,6 +35,10 @@
  #include <asm/guest.h>
  #endif
@@ -90,8 +102,10 @@ xen/include/asm-x86/paging.h
  struct memop_args {
      /* INPUT */
      struct domain *domain;     /* Domain to be affected. */
---- a/xen/common/page_alloc.c
-+++ b/xen/common/page_alloc.c
+Index: xen-4.16.1-testing/xen/common/page_alloc.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/common/page_alloc.c
++++ xen-4.16.1-testing/xen/common/page_alloc.c
 @@ -155,6 +155,10 @@
  #define PGC_reserved 0
  #endif
@@ -111,8 +125,10 @@ xen/include/asm-x86/paging.h
  /*
   * Following rules applied for page offline:
   * Once a page is broken, it can't be assigned anymore
---- a/xen/common/vmap.c
-+++ b/xen/common/vmap.c
+Index: xen-4.16.1-testing/xen/common/vmap.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/common/vmap.c
++++ xen-4.16.1-testing/xen/common/vmap.c
 @@ -9,6 +9,10 @@
  #include <xen/vmap.h>
  #include <asm/page.h>
@@ -124,8 +140,10 @@ xen/include/asm-x86/paging.h
  static DEFINE_SPINLOCK(vm_lock);
  static void *__read_mostly vm_base[VMAP_REGION_NR];
  #define vm_bitmap(x) ((unsigned long *)vm_base[x])
---- a/xen/include/asm-x86/paging.h
-+++ b/xen/include/asm-x86/paging.h
+Index: xen-4.16.1-testing/xen/include/asm-x86/paging.h
+===================================================================
+--- xen-4.16.1-testing.orig/xen/include/asm-x86/paging.h
++++ xen-4.16.1-testing/xen/include/asm-x86/paging.h
 @@ -32,6 +32,10 @@
  #include <asm/flushtlb.h>
  #include <asm/domain.h>
@@ -137,9 +155,11 @@ xen/include/asm-x86/paging.h
  /*****************************************************************************
   * Macros to tell which paging mode a domain is in */
  
---- a/xen/arch/x86/x86_64/traps.c
-+++ b/xen/arch/x86/x86_64/traps.c
-@@ -24,6 +24,9 @@
+Index: xen-4.16.1-testing/xen/arch/x86/x86_64/traps.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/x86_64/traps.c
++++ xen-4.16.1-testing/xen/arch/x86/x86_64/traps.c
+@@ -25,6 +25,9 @@
  #include <asm/hvm/hvm.h>
  #include <asm/hvm/support.h>
  
@@ -149,8 +169,10 @@ xen/include/asm-x86/paging.h
  
  static void print_xen_info(void)
  {
---- a/xen/arch/x86/cpu/mcheck/mcaction.c
-+++ b/xen/arch/x86/cpu/mcheck/mcaction.c
+Index: xen-4.16.1-testing/xen/arch/x86/cpu/mcheck/mcaction.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/cpu/mcheck/mcaction.c
++++ xen-4.16.1-testing/xen/arch/x86/cpu/mcheck/mcaction.c
 @@ -4,6 +4,10 @@
  #include "vmce.h"
  #include "mce.h"
@@ -162,8 +184,10 @@ xen/include/asm-x86/paging.h
  static struct mcinfo_recovery *
  mci_action_add_pageoffline(int bank, struct mc_info *mi,
                             mfn_t mfn, uint32_t status)
---- a/xen/arch/x86/cpu/mcheck/mce.c
-+++ b/xen/arch/x86/cpu/mcheck/mce.c
+Index: xen-4.16.1-testing/xen/arch/x86/cpu/mcheck/mce.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/cpu/mcheck/mce.c
++++ xen-4.16.1-testing/xen/arch/x86/cpu/mcheck/mce.c
 @@ -30,6 +30,10 @@
  #include "util.h"
  #include "vmce.h"
@@ -175,8 +199,10 @@ xen/include/asm-x86/paging.h
  bool __read_mostly opt_mce = true;
  boolean_param("mce", opt_mce);
  bool __read_mostly mce_broadcast;
---- a/xen/arch/x86/hvm/hvm.c
-+++ b/xen/arch/x86/hvm/hvm.c
+Index: xen-4.16.1-testing/xen/arch/x86/hvm/hvm.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/hvm/hvm.c
++++ xen-4.16.1-testing/xen/arch/x86/hvm/hvm.c
 @@ -81,6 +81,10 @@
  
  #include <compat/hvm/hvm_op.h>
@@ -188,8 +214,10 @@ xen/include/asm-x86/paging.h
  bool_t __read_mostly hvm_enabled;
  
  #ifdef DBG_LEVEL_0
---- a/xen/arch/x86/pv/dom0_build.c
-+++ b/xen/arch/x86/pv/dom0_build.c
+Index: xen-4.16.1-testing/xen/arch/x86/pv/dom0_build.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/pv/dom0_build.c
++++ xen-4.16.1-testing/xen/arch/x86/pv/dom0_build.c
 @@ -22,6 +22,10 @@
  #include <asm/pv/mm.h>
  #include <asm/setup.h>
@@ -201,8 +229,10 @@ xen/include/asm-x86/paging.h
  /* Allow ring-3 access in long mode as guest cannot use ring 1 ... */
  #define BASE_PROT (_PAGE_PRESENT|_PAGE_RW|_PAGE_ACCESSED|_PAGE_USER)
  #define L1_PROT (BASE_PROT|_PAGE_GUEST_KERNEL)
---- a/xen/arch/x86/pv/ro-page-fault.c
-+++ b/xen/arch/x86/pv/ro-page-fault.c
+Index: xen-4.16.1-testing/xen/arch/x86/pv/ro-page-fault.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/pv/ro-page-fault.c
++++ xen-4.16.1-testing/xen/arch/x86/pv/ro-page-fault.c
 @@ -26,6 +26,10 @@
  #include "emulate.h"
  #include "mm.h"
@@ -214,9 +244,11 @@ xen/include/asm-x86/paging.h
  /*********************
   * Writable Pagetables
   */
---- a/xen/arch/x86/pv/emul-priv-op.c
-+++ b/xen/arch/x86/pv/emul-priv-op.c
-@@ -39,6 +39,10 @@
+Index: xen-4.16.1-testing/xen/arch/x86/pv/emul-priv-op.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/pv/emul-priv-op.c
++++ xen-4.16.1-testing/xen/arch/x86/pv/emul-priv-op.c
+@@ -40,6 +40,10 @@
  #include "emulate.h"
  #include "mm.h"
  
@@ -227,8 +259,10 @@ xen/include/asm-x86/paging.h
  struct priv_op_ctxt {
      struct x86_emulate_ctxt ctxt;
      struct {
---- a/xen/arch/x86/pv/mm.c
-+++ b/xen/arch/x86/pv/mm.c
+Index: xen-4.16.1-testing/xen/arch/x86/pv/mm.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/pv/mm.c
++++ xen-4.16.1-testing/xen/arch/x86/pv/mm.c
 @@ -26,6 +26,10 @@
  
  #include "mm.h"
@@ -240,8 +274,10 @@ xen/include/asm-x86/paging.h
  /*
   * Get a mapping of a PV guest's l1e for this linear address.  The return
   * pointer should be unmapped using unmap_domain_page().
---- a/xen/arch/x86/domain_page.c
-+++ b/xen/arch/x86/domain_page.c
+Index: xen-4.16.1-testing/xen/arch/x86/domain_page.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/domain_page.c
++++ xen-4.16.1-testing/xen/arch/x86/domain_page.c
 @@ -18,6 +18,10 @@
  #include <asm/hardirq.h>
  #include <asm/setup.h>
@@ -253,8 +289,10 @@ xen/include/asm-x86/paging.h
  static DEFINE_PER_CPU(struct vcpu *, override);
  
  static inline struct vcpu *mapcache_current_vcpu(void)
---- a/xen/arch/x86/mm/shadow/private.h
-+++ b/xen/arch/x86/mm/shadow/private.h
+Index: xen-4.16.1-testing/xen/arch/x86/mm/shadow/private.h
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/mm/shadow/private.h
++++ xen-4.16.1-testing/xen/arch/x86/mm/shadow/private.h
 @@ -33,6 +33,10 @@
  
  #include "../mm-locks.h"
@@ -266,8 +304,10 @@ xen/include/asm-x86/paging.h
  /******************************************************************************
   * Levels of self-test and paranoia
   */
---- a/xen/arch/x86/mm/hap/hap.c
-+++ b/xen/arch/x86/mm/hap/hap.c
+Index: xen-4.16.1-testing/xen/arch/x86/mm/hap/hap.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/mm/hap/hap.c
++++ xen-4.16.1-testing/xen/arch/x86/mm/hap/hap.c
 @@ -42,6 +42,10 @@
  
  #include "private.h"
@@ -279,8 +319,10 @@ xen/include/asm-x86/paging.h
  /************************************************/
  /*          HAP VRAM TRACKING SUPPORT           */
  /************************************************/
---- a/xen/arch/x86/mm/p2m-pod.c
-+++ b/xen/arch/x86/mm/p2m-pod.c
+Index: xen-4.16.1-testing/xen/arch/x86/mm/p2m-pod.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/mm/p2m-pod.c
++++ xen-4.16.1-testing/xen/arch/x86/mm/p2m-pod.c
 @@ -31,6 +31,10 @@
  
  #include "mm-locks.h"
@@ -292,8 +334,10 @@ xen/include/asm-x86/paging.h
  #define superpage_aligned(_x)  (((_x)&(SUPERPAGE_PAGES-1))==0)
  
  /* Enforce lock ordering when grabbing the "external" page_alloc lock */
---- a/xen/arch/x86/mm/p2m-ept.c
-+++ b/xen/arch/x86/mm/p2m-ept.c
+Index: xen-4.16.1-testing/xen/arch/x86/mm/p2m-ept.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/mm/p2m-ept.c
++++ xen-4.16.1-testing/xen/arch/x86/mm/p2m-ept.c
 @@ -36,6 +36,10 @@
  
  #include "mm-locks.h"
@@ -305,8 +349,10 @@ xen/include/asm-x86/paging.h
  #define atomic_read_ept_entry(__pepte)                              \
      ( (ept_entry_t) { .epte = read_atomic(&(__pepte)->epte) } )
  
---- a/xen/arch/x86/mm/p2m.c
-+++ b/xen/arch/x86/mm/p2m.c
+Index: xen-4.16.1-testing/xen/arch/x86/mm/p2m.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/mm/p2m.c
++++ xen-4.16.1-testing/xen/arch/x86/mm/p2m.c
 @@ -44,6 +44,10 @@
  
  #include "mm-locks.h"
@@ -318,8 +364,10 @@ xen/include/asm-x86/paging.h
  /* Override macro from asm/page.h to make work with mfn_t */
  #undef virt_to_mfn
  #define virt_to_mfn(v) _mfn(__virt_to_mfn(v))
---- a/xen/arch/x86/tboot.c
-+++ b/xen/arch/x86/tboot.c
+Index: xen-4.16.1-testing/xen/arch/x86/tboot.c
+===================================================================
+--- xen-4.16.1-testing.orig/xen/arch/x86/tboot.c
++++ xen-4.16.1-testing/xen/arch/x86/tboot.c
 @@ -16,6 +16,10 @@
  #include <asm/setup.h>
  #include <crypto/vmac.h>
@@ -331,8 +379,10 @@ xen/include/asm-x86/paging.h
  /* tboot=<physical address of shared page> */
  static unsigned long __initdata opt_tboot_pa;
  integer_param("tboot", opt_tboot_pa);
---- a/tools/firmware/hvmloader/ovmf.c
-+++ b/tools/firmware/hvmloader/ovmf.c
+Index: xen-4.16.1-testing/tools/firmware/hvmloader/ovmf.c
+===================================================================
+--- xen-4.16.1-testing.orig/tools/firmware/hvmloader/ovmf.c
++++ xen-4.16.1-testing/tools/firmware/hvmloader/ovmf.c
 @@ -34,6 +34,11 @@
  #include <xen/hvm/ioreq.h>
  #include <xen/memory.h>
@@ -345,8 +395,10 @@ xen/include/asm-x86/paging.h
  #define OVMF_MAXOFFSET          0x000FFFFFULL
  #define OVMF_END                0x100000000ULL
  #define LOWCHUNK_BEGIN          0x000F0000
---- a/tools/firmware/hvmloader/seabios.c
-+++ b/tools/firmware/hvmloader/seabios.c
+Index: xen-4.16.1-testing/tools/firmware/hvmloader/seabios.c
+===================================================================
+--- xen-4.16.1-testing.orig/tools/firmware/hvmloader/seabios.c
++++ xen-4.16.1-testing/tools/firmware/hvmloader/seabios.c
 @@ -29,6 +29,11 @@
  #include <acpi2_0.h>
  #include <libacpi.h>
@@ -359,8 +411,10 @@ xen/include/asm-x86/paging.h
  struct seabios_info {
      char signature[14]; /* XenHVMSeaBIOS\0 */
      uint8_t length;     /* Length of this struct */
---- a/tools/firmware/hvmloader/util.c
-+++ b/tools/firmware/hvmloader/util.c
+Index: xen-4.16.1-testing/tools/firmware/hvmloader/util.c
+===================================================================
+--- xen-4.16.1-testing.orig/tools/firmware/hvmloader/util.c
++++ xen-4.16.1-testing/tools/firmware/hvmloader/util.c
 @@ -31,6 +31,10 @@
  #include <xen/hvm/hvm_xs_strings.h>
  #include <xen/hvm/params.h>
