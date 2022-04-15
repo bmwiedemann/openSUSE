@@ -28,6 +28,7 @@ Source:         http://www.dest-unreach.org/socat/download/%{name}-%{version}.ta
 Source1:        %{name}.changes
 Patch1:         socat-ignore-tests-failure-boo1078346.patch
 Patch2:         socat-common-fixes.patch
+Patch3:         socat-fix-asan-error.patch
 BuildRequires:  iputils
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel
@@ -53,9 +54,7 @@ file descriptor (stdin etc.), the GNU line editor, a program, or a
 combination of two of these.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup
 sed 's|#! %{_bindir}/env bash|#!%{_bindir}/bash|' -i proxyecho.sh readline.sh
 
 %build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 13 07:41:15 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use autosetup
+- Add socat-fix-asan-error.patch that is offered to upstream
+  and that fixes an ASAN error seen for 'test 313 NESTEDOVFL'.
+
+-------------------------------------------------------------------
 Sat Jan 22 20:54:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.4.3:

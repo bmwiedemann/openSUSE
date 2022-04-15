@@ -356,4 +356,14 @@ See README (forwarded request 157221 from babelworx)</comment>
   * A few more corrections and improvements have been added (forwarded request 948160 from dirkmueller)</comment>
     <requestid>948225</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>a2d5cb9bdadf944590aab3691e73f97a</srcmd5>
+    <version>1.7.4.3</version>
+    <time>1650060836</time>
+    <user>dimstar_suse</user>
+    <comment>- Use autosetup
+- Add socat-fix-asan-error.patch that is offered to upstream
+  and that fixes an ASAN error seen for 'test 313 NESTEDOVFL'. (forwarded request 969720 from marxin)</comment>
+    <requestid>969803</requestid>
+  </revision>
 </revisionlist>
