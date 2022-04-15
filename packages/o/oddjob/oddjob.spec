@@ -1,6 +1,7 @@
 #
 # spec file for package oddjob
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           oddjob
-Version:        0.34.5
+Version:        0.34.7
 Release:        0
 Summary:        A D-Bus service which runs odd jobs on behalf of client applications
 License:        BSD-3-Clause
@@ -25,20 +26,20 @@ License:        BSD-3-Clause
 URL:            https://pagure.io/oddjob
 Source0:        https://releases.pagure.org/oddjob/oddjob-%{version}.tar.gz
 
-BuildRequires:  gcc
+BuildRequires:  cyrus-sasl-devel
 BuildRequires:  dbus-1-devel >= 0.22
 BuildRequires:  dbus-1-x11
+BuildRequires:  docbook
+BuildRequires:  gcc
 BuildRequires:  libselinux-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cyrus-sasl-devel
-BuildRequires:  pkgconfig(krb5)
-BuildRequires:  openldap2-devel
-BuildRequires:  docbook
-BuildRequires:  xmlto
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  xmlto
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 Requires(post): psmisc
 Requires:       dbus-1
