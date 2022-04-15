@@ -1789,4 +1789,13 @@
   by upstream.</comment>
     <requestid>969971</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>e33a3e947694dbd700dfb21a5b98b20c</srcmd5>
+    <version>1.4.33</version>
+    <time>1650060930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.33:
+  * Fix another crash in dark mode handling.</comment>
+    <requestid>970332</requestid>
+  </revision>
 </revisionlist>
