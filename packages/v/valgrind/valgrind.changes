@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 12 19:27:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.0:
+  * Fix Rust v0 name demangling.
+  * The Linux rseq syscall is now implemented as (silently) returning ENOSYS.
+  * Add FreeBSD syscall wrappers for __specialfd and __realpathat.
+  * Remove FreeBSD dependencies on COMPAT10, which fixes compatibility with HardenedBSD
+  * see https://valgrind.org/docs/manual/dist.news.html for list of bugfixes
+- drop handle-rseq-syscall.patch: upstream
+
+-------------------------------------------------------------------
 Wed Mar  9 10:31:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add upstream handle-rseq-syscall.patch to fix run with glibc 2.35 
