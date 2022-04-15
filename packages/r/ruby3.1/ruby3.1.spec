@@ -31,7 +31,7 @@
 
 %global patch_level p0
 Name:           ruby3.1%{psuffix}
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
@@ -80,8 +80,6 @@ Release:        0
 %bcond_with    clang
 %bcond_with    separate_stdlib
 
-%bcond_with    bootstrap
-
 #
 URL:            https://www.ruby-lang.org/
 Source:         https://cache.ruby-lang.org/pub/ruby/3.1/ruby-%{pkg_version}.tar.xz
@@ -101,13 +99,6 @@ BuildRequires:  gmp-devel
 BuildRequires:  jemalloc-devel
 %endif
 BuildRequires:  autoconf
-%if %{with bootstrap}
-BuildRequires:  automake
-BuildRequires:  bison
-BuildRequires:  flex
-BuildRequires:  libtool
-BuildRequires:  ruby
-%endif
 BuildRequires:  libffi-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  ncurses-devel
@@ -115,6 +106,8 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  update-alternatives
 %if "%{flavor}" == "testsuite"
+#!BuildIgnore: ruby
+#!BuildIgnore: ruby-common
 BuildRequires:  netcfg
 BuildRequires:  procps
 BuildRequires:  ruby3.1
@@ -290,30 +283,6 @@ tasks (as in Perl).  It is extensible.
 rm -rf ext/psych/yaml
 rm -rf ext/fiddle/libffi*
 
-%if %{with bootstrap}
-cp              \
-    %{SOURCE20} \
-    %{SOURCE21} \
-    %{SOURCE22} \
-    %{SOURCE23} \
-    %{SOURCE24} \
-    %{SOURCE25} \
-    %{SOURCE26} \
-    %{SOURCE27} \
-    %{SOURCE28} \
-    %{SOURCE29} \
-    %{SOURCE30} \
-    %{SOURCE31} \
-    %{SOURCE32} \
-    %{SOURCE33} \
-    %{SOURCE34} \
-   gems/
-
-install -m 0755 \
-    %{SOURCE35} \
-    %{SOURCE36} \
-   tool/
-%endif
 find sample -type f -perm /a=x -ls -exec chmod a-x \{\} \+
 # replace "/usr/bin/env ruby" and "/usr/local/bin/ruby" with correct path
 grep -Erl '^#! */.*ruby' benchmark bootstraptest ext lib sample test \
@@ -325,9 +294,6 @@ find .bundle -name extconf.rb -exec \
     -e '/create_makefile/i \$DLDFLAGS << " -L#{$top_srcdir}"' {} \;
 
 %build
-%if %{with bootstrap}
-bash -x autogen.sh
-%endif
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
@@ -365,7 +331,7 @@ make %{?_smp_mflags} all V=1 STRIP=/bin/true
 
 %install
 %if "%{flavor}" != "testsuite"
-%makeinstall V=1 STRIP=/bin/true
+%make_install V=1 STRIP=/bin/true
 perl -p -i -e 's|#!/usr/local/bin/ruby|%{_bindir}/ruby|g' $(grep -r -l /usr/local/bin/ruby %{buildroot})
 echo "%defattr(-,root,root,-)" > devel-extra-excludes
 echo "%defattr(-,root,root,-)" > devel-extra-list

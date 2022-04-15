@@ -45,4 +45,20 @@
     <comment></comment>
     <requestid>966755</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1356cae421da18dd5aa5d9f5099d57b0</srcmd5>
+    <version>3.1.2</version>
+    <time>1650060839</time>
+    <user>dimstar_suse</user>
+    <comment>- add buildignore for ruby and ruby-common so we do not pull
+  gem2rpm for the testsuite
+
+- Update to 3.1.2 (boo#1198441 boo#1198440)
+  https://www.ruby-lang.org/en/news/2022/04/12/ruby-3-1-2-released/
+  - CVE-2022-28738: Double free in Regexp compilation
+  - CVE-2022-28739: Buffer overrun in String-to-Float conversion
+
+- Update to 3.1.1</comment>
+    <requestid>969824</requestid>
+  </revision>
 </revisionlist>

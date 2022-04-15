@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 13 10:09:28 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- add buildignore for ruby and ruby-common so we do not pull
+  gem2rpm for the testsuite
+
+-------------------------------------------------------------------
+Wed Apr 13 08:16:06 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.1.2 (boo#1198441 boo#1198440)
+  https://www.ruby-lang.org/en/news/2022/04/12/ruby-3-1-2-released/
+  - CVE-2022-28738: Double free in Regexp compilation
+  - CVE-2022-28739: Buffer overrun in String-to-Float conversion
+
+-------------------------------------------------------------------
 Tue Mar 29 17:41:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - move tests into separate testsuite _multibuild:
@@ -21,7 +35,7 @@ Tue Mar  8 08:39:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Feb 22 15:32:13 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 3.1.1 
+- Update to 3.1.1
   https://www.ruby-lang.org/en/news/2022/02/18/ruby-3-1-1-released/
 - drop 77fe1fca0abb56f7f07725c0a3803d53a315c853.patch:
   included in update
