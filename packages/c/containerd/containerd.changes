@@ -1,13 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 14 04:15:16 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.5.11 to fix CVE-2022-24769. bsc#1197517
+
+-------------------------------------------------------------------
 Thu Mar  3 07:24:10 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.4.13 to fix CVE-2022-23648. bsc#1196441
+- Remove upstreamed patch:
+  - CVE-2022-23648.patch
+
+-------------------------------------------------------------------
+Wed Mar  2 12:48:05 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+[ This patch was only released in SLES and Leap. ]
+
+- Add patch for CVE-2022-23648. bsc#1196441
+  + CVE-2022-23648.patch
 
 -------------------------------------------------------------------
 Fri Nov 19 00:01:23 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
-- Update to containerd v1.4.12 for Docker 20.10.11-ce.
-  bsc#1192814 CVE-2021-41190
+- Update to containerd v1.4.12 for Docker 20.10.11-ce. bsc#1192814
+  bsc#1193273 CVE-2021-41190
 
 -------------------------------------------------------------------
 Wed Oct  6 02:54:49 UTC 2021 - Aleksa Sarai <asarai@suse.com>
