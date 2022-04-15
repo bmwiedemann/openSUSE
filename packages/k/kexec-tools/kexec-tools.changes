@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 13 07:10:02 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- kexec-tools-print-error-if-kexec_file_load-fails.patch: print
+  error if kexec_file_load fails (bsc#1197176).
+
+-------------------------------------------------------------------
 Mon May  3 10:57:35 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - Bump version to 2.0.21

@@ -1019,4 +1019,14 @@ installer uses kexec to boot into second stage..
     <comment></comment>
     <requestid>890016</requestid>
   </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>7d0cd32dddc7de7e4ee59e5c15e950d6</srcmd5>
+    <version>2.0.22</version>
+    <time>1650060827</time>
+    <user>dimstar_suse</user>
+    <comment>- kexec-tools-print-error-if-kexec_file_load-fails.patch: print
+  error if kexec_file_load fails (bsc#1197176).
+</comment>
+    <requestid>969705</requestid>
+  </revision>
 </revisionlist>

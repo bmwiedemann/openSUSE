@@ -1,7 +1,7 @@
 #
 # spec file for package kexec-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
 Patch10:        %{name}-SYS_getrandom.patch
 Patch11:        %{name}-remove-duplicate-ramdisk-definition.patch
+Patch12:        %{name}-print-error-if-kexec_file_load-fails.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
