@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:39:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.6:
+  * docs: remove dead links. References doesn't exist anymore
+  * website: Increase broken links checking
+  * feat: Convert home relative paths in cache entries
+  * fix: update install link
+  * ci: add new issues to backlog project
+  * Fix default client env when var is set (#2128)
+  * website: update code block font
+  * build(deps-dev): bump cypress from 9.5.3 to 9.5.4 in /website
+  * feat: Allow default values in `client: env` (#2122)
+  * docs: Link to markdown files
+  * docs: Package coding style
+  * Update 1221-action.md
+  * chore: update clientfilesystemread.go Signed-off-by: rrylee <rrylee1994@gmail.com>
+  * Docs: Add docs to sidebar
+  * Docs: guides/1225-pushing-plan-dependencies
+  * Docs: 1224-self-signed-certificates
+  * Docs: 1223-custom-buildkit improvement
+  * chore: Fix typo
+  * Docs: guides: customizing your buildkit installation
+  * client: fix deadlock when connect to buildkitd fails
+  * Docs: move draft articles to "guides"
+  * Docs: move CLI telemetry to guides section
+  * Docs: fix formatting in article 1221
+  * ci: cue linter: include all CUE files
+  * tests: Adding update to project info for negative test case
+  * Docs: shorten title of article 1205
+  * build(deps): bump github.com/moby/buildkit from 0.10.0 to 0.10.1
+  * build(deps): bump go.opentelemetry.io/otel/exporters/jaeger
+  * ci: Use default CODEOWNERS for docs sidebar
+  * build(deps): bump sass from 1.49.11 to 1.50.0 in /website
+  * Docs: core actions reference
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.6.1 to 1.6.2
+  * universe: python: Update to 0.2
+  * Docs: core concepts: actions
+  * Docs: new category "guides"
+  * test: Update project info test to fix issue
+  * test: Fixing project info integration test
+  * ci: lint dagger using dagger
+  * test: Update project info command to pass lint and test to make sure TEMPDIR is there
+  * Docs: add content to 1205: "building container images"
+  * feat: Adding project info command to find where project is located
+  * build(deps): bump amplitude-js from 8.18.0 to 8.18.1 in /website
+  * docs: improve comment wording
+  * Add global --experimental flag to gatekeep some features
+  * Add experimental way to set a target platform when building
+  * fix: wrap the error
+  * fix: add full error handling after os.Stat
+  * ci: Group changelog entries
+
+-------------------------------------------------------------------
 Wed Apr 06 07:33:52 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.5:
