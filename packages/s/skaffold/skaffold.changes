@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 14 20:14:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.0:
+  * release: v1.38.0
+  * chore: PR to update pull request template (#7268)
+  * fix: fix bazel-out path for `rules_docker-0.23.0` (#7251)
+  * chore: update go version in actions that weren't specifying go 1.17 (#7263)
+  * doc: document command-line restrictions for Go and Python (#7260)
+  * chore: bump jib plugin versions (#7256)
+  * docs: add skaffold config for init example in pipeline-stages (#7077)
+  * chore(deps): bump flask from 2.1.0 to 2.1.1 in /examples (#7253)
+  * chore(deps): bump flask from 2.1.0 to 2.1.1 in /integration/examples (#7252)
+  * chore(deps): bump puma from 4.3.11 to 4.3.12 in /examples/ruby/backend (#7245)
+  * chore(deps): bump puma from 4.3.11 to 4.3.12 in /integration/examples/ruby/backend (#7246)
+  * chore: add v1.37.1 release to github release page (#7244)
+  * chore(deps): bump flask from 2.0.3 to 2.1.0 in buildpacks-python example (#7239)
+  * ci: pass `IT_PARTITION` variable when running `make integration-in-docker` (#7226)
+  * fix: change GCB backoff check to use error code instead of checking the error (#7213)
+  * chore(ko): Upgrade `ko` dependency to v0.11.2 (#7224)
+  * fix: fix skaffold label setter to work properly for cnrm resources (#7221)
+  * fix(examples/typescript): use tsc-watch --noClear to keep previous logs (#7227)
+  * fix: Unmarshaling nested arrays of objects (#7217)
+  * fix: add missing Argo CronWorkflow to transforms (#7205)
+  * chore: remove maven-wrapper.jar and regenerate Maven wrappers (#7220)
+  * chore(deps): bump peter-evans/create-or-update-comment from 1.4.5 to 2 (#7215)
+  * chore(deps): bump actions/cache from 2 to 3 (#7210)
+
+-------------------------------------------------------------------
 Thu Mar 31 07:04:19 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.37.1:
