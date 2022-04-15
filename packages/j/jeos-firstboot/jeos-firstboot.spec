@@ -17,7 +17,7 @@
 
 
 Name:           jeos-firstboot
-Version:        1.1.1.1
+Version:        1.2.0.0
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -76,8 +76,12 @@ cp -a files/* %{buildroot}
 %{_unitdir}/jeos-firstboot-snapshot.service
 %dir %{_datadir}/defaults/
 %{_datadir}/defaults/jeos-firstboot.conf
-%dir %{_datadir}/jeos-firstboot
-%dir %{_datadir}/jeos-firstboot/modules
+%dir %{_datadir}/jeos-firstboot/
+%dir %{_datadir}/jeos-firstboot/modules/
+%{_datadir}/jeos-firstboot/modules/network
+%dir %{_datadir}/jeos-firstboot/modules/network-modules/
+%{_datadir}/jeos-firstboot/modules/network-modules/NetworkManager
+%{_datadir}/jeos-firstboot/modules/network-modules/wicked
 %{_sbindir}/jeos-config
 %{_sbindir}/jeos-firstboot
 %{_sbindir}/jeos-firstboot-snapshot

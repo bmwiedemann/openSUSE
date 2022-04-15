@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 14 11:31:37 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2.0:
+  * Make use of SPDX identifiers
+  * Read dialog output into a variable directly
+  * Drop broken error handling for dialog
+  * Fix dialog asking about wicked network reconfiguration
+  * Start nmtui in jeos-firstboot if no active connection could be detected
+  * Load network modules dynamically
+  * Only list applicable modules in jeos-config
+  * Convert network configuration to a module
+  * Fix size of the "No root password set" dialog
+
+-------------------------------------------------------------------
 Wed Mar 16 15:04:42 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.1.1.1:
