@@ -25,9 +25,11 @@ Summary:        Google Cloud Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-google/certbot-dns-google-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM certbot-pr8928-replace-oauth2client.patch -- gh#certbot/certbot#8928
+Patch0:         certbot-pr8928-replace-oauth2client.patch
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module google-api-python-client >= 1.5.5}
-BuildRequires:  %{python_module oauth2client >= 4.0}
+BuildRequires:  %{python_module google-auth >= 1.32.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -35,7 +37,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-acme >= %{version}
 Requires:       python-certbot >= %{version}
 Requires:       python-google-api-python-client >= 1.5.5
-Requires:       python-oauth2client >= 4.0
+Requires:       python-google-auth >= 1.32.1
 Requires:       python-zope.interface
 BuildArch:      noarch
 %python_subpackages
@@ -44,7 +46,7 @@ BuildArch:      noarch
 Google Cloud DNS Authenticator plugin for Certbot.
 
 %prep
-%setup -q -n certbot-dns-google-%{version}
+%autosetup -p1 -n certbot-dns-google-%{version}
 
 %build
 %python_build
