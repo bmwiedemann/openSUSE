@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Apr 12 09:46:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.32.0
+  * [otlLib] Disable GPOS7 optimization to work around bug in Apple
+    CoreText. Always force Chaining GPOS8 for now (#2540).
+  * [glifLib] Added outputImpliedClosingLine=False parameter to
+    Glyph.draw(), to control behaviour of PointToSegmentPen
+    (6b4e2e7).
+  * [varLib.interpolatable] Check for wrong contour starting point
+    (#2571).
+  * [cffLib] Remove leftover GlobalState class and fix calls to
+    TopDictIndex() (#2569, #2570).
+  * [instancer] Clear AxisValueArray if it is empty after
+    instantiating (#2563). 
+- Release 4.31.2
+  * [varLib] fix instantiation of GPOS SinglePos values (#2555).
+- Release 4.31.1
+  * [subset] fix subsetting OT-SVG when glyph id attribute is on
+    the root <svg> element (#2553).
+- Release 4.31.0
+  * [ttCollection] Fixed 'ResourceWarning: unclosed file' warning
+    (#2549).
+  * [varLib.merger] Handle merging SinglePos with valueformat=0
+    (#2550).
+  * [ttFont] Update glyf's glyphOrder when calling
+    TTFont.setGlyphOrder() (#2544).
+  * [ttFont] Added ensureDecompiled method to load all tables
+    irrespective of the lazy attribute (#2551).
+  * [otBase] Added iterSubTable method to iterate over BaseTable's
+    children of type BaseTable; useful for traversing a tree of
+    otTables (#2551).
+- Release 4.30.0
+  * [varLib] Added debug logger showing the glyph name for which
+    gvar is built (#2542).
+  * [varLib.errors] Fixed undefined names in FoundANone and
+    UnsupportedFormat exceptions (ac4d561).
+  * [otlLib.builder] Added windowsNames and macNames (bool)
+    parameters to the buildStatTable function, so that one can
+    select whether to only add one or both of the two sets (#2528).
+  * [t1Lib] Added the ability to recreate PostScript stream
+    (#2504).
+  * [name] Added getFirstDebugName,
+    getBest{Family,SubFamily,Full}Name methods (#2526).
+
+-------------------------------------------------------------------
 Mon Mar  7 10:28:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.29.1
