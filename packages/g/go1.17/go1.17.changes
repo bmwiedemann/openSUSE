@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 12 17:42:46 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.17.9 (released 2022-04-12) includes security fixes to the
+  crypto/elliptic and encoding/pem packages, as well as bug fixes
+  to the linker and runtime.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2022-24675 CVE-2022-28327
+  * boo#1198423 go#51853 CVE-2022-24675
+  * go#52036 encoding/pem: stack overflow
+  * boo#1198424 go#52075 CVE-2022-28327
+  * go#52076 crypto/elliptic: generic P-256 panic when scalar has too many leading zeroes
+  * go#51736 plugin: tls handshake panic: unreachable method called. linker bug?
+  * go#51696 runtime: some tests fails on Windows with CGO_ENABLED=0
+  * go#51458 runtime: finalizer call has wrong frame size
+  * go#50611 internal/poll: deadlock in Read on arm64 when an FD is closed
+
+-------------------------------------------------------------------
 Thu Apr  7 23:57:47 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Template gcc-go.patch to substitute gcc_go_version and eliminate
