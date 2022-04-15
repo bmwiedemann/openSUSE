@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:37:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.1:
+  * install: fix AKS installation on Cilium >= 1.12.0
+  * helm: fix helm template output for extraConfig options
+  * feat: collect Kubernetes Endpoints in sysdump
+
+-------------------------------------------------------------------
+Thu Apr 14 19:34:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.0:
+  * Update Go to 1.18.1
+  * make: allow running `git status` during release build
+  * hubble: redact cilium-ca certificate key when printing to terminal
+  * hubble: fix installation of 1.10 versions
+  * vendor: Update github.com/cilium/charts
+  * connectivity: Make fatal errors more visible
+  * store helm values into a Kubernetes secret
+  * internal/helm: fix helm template output for array values
+  * hubble: fix deployment of hubble with unreleased Cilium versions
+  * Support operator running in a different namespace
+  * hubble: add helm-based installation to hubble mode
+  * internal/helm: fix bug in helm keys that had a .
+  * refactor helm code into dedicated package
+  * .github: partially revert flag changes
+  * internal/cli: deprecate CLI flags in favor of helm options
+  * refactor: Expose k8s package
+  * install: auto-detect k3s clusters
+  * install, internal/k8s: remove unnecessary AutodetectFlavor error return
+  * install: add image-suffix and image-tag to keep old version behavior
+  * install: use version SHA as image tags
+  * go.mod, vendor: update cilium to v1.11.3
+  * Update default Cilium version to 1.11.3
+  * install: enable node-init script on AKS
+  * defaults: add image digests for Cilium v1.9.14, v1.10.9, v1.11.3
+  * install: Handle rancher-desktop CNI location
+  * use strings.HasPrefix to check cilium image
+  * skip non cilium image when get cilium version
+  * vendor: update cilium/chart with recent Cilium versions
+  * install: fix helm-based installation for versions older than 1.11
+  * build(deps): bump github.com/cilium/workerpool from 1.1.1 to 1.1.2
+  * build(deps): bump helm.sh/helm/v3 from 3.8.0 to 3.8.1
+  * add user-defined options into Cilium ConfigMap
+  * add helm-auto-gen-values option to write values into file
+  * generate configmap from helm
+  * install: allow user-defined helm options
+  * install: allow passing a helm directory
+  * generate manifests with helm
+  * ci: bump golangci-lint to v1.45.0
+  * Moving pkill to cleanup
+  * Update Go to 1.18
+  * Makefile, .github/workflows: update golangci-lint to v1.44.2
+  * ci: update `az` to 2.34.1
+  * Make CRR standalone workload
+  * build(deps): bump docker/build-push-action from 2.9.0 to 2.10.0
+  * build(deps): bump google.golang.org/grpc from 1.44.0 to 1.45.0
+  * build(deps): bump github.com/spf13/cobra from 1.3.0 to 1.4.0
+  * build(deps): bump google-github-actions/setup-gcloud from 0.5.1 to 0.6.0
+  * internal: clarify key=value syntax for cilium install --config
+  * build(deps): bump golangci/golangci-lint-action from 3.0.0 to 3.1.0
+  * Update Go to 1.17.8
+  * build(deps): bump docker/login-action from 1.14.0 to 1.14.1
+  * Fix 'node-init' in GKE's 'cos' images.
+  * workflows: fix AKS workflow not using the right CLI pod
+  * build(deps): bump actions/upload-artifact from 2.3.1 to 3
+  * build(deps): bump actions/download-artifact from 2.1.0 to 3
+  * Adding Network Performance test
+  * build(deps): bump actions/checkout from 2.4.0 to 3
+  * connectivity: Don't ignore errors during setup & validation
+  * sysdump: check (*Collector).setupLogging error
+  * build(deps): bump actions/setup-go from 2.2.0 to 3
+  * build(deps): bump docker/login-action from 1.13.0 to 1.14.0
+  * sysdump: include own log messages in sysdump
+  * build(deps): bump golangci/golangci-lint-action from 2.5.2 to 3
+- BuildRequire go1.18
+
+-------------------------------------------------------------------
 Thu Feb 24 17:09:32 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.10.4:
