@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  6 13:57:27 UTC 2022 - Roger Zhou <zzhou@suse.com>
+
+- Drop obs resource-agents.conf and reuse the one in upstream commit 826c5532
+
+-------------------------------------------------------------------
 Thu Mar 31 14:22:18 UTC 2022 - varkoly@suse.com
 
 - Update to version v4.11.0rc1+git2.d40f1f1b:

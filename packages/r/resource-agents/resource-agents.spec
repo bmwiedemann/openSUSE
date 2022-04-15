@@ -24,8 +24,7 @@ License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            http://linux-ha.org/
 Source:         resource-agents-%{version}.tar.xz
-Source1:        resource-agents.conf
-Source2:        monitoring-plugins-metadata.tar.bz2
+Source1:        monitoring-plugins-metadata.tar.bz2
 
 # PATCH-FIX-OPENSUSE: activate VG with partial PV by default
 Patch1:         0001-LVM-Default-partial_activation-to-true-in-SLE-HAE.patch
@@ -144,7 +143,8 @@ find %{buildroot} "(" -name "ocf-*" -o -name "*.dtd" ")" -type f -exec chmod a-x
 chmod 0755 %{buildroot}%{_sbindir}/ocf-tester
 chmod 0755 %{buildroot}%{_sbindir}/ocft
 mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
-install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 systemd/resource-agents.conf %{buildroot}%{_prefix}/lib/tmpfiles.d
+
 (
 cd %{buildroot}/%{_libdir}/heartbeat
 for f in ocf-returncodes ocf-shellfuncs
@@ -154,7 +154,7 @@ done
 )
 
 # install nagios plugins XML metadata
-tar -xjf %{SOURCE2}
+tar -xjf %{SOURCE1}
 mkdir -p %{buildroot}%{_datadir}/nagios/plugins-metadata
 for file in $(find plugins-metadata -type f); do
 	install -m 644 $file %{buildroot}%{_datadir}/nagios/plugins-metadata
