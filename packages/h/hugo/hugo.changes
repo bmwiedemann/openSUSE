@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 14 17:35:27 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.97.0:
+  * releaser: Reduce parallelism
+  * Revert "build(deps): bump gocloud.dev from 0.20.0 to 0.25.0"
+  * resources: Add `key` to reources.GetRemote options map
+  * build(deps): bump github.com/evanw/esbuild from 0.14.34 to 0.14.36
+  * Make string sorting (e.g. ByTitle, ByLinkTitle and ByParam) language aware
+  * Fix gosum checksum errors
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.11.0 to 2.11.1
+  * compare: Add a string sort benchmark
+  * Replace all usage of  CopyOnWriteFs with OverlayFs
+  * deps: Update github.com/tdewolff/minify/v2 v2.10.0 => v2.11.0
+  * Rework the Destination filesystem to make --renderStaticToDisk work
+  * Revert "Revert "Some minor adjustments to the new static filesystem logic""
+  * Revert "Revert "Allow rendering static files to disk and dynamic to memory in server mode""
+  * build(deps): bump github.com/evanw/esbuild from 0.14.31 to 0.14.34
+  * modules/client: Vendor config directory if present
+  * resources: Create a common ResourceFinder interface
+  * build(deps): bump gocloud.dev from 0.20.0 to 0.25.0
+  * build(deps): bump golang.org/x/tools from 0.1.9 to 0.1.10
+  * build(deps): bump github.com/magefile/mage from 1.12.1 to 1.13.0
+  * build(deps): bump github.com/gobuffalo/flect from 0.2.4 to 0.2.5
+  * Localize all the GroupBy*Date methods
+  * build(deps): bump github.com/getkin/kin-openapi from 0.93.0 to 0.94.0
+  * deploy: Set an MD5 attribute and use that if eTag not available
+  * build(deps): bump github.com/sanity-io/litter from 1.5.2 to 1.5.4
+  * build(deps): bump github.com/evanw/esbuild from 0.14.25 to 0.14.31
+  * build(deps): bump github.com/frankban/quicktest from 1.14.2 to 1.14.3
+  * Add environment as a new filter to _cascade.target
+  * Snap: Add {system,user}-gitconfig plugs to read gitconfig (#9619)
+
+-------------------------------------------------------------------
 Sat Apr 09 05:07:24 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.96.0:
@@ -615,6 +648,14 @@ Sun May 02 14:24:51 UTC 2021 - tuukka.pasanen@ilmi.fi
 - Packaging: add webp image encoding support to go build env vars
   * CGO_CFLAGS add $(pkg-config --cflags libwebp) -DLIBWEBP_NO_SRC
   * CGO_LDFLAGS add $(pkg-config --libs libwebp)
+  * For future troubleshooting refrence, fixes build errors like:
+    go build -mod=vendor -tags extended -buildmode=pie
+    # github.com/bep/gowebp/internal/libwebp
+    In file included from
+    vendor/github.com/bep/gowebp/internal/libwebp/a__encoder.go:7:
+    ./encode.h:2:10: fatal error:
+    ../../libwebp_src/src/webp/encode.h: No such file or directory
+    #include "../../libwebp_src/src/webp/encode.h"
 
 -------------------------------------------------------------------
 Sat May 01 15:36:16 UTC 2021 - jkowalczyk@suse.com
