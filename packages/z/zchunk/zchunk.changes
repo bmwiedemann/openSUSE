@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 14 13:49:30 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.1
+  * Better error detection
+  * Add support for specifying compression-format in zck
+  * zck: add option to select chunk hash
+  * Fix testsuite: Add expected sha256sums for zstd 1.5.1+
+  * Fix memory leaks
+  * Various bug fixes
+- Drop upstream merged zstd-1.5.1.patch
+
+-------------------------------------------------------------------
 Mon Jan  3 20:35:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add zstd-1.5.1.patch (gh#zchunk/zchunk/57) 

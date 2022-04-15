@@ -21,14 +21,13 @@
 %global libname libzck%{somajor}
 %global devname libzck-devel
 Name:           zchunk
-Version:        1.1.16
+Version:        1.2.1
 Release:        0
 Summary:        Compressed file format that allows easy deltas
 License:        BSD-2-Clause AND MIT
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/zchunk/zchunk
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch1:         zstd-1.5.1.patch
 BuildRequires:  meson >= 0.44.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
