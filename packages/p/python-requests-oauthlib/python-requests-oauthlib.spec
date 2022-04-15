@@ -24,7 +24,6 @@ Summary:        OAuthlib authentication support for Requests
 License:        ISC
 URL:            https://github.com/requests/requests-oauthlib
 Source:         https://files.pythonhosted.org/packages/source/r/requests-oauthlib/requests-oauthlib-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module oauthlib >= 3.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.0.0}
