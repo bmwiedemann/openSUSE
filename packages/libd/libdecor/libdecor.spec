@@ -25,6 +25,7 @@ Group:          System/GUI/Other
 License:        MIT
 URL:            https://gitlab.gnome.org/jadahl/libdecor
 Source:         https://gitlab.gnome.org/jadahl/libdecor/uploads/%commit/%{name}-%{version}.tar.xz
+Source1:        baselibs.conf
 BuildRequires:  gcc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
