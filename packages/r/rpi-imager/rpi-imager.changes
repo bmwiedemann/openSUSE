@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 14 13:52:55 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- fix for new autoconf
+
+-------------------------------------------------------------------
+Tue Mar 29 17:42:45 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7.2
+- Advanced options: remove overscan option
+- Advanced options: remove first run wizard suppression option
+- gz/xz/zstd custom images: pad if image size is not dividable by 512 byte
+- Store saved wifi password hashed
+- Make buttons blue on focus, to ease keyboard navigation
+- Add Japan, Korean translations
+- rpi-imager-noupdates.diff removed (included in current version)
+
+-------------------------------------------------------------------
 Mon Feb 14 17:02:14 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - new version 1.7.1

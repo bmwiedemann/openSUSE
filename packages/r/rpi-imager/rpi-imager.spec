@@ -17,15 +17,14 @@
 
 
 Name:           rpi-imager
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
 Group:          Hardware/Other
 URL:            https://github.com/raspberrypi/rpi-imager
 Source:         https://github.com/raspberrypi/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/raspberrypi/rpi-imager/pull/362
-Patch:          rpi-imager-noupdates.diff
+
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -56,10 +55,12 @@ Download and install Raspberry Pi Imager to a computer with an SD card reader. P
 %autosetup
 
 %build
-%cmake . -DENABLE_CHECK_VERSION=0 -DENABLE_TELEMETRY=0
+pushd src
+%cmake -DENABLE_CHECK_VERSION=0 -DENABLE_TELEMETRY=0
 %cmake_build
 
 %install
+pushd src
 %cmake_install
 
 mkdir -p %{buildroot}%{_datadir}/icons
