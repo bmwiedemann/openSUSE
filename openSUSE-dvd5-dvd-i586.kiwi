@@ -283,11 +283,8 @@
       <repopackage name="circuslinux"/>
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
-      <repopackage name="clang-tools"/>
       <repopackage name="clang13"/>
       <repopackage name="clang13-doc"/>
-      <repopackage name="clang14"/>
-      <repopackage name="clang14-doc"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -1452,8 +1449,6 @@
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
       <repopackage name="libclang-cpp13"/>
-      <repopackage name="libclang-cpp14"/>
-      <repopackage name="libclang13"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -2122,7 +2117,6 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia106"/>
       <repopackage name="libLLVM13"/>
-      <repopackage name="libLLVM14"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
@@ -2878,6 +2872,7 @@
       <repopackage name="links"/>
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
+      <repopackage name="llvm13-libclang13"/>
       <repopackage name="lockdev"/>
       <repopackage name="login_defs"/>
       <repopackage name="logrotate"/>
