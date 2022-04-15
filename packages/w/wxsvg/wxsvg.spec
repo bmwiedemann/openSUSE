@@ -20,7 +20,7 @@
 
 %define sover   3
 Name:           wxsvg
-Version:        1.5.22
+Version:        1.5.23
 Release:        0
 Summary:        Library to create, manipulate and render SVG files
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
