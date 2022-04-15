@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Apr 13 07:20:43 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#112
+- fix bug in determining serial console device name (bsc#1198043)
+- 21.81
+
+--------------------------------------------------------------------
 Fri Dec 17 09:04:17 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#109
