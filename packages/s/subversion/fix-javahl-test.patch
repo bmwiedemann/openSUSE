@@ -1,9 +1,9 @@
 Index: subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java
 ===================================================================
---- subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java	(revision 1895276)
-+++ subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java	(working copy)
-@@ -4676,7 +4676,19 @@
-             // RuntimeException("Test exception") is expected here
+--- subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java.orig
++++ subversion/bindings/javahl/tests/org/apache/subversion/javahl/BasicTests.java
+@@ -4743,7 +4743,19 @@ public class BasicTests extends SVNTests
+                 ex.printStackTrace();
          }
  
 -        tunnelAgent.joinAndTest();

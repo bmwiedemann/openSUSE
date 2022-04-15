@@ -34,7 +34,7 @@
 %bcond_with	python_ctypes
 %bcond_with	all_regression_tests
 Name:           subversion
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        Subversion version control system
 License:        Apache-2.0
@@ -49,7 +49,7 @@ Source15:       svnserve.tmpfiles
 Source16:       svn.sysusers
 Source42:       subversion.svngrep.sh
 Source43:       subversion.svndiff.sh
-Source50:       https://people.apache.org/keys/group/subversion.asc#/subversion.keyring
+Source50:       https://www.apache.org/dist/subversion/subversion-%{version}.KEYS#/%{name}.keyring
 Source51:       https://www.apache.org/dist/subversion/%{name}-%{version}.tar.bz2.asc
 Source92:       %{name}-rpmlintrc
 Patch0:         subversion-pkgconfig.patch

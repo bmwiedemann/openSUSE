@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 12 18:26:25 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Apache Subversion 1.14.2:
+  * CVE-2021-28544: SVN authz protected copyfrom paths regression
+    (boo#1197939)
+  * CVE-2022-24070: mod_dav_svn memory corruption (boo#1197940)
+  * Fix -r option documentation for some svnadmin subcommands
+  * Fix error message encoding when system() call fails
+  * Fix assertion failure in conflict resolver
+  * Support multiple working copy formats (1.8-onward, 1.15)
+
+-------------------------------------------------------------------
 Mon Mar  7 09:43:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix testCrash_RequestChannel_nativeRead_AfterException test on
