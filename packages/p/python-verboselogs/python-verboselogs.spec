@@ -1,7 +1,7 @@
 #
 # spec file for package python-verboselogs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/xolox/python-verboselogs
 Source:         https://files.pythonhosted.org/packages/source/v/verboselogs/verboselogs-%{version}.tar.gz
+Patch0:         verboselogs-pylint2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Patch0:         verboselogs-pylint2.patch
 Recommends:     python-pylint
 BuildArch:      noarch
 # SECTION test requirements
@@ -61,7 +61,9 @@ It is currently tested on Python 2.6, 2.7, 3.4, 3.5 and PyPy.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand py.test-%{$python_bin_suffix} verboselogs/tests.py
+# https://github.com/xolox/python-verboselogs/issues/12
+sed -i 's:import mock:from unittest import mock:' verboselogs/tests.py
+%pytest verboselogs/tests.py
 
 %files %{python_files}
 %doc README.rst

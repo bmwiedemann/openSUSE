@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 14 11:00:24 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
 Tue Dec  4 12:55:47 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
