@@ -1,7 +1,7 @@
 #
 # spec file for package python-WSME
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/W/WSME/WSME-%{ver
 # Test requirements:
 BuildRequires:  %{python_module WebOb >= 1.2.3}
 BuildRequires:  %{python_module WebTest}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr >= 0.7.12}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pecan}
@@ -62,7 +61,7 @@ with focus on extensibility, framework-independence and improved type handling.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests/pecantest tests/rest
+%pytest tests/pecantest
 
 %files %{python_files}
 %license LICENSE

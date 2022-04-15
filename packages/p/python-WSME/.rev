@@ -229,4 +229,12 @@
   * Drop Python 2.7 support</comment>
     <requestid>925916</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8d0c9034b72180bd9559714fbf8bef64</srcmd5>
+    <version>0.11.0</version>
+    <time>1650060866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970226</requestid>
+  </revision>
 </revisionlist>
