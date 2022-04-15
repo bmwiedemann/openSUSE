@@ -592,4 +592,14 @@
     <comment></comment>
     <requestid>965743</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>da7de393508bcb784301e86d5e2fb66b</srcmd5>
+    <version>1.8.0</version>
+    <time>1650060835</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix segfault (seen in %check on aarch64):
+  * e59f703bbcc0af949ee365206426b6394c340c6f.patch
+</comment>
+    <requestid>969763</requestid>
+  </revision>
 </revisionlist>

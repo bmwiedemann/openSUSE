@@ -43,6 +43,8 @@ Source2:        sysconfig.rrdcached
 Source4:        rrdcached-systemd-pre
 Source5:        rrdcached.service
 Source99:       %{name}.changes
+# PATCH-FIX-UPSTREAM -- Fix BUILD_DATE in rrdtool help output (fix segfault)
+Patch1:         https://github.com/oetiker/rrdtool-1.x/commit/e59f703bbcc0af949ee365206426b6394c340c6f.patch
 # PATCH-FIX-UPSTREAM -- Prevent possible segfault
 Patch3:         rrdtool-tclsegfault.patch
 # PATCH-FIX-UPSTREAM -- bnc#793636
@@ -212,6 +214,7 @@ daemon was written to alleviate these problems.
 
 %prep
 %setup -q
+%patch1 -p1
 %patch3
 %patch12 -p1
 %patch14 -p1
