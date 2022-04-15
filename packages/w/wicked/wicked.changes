@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 13 11:43:38 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.6.69
+- redfish: decode smbios and setup host interface
+  Add initial support to decode the SMBIOS Management Controller Host
+  Interface (Type 42) structure and expose it as wicked `firmware:redfish`
+  configuration to setup a Host Network Interface (to the BMC) using the
+  `Redfish over IP` protocol allowing access to the Redfish Service (via
+  redfish-localhost in /etc/hosts) used to manage the computer system.
+  Tech Preview (jsc#SLE-17762).
+- buffer: fix size_t length downcast to uint, add guards to init functions
+- wireless: fix to not expect colons in 64byte long wpa-psk hex hash string
+- xml-schema: reference counting fix to not crash at exit on schema errors
+- compat-suse: match sysctl.d /etc vs. /run read order with systemd-sysctl,
+  remove obsolete (sle11/sysconfig) lines about ifup-sysctl from ifsysctl.5.
+- compat-suse: fix reading of sysctl addr_gen_mode to wrong variable
+- auto6: fix to apply DNS from RA rdnss after ifdown/ifup (bsc#1181429)
+- removed obsolete patch included in the master sources (bsc#1194392)
+  [- 0001-fsm-fix-device-rename-via-yast-bsc-1194392.patch]
+
+-------------------------------------------------------------------
 Wed Jan 19 16:36:28 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 
 - fsm: fix device rename via yast (bsc#1194392)

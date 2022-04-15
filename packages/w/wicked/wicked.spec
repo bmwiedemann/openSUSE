@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.68
+Version:        0.6.69
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
-Patch1:         0001-fsm-fix-device-rename-via-yast-bsc-1194392.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -43,7 +42,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_68 = %{version}-%{release}
+Provides:       libwicked-0_6_69 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -174,7 +173,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_68 = %{version}-%{release}
+Requires:       libwicked-0_6_69 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -186,7 +185,6 @@ This package provides the wicked development files.
 
 %prep
 %setup
-%patch1 -p1
 
 %build
 test -x ./configure || autoreconf --force --install
@@ -341,6 +339,8 @@ fi
 %config(noreplace) %_sysconfdir/wicked/client.xml
 %config(noreplace) %_sysconfdir/wicked/server.xml
 %config(noreplace) %_sysconfdir/wicked/nanny.xml
+%dir %_sysconfdir/wicked/scripts
+%config(noreplace) %_sysconfdir/wicked/scripts/*
 %dir %_sysconfdir/wicked/extensions
 %config(noreplace) %_sysconfdir/wicked/extensions/*
 %dir %_sysconfdir/wicked/ifconfig
@@ -385,6 +385,7 @@ fi
 %_mandir/man8/wicked.8*
 %_mandir/man8/wickedd.8*
 %_mandir/man8/wicked-ethtool.8*
+%_mandir/man8/wicked-redfish.8*
 %_mandir/man8/ifdown.8*
 %_mandir/man8/ifstatus.8*
 %_mandir/man8/ifup.8*
