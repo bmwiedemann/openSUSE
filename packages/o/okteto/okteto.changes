@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:46:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.1.0:
+  * Add env value when empty (#2498)
+  * Add a DinD deprecation message (#2504)
+  * Support for "okteto endpoints" with absolute paths (#2497)
+  * fix: ascii logs (#2493)
+  * fix: make json endpoints not interactive (#2488)
+  * fix: test e2e (#2491)
+  * Add the "deployed-by" label for every pod created by `okteto deploy` (#2485)
+  * fix: destroy was not init the manifest (#2489)
+  * fix:build okteto dev images (#2490)
+  * build(deps): Bump github/super-linter from 4.9.1 to 4.9.2 (#2481)
+  * fix: windows tests failing because of paths (#2480)
+  * feat: add endpoints command (#2479)
+  * refactor: undo deprecation of pipeline commands (#2477)
+  * fix: file was not taking in count directory (#2475)
+  * Clean up the `pre-commit` config (#2478)
+  * fix: change to new log-level flag (#2476)
+  * refactor: test okteto stack deploy on win and deploy on linux (#2440)
+  * fix: destroy spinner (#2455)
+  * Remove `.vscode` folder from Git (#2469)
+  * Enable `markdownlint` rules MD007,MD022,MD032 (#2467)
+  * pre-commit autoupdate (#2468)
+  * docs: fix grammar in `how-to-install-okteto-cli.md` (#2471)
+  * docs: use direct link to https://go.dev/doc/go1.17 (#2472)
+  * add json/yaml outputs for okteto ctx list (#2398)
+  * test: check indentation with `yamllint` (#2473)
+  * Fix Markdown link in `contributing.md` (#2470)
+  * Jlopezbarb/fix destroy different name (#2448)
+  * feat: add okteto autogenerate stignore env var (#2454)
+  * fix: selector label length larger than width (#2461)
+  * fix: skip ingress with no rule.host defined (#2466)
+  * fix: ca-data-override (#2460)
+  * fix: inject secrets on manifest (#2457)
+  * Fix divert test (#2458)
+  * fix: init image on default (#2447)
+  * fix: filename only injected on cfmap if flag is used (#2446)
+
+-------------------------------------------------------------------
 Tue Apr 05 08:42:43 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.0.3:
