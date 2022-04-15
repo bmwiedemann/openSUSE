@@ -1,0 +1,15 @@
+diff -Nur deepin-movie-reborn-5.7.11/src/backends/mpv/mpv_glwidget.cpp deepin-movie-reborn-5.7.11-new/src/backends/mpv/mpv_glwidget.cpp
+--- deepin-movie-reborn-5.7.11/src/backends/mpv/mpv_glwidget.cpp	2021-03-22 12:01:47.000000000 +0800
++++ deepin-movie-reborn-5.7.11-new/src/backends/mpv/mpv_glwidget.cpp	2022-04-14 22:41:25.276505872 +0800
+@@ -491,7 +491,11 @@
+ #endif
+ #endif
+ 
++#if MPV_CLIENT_API_VERSION < MPV_MAKE_VERSION(2,0)
+         mpv_opengl_init_params gl_init_params = { get_proc_address, nullptr, nullptr };
++#else
++        mpv_opengl_init_params gl_init_params = { get_proc_address, nullptr };
++#endif
+         //int adv_control = 1;
+         mpv_render_param params[] = {
+             {MPV_RENDER_PARAM_API_TYPE, const_cast<char*>(MPV_RENDER_API_TYPE_OPENGL)},

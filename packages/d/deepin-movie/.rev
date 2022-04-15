@@ -88,4 +88,13 @@
   (every dir should only have one owner) (boo#1184786) (forwarded request 897909 from hillwood)</comment>
     <requestid>897917</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ffa98b55fbfbd8fc4b47e351251ed6c3</srcmd5>
+    <version>5.7.11</version>
+    <time>1650060863</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-MPV_EVENT_TRACKS_CHANGED.patch, drop the api
+- Add fix-mpv_opengl_init_params.patch，Upstream of MPV changed this api</comment>
+    <requestid>970217</requestid>
+  </revision>
 </revisionlist>
