@@ -7,3 +7,11 @@ diff -ruN a/LanguageServer/codelite-lsp/codelite-lsp-helper c/LanguageServer/cod
  
  //===--------------------------------------------------------------------------------
  // Copyright: Eran Ifrah
+--- codelite-15.0.11/Runtime/codelite-remote.orig	2022-04-09 09:42:24.187982675 +0200
++++ codelite-15.0.11/Runtime/codelite-remote	2022-04-09 09:42:38.432156566 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ import sys
+ import os
+ import json

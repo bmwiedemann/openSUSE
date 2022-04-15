@@ -27,7 +27,7 @@
     %bcond_without clang
   %endif
 Name:           codelite
-Version:        15.0.0
+Version:        15.0.11
 Release:        0
 Summary:        Code editor for C, C++, PHP and Node.js
 # parts of package contain LGPL-3.0 licenced code thus license needs to be
@@ -35,18 +35,17 @@ Summary:        Code editor for C, C++, PHP and Node.js
 License:        GPL-3.0-only
 Group:          Development/Tools/IDE
 URL:            http://codelite.org/
-Source0:        https://github.com/eranif/%{name}/archive/%{short_ver}/%{name}-%{short_ver}.tar.gz
+Source0:        https://github.com/eranif/codelite/archive/refs/tags/%{version}.tar.gz
 # Template files are identified by RPMLint as Development-Files --> Ignore this errors
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE fix_compilation_JSON_wxWidgets.patch andythe_great@pm.me gh#eranif/codelite#2649 -- wxWidgets builds on openSUSE cause Codelite to fail to compile. Upstream have workaround for Leap 15.2 but will fail on TW.
-Patch0:         fix_compilation_JSON_wxWidgets.patch
+# PATCH-FIX-UPSTREAM  wxStl.patch conrad@quisquis.de -- Fix problem when wxWidgets was compile with wxUSE_STL=1
+Patch0:         wxStl.patch
 # PATCH-FIX-OPENSUSE  fix_node_env-script-interpreter.patch andythe_great@pm.me -- Fix RPMLINT warning env-script-interpreter.
 Patch1:         fix_node_env-script-interpreter.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-compilation-with-recent-glibc-where-SIGSTKSZ-is-.patch
-# PATCH-FIX-UPSTREAM codelite-SpellChecker-unnest-classes.patch deb#997219 badshah400@gmail.com -- Un-nest 2 nested classes: this fixes compilation with g++ 11.2.0; patchtaken from upstream commit and re-based for current version
-Patch3:         codelite-SpellChecker-unnest-classes.patch
+# PATCH-FIX-UPSTREAM  wxStl.patch conrad@quisquis.de -- Fix problem with wx version 3.1.0 and 3.1.1
+Patch2:         wxVersion.patch
 BuildRequires:  cmake
+BuildRequires:  ctags
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -57,6 +56,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(sqlite3)
+Requires:       ctags
 Requires:       hicolor-icon-theme
 Requires:       xterm-bin
 %if %{with lldb}
@@ -71,7 +71,7 @@ CodeLite is a code editor for the C, C++, PHP and Node.js programming languages.
 It uses an interface with which users can create, build and debug projects.
 
 %prep
-%autosetup -p1 -n %{name}-%{short_ver}
+%autosetup -p1
 
 %build
 %cmake \
@@ -88,6 +88,8 @@ It uses an interface with which users can create, build and debug projects.
 
 %install
 %cmake_install
+%__rm %{buildroot}%{_bindir}/ctagsd-tests
+%__ln_s -f ctags %{buildroot}%{_bindir}/codelite-ctags
 %find_lang %{name}
 ### Add mime types
 mkdir -p %{buildroot}%{_datadir}/mime/packages/
@@ -100,6 +102,7 @@ cp -p %{name}.xml %{buildroot}%{_datadir}/mime/packages/
 %license COPYING
 %doc about.html AUTHORS
 %{_bindir}/%{name}*
+%{_bindir}/ctagsd
 %{_libdir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
