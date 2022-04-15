@@ -1,4 +1,356 @@
 -------------------------------------------------------------------
+Wed Apr 06 16:39:44 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.30 → 9.24.31
+
+-------------------------------------------------------------------
+Wed Apr 06 08:30:38 CEST 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix LABEL detection (#2112)
+
+  When only "root=" is specified on the kernel command line the match is
+  located in the first group. Loop through the groups upon mtach to find
+  what we are looking for.
+
+-------------------------------------------------------------------
+Tue Apr 05 17:22:31 CEST 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Preserve LABEL setting (#2108)
+
+  Preserve the LABEL= setting when the grub config file is re-generated.
+  the GRUB_ENABLE_LINUX_LABEL setting does not exists upstream and
+  not in any SUSE distribution. Set the grub setting such that LABEL
+  is preserved on SUSE distros. (bsc#1197616)
+
+-------------------------------------------------------------------
+Tue Apr 05 15:57:23 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test_setup_default_grub_empty_kernelcmdline
+
+  The unit test exists to check that GRUB_CMDLINE_LINUX_DEFAULT
+  is not set depending on the provided cmdline. The test exists
+  for reasons explained in Issue #1650
+
+-------------------------------------------------------------------
+Fri Apr 01 12:30:17 CEST 2022 - Fabian Vogt <fvogt@suse.de>
+
+- Don't compress .appx containers (#2106)
+
+  The container is actually inside and already compressed.
+
+-------------------------------------------------------------------
+Fri Apr 01 12:19:16 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added new CloneDevice class
+
+  Added CloneDevice class to the storage interface.
+  The class allows to create clone(s) from a given source
+  block device into a list of target block devices.
+  The target block devices are clones of the source but
+  prevents device naming conflicts for unique identifiers
+  like the UUID. This is requires to still allow to boot
+  from images containing device clones and needs to be
+  handled by tools that might work on top of the cloned
+  devices.
+
+-------------------------------------------------------------------
+Thu Mar 31 22:04:52 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve readability of shell commands
+
+  The way the lsblk pipeline is constructed is improved
+  to become easier to read by this commit
+
+-------------------------------------------------------------------
+Thu Mar 31 17:05:59 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added set_uuid() method to FileSystem API
+
+  Allow to set a custom UUID not only at creation time of
+  a filesystem but also at a later point in time in an
+  already existing filesystem
+
+-------------------------------------------------------------------
+Tue Mar 29 19:19:56 CEST 2022 - David Cassany <dcassany@suse.com>
+
+- Ensure BootloaderConfig resources are cleaned first
+
+  This commit wraps the manual BootloaderConfig instance cleanup in
+  disk builder into a try/finally scope. This way if KIWI is aborted
+  or fails within this scope the BootloaderConfig is cleaned up first.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Tue Mar 29 16:37:13 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed overlay root dracut module
+
+  make sure there is always only one selection for the
+  readonly root partition
+
+-------------------------------------------------------------------
+Tue Mar 29 14:39:53 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update LUKS integration test for TW
+
+  Use cipher options to make cryptomount work again
+
+-------------------------------------------------------------------
+Tue Mar 29 10:30:24 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Set LUKS(v1) for TW encryption integration test
+
+  In Tumbleweed LUKS2 became the default but the grub cryptomount
+  tool is not able to work with the v2 LUKS header. Thus the test
+  explicitly builds against the former luks version for now
+
+-------------------------------------------------------------------
+Tue Mar 29 10:05:19 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Set LUKS2 for TW luks encryption integration test
+
+  In Tumbleweed LUKS2 became the default also for grub
+  and cryptomount, which requires to create a LUKS2 header
+  in the dm_crypt layer
+
+-------------------------------------------------------------------
+Tue Mar 29 09:40:19 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.29 → 9.24.30
+
+-------------------------------------------------------------------
+Mon Mar 28 10:18:27 CEST 2022 - Tim Serong <tserong@suse.com>
+
+- Add ensure_empty_tmpdirs option for OCI containers (bsc#1197783)
+
+  Since #1759 was merged, the contents of /run/ and /tmp/ are excluded from
+  built images.  This causes problems for some containers, notably Ceph when
+  deployed in a Rook/k8s environment, which needs to have certain directories
+  present inside /run/.  This commit adds the ability to return to the previous
+  behaviour and *not* empty those temporary directories, if you specify
+  <image><preferences><type [...] ensure_empty_tmpdirs="false">.
+
+  Fixes: https://github.com/OSInside/kiwi/issues/2093
+  Signed-off-by: Tim Serong <tserong@suse.com>
+
+-------------------------------------------------------------------
+Fri Mar 25 08:55:26 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed parsing of veritysetup output
+
+  veritysetup uses tabs to align values. The way kiwi parsed
+  the values did not strip out the tabs and later on keeps
+  them in the verification metadata block. The unit test
+  did not catch this because the mock output used for
+  veritysetup did not contain tabs. This commit fixes the
+  test to catch this condition and also fixes the code to
+  handle all space characters (tabs, space, newlines) in
+  a safe way
+
+-------------------------------------------------------------------
+Thu Mar 24 16:28:11 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update contents of store_credentials result file
+
+  The method added information about the PARTUUID as useful
+  information. However, PARTUUID's are not supported by all
+  partition tables. The Linux generated artificial values
+  from the disk identifier are not wanted in this scope.
+  As the information is not mandatory it's better to not
+  provide it at all and avoid confusion to users.
+
+-------------------------------------------------------------------
+Thu Mar 24 16:26:18 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make blkid call more robust
+
+  Do not raise of blkid is not able to read the requested ID.
+  It is expected that the methods of the BlockID class either
+  returns a value or none but do not raise and cause the
+  complete process to terminate
+
+-------------------------------------------------------------------
+Thu Mar 24 15:57:19 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added embed_verity_metadata attribute
+
+  Specifies to write a binary block at the end of the
+  partition serving the root filesystem, containing information
+  for dm_verity verification and to construct the device map
+
+-------------------------------------------------------------------
+Thu Mar 24 14:38:15 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added create_verification_metadata method
+
+  Along with creating a filesystem including device mapper features
+  like dm_verity (see verity_blocks) or dm_crypt/dm_integrity (see luks)
+  there is always the question where to store the metadata information
+  required to setup the device map. This can include information about
+  blocksizes, offset addresses and more. The create_verification_metadata()
+  method allows to write a signed custom data block of a documented
+  format at the end of the given block special which stores this type
+  of information such that tools at boot time gets the opportunity to
+  read this information. In this commit only information connected
+  to the dm_verity feature activated via the verity_blocks attribute
+  will be part of the verification block. With future changes other
+  data might be added
+
+-------------------------------------------------------------------
+Wed Mar 23 16:38:20 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added runtime check for by-partuuid use
+
+  Added check_partuuid_persistency_type_used_with_mbr(). Not
+  every partition table type supports UUIDs. We don't want to
+  make use of the artifical values created by Linux if the
+  partition table doesn't support it natively
+
+-------------------------------------------------------------------
+Wed Mar 23 11:21:59 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support partuuid and label mounts in dracut module
+
+  The 90kiwi-overlay dracut module was not able to parse the
+  device link if done with PARTUUID or LABEL
+
+-------------------------------------------------------------------
+Wed Mar 23 09:46:05 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added integration test for by-partuuid
+
+  The test hooks into the existing test-image-embedded integration
+  test for leap. As I plan to extend the tests specific to features
+  actually only useful for special embedded images, I thought this
+  would be the right place to start
+
+-------------------------------------------------------------------
+Mon Mar 21 10:19:04 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- validate luksformat options
+
+  validate options against the cryptsetup help info
+  in a runtime check
+
+-------------------------------------------------------------------
+Mon Mar 21 09:45:55 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Handle LUKS type in its own attribute
+
+-------------------------------------------------------------------
+Sun Mar 20 16:21:48 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed attribute description
+
+  The overlayroot_verity_blocks attribute description
+  contained outdated information
+
+-------------------------------------------------------------------
+Sat Mar 19 22:54:02 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for verity setup on standard rootfs
+
+  So far the verity support was only available with the
+  overlayroot layout and the read-only squashfs root. This
+  commit adds a new attribute: verity_blocks="number|all"
+  which allows to create the verity setup also on the
+  standard root partition
+
+  In addition to the change it was needed to extend the
+  Filesystem API with an additional optional paramter to
+  allow setup of the filesystem UUID. Having the opportunity
+  to set the UUID at filesystem creation is generally useful
+  and with regards to this particular change it became also
+  required
+
+-------------------------------------------------------------------
+Fri Mar 18 12:10:39 CET 2022 - Neal Gompa <ngompa13@gmail.com>
+
+- Allow Btrfs and XFS as options for the boot partition filesystem
+
+  We already do this implicitly when we do not define this attribute
+  and request a boot partition, so let us explicitly offer these as
+  options too.
+
+-------------------------------------------------------------------
+Fri Mar 18 11:39:33 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix grub defaults for PARTUUID use
+
+  Make sure to set GRUB_DISABLE_LINUX_PARTUUID to false
+  when using by-partuuid
+
+-------------------------------------------------------------------
+Thu Mar 17 21:36:40 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow luks format options
+
+  Added new luksformat element which allows to pass
+  along options to the luksFormat call. This allows users to
+  switch between LUKS and LUKS2 via e.g
+
+  <luksformat>
+  <option name="--type" value="luks2"/>
+  </luksformat>
+
+  It also allows to pass along a set of options only available
+  to LUKS2, e.g
+
+  <luksformat>
+  <option name="--type" value="luks2"/>
+  <option name="--cipher" value="aes-gcm-random"/>
+  <option name="--integrity" value="aead"/>
+  </luksformat>
+
+  In addition to the new attribute the existing luks attribute
+  can also be specified to read credentials from a keyfile by
+  using the file:// source locator, e.g
+
+  <type ... luks="file:///path/to/a/keyfile"/>
+
+  This Fixes #1898
+
+-------------------------------------------------------------------
+Sat Mar 12 18:11:01 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed funny build_status.sh bug
+
+  If the name of the repository starts with an 'F' like
+  in Fedora, the 'F' is turned into a red escape sequence
+  because it is assumed to be a failed status indicator :)
+  The path here is probably also dumb as it just assumes
+  there is a space after the status indicator. Well the
+  complete script is not really a good one, but still
+  helpful
+
+-------------------------------------------------------------------
+Sat Mar 12 17:59:03 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update Fedora arm integration test
+
+  Move test to Fedora 34
+
+-------------------------------------------------------------------
+Sat Mar 12 17:12:12 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added container build test for Fedora
+
+  Fedora systems uses buildah to create containers. There is
+  no integration test for kiwi which tests building containers
+  with buildah. This commit adds a build test to cover this
+  path. Related to Issue #2020
+
+-------------------------------------------------------------------
+Fri Mar 11 11:16:38 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-docker-derived for leap
+
+  The test still used the additionaltags attribute with the
+  latest schema (v7.5) which fails to validate because the
+  attribute was moved to additionalnames
+
+-------------------------------------------------------------------
 Thu Mar 10 23:19:33 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.28 → 9.24.29
@@ -29,11 +381,37 @@ Thu Mar 10 08:49:11 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
   option. Thus this commit removes the use of the option
 
 -------------------------------------------------------------------
+Wed Mar 09 21:54:05 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move scope of veritysetup
+
+  veritysetup was called as part of the disk builder. However,
+  the veritysetup should be a responsibility of the classes which
+  implements the sync_data method. This allows to use the creation
+  of a verity hash format right after sync as a feature to these
+  classes and in a broader scope. In addition to that change the
+  VeritySetup::format method now returns the metadata from the
+  format call and stores it as debug information to the log file.
+  A concept to persistently store the verification metadata as part
+  of the partition(s) will be a next step.
+
+-------------------------------------------------------------------
 Wed Mar 09 18:14:29 CET 2022 - Dan Čermák <45594031+dcermak@users.noreply.github.com>
 
 - Style changes in container docs
 
   Reformulate the container building guide a bit
+
+-------------------------------------------------------------------
+Wed Mar 09 18:07:24 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for custom size in filesystem classes
+
+  Allow to create filesystems with an optional size parameter.
+  If no size is provided the filesystem gets as big as the device
+  which is the default and unchanged behavior. In addition a
+  size counting from the beginning (>0) as well as a size
+  counting from the end (<=0) can be provided.
 
 -------------------------------------------------------------------
 Wed Mar 09 09:17:14 CET 2022 - David Cassany <dcassany@suse.com>
@@ -51,6 +429,19 @@ Tue Mar 08 20:10:52 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 Tue Mar 08 20:10:22 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Update descriptions to schema v7.5
+
+-------------------------------------------------------------------
+Sun Mar 06 18:22:10 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support mount by PARTUUID
+
+  In addition to by-label and by-uuid also support mounting
+  by PARTUUID. Please note kiwi also makes sure that the grub
+  generated config file uses the root=PARTUUID= notation and it's
+  not clear if grub-mkconfig will persist making use of it.
+  Nevertheless there are also systems which uses different
+  methods to boot and it makes sense to support partuuid
+  mappings as well
 
 -------------------------------------------------------------------
 Sun Mar 06 16:03:13 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>

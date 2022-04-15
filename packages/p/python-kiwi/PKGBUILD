@@ -3,7 +3,7 @@
 
 pkgname=('python-kiwi' 'kiwi-man-pages' 'dracut-kiwi-lib' 'dracut-kiwi-oem-repart' 'dracut-kiwi-oem-dump' 'dracut-kiwi-live' 'dracut-kiwi-overlay')
 arch=(x86_64)
-pkgver=9.24.29
+pkgver=9.24.31
 pkgrel=0
 pkgdesc="KIWI - Appliance Builder Next Generation"
 url="https://github.com/SUSE/kiwi/tarball/master"
@@ -12,7 +12,7 @@ makedepends=(python-setuptools gcc shadow grep)
 provides=(kiwi-ng kiwi)
 source=("${pkgname}.tar.gz")
 changelog="${pkgname}.changes"
-md5sums=('c51c42f644d65b25a421121a487feda7')
+md5sums=('e91a5ecdb06eea3ce9a4576fd9b8058c')
 
 
 build() {

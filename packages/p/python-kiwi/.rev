@@ -2045,4 +2045,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>962539</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>ab46c14a56a8575c6afe6018053956ad</srcmd5>
+    <version>9.24.31</version>
+    <time>1650060800</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.24.30 → 9.24.31
+
+- Fix LABEL detection (#2112)
+  When only &quot;root=&quot; is specified on the kernel command line the match is
+  located in the first group. Loop through the groups upon mtach to find
+  what we are looking for.
+
+- Preserve LABEL setting (#2108)
+  Preserve the LABEL= setting when the grub config file is re-generated.
+  the GRUB_ENABLE_LINUX_LABEL setting does not exists upstream and
+  not in any SUSE distribution. Set the grub setting such that LABEL
+  is preserved on SUSE distros. (bsc#1197616)
+
+- Fix test_setup_default_grub_empty_kernelcmdline
+  The unit test exists to check that GRUB_CMDLINE_LINUX_DEFAULT
+  is not set depending on the provided cmdline. The test exists
+  for reasons explained in Issue #1650
+
+- Don't compress .appx containers (#2106)
+  The container is actually inside and already compressed.
+
+- Added new CloneDevice class
+  Added CloneDevice class to the storage interface.
+  The class allows to create clone(s) from a given source
+  block device into a list of target block devices.
+  The target block devices are clones of the source but
+  prevents device naming conflicts for unique identifiers
+  like the UUID. This is requires to still allow to boot
+  from images containing device clones and needs to be
+  handled by tools that might work on top of the cloned</comment>
+    <requestid>969537</requestid>
+  </revision>
 </revisionlist>
