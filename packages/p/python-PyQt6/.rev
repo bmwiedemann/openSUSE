@@ -64,4 +64,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment>update</comment>
     <requestid>951798</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8bf4f93913479bd149d339f34700f553</srcmd5>
+    <version>6.3.0</version>
+    <time>1650060862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970213</requestid>
+  </revision>
 </revisionlist>

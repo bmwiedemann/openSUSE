@@ -22,7 +22,7 @@
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.2.3
+Version:        6.3.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -62,10 +62,10 @@ BuildRequires:  cmake(Qt6SerialPort)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebSockets)
-# SECTION not packaged for 6.2 yet
-# BuildRequires:  cmake(Qt6Quick3D)
-# BuildRequires:  cmake(Qt6Quick3DRuntimeRender)
-# /SECTION
+%if 0%{?suse_version} >= 1550
+BuildRequires:  cmake(Qt6Quick3D)
+BuildRequires:  cmake(Qt6Quick3DRuntimeRender)
+%endif
 Requires:       python-PyQt6-sip
 %requires_ge    python-dbus-python
 Provides:       python-qt6 = %{version}-%{release}
@@ -99,10 +99,10 @@ Requires:       cmake(Qt6Svg)
 Requires:       cmake(Qt6WebChannel)
 Requires:       cmake(Qt6WebSockets)
 Requires:       %plainpython(abi) = %{python_version}
-# SECTION not packaged for 6.2 yet
-# Requires:       cmake(Qt6Quick3D)
-# Requires:       cmake(Qt6Quick3DRuntimeRender)
-# / SECTION
+%if 0%{?suse_version} >= 1550
+Requires:       cmake(Qt6Quick3D)
+Requires:       cmake(Qt6Quick3DRuntimeRender)
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # If and which version of sip is required depends on the project trying
