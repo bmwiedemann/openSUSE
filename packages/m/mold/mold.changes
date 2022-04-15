@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 15 11:53:51 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.2.0
+  * The ARM32 target is now supported.
+  * --gdb-index is implemented.
+  * mold now supports the following flags: --start-address, -Tbss,
+    -Tdata, -Ttext, --oformat=binary, --disable-new-dtags
+
+-------------------------------------------------------------------
 Fri Apr  8 15:40:19 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Set LIBEXECDIR

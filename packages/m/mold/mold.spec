@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.1.1
+Version:        1.2
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
@@ -72,7 +72,6 @@ MANDIR=%{_mandir} \
 LIBDIR=%{_libdir} \
 LIBEXECDIR=%{_libexecdir} \
 %{build_args}
-
 
 %install
 %make_install -e \

@@ -98,4 +98,16 @@
     <comment></comment>
     <requestid>967876</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a15f31b962df50832508490d57a15dcf</srcmd5>
+    <version>1.2</version>
+    <time>1650060934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0
+  * The ARM32 target is now supported.
+  * --gdb-index is implemented.
+  * mold now supports the following flags: --start-address, -Tbss,
+    -Tdata, -Ttext, --oformat=binary, --disable-new-dtags</comment>
+    <requestid>970337</requestid>
+  </revision>
 </revisionlist>
