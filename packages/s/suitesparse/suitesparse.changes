@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 13 08:41:01 UTC 2022 - David Anes <david.anes@suse.com>
+
+- update to 5.12.0:
+  * GraphBLAS v7.0.3:  see GraphBLAS/Doc/ChangeLog for details.
+    - performance: GrB_mxm, GrB_assign, and transpose
+    - bug fix: vector iterator for bitmap
+    - revised ACM TOMS submission: Doc/toms_parallel_grb2.pdf
+    - spec bug: GrB_Matrix_diag was implemented incorrectly,
+        thus requiring a version v7.x
+
+-------------------------------------------------------------------
 Tue Mar 15 14:16:51 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Fix bundled library versions:
