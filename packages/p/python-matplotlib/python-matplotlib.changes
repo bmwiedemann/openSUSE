@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 12 21:15:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add matplotlib-pr22780-Pillow-deprecations.patch for
+  deprecation errors with Pillow -- gh#matplotlib/matplotlib#22780
+- Skip any test with svg png or pdf in its id for non x86_64, as
+  image comparison tests compare to x86_64 references.
+
+-------------------------------------------------------------------
 Tue Dec 14 18:40:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip tests which crash with oom
