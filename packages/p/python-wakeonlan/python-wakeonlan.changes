@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 14 10:24:16 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.1.0
+  * no upstream changelog file found
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Mon May 18 07:25:33 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

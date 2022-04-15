@@ -1,7 +1,7 @@
 #
 # spec file for package python-wakeonlan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wakeonlan
-Version:        1.1.6
+Version:        2.1.0
 Release:        0
 Summary:        A small python module for wake on lan
 License:        WTFPL
 Group:          Development/Languages/Python
 URL:            https://github.com/remcohaszing/pywakeonlan
-Source:         https://files.pythonhosted.org/packages/source/w/wakeonlan/wakeonlan-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
+Source:         https://github.com/remcohaszing/pywakeonlan/archive/refs/tags/%{version}.tar.gz#/wakeonlan-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,21 +41,17 @@ BuildArch:      noarch
 A small python module for wake on lan.
 
 %prep
-%setup -q -n wakeonlan-%{version}
-sed -i -e 's:~=:>=:g' setup.py
+%setup -q -n pywakeonlan-%{version}
 
 %build
-export LANG=en_US.UTF8
-%python_build
+%pyproject_wheel
 
 %install
-export LANG=en_US.UTF8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/wakeonlan
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF8
 %pytest
 
 %post
