@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:37:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.0.4:
+  * Release 9.0.4 (#11785)
+  * Add Cloud instructions to five guides (#11742)
+  * [v9] Add hint when the user receives an error about an "unknown certificate authority" (#11550) (#11751)
+  * Added Machine ID to examples.
+  * Backport SQL Backend to v9 (#11667)
+  * [v9] Install script changes and sudo command updates for Teleport install and configure (#11750)
+  * Support proxy protocol v2 (#11684) (#11722)
+  * Clean up remoteSites with no active tunnels (#11435) (#11707)
+  * update cloud-config to fix install errors (#11732)
+  * update teleport 9 and cloud versions in docs (#11726)
+  * Spread out `UploadCompleter` load (#11590) (#11698)
+  * Split Redis docs (#11702)
+  * [v9] Kube agent instructions on matching to server version (#11711)
+  * Change client dialOpts append order (#11322) (#11624)
+  * Added admonition about TLS Routing and Machine ID.
+  * Added Jenkins Machine ID diagram.
+  * Add support for backward compatible API Client behavior (#11567) (#11663)
+  * [v9] Backport: fix tsh config test (#11657)
+  * Avoid nil dereferencing when tlsConfig is nil. (#11614)
+  * Updates minimum terraform version to 1.0 (#11651)
+  * Add documentation for ssh key extensions with github (#11656)
+  * docs: Add Helm docs for tls.existingSecretName (#11306)
+  * minor edits (#11641)
+  * Fix docs UI reference (#11635)
+  * Edit two guides for Cloud users (#11642)
+  * Remove misleading information about tctl for Cloud (#11632)
+  * Update repo in docs contribution guide (#11638)
+  * Fixes console player ctrl+C and ctrl+D functionality (#11559)
+  * Fix tsh player issues (#11491)
+  * docs: add note about user CA rotation + desktop access (#11586)
+  * fix loggers not respecting json config (#10808) (#11655)
+  * Add metric to track number ssh connect attempts (#11240) (#11629)
+  * [v9] backport #11386 #11387 (in-memory cache and sqlite sync) (#11658)
+  * Update IsValidLabelKey to include ':' (#11563)
+
+-------------------------------------------------------------------
+Thu Apr 14 19:35:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 9.0.3:
+  * Release 9.0.3 (#11649)
+  * Fix `ad-keytab-file` flag on sqlserver docs (#11581) (#11605)
+  * Split the Helm chart reference (#11437)
+  * helm: Add support for separate Postgres/Mongo listeners in teleport-cluster chart (#10858) (#11434)
+  * [Docs] Add teleport.yaml docs for x11 forwarding (#10561) (#11429)
+  * Edit three guides for Cloud users (#11362)
+  * Fix 32-bit arm deb and 64-bit arm rpm packages (#11318) (#11568)
+  * Add missing quotes in GCB triggers (#11608)
+  * tctl: respect TELEPORT_HOME variable when reading profiles (#11561)
+  * Use first available auth server (#11229) (#11598)
+  * [auto] Update webassets in branch/v9 (#11582)
+  * updated /signup to aboslute url (#11580)
+  * Remove potentially confusing EOF line from snippet (#11438)
+  * Split the AWS Node Joining guide (#11440)
+  * 03/30 Upcoming Released Update
+  * Backport #10620 to branch/v9 (#11542)
+  * Add missing doc link for predicate language (#11466) (#11541)
+  * [branch/v9] Backport #11388 (#11537)
+  * tsh: ignore empty or non-existing config files (#11495) (#11571)
+  * [docs/v9] Remove mention of x509 certs for Machine ID as they're not yet available (#11548)
+  * error message improvement on teleport start file permissions (#11502)
+  * [branch/v9] Rollup backport of session fixes (#11494)
+  * Don't respect HTTP_PROXY env in k8 forwarder (#11257) (#11462)
+  * [v9] Makes a common login error troubleshooting for sso docs (#11488)
+  * [v9] Backport: "helm: Add details on AWS ACM to AWS guide (#10857)" (#11414)
+  * Fix relative signup path
+  * Fix TLS Routing jumphost flow (#11282) (#11496)
+  * Assign EmitAuditEvent to err for subsequent check. (#11501) (#11505)
+  * Added Jenkins tile to documentation.
+  * Add Teleport Cloud downloads page.
+  * Added Machine ID Jenkins Guide.
+  * Update Machine ID icon to chip icon.
+  * [auto] Update webassets in branch/v9 (#11473)
+
+-------------------------------------------------------------------
 Sat Mar 26 14:53:54 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 9.0.2:
