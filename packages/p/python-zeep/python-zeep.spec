@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            http://docs.python-zeep.org
 Source:         https://files.pythonhosted.org/packages/source/z/zeep/zeep-%{version}.tar.gz
 Patch1:         httpx-test.patch
+# https://github.com/mvantellingen/python-zeep/commit/1ddd118956870f9c68a24c9494207dc17441b416
+Patch2:         python-zeep-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +52,6 @@ BuildRequires:  %{python_module cached-property >= 1.3.0}
 BuildRequires:  %{python_module freezegun >= 0.3.15}
 BuildRequires:  %{python_module isodate >= 0.5.4}
 BuildRequires:  %{python_module lxml >= 4.6.0}
-BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module pretend >= 1.0.9}
 BuildRequires:  %{python_module pytest >= 6.0.1}
 BuildRequires:  %{python_module pytest-asyncio}

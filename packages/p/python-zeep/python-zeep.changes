@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 14 09:03:18 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/mvantellingen/python-zeep/commit/1ddd118956870f9c68a24c9494207dc17441b416
+  + python-zeep-no-mock.patch
+
+-------------------------------------------------------------------
 Sun Mar 13 07:31:39 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Update to 4.1.0
