@@ -477,4 +477,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
 </comment>
     <requestid>935081</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>608542c9ae8e78452a07be488fe32ad0</srcmd5>
+    <version>2.44.0</version>
+    <time>1650060878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970293</requestid>
+  </revision>
 </revisionlist>

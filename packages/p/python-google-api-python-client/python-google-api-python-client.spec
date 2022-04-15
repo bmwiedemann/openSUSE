@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-api-python-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,35 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-google-api-python-client
-Version:        2.31.0
+Version:        2.44.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
 URL:            https://github.com/google/google-api-python-client
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-python-client/google-api-python-client-%{version}.tar.gz
-BuildRequires:  %{python_module google-api-core >= 1.21.0}
+# PATCH-FIX-OPENSUSE opensuse-remove-oauth2client-tests.patch -- upstream wants to support and test deprecated oauth2client indefinitely, but
+# the distro has to remove it at some point
+Patch0:         opensuse-remove-oauth2client-tests.patch
+BuildRequires:  %{python_module google-api-core >= 1.31.5}
 BuildRequires:  %{python_module google-auth >= 1.16.0}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.1.0}
 BuildRequires:  %{python_module httplib2 >= 0.15.0}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.13.0}
-BuildRequires:  %{python_module uritemplate  >= 3.0.0}
+BuildRequires:  %{python_module uritemplate  >= 3.0.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.21.0
+Requires:       python-google-api-core >= 1.31.5
 Requires:       python-google-auth >= 1.16.0
 Requires:       python-google-auth-httplib2 >= 0.1.0
 Requires:       python-httplib2 >= 0.15.0
-Requires:       python-six >= 1.13.0
-Requires:       python-uritemplate >= 3.0.0
+Requires:       python-uritemplate >= 3.0.1
 # Package renamed in SLE 12, do not remove Provides, Obsolete directives
 # until after SLE 12 EOL
 Provides:       google-api-python-client = %{version}
@@ -57,7 +56,7 @@ BuildArch:      noarch
 Google APIs Client Library for Python
 
 %prep
-%setup -q -n google-api-python-client-%{version}
+%autosetup -p1 -n google-api-python-client-%{version}
 
 %build
 %python_build
@@ -67,14 +66,18 @@ Google APIs Client Library for Python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# DiscoveryFromDocument::test_api_endpoint_override_from_client_options and
-# DiscoveryFromDocument::test_api_endpoint_override_from_client_options_dict fail with "server unavailable"
 # DiscoveryErrors::test_credentials_and_credentials_file_mutually_exclusive fails with "socket.gaierror: [Errno -3] Temporary failure in name resolution"
-%pytest --ignore=samples -k "not (test_api_endpoint_override_from_client_options and Document) and not test_credentials_and_credentials_file_mutually_exclusive"
+donttest="test_credentials_and_credentials_file_mutually_exclusive"
+# don't test deprecated oaut2client usage
+donttest="$donttest or TestAuthWithOAuth2Client or test_oauth2client_crendentials"
+# test_http.py uses mocked Credentials class and API from deprecated oauth2client
+%pytest --ignore=samples --ignore tests/test_http.py -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/apiclient
+%{python_sitelib}/googleapiclient
+%{python_sitelib}/google_api_python_client-%{version}*-info
 
 %changelog
