@@ -1,7 +1,7 @@
 #
-# spec file for package python-rjsmin
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define mod_name rjsmin
-%define release_sha 53a0848b2372c1b49c03326bc8209ea39e889c47
 %bcond_without python2
 Name:           python-%{mod_name}
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        A JavaScript minifier written in Python
 License:        Apache-2.0
 URL:            http://opensource.perlig.de/rjsmin/
-Source:         https://github.com/ndparker/rjsmin/archive/%{release_sha}.tar.gz#/%{mod_name}-%{version}.tar.gz
+Source:         https://github.com/ndparker/rjsmin/archive/refs/tags/%{version}.tar.gz#/rjsmin-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- build without profiling
 Patch0:         reproducible.patch
 BuildRequires:  %{python_module devel}
@@ -49,7 +48,7 @@ The module is a re-implementation targeting speed, so it can be used
 at runtime (rather than during a preprocessing step).
 
 %prep
-%setup -q -n %{mod_name}-%{release_sha}
+%setup -q -n %{mod_name}-%{version}
 %autopatch -p1
 
 %build

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 14 08:35:15 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.2.0
+ *) Improve regex detection. Fixes #17, #23
+ *) Add aarch64 wheels (issue #24, #25, contributed by odidev)
+ *) Add tests to source distribution (issue #20, contributed by dvzrv)
+ *) bytearray input now produces bytearray output
+ *) Update python support: 2.7, 3.6+
+ *) Emit the correct env var name in the warning message if the compilation of
+    the C implementation fails.
+- modified patches
+  % reproducible.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Apr 20 09:44:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
