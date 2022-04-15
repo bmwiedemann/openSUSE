@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 11 09:25:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.000000
+   see /usr/share/doc/packages/perl-XML-LibXSLT/Changes
+
+  2.000000    2022-04-09
+      - Add lib/XML/LibXSLT/Quick.pm .
+      - Cleanups.
+
+-------------------------------------------------------------------
 Fri Jan 17 10:53:14 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Remove patch perl-XML-LibXSLT-lib-versions.patch (not needed anymore)
