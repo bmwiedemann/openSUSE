@@ -1532,4 +1532,12 @@
   * openstack-*: hardcode clouds.yaml paths as openstack cli doesnt support overriding it</comment>
     <requestid>966246</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>a3a4f0c7da92eb08d4952e9032f93151</srcmd5>
+    <version>4.11.0rc1+git2.d40f1f1b</version>
+    <time>1650060789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970082</requestid>
+  </revision>
 </revisionlist>
