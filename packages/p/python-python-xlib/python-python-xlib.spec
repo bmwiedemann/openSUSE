@@ -49,7 +49,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.10.0}
 %endif
 %if 0%{suse_version} < 1550
-BuildRequires:  python-mock
 BuildRequires:  xauth
 %endif
 BuildRequires:  dos2unix
