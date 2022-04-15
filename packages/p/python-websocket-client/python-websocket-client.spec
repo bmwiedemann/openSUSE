@@ -1,7 +1,7 @@
 #
 # spec file for package python-websocket-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,22 @@
 %bcond_with libalternatives
 %endif
 
-%bcond_without python2
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-websocket-client
-Version:        0.58.0
+Version:        1.3.2
 Release:        0
 Summary:        WebSocket client implementation
 License:        LGPL-2.1-only
 URL:            https://github.com/liris/websocket-client/releases
-Source0:        https://files.pythonhosted.org/packages/source/w/websocket_client/websocket_client-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/w/websocket_client/websocket-client-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx >= 3.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module sphinx_rtd_theme >= 0.5}
+BuildRequires:  %{python_module websockets}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros >= 20210929
+BuildRequires:  python-rpm-macros
 Requires:       python-six
 %if %{with libalternatives}
 Requires:       alts
@@ -45,12 +49,6 @@ Requires(postun):update-alternatives
 Provides:       python-websocket-client-test = %{version}
 Obsoletes:      python-websocket-client-test < %{version}
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-backports.ssl_match_hostname
-%endif
-%ifpython2
-Requires:       python-backports.ssl_match_hostname
-%endif
 %python_subpackages
 
 %description
@@ -60,8 +58,7 @@ low-level APIs for WebSocket. All APIs are synchronous functions.
 Websocket-client supports only hybi-13.
 
 %prep
-%setup -q -n websocket_client-%{version}
-sed -i '1 i #!/usr/bin/python' bin/wsdump.py
+%setup -q -n websocket-client-%{version}
 
 %build
 %python_build
@@ -69,25 +66,25 @@ sed -i '1 i #!/usr/bin/python' bin/wsdump.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/wsdump.py
+%python_clone -a %{buildroot}%{_bindir}/wsdump
 
 %check
-%python_exec websocket/tests/test_websocket.py
+%pyunittest discover -v
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
-%python_libalternatives_reset_alternative wsdump.py
+%python_libalternatives_reset_alternative wsdump
 
 %post
-%python_install_alternative wsdump.py
+%python_install_alternative wsdump
 
 %postun
-%python_uninstall_alternative wsdump.py
+%python_uninstall_alternative wsdump
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst ChangeLog
-%python_alternative %{_bindir}/wsdump.py
+%doc README.md ChangeLog
+%python_alternative %{_bindir}/wsdump
 %{python_sitelib}/websocket/
 %{python_sitelib}/websocket_client-%{version}-py*.egg-info
 
