@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  5 15:50:10 MDT 2022 - carnold@suse.com
+
+- bsc#1197958 - request support for SLE15-SP4 in the osinfo database
+- Add support for SUSE linux Enterprise Micro 5.2
+  add-slem5.2-support.patch
+
+-------------------------------------------------------------------
 Thu Mar 10 14:56:46 MST 2022 - carnold@suse.com
 
 - bsc#1196965 - openSUSE Tumbleweed unattended installation with
