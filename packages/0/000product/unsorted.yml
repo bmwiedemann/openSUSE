@@ -3688,6 +3688,8 @@ unsorted:
   - fd-bash-completion 
   - fd-fish-completion 
   - fd-zsh-completion 
+  - fdo-client 
+  - fdo-client-devel 
   - featherpad 
   - featherpad-lang 
   - fec-devel 
@@ -13450,7 +13452,8 @@ unsorted:
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit: [x86_64] 
   - libquagga_pb0 
-  - libquazip1-qt5-1_0_0 
+  - libquazip1-qt5-1_3_0 
+  - libquazip1-qt6-1_3_0: [x86_64] 
   - libquicktime 
   - libquicktime-32bit: [x86_64] 
   - libquicktime-devel 
@@ -17425,7 +17428,6 @@ unsorted:
   - noisetorch 
   - nomacs 
   - nomacs-lang 
-  - non-ntk 
   - non-ntk-devel 
   - non-ntk-fluid 
   - noping 
@@ -18153,6 +18155,7 @@ unsorted:
   - openQA-bootstrap: [x86_64] 
   - openQA-client: [x86_64] 
   - openQA-common: [x86_64] 
+  - openQA-continuous-update: [x86_64] 
   - openQA-devel: [x86_64] 
   - openQA-doc: [x86_64] 
   - openQA-local-db: [x86_64] 
@@ -24950,6 +24953,7 @@ unsorted:
   - python310-wsgi_intercept 
   - python310-wsproto 
   - python310-wstools 
+  - python310-wtf-peewee 
   - python310-wurlitzer 
   - python310-wxPython 
   - python310-wxPython-lang 
@@ -27934,6 +27938,7 @@ unsorted:
   - python38-wsgi_intercept 
   - python38-wsproto 
   - python38-wstools 
+  - python38-wtf-peewee 
   - python38-wurlitzer 
   - python38-wxPython 
   - python38-wxPython-lang 
@@ -31143,6 +31148,7 @@ unsorted:
   - python39-wsgi_intercept 
   - python39-wsproto 
   - python39-wstools 
+  - python39-wtf-peewee 
   - python39-wurlitzer 
   - python39-wxPython 
   - python39-wxPython-lang 
@@ -31787,8 +31793,9 @@ unsorted:
   - quassel-client-qt5 
   - quassel-core 
   - quassel-mono 
-  - quazip-devel 
   - quazip-doc 
+  - quazip-qt5-devel 
+  - quazip-qt6-devel: [x86_64] 
   - quilt 
   - quilter 
   - quilter-lang 
