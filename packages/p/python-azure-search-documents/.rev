@@ -70,4 +70,15 @@
 - Remove temporary version override (forwarded request 945561 from glaubitz)</comment>
     <requestid>945581</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6410be665df0194d2b23c3a064167d07</srcmd5>
+    <version>11.2.2</version>
+    <time>1650060936</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 11.2.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 970330 from glaubitz)</comment>
+    <requestid>970342</requestid>
+  </revision>
 </revisionlist>

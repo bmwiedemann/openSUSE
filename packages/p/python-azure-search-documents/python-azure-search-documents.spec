@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-search-documents
-Version:        11.2.1
+Version:        11.2.2
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
