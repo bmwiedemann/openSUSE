@@ -36,6 +36,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six > 1.10.0}
 BuildRequires:  %{python_module snowballstemmer}
+BuildRequires:  %{python_module toml}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
