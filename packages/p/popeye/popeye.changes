@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:42:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.10.0:
+  * update rel notes
+  * update docs
+  * fix: remove useless if/then
+  * bump k8s version
+  * fix: s3-endpoint flag description
+  * Fix HPA API version derailed#207
+  * feat: add other S3 object storage compatible support
+  * feat: add GitPod for better UX for contributors
+  * Fixes #211 (but might break backward compatilbility)
+  * Update codes.md
+  * Update codes.yml
+  * Sets default registry as a constant. Only sanitizes registries if a registry list is provided.
+  * Adds rule 113 which makes possible to add a list of allowed registries to pull images from. Otherwise, all images are allowed.
+- BuildRequire go1.17
+
+-------------------------------------------------------------------
 Wed Jan 05 15:03:23 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.9.8:
