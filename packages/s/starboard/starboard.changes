@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:46:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.4:
+  * chore: fix Go code formatting (#1137)
+  * release: prepare v0.15.4 (#1136)
+  * fix: GoReleaser manifest (#1135)
+  * chore: build operator images based on UBI 8 Minimal (#1127)
+  * chore(deps): bump github.com/emirpasic/gods from 1.12.0 to 1.15.0 (#1132)
+  * chore(deps): bump codecov/codecov-action from 2 to 3 (#1128)
+  * chore(deps): bump actions/setup-python from 3.1.0 to 3.1.2 (#1129)
+  * chore(deps): bump actions/setup-go from 2 to 3 (#1130)
+  * chore(ci): fix release snapshot workflow (#1124)
+  * feat(trivy): configure --db-repository to get advisory database from OCI registry (#1064)
+  * chore(ci): grant contents permission in docs publishing workflow (#1121)
+
+-------------------------------------------------------------------
+Thu Apr 14 19:44:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.3:
+  * release: v0.15.3 (#1120)
+  * chore(ci): set permissions granted to the GITHUB_TOKEN (#1119)
+  * chore(ci): cancel any in-flight jobs for the same PR branch (#1116)
+  * fix: critial is a typo (#1117)
+  * release: prepare v0.15.2 (#1114)
+
+-------------------------------------------------------------------
+Thu Apr 14 19:43:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.2:
+  * release: prepare v0.15.2
+  * fix: limit the num of failure entries in compliance detail report (#1108)
+  * docs(contributing): use conventional commits (#1094)
+  * chore(deps): bump github.com/open-policy-agent/opa from 0.38.1 to 0.39.0 (#1111)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.11.1 to 0.11.2 (#1110)
+  * chore(deps): bump actions/setup-python from 3.0.0 to 3.1.0 (#1109)
+
+-------------------------------------------------------------------
 Mon Apr 04 14:11:23 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.15.1:
