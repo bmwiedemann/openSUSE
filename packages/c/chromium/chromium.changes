@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 15 07:29:35 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 100.0.4896.127 (boo#1198509)
+  * CVE-2022-1364: Type Confusion in V8
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Tue Apr 12 05:02:45 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 100.0.4896.88 (boo#1198361)
