@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 13 08:23:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.0
+  * Added support for Qt v6.3.
+- Add PyQt6-DataVisualization-6.3-fix-timeline.patch
+  https://www.riverbankcomputing.com/pipermail/pyqt/2022-April/044562.html
+
+-------------------------------------------------------------------
 Sun Oct  3 13:40:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.2.0

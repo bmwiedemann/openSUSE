@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,17 @@
 %define skip_python2 1
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Python bindings for the Qt Data Visualization library
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtdatavisualization
 Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/PyQt6_%{qtlib}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM PyQt6-DataVisualization-6.3-fix-timeline.patch -- https://www.riverbankcomputing.com/pipermail/pyqt/2022-April/044562.html
+Patch0:         PyQt6-DataVisualization-6.3-fix-timeline.patch
 BuildRequires:  %{python_module PyQt6-devel >= %{version}}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pyqt-builder >= 1.10}
 BuildRequires:  %{python_module sip-devel >= 6}
 BuildRequires:  fdupes
@@ -56,7 +58,7 @@ This package provides Qt6 API files for the Eric IDE and the SIP files
 used to generate the Python bindings for %{name}
 
 %prep
-%setup -q -n PyQt6_%{qtlib}-%{version}
+%autosetup -p1 -n PyQt6_%{qtlib}-%{version}
 
 %build
 %pyqt_build
