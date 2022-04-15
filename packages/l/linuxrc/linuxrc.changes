@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Apr 13 16:13:26 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#293
+- do not use zram if there's more than 64 GiB free memory (bsc#1197253)
+- 8.10
+
+--------------------------------------------------------------------
 Wed Mar 16 13:08:21 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#286
