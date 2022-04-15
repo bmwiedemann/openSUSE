@@ -665,4 +665,12 @@ https://github.com/rfc1036/whois/issues/50</comment>
     <comment></comment>
     <requestid>962695</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>117c46bafe9a4d8bd9f27becdcbbeffd</srcmd5>
+    <version>5.5.13</version>
+    <time>1650060766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969914</requestid>
+  </revision>
 </revisionlist>
