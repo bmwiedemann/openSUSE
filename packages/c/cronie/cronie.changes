@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 14 13:19:35 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix bsc#1198265 Regression in handling 1-5 crontab entries
+  * bsc1198265.patch
+
+-------------------------------------------------------------------
 Tue Mar 29 13:08:02 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 1.6.0:
