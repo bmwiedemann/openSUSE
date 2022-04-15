@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:15:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update optional runtime and buildtime requirements
+  * 0.13 replaced deprecated ouauth2client with newer oauthlib.
+  * 0.11 replaced toml with qtoml (unavailabe in TW)
+
+-------------------------------------------------------------------
 Thu Feb  3 01:38:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-310.patch:

@@ -28,24 +28,24 @@ Source:         https://github.com/podhmo/dictknife/archive/%{version}.tar.gz#/d
 Patch0:         support-python-310.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module google-api-python-client}
+BuildRequires:  %{python_module google-auth-oauthlib}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module magicalimport}
-BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module prestring}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Suggests:       python-PyYAML
 Suggests:       python-google-api-python-client
+Suggests:       python-google-auth-oauthlib
 Suggests:       python-jsonpatch
 Suggests:       python-magicalimport
-Suggests:       python-oauth2client
 Suggests:       python-prestring
-Suggests:       python-toml
+# Not available
+Suggests:       python-qtoml
 BuildArch:      noarch
 %python_subpackages
 
@@ -88,6 +88,7 @@ JSON pointer syntax.
 %python_alternative %{_bindir}/dictknife
 %python_alternative %{_bindir}/jsonknife
 %python_alternative %{_bindir}/swaggerknife
-%{python_sitelib}/*
+%{python_sitelib}/dictknife
+%{python_sitelib}/dictknife-%{version}*-info
 
 %changelog
