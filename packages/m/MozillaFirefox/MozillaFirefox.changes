@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 12 19:30:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 99.0.1
+  * Fixed an issue with text rendering in Bengali (bmo#1763368)
+  * Fixed a selection issue in the Download panel with drag and
+    drop (bmo#1762723)
+  * Fixed: Fixed an issue preventing Zoom gallery mode for users
+    who go to zoom.us URLs instead of subdomain.zoom.us URLs
+    (bmo#1763801)
+
+-------------------------------------------------------------------
 Mon Apr  4 07:34:36 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 99.0
