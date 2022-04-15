@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Locale
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define cpan_name DateTime-Locale
 Name:           perl-DateTime-Locale
-Version:        1.330000
+Version:        1.340000
 Release:        0
-%define cpan_version 1.33
-Provides:       perl(DateTime::Locale) = 1.330000
-Summary:        Localization support for DateTime.pm
+%define cpan_version 1.34
+Provides:       perl(DateTime::Locale) = 1.340000
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Localization support for DateTime.pm
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
