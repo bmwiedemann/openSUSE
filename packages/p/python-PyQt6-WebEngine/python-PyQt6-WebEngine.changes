@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 13 08:27:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.0
+  * Added support for Qt v6.3.
+  * Bug fixes.
+- Remove concatenate workaround
+
+-------------------------------------------------------------------
 Sat Apr  9 10:19:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Exclude 32-bit platforms because QtWebengine 6.3.0 does not

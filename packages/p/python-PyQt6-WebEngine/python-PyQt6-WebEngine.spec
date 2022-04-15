@@ -21,9 +21,8 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define pyqt_build_for_qt6 1
-%define skip_python36 1
 Name:           python-%{mname}
-Version:        6.2.1
+Version:        6.3.0
 Release:        0
 Summary:        Python bindings for the Qt WebEngine framework
 License:        GPL-3.0-only
@@ -31,7 +30,7 @@ Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt3d
 Source:         https://files.pythonhosted.org/packages/source/P/%{mname}/%{muname}-%{version}.tar.gz
 BuildRequires:  %{python_module PyQt6-devel}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pyqt-builder >= 1.11}
 BuildRequires:  %{python_module sip-devel >= 6.2}
 BuildRequires:  fdupes
@@ -70,8 +69,7 @@ used to generate the Python bindings for %{name}
 %setup -q -n %{muname}-%{version}
 
 %build
-# https://www.riverbankcomputing.com/pipermail/pyqt/2021-October/044282.html
-%pyqt_build -s %{quote:--concatenate 1}
+%pyqt_build
 
 %install
 %pyqt_install
