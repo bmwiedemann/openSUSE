@@ -1,5 +1,5 @@
 [Unit]
-Description=Start Git Daemon
+Description=Git Daemon
 
 [Service]
 # added automatically, for details please see

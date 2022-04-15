@@ -2418,4 +2418,28 @@ git 2.12.3
     <comment></comment>
     <requestid>962095</requestid>
   </revision>
+  <revision rev="276" vrev="1">
+    <srcmd5>106be339f3d4575cce2ed832c34f5f59</srcmd5>
+    <version>2.35.3</version>
+    <time>1650060848</time>
+    <user>dimstar_suse</user>
+    <comment>- git 2.35.3:
+  * usability fix-up for CVE-2022-24765 bsc#1198234:
+    '*' can be used as the value for the `safe.directory` variable
+    to signal that the user considers that any directory is safe.
+  * The code that was meant to parse the new `safe.directory`
+    configuration variable was not checking what configuration
+    variable was being fed to it
+
+- Require bash in git-daemon because the service file uses it
+- Reword git-daemon.service description to get a useful sentence
+  in journalctl -b
+
+- git 2.35.2 (CVE-2022-24765, bsc#1198234):
+  * CVE-2022-24765: git may execute commands defined by other users
+    from unexpected worktrees
+
+- Require nogroup group for %pre (bsc#1192023)</comment>
+    <requestid>970347</requestid>
+  </revision>
 </revisionlist>

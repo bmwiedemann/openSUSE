@@ -36,7 +36,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.35.1
+Version:        2.35.3
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -246,6 +246,7 @@ Email interface for the GIT version control system.
 %package daemon
 Summary:        Simple Server for Git Repositories
 Group:          Development/Tools/Version Control
+Requires:       bash
 Requires:       git-core = %{version}
 Requires(pre):  %fillup_prereq
 %if 0%{?suse_version} >= 1500

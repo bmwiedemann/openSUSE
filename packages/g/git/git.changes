@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 14 06:01:19 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.35.3:
+  * usability fix-up for CVE-2022-24765 bsc#1198234:
+    '*' can be used as the value for the `safe.directory` variable
+    to signal that the user considers that any directory is safe.
+  * The code that was meant to parse the new `safe.directory`
+    configuration variable was not checking what configuration
+    variable was being fed to it
+
+-------------------------------------------------------------------
+Wed Apr 13 13:13:13 UTC 2022 - olaf@aepfle.de
+
+- Require bash in git-daemon because the service file uses it
+- Reword git-daemon.service description to get a useful sentence
+  in journalctl -b
+
+-------------------------------------------------------------------
+Tue Apr 12 17:56:41 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.35.2 (CVE-2022-24765, bsc#1198234):
+  * CVE-2022-24765: git may execute commands defined by other users
+    from unexpected worktrees
+
+-------------------------------------------------------------------
 Thu Mar 10 15:16:47 UTC 2022 - chris@computersalat.de
 
 - fix deps for SLES 12
@@ -114,6 +139,7 @@ Wed Oct 20 16:32:02 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 - Add CONFIG parameter to %sysusers_generate_pre
 - Remove unneeded SHELL in git-daemon.conf
 - Fix sysusers usage in spec file
+- Require nogroup group for %pre (bsc#1192023)
 
 -------------------------------------------------------------------
 Wed Oct 13 18:09:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
