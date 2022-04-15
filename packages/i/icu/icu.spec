@@ -1,7 +1,7 @@
 #
 # spec file for package icu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %define lname	libicu70
-%define amajor   70
-%define aversion 70
+%define amajor   71
+%define aversion 71
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,18 +26,16 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        70.1
+Version:        71.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
 Group:          Development/Libraries/C and C++
-URL:            http://icu-project.org/
-
-#Git-Clone:	https://github.com/unicode-org/icu.git
-Source:         https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-docs.zip.asc
+URL:            https://icu.unicode.org/
+Source:         https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-docs.zip.asc
 Source99:       icu.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff
@@ -45,7 +43,6 @@ Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
 Patch8:         locale.diff
 Patch9:         nan-undefined-conversion.patch
-Patch10:        fix-ucptrietest-golden-diff.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

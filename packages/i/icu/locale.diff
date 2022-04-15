@@ -9,7 +9,7 @@ Index: icu/source/common/putil.cpp
 ===================================================================
 --- icu.orig/source/common/putil.cpp
 +++ icu/source/common/putil.cpp
-@@ -1607,7 +1607,7 @@ static const char *uprv_getPOSIXIDForCat
+@@ -1616,7 +1616,7 @@ static const char *uprv_getPOSIXIDForCat
              /* Solaris speaks POSIX -  See IEEE Std 1003.1-2008
               * This is needed to properly handle empty env. variables
               */

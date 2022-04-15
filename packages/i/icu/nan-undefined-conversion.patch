@@ -4,9 +4,11 @@ Date: Tue, 11 May 2021 19:04:24 +0200
 Subject: [PATCH] ICU-21613 Fix undefined behaviour in
  ComplexUnitsConverter::applyRounder
 
---- a/source/i18n/units_complexconverter.cpp
-+++ b/source/i18n/units_complexconverter.cpp
-@@ -237,6 +237,11 @@ void ComplexUnitsConverter::applyRounder(MaybeStackArray<int64_t, 5> &intValues,
+Index: icu/source/i18n/units_complexconverter.cpp
+===================================================================
+--- icu.orig/source/i18n/units_complexconverter.cpp
++++ icu/source/i18n/units_complexconverter.cpp
+@@ -242,6 +242,11 @@ void ComplexUnitsConverter::applyRounder
      }
      quantity = decimalQuantity.toDouble();
  

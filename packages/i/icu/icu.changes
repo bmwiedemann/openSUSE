@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr  9 22:10:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 71.1:
+  * updates to CLDR 41 locale data with various additions and corrections.
+  * phrase-based line breaking for Japanese. Existing line breaking methods
+    follow standards and conventions for body text but do not work well for
+    short Japanese text, such as in titles and headings. This new feature is
+    optimized for these use cases.
+  * support for Hindi written in Latin letters (hi_Latn). The CLDR data for
+    this increasingly popular locale has been significantly revised and
+    expanded. Note that based on user expectations, hi_Latn incorporates a
+    large amount of English, and can also be referred to as “Hinglish”.
+  * time zone data updated to version 2022a. Note that pre-1970 data for a
+    number of time zones has been removed, as has been the case in the upstream
+    tzdata release since 2021b.
+- drop fix-ucptrietest-golden-diff.patch (upstream) 
+
+-------------------------------------------------------------------
 Mon Nov 22 10:22:02 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Add fix-ucptrietest-golden-diff.patch: ICU-21793 Fix
