@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20220413" schemaversion="4.1">
+<image name="OBS__openSUSE___20220414" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220413</productvar>
+      <productvar name="VERSION">20220414</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220413,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20220414,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220413/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20220414/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -222,6 +222,7 @@
       <repopackage name="blueman"/>
       <repopackage name="blueman-lang"/>
       <repopackage name="bluez"/>
+      <repopackage name="bluez-auto-enable-devices"/>
       <repopackage name="bluez-firmware"/>
       <repopackage name="bluez-qt-imports"/>
       <repopackage name="bluez-qt-udev"/>
@@ -301,6 +302,8 @@
       <repopackage name="clang-tools"/>
       <repopackage name="clang13"/>
       <repopackage name="clang13-doc"/>
+      <repopackage name="clang14"/>
+      <repopackage name="clang14-doc"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -1531,6 +1534,8 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
+      <repopackage name="libclang-cpp13"/>
+      <repopackage name="libclang-cpp14"/>
       <repopackage name="libclang13"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
@@ -1995,6 +2000,7 @@
       <repopackage name="libjackserver0"/>
       <repopackage name="libjansson4"/>
       <repopackage name="libjansson4-32bit" arch="x86_64"/>
+      <repopackage name="libjasper6"/>
       <repopackage name="libjavascriptcoregtk-4_0-18"/>
       <repopackage name="libjavascriptcoregtk-4_1-0"/>
       <repopackage name="libjbig2"/>
@@ -2239,9 +2245,9 @@
       <repopackage name="liblayout"/>
       <repopackage name="liblcms2-2"/>
       <repopackage name="libldac2"/>
-      <repopackage name="libldap-2_5-0"/>
-      <repopackage name="libldap-2_5-0-32bit" arch="x86_64"/>
       <repopackage name="libldap-data"/>
+      <repopackage name="libldap2"/>
+      <repopackage name="libldap2-32bit" arch="x86_64"/>
       <repopackage name="libldapcpp0"/>
       <repopackage name="libldb2"/>
       <repopackage name="libldb2-32bit" arch="x86_64"/>
@@ -2254,6 +2260,7 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia106"/>
       <repopackage name="libLLVM13"/>
+      <repopackage name="libLLVM14"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
@@ -2267,7 +2274,6 @@
       <repopackage name="liblsan0" arch="x86_64"/>
       <repopackage name="libltdl7"/>
       <repopackage name="libltdl7-32bit" arch="x86_64"/>
-      <repopackage name="libLTO13"/>
       <repopackage name="liblttng-ust1" arch="x86_64"/>
       <repopackage name="liblua5_3-5"/>
       <repopackage name="liblua5_4-5"/>
@@ -2486,12 +2492,13 @@
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
       <repopackage name="libportal-1"/>
       <repopackage name="libportaudio2"/>
+      <repopackage name="libportmidi2" arch="x86_64"/>
       <repopackage name="libpostproc55_9"/>
       <repopackage name="libpostproc56" arch="x86_64"/>
       <repopackage name="libpotrace0"/>
       <repopackage name="libpq5"/>
       <repopackage name="libpresage1"/>
-      <repopackage name="libproc-2-0"/>
+      <repopackage name="libprocps8"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
       <repopackage name="libprotobuf-lite30"/>
@@ -2734,7 +2741,7 @@
       <repopackage name="libsource-highlight4"/>
       <repopackage name="libsox3"/>
       <repopackage name="libsoxr0"/>
-      <repopackage name="libspandsp2"/>
+      <repopackage name="libspandsp3"/>
       <repopackage name="libspectre1"/>
       <repopackage name="libspeechd2"/>
       <repopackage name="libspeex1"/>

@@ -1311,7 +1311,6 @@ unsorted:
   - bluefish 
   - bluemoon 
   - blueprint-cursor-theme 
-  - bluez-auto-enable-devices 
   - bluez-cups: [i586] 
   - bluez-deprecated 
   - bluez-devel 
@@ -1485,6 +1484,7 @@ unsorted:
   - budgie-calendar-applet-lang 
   - budgie-clockworks-applet 
   - budgie-control-center 
+  - budgie-control-center-bash-completion 
   - budgie-control-center-devel 
   - budgie-control-center-lang 
   - budgie-countdown-applet 
@@ -2010,7 +2010,7 @@ unsorted:
   - clang12-devel-32bit: [x86_64] 
   - clang12-doc 
   - clang13-devel 
-  - clang13-devel-32bit: [x86_64] 
+  - clang14-devel 
   - clang7 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
@@ -6690,7 +6690,6 @@ unsorted:
   - gwenhywfar-gwenbuild 
   - gwenhywfar-lang 
   - gwenhywfar-tools 
-  - gypsy 
   - gzdoom 
   - gzrt 
   - h5utils 
@@ -9017,6 +9016,7 @@ unsorted:
   - libLLVM12 
   - libLLVM12-32bit: [x86_64] 
   - libLLVM13-32bit: [x86_64] 
+  - libLLVM14-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
   - libLLVM9 
@@ -9027,7 +9027,8 @@ unsorted:
   - libLTO11-32bit: [x86_64] 
   - libLTO12 
   - libLTO12-32bit: [x86_64] 
-  - libLTO13-32bit: [x86_64] 
+  - libLTO13 
+  - libLTO14 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
   - libLTO9 
@@ -10281,13 +10282,14 @@ unsorted:
   - libck0 
   - libckteec0 
   - libclFFT2: [x86_64] 
+  - libclang-cpp13-32bit: [x86_64] 
+  - libclang-cpp14-32bit: [x86_64] 
   - libclang10 
   - libclang10-32bit: [x86_64] 
   - libclang11 
   - libclang11-32bit: [x86_64] 
   - libclang12 
   - libclang12-32bit: [x86_64] 
-  - libclang13-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
   - libclang9 
@@ -11205,7 +11207,7 @@ unsorted:
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro15 
-  - libgnuradio-3_10_1 
+  - libgnuradio-3_10_2 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnutls-dane-devel 
@@ -11422,9 +11424,6 @@ unsorted:
   - libgxps-tools 
   - libgxw0 
   - libgxwmm0 
-  - libgypsy-devel 
-  - libgypsy0 
-  - libgypsy0-32bit: [x86_64] 
   - libhackrf0 
   - libhal1 
   - libhamlib++4 
@@ -11793,7 +11792,6 @@ unsorted:
   - libjackserver0-32bit: [x86_64] 
   - libjansson-devel 
   - libjasper-devel 
-  - libjasper6 
   - libjasper6-32bit: [x86_64] 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
@@ -12036,6 +12034,7 @@ unsorted:
   - liblldb11: [x86_64] 
   - liblldb12: [x86_64] 
   - liblldb13: [x86_64] 
+  - liblldb14: [x86_64] 
   - liblldb7: [x86_64] 
   - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
@@ -12664,6 +12663,7 @@ unsorted:
   - libomp11-devel 
   - libomp12-devel 
   - libomp13-devel 
+  - libomp14-devel 
   - libomp7-devel 
   - libomp9-devel 
   - libonnx 
@@ -13110,7 +13110,7 @@ unsorted:
   - libportal-qt5-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
-  - libportmidi2 
+  - libportmidi2: [i586] 
   - libpostproc55_9-32bit: [x86_64] 
   - libpostproc56: [i586] 
   - libpostproc56-32bit: [x86_64] 
@@ -13951,7 +13951,7 @@ unsorted:
   - libsoxr-lsr0 
   - libsoxr-lsr0-32bit: [x86_64] 
   - libsoxr0-32bit: [x86_64] 
-  - libspandsp2-32bit: [x86_64] 
+  - libspandsp3-32bit: [x86_64] 
   - libspatialindex6 
   - libspatialite-devel 
   - libspatialite7 
@@ -15212,6 +15212,7 @@ unsorted:
   - lld11 
   - lld12 
   - lld13 
+  - lld14 
   - lld7 
   - lld9 
   - lldb: [x86_64] 
@@ -15224,6 +15225,8 @@ unsorted:
   - lldb12-devel: [x86_64] 
   - lldb13: [x86_64] 
   - lldb13-devel: [x86_64] # devel package of dvd:libLLVM13 
+  - lldb14: [x86_64] 
+  - lldb14-devel: [x86_64] # devel package of dvd:clang14 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb9: [x86_64] 
@@ -15232,7 +15235,6 @@ unsorted:
   - lldpd-devel 
   - llmnrd 
   - llvm 
-  - llvm-LTO-devel 
   - llvm-devel 
   - llvm-doc 
   - llvm-gold 
@@ -15274,16 +15276,26 @@ unsorted:
   - llvm12-polly-devel 
   - llvm12-vim-plugins 
   - llvm13 
-  - llvm13-LTO-devel 
-  - llvm13-LTO-devel-32bit: [x86_64] 
   - llvm13-devel 
-  - llvm13-devel-32bit: [x86_64] 
   - llvm13-doc 
   - llvm13-gold 
+  - llvm13-libc++-devel: [x86_64] # devel package of dvd:libLLVM13 
+  - llvm13-libc++1: [x86_64] 
+  - llvm13-libc++abi-devel: [x86_64] # devel package of dvd:libLLVM13 
+  - llvm13-libc++abi1: [x86_64] 
+  - llvm13-libclang13 
   - llvm13-opt-viewer 
   - llvm13-polly 
   - llvm13-polly-devel 
   - llvm13-vim-plugins 
+  - llvm14 
+  - llvm14-devel 
+  - llvm14-doc 
+  - llvm14-gold 
+  - llvm14-opt-viewer 
+  - llvm14-polly 
+  - llvm14-polly-devel 
+  - llvm14-vim-plugins 
   - llvm7 
   - llvm7-LTO-devel 
   - llvm7-LTO-devel-32bit: [x86_64] 
@@ -21520,6 +21532,8 @@ unsorted:
   - python3-ccm 
   - python3-cinderclient 
   - python3-clang 
+  - python3-clang13 
+  - python3-clang14 
   - python3-cliff 
   - python3-clingo 
   - python3-clinkgrammar 
@@ -21634,6 +21648,7 @@ unsorted:
   - python3-lldb11: [x86_64] 
   - python3-lldb12: [x86_64] 
   - python3-lldb13: [x86_64] 
+  - python3-lldb14: [x86_64] 
   - python3-lldb7: [x86_64] 
   - python3-lldb9: [x86_64] 
   - python3-logreduce 
@@ -42524,7 +42539,9 @@ unsorted:
   - warewulf-provision-x86_64-initramfs: [x86_64] 
   - warewulf-vnfs: [x86_64] 
   - warewulf4: [x86_64] 
+  - warewulf4-ipxe: [x86_64] 
   - warewulf4-overlay: [x86_64] 
+  - warewulf4-slurm: [x86_64] 
   - warzone2100 
   - warzone2100-data 
   - watson 
@@ -42582,6 +42599,7 @@ unsorted:
   - weechat-ruby 
   - weechat-spell 
   - weechat-tcl 
+  - weggli 
   - weld-parent 
   - werken-xpath 
   - werken-xpath-javadoc 
@@ -43251,7 +43269,6 @@ unsorted:
   - yast2-installation-control 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
-  - yast2-nis-client 
   - yast2-online-update-configuration 
   - yast2-pkg-bindings-devel-doc 
   - yast2-rdp 
