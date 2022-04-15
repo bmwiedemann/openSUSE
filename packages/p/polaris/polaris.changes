@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 14 19:55:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.0:
+  * Add a --namespace flag to the in-cluster audit (#742)
+  * merge the list of resources from custom checks and the generated controller list before deduplicating them (#727)
+  * audit check specific checks when passing checks args (#737)
+  * update x/text (#740)
+  * Bump alpine from 3.15.2 to 3.15.3 (#739)
+  * Fix license headers (#736)
+  * Bump alpine from 3.15.1 to 3.15.2 (#733)
+  * Add mutation field to `imagePolicyNotAlways`  (#712)
+  * Bump alpine from 3.15.0 to 3.15.1 (#731)
+  * Bump golang from 1.17.7 to 1.17.8 (#716)
+
+-------------------------------------------------------------------
 Wed Mar 16 18:04:35 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.1.0:
