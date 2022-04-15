@@ -1,7 +1,7 @@
 #
 # spec file for package corosync
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ Name:           corosync
 Summary:        The Corosync Cluster Engine and Application Programming Interfaces
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/HA
-Version:        2.4.5+git70.64010f57
+Version:        2.4.5+git.5d625cef
 Release:        0
 URL:            http://corosync.github.io/corosync/
 Source0:        %{name}-%{version}.tar.bz2
@@ -77,7 +77,8 @@ Requires:       libquorum5 = %{version}-%{release}
 Requires:       libsam4 = %{version}-%{release}
 Requires:       libtotem_pg5 = %{version}-%{release}
 Requires:       libvotequorum8 = %{version}-%{release}
-Conflicts:      openais <= 0.89, openais-devel <= 0.89
+Conflicts:      openais <= 0.89
+Conflicts:      openais-devel <= 0.89
 
 # Build bits
 
@@ -427,7 +428,7 @@ The main purpose of SAM is to restart a local process when it fails
 to respond to a healthcheck request in a configured time interval.
 
 %package -n libtotem_pg5
-Summary:        Corosync Totem protocol 
+Summary:        Corosync Totem protocol
 Group:          System/Libraries
 
 %description -n libtotem_pg5
@@ -632,7 +633,7 @@ fi
 Summary:        The Corosync Cluster Engine Qdevice Network Daemon
 Group:          System/Base
 Requires:       mozilla-nss-tools
-Requires(pre): /usr/sbin/useradd
+Requires(pre):  /usr/sbin/useradd
 
 %if %{with systemd}
 %{systemd_ordering}
