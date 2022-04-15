@@ -1,11 +1,113 @@
 -------------------------------------------------------------------
+Wed Apr 13 09:42:54 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.3.2:
+  * general: bump Keylime version to 6.3.2
+  * tpm_main: flush transient objects
+  * pypi: add notice that the Python API is unstable
+  * installer: use OpenSSL by default
+  * Avoid mounting secdir while unmounting it
+  * remove TPM, VTPM and IMA stubbing support
+  * archive: remove all archive files
+  * Change GH reviewers to be from developer group
+  * added suse / opensuse support with zypper
+  * Fix tpm import in test_tpm.py
+  * Fix cfssl configuration in run_tests.sh
+  * tpm_emulator: improve TPM emulator installation
+  * config: Add option to enable DB debugging via DEBUG_DB env var
+  * Enable SQL query cache for JSONPickleType
+  * tpm_emulator: move everything into systemd services
+  * Implement broader key support for Keylime's signing mechanisms
+  * tenant: Use exponential backoff on key verification retries
+  * tenant: Move JSON parsing to capture possible exceptions
+  * tenant: Move verifier stop from do_quote to do_verify
+  * pylint: Fix issues related to W0602 global-variable-not-assigned
+  * tenant: Handle 404 error from registrar gracefully
+  * pylint: Fix remaining code with issue R1732 consider-using-with
+  * pylint: Fix R1732 consider-using-with
+  * pylint: Fix issue detected by pylint-2.13.0
+  * pylint: Fix issue detected by pylint-2.13.0
+  * tenant: verify agent quote before adding to verifier
+  * README: remove tpm2-abrmd and OSX sections
+  * pylint: Fix issues related to W0102 dangerous-default-value
+  * pylint: Fix R0201 no-self-use
+  * pylint: remove W1203 logging-format-interpolation from ignore list
+  * pylint: remove R1729 use-a-generator from ignore list
+  * pylint: remove E1120 no-value-for-parameter from ignore list
+  * pylint: remove W1201 logging-not-lazy from ignore list
+  * pylint: fix C0209 consider-using-f-string
+  * pylint: fix C0201 consider-iterating-dictionary
+  * pylint: fix W1509 subprocess-popen-preexec-fn
+  * keylime_tenant non-zero exit code on error
+  * Fix prepare step adjustments in packit-ci.fmf plan
+  * failure: fix Pattern type hint
+  * mypy: add initial Mypy configuration
+  * ima_ast: add type hints
+  * failure: add type hints
+  * logging, config: add type hints for logging module
+  * algorithms: add type hints
+  * json: add type hints and add JSONType as custom type
+  * Full allowlist processing when not adding host
+  * provider, vTPM: remove vTPM manager and provider code
+  * tpm: fix that the set of missing PCRs is not serializable in failure
+  * Restores the option to use keylime agents without mTLS
+  * services: make the services run as keylime user instead of root
+  * State in --help that SHA-256 is used for --allowlist-checksum
+  * config: change cacert.pem to cacert.crt
+  * registrar_client: validate connections against registrar ca certificate
+  * tenant: validate connections against verifier ca certificate
+  * request_client: only add custom adapter if TLS is enabled
+  * setup: add static assets for webapp
+  * Add TESTING.md describing testing details
+  * Fix some remaining log format strings
+  * Fix for database_url parameter with sqlite
+  * Enable test basic-attestation-with-unpriviledged-agent in Packit CI
+  * Use lazy string formatting when logging (#535)
+  * Make Packit CI plan more resource-saving
+  * keylime.conf: Document setting ownership in WORK_DIR (/var/lib/keylime)
+  * agent: Make sure tmpfs is empty even if not mounted or cannot unmount
+  * agent: Drop privileges by switching to normal user and group
+  * agent: Move mounting of tmpfs towards beginning of main()
+  * agent: Read measured boot log near process start
+  * agent: Open file for IMA log file near process start
+  * ima: Refactor read_measurement_list() to take file as argument
+  * Add the policy name to failure event
+  * tpm_main: Check if tpm_cert_store exists (#553)
+  * Remove tag input from container build workflow
+  * Push container images to quay.io/keylime org
+  * Enable code coverage measurement for e2e tests in Packit CI
+  * config: fix config search order
+  * Add defaults for ephemeral keys for agent records
+  * Update outdated greetings Github messages
+  * services: add keylime_agent_secure.mount service
+  * installer.sh: updated tpm2-{tools, tss}, use system packages if possible
+  * revocation_notifier: convert the data to str in the notifiers
+  * revocation_notifier: mark webhook threads as daemon and add timeout
+  * Fix Packit CI test plan Summary
+  * Enable Packit CI testing on CentOS Stream 8
+  * Enable Packit CI testing on Fedora Rawhide
+  * Remove last trace of TPM 1.2 (hopefully)
+  * verifier: remove start_tornado() function
+  * verifier: wait for connections to be closed before stopping ioloop
+  * revocation_notifier: kill ZeroMQ broker if it blocks more than 5s
+  * Add more e2e tests to Packit CI
+  * Enable EPEL repo on CentOS Stream in packit.yaml
+- Drop already merged patches
+  * drop_privileges_of_agent_process_after_startup.patch
+  * config_fix_config_search_order.patch
+  * services_add_keylime_agent_secure_mount_service.patch
+
+-------------------------------------------------------------------
 Thu Feb 24 15:50:53 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add upstream patches:
   * drop_privileges_of_agent_process_after_startup.patch
   * config_fix_config_search_order.patch
   * services_add_keylime_agent_secure_mount_service.patch
-- Configure the agent to run as non-root
+- Configure the agent to run as non-root (via keylime.conf)
+- Add keylime sysuser conf file and deploy as part of the tpm
+  certificate subpackage
+- Prepare the systemd mount unit for /var/lib/keylime/secure
 
 -------------------------------------------------------------------
 Thu Feb 24 14:49:33 UTC 2022 - aplanas@suse.com

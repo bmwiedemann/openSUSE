@@ -25,7 +25,7 @@
 %bcond_with cfssl
 %endif
 Name:           keylime
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -37,12 +37,6 @@ Source2:        %{name}-user.conf
 Patch1:         keylime.conf.diff
 # PATCH-FIX-OPENSUSE config-libefivars.diff
 Patch2:         config-libefivars.diff
-# PATCH-FIX-UPSTREAM drop_privileges_of_agent_process_after_startup.patch (gh#keylime/keylime!900)
-Patch3:         drop_privileges_of_agent_process_after_startup.patch
-# PATCH-FIX-UPSTREAM config_fix_config_search_order.patch (gh#keylime/keylime!902)
-Patch4:         config_fix_config_search_order.patch
-# PATCH-FIX-UPSTREAM services_add_keylime_agent_secure_mount_service.patch (gh#keylime/keylime!903)
-Patch5:         services_add_keylime_agent_secure_mount_service.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
