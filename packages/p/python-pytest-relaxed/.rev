@@ -77,4 +77,12 @@
 - No longer skip python310.</comment>
     <requestid>960645</requestid>
   </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>3b74f76982b7c2ba771defe177e70baf</srcmd5>
+    <version>1.1.5</version>
+    <time>1650060833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969758</requestid>
+  </revision>
 </revisionlist>

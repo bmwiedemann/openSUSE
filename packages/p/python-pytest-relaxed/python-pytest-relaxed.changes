@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 12 19:41:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Enhance no-makeitem-method.patch to pytest-6.1-and-7.patch
+  gh#bitprophet/pytest-relaxed#21
+
+-------------------------------------------------------------------
 Thu Mar 10 06:05:48 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-makeitem-method.patch:

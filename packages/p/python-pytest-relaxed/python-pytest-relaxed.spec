@@ -24,9 +24,10 @@ Summary:        Relaxed test discovery/organization for pytest
 License:        BSD-2-Clause
 URL:            https://github.com/bitprophet/pytest-relaxed
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-relaxed/pytest-relaxed-%{version}.tar.gz
-Patch0:         https://github.com/bitprophet/pytest-relaxed/pull/10.patch#/pytest-relaxed-pr10.patch
-# PATCH-FIX-UPSTREAM gh#bitprophet/pytest-relaxed#21
-Patch1:         no-makeitem-method.patch
+# PATCH-FIX-UPSTREAM pytest-relaxed-pr10.patch -- gh#bitprophet/pytest-relaxed#10
+Patch0:         pytest-relaxed-pr10.patch
+# PATCH-FIX-UPSTREAM pytest-6.1-and-7.patch -- gh#bitprophet/pytest-relaxed#21 + gh#s-t-e-v-e-n-k/pytest-relaxed#1
+Patch1:         pytest-6.1-and-7.patch
 BuildRequires:  %{python_module decorator >= 4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
