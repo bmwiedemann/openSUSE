@@ -1,7 +1,7 @@
 #
 # spec file for package python-wurlitzer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-wurlitzer
-Version:        2.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Python package to capture C-level output in context managers
 License:        MIT
 URL:            https://github.com/minrk/wurlitzer
 Source:         https://files.pythonhosted.org/packages/source/w/wurlitzer/wurlitzer-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

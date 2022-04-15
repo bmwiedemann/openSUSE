@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 14 09:47:12 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.0.2
+  * no upstream changelog file found
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Tue Jul 21 12:41:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.0.1
