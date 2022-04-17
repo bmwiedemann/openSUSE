@@ -82,7 +82,6 @@ BuildRequires:  jpackage-utils
 BuildRequires:  libjpeg-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
-BuildRequires:  nasm
 BuildRequires:  xorg-x11-server-sdk >= 21.1.0
 BuildRequires:  xorg-x11-server-source >= 21.1.0
 BuildRequires:  pkgconfig(x11)
