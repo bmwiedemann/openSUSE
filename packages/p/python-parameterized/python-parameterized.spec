@@ -24,10 +24,9 @@ Summary:        Parameterized testing
 License:        BSD-2-Clause
 URL:            https://github.com/wolever/parameterized
 Source:         https://files.pythonhosted.org/packages/source/p/parameterized/parameterized-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip_Documentation_tests.patch gh#wolever/parameterized#84 mcepl@suse.com
-# Skip tests failing with Python 3.8
-Patch0:         skip_Documentation_tests.patch
-# PATCH-FIX-UPSTREAM remove_nose.patch mcepl@suse.com
+# PATCH-FIX-UPSTREAM parameterized-pr116-pytest4.patch -- gh#wolever/parameterized#116, fix pytest >= 4 execution
+Patch0:         parameterized-pr116-pytest4.patch
+# PATCH-FIX-OPENSUSE remove_nose.patch mcepl@suse.com
 # Remove nose dependency (patch is not very good, DO NOT SEND UPSTREAM!)
 Patch1:         remove_nose.patch
 BuildRequires:  %{python_module nose2}
