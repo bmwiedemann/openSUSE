@@ -27,6 +27,10 @@ License:        MIT
 Group:          Development/Tools/Other
 URL:            https://poedit.net/
 Source:         https://github.com/vslavik/poedit/releases/download/v%{version}-oss/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM poedit-3.0.1-add-icon-about-dialog.patch -- https://github.com/vslavik/poedit/issues/704
+Patch0:         poedit-3.0.1-add-icon-about-dialog.patch
+# PATCH-FIX-UPSTREAM poedit-3.0.1-fix-sizer-assertion.patch -- https://github.com/vslavik/poedit/issues/745
+Patch2:         poedit-3.0.1-fix-sizer-assertion.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_iostreams-devel >= 1.60
@@ -61,7 +65,7 @@ editing catalogs over launching vi and editing the file by hand.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 %if !%{with bundled_deps}
 # Remove bundled dependencies, use the ones provided by the distribution
 rm -r deps

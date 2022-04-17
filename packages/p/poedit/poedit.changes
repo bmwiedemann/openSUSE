@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 16 10:33:45 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add poedit-3.0.1-add-icon-about-dialog.patch: Fix display of icon
+  in about dialog (gh#vslavik/poedit#704).
+- Add poedit-3.0.1-fix-sizer-assertion.patch: Fix an assertion
+  error when opening the code ocurrence window with wxGTK 3.1.6
+  (gh#vslavik/poedit#745).
+
+-------------------------------------------------------------------
 Sat Jan 22 16:02:00 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Drop build against wxGTK2:
