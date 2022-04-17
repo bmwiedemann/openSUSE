@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 12 19:46:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.64:
+  * Fix memory leak in libpsx at program exit.
+  * Be more resilient to CGo configuration with Go compiler when building tests.
+  * Fix cap_*prctl() return code/errno handling.
+  * Minor clarification to cap_get_pid() man page concerning pid value within namespaces.
+
+-------------------------------------------------------------------
 Fri Feb 25 09:05:58 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Use "or" in the license tag to avoid confusion (bsc#1180073)

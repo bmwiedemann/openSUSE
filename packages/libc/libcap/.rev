@@ -448,4 +448,16 @@
 - Update to version 2.30 (jsc#SLE-17092, jsc#ECO-3460): (forwarded request 957541 from msmeissn)</comment>
     <requestid>957551</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>34fd0b08b7ad817e54b2eb68b60b7e85</srcmd5>
+    <version>2.64</version>
+    <time>1650232173</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.64:
+  * Fix memory leak in libpsx at program exit.
+  * Be more resilient to CGo configuration with Go compiler when building tests.
+  * Fix cap_*prctl() return code/errno handling.
+  * Minor clarification to cap_get_pid() man page concerning pid value within namespaces.</comment>
+    <requestid>969556</requestid>
+  </revision>
 </revisionlist>
