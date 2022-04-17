@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 15 00:35:02 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- nasm is not needed for build, remove from buildrequires 
+
+-------------------------------------------------------------------
 Wed Mar  2 13:23:00 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - x11vnc: no longer explicitely require python3, since it's already
