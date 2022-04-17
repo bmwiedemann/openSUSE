@@ -76,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1649753938.422b00b04
+Version:        4.6.1650015172.429d07817
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -256,12 +256,25 @@ Covering both openQA and also os-autoinst test engine.
 %package auto-update
 Summary:        Automatically upgrade and reboot the system when required
 Group:          Development/Tools/Other
+Requires:       %{name}-common
 Requires:       curl
 Requires:       rebootmgr
 
 %description auto-update
 Use this package to install and enable a systemd service for nightly upgrading
 and rebooting the system if devel:openQA packages are stable.
+
+%package continuous-update
+Summary:        Continuously update packages from devel:openQA
+Group:          Development/Tools/Other
+Requires:       %{name}-common
+Requires:       curl
+
+%description continuous-update
+Use this package to install and enable a systemd service for continuously
+upgrading the system if devel:openQA packages are stable and contain updates. It
+is complementary to auto-update which also reboots the system and does updates
+regardless of whether devel:openQA contains updates.
 
 %prep
 %setup -q -a1
@@ -406,6 +419,9 @@ fi
 %pre auto-update
 %service_add_pre openqa-auto-update.timer
 
+%pre continuous-update
+%service_add_pre openqa-continuous-update.timer
+
 %post
 %tmpfiles_create %{_tmpfilesdir}/openqa-webui.conf
 # install empty log file
@@ -439,6 +455,9 @@ fi
 %post auto-update
 %service_add_post openqa-auto-update.timer
 
+%post continuous-update
+%service_add_post openqa-continuous-update.timer
+
 %preun
 %service_del_preun %{openqa_services}
 
@@ -448,6 +467,10 @@ fi
 %preun auto-update
 # not changing the service which might have triggered this update itself
 %service_del_preun openqa-auto-update.timer
+
+%preun continuous-update
+# not changing the service which might have triggered this update itself
+%service_del_preun openqa-continuous-update.timer
 
 %postun
 %service_del_postun %{openqa_services}
@@ -466,6 +489,9 @@ fi
 
 %postun auto-update
 %service_del_postun openqa-auto-update.timer
+
+%postun continuous-update
+%service_del_postun openqa-continuous-update.timer
 
 %post local-db
 %service_add_post openqa-setup-db.service
@@ -595,6 +621,7 @@ fi
 %{_localstatedir}/lib/openqa/factory
 %{_localstatedir}/lib/openqa/script
 %{_localstatedir}/lib/openqa/tests
+%{_datadir}/openqa/script/openqa-check-devel-repo
 
 %files worker
 %{_datadir}/openqa/lib/OpenQA/CacheService/
@@ -691,6 +718,10 @@ fi
 %dir %{_unitdir}
 %{_unitdir}/openqa-auto-update.*
 %{_datadir}/openqa/script/openqa-auto-update
-%{_datadir}/openqa/script/openqa-check-devel-repo
+
+%files continuous-update
+%dir %{_unitdir}
+%{_unitdir}/openqa-continuous-update.*
+%{_datadir}/openqa/script/openqa-continuous-update
 
 %changelog

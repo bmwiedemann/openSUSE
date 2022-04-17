@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 15 09:33:00 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1650015172.429d07817:
+  * Dependency cron 2022-04-15
+  * Add systemd unit to trigger continous deployment from devel:openQA
+  * apparmor: Allow podman to be called on workers
+  * Allow mutt in apparmor
+
+-------------------------------------------------------------------
 Tue Apr 12 09:49:15 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1649753938.422b00b04:
