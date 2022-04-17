@@ -27,6 +27,9 @@ URL:            https://github.com/jwag956/flask-security
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Security-Too/Flask-Security-Too-%{version}.tar.gz
 Patch0:         no-mongodb.patch
 Patch1:         use-pyqrcodeng.patch
+# PATCH-FIX-UPSTREAM endswith-assert.patch gh#Flask-Middleware/flask-security#605 mcepl@suse.com
+# don't test for euqality of response.headers['Location'], just for .endswith
+Patch2:         endswith-assert.patch
 BuildRequires:  %{python_module Babel >= 1.3}
 BuildRequires:  %{python_module Flask >= 1.1.1}
 BuildRequires:  %{python_module Flask-Babel}
@@ -37,6 +40,8 @@ BuildRequires:  %{python_module Flask-SQLAlchemy >= 2.3}
 BuildRequires:  %{python_module Flask-WTF >= 0.14.3}
 BuildRequires:  %{python_module PyQRCode >= 1.2}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2.6}
+BuildRequires:  %{python_module WTForms-lang}
+BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module Werkzeug >= 0.14.1}
 BuildRequires:  %{python_module argon2_cffi >= 19.1.0}
 BuildRequires:  %{python_module bcrypt >= 3.1.4}
@@ -49,6 +54,7 @@ BuildRequires:  %{python_module itsdangerous >= 1.1.0}
 BuildRequires:  %{python_module passlib >= 1.7.2}
 BuildRequires:  %{python_module peewee >= 3.7.1}
 BuildRequires:  %{python_module phonenumbers >= 8.11.1}
+BuildRequires:  %{python_module pony}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zxcvbn >= 4.4.28}
@@ -99,7 +105,8 @@ rm tests/test_trackable.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_wtform_xlation'
+# gh#Flask-Middleware/flask-security#605 for test_two_factor_flag
+%pytest -k 'not test_two_factor_flag'
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst

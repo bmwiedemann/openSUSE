@@ -1,0 +1,260 @@
+---
+ tests/test_changeable.py     |    4 ++--
+ tests/test_common.py         |    4 ++--
+ tests/test_configuration.py  |    4 ++--
+ tests/test_confirmable.py    |    2 +-
+ tests/test_misc.py           |   23 +++++++----------------
+ tests/test_recoverable.py    |    2 +-
+ tests/test_response.py       |    7 ++-----
+ tests/test_two_factor.py     |   10 ++++------
+ tests/test_unified_signin.py |   11 ++++-------
+ 9 files changed, 25 insertions(+), 42 deletions(-)
+
+--- a/tests/test_changeable.py
++++ b/tests/test_changeable.py
+@@ -193,7 +193,7 @@ def test_change_invalidates_session(app,
+     # try to access protected endpoint - shouldn't work
+     response = client.get("/profile")
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/login?next=%2Fprofile"
++    assert response.headers["Location"].endswith("/login?next=%2Fprofile")
+ 
+ 
+ def test_change_updates_remember(app, client):
+@@ -243,7 +243,7 @@ def test_change_invalidates_auth_token(a
+     # authtoken should now be invalid
+     response = client.get("/token", headers=headers)
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/login?next=%2Ftoken"
++    assert response.headers["Location"].endswith("/login?next=%2Ftoken")
+ 
+ 
+ def test_auth_uniquifier(app):
+--- a/tests/test_common.py
++++ b/tests/test_common.py
+@@ -324,7 +324,7 @@ def test_unauthorized_access_with_referr
+     response = client.get(
+         "/admin?a=b", headers={"referer": "http://localhost/admin?x=y"}
+     )
+-    assert response.headers["Location"] == "http://localhost/"
++    assert response.headers["Location"].endswith("/")
+     client.get(response.headers["Location"])
+ 
+     response = client.get(
+@@ -336,7 +336,7 @@ def test_unauthorized_access_with_referr
+     # we expect a temp redirect (302) to the referer
+     response = client.get("/admin?w=s", headers={"referer": "/profile"})
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/profile"
++    assert response.headers["Location"].endswith("/profile")
+ 
+ 
+ @pytest.mark.settings(unauthorized_view="/unauthz")
+--- a/tests/test_configuration.py
++++ b/tests/test_configuration.py
+@@ -24,11 +24,11 @@ def test_view_configuration(client):
+ 
+     response = authenticate(client, endpoint="/custom_login")
+     assert "location" in response.headers
+-    assert response.headers["Location"] == "http://localhost/post_login"
++    assert response.headers["Location"].endswith("/post_login")
+ 
+     response = logout(client, endpoint="/custom_logout")
+     assert "location" in response.headers
+-    assert response.headers["Location"] == "http://localhost/post_logout"
++    assert response.headers["Location"].endswith("/post_logout")
+ 
+     response = client.get(
+         "/http",
+--- a/tests/test_confirmable.py
++++ b/tests/test_confirmable.py
+@@ -522,7 +522,7 @@ def test_email_not_identity(app, sqlalch
+     token = registrations[0]["confirm_token"]
+     response = client.get("/confirm/" + token, headers={"Accept": "application/json"})
+     assert response.status_code == 302
+-    assert response.location == "http://localhost/"
++    assert response.location.endswith("/")
+ 
+     logout(client)
+ 
+--- a/tests/test_misc.py
++++ b/tests/test_misc.py
+@@ -813,10 +813,7 @@ def test_authn_freshness(
+     with capture_flashes() as flashes:
+         response = client.get("/myspecialview", follow_redirects=False)
+         assert response.status_code == 302
+-        assert (
+-            response.location
+-            == "http://localhost/verify?next=http%3A%2F%2Flocalhost%2Fmyspecialview"
+-        )
++        assert response.location.endswith("/verify?next=http%3A%2F%2Flocalhost%2Fmyspecialview")
+     assert flashes[0]["category"] == "error"
+     assert flashes[0]["message"].encode("utf-8") == get_message(
+         "REAUTHENTICATION_REQUIRED"
+@@ -896,10 +893,7 @@ def test_default_authn_bp(app, client):
+     time.sleep(0.1)
+     response = client.get("/myview", follow_redirects=False)
+     assert response.status_code == 302
+-    assert (
+-        response.location
+-        == "http://localhost/myprefix/verify?next=http%3A%2F%2Flocalhost%2Fmyview"
+-    )
++    assert response.location.endswith("/myprefix/verify?next=http%3A%2F%2Flocalhost%2Fmyview")
+ 
+ 
+ def test_authn_freshness_grace(app, client, get_message):
+@@ -941,10 +935,7 @@ def test_authn_freshness_nc(app, client_
+     # This should fail - should be a redirect
+     response = client_nc.get("/myview", headers=h, follow_redirects=False)
+     assert response.status_code == 302
+-    assert (
+-        response.location
+-        == "http://localhost/verify?next=http%3A%2F%2Flocalhost%2Fmyview"
+-    )
++    assert response.location.endswith("/verify?next=http%3A%2F%2Flocalhost%2Fmyview")
+ 
+ 
+ def test_verify_fresh(app, client, get_message):
+@@ -1106,11 +1097,11 @@ def test_post_security_with_application_
+         "/login", data=dict(email="matt@lp.com", password="password")
+     )
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/root"
++    assert response.headers["Location"].endswith("/root")
+ 
+     response = client.get("/logout")
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/root"
++    assert response.headers["Location"].endswith("/root")
+ 
+ 
+ def test_post_security_with_application_root_and_views(app, sqlalchemy_datastore):
+@@ -1129,11 +1120,11 @@ def test_post_security_with_application_
+         "/login", data=dict(email="matt@lp.com", password="password")
+     )
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/post_login"
++    assert response.headers["Location"].endswith("/post_login")
+ 
+     response = client.get("/logout")
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/post_logout"
++    assert response.headers["Location"].endswith("/post_logout")
+ 
+ 
+ @pytest.mark.settings(redirect_validate_mode="regex")
+--- a/tests/test_recoverable.py
++++ b/tests/test_recoverable.py
+@@ -289,7 +289,7 @@ def test_recover_invalidates_session(app
+     # try to access protected endpoint with old session - shouldn't work
+     response = other_client.get("/profile")
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/login?next=%2Fprofile"
++    assert response.headers["Location"].endswith("/login?next=%2Fprofile")
+ 
+ 
+ def test_login_form_description(sqlalchemy_app):
+--- a/tests/test_response.py
++++ b/tests/test_response.py
+@@ -52,7 +52,7 @@ def test_default_unauthn(app, client):
+ 
+     response = client.get("/profile")
+     assert response.status_code == 302
+-    assert response.headers["Location"] == "http://localhost/login?next=%2Fprofile"
++    assert response.headers["Location"].endswith("/login?next=%2Fprofile")
+ 
+     response = client.get("/profile", headers={"Accept": "application/json"})
+     assert response.status_code == 401
+@@ -68,10 +68,7 @@ def test_default_unauthn_bp(app, client)
+ 
+     response = client.get("/profile")
+     assert response.status_code == 302
+-    assert (
+-        response.headers["Location"]
+-        == "http://localhost/myprefix/mylogin?next=%2Fprofile"
+-    )
++    assert response.headers["Location"].endswith("/myprefix/mylogin?next=%2Fprofile")
+ 
+ 
+ def test_default_unauthn_myjson(app, client):
+--- a/tests/test_two_factor.py
++++ b/tests/test_two_factor.py
+@@ -851,7 +851,7 @@ def test_admin_setup_reset(app, client,
+     # we shouldn't be logged in
+     response = client.get("/profile", follow_redirects=False)
+     assert response.status_code == 302
+-    assert response.location == "http://localhost/login?next=%2Fprofile"
++    assert response.location.endswith("/login?next=%2Fprofile")
+ 
+     # Use admin to setup gene's SMS/phone.
+     with app.app_context():
+@@ -1105,7 +1105,7 @@ def test_bad_sender(app, client, get_mes
+         data = {"email": "gal@lp.com", "password": "password"}
+         response = client.post("login", data=data, follow_redirects=False)
+         assert response.status_code == 302
+-        assert response.location == "http://localhost/login"
++        assert response.location.endswith("/login")
+     assert get_message("FAILED_TO_SEND_CODE") in flashes[0]["message"].encode("utf-8")
+ 
+     # test w/ JSON
+@@ -1187,9 +1187,7 @@ def test_verify(app, client, get_message
+     authenticate(client)
+     response = client.get("tf-setup", follow_redirects=False)
+     verify_url = response.location
+-    assert (
+-        verify_url == "http://localhost/verify?next=http%3A%2F%2Flocalhost%2Ftf-setup"
+-    )
++    assert verify_url.endswith("/verify?next=http%3A%2F%2Flocalhost%2Ftf-setup")
+     logout(client)
+ 
+     # Now try again - follow redirects to get to verify form
+@@ -1220,7 +1218,7 @@ def test_verify(app, client, get_message
+             follow_redirects=False,
+         )
+         assert response.status_code == 302
+-        assert response.location == "http://localhost/tf-setup"
++        assert response.location.endswith("/tf-setup")
+     assert get_message("REAUTHENTICATION_SUCCESSFUL") == flashes[0]["message"].encode(
+         "utf-8"
+     )
+--- a/tests/test_unified_signin.py
++++ b/tests/test_unified_signin.py
+@@ -513,7 +513,7 @@ def test_verify_link(app, client, get_me
+ 
+     # Try with no code
+     response = client.get("us-verify-link?email=matt@lp.com", follow_redirects=False)
+-    assert response.location == "http://localhost/us-signin"
++    assert response.location.endswith("/us-signin")
+     response = client.get("us-verify-link?email=matt@lp.com", follow_redirects=True)
+     assert get_message("API_ERROR") in response.data
+ 
+@@ -837,10 +837,7 @@ def test_verify(app, client, get_message
+     us_authenticate(client)
+     response = client.get("us-setup", follow_redirects=False)
+     verify_url = response.location
+-    assert (
+-        verify_url
+-        == "http://localhost/us-verify?next=http%3A%2F%2Flocalhost%2Fus-setup"
+-    )
++    assert verify_url.endswith("/us-verify?next=http%3A%2F%2Flocalhost%2Fus-setup")
+     logout(client)
+     us_authenticate(client)
+ 
+@@ -1099,7 +1096,7 @@ def test_next(app, client, get_message):
+         data=dict(identity="matt@lp.com", passcode=requests[0]["token"]),
+         follow_redirects=False,
+     )
+-    assert response.location == "http://localhost/post_login"
++    assert response.location.endswith("/post_login")
+ 
+     logout(client)
+     response = client.post(
+@@ -1109,7 +1106,7 @@ def test_next(app, client, get_message):
+         ),
+         follow_redirects=False,
+     )
+-    assert response.location == "http://localhost/post_login"
++    assert response.location.endswith("/post_login")
+ 
+ 
+ @pytest.mark.registerable()

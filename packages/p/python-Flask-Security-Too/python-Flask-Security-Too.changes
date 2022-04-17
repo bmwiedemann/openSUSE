@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 16 22:35:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add endswith-assert.patch to overcome incompatibilities with
+  WTForms >= 3.0.0 (gh#Flask-Middleware/flask-security#605).
+
+-------------------------------------------------------------------
 Thu Mar 17 16:52:37 UTC 2022 - pgajdos@suse.com
 
 - python-mock is actually not required for build
