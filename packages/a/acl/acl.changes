@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 13:40:20 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Disable -D_FORTIFY_SOURCE=3 for now
+  as explained here: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=104964
+
+-------------------------------------------------------------------
 Sun May 16 09:19:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file (move license to licensedir) 

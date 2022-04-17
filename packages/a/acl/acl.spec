@@ -1,7 +1,7 @@
 #
 # spec file for package acl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,6 +87,11 @@ to develop applications that require libacl.
 
 %build
 autoreconf -fi
+
+# Disable -D_FORTIFY_SOURCE=3 for now
+# as explained here: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=104964
+%global optflags %(echo %{optflags} | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/')
+
 export OPTIMIZER="%optflags -fPIC"
 export DEBUG=-DNDEBUG
 CFLAGS="%optflags"

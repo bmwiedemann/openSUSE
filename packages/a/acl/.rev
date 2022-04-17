@@ -419,4 +419,12 @@ SPDX format (forwarded request 94532 from babelworx)</comment>
 - Use SourceUrls</comment>
     <requestid>893445</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>fb0599a4be8e26d9de115f5295172938</srcmd5>
+    <version>2.3.1</version>
+    <time>1650232171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969480</requestid>
+  </revision>
 </revisionlist>
