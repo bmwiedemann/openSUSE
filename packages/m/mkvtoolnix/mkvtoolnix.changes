@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Sat Apr 16 12:50:21 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 67.0.0
+  New features and enhancements:
+  * all: IETF BCP 47/RFC 5646 language tags: when deriving the
+    legacy language element codes to use a language tag's ISO
+    639 code is also potentially interpreted as an & its prefix
+    is used as the legacy language code. For example, "Yue
+    Chinese" = `yue` is not part of ISO 639-2. However, there is
+    an extlang subtag `yue` with a valid prefix of `zh`
+    ("Chinese"), and for "Chinese" there is an ISO 639-2
+    language code: `chi`. In this example the IETF language
+    element would be set to `yue` and the corresponding legacy
+    element to `chi`.
+  * all: IETF BCP 47/RFC 5646 language tags: grandfathered
+    language tags are now supported.
+  * all: IETF BCP 47/RFC 5646 language tags: all deprecated
+    subtags from the IANA language subtag registry are now
+    supported.
+  * all: IETF BCP 47/RFC 5646 language tags: all lists of valid
+    subtags have been updated from their respective
+    authoritative sources.
+  * all: IETF BCP 47/RFC 5646 language tags: all in the IANA
+    language subtag registry are now supported, even those
+    marked as deprecated and of type 'grandfathered'.
+  * all: IETF BCP 47/RFC 5646 language tags: reduced the maximum
+    number of extended language subtags that are present in a
+    valid tag from 3 to 1 in compliance with RFC 5646 section
+    2.2.2.
+  * all: IETF BCP 47/RFC 5646 language tags: all language codes
+    reserved for private/local use (`qaa`–`qtz`) are now
+    supported.
+  * all: IETF BCP 47/RFC 5646 language tags: Digital Cinema
+    Naming Convention language codes that fall into the IETF BCP
+    47 range of "private use" tags (`qaa`–`qtz`) are now
+    replaced by their IETF BCP 47 equivalents during
+    normalization (e.g. `QMS` → `cmn-Hans`).
+  * all: added a new translation to Chinese Simplified
+    (Singapore) by Dian Li.
+  * mkvmerge, mkvpropedit: added a new command line option called
+    `--enable-legacy-font-mime-types`. With this option on the
+    two programs will use the same legacy MIME types for fonts
+    whenever new attachments are added (both programs), when
+    reading existing attachments (only `mkvmerge`) or when
+    replacing existing ones (only `mkvpropedit`).
+  * mkvmerge, mkvpropedit: IETF BCP 47/RFC 5646 language tags:
+    added a command line option `--normalize-language-ietf
+    <mode>` which turns on normalization of IETF BCP 47 language
+    tags to either their canonical (mode `canonical`) or
+    extended language subtags form (mode `extlang`) or turns it
+    off (mode `off`). If the option isn't given, language tags
+    will now be normalized to the canonical form.
+  * MKVToolNix GUI: IETF BCP 47/RFC 5646 language tags: ISO
+    639-3 and 639-5 languages will now be used by default.
+  * MKVToolNix GUI: IETF BCP 47/RFC 5646 language tags: the
+    language editor dialog will now show warnings in several
+    cases: when deprecated tags are used; when the tag's
+    canonical and/or extlang forms differ from the user input.
+  * MKVToolNix GUI: IETF BCP 47/RFC 5646 language tags: the
+    language editor now has a button to replace the current tag
+    with a normalized form (canonical or extlang) if those
+    differ from the current tag.
+  * MKVToolNix GUI: IETF BCP 47/RFC 5646 language tags: added an
+    option in the preferences to always normalize all language
+    tags to their canonical or extlang forms or to turn
+    normalization off. Can also be enabled from the language
+    editor dialog.
+  * MKVToolNix GUI: IETF BCP 47/RFC 5646 language tags: the
+    language dialog now shows a warning if a variant is used
+    with a prefix that isn't in the variant's list of suitable
+    prefixes. It'll also say if the corresponding
+    canonical/extlang forms would have a suitable prefix.
+  * MKVToolNix GUI: IETF BCP 47/RFC 5646 language tags: the
+    language dialog now shows a warning if a script is used with
+    a language for which it should be suppressed.
+  * MKVToolNix GUI: multiplexer: the track property group boxes
+    in the scrollable pane are now collapsible & expandable,
+    saving their state over restarts of the GUI. This is in
+    preparation of adding many more track properties in future
+    releases, allowing the user to hide parts they don't use all
+    that often.
+  * MKVToolNix GUI: multiplexer: if the option "use legacy font
+    MIME types" is enabled in the preferences, the new command
+    line option `--enable-legacy-font-mime-types` will be passed
+    to `mkvmerge` in order to have it remap the MIME types of
+    existing attachments, too.
+  Bug fixes:
+  * all: IETF BCP 47/RFC 5646 language tags: variants aren't
+    validated wrt. to prefixes anymore as BCP 47 doesn't
+    actually pose restrictions on them, saying only that
+    prefixes "are suitable sequences" for use with the variants.
+    What is now verified, though, is that no variant is used
+    multiple times within the same language tag.
+  * build system & MKVToolNix GUI: fixed detecting the presence
+    of & the compilation with the multimedia module of Qt
+    version 6.2.0 and newer.
+  * MKVToolNix GUI: job queue: fixed compiling in the audio
+    player code for the the "play audio" end-of-job action.
+  * MKVToolNix GUI: multiplexer: recognizing added XML chapter,
+    segment info or chapter files required the XML declaration &
+    root node (e.g. `<?xml…?> … <Chapters>` for chapters) be
+    located within the first 1 KB, which wasn't enough for files
+    that contain a lot of comments at the start like the
+    included `example-chapters-2.xml`. The detection range was
+    extended to 10 KB.
+  Build system changes:
+  * The bundled `fmt` library was updated to v8.1.1.
+  * The bundled `nlohmann-json` library was updated to v3.10.5.
+  * The bundled `pugixml` library was updated to v1.12.1.
+
+-------------------------------------------------------------------
 Sun Mar 13 15:08:23 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 66.0.0

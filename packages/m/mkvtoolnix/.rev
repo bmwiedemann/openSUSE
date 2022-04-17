@@ -1237,4 +1237,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     the &quot;output&quot; tab. (forwarded request 961466 from alois)</comment>
     <requestid>961467</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>db067ae27a797c49f754449b23f003b0</srcmd5>
+    <version>67.0.0</version>
+    <time>1650232223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970447</requestid>
+  </revision>
 </revisionlist>
