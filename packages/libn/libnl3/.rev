@@ -328,4 +328,12 @@ Dunno.</comment>
     <comment>- Add 0001-route-link-add-RTNL_LINK_REASM_OVERLAPS-stat.patch [boo#1189451]</comment>
     <requestid>913907</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>97a799c3b19bddfecc0c0101ddf5e5b8</srcmd5>
+    <version>3.6.0</version>
+    <time>1650232186</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.6.0</comment>
+    <requestid>970360</requestid>
+  </revision>
 </revisionlist>

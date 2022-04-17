@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 15 09:42:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.0
+  * route/mdb: add support for MAC multicast entries
+  * mdb: support bridge multicast database notification
+  * Support Hardware offload capability for MACsec
+  * nflog: add CT support
+  * Add IPv6 GRE support
+  * Add IPv6 VTI support
+  * Add support for team devices
+- Drop 0001-route-link-add-RTNL_LINK_REASM_OVERLAPS-stat.patch
+  (merged)
+
+-------------------------------------------------------------------
 Mon Aug 23 22:16:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-route-link-add-RTNL_LINK_REASM_OVERLAPS-stat.patch
