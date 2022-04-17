@@ -26,6 +26,8 @@ URL:            https://www.kde.org/
 Source:         plasma-pk-updates-%{version}.tar.xz
 # Updated translations
 Source1:        plasma5-pk-updates-lang.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Set-and-use-implicitHeight-instead-of-height.patch
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules >= 1.3.0

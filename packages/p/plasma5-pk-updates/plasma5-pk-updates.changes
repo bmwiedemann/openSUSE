@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 14 13:18:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix package list with newer Plasma/Frameworks
+  (a version update might be lacking some translations for string
+   changes):
+  * 0001-Set-and-use-implicitHeight-instead-of-height.patch
+
+-------------------------------------------------------------------
 Fri Mar 04 21:15:10 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 0.3.2+git70:
