@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 15 14:38:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU gama 2.18:
+  * New conversion class K2gkf (lib/krumm) with accompanying
+    program krumm2gama-local to support Krumm input data Format
+
+-------------------------------------------------------------------
 Fri Jan  7 20:46:48 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU gama 2.17:

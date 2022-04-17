@@ -17,7 +17,7 @@
 
 
 Name:           gama
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -56,7 +56,7 @@ chmod -v a-x COPYING ChangeLog* README NEWS TODO AUTHORS
 %files
 %license COPYING
 %doc ChangeLog* README NEWS TODO AUTHORS
-%{_bindir}/%{name}-*
+%{_bindir}/*
 %{_infodir}/%{name}.info%{?ext_info}
 
 %changelog
