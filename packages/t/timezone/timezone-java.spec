@@ -66,7 +66,11 @@ echo "tzdata%{version}" >> VERSION
 
 %build
 # Java 6/7 data
-java -jar %{_javadir}/javazic.jar -V %{version} \
+java \
+%if %{?pkg_vcmp:%pkg_vcmp java >= 9}%{!?pkg_vcmp:0}
+     --add-exports=java.base/sun.security.action=ALL-UNNAMED \
+%endif
+     -jar %{_javadir}/javazic.jar -V %{version} \
      -d javazi \
      africa antarctica asia australasia europe northamerica \
      southamerica backward etcetera  \

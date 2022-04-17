@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 12 13:56:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add --add-exports for java versions that support it.
+  * Fixes build in factory, since this is compulsory for jdk17+
+
+-------------------------------------------------------------------
 Thu Mar 17 06:50:19 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - timezone update 2022a:
