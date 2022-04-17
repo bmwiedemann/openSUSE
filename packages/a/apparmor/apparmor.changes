@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 16 20:33:13 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- update zgrep-profile-mr870.diff to allow executing 'expr' (boo#1198531)
+
+-------------------------------------------------------------------
 Wed Apr 13 13:38:29 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Add samba-new-dcerpcd.patch, samba-4.16 has a new dcerpcd daemon

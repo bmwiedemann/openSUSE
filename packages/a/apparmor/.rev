@@ -2320,4 +2320,12 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   noisy setsockopt calls from systemd; (bnc#1196850). (forwarded request 970229 from npower)</comment>
     <requestid>970238</requestid>
   </revision>
+  <revision rev="169" vrev="6">
+    <srcmd5>75f64e633d8ce4715e6413af6797bc4e</srcmd5>
+    <version>3.0.4</version>
+    <time>1650232195</time>
+    <user>dimstar_suse</user>
+    <comment>- update zgrep-profile-mr870.diff to allow executing 'expr' (boo#1198531) (forwarded request 970465 from cboltz)</comment>
+    <requestid>970466</requestid>
+  </revision>
 </revisionlist>

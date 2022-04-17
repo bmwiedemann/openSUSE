@@ -86,7 +86,7 @@ Patch7:         update-samba-bgqd.diff
 # see (https://gitlab.com/apparmor/apparmor/-/merge_requests/862)
 Patch8:         update-usr-sbin-smbd.diff
 
-# add zgrep and xzgrep profile (submitted upstream 2022-04-10 https://gitlab.com/apparmor/apparmor/-/merge_requests/870)
+# add zgrep and xzgrep profile (submitted upstream 2022-04-10 https://gitlab.com/apparmor/apparmor/-/merge_requests/870 + 2022-04-16 https://gitlab.com/apparmor/apparmor/-/merge_requests/873)
 Patch9:         zgrep-profile-mr870.diff
 # squash noisy setsockopt calls https://gitlab.com/apparmor/apparmor/-/merge_requests/867
 # bsc#1196850
