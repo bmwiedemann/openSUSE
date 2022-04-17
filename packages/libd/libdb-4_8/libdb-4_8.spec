@@ -1,7 +1,7 @@
 #
 # spec file for package libdb-4_8
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -178,6 +178,7 @@ done
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
 %post -n db48-utils
 for i in %{util_list}; do
 	update-alternatives --install "%{_bindir}/db_$i" \

@@ -1,7 +1,7 @@
 #
 # spec file for package libdb_java-4_8
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Patch1:         libdb_java-4_8-fix-java10-comp.patch
 Patch2:         libdb-fix-atomic.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
-BuildRequires:  java-sdk >= 1.5
+BuildRequires:  java-sdk >= 1.8
 BuildRequires:  unzip
 Requires:       libdb-%{major}_%{minor} = %{version}
 Conflicts:      libdb_java-4_5
@@ -87,7 +87,7 @@ cd ../build_nptl
         --enable-shared --disable-static \
         --enable-cxx \
         --with-mutex="POSIX/pthreads/library" \
-        --enable-java JAVACFLAGS="-source 1.6 -target 1.6" \
+        --enable-java JAVACFLAGS="-source 1.8 -target 1.8" \
 %ifarch %{arm}
         %{_target_cpu}-suse-linux-gnueabi
 %else
