@@ -26,15 +26,13 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
-Source:         https://github.com/arvidn/%{_name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM libtorrent-rasterbar-boost_178.patch
-Patch0:         libtorrent-rasterbar-boost_178.patch
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

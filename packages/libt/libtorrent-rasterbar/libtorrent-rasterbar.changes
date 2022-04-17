@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr 16 14:49:34 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.6
+  * fix issue creating a v2 torrent from torrent_info containing
+    an empty file
+  * make recheck files also update which files use partfile
+  * add write_through disk_io_write_mode, which flushes pieces
+    to disk immediately
+  * improve copy file function to preserve sparse regions (when
+    supported)
+  * add function to truncate over-sized files part of a torrent
+  * fix directory creation on windows shared folders
+  * add flag to make add_files() not record file attributes
+  * deprecate (unused) allow_partial_disk_writes settings
+  * fix disk-full error reporting in mmap_disk_io
+  * fixed similar-torrents feature for v2 torrents
+  * fix potential unbounded recursion in add_completed_job, in
+    disk I/O
+  * deprecated (unused) volatile_read_cache setting
+- Drop libtorrent-rasterbar-boost_178.patch (merged upstream)
+- Switch to _service
+
+-------------------------------------------------------------------
 Tue Jan 11 19:42:28 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Revert last change
