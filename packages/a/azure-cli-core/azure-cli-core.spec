@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.34.1
+Version:        2.35.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -47,7 +47,7 @@ Requires:       python3-jmespath
 Requires:       python3-knack < 1.0.0
 Requires:       python3-knack >= 0.9.0
 Requires:       python3-msal < 2.0.0
-Requires:       python3-msal >= 1.15.0
+Requires:       python3-msal >= 1.17.0
 Requires:       python3-msal-extensions < 1.0.0
 Requires:       python3-msal-extensions >= 0.3.1
 Requires:       python3-msrestazure < 0.7.0
@@ -58,6 +58,8 @@ Requires:       python3-paramiko < 3.0.0
 Requires:       python3-paramiko >= 2.0.8
 Requires:       python3-pip
 Requires:       python3-pkginfo >= 1.5.0.1
+Requires:       python3-psutil < 6.0
+Requires:       python3-psutil >= 5.9
 Requires:       python3-pyOpenSSL >= 17.1.0
 Requires:       python3-requests < 3.0.0
 Requires:       python3-requests >= 2.25.1
