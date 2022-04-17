@@ -23,7 +23,7 @@ Version:        2.6.3
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
-URL:            https://github.com/GoogleCloudPlatform/google-auth-library-python
+URL:            https://github.com/googleapis/google-auth-library-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-auth/google-auth-%{version}.tar.gz
 Patch0:         ga_python-executable-name.patch
 BuildRequires:  %{python_module Flask}
@@ -32,8 +32,6 @@ BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module cachetools >= 2.0.0}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module oauth2client-gce}
-BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module pyOpenSSL >= 20.0.0}
 BuildRequires:  %{python_module pyasn1-modules >= 0.2.1}
 BuildRequires:  %{python_module pytest-localserver}
@@ -75,7 +73,8 @@ This library simplifies using Google’s various server-to-server authentication
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# don't test deprecated oauth2client utilities if we don't have it anymore
+%pytest --ignore tests/test__oauth2client.py
 
 %files %{python_files}
 %license LICENSE

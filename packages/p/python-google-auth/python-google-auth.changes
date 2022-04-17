@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 14 21:10:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't test the converter for the deprecated oauth2client library
+
+-------------------------------------------------------------------
 Sat Apr  9 19:20:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Improve %files to be more restrictive.
