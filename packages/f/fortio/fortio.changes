@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 16 09:03:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.26.0:
+  * Fix tcp load with larger than buffer (32k) payload (#549)
+  * no catchup mode (fixed/set maximum qps; skip requests when falling behind) (#544)
+
+-------------------------------------------------------------------
 Tue Apr 05 06:52:14 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.25.0:
