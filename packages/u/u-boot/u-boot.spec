@@ -152,6 +152,9 @@
 %endif
 %if "%target" == "highbank" || "%target" == "jetson-tk1" || "%target" == "merriia80optimus" || "%target" == "nanopineoair" || "%target" == "odroid" || "%target" == "odroid-xu3" || "%target" == "paz00" || "%target" == "socfpgade0nanosoc"
 %define is_armv7 1
+%if "%target" == "socfpgade0nanosoc"
+%define socfpga_spl 1
+%endif
 %endif
 %if "%target" == "snow" || "%target" == "spring"
 %define is_armv7 1

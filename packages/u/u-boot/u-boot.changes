@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 15 16:42:49 UTC 2022 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- socfpga: Fix regression that dropped the install binary from package
+
+-------------------------------------------------------------------
 Thu Apr  7 06:24:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add new build dependencies
