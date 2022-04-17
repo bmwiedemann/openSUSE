@@ -1,7 +1,7 @@
 #
-# spec file for package python-afdko-test
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,43 +32,57 @@
                  ttfdecomponentizer ttxn charplot digiplot fontplot \
                  fontplot2 fontsetplot hintplot waterfallplot
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Antlr4 needs to be built and statically linked from in-tree repository.
+# See https://github.com/adobe-type-tools/afdko/issues/1407
+# Check CMakeLists.txt for correct version
+%define antlr4version 4.9.3
+
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-afdko%{psuffix}
-Version:        3.6.2
+Version:        3.8.2
 Release:        0
 Summary:        Adobe Font Development Kit for OpenType
-License:        Apache-2.0
+License:        Apache-2.0 AND MIT
 URL:            https://github.com/adobe-type-tools/afdko
-Source:         https://files.pythonhosted.org/packages/source/a/afdko/afdko-%{version}.tar.gz
-Patch0:         skip-tests-failing-on-i586.patch
-BuildRequires:  %{python_module devel}
+Source0:        https://files.pythonhosted.org/packages/source/a/afdko/afdko-%{version}.tar.gz
+# License1: MIT
+Source1:        https://www.antlr.org/download/antlr4-cpp-runtime-%{antlr4version}-source.zip
+# PATCH-FIX-OPENSUSE afdko-opensuse-custom-build.patch -- make sure we can build offline, code@bnavigator.de
+Patch0:         afdko-opensuse-custom-build.patch
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  git
+BuildRequires:  libuuid-devel
+BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
+BuildRequires:  utfcpp-devel
 Requires:       python-Brotli >= 1.0.1
-Requires:       python-FontTools >= 4.21.1
+Requires:       python-FontTools >= 4.32.0
 Requires:       python-booleanOperations >= 0.9.0
-Requires:       python-defcon >= 0.7.2
-Requires:       python-fontMath >= 0.6.0
+Requires:       python-defcon >= 0.10.0
+Requires:       python-fontMath >= 0.9.1
 Requires:       python-fontPens >= 0.1.0
 Requires:       python-fs >= 2.2.0
-Requires:       python-lxml >= 4.6.2
+Requires:       python-lxml >= 4.8.0
 Requires:       python-mutatorMath >= 3.0.1
-Requires:       python-psautohint >= 2.3.0
-Requires:       python-tqdm >= 4.58.0
+Requires:       python-psautohint >= 2.4.0
+Requires:       python-tqdm >= 4.64.0
 Requires:       python-ufoProcessor >= 1.9.0
-Requires:       python-ufonormalizer >= 0.5.3
+Requires:       python-ufonormalizer >= 0.6.1
 Requires:       python-zopfli >= 0.1.4
 %if %{python_version_nodots} < 39
 Requires:       python-unicodedata2 >= 13.0.0
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Provides:       adobe-afdko
+Provides:       adobe-afdko = %{version}-%{release}
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module afdko = %{version}}
@@ -81,12 +95,16 @@ BuildRequires:  %{python_module pytest}
 Adobe Font Development Kit for OpenType
 
 %prep
-%setup -q -n afdko-%{version}
-%patch0 -p1
+%autosetup -p1 -n afdko-%{version}
 
 %build
 %if ! %{with test}
-%python_build
+%{python_expand # work around python_build parameter restriction: scikit-build calls cmake
+%{$python_build} \
+  --build-type=RelWithDebInfo \
+  -j %{jobs} \
+  -DANTLR4_ZIP_REPOSITORY=%{SOURCE1}
+}
 %endif
 
 %install
@@ -115,7 +133,17 @@ ln -s afdko-tx build/bin/tx
 export PATH=$PWD/build/bin:$PATH
 mkdir tmp
 export TMPDIR=tmp
-%pytest_arch
+%ifarch %{ix86}
+# Precision issues
+# https://github.com/adobe-type-tools/afdko/issues/1163
+donttest+=" or test_type1mm_inputs"
+%endif
+%ifarch %{power64} %{arm} aarch64
+# command does not return error on these platforms
+# https://github.com/adobe-type-tools/afdko/issues/1425
+donttest+=" or (test_spec and bad.fea)"
+%endif
+%pytest_arch -k "not (dummyprefix $donttest)"
 %endif
 
 %if ! %{with test}

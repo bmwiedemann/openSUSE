@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Apr 12 09:08:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v3.8.2
+  * [tx] Fix Memory Crashes (#1497)
+  * [antlr4] ANTLR v4.9.3 Upgrade (#1491)
+  * [tx] ignore subr recursion limit (#1484)
+  * [tx] Don't parse non-FDArray array of dictionaries in
+    fontinfo.plist (#1478)
+  * [requirements] updated dependencies
+- Drop afdko-pr1478-fixFDarray.patch merged upstream
+- Drop skip-tests-failing-on-i586.patch partially fixed in
+  gh#adobe-type-tools/afdko#1321, except one test:
+  gh#adobe-type-tools/afdko#1163
+- No need to clone the Git repo for antlr4 anymore, use zip source
+  gh#adobe-type-tools/afdko#1407
+
+-------------------------------------------------------------------
+Sun Mar  6 07:45:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v3.8.1
+  * [tx] Add safety initialization of pdwCtx structure in pdwNew
+    (#1474)
+  * [requirements] updated dependencies
+  * [python] Drop Python 3.6, add Python 3.10 support (#1456)
+  * [tx] Initialize variables in doFile (#1466)
+  * [ci] Build universal2 wheel instead of arm64 (thanks
+    @miguelsousa!) (#1462)
+  * [ci] Add macOS arm64 wheel (thanks @miguelsousa!) (#1461)
+  * [c] Fix C-code coverage reporting (thanks @miguelsousa!) (#1460)
+  * [tx] Preserve intentional duplicate start points when PFA -> UFO
+    (#1452)
+  * [tx] Fix unintentional duplicate start points caused by
+    floating-value coordinates when PFA -> UFO (#1448)
+  * [README] Fix broken relative link in README (#1424)
+  * [ttxn] Update ttxn for fontTools 4.27.0 update (#1423 #1418)
+  * [otf2ttf] Add throttling to OTF2TTF to avoid hangs on Windows
+    with large CPU (thanks @be5invis!) (#1421, #1420)
+  * [requirements] updated dependencies
+- Release notes for v3.7.1
+  * [makeotfexe] Port of Feature File Parser to Antlr 4 (#548,
+    #1367)
+  * [spec] OpenType Feature File Specification updated to v1.26 with
+    the following (here):
+    - include directive is "statement-only"
+    - with the exception of mark, keywords cannot be used as lookup
+      names or tags
+    - list of valid characters for tags has been updated
+    - tags cannot start with a digit or hyphen
+  * [build] Switch to CMake-based builds -- see documentation
+    (#1124, #1360, #1384, #1372)
+  * [makeinstancesufo] fixes for fontMath 0.8.1 update (#1391)
+  * [tx] ufowrite for loop init declaration fix (#1373)
+  * [tx] uforead deleting outlines fix (#1370)
+  * [tx] Windows line endings in binary files fix (#1361)
+  * [makeotf] Fix for makeotf heap use after free (#1356)
+  * [tx] uforead, ufowrite, checkoutlinesufo fixes for reading &
+    writing CID-keyed fonts (#1353)
+  * [tx] t1read.c add error for fonts surpassing 65000 SID Limit
+    (#1347)
+  * [tx] cffread.c data type fix (#1344)
+  * [spec] Spec 6.4.iii: 'markClass' instead of 'mark' in example 4
+    (thanks @moyogo!) (#1336)
+  * [checkoutlinesufo] Moved list sort out of loop to not waste time
+    sorting (#1331)
+  * [makeotf] aarch64 precision errors fix (#1329)
+  * [tests] Add cpplint check (#1325)
+- Add patches:
+  * afdko-pr1478-fixFDarray.patch -- gh#adobe-type-tools/afdko#1478
+  * afdko-opensuse-custom-build.patch
+- Build and use static antlr4 from cloned git repository via
+  _service -- gh#adobe-type-tools/afdko#1407
+
+-------------------------------------------------------------------
 Mon May  3 12:58:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Keep (empty) install section for test flavor in order to provide
