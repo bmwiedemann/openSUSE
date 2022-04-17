@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 16 11:09:27 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
+
+- delete non-ntk-fluid subpackage Requires: %{name}%{?_isa} = %{version}-%{release}
+  * non-ntk got dropped in previous update, and its files moved to libntk1, thus we can't depend on it
+
+-------------------------------------------------------------------
+Thu Apr 14 13:11:13 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.3.1001
+  * Tweak themes for more color consistency.
+  * ntk-chtheme: Add new color scheme. Save/restore selection color.
+  * themes: Workaround for bug where a background color of RGB 0,0,0
+    in Black color scheme is sometimes drawn as green.
+
+-------------------------------------------------------------------
 Thu Feb 18 12:26:33 UTC 2021 - Edgar Aichinger <edogawa@aon.at>
 
 - remove non-ntk-snapshot.sh from package sources (bsc #1182396)

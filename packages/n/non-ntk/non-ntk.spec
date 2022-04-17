@@ -1,7 +1,7 @@
 #
 # spec file for package non-ntk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           non-ntk
-Version:        1.3.1000
+Version:        1.3.1001
 Release:        0
 Summary:        A fork of FLTK for the non audio suite
 # some codes are in GPLv2+ while FLTK derived code is LGPLv2+ (SUSE-FLTK)
@@ -25,7 +25,7 @@ Summary:        A fork of FLTK for the non audio suite
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://non.tuxfamily.org/
-Source0:        non-ntk-%{version}.tar.bz2
+Source0:        https://github.com/linuxaudio/ntk/archive/refs/tags/v%{version}/ntk-%{version}.tar.gz
 # no desktop file in tarball
 Source1:        non-ntk-1.3.0-fluid.desktop
 # sent upstream via email
@@ -41,7 +41,9 @@ BuildRequires:  pkgconfig(xft)
 # needed by ./waf
 BuildRequires:  python-base
 BuildRequires:  gcc-c++
+%if 0%{?suse_version}
 BuildRequires:  update-desktop-files
+%endif
 
 %description
 The Non Tool Kit (NTK) is a fork of the Fast Light ToolKit library, adding
@@ -67,7 +69,6 @@ This package contains development files for %{name}.
 %package fluid
 Summary:        Fast Light User Interface Designer
 Group:          Development/Tools/GUI Builders
-Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       %{name}-devel
 
 %description fluid
@@ -98,6 +99,7 @@ rm %{buildroot}%{_libdir}/libntk*.a*
 
 %post -n libntk1 -p /sbin/ldconfig
 %postun -n libntk1 -p /sbin/ldconfig
+
 %postun fluid
 update-desktop-database -q &> /dev/null
 
@@ -107,10 +109,8 @@ update-desktop-database -q &> /dev/null
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/ntk-fluid.desktop
 
-%files
-%license COPYING
-
 %files -n libntk1
+%license COPYING
 %{_libdir}/libntk*.so.*
 
 %files devel
