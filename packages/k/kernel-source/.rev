@@ -5858,4 +5858,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.17.2 &amp; can CVE fixes &amp; other fixes</comment>
     <requestid>968309</requestid>
   </revision>
+  <revision rev="638" vrev="1">
+    <srcmd5>2ec2666874ec9c978df217ead96f60fb</srcmd5>
+    <version>5.17.3</version>
+    <time>1650232180</time>
+    <user>dimstar_suse</user>
+    <comment>5.17.3 &amp; PSTORE_DEFAULT_DISABLE &amp; other fixes</comment>
+    <requestid>970053</requestid>
+  </revision>
 </revisionlist>
