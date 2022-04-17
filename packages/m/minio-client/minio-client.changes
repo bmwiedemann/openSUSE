@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 16 09:07:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220407T214327Z:
+  * Do not rely on contentCh to print removal messages (#4041)
+  * Get speedtest results as part of `support diag` (#4034)
+  * Simplify `mc ilm ls` (#4042)
+  * Compute bucket/object correctly for some endpoints (#4040)
+  * mirror: Do not exit upon errors when --watch is passed (#4032)
+  * rm: Fix sending an object/version to removal with --no-current flag (#4038)
+
+-------------------------------------------------------------------
 Sat Apr 02 11:39:55 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220401T234448Z:
