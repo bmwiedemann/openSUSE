@@ -27,6 +27,9 @@ URL:            https://cloud-sptheme.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/c/cloud_sptheme/cloud_sptheme-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM sphinx-4-compat.patch -- https://foss.heptapod.net/doc-utils/cloud_sptheme/-/issues/45
 Patch0:         sphinx-4-compat.patch
+# PATCH-FIX-UPSTREAM 0002-patch-jinja-markup-deprecation.patch -- https://foss.heptapod.net/doc-utils/cloud_sptheme/-/issues/47 https://github.com/conda-forge/cloud_sptheme-feedstock/pull/12
+Patch1:         https://raw.githubusercontent.com/melund/cloud_sptheme-feedstock/d09095170b329b4f6502479662b9114717a6a230/recipe/0002-patch-jinja-markup-deprecation.patch
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +58,7 @@ HTML documentation and examples for %name.
 %prep
 %setup -q -n cloud_sptheme-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
