@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 16 08:53:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.3.0:
+  - allow extra_api_info to be passed to api request
+  - deps: require google-api-core>=1.31.5, >=2.3.2
+  - deps: require google-auth 1.25.0
+  - correct param type of
+    _ClientFactoryMixin.from_service_account_info method
+  - correct Client and Connection type annotations
+  - add mypy checking + 'py.typed' files
+  - add support for Python 3.10
+  - drop python 2.7 support
+- We really don't need mock BR at all.
+
+-------------------------------------------------------------------
 Thu Sep 30 09:03:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add --import-mode=importlib to make test suite work.
