@@ -1,7 +1,7 @@
 #
 # spec file for package python-rt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Tests require internet connection
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rt
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Python interface to Request Tracker API
 License:        GPL-3.0-only
