@@ -1,0 +1,5 @@
+<package name="fdo-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="fdo-client"/>
+</package>
