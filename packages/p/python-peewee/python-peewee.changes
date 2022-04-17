@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr 16 15:24:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.14.10:
+  - Add shortcut for conditional insert using sub-select
+  - Add convenience left_outer_join() method to query.
+  - Add selected_columns property to Select queries.
+  - Add name property to Alias instances.
+  - Fix regression in tests introduced by change to DataSet in
+    3.14.9.
+  - Allow calling table_exists() with a model-class, refs
+  - Improve is_connection_usable() method of MySQLDatabase class.
+  - Better support for VIEWs with playhouse.dataset.DataSet and
+    sqlite-web.
+  - Support INSERT / ON CONFLICT in playhosue.kv for newer
+    Sqlite.
+  - Add ArrayField.contained_by() method, a corollary to
+    contains() and the contains_any() methods.
+  - Support cyclical foreign-key relationships in
+    reflection/introspection, and also for sqlite-web.
+  - Add magic methods for FTS5 field to optimize, rebuild and
+    integrity check the full-text index.
+  - Add fallbacks in setup.py in the event distutils is not
+    available.
+
+-------------------------------------------------------------------
 Sat Nov 13 20:29:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.8:

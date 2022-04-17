@@ -205,4 +205,12 @@
   * Begin a basic implementation for a psycopg3-compatible pg database</comment>
     <requestid>931290</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eb9158928189c60f160aab20fef5e607</srcmd5>
+    <version>3.14.10</version>
+    <time>1650232241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970474</requestid>
+  </revision>
 </revisionlist>
