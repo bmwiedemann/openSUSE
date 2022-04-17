@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  8 13:47:56 UTC 2022 - Ignaz Forster <iforster@suse.com>
+
+- Use /bin/sh instead of /usr/bin/sh (for backwards compatibility
+  with SLE Micro 5.1) [bsc#1196679]
+
+-------------------------------------------------------------------
 Tue Apr  5 14:57:20 UTC 2022 - Ignaz Forster <iforster@suse.com>
 
 - ignition-mount-initrd-fstab.service:
