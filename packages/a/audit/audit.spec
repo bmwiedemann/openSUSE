@@ -28,7 +28,6 @@ Source1:        baselibs.conf
 Source2:        README-BEFORE-ADDING-PATCHES
 Patch0:         change-default-log_group.patch
 BuildRequires:  autoconf >= 2.12
-BuildRequires:  gcc-c++
 BuildRequires:  kernel-headers >= 2.6.30
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -75,8 +74,7 @@ needed for developing applications that need to use the audit framework
 libraries.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -96,10 +94,10 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--with-python=no \
 	--disable-zos-remote
 
-make %{?_smp_mflags} -C common
-make %{?_smp_mflags} -C lib
-make %{?_smp_mflags} -C auparse
-make %{?_smp_mflags} -C docs
+%make_build -C common
+%make_build -C lib
+%make_build -C auparse
+%make_build -C docs
 
 %install
 %make_install -C common
@@ -120,8 +118,8 @@ install -m 0644 init.d/libaudit.conf %{buildroot}%{_sysconfdir}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check -C lib
-make %{?_smp_mflags} check -C auparse
+%make_build -C lib check
+%make_build -C auparse check
 
 %post -n libaudit1 -p /sbin/ldconfig
 %post -n libauparse0 -p /sbin/ldconfig

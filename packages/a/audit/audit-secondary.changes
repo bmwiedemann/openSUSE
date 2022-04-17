@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 11 20:44:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop buildrequire on C++ compiler.
+- Modernize specfile constructs.
+
+-------------------------------------------------------------------
 Sat Mar 26 11:14:19 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Fix buildrequire for openldap2-devel - audit doesn't require the

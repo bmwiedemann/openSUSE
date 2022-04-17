@@ -46,7 +46,6 @@ Patch13:        audisp-remote-fix-hang-with-disk_low_action-suspend-.patch
 Patch14:        libaudit-fix-unhandled-ECONNREFUSED-from-getpwnam-25.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
-BuildRequires:  gcc-c++
 BuildRequires:  kernel-headers >= 2.6.30
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
@@ -157,7 +156,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	%{?_with_python3} \
 	%{?_without_python}
 
-make %{?_smp_mflags}
+%make_build
 
 %sysusers_generate_pre %{SOURCE1} audit system-group-audit.conf
 
@@ -212,7 +211,7 @@ chmod 0644 %{buildroot}%{_unitdir}/auditd.service
 chmod 0644 %{buildroot}%{_unitdir}/augenrules.service
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n audit
 # Save existing audit files if any (from old locations)
@@ -307,7 +306,6 @@ fi
 
 %if %{with python3}
 %files -n python3-audit
-%defattr(-,root,root,-)
 %attr(755,root,root) %{python3_sitearch}/*
 %endif
 

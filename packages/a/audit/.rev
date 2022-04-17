@@ -872,4 +872,12 @@ Fix bz#1160384</comment>
     <comment></comment>
     <requestid>965461</requestid>
   </revision>
+  <revision rev="102" vrev="4">
+    <srcmd5>16bb575d480823ea03bfdbb53598413a</srcmd5>
+    <version>3.0.6</version>
+    <time>1650232170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969466</requestid>
+  </revision>
 </revisionlist>
