@@ -1133,4 +1133,13 @@
     <comment>KDE Frameworks 5.93.0</comment>
     <requestid>968204</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>cc0a351db3c4278dea8820159f0ab99b</srcmd5>
+    <version>5.93.0</version>
+    <time>1650232185</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply b62d83bef7733e4943e6f66787166b41198d1359.patch 
+  fixes plasmoid layout regression (kde#452512)</comment>
+    <requestid>970325</requestid>
+  </revision>
 </revisionlist>

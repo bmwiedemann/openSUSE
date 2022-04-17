@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 14 21:54:44 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply b62d83bef7733e4943e6f66787166b41198d1359.patch 
+  fixes plasmoid layout regression (kde#452512)
+
+-------------------------------------------------------------------
 Sun Apr  3 10:47:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.93.0
