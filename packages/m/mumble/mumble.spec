@@ -117,9 +117,9 @@ Summary:        Voice Communication Server for Gamers
 Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       lsb-release
 Requires(pre):  %{_sbindir}/useradd
-Recommends:     libQt5Sql5-sqlite
 Recommends:     libQt5Sql5-mysql
 Recommends:     libQt5Sql5-postgresql
+Recommends:     libQt5Sql5-sqlite
 %if 0%{?snapshot:1}
 Conflicts:      mumble-server < %{version}
 Provides:       mumble-server = %{version}
@@ -138,6 +138,7 @@ won't be audible to other players.
 %build
 %cmake .. \
         -Dupdate:BOOL=OFF \
+        -Doverlay-xcompile:BOOL=OFF \
         -Dsymbols:BOOL=ON \
         -Dcrash-report:BOOL=OFF \
         -DMUMBLE_INSTALL_PLUGINDIR=%{_libdir}/mumble/plugins \

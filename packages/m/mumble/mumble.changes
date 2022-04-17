@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 16 13:09:07 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- do not include 32-bit libmumbleoverlay.x86.so in 64bit build
+  (if you want to use that, install mumble-32bit additionally)
+  boo#1198535
+
+-------------------------------------------------------------------
 Tue Jan 25 20:20:28 UTC 2022 - Markus Ebner <info@ebner-markus.de>
 
 - Update to Mumble 1.4.230
