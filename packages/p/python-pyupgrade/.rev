@@ -407,4 +407,12 @@
  - rewrite string formatting with **locals()</comment>
     <requestid>961980</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e63c4f25047eef677b62333fb3edb1a9</srcmd5>
+    <version>2.32.0</version>
+    <time>1650232213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>970417</requestid>
+  </revision>
 </revisionlist>
