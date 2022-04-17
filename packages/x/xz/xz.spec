@@ -1,7 +1,7 @@
 #
 # spec file for package xz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,9 @@ Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
-URL:            http://tukaani.org/xz/
-Source0:        http://tukaani.org/xz/%{name}-%{version}.tar.gz
-Source1:        http://tukaani.org/xz/%{name}-%{version}.tar.gz.sig
+URL:            https://tukaani.org/xz/
+Source0:        https://tukaani.org/xz/%{name}-%{version}.tar.gz
+Source1:        https://tukaani.org/xz/%{name}-%{version}.tar.gz.sig
 Source2:        baselibs.conf
 # from http://tukaani.org/misc/lasse_collin_pubkey.txt#/xz.keyring
 Source3:        xz.keyring
