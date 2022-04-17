@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Apr 16 12:47:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.0.1:
+  - Fixed ~fields.DateTimeField and other similar fields can
+    handle multiple formats.
+  - Fixed ~fields.RadioField validators.
+  - ~fields.FormField.populate_obj always calls :func:setattr
+  - WTForms has a new logo.
+  - Fixed ~fields.RadioField render_kw rendering.
+  - Support for optgroups in ~fields.SelectField and
+    ~fields.SelectMultipleField.
+  - Minor documentation fix.
+  - Custom separators for ~fields.FieldList.
+  - ~fields.DateTimeField, ~fields.DateField and
+    ~fields.TimeField support time formats that removes leading
+    zeros.
+  - Refactoring: split fields/core.py and fields/simple.py
+  - Drop support for Python < 3.6.
+  - ~fields.StringField sets data to None when form data is empty
+    and an initial value was not provided. Although it previously
+    set an empty string, None is consistent with the behavior of
+    other fields.
+  - Specified version of Babel required for setup to avoid
+    errors.
+  - Replaced use of getattr/setattr with regular variable access.
+  - ValueError raised by a validator are handled like regular
+    exceptions. Validators need to raise
+    ~validators.ValidationError or ~validators.StopValidation to
+    make a validation fail.
+  - ~fields.SelectField, ~fields.SelectMultipleField and
+    ~fields.RadioField choices parameter can be a callable.
+  - Choices shortcut for ~fields.core.SelectMultipleField.
+  - Forms can have form-level errors.
+  - Implemented ~wtforms.fields.core.MonthField.
+  - Filters can be inline. :meth:form.BaseForm.process takes
+    a extra_filters parameter.
+  - Fields can be passed the name argument to use a HTML name
+    different than their Python name.
+  - Render attribute names like for_ and class_ are normalized
+    consistently so later values override those specified
+    earlier.
+  - Flags can take non-boolean values.
+  - Widgets are HTML5 by default.
+  - Fixed a bug when the ~wtforms.fields.core.SelectField choices
+    are list of strings.
+  - Error messages standardization.
+  - ~wtforms.fields.core.SelectMultipleField validate_choice
+    bugfix.
+  - Fixed SelectMultipleField validation when using choices list
+    shortcut.
+
+-------------------------------------------------------------------
 Mon Sep  6 17:16:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Put translated catalogs in -lang subpackages for each python

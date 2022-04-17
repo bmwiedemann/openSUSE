@@ -1,7 +1,7 @@
 #
 # spec file for package python-WTForms
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-WTForms
-Version:        2.3.3+git.1621448902.a55be54
+Version:        3.0.1
 Release:        0
 Summary:        A flexible forms validation and rendering library for Python web development
 License:        BSD-3-Clause
 URL:            https://github.com/wtforms/wtforms
-# Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms-%%{version}.tar.gz
-Source:         wtforms-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms-%{version}.tar.gz
+# Source:         wtforms-%%{version}.tar.gz
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module email_validator}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +39,7 @@ Recommends:     python-SQLAlchemy
 Recommends:     python-python-dateutil
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module Babel >= 2.6.0}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -70,7 +71,7 @@ Translations for builtin WTForms messages.
 WTForms is a forms validation and rendering library for Python web development.
 
 %prep
-%autosetup -p1 -n wtforms-%{version}
+%autosetup -p1 -n WTForms-%{version}
 
 %build
 %python_exec setup.py compile_catalog
