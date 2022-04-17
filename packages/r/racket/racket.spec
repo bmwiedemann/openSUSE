@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pixman-1) >= 0.22.0

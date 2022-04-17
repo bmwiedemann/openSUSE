@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 16 15:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+- Fix bug for boo#1198475
+  * Added a new build dependency, `ncurses-devel`, to enable `expeditor`
+  
+-------------------------------------------------------------------
 Sun Mar 6 15:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 - Update to 8.4:
   * Command-line Racket provides a new expression editor by default for
