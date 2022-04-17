@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 18 13:00:36 UTC 2022 - Andrew Hibberson <alerts2@hib.by>
+
+- Add patch to retry starting the display server (boo#1196228)
+  * 0004-Retry-starting-the-display-server.patch
+
+-------------------------------------------------------------------
 Mon Feb 21 11:28:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Handle the case of %_distconfdir not being /usr/etc (boo#1196228,

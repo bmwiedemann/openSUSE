@@ -669,4 +669,13 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
   currently only possible due to a misconfiguration in SLE, bsc#1195679) (forwarded request 956467 from Vogtinator)</comment>
     <requestid>956468</requestid>
   </revision>
+  <revision rev="58" vrev="6">
+    <srcmd5>b2237702936c3b7ff4338715c8db423c</srcmd5>
+    <version>0.19.0</version>
+    <time>1650232189</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to retry starting the display server (boo#1196228)
+  * 0004-Retry-starting-the-display-server.patch</comment>
+    <requestid>970379</requestid>
+  </revision>
 </revisionlist>

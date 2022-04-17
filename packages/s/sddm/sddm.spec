@@ -32,6 +32,7 @@ Source5:        system-user-sddm.conf
 # Patch0-100: PATCH-FIX-UPSTREAM
 Patch0:         0001-Use-PAM-s-username.patch
 Patch1:         0001-Add-fish-etc-profile-and-HOME-.profile-sourcing-1331.patch
+Patch2:         0004-Retry-starting-the-display-server.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/997
 Patch50:        0001-Remove-suffix-for-Wayland-session.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1230
