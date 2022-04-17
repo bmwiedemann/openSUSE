@@ -1286,7 +1286,7 @@ unsorted:
   - blasphemer 
   - bleachbit 
   - bleachbit-lang 
-  - blender: [x86_64] # suggested by dvd:suggested:patterns-kde-kde 
+  - blender: [x86_64] 
   - blender-demo: [x86_64] 
   - blender-lang: [x86_64] 
   - bless 
@@ -1997,6 +1997,7 @@ unsorted:
   - clang 
   - clang-devel 
   - clang-doc 
+  - clang-tools 
   - clang10 
   - clang10-devel 
   - clang10-devel-32bit: [x86_64] 
@@ -2009,8 +2010,12 @@ unsorted:
   - clang12-devel 
   - clang12-devel-32bit: [x86_64] 
   - clang12-doc 
+  - clang13 
   - clang13-devel 
+  - clang13-doc 
+  - clang14 
   - clang14-devel 
+  - clang14-doc 
   - clang7 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
@@ -2030,6 +2035,7 @@ unsorted:
   - claws-mail 
   - claws-mail-devel 
   - claws-mail-lang 
+  - clazy 
   - cld2-devel 
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
@@ -2352,6 +2358,7 @@ unsorted:
   - cpp10 
   - cpp12 
   - cpp7 
+  - cppcheck 
   - cppcheck-gui 
   - cpphs: [x86_64] 
   - cppi 
@@ -4124,6 +4131,7 @@ unsorted:
   - gc-devel 
   - gcab-devel 
   - gcad3d 
+  - gcc: [i586] 
   - gcc-32bit: [x86_64] 
   - gcc-PIE 
   - gcc-ada 
@@ -6832,7 +6840,10 @@ unsorted:
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic: [i586] 
   - health-checker-testing 
+  - heaptrack 
   - heaptrack-devel 
+  - heaptrack-gui 
+  - heaptrack-lang 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -8071,6 +8082,8 @@ unsorted:
   - kdesignerplugin-lang 
   - kdesu-devel 
   - kdesvn 
+  - kdevelop5 
+  - kdevelop5-lang 
   - kdevelop5-pg-qt 
   - kdevelop5-plugin-php 
   - kdevelop5-plugin-php-devel 
@@ -8982,6 +8995,7 @@ unsorted:
   - libIlmThread-3_1-30-32bit: [x86_64] 
   - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
+  - libKChart2 
   - libKDb3-4 
   - libKF5ConfigQml5 
   - libKF5JsEmbed5 
@@ -9015,6 +9029,7 @@ unsorted:
   - libLLVM11-32bit: [x86_64] 
   - libLLVM12 
   - libLLVM12-32bit: [x86_64] 
+  - libLLVM13 
   - libLLVM13-32bit: [x86_64] 
   - libLLVM14-32bit: [x86_64] 
   - libLLVM7 
@@ -10029,6 +10044,7 @@ unsorted:
   - libboost_numpy-py3-1_78_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
+  - libboost_program_options1_78_0 
   - libboost_program_options1_78_0-32bit: [x86_64] 
   - libboost_program_options1_78_0-devel 
   - libboost_python-py3-1_78_0-32bit: [x86_64] 
@@ -10125,6 +10141,10 @@ unsorted:
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
   - libbzrtp0-32bit: [x86_64] 
+  - libc++-devel: [x86_64] # devel package of dvd:libLLVM14 
+  - libc++1: [x86_64] 
+  - libc++abi-devel: [x86_64] # devel package of dvd:libLLVM14 
+  - libc++abi1: [x86_64] 
   - libcaca-devel 
   - libcaca-ruby 
   - libcaca0-32bit: [x86_64] 
@@ -10282,7 +10302,9 @@ unsorted:
   - libck0 
   - libckteec0 
   - libclFFT2: [x86_64] 
+  - libclang-cpp13 
   - libclang-cpp13-32bit: [x86_64] 
+  - libclang-cpp14 
   - libclang-cpp14-32bit: [x86_64] 
   - libclang10 
   - libclang10-32bit: [x86_64] 
@@ -10290,6 +10312,7 @@ unsorted:
   - libclang11-32bit: [x86_64] 
   - libclang12 
   - libclang12-32bit: [x86_64] 
+  - libclang13 
   - libclang7 
   - libclang7-32bit: [x86_64] 
   - libclang9 
@@ -11844,6 +11867,7 @@ unsorted:
   - libkcapi-tools 
   - libkcapi1 
   - libkcddb-devel 
+  - libkchart-lang 
   - libkcompactdisc-devel 
   - libkdcraw-devel 
   - libkdecoration2-devel 
@@ -14020,9 +14044,11 @@ unsorted:
   - libstatgrab-devel-32bit: [x86_64] 
   - libstatgrab10 
   - libstatgrab10-32bit: [x86_64] 
+  - libstdc++-devel 
   - libstdc++-devel-32bit: [x86_64] 
   - libstdc++6-devel-gcc10 
   - libstdc++6-devel-gcc10-32bit: [x86_64] 
+  - libstdc++6-devel-gcc11 
   - libstdc++6-devel-gcc11-32bit: [x86_64] 
   - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit: [x86_64] 
@@ -15061,6 +15087,7 @@ unsorted:
   - libyui-rest-api-devel 
   - libyui-rest-api16 
   - libz-ng2 
+  - libz3-4_8 
   - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzbar-devel 
@@ -15228,9 +15255,9 @@ unsorted:
   - lldb12: [x86_64] 
   - lldb12-devel: [x86_64] 
   - lldb13: [x86_64] 
-  - lldb13-devel: [x86_64] # devel package of dvd:libLLVM13 
+  - lldb13-devel: [x86_64] 
   - lldb14: [x86_64] 
-  - lldb14-devel: [x86_64] # devel package of dvd:clang14 
+  - lldb14-devel: [x86_64] # devel package of dvd:libLLVM14 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb9: [x86_64] 
@@ -15283,9 +15310,9 @@ unsorted:
   - llvm13-devel 
   - llvm13-doc 
   - llvm13-gold 
-  - llvm13-libc++-devel: [x86_64] # devel package of dvd:libLLVM13 
+  - llvm13-libc++-devel: [x86_64] 
   - llvm13-libc++1: [x86_64] 
-  - llvm13-libc++abi-devel: [x86_64] # devel package of dvd:libLLVM13 
+  - llvm13-libc++abi-devel: [x86_64] 
   - llvm13-libc++abi1: [x86_64] 
   - llvm13-libclang13 
   - llvm13-opt-viewer 
@@ -20898,6 +20925,7 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
+  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -20985,6 +21013,7 @@ unsorted:
   - postgresql14-devel 
   - postgresql14-devel-mini 
   - postgresql14-docs 
+  - postgresql14-llvmjit 
   - postgresql14-llvmjit-devel 
   - postgresql14-pg_cron 
   - postgresql14-pgagent 

@@ -283,12 +283,6 @@
       <repopackage name="circuslinux"/>
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
-      <repopackage name="clang-tools"/>
-      <repopackage name="clang13"/>
-      <repopackage name="clang13-doc"/>
-      <repopackage name="clang14"/>
-      <repopackage name="clang14-doc"/>
-      <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
       <repopackage name="clutter-lang"/>
@@ -306,7 +300,6 @@
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
       <repopackage name="cpp11"/>
-      <repopackage name="cppcheck"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-lang"/>
       <repopackage name="cracklib"/>
@@ -522,7 +515,6 @@
       <repopackage name="gcab-lang"/>
       <repopackage name="gcal"/>
       <repopackage name="gcal-lang"/>
-      <repopackage name="gcc"/>
       <repopackage name="gcc11"/>
       <repopackage name="gcc11-info"/>
       <repopackage name="gcc11-locale"/>
@@ -837,9 +829,6 @@
       <repopackage name="hdparm"/>
       <repopackage name="health-checker"/>
       <repopackage name="health-checker-plugins-MicroOS"/>
-      <repopackage name="heaptrack"/>
-      <repopackage name="heaptrack-gui"/>
-      <repopackage name="heaptrack-lang"/>
       <repopackage name="hfsutils"/>
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
@@ -1048,8 +1037,6 @@
       <repopackage name="kdepim-addons-lang"/>
       <repopackage name="kdepim-runtime"/>
       <repopackage name="kdepim-runtime-lang"/>
-      <repopackage name="kdevelop5"/>
-      <repopackage name="kdevelop5-lang"/>
       <repopackage name="kdevplatform"/>
       <repopackage name="kdevplatform-lang"/>
       <repopackage name="kdf"/>
@@ -1391,7 +1378,6 @@
       <repopackage name="libboost_filesystem1_78_0"/>
       <repopackage name="libboost_iostreams1_78_0"/>
       <repopackage name="libboost_locale1_78_0"/>
-      <repopackage name="libboost_program_options1_78_0"/>
       <repopackage name="libboost_python-py3-1_78_0"/>
       <repopackage name="libboost_thread1_78_0"/>
       <repopackage name="libbox2d2"/>
@@ -1451,9 +1437,6 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
-      <repopackage name="libclang-cpp13"/>
-      <repopackage name="libclang-cpp14"/>
-      <repopackage name="libclang13"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -1888,8 +1871,6 @@
       <repopackage name="libkate1"/>
       <repopackage name="libkcddb"/>
       <repopackage name="libkcddb-lang"/>
-      <repopackage name="libkchart-lang"/>
-      <repopackage name="libKChart2"/>
       <repopackage name="libkColorPicker0"/>
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libkdecorations2-5"/>
@@ -2121,7 +2102,6 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia106"/>
-      <repopackage name="libLLVM13"/>
       <repopackage name="libLLVM14"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
@@ -2592,9 +2572,7 @@
       <repopackage name="libsss_nss_idmap0"/>
       <repopackage name="libstaroffice-0_0-0"/>
       <repopackage name="libstartup-notification-1-0"/>
-      <repopackage name="libstdc++-devel"/>
       <repopackage name="libstdc++6"/>
-      <repopackage name="libstdc++6-devel-gcc11"/>
       <repopackage name="libstdc++6-locale"/>
       <repopackage name="libstdc++6-pp"/>
       <repopackage name="libstoken1"/>
@@ -2850,7 +2828,6 @@
       <repopackage name="libyui16"/>
       <repopackage name="libz-ng-compat1"/>
       <repopackage name="libz1"/>
-      <repopackage name="libz3-4_8"/>
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1"/>
       <repopackage name="libzebra1"/>
@@ -3530,11 +3507,9 @@
       <repopackage name="postfix"/>
       <repopackage name="postgresql"/>
       <repopackage name="postgresql-contrib"/>
-      <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
       <repopackage name="postgresql14"/>
       <repopackage name="postgresql14-contrib"/>
-      <repopackage name="postgresql14-llvmjit"/>
       <repopackage name="postgresql14-server"/>
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="power-profiles-daemon"/>
