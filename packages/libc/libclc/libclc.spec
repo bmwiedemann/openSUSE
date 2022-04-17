@@ -1,7 +1,7 @@
 #
 # spec file for package libclc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _libclc_llvm_ver 13.0.0
+%define _libclc_llvm_ver 14.0.0
 %define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
 %define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 

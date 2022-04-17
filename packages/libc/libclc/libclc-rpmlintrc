@@ -3,4 +3,4 @@ from Config import *
 
 # Files required at runtime by applications using OpenCL.
 addFilter("devel-file-in-non-devel-package.*/usr/include/clc/.*")
-addFilter("devel-file-in-non-devel-package.*/usr/lib[^/]*/pkgconfig/libclc.pc")
+addFilter("devel-file-in-non-devel-package.*/usr/share/pkgconfig/libclc.pc")
