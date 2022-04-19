@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 14 01:42:35 UTC 2022 - maurizio.galli@gmail.com
+
+- Update to version 3.0+git32.3029205:
+  * Rebuild cinnamon theme
+  * Cinnamon: Improve popups/menus appearance
+  * Cinnamon: Improve slider appearance
+  * Cinnamon: Change highlight color in grouped windows list
+  * KDE: LAF- Update full screen preview
+  * Gnome-shell: Improve entries appearance
+  * Gnome-shell: Improve modal dialogs appearance
+  * Cinnamon: Theme now uses system font family/size
+  * Update theme name to avoid issues in mate DE
+  * KDE: Kvantum - Update entries appearance
+  * :memo: Update readme
+  * Gnome: Fix sharp window corners
+  * Gnome: Improve sidebar items appearance
+  * Gnome-shell: Improve window close button appearance
+  * KDE: LAF -  Optimize image files
+  * Gnome-shell: Improve sliders appearance
+  * Gnome-shell: Improve notifications appearance
+  * Gnome-shell: Improve buttons appearance
+  * Gnome-shell: Improve some widgets appearance
+  * KDE: Sddm - Improve  user list appearance
+  * Gnome-shell: Add popup separators, related to #171
+  * Gnome-shell: Remove weird border inside popup sub menus
+  * KDE: Plasma - Improve entries visibility
+
+-------------------------------------------------------------------
 Fri Feb 04 18:13:26 UTC 2022 - maurizio.galli@gmail.com
 
 - Update to version 3.0+git9.18bb561:
