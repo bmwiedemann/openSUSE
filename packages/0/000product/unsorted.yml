@@ -1786,6 +1786,7 @@ unsorted:
   - cargo1.57 
   - cargo1.58 
   - cargo1.59 
+  - cargo1.60 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -23057,6 +23058,7 @@ unsorted:
   - python310-flasgger 
   - python310-flask-jwt-extended 
   - python310-flask-oidc 
+  - python310-flask-peewee 
   - python310-flask-restplus 
   - python310-flask-restx 
   - python310-flatbuffers 
@@ -26189,6 +26191,7 @@ unsorted:
   - python38-flasgger 
   - python38-flask-jwt-extended 
   - python38-flask-oidc 
+  - python38-flask-peewee 
   - python38-flask-restplus 
   - python38-flask-restx 
   - python38-flatbuffers 
@@ -29242,6 +29245,7 @@ unsorted:
   - python39-flasgger 
   - python39-flask-jwt-extended 
   - python39-flask-oidc 
+  - python39-flask-peewee 
   - python39-flask-restplus 
   - python39-flask-restx 
   - python39-flatbuffers 
@@ -32214,6 +32218,7 @@ unsorted:
   - rust1.57 
   - rust1.58 
   - rust1.59 
+  - rust1.60 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -43475,6 +43480,7 @@ unsorted:
   - zvbi-lang 
   - zxing-cpp-devel 
   - zynaddsubfx 
+  - zynaddsubfx-bash-completion 
   - zynaddsubfx-common 
   - zynaddsubfx-dssi 
   - zynaddsubfx-lv2 
