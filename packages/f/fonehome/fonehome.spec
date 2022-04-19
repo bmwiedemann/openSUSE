@@ -1,7 +1,7 @@
 #
 # spec file for package fonehome
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,14 +39,13 @@
 %define authkeys_comment    restrict what %{username} user can do
 %define authkeys_options    no-X11-forwarding,no-agent-forwarding,no-pty,permitopen="0.0.0.0:9",command="sleep 99999d"
 Name:           fonehome
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Remote access to machines behind firewalls
 License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/archiecobbs/%{name}/
 Source:         %{name}-%{version}.tar.gz
-Patch0:         harden_fonehome.service.patch
 Requires:       bc
 Requires:       findutils
 Requires:       openssh
@@ -72,7 +71,6 @@ operations server.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # Avoid "Unknown key name 'XXX' in section 'Service', ignoring." warnings from systemd on older releases
 %if 0%{?is_opensuse} && 0%{?sle_version} < 150300

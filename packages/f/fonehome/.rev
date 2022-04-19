@@ -118,4 +118,15 @@ See also https://bugzilla.novell.com/show_bug.cgi?id=803028#c7</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>929068</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4128c785592e182febd55797e641afd0</srcmd5>
+    <version>1.2.2</version>
+    <time>1650355105</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.2.2
+  + Added some systemd unit hardening directives
+  + Ignore errors from kill(1) during shutdown
+  + Remove harden_fonehome.service.patch, now integrated</comment>
+    <requestid>970605</requestid>
+  </revision>
 </revisionlist>

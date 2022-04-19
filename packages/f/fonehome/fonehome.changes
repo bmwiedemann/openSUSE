@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 18 00:27:46 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to version 1.2.2
+  + Added some systemd unit hardening directives
+  + Ignore errors from kill(1) during shutdown
+  + Remove harden_fonehome.service.patch, now integrated
+
+-------------------------------------------------------------------
 Wed Oct 27 16:20:52 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Run spec-cleaner on spec file
