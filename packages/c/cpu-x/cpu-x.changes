@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 18 12:45:13 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Revert, see https://bugzilla.opensuse.org/show_bug.cgi?id=1198266
+
+-------------------------------------------------------------------
 Thu Apr  7 08:21:55 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Use new libproc-2 on Tumbleweed instead of libprocps.
