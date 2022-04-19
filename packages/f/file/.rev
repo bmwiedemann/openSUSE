@@ -1477,4 +1477,12 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
 - spec-cleaner run</comment>
     <requestid>964719</requestid>
   </revision>
+  <revision rev="126" vrev="4">
+    <srcmd5>31d33f3aa90254eac9e3b73cad3b400b</srcmd5>
+    <version>5.41</version>
+    <time>1650355073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969998</requestid>
+  </revision>
 </revisionlist>

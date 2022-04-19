@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 13 20:41:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update file-5.41-cache-regexps.patch to fix cache offset
+  miscalculation (bsc#1197780) 
+
+-------------------------------------------------------------------
 Wed Mar 23 09:02:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add file-5.41-cache-regexps-locale-restore.patch to restore

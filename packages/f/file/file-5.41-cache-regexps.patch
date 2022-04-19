@@ -75,7 +75,7 @@ Index: file-5.41/src/apprentice.c
  				    if (ma[j].cont_level == 0)
  					    break;
  				v->nmagic = j - i;
-+				v->magic_rxcomp = ml->magic_rxcomp;
++				v->magic_rxcomp = &(ml->magic_rxcomp[i]);
  				return 0;
  			}
  		}
