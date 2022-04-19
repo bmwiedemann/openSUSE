@@ -37,6 +37,7 @@ Patch1:         don-t-mark-libpng-as-required-library.patch
 Patch2:         enable-long-family-names-by-default.patch
 Patch3:         enable-subpixel-rendering.patch
 Patch4:         enable-infinality-subpixel-hinting.patch
+Patch5:         freetype-2.12.0-cff_slot_load-segfault.patch
 BuildRequires:  gawk
 BuildRequires:  libbz2-devel
 BuildRequires:  libpng-devel
