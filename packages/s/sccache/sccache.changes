@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  5 05:31:37 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
 Sun Mar 27 01:25:36 UTC 2022 - William Brown <william.brown@suse.com>
 
 - 0001-Ignore-some-env-vars.patch - sccache will ignore rebuilds if
