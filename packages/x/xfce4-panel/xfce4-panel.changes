@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Apr 17 20:33:02 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 4.16.4
+  * Update copyright year and standardize formatting
+  * Update and sort author list by name
+  * panel: Fix regression "intellihide does not hide when leaving
+    slowly" (gxo#xfce/xfce4-panel#388)
+  * panel: Fix regression "'Span Monitor' has no effect"
+    (gxo#xfce/xfce4-panel#405)
+  * panel: Keep a reference on item during drag and drop
+  * Fix `core.UndefinedBinaryOperatorResult` warning from
+    `scan-build` (gxo#xfce/xfce4-panel#142)
+  * panel: Fix broken drag and drop between panels
+    (gxo#xfce/xfce4-panel#561)
+  * panel: Disconnect from screen signals when window is destroyed
+  * systray: Do not connect to proxy signal if async method failed
+  * panel: Mitigate a memory leak when removing items
+    (gxo#xfce/xfce4-panel!46)
+  * windowmenu: Emit "deactivate" signal when hiding the menu
+    (gxo#xfce/xfce4-panel#22, gxo#xfce/xfce4-panel!68)
+  * systray: Fix wrong sanity check
+  * systray: Properly initialize systray item
+  * systray: Trust the status to update the attention icon
+    (gxo#xfce/xfce4-panel#392, gxo#xfce/xfce4-panel!64)
+  * Fixed some window buttons not appearing in the panel
+    (gxo#xfce/xfce4-panel#188, gxo#xfce/xfce4-panel!66)
+  * launcher: Only activate under mouse (gxo#xfce/xfce4-panel#519)
+  * libxfce4panel: Review memory management for context menu
+    (gxo#xfce/xfce4-panel#452, gxo#xfce/xfce4-panel!46)
+  * actions: Block panel autohide
+    (gxo#xfce/xfce4-panel#431, gxo#xfce/xfce4-panel!62)
+  * launcher: Clear action menu when destroyed
+    (gxo#xfce/xfce4-panel#540, gxo#xfce/xfce4-panel!61)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat May  8 09:58:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 4.16.3
