@@ -216,4 +216,26 @@
   7182166ec00ad3645821435d72c5424b4629165f.patch</comment>
     <requestid>936498</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7ae51b4518a1b1361163dedf93c8069b</srcmd5>
+    <version>2.3.0</version>
+    <time>1650355134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Python 3.5 is no longer supported.
+  * Git 2.10.0 or later is required as git-review now needs the
+    --no-show-signature option for git-log.
+  * Git’s log.ShowSignature option is now supported. Previously, setting it
+    would confuse git-review into thinking there were twice as many changes
+    to push.
+  * OpenSSH has deprecated its use of scp/rcp protocol in favor of SFTP,
+    which the embedded Apache mina-sshd in widely-deployed Gerrit versions
+    does not yet support. Now git-review will attempt to detect whether
+    scp’s -O option is available to force use of the legacy scp/rcp protocol,
+    and apply it if so. Future git-review versions may change the fallback
+    behavior once an SFTP subsystem is implemented and available for a new
+    Gerrit release.
+- Remove now unneeded BuildRequires on mock.</comment>
+    <requestid>970662</requestid>
+  </revision>
 </revisionlist>

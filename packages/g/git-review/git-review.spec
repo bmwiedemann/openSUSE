@@ -1,7 +1,7 @@
 #
 # spec file for package git-review
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           git-review
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Tool to submit code to Gerrit
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://git.openstack.org/cgit/openstack-infra/git-review
 Source:         https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -30,7 +29,6 @@ BuildRequires:  fdupes
 # build a python2.x version of it anymore in 2019.
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-fixtures >= 0.3.14
-BuildRequires:  python3-mock
 BuildRequires:  python3-pbr
 BuildRequires:  python3-requests >= 1.1
 BuildRequires:  python3-setuptools
