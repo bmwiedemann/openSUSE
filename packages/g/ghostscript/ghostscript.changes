@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  7 08:14:51 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Do no longer require apparmor-abstractions, it is not mandatory
+  to use Ghostscript (bsc#1134289).
+
+-------------------------------------------------------------------
 Tue Jan 11 13:40:10 CET 2022 - jsmeix@suse.de
 
 - CVE-2021-45949.patch fixes CVE-2021-45949

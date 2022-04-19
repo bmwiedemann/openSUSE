@@ -53,7 +53,6 @@ BuildRequires:  pkgconfig(libopenjp2) >= 2.3.1
 %if 0%{?suse_version} >= 1500
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
-Requires:       apparmor-abstractions
 %endif
 Requires(post): update-alternatives
 Requires(preun):update-alternatives

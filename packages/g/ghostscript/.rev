@@ -463,4 +463,12 @@
     <comment>Ghostscript security fix CVE-2021-45949 (bsc#1194304) including CVE-2021-45944 (bsc#1194303) (forwarded request 945778 from jsmeix)</comment>
     <requestid>945779</requestid>
   </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>c1d62209229805136ef3a5df6794cd19</srcmd5>
+    <version>9.54.0</version>
+    <time>1650355081</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>970583</requestid>
+  </revision>
 </revisionlist>
