@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 16 09:04:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.0:
+  * feat(alpine): warn mixing versions (#2000)
+  * Update ASFF template (#1914)
+  * chore(deps): replace `containerd/containerd` version to fix CVE-2022-23648 (#1994)
+  * chore(deps): bump alpine from 3.15.3 to 3.15.4 (#1993)
+  * test(go): add integration tests for gomod (#1989)
+  * fix(python): fixed panic when scan .egg archive (#1992)
+  * fix(go): set correct go modules type (#1990)
+  * feat(alpine): support apk repositories (#1987)
+  * docs: add CBL-Mariner (#1982)
+  * docs(go): fix version (#1986)
+  * feat(go): support go.mod in Go 1.17+ (#1985)
+  * ci: fix URLs in the PR template (#1972)
+  * ci: add semantic pull requests check (#1968)
+  * docs(issue): added docs for wrong detection issues (#1961)
+
+-------------------------------------------------------------------
+Thu Apr 14 20:12:09 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.25.4:
+  * docs: move CONTRIBUTING.md to docs (#1971)
+  * refactor(table): use file name instead package path (#1966)
+  * fix(sbom): add --db-repository (#1964)
+  * feat(table): add PkgPath in table result (#1960)
+  * fix(pom): merge multiple pom imports in a good manner (#1959)
+
+-------------------------------------------------------------------
 Wed Apr 06 07:35:16 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.25.3:
