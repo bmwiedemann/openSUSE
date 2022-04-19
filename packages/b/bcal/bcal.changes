@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 18 15:16:35 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4
+  * Support "exit" and "quit" at prompt
+  * Fix lint report
+- Update to version 2.3
+  * Show binary conversion output in octets for readability
+  * Handle CTRL+D
+  * Quit program or 'exit' or 'quit'
+  * Fix broken terminal with calc as backend on "undefined input" 
+
+-------------------------------------------------------------------
 Wed Mar 17 03:07:01 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 2.2

@@ -1,7 +1,7 @@
 #
 # spec file for package bcal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Dilawar Singh <dilawar.s.rajput@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@ Summary:        Command-line utility for storage conversions and calculations
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
 URL:            http://www.github.com/jarun/bcal
-Version:        2.2
+Version:        2.4
 Release:        0
 Source0:        https://github.com/jarun/bcal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  readline-devel
@@ -40,7 +40,7 @@ the value when the 43rd bit of a 64-bit address is set, bcal is for you.
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install PREFIX=%{_prefix} DOCDIR=%{buildroot}/%{_prefix}/share/doc/%{name}
