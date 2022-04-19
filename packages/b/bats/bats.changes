@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 18 14:59:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.6.0
+  * Added: New flag --code-quote-style (and $BATS_CODE_QUOTE_STYLE)
+    to customize quotes around code blocks in error output
+  * Added: bats_load_library for loading libraries from the search
+    path $BATS_LIB_PATH
+  * Improved error trace for some broken cases
+  * Fixed leaking of local variables from debug trap
+  * Don't mark FD3 output from teardown_file as <failure> in junit
+    output
+  * Fix unbound variable error with Bash pre 4.4
+
+-------------------------------------------------------------------
 Sat Dec 11 16:16:42 UTC 2021 - Olav Reinert <seroton10@gmail.com>
 
 - boo#1193177: Fix build on Leap and SLE
