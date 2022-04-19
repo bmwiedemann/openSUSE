@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.49
+Version:        0.3.50
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -139,6 +139,7 @@ Requires:       %{name}-session-manager
 Requires:       %{name}-spa-plugins-%{spa_ver_str} = %{version}
 Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
+Requires:       rtkit
 Suggests:       wireplumber
 %{?systemd_ordering}
 
@@ -620,6 +621,7 @@ fi
 %{_mandir}/man1/pw-cat.1%{?ext_man}
 %{_mandir}/man1/pw-cli.1%{?ext_man}
 %{_mandir}/man1/pw-dot.1%{?ext_man}
+%{_mandir}/man1/pw-link.1%{?ext_man}
 %{_mandir}/man1/pw-metadata.1%{?ext_man}
 %{_mandir}/man1/pw-mididump.1%{?ext_man}
 %{_mandir}/man1/pw-mon.1%{?ext_man}
