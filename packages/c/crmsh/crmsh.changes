@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 18 06:48:42 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.0+20220418.cbf7a09e:
+  * Dev: README: update README
+  * Dev: remove unused files
+  * Dev: behave: Change behave test files based on new added "run-functional-tests"
+  * Dev: run-functional-tests: Add file run-functional-tests
+  * Dev: Dockerfile: Update Dockerfile used by crmsh CI for master branch
+
+-------------------------------------------------------------------
 Mon Mar 21 08:22:17 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.0+20220321.8cf6a9d1:
