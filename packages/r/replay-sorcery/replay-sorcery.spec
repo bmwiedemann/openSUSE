@@ -1,7 +1,7 @@
 #
 # spec file for package replay-sorcery
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  ffmpeg-4-libavutil-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libpulse-devel
 BuildRequires:  make
-BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(x11)
@@ -87,6 +86,7 @@ popd
 %files
 %license COPYING
 %doc README.md
+%dir %{_prefix}/etc
 %{_bindir}/%{name}
 %{_prefix}%{_sysconfdir}/%{name}.conf
 %{_prefix}/lib/systemd/user/%{name}.service

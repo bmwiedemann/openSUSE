@@ -17,4 +17,12 @@ I did found that cmake looks for libdrm, so I use pkgconfig(drm) as per previous
     <comment></comment>
     <requestid>908167</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8bc4676a3bd0b07facf089f7361c7643</srcmd5>
+    <version>0.6.0</version>
+    <time>1650355092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970588</requestid>
+  </revision>
 </revisionlist>
