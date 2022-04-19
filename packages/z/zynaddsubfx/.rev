@@ -116,4 +116,12 @@ Remove dependency on lash and add pulse audio support.
     <comment>Update to version 3.0.5</comment>
     <requestid>728431</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>90652c16f0c7d82d3c88d5bbffe29db3</srcmd5>
+    <version>3.0.6</version>
+    <time>1650355084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970357</requestid>
+  </revision>
 </revisionlist>

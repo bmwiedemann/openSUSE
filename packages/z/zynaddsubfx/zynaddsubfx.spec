@@ -1,7 +1,7 @@
 #
 # spec file for package zynaddsubfx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           zynaddsubfx
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 Summary:        A Real-Time Software Synthesizer for Linux
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
-Url:            http://zynaddsubfx.sourceforge.net/
+URL:            https://zynaddsubfx.sourceforge.io/
 Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         zynaddsubfx-buildflags.patch
-# PATCH-FIX-UPSTREAM zynaddsubfx-DPF.patch davejplater@gmail.com -- patch DPF (issue#18) to latest git which fixes random lv2 output port values.
-Patch1:         zynaddsubfx-DPF.patch
 BuildRequires:  cmake
 BuildRequires:  dssi
 BuildRequires:  fltk-devel
@@ -49,9 +47,9 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(liblo)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(mxml)
-BuildRequires:  pkgconfig(ntk)
-BuildRequires:  pkgconfig(ntk_gl)
-BuildRequires:  pkgconfig(ntk_images)
+BuildRequires:  pkgconfig(ntk) >= 1.3.1001
+BuildRequires:  pkgconfig(ntk_gl) >= 1.3.1001
+BuildRequires:  pkgconfig(ntk_images) >= 1.3.1001
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(zlib)
@@ -65,6 +63,14 @@ Linux.	Features include polyphony and multitimbrel and microtonal
 capabilities. It includes randomness of some parameters, which can make
 warm sounds, like analog synthesizers.	This program has system and
 insertion effects, too.
+
+%package bash-completion
+Summary:        Bash completion for ZynAddSubFX
+Requires:       bash
+Requires:       %{name} = %{version}
+
+%description bash-completion
+Bash command line completion support for ZynAddSubFX.
 
 %package common
 Summary:        Common files for ZynAddSubFX synthesizers
@@ -126,8 +132,7 @@ insertion effects, too.
 This package includes the VST zynaddsubfx synthesizer plugins.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake \
@@ -166,10 +171,14 @@ rm -f %{buildroot}%{_datadir}/applications/zynaddsubfx-oss.desktop
 %{_bindir}/*
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/pixmaps/zynaddsubfx.svg
+%{_datadir}/pixmaps/zynaddsubfx.png
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/zynaddsubfx
 
 %files common
 %license COPYING
-%doc AUTHORS.txt ChangeLog HISTORY.txt README.adoc
+%doc AUTHORS.txt NEWS.txt README.adoc
 %{_datadir}/%{name}/
 
 %files dssi

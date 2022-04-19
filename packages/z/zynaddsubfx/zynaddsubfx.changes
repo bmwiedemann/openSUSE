@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 14 12:39:43 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.0.6
+  * Enhances watchpoint system for waveform views
+  * Add anti-alias mode to add synth oscillator interpolation
+  * Add 14 bit NRPN support for automations
+  * Add Tanh, Cubic, and square distortions with additional shaping
+    params
+  * Add filter parameter smoothing
+  * Add filter optional LPF to LFO
+  * Add repeatable envelopes
+  * Add LFO fade in
+  * Add moog ladder filter
+  * Add comb filter
+  * Add BPM sync
+  * Add latched key mode
+  * Re-enable classic MIDI learn
+  * Increase envelope time parameter resolution
+  * Fix excessively loud volume bug in Part XML loader
+  * Fix crash with gcc 10.x.x within file manager
+  * Fix crash in erroneous patch load
+  * Fix padsynth memory leak
+  * Fix weird note-to-note portamento switches
+  * Reduce fftw resolution from 64bit to 32bit
+  * Remove Cxxtest dependency
+  * Fix other bugs
+- Subpackage for bash completions
+- Rebased zynaddsubfx-buildflags.patch
+- Drop upstream fixed zynaddsubfx-DPF.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 10:27:53 UTC 2019 - Fabio Pesari <fpesari@tuxfamily.org>
 
 - Upgrade to release 3.0.5 and patch
