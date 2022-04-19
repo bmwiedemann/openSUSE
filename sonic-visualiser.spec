@@ -1,7 +1,7 @@
 #
 # spec file for package sonic-visualiser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Tom Mbrt <tom.mbrt@googlemail.com>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2011 Evstifeev Roman <someuniquename@gmail.com>
@@ -22,14 +22,14 @@
 
 #%%define urlcode 2786
 Name:           sonic-visualiser
-Version:        4.3
+Version:        4.5
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.sonicvisualiser.org/
 #Source:         https://code.soundsoftware.ac.uk/attachments/download/%%{urlcode}/%%{name}-%%{version}.tar.gz
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/sonic-visualiser/sonic-visualiser/releases/download/sv_v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.xml
 # PATCH-FIX-OPENSUSE sonic-visualiser-system-dataquay.patch aloisio@gmx.com -- force use of system libdataquay
 Patch0:         sonic-visualiser-system-dataquay.patch
@@ -128,6 +128,11 @@ for x in *.pr* config* Makefile* ; do perl -i -p -e 's/c\+\+11/c++14/g' "$x" ; d
 
 # Don't use -Werror on releases
 find . -name configure -o -name "*.pro" -o -name "*.pri" -exec sed -i s'# -Werror##g' {} \;
+
+# fix arch lib dir
+sed -e 's|/usr/lib/|/usr/%{_lib}/|g;s|/usr/local/lib/|/usr/local/%{_lib}/|g' \
+    -i checker/src/knownplugins.cpp svcore/system/System.h \
+       vamp-plugin-sdk/src/vamp-hostsdk/PluginHostAdapter.cpp
 
 %build
 export LC_ALL=en_US.UTF-8
