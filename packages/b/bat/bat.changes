@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 18 14:50:14 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.20.0
+  * New style component header-filesize to show size of the displayed
+    file in the header.
+  * Use underline for line highlighting on ANSI
+  * Fix bash completion on bash 3.x and bash-completion 1.x.
+- Update to version 0.19.0
+  * Reduce startup time in loop-through mode by 90%.
+  * Load themes lazily to make bat start 25% faster when disregarding
+    syntax load time.
+  * Python syntax highlighting no longer suffers from abysmal performance
+    in specific scenarios.
+  * Fix for poor performance when ANSI escape sequences are piped to bat
+  * Fix for incorrect handling of ANSI escape sequences when
+    using --wrap=never
+  * Load custom assets as fast as integrated assets
+  * Support for x:-delta (minus) syntax in line ranges
+  * Support for --ignored-suffix argument.
+  * $BAT_CONFIG_DIR is now a recognized environment variable. It has
+    precedence over $XDG_CONFIG_HOME
+  * Support for x:+delta syntax in line ranges (e.g. 20:+10)
+  * Add new --acknowledgements option that gives credit to theme and
+    syntax definition authors
+  * Fix: First line not shown in diff context.
+  * Fix: Do not ignore syntaxes that handle file names with
+    a *.conf extension.
+
+-------------------------------------------------------------------
 Thu Sep 30 03:53:34 UTC 2021 - william.brown@suse.com
 
 - Replace rust-packaging with cargo-packaging
