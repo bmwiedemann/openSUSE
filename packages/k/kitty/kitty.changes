@@ -1,4 +1,427 @@
 -------------------------------------------------------------------
+Mon Apr 18 11:54:12 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC to build with Leap
+- Replaced kitty-no-docs.patch with optional-disable-docs.patch
+  * Some Sphinx extensions needed by kitty are not available
+    in Factory
+- Added fix-librsync-leap.patch
+  * Workaround for "error: unknown type name ‘FILE’" in old librsync
+    header still used by Leap 15.3 and 15.4.
+
+-------------------------------------------------------------------
+Tue Apr 12 07:28:36 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.0:
+  * Truly convenient SSH: automatic shell integration when using SSH.
+    Easily clone local shell and editor configuration on remote machines,
+    and automatic re-use of existing connections to avoid connection setup latency.
+  * When pasting URLs at shell prompts automatically quote them. Also allow
+    filtering pasted text and confirm pastes. See paste_actions for details. (#4873)
+  * diff kitten: Fix incorrect rendering in rare circumstances when scrolling
+    after changing the context size (#4831)
+  * icat kitten: Fix a regression that broke kitty +kitten icat --print-window-size (#4818)
+  * Wayland: Fix hide_window_decorations causing docked windows to be resized on blur (#4797)
+  * Bash integration: Prevent shell integration code from running twice if user
+    enables both automatic and manual integration
+  * Bash integration: Handle existing PROMPT_COMMAND ending with a literal newline
+  * Fix continued lines not having their continued status reset on line feed (#4837)
+  * Wayland: Fix a regression that broke IME when changing windows/tabs (#4853)
+  * Avoid flicker when starting kittens such as the hints kitten (#4674)
+  * A new action scroll_prompt_to_top to move the current prompt to the top (#4891)
+  * select_tab: Use stable numbers when selecting the tab (#4792)
+  * Only check for updates in the official binary builds. Distro packages or source
+    builds will no longer check for updates, regardless of the value of update_check_interval.
+  * Fix inactive_text_alpha still being applied to the cursor hidden window after focus (#4928)
+  * Fix resizing window that is extra tall/wide because of left-over cells not working reliably (#4913)
+  * A new action close_other_tabs_in_os_window to close other tabs in the active OS window (#4944)
+
+-------------------------------------------------------------------
+Mon Mar  7 09:40:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.4:
+  * Shell integration: Fix the default Bash $HISTFILE changing
+    to ~/.sh_history instead of ~/.bash_history (#4765)
+  * Linux binaries: Fix binaries not working on systems with older
+    Wayland client libraries (#4760)
+  * Fix a regression in the previous release that broke kittens
+    launched with STDIN not connected to a terminal (#4763)
+  * Wayland: Fix surface configure events not being acknowledged
+    before commit the resized buffer (#4768)
+
+-------------------------------------------------------------------
+Mon Feb 28 10:15:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.3:
+  * Bash integration: No longer modify ~/.bashrc to load shell
+    integration. It is recommended to remove the lines used to load
+    the shell integration from ~/.bashrc as they are no-ops.
+  * Splits layout: A new value for launch --location to auto-select
+    the split axis when splitting existing windows. Wide windows
+    are split side-by-side and tall windows are split one-above-the-other
+  * hints kitten: Fix a regression that broke recognition of
+    path:linenumber:colnumber (#4675)
+  * Fix a regression in the previous release that broke
+    active_tab_foreground (#4620)
+  * Fix show_last_command_output not working when the output is
+    stored partially in the scrollback pager history buffer (#4435)
+  * When dropping URLs/files onto kitty at a shell prompt insert
+    them appropriately quoted and space separated (#4734)
+  * Improve CWD detection when there are multiple foreground processes
+    in the TTY process group
+  * A new option narrow_symbols to turn off opportunistic wide rendering
+    of private use codepoints
+  * ssh kitten: Fix location of generated terminfo files on NetBSD (#4622)
+  * A new action to clear the screen up to the line containing the
+    cursor, see clear_terminal
+  * A new action copy_ansi_to_clipboard to copy the current selection
+    with ANSI formatting codes (#4665)
+  * Linux: Do not rescale fallback fonts to match the main font cell
+    height, instead just set the font size and let FreeType take care
+    of it. This matches rendering on macOS (#4707)
+  * Fix a regression in the previous release that broke strikethrough (#4632)
+  * A new action scroll_prompt_to_bottom to move the current prompt to
+    the bottom, filling in the window from the scrollback (#4634)
+  * Add two special arguments @first-line-on-screen and @last-line-on-screen
+    for the launch command to be used for pager positioning. (#4462)
+  * Linux: Fix rendering of emoji when using scalable fonts such as Segoe UI Emoji
+  * Shell integration: bash: Dont fail if an existing PROMPT_COMMAND
+    ends with a semi-colon (#4645)
+  * Shell integration: bash: Fix rendering of multiline prompts with
+    more than two lines (#4681)
+  * Shell integration: fish: Check fish version 3.3.0+ and exit on
+    outdated versions (#4745)
+  * Shell integration: fish: Fix pipestatus being overwritten (#4756)
+  * Linux: Fix fontconfig alias not being used if the aliased font is
+    dual spaced instead of monospaced (#4649)
+  * Fix touch_scroll_multiplier also taking effect in terminal programs
+    such as vim that handle mouse events themselves (#4680)
+  * Fix symbol/PUA glyphs loaded via symbol_map instead of as fallbacks
+    not using following spaces to render larger versions (#4670)
+  * Fix a fast click, move mouse, click sequence causing the first click
+    event to be discarded (#4603)
+  * Wayland: Fix wheel mice with line based scrolling being incorrectly
+    handled as high precision devices (#4694)
+  * Wayland: Fix touchpads and high resolution wheels not scrolling at the
+    same speed on monitors with different scales (#4703)
+  * Add an option wheel_scroll_min_lines to set the minimum number of lines
+    for mouse wheel scrolling when using a mouse with a wheel that generates
+    very small offsets when slow scrolling (#4710)
+  * Fix copying of selection after selection has been scrolled off history
+    bufferraising an error (#4713)
+
+-------------------------------------------------------------------
+Thu Feb  3 08:15:30 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.2:
+  * Allow including config files matching glob patterns in
+    kitty.conf (#4533)
+  * Shell integration: Fix bash integration not working when
+    PROMPT_COMMAND is used to change the prompt variables (#4476)
+  * Shell integration: Fix cursor shape not being restored to
+    default when running commands in the shell
+  * Improve the UI of the ask kitten (#4545)
+  * Allow customizing the placement and formatting of the
+    tab_activity_symbol and bell_on_tab symbols by adding
+    them to the tab_title_template (#4581, #4507)
+  * hints kitten: Fix common single letter extension files
+    not being detected (#4491)
+  * Support dotted and dashed underline styles (#4529)
+  * For the vertical and horizontal layouts have the windows
+    arranged on a ring rather than a plane. This means the
+    first and last window are considered neighbors (#4494)
+  * A new action to clear the current selection (#4600)
+  * Shell integration: fish: Fix cursor shape not working
+    with fish’s vi mode (#4508)
+  * Shell integration: fish: Dont override fish’s native
+    title setting functionality. See discussion.
+  * Draw the dots for braille characters more evenly spaced
+    at all font sizes (#4499)
+  * icat kitten: Add options to mirror images and remove
+    their transparency before displaying them (#4513)
+  * Fix getting last command output not working correctly
+    when the screen is scrolled (#4522)
+  * Show number of windows per tab in the select_tab action (#4523)
+  * Fix clicking in a window to focus it and typingimmediately
+    sometimes having unexpected effects if at a shell prompt (#4128)
+  * themes kitten: Allow writing to a different file than kitty.conf.
+
+-------------------------------------------------------------------
+Fri Jan  7 13:37:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.1:
+  * Shell integration: Work around conflicts with some zsh plugins (#4428)
+  * Have the zero width space and various other characters from the Other,
+    formatting Unicode category be treated as combining characters (#4439)
+  * Fix using --shell-integration with setup.py broken (#4434)
+  * Fix showing debug information not working if kitty’s STDIN is
+    not a tty (#4424)
+  * Linux: Fix a regression that broke rendering of emoji with
+    variation selectors (#4444)
+
+-------------------------------------------------------------------
+Fri Jan  7 13:30:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.0:
+  * Integrate kitty closely with common shells such as zsh, fish
+    and bash. This allows lots of niceties such as jumping to
+    previous prompts, opening the output of the last command in
+    a new window, etc. See Shell integration for details.
+    Packagers please read Notes for Linux/macOS packagers.
+  * A new shortcut ctrl+shift+f7 to visually focus a window using
+    the keyboard. Pressing it causes numbers to appear over each
+    visible window and you can press the number to focus the
+    corresponding window (#4110)
+  * A new facility window_logo_path to draw an arbitrary PNG image
+    as logo in the corner of a kitty window (#4167)
+  * Allow rendering the cursor with a reverse video effect. See
+    cursor for details (#126)
+  * Allow rendering the mouse selection with a reverse video effect.
+    See selection_foreground (#646)
+  * A new option tab_bar_align to draw the tab bar centered or
+    right aligned (#3946)
+  * Allow the user to supply a custom Python function to draw tab bar.
+    See tab_bar_style
+  * A new remote control command to change the tab color
+    <kitty @ set-tab-color> (#1287)
+  * A new remote control command to visually select a window
+    <kitty @ select-window> (#4165)
+  * Add support for reporting mouse events with pixel co-ordinates
+    using the SGR_PIXEL_PROTOCOL introduced in xterm 359
+  * When programs ask to read from the clipboard prompt, ask the user
+    to allow the request by default instead of denying it by
+    default. See clipboard_control for details (#4022)
+  * A new mappable action swap_with_window to swap the current
+    window with another window in the tab, visually
+  * A new remote control command <kitty @ set-enabled-layouts> to
+    change the enabled layouts in a tab (#4129)
+  * A new option bell_path to specify the path to a sound file to
+    use as the bell sound
+  * A new option exe_search_path to modify the locations kitty
+    searches for executables to run (#4324)
+  * broadcast kitten: Show a “fake” cursor in all windows being
+    broadcast too (#4225)
+  * Allow defining aliases for more general actions, not just
+    kittens (#4260)
+  * Fix a regression that caused kitty --title to not work when
+    opening new OS windows using kitty --single-instance (#3893)
+  * icat kitten: Fix display of JPEG images that are rotated via
+    EXIF data and larger than available screen size (#3949)
+  * Launch command: Allow specifying the OS window title
+  * broadcast kitten: Allow broadcasting ctrl+c (#3956)
+  * Fix space ligatures not working with Iosevka for some characters
+    in the Enclosed Alphanumeric Supplement (#3954)
+  * hints kitten: Fix a regression that caused using the default
+    open program to trigger open actions instead of running the
+    program (#3968)
+  * Allow deleting environment variables in env by specifying just
+    the variable name, without a value
+  * Fix active_tab_foreground not being honored when tab_bar_style
+    is slant (#4053)
+  * When a tab_bar_background is specified it should extend to the
+    edges of the OS window (#4054)
+  * Linux: Fix IME with fcitx5 not working after fcitx5 is
+    restarted (#4059)
+  * Various improvements to IME integration (#4219)
+  * Remote file transfer: Fix transfer not working if custom ssh
+    port or identity is specified on the command line (#4067)
+  * Unicode input kitten: Implement scrolling when more results
+    are found than the available display space (#4068)
+  * Allow middle clicking on a tab to close it (#4151)
+  * The command line option --watcher has been deprecated in favor
+    of the watcher option in kitty.conf. It has the advantage of
+    applying to all windows, not just the initially created ones.
+    Note that --watcher now also applies to all windows, not just
+    initially created ones.
+  * Backward incompatibility: No longer turn on the kitty extended
+    keyboard protocol’s disambiguate mode when the client sends the
+    XTMODKEYS escape code. Applications must use the dedicated
+    escape code to turn on the protocol. (#4075)
+  * Fix soft hyphens not being preserved when round tripping
+    text through the terminal
+  * Fix the resize OS Windows <kitty @ resize-os-window> setting
+    a slightly incorrect size on high DPI screens (#4114)
+  * kitty @ launch - when creating tabs with the --match option
+    create the tab in the OS Window containing the result of the
+    match rather than the active OS Window (#4126)
+  * Linux X11: Add support for 10bit colors (#4150)
+  * Fix various issues with changing tab_bar_background by remote
+    control (#4152)
+  * A new option tab_bar_margin_color to control the color of the
+    tab bar margins
+  * A new option visual_bell_color to customize the color of the
+    visual bell (#4181)
+  * Add support for OSC 777 based desktop notifications
+  * Wayland: Fix pasting from applications that use a MIME type
+    of “text/plain” rather than “text/plain;charset=utf-8”
+    not working (#4183)
+  * A new mappable action to close windows with a confirmation (#4195)
+  * When remembering OS window sizes for full screen windows
+    use the size before the window became fullscreen (#4221)
+  * A new mappable action nth_os_window to to focus the specified
+    nth OS window. (#4316)
+
+-------------------------------------------------------------------
+Wed Dec  8 13:46:09 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Fix the condition expressions that are used to build the
+  doc. Currently we want the doc on TW only and disabled on Leap since
+  sphinx has not been update yet (including in Leap 15.4).
+
+- Fix build on TW
+  * Dependency on python3-sphinx-inline-tabs was missing. It was
+    needed to build the doc
+
+- Fix build on Leap
+  * python3-importlib-resources is named python3-importlib_resources
+    on Leap :-/
+
+- Rebased kitty-no-docs.patch
+
+-------------------------------------------------------------------
+Tue Aug 17 07:12:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.1:
+  * A new option clipboard_max_size to control the maximum size of
+    data that kitty will transmit to the system clipboard on behalf
+    of programs running inside it (#3937)
+  * When matching windows/tabs in kittens or using remote control,
+    allow matching by recency. recent:0 matches the active window/tab,
+    recent:1 matches the previous window/tab and so on
+  * themes kitten: Fix only the first custom theme file being
+    loaded correctly (#3938)
+
+-------------------------------------------------------------------
+Mon Aug 16 13:28:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.0:
+  * A new themes kitten to easily change kitty themes. Choose
+    from almost two hundred themes in the kitty themes repository
+  * A new style for the tab bar that makes tabs looks like the tabs
+    in a physical tabbed file, see tab_bar_style
+  * Make the visual bell flash more gentle, especially on dark
+    themes (#2937)
+  * Fix kitty --title not overriding the OS Window title when
+    multiple tabs are present. Also this option is no longer used
+    as the default title for windows, allowing individual tabs/windows
+    to have their own titles, even when the OS Window has a fixed
+    overall title (#3893)
+  * Linux: Fix some very long ligatures being rendered incorrectly
+    at some font sizes (#3896)
+  * Fix shift+middle click to paste sending a mouse press event
+    but no release event which breaks some applications that grab
+    the mouse but cant handle mouse events (#3902)
+  * terminfo: Fix “cnorm” the property for setting the cursor to
+    normal using a solid block rather than a blinking block
+    cursor (#3906)
+  * Add clear_all_mouse_actions to clear all mouse actions defined
+    to that point (#3907)
+  * Fix the remote file kitten not working when using – with ssh.
+    The ssh kitten was recently changed to do this (#3929)
+  * When dragging word or line selections, ensure the initially
+    selected item is never deselected. This matches behavior in
+    most other programs (#3930)
+  * hints kitten: Make copy/paste with the kitty +kitten hints
+    --program option work when using the self kitty +kitten hints
+    --linenum-action (#3931)
+
+-------------------------------------------------------------------
+Mon Aug 16 13:28:29 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.2:
+  * Wayland: A better fix for compositors like sway that can toggle
+    client side decorations on and off (#3888)
+
+-------------------------------------------------------------------
+Mon Aug 16 13:26:59 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.1:
+  * Fix a regression in the previous release that broke kitty
+    --help (#3869)
+  * Graphics protocol: Fix composing onto currently displayed
+    frame not updating the frame on the GPU (#3874)
+  * Fix switching to previously active tab after detaching a
+    tab not working (#3871)
+  * detach_window: Allow specifying the previously active tab
+    or the tab to the left/right of the active tab (#3877)
+  * broadcast kitten: Fix a regression in 0.20.0 that broke
+    sending of some keys, such as backspace
+  * Linux binary: Remove any RPATH build artifacts from
+    bundled libraries
+  * Wayland: If the compositor turns off server side decorations
+    after turning them on do not draw client side decorations (#3888)
+
+-------------------------------------------------------------------
+Mon Jul 26 15:33:56 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.0:
+  * Add a new toggle_layout action to easily zoom/unzoom a window
+  * When right clicking to extend a selection, move the nearest
+    selection boundary rather than the end of the selection. To restore
+    previous behavior use mouse_map right press ungrabbed
+    mouse_selection move-end.
+  * When opening hyperlinks, allow defining open actions for directories (#3836)
+  * When using the OSC 52 escape code to copy to clipboard allow large
+    copies (up to 8MB) without needing a kitty specific chunking protocol.
+    Note that if you used the chunking protocol in the past, it will no
+    longer work and you should switch to using the unmodified protocol
+    which has the advantage of working with all terminal emulators.
+  * Fix a bug in the implementation of the synchronized updates escape code
+    that could cause incorrect parsing if either the pending buffer
+    capacity or the pending timeout were exceeded (#3779)
+  * A new remote control command to resize the OS Window <kitty @ resize-os-window>
+  * Graphics protocol: Add support for composing rectangles from one
+    animation frame onto another (#3809)
+  * diff kitten: Remove limit on max line length of 4096 characters (#3806)
+  * Fix turning off cursor blink via escape codes not working (#3808)
+  * Allow using neighboring window operations in the stack layout. The previous
+    window is considered the left and top neighbor and the next window is
+    considered the bottom and right neighbor (#3778)
+  * Add a new variable {num_window_groups} for the tab_title_template (#3837)
+  * Wayland: Fix initial_window_width/height specified in cells not working on
+    High DPI screens (#3834)
+  * A new theme for the kitty website with support for dark mode.
+  * Render ┄ ┅ ┆ ┇ ┈ ┉ ┊ ┋ with spaces at the edges. Matches rendering in
+    most other programs and allows long chains of them to look better (#3844)
+  * hints kitten: Detect paths and hashes that appear over multiple lines. Note
+    that this means that all line breaks in the text are no longer n soft breaks
+    are instead r. If you use a custom regular expression that is meant to match
+    over line breaks, you will need to match over both. (#3845)
+  * Allow leading or trailing spaces in tab_activity_symbol
+  * Fix mouse actions not working when caps lock or num lock are engaged (#3859)
+  * clipboard kitten: fix copies to clipboard not working without the kitty +kitten
+    clipboard --wait-for-completion option
+
+-------------------------------------------------------------------
+Mon Jun 28 06:56:04 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.2:
+  * A new adjust_baseline option to adjust the vertical alignment
+    of text inside a line (#3734)
+  * A new url_excluded_characters option to exclude additional
+    characters when detecting URLs under the mouse (#3738)
+  * Fix a regression in 0.21.0 that broke rendering of private use
+    Unicode symbols followed by spaces, when they also exist not
+    followed by spaces (#3729)
+  * ssh kitten: Support systems where the login shell is a
+    non-POSIX shell (#3405)
+  * ssh kitten: Add completion (#3760)
+  * ssh kitten: Fix "Connection closed" message being printed by
+    ssh when running remote commands
+  * Add support for the XTVERSION escape code
+  * When displaying scrollback ensure that the window does not quit
+    if the amount of scrollback is less than a screen and the user
+    has the --quit-if-one-screen option enabled for less (#3740)
+  * Linux: Fix Emoji/bitmapped fonts not use able in symbol_map
+  * query terminal kitten: Allow querying font face and size
+    information (#3756)
+  * hyperlinked grep kitten: Fix context options not generating
+    contextual output (#3759)
+  * Allow using superscripts in tab titles (#3763)
+  * Unicode input kitten: Fix searching when a word has more than
+    1024 matches (#3773)
+
+-------------------------------------------------------------------
 Mon Jun 28 06:56:04 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.2:
@@ -88,6 +511,7 @@ Mon Jun 14 07:28:29 UTC 2021 - Michael Vetter <mvetter@suse.com>
     active OS Window (#3708)
   * ssh kitten: Fix non-standard properties in terminfo such as the
     ones used for true color not being copied (#312)
+- Add BR python-sphinxcontrib-copybutton
 
 -------------------------------------------------------------------
 Thu May  6 07:44:39 UTC 2021 - Michael Vetter <mvetter@suse.com>

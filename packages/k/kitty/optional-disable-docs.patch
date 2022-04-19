@@ -1,0 +1,53 @@
+diff -Nur kitty-0.25.0/setup.py new/setup.py
+--- kitty-0.25.0/setup.py	2022-04-11 16:01:45.000000000 +0200
++++ new/setup.py	2022-04-18 14:03:18.715999089 +0200
+@@ -65,6 +65,7 @@
+     verbose: int = 0
+     sanitize: bool = False
+     prefix: str = './linux-package'
++    no_docs: bool = False
+     incremental: bool = True
+     profile: bool = False
+     libdir_name: str = 'lib'
+@@ -949,12 +950,13 @@
+         c(base_path, ddir='', rx=exclude, force=True, optimize=optimize, quiet=1, workers=num_workers)
+ 
+ 
+-def create_linux_bundle_gunk(ddir: str, libdir_name: str) -> None:
+-    if not os.path.exists('docs/_build/html'):
+-        make = 'gmake' if is_freebsd else 'make'
+-        run_tool([make, 'docs'])
+-    copy_man_pages(ddir)
+-    copy_html_docs(ddir)
++def create_linux_bundle_gunk(ddir: str, libdir_name: str, no_docs=False) -> None:
++    if not no_docs:
++        if not os.path.exists('docs/_build/html'):
++            make = 'gmake' if is_freebsd else 'make'
++            run_tool([make, 'docs'])
++        copy_man_pages(ddir)
++        copy_html_docs(ddir)
+     for (icdir, ext) in {'256x256': 'png', 'scalable': 'svg'}.items():
+         icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', icdir, 'apps')
+         safe_makedirs(icdir)
+@@ -1313,7 +1315,7 @@
+             path = os.path.join(root, f_)
+             os.chmod(path, 0o755 if f_.endswith('.so') or os.path.basename(f_) == 'askpass.py' else 0o644)
+     if not is_macos:
+-        create_linux_bundle_gunk(ddir, args.libdir_name)
++        create_linux_bundle_gunk(ddir, args.libdir_name, args.no_docs)
+ 
+     if bundle_type.startswith('macos-'):
+         create_macos_bundle_gunk(ddir)
+@@ -1397,6 +1399,12 @@
+         help='Where to create the linux package'
+     )
+     p.add_argument(
++        '--no-docs',
++        default=Options.no_docs,
++        action='store_true',
++        help='Disable building documentation when creating the linux package'
++    )
++    p.add_argument(
+         '--full',
+         dest='incremental',
+         default=Options.incremental,

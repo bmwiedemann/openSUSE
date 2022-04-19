@@ -1,7 +1,7 @@
 #
 # spec file for package kitty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,20 @@
 #
 
 
+# sphinx_copybutton not in Factory
+%bcond_with docs
 Name:           kitty
-Version:        0.21.2
+Version:        0.25.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
 Group:          System/X11/Terminals
 URL:            https://github.com/kovidgoyal/kitty
 Source:         https://github.com/kovidgoyal/kitty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         kitty-no-docs.patch
+# PATCH-FIX-OPENSUSE optional-disable-docs.patch -- Optionally disable building documentation files
+Patch0:         optional-disable-docs.patch
+# PATCH-FIX-OPENSUSE fix-librsync-leap.patch -- Fix for Leap, as librsync header is missing the stdio.h header for FILE*
+Patch1:         fix-librsync-leap.patch
 BuildRequires:  ImageMagick-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
@@ -38,21 +43,33 @@ BuildRequires:  libXrandr-devel
 BuildRequires:  libcanberra-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng16-compat-devel
+BuildRequires:  librsync-devel
 BuildRequires:  libwayland-egl-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
-BuildRequires:  python3-importlib-resources
 # for 'tic'
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel >= 3.5
 BuildRequires:  terminfo
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
+# Python requirements for Factory and Leap
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-devel >= 3.7
+BuildRequires:  python3-sphinxext-opengraph
+%else
+# Leap still provides python3.6 kitty requires at least 3.7
+BuildRequires:  python39-devel
+%endif
+# Optional documentation requirements
+%if %{with docs}
 BuildRequires:  python3-Sphinx >= 1.7
+BuildRequires:  python3-importlib-resources
+BuildRequires:  python3-readthedocs-sphinx-ext
+BuildRequires:  python3-sphinx-inline-tabs
+BuildRequires:  python3-sphinxcontrib-copybutton
 %endif
 
 %description
@@ -62,33 +79,44 @@ true-color, OpenType ligatures, mouse protocol, focus tracking,
 bracketed paste and so on, and which can be controlled by scripts.
 
 %prep
-%setup -q
-%if 0%{?sle_version} <= 150100 && ! (0%{?suse_version} >= 1550)
-%patch0 -p1
-%endif
+%autosetup -p1
 
-find . -type f -exec sed -i 's@#!%{_bindir}/env python3$@#!%{_bindir}/python3@' {} +
-find . -type f -exec sed -i 's@#!%{_bindir}/env python$@#!%{_bindir}/python@' {} +
+%if 0%{?suse_version} > 1500
+find . -type f -exec sed -i 's@#!/usr/bin/env python3$@#!%{_bindir}/python3@' {} +
+find . -type f -exec sed -i 's@#!/usr/bin/env python$@#!%{_bindir}/python@' {} +
+%else
+find . -type f -exec sed -i 's@#!/usr/bin/env python3$@#!%{_bindir}/python3.9@' {} +
+find . -type f -exec sed -i 's@#!/usr/bin/env python$@#!%{_bindir}/python3.9@' {} +
+%endif
 
 %install
 # yes they have a makefile, no they dont use it properly
 # no they dont have a make install
 # we used to have this in the build section but since rpm 4.16 buildroot is cleaned
-python3 setup.py --verbose linux-package --prefix %{buildroot}%{_prefix}
+%if 0%{?suse_version} > 1500
+python3 \
+%else
+python3.9 -B \
+%endif
+  setup.py --verbose \
+%if !%{with docs}
+    --no-docs \
+%endif
+    linux-package \
+    --prefix %{buildroot}%{_prefix} \
+    --libdir-name %{_lib}
 
-%fdupes %{buildroot}%{_prefix}/lib
+%fdupes %{buildroot}%{_libdir}/%{name}
 
 %files
 %license LICENSE
 %doc CHANGELOG.rst README.asciidoc
 %{_bindir}/%{name}
-%{_prefix}/lib/%{name}
-%{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/icons/hicolor/
-%dir %{_datadir}/icons/hicolor/256x256/
-%{_datadir}/icons/hicolor/256x256/apps/
+%{_libdir}/%{name}
+%{_datadir}/applications/%{name}{,-open}.desktop
+%{_datadir}/icons/hicolor/
 %{_datadir}/terminfo/x/xterm-%{name}
-%if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
+%if %{with docs}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/doc/%{name}
 %{_mandir}/man5/kitty.conf.5%{?ext_man}
