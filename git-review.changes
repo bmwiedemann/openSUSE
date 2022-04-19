@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 19 05:41:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.0:
+  * Python 3.5 is no longer supported.
+  * Git 2.10.0 or later is required as git-review now needs the
+    --no-show-signature option for git-log.
+  * Git’s log.ShowSignature option is now supported. Previously, setting it
+    would confuse git-review into thinking there were twice as many changes
+    to push.
+  * OpenSSH has deprecated its use of scp/rcp protocol in favor of SFTP,
+    which the embedded Apache mina-sshd in widely-deployed Gerrit versions
+    does not yet support. Now git-review will attempt to detect whether
+    scp’s -O option is available to force use of the legacy scp/rcp protocol,
+    and apply it if so. Future git-review versions may change the fallback
+    behavior once an SFTP subsystem is implemented and available for a new
+    Gerrit release.
+- Remove now unneeded BuildRequires on mock.
+
+-------------------------------------------------------------------
 Tue Dec  7 21:06:05 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.2.0:
