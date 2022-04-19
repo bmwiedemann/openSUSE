@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 14 12:56:30 UTC 2022 - lnussel@suse.de
+
+- Update to version 20220414:
+  * add SBAT values (boo#1193282)
+  * Explain that rpm-config-SUSE covers also openSUSE
+
+-------------------------------------------------------------------
 Fri Mar 18 12:14:16 UTC 2022 - dmueller@suse.com
 
 - Update to version 20220317:

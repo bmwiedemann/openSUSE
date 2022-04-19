@@ -18,7 +18,7 @@
 
 
 Name:           rpm-config-SUSE
-Version:        20220317
+Version:        20220414
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
@@ -32,8 +32,8 @@ Requires:       rpm
 BuildArch:      noarch
 
 %description
-This package contains the RPM configuration data for the SUSE Linux
-distribution family.
+This package contains the RPM configuration data for the SUSE and
+openSUSE distribution families.
 
 %prep
 %setup -q
@@ -57,6 +57,20 @@ sed -e 's/@suse_version@/%{?suse_version}%{!?suse_version:0}/' \
     -e '/@sle_version@/d' \
 %endif
   < suse_macros.in > suse_macros
+
+cat <<EOF > macros.d/macros.sbat
+# Common SBAT values for secure boot
+# https://github.com/rhboot/shim/blob/main/SBAT.md
+
+%if 0%{?is_opensuse}
+%%sbat_distro          opensuse
+%%sbat_distro_summary  The openSUSE Project
+%else
+%%sbat_distro          sle
+%%sbat_distro_summary  SUSE Linux Enterprise
+%endif
+%%sbat_distro_url      mailto:security@suse.de
+EOF
 
 %install
 # Install SUSE vendor macros and rpmrc

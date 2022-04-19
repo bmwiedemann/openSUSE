@@ -204,4 +204,14 @@
   * set buildshell to use bash</comment>
     <requestid>962676</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3dd3af80401d530e58c76da91ba9d590</srcmd5>
+    <version>20220414</version>
+    <time>1650355074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220414:
+  * add SBAT values (boo#1193282)
+  * Explain that rpm-config-SUSE covers also openSUSE</comment>
+    <requestid>970158</requestid>
+  </revision>
 </revisionlist>
