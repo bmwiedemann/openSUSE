@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 18 15:27:00 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.19.0:
+  * Added
+    - Error handler will always run, even if the error happens
+      on a background task #761.
+    - Add headers parameter to HTTPException #1435.
+    - Internal responses with 405 status code insert an Allow header,
+      as described by RFC 7231 #1436.
+    - The content argument in JSONResponse is now required #1431.
+    - Add custom URL convertor register #1437.
+    - Add content disposition type parameter to FileResponse #1266.
+    - Add next query param with original request URL in requires decorator #920.
+    - Add raw_path to TestClient scope #1445.
+    - Add union operators to MutableHeaders #1240.
+    - Display missing route details on debug page #1363.
+    - Change anyio required version range to >=3.4.0,<5.0 #1421 and #1460.
+    - Add typing-extensions>=3.10 requirement - used only on lower versions
+      than Python 3.10 #1475.
+  * Fixed
+    - Prevent BaseHTTPMiddleware from hiding errors of StreamingResponse
+      and mounted applications #1459.
+    - SessionMiddleware uses an explicit path=..., instead of defaulting
+      to the ASGI 'root_path' #1512.
+    - Request.client is now compliant with the ASGI specifications #1462.
+    - Raise KeyError at early stage for missing boundary #1349.
+  * Deprecated
+    - Deprecate WSGIMiddleware in favor of a2wsgi #1504.
+    - Deprecate run_until_first_complete #1443.
+
+-------------------------------------------------------------------
 Wed Feb 23 01:08:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.18.0:
