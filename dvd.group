@@ -122,10 +122,10 @@
     <package name="apache2-mod_php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-prefork" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="apparmor-abstractions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="apparmor-abstractions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="apparmor-docs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
-    <package name="apparmor-parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="apparmor-parser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="apparmor-parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
+    <package name="apparmor-parser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="apparmor-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="apparmor-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="apparmor-utils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
@@ -3865,7 +3865,7 @@
     <package name="rsync" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="rsyslog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rt2860" supportstatus="unsupported"/> <!-- reason: dvd:rt2860 -->
-    <package name="rtkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="rtkit" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby-solv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
