@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 28 18:28:45 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to version 4.0.8 (released 2022-01-31)
+  * Bugfix: Fix error message for invalid modhex when programing a YubiOTP credential.
+  * Bugfix: Fix issue with displaying a Steam credential when it is the only account.
+  * Bugfix: Prevent installation of files in site-packages root.
+  * Bugfix: Fix cleanup logic in PIV for protected management key.
+  * Add support for token identifier when programming slot-based HOTP.
+  * Add support for programming NDEF in text mode.
+  * Dependency: Add support for Cryptography ⇐ 38.
+
+-------------------------------------------------------------------
 Thu Oct 14 07:03:48 UTC 2021 - pgajdos@suse.com
 
 - version update to 4.0.7

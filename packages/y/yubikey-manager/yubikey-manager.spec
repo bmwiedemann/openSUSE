@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yubikey-manager
-Version:        4.0.7
+Version:        4.0.8
 Release:        0
 Summary:        Python 3 library and command line tool for configuring a YubiKey
 License:        BSD-2-Clause
@@ -37,9 +37,10 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-pyOpenSSL
 BuildRequires:  python3-makefun >= 1.9.5
 BuildRequires:  python3-pytest
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1540
 # dataclasses is required for tests if python < 3.7
-BuildRequires:  python3-dataclasses
+BuildRequires:  python3-dataclasses >= 0.8
+Requires:       python3-dataclasses >= 0.8
 %endif
 Requires:       python3-click
 Requires:       python3-cryptography
