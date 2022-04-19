@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 15 08:55:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.3.0:
+  - add dual region bucket support and sample
+  - track invocation id for retry metrics
+  - deps: drop pkg_resources
+  - fix links in blob module
+- Add patches:
+  - no-relative-imports.patch to allow running the test suite
+    with pytest (gh#googleapis/python-storage#772)
+  - demock.patch to remove dependency on the external package
+    mock (gh#googleapis/python-storage#770)
+
+-------------------------------------------------------------------
 Wed Apr 13 10:13:58 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.2.1

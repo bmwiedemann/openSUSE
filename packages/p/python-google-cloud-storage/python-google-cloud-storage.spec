@@ -20,20 +20,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-storage
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-storage
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-storage/google-cloud-storage-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM no-relative-imports.patch bsc#[0-9]+ mcepl@suse.com
+# PATCH-FIX-UPSTREAM no-relative-imports.patch gh#googleapis/python-storage#772 mcepl@suse.com
 # fix relative imports
-Patch2:         no-relative-imports.patch
+Patch0:         no-relative-imports.patch
+# PATCH-FIX-UPSTREAM demock.patch gh#googleapis/python-storage#770 mcepl@suse.com
+# Don’t use external mock package
+Patch1:         demock.patch
 BuildRequires:  %{python_module google-api-core >= 1.31.5}
 BuildRequires:  %{python_module google-auth >= 1.25.0}
-BuildRequires:  %{python_module google-cloud-core >= 1.6.0}
+BuildRequires:  %{python_module google-cloud-core >= 2.3.0}
 BuildRequires:  %{python_module google-resumable-media >= 2.3.2}
-BuildRequires:  %{python_module mock >= 3.0.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -69,7 +71,7 @@ to users via direct download. This package provides client to it.
 
 %check
 export PYTEST_ADDOPTS="--import-mode=importlib"
-%pytest tests/unit -k 'not network'
+%pytest -k 'not network' tests/unit
 
 %files %{python_files}
 %license LICENSE
