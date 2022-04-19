@@ -13453,7 +13453,7 @@ unsorted:
   - libquadmath0-gcc7-32bit: [x86_64] 
   - libquagga_pb0 
   - libquazip1-qt5-1_3_0 
-  - libquazip1-qt6-1_3_0: [x86_64] 
+  - libquazip1-qt6-1_3_0 
   - libquicktime 
   - libquicktime-32bit: [x86_64] 
   - libquicktime-devel 
@@ -31795,7 +31795,7 @@ unsorted:
   - quassel-mono 
   - quazip-doc 
   - quazip-qt5-devel 
-  - quazip-qt6-devel: [x86_64] 
+  - quazip-qt6-devel 
   - quilt 
   - quilter 
   - quilter-lang 
