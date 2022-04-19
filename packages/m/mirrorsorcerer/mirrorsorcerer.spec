@@ -17,7 +17,7 @@
 
 
 Name:           mirrorsorcerer
-Version:        0.1.0~11
+Version:        0.1.0~13
 Release:        0
 Summary:        Mirror Sorcerer tool to magically make OpenSUSE mirror sources more magic-er
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND MIT AND MPL-2.0
