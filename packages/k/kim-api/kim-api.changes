@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 18 11:06:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.3.0
+  * Re-license from CDDL to LGPL-2.1-or-later
+  * Fixed bug in c bindings for KIM_Collections_GetDirectoryName()
+  * Add partial_particle_energy computation to utility_forces_numer_deriv
+
+-------------------------------------------------------------------
 Mon Dec 28 14:07:15 CST 2020 - Ryan S. Elliott <relliott@umn.edu>
 
 - update to v2.2.1

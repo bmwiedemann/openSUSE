@@ -1,6 +1,7 @@
 #
 # spec file for package kim-api
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018--2020 Christoph Junghans, Ryan S. Elliott
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,23 +13,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           kim-api
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Open Knowledgebase of Interatomic Models KIM API
-License:        CDDL-1.0
+License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Chemistry
-Url:            https://openkim.org
+URL:            https://openkim.org
 Source0:        https://s3.openkim.org/kim-api/kim-api-%{version}.txz
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  pkg-config
-BuildRequires:  cmake >= 3.10
 BuildRequires:  vim
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       libkim-api2 = %{version}
 
 %description
@@ -39,7 +40,6 @@ adopted the KIM-API standard.
 
 This package can be used to load all the files (libraries, headers, and
 documentation) for the KIM-API.
-
 
 %package -n libkim-api2
 Summary:        The kim-api library
@@ -54,11 +54,11 @@ adopted the KIM-API standard.
 This package contains the kim-api library.
 
 %package devel
-Summary:    Development headers and libraries for kim-api
-Group:      Development/Libraries/C and C++
-Requires:   vim
-Requires:   libkim-api2 = %{version}
-Requires:   %{name} = %{version}
+Summary:        Development headers and libraries for kim-api
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+Requires:       libkim-api2 = %{version}
+Requires:       vim
 
 %description devel
 OpenKIM is an online framework for making molecular simulations reliable,
@@ -70,8 +70,8 @@ This package contains the development files (headers and documentation) for the
 KIM-API.
 
 %package examples
-Summary:    Example models for kim-api
-Group:      Productivity/Scientific/Chemistry
+Summary:        Example models for kim-api
+Group:          Productivity/Scientific/Chemistry
 
 %description examples
 OpenKIM is an online framework for making molecular simulations reliable,
@@ -85,21 +85,24 @@ This package contains the example models for the KIM-API.
 %setup -q -n %{name}-%{version}
 
 %build
-%{cmake} -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} -DBASH_COMPLETION_COMPLETIONSDIR=%{_datadir}/bash-completion/completions -DZSH_COMPLETION_COMPLETIONSDIR=%{_datadir}/zsh/functions/Unix ..
+%cmake \
+  -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
+  -DBASH_COMPLETION_COMPLETIONSDIR=%{_datadir}/bash-completion/completions \
+  -DZSH_COMPLETION_COMPLETIONSDIR=%{_datadir}/zsh/functions/Unix ..
 %make_jobs
 
 %install
 %cmake_install
 mkdir -p %{buildroot}/usr/share/emacs/site-lisp
 mv %{buildroot}/usr/share/emacs/site-lisp/kim-api/kim-api-c-style.el %{buildroot}%{_datadir}/emacs/site-lisp/kim-api-c-style.el
-rm %{buildroot}/usr/share/doc/kim-api/{LICENSE.CDDL,NEWS,README.md}
+rm %{buildroot}/usr/share/doc/kim-api/{LICENSE.LGPL,NEWS,README.md}
 
 %post -n libkim-api2 -p /sbin/ldconfig
 %postun -n libkim-api2 -p /sbin/ldconfig
 
 %files
 %doc README.md NEWS
-%license LICENSE.CDDL
+%license LICENSE.LGPL
 %{_bindir}/kim-api-*
 %{_libexecdir}/kim-api/kim-api-*
 %ifnarch i686
@@ -116,7 +119,7 @@ rm %{buildroot}/usr/share/doc/kim-api/{LICENSE.CDDL,NEWS,README.md}
 %{_libdir}/libkim-api.so.*
 
 %files devel
-%doc LICENSE.CDDL NEWS
+%license LICENSE.LGPL
 %{_includedir}/kim-api/
 %{_libdir}/kim-api/mod/
 %{_datadir}/cmake/
