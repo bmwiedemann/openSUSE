@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 18 18:21:59 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.97.3:
+  * Fix syncing of /static regression
+  * Revert "Revert "Fix PostProcess regression for hugo server""
+
+-------------------------------------------------------------------
+Sun Apr 17 19:30:45 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.97.2:
+  * Revert "Fix PostProcess regression for hugo server"
+
+-------------------------------------------------------------------
+Sat Apr 16 18:08:04 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.97.1:
+  * Fix PostProcess regression for hugo server
+  * Fix MediaType when reading images from cache
+  * deps: Upgrade github.com/bep/overlayfs v0.4.0 => v0.5.0
+
+-------------------------------------------------------------------
 Thu Apr 14 17:35:27 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.97.0:
