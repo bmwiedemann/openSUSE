@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 15 13:50:09 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.0.1
+  * A new hidden preference `DropdownParametersOnce` has been
+    introduced to control whether the drop-down window accepts
+    command line arguments after creation. With the introduction
+    of this preference an older bug was fixed where tabs could be
+    added to the drop-down window even though they weren't
+    supposed to.
+  * Options: --active-tab does not behave properly when adding tabs
+    to existing windows.
+  * Find dialog does not respond to Return key
+    (gxo#apps/xfce4-terminal#176)
+  * Dragging a URL from Chromium ends up truncated
+    (gxo#apps/xfce4-terminal#180)
+  * Toolbar size changes when the window is maximized
+    (gxo#apps/xfce4-terminal#181).
+  * Unable to create a single window with many tabs through command
+    line options (gxo#apps/xfce4-terminal#182).
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Apr  2 12:17:50 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.0.0
