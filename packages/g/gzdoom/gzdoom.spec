@@ -1,7 +1,7 @@
 #
 # spec file for package gzdoom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ Patch5:         gzdoom-vulkan.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
-BuildRequires:  nasm
 BuildRequires:  pkg-config
 BuildRequires:  unzip
 BuildRequires:  zmusic-devel
