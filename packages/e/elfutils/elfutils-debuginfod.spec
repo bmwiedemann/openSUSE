@@ -28,11 +28,13 @@ Source:         https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfuti
 Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2.sig
 Source2:        elfutils.changes
 Source3:        elfutils.keyring
+Source4:        %{name}.sysusers
 Patch2:         harden_debuginfod.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  bsdtar
+BuildRequires:  sysuser-tools
 BuildRequires:  procps
 # For the run-debuginfod-find.sh test case in %%check for /usr/sbin/ss
 BuildRequires:  curl
@@ -56,6 +58,7 @@ Requires:       elfutils = %{version}
 Requires:       sysconfig
 Requires(post): %fillup_prereq
 %{?systemd_requires}
+%sysusers_requires
 
 %description
 The elfutils-debuginfod package contains the debuginfod binary
@@ -101,6 +104,7 @@ The elfutils-debuginfod-client package contains a command-line frontend.
 %autosetup -n elfutils-%version -p1
 
 %build
+%sysusers_generate_pre %{SOURCE4} %{name} %{name}.conf
 # Change DATE/TIME macros to use last change time of elfutils.changes
 # See http://lists.opensuse.org/opensuse-factory/2011-05/msg00304.html
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
@@ -152,6 +156,8 @@ install -Dm0644 config/debuginfod.service %{buildroot}%{_unitdir}/debuginfod.ser
 install -d -m 755 %{buildroot}%{_fillupdir}
 cp config/debuginfod.sysconfig %{buildroot}%{_fillupdir}/sysconfig.debuginfod
 
+install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
+
 mkdir -p %{buildroot}%{_localstatedir}/cache/debuginfod
 touch %{buildroot}%{_localstatedir}/cache/debuginfod/debuginfod.sqlite
 
@@ -172,6 +178,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_unitdir}/debuginfod.service
 %{_mandir}/man8/debuginfod.8*
 %{_fillupdir}/sysconfig.debuginfod
+%{_sysusersdir}/%{name}.conf
 
 %dir %attr(0700,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod
 %verify(not md5 size mtime) %attr(0600,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod/debuginfod.sqlite
@@ -196,9 +203,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_mandir}/man1/debuginfod-find.1*
 %{_mandir}/man7/debuginfod-client-config.7*
 
-%pre
-getent group debuginfod >/dev/null || %{_sbindir}/groupadd -r debuginfod
-getent passwd debuginfod >/dev/null || %{_sbindir}/useradd -r -g debuginfod -d %{_localstatedir}/cache/debuginfod -s /bin/false -c "elfutils debuginfo server" debuginfod
+%pre -f %{name}.pre
 %service_add_pre debuginfod.service
 
 %post

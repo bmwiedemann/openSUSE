@@ -923,4 +923,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>957660</requestid>
   </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>445f73f9166a8b9e180a7a64dcb3477f</srcmd5>
+    <version>0.186</version>
+    <time>1650355071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969993</requestid>
+  </revision>
 </revisionlist>
