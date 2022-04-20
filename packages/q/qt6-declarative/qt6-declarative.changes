@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:56:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0:
+  * https://www.qt.io/blog/qt-6.3-released
+
+-------------------------------------------------------------------
+Tue Mar 29 12:28:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0-rc
+- Add upstream fix:
+  * 0001-CMake-Look-for-QtLanguageServerPrivate.patch
+- Update build constraints
+
+-------------------------------------------------------------------
 Mon Mar 21 08:46:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.4

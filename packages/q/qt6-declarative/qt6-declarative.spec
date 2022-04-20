@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-declarative
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,13 +27,15 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-declarative-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-CMake-Look-for-QtLanguageServerPrivate.patch
 BuildRequires:  python3-base
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -43,6 +45,7 @@ BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LanguageServerPrivate)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6OpenGLWidgets)
@@ -325,6 +328,9 @@ Requires:       libQt6Qml6 = %{version}
 # Executables are required
 Requires:       qt6-declarative-tools
 Requires:       cmake(Qt6Network)
+# qmldevtools is gone in 6.3
+Provides:       qt6-qmldevtools-devel-static = 6.3
+Obsoletes:      qt6-qmldevtools-devel-static < 6.3
 
 %description -n qt6-qml-devel
 Development files for the Qt 6 Qml library.
@@ -836,13 +842,6 @@ Obsoletes:      qt6-qmldebug-private-devel < 6.2.0
 The Qt6 QmlDebug static library.
 This library does not have any ABI or API guarantees.
 
-%package -n qt6-qmldevtools-devel-static
-Summary:        Qt6 QmlDevTools static library
-%requires_eq    qt6-core-private-devel
-
-%description -n qt6-qmldevtools-devel-static
-The Qt6 QmlDevTools static library.
-
 %package -n qt6-qmldom-devel-static
 Summary:        Qt6 QmlDom static library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -857,6 +856,13 @@ The Qt6 QmlDom static library.
 The goal of the Dom library is to provide a nicer to use basis for the
 Qml Code model, to be used by the various QML tools, the designer and
 the new compiler.
+
+%package -n qt6-qmllint-devel-static
+Summary:        Qt6 QmlLint static library
+%requires_eq    qt6-core-private-devel
+
+%description -n qt6-qmllint-devel-static
+The Qt6 QmlLint static library.
 
 %package -n qt6-quickcontrolstestutils-devel-static
 Summary:        Qt6 QuickControlsTestUtils static library
@@ -912,7 +918,10 @@ mkdir -p %{buildroot}%{_qt6_importsdir}
 
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
-rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Dependencies,Targets*}.cmake
+rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
+
+# There are no private headers
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 
 %post -n libQt6LabsAnimation6 -p /sbin/ldconfig
 %post -n libQt6LabsFolderListModel6 -p /sbin/ldconfig
@@ -987,10 +996,12 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Dependencies,Targets*}.cmake
 %{_bindir}/qmleasing6
 %{_bindir}/qmlformat6
 %{_bindir}/qmllint6
+%{_bindir}/qmlls6
 %{_bindir}/qmlplugindump6
 %{_bindir}/qmlpreview6
 %{_bindir}/qmlprofiler6
 %{_bindir}/qmlscene6
+%{_bindir}/qmltc6
 %{_bindir}/qmltestrunner6
 %{_bindir}/qmltime6
 %{_qt6_bindir}/qml
@@ -998,10 +1009,12 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Dependencies,Targets*}.cmake
 %{_qt6_bindir}/qmleasing
 %{_qt6_bindir}/qmlformat
 %{_qt6_bindir}/qmllint
+%{_qt6_bindir}/qmlls
 %{_qt6_bindir}/qmlplugindump
 %{_qt6_bindir}/qmlpreview
 %{_qt6_bindir}/qmlprofiler
 %{_qt6_bindir}/qmlscene
+%{_qt6_bindir}/qmltc
 %{_qt6_bindir}/qmltestrunner
 %{_qt6_bindir}/qmltime
 %{_qt6_libexecdir}/qmlcachegen
@@ -1121,11 +1134,14 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Dependencies,Targets*}.cmake
 %files -n qt6-qml-devel
 %dir %{_qt6_mkspecsdir}/features
 %{_qt6_cmakedir}/Qt6Qml/
+%{_qt6_cmakedir}/Qt6QmlIntegration/
 # Files from the two directories above are only used by Qt6QmlMacros.cmake
 %{_qt6_cmakedir}/Qt6QmlImportScanner/
 %{_qt6_cmakedir}/Qt6QmlTools/
 %{_qt6_descriptionsdir}/Qml.json
+%{_qt6_descriptionsdir}/QmlIntegration.json
 %{_qt6_includedir}/QtQml/
+%{_qt6_includedir}/QtQmlIntegration/
 %{_qt6_libdir}/libQt6Qml.prl
 %{_qt6_libdir}/libQt6Qml.so
 %{_qt6_metatypesdir}/qt6qml_*_metatypes.json
@@ -1133,6 +1149,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Dependencies,Targets*}.cmake
 %{_qt6_mkspecsdir}/features/qmltypes.prf
 %{_qt6_mkspecsdir}/features/qtquickcompiler.prf
 %{_qt6_mkspecsdir}/modules/qt_lib_qml.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration.pri
 %exclude %{_qt6_includedir}/QtQml/%{real_version}
 
 %files -n qt6-qml-private-devel
@@ -1453,14 +1470,6 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Dependencies,Targets*}.cmake
 %{_qt6_metatypesdir}/qt6qmldebugprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmldebug_private.pri
 
-%files -n qt6-qmldevtools-devel-static
-%{_qt6_cmakedir}/Qt6QmlDevToolsPrivate/
-%{_qt6_descriptionsdir}/QmlDevToolsPrivate.json
-%{_qt6_libdir}/libQt6QmlDevTools.a
-%{_qt6_libdir}/libQt6QmlDevTools.prl
-%{_qt6_metatypesdir}/qt6qmldevtoolsprivate_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_qmldevtools_private.pri
-
 %files -n qt6-qmldom-devel-static
 %{_qt6_cmakedir}/Qt6QmlDomPrivate/
 %{_qt6_descriptionsdir}/QmlDomPrivate.json
@@ -1469,6 +1478,15 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Dependencies,Targets*}.cmake
 %{_qt6_libdir}/libQt6QmlDom.prl
 %{_qt6_metatypesdir}/qt6qmldomprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmldom_private.pri
+
+%files -n qt6-qmllint-devel-static
+%{_qt6_cmakedir}/Qt6QmlLintPrivate/
+%{_qt6_descriptionsdir}/QmlLintPrivate.json
+%{_qt6_includedir}/QtQmlLint/
+%{_qt6_libdir}/libQt6QmlLint.a
+%{_qt6_libdir}/libQt6QmlLint.prl
+%{_qt6_metatypesdir}/qt6qmllintprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_qmllint_private.pri
 
 %files -n qt6-quickcontrolstestutils-devel-static
 %{_qt6_cmakedir}/Qt6QuickControlsTestUtilsPrivate/
