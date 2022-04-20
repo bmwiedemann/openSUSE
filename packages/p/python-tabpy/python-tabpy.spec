@@ -1,7 +1,7 @@
 #
 # spec file for package python-tabpy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-tabpy
-Version:        2.3.1
+Version:        2.5.0
 Release:        0
 Summary:        Tableau Python service
 License:        MIT
@@ -41,8 +41,8 @@ Requires:       python-tornado
 Recommends:     python-nltk
 Recommends:     python-numpy
 Recommends:     python-pandas
-Recommends:     python-scipy
 Recommends:     python-scikit-learn
+Recommends:     python-scipy
 Suggests:       python-textblob
 BuildArch:      noarch
 # SECTION test requirements
@@ -52,7 +52,6 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module docopt}
 BuildRequires:  %{python_module genson}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nltk}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
@@ -92,7 +91,7 @@ sed -Ei '/(future|hypothesis|pytest-runner)/d' setup.py
 }
 
 %check
-mkdir ~/bin
+mkdir -p ~/bin
 export PATH=~/bin:$PATH
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 cp %{buildroot}/%{_bindir}/tabpy-%{$python_bin_suffix} ~/bin/tabpy
