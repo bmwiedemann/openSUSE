@@ -644,4 +644,13 @@
     <comment>- update to 3.3.2 (bsc#1182066, CVE-2020-36242, bsc#1198331):</comment>
     <requestid>969844</requestid>
   </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>d470a932ad0e15cbd2ae8c27ad7d475e</srcmd5>
+    <version>36.0.2</version>
+    <time>1650467027</time>
+    <user>dimstar_suse</user>
+    <comment>  - drops CVE-2020-36242-buffer-overflow.patch on older dists
+- drops 5507-mitigate-Bleichenbacher-attacks.patch on older dists</comment>
+    <requestid>970348</requestid>
+  </revision>
 </revisionlist>

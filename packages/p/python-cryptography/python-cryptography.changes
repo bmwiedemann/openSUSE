@@ -125,6 +125,7 @@ Sun Feb  7 20:11:11 UTC 2021 - Michael Ströder <michael@stroeder.com>
     calls when symmetrically encrypting very large payloads (>2GB) could
     result in an integer overflow, leading to buffer overflows.
     CVE-2020-36242
+  - drops CVE-2020-36242-buffer-overflow.patch on older dists
 
 -------------------------------------------------------------------
 Sun Dec 20 09:31:33 UTC 2020 - Dirk Müller <dmueller@suse.com>
@@ -182,6 +183,7 @@ Mon Oct 26 11:39:02 UTC 2020 - Michael Ströder <michael@stroeder.com>
     by our API, we cannot completely mitigate this vulnerability.
   * Support for OpenSSL 1.0.2 has been removed.
   * Added basic support for PKCS7 signing (including SMIME) via PKCS7SignatureBuilder.
+- drops 5507-mitigate-Bleichenbacher-attacks.patch on older dists
 
 -------------------------------------------------------------------
 Mon Sep 28 10:49:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
