@@ -155,4 +155,12 @@
   proper upgrade from previous version 4.5.0b6 (forwarded request 965630 from glaubitz)</comment>
     <requestid>965645</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fe610475efa3a91f91158cf9ce2f1bb8</srcmd5>
+    <version>4.5.1</version>
+    <time>1650466645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971037</requestid>
+  </revision>
 </revisionlist>
