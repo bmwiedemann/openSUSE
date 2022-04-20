@@ -15,4 +15,11 @@
     <comment>Qt 6.3.0 (forwarded request 970780 from cgiboudeaux)</comment>
     <requestid>970801</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>07e53ea1fad893a51c4ddeeb336ec9ab</srcmd5>
+    <version>6.4.0~git</version>
+    <time>1650473892</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:qt6-quick3d revision:1</comment>
+  </revision>
 </revisionlist>

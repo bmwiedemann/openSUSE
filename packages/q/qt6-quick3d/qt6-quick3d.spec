@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.0
-%define short_version 6.3
+%define real_version 6.2.4
+%define short_version 6.2
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -48,8 +48,6 @@ BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
-# Only needed if QT_FEATURE_qml_debug is enabled
-# BuildRequires:  cmake(Qt6PacketProtocolPrivate)
 BuildRequires:  cmake(Qt6QuickTimeline)
 BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6Widgets)
@@ -235,15 +233,8 @@ Requires:       cmake(Qt6Quick3DParticles) = %{real_version}
 This package provides private headers of libQt6Quick3DParticles that do not
 have any ABI or API guarantees.
 
-%package -n libQt6Quick3DParticleEffects6
-Summary:        Qt 6 Quick3DParticleEffects library
-
-%description -n libQt6Quick3DParticleEffects6
-The Qt 6 Quick3DParticleEffects library.
-
 %package -n qt6-quick3dparticleeffects-devel
 Summary:        Qt6 Quick3DParticleEffects library - Development files
-Requires:       libQt6Quick3DParticleEffects6 = %{version}
 Requires:       cmake(Qt6Quick3DAssetImport)
 Requires:       cmake(Qt6Quick3DParticles)
 Requires:       cmake(Qt6Quick3DRuntimeRender)
@@ -303,24 +294,6 @@ Requires:       cmake(Qt6Quick3DUtils) = %{real_version}
 This package provides private headers of libQt6Quick3DUtils that do not have any
 ABI or API guarantees.
 
-### Private only library ###
-
-%package -n libQt6Quick3DGlslParser6
-Summary:        Qt 6 Quick3DGlslParser library
-
-%description -n libQt6Quick3DGlslParser6
-The Qt 6 Quick3DGlslParser library.
-This library does not have any ABI or API guarantees.
-
-%package -n qt6-quick3dglslparser-private-devel
-Summary:        Development files for the Qt 6 Quick3DGlslParser library
-Requires:       libQt6Quick3DGlslParser6 = %{version}
-Requires:       cmake(Qt6Core)
-
-%description -n qt6-quick3dglslparser-private-devel
-Development files for the Qt 6 Quick3DGlslParser library.
-This library does not have any ABI or API guarantees.
-
 %{qt6_examples_package}
 
 %endif
@@ -347,7 +320,6 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin*.cmake
 
 # There's no private api
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3deffects_private.pri
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.pri
 
 %fdupes %{buildroot}%{_qt6_qmldir}/QtQuick3D
 
@@ -355,10 +327,8 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %post -n libQt6Quick3DAssetImport6 -p /sbin/ldconfig
 %post -n libQt6Quick3DAssetUtils6 -p /sbin/ldconfig
 %post -n libQt6Quick3DEffects6 -p /sbin/ldconfig
-%post -n libQt6Quick3DGlslParser6 -p /sbin/ldconfig
 %post -n libQt6Quick3DHelpers6 -p /sbin/ldconfig
 %post -n libQt6Quick3DIblBaker6 -p /sbin/ldconfig
-%post -n libQt6Quick3DParticleEffects6 -p /sbin/ldconfig
 %post -n libQt6Quick3DParticles6 -p /sbin/ldconfig
 %post -n libQt6Quick3DRuntimeRender6 -p /sbin/ldconfig
 %post -n libQt6Quick3DUtils6 -p /sbin/ldconfig
@@ -366,10 +336,8 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %postun -n libQt6Quick3DAssetImport6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DAssetUtils6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DEffects6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DGlslParser6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DHelpers6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DIblBaker6 -p /sbin/ldconfig
-%postun -n libQt6Quick3DParticleEffects6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DParticles6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DRuntimeRender6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DUtils6 -p /sbin/ldconfig
@@ -380,17 +348,13 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_bindir}/balsam6
 %{_bindir}/balsamui6
 %{_bindir}/instancer6
-%{_bindir}/materialeditor6
 %{_bindir}/meshdebug6
 %{_bindir}/shadergen6
-%{_bindir}/shapegen6
 %{_qt6_bindir}/balsam
 %{_qt6_bindir}/balsamui
 %{_qt6_bindir}/instancer
-%{_qt6_bindir}/materialeditor
 %{_qt6_bindir}/meshdebug
 %{_qt6_bindir}/shadergen
-%{_qt6_bindir}/shapegen
 %{_qt6_pluginsdir}/assetimporters/libassimp.so
 %{_qt6_pluginsdir}/assetimporters/libuip.so
 
@@ -515,17 +479,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_includedir}/QtQuick3DParticles/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticles_private.pri
 
-%files -n libQt6Quick3DParticleEffects6
-%{_qt6_libdir}/libQt6Quick3DParticleEffects.so.*
-
-%files -n qt6-quick3dparticleeffects-devel
-%{_qt6_cmakedir}/Qt6Quick3DParticleEffects/
-%{_qt6_descriptionsdir}/Quick3DParticleEffects.json
-%{_qt6_libdir}/libQt6Quick3DParticleEffects.prl
-%{_qt6_libdir}/libQt6Quick3DParticleEffects.so
-%{_qt6_metatypesdir}/qt6quick3dparticleeffects_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects.pri
-
 %files -n libQt6Quick3DRuntimeRender6
 %{_qt6_libdir}/libQt6Quick3DRuntimeRender.so.*
 
@@ -559,20 +512,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %files -n qt6-quick3dutils-private-devel
 %{_qt6_includedir}/QtQuick3DUtils/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dutils_private.pri
-
-### Private only library ###
-
-%files -n libQt6Quick3DGlslParser6
-%{_qt6_libdir}/libQt6Quick3DGlslParser.so.*
-
-%files -n qt6-quick3dglslparser-private-devel
-%{_qt6_cmakedir}/Qt6Quick3DGlslParserPrivate/
-%{_qt6_descriptionsdir}/Quick3DGlslParserPrivate.json
-%{_qt6_includedir}/QtQuick3DGlslParser/
-%{_qt6_libdir}/libQt6Quick3DGlslParser.prl
-%{_qt6_libdir}/libQt6Quick3DGlslParser.so
-%{_qt6_metatypesdir}/qt6quick3dglslparserprivate_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_quick3dglslparser_private.pri
 
 %endif
 
