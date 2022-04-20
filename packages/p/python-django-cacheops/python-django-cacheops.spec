@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-cacheops
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module before-after}
 BuildRequires:  %{python_module django >= 1.8}
 BuildRequires:  %{python_module funcy >= 1.8}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis >= 3.0.0}
 BuildRequires:  %{python_module six >= 1.4.0}
