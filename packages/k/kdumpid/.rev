@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09050c4ce764be9ed8791f45cebb5852</srcmd5>
+    <version>1.3</version>
+    <time>1650467021</time>
+    <user>dimstar_suse</user>
+    <comment>Re-add kdumpid after fixing build failures.</comment>
+    <requestid>971063</requestid>
+  </revision>
+</revisionlist>
