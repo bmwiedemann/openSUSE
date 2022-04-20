@@ -83,6 +83,11 @@ if [ -x /usr/sbin/firewalld ]; then
         systemctl enable firewalld.service
 fi
 
+# Enable NetworkManager if installed
+if rpm -q --whatprovides NetworkManager >/dev/null; then
+        systemctl enable NetworkManager.service
+fi
+
 #======================================
 # Add repos from control.xml
 #--------------------------------------

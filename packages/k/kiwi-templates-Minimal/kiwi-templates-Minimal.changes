@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 14 12:32:44 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Switch to NetworkManager except for OpenStack-Cloud
+
+-------------------------------------------------------------------
 Tue Mar 29 10:43:40 UTC 2022 - Guilherme Moro <gmoro@suse.com>
 
 - Rename JeOS to "Minimal Image" (jsc#SLE-20354)
