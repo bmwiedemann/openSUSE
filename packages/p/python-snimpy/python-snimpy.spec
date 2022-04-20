@@ -1,7 +1,7 @@
 #
 # spec file for package python-snimpy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +37,6 @@ BuildRequires:  libsmi-devel
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.0.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pysnmp >= 4}
 BuildRequires:  %{python_module setuptools}
@@ -87,6 +86,8 @@ export CFLAGS="%{optflags}"
 %python_clone -a %{buildroot}%{_mandir}/man1/snimpy.1
 
 %check
+# https://github.com/vincentbernat/snimpy/issues/98
+sed -i 's:import mock:from unittest import mock:' tests/test_{basictypes,main}.py
 %python_exec -m unittest discover tests -v
 
 %post
