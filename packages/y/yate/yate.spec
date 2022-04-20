@@ -1,7 +1,7 @@
 #
 # spec file for package yate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
 # Copyright (c) 2011, Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -36,6 +36,7 @@ URL:            http://www.yate.null.ro/
 Source0:        http://yate.null.ro/tarballs/yate6/yate-%{version}-1.tar.gz
 Patch1:         dont-mess-with-cflags.patch
 Patch2:         add-arm64-support.patch
+Patch3:         spandsp3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 %if %{with dahdi}
@@ -91,7 +92,6 @@ Requires:       libyate%{sover} = %{version}
 This package contains all necessary include files and libraries needed
 to compile and develop applications that use Yate.
 
-%if %{build_qt4}
 %package qt4
 Summary:        Qt4 client package for Yate
 License:        GPL-2.0-only
@@ -101,7 +101,6 @@ Requires:       %{name} = %{version}
 %description qt4
 The yate-qt4 package includes the files needed to use Yate as a VoIP client
 with a Qt4 graphical interface.
-%endif
 
 %package scripts
 Summary:        External scripting package for Yate
@@ -122,9 +121,7 @@ Requires:       %{name} = %{version}-%{release}
 Guarantees Yate with AMRNB codec support.
 
 %prep
-%setup -q -n %{name}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{name}
 
 %build
 autoreconf -fiv
@@ -163,10 +160,8 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 
 %post   -n libyate%{sover} -p /sbin/ldconfig
 %postun -n libyate%{sover} -p /sbin/ldconfig
-%if %{build_qt4}
 %post qt4 -p /sbin/ldconfig
 %postun qt4 -p /sbin/ldconfig
-%endif
 
 %files
 %license COPYING

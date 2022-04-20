@@ -329,4 +329,12 @@ Please forward to Factory (forwarded request 108366 from k0da)</comment>
     <user>dimstar_suse</user>
     <comment>express fixup of devel dep</comment>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>9086d5d3feaf9e07c239505ea283e4cb</srcmd5>
+    <version>6.4.0</version>
+    <time>1650466492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970725</requestid>
+  </revision>
 </revisionlist>

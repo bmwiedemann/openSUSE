@@ -1,0 +1,98 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2022-04-02 10:30:49.634177659 +0200
+Upstream: so far unsubmitted
+
+Modify yate to build for spandsp3.
+
+---
+ configure.ac        |    6 +++---
+ modules/faxchan.cpp |   14 +++++++-------
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+Index: yate/configure.ac
+===================================================================
+--- yate.orig/configure.ac
++++ yate/configure.ac
+@@ -1241,7 +1241,7 @@ t38_gateway_state_t t38_g_state;
+ fax_stats.pages_tx = fax_stats.pages_rx = 0;
+ fax_init(&fax_state,TRUE);
+ t30_set_ecm_capability(fax_get_t30_state(&fax_state),1);
+-t30_set_supported_compressions(fax_get_t30_state(&fax_state),T30_SUPPORT_T6_COMPRESSION);
++t30_set_supported_compressions(fax_get_t30_state(&fax_state), T4_COMPRESSION_T6);
+ t30_set_tx_file(fax_get_t30_state(&fax_state),"abc",-1,-1);
+ t30_set_tx_ident(fax_get_t30_state(&fax_state),"xyz");
+ fax_set_transmit_on_idle(&fax_state,1);
+@@ -1268,7 +1268,7 @@ t38_terminal_state_t t38_t_state;
+ t38_gateway_state_t t38_g_state;
+ fax_init(&fax_state,TRUE);
+ t30_set_ecm_capability(fax_get_t30_state(&fax_state),1);
+-t30_set_supported_compressions(fax_get_t30_state(&fax_state),T30_SUPPORT_T6_COMPRESSION);
++t30_set_supported_compressions(fax_get_t30_state(&fax_state), T4_COMPRESSION_T6);
+ t30_set_tx_file(fax_get_t30_state(&fax_state),"abc",-1,-1);
+ t30_set_tx_ident(fax_get_t30_state(&fax_state),"xyz");
+ fax_set_transmit_on_idle(&fax_state,1);
+@@ -1296,7 +1296,7 @@ t38_terminal_state_t t38_t_state;
+ t38_gateway_state_t t38_g_state;
+ fax_init(&fax_state,TRUE);
+ t30_set_ecm_capability(fax_get_t30_state(&fax_state),1);
+-t30_set_supported_compressions(fax_get_t30_state(&fax_state),T30_SUPPORT_T6_COMPRESSION);
++t30_set_supported_compressions(fax_get_t30_state(&fax_state), T4_COMPRESSION_T6);
+ t30_set_tx_file(fax_get_t30_state(&fax_state),"abc",-1,-1);
+ t30_set_tx_ident(fax_get_t30_state(&fax_state),"xyz");
+ fax_set_transmit_on_idle(&fax_state,1);
+Index: yate/modules/faxchan.cpp
+===================================================================
+--- yate.orig/modules/faxchan.cpp
++++ yate/modules/faxchan.cpp
+@@ -300,27 +300,27 @@ unsigned long FaxConsumer::Consume(const
+ }
+ 
+ 
+-static int phase_b_handler(t30_state_t* s, void* user_data, int result)
++static int phase_b_handler(void* user_data, int result)
+ {
+     if (user_data)
+ 	static_cast<FaxWrapper*>(user_data)->phaseB(result);
+     return T30_ERR_OK;
+ }
+ 
+-static int phase_d_handler(t30_state_t* s, void* user_data, int result)
++static int phase_d_handler(void* user_data, int result)
+ {
+     if (user_data)
+ 	static_cast<FaxWrapper*>(user_data)->phaseD(result);
+     return T30_ERR_OK;
+ }
+ 
+-static void phase_e_handler(t30_state_t* s, void* user_data, int result)
++static void phase_e_handler(void* user_data, int result)
+ {
+     if (user_data)
+ 	static_cast<FaxWrapper*>(user_data)->phaseE(result);
+ }
+ 
+-static int document_handler(t30_state_t* s, void* user_data, int result)
++static int document_handler(void* user_data, int result)
+ {
+     if (user_data)
+ 	static_cast<FaxWrapper*>(user_data)->endDocument(result);
+@@ -387,8 +387,8 @@ void FaxWrapper::setECM(bool enable)
+ 	return;
+     t30_set_ecm_capability(m_t30,enable);
+     if (enable)
+-	t30_set_supported_compressions(m_t30,T30_SUPPORT_T4_1D_COMPRESSION |
+-	    T30_SUPPORT_T4_2D_COMPRESSION | T30_SUPPORT_T6_COMPRESSION);
++	t30_set_supported_compressions(m_t30, T4_COMPRESSION_T4_1D |
++	    T4_COMPRESSION_T4_2D | T4_COMPRESSION_T6);
+ }
+ 
+ // Start the terminal's running thread
+@@ -844,7 +844,7 @@ void FaxChan::updateInfo(t30_state_t* t3
+     Debug(this,DebugAll,"image resolution %d x %d", t.x_resolution, t.y_resolution);
+     Debug(this,DebugAll,"bad rows %d", t.bad_rows);
+     Debug(this,DebugAll,"longest bad row run %d", t.longest_bad_row_run);
+-    Debug(this,DebugAll,"compression type %d", t.encoding);
++    Debug(this,DebugAll,"compression type %d", t.compression);
+     Debug(this,DebugAll,"image size %d", t.image_size);
+ 
+     Debug(this,DebugAll,"local ident '%s'", t30_get_tx_ident(t30));
