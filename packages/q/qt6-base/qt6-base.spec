@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -39,6 +39,7 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
+Patch0:         0001-CMake-Don-t-hardcode-the-library-directory-name.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
@@ -621,6 +622,13 @@ any ABI or API guarantees.
 
 ### Plugins ###
 
+%package -n qt6-networkinformation-glib
+Summary:        Network information for QNetworkInformation using GNetworkMonitor
+
+%description -n qt6-networkinformation-glib
+Plugin using GNetworkMonitor to get network information such as the
+reachability, media type...
+
 %package -n qt6-networkinformation-nm
 Summary:        Network information for QNetworkInformation
 # Renamed in Qt 6.2
@@ -911,6 +919,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Core.so
 %{_qt6_metatypesdir}/qt6core_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_core.pri
+# workaround for boo#1195368, QTBUG-100370
 %{_qt6_mkspecsdir}/modules/qt_lib_core_private.pri
 %exclude %{_qt6_includedir}/QtCore/%{real_version}
 
@@ -1191,6 +1200,10 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_mkspecsdir}/modules/qt_lib_input_support_private.pri
 
 ### Plugins ###
+
+%files -n qt6-networkinformation-glib
+%dir %{_qt6_pluginsdir}/networkinformation/
+%{_qt6_pluginsdir}/networkinformation/libqglib.so
 
 %files -n qt6-networkinformation-nm
 %dir %{_qt6_pluginsdir}/networkinformation/

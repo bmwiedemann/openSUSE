@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:56:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0:
+  * https://www.qt.io/blog/qt-6.3-released
+
+-------------------------------------------------------------------
+Tue Mar 29 12:28:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0-rc
+- Add patch:
+  * 0001-CMake-Don-t-hardcode-the-library-directory-name.patch
+- Update build constraints
+
+-------------------------------------------------------------------
 Mon Mar 21 08:46:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.4
