@@ -32,6 +32,9 @@ BuildRequires:  javapackages-local
 BuildRequires:  log4j >= 2.0
 BuildRequires:  slf4j
 BuildRequires:  typesafe-config >= 1.3.0
+%if 0%{?rhel} >= 9
+BuildRequires:  xmvn-tools
+%endif
 BuildArch:      noarch
 
 %description
@@ -62,17 +65,21 @@ javac -d target/classes \
 
 jar cf target/%{git_tag}.jar -C target/classes .
 jar uf target/%{git_tag}.jar -C src/main/resources .
+%if ! 0%{?rhel} >= 9
 mkdir -p target/api
 javadoc -d target/api -source 7 \
   -classpath "$CLASS_PATH" \
   -notimestamp \
   $(find src/main/java -name \*.java | xargs)
-
+%endif
 sed "s/@mchange-commons-java.version.maven@/%{version}/g" \
   src/main/maven/pom.xml > target/%{git_tag}.pom
 %{mvn_artifact} target/%{git_tag}.pom target/%{git_tag}.jar
 
 %install
+%if 0%{?rhel}
+%mvn_install
+%else
 # jar
 install -d -m 755 %{buildroot}%{_javadir}/%{name}
 install -pm 644 target/%{git_tag}.jar %{buildroot}%{_javadir}/%{name}/mchange-commons-java.jar
@@ -80,16 +87,21 @@ install -pm 644 target/%{git_tag}.jar %{buildroot}%{_javadir}/%{name}/mchange-co
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
 install -pm 644 target/%{git_tag}.pom %{buildroot}%{_mavenpomdir}/%{name}/mchange-commons-java.pom
 %add_maven_depmap %{name}/mchange-commons-java.pom %{name}/mchange-commons-java.jar
+%endif
+
+%if ! 0%{?rhel} >= 9
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}
 cp -a target/api %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
+%endif
 
 %files -f .mfiles
 %license LICENSE*
-
+%if ! 0%{?rhel} >= 9
 %files javadoc
 %license LICENSE*
 %{_javadocdir}/%{name}
+%endif
 
 %changelog
