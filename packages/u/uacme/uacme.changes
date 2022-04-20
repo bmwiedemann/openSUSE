@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 19 13:43:24 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.7.1
+  * uacme: fix issue when running from inaccessible directory
+  * ualpn: use default user group when -u <user> is specified
+- Update to version 1.7.0
+  * uacme: alternate chain selection by certificate fingerprint
+    * print copyright with version
+  * ualpn: print copyright with version
+    * add notice with version on startup
+    * reject duplicate options where appropriate
+    * make ualpn.sh always outputs to stderr
+    * fix compilation warning
+- Update to version 1.6
+  * uacme: add support for RFC8555 External Account Binding
+    * fix use after free in surrogate strcasestr function
+    * make nsupdate.sh accept quoted TXT challenge values
+    * minor cosmetic changes to log messages
+- Rebased suse-www-path.patch
+
+-------------------------------------------------------------------
 Mon Aug 17 11:58:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5:
