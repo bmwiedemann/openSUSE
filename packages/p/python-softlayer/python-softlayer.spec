@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-softlayer
-Version:        5.9.8
+Version:        6.0.2
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT
 URL:            https://github.com/softlayer/softlayer-python
 Source:         https://github.com/softlayer/softlayer-python/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module click >= 7}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module prettytable >= 0.7.0}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pygments >= 2.0.0}

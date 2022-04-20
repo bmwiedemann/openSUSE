@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 19 09:40:42 UTC 2022 - pgajdos@suse.com
+
+- version update to 6.0.2
+  ## [6.0.2] - 2022-03-30
+  * New Command slcli hardware|virtual monitoring by @caberos
+  * When listing datacenters/pods, mark those that are closing soon. by @caberos
+  ## [6.0.1] - 2022-03-11
+  * Replace the use of ptable with prettytable by @dvzrv
+  * Bandwidth pool management by @caberos
+  * Add id
+  * Datacenter closure report by @allmightyspiff
+  * fix to errors
+  ## [5.9.9] - 2022-02-04
+  * Add loadbalancer timeout values #1576
+  * Add pricing date to slcli order preset-list #1578
+  * `slcli vlan create-options` add new feature on vlan #1572
+  * `slcli account bandwidth-pools` Bandwidth pool features #1579
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Tue Jan 11 05:56:49 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.9.8:
