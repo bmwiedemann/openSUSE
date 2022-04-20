@@ -23,15 +23,24 @@ Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
+Patch0:         fix-gdb-index.patch
+ExclusiveArch:  x86_64 aarch64 riscv64
 BuildRequires:  cmake
 %if %{suse_version} < 1550
 BuildRequires:  gcc10-c++
 %else
 # These libraries are not present for openSUSE Leap
 BuildRequires:  gcc-c++
+BuildRequires:  clang
+BuildRequires:  libdwarf-tools
+BuildRequires:  llvm-gold
 BuildRequires:  mimalloc-devel
 BuildRequires:  tbb-devel
+%ifarch x86_64
+BuildRequires:  gcc-32bit
 %endif
+%endif
+BuildRequires:  glibc-devel-static
 BuildRequires:  openssl-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
@@ -75,6 +84,15 @@ LIBEXECDIR=%{_libexecdir} \
 
 %install
 %make_install -e \
+PREFIX=%{_prefix} \
+BINDIR=%{_bindir} \
+MANDIR=%{_mandir} \
+LIBDIR=%{_libdir} \
+LIBEXECDIR=%{_libexecdir} \
+%{build_args}
+
+%check
+make test -k -e \
 PREFIX=%{_prefix} \
 BINDIR=%{_bindir} \
 MANDIR=%{_mandir} \

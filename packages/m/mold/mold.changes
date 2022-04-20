@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 20 06:50:40 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Run test serially.
+- Install some packages in order to increase test coverage.
+- Use ExclusiveArch.
+
+-------------------------------------------------------------------
+Tue Apr 19 06:43:50 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add fix-gdb-index.patch.
+- Enable tests.
+
+-------------------------------------------------------------------
 Fri Apr 15 11:53:51 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.2.0

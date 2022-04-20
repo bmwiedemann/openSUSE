@@ -110,4 +110,17 @@
     -Tdata, -Ttext, --oformat=binary, --disable-new-dtags</comment>
     <requestid>970337</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>66175bad4cac39b2be504654361294f5</srcmd5>
+    <version>1.2</version>
+    <time>1650466480</time>
+    <user>dimstar_suse</user>
+    <comment>- Run test serially.
+- Install some packages in order to increase test coverage.
+- Use ExclusiveArch.
+
+- Add fix-gdb-index.patch.
+- Enable tests.</comment>
+    <requestid>971086</requestid>
+  </revision>
 </revisionlist>
