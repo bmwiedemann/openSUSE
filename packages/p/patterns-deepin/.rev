@@ -41,4 +41,12 @@
     to fix input method cursor follow (forwarded request 963245 from hillwood)</comment>
     <requestid>963246</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>de6c84ca0385639b19a3c708f1ee2a91</srcmd5>
+    <version>15.4.20220320</version>
+    <time>1650467028</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 971091 from hillwood)</comment>
+    <requestid>971092</requestid>
+  </revision>
 </revisionlist>

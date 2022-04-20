@@ -136,9 +136,9 @@ Requires:       deepin-pw-check
 Requires:       deepin-session-shell
 Requires:       deepin-session-ui
 Requires:       deepin-start
-Requires:       libqt5-dwaylandplugin
+# Requires:       libqt5-dwaylandplugin
 Requires:       libqt5-dxcbplugin
-Requires:       libqt5-kwayland-shellplugin
+# Requires:       libqt5-kwayland-shellplugin
 Requires:       qt5integration
 Recommends:     sddm
 Recommends:     deepin-api-dbus
