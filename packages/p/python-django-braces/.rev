@@ -44,4 +44,12 @@
   * Add support for modern versions of Django</comment>
     <requestid>950843</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0d101562a04454dcdec02ce2adae0e3d</srcmd5>
+    <version>1.15.0</version>
+    <time>1650467025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971061</requestid>
+  </revision>
 </revisionlist>

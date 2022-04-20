@@ -30,7 +30,6 @@ Patch0:         modernize-braces.patch
 Patch1:         testhack.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module factory_boy}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
@@ -57,6 +56,7 @@ rm conftest.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+sed -i 's/import mock/from unittest import mock/' tests/test_*_mixins.py
 export DJANGO_SETTINGS_MODULE=tests.settings
 PYTHONPATH=.
 %pytest --nomigrations
