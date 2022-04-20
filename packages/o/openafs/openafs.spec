@@ -21,7 +21,7 @@
 %if ! %{defined _fillupdir}
 %define _fillupdir /var/adm/fillup-templates
 %endif
-%define _lto_cflags %{nil} 
+%define _lto_cflags %{nil}
 
 #
 #	TUNABLES
@@ -36,7 +36,7 @@
 %define build_kernel_modules 1
 
 # flag for firewalld, only required for SLE-12
-%if 0%{?sle_version} <= 120500 && !0%{?is_opensuse} 
+%if 0%{?sle_version} <= 120500 && !0%{?is_opensuse}
 %define have_firewalld 0
 %else
 %define have_firewalld 1
@@ -100,16 +100,21 @@ Source55:       openafs.SuidCells
 Source56:       openafs.CellAlias
 Source57:       openafs.ThisCell
 Source58:       openafs.cacheinfo
+Source98:       kmp_only.files
 Source99:       openafs.changes
-# PATCH-SUSE-SPECIFIC use proper directory layout
-Patch3:         dir_layout.patch
+# PATCH-FIX-UPSTREAM KMP build
+Patch1:         a714e86.diff
+Patch2:         449d1fa.diff
+# PATCH-FIX-UPSTREAM use gcc-11
+Patch3:         gcc-11.diff
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
-Patch4:         openafs-1.8.x.ncurses6.patch
+Patch4:         4cf7a9a.diff
 
 #
 #	GENERAL BuildRequires and Requires
 #
 
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  coreutils
@@ -124,22 +129,16 @@ BuildRequires:  krb5-devel
 BuildRequires:  libtirpc-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
-%if 0%{?suse_version} < 1120
-BuildRequires:  perl-macros
-%endif
 BuildRequires:  pkg-config
 BuildRequires:  swig
 
-%if 0%{?suse_version} < 1210
-Requires(post): %insserv_prereq
-%endif
 Requires(post): %fillup_prereq
 
-%if %{build_kernel_modules} 
+%if %{build_kernel_modules}
 BuildRequires:  %{kernel_module_package_buildreqs}
 %endif
 
-%description  
+%description
 AFS is a cross-platform distributed file system product pioneered at
 Carnegie Mellon University and supported and developed as a product by
 Transarc Corporation (now IBM Pittsburgh Labs). It offers a
@@ -266,8 +265,9 @@ independence, scalability, and transparent migration capabilities for
 data.
 
 This client is using the EXPERIMENTAL FUSE interface on LINUX.
-It does not offer authentication etc. 
+It does not offer authentication etc.
 
+%if %{build_kernel_modules}
 %package client
 Summary:        OpenAFS File System Client
 Group:          System/Filesystems
@@ -286,7 +286,7 @@ data.
 In addition, among its features are authentication, encryption,
 caching, disconnected operations, replication for higher availability
 and load balancing, and ACLs. This package contains the OpenAFS client.
-
+%endif
 
 %prep
 
@@ -308,17 +308,19 @@ and load balancing, and ACLs. This package contains the OpenAFS client.
 : @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 for src_file in %{S:0}  %{S:1}; do
-    if [ "`md5sum $src_file | awk '{print $1}'`" != "`cat $src_file.md5 | awk '{print $1}'`" ]; then 
-        echo "ERROR: MD5-Integrity check for $src_file failed."; 
+    if [ "`md5sum $src_file | awk '{print $1}'`" != "`cat $src_file.md5 | awk '{print $1}'`" ]; then
+        echo "ERROR: MD5-Integrity check for $src_file failed.";
         exit 1
     fi
-    if [ "`sha256sum $src_file | awk '{print $1}'`" != "`cat $src_file.sha256 | awk '{print $1}'`" ]; then 
-        echo "ERROR: SHA256-Integrity check for $src_file failed."; 
+    if [ "`sha256sum $src_file | awk '{print $1}'`" != "`cat $src_file.sha256 | awk '{print $1}'`" ]; then
+        echo "ERROR: SHA256-Integrity check for $src_file failed.";
         exit 1
     fi
 done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
+%patch1 -p1
+%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 
@@ -354,11 +356,14 @@ perl -pi -e 's,^(XLIBS.*),\1 -lresolv,' src/config/Makefile.amd64_linux24.in
 afs_sysname=${sysbase}_linux26
 
 RPM_OPT_FLAGS=`echo ${RPM_OPT_FLAGS} | sed s/-D_FORTIFY_SOURCE=2//`
-export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fPIC -fcommon" 
+export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fPIC -fcommon"
 
 export KRB5LIBS='-lcom_err -lkrb5'
 export PATH_KRB5_CONFIG=%{krb5_config}
-
+export afsdbdir='/var/lib/openafs/db'
+export afslocaldir='/var/lib/openafs'
+export afslogsdir='/var/log/openafs'
+export afsdbdir='/var/lib/openafs/db'
 %configure \
     --disable-transarc-paths \
     --disable-pam \
@@ -393,17 +398,18 @@ for flavor in %flavors_to_build; do
     make
     popd
 done
-%endif # build_kernel_modules
+%endif
+# build_kernel_modules
 
 %install
 
 #
-# install build binaries using  make 
+# install build binaries using  make
 
 make DESTDIR=%{buildroot} install_nolibafs
 
 #
-# man-pages 
+# man-pages
 
 OLD_PWD=`pwd`
 cd doc/man-pages
@@ -424,34 +430,40 @@ mkdir -p %{buildroot}/%{_sbindir}
 
 #
 # client
-cp -a src/afsd/CellServDB %{buildroot}/%{viceetcdir}/CellServDB
-cp -a %{S:55} %{buildroot}/%{viceetcdir}/SuidCells
+# also used by others
 cp -a %{S:56} %{buildroot}/%{viceetcdir}/CellAlias
 cp -a %{S:57} %{buildroot}/%{viceetcdir}/ThisCell
+cp -a src/afsd/CellServDB %{buildroot}/%{viceetcdir}/CellServDB
+cp -a %{S:55} %{buildroot}/%{viceetcdir}/SuidCells
 cp -a %{S:58} %{buildroot}/%{viceetcdir}/cacheinfo
+
+# kmp-only
+%if %{build_kernel_modules}
 cp -a src/afs/afszcm.cat %{buildroot}%{_datadir}/openafs/C
 install -m 644 %{S:27} %{buildroot}/%{_fillupdir}/sysconfig.openafs-client
-%if 0%{?sle_version} > 150000 
+%if 0%{?sle_version} > 150000
 install -m 644 %{S:24} %{buildroot}/%_unitdir/openafs-client.service
 %else
 install -m 644 %{S:23} %{buildroot}/%_unitdir
 %endif
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcopenafs-client
+%endif
 
 #
 # fuse client package
+
 install -m 644 %{S:29} %{buildroot}/%{_fillupdir}/sysconfig.openafs-fuse-client
 install -m 644 %{S:26} %{buildroot}/%_unitdir
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcopenafs-fuse-client
 
-# 
+#
 # server
 install -m 644 %{S:28} %{buildroot}/%{_fillupdir}/sysconfig.openafs-server
 install -m 644 %{S:25} %{buildroot}/%_unitdir
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcopenafs-server
 
 #
-# kernel-source 
+# kernel-source
 mkdir -p %{buildroot}/usr/src/kernel-modules/openafs
 chmod -R o-w src/libafs
 chmod -R o-w libafs_tree
@@ -475,6 +487,7 @@ done
 cp -a %{S:10} README.SUSE
 cp -a %{S:18} RELNOTES
 cp -a %{S:19} ChangeLog
+
 mkdir -p %{buildroot}/etc/ld.so.conf.d
 echo %{_libdir}/openafs > %{buildroot}/etc/ld.so.conf.d/openafs.conf
 
@@ -487,11 +500,11 @@ mv %{buildroot}/%{_bindir}/udebug %{buildroot}/%{_sbindir}/udebug
 # avoid conflicts with other packages by adding the prefix afs_ to filenames
 mv %{buildroot}%{_bindir}/scout %{buildroot}%{_bindir}/afs_scout
 cat %{buildroot}/%{_mandir}/man1/scout.1 | sed 's/\<scout\>/afs_scout/g' > %{buildroot}/%{_mandir}/man1/afs_scout.1
-rm %{buildroot}/%{_mandir}/man1/scout.1 
+rm %{buildroot}/%{_mandir}/man1/scout.1
 mv %{buildroot}%{_sbindir}/backup %{buildroot}%{_sbindir}/afs_backup
 OLD_PWD=`pwd`
 cd %{buildroot}/%{_mandir}/man8/
-for f in $(ls backup*); do 
+for f in $(ls backup*); do
     cat $f | sed 's/\<backup\>/afs_backup/g' > afs_"$f"
     rm $f
 done
@@ -533,13 +546,18 @@ install -D -m 644 %{S:47} %{buildroot}%{_prefix}/lib/firewalld/services/
 # we supposedly don't need this on linux
 rm %{buildroot}/%{_sbindir}/rmtsysd
 
-%if %{build_authlibs} == 0
+%if ! %{build_authlibs}
 rm %{buildroot}/%{_libdir}/libafsauthent.so.*
 rm %{buildroot}/%{_libdir}/libafsrpc.so.*
 rm %{buildroot}/%{_libdir}/libkopenafs.so.*
 rm %{buildroot}/%{_libdir}/libafsauthent.so
 rm %{buildroot}/%{_libdir}/libafsrpc.so
 rm %{buildroot}/%{_libdir}/libkopenafs.so
+%endif
+%if ! %{build_kernel_modules}
+for f in $(cat %{S:98}); do
+    rm -f %{buildroot}/$f
+done
 %endif
 
 # remove all static libraries
@@ -562,7 +580,7 @@ for d in %{buildroot}%{_mandir}/man*; do
             mv $f $f.gz
         elif [ -f $f ];then
             gzip -9 $f
-        else 
+        else
             echo "Unknown thing to compress : $f"
         fi
     done
@@ -628,6 +646,7 @@ fi
 #
 # client
 
+%if %{build_kernel_modules}
 %pre client
 %service_add_pre openafs-client.service
 
@@ -650,9 +669,9 @@ fi
 if [ $my_operation -gt 1 ]; then
     echo Not stopping the possibly running client.
     echo You must restart the client to put the upgrade into effect.
-else 
+else
     echo For configuring the client, please check /etc/sysconfig/openafs-client
-    echo and/or follow the instructions found on http://www.openafs.org  how to install an openafs-client. 
+    echo and/or follow the instructions found on http://www.openafs.org  how to install an openafs-client.
 fi
 
 %preun client
@@ -665,6 +684,7 @@ if [ -d /afs ]; then
 fi
 /sbin/ldconfig
 %service_del_postun openafs-client.service
+%endif
 
 #
 # server
@@ -683,11 +703,11 @@ if [ "$FIRST_ARG" -gt 1 ]; then
     echo You must restart the service to put the upgrade into effect.
     if [ -d /var/openafs ]; then
          echo To upgrade, stop the server, copy the contents of /var/openafs to /var/lib/openafs,
-         echo remove the empty directory /var/openafs and then start the server again. 
+         echo remove the empty directory /var/openafs and then start the server again.
     fi
-else 
+else
     echo For configuring the server, please check /etc/sysconfig/openafs-server
-    echo and/or follow the instructions found on http://www.openafs.org to install an openafs-client. 
+    echo and/or follow the instructions found on http://www.openafs.org to install an openafs-client.
 fi
 
 %preun server
@@ -718,7 +738,7 @@ fi
 #	FILES
 #
 
-%files           
+%files
 %defattr(-,root,root)
 %config /etc/ld.so.conf.d/openafs.conf
 %config(noreplace) %{viceetcdir}/CellAlias
@@ -729,7 +749,7 @@ fi
 %doc %{_mandir}/man1/afs.1.gz
 %doc %{_mandir}/man1/afs_compile_et.1.gz
 %doc %{_mandir}/man1/afs_scout.1.gz
-%doc %{_mandir}/man1/afsmonitor.1.gz 
+%doc %{_mandir}/man1/afsmonitor.1.gz
 %doc %{_mandir}/man1/cmdebug.1.gz
 %doc %{_mandir}/man1/pts.1.gz
 %doc %{_mandir}/man1/pts_*.gz
@@ -801,13 +821,14 @@ fi
 %{_fillupdir}/sysconfig.openafs-fuse-client
 %{vicecachedir}
 
+%if %{build_kernel_modules}
 %files client
 %defattr(-,root,root)
  %{_bindir}/fs
  %{_bindir}/aklog
  %{_bindir}/klog.krb5
  %{_bindir}/pagsh
- %{_bindir}/pagsh.krb	
+ %{_bindir}/pagsh.krb
  %{_bindir}/tokens
  %{_bindir}/tokens.krb
  %{_bindir}/unlog
@@ -846,8 +867,9 @@ fi
 %{_prefix}/lib/firewalld/services/afs3-callback.xml
 %{_prefix}/lib/firewalld/services/afs3-rmtsys.xml
 %endif
+%endif
 
-%files server 
+%files server
 %defattr(-,root,root)
 %attr(770,root,root) %dir %{afslocaldir}
 %attr(775,root,root) %dir %{afslogsdir}
@@ -922,11 +944,11 @@ fi
 %{_sbindir}/bos_util
 %{_sbindir}/bosserver
 %{_sbindir}/dafssync-debug
-%{_sbindir}/fssync-debug 
+%{_sbindir}/fssync-debug
 %{_sbindir}/prdb_check
 %{_sbindir}/pt_util
-%{_sbindir}/salvsync-debug 
-%{_sbindir}/state_analyzer 
+%{_sbindir}/salvsync-debug
+%{_sbindir}/state_analyzer
 %{_sbindir}/vldb_check
 %{_sbindir}/vldb_convert
 %{_sbindir}/voldump
@@ -938,7 +960,7 @@ fi
 %if %{have_firewalld}
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
-%{_prefix}/lib/firewalld/services/afs3-bos.xml  
+%{_prefix}/lib/firewalld/services/afs3-bos.xml
 %{_prefix}/lib/firewalld/services/afs3-fileserver.xml
 %{_prefix}/lib/firewalld/services/afs3-prserver.xml
 %{_prefix}/lib/firewalld/services/afs3-update.xml
@@ -946,7 +968,7 @@ fi
 %{_prefix}/lib/firewalld/services/afs3-volser.xml
 %endif
 
-%files devel  
+%files devel
 %defattr(-,root,root)
 %dir %{_libdir}/openafs
 %doc %{_mandir}/man1/livesys.1.gz
@@ -961,7 +983,7 @@ fi
 %dir %{perl_vendorlib}/AFS
 %{perl_vendorlib}/AFS/ukernel.pm
 
-%files  kernel-source 
+%files  kernel-source
 %defattr(-,root,root)
 %dir /usr/src/kernel-modules
 %dir /usr/src/kernel-modules/openafs

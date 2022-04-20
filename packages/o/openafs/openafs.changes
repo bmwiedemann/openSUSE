@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 20 06:24:41 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- apply patches marked for upcoming release:
+  * kernel 5.17: a714e86.diff and 449d1fa.diff
+  * gcc-11: gcc-11.diff 
+
+-------------------------------------------------------------------
+Mon Mar 28 20:27:18 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- do not create client-package without KMP 
+
+-------------------------------------------------------------------
+Mon Feb 21 10:48:51 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- remove patch dir_layout.patch
+  this can be done via environment-variables
+- replace openafs-1.8.x.ncurses6.patch with patch 4cf7a9a.diff.
+  4cf7a9a.diff is coming from upstream and will be incorporated at some point.
+
+-------------------------------------------------------------------
 Sun Jan 23 15:48:09 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - Update to new upstream release 1.8.8.1
