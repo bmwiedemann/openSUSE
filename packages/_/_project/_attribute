@@ -8,7 +8,7 @@
   boo#1176553: '20220311'
   boo#1183454: '20220419'
   boo#1189869: '20211207'
-  boo#1190434: '20220417'
+  boo#1190434: '20220419'
   boo#1190670: '20211128'
   boo#1190823: '20220409'
   boo#1191225: '20211210'
@@ -48,7 +48,7 @@
   boo#1195952: '20220314'
   boo#1196116: '20220216'
   boo#1196201: '20220227'
-  boo#1196335: '20220417'
+  boo#1196335: '20220419'
   boo#1196404: '20220301'
   boo#1196492: '20220224'
   boo#1196609: '20220419'
@@ -56,9 +56,9 @@
   boo#1196799: '20220313'
   boo#1196801: '20220312'
   boo#1196857: '20220321'
-  boo#1196862: '20220417'
+  boo#1196862: '20220419'
   boo#1196922: '20220419'
-  boo#1196978: '20220417'
+  boo#1196978: '20220419'
   boo#1197120: '20220419'
   boo#1197134: '20220327'
   boo#1197192: '20220407'
@@ -135,7 +135,7 @@
   poo#109422: '20220412'
   poo#109611: '20220419'
   poo#109731: '20220414'
-  poo#109983: '20220417'
+  poo#109983: '20220419'
   poo#110049: '20220419'
   poo#80628: '20220323'
   poo#91383: '20220111'
@@ -190,7 +190,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
-jobs_num: 290
+jobs_num: 322
 openqa_group: openSUSE Tumbleweed
 openqa_server: https://openqa.opensuse.org
 product_repo: images
@@ -518,9 +518,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220419'
-published: '20220415'
-publishing: '20220415'
+    <value>failed: ''
+published: '20220419'
+publishing: '20220419'
 testing: '20220419'
 </value>
   </attribute>
