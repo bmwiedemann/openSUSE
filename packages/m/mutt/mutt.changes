@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Tue Apr 19 10:50:23 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 2.2.3 (bsc#1198518 for CVE-2022-1328)
+  * Fix read past end of buf in is_mmnoask().
+  * Fix strlen() assigns to be of type size_t where obvious.
+  * Flush iconv() in mutt_convert_string().
+  * Add convert_string() size check.
+  * Fix integer overflow in mutt_convert_string().
+  * Fix uudecode cleanup on unexpected eof.
+  * Fix uudecode buffer overflow.
+  * automatic post-release commit for mutt-2.2.2
+  * Protect prompt completion memcpy() calls with a NULL check.
+  * Fix mutt.man formatting.
+  * Fix query menu tagging behavior.
+  * Fix some mailbox prompts to use mailbox history ring.
+  * automatic post-release commit for mutt-2.2.1
+  * Fix ambiguity in translation
+  * Update the Polish translation for Mutt 2.2.0
+  * Improve Turkish translations
+  * Fix mutt_paddstr() to properly filter unprintable chars.
+  * Change mailto_allow to be exact match only.
+  * Filter headers passed via the command line.
+  * Fix mbox.man asctime(3) reference.
+  * Clarify description of $local_date_header
+  * Don't queue IMAP close commands.
+  * Update Finnish translation.
+  * Updated Catalan translation.
+  * Updated Russian translation.
+  * Updated Ukrainian translation.
+  * Fix argc==0 handling.
+  * Update de.po.
+  * Update Turkish translations.
+  * Update Czech translation for mutt-2.2.0
+  * Update translation files copyright string.
+  * Updated French translation.
+  * Fix $status_format documentation of $sort_thread_groups expando.
+  * Update source file copyright lines based on commit history.
+  * Update manual and program copyright notices.
+  * Updated French translation.
+  * Add very basic cd path completion.
+  * Simplify the mutt_select_file() call for MUTT_CMD completion.
+  * Add memcpy on MUTT_CMD completion to invoke the file selector.
+  * Enable $rfc2047_parameters by default.
+  * Set environ for sendmail execvp() call.
+  * Updated French translation.
+  * Convert SMTP cyrus sasl to use buffers.
+  * Move hard_redraw() after sendmail invocation.
+  * Revert "Add $reply_prefix."
+  * Add config.h dependency for keymap_defs.h generation.
+  * Force resort_init if $reply_regexp changes.
+  * Add $reply_prefix.
+  * Localize $reply_regexp.
+  * Fix $reply_regexp default value.
+  * Fix manual generation string_unescape() of backslash values.
+  * Improve Turkish translations
+  * Add pager REDRAW_FLOW redraw flag when popping a menu.
+  * Merge branch 'stable'
+  * Add new gsasl files to POTFILES.in.
+  * Add GNU SASL support for authentication.
+  * Add mutt_socket_buffer_readln().
+  * Merge branch 'stable'
+  * simplify envelope subject handling code a little
+  * Update de.po
+  * Fix sidebar counters with $maildir_trash.
+  * Improve the statusbar modified flag for $maildir_trash.
+  * Ignore $delete when sync'ing with $maildir_trash set.
+  * Fix unused variable warning.
+  * Allow an empty To: address prompt.
+  * Convert COLOR_DEFAULT constant to -1.
+  * [Fix] poll to use PollFdsCount and no PollFdsLen
+  * Add a few mutt variable configure dependency comments.
+  * Fix color object case insensitive comparisons.
+  * Correct multipart/alternative manual section slightly.
+  * Add internal mutt_ctime() implementation.
+  * Improve pattern compiler whitespace skipping.
+  * Updated French translation.
+  * Remove trailing slashes when opening maildir/mh mailboxes.
+  * Note that IMAP mailboxes polling doesn't support flag counts.
+  * Add $attach_save_charset_convert quadoption.
+  * Remove unneeded type save/restores around mutt_decode_attachment().
+  * Improve smime_verify_one() error handling and general flow.
+  * Assert mutt_decode_attachment() doesn't modify body fields.
+  * Don't use subtraction for qsort numeric value comparisons.
+  * Fix alias menu multi-select documentation.
+  * Implement <select-entry> as <display-message> in index menu.
+  * Use km_error_key() in index only for OP_NULL.
+  * Generate URLs with user/password as parsed.
+  * Ensure embedded IMAP passwords are stored in context->path.
+  * Updated French translation.
+  * Fix yesorno help prompt printing of choice.
+  * Add $compose_confirm_detach_first, default set.
+  * Add a comment about msn_seqset generation and header cache holes.
+  * Use cms utility for SMIME encryption/decryption.
+  * Improve conststrings.c generation, mainly for GNU Autoconf 2.71.
+  * Updated French translation.
+  * Merge branch 'stable'
+  * Update Esperanto translation.
+  * Add robustness checks to file attach functions.
+  * Prompt for password when using encrypted client certificate
+  * Lazily update header colors after a thread-flag update.
+  * Add $sort_thread_groups for top-level thread sorting.
+  * Make index sort compare functions independent from config variables.
+  * Improve generic menu type handling.
+  * Break the menu OPS/funcs and keybindings into separate tables.
+  * Enable nonl() mode for ncurses.  closes #362.
+  * Revert "Silence strfcpy() warning in dotlock_deference_symlink()."
+  * Use memccpy() in the strfcpy macro if it's available.
+  * Fix typo in comment and function name: deference -> dereference.
+  * Silence strfcpy() warning in dotlock_deference_symlink().
+  * Add dprint for a backtick expansion with non-0 exit code.
+  * Use SEEK_SET and SEEK_END for fseek/fseeko whence parameter.
+  * Rewrite mutt_apply_replace() to use buffers.
+  * Increase scratch buf size in mutt_canonical_charset().
+  * Change hdrline make_from(_addr) to use snprintf for from.
+  * Silence compiler warning in _mutt_buffer_select_file().
+  * Use memcpy in fseek_last_message() instead of strncpy.
+  * Fix mutt_sasl buffer size to hold ip_port strings.
+  * Silence imap_make_date() warning by switching to a BUFFER.
+  * Silence compiler "may be uninitialized" warnings.
+  * Updated French translation.
+  * Add a help choice '?' to the yes or no prompt for quadoptions.
+  * Filter out group delimiters for encrypt keylist generation.
+  * contrib/markdown2html: properly deal with lead-ins
+  * contrib/markdown2html: properly deal with missing context
+  * contrib/markdown: fix bug when dealing with quotelead classes
+  * Exit with a failure for any usage or version write error.
+  * Really fix usage and version write error checking.
+  * Fix usage and version write error checking.
+  * Add usage and version write error checking.
+  * Check stdout is a terminal in curses mode.
+  * Add a hard redraw after oauth authentication.
+  * Fix classic pgp decrypt_part() hard redraw on error.
+  * Reset SIGPIPE signal handler in child process before exec().
+  * Add $pager_skip_quoted_context option.
+  * Updated French translation.
+  * Suggested translation changes.
+  * Directly add full mailbox to GPG search hints.
+- Port patches mainly hunk offsets
+  * aw.listreply.diff
+  * mutt-1.10.1-imap.patch
+  * mutt-1.13.3.dif
+  * mutt-1.5.15-wrapcolumn.diff
+  * mutt-1.5.20-sendgroupreplyto.diff
+  * mutt-1.5.21-mailcap.diff
+  * mutt-1.5.23-carriage-return.path
+  * mutt-1.6.1-opennfs.dif
+  * mutt-Fix-SIGQUIT-handling.patch
+  * patch-1.5.24.vk.pgp_verbose_mime
+  * widechar.sidebar.dif
+
+-------------------------------------------------------------------
 Mon Feb  7 10:22:43 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - For iconv glibc-locale should be installed 

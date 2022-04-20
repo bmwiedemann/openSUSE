@@ -8,7 +8,7 @@
 
 --- crypt-gpgme.c
 +++ crypt-gpgme.c	2019-11-13 13:46:16.512388398 +0000
-@@ -2731,7 +2731,7 @@ static void copy_clearsigned (gpgme_data
+@@ -2723,7 +2723,7 @@ static void copy_clearsigned (gpgme_data
  
      if (armor_header)
      {
@@ -39,7 +39,7 @@
    return strcasecmp(NONULL(a), NONULL(b));
 --- lib.h
 +++ lib.h	2019-11-13 13:47:17.399247662 +0000
-@@ -215,6 +200,7 @@ int mutt_copy_stream (FILE *, FILE *);
+@@ -225,6 +225,7 @@ int mutt_copy_stream (FILE *, FILE *);
  int mutt_copy_bytes (FILE *, FILE *, size_t);
  int mutt_strcasecmp (const char *, const char *);
  int mutt_strcmp (const char *, const char *);
@@ -113,7 +113,7 @@
  	key = 1;
      }
    }
-@@ -1299,9 +1299,9 @@ BODY *pgp_sign_message (BODY *a)
+@@ -1296,9 +1296,9 @@ BODY *pgp_sign_message (BODY *a)
     */
    while (fgets (buffer, sizeof (buffer) - 1, pgpout) != NULL)
    {

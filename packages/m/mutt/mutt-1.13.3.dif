@@ -59,7 +59,7 @@
  # note: these macros have been subsumed by the <browse-mailboxes> function.
 --- imap/auth.c
 +++ imap/auth.c	2020-01-14 13:04:28.102878757 +0000
-@@ -74,6 +74,25 @@ int imap_authenticate (IMAP_DATA* idata)
+@@ -79,6 +79,25 @@ int imap_authenticate (IMAP_DATA* idata)
        dprint (2, (debugfile, "imap_authenticate: Trying method %s\n", method));
        authenticator = imap_authenticators;
  
@@ -85,7 +85,7 @@
        while (authenticator->authenticate)
        {
  	if (!authenticator->method ||
-@@ -88,7 +107,9 @@ int imap_authenticate (IMAP_DATA* idata)
+@@ -93,7 +112,9 @@ int imap_authenticate (IMAP_DATA* idata)
  	authenticator++;
        }
      }
@@ -98,7 +98,7 @@
    else
 --- mx.c
 +++ mx.c	2020-01-14 13:04:28.102878757 +0000
-@@ -1485,6 +1485,9 @@ void mx_update_context (CONTEXT *ctx, in
+@@ -1501,6 +1501,9 @@ void mx_update_context (CONTEXT *ctx, in
    {
      h = ctx->hdrs[msgno];
  

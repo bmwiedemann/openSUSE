@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.1.5
+Version:        2.2.3
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -244,7 +244,6 @@ $KRB5CFGPATH --version
 	--with-curses=%{_prefix} \
 	--enable-smtp \
 	--enable-hcache \
-	--with-regex \
 %if 0%{?suse_version} > 1315
 	--with-idn2
 %else

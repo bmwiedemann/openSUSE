@@ -1275,4 +1275,41 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>954327</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>c8d5faf87e283d989c42e821ce377097</srcmd5>
+    <version>2.2.3</version>
+    <time>1650466517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt 2.2.3 (bsc#1198518 for CVE-2022-1328)
+  * Fix read past end of buf in is_mmnoask().
+  * Fix strlen() assigns to be of type size_t where obvious.
+  * Flush iconv() in mutt_convert_string().
+  * Add convert_string() size check.
+  * Fix integer overflow in mutt_convert_string().
+  * Fix uudecode cleanup on unexpected eof.
+  * Fix uudecode buffer overflow.
+  * automatic post-release commit for mutt-2.2.2
+  * Protect prompt completion memcpy() calls with a NULL check.
+  * Fix mutt.man formatting.
+  * Fix query menu tagging behavior.
+  * Fix some mailbox prompts to use mailbox history ring.
+  * automatic post-release commit for mutt-2.2.1
+  * Fix ambiguity in translation
+  * Update the Polish translation for Mutt 2.2.0
+  * Improve Turkish translations
+  * Fix mutt_paddstr() to properly filter unprintable chars.
+  * Change mailto_allow to be exact match only.
+  * Filter headers passed via the command line.
+  * Fix mbox.man asctime(3) reference.
+  * Clarify description of $local_date_header
+  * Don't queue IMAP close commands.
+  * Update Finnish translation.
+  * Updated Catalan translation.
+  * Updated Russian translation.
+  * Updated Ukrainian translation.
+  * Fix argc==0 handling.
+  * Update de.po.
+  * Update Turkish translations.</comment>
+    <requestid>970760</requestid>
+  </revision>
 </revisionlist>
