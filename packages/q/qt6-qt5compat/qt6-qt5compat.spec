@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-qt5compat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -40,10 +40,12 @@ BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
+BuildRequires:  qt6-shadertools-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(icu-i18n)
 %if "%{qt6_flavor}" == "docs"
