@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Apr 17 13:25:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build:
+  * 0001-Work-around-build-issue-in-pyside-6.3.patch
+- Rebase patch:
+  * 0001-Don-t-install-CMake-files-into-versioned-directories.patch
+
+-------------------------------------------------------------------
+Tue Apr 12 10:26:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0. Check the installed changes-6.3.0 file for the
+  complete list of changes.
+  * The QtNfc module has been added.
+  * New QML tools have been added: pyside6-metaobjectdump,
+    pyside6-qmltyperegistrar and pyside6-qmllint.
+  * Several class decorators have been added for QML: QmlAttached,
+   QmlExtended, QmlForeign, QmlNamedElement, QmlSingleton and
+   QmlUncreatable.
+  * class QPyQmlPropertyValueSource for implementing QML value
+    property sources has been added.
+  * QML code has been split out from libpyside into a new library
+    libpysideqml. libpyside thus no longer depends on QtQml and
+    pyside.h no longer includes QML headers. pyside.h has been
+    split into smaller headers.
+  * A context manager for override cursors has been added. It is
+    now possible to write code like: with
+    QApplication.setOverrideCursor(Qt.WaitCursor):...
+- Don't build QtWebEngine bindings on 32 bits archs.
+
+-------------------------------------------------------------------
 Wed Mar 23 11:37:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.4

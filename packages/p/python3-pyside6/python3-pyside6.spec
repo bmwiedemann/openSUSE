@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside6
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -35,6 +35,8 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Always-link-to-python-libraries.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0001-Work-around-build-issue-in-pyside-6.3.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes
@@ -100,7 +102,7 @@ BuildRequires:  cmake(Qt6SvgWidgets)
 BuildRequires:  cmake(Qt6UiPlugin)
 BuildRequires:  cmake(Qt6UiTools)
 BuildRequires:  cmake(Qt6WebChannel)
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%ifnarch %{ix86} armv7l armv7hl ppc ppc64 ppc64le s390 s390x
 BuildRequires:  cmake(Qt6WebEngineCore)
 BuildRequires:  cmake(Qt6WebEngineQuick)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
@@ -143,7 +145,8 @@ pushd sources/%{pyside_flavor}
   -DCMAKE_EXE_LINKER_FLAGS:STRING="" \
   -DPYTHON_EXECUTABLE:STRING=python3 \
   -DNUMPY_INCLUDE_DIR:STRING=%{python_sitearch}/numpy/core/include \
-  -DCMAKE_BUILD_RPATH_USE_ORIGIN:BOOL=ON
+  -DCMAKE_BUILD_RPATH_USE_ORIGIN:BOOL=ON \
+  -DQFP_NO_STRIP:BOOL=ON
 
 %{qt6_build}
 
@@ -158,7 +161,7 @@ popd
 
 %fdupes -s %{buildroot}%{python_sitearch}
 
-sed -i 's#env python#python3#' %{buildroot}%{_bindir}/shiboken_tool.py
+sed -i 's#env python$#python3#' %{buildroot}%{_bindir}/shiboken_tool.py
 
 %else
 
@@ -206,7 +209,11 @@ popd
 
 %files
 %license sources/%{pyside_flavor}/COPYING*
+%doc doc/changelogs/changes-*
 %{_libdir}/lib%{pyside_flavor}.%{py3_soflags}.so.*
+%if "%{pyside_flavor}" == "pyside6"
+%{_libdir}/libpyside6qml.%{py3_soflags}.so.*
+%endif
 %if "%{pyside_flavor}" == "shiboken6"
 %{_bindir}/shiboken6
 %{_bindir}/shiboken_tool.py
@@ -222,12 +229,17 @@ popd
 %if "%{pyside_flavor}" == "shiboken6"
 %{_includedir}/shiboken6/
 %{_qt6_cmakedir}/Shiboken6/
+%{_qt6_cmakedir}/Shiboken6Tools/
 %else
 %{_datadir}/PySide6/
 %{_includedir}/PySide6/
 %{_qt6_cmakedir}/PySide6/
+%{_qt6_cmakedir}/PySide6Qml/
 %endif
 %{_libdir}/lib%{pyside_flavor}.%{py3_soflags}.so
+%if "%{pyside_flavor}" == "pyside6"
+%{_libdir}/libpyside6qml.%{py3_soflags}.so
+%endif
 %{_libdir}/pkgconfig/%{pyside_flavor}.pc
 
 %changelog
