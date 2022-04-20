@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -42,7 +42,7 @@
 %bcond_without system_minizip
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -50,21 +50,19 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         CVE-2022-0971-qtwebengine-5.15.patch
-Patch1:         CVE-2022-1096-qtwebengine-6.2.patch
+Patch0:         qtwebengine-icu70.patch
+Patch1:         0001-Find-GIO-with-QtBase-6.2.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
-Patch101:       sandbox-statx-futex_time64.patch
-# PATCH-FIX-UPSTREAM
-Patch102:       0001-Fix-build-with-glibc-2.34.patch
 # PATCH-FIX-OPENSUSE -- disable-gpu-when-using-nouveau-boo-1005323.diff
 # PATCH-NEEDS-REBASE
 %if 0
-Patch103:       disable-gpu-when-using-nouveau-boo-1005323.diff
+Patch101:       disable-gpu-when-using-nouveau-boo-1005323.diff
 %endif
 #
-# Chromium/blink don't support all archs
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
+# Chromium/blink don't support PowerPC and zSystems and build fails on
+# 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
+ExclusiveArch:  aarch64 x86_64 riscv64
 BuildRequires:  Mesa-KHR-devel
 BuildRequires:  bison
 # Not pulled automatically on Leap
@@ -75,17 +73,13 @@ BuildRequires:  krb5-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel >= 1.6.0
 BuildRequires:  memory-constraints
-# nodejs-default doesn't exist on Leap 15.2
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150200
-BuildRequires:  nodejs-common
-%else
 BuildRequires:  nodejs-default
-%endif
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  python-devel
 BuildRequires:  python-xml
+BuildRequires:  python3-html5lib
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-qml-private-devel

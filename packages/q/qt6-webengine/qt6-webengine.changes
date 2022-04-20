@@ -1,9 +1,32 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:57:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0:
+  * https://www.qt.io/blog/qt-6.3-released
+- Drop patches, now upstream:
+  * CVE-2022-0971-qtwebengine-5.15.patch
+  * CVE-2022-1096-qtwebengine-6.2.patch
+
+-------------------------------------------------------------------
 Mon Apr  4 20:41:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add security fixes:
   * CVE-2022-0971-qtwebengine-5.15.patch (CVE-2022-0971, boo#1197163)
   * CVE-2022-1096-qtwebengine-6.2.patch (CVE-2022-1096, boo#1197552)
+
+-------------------------------------------------------------------
+Tue Mar 29 12:28:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0-rc
+- Drop patches, fixed upstream:
+  * Drop sandbox-statx-futex_time64.patch
+  * 0001-Fix-build-with-glibc-2.34.patch
+- Add upstream changes:
+  * qtwebengine-icu70.patch
+  * 0001-Find-GIO-with-QtBase-6.2.patch
+- Disable build on 32 bits archs (i586, armv7l)
+  Build fails (QTBUG-102143) and upstream doesn't support 32 bits
+  archs.
 
 -------------------------------------------------------------------
 Mon Mar 21 08:46:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
