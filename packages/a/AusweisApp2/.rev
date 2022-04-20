@@ -116,4 +116,20 @@
     <comment></comment>
     <requestid>957037</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f159d0c660321a65120bf9acbc97fb73</srcmd5>
+    <version>1.22.5</version>
+    <time>1650466515</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.22.5
+    * Update of the release notes has been corrected.
+    * On Windows 10, the window size is no longer
+      changed after a language change.
+    * Minor bug fixes and optimizations.
+    * Under certain circumstances it was possible that
+      the SDK did not send an INSERT_CARD message.
+    * Update of OpenSSL to version 1.1.1n. (forwarded request 970378 from glaubitz)</comment>
+    <requestid>970761</requestid>
+  </revision>
 </revisionlist>

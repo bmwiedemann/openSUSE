@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 15 19:45:41 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.22.5
+    * Update of the release notes has been corrected.
+    * On Windows 10, the window size is no longer
+      changed after a language change.
+    * Minor bug fixes and optimizations.
+    * Under certain circumstances it was possible that
+      the SDK did not send an INSERT_CARD message.
+    * Update of OpenSSL to version 1.1.1n.
+
+-------------------------------------------------------------------
 Fri Feb 18 06:36:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
