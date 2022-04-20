@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-wayland
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -38,8 +38,6 @@ License:        GPL-3.0-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-o
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-wayland-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-CMake-Fix-qtwayland-feature-detection.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -76,6 +74,8 @@ The Qt6 Wayland libraries and tools.
 Summary:        Qt6 Wayland development meta package
 Requires:       cmake(Qt6WaylandClient) = %{real_version}
 Requires:       cmake(Qt6WaylandCompositor) = %{real_version}
+# This package contains information on features enabled at build time
+Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
 
 %description devel
 This meta-package requires all the qt6-wayland development packages.
@@ -111,6 +111,7 @@ Requires:       libQt6WaylandClient6 = %{version}
 # qtwaylandscanner is required
 Requires:       qt6-wayland = %{version}
 Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
 
 %description -n qt6-waylandclient-devel
 Development files for the Qt6 WaylandClient library.
@@ -136,6 +137,7 @@ Requires:       cmake(Qt6Gui)
 Requires:       cmake(Qt6OpenGL)
 Requires:       cmake(Qt6Qml)
 Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
 
 %description -n qt6-waylandcompositor-devel
 Development files for the Qt6 WaylandCompositor library.
@@ -147,6 +149,13 @@ Requires:       cmake(Qt6WaylandCompositor) = %{real_version}
 %description -n qt6-waylandcompositor-private-devel
 This package provides private headers of libQt6WaylandCompositor that do not
 have any ABI or API guarantees.
+
+%package -n qt6-waylandglobal-private-devel
+Summary:        Collection of build features used by qt6-wayland libraries
+
+%description -n qt6-waylandglobal-private-devel
+This package contains enabled features information shared by all the
+qt6-wayland libraries.
 
 ### Private only libraries ###
 
@@ -265,7 +274,6 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %dir %{_qt6_cmakedir}/Qt6
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtWaylandTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6/FindWaylandkms.cmake
-%{_qt6_cmakedir}/Qt6/FindXComposite.cmake
 %{_qt6_cmakedir}/Qt6WaylandClient/
 %{_qt6_cmakedir}/Qt6WaylandScannerTools/
 %{_qt6_descriptionsdir}/WaylandClient.json
@@ -296,6 +304,12 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %files -n qt6-waylandcompositor-private-devel
 %{_qt6_includedir}/QtWaylandCompositor/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositor_private.pri
+
+%files -n qt6-waylandglobal-private-devel
+%{_qt6_cmakedir}/Qt6WaylandGlobalPrivate/
+%{_qt6_descriptionsdir}/WaylandGlobalPrivate.json
+%{_qt6_includedir}/QtWaylandGlobal/
+%{_qt6_mkspecsdir}/modules/qt_lib_waylandglobal_private.pri
 
 ### Private only libraries ###
 

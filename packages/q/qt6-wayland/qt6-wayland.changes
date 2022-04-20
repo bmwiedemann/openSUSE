@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:57:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0:
+  * https://www.qt.io/blog/qt-6.3-released
+
+-------------------------------------------------------------------
+Tue Mar 29 12:28:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0-rc
+- Drop patch, fixed upstream:
+  * 0001-CMake-Fix-qtwayland-feature-detection.patch
+
+-------------------------------------------------------------------
 Mon Mar 21 08:46:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.4
