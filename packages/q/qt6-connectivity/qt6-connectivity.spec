@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-connectivity
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -127,7 +127,6 @@ The packages that build against these have to require the exact Qt version.
 %files devel
 %{_qt6_cmakedir}/Qt6/FindBlueZ.cmake
 %{_qt6_cmakedir}/Qt6Bluetooth/
-%{_qt6_cmakedir}/Qt6BluetoothTools/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtConnectivityTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Nfc/
 %{_qt6_descriptionsdir}/Bluetooth.json
