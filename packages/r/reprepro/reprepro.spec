@@ -1,7 +1,7 @@
 #
 # spec file for package reprepro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,13 @@ Summary:        Debian repository metadata generator
 License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT
 URL:            https://salsa.debian.org/debian/reprepro
 Source:         https://salsa.debian.org/debian/reprepro/-/archive/reprepro-%version/reprepro-reprepro-%version.tar.bz2
+Patch1:         0001-add-zstd-support.patch
 BuildRequires:  automake
-BuildRequires:  libbz2-devel
 BuildRequires:  gpgme-devel
 BuildRequires:  libarchive-devel
+BuildRequires:  libbz2-devel
 BuildRequires:  libdb-4_8-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 
@@ -40,7 +42,7 @@ Checking signatures of mirrored repositories and creating signatures of the
 generated Package indexes is supported.
 
 %prep
-%autosetup -n %name-%name-%version
+%autosetup -p1 -n %name-%name-%version
 find docs -type f -exec chmod -x {} +
 
 %build
