@@ -20,7 +20,7 @@
 %define majorver 6.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.16
+Version:        %{majorver}.17
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -34,8 +34,7 @@ Source5:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source6:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 Source7:        openSUSE-trytond-setup
 Source20:       %{name}.service
-Patch0:         fix_werkzeug_2.x.patch
-Patch1:         Update_changed_fields_6.0.diff
+Patch0:         Update_changed_fields_6.0.diff
 BuildRequires:  fdupes
 BuildRequires:  python3-Werkzeug
 BuildRequires:  python3-bcrypt
@@ -85,13 +84,7 @@ security.
 %setup -q
 cp %{SOURCE1} .
 
-#Werkzeug2 is not compatible with Werkzeug 1.x, so we need a conditional patch
-echo 0%{?suse_version}
-%if 0%{?suse_version} >= 1550
 %patch0 -p1
-%endif
-
-%patch1 -p1
 
 %build
 %python3_build
