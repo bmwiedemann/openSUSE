@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webchannel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtwebchannel-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webchannel%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt 6 WebChannel library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -36,6 +36,7 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-webchannel-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  qt6-core-private-devel
+BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Qml)
