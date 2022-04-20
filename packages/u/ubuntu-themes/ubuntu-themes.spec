@@ -1,7 +1,7 @@
 #
 # spec file for package ubuntu-themes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ubuntu-themes
-Version:        19.04
+Version:        20.10
 Release:        0
 Summary:        Eyecandy from Ubuntu
 License:        GPL-3.0-or-later
@@ -26,8 +26,8 @@ Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{v
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildArch:      noarch
-BuildRequires:  python2
-BuildRequires:  python2-xml
+BuildRequires:  python3
+BuildRequires:  python3-xml
 
 %description
 Ubuntu GNU/Linux basic artwork.
@@ -112,7 +112,7 @@ Dark and Light panel icons to make desktop beautiful.
 %prep
 %setup -q
 
-sed -i '1s|^#!.*$|#!%{_bindir}/python2|' *.py
+sed -i '1s|^#!.*$|#!%{_bindir}/python3|' *.py
 
 %build
 %make_build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 19 13:28:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20.10
+  * Set color for gnome-flashback desktop icons.
+  * Build requires python3 instead of python2
+
+-------------------------------------------------------------------
 Tue Mar  2 13:34:38 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - fix tumbleweed build
