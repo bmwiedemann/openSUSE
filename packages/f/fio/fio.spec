@@ -1,7 +1,7 @@
 #
 # spec file for package fio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %endif
 %bcond_without librdmacm
 Name:           fio
-Version:        3.29
+Version:        3.30
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
@@ -111,8 +111,8 @@ make %{?_smp_mflags} test
 
 %files
 %license COPYING MORAL-LICENSE
-%doc README examples
-%doc HOWTO REPORTING-BUGS
+%doc README.rst examples
+%doc HOWTO.rst REPORTING-BUGS
 %doc GFIO-TODO SERVER-TODO STEADYSTATE-TODO
 %{_bindir}/fio
 %{_bindir}/fiologparser.py
