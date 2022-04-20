@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -65,7 +65,6 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6PrintSupport)
-BuildRequires:  cmake(Qt6QmlDevToolsPrivate)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6Sql)
@@ -407,8 +406,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_pluginsdir}/designer/libqquickwidget.so
 
 %files helpgenerators
-%{_bindir}/qhelpgenerator6
-%{_qt6_bindir}/qhelpgenerator
+%{_qt6_libexecdir}/qhelpgenerator
 
 %files linguist
 %dir %{_qt6_datadir}/phrasebooks
