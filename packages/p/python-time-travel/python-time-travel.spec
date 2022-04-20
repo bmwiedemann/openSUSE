@@ -1,7 +1,7 @@
 #
 # spec file for package python-time-travel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION tests
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module mock}
 # /SECTION
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -51,6 +50,8 @@ A python library that helps users write deterministic tests for time sensitive a
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/snudler6/time-travel/issues/67
+sed -i 's:import mock:from unittest import mock:' src/tests/example/test_wait_and_respond.py
 %pytest
 
 %files %{python_files}
