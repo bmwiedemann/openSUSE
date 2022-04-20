@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 16 13:02:39 UTC 2022 - Mark Nefedov <mark_nefedov@runbox.com>
+
+- Update to version 1.19
+  * Custom visualisation shaders have been refactored to be more
+  portable and re-usable between APIs.
+  * The location breadcrumbs in the event browser now has an
+  edit button to edit the 'path' as a text string.
+
+-------------------------------------------------------------------
 Thu Jan 27 15:59:49 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.18
