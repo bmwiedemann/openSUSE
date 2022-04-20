@@ -308,4 +308,12 @@
     <comment>- skip uuid tests</comment>
     <requestid>958218</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>7dc52909266a860e0da80e8105a7c80a</srcmd5>
+    <version>0.38.2</version>
+    <time>1650467031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971121</requestid>
+  </revision>
 </revisionlist>

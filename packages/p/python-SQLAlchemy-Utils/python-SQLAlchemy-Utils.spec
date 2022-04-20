@@ -37,7 +37,6 @@ BuildRequires:  %{python_module docutils >= 0.10}
 BuildRequires:  %{python_module flexmock >= 0.9.7}
 BuildRequires:  %{python_module furl >= 0.4.1}
 BuildRequires:  %{python_module intervals >= 0.7.1}
-BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module passlib >= 1.6}
 BuildRequires:  %{python_module pendulum >= 2.0.5}
 BuildRequires:  %{python_module phonenumbers >= 5.9.2}
@@ -83,6 +82,8 @@ Various utility functions and custom data types for SQLAlchemy.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/kvesteri/sqlalchemy-utils/issues/594
+sed -i 's:import mock:from unittest import mock:' tests/types/test_password.py
 # needs running pgsql / mssql / mysql
 rm tests/test_asserts.py
 rm tests/test_translation_hybrid.py
