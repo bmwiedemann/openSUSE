@@ -32,7 +32,6 @@ BuildRequires:  %{python_module coverage >= 3.6}
 BuildRequires:  %{python_module cryptography >= 2.1.1}
 BuildRequires:  %{python_module defusedxml >= 0.5.0}
 BuildRequires:  %{python_module httpretty}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module oauthlib >= 1.0.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jose >= 3.0.0}
