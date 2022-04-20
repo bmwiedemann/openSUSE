@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 13 01:23:45 UTC 2022 - olaf@aepfle.de
+
+- Fix GTK_DOC_CHECK bug with virt-sandbox.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 16:58:05 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link executables position-independent (bsc#1184124).
