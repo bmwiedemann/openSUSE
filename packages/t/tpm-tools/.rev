@@ -265,4 +265,12 @@
   - add 0001-tpm_version-avoid-outputting-undefined-data-on-stder.patch</comment>
     <requestid>923211</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>1601c6c0dc020e9bcad73c4f78e2172b</srcmd5>
+    <version>1.3.9.2</version>
+    <time>1650466609</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>970865</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 12 14:08:44 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- changed source url to https
+
+-------------------------------------------------------------------
 Tue Oct  5 12:10:20 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - fix undefined and binary data being output in the tpm_version command

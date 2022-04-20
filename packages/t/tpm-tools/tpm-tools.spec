@@ -1,7 +1,7 @@
 #
 # spec file for package tpm-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        Trusted Platform Module (TPM) administration tools
 License:        IPL-1.0
 Group:          Productivity/Security
 URL:            http://trousers.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/trousers/tpm-tools/%{version}/tpm-tools-%{version}.tar.gz
+Source0:        https://downloads.sourceforge.net/project/trousers/tpm-tools/%{version}/tpm-tools-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
