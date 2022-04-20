@@ -1,7 +1,7 @@
 #
 # spec file for package lsvpd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lsvpd
-Version:        1.7.13
+Version:        1.7.14
 Release:        0
 Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel
 BuildRequires:  libtool
-BuildRequires:  libvpd2-devel
+BuildRequires:  libvpd-devel
 BuildRequires:  sg3_utils-devel
 BuildRequires:  zlib-devel
 Requires:       /bin/sed
