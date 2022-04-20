@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 18 14:41:02 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.22:
+  * Add --use-glacier-ir option for instant retrieval.
+  * Add --par2-volumes entry to man page.
+  * Add option --show-changes-in-set <index> to collection-status.
+  * Add warning for replicate command.
+  * Add --no-files-changed option.
+  * Fix use of sorted() builtin (does not sort in place).
+  * Fix TypeError in restart\_position\_iterator.
+  * Slate Backend.
+
+-------------------------------------------------------------------
 Fri Dec 10 09:10:24 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is deprecated
