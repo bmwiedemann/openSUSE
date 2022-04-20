@@ -106,4 +106,19 @@
     <comment>- Fix build without python2</comment>
     <requestid>784151</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>c77d222128c44e4750578977c063a59f</srcmd5>
+    <version>4.1.3</version>
+    <time>1650467033</time>
+    <user>dimstar_suse</user>
+    <comment>I would rather like to remove this package from Factory altogether,
+but Neal is blocking the flask-oidc removal ATM.
+
+- Stop testing the Flask contrib: Changes in Flask and Werkzeug
+  stopped support for this legacy package
+  * gh#puiterwijk/flask-oidc#138
+  * See discussion in sr#970241
+  * https://pagure.io/pagure/issue/5288 (forwarded request 971046 from bnavigator)</comment>
+    <requestid>971128</requestid>
+  </revision>
 </revisionlist>

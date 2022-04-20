@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 20 09:23:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Stop testing the Flask contrib: Changes in Flask and Werkzeug
+  stopped support for this legacy package
+  * gh#puiterwijk/flask-oidc#138
+  * See discussion in sr#970241
+  * https://pagure.io/pagure/issue/5288
+
+-------------------------------------------------------------------
 Thu Mar 12 07:27:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

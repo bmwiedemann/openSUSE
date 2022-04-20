@@ -1,7 +1,7 @@
 #
 # spec file for package python-oauth2client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Summary:        Pythob OAuth2 Client
 License:        Apache-2.0
 URL:            https://github.com/google/oauth2client
 Source0:        https://files.pythonhosted.org/packages/source/o/oauth2client/oauth2client-%{version}.tar.gz
-BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module httplib2 >= 0.9.1}
@@ -112,7 +111,11 @@ rm tests/contrib/test_xsrfutil.py
 
 %check
 export DJANGO_SETTINGS_MODULE=tests.contrib.django_util.settings
-%pytest
+# flask does not support oauth2 with this legacy package anymore
+# https://github.com/puiterwijk/flask-oidc/issues/138
+# https://pagure.io/pagure/issue/5288
+# https://build.opensuse.org/request/show/970241
+%pytest --ignore tests/contrib/test_flask_util.py
 
 %files %{python_files}
 %license LICENSE
