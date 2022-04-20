@@ -1,7 +1,7 @@
 #
 # spec file for package clamav
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,9 @@ Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
 Group:          Productivity/Security
-URL:            http://www.clamav.net
-Source0:        http://www.clamav.net/downloads/production/%{name}-%{version}.tar.gz
-Source1:        http://www.clamav.net/downloads/production/%{name}-%{version}.tar.gz.sig
+URL:            https://www.clamav.net
+Source0:        https://www.clamav.net/downloads/production/%{name}-%{version}.tar.gz
+Source1:        https://www.clamav.net/downloads/production/%{name}-%{version}.tar.gz.sig
 Source4:        clamav-rpmlintrc
 Source6:        clamav-tmpfiles.conf
 Source7:        service.clamd
