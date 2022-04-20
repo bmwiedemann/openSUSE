@@ -38,6 +38,9 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  mchange-commons >= %{mchange_commons_min_version}
+%if 0%{?rhel} >= 9
+BuildRequires:  xmvn-tools
+%endif
 Requires:       mchange-commons = %{mchange_commons_version}
 %if 0%{?rhel}
 Requires(post): chkconfig
@@ -71,14 +74,18 @@ export CLASSPATH=
 export OPT_JAR_LIST="ant/ant-nodeps"
 ant \
     -Dmchange-commons-java.jar.file=%{_javadir}/mchange-commons/mchange-commons-java.jar \
-	-Djunit.jar.file=$(build-classpath junit) -Djvm.target.version=8 \
+    -Djunit.jar.file=$(build-classpath junit) -Djvm.target.version=8 \
     jar javadoc
 
 sed -i "s/@c3p0.version.maven@/%{version}/g" src/maven/pom.xml
 sed -i "s/@mchange-commons-java.version.maven@/%{mchange_commons_version}/g" \
   src/maven/pom.xml
+%mvn_artifact src/maven/pom.xml build/%{name}-%{version}.jar
 
 %install
+%if 0%{?rhel}
+%mvn_install
+%else
 # jars
 mkdir -p %{buildroot}%{_javadir}
 cp -p build/%{name}-%{version}.jar \
@@ -89,6 +96,7 @@ cp -p build/%{name}-%{version}.jar \
 mkdir -p %{buildroot}%{_mavenpomdir}
 cp -p src/maven/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
 %add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar -a c3p0:c3p0
+%endif
 
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}-%{version}
