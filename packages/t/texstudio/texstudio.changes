@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 17 12:23:44 UTC 2022 - Markus Ebner <info@ebner-markus.de>
+- Update to version 4.2.3
+  * fix unable to save under special circumstances (#2124)
+  * fix stuck to save unsaved document (only in explicit root mode and with a new unsaved document,#2153) 
+  * xindex engine added
+  * fix math highlighting in keyvals (#2138)
+  * add context menu in embbeded pdf viewer to invert pdf colors
+  * remember window state (maximized/normal) of config dialog
+  * fix (and speed-up) miktex package detection
+  * fix handling apostrophed words better in spellchecker (#2179)
+  * regular expression in extended search behave the same as in normal search
+  * more cwls
+
+-------------------------------------------------------------------
 Tue Mar 15 12:14:44 UTC 2022 - Markus Ebner <info@ebner-markus.de>
 - Update to version 4.2.2
   * more cwls
