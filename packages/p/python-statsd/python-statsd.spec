@@ -1,7 +1,7 @@
 #
 # spec file for package python-statsd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jsocol/pystatsd
 Source:         https://files.pythonhosted.org/packages/source/s/statsd/statsd-%{version}.tar.gz
 Patch0:         remove-nose.patch
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,6 +49,8 @@ for the statsd daemon.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/jsocol/pystatsd/pull/150
+sed -i 's:import mock:from unittest import mock:' statsd/tests.py
 %pytest statsd/tests.py
 
 %files %{python_files}

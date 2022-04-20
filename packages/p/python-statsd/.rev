@@ -51,4 +51,12 @@
   * Use pytest for the testsuite, and switch to bare asserts.</comment>
     <requestid>923142</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f59dffaadb079378fb64c3b25583d00c</srcmd5>
+    <version>3.3.0</version>
+    <time>1650466600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970852</requestid>
+  </revision>
 </revisionlist>
