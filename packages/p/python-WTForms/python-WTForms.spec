@@ -27,12 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms
 # Source:         wtforms-%%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module MarkupSafe}
-BuildRequires:  %{python_module email_validator}
+BuildRequires:  %{python_module email-validator}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-MarkupSafe
-Requires:       python-email_validator
+Requires:       python-email-validator
 Recommends:     python-Babel
 Recommends:     python-Django
 Recommends:     python-SQLAlchemy

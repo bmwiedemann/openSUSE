@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 19 17:56:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Follow the change of the email_validator -> email-validator
+  Python package.
+
+-------------------------------------------------------------------
 Sat Apr 16 12:47:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.0.1:

@@ -149,4 +149,12 @@ Required for python-puppetboard SR 263316</comment>
     <comment></comment>
     <requestid>970472</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>57ce3463f599ff75753217a0cd0d4426</srcmd5>
+    <version>3.0.1</version>
+    <time>1650466631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970997</requestid>
+  </revision>
 </revisionlist>
