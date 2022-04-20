@@ -24,7 +24,7 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2.0
+Version:        2.1.1
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
@@ -61,6 +61,7 @@ Supplements:    modalias(pci:v00008086d00004B58sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AD0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051C8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051CCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000054C8sv*sd*bc*sc*i*)
 # Broadwell
 Supplements:    modalias(acpi*:INT3438:*)
 # Baytrail
