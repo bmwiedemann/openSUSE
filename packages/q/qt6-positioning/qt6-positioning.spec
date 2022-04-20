@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-positioning
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtpositioning-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-positioning%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt 6 Positioning plugins and libraries
 License:        GPL-3.0-or-later
@@ -175,8 +175,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %files
 %dir %{_qt6_pluginsdir}/position
 %{_qt6_pluginsdir}/position/libqtposition_geoclue2.so
-%{_qt6_pluginsdir}/position/libqtposition_positionpoll.so
 %{_qt6_pluginsdir}/position/libqtposition_nmea.so
+%{_qt6_pluginsdir}/position/libqtposition_positionpoll.so
 
 %files examples
 %{_qt6_examplesdir}/*

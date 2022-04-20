@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr  8 11:56:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0:
+  * https://www.qt.io/blog/qt-6.3-released
+
+-------------------------------------------------------------------
 Wed Mar 30 07:34:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the gypsy dependency. It's based on obsolete gypsy code
   that cannot work anymore.
+
+-------------------------------------------------------------------
+Tue Mar 29 12:28:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0-rc
 
 -------------------------------------------------------------------
 Mon Mar 21 08:46:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>

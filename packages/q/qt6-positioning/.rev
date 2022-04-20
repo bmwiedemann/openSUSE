@@ -32,4 +32,12 @@
   that cannot work anymore.</comment>
     <requestid>965822</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>65c2c1043f55d494c26808e886411143</srcmd5>
+    <version>6.3.0</version>
+    <time>1650466546</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.0 (forwarded request 970780 from cgiboudeaux)</comment>
+    <requestid>970799</requestid>
+  </revision>
 </revisionlist>
