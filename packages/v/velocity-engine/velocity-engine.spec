@@ -47,7 +47,12 @@ URL:            https://velocity.apache.org/
 Source0:        %{name}-%{version}.tar.xz
 Patch1:         build.patch
 BuildRequires:  fdupes
+BuildRequires:  junit
 BuildRequires:  maven-local
+%if 0%{?rhel} >=9
+BuildRequires:  xmvn-tools
+BuildRequires:  xmvn-minimal
+%endif
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
@@ -126,6 +131,10 @@ This package contains Javadoc documentation
 %pom_remove_plugin org.codehaus.mojo:templating-maven-plugin velocity-engine-core
 %pom_remove_plugin com.google.code.maven-replacer-plugin:replacer velocity-engine-core
 %pom_remove_plugin :maven-clean-plugin velocity-custom-parser-example
+%if 0%{?rhel}
+%pom_remove_plugin org.apache.maven.plugins:maven-javadoc-plugin
+%pom_remove_parent
+%endif
 %pom_xpath_inject '/pom:project' '<groupId>org.apache.velocity</groupId>'
 %pom_xpath_inject 'pom:plugins/pom:plugin[pom:artifactId/text()="maven-compiler-plugin"]' '<version>3.8.1</version>'
 
@@ -159,6 +168,8 @@ sed -i 's:template:xtemplate:g' \
 %files -n velocity-custom-parser-example -f .mfiles-velocity-custom-parser-example
 %license LICENSE NOTICE
 
+%if ! 0%{?rhel}
 %files javadoc -f .mfiles-javadoc
+%endif
 
 %changelog
