@@ -95,4 +95,12 @@
     <comment>Qt 6.2.4 (forwarded request 965385 from cgiboudeaux)</comment>
     <requestid>965387</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f90fdec34317666a6c7643937ee7f6b7</srcmd5>
+    <version>6.3.0</version>
+    <time>1650466521</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.0 (forwarded request 970780 from cgiboudeaux)</comment>
+    <requestid>970784</requestid>
+  </revision>
 </revisionlist>
