@@ -29,6 +29,10 @@ Patch0:         fix-doc-lint.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
+%if 0%{?rhel} >= 9
+BuildRequires:  xmvn-tools
+%endif
+
 BuildArch:      noarch
 
 %description
@@ -56,6 +60,7 @@ javac -d target/classes \
   $(find src/main/java -name \*.java | xargs)
 jar -cf target/config.jar -C target/classes .
 
+%if ! 0%{?rhel} >= 9
 mkdir -p target/api
 javadoc -d target/api \
   -source 8 \
@@ -63,8 +68,16 @@ javadoc -d target/api \
   -group "Public API (version %{version})" "com.typesafe.config:com.typesafe.config.parser" \
   -group "Internal Implementation - Not ABI Stable" "com.typesafe.config.impl" \
   $(find src/main/java -name \*.java | xargs)
+%endif
+
+popd
+cp %{SOURCE1} .
+%mvn_artifact config-%{version}.pom config/target/config.jar
 
 %install
+%if 0%{?rhel}
+%mvn_install
+%else
 # jar
 install -d -m 755 %{buildroot}%{_javadir}
 install -pm 644 config/target/config.jar %{buildroot}%{_javadir}/%{name}.jar
@@ -72,17 +85,23 @@ install -pm 644 config/target/config.jar %{buildroot}%{_javadir}/%{name}.jar
 install -d -m 755 %{buildroot}%{_mavenpomdir}
 install -pm 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
+%endif
+
+%if ! 0%{?rhel} >= 9
 #javadoc
 mkdir -p %{buildroot}%{_javadocdir}
 cp -a config/target/api %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
+%endif
 
 %files -f .mfiles
 %doc NEWS.md README.md
 %license LICENSE-2.0.txt
 
+%if ! 0%{?rhel} >= 9
 %files javadoc
 %license LICENSE-2.0.txt
 %{_javadocdir}/*
+%endif
 
 %changelog
