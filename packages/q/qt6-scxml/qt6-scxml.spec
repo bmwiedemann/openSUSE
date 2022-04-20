@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-scxml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -176,8 +176,6 @@ ABI or API guarantees.
 
 %if !%{qt6_docs_flavor}
 
-%{qt6_link_executables}
-
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
@@ -193,8 +191,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
 %files
 %dir %{_qt6_pluginsdir}/scxmldatamodel/
-%{_bindir}/qscxmlc6
-%{_qt6_bindir}/qscxmlc
+%{_qt6_libexecdir}/qscxmlc
 %{_qt6_pluginsdir}/scxmldatamodel/libqscxmlecmascriptdatamodel.so
 
 %files imports
