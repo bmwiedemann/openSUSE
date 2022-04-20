@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 20 09:12:20 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
 Fri Aug 27 21:22:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Run assay up to 3 times in case of flaky pickling errors

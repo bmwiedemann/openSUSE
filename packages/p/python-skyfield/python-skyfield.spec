@@ -1,7 +1,7 @@
 #
 # spec file for package python-skyfield
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,6 @@ BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jplephem >= 2.13}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module setuptools}
