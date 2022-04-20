@@ -7,4 +7,12 @@
     <comment>Add qt6-quick3d back.</comment>
     <requestid>965417</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ebe33fb890bf7340f5e7b0fa7a4c0c3</srcmd5>
+    <version>6.4.0~git</version>
+    <time>1650466549</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.0 (forwarded request 970780 from cgiboudeaux)</comment>
+    <requestid>970801</requestid>
+  </revision>
 </revisionlist>
