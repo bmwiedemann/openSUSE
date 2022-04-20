@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 17 00:04:46 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Define _rpmmacrodir if not present for SLE-12 compatibility
+  Refs boo#1191383
+  * _rpmmacrodir /usr/lib/rpm/macros.d added in rpm-4.14.0
+  * SLE-12 SP5 has rpm-4.11.2
+  * Define _rpmmacrodir in previous location /etc/rpm if undefined
+  * Remove define when all supported versions have >=rpm-4.14.0
+
+-------------------------------------------------------------------
 Tue Feb 15 12:33:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move rpm macros from /etc/rpm to /usr/lib/rpm/macros.d

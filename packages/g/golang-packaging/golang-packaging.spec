@@ -16,6 +16,8 @@
 #
 
 
+%{?!_rpmmacrodir:%define _rpmmacrodir /etc/rpm}
+
 Name:           golang-packaging
 Version:        15.0.16
 Release:        0
