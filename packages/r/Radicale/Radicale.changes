@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 19 09:30:05 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.6:
+  * Ignore 'Not a directory' error for optional config paths
+  * Fix upload of whole address book/calendar with UIDs that collide on
+    case-insensitive filesystem
+
+-------------------------------------------------------------------
 Tue Feb  8 22:20:29 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.1.5
