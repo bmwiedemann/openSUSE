@@ -1,7 +1,7 @@
 #
 # spec file for package python-sshtunnel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pahaz/sshtunnel/
 Source:         https://files.pythonhosted.org/packages/source/s/sshtunnel/sshtunnel-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module paramiko >= 2.7.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -58,6 +57,8 @@ sed -i '1{\,^#!%{_bindir}/env python,d}' sshtunnel.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/pahaz/sshtunnel/issues/259
+sed -i 's:import mock:from unittest import mock:' tests/test_forwarder.py
 %pytest
 
 %post
