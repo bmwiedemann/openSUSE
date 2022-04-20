@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 19 14:22:50 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.7.9
+  * Fix multipart/form-data for large values
+  * Add option allowed_post_processor in struct _u_instance to
+    disable post parameter processing depending on the content-type
+  * Add more example_callbacks
+
+-------------------------------------------------------------------
 Sun Mar 13 16:35:15 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.8

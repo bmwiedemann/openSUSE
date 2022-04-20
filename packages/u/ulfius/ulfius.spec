@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %define sover 2_7
 Name:           ulfius
-Version:        2.7.8
+Version:        2.7.9
 Release:        0
 Summary:        Web Framework for REST Applications in C
 License:        MIT
@@ -83,7 +83,7 @@ A simple command-line websocket client program.
 %cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="" \
     -DCMAKE_INSTALL_PREFIX:PATH=/
-%make_build
+%cmake_build
 
 %install
 %cmake_install
@@ -93,12 +93,11 @@ rm -rf %{buildroot}/%{_datadir}/doc/
 %postun -n libulfius%{sover} -p /sbin/ldconfig
 
 %files -n libulfius%{sover}
-%doc CHANGELOG.md README.md
 %license LICENSE
 %{_libdir}/libulfius.so.*
 
 %files devel
-%doc API.md
+%doc CHANGELOG.md README.md API.md
 %{_includedir}/ulfius.h
 %{_includedir}/ulfius-cfg.h
 %{_libdir}/libulfius.so
