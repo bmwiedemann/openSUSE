@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 17 12:58:18 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1650200290.89b7f088:
+  * Correct croak on type_string with wrong function name
+  * Fix potentially missing parameters on mutex_wait
+  * Use proper perl "signatures" in common files - lockapi
+  * Use proper perl "signatures" in common files - ppmclibs
+  * Use proper perl "signatures" in common files - mmapi
+  * t: Mock log functions to avoid capture problems
+  * Remove unnecessary but potentially racy signalblocker log lines
+  * Use proper perl "signatures" in common files - bmwqemu
+  * Ensure consistent signature styling
+
+-------------------------------------------------------------------
 Tue Apr 12 10:20:16 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1649758034.966cfef9:
