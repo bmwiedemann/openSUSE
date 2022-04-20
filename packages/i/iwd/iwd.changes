@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 19 11:20:16 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 1.26:
+  * Fix issue with handling BSS that changed frequency.
+  * Fix issue with handling frequencies in neighbor report.
+  * Fix issue with operating classes for 802.11ax standard.
+  * Fix issue with enforcing of MFPR for 6 GHz frequencies.
+  * Add support for band defined in the WiFi 6E amendment.
+  * Add support for scanning while in AP mode.
+- Drop unnecessary _service file
+- Be more detailed about why %check fails
+- Down modules-load.d directory to fix build on TW
+
+-------------------------------------------------------------------
 Fri Feb 25 07:31:46 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.25:

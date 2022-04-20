@@ -17,7 +17,7 @@
 
 
 Name:           iwd
-Version:        1.25
+Version:        1.26
 Release:        0
 Summary:        Wireless daemon for Linux
 License:        LGPL-2.1-or-later
@@ -26,9 +26,8 @@ Source:         https://kernel.org/pub/linux/network/wireless/%{name}-%{version}
 Source1:        https://kernel.org/pub/linux/network/wireless/%{name}-%{version}.tar.sign
 # https://kernel.org/doc/wot/holtmann.html
 Source2:        %{name}.keyring
-# Disable openssl as we have disabled the tests on obs
 # needed for the tests to generate certificates
-BuildRequires:  openssl
+# BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
@@ -59,8 +58,8 @@ features provided by the Linux kernel.
 mkdir -p %{buildroot}%{_sbindir}/
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
 
-# Disable tests as they fail on the obs and inside a container, but work on a
-# checkout
+# kernel-obs-build is missing af_alg.ko currently and the tests
+# use -Wl,--wrap, incompatible with LTO (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88643)
 #%%check
 #%%make_build check
 
@@ -83,6 +82,7 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 %{_bindir}/iwmon
 %{_sbindir}/rc%{name}
 %{_libexecdir}/%{name}/
+%dir %{_prefix}/lib/modules-load.d/
 %{_prefix}/lib/modules-load.d/pkcs8.conf
 %dir %{_prefix}/lib/systemd/network
 %{_prefix}/lib/systemd/network/80-iwd.link
