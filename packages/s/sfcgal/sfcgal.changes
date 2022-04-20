@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 15 06:13:17 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Use gcc for i586 and limit the number of worker (upstream)
+  so we can lower again _constraint. 
+
+-------------------------------------------------------------------
+Fri Apr  8 17:05:12 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Introduce disable_invalid_cgal_test.patch to disable tests
+  failing with CGAL 5.4 on openSUSE. 
+
+-------------------------------------------------------------------
 Wed Feb 16 17:36:44 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 1.4.1

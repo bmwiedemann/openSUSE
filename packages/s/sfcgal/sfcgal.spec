@@ -37,6 +37,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://oslandia.gitlab.io/SFCGAL/
 Source0:        https://gitlab.com/Oslandia/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
+#CGAL 5.4 checking failed instead warning for certain invalid geometry (hole on border)
+Patch0:         disable_invalid_cgal_test.patch
 BuildRequires:  cmake
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
@@ -53,7 +55,11 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_timer-devel
 BuildRequires:  libcgal-devel >= 5.3
 BuildRequires:  libstdc++-devel
+%ifarch i586
+BuildRequires:  gcc-c++
+%else
 BuildRequires:  llvm-clang
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cunit)
@@ -112,13 +118,11 @@ Content headers & files to envelopment files for %{_libname}
 
 %prep
 %setup -q -n %{source_name}-v%{version}
-#%%autopatch -p1
+%autopatch -p1
 
 %build
 tmpflags="%{optflags} -fPIC -fpie"
 echo "${tmpflags}"
-export CC=clang
-export CXX=clang++
 %define _lto_cflags %{nil}
 tmpflags="${tmpflags/-flto=auto}"
 %ifarch ppc64 ppc64le
@@ -134,8 +138,6 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
   -DCMAKE_C_FLAGS="${tmpflags} -Doverride=" \
   -DCMAKE_CXX_FLAGS="${tmpflags} -Doverride=" \
   -DCMAKE_CXX_FLAGS_RELEASE="${tmpflags} -Doverride=" \
-  -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
-  -DCMAKE_C_COMPILER="%{_bindir}/clang" \
   -DCMAKE_NO_BUILTIN_CHRPATH=ON \
   -DCMAKE_BUILD_TYPE="Release" \
   -DCMAKE_GMP_ENABLE_CXX=ON \
@@ -150,7 +152,13 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
   -DSFCGAL_BUILD_EXAMPLES=ON \
   -DSFCGAL_BUILD_TESTS=ON
 
+#Upstream recommend to lower number of -j with -g
+# so we can keep constraint low on memory
+%ifarch i586 ppc64
+make -j2
+%else
 make %{?_smp_mflags}
+%endif
 
 %install
 %cmake_install
@@ -162,7 +170,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/unit-test-SFCGAL
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/standalone-regress-test-SFCGAL
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/garden-test-SFCGAL
 %endif
 
 %post -n %{_libname} -p /sbin/ldconfig
