@@ -310,4 +310,12 @@
     <comment>version bump (forwarded request 959951 from DocB)</comment>
     <requestid>959970</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8a39c47c64affc72089d11875b7d6bf8</srcmd5>
+    <version>6.0.10</version>
+    <time>1650466639</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>971013</requestid>
+  </revision>
 </revisionlist>
