@@ -1,0 +1,39 @@
+From 59f4bd435c6754f475dfb61bb6c881ce914b17e6 Mon Sep 17 00:00:00 2001
+From: James McCoy <jamessan@jamessan.com>
+Date: Wed, 29 Nov 2017 10:07:12 -0500
+Subject: [PATCH] unittest: Ignore _Float128 types in ffi
+
+When building with certain GCC versions, a _Float128 type is present
+when setting up the ffi for unit tests.
+
+    ./test/unit/helpers.lua:256: declaration specifier expected near '_Float128' at line 396
+    /usr/bin/luajit: /usr/share/lua/5.1/busted/runner.lua:99: attempt to concatenate local 'message' (a table value)
+    stack traceback:
+    	/usr/share/lua/5.1/busted/runner.lua:99: in function 'fn'
+    	/usr/share/lua/5.1/mediator.lua:103: in function 'publish'
+    	/usr/share/lua/5.1/busted/modules/helper_loader.lua:21: in function 'helperLoader'
+    	/usr/share/lua/5.1/busted/runner.lua:147: in function </usr/share/lua/5.1/busted/runner.lua:11>
+    	/usr/bin/busted:3: in main chunk
+    	[C]: at 0x004044a0
+
+    CMake Error at /<<PKGBUILDDIR>>/cmake/RunTests.cmake:53 (message):
+      Running unit tests failed with error: 1.
+
+Since this is being pulled in by a dependency, not directly used by
+nvim, just ignore the type.
+
+Closes #7423
+---
+ test/unit/helpers.lua |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/test/unit/helpers.lua
++++ b/test/unit/helpers.lua
+@@ -135,6 +135,7 @@ local function filter_complex_blocks(bod
+     if not (string.find(line, "(^)", 1, true) ~= nil
+             or string.find(line, "_ISwupper", 1, true)
+             or string.find(line, "_Float")
++            or string.find(line, "_Float128")
+             or string.find(line, "msgpack_zone_push_finalizer")
+             or string.find(line, "msgpack_unpacker_reserve_buffer")
+             or string.find(line, "UUID_NULL")  -- static const uuid_t UUID_NULL = {...}
