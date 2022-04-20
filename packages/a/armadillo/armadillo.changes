@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 18 14:43:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 11.0.1:
+  * Added variants of inv() and inv_sympd() that provide reciprocal
+    condition number
+  * Expanded inv() and inv_sympd() with options inv_opts::tiny and
+    inv_opts::allow_approx
+  * stricter handling of singular matrices by inv() and inv_sympd()
+  * stricter handling of non-sympd matrices by inv_sympd()
+  * stricter handling of non-finite matrices by pinv()
+  * more robust handling of rank deficient matrices by solve()
+  * faster handling of diagonal matrices by rcond()
+  * changed eigs_sym() and eigs_gen() to use higher quality RNG
+  * quantile() and median() will now throw an exception if given
+    matrices/vectors have NaN elements
+
+-------------------------------------------------------------------
 Tue Feb  8 17:33:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.8.2:
