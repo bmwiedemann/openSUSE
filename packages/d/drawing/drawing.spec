@@ -18,14 +18,17 @@
 
 %define _name com.github.maoschanz.drawing
 Name:           drawing
-Version:        0.8.0
+Version:        1.0.0
 Release:        0
-Summary:        A simple draw application for Linux
+Summary:        A simple drawing application for Linux.
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/maoschanz/drawing
 Source:         https://github.com/maoschanz/drawing/archive/refs/tags/%{version}.tar.gz
 Source2:        drawing-rpmlintrc
+
+Patch0:         meson_build.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  itstool
@@ -44,9 +47,13 @@ Recommends:     yelp
 BuildArch:      noarch
 
 %description
-This application is a free basic image editor, similar to Microsoft Paint, but aiming at the GNOME desktop.
+This application is a free basic image editor, similar to Microsoft Paint, is aiming at the GNOME desktop.
 
-More traditional design user interfaces are available too, as well as an elementaryOS layout. The app should also be compatible with GNU-Linux smartphones.
+PNG, JPEG and BMP files are supported.
+
+Besides GNOME, the app is well integrated in traditional-looking desktops, as well as an elementaryOS layout.
+
+It should also be compatible with the Pinephone and Librem 5 smartphones.
 
 %lang_package
 
@@ -59,7 +66,7 @@ More traditional design user interfaces are available too, as well as an element
 
 %install
 %meson_install
-%find_lang %{name} --without-gnome
+%find_lang %{name} --with-gnome
 %fdupes -s %{buildroot}
 
 %files
@@ -69,7 +76,7 @@ More traditional design user interfaces are available too, as well as an element
 %{_datadir}/glib-2.0/schemas/%{_name}.gschema.xml
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/metainfo/%{_name}.appdata.xml
-%{_datadir}/help/C/*
+
 %doc CONTRIBUTING.md README.md
 %license LICENSE
 
