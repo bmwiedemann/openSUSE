@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-serialbus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtserialbus-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-serialbus
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt 6 SerialBus library
 License:        LGPL-3.0-only OR GPL-2.0-or-later
