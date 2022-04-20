@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-opcua
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.2.4
-%define short_version 6.2
+%define real_version 6.3.0
+%define short_version 6.3
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.2.4
+Version:        6.3.0
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -88,6 +88,23 @@ Requires:       %{name} = %{version}
 %description imports
 QML files and plugins from the Qt 6 OpcUa module.
 
+%package -n libQt6DeclarativeOpcua6
+Summary:        Qt 6 DeclarativeOpcua library
+
+%description -n libQt6DeclarativeOpcua6
+Qt 6 DeclarativeOpcua library.
+
+%package -n qt6-declarativeopcua-private-devel
+Summary:        Non-ABI stable API for the Qt 6 DeclarativeOpcua library
+Requires:       libQt6DeclarativeOpcua6 = %{version}
+Requires:       cmake(Qt6OpcUa) = %{real_version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Quick)
+
+%description -n qt6-declarativeopcua-private-devel
+This package provides private headers of libDeclarativeOpcua that do not have
+any ABI or API guarantees.
+
 %{qt6_examples_package}
 
 %endif
@@ -108,7 +125,9 @@ QML files and plugins from the Qt 6 OpcUa module.
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
+%post -n libQt6DeclarativeOpcua6 -p /sbin/ldconfig
 %post -n libQt6OpcUa6 -p /sbin/ldconfig
+%postun -n libQt6DeclarativeOpcua6 -p /sbin/ldconfig
 %postun -n libQt6OpcUa6 -p /sbin/ldconfig
 
 %files
@@ -138,6 +157,19 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %files imports
 %{_qt6_qmldir}/QtOpcUa/
+
+%files -n libQt6DeclarativeOpcua6
+%{_qt6_libdir}/libQt6DeclarativeOpcua.so.*
+
+%files -n qt6-declarativeopcua-private-devel
+%{_qt6_cmakedir}/Qt6DeclarativeOpcua/
+%{_qt6_descriptionsdir}/DeclarativeOpcua.json
+%{_qt6_includedir}/QtDeclarativeOpcua/
+%{_qt6_libdir}/libQt6DeclarativeOpcua.prl
+%{_qt6_libdir}/libQt6DeclarativeOpcua.so
+%{_qt6_metatypesdir}/qt6declarativeopcua_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_declarativeopcua.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_declarativeopcua_private.pri
 
 %endif
 
