@@ -1,7 +1,7 @@
 #
 # spec file for package nethogs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nethogs
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Network Bandwidth Usage Monitor
 License:        GPL-2.0-or-later

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Apr 10 13:37:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.7:
+  * Adding ppc64le architecture support on travis-ci by @kishorkunal-raj in #198
+  * Issue: #62 - UDP support by @takeoverjp in #199
+  * Update man page with the latest help message. by @takeoverjp in #200
+  * Issue: #102 - Show screenshot in README. by @takeoverjp in #201
+  * Add links to other network traffic monitoring tools. by @takeoverjp in #202
+  * Issue: #96 - Garbage collect inodeproc on each ui refresh. by @takeoverjp in #203
+  * Fix compilation error with [-Werror=format-security] by @kretcheu in #210
+  * Added BusyTasks link to the list by @unknown-spirit in #212
+  * Add bandwhich and sniffer links by @chenjiandongx in #213
+  * Disable capability check, handle failure better by @ncfavier in #215
+  * feat: Add basename support #155 by @sgtcortez in #216
+  * Use "--tags" parameter to get the correct git-tag by @schuellerf in #221
+  * Add process filter by @sgtcortez in #218
+  * Add python bindings by @jimmylomro in #222
+  * Improve performance with many connections by @CyberShadow in #223
+
+-------------------------------------------------------------------
 Sat Sep 12 19:31:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.8.6:
