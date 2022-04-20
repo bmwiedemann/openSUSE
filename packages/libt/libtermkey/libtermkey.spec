@@ -30,7 +30,7 @@ BuildRequires:  gcc
 BuildRequires:  glibc-devel
 BuildRequires:  libtool
 BuildRequires:  make
-BuildRequires:  ncurses-devel
+BuildRequires:  unibilium-devel
 BuildRequires:  pkgconfig
 
 %description
