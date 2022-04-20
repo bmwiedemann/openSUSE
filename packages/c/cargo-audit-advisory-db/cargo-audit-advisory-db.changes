@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 20 00:36:52 UTC 2022 - wbrown@suse.de
+
+- Update to version 20220420:
+  * Add patch version for fruity (#1223)
+  * Update RUSTSEC-2020-0071.md (#1222)
+  * RUSTSEC-2022-0012: note that v0.10.0+ is patched (#1220)
+  * Assigned RUSTSEC-2022-0016 to wasmtime (#1218)
+  * Add CVE-2022-24791 for Wasmtime (#1217)
+  * Assigned RUSTSEC-2022-0015 to pty (#1215)
+  * Add unmaintained advisory for pty (#1213)
+  * Assigned RUSTSEC-2022-0014 to openssl-src (#1211)
+  * Add CVE-2022-0778 for openssl-src (#1210)
+  * Assigned RUSTSEC-2022-0013 to regex (#1208)
+
+-------------------------------------------------------------------
 Wed Mar 30 01:47:58 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Resolve issue with obs install check on non-tier1 arches
