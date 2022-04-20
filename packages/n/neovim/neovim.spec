@@ -26,7 +26,7 @@
 %define luaver 5.1
 %define luaver_nopoint 51
 Name:           neovim
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
@@ -36,11 +36,17 @@ Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{v
 Source1:        sysinit.vim
 Source2:        spec-template
 Source3:        suse-spec-template
+# Our packaged busted script has a shebang pointing to regular Lua interepreter,
+# we need /usr/bin/luajit. Fake it.
+Source10:       lj-busted.sh
 Source99:       neovim-rpmlintrc
 # PATCH-FIX-OPENSUSE neovim.patch mcepl@cepl.eu
 Patch0:         neovim.patch
 # PATCH-FIX-OPENSUSE neovim-0.1.7-bitop.patch mcepl@cepl.eu build with old Lua with external bit module
 Patch1:         neovim-0.1.7-bitop.patch
+# PATCH-FIX-UPSTREAM 7657-run-tests-aarch64.patch gh#neovim/neovim#7423 mcepl@suse.com
+# fix running tests on aarch64
+Patch2:         7657-run-tests-aarch64.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -66,7 +72,7 @@ BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 Requires:       gperf
 Requires:       libvterm0 >= 0.1
-Requires:       python3-neovim
+Recommends:     python3-neovim
 Requires(post): desktop-file-utils
 Requires(postun):desktop-file-utils
 # XSel provides access to the system clipboard
@@ -91,6 +97,13 @@ BuildRequires:  hicolor-icon-theme
 Requires(post): gtk3-tools
 Requires(postun):gtk3-tools
 %endif
+%if 0%{?suse_version} > 1500
+# Modern *SUSE … tests are enabled
+# For tests
+BuildRequires:  lua51-busted
+BuildRequires:  hostname
+# end of test requirements
+%endif
 
 %description
 Neovim is a refactor - and sometimes redactor - in the tradition of
@@ -107,11 +120,9 @@ parts of Vim, without compromise, and more.
 %define vimplugin_dir %{_datadir}/vim/site
 
 %prep
-%setup -q
-%patch0 -p1
-# %%if %%{without luajit}
-%patch1 -p1
-# %%endif
+%autosetup -p1
+
+install -p -m 0755 %{SOURCE10} .
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
@@ -130,6 +141,8 @@ export CXXFLAGS="%{optflags} -fcommon"
 %{__cmake} .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
+       -DBUSTED_PRG="$(readlink -f ../lj-busted.sh)" \
+       -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=ON  \
        -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=OFF \
        -DCMAKE_COLOR_MAKEFILE=OFF \
@@ -171,6 +184,17 @@ mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ft
 # https://en.opensuse.org/openSUSE:Packaging_checks
 export NO_BRP_CHECK_RPATH=true
 
+%check
+# Tests fail on aarch64 gh#neovim/neovim#18176
+%ifnarch aarch64
+# set vars to make build reproducible in spite of config/CMakeLists.txt
+HOSTNAME=OBS
+USERNAME=OBS
+pushd build
+%make_build BUSTED_PRG=$(readlink -f ../lj-busted.sh) unittest
+popd
+%endif
+
 %if 0%{?suse_version} < 1330
 %post
 %desktop_database_post
@@ -185,7 +209,7 @@ export NO_BRP_CHECK_RPATH=true
 
 %files
 %doc BACKERS.md CONTRIBUTING.md README.md
-%license LICENSE
+%license LICENSE.txt
 %{_bindir}/nvim
 %{_datadir}/nvim/
 %{_datadir}/applications/nvim.desktop
