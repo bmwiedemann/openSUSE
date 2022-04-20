@@ -169,4 +169,12 @@ Depends on SR#238636</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>900432</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>8cf9186fa11416d7a689e624eed4053b</srcmd5>
+    <version>0.8.0</version>
+    <time>1650467023</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>971056</requestid>
+  </revision>
 </revisionlist>

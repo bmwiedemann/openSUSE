@@ -34,6 +34,7 @@ Patch100:       no-unmount-for-lxc-machines.patch
 
 # SUSE patches
 Patch200:       PIE.patch
+Patch300:       virt-sandbox.patch
 
 # Need to go upstream
 
@@ -100,6 +101,7 @@ applications within a sandbox using libvirt.
 %setup -q -n libvirt-sandbox-%{version}
 %patch100 -p1
 %patch200 -p1
+%patch300 -p1
 
 %build
 # We may have a more recent version of automake when building

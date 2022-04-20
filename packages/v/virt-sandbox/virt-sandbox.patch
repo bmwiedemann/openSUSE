@@ -1,0 +1,18 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -113,6 +113,7 @@ LIBVIRT_SANDBOX_RPCGEN
+ LIBVIRT_SANDBOX_SELINUX
+ LIBVIRT_SANDBOX_XDR
+ 
++GTK_DOC_CHECK([1.10],[--flavour no-tmpl])
+ LIBVIRT_SANDBOX_STATIC_LIBC
+ LIBVIRT_SANDBOX_STATIC_LZMA
+ LIBVIRT_SANDBOX_STATIC_ZLIB
+--- a/m4/virt-gtk-misc.m4
++++ b/m4/virt-gtk-misc.m4
+@@ -1,5 +1,4 @@
+ AC_DEFUN([LIBVIRT_SANDBOX_GTK_MISC],[
+-    GTK_DOC_CHECK([1.10],[--flavour no-tmpl])
+ 
+     # Setup GLIB_MKENUMS to use glib-mkenums even if GLib is uninstalled.
+     GLIB_MKENUMS=`$PKG_CONFIG --variable=glib_mkenums glib-2.0`
