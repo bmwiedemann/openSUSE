@@ -1,3 +1,28 @@
+-------------------------------------------------------------------
+Wed Apr 13 14:13:43 UTC 2022 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
+
+- Update to version 2.2.0
+  * Add `MultiOptionPolicy::Sum`  and refactor the `add_flag` to fix a bug when using `std::optional<bool>` as type.
+  * Add support for an empty vector result in TOML and as a default string.
+  * Add `.validate_optional_arguments()` to support discriminating positional arguments from vector option arguments.
+  * Add `CLI::FileOnDefaultPath` to check for files on a specified default path.
+  * Change default value display in help messages from `=XXXX` to `[XXXXX]` to make it clearer.
+  * Modify the Range Validator to support additional types and clean up the error output.
+  * Bugfix: The trigger on parse modifier did not work on positional argument.s
+  * Bugfix: The single header file generation was missing custom namespace generation.
+  * Bugfix: Clean up File Error handling in the argument processing.
+  * Bugfix: Fix a stack overflow error if nameless commands had fallthrough.
+  * Bugfix: A subcommand callback could be executed multiple times if it was a member of an option group.
+  * Bugfix: Fix an issue with vectors of multi argument types where partial argument sets did not result in an error.
+  * Bugfix: Fix an issue with type the template matching on C++20 and add some CI builds for C++20.
+  * Bugfix: Fix typo in C++20 detection on MSVC.
+  * Bugfix: An issue where the detection of RTTI being disabled on certain MSVC platforms did not disable the use of dynamic cast calls.
+  * Bugfix: Resolve strict-overflow warning on some GCC compilers.
+  * Backend: Add additional tests concerning the use of aliases for option groups in config files.
+  * Build: Add support for testing in meson and cleanup symbolic link generation.
+  * Build: Support building in WebAssembly.
+
+-------------------------------------------------------------------
 Mon Nov 22 15:00:24 UTC 2021 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
 
 - Build doc package
