@@ -100,4 +100,16 @@
   * Remove self from LD_PRELOAD (bsc#1196326)</comment>
     <requestid>964650</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1bc9d5762b18b3ab1d52f9697fcef68e</srcmd5>
+    <version>0.0.8~git2.368ea44</version>
+    <time>1650466473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.8~git2.368ea44:
+  * go1.18 compatibility: BuildRequires:git
+
+- Update to version 0.0.8~git0.16545bf:
+  * Allow reloading CA certs pool (bsc#1195220)</comment>
+    <requestid>971026</requestid>
+  </revision>
 </revisionlist>

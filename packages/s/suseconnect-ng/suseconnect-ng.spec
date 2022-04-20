@@ -23,7 +23,7 @@
 %global test_hwinfo 0
 
 Name:           suseconnect-ng
-Version:        0.0.7~git0.3ef988e
+Version:        0.0.8~git2.368ea44
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
@@ -31,6 +31,7 @@ Summary:        Utility to register a system with the SUSE Customer Center
 Group:          System/Management
 Source:         connect-ng-%{version}.tar.xz
 Source1:        %name-rpmlintrc
+BuildRequires:  git
 BuildRequires:  go >= 1.16
 BuildRequires:  golang-packaging
 BuildRequires:  ruby-devel

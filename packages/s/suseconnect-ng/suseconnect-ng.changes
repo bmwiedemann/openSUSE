@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 20 08:18:01 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 0.0.8~git2.368ea44:
+  * go1.18 compatibility: BuildRequires:git
+
+-------------------------------------------------------------------
+Wed Apr 13 12:59:22 UTC 2022 - jan.suse@zerebecki.de
+
+- Update to version 0.0.8~git0.16545bf:
+  * Allow reloading CA certs pool (bsc#1195220)
+
+-------------------------------------------------------------------
 Thu Mar 24 12:09:50 UTC 2022 - jan.suse@zerebecki.de
 
 - Update to version 0.0.7~git0.3ef988e:
