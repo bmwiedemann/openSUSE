@@ -140,4 +140,24 @@
     <comment></comment>
     <requestid>960037</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>43ece63c0a6e601225a167949bc3ff8b</srcmd5>
+    <version>1.2.6+git20220414.9abf849</version>
+    <time>1650466613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.6+git20220414.9abf849:
+  * Update snapcraft.yaml
+
+- Update to version v1.2.6+git20220413.4bae3c4:
+  * Update continuous-build-linux.yml
+  * v1.2.6 Bug fixes
+  * Changed: Enter symbol to a more common variant
+  * updated robin_hood.h to v3.11.5
+  * Fixed: Use cpu cores avarage temp if missing cpu package temp for FreeBSD
+  * Fixed: Wrong memory unit when shorten and size is less than 10
+  * v1.2.5 Bug fixes
+  * Fixed: Mouse mappings for net box
+  * fix: title_left symbol between auto and zero in the net box is not displayed</comment>
+    <requestid>970907</requestid>
+  </revision>
 </revisionlist>
