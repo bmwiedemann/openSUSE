@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 19 12:44:03 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.9.1
+  * Configure PK explicitly to AutoField for Django 3.2+
+- do not use mock
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4
@@ -12,7 +19,7 @@ Tue Apr  6 11:09:29 UTC 2021 - Markéta Machová <mmachova@suse.com>
 Mon Sep  7 02:57:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
-- Update to v0.8
+- Update to v1.8
 
 -------------------------------------------------------------------
 Sun May  3 20:47:31 UTC 2020 - John Vandenberg <jayvdb@gmail.com>

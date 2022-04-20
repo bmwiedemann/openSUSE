@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-django-attachments
-Version:        1.8
+Version:        1.9.1
 Release:        0
 Summary:        Attach files to any Django model
 License:        MIT
@@ -34,7 +34,6 @@ Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module django >= 1.11}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module six}
 # /SECTION
@@ -46,6 +45,7 @@ django-attachments is generic Django application to attach Files (Attachments) t
 %prep
 %setup -q -n django-attachments-%{version}
 sed -i '/mock/d;/-cov/d;/flakes/d' setup.cfg
+sed -i 's/import mock/from unittest import mock/' attachments/tests/test_views.py
 
 %build
 %python_build
