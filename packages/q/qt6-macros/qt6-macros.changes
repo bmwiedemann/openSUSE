@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 29 16:42:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Set CMAKE_MESSAGE_LOG_LEVEL in %cmake_qt6.
+  The Qt 6.3 build system sets it to 'NOTICE' for non-developers
+  builds, which doesn't permit finding missing build dependencies.
+- Define %_qt6_pkgconfigdir. Qt 6.4 will install pkgconfig files.
+
+------------------------------------------------------------------
 Mon Feb  7 13:47:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Ensure PIE flags are passed to the linker on Leap to work around

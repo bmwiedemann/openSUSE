@@ -40,4 +40,12 @@
     <comment></comment>
     <requestid>952239</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af74a020c8720e92cc9ca9bf62c24434</srcmd5>
+    <version>20220329</version>
+    <time>1650466538</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.0 (forwarded request 970780 from cgiboudeaux)</comment>
+    <requestid>970794</requestid>
+  </revision>
 </revisionlist>

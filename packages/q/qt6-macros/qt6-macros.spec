@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-macros
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qt6-macros
-Version:        20220207
+Version:        20220329
 Release:        0
 Summary:        RPM macros for Qt6 packages
 License:        MIT
