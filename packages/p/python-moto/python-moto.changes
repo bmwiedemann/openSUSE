@@ -971,7 +971,7 @@ Fri Dec 24 22:31:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Aug 13 23:36:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Update to 2.2.2
+- Update to 2.2.2 (bsc#1198331)
   General:
     * Removed the dependency on pkg_resources that was broken in 2.2.1 
   New Services:
