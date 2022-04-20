@@ -312,4 +312,12 @@
   * For details see: https://github.com/lutris/lutris/releases/tag/v0.5.10</comment>
     <requestid>966794</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>64ea8b5bac9e02be13e47b04970ffe1a</srcmd5>
+    <version>0.5.10</version>
+    <time>1650467034</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>971127</requestid>
+  </revision>
 </revisionlist>

@@ -28,7 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.7
 BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
