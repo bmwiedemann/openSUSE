@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define raft_sover 2
 Name:           raft
-Version:        0.11.3
+Version:        0.13.0
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -39,10 +39,10 @@ log replication, log compaction, and  membership changes.
 
 A stock implementation of the I/O interface based on libuv is included.
 
-%package -n libraft0
+%package -n libraft%{raft_sover}
 Summary:        Library implementing the Raft consensus protocol
 
-%description -n libraft0
+%description -n libraft%{raft_sover}
 This library is a fully asynchronous C implementation of the Raft consensus protocol.
 
 It implements the core Raft algorithm logic and a pluggable interface defining I/O for
@@ -53,7 +53,7 @@ A stock implementation of the I/O interface based on libuv is included.
 
 %package devel
 Summary:        Development files for the Raft library implementation of the consensus protocol
-Requires:       libraft0 = %{version}
+Requires:       libraft%{raft_sover} = %{version}
 Requires:       pkgconfig(libuv) >= 1.18.0
 
 %description devel
@@ -80,8 +80,8 @@ autoreconf -iv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libraft0 -p /sbin/ldconfig
-%postun -n libraft0 -p /sbin/ldconfig
+%post -n libraft%{raft_sover} -p /sbin/ldconfig
+%postun -n libraft%{raft_sover} -p /sbin/ldconfig
 
 %files devel
 %license LICENSE
@@ -93,9 +93,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libraft.so
 %{_libdir}/pkgconfig/raft.pc
 
-%files -n libraft0
+%files -n libraft%{raft_sover}
 %license LICENSE
-%{_libdir}/libraft.so.0
-%{_libdir}/libraft.so.0.0.7
+%{_libdir}/libraft.so.%{raft_sover}
+%{_libdir}/libraft.so.%{raft_sover}.*
 
 %changelog

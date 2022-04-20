@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 19 09:44:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.13.0:
+  * move to raft_fsm v2 introducing snapshot_finalize
+  
+-------------------------------------------------------------------
 Tue Feb  1 11:17:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.11.3:
