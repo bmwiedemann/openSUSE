@@ -19,6 +19,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+
 Name:           python-rich
 Version:        11.0.0
 Release:        0
@@ -67,7 +68,9 @@ markdown and more to the terminal.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if "%{python_flavor}" >= "python362"
 %pytest -k 'not test_log'
+%endif
 
 %files %{python_files}
 %license LICENSE
