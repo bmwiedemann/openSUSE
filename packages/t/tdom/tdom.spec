@@ -1,7 +1,7 @@
 #
 # spec file for package tdom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,20 +21,17 @@ Name:           tdom
 %define tclscriptdir %_libdir
 %endif
 Summary:        A XML/DOM/XPath/XSLT Implementation for Tcl
-License:        MPL-1.1
+License:        MPL-2.0
 Group:          Development/Libraries/Tcl
-Version:        0.8.3
+Version:        0.9.2
 Release:        0
-Url:            http://tdom.github.com/
+URL:            http://tdom.org
 BuildRequires:  autoconf
 BuildRequires:  libexpat-devel
 BuildRequires:  tcl-devel
 BuildRequires:  tcllib
-Source0:        https://github.com/downloads/tDOM/tdom/tDOM-%{version}.tgz
-Patch0:         tdom.patch
-Patch1:         tdom-expat.patch
-Patch2:         tdom-tnc.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        http://tdom.org/downloads/tdom-%{version}-src.tgz
+Patch0:         install-libraries-libdir.patch
 
 %description
 tDOM combines high performance XML data processing with easy and
@@ -53,10 +50,7 @@ Requires:       tdom = %{version}
 This package contains files for developing software based on tdom.
 
 %prep
-%setup -q -n tDOM-%version
-%patch0
-%patch1
-%patch2
+%autosetup  -p1 -n %{name}-%{version}-src
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -70,7 +64,7 @@ CFLAGS="%optflags -DUSE_INTERP_ERRORLINE" ../configure \
 	--with-tcl=%_libdir \
 	--disable-tdomalloc \
 	--with-expat
-make
+%make_build
 cd ../extensions/tnc
 autoreconf --force
 CFLAGS="%optflags" ./configure \
@@ -79,7 +73,7 @@ CFLAGS="%optflags" ./configure \
 	--mandir=%_mandir \
 	--with-tcl=%_libdir \
 	--with-tdom=../../build
-make
+%make_build
 
 %check
 cd build
@@ -94,18 +88,14 @@ chmod 644 %buildroot/%_libdir/*.a
 cd ../extensions/tnc
 make DESTDIR=%buildroot pkglibdir=%tclscriptdir/tnc0.3.0 install
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root,-)
-%doc ChangeLog CHANGES README NPL-1_1Final.html LICENSE
+%license MPL_2.0.html LICENSE
+%doc ChangeLog CHANGES README.md
 %doc %_mandir/man*/*
 %tclscriptdir/*
 %_libdir/*.so
 
 %files devel
-%defattr(-,root,root,-)
 %_libdir/tdomConfig.sh
 %_libdir/*.a
 %_includedir/tdom.h
