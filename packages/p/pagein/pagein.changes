@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 20 18:19:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.01.08
+  * Fix potential array overflow on array prot, make it 1 byte larger
+- Fixed URL and SourceURL (previous were orphaned)
+
+-------------------------------------------------------------------
 Mon May 17 22:21:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.01.06

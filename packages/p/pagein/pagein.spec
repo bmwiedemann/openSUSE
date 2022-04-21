@@ -1,7 +1,7 @@
 #
 # spec file for package pagein
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           pagein
-Version:        0.01.06
+Version:        0.01.08
 Release:        0
 Summary:        A tool to force swapped out pages back into memory
 License:        GPL-2.0-only
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/pagein/
-Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.gz
+URL:            https://github.com/ColinIanKing/pagein
+Source:         %{url}/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
 Pagein is a tool that forces pages that are in swap to be paged in back
