@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Apr 20 05:47:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.7:
+  * docs: fixed misleading example code
+  * Improve tty error logging when buildkit vertex is unknown (#2188)
+  * docs: avoid multiple packages in examples
+  * Docs: fix index
+  * Docs: split introduction & getting started sections
+  * feat: support helm
+  * `dagger do` action options flags
+  * core.#WriteFile: default permissions to 0o644
+  * enable kubernetes and podman connection drivers
+  * universe: netlify: replace curl-based wrapper with cli
+  * docs: Add types reference
+  * chore!: Make `dagger.#Address` private
+  * chore: Quote value in error
+  * build(deps): bump async from 2.6.3 to 2.6.4 in /website
+  * ci: Deploy todoapp with dev dagger AND ALSO latest 0.2.x release
+  * docs: update github actions workflow example
+  * docs: add to the sidebar
+  * docs: fix some PR suggestions
+  * docs: fix go-ci guide slug and add file title
+  * docs: add simple Go guide
+  * docs: docs: guide - default values cue
+  * docs: Implement FAQ page, default values in Cue + fix sidebar and titles
+  * docs: guide - chaining actions
+  * docs: guide - always execute an action
+  * docs: guide - logs options in Dagger
+  * docs: guide - empty buildkit cache doc
+  * docs: Mention macOS ARM vs Intel Homebrew dagger install path diff
+  * Docs: move "migrate to 0.1" to a guide
+  * Docs: rephrase article 1216
+  * Docs: remove duplicate entry in sidebar
+  * build(deps): bump github.com/spf13/viper from 1.10.0 to 1.11.0
+  * build(deps): bump golang from 1.16.15-alpine to 1.18.1-alpine
+  * ci: dependabot: change label
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.6.2 to 1.6.3
+  * docs: Add guide to showcase handling outputs
+  * chore: explicit codeowners for CLI
+  * website: hardcode version banner for 0.1 docs
+  * fix: explicit dagger project usage
+  * docs: Move contribution guide to docs website
+  * filter out useless commandConn.CloseWrite warning message
+  * Allow to specify template when running `dagger project init`
+  * ci: fix CUE linter
+  * chore: separate review rotation on universe.dagger.io/x/
+  * chore: explicit codeowners for the CODEOWNERS file
+  * feat: add lua universe package and stylua command to fmt check
+  * docs: add missing import to example AddHello action (#2154)
+  * universe: python: allow custom path to python
+  * docs: Add Jenkins CI doc. Fixes #2067
+  * build(deps): bump github.com/docker/buildx from 0.8.1 to 0.8.2
+  * fix: include env insideo of container on .NET publish
+  * feat: support .NET
+  * removed project init from the ci and pinned update version
+  * fixed the sample github action in the documentation
+
+-------------------------------------------------------------------
 Thu Apr 14 19:39:34 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.6:
