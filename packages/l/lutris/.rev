@@ -320,4 +320,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>971127</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2e5da9d03fc1244cda49c8a47bd078e0</srcmd5>
+    <version>0.5.10.1</version>
+    <time>1650548540</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.10.1:
+  * Check for Steam executable in home folder for Flatpak
+  * Adjust the Steam, application and desktop shortcuts to launch with
+    Flatpak when necessary
+  * Disable local (XDG) service in Flatpak
+  * Simplify MangoHUD option (now an On/Off toggle)
+  * Remove ability for Lutris to quit Steam
+  * Don't default to fsync on older kernels
+  * Default to a base resolution when Lutris is unable to read the current
+    configuration
+  * Fix issue with .NET 4.8 installation which affects the FF XIV launcher</comment>
+    <requestid>971234</requestid>
+  </revision>
 </revisionlist>

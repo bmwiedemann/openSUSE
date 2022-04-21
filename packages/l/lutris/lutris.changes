@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 20 19:00:49 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.10.1:
+  * Check for Steam executable in home folder for Flatpak
+  * Adjust the Steam, application and desktop shortcuts to launch with
+    Flatpak when necessary
+  * Disable local (XDG) service in Flatpak
+  * Simplify MangoHUD option (now an On/Off toggle)
+  * Remove ability for Lutris to quit Steam
+  * Don't default to fsync on older kernels
+  * Default to a base resolution when Lutris is unable to read the current
+    configuration
+  * Fix issue with .NET 4.8 installation which affects the FF XIV launcher
+
+-------------------------------------------------------------------
 Wed Apr 13 12:22:54 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Specify minimum python version
