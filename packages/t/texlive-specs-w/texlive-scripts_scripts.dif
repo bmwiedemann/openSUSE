@@ -15,10 +15,10 @@
 +umask 022
  exec fmtutil --sys ${1+"$@"}
 --- texmf-dist/scripts/texlive/fmtutil.pl
-+++ texmf-dist/scripts/texlive/fmtutil.pl	2018-05-11 10:51:51.546080553 +0000
++++ texmf-dist/scripts/texlive/fmtutil.pl	2022-04-07 08:13:07.738444358 +0000
 @@ -10,16 +10,16 @@
  # History:
- # Original shell script (C) 2001 Thomas Esser, public domain
+ # Original shell script 2001 Thomas Esser, public domain
  
 -my $TEXMFROOT;
 +my $TEXMFDIST;
@@ -38,7 +38,7 @@
    require "mktexlsr.pl";
    TeX::Update->import();
  }
-@@ -70,7 +70,7 @@ TeXLive::TLUtils::prepend_own_path();
+@@ -76,7 +76,7 @@ TeXLive::TLUtils::prepend_own_path();
  # this function checks by itself whether it is running on windows or not
  reset_root_home();
  
@@ -47,22 +47,22 @@
  chomp(our $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
  chomp(our $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
  chomp(our $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
-@@ -361,7 +361,14 @@ sub callback_build_formats {
-       TeXLive::TLWinGoo::maybe_make_ro ($tmpdir);
+@@ -413,7 +413,14 @@ sub callback_build_formats {
+         TeXLive::TLWinGoo::maybe_make_ro ($tmpdir);
+       }
+     } else {
++      my ($uid, $gid);
+       $tmpdir = File::Temp::tempdir(CLEANUP => 1);
++      if ($> == 0 && ($uid=getpwnam("nobody")) && ($gid=getgrnam("mktex"))) {
++        my $cnt = chown $uid, $gid, $tmpdir;
++        die "could not create directory $tmpdir" if $cnt <= 0;
++        $cnt = chmod 0770, $tmpdir;
++        die "could not create directory $tmpdir" if $cnt <= 0;
++      }
      }
-   } else {
-+    my ($uid, $gid);
-     $tmpdir = File::Temp::tempdir(CLEANUP => 1);
-+    if ($> == 0 && ($uid=getpwnam("nobody")) && ($gid=getgrnam("mktex"))) {
-+      my $cnt = chown $uid, $gid, $tmpdir;
-+      die "could not create directory $tmpdir" if $cnt <= 0;
-+      $cnt = chmod 0770, $tmpdir;
-+      die "could not create directory $tmpdir" if $cnt <= 0;
-+    }
    }
    # set up destination directory
-   $opts{'fmtdir'} ||= "$texmfvar/web2c";
-@@ -592,6 +599,7 @@ sub rebuild_one_format {
+@@ -717,6 +724,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -93,7 +93,7 @@
 +++ texmf-dist/scripts/texlive/updmap.pl	2018-06-19 08:49:26.931648791 +0000
 @@ -16,15 +16,17 @@
  
- my $svnid = '$Id: updmap.pl 51338 2019-06-07 16:36:59Z karl $';
+ my $svnid = '$Id: updmap.pl 59152 2021-05-09 21:49:52Z karl $';
  
 -my $TEXMFROOT;
 +my $TEXMFDIST;
@@ -113,7 +113,7 @@
 +  TeX::Update->import();
  }
  
- my $lastchdate = '$Date: 2019-06-07 18:36:59 +0200 (Fri, 07 Jun 2019) $';
+ my $lastchdate = '$Date: 2021-05-09 23:49:52 +0200 (Sun, 09 May 2021) $';
 @@ -46,7 +48,7 @@ use TeXLive::TLUtils qw(mkdirhier mktexu
  # see more comments at the definition of this function.
  reset_root_home();
