@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 21 11:29:21 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 1.0.1
+  * Fix authenticate_none method, via #438.
+  * Allow to pass in alternative signing algorithm to RFC7523 authentication methods via #447.
+  * Fix missing_token for Flask OAuth client, via #448.
+  * Allow openid in any place of the scope, via #449.
+  * Security fix for validating essential value on blank value in JWT, via #445.
+- Update to 1.0.0
+  * Dropped support for Python 2
+  * Removed built-in SQLAlchemy integration.
+  * The whole framework client integrations have been restructured
+
+-------------------------------------------------------------------
 Tue Nov 16 13:42:27 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.15.5
