@@ -310,7 +310,11 @@ patch -R -p1 < %{PATCH68}
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
 tar -xf %{SOURCE1}
 pushd esbuild
-GO_FLAGS="-mod=vendor" make
+gflags="-mod=vendor"
+%if 0%{?suse_version} >= 1550
+gflags+=" -buildvcs=false"
+%endif
+GO_FLAGS="${gflags}" make
 cp -a esbuild ../third_party/devtools-frontend/src/third_party/esbuild/esbuild
 popd
 

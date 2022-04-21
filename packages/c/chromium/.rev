@@ -4074,4 +4074,13 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>970306</requestid>
   </revision>
+  <revision rev="333" vrev="2">
+    <srcmd5>831f94719ab70b5c094f9bb6e0bbc500</srcmd5>
+    <version>100.0.4896.127</version>
+    <time>1650548571</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for go 1.18
+</comment>
+    <requestid>971372</requestid>
+  </revision>
 </revisionlist>
