@@ -20,7 +20,7 @@
 %{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x
 %global debug 0
-%global add_back_javaee_modules 0
+%global is_release 1
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -32,34 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      13
 %global interimver      0
-%global updatever       10
-%global patchver        0
-%global datever         2022-01-18
-%global buildver        5
+%global updatever       11
+%global datever         2022-04-19
+%global buildver        4
 %global openjdk_repo    jdk13u
-%global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}+%{buildver}
-%global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}-%{buildver}
+%global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
+%global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
 %global java_atk_wrapper_version 0.33.2
-# JavaEE modules
-%global java_atk_wrapper_version 0.33.2
-%global java_activation_repository activation
-%global java_activation_tag JAF-1_2_0
-%global java_xml_bind_repository jaxb-spec
-%global java_xml_bind_tag 2.4.0
-%global java_xml_soap_repository javax.xml.soap
-%global java_xml_soap_tag 1.4.0
-%global java_annotation_repository javax.annotation
-%global java_annotation_tag 1.3.2
-%global java_xml_ws_repository jax-ws-spec
-%global java_xml_ws_tag 2.4.0
-%global com_sun_xml_fastinfoset_repository metro-fi
-%global com_sun_xml_fastinfoset_tag 1.2.15-RELEASE
-%global org_jvnet_staxex_repository metro-stax-ex
-%global org_jvnet_staxex_tag 1.8
-%global com_sun_istack_runtime_repository jaxb-istack-commons
-%global com_sun_istack_runtime_tag 3.0.7-RELEASE
-%global jaxb_ri_repository jaxb-v2
-%global jaxb_ri_tag 2.3.1
 # priority must be 6 digits in total
 # % global priority        2305
 %global priority        0
@@ -111,6 +90,11 @@
 %else
 %global with_system_pcsc 0
 %endif
+%if %{is_release}
+%global package_version %{featurever}.%{interimver}.%{updatever}.%{?patchver:%{patchver}}%{!?patchver:0}
+%else
+%global package_version %{featurever}.%{interimver}.%{updatever}.%{?patchver:%{patchver}}%{!?patchver:0}~%{buildver}
+%endif
 %bcond_with zero
 %if ! %{with zero}
 %ifarch x86_64 %{aarch64}
@@ -140,7 +124,7 @@
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
 Name:           java-%{featurever}-openjdk
-Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}
+Version:        %{package_version}
 Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
@@ -160,24 +144,6 @@ Source13:       nss.cfg
 Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
 Source15:       TestECDSA.java
-# https://codeload.github.com/javaee/%{java_activation_repository}/tar.gz/%{java_activation_tag}
-Source20:       %{java_activation_repository}-%{java_activation_tag}.tar.gz
-# https://codeload.github.com/javaee/%{java_xml_bind_repository}/tar.gz/%{java_xml_bind_tag}
-Source21:       %{java_xml_bind_repository}-%{java_xml_bind_tag}.tar.gz
-# https://codeload.github.com/javaee/%{java_xml_soap_repository}/tar.gz/%{java_xml_soap_tag}
-Source22:       %{java_xml_soap_repository}-%{java_xml_soap_tag}.tar.gz
-# https://codeload.github.com/javaee/%{java_annotation_repository}/tar.gz/%{java_annotation_tag}
-Source23:       %{java_annotation_repository}-%{java_annotation_tag}.tar.gz
-# https://codeload.github.com/javaee/%{java_xml_ws_repository}/tar.gz/%{java_xml_ws_tag}
-Source24:       %{java_xml_ws_repository}-%{java_xml_ws_tag}.tar.gz
-# https://codeload.github.com/javaee/%{com_sun_xml_fastinfoset_repository}/tar.gz/%{com_sun_xml_fastinfoset_tag}
-Source25:       %{com_sun_xml_fastinfoset_repository}-%{com_sun_xml_fastinfoset_tag}.tar.gz
-# https://codeload.github.com/javaee/%{org_jvnet_staxex_repository}/tar.gz/%{org_jvnet_staxex_tag}
-Source26:       %{org_jvnet_staxex_repository}-%{org_jvnet_staxex_tag}.tar.gz
-# https://codeload.github.com/javaee/%{com_sun_istack_runtime_repository}/tar.gz/%{com_sun_istack_runtime_tag}
-Source27:       %{com_sun_istack_runtime_repository}-%{com_sun_istack_runtime_tag}.tar.gz
-# https://codeload.github.com/javaee/%{jaxb_ri_repository}/tar.gz/%{jaxb_ri_tag}
-Source28:       %{jaxb_ri_repository}-%{jaxb_ri_tag}.tar.gz
 # Fresh config.guess and config.sub files
 # wget -O config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'
 Source100:      config.guess
@@ -221,10 +187,8 @@ Patch400:       jaw-misc.patch
 Patch401:       jaw-jdk10.patch
 Patch402:       jaw-nogtk.patch
 #
-Patch500:       activation-module.patch
-Patch501:       annotation-module.patch
-#
 Patch600:       riscv64-zero.patch
+#
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -436,15 +400,6 @@ need to.
 %prep
 %setup -q -n %{openjdk_dir}
 %setup -q -D -n %{openjdk_dir} -T -a 8
-%setup -q -D -n %{openjdk_dir} -T -a 20
-%setup -q -D -n %{openjdk_dir} -T -a 21
-%setup -q -D -n %{openjdk_dir} -T -a 22
-%setup -q -D -n %{openjdk_dir} -T -a 23
-%setup -q -D -n %{openjdk_dir} -T -a 24
-%setup -q -D -n %{openjdk_dir} -T -a 25
-%setup -q -D -n %{openjdk_dir} -T -a 26
-%setup -q -D -n %{openjdk_dir} -T -a 27
-%setup -q -D -n %{openjdk_dir} -T -a 28
 
 # Replace config.sub and config.guess with fresh versions
 cp %{SOURCE100} make/autoconf/build-aux/
@@ -496,9 +451,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch400
 %patch401
 %patch402
-
-%patch500
-%patch501
 
 %patch600 -p1
 
@@ -562,10 +514,10 @@ bash ../configure \
     --with-version-feature=%{featurever} \
     --with-version-interim=%{interimver} \
     --with-version-update=%{updatever} \
-    --with-version-patch=%{patchver} \
+    --with-version-patch=%{?patchver:%{patchver}}%{!?patchver:0} \
     --with-version-date=%{datever} \
     --with-version-build=%{buildver} \
-%if 1
+%if %{is_release}
     --with-version-pre="" \
 %endif
     --with-version-opt="suse-%{release}-%{_arch}" \
@@ -644,152 +596,6 @@ source $JAVA_HOME/release; export MODULES
 $JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "atk.wrapper,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
 cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
 rm -rf $JAVA_HOME/../newjdk
-
-%if %{add_back_javaee_modules}
-
-# Merge back some Java EE modules removed in OpenJDK 11 by JEP 320
-
-# Build the java.activation framework
-
-pushd %{java_activation_repository}-%{java_activation_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find activation -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build:activation/src/main/resources $JAVA_HOME/../jmods/java.activation.jmod
-popd
-# Merge the java activation framework into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "java.activation,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the java.xml.bind
-
-pushd %{java_xml_bind_repository}-%{java_xml_bind_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find jaxb-api/src/main/java/ -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build:jaxb-api/src/main/resources $JAVA_HOME/../jmods/java.xml.bind.jmod
-popd
-# Merge java.xml.bind into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "java.xml.bind,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the java.xml.soap
-
-pushd %{java_xml_soap_repository}-%{java_xml_soap_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find src/main/ -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build $JAVA_HOME/../jmods/java.xml.soap.jmod
-popd
-# Merge java.xml.soap into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "java.xml.soap,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the java.annotation
-
-pushd %{java_annotation_repository}-%{java_annotation_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find src/main/java -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build $JAVA_HOME/../jmods/java.annotation.jmod
-popd
-# Merge java.annotation into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "java.annotation,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the java.xml.ws
-
-pushd %{java_xml_ws_repository}-%{java_xml_ws_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find api/src/main -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build:api/src/main/resources $JAVA_HOME/../jmods/java.xml.ws.jmod
-popd
-# Merge java.xml.ws into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "java.xml.ws,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the com.sum.xml.fastinfoset
-
-pushd %{com_sun_xml_fastinfoset_repository}-%{com_sun_xml_fastinfoset_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find code/fastinfoset/src/main/java -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build:code/fastinfoset/src/main/resources $JAVA_HOME/../jmods/com.sun.xml.fastinfoset.jmod
-popd
-# Merge com.sun.xml.fastinfoset into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "com.sun.xml.fastinfoset,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the org.jvnet.staxex
-
-pushd %{org_jvnet_staxex_repository}-%{org_jvnet_staxex_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find stax-ex/src/java -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build $JAVA_HOME/../jmods/org.jvnet.staxex.jmod
-popd
-# Merge org.jvnet.staxex into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "org.jvnet.staxex,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the com.sun.istack.runtime
-
-pushd %{com_sun_istack_runtime_repository}-%{com_sun_istack_runtime_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find istack-commons/runtime/src/main/java -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build $JAVA_HOME/../jmods/com.sun.istack.runtime.jmod
-popd
-# Merge com.sun.istack into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "com.sun.istack.runtime,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the com.sun.xml.txw2
-
-pushd %{jaxb_ri_repository}-%{jaxb_ri_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find jaxb-ri/txw/runtime/src/main/java -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build $JAVA_HOME/../jmods/com.sun.xml.txw2.jmod
-popd
-# Merge org.jvnet.staxex into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "com.sun.xml.txw2,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-# Build the com.sun.xml.bind
-
-pushd %{jaxb_ri_repository}-%{jaxb_ri_tag}
-if [ -e build ]; then rm -rf build; fi
-mkdir -p build
-$JAVA_HOME/bin/javac -d build `find jaxb-ri/runtime/impl/src/main/java -name \*.java | xargs`
-$JAVA_HOME/bin/jmod create --do-not-resolve-by-default --class-path=build:jaxb-ri/runtime/impl/src/main/resources $JAVA_HOME/../jmods/com.sun.xml.bind.jmod
-popd
-# Merge org.jvnet.staxex into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "com.sun.xml.bind,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-
-%endif # add_back_javaee_modules
 
 # cacerts are generated in runtime in openSUSE
 if [ -f %{buildoutputdir}/%{imagesdir}/jdk/lib/security/cacerts ]; then

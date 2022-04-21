@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Apr 20 12:13:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-13.0.11+4 (April 2022 CPU)
+  * Security fixes:
+    + JDK-8284920: Incorrect Token type causes XPath expression to
+      return empty result
+    + JDK-8284548: Invalid XPath expression causes
+      StringIndexOutOfBoundsException
+    + JDK-8281388: Change wrapping of EncryptedPrivateKeyInfo
+    + JDK-8282397: createTempFile method of java.io.File is failing
+      when called with suffix of spaces character
+    + JDK-8278356: Improve file creation
+    + JDK-8270504, bsc#1198672, CVE-2022-21426: Better Xpath
+      expression handling
+    + JDK-8272594: Better record of recordings
+    + JDK-8277672, bsc#1198674, CVE-2022-21434: Better invocation
+      handler handling
+    + JDK-8282300: Throws NamingException instead of
+      InvalidNameException after JDK-8278972
+    + JDK-8278972, bsc#1198673, CVE-2022-21496: Improve URL supports
+    + JDK-8272261: Improve JFR recording file processing
+    + JDK-8269938: Enhance XML processing passes redux
+    + JDK-8272255: Completely handle MIDI files
+    + JDK-8278805: Enhance BMP image loading
+    + JDK-8278449: Improve keychain support
+    + JDK-8277227: Better identification of OIDs
+    + JDK-8275151, bsc#1198675, CVE-2022-21443: Improved Object
+      Identification
+    + JDK-8274221: More definite BER encodings
+    + JDK-8278798: Improve supported intrinsic
+  * Other changes:
+    + JDK-8282761: XPathFactoryImpl remove setProperty and
+      getProperty methods
+    + JDK-8276141: XPathFactory set/getProperty method
+    + JDK-8249867: XML declaration is not followed by a newline
+    + JDK-8274524: SSLSocket.close() hangs if it is called during
+      the ssl handshake
+    + JDK-8272541: Incorrect overflow test in Toom-Cook branch of
+      BigInteger multiplication
+    + JDK-8278309: [windows] use of uninitialized OSThread::_state
+    + JDK-8274736: Concurrent read/close of SSLSockets causes
+      SSLSessions to be invalidated unnecessarily
+    + JDK-8280373: Update Xalan serializer / SystemIDResolver to
+      align with JDK-8270492
+    + JDK-8275082, bsc#1198671, CVE-2022-21476: Update XML Security
+      for Java to 2.3.0
+    + JDK-8280947: Adapt test/jdk/javax/xml/crypto/dsig/
+      /LogParameters.java for 13u
+    + JDK-8280414: Memory leak in DefaultProxySelector
+    + JDK-8255255: Update Apache Santuario (XML Signature) to
+      version 2.2.1
+    + JDK-8240983: Incorrect copyright header in Apache Santuario
+      2.1.3 files
+    + JDK-8247964: All log0() in com/sun/org/slf4j/internal/
+      /Logger.java should be private
+    + JDK-8247907: XMLDsig logging does not work
+    + JDK-8259535: ECDSA SignatureValue do not always have the
+      specified length
+    + JDK-8240353: AArch64: missing support for
+      -XX:+ExtendedDTraceProbes in C1
+    + JDK-8273341: Update Siphash to version 1.0
+    + JDK-8275610: C2: Object field load floats above its null
+      check resulting in a segfault
+    + JDK-8272570: C2: crash in PhaseCFG::global_code_motion
+    + JDK-8274658: ISO 4217 Amendment 170 Update
+    + JDK-8065704: Set LC_ALL=C for all relevant commands in the
+      build system
+- Do not include back the JavaEE modules in the JDK
+- Removed patches:
+  * activation-module.patch
+  * annotation-module.patch
+    + The pached JavaEE modules do not exist any more
+
+-------------------------------------------------------------------
 Fri Feb  4 06:30:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-13.0.10+5 (January 2022 CPU)
