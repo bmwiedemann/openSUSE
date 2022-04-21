@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  7 09:34:59 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do not recommend docs of any kind anymore but suggest them (boo#1197367)
+- Add patch pdftex_pdflatex.dif to mention pdflatex in manual page (bsc#1171682)
+
+-------------------------------------------------------------------
+Mon Apr  4 11:32:38 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2022 
+- Remove obsolete patch seminar_latex20200202.dif
+
+-------------------------------------------------------------------
 Fri Mar 18 11:24:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Also add some obsoletes 
