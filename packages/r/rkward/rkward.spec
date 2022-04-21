@@ -1,7 +1,7 @@
 #
 # spec file for package rkward
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,19 +28,19 @@
 %bcond_with qtwebengine
 %endif
 Name:           rkward
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Graphical frontend for R language
 Summary(fr):    Interface graphique pour le langage R
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://rkward.kde.org/
-Source0:        %{name}-%{version}.tar.gz
-Patch0:         patch-fix-crash-ggplot2.diff
+Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.gz
 BuildRequires:  R-base-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-fortran
 BuildRequires:  gettext
+BuildRequires:  karchive-devel
 BuildRequires:  kconfig-devel
 BuildRequires:  kcoreaddons-devel
 BuildRequires:  kcrash-devel
@@ -87,7 +87,6 @@ intégration dans les suites bureautiques.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake_kf5 -d build
@@ -163,6 +162,7 @@ intégration dans les suites bureautiques.
 %doc %lang(uk) %{_kf5_sharedir}/doc/HTML/uk/rkwardplugins/
 
 %doc %lang(ca) %{_kf5_mandir}/ca/man1/rkward.1.gz
+%doc %lang(de) %{_kf5_mandir}/de/man1/rkward.1.gz
 %doc %lang(it) %{_kf5_mandir}/it/man1/rkward.1.gz
 %doc %lang(nl) %{_kf5_mandir}/nl/man1/rkward.1.gz
 %doc %lang(sv) %{_kf5_mandir}/sv/man1/rkward.1.gz
