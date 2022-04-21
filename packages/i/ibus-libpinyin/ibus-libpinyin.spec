@@ -1,8 +1,8 @@
 #
 # spec file for package ibus-libpinyin
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define   with_cloud_input   1
 
 Name:           ibus-libpinyin
-Version:        1.12.1
+Version:        1.12.91
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
@@ -102,7 +102,8 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/%{name}/icons
 %{_datadir}/%{name}/setup
 %{_datadir}/%{name}/network.txt
-%{_datadir}/%{name}/db/strokes.db
+# %{_datadir}/%{name}/db/strokes.db
+%{_datadir}/ibus-libpinyin/db/table.db
 %{_datadir}/metainfo/libpinyin.appdata.xml
 %{_datadir}/ibus
 %{_datadir}/glib-2.0/schemas/com.github.libpinyin.ibus-libpinyin.gschema.xml
