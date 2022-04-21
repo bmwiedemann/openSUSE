@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">waylandpp</param>
-    <param name="revision">e5bc48c12651872711ce08ec8da4871e7c522571</param>
+    <param name="revision">ec8fe377f2b70283742eeca5c1c2ca3abb917a4e</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/NilsBrause/waylandpp.git</param>

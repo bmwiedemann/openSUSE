@@ -19,13 +19,13 @@
 %define sover 0
 
 Name:           waylandpp
-Version:        0.2.9
+Version:        0.2.10
 Release:        0
 Summary:        Wayland C++ bindings
 License:        BSD-2-Clause AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/NilsBrause/waylandpp
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -42,19 +42,19 @@ BuildRequires:  Mesa-KHR-devel
 Wayland C++ bindings
 
 %package devel
-Summary:        Development files for lib%{name}
+Summary:        Development files for lib%name
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{sover} = %{version}
+Requires:       lib%name%{sover} = %version
 
 %description    devel
-The %{name}-devel package contains libraries and header files for
-developing applications that use lib%{name}.
+The %name-devel package contains libraries and header files for
+developing applications that use lib%name.
 
-%package     -n lib%{name}%{sover}
+%package     -n lib%name%{sover}
 Summary:        Wayland C++ bindings
 Group:          System/Libraries
 
-%description -n lib%{name}%{sover}
+%description -n lib%name%{sover}
 Wayland C++ bindings
 
 %prep
@@ -67,23 +67,23 @@ Wayland C++ bindings
 %install
 %cmake_install
 
-%post   -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%post   -n lib%name%{sover} -p /sbin/ldconfig
+%postun -n lib%name%{sover} -p /sbin/ldconfig
 
 %files
-%{_bindir}/*
-%{_libdir}/pkgconfig/wayland-scanner++.pc
+%_bindir/*
+%_libdir/pkgconfig/wayland-scanner++.pc
 
-%files -n lib%{name}%{sover}
+%files -n lib%name%{sover}
 %license LICENSE
-%{_libdir}/lib*.so.%{sover}*
+%_libdir/lib*.so.%{sover}*
 
 %files devel
-%{_includedir}/*
-%{_datadir}/*
-%{_libdir}/pkgconfig/*.pc
-%{_libdir}/lib*.so
-%{_libdir}/cmake
-%exclude %{_libdir}/pkgconfig/wayland-scanner++.pc
+%_includedir/*
+%_datadir/*
+%_libdir/pkgconfig/*.pc
+%_libdir/lib*.so
+%_libdir/cmake
+%exclude %_libdir/pkgconfig/wayland-scanner++.pc
 
 %changelog
