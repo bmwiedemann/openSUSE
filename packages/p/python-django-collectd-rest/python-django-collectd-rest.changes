@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 20 13:31:59 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not require mock
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4

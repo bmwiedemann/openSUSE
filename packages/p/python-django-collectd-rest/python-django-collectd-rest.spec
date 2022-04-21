@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-collectd-rest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-collectd
 BuildRequires:  %{python_module Django >= 1.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module djangorestframework >= 3.7}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 # sqlite3 from standard library is requires for tests
 BuildRequires:  %{pythons}
