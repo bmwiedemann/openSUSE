@@ -22,8 +22,8 @@
  #
  # from cslatex:
  cslatex pdftex - -etex cslatex.ini
-@@ -70,8 +71,8 @@ pdfcsplain xetex - -etex csplain.ini
- eplain pdftex language.dat -translate-file=cp227.tcx *eplain.ini
+@@ -74,8 +75,8 @@ hilatex hitex language.dat -etex -ltx hi
+ hitex hitex language.def -etex -ltx hitex.ini
  #
  # from jadetex:
 -jadetex pdftex language.dat *jadetex.ini
@@ -33,7 +33,7 @@
  #
  # from latex-bin:
  dvilualatex luatex language.dat,language.dat.lua dvilualatex.ini
-@@ -155,5 +156,5 @@ xelatex xetex language.dat -etex xelatex
+@@ -159,5 +160,5 @@ xelatex xetex language.dat -etex xelatex
  xetex xetex language.def -etex xetex.ini
  #
  # from xmltex:
@@ -150,11 +150,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2021/texmf-var
+-TEXMFVAR = ~/.texlive2022/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2021/texmf-config
+-TEXMFCONFIG = ~/.texlive2022/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -215,8 +215,8 @@
  
  % This variable exists only to be redefined; it is used in nearly all
  % search paths. If a document has source files not only in the current
-@@ -307,7 +307,7 @@ TEXINPUTS               = $TEXMFDOTDIR;$
- TTF2TFMINPUTS =                 $TEXMFDOTDIR;$TEXMF/ttf2pk//
+@@ -304,7 +304,7 @@ TEXINPUTS.frpdftex      = $TEXMFDOTDIR;$
+ TEXINPUTS               = $TEXMFDOTDIR;$TEXMF/tex/{$progname,generic,latex,}//
  
  % Metafont, MetaPost inputs.
 -MFINPUTS = $TEXMFDOTDIR;$TEXMF/metafont//;{$TEXMF/fonts,$VARTEXFONTS}/source//
@@ -224,7 +224,7 @@
  MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost//
  
  % Dump files (fmt/base/mem) for vir{tex,mf,mp} to read.
-@@ -317,31 +317,31 @@ MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost/
+@@ -314,31 +314,31 @@ MPINPUTS = $TEXMFDOTDIR;$TEXMF/metapost/
  % We repeat the same definition three times because of the way fmtutil
  % is implemented; if we use ${TEXFORMATS}, the mpost/mf/etc. formats
  % will not be found.
@@ -263,7 +263,7 @@
  
  % Similarly for the GF format, which only remains in existence because
  % Metafont outputs it (and MF isn't going to change).
-@@ -437,8 +437,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
+@@ -442,8 +442,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
  % For xdvi to find mime.types and .mailcap, if they do not exist in
  % ~.  These are single directories, not paths.
  % (But the default mime.types, at least, may well suffice.)
@@ -274,7 +274,7 @@
  
  % Default settings for the fontconfig library as used by the Windows
  % versions of xetex/xdvipdfmx.  Not used by xetex on Unixish systems.
-@@ -462,10 +462,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
+@@ -467,10 +467,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
  CWEBINPUTS = $TEXMFDOTDIR;$TEXMF/cweb//
  
  % Omega-related fonts and other files.
@@ -289,7 +289,7 @@
  OTPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/otp//
  OCPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/ocp//
  
-@@ -558,32 +558,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
+@@ -566,32 +566,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
  % explicitly list every directory.  Arguably more understandable anyway.
  %
  TEXMFCNF = {\
@@ -353,7 +353,7 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -904,3 +910,34 @@ guess_input_kanji_encoding = 1
+@@ -909,3 +915,34 @@ guess_input_kanji_encoding = 1
  % command_line_encoding = none
  % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
  command_line_encoding = utf-8
