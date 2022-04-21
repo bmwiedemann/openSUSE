@@ -22,4 +22,12 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:qt6-quick3d revision:1</comment>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0979ccdec9d1957ccacbdd35e37b0a3</srcmd5>
+    <version>6.3.0</version>
+    <time>1650548529</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the package version.</comment>
+    <requestid>971210</requestid>
+  </revision>
 </revisionlist>
