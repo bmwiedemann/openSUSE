@@ -136,6 +136,10 @@ install -Dm0755 build/examples/dump_torrent build/examples/make_torrent \
 
 %fdupes %{buildroot}%{python3_sitearch}
 
+# quick and dirty fix until upstream gh#arvidn/libtorrent#6830 is addressed
+sed -e 's/\-l\-pthread/\-pthread/' \
+    -i %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
+
 %if %{with tests}
 %check
 export LD_LIBRARY_PATH=$PWD/build
