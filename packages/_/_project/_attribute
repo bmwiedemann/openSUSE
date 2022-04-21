@@ -56,7 +56,7 @@
   boo#1196799: '20220313'
   boo#1196801: '20220312'
   boo#1196857: '20220321'
-  boo#1196862: '20220419'
+  boo#1196862: '20220420'
   boo#1196922: '20220420'
   boo#1196978: '20220420'
   boo#1197120: '20220420'
@@ -129,13 +129,13 @@
   poo#107728: '20220314'
   poo#107893: '20220419'
   poo#108770: '20220420'
-  poo#108887: '20220419'
+  poo#108887: '20220420'
   poo#108902: '20220420'
   poo#108905: '20220329'
   poo#109422: '20220412'
   poo#109611: '20220420'
   poo#109731: '20220414'
-  poo#109983: '20220419'
+  poo#109983: '20220420'
   poo#110049: '20220420'
   poo#80628: '20220323'
   poo#91383: '20220111'
@@ -186,7 +186,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20220420</value>
+    <value>20220421</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -362,9 +362,6 @@ products:
   - java15-devel-container:
     - i586
     - x86_64
-#  - java16-devel-container:
-#    - i586
-#    - x86_64
   - opensuse-memcached-image:
     - i586
     - x86_64
@@ -518,9 +515,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20220420'
-published: '20220419'
-publishing: '20220419'
+    <value>failed: ''
+published: '20220420'
+publishing: '20220420'
 testing: '20220420'
 </value>
   </attribute>
