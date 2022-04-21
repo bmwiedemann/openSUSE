@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortinghat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-sortinghat
-Version:        0.7.15
+Version:        0.7.19
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
@@ -52,7 +52,6 @@ BuildRequires:  %{python_module PyMySQL >= 0.7.0}
 BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
 BuildRequires:  %{python_module httpretty >= 0.9.5}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pandas >= 0.17}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6.0}
