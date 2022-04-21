@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 21 10:48:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.6.3
+  * Correct a bug that prevented the reconstruction of real towers
+    when no real conjugate is present.
+  * Correct a memory leak in mpcx_tower_clear.
+  * Correct a bug that prevented the reconstruction of real
+    towers when a supposedly complex conjugate pair of roots has
+    become the same real root.
+
+-------------------------------------------------------------------
 Fri May  7 14:28:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.6.1
