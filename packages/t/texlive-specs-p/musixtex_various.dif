@@ -314,14 +314,14 @@
 +pdflatex musixdoc
 --- texmf-dist/scripts/musixtex/musixtex.lua
 +++ texmf-dist/scripts/musixtex/musixtex.lua	2021-04-09 14:54:28.268087372 +0000
-@@ -212,16 +212,25 @@ end
- --       possible by exploiting the the fact that Lua has two false values.
- --         dvi == nil    "do not produce a DVI file" (but maybe PDF)
- --         dvi == false  "do not process the DVI file" (but stop after TeX)
+@@ -226,16 +226,27 @@ end
+ local dvips = "dvips -e0"  
+ -- option -e0 suppresses dvips "feature" of adjusting location to align 
+ -- characters in words of text 
 +local base=string.explode(arg[0], "/+")
 +base=string.explode(base[#base], ".+")
 +base=base[1]
- local dvips = "dvips -e0"
+ 
  function defaults()
    xml2pmx = "xml2pmx"
    prepmx = "prepmx"
@@ -329,11 +329,13 @@
    autosp = "autosp"
 -  tex = "etex"
 +  if base == "pdfmusixtex" then
-+    tex = "pdfetex"
++    tex = "pdfetex"  
++    dvips = ""
 +    dvi = ""
 +    ps2pdf = ""
 +  else
 +    tex = "etex"
++    dvips = "dvips -e0"
 +    dvi = dvips
 +    ps2pdf = "ps2pdf"
 +  end
