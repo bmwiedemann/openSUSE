@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 13 19:55:14 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.1.0
+
+- Release 2.1.0
+  - Fix #80: disallow xml:id on listitems (#82)
+  - Feature/prompt role in #94
+  - Fix #90: Restrict char set of prof attributes (#92)
+  - rm @format from mediaobject (#93)
+  - Allow videoobject and videodata (#101)
+
+-------------------------------------------------------------------
 Fri Sep  3 10:06:03 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.0.0
 
 - Release 2.0.0, no substantial changes 

@@ -1,7 +1,7 @@
 #
 # spec file for package geekodoc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without  tests
 #
 Name:           geekodoc
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        DocBook based RNG Schema for SUSE Documentation
 License:        GPL-3.0-only
@@ -48,7 +48,7 @@ BuildRequires:  trang
 
 Requires:       sgml-skel >= 0.7
 Requires(post): sgml-skel >= 0.7
-Requires(postun): sgml-skel >= 0.7
+Requires(postun):sgml-skel >= 0.7
 Conflicts:      suse-xsl-stylesheets < 2.0.6
 BuildArch:      noarch
 

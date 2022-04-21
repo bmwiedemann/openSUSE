@@ -85,4 +85,12 @@ Fixes issue #41 to reduce number of files in packages
     <comment></comment>
     <requestid>917003</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3d8c798572237cdf33cfef87747e3358</srcmd5>
+    <version>unknown</version>
+    <time>1650548537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971223</requestid>
+  </revision>
 </revisionlist>
