@@ -63,4 +63,16 @@
   * Added Galician translation</comment>
     <requestid>922361</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1f8d9f9cf75452476b56065231f11e6a</srcmd5>
+    <version>0.6.0</version>
+    <time>1650548541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * App ported to GTK 4 and libadwaita
+  * User interface refinements
+  * New translations added
+  * Bug fixes</comment>
+    <requestid>971239</requestid>
+  </revision>
 </revisionlist>
