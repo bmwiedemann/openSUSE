@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 20 13:51:45 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Enable debuginfod support.
+
+-------------------------------------------------------------------
 Fri Mar 25 17:37:08 UTC 2022 - Tony Jones <tonyj@suse.com>
 
 - Enable bpf skel support.

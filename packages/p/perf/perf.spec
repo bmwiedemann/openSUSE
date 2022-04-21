@@ -47,6 +47,7 @@ BuildRequires:  flex
 BuildRequires:  gtk2-devel
 BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  libcap-devel
+BuildRequires:  libdebuginfod-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libtraceevent-devel
