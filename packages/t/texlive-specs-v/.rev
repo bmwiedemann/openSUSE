@@ -485,4 +485,12 @@ Adding the LPPL as many files are licensed under this license (forwarded request
     <comment>Also add some obsoletes and conflicts</comment>
     <requestid>964561</requestid>
   </revision>
+  <revision rev="50" vrev="53">
+    <srcmd5>785e304d944667030beff718ef3a29de</srcmd5>
+    <version>unknown</version>
+    <time>1650548511</time>
+    <user>dimstar_suse</user>
+    <comment>Do not prefix Suggests by Requires</comment>
+    <requestid>967803</requestid>
+  </revision>
 </revisionlist>
