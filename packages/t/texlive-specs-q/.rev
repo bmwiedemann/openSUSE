@@ -456,4 +456,12 @@
     <comment>Also add some obsoletes and conflicts</comment>
     <requestid>964556</requestid>
   </revision>
+  <revision rev="47" vrev="50">
+    <srcmd5>c853751a4f0e7c9fde09f9ef89fd58d7</srcmd5>
+    <version>unknown</version>
+    <time>1650548505</time>
+    <user>dimstar_suse</user>
+    <comment>Do not prefix Suggests by Requires</comment>
+    <requestid>967798</requestid>
+  </revision>
 </revisionlist>
