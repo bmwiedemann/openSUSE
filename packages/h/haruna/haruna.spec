@@ -17,14 +17,12 @@
 
 
 Name:           haruna
-Version:        0.7.3
+Version:        0.8.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
 URL:            https://invent.kde.org/multimedia/haruna
 Source0:        https://invent.kde.org/multimedia/haruna/-/archive/v%{version}/%{name}-v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM haruna-mpv_v2_fix.patch
-Patch0:         haruna-mpv_v2_fix.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  extra-cmake-modules >= 1.0.0
 BuildRequires:  hicolor-icon-theme
@@ -60,7 +58,6 @@ Recommends:     youtube-dl
 
 %prep
 %setup -q -n %{name}-v%{version}
-%patch0 -p1
 
 %build
 %cmake
@@ -72,12 +69,17 @@ Recommends:     youtube-dl
 # let's remove the documentation for now
 rm -rf %{buildroot}%{_datadir}/doc
 
+# remove oddly-sized icons
+rm -rf %{buildroot}%{_datadir}/icons/hicolor/44x44 \
+       %{buildroot}%{_datadir}/icons/hicolor/150x150 \
+       %{buildroot}%{_datadir}/icons/hicolor/310x310
+
 %files
 %license LICENSES/CC-BY-4.0.txt LICENSES/GPL-3.0-or-later.txt LICENSES/WTFPL.txt
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/org.kde.haruna.desktop
-%{_datadir}/icons/hicolor/*/apps/haruna.svg
+%{_datadir}/icons/hicolor/*/apps/haruna.*g
 %{_datadir}/metainfo/org.kde.haruna.metainfo.xml
 
 %changelog

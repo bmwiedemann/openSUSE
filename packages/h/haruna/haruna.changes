@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Apr 20 20:36:38 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.0
+  * fix: wrong height for playlist items
+  * Fix freezes on systems with slow disks
+  * Fix build warnings and errors
+  * fix: mark methods as override
+  * chore: remove unused code
+  * fix: load correct files and call functions from actions
+    manager
+  * fix: release date for 0.7.3
+  * fix: don't run animation when component is hidden
+  * SVN_SILENT made messages (.desktop file) - always resolve
+    ours
+  * GIT_SILENT made messages (after extraction)
+  * fix: menubar not hiding in fullscreen
+  * refactor: improvements to framedecoder
+  * feat: add global menu support
+  * fix: compile with MPV_CLIENT_API_VERSION 1 and 2
+  * feat: add action to seek to watch later position
+    (Ctrl+Shift+P)
+  * feat: add action to restart playback (seek to 0/beginning,
+    F5 key)
+  * feat: add action to load last played file (Ctrl+Shift+L)
+  * chore: add .directory to gitignore
+  * fix: rename icons license files
+  * fix(osd): when file can't be played show filename if there's
+    no title
+  * build: use ECMAddAppIcon module
+  * feat: allow to control the time position saving interval
+  * refactor: add Settings to settings qml file names
+  * refactor: rename SettingsEditor to SettingsWindow
+  * refactor: put settings window in a loader
+  * build: add KDECMakeSettings and KDECompilerSettings
+  * fix: get actions from actionsManager
+  * chore: add license info to actionsmanager.cpp/h
+  * refactor: move actions cpp code to its own class
+  * fix: remove unused cursor hiding/showing code
+  * fix(playlist): use position from PlaylistSettings
+  * fix(playlist): set height to mpv height
+  * fix(playlist): unable to close the playlist
+  * feat(menu): add more actions
+  * build: add header files to target_sources
+  * chore: remove more unneeded code
+  * chore: remove unneeded code
+  * chore: remove id from repeater
+  * feat: add menu to open recent files
+  * build: add FindYtdlp.cmake file
+  * Add i18n()
+  * SVN_SILENT made messages (.desktop file) - always resolve
+    ours
+  * GIT_SILENT made messages (after extraction)
+  * feat: Add setting to pause the player if minimized
+  * fix(settigs): clarify remember time position settings
+  * chore(settings): remove labels from .kcfg files
+  * fix(settings): load subtitles folders correctly
+- Drop haruna-mpv_v2_fix.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sun Jan 30 15:22:24 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add haruna-mpv_v2_fix.patch (fixes Factory build)
