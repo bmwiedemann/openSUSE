@@ -3285,6 +3285,7 @@ unsorted:
   - eekboard-devel 
   - eeyek-fonts 
   - efibootmgr: [i586] 
+  - efitools 
   - efivar 
   - efivar-devel 
   - efl 
@@ -7523,14 +7524,6 @@ unsorted:
   - java-15-openjdk-javadoc 
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
-  - java-16-openjdk 
-  - java-16-openjdk-accessibility 
-  - java-16-openjdk-demo 
-  - java-16-openjdk-devel 
-  - java-16-openjdk-headless 
-  - java-16-openjdk-javadoc 
-  - java-16-openjdk-jmods 
-  - java-16-openjdk-src 
   - java-17-openjdk 
   - java-17-openjdk-accessibility 
   - java-17-openjdk-demo 
@@ -8106,6 +8099,7 @@ unsorted:
   - kdoctools-devel 
   - kdsoap-devel 
   - kdstatemachineeditor-devel 
+  - kdumpid 
   - kea 
   - kea-devel 
   - kea-hooks 
@@ -8400,7 +8394,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -9300,17 +9293,21 @@ unsorted:
   - libQt6Core6 
   - libQt6DBus6 
   - libQt6DataVisualization6 
+  - libQt6DataVisualizationQml6 
+  - libQt6DeclarativeOpcua6 
   - libQt6Designer6 
   - libQt6DesignerComponents6 
   - libQt6Gui6 
   - libQt6Help6 
   - libQt6HunspellInputMethod6 
+  - libQt6JsonRpc6 
   - libQt6LabsAnimation6 
   - libQt6LabsFolderListModel6 
   - libQt6LabsQmlModels6 
   - libQt6LabsSettings6 
   - libQt6LabsSharedImage6 
   - libQt6LabsWavefrontMesh6 
+  - libQt6LanguageServer6 
   - libQt6Mqtt6 
   - libQt6Multimedia6 
   - libQt6MultimediaQuick6 
@@ -9321,9 +9318,9 @@ unsorted:
   - libQt6OpcUa6 
   - libQt6OpenGL6 
   - libQt6OpenGLWidgets6 
-  - libQt6Pdf6 
-  - libQt6PdfQuick6 
-  - libQt6PdfWidgets6 
+  - libQt6Pdf6: [x86_64] 
+  - libQt6PdfQuick6: [x86_64] 
+  - libQt6PdfWidgets6: [x86_64] 
   - libQt6Positioning6 
   - libQt6PositioningQuick6 
   - libQt6PrintSupport6 
@@ -9377,9 +9374,9 @@ unsorted:
   - libQt6WaylandEglClientHwIntegration6 
   - libQt6WaylandEglCompositorHwIntegration6 
   - libQt6WebChannel6 
-  - libQt6WebEngineCore6 
-  - libQt6WebEngineQuick6 
-  - libQt6WebEngineWidgets6 
+  - libQt6WebEngineCore6: [x86_64] 
+  - libQt6WebEngineQuick6: [x86_64] 
+  - libQt6WebEngineWidgets6: [x86_64] 
   - libQt6WebSockets6 
   - libQt6Widgets6 
   - libQt6WlShellIntegration6 
@@ -9749,8 +9746,8 @@ unsorted:
   - libarm_compute26: [x86_64] 
   - libarm_compute_core26: [x86_64] 
   - libarm_compute_graph26: [x86_64] 
-  - libarmadillo10 
-  - libarmadillo10-32bit: [x86_64] 
+  - libarmadillo11 
+  - libarmadillo11-32bit: [x86_64] 
   - libarmnn28: [x86_64] 
   - libarmnn28-opencl: [x86_64] 
   - libarmnnBasePipeServer28: [x86_64] 
@@ -13487,7 +13484,7 @@ unsorted:
   - libradcli5 
   - librados-devel: [x86_64] # devel package of dvd:librados2 
   - libradospp-devel: [x86_64] # devel package of dvd:librados2 
-  - libraft0 
+  - libraft2 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
   - libraqm-devel 
@@ -14639,6 +14636,10 @@ unsorted:
   - libvotca2022 
   - libvotequorum8 
   - libvotequorum8-32bit: [x86_64] 
+  - libvpd-2_2-3 
+  - libvpd-2_2-3-32bit: [x86_64] 
+  - libvpd-devel 
+  - libvpd-devel-32bit: [x86_64] 
   - libvpd2 
   - libvpd2-32bit: [x86_64] 
   - libvpd2-devel 
@@ -16165,7 +16166,6 @@ unsorted:
   - mcds 
   - mcelog: [i586] 
   - mchange-commons 
-  - mchange-commons-javadoc 
   - mcjoin 
   - mcpp 
   - mcpp-devel 
@@ -16487,7 +16487,7 @@ unsorted:
   - mojo-executor-javadoc 
   - mojo-parent 
   - moka-icon-theme 
-  - mold 
+  - mold: [x86_64] 
   - molequeue 
   - molequeue-devel 
   - molequeue-doc 
@@ -18203,14 +18203,11 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -21342,6 +21339,7 @@ unsorted:
   - python-Genshi-doc 
   - python-Kivy-doc 
   - python-M2Crypto-doc 
+  - python-PyQRCode-doc 
   - python-SQLAlchemy-doc 
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
@@ -22973,6 +22971,7 @@ unsorted:
   - python310-elementpath 
   - python310-eliot 
   - python310-email-reply-parser 
+  - python310-email-validator 
   - python310-email_validator 
   - python310-emcee 
   - python310-emoji 
@@ -22987,6 +22986,7 @@ unsorted:
   - python310-envisage 
   - python310-enzyme 
   - python310-ephem 
+  - python310-ephemeral-port-reserve 
   - python310-epubmerge 
   - python310-eradicate 
   - python310-espeak 
@@ -26113,6 +26113,7 @@ unsorted:
   - python38-elementpath 
   - python38-eliot 
   - python38-email-reply-parser 
+  - python38-email-validator 
   - python38-email_validator 
   - python38-emcee 
   - python38-emoji 
@@ -26127,6 +26128,7 @@ unsorted:
   - python38-envisage 
   - python38-enzyme 
   - python38-ephem 
+  - python38-ephemeral-port-reserve 
   - python38-epubmerge 
   - python38-eradicate 
   - python38-espeak 
@@ -29160,6 +29162,7 @@ unsorted:
   - python39-elementpath 
   - python39-eliot 
   - python39-email-reply-parser 
+  - python39-email-validator 
   - python39-email_validator 
   - python39-emcee 
   - python39-emoji 
@@ -29174,6 +29177,7 @@ unsorted:
   - python39-envisage 
   - python39-enzyme 
   - python39-ephem 
+  - python39-ephemeral-port-reserve 
   - python39-epubmerge 
   - python39-eradicate 
   - python39-espeak 
@@ -31468,6 +31472,8 @@ unsorted:
   - qt6-datavisualization-devel 
   - qt6-datavisualization-imports 
   - qt6-datavisualization-private-devel 
+  - qt6-datavisualizationqml-devel 
+  - qt6-datavisualizationqml-private-devel 
   - qt6-dbus-devel 
   - qt6-dbus-private-devel 
   - qt6-declarative-devel 
@@ -31477,6 +31483,7 @@ unsorted:
   - qt6-declarative-imports 
   - qt6-declarative-private-devel 
   - qt6-declarative-tools 
+  - qt6-declarativeopcua-private-devel 
   - qt6-designer-devel 
   - qt6-designer-private-devel 
   - qt6-designercomponents-private-devel 
@@ -31490,6 +31497,7 @@ unsorted:
   - qt6-imageformats-devel 
   - qt6-imageformats-docs-html 
   - qt6-imageformats-docs-qch 
+  - qt6-jsonrpc-private-devel 
   - qt6-kmssupport-devel-static 
   - qt6-kmssupport-private-devel 
   - qt6-labsanimation-devel 
@@ -31504,6 +31512,7 @@ unsorted:
   - qt6-labssharedimage-private-devel 
   - qt6-labswavefrontmesh-devel 
   - qt6-labswavefrontmesh-private-devel 
+  - qt6-languageserver-private-devel 
   - qt6-linguist-devel 
   - qt6-lottie-docs-html 
   - qt6-lottie-docs-qch 
@@ -31531,6 +31540,7 @@ unsorted:
   - qt6-networkauth-docs-qch 
   - qt6-networkauth-examples 
   - qt6-networkauth-private-devel 
+  - qt6-networkinformation-glib 
   - qt6-networkinformation-nm 
   - qt6-opcua 
   - qt6-opcua-devel 
@@ -31543,13 +31553,13 @@ unsorted:
   - qt6-opengl-private-devel 
   - qt6-openglwidgets-devel 
   - qt6-packetprotocol-devel-static 
-  - qt6-pdf-devel 
-  - qt6-pdf-imports 
-  - qt6-pdf-private-devel 
-  - qt6-pdfquick-devel 
-  - qt6-pdfquick-private-devel 
-  - qt6-pdfwidgets-devel 
-  - qt6-pdfwidgets-private-devel 
+  - qt6-pdf-devel: [x86_64] 
+  - qt6-pdf-imports: [x86_64] 
+  - qt6-pdf-private-devel: [x86_64] 
+  - qt6-pdfquick-devel: [x86_64] 
+  - qt6-pdfquick-private-devel: [x86_64] 
+  - qt6-pdfwidgets-devel: [x86_64] 
+  - qt6-pdfwidgets-private-devel: [x86_64] 
   - qt6-platformsupport-devel-static 
   - qt6-platformsupport-private-devel 
   - qt6-platformtheme-gtk3 
@@ -31572,8 +31582,8 @@ unsorted:
   - qt6-qmlcore-devel 
   - qt6-qmlcore-private-devel 
   - qt6-qmldebug-devel-static 
-  - qt6-qmldevtools-devel-static 
   - qt6-qmldom-devel-static 
+  - qt6-qmllint-devel-static 
   - qt6-qmllocalstorage-devel 
   - qt6-qmllocalstorage-private-devel 
   - qt6-qmlmodels-devel 
@@ -31733,23 +31743,24 @@ unsorted:
   - qt6-waylandcompositor-private-devel 
   - qt6-waylandeglclienthwintegration-private-devel 
   - qt6-waylandeglcompositorhwintegration-private-devel 
+  - qt6-waylandglobal-private-devel 
   - qt6-webchannel-devel 
   - qt6-webchannel-docs-html 
   - qt6-webchannel-docs-qch 
   - qt6-webchannel-examples 
   - qt6-webchannel-imports 
   - qt6-webchannel-private-devel 
-  - qt6-webengine 
-  - qt6-webengine-docs-html 
-  - qt6-webengine-docs-qch 
-  - qt6-webengine-examples 
-  - qt6-webengine-imports 
-  - qt6-webenginecore-devel 
-  - qt6-webenginecore-private-devel 
-  - qt6-webenginequick-devel 
-  - qt6-webenginequick-private-devel 
-  - qt6-webenginewidgets-devel 
-  - qt6-webenginewidgets-private-devel 
+  - qt6-webengine: [x86_64] 
+  - qt6-webengine-docs-html: [x86_64] 
+  - qt6-webengine-docs-qch: [x86_64] 
+  - qt6-webengine-examples: [x86_64] 
+  - qt6-webengine-imports: [x86_64] 
+  - qt6-webenginecore-devel: [x86_64] 
+  - qt6-webenginecore-private-devel: [x86_64] 
+  - qt6-webenginequick-devel: [x86_64] 
+  - qt6-webenginequick-private-devel: [x86_64] 
+  - qt6-webenginewidgets-devel: [x86_64] 
+  - qt6-webenginewidgets-private-devel: [x86_64] 
   - qt6-websockets-devel 
   - qt6-websockets-docs-html 
   - qt6-websockets-docs-qch 
@@ -42087,7 +42098,6 @@ unsorted:
   - typelib-1_0-libdazzle-1_0 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
-  - typesafe-config-javadoc 
   - typescript 
   - tzdb 
   - u-boot-tools 
