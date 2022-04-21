@@ -12,11 +12,11 @@ See https://reproducible-builds.org/ for why this is good.
  configure.ac |    2 ++
  2 files changed, 4 insertions(+)
 
-Index: librsb-1.2.0.8/configure
+Index: librsb-1.3.0.0/configure
 ===================================================================
---- librsb-1.2.0.8.orig/configure
-+++ librsb-1.2.0.8/configure
-@@ -23751,9 +23751,11 @@ cat >>confdefs.h <<_ACEOF
+--- librsb-1.3.0.0.orig/configure
++++ librsb-1.3.0.0/configure
+@@ -25647,9 +25647,11 @@ cat >>confdefs.h <<_ACEOF
  _ACEOF
  
  
@@ -28,11 +28,11 @@ Index: librsb-1.2.0.8/configure
  
  
  cat >>confdefs.h <<_ACEOF
-Index: librsb-1.2.0.8/configure.ac
+Index: librsb-1.3.0.0/configure.ac
 ===================================================================
---- librsb-1.2.0.8.orig/configure.ac
-+++ librsb-1.2.0.8/configure.ac
-@@ -324,7 +324,9 @@ if test "x${detected_memhinfo}" = x -a "
+--- librsb-1.3.0.0.orig/configure.ac
++++ librsb-1.3.0.0/configure.ac
+@@ -538,7 +538,9 @@ if test "x${detected_memhinfo}" = x -a "
    memhinfo="${FALLBACK_MEM_HIERARCHY_INFO}"
  fi
  AC_SUBST([RSB_USER_SET_MEM_HIERARCHY_INFO],"${memhinfo}")

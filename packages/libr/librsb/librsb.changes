@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 21 10:20:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0.0
+  * Considerably improved performance of rsb_spmm()/usmm() via
+    new kernels (can be turned off at runtime by setting
+    'RSB_WANT_RSBPP=0' in the environment).
+  * Added a C++ API (classes RsbMatrix and RsbLib) in new header
+    <rsb.hpp>.
+  * Environment variable 'RSB_NUM_THREADS' now used by default
+    (implicit configure '--enable-rsb-num-threads').
+  * Fixed integer overflow situations with limit-large matrices.
+  * Improved parallelism of rsb_spmv()/rsb_spmm() a bit (no
+    overly strict locking).
+  * Improved performance of rsb_spmv()/rsb_spmm() beta-scaling.
+
+-------------------------------------------------------------------
+Tue Nov  2 20:24:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0.10
+  * rsb_spmm(...,RSB_FLAG_WANT_ROW_MAJOR_ORDER,...) internals had
+    swapped ldB and ldC so having ldB > ldC could lead to a
+    crash; with ldC < ldB, to wrong results.
+  * rsb_spmm(...,RSB_FLAG_WANT_ROW_MAJOR_ORDER,...) on matrix
+    with RSB_FLAG_UNIT_DIAG_IMPLICIT could have computed wrong
+    results.
+  * rsb_tune_spmm()/rsb_tune_spsm() could have crashed if called
+    with order==RSB_FLAG_WANT_ROW_MAJOR_ORDER and auto leading
+    dimensions and implicit operands (ldB==0 and Bp==NULL, ldC==0
+    and Cp==NULL).
+  * rsb_mtx_get_rows_sparse() with: was ignoring
+    RSB_TRANSPOSITION_C.
+
+-------------------------------------------------------------------
 Thu Dec 24 12:33:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0.9

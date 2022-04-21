@@ -1,7 +1,7 @@
 #
 # spec file for package librsb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           librsb
 %define lname	librsb0
-Version:        1.2.0.9
+Version:        1.3.0.0
 Release:        0
 Summary:        Shared memory parallel sparse matrix and sparse BLAS library
 License:        LGPL-3.0-or-later
@@ -30,6 +30,7 @@ Patch1:         pun.diff
 Patch2:         reproducible.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  gsl-devel
 BuildRequires:  libtool
@@ -64,7 +65,7 @@ librsb is a library for sparse matrix computations featuring the
 Recursive Sparse Blocks (RSB) matrix format. This format allows cache
 efficient and multi-threaded (that is, shared memory parallel)
 operations on large sparse matrices.
- 
+
 This subpackage contains libraries and header files for developing
 applications that want to make use of librsb.
 
