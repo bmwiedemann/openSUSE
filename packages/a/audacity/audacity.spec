@@ -35,6 +35,8 @@ Patch0:         audacity-no_buildstamp.patch
 Patch1:         audacity-no_return_in_nonvoid.patch
 Patch2:         missing-include.patch
 Patch3:         no-more-strip.patch
+Patch4:         0001-Remove-custom-languages-in-wx-3.1.6-and-above.patch
+Patch5:         0001-Call-the-proper-wxBitmap-constructor-for-XPM-data.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -173,7 +175,6 @@ rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_qa-suse-nostl.so.*
 rm -f %{buildroot}%{_prefix}/%{name}
 %find_lang %{name}
 
-%if 0%{?suse_version} == 1500
 %post
 ldconfig %{_libdir}/%{name}
 %end
@@ -181,8 +182,6 @@ ldconfig %{_libdir}/%{name}
 %postun
 ldconfig %{_libdir}/%{name}
 %end
-
-%endif
 
 %files
 %defattr(-,root,root)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 21 09:00:40 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Add ldconfig post and postun for audacity's own libs to solve
+  boo#1198551
+- Fix audacity's build against wxWidgets 3.1.6 with two patches
+  from git:
+  0001-Remove-custom-languages-in-wx-3.1.6-and-above.patch and
+  0001-Call-the-proper-wxBitmap-constructor-for-XPM-data.patch
+
+-------------------------------------------------------------------
 Thu Apr 14 07:44:51 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Added libopus build dependency and "-DCMAKE_SKIP_RPATH:BOOL=on"
