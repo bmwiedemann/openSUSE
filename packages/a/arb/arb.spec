@@ -1,7 +1,7 @@
 #
 # spec file for package arb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           arb
 %define lname   libarb2
-Version:        2.21.1
+Version:        2.22.1
 Release:        0
 Summary:        Arbitrary-precision floating-point ball arithmetic library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

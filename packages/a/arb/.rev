@@ -23,4 +23,12 @@
     <comment>- Update to release 2.21.0</comment>
     <requestid>928104</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d16375941af82867bc47ce1bd227495</srcmd5>
+    <version>2.22.1</version>
+    <time>1650548570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.22.1</comment>
+    <requestid>971350</requestid>
+  </revision>
 </revisionlist>

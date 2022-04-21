@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 21 08:51:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.22.1
+  * Much faster computation of Bernoulli numbers using hybrid
+    numerical-modular algorithm.
+  * Faster computation of Euler numbers using hybrid algorithm;
+    added arb_fmpz_euler_number_ui.
+  * Added inverse error function (arb_hypgeom_erfinv,
+    arb_hypgeom_erfcinv).
+  * New (faster, more accurate) implementations of real error
+    functions (arb_hypgeom_erf, arb_hypgeom_erfc) and
+    trigonometric integrals (arb_hypgeom_si, arb_hypgeom_ci).
+  * Use arb-based printing code instead of MPFR in arf_printd and
+    mag_printd so that large exponents work.
+
+-------------------------------------------------------------------
 Fri Oct 29 09:21:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.21.0
