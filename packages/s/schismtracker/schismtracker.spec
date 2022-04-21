@@ -1,7 +1,7 @@
 #
 # spec file for package schismtracker
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           schismtracker
-Version:        20211116
+Version:        20220125
 Release:        0
 Summary:        Music editor that matches the look and feel of Impulse Tracker
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            http://schismtracker.org/
-
-#Git-Clone:     https://github.com/schismtracker/schismtracker
 Source:         https://github.com/schismtracker/schismtracker/archive/refs/tags/%version.tar.gz
 Source2:        %name.desktop
 Patch1:         schism-alsa.diff

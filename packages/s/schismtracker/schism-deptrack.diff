@@ -11,11 +11,11 @@ Anyway, create the directory beforehand.
  configure.ac |    1 +
  2 files changed, 2 insertions(+)
 
-Index: schismtracker-20170910/Makefile.am
+Index: schismtracker-20220125/Makefile.am
 ===================================================================
---- schismtracker-20170910.orig/Makefile.am
-+++ schismtracker-20170910/Makefile.am
-@@ -141,6 +141,7 @@ CLEANFILES = \
+--- schismtracker-20220125.orig/Makefile.am
++++ schismtracker-20220125/Makefile.am
+@@ -147,6 +147,7 @@ CLEANFILES = \
  	auto/helptext.c
  
  auto/default-font.c: Makefile.am scripts/bin2h.sh scripts/build-font.sh $(fonts)
@@ -23,14 +23,14 @@ Index: schismtracker-20170910/Makefile.am
  	sh $(srcdir)/scripts/build-font.sh $(srcdir) $(fonts) >$@
  auto/helptext.c: Makefile.am scripts/genhelp.py $(helptexts)
  	$(PYTHON) $(srcdir)/scripts/genhelp.py $(srcdir) $(helptexts) >$@
-Index: schismtracker-20170910/configure.ac
+Index: schismtracker-20220125/configure.ac
 ===================================================================
---- schismtracker-20170910.orig/configure.ac
-+++ schismtracker-20170910/configure.ac
-@@ -39,6 +39,7 @@ AC_PROG_CPP
+--- schismtracker-20220125.orig/configure.ac
++++ schismtracker-20220125/configure.ac
+@@ -38,6 +38,7 @@ AM_PROG_CC_C_O
+ AC_PROG_CPP
  AC_PROG_INSTALL
  AC_PROG_LN_S
- AC_PROG_CC_C99
 +AC_PROG_MKDIR_P
  
  dnl do we have Git

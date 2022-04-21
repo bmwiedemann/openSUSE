@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 21 08:15:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220125:
+  * Release builds now support macOS 10.9+ (previously supported only 10.15+)
+  * Fix window size on high-DPI macOS displays when launched from app bundle
+  * Fix reading of various meta events in MIDI files
+  * Fix IMF filter envelope being upside down and IMF disable envelope command
+  * Fix bug in AIFF multi-write
+- schism-deptrack.diff: refresh
+
+-------------------------------------------------------------------
 Wed Nov 17 09:43:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20211116
