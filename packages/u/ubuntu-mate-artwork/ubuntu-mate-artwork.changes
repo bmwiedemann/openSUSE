@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 19 13:38:30 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 22.04.17
+  * Drop Radiant and Ambiant themes
+  * Sync Yaru-MATE themes/icons with upstream Yaru 22.04.4
+  * Add keyboard layout flag icons.
+  * Minor adjustments to the Jammy mascot wallpapers
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
-- Update to version 21.10.0 (changes since 20.04.0):
+- Update to version 22.04.0 (changes since 20.04.0):
   * Add Focal Fossa mascot.
   * Add Green/Grey wallpaper (with logo) for Focal.
   * Themes: Fix highlight colour for toolbar menu items.
