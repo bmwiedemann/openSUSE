@@ -434,4 +434,12 @@
     <comment>Also add some obsoletes and conflicts</comment>
     <requestid>964544</requestid>
   </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>11ae71f632e19b08073f99423ca78f35</srcmd5>
+    <version>unknown</version>
+    <time>1650548493</time>
+    <user>dimstar_suse</user>
+    <comment>Do not prefix Suggests by Requires</comment>
+    <requestid>967786</requestid>
+  </revision>
 </revisionlist>
