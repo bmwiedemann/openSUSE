@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-app-django
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python-social-auth/social-app-django
 Source:         https://files.pythonhosted.org/packages/source/s/social-auth-app-django/social-auth-app-django-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module social-auth-core >= 4.1.0}
 BuildRequires:  fdupes
