@@ -299,4 +299,13 @@
   * Container images are based on AlmaLinux 8 and Ceph Pacific.</comment>
     <requestid>969341</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>68a6f820bc273fde3b6f25a144f551e0</srcmd5>
+    <version>0.16.1</version>
+    <time>1650548538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.1:
+  * Fix typo in PersistentVolume key name (#140)</comment>
+    <requestid>971237</requestid>
+  </revision>
 </revisionlist>
