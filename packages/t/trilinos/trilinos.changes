@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  1 15:32:15 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Tie %python_flavor to python3 on Leap/SLE 15 < SP3
+  (bsc#1197781).
+
+-------------------------------------------------------------------
 Mon Feb  7 07:07:18 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Make use of the newly introduced %%hpc_pyton_sitelib macro.
