@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 20 19:50:45 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Require libQt6Svg at runtime (fixes boo#1198544)
+
+-------------------------------------------------------------------
 Fri Mar 25 09:28:47 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.4.2

@@ -1254,4 +1254,13 @@
     <comment>Update to version 4.4.2 (forwarded request 964843 from alois)</comment>
     <requestid>964844</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>a89bc04d4b9df576aec19c197292d1c2</srcmd5>
+    <version>4.4.2</version>
+    <time>1650548549</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libQt6Svg at runtime (fixes boo#1198544)
+</comment>
+    <requestid>971346</requestid>
+  </revision>
 </revisionlist>

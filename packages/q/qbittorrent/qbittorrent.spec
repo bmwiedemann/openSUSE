@@ -50,6 +50,8 @@ BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 2.0.4
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib) >= 1.2.11
+# contains the qt6 plugins to read SVG icons
+%requires_ge    libQt6Svg6
 # For search engines.
 Recommends:     python3
 
