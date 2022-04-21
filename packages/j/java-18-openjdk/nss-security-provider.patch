@@ -1,0 +1,10 @@
+--- a/src/java.base/share/conf/security/java.security
++++ b/src/java.base/share/conf/security/java.security
+@@ -78,6 +78,7 @@ security.provider.tbd=SunMSCAPI
+ security.provider.tbd=Apple
+ #endif
+ security.provider.tbd=SunPKCS11
++#security.provider.tbd=SunPKCS11 ${java.home}/lib/security/nss.cfg
+ 
+ #
+ # A list of preferred providers for specific algorithms. These providers will

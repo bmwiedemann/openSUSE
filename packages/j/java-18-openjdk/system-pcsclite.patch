@@ -1,0 +1,177 @@
+--- a/make/autoconf/lib-bundled.m4
++++ b/make/autoconf/lib-bundled.m4
+@@ -41,6 +41,7 @@ AC_DEFUN_ONCE([LIB_SETUP_BUNDLED_LIBS],
+   LIB_SETUP_ZLIB
+   LIB_SETUP_LCMS
+   LIB_SETUP_HARFBUZZ
++  LIB_SETUP_PCSCLITE
+ ])
+ 
+ ################################################################################
+@@ -304,3 +305,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
+   AC_SUBST(HARFBUZZ_CFLAGS)
+   AC_SUBST(HARFBUZZ_LIBS)
+ ])
++
++################################################################################
++# Setup pcsclite
++################################################################################
++AC_DEFUN_ONCE([LIB_SETUP_PCSCLITE],
++[
++  AC_ARG_WITH(pcsclite, [AS_HELP_STRING([--with-pcsclite],
++     [use pcsclite from build system or OpenJDK source (system, bundled) @<:@bundled@:>@])])
++
++  AC_MSG_CHECKING([for which pcsclite to use])
++
++  # default is bundled
++  DEFAULT_PCSCLITE=bundled
++  # if user didn't specify, use DEFAULT_PCSCLITE
++  if test "x${with_pcsclite}" = "x"; then
++      with_libpng=${DEFAULT_PCSCLITE}
++  fi
++
++  if test "x${with_pcsclite}" = "xbundled"; then
++      USE_EXTERNAL_PCSCLITE=false
++      AC_MSG_RESULT([bundled])
++  elif test "x${with_pcsclite}" = "xsystem"; then
++      PKG_CHECK_MODULES(PCSCLITE, libpcsclite,
++                   [ PCSCLITE_FOUND=yes ],
++                   [ PCSCLITE_FOUND=no ])
++      if test "x${PCSCLITE_FOUND}" = "xyes"; then
++          USE_EXTERNAL_PCSCLITE=true
++          AC_MSG_RESULT([system])
++      else
++          AC_MSG_RESULT([system not found])
++          AC_MSG_ERROR([--with-pcsclite=system specified, but no pcsclite found!])
++      fi
++  else
++      AC_MSG_ERROR([Invalid value of --with-pcsclite: ${with_pcsclite}, use 'system' or 'bundled'])
++  fi
++
++  AC_SUBST(USE_EXTERNAL_PCSCLITE)
++])
+--- a/make/autoconf/spec.gmk.in
++++ b/make/autoconf/spec.gmk.in
+@@ -776,6 +776,7 @@ TAR_SUPPORTS_TRANSFORM:=@TAR_SUPPORTS_TRANSFORM@
+ # Build setup
+ USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
+ USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
++USE_EXTERNAL_LIBPCSCLITE:=@USE_EXTERNAL_LIBPCSCLITE@
+ USE_EXTERNAL_LIBZ:=@USE_EXTERNAL_LIBZ@
+ LIBZ_CFLAGS:=@LIBZ_CFLAGS@
+ LIBZ_LIBS:=@LIBZ_LIBS@
+--- a/make/modules/java.smartcardio/Lib.gmk
++++ b/make/modules/java.smartcardio/Lib.gmk
+@@ -30,12 +30,12 @@ include LibCommon.gmk
+ $(eval $(call SetupJdkLibrary, BUILD_LIBJ2PCSC, \
+     NAME := j2pcsc, \
+     CFLAGS := $(CFLAGS_JDKLIB), \
+-    CFLAGS_unix := -D__sun_jdk, \
+-    EXTRA_HEADER_DIRS := libj2pcsc/MUSCLE, \
++    CFLAGS_unix := -D__sun_jdk -DUSE_SYSTEM_LIBPCSCLITE, \
++    EXTRA_HEADER_DIRS := /usr/include/PCSC, \
+     OPTIMIZATION := LOW, \
+     LDFLAGS := $(LDFLAGS_JDKLIB) \
+         $(call SET_SHARED_LIBRARY_ORIGIN), \
+-    LIBS_unix := $(LIBDL), \
++    LIBS_unix := -lpcsclite $(LIBDL), \
+     LIBS_windows := winscard.lib, \
+ ))
+ 
+--- a/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
++++ b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
+@@ -36,6 +36,7 @@
+ 
+ #include "pcsc_md.h"
+ 
++#ifndef USE_SYSTEM_LIBPCSCLITE
+ void *hModule;
+ FPTR_SCardEstablishContext scardEstablishContext;
+ FPTR_SCardConnect scardConnect;
+@@ -47,6 +48,7 @@ FPTR_SCardListReaders scardListReaders;
+ FPTR_SCardBeginTransaction scardBeginTransaction;
+ FPTR_SCardEndTransaction scardEndTransaction;
+ FPTR_SCardControl scardControl;
++#endif
+ 
+ /*
+  * Throws a Java Exception by name
+@@ -75,6 +77,7 @@ void throwIOException(JNIEnv *env, const char *msg)
+     throwByName(env, "java/io/IOException", msg);
+ }
+ 
++#ifndef USE_SYSTEM_LIBPCSCLITE
+ void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
+     void *fAddress = dlsym(hModule, functionName);
+     if (fAddress == NULL) {
+@@ -85,9 +88,11 @@ void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
+     }
+     return fAddress;
+ }
++#endif
+ 
+ JNIEXPORT void JNICALL Java_sun_security_smartcardio_PlatformPCSC_initialize
+         (JNIEnv *env, jclass thisClass, jstring jLibName) {
++#ifndef USE_SYSTEM_LIBPCSCLITE
+     const char *libName = (*env)->GetStringUTFChars(env, jLibName, NULL);
+     if (libName == NULL) {
+         throwNullPointerException(env, "PCSC library name is null");
+@@ -141,4 +146,5 @@ JNIEXPORT void JNICALL Java_sun_security_smartcardio_PlatformPCSC_initialize
+ #else
+     scardControl          = (FPTR_SCardControl)         findFunction(env, hModule, "SCardControl132");
+ #endif // __APPLE__
++#endif
+ }
+--- a/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h
++++ b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h
+@@ -23,6 +23,8 @@
+  * questions.
+  */
+ 
++#ifndef USE_SYSTEM_LIBPCSCLITE
++
+ typedef LONG (*FPTR_SCardEstablishContext)(DWORD dwScope,
+                 LPCVOID pvReserved1,
+                 LPCVOID pvReserved2,
+@@ -111,3 +113,41 @@ extern FPTR_SCardListReaders scardListReaders;
+ extern FPTR_SCardBeginTransaction scardBeginTransaction;
+ extern FPTR_SCardEndTransaction scardEndTransaction;
+ extern FPTR_SCardControl scardControl;
++
++#else
++
++#define CALL_SCardEstablishContext(dwScope, pvReserved1, pvReserved2, phContext) \
++    (SCardEstablishContext(dwScope, pvReserved1, pvReserved2, phContext))
++
++#define CALL_SCardConnect(hContext, szReader, dwSharedMode, dwPreferredProtocols, phCard, pdwActiveProtocols) \
++    (SCardConnect(hContext, szReader, dwSharedMode, dwPreferredProtocols, phCard, pdwActiveProtocols))
++
++#define CALL_SCardDisconnect(hCard, dwDisposition) \
++    (SCardDisconnect(hCard, dwDisposition))
++
++#define CALL_SCardStatus(hCard, mszReaderNames, pcchReaderLen, pdwState, pdwProtocol, pbAtr, pcbAtrLen) \
++    (SCardStatus(hCard, mszReaderNames, pcchReaderLen, pdwState, pdwProtocol, pbAtr, pcbAtrLen))
++
++#define CALL_SCardGetStatusChange(hContext, dwTimeout, rgReaderStates, cReaders) \
++    (SCardGetStatusChange(hContext, dwTimeout, rgReaderStates, cReaders))
++
++#define CALL_SCardTransmit(hCard, pioSendPci, pbSendBuffer, cbSendLength, \
++                            pioRecvPci, pbRecvBuffer, pcbRecvLength) \
++    (SCardTransmit(hCard, pioSendPci, pbSendBuffer, cbSendLength, \
++                            pioRecvPci, pbRecvBuffer, pcbRecvLength))
++
++#define CALL_SCardListReaders(hContext, mszGroups, mszReaders, pcchReaders) \
++    (SCardListReaders(hContext, mszGroups, mszReaders, pcchReaders))
++
++#define CALL_SCardBeginTransaction(hCard) \
++    (SCardBeginTransaction(hCard))
++
++#define CALL_SCardEndTransaction(hCard, dwDisposition) \
++    (SCardEndTransaction(hCard, dwDisposition))
++
++#define CALL_SCardControl(hCard, dwControlCode, pbSendBuffer, cbSendLength, \
++            pbRecvBuffer, pcbRecvLength, lpBytesReturned) \
++    (SCardControl(hCard, dwControlCode, pbSendBuffer, cbSendLength, \
++            pbRecvBuffer, pcbRecvLength, lpBytesReturned))
++
++#endif
