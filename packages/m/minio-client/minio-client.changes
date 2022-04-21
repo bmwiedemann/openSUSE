@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 20 05:50:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220416T211121Z:
+  * Update documentation for --older/newer-than flags (#4039)
+  * update minio/pkg deps
+  * Load proxy config when probing for server TLS certificate (#4052)
+  * mirror: Do not create remote bucket with --dry-run (#4054)
+  * mirror: Stop minio-go bucket listen when watch is cancelled (#4053)
+  * update minio-go/v7, minio/pkg deps
+  * Replace fake with dry-run (#4050)
+  * fix usage message wording (#4048)
+  * Add mutex, threads and cpuio as default in profiling (#4046)
+  * Error handling for remove alias request if alias not found  (#4017)
+  * update to latest madmin-go v1.3.11
+
+-------------------------------------------------------------------
 Sat Apr 16 09:07:02 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220407T214327Z:
