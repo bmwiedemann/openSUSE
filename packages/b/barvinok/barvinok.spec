@@ -1,7 +1,7 @@
 #
 # spec file for package barvinok
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,18 @@
 
 %define lname	libbarvinok23
 Name:           barvinok
-Version:        0.41.4
+Version:        0.41.5
 Release:        0
 Summary:        Library for computing homotopy continuation of roots
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://barvinok.gforge.inria.fr/
-Source:         http://barvinok.gforge.inria.fr/%name-%version.tar.xz
+
+#Git-Web:       https://repo.or.cz/barvinok.git
+Source:         %name-%version.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  glpk-devel
+BuildRequires:  libtool
 BuildRequires:  ntl-devel
 BuildRequires:  pkgconfig(gmpxx)
 BuildRequires:  pkgconfig(isl)
@@ -70,6 +73,7 @@ developing with PolyLib.
 %autosetup -p1
 
 %build
+autoreconf -fi
 %configure --disable-static --enable-shared-barvinok \
 	--with-isl=system --with-ntl=system --with-polylib=system
 %make_build
