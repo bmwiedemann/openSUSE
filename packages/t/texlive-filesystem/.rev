@@ -509,4 +509,13 @@
      OK make them silent</comment>
     <requestid>937801</requestid>
   </revision>
+  <revision rev="51" vrev="54">
+    <srcmd5>3757016576d2e254b4df8dc84a740f38</srcmd5>
+    <version>unknown</version>
+    <time>1650548484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to TeXLive 2022 
+- Try to debug entries like boo#1194496</comment>
+    <requestid>967550</requestid>
+  </revision>
 </revisionlist>

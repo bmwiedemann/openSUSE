@@ -45,7 +45,8 @@ umask 022
    LIBDIR=/var/lib/texmf
    MD5DIR=$LIBDIR/md5
 OLDMD5DIR=/var/adm/SuSEconfig/md5
-mkdir -p $MD5DIR || exit 0
+test -d $LIBDIR  || { echo The directory $LIBDIR does not exists 1>&2; exit 1; }
+mkdir -p $MD5DIR || { echo Can not create directory $MD5DIR 1>&2; exit 1; }
 
 unset ${!LC_*}
 LANG=POSIX
@@ -191,6 +192,7 @@ if test -z "$cnf_llua" ; then
     # RPM has trouble with symbolic links instead of files
     #
     old=$(TEXMF=$TEXMFDIST kpsewhich language.dat.lua 2> /dev/null)
+    cnf_llua=${TEXMFSYSCONFIG}${old#*${TEXMFDIST}}
     if test -n "$old" -a -e "$old" -a ! -L "$old" ; then
 	base="${old##*/}"
 	path="${old%/*}"
@@ -206,6 +208,7 @@ if test -z "$cnf_llua" ; then
     mktexlsr $TEXMFSYSCONFIG < /dev/null 1>&4 2>&4
     cnf_llua=$(TEXMF=$TEXMFSYSCONFIG kpsewhich language.dat.lua 2> /dev/null)
 fi
+test -n "$cnf_llua" || { echo There is still no language.dat.lua below $TEXMFSYSCONFIG 1>&2; exit 1; }
 
 #
 # Do some sanity checks as well
@@ -279,6 +282,10 @@ if ((yes == 0)) ; then
 fi
 unset yes
 
+md5_ldat=${MD5DIR}${cnf_ldat}
+md5_ldef=${MD5DIR}${cnf_ldef}
+md5_llua=${MD5DIR}${cnf_llua}
+
 if test -n "${cnf_ldat}" -a -n "${cnf_ldef}" -a -n "${cnf_llua}" ; then
     for cfg in ${cnf_ldat} ${cnf_ldef} ${cnf_llua} ; do
 	test -s ${OLDMD5DIR}${cfg} || continue
@@ -292,10 +299,6 @@ if test -n "${cnf_ldat}" -a -n "${cnf_ldef}" -a -n "${cnf_llua}" ; then
 	fi
 	mv -f ${OLDMD5DIR}${cfg} ${MD5DIR}${cfg}
     done
-
-    md5_ldat=${MD5DIR}${cnf_ldat}
-    md5_ldef=${MD5DIR}${cnf_ldef}
-    md5_llua=${MD5DIR}${cnf_llua}
 
     #
     # Handle hyphens
