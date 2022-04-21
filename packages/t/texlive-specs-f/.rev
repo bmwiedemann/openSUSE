@@ -476,4 +476,12 @@ Aggregate licenses for spec file without subpackages (forwarded request 131950 f
     <comment>Also add some obsoletes and conflicts</comment>
     <requestid>964545</requestid>
   </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>51c72338bcbf9063c67b7d05a6263551</srcmd5>
+    <version>unknown</version>
+    <time>1650548494</time>
+    <user>dimstar_suse</user>
+    <comment>Do not prefix Suggests by Requires</comment>
+    <requestid>967787</requestid>
+  </revision>
 </revisionlist>
